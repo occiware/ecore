@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="Infrastructure" nsURI="http://schemas.ogf.org/occi/infrastructure#"
+    nsPrefix="infra">
+  <eClassifiers xsi:type="ecore:EClass" name="compute" eSuperTypes="OCCI.ecore#//Resource">
+    <eOperations name="start"/>
+    <eOperations name="stop"/>
+    <eOperations name="restart"/>
+    <eOperations name="suspend"/>
+    <eOperations name="error"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="occi.compute.architecture"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="occi.compute.cores" eType="ecore:EDataType OCCI.ecore#//integer"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="occi.compute.hostname"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="occi.compute.speed" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="occi.compute.memory" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="occi.compute.state" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="network"/>
+</ecore:EPackage>
