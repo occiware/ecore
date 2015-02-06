@@ -18,8 +18,8 @@ For OCCI Application Extension:
 - Generate images/OCCI-Application-Extension-diagram.jpg
 
 For OCCI Docker Extension:
-- Create extensions/Docker.xmi
-- Generate images/OCCI-Docker-Extension-diagram.jpg
+- Complete extensions/Docker.xmi
+- Regenerate images/OCCI-Docker-Extension-diagram.jpg
 
 For OCNI Extension:
 - Create extensions/OCNI.xmi
