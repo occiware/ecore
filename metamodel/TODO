@@ -1,0 +1,26 @@
+For OCCI Metamodel:
+- Add more OCL constraints to check
+  - unicity of entity id
+  - no cycle in importation
+  - unicity of importation
+  - ...
+
+For OCCI Infrastructure Extension:
+- Check datatypes used in extensions/Infrastructure.xmi
+- Generate images/OCCI-Infrastructure-Extension-diagram.jpg
+
+For OCCI Platform Extension:
+- Create extensions/Platform.xmi
+- Generate images/OCCI-Platform-Extension-diagram.jpg
+
+For OCCI Application Extension:
+- Create extensions/Application.xmi
+- Generate images/OCCI-Application-Extension-diagram.jpg
+
+For OCCI Docker Extension:
+- Create extensions/Docker.xmi
+- Generate images/OCCI-Docker-Extension-diagram.jpg
+
+For OCNI Extension:
+- Create extensions/OCNI.xmi
+- Generate images/OCNI-Extension-diagram.jpg
