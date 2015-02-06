@@ -50,10 +50,11 @@
   <eClassifiers xsi:type="ecore:EClass" name="Action" eSuperTypes="#//Category"/>
   <eClassifiers xsi:type="ecore:EClass" name="Mixin" eSuperTypes="#//Category">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="NoCyclicInheritence"/>
+      <details key="constraints" value="NoCyclicInheritence CorrectScheme"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
       <details key="NoCyclicInheritence" value="depends->closure(depends)->excludes(self)"/>
+      <details key="CorrectScheme" value="let ownerScheme = self.oclContainer().oclAsType(Extension).scheme in scheme.substring(1,ownerScheme.size()) = ownerScheme.substring(1,ownerScheme.size()-1) + '/'"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="actions" upperBound="-1"
         eType="#//Action" containment="true"/>
