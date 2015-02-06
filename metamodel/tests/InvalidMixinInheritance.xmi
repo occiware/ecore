@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="ASCII"?>
+<OCCI:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:OCCI="http://schemas.ogf.org/occi" xsi:schemaLocation="http://schemas.ogf.org/occi ../OCCI.ecore" name="InvalidMixinInheritance" scheme="scheme#">
+  <mixins term="A" scheme="scheme#" depends="//@mixins[term='C']"/>
+  <mixins term="B" scheme="scheme#" depends="//@mixins[term='A']"/>
+  <mixins term="C" scheme="scheme#" depends="//@mixins[term='B']"/>
+</OCCI:Extension>
