@@ -17,5 +17,62 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="occi.compute.memory" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EDouble"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="occi.compute.state" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="network"/>
+  <eClassifiers xsi:type="ecore:EClass" name="network" eSuperTypes="OCCI.ecore#//Resource">
+    <eOperations name="up"/>
+    <eOperations name="down"/>
+    <eOperations name="error"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="occi.network.vlan" eType="ecore:EDataType OCCI.ecore#//integer"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="occi.network.label" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="occi.network.state" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IPNetworking" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="occi.network.address" eType="ecore:EDataType OCCI.ecore#//string"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="occi.network.gateway" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="occi.network.allocation"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="storage" eSuperTypes="OCCI.ecore#//Resource">
+    <eOperations name="online"/>
+    <eOperations name="offline"/>
+    <eOperations name="error"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="occi.storage.size" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="occi.storage.state" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NetworkInterface" eSuperTypes="OCCI.ecore#//Link">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="occi.networkinterface.interface"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="occi.networkinterface.mac"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="occi.networkinterface.state"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IPNetworkInterface" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="occi.networkinterface.address"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="occi.networkinterface.gateway"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="occi.networkinterface.allocation"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StorageLink" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="occi.storagelink.deviceid"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="occi.storagelink.mountpoint"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="occi.storagelink.state"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="os_tpl" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="applies" eType="#//compute"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Credentials" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="occi.credentials.ssh.publickey"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="applies" eType="#//compute"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Contextualisation" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="occi.compute.user_data"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="applies" eType="#//compute"/>
+  </eClassifiers>
 </ecore:EPackage>
