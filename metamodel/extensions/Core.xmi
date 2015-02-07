@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<OCCI:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:OCCI="http://schemas.ogf.org/occi" name="OCCI Core" scheme="http://schemas.ogf.org/occi/core#">
+<OCCI:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:OCCI="http://schemas.ogf.org/occi" name="OCCI Core" xsi:schemaLocation="http://schemas.ogf.org/occi ../OCCI.ecore" scheme="http://schemas.ogf.org/occi/core#">
   <kinds term="entity" scheme="http://schemas.ogf.org/occi/core#">
     <attributes name="occi.core.title" mutable="true" description="The display name of the instance.">
       <type href="../OCCI.ecore#//string"/>
