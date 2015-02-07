@@ -1993,7 +1993,7 @@
               <styles xmi:type="notation:FilteringStyle" xmi:id="_kgEaEq4rEeSCdO24YLjfrQ"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_kgCk4a4rEeSCdO24YLjfrQ" fontName="Lucida Grande" fontHeight="12" bold="true"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kgCk4q4rEeSCdO24YLjfrQ" x="247" y="40" width="543"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kgCk4q4rEeSCdO24YLjfrQ" x="247" y="40" width="543" height="167"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_kgFBIK4rEeSCdO24YLjfrQ" type="2003" element="_keRqUK4rEeSCdO24YLjfrQ">
             <children xmi:type="notation:Node" xmi:id="_kgGPQK4rEeSCdO24YLjfrQ" type="5007"/>
@@ -2086,7 +2086,7 @@
               <styles xmi:type="notation:FilteringStyle" xmi:id="_kgIrg64rEeSCdO24YLjfrQ"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_kgIEca4rEeSCdO24YLjfrQ" fontName="Lucida Grande" fontHeight="12" bold="true"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kgIEcq4rEeSCdO24YLjfrQ" x="458" y="240"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kgIEcq4rEeSCdO24YLjfrQ" x="468" y="240"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_kgJSkK4rEeSCdO24YLjfrQ" type="2003" element="_keTfha4rEeSCdO24YLjfrQ">
             <children xmi:type="notation:Node" xmi:id="_kgJ5oK4rEeSCdO24YLjfrQ" type="5007"/>
@@ -2104,7 +2104,7 @@
               <styles xmi:type="notation:FilteringStyle" xmi:id="_kgJ5o64rEeSCdO24YLjfrQ"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_kgJSka4rEeSCdO24YLjfrQ" fontName="Lucida Grande" fontHeight="12" bold="true"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kgJSkq4rEeSCdO24YLjfrQ" x="720" y="240"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kgJSkq4rEeSCdO24YLjfrQ" x="736" y="240"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_kgJ5pK4rEeSCdO24YLjfrQ" type="2003" element="_keUGla4rEeSCdO24YLjfrQ">
             <children xmi:type="notation:Node" xmi:id="_kgKgsK4rEeSCdO24YLjfrQ" type="5007"/>
@@ -2122,7 +2122,7 @@
               <styles xmi:type="notation:FilteringStyle" xmi:id="_kgLHwq4rEeSCdO24YLjfrQ"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_kgJ5pa4rEeSCdO24YLjfrQ" fontName="Lucida Grande" fontHeight="12" bold="true"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kgJ5pq4rEeSCdO24YLjfrQ" x="595" y="332"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kgJ5pq4rEeSCdO24YLjfrQ" x="640" y="332"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_kgLHw64rEeSCdO24YLjfrQ" type="2003" element="_kfaSwK4rEeSCdO24YLjfrQ">
             <children xmi:type="notation:Node" xmi:id="_kgLu0K4rEeSCdO24YLjfrQ" type="5007"/>
@@ -2158,7 +2158,7 @@
               <styles xmi:type="notation:FilteringStyle" xmi:id="_kgNkAq4rEeSCdO24YLjfrQ"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_kgMV5K4rEeSCdO24YLjfrQ" fontName="Lucida Grande" fontHeight="12" bold="true"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kgMV5a4rEeSCdO24YLjfrQ" x="627" y="416"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kgMV5a4rEeSCdO24YLjfrQ" x="656" y="416"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_kgNkA64rEeSCdO24YLjfrQ" type="2003" element="_kfcH8K4rEeSCdO24YLjfrQ">
             <children xmi:type="notation:Node" xmi:id="_kgOLEK4rEeSCdO24YLjfrQ" type="5007"/>
@@ -2255,7 +2255,7 @@
             </children>
             <styles xmi:type="notation:ConnectorStyle" xmi:id="_kg2dM64rEeSCdO24YLjfrQ"/>
             <styles xmi:type="notation:FontStyle" xmi:id="_kg2dNK4rEeSCdO24YLjfrQ" fontName="Lucida Grande" fontHeight="8"/>
-            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_kg2dNa4rEeSCdO24YLjfrQ" points="[-8, -6, 105, 75]$[-81, -61, 32, 20]"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_kg2dNa4rEeSCdO24YLjfrQ" points="[-10, -6, 113, 75]$[-95, -61, 28, 20]"/>
             <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_kg5ggK4rEeSCdO24YLjfrQ" id="(0.432,0.05303030303030303)"/>
             <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_kg5gga4rEeSCdO24YLjfrQ" id="(0.5,0.5)"/>
           </edges>
@@ -2271,7 +2271,7 @@
             </children>
             <styles xmi:type="notation:ConnectorStyle" xmi:id="_kg5gg64rEeSCdO24YLjfrQ"/>
             <styles xmi:type="notation:FontStyle" xmi:id="_kg5ghK4rEeSCdO24YLjfrQ" fontName="Lucida Grande" fontHeight="8"/>
-            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_kg5gha4rEeSCdO24YLjfrQ" points="[-39, -30, 126, 74]$[-123, -95, 42, 9]"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_kg5gha4rEeSCdO24YLjfrQ" points="[-53, -30, 128, 74]$[-149, -85, 32, 19]"/>
             <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_kg_nIK4rEeSCdO24YLjfrQ" id="(0.5,0.5)"/>
             <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_kg_nIa4rEeSCdO24YLjfrQ" id="(0.6,0.5)"/>
           </edges>
@@ -2287,7 +2287,7 @@
             </children>
             <styles xmi:type="notation:ConnectorStyle" xmi:id="_kg_nI64rEeSCdO24YLjfrQ"/>
             <styles xmi:type="notation:FontStyle" xmi:id="_kg_nJK4rEeSCdO24YLjfrQ" fontName="Lucida Grande" fontHeight="8"/>
-            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_kg_nJa4rEeSCdO24YLjfrQ" points="[-13, -30, 67, 166]$[-73, -177, 7, 19]"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_kg_nJa4rEeSCdO24YLjfrQ" points="[-20, -30, 105, 166]$[-114, -177, 11, 19]"/>
             <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_khCDYK4rEeSCdO24YLjfrQ" id="(0.5,0.5)"/>
             <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_khCDYa4rEeSCdO24YLjfrQ" id="(0.6,0.5)"/>
           </edges>
@@ -2319,7 +2319,7 @@
             </children>
             <styles xmi:type="notation:ConnectorStyle" xmi:id="_khEfo64rEeSCdO24YLjfrQ"/>
             <styles xmi:type="notation:FontStyle" xmi:id="_khEfpK4rEeSCdO24YLjfrQ" fontName="Lucida Grande" fontHeight="8"/>
-            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_khEfpa4rEeSCdO24YLjfrQ" points="[-5, 0, -4, 23]$[-5, -23, -4, 0]"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_khEfpa4rEeSCdO24YLjfrQ" points="[2, 0, -4, 23]$[2, -23, -4, 0]"/>
             <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_khGU0K4rEeSCdO24YLjfrQ" id="(0.49732620320855614,0.0)"/>
             <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_khGU0a4rEeSCdO24YLjfrQ" id="(0.4979919678714859,1.0)"/>
           </edges>
@@ -2520,7 +2520,7 @@
           <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_keSRaq4rEeSCdO24YLjfrQ" red="138" green="226" blue="52"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']"/>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_kefswK4rEeSCdO24YLjfrQ" name="occi.compute.architecture: string">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_kefswK4rEeSCdO24YLjfrQ" name="occi.compute.architecture: Architecture">
           <target xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@kinds[term='compute']/@attributes.0"/>
           <semanticElements xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@kinds[term='compute']/@attributes.0"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_keg64K4rEeSCdO24YLjfrQ" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
@@ -2656,7 +2656,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
         </ownedElements>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_ke5VYK4rEeSCdO24YLjfrQ" name="occi.storage.state: string">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_ke5VYK4rEeSCdO24YLjfrQ" name="occi.storage.state: StorageStatus">
           <target xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@kinds[term='storage']/@attributes.1"/>
           <semanticElements xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@kinds[term='storage']/@attributes.1"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_ke8YsK4rEeSCdO24YLjfrQ" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
@@ -2833,7 +2833,7 @@
           <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_kfa51K4rEeSCdO24YLjfrQ" red="114" green="159" blue="207"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']"/>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_kfd9IK4rEeSCdO24YLjfrQ" name="occi.network.address: string">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_kfd9IK4rEeSCdO24YLjfrQ" name="occi.network.address: IpAddress">
           <target xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@mixins[term='ipnetwork']/@attributes.0"/>
           <semanticElements xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@mixins[term='ipnetwork']/@attributes.0"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_kfhAcK4rEeSCdO24YLjfrQ" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
@@ -2844,7 +2844,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='Attribute']"/>
         </ownedElements>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_kfhngK4rEeSCdO24YLjfrQ" name="occi.network.gateway: string">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_kfhngK4rEeSCdO24YLjfrQ" name="occi.network.gateway: IpAddress">
           <target xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@mixins[term='ipnetwork']/@attributes.1"/>
           <semanticElements xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@mixins[term='ipnetwork']/@attributes.1"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_kfl48K4rEeSCdO24YLjfrQ" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
@@ -2855,7 +2855,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='Attribute']"/>
         </ownedElements>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_kfnHEK4rEeSCdO24YLjfrQ" name="occi.network.allocation: string">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_kfnHEK4rEeSCdO24YLjfrQ" name="occi.network.allocation: Allocation">
           <target xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@mixins[term='ipnetwork']/@attributes.2"/>
           <semanticElements xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@mixins[term='ipnetwork']/@attributes.2"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_kfo8QK4rEeSCdO24YLjfrQ" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
@@ -2881,7 +2881,7 @@
           <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_kfbg5K4rEeSCdO24YLjfrQ" red="114" green="159" blue="207"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']"/>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_kfpjUK4rEeSCdO24YLjfrQ" name="occi.networkinterface.address: string">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_kfpjUK4rEeSCdO24YLjfrQ" name="occi.networkinterface.address: IpAddress">
           <target xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@mixins[term='ipnetworkinterface']/@attributes.0"/>
           <semanticElements xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@mixins[term='ipnetworkinterface']/@attributes.0"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_kfrYgK4rEeSCdO24YLjfrQ" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
@@ -2892,7 +2892,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='Attribute']"/>
         </ownedElements>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_kfr_kK4rEeSCdO24YLjfrQ" name="occi.networkinterface.gateway: string">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_kfr_kK4rEeSCdO24YLjfrQ" name="occi.networkinterface.gateway: IpAddress">
           <target xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@mixins[term='ipnetworkinterface']/@attributes.1"/>
           <semanticElements xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@mixins[term='ipnetworkinterface']/@attributes.1"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_kft0wK4rEeSCdO24YLjfrQ" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
@@ -2903,7 +2903,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='Attribute']"/>
         </ownedElements>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_kfub0K4rEeSCdO24YLjfrQ" name="occi.networkinterface.allocation: string">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_kfub0K4rEeSCdO24YLjfrQ" name="occi.networkinterface.allocation: Allocation">
           <target xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@mixins[term='ipnetworkinterface']/@attributes.2"/>
           <semanticElements xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@mixins[term='ipnetworkinterface']/@attributes.2"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_kfwRAK4rEeSCdO24YLjfrQ" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
