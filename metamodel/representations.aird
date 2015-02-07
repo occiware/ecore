@@ -6,6 +6,7 @@
   <models xmi:type="OCCI:Extension" href="extensions/Infrastructure.xmi#/"/>
   <models xmi:type="OCCI:Extension" href="extensions/Monitoring.xmi#/"/>
   <models xmi:type="OCCI:Extension" href="extensions/Docker.xmi#/"/>
+  <models xmi:type="OCCI:Extension" href="tests/CyclicInImportation.xmi#/"/>
   <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_Ewb9UKxvEeSpd9YKQOoEtg" initialized="true">
     <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_Sh6tEKunEeSRUa-WyK993Q" name="OCCI class diagram">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_SiriEKunEeSRUa-WyK993Q" source="GMF_DIAGRAMS">

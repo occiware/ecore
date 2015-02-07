@@ -1,7 +1,6 @@
 For OCCI Metamodel:
 - Add more OCL constraints to check
   - unicity of entity id
-  - no cycle in importation
   - unicity of importation
   - ...
 - Must Attribute refer a EDataType (currently what it is in OCCI.ecore or own it's own EDataType?

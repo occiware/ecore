@@ -2,7 +2,7 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="OCCI" nsURI="http://schemas.ogf.org/occi" nsPrefix="OCCI">
   <eAnnotations source="http://www.eclipse.org/OCL/Import">
-    <details key="ecore" value="http://www.eclipse.org/emf/2002/Ecore#/"/>
+    <details key="ecore" value="http://www.eclipse.org/emf/2002/Ecore"/>
   </eAnnotations>
   <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
     <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
@@ -96,11 +96,12 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Extension">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="ValidKindScheme TermUnicity"/>
+      <details key="constraints" value="ValidKindScheme TermUnicity NoCycleInImportation"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
       <details key="ValidKindScheme" value="kinds->forAll(k | k.scheme = self.scheme)"/>
       <details key="TermUnicity" value="kinds.term->intersection(mixins.term)->isEmpty()"/>
+      <details key="NoCycleInImportation" value="import->closure(import)->excludes(self)"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="scheme" lowerBound="1"
