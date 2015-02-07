@@ -84,7 +84,7 @@
     <eLiterals name="hibernate"/>
     <eLiterals name="suspend" value="1"/>
   </types>
-  <types name="integer4096" instanceClassName="int"/>
+  <types name="integer4095" instanceClassName="int"/>
   <types name="Token" instanceClassName="java.lang.String"/>
   <types name="float" instanceClassName="float"/>
   <types xsi:type="ecore:EEnum" name="NetworkStatus">

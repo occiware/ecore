@@ -2450,7 +2450,7 @@
           <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_keSRZK4rEeSCdO24YLjfrQ" red="138" green="226" blue="52"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']"/>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_keVUsK4rEeSCdO24YLjfrQ" name="occi.network.vlan: integer4096">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_keVUsK4rEeSCdO24YLjfrQ" name="occi.network.vlan: integer4095">
           <target xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@kinds[term='network']/@attributes.0"/>
           <semanticElements xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@kinds[term='network']/@attributes.0"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_keXJ4K4rEeSCdO24YLjfrQ" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
