@@ -1,10 +1,12 @@
 For OCCI Metamodel:
-- Must Attribute refer a EDataType (currently what it is in OCCI.ecore) or own it's own EDataType?
 - Add more OCL constraints to check
   - unicity of entity id
   - no cycle in importation
   - unicity of importation
   - ...
+- Must Attribute refer a EDataType (currently what it is in OCCI.ecore or own it's own EDataType?
+- Should Extension and Category contain OCL constraints to check consistency?
+- LinkKind extends Kind and reference both target and source Kind?
 
 For OCCI Core:
 
