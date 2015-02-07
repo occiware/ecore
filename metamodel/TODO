@@ -1,4 +1,5 @@
 For OCCI Metamodel:
+- Must Attribute refer a EDataType (currently what it is in OCCI.ecore) or own it's own EDataType?
 - Add more OCL constraints to check
   - unicity of entity id
   - no cycle in importation
@@ -25,3 +26,6 @@ For OCCI Docker Extension:
 For OCNI Extension:
 - Create extensions/OCNI.xmi
 - Generate images/OCNI-Extension-diagram.jpg
+
+Regression tests:
+- Automate the validation of OCL constraints on all XMI files.
