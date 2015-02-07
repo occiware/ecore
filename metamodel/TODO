@@ -5,9 +5,10 @@ For OCCI Metamodel:
   - unicity of importation
   - ...
 
+For OCCI Core:
+
 For OCCI Infrastructure Extension:
-- Check datatypes used in extensions/Infrastructure.xmi
-- Generate images/OCCI-Infrastructure-Extension-diagram.jpg
+- Add more annotations to constraint attribute datatypes.
 
 For OCCI Platform Extension:
 - Create extensions/Platform.xmi
