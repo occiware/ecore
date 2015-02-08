@@ -1,0 +1,76 @@
+import 'OCCI.ecore'
+
+package OCCI
+
+--
+-- Constraints related to Category.term.
+--
+
+context Extension
+inv TermUnicity: kinds.term->intersection(mixins.term)->isEmpty()
+
+context Kind
+inv ActionTermUnicity: actions->forAll(a1, a2 | a1 <> a2 implies a1.term <> a2.term)
+
+context Mixin
+inv ActionTermUnicity: actions->forAll(a1, a2 | a1 <> a2 implies a1.term <> a2.term)
+
+--
+-- Constraints related to Category.scheme.
+--
+
+context Category
+inv SchemeEndsWithSharp('The scheme "' + scheme + '" must end with a sharp'):
+  scheme.substring(scheme.size(),scheme.size()) = '#'
+  
+context Kind
+inv CorrectScheme: scheme = oclContainer().oclAsType(Extension).scheme
+
+context Mixin
+inv CorrectScheme: let ownerScheme = oclContainer().oclAsType(Extension).scheme in scheme.substring(1,ownerScheme.size()-1) = ownerScheme.substring(1,ownerScheme.size()-1)
+
+context Action
+inv CorrectScheme: let ownerCategory = oclContainer().oclAsType(Category) in scheme = ownerCategory.scheme.substring(1,ownerCategory.scheme.size()-1) + '/' + ownerCategory.term + '/action#'
+
+-- Next invariant is not required because already covered by the invariant Kind.CorrectScheme.
+context Extension
+inv ValidKindScheme: kinds->forAll(k | k.scheme = scheme)
+
+--
+-- Constraints related to attribute name unicity.
+--
+
+context Category
+inv AttributeNameUnicity('Some attributes have the same name'):
+  attributes->forAll(a1, a2 | a1 <> a2 implies a1.name <> a2.name)
+
+context Entity
+inv AttributeNameUnicity: attributes->forAll(a1, a2 | a1 <> a2 implies a1.name <> a2.name)
+
+--
+-- Constraints related to the classification type system.
+--
+
+context Kind
+inv NoCyclicInheritence: parent->closure(parent)->excludes(self)
+
+context Mixin
+inv NoCyclicInheritence: depends->closure(depends)->excludes(self)
+
+
+--
+-- Constraints related to the Extension importation.
+--
+
+context Extension
+inv NoCycleInImportation: import->closure(import)->excludes(self)
+
+--
+-- Other constraints.
+--
+
+-- context Attribute
+-- TODO: Is it needed?
+-- inv DefaultMustBeSetWhenRequiredIsTrue: required = true and mutable = false implies default <> null
+
+endpackage
