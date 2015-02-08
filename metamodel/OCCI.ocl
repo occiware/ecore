@@ -59,6 +59,7 @@ inv AttributeNameUnicity('Some attributes have the same name'):
 
 context Kind
 inv NoCyclicInheritence: parent->closure(parent)->excludes(self)
+inv AttributeNotAlreadyDefinedInParent: attributes.name->excludesAll((parent->closure(parent)).attributes.name)
 
 context Mixin
 inv NoCyclicInheritence: depends->closure(depends)->excludes(self)
@@ -89,3 +90,99 @@ inv MixinAppliesLocalOrImported: mixins->forAll(applies->forAll(extension = self
 -- inv DefaultMustBeSetWhenRequiredIsTrue: required = true and mutable = false implies default <> null
 
 endpackage
+/*
+
+pred sameIdentity[c1: Category, c2 : Category] {
+  c1.term = c2.term and c1.scheme = c2.scheme
+}
+
+sig Kind extends Category {
+  actions: set Action,
+  parent: lone Kind,
+  entities: set Entity
+} {
+  entity in this.*@parent
+  no attributes.name & this.^@parent.@attributes.name
+  no p : this.^@parent | p.sameIdentity[this]
+  no disj e1, e2 : entities | e1.id = e2.id
+}
+
+sig Mixin extends Category {
+  actions: set Action,
+  depends: set Mixin,
+  applies: set Kind,
+  entities: set Entity
+} {
+  all e : entities | (applies + entity) in e.kind.*parent
+  no d : this.^@depends | d.sameIdentity[this]
+  no disj k1, k2 : applies | k1.sameIdentity[k2]
+  no disj e1, e2 : entities | e1.id = e2.id
+}
+
+sig Action extends Category {} {
+  one ~(Kind<:actions + Mixin<:actions)[this]
+  no a : Action - this | a.sameIdentity[this]
+}
+
+abstract sig Entity {
+  id: one URI,
+  kind: one Kind,
+  mixins: set Mixin,
+} {
+  no disj m1, m2 : mixins | m1.sameIdentity[m2]
+  hasKind[entity]
+}
+
+pred Entity.hasKind[k : Kind]
+{
+  k in this.kind.*parent
+}
+
+one sig entity extends Kind {} {
+  term = "entity"
+  scheme = "http://schemas.ogf.oci/occi/core#"
+  title = "Entity type"
+  attributes = occi_core_title
+  no actions
+  no parent
+}
+one sig occi_core_title extends Attribute {} {
+  name = "occi.core.title"
+  type = "string"
+  mutable = true
+  required = false
+  no default
+  description = "The display name of the instance" 
+}
+
+sig Resource extends Entity {
+  links: set Link,
+} {
+  no disj l1, l2 : links | l1.@id = l2.@id
+  hasKind[resource]
+} 
+
+
+run an_OCCI_Core_instance {
+  one r1, r2, r3 : Resource,  l1, l2 : Link {
+    r1.id = "r1" and r2.id = "r2" and r3.id = "r3"
+    l1.id = "l1" and l2.id = "l2" 
+    l1.source = r1 and l1.target = r2
+    l2.source = r2 and l2.target = r3
+  }
+} for 0 but exactly 3 Resource, exactly 2 Link
+
+
+pred isKindOf[aKind : Kind, setEntities : set Entity]
+{
+  all e : setEntities | e.kind = aKind
+  aKind.entities = setEntities
+}
+
+check AllEntitiesHaveTheCorrectKind {
+  resource.isKindOf[Resource]
+  link.isKindOf[Link]
+  no entity.entities
+} for 10 but exactly 3 Kind
+  
+ */

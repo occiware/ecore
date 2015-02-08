@@ -2,7 +2,7 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="OCCI" nsURI="http://schemas.ogf.org/occi" nsPrefix="OCCI">
   <eAnnotations source="http://www.eclipse.org/OCL/Import">
-    <details key="ecore" value="http://www.eclipse.org/emf/2002/Ecore"/>
+    <details key="ecore" value="http://www.eclipse.org/emf/2002/Ecore#/"/>
   </eAnnotations>
   <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
     <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
@@ -34,12 +34,13 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Kind" eSuperTypes="#//Category">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="ActionTermUnicity CorrectScheme NoCyclicInheritence"/>
+      <details key="constraints" value="ActionTermUnicity CorrectScheme NoCyclicInheritence AttributeNotAlreadyDefinedInParent"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
       <details key="ActionTermUnicity" value="actions->forAll(a1, a2 | a1 &lt;> a2 implies a1.term &lt;> a2.term)"/>
       <details key="CorrectScheme" value="scheme = self.oclContainer().oclAsType(Extension).scheme"/>
       <details key="NoCyclicInheritence" value="parent->closure(parent)->excludes(self)"/>
+      <details key="AttributeNotAlreadyDefinedInParent" value="attributes.name->excludesAll((parent->closure(parent)).attributes.name)"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parent" eType="#//Kind"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="actions" upperBound="-1"
