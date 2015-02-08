@@ -8,6 +8,7 @@ EMF metamodel for OCCI and some OCCI extensions.
 - images/ contains Sirius screenshots.
 - tests/ contains OCCI models that violate OCL constraints defined in OCCI.ecore.
 - OCCI.ecore is the EMF metamodel for OCCI Core.
+- OCCI.ocl contains a copy of the OCL constraints embedded in OCCI.ecore.
 - README.md is this file.
 - representations.aird contains Sirius models.
  
