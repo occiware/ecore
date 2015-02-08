@@ -104,12 +104,15 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Extension">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="ValidKindScheme TermUnicity NoCycleInImportation"/>
+      <details key="constraints" value="ValidKindScheme TermUnicity NoCycleInImportation KindParentLocalOrImported MixinDependsLocalOrImported MixinAppliesLocalOrImported"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
       <details key="ValidKindScheme" value="kinds->forAll(k | k.scheme = self.scheme)"/>
       <details key="TermUnicity" value="kinds.term->intersection(mixins.term)->isEmpty()"/>
       <details key="NoCycleInImportation" value="import->closure(import)->excludes(self)"/>
+      <details key="KindParentLocalOrImported" value="kinds->forAll(parent &lt;> null implies let parentExtension = parent.oclContainer() in parentExtension = self or import->includes(parentExtension))"/>
+      <details key="MixinDependsLocalOrImported" value="mixins->forAll(depends->forAll(let extension = oclContainer() in extension = self or import->includes(extension)))"/>
+      <details key="MixinAppliesLocalOrImported" value="mixins->forAll(applies->forAll(let extension = oclContainer() in extension = self or import->includes(extension)))"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="scheme" lowerBound="1"

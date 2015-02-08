@@ -2,6 +2,15 @@ import 'OCCI.ecore'
 
 package OCCI
 
+context Kind
+def : extension: Extension = oclContainer().oclAsType(Extension)
+
+context Mixin
+def : extension: Extension = oclContainer().oclAsType(Extension)
+
+context Action
+def : ownerCategory: Category = oclContainer().oclAsType(Category)
+
 --
 -- Constraints related to Category.term.
 --
@@ -24,28 +33,25 @@ inv SchemeEndsWithSharp('The scheme "' + scheme + '" must end with a sharp'):
   scheme.substring(scheme.size(),scheme.size()) = '#'
   
 context Kind
-inv CorrectScheme: scheme = oclContainer().oclAsType(Extension).scheme
+inv CorrectScheme: scheme = extension.scheme
 
 context Mixin
-inv CorrectScheme: let ownerScheme = oclContainer().oclAsType(Extension).scheme in scheme.substring(1,ownerScheme.size()-1) = ownerScheme.substring(1,ownerScheme.size()-1)
+inv CorrectScheme: scheme.substring(1,extension.scheme.size()-1) = extension.scheme.substring(1,extension.scheme.size()-1)
 
 context Action
-inv CorrectScheme: let ownerCategory = oclContainer().oclAsType(Category) in scheme = ownerCategory.scheme.substring(1,ownerCategory.scheme.size()-1) + '/' + ownerCategory.term + '/action#'
+inv CorrectScheme: scheme = ownerCategory.scheme.substring(1,ownerCategory.scheme.size()-1) + '/' + ownerCategory.term + '/action#'
 
 -- Next invariant is not required because already covered by the invariant Kind.CorrectScheme.
 context Extension
 inv ValidKindScheme: kinds->forAll(k | k.scheme = scheme)
 
 --
--- Constraints related to attribute name unicity.
+-- Constraints related to Attribute.name unicity.
 --
 
 context Category
 inv AttributeNameUnicity('Some attributes have the same name'):
   attributes->forAll(a1, a2 | a1 <> a2 implies a1.name <> a2.name)
-
-context Entity
-inv AttributeNameUnicity: attributes->forAll(a1, a2 | a1 <> a2 implies a1.name <> a2.name)
 
 --
 -- Constraints related to the classification type system.
@@ -57,6 +63,12 @@ inv NoCyclicInheritence: parent->closure(parent)->excludes(self)
 context Mixin
 inv NoCyclicInheritence: depends->closure(depends)->excludes(self)
 
+--
+-- Constraints related to Attribute.name unicity.
+--
+
+context Entity
+inv AttributeNameUnicity: attributes->forAll(a1, a2 | a1 <> a2 implies a1.name <> a2.name)
 
 --
 -- Constraints related to the Extension importation.
@@ -64,6 +76,9 @@ inv NoCyclicInheritence: depends->closure(depends)->excludes(self)
 
 context Extension
 inv NoCycleInImportation: import->closure(import)->excludes(self)
+inv KindParentLocalOrImported: kinds->forAll(parent <> null implies parent.extension = self or import->includes(parent.extension))
+inv MixinDependsLocalOrImported: mixins->forAll(depends->forAll(extension = self or import->includes(extension)))
+inv MixinAppliesLocalOrImported: mixins->forAll(applies->forAll(extension = self or import->includes(extension)))
 
 --
 -- Other constraints.

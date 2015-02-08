@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="ASCII"?>
+<OCCI:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:OCCI="http://schemas.ogf.org/occi" xsi:schemaLocation="http://schemas.ogf.org/occi ../OCCI.ecore" name="KindParentNotImported" scheme="scheme#">
+  <kinds term="K" scheme="scheme#">
+    <parent href="../extensions/Core.xmi#//@kinds[term='resource']"/>
+  </kinds>
+</OCCI:Extension>
