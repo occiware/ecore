@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<OCCI:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:OCCI="http://schemas.ogf.org/occi" name="InvalidKindScheme" scheme="scheme1#">
+<OCCI:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:OCCI="http://schemas.ogf.org/occi" xsi:schemaLocation="http://schemas.ogf.org/occi ../OCCI.ecore" name="InvalidKindScheme" scheme="scheme1#">
   <kinds term="K1" scheme="scheme1#"/>
   <kinds term="K2" scheme="scheme2#"/>
   <kinds term="K3" scheme="scheme3#"/>
