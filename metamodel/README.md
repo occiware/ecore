@@ -5,6 +5,7 @@ EMF metamodel for OCCI and some OCCI extensions.
   - Infrastructure.xmi contains the OCCI Infrastructure extension.
   - Monitoring.xmi contains the OCCI Monitoring extension.
   - Docker.xmi contains an OCCI extension for Docker (WIP).
+  - OCNI.xmi contains an OCCI extension for Network as a Service (WIP).
 - images/ contains Sirius screenshots.
 - tests/ contains OCCI models that violate OCL constraints defined in OCCI.ecore.
 - OCCI.ecore is the EMF metamodel for OCCI Core.
