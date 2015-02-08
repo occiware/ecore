@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ASCII"?>
+<OCCI:Extension
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:OCCI="http://schemas.ogf.org/occi"
+    xsi:schemaLocation="http://schemas.ogf.org/occi ../OCCI.ecore"
+    name="CategorySchemeNotEndsWithSharp"
+    scheme="scheme">
+  <kinds term="K"
+      scheme="scheme"/>
+  <kinds term="M"
+      scheme="scheme"/>
+</OCCI:Extension>
