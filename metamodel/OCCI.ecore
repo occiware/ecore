@@ -34,12 +34,12 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Kind" eSuperTypes="#//Category">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="ActionTermUnicity CorrectScheme NoCyclicInheritence AttributeNotAlreadyDefinedInParent"/>
+      <details key="constraints" value="ActionTermUnicity CorrectScheme NoCyclicInheritance AttributeNotAlreadyDefinedInParent"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
       <details key="ActionTermUnicity" value="actions->forAll(a1, a2 | a1 &lt;> a2 implies a1.term &lt;> a2.term)"/>
       <details key="CorrectScheme" value="scheme = self.oclContainer().oclAsType(Extension).scheme"/>
-      <details key="NoCyclicInheritence" value="parent->closure(parent)->excludes(self)"/>
+      <details key="NoCyclicInheritance" value="parent->closure(parent)->excludes(self)"/>
       <details key="AttributeNotAlreadyDefinedInParent" value="attributes.name->excludesAll((parent->closure(parent)).attributes.name)"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parent" eType="#//Kind"/>
@@ -58,12 +58,12 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Mixin" eSuperTypes="#//Category">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="ActionTermUnicity CorrectScheme NoCyclicInheritence"/>
+      <details key="constraints" value="ActionTermUnicity CorrectScheme NoCyclicInheritance"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
       <details key="ActionTermUnicity" value="actions->forAll(a1, a2 | a1 &lt;> a2 implies a1.term &lt;> a2.term)"/>
       <details key="CorrectScheme" value="let ownerScheme = self.oclContainer().oclAsType(Extension).scheme in scheme.substring(1,ownerScheme.size()-1) = ownerScheme.substring(1,ownerScheme.size()-1)"/>
-      <details key="NoCyclicInheritence" value="depends->closure(depends)->excludes(self)"/>
+      <details key="NoCyclicInheritance" value="depends->closure(depends)->excludes(self)"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="actions" upperBound="-1"
         eType="#//Action" containment="true"/>

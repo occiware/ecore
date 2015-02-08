@@ -16,13 +16,19 @@ def : ownerCategory: Category = oclContainer().oclAsType(Category)
 --
 
 context Extension
-inv TermUnicity: kinds.term->intersection(mixins.term)->isEmpty()
+inv TermUnicity:
+  kinds.term->intersection(mixins.term)->isEmpty()
+  -- see tests/NoTermUnicity.xmi
 
 context Kind
-inv ActionTermUnicity: actions->forAll(a1, a2 | a1 <> a2 implies a1.term <> a2.term)
+inv ActionTermUnicity:
+  actions->forAll(a1, a2 | a1 <> a2 implies a1.term <> a2.term)
+  -- see tests/NoKindActionTermUnicity.xmi
 
 context Mixin
-inv ActionTermUnicity: actions->forAll(a1, a2 | a1 <> a2 implies a1.term <> a2.term)
+inv ActionTermUnicity:
+  actions->forAll(a1, a2 | a1 <> a2 implies a1.term <> a2.term)
+  -- see tests/NoMixinActionTermUnicity.xmi
 
 --
 -- Constraints related to Category.scheme.
@@ -31,19 +37,37 @@ inv ActionTermUnicity: actions->forAll(a1, a2 | a1 <> a2 implies a1.term <> a2.t
 context Category
 inv SchemeEndsWithSharp('The scheme "' + scheme + '" must end with a sharp'):
   scheme.substring(scheme.size(),scheme.size()) = '#'
+  -- see tests/CategorySchemeNotEndsWithSharp.xmi
   
 context Kind
-inv CorrectScheme: scheme = extension.scheme
+inv CorrectScheme:
+  scheme = extension.scheme
+  -- see tests/InvalidKindScheme.xmi
 
 context Mixin
-inv CorrectScheme: scheme.substring(1,extension.scheme.size()-1) = extension.scheme.substring(1,extension.scheme.size()-1)
+inv CorrectScheme:
+  scheme.substring(1,extension.scheme.size()-1) = extension.scheme.substring(1,extension.scheme.size()-1)
+  -- see tests/InvalidMixinScheme.xmi
 
 context Action
-inv CorrectScheme: scheme = ownerCategory.scheme.substring(1,ownerCategory.scheme.size()-1) + '/' + ownerCategory.term + '/action#'
+inv CorrectScheme:
+  scheme = ownerCategory.scheme.substring(1,ownerCategory.scheme.size()-1) + '/' + ownerCategory.term + '/action#'
+  -- see tests/IncorrectKindActionScheme.xmi
+  -- see tests/IncorrectMixinActionScheme.xmi
 
 -- Next invariant is not required because already covered by the invariant Kind.CorrectScheme.
 context Extension
-inv ValidKindScheme: kinds->forAll(k | k.scheme = scheme)
+inv ValidKindScheme:
+  kinds->forAll(k | k.scheme = scheme)
+  -- see tests/InvalidKindScheme.xmi
+
+--
+-- Unicity of Category
+--
+
+-- context Category
+-- inv SchemeTermUnicity: Category->forAll(c1, c2 | c1 <> c2 implies c1.scheme <> c2.scheme and c1.term <> c2.term)
+-- TODO: a test case
 
 --
 -- Constraints related to Attribute.name unicity.
@@ -52,34 +76,55 @@ inv ValidKindScheme: kinds->forAll(k | k.scheme = scheme)
 context Category
 inv AttributeNameUnicity('Some attributes have the same name'):
   attributes->forAll(a1, a2 | a1 <> a2 implies a1.name <> a2.name)
+  -- see tests/NoAttributeNameUnicity.xmi
 
 --
 -- Constraints related to the classification type system.
 --
 
 context Kind
-inv NoCyclicInheritence: parent->closure(parent)->excludes(self)
-inv AttributeNotAlreadyDefinedInParent: attributes.name->excludesAll((parent->closure(parent)).attributes.name)
+inv NoCyclicInheritance: 
+  parent->closure(parent)->excludes(self)
+  -- see tests/InvalidKindInheritance.xmi
+
+inv AttributeNotAlreadyDefinedInParent:
+  attributes.name->excludesAll((parent->closure(parent)).attributes.name)
+  -- see tests/KindAttributeAlreadyDefined.xmi
 
 context Mixin
-inv NoCyclicInheritence: depends->closure(depends)->excludes(self)
+inv NoCyclicInheritance:
+  depends->closure(depends)->excludes(self)
+  -- see tests/InvalidMixinInheritance.xmi
 
 --
 -- Constraints related to Attribute.name unicity.
 --
 
 context Entity
-inv AttributeNameUnicity: attributes->forAll(a1, a2 | a1 <> a2 implies a1.name <> a2.name)
+inv AttributeNameUnicity:
+  attributes->forAll(a1, a2 | a1 <> a2 implies a1.name <> a2.name)
+  -- TODO: a test case
 
 --
 -- Constraints related to the Extension importation.
 --
 
 context Extension
-inv NoCycleInImportation: import->closure(import)->excludes(self)
-inv KindParentLocalOrImported: kinds->forAll(parent <> null implies parent.extension = self or import->includes(parent.extension))
-inv MixinDependsLocalOrImported: mixins->forAll(depends->forAll(extension = self or import->includes(extension)))
-inv MixinAppliesLocalOrImported: mixins->forAll(applies->forAll(extension = self or import->includes(extension)))
+inv NoCycleInImportation:
+  import->closure(import)->excludes(self)
+  -- see tests/CycleInImportation.xmi
+
+inv KindParentLocalOrImported:
+  kinds->forAll(parent <> null implies parent.extension = self or import->includes(parent.extension))
+  -- see tests/KindParentNotImported.xmi
+
+inv MixinDependsLocalOrImported:
+  mixins->forAll(depends->forAll(extension = self or import->includes(extension)))
+  -- see tests/MixinDependsNotImported.xmi
+
+inv MixinAppliesLocalOrImported:
+  mixins->forAll(applies->forAll(extension = self or import->includes(extension)))
+  -- see tests/MixinAppliesNotImported.xmi
 
 --
 -- Other constraints.
@@ -90,6 +135,7 @@ inv MixinAppliesLocalOrImported: mixins->forAll(applies->forAll(extension = self
 -- inv DefaultMustBeSetWhenRequiredIsTrue: required = true and mutable = false implies default <> null
 
 endpackage
+
 /*
 
 pred sameIdentity[c1: Category, c2 : Category] {
@@ -102,7 +148,6 @@ sig Kind extends Category {
   entities: set Entity
 } {
   entity in this.*@parent
-  no attributes.name & this.^@parent.@attributes.name
   no p : this.^@parent | p.sameIdentity[this]
   no disj e1, e2 : entities | e1.id = e2.id
 }
