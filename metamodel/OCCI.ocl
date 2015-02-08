@@ -62,14 +62,6 @@ inv ValidKindScheme:
   -- see tests/InvalidKindScheme.xmi
 
 --
--- Unicity of Category
---
-
--- context Category
--- inv SchemeTermUnicity: Category->forAll(c1, c2 | c1 <> c2 implies c1.scheme <> c2.scheme and c1.term <> c2.term)
--- TODO: a test case
-
---
 -- Constraints related to Attribute.name unicity.
 --
 
@@ -129,6 +121,14 @@ inv MixinAppliesLocalOrImported:
 --
 -- Other constraints.
 --
+
+--
+-- Unicity of Category
+--
+
+-- context Category
+-- inv SchemeTermUnicity: Category->forAll(c1, c2 | c1 <> c2 implies c1.scheme <> c2.scheme and c1.term <> c2.term)
+-- TODO: Need a test case
 
 -- context Attribute
 -- TODO: Is it needed?
