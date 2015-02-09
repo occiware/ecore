@@ -4,7 +4,7 @@
   <models xmi:type="OCCI:Extension" href="extensions/Core.xmi#/"/>
   <models xmi:type="ecore:EPackage" href="http://www.eclipse.org/emf/2002/Ecore#/"/>
   <models xmi:type="ecore:EPackage" href="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#/"/>
-  <models xmi:type="OCCI:Extension" href="tests/CORE.xmi#/"/>
+  <models xmi:type="OCCI:Configuration" href="tests/ResourceWithIncorrectMixin.xmi#/"/>
   <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_Ewb9UKxvEeSpd9YKQOoEtg" initialized="true">
     <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_Sh6tEKunEeSRUa-WyK993Q" name="OCCI class diagram">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_SiriEKunEeSRUa-WyK993Q" source="GMF_DIAGRAMS">

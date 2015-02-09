@@ -110,6 +110,10 @@ inv IdUnicity:
   Entity.allInstances()->forAll(e1, e2 | e1 <> e2 implies e1.id <> e2.id)
   -- see tests/NoUniqueEntityId.xmi
 
+inv MixinAppliesCompatibleWithKind:
+   mixins.applies->exists(k | kind->closure(parent)->includes(k))
+   -- see tests/ResourceWithIncorrectMixin.xmi
+
 --
 -- Constraints related to Attribute.name unicity.
 --

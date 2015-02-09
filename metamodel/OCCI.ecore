@@ -78,11 +78,12 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Entity" abstract="true">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="IdUnicity AttributeNameUnicity"/>
+      <details key="constraints" value="IdUnicity AttributeNameUnicity MixinAppliesCompatibleWithKind"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
       <details key="IdUnicity" value="Entity.allInstances()->forAll(e1, e2 | e1 &lt;> e2 implies e1.id &lt;> e2.id)"/>
       <details key="AttributeNameUnicity" value="attributes->forAll(a1, a2 | a1 &lt;> a2 implies a1.name &lt;> a2.name)"/>
+      <details key="MixinAppliesCompatibleWithKind" value="mixins.applies->exists(k | kind->closure(parent)->includes(k))"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="#//URI"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="kind" lowerBound="1" eType="#//Kind"

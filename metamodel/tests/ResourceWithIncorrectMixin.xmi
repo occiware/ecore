@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ASCII"?>
+<OCCI:Configuration
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:OCCI="http://schemas.ogf.org/occi"
+    xsi:schemaLocation="http://schemas.ogf.org/occi ../OCCI.ecore">
+  <use href="INFRASTRUCTURE.xmi#/"/>
+  <resources
+      id="r1">
+    <kind href="INFRASTRUCTURE.xmi#//@kinds[term='network']"/>
+    <mixins
+        href="INFRASTRUCTURE.xmi#//@mixins[term='os_tpl']"/>
+  </resources>
+  <resources
+      id="r2">
+    <kind href="INFRASTRUCTURE.xmi#//@kinds[term='compute']"/>
+    <mixins
+        href="INFRASTRUCTURE.xmi#//@mixins[term='os_tpl']"/>
+  </resources>
+</OCCI:Configuration>
