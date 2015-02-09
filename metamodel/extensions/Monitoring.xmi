@@ -3,31 +3,31 @@
   <import href="Core.xmi#/"/>
   <kinds term="sensor" scheme="http://schemas.ogf.org/occi/monitoring#" title="Sensor Resource">
     <attributes name="occi.sensor.period" mutable="true" required="true" description="Sensing period">
-      <type href="../OCCI.ecore#//integer"/>
+      <type href="../OCCI.ecore#//Number"/>
     </attributes>
     <attributes name="occi.sensor.periodspec" mutable="true" description="Period spec">
-      <type href="../OCCI.ecore#//string"/>
+      <type href="../OCCI.ecore#//String"/>
     </attributes>
     <attributes name="occi.sensor.timebase" required="true" description="Time base">
-      <type href="../OCCI.ecore#//integer"/>
+      <type href="../OCCI.ecore#//Number"/>
     </attributes>
     <attributes name="occi.sensor.timestart" mutable="true" required="true" description="Time start">
-      <type href="../OCCI.ecore#//integer"/>
+      <type href="../OCCI.ecore#//Number"/>
     </attributes>
     <attributes name="occi.sensor.timestop" mutable="true" required="true" description="Time stop">
-      <type href="../OCCI.ecore#//integer"/>
+      <type href="../OCCI.ecore#//Number"/>
     </attributes>
     <attributes name="occi.sensor.timespec" mutable="true" description="Time spec">
-      <type href="../OCCI.ecore#//string"/>
+      <type href="../OCCI.ecore#//String"/>
     </attributes>
     <parent href="Core.xmi#//@kinds[term='resource']"/>
   </kinds>
   <kinds term="collector" scheme="http://schemas.ogf.org/occi/monitoring#" title="Collector Link">
     <attributes name="occi.collector.period" mutable="true" required="true" description="Collector period">
-      <type href="../OCCI.ecore#//integer"/>
+      <type href="../OCCI.ecore#//Number"/>
     </attributes>
     <attributes name="occi.collector.periodspec" mutable="true" description="Period spec">
-      <type href="../OCCI.ecore#//string"/>
+      <type href="../OCCI.ecore#//String"/>
     </attributes>
     <parent href="Core.xmi#//@kinds[term='link']"/>
   </kinds>
