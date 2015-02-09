@@ -59,12 +59,13 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Mixin" eSuperTypes="#//Category">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="ActionTermUnicity CorrectScheme NoCyclicInheritance"/>
+      <details key="constraints" value="ActionTermUnicity CorrectScheme NoCyclicInheritance AttributeNotAlreadyDefinedInDepends"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
       <details key="ActionTermUnicity" value="actions->forAll(a1, a2 | a1 &lt;> a2 implies a1.term &lt;> a2.term)"/>
       <details key="CorrectScheme" value="let ownerScheme = self.oclContainer().oclAsType(Extension).scheme in scheme.substring(1,ownerScheme.size()-1) = ownerScheme.substring(1,ownerScheme.size()-1)"/>
       <details key="NoCyclicInheritance" value="depends->closure(depends)->excludes(self)"/>
+      <details key="AttributeNotAlreadyDefinedInDepends" value="attributes.name->excludesAll((depends->closure(depends)).attributes.name)"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="actions" upperBound="-1"
         eType="#//Action" containment="true"/>

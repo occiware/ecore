@@ -97,6 +97,10 @@ inv NoCyclicInheritance:
   depends->closure(depends)->excludes(self)
   -- see tests/InvalidMixinInheritance.xmi
 
+inv AttributeNotAlreadyDefinedInDepends:
+   attributes.name->excludesAll((depends->closure(depends)).attributes.name)
+   -- see tests/MixinAttributeAlreadyDefinedInDepends
+
 --
 -- Unicity of Entity.
 --
