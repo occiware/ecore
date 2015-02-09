@@ -4,6 +4,6 @@
     <kind href="CORE.xmi#//@kinds[term='resource']"/>
   </resources>
   <resources id="r1">
-    <kind href="CORE.xmi#//@kinds[term='entity']"/>
+    <kind href="CORE.xmi#//@kinds[term='resource']"/>
   </resources>
 </OCCI:Configuration>
