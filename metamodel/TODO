@@ -1,10 +1,8 @@
 For OCCI Metamodel:
 - Add more OCL constraints to check
-  - unicity of entity id
   - unicity of importation
   - an action of a kind not already defined in parent
   - an action of a mixin not already defined in depends
-  - mixin attribute redefining an attribute of depends mixins
   - ...
 - Must Attribute refer a EDataType (currently what it is in OCCI.ecore or own it's own EDataType?
 - Should Extension and Category contain OCL constraints to check consistency?
