@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:OCCI="http://schemas.ogf.org/occi" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://schemas.ogf.org/occi OCCI.ecore http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_EvwA0KxvEeSpd9YKQOoEtg" selectedViews="_Ewb9UKxvEeSpd9YKQOoEtg _ebsw4KyLEeSYbdt1fysO1A" version="8.1.1">
   <models xmi:type="ecore:EPackage" href="OCCI.ecore#/"/>
+  <models xmi:type="OCCI:Extension" href="extensions/Core.xmi#/"/>
   <models xmi:type="ecore:EPackage" href="http://www.eclipse.org/emf/2002/Ecore#/"/>
-  <models xmi:type="OCCI:Configuration" href="tests/NoUniqueEntityId.xmi#/"/>
   <models xmi:type="ecore:EPackage" href="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#/"/>
+  <models xmi:type="OCCI:Extension" href="tests/CORE.xmi#/"/>
   <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_Ewb9UKxvEeSpd9YKQOoEtg" initialized="true">
     <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_Sh6tEKunEeSRUa-WyK993Q" name="OCCI class diagram">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_SiriEKunEeSRUa-WyK993Q" source="GMF_DIAGRAMS">
@@ -1842,6 +1843,7 @@
         </data>
       </ownedAnnotationEntries>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_V_jW8K4rEeSCdO24YLjfrQ" name="entity" incomingEdges="_V_qEoK4rEeSCdO24YLjfrQ _V_qrtK4rEeSCdO24YLjfrQ">
+        <target xmi:type="OCCI:Kind" href="extensions/Core.xmi#//@kinds[term='entity']"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1854,6 +1856,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_V_lzMK4rEeSCdO24YLjfrQ" name="occi.core.title: string">
+          <target xmi:type="OCCI:Attribute" href="extensions/Core.xmi#//@kinds[term='entity']/@attributes.0"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_V_noYK4rEeSCdO24YLjfrQ" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_V_noYa4rEeSCdO24YLjfrQ"/>
             <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@style"/>
@@ -1861,9 +1864,7 @@
             <color xmi:type="viewpoint:RGBValues" xmi:id="_V_noY64rEeSCdO24YLjfrQ" red="136" green="136" blue="136"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
-          <target xmi:type="OCCI:Attribute" href="extensions/Core.xmi#//@kinds[term='entity']/@attributes.0"/>
         </ownedElements>
-        <target xmi:type="OCCI:Kind" href="extensions/Core.xmi#//@kinds[term='entity']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_V_klEK4rEeSCdO24YLjfrQ" name="resource" outgoingEdges="_V_qEoK4rEeSCdO24YLjfrQ">
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
@@ -2438,6 +2439,7 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_kecCYK4rEeSCdO24YLjfrQ" name="up()">
+          <target xmi:type="OCCI:Action" href="extensions/Infrastructure.xmi#//@kinds[term='network']/@actions.0"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_kedQgK4rEeSCdO24YLjfrQ" labelSize="10" labelAlignment="LEFT" labelPosition="node">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_kedQga4rEeSCdO24YLjfrQ"/>
             <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Action']/@style"/>
@@ -2445,7 +2447,6 @@
             <color xmi:type="viewpoint:RGBValues" xmi:id="_kedQg64rEeSCdO24YLjfrQ" red="136" green="136" blue="136"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Action']"/>
-          <target xmi:type="OCCI:Action" href="extensions/Infrastructure.xmi#//@kinds[term='network']/@actions.0"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_kedQhK4rEeSCdO24YLjfrQ" name="down()">
           <ownedStyle xmi:type="diagram:Square" xmi:id="_keeeoK4rEeSCdO24YLjfrQ" labelSize="10" labelAlignment="LEFT" labelPosition="node">
@@ -2717,6 +2718,7 @@
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_kfaSwK4rEeSCdO24YLjfrQ" name="ipnetwork" outgoingEdges="_kf1wkK4rEeSCdO24YLjfrQ">
+        <target xmi:type="OCCI:Mixin" href="extensions/Infrastructure.xmi#//@mixins[term='ipnetwork']"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -2755,7 +2757,6 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='Attribute']"/>
         </ownedElements>
-        <target xmi:type="OCCI:Mixin" href="extensions/Infrastructure.xmi#//@mixins[term='ipnetwork']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_kfa51a4rEeSCdO24YLjfrQ" name="ipnetworkinterface" outgoingEdges="_kf2XoK4rEeSCdO24YLjfrQ">
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
@@ -3246,6 +3247,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_K6gx-a5PEeSir-0-lyuU3w" name="occi.sensor.period: integer">
+          <semanticElements xmi:type="OCCI:Attribute" href="extensions/Monitoring.xmi#//@kinds[term='sensor']/@attributes.0"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_K6gx-q5PEeSir-0-lyuU3w" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_K6gx-65PEeSir-0-lyuU3w"/>
             <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@style"/>
@@ -3253,9 +3255,9 @@
             <color xmi:type="viewpoint:RGBValues" xmi:id="_K6gx_a5PEeSir-0-lyuU3w" red="136" green="136" blue="136"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
-          <semanticElements xmi:type="OCCI:Attribute" href="extensions/Monitoring.xmi#//@kinds[term='sensor']/@attributes.0"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_K6gx_q5PEeSir-0-lyuU3w" name="occi.sensor.periodspec: string">
+          <semanticElements xmi:type="OCCI:Attribute" href="extensions/Monitoring.xmi#//@kinds[term='sensor']/@attributes.1"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_K6gx_65PEeSir-0-lyuU3w" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_K6gyAK5PEeSir-0-lyuU3w"/>
             <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@style"/>
@@ -3263,9 +3265,9 @@
             <color xmi:type="viewpoint:RGBValues" xmi:id="_K6gyAq5PEeSir-0-lyuU3w" red="136" green="136" blue="136"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
-          <semanticElements xmi:type="OCCI:Attribute" href="extensions/Monitoring.xmi#//@kinds[term='sensor']/@attributes.1"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_K6gyA65PEeSir-0-lyuU3w" name="occi.sensor.timebase: integer">
+          <semanticElements xmi:type="OCCI:Attribute" href="extensions/Monitoring.xmi#//@kinds[term='sensor']/@attributes.2"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_K6gyBK5PEeSir-0-lyuU3w" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_K6gyBa5PEeSir-0-lyuU3w"/>
             <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@style"/>
@@ -3273,9 +3275,9 @@
             <color xmi:type="viewpoint:RGBValues" xmi:id="_K6gyB65PEeSir-0-lyuU3w" red="136" green="136" blue="136"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
-          <semanticElements xmi:type="OCCI:Attribute" href="extensions/Monitoring.xmi#//@kinds[term='sensor']/@attributes.2"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_K6gyCK5PEeSir-0-lyuU3w" name="occi.sensor.timestart: integer">
+          <semanticElements xmi:type="OCCI:Attribute" href="extensions/Monitoring.xmi#//@kinds[term='sensor']/@attributes.3"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_K6hY4K5PEeSir-0-lyuU3w" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_K6hY4a5PEeSir-0-lyuU3w"/>
             <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@style"/>
@@ -3283,9 +3285,9 @@
             <color xmi:type="viewpoint:RGBValues" xmi:id="_K6hY465PEeSir-0-lyuU3w" red="136" green="136" blue="136"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
-          <semanticElements xmi:type="OCCI:Attribute" href="extensions/Monitoring.xmi#//@kinds[term='sensor']/@attributes.3"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_K6hY5K5PEeSir-0-lyuU3w" name="occi.sensor.timestop: integer">
+          <semanticElements xmi:type="OCCI:Attribute" href="extensions/Monitoring.xmi#//@kinds[term='sensor']/@attributes.4"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_K6hY5a5PEeSir-0-lyuU3w" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_K6hY5q5PEeSir-0-lyuU3w"/>
             <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@style"/>
@@ -3293,9 +3295,9 @@
             <color xmi:type="viewpoint:RGBValues" xmi:id="_K6hY6K5PEeSir-0-lyuU3w" red="136" green="136" blue="136"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
-          <semanticElements xmi:type="OCCI:Attribute" href="extensions/Monitoring.xmi#//@kinds[term='sensor']/@attributes.4"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_K6hY6a5PEeSir-0-lyuU3w" name="occi.sensor.timespec: string">
+          <semanticElements xmi:type="OCCI:Attribute" href="extensions/Monitoring.xmi#//@kinds[term='sensor']/@attributes.5"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_K6hY6q5PEeSir-0-lyuU3w" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_K6hY665PEeSir-0-lyuU3w"/>
             <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@style"/>
@@ -3303,7 +3305,6 @@
             <color xmi:type="viewpoint:RGBValues" xmi:id="_K6hY7a5PEeSir-0-lyuU3w" red="136" green="136" blue="136"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
-          <semanticElements xmi:type="OCCI:Attribute" href="extensions/Monitoring.xmi#//@kinds[term='sensor']/@attributes.5"/>
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_K6hY7q5PEeSir-0-lyuU3w" name="collector" outgoingEdges="_K6hZH65PEeSir-0-lyuU3w" incomingEdges="_K6hZJK5PEeSir-0-lyuU3w">
@@ -3319,6 +3320,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_K6hY9K5PEeSir-0-lyuU3w" name="occi.collector.period: integer">
+          <semanticElements xmi:type="OCCI:Attribute" href="extensions/Monitoring.xmi#//@kinds[term='collector']/@attributes.0"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_K6hY9a5PEeSir-0-lyuU3w" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_K6hY9q5PEeSir-0-lyuU3w"/>
             <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@style"/>
@@ -3326,9 +3328,9 @@
             <color xmi:type="viewpoint:RGBValues" xmi:id="_K6hY-K5PEeSir-0-lyuU3w" red="136" green="136" blue="136"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
-          <semanticElements xmi:type="OCCI:Attribute" href="extensions/Monitoring.xmi#//@kinds[term='collector']/@attributes.0"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_K6hY-a5PEeSir-0-lyuU3w" name="occi.collector.periodspec: string">
+          <semanticElements xmi:type="OCCI:Attribute" href="extensions/Monitoring.xmi#//@kinds[term='collector']/@attributes.1"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_K6hY-q5PEeSir-0-lyuU3w" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_K6hY-65PEeSir-0-lyuU3w"/>
             <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@style"/>
@@ -3336,7 +3338,6 @@
             <color xmi:type="viewpoint:RGBValues" xmi:id="_K6hY_a5PEeSir-0-lyuU3w" red="136" green="136" blue="136"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
-          <semanticElements xmi:type="OCCI:Attribute" href="extensions/Monitoring.xmi#//@kinds[term='collector']/@attributes.1"/>
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_K6hY_q5PEeSir-0-lyuU3w" name="metric" outgoingEdges="_K6hZJK5PEeSir-0-lyuU3w">
@@ -3399,6 +3400,7 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_K6hZGq5PEeSir-0-lyuU3w" sourceNode="_K6gx865PEeSir-0-lyuU3w" targetNode="_K6gx4q5PEeSir-0-lyuU3w">
+        <target xmi:type="OCCI:Kind" href="extensions/Monitoring.xmi#//@kinds[term='sensor']"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_K6hZG65PEeSir-0-lyuU3w" targetArrow="InputClosedArrow" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_K6hZHK5PEeSir-0-lyuU3w" red="136" green="136" blue="136"/>
@@ -3407,9 +3409,9 @@
           </centerLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']"/>
-        <target xmi:type="OCCI:Kind" href="extensions/Monitoring.xmi#//@kinds[term='sensor']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_K6hZH65PEeSir-0-lyuU3w" sourceNode="_K6hY7q5PEeSir-0-lyuU3w" targetNode="_K6gx7a5PEeSir-0-lyuU3w">
+        <target xmi:type="OCCI:Kind" href="extensions/Monitoring.xmi#//@kinds[term='collector']"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_K6hZIK5PEeSir-0-lyuU3w" targetArrow="InputClosedArrow" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_K6hZIa5PEeSir-0-lyuU3w" red="136" green="136" blue="136"/>
@@ -3418,9 +3420,9 @@
           </centerLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']"/>
-        <target xmi:type="OCCI:Kind" href="extensions/Monitoring.xmi#//@kinds[term='collector']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_K6hZJK5PEeSir-0-lyuU3w" sourceNode="_K6hY_q5PEeSir-0-lyuU3w" targetNode="_K6hY7q5PEeSir-0-lyuU3w">
+        <target xmi:type="OCCI:Mixin" href="extensions/Monitoring.xmi#//@mixins[term='metric']"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_K6hZJa5PEeSir-0-lyuU3w" lineStyle="dash" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='AppliesEdge']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_K6hZJq5PEeSir-0-lyuU3w" red="136" green="136" blue="136"/>
@@ -3429,9 +3431,9 @@
           </centerLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='AppliesEdge']"/>
-        <target xmi:type="OCCI:Mixin" href="extensions/Monitoring.xmi#//@mixins[term='metric']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_K6hZKa5PEeSir-0-lyuU3w" sourceNode="_K6hZBK5PEeSir-0-lyuU3w" targetNode="_K6gx865PEeSir-0-lyuU3w">
+        <target xmi:type="OCCI:Mixin" href="extensions/Monitoring.xmi#//@mixins[term='aggregator']"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_K6hZKq5PEeSir-0-lyuU3w" lineStyle="dash" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='AppliesEdge']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_K6hZK65PEeSir-0-lyuU3w" red="136" green="136" blue="136"/>
@@ -3440,9 +3442,9 @@
           </centerLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='AppliesEdge']"/>
-        <target xmi:type="OCCI:Mixin" href="extensions/Monitoring.xmi#//@mixins[term='aggregator']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_K6hZLq5PEeSir-0-lyuU3w" sourceNode="_K6hZCq5PEeSir-0-lyuU3w" targetNode="_K6gx865PEeSir-0-lyuU3w">
+        <target xmi:type="OCCI:Mixin" href="extensions/Monitoring.xmi#//@mixins[term='publisher']"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_K6hZL65PEeSir-0-lyuU3w" lineStyle="dash" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='AppliesEdge']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_K6hZMK5PEeSir-0-lyuU3w" red="136" green="136" blue="136"/>
@@ -3451,7 +3453,6 @@
           </centerLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='AppliesEdge']"/>
-        <target xmi:type="OCCI:Mixin" href="extensions/Monitoring.xmi#//@mixins[term='publisher']"/>
       </ownedDiagramElements>
       <description xmi:type="description_1:DiagramDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']"/>
       <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_K6hZM65PEeSir-0-lyuU3w"/>
@@ -3854,6 +3855,7 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_Yu0ZEa5bEeSosd2JO-TaLA" sourceNode="_Yu0Y465bEeSosd2JO-TaLA" targetNode="_Yu0Y0q5bEeSosd2JO-TaLA">
+        <target xmi:type="OCCI:Kind" href="extensions/Docker.xmi#//@kinds[term='container']"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_Yu0ZEq5bEeSosd2JO-TaLA" targetArrow="InputClosedArrow" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_Yu0ZE65bEeSosd2JO-TaLA" red="136" green="136" blue="136"/>
@@ -3862,9 +3864,9 @@
           </centerLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']"/>
-        <target xmi:type="OCCI:Kind" href="extensions/Docker.xmi#//@kinds[term='container']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_Yu0ZFq5bEeSosd2JO-TaLA" sourceNode="_Yu0Y6a5bEeSosd2JO-TaLA" targetNode="_Yu0Y0q5bEeSosd2JO-TaLA">
+        <target xmi:type="OCCI:Kind" href="extensions/Docker.xmi#//@kinds[term='service']"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_Yu0ZF65bEeSosd2JO-TaLA" targetArrow="InputClosedArrow" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_Yu0ZGK5bEeSosd2JO-TaLA" red="136" green="136" blue="136"/>
@@ -3873,9 +3875,9 @@
           </centerLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']"/>
-        <target xmi:type="OCCI:Kind" href="extensions/Docker.xmi#//@kinds[term='service']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_Yu0ZG65bEeSosd2JO-TaLA" sourceNode="_Yu0Y765bEeSosd2JO-TaLA" targetNode="_Yu0Y0q5bEeSosd2JO-TaLA">
+        <target xmi:type="OCCI:Kind" href="extensions/Docker.xmi#//@kinds[term='package']"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_Yu0ZHK5bEeSosd2JO-TaLA" targetArrow="InputClosedArrow" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_Yu0ZHa5bEeSosd2JO-TaLA" red="136" green="136" blue="136"/>
@@ -3884,9 +3886,9 @@
           </centerLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']"/>
-        <target xmi:type="OCCI:Kind" href="extensions/Docker.xmi#//@kinds[term='package']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_Yu0_0a5bEeSosd2JO-TaLA" sourceNode="_Yu0Y9a5bEeSosd2JO-TaLA" targetNode="_Yu0Y3a5bEeSosd2JO-TaLA">
+        <target xmi:type="OCCI:Kind" href="extensions/Docker.xmi#//@kinds[term='application']"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_Yu0_0q5bEeSosd2JO-TaLA" targetArrow="InputClosedArrow" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_Yu0_065bEeSosd2JO-TaLA" red="136" green="136" blue="136"/>
@@ -3895,9 +3897,9 @@
           </centerLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']"/>
-        <target xmi:type="OCCI:Kind" href="extensions/Docker.xmi#//@kinds[term='application']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_Yu0_1q5bEeSosd2JO-TaLA" sourceNode="_Yu0Y-65bEeSosd2JO-TaLA" targetNode="_Yu0Y3a5bEeSosd2JO-TaLA">
+        <target xmi:type="OCCI:Kind" href="extensions/Docker.xmi#//@kinds[term='depends']"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_Yu0_165bEeSosd2JO-TaLA" targetArrow="InputClosedArrow" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_Yu0_2K5bEeSosd2JO-TaLA" red="136" green="136" blue="136"/>
@@ -3906,9 +3908,9 @@
           </centerLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']"/>
-        <target xmi:type="OCCI:Kind" href="extensions/Docker.xmi#//@kinds[term='depends']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_Yu0_265bEeSosd2JO-TaLA" sourceNode="_Yu0ZAa5bEeSosd2JO-TaLA" targetNode="_Yu0Y3a5bEeSosd2JO-TaLA">
+        <target xmi:type="OCCI:Kind" href="extensions/Docker.xmi#//@kinds[term='conflicts']"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_Yu0_3K5bEeSosd2JO-TaLA" targetArrow="InputClosedArrow" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_Yu0_3a5bEeSosd2JO-TaLA" red="136" green="136" blue="136"/>
@@ -3917,7 +3919,6 @@
           </centerLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']"/>
-        <target xmi:type="OCCI:Kind" href="extensions/Docker.xmi#//@kinds[term='conflicts']"/>
       </ownedDiagramElements>
       <description xmi:type="description_1:DiagramDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']"/>
       <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_Yu0_4K5bEeSosd2JO-TaLA"/>
@@ -4701,6 +4702,7 @@
         </data>
       </ownedAnnotationEntries>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_J9UBQa_lEeSTkY1GXRIkXg" name="OCCI Core" incomingEdges="_J9VPZK_lEeSTkY1GXRIkXg">
+        <semanticElements xmi:type="OCCI:Extension" href="extensions/Core.xmi#/"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_J9UBQq_lEeSTkY1GXRIkXg" labelSize="12" labelFormat="bold">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UBQ6_lEeSTkY1GXRIkXg"/>
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='ImportContainer']/@style"/>
@@ -4710,6 +4712,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='ImportContainer']"/>
         <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_J9UBR6_lEeSTkY1GXRIkXg" name="entity" incomingEdges="_J9UpG6_lEeSTkY1GXRIkXg _J9UpIK_lEeSTkY1GXRIkXg">
+          <semanticElements xmi:type="OCCI:Kind" href="extensions/Core.xmi#//@kinds[term='entity']"/>
           <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_J9UBSK_lEeSTkY1GXRIkXg" labelSize="12" labelFormat="bold" showIcon="false">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UBSa_lEeSTkY1GXRIkXg"/>
             <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@style"/>
@@ -4719,6 +4722,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']"/>
           <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9UBTa_lEeSTkY1GXRIkXg" name="occi.core.title: string">
+            <semanticElements xmi:type="OCCI:Attribute" href="extensions/Core.xmi#//@kinds[term='entity']/@attributes.0"/>
             <ownedStyle xmi:type="diagram:Square" xmi:id="_J9UBTq_lEeSTkY1GXRIkXg" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
               <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UBT6_lEeSTkY1GXRIkXg"/>
               <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@style"/>
@@ -4726,9 +4730,7 @@
               <color xmi:type="viewpoint:RGBValues" xmi:id="_J9UBUa_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
-            <semanticElements xmi:type="OCCI:Attribute" href="extensions/Core.xmi#//@kinds[term='entity']/@attributes.0"/>
           </ownedElements>
-          <semanticElements xmi:type="OCCI:Kind" href="extensions/Core.xmi#//@kinds[term='entity']"/>
         </ownedDiagramElements>
         <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_J9UBUq_lEeSTkY1GXRIkXg" name="resource" outgoingEdges="_J9UpG6_lEeSTkY1GXRIkXg" incomingEdges="_J9UpJa_lEeSTkY1GXRIkXg _J9UpKq_lEeSTkY1GXRIkXg _J9UpL6_lEeSTkY1GXRIkXg _J9UphK_lEeSTkY1GXRIkXg">
           <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_J9UBU6_lEeSTkY1GXRIkXg" labelSize="12" labelFormat="bold" showIcon="false">
@@ -4740,6 +4742,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']"/>
           <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9UBWK_lEeSTkY1GXRIkXg" name="occi.core.summary: string">
+            <semanticElements xmi:type="OCCI:Attribute" href="extensions/Core.xmi#//@kinds[term='resource']/@attributes.0"/>
             <ownedStyle xmi:type="diagram:Square" xmi:id="_J9UBWa_lEeSTkY1GXRIkXg" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
               <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UBWq_lEeSTkY1GXRIkXg"/>
               <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@style"/>
@@ -4747,7 +4750,6 @@
               <color xmi:type="viewpoint:RGBValues" xmi:id="_J9UBXK_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
-            <semanticElements xmi:type="OCCI:Attribute" href="extensions/Core.xmi#//@kinds[term='resource']/@attributes.0"/>
           </ownedElements>
         </ownedDiagramElements>
         <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_J9UBXa_lEeSTkY1GXRIkXg" name="link" outgoingEdges="_J9UpIK_lEeSTkY1GXRIkXg" incomingEdges="_J9UpNK_lEeSTkY1GXRIkXg _J9UpOa_lEeSTkY1GXRIkXg _J9UpXK_lEeSTkY1GXRIkXg _J9UpYa_lEeSTkY1GXRIkXg _J9UpZq_lEeSTkY1GXRIkXg _J9Upa6_lEeSTkY1GXRIkXg">
@@ -4760,7 +4762,6 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']"/>
         </ownedDiagramElements>
-        <semanticElements xmi:type="OCCI:Extension" href="extensions/Core.xmi#/"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_J9UBY6_lEeSTkY1GXRIkXg" name="OCCI Infrastructure" outgoingEdges="_J9VPZK_lEeSTkY1GXRIkXg">
         <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_J9UBZK_lEeSTkY1GXRIkXg" labelSize="12" labelFormat="bold">
@@ -4781,6 +4782,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']"/>
           <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9UBb6_lEeSTkY1GXRIkXg" name="occi.network.vlan: integer4095">
+            <semanticElements xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@kinds[term='network']/@attributes.0"/>
             <ownedStyle xmi:type="diagram:Square" xmi:id="_J9UBcK_lEeSTkY1GXRIkXg" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
               <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UBca_lEeSTkY1GXRIkXg"/>
               <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@style"/>
@@ -4788,9 +4790,9 @@
               <color xmi:type="viewpoint:RGBValues" xmi:id="_J9UBc6_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
-            <semanticElements xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@kinds[term='network']/@attributes.0"/>
           </ownedElements>
           <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9UBdK_lEeSTkY1GXRIkXg" name="occi.network.label: Token">
+            <semanticElements xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@kinds[term='network']/@attributes.1"/>
             <ownedStyle xmi:type="diagram:Square" xmi:id="_J9UBda_lEeSTkY1GXRIkXg" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
               <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UBdq_lEeSTkY1GXRIkXg"/>
               <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@style"/>
@@ -4798,9 +4800,9 @@
               <color xmi:type="viewpoint:RGBValues" xmi:id="_J9UBeK_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
-            <semanticElements xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@kinds[term='network']/@attributes.1"/>
           </ownedElements>
           <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9UBea_lEeSTkY1GXRIkXg" name="occi.network.state: NetworkStatus">
+            <semanticElements xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@kinds[term='network']/@attributes.2"/>
             <ownedStyle xmi:type="diagram:Square" xmi:id="_J9UBeq_lEeSTkY1GXRIkXg" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
               <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UBe6_lEeSTkY1GXRIkXg"/>
               <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@style"/>
@@ -4808,9 +4810,9 @@
               <color xmi:type="viewpoint:RGBValues" xmi:id="_J9UBfa_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
-            <semanticElements xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@kinds[term='network']/@attributes.2"/>
           </ownedElements>
           <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9UBfq_lEeSTkY1GXRIkXg" name="up()">
+            <semanticElements xmi:type="OCCI:Action" href="extensions/Infrastructure.xmi#//@kinds[term='network']/@actions.0"/>
             <ownedStyle xmi:type="diagram:Square" xmi:id="_J9UBf6_lEeSTkY1GXRIkXg" labelSize="10" labelAlignment="LEFT" labelPosition="node">
               <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UBgK_lEeSTkY1GXRIkXg"/>
               <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Action']/@style"/>
@@ -4818,9 +4820,9 @@
               <color xmi:type="viewpoint:RGBValues" xmi:id="_J9UBgq_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Action']"/>
-            <semanticElements xmi:type="OCCI:Action" href="extensions/Infrastructure.xmi#//@kinds[term='network']/@actions.0"/>
           </ownedElements>
           <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9UBg6_lEeSTkY1GXRIkXg" name="down()">
+            <semanticElements xmi:type="OCCI:Action" href="extensions/Infrastructure.xmi#//@kinds[term='network']/@actions.1"/>
             <ownedStyle xmi:type="diagram:Square" xmi:id="_J9UBhK_lEeSTkY1GXRIkXg" labelSize="10" labelAlignment="LEFT" labelPosition="node">
               <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UBha_lEeSTkY1GXRIkXg"/>
               <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Action']/@style"/>
@@ -4828,7 +4830,6 @@
               <color xmi:type="viewpoint:RGBValues" xmi:id="_J9UBh6_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Action']"/>
-            <semanticElements xmi:type="OCCI:Action" href="extensions/Infrastructure.xmi#//@kinds[term='network']/@actions.1"/>
           </ownedElements>
         </ownedDiagramElements>
         <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_J9UBiK_lEeSTkY1GXRIkXg" name="compute" visible="false" outgoingEdges="_J9UpKq_lEeSTkY1GXRIkXg" incomingEdges="_J9Upf6_lEeSTkY1GXRIkXg">
@@ -4842,6 +4843,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']"/>
           <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9UBjq_lEeSTkY1GXRIkXg" name="occi.compute.architecture: Architecture" visible="false">
+            <semanticElements xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@kinds[term='compute']/@attributes.0"/>
             <ownedStyle xmi:type="diagram:Square" xmi:id="_J9UBj6_lEeSTkY1GXRIkXg" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
               <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UBkK_lEeSTkY1GXRIkXg"/>
               <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@style"/>
@@ -4849,9 +4851,9 @@
               <color xmi:type="viewpoint:RGBValues" xmi:id="_J9UBkq_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
-            <semanticElements xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@kinds[term='compute']/@attributes.0"/>
           </ownedElements>
           <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9UBk6_lEeSTkY1GXRIkXg" name="occi.compute.cores: integer" visible="false">
+            <semanticElements xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@kinds[term='compute']/@attributes.1"/>
             <ownedStyle xmi:type="diagram:Square" xmi:id="_J9UBlK_lEeSTkY1GXRIkXg" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
               <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UBla_lEeSTkY1GXRIkXg"/>
               <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@style"/>
@@ -4859,9 +4861,9 @@
               <color xmi:type="viewpoint:RGBValues" xmi:id="_J9UBl6_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
-            <semanticElements xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@kinds[term='compute']/@attributes.1"/>
           </ownedElements>
           <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9UBmK_lEeSTkY1GXRIkXg" name="occi.compute.hostname: string" visible="false">
+            <semanticElements xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@kinds[term='compute']/@attributes.2"/>
             <ownedStyle xmi:type="diagram:Square" xmi:id="_J9UBma_lEeSTkY1GXRIkXg" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
               <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UBmq_lEeSTkY1GXRIkXg"/>
               <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@style"/>
@@ -4869,9 +4871,9 @@
               <color xmi:type="viewpoint:RGBValues" xmi:id="_J9UBnK_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
-            <semanticElements xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@kinds[term='compute']/@attributes.2"/>
           </ownedElements>
           <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9UBna_lEeSTkY1GXRIkXg" name="occi.compute.speed: float" visible="false">
+            <semanticElements xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@kinds[term='compute']/@attributes.3"/>
             <ownedStyle xmi:type="diagram:Square" xmi:id="_J9UBnq_lEeSTkY1GXRIkXg" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
               <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UBn6_lEeSTkY1GXRIkXg"/>
               <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@style"/>
@@ -4879,9 +4881,9 @@
               <color xmi:type="viewpoint:RGBValues" xmi:id="_J9UBoa_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
-            <semanticElements xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@kinds[term='compute']/@attributes.3"/>
           </ownedElements>
           <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9UBoq_lEeSTkY1GXRIkXg" name="occi.compute.memory: float" visible="false">
+            <semanticElements xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@kinds[term='compute']/@attributes.4"/>
             <ownedStyle xmi:type="diagram:Square" xmi:id="_J9UBo6_lEeSTkY1GXRIkXg" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
               <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UBpK_lEeSTkY1GXRIkXg"/>
               <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@style"/>
@@ -4889,9 +4891,9 @@
               <color xmi:type="viewpoint:RGBValues" xmi:id="_J9UBpq_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
-            <semanticElements xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@kinds[term='compute']/@attributes.4"/>
           </ownedElements>
           <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9UBp6_lEeSTkY1GXRIkXg" name="occi.compute.state: ComputeStatus" visible="false">
+            <semanticElements xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@kinds[term='compute']/@attributes.5"/>
             <ownedStyle xmi:type="diagram:Square" xmi:id="_J9UBqK_lEeSTkY1GXRIkXg" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
               <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UBqa_lEeSTkY1GXRIkXg"/>
               <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@style"/>
@@ -4899,9 +4901,9 @@
               <color xmi:type="viewpoint:RGBValues" xmi:id="_J9UBq6_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
-            <semanticElements xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@kinds[term='compute']/@attributes.5"/>
           </ownedElements>
           <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9UBrK_lEeSTkY1GXRIkXg" name="start()" visible="false">
+            <semanticElements xmi:type="OCCI:Action" href="extensions/Infrastructure.xmi#//@kinds[term='compute']/@actions.0"/>
             <ownedStyle xmi:type="diagram:Square" xmi:id="_J9UBra_lEeSTkY1GXRIkXg" labelSize="10" labelAlignment="LEFT" labelPosition="node">
               <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UBrq_lEeSTkY1GXRIkXg"/>
               <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Action']/@style"/>
@@ -4909,9 +4911,9 @@
               <color xmi:type="viewpoint:RGBValues" xmi:id="_J9UBsK_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Action']"/>
-            <semanticElements xmi:type="OCCI:Action" href="extensions/Infrastructure.xmi#//@kinds[term='compute']/@actions.0"/>
           </ownedElements>
           <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9UBsa_lEeSTkY1GXRIkXg" name="stop()" visible="false">
+            <semanticElements xmi:type="OCCI:Action" href="extensions/Infrastructure.xmi#//@kinds[term='compute']/@actions.1"/>
             <ownedStyle xmi:type="diagram:Square" xmi:id="_J9UBsq_lEeSTkY1GXRIkXg" labelSize="10" labelAlignment="LEFT" labelPosition="node">
               <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UBs6_lEeSTkY1GXRIkXg"/>
               <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Action']/@style"/>
@@ -4919,9 +4921,9 @@
               <color xmi:type="viewpoint:RGBValues" xmi:id="_J9UBta_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Action']"/>
-            <semanticElements xmi:type="OCCI:Action" href="extensions/Infrastructure.xmi#//@kinds[term='compute']/@actions.1"/>
           </ownedElements>
           <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9UBtq_lEeSTkY1GXRIkXg" name="restart()" visible="false">
+            <semanticElements xmi:type="OCCI:Action" href="extensions/Infrastructure.xmi#//@kinds[term='compute']/@actions.2"/>
             <ownedStyle xmi:type="diagram:Square" xmi:id="_J9UBt6_lEeSTkY1GXRIkXg" labelSize="10" labelAlignment="LEFT" labelPosition="node">
               <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UBuK_lEeSTkY1GXRIkXg"/>
               <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Action']/@style"/>
@@ -4929,9 +4931,9 @@
               <color xmi:type="viewpoint:RGBValues" xmi:id="_J9UBuq_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Action']"/>
-            <semanticElements xmi:type="OCCI:Action" href="extensions/Infrastructure.xmi#//@kinds[term='compute']/@actions.2"/>
           </ownedElements>
           <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9UBu6_lEeSTkY1GXRIkXg" name="suspend()" visible="false">
+            <semanticElements xmi:type="OCCI:Action" href="extensions/Infrastructure.xmi#//@kinds[term='compute']/@actions.3"/>
             <ownedStyle xmi:type="diagram:Square" xmi:id="_J9UBvK_lEeSTkY1GXRIkXg" labelSize="10" labelAlignment="LEFT" labelPosition="node">
               <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UBva_lEeSTkY1GXRIkXg"/>
               <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Action']/@style"/>
@@ -4939,7 +4941,6 @@
               <color xmi:type="viewpoint:RGBValues" xmi:id="_J9UBv6_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Action']"/>
-            <semanticElements xmi:type="OCCI:Action" href="extensions/Infrastructure.xmi#//@kinds[term='compute']/@actions.3"/>
           </ownedElements>
         </ownedDiagramElements>
         <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_J9UBwK_lEeSTkY1GXRIkXg" name="storage" visible="false" outgoingEdges="_J9UpL6_lEeSTkY1GXRIkXg">
@@ -4953,6 +4954,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']"/>
           <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9UBxq_lEeSTkY1GXRIkXg" name="occi.storage.size: float" visible="false">
+            <semanticElements xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@kinds[term='storage']/@attributes.0"/>
             <ownedStyle xmi:type="diagram:Square" xmi:id="_J9UBx6_lEeSTkY1GXRIkXg" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
               <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UByK_lEeSTkY1GXRIkXg"/>
               <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@style"/>
@@ -4960,9 +4962,9 @@
               <color xmi:type="viewpoint:RGBValues" xmi:id="_J9UByq_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
-            <semanticElements xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@kinds[term='storage']/@attributes.0"/>
           </ownedElements>
           <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9UBy6_lEeSTkY1GXRIkXg" name="occi.storage.state: StorageStatus" visible="false">
+            <semanticElements xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@kinds[term='storage']/@attributes.1"/>
             <ownedStyle xmi:type="diagram:Square" xmi:id="_J9UBzK_lEeSTkY1GXRIkXg" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
               <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UBza_lEeSTkY1GXRIkXg"/>
               <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@style"/>
@@ -4970,9 +4972,9 @@
               <color xmi:type="viewpoint:RGBValues" xmi:id="_J9UBz6_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
-            <semanticElements xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@kinds[term='storage']/@attributes.1"/>
           </ownedElements>
           <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9UB0K_lEeSTkY1GXRIkXg" name="online()" visible="false">
+            <semanticElements xmi:type="OCCI:Action" href="extensions/Infrastructure.xmi#//@kinds[term='storage']/@actions.0"/>
             <ownedStyle xmi:type="diagram:Square" xmi:id="_J9UB0a_lEeSTkY1GXRIkXg" labelSize="10" labelAlignment="LEFT" labelPosition="node">
               <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UB0q_lEeSTkY1GXRIkXg"/>
               <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Action']/@style"/>
@@ -4980,9 +4982,9 @@
               <color xmi:type="viewpoint:RGBValues" xmi:id="_J9UB1K_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Action']"/>
-            <semanticElements xmi:type="OCCI:Action" href="extensions/Infrastructure.xmi#//@kinds[term='storage']/@actions.0"/>
           </ownedElements>
           <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9UB1a_lEeSTkY1GXRIkXg" name="offline()" visible="false">
+            <semanticElements xmi:type="OCCI:Action" href="extensions/Infrastructure.xmi#//@kinds[term='storage']/@actions.1"/>
             <ownedStyle xmi:type="diagram:Square" xmi:id="_J9UB1q_lEeSTkY1GXRIkXg" labelSize="10" labelAlignment="LEFT" labelPosition="node">
               <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UB16_lEeSTkY1GXRIkXg"/>
               <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Action']/@style"/>
@@ -4990,9 +4992,9 @@
               <color xmi:type="viewpoint:RGBValues" xmi:id="_J9UB2a_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Action']"/>
-            <semanticElements xmi:type="OCCI:Action" href="extensions/Infrastructure.xmi#//@kinds[term='storage']/@actions.1"/>
           </ownedElements>
           <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9UB2q_lEeSTkY1GXRIkXg" name="backup()" visible="false">
+            <semanticElements xmi:type="OCCI:Action" href="extensions/Infrastructure.xmi#//@kinds[term='storage']/@actions.2"/>
             <ownedStyle xmi:type="diagram:Square" xmi:id="_J9UB26_lEeSTkY1GXRIkXg" labelSize="10" labelAlignment="LEFT" labelPosition="node">
               <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UB3K_lEeSTkY1GXRIkXg"/>
               <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Action']/@style"/>
@@ -5000,9 +5002,9 @@
               <color xmi:type="viewpoint:RGBValues" xmi:id="_J9UB3q_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Action']"/>
-            <semanticElements xmi:type="OCCI:Action" href="extensions/Infrastructure.xmi#//@kinds[term='storage']/@actions.2"/>
           </ownedElements>
           <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9UB36_lEeSTkY1GXRIkXg" name="snapshot()" visible="false">
+            <semanticElements xmi:type="OCCI:Action" href="extensions/Infrastructure.xmi#//@kinds[term='storage']/@actions.3"/>
             <ownedStyle xmi:type="diagram:Square" xmi:id="_J9UB4K_lEeSTkY1GXRIkXg" labelSize="10" labelAlignment="LEFT" labelPosition="node">
               <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UB4a_lEeSTkY1GXRIkXg"/>
               <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Action']/@style"/>
@@ -5010,9 +5012,9 @@
               <color xmi:type="viewpoint:RGBValues" xmi:id="_J9UB46_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Action']"/>
-            <semanticElements xmi:type="OCCI:Action" href="extensions/Infrastructure.xmi#//@kinds[term='storage']/@actions.3"/>
           </ownedElements>
           <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9UB5K_lEeSTkY1GXRIkXg" name="resize()" visible="false">
+            <semanticElements xmi:type="OCCI:Action" href="extensions/Infrastructure.xmi#//@kinds[term='storage']/@actions.4"/>
             <ownedStyle xmi:type="diagram:Square" xmi:id="_J9UB5a_lEeSTkY1GXRIkXg" labelSize="10" labelAlignment="LEFT" labelPosition="node">
               <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UB5q_lEeSTkY1GXRIkXg"/>
               <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Action']/@style"/>
@@ -5020,7 +5022,6 @@
               <color xmi:type="viewpoint:RGBValues" xmi:id="_J9UB6K_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Action']"/>
-            <semanticElements xmi:type="OCCI:Action" href="extensions/Infrastructure.xmi#//@kinds[term='storage']/@actions.4"/>
           </ownedElements>
         </ownedDiagramElements>
         <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_J9UB6a_lEeSTkY1GXRIkXg" name="storagelink" visible="false" outgoingEdges="_J9UpNK_lEeSTkY1GXRIkXg">
@@ -5034,6 +5035,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']"/>
           <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9UB76_lEeSTkY1GXRIkXg" name="occi.storagelink.deviceid: string" visible="false">
+            <semanticElements xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@kinds[term='storagelink']/@attributes.0"/>
             <ownedStyle xmi:type="diagram:Square" xmi:id="_J9UB8K_lEeSTkY1GXRIkXg" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
               <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UB8a_lEeSTkY1GXRIkXg"/>
               <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@style"/>
@@ -5041,9 +5043,9 @@
               <color xmi:type="viewpoint:RGBValues" xmi:id="_J9UB86_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
-            <semanticElements xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@kinds[term='storagelink']/@attributes.0"/>
           </ownedElements>
           <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9UB9K_lEeSTkY1GXRIkXg" name="occi.storagelink.mountpoint: string" visible="false">
+            <semanticElements xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@kinds[term='storagelink']/@attributes.1"/>
             <ownedStyle xmi:type="diagram:Square" xmi:id="_J9UB9a_lEeSTkY1GXRIkXg" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
               <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UB9q_lEeSTkY1GXRIkXg"/>
               <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@style"/>
@@ -5051,9 +5053,9 @@
               <color xmi:type="viewpoint:RGBValues" xmi:id="_J9UB-K_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
-            <semanticElements xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@kinds[term='storagelink']/@attributes.1"/>
           </ownedElements>
           <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9UB-a_lEeSTkY1GXRIkXg" name="occi.storagelink.state: string" visible="false">
+            <semanticElements xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@kinds[term='storagelink']/@attributes.2"/>
             <ownedStyle xmi:type="diagram:Square" xmi:id="_J9UB-q_lEeSTkY1GXRIkXg" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
               <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UB-6_lEeSTkY1GXRIkXg"/>
               <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@style"/>
@@ -5061,7 +5063,6 @@
               <color xmi:type="viewpoint:RGBValues" xmi:id="_J9UB_a_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
-            <semanticElements xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@kinds[term='storagelink']/@attributes.2"/>
           </ownedElements>
         </ownedDiagramElements>
         <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_J9UB_q_lEeSTkY1GXRIkXg" name="networkinterface" outgoingEdges="_J9UpOa_lEeSTkY1GXRIkXg" incomingEdges="_J9UpTa_lEeSTkY1GXRIkXg _J9UpUq_lEeSTkY1GXRIkXg _J9UpcK_lEeSTkY1GXRIkXg _J9Upeq_lEeSTkY1GXRIkXg">
@@ -5074,6 +5075,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']"/>
           <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9UCBK_lEeSTkY1GXRIkXg" name="occi.networkinterface.interface: string">
+            <semanticElements xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@kinds[term='networkinterface']/@attributes.0"/>
             <ownedStyle xmi:type="diagram:Square" xmi:id="_J9UCBa_lEeSTkY1GXRIkXg" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
               <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UCBq_lEeSTkY1GXRIkXg"/>
               <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@style"/>
@@ -5081,9 +5083,9 @@
               <color xmi:type="viewpoint:RGBValues" xmi:id="_J9UCCK_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
-            <semanticElements xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@kinds[term='networkinterface']/@attributes.0"/>
           </ownedElements>
           <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9UCCa_lEeSTkY1GXRIkXg" name="occi.networkinterface.mac: string">
+            <semanticElements xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@kinds[term='networkinterface']/@attributes.1"/>
             <ownedStyle xmi:type="diagram:Square" xmi:id="_J9UCCq_lEeSTkY1GXRIkXg" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
               <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UCC6_lEeSTkY1GXRIkXg"/>
               <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@style"/>
@@ -5091,9 +5093,9 @@
               <color xmi:type="viewpoint:RGBValues" xmi:id="_J9UCDa_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
-            <semanticElements xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@kinds[term='networkinterface']/@attributes.1"/>
           </ownedElements>
           <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9UCDq_lEeSTkY1GXRIkXg" name="occi.networkinterface.state: NetworkInterfaceStatus">
+            <semanticElements xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@kinds[term='networkinterface']/@attributes.2"/>
             <ownedStyle xmi:type="diagram:Square" xmi:id="_J9UCD6_lEeSTkY1GXRIkXg" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
               <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UCEK_lEeSTkY1GXRIkXg"/>
               <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@style"/>
@@ -5101,7 +5103,6 @@
               <color xmi:type="viewpoint:RGBValues" xmi:id="_J9UCEq_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
-            <semanticElements xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@kinds[term='networkinterface']/@attributes.2"/>
           </ownedElements>
         </ownedDiagramElements>
         <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_J9UCE6_lEeSTkY1GXRIkXg" name="ipnetwork" visible="false" outgoingEdges="_J9Upda_lEeSTkY1GXRIkXg">
@@ -5115,6 +5116,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']"/>
           <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9UCGa_lEeSTkY1GXRIkXg" name="occi.network.address: IpAddress" visible="false">
+            <semanticElements xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@mixins[term='ipnetwork']/@attributes.0"/>
             <ownedStyle xmi:type="diagram:Square" xmi:id="_J9UCGq_lEeSTkY1GXRIkXg" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
               <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UCG6_lEeSTkY1GXRIkXg"/>
               <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='Attribute']/@style"/>
@@ -5122,9 +5124,9 @@
               <color xmi:type="viewpoint:RGBValues" xmi:id="_J9UCHa_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='Attribute']"/>
-            <semanticElements xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@mixins[term='ipnetwork']/@attributes.0"/>
           </ownedElements>
           <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9UCHq_lEeSTkY1GXRIkXg" name="occi.network.gateway: IpAddress" visible="false">
+            <semanticElements xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@mixins[term='ipnetwork']/@attributes.1"/>
             <ownedStyle xmi:type="diagram:Square" xmi:id="_J9UCH6_lEeSTkY1GXRIkXg" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
               <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UCIK_lEeSTkY1GXRIkXg"/>
               <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='Attribute']/@style"/>
@@ -5132,9 +5134,9 @@
               <color xmi:type="viewpoint:RGBValues" xmi:id="_J9UCIq_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='Attribute']"/>
-            <semanticElements xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@mixins[term='ipnetwork']/@attributes.1"/>
           </ownedElements>
           <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9UCI6_lEeSTkY1GXRIkXg" name="occi.network.allocation: Allocation" visible="false">
+            <semanticElements xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@mixins[term='ipnetwork']/@attributes.2"/>
             <ownedStyle xmi:type="diagram:Square" xmi:id="_J9UCJK_lEeSTkY1GXRIkXg" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
               <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UCJa_lEeSTkY1GXRIkXg"/>
               <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='Attribute']/@style"/>
@@ -5142,7 +5144,6 @@
               <color xmi:type="viewpoint:RGBValues" xmi:id="_J9UCJ6_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='Attribute']"/>
-            <semanticElements xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@mixins[term='ipnetwork']/@attributes.2"/>
           </ownedElements>
         </ownedDiagramElements>
         <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_J9UCKK_lEeSTkY1GXRIkXg" name="ipnetworkinterface" visible="false" outgoingEdges="_J9Upeq_lEeSTkY1GXRIkXg">
@@ -5156,6 +5157,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']"/>
           <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9UCLq_lEeSTkY1GXRIkXg" name="occi.networkinterface.address: IpAddress" visible="false">
+            <semanticElements xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@mixins[term='ipnetworkinterface']/@attributes.0"/>
             <ownedStyle xmi:type="diagram:Square" xmi:id="_J9UCL6_lEeSTkY1GXRIkXg" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
               <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UCMK_lEeSTkY1GXRIkXg"/>
               <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='Attribute']/@style"/>
@@ -5163,9 +5165,9 @@
               <color xmi:type="viewpoint:RGBValues" xmi:id="_J9UCMq_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='Attribute']"/>
-            <semanticElements xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@mixins[term='ipnetworkinterface']/@attributes.0"/>
           </ownedElements>
           <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9UoUK_lEeSTkY1GXRIkXg" name="occi.networkinterface.gateway: IpAddress" visible="false">
+            <semanticElements xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@mixins[term='ipnetworkinterface']/@attributes.1"/>
             <ownedStyle xmi:type="diagram:Square" xmi:id="_J9UoUa_lEeSTkY1GXRIkXg" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
               <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UoUq_lEeSTkY1GXRIkXg"/>
               <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='Attribute']/@style"/>
@@ -5173,9 +5175,9 @@
               <color xmi:type="viewpoint:RGBValues" xmi:id="_J9UoVK_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='Attribute']"/>
-            <semanticElements xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@mixins[term='ipnetworkinterface']/@attributes.1"/>
           </ownedElements>
           <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9UoVa_lEeSTkY1GXRIkXg" name="occi.networkinterface.allocation: Allocation" visible="false">
+            <semanticElements xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@mixins[term='ipnetworkinterface']/@attributes.2"/>
             <ownedStyle xmi:type="diagram:Square" xmi:id="_J9UoVq_lEeSTkY1GXRIkXg" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
               <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UoV6_lEeSTkY1GXRIkXg"/>
               <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='Attribute']/@style"/>
@@ -5183,7 +5185,6 @@
               <color xmi:type="viewpoint:RGBValues" xmi:id="_J9UoWa_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='Attribute']"/>
-            <semanticElements xmi:type="OCCI:Attribute" href="extensions/Infrastructure.xmi#//@mixins[term='ipnetworkinterface']/@attributes.2"/>
           </ownedElements>
         </ownedDiagramElements>
         <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_J9UoWq_lEeSTkY1GXRIkXg" name="os_tpl" visible="false" outgoingEdges="_J9Upf6_lEeSTkY1GXRIkXg">
@@ -5219,6 +5220,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9UobK_lEeSTkY1GXRIkXg" name="availability: string">
+          <semanticElements xmi:type="OCCI:Attribute" href="extensions/OCNI.xmi#//@kinds[term='CloNeNode']/@attributes.0"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_J9Uoba_lEeSTkY1GXRIkXg" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9Uobq_lEeSTkY1GXRIkXg"/>
             <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@style"/>
@@ -5226,9 +5228,9 @@
             <color xmi:type="viewpoint:RGBValues" xmi:id="_J9UocK_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
-          <semanticElements xmi:type="OCCI:Attribute" href="extensions/OCNI.xmi#//@kinds[term='CloNeNode']/@attributes.0"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9Uoca_lEeSTkY1GXRIkXg" name="location: string">
+          <semanticElements xmi:type="OCCI:Attribute" href="extensions/OCNI.xmi#//@kinds[term='CloNeNode']/@attributes.1"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_J9Uocq_lEeSTkY1GXRIkXg" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9Uoc6_lEeSTkY1GXRIkXg"/>
             <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@style"/>
@@ -5236,7 +5238,6 @@
             <color xmi:type="viewpoint:RGBValues" xmi:id="_J9Uoda_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
-          <semanticElements xmi:type="OCCI:Attribute" href="extensions/OCNI.xmi#//@kinds[term='CloNeNode']/@attributes.1"/>
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_J9Uodq_lEeSTkY1GXRIkXg" name="CloNeLink" outgoingEdges="_J9UpQ6_lEeSTkY1GXRIkXg">
@@ -5249,6 +5250,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9UofK_lEeSTkY1GXRIkXg" name="availability: string">
+          <semanticElements xmi:type="OCCI:Attribute" href="extensions/OCNI.xmi#//@kinds[term='CloNeLink']/@attributes.0"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_J9Uofa_lEeSTkY1GXRIkXg" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9Uofq_lEeSTkY1GXRIkXg"/>
             <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@style"/>
@@ -5256,9 +5258,9 @@
             <color xmi:type="viewpoint:RGBValues" xmi:id="_J9UogK_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
-          <semanticElements xmi:type="OCCI:Attribute" href="extensions/OCNI.xmi#//@kinds[term='CloNeLink']/@attributes.0"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9Uoga_lEeSTkY1GXRIkXg" name="bandwidth: string">
+          <semanticElements xmi:type="OCCI:Attribute" href="extensions/OCNI.xmi#//@kinds[term='CloNeLink']/@attributes.1"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_J9Uogq_lEeSTkY1GXRIkXg" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9Uog6_lEeSTkY1GXRIkXg"/>
             <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@style"/>
@@ -5266,9 +5268,9 @@
             <color xmi:type="viewpoint:RGBValues" xmi:id="_J9Uoha_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
-          <semanticElements xmi:type="OCCI:Attribute" href="extensions/OCNI.xmi#//@kinds[term='CloNeLink']/@attributes.1"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9Uohq_lEeSTkY1GXRIkXg" name="latency: string">
+          <semanticElements xmi:type="OCCI:Attribute" href="extensions/OCNI.xmi#//@kinds[term='CloNeLink']/@attributes.2"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_J9Uoh6_lEeSTkY1GXRIkXg" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UoiK_lEeSTkY1GXRIkXg"/>
             <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@style"/>
@@ -5276,9 +5278,9 @@
             <color xmi:type="viewpoint:RGBValues" xmi:id="_J9Uoiq_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
-          <semanticElements xmi:type="OCCI:Attribute" href="extensions/OCNI.xmi#//@kinds[term='CloNeLink']/@attributes.2"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9Uoi6_lEeSTkY1GXRIkXg" name="jitter: string">
+          <semanticElements xmi:type="OCCI:Attribute" href="extensions/OCNI.xmi#//@kinds[term='CloNeLink']/@attributes.3"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_J9UojK_lEeSTkY1GXRIkXg" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9Uoja_lEeSTkY1GXRIkXg"/>
             <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@style"/>
@@ -5286,9 +5288,9 @@
             <color xmi:type="viewpoint:RGBValues" xmi:id="_J9Uoj6_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
-          <semanticElements xmi:type="OCCI:Attribute" href="extensions/OCNI.xmi#//@kinds[term='CloNeLink']/@attributes.3"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9UokK_lEeSTkY1GXRIkXg" name="loss: string">
+          <semanticElements xmi:type="OCCI:Attribute" href="extensions/OCNI.xmi#//@kinds[term='CloNeLink']/@attributes.4"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_J9Uoka_lEeSTkY1GXRIkXg" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9Uokq_lEeSTkY1GXRIkXg"/>
             <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@style"/>
@@ -5296,9 +5298,9 @@
             <color xmi:type="viewpoint:RGBValues" xmi:id="_J9UolK_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
-          <semanticElements xmi:type="OCCI:Attribute" href="extensions/OCNI.xmi#//@kinds[term='CloNeLink']/@attributes.4"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9Uola_lEeSTkY1GXRIkXg" name="routing_scheme: string">
+          <semanticElements xmi:type="OCCI:Attribute" href="extensions/OCNI.xmi#//@kinds[term='CloNeLink']/@attributes.5"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_J9Uolq_lEeSTkY1GXRIkXg" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9Uol6_lEeSTkY1GXRIkXg"/>
             <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@style"/>
@@ -5306,7 +5308,6 @@
             <color xmi:type="viewpoint:RGBValues" xmi:id="_J9Uoma_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
-          <semanticElements xmi:type="OCCI:Attribute" href="extensions/OCNI.xmi#//@kinds[term='CloNeLink']/@attributes.5"/>
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_J9Uomq_lEeSTkY1GXRIkXg" name="FNS" outgoingEdges="_J9UpSK_lEeSTkY1GXRIkXg">
@@ -5319,6 +5320,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9UooK_lEeSTkY1GXRIkXg" name="availability: string">
+          <semanticElements xmi:type="OCCI:Attribute" href="extensions/OCNI.xmi#//@kinds[term='FNS']/@attributes.0"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_J9Uooa_lEeSTkY1GXRIkXg" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9Uooq_lEeSTkY1GXRIkXg"/>
             <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@style"/>
@@ -5326,7 +5328,6 @@
             <color xmi:type="viewpoint:RGBValues" xmi:id="_J9UopK_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
-          <semanticElements xmi:type="OCCI:Attribute" href="extensions/OCNI.xmi#//@kinds[term='FNS']/@attributes.0"/>
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_J9Uopa_lEeSTkY1GXRIkXg" name="FNSComLink" outgoingEdges="_J9UpTa_lEeSTkY1GXRIkXg">
@@ -5339,6 +5340,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9Uoq6_lEeSTkY1GXRIkXg" name="availability: string">
+          <semanticElements xmi:type="OCCI:Attribute" href="extensions/OCNI.xmi#//@kinds[term='FNSComLink']/@attributes.0"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_J9UorK_lEeSTkY1GXRIkXg" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9Uora_lEeSTkY1GXRIkXg"/>
             <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@style"/>
@@ -5346,7 +5348,6 @@
             <color xmi:type="viewpoint:RGBValues" xmi:id="_J9Uor6_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
-          <semanticElements xmi:type="OCCI:Attribute" href="extensions/OCNI.xmi#//@kinds[term='FNSComLink']/@attributes.0"/>
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_J9UosK_lEeSTkY1GXRIkXg" name="CloneLinkComLink" outgoingEdges="_J9UpUq_lEeSTkY1GXRIkXg">
@@ -5359,6 +5360,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9Uotq_lEeSTkY1GXRIkXg" name="availability: string">
+          <semanticElements xmi:type="OCCI:Attribute" href="extensions/OCNI.xmi#//@kinds[term='CloneLinkComLink']/@attributes.0"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_J9Uot6_lEeSTkY1GXRIkXg" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UouK_lEeSTkY1GXRIkXg"/>
             <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@style"/>
@@ -5366,7 +5368,6 @@
             <color xmi:type="viewpoint:RGBValues" xmi:id="_J9Uouq_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
-          <semanticElements xmi:type="OCCI:Attribute" href="extensions/OCNI.xmi#//@kinds[term='CloneLinkComLink']/@attributes.0"/>
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_J9Uou6_lEeSTkY1GXRIkXg" name="CloNeNetworkInterface" outgoingEdges="_J9UpV6_lEeSTkY1GXRIkXg">
@@ -5379,6 +5380,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9Uowa_lEeSTkY1GXRIkXg" name="availability: string">
+          <semanticElements xmi:type="OCCI:Attribute" href="extensions/OCNI.xmi#//@kinds[term='CloNeNetworkInterface']/@attributes.0"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_J9Uowq_lEeSTkY1GXRIkXg" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9Uow6_lEeSTkY1GXRIkXg"/>
             <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@style"/>
@@ -5386,9 +5388,9 @@
             <color xmi:type="viewpoint:RGBValues" xmi:id="_J9Uoxa_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
-          <semanticElements xmi:type="OCCI:Attribute" href="extensions/OCNI.xmi#//@kinds[term='CloNeNetworkInterface']/@attributes.0"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9Uoxq_lEeSTkY1GXRIkXg" name="attribute0: string">
+          <semanticElements xmi:type="OCCI:Attribute" href="extensions/OCNI.xmi#//@kinds[term='CloNeNetworkInterface']/@attributes.1"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_J9Uox6_lEeSTkY1GXRIkXg" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UoyK_lEeSTkY1GXRIkXg"/>
             <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@style"/>
@@ -5396,9 +5398,9 @@
             <color xmi:type="viewpoint:RGBValues" xmi:id="_J9Uoyq_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
-          <semanticElements xmi:type="OCCI:Attribute" href="extensions/OCNI.xmi#//@kinds[term='CloNeNetworkInterface']/@attributes.1"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9Uoy6_lEeSTkY1GXRIkXg" name="state: string">
+          <semanticElements xmi:type="OCCI:Attribute" href="extensions/OCNI.xmi#//@kinds[term='CloNeNetworkInterface']/@attributes.2"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_J9UozK_lEeSTkY1GXRIkXg" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9Uoza_lEeSTkY1GXRIkXg"/>
             <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@style"/>
@@ -5406,7 +5408,6 @@
             <color xmi:type="viewpoint:RGBValues" xmi:id="_J9Uoz6_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
-          <semanticElements xmi:type="OCCI:Attribute" href="extensions/OCNI.xmi#//@kinds[term='CloNeNetworkInterface']/@attributes.2"/>
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_J9Uo0K_lEeSTkY1GXRIkXg" name="NetNetLink" outgoingEdges="_J9UpXK_lEeSTkY1GXRIkXg" incomingEdges="_J9UpV6_lEeSTkY1GXRIkXg">
@@ -5419,6 +5420,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9Uo1q_lEeSTkY1GXRIkXg" name="availability: string">
+          <semanticElements xmi:type="OCCI:Attribute" href="extensions/OCNI.xmi#//@kinds[term='NetNetLink']/@attributes.0"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_J9Uo16_lEeSTkY1GXRIkXg" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9Uo2K_lEeSTkY1GXRIkXg"/>
             <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@style"/>
@@ -5426,9 +5428,9 @@
             <color xmi:type="viewpoint:RGBValues" xmi:id="_J9Uo2q_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
-          <semanticElements xmi:type="OCCI:Attribute" href="extensions/OCNI.xmi#//@kinds[term='NetNetLink']/@attributes.0"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9Uo26_lEeSTkY1GXRIkXg" name="state: string">
+          <semanticElements xmi:type="OCCI:Attribute" href="extensions/OCNI.xmi#//@kinds[term='NetNetLink']/@attributes.1"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_J9Uo3K_lEeSTkY1GXRIkXg" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9Uo3a_lEeSTkY1GXRIkXg"/>
             <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@style"/>
@@ -5436,7 +5438,6 @@
             <color xmi:type="viewpoint:RGBValues" xmi:id="_J9Uo36_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
-          <semanticElements xmi:type="OCCI:Attribute" href="extensions/OCNI.xmi#//@kinds[term='NetNetLink']/@attributes.1"/>
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_J9Uo4K_lEeSTkY1GXRIkXg" name="StorStorLink" outgoingEdges="_J9UpYa_lEeSTkY1GXRIkXg">
@@ -5449,6 +5450,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9Uo5q_lEeSTkY1GXRIkXg" name="availability: string">
+          <semanticElements xmi:type="OCCI:Attribute" href="extensions/OCNI.xmi#//@kinds[term='StorStorLink']/@attributes.0"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_J9Uo56_lEeSTkY1GXRIkXg" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9Uo6K_lEeSTkY1GXRIkXg"/>
             <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@style"/>
@@ -5456,9 +5458,9 @@
             <color xmi:type="viewpoint:RGBValues" xmi:id="_J9Uo6q_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
-          <semanticElements xmi:type="OCCI:Attribute" href="extensions/OCNI.xmi#//@kinds[term='StorStorLink']/@attributes.0"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9Uo66_lEeSTkY1GXRIkXg" name="state: string">
+          <semanticElements xmi:type="OCCI:Attribute" href="extensions/OCNI.xmi#//@kinds[term='StorStorLink']/@attributes.1"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_J9Uo7K_lEeSTkY1GXRIkXg" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9Uo7a_lEeSTkY1GXRIkXg"/>
             <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@style"/>
@@ -5466,7 +5468,6 @@
             <color xmi:type="viewpoint:RGBValues" xmi:id="_J9Uo76_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
-          <semanticElements xmi:type="OCCI:Attribute" href="extensions/OCNI.xmi#//@kinds[term='StorStorLink']/@attributes.1"/>
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_J9Uo8K_lEeSTkY1GXRIkXg" name="NetStorLink" outgoingEdges="_J9UpZq_lEeSTkY1GXRIkXg">
@@ -5479,6 +5480,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9Uo9q_lEeSTkY1GXRIkXg" name="availability: string">
+          <semanticElements xmi:type="OCCI:Attribute" href="extensions/OCNI.xmi#//@kinds[term='NetStorLink']/@attributes.0"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_J9Uo96_lEeSTkY1GXRIkXg" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9Uo-K_lEeSTkY1GXRIkXg"/>
             <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@style"/>
@@ -5486,9 +5488,9 @@
             <color xmi:type="viewpoint:RGBValues" xmi:id="_J9Uo-q_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
-          <semanticElements xmi:type="OCCI:Attribute" href="extensions/OCNI.xmi#//@kinds[term='NetStorLink']/@attributes.0"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9Uo-6_lEeSTkY1GXRIkXg" name="state: string">
+          <semanticElements xmi:type="OCCI:Attribute" href="extensions/OCNI.xmi#//@kinds[term='NetStorLink']/@attributes.1"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_J9Uo_K_lEeSTkY1GXRIkXg" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9Uo_a_lEeSTkY1GXRIkXg"/>
             <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@style"/>
@@ -5496,7 +5498,6 @@
             <color xmi:type="viewpoint:RGBValues" xmi:id="_J9Uo_6_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
-          <semanticElements xmi:type="OCCI:Attribute" href="extensions/OCNI.xmi#//@kinds[term='NetStorLink']/@attributes.1"/>
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_J9UpAK_lEeSTkY1GXRIkXg" name="ComComLink" outgoingEdges="_J9Upa6_lEeSTkY1GXRIkXg">
@@ -5509,6 +5510,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9UpBq_lEeSTkY1GXRIkXg" name="availability: string">
+          <semanticElements xmi:type="OCCI:Attribute" href="extensions/OCNI.xmi#//@kinds[term='ComComLink']/@attributes.0"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_J9UpB6_lEeSTkY1GXRIkXg" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UpCK_lEeSTkY1GXRIkXg"/>
             <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@style"/>
@@ -5516,9 +5518,9 @@
             <color xmi:type="viewpoint:RGBValues" xmi:id="_J9UpCq_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
-          <semanticElements xmi:type="OCCI:Attribute" href="extensions/OCNI.xmi#//@kinds[term='ComComLink']/@attributes.0"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9UpC6_lEeSTkY1GXRIkXg" name="state: string">
+          <semanticElements xmi:type="OCCI:Attribute" href="extensions/OCNI.xmi#//@kinds[term='ComComLink']/@attributes.1"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_J9UpDK_lEeSTkY1GXRIkXg" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UpDa_lEeSTkY1GXRIkXg"/>
             <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@style"/>
@@ -5526,7 +5528,6 @@
             <color xmi:type="viewpoint:RGBValues" xmi:id="_J9UpD6_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
-          <semanticElements xmi:type="OCCI:Attribute" href="extensions/OCNI.xmi#//@kinds[term='ComComLink']/@attributes.1"/>
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_J9UpEK_lEeSTkY1GXRIkXg" name="CloNeNodeComLink" outgoingEdges="_J9UpcK_lEeSTkY1GXRIkXg">
@@ -5539,6 +5540,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_J9UpFq_lEeSTkY1GXRIkXg" name="availability: string">
+          <semanticElements xmi:type="OCCI:Attribute" href="extensions/OCNI.xmi#//@kinds[term='CloNeNodeComLink']/@attributes.0"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_J9UpF6_lEeSTkY1GXRIkXg" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UpGK_lEeSTkY1GXRIkXg"/>
             <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@style"/>
@@ -5546,10 +5548,10 @@
             <color xmi:type="viewpoint:RGBValues" xmi:id="_J9UpGq_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
-          <semanticElements xmi:type="OCCI:Attribute" href="extensions/OCNI.xmi#//@kinds[term='CloNeNodeComLink']/@attributes.0"/>
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_J9UpG6_lEeSTkY1GXRIkXg" sourceNode="_J9UBUq_lEeSTkY1GXRIkXg" targetNode="_J9UBR6_lEeSTkY1GXRIkXg">
+        <target xmi:type="OCCI:Kind" href="extensions/Core.xmi#//@kinds[term='resource']"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_J9UpHK_lEeSTkY1GXRIkXg" targetArrow="InputClosedArrow" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UpHa_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
@@ -5558,9 +5560,9 @@
           </centerLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']"/>
-        <target xmi:type="OCCI:Kind" href="extensions/Core.xmi#//@kinds[term='resource']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_J9UpIK_lEeSTkY1GXRIkXg" sourceNode="_J9UBXa_lEeSTkY1GXRIkXg" targetNode="_J9UBR6_lEeSTkY1GXRIkXg">
+        <target xmi:type="OCCI:Kind" href="extensions/Core.xmi#//@kinds[term='link']"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_J9UpIa_lEeSTkY1GXRIkXg" targetArrow="InputClosedArrow" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UpIq_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
@@ -5569,9 +5571,9 @@
           </centerLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']"/>
-        <target xmi:type="OCCI:Kind" href="extensions/Core.xmi#//@kinds[term='link']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_J9UpJa_lEeSTkY1GXRIkXg" sourceNode="_J9UBaa_lEeSTkY1GXRIkXg" targetNode="_J9UBUq_lEeSTkY1GXRIkXg">
+        <target xmi:type="OCCI:Kind" href="extensions/Infrastructure.xmi#//@kinds[term='network']"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_J9UpJq_lEeSTkY1GXRIkXg" targetArrow="InputClosedArrow" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UpJ6_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
@@ -5580,9 +5582,9 @@
           </centerLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']"/>
-        <target xmi:type="OCCI:Kind" href="extensions/Infrastructure.xmi#//@kinds[term='network']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_J9UpKq_lEeSTkY1GXRIkXg" visible="false" sourceNode="_J9UBiK_lEeSTkY1GXRIkXg" targetNode="_J9UBUq_lEeSTkY1GXRIkXg">
+        <target xmi:type="OCCI:Kind" href="extensions/Infrastructure.xmi#//@kinds[term='compute']"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_J9UpK6_lEeSTkY1GXRIkXg" targetArrow="InputClosedArrow" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UpLK_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
@@ -5591,9 +5593,9 @@
           </centerLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']"/>
-        <target xmi:type="OCCI:Kind" href="extensions/Infrastructure.xmi#//@kinds[term='compute']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_J9UpL6_lEeSTkY1GXRIkXg" visible="false" sourceNode="_J9UBwK_lEeSTkY1GXRIkXg" targetNode="_J9UBUq_lEeSTkY1GXRIkXg">
+        <target xmi:type="OCCI:Kind" href="extensions/Infrastructure.xmi#//@kinds[term='storage']"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_J9UpMK_lEeSTkY1GXRIkXg" targetArrow="InputClosedArrow" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UpMa_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
@@ -5602,9 +5604,9 @@
           </centerLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']"/>
-        <target xmi:type="OCCI:Kind" href="extensions/Infrastructure.xmi#//@kinds[term='storage']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_J9UpNK_lEeSTkY1GXRIkXg" visible="false" sourceNode="_J9UB6a_lEeSTkY1GXRIkXg" targetNode="_J9UBXa_lEeSTkY1GXRIkXg">
+        <target xmi:type="OCCI:Kind" href="extensions/Infrastructure.xmi#//@kinds[term='storagelink']"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_J9UpNa_lEeSTkY1GXRIkXg" targetArrow="InputClosedArrow" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UpNq_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
@@ -5613,9 +5615,9 @@
           </centerLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']"/>
-        <target xmi:type="OCCI:Kind" href="extensions/Infrastructure.xmi#//@kinds[term='storagelink']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_J9UpOa_lEeSTkY1GXRIkXg" sourceNode="_J9UB_q_lEeSTkY1GXRIkXg" targetNode="_J9UBXa_lEeSTkY1GXRIkXg">
+        <target xmi:type="OCCI:Kind" href="extensions/Infrastructure.xmi#//@kinds[term='networkinterface']"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_J9UpOq_lEeSTkY1GXRIkXg" targetArrow="InputClosedArrow" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UpO6_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
@@ -5624,9 +5626,9 @@
           </centerLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']"/>
-        <target xmi:type="OCCI:Kind" href="extensions/Infrastructure.xmi#//@kinds[term='networkinterface']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_J9UpPq_lEeSTkY1GXRIkXg" sourceNode="_J9UoZq_lEeSTkY1GXRIkXg" targetNode="_J9UBaa_lEeSTkY1GXRIkXg">
+        <target xmi:type="OCCI:Kind" href="extensions/OCNI.xmi#//@kinds[term='CloNeNode']"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_J9UpP6_lEeSTkY1GXRIkXg" targetArrow="InputClosedArrow" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UpQK_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
@@ -5635,9 +5637,9 @@
           </centerLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']"/>
-        <target xmi:type="OCCI:Kind" href="extensions/OCNI.xmi#//@kinds[term='CloNeNode']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_J9UpQ6_lEeSTkY1GXRIkXg" sourceNode="_J9Uodq_lEeSTkY1GXRIkXg" targetNode="_J9UBaa_lEeSTkY1GXRIkXg">
+        <target xmi:type="OCCI:Kind" href="extensions/OCNI.xmi#//@kinds[term='CloNeLink']"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_J9UpRK_lEeSTkY1GXRIkXg" targetArrow="InputClosedArrow" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UpRa_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
@@ -5646,9 +5648,9 @@
           </centerLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']"/>
-        <target xmi:type="OCCI:Kind" href="extensions/OCNI.xmi#//@kinds[term='CloNeLink']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_J9UpSK_lEeSTkY1GXRIkXg" sourceNode="_J9Uomq_lEeSTkY1GXRIkXg" targetNode="_J9UBaa_lEeSTkY1GXRIkXg">
+        <target xmi:type="OCCI:Kind" href="extensions/OCNI.xmi#//@kinds[term='FNS']"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_J9UpSa_lEeSTkY1GXRIkXg" targetArrow="InputClosedArrow" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UpSq_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
@@ -5657,9 +5659,9 @@
           </centerLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']"/>
-        <target xmi:type="OCCI:Kind" href="extensions/OCNI.xmi#//@kinds[term='FNS']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_J9UpTa_lEeSTkY1GXRIkXg" sourceNode="_J9Uopa_lEeSTkY1GXRIkXg" targetNode="_J9UB_q_lEeSTkY1GXRIkXg">
+        <target xmi:type="OCCI:Kind" href="extensions/OCNI.xmi#//@kinds[term='FNSComLink']"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_J9UpTq_lEeSTkY1GXRIkXg" targetArrow="InputClosedArrow" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UpT6_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
@@ -5668,9 +5670,9 @@
           </centerLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']"/>
-        <target xmi:type="OCCI:Kind" href="extensions/OCNI.xmi#//@kinds[term='FNSComLink']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_J9UpUq_lEeSTkY1GXRIkXg" sourceNode="_J9UosK_lEeSTkY1GXRIkXg" targetNode="_J9UB_q_lEeSTkY1GXRIkXg">
+        <target xmi:type="OCCI:Kind" href="extensions/OCNI.xmi#//@kinds[term='CloneLinkComLink']"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_J9UpU6_lEeSTkY1GXRIkXg" targetArrow="InputClosedArrow" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UpVK_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
@@ -5679,9 +5681,9 @@
           </centerLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']"/>
-        <target xmi:type="OCCI:Kind" href="extensions/OCNI.xmi#//@kinds[term='CloneLinkComLink']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_J9UpV6_lEeSTkY1GXRIkXg" sourceNode="_J9Uou6_lEeSTkY1GXRIkXg" targetNode="_J9Uo0K_lEeSTkY1GXRIkXg">
+        <target xmi:type="OCCI:Kind" href="extensions/OCNI.xmi#//@kinds[term='CloNeNetworkInterface']"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_J9UpWK_lEeSTkY1GXRIkXg" targetArrow="InputClosedArrow" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UpWa_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
@@ -5690,9 +5692,9 @@
           </centerLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']"/>
-        <target xmi:type="OCCI:Kind" href="extensions/OCNI.xmi#//@kinds[term='CloNeNetworkInterface']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_J9UpXK_lEeSTkY1GXRIkXg" sourceNode="_J9Uo0K_lEeSTkY1GXRIkXg" targetNode="_J9UBXa_lEeSTkY1GXRIkXg">
+        <target xmi:type="OCCI:Kind" href="extensions/OCNI.xmi#//@kinds[term='NetNetLink']"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_J9UpXa_lEeSTkY1GXRIkXg" targetArrow="InputClosedArrow" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UpXq_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
@@ -5701,9 +5703,9 @@
           </centerLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']"/>
-        <target xmi:type="OCCI:Kind" href="extensions/OCNI.xmi#//@kinds[term='NetNetLink']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_J9UpYa_lEeSTkY1GXRIkXg" sourceNode="_J9Uo4K_lEeSTkY1GXRIkXg" targetNode="_J9UBXa_lEeSTkY1GXRIkXg">
+        <target xmi:type="OCCI:Kind" href="extensions/OCNI.xmi#//@kinds[term='StorStorLink']"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_J9UpYq_lEeSTkY1GXRIkXg" targetArrow="InputClosedArrow" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UpY6_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
@@ -5712,9 +5714,9 @@
           </centerLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']"/>
-        <target xmi:type="OCCI:Kind" href="extensions/OCNI.xmi#//@kinds[term='StorStorLink']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_J9UpZq_lEeSTkY1GXRIkXg" sourceNode="_J9Uo8K_lEeSTkY1GXRIkXg" targetNode="_J9UBXa_lEeSTkY1GXRIkXg">
+        <target xmi:type="OCCI:Kind" href="extensions/OCNI.xmi#//@kinds[term='NetStorLink']"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_J9UpZ6_lEeSTkY1GXRIkXg" targetArrow="InputClosedArrow" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UpaK_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
@@ -5723,9 +5725,9 @@
           </centerLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']"/>
-        <target xmi:type="OCCI:Kind" href="extensions/OCNI.xmi#//@kinds[term='NetStorLink']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_J9Upa6_lEeSTkY1GXRIkXg" sourceNode="_J9UpAK_lEeSTkY1GXRIkXg" targetNode="_J9UBXa_lEeSTkY1GXRIkXg">
+        <target xmi:type="OCCI:Kind" href="extensions/OCNI.xmi#//@kinds[term='ComComLink']"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_J9UpbK_lEeSTkY1GXRIkXg" targetArrow="InputClosedArrow" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_J9Upba_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
@@ -5734,9 +5736,9 @@
           </centerLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']"/>
-        <target xmi:type="OCCI:Kind" href="extensions/OCNI.xmi#//@kinds[term='ComComLink']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_J9UpcK_lEeSTkY1GXRIkXg" sourceNode="_J9UpEK_lEeSTkY1GXRIkXg" targetNode="_J9UB_q_lEeSTkY1GXRIkXg">
+        <target xmi:type="OCCI:Kind" href="extensions/OCNI.xmi#//@kinds[term='CloNeNodeComLink']"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_J9Upca_lEeSTkY1GXRIkXg" targetArrow="InputClosedArrow" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_J9Upcq_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
@@ -5745,9 +5747,9 @@
           </centerLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']"/>
-        <target xmi:type="OCCI:Kind" href="extensions/OCNI.xmi#//@kinds[term='CloNeNodeComLink']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_J9Upda_lEeSTkY1GXRIkXg" visible="false" sourceNode="_J9UCE6_lEeSTkY1GXRIkXg" targetNode="_J9UBaa_lEeSTkY1GXRIkXg">
+        <target xmi:type="OCCI:Mixin" href="extensions/Infrastructure.xmi#//@mixins[term='ipnetwork']"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_J9Updq_lEeSTkY1GXRIkXg" lineStyle="dash" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='AppliesEdge']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_J9Upd6_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
@@ -5756,9 +5758,9 @@
           </centerLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='AppliesEdge']"/>
-        <target xmi:type="OCCI:Mixin" href="extensions/Infrastructure.xmi#//@mixins[term='ipnetwork']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_J9Upeq_lEeSTkY1GXRIkXg" visible="false" sourceNode="_J9UCKK_lEeSTkY1GXRIkXg" targetNode="_J9UB_q_lEeSTkY1GXRIkXg">
+        <target xmi:type="OCCI:Mixin" href="extensions/Infrastructure.xmi#//@mixins[term='ipnetworkinterface']"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_J9Upe6_lEeSTkY1GXRIkXg" lineStyle="dash" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='AppliesEdge']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_J9UpfK_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
@@ -5767,9 +5769,9 @@
           </centerLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='AppliesEdge']"/>
-        <target xmi:type="OCCI:Mixin" href="extensions/Infrastructure.xmi#//@mixins[term='ipnetworkinterface']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_J9Upf6_lEeSTkY1GXRIkXg" visible="false" sourceNode="_J9UoWq_lEeSTkY1GXRIkXg" targetNode="_J9UBiK_lEeSTkY1GXRIkXg">
+        <target xmi:type="OCCI:Mixin" href="extensions/Infrastructure.xmi#//@mixins[term='os_tpl']"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_J9UpgK_lEeSTkY1GXRIkXg" lineStyle="dash" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='AppliesEdge']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_J9Upga_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
@@ -5778,9 +5780,9 @@
           </centerLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='AppliesEdge']"/>
-        <target xmi:type="OCCI:Mixin" href="extensions/Infrastructure.xmi#//@mixins[term='os_tpl']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_J9UphK_lEeSTkY1GXRIkXg" visible="false" sourceNode="_J9UoYK_lEeSTkY1GXRIkXg" targetNode="_J9UBUq_lEeSTkY1GXRIkXg">
+        <target xmi:type="OCCI:Mixin" href="extensions/Infrastructure.xmi#//@mixins[term='resource_tpl']"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_J9VPYK_lEeSTkY1GXRIkXg" lineStyle="dash" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='AppliesEdge']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_J9VPYa_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
@@ -5789,9 +5791,9 @@
           </centerLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='AppliesEdge']"/>
-        <target xmi:type="OCCI:Mixin" href="extensions/Infrastructure.xmi#//@mixins[term='resource_tpl']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_J9VPZK_lEeSTkY1GXRIkXg" sourceNode="_J9UBY6_lEeSTkY1GXRIkXg" targetNode="_J9UBQa_lEeSTkY1GXRIkXg">
+        <target xmi:type="OCCI:Extension" href="extensions/Infrastructure.xmi#/"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_J9VPZa_lEeSTkY1GXRIkXg" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ImportEdge']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_J9VPZq_lEeSTkY1GXRIkXg" red="136" green="136" blue="136"/>
@@ -5800,7 +5802,6 @@
           </centerLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ImportEdge']"/>
-        <target xmi:type="OCCI:Extension" href="extensions/Infrastructure.xmi#/"/>
       </ownedDiagramElements>
       <description xmi:type="description_1:DiagramDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']"/>
       <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_J9VPaa_lEeSTkY1GXRIkXg"/>
@@ -5809,14 +5810,4 @@
     </ownedRepresentations>
     <viewpoint xmi:type="description:Viewpoint" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']"/>
   </ownedViews>
-  <models xmi:type="OCCI:Extension" href="extensions/Core.xmi#/"/>
-  <models xmi:type="OCCI:Extension" href="tests/CycleInImportation.xmi#/"/>
-  <models xmi:type="OCCI:Extension" href="tests/IncorrectMixinActionScheme.xmi#/"/>
-  <models xmi:type="OCCI:Extension" href="tests/NoKindActionTermUnicity.xmi#/"/>
-  <models xmi:type="OCCI:Extension" href="tests/NoMixinActionTermUnicity.xmi#/"/>
-  <models xmi:type="OCCI:Extension" href="tests/KindParentNotImported.xmi#/"/>
-  <models xmi:type="OCCI:Extension" href="tests/MixinDependsNotImported.xmi#/"/>
-  <models xmi:type="OCCI:Extension" href="tests/MixinAppliesNotImported.xmi#/"/>
-  <models xmi:type="OCCI:Extension" href="tests/KindAtributeAlreadyDefinedInParent.xmi#/"/>
-  <models xmi:type="OCCI:Extension" href="tests/CategorySchemeNotEndsWithSharp.xmi#/"/>
 </viewpoint:DAnalysis>
