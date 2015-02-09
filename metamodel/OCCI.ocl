@@ -12,6 +12,15 @@ context Action
 def : ownerCategory: Category = oclContainer().oclAsType(Category)
 
 --
+-- Unicity of Category
+--
+
+context Category
+inv SchemeTermUnicity:
+  Category.allInstances()->forAll(c1, c2 | c1 <> c2 implies (c1.scheme <> c2.scheme or c1.term <> c2.term))
+-- see tests/NoKindTermUnicity.xmi
+ 
+--
 -- Constraints related to Category.term.
 --
 
@@ -89,6 +98,15 @@ inv NoCyclicInheritance:
   -- see tests/InvalidMixinInheritance.xmi
 
 --
+-- Unicity of Entity.
+--
+
+context Entity
+inv IdUnicity:
+  Entity.allInstances()->forAll(e1, e2 | e1 <> e2 implies e1.id <> e2.id)
+  -- see tests/NoUniqueEntityId.xmi
+
+--
 -- Constraints related to Attribute.name unicity.
 --
 
@@ -121,14 +139,6 @@ inv MixinAppliesLocalOrImported:
 --
 -- Other constraints.
 --
-
---
--- Unicity of Category
---
-
--- context Category
--- inv SchemeTermUnicity: Category->forAll(c1, c2 | c1 <> c2 implies c1.scheme <> c2.scheme and c1.term <> c2.term)
--- TODO: Need a test case
 
 -- context Attribute
 -- TODO: Is it needed?

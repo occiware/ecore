@@ -11,26 +11,27 @@
   </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="Category" abstract="true">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="SchemeEndsWithSharp AttributeNameUnicity"/>
+      <details key="constraints" value="SchemeTermUnicity SchemeEndsWithSharp AttributeNameUnicity"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="SchemeTermUnicity" value="Category.allInstances()->forAll(c1, c2 | c1 &lt;> c2 implies (c1.scheme &lt;> c2.scheme or c1.term &lt;> c2.term))"/>
       <details key="SchemeEndsWithSharp" value="scheme.substring(scheme.size(),scheme.size()) = '#'"/>
       <details key="AttributeNameUnicity" value="attributes->forAll(a1, a2 | a1 &lt;> a2 implies a1.name &lt;> a2.name)"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="term" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="term" lowerBound="1" eType="#//String"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="scheme" lowerBound="1"
         eType="#//URI"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="#//String"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="attributes" upperBound="-1"
         eType="#//Attribute" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Attribute">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mutable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="required" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="default" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EDataType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mutable" eType="#//Boolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="required" eType="#//Boolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="default" eType="#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EDataType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Kind" eSuperTypes="#//Category">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
@@ -76,9 +77,10 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Entity" abstract="true">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="AttributeNameUnicity"/>
+      <details key="constraints" value="IdUnicity AttributeNameUnicity"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="IdUnicity" value="Entity.allInstances()->forAll(e1, e2 | e1 &lt;> e2 implies e1.id &lt;> e2.id)"/>
       <details key="AttributeNameUnicity" value="attributes->forAll(a1, a2 | a1 &lt;> a2 implies a1.name &lt;> a2.name)"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="#//URI"/>
@@ -90,8 +92,8 @@
         eType="#//AttributeState" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AttributeState">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="#//String"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Resource" eSuperTypes="#//Entity">
     <eStructuralFeatures xsi:type="ecore:EReference" name="links" upperBound="-1"
@@ -115,7 +117,7 @@
       <details key="MixinDependsLocalOrImported" value="mixins->forAll(depends->forAll(let extension = oclContainer() in extension = self or import->includes(extension)))"/>
       <details key="MixinAppliesLocalOrImported" value="mixins->forAll(applies->forAll(let extension = oclContainer() in extension = self or import->includes(extension)))"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="#//String"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="scheme" lowerBound="1"
         eType="#//URI"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="import" upperBound="-1"
