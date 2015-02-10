@@ -111,7 +111,7 @@ inv IdUnicity:
   -- see tests/NoUniqueEntityId.xmi
 
 inv MixinAppliesCompatibleWithKind:
-   mixins.applies->exists(k | kind->closure(parent)->includes(k))
+   not mixins.applies->isEmpty() implies mixins.applies->exists(k | kind->closure(parent)->includes(k))
    -- see tests/ResourceWithIncorrectMixin.xmi
 
 --
@@ -143,6 +143,36 @@ inv MixinDependsLocalOrImported:
 inv MixinAppliesLocalOrImported:
   mixins->forAll(applies->forAll(extension = self or import->includes(extension)))
   -- see tests/MixinAppliesNotImported.xmi
+
+--
+-- Constraints related to Configuration.
+--
+
+context Configuration
+inv AllResourcesKindsInUse:
+  use->includesAll(resources.kind.extension)
+  -- see tests/ResourceKindNotInUse.xmi
+
+inv AllResourcesMixinsInUse:
+  use->includesAll(resources.mixins.extension)
+  -- see tests/ResourceMixinNotInUse.xmi
+
+inv AllResourcesLinksKindsInUse:
+  use->includesAll(resources.links.kind.extension)
+  -- see tests/LinkKindNotInUse.xmi
+
+inv AllResourcesLinksMixinsInUse:
+  use->includesAll(resources.links.mixins.extension)
+  -- see tests/LinkMixinNotInUse.xmi
+
+context Resource
+def : configuration: Configuration = oclContainer().oclAsType(Configuration)
+
+context Configuration
+inv AllResourcesLinksTargetsInConfiguration:
+  resources.links.target->forAll(r | r.oclContainer() = self)
+--  resources.links.target->forAll(r | r.configuration = self)
+  -- see tests/LinkTargetNotInConfiguration.xmi
 
 --
 -- Other constraints.

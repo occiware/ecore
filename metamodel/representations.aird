@@ -5,6 +5,10 @@
   <models xmi:type="ecore:EPackage" href="http://www.eclipse.org/emf/2002/Ecore#/"/>
   <models xmi:type="ecore:EPackage" href="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#/"/>
   <models xmi:type="OCCI:Configuration" href="tests/ResourceWithIncorrectMixin.xmi#/"/>
+  <models xmi:type="OCCI:Configuration" href="tests/ResourceKindNotInUse.xmi#/"/>
+  <models xmi:type="OCCI:Configuration" href="tests/ResourceMixinNotInUse.xmi#/"/>
+  <models xmi:type="OCCI:Configuration" href="tests/LinkKindNotInUse.xmi#/"/>
+  <models xmi:type="OCCI:Configuration" href="tests/LinkTargetNotInConfiguration.xmi#/"/>
   <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_Ewb9UKxvEeSpd9YKQOoEtg" initialized="true">
     <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_Sh6tEKunEeSRUa-WyK993Q" name="OCCI class diagram">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_SiriEKunEeSRUa-WyK993Q" source="GMF_DIAGRAMS">
@@ -1771,160 +1775,6 @@
     <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
   </ownedViews>
   <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_ebsw4KyLEeSYbdt1fysO1A" initialized="true">
-    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_V6pBwK4rEeSCdO24YLjfrQ" name="OCCI Core diagram">
-      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_V6po0K4rEeSCdO24YLjfrQ" source="GMF_DIAGRAMS">
-        <data xmi:type="notation:Diagram" xmi:id="_V6po0a4rEeSCdO24YLjfrQ" type="Sirius" element="_V6pBwK4rEeSCdO24YLjfrQ" measurementUnit="Pixel">
-          <children xmi:type="notation:Node" xmi:id="_V_sg4K4rEeSCdO24YLjfrQ" type="2003" element="_V_jW8K4rEeSCdO24YLjfrQ">
-            <children xmi:type="notation:Node" xmi:id="_V_tvAK4rEeSCdO24YLjfrQ" type="5007"/>
-            <children xmi:type="notation:Node" xmi:id="_V_tvAa4rEeSCdO24YLjfrQ" type="7004">
-              <children xmi:type="notation:Node" xmi:id="_V_wyUK4rEeSCdO24YLjfrQ" type="3010" element="_V_lzMK4rEeSCdO24YLjfrQ">
-                <layoutConstraint xmi:type="notation:Location" xmi:id="_V_wyUa4rEeSCdO24YLjfrQ"/>
-              </children>
-              <styles xmi:type="notation:SortingStyle" xmi:id="_V_tvAq4rEeSCdO24YLjfrQ"/>
-              <styles xmi:type="notation:FilteringStyle" xmi:id="_V_tvA64rEeSCdO24YLjfrQ"/>
-            </children>
-            <styles xmi:type="notation:ShapeStyle" xmi:id="_V_sg4a4rEeSCdO24YLjfrQ" fontName="Lucida Grande" fontHeight="12" bold="true"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_V_sg4q4rEeSCdO24YLjfrQ" x="408" y="84" width="127"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_V_uWEK4rEeSCdO24YLjfrQ" type="2003" element="_V_klEK4rEeSCdO24YLjfrQ">
-            <children xmi:type="notation:Node" xmi:id="_V_u9IK4rEeSCdO24YLjfrQ" type="5007"/>
-            <children xmi:type="notation:Node" xmi:id="_V_u9Ia4rEeSCdO24YLjfrQ" type="7004">
-              <children xmi:type="notation:Node" xmi:id="_V_yAcK4rEeSCdO24YLjfrQ" type="3010" element="_V_oPcK4rEeSCdO24YLjfrQ">
-                <layoutConstraint xmi:type="notation:Location" xmi:id="_V_yAca4rEeSCdO24YLjfrQ"/>
-              </children>
-              <styles xmi:type="notation:SortingStyle" xmi:id="_V_u9Iq4rEeSCdO24YLjfrQ"/>
-              <styles xmi:type="notation:FilteringStyle" xmi:id="_V_u9I64rEeSCdO24YLjfrQ"/>
-            </children>
-            <styles xmi:type="notation:ShapeStyle" xmi:id="_V_uWEa4rEeSCdO24YLjfrQ" fontName="Lucida Grande" fontHeight="12" bold="true"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_V_uWEq4rEeSCdO24YLjfrQ" x="328" y="156" width="136"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_V_vkMK4rEeSCdO24YLjfrQ" type="2003" element="_V_lMIK4rEeSCdO24YLjfrQ">
-            <children xmi:type="notation:Node" xmi:id="_V_wLQK4rEeSCdO24YLjfrQ" type="5007"/>
-            <children xmi:type="notation:Node" xmi:id="_V_wLQa4rEeSCdO24YLjfrQ" type="7004">
-              <styles xmi:type="notation:SortingStyle" xmi:id="_V_wLQq4rEeSCdO24YLjfrQ"/>
-              <styles xmi:type="notation:FilteringStyle" xmi:id="_V_wLQ64rEeSCdO24YLjfrQ"/>
-            </children>
-            <styles xmi:type="notation:ShapeStyle" xmi:id="_V_vkMa4rEeSCdO24YLjfrQ" fontName="Lucida Grande" fontHeight="12" bold="true"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_V_vkMq4rEeSCdO24YLjfrQ" x="503" y="157" width="128"/>
-          </children>
-          <styles xmi:type="notation:DiagramStyle" xmi:id="_V6po0q4rEeSCdO24YLjfrQ"/>
-          <edges xmi:type="notation:Edge" xmi:id="_V_yAcq4rEeSCdO24YLjfrQ" type="4001" element="_V_qEoK4rEeSCdO24YLjfrQ" source="_V_uWEK4rEeSCdO24YLjfrQ" target="_V_sg4K4rEeSCdO24YLjfrQ">
-            <children xmi:type="notation:Node" xmi:id="_V_yngK4rEeSCdO24YLjfrQ" type="6001">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_V_ynga4rEeSCdO24YLjfrQ" y="-10"/>
-            </children>
-            <children xmi:type="notation:Node" xmi:id="_V_zOkK4rEeSCdO24YLjfrQ" type="6002">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_V_zOka4rEeSCdO24YLjfrQ" y="10"/>
-            </children>
-            <children xmi:type="notation:Node" xmi:id="_V_zOkq4rEeSCdO24YLjfrQ" type="6003">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_V_zOk64rEeSCdO24YLjfrQ" y="10"/>
-            </children>
-            <styles xmi:type="notation:ConnectorStyle" xmi:id="_V_yAc64rEeSCdO24YLjfrQ"/>
-            <styles xmi:type="notation:FontStyle" xmi:id="_V_yAdK4rEeSCdO24YLjfrQ" fontName="Lucida Grande" fontHeight="8"/>
-            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_V_yAda4rEeSCdO24YLjfrQ" points="[0, 0, -83, 33]$[83, -33, 0, 0]"/>
-            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_V_z1oK4rEeSCdO24YLjfrQ" id="(0.5298507462686567,0.0)"/>
-            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_V_z1oa4rEeSCdO24YLjfrQ" id="(0.5920776699029127,1.0)"/>
-          </edges>
-          <edges xmi:type="notation:Edge" xmi:id="_V_z1oq4rEeSCdO24YLjfrQ" type="4001" element="_V_qrtK4rEeSCdO24YLjfrQ" source="_V_vkMK4rEeSCdO24YLjfrQ" target="_V_sg4K4rEeSCdO24YLjfrQ">
-            <children xmi:type="notation:Node" xmi:id="_V_0csK4rEeSCdO24YLjfrQ" type="6001">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_V_0csa4rEeSCdO24YLjfrQ" y="-10"/>
-            </children>
-            <children xmi:type="notation:Node" xmi:id="_V_0csq4rEeSCdO24YLjfrQ" type="6002">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_V_0cs64rEeSCdO24YLjfrQ" y="10"/>
-            </children>
-            <children xmi:type="notation:Node" xmi:id="_V_1DwK4rEeSCdO24YLjfrQ" type="6003">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_V_1Dwa4rEeSCdO24YLjfrQ" y="10"/>
-            </children>
-            <styles xmi:type="notation:ConnectorStyle" xmi:id="_V_z1o64rEeSCdO24YLjfrQ"/>
-            <styles xmi:type="notation:FontStyle" xmi:id="_V_z1pK4rEeSCdO24YLjfrQ" fontName="Lucida Grande" fontHeight="8"/>
-            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_V_z1pa4rEeSCdO24YLjfrQ" points="[0, 0, 73, 34]$[-73, -34, 0, 0]"/>
-            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_V_1Dwq4rEeSCdO24YLjfrQ" id="(0.4140625,0.0)"/>
-            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_V_1Dw64rEeSCdO24YLjfrQ" id="(0.5920776699029127,1.0)"/>
-          </edges>
-        </data>
-      </ownedAnnotationEntries>
-      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_V_jW8K4rEeSCdO24YLjfrQ" name="entity" incomingEdges="_V_qEoK4rEeSCdO24YLjfrQ _V_qrtK4rEeSCdO24YLjfrQ">
-        <target xmi:type="OCCI:Kind" href="extensions/Core.xmi#//@kinds[term='entity']"/>
-        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
-        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
-        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_V_j-AK4rEeSCdO24YLjfrQ" labelSize="12" labelFormat="bold" showIcon="false">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_V_j-Aa4rEeSCdO24YLjfrQ"/>
-          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_V_j-Aq4rEeSCdO24YLjfrQ"/>
-          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_V_j-A64rEeSCdO24YLjfrQ" red="255" green="255" blue="255"/>
-          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_V_j-BK4rEeSCdO24YLjfrQ" red="138" green="226" blue="52"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']"/>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_V_lzMK4rEeSCdO24YLjfrQ" name="occi.core.title: string">
-          <target xmi:type="OCCI:Attribute" href="extensions/Core.xmi#//@kinds[term='entity']/@attributes.0"/>
-          <ownedStyle xmi:type="diagram:Square" xmi:id="_V_noYK4rEeSCdO24YLjfrQ" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_V_noYa4rEeSCdO24YLjfrQ"/>
-            <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@style"/>
-            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_V_noYq4rEeSCdO24YLjfrQ"/>
-            <color xmi:type="viewpoint:RGBValues" xmi:id="_V_noY64rEeSCdO24YLjfrQ" red="136" green="136" blue="136"/>
-          </ownedStyle>
-          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
-        </ownedElements>
-      </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_V_klEK4rEeSCdO24YLjfrQ" name="resource" outgoingEdges="_V_qEoK4rEeSCdO24YLjfrQ">
-        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
-        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
-        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_V_klEa4rEeSCdO24YLjfrQ" labelSize="12" labelFormat="bold" showIcon="false">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_V_klEq4rEeSCdO24YLjfrQ"/>
-          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_V_klE64rEeSCdO24YLjfrQ"/>
-          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_V_klFK4rEeSCdO24YLjfrQ" red="255" green="255" blue="255"/>
-          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_V_klFa4rEeSCdO24YLjfrQ" red="138" green="226" blue="52"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']"/>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_V_oPcK4rEeSCdO24YLjfrQ" name="occi.core.summary: string">
-          <ownedStyle xmi:type="diagram:Square" xmi:id="_V_pdkK4rEeSCdO24YLjfrQ" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_V_pdka4rEeSCdO24YLjfrQ"/>
-            <description xmi:type="style:SquareDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@style"/>
-            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_V_pdkq4rEeSCdO24YLjfrQ"/>
-            <color xmi:type="viewpoint:RGBValues" xmi:id="_V_pdk64rEeSCdO24YLjfrQ" red="136" green="136" blue="136"/>
-          </ownedStyle>
-          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
-        </ownedElements>
-      </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_V_lMIK4rEeSCdO24YLjfrQ" name="link" outgoingEdges="_V_qrtK4rEeSCdO24YLjfrQ">
-        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
-        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
-        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_V_lMIa4rEeSCdO24YLjfrQ" labelSize="12" labelFormat="bold" showIcon="false">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_V_lMIq4rEeSCdO24YLjfrQ"/>
-          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_V_lMI64rEeSCdO24YLjfrQ"/>
-          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_V_lMJK4rEeSCdO24YLjfrQ" red="255" green="255" blue="255"/>
-          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_V_lMJa4rEeSCdO24YLjfrQ" red="138" green="226" blue="52"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']"/>
-      </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_V_qEoK4rEeSCdO24YLjfrQ" sourceNode="_V_klEK4rEeSCdO24YLjfrQ" targetNode="_V_jW8K4rEeSCdO24YLjfrQ">
-        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_V_qrsK4rEeSCdO24YLjfrQ" targetArrow="InputClosedArrow" size="2">
-          <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']/@style"/>
-          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_V_qrsa4rEeSCdO24YLjfrQ" red="136" green="136" blue="136"/>
-          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_V_qrsq4rEeSCdO24YLjfrQ">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_V_qrs64rEeSCdO24YLjfrQ"/>
-          </centerLabelStyle>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']"/>
-      </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_V_qrtK4rEeSCdO24YLjfrQ" sourceNode="_V_lMIK4rEeSCdO24YLjfrQ" targetNode="_V_jW8K4rEeSCdO24YLjfrQ">
-        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_V_rSwK4rEeSCdO24YLjfrQ" targetArrow="InputClosedArrow" size="2">
-          <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']/@style"/>
-          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_V_rSwa4rEeSCdO24YLjfrQ" red="136" green="136" blue="136"/>
-          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_V_rSwq4rEeSCdO24YLjfrQ">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_V_rSw64rEeSCdO24YLjfrQ"/>
-          </centerLabelStyle>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']"/>
-      </ownedDiagramElements>
-      <description xmi:type="description_1:DiagramDescription" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']"/>
-      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_V6pBwa4rEeSCdO24YLjfrQ"/>
-      <activatedLayers xmi:type="description_1:Layer" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer"/>
-    </ownedRepresentations>
     <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_kY7QQK4rEeSCdO24YLjfrQ" name="OCCI Infrastructure Extension diagram">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_kY73UK4rEeSCdO24YLjfrQ" source="GMF_DIAGRAMS">
         <data xmi:type="notation:Diagram" xmi:id="_kY73Ua4rEeSCdO24YLjfrQ" type="Sirius" element="_kY7QQK4rEeSCdO24YLjfrQ" measurementUnit="Pixel">

@@ -67,6 +67,7 @@
     </attributes>
     <attributes name="occi.networkinterface.state" required="true" description="Current status of the instance"/>
     <parent href="CORE.xmi#//@kinds[term='link']"/>
+    <entities xsi:type="OCCI:Link" href="LinkKindNotInUse.xmi#//@resources.0/@links.0"/>
   </kinds>
   <mixins term="ipnetwork" scheme="http://schemas.ogf.org/occi/infrastructure/network#" title="IP Networking Mixin" applies="//@kinds[term='network']">
     <attributes name="occi.network.address" mutable="true" description="Internet Protocol(IP) network address (e.g. 192.168.0.1/24, fc00::/7)"/>
@@ -84,6 +85,8 @@
   </mixins>
   <mixins term="resource_tpl" scheme="http://schemas.ogf.org/occi/infrastructure#" title="Resource template">
     <applies href="CORE.xmi#//@kinds[term='resource']"/>
+    <entities xsi:type="OCCI:Resource" href="ResourceMixinNotInUse.xmi#//@resources.0"/>
+    <entities xsi:type="OCCI:Link" href="LinkMixinNotInUse.xmi#//@resources.0/@links.0"/>
   </mixins>
   <types xsi:type="ecore:EEnum" name="SuspendMethod">
     <eLiterals name="hibernate"/>

@@ -11,6 +11,13 @@
     </attributes>
     <entities xsi:type="OCCI:Resource" href="NoUniqueEntityId.xmi#//@resources.0"/>
     <entities xsi:type="OCCI:Resource" href="NoUniqueEntityId.xmi#//@resources.1"/>
+    <entities xsi:type="OCCI:Resource" href="ResourceKindNotInUse.xmi#//@resources.0"/>
+    <entities xsi:type="OCCI:Resource" href="ResourceMixinNotInUse.xmi#//@resources.0"/>
+    <entities xsi:type="OCCI:Resource" href="LinkKindNotInUse.xmi#//@resources.1"/>
+    <entities xsi:type="OCCI:Resource" href="LinkTargetNotInConfiguration.xmi#//@resources.0"/>
   </kinds>
-  <kinds term="link" scheme="http://schemas.ogf.org/occi/core#" parent="//@kinds[term='entity']"/>
+  <kinds term="link" scheme="http://schemas.ogf.org/occi/core#" parent="//@kinds[term='entity']">
+    <entities xsi:type="OCCI:Link" href="LinkMixinNotInUse.xmi#//@resources.0/@links.0"/>
+    <entities xsi:type="OCCI:Link" href="LinkTargetNotInConfiguration.xmi#//@resources.0/@links.0"/>
+  </kinds>
 </OCCI:Extension>
