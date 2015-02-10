@@ -9,6 +9,8 @@
   <models xmi:type="OCCI:Configuration" href="tests/ResourceMixinNotInUse.xmi#/"/>
   <models xmi:type="OCCI:Configuration" href="tests/LinkKindNotInUse.xmi#/"/>
   <models xmi:type="OCCI:Configuration" href="tests/LinkTargetNotInConfiguration.xmi#/"/>
+  <models xmi:type="OCCI:Configuration" href="tests/ResourceKindNotRootKind.xmi#/"/>
+  <models xmi:type="OCCI:Configuration" href="tests/LinkKindNotRootKind.xmi#/"/>
   <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_Ewb9UKxvEeSpd9YKQOoEtg" initialized="true">
     <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_Sh6tEKunEeSRUa-WyK993Q" name="OCCI class diagram">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_SiriEKunEeSRUa-WyK993Q" source="GMF_DIAGRAMS">
