@@ -1,8 +1,10 @@
 For OCCI Metamodel:
 - Add more OCL constraints to check
-  - unicity of importation
-  - an action of a kind not already defined in parent
-  - an action of a mixin not already defined in depends
+  - unicity of importation ?
+  - an action of a kind not already defined in parent ?
+  - an action of a mixin not already defined in depends ?
+  - TODO: when calling aString.substring(x,y) check that y is not superior to aString.size()
+  - TODO: relation between attributes of a mixin and attributes of its applies kinds.
   - ...
 - Must Attribute refer a EDataType (currently what it is in OCCI.ecore or own it's own EDataType?
 - Should Extension and Category contain OCL constraints to check consistency?
@@ -11,7 +13,12 @@ For OCCI Metamodel:
 For OCCI Core:
 
 For OCCI Infrastructure Extension:
+- TODO: set type of all attributes.
 - Add more annotations to constraint attribute datatypes.
+
+For OCNI Extension:
+- Complete extensions/OCNI.xmi
+- Generate images/OCNI-Extension-diagram.jpg
 
 For OCCI Platform Extension:
 - Create extensions/Platform.xmi
@@ -25,9 +32,12 @@ For OCCI Docker Extension:
 - Complete extensions/Docker.xmi
 - Regenerate images/OCCI-Docker-Extension-diagram.jpg
 
-For OCNI Extension:
-- Complete extensions/OCNI.xmi
-- Generate images/OCNI-Extension-diagram.jpg
+For OCCI Monitoring:
+
+For OCCI Autonomic Computing
+- see http://www-inf.it-sudparis.eu/SIMBAD/tools/OCCI/autonomic/occilinks.html
+- Create extensions/AutonomicComputing.xmi
+- Generate images/OCCI-AutonomicComputing-Extension-diagram.jpg
 
 Regression tests:
 - Automate the validation of OCL constraints on all XMI files.
