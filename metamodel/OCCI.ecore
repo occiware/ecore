@@ -2,7 +2,7 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="OCCI" nsURI="http://schemas.ogf.org/occi" nsPrefix="OCCI">
   <eAnnotations source="http://www.eclipse.org/OCL/Import">
-    <details key="ecore" value="http://www.eclipse.org/emf/2002/Ecore#/"/>
+    <details key="ecore" value="http://www.eclipse.org/emf/2002/Ecore"/>
   </eAnnotations>
   <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
     <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
@@ -11,16 +11,16 @@
   </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="Category" abstract="true">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="SchemeTermUnicity SchemeEndsWithSharp AttributeNameUnicity"/>
+      <details key="constraints" value="IdentityUnique SchemeEndsWithSharp AttributesNameUnique"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-      <details key="SchemeTermUnicity" value="Category.allInstances()->forAll(c1, c2 | c1 &lt;> c2 implies (c1.scheme &lt;> c2.scheme or c1.term &lt;> c2.term))"/>
+      <details key="IdentityUnique" value="Category.allInstances()->forAll(c1, c2 | c1 &lt;> c2 implies c1.scheme &lt;> c2.scheme or c1.term &lt;> c2.term)"/>
       <details key="SchemeEndsWithSharp" value="scheme.substring(scheme.size(),scheme.size()) = '#'"/>
-      <details key="AttributeNameUnicity" value="attributes->forAll(a1, a2 | a1 &lt;> a2 implies a1.name &lt;> a2.name)"/>
+      <details key="AttributesNameUnique" value="attributes->forAll(a1, a2 | a1 &lt;> a2 implies a1.name &lt;> a2.name)"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="term" lowerBound="1" eType="#//String"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="scheme" lowerBound="1"
-        eType="#//URI"/>
+        eType="#//String"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="#//String"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="attributes" upperBound="-1"
         eType="#//Attribute" containment="true"/>
@@ -35,14 +35,14 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Kind" eSuperTypes="#//Category">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="ActionTermUnicity CorrectScheme NoCyclicInheritance EntityKindIsRootParent AttributeNotAlreadyDefinedInParent"/>
+      <details key="constraints" value="ActionTermUnicity CorrectScheme NoCyclicInheritance EntityKindIsRootParent AttributesNameNotAlreadyDefinedInParent"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
       <details key="ActionTermUnicity" value="actions->forAll(a1, a2 | a1 &lt;> a2 implies a1.term &lt;> a2.term)"/>
       <details key="CorrectScheme" value="scheme = self.oclContainer().oclAsType(Extension).scheme"/>
       <details key="NoCyclicInheritance" value="parent->closure(parent)->excludes(self)"/>
-      <details key="EntityKindIsRootParent" value="self->closure(parent)->exists(k | k.term = 'entity' and k.scheme = 'http://schemas.ogf.org/occi/core#')"/>
-      <details key="AttributeNotAlreadyDefinedInParent" value="attributes.name->excludesAll((parent->closure(parent)).attributes.name)"/>
+      <details key="EntityKindIsRootParent" value="self->closure(parent)->exists(k | k.term = 'entity' and k.scheme = 'http://schemas.ogf.org/occi/core#' and k.parent = null)"/>
+      <details key="AttributesNameNotAlreadyDefinedInParent" value="attributes.name->excludesAll(parent->closure(parent).attributes.name)"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parent" eType="#//Kind"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="actions" upperBound="-1"
@@ -55,18 +55,18 @@
       <details key="constraints" value="CorrectScheme"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-      <details key="CorrectScheme" value="let ownerCategory = oclContainer().oclAsType(Category) in scheme = ownerCategory.scheme.substring(1,ownerCategory.scheme.size()-1) + '/' + ownerCategory.term + '/action#'"/>
+      <details key="CorrectScheme" value="let category = oclContainer().oclAsType(Category) in scheme = category.scheme.substring(1,category.scheme.size()-1) + '/' + category.term + '/action#'"/>
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Mixin" eSuperTypes="#//Category">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="ActionTermUnicity CorrectScheme NoCyclicInheritance AttributeNotAlreadyDefinedInDepends"/>
+      <details key="constraints" value="ActionTermUnicity CorrectScheme NoCyclicInheritance AttributesNameNotAlreadyDefinedInDepends"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
       <details key="ActionTermUnicity" value="actions->forAll(a1, a2 | a1 &lt;> a2 implies a1.term &lt;> a2.term)"/>
       <details key="CorrectScheme" value="let ownerScheme = self.oclContainer().oclAsType(Extension).scheme in scheme.substring(1,ownerScheme.size()-1) = ownerScheme.substring(1,ownerScheme.size()-1)"/>
       <details key="NoCyclicInheritance" value="depends->closure(depends)->excludes(self)"/>
-      <details key="AttributeNotAlreadyDefinedInDepends" value="attributes.name->excludesAll((depends->closure(depends)).attributes.name)"/>
+      <details key="AttributesNameNotAlreadyDefinedInDepends" value="attributes.name->excludesAll(depends->closure(depends).attributes.name)"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="actions" upperBound="-1"
         eType="#//Action" containment="true"/>
@@ -79,12 +79,12 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Entity" abstract="true">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="IdUnicity AttributeNameUnicity MixinAppliesCompatibleWithKind"/>
+      <details key="constraints" value="IdUnique AttributesNameUnique KindCompatibleWithOneAppliesOfEachMixin"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-      <details key="IdUnicity" value="Entity.allInstances()->forAll(e1, e2 | e1 &lt;> e2 implies e1.id &lt;> e2.id)"/>
-      <details key="AttributeNameUnicity" value="attributes->forAll(a1, a2 | a1 &lt;> a2 implies a1.name &lt;> a2.name)"/>
-      <details key="MixinAppliesCompatibleWithKind" value="not mixins.applies->isEmpty() implies mixins.applies->exists(k | kind->closure(parent)->includes(k))"/>
+      <details key="IdUnique" value="Entity.allInstances()->forAll(e1, e2 | e1 &lt;> e2 implies e1.id &lt;> e2.id)"/>
+      <details key="AttributesNameUnique" value="attributes->forAll(a1, a2 | a1 &lt;> a2 implies a1.name &lt;> a2.name)"/>
+      <details key="KindCompatibleWithOneAppliesOfEachMixin" value="mixins->forAll(m | m.applies->notEmpty() implies m.applies->exists(k | kind->closure(parent)->includes(k)))"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="#//URI"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="kind" lowerBound="1" eType="#//Kind"
@@ -100,20 +100,20 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Resource" eSuperTypes="#//Entity">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="ResourceKindIsRootKind"/>
+      <details key="constraints" value="ResourceKindIsInParent"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-      <details key="ResourceKindIsRootKind" value="kind->closure(parent)->exists(k | k.term = 'resource' and k.scheme = 'http://schemas.ogf.org/occi/core#')"/>
+      <details key="ResourceKindIsInParent" value="kind->closure(parent)->exists(k | k.term = 'resource' and k.scheme = 'http://schemas.ogf.org/occi/core#')"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="links" upperBound="-1"
         eType="#//Link" containment="true" eOpposite="#//Link/source"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Link" eSuperTypes="#//Entity">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="LinkKindIsRootKind"/>
+      <details key="constraints" value="LinkKindIsInParent"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-      <details key="LinkKindIsRootKind" value="kind->closure(parent)->exists(k | k.term = 'link' and k.scheme = 'http://schemas.ogf.org/occi/core#')"/>
+      <details key="LinkKindIsInParent" value="kind->closure(parent)->exists(k | k.term = 'link' and k.scheme = 'http://schemas.ogf.org/occi/core#')"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
         eType="#//Resource" eOpposite="#//Resource/links"/>
@@ -122,19 +122,21 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Extension">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="ValidKindScheme TermUnicity NoCycleInImportation KindParentLocalOrImported MixinDependsLocalOrImported MixinAppliesLocalOrImported"/>
+      <details key="constraints" value="SchemeUnique KindsSchemeValid MixinsSchemeValid TermUnicity NoCycleInImportation KindParentLocalOrImported MixinDependsLocalOrImported MixinAppliesLocalOrImported"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-      <details key="ValidKindScheme" value="kinds->forAll(k | k.scheme = self.scheme)"/>
+      <details key="SchemeUnique" value="Extension.allInstances()->forAll(e1, e2 | e1 &lt;> e2 implies e1.scheme &lt;> e2.scheme)"/>
+      <details key="KindsSchemeValid" value="kinds->forAll(k | k.scheme = self.scheme)"/>
+      <details key="MixinsSchemeValid" value="mixins->forAll(m | m.scheme.substring(1,scheme.size()-1) = scheme.substring(1,scheme.size()-1))"/>
       <details key="TermUnicity" value="kinds.term->intersection(mixins.term)->isEmpty()"/>
       <details key="NoCycleInImportation" value="import->closure(import)->excludes(self)"/>
       <details key="KindParentLocalOrImported" value="kinds->forAll(parent &lt;> null implies let parentExtension = parent.oclContainer() in parentExtension = self or import->includes(parentExtension))"/>
-      <details key="MixinDependsLocalOrImported" value="mixins->forAll(depends->forAll(let extension = oclContainer() in extension = self or import->includes(extension)))"/>
-      <details key="MixinAppliesLocalOrImported" value="mixins->forAll(applies->forAll(let extension = oclContainer() in extension = self or import->includes(extension)))"/>
+      <details key="MixinDependsLocalOrImported" value="mixins.depends->forAll(let extension = oclContainer() in extension = self or import->includes(extension))"/>
+      <details key="MixinAppliesLocalOrImported" value="mixins.applies->forAll(let extension = oclContainer() in extension = self or import->includes(extension))"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="#//String"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="scheme" lowerBound="1"
-        eType="#//URI"/>
+        eType="#//String"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="import" upperBound="-1"
         eType="#//Extension"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="kinds" upperBound="-1"

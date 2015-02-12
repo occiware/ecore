@@ -2,24 +2,205 @@ import 'OCCI.ecore'
 
 package OCCI
 
-context Kind
-def : extension: Extension = oclContainer().oclAsType(Extension)
-
-context Mixin
-def : extension: Extension = oclContainer().oclAsType(Extension)
-
-context Action
-def : ownerCategory: Category = oclContainer().oclAsType(Category)
+--
+-- Semantics of the core concepts.
+--
 
 --
--- Unicity of Category
+-- Category.identity
 --
 
 context Category
-inv SchemeTermUnicity:
-  Category.allInstances()->forAll(c1, c2 | c1 <> c2 implies (c1.scheme <> c2.scheme or c1.term <> c2.term))
+def : identity : String = scheme + term
+
+context Category
+inv IdentityUnique:
+Category.allInstances()->forAll(c1, c2 | c1 <> c2 implies c1.identity <> c2.identity)
 -- see tests/NoKindTermUnicity.xmi
  
+--
+-- Category.scheme
+--
+
+context Category
+inv SchemeEndsWithSharp('The scheme "' + scheme + '" must end with a sharp'):
+scheme.substring(scheme.size(),scheme.size()) = '#'
+-- see tests/CategorySchemeNotEndsWithSharp.xmi
+
+context Action
+def : category: Category = oclContainer().oclAsType(Category)
+
+context Action
+inv CorrectScheme:
+scheme = category.scheme.substring(1,category.scheme.size()-1) + '/' + category.term + '/action#'
+-- see tests/IncorrectKindActionScheme.xmi
+-- see tests/IncorrectMixinActionScheme.xmi
+
+--
+-- Category.attributes.name
+--
+
+context Category
+inv AttributesNameUnique('Some attributes have the same name'):
+attributes->forAll(a1, a2 | a1 <> a2 implies a1.name <> a2.name)
+-- see tests/NoAttributeNameUnicity.xmi
+
+--
+-- Mixin
+--
+
+context Mixin
+def : isTag : Boolean = attributes->isEmpty() and actions->isEmpty()
+
+context Mixin
+def : isTemplate : Boolean = attributes->forAll(a | a.default <> null) and depends->forAll(isTag or isTemplate)
+
+--
+-- Entity.id
+--
+
+context Entity
+inv IdUnique:
+Entity.allInstances()->forAll(e1, e2 | e1 <> e2 implies e1.id <> e2.id)
+-- see tests/NoUniqueEntityId.xmi
+
+--
+-- Semantics of the type classification system.
+--
+
+context Kind
+inv NoCyclicInheritance: 
+parent->closure(parent)->excludes(self)
+-- see tests/InvalidKindInheritance.xmi
+
+context Kind
+inv EntityKindIsRootParent:
+self->closure(parent)->exists(k | k.identity = 'http://schemas.ogf.org/occi/core#entity' and k.parent = null)
+-- see tests/EntityKindNotRootParent.xmi
+
+context Kind
+inv AttributesNameNotAlreadyDefinedInParent:
+attributes.name->excludesAll(parent->closure(parent).attributes.name)
+-- see tests/KindAttributeAlreadyDefined.xmi
+
+context Mixin
+inv NoCyclicInheritance:
+depends->closure(depends)->excludes(self)
+-- see tests/InvalidMixinInheritance.xmi
+
+context Mixin
+inv AttributesNameNotAlreadyDefinedInDepends:
+attributes.name->excludesAll(depends->closure(depends).attributes.name)
+-- see tests/MixinAttributeAlreadyDefinedInDepends
+
+context Entity
+inv KindCompatibleWithOneAppliesOfEachMixin:
+mixins->forAll(m | m.applies->notEmpty() implies m.applies->exists(k | kind->closure(parent)->includes(k)))
+-- OLD: mixins.applies->notEmpty() implies mixins.applies->exists(k | kind->closure(parent)->includes(k))
+-- see tests/ResourceWithIncorrectMixin.xmi
+
+context Resource
+inv ResourceKindIsInParent:
+kind->closure(parent)->exists(k | k.identity = 'http://schemas.ogf.org/occi/core#resource')
+-- see tests/ResourceKindNotRootKind.xmi
+
+context Link
+inv LinkKindIsInParent:
+kind->closure(parent)->exists(k | k.identity =  'http://schemas.ogf.org/occi/core#link')
+-- see tests/LinkKindNotRootKind.xmi
+
+--
+-- Semantics of Extension.
+--
+
+context Extension
+inv SchemeUnique:
+Extension.allInstances()->forAll(e1, e2 | e1 <> e2 implies e1.scheme <> e2.scheme)
+-- TODO: a test case
+
+context Extension
+inv KindsSchemeValid:
+kinds->forAll(k | k.scheme = scheme)
+-- see tests/InvalidKindScheme.xmi
+
+context Extension
+inv MixinsSchemeValid:
+mixins->forAll(m | m.scheme.substring(1,scheme.size()-1) = scheme.substring(1,scheme.size()-1))
+-- see tests/InvalidMixinScheme.xmi
+
+context Extension
+inv NoCycleInImportation:
+import->closure(import)->excludes(self)
+-- see tests/CycleInImportation.xmi
+
+context Category
+def : extension: Extension = oclContainer().oclAsType(Extension)
+
+-- context Kind
+-- def : extension: Extension = oclContainer().oclAsType(Extension)
+
+-- context Mixin
+-- def : extension: Extension = oclContainer().oclAsType(Extension)
+
+context Extension
+inv KindParentLocalOrImported:
+-- OLD kinds.parent->forAll(parent.extension = self or import->includes(parent.extension))
+kinds->forAll(parent <> null implies parent.extension = self or import->includes(parent.extension))
+-- see tests/KindParentNotImported.xmi
+
+context Extension
+inv MixinDependsLocalOrImported:
+mixins.depends->forAll(extension = self or import->includes(extension))
+-- see tests/MixinDependsNotImported.xmi
+
+context Extension
+inv MixinAppliesLocalOrImported:
+mixins.applies->forAll(extension = self or import->includes(extension))
+-- see tests/MixinAppliesNotImported.xmi
+
+--
+-- Semantics of Configuration.
+--
+
+context Configuration
+inv AllResourcesKindInUse:
+use->includesAll(resources.kind.extension)
+-- see tests/ResourceKindNotInUse.xmi
+
+context Configuration
+inv AllResourcesMixinsInUse:
+use->includesAll(resources.mixins.extension)
+-- see tests/ResourceMixinNotInUse.xmi
+
+context Configuration
+inv AllResourcesLinksKindInUse:
+use->includesAll(resources.links.kind.extension)
+-- see tests/LinkKindNotInUse.xmi
+
+context Configuration
+inv AllResourcesLinksMixinsInUse:
+use->includesAll(resources.links.mixins.extension)
+-- see tests/LinkMixinNotInUse.xmi
+
+context Resource
+def : configuration: Configuration = oclContainer().oclAsType(Configuration)
+
+context Configuration
+inv AllResourcesLinksTargetsInConfiguration:
+resources.links.target->forAll(r | r.configuration = self)
+-- see tests/LinkTargetNotInConfiguration.xmi
+
+context Entity
+inv AttributesNameUnique:
+attributes->forAll(a1, a2 | a1 <> a2 implies a1.name <> a2.name)
+-- TODO: a test case
+
+
+
+--
+-- Other constraints not really necessary?
+--
+
 --
 -- Constraints related to Category.term.
 --
@@ -43,11 +224,6 @@ inv ActionTermUnicity:
 -- Constraints related to Category.scheme.
 --
 
-context Category
-inv SchemeEndsWithSharp('The scheme "' + scheme + '" must end with a sharp'):
-  scheme.substring(scheme.size(),scheme.size()) = '#'
-  -- see tests/CategorySchemeNotEndsWithSharp.xmi
-  
 context Kind
 inv CorrectScheme:
   scheme = extension.scheme
@@ -57,140 +233,6 @@ context Mixin
 inv CorrectScheme:
   scheme.substring(1,extension.scheme.size()-1) = extension.scheme.substring(1,extension.scheme.size()-1)
   -- see tests/InvalidMixinScheme.xmi
-
-context Action
-inv CorrectScheme:
-  scheme = ownerCategory.scheme.substring(1,ownerCategory.scheme.size()-1) + '/' + ownerCategory.term + '/action#'
-  -- see tests/IncorrectKindActionScheme.xmi
-  -- see tests/IncorrectMixinActionScheme.xmi
-
--- Next invariant is not required because already covered by the invariant Kind.CorrectScheme.
-context Extension
-inv ValidKindScheme:
-  kinds->forAll(k | k.scheme = scheme)
-  -- see tests/InvalidKindScheme.xmi
-
---
--- Constraints related to Attribute.name unicity.
---
-
-context Category
-inv AttributeNameUnicity('Some attributes have the same name'):
-  attributes->forAll(a1, a2 | a1 <> a2 implies a1.name <> a2.name)
-  -- see tests/NoAttributeNameUnicity.xmi
-
---
--- Constraints related to the classification type system.
---
-
-context Kind
-inv NoCyclicInheritance: 
-  parent->closure(parent)->excludes(self)
-  -- see tests/InvalidKindInheritance.xmi
-
-inv AttributeNotAlreadyDefinedInParent:
-  attributes.name->excludesAll((parent->closure(parent)).attributes.name)
-  -- see tests/KindAttributeAlreadyDefined.xmi
-
-inv EntityKindIsRootParent:
-  self->closure(parent)->exists(k | k.term = 'entity' and k.scheme = 'http://schemas.ogf.org/occi/core#')
-  -- see tests/EntityKindNotRootParent.xmi
-
-context Mixin
-inv NoCyclicInheritance:
-  depends->closure(depends)->excludes(self)
-  -- see tests/InvalidMixinInheritance.xmi
-
-inv AttributeNotAlreadyDefinedInDepends:
-   attributes.name->excludesAll((depends->closure(depends)).attributes.name)
-   -- see tests/MixinAttributeAlreadyDefinedInDepends
-
-context Resource
-inv ResourceKindIsRootKind:
-  kind->closure(parent)->exists(k | k.term = 'resource' and k.scheme = 'http://schemas.ogf.org/occi/core#')
-  -- see tests/ResourceKindNotRootKind.xmi
-
-context Link
-inv LinkKindIsRootKind:
-  kind->closure(parent)->exists(k | k.term = 'link' and k.scheme = 'http://schemas.ogf.org/occi/core#')
-  -- see tests/LinkKindNotRootKind.xmi
-
---
--- Unicity of Entity.
---
-
-context Entity
-inv IdUnicity:
-  Entity.allInstances()->forAll(e1, e2 | e1 <> e2 implies e1.id <> e2.id)
-  -- see tests/NoUniqueEntityId.xmi
-
-inv MixinAppliesCompatibleWithKind:
-   not mixins.applies->isEmpty() implies mixins.applies->exists(k | kind->closure(parent)->includes(k))
-   -- see tests/ResourceWithIncorrectMixin.xmi
-
---
--- Constraints related to Attribute.name unicity.
---
-
-context Entity
-inv AttributeNameUnicity:
-  attributes->forAll(a1, a2 | a1 <> a2 implies a1.name <> a2.name)
-  -- TODO: a test case
-
---
--- Constraints related to the Extension importation.
---
-
-context Extension
-inv NoCycleInImportation:
-  import->closure(import)->excludes(self)
-  -- see tests/CycleInImportation.xmi
-
-inv KindParentLocalOrImported:
-  kinds->forAll(parent <> null implies parent.extension = self or import->includes(parent.extension))
-  -- see tests/KindParentNotImported.xmi
-
-inv MixinDependsLocalOrImported:
-  mixins->forAll(depends->forAll(extension = self or import->includes(extension)))
-  -- see tests/MixinDependsNotImported.xmi
-
-inv MixinAppliesLocalOrImported:
-  mixins->forAll(applies->forAll(extension = self or import->includes(extension)))
-  -- see tests/MixinAppliesNotImported.xmi
-
---
--- Constraints related to Configuration.
---
-
-context Configuration
-inv AllResourcesKindsInUse:
-  use->includesAll(resources.kind.extension)
-  -- see tests/ResourceKindNotInUse.xmi
-
-inv AllResourcesMixinsInUse:
-  use->includesAll(resources.mixins.extension)
-  -- see tests/ResourceMixinNotInUse.xmi
-
-inv AllResourcesLinksKindsInUse:
-  use->includesAll(resources.links.kind.extension)
-  -- see tests/LinkKindNotInUse.xmi
-
-inv AllResourcesLinksMixinsInUse:
-  use->includesAll(resources.links.mixins.extension)
-  -- see tests/LinkMixinNotInUse.xmi
-
-context Resource
-def : configuration: Configuration = oclContainer().oclAsType(Configuration)
-
-context Configuration
-inv AllResourcesLinksTargetsInConfiguration:
-  resources.links.target->forAll(r | r.oclContainer() = self)
---  resources.links.target->forAll(r | r.configuration = self)
-  -- see tests/LinkTargetNotInConfiguration.xmi
-
---
--- Other constraints.
---
 
 -- context Attribute
 -- TODO: Is it needed?
