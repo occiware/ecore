@@ -1,4 +1,5 @@
 For OCCI Metamodel:
+- warning scheme is of type String when its is of type URI in the paper for IEEE CLOUD 2015
 - Add more OCL constraints to check
   - unicity of importation ?
   - an action of a kind not already defined in parent ?
