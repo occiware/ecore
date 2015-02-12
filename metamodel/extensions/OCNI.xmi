@@ -1,106 +1,176 @@
 <?xml version="1.0" encoding="ASCII"?>
-<OCCI:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:OCCI="http://schemas.ogf.org/occi" xsi:schemaLocation="http://schemas.ogf.org/occi ../OCCI.ecore" name="OCNI" scheme="http://ocni.org/ocni#">
+<OCCI:Extension
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:OCCI="http://schemas.ogf.org/occi"
+    xsi:schemaLocation="http://schemas.ogf.org/occi ../OCCI.ecore"
+    name="OCNI"
+    scheme="http://ocni.org/ocni#">
   <import href="Core.xmi#/"/>
   <import href="Infrastructure.xmi#/"/>
-  <kinds term="CloNeNode" scheme="http://ocni.org/ocni#">
-    <attributes name="availability">
-      <type href="../OCCI.ecore#//String"/>
+  <kinds term="CloNeNode"
+      scheme="http://ocni.org/ocni#">
+    <attributes
+        name="availability">
+      <type
+          href="../OCCI.ecore#//String"/>
     </attributes>
-    <attributes name="location">
-      <type href="../OCCI.ecore#//String"/>
+    <attributes
+        name="location">
+      <type
+          href="../OCCI.ecore#//String"/>
     </attributes>
-    <parent href="Infrastructure.xmi#//@kinds[term='network']"/>
+    <parent
+        href="Infrastructure.xmi#//@kinds[term='network']"/>
   </kinds>
-  <kinds term="CloNeLink" scheme="http://ocni.org/ocni#">
-    <attributes name="availability">
-      <type href="../OCCI.ecore#//String"/>
+  <kinds term="CloNeLink"
+      scheme="http://ocni.org/ocni#">
+    <attributes
+        name="availability">
+      <type
+          href="../OCCI.ecore#//String"/>
     </attributes>
-    <attributes name="bandwidth">
-      <type href="../OCCI.ecore#//String"/>
+    <attributes
+        name="bandwidth">
+      <type
+          href="../OCCI.ecore#//String"/>
     </attributes>
-    <attributes name="latency">
-      <type href="../OCCI.ecore#//String"/>
+    <attributes
+        name="latency">
+      <type
+          href="../OCCI.ecore#//String"/>
     </attributes>
-    <attributes name="jitter">
-      <type href="../OCCI.ecore#//String"/>
+    <attributes
+        name="jitter">
+      <type
+          href="../OCCI.ecore#//String"/>
     </attributes>
-    <attributes name="loss">
-      <type href="../OCCI.ecore#//String"/>
+    <attributes
+        name="loss">
+      <type
+          href="../OCCI.ecore#//String"/>
     </attributes>
-    <attributes name="routing_scheme">
-      <type href="../OCCI.ecore#//String"/>
+    <attributes
+        name="routing_scheme">
+      <type
+          href="../OCCI.ecore#//String"/>
     </attributes>
-    <parent href="Infrastructure.xmi#//@kinds[term='network']"/>
+    <parent
+        href="Infrastructure.xmi#//@kinds[term='network']"/>
   </kinds>
-  <kinds term="FNS" scheme="http://ocni.org/ocni#">
-    <attributes name="availability">
-      <type href="../OCCI.ecore#//String"/>
+  <kinds term="FNS"
+      scheme="http://ocni.org/ocni#">
+    <attributes
+        name="availability">
+      <type
+          href="../OCCI.ecore#//String"/>
     </attributes>
-    <parent href="Infrastructure.xmi#//@kinds[term='network']"/>
+    <parent
+        href="Infrastructure.xmi#//@kinds[term='network']"/>
   </kinds>
-  <kinds term="FNSComLink" scheme="http://ocni.org/ocni#">
-    <attributes name="availability">
-      <type href="../OCCI.ecore#//String"/>
+  <kinds term="FNSComLink"
+      scheme="http://ocni.org/ocni#">
+    <attributes
+        name="availability">
+      <type
+          href="../OCCI.ecore#//String"/>
     </attributes>
-    <parent href="Infrastructure.xmi#//@kinds[term='networkinterface']"/>
+    <parent
+        href="Infrastructure.xmi#//@kinds[term='networkinterface']"/>
   </kinds>
-  <kinds term="CloneLinkComLink" scheme="http://ocni.org/ocni#">
-    <attributes name="availability">
-      <type href="../OCCI.ecore#//String"/>
+  <kinds term="CloneLinkComLink"
+      scheme="http://ocni.org/ocni#">
+    <attributes
+        name="availability">
+      <type
+          href="../OCCI.ecore#//String"/>
     </attributes>
-    <parent href="Infrastructure.xmi#//@kinds[term='networkinterface']"/>
+    <parent
+        href="Infrastructure.xmi#//@kinds[term='networkinterface']"/>
   </kinds>
-  <kinds term="CloNeNetworkInterface" scheme="http://ocni.org/ocni#" parent="//@kinds[term='NetNetLink']">
-    <attributes name="availability">
-      <type href="../OCCI.ecore#//String"/>
+  <kinds term="CloNeNetworkInterface"
+      scheme="http://ocni.org/ocni#"
+      parent="//@kinds[term='NetNetLink']">
+    <attributes
+        name="ocni.availability">
+      <type
+          href="../OCCI.ecore#//String"/>
     </attributes>
-    <attributes name="attribute0">
-      <type href="../OCCI.ecore#//String"/>
-    </attributes>
-    <attributes name="state">
-      <type href="../OCCI.ecore#//String"/>
+    <attributes
+        name="ocni.state">
+      <type
+          href="../OCCI.ecore#//String"/>
     </attributes>
   </kinds>
-  <kinds term="NetNetLink" scheme="http://ocni.org/ocni#">
-    <attributes name="availability">
-      <type href="../OCCI.ecore#//String"/>
+  <kinds term="NetNetLink"
+      scheme="http://ocni.org/ocni#">
+    <attributes
+        name="availability">
+      <type
+          href="../OCCI.ecore#//String"/>
     </attributes>
-    <attributes name="state">
-      <type href="../OCCI.ecore#//String"/>
+    <attributes
+        name="state">
+      <type
+          href="../OCCI.ecore#//String"/>
     </attributes>
-    <parent href="Core.xmi#//@kinds[term='link']"/>
+    <parent
+        href="Core.xmi#//@kinds[term='link']"/>
   </kinds>
-  <kinds term="StorStorLink" scheme="http://ocni.org/ocni#">
-    <attributes name="availability">
-      <type href="../OCCI.ecore#//String"/>
+  <kinds term="StorStorLink"
+      scheme="http://ocni.org/ocni#">
+    <attributes
+        name="availability">
+      <type
+          href="../OCCI.ecore#//String"/>
     </attributes>
-    <attributes name="state">
-      <type href="../OCCI.ecore#//String"/>
+    <attributes
+        name="state">
+      <type
+          href="../OCCI.ecore#//String"/>
     </attributes>
-    <parent href="Core.xmi#//@kinds[term='link']"/>
+    <parent
+        href="Core.xmi#//@kinds[term='link']"/>
   </kinds>
-  <kinds term="NetStorLink" scheme="http://ocni.org/ocni#">
-    <attributes name="availability">
-      <type href="../OCCI.ecore#//String"/>
+  <kinds term="NetStorLink"
+      scheme="http://ocni.org/ocni#">
+    <attributes
+        name="availability">
+      <type
+          href="../OCCI.ecore#//String"/>
     </attributes>
-    <attributes name="state">
-      <type href="../OCCI.ecore#//String"/>
+    <attributes
+        name="state">
+      <type
+          href="../OCCI.ecore#//String"/>
     </attributes>
-    <parent href="Core.xmi#//@kinds[term='link']"/>
+    <parent
+        href="Core.xmi#//@kinds[term='link']"/>
   </kinds>
-  <kinds term="ComComLink" scheme="http://ocni.org/ocni#">
-    <attributes name="availability">
-      <type href="../OCCI.ecore#//String"/>
+  <kinds term="ComComLink"
+      scheme="http://ocni.org/ocni#">
+    <attributes
+        name="availability">
+      <type
+          href="../OCCI.ecore#//String"/>
     </attributes>
-    <attributes name="state">
-      <type href="../OCCI.ecore#//String"/>
+    <attributes
+        name="state">
+      <type
+          href="../OCCI.ecore#//String"/>
     </attributes>
-    <parent href="Core.xmi#//@kinds[term='link']"/>
+    <parent
+        href="Core.xmi#//@kinds[term='link']"/>
   </kinds>
-  <kinds term="CloNeNodeComLink" scheme="http://ocni.org/ocni#">
-    <attributes name="availability">
-      <type href="../OCCI.ecore#//String"/>
+  <kinds term="CloNeNodeComLink"
+      scheme="http://ocni.org/ocni#">
+    <attributes
+        name="availability">
+      <type
+          href="../OCCI.ecore#//String"/>
     </attributes>
-    <parent href="Infrastructure.xmi#//@kinds[term='networkinterface']"/>
+    <parent
+        href="Infrastructure.xmi#//@kinds[term='networkinterface']"/>
   </kinds>
 </OCCI:Extension>
