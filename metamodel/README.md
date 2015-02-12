@@ -1,6 +1,7 @@
 EMF metamodel for OCCI and some OCCI extensions.
 
 - extensions/ contains OCCI extensions.
+  - All.xmi contains an OCCI extensions that imports all following OCCI extensions.
   - Core.xmi contains OCCI kinds for entity, resource, and link.
   - Infrastructure.xmi contains the OCCI Infrastructure extension.
   - Monitoring.xmi contains the OCCI Monitoring extension.
