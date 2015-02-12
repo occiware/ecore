@@ -7,8 +7,15 @@
     xsi:schemaLocation="http://schemas.ogf.org/occi ../OCCI.ecore"
     name="CategorySchemeNotEndsWithSharp"
     scheme="scheme">
+  <import href="CORE.xmi#/"/>
   <kinds term="K"
-      scheme="scheme"/>
+      scheme="scheme">
+    <parent
+        href="CORE.xmi#//@kinds[term='resource']"/>
+  </kinds>
   <kinds term="M"
-      scheme="scheme"/>
+      scheme="scheme">
+    <parent
+        href="CORE.xmi#//@kinds[term='resource']"/>
+  </kinds>
 </OCCI:Extension>

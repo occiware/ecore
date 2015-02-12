@@ -11,26 +11,26 @@
     <entities xsi:type="OCCI:Resource" href="ResourceWithIncorrectMixin.xmi#//@resources.0"/>
   </kinds>
   <kinds term="compute" scheme="http://schemas.ogf.org/occi/infrastructure#" title="Compute Resource">
-    <attributes name="occi.compute.architecture" mutable="true" description="CPU Architecture of the instance"/>
+    <attributes name="occi.compute.architecture" mutable="true" description="CPU Architecture of the instance" type="//@types.7"/>
     <attributes name="occi.compute.cores" mutable="true" description="Number of CPU cores assigned to the instance">
       <type href="../OCCI.ecore#//Number"/>
     </attributes>
     <attributes name="occi.compute.hostname" mutable="true" description="Fully Qualified DNS hostname for the instance">
       <type href="../OCCI.ecore#//String"/>
     </attributes>
-    <attributes name="occi.compute.speed" mutable="true" description="CPU Clock frequency (speed) in gigahertz"/>
-    <attributes name="occi.compute.memory" mutable="true" description="Maximum RAM in gigabytes allocated to the instance"/>
-    <attributes name="occi.compute.state" required="true" default="inactive" description="Current state of the instance"/>
+    <attributes name="occi.compute.speed" mutable="true" description="CPU Clock frequency (speed) in gigahertz" type="//@types.3"/>
+    <attributes name="occi.compute.memory" mutable="true" description="Maximum RAM in gigabytes allocated to the instance" type="//@types.3"/>
+    <attributes name="occi.compute.state" required="true" default="inactive" description="Current state of the instance" type="//@types.5"/>
     <parent href="CORE.xmi#//@kinds[term='resource']"/>
     <actions term="start" scheme="http://schemas.ogf.org/occi/infrastructure/compute/action#" title="Start the system"/>
     <actions term="stop" scheme="http://schemas.ogf.org/occi/infrastructure/compute/action#" title="Stop the system (graceful, acpioff or poweroff)">
-      <attributes name="method" required="true"/>
+      <attributes name="method" required="true" type="//@types.8"/>
     </actions>
     <actions term="restart" scheme="http://schemas.ogf.org/occi/infrastructure/compute/action#" title="Restart the system (graceful, warm or cold)">
-      <attributes name="method" required="true"/>
+      <attributes name="method" required="true" type="//@types.9"/>
     </actions>
     <actions term="suspend" scheme="http://schemas.ogf.org/occi/infrastructure/compute/action#" title="Suspend the system (hibernate or in RAM)">
-      <attributes name="method" required="true"/>
+      <attributes name="method" required="true" type="//@types.0"/>
     </actions>
     <entities xsi:type="OCCI:Resource" href="ResourceWithIncorrectMixin.xmi#//@resources.1"/>
   </kinds>

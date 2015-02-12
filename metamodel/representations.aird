@@ -2,8 +2,11 @@
 <viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:OCCI="http://schemas.ogf.org/occi" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://schemas.ogf.org/occi OCCI.ecore http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_EvwA0KxvEeSpd9YKQOoEtg" selectedViews="_Ewb9UKxvEeSpd9YKQOoEtg _ebsw4KyLEeSYbdt1fysO1A" version="8.1.1">
   <models xmi:type="ecore:EPackage" href="OCCI.ecore#/"/>
   <models xmi:type="OCCI:Extension" href="extensions/Core.xmi#/"/>
-  <models xmi:type="ecore:EPackage" href="http://www.eclipse.org/emf/2002/Ecore#/"/>
-  <models xmi:type="ecore:EPackage" href="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#/"/>
+  <models xmi:type="OCCI:Extension" href="extensions/Docker.xmi#/"/>
+  <models xmi:type="OCCI:Extension" href="extensions/Infrastructure.xmi#/"/>
+  <models xmi:type="OCCI:Extension" href="extensions/Monitoring.xmi#/"/>
+  <models xmi:type="OCCI:Extension" href="extensions/OCNI.xmi#/"/>
+  <models xmi:type="OCCI:Extension" href="extensions/All.xmi#/"/>
   <models xmi:type="OCCI:Configuration" href="tests/ResourceWithIncorrectMixin.xmi#/"/>
   <models xmi:type="OCCI:Configuration" href="tests/ResourceKindNotInUse.xmi#/"/>
   <models xmi:type="OCCI:Configuration" href="tests/ResourceMixinNotInUse.xmi#/"/>
@@ -14,7 +17,9 @@
   <models xmi:type="OCCI:Extension" href="tests/MixinAttributes.xmi#/"/>
   <models xmi:type="OCCI:Extension" href="tests/INFRASTRUCTURE.xmi#/"/>
   <models xmi:type="OCCI:Extension" href="tests/CORE.xmi#/"/>
-  <models xmi:type="OCCI:Extension" href="extensions/All.xmi#/"/>
+  <models xmi:type="OCCI:Configuration" href="tests/NoUniqueEntityId.xmi#/"/>
+  <models xmi:type="ecore:EPackage" href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+  <models xmi:type="OCCI:Configuration" href="tests/LinkMixinNotInUse.xmi#/"/>
   <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_Ewb9UKxvEeSpd9YKQOoEtg" initialized="true">
     <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_Sh6tEKunEeSRUa-WyK993Q" name="OCCI class diagram">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_SiriEKunEeSRUa-WyK993Q" source="GMF_DIAGRAMS">
