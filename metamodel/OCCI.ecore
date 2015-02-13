@@ -14,9 +14,9 @@
       <details key="constraints" value="IdentityUnique SchemeEndsWithSharp AttributesNameUnique"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-      <details key="IdentityUnique" value="Category.allInstances()->forAll(c1, c2 | c1 &lt;> c2 implies c1.scheme &lt;> c2.scheme or c1.term &lt;> c2.term)"/>
+      <details key="IdentityUnique" value="Category.allInstances()->isUnique(scheme + term)"/>
       <details key="SchemeEndsWithSharp" value="scheme.substring(scheme.size(),scheme.size()) = '#'"/>
-      <details key="AttributesNameUnique" value="attributes->forAll(a1, a2 | a1 &lt;> a2 implies a1.name &lt;> a2.name)"/>
+      <details key="AttributesNameUnique" value="attributes->isUnique(name)"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="term" lowerBound="1" eType="#//String"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="scheme" lowerBound="1"
@@ -38,7 +38,7 @@
       <details key="constraints" value="ActionTermUnicity CorrectScheme NoCyclicInheritance EntityKindIsRootParent AttributesNameNotAlreadyDefinedInParent"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-      <details key="ActionTermUnicity" value="actions->forAll(a1, a2 | a1 &lt;> a2 implies a1.term &lt;> a2.term)"/>
+      <details key="ActionTermUnicity" value="actions->isUnique(term)"/>
       <details key="CorrectScheme" value="scheme = self.oclContainer().oclAsType(Extension).scheme"/>
       <details key="NoCyclicInheritance" value="parent->closure(parent)->excludes(self)"/>
       <details key="EntityKindIsRootParent" value="self->closure(parent)->exists(k | k.term = 'entity' and k.scheme = 'http://schemas.ogf.org/occi/core#' and k.parent = null)"/>
@@ -63,7 +63,7 @@
       <details key="constraints" value="ActionTermUnicity CorrectScheme NoCyclicInheritance AttributesNameNotAlreadyDefinedInDepends"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-      <details key="ActionTermUnicity" value="actions->forAll(a1, a2 | a1 &lt;> a2 implies a1.term &lt;> a2.term)"/>
+      <details key="ActionTermUnicity" value="actions->isUnique(term)"/>
       <details key="CorrectScheme" value="let ownerScheme = self.oclContainer().oclAsType(Extension).scheme in scheme.substring(1,ownerScheme.size()-1) = ownerScheme.substring(1,ownerScheme.size()-1)"/>
       <details key="NoCyclicInheritance" value="depends->closure(depends)->excludes(self)"/>
       <details key="AttributesNameNotAlreadyDefinedInDepends" value="attributes.name->excludesAll(depends->closure(depends).attributes.name)"/>
@@ -82,8 +82,8 @@
       <details key="constraints" value="IdUnique AttributesNameUnique KindCompatibleWithOneAppliesOfEachMixin"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-      <details key="IdUnique" value="Entity.allInstances()->forAll(e1, e2 | e1 &lt;> e2 implies e1.id &lt;> e2.id)"/>
-      <details key="AttributesNameUnique" value="attributes->forAll(a1, a2 | a1 &lt;> a2 implies a1.name &lt;> a2.name)"/>
+      <details key="IdUnique" value="Entity.allInstances()->isUnique(id)"/>
+      <details key="AttributesNameUnique" value="attributes->isUnique(name)"/>
       <details key="KindCompatibleWithOneAppliesOfEachMixin" value="mixins->forAll(m | m.applies->notEmpty() implies m.applies->exists(k | kind->closure(parent)->includes(k)))"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="#//URI"/>
@@ -125,7 +125,7 @@
       <details key="constraints" value="SchemeUnique KindsSchemeValid MixinsSchemeValid TermUnicity NoCycleInImportation KindParentLocalOrImported MixinDependsLocalOrImported MixinAppliesLocalOrImported"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-      <details key="SchemeUnique" value="Extension.allInstances()->forAll(e1, e2 | e1 &lt;> e2 implies e1.scheme &lt;> e2.scheme)"/>
+      <details key="SchemeUnique" value="Extension.allInstances()->isUnique(scheme)"/>
       <details key="KindsSchemeValid" value="kinds->forAll(k | k.scheme = self.scheme)"/>
       <details key="MixinsSchemeValid" value="mixins->forAll(m | m.scheme.substring(1,scheme.size()-1) = scheme.substring(1,scheme.size()-1))"/>
       <details key="TermUnicity" value="kinds.term->intersection(mixins.term)->isEmpty()"/>
