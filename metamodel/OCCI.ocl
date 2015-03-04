@@ -141,32 +141,25 @@ inv MixinsSchemeValid:
 mixins->forAll(m | m.scheme.substring(1,scheme.size()-1) = scheme.substring(1,scheme.size()-1))
 -- see tests/InvalidMixinScheme.xmi
 
-context Extension
-inv NoCycleInImportation:
-import->closure(import)->excludes(self)
--- see tests/CycleInImportation.xmi
-
 context Category
 def : extension : Extension = oclContainer().oclAsType(Extension)
 
--- NEW
 context Extension
-def : isOwnedOrImported(category : Category) : Boolean = category.extension = self or import->includes(category.extension)
+def : isDefinedOrImported(category : Category) : Boolean = let e = category.extension in e = self or import->includes(e)
  
 context Extension
 inv KindParentLocalOrImported:
--- OLD kinds.parent->forAll(parent.extension = self or import->includes(parent.extension))
-kinds->forAll(parent <> null implies isOwnedOrImported(parent))
+kinds.parent->forAll(k | isDefinedOrImported(k))
 -- see tests/KindParentNotImported.xmi
 
 context Extension
 inv MixinDependsLocalOrImported:
-mixins.depends->forAll(k | isOwnedOrImported(k))
+mixins.depends->forAll(m | isDefinedOrImported(m))
 -- see tests/MixinDependsNotImported.xmi
 
 context Extension
 inv MixinAppliesLocalOrImported:
-mixins.applies->forAll(k | isOwnedOrImported(k))
+mixins.applies->forAll(k | isDefinedOrImported(k))
 -- see tests/MixinAppliesNotImported.xmi
 
 --
