@@ -7,15 +7,26 @@ For OCCI Metamodel:
   - TODO: when calling aString.substring(x,y) check that y is not superior to aString.size()
   - TODO: relation between attributes of a mixin and attributes of its applies kinds.
   - ...
+  - OCL inv for tests/MixinAtributes.xmi
 - Must Attribute refer a EDataType (currently what it is in OCCI.ecore or own it's own EDataType?
 - Should Extension and Category contain OCL constraints to check consistency?
 - LinkKind extends Kind and reference both target and source Kind?
+- TODO: test Kind.entities and Mixin.entities as derived
+- Do we consider that data types MUST BE ALWAYS declared into an extension?
+  then we could set invariants like
+  - kinds.attributes.type included into types or import.types
+  - kinds.actions.attributes.type included into types or import.types
+  - mixins.attributes.type included into types or import.types
+  - mixins.actions.attributes.type included into types or import.types
+
+- Add Configuration endpoint attribute ?
+- Add Configuration.description human readable
+- Add Configuration.mixins relation
 
 For OCCI Core:
 
 For OCCI Infrastructure Extension:
-- TODO: set type of all attributes.
-- Add more annotations to constraint attribute datatypes.
+- Add more annotations to constraint datatypes.
 
 For OCNI Extension:
 - Complete extensions/OCNI.xmi
@@ -33,6 +44,9 @@ For OCCI Docker Extension:
 - Complete extensions/Docker.xmi
 - Regenerate images/OCCI-Docker-Extension-diagram.jpg
 
+For Service Manager Extension:
+- Generate images/Service-Manager-diagram.jpg
+ 
 For OCCI Monitoring:
 
 For OCCI Autonomic Computing
