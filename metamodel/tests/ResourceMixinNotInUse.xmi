@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="ASCII"?>
-<OCCI:Configuration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:OCCI="http://schemas.ogf.org/occi" xsi:schemaLocation="http://schemas.ogf.org/occi ../OCCI.ecore" >
-  <use href="CORE.xmi#/"/>
+<OCCI:Configuration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:OCCI="http://schemas.ogf.org/occi" xsi:schemaLocation="http://schemas.ogf.org/occi ../OCCI.ecore">
+  <use href="../extensions/Core.xmi#/"/>
   <resources id="r">
-    <kind href="CORE.xmi#//@kinds[term='resource']"/>
-    <mixins href="INFRASTRUCTURE.xmi#//@mixins[term='resource_tpl']"/>
+    <kind href="../extensions/Core.xmi#//@kinds[term='resource']"/>
+    <mixins href="../extensions/Infrastructure.xmi#//@mixins[term='resource_tpl']"/>
   </resources>
 </OCCI:Configuration>

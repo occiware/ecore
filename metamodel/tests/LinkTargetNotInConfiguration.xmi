@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="ASCII"?>
 <OCCI:Configuration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:OCCI="http://schemas.ogf.org/occi" xsi:schemaLocation="http://schemas.ogf.org/occi ../OCCI.ecore">
-  <use href="CORE.xmi#/"/>
+  <use href="../extensions/Core.xmi#/"/>
   <resources id="r">
-    <kind href="CORE.xmi#//@kinds[term='resource']"/>
+    <kind href="../extensions/Core.xmi#//@kinds[term='resource']"/>
     <links id="l">
-      <kind href="CORE.xmi#//@kinds[term='link']"/>
+      <kind href="../extensions/Core.xmi#//@kinds[term='link']"/>
       <target href="ResourceWithIncorrectMixin.xmi#//@resources.1"/>
     </links>
   </resources>
