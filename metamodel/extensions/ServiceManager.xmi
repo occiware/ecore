@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ASCII"?>
+<OCCI:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:OCCI="http://schemas.ogf.org/occi" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xsi:schemaLocation="http://schemas.ogf.org/occi ../OCCI.ecore" name="ServiceManager Extension" scheme="http://euranova.eu/service-manager#">
+  <import href="Core.xmi#/"/>
+  <kinds term="service" scheme="http://euranova.eu/service-manager#" title="Service Resource">
+    <attributes name="state" required="true" description="Current status of the service" type="//@types.0"/>
+    <parent href="Core.xmi#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds term="role" scheme="http://euranova.eu/service-manager#" title="Role Resource">
+    <attributes name="state" mutable="true" description="Current status of this Role instance" type="//@types.0"/>
+    <parent href="Core.xmi#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds term="group" scheme="http://euranova.eu/service-manager#" title="Group Link">
+    <attributes name="size">
+      <type href="../OCCI.ecore#//Number"/>
+    </attributes>
+    <attributes name="min">
+      <type href="../OCCI.ecore#//Number"/>
+    </attributes>
+    <attributes name="max">
+      <type href="../OCCI.ecore#//Number"/>
+    </attributes>
+    <parent href="Core.xmi#//@kinds[term='link']"/>
+  </kinds>
+  <kinds term="dependency" scheme="http://euranova.eu/service-manager#" title="Dependency Link">
+    <attributes name="priority">
+      <type href="../OCCI.ecore#//Number"/>
+    </attributes>
+    <parent href="Core.xmi#//@kinds[term='link']"/>
+  </kinds>
+  <types xsi:type="ecore:EEnum" name="Status">
+    <eLiterals name="active" literal="active"/>
+    <eLiterals name="inactive" value="1"/>
+  </types>
+</OCCI:Extension>
