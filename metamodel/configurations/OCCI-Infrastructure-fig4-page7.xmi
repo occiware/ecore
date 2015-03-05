@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ASCII"?>
+<OCCI:Configuration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:OCCI="http://schemas.ogf.org/occi" xsi:schemaLocation="http://schemas.ogf.org/occi ../OCCI.ecore">
+  <use href="../extensions/Infrastructure.xmi#/"/>
+  <resources id="net1">
+    <kind href="../extensions/Infrastructure.xmi#//@kinds[term='network']"/>
+    <attributes name="occi.network.vlan" value="332"/>
+    <attributes name="occi.network.label" value="dmz"/>
+    <attributes name="occi.network.state" value="active"/>
+  </resources>
+  <resources id="net2">
+    <kind href="../extensions/Infrastructure.xmi#//@kinds[term='network']"/>
+    <mixins href="../extensions/Infrastructure.xmi#//@mixins[term='ipnetwork']"/>
+    <attributes name="occi.network.vlan" value="431"/>
+    <attributes name="occi.network.label" value="private"/>
+    <attributes name="occi.network.state" value="active"/>
+    <attributes name="occi.network.address" value="192.168.1.1/24"/>
+    <attributes name="occi.network.gateway" value="192.168.1.1"/>
+    <attributes name="occi.network.allocation" value="dynamic"/>
+  </resources>
+</OCCI:Configuration>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ASCII"?>
+<OCCI:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:OCCI="http://schemas.ogf.org/occi" xsi:schemaLocation="http://schemas.ogf.org/occi ../OCCI.ecore" name="Ubuntu" scheme="http://provider.com#">
+  <import href="../extensions/Infrastructure.xmi#/"/>
+  <mixins term="ubuntu-9.10" scheme="http://provider.com/templates/os#">
+    <depends href="../extensions/Infrastructure.xmi#//@mixins[term='os_tpl']"/>
+  </mixins>
+</OCCI:Extension>

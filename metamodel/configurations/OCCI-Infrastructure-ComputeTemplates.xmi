@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ASCII"?>
+<OCCI:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:OCCI="http://schemas.ogf.org/occi" xsi:schemaLocation="http://schemas.ogf.org/occi ../OCCI.ecore" name="OCCI Infrastructure Compute Templates" scheme="http://provider.com#">
+  <import href="../extensions/Infrastructure.xmi#/"/>
+  <mixins term="smallInstance" scheme="http://provider.com/templates/compute#">
+    <attributes name="occi.compute.architecture" default="x86"/>
+    <attributes name="occi.compute.cores" default="2"/>
+    <attributes name="occi.compute.speed" default="2.4"/>
+    <attributes name="occi.compute.memory" default="1.0"/>
+    <depends href="../extensions/Infrastructure.xmi#//@mixins[term='resource_tpl']"/>
+    <applies href="../extensions/Infrastructure.xmi#//@kinds[term='compute']"/>
+  </mixins>
+</OCCI:Extension>
