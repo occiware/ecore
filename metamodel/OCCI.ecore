@@ -2,7 +2,7 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="OCCI" nsURI="http://schemas.ogf.org/occi" nsPrefix="OCCI">
   <eAnnotations source="http://www.eclipse.org/OCL/Import">
-    <details key="ecore" value="http://www.eclipse.org/emf/2002/Ecore"/>
+    <details key="ecore" value="http://www.eclipse.org/emf/2002/Ecore#/"/>
   </eAnnotations>
   <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
     <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
@@ -48,7 +48,11 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="actions" upperBound="-1"
         eType="#//Action" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="entities" upperBound="-1"
-        eType="#//Entity" eOpposite="#//Entity/kind"/>
+        eType="#//Entity" changeable="false" derived="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+        <details key="derivation" value="Entity.allInstances()->select(kind = self)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Action" eSuperTypes="#//Category">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
@@ -75,7 +79,11 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="applies" upperBound="-1"
         eType="#//Kind"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="entities" upperBound="-1"
-        eType="#//Entity" eOpposite="#//Entity/mixins"/>
+        eType="#//Entity" changeable="false" derived="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+        <details key="derivation" value="Entity.allInstances()->select(mixins->includes(self))"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Entity" abstract="true">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
@@ -87,10 +95,9 @@
       <details key="KindCompatibleWithOneAppliesOfEachMixin" value="mixins->forAll(m | m.applies->notEmpty() implies m.applies->exists(k | kind->closure(parent)->includes(k)))"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="#//URI"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="kind" lowerBound="1" eType="#//Kind"
-        eOpposite="#//Kind/entities"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="kind" lowerBound="1" eType="#//Kind"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="mixins" upperBound="-1"
-        eType="#//Mixin" eOpposite="#//Mixin/entities"/>
+        eType="#//Mixin"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="attributes" upperBound="-1"
         eType="#//AttributeState" containment="true"/>
   </eClassifiers>
@@ -122,14 +129,13 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Extension">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="SchemeUnique KindsSchemeValid MixinsSchemeValid TermUnicity NoCycleInImportation KindParentLocalOrImported MixinDependsLocalOrImported MixinAppliesLocalOrImported"/>
+      <details key="constraints" value="SchemeUnique KindsSchemeValid MixinsSchemeValid TermUnicity KindParentLocalOrImported MixinDependsLocalOrImported MixinAppliesLocalOrImported"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
       <details key="SchemeUnique" value="Extension.allInstances()->isUnique(scheme)"/>
       <details key="KindsSchemeValid" value="kinds->forAll(k | k.scheme = self.scheme)"/>
       <details key="MixinsSchemeValid" value="mixins->forAll(m | m.scheme.substring(1,scheme.size()-1) = scheme.substring(1,scheme.size()-1))"/>
       <details key="TermUnicity" value="kinds.term->intersection(mixins.term)->isEmpty()"/>
-      <details key="NoCycleInImportation" value="import->closure(import)->excludes(self)"/>
       <details key="KindParentLocalOrImported" value="kinds->forAll(parent &lt;> null implies let parentExtension = parent.oclContainer() in parentExtension = self or import->includes(parentExtension))"/>
       <details key="MixinDependsLocalOrImported" value="mixins.depends->forAll(let extension = oclContainer() in extension = self or import->includes(extension))"/>
       <details key="MixinAppliesLocalOrImported" value="mixins.applies->forAll(let extension = oclContainer() in extension = self or import->includes(extension))"/>
