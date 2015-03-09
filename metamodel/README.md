@@ -10,7 +10,10 @@ EMF metamodel for OCCI and some OCCI extensions.
 - configurations/ contains OCCI configurations.
     - OCCI-Infrastructure-*.xmi are configurations related to OCCI Infrastructure Extension.
     - ServiceManager-*.xmi are configurations related to the Service Manager extension.
-- images/ contains Sirius screenshots.
+- docker/ contains a new OCCI extension for Docker.
+  - Docker.xmi contains the OCCI extension for Docker.
+  - other .xmi files are Docker configurations.
+- images/ contains OCCIware Modeler screenshots.
 - tests/ contains OCCI models that violate OCL constraints defined in OCCI.ecore.
 - OCCI.ecore is the EMF metamodel for OCCI Core.
 - OCCI.ocl contains a copy of the OCL constraints embedded in OCCI.ecore.
