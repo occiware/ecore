@@ -3,12 +3,17 @@
   <use href="Docker.xmi#/"/>
   <resources id="machine1">
     <kind href="Docker.xmi#//@kinds[term='machine_VirtualBox']"/>
-    <attributes name="name" value="localhost"/>
+    <attributes name="name" value="machine1"/>
     <attributes name="memory" value="5000"/>
-    <links id="contains-1" target="//@resources.1">
+    <links id="contains-1.1" target="//@resources.2">
       <kind href="Docker.xmi#//@kinds[term='contains']"/>
     </links>
-    <links id="contains-2" target="//@resources.2">
+  </resources>
+  <resources id="machine2">
+    <kind href="Docker.xmi#//@kinds[term='machine_VirtualBox']"/>
+    <attributes name="name" value="machine2"/>
+    <attributes name="memory" value="5000"/>
+    <links id="contains-2.1" target="//@resources.3">
       <kind href="Docker.xmi#//@kinds[term='contains']"/>
     </links>
   </resources>
@@ -19,7 +24,7 @@
     <attributes name="ports" value="..."/>
     <attributes name="volumes" value="..."/>
     <attributes name="mem_limit" value="100"/>
-    <links id="link-1.1" target="//@resources.2">
+    <links id="link-1.1" target="//@resources.3">
       <kind href="Docker.xmi#//@kinds[term='link']"/>
       <attributes name="alias" value="db"/>
     </links>
@@ -31,7 +36,7 @@
     <attributes name="ports" value="..."/>
     <attributes name="volumes" value="..."/>
     <attributes name="mem_limit" value="2000"/>
-    <links id="volumes-from-2.1" target="//@resources.1">
+    <links id="volumes-from-2.1" target="//@resources.2">
       <kind href="Docker.xmi#//@kinds[term='volumesfrom']"/>
       <attributes name="mode" value="read_only"/>
     </links>
