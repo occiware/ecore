@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project default="generate" name="org.occiware.clouddesigner.occi.docker.gen.compose">
+<project default="generate" name="org.occiware.clouddesigner.occi.gen.doc">
     <property name="ECLIPSE_HOME" value="../../.."/>
     <property name="ECLIPSE_WORKSPACE" value="../.."/>
 
     <!-- The classpath with only the dependencies used by the project -->
-    <path id="org.occiware.clouddesigner.occi.docker.gen.compose.libraryclasspath">
-        <pathelement location="${ECLIPSE_WORKSPACE}/org.occiware.clouddesigner.occi.docker.gen.compose/bin"/>
+    <path id="org.occiware.clouddesigner.occi.gen.doc.libraryclasspath">
+        <pathelement location="${ECLIPSE_WORKSPACE}/org.occiware.clouddesigner.occi.gen.doc/bin"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.core.runtime_3.10.0.v20140318-2214.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/javax.annotation_1.2.0.v201401042248.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/javax.inject_1.0.0.v20091030.jar"/>
@@ -52,23 +52,23 @@
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.xtext.common.types_2.7.3.v201411190455.jar"/>
     </path>
 
-    <path id="org.occiware.clouddesigner.occi.docker.gen.compose.classpath">
-        <path refid="org.occiware.clouddesigner.occi.docker.gen.compose.libraryclasspath"/>
+    <path id="org.occiware.clouddesigner.occi.gen.doc.classpath">
+        <path refid="org.occiware.clouddesigner.occi.gen.doc.libraryclasspath"/>
     </path>
 
     <!-- The classpath with only the jars available in the plugin folder of Eclipse -->
-    <path id="org.occiware.clouddesigner.occi.docker.gen.compose.libraryclasspath.alljars">
-        <pathelement location="../org.occiware.clouddesigner.occi.docker.gen.compose/bin"/>
+    <path id="org.occiware.clouddesigner.occi.gen.doc.libraryclasspath.alljars">
+        <pathelement location="../org.occiware.clouddesigner.occi.gen.doc/bin"/>
         <fileset dir="${ECLIPSE_HOME}/plugins/" includes="*.jar"/>
     </path>
 
-    <path id="org.occiware.clouddesigner.occi.docker.gen.compose.classpath.alljars">
-        <path refid="org.occiware.clouddesigner.occi.docker.gen.compose.libraryclasspath.alljars"/>
+    <path id="org.occiware.clouddesigner.occi.gen.doc.classpath.alljars">
+        <path refid="org.occiware.clouddesigner.occi.gen.doc.libraryclasspath.alljars"/>
     </path>
 
     <!-- The default task with the jars used by this project -->
     <target name="generate">
-        <java classname="org.occiware.clouddesigner.occi.docker.gen.compose.common.Generate" classpathref="org.occiware.clouddesigner.occi.docker.gen.compose.classpath">
+        <java classname="org.occiware.clouddesigner.occi.gen.doc.main.Generate" classpathref="org.occiware.clouddesigner.occi.gen.doc.classpath">
             <arg value="${model}"/>
             <arg value="${target}"/>
         </java>
@@ -79,7 +79,7 @@
         Keep in mind that having two versions of the same jar can create problems
     -->
     <target name="generate.alljars">
-        <java classname="org.occiware.clouddesigner.occi.docker.gen.compose.common.Generate" classpathref="org.occiware.clouddesigner.occi.docker.gen.compose.classpath">
+        <java classname="org.occiware.clouddesigner.occi.gen.doc.main.Generate" classpathref="org.occiware.clouddesigner.occi.gen.doc.classpath">
             <arg value="${model}"/>
             <arg value="${target}"/>
         </java>

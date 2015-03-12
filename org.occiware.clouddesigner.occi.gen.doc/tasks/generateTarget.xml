@@ -3,8 +3,8 @@
 <!-- Place this file in the target project and call it with "External Tools > Run As > Ant Build" -->
 <!-- You have to change the MODEL and the TARGET values -->
 
-<project basedir="." default="generateSample" name="org.occiware.clouddesigner.occi.docker.gen.composeSample">
-	<import file="../../org.occiware.clouddesigner.occi.docker.gen.compose/tasks/generate.xml"/>
+<project basedir="." default="generateSample" name="org.occiware.clouddesigner.occi.gen.docSample">
+	<import file="../../org.occiware.clouddesigner.occi.gen.doc/tasks/generate.xml"/>
 
     <!-- Change the values of MODEL and TARGET to point to your model and output folder -->
 	<property name="MODEL" value="${basedir}/model/file.xmi"/>

@@ -1,0 +1,20 @@
+h1. OCCI Monitoring
+
+http://schemas.ogf.org/occi/monitoring#
+
+h1. Imports
+
+OCCI Core http://schemas.ogf.org/occi/core#  
+
+h1. Kinds
+
+org.occiware.clouddesigner.OCCI.impl.KindImpl@bde49d (term: sensor, scheme: http://schemas.ogf.org/occi/monitoring#, title: Sensor Resource)org.occiware.clouddesigner.OCCI.impl.KindImpl@11cfb87 (term: collector, scheme: http://schemas.ogf.org/occi/monitoring#, title: Collector Link)
+
+h1. Mixins
+
+org.occiware.clouddesigner.OCCI.impl.MixinImpl@21330f (term: metric, scheme: http://schemas.ogf.org/occi/monitoring/collector#, title: Collector Metric Mixin)org.occiware.clouddesigner.OCCI.impl.MixinImpl@f43c82 (term: aggregator, scheme: http://schemas.ogf.org/occi/monitoring/sensor#, title: Aggregator Mixin)org.occiware.clouddesigner.OCCI.impl.MixinImpl@1b6b9cd (term: publisher, scheme: http://schemas.ogf.org/occi/monitoring/sensor#, title: Publisher Mixin)
+
+h1. Types
+
+
+

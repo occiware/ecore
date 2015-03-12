@@ -1,0 +1,21 @@
+h1. OCNI
+
+http://exem.com/ocni#
+
+h1. Imports
+
+OCCI Core http://schemas.ogf.org/occi/core#  
+OCCI Infrastructure http://schemas.ogf.org/occi/infrastructure#  
+
+h1. Kinds
+
+org.occiware.clouddesigner.OCCI.impl.KindImpl@1de24cc (term: CloNeNode, scheme: http://exem.com/ocni#, title: null)org.occiware.clouddesigner.OCCI.impl.KindImpl@1c7df28 (term: CloNeLink, scheme: http://exem.com/ocni#, title: null)org.occiware.clouddesigner.OCCI.impl.KindImpl@f842ca (term: FNS, scheme: http://exem.com/ocni#, title: null)org.occiware.clouddesigner.OCCI.impl.KindImpl@1c81773 (term: FNSComLink, scheme: http://exem.com/ocni#, title: null)org.occiware.clouddesigner.OCCI.impl.KindImpl@114b6c2 (term: CloNeLinkComLink, scheme: http://exem.com/ocni#, title: null)org.occiware.clouddesigner.OCCI.impl.KindImpl@990ed7 (term: CloNeNetworkInterface, scheme: http://exem.com/ocni#, title: null)org.occiware.clouddesigner.OCCI.impl.KindImpl@5fddc (term: NetNetLink, scheme: http://exem.com/ocni#, title: null)org.occiware.clouddesigner.OCCI.impl.KindImpl@1df00a0 (term: StorStorLink, scheme: http://exem.com/ocni#, title: null)org.occiware.clouddesigner.OCCI.impl.KindImpl@115107f (term: NetStorLink, scheme: http://exem.com/ocni#, title: null)org.occiware.clouddesigner.OCCI.impl.KindImpl@14c50bc (term: ComComLink, scheme: http://exem.com/ocni#, title: null)org.occiware.clouddesigner.OCCI.impl.KindImpl@84a914 (term: CloNeNodeComLink, scheme: http://exem.com/ocni#, title: null)
+
+h1. Mixins
+
+
+
+h1. Types
+
+org.eclipse.emf.ecore.impl.EDataTypeImpl@10378a4 (name: Availability) (instanceClassName: ocni.Availability) (serializable: true)org.eclipse.emf.ecore.impl.EDataTypeImpl@f00693 (name: Location) (instanceClassName: ocni.Location) (serializable: true)org.eclipse.emf.ecore.impl.EDataTypeImpl@1207381 (name: Bandwidth) (instanceClassName: java.lang.String) (serializable: true)org.eclipse.emf.ecore.impl.EDataTypeImpl@91b9b8 (name: Latency) (instanceClassName: java.lang.String) (serializable: true)org.eclipse.emf.ecore.impl.EDataTypeImpl@4927d6 (name: Jitter) (instanceClassName: java.lang.String) (serializable: true)org.eclipse.emf.ecore.impl.EDataTypeImpl@6d7e92 (name: Loss) (instanceClassName: java.lang.String) (serializable: true)org.eclipse.emf.ecore.impl.EDataTypeImpl@aba625 (name: RoutingScheme) (instanceClassName: ocni.RoutingScheme) (serializable: true)org.eclipse.emf.ecore.impl.EEnumImpl@17e93f1 (name: State) (instanceClassName: null) (serializable: true)
+

@@ -22,7 +22,7 @@ public final class FixAllDynamics {
 				});
 				for (File file : xmiFiles) {
 					String newPath = current.getPath()
-							+ "\\input"
+							+ "\\input_unchanged"
 							+ file.getPath().substring(
 									inputDir.getPath().length());
 					File newDir = new File(newPath.substring(0,

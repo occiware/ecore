@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ASCII"?>
+<OCCI:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:OCCI="http://schemas.ogf.org/occi" xsi:schemaLocation="http://schemas.ogf.org/occi http://schemas.ogf.org/occi" name="OCCI Monitoring" scheme="http://schemas.ogf.org/occi/monitoring#">
+  <import href="Core.xmi#/"/>
+  <kinds term="sensor" scheme="http://schemas.ogf.org/occi/monitoring#" title="Sensor Resource">
+    <attributes name="occi.sensor.period" mutable="true" required="true" description="Sensing period">
+      <type href="http://schemas.ogf.org/occi#//Number"/>
+    </attributes>
+    <attributes name="occi.sensor.periodspec" mutable="true" description="Period spec">
+      <type href="http://schemas.ogf.org/occi#//String"/>
+    </attributes>
+    <attributes name="occi.sensor.timebase" required="true" description="Time base">
+      <type href="http://schemas.ogf.org/occi#//Number"/>
+    </attributes>
+    <attributes name="occi.sensor.timestart" mutable="true" required="true" description="Time start">
+      <type href="http://schemas.ogf.org/occi#//Number"/>
+    </attributes>
+    <attributes name="occi.sensor.timestop" mutable="true" required="true" description="Time stop">
+      <type href="http://schemas.ogf.org/occi#//Number"/>
+    </attributes>
+    <attributes name="occi.sensor.timespec" mutable="true" description="Time spec">
+      <type href="http://schemas.ogf.org/occi#//String"/>
+    </attributes>
+    <parent href="Core.xmi#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds term="collector" scheme="http://schemas.ogf.org/occi/monitoring#" title="Collector Link">
+    <attributes name="occi.collector.period" mutable="true" required="true" description="Collector period">
+      <type href="http://schemas.ogf.org/occi#//Number"/>
+    </attributes>
+    <attributes name="occi.collector.periodspec" mutable="true" description="Period spec">
+      <type href="http://schemas.ogf.org/occi#//String"/>
+    </attributes>
+    <parent href="Core.xmi#//@kinds[term='link']"/>
+  </kinds>
+  <mixins term="metric" scheme="http://schemas.ogf.org/occi/monitoring/collector#" title="Collector Metric Mixin" applies="//@kinds[term='collector']"/>
+  <mixins term="aggregator" scheme="http://schemas.ogf.org/occi/monitoring/sensor#" title="Aggregator Mixin" applies="//@kinds[term='sensor']"/>
+  <mixins term="publisher" scheme="http://schemas.ogf.org/occi/monitoring/sensor#" title="Publisher Mixin" applies="//@kinds[term='sensor']"/>
+</OCCI:Extension>

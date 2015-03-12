@@ -1,0 +1,20 @@
+h1. Docker
+
+http://schemas.occiware.org/docker#
+
+h1. Imports
+
+OCCI Core http://schemas.ogf.org/occi/core#  
+
+h1. Kinds
+
+org.occiware.clouddesigner.OCCI.impl.KindImpl@1520ea8 (term: container, scheme: http://schemas.occiware.org/docker#, title: Container Resource)org.occiware.clouddesigner.OCCI.impl.KindImpl@150369 (term: service, scheme: http://schemas.occiware.org/docker#, title: Service Resource)org.occiware.clouddesigner.OCCI.impl.KindImpl@109fb41 (term: package, scheme: http://schemas.occiware.org/docker#, title: Package Resource)org.occiware.clouddesigner.OCCI.impl.KindImpl@4ea235 (term: application, scheme: http://schemas.occiware.org/docker#, title: Application Link)org.occiware.clouddesigner.OCCI.impl.KindImpl@132c79a (term: depends, scheme: http://schemas.occiware.org/docker#, title: Depends Link)org.occiware.clouddesigner.OCCI.impl.KindImpl@182859e (term: conflicts, scheme: http://schemas.occiware.org/docker#, title: Conflicts Link)
+
+h1. Mixins
+
+
+
+h1. Types
+
+
+
