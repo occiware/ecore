@@ -1,0 +1,2 @@
+Pour éditer ce projet, lancer un runtime eclipse et l'importer dans le workspace. 
+L'instance maître d'eclipse doit contenir les projets org.occiware.clouddesigner.occi.* (installées ou dans un workspace)

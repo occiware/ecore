@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.occiware.clouddesigner.occi.infrastructure;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-ClassPath: .
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: org.occiware.clouddesigner.occi.infrastructure,
+ org.occiware.clouddesigner.occi.infrastructure.impl,
+ org.occiware.clouddesigner.occi.infrastructure.util
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.emf.ecore;visibility:=reexport,
+ org.occiware.clouddesigner.occi;bundle-version="0.1.0";visibility:=reexport
+Bundle-ActivationPolicy: lazy
