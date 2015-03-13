@@ -17,6 +17,7 @@ import org.occiware.clouddesigner.OCCI.Action;
 import org.occiware.clouddesigner.OCCI.Attribute;
 import org.occiware.clouddesigner.OCCI.Extension;
 import org.occiware.clouddesigner.OCCI.Kind;
+import org.occiware.clouddesigner.OCCI.Mixin;
 
 public abstract class OCCIExtension2Ecore {
 
@@ -42,9 +43,10 @@ public abstract class OCCIExtension2Ecore {
 		for (Kind kind : extension.getKinds()) {
 			ePackage.getEClassifiers().add(convertKind(kind));
 		}
-		// for (Mixin mixin : extension.getMixins()) {
-		// ePackage.getEClassifiers().add(convertMixin(mixin));
-		// }
+		for (Mixin mixin : extension.getMixins()) {
+			ePackage.getEClassifiers().add(convertMixin(mixin));
+		}
+		
 		// resolve links
 		for (Kind kind : extension.getKinds()) {
 			EClass mappedEClass = parentKindMappings.get(ConverterUtils
@@ -60,17 +62,19 @@ public abstract class OCCIExtension2Ecore {
 		return ePackage;
 	}
 
-	// private EClass convertMixin(Mixin mixin) {
-	// EClass eClass = EcoreFactory.eINSTANCE.createEClass();
-	// eClass.setName(toU1Case(formatName(mixin.getTerm())));
-	// for (Attribute attribute : mixin.getAttributes()) {
-	// eClass.getEStructuralFeatures().add(convertAttribute(attribute));
-	// }
-	// for (Action action : mixin.getActions()) {
-	// eClass.getEOperations().add(convertAction(action));
-	// }
-	// return eClass;
-	// }
+	private EClass convertMixin(Mixin mixin) {
+		EClass eClass = EcoreFactory.eINSTANCE.createEClass();
+		eClass.setName(ConverterUtils.toU1Case(ConverterUtils.formatName(mixin
+				.getTerm())));
+		eClass.setAbstract(true);
+		for (Attribute attribute : mixin.getAttributes()) {
+			eClass.getEStructuralFeatures().add(convertAttribute(attribute));
+		}
+		for (Action action : mixin.getActions()) {
+			eClass.getEOperations().add(convertAction(action));
+		}
+		return eClass;
+	}
 
 	private EClass convertKind(Kind kind) {
 		EClass eClass = EcoreFactory.eINSTANCE.createEClass();

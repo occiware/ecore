@@ -1,0 +1,82 @@
+h1. OCCI Extension: OCCI Infrastructure
+
+http://schemas.ogf.org/occi/infrastructure#
+
+h1. Imports
+
+OCCI Core http://schemas.ogf.org/occi/core#  
+
+h1. Kinds
+
+h2. network
+
+parent: resource
+
+h2. compute
+
+parent: resource
+
+h2. storage
+
+parent: resource
+
+h2. storagelink
+
+parent: link
+
+h2. networkinterface
+
+parent: link
+
+
+
+h1. Mixins
+
+h2. ipnetwork
+
+h2. ipnetworkinterface
+
+h2. os_tpl
+
+h2. resource_tpl
+
+
+
+h1. Types
+
+h2. SuspendMethod: 
+
+h2. Integer4095: int
+
+h2. Token: java.lang.String
+
+h2. NetworkStatus: 
+
+h2. ComputeStatus: 
+
+h2. NetworkInterfaceStatus: 
+
+h2. Architecture: 
+
+h2. StopMethod: 
+
+h2. RestartMethod: 
+
+h2. IpAddress: java.lang.String
+
+h2. Allocation: 
+
+h2. StorageStatus: 
+
+h2. StorageLinkStatus: 
+
+h2. PositiveInteger: int
+
+h2. GHz: float
+
+h2. GiB: float
+
+h2. IpAddressRange: java.lang.String
+
+
+

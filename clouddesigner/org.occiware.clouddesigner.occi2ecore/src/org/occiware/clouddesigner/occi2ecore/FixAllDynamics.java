@@ -21,8 +21,8 @@ public final class FixAllDynamics {
 					}
 				});
 				for (File file : xmiFiles) {
-					String newPath = current.getPath()
-							+ "\\input_unchanged"
+					String newPath = current.getParentFile().getPath()
+							+ "\\org.occiware.clouddesigner.occi.samples"
 							+ file.getPath().substring(
 									inputDir.getPath().length());
 					File newDir = new File(newPath.substring(0,

@@ -3,9 +3,7 @@
 
 [template public main(extension : Extension)]
 [comment @main/]
-[file (extension.name+'.textile', false, 'UTF-8')]
 [extension.import.generateExtension()/]
-[/file]
 [/template]
 
 [template public generateExtension(extension : Extension)]
@@ -36,13 +34,21 @@ h1. Types
 [/template]
 
 [template public generateKind (kind : Kind) ]
-[kind.toString()/]
+h2. [kind.term/]
+
+parent: [kind.parent.term/]
+
+
 [/template]
 
 [template public generateMixin (mixin : Mixin) ]
-[mixin.toString()/]
+h2. [mixin.term/]
+
+
 [/template]
 
 [template public generateTypes (type : EDataType) ]
-[type.toString()/]
+h2. [type.name/]: [type.instanceClassName/]
+
+
 [/template]
