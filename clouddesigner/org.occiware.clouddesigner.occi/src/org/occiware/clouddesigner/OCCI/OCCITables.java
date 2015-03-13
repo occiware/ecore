@@ -50,7 +50,7 @@ public class OCCITables
 	/**
 	 *	The package descriptor for the package.
 	 */
-	public static final /*@NonNull*/ EcoreExecutorPackage PACKAGE = new EcoreExecutorPackage(OCCIPackage.eINSTANCE, null);
+	public static final /*@NonNull*/ EcoreExecutorPackage PACKAGE = new EcoreExecutorPackage(OCCIPackage.eINSTANCE); // PM: , null);
 
 	/**
 	 *	The library of all packages and types.
