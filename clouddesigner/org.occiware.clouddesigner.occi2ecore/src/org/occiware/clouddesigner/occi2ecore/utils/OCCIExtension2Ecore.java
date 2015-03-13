@@ -1,5 +1,7 @@
 package org.occiware.clouddesigner.occi2ecore.utils;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,6 +28,17 @@ public abstract class OCCIExtension2Ecore {
 
 	public abstract Map<String, EClass> initParentKindMappings();
 
+	public static void fixMetamodelRefs(File metamodelFile) throws IOException {
+		String content = ConverterUtils.readFileAsString(metamodelFile);
+		content = content.replaceAll("http://schemas.ogf.org/occi#",
+				"../../org.occiware.clouddesigner.occi/model/OCCI.ecore#");
+		content = content
+				.replaceAll(
+						"http://schemas.ogf.org/occi/infrastructure#",
+						"../../org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.ecore#");
+		ConverterUtils.writeStringToFile(metamodelFile, content);
+	}
+
 	public EPackage convertExtension(Extension extension) {
 		parentKindMappings = initParentKindMappings();
 		EPackage ePackage = EcoreFactory.eINSTANCE.createEPackage();
@@ -46,7 +59,7 @@ public abstract class OCCIExtension2Ecore {
 		for (Mixin mixin : extension.getMixins()) {
 			ePackage.getEClassifiers().add(convertMixin(mixin));
 		}
-		
+
 		// resolve links
 		for (Kind kind : extension.getKinds()) {
 			EClass mappedEClass = parentKindMappings.get(ConverterUtils

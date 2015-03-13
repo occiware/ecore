@@ -1,5 +1,6 @@
 package org.occiware.clouddesigner.occi2ecore;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -29,8 +30,10 @@ public class ConvertInfrastructure extends OCCIExtension2Ecore {
 				resourceSet, "input/extensions/Infrastructure.xmi");
 		EPackage res = new ConvertInfrastructure().convertExtension(infraExt);
 		res.setNsURI("http://schemas.ogf.org/occi/infrastructure");
-		ConverterUtils.save(resourceSet, res,
-				"output/extensions/Infrastructure.ecore");
+		ConverterUtils.save(resourceSet, res, "output/Infrastructure.ecore");
+		File current = new File(new File("").getAbsolutePath());
+		fixMetamodelRefs(new File(current.getPath()
+				+ "/output/Infrastructure.ecore"));
 	}
 
 	public Map<String, EClass> initParentKindMappings() {

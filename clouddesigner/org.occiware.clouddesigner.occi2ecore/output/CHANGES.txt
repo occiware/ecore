@@ -1,1 +1,0 @@
-Après conversion il faut rechercher/remplacer les dépendances entre MM cf ce qui est fait dans les projets de métamodèles

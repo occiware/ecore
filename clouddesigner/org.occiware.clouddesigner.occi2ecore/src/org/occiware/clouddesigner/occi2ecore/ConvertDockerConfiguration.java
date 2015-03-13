@@ -41,7 +41,7 @@ public class ConvertDockerConfiguration {
 		Configuration res = new ConvertDockerConfiguration()
 				.convertConfiguration(config);
 		ConverterUtils.save(resourceSet, res,
-				"output/docker/first-docker-configuration.xmi");
+				"output/first-docker-configuration.xmi");
 	}
 
 	public Configuration convertConfiguration(Configuration dynamicConfiguration) {

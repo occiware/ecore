@@ -1,5 +1,6 @@
 package org.occiware.clouddesigner.occi2ecore;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -33,7 +34,10 @@ public class ConvertDocker extends OCCIExtension2Ecore {
 				"input/docker/Docker.xmi");
 		EPackage res = new ConvertDocker().convertExtension(ext);
 		res.setNsURI("http://schemas.ogf.org/occi/docker");
-		ConverterUtils.save(resourceSet, res, "output/docker/Docker.ecore");
+		ConverterUtils.save(resourceSet, res, "output/Docker.ecore");
+
+		File current = new File(new File("").getAbsolutePath());
+		fixMetamodelRefs(new File(current.getPath() + "/output/Docker.ecore"));
 	}
 
 	public Map<String, EClass> initParentKindMappings() {
