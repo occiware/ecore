@@ -1,0 +1,54 @@
+[comment encoding = UTF-8 /]
+[module generate('http://www.eclipse.org/emf/2002/Ecore','http://schemas.ogf.org/occi')]
+
+[template public main(extension : Extension)]
+[comment @main/]
+[extension.import.generateExtension()/]
+[/template]
+
+[template public generateExtension(extension : Extension)]
+[file ('textile/'+extension.name+'.textile', false, 'UTF-8')]
+h1. OCCI Extension: [extension.name/]
+
+[extension.scheme/]
+
+h1. Imports
+
+[for (imported : Extension | extension.import)]
+[imported.name/] [imported.scheme/]  
+[/for]
+
+h1. Kinds
+
+[extension.kinds.generateKind()/]
+
+h1. Mixins
+
+[extension.mixins.generateMixin()/]
+
+h1. Types
+
+[extension.types.generateTypes()/]
+
+[/file]
+[/template]
+
+[template public generateKind (kind : Kind) ]
+h2. [kind.term/]
+
+parent: [kind.parent.term/]
+
+
+[/template]
+
+[template public generateMixin (mixin : Mixin) ]
+h2. [mixin.term/]
+
+
+[/template]
+
+[template public generateTypes (type : EDataType) ]
+h2. [type.name/]: [type.instanceClassName/]
+
+
+[/template]

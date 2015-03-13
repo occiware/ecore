@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="docker" nsURI="http://schemas.ogf.org/occi/docker" nsPrefix="docker">
+  <eClassifiers xsi:type="ecore:EEnum" name="Mode">
+    <eLiterals name="read_write" literal="read_write"/>
+    <eLiterals name="read_only" value="1" literal="read_only"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Container">
+    <eSuperTypes href="../../org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.ecore#//Compute"/>
+    <eOperations name="create"/>
+    <eOperations name="run"/>
+    <eOperations name="pause"/>
+    <eOperations name="unpause"/>
+    <eOperations name="kill">
+      <eParameters name="signal">
+        <eType xsi:type="ecore:EDataType" href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+      </eParameters>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name">
+      <eType xsi:type="ecore:EDataType" href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="containerid">
+      <eType xsi:type="ecore:EDataType" href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="image">
+      <eType xsi:type="ecore:EDataType" href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="build">
+      <eType xsi:type="ecore:EDataType" href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="command" defaultValueLiteral="">
+      <eType xsi:type="ecore:EDataType" href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ports">
+      <eType xsi:type="ecore:EDataType" href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="expose">
+      <eType xsi:type="ecore:EDataType" href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="volumes">
+      <eType xsi:type="ecore:EDataType" href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="environment">
+      <eType xsi:type="ecore:EDataType" href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="env_file">
+      <eType xsi:type="ecore:EDataType" href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="net">
+      <eType xsi:type="ecore:EDataType" href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dns">
+      <eType xsi:type="ecore:EDataType" href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dns_search">
+      <eType xsi:type="ecore:EDataType" href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cap_add">
+      <eType xsi:type="ecore:EDataType" href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cap_drop">
+      <eType xsi:type="ecore:EDataType" href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="working_dir">
+      <eType xsi:type="ecore:EDataType" href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="entrypoint">
+      <eType xsi:type="ecore:EDataType" href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="user">
+      <eType xsi:type="ecore:EDataType" href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="domainname">
+      <eType xsi:type="ecore:EDataType" href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mem_limit">
+      <eType xsi:type="ecore:EDataType" href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="privileged" defaultValueLiteral="false">
+      <eType xsi:type="ecore:EDataType" href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="restart" defaultValueLiteral="">
+      <eType xsi:type="ecore:EDataType" href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="stdin_open" defaultValueLiteral="">
+      <eType xsi:type="ecore:EDataType" href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="interactive" defaultValueLiteral="false">
+      <eType xsi:type="ecore:EDataType" href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tty" defaultValueLiteral="false">
+      <eType xsi:type="ecore:EDataType" href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cpu_shares" defaultValueLiteral="0">
+      <eType xsi:type="ecore:EDataType" href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pid">
+      <eType xsi:type="ecore:EDataType" href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ipc">
+      <eType xsi:type="ecore:EDataType" href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="add_host">
+      <eType xsi:type="ecore:EDataType" href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mac_address">
+      <eType xsi:type="ecore:EDataType" href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rm">
+      <eType xsi:type="ecore:EDataType" href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="security_opt">
+      <eType xsi:type="ecore:EDataType" href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="device">
+      <eType xsi:type="ecore:EDataType" href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lxc_conf">
+      <eType xsi:type="ecore:EDataType" href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cpuset" defaultValueLiteral="">
+      <eType xsi:type="ecore:EDataType" href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DockerLink">
+    <eSuperTypes href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Link"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="alias">
+      <eType xsi:type="ecore:EDataType" href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Volumesfrom">
+    <eSuperTypes href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Link"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mode" eType="//Mode" defaultValueLiteral="read_write"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Contains">
+    <eSuperTypes href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Link"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Machine">
+    <eSuperTypes href="../../org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.ecore#//Compute"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name">
+      <eType xsi:type="ecore:EDataType" href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Machine_Amazon_EC2" eSuperTypes="//Machine"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Machine_Digital_Ocean" eSuperTypes="//Machine"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Machine_Google_Compute_Engine" eSuperTypes="//Machine"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Machine_IBM_SoftLayer" eSuperTypes="//Machine"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Machine_Microsoft_Azure" eSuperTypes="//Machine"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Machine_Microsoft_Hyper_V" eSuperTypes="//Machine"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Machine_OpenStack" eSuperTypes="//Machine"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Machine_Rackspace" eSuperTypes="//Machine"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Machine_VirtualBox" eSuperTypes="//Machine">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="boot2docker_url">
+      <eType xsi:type="ecore:EDataType" href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="disk_size">
+      <eType xsi:type="ecore:EDataType" href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Machine_VMware_Fusion" eSuperTypes="//Machine"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Machine_VMware_vCloud_Air" eSuperTypes="//Machine"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Machine_VMware_vSphere" eSuperTypes="//Machine"/>
+</ecore:EPackage>

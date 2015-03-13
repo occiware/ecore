@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ASCII"?>
+<OCCI:Configuration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:OCCI="http://schemas.ogf.org/occi" xsi:schemaLocation="http://schemas.ogf.org/occi http://schemas.ogf.org/occi">
+  <use href="../extensions/Infrastructure.xmi#/"/>
+  <resources id="compute1">
+    <kind href="../extensions/Infrastructure.xmi#//@kinds[term='compute']"/>
+    <links id="netiface1" target="//@resources.2">
+      <kind href="../extensions/Infrastructure.xmi#//@kinds[term='networkinterface']"/>
+      <attributes name="occi.networkinterface.interface" value="eth0"/>
+      <attributes name="occi.networkinterface.mac" value="00:24:64:17:a0:23"/>
+      <attributes name="occi.networkinterface.state" value="active"/>
+    </links>
+  </resources>
+  <resources id="compute2">
+    <kind href="../extensions/Infrastructure.xmi#//@kinds[term='compute']"/>
+    <links id="netiface2" target="//@resources.2">
+      <kind href="../extensions/Infrastructure.xmi#//@kinds[term='networkinterface']"/>
+      <attributes name="occi.netiworknterface.interface" value="eth0"/>
+      <attributes name="occi.networkinterface.mac" value="00:24:64:37:a1:25"/>
+      <attributes name="occi.networkinterface.state" value="active"/>
+      <attributes name="occi.networkinterface.address" value="192.168.0.65"/>
+      <attributes name="occi.networkinterface.gateway" value="192.168.0.1"/>
+      <attributes name="occi.networkinterface.allocation" value="dynamic"/>
+    </links>
+  </resources>
+  <resources id="network1">
+    <kind href="../extensions/Infrastructure.xmi#//@kinds[term='network']"/>
+  </resources>
+</OCCI:Configuration>

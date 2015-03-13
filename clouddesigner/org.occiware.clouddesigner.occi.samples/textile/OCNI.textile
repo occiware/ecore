@@ -1,0 +1,81 @@
+h1. OCCI Extension: OCNI
+
+http://exem.com/ocni#
+
+h1. Imports
+
+OCCI Core http://schemas.ogf.org/occi/core#  
+OCCI Infrastructure http://schemas.ogf.org/occi/infrastructure#  
+
+h1. Kinds
+
+h2. CloNeNode
+
+parent: network
+
+h2. CloNeLink
+
+parent: network
+
+h2. FNS
+
+parent: network
+
+h2. FNSComLink
+
+parent: networkinterface
+
+h2. CloNeLinkComLink
+
+parent: networkinterface
+
+h2. CloNeNetworkInterface
+
+parent: NetNetLink
+
+h2. NetNetLink
+
+parent: link
+
+h2. StorStorLink
+
+parent: link
+
+h2. NetStorLink
+
+parent: link
+
+h2. ComComLink
+
+parent: link
+
+h2. CloNeNodeComLink
+
+parent: networkinterface
+
+
+
+h1. Mixins
+
+
+
+h1. Types
+
+h2. Availability: ocni.Availability
+
+h2. Location: ocni.Location
+
+h2. Bandwidth: java.lang.String
+
+h2. Latency: java.lang.String
+
+h2. Jitter: java.lang.String
+
+h2. Loss: java.lang.String
+
+h2. RoutingScheme: ocni.RoutingScheme
+
+h2. State: 
+
+
+

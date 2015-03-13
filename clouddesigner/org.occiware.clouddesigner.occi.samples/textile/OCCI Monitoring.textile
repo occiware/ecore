@@ -1,0 +1,34 @@
+h1. OCCI Extension: OCCI Monitoring
+
+http://schemas.ogf.org/occi/monitoring#
+
+h1. Imports
+
+OCCI Core http://schemas.ogf.org/occi/core#  
+
+h1. Kinds
+
+h2. sensor
+
+parent: resource
+
+h2. collector
+
+parent: link
+
+
+
+h1. Mixins
+
+h2. metric
+
+h2. aggregator
+
+h2. publisher
+
+
+
+h1. Types
+
+
+

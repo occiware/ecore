@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ASCII"?>
+<OCCI:Configuration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:OCCI="http://schemas.ogf.org/occi" xsi:schemaLocation="http://schemas.ogf.org/occi http://schemas.ogf.org/occi">
+  <use href="../extensions/Core.xmi#/"/>
+  <resources id="r1">
+    <kind href="../extensions/Core.xmi#//@kinds[term='resource']"/>
+    <links id="l1" target="//@resources.1">
+      <kind href="../extensions/Infrastructure.xmi#//@kinds[term='networkinterface']"/>
+    </links>
+  </resources>
+  <resources id="r2">
+    <kind href="../extensions/Core.xmi#//@kinds[term='resource']"/>
+  </resources>
+</OCCI:Configuration>

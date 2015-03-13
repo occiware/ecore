@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="infrastructure" nsURI="http://schemas.ogf.org/occi/infrastructure" nsPrefix="infrastructure">
+  <eClassifiers xsi:type="ecore:EEnum" name="SuspendMethod">
+    <eLiterals name="hibernate"/>
+    <eLiterals name="suspend" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="Integer4095" instanceClassName="int">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="minInclusive" value="0"/>
+      <details key="maxInclusive" value="4095"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="Token" instanceClassName="java.lang.String"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="NetworkStatus">
+    <eLiterals name="active"/>
+    <eLiterals name="inactive" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ComputeStatus">
+    <eLiterals name="active"/>
+    <eLiterals name="inactive" value="1"/>
+    <eLiterals name="suspended" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="NetworkInterfaceStatus">
+    <eLiterals name="active"/>
+    <eLiterals name="inactive" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Architecture">
+    <eLiterals name="x86"/>
+    <eLiterals name="x64" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="StopMethod">
+    <eLiterals name="graceful"/>
+    <eLiterals name="acpioff" value="1"/>
+    <eLiterals name="poweroff" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="RestartMethod">
+    <eLiterals name="graceful"/>
+    <eLiterals name="warm" value="1"/>
+    <eLiterals name="cold" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="IpAddress" instanceClassName="java.lang.String"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="Allocation">
+    <eLiterals name="dynamic"/>
+    <eLiterals name="static" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="StorageStatus">
+    <eLiterals name="online"/>
+    <eLiterals name="offline" value="1"/>
+    <eLiterals name="backup" value="2"/>
+    <eLiterals name="snapshot" value="3"/>
+    <eLiterals name="resize" value="4"/>
+    <eLiterals name="degraded" value="5"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="StorageLinkStatus">
+    <eLiterals name="active"/>
+    <eLiterals name="inactive" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="PositiveInteger" instanceClassName="int"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="GHz" instanceClassName="float"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="GiB" instanceClassName="float"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="IpAddressRange" instanceClassName="java.lang.String"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Network">
+    <eSuperTypes href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Resource"/>
+    <eOperations name="up"/>
+    <eOperations name="down"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="vlan" eType="//Integer4095"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" eType="//Token"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="state" eType="//ComputeStatus"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Compute">
+    <eSuperTypes href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Resource"/>
+    <eOperations name="start"/>
+    <eOperations name="stop">
+      <eParameters name="method" eType="//StopMethod"/>
+    </eOperations>
+    <eOperations name="restart">
+      <eParameters name="method" eType="//RestartMethod"/>
+    </eOperations>
+    <eOperations name="suspend">
+      <eParameters name="method" eType="//SuspendMethod"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="architecture" eType="//Architecture"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cores" eType="//PositiveInteger"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hostname">
+      <eType xsi:type="ecore:EDataType" href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="speed" eType="//GHz"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="memory" eType="//GiB"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="state" eType="//ComputeStatus" defaultValueLiteral="inactive"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Storage">
+    <eSuperTypes href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Resource"/>
+    <eOperations name="online"/>
+    <eOperations name="offline"/>
+    <eOperations name="backup"/>
+    <eOperations name="snapshot"/>
+    <eOperations name="resize">
+      <eParameters name="size" eType="//GiB"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="size" eType="//GiB"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="state" eType="//StorageStatus"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Storagelink">
+    <eSuperTypes href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Link"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="deviceid">
+      <eType xsi:type="ecore:EDataType" href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mountpoint">
+      <eType xsi:type="ecore:EDataType" href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="state" eType="//StorageLinkStatus"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Networkinterface">
+    <eSuperTypes href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Link"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="interface">
+      <eType xsi:type="ecore:EDataType" href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mac" defaultValueLiteral="">
+      <eType xsi:type="ecore:EDataType" href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="state" eType="//NetworkInterfaceStatus"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Ipnetwork" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="address" eType="//IpAddressRange"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="gateway" eType="//IpAddress"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="allocation" eType="//Allocation"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Ipnetworkinterface" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="address" eType="//IpAddress"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="gateway" eType="//IpAddress"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="allocation" eType="//Allocation"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Os_tpl" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Resource_tpl" abstract="true"/>
+</ecore:EPackage>

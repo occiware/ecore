@@ -1,0 +1,44 @@
+import '../OCCI.ecore'
+
+library 'Core.ocl'
+
+package OCCI
+
+context Resource
+def : kindOf_Container : Boolean = kindOf('container')
+def : kindOf_Machine_VirtualBox : Boolean = kindOf('machine_VirtualBox')
+
+def : memoryLimit : Integer =
+compute(kindOf_Container, attributeAsInteger('mem_limit'),
+  compute(kindOf_Machine_VirtualBox, getLinks('contains').target.memoryLimit->sum(), 0)
+)
+
+def : memory : Integer =
+compute(kindOf_Machine_VirtualBox, attributeAsInteger('memory'), 0)
+
+inv ContainersUsedTooMemory('Containers consume ' + memoryLimit.toString() + ' when memory is equals to ' + memory.toString()): 
+when(kindOf_Machine_VirtualBox, memoryLimit <= memory)
+
+context Link
+def : kindOf_Link : Boolean = kindOf('link')
+def : kindOf_VolumesFrom : Boolean = kindOf('volumesfrom')
+
+inv LinkSourceAsContainer:
+when(kindOf_Link, source.kindOf_Container)
+
+inv LinkTargetAsContainer:
+when(kindOf_Link, target.kindOf_Container)
+
+inv LinkCanOnlyConnectColocalizedContainers:
+when(kindOf_Link, linksTo('contains', source).source = linksTo('contains', target).source)
+
+inv VolumesFromCanOnlyConnectColocalizedContainers:
+when(kindOf_VolumesFrom, linksTo('contains', source).source = linksTo('contains', target).source)
+
+inv VolumesFromSourceAsContainer:
+when(kindOf_VolumesFrom, source.kindOf_Container)
+
+inv VolumesFromTargetAsContainer:
+when(kindOf_VolumesFrom, target.kindOf_Container)
+
+endpackage

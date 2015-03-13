@@ -1,0 +1,22 @@
+import '../OCCI.ecore'
+
+package OCCI
+
+context Entity
+def : kindOf(t : String) : Boolean = kind.term = t
+def : attributeAsString(n : String) : Set(String) = attributes->select(name = n).value
+def : attributeAsInteger(n : String) : Integer = attributeAsString(n).toInteger()->sum()
+
+def : when(condition : Boolean, result : Boolean) : Boolean = if condition then result else true endif
+def : compute(condition : Boolean, rthen : Integer, relse : Integer) : Integer = if condition then rthen else relse endif
+
+
+context Resource
+def : getLinks(t : String) : Set(Link) = links->select(kind.term = t)
+
+context Link
+
+def : allLinks(t : String) : Set(Link) = Link.allInstances()->select(kindOf(t))
+def : linksTo(t : String, to : Resource) : Set(Link) = allLinks(t)->select(target = to)
+
+endpackage
