@@ -6,19 +6,16 @@ package OCCI
 
 context Configuration
 inv MachineNameUnique:
-resources->select(kindOf_Machine)->isUnique(name)
+resources->select(kindOf_Machine)->isUnique(attributeAsString('name'))
 
 context Resource
 def : kindOf_Container : Boolean = kindOf('http://occiware.org/docker#container')
 def : kindOf_Machine : Boolean = kindOf('http://occiware.org/docker#machine')
 def : kindOf_Machine_VirtualBox : Boolean = kindOf('http://occiware.org/docker#machine_VirtualBox')
 
-def : name : String =
-if kindOf_Machine then attributeAsString('name') else '' endif
-
 def : memoryLimit : Integer =
 computeInteger(kindOf_Container, attributeAsInteger('mem_limit'),
-  computeInteger(kindOf_Machine_VirtualBox, getLinks('http://occiware.org/docker#contains').target.memoryLimit->sum(), 0)
+  computeInteger(kindOf_Machine_VirtualBox, links->select(kindOf_Contains).target.memoryLimit->sum(), 0)
 )
 
 def : memory : Integer =
@@ -28,10 +25,8 @@ inv ContainersUsedTooMemory('Containers consume ' + memoryLimit.toString() + ' w
 when(kindOf_Machine_VirtualBox, memoryLimit <= memory)
 
 context Link
-def : identity_Link : String = 'http://occiware.org/docker#link'
-def : kindOf_Link : Boolean = kindOf(identity_Link)
-def : identity_VolumesFrom : String = 'http://occiware.org/docker#volumesfrom'
-def : kindOf_VolumesFrom : Boolean = kindOf(identity_VolumesFrom)
+def : kindOf_Link : Boolean = kindOf('http://occiware.org/docker#link')
+def : kindOf_VolumesFrom : Boolean = kindOf('http://occiware.org/docker#volumesfrom')
 def : identity_Contains : String = 'http://occiware.org/docker#contains'
 def : kindOf_Contains : Boolean = kindOf(identity_Contains)
 
