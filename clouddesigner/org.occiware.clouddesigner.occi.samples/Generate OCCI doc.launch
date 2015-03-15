@@ -14,6 +14,6 @@
 </listAttribute>
 <booleanAttribute key="org.eclipse.jdt.launching.ATTR_USE_START_ON_FIRST_THREAD" value="true"/>
 <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="org.occiware.clouddesigner.occi.gen.doc.main.Generate"/>
-<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="&quot;D:/dev/git/occiware/ecore/clouddesigner/org.occiware.clouddesigner.occi.samples/extensions/All.xmi&quot; &quot;D:/dev/git/occiware/ecore/clouddesigner/org.occiware.clouddesigner.occi.samples&quot;"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="&quot;/Users/merle/git/ecore/clouddesigner/org.occiware.clouddesigner.occi.samples/extensions/All.xmi&quot; &quot;/Users/merle/git/ecore/clouddesigner/org.occiware.clouddesigner.occi.samples&quot;"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="org.occiware.clouddesigner.occi.gen.doc"/>
 </launchConfiguration>
