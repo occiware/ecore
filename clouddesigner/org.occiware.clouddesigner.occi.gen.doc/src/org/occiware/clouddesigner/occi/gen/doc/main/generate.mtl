@@ -3,6 +3,7 @@
 
 [template public main(extension : Extension)]
 [comment @main/]
+[extension.generateExtension()/]
 [extension.import.generateExtension()/]
 [/template]
 
