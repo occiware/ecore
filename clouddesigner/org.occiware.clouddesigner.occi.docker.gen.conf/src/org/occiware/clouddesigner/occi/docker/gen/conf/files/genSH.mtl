@@ -1,0 +1,51 @@
+[comment encoding = UTF-8 /]
+[module genSH('http://schemas.ogf.org/occi/docker', 'http://schemas.ogf.org/occi/infrastructure', 'http://schemas.ogf.org/occi')]
+
+[template public generateSH(configuration : Configuration)]
+[file ('docker-conf.sh', false, 'UTF-8')]
+#!/bin/sh
+
+[for (resource : Resource | configuration.resources)]
+	[if (resource.oclIsKindOf(Machine))]
+[oclAsType(Machine).genMachine()/]
+	[/if]
+[/for]
+[/file]
+[/template]
+
+[template public genMachine (machine : Machine) ]
+# Create the Docker [eClass().name/] named [name/]
+docker-machine create --driver=[getDriverConfig()/] [name/]
+
+[getOrderedContainers().genContainer(machine.name)/]
+
+[/template]
+
+[template public genContainer (container : Container, machineName : String) ]
+# Create the Docker [eClass().name/] named [name/]
+docker $(docker-machine config [machineName/]) create --name [name/] [getLinkConfig()/] [image.trim()/] [command.trim()/]
+
+# Start the Docker [eClass().name/] named [name/]
+docker $(docker-machine config [machineName/]) start [name/]
+
+
+[/template]
+
+[template public getDriverConfig (machine : Machine) post (trim())]
+[if (machine.oclIsTypeOf(Machine_VirtualBox))]
+	virtualbox --virtualbox-memory 2048 --virtualbox-disk-size 80000 
+[/if]
+[/template]
+
+[template public getLinkConfig (container : Container) post (trim())]
+[for (link : Link | links->filter(DockerLink))]
+-P --link [link.oclAsType(DockerLink).alias/]:[link.target.oclAsType(Container).name/]
+[/for]
+[/template]
+
+[query public getOrderedContainers(machine : Machine) : Sequence(Container)
+	= invoke(
+	'org.occiware.clouddesigner.occi.docker.gen.conf.services.GenUtils', 
+	'getOrderedContainers(org.occiware.clouddesigner.occi.docker.Machine)', 
+	Sequence{machine})/]
+

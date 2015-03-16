@@ -41,12 +41,17 @@ public class ConvertDockerConfiguration {
 	}
 
 	public static void main(String[] args) throws IOException {
+		convertInstanceFile("first-docker-configuration.xmi");
+		convertInstanceFile("demo.xmi");
+	}
+
+	private static void convertInstanceFile(String fileName) throws IOException {
 		Configuration config = (Configuration) ConverterUtils.getRootElement(
-				resourceSet, "input/docker/first-docker-configuration.xmi");
+				resourceSet, "input/docker/" + fileName);
 		Configuration res = new ConvertDockerConfiguration()
 				.convertConfiguration(config);
 		ConverterUtils.save(resourceSet, res,
-				"output/first-docker-configuration.xmi");
+				"output/"+fileName);
 	}
 
 	public Configuration convertConfiguration(Configuration dynamicConfiguration) {

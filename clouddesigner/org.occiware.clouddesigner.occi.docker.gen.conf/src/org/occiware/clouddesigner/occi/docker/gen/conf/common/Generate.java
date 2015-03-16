@@ -8,7 +8,7 @@
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
-package org.occiware.clouddesigner.occi.docker.gen.compose.common;
+package org.occiware.clouddesigner.occi.docker.gen.conf.common;
 
 import java.io.File;
 import java.io.IOException;
@@ -38,7 +38,7 @@ public class Generate extends AbstractAcceleoGenerator {
 	 *
 	 * @generated
 	 */
-	public static final String MODULE_FILE_NAME = "/org/occiware/clouddesigner/occi/docker/gen/compose/common/generate";
+	public static final String MODULE_FILE_NAME = "/org/occiware/clouddesigner/occi/docker/gen/conf/common/generate";
 
 	/**
 	 * The name of the templates that are to be generated.

@@ -19,7 +19,6 @@ import org.occiware.clouddesigner.OCCI.Action;
 import org.occiware.clouddesigner.OCCI.Attribute;
 import org.occiware.clouddesigner.OCCI.Extension;
 import org.occiware.clouddesigner.OCCI.Kind;
-import org.occiware.clouddesigner.OCCI.Mixin;
 
 public abstract class OCCIExtension2Ecore {
 
@@ -59,12 +58,12 @@ public abstract class OCCIExtension2Ecore {
 				ePackage.getEClassifiers().add(convertKind);
 			}
 		}
-		for (Mixin mixin : extension.getMixins()) {
-			EClass convertMixin = convertMixin(mixin);
-			if (convertMixin != null) {
-				ePackage.getEClassifiers().add(convertMixin);
-			}
-		}
+		// for (Mixin mixin : extension.getMixins()) {
+		// EClass convertMixin = convertMixin(mixin);
+		// if (convertMixin != null) {
+		// ePackage.getEClassifiers().add(convertMixin);
+		// }
+		// }
 
 		// resolve links
 		for (Kind kind : extension.getKinds()) {
@@ -81,25 +80,25 @@ public abstract class OCCIExtension2Ecore {
 		return ePackage;
 	}
 
-	protected EClass convertMixin(Mixin mixin) {
-		EClass eClass = EcoreFactory.eINSTANCE.createEClass();
-		eClass.setName(ConverterUtils.toU1Case(ConverterUtils.formatName(mixin
-				.getTerm())));
-		eClass.setAbstract(true);
-		for (Attribute attribute : mixin.getAttributes()) {
-			EAttribute convertAttribute = convertAttribute(attribute);
-			if (convertAttribute != null) {
-				eClass.getEStructuralFeatures().add(convertAttribute);
-			}
-		}
-		for (Action action : mixin.getActions()) {
-			EOperation convertAction = convertAction(action);
-			if (convertAction != null) {
-				eClass.getEOperations().add(convertAction);
-			}
-		}
-		return eClass;
-	}
+//	protected EClass convertMixin(Mixin mixin) {
+//		EClass eClass = EcoreFactory.eINSTANCE.createEClass();
+//		eClass.setName(ConverterUtils.toU1Case(ConverterUtils.formatName(mixin
+//				.getTerm())));
+//		eClass.setAbstract(true);
+//		for (Attribute attribute : mixin.getAttributes()) {
+//			EAttribute convertAttribute = convertAttribute(attribute);
+//			if (convertAttribute != null) {
+//				eClass.getEStructuralFeatures().add(convertAttribute);
+//			}
+//		}
+//		for (Action action : mixin.getActions()) {
+//			EOperation convertAction = convertAction(action);
+//			if (convertAction != null) {
+//				eClass.getEOperations().add(convertAction);
+//			}
+//		}
+//		return eClass;
+//	}
 
 	protected EClass convertKind(Kind kind) {
 		EClass eClass = EcoreFactory.eINSTANCE.createEClass();
@@ -142,6 +141,9 @@ public abstract class OCCIExtension2Ecore {
 		EParameter eParam = EcoreFactory.eINSTANCE.createEParameter();
 		eParam.setName(ConverterUtils.formatName(attribute.getName()));
 		eParam.setEType(getActualType(attribute.getType()));
+		if (attribute.isRequired()) {
+			eParam.setLowerBound(1);
+		}
 		return eParam;
 	}
 
@@ -152,6 +154,9 @@ public abstract class OCCIExtension2Ecore {
 		String defaultValue = attribute.getDefault();
 		if (defaultValue != null) {
 			eAttr.setDefaultValue(defaultValue);
+		}
+		if (attribute.isRequired()) {
+			eAttr.setLowerBound(1);
 		}
 		return eAttr;
 	}

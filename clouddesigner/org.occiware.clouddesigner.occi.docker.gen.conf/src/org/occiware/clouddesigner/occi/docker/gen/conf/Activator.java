@@ -8,7 +8,7 @@
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
-package org.occiware.clouddesigner.occi.docker.gen.compose;
+package org.occiware.clouddesigner.occi.docker.gen.conf;
 
 import org.eclipse.core.runtime.Plugin;
 import org.osgi.framework.BundleContext;
