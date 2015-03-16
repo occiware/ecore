@@ -42,6 +42,7 @@ h3. Attributes
 | hostname | String | false | false |  |  |
 | domainname | String | false | false |  |  |
 | mem_limit | Number | false | false |  |  |
+| memory_swap | Number | false | false |  | Memory swap limit |
 | privileged | Boolean | false | false | false |  |
 | restart | String | false | false |  |  |
 | stdin_open | Boolean | false | false |  |  |
@@ -57,6 +58,8 @@ h3. Attributes
 | device | String | false | false |  |  |
 | lxc_conf | String | false | false |  |  |
 | cpuset | String | false | false |  |  |
+| publish_all | Boolean | false | false | false | Publish all exposed ports to random ports on the host interfaces |
+| read_only | Boolean | false | false | false | Mount the container's root filesystem as read only |
 
 h3. Actions
 
