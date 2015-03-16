@@ -301,8 +301,8 @@ h3. Attributes
 
 | *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
 | boot2docker_url | String | false | false |  |  |
-| disk_size | Number | false | false |  |  |
-| memory | Number | false | false |  |  |
+| disk_size | Number | false | false | 20000 | Size of disk for the host in MB |
+| memory | Number | false | false | 1024 | Size of memory for the host in MB |
 
 h3. Actions
 
