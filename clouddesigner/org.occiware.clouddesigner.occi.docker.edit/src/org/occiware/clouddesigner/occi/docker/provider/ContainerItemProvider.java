@@ -72,6 +72,7 @@ public class ContainerItemProvider extends ComputeItemProvider {
 			addUserPropertyDescriptor(object);
 			addDomainnamePropertyDescriptor(object);
 			addMem_limitPropertyDescriptor(object);
+			addMemory_swapPropertyDescriptor(object);
 			addPrivilegedPropertyDescriptor(object);
 			addRestartPropertyDescriptor(object);
 			addStdin_openPropertyDescriptor(object);
@@ -87,6 +88,8 @@ public class ContainerItemProvider extends ComputeItemProvider {
 			addDevicePropertyDescriptor(object);
 			addLxc_confPropertyDescriptor(object);
 			addCpusetPropertyDescriptor(object);
+			addPublish_allPropertyDescriptor(object);
+			addRead_onlyPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -532,6 +535,28 @@ public class ContainerItemProvider extends ComputeItemProvider {
 	}
 
 	/**
+	 * This adds a property descriptor for the Memory swap feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addMemory_swapPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Container_memory_swap_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Container_memory_swap_feature", "_UI_Container_type"),
+				 DockerPackage.Literals.CONTAINER__MEMORY_SWAP,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Privileged feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -862,6 +887,50 @@ public class ContainerItemProvider extends ComputeItemProvider {
 	}
 
 	/**
+	 * This adds a property descriptor for the Publish all feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addPublish_allPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Container_publish_all_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Container_publish_all_feature", "_UI_Container_type"),
+				 DockerPackage.Literals.CONTAINER__PUBLISH_ALL,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Read only feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addRead_onlyPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Container_read_only_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Container_read_only_feature", "_UI_Container_type"),
+				 DockerPackage.Literals.CONTAINER__READ_ONLY,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns Container.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -919,6 +988,7 @@ public class ContainerItemProvider extends ComputeItemProvider {
 			case DockerPackage.CONTAINER__USER:
 			case DockerPackage.CONTAINER__DOMAINNAME:
 			case DockerPackage.CONTAINER__MEM_LIMIT:
+			case DockerPackage.CONTAINER__MEMORY_SWAP:
 			case DockerPackage.CONTAINER__PRIVILEGED:
 			case DockerPackage.CONTAINER__RESTART:
 			case DockerPackage.CONTAINER__STDIN_OPEN:
@@ -934,6 +1004,8 @@ public class ContainerItemProvider extends ComputeItemProvider {
 			case DockerPackage.CONTAINER__DEVICE:
 			case DockerPackage.CONTAINER__LXC_CONF:
 			case DockerPackage.CONTAINER__CPUSET:
+			case DockerPackage.CONTAINER__PUBLISH_ALL:
+			case DockerPackage.CONTAINER__READ_ONLY:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

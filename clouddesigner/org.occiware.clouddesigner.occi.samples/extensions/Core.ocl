@@ -1,0 +1,27 @@
+import '../OCCI.ecore'
+
+package OCCI
+
+context Category
+def : identity : String = scheme + term
+
+context Kind
+def : isCompatibleWith(id : String) : Boolean = self->closure(parent).identity->includes(id)
+
+context Entity
+def : kindOf(identity : String) : Boolean = kind.isCompatibleWith(identity)
+def : attributeAsString(n : String) : Set(String) = attributes->select(name = n).value
+def : attributeAsInteger(n : String) : Integer = attributeAsString(n).toInteger()->sum()
+
+def : when(condition : Boolean, result : Boolean) : Boolean = if condition then result else true endif
+def : computeInteger(condition : Boolean, rthen : Integer, relse : Integer) : Integer = if condition then rthen else relse endif
+def : computeString(condition : Boolean, rthen : String, relse : String) : String = if condition then rthen else relse endif
+
+context Resource
+def : getLinks(identity : String) : Set(Link) = links->select(kindOf(identity))
+
+context Link
+def : allLinks(identity : String) : Set(Link) = Link.allInstances()->select(kindOf(identity))
+def : linksTo(identity : String, to : Resource) : Set(Link) = allLinks(identity)->select(target = to)
+
+endpackage

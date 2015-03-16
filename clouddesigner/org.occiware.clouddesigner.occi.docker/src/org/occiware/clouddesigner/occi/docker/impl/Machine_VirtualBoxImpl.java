@@ -54,7 +54,7 @@ public class Machine_VirtualBoxImpl extends MachineImpl implements Machine_Virtu
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int DISK_SIZE_EDEFAULT = 0;
+	protected static final int DISK_SIZE_EDEFAULT = 20000;
 
 	/**
 	 * The cached value of the '{@link #getDisk_size() <em>Disk size</em>}' attribute.

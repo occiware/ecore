@@ -1,0 +1,43 @@
+import '../OCCI.ecore'
+
+library 'Core.ocl'
+
+package OCCI
+
+context Configuration
+inv NetworkVlanUnique:
+resources->select(kindOf_Network)->isUnique(attributeAsString('occi.network.vlan'))
+
+inv ComputeNetworkInterfaceMacUnique:
+resources->select(kindOf_Compute).links->select(kindOf_NetworkInterface)->isUnique(attributeAsString('occi.networkinterface.mac'))
+
+context Resource
+
+def : kindOf_Compute : Boolean = kindOf('http://schemas.ogf.org/occi/infrastructure#compute')
+def : kindOf_Network : Boolean = kindOf('http://schemas.ogf.org/occi/infrastructure#network')
+def : kindOf_Storage : Boolean = kindOf('http://schemas.ogf.org/occi/infrastructure#storage')
+
+inv StorageLinkMountpointUnique:
+when(kindOf_Compute, links->select(kindOf_StorageLink)->isUnique(attributeAsString('occi.storagelink.mountpoint')))
+
+inv NetworkInterfaceInterfaceUnique:
+when(kindOf_Compute, links->select(kindOf_NetworkInterface)->isUnique(attributeAsString('occi.networkinterface.interface')))
+
+context Link
+
+def : kindOf_NetworkInterface : Boolean = kindOf('http://schemas.ogf.org/occi/infrastructure#networkinterface')
+def : kindOf_StorageLink : Boolean = kindOf('http://schemas.ogf.org/occi/infrastructure#storagelink')
+
+inv NetworkInterfaceSourceAsCompute:
+when(kindOf_NetworkInterface, source.kindOf_Compute)
+
+inv NetworkInterfaceTargetAsNetwork:
+when(kindOf_NetworkInterface, target.kindOf_Network)
+
+inv StorageLinkSourceAsCompute:
+when(kindOf_StorageLink, source.kindOf_Compute)
+
+inv StorageLinkTargetAsStorage:
+when(kindOf_StorageLink, target.kindOf_Storage)
+
+endpackage

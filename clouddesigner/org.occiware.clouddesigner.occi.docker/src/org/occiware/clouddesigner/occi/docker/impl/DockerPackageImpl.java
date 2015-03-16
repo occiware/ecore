@@ -425,7 +425,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getContainer_Privileged() {
+	public EAttribute getContainer_Memory_swap() {
 		return (EAttribute)containerEClass.getEStructuralFeatures().get(20);
 	}
 
@@ -434,7 +434,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getContainer_Restart() {
+	public EAttribute getContainer_Privileged() {
 		return (EAttribute)containerEClass.getEStructuralFeatures().get(21);
 	}
 
@@ -443,7 +443,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getContainer_Stdin_open() {
+	public EAttribute getContainer_Restart() {
 		return (EAttribute)containerEClass.getEStructuralFeatures().get(22);
 	}
 
@@ -452,7 +452,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getContainer_Interactive() {
+	public EAttribute getContainer_Stdin_open() {
 		return (EAttribute)containerEClass.getEStructuralFeatures().get(23);
 	}
 
@@ -461,7 +461,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getContainer_Tty() {
+	public EAttribute getContainer_Interactive() {
 		return (EAttribute)containerEClass.getEStructuralFeatures().get(24);
 	}
 
@@ -470,7 +470,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getContainer_Cpu_shares() {
+	public EAttribute getContainer_Tty() {
 		return (EAttribute)containerEClass.getEStructuralFeatures().get(25);
 	}
 
@@ -479,7 +479,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getContainer_Pid() {
+	public EAttribute getContainer_Cpu_shares() {
 		return (EAttribute)containerEClass.getEStructuralFeatures().get(26);
 	}
 
@@ -488,7 +488,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getContainer_Ipc() {
+	public EAttribute getContainer_Pid() {
 		return (EAttribute)containerEClass.getEStructuralFeatures().get(27);
 	}
 
@@ -497,7 +497,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getContainer_Add_host() {
+	public EAttribute getContainer_Ipc() {
 		return (EAttribute)containerEClass.getEStructuralFeatures().get(28);
 	}
 
@@ -506,7 +506,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getContainer_Mac_address() {
+	public EAttribute getContainer_Add_host() {
 		return (EAttribute)containerEClass.getEStructuralFeatures().get(29);
 	}
 
@@ -515,7 +515,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getContainer_Rm() {
+	public EAttribute getContainer_Mac_address() {
 		return (EAttribute)containerEClass.getEStructuralFeatures().get(30);
 	}
 
@@ -524,7 +524,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getContainer_Security_opt() {
+	public EAttribute getContainer_Rm() {
 		return (EAttribute)containerEClass.getEStructuralFeatures().get(31);
 	}
 
@@ -533,7 +533,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getContainer_Device() {
+	public EAttribute getContainer_Security_opt() {
 		return (EAttribute)containerEClass.getEStructuralFeatures().get(32);
 	}
 
@@ -542,7 +542,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getContainer_Lxc_conf() {
+	public EAttribute getContainer_Device() {
 		return (EAttribute)containerEClass.getEStructuralFeatures().get(33);
 	}
 
@@ -551,8 +551,35 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getContainer_Cpuset() {
+	public EAttribute getContainer_Lxc_conf() {
 		return (EAttribute)containerEClass.getEStructuralFeatures().get(34);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getContainer_Cpuset() {
+		return (EAttribute)containerEClass.getEStructuralFeatures().get(35);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getContainer_Publish_all() {
+		return (EAttribute)containerEClass.getEStructuralFeatures().get(36);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getContainer_Read_only() {
+		return (EAttribute)containerEClass.getEStructuralFeatures().get(37);
 	}
 
 	/**
@@ -847,6 +874,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		createEAttribute(containerEClass, CONTAINER__USER);
 		createEAttribute(containerEClass, CONTAINER__DOMAINNAME);
 		createEAttribute(containerEClass, CONTAINER__MEM_LIMIT);
+		createEAttribute(containerEClass, CONTAINER__MEMORY_SWAP);
 		createEAttribute(containerEClass, CONTAINER__PRIVILEGED);
 		createEAttribute(containerEClass, CONTAINER__RESTART);
 		createEAttribute(containerEClass, CONTAINER__STDIN_OPEN);
@@ -862,6 +890,8 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		createEAttribute(containerEClass, CONTAINER__DEVICE);
 		createEAttribute(containerEClass, CONTAINER__LXC_CONF);
 		createEAttribute(containerEClass, CONTAINER__CPUSET);
+		createEAttribute(containerEClass, CONTAINER__PUBLISH_ALL);
+		createEAttribute(containerEClass, CONTAINER__READ_ONLY);
 		createEOperation(containerEClass, CONTAINER___CREATE);
 		createEOperation(containerEClass, CONTAINER___RUN);
 		createEOperation(containerEClass, CONTAINER___PAUSE);
@@ -981,6 +1011,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		initEAttribute(getContainer_User(), theOCCIPackage.getString(), "user", null, 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_Domainname(), theOCCIPackage.getString(), "domainname", null, 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_Mem_limit(), theOCCIPackage.getNumber(), "mem_limit", null, 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getContainer_Memory_swap(), theOCCIPackage.getNumber(), "memory_swap", null, 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_Privileged(), theOCCIPackage.getBoolean(), "privileged", "false", 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_Restart(), theOCCIPackage.getString(), "restart", "", 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_Stdin_open(), theOCCIPackage.getBoolean(), "stdin_open", "false", 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -996,6 +1027,8 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		initEAttribute(getContainer_Device(), theOCCIPackage.getString(), "device", null, 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_Lxc_conf(), theOCCIPackage.getString(), "lxc_conf", null, 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_Cpuset(), theOCCIPackage.getString(), "cpuset", "", 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getContainer_Publish_all(), theOCCIPackage.getBoolean(), "publish_all", "false", 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getContainer_Read_only(), theOCCIPackage.getBoolean(), "read_only", "false", 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getContainer__Create(), null, "create", 0, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -1037,7 +1070,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 
 		initEClass(machine_VirtualBoxEClass, Machine_VirtualBox.class, "Machine_VirtualBox", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMachine_VirtualBox_Boot2docker_url(), theOCCIPackage.getString(), "boot2docker_url", null, 0, 1, Machine_VirtualBox.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMachine_VirtualBox_Disk_size(), theOCCIPackage.getNumber(), "disk_size", null, 0, 1, Machine_VirtualBox.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_VirtualBox_Disk_size(), theOCCIPackage.getNumber(), "disk_size", "20000", 0, 1, Machine_VirtualBox.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(machine_VMware_FusionEClass, Machine_VMware_Fusion.class, "Machine_VMware_Fusion", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

@@ -66,6 +66,9 @@
     <attributes name="mem_limit">
       <type href="http://schemas.ogf.org/occi#//Number"/>
     </attributes>
+    <attributes name="memory_swap" description="Memory swap limit">
+      <type href="http://schemas.ogf.org/occi#//Number"/>
+    </attributes>
     <attributes name="privileged" default="false">
       <type href="http://schemas.ogf.org/occi#//Boolean"/>
     </attributes>
@@ -111,6 +114,12 @@
     <attributes name="cpuset" default="" description="">
       <type href="http://schemas.ogf.org/occi#//String"/>
     </attributes>
+    <attributes name="publish_all" default="false" description="Publish all exposed ports to random ports on the host interfaces">
+      <type href="http://schemas.ogf.org/occi#//Boolean"/>
+    </attributes>
+    <attributes name="read_only" default="false" description="Mount the container's root filesystem as read only">
+      <type href="http://schemas.ogf.org/occi#//Boolean"/>
+    </attributes>
     <parent href="../extensions/Infrastructure.xmi#//@kinds[term='compute']"/>
     <actions term="create" scheme="http://occiware.org/docker/container/action#"/>
     <actions term="start" scheme="http://occiware.org/docker/container/action#"/>
@@ -155,10 +164,10 @@
     <attributes name="boot2docker_url">
       <type href="http://schemas.ogf.org/occi#//String"/>
     </attributes>
-    <attributes name="disk_size">
+    <attributes name="disk_size" default="20000" description="Size of disk for the host in MB">
       <type href="http://schemas.ogf.org/occi#//Number"/>
     </attributes>
-    <attributes name="memory">
+    <attributes name="memory" default="1024" description="Size of memory for the host in MB">
       <type href="http://schemas.ogf.org/occi#//Number"/>
     </attributes>
   </kinds>

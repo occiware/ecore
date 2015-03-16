@@ -1,6 +1,0 @@
-Modifications de DOcker.xmi pour ne pas interférer avec les éléments hérités de OCCI et Infrastructure :
-- link renommé en dockerLink 
-- supprimé l'attribut hostname de container
-- supprimé les actions start et stop de container
-- supprimé l'attribut memory de virtual box
-

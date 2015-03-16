@@ -33,6 +33,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Container/user"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Container/domainname"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Container/mem_limit"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Container/memory_swap"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Container/privileged"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Container/restart"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Container/stdin_open"/>
@@ -48,6 +49,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Container/device"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Container/lxc_conf"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Container/cpuset"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Container/publish_all"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Container/read_only"/>
       <genOperations ecoreOperation="Docker.ecore#//Container/create"/>
       <genOperations ecoreOperation="Docker.ecore#//Container/run"/>
       <genOperations ecoreOperation="Docker.ecore#//Container/pause"/>

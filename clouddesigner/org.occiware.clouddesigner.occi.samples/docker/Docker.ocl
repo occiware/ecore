@@ -4,24 +4,34 @@ library 'Core.ocl'
 
 package OCCI
 
+context Configuration
+inv MachineNameUnique:
+resources->select(kindOf_Machine)->isUnique(attributeAsString('name'))
+
 context Resource
-def : kindOf_Container : Boolean = kindOf('container')
-def : kindOf_Machine_VirtualBox : Boolean = kindOf('machine_VirtualBox')
+def : kindOf_Container : Boolean = kindOf('http://occiware.org/docker#container')
+def : kindOf_Machine : Boolean = kindOf('http://occiware.org/docker#machine')
+def : kindOf_Machine_VirtualBox : Boolean = kindOf('http://occiware.org/docker#machine_VirtualBox')
 
 def : memoryLimit : Integer =
-compute(kindOf_Container, attributeAsInteger('mem_limit'),
-  compute(kindOf_Machine_VirtualBox, getLinks('contains').target.memoryLimit->sum(), 0)
+computeInteger(kindOf_Container, attributeAsInteger('mem_limit'),
+  computeInteger(kindOf_Machine_VirtualBox, links->select(kindOf_Contains).target.memoryLimit->sum(), 0)
 )
 
 def : memory : Integer =
-compute(kindOf_Machine_VirtualBox, attributeAsInteger('memory'), 0)
+computeInteger(kindOf_Machine_VirtualBox, attributeAsInteger('memory'), 0)
 
 inv ContainersUsedTooMemory('Containers consume ' + memoryLimit.toString() + ' when memory is equals to ' + memory.toString()): 
 when(kindOf_Machine_VirtualBox, memoryLimit <= memory)
 
+inv ContainerLinkAliasUnique: 
+when(kindOf_Container, links->select(kindOf_Link)->isUnique(attributeAsString('alias')))
+
 context Link
-def : kindOf_Link : Boolean = kindOf('link')
-def : kindOf_VolumesFrom : Boolean = kindOf('volumesfrom')
+def : kindOf_Link : Boolean = kindOf('http://occiware.org/docker#link')
+def : kindOf_VolumesFrom : Boolean = kindOf('http://occiware.org/docker#volumesfrom')
+def : identity_Contains : String = 'http://occiware.org/docker#contains'
+def : kindOf_Contains : Boolean = kindOf(identity_Contains)
 
 inv LinkSourceAsContainer:
 when(kindOf_Link, source.kindOf_Container)
@@ -30,10 +40,10 @@ inv LinkTargetAsContainer:
 when(kindOf_Link, target.kindOf_Container)
 
 inv LinkCanOnlyConnectColocalizedContainers:
-when(kindOf_Link, linksTo('contains', source).source = linksTo('contains', target).source)
+when(kindOf_Link, linksTo(identity_Contains, source).source = linksTo(identity_Contains, target).source)
 
 inv VolumesFromCanOnlyConnectColocalizedContainers:
-when(kindOf_VolumesFrom, linksTo('contains', source).source = linksTo('contains', target).source)
+when(kindOf_VolumesFrom, linksTo(identity_Contains, source).source = linksTo(identity_Contains, target).source)
 
 inv VolumesFromSourceAsContainer:
 when(kindOf_VolumesFrom, source.kindOf_Container)

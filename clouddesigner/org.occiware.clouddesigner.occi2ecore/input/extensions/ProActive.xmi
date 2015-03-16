@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="ASCII"?>
+<OCCI:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:OCCI="http://schemas.ogf.org/occi" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xsi:schemaLocation="http://schemas.ogf.org/occi http://schemas.ogf.org/occi" name="OW2 ProActive" scheme="http://proactive.ow2.org#">
+  <import href="Infrastructure.xmi#/"/>
+  <mixins term="compute" scheme="http://proactive.ow2.org#" title="ProActive Compute mixin">
+    <attributes name="occi.compute.localstorage" required="true" default="" description="Taille du disque OS, e.g., 40,60, 80">
+      <type href="http://schemas.ogf.org/occi#//Number"/>
+    </attributes>
+    <attributes name="sla" required="true" description="SLA" type="//@types.0"/>
+    <attributes name="occi.compute.lease.stop.warning" description="Nombre d'heures 1 alerte (2j avant arret)">
+      <type href="http://schemas.ogf.org/occi#//Number"/>
+    </attributes>
+    <attributes name="occi.compute.lease.stop" description="Nombre d'heures avant arret">
+      <type href="http://schemas.ogf.org/occi#//Number"/>
+    </attributes>
+    <attributes name="occi.compute.lease.delete.warning" description="Nombre d'heures 2 alerte (2j avant supp)">
+      <type href="http://schemas.ogf.org/occi#//Number"/>
+    </attributes>
+    <attributes name="occi.compute.lease.delete" description="Nombre d'heures avant suppression">
+      <type href="http://schemas.ogf.org/occi#//Number"/>
+    </attributes>
+    <attributes name="occi.compute.password" description="mot de passe">
+      <type href="http://schemas.ogf.org/occi#//String"/>
+    </attributes>
+    <attributes name="occi.compute.template_name" description="Nom du Template">
+      <type href="http://schemas.ogf.org/occi#//String"/>
+    </attributes>
+    <attributes name="occi.compute.os" description="Syst&#xe8;me d'exploitation, e.g., ubuntu-9.10, &#x2026;">
+      <type href="http://schemas.ogf.org/occi#//String"/>
+    </attributes>
+    <attributes name="occi.compute.vendor.vmpath" description="e.g. VCLOUD/PARIS-DC1-Gold/urn:vcloud:vapp:50ed5648-71bb-47f4-ab10-051b19841957 or OPENSTACK/PARIS-DC1/cbb56f12-2021-42a6-97d8-23af537decff">
+      <type href="http://schemas.ogf.org/occi#//String"/>
+    </attributes>
+    <attributes name="occi.compute.vendor.location" description="e.g. PARIS-DC1-Gold">
+      <type href="http://schemas.ogf.org/occi#//String"/>
+    </attributes>
+    <actions term="snapshot" scheme="http://proactive.ow2.org/compute/action#" title="Snapshoter VM"/>
+    <actions term="template" scheme="http://proactive.ow2.org/compute/action#" title="Cr&#xe9;er un mod&#xe8;le &#xe0; partir d'une VM existante">
+      <attributes name="occi.compute.template_name" default="" description="e.g., linux-debian-6.0-en-01-mytemplate">
+        <type href="http://schemas.ogf.org/occi#//String"/>
+      </attributes>
+    </actions>
+    <actions term="collate" scheme="http://proactive.ow2.org/compute/action#">
+      <attributes name="affinity.target" required="true">
+        <type href="http://schemas.ogf.org/occi#//URI"/>
+      </attributes>
+    </actions>
+    <actions term="decollate" scheme="http://proactive.ow2.org/compute/action#">
+      <attributes name="affinity.target" required="true">
+        <type href="http://schemas.ogf.org/occi#//URI"/>
+      </attributes>
+    </actions>
+    <actions term="set_sla" scheme="http://proactive.ow2.org/compute/action#" title="Modifier un SLA">
+      <attributes name="sla" required="true" type="//@types.0"/>
+    </actions>
+    <actions term="snapshot_revert" scheme="http://proactive.ow2.org/compute/action#" title="Restauration d'un snapshot"/>
+    <actions term="snapshot_delete" scheme="http://proactive.ow2.org/compute/action#" title="Suppression d'un snapshot"/>
+    <applies href="Infrastructure.xmi#//@kinds[term='compute']"/>
+  </mixins>
+  <types xsi:type="ecore:EEnum" name="SLA">
+    <eLiterals name="gold" literal="gold"/>
+    <eLiterals name="silver" value="1" literal="silver"/>
+    <eLiterals name="bronze" value="2" literal="bronze"/>
+  </types>
+</OCCI:Extension>

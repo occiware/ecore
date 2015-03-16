@@ -351,13 +351,22 @@ public interface DockerPackage extends EPackage {
 	int CONTAINER__MEM_LIMIT = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 19;
 
 	/**
+	 * The feature id for the '<em><b>Memory swap</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTAINER__MEMORY_SWAP = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 20;
+
+	/**
 	 * The feature id for the '<em><b>Privileged</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTAINER__PRIVILEGED = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 20;
+	int CONTAINER__PRIVILEGED = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 21;
 
 	/**
 	 * The feature id for the '<em><b>Restart</b></em>' attribute.
@@ -366,7 +375,7 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTAINER__RESTART = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 21;
+	int CONTAINER__RESTART = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 22;
 
 	/**
 	 * The feature id for the '<em><b>Stdin open</b></em>' attribute.
@@ -375,7 +384,7 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTAINER__STDIN_OPEN = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 22;
+	int CONTAINER__STDIN_OPEN = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 23;
 
 	/**
 	 * The feature id for the '<em><b>Interactive</b></em>' attribute.
@@ -384,7 +393,7 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTAINER__INTERACTIVE = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 23;
+	int CONTAINER__INTERACTIVE = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 24;
 
 	/**
 	 * The feature id for the '<em><b>Tty</b></em>' attribute.
@@ -393,7 +402,7 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTAINER__TTY = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 24;
+	int CONTAINER__TTY = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 25;
 
 	/**
 	 * The feature id for the '<em><b>Cpu shares</b></em>' attribute.
@@ -402,7 +411,7 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTAINER__CPU_SHARES = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 25;
+	int CONTAINER__CPU_SHARES = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 26;
 
 	/**
 	 * The feature id for the '<em><b>Pid</b></em>' attribute.
@@ -411,7 +420,7 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTAINER__PID = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 26;
+	int CONTAINER__PID = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 27;
 
 	/**
 	 * The feature id for the '<em><b>Ipc</b></em>' attribute.
@@ -420,7 +429,7 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTAINER__IPC = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 27;
+	int CONTAINER__IPC = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 28;
 
 	/**
 	 * The feature id for the '<em><b>Add host</b></em>' attribute.
@@ -429,7 +438,7 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTAINER__ADD_HOST = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 28;
+	int CONTAINER__ADD_HOST = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 29;
 
 	/**
 	 * The feature id for the '<em><b>Mac address</b></em>' attribute.
@@ -438,7 +447,7 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTAINER__MAC_ADDRESS = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 29;
+	int CONTAINER__MAC_ADDRESS = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 30;
 
 	/**
 	 * The feature id for the '<em><b>Rm</b></em>' attribute.
@@ -447,7 +456,7 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTAINER__RM = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 30;
+	int CONTAINER__RM = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 31;
 
 	/**
 	 * The feature id for the '<em><b>Security opt</b></em>' attribute.
@@ -456,7 +465,7 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTAINER__SECURITY_OPT = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 31;
+	int CONTAINER__SECURITY_OPT = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 32;
 
 	/**
 	 * The feature id for the '<em><b>Device</b></em>' attribute.
@@ -465,7 +474,7 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTAINER__DEVICE = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 32;
+	int CONTAINER__DEVICE = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 33;
 
 	/**
 	 * The feature id for the '<em><b>Lxc conf</b></em>' attribute.
@@ -474,7 +483,7 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTAINER__LXC_CONF = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 33;
+	int CONTAINER__LXC_CONF = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 34;
 
 	/**
 	 * The feature id for the '<em><b>Cpuset</b></em>' attribute.
@@ -483,7 +492,25 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTAINER__CPUSET = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 34;
+	int CONTAINER__CPUSET = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 35;
+
+	/**
+	 * The feature id for the '<em><b>Publish all</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTAINER__PUBLISH_ALL = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 36;
+
+	/**
+	 * The feature id for the '<em><b>Read only</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTAINER__READ_ONLY = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 37;
 
 	/**
 	 * The number of structural features of the '<em>Container</em>' class.
@@ -492,7 +519,7 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTAINER_FEATURE_COUNT = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 35;
+	int CONTAINER_FEATURE_COUNT = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 38;
 
 	/**
 	 * The operation id for the '<em>Start</em>' operation.
@@ -3344,6 +3371,17 @@ public interface DockerPackage extends EPackage {
 	EAttribute getContainer_Mem_limit();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Container#getMemory_swap <em>Memory swap</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Memory swap</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Container#getMemory_swap()
+	 * @see #getContainer()
+	 * @generated
+	 */
+	EAttribute getContainer_Memory_swap();
+
+	/**
 	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Container#isPrivileged <em>Privileged</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3507,6 +3545,28 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getContainer_Cpuset();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Container#isPublish_all <em>Publish all</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Publish all</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Container#isPublish_all()
+	 * @see #getContainer()
+	 * @generated
+	 */
+	EAttribute getContainer_Publish_all();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Container#isRead_only <em>Read only</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Read only</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Container#isRead_only()
+	 * @see #getContainer()
+	 * @generated
+	 */
+	EAttribute getContainer_Read_only();
 
 	/**
 	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.docker.Container#create() <em>Create</em>}' operation.
@@ -3977,6 +4037,14 @@ public interface DockerPackage extends EPackage {
 		EAttribute CONTAINER__MEM_LIMIT = eINSTANCE.getContainer_Mem_limit();
 
 		/**
+		 * The meta object literal for the '<em><b>Memory swap</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONTAINER__MEMORY_SWAP = eINSTANCE.getContainer_Memory_swap();
+
+		/**
 		 * The meta object literal for the '<em><b>Privileged</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4095,6 +4163,22 @@ public interface DockerPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CONTAINER__CPUSET = eINSTANCE.getContainer_Cpuset();
+
+		/**
+		 * The meta object literal for the '<em><b>Publish all</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONTAINER__PUBLISH_ALL = eINSTANCE.getContainer_Publish_all();
+
+		/**
+		 * The meta object literal for the '<em><b>Read only</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONTAINER__READ_ONLY = eINSTANCE.getContainer_Read_only();
 
 		/**
 		 * The meta object literal for the '<em><b>Create</b></em>' operation.

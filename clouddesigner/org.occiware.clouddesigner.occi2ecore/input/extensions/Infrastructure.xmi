@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<OCCI:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:OCCI="http://schemas.ogf.org/occi" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="OCCI Infrastructure" scheme="http://schemas.ogf.org/occi/infrastructure#">
+<OCCI:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:OCCI="http://schemas.ogf.org/occi" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xsi:schemaLocation="http://schemas.ogf.org/occi http://schemas.ogf.org/occi" name="OCCI Infrastructure" scheme="http://schemas.ogf.org/occi/infrastructure#">
   <import href="Core.xmi#/"/>
   <kinds term="network" scheme="http://schemas.ogf.org/occi/infrastructure#" title="Network Resource">
     <attributes name="occi.network.vlan" mutable="true" description="802.1q VLAN Identifier (e.g. 343)" type="//@types.1"/>

@@ -34,6 +34,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="user" eType="ecore:EDataType ../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="domainname" eType="ecore:EDataType ../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="mem_limit" eType="ecore:EDataType ../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="memory_swap" eType="ecore:EDataType ../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="privileged" eType="ecore:EDataType ../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean"
         defaultValueLiteral="false"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="restart" eType="ecore:EDataType ../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"
@@ -56,6 +57,10 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="lxc_conf" eType="ecore:EDataType ../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cpuset" eType="ecore:EDataType ../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"
         defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="publish_all" eType="ecore:EDataType ../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean"
+        defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="read_only" eType="ecore:EDataType ../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean"
+        defaultValueLiteral="false"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DockerLink" eSuperTypes="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Link">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="alias" eType="ecore:EDataType ../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
@@ -77,7 +82,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="Machine_Rackspace" eSuperTypes="#//Machine"/>
   <eClassifiers xsi:type="ecore:EClass" name="Machine_VirtualBox" eSuperTypes="#//Machine">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="boot2docker_url" eType="ecore:EDataType ../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="disk_size" eType="ecore:EDataType ../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="disk_size" eType="ecore:EDataType ../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number"
+        defaultValueLiteral="20000"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Machine_VMware_Fusion" eSuperTypes="#//Machine"/>
   <eClassifiers xsi:type="ecore:EClass" name="Machine_VMware_vCloud_Air" eSuperTypes="#//Machine"/>

@@ -32,6 +32,7 @@ import org.occiware.clouddesigner.occi.infrastructure.Compute;
  *   <li>{@link org.occiware.clouddesigner.occi.docker.Container#getUser <em>User</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.docker.Container#getDomainname <em>Domainname</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.docker.Container#getMem_limit <em>Mem limit</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.Container#getMemory_swap <em>Memory swap</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.docker.Container#isPrivileged <em>Privileged</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.docker.Container#getRestart <em>Restart</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.docker.Container#isStdin_open <em>Stdin open</em>}</li>
@@ -47,6 +48,8 @@ import org.occiware.clouddesigner.occi.infrastructure.Compute;
  *   <li>{@link org.occiware.clouddesigner.occi.docker.Container#getDevice <em>Device</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.docker.Container#getLxc_conf <em>Lxc conf</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.docker.Container#getCpuset <em>Cpuset</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.Container#isPublish_all <em>Publish all</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.Container#isRead_only <em>Read only</em>}</li>
  * </ul>
  * </p>
  *
@@ -577,6 +580,32 @@ public interface Container extends Compute {
 	void setMem_limit(int value);
 
 	/**
+	 * Returns the value of the '<em><b>Memory swap</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Memory swap</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Memory swap</em>' attribute.
+	 * @see #setMemory_swap(int)
+	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Memory_swap()
+	 * @model dataType="org.occiware.clouddesigner.OCCI.Number"
+	 * @generated
+	 */
+	int getMemory_swap();
+
+	/**
+	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.docker.Container#getMemory_swap <em>Memory swap</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Memory swap</em>' attribute.
+	 * @see #getMemory_swap()
+	 * @generated
+	 */
+	void setMemory_swap(int value);
+
+	/**
 	 * Returns the value of the '<em><b>Privileged</b></em>' attribute.
 	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
@@ -972,6 +1001,60 @@ public interface Container extends Compute {
 	 * @generated
 	 */
 	void setCpuset(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Publish all</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Publish all</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Publish all</em>' attribute.
+	 * @see #setPublish_all(boolean)
+	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Publish_all()
+	 * @model default="false" dataType="org.occiware.clouddesigner.OCCI.Boolean"
+	 * @generated
+	 */
+	boolean isPublish_all();
+
+	/**
+	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.docker.Container#isPublish_all <em>Publish all</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Publish all</em>' attribute.
+	 * @see #isPublish_all()
+	 * @generated
+	 */
+	void setPublish_all(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Read only</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Read only</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Read only</em>' attribute.
+	 * @see #setRead_only(boolean)
+	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Read_only()
+	 * @model default="false" dataType="org.occiware.clouddesigner.OCCI.Boolean"
+	 * @generated
+	 */
+	boolean isRead_only();
+
+	/**
+	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.docker.Container#isRead_only <em>Read only</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Read only</em>' attribute.
+	 * @see #isRead_only()
+	 * @generated
+	 */
+	void setRead_only(boolean value);
 
 	/**
 	 * <!-- begin-user-doc -->
