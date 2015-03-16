@@ -24,6 +24,9 @@ computeInteger(kindOf_Machine_VirtualBox, attributeAsInteger('memory'), 0)
 inv ContainersUsedTooMemory('Containers consume ' + memoryLimit.toString() + ' when memory is equals to ' + memory.toString()): 
 when(kindOf_Machine_VirtualBox, memoryLimit <= memory)
 
+inv ContainerLinkAliasUnique: 
+when(kindOf_Container, links->select(kindOf_Link)->isUnique(attributeAsString('alias')))
+
 context Link
 def : kindOf_Link : Boolean = kindOf('http://occiware.org/docker#link')
 def : kindOf_VolumesFrom : Boolean = kindOf('http://occiware.org/docker#volumesfrom')
