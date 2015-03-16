@@ -19,7 +19,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.occiware.clouddesigner.occi;bundle-version="0.1.0",
  org.occiware.clouddesigner.occi.docker;bundle-version="0.1.0",
  org.occiware.clouddesigner.occi.infrastructure;bundle-version="1.0.0"
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-ActivationPolicy: lazy
 Eclipse-LazyStart: true
 Export-Package: org.occiware.clouddesigner.occi.docker.gen.compose.common

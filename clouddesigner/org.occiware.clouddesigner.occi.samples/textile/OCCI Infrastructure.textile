@@ -1,82 +1,395 @@
 h1. OCCI Extension: OCCI Infrastructure
 
-http://schemas.ogf.org/occi/infrastructure#
+| *Name* | OCCI Infrastructure |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure# |
 
 h1. Imports
 
-OCCI Core http://schemas.ogf.org/occi/core#  
+| *Name* | *Scheme* |
+| OCCI Core | http://schemas.ogf.org/occi/core# |  
 
 h1. Kinds
 
-h2. network
+h2. Kind network
 
-parent: resource
+| *Term* | network |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure# |
+| *Title* | Network Resource |
+| *Parent* | http://schemas.ogf.org/occi/core#resource |
 
-h2. compute
+h3. Attributes
 
-parent: resource
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.network.vlan | Integer4095 | false | true |  | 802.1q VLAN Identifier (e.g. 343) |
+| occi.network.label | Token | false | true |  | Tag based VLANs (e.g. external-dmz) |
+| occi.network.state | ComputeStatus | true | false |  | Current state of the instance |
 
-h2. storage
+h3. Actions
 
-parent: resource
+h4. Action up
 
-h2. storagelink
+| *Term* | up |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure/network/action# |
+| *Title* |  |
 
-parent: link
 
-h2. networkinterface
+h4. Action down
 
-parent: link
+| *Term* | down |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure/network/action# |
+| *Title* |  |
+
+
+
+
+h2. Kind compute
+
+| *Term* | compute |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure# |
+| *Title* | Compute Resource |
+| *Parent* | http://schemas.ogf.org/occi/core#resource |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.compute.architecture | Architecture | false | true |  | CPU Architecture of the instance |
+| occi.compute.cores | PositiveInteger | false | true |  | Number of CPU cores assigned to the instance |
+| occi.compute.hostname | String | false | true |  | Fully Qualified DNS hostname for the instance |
+| occi.compute.speed | GHz | false | true |  | CPU Clock frequency (speed) in gigahertz |
+| occi.compute.memory | GiB | false | true |  | Maximum RAM in gigabytes allocated to the instance |
+| occi.compute.state | ComputeStatus | true | false | inactive | Current state of the instance |
+
+h3. Actions
+
+h4. Action start
+
+| *Term* | start |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure/compute/action# |
+| *Title* | Start the system |
+
+
+h4. Action stop
+
+| *Term* | stop |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure/compute/action# |
+| *Title* | Stop the system (graceful, acpioff or poweroff) |
+
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| method | StopMethod | true | false |  |  |
+h4. Action restart
+
+| *Term* | restart |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure/compute/action# |
+| *Title* | Restart the system (graceful, warm or cold) |
+
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| method | RestartMethod | true | false |  |  |
+h4. Action suspend
+
+| *Term* | suspend |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure/compute/action# |
+| *Title* | Suspend the system (hibernate or in RAM) |
+
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| method | SuspendMethod | true | false |  |  |
+
+
+h2. Kind storage
+
+| *Term* | storage |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure# |
+| *Title* | Storage Resource |
+| *Parent* | http://schemas.ogf.org/occi/core#resource |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.storage.size | GiB | true | true |  | Storage size in gigabytes of the instance |
+| occi.storage.state | StorageStatus | true | false |  | Current status of the instance |
+
+h3. Actions
+
+h4. Action online
+
+| *Term* | online |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure/storage/action# |
+| *Title* | Set storage online |
+
+
+h4. Action offline
+
+| *Term* | offline |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure/storage/action# |
+| *Title* | Set storage offline |
+
+
+h4. Action backup
+
+| *Term* | backup |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure/storage/action# |
+| *Title* | Set storage as backup |
+
+
+h4. Action snapshot
+
+| *Term* | snapshot |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure/storage/action# |
+| *Title* | Take storage snapshot |
+
+
+h4. Action resize
+
+| *Term* | resize |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure/storage/action# |
+| *Title* | Resize storage |
+
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| size | GiB | true | false |  |  |
+
+
+h2. Kind storagelink
+
+| *Term* | storagelink |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure# |
+| *Title* | StorageLink Link |
+| *Parent* | http://schemas.ogf.org/occi/core#link |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.storagelink.deviceid | String | true | true |  | Device identifier as defined by the OCCI service provider |
+| occi.storagelink.mountpoint | String | false | true |  | Point to where the storage is mounted in the guest OS |
+| occi.storagelink.state | StorageLinkStatus | true | false |  | Current status of the instance |
+
+h3. Actions
+
+
+
+h2. Kind networkinterface
+
+| *Term* | networkinterface |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure# |
+| *Title* | NetworkInterface Link |
+| *Parent* | http://schemas.ogf.org/occi/core#link |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.networkinterface.interface | String | true | false |  | Identifier that relates the link to the link's device interface |
+| occi.networkinterface.mac | String | true | true |  | MAC address associated with the link's device interface |
+| occi.networkinterface.state | NetworkInterfaceStatus | true | false |  | Current status of the instance |
+
+h3. Actions
+
+
 
 
 
 h1. Mixins
 
-h2. ipnetwork
+h2. Mixin ipnetwork
 
-h2. ipnetworkinterface
+| *Term* | ipnetwork |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure/network# |
+| *Title* | IP Networking Mixin |
 
-h2. os_tpl
+h3. Depends
 
-h2. resource_tpl
+
+h3. Applies
+
+* http://schemas.ogf.org/occi/infrastructure#network
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.network.address | IpAddressRange | false | true |  | Internet Protocol (IP) network address (e.g. 192.168.0.1/24, fc00::/7) |
+| occi.network.gateway | IpAddress | false | true |  | Internet Protocol (IP) network address (e.g. 192.168.0.1, fc00::) |
+| occi.network.allocation | Allocation | false | true |  | Address allocation mechanism: dynamic e.g. uses the dynamic host configuration protocol, static e.g. uses user supplied static network configurations |
+
+h3. Actions
+
+
+
+h2. Mixin ipnetworkinterface
+
+| *Term* | ipnetworkinterface |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure/networkinterface# |
+| *Title* | IP NetworkInterface Mixin |
+
+h3. Depends
+
+
+h3. Applies
+
+* http://schemas.ogf.org/occi/infrastructure#networkinterface
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.networkinterface.address | IpAddress | true | true |  | Internet Protocol (IP) network address (e.g. 192.168.0.1/24, fc00::/7) of the link |
+| occi.networkinterface.gateway | IpAddress | false | true |  | Internet Protocol (IP) network address (e.g. 192.168.0.1/24, fc00::/7) |
+| occi.networkinterface.allocation | Allocation | true | true |  | Address mechanism: dynamic e.g. uses the dynamic host configuration protocol, static e.g. uses user supplied static network configurations |
+
+h3. Actions
+
+
+
+h2. Mixin os_tpl
+
+| *Term* | os_tpl |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure# |
+| *Title* | OS Template |
+
+h3. Depends
+
+
+h3. Applies
+
+* http://schemas.ogf.org/occi/infrastructure#compute
+
+h3. Attributes
+
+
+h3. Actions
+
+
+
+h2. Mixin resource_tpl
+
+| *Term* | resource_tpl |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure# |
+| *Title* | Resource template |
+
+h3. Depends
+
+
+h3. Applies
+
+* http://schemas.ogf.org/occi/core#resource
+
+h3. Attributes
+
+
+h3. Actions
+
+
 
 
 
 h1. Types
 
-h2. SuspendMethod: 
+h2. Enum SuspendMethod
 
-h2. Integer4095: int
+Literals:
+* hibernate  
+* suspend  
+h2. Datatype Integer4095
 
-h2. Token: java.lang.String
+h3. Type int
 
-h2. NetworkStatus: 
+h3. Annotations
 
-h2. ComputeStatus: 
+* minInclusive = 0
+* maxInclusive = 4095
 
-h2. NetworkInterfaceStatus: 
+h2. Datatype Token
 
-h2. Architecture: 
+h3. Type java.lang.String
 
-h2. StopMethod: 
+h3. Annotations
 
-h2. RestartMethod: 
 
-h2. IpAddress: java.lang.String
+h2. Enum NetworkStatus
 
-h2. Allocation: 
+Literals:
+* active  
+* inactive  
+h2. Enum ComputeStatus
 
-h2. StorageStatus: 
+Literals:
+* active  
+* inactive  
+* suspended  
+h2. Enum NetworkInterfaceStatus
 
-h2. StorageLinkStatus: 
+Literals:
+* active  
+* inactive  
+h2. Enum Architecture
 
-h2. PositiveInteger: int
+Literals:
+* x86  
+* x64  
+h2. Enum StopMethod
 
-h2. GHz: float
+Literals:
+* graceful  
+* acpioff  
+* poweroff  
+h2. Enum RestartMethod
 
-h2. GiB: float
+Literals:
+* graceful  
+* warm  
+* cold  
+h2. Datatype IpAddress
 
-h2. IpAddressRange: java.lang.String
+h3. Type java.lang.String
+
+h3. Annotations
+
+
+h2. Enum Allocation
+
+Literals:
+* dynamic  
+* static  
+h2. Enum StorageStatus
+
+Literals:
+* online  
+* offline  
+* backup  
+* snapshot  
+* resize  
+* degraded  
+h2. Enum StorageLinkStatus
+
+Literals:
+* active  
+* inactive  
+h2. Datatype PositiveInteger
+
+h3. Type int
+
+h3. Annotations
+
+
+h2. Datatype GHz
+
+h3. Type float
+
+h3. Annotations
+
+
+h2. Datatype GiB
+
+h3. Type float
+
+h3. Annotations
+
+
+h2. Datatype IpAddressRange
+
+h3. Type java.lang.String
+
+h3. Annotations
+
 
 
 

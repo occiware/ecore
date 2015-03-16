@@ -3,6 +3,7 @@
 
 [template public main(extension : Extension)]
 [comment @main/]
+[extension.generateExtension()/]
 [extension.import.generateExtension()/]
 [/template]
 
@@ -10,12 +11,14 @@
 [file ('textile/'+extension.name+'.textile', false, 'UTF-8')]
 h1. OCCI Extension: [extension.name/]
 
-[extension.scheme/]
+| *Name* | [extension.name/] |
+| *Scheme* | [extension.scheme/] |
 
 h1. Imports
 
+| *Name* | *Scheme* |
 [for (imported : Extension | extension.import)]
-[imported.name/] [imported.scheme/]  
+| [imported.name/] | [imported.scheme/] |  
 [/for]
 
 h1. Kinds
@@ -28,27 +31,105 @@ h1. Mixins
 
 h1. Types
 
-[extension.types.generateTypes()/]
+[extension.types.generateType()/]
 
 [/file]
 [/template]
 
 [template public generateKind (kind : Kind) ]
-h2. [kind.term/]
+h2. Kind [kind.term/]
 
-parent: [kind.parent.term/]
+| *Term* | [kind.term/] |
+| *Scheme* | [kind.scheme/] |
+| *Title* | [kind.title/] |
+| *Parent* | [if kind.parent <> null][kind.parent.scheme/][kind.parent.term/][/if] |
 
+[kind.generateAttributes()/]
+[generateActions(kind.actions)/]
 
 [/template]
 
 [template public generateMixin (mixin : Mixin) ]
-h2. [mixin.term/]
+h2. Mixin [mixin.term/]
+
+| *Term* | [mixin.term/] |
+| *Scheme* | [mixin.scheme/] |
+| *Title* | [mixin.title/] |
+
+h3. Depends
+
+[for (md : Mixin | mixin.depends)]
+* [md.scheme/][md.term/]
+[/for]
+
+h3. Applies
+
+[for (ad : Kind | mixin.applies)]
+* [ad.scheme/][ad.term/]
+[/for]
+
+[mixin.generateAttributes()/]
+[generateActions(mixin.actions)/]
+
+[/template]
+
+[template public generateAttributes (category : Category) ]
+h3. Attributes
+
+[if category.attributes->size() <> 0]
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+[for (attribute : Attribute | category.attributes)]
+[attribute.generateAttribute()/]
+[/for]
+[/if]
+[/template]
+
+[template public generateAttribute (attribute : Attribute) ]
+| [attribute.name/] | [attribute.type.name/] | [attribute.required/] | [attribute.mutable/] | [attribute.default/] | [attribute.description/] |
+[/template]
+
+[template public generateActions (actions : Set(Action)) ]
+h3. Actions
+
+[for (action : Action | actions)]
+h4. Action [action.term/]
+
+| *Term* | [action.term/] |
+| *Scheme* | [action.scheme/] |
+| *Title* | [action.title/] |
+
+
+[if action.attributes->size() <> 0]
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+[for (attribute : Attribute | action.attributes)]
+[attribute.generateAttribute()/]
+[/for]
+[/if]
+[/for]
+
+[/template]
+
+[template public generateType (type : EDataType) ]
+h2. Datatype [type.name/]
+
+h3. Type [type.instanceClassName/]
+
+h3. Annotations
+
+[for (annotation : EAnnotation | type.eAnnotations)]
+[for (detail : EStringToStringMapEntry | annotation.details)]
+* [detail.key/] = [detail.value/]
+[/for]
+[/for]
 
 
 [/template]
 
-[template public generateTypes (type : EDataType) ]
-h2. [type.name/]: [type.instanceClassName/]
+[template public generateType (type : EEnum) ]
+h2. Enum [type.name/]
 
-
+Literals:
+[for (literal : EEnumLiteral | type.eLiterals)]
+* [literal.name/]  
+[/for]
 [/template]
