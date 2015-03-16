@@ -18,3 +18,11 @@ OCCI extensions.
 * occi.dynamic: ...
 * occi.model: ...
 * workbench: ...
+
+# Resources
+
+* You can find the OCCI stable specifications at:
+  http://occi-wg.org/about/specification/
+
+* Current specifications are available at:
+  https://redmine.ogf.org/projects/occi-wg/
