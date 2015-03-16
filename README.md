@@ -12,7 +12,16 @@ OCCI extensions.
 
 # Content
 
-* clouddesigner: ...
+* clouddesigner: OCCI Tooling (designer & generators)
+ * org.occiware.clouddesigner.occi2ecore: conversion of OCCI dynamic extension models to EMF metamodels
+ * org.occiware.clouddesigner.occi, org.occiware.clouddesigner.occi.edit: generated OCCI.ecore metamodel
+ * org.occiware.clouddesigner.occi.infrastructure, org.occiware.clouddesigner.occi.infrastructure.edit: generated Infrastructure.ecore metamodel
+ * org.occiware.clouddesigner.occi.docker, org.occiware.clouddesigner.occi.docker.edit: generated Docker.ecore metamodel 
+ * org.occiware.clouddesigner.occi.docker.design: Docker designer 
+ * org.occiware.clouddesigner.occi.docker.gen.conf: Docker configuration generator
+ * org.occiware.clouddesigner.occi.docker.samples: Docker samples 
+ * org.occiware.clouddesigner.occi.gen.doc: Documentation generator for OCCI dynamic extensions
+ * org.occiware.clouddesigner.occi.samples: OCCI dynamic extensions with fixed hrefs for use in acceleo
 * metamodel: OCCI meta-model + extensions
 * occi: ...
 * occi.dynamic: ...
