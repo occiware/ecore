@@ -49,6 +49,7 @@ public interface Machine_VirtualBox extends Machine {
 
 	/**
 	 * Returns the value of the '<em><b>Disk size</b></em>' attribute.
+	 * The default value is <code>"20000"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Disk size</em>' attribute isn't clear,
@@ -58,7 +59,7 @@ public interface Machine_VirtualBox extends Machine {
 	 * @return the value of the '<em>Disk size</em>' attribute.
 	 * @see #setDisk_size(int)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VirtualBox_Disk_size()
-	 * @model dataType="org.occiware.clouddesigner.OCCI.Number"
+	 * @model default="20000" dataType="org.occiware.clouddesigner.OCCI.Number"
 	 * @generated
 	 */
 	int getDisk_size();

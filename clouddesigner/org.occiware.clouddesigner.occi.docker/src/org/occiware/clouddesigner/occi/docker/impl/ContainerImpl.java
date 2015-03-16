@@ -43,6 +43,7 @@ import org.occiware.clouddesigner.occi.infrastructure.impl.ComputeImpl;
  *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.ContainerImpl#getUser <em>User</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.ContainerImpl#getDomainname <em>Domainname</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.ContainerImpl#getMem_limit <em>Mem limit</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.ContainerImpl#getMemory_swap <em>Memory swap</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.ContainerImpl#isPrivileged <em>Privileged</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.ContainerImpl#getRestart <em>Restart</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.ContainerImpl#isStdin_open <em>Stdin open</em>}</li>
@@ -58,6 +59,8 @@ import org.occiware.clouddesigner.occi.infrastructure.impl.ComputeImpl;
  *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.ContainerImpl#getDevice <em>Device</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.ContainerImpl#getLxc_conf <em>Lxc conf</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.ContainerImpl#getCpuset <em>Cpuset</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.ContainerImpl#isPublish_all <em>Publish all</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.ContainerImpl#isRead_only <em>Read only</em>}</li>
  * </ul>
  * </p>
  *
@@ -465,6 +468,26 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 	protected int mem_limit = MEM_LIMIT_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getMemory_swap() <em>Memory swap</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMemory_swap()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int MEMORY_SWAP_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getMemory_swap() <em>Memory swap</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMemory_swap()
+	 * @generated
+	 * @ordered
+	 */
+	protected int memory_swap = MEMORY_SWAP_EDEFAULT;
+
+	/**
 	 * The default value of the '{@link #isPrivileged() <em>Privileged</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -763,6 +786,46 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 	 * @ordered
 	 */
 	protected String cpuset = CPUSET_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isPublish_all() <em>Publish all</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isPublish_all()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean PUBLISH_ALL_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isPublish_all() <em>Publish all</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isPublish_all()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean publish_all = PUBLISH_ALL_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isRead_only() <em>Read only</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isRead_only()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean READ_ONLY_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isRead_only() <em>Read only</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isRead_only()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean read_only = READ_ONLY_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1208,6 +1271,27 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public int getMemory_swap() {
+		return memory_swap;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMemory_swap(int newMemory_swap) {
+		int oldMemory_swap = memory_swap;
+		memory_swap = newMemory_swap;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__MEMORY_SWAP, oldMemory_swap, memory_swap));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean isPrivileged() {
 		return privileged;
 	}
@@ -1523,6 +1607,48 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isPublish_all() {
+		return publish_all;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPublish_all(boolean newPublish_all) {
+		boolean oldPublish_all = publish_all;
+		publish_all = newPublish_all;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__PUBLISH_ALL, oldPublish_all, publish_all));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isRead_only() {
+		return read_only;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRead_only(boolean newRead_only) {
+		boolean oldRead_only = read_only;
+		read_only = newRead_only;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__READ_ONLY, oldRead_only, read_only));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void create() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -1621,6 +1747,8 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 				return getDomainname();
 			case DockerPackage.CONTAINER__MEM_LIMIT:
 				return getMem_limit();
+			case DockerPackage.CONTAINER__MEMORY_SWAP:
+				return getMemory_swap();
 			case DockerPackage.CONTAINER__PRIVILEGED:
 				return isPrivileged();
 			case DockerPackage.CONTAINER__RESTART:
@@ -1651,6 +1779,10 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 				return getLxc_conf();
 			case DockerPackage.CONTAINER__CPUSET:
 				return getCpuset();
+			case DockerPackage.CONTAINER__PUBLISH_ALL:
+				return isPublish_all();
+			case DockerPackage.CONTAINER__READ_ONLY:
+				return isRead_only();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1723,6 +1855,9 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 			case DockerPackage.CONTAINER__MEM_LIMIT:
 				setMem_limit((Integer)newValue);
 				return;
+			case DockerPackage.CONTAINER__MEMORY_SWAP:
+				setMemory_swap((Integer)newValue);
+				return;
 			case DockerPackage.CONTAINER__PRIVILEGED:
 				setPrivileged((Boolean)newValue);
 				return;
@@ -1767,6 +1902,12 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 				return;
 			case DockerPackage.CONTAINER__CPUSET:
 				setCpuset((String)newValue);
+				return;
+			case DockerPackage.CONTAINER__PUBLISH_ALL:
+				setPublish_all((Boolean)newValue);
+				return;
+			case DockerPackage.CONTAINER__READ_ONLY:
+				setRead_only((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -1840,6 +1981,9 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 			case DockerPackage.CONTAINER__MEM_LIMIT:
 				setMem_limit(MEM_LIMIT_EDEFAULT);
 				return;
+			case DockerPackage.CONTAINER__MEMORY_SWAP:
+				setMemory_swap(MEMORY_SWAP_EDEFAULT);
+				return;
 			case DockerPackage.CONTAINER__PRIVILEGED:
 				setPrivileged(PRIVILEGED_EDEFAULT);
 				return;
@@ -1884,6 +2028,12 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 				return;
 			case DockerPackage.CONTAINER__CPUSET:
 				setCpuset(CPUSET_EDEFAULT);
+				return;
+			case DockerPackage.CONTAINER__PUBLISH_ALL:
+				setPublish_all(PUBLISH_ALL_EDEFAULT);
+				return;
+			case DockerPackage.CONTAINER__READ_ONLY:
+				setRead_only(READ_ONLY_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -1937,6 +2087,8 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 				return DOMAINNAME_EDEFAULT == null ? domainname != null : !DOMAINNAME_EDEFAULT.equals(domainname);
 			case DockerPackage.CONTAINER__MEM_LIMIT:
 				return mem_limit != MEM_LIMIT_EDEFAULT;
+			case DockerPackage.CONTAINER__MEMORY_SWAP:
+				return memory_swap != MEMORY_SWAP_EDEFAULT;
 			case DockerPackage.CONTAINER__PRIVILEGED:
 				return privileged != PRIVILEGED_EDEFAULT;
 			case DockerPackage.CONTAINER__RESTART:
@@ -1967,6 +2119,10 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 				return LXC_CONF_EDEFAULT == null ? lxc_conf != null : !LXC_CONF_EDEFAULT.equals(lxc_conf);
 			case DockerPackage.CONTAINER__CPUSET:
 				return CPUSET_EDEFAULT == null ? cpuset != null : !CPUSET_EDEFAULT.equals(cpuset);
+			case DockerPackage.CONTAINER__PUBLISH_ALL:
+				return publish_all != PUBLISH_ALL_EDEFAULT;
+			case DockerPackage.CONTAINER__READ_ONLY:
+				return read_only != READ_ONLY_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -2048,6 +2204,8 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 		result.append(domainname);
 		result.append(", mem_limit: ");
 		result.append(mem_limit);
+		result.append(", memory_swap: ");
+		result.append(memory_swap);
 		result.append(", privileged: ");
 		result.append(privileged);
 		result.append(", restart: ");
@@ -2078,6 +2236,10 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 		result.append(lxc_conf);
 		result.append(", cpuset: ");
 		result.append(cpuset);
+		result.append(", publish_all: ");
+		result.append(publish_all);
+		result.append(", read_only: ");
+		result.append(read_only);
 		result.append(')');
 		return result.toString();
 	}

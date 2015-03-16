@@ -6,13 +6,31 @@
       <metamodel href="http://schemas.ogf.org/occi/docker#/"/>
       <metamodel href="http://schemas.ogf.org/occi/infrastructure#/"/>
       <defaultLayer name="Default">
-        <nodeMappings name="Machine" domainClass="Machine">
-          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="8" labelPosition="node" resizeKind="NSEW" workspacePath="/org.occiware.clouddesigner.occi.docker.design/images/Machine.svg">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+        <edgeMappings name="DockerLink" labelDirectEdit="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@toolSections.0/@ownedTools[name='EditDockerLink']" sourceMapping="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subContainerMappings[name='Container']" targetMapping="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subContainerMappings[name='Container']" targetFinderExpression="feature:target" sourceFinderExpression="feature:source" domainClass="DockerLink" useDomainElement="true">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription showIcon="false" labelExpression="feature:alias">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
           </style>
-        </nodeMappings>
-        <containerMappings name="Container" domainClass="Container">
+        </edgeMappings>
+        <edgeMappings name="Volumesfrom" sourceMapping="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subContainerMappings[name='Container']" targetMapping="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subContainerMappings[name='Container']" targetFinderExpression="feature:target" sourceFinderExpression="feature:source" domainClass="Volumesfrom" useDomainElement="true">
+          <style lineStyle="dash_dot" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="Machine" preconditionExpression="[self.eInverse()->filter(docker::Contains)->select(target=self) -> isEmpty()/]" labelDirectEdit="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit']" domainClass="Machine">
+          <subContainerMappings name="Container" labelDirectEdit="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit']" semanticCandidatesExpression="[links->filter(docker::Contains).target/]" domainClass="Container">
+            <style xsi:type="style:FlatContainerStyleDescription" labelAlignment="LEFT">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            </style>
+          </subContainerMappings>
           <style xsi:type="style:FlatContainerStyleDescription" labelAlignment="LEFT">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -20,19 +38,63 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
         </containerMappings>
-        <toolSections>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Machine" nodeMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@nodeMappings[name='Machine']">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
+        <toolSections name="Tool">
+          <ownedTools xsi:type="tool:DirectEditLabel" name="Edit">
+            <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machine" referenceName="resources"/>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:arg0"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Container" containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Container']">
+          <ownedTools xsi:type="tool:DirectEditLabel" name="EditDockerLink">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="alias" valueExpression="var:arg0"/>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Configuration">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Virtual Box" containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Container" referenceName="resources"/>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="docker.Machine_VirtualBox" referenceName="resources"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="SubContainer" label="Container" containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subContainerMappings[name='Container']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:eContainer">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Container" referenceName="resources" variableName="containerInstance"/>
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Contains" referenceName="links" variableName="containsInstance">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="source" valueExpression="var:container"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="var:containerInstance"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Link" edgeMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='DockerLink']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="DockerLink" referenceName="links">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="var:target"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Volumes From" edgeMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Volumesfrom']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Volumesfrom" referenceName="links">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="var:target"/>
+              </firstModelOperations>
             </initialOperation>
           </ownedTools>
         </toolSections>

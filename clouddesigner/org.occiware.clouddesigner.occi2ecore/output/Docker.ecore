@@ -75,6 +75,9 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="mem_limit">
       <eType xsi:type="ecore:EDataType" href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number"/>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="memory_swap">
+      <eType xsi:type="ecore:EDataType" href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number"/>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="privileged" defaultValueLiteral="false">
       <eType xsi:type="ecore:EDataType" href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean"/>
     </eStructuralFeatures>
@@ -120,6 +123,12 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cpuset" defaultValueLiteral="">
       <eType xsi:type="ecore:EDataType" href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="publish_all" defaultValueLiteral="false">
+      <eType xsi:type="ecore:EDataType" href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="read_only" defaultValueLiteral="false">
+      <eType xsi:type="ecore:EDataType" href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean"/>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DockerLink">
     <eSuperTypes href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Link"/>
@@ -152,7 +161,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="boot2docker_url">
       <eType xsi:type="ecore:EDataType" href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="disk_size">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="disk_size" defaultValueLiteral="20000">
       <eType xsi:type="ecore:EDataType" href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number"/>
     </eStructuralFeatures>
   </eClassifiers>

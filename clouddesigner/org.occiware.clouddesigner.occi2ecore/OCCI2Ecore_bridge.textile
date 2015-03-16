@@ -1,0 +1,14 @@
+This documentation lists the mappings between OCCI and Ecore that are used by the OCCI2Ecore conversion.
+
+TODO accurate description
+
+h1. Extension => EPackage
+h1. Kind => EClass
+h1. Attribute => EAttribute
+h1. Action => EOperation
+
+Each attribute of the action is converted to an EParameter.
+
+h1. Mixin => EClass
+
+Not implemented yet.

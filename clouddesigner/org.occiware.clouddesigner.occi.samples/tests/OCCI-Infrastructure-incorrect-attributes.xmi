@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ASCII"?>
+<OCCI:Configuration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:OCCI="http://schemas.ogf.org/occi" xsi:schemaLocation="http://schemas.ogf.org/occi http://schemas.ogf.org/occi">
+  <use href="../extensions/Infrastructure.xmi#/"/>
+  <resources id="network-1">
+    <kind href="../extensions/Infrastructure.xmi#//@kinds[term='network']"/>
+    <attributes name="occi.network.vlan" value="1"/>
+  </resources>
+  <resources id="network-2">
+    <kind href="../extensions/Infrastructure.xmi#//@kinds[term='network']"/>
+    <attributes name="occi.network.vlan" value="1"/>
+  </resources>
+  <resources id="compute-1">
+    <kind href="../extensions/Infrastructure.xmi#//@kinds[term='compute']"/>
+    <links id="networkinterface-1.1" target="//@resources.0">
+      <kind href="../extensions/Infrastructure.xmi#//@kinds[term='networkinterface']"/>
+      <attributes name="occi.networkinterface.mac" value="1"/>
+      <attributes name="occi.networkinterface.interface" value="eth0"/>
+    </links>
+    <links id="networkinterface-1.2" target="//@resources.1">
+      <kind href="../extensions/Infrastructure.xmi#//@kinds[term='networkinterface']"/>
+      <attributes name="occi.networkinterface.mac" value="1"/>
+      <attributes name="occi.networkinterface.interface" value="eth0"/>
+    </links>
+  </resources>
+  <resources id="compute-2">
+    <kind href="../extensions/Infrastructure.xmi#//@kinds[term='compute']"/>
+    <links id="networkinterface-2.1" target="//@resources.1">
+      <kind href="../extensions/Infrastructure.xmi#//@kinds[term='networkinterface']"/>
+      <attributes name="occi.networkinterface.mac" value="1"/>
+    </links>
+    <links id="storage-2.1" target="//@resources.4">
+      <kind href="../extensions/Infrastructure.xmi#//@kinds[term='storagelink']"/>
+      <attributes name="occi.storagelink.mountpoint" value="/storage1/"/>
+    </links>
+    <links id="storage-2.2" target="//@resources.4">
+      <kind href="../extensions/Infrastructure.xmi#//@kinds[term='storagelink']"/>
+      <attributes name="occi.storagelink.mountpoint" value="/storage1/"/>
+    </links>
+  </resources>
+  <resources id="storage-1">
+    <kind href="../extensions/Infrastructure.xmi#//@kinds[term='storage']"/>
+  </resources>
+</OCCI:Configuration>

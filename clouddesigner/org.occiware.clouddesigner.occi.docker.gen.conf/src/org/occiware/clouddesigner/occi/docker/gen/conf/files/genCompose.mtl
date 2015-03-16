@@ -1,0 +1,11 @@
+[comment encoding = UTF-8 /]
+[module genCompose('http://schemas.ogf.org/occi/docker', 'http://schemas.ogf.org/occi/infrastructure', 'http://schemas.ogf.org/occi')]
+ 
+[template public generateCompose(configuration : Configuration)]
+[file ('docker-compose.yml', false, 'UTF-8')]
+# Compose file for resources:
+[for (resource : Resource | configuration.resources)]
+# - [resource.id/]
+[/for]
+[/file]
+[/template]
