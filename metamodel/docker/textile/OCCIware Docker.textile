@@ -1,0 +1,367 @@
+h1. OCCI Extension: OCCIware Docker
+
+| *Name* | OCCIware Docker |
+| *Scheme* | http://occiware.org/docker# |
+
+h1. Imports
+
+| *Name* | *Scheme* |
+| OCCI Core | http://schemas.ogf.org/occi/core# |  
+| OCCI Infrastructure | http://schemas.ogf.org/occi/infrastructure# |  
+
+h1. Kinds
+
+h2. Kind container
+
+| *Term* | container |
+| *Scheme* | http://occiware.org/docker# |
+| *Title* | Container Resource |
+| *Parent* | http://schemas.ogf.org/occi/infrastructure#compute |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| name | String | true | false |  | The name of this Container instance |
+| containerid | String | false | false |  | The ID of this Container instance |
+| image | String | false | false |  | The image of this Container instance |
+| build | String | false | false |  | The build directory of this Container instance |
+| command | String | false | false |  | Override the default command in Dockerfile |
+| ports | String | false | false |  | The ports of this Container instance as a list separated by space |
+| expose | String | false | false |  | The exposed ports of this Container instance as a list separated by space |
+| volumes | String | false | false |  | The list of volumes separated by space |
+| environment | String | false | false |  | Separated by space |
+| env_file | String | false | false |  |  |
+| net | String | false | false |  | 'bridge',  'none', 'container:[name or id]', or 'host' |
+| dns | String | false | false |  | Custom DNS servers, separated by space |
+| dns_search | String | false | false |  | Custom DNS search domains |
+| cap_add | String | false | false |  | Add container capabilities |
+| cap_drop | String | false | false |  | Drop container capabilities |
+| working_dir | String | false | false |  | Working directory |
+| entrypoint | String | false | false |  |  |
+| user | String | false | false |  |  |
+| hostname | String | false | false |  |  |
+| domainname | String | false | false |  |  |
+| mem_limit | Number | false | false |  |  |
+| memory_swap | Number | false | false |  | Memory swap limit |
+| privileged | Boolean | false | false | false |  |
+| restart | String | false | false |  |  |
+| stdin_open | Boolean | false | false |  |  |
+| interactive | Boolean | true | false | false |  |
+| tty | Boolean | false | false | false |  |
+| cpu_shares | Number | false | false | 0 | CPU shares for this Docker container |
+| pid | String | false | false |  | '' or 'host' |
+| ipc | String | false | false |  | '', 'host' or 'container:[name:id]' |
+| add_host | String | false | false |  |  |
+| mac_address | String | false | false |  |  |
+| rm | Boolean | false | false |  |  |
+| security_opt | String | false | false |  |  |
+| device | String | false | false |  |  |
+| lxc_conf | String | false | false |  |  |
+| cpuset | String | false | false |  |  |
+| publish_all | Boolean | false | false | false | Publish all exposed ports to random ports on the host interfaces |
+| read_only | Boolean | false | false | false | Mount the container's root filesystem as read only |
+
+h3. Actions
+
+h4. Action create
+
+| *Term* | create |
+| *Scheme* | http://occiware.org/docker/container/action# |
+| *Title* |  |
+
+
+h4. Action start
+
+| *Term* | start |
+| *Scheme* | http://occiware.org/docker/container/action# |
+| *Title* |  |
+
+
+h4. Action stop
+
+| *Term* | stop |
+| *Scheme* | http://occiware.org/docker/container/action# |
+| *Title* |  |
+
+
+h4. Action run
+
+| *Term* | run |
+| *Scheme* | http://occiware.org/docker/container/action# |
+| *Title* |  |
+
+
+h4. Action pause
+
+| *Term* | pause |
+| *Scheme* | http://occiware.org/docker/container/action# |
+| *Title* |  |
+
+
+h4. Action unpause
+
+| *Term* | unpause |
+| *Scheme* | http://occiware.org/docker/container/action# |
+| *Title* |  |
+
+
+h4. Action kill
+
+| *Term* | kill |
+| *Scheme* | http://occiware.org/docker/container/action# |
+| *Title* |  |
+
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| signal | String | true | false | KILL |  |
+
+
+h2. Kind link
+
+| *Term* | link |
+| *Scheme* | http://occiware.org/docker# |
+| *Title* | Link between containers |
+| *Parent* | http://schemas.ogf.org/occi/core#link |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| alias | String | false | false |  | The alias of this Link instance |
+
+h3. Actions
+
+
+
+h2. Kind volumesfrom
+
+| *Term* | volumesfrom |
+| *Scheme* | http://occiware.org/docker# |
+| *Title* | VolumsFrom |
+| *Parent* | http://schemas.ogf.org/occi/core#link |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| mode | Mode | false | false | read_write | The mode of this VolumesFrom instance |
+
+h3. Actions
+
+
+
+h2. Kind contains
+
+| *Term* | contains |
+| *Scheme* | http://occiware.org/docker# |
+| *Title* |  |
+| *Parent* | http://schemas.ogf.org/occi/core#link |
+
+h3. Attributes
+
+
+h3. Actions
+
+
+
+h2. Kind machine
+
+| *Term* | machine |
+| *Scheme* | http://occiware.org/docker# |
+| *Title* | Machine Resource |
+| *Parent* | http://schemas.ogf.org/occi/infrastructure#compute |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| name | String | true | false |  |  |
+
+h3. Actions
+
+
+
+h2. Kind machine_Amazon_EC2
+
+| *Term* | machine_Amazon_EC2 |
+| *Scheme* | http://occiware.org/docker# |
+| *Title* | Machine on Amazon EC2 |
+| *Parent* | http://occiware.org/docker#machine |
+
+h3. Attributes
+
+
+h3. Actions
+
+
+
+h2. Kind machine_Digital_Ocean
+
+| *Term* | machine_Digital_Ocean |
+| *Scheme* | http://occiware.org/docker# |
+| *Title* | Machine on Digital Ocean |
+| *Parent* | http://occiware.org/docker#machine |
+
+h3. Attributes
+
+
+h3. Actions
+
+
+
+h2. Kind machine_Google_Compute_Engine
+
+| *Term* | machine_Google_Compute_Engine |
+| *Scheme* | http://occiware.org/docker# |
+| *Title* | Machine on Google Compute Engine |
+| *Parent* | http://occiware.org/docker#machine |
+
+h3. Attributes
+
+
+h3. Actions
+
+
+
+h2. Kind machine_IBM_SoftLayer
+
+| *Term* | machine_IBM_SoftLayer |
+| *Scheme* | http://occiware.org/docker# |
+| *Title* | Machine on IBM SoftLayer |
+| *Parent* | http://occiware.org/docker#machine |
+
+h3. Attributes
+
+
+h3. Actions
+
+
+
+h2. Kind machine_Microsoft_Azure
+
+| *Term* | machine_Microsoft_Azure |
+| *Scheme* | http://occiware.org/docker# |
+| *Title* | Machine on Microsoft Azure |
+| *Parent* | http://occiware.org/docker#machine |
+
+h3. Attributes
+
+
+h3. Actions
+
+
+
+h2. Kind machine_Microsoft_Hyper_V
+
+| *Term* | machine_Microsoft_Hyper_V |
+| *Scheme* | http://occiware.org/docker# |
+| *Title* | Machine on Microsoft Hyper-V |
+| *Parent* | http://occiware.org/docker#machine |
+
+h3. Attributes
+
+
+h3. Actions
+
+
+
+h2. Kind machine_OpenStack
+
+| *Term* | machine_OpenStack |
+| *Scheme* | http://occiware.org/docker# |
+| *Title* | Machine on OpenStack |
+| *Parent* | http://occiware.org/docker#machine |
+
+h3. Attributes
+
+
+h3. Actions
+
+
+
+h2. Kind machine_Rackspace
+
+| *Term* | machine_Rackspace |
+| *Scheme* | http://occiware.org/docker# |
+| *Title* | Machine on Rackspace cloud |
+| *Parent* | http://occiware.org/docker#machine |
+
+h3. Attributes
+
+
+h3. Actions
+
+
+
+h2. Kind machine_VirtualBox
+
+| *Term* | machine_VirtualBox |
+| *Scheme* | http://occiware.org/docker# |
+| *Title* | Machine on VirtualBox |
+| *Parent* | http://occiware.org/docker#machine |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| boot2docker_url | String | false | false |  |  |
+| disk_size | Number | false | false | 20000 | Size of disk for the host in MB |
+| memory | Number | false | false | 1024 | Size of memory for the host in MB |
+
+h3. Actions
+
+
+
+h2. Kind machine_VMware_Fusion
+
+| *Term* | machine_VMware_Fusion |
+| *Scheme* | http://occiware.org/docker# |
+| *Title* | Machine on VMware Fusion |
+| *Parent* | http://occiware.org/docker#machine |
+
+h3. Attributes
+
+
+h3. Actions
+
+
+
+h2. Kind machine_VMware_vCloud_Air
+
+| *Term* | machine_VMware_vCloud_Air |
+| *Scheme* | http://occiware.org/docker# |
+| *Title* | Machine on VMware vCloud Air |
+| *Parent* | http://occiware.org/docker#machine |
+
+h3. Attributes
+
+
+h3. Actions
+
+
+
+h2. Kind machine_VMware_vSphere
+
+| *Term* | machine_VMware_vSphere |
+| *Scheme* | http://occiware.org/docker# |
+| *Title* | Machine on VMware vSphere |
+| *Parent* | http://occiware.org/docker#machine |
+
+h3. Attributes
+
+
+h3. Actions
+
+
+
+
+
+h1. Mixins
+
+
+
+h1. Types
+
+h2. Enum Mode
+
+Literals:
+* read_write  
+* read_only  
+
+

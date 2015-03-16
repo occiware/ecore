@@ -1,0 +1,67 @@
+h1. OCCI Extension: OCCI Core
+
+| *Name* | OCCI Core |
+| *Scheme* | http://schemas.ogf.org/occi/core# |
+
+h1. Imports
+
+| *Name* | *Scheme* |
+
+h1. Kinds
+
+h2. Kind entity
+
+| *Term* | entity |
+| *Scheme* | http://schemas.ogf.org/occi/core# |
+| *Title* | Entity type |
+| *Parent* |  |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.core.title | String | false | true |  | The display name of the instance. |
+
+h3. Actions
+
+
+
+h2. Kind resource
+
+| *Term* | resource |
+| *Scheme* | http://schemas.ogf.org/occi/core# |
+| *Title* | Resource |
+| *Parent* | http://schemas.ogf.org/occi/core#entity |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.core.summary | String | false | true |  | A summarising description of the Resource instance. |
+
+h3. Actions
+
+
+
+h2. Kind link
+
+| *Term* | link |
+| *Scheme* | http://schemas.ogf.org/occi/core# |
+| *Title* | Link |
+| *Parent* | http://schemas.ogf.org/occi/core#entity |
+
+h3. Attributes
+
+
+h3. Actions
+
+
+
+
+
+h1. Mixins
+
+
+
+h1. Types
+
+
+
