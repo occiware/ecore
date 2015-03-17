@@ -22,6 +22,8 @@ For OCCI Metamodel:
 - Add Configuration endpoint attribute ?
 - Add Configuration.description human readable
 - Add Configuration.mixins relation
+- Add Attribute.multiplicity: Boolean = false, false -> attribute with one value, true -> multi-valued attribute
+
 
 For OCCI Core:
 
