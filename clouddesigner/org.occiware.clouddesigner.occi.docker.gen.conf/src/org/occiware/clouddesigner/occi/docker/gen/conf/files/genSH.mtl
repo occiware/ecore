@@ -22,7 +22,7 @@ docker-machine create [genDriverConfig()/] [name/]
 [/template]
 
 [template public genDriverConfig (machine : Machine_VirtualBox) post (trim())]
- --driver=virtualbox[if memory <> null] --virtualbox-memory [memory.round()/][/if][if disk_size <> null] --virtualbox-disk-size [disk_size/][/if]
+ --driver=virtualbox[if memory <> null] --virtualbox-memory [toInteger(memory)/][/if][if disk_size <> null] --virtualbox-disk-size [disk_size/][/if]
 [/template]
 
 [template public genContainer (container : Container, machineName : String) ]
@@ -46,3 +46,9 @@ docker $(docker-machine config [machineName/]) start [name/]
 	'org.occiware.clouddesigner.occi.docker.gen.conf.services.GenUtils', 
 	'getOrderedContainers(org.occiware.clouddesigner.occi.docker.Machine)', 
 	Sequence{machine})/]
+
+[query public toInteger(real: Real) : Integer
+	= invoke(
+	'org.occiware.clouddesigner.occi.docker.gen.conf.services.GenUtils', 
+	'toInteger(java.lang.Float)', 
+	Sequence{real})/]

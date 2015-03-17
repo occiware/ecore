@@ -26,4 +26,7 @@ public class GenUtils {
 		return res;
 	}
 
+	public Integer toInteger(Float f ) {
+		return Math.round(f);
+	}
 }
