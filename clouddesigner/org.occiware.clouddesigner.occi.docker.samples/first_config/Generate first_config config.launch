@@ -8,6 +8,6 @@
 </listAttribute>
 <booleanAttribute key="org.eclipse.jdt.launching.ATTR_USE_START_ON_FIRST_THREAD" value="true"/>
 <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="org.occiware.clouddesigner.occi.docker.gen.conf.common.Generate"/>
-<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="&quot;../org.occiware.clouddesigner.occi.docker.samples/first-docker-configuration.xmi&quot; &quot;../org.occiware.clouddesigner.occi.docker.samples/first_config&quot;"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="&quot;${workspace_loc:org.occiware.clouddesigner.occi.docker.samples}/first-docker-configuration.xmi&quot; &quot;${workspace_loc:org.occiware.clouddesigner.occi.docker.samples}/first_config&quot;"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="org.occiware.clouddesigner.occi.docker.gen.conf"/>
 </launchConfiguration>
