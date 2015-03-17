@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Create the Docker Machine_VirtualBox named localhost
-docker-machine create --driver=virtualbox --virtualbox-memory adezdeza5000 --virtualbox-disk-size 20000 localhost
+docker-machine create --driver=virtualbox --virtualbox-memory 5000 --virtualbox-disk-size 20000 localhost
 
 # Create the Docker Container named webserver
 docker $(docker-machine config localhost) create --name webserver --link db:db tomcat 

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Create the Docker Machine_VirtualBox named demo
-docker-machine create --driver=virtualbox --virtualbox-memory adezdeza2048 --virtualbox-disk-size 80000 demo
+docker-machine create --driver=virtualbox --virtualbox-memory 2048 --virtualbox-disk-size 80000 demo
 
 # Create the Docker Container named db
 docker $(docker-machine config demo) create --name db  training/postgres 
