@@ -5,41 +5,39 @@
 [file ('docker-conf.sh', false, 'UTF-8')]
 #!/bin/sh
 
-[for (resource : Resource | configuration.resources)]
-	[if (resource.oclIsKindOf(Machine))]
-[oclAsType(Machine).genMachine()/]
-	[/if]
+[for (machine : Machine | configuration.resources->select(oclIsKindOf(Machine)).oclAsType(Machine))]
+[machine.genMachine()/]
 [/for]
 [/file]
 [/template]
 
 [template public genMachine (machine : Machine) ]
 # Create the Docker [eClass().name/] named [name/]
-docker-machine create --driver=[getDriverConfig()/] [name/]
+docker-machine create [genDriverConfig()/] [name/]
 
 [getOrderedContainers().genContainer(machine.name)/]
+[/template]
 
+[template public genDriverConfig (machine : Machine) post (trim())]
+[/template]
+
+[template public genDriverConfig (machine : Machine_VirtualBox) post (trim())]
+ --driver=virtualbox[if memory <> null] --virtualbox-memory [memory.round()/][/if][if disk_size <> null] --virtualbox-disk-size [disk_size/][/if]
 [/template]
 
 [template public genContainer (container : Container, machineName : String) ]
-# Create the Docker [eClass().name/] named [name/]
-docker $(docker-machine config [machineName/]) create --name [name/] [getLinkConfig()/] [image.trim()/] [command.trim()/]
+# Create the Docker Container named [name/]
+docker $(docker-machine config [machineName/]) create --name [name/][if publish_all] -P[/if] [genLinkConfig()/] [image.trim()/] [command.trim()/]
 
-# Start the Docker [eClass().name/] named [name/]
+# Start the Docker Container named [name/]
 docker $(docker-machine config [machineName/]) start [name/]
 
 
 [/template]
 
-[template public getDriverConfig (machine : Machine) post (trim())]
-[if (machine.oclIsTypeOf(Machine_VirtualBox))]
-	virtualbox --virtualbox-memory 2048 --virtualbox-disk-size 80000 
-[/if]
-[/template]
-
-[template public getLinkConfig (container : Container) post (trim())]
-[for (link : Link | links->filter(DockerLink))]
--P --link [link.oclAsType(DockerLink).alias/]:[link.target.oclAsType(Container).name/]
+[template public genLinkConfig (container : Container) post (trim())]
+[for (link : DockerLink | links->filter(DockerLink))]
+  --link [link.target.oclAsType(Container).name/][if link.alias <> null]:[link.alias/][/if]
 [/for]
 [/template]
 
@@ -48,4 +46,3 @@ docker $(docker-machine config [machineName/]) start [name/]
 	'org.occiware.clouddesigner.occi.docker.gen.conf.services.GenUtils', 
 	'getOrderedContainers(org.occiware.clouddesigner.occi.docker.Machine)', 
 	Sequence{machine})/]
-
