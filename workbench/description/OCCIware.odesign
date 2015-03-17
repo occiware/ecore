@@ -234,7 +234,15 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </subNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" labelSize="10" labelFormat="bold" labelExpression="ocl:self.id + ': ' + self.kind.term" iconPath="icons/compute.ico">
+          <subContainerMappings name="RC" semanticCandidatesExpression="ocl:self.links->select(kind.term = 'contains').target" domainClass="OCCI.Resource">
+            <style xsi:type="style:FlatContainerStyleDescription" labelSize="10" labelFormat="bold" labelExpression="ocl:self.id + ': ' + self.kind.term">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
+            </style>
+          </subContainerMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" labelSize="10" labelFormat="bold" labelExpression="ocl:self.id + ': ' + self.kind.term">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>

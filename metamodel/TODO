@@ -58,3 +58,8 @@ For OCCI Autonomic Computing
 
 Regression tests:
 - Automate the validation of OCL constraints on all XMI files.
+
+OCCIware Studio:
+- add org.occiware.clouddesigner.occi.gen.alloy
+- add org.occiware.clouddesigner.occi.gen.curl
+- update Acceleo template for Docker in org.occiware.clouddesigner.occi.docker.gen.conf
