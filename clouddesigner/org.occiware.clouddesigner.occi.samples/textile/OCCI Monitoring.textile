@@ -6,7 +6,7 @@ h1. OCCI Extension: OCCI Monitoring
 h1. Imports
 
 | *Name* | *Scheme* |
-| OCCI Core | http://schemas.ogf.org/occi/core# |  
+| OCCI Core | http://schemas.ogf.org/occi/core# |
 
 h1. Kinds
 

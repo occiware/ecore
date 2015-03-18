@@ -6,7 +6,7 @@ h1. OCCI Extension: OW2 ProActive
 h1. Imports
 
 | *Name* | *Scheme* |
-| OCCI Infrastructure | http://schemas.ogf.org/occi/infrastructure# |  
+| OCCI Infrastructure | http://schemas.ogf.org/occi/infrastructure# |
 
 h1. Kinds
 

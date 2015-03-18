@@ -6,8 +6,8 @@ h1. OCCI Extension: OCNI
 h1. Imports
 
 | *Name* | *Scheme* |
-| OCCI Core | http://schemas.ogf.org/occi/core# |  
-| OCCI Infrastructure | http://schemas.ogf.org/occi/infrastructure# |  
+| OCCI Core | http://schemas.ogf.org/occi/core# |
+| OCCI Infrastructure | http://schemas.ogf.org/occi/infrastructure# |
 
 h1. Kinds
 

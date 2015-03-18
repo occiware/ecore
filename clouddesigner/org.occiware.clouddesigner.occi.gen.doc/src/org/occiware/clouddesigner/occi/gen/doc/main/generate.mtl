@@ -18,7 +18,7 @@ h1. Imports
 
 | *Name* | *Scheme* |
 [for (imported : Extension | extension.import)]
-| [imported.name/] | [imported.scheme/] |  
+| [imported.name/] | [imported.scheme/] |
 [/for]
 
 h1. Kinds
