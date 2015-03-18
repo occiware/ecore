@@ -1,0 +1,120 @@
+h1. OCCI Extension: OCCI Monitoring
+
+| *Name* | OCCI Monitoring |
+| *Scheme* | http://schemas.ogf.org/occi/monitoring# |
+
+h1. Imports
+
+| *Name* | *Scheme* |
+| OCCI Core | http://schemas.ogf.org/occi/core# |  
+
+h1. Kinds
+
+h2. Kind sensor
+
+| *Term* | sensor |
+| *Scheme* | http://schemas.ogf.org/occi/monitoring# |
+| *Title* | Sensor Resource |
+| *Parent* | http://schemas.ogf.org/occi/core#resource |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.sensor.period | Number | true | true |  | Sensing period |
+| occi.sensor.periodspec | String | false | true |  | Period spec |
+| occi.sensor.timebase | Number | true | false |  | Time base |
+| occi.sensor.timestart | Number | true | true |  | Time start |
+| occi.sensor.timestop | Number | true | true |  | Time stop |
+| occi.sensor.timespec | String | false | true |  | Time spec |
+
+h3. Actions
+
+
+
+h2. Kind collector
+
+| *Term* | collector |
+| *Scheme* | http://schemas.ogf.org/occi/monitoring# |
+| *Title* | Collector Link |
+| *Parent* | http://schemas.ogf.org/occi/core#link |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.collector.period | Number | true | true |  | Collector period |
+| occi.collector.periodspec | String | false | true |  | Period spec |
+
+h3. Actions
+
+
+
+
+
+h1. Mixins
+
+h2. Mixin metric
+
+| *Term* | metric |
+| *Scheme* | http://schemas.ogf.org/occi/monitoring/collector# |
+| *Title* | Collector Metric Mixin |
+
+h3. Depends
+
+
+h3. Applies
+
+* http://schemas.ogf.org/occi/monitoring#collector
+
+h3. Attributes
+
+
+h3. Actions
+
+
+
+h2. Mixin aggregator
+
+| *Term* | aggregator |
+| *Scheme* | http://schemas.ogf.org/occi/monitoring/sensor# |
+| *Title* | Aggregator Mixin |
+
+h3. Depends
+
+
+h3. Applies
+
+* http://schemas.ogf.org/occi/monitoring#sensor
+
+h3. Attributes
+
+
+h3. Actions
+
+
+
+h2. Mixin publisher
+
+| *Term* | publisher |
+| *Scheme* | http://schemas.ogf.org/occi/monitoring/sensor# |
+| *Title* | Publisher Mixin |
+
+h3. Depends
+
+
+h3. Applies
+
+* http://schemas.ogf.org/occi/monitoring#sensor
+
+h3. Attributes
+
+
+h3. Actions
+
+
+
+
+
+h1. Types
+
+
+

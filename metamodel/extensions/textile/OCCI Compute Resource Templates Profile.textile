@@ -1,0 +1,189 @@
+h1. OCCI Extension: OCCI Compute Resource Templates Profile
+
+| *Name* | OCCI Compute Resource Templates Profile |
+| *Scheme* | http://fedcloud.egi.eu/occi/compute/flavour/1.0# |
+
+h1. Imports
+
+| *Name* | *Scheme* |
+| OCCI Infrastructure | http://schemas.ogf.org/occi/infrastructure# |  
+
+h1. Kinds
+
+
+
+h1. Mixins
+
+h2. Mixin ephemeral
+
+| *Term* | ephemeral |
+| *Scheme* | http://fedcloud.egi.eu/occi/compute/flavour/1.0# |
+| *Title* | Ephemeral Mixin |
+
+h3. Depends
+
+* http://schemas.ogf.org/occi/infrastructure#resource_tpl
+
+h3. Applies
+
+* http://schemas.ogf.org/occi/infrastructure#compute
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| eu.egi.fedcloud.occi.compute.ephemeral | GiB | true | false |  | Ephemeral storage provisioned for the associated Compute instance |
+
+h3. Actions
+
+
+
+h2. Mixin small
+
+| *Term* | small |
+| *Scheme* | http://fedcloud.egi.eu/occi/compute/flavour/1.0# |
+| *Title* | A small Compute instance |
+
+h3. Depends
+
+* http://fedcloud.egi.eu/occi/compute/flavour/1.0#ephemeral
+
+h3. Applies
+
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.compute.cores |  | false | false | 1 |  |
+| occi.compute.memory |  | false | false | 1.0 |  |
+| eu.egi.fedcloud.occi.compute.ephemeral |  | false | false | 10.0 |  |
+
+h3. Actions
+
+
+
+h2. Mixin medium
+
+| *Term* | medium |
+| *Scheme* | http://fedcloud.egi.eu/occi/compute/flavour/1.0# |
+| *Title* | A medium Compute instance |
+
+h3. Depends
+
+* http://fedcloud.egi.eu/occi/compute/flavour/1.0#ephemeral
+
+h3. Applies
+
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.compute.cores |  | false | false | 2 |  |
+| occi.compute.memory |  | false | false | 2.0 |  |
+| eu.egi.fedcloud.occi.compute.ephemeral |  | false | false | 20.0 |  |
+
+h3. Actions
+
+
+
+h2. Mixin large
+
+| *Term* | large |
+| *Scheme* | http://fedcloud.egi.eu/occi/compute/flavour/1.0# |
+| *Title* | A large Compute instance |
+
+h3. Depends
+
+* http://fedcloud.egi.eu/occi/compute/flavour/1.0#ephemeral
+
+h3. Applies
+
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.compute.cores |  | false | false | 4 |  |
+| occi.compute.memory |  | false | false | 4.0 |  |
+| eu.egi.fedcloud.occi.compute.ephemeral |  | false | false | 40.0 |  |
+
+h3. Actions
+
+
+
+h2. Mixin mem.small
+
+| *Term* | mem.small |
+| *Scheme* | http://fedcloud.egi.eu/occi/compute/flavour/1.0# |
+| *Title* | A small Compute instance for memory-intensive applications |
+
+h3. Depends
+
+* http://fedcloud.egi.eu/occi/compute/flavour/1.0#ephemeral
+
+h3. Applies
+
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.compute.cores |  | false | false | 1 |  |
+| occi.compute.memory |  | false | false | 4.0 |  |
+| eu.egi.fedcloud.occi.compute.ephemeral |  | false | false | 10.0 |  |
+
+h3. Actions
+
+
+
+h2. Mixin mem.medium
+
+| *Term* | mem.medium |
+| *Scheme* | http://fedcloud.egi.eu/occi/compute/flavour/1.0# |
+| *Title* | A medium Compute instance for memory-intensive applications |
+
+h3. Depends
+
+* http://fedcloud.egi.eu/occi/compute/flavour/1.0#ephemeral
+
+h3. Applies
+
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.compute.cores |  | false | false | 2 |  |
+| occi.compute.memory |  | false | false | 8.0 |  |
+| eu.egi.fedcloud.occi.compute.ephemeral |  | false | false | 20.0 |  |
+
+h3. Actions
+
+
+
+h2. Mixin mem.large
+
+| *Term* | mem.large |
+| *Scheme* | http://fedcloud.egi.eu/occi/compute/flavour/1.0# |
+| *Title* | A large Compute instance for memory-intensive applications |
+
+h3. Depends
+
+* http://fedcloud.egi.eu/occi/compute/flavour/1.0#ephemeral
+
+h3. Applies
+
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.compute.cores |  | false | false | 4 |  |
+| occi.compute.memory |  | false | false | 16.0 |  |
+| eu.egi.fedcloud.occi.compute.ephemeral |  | false | false | 40.0 |  |
+
+h3. Actions
+
+
+
+
+
+h1. Types
+
+
+

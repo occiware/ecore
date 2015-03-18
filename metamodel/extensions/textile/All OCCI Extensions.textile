@@ -1,0 +1,29 @@
+h1. OCCI Extension: All OCCI Extensions
+
+| *Name* | All OCCI Extensions |
+| *Scheme* | http://occiware.org# |
+
+h1. Imports
+
+| *Name* | *Scheme* |
+| OCCI Core | http://schemas.ogf.org/occi/core# |  
+| OCCI Infrastructure | http://schemas.ogf.org/occi/infrastructure# |  
+| OCCI Compute Resource Templates Profile | http://fedcloud.egi.eu/occi/compute/flavour/1.0# |  
+| OW2 ProActive | http://proactive.ow2.org# |  
+| OCNI | http://exem.com/ocni# |  
+| Docker | http://schemas.occiware.org/docker# |  
+| OCCI Monitoring | http://schemas.ogf.org/occi/monitoring# |  
+| ServiceManager Extension | http://euranova.eu/service-manager# |  
+
+h1. Kinds
+
+
+
+h1. Mixins
+
+
+
+h1. Types
+
+
+

@@ -1,0 +1,93 @@
+h1. OCCI Extension: ServiceManager Extension
+
+| *Name* | ServiceManager Extension |
+| *Scheme* | http://euranova.eu/service-manager# |
+
+h1. Imports
+
+| *Name* | *Scheme* |
+| OCCI Core | http://schemas.ogf.org/occi/core# |  
+
+h1. Kinds
+
+h2. Kind service
+
+| *Term* | service |
+| *Scheme* | http://euranova.eu/service-manager# |
+| *Title* | Service Resource |
+| *Parent* | http://schemas.ogf.org/occi/core#resource |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| state | Status | true | false |  | Current status of the service |
+
+h3. Actions
+
+
+
+h2. Kind role
+
+| *Term* | role |
+| *Scheme* | http://euranova.eu/service-manager# |
+| *Title* | Role Resource |
+| *Parent* | http://schemas.ogf.org/occi/core#resource |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| state | Status | false | true |  | Current status of this Role instance |
+
+h3. Actions
+
+
+
+h2. Kind group
+
+| *Term* | group |
+| *Scheme* | http://euranova.eu/service-manager# |
+| *Title* | Group Link |
+| *Parent* | http://schemas.ogf.org/occi/core#link |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| size | Number | false | false |  |  |
+| min | Number | false | false |  |  |
+| max | Number | false | false |  |  |
+
+h3. Actions
+
+
+
+h2. Kind dependency
+
+| *Term* | dependency |
+| *Scheme* | http://euranova.eu/service-manager# |
+| *Title* | Dependency Link |
+| *Parent* | http://schemas.ogf.org/occi/core#link |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| priority | Number | false | false |  |  |
+
+h3. Actions
+
+
+
+
+
+h1. Mixins
+
+
+
+h1. Types
+
+h2. Enum Status
+
+Literals:
+* active  
+* inactive  
+
+

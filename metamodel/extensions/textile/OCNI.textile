@@ -1,0 +1,262 @@
+h1. OCCI Extension: OCNI
+
+| *Name* | OCNI |
+| *Scheme* | http://exem.com/ocni# |
+
+h1. Imports
+
+| *Name* | *Scheme* |
+| OCCI Core | http://schemas.ogf.org/occi/core# |  
+| OCCI Infrastructure | http://schemas.ogf.org/occi/infrastructure# |  
+
+h1. Kinds
+
+h2. Kind CloNeNode
+
+| *Term* | CloNeNode |
+| *Scheme* | http://exem.com/ocni# |
+| *Title* |  |
+| *Parent* | http://schemas.ogf.org/occi/infrastructure#network |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| ocni.availability | Availability | false | false |  |  |
+| ocni.location | Location | false | false |  |  |
+
+h3. Actions
+
+
+
+h2. Kind CloNeLink
+
+| *Term* | CloNeLink |
+| *Scheme* | http://exem.com/ocni# |
+| *Title* |  |
+| *Parent* | http://schemas.ogf.org/occi/infrastructure#network |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| ocni.availability | Availability | false | false |  |  |
+| ocni.bandwidth | Bandwidth | false | false |  |  |
+| ocni.latency | Latency | false | false |  |  |
+| ocni.jitter | Jitter | false | false |  |  |
+| ocni.loss | Loss | false | false |  |  |
+| ocni.routing_scheme | RoutingScheme | false | false |  |  |
+
+h3. Actions
+
+
+
+h2. Kind FNS
+
+| *Term* | FNS |
+| *Scheme* | http://exem.com/ocni# |
+| *Title* |  |
+| *Parent* | http://schemas.ogf.org/occi/infrastructure#network |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| ocni.availability | Availability | false | false |  |  |
+
+h3. Actions
+
+
+
+h2. Kind FNSComLink
+
+| *Term* | FNSComLink |
+| *Scheme* | http://exem.com/ocni# |
+| *Title* |  |
+| *Parent* | http://schemas.ogf.org/occi/infrastructure#networkinterface |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| ocni.availability | Availability | false | false |  |  |
+
+h3. Actions
+
+
+
+h2. Kind CloNeLinkComLink
+
+| *Term* | CloNeLinkComLink |
+| *Scheme* | http://exem.com/ocni# |
+| *Title* |  |
+| *Parent* | http://schemas.ogf.org/occi/infrastructure#networkinterface |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| ocni.availability | Availability | false | false |  |  |
+
+h3. Actions
+
+
+
+h2. Kind CloNeNetworkInterface
+
+| *Term* | CloNeNetworkInterface |
+| *Scheme* | http://exem.com/ocni# |
+| *Title* |  |
+| *Parent* | http://exem.com/ocni#NetNetLink |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| ocni.availability2 | Availability | false | false |  |  |
+| ocni.state2 | State | false | false |  |  |
+
+h3. Actions
+
+
+
+h2. Kind NetNetLink
+
+| *Term* | NetNetLink |
+| *Scheme* | http://exem.com/ocni# |
+| *Title* |  |
+| *Parent* | http://schemas.ogf.org/occi/core#link |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| ocni.availability | Availability | false | false |  |  |
+| ocni.state | State | false | false |  |  |
+
+h3. Actions
+
+
+
+h2. Kind StorStorLink
+
+| *Term* | StorStorLink |
+| *Scheme* | http://exem.com/ocni# |
+| *Title* |  |
+| *Parent* | http://schemas.ogf.org/occi/core#link |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| ocni.availability | Availability | false | false |  |  |
+| ocni.state | State | false | false |  |  |
+
+h3. Actions
+
+
+
+h2. Kind NetStorLink
+
+| *Term* | NetStorLink |
+| *Scheme* | http://exem.com/ocni# |
+| *Title* |  |
+| *Parent* | http://schemas.ogf.org/occi/core#link |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| ocni.availability | Availability | false | false |  |  |
+| ocni.state | State | false | false |  |  |
+
+h3. Actions
+
+
+
+h2. Kind ComComLink
+
+| *Term* | ComComLink |
+| *Scheme* | http://exem.com/ocni# |
+| *Title* |  |
+| *Parent* | http://schemas.ogf.org/occi/core#link |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| ocni.availability | Availability | false | false |  |  |
+| ocni.state | State | false | false |  |  |
+
+h3. Actions
+
+
+
+h2. Kind CloNeNodeComLink
+
+| *Term* | CloNeNodeComLink |
+| *Scheme* | http://exem.com/ocni# |
+| *Title* |  |
+| *Parent* | http://schemas.ogf.org/occi/infrastructure#networkinterface |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| ocni.availability | Availability | false | false |  |  |
+
+h3. Actions
+
+
+
+
+
+h1. Mixins
+
+
+
+h1. Types
+
+h2. Datatype Availability
+
+h3. Type ocni.Availability
+
+h3. Annotations
+
+
+h2. Datatype Location
+
+h3. Type ocni.Location
+
+h3. Annotations
+
+
+h2. Datatype Bandwidth
+
+h3. Type java.lang.String
+
+h3. Annotations
+
+
+h2. Datatype Latency
+
+h3. Type java.lang.String
+
+h3. Annotations
+
+
+h2. Datatype Jitter
+
+h3. Type java.lang.String
+
+h3. Annotations
+
+
+h2. Datatype Loss
+
+h3. Type java.lang.String
+
+h3. Annotations
+
+
+h2. Datatype RoutingScheme
+
+h3. Type ocni.RoutingScheme
+
+h3. Annotations
+
+
+h2. Enum State
+
+Literals:
+
+
