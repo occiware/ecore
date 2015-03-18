@@ -288,6 +288,7 @@ h2. Enum SuspendMethod
 Literals:
 * hibernate  
 * suspend  
+
 h2. Datatype Integer4095
 
 h3. Type int
@@ -309,34 +310,40 @@ h2. Enum NetworkStatus
 Literals:
 * active  
 * inactive  
+
 h2. Enum ComputeStatus
 
 Literals:
 * active  
 * inactive  
 * suspended  
+
 h2. Enum NetworkInterfaceStatus
 
 Literals:
 * active  
 * inactive  
+
 h2. Enum Architecture
 
 Literals:
 * x86  
 * x64  
+
 h2. Enum StopMethod
 
 Literals:
 * graceful  
 * acpioff  
 * poweroff  
+
 h2. Enum RestartMethod
 
 Literals:
 * graceful  
 * warm  
 * cold  
+
 h2. Datatype IpAddress
 
 h3. Type java.lang.String
@@ -349,6 +356,7 @@ h2. Enum Allocation
 Literals:
 * dynamic  
 * static  
+
 h2. Enum StorageStatus
 
 Literals:
@@ -358,11 +366,13 @@ Literals:
 * snapshot  
 * resize  
 * degraded  
+
 h2. Enum StorageLinkStatus
 
 Literals:
 * active  
 * inactive  
+
 h2. Datatype PositiveInteger
 
 h3. Type int

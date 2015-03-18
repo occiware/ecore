@@ -132,4 +132,5 @@ Literals:
 [for (literal : EEnumLiteral | type.eLiterals)]
 * [literal.name/]  
 [/for]
+
 [/template]
