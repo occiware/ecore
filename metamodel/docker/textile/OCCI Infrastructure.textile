@@ -20,8 +20,8 @@ h2. Kind network
 h3. Attributes
 
 | *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
-| occi.network.vlan | <a href="OCCI Infrastructure.textile#enum-integer4095">Integer4095</a> | false | true |  | 802.1q VLAN Identifier (e.g. 343) |
-| occi.network.label | <a href="OCCI Infrastructure.textile#enum-token">Token</a> | false | true |  | Tag based VLANs (e.g. external-dmz) |
+| occi.network.vlan | <a href="OCCI Infrastructure.textile#datatype-integer4095">Integer4095</a> | false | true |  | 802.1q VLAN Identifier (e.g. 343) |
+| occi.network.label | <a href="OCCI Infrastructure.textile#datatype-token">Token</a> | false | true |  | Tag based VLANs (e.g. external-dmz) |
 | occi.network.state | <a href="OCCI Infrastructure.textile#enum-computestatus">ComputeStatus</a> | true | false |  | Current state of the instance |
 
 h3. Actions
@@ -53,10 +53,10 @@ h3. Attributes
 
 | *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
 | occi.compute.architecture | <a href="OCCI Infrastructure.textile#enum-architecture">Architecture</a> | false | true |  | CPU Architecture of the instance |
-| occi.compute.cores | <a href="OCCI Infrastructure.textile#enum-positiveinteger">PositiveInteger</a> | false | true |  | Number of CPU cores assigned to the instance |
+| occi.compute.cores | <a href="OCCI Infrastructure.textile#datatype-positiveinteger">PositiveInteger</a> | false | true |  | Number of CPU cores assigned to the instance |
 | occi.compute.hostname | String | false | true |  | Fully Qualified DNS hostname for the instance |
-| occi.compute.speed | <a href="OCCI Infrastructure.textile#enum-ghz">GHz</a> | false | true |  | CPU Clock frequency (speed) in gigahertz |
-| occi.compute.memory | <a href="OCCI Infrastructure.textile#enum-gib">GiB</a> | false | true |  | Maximum RAM in gigabytes allocated to the instance |
+| occi.compute.speed | <a href="OCCI Infrastructure.textile#datatype-ghz">GHz</a> | false | true |  | CPU Clock frequency (speed) in gigahertz |
+| occi.compute.memory | <a href="OCCI Infrastructure.textile#datatype-gib">GiB</a> | false | true |  | Maximum RAM in gigabytes allocated to the instance |
 | occi.compute.state | <a href="OCCI Infrastructure.textile#enum-computestatus">ComputeStatus</a> | true | false | inactive | Current state of the instance |
 
 h3. Actions
@@ -107,7 +107,7 @@ h2. Kind storage
 h3. Attributes
 
 | *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
-| occi.storage.size | <a href="OCCI Infrastructure.textile#enum-gib">GiB</a> | true | true |  | Storage size in gigabytes of the instance |
+| occi.storage.size | <a href="OCCI Infrastructure.textile#datatype-gib">GiB</a> | true | true |  | Storage size in gigabytes of the instance |
 | occi.storage.state | <a href="OCCI Infrastructure.textile#enum-storagestatus">StorageStatus</a> | true | false |  | Current status of the instance |
 
 h3. Actions
@@ -148,7 +148,7 @@ h4. Action resize
 
 
 | *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
-| size | <a href="OCCI Infrastructure.textile#enum-gib">GiB</a> | true | false |  |  |
+| size | <a href="OCCI Infrastructure.textile#datatype-gib">GiB</a> | true | false |  |  |
 
 
 h2. Kind storagelink
@@ -207,8 +207,8 @@ h3. Applies
 h3. Attributes
 
 | *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
-| occi.network.address | <a href="OCCI Infrastructure.textile#enum-ipaddressrange">IpAddressRange</a> | false | true |  | Internet Protocol (IP) network address (e.g. 192.168.0.1/24, fc00::/7) |
-| occi.network.gateway | <a href="OCCI Infrastructure.textile#enum-ipaddress">IpAddress</a> | false | true |  | Internet Protocol (IP) network address (e.g. 192.168.0.1, fc00::) |
+| occi.network.address | <a href="OCCI Infrastructure.textile#datatype-ipaddressrange">IpAddressRange</a> | false | true |  | Internet Protocol (IP) network address (e.g. 192.168.0.1/24, fc00::/7) |
+| occi.network.gateway | <a href="OCCI Infrastructure.textile#datatype-ipaddress">IpAddress</a> | false | true |  | Internet Protocol (IP) network address (e.g. 192.168.0.1, fc00::) |
 | occi.network.allocation | <a href="OCCI Infrastructure.textile#enum-allocation">Allocation</a> | false | true |  | Address allocation mechanism: dynamic e.g. uses the dynamic host configuration protocol, static e.g. uses user supplied static network configurations |
 
 h3. Actions
@@ -231,8 +231,8 @@ h3. Applies
 h3. Attributes
 
 | *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
-| occi.networkinterface.address | <a href="OCCI Infrastructure.textile#enum-ipaddress">IpAddress</a> | true | true |  | Internet Protocol (IP) network address (e.g. 192.168.0.1/24, fc00::/7) of the link |
-| occi.networkinterface.gateway | <a href="OCCI Infrastructure.textile#enum-ipaddress">IpAddress</a> | false | true |  | Internet Protocol (IP) network address (e.g. 192.168.0.1/24, fc00::/7) |
+| occi.networkinterface.address | <a href="OCCI Infrastructure.textile#datatype-ipaddress">IpAddress</a> | true | true |  | Internet Protocol (IP) network address (e.g. 192.168.0.1/24, fc00::/7) of the link |
+| occi.networkinterface.gateway | <a href="OCCI Infrastructure.textile#datatype-ipaddress">IpAddress</a> | false | true |  | Internet Protocol (IP) network address (e.g. 192.168.0.1/24, fc00::/7) |
 | occi.networkinterface.allocation | <a href="OCCI Infrastructure.textile#enum-allocation">Allocation</a> | true | true |  | Address mechanism: dynamic e.g. uses the dynamic host configuration protocol, static e.g. uses user supplied static network configurations |
 
 h3. Actions
