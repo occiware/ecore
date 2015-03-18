@@ -6,7 +6,7 @@ h1. OCCI Extension: OCCI Infrastructure
 h1. Imports
 
 | *Name* | *Scheme* |
-| OCCI Core | http://schemas.ogf.org/occi/core# |
+| <a href="OCCI Core.textile">OCCI Core</a> | http://schemas.ogf.org/occi/core# |
 
 h1. Kinds
 
@@ -15,14 +15,14 @@ h2. Kind network
 | *Term* | network |
 | *Scheme* | http://schemas.ogf.org/occi/infrastructure# |
 | *Title* | Network Resource |
-| *Parent* | http://schemas.ogf.org/occi/core#resource |
+| *Parent* | <a href="OCCI Core.textile#kind-resource">http://schemas.ogf.org/occi/core#resource</a> |
 
 h3. Attributes
 
 | *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
-| occi.network.vlan | Integer4095 | false | true |  | 802.1q VLAN Identifier (e.g. 343) |
-| occi.network.label | Token | false | true |  | Tag based VLANs (e.g. external-dmz) |
-| occi.network.state | ComputeStatus | true | false |  | Current state of the instance |
+| occi.network.vlan | <a href="OCCI Infrastructure.textile#enum-integer4095">Integer4095</a> | false | true |  | 802.1q VLAN Identifier (e.g. 343) |
+| occi.network.label | <a href="OCCI Infrastructure.textile#enum-token">Token</a> | false | true |  | Tag based VLANs (e.g. external-dmz) |
+| occi.network.state | <a href="OCCI Infrastructure.textile#enum-computestatus">ComputeStatus</a> | true | false |  | Current state of the instance |
 
 h3. Actions
 
@@ -47,17 +47,17 @@ h2. Kind compute
 | *Term* | compute |
 | *Scheme* | http://schemas.ogf.org/occi/infrastructure# |
 | *Title* | Compute Resource |
-| *Parent* | http://schemas.ogf.org/occi/core#resource |
+| *Parent* | <a href="OCCI Core.textile#kind-resource">http://schemas.ogf.org/occi/core#resource</a> |
 
 h3. Attributes
 
 | *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
-| occi.compute.architecture | Architecture | false | true |  | CPU Architecture of the instance |
-| occi.compute.cores | PositiveInteger | false | true |  | Number of CPU cores assigned to the instance |
+| occi.compute.architecture | <a href="OCCI Infrastructure.textile#enum-architecture">Architecture</a> | false | true |  | CPU Architecture of the instance |
+| occi.compute.cores | <a href="OCCI Infrastructure.textile#enum-positiveinteger">PositiveInteger</a> | false | true |  | Number of CPU cores assigned to the instance |
 | occi.compute.hostname | String | false | true |  | Fully Qualified DNS hostname for the instance |
-| occi.compute.speed | GHz | false | true |  | CPU Clock frequency (speed) in gigahertz |
-| occi.compute.memory | GiB | false | true |  | Maximum RAM in gigabytes allocated to the instance |
-| occi.compute.state | ComputeStatus | true | false | inactive | Current state of the instance |
+| occi.compute.speed | <a href="OCCI Infrastructure.textile#enum-ghz">GHz</a> | false | true |  | CPU Clock frequency (speed) in gigahertz |
+| occi.compute.memory | <a href="OCCI Infrastructure.textile#enum-gib">GiB</a> | false | true |  | Maximum RAM in gigabytes allocated to the instance |
+| occi.compute.state | <a href="OCCI Infrastructure.textile#enum-computestatus">ComputeStatus</a> | true | false | inactive | Current state of the instance |
 
 h3. Actions
 
@@ -76,7 +76,7 @@ h4. Action stop
 
 
 | *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
-| method | StopMethod | true | false |  |  |
+| method | <a href="OCCI Infrastructure.textile#enum-stopmethod">StopMethod</a> | true | false |  |  |
 h4. Action restart
 
 | *Term* | restart |
@@ -85,7 +85,7 @@ h4. Action restart
 
 
 | *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
-| method | RestartMethod | true | false |  |  |
+| method | <a href="OCCI Infrastructure.textile#enum-restartmethod">RestartMethod</a> | true | false |  |  |
 h4. Action suspend
 
 | *Term* | suspend |
@@ -94,7 +94,7 @@ h4. Action suspend
 
 
 | *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
-| method | SuspendMethod | true | false |  |  |
+| method | <a href="OCCI Infrastructure.textile#enum-suspendmethod">SuspendMethod</a> | true | false |  |  |
 
 
 h2. Kind storage
@@ -102,13 +102,13 @@ h2. Kind storage
 | *Term* | storage |
 | *Scheme* | http://schemas.ogf.org/occi/infrastructure# |
 | *Title* | Storage Resource |
-| *Parent* | http://schemas.ogf.org/occi/core#resource |
+| *Parent* | <a href="OCCI Core.textile#kind-resource">http://schemas.ogf.org/occi/core#resource</a> |
 
 h3. Attributes
 
 | *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
-| occi.storage.size | GiB | true | true |  | Storage size in gigabytes of the instance |
-| occi.storage.state | StorageStatus | true | false |  | Current status of the instance |
+| occi.storage.size | <a href="OCCI Infrastructure.textile#enum-gib">GiB</a> | true | true |  | Storage size in gigabytes of the instance |
+| occi.storage.state | <a href="OCCI Infrastructure.textile#enum-storagestatus">StorageStatus</a> | true | false |  | Current status of the instance |
 
 h3. Actions
 
@@ -148,7 +148,7 @@ h4. Action resize
 
 
 | *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
-| size | GiB | true | false |  |  |
+| size | <a href="OCCI Infrastructure.textile#enum-gib">GiB</a> | true | false |  |  |
 
 
 h2. Kind storagelink
@@ -156,14 +156,14 @@ h2. Kind storagelink
 | *Term* | storagelink |
 | *Scheme* | http://schemas.ogf.org/occi/infrastructure# |
 | *Title* | StorageLink Link |
-| *Parent* | http://schemas.ogf.org/occi/core#link |
+| *Parent* | <a href="OCCI Core.textile#kind-link">http://schemas.ogf.org/occi/core#link</a> |
 
 h3. Attributes
 
 | *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
 | occi.storagelink.deviceid | String | true | true |  | Device identifier as defined by the OCCI service provider |
 | occi.storagelink.mountpoint | String | false | true |  | Point to where the storage is mounted in the guest OS |
-| occi.storagelink.state | StorageLinkStatus | true | false |  | Current status of the instance |
+| occi.storagelink.state | <a href="OCCI Infrastructure.textile#enum-storagelinkstatus">StorageLinkStatus</a> | true | false |  | Current status of the instance |
 
 h3. Actions
 
@@ -174,14 +174,14 @@ h2. Kind networkinterface
 | *Term* | networkinterface |
 | *Scheme* | http://schemas.ogf.org/occi/infrastructure# |
 | *Title* | NetworkInterface Link |
-| *Parent* | http://schemas.ogf.org/occi/core#link |
+| *Parent* | <a href="OCCI Core.textile#kind-link">http://schemas.ogf.org/occi/core#link</a> |
 
 h3. Attributes
 
 | *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
 | occi.networkinterface.interface | String | true | false |  | Identifier that relates the link to the link's device interface |
 | occi.networkinterface.mac | String | true | true |  | MAC address associated with the link's device interface |
-| occi.networkinterface.state | NetworkInterfaceStatus | true | false |  | Current status of the instance |
+| occi.networkinterface.state | <a href="OCCI Infrastructure.textile#enum-networkinterfacestatus">NetworkInterfaceStatus</a> | true | false |  | Current status of the instance |
 
 h3. Actions
 
@@ -202,14 +202,14 @@ h3. Depends
 
 h3. Applies
 
-* http://schemas.ogf.org/occi/infrastructure#network
+* <a href="OCCI Infrastructure.textile#kind-network">http://schemas.ogf.org/occi/infrastructure#network</a>
 
 h3. Attributes
 
 | *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
-| occi.network.address | IpAddressRange | false | true |  | Internet Protocol (IP) network address (e.g. 192.168.0.1/24, fc00::/7) |
-| occi.network.gateway | IpAddress | false | true |  | Internet Protocol (IP) network address (e.g. 192.168.0.1, fc00::) |
-| occi.network.allocation | Allocation | false | true |  | Address allocation mechanism: dynamic e.g. uses the dynamic host configuration protocol, static e.g. uses user supplied static network configurations |
+| occi.network.address | <a href="OCCI Infrastructure.textile#enum-ipaddressrange">IpAddressRange</a> | false | true |  | Internet Protocol (IP) network address (e.g. 192.168.0.1/24, fc00::/7) |
+| occi.network.gateway | <a href="OCCI Infrastructure.textile#enum-ipaddress">IpAddress</a> | false | true |  | Internet Protocol (IP) network address (e.g. 192.168.0.1, fc00::) |
+| occi.network.allocation | <a href="OCCI Infrastructure.textile#enum-allocation">Allocation</a> | false | true |  | Address allocation mechanism: dynamic e.g. uses the dynamic host configuration protocol, static e.g. uses user supplied static network configurations |
 
 h3. Actions
 
@@ -226,14 +226,14 @@ h3. Depends
 
 h3. Applies
 
-* http://schemas.ogf.org/occi/infrastructure#networkinterface
+* <a href="OCCI Infrastructure.textile#kind-networkinterface">http://schemas.ogf.org/occi/infrastructure#networkinterface</a>
 
 h3. Attributes
 
 | *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
-| occi.networkinterface.address | IpAddress | true | true |  | Internet Protocol (IP) network address (e.g. 192.168.0.1/24, fc00::/7) of the link |
-| occi.networkinterface.gateway | IpAddress | false | true |  | Internet Protocol (IP) network address (e.g. 192.168.0.1/24, fc00::/7) |
-| occi.networkinterface.allocation | Allocation | true | true |  | Address mechanism: dynamic e.g. uses the dynamic host configuration protocol, static e.g. uses user supplied static network configurations |
+| occi.networkinterface.address | <a href="OCCI Infrastructure.textile#enum-ipaddress">IpAddress</a> | true | true |  | Internet Protocol (IP) network address (e.g. 192.168.0.1/24, fc00::/7) of the link |
+| occi.networkinterface.gateway | <a href="OCCI Infrastructure.textile#enum-ipaddress">IpAddress</a> | false | true |  | Internet Protocol (IP) network address (e.g. 192.168.0.1/24, fc00::/7) |
+| occi.networkinterface.allocation | <a href="OCCI Infrastructure.textile#enum-allocation">Allocation</a> | true | true |  | Address mechanism: dynamic e.g. uses the dynamic host configuration protocol, static e.g. uses user supplied static network configurations |
 
 h3. Actions
 
@@ -250,7 +250,7 @@ h3. Depends
 
 h3. Applies
 
-* http://schemas.ogf.org/occi/infrastructure#compute
+* <a href="OCCI Infrastructure.textile#kind-compute">http://schemas.ogf.org/occi/infrastructure#compute</a>
 
 h3. Attributes
 
@@ -270,7 +270,7 @@ h3. Depends
 
 h3. Applies
 
-* http://schemas.ogf.org/occi/core#resource
+* <a href="OCCI Core.textile#kind-resource">http://schemas.ogf.org/occi/core#resource</a>
 
 h3. Attributes
 
