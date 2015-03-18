@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="ASCII"?>
+<OCCI:Extension
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:OCCI="http://schemas.ogf.org/occi"
+    xsi:schemaLocation="http://schemas.ogf.org/occi ../OCCI.ecore"
+    name="OCCI Compute Resource Templates Profile"
+    scheme="http://fedcloud.egi.eu/occi/compute/flavour/1.0#">
+  <import href="Infrastructure.xmi#/"/>
+  <mixins term="ephemeral"
+      scheme="http://fedcloud.egi.eu/occi/compute/flavour/1.0#"
+      title="Ephemeral Mixin">
+    <attributes
+        name="eu.egi.fedcloud.occi.compute.ephemeral"
+        required="true"
+        description="Ephemeral storage provisioned for the associated Compute instance">
+      <type
+          href="Infrastructure.xmi#//@types.15"/>
+    </attributes>
+    <depends
+        href="Infrastructure.xmi#//@mixins[term='resource_tpl']"/>
+    <applies
+        href="Infrastructure.xmi#//@kinds[term='compute']"/>
+  </mixins>
+  <mixins term="small"
+      scheme="http://fedcloud.egi.eu/occi/compute/flavour/1.0#"
+      title="A small Compute instance"
+      depends="//@mixins[term='ephemeral']">
+    <attributes
+        name="occi.compute.cores"
+        default="1"/>
+    <attributes
+        name="occi.compute.memory"
+        default="1.0"/>
+    <attributes
+        name="eu.egi.fedcloud.occi.compute.ephemeral"
+        default="10.0"/>
+  </mixins>
+  <mixins term="medium"
+      scheme="http://fedcloud.egi.eu/occi/compute/flavour/1.0#"
+      title="A medium Compute instance"
+      depends="//@mixins[term='ephemeral']">
+    <attributes
+        name="occi.compute.cores"
+        default="2"/>
+    <attributes
+        name="occi.compute.memory"
+        default="2.0"/>
+    <attributes
+        name="eu.egi.fedcloud.occi.compute.ephemeral"
+        default="20.0"/>
+  </mixins>
+  <mixins term="large"
+      scheme="http://fedcloud.egi.eu/occi/compute/flavour/1.0#"
+      title="A large Compute instance"
+      depends="//@mixins[term='ephemeral']">
+    <attributes
+        name="occi.compute.cores"
+        default="4"/>
+    <attributes
+        name="occi.compute.memory"
+        default="4.0"/>
+    <attributes
+        name="eu.egi.fedcloud.occi.compute.ephemeral"
+        default="40.0"/>
+  </mixins>
+  <mixins term="mem.small"
+      scheme="http://fedcloud.egi.eu/occi/compute/flavour/1.0#"
+      title="A small Compute instance for memory-intensive applications"
+      depends="//@mixins[term='ephemeral']">
+    <attributes
+        name="occi.compute.cores"
+        default="1"/>
+    <attributes
+        name="occi.compute.memory"
+        default="4.0"/>
+    <attributes
+        name="eu.egi.fedcloud.occi.compute.ephemeral"
+        default="10.0"/>
+  </mixins>
+  <mixins term="mem.medium"
+      scheme="http://fedcloud.egi.eu/occi/compute/flavour/1.0#"
+      title="A medium Compute instance for memory-intensive applications"
+      depends="//@mixins[term='ephemeral']">
+    <attributes
+        name="occi.compute.cores"
+        default="2"/>
+    <attributes
+        name="occi.compute.memory"
+        default="8.0"/>
+    <attributes
+        name="eu.egi.fedcloud.occi.compute.ephemeral"
+        default="20.0"/>
+  </mixins>
+  <mixins term="mem.large"
+      scheme="http://fedcloud.egi.eu/occi/compute/flavour/1.0#"
+      title="A large Compute instance for memory-intensive applications"
+      depends="//@mixins[term='ephemeral']">
+    <attributes
+        name="occi.compute.cores"
+        default="4"/>
+    <attributes
+        name="occi.compute.memory"
+        default="16.0"/>
+    <attributes
+        name="eu.egi.fedcloud.occi.compute.ephemeral"
+        default="40.0"/>
+  </mixins>
+</OCCI:Extension>
