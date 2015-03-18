@@ -85,7 +85,7 @@ h3. Attributes
 [/template]
 
 [template public generateAttribute (attribute : Attribute) ]
-| [attribute.name/] | [attribute.type.name/] | [attribute.required/] | [attribute.mutable/] | [attribute.default/] | [attribute.description/] |
+| [attribute.name/] | [if attribute.type <> null][attribute.type.name/][/if] | [attribute.required/] | [attribute.mutable/] | [attribute.default/] | [attribute.description/] |
 [/template]
 
 [template public generateActions (actions : Set(Action)) ]
