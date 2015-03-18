@@ -6,7 +6,7 @@ h1. OCCI Extension: OCCI Monitoring
 h1. Imports
 
 | *Name* | *Scheme* |
-| OCCI Core | http://schemas.ogf.org/occi/core# |
+| <a href="OCCI Core.textile">OCCI Core</a> | http://schemas.ogf.org/occi/core# |
 
 h1. Kinds
 
@@ -15,7 +15,7 @@ h2. Kind sensor
 | *Term* | sensor |
 | *Scheme* | http://schemas.ogf.org/occi/monitoring# |
 | *Title* | Sensor Resource |
-| *Parent* | http://schemas.ogf.org/occi/core#resource |
+| *Parent* | <a href="OCCI Core.textile#kind-resource">http://schemas.ogf.org/occi/core#resource</a> |
 
 h3. Attributes
 
@@ -36,7 +36,7 @@ h2. Kind collector
 | *Term* | collector |
 | *Scheme* | http://schemas.ogf.org/occi/monitoring# |
 | *Title* | Collector Link |
-| *Parent* | http://schemas.ogf.org/occi/core#link |
+| *Parent* | <a href="OCCI Core.textile#kind-link">http://schemas.ogf.org/occi/core#link</a> |
 
 h3. Attributes
 
@@ -63,7 +63,7 @@ h3. Depends
 
 h3. Applies
 
-* http://schemas.ogf.org/occi/monitoring#collector
+* <a href="OCCI Monitoring.textile#kind-collector">http://schemas.ogf.org/occi/monitoring#collector</a>
 
 h3. Attributes
 
@@ -83,7 +83,7 @@ h3. Depends
 
 h3. Applies
 
-* http://schemas.ogf.org/occi/monitoring#sensor
+* <a href="OCCI Monitoring.textile#kind-sensor">http://schemas.ogf.org/occi/monitoring#sensor</a>
 
 h3. Attributes
 
@@ -103,7 +103,7 @@ h3. Depends
 
 h3. Applies
 
-* http://schemas.ogf.org/occi/monitoring#sensor
+* <a href="OCCI Monitoring.textile#kind-sensor">http://schemas.ogf.org/occi/monitoring#sensor</a>
 
 h3. Attributes
 

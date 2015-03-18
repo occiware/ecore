@@ -6,7 +6,7 @@ h1. OCCI Extension: OW2 ProActive
 h1. Imports
 
 | *Name* | *Scheme* |
-| OCCI Infrastructure | http://schemas.ogf.org/occi/infrastructure# |
+| <a href="OCCI Infrastructure.textile">OCCI Infrastructure</a> | http://schemas.ogf.org/occi/infrastructure# |
 
 h1. Kinds
 
@@ -25,13 +25,13 @@ h3. Depends
 
 h3. Applies
 
-* http://schemas.ogf.org/occi/infrastructure#compute
+* <a href="OCCI Infrastructure.textile#kind-compute">http://schemas.ogf.org/occi/infrastructure#compute</a>
 
 h3. Attributes
 
 | *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
 | occi.compute.localstorage | Number | true | false |  | Taille du disque OS, e.g., 40,60, 80 |
-| sla | SLA | true | false |  | SLA |
+| sla | <a href="OW2 ProActive.textile#enum-sla">SLA</a> | true | false |  | SLA |
 | occi.compute.lease.stop.warning | Number | false | false |  | Nombre d'heures 1 alerte (2j avant arret) |
 | occi.compute.lease.stop | Number | false | false |  | Nombre d'heures avant arret |
 | occi.compute.lease.delete.warning | Number | false | false |  | Nombre d'heures 2 alerte (2j avant supp) |
@@ -86,7 +86,7 @@ h4. Action set_sla
 
 
 | *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
-| sla | SLA | true | false |  |  |
+| sla | <a href="OW2 ProActive.textile#enum-sla">SLA</a> | true | false |  |  |
 h4. Action snapshot_revert
 
 | *Term* | snapshot_revert |

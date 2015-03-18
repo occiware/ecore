@@ -18,7 +18,7 @@ h1. Imports
 
 | *Name* | *Scheme* |
 [for (imported : Extension | extension.import)]
-| [imported.name/] | [imported.scheme/] |
+| <a href="[imported.name/].textile">[imported.name/]</a> | [imported.scheme/] |
 [/for]
 
 h1. Kinds
@@ -42,7 +42,7 @@ h2. Kind [kind.term/]
 | *Term* | [kind.term/] |
 | *Scheme* | [kind.scheme/] |
 | *Title* | [kind.title/] |
-| *Parent* | [if kind.parent <> null][kind.parent.scheme/][kind.parent.term/][/if] |
+| *Parent* | [if kind.parent <> null][kind.parent.generateAnchor ('kind')/][/if] |
 
 [kind.generateAttributes()/]
 [generateActions(kind.actions)/]
@@ -59,13 +59,13 @@ h2. Mixin [mixin.term/]
 h3. Depends
 
 [for (md : Mixin | mixin.depends)]
-* [md.scheme/][md.term/]
+* [md.generateAnchor ('mixin')/]
 [/for]
 
 h3. Applies
 
 [for (ad : Kind | mixin.applies)]
-* [ad.scheme/][ad.term/]
+* [ad.generateAnchor ('kind')/]
 [/for]
 
 [mixin.generateAttributes()/]
@@ -85,7 +85,7 @@ h3. Attributes
 [/template]
 
 [template public generateAttribute (attribute : Attribute) ]
-| [attribute.name/] | [if attribute.type <> null][attribute.type.name/][/if] | [attribute.required/] | [attribute.mutable/] | [attribute.default/] | [attribute.description/] |
+| [attribute.name/] | [if attribute.type <> null][generateAnchor(attribute.type)/][/if] | [attribute.required/] | [attribute.mutable/] | [attribute.default/] | [attribute.description/] |
 [/template]
 
 [template public generateActions (actions : Set(Action)) ]
@@ -133,4 +133,19 @@ Literals:
 * [literal.name/]  
 [/for]
 
+[/template]
+
+[template public generateAnchor (category : Category, prefix : String) post (trim())]
+<a href="[category.eContainer().oclAsType(Extension).name/].textile#[prefix/]-[category.term/]">[category.scheme/][category.term/]</a>
+[/template]
+
+[template public generateAnchor (type : EDataType) post (trim())]
+[let container : EObject = type.eContainer()]
+[if container.oclIsKindOf(Extension)]
+<a href="[container.oclAsType(Extension).name/].textile#[if type.oclIsTypeOf(EDataType)]datatype[/if][if type.oclIsTypeOf(EEnum)]enum[/if]-[type.name.toLowerCase()/]">[type.name/]</a>
+[/if]
+[if not container.oclIsKindOf(Extension)]
+[type.name/]
+[/if]
+[/let]
 [/template]

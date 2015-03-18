@@ -30,7 +30,7 @@ h2. Kind resource
 | *Term* | resource |
 | *Scheme* | http://schemas.ogf.org/occi/core# |
 | *Title* | Resource |
-| *Parent* | http://schemas.ogf.org/occi/core#entity |
+| *Parent* | <a href="OCCI Core.textile#kind-entity">http://schemas.ogf.org/occi/core#entity</a> |
 
 h3. Attributes
 
@@ -46,7 +46,7 @@ h2. Kind link
 | *Term* | link |
 | *Scheme* | http://schemas.ogf.org/occi/core# |
 | *Title* | Link |
-| *Parent* | http://schemas.ogf.org/occi/core#entity |
+| *Parent* | <a href="OCCI Core.textile#kind-entity">http://schemas.ogf.org/occi/core#entity</a> |
 
 h3. Attributes
 

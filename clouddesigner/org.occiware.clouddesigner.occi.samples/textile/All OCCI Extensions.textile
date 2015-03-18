@@ -6,11 +6,11 @@ h1. OCCI Extension: All OCCI Extensions
 h1. Imports
 
 | *Name* | *Scheme* |
-| OCCI Core | http://schemas.ogf.org/occi/core# |
-| OCCI Infrastructure | http://schemas.ogf.org/occi/infrastructure# |
-| OCNI | http://exem.com/ocni# |
-| Docker | http://schemas.occiware.org/docker# |
-| OCCI Monitoring | http://schemas.ogf.org/occi/monitoring# |
+| <a href="OCCI Core.textile">OCCI Core</a> | http://schemas.ogf.org/occi/core# |
+| <a href="OCCI Infrastructure.textile">OCCI Infrastructure</a> | http://schemas.ogf.org/occi/infrastructure# |
+| <a href="OCNI.textile">OCNI</a> | http://exem.com/ocni# |
+| <a href="Docker.textile">Docker</a> | http://schemas.occiware.org/docker# |
+| <a href="OCCI Monitoring.textile">OCCI Monitoring</a> | http://schemas.ogf.org/occi/monitoring# |
 
 h1. Kinds
 

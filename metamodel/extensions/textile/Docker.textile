@@ -6,7 +6,7 @@ h1. OCCI Extension: Docker
 h1. Imports
 
 | *Name* | *Scheme* |
-| OCCI Core | http://schemas.ogf.org/occi/core# |
+| <a href="OCCI Core.textile">OCCI Core</a> | http://schemas.ogf.org/occi/core# |
 
 h1. Kinds
 
@@ -15,7 +15,7 @@ h2. Kind container
 | *Term* | container |
 | *Scheme* | http://schemas.occiware.org/docker# |
 | *Title* | Container Resource |
-| *Parent* | http://schemas.ogf.org/occi/core#resource |
+| *Parent* | <a href="OCCI Core.textile#kind-resource">http://schemas.ogf.org/occi/core#resource</a> |
 
 h3. Attributes
 
@@ -29,7 +29,7 @@ h2. Kind service
 | *Term* | service |
 | *Scheme* | http://schemas.occiware.org/docker# |
 | *Title* | Service Resource |
-| *Parent* | http://schemas.ogf.org/occi/core#resource |
+| *Parent* | <a href="OCCI Core.textile#kind-resource">http://schemas.ogf.org/occi/core#resource</a> |
 
 h3. Attributes
 
@@ -43,7 +43,7 @@ h2. Kind package
 | *Term* | package |
 | *Scheme* | http://schemas.occiware.org/docker# |
 | *Title* | Package Resource |
-| *Parent* | http://schemas.ogf.org/occi/core#resource |
+| *Parent* | <a href="OCCI Core.textile#kind-resource">http://schemas.ogf.org/occi/core#resource</a> |
 
 h3. Attributes
 
@@ -57,7 +57,7 @@ h2. Kind application
 | *Term* | application |
 | *Scheme* | http://schemas.occiware.org/docker# |
 | *Title* | Application Link |
-| *Parent* | http://schemas.ogf.org/occi/core#link |
+| *Parent* | <a href="OCCI Core.textile#kind-link">http://schemas.ogf.org/occi/core#link</a> |
 
 h3. Attributes
 
@@ -71,7 +71,7 @@ h2. Kind depends
 | *Term* | depends |
 | *Scheme* | http://schemas.occiware.org/docker# |
 | *Title* | Depends Link |
-| *Parent* | http://schemas.ogf.org/occi/core#link |
+| *Parent* | <a href="OCCI Core.textile#kind-link">http://schemas.ogf.org/occi/core#link</a> |
 
 h3. Attributes
 
@@ -85,7 +85,7 @@ h2. Kind conflicts
 | *Term* | conflicts |
 | *Scheme* | http://schemas.occiware.org/docker# |
 | *Title* | Conflicts Link |
-| *Parent* | http://schemas.ogf.org/occi/core#link |
+| *Parent* | <a href="OCCI Core.textile#kind-link">http://schemas.ogf.org/occi/core#link</a> |
 
 h3. Attributes
 

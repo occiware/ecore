@@ -6,7 +6,7 @@ h1. OCCI Extension: ServiceManager Extension
 h1. Imports
 
 | *Name* | *Scheme* |
-| OCCI Core | http://schemas.ogf.org/occi/core# |
+| <a href="OCCI Core.textile">OCCI Core</a> | http://schemas.ogf.org/occi/core# |
 
 h1. Kinds
 
@@ -15,12 +15,12 @@ h2. Kind service
 | *Term* | service |
 | *Scheme* | http://euranova.eu/service-manager# |
 | *Title* | Service Resource |
-| *Parent* | http://schemas.ogf.org/occi/core#resource |
+| *Parent* | <a href="OCCI Core.textile#kind-resource">http://schemas.ogf.org/occi/core#resource</a> |
 
 h3. Attributes
 
 | *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
-| state | Status | true | false |  | Current status of the service |
+| state | <a href="ServiceManager Extension.textile#enum-status">Status</a> | true | false |  | Current status of the service |
 
 h3. Actions
 
@@ -31,12 +31,12 @@ h2. Kind role
 | *Term* | role |
 | *Scheme* | http://euranova.eu/service-manager# |
 | *Title* | Role Resource |
-| *Parent* | http://schemas.ogf.org/occi/core#resource |
+| *Parent* | <a href="OCCI Core.textile#kind-resource">http://schemas.ogf.org/occi/core#resource</a> |
 
 h3. Attributes
 
 | *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
-| state | Status | false | true |  | Current status of this Role instance |
+| state | <a href="ServiceManager Extension.textile#enum-status">Status</a> | false | true |  | Current status of this Role instance |
 
 h3. Actions
 
@@ -47,7 +47,7 @@ h2. Kind group
 | *Term* | group |
 | *Scheme* | http://euranova.eu/service-manager# |
 | *Title* | Group Link |
-| *Parent* | http://schemas.ogf.org/occi/core#link |
+| *Parent* | <a href="OCCI Core.textile#kind-link">http://schemas.ogf.org/occi/core#link</a> |
 
 h3. Attributes
 
@@ -65,7 +65,7 @@ h2. Kind dependency
 | *Term* | dependency |
 | *Scheme* | http://euranova.eu/service-manager# |
 | *Title* | Dependency Link |
-| *Parent* | http://schemas.ogf.org/occi/core#link |
+| *Parent* | <a href="OCCI Core.textile#kind-link">http://schemas.ogf.org/occi/core#link</a> |
 
 h3. Attributes
 

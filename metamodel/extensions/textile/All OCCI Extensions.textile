@@ -6,14 +6,14 @@ h1. OCCI Extension: All OCCI Extensions
 h1. Imports
 
 | *Name* | *Scheme* |
-| OCCI Core | http://schemas.ogf.org/occi/core# |
-| OCCI Infrastructure | http://schemas.ogf.org/occi/infrastructure# |
-| OCCI Compute Resource Templates Profile | http://fedcloud.egi.eu/occi/compute/flavour/1.0# |
-| OW2 ProActive | http://proactive.ow2.org# |
-| OCNI | http://exem.com/ocni# |
-| Docker | http://schemas.occiware.org/docker# |
-| OCCI Monitoring | http://schemas.ogf.org/occi/monitoring# |
-| ServiceManager Extension | http://euranova.eu/service-manager# |
+| <a href="OCCI Core.textile">OCCI Core</a> | http://schemas.ogf.org/occi/core# |
+| <a href="OCCI Infrastructure.textile">OCCI Infrastructure</a> | http://schemas.ogf.org/occi/infrastructure# |
+| <a href="OCCI Compute Resource Templates Profile.textile">OCCI Compute Resource Templates Profile</a> | http://fedcloud.egi.eu/occi/compute/flavour/1.0# |
+| <a href="OW2 ProActive.textile">OW2 ProActive</a> | http://proactive.ow2.org# |
+| <a href="OCNI.textile">OCNI</a> | http://exem.com/ocni# |
+| <a href="Docker.textile">Docker</a> | http://schemas.occiware.org/docker# |
+| <a href="OCCI Monitoring.textile">OCCI Monitoring</a> | http://schemas.ogf.org/occi/monitoring# |
+| <a href="ServiceManager Extension.textile">ServiceManager Extension</a> | http://euranova.eu/service-manager# |
 
 h1. Kinds
 
