@@ -133,6 +133,245 @@
       <activatedLayers xmi:type="description_1:Layer" href="platform:/resource/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer"/>
       <target xmi:type="OCCI:Configuration" href="first-docker-configuration.xmi#/"/>
     </ownedRepresentations>
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_JUbSEM4-EeSkPP1isAw2Wg" name="new Docker configuration">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_JUe8cM4-EeSkPP1isAw2Wg" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_JUe8cc4-EeSkPP1isAw2Wg" type="Sirius" element="_JUbSEM4-EeSkPP1isAw2Wg" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_JUgKkM4-EeSkPP1isAw2Wg" type="2002" element="_JUbSEc4-EeSkPP1isAw2Wg">
+            <children xmi:type="notation:Node" xmi:id="_JUhYsM4-EeSkPP1isAw2Wg" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_JUh_wM4-EeSkPP1isAw2Wg" type="7001">
+              <children xmi:type="notation:Node" xmi:id="_JUjN4M4-EeSkPP1isAw2Wg" type="3007" element="_JUbSF84-EeSkPP1isAw2Wg">
+                <children xmi:type="notation:Node" xmi:id="_JUj08M4-EeSkPP1isAw2Wg" type="5003">
+                  <layoutConstraint xmi:type="notation:Location" xmi:id="_JUj08c4-EeSkPP1isAw2Wg" y="-21"/>
+                </children>
+                <children xmi:type="notation:Node" xmi:id="_JUp7kM4-EeSkPP1isAw2Wg" type="3005" element="_JUbSGM4-EeSkPP1isAw2Wg">
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_JUp7kc4-EeSkPP1isAw2Wg" fontName="Segoe UI"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JUp7ks4-EeSkPP1isAw2Wg"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_JUjN4c4-EeSkPP1isAw2Wg" fontName="Segoe UI" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JUjN4s4-EeSkPP1isAw2Wg" x="145" y="79" width="50" height="50"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_JUotcM4-EeSkPP1isAw2Wg" type="3007" element="_JUbSG84-EeSkPP1isAw2Wg">
+                <children xmi:type="notation:Node" xmi:id="_JUotc84-EeSkPP1isAw2Wg" type="5003">
+                  <layoutConstraint xmi:type="notation:Location" xmi:id="_JUotdM4-EeSkPP1isAw2Wg" y="-21"/>
+                </children>
+                <children xmi:type="notation:Node" xmi:id="_JUp7k84-EeSkPP1isAw2Wg" type="3005" element="_JUbSHM4-EeSkPP1isAw2Wg">
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_JUp7lM4-EeSkPP1isAw2Wg" fontName="Segoe UI"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JUp7lc4-EeSkPP1isAw2Wg"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_JUotcc4-EeSkPP1isAw2Wg" fontName="Segoe UI" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JUotcs4-EeSkPP1isAw2Wg" x="10" y="54" width="50" height="50"/>
+              </children>
+              <styles xmi:type="notation:SortingStyle" xmi:id="_JUh_wc4-EeSkPP1isAw2Wg"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_JUh_ws4-EeSkPP1isAw2Wg"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_JUgKkc4-EeSkPP1isAw2Wg" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JUgKks4-EeSkPP1isAw2Wg" x="45" y="65" width="213" height="153"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_JUh_w84-EeSkPP1isAw2Wg" type="2002" element="_JUbSH84-EeSkPP1isAw2Wg">
+            <children xmi:type="notation:Node" xmi:id="_JUim0M4-EeSkPP1isAw2Wg" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_JUim0c4-EeSkPP1isAw2Wg" type="7001">
+              <children xmi:type="notation:Node" xmi:id="_JUqioM4-EeSkPP1isAw2Wg" type="3007" element="_JUbSJc4-EeSkPP1isAw2Wg">
+                <children xmi:type="notation:Node" xmi:id="_JUrJsM4-EeSkPP1isAw2Wg" type="5003">
+                  <layoutConstraint xmi:type="notation:Location" xmi:id="_JUrJsc4-EeSkPP1isAw2Wg" y="-21"/>
+                </children>
+                <children xmi:type="notation:Node" xmi:id="_JUs-4M4-EeSkPP1isAw2Wg" type="3005" element="_JUbSJs4-EeSkPP1isAw2Wg">
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_JUs-4c4-EeSkPP1isAw2Wg" fontName="Segoe UI"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JUs-4s4-EeSkPP1isAw2Wg"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_JUqioc4-EeSkPP1isAw2Wg" fontName="Segoe UI" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JUqios4-EeSkPP1isAw2Wg" x="85" y="44" width="50" height="50"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_JUrwwM4-EeSkPP1isAw2Wg" type="3007" element="_JUbSKc4-EeSkPP1isAw2Wg">
+                <children xmi:type="notation:Node" xmi:id="_JUsX0M4-EeSkPP1isAw2Wg" type="5003">
+                  <layoutConstraint xmi:type="notation:Location" xmi:id="_JUsX0c4-EeSkPP1isAw2Wg" y="-21"/>
+                </children>
+                <children xmi:type="notation:Node" xmi:id="_JUs-484-EeSkPP1isAw2Wg" type="3005" element="_JUbSKs4-EeSkPP1isAw2Wg">
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_JUs-5M4-EeSkPP1isAw2Wg" fontName="Segoe UI"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JUs-5c4-EeSkPP1isAw2Wg"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_JUrwwc4-EeSkPP1isAw2Wg" fontName="Segoe UI" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JUrwws4-EeSkPP1isAw2Wg" x="10" y="104" width="50" height="50"/>
+              </children>
+              <styles xmi:type="notation:SortingStyle" xmi:id="_JUim0s4-EeSkPP1isAw2Wg"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_JUim084-EeSkPP1isAw2Wg"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_JUh_xM4-EeSkPP1isAw2Wg" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JUh_xc4-EeSkPP1isAw2Wg" x="330" y="60"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_JUe8cs4-EeSkPP1isAw2Wg"/>
+          <edges xmi:type="notation:Edge" xmi:id="_JUtl8M4-EeSkPP1isAw2Wg" type="4001" element="_JUbSLc4-EeSkPP1isAw2Wg" source="_JUjN4M4-EeSkPP1isAw2Wg" target="_JUotcM4-EeSkPP1isAw2Wg">
+            <children xmi:type="notation:Node" xmi:id="_JUtl9M4-EeSkPP1isAw2Wg" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JUtl9c4-EeSkPP1isAw2Wg" y="-10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_JUtl9s4-EeSkPP1isAw2Wg" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JUuNAM4-EeSkPP1isAw2Wg" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_JUuNAc4-EeSkPP1isAw2Wg" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JUuNAs4-EeSkPP1isAw2Wg" y="10"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_JUtl8c4-EeSkPP1isAw2Wg"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_JUtl8s4-EeSkPP1isAw2Wg" fontName="Segoe UI" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JUtl884-EeSkPP1isAw2Wg" points="[-9, -3, 95, 21]$[-94, -23, 10, 1]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JUuNA84-EeSkPP1isAw2Wg" id="(0.18,0.76)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JUuNBM4-EeSkPP1isAw2Wg" id="(0.8,0.78)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_JUuNBc4-EeSkPP1isAw2Wg" type="4001" element="_JUbSMs4-EeSkPP1isAw2Wg" source="_JUqioM4-EeSkPP1isAw2Wg" target="_JUrwwM4-EeSkPP1isAw2Wg">
+            <children xmi:type="notation:Node" xmi:id="_JUu0EM4-EeSkPP1isAw2Wg" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JUu0Ec4-EeSkPP1isAw2Wg" y="-10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_JUu0Es4-EeSkPP1isAw2Wg" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JUu0E84-EeSkPP1isAw2Wg" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_JUu0FM4-EeSkPP1isAw2Wg" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JUu0Fc4-EeSkPP1isAw2Wg" y="10"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_JUuNBs4-EeSkPP1isAw2Wg"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_JUuNB84-EeSkPP1isAw2Wg" fontName="Segoe UI" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JUuNCM4-EeSkPP1isAw2Wg" points="[-4, 5, 56, -60]$[-35, 38, 25, -27]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JUu0Fs4-EeSkPP1isAw2Wg" id="(0.2,0.9)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JUu0F84-EeSkPP1isAw2Wg" id="(0.5,1.0)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_JUu0GM4-EeSkPP1isAw2Wg" type="4001" element="_JUbSN84-EeSkPP1isAw2Wg" source="_JUotcM4-EeSkPP1isAw2Wg" target="_JUjN4M4-EeSkPP1isAw2Wg">
+            <children xmi:type="notation:Node" xmi:id="_JUvbIM4-EeSkPP1isAw2Wg" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JUvbIc4-EeSkPP1isAw2Wg" y="-10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_JUvbIs4-EeSkPP1isAw2Wg" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JUvbI84-EeSkPP1isAw2Wg" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_JUvbJM4-EeSkPP1isAw2Wg" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JUvbJc4-EeSkPP1isAw2Wg" y="10"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_JUu0Gc4-EeSkPP1isAw2Wg"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_JUu0Gs4-EeSkPP1isAw2Wg" fontName="Segoe UI" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JUu0G84-EeSkPP1isAw2Wg" points="[10, 2, -86, -23]$[95, 24, -1, -1]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JUvbJs4-EeSkPP1isAw2Wg" id="(0.8,0.3)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_HTQHsM5CEeS3yYbsiqrMsQ" id="(0.02,0.3)"/>
+          </edges>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_JUbSEc4-EeSkPP1isAw2Wg" name="localhost">
+        <target xmi:type="docker:Machine_VirtualBox" href="first-docker-configuration.xmi#//@resources.0"/>
+        <semanticElements xmi:type="docker:Machine_VirtualBox" href="first-docker-configuration.xmi#//@resources.0"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_JUbSEs4-EeSkPP1isAw2Wg" labelAlignment="LEFT">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_JUbSE84-EeSkPP1isAw2Wg"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_JUbSFM4-EeSkPP1isAw2Wg"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_JUbSFc4-EeSkPP1isAw2Wg" red="255" green="255" blue="255"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_JUbSFs4-EeSkPP1isAw2Wg" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']"/>
+        <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_JUbSF84-EeSkPP1isAw2Wg" name="webserver" outgoingEdges="_JUbSLc4-EeSkPP1isAw2Wg" incomingEdges="_JUbSN84-EeSkPP1isAw2Wg" width="5" height="5" resizeKind="NSEW">
+          <target xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.1"/>
+          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.1"/>
+          <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+          <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+          <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_JUbSGM4-EeSkPP1isAw2Wg" showIcon="false" workspacePath="/org.occiware.clouddesigner.occi.docker.design/images/mcol-closed-box.svg">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_JUbSGc4-EeSkPP1isAw2Wg"/>
+            <description xmi:type="style:WorkspaceImageDescription" href="platform:/resource/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_JUbSGs4-EeSkPP1isAw2Wg"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']"/>
+        </ownedDiagramElements>
+        <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_JUbSG84-EeSkPP1isAw2Wg" name="db" outgoingEdges="_JUbSN84-EeSkPP1isAw2Wg" incomingEdges="_JUbSLc4-EeSkPP1isAw2Wg" width="5" height="5" resizeKind="NSEW">
+          <target xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.2"/>
+          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.2"/>
+          <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+          <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+          <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_JUbSHM4-EeSkPP1isAw2Wg" showIcon="false" workspacePath="/org.occiware.clouddesigner.occi.docker.design/images/mcol-closed-box.svg">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_JUbSHc4-EeSkPP1isAw2Wg"/>
+            <description xmi:type="style:WorkspaceImageDescription" href="platform:/resource/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_JUbSHs4-EeSkPP1isAw2Wg"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']"/>
+        </ownedDiagramElements>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_JUbSH84-EeSkPP1isAw2Wg" name="demo">
+        <target xmi:type="docker:Machine_VirtualBox" href="demo.xmi#//@resources.0"/>
+        <semanticElements xmi:type="docker:Machine_VirtualBox" href="demo.xmi#//@resources.0"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_JUbSIM4-EeSkPP1isAw2Wg" labelAlignment="LEFT">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_JUbSIc4-EeSkPP1isAw2Wg"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_JUbSIs4-EeSkPP1isAw2Wg"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_JUbSI84-EeSkPP1isAw2Wg" red="255" green="255" blue="255"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_JUbSJM4-EeSkPP1isAw2Wg" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']"/>
+        <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_JUbSJc4-EeSkPP1isAw2Wg" name="web" outgoingEdges="_JUbSMs4-EeSkPP1isAw2Wg" width="5" height="5" resizeKind="NSEW">
+          <target xmi:type="docker:Container" href="demo.xmi#//@resources.1"/>
+          <semanticElements xmi:type="docker:Container" href="demo.xmi#//@resources.1"/>
+          <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+          <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+          <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_JUbSJs4-EeSkPP1isAw2Wg" showIcon="false" workspacePath="/org.occiware.clouddesigner.occi.docker.design/images/mcol-closed-box.svg">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_JUbSJ84-EeSkPP1isAw2Wg"/>
+            <description xmi:type="style:WorkspaceImageDescription" href="platform:/resource/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_JUbSKM4-EeSkPP1isAw2Wg"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']"/>
+        </ownedDiagramElements>
+        <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_JUbSKc4-EeSkPP1isAw2Wg" name="db" incomingEdges="_JUbSMs4-EeSkPP1isAw2Wg" width="5" height="5" resizeKind="NSEW">
+          <target xmi:type="docker:Container" href="demo.xmi#//@resources.2"/>
+          <semanticElements xmi:type="docker:Container" href="demo.xmi#//@resources.2"/>
+          <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+          <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+          <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_JUbSKs4-EeSkPP1isAw2Wg" showIcon="false" workspacePath="/org.occiware.clouddesigner.occi.docker.design/images/mcol-closed-box.svg">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_JUbSK84-EeSkPP1isAw2Wg"/>
+            <description xmi:type="style:WorkspaceImageDescription" href="platform:/resource/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_JUbSLM4-EeSkPP1isAw2Wg"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']"/>
+        </ownedDiagramElements>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_JUbSLc4-EeSkPP1isAw2Wg" name="db" sourceNode="_JUbSF84-EeSkPP1isAw2Wg" targetNode="_JUbSG84-EeSkPP1isAw2Wg">
+        <target xmi:type="docker:DockerLink" href="first-docker-configuration.xmi#//@resources.1/@links.0"/>
+        <semanticElements xmi:type="docker:DockerLink" href="first-docker-configuration.xmi#//@resources.1/@links.0"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_JUbSLs4-EeSkPP1isAw2Wg" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='DockerLink']/@style"/>
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_JUbSL84-EeSkPP1isAw2Wg" red="39" green="76" blue="114"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_JUbSMM4-EeSkPP1isAw2Wg" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_JUbSMc4-EeSkPP1isAw2Wg"/>
+          </centerLabelStyle>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='DockerLink']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_JUbSMs4-EeSkPP1isAw2Wg" name="db" sourceNode="_JUbSJc4-EeSkPP1isAw2Wg" targetNode="_JUbSKc4-EeSkPP1isAw2Wg">
+        <target xmi:type="docker:DockerLink" href="demo.xmi#//@resources.1/@links.0"/>
+        <semanticElements xmi:type="docker:DockerLink" href="demo.xmi#//@resources.1/@links.0"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_JUbSM84-EeSkPP1isAw2Wg" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='DockerLink']/@style"/>
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_JUbSNM4-EeSkPP1isAw2Wg" red="39" green="76" blue="114"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_JUbSNc4-EeSkPP1isAw2Wg" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_JUbSNs4-EeSkPP1isAw2Wg"/>
+          </centerLabelStyle>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='DockerLink']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_JUbSN84-EeSkPP1isAw2Wg" sourceNode="_JUbSG84-EeSkPP1isAw2Wg" targetNode="_JUbSF84-EeSkPP1isAw2Wg">
+        <target xmi:type="docker:Volumesfrom" href="first-docker-configuration.xmi#//@resources.2/@links.0"/>
+        <semanticElements xmi:type="docker:Volumesfrom" href="first-docker-configuration.xmi#//@resources.2/@links.0"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_JUbSOM4-EeSkPP1isAw2Wg" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Volumesfrom']/@style"/>
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_YAL74M4-EeSkPP1isAw2Wg" red="136" green="136" blue="136"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_JUbSOs4-EeSkPP1isAw2Wg">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_JUbSO84-EeSkPP1isAw2Wg"/>
+          </centerLabelStyle>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Volumesfrom']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:DiagramDescription" href="platform:/resource/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_JUbSPM4-EeSkPP1isAw2Wg"/>
+      <activatedLayers xmi:type="description_1:Layer" href="platform:/resource/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer"/>
+      <target xmi:type="OCCI:Configuration" href="demo.xmi#/"/>
+    </ownedRepresentations>
     <viewpoint xmi:type="description:Viewpoint" href="platform:/resource/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']"/>
   </ownedViews>
   <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_drBhkMjJEeSJeK7c_kMwAA" initialized="true">
