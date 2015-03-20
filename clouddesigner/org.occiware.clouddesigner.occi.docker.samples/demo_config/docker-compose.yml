@@ -1,4 +1,4 @@
-# Compose file for resources:
-# - 
-# - 
-# - 
+web:
+  image: training/webapp
+db:
+  image: training/postgres
