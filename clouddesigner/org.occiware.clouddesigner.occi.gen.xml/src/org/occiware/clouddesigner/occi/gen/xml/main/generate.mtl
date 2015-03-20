@@ -1,0 +1,69 @@
+[comment encoding = UTF-8 /]
+[module generate('http://www.eclipse.org/emf/2002/Ecore','http://schemas.ogf.org/occi')]
+
+[template public main(e : Extension)]
+[comment @main/]
+[file ('xml/'+e.name+'.xml', false, 'UTF-8')]
+<?xml version="1.0" encoding="UTF-8"?>
+<occi:extension xmlns:occi="http://schemas.ogf.org/occi"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://schemas.ogf.org/occi occi.xsd " 
+    name="[e.name/]" >
+
+	[for (k: Kind | e.kinds)]
+    [kind(k)/]
+	[/for]
+	[for (m: Mixin | e.mixins)]
+    [mixin(m)/]
+	[/for]
+</occi:extension>
+[/file]
+[/template]
+
+[template public kind(k: Kind)]
+  <!-- Kind: [k.title /] -->
+  <occi:kind term="[k.term/]" scheme="[k.scheme/]" title="[k.title/]">
+    <occi:parent term="[k.parent.term/]" scheme="[k.parent.scheme/]" />
+	[for (a: Attribute | k.attributes)]
+	[attribute(a)/]
+	[/for]
+	[for (a: Action | k.actions)]
+	[action(a)/]
+	[/for]
+  </occi:kind>
+[/template]
+
+[template public mixin(m: Mixin)]
+  <!-- Mixin: [m.title/] -->
+  <occi:mixin term="[m.term/]" scheme="[m.scheme/]" title="[m.title/]" >
+	[for (c: Category | m.depends)]
+	<occi:depends term="[c.term/]" scheme="[c.scheme/]" />
+	[/for]
+	[for (c: Category | m.applies)]
+	<occi:applies term="[c.term/]" scheme="[c.scheme/]" />
+	[/for]
+    [for (a: Attribute | m.attributes)]
+	[attribute(a)/]
+	[/for]
+	[for (a: Action | m.actions)]
+	[action(a)/]
+	[/for]
+  </occi:mixin>
+[/template]
+
+[template public attribute(a: Attribute)]
+	<occi:attribute 
+      name="[a.name/]" 
+      type="[a.type.name/]" 
+      title="[a.description/]" />
+[/template]
+
+[template public action(a: Action)]
+  <!-- Action: [a.title/] -->
+  <occi:action term="[a.term/]" scheme="[a.scheme/]" title="[a.title/]" >
+    [for (at: Attribute | a.attributes)]
+    [attribute(at)/]
+    [/for]
+  </occi:action>
+[/template]
