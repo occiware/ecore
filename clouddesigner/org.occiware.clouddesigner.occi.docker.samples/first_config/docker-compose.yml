@@ -1,4 +1,8 @@
-# Compose file for resources:
-# - 
-# - 
-# - 
+webserver:
+  image: tomcat
+  ports:
+    - "..."
+db:
+  image: mysql
+  ports:
+    - "..."

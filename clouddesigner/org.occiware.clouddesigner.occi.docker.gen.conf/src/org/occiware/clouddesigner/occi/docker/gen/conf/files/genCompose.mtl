@@ -3,9 +3,37 @@
  
 [template public generateCompose(configuration : Configuration)]
 [file ('docker-compose.yml', false, 'UTF-8')]
-# Compose file for resources:
-[for (resource : Resource | configuration.resources)]
-# - [resource.id/]
+[for (container : Container | configuration.resources->filter(Container))]
+[container.name/]:
+[if (not container.build.oclIsUndefined())]
+  build: [container.build/]
+[/if]
+[if (not container.image.oclIsUndefined())]
+  image: [container.image/]
+[/if]
+[comment]TODO should be a multiple attribute[/comment]
+[if (not container.ports.oclIsUndefined())]
+  ports:
+    - "[container.ports/]"
+[/if]
+[comment]TODO should be a multiple attribute[/comment]
+[if (not container.env_file.oclIsUndefined())]
+  env_file:
+    - "[container.env_file/]"
+[/if]
+[if (not getLinks()->isEmpty())]
+  links:
+	[for (link : DockerLink | getLinks())]
+		[if (link.alias.oclIsUndefined())]
+	- [link.target.oclAsType(Machine).name/]
+		[else]
+    - [link.alias/]:[link.target.oclAsType(Machine).name/]
+		[/if]
+	[/for]
+[/if]
 [/for]
 [/file]
 [/template]
+
+[query public getLinks (container : Container) : Collection(DockerLink) = container.links->filter(DockerLink)->select(target.oclIsTypeOf(Machine))/]
+
