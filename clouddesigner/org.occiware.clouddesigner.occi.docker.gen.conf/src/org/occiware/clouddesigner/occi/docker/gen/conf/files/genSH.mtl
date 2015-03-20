@@ -37,7 +37,9 @@ docker $(docker-machine config [machineName/]) start [name/]
 
 [template public genLinkConfig (container : Container) post (trim())]
 [for (link : DockerLink | links->filter(DockerLink))]
-  --link [link.target.oclAsType(Container).name/][if link.alias <> null]:[link.alias/][/if]
+[let name : String = link.target.oclAsType(Container).name]
+  --link [name/]:[if link.alias <> null][link.alias/][/if][if link.alias = null][name/][/if]
+[/let]
 [/for]
 [/template]
 
