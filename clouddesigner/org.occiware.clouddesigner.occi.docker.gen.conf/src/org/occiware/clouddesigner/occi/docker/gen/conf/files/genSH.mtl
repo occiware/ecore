@@ -5,7 +5,7 @@
 [file ('docker-conf.sh', false, 'UTF-8')]
 #!/bin/sh
 
-[for (machine : Machine | configuration.resources->select(oclIsKindOf(Machine)).oclAsType(Machine))]
+[for (machine : Machine | configuration.resources->filter(Machine))]
 [machine.genMachine()/]
 [/for]
 [/file]
