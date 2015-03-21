@@ -24,6 +24,9 @@ computeInteger(kindOf_Machine_VirtualBox, attributeAsInteger('memory'), 0)
 inv ContainersUsedTooMemory('Containers consume ' + memoryLimit.toString() + ' when memory is equals to ' + memory.toString()): 
 when(kindOf_Machine_VirtualBox, memoryLimit <= memory)
 
+inv ContainerNoCycleBetweenContainers: 
+when(kindOf_Container, links->closure(links->select(kindOf_Link or kindOf_VolumesFrom).target.links->select(kindOf_Link or kindOf_VolumesFrom)).target->excludes(self))
+
 inv ContainerLinkAliasUnique: 
 when(kindOf_Container, links->select(kindOf_Link)->isUnique(attributeAsString('alias')))
 
