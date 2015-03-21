@@ -1,8 +1,14 @@
 webserver:
   image: tomcat
+  command: 
   ports:
     - "..."
+  links:
+	- db:db
+
 db:
   image: mysql
+  command: 
   ports:
     - "..."
+
