@@ -143,8 +143,7 @@ Literals:
 [let container : EObject = type.eContainer()]
 [if container.oclIsKindOf(Extension)]
 <a href="[container.oclAsType(Extension).name/].textile#[if type.oclIsTypeOf(EDataType)]datatype[/if][if type.oclIsTypeOf(EEnum)]enum[/if]-[type.name.toLowerCase()/]">[type.name/]</a>
-[/if]
-[if not container.oclIsKindOf(Extension)]
+[else]
 [type.name/]
 [/if]
 [/let]
