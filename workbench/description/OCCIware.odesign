@@ -280,14 +280,6 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </subNodeMappings>
-          <subContainerMappings name="RC" semanticCandidatesExpression="ocl:self.links->select(kind.term = 'contains').target" domainClass="OCCI.Resource">
-            <style xsi:type="style:FlatContainerStyleDescription" labelSize="10" labelFormat="bold" labelExpression="ocl:self.id + ': ' + self.kind.term">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
-            </style>
-          </subContainerMappings>
           <style xsi:type="style:FlatContainerStyleDescription" labelSize="10" labelFormat="bold" labelExpression="ocl:self.id + ': ' + self.kind.term">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -372,6 +364,43 @@
             </initialOperation>
           </ownedTools>
         </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+  <ownedViewpoints name="OCCI Configuration with containment">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="OCCI Configuration with containment" domainClass="OCCI.Configuration">
+      <defaultLayer name="Default">
+        <edgeMappings name="LinkEdge" sourceMapping="//@ownedViewpoints[name='OCCI%20Configuration%20with%20containment']/@ownedRepresentations[name='OCCI%20Configuration%20with%20containment']/@defaultLayer/@containerMappings[name='ResourceContainer1']/@borderedNodeMappings[name='BorderedLink']" targetMapping="//@ownedViewpoints[name='OCCI%20Configuration%20with%20containment']/@ownedRepresentations[name='OCCI%20Configuration%20with%20containment']/@defaultLayer/@containerMappings[name='ResourceContainer1'] //@ownedViewpoints[name='OCCI%20Configuration%20with%20containment']/@ownedRepresentations[name='OCCI%20Configuration%20with%20containment']/@defaultLayer/@containerMappings[name='ResourceContainer1']/@subContainerMappings[name='ContainedResource']" targetFinderExpression="feature:target">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="ResourceContainer1" preconditionExpression="ocl:container.oclAsType(Configuration).resources.links.target->excludes(self)" semanticCandidatesExpression="feature:resources" domainClass="OCCI.Resource">
+          <borderedNodeMappings name="BorderedLink" preconditionExpression="ocl:kind.term &lt;> 'contains'" semanticCandidatesExpression="feature:links" domainClass="OCCI.Link">
+            <style xsi:type="style:BundledImageDescription" labelSize="10" labelFormat="bold" labelExpression="ocl:self.id + ': ' + self.kind.term" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
+            </style>
+          </borderedNodeMappings>
+          <subContainerMappings name="ContainedResource" semanticCandidatesExpression="ocl:self.links->select(kind.term = 'contains').target" domainClass="OCCI.Resource" reusedBorderedNodeMappings="//@ownedViewpoints[name='OCCI%20Configuration%20with%20containment']/@ownedRepresentations[name='OCCI%20Configuration%20with%20containment']/@defaultLayer/@containerMappings[name='ResourceContainer1']/@borderedNodeMappings[name='BorderedLink']" reusedContainerMappings="//@ownedViewpoints[name='OCCI%20Configuration%20with%20containment']/@ownedRepresentations[name='OCCI%20Configuration%20with%20containment']/@defaultLayer/@containerMappings[name='ResourceContainer1']">
+            <style xsi:type="style:FlatContainerStyleDescription" labelSize="10" labelFormat="bold" labelExpression="ocl:self.id + ': ' + self.kind.term">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
+            </style>
+          </subContainerMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" labelSize="10" labelFormat="bold" labelExpression="ocl:self.id + ': ' + self.kind.term">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
+          </style>
+        </containerMappings>
       </defaultLayer>
     </ownedRepresentations>
   </ownedViewpoints>
