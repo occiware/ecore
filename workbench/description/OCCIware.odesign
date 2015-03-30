@@ -378,7 +378,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="ResourceContainer1" preconditionExpression="ocl:container.oclAsType(Configuration).resources.links.target->excludes(self)" semanticCandidatesExpression="feature:resources" domainClass="OCCI.Resource">
+        <containerMappings name="ResourceContainer1" preconditionExpression="ocl:container.oclAsType(Configuration).resources.links->select(kind.term= 'contains').target->excludes(self)" semanticCandidatesExpression="feature:resources" domainClass="OCCI.Resource">
           <borderedNodeMappings name="BorderedLink" preconditionExpression="ocl:kind.term &lt;> 'contains'" semanticCandidatesExpression="feature:links" domainClass="OCCI.Link">
             <style xsi:type="style:BundledImageDescription" labelSize="10" labelFormat="bold" labelExpression="ocl:self.id + ': ' + self.kind.term" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
