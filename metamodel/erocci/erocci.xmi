@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ASCII"?>
+<OCCI:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:OCCI="http://schemas.ogf.org/occi" xsi:schemaLocation="http://schemas.ogf.org/occi ../OCCI.ecore" name="Erocci Extension" scheme="http://occiware.org/erocci#">
+  <import href="../extensions/Core.xmi#/"/>
+  <kinds term="component" scheme="http://occiware.org/erocci#" title="Erocci component">
+    <parent href="../extensions/Core.xmi#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds term="listener" scheme="http://occiware.org/erocci#" title="Erocci Listener" parent="//@kinds[term='component']">
+    <attributes name="port" required="true" description="IP port where the frontend waits for requests">
+      <type href="../OCCI.ecore#//Number"/>
+    </attributes>
+  </kinds>
+  <kinds term="core" scheme="http://occiware.org/erocci#" title="Erocci Core" parent="//@kinds[term='component']">
+    <actions term="action1" scheme="http://occiware.org/erocci/core/action#" title=""/>
+    <actions term="action..." scheme="http://occiware.org/erocci/core/action#" title=""/>
+    <actions term="actionN" scheme="http://occiware.org/erocci/core/action#" title=""/>
+  </kinds>
+  <kinds term="backend" scheme="http://occiware.org/erocci#" title="Erocci Backend" parent="//@kinds[term='component']">
+    <actions term="action1" scheme="http://occiware.org/erocci/backend/action#" title=""/>
+    <actions term="action..." scheme="http://occiware.org/erocci/backend/action#" title=""/>
+    <actions term="actionN" scheme="http://occiware.org/erocci/backend/action#" title=""/>
+  </kinds>
+  <kinds term="frontendlink" scheme="http://occiware.org/erocci#" title="Link from Frontend to Core">
+    <parent href="../extensions/Core.xmi#//@kinds[term='link']"/>
+  </kinds>
+  <kinds term="backendlink" scheme="http://occiware.org/erocci#" title="Link to Backend">
+    <attributes name="path" mutable="true" required="true">
+      <type href="../OCCI.ecore#//String"/>
+    </attributes>
+    <parent href="../extensions/Core.xmi#//@kinds[term='link']"/>
+  </kinds>
+</OCCI:Extension>

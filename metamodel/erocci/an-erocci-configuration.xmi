@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ASCII"?>
+<OCCI:Configuration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:OCCI="http://schemas.ogf.org/occi" xsi:schemaLocation="http://schemas.ogf.org/occi ../OCCI.ecore">
+  <use href="erocci.xmi#/"/>
+  <resources id="http">
+    <kind href="erocci.xmi#//@kinds[term='listener']"/>
+    <attributes name="port" value="80"/>
+    <links id="link-1" target="//@resources.1">
+      <kind href="erocci.xmi#//@kinds[term='frontendlink']"/>
+    </links>
+  </resources>
+  <resources id="core">
+    <kind href="erocci.xmi#//@kinds[term='core']"/>
+    <links id="link-2" target="//@resources.2">
+      <kind href="erocci.xmi#//@kinds[term='backendlink']"/>
+      <attributes name="path" value="/"/>
+    </links>
+  </resources>
+  <resources id="mnesia">
+    <kind href="erocci.xmi#//@kinds[term='backend']"/>
+  </resources>
+</OCCI:Configuration>
