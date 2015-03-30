@@ -1,0 +1,41 @@
+[comment encoding = UTF-8 /]
+[module generate('http://www.eclipse.org/emf/2002/Ecore','http://schemas.ogf.org/occi')]
+
+[template public main(configuration : Configuration)]
+[comment @main/]
+
+[file ('create-configuration.sh', false, 'UTF-8')]
+#!/bin/sh
+
+SERVER=$1
+COPTS="-s -v" # -i
+
+[for (resource : Resource | configuration.resources)]
+[resource.generateCurl()/]
+[/for]
+
+[for (resource : Resource | configuration.resources)]
+[for (link : Link | resource.links)]
+[link.generateCurl()/] -H 'X-OCCI-Attribute: occi.core.source="[generateUrl(link.source)/]", occi.core.target="[generateUrl(link.target)/]"'
+[/for]
+[/for]
+
+[/file]
+
+[/template]
+
+[template public generateCurl(entity: Entity) post (trim())]
+[comment TODO: generate mixins/]
+curl $COPTS -X PUT $SERVER[entity.generateUrl()/] -H 'Content-Type: text/occi' -H 'Category: [entity.kind.term/]; scheme="[entity.kind.scheme/]"; class="kind";'[for (attribute : AttributeState | entity.attributes)] [generateAttribute(attribute, entity.kind)/][/for]
+[/template]
+
+[template public generateUrl(entity : Entity) post (trim())]
+/[entity.kind.term/]/[entity.id/]
+[/template]
+
+[template public generateAttribute(attribute : AttributeState, kind : Kind) post (trim())]
+[comment]Acceleo Bug:  kind->closure(parent) must include kind, i.e. ->including(kind) must not be required?[/comment]
+[let type : Bag(String) = kind->closure(parent)->including(kind).attributes->select(name = attribute.name).type.instanceClassName]
+-H 'X-OCCI-Attribute: [attribute.name/]=[if type->includes('int') or type->includes('float')][attribute.value/][else]"[attribute.value/]"[/if]'
+[/let]
+[/template]
