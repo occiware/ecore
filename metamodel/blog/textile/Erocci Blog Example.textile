@@ -1,0 +1,88 @@
+h1. OCCI Extension: Erocci Blog Example
+
+| *Name* | Erocci Blog Example |
+| *Scheme* | http://example.org/occi/test# |
+
+h1. Imports
+
+| *Name* | *Scheme* |
+| <a href="OCCI Core.textile">OCCI Core</a> | http://schemas.ogf.org/occi/core# |
+
+h1. Kinds
+
+h2. Kind blog
+
+| *Term* | blog |
+| *Scheme* | http://example.org/occi/test# |
+| *Title* | A Blog |
+| *Parent* | <a href="OCCI Core.textile#kind-resource">http://schemas.ogf.org/occi/core#resource</a> |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| example.blog.title | String | true | true |  | Blog title |
+
+h3. Actions
+
+
+
+h2. Kind entry
+
+| *Term* | entry |
+| *Scheme* | http://example.org/occi/test# |
+| *Title* | entry |
+| *Parent* | <a href="OCCI Core.textile#kind-resource">http://schemas.ogf.org/occi/core#resource</a> |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| blog.entry.title | String | true | true |  | Blog entry title |
+| blog.entry.date | String | false | true |  | Creation date |
+| blog.entry.content | String | true | true |  | Entry content |
+
+h3. Actions
+
+
+
+h2. Kind user
+
+| *Term* | user |
+| *Scheme* | http://example.org/occi/test# |
+| *Title* | Blog user |
+| *Parent* | <a href="OCCI Core.textile#kind-resource">http://schemas.ogf.org/occi/core#resource</a> |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| blog.user.name | String | true | true |  | User name |
+| blog.user.email | String | false | true |  | User email |
+| blog.user.role | String | false | true |  | User role |
+
+h3. Actions
+
+
+
+h2. Kind author
+
+| *Term* | author |
+| *Scheme* | http://example.org/occi/test# |
+| *Title* | Author |
+| *Parent* | <a href="OCCI Core.textile#kind-link">http://schemas.ogf.org/occi/core#link</a> |
+
+h3. Attributes
+
+
+h3. Actions
+
+
+
+
+
+h1. Mixins
+
+
+
+h1. Types
+
+
+

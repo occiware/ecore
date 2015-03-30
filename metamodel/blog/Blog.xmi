@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ASCII"?>
+<OCCI:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:OCCI="http://schemas.ogf.org/occi" xsi:schemaLocation="http://schemas.ogf.org/occi ../OCCI.ecore" name="Erocci Blog Example" scheme="http://example.org/occi/test#">
+  <import href="../extensions/Core.xmi#/"/>
+  <kinds term="blog" scheme="http://example.org/occi/test#" title="A Blog">
+    <attributes name="example.blog.title" mutable="true" required="true" description="Blog title">
+      <type href="../OCCI.ecore#//String"/>
+    </attributes>
+    <parent href="../extensions/Core.xmi#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds term="entry" scheme="http://example.org/occi/test#" title="entry">
+    <attributes name="blog.entry.title" mutable="true" required="true" description="Blog entry title">
+      <type href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes name="blog.entry.date" mutable="true" description="Creation date">
+      <type href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes name="blog.entry.content" mutable="true" required="true" description="Entry content">
+      <type href="../OCCI.ecore#//String"/>
+    </attributes>
+    <parent href="../extensions/Core.xmi#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds term="user" scheme="http://example.org/occi/test#" title="Blog user">
+    <attributes name="blog.user.name" mutable="true" required="true" description="User name">
+      <type href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes name="blog.user.email" mutable="true" description="User email">
+      <type href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes name="blog.user.role" mutable="true" description="User role">
+      <type href="../OCCI.ecore#//String"/>
+    </attributes>
+    <parent href="../extensions/Core.xmi#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds term="author" scheme="http://example.org/occi/test#" title="Author">
+    <parent href="../extensions/Core.xmi#//@kinds[term='link']"/>
+  </kinds>
+</OCCI:Extension>

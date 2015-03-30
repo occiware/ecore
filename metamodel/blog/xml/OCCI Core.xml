@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<occi:extension xmlns:occi="http://schemas.ogf.org/occi"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://schemas.ogf.org/occi occi.xsd " 
+    name="OCCI Core" >
+
+      <!-- Kind: Entity type -->
+      <occi:kind term="entity" scheme="http://schemas.ogf.org/occi/core#" title="Entity type">
+    	  	<occi:attribute 
+    	        name="occi.core.title" 
+    	        type="xsd:string" 
+    	        title="The display name of the instance." />
+      </occi:kind>
+      <!-- Kind: Resource -->
+      <occi:kind term="resource" scheme="http://schemas.ogf.org/occi/core#" title="Resource">
+        <occi:parent term="entity" scheme="http://schemas.ogf.org/occi/core#" />
+    	  	<occi:attribute 
+    	        name="occi.core.summary" 
+    	        type="xsd:string" 
+    	        title="A summarising description of the Resource instance." />
+      </occi:kind>
+      <!-- Kind: Link -->
+      <occi:kind term="link" scheme="http://schemas.ogf.org/occi/core#" title="Link">
+        <occi:parent term="entity" scheme="http://schemas.ogf.org/occi/core#" />
+      </occi:kind>
+</occi:extension>

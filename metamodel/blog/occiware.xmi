@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="ASCII"?>
+<OCCI:Configuration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:OCCI="http://schemas.ogf.org/occi" xsi:schemaLocation="http://schemas.ogf.org/occi ../OCCI.ecore">
+  <use href="Blog.xmi#/"/>
+  <use href="../extensions/Core.xmi#/"/>
+  <resources id="blog-1">
+    <kind href="Blog.xmi#//@kinds[term='blog']"/>
+    <attributes name="example.blog.title" value="OCCIware Blog"/>
+    <links id="link-1" target="//@resources.1">
+      <kind href="../extensions/Core.xmi#//@kinds[term='link']"/>
+    </links>
+    <links id="link-2" target="//@resources.2">
+      <kind href="../extensions/Core.xmi#//@kinds[term='link']"/>
+    </links>
+    <links id="link-3" target="//@resources.3">
+      <kind href="../extensions/Core.xmi#//@kinds[term='link']"/>
+    </links>
+  </resources>
+  <resources id="entry-1">
+    <kind href="Blog.xmi#//@kinds[term='entry']"/>
+    <attributes name="blog.entry.title" value="Welcome"/>
+    <attributes name="blog.entry.date" value="2015/01/01"/>
+    <attributes name="blog.entry.content" value="Welcome"/>
+    <links id="author-1" target="//@resources.4">
+      <kind href="Blog.xmi#//@kinds[term='author']"/>
+    </links>
+  </resources>
+  <resources id="entry-2">
+    <kind href="Blog.xmi#//@kinds[term='entry']"/>
+    <attributes name="blog.entry.title" value="First audio"/>
+    <attributes name="blog.entry.date" value="2015/01/02"/>
+    <attributes name="blog.entry.content" value="First audio"/>
+    <links id="author-2" target="//@resources.5">
+      <kind href="Blog.xmi#//@kinds[term='author']"/>
+    </links>
+  </resources>
+  <resources id="entry-3">
+    <kind href="Blog.xmi#//@kinds[term='entry']"/>
+    <attributes name="blog.entry.title" value="First tips"/>
+    <attributes name="blog.entry.date" value="2015/01/03"/>
+    <attributes name="blog.entry.content" value="First tips"/>
+    <links id="author-3" target="//@resources.6">
+      <kind href="Blog.xmi#//@kinds[term='author']"/>
+    </links>
+  </resources>
+  <resources id="user-1">
+    <kind href="Blog.xmi#//@kinds[term='user']"/>
+    <attributes name="blog.user.name" value="Marc Dutoo"/>
+    <attributes name="blog.user.email" value="Marc.Dutoo@openwide.fr"/>
+    <attributes name="blog.user.role" value="Project leader"/>
+  </resources>
+  <resources id="user-2">
+    <kind href="Blog.xmi#//@kinds[term='user']"/>
+    <attributes name="blog.user.name" value="Philippe Merle"/>
+    <attributes name="blog.user.email" value="Philippe.Merle@inria.fr"/>
+    <attributes name="blog.user.role" value="Scientific and technical responsible"/>
+  </resources>
+  <resources id="user-3">
+    <kind href="Blog.xmi#//@kinds[term='user']"/>
+    <attributes name="blog.user.name" value="Jean Parpaillon"/>
+    <attributes name="blog.user.email" value="Jean.Parpaillon@inria.fr"/>
+    <attributes name="blog.user.role" value="Research engineer"/>
+  </resources>
+</OCCI:Configuration>

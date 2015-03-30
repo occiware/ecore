@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<occi:extension xmlns:occi="http://schemas.ogf.org/occi"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://schemas.ogf.org/occi occi.xsd " 
+    name="Erocci Blog Example" >
+
+      <!-- Kind: A Blog -->
+      <occi:kind term="blog" scheme="http://example.org/occi/test#" title="A Blog">
+        <occi:parent term="resource" scheme="http://schemas.ogf.org/occi/core#" />
+    	  	<occi:attribute 
+    	        name="example.blog.title" 
+    	        type="xsd:string" 
+    	        title="Blog title" />
+      </occi:kind>
+      <!-- Kind: entry -->
+      <occi:kind term="entry" scheme="http://example.org/occi/test#" title="entry">
+        <occi:parent term="resource" scheme="http://schemas.ogf.org/occi/core#" />
+    	  	<occi:attribute 
+    	        name="blog.entry.title" 
+    	        type="xsd:string" 
+    	        title="Blog entry title" />
+    	  	<occi:attribute 
+    	        name="blog.entry.date" 
+    	        type="xsd:string" 
+    	        title="Creation date" />
+    	  	<occi:attribute 
+    	        name="blog.entry.content" 
+    	        type="xsd:string" 
+    	        title="Entry content" />
+      </occi:kind>
+      <!-- Kind: Blog user -->
+      <occi:kind term="user" scheme="http://example.org/occi/test#" title="Blog user">
+        <occi:parent term="resource" scheme="http://schemas.ogf.org/occi/core#" />
+    	  	<occi:attribute 
+    	        name="blog.user.name" 
+    	        type="xsd:string" 
+    	        title="User name" />
+    	  	<occi:attribute 
+    	        name="blog.user.email" 
+    	        type="xsd:string" 
+    	        title="User email" />
+    	  	<occi:attribute 
+    	        name="blog.user.role" 
+    	        type="xsd:string" 
+    	        title="User role" />
+      </occi:kind>
+      <!-- Kind: Author -->
+      <occi:kind term="author" scheme="http://example.org/occi/test#" title="Author">
+        <occi:parent term="link" scheme="http://schemas.ogf.org/occi/core#" />
+      </occi:kind>
+</occi:extension>
