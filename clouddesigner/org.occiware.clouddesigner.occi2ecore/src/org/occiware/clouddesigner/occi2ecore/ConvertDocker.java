@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EPackage;
@@ -22,11 +21,11 @@ import org.occiware.clouddesigner.occi2ecore.utils.ConverterUtils;
 import org.occiware.clouddesigner.occi2ecore.utils.OCCIExtension2Ecore;
 
 /*
- * Modifications de Docker.xmi pour ne pas interférer avec les éléments hérités de OCCI et Infrastructure :
- - link renommé en dockerLink 
- - supprimé l'attribut hostname de container
- - supprimé les actions start et stop de container
- - supprimé l'attribut memory de virtual box
+ * Modifications de Docker.xmi pour ne pas interfï¿½rer avec les ï¿½lï¿½ments hï¿½ritï¿½s de OCCI et Infrastructure :
+ - link renommï¿½ en dockerLink 
+ - supprimï¿½ l'attribut hostname de container
+ - supprimï¿½ les actions start et stop de container
+ - supprimï¿½ l'attribut memory de virtual box
  */
 public class ConvertDocker extends OCCIExtension2Ecore {
 	public static ResourceSet resourceSet = new ResourceSetImpl();
