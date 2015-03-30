@@ -3,6 +3,13 @@
 
 [template public main(e : Extension)]
 [comment @main/]
+[extension(e)/]
+[for (imported : Extension | e.import)]
+[extension(imported)/]
+[/for]
+[/template]
+
+[template public extension(e : Extension)]
 [file ('xml/'+e.name+'.xml', false, 'UTF-8')]
 <?xml version="1.0" encoding="UTF-8"?>
 <occi:extension xmlns:occi="http://schemas.ogf.org/occi"
@@ -24,12 +31,14 @@
 [template public kind(k: Kind)]
   <!-- Kind: [k.title /] -->
   <occi:kind term="[k.term/]" scheme="[k.scheme/]" title="[k.title/]">
+[if k.parent <> null]
     <occi:parent term="[k.parent.term/]" scheme="[k.parent.scheme/]" />
+[/if]
 	[for (a: Attribute | k.attributes)]
-	[attribute(a)/]
+	  [attribute(a)/]
 	[/for]
 	[for (a: Action | k.actions)]
-	[action(a)/]
+	  [action(a)/]
 	[/for]
   </occi:kind>
 [/template]
@@ -55,7 +64,7 @@
 [template public attribute(a: Attribute)]
 	<occi:attribute 
       name="[a.name/]" 
-      type="[a.type.name/]" 
+      type="[toXMLtype(a.type.instanceClassName)/]" 
       title="[a.description/]" />
 [/template]
 
@@ -67,3 +76,9 @@
     [/for]
   </occi:action>
 [/template]
+
+[query public toXMLtype(javatype : String) : String
+	= invoke(
+	'org.occiware.clouddesigner.occi.gen.xml.services.GenUtils', 
+	'toXMLtype(java.lang.String)', 
+	Sequence{javatype})/]
