@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<occi:extension xmlns:occi="http://schemas.ogf.org/occi"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://schemas.ogf.org/occi occi.xsd " 
+    name="OCCI Infrastructure" >
+
+      <!-- Kind: Network Resource -->
+      <occi:kind term="network" scheme="http://schemas.ogf.org/occi/infrastructure#" title="Network Resource">
+        <occi:parent term="resource" scheme="http://schemas.ogf.org/occi/core#" />
+    	  	<occi:attribute 
+    	        name="occi.network.vlan" 
+    	        type="" 
+    	        title="802.1q VLAN Identifier (e.g. 343)" />
+    	  	<occi:attribute 
+    	        name="occi.network.label" 
+    	        type="xsd:string" 
+    	        title="Tag based VLANs (e.g. external-dmz)" />
+    	  	<occi:attribute 
+    	        name="occi.network.state" 
+    	        type="" 
+    	        title="Current state of the instance" />
+    	    <!-- Action:  -->
+    	    <occi:action term="up" scheme="http://schemas.ogf.org/occi/infrastructure/network/action#" title="" >
+    	    </occi:action>
+    	    <!-- Action:  -->
+    	    <occi:action term="down" scheme="http://schemas.ogf.org/occi/infrastructure/network/action#" title="" >
+    	    </occi:action>
+      </occi:kind>
+      <!-- Kind: Compute Resource -->
+      <occi:kind term="compute" scheme="http://schemas.ogf.org/occi/infrastructure#" title="Compute Resource">
+        <occi:parent term="resource" scheme="http://schemas.ogf.org/occi/core#" />
+    	  	<occi:attribute 
+    	        name="occi.compute.architecture" 
+    	        type="" 
+    	        title="CPU Architecture of the instance" />
+    	  	<occi:attribute 
+    	        name="occi.compute.cores" 
+    	        type="" 
+    	        title="Number of CPU cores assigned to the instance" />
+    	  	<occi:attribute 
+    	        name="occi.compute.hostname" 
+    	        type="xsd:string" 
+    	        title="Fully Qualified DNS hostname for the instance" />
+    	  	<occi:attribute 
+    	        name="occi.compute.speed" 
+    	        type="" 
+    	        title="CPU Clock frequency (speed) in gigahertz" />
+    	  	<occi:attribute 
+    	        name="occi.compute.memory" 
+    	        type="" 
+    	        title="Maximum RAM in gigabytes allocated to the instance" />
+    	  	<occi:attribute 
+    	        name="occi.compute.state" 
+    	        type="" 
+    	        title="Current state of the instance" />
+    	    <!-- Action: Start the system -->
+    	    <occi:action term="start" scheme="http://schemas.ogf.org/occi/infrastructure/compute/action#" title="Start the system" >
+    	    </occi:action>
+    	    <!-- Action: Stop the system (graceful, acpioff or poweroff) -->
+    	    <occi:action term="stop" scheme="http://schemas.ogf.org/occi/infrastructure/compute/action#" title="Stop the system (graceful, acpioff or poweroff)" >
+    	      	<occi:attribute 
+    	            name="method" 
+    	            type="" 
+    	            title="" />
+    	    </occi:action>
+    	    <!-- Action: Restart the system (graceful, warm or cold) -->
+    	    <occi:action term="restart" scheme="http://schemas.ogf.org/occi/infrastructure/compute/action#" title="Restart the system (graceful, warm or cold)" >
+    	      	<occi:attribute 
+    	            name="method" 
+    	            type="" 
+    	            title="" />
+    	    </occi:action>
+    	    <!-- Action: Suspend the system (hibernate or in RAM) -->
+    	    <occi:action term="suspend" scheme="http://schemas.ogf.org/occi/infrastructure/compute/action#" title="Suspend the system (hibernate or in RAM)" >
+    	      	<occi:attribute 
+    	            name="method" 
+    	            type="" 
+    	            title="" />
+    	    </occi:action>
+      </occi:kind>
+      <!-- Kind: Storage Resource -->
+      <occi:kind term="storage" scheme="http://schemas.ogf.org/occi/infrastructure#" title="Storage Resource">
+        <occi:parent term="resource" scheme="http://schemas.ogf.org/occi/core#" />
+    	  	<occi:attribute 
+    	        name="occi.storage.size" 
+    	        type="" 
+    	        title="Storage size in gigabytes of the instance" />
+    	  	<occi:attribute 
+    	        name="occi.storage.state" 
+    	        type="" 
+    	        title="Current status of the instance" />
+    	    <!-- Action: Set storage online -->
+    	    <occi:action term="online" scheme="http://schemas.ogf.org/occi/infrastructure/storage/action#" title="Set storage online" >
+    	    </occi:action>
+    	    <!-- Action: Set storage offline -->
+    	    <occi:action term="offline" scheme="http://schemas.ogf.org/occi/infrastructure/storage/action#" title="Set storage offline" >
+    	    </occi:action>
+    	    <!-- Action: Set storage as backup -->
+    	    <occi:action term="backup" scheme="http://schemas.ogf.org/occi/infrastructure/storage/action#" title="Set storage as backup" >
+    	    </occi:action>
+    	    <!-- Action: Take storage snapshot -->
+    	    <occi:action term="snapshot" scheme="http://schemas.ogf.org/occi/infrastructure/storage/action#" title="Take storage snapshot" >
+    	    </occi:action>
+    	    <!-- Action: Resize storage -->
+    	    <occi:action term="resize" scheme="http://schemas.ogf.org/occi/infrastructure/storage/action#" title="Resize storage" >
+    	      	<occi:attribute 
+    	            name="size" 
+    	            type="" 
+    	            title="" />
+    	    </occi:action>
+      </occi:kind>
+      <!-- Kind: StorageLink Link -->
+      <occi:kind term="storagelink" scheme="http://schemas.ogf.org/occi/infrastructure#" title="StorageLink Link">
+        <occi:parent term="link" scheme="http://schemas.ogf.org/occi/core#" />
+    	  	<occi:attribute 
+    	        name="occi.storagelink.deviceid" 
+    	        type="xsd:string" 
+    	        title="Device identifier as defined by the OCCI service provider" />
+    	  	<occi:attribute 
+    	        name="occi.storagelink.mountpoint" 
+    	        type="xsd:string" 
+    	        title="Point to where the storage is mounted in the guest OS" />
+    	  	<occi:attribute 
+    	        name="occi.storagelink.state" 
+    	        type="" 
+    	        title="Current status of the instance" />
+      </occi:kind>
+      <!-- Kind: NetworkInterface Link -->
+      <occi:kind term="networkinterface" scheme="http://schemas.ogf.org/occi/infrastructure#" title="NetworkInterface Link">
+        <occi:parent term="link" scheme="http://schemas.ogf.org/occi/core#" />
+    	  	<occi:attribute 
+    	        name="occi.networkinterface.interface" 
+    	        type="xsd:string" 
+    	        title="Identifier that relates the link to the link's device interface" />
+    	  	<occi:attribute 
+    	        name="occi.networkinterface.mac" 
+    	        type="xsd:string" 
+    	        title="MAC address associated with the link's device interface" />
+    	  	<occi:attribute 
+    	        name="occi.networkinterface.state" 
+    	        type="" 
+    	        title="Current status of the instance" />
+      </occi:kind>
+      <!-- Mixin: IP Networking Mixin -->
+      <occi:mixin term="ipnetwork" scheme="http://schemas.ogf.org/occi/infrastructure/network#" title="IP Networking Mixin" >
+    	<occi:applies term="network" scheme="http://schemas.ogf.org/occi/infrastructure#" />
+    		<occi:attribute 
+    	      name="occi.network.address" 
+    	      type="xsd:string" 
+    	      title="Internet Protocol (IP) network address (e.g. 192.168.0.1/24, fc00::/7)" />
+    		<occi:attribute 
+    	      name="occi.network.gateway" 
+    	      type="xsd:string" 
+    	      title="Internet Protocol (IP) network address (e.g. 192.168.0.1, fc00::)" />
+    		<occi:attribute 
+    	      name="occi.network.allocation" 
+    	      type="" 
+    	      title="Address allocation mechanism: dynamic e.g. uses the dynamic host configuration protocol, static e.g. uses user supplied static network configurations" />
+      </occi:mixin>
+      <!-- Mixin: IP NetworkInterface Mixin -->
+      <occi:mixin term="ipnetworkinterface" scheme="http://schemas.ogf.org/occi/infrastructure/networkinterface#" title="IP NetworkInterface Mixin" >
+    	<occi:applies term="networkinterface" scheme="http://schemas.ogf.org/occi/infrastructure#" />
+    		<occi:attribute 
+    	      name="occi.networkinterface.address" 
+    	      type="xsd:string" 
+    	      title="Internet Protocol (IP) network address (e.g. 192.168.0.1/24, fc00::/7) of the link" />
+    		<occi:attribute 
+    	      name="occi.networkinterface.gateway" 
+    	      type="xsd:string" 
+    	      title="Internet Protocol (IP) network address (e.g. 192.168.0.1/24, fc00::/7)" />
+    		<occi:attribute 
+    	      name="occi.networkinterface.allocation" 
+    	      type="" 
+    	      title="Address mechanism: dynamic e.g. uses the dynamic host configuration protocol, static e.g. uses user supplied static network configurations" />
+      </occi:mixin>
+      <!-- Mixin: OS Template -->
+      <occi:mixin term="os_tpl" scheme="http://schemas.ogf.org/occi/infrastructure#" title="OS Template" >
+    	<occi:applies term="compute" scheme="http://schemas.ogf.org/occi/infrastructure#" />
+      </occi:mixin>
+      <!-- Mixin: Resource template -->
+      <occi:mixin term="resource_tpl" scheme="http://schemas.ogf.org/occi/infrastructure#" title="Resource template" >
+    	<occi:applies term="resource" scheme="http://schemas.ogf.org/occi/core#" />
+      </occi:mixin>
+</occi:extension>
