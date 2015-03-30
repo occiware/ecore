@@ -34,7 +34,7 @@ public class Generate extends AbstractAcceleoGenerator {
 	/**
 	 * The name of the module.
 	 *
-	 * @generated
+	 * @generated NOT
 	 */
 	public static final String MODULE_FILE_NAME = "/org/occiware/clouddesigner/occi/gen/doc/main/generate";
 
