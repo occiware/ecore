@@ -36,4 +36,3 @@
 [/template]
 
 [query public getLinks (container : Container) : Collection(DockerLink) = container.links->filter(DockerLink)/]
-
