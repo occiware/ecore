@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2105 Inria.
+ * Copyright (c) 2015 Inria.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,9 +33,9 @@ public class Generate extends AbstractAcceleoGenerator {
     /**
      * The name of the module.
      *
-     * @generated
+     * @generated NOT
      */
-    public static final String MODULE_FILE_NAME = "/org/occiware/clouddesigner/occi/gen/xml/main/generate";
+	public static final String MODULE_FILE_NAME = "/org/occiware/clouddesigner/occi/gen/xml/main/generate";
     
     /**
      * The name of the templates that are to be generated.
