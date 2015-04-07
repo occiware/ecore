@@ -9,7 +9,9 @@ import java.io.IOException;
 import java.util.Collections;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -62,16 +64,19 @@ public final class ConverterUtils {
 		return temp;
 	}
 
-	/**
-	 * Ignore proxies issues. TODO fix proxy issues instead
-	 */
-	public static String getKindTerm(Kind kind) {
-		if (kind.eIsProxy()) {
-			return kind.toString().substring(
-					kind.toString().indexOf("[term='") + 7,
-					kind.toString().indexOf("'])"));
-		} else {
-			return kind.getTerm();
+	public static EClass getMappedEClass(Kind kind) {
+		String eClassName = toU1Case(kind.getTerm());
+		String uri = convertScheme2URI(kind.getScheme());
+		EPackage p = kind.eResource().getResourceSet().getPackageRegistry()
+				.getEPackage(uri);
+		return (EClass) p.getEClassifier(eClassName);
+	}
+
+	public static String convertScheme2URI(String scheme) {
+		String uri = scheme.substring(0, scheme.length() - 1);
+		if ("http://schemas.ogf.org/occi/core".equals(uri)) {
+			uri = "http://schemas.ogf.org/occi";
 		}
+		return uri;
 	}
 }

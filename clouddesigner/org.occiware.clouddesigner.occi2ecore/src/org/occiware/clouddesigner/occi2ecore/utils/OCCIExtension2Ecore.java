@@ -1,7 +1,5 @@
 package org.occiware.clouddesigner.occi2ecore.utils;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,33 +18,31 @@ import org.occiware.clouddesigner.OCCI.Attribute;
 import org.occiware.clouddesigner.OCCI.Extension;
 import org.occiware.clouddesigner.OCCI.Kind;
 
-public abstract class OCCIExtension2Ecore {
+public class OCCIExtension2Ecore {
 
 	private Map<EDataType, EDataType> copiedTypes = new HashMap<EDataType, EDataType>();
-	private Map<String, EClass> parentKindMappings = null;
 
-	public abstract Map<String, EClass> initParentKindMappings();
+	private Map<Kind, EClass> mappedKinds = new HashMap<Kind, EClass>();
 
-	public static void fixMetamodelRefs(File metamodelFile) throws IOException {
-		String content = ConverterUtils.readFileAsString(metamodelFile);
-		content = content.replaceAll("http://schemas.ogf.org/occi#",
-				"../../org.occiware.clouddesigner.occi/model/OCCI.ecore#");
-		content = content
-				.replaceAll(
-						"http://schemas.ogf.org/occi/infrastructure#",
-						"../../org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.ecore#");
-		ConverterUtils.writeStringToFile(metamodelFile, content);
+	private EClass getMappedEClass(Kind kind) {
+		// retrieve from currently converted kinds
+		EClass res = mappedKinds.get(kind);
+		if (res == null) {
+			// retrieve from installed extension
+			res = ConverterUtils.getMappedEClass(kind);
+		}
+		return res;
 	}
 
 	public EPackage convertExtension(Extension extension) {
-		parentKindMappings = initParentKindMappings();
 		EPackage ePackage = EcoreFactory.eINSTANCE.createEPackage();
 		String formattedName = ConverterUtils.formatName(extension.getName()
 				.replaceFirst("OCCI ", "").replaceFirst("OCCIware ", "")
 				.toLowerCase());
 		ePackage.setName(formattedName);
 		ePackage.setNsPrefix(formattedName);
-		ePackage.setNsURI(extension.getScheme());
+		ePackage.setNsURI(ConverterUtils.convertScheme2URI(extension
+				.getScheme()));
 		for (EDataType type : extension.getTypes()) {
 			EDataType copiedType = EcoreUtil.copy(type);
 			copiedTypes.put(type, copiedType);
@@ -67,38 +63,37 @@ public abstract class OCCIExtension2Ecore {
 
 		// resolve links
 		for (Kind kind : extension.getKinds()) {
-			EClass mappedEClass = parentKindMappings.get(ConverterUtils
-					.getKindTerm(kind));
-			String kindTerm = ConverterUtils.getKindTerm(kind.getParent());
-			EClass mappedParentEClass = parentKindMappings.get(kindTerm);
+			EClass mappedEClass = getMappedEClass(kind);
+			EClass mappedParentEClass = getMappedEClass(kind.getParent());
 			if (mappedParentEClass != null) {
 				mappedEClass.getESuperTypes().add(mappedParentEClass);
 			} else {
-				throw new IllegalArgumentException("Not found: " + kindTerm);
+				throw new IllegalArgumentException("Not found: "
+						+ kind.getParent());
 			}
 		}
 		return ePackage;
 	}
 
-//	protected EClass convertMixin(Mixin mixin) {
-//		EClass eClass = EcoreFactory.eINSTANCE.createEClass();
-//		eClass.setName(ConverterUtils.toU1Case(ConverterUtils.formatName(mixin
-//				.getTerm())));
-//		eClass.setAbstract(true);
-//		for (Attribute attribute : mixin.getAttributes()) {
-//			EAttribute convertAttribute = convertAttribute(attribute);
-//			if (convertAttribute != null) {
-//				eClass.getEStructuralFeatures().add(convertAttribute);
-//			}
-//		}
-//		for (Action action : mixin.getActions()) {
-//			EOperation convertAction = convertAction(action);
-//			if (convertAction != null) {
-//				eClass.getEOperations().add(convertAction);
-//			}
-//		}
-//		return eClass;
-//	}
+	// protected EClass convertMixin(Mixin mixin) {
+	// EClass eClass = EcoreFactory.eINSTANCE.createEClass();
+	// eClass.setName(ConverterUtils.toU1Case(ConverterUtils.formatName(mixin
+	// .getTerm())));
+	// eClass.setAbstract(true);
+	// for (Attribute attribute : mixin.getAttributes()) {
+	// EAttribute convertAttribute = convertAttribute(attribute);
+	// if (convertAttribute != null) {
+	// eClass.getEStructuralFeatures().add(convertAttribute);
+	// }
+	// }
+	// for (Action action : mixin.getActions()) {
+	// EOperation convertAction = convertAction(action);
+	// if (convertAction != null) {
+	// eClass.getEOperations().add(convertAction);
+	// }
+	// }
+	// return eClass;
+	// }
 
 	protected EClass convertKind(Kind kind) {
 		EClass eClass = EcoreFactory.eINSTANCE.createEClass();
@@ -116,12 +111,7 @@ public abstract class OCCIExtension2Ecore {
 				eClass.getEOperations().add(convertAction);
 			}
 		}
-		if (parentKindMappings.containsKey(kind.getTerm())) {
-			throw new IllegalArgumentException("Already exists: "
-					+ parentKindMappings.get(kind.getTerm()));
-		} else {
-			parentKindMappings.put(kind.getTerm(), eClass);
-		}
+		mappedKinds.put(kind, eClass);
 		return eClass;
 	}
 
@@ -152,7 +142,7 @@ public abstract class OCCIExtension2Ecore {
 		eAttr.setName(ConverterUtils.formatName(attribute.getName()));
 		eAttr.setEType(getActualType(attribute.getType()));
 		String defaultValue = attribute.getDefault();
-		if (defaultValue != null) {
+		if (defaultValue != null && !defaultValue.isEmpty()) {
 			eAttr.setDefaultValue(defaultValue);
 		}
 		if (attribute.isRequired()) {

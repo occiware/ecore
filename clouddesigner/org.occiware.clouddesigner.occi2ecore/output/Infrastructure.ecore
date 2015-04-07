@@ -115,21 +115,9 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="interface" lowerBound="1">
       <eType xsi:type="ecore:EDataType" href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mac" lowerBound="1" defaultValueLiteral="">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mac" lowerBound="1">
       <eType xsi:type="ecore:EDataType" href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="state" lowerBound="1" eType="//NetworkInterfaceStatus"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Ipnetwork" abstract="true">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="address" eType="//IpAddressRange"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="gateway" eType="//IpAddress"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="allocation" eType="//Allocation"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Ipnetworkinterface" abstract="true">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="address" lowerBound="1" eType="//IpAddress"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="gateway" eType="//IpAddress"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="allocation" lowerBound="1" eType="//Allocation"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Os_tpl" abstract="true"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Resource_tpl" abstract="true"/>
 </ecore:EPackage>

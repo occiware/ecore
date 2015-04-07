@@ -6,7 +6,6 @@ import java.util.Map;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -15,49 +14,40 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.occiware.clouddesigner.OCCI.AttributeState;
 import org.occiware.clouddesigner.OCCI.Configuration;
-import org.occiware.clouddesigner.OCCI.Kind;
 import org.occiware.clouddesigner.OCCI.Link;
 import org.occiware.clouddesigner.OCCI.OCCIFactory;
 import org.occiware.clouddesigner.OCCI.OCCIPackage;
 import org.occiware.clouddesigner.OCCI.Resource;
-import org.occiware.clouddesigner.occi.docker.DockerPackage;
-import org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage;
 import org.occiware.clouddesigner.occi2ecore.utils.ConverterUtils;
 
-public class ConvertDockerConfiguration {
-	public static ResourceSet resourceSet = new ResourceSetImpl();
+public class ConvertDockerConfig {
+	private ResourceSet resourceSet = new ResourceSetImpl();
 
 	private Map<Resource, Resource> traces = new HashMap<Resource, Resource>();
 
-	static {
-		resourceSet.getPackageRegistry().put(OCCIPackage.eNS_URI,
-				OCCIPackage.eINSTANCE);
-		resourceSet.getPackageRegistry().put(InfrastructurePackage.eNS_URI,
-				InfrastructurePackage.eINSTANCE);
-		resourceSet.getPackageRegistry().put(DockerPackage.eNS_URI,
-				DockerPackage.eINSTANCE);
+	public ConvertDockerConfig(EPackage... convertedEPackages) {
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
 				.put("*", new XMIResourceFactoryImpl());
+		resourceSet.getPackageRegistry().put(OCCIPackage.eNS_URI,
+				OCCIPackage.eINSTANCE);
+		for (EPackage ePackage : convertedEPackages) {
+			resourceSet.getPackageRegistry().put(ePackage.getNsURI(), ePackage);
+		}
 	}
 
-	public static void main(String[] args) throws IOException {
-		convertInstanceFile("first-docker-configuration.xmi");
-		convertInstanceFile("demo.xmi");
-	}
-
-	private static void convertInstanceFile(String fileName) throws IOException {
+	public void convertConfiguration(String inputPath, String outputPath,
+			EPackage... converted) throws IOException {
 		Configuration config = (Configuration) ConverterUtils.getRootElement(
-				resourceSet, "input/docker/" + fileName);
-		Configuration res = new ConvertDockerConfiguration()
-				.convertConfiguration(config);
-		ConverterUtils.save(resourceSet, res,
-				"output/"+fileName);
+				resourceSet, inputPath);
+		Configuration convertedConfig = convertConfiguration(config);
+		ConverterUtils.save(resourceSet, convertedConfig, outputPath);
 	}
 
-	public Configuration convertConfiguration(Configuration dynamicConfiguration) {
+	private Configuration convertConfiguration(
+			Configuration dynamicConfiguration) {
 		Configuration res = OCCIFactory.eINSTANCE.createConfiguration();
 		for (Resource resource : dynamicConfiguration.getResources()) {
-			EClass mappedEClass = getMappedEClass(resource.getKind());
+			EClass mappedEClass = ConverterUtils.getMappedEClass(resource.getKind());
 			Resource converted = (Resource) EcoreUtil.create(mappedEClass);
 			for (AttributeState attrState : resource.getAttributes()) {
 				EAttribute attr = (EAttribute) mappedEClass
@@ -71,7 +61,7 @@ public class ConvertDockerConfiguration {
 
 		for (Resource resource : dynamicConfiguration.getResources()) {
 			for (Link link : resource.getLinks()) {
-				EClass actualLinkType = getMappedEClass(link.getKind());
+				EClass actualLinkType = ConverterUtils.getMappedEClass(link.getKind());
 				Link actualLink = (Link) EcoreUtil.create(actualLinkType);
 				actualLink.setId(link.getId());
 				Resource converted = traces.get(resource);
@@ -99,30 +89,9 @@ public class ConvertDockerConfiguration {
 			element.eSet(attr, Float.valueOf(value));
 		} else if ("int".equals(type)) {
 			element.eSet(attr, Integer.valueOf(value));
+		} else if ("boolean".equals(type)) {
+			element.eSet(attr, Boolean.valueOf(value));
 		}
 	}
 
-	private EClass getMappedEClass(Kind kind) {
-		EClass res = null;
-		String kindTerm = ConverterUtils
-				.getKindTerm(kind);
-		
-		if (kindTerm.equals("link")) {
-			kindTerm = "dockerLink";
-		}
-		
-		String eClassName = ConverterUtils.toU1Case(kindTerm);
-		for (Object object : resourceSet.getPackageRegistry().values()) {
-			if (object instanceof EPackage) {
-				EPackage ePackage = (EPackage) object;
-				for (EClassifier eClassifier : ePackage.getEClassifiers()) {
-					if (eClassifier instanceof EClass
-							&& eClassifier.getName().equals(eClassName)) {
-						return (EClass) eClassifier;
-					}
-				}
-			}
-		}
-		return res;
-	}
 }

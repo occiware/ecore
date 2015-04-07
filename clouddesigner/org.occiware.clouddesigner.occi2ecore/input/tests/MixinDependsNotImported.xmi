@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="ASCII"?>
-<OCCI:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:OCCI="http://schemas.ogf.org/occi" xsi:schemaLocation="http://schemas.ogf.org/occi http://schemas.ogf.org/occi" name="MixinDependsNotImported" scheme="scheme#">
-  <mixins term="M" scheme="scheme#">
-    <depends href="../extensions/Infrastructure.xmi#//@mixins[term='resource_tpl']"/>
-  </mixins>
-</OCCI:Extension>
