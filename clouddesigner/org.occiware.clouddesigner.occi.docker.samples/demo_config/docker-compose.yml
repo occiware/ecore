@@ -6,5 +6,4 @@ web:
 
 db:
   image: training/postgres
-  command: 
 

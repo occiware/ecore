@@ -1,6 +1,5 @@
 webserver:
   image: tomcat
-  command: 
   ports:
     - "..."
   links:
@@ -8,7 +7,6 @@ webserver:
 
 db:
   image: mysql
-  command: 
   ports:
     - "..."
 

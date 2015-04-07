@@ -1,5 +1,5 @@
 [comment encoding = UTF-8 /]
-[module genSH('http://schemas.ogf.org/occi/docker', 'http://schemas.ogf.org/occi/infrastructure', 'http://schemas.ogf.org/occi')]
+[module genSH('http://occiware.org/docker', 'http://schemas.ogf.org/occi/infrastructure', 'http://schemas.ogf.org/occi')]
 
 [template public generateSH(configuration : Configuration)]
 [file ('docker-conf.sh', false, 'UTF-8')]
@@ -22,12 +22,12 @@ docker-machine create [genDriverConfig()/] [name/]
 [/template]
 
 [template public genDriverConfig (machine : Machine_VirtualBox) post (trim())]
- --driver=virtualbox[if memory <> null] --virtualbox-memory [toInteger(memory)/][/if][if disk_size <> null] --virtualbox-disk-size [disk_size/][/if]
+ --driver=virtualbox[if not memory.oclIsUndefined()] --virtualbox-memory [toInteger(memory)/][/if][if disk_size <> null] --virtualbox-disk-size [disk_size/][/if]
 [/template]
 
 [template public genContainer (container : Container, machineName : String) ]
 # Create the Docker Container named [name/]
-docker $(docker-machine config [machineName/]) create --name [name/][if publish_all] -P[/if] [genLinkConfig()/] [image.trim()/] [command.trim()/]
+docker $(docker-machine config [machineName/]) create --name [name/][if publish_all] -P[/if] [genLinkConfig()/] [if not image.oclIsUndefined()][image.trim()/][/if] [if not command.oclIsUndefined()][command.trim()/][/if]
 
 # Start the Docker Container named [name/]
 docker $(docker-machine config [machineName/]) start [name/]
@@ -36,7 +36,7 @@ docker $(docker-machine config [machineName/]) start [name/]
 [/template]
 
 [template public genLinkConfig (container : Container) post (trim())]
-[for (link : DockerLink | links->filter(DockerLink))]
+[for (link : Link | links->filter(docker::Link))]
 [let name : String = link.target.oclAsType(Container).name]
   --link [name/]:[if link.alias <> null][link.alias/][else][name/][/if]
 [/let]
