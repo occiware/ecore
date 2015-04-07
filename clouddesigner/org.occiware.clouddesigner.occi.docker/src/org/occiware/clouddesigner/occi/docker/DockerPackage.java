@@ -43,7 +43,7 @@ public interface DockerPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://schemas.ogf.org/occi/docker";
+	String eNS_URI = "http://occiware.org/docker";
 
 	/**
 	 * The package namespace name.
@@ -612,14 +612,14 @@ public interface DockerPackage extends EPackage {
 	int CONTAINER_OPERATION_COUNT = InfrastructurePackage.COMPUTE_OPERATION_COUNT + 5;
 
 	/**
-	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.docker.impl.DockerLinkImpl <em>Link</em>}' class.
+	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.docker.impl.LinkImpl <em>Link</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.occiware.clouddesigner.occi.docker.impl.DockerLinkImpl
-	 * @see org.occiware.clouddesigner.occi.docker.impl.DockerPackageImpl#getDockerLink()
+	 * @see org.occiware.clouddesigner.occi.docker.impl.LinkImpl
+	 * @see org.occiware.clouddesigner.occi.docker.impl.DockerPackageImpl#getLink()
 	 * @generated
 	 */
-	int DOCKER_LINK = 1;
+	int LINK = 1;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -628,7 +628,7 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DOCKER_LINK__ID = OCCIPackage.LINK__ID;
+	int LINK__ID = OCCIPackage.LINK__ID;
 
 	/**
 	 * The feature id for the '<em><b>Kind</b></em>' reference.
@@ -637,7 +637,7 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DOCKER_LINK__KIND = OCCIPackage.LINK__KIND;
+	int LINK__KIND = OCCIPackage.LINK__KIND;
 
 	/**
 	 * The feature id for the '<em><b>Mixins</b></em>' reference list.
@@ -646,7 +646,7 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DOCKER_LINK__MIXINS = OCCIPackage.LINK__MIXINS;
+	int LINK__MIXINS = OCCIPackage.LINK__MIXINS;
 
 	/**
 	 * The feature id for the '<em><b>Attributes</b></em>' containment reference list.
@@ -655,7 +655,7 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DOCKER_LINK__ATTRIBUTES = OCCIPackage.LINK__ATTRIBUTES;
+	int LINK__ATTRIBUTES = OCCIPackage.LINK__ATTRIBUTES;
 
 	/**
 	 * The feature id for the '<em><b>Source</b></em>' container reference.
@@ -664,7 +664,7 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DOCKER_LINK__SOURCE = OCCIPackage.LINK__SOURCE;
+	int LINK__SOURCE = OCCIPackage.LINK__SOURCE;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
@@ -673,7 +673,7 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DOCKER_LINK__TARGET = OCCIPackage.LINK__TARGET;
+	int LINK__TARGET = OCCIPackage.LINK__TARGET;
 
 	/**
 	 * The feature id for the '<em><b>Alias</b></em>' attribute.
@@ -682,7 +682,7 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DOCKER_LINK__ALIAS = OCCIPackage.LINK_FEATURE_COUNT + 0;
+	int LINK__ALIAS = OCCIPackage.LINK_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Link</em>' class.
@@ -691,7 +691,7 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DOCKER_LINK_FEATURE_COUNT = OCCIPackage.LINK_FEATURE_COUNT + 1;
+	int LINK_FEATURE_COUNT = OCCIPackage.LINK_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Link</em>' class.
@@ -700,7 +700,7 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DOCKER_LINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 0;
+	int LINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.docker.impl.VolumesfromImpl <em>Volumesfrom</em>}' class.
@@ -3619,25 +3619,25 @@ public interface DockerPackage extends EPackage {
 	EOperation getContainer__Kill__String();
 
 	/**
-	 * Returns the meta object for class '{@link org.occiware.clouddesigner.occi.docker.DockerLink <em>Link</em>}'.
+	 * Returns the meta object for class '{@link org.occiware.clouddesigner.occi.docker.Link <em>Link</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Link</em>'.
-	 * @see org.occiware.clouddesigner.occi.docker.DockerLink
+	 * @see org.occiware.clouddesigner.occi.docker.Link
 	 * @generated
 	 */
-	EClass getDockerLink();
+	EClass getLink();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.DockerLink#getAlias <em>Alias</em>}'.
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Link#getAlias <em>Alias</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Alias</em>'.
-	 * @see org.occiware.clouddesigner.occi.docker.DockerLink#getAlias()
-	 * @see #getDockerLink()
+	 * @see org.occiware.clouddesigner.occi.docker.Link#getAlias()
+	 * @see #getLink()
 	 * @generated
 	 */
-	EAttribute getDockerLink_Alias();
+	EAttribute getLink_Alias();
 
 	/**
 	 * Returns the meta object for class '{@link org.occiware.clouddesigner.occi.docker.Volumesfrom <em>Volumesfrom</em>}'.
@@ -4221,14 +4221,14 @@ public interface DockerPackage extends EPackage {
 		EOperation CONTAINER___KILL__STRING = eINSTANCE.getContainer__Kill__String();
 
 		/**
-		 * The meta object literal for the '{@link org.occiware.clouddesigner.occi.docker.impl.DockerLinkImpl <em>Link</em>}' class.
+		 * The meta object literal for the '{@link org.occiware.clouddesigner.occi.docker.impl.LinkImpl <em>Link</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.occiware.clouddesigner.occi.docker.impl.DockerLinkImpl
-		 * @see org.occiware.clouddesigner.occi.docker.impl.DockerPackageImpl#getDockerLink()
+		 * @see org.occiware.clouddesigner.occi.docker.impl.LinkImpl
+		 * @see org.occiware.clouddesigner.occi.docker.impl.DockerPackageImpl#getLink()
 		 * @generated
 		 */
-		EClass DOCKER_LINK = eINSTANCE.getDockerLink();
+		EClass LINK = eINSTANCE.getLink();
 
 		/**
 		 * The meta object literal for the '<em><b>Alias</b></em>' attribute feature.
@@ -4236,7 +4236,7 @@ public interface DockerPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute DOCKER_LINK__ALIAS = eINSTANCE.getDockerLink_Alias();
+		EAttribute LINK__ALIAS = eINSTANCE.getLink_Alias();
 
 		/**
 		 * The meta object literal for the '{@link org.occiware.clouddesigner.occi.docker.impl.VolumesfromImpl <em>Volumesfrom</em>}' class.

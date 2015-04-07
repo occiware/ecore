@@ -9,7 +9,7 @@
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <!-- @generated Docker -->
       <factory
-            uri="http://schemas.ogf.org/occi/docker"
+            uri="http://occiware.org/docker"
             class="org.occiware.clouddesigner.occi.docker.provider.DockerItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider

@@ -8,10 +8,8 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.occiware.clouddesigner.OCCI.impl.LinkImpl;
-
-import org.occiware.clouddesigner.occi.docker.DockerLink;
 import org.occiware.clouddesigner.occi.docker.DockerPackage;
+import org.occiware.clouddesigner.occi.docker.Link;
 
 /**
  * <!-- begin-user-doc -->
@@ -20,13 +18,13 @@ import org.occiware.clouddesigner.occi.docker.DockerPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.DockerLinkImpl#getAlias <em>Alias</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.LinkImpl#getAlias <em>Alias</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class DockerLinkImpl extends LinkImpl implements DockerLink {
+public class LinkImpl extends org.occiware.clouddesigner.OCCI.impl.LinkImpl implements Link {
 	/**
 	 * The default value of the '{@link #getAlias() <em>Alias</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -52,7 +50,7 @@ public class DockerLinkImpl extends LinkImpl implements DockerLink {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected DockerLinkImpl() {
+	protected LinkImpl() {
 		super();
 	}
 
@@ -63,7 +61,7 @@ public class DockerLinkImpl extends LinkImpl implements DockerLink {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return DockerPackage.Literals.DOCKER_LINK;
+		return DockerPackage.Literals.LINK;
 	}
 
 	/**
@@ -84,7 +82,7 @@ public class DockerLinkImpl extends LinkImpl implements DockerLink {
 		String oldAlias = alias;
 		alias = newAlias;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.DOCKER_LINK__ALIAS, oldAlias, alias));
+			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.LINK__ALIAS, oldAlias, alias));
 	}
 
 	/**
@@ -95,7 +93,7 @@ public class DockerLinkImpl extends LinkImpl implements DockerLink {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case DockerPackage.DOCKER_LINK__ALIAS:
+			case DockerPackage.LINK__ALIAS:
 				return getAlias();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -109,7 +107,7 @@ public class DockerLinkImpl extends LinkImpl implements DockerLink {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case DockerPackage.DOCKER_LINK__ALIAS:
+			case DockerPackage.LINK__ALIAS:
 				setAlias((String)newValue);
 				return;
 		}
@@ -124,7 +122,7 @@ public class DockerLinkImpl extends LinkImpl implements DockerLink {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case DockerPackage.DOCKER_LINK__ALIAS:
+			case DockerPackage.LINK__ALIAS:
 				setAlias(ALIAS_EDEFAULT);
 				return;
 		}
@@ -139,7 +137,7 @@ public class DockerLinkImpl extends LinkImpl implements DockerLink {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case DockerPackage.DOCKER_LINK__ALIAS:
+			case DockerPackage.LINK__ALIAS:
 				return ALIAS_EDEFAULT == null ? alias != null : !ALIAS_EDEFAULT.equals(alias);
 		}
 		return super.eIsSet(featureID);
@@ -161,4 +159,4 @@ public class DockerLinkImpl extends LinkImpl implements DockerLink {
 		return result.toString();
 	}
 
-} //DockerLinkImpl
+} //LinkImpl

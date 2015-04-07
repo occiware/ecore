@@ -2,7 +2,6 @@
  */
 package org.occiware.clouddesigner.occi.docker;
 
-import org.occiware.clouddesigner.OCCI.Link;
 
 /**
  * <!-- begin-user-doc -->
@@ -12,15 +11,15 @@ import org.occiware.clouddesigner.OCCI.Link;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.occiware.clouddesigner.occi.docker.DockerLink#getAlias <em>Alias</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.Link#getAlias <em>Alias</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getDockerLink()
+ * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getLink()
  * @model
  * @generated
  */
-public interface DockerLink extends Link {
+public interface Link extends org.occiware.clouddesigner.OCCI.Link {
 	/**
 	 * Returns the value of the '<em><b>Alias</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -31,14 +30,14 @@ public interface DockerLink extends Link {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Alias</em>' attribute.
 	 * @see #setAlias(String)
-	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getDockerLink_Alias()
+	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getLink_Alias()
 	 * @model dataType="org.occiware.clouddesigner.OCCI.String"
 	 * @generated
 	 */
 	String getAlias();
 
 	/**
-	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.docker.DockerLink#getAlias <em>Alias</em>}' attribute.
+	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.docker.Link#getAlias <em>Alias</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Alias</em>' attribute.
@@ -47,4 +46,4 @@ public interface DockerLink extends Link {
 	 */
 	void setAlias(String value);
 
-} // DockerLink
+} // Link

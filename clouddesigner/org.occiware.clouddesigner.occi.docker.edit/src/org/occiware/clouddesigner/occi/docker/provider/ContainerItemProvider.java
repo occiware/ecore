@@ -1026,7 +1026,7 @@ public class ContainerItemProvider extends ComputeItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(OCCIPackage.Literals.RESOURCE__LINKS,
-				 DockerFactory.eINSTANCE.createDockerLink()));
+				 DockerFactory.eINSTANCE.createLink()));
 
 		newChildDescriptors.add
 			(createChildParameter

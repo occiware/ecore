@@ -173,7 +173,7 @@ public interface Compute extends Resource {
 	 * @see org.occiware.clouddesigner.occi.infrastructure.ComputeStatus
 	 * @see #setState(ComputeStatus)
 	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getCompute_State()
-	 * @model default="inactive"
+	 * @model default="inactive" required="true"
 	 * @generated
 	 */
 	ComputeStatus getState();
@@ -200,7 +200,7 @@ public interface Compute extends Resource {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model
+	 * @model methodRequired="true"
 	 * @generated
 	 */
 	void stop(StopMethod method);
@@ -208,7 +208,7 @@ public interface Compute extends Resource {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model
+	 * @model methodRequired="true"
 	 * @generated
 	 */
 	void restart(RestartMethod method);
@@ -216,7 +216,7 @@ public interface Compute extends Resource {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model
+	 * @model methodRequired="true"
 	 * @generated
 	 */
 	void suspend(SuspendMethod method);

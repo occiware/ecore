@@ -155,7 +155,7 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String COMMAND_EDEFAULT = "";
+	protected static final String COMMAND_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getCommand() <em>Command</em>}' attribute.
@@ -515,7 +515,7 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String RESTART_EDEFAULT = "";
+	protected static final String RESTART_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getRestart() <em>Restart</em>}' attribute.
@@ -775,7 +775,7 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String CPUSET_EDEFAULT = "";
+	protected static final String CPUSET_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getCpuset() <em>Cpuset</em>}' attribute.

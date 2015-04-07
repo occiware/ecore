@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ASCII"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="docker" nsURI="http://schemas.ogf.org/occi/docker" nsPrefix="docker">
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="docker" nsURI="http://occiware.org/docker" nsPrefix="docker">
   <eClassifiers xsi:type="ecore:EEnum" name="Mode">
     <eLiterals name="read_write" literal="read_write"/>
     <eLiterals name="read_only" value="1" literal="read_only"/>
@@ -11,14 +11,13 @@
     <eOperations name="pause"/>
     <eOperations name="unpause"/>
     <eOperations name="kill">
-      <eParameters name="signal" eType="ecore:EDataType ../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+      <eParameters name="signal" lowerBound="1" eType="ecore:EDataType ../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
     </eOperations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType ../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType ../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="containerid" eType="ecore:EDataType ../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="image" eType="ecore:EDataType ../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="build" eType="ecore:EDataType ../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="command" eType="ecore:EDataType ../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"
-        defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="command" eType="ecore:EDataType ../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="ports" eType="ecore:EDataType ../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="expose" eType="ecore:EDataType ../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="volumes" eType="ecore:EDataType ../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
@@ -37,11 +36,10 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="memory_swap" eType="ecore:EDataType ../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="privileged" eType="ecore:EDataType ../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean"
         defaultValueLiteral="false"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="restart" eType="ecore:EDataType ../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"
-        defaultValueLiteral=""/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="stdin_open" eType="ecore:EDataType ../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean"
-        defaultValueLiteral="false"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="interactive" eType="ecore:EDataType ../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="restart" eType="ecore:EDataType ../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="stdin_open" eType="ecore:EDataType ../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="interactive" lowerBound="1"
+        eType="ecore:EDataType ../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean"
         defaultValueLiteral="false"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="tty" eType="ecore:EDataType ../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean"
         defaultValueLiteral="false"/>
@@ -55,14 +53,13 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="security_opt" eType="ecore:EDataType ../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="device" eType="ecore:EDataType ../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="lxc_conf" eType="ecore:EDataType ../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cpuset" eType="ecore:EDataType ../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"
-        defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cpuset" eType="ecore:EDataType ../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="publish_all" eType="ecore:EDataType ../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean"
         defaultValueLiteral="false"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="read_only" eType="ecore:EDataType ../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean"
         defaultValueLiteral="false"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DockerLink" eSuperTypes="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Link">
+  <eClassifiers xsi:type="ecore:EClass" name="Link" eSuperTypes="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Link">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="alias" eType="ecore:EDataType ../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Volumesfrom" eSuperTypes="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Link">
@@ -70,7 +67,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Contains" eSuperTypes="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Link"/>
   <eClassifiers xsi:type="ecore:EClass" name="Machine" eSuperTypes="../../org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.ecore#//Compute">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType ../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType ../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Machine_Amazon_EC2" eSuperTypes="#//Machine"/>
   <eClassifiers xsi:type="ecore:EClass" name="Machine_Digital_Ocean" eSuperTypes="#//Machine"/>

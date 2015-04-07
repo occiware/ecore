@@ -69,7 +69,7 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Name()
-	 * @model dataType="org.occiware.clouddesigner.OCCI.String"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String" required="true"
 	 * @generated
 	 */
 	String getName();
@@ -164,7 +164,6 @@ public interface Container extends Compute {
 
 	/**
 	 * Returns the value of the '<em><b>Command</b></em>' attribute.
-	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Command</em>' attribute isn't clear,
@@ -174,7 +173,7 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Command</em>' attribute.
 	 * @see #setCommand(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Command()
-	 * @model default="" dataType="org.occiware.clouddesigner.OCCI.String"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String"
 	 * @generated
 	 */
 	String getCommand();
@@ -634,7 +633,6 @@ public interface Container extends Compute {
 
 	/**
 	 * Returns the value of the '<em><b>Restart</b></em>' attribute.
-	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Restart</em>' attribute isn't clear,
@@ -644,7 +642,7 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Restart</em>' attribute.
 	 * @see #setRestart(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Restart()
-	 * @model default="" dataType="org.occiware.clouddesigner.OCCI.String"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String"
 	 * @generated
 	 */
 	String getRestart();
@@ -661,7 +659,6 @@ public interface Container extends Compute {
 
 	/**
 	 * Returns the value of the '<em><b>Stdin open</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Stdin open</em>' attribute isn't clear,
@@ -671,7 +668,7 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Stdin open</em>' attribute.
 	 * @see #setStdin_open(boolean)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Stdin_open()
-	 * @model default="false" dataType="org.occiware.clouddesigner.OCCI.Boolean"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.Boolean"
 	 * @generated
 	 */
 	boolean isStdin_open();
@@ -698,7 +695,7 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Interactive</em>' attribute.
 	 * @see #setInteractive(boolean)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Interactive()
-	 * @model default="false" dataType="org.occiware.clouddesigner.OCCI.Boolean"
+	 * @model default="false" dataType="org.occiware.clouddesigner.OCCI.Boolean" required="true"
 	 * @generated
 	 */
 	boolean isInteractive();
@@ -977,7 +974,6 @@ public interface Container extends Compute {
 
 	/**
 	 * Returns the value of the '<em><b>Cpuset</b></em>' attribute.
-	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Cpuset</em>' attribute isn't clear,
@@ -987,7 +983,7 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Cpuset</em>' attribute.
 	 * @see #setCpuset(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Cpuset()
-	 * @model default="" dataType="org.occiware.clouddesigner.OCCI.String"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String"
 	 * @generated
 	 */
 	String getCpuset();
@@ -1091,7 +1087,7 @@ public interface Container extends Compute {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model signalDataType="org.occiware.clouddesigner.OCCI.String"
+	 * @model signalDataType="org.occiware.clouddesigner.OCCI.String" signalRequired="true"
 	 * @generated
 	 */
 	void kill(String signal);

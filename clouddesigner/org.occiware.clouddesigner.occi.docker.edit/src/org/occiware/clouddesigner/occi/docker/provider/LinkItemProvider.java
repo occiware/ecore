@@ -16,25 +16,23 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import org.occiware.clouddesigner.OCCI.provider.LinkItemProvider;
-
-import org.occiware.clouddesigner.occi.docker.DockerLink;
 import org.occiware.clouddesigner.occi.docker.DockerPackage;
+import org.occiware.clouddesigner.occi.docker.Link;
 
 /**
- * This is the item provider adapter for a {@link org.occiware.clouddesigner.occi.docker.DockerLink} object.
+ * This is the item provider adapter for a {@link org.occiware.clouddesigner.occi.docker.Link} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class DockerLinkItemProvider extends LinkItemProvider {
+public class LinkItemProvider extends org.occiware.clouddesigner.OCCI.provider.LinkItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DockerLinkItemProvider(AdapterFactory adapterFactory) {
+	public LinkItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -65,9 +63,9 @@ public class DockerLinkItemProvider extends LinkItemProvider {
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_DockerLink_alias_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_DockerLink_alias_feature", "_UI_DockerLink_type"),
-				 DockerPackage.Literals.DOCKER_LINK__ALIAS,
+				 getString("_UI_Link_alias_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Link_alias_feature", "_UI_Link_type"),
+				 DockerPackage.Literals.LINK__ALIAS,
 				 true,
 				 false,
 				 false,
@@ -77,14 +75,14 @@ public class DockerLinkItemProvider extends LinkItemProvider {
 	}
 
 	/**
-	 * This returns DockerLink.gif.
+	 * This returns Link.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/DockerLink"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Link"));
 	}
 
 	/**
@@ -95,10 +93,10 @@ public class DockerLinkItemProvider extends LinkItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((DockerLink)object).getId();
+		String label = ((Link)object).getId();
 		return label == null || label.length() == 0 ?
-			getString("_UI_DockerLink_type") :
-			getString("_UI_DockerLink_type") + " " + label;
+			getString("_UI_Link_type") :
+			getString("_UI_Link_type") + " " + label;
 	}
 	
 
@@ -113,8 +111,8 @@ public class DockerLinkItemProvider extends LinkItemProvider {
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(DockerLink.class)) {
-			case DockerPackage.DOCKER_LINK__ALIAS:
+		switch (notification.getFeatureID(Link.class)) {
+			case DockerPackage.LINK__ALIAS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

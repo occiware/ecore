@@ -59,8 +59,8 @@
         <genParameters ecoreParameter="Docker.ecore#//Container/kill/signal"/>
       </genOperations>
     </genClasses>
-    <genClasses ecoreClass="Docker.ecore#//DockerLink">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//DockerLink/alias"/>
+    <genClasses ecoreClass="Docker.ecore#//Link">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Link/alias"/>
     </genClasses>
     <genClasses ecoreClass="Docker.ecore#//Volumesfrom">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Volumesfrom/mode"/>

@@ -81,18 +81,18 @@ public class DockerSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case DockerPackage.DOCKER_LINK: {
-				DockerLink dockerLink = (DockerLink)theEObject;
-				T result = caseDockerLink(dockerLink);
-				if (result == null) result = caseLink(dockerLink);
-				if (result == null) result = caseEntity(dockerLink);
+			case DockerPackage.LINK: {
+				org.occiware.clouddesigner.occi.docker.Link link = (org.occiware.clouddesigner.occi.docker.Link)theEObject;
+				T result = caseLink(link);
+				if (result == null) result = caseOCCI_Link(link);
+				if (result == null) result = caseEntity(link);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case DockerPackage.VOLUMESFROM: {
 				Volumesfrom volumesfrom = (Volumesfrom)theEObject;
 				T result = caseVolumesfrom(volumesfrom);
-				if (result == null) result = caseLink(volumesfrom);
+				if (result == null) result = caseOCCI_Link(volumesfrom);
 				if (result == null) result = caseEntity(volumesfrom);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -100,7 +100,7 @@ public class DockerSwitch<T> extends Switch<T> {
 			case DockerPackage.CONTAINS: {
 				Contains contains = (Contains)theEObject;
 				T result = caseContains(contains);
-				if (result == null) result = caseLink(contains);
+				if (result == null) result = caseOCCI_Link(contains);
 				if (result == null) result = caseEntity(contains);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -264,7 +264,7 @@ public class DockerSwitch<T> extends Switch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseDockerLink(DockerLink object) {
+	public T caseLink(org.occiware.clouddesigner.occi.docker.Link object) {
 		return null;
 	}
 
@@ -549,7 +549,7 @@ public class DockerSwitch<T> extends Switch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseLink(Link object) {
+	public T caseOCCI_Link(Link object) {
 		return null;
 	}
 

@@ -58,7 +58,7 @@ public class DockerFactoryImpl extends EFactoryImpl implements DockerFactory {
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case DockerPackage.CONTAINER: return createContainer();
-			case DockerPackage.DOCKER_LINK: return createDockerLink();
+			case DockerPackage.LINK: return createLink();
 			case DockerPackage.VOLUMESFROM: return createVolumesfrom();
 			case DockerPackage.CONTAINS: return createContains();
 			case DockerPackage.MACHINE: return createMachine();
@@ -124,9 +124,9 @@ public class DockerFactoryImpl extends EFactoryImpl implements DockerFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DockerLink createDockerLink() {
-		DockerLinkImpl dockerLink = new DockerLinkImpl();
-		return dockerLink;
+	public Link createLink() {
+		LinkImpl link = new LinkImpl();
+		return link;
 	}
 
 	/**

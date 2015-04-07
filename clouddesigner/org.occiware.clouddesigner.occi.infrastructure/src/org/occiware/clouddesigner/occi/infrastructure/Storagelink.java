@@ -34,7 +34,7 @@ public interface Storagelink extends Link {
 	 * @return the value of the '<em>Deviceid</em>' attribute.
 	 * @see #setDeviceid(String)
 	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getStoragelink_Deviceid()
-	 * @model dataType="org.occiware.clouddesigner.OCCI.String"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String" required="true"
 	 * @generated
 	 */
 	String getDeviceid();
@@ -88,7 +88,7 @@ public interface Storagelink extends Link {
 	 * @see org.occiware.clouddesigner.occi.infrastructure.StorageLinkStatus
 	 * @see #setState(StorageLinkStatus)
 	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getStoragelink_State()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	StorageLinkStatus getState();

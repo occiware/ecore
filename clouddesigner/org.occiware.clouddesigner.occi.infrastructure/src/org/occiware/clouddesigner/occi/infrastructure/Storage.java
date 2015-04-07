@@ -33,7 +33,7 @@ public interface Storage extends Resource {
 	 * @return the value of the '<em>Size</em>' attribute.
 	 * @see #setSize(float)
 	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getStorage_Size()
-	 * @model dataType="org.occiware.clouddesigner.occi.infrastructure.GiB"
+	 * @model dataType="org.occiware.clouddesigner.occi.infrastructure.GiB" required="true"
 	 * @generated
 	 */
 	float getSize();
@@ -61,7 +61,7 @@ public interface Storage extends Resource {
 	 * @see org.occiware.clouddesigner.occi.infrastructure.StorageStatus
 	 * @see #setState(StorageStatus)
 	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getStorage_State()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	StorageStatus getState();
@@ -112,7 +112,7 @@ public interface Storage extends Resource {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model sizeDataType="org.occiware.clouddesigner.occi.infrastructure.GiB"
+	 * @model sizeDataType="org.occiware.clouddesigner.occi.infrastructure.GiB" sizeRequired="true"
 	 * @generated
 	 */
 	void resize(float size);

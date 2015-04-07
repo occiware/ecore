@@ -34,7 +34,7 @@ public interface Networkinterface extends Link {
 	 * @return the value of the '<em>Interface</em>' attribute.
 	 * @see #setInterface(String)
 	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getNetworkinterface_Interface()
-	 * @model dataType="org.occiware.clouddesigner.OCCI.String"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String" required="true"
 	 * @generated
 	 */
 	String getInterface();
@@ -51,7 +51,6 @@ public interface Networkinterface extends Link {
 
 	/**
 	 * Returns the value of the '<em><b>Mac</b></em>' attribute.
-	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Mac</em>' attribute isn't clear,
@@ -61,7 +60,7 @@ public interface Networkinterface extends Link {
 	 * @return the value of the '<em>Mac</em>' attribute.
 	 * @see #setMac(String)
 	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getNetworkinterface_Mac()
-	 * @model default="" dataType="org.occiware.clouddesigner.OCCI.String"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String" required="true"
 	 * @generated
 	 */
 	String getMac();
@@ -89,7 +88,7 @@ public interface Networkinterface extends Link {
 	 * @see org.occiware.clouddesigner.occi.infrastructure.NetworkInterfaceStatus
 	 * @see #setState(NetworkInterfaceStatus)
 	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getNetworkinterface_State()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	NetworkInterfaceStatus getState();

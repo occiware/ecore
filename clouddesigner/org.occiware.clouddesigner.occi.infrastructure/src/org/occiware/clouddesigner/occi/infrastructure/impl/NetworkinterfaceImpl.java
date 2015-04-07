@@ -58,7 +58,7 @@ public class NetworkinterfaceImpl extends LinkImpl implements Networkinterface {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String MAC_EDEFAULT = "";
+	protected static final String MAC_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getMac() <em>Mac</em>}' attribute.

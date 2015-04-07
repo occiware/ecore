@@ -78,8 +78,8 @@ public class DockerAdapterFactory extends AdapterFactoryImpl {
 				return createContainerAdapter();
 			}
 			@Override
-			public Adapter caseDockerLink(DockerLink object) {
-				return createDockerLinkAdapter();
+			public Adapter caseLink(org.occiware.clouddesigner.occi.docker.Link object) {
+				return createLinkAdapter();
 			}
 			@Override
 			public Adapter caseVolumesfrom(Volumesfrom object) {
@@ -154,8 +154,8 @@ public class DockerAdapterFactory extends AdapterFactoryImpl {
 				return createComputeAdapter();
 			}
 			@Override
-			public Adapter caseLink(Link object) {
-				return createLinkAdapter();
+			public Adapter caseOCCI_Link(Link object) {
+				return createOCCI_LinkAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -188,20 +188,6 @@ public class DockerAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createContainerAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.occiware.clouddesigner.occi.docker.DockerLink <em>Link</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.occiware.clouddesigner.occi.docker.DockerLink
-	 * @generated
-	 */
-	public Adapter createDockerLinkAdapter() {
 		return null;
 	}
 
@@ -465,6 +451,20 @@ public class DockerAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
 	 * @see org.occiware.clouddesigner.OCCI.Link
+	 * @generated
+	 */
+	public Adapter createOCCI_LinkAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.occiware.clouddesigner.occi.docker.Link <em>Link</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.occiware.clouddesigner.occi.docker.Link
 	 * @generated
 	 */
 	public Adapter createLinkAdapter() {

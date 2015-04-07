@@ -847,7 +847,7 @@ public class InfrastructurePackageImpl extends EPackageImpl implements Infrastru
 		initEClass(networkEClass, Network.class, "Network", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getNetwork_Vlan(), this.getInteger4095(), "vlan", null, 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getNetwork_Label(), this.getToken(), "label", null, 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getNetwork_State(), this.getComputeStatus(), "state", null, 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNetwork_State(), this.getComputeStatus(), "state", null, 1, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getNetwork__Up(), null, "up", 0, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -859,22 +859,22 @@ public class InfrastructurePackageImpl extends EPackageImpl implements Infrastru
 		initEAttribute(getCompute_Hostname(), theOCCIPackage.getString(), "hostname", null, 0, 1, Compute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCompute_Speed(), this.getGHz(), "speed", null, 0, 1, Compute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCompute_Memory(), this.getGiB(), "memory", null, 0, 1, Compute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCompute_State(), this.getComputeStatus(), "state", "inactive", 0, 1, Compute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCompute_State(), this.getComputeStatus(), "state", "inactive", 1, 1, Compute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getCompute__Start(), null, "start", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		EOperation op = initEOperation(getCompute__Stop__StopMethod(), null, "stop", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getStopMethod(), "method", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getStopMethod(), "method", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = initEOperation(getCompute__Restart__RestartMethod(), null, "restart", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getRestartMethod(), "method", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getRestartMethod(), "method", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = initEOperation(getCompute__Suspend__SuspendMethod(), null, "suspend", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getSuspendMethod(), "method", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getSuspendMethod(), "method", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(storageEClass, Storage.class, "Storage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getStorage_Size(), this.getGiB(), "size", null, 0, 1, Storage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getStorage_State(), this.getStorageStatus(), "state", null, 0, 1, Storage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStorage_Size(), this.getGiB(), "size", null, 1, 1, Storage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStorage_State(), this.getStorageStatus(), "state", null, 1, 1, Storage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getStorage__Online(), null, "online", 0, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -885,17 +885,17 @@ public class InfrastructurePackageImpl extends EPackageImpl implements Infrastru
 		initEOperation(getStorage__Snapshot(), null, "snapshot", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = initEOperation(getStorage__Resize__float(), null, "resize", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getGiB(), "size", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getGiB(), "size", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(storagelinkEClass, Storagelink.class, "Storagelink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getStoragelink_Deviceid(), theOCCIPackage.getString(), "deviceid", null, 0, 1, Storagelink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStoragelink_Deviceid(), theOCCIPackage.getString(), "deviceid", null, 1, 1, Storagelink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getStoragelink_Mountpoint(), theOCCIPackage.getString(), "mountpoint", null, 0, 1, Storagelink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getStoragelink_State(), this.getStorageLinkStatus(), "state", null, 0, 1, Storagelink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStoragelink_State(), this.getStorageLinkStatus(), "state", null, 1, 1, Storagelink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(networkinterfaceEClass, Networkinterface.class, "Networkinterface", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getNetworkinterface_Interface(), theOCCIPackage.getString(), "interface", null, 0, 1, Networkinterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getNetworkinterface_Mac(), theOCCIPackage.getString(), "mac", "", 0, 1, Networkinterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getNetworkinterface_State(), this.getNetworkInterfaceStatus(), "state", null, 0, 1, Networkinterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNetworkinterface_Interface(), theOCCIPackage.getString(), "interface", null, 1, 1, Networkinterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNetworkinterface_Mac(), theOCCIPackage.getString(), "mac", null, 1, 1, Networkinterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNetworkinterface_State(), this.getNetworkInterfaceStatus(), "state", null, 1, 1, Networkinterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(suspendMethodEEnum, SuspendMethod.class, "SuspendMethod");

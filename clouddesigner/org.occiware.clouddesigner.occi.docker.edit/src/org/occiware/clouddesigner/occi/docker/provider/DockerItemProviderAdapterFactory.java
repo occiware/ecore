@@ -95,26 +95,26 @@ public class DockerItemProviderAdapterFactory extends DockerAdapterFactory imple
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.occiware.clouddesigner.occi.docker.DockerLink} instances.
+	 * This keeps track of the one adapter used for all {@link org.occiware.clouddesigner.occi.docker.Link} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected DockerLinkItemProvider dockerLinkItemProvider;
+	protected LinkItemProvider linkItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.occiware.clouddesigner.occi.docker.DockerLink}.
+	 * This creates an adapter for a {@link org.occiware.clouddesigner.occi.docker.Link}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createDockerLinkAdapter() {
-		if (dockerLinkItemProvider == null) {
-			dockerLinkItemProvider = new DockerLinkItemProvider(this);
+	public Adapter createLinkAdapter() {
+		if (linkItemProvider == null) {
+			linkItemProvider = new LinkItemProvider(this);
 		}
 
-		return dockerLinkItemProvider;
+		return linkItemProvider;
 	}
 
 	/**
@@ -562,7 +562,7 @@ public class DockerItemProviderAdapterFactory extends DockerAdapterFactory imple
 	 */
 	public void dispose() {
 		if (containerItemProvider != null) containerItemProvider.dispose();
-		if (dockerLinkItemProvider != null) dockerLinkItemProvider.dispose();
+		if (linkItemProvider != null) linkItemProvider.dispose();
 		if (volumesfromItemProvider != null) volumesfromItemProvider.dispose();
 		if (containsItemProvider != null) containsItemProvider.dispose();
 		if (machineItemProvider != null) machineItemProvider.dispose();

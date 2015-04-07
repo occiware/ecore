@@ -37,7 +37,7 @@ public interface DockerFactory extends EFactory {
 	 * @return a new object of class '<em>Link</em>'.
 	 * @generated
 	 */
-	DockerLink createDockerLink();
+	Link createLink();
 
 	/**
 	 * Returns a new object of class '<em>Volumesfrom</em>'.

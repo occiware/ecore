@@ -88,7 +88,7 @@ public interface Network extends Resource {
 	 * @see org.occiware.clouddesigner.occi.infrastructure.ComputeStatus
 	 * @see #setState(ComputeStatus)
 	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getNetwork_State()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	ComputeStatus getState();

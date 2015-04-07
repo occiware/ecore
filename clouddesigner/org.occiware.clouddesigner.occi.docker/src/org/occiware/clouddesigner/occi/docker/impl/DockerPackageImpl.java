@@ -7,15 +7,12 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
 import org.occiware.clouddesigner.OCCI.OCCIPackage;
-
 import org.occiware.clouddesigner.occi.docker.Contains;
 import org.occiware.clouddesigner.occi.docker.DockerFactory;
-import org.occiware.clouddesigner.occi.docker.DockerLink;
 import org.occiware.clouddesigner.occi.docker.DockerPackage;
+import org.occiware.clouddesigner.occi.docker.Link;
 import org.occiware.clouddesigner.occi.docker.Machine;
 import org.occiware.clouddesigner.occi.docker.Machine_Amazon_EC2;
 import org.occiware.clouddesigner.occi.docker.Machine_Digital_Ocean;
@@ -31,7 +28,6 @@ import org.occiware.clouddesigner.occi.docker.Machine_VMware_vSphere;
 import org.occiware.clouddesigner.occi.docker.Machine_VirtualBox;
 import org.occiware.clouddesigner.occi.docker.Mode;
 import org.occiware.clouddesigner.occi.docker.Volumesfrom;
-
 import org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage;
 
 /**
@@ -53,7 +49,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass dockerLinkEClass = null;
+	private EClass linkEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -632,8 +628,8 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getDockerLink() {
-		return dockerLinkEClass;
+	public EClass getLink() {
+		return linkEClass;
 	}
 
 	/**
@@ -641,8 +637,8 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getDockerLink_Alias() {
-		return (EAttribute)dockerLinkEClass.getEStructuralFeatures().get(0);
+	public EAttribute getLink_Alias() {
+		return (EAttribute)linkEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -898,8 +894,8 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		createEOperation(containerEClass, CONTAINER___UNPAUSE);
 		createEOperation(containerEClass, CONTAINER___KILL__STRING);
 
-		dockerLinkEClass = createEClass(DOCKER_LINK);
-		createEAttribute(dockerLinkEClass, DOCKER_LINK__ALIAS);
+		linkEClass = createEClass(LINK);
+		createEAttribute(linkEClass, LINK__ALIAS);
 
 		volumesfromEClass = createEClass(VOLUMESFROM);
 		createEAttribute(volumesfromEClass, VOLUMESFROM__MODE);
@@ -972,7 +968,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 
 		// Add supertypes to classes
 		containerEClass.getESuperTypes().add(theInfrastructurePackage.getCompute());
-		dockerLinkEClass.getESuperTypes().add(theOCCIPackage.getLink());
+		linkEClass.getESuperTypes().add(theOCCIPackage.getLink());
 		volumesfromEClass.getESuperTypes().add(theOCCIPackage.getLink());
 		containsEClass.getESuperTypes().add(theOCCIPackage.getLink());
 		machineEClass.getESuperTypes().add(theInfrastructurePackage.getCompute());
@@ -991,11 +987,11 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(containerEClass, org.occiware.clouddesigner.occi.docker.Container.class, "Container", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getContainer_Name(), theOCCIPackage.getString(), "name", null, 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getContainer_Name(), theOCCIPackage.getString(), "name", null, 1, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_Containerid(), theOCCIPackage.getString(), "containerid", null, 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_Image(), theOCCIPackage.getString(), "image", null, 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_Build(), theOCCIPackage.getString(), "build", null, 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getContainer_Command(), theOCCIPackage.getString(), "command", "", 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getContainer_Command(), theOCCIPackage.getString(), "command", null, 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_Ports(), theOCCIPackage.getString(), "ports", null, 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_Expose(), theOCCIPackage.getString(), "expose", null, 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_Volumes(), theOCCIPackage.getString(), "volumes", null, 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1013,9 +1009,9 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		initEAttribute(getContainer_Mem_limit(), theOCCIPackage.getNumber(), "mem_limit", null, 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_Memory_swap(), theOCCIPackage.getNumber(), "memory_swap", null, 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_Privileged(), theOCCIPackage.getBoolean(), "privileged", "false", 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getContainer_Restart(), theOCCIPackage.getString(), "restart", "", 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getContainer_Stdin_open(), theOCCIPackage.getBoolean(), "stdin_open", "false", 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getContainer_Interactive(), theOCCIPackage.getBoolean(), "interactive", "false", 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getContainer_Restart(), theOCCIPackage.getString(), "restart", null, 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getContainer_Stdin_open(), theOCCIPackage.getBoolean(), "stdin_open", null, 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getContainer_Interactive(), theOCCIPackage.getBoolean(), "interactive", "false", 1, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_Tty(), theOCCIPackage.getBoolean(), "tty", "false", 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_Cpu_shares(), theOCCIPackage.getNumber(), "cpu_shares", "0", 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_Pid(), theOCCIPackage.getString(), "pid", null, 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1026,7 +1022,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		initEAttribute(getContainer_Security_opt(), theOCCIPackage.getString(), "security_opt", null, 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_Device(), theOCCIPackage.getString(), "device", null, 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_Lxc_conf(), theOCCIPackage.getString(), "lxc_conf", null, 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getContainer_Cpuset(), theOCCIPackage.getString(), "cpuset", "", 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getContainer_Cpuset(), theOCCIPackage.getString(), "cpuset", null, 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_Publish_all(), theOCCIPackage.getBoolean(), "publish_all", "false", 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_Read_only(), theOCCIPackage.getBoolean(), "read_only", "false", 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1039,10 +1035,10 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		initEOperation(getContainer__Unpause(), null, "unpause", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		EOperation op = initEOperation(getContainer__Kill__String(), null, "kill", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theOCCIPackage.getString(), "signal", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "signal", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(dockerLinkEClass, DockerLink.class, "DockerLink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDockerLink_Alias(), theOCCIPackage.getString(), "alias", null, 0, 1, DockerLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(linkEClass, Link.class, "Link", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLink_Alias(), theOCCIPackage.getString(), "alias", null, 0, 1, Link.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(volumesfromEClass, Volumesfrom.class, "Volumesfrom", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getVolumesfrom_Mode(), this.getMode(), "mode", "read_write", 0, 1, Volumesfrom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1050,7 +1046,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		initEClass(containsEClass, Contains.class, "Contains", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(machineEClass, Machine.class, "Machine", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getMachine_Name(), theOCCIPackage.getString(), "name", null, 0, 1, Machine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_Name(), theOCCIPackage.getString(), "name", null, 1, 1, Machine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(machine_Amazon_EC2EClass, Machine_Amazon_EC2.class, "Machine_Amazon_EC2", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

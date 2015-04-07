@@ -138,7 +138,7 @@ public class MachineItemProvider extends ComputeItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(OCCIPackage.Literals.RESOURCE__LINKS,
-				 DockerFactory.eINSTANCE.createDockerLink()));
+				 DockerFactory.eINSTANCE.createLink()));
 
 		newChildDescriptors.add
 			(createChildParameter
