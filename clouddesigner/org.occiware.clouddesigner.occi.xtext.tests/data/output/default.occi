@@ -1,0 +1,13 @@
+Extension "OCCI Core" {
+	scheme "http://schemas.ogf.org/occi/core#" kinds {
+		Kind entity {
+			scheme "http://schemas.ogf.org/occi/core#" title "Entity type"
+		},
+		Kind resource {
+			scheme "http://schemas.ogf.org/occi/core#" title Resource
+		},
+		Kind link {
+			scheme "http://schemas.ogf.org/occi/core#" title Link
+		}
+	}
+}

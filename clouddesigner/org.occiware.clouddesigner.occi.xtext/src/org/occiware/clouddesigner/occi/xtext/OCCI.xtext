@@ -1,0 +1,99 @@
+grammar org.occiware.clouddesigner.occi.xtext.OCCI with org.eclipse.xtext.common.Terminals
+import "http://schemas.ogf.org/occi" 
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+
+Extension returns Extension:
+	'Extension' 
+	name=EString
+	'{'
+		'scheme' scheme=EString
+		('import' '(' ^import+=[Extension|EString] ( "," ^import+=[Extension|EString])* ')' )?
+		('kinds' '{' kinds+=Kind ( "," kinds+=Kind)* '}' )?
+		('mixins' '{' mixins+=Mixin ( "," mixins+=Mixin)* '}' )?
+//		('types' '{' types+=EDataType ( "," types+=EDataType)* '}' )?
+	'}';
+
+Kind returns Kind:
+	'Kind' 
+	term=EString
+	'{'
+		'scheme' scheme=EString
+		('title' title=EString)?
+		('parent' parent=[Kind|EString])?
+		('attributes' '{' attributes+=Attribute ( "," attributes+=Attribute)* '}' )?
+		('actions' '{' actions+=Action ( "," actions+=Action)* '}' )?
+	'}';
+
+Mixin returns Mixin:
+	'Mixin' 
+	term=EString
+	'{'
+		'scheme' scheme=EString
+		('title' title=EString)?
+//		('depends' '(' depends+=[Mixin|EString] ( "," depends+=[Mixin|EString])* ')' )?
+//		('applies' '(' applies+=[Kind|EString] ( "," applies+=[Kind|EString])* ')' )?
+		('attributes' '{' attributes+=Attribute ( "," attributes+=Attribute)* '}' )?
+		('actions' '{' actions+=Action ( "," actions+=Action)* '}' )?
+	'}';
+
+Attribute returns Attribute:
+	'Attribute' 
+	name=EString
+	'{'
+		('mutable' mutable=EBoolean)?
+		('required' required=EBoolean)?
+		('default' default=EString)?
+		('description' description=EString)?
+//		('type' type=[ecore::EDataType|EString])?
+	'}';
+
+Action returns Action:
+	'Action' 
+	term=EString
+	'{'
+		'scheme' scheme=EString
+		('title' title=EString)?
+		('attributes' '{' attributes+=Attribute ( "," attributes+=Attribute)* '}' )?
+	'}';
+
+EEnum returns ecore::EEnum:
+	{ecore::EEnum}
+	'EEnum'
+	name=EString
+	'{'
+		('instanceClassName' instanceClassName=EString)?
+		('instanceTypeName' instanceTypeName=EString)?
+		('serializable' serializable=EBoolean)?
+		('eLiterals' '{' eLiterals+=EEnumLiteral ( "," eLiterals+=EEnumLiteral)* '}' )?
+	'}';
+	
+EEnumLiteral returns ecore::EEnumLiteral:
+	{ecore::EEnumLiteral}
+	'EEnumLiteral'
+	name=EString
+	'{'
+		('value' value=EInt)?
+		('literal' literal=EString)?
+	'}';
+	
+EDataType_Impl returns ecore::EDataType:
+	{ecore::EDataType}
+	'EDataType'
+	name=EString
+	'{'
+		('instanceClassName' instanceClassName=EString)?
+		('instanceTypeName' instanceTypeName=EString)?
+		('serializable' serializable=EBoolean)?
+	'}';
+	
+EDataType returns ecore::EDataType:
+	EDataType_Impl | EEnum;
+
+EBoolean returns ecore::EBoolean:
+	'true' | 'false';
+
+EString returns ecore::EString:
+	STRING | ID;
+
+EInt returns ecore::EInt:
+	'-'? INT;
