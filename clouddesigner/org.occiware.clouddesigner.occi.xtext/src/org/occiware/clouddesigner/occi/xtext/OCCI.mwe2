@@ -18,6 +18,8 @@ Workflow {
 		registerGenModelFile = "platform:/resource/org.occiware.clouddesigner.occi/model/OCCI.genmodel"
 		registerGeneratedEPackage = "org.eclipse.emf.ecore.EcorePackage"
 		registerGenModelFile = "platform:/resource/org.eclipse.emf.ecore/model/Ecore.genmodel"
+		registerGeneratedEPackage = "org.eclipse.xtext.xbase.XbasePackage"
+    	registerGenModelFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xbase.genmodel"
 	}
 
 	component = DirectoryCleaner {

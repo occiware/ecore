@@ -3,9 +3,17 @@
  */
 package org.occiware.clouddesigner.occi.xtext;
 
-/**
- * Use this class to register components to be used at runtime / without the Equinox extension registry.
- */
-public class OCCIRuntimeModule extends org.occiware.clouddesigner.occi.xtext.AbstractOCCIRuntimeModule {
+import org.eclipse.xtext.naming.IQualifiedNameProvider;
+import org.occiware.clouddesigner.occi.xtext.scoping.NameProvider;
 
+/**
+ * Use this class to register components to be used at runtime / without the
+ * Equinox extension registry.
+ */
+public class OCCIRuntimeModule extends
+		org.occiware.clouddesigner.occi.xtext.AbstractOCCIRuntimeModule {
+	@Override
+	public Class<? extends IQualifiedNameProvider> bindIQualifiedNameProvider() {
+		return NameProvider.class;
+	}
 }
