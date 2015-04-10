@@ -1,4 +1,4 @@
-package org.occiware.clouddesigner.occi2ecore;
+package org.occiware.clouddesigner.occi2ecore.docker;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -47,8 +48,10 @@ public class ConvertDockerConfig {
 			Configuration dynamicConfiguration) {
 		Configuration res = OCCIFactory.eINSTANCE.createConfiguration();
 		for (Resource resource : dynamicConfiguration.getResources()) {
-			EClass mappedEClass = ConverterUtils.getMappedEClass(resource.getKind());
+			EClass mappedEClass = ConverterUtils.getMappedEClass(resource
+					.getKind());
 			Resource converted = (Resource) EcoreUtil.create(mappedEClass);
+			converted.setId(resource.getId());
 			for (AttributeState attrState : resource.getAttributes()) {
 				EAttribute attr = (EAttribute) mappedEClass
 						.getEStructuralFeature(ConverterUtils
@@ -61,7 +64,8 @@ public class ConvertDockerConfig {
 
 		for (Resource resource : dynamicConfiguration.getResources()) {
 			for (Link link : resource.getLinks()) {
-				EClass actualLinkType = ConverterUtils.getMappedEClass(link.getKind());
+				EClass actualLinkType = ConverterUtils.getMappedEClass(link
+						.getKind());
 				Link actualLink = (Link) EcoreUtil.create(actualLinkType);
 				actualLink.setId(link.getId());
 				Resource converted = traces.get(resource);
@@ -82,16 +86,22 @@ public class ConvertDockerConfig {
 	}
 
 	private void setValue(EObject element, EAttribute attr, String value) {
-		String type = attr.getEType().getInstanceClassName();
-		if ("java.lang.String".equals(type)) {
+		String typeName = attr.getEType().getInstanceClassName();
+		if ("java.lang.String".equals(typeName)) {
 			element.eSet(attr, value);
-		} else if ("java.lang.Float".equals(type) || "float".equals(type)) {
+		} else if ("java.lang.Float".equals(typeName)
+				|| "float".equals(typeName)) {
 			element.eSet(attr, Float.valueOf(value));
-		} else if ("int".equals(type)) {
+		} else if ("int".equals(typeName)) {
 			element.eSet(attr, Integer.valueOf(value));
-		} else if ("boolean".equals(type)) {
+		} else if ("boolean".equals(typeName)) {
 			element.eSet(attr, Boolean.valueOf(value));
-		}
+		} else if (attr.getEType() instanceof EEnum) {
+			element.eSet(attr, ((EEnum) attr.getEType())
+					.getEEnumLiteralByLiteral(String.valueOf(value))
+					.getInstance());
+		} else
+			throw new UnsupportedOperationException();
 	}
 
 }

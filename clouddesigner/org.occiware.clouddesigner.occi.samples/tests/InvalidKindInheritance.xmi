@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="ASCII"?>
-<OCCI:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:OCCI="http://schemas.ogf.org/occi" xsi:schemaLocation="http://schemas.ogf.org/occi http://schemas.ogf.org/occi" name="InvalidKindInheritance" scheme="scheme#">
-  <kinds term="A" scheme="scheme#" parent="//@kinds[term='C']"/>
-  <kinds term="B" scheme="scheme#" parent="//@kinds[term='A']"/>
-  <kinds term="C" scheme="scheme#" parent="//@kinds[term='B']"/>
-</OCCI:Extension>

@@ -1,4 +1,4 @@
-package org.occiware.clouddesigner.occi2ecore;
+package org.occiware.clouddesigner.occi2ecore.docker;
 
 import org.occiware.clouddesigner.OCCI.Action;
 import org.occiware.clouddesigner.OCCI.Attribute;

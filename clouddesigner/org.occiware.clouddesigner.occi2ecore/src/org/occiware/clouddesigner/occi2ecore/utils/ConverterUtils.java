@@ -6,7 +6,10 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
@@ -15,6 +18,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.occiware.clouddesigner.OCCI.Attribute;
 import org.occiware.clouddesigner.OCCI.Kind;
 
 public final class ConverterUtils {
@@ -78,5 +82,14 @@ public final class ConverterUtils {
 			uri = "http://schemas.ogf.org/occi";
 		}
 		return uri;
+	}
+
+	public static Collection<Attribute> getAllAttributes(Kind kind) {
+		List<Attribute> res = new ArrayList<Attribute>();
+		res.addAll(kind.getAttributes());
+		if (kind.getParent() != null) {
+			res.addAll(getAllAttributes(kind.getParent()));
+		}
+		return res;
 	}
 }

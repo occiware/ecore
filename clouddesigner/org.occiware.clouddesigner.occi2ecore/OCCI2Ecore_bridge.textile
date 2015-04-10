@@ -1,14 +1,36 @@
-This documentation lists the mappings between OCCI and Ecore that are used by the OCCI2Ecore conversion.
+h1. OCCI to Ecore Bridge
+
+h2. Conversion steps
+
+h3. OCCI to Ecore
+
+Here are the different steps of the conversion:
+* ConvertInfrastructure: converts Infrastructure.xmi extension into an Ecore metamodel extending OCCI.ecore
+* ConvertDocker: converts Docker.xmi extension into an Ecore metamodel extending OCCI.ecore & Infrastructure.ecore
+* ConvertDockerConfiguration: converts Docker configurations into configuration using Docker metamodel instead of OCCI.ecore kinds
+The OCCI2Ecore class launches the whole conversion.
+
+The generated ecore will may differ from the previous version, but those changes are not relevant. To get rid of them reload the model from the genmodel, EMF will update the ecore.
+
+h3. Ecore to OCCI
+
+This is a prototype utility to revert conversion of previously converted configurations.
+
+h2. Mapping 
+
+The following sections lists the mappings between OCCI and Ecore that are used by the OCCI2Ecore conversion.
 
 TODO accurate description
 
-h1. Extension => EPackage
-h1. Kind => EClass
-h1. Attribute => EAttribute
-h1. Action => EOperation
+h3. Extension => EPackage
+h3. Kind => EClass
+h3. Attribute => EAttribute
+h3. Action => EOperation
 
 Each attribute of the action is converted to an EParameter.
 
-h1. Mixin => EClass
+h3. Mixin => EClass
 
 Not implemented yet.
+
+

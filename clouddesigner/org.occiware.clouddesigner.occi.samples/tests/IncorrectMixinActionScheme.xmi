@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="ASCII"?>
-<OCCI:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:OCCI="http://schemas.ogf.org/occi" xsi:schemaLocation="http://schemas.ogf.org/occi http://schemas.ogf.org/occi" name="IncorrectMixinActionScheme" scheme="scheme#">
-  <mixins term="M" scheme="scheme#">
-    <actions term="a1" scheme="scheme/M/action#"/>
-    <actions term="a2" scheme="another-scheme#"/>
-  </mixins>
-</OCCI:Extension>

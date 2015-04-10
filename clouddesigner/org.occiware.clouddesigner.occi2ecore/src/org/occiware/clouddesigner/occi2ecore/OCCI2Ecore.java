@@ -9,13 +9,12 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.occiware.clouddesigner.OCCI.Extension;
 import org.occiware.clouddesigner.OCCI.OCCIPackage;
+import org.occiware.clouddesigner.occi2ecore.docker.ConvertDocker;
+import org.occiware.clouddesigner.occi2ecore.docker.ConvertDockerConfig;
 import org.occiware.clouddesigner.occi2ecore.utils.ConverterUtils;
 import org.occiware.clouddesigner.occi2ecore.utils.OCCIExtension2Ecore;
 
-public class Main {
-	private static final String WORKSPACE_PATH = new File(
-			new File("").getAbsolutePath()).getParentFile().getParent();
-
+public class OCCI2Ecore implements IConverterPaths {
 	public static ResourceSet resourceSet = new ResourceSetImpl();
 
 	static {
@@ -33,11 +32,10 @@ public class Main {
 		ConvertDockerConfig dockerConfigConverter = new ConvertDockerConfig(
 				infraEPackage, dockerEPackage);
 
-		dockerConfigConverter.convertConfiguration("file:/" + WORKSPACE_PATH
-				+ "/metamodel/docker/first-docker-configuration.xmi",
-				"output/first-docker-configuration.xmi");
-		dockerConfigConverter.convertConfiguration("file:/" + WORKSPACE_PATH
-				+ "/metamodel/docker/demo/demo.xmi", "output/demo.xmi");
+		dockerConfigConverter.convertConfiguration("file:/"
+				+ DOCKER_SAMPLE1_OCCI_PATH, "file:/" + DOCKER_SAMPLE1_DSL_PATH);
+		dockerConfigConverter.convertConfiguration("file:/"
+				+ DOCKER_SAMPLE2_OCCI_PATH, "file:/" + DOCKER_SAMPLE2_DSL_PATH);
 	}
 
 	/*
@@ -45,14 +43,12 @@ public class Main {
 	 */
 	private static EPackage convertDocker() throws IOException {
 		Extension dockerExt = (Extension) ConverterUtils.getRootElement(
-				resourceSet, "file:/" + WORKSPACE_PATH
-						+ "/metamodel/docker/Docker.xmi");
+				resourceSet, "file:/" + DOCKER_EXT_PATH);
 		EPackage dockerEPackage = new ConvertDocker()
 				.convertExtension(dockerExt);
-		ConverterUtils.save(resourceSet, dockerEPackage, "output/Docker.ecore");
-		fixMetamodelRefs(new File(
-				WORKSPACE_PATH
-						+ "/clouddesigner/org.occiware.clouddesigner.occi2ecore/output/Docker.ecore"));
+		ConverterUtils.save(resourceSet, dockerEPackage, "file:/"
+				+ DOCKER_MM_PATH);
+		fixMetamodelRefs(new File(DOCKER_MM_PATH));
 		return dockerEPackage;
 	}
 
@@ -61,23 +57,20 @@ public class Main {
 	 */
 	private static EPackage convertInfrastructure() throws IOException {
 		Extension infraExt = (Extension) ConverterUtils.getRootElement(
-				resourceSet, "file:/" + WORKSPACE_PATH
-						+ "/metamodel/extensions/Infrastructure.xmi");
+				resourceSet, "file:/" + INFRA_EXT_PATH);
 		EPackage infraEPackage = new OCCIExtension2Ecore()
 				.convertExtension(infraExt);
-		ConverterUtils.save(resourceSet, infraEPackage,
-				"output/Infrastructure.ecore");
+		ConverterUtils.save(resourceSet, infraEPackage, "file:/"
+				+ INFRA_MM_PATH);
 		resourceSet.getPackageRegistry().put(infraEPackage.getNsURI(),
 				infraEPackage);
-		fixMetamodelRefs(new File(
-				WORKSPACE_PATH
-						+ "/clouddesigner/org.occiware.clouddesigner.occi2ecore/output/Infrastructure.ecore"));
+		fixMetamodelRefs(new File(INFRA_MM_PATH));
 		return infraEPackage;
 	}
 
 	public static void fixMetamodelRefs(File metamodelFile) throws IOException {
 		String content = ConverterUtils.readFileAsString(metamodelFile);
-		content = content.replaceAll("file:/.+OCCI.ecore#",
+		content = content.replaceAll("../../../metamodel/OCCI.ecore#",
 				"../../org.occiware.clouddesigner.occi/model/OCCI.ecore#");
 		content = content
 				.replaceAll(
