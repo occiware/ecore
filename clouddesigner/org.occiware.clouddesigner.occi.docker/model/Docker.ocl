@@ -1,0 +1,58 @@
+import 'Docker.ecore'
+import '../../org.occiware.clouddesigner.occi/model/OCCI.ecore'
+
+package OCCI
+
+context Configuration
+inv MachineNameUnique:
+resources->select(oclIsKindOf(docker::Machine))->isUnique(oclAsType(docker::Machine).name)
+
+context Resource
+def : resourceMemoryLimit : Integer = 
+if(oclIsKindOf(docker::Container)) then
+	oclAsType(docker::Container).mem_limit
+else if(oclIsKindOf(docker::Machine_VirtualBox)) then
+	links->select(oclIsKindOf(docker::Contains)).target.resourceMemoryLimit->sum()
+else
+0
+endif
+endif
+
+endpackage
+
+package docker
+
+context Machine_VirtualBox 
+inv ContainersUsedTooMemory('Containers consume ' + resourceMemoryLimit.toString() + ' when memory is equals to ' + memory.toString()): 
+resourceMemoryLimit <= memory
+
+context Container
+inv ContainerNoCycleBetweenContainers: 
+links->closure(links->select(oclIsKindOf(Link) or oclIsKindOf(Volumesfrom)).target.links->select(oclIsKindOf(Link) or oclIsKindOf(Volumesfrom))).target->excludes(self)
+
+inv ContainerLinkAliasUnique: 
+links->select(oclIsKindOf(Link))->isUnique(oclAsType(docker::Link).alias)
+
+context Link
+inv LinkSourceAsContainer:
+source.oclIsKindOf(Container)
+
+inv LinkTargetAsContainer:
+target.oclIsKindOf(Container)
+
+inv LinkCanOnlyConnectColocalizedContainers:
+Link.allInstances()->select(oclIsKindOf(Contains))->select(target = source).source =
+Link.allInstances()->select(oclIsKindOf(Contains))->select(target = target).source
+
+context Volumesfrom
+inv VolumesFromCanOnlyConnectColocalizedContainers:
+Link.allInstances()->select(oclIsKindOf(Contains))->select(target = source).source =
+Link.allInstances()->select(oclIsKindOf(Contains))->select(target = target).source
+
+inv VolumesFromSourceAsContainer:
+source.oclIsKindOf(Container)
+
+inv VolumesFromTargetAsContainer:
+target.oclIsKindOf(Container)
+
+endpackage
