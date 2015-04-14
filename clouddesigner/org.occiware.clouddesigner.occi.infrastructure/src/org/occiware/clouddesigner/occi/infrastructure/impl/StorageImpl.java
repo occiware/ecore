@@ -24,11 +24,11 @@ import org.occiware.clouddesigner.occi.infrastructure.StorageStatus;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.impl.StorageImpl#getSize <em>Size</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.impl.StorageImpl#getState <em>State</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -140,9 +140,7 @@ public class StorageImpl extends ResourceImpl implements Storage {
 	 * @generated
 	 */
 	public void online() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Storage!online()
 	}
 
 	/**
@@ -151,9 +149,7 @@ public class StorageImpl extends ResourceImpl implements Storage {
 	 * @generated
 	 */
 	public void offline() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Storage!offline()
 	}
 
 	/**
@@ -162,9 +158,7 @@ public class StorageImpl extends ResourceImpl implements Storage {
 	 * @generated
 	 */
 	public void backup() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Storage!backup()
 	}
 
 	/**
@@ -173,9 +167,7 @@ public class StorageImpl extends ResourceImpl implements Storage {
 	 * @generated
 	 */
 	public void snapshot() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Storage!snapshot()
 	}
 
 	/**
@@ -183,10 +175,8 @@ public class StorageImpl extends ResourceImpl implements Storage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void resize(float size) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+	public void resize(final float size) {
+		throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Storage!resize(http://schemas.ogf.org/occi/infrastructure!GiB)
 	}
 
 	/**

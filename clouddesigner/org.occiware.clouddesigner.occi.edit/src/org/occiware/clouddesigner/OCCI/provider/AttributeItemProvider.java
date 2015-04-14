@@ -66,6 +66,7 @@ public class AttributeItemProvider
 			addDefaultPropertyDescriptor(object);
 			addDescriptionPropertyDescriptor(object);
 			addTypePropertyDescriptor(object);
+			addMultiple_valuesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -203,6 +204,28 @@ public class AttributeItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Multiple values feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addMultiple_valuesPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Attribute_multiple_values_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Attribute_multiple_values_feature", "_UI_Attribute_type"),
+				 OCCIPackage.Literals.ATTRIBUTE__MULTIPLE_VALUES,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns Attribute.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -245,6 +268,7 @@ public class AttributeItemProvider
 			case OCCIPackage.ATTRIBUTE__REQUIRED:
 			case OCCIPackage.ATTRIBUTE__DEFAULT:
 			case OCCIPackage.ATTRIBUTE__DESCRIPTION:
+			case OCCIPackage.ATTRIBUTE__MULTIPLE_VALUES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

@@ -4,6 +4,7 @@ package org.occiware.clouddesigner.occi.infrastructure.util;
 
 import java.util.Map;
 
+import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.ResourceLocator;
 
@@ -162,8 +163,6 @@ public class InfrastructureValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(network, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateEntity_IdUnique(network, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateEntity_AttributesNameUnique(network, diagnostics, context);
-		if (result || diagnostics != null) result &= occiValidator.validateEntity_KindCompatibleWithOneAppliesOfEachMixin(network, diagnostics, context);
-		if (result || diagnostics != null) result &= occiValidator.validateResource_ResourceKindIsInParent(network, diagnostics, context);
 		return result;
 	}
 
@@ -184,8 +183,6 @@ public class InfrastructureValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(compute, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateEntity_IdUnique(compute, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateEntity_AttributesNameUnique(compute, diagnostics, context);
-		if (result || diagnostics != null) result &= occiValidator.validateEntity_KindCompatibleWithOneAppliesOfEachMixin(compute, diagnostics, context);
-		if (result || diagnostics != null) result &= occiValidator.validateResource_ResourceKindIsInParent(compute, diagnostics, context);
 		return result;
 	}
 
@@ -206,8 +203,6 @@ public class InfrastructureValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(storage, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateEntity_IdUnique(storage, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateEntity_AttributesNameUnique(storage, diagnostics, context);
-		if (result || diagnostics != null) result &= occiValidator.validateEntity_KindCompatibleWithOneAppliesOfEachMixin(storage, diagnostics, context);
-		if (result || diagnostics != null) result &= occiValidator.validateResource_ResourceKindIsInParent(storage, diagnostics, context);
 		return result;
 	}
 
@@ -228,8 +223,6 @@ public class InfrastructureValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(storagelink, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateEntity_IdUnique(storagelink, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateEntity_AttributesNameUnique(storagelink, diagnostics, context);
-		if (result || diagnostics != null) result &= occiValidator.validateEntity_KindCompatibleWithOneAppliesOfEachMixin(storagelink, diagnostics, context);
-		if (result || diagnostics != null) result &= occiValidator.validateLink_LinkKindIsInParent(storagelink, diagnostics, context);
 		return result;
 	}
 
@@ -250,8 +243,6 @@ public class InfrastructureValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(networkinterface, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateEntity_IdUnique(networkinterface, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateEntity_AttributesNameUnique(networkinterface, diagnostics, context);
-		if (result || diagnostics != null) result &= occiValidator.validateEntity_KindCompatibleWithOneAppliesOfEachMixin(networkinterface, diagnostics, context);
-		if (result || diagnostics != null) result &= occiValidator.validateLink_LinkKindIsInParent(networkinterface, diagnostics, context);
 		return result;
 	}
 
@@ -261,6 +252,35 @@ public class InfrastructureValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateSuspendMethod(SuspendMethod suspendMethod, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		boolean result = validateSuspendMethod_dummy(suspendMethod, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * Validates the dummy constraint of '<em>Suspend Method</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateSuspendMethod_dummy(SuspendMethod suspendMethod, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		// TODO implement the constraint
+		// -> specify the condition that violates the constraint
+		// -> verify the diagnostic details, including severity, code, and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "dummy", getValueLabel(InfrastructurePackage.Literals.SUSPEND_METHOD, suspendMethod, context) },
+						 new Object[] { suspendMethod },
+						 context));
+			}
+			return false;
+		}
 		return true;
 	}
 

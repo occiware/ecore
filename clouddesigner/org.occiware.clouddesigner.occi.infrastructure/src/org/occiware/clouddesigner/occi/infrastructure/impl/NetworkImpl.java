@@ -24,12 +24,12 @@ import org.occiware.clouddesigner.occi.infrastructure.Network;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.impl.NetworkImpl#getVlan <em>Vlan</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.impl.NetworkImpl#getLabel <em>Label</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.impl.NetworkImpl#getState <em>State</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -182,9 +182,7 @@ public class NetworkImpl extends ResourceImpl implements Network {
 	 * @generated
 	 */
 	public void up() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Network!up()
 	}
 
 	/**
@@ -193,9 +191,7 @@ public class NetworkImpl extends ResourceImpl implements Network {
 	 * @generated
 	 */
 	public void down() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Network!down()
 	}
 
 	/**

@@ -9,8 +9,12 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.occiware.clouddesigner.occi.docker.DockerPackage;
 import org.occiware.clouddesigner.occi.docker.Machine_Google_Compute_Engine;
 
 /**
@@ -41,8 +45,123 @@ public class Machine_Google_Compute_EngineItemProvider extends MachineItemProvid
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addZonePropertyDescriptor(object);
+			addMachine_typePropertyDescriptor(object);
+			addUsernamePropertyDescriptor(object);
+			addInstance_namePropertyDescriptor(object);
+			addProjectPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Zone feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addZonePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_Google_Compute_Engine_zone_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_Google_Compute_Engine_zone_feature", "_UI_Machine_Google_Compute_Engine_type"),
+				 DockerPackage.Literals.MACHINE_GOOGLE_COMPUTE_ENGINE__ZONE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Machine type feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addMachine_typePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_Google_Compute_Engine_machine_type_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_Google_Compute_Engine_machine_type_feature", "_UI_Machine_Google_Compute_Engine_type"),
+				 DockerPackage.Literals.MACHINE_GOOGLE_COMPUTE_ENGINE__MACHINE_TYPE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Username feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addUsernamePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_Google_Compute_Engine_username_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_Google_Compute_Engine_username_feature", "_UI_Machine_Google_Compute_Engine_type"),
+				 DockerPackage.Literals.MACHINE_GOOGLE_COMPUTE_ENGINE__USERNAME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Instance name feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addInstance_namePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_Google_Compute_Engine_instance_name_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_Google_Compute_Engine_instance_name_feature", "_UI_Machine_Google_Compute_Engine_type"),
+				 DockerPackage.Literals.MACHINE_GOOGLE_COMPUTE_ENGINE__INSTANCE_NAME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Project feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addProjectPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_Google_Compute_Engine_project_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_Google_Compute_Engine_project_feature", "_UI_Machine_Google_Compute_Engine_type"),
+				 DockerPackage.Literals.MACHINE_GOOGLE_COMPUTE_ENGINE__PROJECT,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -81,6 +200,16 @@ public class Machine_Google_Compute_EngineItemProvider extends MachineItemProvid
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
+
+		switch (notification.getFeatureID(Machine_Google_Compute_Engine.class)) {
+			case DockerPackage.MACHINE_GOOGLE_COMPUTE_ENGINE__ZONE:
+			case DockerPackage.MACHINE_GOOGLE_COMPUTE_ENGINE__MACHINE_TYPE:
+			case DockerPackage.MACHINE_GOOGLE_COMPUTE_ENGINE__USERNAME:
+			case DockerPackage.MACHINE_GOOGLE_COMPUTE_ENGINE__INSTANCE_NAME:
+			case DockerPackage.MACHINE_GOOGLE_COMPUTE_ENGINE__PROJECT:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+		}
 		super.notifyChanged(notification);
 	}
 

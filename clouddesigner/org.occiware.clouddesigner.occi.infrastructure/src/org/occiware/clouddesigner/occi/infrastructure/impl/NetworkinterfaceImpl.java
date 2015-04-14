@@ -20,12 +20,12 @@ import org.occiware.clouddesigner.occi.infrastructure.Networkinterface;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.impl.NetworkinterfaceImpl#getInterface <em>Interface</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.impl.NetworkinterfaceImpl#getMac <em>Mac</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.impl.NetworkinterfaceImpl#getState <em>State</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

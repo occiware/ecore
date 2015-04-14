@@ -13,8 +13,6 @@ import org.occiware.clouddesigner.occi.docker.DockerPackage;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Contains</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

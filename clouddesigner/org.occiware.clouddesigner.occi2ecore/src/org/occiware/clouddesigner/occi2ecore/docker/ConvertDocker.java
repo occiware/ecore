@@ -36,7 +36,21 @@ public class ConvertDocker extends OCCIExtension2Ecore {
 			if (attribute.getName().equals("hostname")) {
 				return false;
 			}
+		} else if (containerName.equals("machine_IBM_SoftLayer")) {
+			if (attribute.getName().equals("memory")) {
+				return false;
+			} else if (attribute.getName().equals("hostname")) {
+				return false;
+			}
 		} else if (containerName.equals("machine_VirtualBox")) {
+			if (attribute.getName().equals("memory")) {
+				return false;
+			}
+		} else if (containerName.equals("machine_VMware_vCloud_Air")) {
+			if (attribute.getName().equals("name")) {
+				return false;
+			}
+		} else if (containerName.equals("machine_Microsoft_Hyper_V")) {
 			if (attribute.getName().equals("memory")) {
 				return false;
 			}

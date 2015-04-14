@@ -25,6 +25,7 @@ import org.occiware.clouddesigner.OCCI.OCCIPackage;
  * <!-- end-user-doc -->
  * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructureFactory
  * @model kind="package"
+ *        annotation="http://www.eclipse.org/OCL/Import OCCI='../../org.occiware.clouddesigner.occi/model/OCCI.ecore#/'"
  * @generated
  */
 public interface InfrastructurePackage extends EPackage {

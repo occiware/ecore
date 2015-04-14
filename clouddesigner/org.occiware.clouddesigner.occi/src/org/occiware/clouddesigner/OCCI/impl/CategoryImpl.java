@@ -2,19 +2,11 @@
  */
 package org.occiware.clouddesigner.OCCI.impl;
 
-import java.lang.reflect.InvocationTargetException;
-
 import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
-import org.eclipse.emf.common.util.BasicDiagnostic;
-import org.eclipse.emf.common.util.Diagnostic;
-import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -24,41 +16,11 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectValidator;
 import org.eclipse.emf.ecore.util.InternalEList;
-
-import org.eclipse.ocl.examples.domain.elements.DomainType;
-
-import org.eclipse.ocl.examples.domain.evaluation.DomainEvaluator;
-
-import org.eclipse.ocl.examples.domain.messages.EvaluatorMessages;
-
-import org.eclipse.ocl.examples.domain.types.IdResolver;
-
-import org.eclipse.ocl.examples.domain.utilities.DomainUtil;
-
-import org.eclipse.ocl.examples.domain.values.IntegerValue;
-import org.eclipse.ocl.examples.domain.values.OrderedSetValue;
-import org.eclipse.ocl.examples.domain.values.SetValue;
-
-import org.eclipse.ocl.examples.domain.values.impl.InvalidValueException;
-
-import org.eclipse.ocl.examples.domain.values.util.ValuesUtil;
-
-import org.eclipse.ocl.examples.library.classifier.ClassifierAllInstancesOperation;
-
-import org.eclipse.ocl.examples.library.string.StringConcatOperation;
-import org.eclipse.ocl.examples.library.string.StringSizeOperation;
-import org.eclipse.ocl.examples.library.string.StringSubstringOperation;
-
-import org.eclipse.ocl.examples.pivot.utilities.PivotUtil;
 
 import org.occiware.clouddesigner.OCCI.Attribute;
 import org.occiware.clouddesigner.OCCI.Category;
 import org.occiware.clouddesigner.OCCI.OCCIPackage;
-import org.occiware.clouddesigner.OCCI.OCCITables;
-
-import org.occiware.clouddesigner.OCCI.util.OCCIValidator;
 
 /**
  * <!-- begin-user-doc -->
@@ -66,13 +28,13 @@ import org.occiware.clouddesigner.OCCI.util.OCCIValidator;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.occiware.clouddesigner.OCCI.impl.CategoryImpl#getTerm <em>Term</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.OCCI.impl.CategoryImpl#getScheme <em>Scheme</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.OCCI.impl.CategoryImpl#getTitle <em>Title</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.OCCI.impl.CategoryImpl#getAttributes <em>Attributes</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -246,151 +208,6 @@ public abstract class CategoryImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean AttributesNameUnique(final DiagnosticChain diagnostics, final Map<Object, Object> context) {
-		/**
-		 * inv AttributesNameUnique: attributes->isUnique(name)
-		 */
-		final /*@NonNull*/ /*@NonInvalid*/ DomainEvaluator evaluator = PivotUtil.getEvaluator(this);
-		final /*@NonNull*/ /*@NonInvalid*/ IdResolver idResolver = evaluator.getIdResolver();
-		/*@NonNull*/ /*@Caught*/ Object CAUGHT_isUnique;
-		try {
-		    final /*@NonNull*/ /*@Thrown*/ List<Attribute> attributes = this.getAttributes();
-		    final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_attributes = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Attribute, attributes);
-		    /*@NonNull*/ /*@Thrown*/ SetValue.Accumulator accumulator = ValuesUtil.createSetAccumulatorValue(OCCITables.ORD_CLSSid_Attribute);
-		    /*@Nullable*/ Iterator<?> ITERATOR__1 = BOXED_attributes.iterator();
-		    /*@Thrown*/ boolean isUnique;
-		    while (true) {
-		        if (!ITERATOR__1.hasNext()) {
-		            isUnique = ValuesUtil.TRUE_VALUE;
-		            break;
-		        }
-		        /*@Nullable*/ /*@NonInvalid*/ Attribute _1 = (Attribute)ITERATOR__1.next();
-		        /**
-		         * name
-		         */
-		        if (_1 == null) {
-		            throw new InvalidValueException("Null source for \'OCCI::Attribute::name\'");
-		        }
-		        final /*@NonNull*/ /*@Thrown*/ String name = _1.getName();
-		        //
-		        if (accumulator.includes(name) == ValuesUtil.TRUE_VALUE) {
-		            isUnique = ValuesUtil.FALSE_VALUE;			// Abort after second find
-		            break;
-		        }
-		        else {
-		            accumulator.add(name);
-		        }
-		    }
-		    CAUGHT_isUnique = isUnique;
-		}
-		catch (Exception e) {
-		    CAUGHT_isUnique = ValuesUtil.createInvalidValue(e);
-		}
-		if (CAUGHT_isUnique == ValuesUtil.TRUE_VALUE) {
-		    return true;
-		}
-		if (diagnostics != null) {
-		    int severity = Diagnostic.WARNING;
-		    String message = DomainUtil.bind(EvaluatorMessages.ValidationConstraintIsNotSatisfied_ERROR_, new Object[]{"Category", "AttributesNameUnique", EObjectValidator.getObjectLabel(this, context)});
-		    diagnostics.add(new BasicDiagnostic(severity, OCCIValidator.DIAGNOSTIC_SOURCE, OCCIValidator.CATEGORY__ATTRIBUTES_NAME_UNIQUE, message, new Object [] { this }));
-		}
-		return false;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean IdentityUnique(final DiagnosticChain diagnostics, final Map<Object, Object> context) {
-		/**
-		 * inv IdentityUnique: Category.allInstances()->isUnique(scheme + term)
-		 */
-		final /*@NonNull*/ /*@NonInvalid*/ DomainEvaluator evaluator = PivotUtil.getEvaluator(this);
-		final /*@NonNull*/ /*@NonInvalid*/ IdResolver idResolver = evaluator.getIdResolver();
-		/*@NonNull*/ /*@Caught*/ Object CAUGHT_isUnique;
-		try {
-		    final /*@NonNull*/ /*@NonInvalid*/ DomainType TYP_OCCI_c_c_Category_0 = idResolver.getType(OCCITables.CLSSid_Category, null);
-		    final /*@NonNull*/ /*@Thrown*/ SetValue allInstances = DomainUtil.nonNullState(ClassifierAllInstancesOperation.INSTANCE.evaluate(evaluator, OCCITables.SET_CLSSid_Category, TYP_OCCI_c_c_Category_0));
-		    /*@NonNull*/ /*@Thrown*/ SetValue.Accumulator accumulator = ValuesUtil.createSetAccumulatorValue(OCCITables.SET_CLSSid_Category);
-		    /*@Nullable*/ Iterator<?> ITERATOR__1 = allInstances.iterator();
-		    /*@Thrown*/ boolean isUnique;
-		    while (true) {
-		        if (!ITERATOR__1.hasNext()) {
-		            isUnique = ValuesUtil.TRUE_VALUE;
-		            break;
-		        }
-		        /*@Nullable*/ /*@NonInvalid*/ Category _1 = (Category)ITERATOR__1.next();
-		        /**
-		         * scheme + term
-		         */
-		        if (_1 == null) {
-		            throw new InvalidValueException("Null source for \'OCCI::Category::term\'");
-		        }
-		        final /*@NonNull*/ /*@Thrown*/ String scheme = _1.getScheme();
-		        final /*@NonNull*/ /*@Thrown*/ String term = _1.getTerm();
-		        final /*@NonNull*/ /*@Thrown*/ String sum = DomainUtil.nonNullState(StringConcatOperation.INSTANCE.evaluate(scheme, term));
-		        //
-		        if (accumulator.includes(sum) == ValuesUtil.TRUE_VALUE) {
-		            isUnique = ValuesUtil.FALSE_VALUE;			// Abort after second find
-		            break;
-		        }
-		        else {
-		            accumulator.add(sum);
-		        }
-		    }
-		    CAUGHT_isUnique = isUnique;
-		}
-		catch (Exception e) {
-		    CAUGHT_isUnique = ValuesUtil.createInvalidValue(e);
-		}
-		if (CAUGHT_isUnique == ValuesUtil.TRUE_VALUE) {
-		    return true;
-		}
-		if (diagnostics != null) {
-		    int severity = Diagnostic.WARNING;
-		    String message = DomainUtil.bind(EvaluatorMessages.ValidationConstraintIsNotSatisfied_ERROR_, new Object[]{"Category", "IdentityUnique", EObjectValidator.getObjectLabel(this, context)});
-		    diagnostics.add(new BasicDiagnostic(severity, OCCIValidator.DIAGNOSTIC_SOURCE, OCCIValidator.CATEGORY__IDENTITY_UNIQUE, message, new Object [] { this }));
-		}
-		return false;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean SchemeEndsWithSharp(final DiagnosticChain diagnostics, final Map<Object, Object> context) {
-		/**
-		 * inv SchemeEndsWithSharp: scheme.substring(scheme.size(),scheme.size()) = '#'
-		 */
-		/*@NonNull*/ /*@Caught*/ Object CAUGHT_eq;
-		try {
-		    final /*@NonNull*/ /*@Thrown*/ String scheme = this.getScheme();
-		    final /*@NonNull*/ /*@Thrown*/ IntegerValue size_0 = DomainUtil.nonNullState(StringSizeOperation.INSTANCE.evaluate(scheme));
-		    final /*@NonNull*/ /*@Thrown*/ String substring = DomainUtil.nonNullState(StringSubstringOperation.INSTANCE.evaluate(scheme, size_0, size_0));
-		    final /*@Thrown*/ boolean eq = substring.equals(OCCITables.STR__35);
-		    CAUGHT_eq = eq;
-		}
-		catch (Exception e) {
-		    CAUGHT_eq = ValuesUtil.createInvalidValue(e);
-		}
-		if (CAUGHT_eq == ValuesUtil.TRUE_VALUE) {
-		    return true;
-		}
-		if (diagnostics != null) {
-		    int severity = Diagnostic.WARNING;
-		    String message = DomainUtil.bind(EvaluatorMessages.ValidationConstraintIsNotSatisfied_ERROR_, new Object[]{"Category", "SchemeEndsWithSharp", EObjectValidator.getObjectLabel(this, context)});
-		    diagnostics.add(new BasicDiagnostic(severity, OCCIValidator.DIAGNOSTIC_SOURCE, OCCIValidator.CATEGORY__SCHEME_ENDS_WITH_SHARP, message, new Object [] { this }));
-		}
-		return false;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -488,25 +305,6 @@ public abstract class CategoryImpl extends MinimalEObjectImpl.Container implemen
 				return attributes != null && !attributes.isEmpty();
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	@SuppressWarnings("unchecked")
-	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
-		switch (operationID) {
-			case OCCIPackage.CATEGORY___ATTRIBUTES_NAME_UNIQUE__DIAGNOSTICCHAIN_MAP:
-				return AttributesNameUnique((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
-			case OCCIPackage.CATEGORY___IDENTITY_UNIQUE__DIAGNOSTICCHAIN_MAP:
-				return IdentityUnique((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
-			case OCCIPackage.CATEGORY___SCHEME_ENDS_WITH_SHARP__DIAGNOSTICCHAIN_MAP:
-				return SchemeEndsWithSharp((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
-		}
-		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

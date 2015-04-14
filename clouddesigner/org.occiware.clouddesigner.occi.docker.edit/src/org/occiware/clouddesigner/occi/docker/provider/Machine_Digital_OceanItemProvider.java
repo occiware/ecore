@@ -9,8 +9,12 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.occiware.clouddesigner.occi.docker.DockerPackage;
 import org.occiware.clouddesigner.occi.docker.Machine_Digital_Ocean;
 
 /**
@@ -41,8 +45,100 @@ public class Machine_Digital_OceanItemProvider extends MachineItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addAccess_tokenPropertyDescriptor(object);
+			addImagePropertyDescriptor(object);
+			addRegionPropertyDescriptor(object);
+			addSizePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Access token feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addAccess_tokenPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_Digital_Ocean_access_token_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_Digital_Ocean_access_token_feature", "_UI_Machine_Digital_Ocean_type"),
+				 DockerPackage.Literals.MACHINE_DIGITAL_OCEAN__ACCESS_TOKEN,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Image feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addImagePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_Digital_Ocean_image_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_Digital_Ocean_image_feature", "_UI_Machine_Digital_Ocean_type"),
+				 DockerPackage.Literals.MACHINE_DIGITAL_OCEAN__IMAGE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Region feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addRegionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_Digital_Ocean_region_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_Digital_Ocean_region_feature", "_UI_Machine_Digital_Ocean_type"),
+				 DockerPackage.Literals.MACHINE_DIGITAL_OCEAN__REGION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Size feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSizePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_Digital_Ocean_size_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_Digital_Ocean_size_feature", "_UI_Machine_Digital_Ocean_type"),
+				 DockerPackage.Literals.MACHINE_DIGITAL_OCEAN__SIZE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -81,6 +177,15 @@ public class Machine_Digital_OceanItemProvider extends MachineItemProvider {
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
+
+		switch (notification.getFeatureID(Machine_Digital_Ocean.class)) {
+			case DockerPackage.MACHINE_DIGITAL_OCEAN__ACCESS_TOKEN:
+			case DockerPackage.MACHINE_DIGITAL_OCEAN__IMAGE:
+			case DockerPackage.MACHINE_DIGITAL_OCEAN__REGION:
+			case DockerPackage.MACHINE_DIGITAL_OCEAN__SIZE:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+		}
 		super.notifyChanged(notification);
 	}
 

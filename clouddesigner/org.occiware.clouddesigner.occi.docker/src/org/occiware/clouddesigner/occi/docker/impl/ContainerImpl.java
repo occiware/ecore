@@ -3,17 +3,45 @@
 package org.occiware.clouddesigner.occi.docker.impl;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
-
+import org.eclipse.emf.common.util.BasicDiagnostic;
+import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
+import org.eclipse.emf.ecore.util.EObjectValidator;
+import org.eclipse.ocl.examples.domain.elements.DomainStandardLibrary;
+import org.eclipse.ocl.examples.domain.elements.DomainType;
+import org.eclipse.ocl.examples.domain.evaluation.DomainEvaluator;
+import org.eclipse.ocl.examples.domain.ids.TypeId;
+import org.eclipse.ocl.examples.domain.library.AbstractBinaryOperation;
+import org.eclipse.ocl.examples.domain.library.LibraryIteration;
+import org.eclipse.ocl.examples.domain.messages.EvaluatorMessages;
+import org.eclipse.ocl.examples.domain.types.IdResolver;
+import org.eclipse.ocl.examples.domain.utilities.DomainUtil;
+import org.eclipse.ocl.examples.domain.values.CollectionValue;
+import org.eclipse.ocl.examples.domain.values.OrderedSetValue;
+import org.eclipse.ocl.examples.domain.values.SequenceValue;
+import org.eclipse.ocl.examples.domain.values.SetValue;
+import org.eclipse.ocl.examples.domain.values.impl.InvalidValueException;
+import org.eclipse.ocl.examples.domain.values.util.ValuesUtil;
+import org.eclipse.ocl.examples.library.collection.CollectionExcludesOperation;
+import org.eclipse.ocl.examples.library.executor.ExecutorSingleIterationManager;
+import org.eclipse.ocl.examples.library.logical.BooleanOrOperation;
+import org.eclipse.ocl.examples.library.oclany.OclAnyOclAsTypeOperation;
+import org.eclipse.ocl.examples.library.oclany.OclAnyOclIsKindOfOperation;
+import org.eclipse.ocl.examples.library.oclstdlib.OCLstdlibTables;
+import org.eclipse.ocl.examples.pivot.utilities.PivotUtil;
+import org.occiware.clouddesigner.OCCI.Link;
+import org.occiware.clouddesigner.OCCI.Resource;
 import org.occiware.clouddesigner.occi.docker.DockerPackage;
-
+import org.occiware.clouddesigner.occi.docker.DockerTables;
+import org.occiware.clouddesigner.occi.docker.util.DockerValidator;
 import org.occiware.clouddesigner.occi.infrastructure.impl.ComputeImpl;
 
 /**
@@ -22,6 +50,7 @@ import org.occiware.clouddesigner.occi.infrastructure.impl.ComputeImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.ContainerImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.ContainerImpl#getContainerid <em>Containerid</em>}</li>
@@ -62,7 +91,6 @@ import org.occiware.clouddesigner.occi.infrastructure.impl.ComputeImpl;
  *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.ContainerImpl#isPublish_all <em>Publish all</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.ContainerImpl#isRead_only <em>Read only</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -535,7 +563,7 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean STDIN_OPEN_EDEFAULT = false; // TODO The default value literal "" is not valid.
+	protected static final boolean STDIN_OPEN_EDEFAULT = false;
 
 	/**
 	 * The cached value of the '{@link #isStdin_open() <em>Stdin open</em>}' attribute.
@@ -1650,9 +1678,7 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 	 * @generated
 	 */
 	public void create() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!create()
 	}
 
 	/**
@@ -1661,9 +1687,7 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 	 * @generated
 	 */
 	public void run() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!run()
 	}
 
 	/**
@@ -1672,9 +1696,7 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 	 * @generated
 	 */
 	public void pause() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!pause()
 	}
 
 	/**
@@ -1683,9 +1705,7 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 	 * @generated
 	 */
 	public void unpause() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!unpause()
 	}
 
 	/**
@@ -1693,10 +1713,281 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void kill(String signal) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+	public void kill(final String signal) {
+		throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!kill(String)
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean ContainerLinkAliasUnique(final DiagnosticChain diagnostics, final Map<Object, Object> context) {
+		/**
+		 * 
+		 * inv ContainerLinkAliasUnique: 
+		 * 			links->select(oclIsKindOf(Link))->isUnique(oclAsType(docker::Link).alias)
+		 */
+		final /*@NonNull*/ /*@NonInvalid*/ DomainEvaluator evaluator = PivotUtil.getEvaluator(this);
+		final /*@NonNull*/ /*@NonInvalid*/ IdResolver idResolver = evaluator.getIdResolver();
+		/*@NonNull*/ /*@Caught*/ Object CAUGHT_isUnique;
+		try {
+		    final /*@NonNull*/ /*@Thrown*/ List<Link> links = this.getLinks();
+		    final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_links = idResolver.createOrderedSetOfAll(DockerTables.ORD_CLSSid_Link, links);
+		    /*@NonNull*/ /*@Thrown*/ OrderedSetValue.Accumulator accumulator = ValuesUtil.createOrderedSetAccumulatorValue(DockerTables.ORD_CLSSid_Link);
+		    /*@Nullable*/ Iterator<?> ITERATOR__1 = BOXED_links.iterator();
+		    /*@NonNull*/ /*@Thrown*/ OrderedSetValue select;
+		    while (true) {
+		        if (!ITERATOR__1.hasNext()) {
+		            select = accumulator;
+		            break;
+		        }
+		        /*@Nullable*/ /*@NonInvalid*/ Link _1 = (Link)ITERATOR__1.next();
+		        /**
+		         * oclIsKindOf(Link)
+		         */
+		        final /*@NonNull*/ /*@NonInvalid*/ DomainType TYP_docker_c_c_Link_0 = idResolver.getType(DockerTables.CLSSid_Link_0, null);
+		        final /*@Thrown*/ boolean oclIsKindOf = DomainUtil.nonNullState(OclAnyOclIsKindOfOperation.INSTANCE.evaluate(evaluator, _1, TYP_docker_c_c_Link_0).booleanValue());
+		        //
+		        if (oclIsKindOf == ValuesUtil.TRUE_VALUE) {
+		            accumulator.add(_1);
+		        }
+		    }
+		    /*@NonNull*/ /*@Thrown*/ SetValue.Accumulator accumulator_0 = ValuesUtil.createSetAccumulatorValue(DockerTables.ORD_CLSSid_Link);
+		    /*@Nullable*/ Iterator<?> ITERATOR__1_0 = select.iterator();
+		    /*@Thrown*/ boolean isUnique;
+		    while (true) {
+		        if (!ITERATOR__1_0.hasNext()) {
+		            isUnique = ValuesUtil.TRUE_VALUE;
+		            break;
+		        }
+		        /*@Nullable*/ /*@NonInvalid*/ Link _1_0 = (Link)ITERATOR__1_0.next();
+		        /**
+		         * oclAsType(Link).alias
+		         */
+		        final /*@NonNull*/ /*@NonInvalid*/ DomainType TYP_docker_c_c_Link_1 = idResolver.getType(DockerTables.CLSSid_Link_0, null);
+		        final /*@Nullable*/ /*@Thrown*/ org.occiware.clouddesigner.occi.docker.Link oclAsType = (org.occiware.clouddesigner.occi.docker.Link)OclAnyOclAsTypeOperation.INSTANCE.evaluate(evaluator, _1_0, TYP_docker_c_c_Link_1);
+		        if (oclAsType == null) {
+		            throw new InvalidValueException("Null source for \'docker::Link::alias\'");
+		        }
+		        final /*@Nullable*/ /*@Thrown*/ String alias = oclAsType.getAlias();
+		        //
+		        if (accumulator_0.includes(alias) == ValuesUtil.TRUE_VALUE) {
+		            isUnique = ValuesUtil.FALSE_VALUE;			// Abort after second find
+		            break;
+		        }
+		        else {
+		            accumulator_0.add(alias);
+		        }
+		    }
+		    CAUGHT_isUnique = isUnique;
+		}
+		catch (Exception e) {
+		    CAUGHT_isUnique = ValuesUtil.createInvalidValue(e);
+		}
+		if (CAUGHT_isUnique == ValuesUtil.TRUE_VALUE) {
+		    return true;
+		}
+		if (diagnostics != null) {
+		    int severity = Diagnostic.WARNING;
+		    String message = DomainUtil.bind(EvaluatorMessages.ValidationConstraintIsNotSatisfied_ERROR_, new Object[]{"Container", "ContainerLinkAliasUnique", EObjectValidator.getObjectLabel(this, context)});
+		    diagnostics.add(new BasicDiagnostic(severity, DockerValidator.DIAGNOSTIC_SOURCE, DockerValidator.CONTAINER__CONTAINER_LINK_ALIAS_UNIQUE, message, new Object [] { this }));
+		}
+		return false;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean ContainerNoCycleBetweenContainers(final DiagnosticChain diagnostics, final Map<Object, Object> context) {
+		/**
+		 * 
+		 * inv ContainerNoCycleBetweenContainers: 
+		 * 			links->closure(links->select(oclIsKindOf(Link) or oclIsKindOf(Volumesfrom)).target.links->select(oclIsKindOf(Link) or oclIsKindOf(Volumesfrom))).target->excludes(self)
+		 */
+		final /*@NonNull*/ /*@NonInvalid*/ DomainEvaluator evaluator = PivotUtil.getEvaluator(this);
+		final /*@NonNull*/ /*@NonInvalid*/ IdResolver idResolver = evaluator.getIdResolver();
+		final /*@NonNull*/ /*@NonInvalid*/ DomainStandardLibrary standardLibrary = idResolver.getStandardLibrary();
+		/*@NonNull*/ /*@Caught*/ Object CAUGHT_excludes;
+		try {
+		    final /*@NonNull*/ /*@Thrown*/ List<Link> links = this.getLinks();
+		    final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_links = idResolver.createOrderedSetOfAll(DockerTables.ORD_CLSSid_Link, links);
+		    final /*@NonNull*/ DomainType TYPE_closure_0 = evaluator.getStaticTypeOf(BOXED_links);
+		    final /*@NonNull*/ LibraryIteration IMPL_closure_0 = (LibraryIteration)TYPE_closure_0.lookupImplementation(standardLibrary, OCLstdlibTables.Operations._OrderedSet__closure);
+		    final /*@NonNull*/ Object ACC_closure_0 = IMPL_closure_0.createAccumulatorValue(evaluator, DockerTables.ORD_CLSSid_Link, DockerTables.SEQ_CLSSid_Link);
+		    /**
+		     * Implementation of the iterator body.
+		     */
+		    final /*@NonNull*/ AbstractBinaryOperation BODY_closure_0 = new AbstractBinaryOperation() {
+		        /**
+		         * 
+		         * links->select(oclIsKindOf(Link) or oclIsKindOf(Volumesfrom))
+		         * .target.links->select(
+		         *   oclIsKindOf(Link) or
+		         *   oclIsKindOf(Volumesfrom))
+		         */
+		        @Override
+		        public /*@Nullable*/ Object evaluate(final /*@NonNull*/ DomainEvaluator evaluator, final /*@NonNull*/ TypeId typeId, final /*@Nullable*/ Object BOXED_links, final /*@Nullable*/ /*@NonInvalid*/ Object _1_3) {
+		            /*@NonNull*/ /*@Thrown*/ OrderedSetValue.Accumulator accumulator = ValuesUtil.createOrderedSetAccumulatorValue(DockerTables.ORD_CLSSid_Link);
+		            /*@Nullable*/ Iterator<?> ITERATOR__1 = ((CollectionValue) BOXED_links).iterator();
+		            /*@NonNull*/ /*@Thrown*/ OrderedSetValue select_0;
+		            while (true) {
+		                if (!ITERATOR__1.hasNext()) {
+		                    select_0 = accumulator;
+		                    break;
+		                }
+		                /*@Nullable*/ /*@NonInvalid*/ Link _1 = (Link)ITERATOR__1.next();
+		                /**
+		                 * oclIsKindOf(Link) or oclIsKindOf(Volumesfrom)
+		                 */
+		                /*@NonNull*/ /*@Caught*/ Object CAUGHT_oclIsKindOf;
+		                try {
+		                    final /*@NonNull*/ /*@NonInvalid*/ DomainType TYP_docker_c_c_Link_0 = idResolver.getType(DockerTables.CLSSid_Link_0, null);
+		                    final /*@Thrown*/ boolean oclIsKindOf = DomainUtil.nonNullState(OclAnyOclIsKindOfOperation.INSTANCE.evaluate(evaluator, _1, TYP_docker_c_c_Link_0).booleanValue());
+		                    CAUGHT_oclIsKindOf = oclIsKindOf;
+		                }
+		                catch (Exception e) {
+		                    CAUGHT_oclIsKindOf = ValuesUtil.createInvalidValue(e);
+		                }
+		                /*@NonNull*/ /*@Caught*/ Object CAUGHT_oclIsKindOf_0;
+		                try {
+		                    final /*@NonNull*/ /*@NonInvalid*/ DomainType TYP_docker_c_c_Volumesfrom_0 = idResolver.getType(DockerTables.CLSSid_Volumesfrom, null);
+		                    final /*@Thrown*/ boolean oclIsKindOf_0 = DomainUtil.nonNullState(OclAnyOclIsKindOfOperation.INSTANCE.evaluate(evaluator, _1, TYP_docker_c_c_Volumesfrom_0).booleanValue());
+		                    CAUGHT_oclIsKindOf_0 = oclIsKindOf_0;
+		                }
+		                catch (Exception e) {
+		                    CAUGHT_oclIsKindOf_0 = ValuesUtil.createInvalidValue(e);
+		                }
+		                final /*@Nullable*/ /*@Thrown*/ Boolean or = BooleanOrOperation.INSTANCE.evaluate(CAUGHT_oclIsKindOf, CAUGHT_oclIsKindOf_0);
+		                if (or == null) {
+		                    throw new InvalidValueException("Null body for \'OrderedSet(T).select(T[?] | Lambda T() : Boolean) : OrderedSet(T)\'");
+		                }
+		                //
+		                if (or == ValuesUtil.TRUE_VALUE) {
+		                    accumulator.add(_1);
+		                }
+		            }
+		            /*@NonNull*/ /*@Thrown*/ SequenceValue.Accumulator accumulator_0 = ValuesUtil.createSequenceAccumulatorValue(DockerTables.SEQ_CLSSid_Resource);
+		            /*@Nullable*/ Iterator<?> ITERATOR__1_0 = select_0.iterator();
+		            /*@NonNull*/ /*@Thrown*/ SequenceValue collect_1;
+		            while (true) {
+		                if (!ITERATOR__1_0.hasNext()) {
+		                    collect_1 = accumulator_0;
+		                    break;
+		                }
+		                /*@Nullable*/ /*@NonInvalid*/ Link _1_0 = (Link)ITERATOR__1_0.next();
+		                /**
+		                 * target
+		                 */
+		                if (_1_0 == null) {
+		                    throw new InvalidValueException("Null source for \'OCCI::Link::target\'");
+		                }
+		                final /*@NonNull*/ /*@Thrown*/ Resource target = _1_0.getTarget();
+		                //
+		                accumulator_0.add(target);
+		            }
+		            /*@NonNull*/ /*@Thrown*/ SequenceValue.Accumulator accumulator_1 = ValuesUtil.createSequenceAccumulatorValue(DockerTables.SEQ_CLSSid_Link);
+		            /*@Nullable*/ Iterator<?> ITERATOR__1_1 = collect_1.iterator();
+		            /*@NonNull*/ /*@Thrown*/ SequenceValue collect_0;
+		            while (true) {
+		                if (!ITERATOR__1_1.hasNext()) {
+		                    collect_0 = accumulator_1;
+		                    break;
+		                }
+		                /*@Nullable*/ /*@NonInvalid*/ Resource _1_1 = (Resource)ITERATOR__1_1.next();
+		                /**
+		                 * links
+		                 */
+		                if (_1_1 == null) {
+		                    throw new InvalidValueException("Null source for \'OCCI::Resource::links\'");
+		                }
+		                final /*@NonNull*/ /*@Thrown*/ List<Link> links_1 = _1_1.getLinks();
+		                final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_links_1 = idResolver.createOrderedSetOfAll(DockerTables.ORD_CLSSid_Link, links_1);
+		                //
+		                for (Object value : BOXED_links_1.flatten().getElements()) {
+		                    accumulator_1.add(value);
+		                }
+		            }
+		            /*@NonNull*/ /*@Thrown*/ SequenceValue.Accumulator accumulator_2 = ValuesUtil.createSequenceAccumulatorValue(DockerTables.SEQ_CLSSid_Link);
+		            /*@Nullable*/ Iterator<?> ITERATOR__1_2 = collect_0.iterator();
+		            /*@NonNull*/ /*@Thrown*/ SequenceValue select;
+		            while (true) {
+		                if (!ITERATOR__1_2.hasNext()) {
+		                    select = accumulator_2;
+		                    break;
+		                }
+		                /*@Nullable*/ /*@NonInvalid*/ Link _1_2 = (Link)ITERATOR__1_2.next();
+		                /**
+		                 * oclIsKindOf(Link) or oclIsKindOf(Volumesfrom)
+		                 */
+		                /*@NonNull*/ /*@Caught*/ Object CAUGHT_oclIsKindOf_1;
+		                try {
+		                    final /*@NonNull*/ /*@NonInvalid*/ DomainType TYP_docker_c_c_Link_1 = idResolver.getType(DockerTables.CLSSid_Link_0, null);
+		                    final /*@Thrown*/ boolean oclIsKindOf_1 = DomainUtil.nonNullState(OclAnyOclIsKindOfOperation.INSTANCE.evaluate(evaluator, _1_2, TYP_docker_c_c_Link_1).booleanValue());
+		                    CAUGHT_oclIsKindOf_1 = oclIsKindOf_1;
+		                }
+		                catch (Exception e) {
+		                    CAUGHT_oclIsKindOf_1 = ValuesUtil.createInvalidValue(e);
+		                }
+		                /*@NonNull*/ /*@Caught*/ Object CAUGHT_oclIsKindOf_2;
+		                try {
+		                    final /*@NonNull*/ /*@NonInvalid*/ DomainType TYP_docker_c_c_Volumesfrom_1 = idResolver.getType(DockerTables.CLSSid_Volumesfrom, null);
+		                    final /*@Thrown*/ boolean oclIsKindOf_2 = DomainUtil.nonNullState(OclAnyOclIsKindOfOperation.INSTANCE.evaluate(evaluator, _1_2, TYP_docker_c_c_Volumesfrom_1).booleanValue());
+		                    CAUGHT_oclIsKindOf_2 = oclIsKindOf_2;
+		                }
+		                catch (Exception e) {
+		                    CAUGHT_oclIsKindOf_2 = ValuesUtil.createInvalidValue(e);
+		                }
+		                final /*@Nullable*/ /*@Thrown*/ Boolean or_0 = BooleanOrOperation.INSTANCE.evaluate(CAUGHT_oclIsKindOf_1, CAUGHT_oclIsKindOf_2);
+		                if (or_0 == null) {
+		                    throw new InvalidValueException("Null body for \'Sequence(T).select(T[?] | Lambda T() : Boolean) : Sequence(T)\'");
+		                }
+		                //
+		                if (or_0 == ValuesUtil.TRUE_VALUE) {
+		                    accumulator_2.add(_1_2);
+		                }
+		            }
+		            return select;
+		        }
+		    };
+		    final /*@NonNull*/  ExecutorSingleIterationManager MGR_closure_0 = new ExecutorSingleIterationManager(evaluator, DockerTables.ORD_CLSSid_Link, BODY_closure_0, BOXED_links, ACC_closure_0);
+		    final /*@NonNull*/ /*@Thrown*/ OrderedSetValue closure = (OrderedSetValue)IMPL_closure_0.evaluateIteration(MGR_closure_0);
+		    /*@NonNull*/ /*@Thrown*/ SequenceValue.Accumulator accumulator_3 = ValuesUtil.createSequenceAccumulatorValue(DockerTables.SEQ_CLSSid_Resource);
+		    /*@Nullable*/ Iterator<?> ITERATOR__1_4 = closure.iterator();
+		    /*@NonNull*/ /*@Thrown*/ SequenceValue collect;
+		    while (true) {
+		        if (!ITERATOR__1_4.hasNext()) {
+		            collect = accumulator_3;
+		            break;
+		        }
+		        /*@Nullable*/ /*@NonInvalid*/ Link _1_4 = (Link)ITERATOR__1_4.next();
+		        /**
+		         * target
+		         */
+		        if (_1_4 == null) {
+		            throw new InvalidValueException("Null source for \'OCCI::Link::target\'");
+		        }
+		        final /*@NonNull*/ /*@Thrown*/ Resource target_0 = _1_4.getTarget();
+		        //
+		        accumulator_3.add(target_0);
+		    }
+		    final /*@Thrown*/ boolean excludes = DomainUtil.nonNullState(CollectionExcludesOperation.INSTANCE.evaluate(collect, this).booleanValue());
+		    CAUGHT_excludes = excludes;
+		}
+		catch (Exception e) {
+		    CAUGHT_excludes = ValuesUtil.createInvalidValue(e);
+		}
+		if (CAUGHT_excludes == ValuesUtil.TRUE_VALUE) {
+		    return true;
+		}
+		if (diagnostics != null) {
+		    int severity = Diagnostic.WARNING;
+		    String message = DomainUtil.bind(EvaluatorMessages.ValidationConstraintIsNotSatisfied_ERROR_, new Object[]{"Container", "ContainerNoCycleBetweenContainers", EObjectValidator.getObjectLabel(this, context)});
+		    diagnostics.add(new BasicDiagnostic(severity, DockerValidator.DIAGNOSTIC_SOURCE, DockerValidator.CONTAINER__CONTAINER_NO_CYCLE_BETWEEN_CONTAINERS, message, new Object [] { this }));
+		}
+		return false;
 	}
 
 	/**
@@ -2133,6 +2424,7 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 	 * @generated
 	 */
 	@Override
+	@SuppressWarnings("unchecked")
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
 			case DockerPackage.CONTAINER___CREATE:
@@ -2150,6 +2442,10 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 			case DockerPackage.CONTAINER___KILL__STRING:
 				kill((String)arguments.get(0));
 				return null;
+			case DockerPackage.CONTAINER___CONTAINER_LINK_ALIAS_UNIQUE__DIAGNOSTICCHAIN_MAP:
+				return ContainerLinkAliasUnique((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
+			case DockerPackage.CONTAINER___CONTAINER_NO_CYCLE_BETWEEN_CONTAINERS__DIAGNOSTICCHAIN_MAP:
+				return ContainerNoCycleBetweenContainers((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
 		}
 		return super.eInvoke(operationID, arguments);
 	}

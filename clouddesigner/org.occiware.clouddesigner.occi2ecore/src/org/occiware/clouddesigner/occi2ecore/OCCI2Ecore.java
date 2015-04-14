@@ -25,8 +25,8 @@ public class OCCI2Ecore implements IConverterPaths {
 	}
 
 	public static void main(String[] args) throws IOException {
-		EPackage infraEPackage = convertInfrastructure();
-		EPackage dockerEPackage = convertDocker();
+		EPackage infraEPackage = convertInfrastructure(false);
+		EPackage dockerEPackage = convertDocker(false);
 
 		// Convert Docker configurations
 		ConvertDockerConfig dockerConfigConverter = new ConvertDockerConfig(
@@ -41,13 +41,15 @@ public class OCCI2Ecore implements IConverterPaths {
 	/*
 	 * Convert Docker metamodel
 	 */
-	private static EPackage convertDocker() throws IOException {
+	private static EPackage convertDocker(boolean persist) throws IOException {
 		Extension dockerExt = (Extension) ConverterUtils.getRootElement(
 				resourceSet, "file:/" + DOCKER_EXT_PATH);
 		EPackage dockerEPackage = new ConvertDocker()
 				.convertExtension(dockerExt);
-		ConverterUtils.save(resourceSet, dockerEPackage, "file:/"
-				+ DOCKER_MM_PATH);
+		if (persist) {
+			ConverterUtils.save(resourceSet, dockerEPackage, "file:/"
+					+ DOCKER_MM_PATH);
+		}
 		fixMetamodelRefs(new File(DOCKER_MM_PATH));
 		return dockerEPackage;
 	}
@@ -55,13 +57,16 @@ public class OCCI2Ecore implements IConverterPaths {
 	/*
 	 * Convert Infrastructure metamodel
 	 */
-	private static EPackage convertInfrastructure() throws IOException {
+	private static EPackage convertInfrastructure(boolean persist)
+			throws IOException {
 		Extension infraExt = (Extension) ConverterUtils.getRootElement(
 				resourceSet, "file:/" + INFRA_EXT_PATH);
 		EPackage infraEPackage = new OCCIExtension2Ecore()
 				.convertExtension(infraExt);
-		ConverterUtils.save(resourceSet, infraEPackage, "file:/"
-				+ INFRA_MM_PATH);
+		if (persist) {
+			ConverterUtils.save(resourceSet, infraEPackage, "file:/"
+					+ INFRA_MM_PATH);
+		}
 		resourceSet.getPackageRegistry().put(infraEPackage.getNsURI(),
 				infraEPackage);
 		fixMetamodelRefs(new File(INFRA_MM_PATH));

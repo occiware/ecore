@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.occiware.clouddesigner.OCCI.Attribute#getName <em>Name</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.OCCI.Attribute#isMutable <em>Mutable</em>}</li>
@@ -19,8 +20,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.occiware.clouddesigner.OCCI.Attribute#getDefault <em>Default</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.OCCI.Attribute#getDescription <em>Description</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.OCCI.Attribute#getType <em>Type</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.OCCI.Attribute#isMultiple_values <em>Multiple values</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.occiware.clouddesigner.OCCI.OCCIPackage#getAttribute()
  * @model
@@ -187,5 +188,33 @@ public interface Attribute extends EObject {
 	 * @generated
 	 */
 	void setType(EDataType value);
+
+	/**
+	 * Returns the value of the '<em><b>Multiple values</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Multiple values</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Multiple values</em>' attribute.
+	 * @see #setMultiple_values(boolean)
+	 * @see org.occiware.clouddesigner.OCCI.OCCIPackage#getAttribute_Multiple_values()
+	 * @model default="false" dataType="org.occiware.clouddesigner.OCCI.Boolean"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi!Attribute!multiple_values'"
+	 * @generated
+	 */
+	boolean isMultiple_values();
+
+	/**
+	 * Sets the value of the '{@link org.occiware.clouddesigner.OCCI.Attribute#isMultiple_values <em>Multiple values</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Multiple values</em>' attribute.
+	 * @see #isMultiple_values()
+	 * @generated
+	 */
+	void setMultiple_values(boolean value);
 
 } // Attribute

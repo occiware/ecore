@@ -11,12 +11,12 @@ import org.occiware.clouddesigner.OCCI.Resource;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.Network#getVlan <em>Vlan</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.Network#getLabel <em>Label</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.Network#getState <em>State</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getNetwork()
  * @model
@@ -35,6 +35,7 @@ public interface Network extends Resource {
 	 * @see #setVlan(int)
 	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getNetwork_Vlan()
 	 * @model dataType="org.occiware.clouddesigner.occi.infrastructure.Integer4095"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Network!vlan'"
 	 * @generated
 	 */
 	int getVlan();
@@ -61,6 +62,7 @@ public interface Network extends Resource {
 	 * @see #setLabel(String)
 	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getNetwork_Label()
 	 * @model dataType="org.occiware.clouddesigner.occi.infrastructure.Token"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Network!label'"
 	 * @generated
 	 */
 	String getLabel();
@@ -89,6 +91,7 @@ public interface Network extends Resource {
 	 * @see #setState(ComputeStatus)
 	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getNetwork_State()
 	 * @model required="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Network!state'"
 	 * @generated
 	 */
 	ComputeStatus getState();
@@ -107,7 +110,7 @@ public interface Network extends Resource {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model
+	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Network!up()'"
 	 * @generated
 	 */
 	void up();
@@ -115,7 +118,7 @@ public interface Network extends Resource {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model
+	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Network!down()'"
 	 * @generated
 	 */
 	void down();

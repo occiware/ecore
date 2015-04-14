@@ -18,11 +18,11 @@ import org.occiware.clouddesigner.OCCI.OCCIPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.occiware.clouddesigner.OCCI.impl.AttributeStateImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.OCCI.impl.AttributeStateImpl#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
