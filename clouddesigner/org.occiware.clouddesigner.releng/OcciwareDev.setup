@@ -66,6 +66,8 @@
         name="org.eclipse.sirius.runtime.ide.ui.feature.group"/>
     <requirement
         name="org.eclipse.sirius.specifier.ide.ui.feature.group"/>
+    <requirement
+        name="org.eclipse.ocl.examples.feature.group"/>
     <repository
         url="http://download.eclipse.org/releases/luna"/>
     <repository
