@@ -164,6 +164,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_VMware_vCloud_Air/docker_port"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_VMware_vCloud_Air/edgegateway"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_VMware_vCloud_Air/memory_size"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_VMware_vCloud_Air/vapp_name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_VMware_vCloud_Air/orgvdcnetwork"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_VMware_vCloud_Air/provision"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_VMware_vCloud_Air/publicip"/>

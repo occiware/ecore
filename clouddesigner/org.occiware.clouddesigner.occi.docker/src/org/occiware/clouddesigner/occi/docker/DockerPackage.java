@@ -3706,13 +3706,22 @@ public interface DockerPackage extends EPackage {
 	int MACHINE_VMWARE_VCLOUD_AIR__MEMORY_SIZE = MACHINE_FEATURE_COUNT + 8;
 
 	/**
+	 * The feature id for the '<em><b>Vapp name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_VCLOUD_AIR__VAPP_NAME = MACHINE_FEATURE_COUNT + 9;
+
+	/**
 	 * The feature id for the '<em><b>Orgvdcnetwork</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MACHINE_VMWARE_VCLOUD_AIR__ORGVDCNETWORK = MACHINE_FEATURE_COUNT + 9;
+	int MACHINE_VMWARE_VCLOUD_AIR__ORGVDCNETWORK = MACHINE_FEATURE_COUNT + 10;
 
 	/**
 	 * The feature id for the '<em><b>Provision</b></em>' attribute.
@@ -3721,7 +3730,7 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MACHINE_VMWARE_VCLOUD_AIR__PROVISION = MACHINE_FEATURE_COUNT + 10;
+	int MACHINE_VMWARE_VCLOUD_AIR__PROVISION = MACHINE_FEATURE_COUNT + 11;
 
 	/**
 	 * The feature id for the '<em><b>Publicip</b></em>' attribute.
@@ -3730,7 +3739,7 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MACHINE_VMWARE_VCLOUD_AIR__PUBLICIP = MACHINE_FEATURE_COUNT + 11;
+	int MACHINE_VMWARE_VCLOUD_AIR__PUBLICIP = MACHINE_FEATURE_COUNT + 12;
 
 	/**
 	 * The feature id for the '<em><b>Ssh port</b></em>' attribute.
@@ -3739,7 +3748,7 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MACHINE_VMWARE_VCLOUD_AIR__SSH_PORT = MACHINE_FEATURE_COUNT + 12;
+	int MACHINE_VMWARE_VCLOUD_AIR__SSH_PORT = MACHINE_FEATURE_COUNT + 13;
 
 	/**
 	 * The feature id for the '<em><b>Vdcid</b></em>' attribute.
@@ -3748,7 +3757,7 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MACHINE_VMWARE_VCLOUD_AIR__VDCID = MACHINE_FEATURE_COUNT + 13;
+	int MACHINE_VMWARE_VCLOUD_AIR__VDCID = MACHINE_FEATURE_COUNT + 14;
 
 	/**
 	 * The number of structural features of the '<em>Machine VMware vCloud Air</em>' class.
@@ -3757,7 +3766,7 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MACHINE_VMWARE_VCLOUD_AIR_FEATURE_COUNT = MACHINE_FEATURE_COUNT + 14;
+	int MACHINE_VMWARE_VCLOUD_AIR_FEATURE_COUNT = MACHINE_FEATURE_COUNT + 15;
 
 	/**
 	 * The operation id for the '<em>Start</em>' operation.
@@ -5656,6 +5665,17 @@ public interface DockerPackage extends EPackage {
 	EAttribute getMachine_VMware_vCloud_Air_Memory_size();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_VMware_vCloud_Air#getVapp_name <em>Vapp name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Vapp name</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_VMware_vCloud_Air#getVapp_name()
+	 * @see #getMachine_VMware_vCloud_Air()
+	 * @generated
+	 */
+	EAttribute getMachine_VMware_vCloud_Air_Vapp_name();
+
+	/**
 	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_VMware_vCloud_Air#getOrgvdcnetwork <em>Orgvdcnetwork</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7060,6 +7080,14 @@ public interface DockerPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute MACHINE_VMWARE_VCLOUD_AIR__MEMORY_SIZE = eINSTANCE.getMachine_VMware_vCloud_Air_Memory_size();
+
+		/**
+		 * The meta object literal for the '<em><b>Vapp name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_VMWARE_VCLOUD_AIR__VAPP_NAME = eINSTANCE.getMachine_VMware_vCloud_Air_Vapp_name();
 
 		/**
 		 * The meta object literal for the '<em><b>Orgvdcnetwork</b></em>' attribute feature.

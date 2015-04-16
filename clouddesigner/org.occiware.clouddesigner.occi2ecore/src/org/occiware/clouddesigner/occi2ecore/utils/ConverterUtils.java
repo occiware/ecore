@@ -8,8 +8,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
@@ -18,6 +19,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.xmi.XMIResource;
 import org.occiware.clouddesigner.OCCI.Attribute;
 import org.occiware.clouddesigner.OCCI.Kind;
 
@@ -51,7 +53,9 @@ public final class ConverterUtils {
 			String path) throws IOException {
 		Resource resource = resourceSet.createResource(URI.createURI(path));
 		resource.getContents().add(rootElement);
-		resource.save(Collections.emptyMap());
+		Map options = new HashMap();
+		options.put(XMIResource.OPTION_ENCODING, "UTF-8");
+		resource.save(options);
 	}
 
 	public static String formatName(String name) {

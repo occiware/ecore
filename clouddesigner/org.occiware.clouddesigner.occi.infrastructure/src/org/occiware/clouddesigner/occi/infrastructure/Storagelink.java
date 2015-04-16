@@ -34,7 +34,7 @@ public interface Storagelink extends Link {
 	 * @return the value of the '<em>Deviceid</em>' attribute.
 	 * @see #setDeviceid(String)
 	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getStoragelink_Deviceid()
-	 * @model required="true"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String" required="true"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Storagelink!deviceid'"
 	 * @generated
 	 */
@@ -61,7 +61,8 @@ public interface Storagelink extends Link {
 	 * @return the value of the '<em>Mountpoint</em>' attribute.
 	 * @see #setMountpoint(String)
 	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getStoragelink_Mountpoint()
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Storagelink!mountpoint'"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Storagelink!mountpoint'"
 	 * @generated
 	 */
 	String getMountpoint();

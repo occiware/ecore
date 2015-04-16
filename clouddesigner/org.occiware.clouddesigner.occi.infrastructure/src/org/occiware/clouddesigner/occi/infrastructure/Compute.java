@@ -93,7 +93,8 @@ public interface Compute extends Resource {
 	 * @return the value of the '<em>Hostname</em>' attribute.
 	 * @see #setHostname(String)
 	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getCompute_Hostname()
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Compute!hostname'"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Compute!hostname'"
 	 * @generated
 	 */
 	String getHostname();

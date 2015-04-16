@@ -34,7 +34,7 @@ public interface Networkinterface extends Link {
 	 * @return the value of the '<em>Interface</em>' attribute.
 	 * @see #setInterface(String)
 	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getNetworkinterface_Interface()
-	 * @model required="true"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String" required="true"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Networkinterface!interface'"
 	 * @generated
 	 */
@@ -61,7 +61,7 @@ public interface Networkinterface extends Link {
 	 * @return the value of the '<em>Mac</em>' attribute.
 	 * @see #setMac(String)
 	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getNetworkinterface_Mac()
-	 * @model required="true"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String" required="true"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Networkinterface!mac'"
 	 * @generated
 	 */

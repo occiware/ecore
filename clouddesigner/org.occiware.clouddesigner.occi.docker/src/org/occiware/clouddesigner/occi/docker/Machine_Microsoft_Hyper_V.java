@@ -35,7 +35,8 @@ public interface Machine_Microsoft_Hyper_V extends Machine {
 	 * @return the value of the '<em>Boot2docker location</em>' attribute.
 	 * @see #setBoot2docker_location(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Microsoft_Hyper_V_Boot2docker_location()
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_Microsoft_Hyper_V!boot2docker_location'"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_Microsoft_Hyper_V!boot2docker_location'"
 	 * @generated
 	 */
 	String getBoot2docker_location();
@@ -61,7 +62,8 @@ public interface Machine_Microsoft_Hyper_V extends Machine {
 	 * @return the value of the '<em>Boot2docker url</em>' attribute.
 	 * @see #setBoot2docker_url(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Microsoft_Hyper_V_Boot2docker_url()
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_Microsoft_Hyper_V!boot2docker_url'"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_Microsoft_Hyper_V!boot2docker_url'"
 	 * @generated
 	 */
 	String getBoot2docker_url();
@@ -115,7 +117,8 @@ public interface Machine_Microsoft_Hyper_V extends Machine {
 	 * @return the value of the '<em>Virtual switch</em>' attribute.
 	 * @see #setVirtual_switch(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Microsoft_Hyper_V_Virtual_switch()
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_Microsoft_Hyper_V!virtual_switch'"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_Microsoft_Hyper_V!virtual_switch'"
 	 * @generated
 	 */
 	String getVirtual_switch();

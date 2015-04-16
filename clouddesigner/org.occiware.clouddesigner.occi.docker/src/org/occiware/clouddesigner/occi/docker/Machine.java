@@ -34,7 +34,7 @@ public interface Machine extends Compute {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Name()
-	 * @model required="true"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String" required="true"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine!name'"
 	 * @generated
 	 */

@@ -323,7 +323,7 @@ public class DockerTables
 	 */
 	public static class Parameters {
 		public static final /*@NonNull*/ DomainParameterTypes _ = new DomainParameterTypes();
-		public static final /*@NonNull*/ DomainParameterTypes _String = new DomainParameterTypes(OCLstdlibTables.Types._String);
+		public static final /*@NonNull*/ DomainParameterTypes _String = new DomainParameterTypes(OCCITables.Types._String);
 	}
 
 	/**
@@ -473,7 +473,8 @@ public class DockerTables
 		public static final /*@NonNull*/ ExecutorProperty _Machine_VMware_vCloud_Air__publicip = new EcoreExecutorProperty(DockerPackage.Literals.MACHINE_VMWARE_VCLOUD_AIR__PUBLICIP, Types._Machine_VMware_vCloud_Air, 10);
 		public static final /*@NonNull*/ ExecutorProperty _Machine_VMware_vCloud_Air__ssh_port = new EcoreExecutorProperty(DockerPackage.Literals.MACHINE_VMWARE_VCLOUD_AIR__SSH_PORT, Types._Machine_VMware_vCloud_Air, 11);
 		public static final /*@NonNull*/ ExecutorProperty _Machine_VMware_vCloud_Air__username = new EcoreExecutorProperty(DockerPackage.Literals.MACHINE_VMWARE_VCLOUD_AIR__USERNAME, Types._Machine_VMware_vCloud_Air, 12);
-		public static final /*@NonNull*/ ExecutorProperty _Machine_VMware_vCloud_Air__vdcid = new EcoreExecutorProperty(DockerPackage.Literals.MACHINE_VMWARE_VCLOUD_AIR__VDCID, Types._Machine_VMware_vCloud_Air, 13);
+		public static final /*@NonNull*/ ExecutorProperty _Machine_VMware_vCloud_Air__vapp_name = new EcoreExecutorProperty(DockerPackage.Literals.MACHINE_VMWARE_VCLOUD_AIR__VAPP_NAME, Types._Machine_VMware_vCloud_Air, 13);
+		public static final /*@NonNull*/ ExecutorProperty _Machine_VMware_vCloud_Air__vdcid = new EcoreExecutorProperty(DockerPackage.Literals.MACHINE_VMWARE_VCLOUD_AIR__VDCID, Types._Machine_VMware_vCloud_Air, 14);
 
 		public static final /*@NonNull*/ ExecutorProperty _Machine_VMware_vSphere__boot2docker_url = new EcoreExecutorProperty(DockerPackage.Literals.MACHINE_VMWARE_VSPHERE__BOOT2DOCKER_URL, Types._Machine_VMware_vSphere, 0);
 		public static final /*@NonNull*/ ExecutorProperty _Machine_VMware_vSphere__compute_ip = new EcoreExecutorProperty(DockerPackage.Literals.MACHINE_VMWARE_VSPHERE__COMPUTE_IP, Types._Machine_VMware_vSphere, 1);
@@ -1676,6 +1677,7 @@ public class DockerTables
 			DockerTables.Properties._Machine_VMware_vCloud_Air__publicip,
 			DockerTables.Properties._Machine_VMware_vCloud_Air__ssh_port,
 			DockerTables.Properties._Machine_VMware_vCloud_Air__username,
+			DockerTables.Properties._Machine_VMware_vCloud_Air__vapp_name,
 			DockerTables.Properties._Machine_VMware_vCloud_Air__vdcid,
 			OCCITables.Properties._Resource__Link__target
 		};

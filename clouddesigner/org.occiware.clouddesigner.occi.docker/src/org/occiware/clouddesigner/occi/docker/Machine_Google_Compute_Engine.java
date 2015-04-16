@@ -37,7 +37,7 @@ public interface Machine_Google_Compute_Engine extends Machine {
 	 * @return the value of the '<em>Zone</em>' attribute.
 	 * @see #setZone(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Google_Compute_Engine_Zone()
-	 * @model default="us-central1-a"
+	 * @model default="us-central1-a" dataType="org.occiware.clouddesigner.OCCI.String"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_Google_Compute_Engine!zone'"
 	 * @generated
 	 */
@@ -65,7 +65,7 @@ public interface Machine_Google_Compute_Engine extends Machine {
 	 * @return the value of the '<em>Machine type</em>' attribute.
 	 * @see #setMachine_type(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Google_Compute_Engine_Machine_type()
-	 * @model default="f1-micro"
+	 * @model default="f1-micro" dataType="org.occiware.clouddesigner.OCCI.String"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_Google_Compute_Engine!machine_type'"
 	 * @generated
 	 */
@@ -93,7 +93,7 @@ public interface Machine_Google_Compute_Engine extends Machine {
 	 * @return the value of the '<em>Username</em>' attribute.
 	 * @see #setUsername(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Google_Compute_Engine_Username()
-	 * @model default="docker-user"
+	 * @model default="docker-user" dataType="org.occiware.clouddesigner.OCCI.String"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_Google_Compute_Engine!username'"
 	 * @generated
 	 */
@@ -121,7 +121,7 @@ public interface Machine_Google_Compute_Engine extends Machine {
 	 * @return the value of the '<em>Instance name</em>' attribute.
 	 * @see #setInstance_name(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Google_Compute_Engine_Instance_name()
-	 * @model default="docker-machine"
+	 * @model default="docker-machine" dataType="org.occiware.clouddesigner.OCCI.String"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_Google_Compute_Engine!instance_name'"
 	 * @generated
 	 */
@@ -148,7 +148,7 @@ public interface Machine_Google_Compute_Engine extends Machine {
 	 * @return the value of the '<em>Project</em>' attribute.
 	 * @see #setProject(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Google_Compute_Engine_Project()
-	 * @model required="true"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String" required="true"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_Google_Compute_Engine!project'"
 	 * @generated
 	 */

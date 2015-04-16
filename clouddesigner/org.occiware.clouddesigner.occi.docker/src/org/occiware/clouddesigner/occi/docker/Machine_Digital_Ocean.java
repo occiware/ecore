@@ -35,7 +35,7 @@ public interface Machine_Digital_Ocean extends Machine {
 	 * @return the value of the '<em>Access token</em>' attribute.
 	 * @see #setAccess_token(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Digital_Ocean_Access_token()
-	 * @model required="true"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String" required="true"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_Digital_Ocean!access_token'"
 	 * @generated
 	 */
@@ -63,7 +63,7 @@ public interface Machine_Digital_Ocean extends Machine {
 	 * @return the value of the '<em>Image</em>' attribute.
 	 * @see #setImage(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Digital_Ocean_Image()
-	 * @model default="docker"
+	 * @model default="docker" dataType="org.occiware.clouddesigner.OCCI.String"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_Digital_Ocean!image'"
 	 * @generated
 	 */
@@ -91,7 +91,7 @@ public interface Machine_Digital_Ocean extends Machine {
 	 * @return the value of the '<em>Region</em>' attribute.
 	 * @see #setRegion(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Digital_Ocean_Region()
-	 * @model default="nyc3"
+	 * @model default="nyc3" dataType="org.occiware.clouddesigner.OCCI.String"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_Digital_Ocean!region'"
 	 * @generated
 	 */
@@ -119,7 +119,7 @@ public interface Machine_Digital_Ocean extends Machine {
 	 * @return the value of the '<em>Size</em>' attribute.
 	 * @see #setSize(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Digital_Ocean_Size()
-	 * @model default="512mb"
+	 * @model default="512mb" dataType="org.occiware.clouddesigner.OCCI.String"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_Digital_Ocean!size'"
 	 * @generated
 	 */

@@ -35,7 +35,8 @@ public interface Machine_VirtualBox extends Machine {
 	 * @return the value of the '<em>Boot2docker url</em>' attribute.
 	 * @see #setBoot2docker_url(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VirtualBox_Boot2docker_url()
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_VirtualBox!boot2docker_url'"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_VirtualBox!boot2docker_url'"
 	 * @generated
 	 */
 	String getBoot2docker_url();

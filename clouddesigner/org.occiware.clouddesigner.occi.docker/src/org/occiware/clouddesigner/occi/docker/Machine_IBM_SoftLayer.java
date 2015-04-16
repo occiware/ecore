@@ -42,7 +42,8 @@ public interface Machine_IBM_SoftLayer extends Machine {
 	 * @return the value of the '<em>Api endpoint</em>' attribute.
 	 * @see #setApi_endpoint(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_IBM_SoftLayer_Api_endpoint()
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_IBM_SoftLayer!api_endpoint'"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_IBM_SoftLayer!api_endpoint'"
 	 * @generated
 	 */
 	String getApi_endpoint();
@@ -68,7 +69,7 @@ public interface Machine_IBM_SoftLayer extends Machine {
 	 * @return the value of the '<em>User</em>' attribute.
 	 * @see #setUser(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_IBM_SoftLayer_User()
-	 * @model required="true"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String" required="true"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_IBM_SoftLayer!user'"
 	 * @generated
 	 */
@@ -95,7 +96,7 @@ public interface Machine_IBM_SoftLayer extends Machine {
 	 * @return the value of the '<em>Api key</em>' attribute.
 	 * @see #setApi_key(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_IBM_SoftLayer_Api_key()
-	 * @model required="true"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String" required="true"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_IBM_SoftLayer!api_key'"
 	 * @generated
 	 */
@@ -176,7 +177,7 @@ public interface Machine_IBM_SoftLayer extends Machine {
 	 * @return the value of the '<em>Domain</em>' attribute.
 	 * @see #setDomain(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_IBM_SoftLayer_Domain()
-	 * @model required="true"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String" required="true"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_IBM_SoftLayer!domain'"
 	 * @generated
 	 */
@@ -204,7 +205,7 @@ public interface Machine_IBM_SoftLayer extends Machine {
 	 * @return the value of the '<em>Hourly billing</em>' attribute.
 	 * @see #setHourly_billing(boolean)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_IBM_SoftLayer_Hourly_billing()
-	 * @model default="true"
+	 * @model default="true" dataType="org.occiware.clouddesigner.OCCI.Boolean"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_IBM_SoftLayer!hourly_billing'"
 	 * @generated
 	 */
@@ -231,7 +232,8 @@ public interface Machine_IBM_SoftLayer extends Machine {
 	 * @return the value of the '<em>Image</em>' attribute.
 	 * @see #setImage(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_IBM_SoftLayer_Image()
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_IBM_SoftLayer!image'"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_IBM_SoftLayer!image'"
 	 * @generated
 	 */
 	String getImage();
@@ -257,7 +259,8 @@ public interface Machine_IBM_SoftLayer extends Machine {
 	 * @return the value of the '<em>Local disk</em>' attribute.
 	 * @see #setLocal_disk(boolean)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_IBM_SoftLayer_Local_disk()
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_IBM_SoftLayer!local_disk'"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.Boolean"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_IBM_SoftLayer!local_disk'"
 	 * @generated
 	 */
 	boolean isLocal_disk();
@@ -283,7 +286,8 @@ public interface Machine_IBM_SoftLayer extends Machine {
 	 * @return the value of the '<em>Private net only</em>' attribute.
 	 * @see #setPrivate_net_only(boolean)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_IBM_SoftLayer_Private_net_only()
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_IBM_SoftLayer!private_net_only'"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.Boolean"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_IBM_SoftLayer!private_net_only'"
 	 * @generated
 	 */
 	boolean isPrivate_net_only();
@@ -309,7 +313,8 @@ public interface Machine_IBM_SoftLayer extends Machine {
 	 * @return the value of the '<em>Region</em>' attribute.
 	 * @see #setRegion(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_IBM_SoftLayer_Region()
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_IBM_SoftLayer!region'"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_IBM_SoftLayer!region'"
 	 * @generated
 	 */
 	String getRegion();

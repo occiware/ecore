@@ -33,7 +33,7 @@ public interface Machine_Microsoft_Azure extends Machine {
 	 * @return the value of the '<em>Subscription id</em>' attribute.
 	 * @see #setSubscription_id(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Microsoft_Azure_Subscription_id()
-	 * @model required="true"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String" required="true"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_Microsoft_Azure!subscription_id'"
 	 * @generated
 	 */
@@ -60,7 +60,7 @@ public interface Machine_Microsoft_Azure extends Machine {
 	 * @return the value of the '<em>Subscription cert</em>' attribute.
 	 * @see #setSubscription_cert(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Microsoft_Azure_Subscription_cert()
-	 * @model required="true"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String" required="true"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_Microsoft_Azure!subscription_cert'"
 	 * @generated
 	 */

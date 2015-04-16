@@ -54,6 +54,7 @@ public class Machine_VMware_vCloud_AirItemProvider extends MachineItemProvider {
 			addDocker_portPropertyDescriptor(object);
 			addEdgegatewayPropertyDescriptor(object);
 			addMemory_sizePropertyDescriptor(object);
+			addVapp_namePropertyDescriptor(object);
 			addOrgvdcnetworkPropertyDescriptor(object);
 			addProvisionPropertyDescriptor(object);
 			addPublicipPropertyDescriptor(object);
@@ -262,6 +263,28 @@ public class Machine_VMware_vCloud_AirItemProvider extends MachineItemProvider {
 	}
 
 	/**
+	 * This adds a property descriptor for the Vapp name feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addVapp_namePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_VMware_vCloud_Air_vapp_name_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_VMware_vCloud_Air_vapp_name_feature", "_UI_Machine_VMware_vCloud_Air_type"),
+				 DockerPackage.Literals.MACHINE_VMWARE_VCLOUD_AIR__VAPP_NAME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Orgvdcnetwork feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -418,6 +441,7 @@ public class Machine_VMware_vCloud_AirItemProvider extends MachineItemProvider {
 			case DockerPackage.MACHINE_VMWARE_VCLOUD_AIR__DOCKER_PORT:
 			case DockerPackage.MACHINE_VMWARE_VCLOUD_AIR__EDGEGATEWAY:
 			case DockerPackage.MACHINE_VMWARE_VCLOUD_AIR__MEMORY_SIZE:
+			case DockerPackage.MACHINE_VMWARE_VCLOUD_AIR__VAPP_NAME:
 			case DockerPackage.MACHINE_VMWARE_VCLOUD_AIR__ORGVDCNETWORK:
 			case DockerPackage.MACHINE_VMWARE_VCLOUD_AIR__PROVISION:
 			case DockerPackage.MACHINE_VMWARE_VCLOUD_AIR__PUBLICIP:

@@ -71,7 +71,7 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Name()
-	 * @model required="true"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String" required="true"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!name'"
 	 * @generated
 	 */
@@ -98,7 +98,8 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Containerid</em>' attribute.
 	 * @see #setContainerid(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Containerid()
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!containerid'"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!containerid'"
 	 * @generated
 	 */
 	String getContainerid();
@@ -124,7 +125,8 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Image</em>' attribute.
 	 * @see #setImage(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Image()
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!image'"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!image'"
 	 * @generated
 	 */
 	String getImage();
@@ -150,7 +152,8 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Build</em>' attribute.
 	 * @see #setBuild(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Build()
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!build'"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!build'"
 	 * @generated
 	 */
 	String getBuild();
@@ -176,7 +179,8 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Command</em>' attribute.
 	 * @see #setCommand(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Command()
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!command'"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!command'"
 	 * @generated
 	 */
 	String getCommand();
@@ -202,7 +206,8 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Ports</em>' attribute.
 	 * @see #setPorts(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Ports()
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!ports'"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!ports'"
 	 * @generated
 	 */
 	String getPorts();
@@ -228,7 +233,8 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Expose</em>' attribute.
 	 * @see #setExpose(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Expose()
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!expose'"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!expose'"
 	 * @generated
 	 */
 	String getExpose();
@@ -254,7 +260,8 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Volumes</em>' attribute.
 	 * @see #setVolumes(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Volumes()
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!volumes'"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!volumes'"
 	 * @generated
 	 */
 	String getVolumes();
@@ -280,7 +287,8 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Environment</em>' attribute.
 	 * @see #setEnvironment(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Environment()
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!environment'"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!environment'"
 	 * @generated
 	 */
 	String getEnvironment();
@@ -306,7 +314,8 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Env file</em>' attribute.
 	 * @see #setEnv_file(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Env_file()
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!env_file'"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!env_file'"
 	 * @generated
 	 */
 	String getEnv_file();
@@ -332,7 +341,8 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Net</em>' attribute.
 	 * @see #setNet(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Net()
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!net'"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!net'"
 	 * @generated
 	 */
 	String getNet();
@@ -358,7 +368,8 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Dns</em>' attribute.
 	 * @see #setDns(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Dns()
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!dns'"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!dns'"
 	 * @generated
 	 */
 	String getDns();
@@ -384,7 +395,8 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Dns search</em>' attribute.
 	 * @see #setDns_search(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Dns_search()
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!dns_search'"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!dns_search'"
 	 * @generated
 	 */
 	String getDns_search();
@@ -410,7 +422,8 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Cap add</em>' attribute.
 	 * @see #setCap_add(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Cap_add()
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!cap_add'"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!cap_add'"
 	 * @generated
 	 */
 	String getCap_add();
@@ -436,7 +449,8 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Cap drop</em>' attribute.
 	 * @see #setCap_drop(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Cap_drop()
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!cap_drop'"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!cap_drop'"
 	 * @generated
 	 */
 	String getCap_drop();
@@ -462,7 +476,8 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Working dir</em>' attribute.
 	 * @see #setWorking_dir(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Working_dir()
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!working_dir'"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!working_dir'"
 	 * @generated
 	 */
 	String getWorking_dir();
@@ -488,7 +503,8 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Entrypoint</em>' attribute.
 	 * @see #setEntrypoint(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Entrypoint()
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!entrypoint'"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!entrypoint'"
 	 * @generated
 	 */
 	String getEntrypoint();
@@ -514,7 +530,8 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>User</em>' attribute.
 	 * @see #setUser(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_User()
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!user'"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!user'"
 	 * @generated
 	 */
 	String getUser();
@@ -540,7 +557,8 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Domainname</em>' attribute.
 	 * @see #setDomainname(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Domainname()
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!domainname'"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!domainname'"
 	 * @generated
 	 */
 	String getDomainname();
@@ -621,7 +639,7 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Privileged</em>' attribute.
 	 * @see #setPrivileged(boolean)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Privileged()
-	 * @model default="false"
+	 * @model default="false" dataType="org.occiware.clouddesigner.OCCI.Boolean"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!privileged'"
 	 * @generated
 	 */
@@ -648,7 +666,8 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Restart</em>' attribute.
 	 * @see #setRestart(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Restart()
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!restart'"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!restart'"
 	 * @generated
 	 */
 	String getRestart();
@@ -674,7 +693,8 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Stdin open</em>' attribute.
 	 * @see #setStdin_open(boolean)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Stdin_open()
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!stdin_open'"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.Boolean"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!stdin_open'"
 	 * @generated
 	 */
 	boolean isStdin_open();
@@ -701,7 +721,7 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Interactive</em>' attribute.
 	 * @see #setInteractive(boolean)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Interactive()
-	 * @model default="false" required="true"
+	 * @model default="false" dataType="org.occiware.clouddesigner.OCCI.Boolean" required="true"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!interactive'"
 	 * @generated
 	 */
@@ -729,7 +749,7 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Tty</em>' attribute.
 	 * @see #setTty(boolean)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Tty()
-	 * @model default="false"
+	 * @model default="false" dataType="org.occiware.clouddesigner.OCCI.Boolean"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!tty'"
 	 * @generated
 	 */
@@ -784,7 +804,8 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Pid</em>' attribute.
 	 * @see #setPid(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Pid()
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!pid'"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!pid'"
 	 * @generated
 	 */
 	String getPid();
@@ -810,7 +831,8 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Ipc</em>' attribute.
 	 * @see #setIpc(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Ipc()
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!ipc'"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!ipc'"
 	 * @generated
 	 */
 	String getIpc();
@@ -836,7 +858,8 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Add host</em>' attribute.
 	 * @see #setAdd_host(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Add_host()
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!add_host'"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!add_host'"
 	 * @generated
 	 */
 	String getAdd_host();
@@ -862,7 +885,8 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Mac address</em>' attribute.
 	 * @see #setMac_address(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Mac_address()
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!mac_address'"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!mac_address'"
 	 * @generated
 	 */
 	String getMac_address();
@@ -888,7 +912,8 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Rm</em>' attribute.
 	 * @see #setRm(boolean)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Rm()
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!rm'"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.Boolean"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!rm'"
 	 * @generated
 	 */
 	boolean isRm();
@@ -914,7 +939,8 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Security opt</em>' attribute.
 	 * @see #setSecurity_opt(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Security_opt()
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!security_opt'"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!security_opt'"
 	 * @generated
 	 */
 	String getSecurity_opt();
@@ -940,7 +966,8 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Device</em>' attribute.
 	 * @see #setDevice(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Device()
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!device'"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!device'"
 	 * @generated
 	 */
 	String getDevice();
@@ -966,7 +993,8 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Lxc conf</em>' attribute.
 	 * @see #setLxc_conf(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Lxc_conf()
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!lxc_conf'"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!lxc_conf'"
 	 * @generated
 	 */
 	String getLxc_conf();
@@ -992,7 +1020,8 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Cpuset</em>' attribute.
 	 * @see #setCpuset(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Cpuset()
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!cpuset'"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!cpuset'"
 	 * @generated
 	 */
 	String getCpuset();
@@ -1019,7 +1048,7 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Publish all</em>' attribute.
 	 * @see #setPublish_all(boolean)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Publish_all()
-	 * @model default="false"
+	 * @model default="false" dataType="org.occiware.clouddesigner.OCCI.Boolean"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!publish_all'"
 	 * @generated
 	 */
@@ -1047,7 +1076,7 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Read only</em>' attribute.
 	 * @see #setRead_only(boolean)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Read_only()
-	 * @model default="false"
+	 * @model default="false" dataType="org.occiware.clouddesigner.OCCI.Boolean"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!read_only'"
 	 * @generated
 	 */
@@ -1098,7 +1127,7 @@ public interface Container extends Compute {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model signalRequired="true"
+	 * @model signalDataType="org.occiware.clouddesigner.OCCI.String" signalRequired="true"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!kill(String)'"
 	 * @generated
 	 */

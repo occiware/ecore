@@ -39,7 +39,7 @@ public interface Machine_Rackspace extends Machine {
 	 * @return the value of the '<em>Username</em>' attribute.
 	 * @see #setUsername(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Rackspace_Username()
-	 * @model required="true"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String" required="true"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_Rackspace!username'"
 	 * @generated
 	 */
@@ -66,7 +66,7 @@ public interface Machine_Rackspace extends Machine {
 	 * @return the value of the '<em>Api key</em>' attribute.
 	 * @see #setApi_key(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Rackspace_Api_key()
-	 * @model required="true"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String" required="true"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_Rackspace!api_key'"
 	 * @generated
 	 */
@@ -93,7 +93,7 @@ public interface Machine_Rackspace extends Machine {
 	 * @return the value of the '<em>Region</em>' attribute.
 	 * @see #setRegion(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Rackspace_Region()
-	 * @model required="true"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String" required="true"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_Rackspace!region'"
 	 * @generated
 	 */
@@ -121,7 +121,7 @@ public interface Machine_Rackspace extends Machine {
 	 * @return the value of the '<em>Endpoint type</em>' attribute.
 	 * @see #setEndpoint_type(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Rackspace_Endpoint_type()
-	 * @model default="publicURL"
+	 * @model default="publicURL" dataType="org.occiware.clouddesigner.OCCI.String"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_Rackspace!endpoint_type'"
 	 * @generated
 	 */
@@ -149,7 +149,7 @@ public interface Machine_Rackspace extends Machine {
 	 * @return the value of the '<em>Image id</em>' attribute.
 	 * @see #setImage_id(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Rackspace_Image_id()
-	 * @model default="Ubuntu 14.10 (Utopic Unicorn) (PVHVM)"
+	 * @model default="Ubuntu 14.10 (Utopic Unicorn) (PVHVM)" dataType="org.occiware.clouddesigner.OCCI.String"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_Rackspace!image_id'"
 	 * @generated
 	 */
@@ -177,7 +177,7 @@ public interface Machine_Rackspace extends Machine {
 	 * @return the value of the '<em>Flavor id</em>' attribute.
 	 * @see #setFlavor_id(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Rackspace_Flavor_id()
-	 * @model default="General Purpose 1GB"
+	 * @model default="General Purpose 1GB" dataType="org.occiware.clouddesigner.OCCI.String"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_Rackspace!flavor_id'"
 	 * @generated
 	 */
@@ -205,7 +205,7 @@ public interface Machine_Rackspace extends Machine {
 	 * @return the value of the '<em>Ssh user</em>' attribute.
 	 * @see #setSsh_user(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Rackspace_Ssh_user()
-	 * @model default="root"
+	 * @model default="root" dataType="org.occiware.clouddesigner.OCCI.String"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_Rackspace!ssh_user'"
 	 * @generated
 	 */

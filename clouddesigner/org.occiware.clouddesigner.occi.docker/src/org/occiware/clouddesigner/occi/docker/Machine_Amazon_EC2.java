@@ -42,7 +42,7 @@ public interface Machine_Amazon_EC2 extends Machine {
 	 * @return the value of the '<em>Access key</em>' attribute.
 	 * @see #setAccess_key(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Amazon_EC2_Access_key()
-	 * @model required="true"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String" required="true"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_Amazon_EC2!access_key'"
 	 * @generated
 	 */
@@ -70,7 +70,7 @@ public interface Machine_Amazon_EC2 extends Machine {
 	 * @return the value of the '<em>Ami</em>' attribute.
 	 * @see #setAmi(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Amazon_EC2_Ami()
-	 * @model default="ami-4ae27e22"
+	 * @model default="ami-4ae27e22" dataType="org.occiware.clouddesigner.OCCI.String"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_Amazon_EC2!ami'"
 	 * @generated
 	 */
@@ -98,7 +98,7 @@ public interface Machine_Amazon_EC2 extends Machine {
 	 * @return the value of the '<em>Instance type</em>' attribute.
 	 * @see #setInstance_type(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Amazon_EC2_Instance_type()
-	 * @model default="t2.micro"
+	 * @model default="t2.micro" dataType="org.occiware.clouddesigner.OCCI.String"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_Amazon_EC2!instance_type'"
 	 * @generated
 	 */
@@ -126,7 +126,7 @@ public interface Machine_Amazon_EC2 extends Machine {
 	 * @return the value of the '<em>Region</em>' attribute.
 	 * @see #setRegion(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Amazon_EC2_Region()
-	 * @model default="us-east-1"
+	 * @model default="us-east-1" dataType="org.occiware.clouddesigner.OCCI.String"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_Amazon_EC2!region'"
 	 * @generated
 	 */
@@ -181,7 +181,7 @@ public interface Machine_Amazon_EC2 extends Machine {
 	 * @return the value of the '<em>Secret key</em>' attribute.
 	 * @see #setSecret_key(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Amazon_EC2_Secret_key()
-	 * @model required="true"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String" required="true"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_Amazon_EC2!secret_key'"
 	 * @generated
 	 */
@@ -209,7 +209,7 @@ public interface Machine_Amazon_EC2 extends Machine {
 	 * @return the value of the '<em>Security group</em>' attribute.
 	 * @see #setSecurity_group(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Amazon_EC2_Security_group()
-	 * @model default="docker-machine"
+	 * @model default="docker-machine" dataType="org.occiware.clouddesigner.OCCI.String"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_Amazon_EC2!security_group'"
 	 * @generated
 	 */
@@ -236,7 +236,8 @@ public interface Machine_Amazon_EC2 extends Machine {
 	 * @return the value of the '<em>Session token</em>' attribute.
 	 * @see #setSession_token(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Amazon_EC2_Session_token()
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_Amazon_EC2!session_token'"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_Amazon_EC2!session_token'"
 	 * @generated
 	 */
 	String getSession_token();
@@ -262,7 +263,8 @@ public interface Machine_Amazon_EC2 extends Machine {
 	 * @return the value of the '<em>Subnet id</em>' attribute.
 	 * @see #setSubnet_id(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Amazon_EC2_Subnet_id()
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_Amazon_EC2!subnet_id'"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_Amazon_EC2!subnet_id'"
 	 * @generated
 	 */
 	String getSubnet_id();
@@ -288,7 +290,7 @@ public interface Machine_Amazon_EC2 extends Machine {
 	 * @return the value of the '<em>Vpc id</em>' attribute.
 	 * @see #setVpc_id(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Amazon_EC2_Vpc_id()
-	 * @model required="true"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String" required="true"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_Amazon_EC2!vpc_id'"
 	 * @generated
 	 */
@@ -316,7 +318,7 @@ public interface Machine_Amazon_EC2 extends Machine {
 	 * @return the value of the '<em>Zone</em>' attribute.
 	 * @see #setZone(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Amazon_EC2_Zone()
-	 * @model default="a"
+	 * @model default="a" dataType="org.occiware.clouddesigner.OCCI.String"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_Amazon_EC2!zone'"
 	 * @generated
 	 */

@@ -34,7 +34,8 @@ public interface Link extends org.occiware.clouddesigner.OCCI.Link {
 	 * @return the value of the '<em>Alias</em>' attribute.
 	 * @see #setAlias(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getLink_Alias()
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Link!alias'"
+	 * @model dataType="org.occiware.clouddesigner.OCCI.String"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Link!alias'"
 	 * @generated
 	 */
 	String getAlias();
