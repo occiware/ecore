@@ -84,11 +84,6 @@ public class OCCI2Ecore implements IConverterPaths {
 		}
 		ConverterUtils.save(resourceSet, generated, "file:/" + path);
 		fixMetamodelRefs(new File(path));
-
-		// TODO reload genmodel (kinda tricky in standalone)
-		// TODO generate code (OCLinEcore adds compilation errors, with
-		// generatednot it could be workaround-ed
-		// TODO check consistency of generators, designers
 	}
 
 	private static EObject getGeneratedElement(EObject generatedRoot,

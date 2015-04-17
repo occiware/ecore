@@ -1,0 +1,20 @@
+<project default="reloadAndGenerate">
+	<target name="reloadAndGenerate">
+		<antcall target="Ecore2Java">
+			<param name="metamodelProject" value="org.occiware.clouddesigner.occi.infrastructure" />
+			<param name="metamodelName" value="Infrastructure" />
+		</antcall>
+		<antcall target="Ecore2Java">
+			<param name="metamodelProject" value="org.occiware.clouddesigner.occi.docker" />
+			<param name="metamodelName" value="Docker" />
+		</antcall>
+	</target>
+
+	<target name="Ecore2Java">
+		<eclipse.refreshLocal resource="${metamodelProject}" depth="infinite" />
+		<emf.Ecore2Java genmodel="../${metamodelProject}/model/${metamodelName}.genmodel" reconcileGenModel="reload" generateJavaCode="true" generatetestsproject="false" generateeditproject="true" generateeditorproject="false" generatemodelproject="true" importorganzing="true" modelproject="${metamodelProject}" modelpluginid="${metamodelProject}" modelprojectfragmentpath="src-gen">
+			<model file="../${metamodelProject}/model/${metamodelName}.ecore" />
+		</emf.Ecore2Java>
+	</target>
+
+</project>

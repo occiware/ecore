@@ -10,8 +10,7 @@
       <!-- @generated Docker -->
       <package
             uri="http://occiware.org/docker"
-            class="org.occiware.clouddesigner.occi.docker.DockerPackage"
-            genModel="model/Docker.genmodel"/>
+            class="org.occiware.clouddesigner.occi.docker.DockerPackage"/>
    </extension>
 
 </plugin>

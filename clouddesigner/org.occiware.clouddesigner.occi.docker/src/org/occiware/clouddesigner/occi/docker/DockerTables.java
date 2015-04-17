@@ -2,9 +2,9 @@
  *************************************************************************
  * This code is 100% auto-generated
  * from:
- *   platform:/resource/org.occiware.clouddesigner.occi.docker/model/Docker.ecore
+ *   file:/D:/dev/git/occiware/ecore/clouddesigner/org.occiware.clouddesigner.occi.docker/model/Docker.ecore
  * using:
- *   platform:/resource/org.occiware.clouddesigner.occi.docker/model/Docker.genmodel
+ *   file:/D:/dev/git/occiware/ecore/clouddesigner/org.occiware.clouddesigner.occi.docker/model/Docker.genmodel
  *   org.eclipse.ocl.examples.codegen.oclinecore.OCLinEcoreTables
  *
  * Do not edit it.
@@ -180,8 +180,8 @@ public class DockerTables
 		private static final /*@NonNull*/ ExecutorFragment _Contains__OclElement = new ExecutorFragment(Types._Contains, OCLstdlibTables.Types._OclElement);
 
 		private static final /*@NonNull*/ ExecutorFragment _Link__Entity = new ExecutorFragment(Types._Link, OCCITables.Types._Entity);
-		private static final /*@NonNull*/ ExecutorFragment _Link__Link_1 = new ExecutorFragment(Types._Link, DockerTables.Types._Link);
 		private static final /*@NonNull*/ ExecutorFragment _Link__Link = new ExecutorFragment(Types._Link, OCCITables.Types._Link);
+		private static final /*@NonNull*/ ExecutorFragment _Link__Link_1 = new ExecutorFragment(Types._Link, DockerTables.Types._Link);
 		private static final /*@NonNull*/ ExecutorFragment _Link__OclAny = new ExecutorFragment(Types._Link, OCLstdlibTables.Types._OclAny);
 		private static final /*@NonNull*/ ExecutorFragment _Link__OclElement = new ExecutorFragment(Types._Link, OCLstdlibTables.Types._OclElement);
 
@@ -1351,8 +1351,8 @@ public class DockerTables
 			Fragments._Contains__OclElement.initOperations(_Contains__OclElement);
 
 			Fragments._Link__Entity.initOperations(_Link__Entity);
-			Fragments._Link__Link_1.initOperations(_Link__Link_1);
 			Fragments._Link__Link.initOperations(_Link__Link);
+			Fragments._Link__Link_1.initOperations(_Link__Link_1);
 			Fragments._Link__OclAny.initOperations(_Link__OclAny);
 			Fragments._Link__OclElement.initOperations(_Link__OclElement);
 

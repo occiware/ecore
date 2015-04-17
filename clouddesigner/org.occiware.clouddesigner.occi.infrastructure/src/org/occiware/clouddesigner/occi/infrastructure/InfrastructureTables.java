@@ -2,9 +2,9 @@
  *************************************************************************
  * This code is 100% auto-generated
  * from:
- *   platform:/resource/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.ecore
+ *   file:/D:/dev/git/occiware/ecore/clouddesigner/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.ecore
  * using:
- *   platform:/resource/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.genmodel
+ *   file:/D:/dev/git/occiware/ecore/clouddesigner/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.genmodel
  *   org.eclipse.ocl.examples.codegen.oclinecore.OCLinEcoreTables
  *
  * Do not edit it.

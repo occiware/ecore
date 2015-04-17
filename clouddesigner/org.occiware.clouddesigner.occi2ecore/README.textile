@@ -11,6 +11,8 @@ Here are the different steps of the conversion:
 The OCCI2Ecore class launches the whole conversion.
 
 The generated ecore will may differ from the previous version, but those changes are not relevant. To get rid of them reload the model from the genmodel, EMF will update the ecore.
+The buil.xml file does the reload & generates model / edit code.
+After that there might be some errors to correct, as missing casts in OCL-generated code. Also some paths in comments may change but it is not relevant.
 
 h3. Ecore to OCCI
 
