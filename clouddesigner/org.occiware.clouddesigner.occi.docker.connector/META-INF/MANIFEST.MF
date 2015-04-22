@@ -1,0 +1,26 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: org.occiware.clouddesigner.occi.docker.connector;singleton:=true
+Bundle-Version: 1.0.0
+Bundle-Name: org.occiware.clouddesigner.occi.docker.connector
+Bundle-Vendor: OCCIWARE
+Bundle-ActivationPolicy: lazy
+Export-Package: org.occiware.clouddesigner.occi.docker.connector,
+ org.occiware.clouddesigner.occi.docker.connector.dockermachine,
+ org.occiware.clouddesigner.occi.docker.connector.dockerjava
+Require-Bundle: org.eclipse.xtend.lib,
+ com.google.guava,
+ org.eclipse.xtext.xbase.lib,
+ org.eclipse.emf.common,
+ org.eclipse.emf.ecore.xmi,
+ org.eclipse.emf.ecore;visibility:=reexport,
+ org.eclipse.ocl.examples.library;visibility:=reexport,
+ org.eclipse.ocl.examples.pivot;visibility:=reexport,
+ org.eclipse.ocl.examples.codegen;visibility:=reexport,
+ org.occiware.clouddesigner.occi.infrastructure;visibility:=reexport,
+ org.occiware.clouddesigner.occi;visibility:=reexport,
+ org.occiware.clouddesigner.occi.docker;bundle-version="0.1.0",
+ org.eclipse.emf.compare;bundle-version="3.1.1",
+ fr.inria.diverse.k3.al.annotationprocessor.plugin_bundle-version__3.0.0__;bundle-version="3.0.0"
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+
