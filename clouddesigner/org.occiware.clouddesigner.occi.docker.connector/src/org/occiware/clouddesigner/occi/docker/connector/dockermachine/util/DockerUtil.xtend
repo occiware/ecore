@@ -54,11 +54,17 @@ class DockerUtil {
 				return entry.key
 			}
 		}
-		return null
+		// Start the machine
+		val firstHost = hosts.keySet.get(0)
+		println("first host" + firstHost)
+		if(DockerMachineManager.startCmd(Runtime.getRuntime, firstHost)){
+		return firstHost
+		}
 	}
 
-	def static getEnv(Machine machine) {
-		val String data = DockerMachineManager.getEnvCmd(Runtime.getRuntime, machine.name)
+	def static getEnv(String machineName) {
+		println("Machine name: "+ machineName)
+		val String data = DockerMachineManager.getEnvCmd(Runtime.getRuntime, machineName)
 		var List hosts = new ArrayList
 		var String[] result = null
 		if (data != null) {

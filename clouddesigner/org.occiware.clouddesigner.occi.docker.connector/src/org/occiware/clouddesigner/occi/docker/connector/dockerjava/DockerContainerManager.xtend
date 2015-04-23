@@ -188,7 +188,7 @@ class DockerContainerManager {
 
 	def setConfig(Machine machine) {
 		var String ENDPOINT = DockerMachineManager.urlCmd(Runtime.getRuntime, machine.name)
-		val String certPath = DockerUtil.getEnv(machine)
+		val String certPath = DockerUtil.getEnv(machine.name)
 		val String port = ":2376"
 		val url = new URL(ENDPOINT)
 		val URI uri = new URI(url.getProtocol(), url.getHost(), url.getPath(), url.getQuery(), null)
