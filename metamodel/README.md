@@ -6,8 +6,8 @@ These examples are used in the paper titled **"A Precise Metamodel for Open Clou
 
 It contains the following artefacts:
 
-- OCCI.ecore is the EMF metamodel for OCCI Core.
-- OCCI.ocl contains a copy of the OCL constraints embedded in OCCI.ecore.
+- [OCCI.ecore](https://github.com/occiware/ecore/blob/master/metamodel/OCCI.ecore) is the EMF metamodel for OCCI Core.
+- [OCCI.ocl](https://github.com/occiware/ecore/blob/master/metamodel/OCCI.ocl) contains a copy of the OCL constraints embedded in OCCI.ecore.
 
 It  also provides contains the following artefacts used to validate the proposed contribution. 
 - a list of proposed extensions defined using our precise metamodel
