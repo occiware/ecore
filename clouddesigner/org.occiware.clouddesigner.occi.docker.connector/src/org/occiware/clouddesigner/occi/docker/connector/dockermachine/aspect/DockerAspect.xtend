@@ -1,7 +1,12 @@
 package org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect
 
+import com.github.dockerjava.api.DockerClient
+import com.github.dockerjava.api.command.CreateContainerResponse
 import fr.inria.diverse.k3.al.annotationprocessor.Aspect
 import fr.inria.diverse.k3.al.annotationprocessor.OverrideAspectMethod
+import java.util.LinkedHashMap
+import java.util.Map
+import org.occiware.clouddesigner.occi.docker.Container
 import org.occiware.clouddesigner.occi.docker.DockerFactory
 import org.occiware.clouddesigner.occi.docker.Machine
 import org.occiware.clouddesigner.occi.docker.Machine_Amazon_EC2
@@ -16,22 +21,14 @@ import org.occiware.clouddesigner.occi.docker.Machine_VMware_Fusion
 import org.occiware.clouddesigner.occi.docker.Machine_VMware_vCloud_Air
 import org.occiware.clouddesigner.occi.docker.Machine_VMware_vSphere
 import org.occiware.clouddesigner.occi.docker.Machine_VirtualBox
+import org.occiware.clouddesigner.occi.docker.connector.ModelHandler
+import org.occiware.clouddesigner.occi.docker.connector.dockerjava.DockerContainerManager
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerMachineManager
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.Provider
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.ProcessManager
 import org.occiware.clouddesigner.occi.infrastructure.ComputeStatus
-import org.occiware.clouddesigner.occi.docker.connector.dockerjava.DockerContainerManager
-import org.occiware.clouddesigner.occi.docker.connector.ModelHandler
-import org.occiware.clouddesigner.occi.docker.Container
 
 import static extension org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineVirtualBoxAspect.*
-import static extension org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.ContainerAspect.*
-
-import com.github.dockerjava.api.DockerClient
-import com.github.dockerjava.api.command.CreateContainerResponse
-import java.util.LinkedHashMap
-import java.util.Map
-import java.util.HashMap
 
 class DockerAspect {
 
@@ -152,7 +149,7 @@ class DockerAspect {
 
 @Aspect(className=Machine)
 class MachineAspect {
-
+	protected boolean isDeployed = false
 	def String createMachineCommand() {
 	}
 
