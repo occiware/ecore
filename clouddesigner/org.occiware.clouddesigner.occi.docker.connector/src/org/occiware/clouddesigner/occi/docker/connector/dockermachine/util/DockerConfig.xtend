@@ -17,9 +17,4 @@ class DockerConfig {
 			throw new RuntimeException(e);
 		}
 	}
-
-	def static void main(String[] args) {
-		println("Running DockerMachineTest ...")
-		println(DockerConfig.loadConfig)
-	}
 }
