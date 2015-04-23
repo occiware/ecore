@@ -28,6 +28,7 @@ import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.Pr
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.ProcessManager
 import org.occiware.clouddesigner.occi.infrastructure.ComputeStatus
 
+import static extension org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.ContainerAspect.*
 import static extension org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineVirtualBoxAspect.*
 
 class DockerAspect {
@@ -188,6 +189,11 @@ class MachineVirtualBoxAspect extends MachineAspect {
 			}
 			if (_self.boot2docker_url != null) {
 				command.append(" --virtualbox-boot2docker-url " + _self.disk_size)
+			}
+
+			//Create the Containers belong to this machine.
+			if (_self.links.size > 0) {
+				_self.links.forEach[elt|(elt.source as Container).createContainer(_self)]
 			}
 		} else if (_self.name == null) {
 			// TODO Manage error...
