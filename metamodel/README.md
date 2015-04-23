@@ -11,7 +11,7 @@ It contains the following artefacts:
 
 It  also provides contains the following artefacts used to validate the proposed contribution. 
 - a list of proposed extensions defined using our precise metamodel
-  - (extensions/)[https://github.com/occiware/ecore/blob/master/metamodel/extensions/] contains OCCI extensions.
+  - [extensions/](https://github.com/occiware/ecore/blob/master/metamodel/extensions/) contains OCCI extensions.
     - [All.xmi](https://github.com/occiware/ecore/blob/master/metamodel/extensions/All.xmi) contains an OCCI extensions that imports all following OCCI extensions.
     - [Core.xmi](https://github.com/occiware/ecore/blob/master/metamodel/extensions/Core.xmi) contains OCCI kinds for entity, resource, and link.
     - [Infrastructure.xmi](https://github.com/occiware/ecore/blob/master/metamodel/extensions/Infrastructure.xmi) contains the OCCI Infrastructure extension.
