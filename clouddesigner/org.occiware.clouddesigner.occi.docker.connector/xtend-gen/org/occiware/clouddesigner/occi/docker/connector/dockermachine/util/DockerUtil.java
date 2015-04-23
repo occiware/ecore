@@ -17,8 +17,9 @@ import org.codehaus.jackson.JsonFactory;
 import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.JsonParser;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
-import org.occiware.clouddesigner.occi.docker.Machine;
+import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerMachineManager;
 
 @SuppressWarnings("all")
@@ -97,13 +98,21 @@ public class DockerUtil {
         return entry.getKey();
       }
     }
+    Set<String> _keySet = hosts.keySet();
+    final String firstHost = ((String[])Conversions.unwrapArray(_keySet, String.class))[0];
+    InputOutput.<String>println(("first host" + firstHost));
+    Runtime _runtime = Runtime.getRuntime();
+    boolean _startCmd = DockerMachineManager.startCmd(_runtime, firstHost);
+    if (_startCmd) {
+      return firstHost;
+    }
     return null;
   }
   
-  public static String getEnv(final Machine machine) {
+  public static String getEnv(final String machineName) {
+    InputOutput.<String>println(("Machine name: " + machineName));
     Runtime _runtime = Runtime.getRuntime();
-    String _name = machine.getName();
-    final String data = DockerMachineManager.getEnvCmd(_runtime, _name);
+    final String data = DockerMachineManager.getEnvCmd(_runtime, machineName);
     List hosts = new ArrayList<Object>();
     String[] result = null;
     boolean _notEquals = (!Objects.equal(data, null));

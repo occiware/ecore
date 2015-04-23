@@ -162,6 +162,9 @@ class MachineAspect {
 class MachineVirtualBoxAspect extends MachineAspect {
 	protected boolean isDeployed = false
 
+	def void start() {
+	}
+
 	@OverrideAspectMethod
 	def String createMachineCommand() {
 		var command = new StringBuilder("docker-machine create --driver ")
@@ -277,6 +280,27 @@ class MachineGoogleComputeEngineAspect extends MachineAspect {
 
 	@OverrideAspectMethod
 	def String createMachineCommand() {
+		var command = new StringBuilder("docker-machine create --driver ")
+		if (_self.name != null) {
+			command.append(" --google-instance-name " + _self.instance_name)
+			if (_self.zone != null) {
+				command.append("")
+			}
+			if (_self.username != null) {
+				command.append(" --google-username " + _self.name)
+			}
+			if (_self.project != null) {
+				command.append(" --google-project " + _self.name)
+			}
+			if (_self.machine_type != null) {
+				command.append(" --google-machine-type " + _self.machine_type)
+			}
+
+		// TODO --google-scopes
+		} else {
+			// Manager error
+		}
+		return command.toString
 	}
 }
 
@@ -286,6 +310,7 @@ class MachineIBMSoftLayerAspect extends MachineAspect {
 
 	@OverrideAspectMethod
 	def String createMachineCommand() {
+		//		var command = new StringBuilder("docker-machine create --driver ")
 	}
 }
 
@@ -295,6 +320,7 @@ class MachineMicrosoftAzureAspect extends MachineAspect {
 
 	@OverrideAspectMethod
 	def String createMachineCommand() {
+		//		var command = new StringBuilder("docker-machine create --driver ")
 	}
 }
 
@@ -304,6 +330,7 @@ class MachineMicrosoftHyperVAspect extends MachineAspect {
 
 	@OverrideAspectMethod
 	def String createMachineCommand() {
+		//		var command = new StringBuilder("docker-machine create --driver ")
 	}
 }
 
@@ -313,6 +340,7 @@ class MachineOpenStackAspect extends MachineAspect {
 
 	@OverrideAspectMethod
 	def String createMachineCommand() {
+		//		var command = new StringBuilder("docker-machine create --driver ")
 	}
 }
 
@@ -322,6 +350,7 @@ class MachineRackspaceAspect extends MachineAspect {
 
 	@OverrideAspectMethod
 	def String createMachineCommand() {
+		//		var command = new StringBuilder("docker-machine create --driver ")
 	}
 }
 
@@ -331,6 +360,7 @@ class Machine_VMwareFusionAspect extends MachineAspect {
 
 	@OverrideAspectMethod
 	def String createMachineCommand() {
+		//		var command = new StringBuilder("docker-machine create --driver ")
 	}
 }
 
@@ -340,6 +370,7 @@ class MachineVMwarevCloudAirAspect extends MachineAspect {
 
 	@OverrideAspectMethod
 	def String createMachineCommand() {
+		//		var command = new StringBuilder("docker-machine create --driver ")
 	}
 }
 
@@ -349,6 +380,7 @@ class MachineVMwarevSphereAspect extends MachineAspect {
 
 	@OverrideAspectMethod
 	def String createMachineCommand() {
+		//		var command = new StringBuilder("docker-machine create --driver ")
 	}
 }
 

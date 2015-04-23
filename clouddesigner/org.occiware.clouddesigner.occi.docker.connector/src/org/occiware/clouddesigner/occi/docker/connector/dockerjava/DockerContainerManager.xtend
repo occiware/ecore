@@ -21,6 +21,7 @@ import org.occiware.clouddesigner.occi.docker.DockerFactory
 import org.occiware.clouddesigner.occi.docker.Machine
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerMachineManager
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerUtil
+import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerConfig
 
 class DockerContainerManager {
 
@@ -187,6 +188,7 @@ class DockerContainerManager {
 	}
 
 	def setConfig(Machine machine) {
+		val dockerClientconfig = DockerConfig.loadConfig 
 		var String ENDPOINT = DockerMachineManager.urlCmd(Runtime.getRuntime, machine.name)
 		val String certPath = DockerUtil.getEnv(machine.name)
 		val String port = ":2376"
@@ -194,10 +196,10 @@ class DockerContainerManager {
 		val URI uri = new URI(url.getProtocol(), url.getHost(), url.getPath(), url.getQuery(), null)
 		val dockerUri = uri.toString + port
 		println(uri.toString)
-		var DockerClientConfig config = DockerClientConfig.createDefaultConfigBuilder().withVersion("1.16") //Docker Client API v1.16
-		.withUri(dockerUri).withUsername("dockeruser")
-		.withPassword("iloveocciware")
-		.withEmail("dockeruser@occiware.org")
+		var DockerClientConfig config = DockerClientConfig.createDefaultConfigBuilder().withVersion(dockerClientconfig.get("docker.version").toString) //Docker Client API v1.16
+		.withUri(dockerUri).withUsername(dockerClientconfig.get("docker.username").toString)
+		.withPassword(dockerClientconfig.get("docker.password").toString)
+		.withEmail(dockerClientconfig.get("docker.email").toString)
 		.withServerAddress("https://index.docker.io/v1/")
 		.withDockerCertPath(certPath).build();
 		var DockerClient dockerClient = DockerClientBuilder.getInstance(config).build();
