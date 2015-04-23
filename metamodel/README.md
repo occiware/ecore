@@ -11,25 +11,24 @@ It contains the following artefacts:
 
 It  also provides contains the following artefacts used to validate the proposed contribution. 
 - a list of proposed extensions defined using our precise metamodel
-  - extensions/ contains OCCI extensions.
-    - All.xmi contains an OCCI extensions that imports all following OCCI extensions.
-    - Core.xmi contains OCCI kinds for entity, resource, and link.
-    - Infrastructure.xmi contains the OCCI Infrastructure extension.
-    - Monitoring.xmi contains the OCCI Monitoring extension.
-    - Docker.xmi contains an OCCI extension for Docker (WIP).
-    - OCNI.xmi contains an OCCI extension for Network as a Service (WIP).
+  - (extensions/)[https://github.com/occiware/ecore/blob/master/metamodel/extensions/] contains OCCI extensions.
+    - [All.xmi](https://github.com/occiware/ecore/blob/master/metamodel/extensions/All.xmi) contains an OCCI extensions that imports all following OCCI extensions.
+    - [Core.xmi](https://github.com/occiware/ecore/blob/master/metamodel/extensions/Core.xmi) contains OCCI kinds for entity, resource, and link.
+    - [Infrastructure.xmi](https://github.com/occiware/ecore/blob/master/metamodel/extensions/Infrastructure.xmi) contains the OCCI Infrastructure extension.
+    - [Monitoring.xmi](https://github.com/occiware/ecore/blob/master/metamodel/extensions/Monitoring.xmi) contains the OCCI Monitoring extension.
+    - [Docker.xmi](https://github.com/occiware/ecore/blob/master/metamodel/extensions/Docker.xmi) contains an OCCI extension for Docker (WIP).
+    - [OCNI.xmi](https://github.com/occiware/ecore/blob/master/metamodel/extensions/OCNI.xmi) contains an OCCI extension for Network as a Service (WIP).
 - a list of configurations builds using these extensions
-  - configurations/ contains OCCI configurations.
+  - [configurations/](https://github.com/occiware/ecore/tree/master/metamodel/configurations) contains OCCI configurations.
     - OCCI-Infrastructure-*.xmi are configurations related to OCCI Infrastructure Extension.
     - ServiceManager-*.xmi are configurations related to the Service Manager extension.
-  - docker/ contains a new OCCI extension for Docker.
-    - Docker.xmi contains the OCCI extension for Docker.
-    - other .xmi files are Docker configurations.
+  - [docker/](https://github.com/occiware/ecore/tree/master/metamodel/docker) contains a new OCCI extension for Docker.
+    - [Docker.xmi](https://github.com/occiware/ecore/tree/master/metamodel/docker/Docker.xmi) contains the OCCI extension for Docker.
+    - [other .xmi](https://github.com/occiware/ecore/tree/master/metamodel/docker/Docker.xmi) files are Docker configurations.
 
 Finally it provides some artefacts that can be used to understand the proposed models and metamodels and to highlight some models that violates the proposed semantics. 
 
-- images/ contains OCCIware Modeler screenshots.
-- tests/ contains OCCI models that violate OCL constraints defined in OCCI.ecore.
-- README.md is this file.
-- representations.aird contains Sirius models.
+- [images/](https://github.com/occiware/ecore/tree/master/metamodel/images) contains OCCIware Modeler screenshots.
+- [tests/](https://github.com/occiware/ecore/tree/master/metamodel/tests) contains OCCI models that violate OCL constraints defined in OCCI.ecore.
+- [representations.aird](https://raw.githubusercontent.com/occiware/ecore/master/metamodel/representations.aird) contains Sirius models.
  
