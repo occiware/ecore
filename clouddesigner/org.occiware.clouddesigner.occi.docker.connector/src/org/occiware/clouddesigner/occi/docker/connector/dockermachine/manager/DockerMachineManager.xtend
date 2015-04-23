@@ -8,6 +8,7 @@ import org.occiware.clouddesigner.occi.infrastructure.ComputeStatus
 class DockerMachineManager {
 
 	val private static cf = new CommandFactory
+
 	def static boolean createHostCmd(Runtime runtime, Machine machine) {
 		val String command = cf.createMachineCommand(machine)
 		println(" Run ::==> " + command)

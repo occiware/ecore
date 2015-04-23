@@ -47,14 +47,6 @@ import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.Do
 
 class ModelHandler {
 
-	def static void main(String[] args) {
-		val m = new ModelHandler
-
-		//
-		m.loadModelWithoutGenerateCode
-
-	}
-
 	/*
 	 * Dynamic EMF 
 	 */
@@ -544,9 +536,10 @@ class ModelHandler {
 	
 		
 	def linkContainerToMachine(Container container, Machine machine) {
+		// Retrieve the default factory singleton
 		var contains = DockerFactory.eINSTANCE.createContains
 		// Add Container to the Contains
-		contains.eContents.add(container)
+		contains.target = container
 		machine.links.add(contains)
 		return machine
 	}

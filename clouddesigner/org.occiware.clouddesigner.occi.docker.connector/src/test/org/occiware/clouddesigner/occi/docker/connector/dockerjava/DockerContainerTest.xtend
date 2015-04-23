@@ -5,6 +5,7 @@ import com.github.dockerjava.api.command.CreateContainerResponse
 import java.security.SecureRandom
 import java.util.Map
 import org.occiware.clouddesigner.occi.docker.DockerFactory
+import org.occiware.clouddesigner.occi.docker.Machine_VirtualBox
 import org.occiware.clouddesigner.occi.docker.connector.ModelHandler
 import org.occiware.clouddesigner.occi.docker.connector.dockerjava.DockerContainerManager
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerUtil
@@ -37,7 +38,7 @@ class DockerContainerTest {
 		container.command = "sleep,9999"
 		container.image = testImage
 		// Retrieve the default factory singleton of Contains
-//		machine = instanceMH.linkContainerToMachine(container, machine) as Machine_VirtualBox
+		machine = instanceMH.linkContainerToMachine(container, machine) as Machine_VirtualBox
 		//Create Container
 		var Map<DockerClient, CreateContainerResponse>  map = instance.createContainer(machine, container)
 		// Save Container
@@ -50,6 +51,8 @@ class DockerContainerTest {
 		instance.stopContainer(map)
 		// Wait Container
 		instance.waitContainer(map)
+		// List all container here
+		println("Content: " + machine.links.get(0).target)
 		// Get model from real
 		val containers = instance.listContainer(machine)
 		containers.forEach[contain | instanceMH.saveContainer(instanceMH.getModel(contain))]

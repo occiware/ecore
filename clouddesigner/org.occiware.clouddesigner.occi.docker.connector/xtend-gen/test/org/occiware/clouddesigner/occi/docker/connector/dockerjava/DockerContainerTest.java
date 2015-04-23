@@ -7,11 +7,15 @@ import com.google.common.base.Objects;
 import java.security.SecureRandom;
 import java.util.List;
 import java.util.Map;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.occiware.clouddesigner.OCCI.Link;
+import org.occiware.clouddesigner.OCCI.Resource;
 import org.occiware.clouddesigner.occi.docker.Container;
 import org.occiware.clouddesigner.occi.docker.DockerFactory;
+import org.occiware.clouddesigner.occi.docker.Machine;
 import org.occiware.clouddesigner.occi.docker.Machine_VirtualBox;
 import org.occiware.clouddesigner.occi.docker.connector.ModelHandler;
 import org.occiware.clouddesigner.occi.docker.connector.dockerjava.DockerContainerManager;
@@ -41,6 +45,8 @@ public class DockerContainerTest {
     container.setName(_plus);
     container.setCommand("sleep,9999");
     container.setImage(testImage);
+    Machine _linkContainerToMachine = instanceMH.linkContainerToMachine(container, machine);
+    machine = ((Machine_VirtualBox) _linkContainerToMachine);
     Map<DockerClient, CreateContainerResponse> map = instance.createContainer(machine, container);
     instanceMH.saveContainer(container);
     InspectContainerResponse _inspectContainer = instance.inspectContainer(map);
@@ -48,6 +54,11 @@ public class DockerContainerTest {
     instance.startContainer(map);
     instance.stopContainer(map);
     instance.waitContainer(map);
+    EList<Link> _links = machine.getLinks();
+    Link _get = _links.get(0);
+    Resource _target = _get.getTarget();
+    String _plus_1 = ("Content: " + _target);
+    InputOutput.<String>println(_plus_1);
     final List<com.github.dockerjava.api.model.Container> containers = instance.listContainer(machine);
     final Procedure1<com.github.dockerjava.api.model.Container> _function = new Procedure1<com.github.dockerjava.api.model.Container>() {
       public void apply(final com.github.dockerjava.api.model.Container contain) {

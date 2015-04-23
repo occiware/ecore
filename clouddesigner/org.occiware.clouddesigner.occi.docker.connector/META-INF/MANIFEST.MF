@@ -21,6 +21,6 @@ Require-Bundle: org.eclipse.xtend.lib,
  org.occiware.clouddesigner.occi;visibility:=reexport,
  org.occiware.clouddesigner.occi.docker;bundle-version="0.1.0",
  org.eclipse.emf.compare;bundle-version="3.1.1",
- fr.inria.diverse.k3.al.annotationprocessor.plugin_bundle-version__3.0.0__;bundle-version="3.0.0"
+ fr.inria.diverse.k3.al.annotationprocessor.plugin;bundle-version="3.1.0"
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 

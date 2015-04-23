@@ -6,9 +6,12 @@ import org.occiware.clouddesigner.occi.docker.Machine
 import org.occiware.clouddesigner.occi.docker.Machine_VirtualBox
 import org.occiware.clouddesigner.occi.docker.connector.ModelHandler
 import org.occiware.clouddesigner.occi.docker.connector.ResourceDifferencesEngine
+import org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.DockerAspect
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerMachineManager
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerObserver
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerUtil
+
+import static extension org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineVirtualBoxAspect.*
 
 class DockerMachineTest {
 
@@ -28,13 +31,23 @@ class DockerMachineTest {
 		 */
 		val instanceDO = new DockerObserver
 		val instanceMH = new ModelHandler
+		val instanceAspect = new DockerAspect
 
 		// Retrieve the default factory singleton
-		var machine = DockerFactory.eINSTANCE.createMachine_VirtualBox
+		var machine = instanceAspect.loadMachine_VirtualBox
+		val Random randomGenerator = new Random
+		val int randomInt = randomGenerator.nextInt(100)
 
+		// Set an instance of Docker Machine_VirtualBox
+		machine.name = "test-machine-" + randomInt
+		
 		// Create the contents of VirtualBox machine model
-		val vbox = createVirtualBoxMachineTest(machine)
-		val Machine vboxf = instanceDO.listener(vbox)
+		instanceAspect.machine_VirtualBox.machineStart
+		// Add Listener
+		val Machine vboxf = instanceDO.listener(machine)
+		
+		// Save an instance of model
+		instanceAspect.machine_VirtualBox.save
 
 		/*
 		 * Change the model content
@@ -52,28 +65,11 @@ class DockerMachineTest {
 		/*
 		  * Compare model
 		  */
-		//TODO remove comparison test befor commit
-		val String xmiPath = "/Users/spirals/git/ecore/clouddesigner/org.occiware.clouddesigner.occi.docker.connector/bin/new-name.xmi"
-		val cp = new ResourceDifferencesEngine
-		println(cp.isSimilar(xmiPath, xmiPath))
-		instanceMH.load(xmiPath)
-	}
+//		val String xmiPath = "/Users/spirals/git/ecore/clouddesigner/org.occiware.clouddesigner.occi.docker.connector/bin/new-name.xmi"
+//		instanceMH.load(xmiPath)
 
-	def createVirtualBoxMachineTest(Machine_VirtualBox vbox) {
-		val instanceMH = new ModelHandler
-		val Random randomGenerator = new Random
-		val int randomInt = randomGenerator.nextInt(100)
-
-		// Set an instance of Docker Machine_VirtualBox
-		vbox.name = "test-machine-" + randomInt
-
-		// Create VitualBox machine
-		DockerMachineManager.createHostCmd(Runtime.getRuntime, vbox)
-
-		// Save an instance of model
-		instanceMH.saveMachine(vbox)
-
-		return vbox
+//		val cp = new ResourceDifferencesEngine
+//		println(cp.isSimilar(xmiPath, xmiPath))
 	}
 
 }
