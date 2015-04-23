@@ -20,24 +20,34 @@ import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.Do
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.Provider
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.ProcessManager
 import org.occiware.clouddesigner.occi.infrastructure.ComputeStatus
+import org.occiware.clouddesigner.occi.docker.connector.dockerjava.DockerContainerManager
+import org.occiware.clouddesigner.occi.docker.connector.ModelHandler
+import org.occiware.clouddesigner.occi.docker.Container
 
 import static extension org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineVirtualBoxAspect.*
-import org.occiware.clouddesigner.occi.docker.connector.ModelHandler
+import static extension org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.ContainerAspect.*
+
+import com.github.dockerjava.api.DockerClient
+import com.github.dockerjava.api.command.CreateContainerResponse
+import java.util.LinkedHashMap
+import java.util.Map
+import java.util.HashMap
 
 class DockerAspect {
 
 	var public Machine_VirtualBox machine_VirtualBox
-	var Machine_Amazon_EC2 machine_Amazon_EC2
-	var Machine_Digital_Ocean machine_Digital_Ocean
-	var Machine_Google_Compute_Engine machine_Google_Compute_Engine
-	var Machine_IBM_SoftLayer machine_IBM_SoftLayer
-	var Machine_Microsoft_Azure machine_Microsoft_Azure
-	var Machine_Microsoft_Hyper_V machine_Microsoft_Hyper_V
-	var Machine_OpenStack machine_OpenStack
-	var Machine_Rackspace machine_Rackspace
-	var Machine_VMware_Fusion machine_VMware_Fusion
-	var Machine_VMware_vCloud_Air machine_VMware_vCloud_Air
-	var Machine_VMware_vSphere machine_VMware_vSphere
+	var public Machine_Amazon_EC2 machine_Amazon_EC2
+	var public Machine_Digital_Ocean machine_Digital_Ocean
+	var public Machine_Google_Compute_Engine machine_Google_Compute_Engine
+	var public Machine_IBM_SoftLayer machine_IBM_SoftLayer
+	var public Machine_Microsoft_Azure machine_Microsoft_Azure
+	var public Machine_Microsoft_Hyper_V machine_Microsoft_Hyper_V
+	var public Machine_OpenStack machine_OpenStack
+	var public Machine_Rackspace machine_Rackspace
+	var public Machine_VMware_Fusion machine_VMware_Fusion
+	var public Machine_VMware_vCloud_Air machine_VMware_vCloud_Air
+	var public Machine_VMware_vSphere machine_VMware_vSphere
+	var public Container container
 
 	new() {
 		initModel
@@ -126,6 +136,12 @@ class DockerAspect {
 		machine_VMware_vSphere = DockerFactory.eINSTANCE.createMachine_VMware_vSphere
 	}
 
+	def loadContainer() {
+
+		// Retrieve the default factory singleton of Container
+		container = DockerFactory.eINSTANCE.createContainer
+	}
+
 	def initModel() {
 
 		// Initialize the model
@@ -200,4 +216,58 @@ class MachineVirtualBoxAspect extends MachineAspect {
 		// Save an instance of model
 		instanceMH.saveMachine(_self)
 	}
+}
+
+@Aspect(className=Container)
+class ContainerAspect {
+	var Map<DockerClient, CreateContainerResponse> map = new LinkedHashMap<DockerClient, CreateContainerResponse>
+
+	def Map<DockerClient, CreateContainerResponse> createContainer(Machine machine) {
+		val dockercontainerManager = new DockerContainerManager
+
+		// Set dockerClient
+		val dockerClient = dockercontainerManager.setConfig(machine)
+		var Map<DockerClient, CreateContainerResponse> result = new LinkedHashMap<DockerClient, CreateContainerResponse>
+		val create = dockercontainerManager.containerFactory(_self, dockerClient)
+
+		// Run Execution
+		val CreateContainerResponse rcontainer = create.exec
+		result.put(dockerClient, rcontainer)
+		_self.map.put(dockerClient, rcontainer)
+		return result
+	}
+
+	def Machine linkContainerToMachine(Machine machine) {
+
+		// Retrieve the default factory singleton
+		var contains = DockerFactory.eINSTANCE.createContains
+
+		// Add Container to the Contains
+		contains.target = _self
+		machine.links.add(contains)
+		return machine
+	}
+
+	def void startContainer() {
+		val dockerContainerManager = new DockerContainerManager
+		dockerContainerManager.startContainer(_self.map)
+	}
+
+	def void stopContainer() {
+		val dockerContainerManager = new DockerContainerManager
+		dockerContainerManager.stopContainer(_self.map)
+	}
+
+	def void waitContainer() {
+		val dockerContainerManager = new DockerContainerManager
+		dockerContainerManager.waitContainer(_self.map)
+	}
+
+	def void save() {
+		val instanceMH = new ModelHandler
+
+		// Save an instance of model
+		instanceMH.saveContainer(_self)
+	}
+
 }
