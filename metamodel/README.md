@@ -1,4 +1,6 @@
- This repository provides the EMF metamodel for OCCI and some OCCI extensions.
+#A Precise Metamodel for Open Cloud Computing Interface
+
+This repository provides the EMF metamodel for OCCI and some OCCI extensions.
 
 These examples are used in the paper titled **"A Precise Metamodel for Open Cloud Computing Interface"** and accepted for **[CLOUD 2015](http://www.thecloudcomputing.org/2015/)**. 
 
