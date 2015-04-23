@@ -4,23 +4,23 @@ import com.github.dockerjava.api.DockerClient
 import com.github.dockerjava.api.command.CreateContainerResponse
 import java.security.SecureRandom
 import java.util.Map
-import org.occiware.clouddesigner.occi.docker.DockerFactory
 import org.occiware.clouddesigner.occi.docker.Machine_VirtualBox
 import org.occiware.clouddesigner.occi.docker.connector.ModelHandler
 import org.occiware.clouddesigner.occi.docker.connector.dockerjava.DockerContainerManager
+import org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.DockerAspect
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerUtil
+
+import static extension org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.ContainerAspect.*
 
 class DockerContainerTest {
 	def static void main(String[] args) {
 		println("Running DockerContainerTest ...")
 		val instance = new DockerContainerManager
 		val instanceMH = new ModelHandler
-
-		// Initialize the model
-		DockerFactory.eINSTANCE.eClass
+		val instanceAspect = new DockerAspect
 
 		// Retrieve the default factory singleton of Machine
-		var machine = DockerFactory.eINSTANCE.createMachine_VirtualBox
+		var machine = instanceAspect.loadMachine_VirtualBox
 		// Choose one machine randomly
 		val machineName = DockerUtil.getActiveHost
 		if( machineName!= null){
@@ -33,24 +33,25 @@ class DockerContainerTest {
 		// Download a pre-built image
 		instance.pullImage(machine, testImage)
 		// Retrieve the default factory singleton
-		var container = DockerFactory.eINSTANCE.createContainer
+		var container = instanceAspect.loadContainer
+		// Set container name
 		container.name = "container-test_" + new SecureRandom().nextInt
 		container.command = "sleep,9999"
 		container.image = testImage
 		// Retrieve the default factory singleton of Contains
-		machine = instanceMH.linkContainerToMachine(container, machine) as Machine_VirtualBox
+		machine = instanceAspect.container.linkContainerToMachine(machine) as Machine_VirtualBox
 		//Create Container
-		var Map<DockerClient, CreateContainerResponse>  map = instance.createContainer(machine, container)
+		var Map<DockerClient, CreateContainerResponse>  map = instanceAspect.container.createContainer(machine)
 		// Save Container
-		instanceMH.saveContainer(container)
+		instanceAspect.container.save
 		// Inspect container
 		println(instance.inspectContainer(map))
 		// Start container
-		instance.startContainer(map)
+		instanceAspect.container.startContainer()
 		// Stop container
-		instance.stopContainer(map)
+		instanceAspect.container.stopContainer()
 		// Wait Container
-		instance.waitContainer(map)
+		instanceAspect.container.waitContainer()
 		// List all container here
 		println("Content: " + machine.links.get(0).target)
 		// Get model from real
