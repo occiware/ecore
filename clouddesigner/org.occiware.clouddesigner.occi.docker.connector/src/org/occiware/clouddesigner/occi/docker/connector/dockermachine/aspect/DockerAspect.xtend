@@ -150,6 +150,7 @@ class DockerAspect {
 @Aspect(className=Machine)
 class MachineAspect {
 	protected boolean isDeployed = false
+
 	def String createMachineCommand() {
 	}
 
@@ -207,11 +208,147 @@ class MachineVirtualBoxAspect extends MachineAspect {
 		}
 	}
 
+	def void machineStop() {
+		if (_self.name != null) {
+			DockerMachineManager.stopCmd(Runtime.getRuntime, _self.name)
+		}
+	}
+
+	def void machineRemove() {
+		if (_self.name != null) {
+			DockerMachineManager.removeCmd(Runtime.getRuntime, _self.name)
+		}
+	}
+
+	def void machineRestart() {
+		if (_self.name != null) {
+			DockerMachineManager.restartCmd(Runtime.getRuntime, _self.name)
+		}
+	}
+
 	def void save() {
 		val instanceMH = new ModelHandler
 
 		// Save an instance of model
 		instanceMH.saveMachine(_self)
+	}
+}
+
+@Aspect(className=Machine_Amazon_EC2)
+class MachineAmazonEC2Aspect extends MachineAspect {
+	protected boolean isDeployed = false
+
+	@OverrideAspectMethod
+	def String createMachineCommand() {
+	}
+}
+
+@Aspect(className=Machine_Digital_Ocean)
+class MachineDigitalOceanAspect extends MachineAspect {
+	protected boolean isDeployed = false
+
+	@OverrideAspectMethod
+	def String createMachineCommand() {
+		var command = new StringBuilder("docker-machine create --driver ")
+
+		if (_self.name != null && _self.access_token != null) {
+			command.append(" " + _self.name)
+			command.append(" --digitalocean-access-token=" + _self.access_token)
+			if (_self.image != null) {
+				command.append(" --digitalocean-image " + _self.image)
+			}
+			if (_self.region != null) {
+				command.append(" --digitalocean-region " + _self.region)
+			}
+			if (_self.size != null) {
+				command.append(" --digitalocean-size " + _self.size)
+			}
+
+		} else if (_self.name == null || _self.access_token == null) {
+			// TODO Manage error
+		}
+		return command.toString
+	}
+}
+
+@Aspect(className=Machine_Google_Compute_Engine)
+class MachineGoogleComputeEngineAspect extends MachineAspect {
+	protected boolean isDeployed = false
+
+	@OverrideAspectMethod
+	def String createMachineCommand() {
+	}
+}
+
+@Aspect(className=Machine_IBM_SoftLayer)
+class MachineIBMSoftLayerAspect extends MachineAspect {
+	protected boolean isDeployed = false
+
+	@OverrideAspectMethod
+	def String createMachineCommand() {
+	}
+}
+
+@Aspect(className=Machine_Microsoft_Azure)
+class MachineMicrosoftAzureAspect extends MachineAspect {
+	protected boolean isDeployed = false
+
+	@OverrideAspectMethod
+	def String createMachineCommand() {
+	}
+}
+
+@Aspect(className=Machine_Microsoft_Hyper_V)
+class MachineMicrosoftHyperVAspect extends MachineAspect {
+	protected boolean isDeployed = false
+
+	@OverrideAspectMethod
+	def String createMachineCommand() {
+	}
+}
+
+@Aspect(className=Machine_OpenStack)
+class MachineOpenStackAspect extends MachineAspect {
+	protected boolean isDeployed = false
+
+	@OverrideAspectMethod
+	def String createMachineCommand() {
+	}
+}
+
+@Aspect(className=Machine_Rackspace)
+class MachineRackspaceAspect extends MachineAspect {
+	protected boolean isDeployed = false
+
+	@OverrideAspectMethod
+	def String createMachineCommand() {
+	}
+}
+
+@Aspect(className=Machine_VMware_Fusion)
+class Machine_VMwareFusionAspect extends MachineAspect {
+	protected boolean isDeployed = false
+
+	@OverrideAspectMethod
+	def String createMachineCommand() {
+	}
+}
+
+@Aspect(className=Machine_VMware_vCloud_Air)
+class MachineVMwarevCloudAirAspect extends MachineAspect {
+	protected boolean isDeployed = false
+
+	@OverrideAspectMethod
+	def String createMachineCommand() {
+	}
+}
+
+@Aspect(className=Machine_VMware_vSphere)
+class MachineVMwarevSphereAspect extends MachineAspect {
+	protected boolean isDeployed = false
+
+	@OverrideAspectMethod
+	def String createMachineCommand() {
 	}
 }
 

@@ -195,9 +195,9 @@ class DockerContainerManager {
 		val dockerUri = uri.toString + port
 		println(uri.toString)
 		var DockerClientConfig config = DockerClientConfig.createDefaultConfigBuilder().withVersion("1.16") //Docker Client API v1.16
-		.withUri(dockerUri).withUsername("fifiant")
-		.withPassword("R25root")
-		.withEmail("fifiant@gmail.com")
+		.withUri(dockerUri).withUsername("dockeruser")
+		.withPassword("iloveocciware")
+		.withEmail("dockeruser@occiware.org")
 		.withServerAddress("https://index.docker.io/v1/")
 		.withDockerCertPath(certPath).build();
 		var DockerClient dockerClient = DockerClientBuilder.getInstance(config).build();
