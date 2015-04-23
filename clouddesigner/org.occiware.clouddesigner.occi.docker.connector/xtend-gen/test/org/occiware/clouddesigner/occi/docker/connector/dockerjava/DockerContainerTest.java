@@ -14,11 +14,12 @@ import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.occiware.clouddesigner.OCCI.Link;
 import org.occiware.clouddesigner.OCCI.Resource;
 import org.occiware.clouddesigner.occi.docker.Container;
-import org.occiware.clouddesigner.occi.docker.DockerFactory;
 import org.occiware.clouddesigner.occi.docker.Machine;
 import org.occiware.clouddesigner.occi.docker.Machine_VirtualBox;
 import org.occiware.clouddesigner.occi.docker.connector.ModelHandler;
 import org.occiware.clouddesigner.occi.docker.connector.dockerjava.DockerContainerManager;
+import org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.ContainerAspect;
+import org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.DockerAspect;
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerUtil;
 
 @SuppressWarnings("all")
@@ -27,8 +28,8 @@ public class DockerContainerTest {
     InputOutput.<String>println("Running DockerContainerTest ...");
     final DockerContainerManager instance = new DockerContainerManager();
     final ModelHandler instanceMH = new ModelHandler();
-    DockerFactory.eINSTANCE.eClass();
-    Machine_VirtualBox machine = DockerFactory.eINSTANCE.createMachine_VirtualBox();
+    final DockerAspect instanceAspect = new DockerAspect();
+    Machine_VirtualBox machine = instanceAspect.loadMachine_VirtualBox();
     final String machineName = DockerUtil.getActiveHost();
     boolean _notEquals = (!Objects.equal(machineName, null));
     if (_notEquals) {
@@ -38,22 +39,22 @@ public class DockerContainerTest {
     }
     final String testImage = "busybox";
     instance.pullImage(machine, testImage);
-    Container container = DockerFactory.eINSTANCE.createContainer();
+    Container container = instanceAspect.loadContainer();
     SecureRandom _secureRandom = new SecureRandom();
     int _nextInt = _secureRandom.nextInt();
     String _plus = ("container-test_" + Integer.valueOf(_nextInt));
     container.setName(_plus);
     container.setCommand("sleep,9999");
     container.setImage(testImage);
-    Machine _linkContainerToMachine = instanceMH.linkContainerToMachine(container, machine);
+    Machine _linkContainerToMachine = ContainerAspect.linkContainerToMachine(instanceAspect.container, machine);
     machine = ((Machine_VirtualBox) _linkContainerToMachine);
-    Map<DockerClient, CreateContainerResponse> map = instance.createContainer(machine, container);
-    instanceMH.saveContainer(container);
+    Map<DockerClient, CreateContainerResponse> map = ContainerAspect.createContainer(instanceAspect.container, machine);
+    ContainerAspect.save(instanceAspect.container);
     InspectContainerResponse _inspectContainer = instance.inspectContainer(map);
     InputOutput.<InspectContainerResponse>println(_inspectContainer);
-    instance.startContainer(map);
-    instance.stopContainer(map);
-    instance.waitContainer(map);
+    ContainerAspect.startContainer(instanceAspect.container);
+    ContainerAspect.stopContainer(instanceAspect.container);
+    ContainerAspect.waitContainer(instanceAspect.container);
     EList<Link> _links = machine.getLinks();
     Link _get = _links.get(0);
     Resource _target = _get.getTarget();

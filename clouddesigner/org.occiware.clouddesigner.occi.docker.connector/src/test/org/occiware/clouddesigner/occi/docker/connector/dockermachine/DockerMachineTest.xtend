@@ -3,11 +3,8 @@ package test.org.occiware.clouddesigner.occi.docker.connector.dockermachine
 import java.util.Random
 import org.occiware.clouddesigner.occi.docker.DockerFactory
 import org.occiware.clouddesigner.occi.docker.Machine
-import org.occiware.clouddesigner.occi.docker.Machine_VirtualBox
 import org.occiware.clouddesigner.occi.docker.connector.ModelHandler
-import org.occiware.clouddesigner.occi.docker.connector.ResourceDifferencesEngine
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.DockerAspect
-import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerMachineManager
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerObserver
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerUtil
 

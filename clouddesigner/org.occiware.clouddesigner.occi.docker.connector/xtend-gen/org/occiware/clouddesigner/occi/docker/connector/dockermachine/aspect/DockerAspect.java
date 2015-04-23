@@ -2,6 +2,7 @@ package org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.xtext.xbase.lib.InputOutput;
+import org.occiware.clouddesigner.occi.docker.Container;
 import org.occiware.clouddesigner.occi.docker.DockerFactory;
 import org.occiware.clouddesigner.occi.docker.Machine_Amazon_EC2;
 import org.occiware.clouddesigner.occi.docker.Machine_Digital_Ocean;
@@ -21,27 +22,29 @@ import org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.Mac
 public class DockerAspect {
   public Machine_VirtualBox machine_VirtualBox;
   
-  private Machine_Amazon_EC2 machine_Amazon_EC2;
+  public Machine_Amazon_EC2 machine_Amazon_EC2;
   
-  private Machine_Digital_Ocean machine_Digital_Ocean;
+  public Machine_Digital_Ocean machine_Digital_Ocean;
   
-  private Machine_Google_Compute_Engine machine_Google_Compute_Engine;
+  public Machine_Google_Compute_Engine machine_Google_Compute_Engine;
   
-  private Machine_IBM_SoftLayer machine_IBM_SoftLayer;
+  public Machine_IBM_SoftLayer machine_IBM_SoftLayer;
   
-  private Machine_Microsoft_Azure machine_Microsoft_Azure;
+  public Machine_Microsoft_Azure machine_Microsoft_Azure;
   
-  private Machine_Microsoft_Hyper_V machine_Microsoft_Hyper_V;
+  public Machine_Microsoft_Hyper_V machine_Microsoft_Hyper_V;
   
-  private Machine_OpenStack machine_OpenStack;
+  public Machine_OpenStack machine_OpenStack;
   
-  private Machine_Rackspace machine_Rackspace;
+  public Machine_Rackspace machine_Rackspace;
   
-  private Machine_VMware_Fusion machine_VMware_Fusion;
+  public Machine_VMware_Fusion machine_VMware_Fusion;
   
-  private Machine_VMware_vCloud_Air machine_VMware_vCloud_Air;
+  public Machine_VMware_vCloud_Air machine_VMware_vCloud_Air;
   
-  private Machine_VMware_vSphere machine_VMware_vSphere;
+  public Machine_VMware_vSphere machine_VMware_vSphere;
+  
+  public Container container;
   
   public DockerAspect() {
     this.initModel();
@@ -126,6 +129,11 @@ public class DockerAspect {
   public Machine_VMware_vSphere loadMachine_VMware_vSphere() {
     Machine_VMware_vSphere _createMachine_VMware_vSphere = DockerFactory.eINSTANCE.createMachine_VMware_vSphere();
     return this.machine_VMware_vSphere = _createMachine_VMware_vSphere;
+  }
+  
+  public Container loadContainer() {
+    Container _createContainer = DockerFactory.eINSTANCE.createContainer();
+    return this.container = _createContainer;
   }
   
   public EClass initModel() {
