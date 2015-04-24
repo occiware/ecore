@@ -58,15 +58,6 @@ class DockerMachineTest {
 		val hosts = DockerUtil.getHosts
 		println(hosts)
 		hosts.forEach[k, v|instanceMH.saveMachine(instanceMH.getModel(k, v))]
-
-		/*
-		  * Compare model
-		  */
-//		val String xmiPath = "/Users/spirals/git/ecore/clouddesigner/org.occiware.clouddesigner.occi.docker.connector/bin/new-name.xmi"
-//		instanceMH.load(xmiPath)
-
-//		val cp = new ResourceDifferencesEngine
-//		println(cp.isSimilar(xmiPath, xmiPath))
 	}
 
 }

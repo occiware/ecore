@@ -54,16 +54,27 @@ class DockerUtil {
 				return entry.key
 			}
 		}
+
 		// Start the machine
 		val firstHost = hosts.keySet.get(0)
 		println("first host" + firstHost)
-		if(DockerMachineManager.startCmd(Runtime.getRuntime, firstHost)){
-		return firstHost
+		if (DockerMachineManager.startCmd(Runtime.getRuntime, firstHost)) {
+			return firstHost
 		}
 	}
 
+	def static getActiveHosts() {
+		var Map<String, String> hosts = new HashMap
+		for (Map.Entry<String, String> entry : hosts.entrySet) {
+			if (entry.value == "Running") {
+				hosts.put(entry.key, entry.value)
+			}
+		}
+		return hosts
+	}
+
 	def static getEnv(String machineName) {
-		println("Machine name: "+ machineName)
+		println("Machine name: " + machineName)
 		val String data = DockerMachineManager.getEnvCmd(Runtime.getRuntime, machineName)
 		var List hosts = new ArrayList
 		var String[] result = null

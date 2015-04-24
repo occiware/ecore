@@ -109,6 +109,21 @@ public class DockerUtil {
     return null;
   }
   
+  public static Map<String, String> getActiveHosts() {
+    Map<String, String> hosts = new HashMap<String, String>();
+    Set<Map.Entry<String, String>> _entrySet = hosts.entrySet();
+    for (final Map.Entry<String, String> entry : _entrySet) {
+      String _value = entry.getValue();
+      boolean _equals = Objects.equal(_value, "Running");
+      if (_equals) {
+        String _key = entry.getKey();
+        String _value_1 = entry.getValue();
+        hosts.put(_key, _value_1);
+      }
+    }
+    return hosts;
+  }
+  
   public static String getEnv(final String machineName) {
     InputOutput.<String>println(("Machine name: " + machineName));
     Runtime _runtime = Runtime.getRuntime();

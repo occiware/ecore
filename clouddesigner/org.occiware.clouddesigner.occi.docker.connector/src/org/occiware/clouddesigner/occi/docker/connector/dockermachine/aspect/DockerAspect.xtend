@@ -4,6 +4,7 @@ import com.github.dockerjava.api.DockerClient
 import com.github.dockerjava.api.command.CreateContainerResponse
 import fr.inria.diverse.k3.al.annotationprocessor.Aspect
 import fr.inria.diverse.k3.al.annotationprocessor.OverrideAspectMethod
+import java.util.HashMap
 import java.util.LinkedHashMap
 import java.util.Map
 import org.occiware.clouddesigner.occi.docker.Container
@@ -26,10 +27,21 @@ import org.occiware.clouddesigner.occi.docker.connector.dockerjava.DockerContain
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerMachineManager
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.Provider
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.ProcessManager
+import org.occiware.clouddesigner.occi.docker.impl.Machine_Amazon_EC2Impl
+import org.occiware.clouddesigner.occi.docker.impl.Machine_Digital_OceanImpl
+import org.occiware.clouddesigner.occi.docker.impl.Machine_Google_Compute_EngineImpl
+import org.occiware.clouddesigner.occi.docker.impl.Machine_IBM_SoftLayerImpl
+import org.occiware.clouddesigner.occi.docker.impl.Machine_Microsoft_AzureImpl
+import org.occiware.clouddesigner.occi.docker.impl.Machine_Microsoft_Hyper_VImpl
+import org.occiware.clouddesigner.occi.docker.impl.Machine_OpenStackImpl
+import org.occiware.clouddesigner.occi.docker.impl.Machine_RackspaceImpl
+import org.occiware.clouddesigner.occi.docker.impl.Machine_VMware_vSphereImpl
+import org.occiware.clouddesigner.occi.docker.impl.Machine_VirtualBoxImpl
 import org.occiware.clouddesigner.occi.infrastructure.ComputeStatus
 
 import static extension org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.ContainerAspect.*
 import static extension org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineVirtualBoxAspect.*
+import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerUtil
 
 class DockerAspect {
 
@@ -46,92 +58,161 @@ class DockerAspect {
 	var public Machine_VMware_vCloud_Air machine_VMware_vCloud_Air
 	var public Machine_VMware_vSphere machine_VMware_vSphere
 	var public Container container
+	var static public Map<String, Machine> register = new HashMap<String, Machine>
 
 	new() {
 		initModel
 	}
 
-	def callAnAspect() {
-		println(machine_VirtualBox.createMachineCommand)
-		println(machine_VirtualBox.isDeployed)
+	new(Machine machine) {
+		if (machine instanceof Machine_VirtualBoxImpl) {
+			machine_VirtualBox = machine
+		} else if (machine instanceof Machine_Amazon_EC2Impl) {
+			machine_Amazon_EC2 = machine
+		} else if (machine instanceof Machine_Digital_OceanImpl) {
+			machine_Digital_Ocean = machine
+		} else if (machine instanceof Machine_Google_Compute_EngineImpl) {
+			machine_Google_Compute_Engine = machine
+		} else if (machine instanceof Machine_IBM_SoftLayerImpl) {
+			machine_IBM_SoftLayer = machine
+		} else if (machine instanceof Machine_Microsoft_AzureImpl) {
+			machine_Microsoft_Azure = machine
+		} else if (machine instanceof Machine_Microsoft_Hyper_VImpl) {
+			machine_Microsoft_Hyper_V = machine
+		} else if (machine instanceof Machine_OpenStackImpl) {
+			machine_OpenStack = machine
+		} else if (machine instanceof Machine_RackspaceImpl) {
+			machine_Rackspace = machine
+		} else if (machine instanceof Machine_VMware_Fusion) {
+			machine_VMware_Fusion = machine
+		} else if (machine instanceof Machine_VMware_vCloud_Air) {
+			machine_VMware_vCloud_Air = machine
+		} else if (machine instanceof Machine_VMware_vSphereImpl) {
+			machine_VMware_vSphere = machine
+		}
+
+		// Register the machine
+		register(machine)
+	}
+
+	def void register(Machine machine) {
+		register.put(machine.name, machine)
 	}
 
 	def loadMachine_VirtualBox() {
 
 		// Retrieve the default factory singleton
 		machine_VirtualBox = DockerFactory.eINSTANCE.createMachine_VirtualBox
+
+		// Register the machine
+		register(machine_VirtualBox)
+		return machine_VirtualBox
 	}
 
 	def loadMachine_Amazon_EC2() {
 
 		// Retrieve the default factory singleton
 		machine_Amazon_EC2 = DockerFactory.eINSTANCE.createMachine_Amazon_EC2
+
+		// Register the machine
+		register(machine_Amazon_EC2)
+		return machine_Amazon_EC2
 	}
 
 	def loadMachine_Google_Compute_Engine() {
 
 		// Retrieve the default factory singleton
 		machine_Google_Compute_Engine = DockerFactory.eINSTANCE.createMachine_Google_Compute_Engine
+
+		// Register the machine
+		register(machine_Google_Compute_Engine)
+		return machine_Google_Compute_Engine
 	}
 
 	def loadMachine_Digital_Ocean() {
 
 		// Retrieve the default factory singleton
 		machine_Digital_Ocean = DockerFactory.eINSTANCE.createMachine_Digital_Ocean
+
+		// Register the machine
+		register(machine_Digital_Ocean)
+		return machine_Digital_Ocean
 	}
 
 	def loadMachine_IBM_SoftLayer() {
 
-		// Initialize the model
-		initModel()
-
 		// Retrieve the default factory singleton
 		machine_IBM_SoftLayer = DockerFactory.eINSTANCE.createMachine_IBM_SoftLayer
+		register(machine_IBM_SoftLayer)
+		return machine_IBM_SoftLayer
 	}
 
 	def loadMachine_Microsoft_Azure() {
 
 		// Retrieve the default factory singleton
 		machine_Microsoft_Azure = DockerFactory.eINSTANCE.createMachine_Microsoft_Azure
+
+		// Register the machine
+		register(machine_Microsoft_Azure)
+		return machine_Microsoft_Azure
 	}
 
 	def loadMachine_Microsoft_Hyper_V() {
 
 		// Retrieve the default factory singleton
 		machine_Microsoft_Hyper_V = DockerFactory.eINSTANCE.createMachine_Microsoft_Hyper_V
+
+		// Register the machine
+		register(machine_Microsoft_Hyper_V)
+		return machine_Microsoft_Hyper_V
 	}
 
 	def loadMachine_OpenStack() {
 
 		// Retrieve the default factory singleton
 		machine_OpenStack = DockerFactory.eINSTANCE.createMachine_OpenStack
+		register(machine_OpenStack)
+		return machine_OpenStack
 	}
 
 	def loadMachine_Rackspace() {
 
-		// Initialize the model
-		initModel()
-
 		// Retrieve the default factory singleton
 		machine_Rackspace = DockerFactory.eINSTANCE.createMachine_Rackspace
+
+		// Register the machine
+		register(machine_Rackspace)
+		return machine_Rackspace
 	}
 
 	def loadMachine_VMware_Fusion() {
 
 		// Retrieve the default factory singleton
 		machine_VMware_Fusion = DockerFactory.eINSTANCE.createMachine_VMware_Fusion
+
+		// Register the machine
+		register(machine_VMware_Fusion)
+		return machine_VMware_Fusion
 	}
 
 	def loadMachine_VMware_vCloud_Air() {
 
 		// Retrieve the default factory singleton
 		machine_VMware_vCloud_Air = DockerFactory.eINSTANCE.createMachine_VMware_vCloud_Air
+
+		// Register the machine
+		register(machine_VMware_vCloud_Air)
+		return machine_VMware_vCloud_Air
 	}
 
 	def loadMachine_VMware_vSphere() {
 
 		// Retrieve the default factory singleton
 		machine_VMware_vSphere = DockerFactory.eINSTANCE.createMachine_VMware_vSphere
+
+		// Register the machine
+		register(machine_VMware_vSphere)
+		return machine_VMware_vSphere
 	}
 
 	def loadContainer() {
@@ -205,12 +286,28 @@ class MachineVirtualBoxAspect extends MachineAspect {
 	def void machineStart() {
 		val runtime = Runtime.getRuntime
 
-		// Create VitualBox machine
-		ProcessManager.runCommand(_self.createMachineCommand, runtime, true)
-
-		// Set State
-		_self.state = ComputeStatus.get(0)
 		if (_self.name != null) {
+
+			// Get the active machine
+			val activeHosts = DockerUtil.getActiveHosts
+
+			// Get the existing machines
+			val hosts = DockerUtil.getHosts
+
+			if (!hosts.containsKey(_self.name)) { // Check if machine exists in the real environment
+
+				// Create VitualBox machine and start it
+				ProcessManager.runCommand(_self.createMachineCommand, runtime, true)
+			} else {
+				if (!activeHosts.containsKey(_self.name)) {
+
+					// Start the machine
+					DockerMachineManager.startCmd(runtime, _self.name)
+				}
+			}
+
+			// Set State
+			_self.state = ComputeStatus.get(0)
 
 			// Set isDeployed
 			_self.isDeployed = DockerMachineManager.setEnvCmd(runtime, _self.name)
@@ -260,6 +357,8 @@ class MachineDigitalOceanAspect extends MachineAspect {
 	def String createMachineCommand() {
 		var command = new StringBuilder("docker-machine create --driver ")
 
+		// Set the driver name
+		command.append(Provider.digitalocean.toString)
 		if (_self.name != null && _self.access_token != null) {
 			command.append(" " + _self.name)
 			command.append(" --digitalocean-access-token=" + _self.access_token)
@@ -287,6 +386,9 @@ class MachineGoogleComputeEngineAspect extends MachineAspect {
 	@OverrideAspectMethod
 	def String createMachineCommand() {
 		var command = new StringBuilder("docker-machine create --driver ")
+
+		// Set the driver name
+		command.append(Provider.google.toString)
 		if (_self.name != null) {
 			command.append(" --google-instance-name " + _self.instance_name)
 			if (_self.zone != null) {
@@ -346,7 +448,44 @@ class MachineOpenStackAspect extends MachineAspect {
 
 	@OverrideAspectMethod
 	def String createMachineCommand() {
-		//		var command = new StringBuilder("docker-machine create --driver ")
+		var command = new StringBuilder("docker-machine create --driver ")
+
+		// Set the driver name
+		command.append(Provider.openstack.toString)
+		if (_self.username != null && _self.flavor_id != null && _self.image_id != null && _self.password != null) {
+			command.append(" --openstack-username " + _self.name)
+			command.append(" --openstack-password " + _self.password)
+			command.append(" --openstack-image-id " + _self.image_id)
+			command.append(" --openstack-flavor-id" + _self.flavor_id)
+			if (_self.auth_url != null) {
+				command.append(" --openstack-auth-url " + _self.auth_url)
+			}
+			if (_self.tenant_id != null || _self.tenant_name != null) {
+				val value = if(_self.tenant_id == null) _self.tenant_id else _self.tenant_id
+				command.append(" --openstack-tenant-name " + value)
+			}
+			if (_self.region != null) {
+				command.append(" --openstack-region " + _self.region)
+			}
+			if (_self.endpoint_type != null) {
+				command.append(" --openstack-endpoint-type " + _self.endpoint_type)
+			}
+			if (_self.net_id != null) {
+				command.append(" --openstack-net-id " + _self.net_id)
+			}
+			if (_self.sec_groups != null) {
+				command.append(" --openstack-sec-groups " + _self.sec_groups)
+			}
+			if (_self.floatingip_pool != null) {
+				command.append(" --openstack-floatingip-pool " + _self.floatingip_pool)
+			}
+
+		// TODO --openstack-ssh-user and --openstack-ssh-port
+		} else if (_self.username == null || _self.flavor_id == null || _self.image_id == null || _self.password == null) {
+			// TODO manage error
+		}
+
+		return command.toString
 	}
 }
 

@@ -108,10 +108,6 @@ class ModelHandler {
 		val EObject vboxInstance = ePackage.getEFactoryInstance().create(evbox)
 		vboxInstance.eSet(eboot2docker_url, "link")
 
-		//vboxInstance.eSet(edisk_size, 100)
-		//		val List<EObject> containsList = new ArrayList<EObject>()
-		//		containsList.add(vboxInstance)
-		//		dockerMachineInstance.eSet(eContains, containsList)
 		val ResourceSet resourceSet = new ResourceSetImpl
 		resourceSet.resourceFactoryRegistry.extensionToFactoryMap.put("xmi", new XMIResourceFactoryImpl)
 		var File temp = File.createTempFile("tempfile", "dockerinstancesonlymodel.xmi")

@@ -4,13 +4,16 @@ import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.Proce
 import org.occiware.clouddesigner.occi.docker.Machine
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.command.CommandFactory
 import org.occiware.clouddesigner.occi.infrastructure.ComputeStatus
+import static extension org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineVirtualBoxAspect.*import org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.DockerAspect
+
 
 class DockerMachineManager {
 
 	val private static cf = new CommandFactory
+	val private static instanceAspect = new DockerAspect
 
 	def static boolean createHostCmd(Runtime runtime, Machine machine) {
-		val String command = cf.createMachineCommand(machine)
+		val String command = instanceAspect.loadMachine_VirtualBox.createMachineCommand
 		println(" Run ::==> " + command)
 		ProcessManager.runCommand(command, runtime, true)
 		// Set machine state
