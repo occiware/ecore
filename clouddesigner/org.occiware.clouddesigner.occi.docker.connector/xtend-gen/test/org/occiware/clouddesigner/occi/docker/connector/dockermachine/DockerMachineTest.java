@@ -34,6 +34,9 @@ public class DockerMachineTest {
     machine.setName(("test-machine-" + Integer.valueOf(randomInt)));
     MachineVirtualBoxAspect.machineStart(instanceAspect.machine_VirtualBox);
     final Machine vboxf = instanceDO.listener(machine);
+    final ModelHandler compare = new ModelHandler();
+    boolean _isSimilar = compare.isSimilar(vboxf, vboxf);
+    InputOutput.<Boolean>println(Boolean.valueOf(_isSimilar));
     MachineVirtualBoxAspect.save(instanceAspect.machine_VirtualBox);
     vboxf.setName("new-name");
     final Map<String, String> hosts = DockerUtil.getHosts();

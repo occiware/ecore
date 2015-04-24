@@ -43,6 +43,10 @@ class DockerMachineTest {
 		// Add Listener
 		val Machine vboxf = instanceDO.listener(machine)
 		
+		//Comparison
+		val compare = new ModelHandler
+		println(compare.isSimilar(vboxf, vboxf))
+		
 		// Save an instance of model
 		instanceAspect.machine_VirtualBox.save
 
