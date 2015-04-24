@@ -44,6 +44,20 @@ import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.Docke
 import org.occiware.clouddesigner.occi.infrastructure.ComputeStatus
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.Provider
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerMachineManager
+import org.eclipse.emf.compare.EMFCompare
+import org.eclipse.emf.compare.scope.DefaultComparisonScope
+import org.eclipse.emf.common.notify.Notifier
+import org.eclipse.emf.compare.match.eobject.IEObjectMatcher
+import org.eclipse.emf.compare.match.DefaultMatchEngine
+import org.eclipse.emf.compare.match.IComparisonFactory
+import org.eclipse.emf.compare.match.IMatchEngine
+import org.eclipse.emf.compare.match.DefaultComparisonFactory
+import org.eclipse.emf.compare.postprocessor.IPostProcessor
+import org.eclipse.emf.compare.scope.IComparisonScope
+import org.eclipse.emf.compare.utils.UseIdentifiers
+import org.eclipse.emf.compare.match.DefaultEqualityHelperFactory
+import org.eclipse.emf.compare.match.impl.MatchEngineFactoryImpl
+import org.eclipse.emf.compare.match.impl.MatchEngineFactoryRegistryImpl
 
 class ModelHandler {
 
@@ -471,6 +485,7 @@ class ModelHandler {
 
 		// Initialize the model
 		DockerFactory.eINSTANCE.eClass
+
 		// Retrieve the default factory singleton
 		var modelContainer = DockerFactory.eINSTANCE.createContainer
 		modelContainer.id = container.id
@@ -478,7 +493,7 @@ class ModelHandler {
 		modelContainer.image = container.image
 		modelContainer.command = container.command
 		modelContainer.containerid = container.id
-		
+
 		return modelContainer
 	}
 
@@ -504,6 +519,7 @@ class ModelHandler {
 		}
 		resource.contents.add(machine)
 		resource.save(Collections.EMPTY_MAP) // resource.save(null)
+		return temp.absolutePath
 	}
 
 	def saveContainer(Container container) {
@@ -529,15 +545,54 @@ class ModelHandler {
 		resource.contents.add(container)
 		resource.save(Collections.EMPTY_MAP) // resource.save(null)
 	}
-	
-		
+
 	def linkContainerToMachine(Container container, Machine machine) {
+
 		// Retrieve the default factory singleton
 		var contains = DockerFactory.eINSTANCE.createContains
+
 		// Add Container to the Contains
 		contains.target = container
 		machine.links.add(contains)
 		return machine
+	}
+
+	def isSimilar(Notifier left, Notifier right) {
+		return EMFCompare.builder().build().compare(new DefaultComparisonScope(left, right, null)).differences.isEmpty
+	}
+
+	def isSimilar(Machine machine1, Machine machine2) {
+
+		// Load the two input models
+		val ResourceSet resourceSet1 = new ResourceSetImpl
+		val ResourceSet resourceSet2 = new ResourceSetImpl
+		// Serialize the model
+		val String xmi1 = saveMachine(machine1)
+		val String xmi2 = saveMachine(machine1)
+		load(xmi1, resourceSet1);
+		load(xmi2, resourceSet2);
+
+		// Configure EMF Compare
+		val IEObjectMatcher matcher = DefaultMatchEngine.createDefaultEObjectMatcher(UseIdentifiers.NEVER);
+		val IComparisonFactory comparisonFactory = new DefaultComparisonFactory(new DefaultEqualityHelperFactory());
+		val IMatchEngine.Factory matchEngineFactory = new MatchEngineFactoryImpl(matcher, comparisonFactory);
+		matchEngineFactory.setRanking(20);
+		val IMatchEngine.Factory.Registry matchEngineRegistry = new MatchEngineFactoryRegistryImpl();
+		matchEngineRegistry.add(matchEngineFactory);
+		val EMFCompare comparator = EMFCompare.builder().setMatchEngineFactoryRegistry(matchEngineRegistry).build();
+
+		// Compare the two models
+		val IComparisonScope scope = EMFCompare.createDefaultScope(resourceSet1, resourceSet2);
+		return comparator.compare(scope).differences.isEmpty
+	}
+
+	def void load(String absolutePath, ResourceSet resourceSet) {
+		val URI uri = URI.createFileURI(absolutePath);
+
+		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xmi", new XMIResourceFactoryImpl());
+
+		// Resource will be loaded within the resource set
+		resourceSet.getResource(uri, true);
 	}
 
 }
