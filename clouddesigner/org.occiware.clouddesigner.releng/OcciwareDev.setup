@@ -68,10 +68,14 @@
         name="org.eclipse.sirius.specifier.ide.ui.feature.group"/>
     <requirement
         name="org.eclipse.ocl.examples.feature.group"/>
+    <requirement
+        name="fr.inria.diverse.k3.feature.feature.group"/>
     <repository
         url="http://download.eclipse.org/releases/luna"/>
     <repository
         url="http://download.eclipse.org/oomph/updates/latest"/>
+    <repository
+        url="http://www.kermeta.org/k3/update/"/>
     <description>Install the tools needed in the IDE to work with the source code for ${scope.project.label}</description>
   </setupTask>
   <stream name="master"/>
