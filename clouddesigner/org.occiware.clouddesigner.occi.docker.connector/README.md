@@ -8,13 +8,11 @@ You should have an account or register yourself on: https://hub.docker.com/accou
 
 Configuration
 -------------
-Change the configuration below according to your requirements in the class ecore/clouddesigner/org.occiware.clouddesigner.occi.docker.connector/src/org/occiware/clouddesigner/occi/docker/connector/dockerjava/DockerContainerManager.xtend.
+Change the configuration below according to your requirements in the file ecore/clouddesigner/org.occiware.clouddesigner.occi.docker.connector/src/resources/docker.properties.
 
-		var DockerClientConfig config = DockerClientConfig.createDefaultConfigBuilder().withVersion("1.16")
-		.withUri(dockerUri).withUsername("dockeruser")
-		.withPassword("iloveocciware")
-		.withEmail("dockeruser@occiware.org")
-		.withServerAddress("https://index.docker.io/v1/")
-		.withDockerCertPath(certPath).build();
-		var DockerClient dockerClient = DockerClientBuilder.getInstance(config).build();
-		return dockerClient
+#### Properties
+	docker.username=dockeruser
+	docker.password=iloveocciware
+	docker.email=dockeruser@occiware.org
+	docker.version=1.16
+	docker.url=https://index.docker.io/v1/
