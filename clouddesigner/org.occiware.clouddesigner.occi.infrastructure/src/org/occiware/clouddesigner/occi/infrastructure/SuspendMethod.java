@@ -14,7 +14,8 @@ import org.eclipse.emf.common.util.Enumerator;
  * and utility methods for working with them.
  * <!-- end-user-doc -->
  * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getSuspendMethod()
- * @model
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='dummy'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot dummy='true'"
  * @generated
  */
 public enum SuspendMethod implements Enumerator {
@@ -92,6 +93,8 @@ public enum SuspendMethod implements Enumerator {
 	 * Returns the '<em><b>Suspend Method</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param literal the literal.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static SuspendMethod get(String literal) {
@@ -108,6 +111,8 @@ public enum SuspendMethod implements Enumerator {
 	 * Returns the '<em><b>Suspend Method</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name the name.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static SuspendMethod getByName(String name) {
@@ -124,6 +129,8 @@ public enum SuspendMethod implements Enumerator {
 	 * Returns the '<em><b>Suspend Method</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param value the integer value.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static SuspendMethod get(int value) {

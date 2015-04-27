@@ -20,12 +20,12 @@ import org.occiware.clouddesigner.occi.infrastructure.Storagelink;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.impl.StoragelinkImpl#getDeviceid <em>Deviceid</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.impl.StoragelinkImpl#getMountpoint <em>Mountpoint</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.impl.StoragelinkImpl#getState <em>State</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

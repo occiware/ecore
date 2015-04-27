@@ -10,7 +10,6 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
 
 import org.occiware.clouddesigner.OCCI.Entity;
-import org.occiware.clouddesigner.OCCI.Link;
 import org.occiware.clouddesigner.OCCI.Resource;
 
 import org.occiware.clouddesigner.occi.docker.*;
@@ -78,7 +77,7 @@ public class DockerAdapterFactory extends AdapterFactoryImpl {
 				return createContainerAdapter();
 			}
 			@Override
-			public Adapter caseLink(org.occiware.clouddesigner.occi.docker.Link object) {
+			public Adapter caseLink(Link object) {
 				return createLinkAdapter();
 			}
 			@Override
@@ -154,7 +153,7 @@ public class DockerAdapterFactory extends AdapterFactoryImpl {
 				return createComputeAdapter();
 			}
 			@Override
-			public Adapter caseOCCI_Link(Link object) {
+			public Adapter caseOCCI_Link(org.occiware.clouddesigner.OCCI.Link object) {
 				return createOCCI_LinkAdapter();
 			}
 			@Override
@@ -188,6 +187,20 @@ public class DockerAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createContainerAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.occiware.clouddesigner.occi.docker.Link <em>Link</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.occiware.clouddesigner.occi.docker.Link
+	 * @generated
+	 */
+	public Adapter createLinkAdapter() {
 		return null;
 	}
 
@@ -454,20 +467,6 @@ public class DockerAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createOCCI_LinkAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.occiware.clouddesigner.occi.docker.Link <em>Link</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.occiware.clouddesigner.occi.docker.Link
-	 * @generated
-	 */
-	public Adapter createLinkAdapter() {
 		return null;
 	}
 

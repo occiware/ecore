@@ -9,8 +9,12 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.occiware.clouddesigner.occi.docker.DockerPackage;
 import org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Hyper_V;
 
 /**
@@ -41,8 +45,100 @@ public class Machine_Microsoft_Hyper_VItemProvider extends MachineItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addBoot2docker_locationPropertyDescriptor(object);
+			addBoot2docker_urlPropertyDescriptor(object);
+			addDisk_sizePropertyDescriptor(object);
+			addVirtual_switchPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Boot2docker location feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addBoot2docker_locationPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_Microsoft_Hyper_V_boot2docker_location_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_Microsoft_Hyper_V_boot2docker_location_feature", "_UI_Machine_Microsoft_Hyper_V_type"),
+				 DockerPackage.Literals.MACHINE_MICROSOFT_HYPER_V__BOOT2DOCKER_LOCATION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Boot2docker url feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addBoot2docker_urlPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_Microsoft_Hyper_V_boot2docker_url_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_Microsoft_Hyper_V_boot2docker_url_feature", "_UI_Machine_Microsoft_Hyper_V_type"),
+				 DockerPackage.Literals.MACHINE_MICROSOFT_HYPER_V__BOOT2DOCKER_URL,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Disk size feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDisk_sizePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_Microsoft_Hyper_V_disk_size_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_Microsoft_Hyper_V_disk_size_feature", "_UI_Machine_Microsoft_Hyper_V_type"),
+				 DockerPackage.Literals.MACHINE_MICROSOFT_HYPER_V__DISK_SIZE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Virtual switch feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addVirtual_switchPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_Microsoft_Hyper_V_virtual_switch_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_Microsoft_Hyper_V_virtual_switch_feature", "_UI_Machine_Microsoft_Hyper_V_type"),
+				 DockerPackage.Literals.MACHINE_MICROSOFT_HYPER_V__VIRTUAL_SWITCH,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -81,6 +177,15 @@ public class Machine_Microsoft_Hyper_VItemProvider extends MachineItemProvider {
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
+
+		switch (notification.getFeatureID(Machine_Microsoft_Hyper_V.class)) {
+			case DockerPackage.MACHINE_MICROSOFT_HYPER_V__BOOT2DOCKER_LOCATION:
+			case DockerPackage.MACHINE_MICROSOFT_HYPER_V__BOOT2DOCKER_URL:
+			case DockerPackage.MACHINE_MICROSOFT_HYPER_V__DISK_SIZE:
+			case DockerPackage.MACHINE_MICROSOFT_HYPER_V__VIRTUAL_SWITCH:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+		}
 		super.notifyChanged(notification);
 	}
 

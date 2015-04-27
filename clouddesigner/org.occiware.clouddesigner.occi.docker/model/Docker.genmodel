@@ -5,6 +5,9 @@
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
     usedGenPackages="../../org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.genmodel#//infrastructure ../../org.occiware.clouddesigner.occi/model/OCCI.genmodel#//OCCI"
     operationReflection="true" importOrganizing="true">
+  <genAnnotations source="http://www.eclipse.org/OCL/GenModel">
+    <details key="Use Delegates" value="false"/>
+  </genAnnotations>
   <foreignModel>Docker.ecore</foreignModel>
   <genPackages prefix="Docker" basePackage="org.occiware.clouddesigner.occi" disposableProviderFactory="true"
       ecorePackage="Docker.ecore#/">
@@ -69,20 +72,118 @@
     <genClasses ecoreClass="Docker.ecore#//Machine">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine/name"/>
     </genClasses>
-    <genClasses ecoreClass="Docker.ecore#//Machine_Amazon_EC2"/>
-    <genClasses ecoreClass="Docker.ecore#//Machine_Digital_Ocean"/>
-    <genClasses ecoreClass="Docker.ecore#//Machine_Google_Compute_Engine"/>
-    <genClasses ecoreClass="Docker.ecore#//Machine_IBM_SoftLayer"/>
-    <genClasses ecoreClass="Docker.ecore#//Machine_Microsoft_Azure"/>
-    <genClasses ecoreClass="Docker.ecore#//Machine_Microsoft_Hyper_V"/>
-    <genClasses ecoreClass="Docker.ecore#//Machine_OpenStack"/>
-    <genClasses ecoreClass="Docker.ecore#//Machine_Rackspace"/>
+    <genClasses ecoreClass="Docker.ecore#//Machine_Amazon_EC2">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_Amazon_EC2/access_key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_Amazon_EC2/ami"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_Amazon_EC2/instance_type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_Amazon_EC2/region"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_Amazon_EC2/root_size"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_Amazon_EC2/secret_key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_Amazon_EC2/security_group"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_Amazon_EC2/session_token"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_Amazon_EC2/subnet_id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_Amazon_EC2/vpc_id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_Amazon_EC2/zone"/>
+    </genClasses>
+    <genClasses ecoreClass="Docker.ecore#//Machine_Digital_Ocean">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_Digital_Ocean/access_token"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_Digital_Ocean/image"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_Digital_Ocean/region"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_Digital_Ocean/size"/>
+    </genClasses>
+    <genClasses ecoreClass="Docker.ecore#//Machine_Google_Compute_Engine">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_Google_Compute_Engine/zone"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_Google_Compute_Engine/machine_type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_Google_Compute_Engine/username"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_Google_Compute_Engine/instance_name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_Google_Compute_Engine/project"/>
+    </genClasses>
+    <genClasses ecoreClass="Docker.ecore#//Machine_IBM_SoftLayer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_IBM_SoftLayer/api_endpoint"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_IBM_SoftLayer/user"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_IBM_SoftLayer/api_key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_IBM_SoftLayer/cpu"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_IBM_SoftLayer/disk_size"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_IBM_SoftLayer/domain"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_IBM_SoftLayer/hourly_billing"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_IBM_SoftLayer/image"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_IBM_SoftLayer/local_disk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_IBM_SoftLayer/private_net_only"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_IBM_SoftLayer/region"/>
+    </genClasses>
+    <genClasses ecoreClass="Docker.ecore#//Machine_Microsoft_Azure">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_Microsoft_Azure/subscription_id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_Microsoft_Azure/subscription_cert"/>
+    </genClasses>
+    <genClasses ecoreClass="Docker.ecore#//Machine_Microsoft_Hyper_V">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_Microsoft_Hyper_V/boot2docker_location"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_Microsoft_Hyper_V/boot2docker_url"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_Microsoft_Hyper_V/disk_size"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_Microsoft_Hyper_V/virtual_switch"/>
+    </genClasses>
+    <genClasses ecoreClass="Docker.ecore#//Machine_OpenStack">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_OpenStack/flavor_id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_OpenStack/image_id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_OpenStack/auth_url"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_OpenStack/username"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_OpenStack/password"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_OpenStack/tenant_name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_OpenStack/tenant_id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_OpenStack/region"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_OpenStack/endpoint_type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_OpenStack/net_id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_OpenStack/sec_groups"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_OpenStack/floatingip_pool"/>
+    </genClasses>
+    <genClasses ecoreClass="Docker.ecore#//Machine_Rackspace">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_Rackspace/username"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_Rackspace/api_key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_Rackspace/region"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_Rackspace/endpoint_type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_Rackspace/image_id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_Rackspace/flavor_id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_Rackspace/ssh_user"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_Rackspace/ssh_port"/>
+    </genClasses>
     <genClasses ecoreClass="Docker.ecore#//Machine_VirtualBox">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_VirtualBox/boot2docker_url"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_VirtualBox/disk_size"/>
     </genClasses>
-    <genClasses ecoreClass="Docker.ecore#//Machine_VMware_Fusion"/>
-    <genClasses ecoreClass="Docker.ecore#//Machine_VMware_vCloud_Air"/>
-    <genClasses ecoreClass="Docker.ecore#//Machine_VMware_vSphere"/>
+    <genClasses ecoreClass="Docker.ecore#//Machine_VMware_Fusion">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_VMware_Fusion/boot2docker_url"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_VMware_Fusion/disk_size"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_VMware_Fusion/memory_size"/>
+    </genClasses>
+    <genClasses ecoreClass="Docker.ecore#//Machine_VMware_vCloud_Air">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_VMware_vCloud_Air/username"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_VMware_vCloud_Air/password"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_VMware_vCloud_Air/catalog"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_VMware_vCloud_Air/catalogitem"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_VMware_vCloud_Air/computeid"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_VMware_vCloud_Air/cpu_count"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_VMware_vCloud_Air/docker_port"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_VMware_vCloud_Air/edgegateway"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_VMware_vCloud_Air/memory_size"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_VMware_vCloud_Air/vapp_name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_VMware_vCloud_Air/orgvdcnetwork"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_VMware_vCloud_Air/provision"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_VMware_vCloud_Air/publicip"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_VMware_vCloud_Air/ssh_port"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_VMware_vCloud_Air/vdcid"/>
+    </genClasses>
+    <genClasses ecoreClass="Docker.ecore#//Machine_VMware_vSphere">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_VMware_vSphere/username"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_VMware_vSphere/password"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_VMware_vSphere/boot2docker_url"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_VMware_vSphere/compute_ip"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_VMware_vSphere/cpu_count"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_VMware_vSphere/datacenter"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_VMware_vSphere/datastore"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_VMware_vSphere/disk_size"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_VMware_vSphere/memory_size"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_VMware_vSphere/network"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_VMware_vSphere/pool"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Docker.ecore#//Machine_VMware_vSphere/vcenter"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

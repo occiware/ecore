@@ -74,27 +74,27 @@ h4. Action stop
 | *Scheme* | http://schemas.ogf.org/occi/infrastructure/compute/action# |
 | *Title* | Stop the system (graceful, acpioff or poweroff) |
 
-
 | *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
 | method | <a href="OCCI Infrastructure.textile#enum-stopmethod">StopMethod</a> | true | false |  |  |
+
 h4. Action restart
 
 | *Term* | restart |
 | *Scheme* | http://schemas.ogf.org/occi/infrastructure/compute/action# |
 | *Title* | Restart the system (graceful, warm or cold) |
 
-
 | *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
 | method | <a href="OCCI Infrastructure.textile#enum-restartmethod">RestartMethod</a> | true | false |  |  |
+
 h4. Action suspend
 
 | *Term* | suspend |
 | *Scheme* | http://schemas.ogf.org/occi/infrastructure/compute/action# |
 | *Title* | Suspend the system (hibernate or in RAM) |
 
-
 | *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
 | method | <a href="OCCI Infrastructure.textile#enum-suspendmethod">SuspendMethod</a> | true | false |  |  |
+
 
 
 h2. Kind storage
@@ -146,9 +146,9 @@ h4. Action resize
 | *Scheme* | http://schemas.ogf.org/occi/infrastructure/storage/action# |
 | *Title* | Resize storage |
 
-
 | *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
 | size | <a href="OCCI Infrastructure.textile#datatype-gib">GiB</a> | true | false |  |  |
+
 
 
 h2. Kind storagelink

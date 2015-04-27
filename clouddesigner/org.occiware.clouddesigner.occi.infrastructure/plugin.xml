@@ -10,8 +10,7 @@
       <!-- @generated Infrastructure -->
       <package
             uri="http://schemas.ogf.org/occi/infrastructure"
-            class="org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage"
-            genModel="model/Infrastructure.genmodel"/>
+            class="org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage"/>
    </extension>
 
 </plugin>

@@ -11,11 +11,11 @@ import org.occiware.clouddesigner.OCCI.Resource;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.Storage#getSize <em>Size</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.Storage#getState <em>State</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getStorage()
  * @model
@@ -34,6 +34,7 @@ public interface Storage extends Resource {
 	 * @see #setSize(float)
 	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getStorage_Size()
 	 * @model dataType="org.occiware.clouddesigner.occi.infrastructure.GiB" required="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Storage!size'"
 	 * @generated
 	 */
 	float getSize();
@@ -62,6 +63,7 @@ public interface Storage extends Resource {
 	 * @see #setState(StorageStatus)
 	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getStorage_State()
 	 * @model required="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Storage!state'"
 	 * @generated
 	 */
 	StorageStatus getState();
@@ -80,7 +82,7 @@ public interface Storage extends Resource {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model
+	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Storage!online()'"
 	 * @generated
 	 */
 	void online();
@@ -88,7 +90,7 @@ public interface Storage extends Resource {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model
+	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Storage!offline()'"
 	 * @generated
 	 */
 	void offline();
@@ -96,7 +98,7 @@ public interface Storage extends Resource {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model
+	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Storage!backup()'"
 	 * @generated
 	 */
 	void backup();
@@ -104,7 +106,7 @@ public interface Storage extends Resource {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model
+	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Storage!snapshot()'"
 	 * @generated
 	 */
 	void snapshot();
@@ -113,6 +115,7 @@ public interface Storage extends Resource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model sizeDataType="org.occiware.clouddesigner.occi.infrastructure.GiB" sizeRequired="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Storage!resize(http://schemas.ogf.org/occi/infrastructure!GiB)'"
 	 * @generated
 	 */
 	void resize(float size);

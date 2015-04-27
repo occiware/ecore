@@ -11,12 +11,12 @@ import org.occiware.clouddesigner.OCCI.Link;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.Networkinterface#getInterface <em>Interface</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.Networkinterface#getMac <em>Mac</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.Networkinterface#getState <em>State</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getNetworkinterface()
  * @model
@@ -35,6 +35,7 @@ public interface Networkinterface extends Link {
 	 * @see #setInterface(String)
 	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getNetworkinterface_Interface()
 	 * @model dataType="org.occiware.clouddesigner.OCCI.String" required="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Networkinterface!interface'"
 	 * @generated
 	 */
 	String getInterface();
@@ -61,6 +62,7 @@ public interface Networkinterface extends Link {
 	 * @see #setMac(String)
 	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getNetworkinterface_Mac()
 	 * @model dataType="org.occiware.clouddesigner.OCCI.String" required="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Networkinterface!mac'"
 	 * @generated
 	 */
 	String getMac();
@@ -89,6 +91,7 @@ public interface Networkinterface extends Link {
 	 * @see #setState(NetworkInterfaceStatus)
 	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getNetworkinterface_State()
 	 * @model required="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Networkinterface!state'"
 	 * @generated
 	 */
 	NetworkInterfaceStatus getState();

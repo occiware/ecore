@@ -1,181 +1,1020 @@
 <?xml version="1.0" encoding="ASCII"?>
-<OCCI:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:OCCI="http://schemas.ogf.org/occi" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xsi:schemaLocation="http://schemas.ogf.org/occi ../OCCI.ecore" name="OCCIware Docker" scheme="http://occiware.org/docker#">
+<OCCI:Extension
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:OCCI="http://schemas.ogf.org/occi"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xsi:schemaLocation="http://schemas.ogf.org/occi ../OCCI.ecore"
+    name="OCCIware Docker"
+    scheme="http://occiware.org/docker#">
   <import href="../extensions/Core.xmi#/"/>
   <import href="../extensions/Infrastructure.xmi#/"/>
-  <kinds term="container" scheme="http://occiware.org/docker#" title="Container Resource">
-    <attributes name="name" required="true" description="The name of this Container instance">
-      <type href="../OCCI.ecore#//String"/>
+  <kinds term="container"
+      scheme="http://occiware.org/docker#"
+      title="Container Resource">
+    <attributes
+        name="name"
+        required="true"
+        description="The name of this Container instance">
+      <type
+          href="../OCCI.ecore#//String"/>
     </attributes>
-    <attributes name="containerid" description="The ID of this Container instance">
-      <type href="../OCCI.ecore#//String"/>
+    <attributes
+        name="containerid"
+        description="The ID of this Container instance">
+      <type
+          href="../OCCI.ecore#//String"/>
     </attributes>
-    <attributes name="image" description="The image of this Container instance">
-      <type href="../OCCI.ecore#//String"/>
+    <attributes
+        name="image"
+        description="The image of this Container instance">
+      <type
+          href="../OCCI.ecore#//String"/>
     </attributes>
-    <attributes name="build" description="The build directory of this Container instance">
-      <type href="../OCCI.ecore#//String"/>
+    <attributes
+        name="build"
+        description="The build directory of this Container instance">
+      <type
+          href="../OCCI.ecore#//String"/>
     </attributes>
-    <attributes name="command" default="" description="Override the default command in Dockerfile">
-      <type href="../OCCI.ecore#//String"/>
+    <attributes
+        name="command"
+        default=""
+        description="Override the default command in Dockerfile">
+      <type
+          href="../OCCI.ecore#//String"/>
     </attributes>
-    <attributes name="ports" description="The ports of this Container instance as a list separated by space">
-      <type href="../OCCI.ecore#//String"/>
+    <attributes
+        name="ports"
+        description="The ports of this Container instance"
+        multiple_values="true">
+      <type
+          href="../OCCI.ecore#//String"/>
     </attributes>
-    <attributes name="expose" description="The exposed ports of this Container instance as a list separated by space">
-      <type href="../OCCI.ecore#//String"/>
+    <attributes
+        name="expose"
+        description="The exposed ports of this Container instance"
+        multiple_values="true">
+      <type
+          href="../OCCI.ecore#//String"/>
     </attributes>
-    <attributes name="volumes" description="The list of volumes separated by space">
-      <type href="../OCCI.ecore#//String"/>
+    <attributes
+        name="volumes"
+        description="The list of volumes"
+        multiple_values="true">
+      <type
+          href="../OCCI.ecore#//String"/>
     </attributes>
-    <attributes name="environment" description="Separated by space">
-      <type href="../OCCI.ecore#//String"/>
+    <attributes
+        name="environment"
+        description="Environment variables"
+        multiple_values="true">
+      <type
+          href="../OCCI.ecore#//String"/>
     </attributes>
-    <attributes name="env_file">
-      <type href="../OCCI.ecore#//String"/>
+    <attributes
+        name="env_file"
+        multiple_values="true">
+      <type
+          href="../OCCI.ecore#//String"/>
     </attributes>
-    <attributes name="net" description="'bridge',  'none', 'container:[name or id]', or 'host'">
-      <type href="../OCCI.ecore#//String"/>
+    <attributes
+        name="net"
+        description="'bridge',  'none', 'container:[name or id]', or 'host'">
+      <type
+          href="../OCCI.ecore#//String"/>
     </attributes>
-    <attributes name="dns" description="Custom DNS servers, separated by space">
-      <type href="../OCCI.ecore#//String"/>
+    <attributes
+        name="dns"
+        description="Custom DNS servers"
+        multiple_values="true">
+      <type
+          href="../OCCI.ecore#//String"/>
     </attributes>
-    <attributes name="dns_search" description="Custom DNS search domains">
-      <type href="../OCCI.ecore#//String"/>
+    <attributes
+        name="dns_search"
+        description="Custom DNS search domains"
+        multiple_values="true">
+      <type
+          href="../OCCI.ecore#//String"/>
     </attributes>
-    <attributes name="cap_add" description="Add container capabilities">
-      <type href="../OCCI.ecore#//String"/>
+    <attributes
+        name="cap_add"
+        description="Add container capabilities"
+        multiple_values="true">
+      <type
+          href="../OCCI.ecore#//String"/>
     </attributes>
-    <attributes name="cap_drop" description="Drop container capabilities">
-      <type href="../OCCI.ecore#//String"/>
+    <attributes
+        name="cap_drop"
+        description="Drop container capabilities"
+        multiple_values="true">
+      <type
+          href="../OCCI.ecore#//String"/>
     </attributes>
-    <attributes name="working_dir" description="Working directory">
-      <type href="../OCCI.ecore#//String"/>
+    <attributes
+        name="working_dir"
+        description="Working directory">
+      <type
+          href="../OCCI.ecore#//String"/>
     </attributes>
-    <attributes name="entrypoint">
-      <type href="../OCCI.ecore#//String"/>
+    <attributes
+        name="entrypoint"
+        description="Entry point">
+      <type
+          href="../OCCI.ecore#//String"/>
     </attributes>
-    <attributes name="user">
-      <type href="../OCCI.ecore#//String"/>
+    <attributes
+        name="user">
+      <type
+          href="../OCCI.ecore#//String"/>
     </attributes>
-    <attributes name="hostname">
-      <type href="../OCCI.ecore#//String"/>
+    <attributes
+        name="hostname">
+      <type
+          href="../OCCI.ecore#//String"/>
     </attributes>
-    <attributes name="domainname">
-      <type href="../OCCI.ecore#//String"/>
+    <attributes
+        name="domainname">
+      <type
+          href="../OCCI.ecore#//String"/>
     </attributes>
-    <attributes name="mem_limit">
-      <type href="../OCCI.ecore#//Number"/>
+    <attributes
+        name="mem_limit">
+      <type
+          href="../OCCI.ecore#//Number"/>
     </attributes>
-    <attributes name="memory_swap" description="Memory swap limit">
-      <type href="../OCCI.ecore#//Number"/>
+    <attributes
+        name="memory_swap"
+        description="Memory swap limit">
+      <type
+          href="../OCCI.ecore#//Number"/>
     </attributes>
-    <attributes name="privileged" default="false">
-      <type href="../OCCI.ecore#//Boolean"/>
+    <attributes
+        name="privileged"
+        default="false">
+      <type
+          href="../OCCI.ecore#//Boolean"/>
     </attributes>
-    <attributes name="restart" default="">
-      <type href="../OCCI.ecore#//String"/>
+    <attributes
+        name="restart"
+        default="">
+      <type
+          href="../OCCI.ecore#//String"/>
     </attributes>
-    <attributes name="stdin_open" default="" description="">
-      <type href="../OCCI.ecore#//Boolean"/>
+    <attributes
+        name="stdin_open"
+        default=""
+        description="">
+      <type
+          href="../OCCI.ecore#//Boolean"/>
     </attributes>
-    <attributes name="interactive" required="true" default="false">
-      <type href="../OCCI.ecore#//Boolean"/>
+    <attributes
+        name="interactive"
+        required="true"
+        default="false">
+      <type
+          href="../OCCI.ecore#//Boolean"/>
     </attributes>
-    <attributes name="tty" default="false">
-      <type href="../OCCI.ecore#//Boolean"/>
+    <attributes
+        name="tty"
+        default="false">
+      <type
+          href="../OCCI.ecore#//Boolean"/>
     </attributes>
-    <attributes name="cpu_shares" default="0" description="CPU shares for this Docker container">
-      <type href="../OCCI.ecore#//Number"/>
+    <attributes
+        name="cpu_shares"
+        default="0"
+        description="CPU shares for this Docker container">
+      <type
+          href="../OCCI.ecore#//Number"/>
     </attributes>
-    <attributes name="pid" description="'' or 'host'">
-      <type href="../OCCI.ecore#//String"/>
+    <attributes
+        name="pid"
+        description="'' or 'host'">
+      <type
+          href="../OCCI.ecore#//String"/>
     </attributes>
-    <attributes name="ipc" description="'', 'host' or 'container:[name:id]'">
-      <type href="../OCCI.ecore#//String"/>
+    <attributes
+        name="ipc"
+        description="'', 'host' or 'container:[name:id]'">
+      <type
+          href="../OCCI.ecore#//String"/>
     </attributes>
-    <attributes name="add_host">
-      <type href="../OCCI.ecore#//String"/>
+    <attributes
+        name="add_host"
+        multiple_values="true">
+      <type
+          href="../OCCI.ecore#//String"/>
     </attributes>
-    <attributes name="mac_address">
-      <type href="../OCCI.ecore#//String"/>
+    <attributes
+        name="mac_address">
+      <type
+          href="../OCCI.ecore#//String"/>
     </attributes>
-    <attributes name="rm">
-      <type href="../OCCI.ecore#//Boolean"/>
+    <attributes
+        name="rm">
+      <type
+          href="../OCCI.ecore#//Boolean"/>
     </attributes>
-    <attributes name="security_opt">
-      <type href="../OCCI.ecore#//String"/>
+    <attributes
+        name="security_opt"
+        multiple_values="true">
+      <type
+          href="../OCCI.ecore#//String"/>
     </attributes>
-    <attributes name="device">
-      <type href="../OCCI.ecore#//String"/>
+    <attributes
+        name="device"
+        multiple_values="true">
+      <type
+          href="../OCCI.ecore#//String"/>
     </attributes>
-    <attributes name="lxc_conf">
-      <type href="../OCCI.ecore#//String"/>
+    <attributes
+        name="lxc_conf"
+        multiple_values="true">
+      <type
+          href="../OCCI.ecore#//String"/>
     </attributes>
-    <attributes name="cpuset" default="" description="">
-      <type href="../OCCI.ecore#//String"/>
+    <attributes
+        name="cpuset"
+        default=""
+        description="">
+      <type
+          href="../OCCI.ecore#//String"/>
     </attributes>
-    <attributes name="publish_all" default="false" description="Publish all exposed ports to random ports on the host interfaces">
-      <type href="../OCCI.ecore#//Boolean"/>
+    <attributes
+        name="publish_all"
+        default="false"
+        description="Publish all exposed ports to random ports on the host interfaces">
+      <type
+          href="../OCCI.ecore#//Boolean"/>
     </attributes>
-    <attributes name="read_only" default="false" description="Mount the container's root filesystem as read only">
-      <type href="../OCCI.ecore#//Boolean"/>
+    <attributes
+        name="read_only"
+        default="false"
+        description="Mount the container's root filesystem as read only">
+      <type
+          href="../OCCI.ecore#//Boolean"/>
     </attributes>
-    <parent href="../extensions/Infrastructure.xmi#//@kinds[term='compute']"/>
-    <actions term="create" scheme="http://occiware.org/docker/container/action#"/>
-    <actions term="start" scheme="http://occiware.org/docker/container/action#"/>
-    <actions term="stop" scheme="http://occiware.org/docker/container/action#"/>
-    <actions term="run" scheme="http://occiware.org/docker/container/action#"/>
-    <actions term="pause" scheme="http://occiware.org/docker/container/action#"/>
-    <actions term="unpause" scheme="http://occiware.org/docker/container/action#" title=""/>
-    <actions term="kill" scheme="http://occiware.org/docker/container/action#">
-      <attributes name="signal" required="true" default="KILL">
-        <type href="../OCCI.ecore#//String"/>
+    <parent
+        href="../extensions/Infrastructure.xmi#//@kinds[term='compute']"/>
+    <actions
+        term="create"
+        scheme="http://occiware.org/docker/container/action#"/>
+    <actions
+        term="start"
+        scheme="http://occiware.org/docker/container/action#"/>
+    <actions
+        term="stop"
+        scheme="http://occiware.org/docker/container/action#"/>
+    <actions
+        term="run"
+        scheme="http://occiware.org/docker/container/action#"/>
+    <actions
+        term="pause"
+        scheme="http://occiware.org/docker/container/action#"/>
+    <actions
+        term="unpause"
+        scheme="http://occiware.org/docker/container/action#"
+        title=""/>
+    <actions
+        term="kill"
+        scheme="http://occiware.org/docker/container/action#">
+      <attributes
+          name="signal"
+          required="true"
+          default="KILL">
+        <type
+            href="../OCCI.ecore#//String"/>
       </attributes>
     </actions>
   </kinds>
-  <kinds term="link" scheme="http://occiware.org/docker#" title="Link between containers">
-    <attributes name="alias" description="The alias of this Link instance">
-      <type href="../OCCI.ecore#//String"/>
+  <kinds term="link"
+      scheme="http://occiware.org/docker#"
+      title="Link between containers">
+    <attributes
+        name="alias"
+        description="The alias of this Link instance">
+      <type
+          href="../OCCI.ecore#//String"/>
     </attributes>
-    <parent href="../extensions/Core.xmi#//@kinds[term='link']"/>
+    <parent
+        href="../extensions/Core.xmi#//@kinds[term='link']"/>
   </kinds>
-  <kinds term="volumesfrom" scheme="http://occiware.org/docker#" title="VolumsFrom">
-    <attributes name="mode" default="read_write" description="The mode of this VolumesFrom instance" type="//@types.0"/>
-    <parent href="../extensions/Core.xmi#//@kinds[term='link']"/>
+  <kinds term="volumesfrom"
+      scheme="http://occiware.org/docker#"
+      title="VolumsFrom">
+    <attributes
+        name="mode"
+        default="read_write"
+        description="The mode of this VolumesFrom instance"
+        type="//@types.0"/>
+    <parent
+        href="../extensions/Core.xmi#//@kinds[term='link']"/>
   </kinds>
-  <kinds term="contains" scheme="http://occiware.org/docker#">
-    <parent href="../extensions/Core.xmi#//@kinds[term='link']"/>
+  <kinds term="contains"
+      scheme="http://occiware.org/docker#">
+    <parent
+        href="../extensions/Core.xmi#//@kinds[term='link']"/>
   </kinds>
-  <kinds term="machine" scheme="http://occiware.org/docker#" title="Machine Resource">
-    <attributes name="name" required="true">
-      <type href="../OCCI.ecore#//String"/>
+  <kinds term="machine"
+      scheme="http://occiware.org/docker#"
+      title="Machine Resource">
+    <attributes
+        name="name"
+        required="true">
+      <type
+          href="../OCCI.ecore#//String"/>
     </attributes>
-    <parent href="../extensions/Infrastructure.xmi#//@kinds[term='compute']"/>
+    <parent
+        href="../extensions/Infrastructure.xmi#//@kinds[term='compute']"/>
   </kinds>
-  <kinds term="machine_Amazon_EC2" scheme="http://occiware.org/docker#" title="Machine on Amazon EC2" parent="//@kinds[term='machine']"/>
-  <kinds term="machine_Digital_Ocean" scheme="http://occiware.org/docker#" title="Machine on Digital Ocean" parent="//@kinds[term='machine']"/>
-  <kinds term="machine_Google_Compute_Engine" scheme="http://occiware.org/docker#" title="Machine on Google Compute Engine" parent="//@kinds[term='machine']"/>
-  <kinds term="machine_IBM_SoftLayer" scheme="http://occiware.org/docker#" title="Machine on IBM SoftLayer" parent="//@kinds[term='machine']"/>
-  <kinds term="machine_Microsoft_Azure" scheme="http://occiware.org/docker#" title="Machine on Microsoft Azure" parent="//@kinds[term='machine']"/>
-  <kinds term="machine_Microsoft_Hyper_V" scheme="http://occiware.org/docker#" title="Machine on Microsoft Hyper-V" parent="//@kinds[term='machine']"/>
-  <kinds term="machine_OpenStack" scheme="http://occiware.org/docker#" title="Machine on OpenStack" parent="//@kinds[term='machine']"/>
-  <kinds term="machine_Rackspace" scheme="http://occiware.org/docker#" title="Machine on Rackspace cloud" parent="//@kinds[term='machine']"/>
-  <kinds term="machine_VirtualBox" scheme="http://occiware.org/docker#" title="Machine on VirtualBox" parent="//@kinds[term='machine']">
-    <attributes name="boot2docker_url">
-      <type href="../OCCI.ecore#//String"/>
+  <kinds term="machine_Amazon_EC2"
+      scheme="http://occiware.org/docker#"
+      title="Machine on Amazon EC2"
+      parent="//@kinds[term='machine']">
+    <attributes
+        name="access_key"
+        required="true"
+        description="Your access key id for the Amazon Web Services API">
+      <type
+          href="../OCCI.ecore#//String"/>
     </attributes>
-    <attributes name="disk_size" default="20000" description="Size of disk for the host in MB">
-      <type href="../OCCI.ecore#//Number"/>
+    <attributes
+        name="ami"
+        default="ami-4ae27e22"
+        description="The AMI ID of the instance to use">
+      <type
+          href="../OCCI.ecore#//String"/>
     </attributes>
-    <attributes name="memory" default="1024" description="Size of memory for the host in MB">
-      <type href="../OCCI.ecore#//Number"/>
+    <attributes
+        name="instance_type"
+        default="t2.micro"
+        description="The instance type to run">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="region"
+        default="us-east-1"
+        description="The region to use when launching the instance">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="root_size"
+        default="16"
+        description="The root disk size of the instance (in GB)">
+      <type
+          href="../OCCI.ecore#//Number"/>
+    </attributes>
+    <attributes
+        name="secret_key"
+        required="true"
+        description="Your secret access key for the Amazon Web Services API">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="security_group"
+        default="docker-machine"
+        description="AWS VPC security group name">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="session_token"
+        description="Your session token for the Amazon Web Services API">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="subnet_id"
+        description="AWS VPC subnet id">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="vpc_id"
+        required="true"
+        description="Your VPC ID to launch the instance in">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="zone"
+        default="a"
+        description="The AWS zone launch the instance in (i.e. one of a,b,c,d,e)">
+      <type
+          href="../OCCI.ecore#//String"/>
     </attributes>
   </kinds>
-  <kinds term="machine_VMware_Fusion" scheme="http://occiware.org/docker#" title="Machine on VMware Fusion" parent="//@kinds[term='machine']"/>
-  <kinds term="machine_VMware_vCloud_Air" scheme="http://occiware.org/docker#" title="Machine on VMware vCloud Air" parent="//@kinds[term='machine']"/>
-  <kinds term="machine_VMware_vSphere" scheme="http://occiware.org/docker#" title="Machine on VMware vSphere" parent="//@kinds[term='machine']"/>
-  <types xsi:type="ecore:EEnum" name="Mode">
-    <eLiterals name="read_write" literal="read_write"/>
-    <eLiterals name="read_only" value="1" literal="read_only"/>
+  <kinds term="machine_Digital_Ocean"
+      scheme="http://occiware.org/docker#"
+      title="Machine on Digital Ocean"
+      parent="//@kinds[term='machine']">
+    <attributes
+        name="access_token"
+        required="true"
+        description="Your personal access token for the Digital Ocean API">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="image"
+        default="docker"
+        description="The name of the Digital Ocean image to use">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="region"
+        default="nyc3"
+        description="The region to create the droplet in">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="size"
+        default="512mb"
+        description="The size of the Digital Ocean driver (larger than default options are of the form 2gb)">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+  </kinds>
+  <kinds term="machine_Google_Compute_Engine"
+      scheme="http://occiware.org/docker#"
+      title="Machine on Google Compute Engine"
+      parent="//@kinds[term='machine']">
+    <attributes
+        name="zone"
+        default="us-central1-a"
+        description="The zone to launch the instance">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="machine_type"
+        default="f1-micro"
+        description="The type of instance">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="username"
+        default="docker-user"
+        description="The username to use for the instance">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="instance_name"
+        default="docker-machine"
+        description="The name of the instance">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="project"
+        required="true"
+        description="The name of your project to use when launching the instance">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+  </kinds>
+  <kinds term="machine_IBM_SoftLayer"
+      scheme="http://occiware.org/docker#"
+      title="Machine on IBM SoftLayer"
+      parent="//@kinds[term='machine']">
+    <attributes
+        name="api_endpoint"
+        description="Change softlayer API endpoint">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="user"
+        required="true"
+        description="username for your softlayer account, api key needs to match this user">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="api_key"
+        required="true"
+        description="API key for your user account">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="cpu"
+        description="Number of CPU's for the machine">
+      <type
+          href="../OCCI.ecore#//Number"/>
+    </attributes>
+    <attributes
+        name="disk_size"
+        default=""
+        description="Size of the disk in MB. 0 sets the softlayer default">
+      <type
+          href="../OCCI.ecore#//Number"/>
+    </attributes>
+    <attributes
+        name="domain"
+        required="true"
+        description="domain name for the machine">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="hostname"
+        description="hostname for the machine">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="hourly_billing"
+        default="true"
+        description="Sets the hourly billing flag (default), otherwise uses monthly billing">
+      <type
+          href="../OCCI.ecore#//Boolean"/>
+    </attributes>
+    <attributes
+        name="image"
+        description="OS Image to use">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="local_disk"
+        description="Use local machine disk instead of softlayer SAN">
+      <type
+          href="../OCCI.ecore#//Boolean"/>
+    </attributes>
+    <attributes
+        name="memory"
+        description="Memory for host in MB">
+      <type
+          href="../OCCI.ecore#//Number"/>
+    </attributes>
+    <attributes
+        name="private_net_only"
+        description="Disable public networking">
+      <type
+          href="../OCCI.ecore#//Boolean"/>
+    </attributes>
+    <attributes
+        name="region"
+        description="softlayer region">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+  </kinds>
+  <kinds term="machine_Microsoft_Azure"
+      scheme="http://occiware.org/docker#"
+      title="Machine on Microsoft Azure"
+      parent="//@kinds[term='machine']">
+    <attributes
+        name="subscription_id"
+        required="true"
+        description="Your Azure subscription ID (A GUID like d255d8d7-5af0-4f5c-8a3e-1545044b861e)">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="subscription_cert"
+        required="true"
+        description="Your Azure subscription cert">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+  </kinds>
+  <kinds term="machine_Microsoft_Hyper_V"
+      scheme="http://occiware.org/docker#"
+      title="Machine on Microsoft Hyper-V"
+      parent="//@kinds[term='machine']">
+    <attributes
+        name="boot2docker_location"
+        description="Location of a local boot2docker iso to use. Overrides the URL option below">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="boot2docker_url"
+        description="The URL of the boot2docker iso. Defaults to the latest available version">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="disk_size"
+        default="20000"
+        description="Size of disk for the host in MB">
+      <type
+          href="../OCCI.ecore#//Number"/>
+    </attributes>
+    <attributes
+        name="memory"
+        default="1024"
+        description="Size of memory for the host in MB. The machine is setup to use dynamic memory">
+      <type
+          href="../OCCI.ecore#//Number"/>
+    </attributes>
+    <attributes
+        name="virtual_switch"
+        description="Name of the virtual switch to use. Defaults to first found">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+  </kinds>
+  <kinds term="machine_OpenStack"
+      scheme="http://occiware.org/docker#"
+      title="Machine on OpenStack"
+      parent="//@kinds[term='machine']">
+    <attributes
+        name="flavor_id"
+        required="true"
+        description="The flavor ID to use when creating the machine">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="image_id"
+        required="true"
+        description="The image ID to use when creating the machine">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="auth_url"
+        description="Keystone service base URL">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="username"
+        description="User identifer to authenticate with">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="password"
+        description="User password. It can be omitted if the standard environment variable OS_PASSWORD is set.">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="tenant_name"
+        description="Identify the tenant in which the machine will be created">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="tenant_id"
+        description="Identify the tenant in which the machine will be created">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="region"
+        description="The region to work on. Can be omitted if there is only one region on the OpenStack">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="endpoint_type"
+        description="Endpoint type can be internalURL, adminURL on publicURL. If is a helper for the driver to choose the right URL in the OpenStack service catalog. If not provided the default id publicURL">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="net_id"
+        description="The private network id the machine will be connected on. If your OpenStack project project contains only one private network it will be use automatically">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="sec_groups"
+        description="If security groups are available on your OpenStack you can specify a comma separated list to use for the machine (e.g. secgrp001,secgrp002)">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="floatingip_pool"
+        description="The IP pool that will be used to get a public IP an assign it to the machine. If there is an IP address already allocated but not assigned to any machine, this IP will be chosen and assigned to the machine. If there is no IP address already allocated a new IP will be allocated and assigned to the machine">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+  </kinds>
+  <kinds term="machine_Rackspace"
+      scheme="http://occiware.org/docker#"
+      title="Machine on Rackspace cloud"
+      parent="//@kinds[term='machine']">
+    <attributes
+        name="username"
+        required="true"
+        description="Rackspace account username">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="api_key"
+        required="true"
+        description="Rackspace API key">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="region"
+        required="true"
+        description="Rackspace region name">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="endpoint_type"
+        default="publicURL"
+        description="Rackspace endpoint type (adminURL, internalURL or the default publicURL)">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="image_id"
+        default="Ubuntu 14.10 (Utopic Unicorn) (PVHVM)"
+        description="Rackspace image ID ">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="flavor_id"
+        default="General Purpose 1GB"
+        description="Rackspace flavor ID">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="ssh_user"
+        default="root"
+        description="SSH user for the newly booted machine">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="ssh_port"
+        default="22"
+        description="SSH port for the newly booted machine">
+      <type
+          href="../OCCI.ecore#//Number"/>
+    </attributes>
+  </kinds>
+  <kinds term="machine_VirtualBox"
+      scheme="http://occiware.org/docker#"
+      title="Machine on VirtualBox"
+      parent="//@kinds[term='machine']">
+    <attributes
+        name="boot2docker_url"
+        description="The URL of the boot2docker image. Default to the latest available version">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="disk_size"
+        default="20000"
+        description="Size of disk for the host in MB">
+      <type
+          href="../OCCI.ecore#//Number"/>
+    </attributes>
+    <attributes
+        name="memory"
+        default="1024"
+        description="Size of memory for the host in MB">
+      <type
+          href="../OCCI.ecore#//Number"/>
+    </attributes>
+  </kinds>
+  <kinds term="machine_VMware_Fusion"
+      scheme="http://occiware.org/docker#"
+      title="Machine on VMware Fusion"
+      parent="//@kinds[term='machine']">
+    <attributes
+        name="boot2docker_url"
+        description="URL for boot2docker image">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="disk_size"
+        default="20000"
+        description="Size of disk for host VM (in MB)">
+      <type
+          href="../OCCI.ecore#//Number"/>
+    </attributes>
+    <attributes
+        name="memory_size"
+        default="1024"
+        description="Size of memory for host VM (in MB)">
+      <type
+          href="../OCCI.ecore#//Number"/>
+    </attributes>
+  </kinds>
+  <kinds term="machine_VMware_vCloud_Air"
+      scheme="http://occiware.org/docker#"
+      title="Machine on VMware vCloud Air"
+      parent="//@kinds[term='machine']">
+    <attributes
+        name="username"
+        required="true"
+        description="vCloud Air Username">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="password"
+        required="true"
+        description="vCloud Air Password">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="catalog"
+        default="Public Catalog"
+        description="Catalog ">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="catalogitem"
+        default="Ubuntu Server 12.04 LTS (amd64 20140927)"
+        description="Catalog Item ">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="computeid"
+        description="Compute ID (if using Dedicated Cloud)">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="cpu_count"
+        default="1"
+        description="VM Cpu Count">
+      <type
+          href="../OCCI.ecore#//Number"/>
+    </attributes>
+    <attributes
+        name="docker_port"
+        default="2376"
+        description="Docker port ">
+      <type
+          href="../OCCI.ecore#//Number"/>
+    </attributes>
+    <attributes
+        name="edgegateway"
+        default="&lt;vdcid>"
+        description="Organization Edge Gateway">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="memory_size"
+        default="2048"
+        description="VM Memory Size in MB">
+      <type
+          href="../OCCI.ecore#//Number"/>
+    </attributes>
+    <attributes
+        name="vapp_name"
+        default="&lt;autogenerated>"
+        description="vApp Name">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="orgvdcnetwork"
+        default="&lt;vdcid>-default-routed"
+        description="Organization VDC Network to attach">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="provision"
+        default="true"
+        description="Install Docker binaries">
+      <type
+          href="../OCCI.ecore#//Boolean"/>
+    </attributes>
+    <attributes
+        name="publicip"
+        description="Org Public IP to use">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="ssh_port"
+        default="22"
+        description="SSH port">
+      <type
+          href="../OCCI.ecore#//Number"/>
+    </attributes>
+    <attributes
+        name="vdcid"
+        description="Virtual Data Center ID">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+  </kinds>
+  <kinds term="machine_VMware_vSphere"
+      scheme="http://occiware.org/docker#"
+      title="Machine on VMware vSphere"
+      parent="//@kinds[term='machine']">
+    <attributes
+        name="username"
+        required="true"
+        description="vSphere Username">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="password"
+        required="true"
+        description="vSphere Password">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="boot2docker_url"
+        required="true"
+        description="URL for boot2docker image">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="compute_ip"
+        description="Compute host IP where the Docker VM will be instantiated">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="cpu_count"
+        default="2"
+        description="CPU number for Docker VM">
+      <type
+          href="../OCCI.ecore#//Number"/>
+    </attributes>
+    <attributes
+        name="datacenter"
+        description="Datacenter for Docker VM (must be set to ha-datacenter when connecting to a single host)">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="datastore"
+        description="Datastore for Docker VM">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="disk_size"
+        default="20000"
+        description="Size of disk for Docker VM (in MB)">
+      <type
+          href="../OCCI.ecore#//Number"/>
+    </attributes>
+    <attributes
+        name="memory_size"
+        default="2048"
+        description="Size of memory for Docker VM (in MB) ">
+      <type
+          href="../OCCI.ecore#//Number"/>
+    </attributes>
+    <attributes
+        name="network"
+        description="Network where the Docker VM will be attached">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="pool"
+        description="Resource pool for Docker VM">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="vcenter"
+        description=" IP/hostname for vCenter (or ESXi if connecting directly to a single host)">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+  </kinds>
+  <types xsi:type="ecore:EEnum"
+      name="Mode">
+    <eLiterals
+        name="read_write"
+        literal="read_write"/>
+    <eLiterals
+        name="read_only"
+        value="1"
+        literal="read_only"/>
   </types>
 </OCCI:Extension>

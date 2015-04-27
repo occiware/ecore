@@ -5,6 +5,9 @@
     rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
     complianceLevel="8.0" copyrightFields="false" usedGenPackages="../../org.occiware.clouddesigner.occi/model/OCCI.genmodel#//OCCI"
     operationReflection="true" importOrganizing="true">
+  <genAnnotations source="http://www.eclipse.org/OCL/GenModel">
+    <details key="Use Delegates" value="false"/>
+  </genAnnotations>
   <foreignModel>Infrastructure.ecore</foreignModel>
   <genPackages prefix="Infrastructure" basePackage="org.occiware.clouddesigner.occi"
       disposableProviderFactory="true" ecorePackage="Infrastructure.ecore#/">

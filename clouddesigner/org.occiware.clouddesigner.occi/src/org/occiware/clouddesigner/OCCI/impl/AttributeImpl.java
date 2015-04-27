@@ -20,6 +20,7 @@ import org.occiware.clouddesigner.OCCI.OCCIPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.occiware.clouddesigner.OCCI.impl.AttributeImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.OCCI.impl.AttributeImpl#isMutable <em>Mutable</em>}</li>
@@ -27,8 +28,8 @@ import org.occiware.clouddesigner.OCCI.OCCIPackage;
  *   <li>{@link org.occiware.clouddesigner.OCCI.impl.AttributeImpl#getDefault <em>Default</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.OCCI.impl.AttributeImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.OCCI.impl.AttributeImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.OCCI.impl.AttributeImpl#isMultiple_values <em>Multiple values</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -142,6 +143,26 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
 	 * @ordered
 	 */
 	protected EDataType type;
+
+	/**
+	 * The default value of the '{@link #isMultiple_values() <em>Multiple values</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isMultiple_values()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean MULTIPLE_VALUES_EDEFAULT = false; // TODO The default value literal "" is not valid.
+
+	/**
+	 * The cached value of the '{@link #isMultiple_values() <em>Multiple values</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isMultiple_values()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean multiple_values = MULTIPLE_VALUES_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -310,6 +331,27 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isMultiple_values() {
+		return multiple_values;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMultiple_values(boolean newMultiple_values) {
+		boolean oldMultiple_values = multiple_values;
+		multiple_values = newMultiple_values;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, OCCIPackage.ATTRIBUTE__MULTIPLE_VALUES, oldMultiple_values, multiple_values));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -326,6 +368,8 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
 			case OCCIPackage.ATTRIBUTE__TYPE:
 				if (resolve) return getType();
 				return basicGetType();
+			case OCCIPackage.ATTRIBUTE__MULTIPLE_VALUES:
+				return isMultiple_values();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -355,6 +399,9 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
 				return;
 			case OCCIPackage.ATTRIBUTE__TYPE:
 				setType((EDataType)newValue);
+				return;
+			case OCCIPackage.ATTRIBUTE__MULTIPLE_VALUES:
+				setMultiple_values((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -386,6 +433,9 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
 			case OCCIPackage.ATTRIBUTE__TYPE:
 				setType((EDataType)null);
 				return;
+			case OCCIPackage.ATTRIBUTE__MULTIPLE_VALUES:
+				setMultiple_values(MULTIPLE_VALUES_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -410,6 +460,8 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
 				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
 			case OCCIPackage.ATTRIBUTE__TYPE:
 				return type != null;
+			case OCCIPackage.ATTRIBUTE__MULTIPLE_VALUES:
+				return multiple_values != MULTIPLE_VALUES_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -434,6 +486,8 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
 		result.append(default_);
 		result.append(", description: ");
 		result.append(description);
+		result.append(", multiple_values: ");
+		result.append(multiple_values);
 		result.append(')');
 		return result.toString();
 	}

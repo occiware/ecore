@@ -57,36 +57,36 @@ h4. Action template
 | *Scheme* | http://proactive.ow2.org/compute/action# |
 | *Title* | Créer un modèle à partir d'une VM existante |
 
-
 | *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
 | occi.compute.template_name | String | false | false |  | e.g., linux-debian-6.0-en-01-mytemplate |
+
 h4. Action collate
 
 | *Term* | collate |
 | *Scheme* | http://proactive.ow2.org/compute/action# |
 | *Title* |  |
 
-
 | *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
 | affinity.target | URI | true | false |  |  |
+
 h4. Action decollate
 
 | *Term* | decollate |
 | *Scheme* | http://proactive.ow2.org/compute/action# |
 | *Title* |  |
 
-
 | *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
 | affinity.target | URI | true | false |  |  |
+
 h4. Action set_sla
 
 | *Term* | set_sla |
 | *Scheme* | http://proactive.ow2.org/compute/action# |
 | *Title* | Modifier un SLA |
 
-
 | *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
 | sla | <a href="OW2 ProActive.textile#enum-sla">SLA</a> | true | false |  |  |
+
 h4. Action snapshot_revert
 
 | *Term* | snapshot_revert |

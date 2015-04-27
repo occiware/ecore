@@ -8,7 +8,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
 
 import org.occiware.clouddesigner.OCCI.Entity;
-import org.occiware.clouddesigner.OCCI.Link;
 import org.occiware.clouddesigner.OCCI.Resource;
 
 import org.occiware.clouddesigner.occi.docker.*;
@@ -53,7 +52,7 @@ public class DockerSwitch<T> extends Switch<T> {
 	 * Checks whether this is a switch for the given package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @parameter ePackage the package in question.
+	 * @param ePackage the package in question.
 	 * @return whether this is a switch for the given package.
 	 * @generated
 	 */
@@ -82,7 +81,7 @@ public class DockerSwitch<T> extends Switch<T> {
 				return result;
 			}
 			case DockerPackage.LINK: {
-				org.occiware.clouddesigner.occi.docker.Link link = (org.occiware.clouddesigner.occi.docker.Link)theEObject;
+				Link link = (Link)theEObject;
 				T result = caseLink(link);
 				if (result == null) result = caseOCCI_Link(link);
 				if (result == null) result = caseEntity(link);
@@ -264,7 +263,7 @@ public class DockerSwitch<T> extends Switch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseLink(org.occiware.clouddesigner.occi.docker.Link object) {
+	public T caseLink(Link object) {
 		return null;
 	}
 
@@ -549,7 +548,7 @@ public class DockerSwitch<T> extends Switch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseOCCI_Link(Link object) {
+	public T caseOCCI_Link(org.occiware.clouddesigner.OCCI.Link object) {
 		return null;
 	}
 

@@ -11,7 +11,6 @@
  *******************************************************************************/
 package org.occiware.clouddesigner.OCCI;
 
-import java.lang.String;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.ocl.examples.domain.elements.DomainParameterTypes;
 import org.eclipse.ocl.examples.domain.elements.DomainTypeParameters;
@@ -23,8 +22,6 @@ import org.eclipse.ocl.examples.domain.ids.MetaclassId;
 import org.eclipse.ocl.examples.domain.ids.NsURIPackageId;
 import org.eclipse.ocl.examples.domain.ids.RootPackageId;
 import org.eclipse.ocl.examples.domain.ids.TypeId;
-import org.eclipse.ocl.examples.domain.values.IntegerValue;
-import org.eclipse.ocl.examples.domain.values.util.ValuesUtil;
 import org.eclipse.ocl.examples.library.ecore.EcoreExecutorPackage;
 import org.eclipse.ocl.examples.library.ecore.EcoreExecutorProperty;
 import org.eclipse.ocl.examples.library.ecore.EcoreExecutorType;
@@ -50,7 +47,7 @@ public class OCCITables
 	/**
 	 *	The package descriptor for the package.
 	 */
-	public static final /*@NonNull*/ EcoreExecutorPackage PACKAGE = new EcoreExecutorPackage(OCCIPackage.eINSTANCE); // PM: , null);
+	public static final /*@NonNull*/ EcoreExecutorPackage PACKAGE = new EcoreExecutorPackage(OCCIPackage.eINSTANCE, null);
 
 	/**
 	 *	The library of all packages and types.
@@ -63,7 +60,6 @@ public class OCCITables
     public static final /*@NonNull*/ /*@NonInvalid*/ RootPackageId PACKid_$metamodel$ = IdManager.getRootPackageId("$metamodel$");
     public static final /*@NonNull*/ /*@NonInvalid*/ NsURIPackageId PACKid_http_c_s_s_schemas_ogf_org_s_occi = IdManager.getNsURIPackageId("http://schemas.ogf.org/occi", null, OCCIPackage.eINSTANCE);
     public static final /*@NonNull*/ /*@NonInvalid*/ NsURIPackageId PACKid_http_c_s_s_www_eclipse_org_s_emf_s_2002_s_Ecore = IdManager.getNsURIPackageId("http://www.eclipse.org/emf/2002/Ecore", null, EcorePackage.eINSTANCE);
-    public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId BAG_PRIMid_String = TypeId.BAG.getSpecializedId(TypeId.STRING);
     public static final /*@NonNull*/ /*@NonInvalid*/ ClassId CLSSid_Action = OCCITables.PACKid_http_c_s_s_schemas_ogf_org_s_occi.getClassId("Action", 0);
     public static final /*@NonNull*/ /*@NonInvalid*/ ClassId CLSSid_Attribute = OCCITables.PACKid_http_c_s_s_schemas_ogf_org_s_occi.getClassId("Attribute", 0);
     public static final /*@NonNull*/ /*@NonInvalid*/ ClassId CLSSid_AttributeState = OCCITables.PACKid_http_c_s_s_schemas_ogf_org_s_occi.getClassId("AttributeState", 0);
@@ -78,25 +74,13 @@ public class OCCITables
     public static final /*@NonNull*/ /*@NonInvalid*/ ClassId CLSSid_OclElement = OCCITables.PACKid_$metamodel$.getClassId("OclElement", 0);
     public static final /*@NonNull*/ /*@NonInvalid*/ ClassId CLSSid_Resource = OCCITables.PACKid_http_c_s_s_schemas_ogf_org_s_occi.getClassId("Resource", 0);
     public static final /*@NonNull*/ /*@NonInvalid*/ DataTypeId DATAid_URI = OCCITables.PACKid_http_c_s_s_schemas_ogf_org_s_occi.getDataTypeId("URI", 0);
-    public static final /*@NonNull*/ /*@NonInvalid*/ IntegerValue INT_1 = ValuesUtil.integerValueOf("1");
-    public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId SEQ_PRIMid_String = TypeId.SEQUENCE.getSpecializedId(TypeId.STRING);
-    public static final /*@NonNull*/ /*@NonInvalid*/ String STR__35 = "#";
-    public static final /*@NonNull*/ /*@NonInvalid*/ String STR__s_action_35 = "/action#";
-    public static final /*@NonNull*/ /*@NonInvalid*/ String STR_entity = "entity";
-    public static final /*@NonNull*/ /*@NonInvalid*/ String STR_http_c_s_s_schemas_ogf_o = "http://schemas.ogf.org/occi/core#";
-    public static final /*@NonNull*/ /*@NonInvalid*/ String STR_link = "link";
-    public static final /*@NonNull*/ /*@NonInvalid*/ String STR_quot = "/";
-    public static final /*@NonNull*/ /*@NonInvalid*/ String STR_resource = "resource";
-    public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId BAG_CLSSid_Attribute = TypeId.BAG.getSpecializedId(OCCITables.CLSSid_Attribute);
     public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId BAG_CLSSid_Configuration = TypeId.BAG.getSpecializedId(OCCITables.CLSSid_Configuration);
     public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId BAG_CLSSid_Entity = TypeId.BAG.getSpecializedId(OCCITables.CLSSid_Entity);
     public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId BAG_CLSSid_Extension = TypeId.BAG.getSpecializedId(OCCITables.CLSSid_Extension);
     public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId BAG_CLSSid_Kind = TypeId.BAG.getSpecializedId(OCCITables.CLSSid_Kind);
     public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId BAG_CLSSid_Link = TypeId.BAG.getSpecializedId(OCCITables.CLSSid_Link);
     public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId BAG_CLSSid_Mixin = TypeId.BAG.getSpecializedId(OCCITables.CLSSid_Mixin);
-    public static final /*@NonNull*/ /*@NonInvalid*/ MetaclassId METAid_Metaclass = TypeId.METACLASS.getSpecializedId(OCCITables.CLSSid_Category);
-    public static final /*@NonNull*/ /*@NonInvalid*/ MetaclassId METAid_Metaclass_0 = TypeId.METACLASS.getSpecializedId(OCCITables.CLSSid_Entity);
-    public static final /*@NonNull*/ /*@NonInvalid*/ MetaclassId METAid_Metaclass_1 = TypeId.METACLASS.getSpecializedId(OCCITables.CLSSid_Extension);
+    public static final /*@NonNull*/ /*@NonInvalid*/ MetaclassId METAid_Metaclass = TypeId.METACLASS.getSpecializedId(OCCITables.CLSSid_Entity);
     public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_Action = TypeId.ORDERED_SET.getSpecializedId(OCCITables.CLSSid_Action);
     public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_Attribute = TypeId.ORDERED_SET.getSpecializedId(OCCITables.CLSSid_Attribute);
     public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_AttributeState = TypeId.ORDERED_SET.getSpecializedId(OCCITables.CLSSid_AttributeState);
@@ -107,16 +91,9 @@ public class OCCITables
     public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_Link = TypeId.ORDERED_SET.getSpecializedId(OCCITables.CLSSid_Link);
     public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_Mixin = TypeId.ORDERED_SET.getSpecializedId(OCCITables.CLSSid_Mixin);
     public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_Resource = TypeId.ORDERED_SET.getSpecializedId(OCCITables.CLSSid_Resource);
-    public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId SEQ_CLSSid_Attribute = TypeId.SEQUENCE.getSpecializedId(OCCITables.CLSSid_Attribute);
-    public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId SEQ_CLSSid_Kind = TypeId.SEQUENCE.getSpecializedId(OCCITables.CLSSid_Kind);
     public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId SEQ_CLSSid_Link = TypeId.SEQUENCE.getSpecializedId(OCCITables.CLSSid_Link);
-    public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId SEQ_CLSSid_Mixin = TypeId.SEQUENCE.getSpecializedId(OCCITables.CLSSid_Mixin);
-    public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId SEQ_CLSSid_OclElement = TypeId.SEQUENCE.getSpecializedId(OCCITables.CLSSid_OclElement);
     public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId SEQ_CLSSid_Resource = TypeId.SEQUENCE.getSpecializedId(OCCITables.CLSSid_Resource);
-    public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId SET_CLSSid_Category = TypeId.SET.getSpecializedId(OCCITables.CLSSid_Category);
     public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId SET_CLSSid_Entity = TypeId.SET.getSpecializedId(OCCITables.CLSSid_Entity);
-    public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId SET_CLSSid_Extension = TypeId.SET.getSpecializedId(OCCITables.CLSSid_Extension);
-    public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId SET_CLSSid_Kind = TypeId.SET.getSpecializedId(OCCITables.CLSSid_Kind);
 
 	/**
 	 *	The type parameters for templated types and operations.
@@ -369,11 +346,12 @@ public class OCCITables
 
 		public static final /*@NonNull*/ ExecutorProperty _Attribute__default = new EcoreExecutorProperty(OCCIPackage.Literals.ATTRIBUTE__DEFAULT, Types._Attribute, 0);
 		public static final /*@NonNull*/ ExecutorProperty _Attribute__description = new EcoreExecutorProperty(OCCIPackage.Literals.ATTRIBUTE__DESCRIPTION, Types._Attribute, 1);
-		public static final /*@NonNull*/ ExecutorProperty _Attribute__mutable = new EcoreExecutorProperty(OCCIPackage.Literals.ATTRIBUTE__MUTABLE, Types._Attribute, 2);
-		public static final /*@NonNull*/ ExecutorProperty _Attribute__name = new EcoreExecutorProperty(OCCIPackage.Literals.ATTRIBUTE__NAME, Types._Attribute, 3);
-		public static final /*@NonNull*/ ExecutorProperty _Attribute__required = new EcoreExecutorProperty(OCCIPackage.Literals.ATTRIBUTE__REQUIRED, Types._Attribute, 4);
-		public static final /*@NonNull*/ ExecutorProperty _Attribute__type = new EcoreExecutorProperty(OCCIPackage.Literals.ATTRIBUTE__TYPE, Types._Attribute, 5);
-		public static final /*@NonNull*/ ExecutorProperty _Attribute__Category__attributes = new ExecutorPropertyWithImplementation("Category", Types._Attribute, 6, new EcoreLibraryOppositeProperty(OCCIPackage.Literals.CATEGORY__ATTRIBUTES));
+		public static final /*@NonNull*/ ExecutorProperty _Attribute__multiple_values = new EcoreExecutorProperty(OCCIPackage.Literals.ATTRIBUTE__MULTIPLE_VALUES, Types._Attribute, 2);
+		public static final /*@NonNull*/ ExecutorProperty _Attribute__mutable = new EcoreExecutorProperty(OCCIPackage.Literals.ATTRIBUTE__MUTABLE, Types._Attribute, 3);
+		public static final /*@NonNull*/ ExecutorProperty _Attribute__name = new EcoreExecutorProperty(OCCIPackage.Literals.ATTRIBUTE__NAME, Types._Attribute, 4);
+		public static final /*@NonNull*/ ExecutorProperty _Attribute__required = new EcoreExecutorProperty(OCCIPackage.Literals.ATTRIBUTE__REQUIRED, Types._Attribute, 5);
+		public static final /*@NonNull*/ ExecutorProperty _Attribute__type = new EcoreExecutorProperty(OCCIPackage.Literals.ATTRIBUTE__TYPE, Types._Attribute, 6);
+		public static final /*@NonNull*/ ExecutorProperty _Attribute__Category__attributes = new ExecutorPropertyWithImplementation("Category", Types._Attribute, 7, new EcoreLibraryOppositeProperty(OCCIPackage.Literals.CATEGORY__ATTRIBUTES));
 
 		public static final /*@NonNull*/ ExecutorProperty _AttributeState__name = new EcoreExecutorProperty(OCCIPackage.Literals.ATTRIBUTE_STATE__NAME, Types._AttributeState, 0);
 		public static final /*@NonNull*/ ExecutorProperty _AttributeState__value = new EcoreExecutorProperty(OCCIPackage.Literals.ATTRIBUTE_STATE__VALUE, Types._AttributeState, 1);
@@ -1064,6 +1042,7 @@ public class OCCITables
 		private static final /*@NonNull*/ ExecutorProperty[] _Attribute = {
 			OCCITables.Properties._Attribute__default,
 			OCCITables.Properties._Attribute__description,
+			OCCITables.Properties._Attribute__multiple_values,
 			OCCITables.Properties._Attribute__mutable,
 			OCCITables.Properties._Attribute__name,
 			OCCITables.Properties._Attribute__required,

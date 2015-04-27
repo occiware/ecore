@@ -98,13 +98,13 @@ h4. Action [action.term/]
 | *Scheme* | [action.scheme/] |
 | *Title* | [action.title/] |
 
-
 [if action.attributes->size() <> 0]
 | *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
 [for (attribute : Attribute | action.attributes)]
 [attribute.generateAttribute()/]
 [/for]
 [/if]
+
 [/for]
 
 [/template]

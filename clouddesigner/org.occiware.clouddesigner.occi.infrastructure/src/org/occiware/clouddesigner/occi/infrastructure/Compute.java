@@ -11,6 +11,7 @@ import org.occiware.clouddesigner.OCCI.Resource;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.Compute#getArchitecture <em>Architecture</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.Compute#getCores <em>Cores</em>}</li>
@@ -19,7 +20,6 @@ import org.occiware.clouddesigner.OCCI.Resource;
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.Compute#getMemory <em>Memory</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.Compute#getState <em>State</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getCompute()
  * @model
@@ -39,7 +39,7 @@ public interface Compute extends Resource {
 	 * @see org.occiware.clouddesigner.occi.infrastructure.Architecture
 	 * @see #setArchitecture(Architecture)
 	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getCompute_Architecture()
-	 * @model
+	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Compute!architecture'"
 	 * @generated
 	 */
 	Architecture getArchitecture();
@@ -67,6 +67,7 @@ public interface Compute extends Resource {
 	 * @see #setCores(int)
 	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getCompute_Cores()
 	 * @model dataType="org.occiware.clouddesigner.occi.infrastructure.PositiveInteger"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Compute!cores'"
 	 * @generated
 	 */
 	int getCores();
@@ -93,6 +94,7 @@ public interface Compute extends Resource {
 	 * @see #setHostname(String)
 	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getCompute_Hostname()
 	 * @model dataType="org.occiware.clouddesigner.OCCI.String"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Compute!hostname'"
 	 * @generated
 	 */
 	String getHostname();
@@ -119,6 +121,7 @@ public interface Compute extends Resource {
 	 * @see #setSpeed(float)
 	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getCompute_Speed()
 	 * @model dataType="org.occiware.clouddesigner.occi.infrastructure.GHz"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Compute!speed'"
 	 * @generated
 	 */
 	float getSpeed();
@@ -145,6 +148,7 @@ public interface Compute extends Resource {
 	 * @see #setMemory(float)
 	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getCompute_Memory()
 	 * @model dataType="org.occiware.clouddesigner.occi.infrastructure.GiB"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Compute!memory'"
 	 * @generated
 	 */
 	float getMemory();
@@ -174,6 +178,7 @@ public interface Compute extends Resource {
 	 * @see #setState(ComputeStatus)
 	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getCompute_State()
 	 * @model default="inactive" required="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Compute!state'"
 	 * @generated
 	 */
 	ComputeStatus getState();
@@ -192,7 +197,7 @@ public interface Compute extends Resource {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model
+	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Compute!start()'"
 	 * @generated
 	 */
 	void start();
@@ -201,6 +206,7 @@ public interface Compute extends Resource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model methodRequired="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Compute!stop(http://schemas.ogf.org/occi/infrastructure!StopMethod)'"
 	 * @generated
 	 */
 	void stop(StopMethod method);
@@ -209,6 +215,7 @@ public interface Compute extends Resource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model methodRequired="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Compute!restart(http://schemas.ogf.org/occi/infrastructure!RestartMethod)'"
 	 * @generated
 	 */
 	void restart(RestartMethod method);
@@ -217,6 +224,7 @@ public interface Compute extends Resource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model methodRequired="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Compute!suspend(http://schemas.ogf.org/occi/infrastructure!SuspendMethod)'"
 	 * @generated
 	 */
 	void suspend(SuspendMethod method);

@@ -26,18 +26,18 @@ h3. Attributes
 | image | String | false | false |  | The image of this Container instance |
 | build | String | false | false |  | The build directory of this Container instance |
 | command | String | false | false |  | Override the default command in Dockerfile |
-| ports | String | false | false |  | The ports of this Container instance as a list separated by space |
-| expose | String | false | false |  | The exposed ports of this Container instance as a list separated by space |
-| volumes | String | false | false |  | The list of volumes separated by space |
-| environment | String | false | false |  | Separated by space |
+| ports | String | false | false |  | The ports of this Container instance |
+| expose | String | false | false |  | The exposed ports of this Container instance |
+| volumes | String | false | false |  | The list of volumes |
+| environment | String | false | false |  | Environment variables |
 | env_file | String | false | false |  |  |
 | net | String | false | false |  | 'bridge',  'none', 'container:[name or id]', or 'host' |
-| dns | String | false | false |  | Custom DNS servers, separated by space |
+| dns | String | false | false |  | Custom DNS servers |
 | dns_search | String | false | false |  | Custom DNS search domains |
 | cap_add | String | false | false |  | Add container capabilities |
 | cap_drop | String | false | false |  | Drop container capabilities |
 | working_dir | String | false | false |  | Working directory |
-| entrypoint | String | false | false |  |  |
+| entrypoint | String | false | false |  | Entry point |
 | user | String | false | false |  |  |
 | hostname | String | false | false |  |  |
 | domainname | String | false | false |  |  |
@@ -111,9 +111,9 @@ h4. Action kill
 | *Scheme* | http://occiware.org/docker/container/action# |
 | *Title* |  |
 
-
 | *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
 | signal | String | true | false | KILL |  |
+
 
 
 h2. Kind link
@@ -187,6 +187,18 @@ h2. Kind machine_Amazon_EC2
 
 h3. Attributes
 
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| access_key | String | true | false |  | Your access key id for the Amazon Web Services API |
+| ami | String | false | false | ami-4ae27e22 | The AMI ID of the instance to use |
+| instance_type | String | false | false | t2.micro | The instance type to run |
+| region | String | false | false | us-east-1 | The region to use when launching the instance |
+| root_size | Number | false | false | 16 | The root disk size of the instance (in GB) |
+| secret_key | String | true | false |  | Your secret access key for the Amazon Web Services API |
+| security_group | String | false | false | docker-machine | AWS VPC security group name |
+| session_token | String | false | false |  | Your session token for the Amazon Web Services API |
+| subnet_id | String | false | false |  | AWS VPC subnet id |
+| vpc_id | String | true | false |  | Your VPC ID to launch the instance in |
+| zone | String | false | false | a | The AWS zone launch the instance in (i.e. one of a,b,c,d,e) |
 
 h3. Actions
 
@@ -201,6 +213,11 @@ h2. Kind machine_Digital_Ocean
 
 h3. Attributes
 
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| access_token | String | true | false |  | Your personal access token for the Digital Ocean API |
+| image | String | false | false | docker | The name of the Digital Ocean image to use |
+| region | String | false | false | nyc3 | The region to create the droplet in |
+| size | String | false | false | 512mb | The size of the Digital Ocean driver (larger than default options are of the form 2gb) |
 
 h3. Actions
 
@@ -215,6 +232,12 @@ h2. Kind machine_Google_Compute_Engine
 
 h3. Attributes
 
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| zone | String | false | false | us-central1-a | The zone to launch the instance |
+| machine_type | String | false | false | f1-micro | The type of instance |
+| username | String | false | false | docker-user | The username to use for the instance |
+| instance_name | String | false | false | docker-machine | The name of the instance |
+| project | String | true | false |  | The name of your project to use when launching the instance |
 
 h3. Actions
 
@@ -229,6 +252,20 @@ h2. Kind machine_IBM_SoftLayer
 
 h3. Attributes
 
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| api_endpoint | String | false | false |  | Change softlayer API endpoint |
+| user | String | true | false |  | username for your softlayer account, api key needs to match this user |
+| api_key | String | true | false |  | API key for your user account |
+| cpu | Number | false | false |  | Number of CPU's for the machine |
+| disk_size | Number | false | false |  | Size of the disk in MB. 0 sets the softlayer default |
+| domain | String | true | false |  | domain name for the machine |
+| hostname | String | false | false |  | hostname for the machine |
+| hourly_billing | Boolean | false | false | true | Sets the hourly billing flag (default), otherwise uses monthly billing |
+| image | String | false | false |  | OS Image to use |
+| local_disk | Boolean | false | false |  | Use local machine disk instead of softlayer SAN |
+| memory | Number | false | false |  | Memory for host in MB |
+| private_net_only | Boolean | false | false |  | Disable public networking |
+| region | String | false | false |  | softlayer region |
 
 h3. Actions
 
@@ -243,6 +280,9 @@ h2. Kind machine_Microsoft_Azure
 
 h3. Attributes
 
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| subscription_id | String | true | false |  | Your Azure subscription ID (A GUID like d255d8d7-5af0-4f5c-8a3e-1545044b861e) |
+| subscription_cert | String | true | false |  | Your Azure subscription cert |
 
 h3. Actions
 
@@ -257,6 +297,12 @@ h2. Kind machine_Microsoft_Hyper_V
 
 h3. Attributes
 
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| boot2docker_location | String | false | false |  | Location of a local boot2docker iso to use. Overrides the URL option below |
+| boot2docker_url | String | false | false |  | The URL of the boot2docker iso. Defaults to the latest available version |
+| disk_size | Number | false | false | 20000 | Size of disk for the host in MB |
+| memory | Number | false | false | 1024 | Size of memory for the host in MB. The machine is setup to use dynamic memory |
+| virtual_switch | String | false | false |  | Name of the virtual switch to use. Defaults to first found |
 
 h3. Actions
 
@@ -271,6 +317,19 @@ h2. Kind machine_OpenStack
 
 h3. Attributes
 
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| flavor_id | String | true | false |  | The flavor ID to use when creating the machine |
+| image_id | String | true | false |  | The image ID to use when creating the machine |
+| auth_url | String | false | false |  | Keystone service base URL |
+| username | String | false | false |  | User identifer to authenticate with |
+| password | String | false | false |  | User password. It can be omitted if the standard environment variable OS_PASSWORD is set. |
+| tenant_name | String | false | false |  | Identify the tenant in which the machine will be created |
+| tenant_id | String | false | false |  | Identify the tenant in which the machine will be created |
+| region | String | false | false |  | The region to work on. Can be omitted if there is only one region on the OpenStack |
+| endpoint_type | String | false | false |  | Endpoint type can be internalURL, adminURL on publicURL. If is a helper for the driver to choose the right URL in the OpenStack service catalog. If not provided the default id publicURL |
+| net_id | String | false | false |  | The private network id the machine will be connected on. If your OpenStack project project contains only one private network it will be use automatically |
+| sec_groups | String | false | false |  | If security groups are available on your OpenStack you can specify a comma separated list to use for the machine (e.g. secgrp001,secgrp002) |
+| floatingip_pool | String | false | false |  | The IP pool that will be used to get a public IP an assign it to the machine. If there is an IP address already allocated but not assigned to any machine, this IP will be chosen and assigned to the machine. If there is no IP address already allocated a new IP will be allocated and assigned to the machine |
 
 h3. Actions
 
@@ -285,6 +344,15 @@ h2. Kind machine_Rackspace
 
 h3. Attributes
 
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| username | String | true | false |  | Rackspace account username |
+| api_key | String | true | false |  | Rackspace API key |
+| region | String | true | false |  | Rackspace region name |
+| endpoint_type | String | false | false | publicURL | Rackspace endpoint type (adminURL, internalURL or the default publicURL) |
+| image_id | String | false | false | Ubuntu 14.10 (Utopic Unicorn) (PVHVM) | Rackspace image ID  |
+| flavor_id | String | false | false | General Purpose 1GB | Rackspace flavor ID |
+| ssh_user | String | false | false | root | SSH user for the newly booted machine |
+| ssh_port | Number | false | false | 22 | SSH port for the newly booted machine |
 
 h3. Actions
 
@@ -300,7 +368,7 @@ h2. Kind machine_VirtualBox
 h3. Attributes
 
 | *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
-| boot2docker_url | String | false | false |  |  |
+| boot2docker_url | String | false | false |  | The URL of the boot2docker image. Default to the latest available version |
 | disk_size | Number | false | false | 20000 | Size of disk for the host in MB |
 | memory | Number | false | false | 1024 | Size of memory for the host in MB |
 
@@ -317,6 +385,10 @@ h2. Kind machine_VMware_Fusion
 
 h3. Attributes
 
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| boot2docker_url | String | false | false |  | URL for boot2docker image |
+| disk_size | Number | false | false | 20000 | Size of disk for host VM (in MB) |
+| memory_size | Number | false | false | 1024 | Size of memory for host VM (in MB) |
 
 h3. Actions
 
@@ -331,6 +403,22 @@ h2. Kind machine_VMware_vCloud_Air
 
 h3. Attributes
 
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| username | String | true | false |  | vCloud Air Username |
+| password | String | true | false |  | vCloud Air Password |
+| catalog | String | false | false | Public Catalog | Catalog  |
+| catalogitem | String | false | false | Ubuntu Server 12.04 LTS (amd64 20140927) | Catalog Item  |
+| computeid | String | false | false |  | Compute ID (if using Dedicated Cloud) |
+| cpu_count | Number | false | false | 1 | VM Cpu Count |
+| docker_port | Number | false | false | 2376 | Docker port  |
+| edgegateway | String | false | false | <vdcid> | Organization Edge Gateway |
+| memory_size | Number | false | false | 2048 | VM Memory Size in MB |
+| vapp_name | String | false | false | <autogenerated> | vApp Name |
+| orgvdcnetwork | String | false | false | <vdcid>-default-routed | Organization VDC Network to attach |
+| provision | Boolean | false | false | true | Install Docker binaries |
+| publicip | String | false | false |  | Org Public IP to use |
+| ssh_port | Number | false | false | 22 | SSH port |
+| vdcid | String | false | false |  | Virtual Data Center ID |
 
 h3. Actions
 
@@ -345,6 +433,19 @@ h2. Kind machine_VMware_vSphere
 
 h3. Attributes
 
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| username | String | true | false |  | vSphere Username |
+| password | String | true | false |  | vSphere Password |
+| boot2docker_url | String | true | false |  | URL for boot2docker image |
+| compute_ip | String | false | false |  | Compute host IP where the Docker VM will be instantiated |
+| cpu_count | Number | false | false | 2 | CPU number for Docker VM |
+| datacenter | String | false | false |  | Datacenter for Docker VM (must be set to ha-datacenter when connecting to a single host) |
+| datastore | String | false | false |  | Datastore for Docker VM |
+| disk_size | Number | false | false | 20000 | Size of disk for Docker VM (in MB) |
+| memory_size | Number | false | false | 2048 | Size of memory for Docker VM (in MB)  |
+| network | String | false | false |  | Network where the Docker VM will be attached |
+| pool | String | false | false |  | Resource pool for Docker VM |
+| vcenter | String | false | false |  |  IP/hostname for vCenter (or ESXi if connecting directly to a single host) |
 
 h3. Actions
 

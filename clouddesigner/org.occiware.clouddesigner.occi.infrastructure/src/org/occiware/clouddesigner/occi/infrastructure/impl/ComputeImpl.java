@@ -28,6 +28,7 @@ import org.occiware.clouddesigner.occi.infrastructure.SuspendMethod;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.impl.ComputeImpl#getArchitecture <em>Architecture</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.impl.ComputeImpl#getCores <em>Cores</em>}</li>
@@ -36,7 +37,6 @@ import org.occiware.clouddesigner.occi.infrastructure.SuspendMethod;
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.impl.ComputeImpl#getMemory <em>Memory</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.impl.ComputeImpl#getState <em>State</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -312,9 +312,7 @@ public class ComputeImpl extends ResourceImpl implements Compute {
 	 * @generated
 	 */
 	public void start() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Compute!start()
 	}
 
 	/**
@@ -322,10 +320,8 @@ public class ComputeImpl extends ResourceImpl implements Compute {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void stop(StopMethod method) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+	public void stop(final StopMethod method) {
+		throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Compute!stop(http://schemas.ogf.org/occi/infrastructure!StopMethod)
 	}
 
 	/**
@@ -333,10 +329,8 @@ public class ComputeImpl extends ResourceImpl implements Compute {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void restart(RestartMethod method) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+	public void restart(final RestartMethod method) {
+		throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Compute!restart(http://schemas.ogf.org/occi/infrastructure!RestartMethod)
 	}
 
 	/**
@@ -344,10 +338,8 @@ public class ComputeImpl extends ResourceImpl implements Compute {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void suspend(SuspendMethod method) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+	public void suspend(final SuspendMethod method) {
+		throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Compute!suspend(http://schemas.ogf.org/occi/infrastructure!SuspendMethod)
 	}
 
 	/**

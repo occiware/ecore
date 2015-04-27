@@ -27,6 +27,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OCCI.ecore#//Attribute/default"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OCCI.ecore#//Attribute/description"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference OCCI.ecore#//Attribute/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OCCI.ecore#//Attribute/multiple_values"/>
     </genClasses>
     <genClasses ecoreClass="OCCI.ecore#//Kind">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference OCCI.ecore#//Kind/parent"/>

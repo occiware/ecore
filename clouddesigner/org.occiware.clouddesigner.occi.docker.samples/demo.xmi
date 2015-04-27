@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ASCII"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <OCCI:Configuration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:OCCI="http://schemas.ogf.org/occi" xmlns:docker="http://occiware.org/docker">
   <resources xsi:type="docker:Machine_VirtualBox" id="machine-1" memory="2048.0" name="demo" disk_size="80000">
     <links xsi:type="docker:Contains" id="contains-1.1" target="//@resources.1"/>

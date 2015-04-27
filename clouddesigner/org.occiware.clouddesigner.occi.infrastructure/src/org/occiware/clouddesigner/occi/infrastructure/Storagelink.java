@@ -11,12 +11,12 @@ import org.occiware.clouddesigner.OCCI.Link;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.Storagelink#getDeviceid <em>Deviceid</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.Storagelink#getMountpoint <em>Mountpoint</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.Storagelink#getState <em>State</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getStoragelink()
  * @model
@@ -35,6 +35,7 @@ public interface Storagelink extends Link {
 	 * @see #setDeviceid(String)
 	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getStoragelink_Deviceid()
 	 * @model dataType="org.occiware.clouddesigner.OCCI.String" required="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Storagelink!deviceid'"
 	 * @generated
 	 */
 	String getDeviceid();
@@ -61,6 +62,7 @@ public interface Storagelink extends Link {
 	 * @see #setMountpoint(String)
 	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getStoragelink_Mountpoint()
 	 * @model dataType="org.occiware.clouddesigner.OCCI.String"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Storagelink!mountpoint'"
 	 * @generated
 	 */
 	String getMountpoint();
@@ -89,6 +91,7 @@ public interface Storagelink extends Link {
 	 * @see #setState(StorageLinkStatus)
 	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getStoragelink_State()
 	 * @model required="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Storagelink!state'"
 	 * @generated
 	 */
 	StorageLinkStatus getState();
