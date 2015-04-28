@@ -48,7 +48,7 @@
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:PopupMenu" name="Execute" label="Execute" precondition="[oclIsKindOf(Machine) or oclIsKindOf(Container)/]">
-            <menuItemDescription xsi:type="tool_1:OperationAction" name="StartAll" precondition="[ocllsKindOf(Machine)/]" icon="/org.occiware.clouddesigner.occi.docker.design/images/start.gif">
+            <menuItemDescription xsi:type="tool_1:OperationAction" name="StartAll" icon="/org.occiware.clouddesigner.occi.docker.design/images/start.gif">
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:startAll"/>
