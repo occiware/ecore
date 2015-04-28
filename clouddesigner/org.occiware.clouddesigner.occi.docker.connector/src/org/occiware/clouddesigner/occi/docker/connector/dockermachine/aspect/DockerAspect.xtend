@@ -47,6 +47,8 @@ import static extension org.occiware.clouddesigner.occi.docker.connector.dockerm
 import static extension org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineRackspaceAspect.*
 import org.occiware.clouddesigner.occi.docker.connector.dockerjava.graph.Graph
 import org.occiware.clouddesigner.occi.docker.connector.dockerjava.graph.GraphNode
+import fr.inria.diverse.k3.al.annotationprocessor.ReplaceAspectMethod
+import org.eclipse.emf.ecore.EObject
 
 class DockerAspect {
 	var public Machine machine
@@ -67,6 +69,10 @@ class DockerAspect {
 
 	new() {
 		initModel
+	}
+
+	new(Container container) {
+		this.container = container
 	}
 
 	new(Machine machine) {
@@ -151,6 +157,62 @@ class DockerAspect {
 		}
 		if (machine_VMware_vSphere != null) {
 			machine_VMware_vSphere.machineStart
+			return;
+		}
+
+	}
+
+	def void startAll() {
+		if (machine_VirtualBox != null) {
+			machine_VirtualBox.machineStartAll
+			return;
+		}
+		if (machine_Amazon_EC2 != null) {
+			machine_Amazon_EC2.machineStartAll
+			return;
+		}
+		if (machine_Digital_Ocean != null) {
+			machine_Digital_Ocean.machineStartAll
+			return;
+		}
+		if (machine_Google_Compute_Engine != null) {
+			machine_Google_Compute_Engine.machineStartAll
+			return;
+		}
+		if (machine_IBM_SoftLayer != null) {
+			machine_IBM_SoftLayer.machineStartAll
+			return;
+		}
+		if (machine_Microsoft_Azure != null) {
+			machine_Microsoft_Azure.machineStartAll
+			return;
+		}
+		if (machine_Microsoft_Hyper_V != null) {
+			machine_Microsoft_Hyper_V.machineStartAll
+			return;
+		}
+
+		if (machine_OpenStack != null) {
+			machine_OpenStack.machineStartAll
+			return;
+		}
+
+		if (machine_Rackspace != null) {
+			machine_Rackspace.machineStartAll
+			return;
+		}
+
+		if (machine_VMware_Fusion != null) {
+			machine_VMware_Fusion.machineStartAll
+			return;
+		}
+
+		if (machine_VMware_vCloud_Air != null) {
+			machine_VMware_vCloud_Air.machineStartAll
+			return;
+		}
+		if (machine_VMware_vSphere != null) {
+			machine_VMware_vSphere.machineStartAll
 			return;
 		}
 
@@ -292,10 +354,6 @@ class DockerAspect {
 		container = DockerFactory.eINSTANCE.createContainer
 	}
 
-	def loadContainer(Container contain) {
-		container = contain
-	}
-
 	def initModel() {
 
 		// Initialize the model
@@ -316,7 +374,9 @@ class MachineAspect {
 class MachineVirtualBoxAspect extends MachineAspect {
 	protected boolean isDeployed = false
 
+	@ReplaceAspectMethod
 	def void start() {
+		println("Je redefinis la methode start \n\n\n")
 	}
 
 	@OverrideAspectMethod
@@ -350,7 +410,7 @@ class MachineVirtualBoxAspect extends MachineAspect {
 		return command.toString
 	}
 
-	def void machineStart() {
+	def void machineStartAll() {
 		val runtime = Runtime.getRuntime
 
 		if (_self.name != null) {
@@ -366,10 +426,15 @@ class MachineVirtualBoxAspect extends MachineAspect {
 				// Create VitualBox machine and start it
 				ProcessManager.runCommand(_self.createMachineCommand, runtime, true)
 
-				//TODO
 				//Create the Containers belong to this machine.
 				if (_self.links.size > 0) {
-					_self.links.forEach[elt|(elt.target as Container).createContainer(_self)]
+
+					// Start the containers without create graph
+					if (!_self.linkFound) {
+						_self.links.forEach[elt|(elt.target as Container).createContainer(_self)]
+					} else { // Create the graph
+						_self.deploymentOrder.forEach[c|c.createContainer(_self)]
+					}
 				}
 			} else {
 				if (!activeHosts.containsKey(_self.name)) {
@@ -379,8 +444,45 @@ class MachineVirtualBoxAspect extends MachineAspect {
 
 					//Create the Containers belong to this machine.
 					if (_self.links.size > 0) {
-						_self.links.forEach[elt|(elt.target as Container).createContainer(_self)]
+
+						// Start the containers without create graph
+						if (!_self.linkFound) {
+							_self.links.forEach[elt|(elt.target as Container).createContainer(_self)]
+						} else { // Create the graph
+							_self.deploymentOrder.forEach[c|c.createContainer(_self)]
+						}
 					}
+				}
+			}
+
+			// Set State
+			_self.state = ComputeStatus.get(0)
+
+			// Set isDeployed
+			_self.isDeployed = DockerMachineManager.setEnvCmd(runtime, _self.name)
+		}
+	}
+
+	def void machineStart() {
+		val runtime = Runtime.getRuntime
+
+		if (_self.name != null) {
+
+			// Get the active machine
+			val activeHosts = DockerUtil.getActiveHosts
+
+			// Get the existing machines
+			val hosts = DockerUtil.getHosts
+
+			if (!hosts.containsKey(_self.name)) { // Check if machine exists in the real environment
+
+				// Create VitualBox machine and start it
+				ProcessManager.runCommand(_self.createMachineCommand, runtime, true)
+			} else {
+				if (!activeHosts.containsKey(_self.name)) {
+
+					// Start the machine
+					DockerMachineManager.startCmd(runtime, _self.name)
 				}
 			}
 
@@ -443,6 +545,18 @@ class MachineVirtualBoxAspect extends MachineAspect {
 		return leafContainers
 	}
 
+	def boolean linkFound() {
+		val List<Container> containers = _self.containers
+		var boolean link = false
+		for (Container c : containers) {
+			if (c.links.size > 0) {
+				link = true
+				return link
+			}
+		}
+		return link
+	}
+
 	def List<Container> deploymentOrder() {
 		val List<Container> containers = newArrayList
 		var Graph<Container> graph = new Graph<Container>
@@ -458,13 +572,14 @@ class MachineVirtualBoxAspect extends MachineAspect {
 		for (GraphNode<Container> c : graph.deploymentOrder) {
 			containers.add(c.value)
 		}
+
 		// Add standalone container
 		for (Container standaloneContainer : _self.leafContainers) {
 			if (!containers.contains(standaloneContainer)) {
 				containers.add(standaloneContainer)
 			}
 		}
-		containers.forEach[c | println(c.name)]
+		containers.forEach[c|println(c.name)]
 		return containers
 	}
 }
@@ -476,6 +591,8 @@ class MachineAmazonEC2Aspect extends MachineAspect {
 	@OverrideAspectMethod
 	def String createMachineCommand() {
 	}
+
+	def void machineStartAll() {}
 
 	def void machineStart() {}
 }
@@ -508,6 +625,8 @@ class MachineDigitalOceanAspect extends MachineAspect {
 		}
 		return command.toString
 	}
+
+	def void machineStartAll() {}
 
 	def void machineStart() {}
 }
@@ -544,6 +663,8 @@ class MachineGoogleComputeEngineAspect extends MachineAspect {
 		return command.toString
 	}
 
+	def void machineStartAll() {}
+
 	def void machineStart() {}
 }
 
@@ -555,6 +676,8 @@ class MachineIBMSoftLayerAspect extends MachineAspect {
 	def String createMachineCommand() {
 		//		var command = new StringBuilder("docker-machine create --driver ")
 	}
+
+	def void machineStartAll() {}
 
 	def void machineStart() {}
 }
@@ -568,6 +691,8 @@ class MachineMicrosoftAzureAspect extends MachineAspect {
 		//		var command = new StringBuilder("docker-machine create --driver ")
 	}
 
+	def void machineStartAll() {}
+
 	def void machineStart() {}
 }
 
@@ -579,6 +704,8 @@ class MachineMicrosoftHyperVAspect extends MachineAspect {
 	def String createMachineCommand() {
 		//		var command = new StringBuilder("docker-machine create --driver ")
 	}
+
+	def void machineStartAll() {}
 
 	def void machineStart() {}
 }
@@ -629,6 +756,8 @@ class MachineOpenStackAspect extends MachineAspect {
 		return command.toString
 	}
 
+	def void machineStartAll() {}
+
 	def void machineStart() {}
 }
 
@@ -640,6 +769,8 @@ class MachineRackspaceAspect extends MachineAspect {
 	def String createMachineCommand() {
 		//		var command = new StringBuilder("docker-machine create --driver ")
 	}
+
+	def void machineStartAll() {}
 
 	def void machineStart() {}
 }
@@ -653,6 +784,8 @@ class Machine_VMwareFusionAspect extends MachineAspect {
 		//		var command = new StringBuilder("docker-machine create --driver ")
 	}
 
+	def void machineStartAll() {}
+
 	def void machineStart() {}
 }
 
@@ -664,6 +797,8 @@ class MachineVMwarevCloudAirAspect extends MachineAspect {
 	def String createMachineCommand() {
 		//		var command = new StringBuilder("docker-machine create --driver ")
 	}
+
+	def void machineStartAll() {}
 
 	def void machineStart() {}
 }
@@ -677,6 +812,8 @@ class MachineVMwarevSphereAspect extends MachineAspect {
 		//		var command = new StringBuilder("docker-machine create --driver ")
 	}
 
+	def void machineStartAll() {}
+
 	def void machineStart() {}
 }
 
@@ -686,6 +823,20 @@ class ContainerAspect {
 
 	def Map<DockerClient, CreateContainerResponse> createContainer(Machine machine) {
 		println(_self.name)
+		var DockerContainerManager dockercontainerManager = new DockerContainerManager
+
+		// Set dockerClient
+		var Map<DockerClient, CreateContainerResponse> result = new HashMap<DockerClient, CreateContainerResponse>
+
+		// Download image
+		dockercontainerManager.pullImage(machine, _self.image)
+		result = dockercontainerManager.createContainer(machine, _self)
+		_self.map = new HashMap<DockerClient, CreateContainerResponse>(result)
+		return result
+	}
+
+	def Map<DockerClient, CreateContainerResponse> createContainer(Container container) {
+		val machine = container.links.get(0).source as Machine
 		var DockerContainerManager dockercontainerManager = new DockerContainerManager
 
 		// Set dockerClient
@@ -723,18 +874,21 @@ class ContainerAspect {
 	}
 
 	def void containerStart() {
+		val machine = _self.getCurrentMachine
 		val dockerContainerManager = new DockerContainerManager
-		dockerContainerManager.startContainer(_self.map)
+		dockerContainerManager.startContainer(machine, _self)
 	}
 
 	def void containerStop() {
+		val machine = _self.getCurrentMachine
 		val dockerContainerManager = new DockerContainerManager
-		dockerContainerManager.stopContainer(_self.map)
+		dockerContainerManager.stopContainer(machine, _self)
 	}
 
 	def void containerWait() {
+		val machine = _self.getCurrentMachine
 		val dockerContainerManager = new DockerContainerManager
-		dockerContainerManager.waitContainer(_self.map)
+		dockerContainerManager.waitContainer(machine, _self)
 	}
 
 	def void save() {
@@ -742,5 +896,19 @@ class ContainerAspect {
 
 		// Save an instance of model
 		instanceMH.saveContainer(_self)
+	}
+
+	def Machine getCurrentMachine() {
+		for (EObject eo : _self.eContainer.eContents) {
+			if (eo instanceof Machine) {
+				val machine = eo as Machine
+				for (Link l : machine.links) {
+					if ((l.target as Container).id == _self.id) {
+						return machine
+					}
+				}
+			}
+		}
+		return null
 	}
 }
