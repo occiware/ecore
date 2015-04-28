@@ -74,7 +74,6 @@ class DockerUtil {
 	}
 
 	def static getEnv(String machineName) {
-		println("Machine name: " + machineName)
 		val String data = DockerMachineManager.getEnvCmd(Runtime.getRuntime, machineName)
 		var List hosts = new ArrayList
 		var String[] result = null
