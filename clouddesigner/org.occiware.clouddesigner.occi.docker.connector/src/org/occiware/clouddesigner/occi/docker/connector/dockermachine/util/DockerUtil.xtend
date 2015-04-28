@@ -14,7 +14,6 @@ import org.apache.commons.io.LineIterator
 import org.codehaus.jackson.JsonFactory
 import org.codehaus.jackson.JsonParser
 import org.codehaus.jackson.map.ObjectMapper
-import org.occiware.clouddesigner.occi.docker.Machine
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerMachineManager
 
 class DockerUtil {
@@ -75,7 +74,7 @@ class DockerUtil {
 
 	def static getEnv(String machineName) {
 		val String data = DockerMachineManager.getEnvCmd(Runtime.getRuntime, machineName)
-		var List hosts = new ArrayList
+		var List<String []> hosts = new ArrayList
 		var String[] result = null
 		if (data != null) {
 			var String[] st = data.split("\\r?\\n")
