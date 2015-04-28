@@ -5,7 +5,6 @@ import com.github.dockerjava.api.command.CreateContainerCmd
 import com.github.dockerjava.api.command.CreateContainerResponse
 import com.github.dockerjava.api.command.InspectContainerResponse
 import com.github.dockerjava.api.model.ExposedPort
-import com.github.dockerjava.api.model.Link
 import com.github.dockerjava.api.model.LxcConf
 import com.github.dockerjava.api.model.Ports
 import com.github.dockerjava.api.model.Volume
@@ -22,6 +21,7 @@ import org.occiware.clouddesigner.occi.docker.Machine
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerMachineManager
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerUtil
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerConfig
+import org.occiware.clouddesigner.OCCI.Link
 
 class DockerContainerManager {
 
@@ -34,12 +34,13 @@ class DockerContainerManager {
 		val dockerClient = setConfig(machine)
 		var Map<DockerClient, CreateContainerResponse> result = new LinkedHashMap<DockerClient, CreateContainerResponse>
 		val create = containerFactory(container, dockerClient)
+
 		// Run Execution
 		val CreateContainerResponse rcontainer = create.exec
 		result.put(dockerClient, rcontainer)
 		return result
 	}
-	
+
 	def containerFactory(Container container, DockerClient dockerClient) {
 		var CreateContainerCmd create = null
 		if (container.image != null) {
@@ -48,6 +49,7 @@ class DockerContainerManager {
 			create = dockerClient.createContainerCmd("busybox")
 		}
 		if (container.command != null) {
+
 			//TODO command as "sleep", "9999"
 			val String[] cmd = container.command.split(",")
 			create.withCmd(cmd)
@@ -104,19 +106,27 @@ class DockerContainerManager {
 			create.withMemorySwap(container.memory_swap)
 		}
 		if (container.lxc_conf != null) {
-			//TODO lxc_conf should be an String array..
+
+			//TODO lxc_conf should be String array..
 			val LxcConf lxcCon = new LxcConf("key", "value")
 			create.withLxcConf(lxcCon)
 		}
 		if (container.cores > 0) {
 			create.withCpuset(String.valueOf(container.cores))
 		}
-		if (container.links.size > 0) {
+//		if (container.links.size > 0) {
+//
+//			//TODO Link container.links.get(0)
+//			for (Link link : container.links) {
+//				var linkerContainer = link.source as Container
+//				val com.github.dockerjava.api.model.Link dockeClientlink = new com.github.dockerjava.api.model.Link(
+//					linkerContainer.name, container.name + "To" + linkerContainer.name)
+//				create.withLinks(dockeClientlink)
+//			}
+////			container.links.forEach[elt|elt.source as Container]
+//		}
 		
-			//TODO Link container.links.get(0)
-			val Link link = new Link("name", "alias")
-			create.withLinks(link)
-		}
+		// Verify that image is presnet on the machine
 		
 		return create
 	}
@@ -147,48 +157,53 @@ class DockerContainerManager {
 		val createContainerResponse = map.get(dockerClient) as CreateContainerResponse
 		dockerClient.waitContainerCmd(createContainerResponse.id).exec
 	}
-	
+
 	def listContainer(Machine machine) {
+
 		// Set dockerClient
 		val dockerClient = setConfig(machine)
-		val List<com.github.dockerjava.api.model.Container> containers = dockerClient.listContainersCmd().withShowAll(true).exec()
-		for (com.github.dockerjava.api.model.Container c:containers){
+		val List<com.github.dockerjava.api.model.Container> containers = dockerClient.listContainersCmd().
+			withShowAll(true).exec()
+		for (com.github.dockerjava.api.model.Container c : containers) {
+
 			//val InspectContainerResponse inspectContainerResponse = dockerClient.inspectContainerCmd(c.getId()).exec()
-			
-			
 			println(c.id)
-			println("Status: "+ c.status)
-			println("Command: "+ c.command)
+			println("Status: " + c.status)
+			println("Command: " + c.command)
 			println("Name: " + c.names.get(0))
-			println("Created: "+ c.created)
-			println("Image: "+ c.image)
-			for (com.github.dockerjava.api.model.Container.Port p:c.ports){
-				println("Ip: "+ p.ip)
-				println("PrivatePort: "+ p.privatePort)
-				println("PublicPort: "+ p.publicPort)
-				println("Type: "+ p.type)
-				
+			println("Created: " + c.created)
+			println("Image: " + c.image)
+			for (com.github.dockerjava.api.model.Container.Port p : c.ports) {
+				println("Ip: " + p.ip)
+				println("PrivatePort: " + p.privatePort)
+				println("PublicPort: " + p.publicPort)
+				println("Type: " + p.type)
+
 			}
 		}
-		
+
 		return containers
 	}
-	
-	def pullImage(Machine machine, String image){
+
+	def pullImage(Machine machine, String image) {
+
 		// Set dockerClient
 		val dockerClient = setConfig(machine)
 		println("Downloading image: ->" + image)
+
 		// Download a pre-built image
 		val output = DockerUtil.asString(dockerClient.pullImageCmd(image).withTag("latest").exec)
 		println(output)
 		println("Download is finished")
-		
+
 		return dockerClient
-		
+
 	}
 
-	def setConfig(Machine machine) {
-		val dockerClientconfig = DockerConfig.loadConfig 
+	def DockerClient setConfig(Machine machine) {
+		val lconfig = new DockerConfig
+		val dockerClientconfig = lconfig.loadConfig
+		println(machine.name)
 		var String ENDPOINT = DockerMachineManager.urlCmd(Runtime.getRuntime, machine.name)
 		val String certPath = DockerUtil.getEnv(machine.name)
 		val String port = ":2376"
@@ -196,13 +211,12 @@ class DockerContainerManager {
 		val URI uri = new URI(url.getProtocol(), url.getHost(), url.getPath(), url.getQuery(), null)
 		val dockerUri = uri.toString + port
 		println(uri.toString)
-		var DockerClientConfig config = DockerClientConfig.createDefaultConfigBuilder().withVersion(dockerClientconfig.get("docker.version").toString) //Docker Client API v1.16
-		.withUri(dockerUri).withUsername(dockerClientconfig.get("docker.username").toString)
-		.withPassword(dockerClientconfig.get("docker.password").toString)
-		.withEmail(dockerClientconfig.get("docker.email").toString)
-		.withServerAddress("https://index.docker.io/v1/")
-		.withDockerCertPath(certPath).build();
-		var DockerClient dockerClient = DockerClientBuilder.getInstance(config).build();
+		val DockerClientConfig config = DockerClientConfig.createDefaultConfigBuilder.withVersion(dockerClientconfig.get("docker.version").toString).withUri(dockerUri).
+			withUsername(dockerClientconfig.get("docker.username").toString).withPassword(
+				dockerClientconfig.get("docker.password").toString).withEmail(
+				dockerClientconfig.get("docker.email").toString).withServerAddress("https://index.docker.io/v1/").
+			withDockerCertPath(certPath).build()
+		val DockerClient dockerClient = DockerClientBuilder.getInstance(config).build()
 		return dockerClient
 	}
 }
