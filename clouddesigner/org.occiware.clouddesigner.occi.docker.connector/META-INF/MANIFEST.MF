@@ -6,8 +6,9 @@ Bundle-Name: org.occiware.clouddesigner.occi.docker.connector
 Bundle-Vendor: OCCIWARE
 Bundle-ActivationPolicy: lazy
 Export-Package: org.occiware.clouddesigner.occi.docker.connector,
+ org.occiware.clouddesigner.occi.docker.connector.dockerjava,
  org.occiware.clouddesigner.occi.docker.connector.dockermachine,
- org.occiware.clouddesigner.occi.docker.connector.dockerjava
+ org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect
 Require-Bundle: org.eclipse.xtend.lib,
  com.google.guava,
  org.eclipse.xtext.xbase.lib,
