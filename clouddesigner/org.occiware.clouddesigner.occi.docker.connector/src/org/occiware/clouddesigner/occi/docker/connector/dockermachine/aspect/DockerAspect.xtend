@@ -4,9 +4,11 @@ import com.github.dockerjava.api.DockerClient
 import com.github.dockerjava.api.command.CreateContainerResponse
 import fr.inria.diverse.k3.al.annotationprocessor.Aspect
 import fr.inria.diverse.k3.al.annotationprocessor.OverrideAspectMethod
+import java.util.ArrayList
 import java.util.HashMap
-import java.util.LinkedHashMap
+import java.util.List
 import java.util.Map
+import org.occiware.clouddesigner.OCCI.Link
 import org.occiware.clouddesigner.occi.docker.Container
 import org.occiware.clouddesigner.occi.docker.DockerFactory
 import org.occiware.clouddesigner.occi.docker.Machine
@@ -26,25 +28,28 @@ import org.occiware.clouddesigner.occi.docker.connector.ModelHandler
 import org.occiware.clouddesigner.occi.docker.connector.dockerjava.DockerContainerManager
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerMachineManager
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.Provider
+import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerUtil
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.ProcessManager
-import org.occiware.clouddesigner.occi.docker.impl.Machine_Amazon_EC2Impl
-import org.occiware.clouddesigner.occi.docker.impl.Machine_Digital_OceanImpl
-import org.occiware.clouddesigner.occi.docker.impl.Machine_Google_Compute_EngineImpl
-import org.occiware.clouddesigner.occi.docker.impl.Machine_IBM_SoftLayerImpl
-import org.occiware.clouddesigner.occi.docker.impl.Machine_Microsoft_AzureImpl
-import org.occiware.clouddesigner.occi.docker.impl.Machine_Microsoft_Hyper_VImpl
-import org.occiware.clouddesigner.occi.docker.impl.Machine_OpenStackImpl
-import org.occiware.clouddesigner.occi.docker.impl.Machine_RackspaceImpl
-import org.occiware.clouddesigner.occi.docker.impl.Machine_VMware_vSphereImpl
-import org.occiware.clouddesigner.occi.docker.impl.Machine_VirtualBoxImpl
 import org.occiware.clouddesigner.occi.infrastructure.ComputeStatus
 
 import static extension org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.ContainerAspect.*
+import static extension org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineAmazonEC2Aspect.*
 import static extension org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineVirtualBoxAspect.*
-import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerUtil
+import static extension org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.Machine_VMwareFusionAspect.*
+import static extension org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineDigitalOceanAspect.*
+import static extension org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineGoogleComputeEngineAspect.*
+import static extension org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineVMwarevSphereAspect.*
+import static extension org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineVMwarevCloudAirAspect.*
+import static extension org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineMicrosoftAzureAspect.*
+import static extension org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineMicrosoftHyperVAspect.*
+import static extension org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineIBMSoftLayerAspect.*
+import static extension org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineOpenStackAspect.*
+import static extension org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineRackspaceAspect.*
+import org.occiware.clouddesigner.occi.docker.connector.dockerjava.graph.Graph
+import org.occiware.clouddesigner.occi.docker.connector.dockerjava.graph.GraphNode
 
 class DockerAspect {
-
+	var public Machine machine
 	var public Machine_VirtualBox machine_VirtualBox
 	var public Machine_Amazon_EC2 machine_Amazon_EC2
 	var public Machine_Digital_Ocean machine_Digital_Ocean
@@ -65,29 +70,29 @@ class DockerAspect {
 	}
 
 	new(Machine machine) {
-		if (machine instanceof Machine_VirtualBoxImpl) {
-			machine_VirtualBox = machine
-		} else if (machine instanceof Machine_Amazon_EC2Impl) {
-			machine_Amazon_EC2 = machine
-		} else if (machine instanceof Machine_Digital_OceanImpl) {
-			machine_Digital_Ocean = machine
-		} else if (machine instanceof Machine_Google_Compute_EngineImpl) {
+		if (machine instanceof Machine_VirtualBox) {
+			machine_VirtualBox = machine as Machine_VirtualBox
+		} else if (machine instanceof Machine_Amazon_EC2) {
+			machine_Amazon_EC2 = machine as Machine_Amazon_EC2
+		} else if (machine instanceof Machine_Digital_Ocean) {
+			machine_Digital_Ocean = machine as Machine_Digital_Ocean
+		} else if (machine instanceof Machine_Google_Compute_Engine) {
 			machine_Google_Compute_Engine = machine
-		} else if (machine instanceof Machine_IBM_SoftLayerImpl) {
+		} else if (machine instanceof Machine_IBM_SoftLayer) {
 			machine_IBM_SoftLayer = machine
-		} else if (machine instanceof Machine_Microsoft_AzureImpl) {
+		} else if (machine instanceof Machine_Microsoft_Azure) {
 			machine_Microsoft_Azure = machine
-		} else if (machine instanceof Machine_Microsoft_Hyper_VImpl) {
+		} else if (machine instanceof Machine_Microsoft_Hyper_V) {
 			machine_Microsoft_Hyper_V = machine
-		} else if (machine instanceof Machine_OpenStackImpl) {
+		} else if (machine instanceof Machine_OpenStack) {
 			machine_OpenStack = machine
-		} else if (machine instanceof Machine_RackspaceImpl) {
+		} else if (machine instanceof Machine_Rackspace) {
 			machine_Rackspace = machine
 		} else if (machine instanceof Machine_VMware_Fusion) {
 			machine_VMware_Fusion = machine
 		} else if (machine instanceof Machine_VMware_vCloud_Air) {
 			machine_VMware_vCloud_Air = machine
-		} else if (machine instanceof Machine_VMware_vSphereImpl) {
+		} else if (machine instanceof Machine_VMware_vSphere) {
 			machine_VMware_vSphere = machine
 		}
 
@@ -95,8 +100,74 @@ class DockerAspect {
 		register(machine)
 	}
 
+	def void start() {
+		if (machine_VirtualBox != null) {
+			machine_VirtualBox.machineStart
+			return;
+		}
+		if (machine_Amazon_EC2 != null) {
+			machine_Amazon_EC2.machineStart
+			return;
+		}
+		if (machine_Digital_Ocean != null) {
+			machine_Digital_Ocean.machineStart
+			return;
+		}
+		if (machine_Google_Compute_Engine != null) {
+			machine_Google_Compute_Engine.machineStart
+			return;
+		}
+		if (machine_IBM_SoftLayer != null) {
+			machine_IBM_SoftLayer.machineStart
+			return;
+		}
+		if (machine_Microsoft_Azure != null) {
+			machine_Microsoft_Azure.machineStart
+			return;
+		}
+		if (machine_Microsoft_Hyper_V != null) {
+			machine_Microsoft_Hyper_V.machineStart
+			return;
+		}
+
+		if (machine_OpenStack != null) {
+			machine_OpenStack.machineStart
+			return;
+		}
+
+		if (machine_Rackspace != null) {
+			machine_Rackspace.machineStart
+			return;
+		}
+
+		if (machine_VMware_Fusion != null) {
+			machine_VMware_Fusion.machineStart
+			return;
+		}
+
+		if (machine_VMware_vCloud_Air != null) {
+			machine_VMware_vCloud_Air.machineStart
+			return;
+		}
+		if (machine_VMware_vSphere != null) {
+			machine_VMware_vSphere.machineStart
+			return;
+		}
+
+	}
+
 	def void register(Machine machine) {
 		register.put(machine.name, machine)
+	}
+
+	def loadMachine() {
+
+		// Retrieve the default factory singleton
+		machine = DockerFactory.eINSTANCE.createMachine
+
+		// Register the machine
+		register(machine)
+		return machine
 	}
 
 	def loadMachine_VirtualBox() {
@@ -221,6 +292,10 @@ class DockerAspect {
 		container = DockerFactory.eINSTANCE.createContainer
 	}
 
+	def loadContainer(Container contain) {
+		container = contain
+	}
+
 	def initModel() {
 
 		// Initialize the model
@@ -234,9 +309,6 @@ class MachineAspect {
 	protected boolean isDeployed = false
 
 	def String createMachineCommand() {
-	}
-
-	def void save() {
 	}
 }
 
@@ -271,11 +343,6 @@ class MachineVirtualBoxAspect extends MachineAspect {
 			if (_self.boot2docker_url != null) {
 				command.append(" --virtualbox-boot2docker-url " + _self.disk_size)
 			}
-
-			//Create the Containers belong to this machine.
-			if (_self.links.size > 0) {
-				_self.links.forEach[elt|(elt.source as Container).createContainer(_self)]
-			}
 		} else if (_self.name == null) {
 			// TODO Manage error...
 		}
@@ -298,11 +365,22 @@ class MachineVirtualBoxAspect extends MachineAspect {
 
 				// Create VitualBox machine and start it
 				ProcessManager.runCommand(_self.createMachineCommand, runtime, true)
+
+				//TODO
+				//Create the Containers belong to this machine.
+				if (_self.links.size > 0) {
+					_self.links.forEach[elt|(elt.target as Container).createContainer(_self)]
+				}
 			} else {
 				if (!activeHosts.containsKey(_self.name)) {
 
 					// Start the machine
 					DockerMachineManager.startCmd(runtime, _self.name)
+
+					//Create the Containers belong to this machine.
+					if (_self.links.size > 0) {
+						_self.links.forEach[elt|(elt.target as Container).createContainer(_self)]
+					}
 				}
 			}
 
@@ -317,12 +395,21 @@ class MachineVirtualBoxAspect extends MachineAspect {
 	def void machineStop() {
 		if (_self.name != null) {
 			DockerMachineManager.stopCmd(Runtime.getRuntime, _self.name)
+
+			// Set State
+			_self.state = ComputeStatus.get(1)
 		}
 	}
 
 	def void machineRemove() {
 		if (_self.name != null) {
 			DockerMachineManager.removeCmd(Runtime.getRuntime, _self.name)
+
+			// Set State
+			_self.state = ComputeStatus.get(1)
+
+			// Set isDeployed
+			_self.isDeployed = false
 		}
 	}
 
@@ -338,6 +425,48 @@ class MachineVirtualBoxAspect extends MachineAspect {
 		// Save an instance of model
 		instanceMH.saveMachine(_self)
 	}
+
+	def List<Container> getContainers() {
+		val List<Container> containers = newArrayList
+		_self.links.forEach[elt|containers.add((elt.target as Container))]
+		return containers
+	}
+
+	def List<Container> leafContainers() {
+		val List<Container> containers = _self.containers
+		val List<Container> leafContainers = new ArrayList
+		for (Container c : containers) {
+			if (c.links.size == 0) {
+				leafContainers.add(c)
+			}
+		}
+		return leafContainers
+	}
+
+	def List<Container> deploymentOrder() {
+		val List<Container> containers = newArrayList
+		var Graph<Container> graph = new Graph<Container>
+
+		for (Link l : _self.links) {
+			val container = l.target as Container
+			if (!container.links.isEmpty) {
+				for (Link cl : container.links) {
+					graph.addDependency(container, (cl.target as Container))
+				}
+			}
+		}
+		for (GraphNode<Container> c : graph.deploymentOrder) {
+			containers.add(c.value)
+		}
+		// Add standalone container
+		for (Container standaloneContainer : _self.leafContainers) {
+			if (!containers.contains(standaloneContainer)) {
+				containers.add(standaloneContainer)
+			}
+		}
+		containers.forEach[c | println(c.name)]
+		return containers
+	}
 }
 
 @Aspect(className=Machine_Amazon_EC2)
@@ -347,6 +476,8 @@ class MachineAmazonEC2Aspect extends MachineAspect {
 	@OverrideAspectMethod
 	def String createMachineCommand() {
 	}
+
+	def void machineStart() {}
 }
 
 @Aspect(className=Machine_Digital_Ocean)
@@ -377,6 +508,8 @@ class MachineDigitalOceanAspect extends MachineAspect {
 		}
 		return command.toString
 	}
+
+	def void machineStart() {}
 }
 
 @Aspect(className=Machine_Google_Compute_Engine)
@@ -410,6 +543,8 @@ class MachineGoogleComputeEngineAspect extends MachineAspect {
 		}
 		return command.toString
 	}
+
+	def void machineStart() {}
 }
 
 @Aspect(className=Machine_IBM_SoftLayer)
@@ -420,6 +555,8 @@ class MachineIBMSoftLayerAspect extends MachineAspect {
 	def String createMachineCommand() {
 		//		var command = new StringBuilder("docker-machine create --driver ")
 	}
+
+	def void machineStart() {}
 }
 
 @Aspect(className=Machine_Microsoft_Azure)
@@ -430,6 +567,8 @@ class MachineMicrosoftAzureAspect extends MachineAspect {
 	def String createMachineCommand() {
 		//		var command = new StringBuilder("docker-machine create --driver ")
 	}
+
+	def void machineStart() {}
 }
 
 @Aspect(className=Machine_Microsoft_Hyper_V)
@@ -440,6 +579,8 @@ class MachineMicrosoftHyperVAspect extends MachineAspect {
 	def String createMachineCommand() {
 		//		var command = new StringBuilder("docker-machine create --driver ")
 	}
+
+	def void machineStart() {}
 }
 
 @Aspect(className=Machine_OpenStack)
@@ -487,6 +628,8 @@ class MachineOpenStackAspect extends MachineAspect {
 
 		return command.toString
 	}
+
+	def void machineStart() {}
 }
 
 @Aspect(className=Machine_Rackspace)
@@ -497,6 +640,8 @@ class MachineRackspaceAspect extends MachineAspect {
 	def String createMachineCommand() {
 		//		var command = new StringBuilder("docker-machine create --driver ")
 	}
+
+	def void machineStart() {}
 }
 
 @Aspect(className=Machine_VMware_Fusion)
@@ -507,6 +652,8 @@ class Machine_VMwareFusionAspect extends MachineAspect {
 	def String createMachineCommand() {
 		//		var command = new StringBuilder("docker-machine create --driver ")
 	}
+
+	def void machineStart() {}
 }
 
 @Aspect(className=Machine_VMware_vCloud_Air)
@@ -517,6 +664,8 @@ class MachineVMwarevCloudAirAspect extends MachineAspect {
 	def String createMachineCommand() {
 		//		var command = new StringBuilder("docker-machine create --driver ")
 	}
+
+	def void machineStart() {}
 }
 
 @Aspect(className=Machine_VMware_vSphere)
@@ -527,24 +676,25 @@ class MachineVMwarevSphereAspect extends MachineAspect {
 	def String createMachineCommand() {
 		//		var command = new StringBuilder("docker-machine create --driver ")
 	}
+
+	def void machineStart() {}
 }
 
 @Aspect(className=Container)
 class ContainerAspect {
-	var Map<DockerClient, CreateContainerResponse> map = new LinkedHashMap<DockerClient, CreateContainerResponse>
+	var Map<DockerClient, CreateContainerResponse> map = null
 
 	def Map<DockerClient, CreateContainerResponse> createContainer(Machine machine) {
-		val dockercontainerManager = new DockerContainerManager
+		println(_self.name)
+		var DockerContainerManager dockercontainerManager = new DockerContainerManager
 
 		// Set dockerClient
-		val dockerClient = dockercontainerManager.setConfig(machine)
-		var Map<DockerClient, CreateContainerResponse> result = new LinkedHashMap<DockerClient, CreateContainerResponse>
-		val create = dockercontainerManager.containerFactory(_self, dockerClient)
+		var Map<DockerClient, CreateContainerResponse> result = new HashMap<DockerClient, CreateContainerResponse>
 
-		// Run Execution
-		val CreateContainerResponse rcontainer = create.exec
-		result.put(dockerClient, rcontainer)
-		_self.map.put(dockerClient, rcontainer)
+		// Download image
+		dockercontainerManager.pullImage(machine, _self.image)
+		result = dockercontainerManager.createContainer(machine, _self)
+		_self.map = new HashMap<DockerClient, CreateContainerResponse>(result)
 		return result
 	}
 
@@ -559,17 +709,30 @@ class ContainerAspect {
 		return machine
 	}
 
-	def void startContainer() {
+	def Container linkContainerToContainer(Container container) {
+
+		// Retrieve the default factory singleton
+		var contains = DockerFactory.eINSTANCE.createContains
+
+		// Add Container to the Contains
+		contains.target = container
+
+		// Link Container to another
+		_self.links.add(contains)
+		return container
+	}
+
+	def void containerStart() {
 		val dockerContainerManager = new DockerContainerManager
 		dockerContainerManager.startContainer(_self.map)
 	}
 
-	def void stopContainer() {
+	def void containerStop() {
 		val dockerContainerManager = new DockerContainerManager
 		dockerContainerManager.stopContainer(_self.map)
 	}
 
-	def void waitContainer() {
+	def void containerWait() {
 		val dockerContainerManager = new DockerContainerManager
 		dockerContainerManager.waitContainer(_self.map)
 	}
@@ -580,5 +743,4 @@ class ContainerAspect {
 		// Save an instance of model
 		instanceMH.saveContainer(_self)
 	}
-
 }
