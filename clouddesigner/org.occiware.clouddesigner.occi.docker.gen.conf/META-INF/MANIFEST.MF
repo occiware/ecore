@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Acceleo Compose Module Runtime Plug-in
 Bundle-SymbolicName: org.occiware.clouddesigner.occi.docker.gen.conf
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 0.1.0.qualifier
 Bundle-Activator: org.occiware.clouddesigner.occi.docker.gen.conf.Activator
 Bundle-Vendor: Eclipse Modeling Project
 Require-Bundle: org.eclipse.core.runtime,
@@ -18,8 +18,8 @@ Require-Bundle: org.eclipse.core.runtime,
  com.google.guava,
  org.occiware.clouddesigner.occi;bundle-version="0.1.0",
  org.occiware.clouddesigner.occi.docker;bundle-version="0.1.0",
- org.occiware.clouddesigner.occi.infrastructure;bundle-version="1.0.0"
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+ org.occiware.clouddesigner.occi.infrastructure;bundle-version="0.1.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Eclipse-LazyStart: true
 Export-Package: org.occiware.clouddesigner.occi.docker.gen.conf.common,

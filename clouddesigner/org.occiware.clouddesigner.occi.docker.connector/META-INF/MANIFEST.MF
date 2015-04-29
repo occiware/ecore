@@ -1,9 +1,13 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-SymbolicName: org.occiware.clouddesigner.occi.docker.connector;singleton:=true
-Bundle-Version: 1.0.0
+Bundle-Version: 0.1.0.qualifier
 Bundle-Name: org.occiware.clouddesigner.occi.docker.connector
-Bundle-ClassPath: .,lib/docker-java-1.1.1-SNAPSHOT-jar-with-dependencies.jar
+Bundle-ClassPath: .,
+ lib/commons-csv-1.1.jar,
+ lib/jackson-all-1.7.9.jar,
+ lib/fr.inria.diverse.k3.al.annotationprocessor.plugin_3.1.0.v20141202-1445.jar,
+ lib/docker-java-1.1.1-SNAPSHOT-jar-with-dependencies.jar
 Bundle-Vendor: OCCIWARE
 Bundle-ActivationPolicy: lazy
 Export-Package: com.github.dockerjava.api,
@@ -38,5 +42,5 @@ Require-Bundle: org.eclipse.xtend.lib,
  org.occiware.clouddesigner.occi.docker;bundle-version="0.1.0",
  org.eclipse.emf.compare;bundle-version="3.1.1",
  fr.inria.diverse.k3.al.annotationprocessor.plugin;bundle-version="3.1.0"
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 
