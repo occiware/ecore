@@ -444,7 +444,7 @@ class ModelHandler {
 		}
 	}
 
-	def getModel(String machine, String state) {
+	def Machine getModel(String machine, String state) {
 		val node = DockerUtil.jsonify(DockerMachineManager.inspectHostCmd(Runtime.getRuntime, machine))
 		val model = new ModelHandler
 		if (node != null) {
