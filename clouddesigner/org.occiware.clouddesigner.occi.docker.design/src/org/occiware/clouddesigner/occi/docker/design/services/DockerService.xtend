@@ -15,6 +15,7 @@ class DockerService {
 		if (eo instanceof Machine) {
 			var machine = eo as Machine
 			instanceAspect = new DockerAspect(machine)
+			instanceAspect = new DockerAspect(machine)
 
 			// Start only the machine
 			instanceAspect.start
@@ -26,6 +27,8 @@ class DockerService {
 		}
 	}
 
+	def void synchro(EObject eo) {}
+	
 	def void startAll(EObject eo) {
 		if (eo instanceof Machine) {
 			var machine = eo as Machine
