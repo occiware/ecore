@@ -63,20 +63,20 @@
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="alias" valueExpression="var:arg0"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:PopupMenu" name="Execute" label="Execute" precondition="[oclIsKindOf(Machine) or oclIsKindOf(Container)/]">
+          <ownedTools xsi:type="tool_1:PopupMenu" name="Execute" label="Execute" precondition="[oclIsKindOf(Machine) or oclIsKindOf(Container) or oclIsKindOf(Configuration)/]">
             <menuItemDescription xsi:type="tool_1:OperationAction" name="StartAll" precondition="[oclIsKindOf(Machine)/]" icon="/org.occiware.clouddesigner.occi.docker.design/images/start.gif">
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:startAll"/>
               </initialOperation>
             </menuItemDescription>
-            <menuItemDescription xsi:type="tool_1:OperationAction" name="Start" icon="/org.occiware.clouddesigner.occi.docker.design/images/start.gif">
+            <menuItemDescription xsi:type="tool_1:OperationAction" name="Start" precondition="[oclIsKindOf(Machine) or oclIsKindOf(Container)/]" icon="/org.occiware.clouddesigner.occi.docker.design/images/start.gif">
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:start"/>
               </initialOperation>
             </menuItemDescription>
-            <menuItemDescription xsi:type="tool_1:OperationAction" name="Stop" icon="/org.occiware.clouddesigner.occi.docker.design/images/stop.gif">
+            <menuItemDescription xsi:type="tool_1:OperationAction" name="Stop" precondition="[oclIsKindOf(Machine) or oclIsKindOf(Container)/]" icon="/org.occiware.clouddesigner.occi.docker.design/images/stop.gif">
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:stop"/>
@@ -85,10 +85,10 @@
             <menuItemDescription xsi:type="tool_1:OperationAction" name="Synchronize" precondition="[oclIsKindOf(Machine)/]" icon="/org.occiware.clouddesigner.occi.docker.design/images/refresh.gif">
               <view name="views"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:synchro"/>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:synchronize"/>
               </initialOperation>
             </menuItemDescription>
-            <menuItemDescription xsi:type="tool_1:OperationAction" name="Import" precondition="[oclIsKindOf(Contains)/]" icon="/org.occiware.clouddesigner.occi.docker.design/images/import.gif">
+            <menuItemDescription xsi:type="tool_1:OperationAction" name="Import" precondition="[oclIsKindOf(Configuration)/]" icon="/org.occiware.clouddesigner.occi.docker.design/images/import.gif">
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:importModel"/>
