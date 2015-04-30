@@ -19,6 +19,7 @@ public class DockerObserver {
     EList<Adapter> _eAdapters = vbox.eAdapters();
     _eAdapters.add(
       new EContentAdapter() {
+        @Override
         public void notifyChanged(final Notification notification) {
           Object _oldValue = notification.getOldValue();
           String _plus = ("Ancienne Valeur : " + _oldValue);
@@ -42,6 +43,7 @@ public class DockerObserver {
     EList<Adapter> _eAdapters = machine.eAdapters();
     _eAdapters.add(
       new EContentAdapter() {
+        @Override
         public void notifyChanged(final Notification notification) {
           Machine machine = cpMachine;
         }
@@ -58,6 +60,7 @@ public class DockerObserver {
     EList<Adapter> _eAdapters = machine.eAdapters();
     _eAdapters.add(
       new EContentAdapter() {
+        @Override
         public void notifyChanged(final Notification notification) {
           Object _notifier = notification.getNotifier();
           final Machine newmachine = ((Machine) _notifier);
@@ -71,6 +74,7 @@ public class DockerObserver {
     EList<Adapter> _eAdapters = container.eAdapters();
     _eAdapters.add(
       new EContentAdapter() {
+        @Override
         public void notifyChanged(final Notification notification) {
           Object _oldValue = notification.getOldValue();
           String _plus = ("Ancienne Valeur : " + _oldValue);

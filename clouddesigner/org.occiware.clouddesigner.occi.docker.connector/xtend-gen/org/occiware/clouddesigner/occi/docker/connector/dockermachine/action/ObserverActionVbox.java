@@ -7,6 +7,7 @@ import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.Do
 
 @SuppressWarnings("all")
 public class ObserverActionVbox implements ObserverAction {
+  @Override
   public void apply(final Machine machine) {
     Machine_VirtualBox vbox = ((Machine_VirtualBox) machine);
     Runtime _runtime = Runtime.getRuntime();
