@@ -6,15 +6,24 @@ Bundle-Name: org.occiware.clouddesigner.occi.docker.connector
 Bundle-ClassPath: .,lib/docker-java-1.1.1-SNAPSHOT-jar-with-dependencies.jar
 Bundle-Vendor: OCCIWARE
 Bundle-ActivationPolicy: lazy
-Export-Package: org.occiware.clouddesigner.occi.docker.connector,
+Export-Package: com.github.dockerjava.api,
+ com.github.dockerjava.api.command,
+ com.github.dockerjava.api.model,
+ com.github.dockerjava.core,
+ com.github.dockerjava.core.command,
+ com.github.dockerjava.core.dockerfile,
+ com.github.dockerjava.core.util,
+ com.github.dockerjava.jaxrs,
+ com.github.dockerjava.jaxrs.util,
+ org.occiware.clouddesigner.occi.docker.connector,
  org.occiware.clouddesigner.occi.docker.connector.dockerjava,
  org.occiware.clouddesigner.occi.docker.connector.dockermachine,
- org.occiware.clouddesigner.occi.docker.connector.dockermachine.command,
- org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect,
- org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager,
- org.occiware.clouddesigner.occi.docker.connector.dockermachine.util,
  org.occiware.clouddesigner.occi.docker.connector.dockermachine.action,
- org.occiware.clouddesigner.occi.docker.connector.dockermachine.action.api
+ org.occiware.clouddesigner.occi.docker.connector.dockermachine.action.api,
+ org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect,
+ org.occiware.clouddesigner.occi.docker.connector.dockermachine.command,
+ org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager,
+ org.occiware.clouddesigner.occi.docker.connector.dockermachine.util
 Require-Bundle: org.eclipse.xtend.lib,
  com.google.guava,
  org.eclipse.xtext.xbase.lib,
