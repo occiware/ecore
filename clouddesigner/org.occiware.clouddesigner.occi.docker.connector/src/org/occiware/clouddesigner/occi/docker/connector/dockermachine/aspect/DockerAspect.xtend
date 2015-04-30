@@ -49,6 +49,8 @@ import org.occiware.clouddesigner.occi.docker.connector.dockerjava.graph.Graph
 import org.occiware.clouddesigner.occi.docker.connector.dockerjava.graph.GraphNode
 import fr.inria.diverse.k3.al.annotationprocessor.ReplaceAspectMethod
 import org.eclipse.emf.ecore.EObject
+import org.occiware.clouddesigner.OCCI.Configuration
+import org.occiware.clouddesigner.OCCI.Resource
 
 class DockerAspect {
 	var public Machine machine
@@ -65,6 +67,7 @@ class DockerAspect {
 	var public Machine_VMware_vCloud_Air machine_VMware_vCloud_Air
 	var public Machine_VMware_vSphere machine_VMware_vSphere
 	var public Container container
+	var public Configuration configuration
 	var static public Map<String, Machine> register = new HashMap<String, Machine>
 
 	new() {
@@ -104,6 +107,10 @@ class DockerAspect {
 
 		// Register the machine
 		register(machine)
+	}
+
+	new(Configuration conf) {
+		this.configuration = conf
 	}
 
 	def void start() {
@@ -360,6 +367,33 @@ class DockerAspect {
 		return DockerFactory.eINSTANCE.eClass
 	}
 
+	def void importModel() {
+		val hosts = DockerUtil.getHosts
+		val instanceMH = new ModelHandler
+		println(hosts)
+		for (Map.Entry<String, String> entry : hosts.entrySet) {
+			var machine = instanceMH.getModel(entry.getKey(), entry.getValue())
+			if (!containMachine(machine)) {
+				this.configuration.resources.add(machine)
+			}
+		}
+	}
+
+	def boolean containMachine(Machine machine) {
+		for (Resource r : this.configuration.resources) {
+			if (r instanceof Machine) {
+				if ((r as Machine).name == machine.name) {
+					return true
+				}
+			}
+		}
+		return false
+	}
+
+	def void synchronize() {
+		this.machine_VirtualBox.synchronize
+	}
+
 }
 
 @Aspect(className=Machine)
@@ -518,6 +552,10 @@ class MachineVirtualBoxAspect extends MachineAspect {
 	def void machineRestart() {
 		if (_self.name != null) {
 			DockerMachineManager.restartCmd(Runtime.getRuntime, _self.name)
+
+			// Set State
+			_self.state = ComputeStatus.get(0)
+
 		}
 	}
 
@@ -581,6 +619,15 @@ class MachineVirtualBoxAspect extends MachineAspect {
 		}
 		containers.forEach[c|println(c.name)]
 		return containers
+	}
+
+	def void synchronize() {
+
+		// compare
+		val hosts = DockerUtil.getHosts
+		val instanceMH = new ModelHandler
+		val machine = instanceMH.getModel(_self.name, hosts.get(_self.name))
+		_self.state = machine.state
 	}
 }
 
@@ -875,20 +922,26 @@ class ContainerAspect {
 
 	def void containerStart() {
 		val machine = _self.getCurrentMachine
-		val dockerContainerManager = new DockerContainerManager
-		dockerContainerManager.startContainer(machine, _self)
+		if (machine.isDeployed) {
+			val dockerContainerManager = new DockerContainerManager
+			dockerContainerManager.startContainer(machine, _self)
+		}
 	}
 
 	def void containerStop() {
 		val machine = _self.getCurrentMachine
-		val dockerContainerManager = new DockerContainerManager
-		dockerContainerManager.stopContainer(machine, _self)
+		if (machine.isDeployed) {
+			val dockerContainerManager = new DockerContainerManager
+			dockerContainerManager.stopContainer(machine, _self)
+		}
 	}
 
 	def void containerWait() {
 		val machine = _self.getCurrentMachine
-		val dockerContainerManager = new DockerContainerManager
-		dockerContainerManager.waitContainer(machine, _self)
+		if (machine.isDeployed) {
+			val dockerContainerManager = new DockerContainerManager
+			dockerContainerManager.waitContainer(machine, _self)
+		}
 	}
 
 	def void save() {
