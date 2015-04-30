@@ -153,7 +153,7 @@ class DockerContainerManager {
 		dockerClient.waitContainerCmd(container.id).exec
 	}
 
-	def listContainer(Machine machine) {
+	def List<com.github.dockerjava.api.model.Container> listContainer(Machine machine) {
 
 		// Set dockerClient
 		val dockerClient = setConfig(machine)
