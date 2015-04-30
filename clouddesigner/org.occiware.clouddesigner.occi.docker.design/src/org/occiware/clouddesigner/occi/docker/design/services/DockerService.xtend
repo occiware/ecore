@@ -7,6 +7,7 @@ import org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.Doc
 
 import static extension org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.ContainerAspect.*
 import static extension org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineVirtualBoxAspect.*
+import org.occiware.clouddesigner.OCCI.Configuration
 
 class DockerService {
 	var public DockerAspect instanceAspect
@@ -15,7 +16,6 @@ class DockerService {
 		if (eo instanceof Machine) {
 			var machine = eo as Machine
 			instanceAspect = new DockerAspect(machine)
-//			instanceAspect.model
 			instanceAspect = new DockerAspect(machine)
 
 			// Start only the machine
@@ -28,9 +28,18 @@ class DockerService {
 		}
 	}
 
-	def void synchro(EObject eo) {}
+	def void importModel(Configuration conf) {
+		instanceAspect = new DockerAspect(conf)
+		instanceAspect.importModel
+	}
 	
-	def void importModel(EObject eo) {}
+	def void synchronize(EObject eo) {
+		if (eo instanceof Machine) {
+			var machine = eo as Machine
+			instanceAspect = new DockerAspect(machine)
+			instanceAspect.synchronize
+		}
+	}
 	
 	def void startAll(EObject eo) {
 		if (eo instanceof Machine) {
