@@ -35,7 +35,10 @@ class DockerUtil {
 			var String[] st = data.split("\\r?\\n")
 			val list = Arrays.copyOfRange(st, 1, st.length)
 			for (line : list) {
-				val String[] lsCmd = line.split("\\s+")
+				// clean the line
+				var l = line
+				l = l.replaceAll("\\*", "")
+				val String[] lsCmd = l.split("\\s+")
 				if (lsCmd.length >= 3 && lsCmd.length < 5) {
 					hosts.put(lsCmd.get(0), lsCmd.get(2))
 				} else if (lsCmd.length >= 5) {
