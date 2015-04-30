@@ -1,1 +1,3 @@
 /bin/
+*.xtendbin
+*.java._trace
