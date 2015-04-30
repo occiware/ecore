@@ -58,6 +58,7 @@ import org.eclipse.emf.compare.utils.UseIdentifiers
 import org.eclipse.emf.compare.match.DefaultEqualityHelperFactory
 import org.eclipse.emf.compare.match.impl.MatchEngineFactoryImpl
 import org.eclipse.emf.compare.match.impl.MatchEngineFactoryRegistryImpl
+import org.occiware.clouddesigner.occi.docker.connector.dockerjava.DockerContainerManager
 
 class ModelHandler {
 
@@ -445,10 +446,10 @@ class ModelHandler {
 	}
 
 	def Machine getModel(String machine, String state) {
+		val instance = new DockerContainerManager
 		val node = DockerUtil.jsonify(DockerMachineManager.inspectHostCmd(Runtime.getRuntime, machine))
-		val model = new ModelHandler
 		if (node != null) {
-			var vbox = model.getmodelEClass.get(node.get("DriverName").toString.replaceAll("\"", ""))
+			var vbox = getmodelEClass.get(node.get("DriverName").toString.replaceAll("\"", ""))
 
 			if (vbox instanceof Machine_VirtualBox) {
 				var newvbox = vbox as Machine_VirtualBox
@@ -457,6 +458,11 @@ class ModelHandler {
 				machineFactory(newvbox, node, state)
 				newvbox.disk_size = Integer.parseInt(node.get("Driver").get("DiskSize").toString)
 				newvbox.boot2docker_url = node.get("Driver").get("Boot2DockerURL").toString.replaceAll("\"", "")
+				if (state == "Stopped") {
+					newvbox.state = ComputeStatus.get(1)
+				} else {
+					newvbox.state = ComputeStatus.get(0)
+				}
 				println("Model setting: " + newvbox)
 			} else if (vbox instanceof Machine_Amazon_EC2) {
 				var newvbox = vbox as Machine_Amazon_EC2
@@ -465,6 +471,21 @@ class ModelHandler {
 				machineFactory(newvbox, node, state)
 				println("Model setting: " + newvbox)
 			}
+
+			// Check machine state
+			if (vbox.state.toString.equalsIgnoreCase("active")) {
+
+				// Introspect containers
+				val containers = instance.listContainer(vbox)
+				if (containers != null) {
+					for (com.github.dockerjava.api.model.Container c : containers) {
+						linkContainerToMachine(getModel(c), vbox)
+					}
+				}
+
+			}
+
+			//			containers.forEach[container|linkContainerToMachine(getModel(container), vbox)]
 			return vbox
 		}
 	}
@@ -566,9 +587,10 @@ class ModelHandler {
 		// Load the two input models
 		val ResourceSet resourceSet1 = new ResourceSetImpl
 		val ResourceSet resourceSet2 = new ResourceSetImpl
+
 		// Serialize the model
 		val String xmi1 = saveMachine(machine1)
-		val String xmi2 = saveMachine(machine1)
+		val String xmi2 = saveMachine(machine2)
 		load(xmi1, resourceSet1);
 		load(xmi2, resourceSet2);
 
