@@ -375,6 +375,9 @@ class DockerAspect {
 			var machine = instanceMH.getModel(entry.getKey(), entry.getValue())
 			if (!containMachine(machine)) {
 				this.configuration.resources.add(machine)
+				if (machine.links != null) {
+					machine.links.forEach[elt|this.configuration.resources.add((elt.target as Container))]
+				}
 			}
 		}
 	}
@@ -407,6 +410,7 @@ class MachineAspect {
 @Aspect(className=Machine_VirtualBox)
 class MachineVirtualBoxAspect extends MachineAspect {
 	protected boolean isDeployed = false
+	protected Map<String, String> containerDependency = new HashMap
 
 	@ReplaceAspectMethod
 	def void start() {
@@ -465,9 +469,10 @@ class MachineVirtualBoxAspect extends MachineAspect {
 
 					// Start the containers without create graph
 					if (!_self.linkFound) {
-						_self.links.forEach[elt|(elt.target as Container).createContainer(_self)]
+						_self.links.forEach[elt|
+							(elt.target as Container).createContainer(_self, _self.containerDependency)]
 					} else { // Create the graph
-						_self.deploymentOrder.forEach[c|c.createContainer(_self)]
+						_self.deploymentOrder.forEach[c|c.createContainer(_self, _self.containerDependency)]
 					}
 				}
 			} else {
@@ -481,9 +486,10 @@ class MachineVirtualBoxAspect extends MachineAspect {
 
 						// Start the containers without create graph
 						if (!_self.linkFound) {
-							_self.links.forEach[elt|(elt.target as Container).createContainer(_self)]
+							_self.links.forEach[elt|
+								(elt.target as Container).createContainer(_self, _self.containerDependency)]
 						} else { // Create the graph
-							_self.deploymentOrder.forEach[c|c.createContainer(_self)]
+							_self.deploymentOrder.forEach[c|c.createContainer(_self, _self.containerDependency)]
 						}
 					}
 				}
@@ -604,6 +610,7 @@ class MachineVirtualBoxAspect extends MachineAspect {
 			if (!container.links.isEmpty) {
 				for (Link cl : container.links) {
 					graph.addDependency(container, (cl.target as Container))
+					_self.containerDependency.put(container.name, (cl.target as Container).name)
 				}
 			}
 		}
@@ -626,8 +633,23 @@ class MachineVirtualBoxAspect extends MachineAspect {
 		// compare
 		val hosts = DockerUtil.getHosts
 		val instanceMH = new ModelHandler
+		val instance = new DockerContainerManager
 		val machine = instanceMH.getModel(_self.name, hosts.get(_self.name))
 		_self.state = machine.state
+
+	//		if (_self.state.toString.equalsIgnoreCase("active")) {
+	//
+	//			// Introspect containers
+	//			val contains = instance.listContainer(machine)
+	//			if (contains != null) {
+	//
+	//				//linkContainerToMachine(buildContainer(containers), vbox)
+	//				for (com.github.dockerjava.api.model.Container c : contains) {
+	//					instanceMH.buildContainer(c).linkContainerToMachine(_self)
+	//				}
+	//			}
+	//
+	//		}
 	}
 }
 
@@ -868,7 +890,8 @@ class MachineVMwarevSphereAspect extends MachineAspect {
 class ContainerAspect {
 	var Map<DockerClient, CreateContainerResponse> map = null
 
-	def Map<DockerClient, CreateContainerResponse> createContainer(Machine machine) {
+	def Map<DockerClient, CreateContainerResponse> createContainer(Machine machine,
+		Map<String, String> containerDependency) {
 		println(_self.name)
 		var DockerContainerManager dockercontainerManager = new DockerContainerManager
 
@@ -877,7 +900,7 @@ class ContainerAspect {
 
 		// Download image
 		dockercontainerManager.pullImage(machine, _self.image)
-		result = dockercontainerManager.createContainer(machine, _self)
+		result = dockercontainerManager.createContainer(machine, _self, containerDependency)
 		_self.map = new HashMap<DockerClient, CreateContainerResponse>(result)
 		return result
 	}
