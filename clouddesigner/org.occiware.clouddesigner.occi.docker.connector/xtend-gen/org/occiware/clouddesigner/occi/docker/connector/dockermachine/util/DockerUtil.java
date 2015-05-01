@@ -58,7 +58,10 @@ public class DockerUtil {
       final String[] list = Arrays.<String>copyOfRange(st, 1, _length);
       for (final String line : list) {
         {
-          final String[] lsCmd = line.split("\\s+");
+          String l = line;
+          String _replaceAll = l.replaceAll("\\*", "");
+          l = _replaceAll;
+          final String[] lsCmd = l.split("\\s+");
           boolean _and = false;
           int _length_1 = lsCmd.length;
           boolean _greaterEqualsThan = (_length_1 >= 3);
@@ -125,10 +128,9 @@ public class DockerUtil {
   }
   
   public static String getEnv(final String machineName) {
-    InputOutput.<String>println(("Machine name: " + machineName));
     Runtime _runtime = Runtime.getRuntime();
     final String data = DockerMachineManager.getEnvCmd(_runtime, machineName);
-    List hosts = new ArrayList<Object>();
+    List<String[]> hosts = new ArrayList<String[]>();
     String[] result = null;
     boolean _notEquals = (!Objects.equal(data, null));
     if (_notEquals) {
@@ -140,7 +142,7 @@ public class DockerUtil {
           hosts.add(lsCmd);
         }
       }
-      Object _get = hosts.get(1);
+      String[] _get = hosts.get(1);
       String currentLine = ((String[]) _get)[1];
       String[] _split = currentLine.split("=");
       result = _split;

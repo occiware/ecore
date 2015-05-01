@@ -1,6 +1,7 @@
 package org.occiware.clouddesigner.occi.docker.design.services;
 
 import org.eclipse.emf.ecore.EObject;
+import org.occiware.clouddesigner.OCCI.Configuration;
 import org.occiware.clouddesigner.occi.docker.Container;
 import org.occiware.clouddesigner.occi.docker.Machine;
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.ContainerAspect;
@@ -16,14 +17,31 @@ public class DockerService {
       Machine machine = ((Machine) eo);
       DockerAspect _dockerAspect = new DockerAspect(machine);
       this.instanceAspect = _dockerAspect;
+      DockerAspect _dockerAspect_1 = new DockerAspect(machine);
+      this.instanceAspect = _dockerAspect_1;
       this.instanceAspect.start();
     } else {
       if ((eo instanceof Container)) {
         Container container = ((Container) eo);
-        DockerAspect _dockerAspect_1 = new DockerAspect(container);
-        this.instanceAspect = _dockerAspect_1;
+        DockerAspect _dockerAspect_2 = new DockerAspect(container);
+        this.instanceAspect = _dockerAspect_2;
         ContainerAspect.containerStart(this.instanceAspect.container);
       }
+    }
+  }
+  
+  public void importModel(final Configuration conf) {
+    DockerAspect _dockerAspect = new DockerAspect(conf);
+    this.instanceAspect = _dockerAspect;
+    this.instanceAspect.importModel();
+  }
+  
+  public void synchronize(final EObject eo) {
+    if ((eo instanceof Machine)) {
+      Machine machine = ((Machine) eo);
+      DockerAspect _dockerAspect = new DockerAspect(machine);
+      this.instanceAspect = _dockerAspect;
+      this.instanceAspect.synchronize();
     }
   }
   
