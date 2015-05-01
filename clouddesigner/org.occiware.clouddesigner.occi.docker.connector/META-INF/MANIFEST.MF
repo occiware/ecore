@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-SymbolicName: org.occiware.clouddesigner.occi.docker.connector;singleton:=true
 Bundle-Version: 1.0.0
 Bundle-Name: org.occiware.clouddesigner.occi.docker.connector
-Bundle-ClassPath: .,lib/docker-java-1.1.1-SNAPSHOT-jar-with-dependencies.jar
+Bundle-ClassPath: .,lib/docker-java-1.1.1-SNAPSHOT-jar-with-dependencies.jar,lib/jackson-all-1.7.9.jar
 Bundle-Vendor: OCCIWARE
 Bundle-ActivationPolicy: lazy
 Export-Package: com.github.dockerjava.api,
