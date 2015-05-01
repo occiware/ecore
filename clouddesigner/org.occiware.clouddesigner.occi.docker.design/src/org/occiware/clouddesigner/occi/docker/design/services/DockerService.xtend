@@ -16,7 +16,6 @@ class DockerService {
 		if (eo instanceof Machine) {
 			var machine = eo as Machine
 			instanceAspect = new DockerAspect(machine)
-			instanceAspect = new DockerAspect(machine)
 
 			// Start only the machine
 			instanceAspect.start
