@@ -4,11 +4,15 @@ import com.github.dockerjava.api.DockerClient
 import com.github.dockerjava.api.command.CreateContainerResponse
 import fr.inria.diverse.k3.al.annotationprocessor.Aspect
 import fr.inria.diverse.k3.al.annotationprocessor.OverrideAspectMethod
+import fr.inria.diverse.k3.al.annotationprocessor.ReplaceAspectMethod
 import java.util.ArrayList
 import java.util.HashMap
 import java.util.List
 import java.util.Map
+import org.eclipse.emf.ecore.EObject
+import org.occiware.clouddesigner.OCCI.Configuration
 import org.occiware.clouddesigner.OCCI.Link
+import org.occiware.clouddesigner.OCCI.Resource
 import org.occiware.clouddesigner.occi.docker.Container
 import org.occiware.clouddesigner.occi.docker.DockerFactory
 import org.occiware.clouddesigner.occi.docker.Machine
@@ -26,6 +30,8 @@ import org.occiware.clouddesigner.occi.docker.Machine_VMware_vSphere
 import org.occiware.clouddesigner.occi.docker.Machine_VirtualBox
 import org.occiware.clouddesigner.occi.docker.connector.ModelHandler
 import org.occiware.clouddesigner.occi.docker.connector.dockerjava.DockerContainerManager
+import org.occiware.clouddesigner.occi.docker.connector.dockerjava.graph.Graph
+import org.occiware.clouddesigner.occi.docker.connector.dockerjava.graph.GraphNode
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerMachineManager
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.Provider
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerUtil
@@ -34,23 +40,21 @@ import org.occiware.clouddesigner.occi.infrastructure.ComputeStatus
 
 import static extension org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.ContainerAspect.*
 import static extension org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineAmazonEC2Aspect.*
-import static extension org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineVirtualBoxAspect.*
-import static extension org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.Machine_VMwareFusionAspect.*
+import static extension org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineAspect.*
 import static extension org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineDigitalOceanAspect.*
 import static extension org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineGoogleComputeEngineAspect.*
-import static extension org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineVMwarevSphereAspect.*
-import static extension org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineVMwarevCloudAirAspect.*
+import static extension org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineIBMSoftLayerAspect.*
 import static extension org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineMicrosoftAzureAspect.*
 import static extension org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineMicrosoftHyperVAspect.*
-import static extension org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineIBMSoftLayerAspect.*
 import static extension org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineOpenStackAspect.*
 import static extension org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineRackspaceAspect.*
-import org.occiware.clouddesigner.occi.docker.connector.dockerjava.graph.Graph
-import org.occiware.clouddesigner.occi.docker.connector.dockerjava.graph.GraphNode
-import fr.inria.diverse.k3.al.annotationprocessor.ReplaceAspectMethod
-import org.eclipse.emf.ecore.EObject
-import org.occiware.clouddesigner.OCCI.Configuration
-import org.occiware.clouddesigner.OCCI.Resource
+import static extension org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineVMwarevCloudAirAspect.*
+import static extension org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineVMwarevSphereAspect.*
+import static extension org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineVirtualBoxAspect.*
+import static extension org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.Machine_VMwareFusionAspect.*
+import java.util.LinkedHashMap
+import com.google.common.collect.Multimap
+import com.google.common.collect.ArrayListMultimap
 
 class DockerAspect {
 	var public Machine machine
@@ -171,6 +175,7 @@ class DockerAspect {
 
 	def void startAll() {
 		if (machine_VirtualBox != null) {
+
 			machine_VirtualBox.machineStartAll
 			return;
 		}
@@ -410,7 +415,7 @@ class MachineAspect {
 @Aspect(className=Machine_VirtualBox)
 class MachineVirtualBoxAspect extends MachineAspect {
 	protected boolean isDeployed = false
-	protected Map<String, String> containerDependency = new HashMap
+	protected Multimap<String, String> containerDependency = ArrayListMultimap.create
 
 	@ReplaceAspectMethod
 	def void start() {
@@ -472,7 +477,8 @@ class MachineVirtualBoxAspect extends MachineAspect {
 						_self.links.forEach[elt|
 							(elt.target as Container).createContainer(_self, _self.containerDependency)]
 					} else { // Create the graph
-						_self.deploymentOrder.forEach[c|c.createContainer(_self, _self.containerDependency)]
+						val dependencies = _self.containerDependency
+						_self.deploymentOrder.forEach[c|c.createContainer(_self, dependencies)]
 					}
 				}
 			} else {
@@ -614,8 +620,11 @@ class MachineVirtualBoxAspect extends MachineAspect {
 				}
 			}
 		}
+		println("First time")
+		println(_self.containerDependency)
 		for (GraphNode<Container> c : graph.deploymentOrder) {
 			containers.add(c.value)
+			println("--->" + c.value)
 		}
 
 		// Add standalone container
@@ -637,19 +646,23 @@ class MachineVirtualBoxAspect extends MachineAspect {
 		val machine = instanceMH.getModel(_self.name, hosts.get(_self.name))
 		_self.state = machine.state
 
-	//		if (_self.state.toString.equalsIgnoreCase("active")) {
-	//
-	//			// Introspect containers
-	//			val contains = instance.listContainer(machine)
-	//			if (contains != null) {
-	//
-	//				//linkContainerToMachine(buildContainer(containers), vbox)
-	//				for (com.github.dockerjava.api.model.Container c : contains) {
-	//					instanceMH.buildContainer(c).linkContainerToMachine(_self)
-	//				}
-	//			}
-	//
-	//		}
+		if (_self.state.toString.equalsIgnoreCase("active")) {
+
+			// Introspect containers
+			val contains = instance.listContainer(machine)
+			if (contains != null) {
+				val modelContainers = instanceMH.buildContainer(_self, contains)
+				for (Container container : modelContainers) {
+					container.linkContainerToMachine(_self)
+				}
+				if (_self.links != null) {
+					_self.links.forEach[elt|println((elt.target as Container).name)]
+					_self.links.forEach[elt|
+						println(_self.eContainer.eResource.allContents.toList.add((elt.target as Container)))]
+				}
+			}
+
+		}
 	}
 }
 
@@ -891,8 +904,10 @@ class ContainerAspect {
 	var Map<DockerClient, CreateContainerResponse> map = null
 
 	def Map<DockerClient, CreateContainerResponse> createContainer(Machine machine,
-		Map<String, String> containerDependency) {
+		Multimap<String, String> containerDependency) {
 		println(_self.name)
+		println("inside createContainer")
+		println(containerDependency)
 		var DockerContainerManager dockercontainerManager = new DockerContainerManager
 
 		// Set dockerClient
@@ -933,13 +948,13 @@ class ContainerAspect {
 	def Container linkContainerToContainer(Container container) {
 
 		// Retrieve the default factory singleton
-		var contains = DockerFactory.eINSTANCE.createContains
+		var links = DockerFactory.eINSTANCE.createLink
 
 		// Add Container to the Contains
-		contains.target = container
+		links.target = container
 
 		// Link Container to another
-		_self.links.add(contains)
+		_self.links.add(links)
 		return container
 	}
 
