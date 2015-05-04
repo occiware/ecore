@@ -7,28 +7,28 @@ import java.util.Set
 
 class Graph<T> {
 
-		/*
+	/*
          * Organize the deployment order of the Nodes
          */
 	private List<GraphNode<T>> deploymentOrder = newArrayList
 
-		/*
+	/*
          * These are basically the nodes of the graph
          */
 	private HashMap<T, GraphNode<T>> nodes = new HashMap<T, GraphNode<T>>
 
-		/*
+	/*
          * The callback interface used to notify of the fact that a node just got
          * the evaluation
          */
 	private NodeValueListener<T> listener
 
-		/*
+	/*
          * It holds a list of the already evaluated nodes
          */
 	private List<GraphNode<T>> evaluatedNodes = new ArrayList<GraphNode<T>>
 
-		/*
+	/*
          * The main constructor that has one parameter representing the callback
          * mechanism used by this class to notify when a node gets the evaluation.
          * 
@@ -39,7 +39,7 @@ class Graph<T> {
 		this.listener = listener
 	}
 
-		/*
+	/*
          * Allows adding of new dependicies to the graph. "evalFirstValue" needs to
          * be evaluated before "evalAfterValue"
          * 
@@ -67,7 +67,7 @@ class Graph<T> {
 		afterNode.addComingInNode(firstNode);
 	}
 
-		/*
+	/*
          * Creates a graph node of the <T> generic type
          * 
          * @param value
@@ -79,6 +79,7 @@ class Graph<T> {
 		node.value = value;
 		return node;
 	}
+
 	/*
 	 * Get the node that has not a parent
 	 *  
@@ -115,11 +116,17 @@ class Graph<T> {
 
 	def List<GraphNode<T>> deploymentOrder() {
 		var currentNodes = getLeafNodes
+		var orphnanNodes = getOrphanNodes
+		for (GraphNode<T> m : getOrphanNodes) {
+			println(m.value)
+		}
 		var List<GraphNode<T>> newleafNodes = new ArrayList<GraphNode<T>>
 		while (!currentNodes.isEmpty) {
 			for (GraphNode<T> g : currentNodes) {
 				if (g.comingInNodes != null) {
-					newleafNodes.addAll(new ArrayList<GraphNode<T>>(g.comingInNodes))
+					val realLeafs = g.comingInNodes
+					realLeafs.removeAll(orphnanNodes)
+					newleafNodes.addAll(new ArrayList<GraphNode<T>>(realLeafs))
 				}
 			}
 			for (GraphNode<T> n : currentNodes) {
@@ -129,6 +136,11 @@ class Graph<T> {
 			}
 			currentNodes = new ArrayList<GraphNode<T>>(newleafNodes)
 			newleafNodes = new ArrayList<GraphNode<T>>
+		}
+		for (GraphNode<T> n : orphnanNodes) {
+			if (!this.deploymentOrder.contains(n)) {
+				this.deploymentOrder.add(n)
+			}
 		}
 		return this.deploymentOrder
 	}
