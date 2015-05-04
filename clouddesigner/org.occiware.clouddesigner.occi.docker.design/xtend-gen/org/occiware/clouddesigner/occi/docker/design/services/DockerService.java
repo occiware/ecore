@@ -17,14 +17,12 @@ public class DockerService {
       Machine machine = ((Machine) eo);
       DockerAspect _dockerAspect = new DockerAspect(machine);
       this.instanceAspect = _dockerAspect;
-      DockerAspect _dockerAspect_1 = new DockerAspect(machine);
-      this.instanceAspect = _dockerAspect_1;
       this.instanceAspect.start();
     } else {
       if ((eo instanceof Container)) {
         Container container = ((Container) eo);
-        DockerAspect _dockerAspect_2 = new DockerAspect(container);
-        this.instanceAspect = _dockerAspect_2;
+        DockerAspect _dockerAspect_1 = new DockerAspect(container);
+        this.instanceAspect = _dockerAspect_1;
         ContainerAspect.containerStart(this.instanceAspect.container);
       }
     }

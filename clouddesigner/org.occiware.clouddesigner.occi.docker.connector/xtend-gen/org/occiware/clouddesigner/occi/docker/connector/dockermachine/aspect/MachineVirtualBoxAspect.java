@@ -18,6 +18,7 @@ import org.occiware.clouddesigner.occi.docker.Container;
 import org.occiware.clouddesigner.occi.docker.Machine;
 import org.occiware.clouddesigner.occi.docker.Machine_VirtualBox;
 import org.occiware.clouddesigner.occi.docker.connector.ModelHandler;
+import org.occiware.clouddesigner.occi.docker.connector.dockerjava.DockerContainerManager;
 import org.occiware.clouddesigner.occi.docker.connector.dockerjava.graph.Graph;
 import org.occiware.clouddesigner.occi.docker.connector.dockerjava.graph.GraphNode;
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.ContainerAspect;
@@ -125,6 +126,18 @@ public class MachineVirtualBoxAspect extends MachineAspect {
     _privk3_isDeployed(_self_, _self,isDeployed);
   }
   
+  protected static Map<String, String> containerDependency(final Machine_VirtualBox _self) {
+    org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineVirtualBoxAspectMachine_VirtualBoxAspectProperties _self_ = org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineVirtualBoxAspectMachine_VirtualBoxAspectContext.getSelf(_self);
+    Object result = null;
+    result =_privk3_containerDependency(_self_, _self);
+    return (java.util.Map<java.lang.String, java.lang.String>)result;
+  }
+  
+  protected static void containerDependency(final Machine_VirtualBox _self, final Map<String, String> containerDependency) {
+    org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineVirtualBoxAspectMachine_VirtualBoxAspectProperties _self_ = org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineVirtualBoxAspectMachine_VirtualBoxAspectContext.getSelf(_self);
+    _privk3_containerDependency(_self_, _self,containerDependency);
+  }
+  
   protected static void _privk3_start(final MachineVirtualBoxAspectMachine_VirtualBoxAspectProperties _self_, final Machine_VirtualBox _self) {
     InputOutput.<String>println("Je redefinis la methode start \n\n\n");
   }
@@ -218,7 +231,8 @@ public class MachineVirtualBoxAspect extends MachineAspect {
               @Override
               public void apply(final Link elt) {
                 Resource _target = elt.getTarget();
-                ContainerAspect.createContainer(((Container) _target), _self);
+                Map<String, String> _containerDependency = MachineVirtualBoxAspect.containerDependency(_self);
+                ContainerAspect.createContainer(((Container) _target), _self, _containerDependency);
               }
             };
             IterableExtensions.<Link>forEach(_links_1, _function);
@@ -227,7 +241,8 @@ public class MachineVirtualBoxAspect extends MachineAspect {
             final Procedure1<Container> _function_1 = new Procedure1<Container>() {
               @Override
               public void apply(final Container c) {
-                ContainerAspect.createContainer(c, _self);
+                Map<String, String> _containerDependency = MachineVirtualBoxAspect.containerDependency(_self);
+                ContainerAspect.createContainer(c, _self, _containerDependency);
               }
             };
             IterableExtensions.<Container>forEach(_deploymentOrder, _function_1);
@@ -252,7 +267,8 @@ public class MachineVirtualBoxAspect extends MachineAspect {
                 @Override
                 public void apply(final Link elt) {
                   Resource _target = elt.getTarget();
-                  ContainerAspect.createContainer(((Container) _target), _self);
+                  Map<String, String> _containerDependency = MachineVirtualBoxAspect.containerDependency(_self);
+                  ContainerAspect.createContainer(((Container) _target), _self, _containerDependency);
                 }
               };
               IterableExtensions.<Link>forEach(_links_3, _function_2);
@@ -261,7 +277,8 @@ public class MachineVirtualBoxAspect extends MachineAspect {
               final Procedure1<Container> _function_3 = new Procedure1<Container>() {
                 @Override
                 public void apply(final Container c) {
-                  ContainerAspect.createContainer(c, _self);
+                  Map<String, String> _containerDependency = MachineVirtualBoxAspect.containerDependency(_self);
+                  ContainerAspect.createContainer(c, _self, _containerDependency);
                 }
               };
               IterableExtensions.<Container>forEach(_deploymentOrder_1, _function_3);
@@ -406,8 +423,15 @@ public class MachineVirtualBoxAspect extends MachineAspect {
         if (_not) {
           EList<Link> _links_2 = container.getLinks();
           for (final Link cl : _links_2) {
-            Resource _target_1 = cl.getTarget();
-            graph.addDependency(container, ((Container) _target_1));
+            {
+              Resource _target_1 = cl.getTarget();
+              graph.addDependency(container, ((Container) _target_1));
+              Map<String, String> _containerDependency = MachineVirtualBoxAspect.containerDependency(_self);
+              String _name = container.getName();
+              Resource _target_2 = cl.getTarget();
+              String _name_1 = ((Container) _target_2).getName();
+              _containerDependency.put(_name, _name_1);
+            }
           }
         }
       }
@@ -438,6 +462,7 @@ public class MachineVirtualBoxAspect extends MachineAspect {
   protected static void _privk3_synchronize(final MachineVirtualBoxAspectMachine_VirtualBoxAspectProperties _self_, final Machine_VirtualBox _self) {
     final Map<String, String> hosts = DockerUtil.getHosts();
     final ModelHandler instanceMH = new ModelHandler();
+    final DockerContainerManager instance = new DockerContainerManager();
     String _name = _self.getName();
     String _name_1 = _self.getName();
     String _get = hosts.get(_name_1);
@@ -457,6 +482,25 @@ public class MachineVirtualBoxAspect extends MachineAspect {
     				if (m.getName().equals("set" + "IsDeployed")
     						&& m.getParameterTypes().length == 1) {
     					m.invoke(_self, isDeployed);
+    
+    				}
+    			}
+    		} catch (Exception e) {
+    			// Chut !
+    		} 
+  }
+  
+  protected static Map<String, String> _privk3_containerDependency(final MachineVirtualBoxAspectMachine_VirtualBoxAspectProperties _self_, final Machine_VirtualBox _self) {
+     return _self_.containerDependency; 
+  }
+  
+  protected static void _privk3_containerDependency(final MachineVirtualBoxAspectMachine_VirtualBoxAspectProperties _self_, final Machine_VirtualBox _self, final Map<String, String> containerDependency) {
+    _self_.containerDependency = containerDependency; try {
+    
+    			for (java.lang.reflect.Method m : _self.getClass().getMethods()) {
+    				if (m.getName().equals("set" + "ContainerDependency")
+    						&& m.getParameterTypes().length == 1) {
+    					m.invoke(_self, containerDependency);
     
     				}
     			}

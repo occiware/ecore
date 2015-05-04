@@ -7,7 +7,10 @@ import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.xtext.xbase.lib.InputOutput;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.occiware.clouddesigner.OCCI.Configuration;
+import org.occiware.clouddesigner.OCCI.Link;
 import org.occiware.clouddesigner.OCCI.Resource;
 import org.occiware.clouddesigner.occi.docker.Container;
 import org.occiware.clouddesigner.occi.docker.DockerFactory;
@@ -382,6 +385,20 @@ public class DockerAspect {
         if (_not) {
           EList<Resource> _resources = this.configuration.getResources();
           _resources.add(machine);
+          EList<Link> _links = machine.getLinks();
+          boolean _notEquals = (!Objects.equal(_links, null));
+          if (_notEquals) {
+            EList<Link> _links_1 = machine.getLinks();
+            final Procedure1<Link> _function = new Procedure1<Link>() {
+              @Override
+              public void apply(final Link elt) {
+                EList<Resource> _resources = DockerAspect.this.configuration.getResources();
+                Resource _target = elt.getTarget();
+                _resources.add(((Container) _target));
+              }
+            };
+            IterableExtensions.<Link>forEach(_links_1, _function);
+          }
         }
       }
     }

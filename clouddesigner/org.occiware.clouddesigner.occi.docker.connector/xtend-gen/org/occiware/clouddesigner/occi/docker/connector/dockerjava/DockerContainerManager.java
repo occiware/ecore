@@ -11,6 +11,7 @@ import com.github.dockerjava.api.command.StartContainerCmd;
 import com.github.dockerjava.api.command.StopContainerCmd;
 import com.github.dockerjava.api.command.WaitContainerCmd;
 import com.github.dockerjava.api.model.ExposedPort;
+import com.github.dockerjava.api.model.Link;
 import com.github.dockerjava.api.model.LxcConf;
 import com.github.dockerjava.api.model.Ports;
 import com.github.dockerjava.api.model.Volume;
@@ -26,6 +27,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.occiware.clouddesigner.occi.docker.Container;
@@ -37,11 +39,47 @@ import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.Docke
 
 @SuppressWarnings("all")
 public class DockerContainerManager {
+  private DockerClient dockerClient = null;
+  
+  private List<String> images = CollectionLiterals.<String>newArrayList();
+  
+  public DockerContainerManager() {
+  }
+  
+  public DockerContainerManager(final Machine machine) {
+    DockerClient _setConfig = this.setConfig(machine);
+    this.dockerClient = _setConfig;
+  }
+  
   public Map<DockerClient, CreateContainerResponse> createContainer(final Machine machine, final Container container) {
     DockerFactory.eINSTANCE.eClass();
-    final DockerClient dockerClient = this.setConfig(machine);
+    DockerClient dockerClient = null;
+    boolean _notEquals = (!Objects.equal(this.dockerClient, null));
+    if (_notEquals) {
+      dockerClient = this.dockerClient;
+    } else {
+      DockerClient _setConfig = this.setConfig(machine);
+      dockerClient = _setConfig;
+    }
     Map<DockerClient, CreateContainerResponse> result = new LinkedHashMap<DockerClient, CreateContainerResponse>();
     final CreateContainerCmd create = this.containerFactory(container, dockerClient);
+    final CreateContainerResponse rcontainer = create.exec();
+    result.put(dockerClient, rcontainer);
+    return result;
+  }
+  
+  public Map<DockerClient, CreateContainerResponse> createContainer(final Machine machine, final Container container, final Map<String, String> containerDependency) {
+    DockerFactory.eINSTANCE.eClass();
+    DockerClient dockerClient = null;
+    boolean _notEquals = (!Objects.equal(this.dockerClient, null));
+    if (_notEquals) {
+      dockerClient = this.dockerClient;
+    } else {
+      DockerClient _setConfig = this.setConfig(machine);
+      dockerClient = _setConfig;
+    }
+    Map<DockerClient, CreateContainerResponse> result = new LinkedHashMap<DockerClient, CreateContainerResponse>();
+    final CreateContainerCmd create = this.containerFactory(container, dockerClient, containerDependency);
     final CreateContainerResponse rcontainer = create.exec();
     result.put(dockerClient, rcontainer);
     return result;
@@ -184,6 +222,156 @@ public class DockerContainerManager {
     return create;
   }
   
+  public CreateContainerCmd containerFactory(final Container container, final DockerClient dockerClient, final Map<String, String> containerDependency) {
+    CreateContainerCmd create = null;
+    String _image = container.getImage();
+    boolean _notEquals = (!Objects.equal(_image, null));
+    if (_notEquals) {
+      String _image_1 = container.getImage();
+      CreateContainerCmd _createContainerCmd = dockerClient.createContainerCmd(_image_1);
+      create = _createContainerCmd;
+    } else {
+      String _image_2 = container.getImage();
+      boolean _equals = Objects.equal(_image_2, null);
+      if (_equals) {
+        CreateContainerCmd _createContainerCmd_1 = dockerClient.createContainerCmd("busybox");
+        create = _createContainerCmd_1;
+      }
+    }
+    String _command = container.getCommand();
+    boolean _notEquals_1 = (!Objects.equal(_command, null));
+    if (_notEquals_1) {
+      String _command_1 = container.getCommand();
+      final String[] cmd = _command_1.split(",");
+      create.withCmd(cmd);
+    }
+    int _cpu_shares = container.getCpu_shares();
+    boolean _greaterThan = (_cpu_shares > 0);
+    if (_greaterThan) {
+      int _cpu_shares_1 = container.getCpu_shares();
+      create.withCpuShares(_cpu_shares_1);
+    }
+    String _add_host = container.getAdd_host();
+    boolean _notEquals_2 = (!Objects.equal(_add_host, null));
+    if (_notEquals_2) {
+      String _hostname = container.getHostname();
+      create.withHostName(_hostname);
+    }
+    String _cpuset = container.getCpuset();
+    boolean _notEquals_3 = (!Objects.equal(_cpuset, null));
+    if (_notEquals_3) {
+      String _cpuset_1 = container.getCpuset();
+      create.withCpuset(_cpuset_1);
+    }
+    boolean _isPrivileged = container.isPrivileged();
+    if (_isPrivileged) {
+      boolean _isPrivileged_1 = container.isPrivileged();
+      create.withPrivileged(_isPrivileged_1);
+    }
+    String _dns = container.getDns();
+    boolean _notEquals_4 = (!Objects.equal(_dns, null));
+    if (_notEquals_4) {
+      String _dns_1 = container.getDns();
+      create.withDns(_dns_1);
+    }
+    String _environment = container.getEnvironment();
+    boolean _notEquals_5 = (!Objects.equal(_environment, null));
+    if (_notEquals_5) {
+      String _environment_1 = container.getEnvironment();
+      create.withEnv(_environment_1);
+    }
+    String _ports = container.getPorts();
+    boolean _notEquals_6 = (!Objects.equal(_ports, null));
+    if (_notEquals_6) {
+      String _ports_1 = container.getPorts();
+      int _parseInt = Integer.parseInt(_ports_1);
+      ExposedPort port = ExposedPort.tcp(_parseInt);
+      final Ports portBindings = new Ports();
+      Ports.Binding _Binding = Ports.Binding(Integer.valueOf(11022));
+      portBindings.bind(port, _Binding);
+      create.withPortBindings(portBindings);
+    }
+    String _name = container.getName();
+    boolean _notEquals_7 = (!Objects.equal(_name, null));
+    if (_notEquals_7) {
+      String _name_1 = container.getName();
+      create.withName(_name_1);
+    }
+    String _net = container.getNet();
+    boolean _notEquals_8 = (!Objects.equal(_net, null));
+    if (_notEquals_8) {
+      String _net_1 = container.getNet();
+      create.withNetworkMode(_net_1);
+    }
+    boolean _isPublish_all = container.isPublish_all();
+    if (_isPublish_all) {
+      boolean _isPublish_all_1 = container.isPublish_all();
+      create.withPublishAllPorts(_isPublish_all_1);
+    }
+    boolean _isTty = container.isTty();
+    if (_isTty) {
+      boolean _isTty_1 = container.isTty();
+      create.withTty(_isTty_1);
+    }
+    boolean _isStdin_open = container.isStdin_open();
+    if (_isStdin_open) {
+      boolean _isStdin_open_1 = container.isStdin_open();
+      create.withStdInOnce(_isStdin_open_1);
+    }
+    String _user = container.getUser();
+    boolean _notEquals_9 = (!Objects.equal(_user, null));
+    if (_notEquals_9) {
+      String _user_1 = container.getUser();
+      create.withUser(_user_1);
+    }
+    String _volumes = container.getVolumes();
+    boolean _notEquals_10 = (!Objects.equal(_volumes, null));
+    if (_notEquals_10) {
+      String _volumes_1 = container.getVolumes();
+      Volume _volume = new Volume(_volumes_1);
+      create.withVolumes(_volume);
+    }
+    int _mem_limit = container.getMem_limit();
+    boolean _greaterThan_1 = (_mem_limit > 0);
+    if (_greaterThan_1) {
+      int _mem_limit_1 = container.getMem_limit();
+      create.withMemoryLimit(_mem_limit_1);
+    }
+    int _memory_swap = container.getMemory_swap();
+    boolean _greaterThan_2 = (_memory_swap > 0);
+    if (_greaterThan_2) {
+      int _memory_swap_1 = container.getMemory_swap();
+      create.withMemorySwap(_memory_swap_1);
+    }
+    String _lxc_conf = container.getLxc_conf();
+    boolean _notEquals_11 = (!Objects.equal(_lxc_conf, null));
+    if (_notEquals_11) {
+      final LxcConf lxcCon = new LxcConf("key", "value");
+      create.withLxcConf(lxcCon);
+    }
+    int _cores = container.getCores();
+    boolean _greaterThan_3 = (_cores > 0);
+    if (_greaterThan_3) {
+      int _cores_1 = container.getCores();
+      String _valueOf = String.valueOf(_cores_1);
+      create.withCpuset(_valueOf);
+    }
+    String _name_2 = container.getName();
+    boolean _containsKey = containerDependency.containsKey(_name_2);
+    if (_containsKey) {
+      String _name_3 = container.getName();
+      String _get = containerDependency.get(_name_3);
+      String _name_4 = container.getName();
+      String _plus = (_name_4 + "To");
+      String _name_5 = container.getName();
+      String _get_1 = containerDependency.get(_name_5);
+      String _plus_1 = (_plus + _get_1);
+      final Link dockeClientlink = new Link(_get, _plus_1);
+      create.withLinks(dockeClientlink);
+    }
+    return create;
+  }
+  
   public InspectContainerResponse inspectContainer(final Map<DockerClient, CreateContainerResponse> map) {
     Set<DockerClient> _keySet = map.keySet();
     Iterator<DockerClient> _iterator = _keySet.iterator();
@@ -200,7 +388,14 @@ public class DockerContainerManager {
   public Void startContainer(final Machine machine, final Container container) {
     Void _xblockexpression = null;
     {
-      final DockerClient dockerClient = this.setConfig(machine);
+      DockerClient dockerClient = null;
+      boolean _notEquals = (!Objects.equal(this.dockerClient, null));
+      if (_notEquals) {
+        dockerClient = this.dockerClient;
+      } else {
+        DockerClient _setConfig = this.setConfig(machine);
+        dockerClient = _setConfig;
+      }
       String _id = container.getId();
       StartContainerCmd _startContainerCmd = dockerClient.startContainerCmd(_id);
       _xblockexpression = _startContainerCmd.exec();
@@ -211,7 +406,14 @@ public class DockerContainerManager {
   public Void stopContainer(final Machine machine, final Container container) {
     Void _xblockexpression = null;
     {
-      final DockerClient dockerClient = this.setConfig(machine);
+      DockerClient dockerClient = null;
+      boolean _notEquals = (!Objects.equal(this.dockerClient, null));
+      if (_notEquals) {
+        dockerClient = this.dockerClient;
+      } else {
+        DockerClient _setConfig = this.setConfig(machine);
+        dockerClient = _setConfig;
+      }
       String _id = container.getId();
       StopContainerCmd _stopContainerCmd = dockerClient.stopContainerCmd(_id);
       _xblockexpression = _stopContainerCmd.exec();
@@ -222,7 +424,14 @@ public class DockerContainerManager {
   public Integer waitContainer(final Machine machine, final Container container) {
     Integer _xblockexpression = null;
     {
-      final DockerClient dockerClient = this.setConfig(machine);
+      DockerClient dockerClient = null;
+      boolean _notEquals = (!Objects.equal(this.dockerClient, null));
+      if (_notEquals) {
+        dockerClient = this.dockerClient;
+      } else {
+        DockerClient _setConfig = this.setConfig(machine);
+        dockerClient = _setConfig;
+      }
       String _id = container.getId();
       WaitContainerCmd _waitContainerCmd = dockerClient.waitContainerCmd(_id);
       _xblockexpression = _waitContainerCmd.exec();
@@ -231,7 +440,14 @@ public class DockerContainerManager {
   }
   
   public List<com.github.dockerjava.api.model.Container> listContainer(final Machine machine) {
-    final DockerClient dockerClient = this.setConfig(machine);
+    DockerClient dockerClient = null;
+    boolean _notEquals = (!Objects.equal(this.dockerClient, null));
+    if (_notEquals) {
+      dockerClient = this.dockerClient;
+    } else {
+      DockerClient _setConfig = this.setConfig(machine);
+      dockerClient = _setConfig;
+    }
     ListContainersCmd _listContainersCmd = dockerClient.listContainersCmd();
     ListContainersCmd _withShowAll = _listContainersCmd.withShowAll(true);
     final List<com.github.dockerjava.api.model.Container> containers = _withShowAll.exec();
@@ -243,19 +459,33 @@ public class DockerContainerManager {
   }
   
   public DockerClient pullImage(final Machine machine, final String image) {
-    final DockerClient dockerClient = this.setConfig(machine);
+    DockerClient dockerClient = null;
+    boolean _notEquals = (!Objects.equal(this.dockerClient, null));
+    if (_notEquals) {
+      dockerClient = this.dockerClient;
+    } else {
+      DockerClient _setConfig = this.setConfig(machine);
+      dockerClient = _setConfig;
+    }
     String containerImage = image;
-    InputOutput.<String>println(("Downloading image: ->" + containerImage));
     boolean _equals = Objects.equal(image, null);
     if (_equals) {
       containerImage = "busybox";
     }
-    PullImageCmd _pullImageCmd = dockerClient.pullImageCmd(containerImage);
-    PullImageCmd _withTag = _pullImageCmd.withTag("latest");
-    InputStream _exec = _withTag.exec();
-    final String output = DockerUtil.asString(_exec);
-    InputOutput.<String>println(output);
-    InputOutput.<String>println("Download is finished");
+    String output = null;
+    boolean _contains = this.images.contains(containerImage);
+    boolean _not = (!_contains);
+    if (_not) {
+      InputOutput.<String>println(("Downloading image: ->" + containerImage));
+      this.images.add(containerImage);
+      PullImageCmd _pullImageCmd = dockerClient.pullImageCmd(containerImage);
+      PullImageCmd _withTag = _pullImageCmd.withTag("latest");
+      InputStream _exec = _withTag.exec();
+      String _asString = DockerUtil.asString(_exec);
+      output = _asString;
+      InputOutput.<String>println(output);
+      InputOutput.<String>println("Download is finished");
+    }
     return dockerClient;
   }
   

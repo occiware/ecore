@@ -23,25 +23,17 @@ import org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.Mac
 @Aspect(className = Container.class)
 @SuppressWarnings("all")
 public class ContainerAspect {
-  public static Map<DockerClient, CreateContainerResponse> createContainer(final Container _self, final Machine machine) {
+  public static Map<DockerClient, CreateContainerResponse> createContainer(final Container _self, final Machine machine, final Map<String, String> containerDependency) {
     org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.ContainerAspectContainerAspectProperties _self_ = org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.ContainerAspectContainerAspectContext.getSelf(_self);
     Object result = null;
-     if (_self instanceof org.occiware.clouddesigner.occi.docker.Container){
-    result = org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.ContainerAspect._privk3_createContainer(_self_, (org.occiware.clouddesigner.occi.docker.Container)_self,machine);
-    } else  if (_self instanceof org.occiware.clouddesigner.occi.docker.Container){
-    result = org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.ContainerAspect._privk3_createContainer(_self_, (org.occiware.clouddesigner.occi.docker.Container)_self,machine);
-    } else  { throw new IllegalArgumentException("Unhandled parameter types: " + java.util.Arrays.<Object>asList(_self).toString()); };
+    result =_privk3_createContainer(_self_, _self,machine,containerDependency);
     return (java.util.Map<com.github.dockerjava.api.DockerClient, com.github.dockerjava.api.command.CreateContainerResponse>)result;
   }
   
   public static Map<DockerClient, CreateContainerResponse> createContainer(final Container _self, final Container container) {
     org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.ContainerAspectContainerAspectProperties _self_ = org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.ContainerAspectContainerAspectContext.getSelf(_self);
     Object result = null;
-     if (_self instanceof org.occiware.clouddesigner.occi.docker.Container){
-    result = org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.ContainerAspect._privk3_createContainer(_self_, (org.occiware.clouddesigner.occi.docker.Container)_self,container);
-    } else  if (_self instanceof org.occiware.clouddesigner.occi.docker.Container){
-    result = org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.ContainerAspect._privk3_createContainer(_self_, (org.occiware.clouddesigner.occi.docker.Container)_self,container);
-    } else  { throw new IllegalArgumentException("Unhandled parameter types: " + java.util.Arrays.<Object>asList(_self).toString()); };
+    result =_privk3_createContainer(_self_, _self,container);
     return (java.util.Map<com.github.dockerjava.api.DockerClient, com.github.dockerjava.api.command.CreateContainerResponse>)result;
   }
   
@@ -98,14 +90,14 @@ public class ContainerAspect {
     _privk3_map(_self_, _self,map);
   }
   
-  protected static Map<DockerClient, CreateContainerResponse> _privk3_createContainer(final ContainerAspectContainerAspectProperties _self_, final Container _self, final Machine machine) {
+  protected static Map<DockerClient, CreateContainerResponse> _privk3_createContainer(final ContainerAspectContainerAspectProperties _self_, final Container _self, final Machine machine, final Map<String, String> containerDependency) {
     String _name = _self.getName();
     InputOutput.<String>println(_name);
     DockerContainerManager dockercontainerManager = new DockerContainerManager();
     Map<DockerClient, CreateContainerResponse> result = new HashMap<DockerClient, CreateContainerResponse>();
     String _image = _self.getImage();
     dockercontainerManager.pullImage(machine, _image);
-    Map<DockerClient, CreateContainerResponse> _createContainer = dockercontainerManager.createContainer(machine, _self);
+    Map<DockerClient, CreateContainerResponse> _createContainer = dockercontainerManager.createContainer(machine, _self, containerDependency);
     result = _createContainer;
     HashMap<DockerClient, CreateContainerResponse> _hashMap = new HashMap<DockerClient, CreateContainerResponse>(result);
     ContainerAspect.map(_self, _hashMap);

@@ -43,7 +43,7 @@ class DockerMachineTest {
 		// Add Listener
 		val Machine vboxf = instanceDO.listener(machine)
 		
-		//Comparison
+		// Model Comparison
 		val compare = new ModelHandler
 		println(compare.isSimilar(vboxf, vboxf))
 		
