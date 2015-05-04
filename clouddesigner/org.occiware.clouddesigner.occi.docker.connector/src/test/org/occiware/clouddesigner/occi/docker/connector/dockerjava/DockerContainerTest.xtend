@@ -11,6 +11,9 @@ import org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.Doc
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerUtil
 
 import static extension org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.ContainerAspect.*
+import java.util.HashMap
+import com.google.common.collect.Multimap
+import com.google.common.collect.ArrayListMultimap
 
 class DockerContainerTest {
 	def static void main(String[] args) {
@@ -35,21 +38,21 @@ class DockerContainerTest {
 		instance.pullImage(machine, testImage)
 
 		// Create 3 Containers
-		for (i : 0 ..< 3) {
+		for (i : 0 ..< 2) {
 			var map = containerCreate(instanceAspect, testImage, machine)
 
 			// Inspect all containers
 			println(instance.inspectContainer(map))
 		}
 
-		// Start container
-		instanceAspect.container.startContainer()
-
-		// Stop container
-		instanceAspect.container.stopContainer()
-
-		// Wait Container
-		instanceAspect.container.waitContainer()
+//		// Start container
+//		instanceAspect.container.containerStart()
+//
+//		// Stop container
+//		instanceAspect.container.containerStop()
+//
+//		// Wait Container
+//		instanceAspect.container.containerWait()
 
 		// List all container here
 		println("Content: " + machine.links.get(0).target)
@@ -63,7 +66,7 @@ class DockerContainerTest {
 		var container = instanceAspect.loadContainer
 
 		// Set container name
-		container.name = "container-test_" + new SecureRandom().nextInt
+		container.name = "container-test" + new SecureRandom().nextInt
 		container.command = "sleep,9999"
 		container.image = testImage
 
@@ -71,7 +74,7 @@ class DockerContainerTest {
 		var newmachine = instanceAspect.container.linkContainerToMachine(machine) as Machine_VirtualBox
 
 		//Create Container
-		var Map<DockerClient, CreateContainerResponse> map = instanceAspect.container.createContainer(newmachine)
+		var Map<DockerClient, CreateContainerResponse> map = instanceAspect.container.createContainer(newmachine, ArrayListMultimap.create)
 
 		// Save Container
 		instanceAspect.container.save
