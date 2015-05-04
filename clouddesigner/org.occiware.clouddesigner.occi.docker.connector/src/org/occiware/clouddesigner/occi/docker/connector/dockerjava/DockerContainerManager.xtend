@@ -22,6 +22,9 @@ import org.occiware.clouddesigner.occi.docker.Machine
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerMachineManager
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerConfig
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerUtil
+import com.google.common.collect.Multimap
+import java.util.LinkedHashSet
+import java.util.ArrayList
 
 class DockerContainerManager {
 	private DockerClient dockerClient = null
@@ -56,7 +59,7 @@ class DockerContainerManager {
 		return result
 	}
 
-	def createContainer(Machine machine, Container container, Map<String, String> containerDependency) {
+	def createContainer(Machine machine, Container container, Multimap<String, String> containerDependency) {
 
 		// Initialize the model
 		DockerFactory.eINSTANCE.eClass
@@ -169,7 +172,7 @@ class DockerContainerManager {
 		return create
 	}
 
-	def containerFactory(Container container, DockerClient dockerClient, Map<String, String> containerDependency) {
+	def containerFactory(Container container, DockerClient dockerClient, Multimap<String, String> containerDependency) {
 		var CreateContainerCmd create = null
 		if (container.image != null) {
 			create = dockerClient.createContainerCmd(container.image)
@@ -244,19 +247,43 @@ class DockerContainerManager {
 		}
 
 		if (containerDependency.containsKey(container.name)) {
-			val Link dockeClientlink = new Link(
-				containerDependency.get(container.name), container.name + "To" + containerDependency.get(container.name))
-			create.withLinks(dockeClientlink)
-
+			val List<String> depdupeContainers = new ArrayList<String>(
+				new LinkedHashSet<String>(containerDependency.get(container.name)))
+			var List<Link> dockeClientlinks = new ArrayList<Link>
+			var Link dockeClientlink = null
+			for (String entry : depdupeContainers) {
+				dockeClientlink = new Link(entry, container.name + "To" + entry)
+				dockeClientlinks.add(dockeClientlink)
+			}
+			if (depdupeContainers.size > 1) {
+				create.withLinks(dockeClientlinks)
+			} else if (depdupeContainers.size == 1) {
+				create.withLinks(dockeClientlink)
+			}
 		}
 		return create
 	}
 
-	def inspectContainer(Map<DockerClient, CreateContainerResponse> map) {
+	def InspectContainerResponse inspectContainer(Map<DockerClient, CreateContainerResponse> map) {
 		val dockerClient = map.keySet().iterator().next() as DockerClient
 		val createContainerResponse = map.get(dockerClient) as CreateContainerResponse
 		val InspectContainerResponse inspectContainerResponse = dockerClient.inspectContainerCmd(
 			createContainerResponse.getId()).exec();
+		return inspectContainerResponse
+
+	}
+
+	def InspectContainerResponse inspectContainer(Machine machine, String containerId) {
+		var DockerClient dockerClient = null
+
+		// Set dockerClient
+		if (this.dockerClient != null) {
+			dockerClient = this.dockerClient
+		} else {
+			dockerClient = setConfig(machine)
+
+		}
+		val InspectContainerResponse inspectContainerResponse = dockerClient.inspectContainerCmd(containerId).exec();
 		return inspectContainerResponse
 
 	}
@@ -313,15 +340,17 @@ class DockerContainerManager {
 		}
 		val List<com.github.dockerjava.api.model.Container> containers = dockerClient.listContainersCmd().
 			withShowAll(true).exec()
-		for (com.github.dockerjava.api.model.Container c : containers) {
-			for (com.github.dockerjava.api.model.Container.Port p : c.ports) {
-			}
-		}
 
+		//		for (com.github.dockerjava.api.model.Container c : containers) {
+		//			for (com.github.dockerjava.api.model.Container.Port p : c.ports) {
+		//			}
+		//		}
 		return containers
 	}
 
 	def pullImage(Machine machine, String image) {
+
+		println("Image setting: " + image)
 
 		var DockerClient dockerClient = null
 
@@ -331,8 +360,8 @@ class DockerContainerManager {
 		} else {
 			dockerClient = setConfig(machine)
 		}
-		var containerImage = image
-		if (image == null) {
+		var containerImage = "busybox"
+		if (containerImage.equals("")) {
 			containerImage = "busybox"
 		}
 		var String output = null
