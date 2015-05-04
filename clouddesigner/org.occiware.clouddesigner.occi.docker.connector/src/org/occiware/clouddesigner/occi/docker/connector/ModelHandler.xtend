@@ -476,17 +476,32 @@ class ModelHandler {
 			if (vbox.state.toString.equalsIgnoreCase("active")) {
 
 				// Introspect containers
-				val containers = instance.listContainer(vbox)
+				val List<com.github.dockerjava.api.model.Container> containers = instance.listContainer(vbox)
 				if (containers != null) {
-					for (com.github.dockerjava.api.model.Container c : containers) {
-						linkContainerToMachine(getModel(c), vbox)
+					var modelContainers = buildContainer(vbox, containers)
+					for (Container container : modelContainers) {
+						linkContainerToMachine(container, vbox)
+						val inspectContainer = instance.inspectContainer(vbox, container.id)
+						if (!inspectContainer.hostConfig.links.isEmpty) {
+							for (com.github.dockerjava.api.model.Link link : inspectContainer.hostConfig.links) {
+								linkContainerToContainer(container, getContainerByName(modelContainers, link.name))
+
+							}
+						}
 					}
 				}
 
 			}
 
-			//			containers.forEach[container|linkContainerToMachine(getModel(container), vbox)]
 			return vbox
+		}
+	}
+
+	def Container getContainerByName(List<Container> containers, String containerName) {
+		for (Container c : containers) {
+			if (c.name == containerName) {
+				return c
+			}
 		}
 	}
 
@@ -502,7 +517,7 @@ class ModelHandler {
 		}
 	}
 
-	def getModel(com.github.dockerjava.api.model.Container container) {
+	def Container getModel(com.github.dockerjava.api.model.Container container) {
 
 		// Initialize the model
 		DockerFactory.eINSTANCE.eClass
@@ -516,6 +531,62 @@ class ModelHandler {
 		modelContainer.containerid = container.id
 
 		return modelContainer
+	}
+
+	def Container buildContainer(com.github.dockerjava.api.model.Container container) {
+
+		// Retrieve the default factory singleton
+		var modelContainer = DockerFactory.eINSTANCE.createContainer
+		modelContainer.id = container.id
+		if (container.names.get(0) != null) {
+			modelContainer.name = container.names.get(0).replace("/", "")
+		}
+		modelContainer.image = container.image
+		modelContainer.command = container.command
+		modelContainer.containerid = container.id
+
+		return modelContainer
+	}
+
+	def List<Container> buildContainer(List<com.github.dockerjava.api.model.Container> containers) {
+
+		// Retrieve the default factory singleton
+		var List<Container> containerList = newArrayList
+		for (com.github.dockerjava.api.model.Container c : containers) {
+			var modelContainer = DockerFactory.eINSTANCE.createContainer
+			modelContainer.id = c.id
+			if (c.names.get(0) != null) {
+				modelContainer.name = c.names.get(0).replace("/", "")
+			}
+			modelContainer.image = c.image
+			modelContainer.command = c.command
+			modelContainer.containerid = c.id
+			containerList.add(modelContainer)
+		}
+
+		return containerList
+	}
+
+	def List<Container> buildContainer(Machine machine, List<com.github.dockerjava.api.model.Container> containers) {
+		val instance = new DockerContainerManager
+
+		// Retrieve the default factory singleton
+		var List<Container> containerList = newArrayList
+		for (com.github.dockerjava.api.model.Container c : containers) {
+			val currentContainer = instance.inspectContainer(machine, c.id)
+			currentContainer.id
+
+			var modelContainer = DockerFactory.eINSTANCE.createContainer
+			modelContainer.id = c.id
+			modelContainer.name = currentContainer.name.replace("/", "")
+			modelContainer.image = currentContainer.imageId
+			modelContainer.command = c.command
+			modelContainer.containerid = c.id
+			modelContainer.state = ComputeStatus.getByName(currentContainer.state.toString)
+			containerList.add(modelContainer)
+		}
+
+		return containerList
 	}
 
 	def saveMachine(Machine machine) {
@@ -567,7 +638,7 @@ class ModelHandler {
 		resource.save(Collections.EMPTY_MAP) // resource.save(null)
 	}
 
-	def linkContainerToMachine(Container container, Machine machine) {
+	def void linkContainerToMachine(Container container, Machine machine) {
 
 		// Retrieve the default factory singleton
 		var contains = DockerFactory.eINSTANCE.createContains
@@ -575,7 +646,31 @@ class ModelHandler {
 		// Add Container to the Contains
 		contains.target = container
 		machine.links.add(contains)
+	}
+
+	def linkContainerToMachine(List<Container> containers, Machine machine) {
+
+		// Retrieve the default factory singleton
+		var contains = DockerFactory.eINSTANCE.createContains
+		for (Container c : containers) {
+
+			// Add Container to the Contains
+			contains.target = c
+			machine.links.add(contains)
+		}
 		return machine
+	}
+
+	def void linkContainerToContainer(Container left, Container right) {
+
+		// Retrieve the default factory singleton
+		var links = DockerFactory.eINSTANCE.createLink
+
+		// Add Container to the Contains
+		links.target = right
+
+		// Link Container to another
+		left.links.add(links)
 	}
 
 	def isSimilar(Notifier left, Notifier right) {
