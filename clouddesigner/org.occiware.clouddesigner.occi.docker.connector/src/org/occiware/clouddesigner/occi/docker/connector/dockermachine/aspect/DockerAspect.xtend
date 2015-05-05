@@ -905,9 +905,6 @@ class ContainerAspect {
 
 	def Map<DockerClient, CreateContainerResponse> createContainer(Machine machine,
 		Multimap<String, String> containerDependency) {
-		println(_self.name)
-		println("inside createContainer")
-		println(containerDependency)
 		var DockerContainerManager dockercontainerManager = new DockerContainerManager
 
 		// Set dockerClient
