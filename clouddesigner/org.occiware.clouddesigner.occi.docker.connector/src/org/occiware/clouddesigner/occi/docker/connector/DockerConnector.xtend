@@ -588,9 +588,6 @@ class ExecutableContainer extends ContainerImpl {
 	}
 
 	def Machine getCurrentMachine() {
-		println(this.name)
-		println(this.containerid)
-		println(this.eContainer)
 		for (EObject eo : this.eContainer.eContents) {
 			if (eo instanceof Machine) {
 				val machine = eo as Machine
@@ -1327,7 +1324,8 @@ class ExecutableDockerModel {
 	var public Machine_VMware_Fusion machine_VMware_Fusion
 	var public Machine_VMware_vCloud_Air machine_VMware_vCloud_Air
 	var public Machine_VMware_vSphere machine_VMware_vSphere
-
+	
+	new(){}
 	new(Machine machine) {
 		this.machine = machine
 		if (machine instanceof Machine_VirtualBox) {
