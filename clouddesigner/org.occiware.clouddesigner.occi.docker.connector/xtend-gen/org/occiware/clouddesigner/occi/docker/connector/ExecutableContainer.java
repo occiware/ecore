@@ -19,7 +19,6 @@ import java.util.HashMap;
 import java.util.Map;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.occiware.clouddesigner.OCCI.Resource;
 import org.occiware.clouddesigner.occi.docker.Contains;
@@ -146,9 +145,6 @@ public class ExecutableContainer extends ContainerImpl {
   }
   
   public Machine getCurrentMachine() {
-    InputOutput.<String>println(this.name);
-    InputOutput.<String>println(this.containerid);
-    InputOutput.<InternalEObject>println(this.eContainer);
     EList<EObject> _eContents = this.eContainer.eContents();
     for (final EObject eo : _eContents) {
       if ((eo instanceof Machine)) {
