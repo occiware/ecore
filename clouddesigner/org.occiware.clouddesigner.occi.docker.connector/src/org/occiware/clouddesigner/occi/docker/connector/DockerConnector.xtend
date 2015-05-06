@@ -741,18 +741,6 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 		}
 
 		println("EXECUTE COMMAND: " + command.toString)
-
-	// TODO: must be implemented
-	// Start all Docker containers contained by this Docker machine.
-	//		for (Link link : compute.links) {
-	//			if (link instanceof Link) {
-	//				val contains = link as Contains
-	//				if (contains.target instanceof Container) {
-	//					val Container container = contains.target as Container
-	//					container.start()
-	//				}
-	//			}
-	//		}
 	}
 
 	def void synchronize() {
