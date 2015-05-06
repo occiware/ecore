@@ -1,29 +1,25 @@
 package test.org.occiware.clouddesigner.occi.docker.connector.dockerjava
 
-import com.github.dockerjava.api.DockerClient
-import com.github.dockerjava.api.command.CreateContainerResponse
 import java.security.SecureRandom
-import java.util.Map
+import org.occiware.clouddesigner.occi.docker.DockerPackage
 import org.occiware.clouddesigner.occi.docker.Machine_VirtualBox
-import org.occiware.clouddesigner.occi.docker.connector.ModelHandler
+import org.occiware.clouddesigner.occi.docker.connector.ExecutableDockerFactory
+import org.occiware.clouddesigner.occi.docker.connector.ExecutableDockerModel
 import org.occiware.clouddesigner.occi.docker.connector.dockerjava.DockerContainerManager
-import org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.DockerAspect
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerUtil
-
-import static extension org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.ContainerAspect.*
-import java.util.HashMap
-import com.google.common.collect.Multimap
-import com.google.common.collect.ArrayListMultimap
+import org.occiware.clouddesigner.occi.docker.Container
 
 class DockerContainerTest {
 	def static void main(String[] args) {
+
+		// Initialize the executable Docker factory.
+		val init = ExecutableDockerFactory.init()
 		println("Running DockerContainerTest ...")
 		val instance = new DockerContainerManager
-		val instanceMH = new ModelHandler
-		val instanceAspect = new DockerAspect
+		val instanceExecDocker = new ExecutableDockerModel
 
-		// Retrieve the default factory singleton of Machine
-		var machine = instanceAspect.loadMachine_VirtualBox
+		// Obtain the Docker package factory.
+		val machine = DockerPackage.eINSTANCE.getDockerFactory.createMachine_VirtualBox
 
 		// Choose one machine randomly
 		val machineName = DockerUtil.getActiveHost
@@ -37,47 +33,27 @@ class DockerContainerTest {
 		// Download a pre-built image
 		instance.pullImage(machine, testImage)
 
-		// Create 3 Containers
+		// Create 2 Containers
 		for (i : 0 ..< 2) {
-			var map = containerCreate(instanceAspect, testImage, machine)
+			val container = containerCreate(instanceExecDocker, testImage, machine)
+			instance.createContainer(machine, container)
 
-			// Inspect all containers
-			println(instance.inspectContainer(map))
 		}
-
-//		// Start container
-//		instanceAspect.container.containerStart()
-//
-//		// Stop container
-//		instanceAspect.container.containerStop()
-//
-//		// Wait Container
-//		instanceAspect.container.containerWait()
-
-		// List all container here
-		println("Content: " + machine.links.get(0).target)
-
-		// Get model from real
-		val containers = instance.listContainer(machine)
-		containers.forEach[contain|instanceMH.saveContainer(instanceMH.getModel(contain))]
 	}
 
-	def static containerCreate(DockerAspect instanceAspect, String testImage, Machine_VirtualBox machine) {
-		var container = instanceAspect.loadContainer
+	def static Container containerCreate(ExecutableDockerModel instanceExecDocker, String testImage,
+		Machine_VirtualBox machine) {
 
-		// Set container name
+		// Create a container
+		val container = DockerPackage.eINSTANCE.getDockerFactory.createContainer
 		container.name = "container-test" + new SecureRandom().nextInt
 		container.command = "sleep,9999"
 		container.image = testImage
 
-		// Retrieve the default factory singleton of Contains
-		var newmachine = instanceAspect.container.linkContainerToMachine(machine) as Machine_VirtualBox
-
-		//Create Container
-		var Map<DockerClient, CreateContainerResponse> map = instanceAspect.container.createContainer(newmachine, ArrayListMultimap.create)
-
-		// Save Container
-		instanceAspect.container.save
-		return map
+		// Put the Docker container inside the Docker machine.
+		val contains = DockerPackage.eINSTANCE.getDockerFactory.createContains
+		contains.target = container
+		machine.links.add(contains)
+		return container
 	}
 }
