@@ -1,6 +1,7 @@
 package org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect;
 
 import com.google.common.base.Objects;
+import com.google.common.collect.Multimap;
 import fr.inria.diverse.k3.al.annotationprocessor.Aspect;
 import fr.inria.diverse.k3.al.annotationprocessor.OverrideAspectMethod;
 import fr.inria.diverse.k3.al.annotationprocessor.ReplaceAspectMethod;
@@ -8,9 +9,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.occiware.clouddesigner.OCCI.Link;
 import org.occiware.clouddesigner.OCCI.Resource;
@@ -126,14 +130,14 @@ public class MachineVirtualBoxAspect extends MachineAspect {
     _privk3_isDeployed(_self_, _self,isDeployed);
   }
   
-  protected static Map<String, String> containerDependency(final Machine_VirtualBox _self) {
+  protected static Multimap<String, String> containerDependency(final Machine_VirtualBox _self) {
     org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineVirtualBoxAspectMachine_VirtualBoxAspectProperties _self_ = org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineVirtualBoxAspectMachine_VirtualBoxAspectContext.getSelf(_self);
     Object result = null;
     result =_privk3_containerDependency(_self_, _self);
-    return (java.util.Map<java.lang.String, java.lang.String>)result;
+    return (com.google.common.collect.Multimap<java.lang.String, java.lang.String>)result;
   }
   
-  protected static void containerDependency(final Machine_VirtualBox _self, final Map<String, String> containerDependency) {
+  protected static void containerDependency(final Machine_VirtualBox _self, final Multimap<String, String> containerDependency) {
     org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineVirtualBoxAspectMachine_VirtualBoxAspectProperties _self_ = org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineVirtualBoxAspectMachine_VirtualBoxAspectContext.getSelf(_self);
     _privk3_containerDependency(_self_, _self,containerDependency);
   }
@@ -228,21 +232,19 @@ public class MachineVirtualBoxAspect extends MachineAspect {
           if (_not_1) {
             EList<Link> _links_1 = _self.getLinks();
             final Procedure1<Link> _function = new Procedure1<Link>() {
-              @Override
               public void apply(final Link elt) {
                 Resource _target = elt.getTarget();
-                Map<String, String> _containerDependency = MachineVirtualBoxAspect.containerDependency(_self);
+                Multimap<String, String> _containerDependency = MachineVirtualBoxAspect.containerDependency(_self);
                 ContainerAspect.createContainer(((Container) _target), _self, _containerDependency);
               }
             };
             IterableExtensions.<Link>forEach(_links_1, _function);
           } else {
+            final Multimap<String, String> dependencies = MachineVirtualBoxAspect.containerDependency(_self);
             List<Container> _deploymentOrder = MachineVirtualBoxAspect.deploymentOrder(_self);
             final Procedure1<Container> _function_1 = new Procedure1<Container>() {
-              @Override
               public void apply(final Container c) {
-                Map<String, String> _containerDependency = MachineVirtualBoxAspect.containerDependency(_self);
-                ContainerAspect.createContainer(c, _self, _containerDependency);
+                ContainerAspect.createContainer(c, _self, dependencies);
               }
             };
             IterableExtensions.<Container>forEach(_deploymentOrder, _function_1);
@@ -264,10 +266,9 @@ public class MachineVirtualBoxAspect extends MachineAspect {
             if (_not_3) {
               EList<Link> _links_3 = _self.getLinks();
               final Procedure1<Link> _function_2 = new Procedure1<Link>() {
-                @Override
                 public void apply(final Link elt) {
                   Resource _target = elt.getTarget();
-                  Map<String, String> _containerDependency = MachineVirtualBoxAspect.containerDependency(_self);
+                  Multimap<String, String> _containerDependency = MachineVirtualBoxAspect.containerDependency(_self);
                   ContainerAspect.createContainer(((Container) _target), _self, _containerDependency);
                 }
               };
@@ -275,9 +276,8 @@ public class MachineVirtualBoxAspect extends MachineAspect {
             } else {
               List<Container> _deploymentOrder_1 = MachineVirtualBoxAspect.deploymentOrder(_self);
               final Procedure1<Container> _function_3 = new Procedure1<Container>() {
-                @Override
                 public void apply(final Container c) {
-                  Map<String, String> _containerDependency = MachineVirtualBoxAspect.containerDependency(_self);
+                  Multimap<String, String> _containerDependency = MachineVirtualBoxAspect.containerDependency(_self);
                   ContainerAspect.createContainer(c, _self, _containerDependency);
                 }
               };
@@ -370,7 +370,6 @@ public class MachineVirtualBoxAspect extends MachineAspect {
     final List<Container> containers = CollectionLiterals.<Container>newArrayList();
     EList<Link> _links = _self.getLinks();
     final Procedure1<Link> _function = new Procedure1<Link>() {
-      @Override
       public void apply(final Link elt) {
         Resource _target = elt.getTarget();
         containers.add(((Container) _target));
@@ -426,7 +425,7 @@ public class MachineVirtualBoxAspect extends MachineAspect {
             {
               Resource _target_1 = cl.getTarget();
               graph.addDependency(container, ((Container) _target_1));
-              Map<String, String> _containerDependency = MachineVirtualBoxAspect.containerDependency(_self);
+              Multimap<String, String> _containerDependency = MachineVirtualBoxAspect.containerDependency(_self);
               String _name = container.getName();
               Resource _target_2 = cl.getTarget();
               String _name_1 = ((Container) _target_2).getName();
@@ -436,9 +435,15 @@ public class MachineVirtualBoxAspect extends MachineAspect {
         }
       }
     }
+    InputOutput.<String>println("First time");
+    Multimap<String, String> _containerDependency = MachineVirtualBoxAspect.containerDependency(_self);
+    InputOutput.<Multimap<String, String>>println(_containerDependency);
     List<GraphNode<Container>> _deploymentOrder = graph.deploymentOrder();
     for (final GraphNode<Container> c : _deploymentOrder) {
-      containers.add(c.value);
+      {
+        containers.add(c.value);
+        InputOutput.<String>println(("--->" + c.value));
+      }
     }
     List<Container> _leafContainers = MachineVirtualBoxAspect.leafContainers(_self);
     for (final Container standaloneContainer : _leafContainers) {
@@ -449,7 +454,6 @@ public class MachineVirtualBoxAspect extends MachineAspect {
       }
     }
     final Procedure1<Container> _function = new Procedure1<Container>() {
-      @Override
       public void apply(final Container c) {
         String _name = c.getName();
         InputOutput.<String>println(_name);
@@ -469,6 +473,45 @@ public class MachineVirtualBoxAspect extends MachineAspect {
     final Machine machine = instanceMH.getModel(_name, _get);
     ComputeStatus _state = machine.getState();
     _self.setState(_state);
+    ComputeStatus _state_1 = _self.getState();
+    String _string = _state_1.toString();
+    boolean _equalsIgnoreCase = _string.equalsIgnoreCase("active");
+    if (_equalsIgnoreCase) {
+      final List<com.github.dockerjava.api.model.Container> contains = instance.listContainer(machine);
+      boolean _notEquals = (!Objects.equal(contains, null));
+      if (_notEquals) {
+        final List<Container> modelContainers = instanceMH.buildContainer(_self, contains);
+        for (final Container container : modelContainers) {
+          ContainerAspect.linkContainerToMachine(container, _self);
+        }
+        EList<Link> _links = _self.getLinks();
+        boolean _notEquals_1 = (!Objects.equal(_links, null));
+        if (_notEquals_1) {
+          EList<Link> _links_1 = _self.getLinks();
+          final Procedure1<Link> _function = new Procedure1<Link>() {
+            public void apply(final Link elt) {
+              Resource _target = elt.getTarget();
+              String _name = ((Container) _target).getName();
+              InputOutput.<String>println(_name);
+            }
+          };
+          IterableExtensions.<Link>forEach(_links_1, _function);
+          EList<Link> _links_2 = _self.getLinks();
+          final Procedure1<Link> _function_1 = new Procedure1<Link>() {
+            public void apply(final Link elt) {
+              EObject _eContainer = _self.eContainer();
+              org.eclipse.emf.ecore.resource.Resource _eResource = _eContainer.eResource();
+              TreeIterator<EObject> _allContents = _eResource.getAllContents();
+              List<EObject> _list = IteratorExtensions.<EObject>toList(_allContents);
+              Resource _target = elt.getTarget();
+              boolean _add = _list.add(((Container) _target));
+              InputOutput.<Boolean>println(Boolean.valueOf(_add));
+            }
+          };
+          IterableExtensions.<Link>forEach(_links_2, _function_1);
+        }
+      }
+    }
   }
   
   protected static boolean _privk3_isDeployed(final MachineVirtualBoxAspectMachine_VirtualBoxAspectProperties _self_, final Machine_VirtualBox _self) {
@@ -490,11 +533,11 @@ public class MachineVirtualBoxAspect extends MachineAspect {
     		} 
   }
   
-  protected static Map<String, String> _privk3_containerDependency(final MachineVirtualBoxAspectMachine_VirtualBoxAspectProperties _self_, final Machine_VirtualBox _self) {
+  protected static Multimap<String, String> _privk3_containerDependency(final MachineVirtualBoxAspectMachine_VirtualBoxAspectProperties _self_, final Machine_VirtualBox _self) {
      return _self_.containerDependency; 
   }
   
-  protected static void _privk3_containerDependency(final MachineVirtualBoxAspectMachine_VirtualBoxAspectProperties _self_, final Machine_VirtualBox _self, final Map<String, String> containerDependency) {
+  protected static void _privk3_containerDependency(final MachineVirtualBoxAspectMachine_VirtualBoxAspectProperties _self_, final Machine_VirtualBox _self, final Multimap<String, String> containerDependency) {
     _self_.containerDependency = containerDependency; try {
     
     			for (java.lang.reflect.Method m : _self.getClass().getMethods()) {

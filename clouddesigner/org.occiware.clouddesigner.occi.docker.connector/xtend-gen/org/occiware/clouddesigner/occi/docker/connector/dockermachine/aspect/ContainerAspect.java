@@ -3,12 +3,12 @@ package org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect;
 import com.github.dockerjava.api.DockerClient;
 import com.github.dockerjava.api.command.CreateContainerResponse;
 import com.google.common.base.Objects;
+import com.google.common.collect.Multimap;
 import fr.inria.diverse.k3.al.annotationprocessor.Aspect;
 import java.util.HashMap;
 import java.util.Map;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.occiware.clouddesigner.OCCI.Link;
 import org.occiware.clouddesigner.OCCI.Resource;
 import org.occiware.clouddesigner.occi.docker.Container;
@@ -19,11 +19,12 @@ import org.occiware.clouddesigner.occi.docker.connector.ModelHandler;
 import org.occiware.clouddesigner.occi.docker.connector.dockerjava.DockerContainerManager;
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.ContainerAspectContainerAspectProperties;
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineAspect;
+import org.occiware.clouddesigner.occi.infrastructure.ComputeStatus;
 
 @Aspect(className = Container.class)
 @SuppressWarnings("all")
 public class ContainerAspect {
-  public static Map<DockerClient, CreateContainerResponse> createContainer(final Container _self, final Machine machine, final Map<String, String> containerDependency) {
+  public static Map<DockerClient, CreateContainerResponse> createContainer(final Container _self, final Machine machine, final Multimap<String, String> containerDependency) {
     org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.ContainerAspectContainerAspectProperties _self_ = org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.ContainerAspectContainerAspectContext.getSelf(_self);
     Object result = null;
     result =_privk3_createContainer(_self_, _self,machine,containerDependency);
@@ -90,9 +91,7 @@ public class ContainerAspect {
     _privk3_map(_self_, _self,map);
   }
   
-  protected static Map<DockerClient, CreateContainerResponse> _privk3_createContainer(final ContainerAspectContainerAspectProperties _self_, final Container _self, final Machine machine, final Map<String, String> containerDependency) {
-    String _name = _self.getName();
-    InputOutput.<String>println(_name);
+  protected static Map<DockerClient, CreateContainerResponse> _privk3_createContainer(final ContainerAspectContainerAspectProperties _self_, final Container _self, final Machine machine, final Multimap<String, String> containerDependency) {
     DockerContainerManager dockercontainerManager = new DockerContainerManager();
     Map<DockerClient, CreateContainerResponse> result = new HashMap<DockerClient, CreateContainerResponse>();
     String _image = _self.getImage();
@@ -129,17 +128,19 @@ public class ContainerAspect {
   }
   
   protected static Container _privk3_linkContainerToContainer(final ContainerAspectContainerAspectProperties _self_, final Container _self, final Container container) {
-    Contains contains = DockerFactory.eINSTANCE.createContains();
-    contains.setTarget(container);
+    org.occiware.clouddesigner.occi.docker.Link links = DockerFactory.eINSTANCE.createLink();
+    links.setTarget(container);
     EList<Link> _links = _self.getLinks();
-    _links.add(contains);
+    _links.add(links);
     return container;
   }
   
   protected static void _privk3_containerStart(final ContainerAspectContainerAspectProperties _self_, final Container _self) {
     final Machine machine = ContainerAspect.getCurrentMachine(_self);
-    boolean _isDeployed = MachineAspect.isDeployed(machine);
-    if (_isDeployed) {
+    ComputeStatus _state = machine.getState();
+    String _string = _state.toString();
+    boolean _equalsIgnoreCase = _string.equalsIgnoreCase("active");
+    if (_equalsIgnoreCase) {
       final DockerContainerManager dockerContainerManager = new DockerContainerManager();
       dockerContainerManager.startContainer(machine, _self);
     }

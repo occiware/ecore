@@ -42,7 +42,6 @@ public class DockerMachineTest {
     final Map<String, String> hosts = DockerUtil.getHosts();
     InputOutput.<Map<String, String>>println(hosts);
     final Procedure2<String, String> _function = new Procedure2<String, String>() {
-      @Override
       public void apply(final String k, final String v) {
         Machine _model = instanceMH.getModel(k, v);
         instanceMH.saveMachine(_model);

@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.occiware.clouddesigner.occi.docker.connector.dockerjava.graph.GraphNode;
 import org.occiware.clouddesigner.occi.docker.connector.dockerjava.graph.NodeValueListener;
 
@@ -145,6 +146,11 @@ public class Graph<T extends Object> {
   
   public List<GraphNode<T>> deploymentOrder() {
     List<GraphNode<T>> currentNodes = this.getLeafNodes();
+    List<GraphNode<T>> orphnanNodes = this.getOrphanNodes();
+    List<GraphNode<T>> _orphanNodes = this.getOrphanNodes();
+    for (final GraphNode<T> m : _orphanNodes) {
+      InputOutput.<T>println(m.value);
+    }
     List<GraphNode<T>> newleafNodes = new ArrayList<GraphNode<T>>();
     while ((!currentNodes.isEmpty())) {
       {
@@ -152,8 +158,9 @@ public class Graph<T extends Object> {
           List<GraphNode<T>> _comingInNodes = g.getComingInNodes();
           boolean _notEquals = (!Objects.equal(_comingInNodes, null));
           if (_notEquals) {
-            List<GraphNode<T>> _comingInNodes_1 = g.getComingInNodes();
-            ArrayList<GraphNode<T>> _arrayList = new ArrayList<GraphNode<T>>(_comingInNodes_1);
+            final List<GraphNode<T>> realLeafs = g.getComingInNodes();
+            realLeafs.removeAll(orphnanNodes);
+            ArrayList<GraphNode<T>> _arrayList = new ArrayList<GraphNode<T>>(realLeafs);
             newleafNodes.addAll(_arrayList);
           }
         }
@@ -168,6 +175,13 @@ public class Graph<T extends Object> {
         currentNodes = _arrayList_1;
         ArrayList<GraphNode<T>> _arrayList_2 = new ArrayList<GraphNode<T>>();
         newleafNodes = _arrayList_2;
+      }
+    }
+    for (final GraphNode<T> n : orphnanNodes) {
+      boolean _contains = this.deploymentOrder.contains(n);
+      boolean _not = (!_contains);
+      if (_not) {
+        this.deploymentOrder.add(n);
       }
     }
     return this.deploymentOrder;

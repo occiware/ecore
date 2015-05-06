@@ -7,10 +7,12 @@
  * 
  * Contributors:
  * - Philippe Merle - Inria
+ * - Fawaz PARAISO -Inria
  */
 package org.occiware.clouddesigner.occi.docker.connector;
 
 import com.google.common.base.Objects;
+import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.occiware.clouddesigner.occi.infrastructure.Compute;
 import org.occiware.clouddesigner.occi.infrastructure.ComputeStatus;
 import org.occiware.clouddesigner.occi.infrastructure.RestartMethod;
@@ -43,14 +45,14 @@ public class ComputeStateMachine<T extends Compute> {
     String _plus = (_name + ":start() - current state is ");
     ComputeStatus _state = this.compute.getState();
     String _plus_1 = (_plus + _state);
-    System.out.println(_plus_1);
+    InputOutput.<String>println(_plus_1);
     ComputeStatus _state_1 = this.compute.getState();
     boolean _equals = Objects.equal(_state_1, ComputeStatus.INACTIVE);
     if (_equals) {
       Class<? extends ComputeStateMachine> _class_1 = this.getClass();
       String _name_1 = _class_1.getName();
       String _plus_2 = (_name_1 + ":start() - move from inactive to active state");
-      System.out.println(_plus_2);
+      InputOutput.<String>println(_plus_2);
       this.start_from_inactive_state();
       this.compute.setState(ComputeStatus.ACTIVE);
     } else {
@@ -60,7 +62,7 @@ public class ComputeStateMachine<T extends Compute> {
         Class<? extends ComputeStateMachine> _class_2 = this.getClass();
         String _name_2 = _class_2.getName();
         String _plus_3 = (_name_2 + ":start() - already active state");
-        System.out.println(_plus_3);
+        InputOutput.<String>println(_plus_3);
         this.start_from_active_state();
       } else {
         ComputeStatus _state_3 = this.compute.getState();
@@ -69,7 +71,7 @@ public class ComputeStateMachine<T extends Compute> {
           Class<? extends ComputeStateMachine> _class_3 = this.getClass();
           String _name_3 = _class_3.getName();
           String _plus_4 = (_name_3 + ":start() - move from suspended to active state");
-          System.out.println(_plus_4);
+          InputOutput.<String>println(_plus_4);
           this.start_from_suspended_state();
           this.compute.setState(ComputeStatus.ACTIVE);
         } else {
@@ -82,7 +84,63 @@ public class ComputeStateMachine<T extends Compute> {
     String _plus_5 = (_name_4 + ":start() - final state is ");
     ComputeStatus _state_4 = this.compute.getState();
     String _plus_6 = (_plus_5 + _state_4);
-    System.out.println(_plus_6);
+    InputOutput.<String>println(_plus_6);
+    ComputeStatus _state_5 = this.compute.getState();
+    boolean _notEquals = (!Objects.equal(_state_5, ComputeStatus.ACTIVE));
+    if (_notEquals) {
+      throw new RuntimeException("Must never happen!");
+    }
+  }
+  
+  /**
+   * StartAll Modeler Action.
+   */
+  public void startAll() {
+    Class<? extends ComputeStateMachine> _class = this.getClass();
+    String _name = _class.getName();
+    String _plus = (_name + ":start() - current state is ");
+    ComputeStatus _state = this.compute.getState();
+    String _plus_1 = (_plus + _state);
+    InputOutput.<String>println(_plus_1);
+    ComputeStatus _state_1 = this.compute.getState();
+    boolean _equals = Objects.equal(_state_1, ComputeStatus.INACTIVE);
+    if (_equals) {
+      Class<? extends ComputeStateMachine> _class_1 = this.getClass();
+      String _name_1 = _class_1.getName();
+      String _plus_2 = (_name_1 + ":start() - move from inactive to active state");
+      InputOutput.<String>println(_plus_2);
+      this.startAll_from_inactive_state();
+      this.compute.setState(ComputeStatus.ACTIVE);
+    } else {
+      ComputeStatus _state_2 = this.compute.getState();
+      boolean _equals_1 = Objects.equal(_state_2, ComputeStatus.ACTIVE);
+      if (_equals_1) {
+        Class<? extends ComputeStateMachine> _class_2 = this.getClass();
+        String _name_2 = _class_2.getName();
+        String _plus_3 = (_name_2 + ":start() - already active state");
+        InputOutput.<String>println(_plus_3);
+        this.start_from_active_state();
+      } else {
+        ComputeStatus _state_3 = this.compute.getState();
+        boolean _equals_2 = Objects.equal(_state_3, ComputeStatus.SUSPENDED);
+        if (_equals_2) {
+          Class<? extends ComputeStateMachine> _class_3 = this.getClass();
+          String _name_3 = _class_3.getName();
+          String _plus_4 = (_name_3 + ":start() - move from suspended to active state");
+          InputOutput.<String>println(_plus_4);
+          this.start_from_suspended_state();
+          this.compute.setState(ComputeStatus.ACTIVE);
+        } else {
+          throw new RuntimeException("Must never happen!");
+        }
+      }
+    }
+    Class<? extends ComputeStateMachine> _class_4 = this.getClass();
+    String _name_4 = _class_4.getName();
+    String _plus_5 = (_name_4 + ":start() - final state is ");
+    ComputeStatus _state_4 = this.compute.getState();
+    String _plus_6 = (_plus_5 + _state_4);
+    InputOutput.<String>println(_plus_6);
     ComputeStatus _state_5 = this.compute.getState();
     boolean _notEquals = (!Objects.equal(_state_5, ComputeStatus.ACTIVE));
     if (_notEquals) {
@@ -99,16 +157,20 @@ public class ComputeStateMachine<T extends Compute> {
     this.start_execute();
   }
   
+  public void startAll_from_inactive_state() {
+    this.startAll_execute();
+  }
+  
   /**
    * This method implements the transition from active state for the start action.
    * 
    * By default, this method does nothing.
    */
-  public void start_from_active_state() {
+  public String start_from_active_state() {
     Class<? extends ComputeStateMachine> _class = this.getClass();
     String _name = _class.getName();
     String _plus = (_name + ":start_from_active_state() - DO NOTHING");
-    System.out.println(_plus);
+    return InputOutput.<String>println(_plus);
   }
   
   /**
@@ -127,7 +189,14 @@ public class ComputeStateMachine<T extends Compute> {
     Class<? extends ComputeStateMachine> _class = this.getClass();
     String _name = _class.getName();
     String _plus = (_name + ":start_execute() - DO NOTHING");
-    System.out.println(_plus);
+    InputOutput.<String>println(_plus);
+  }
+  
+  public void startAll_execute() {
+    Class<? extends ComputeStateMachine> _class = this.getClass();
+    String _name = _class.getName();
+    String _plus = (_name + ":startAll_execute() - DO NOTHING");
+    InputOutput.<String>println(_plus);
   }
   
   /**
@@ -141,14 +210,14 @@ public class ComputeStateMachine<T extends Compute> {
     String _plus_2 = (_plus_1 + ") - current state is ");
     ComputeStatus _state = this.compute.getState();
     String _plus_3 = (_plus_2 + _state);
-    System.out.println(_plus_3);
+    InputOutput.<String>println(_plus_3);
     ComputeStatus _state_1 = this.compute.getState();
     boolean _equals = Objects.equal(_state_1, ComputeStatus.INACTIVE);
     if (_equals) {
       Class<? extends ComputeStateMachine> _class_1 = this.getClass();
       String _name_1 = _class_1.getName();
       String _plus_4 = (_name_1 + ":stop() - already inactive state");
-      System.out.println(_plus_4);
+      InputOutput.<String>println(_plus_4);
       this.stop_from_inactive_state(method);
     } else {
       ComputeStatus _state_2 = this.compute.getState();
@@ -157,7 +226,7 @@ public class ComputeStateMachine<T extends Compute> {
         Class<? extends ComputeStateMachine> _class_2 = this.getClass();
         String _name_2 = _class_2.getName();
         String _plus_5 = (_name_2 + ":stop() - move from active to inactive state");
-        System.out.println(_plus_5);
+        InputOutput.<String>println(_plus_5);
         this.stop_from_active_state(method);
         this.compute.setState(ComputeStatus.INACTIVE);
       } else {
@@ -167,7 +236,7 @@ public class ComputeStateMachine<T extends Compute> {
           Class<? extends ComputeStateMachine> _class_3 = this.getClass();
           String _name_3 = _class_3.getName();
           String _plus_6 = (_name_3 + ":stop() - move from suspended to inactive state");
-          System.out.println(_plus_6);
+          InputOutput.<String>println(_plus_6);
           this.stop_from_suspended_state(method);
           this.compute.setState(ComputeStatus.INACTIVE);
         } else {
@@ -180,7 +249,7 @@ public class ComputeStateMachine<T extends Compute> {
     String _plus_7 = (_name_4 + ":stop() - final state is ");
     ComputeStatus _state_4 = this.compute.getState();
     String _plus_8 = (_plus_7 + _state_4);
-    System.out.println(_plus_8);
+    InputOutput.<String>println(_plus_8);
     ComputeStatus _state_5 = this.compute.getState();
     boolean _notEquals = (!Objects.equal(_state_5, ComputeStatus.INACTIVE));
     if (_notEquals) {
@@ -193,11 +262,11 @@ public class ComputeStateMachine<T extends Compute> {
    * 
    * By default, this method does nothing.
    */
-  public void stop_from_inactive_state(final StopMethod method) {
+  public String stop_from_inactive_state(final StopMethod method) {
     Class<? extends ComputeStateMachine> _class = this.getClass();
     String _name = _class.getName();
     String _plus = (_name + ":stop_from_inactive_state() - DO NOTHING");
-    System.out.println(_plus);
+    return InputOutput.<String>println(_plus);
   }
   
   /**
@@ -227,7 +296,7 @@ public class ComputeStateMachine<T extends Compute> {
     String _plus = (_name + ":stop_execute(");
     String _plus_1 = (_plus + method);
     String _plus_2 = (_plus_1 + ") - DO NOTHING");
-    System.out.println(_plus_2);
+    InputOutput.<String>println(_plus_2);
   }
   
   /**
@@ -241,7 +310,7 @@ public class ComputeStateMachine<T extends Compute> {
     String _plus_2 = (_plus_1 + ") - current state is ");
     ComputeStatus _state = this.compute.getState();
     String _plus_3 = (_plus_2 + _state);
-    System.out.println(_plus_3);
+    InputOutput.<String>println(_plus_3);
     ComputeStatus _state_1 = this.compute.getState();
     boolean _equals = Objects.equal(_state_1, ComputeStatus.INACTIVE);
     if (_equals) {
@@ -251,7 +320,7 @@ public class ComputeStateMachine<T extends Compute> {
       String _plus_5 = (_plus_4 + method);
       String _plus_6 = (_plus_5 + ")");
       String _plus_7 = (_plus_6 + " - move from inactive to active state");
-      System.out.println(_plus_7);
+      InputOutput.<String>println(_plus_7);
       this.restart_from_inactive_state(method);
       this.compute.setState(ComputeStatus.ACTIVE);
     } else {
@@ -264,7 +333,7 @@ public class ComputeStateMachine<T extends Compute> {
         String _plus_9 = (_plus_8 + method);
         String _plus_10 = (_plus_9 + ")");
         String _plus_11 = (_plus_10 + " - move from active to active state");
-        System.out.println(_plus_11);
+        InputOutput.<String>println(_plus_11);
         this.restart_from_active_state(method);
         this.compute.setState(ComputeStatus.ACTIVE);
       } else {
@@ -274,7 +343,7 @@ public class ComputeStateMachine<T extends Compute> {
           Class<? extends ComputeStateMachine> _class_3 = this.getClass();
           String _name_3 = _class_3.getName();
           String _plus_12 = (_name_3 + ":stop() - move from suspended to active state");
-          System.out.println(_plus_12);
+          InputOutput.<String>println(_plus_12);
           this.restart_from_suspended_state(method);
           this.compute.setState(ComputeStatus.ACTIVE);
         } else {
@@ -290,7 +359,7 @@ public class ComputeStateMachine<T extends Compute> {
     String _plus_16 = (_plus_15 + " - final state is ");
     ComputeStatus _state_4 = this.compute.getState();
     String _plus_17 = (_plus_16 + _state_4);
-    System.out.println(_plus_17);
+    InputOutput.<String>println(_plus_17);
     ComputeStatus _state_5 = this.compute.getState();
     boolean _notEquals = (!Objects.equal(_state_5, ComputeStatus.ACTIVE));
     if (_notEquals) {
@@ -334,7 +403,7 @@ public class ComputeStateMachine<T extends Compute> {
     String _plus = (_name + ":restart_execute(");
     String _plus_1 = (_plus + method);
     String _plus_2 = (_plus_1 + ") - DO NOTHING");
-    System.out.println(_plus_2);
+    InputOutput.<String>println(_plus_2);
   }
   
   /**
@@ -348,14 +417,14 @@ public class ComputeStateMachine<T extends Compute> {
     String _plus_2 = (_plus_1 + ") - current state is ");
     ComputeStatus _state = this.compute.getState();
     String _plus_3 = (_plus_2 + _state);
-    System.out.println(_plus_3);
+    InputOutput.<String>println(_plus_3);
     ComputeStatus _state_1 = this.compute.getState();
     boolean _equals = Objects.equal(_state_1, ComputeStatus.INACTIVE);
     if (_equals) {
       Class<? extends ComputeStateMachine> _class_1 = this.getClass();
       String _name_1 = _class_1.getName();
       String _plus_4 = (_name_1 + ":suspend() - move from inactive to suspended state");
-      System.out.println(_plus_4);
+      InputOutput.<String>println(_plus_4);
       this.suspend_from_inactive_state(method);
       this.compute.setState(ComputeStatus.SUSPENDED);
     } else {
@@ -365,7 +434,7 @@ public class ComputeStateMachine<T extends Compute> {
         Class<? extends ComputeStateMachine> _class_2 = this.getClass();
         String _name_2 = _class_2.getName();
         String _plus_5 = (_name_2 + ":suspend() - move from active to suspended state");
-        System.out.println(_plus_5);
+        InputOutput.<String>println(_plus_5);
         this.suspend_from_active_state(method);
         this.compute.setState(ComputeStatus.SUSPENDED);
       } else {
@@ -375,7 +444,7 @@ public class ComputeStateMachine<T extends Compute> {
           Class<? extends ComputeStateMachine> _class_3 = this.getClass();
           String _name_3 = _class_3.getName();
           String _plus_6 = (_name_3 + ":suspend() - already suspended state");
-          System.out.println(_plus_6);
+          InputOutput.<String>println(_plus_6);
           this.suspend_from_suspended_state(method);
         } else {
           throw new RuntimeException("Must never happen!");
@@ -387,7 +456,7 @@ public class ComputeStateMachine<T extends Compute> {
     String _plus_7 = (_name_4 + ":suspend() - final state is ");
     ComputeStatus _state_4 = this.compute.getState();
     String _plus_8 = (_plus_7 + _state_4);
-    System.out.println(_plus_8);
+    InputOutput.<String>println(_plus_8);
     ComputeStatus _state_5 = this.compute.getState();
     boolean _notEquals = (!Objects.equal(_state_5, ComputeStatus.SUSPENDED));
     if (_notEquals) {
@@ -418,11 +487,11 @@ public class ComputeStateMachine<T extends Compute> {
    * 
    * By default, this method does nothing.
    */
-  public void suspend_from_suspended_state(final SuspendMethod method) {
+  public String suspend_from_suspended_state(final SuspendMethod method) {
     Class<? extends ComputeStateMachine> _class = this.getClass();
     String _name = _class.getName();
     String _plus = (_name + ":suspend_from_suspended_state() - DO NOTHING");
-    System.out.println(_plus);
+    return InputOutput.<String>println(_plus);
   }
   
   /**
@@ -434,6 +503,6 @@ public class ComputeStateMachine<T extends Compute> {
     String _plus = (_name + ":suspend_execute(");
     String _plus_1 = (_plus + method);
     String _plus_2 = (_plus_1 + ") - DO NOTHING");
-    System.out.println(_plus_2);
+    InputOutput.<String>println(_plus_2);
   }
 }

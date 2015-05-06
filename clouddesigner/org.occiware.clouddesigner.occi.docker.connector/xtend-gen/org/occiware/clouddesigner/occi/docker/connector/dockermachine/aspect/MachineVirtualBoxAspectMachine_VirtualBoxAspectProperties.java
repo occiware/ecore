@@ -1,11 +1,11 @@
 package org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect;
 
-import java.util.HashMap;
-import java.util.Map;
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Multimap;
 
 @SuppressWarnings("all")
 public class MachineVirtualBoxAspectMachine_VirtualBoxAspectProperties {
   public boolean isDeployed = false;
   
-  public Map<String, String> containerDependency = new HashMap<String, String>();
+  public Multimap<String, String> containerDependency = ArrayListMultimap.<String, String>create();
 }

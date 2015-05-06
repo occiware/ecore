@@ -7,6 +7,7 @@
  * 
  * Contributors:
  * - Philippe Merle - Inria
+ * - Fawaz PARAISO -Inria
  */
 package org.occiware.clouddesigner.occi.docker.connector;
 
@@ -26,12 +27,10 @@ public class ExecutableMachine_VirtualBox extends Machine_VirtualBoxImpl {
    * The machine manager.
    */
   private final MachineManager manager = new MachineManager(this) {
-    @Override
     public String getDriverName() {
       return "virtualbox";
     }
     
-    @Override
     public void appendDriverParameters(final StringBuilder sb) {
       if ((ExecutableMachine_VirtualBox.this.disk_size > 0)) {
         StringBuilder _append = sb.append(" --virtualbox-disk-size ");
@@ -63,23 +62,27 @@ public class ExecutableMachine_VirtualBox extends Machine_VirtualBoxImpl {
     }
   };
   
-  @Override
   public void start() {
     this.manager.start();
   }
   
-  @Override
+  public void startAll() {
+    this.manager.startAll();
+  }
+  
   public void stop(final StopMethod method) {
     this.manager.stop(method);
   }
   
-  @Override
   public void restart(final RestartMethod method) {
     this.manager.restart(method);
   }
   
-  @Override
   public void suspend(final SuspendMethod method) {
     this.manager.suspend(method);
+  }
+  
+  public void synchronize() {
+    this.manager.synchronize();
   }
 }

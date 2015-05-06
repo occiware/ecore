@@ -1,6 +1,9 @@
 package org.occiware.clouddesigner.occi.docker.connector;
 
+import com.github.dockerjava.api.command.InspectContainerResponse;
 import com.github.dockerjava.api.model.Container;
+import com.github.dockerjava.api.model.HostConfig;
+import com.github.dockerjava.api.model.Link;
 import com.google.common.base.Objects;
 import java.io.BufferedReader;
 import java.io.File;
@@ -55,9 +58,10 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.XMIResource;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.InputOutput;
-import org.occiware.clouddesigner.OCCI.Link;
 import org.occiware.clouddesigner.occi.docker.Contains;
 import org.occiware.clouddesigner.occi.docker.DockerFactory;
 import org.occiware.clouddesigner.occi.docker.DockerPackage;
@@ -694,13 +698,41 @@ public class ModelHandler {
         final List<Container> containers = instance.listContainer(vbox);
         boolean _notEquals_1 = (!Objects.equal(containers, null));
         if (_notEquals_1) {
-          for (final Container c : containers) {
-            org.occiware.clouddesigner.occi.docker.Container _model = this.getModel(c);
-            this.linkContainerToMachine(_model, vbox);
+          List<org.occiware.clouddesigner.occi.docker.Container> modelContainers = this.buildContainer(vbox, containers);
+          for (final org.occiware.clouddesigner.occi.docker.Container container : modelContainers) {
+            {
+              this.linkContainerToMachine(container, vbox);
+              String _id = container.getId();
+              final InspectContainerResponse inspectContainer = instance.inspectContainer(vbox, _id);
+              HostConfig _hostConfig = inspectContainer.getHostConfig();
+              Link[] _links = _hostConfig.getLinks();
+              boolean _isEmpty = ((List<Link>)Conversions.doWrapArray(_links)).isEmpty();
+              boolean _not = (!_isEmpty);
+              if (_not) {
+                HostConfig _hostConfig_1 = inspectContainer.getHostConfig();
+                Link[] _links_1 = _hostConfig_1.getLinks();
+                for (final Link link : _links_1) {
+                  String _name = link.getName();
+                  org.occiware.clouddesigner.occi.docker.Container _containerByName = this.getContainerByName(modelContainers, _name);
+                  this.linkContainerToContainer(container, _containerByName);
+                }
+              }
+            }
           }
         }
       }
       return vbox;
+    }
+    return null;
+  }
+  
+  public org.occiware.clouddesigner.occi.docker.Container getContainerByName(final List<org.occiware.clouddesigner.occi.docker.Container> containers, final String containerName) {
+    for (final org.occiware.clouddesigner.occi.docker.Container c : containers) {
+      String _name = c.getName();
+      boolean _equals = Objects.equal(_name, containerName);
+      if (_equals) {
+        return c;
+      }
     }
     return null;
   }
@@ -748,6 +780,86 @@ public class ModelHandler {
     String _id_1 = container.getId();
     modelContainer.setContainerid(_id_1);
     return modelContainer;
+  }
+  
+  public org.occiware.clouddesigner.occi.docker.Container buildContainer(final Container container) {
+    org.occiware.clouddesigner.occi.docker.Container modelContainer = DockerFactory.eINSTANCE.createContainer();
+    String _id = container.getId();
+    modelContainer.setId(_id);
+    String[] _names = container.getNames();
+    String _get = _names[0];
+    boolean _notEquals = (!Objects.equal(_get, null));
+    if (_notEquals) {
+      String[] _names_1 = container.getNames();
+      String _get_1 = _names_1[0];
+      String _replace = _get_1.replace("/", "");
+      modelContainer.setName(_replace);
+    }
+    String _image = container.getImage();
+    modelContainer.setImage(_image);
+    String _command = container.getCommand();
+    modelContainer.setCommand(_command);
+    String _id_1 = container.getId();
+    modelContainer.setContainerid(_id_1);
+    return modelContainer;
+  }
+  
+  public List<org.occiware.clouddesigner.occi.docker.Container> buildContainer(final List<Container> containers) {
+    List<org.occiware.clouddesigner.occi.docker.Container> containerList = CollectionLiterals.<org.occiware.clouddesigner.occi.docker.Container>newArrayList();
+    for (final Container c : containers) {
+      {
+        org.occiware.clouddesigner.occi.docker.Container modelContainer = DockerFactory.eINSTANCE.createContainer();
+        String _id = c.getId();
+        modelContainer.setId(_id);
+        String[] _names = c.getNames();
+        String _get = _names[0];
+        boolean _notEquals = (!Objects.equal(_get, null));
+        if (_notEquals) {
+          String[] _names_1 = c.getNames();
+          String _get_1 = _names_1[0];
+          String _replace = _get_1.replace("/", "");
+          modelContainer.setName(_replace);
+        }
+        String _image = c.getImage();
+        modelContainer.setImage(_image);
+        String _command = c.getCommand();
+        modelContainer.setCommand(_command);
+        String _id_1 = c.getId();
+        modelContainer.setContainerid(_id_1);
+        containerList.add(modelContainer);
+      }
+    }
+    return containerList;
+  }
+  
+  public List<org.occiware.clouddesigner.occi.docker.Container> buildContainer(final Machine machine, final List<Container> containers) {
+    final DockerContainerManager instance = new DockerContainerManager();
+    List<org.occiware.clouddesigner.occi.docker.Container> containerList = CollectionLiterals.<org.occiware.clouddesigner.occi.docker.Container>newArrayList();
+    for (final Container c : containers) {
+      {
+        String _id = c.getId();
+        final InspectContainerResponse currentContainer = instance.inspectContainer(machine, _id);
+        currentContainer.getId();
+        org.occiware.clouddesigner.occi.docker.Container modelContainer = DockerFactory.eINSTANCE.createContainer();
+        String _id_1 = c.getId();
+        modelContainer.setId(_id_1);
+        String _name = currentContainer.getName();
+        String _replace = _name.replace("/", "");
+        modelContainer.setName(_replace);
+        String _imageId = currentContainer.getImageId();
+        modelContainer.setImage(_imageId);
+        String _command = c.getCommand();
+        modelContainer.setCommand(_command);
+        String _id_2 = c.getId();
+        modelContainer.setContainerid(_id_2);
+        InspectContainerResponse.ContainerState _state = currentContainer.getState();
+        String _string = _state.toString();
+        ComputeStatus _byName = ComputeStatus.getByName(_string);
+        modelContainer.setState(_byName);
+        containerList.add(modelContainer);
+      }
+    }
+    return containerList;
   }
   
   public String saveMachine(final Machine machine) {
@@ -823,12 +935,30 @@ public class ModelHandler {
     }
   }
   
-  public Machine linkContainerToMachine(final org.occiware.clouddesigner.occi.docker.Container container, final Machine machine) {
+  public void linkContainerToMachine(final org.occiware.clouddesigner.occi.docker.Container container, final Machine machine) {
     Contains contains = DockerFactory.eINSTANCE.createContains();
     contains.setTarget(container);
-    EList<Link> _links = machine.getLinks();
+    EList<org.occiware.clouddesigner.OCCI.Link> _links = machine.getLinks();
     _links.add(contains);
+  }
+  
+  public Machine linkContainerToMachine(final List<org.occiware.clouddesigner.occi.docker.Container> containers, final Machine machine) {
+    Contains contains = DockerFactory.eINSTANCE.createContains();
+    for (final org.occiware.clouddesigner.occi.docker.Container c : containers) {
+      {
+        contains.setTarget(c);
+        EList<org.occiware.clouddesigner.OCCI.Link> _links = machine.getLinks();
+        _links.add(contains);
+      }
+    }
     return machine;
+  }
+  
+  public void linkContainerToContainer(final org.occiware.clouddesigner.occi.docker.Container left, final org.occiware.clouddesigner.occi.docker.Container right) {
+    org.occiware.clouddesigner.occi.docker.Link links = DockerFactory.eINSTANCE.createLink();
+    links.setTarget(right);
+    EList<org.occiware.clouddesigner.OCCI.Link> _links = left.getLinks();
+    _links.add(links);
   }
   
   public boolean isSimilar(final Notifier left, final Notifier right) {

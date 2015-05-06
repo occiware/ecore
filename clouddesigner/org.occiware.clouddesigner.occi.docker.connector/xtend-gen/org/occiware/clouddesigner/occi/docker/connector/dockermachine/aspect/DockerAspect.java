@@ -390,7 +390,6 @@ public class DockerAspect {
           if (_notEquals) {
             EList<Link> _links_1 = machine.getLinks();
             final Procedure1<Link> _function = new Procedure1<Link>() {
-              @Override
               public void apply(final Link elt) {
                 EList<Resource> _resources = DockerAspect.this.configuration.getResources();
                 Resource _target = elt.getTarget();

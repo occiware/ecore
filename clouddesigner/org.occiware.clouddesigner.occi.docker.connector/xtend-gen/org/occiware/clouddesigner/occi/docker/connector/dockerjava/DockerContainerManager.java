@@ -18,16 +18,21 @@ import com.github.dockerjava.api.model.Volume;
 import com.github.dockerjava.core.DockerClientBuilder;
 import com.github.dockerjava.core.DockerClientConfig;
 import com.google.common.base.Objects;
+import com.google.common.collect.Multimap;
 import java.io.InputStream;
 import java.net.URI;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.occiware.clouddesigner.occi.docker.Container;
@@ -52,7 +57,6 @@ public class DockerContainerManager {
   }
   
   public Map<DockerClient, CreateContainerResponse> createContainer(final Machine machine, final Container container) {
-    DockerFactory.eINSTANCE.eClass();
     DockerClient dockerClient = null;
     boolean _notEquals = (!Objects.equal(this.dockerClient, null));
     if (_notEquals) {
@@ -68,7 +72,7 @@ public class DockerContainerManager {
     return result;
   }
   
-  public Map<DockerClient, CreateContainerResponse> createContainer(final Machine machine, final Container container, final Map<String, String> containerDependency) {
+  public Map<DockerClient, CreateContainerResponse> createContainer(final Machine machine, final Container container, final Multimap<String, String> containerDependency) {
     DockerFactory.eINSTANCE.eClass();
     DockerClient dockerClient = null;
     boolean _notEquals = (!Objects.equal(this.dockerClient, null));
@@ -222,7 +226,7 @@ public class DockerContainerManager {
     return create;
   }
   
-  public CreateContainerCmd containerFactory(final Container container, final DockerClient dockerClient, final Map<String, String> containerDependency) {
+  public CreateContainerCmd containerFactory(final Container container, final DockerClient dockerClient, final Multimap<String, String> containerDependency) {
     CreateContainerCmd create = null;
     String _image = container.getImage();
     boolean _notEquals = (!Objects.equal(_image, null));
@@ -360,14 +364,33 @@ public class DockerContainerManager {
     boolean _containsKey = containerDependency.containsKey(_name_2);
     if (_containsKey) {
       String _name_3 = container.getName();
-      String _get = containerDependency.get(_name_3);
-      String _name_4 = container.getName();
-      String _plus = (_name_4 + "To");
-      String _name_5 = container.getName();
-      String _get_1 = containerDependency.get(_name_5);
-      String _plus_1 = (_plus + _get_1);
-      final Link dockeClientlink = new Link(_get, _plus_1);
-      create.withLinks(dockeClientlink);
+      Collection<String> _get = containerDependency.get(_name_3);
+      LinkedHashSet<String> _linkedHashSet = new LinkedHashSet<String>(_get);
+      final List<String> depdupeContainers = new ArrayList<String>(_linkedHashSet);
+      List<Link> dockeClientlinks = new ArrayList<Link>();
+      Link dockeClientlink = null;
+      for (final String entry : depdupeContainers) {
+        {
+          String _name_4 = container.getName();
+          String _plus = (_name_4 + "To");
+          String _plus_1 = (_plus + entry);
+          Link _link = new Link(entry, _plus_1);
+          dockeClientlink = _link;
+          dockeClientlinks.add(dockeClientlink);
+        }
+      }
+      int _size = depdupeContainers.size();
+      boolean _greaterThan_4 = (_size > 1);
+      if (_greaterThan_4) {
+        final List<Link> _converted_dockeClientlinks = (List<Link>)dockeClientlinks;
+        create.withLinks(((Link[])Conversions.unwrapArray(_converted_dockeClientlinks, Link.class)));
+      } else {
+        int _size_1 = depdupeContainers.size();
+        boolean _equals_1 = (_size_1 == 1);
+        if (_equals_1) {
+          create.withLinks(dockeClientlink);
+        }
+      }
     }
     return create;
   }
@@ -385,6 +408,20 @@ public class DockerContainerManager {
     return inspectContainerResponse;
   }
   
+  public InspectContainerResponse inspectContainer(final Machine machine, final String containerId) {
+    DockerClient dockerClient = null;
+    boolean _notEquals = (!Objects.equal(this.dockerClient, null));
+    if (_notEquals) {
+      dockerClient = this.dockerClient;
+    } else {
+      DockerClient _setConfig = this.setConfig(machine);
+      dockerClient = _setConfig;
+    }
+    InspectContainerCmd _inspectContainerCmd = dockerClient.inspectContainerCmd(containerId);
+    final InspectContainerResponse inspectContainerResponse = _inspectContainerCmd.exec();
+    return inspectContainerResponse;
+  }
+  
   public Void startContainer(final Machine machine, final Container container) {
     Void _xblockexpression = null;
     {
@@ -398,6 +435,23 @@ public class DockerContainerManager {
       }
       String _id = container.getId();
       StartContainerCmd _startContainerCmd = dockerClient.startContainerCmd(_id);
+      _xblockexpression = _startContainerCmd.exec();
+    }
+    return _xblockexpression;
+  }
+  
+  public Void startContainer(final Machine machine, final String containerId) {
+    Void _xblockexpression = null;
+    {
+      DockerClient dockerClient = null;
+      boolean _notEquals = (!Objects.equal(this.dockerClient, null));
+      if (_notEquals) {
+        dockerClient = this.dockerClient;
+      } else {
+        DockerClient _setConfig = this.setConfig(machine);
+        dockerClient = _setConfig;
+      }
+      StartContainerCmd _startContainerCmd = dockerClient.startContainerCmd(containerId);
       _xblockexpression = _startContainerCmd.exec();
     }
     return _xblockexpression;
@@ -451,14 +505,11 @@ public class DockerContainerManager {
     ListContainersCmd _listContainersCmd = dockerClient.listContainersCmd();
     ListContainersCmd _withShowAll = _listContainersCmd.withShowAll(true);
     final List<com.github.dockerjava.api.model.Container> containers = _withShowAll.exec();
-    for (final com.github.dockerjava.api.model.Container c : containers) {
-      for (final com.github.dockerjava.api.model.Container.Port p : c.ports) {
-      }
-    }
     return containers;
   }
   
   public DockerClient pullImage(final Machine machine, final String image) {
+    InputOutput.<String>println(("Image setting: " + image));
     DockerClient dockerClient = null;
     boolean _notEquals = (!Objects.equal(this.dockerClient, null));
     if (_notEquals) {
@@ -467,8 +518,8 @@ public class DockerContainerManager {
       DockerClient _setConfig = this.setConfig(machine);
       dockerClient = _setConfig;
     }
-    String containerImage = image;
-    boolean _equals = Objects.equal(image, null);
+    String containerImage = "busybox";
+    boolean _equals = containerImage.equals("");
     if (_equals) {
       containerImage = "busybox";
     }

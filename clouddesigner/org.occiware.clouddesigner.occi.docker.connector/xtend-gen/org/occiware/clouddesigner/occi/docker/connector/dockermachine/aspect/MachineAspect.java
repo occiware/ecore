@@ -10,30 +10,30 @@ public class MachineAspect {
   public static String createMachineCommand(final Machine _self) {
     org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineAspectMachineAspectProperties _self_ = org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineAspectMachineAspectContext.getSelf(_self);
     Object result = null;
-     if (_self instanceof org.occiware.clouddesigner.occi.docker.Machine_OpenStack){
-    result = org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineOpenStackAspect.createMachineCommand((org.occiware.clouddesigner.occi.docker.Machine_OpenStack)_self);
-    } else  if (_self instanceof org.occiware.clouddesigner.occi.docker.Machine_Digital_Ocean){
+     if (_self instanceof org.occiware.clouddesigner.occi.docker.Machine_Digital_Ocean){
     result = org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineDigitalOceanAspect.createMachineCommand((org.occiware.clouddesigner.occi.docker.Machine_Digital_Ocean)_self);
     } else  if (_self instanceof org.occiware.clouddesigner.occi.docker.Machine_VMware_Fusion){
     result = org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.Machine_VMwareFusionAspect.createMachineCommand((org.occiware.clouddesigner.occi.docker.Machine_VMware_Fusion)_self);
-    } else  if (_self instanceof org.occiware.clouddesigner.occi.docker.Machine_VMware_vSphere){
-    result = org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineVMwarevSphereAspect.createMachineCommand((org.occiware.clouddesigner.occi.docker.Machine_VMware_vSphere)_self);
+    } else  if (_self instanceof org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Azure){
+    result = org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineMicrosoftAzureAspect.createMachineCommand((org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Azure)_self);
     } else  if (_self instanceof org.occiware.clouddesigner.occi.docker.Machine_VMware_vCloud_Air){
     result = org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineVMwarevCloudAirAspect.createMachineCommand((org.occiware.clouddesigner.occi.docker.Machine_VMware_vCloud_Air)_self);
+    } else  if (_self instanceof org.occiware.clouddesigner.occi.docker.Machine_Amazon_EC2){
+    result = org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineAmazonEC2Aspect.createMachineCommand((org.occiware.clouddesigner.occi.docker.Machine_Amazon_EC2)_self);
+    } else  if (_self instanceof org.occiware.clouddesigner.occi.docker.Machine_OpenStack){
+    result = org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineOpenStackAspect.createMachineCommand((org.occiware.clouddesigner.occi.docker.Machine_OpenStack)_self);
+    } else  if (_self instanceof org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Hyper_V){
+    result = org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineMicrosoftHyperVAspect.createMachineCommand((org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Hyper_V)_self);
+    } else  if (_self instanceof org.occiware.clouddesigner.occi.docker.Machine_Rackspace){
+    result = org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineRackspaceAspect.createMachineCommand((org.occiware.clouddesigner.occi.docker.Machine_Rackspace)_self);
+    } else  if (_self instanceof org.occiware.clouddesigner.occi.docker.Machine_VMware_vSphere){
+    result = org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineVMwarevSphereAspect.createMachineCommand((org.occiware.clouddesigner.occi.docker.Machine_VMware_vSphere)_self);
     } else  if (_self instanceof org.occiware.clouddesigner.occi.docker.Machine_Google_Compute_Engine){
     result = org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineGoogleComputeEngineAspect.createMachineCommand((org.occiware.clouddesigner.occi.docker.Machine_Google_Compute_Engine)_self);
     } else  if (_self instanceof org.occiware.clouddesigner.occi.docker.Machine_VirtualBox){
     result = org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineVirtualBoxAspect.createMachineCommand((org.occiware.clouddesigner.occi.docker.Machine_VirtualBox)_self);
-    } else  if (_self instanceof org.occiware.clouddesigner.occi.docker.Machine_Rackspace){
-    result = org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineRackspaceAspect.createMachineCommand((org.occiware.clouddesigner.occi.docker.Machine_Rackspace)_self);
     } else  if (_self instanceof org.occiware.clouddesigner.occi.docker.Machine_IBM_SoftLayer){
     result = org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineIBMSoftLayerAspect.createMachineCommand((org.occiware.clouddesigner.occi.docker.Machine_IBM_SoftLayer)_self);
-    } else  if (_self instanceof org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Azure){
-    result = org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineMicrosoftAzureAspect.createMachineCommand((org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Azure)_self);
-    } else  if (_self instanceof org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Hyper_V){
-    result = org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineMicrosoftHyperVAspect.createMachineCommand((org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Hyper_V)_self);
-    } else  if (_self instanceof org.occiware.clouddesigner.occi.docker.Machine_Amazon_EC2){
-    result = org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineAmazonEC2Aspect.createMachineCommand((org.occiware.clouddesigner.occi.docker.Machine_Amazon_EC2)_self);
     } else  if (_self instanceof org.occiware.clouddesigner.occi.docker.Machine){
     result = org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineAspect._privk3_createMachineCommand(_self_, (org.occiware.clouddesigner.occi.docker.Machine)_self);
     } else  { throw new IllegalArgumentException("Unhandled parameter types: " + java.util.Arrays.<Object>asList(_self).toString()); };
