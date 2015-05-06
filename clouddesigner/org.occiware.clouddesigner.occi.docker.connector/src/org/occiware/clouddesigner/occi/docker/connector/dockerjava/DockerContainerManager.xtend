@@ -38,9 +38,6 @@ class DockerContainerManager {
 	}
 
 	def createContainer(Machine machine, Container container) {
-
-		// Initialize the model
-		DockerFactory.eINSTANCE.eClass
 		var DockerClient dockerClient = null
 
 		// Set dockerClient
@@ -301,6 +298,18 @@ class DockerContainerManager {
 		dockerClient.startContainerCmd(container.id).exec
 	}
 
+	def startContainer(Machine machine, String containerId) {
+		var DockerClient dockerClient = null
+
+		// Set dockerClient
+		if (this.dockerClient != null) {
+			dockerClient = this.dockerClient
+		} else {
+			dockerClient = setConfig(machine)
+
+		}
+		dockerClient.startContainerCmd(containerId).exec
+	}
 	def stopContainer(Machine machine, Container container) {
 		var DockerClient dockerClient = null
 
