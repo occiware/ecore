@@ -160,6 +160,6 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedJavaExtensions qualifiedClassName="org.occiware.clouddesigner.occi.docker.design.services.DockerService"/>
+    <ownedJavaExtensions qualifiedClassName="org.occiware.clouddesigner.occi.docker.design.services.DockerServices"/>
   </ownedViewpoints>
 </description:Group>
