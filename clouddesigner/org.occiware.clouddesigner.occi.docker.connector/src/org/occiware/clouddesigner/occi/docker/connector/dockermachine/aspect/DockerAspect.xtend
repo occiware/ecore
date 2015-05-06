@@ -957,7 +957,7 @@ class ContainerAspect {
 
 	def void containerStart() {
 		val machine = _self.getCurrentMachine
-		if (machine.isDeployed) {
+		if (machine.state.toString.equalsIgnoreCase("active")) {
 			val dockerContainerManager = new DockerContainerManager
 			dockerContainerManager.startContainer(machine, _self)
 		}
