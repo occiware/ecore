@@ -1,13 +1,13 @@
 /**
- * This file contains the OCCIware Docker connector.
- * 
- * This connector implements the causal link, i.e. synchronization, between Docker models and Docker engines.
- * 
- * Copyright 2015 - Inria
+ * Copyright (c) 2015 INRIA.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
- * - Philippe Merle - Inria
- * - Fawaz PARAISO -Inria
+ * 	- Philippe MERLE
+ * 	- Fawaz PARAISO
  */
 package org.occiware.clouddesigner.occi.docker.connector;
 
