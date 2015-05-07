@@ -510,7 +510,7 @@ class ExecutableContainer extends ContainerImpl {
 			val machine = getCurrentMachine
 			if (machine.state.toString.equalsIgnoreCase("active")) {
 				val dockerContainerManager = new DockerContainerManager
-				dockerContainerManager.startContainer(machine,this.compute.containerid)
+				dockerContainerManager.startContainer(machine, this.compute.containerid)
 			}
 		}
 
@@ -791,9 +791,11 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 			val container = l.target as org.occiware.clouddesigner.occi.docker.Container
 			if (!container.links.isEmpty) {
 				for (Link cl : container.links) {
-					graph.addDependency(container, (cl.target as org.occiware.clouddesigner.occi.docker.Container))
-					this.containerDependency.put(container.name,
-						(cl.target as org.occiware.clouddesigner.occi.docker.Container).name)
+					if (cl.target instanceof Container) {
+						graph.addDependency(container, (cl.target as org.occiware.clouddesigner.occi.docker.Container))
+						this.containerDependency.put(container.name,
+							(cl.target as org.occiware.clouddesigner.occi.docker.Container).name)
+					}
 				}
 			}
 		}
@@ -834,7 +836,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 	 * Stop a Docker machine.
 	 */
 	override def stop_execute(StopMethod method) {
-		
+
 		// Stop all Docker containers contained by this Docker machine.
 		if (method == StopMethod.GRACEFUL) {
 			for (Link link : compute.links) {
@@ -846,6 +848,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 					}
 				}
 			}
+
 			// Stop the machine
 			DockerMachineManager.stopCmd(Runtime.getRuntime, compute.name)
 		}
@@ -1312,8 +1315,10 @@ class ExecutableDockerModel {
 	var public Machine_VMware_Fusion machine_VMware_Fusion
 	var public Machine_VMware_vCloud_Air machine_VMware_vCloud_Air
 	var public Machine_VMware_vSphere machine_VMware_vSphere
-	
-	new(){}
+
+	new() {
+	}
+
 	new(Machine machine) {
 		this.machine = machine
 		if (machine instanceof Machine_VirtualBox) {
