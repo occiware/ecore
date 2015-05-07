@@ -22,6 +22,7 @@ import java.util.Map
 import org.eclipse.emf.ecore.EObject
 import org.occiware.clouddesigner.OCCI.Configuration
 import org.occiware.clouddesigner.OCCI.Link
+import org.occiware.clouddesigner.OCCI.Resource
 import org.occiware.clouddesigner.occi.docker.Contains
 import org.occiware.clouddesigner.occi.docker.DockerPackage
 import org.occiware.clouddesigner.occi.docker.Machine
@@ -65,9 +66,6 @@ import org.occiware.clouddesigner.occi.infrastructure.StopMethod
 import org.occiware.clouddesigner.occi.infrastructure.SuspendMethod
 
 import static com.google.common.base.Preconditions.checkNotNull
-import org.eclipse.emf.ecore.util.EcoreUtil
-import org.occiware.clouddesigner.occi.docker.Container
-import org.occiware.clouddesigner.OCCI.Resource
 
 /**
  * This class overrides the generated EMF factory of the Docker package.
@@ -758,13 +756,13 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 			val contains = instance.listContainer(machine)
 			if (contains != null) {
 				val modelContainers = instanceMH.buildContainer(this.compute, contains)
-				for (Container container : modelContainers) {
+				for (org.occiware.clouddesigner.occi.docker.Container container : modelContainers) {
 					(container as ExecutableContainer).linkContainerToMachine(this.compute)
 				}
 				if (this.compute.links != null) {
-					this.compute.links.forEach[elt|println((elt.target as Container).name)]
+					this.compute.links.forEach[elt|println((elt.target as org.occiware.clouddesigner.occi.docker.Container).name)]
 					this.compute.links.forEach[elt|
-						println(this.compute.eContainer.eResource.allContents.toList.add((elt.target as Container)))]
+						println(this.compute.eContainer.eResource.allContents.toList.add((elt.target as org.occiware.clouddesigner.occi.docker.Container)))]
 				}
 			}
 
@@ -791,7 +789,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 			val container = l.target as org.occiware.clouddesigner.occi.docker.Container
 			if (!container.links.isEmpty) {
 				for (Link cl : container.links) {
-					if (cl.target instanceof Container) {
+					if (cl.target instanceof org.occiware.clouddesigner.occi.docker.Container) {
 						graph.addDependency(container, (cl.target as org.occiware.clouddesigner.occi.docker.Container))
 						this.containerDependency.put(container.name,
 							(cl.target as org.occiware.clouddesigner.occi.docker.Container).name)
@@ -1618,7 +1616,7 @@ class ExecutableDockerModel {
 			if (!containMachine(machine)) {
 				this.configuration.resources.add(machine)
 				if (machine.links != null) {
-					machine.links.forEach[elt|this.configuration.resources.add((elt.target as Container))]
+					machine.links.forEach[elt|this.configuration.resources.add((elt.target as org.occiware.clouddesigner.occi.docker.Container))]
 				}
 			}
 		}
