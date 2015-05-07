@@ -275,12 +275,13 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
         if (_not) {
           EList<Link> _links_2 = container.getLinks();
           for (final Link cl : _links_2) {
-            {
-              Resource _target_1 = cl.getTarget();
-              graph.addDependency(container, ((Container) _target_1));
-              String _name = container.getName();
+            Resource _target_1 = cl.getTarget();
+            if ((_target_1 instanceof Container)) {
               Resource _target_2 = cl.getTarget();
-              String _name_1 = ((Container) _target_2).getName();
+              graph.addDependency(container, ((Container) _target_2));
+              String _name = container.getName();
+              Resource _target_3 = cl.getTarget();
+              String _name_1 = ((Container) _target_3).getName();
               this.containerDependency.put(_name, _name_1);
             }
           }
