@@ -130,6 +130,7 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
     if (_not) {
       String _string = command.toString();
       ProcessManager.runCommand(_string, runtime, true);
+      this.compute.setState(ComputeStatus.ACTIVE);
       EList<Link> _links = this.compute.getLinks();
       int _size = _links.size();
       boolean _greaterThan = (_size > 0);
@@ -163,6 +164,7 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
       if (_not_2) {
         String _name_4 = this.compute.getName();
         DockerMachineManager.startCmd(runtime, _name_4);
+        this.compute.setState(ComputeStatus.ACTIVE);
         EList<Link> _links_2 = this.compute.getLinks();
         int _size_1 = _links_2.size();
         boolean _greaterThan_1 = (_size_1 > 0);
@@ -220,28 +222,42 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
         boolean _notEquals_1 = (!Objects.equal(_links, null));
         if (_notEquals_1) {
           EList<Link> _links_1 = this.compute.getLinks();
-          final Procedure1<Link> _function = new Procedure1<Link>() {
-            public void apply(final Link elt) {
-              Resource _target = elt.getTarget();
-              String _name = ((Container) _target).getName();
-              InputOutput.<String>println(_name);
-            }
-          };
-          IterableExtensions.<Link>forEach(_links_1, _function);
-          EList<Link> _links_2 = this.compute.getLinks();
-          final Procedure1<Link> _function_1 = new Procedure1<Link>() {
-            public void apply(final Link elt) {
-              EObject _eContainer = MachineManager.this.compute.eContainer();
+          for (final Link link : _links_1) {
+            {
+              EObject _eContainer = this.compute.eContainer();
               org.eclipse.emf.ecore.resource.Resource _eResource = _eContainer.eResource();
               TreeIterator<EObject> _allContents = _eResource.getAllContents();
               List<EObject> _list = IteratorExtensions.<EObject>toList(_allContents);
-              Resource _target = elt.getTarget();
-              boolean _add = _list.add(((Container) _target));
-              InputOutput.<Boolean>println(Boolean.valueOf(_add));
+              _list.add(link);
+              if ((link instanceof Link)) {
+                final Contains c = ((Contains) link);
+                Resource _target = c.getTarget();
+                if ((_target instanceof Container)) {
+                  EObject _eContainer_1 = this.compute.eContainer();
+                  org.eclipse.emf.ecore.resource.Resource _eResource_1 = _eContainer_1.eResource();
+                  TreeIterator<EObject> _allContents_1 = _eResource_1.getAllContents();
+                  List<EObject> _list_1 = IteratorExtensions.<EObject>toList(_allContents_1);
+                  Resource _target_1 = c.getTarget();
+                  _list_1.add(((Container) _target_1));
+                }
+              }
             }
-          };
-          IterableExtensions.<Link>forEach(_links_2, _function_1);
+          }
         }
+      }
+    } else {
+      EList<Link> _links_2 = this.compute.getLinks();
+      int _size = _links_2.size();
+      boolean _greaterThan = (_size > 0);
+      if (_greaterThan) {
+        EList<Link> _links_3 = this.compute.getLinks();
+        final Procedure1<Link> _function = new Procedure1<Link>() {
+          public void apply(final Link elt) {
+            Resource _target = elt.getTarget();
+            ((ExecutableContainer) _target).stop(StopMethod.GRACEFUL);
+          }
+        };
+        IterableExtensions.<Link>forEach(_links_3, _function);
       }
     }
   }
@@ -363,7 +379,7 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
       DockerMachineManager.stopCmd(_runtime, _name);
     }
     String _name_1 = this.compute.getName();
-    String _plus = ("EXECUTE COMMAND: docker machine stop " + _name_1);
+    String _plus = ("EXECUTE COMMAND: docker machine stop: " + _name_1);
     InputOutput.<String>println(_plus);
   }
   

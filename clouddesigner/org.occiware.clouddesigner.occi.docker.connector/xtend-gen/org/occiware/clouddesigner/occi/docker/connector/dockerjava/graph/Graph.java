@@ -157,9 +157,8 @@ public class Graph<T extends Object> {
   public List<GraphNode<T>> deploymentOrder() {
     List<GraphNode<T>> currentNodes = this.getLeafNodes();
     List<GraphNode<T>> orphnanNodes = this.getOrphanNodes();
-    List<GraphNode<T>> _orphanNodes = this.getOrphanNodes();
-    for (final GraphNode<T> m : _orphanNodes) {
-      InputOutput.<T>println(m.value);
+    for (final GraphNode<T> m : orphnanNodes) {
+      InputOutput.<String>println(("Orphans: " + m.value));
     }
     List<GraphNode<T>> newleafNodes = new ArrayList<GraphNode<T>>();
     while ((!currentNodes.isEmpty())) {
@@ -168,12 +167,15 @@ public class Graph<T extends Object> {
           List<GraphNode<T>> _comingInNodes = g.getComingInNodes();
           boolean _notEquals = (!Objects.equal(_comingInNodes, null));
           if (_notEquals) {
-            final List<GraphNode<T>> realLeafs = g.getComingInNodes();
+            List<GraphNode<T>> realLeafs = g.getComingInNodes();
             realLeafs.removeAll(orphnanNodes);
             ArrayList<GraphNode<T>> _arrayList = new ArrayList<GraphNode<T>>(realLeafs);
             newleafNodes.addAll(_arrayList);
           }
         }
+        final List<GraphNode<T>> linkedGraphs = this.getLinkedGraphs(newleafNodes);
+        ArrayList<GraphNode<T>> _arrayList_1 = new ArrayList<GraphNode<T>>(linkedGraphs);
+        newleafNodes.addAll(_arrayList_1);
         for (final GraphNode<T> n : currentNodes) {
           boolean _contains = this.deploymentOrder.contains(n);
           boolean _not = (!_contains);
@@ -181,10 +183,10 @@ public class Graph<T extends Object> {
             this.deploymentOrder.add(n);
           }
         }
-        ArrayList<GraphNode<T>> _arrayList_1 = new ArrayList<GraphNode<T>>(newleafNodes);
-        currentNodes = _arrayList_1;
-        ArrayList<GraphNode<T>> _arrayList_2 = new ArrayList<GraphNode<T>>();
-        newleafNodes = _arrayList_2;
+        ArrayList<GraphNode<T>> _arrayList_2 = new ArrayList<GraphNode<T>>(newleafNodes);
+        currentNodes = _arrayList_2;
+        ArrayList<GraphNode<T>> _arrayList_3 = new ArrayList<GraphNode<T>>();
+        newleafNodes = _arrayList_3;
       }
     }
     for (final GraphNode<T> n : orphnanNodes) {
@@ -195,6 +197,21 @@ public class Graph<T extends Object> {
       }
     }
     return this.deploymentOrder;
+  }
+  
+  public synchronized List<GraphNode<T>> getLinkedGraphs(final List<GraphNode<T>> graphs) {
+    List<GraphNode<T>> linkedGraphs = new ArrayList<GraphNode<T>>();
+    for (final GraphNode<T> firstVal : graphs) {
+      for (final GraphNode<T> g : graphs) {
+        List<GraphNode<T>> _comingInNodes = g.getComingInNodes();
+        boolean _contains = _comingInNodes.contains(firstVal);
+        if (_contains) {
+          linkedGraphs.add(firstVal);
+        }
+      }
+    }
+    graphs.removeAll(linkedGraphs);
+    return linkedGraphs;
   }
   
   public boolean isAlreadyEvaluated(final GraphNode<T> node) {

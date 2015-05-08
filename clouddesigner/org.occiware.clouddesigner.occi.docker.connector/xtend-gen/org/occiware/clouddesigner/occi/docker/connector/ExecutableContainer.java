@@ -56,8 +56,8 @@ public class ExecutableContainer extends ContainerImpl {
       boolean _equalsIgnoreCase = _string.equalsIgnoreCase("active");
       if (_equalsIgnoreCase) {
         final DockerContainerManager dockerContainerManager = new DockerContainerManager();
-        String _containerid = this.compute.getContainerid();
-        dockerContainerManager.startContainer(machine, _containerid);
+        String _name = this.compute.getName();
+        dockerContainerManager.startContainer(machine, _name);
       }
     }
     
@@ -72,8 +72,8 @@ public class ExecutableContainer extends ContainerImpl {
       boolean _equalsIgnoreCase = _string.equalsIgnoreCase("active");
       if (_equalsIgnoreCase) {
         final DockerContainerManager dockerContainerManager = new DockerContainerManager();
-        String _containerid = this.compute.getContainerid();
-        dockerContainerManager.startContainer(machine, _containerid);
+        String _name = this.compute.getName();
+        dockerContainerManager.startContainer(machine, _name);
       }
     }
     
