@@ -1,4 +1,4 @@
- /*******************************************************************************
+/*******************************************************************************
  * Copyright (c) 2015 INRIA.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -496,7 +496,7 @@ class ExecutableContainer extends ContainerImpl {
 			val machine = getCurrentMachine
 			if (machine.state.toString.equalsIgnoreCase("active")) {
 				val dockerContainerManager = new DockerContainerManager
-				dockerContainerManager.startContainer(machine, this.compute.containerid)
+				dockerContainerManager.startContainer(machine, this.compute.name)
 			}
 		}
 
@@ -508,7 +508,7 @@ class ExecutableContainer extends ContainerImpl {
 			val machine = getCurrentMachine
 			if (machine.state.toString.equalsIgnoreCase("active")) {
 				val dockerContainerManager = new DockerContainerManager
-				dockerContainerManager.startContainer(machine, this.compute.containerid)
+				dockerContainerManager.startContainer(machine, this.compute.name)
 			}
 		}
 
@@ -686,7 +686,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 		// Execute the docker-machine start command.
 		val StringBuilder command = new StringBuilder
 
-		// Check requirements parameters
+		// Check requirements parameters are not null
 		checkNotNull(compute.name, "Machine name is null")
 		checkNotNull(driverName, "Driver name is null")
 
@@ -703,6 +703,9 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 
 			// Create VitualBox machine and start it
 			ProcessManager.runCommand(command.toString, runtime, true)
+
+			// Set state
+			compute.state = ComputeStatus.ACTIVE
 
 			//Create the Containers belong to this machine.
 			if (compute.links.size > 0) {
@@ -722,6 +725,9 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 
 				// Start the machine
 				DockerMachineManager.startCmd(runtime, compute.name)
+
+				// Set state
+				compute.state = ComputeStatus.ACTIVE
 
 				// Create the Containers belong to this machine.
 				if (compute.links.size > 0) {
@@ -760,12 +766,27 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 					(container as ExecutableContainer).linkContainerToMachine(this.compute)
 				}
 				if (this.compute.links != null) {
-					this.compute.links.forEach[elt|println((elt.target as org.occiware.clouddesigner.occi.docker.Container).name)]
-					this.compute.links.forEach[elt|
-						println(this.compute.eContainer.eResource.allContents.toList.add((elt.target as org.occiware.clouddesigner.occi.docker.Container)))]
-				}
+					for (Link link : compute.links) {
+						this.compute.eContainer.eResource.allContents.toList.add(link)
+						if (link instanceof Link) {
+							val c = link as Contains
+							if (c.target instanceof org.occiware.clouddesigner.occi.docker.Container) {
+								this.compute.eContainer.eResource.allContents.toList.add((c.target as org.occiware.clouddesigner.occi.docker.Container))
+							}
+						}
+					}
+				
 			}
+		}
 
+	}
+else {
+			if (compute.links.size > 0) {
+
+				// Stop the containers 
+				compute.links.forEach[elt|(elt.target as ExecutableContainer).stop(StopMethod.GRACEFUL)]
+
+			}
 		}
 	}
 
@@ -852,7 +873,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 		}
 
 		// Execute the docker-machine stop command.
-		println("EXECUTE COMMAND: docker machine stop " + compute.name)
+		println("EXECUTE COMMAND: docker machine stop: " + compute.name)
 
 	// TODO: must be implemented
 	}
@@ -1616,7 +1637,9 @@ class ExecutableDockerModel {
 			if (!containMachine(machine)) {
 				this.configuration.resources.add(machine)
 				if (machine.links != null) {
-					machine.links.forEach[elt|this.configuration.resources.add((elt.target as org.occiware.clouddesigner.occi.docker.Container))]
+					machine.links.forEach[elt|
+						this.configuration.resources.add(
+							(elt.target as org.occiware.clouddesigner.occi.docker.Container))]
 				}
 			}
 		}
