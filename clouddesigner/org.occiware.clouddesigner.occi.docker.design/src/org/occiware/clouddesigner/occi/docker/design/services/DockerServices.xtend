@@ -22,6 +22,7 @@ import org.occiware.clouddesigner.occi.docker.Container
 import org.occiware.clouddesigner.occi.docker.Machine
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableDockerFactory
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableDockerModel
+import org.occiware.clouddesigner.occi.infrastructure.StopMethod
 
 class DockerServices {
 
@@ -111,7 +112,7 @@ class DockerServices {
 				} else if (eo instanceof Container) {
 					var container = eo as Container
 					val main = new ExecutableDockerModel(container)
-					main.stop
+					main.container.stop(StopMethod.GRACEFUL)
 				}
 			}
 		}
