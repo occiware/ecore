@@ -24,6 +24,7 @@ import org.occiware.clouddesigner.occi.docker.DockerFactory;
 import org.occiware.clouddesigner.occi.docker.Machine;
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableDockerFactory;
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableDockerModel;
+import org.occiware.clouddesigner.occi.infrastructure.StopMethod;
 
 @SuppressWarnings("all")
 public class DockerServices {
@@ -135,7 +136,7 @@ public class DockerServices {
             if ((eo instanceof Container)) {
               Container container = ((Container) eo);
               final ExecutableDockerModel main_1 = new ExecutableDockerModel(container);
-              main_1.stop();
+              main_1.container.stop(StopMethod.GRACEFUL);
             }
           }
         }
