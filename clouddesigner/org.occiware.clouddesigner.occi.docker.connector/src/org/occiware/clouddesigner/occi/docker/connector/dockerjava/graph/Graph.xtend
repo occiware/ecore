@@ -14,6 +14,7 @@ import java.util.ArrayList
 import java.util.HashMap
 import java.util.List
 import java.util.Set
+import java.util.Iterator
 
 class Graph<T> {
 
@@ -127,18 +128,22 @@ class Graph<T> {
 	def List<GraphNode<T>> deploymentOrder() {
 		var currentNodes = getLeafNodes
 		var orphnanNodes = getOrphanNodes
-		for (GraphNode<T> m : getOrphanNodes) {
-			println(m.value)
+		for (GraphNode<T> m : orphnanNodes) {
+			println("Orphans: " + m.value)
 		}
 		var List<GraphNode<T>> newleafNodes = new ArrayList<GraphNode<T>>
 		while (!currentNodes.isEmpty) {
 			for (GraphNode<T> g : currentNodes) {
 				if (g.comingInNodes != null) {
-					val realLeafs = g.comingInNodes
+					var realLeafs = g.comingInNodes
 					realLeafs.removeAll(orphnanNodes)
 					newleafNodes.addAll(new ArrayList<GraphNode<T>>(realLeafs))
 				}
 			}
+			// remove linked graphs first
+			val linkedGraphs = getLinkedGraphs(newleafNodes)
+			// Add linked graphs after
+			newleafNodes.addAll(new ArrayList<GraphNode<T>>(linkedGraphs))
 			for (GraphNode<T> n : currentNodes) {
 				if (!this.deploymentOrder.contains(n)) {
 					this.deploymentOrder.add(n)
@@ -154,7 +159,20 @@ class Graph<T> {
 		}
 		return this.deploymentOrder
 	}
-
+	
+	def synchronized List<GraphNode<T>> getLinkedGraphs(List<GraphNode<T>> graphs){
+		var List<GraphNode<T>> linkedGraphs = new ArrayList<GraphNode<T>>
+		for (GraphNode<T> firstVal:graphs){
+			for(GraphNode<T> g:graphs){
+				if(g.comingInNodes.contains(firstVal)){
+					linkedGraphs.add(firstVal)
+				}
+			}
+   		}
+   		graphs.removeAll(linkedGraphs)
+		return linkedGraphs
+	}
+	
 	def boolean isAlreadyEvaluated(GraphNode<T> node) {
 		return evaluatedNodes.contains(node);
 	}
