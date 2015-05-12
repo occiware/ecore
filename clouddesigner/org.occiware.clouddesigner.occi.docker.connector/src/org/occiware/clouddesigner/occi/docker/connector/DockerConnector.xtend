@@ -66,6 +66,8 @@ import org.occiware.clouddesigner.occi.infrastructure.StopMethod
 import org.occiware.clouddesigner.occi.infrastructure.SuspendMethod
 
 import static com.google.common.base.Preconditions.checkNotNull
+import org.slf4j.LoggerFactory
+import org.slf4j.Logger
 
 /**
  * This class overrides the generated EMF factory of the Docker package.
@@ -74,6 +76,9 @@ import static com.google.common.base.Preconditions.checkNotNull
  * instead of instances of generated EMF classes suffixed by Impl.
  */
 class ExecutableDockerFactory extends DockerFactoryImpl {
+
+	// Initialize logger for Graph.
+	private static Logger LOGGER = LoggerFactory.getLogger(typeof(ExecutableDockerFactory))
 
 	/**
 	 * Initialize the ExecutableDockerFactory singleton.
@@ -90,7 +95,7 @@ class ExecutableDockerFactory extends DockerFactoryImpl {
 	 * Create an executable Container instance.
 	 */
 	override def createContainer() {
-		println(this.class.name + ":createContainer()")
+		LOGGER.info(this.class.name + ":createContainer()")
 		return new ExecutableContainer
 	}
 
@@ -98,7 +103,7 @@ class ExecutableDockerFactory extends DockerFactoryImpl {
 	 * Create an executable Machine instance.
 	 */
 	override def createMachine() {
-		println(this.class.name + ":createMachine()")
+		LOGGER.info(this.class.name + ":createMachine()")
 		return new ExecutableMachine
 	}
 
@@ -106,7 +111,7 @@ class ExecutableDockerFactory extends DockerFactoryImpl {
 	 * Create an executable Machine_Amazon_EC2 instance.
 	 */
 	override def createMachine_Amazon_EC2() {
-		println(this.class.name + ":createMachine_Amazon_EC2()")
+		LOGGER.info(this.class.name + ":createMachine_Amazon_EC2()")
 		new ExecutableMachine_Amazon_EC2
 	}
 
@@ -114,7 +119,7 @@ class ExecutableDockerFactory extends DockerFactoryImpl {
 	 * Create an executable Machine_Digital_Ocean instance.
 	 */
 	override def createMachine_Digital_Ocean() {
-		println(this.class.name + ":createMachine_Digital_Ocean()")
+		LOGGER.info(this.class.name + ":createMachine_Digital_Ocean()")
 		new ExecutableMachine_Digital_Ocean
 	}
 
@@ -122,7 +127,7 @@ class ExecutableDockerFactory extends DockerFactoryImpl {
 	 * Create an executable Machine_Google_Compute_Engine instance.
 	 */
 	override def createMachine_Google_Compute_Engine() {
-		println(this.class.name + ":createMachine_Google_Compute_Engine()")
+		LOGGER.info(this.class.name + ":createMachine_Google_Compute_Engine()")
 		new ExecutableMachine_Google_Compute_Engine
 	}
 
@@ -130,7 +135,7 @@ class ExecutableDockerFactory extends DockerFactoryImpl {
 	 * Create an executable Machine_IBM_SoftLayer instance.
 	 */
 	override def createMachine_IBM_SoftLayer() {
-		println(this.class.name + ":createMachine_IBM_SoftLayer()")
+		LOGGER.info(this.class.name + ":createMachine_IBM_SoftLayer()")
 		new ExecutableMachine_IBM_SoftLayer
 	}
 
@@ -138,7 +143,7 @@ class ExecutableDockerFactory extends DockerFactoryImpl {
 	 * Create an executable Machine_Microsoft_Azure instance.
 	 */
 	override def createMachine_Microsoft_Azure() {
-		println(this.class.name + ":createMachine_Microsoft_Azure()")
+		LOGGER.info(this.class.name + ":createMachine_Microsoft_Azure()")
 		new ExecutableMachine_Microsoft_Azure
 	}
 
@@ -146,7 +151,7 @@ class ExecutableDockerFactory extends DockerFactoryImpl {
 	 * Create an executable Machine_Microsoft_Hyper_V instance.
 	 */
 	override def createMachine_Microsoft_Hyper_V() {
-		println(this.class.name + ":createMachine_Microsoft_Hyper_V()")
+		LOGGER.info(this.class.name + ":createMachine_Microsoft_Hyper_V()")
 		new ExecutableMachine_Microsoft_Hyper_V
 	}
 
@@ -154,7 +159,7 @@ class ExecutableDockerFactory extends DockerFactoryImpl {
 	 * Create an executable Machine_OpenStack instance.
 	 */
 	override def createMachine_OpenStack() {
-		println(this.class.name + ":createMachine_OpenStack()")
+		LOGGER.info(this.class.name + ":createMachine_OpenStack()")
 		new ExecutableMachine_OpenStack
 	}
 
@@ -162,7 +167,7 @@ class ExecutableDockerFactory extends DockerFactoryImpl {
 	 * Create an executable Machine_Rackspace instance.
 	 */
 	override def createMachine_Rackspace() {
-		println(this.class.name + ":createMachine_Rackspace()")
+		LOGGER.info(this.class.name + ":createMachine_Rackspace()")
 		new ExecutableMachine_Rackspace
 	}
 
@@ -170,7 +175,7 @@ class ExecutableDockerFactory extends DockerFactoryImpl {
 	 * Create an executable Machine_VirtualBox instance.
 	 */
 	override def createMachine_VirtualBox() {
-		println(this.class.name + ":createMachine_VirtualBox()")
+		LOGGER.info(this.class.name + ":createMachine_VirtualBox()")
 		new ExecutableMachine_VirtualBox
 	}
 
@@ -178,7 +183,7 @@ class ExecutableDockerFactory extends DockerFactoryImpl {
 	 * Create an executable Machine_VMware_Fusion instance.
 	 */
 	override def createMachine_VMware_Fusion() {
-		println(this.class.name + ":createMachine_VMware_Fusion()")
+		LOGGER.info(this.class.name + ":createMachine_VMware_Fusion()")
 		new ExecutableMachine_VMware_Fusion
 	}
 
@@ -186,7 +191,7 @@ class ExecutableDockerFactory extends DockerFactoryImpl {
 	 * Create an executable Machine_VMware_vCloud_Air instance.
 	 */
 	override def createMachine_VMware_vCloud_Air() {
-		println("ExecutableDockerFactory:createMachine_VMware_vCloud_Air()")
+		LOGGER.info("ExecutableDockerFactory:createMachine_VMware_vCloud_Air()")
 		new ExecutableMachine_VMware_vCloud_Air
 	}
 
@@ -194,7 +199,7 @@ class ExecutableDockerFactory extends DockerFactoryImpl {
 	 * Create an executable Machine_VMware_vSphere instance.
 	 */
 	override def createMachine_VMware_vSphere() {
-		println(this.class.name + ":createMachine_VMware_vSphere()")
+		LOGGER.info(this.class.name + ":createMachine_VMware_vSphere()")
 		new ExecutableMachine_VMware_vSphere
 	}
 }
@@ -203,6 +208,9 @@ class ExecutableDockerFactory extends DockerFactoryImpl {
  * This class implements the state machine of any Compute resource.
  */
 class ComputeStateMachine<T extends Compute> {
+
+	// Initialize logger for ComputeStateMachine.
+	private static Logger LOGGER = LoggerFactory.getLogger(typeof(ComputeStateMachine))
 
 	/**
 	 * Reference to the Compute resource.
@@ -220,22 +228,22 @@ class ComputeStateMachine<T extends Compute> {
 	 * Start OCCI Action.
 	 */
 	def start() {
-		println(this.class.name + ":start() - current state is " + compute.state)
+		LOGGER.info(this.class.name + ":start() - current state is " + compute.state)
 		if (compute.state == ComputeStatus.INACTIVE) {
-			println(this.class.name + ":start() - move from inactive to active state")
+			LOGGER.info(this.class.name + ":start() - move from inactive to active state")
 			start_from_inactive_state()
 			compute.state = ComputeStatus.ACTIVE
 		} else if (compute.state == ComputeStatus.ACTIVE) {
-			println(this.class.name + ":start() - already active state")
+			LOGGER.info(this.class.name + ":start() - already active state")
 			start_from_active_state()
 		} else if (compute.state == ComputeStatus.SUSPENDED) {
-			println(this.class.name + ":start() - move from suspended to active state")
+			LOGGER.info(this.class.name + ":start() - move from suspended to active state")
 			start_from_suspended_state()
 			compute.state = ComputeStatus.ACTIVE
 		} else {
 			throw new RuntimeException("Must never happen!")
 		}
-		println(this.class.name + ":start() - final state is " + compute.state)
+		LOGGER.info(this.class.name + ":start() - final state is " + compute.state)
 		if(compute.state != ComputeStatus.ACTIVE) throw new RuntimeException("Must never happen!")
 	}
 
@@ -243,22 +251,22 @@ class ComputeStateMachine<T extends Compute> {
 	 * StartAll Modeler Action.
 	 */
 	def startAll() {
-		println(this.class.name + ":start() - current state is " + compute.state)
+		LOGGER.info(this.class.name + ":start() - current state is " + compute.state)
 		if (compute.state == ComputeStatus.INACTIVE) {
-			println(this.class.name + ":start() - move from inactive to active state")
+			LOGGER.info(this.class.name + ":start() - move from inactive to active state")
 			startAll_from_inactive_state()
 			compute.state = ComputeStatus.ACTIVE
 		} else if (compute.state == ComputeStatus.ACTIVE) {
-			println(this.class.name + ":start() - already active state")
+			LOGGER.info(this.class.name + ":start() - already active state")
 			start_from_active_state()
 		} else if (compute.state == ComputeStatus.SUSPENDED) {
-			println(this.class.name + ":start() - move from suspended to active state")
+			LOGGER.info(this.class.name + ":start() - move from suspended to active state")
 			start_from_suspended_state()
 			compute.state = ComputeStatus.ACTIVE
 		} else {
 			throw new RuntimeException("Must never happen!")
 		}
-		println(this.class.name + ":start() - final state is " + compute.state)
+		LOGGER.info(this.class.name + ":start() - final state is " + compute.state)
 		if(compute.state != ComputeStatus.ACTIVE) throw new RuntimeException("Must never happen!")
 	}
 
@@ -281,7 +289,7 @@ class ComputeStateMachine<T extends Compute> {
 	 * By default, this method does nothing.
 	 */
 	def start_from_active_state() {
-		println(this.class.name + ":start_from_active_state() - DO NOTHING")
+		LOGGER.info(this.class.name + ":start_from_active_state() - DO NOTHING")
 	}
 
 	/**
@@ -297,33 +305,33 @@ class ComputeStateMachine<T extends Compute> {
 	 * This method is the default implementation of the start action.
 	 */
 	def void start_execute() {
-		println(this.class.name + ":start_execute() - DO NOTHING")
+		LOGGER.info(this.class.name + ":start_execute() - DO NOTHING")
 	}
 
 	def void startAll_execute() {
-		println(this.class.name + ":startAll_execute() - DO NOTHING")
+		LOGGER.info(this.class.name + ":startAll_execute() - DO NOTHING")
 	}
 
 	/**
 	 * Stop OCCI Action.
 	 */
 	def stop(StopMethod method) {
-		println(this.class.name + ":stop(" + method + ") - current state is " + compute.state)
+		LOGGER.info(this.class.name + ":stop(" + method + ") - current state is " + compute.state)
 		if (compute.state == ComputeStatus.INACTIVE) {
-			println(this.class.name + ":stop() - already inactive state")
+			LOGGER.info(this.class.name + ":stop() - already inactive state")
 			stop_from_inactive_state(method)
 		} else if (compute.state == ComputeStatus.ACTIVE) {
-			println(this.class.name + ":stop() - move from active to inactive state")
+			LOGGER.info(this.class.name + ":stop() - move from active to inactive state")
 			stop_from_active_state(method)
 			compute.state = ComputeStatus.INACTIVE
 		} else if (compute.state == ComputeStatus.SUSPENDED) {
-			println(this.class.name + ":stop() - move from suspended to inactive state")
+			LOGGER.info(this.class.name + ":stop() - move from suspended to inactive state")
 			stop_from_suspended_state(method)
 			compute.state = ComputeStatus.INACTIVE
 		} else {
 			throw new RuntimeException("Must never happen!")
 		}
-		println(this.class.name + ":stop() - final state is " + compute.state)
+		LOGGER.info(this.class.name + ":stop() - final state is " + compute.state)
 		if(compute.state != ComputeStatus.INACTIVE) throw new RuntimeException("Must never happen!")
 	}
 
@@ -333,7 +341,7 @@ class ComputeStateMachine<T extends Compute> {
 	 * By default, this method does nothing.
 	 */
 	def stop_from_inactive_state(StopMethod method) {
-		println(this.class.name + ":stop_from_inactive_state() - DO NOTHING")
+		LOGGER.info(this.class.name + ":stop_from_inactive_state() - DO NOTHING")
 	}
 
 	/**
@@ -358,30 +366,30 @@ class ComputeStateMachine<T extends Compute> {
 	 * This method is the default implementation of the stop action.
 	 */
 	def void stop_execute(StopMethod method) {
-		println(this.class.name + ":stop_execute(" + method + ") - DO NOTHING")
+		LOGGER.info(this.class.name + ":stop_execute(" + method + ") - DO NOTHING")
 	}
 
 	/**
 	 * Restart OCCI Action.
 	 */
 	def restart(RestartMethod method) {
-		println(this.class.name + ":restart(" + method + ") - current state is " + compute.state)
+		LOGGER.info(this.class.name + ":restart(" + method + ") - current state is " + compute.state)
 		if (compute.state == ComputeStatus.INACTIVE) {
-			println(this.class.name + ":restart(" + method + ')' + " - move from inactive to active state")
+			LOGGER.info(this.class.name + ":restart(" + method + ')' + " - move from inactive to active state")
 			restart_from_inactive_state(method)
 			compute.state = ComputeStatus.ACTIVE
 		} else if (compute.state == ComputeStatus.ACTIVE) {
-			println(this.class.name + ":restart(" + method + ')' + " - move from active to active state")
+			LOGGER.info(this.class.name + ":restart(" + method + ')' + " - move from active to active state")
 			restart_from_active_state(method)
 			compute.state = ComputeStatus.ACTIVE
 		} else if (compute.state == ComputeStatus.SUSPENDED) {
-			println(this.class.name + ":stop() - move from suspended to active state")
+			LOGGER.info(this.class.name + ":stop() - move from suspended to active state")
 			restart_from_suspended_state(method)
 			compute.state = ComputeStatus.ACTIVE
 		} else {
 			throw new RuntimeException("Must never happen!")
 		}
-		println(this.class.name + ":restart(" + method + ')' + " - final state is " + compute.state)
+		LOGGER.info(this.class.name + ":restart(" + method + ')' + " - final state is " + compute.state)
 		if(compute.state != ComputeStatus.ACTIVE) throw new RuntimeException("Must never happen!")
 	}
 
@@ -416,29 +424,29 @@ class ComputeStateMachine<T extends Compute> {
 	 * This method is the default implementation of the restart action.
 	 */
 	def void restart_execute(RestartMethod method) {
-		println(this.class.name + ":restart_execute(" + method + ") - DO NOTHING")
+		LOGGER.info(this.class.name + ":restart_execute(" + method + ") - DO NOTHING")
 	}
 
 	/**
 	 * Suspend OCCI Action.
 	 */
 	def suspend(SuspendMethod method) {
-		println(this.class.name + ":suspend(" + method + ") - current state is " + compute.state)
+		LOGGER.info(this.class.name + ":suspend(" + method + ") - current state is " + compute.state)
 		if (compute.state == ComputeStatus.INACTIVE) {
-			println(this.class.name + ":suspend() - move from inactive to suspended state")
+			LOGGER.info(this.class.name + ":suspend() - move from inactive to suspended state")
 			suspend_from_inactive_state(method)
 			compute.state = ComputeStatus.SUSPENDED
 		} else if (compute.state == ComputeStatus.ACTIVE) {
-			println(this.class.name + ":suspend() - move from active to suspended state")
+			LOGGER.info(this.class.name + ":suspend() - move from active to suspended state")
 			suspend_from_active_state(method)
 			compute.state = ComputeStatus.SUSPENDED
 		} else if (compute.state == ComputeStatus.SUSPENDED) {
-			println(this.class.name + ":suspend() - already suspended state")
+			LOGGER.info(this.class.name + ":suspend() - already suspended state")
 			suspend_from_suspended_state(method)
 		} else {
 			throw new RuntimeException("Must never happen!")
 		}
-		println(this.class.name + ":suspend() - final state is " + compute.state)
+		LOGGER.info(this.class.name + ":suspend() - final state is " + compute.state)
 		if(compute.state != ComputeStatus.SUSPENDED) throw new RuntimeException("Must never happen!")
 	}
 
@@ -466,14 +474,14 @@ class ComputeStateMachine<T extends Compute> {
 	 * By default, this method does nothing.
 	 */
 	def suspend_from_suspended_state(SuspendMethod method) {
-		println(this.class.name + ":suspend_from_suspended_state() - DO NOTHING")
+		LOGGER.info(this.class.name + ":suspend_from_suspended_state() - DO NOTHING")
 	}
 
 	/**
 	 * This method is the default implementation of the suspend action.
 	 */
 	def void suspend_execute(SuspendMethod method) {
-		println(this.class.name + ":suspend_execute(" + method + ") - DO NOTHING")
+		LOGGER.info(this.class.name + ":suspend_execute(" + method + ") - DO NOTHING")
 	}
 }
 
@@ -481,6 +489,9 @@ class ComputeStateMachine<T extends Compute> {
  * This class implements an executable Docker container.
  */
 class ExecutableContainer extends ContainerImpl {
+
+	// Initialize logger for ExecutableContainer.
+	private static Logger LOGGER = LoggerFactory.getLogger(typeof(ExecutableContainer))
 	var Map<DockerClient, CreateContainerResponse> map = null
 
 	/**
@@ -492,7 +503,7 @@ class ExecutableContainer extends ContainerImpl {
 		 * Start the Docker container.
 		 */
 		override def start_execute() {
-			println("EXECUTE container start")
+			LOGGER.info("EXECUTE container start")
 			val machine = getCurrentMachine
 			if (machine.state.toString.equalsIgnoreCase("active")) {
 				val dockerContainerManager = new DockerContainerManager
@@ -504,7 +515,7 @@ class ExecutableContainer extends ContainerImpl {
 		 * Stop the Docker container.
 		 */
 		override def stop_execute(StopMethod method) {
-			println("EXECUTE container stop")
+			LOGGER.info("EXECUTE container stop")
 			val machine = getCurrentMachine
 			if (machine.state.toString.equalsIgnoreCase("active")) {
 				val dockerContainerManager = new DockerContainerManager
@@ -516,7 +527,7 @@ class ExecutableContainer extends ContainerImpl {
 		 * Restart the Docker container.
 		 */
 		override def restart_execute(RestartMethod method) {
-			println("EXECUTE container restart")
+			LOGGER.info("EXECUTE container restart")
 			stop_execute(StopMethod.GRACEFUL)
 			start_execute()
 		}
@@ -525,7 +536,7 @@ class ExecutableContainer extends ContainerImpl {
 		 * Suspend the Docker container.
 		 */
 		override def suspend_execute(SuspendMethod method) {
-			println("EXECUTE container suspend")
+			LOGGER.info("EXECUTE container suspend")
 		}
 	}
 
@@ -620,6 +631,9 @@ class ExecutableMachine extends MachineImpl {
  * This class implements an abstract Docker machine manager.
  */
 abstract class MachineManager extends ComputeStateMachine<Machine> {
+
+	// Initialize logger for MachineManager.
+	private static Logger LOGGER = LoggerFactory.getLogger(typeof(MachineManager))
 	protected Multimap<String, String> containerDependency = ArrayListMultimap.create
 	protected Machine machine
 
@@ -744,7 +758,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 			}
 		}
 
-		println("EXECUTE COMMAND: " + command.toString)
+		LOGGER.info("EXECUTE COMMAND: " + command.toString)
 	}
 
 	def void synchronize() {
@@ -771,16 +785,16 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 						if (link instanceof Link) {
 							val c = link as Contains
 							if (c.target instanceof org.occiware.clouddesigner.occi.docker.Container) {
-								this.compute.eContainer.eResource.allContents.toList.add((c.target as org.occiware.clouddesigner.occi.docker.Container))
+								this.compute.eContainer.eResource.allContents.toList.add(
+									(c.target as org.occiware.clouddesigner.occi.docker.Container))
 							}
 						}
 					}
-				
-			}
-		}
 
-	}
-else {
+				}
+			}
+
+		} else {
 			if (compute.links.size > 0) {
 
 				// Stop the containers 
@@ -821,7 +835,7 @@ else {
 
 		for (GraphNode<org.occiware.clouddesigner.occi.docker.Container> c : graph.deploymentOrder) {
 			containers.add(c.value)
-			println("--->" + c.value)
+			LOGGER.info("--->" + c.value)
 		}
 
 		// Add standalone container
@@ -830,7 +844,7 @@ else {
 				containers.add(standaloneContainer)
 			}
 		}
-		containers.forEach[c|println(c.name)]
+		containers.forEach[c|LOGGER.info(c.name)]
 		return containers
 	}
 
@@ -873,7 +887,7 @@ else {
 		}
 
 		// Execute the docker-machine stop command.
-		println("EXECUTE COMMAND: docker machine stop: " + compute.name)
+		LOGGER.info("EXECUTE COMMAND: docker machine stop: " + compute.name)
 
 	// TODO: must be implemented
 	}
@@ -882,7 +896,7 @@ else {
 	 * Restart a Docker machine.
 	 */
 	override def restart_execute(RestartMethod method) {
-		println("EXECUTE COMMAND: docker machine restart " + compute.name)
+		LOGGER.info("EXECUTE COMMAND: docker machine restart " + compute.name)
 		stop_execute(StopMethod.GRACEFUL)
 		start_execute()
 	}
@@ -891,7 +905,7 @@ else {
 	 * Suspend a Docker machine.
 	 */
 	override def suspend_execute(SuspendMethod method) {
-		println("EXECUTE COMMAND: docker machine suspend " + compute.name)
+		LOGGER.info("EXECUTE COMMAND: docker machine suspend " + compute.name)
 
 	// TODO: must be implemented
 	}
@@ -1319,6 +1333,9 @@ class ExecutableMachine_VMware_vSphere extends Machine_VMware_vSphereImpl {
 }
 
 class ExecutableDockerModel {
+
+	// Initialize logger for ExecutableDockerModel.
+	private static Logger LOGGER = LoggerFactory.getLogger(typeof(ExecutableDockerModel))
 	var public Machine machine
 	var public org.occiware.clouddesigner.occi.docker.Container container
 	var public Configuration configuration
@@ -1545,7 +1562,6 @@ class ExecutableDockerModel {
 
 	def void restart() {
 		if (machine_VirtualBox != null) {
-			println(machine_VirtualBox.name)
 			machine_VirtualBox.restart(RestartMethod.GRACEFUL)
 			return;
 		}
@@ -1631,7 +1647,7 @@ class ExecutableDockerModel {
 	def void importModel() {
 		val hosts = DockerUtil.getHosts
 		val instanceMH = new ModelHandler
-		println(hosts)
+		LOGGER.info(hosts.toString)
 		for (Map.Entry<String, String> entry : hosts.entrySet) {
 			var machine = instanceMH.getModel(entry.getKey(), entry.getValue())
 			if (!containMachine(machine)) {
