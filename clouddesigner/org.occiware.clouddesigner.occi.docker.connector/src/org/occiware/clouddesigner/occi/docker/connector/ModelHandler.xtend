@@ -1,4 +1,4 @@
- /*******************************************************************************
+/*******************************************************************************
  * Copyright (c) 2015 INRIA.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -69,8 +69,13 @@ import org.eclipse.emf.compare.match.DefaultEqualityHelperFactory
 import org.eclipse.emf.compare.match.impl.MatchEngineFactoryImpl
 import org.eclipse.emf.compare.match.impl.MatchEngineFactoryRegistryImpl
 import org.occiware.clouddesigner.occi.docker.connector.dockerjava.DockerContainerManager
+import org.slf4j.LoggerFactory
+import org.slf4j.Logger
 
 class ModelHandler {
+
+	// Initialize logger for ModelHandler.
+	private static Logger LOGGER = LoggerFactory.getLogger(typeof(ModelHandler))
 
 	/*
 	 * Dynamic EMF 
@@ -82,8 +87,8 @@ class ModelHandler {
 
 		val EList<EClassifier> eClassifiers = ePackage.EClassifiers
 		for (EClassifier eClassifier : eClassifiers) {
-			println(eClassifier.name)
-			println(" ")
+			LOGGER.info(eClassifier.name)
+			LOGGER.info(" ")
 
 			// Run through classes
 			if (eClassifier instanceof EClass) {
@@ -92,27 +97,24 @@ class ModelHandler {
 
 				// run through class's attributes
 				for (EAttribute eAttribute : eAttributes) {
-					println(eAttribute.name + "(" + eAttribute.EAttributeType.name + ") ")
+					LOGGER.info(eAttribute.name + "(" + eAttribute.EAttributeType.name + ") ")
 				}
 				if (!eClass.EAttributes.isEmpty && !eClass.EReferences.isEmpty) {
-					println()
-					println(" References: ")
+					LOGGER.info(" References: ")
 				}
 				val EList<EReference> eReferences = eClass.EReferences
 				for (EReference eReference : eReferences) {
-					println(
+					LOGGER.info(
 						eReference.getName() + "(" + eReference.EReferenceType.name + "[" + eReference.lowerBound + ".." +
 							eReference.upperBound + "])")
 				}
 				if (!eClass.getEOperations().isEmpty()) {
-					println()
-					println(" Operations: ")
+					LOGGER.info(" Operations: ")
 					for (EOperation eOperation : eClass.getEOperations()) {
-						println(eOperation.EType + " " + eOperation.name)
+						LOGGER.info(eOperation.EType + " " + eOperation.name)
 					}
 				}
 			}
-			println()
 		}
 
 	}
@@ -137,12 +139,12 @@ class ModelHandler {
 		resourceSet.resourceFactoryRegistry.extensionToFactoryMap.put("xmi", new XMIResourceFactoryImpl)
 		var File temp = File.createTempFile("tempfile", "dockerinstancesonlymodel.xmi")
 		val URI uri = URI.createURI(temp.absolutePath)
-		println(uri)
+		LOGGER.info(uri.toString)
 		val Resource r = resourceSet.createResource(uri)
 		if (r == null) {
 			throw new NullPointerException("The resource is null.")
 		}
-		println("Resource: " + r)
+		LOGGER.info("Resource: " + r)
 		r.contents.add(vboxInstance)
 		r.save(null)
 
@@ -231,7 +233,7 @@ class ModelHandler {
 			throw new NullPointerException("The resource is null.")
 		}
 		val m = resource.contents.get(0) as Machine
-		println(m)
+		LOGGER.info(m.toString)
 		return m
 	}
 
@@ -242,7 +244,7 @@ class ModelHandler {
 
 		//var File temp = File.createTempFile("tempfile", machine.name + ".xmi")
 		var File temp = new File(basePath + machine.name + ".xmi")
-		println(temp)
+		LOGGER.info(temp.absolutePath)
 		val uri = URI.createURI(temp.absolutePath)
 
 		// Load resource
@@ -319,7 +321,7 @@ class ModelHandler {
 			throw new NullPointerException("The resource is null.")
 		}
 		val m = resource.contents.get(0) as Machine
-		println(m)
+		LOGGER.info(m.toString)
 		return m
 	}
 
@@ -473,13 +475,13 @@ class ModelHandler {
 				} else {
 					newvbox.state = ComputeStatus.get(0)
 				}
-				println("Model setting: " + newvbox)
+				LOGGER.info("Model setting: " + newvbox)
 			} else if (vbox instanceof Machine_Amazon_EC2) {
 				var newvbox = vbox as Machine_Amazon_EC2
 
 				// Set values
 				machineFactory(newvbox, node, state)
-				println("Model setting: " + newvbox)
+				LOGGER.info("Model setting: " + newvbox)
 			}
 
 			// Check machine state
@@ -606,7 +608,7 @@ class ModelHandler {
 
 		//var File temp = File.createTempFile("tempfile", machine.name + ".xmi")
 		var File temp = new File(basePath + machine.name + ".xmi")
-		println(temp)
+		LOGGER.info(temp.absolutePath)
 		val uri = URI.createURI(temp.absolutePath)
 
 		// Load resource
@@ -631,7 +633,7 @@ class ModelHandler {
 
 		//var File temp = File.createTempFile("tempfile", machine.name + ".xmi")
 		var File temp = new File(basePath + container.name + ".xmi")
-		println(temp)
+		LOGGER.info(temp.absolutePath)
 		val uri = URI.createURI(temp.absolutePath)
 
 		// Load resource
