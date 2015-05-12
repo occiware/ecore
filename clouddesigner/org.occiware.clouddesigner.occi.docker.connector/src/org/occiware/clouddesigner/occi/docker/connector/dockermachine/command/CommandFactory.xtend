@@ -10,8 +10,12 @@
  *******************************************************************************/
 package org.occiware.clouddesigner.occi.docker.connector.dockermachine.command
 
-class CommandFactory {
+import org.slf4j.LoggerFactory
+import org.slf4j.Logger
 
+class CommandFactory {
+	// Initialize logger for CommandFactory.
+	private static Logger LOGGER = LoggerFactory.getLogger(typeof(CommandFactory))
 	def createInfoCommand(String machineName) {
 		val String command = String.format("docker-machine inspect %s", machineName)
 		return command
