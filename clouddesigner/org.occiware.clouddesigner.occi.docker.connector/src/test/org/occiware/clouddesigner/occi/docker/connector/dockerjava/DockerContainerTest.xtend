@@ -8,13 +8,18 @@ import org.occiware.clouddesigner.occi.docker.connector.ExecutableDockerModel
 import org.occiware.clouddesigner.occi.docker.connector.dockerjava.DockerContainerManager
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerUtil
 import org.occiware.clouddesigner.occi.docker.Container
+import org.slf4j.LoggerFactory
+import org.slf4j.Logger
 
 class DockerContainerTest {
+		// Initialize logger for ModelHandler.
+	private static Logger LOGGER = LoggerFactory.getLogger(typeof(DockerContainerTest))
+	
 	def static void main(String[] args) {
 
 		// Initialize the executable Docker factory.
 		val init = ExecutableDockerFactory.init()
-		println("Running DockerContainerTest ...")
+		LOGGER.info("Running DockerContainerTest ...")
 		val instance = new DockerContainerManager
 		val instanceExecDocker = new ExecutableDockerModel
 
