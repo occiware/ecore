@@ -12,6 +12,8 @@ package org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect
 
 import com.github.dockerjava.api.DockerClient
 import com.github.dockerjava.api.command.CreateContainerResponse
+import com.google.common.collect.ArrayListMultimap
+import com.google.common.collect.Multimap
 import fr.inria.diverse.k3.al.annotationprocessor.Aspect
 import fr.inria.diverse.k3.al.annotationprocessor.OverrideAspectMethod
 import fr.inria.diverse.k3.al.annotationprocessor.ReplaceAspectMethod
@@ -47,6 +49,8 @@ import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.Pr
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerUtil
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.ProcessManager
 import org.occiware.clouddesigner.occi.infrastructure.ComputeStatus
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 
 import static extension org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.ContainerAspect.*
 import static extension org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineAmazonEC2Aspect.*
@@ -62,11 +66,10 @@ import static extension org.occiware.clouddesigner.occi.docker.connector.dockerm
 import static extension org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineVMwarevSphereAspect.*
 import static extension org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineVirtualBoxAspect.*
 import static extension org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.Machine_VMwareFusionAspect.*
-import java.util.LinkedHashMap
-import com.google.common.collect.Multimap
-import com.google.common.collect.ArrayListMultimap
 
 class DockerAspect {
+		// Initialize logger for DockerAspect.
+	private static Logger LOGGER = LoggerFactory.getLogger(typeof(DockerAspect))
 	var public Machine machine
 	var public Machine_VirtualBox machine_VirtualBox
 	var public Machine_Amazon_EC2 machine_Amazon_EC2
@@ -385,7 +388,7 @@ class DockerAspect {
 	def void importModel() {
 		val hosts = DockerUtil.getHosts
 		val instanceMH = new ModelHandler
-		println(hosts)
+		LOGGER.info(hosts.toString)
 		for (Map.Entry<String, String> entry : hosts.entrySet) {
 			var machine = instanceMH.getModel(entry.getKey(), entry.getValue())
 			if (!containMachine(machine)) {
@@ -424,12 +427,14 @@ class MachineAspect {
 
 @Aspect(className=Machine_VirtualBox)
 class MachineVirtualBoxAspect extends MachineAspect {
+	// Initialize logger for MachineVirtualBoxAspect.
+	private static Logger LOGGER = LoggerFactory.getLogger(typeof(MachineVirtualBoxAspect))
+	
 	protected boolean isDeployed = false
 	protected Multimap<String, String> containerDependency = ArrayListMultimap.create
 
 	@ReplaceAspectMethod
 	def void start() {
-		println("Je redefinis la methode start \n\n\n")
 	}
 
 	@OverrideAspectMethod
@@ -630,8 +635,7 @@ class MachineVirtualBoxAspect extends MachineAspect {
 				}
 			}
 		}
-		println("First time")
-		println(_self.containerDependency)
+		println(_self.containerDependency.toString)
 		for (GraphNode<Container> c : graph.deploymentOrder) {
 			containers.add(c.value)
 			println("--->" + c.value)
