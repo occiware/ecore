@@ -16,8 +16,12 @@ import org.eclipse.emf.ecore.util.EcoreUtil
 import org.occiware.clouddesigner.occi.docker.DockerFactory
 import org.occiware.clouddesigner.occi.docker.Machine
 import org.occiware.clouddesigner.occi.docker.Machine_VirtualBox
+import org.slf4j.LoggerFactory
+import org.slf4j.Logger
 
 class DockerObserver {
+		// Initialize logger for CommandFactory.
+	private static Logger LOGGER = LoggerFactory.getLogger(typeof(DockerObserver))
 
 	def static listener() {
 
@@ -29,10 +33,10 @@ class DockerObserver {
 		vbox.eAdapters.add(
 			new EContentAdapter() {
 				public override notifyChanged(Notification notification) {
-					println("Ancienne Valeur : " + notification.oldValue)
-					println("Nouvelle Valeur : " + notification.newValue)
+					LOGGER.info("Ancienne Valeur : " + notification.oldValue)
+					LOGGER.info("Nouvelle Valeur : " + notification.newValue)
 					val m = notification.notifier as Machine_VirtualBox
-					println("La memoire" + m.memory)
+					LOGGER.info("La memoire" + m.memory)
 				}
 			}
 		)

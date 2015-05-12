@@ -15,16 +15,18 @@ import org.occiware.clouddesigner.occi.docker.Machine
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.command.CommandFactory
 import org.occiware.clouddesigner.occi.infrastructure.ComputeStatus
 import static extension org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineVirtualBoxAspect.*import org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.DockerAspect
-
+import org.slf4j.LoggerFactory
+import org.slf4j.Logger
 
 class DockerMachineManager {
-
+	// Initialize logger for CommandFactory.
+	private static Logger LOGGER = LoggerFactory.getLogger(typeof(DockerMachineManager))
 	val private static cf = new CommandFactory
 	val private static instanceAspect = new DockerAspect
 
 	def static boolean createHostCmd(Runtime runtime, Machine machine) {
 		val String command = instanceAspect.loadMachine_VirtualBox.createMachineCommand
-		println(" Run ::==> " + command)
+		LOGGER.info(" Run ::==> " + command)
 		ProcessManager.runCommand(command, runtime, true)
 		// Set machine state
 		machine.state = ComputeStatus.get(0)
