@@ -14,9 +14,13 @@ import java.util.ArrayList
 import java.util.HashMap
 import java.util.List
 import java.util.Set
-import java.util.Iterator
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 
 class Graph<T> {
+	
+	// Initialize logger for Graph.
+	private static Logger LOGGER = LoggerFactory.getLogger(typeof(Graph))
 
 	/*
          * Organize the deployment order of the Nodes
@@ -129,7 +133,7 @@ class Graph<T> {
 		var currentNodes = getLeafNodes
 		var orphnanNodes = getOrphanNodes
 		for (GraphNode<T> m : orphnanNodes) {
-			println("Orphans: " + m.value)
+			LOGGER.info("Orphans: " + m.value)
 		}
 		var List<GraphNode<T>> newleafNodes = new ArrayList<GraphNode<T>>
 		while (!currentNodes.isEmpty) {

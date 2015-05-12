@@ -35,10 +35,14 @@ import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.Docke
 import com.google.common.collect.Multimap
 import java.util.LinkedHashSet
 import java.util.ArrayList
+import org.slf4j.LoggerFactory
+import org.slf4j.Logger
 
 class DockerContainerManager {
 	private DockerClient dockerClient = null
 	private List<String> images = newArrayList
+	// Initialize logger for DockerContainerManager.
+	private static Logger LOGGER = LoggerFactory.getLogger(typeof(DockerContainerManager))
 
 	new() {
 	}
@@ -369,7 +373,7 @@ class DockerContainerManager {
 
 	def pullImage(Machine machine, String image) {
 
-		println("Image setting: " + image)
+		LOGGER.info("Image setting: " + image)
 
 		var DockerClient dockerClient = null
 
@@ -385,13 +389,13 @@ class DockerContainerManager {
 		}
 		var String output = null
 		if (!images.contains(containerImage)) {
-			println("Downloading image: ->" + containerImage)
+			LOGGER.info("Downloading image: ->" + containerImage)
 			images.add(containerImage)
 
 			// Download a pre-built image
 			output = DockerUtil.asString(dockerClient.pullImageCmd(containerImage).withTag("latest").exec)
-			println(output)
-			println("Download is finished")
+			LOGGER.info(output)
+			LOGGER.info("Download is finished")
 		}
 
 		return dockerClient
@@ -401,14 +405,14 @@ class DockerContainerManager {
 	def DockerClient setConfig(Machine machine) {
 		val lconfig = new DockerConfig
 		val dockerClientconfig = lconfig.loadConfig
-		println(machine.name)
+		LOGGER.info(machine.name)
 		var String ENDPOINT = DockerMachineManager.urlCmd(Runtime.getRuntime, machine.name)
 		val String certPath = DockerUtil.getEnv(machine.name)
 		val String port = ":2376"
 		val url = new URL(ENDPOINT)
 		val URI uri = new URI(url.getProtocol(), url.getHost(), url.getPath(), url.getQuery(), null)
 		val dockerUri = uri.toString + port
-		println(uri.toString)
+		LOGGER.info(uri.toString)
 		val DockerClientConfig config = DockerClientConfig.createDefaultConfigBuilder.withVersion(
 			dockerClientconfig.get("docker.version").toString).withUri(dockerUri).withUsername(
 			dockerClientconfig.get("docker.username").toString).withPassword(
