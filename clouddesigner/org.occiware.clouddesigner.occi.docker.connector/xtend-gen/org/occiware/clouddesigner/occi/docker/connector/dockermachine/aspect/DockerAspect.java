@@ -16,7 +16,6 @@ import java.util.Map;
 import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.occiware.clouddesigner.OCCI.Configuration;
@@ -51,9 +50,13 @@ import org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.Mac
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineVirtualBoxAspect;
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.Machine_VMwareFusionAspect;
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @SuppressWarnings("all")
 public class DockerAspect {
+  private static Logger LOGGER = LoggerFactory.getLogger(DockerAspect.class);
+  
   public Machine machine;
   
   public Machine_VirtualBox machine_VirtualBox;
@@ -383,7 +386,8 @@ public class DockerAspect {
   public void importModel() {
     final Map<String, String> hosts = DockerUtil.getHosts();
     final ModelHandler instanceMH = new ModelHandler();
-    InputOutput.<Map<String, String>>println(hosts);
+    String _string = hosts.toString();
+    DockerAspect.LOGGER.info(_string);
     Set<Map.Entry<String, String>> _entrySet = hosts.entrySet();
     for (final Map.Entry<String, String> entry : _entrySet) {
       {

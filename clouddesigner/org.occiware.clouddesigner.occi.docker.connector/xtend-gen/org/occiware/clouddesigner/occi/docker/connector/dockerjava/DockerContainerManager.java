@@ -44,19 +44,22 @@ import java.util.Set;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.occiware.clouddesigner.occi.docker.Container;
 import org.occiware.clouddesigner.occi.docker.DockerFactory;
 import org.occiware.clouddesigner.occi.docker.Machine;
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerMachineManager;
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerConfig;
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @SuppressWarnings("all")
 public class DockerContainerManager {
   private DockerClient dockerClient = null;
   
   private List<String> images = CollectionLiterals.<String>newArrayList();
+  
+  private static Logger LOGGER = LoggerFactory.getLogger(DockerContainerManager.class);
   
   public DockerContainerManager() {
   }
@@ -519,7 +522,7 @@ public class DockerContainerManager {
   }
   
   public DockerClient pullImage(final Machine machine, final String image) {
-    InputOutput.<String>println(("Image setting: " + image));
+    DockerContainerManager.LOGGER.info(("Image setting: " + image));
     DockerClient dockerClient = null;
     boolean _notEquals = (!Objects.equal(this.dockerClient, null));
     if (_notEquals) {
@@ -537,15 +540,15 @@ public class DockerContainerManager {
     boolean _contains = this.images.contains(containerImage);
     boolean _not = (!_contains);
     if (_not) {
-      InputOutput.<String>println(("Downloading image: ->" + containerImage));
+      DockerContainerManager.LOGGER.info(("Downloading image: ->" + containerImage));
       this.images.add(containerImage);
       PullImageCmd _pullImageCmd = dockerClient.pullImageCmd(containerImage);
       PullImageCmd _withTag = _pullImageCmd.withTag("latest");
       InputStream _exec = _withTag.exec();
       String _asString = DockerUtil.asString(_exec);
       output = _asString;
-      InputOutput.<String>println(output);
-      InputOutput.<String>println("Download is finished");
+      DockerContainerManager.LOGGER.info(output);
+      DockerContainerManager.LOGGER.info("Download is finished");
     }
     return dockerClient;
   }
@@ -555,7 +558,7 @@ public class DockerContainerManager {
       final DockerConfig lconfig = new DockerConfig();
       final Properties dockerClientconfig = lconfig.loadConfig();
       String _name = machine.getName();
-      InputOutput.<String>println(_name);
+      DockerContainerManager.LOGGER.info(_name);
       Runtime _runtime = Runtime.getRuntime();
       String _name_1 = machine.getName();
       String ENDPOINT = DockerMachineManager.urlCmd(_runtime, _name_1);
@@ -571,7 +574,7 @@ public class DockerContainerManager {
       String _string = uri.toString();
       final String dockerUri = (_string + port);
       String _string_1 = uri.toString();
-      InputOutput.<String>println(_string_1);
+      DockerContainerManager.LOGGER.info(_string_1);
       DockerClientConfig.DockerClientConfigBuilder _createDefaultConfigBuilder = DockerClientConfig.createDefaultConfigBuilder();
       Object _get = dockerClientconfig.get("docker.version");
       String _string_2 = _get.toString();

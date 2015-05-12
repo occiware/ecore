@@ -16,12 +16,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.occiware.clouddesigner.occi.docker.connector.dockerjava.graph.GraphNode;
 import org.occiware.clouddesigner.occi.docker.connector.dockerjava.graph.NodeValueListener;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @SuppressWarnings("all")
 public class Graph<T extends Object> {
+  private static Logger LOGGER = LoggerFactory.getLogger(Graph.class);
+  
   /**
    * Organize the deployment order of the Nodes
    */
@@ -158,7 +161,7 @@ public class Graph<T extends Object> {
     List<GraphNode<T>> currentNodes = this.getLeafNodes();
     List<GraphNode<T>> orphnanNodes = this.getOrphanNodes();
     for (final GraphNode<T> m : orphnanNodes) {
-      InputOutput.<String>println(("Orphans: " + m.value));
+      Graph.LOGGER.info(("Orphans: " + m.value));
     }
     List<GraphNode<T>> newleafNodes = new ArrayList<GraphNode<T>>();
     while ((!currentNodes.isEmpty())) {

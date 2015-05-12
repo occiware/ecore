@@ -15,13 +15,16 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.occiware.clouddesigner.occi.docker.DockerFactory;
 import org.occiware.clouddesigner.occi.docker.Machine;
 import org.occiware.clouddesigner.occi.docker.Machine_VirtualBox;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @SuppressWarnings("all")
 public class DockerObserver {
+  private static Logger LOGGER = LoggerFactory.getLogger(DockerObserver.class);
+  
   public static Machine_VirtualBox listener() {
     final Machine_VirtualBox vbox = DockerFactory.eINSTANCE.createMachine_VirtualBox();
     EList<Adapter> _eAdapters = vbox.eAdapters();
@@ -30,15 +33,15 @@ public class DockerObserver {
         public void notifyChanged(final Notification notification) {
           Object _oldValue = notification.getOldValue();
           String _plus = ("Ancienne Valeur : " + _oldValue);
-          InputOutput.<String>println(_plus);
+          DockerObserver.LOGGER.info(_plus);
           Object _newValue = notification.getNewValue();
           String _plus_1 = ("Nouvelle Valeur : " + _newValue);
-          InputOutput.<String>println(_plus_1);
+          DockerObserver.LOGGER.info(_plus_1);
           Object _notifier = notification.getNotifier();
           final Machine_VirtualBox m = ((Machine_VirtualBox) _notifier);
           float _memory = m.getMemory();
           String _plus_2 = ("La memoire" + Float.valueOf(_memory));
-          InputOutput.<String>println(_plus_2);
+          DockerObserver.LOGGER.info(_plus_2);
         }
       });
     return vbox;

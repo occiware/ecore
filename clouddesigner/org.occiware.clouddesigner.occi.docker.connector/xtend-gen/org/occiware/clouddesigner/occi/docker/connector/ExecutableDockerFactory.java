@@ -11,7 +11,6 @@
  */
 package org.occiware.clouddesigner.occi.docker.connector;
 
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.occiware.clouddesigner.occi.docker.DockerFactory;
 import org.occiware.clouddesigner.occi.docker.DockerPackage;
 import org.occiware.clouddesigner.occi.docker.Machine;
@@ -42,6 +41,8 @@ import org.occiware.clouddesigner.occi.docker.connector.ExecutableMachine_VMware
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableMachine_VMware_vSphere;
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableMachine_VirtualBox;
 import org.occiware.clouddesigner.occi.docker.impl.DockerFactoryImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * This class overrides the generated EMF factory of the Docker package.
@@ -51,6 +52,8 @@ import org.occiware.clouddesigner.occi.docker.impl.DockerFactoryImpl;
  */
 @SuppressWarnings("all")
 public class ExecutableDockerFactory extends DockerFactoryImpl {
+  private static Logger LOGGER = LoggerFactory.getLogger(ExecutableDockerFactory.class);
+  
   /**
    * Initialize the ExecutableDockerFactory singleton.
    */
@@ -67,7 +70,7 @@ public class ExecutableDockerFactory extends DockerFactoryImpl {
     Class<? extends ExecutableDockerFactory> _class = this.getClass();
     String _name = _class.getName();
     String _plus = (_name + ":createContainer()");
-    InputOutput.<String>println(_plus);
+    ExecutableDockerFactory.LOGGER.info(_plus);
     return new ExecutableContainer();
   }
   
@@ -78,7 +81,7 @@ public class ExecutableDockerFactory extends DockerFactoryImpl {
     Class<? extends ExecutableDockerFactory> _class = this.getClass();
     String _name = _class.getName();
     String _plus = (_name + ":createMachine()");
-    InputOutput.<String>println(_plus);
+    ExecutableDockerFactory.LOGGER.info(_plus);
     return new ExecutableMachine();
   }
   
@@ -91,7 +94,7 @@ public class ExecutableDockerFactory extends DockerFactoryImpl {
       Class<? extends ExecutableDockerFactory> _class = this.getClass();
       String _name = _class.getName();
       String _plus = (_name + ":createMachine_Amazon_EC2()");
-      InputOutput.<String>println(_plus);
+      ExecutableDockerFactory.LOGGER.info(_plus);
       _xblockexpression = new ExecutableMachine_Amazon_EC2();
     }
     return _xblockexpression;
@@ -106,7 +109,7 @@ public class ExecutableDockerFactory extends DockerFactoryImpl {
       Class<? extends ExecutableDockerFactory> _class = this.getClass();
       String _name = _class.getName();
       String _plus = (_name + ":createMachine_Digital_Ocean()");
-      InputOutput.<String>println(_plus);
+      ExecutableDockerFactory.LOGGER.info(_plus);
       _xblockexpression = new ExecutableMachine_Digital_Ocean();
     }
     return _xblockexpression;
@@ -121,7 +124,7 @@ public class ExecutableDockerFactory extends DockerFactoryImpl {
       Class<? extends ExecutableDockerFactory> _class = this.getClass();
       String _name = _class.getName();
       String _plus = (_name + ":createMachine_Google_Compute_Engine()");
-      InputOutput.<String>println(_plus);
+      ExecutableDockerFactory.LOGGER.info(_plus);
       _xblockexpression = new ExecutableMachine_Google_Compute_Engine();
     }
     return _xblockexpression;
@@ -136,7 +139,7 @@ public class ExecutableDockerFactory extends DockerFactoryImpl {
       Class<? extends ExecutableDockerFactory> _class = this.getClass();
       String _name = _class.getName();
       String _plus = (_name + ":createMachine_IBM_SoftLayer()");
-      InputOutput.<String>println(_plus);
+      ExecutableDockerFactory.LOGGER.info(_plus);
       _xblockexpression = new ExecutableMachine_IBM_SoftLayer();
     }
     return _xblockexpression;
@@ -151,7 +154,7 @@ public class ExecutableDockerFactory extends DockerFactoryImpl {
       Class<? extends ExecutableDockerFactory> _class = this.getClass();
       String _name = _class.getName();
       String _plus = (_name + ":createMachine_Microsoft_Azure()");
-      InputOutput.<String>println(_plus);
+      ExecutableDockerFactory.LOGGER.info(_plus);
       _xblockexpression = new ExecutableMachine_Microsoft_Azure();
     }
     return _xblockexpression;
@@ -166,7 +169,7 @@ public class ExecutableDockerFactory extends DockerFactoryImpl {
       Class<? extends ExecutableDockerFactory> _class = this.getClass();
       String _name = _class.getName();
       String _plus = (_name + ":createMachine_Microsoft_Hyper_V()");
-      InputOutput.<String>println(_plus);
+      ExecutableDockerFactory.LOGGER.info(_plus);
       _xblockexpression = new ExecutableMachine_Microsoft_Hyper_V();
     }
     return _xblockexpression;
@@ -181,7 +184,7 @@ public class ExecutableDockerFactory extends DockerFactoryImpl {
       Class<? extends ExecutableDockerFactory> _class = this.getClass();
       String _name = _class.getName();
       String _plus = (_name + ":createMachine_OpenStack()");
-      InputOutput.<String>println(_plus);
+      ExecutableDockerFactory.LOGGER.info(_plus);
       _xblockexpression = new ExecutableMachine_OpenStack();
     }
     return _xblockexpression;
@@ -196,7 +199,7 @@ public class ExecutableDockerFactory extends DockerFactoryImpl {
       Class<? extends ExecutableDockerFactory> _class = this.getClass();
       String _name = _class.getName();
       String _plus = (_name + ":createMachine_Rackspace()");
-      InputOutput.<String>println(_plus);
+      ExecutableDockerFactory.LOGGER.info(_plus);
       _xblockexpression = new ExecutableMachine_Rackspace();
     }
     return _xblockexpression;
@@ -211,7 +214,7 @@ public class ExecutableDockerFactory extends DockerFactoryImpl {
       Class<? extends ExecutableDockerFactory> _class = this.getClass();
       String _name = _class.getName();
       String _plus = (_name + ":createMachine_VirtualBox()");
-      InputOutput.<String>println(_plus);
+      ExecutableDockerFactory.LOGGER.info(_plus);
       _xblockexpression = new ExecutableMachine_VirtualBox();
     }
     return _xblockexpression;
@@ -226,7 +229,7 @@ public class ExecutableDockerFactory extends DockerFactoryImpl {
       Class<? extends ExecutableDockerFactory> _class = this.getClass();
       String _name = _class.getName();
       String _plus = (_name + ":createMachine_VMware_Fusion()");
-      InputOutput.<String>println(_plus);
+      ExecutableDockerFactory.LOGGER.info(_plus);
       _xblockexpression = new ExecutableMachine_VMware_Fusion();
     }
     return _xblockexpression;
@@ -238,7 +241,7 @@ public class ExecutableDockerFactory extends DockerFactoryImpl {
   public Machine_VMware_vCloud_Air createMachine_VMware_vCloud_Air() {
     ExecutableMachine_VMware_vCloud_Air _xblockexpression = null;
     {
-      InputOutput.<String>println("ExecutableDockerFactory:createMachine_VMware_vCloud_Air()");
+      ExecutableDockerFactory.LOGGER.info("ExecutableDockerFactory:createMachine_VMware_vCloud_Air()");
       _xblockexpression = new ExecutableMachine_VMware_vCloud_Air();
     }
     return _xblockexpression;
@@ -253,7 +256,7 @@ public class ExecutableDockerFactory extends DockerFactoryImpl {
       Class<? extends ExecutableDockerFactory> _class = this.getClass();
       String _name = _class.getName();
       String _plus = (_name + ":createMachine_VMware_vSphere()");
-      InputOutput.<String>println(_plus);
+      ExecutableDockerFactory.LOGGER.info(_plus);
       _xblockexpression = new ExecutableMachine_VMware_vSphere();
     }
     return _xblockexpression;

@@ -12,9 +12,14 @@ package org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect;
 
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
+import org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineVirtualBoxAspect;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @SuppressWarnings("all")
 public class MachineVirtualBoxAspectMachine_VirtualBoxAspectProperties {
+  public static Logger LOGGER = LoggerFactory.getLogger(MachineVirtualBoxAspect.class);
+  
   public boolean isDeployed = false;
   
   public Multimap<String, String> containerDependency = ArrayListMultimap.<String, String>create();

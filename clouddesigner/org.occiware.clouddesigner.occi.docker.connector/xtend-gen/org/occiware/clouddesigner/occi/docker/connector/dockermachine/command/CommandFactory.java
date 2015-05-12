@@ -10,8 +10,13 @@
  */
 package org.occiware.clouddesigner.occi.docker.connector.dockermachine.command;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 @SuppressWarnings("all")
 public class CommandFactory {
+  private static Logger LOGGER = LoggerFactory.getLogger(CommandFactory.class);
+  
   public String createInfoCommand(final String machineName) {
     final String command = String.format("docker-machine inspect %s", machineName);
     return command;

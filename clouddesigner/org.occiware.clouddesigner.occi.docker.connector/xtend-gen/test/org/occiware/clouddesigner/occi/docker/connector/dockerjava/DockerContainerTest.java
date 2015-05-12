@@ -4,7 +4,6 @@ import com.google.common.base.Objects;
 import java.security.SecureRandom;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtext.xbase.lib.ExclusiveRange;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.occiware.clouddesigner.OCCI.Link;
 import org.occiware.clouddesigner.occi.docker.Container;
 import org.occiware.clouddesigner.occi.docker.Contains;
@@ -15,12 +14,16 @@ import org.occiware.clouddesigner.occi.docker.connector.ExecutableDockerFactory;
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableDockerModel;
 import org.occiware.clouddesigner.occi.docker.connector.dockerjava.DockerContainerManager;
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @SuppressWarnings("all")
 public class DockerContainerTest {
+  private static Logger LOGGER = LoggerFactory.getLogger(DockerContainerTest.class);
+  
   public static void main(final String[] args) {
     final DockerFactory init = ExecutableDockerFactory.init();
-    InputOutput.<String>println("Running DockerContainerTest ...");
+    DockerContainerTest.LOGGER.info("Running DockerContainerTest ...");
     final DockerContainerManager instance = new DockerContainerManager();
     final ExecutableDockerModel instanceExecDocker = new ExecutableDockerModel();
     DockerFactory _dockerFactory = DockerPackage.eINSTANCE.getDockerFactory();

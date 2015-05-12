@@ -10,7 +10,6 @@
  */
 package org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager;
 
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.occiware.clouddesigner.occi.docker.Machine;
 import org.occiware.clouddesigner.occi.docker.Machine_VirtualBox;
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.DockerAspect;
@@ -18,9 +17,13 @@ import org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.Mac
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.command.CommandFactory;
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.ProcessManager;
 import org.occiware.clouddesigner.occi.infrastructure.ComputeStatus;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @SuppressWarnings("all")
 public class DockerMachineManager {
+  private static Logger LOGGER = LoggerFactory.getLogger(DockerMachineManager.class);
+  
   private final static CommandFactory cf = new CommandFactory();
   
   private final static DockerAspect instanceAspect = new DockerAspect();
@@ -28,7 +31,7 @@ public class DockerMachineManager {
   public static boolean createHostCmd(final Runtime runtime, final Machine machine) {
     Machine_VirtualBox _loadMachine_VirtualBox = DockerMachineManager.instanceAspect.loadMachine_VirtualBox();
     final String command = MachineVirtualBoxAspect.createMachineCommand(_loadMachine_VirtualBox);
-    InputOutput.<String>println((" Run ::==> " + command));
+    DockerMachineManager.LOGGER.info((" Run ::==> " + command));
     ProcessManager.runCommand(command, runtime, true);
     ComputeStatus _get = ComputeStatus.get(0);
     machine.setState(_get);

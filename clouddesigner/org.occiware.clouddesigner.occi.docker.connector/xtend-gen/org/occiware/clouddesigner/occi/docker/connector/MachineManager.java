@@ -22,7 +22,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
@@ -44,12 +43,16 @@ import org.occiware.clouddesigner.occi.infrastructure.ComputeStatus;
 import org.occiware.clouddesigner.occi.infrastructure.RestartMethod;
 import org.occiware.clouddesigner.occi.infrastructure.StopMethod;
 import org.occiware.clouddesigner.occi.infrastructure.SuspendMethod;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * This class implements an abstract Docker machine manager.
  */
 @SuppressWarnings("all")
 public abstract class MachineManager extends ComputeStateMachine<Machine> {
+  private static Logger LOGGER = LoggerFactory.getLogger(MachineManager.class);
+  
   protected Multimap<String, String> containerDependency = ArrayListMultimap.<String, String>create();
   
   protected Machine machine;
@@ -194,7 +197,7 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
     }
     String _string_1 = command.toString();
     String _plus = ("EXECUTE COMMAND: " + _string_1);
-    InputOutput.<String>println(_plus);
+    MachineManager.LOGGER.info(_plus);
   }
   
   public void synchronize() {
@@ -308,7 +311,7 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
     for (final GraphNode<Container> c : _deploymentOrder) {
       {
         containers.add(c.value);
-        InputOutput.<String>println(("--->" + c.value));
+        MachineManager.LOGGER.info(("--->" + c.value));
       }
     }
     List<Container> _leafContainers = this.leafContainers();
@@ -322,7 +325,7 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
     final Procedure1<Container> _function = new Procedure1<Container>() {
       public void apply(final Container c) {
         String _name = c.getName();
-        InputOutput.<String>println(_name);
+        MachineManager.LOGGER.info(_name);
       }
     };
     IterableExtensions.<Container>forEach(containers, _function);
@@ -380,7 +383,7 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
     }
     String _name_1 = this.compute.getName();
     String _plus = ("EXECUTE COMMAND: docker machine stop: " + _name_1);
-    InputOutput.<String>println(_plus);
+    MachineManager.LOGGER.info(_plus);
   }
   
   /**
@@ -389,7 +392,7 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
   public void restart_execute(final RestartMethod method) {
     String _name = this.compute.getName();
     String _plus = ("EXECUTE COMMAND: docker machine restart " + _name);
-    InputOutput.<String>println(_plus);
+    MachineManager.LOGGER.info(_plus);
     this.stop_execute(StopMethod.GRACEFUL);
     this.start_execute();
   }
@@ -400,6 +403,6 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
   public void suspend_execute(final SuspendMethod method) {
     String _name = this.compute.getName();
     String _plus = ("EXECUTE COMMAND: docker machine suspend " + _name);
-    InputOutput.<String>println(_plus);
+    MachineManager.LOGGER.info(_plus);
   }
 }

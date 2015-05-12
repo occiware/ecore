@@ -19,7 +19,6 @@ import java.util.HashMap;
 import java.util.Map;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.occiware.clouddesigner.OCCI.Resource;
 import org.occiware.clouddesigner.occi.docker.Contains;
 import org.occiware.clouddesigner.occi.docker.DockerFactory;
@@ -33,12 +32,16 @@ import org.occiware.clouddesigner.occi.infrastructure.ComputeStatus;
 import org.occiware.clouddesigner.occi.infrastructure.RestartMethod;
 import org.occiware.clouddesigner.occi.infrastructure.StopMethod;
 import org.occiware.clouddesigner.occi.infrastructure.SuspendMethod;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * This class implements an executable Docker container.
  */
 @SuppressWarnings("all")
 public class ExecutableContainer extends ContainerImpl {
+  private static Logger LOGGER = LoggerFactory.getLogger(ExecutableContainer.class);
+  
   private Map<DockerClient, CreateContainerResponse> map = null;
   
   /**
@@ -49,7 +52,7 @@ public class ExecutableContainer extends ContainerImpl {
      * Start the Docker container.
      */
     public void start_execute() {
-      InputOutput.<String>println("EXECUTE container start");
+      ExecutableContainer.LOGGER.info("EXECUTE container start");
       final Machine machine = ExecutableContainer.this.getCurrentMachine();
       ComputeStatus _state = machine.getState();
       String _string = _state.toString();
@@ -65,7 +68,7 @@ public class ExecutableContainer extends ContainerImpl {
      * Stop the Docker container.
      */
     public void stop_execute(final StopMethod method) {
-      InputOutput.<String>println("EXECUTE container stop");
+      ExecutableContainer.LOGGER.info("EXECUTE container stop");
       final Machine machine = ExecutableContainer.this.getCurrentMachine();
       ComputeStatus _state = machine.getState();
       String _string = _state.toString();
@@ -81,7 +84,7 @@ public class ExecutableContainer extends ContainerImpl {
      * Restart the Docker container.
      */
     public void restart_execute(final RestartMethod method) {
-      InputOutput.<String>println("EXECUTE container restart");
+      ExecutableContainer.LOGGER.info("EXECUTE container restart");
       this.stop_execute(StopMethod.GRACEFUL);
       this.start_execute();
     }
@@ -90,7 +93,7 @@ public class ExecutableContainer extends ContainerImpl {
      * Suspend the Docker container.
      */
     public void suspend_execute(final SuspendMethod method) {
-      InputOutput.<String>println("EXECUTE container suspend");
+      ExecutableContainer.LOGGER.info("EXECUTE container suspend");
     }
   };
   

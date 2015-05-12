@@ -13,6 +13,9 @@ package org.occiware.clouddesigner.occi.docker.connector.dockerjava.graph;
 import com.google.common.base.Objects;
 import java.util.ArrayList;
 import java.util.List;
+import org.occiware.clouddesigner.occi.docker.connector.dockerjava.graph.Graph;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @SuppressWarnings("all")
 public class GraphNode<T extends Object> {
@@ -21,6 +24,8 @@ public class GraphNode<T extends Object> {
   private List<GraphNode<T>> comingInNodes;
   
   private List<GraphNode<T>> goingOutNodes;
+  
+  private static Logger LOGGER = LoggerFactory.getLogger(Graph.class);
   
   /**
    * Adds an incoming node to the current node

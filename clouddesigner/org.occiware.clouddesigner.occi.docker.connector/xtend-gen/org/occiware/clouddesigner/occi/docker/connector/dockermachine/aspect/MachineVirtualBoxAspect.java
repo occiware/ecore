@@ -43,6 +43,7 @@ import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.Pr
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerUtil;
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.ProcessManager;
 import org.occiware.clouddesigner.occi.infrastructure.ComputeStatus;
+import org.slf4j.Logger;
 
 @Aspect(className = Machine_VirtualBox.class)
 @SuppressWarnings("all")
@@ -128,6 +129,18 @@ public class MachineVirtualBoxAspect extends MachineAspect {
     _privk3_synchronize(_self_, _self);
   }
   
+  private static Logger LOGGER(final Machine_VirtualBox _self) {
+    org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineVirtualBoxAspectMachine_VirtualBoxAspectProperties _self_ = org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineVirtualBoxAspectMachine_VirtualBoxAspectContext.getSelf(_self);
+    Object result = null;
+    result =_privk3_LOGGER(_self_, _self);
+    return (org.slf4j.Logger)result;
+  }
+  
+  private static void LOGGER(final Machine_VirtualBox _self, final Logger LOGGER) {
+    org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineVirtualBoxAspectMachine_VirtualBoxAspectProperties _self_ = org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineVirtualBoxAspectMachine_VirtualBoxAspectContext.getSelf(_self);
+    _privk3_LOGGER(_self_, _self,LOGGER);
+  }
+  
   protected static boolean isDeployed(final Machine_VirtualBox _self) {
     org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineVirtualBoxAspectMachine_VirtualBoxAspectProperties _self_ = org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineVirtualBoxAspectMachine_VirtualBoxAspectContext.getSelf(_self);
     Object result = null;
@@ -153,7 +166,6 @@ public class MachineVirtualBoxAspect extends MachineAspect {
   }
   
   protected static void _privk3_start(final MachineVirtualBoxAspectMachine_VirtualBoxAspectProperties _self_, final Machine_VirtualBox _self) {
-    InputOutput.<String>println("Je redefinis la methode start \n\n\n");
   }
   
   private static String super_createMachineCommand(final Machine_VirtualBox _self) {
@@ -445,9 +457,9 @@ public class MachineVirtualBoxAspect extends MachineAspect {
         }
       }
     }
-    InputOutput.<String>println("First time");
     Multimap<String, String> _containerDependency = MachineVirtualBoxAspect.containerDependency(_self);
-    InputOutput.<Multimap<String, String>>println(_containerDependency);
+    String _string = _containerDependency.toString();
+    InputOutput.<String>println(_string);
     List<GraphNode<Container>> _deploymentOrder = graph.deploymentOrder();
     for (final GraphNode<Container> c : _deploymentOrder) {
       {
@@ -522,6 +534,25 @@ public class MachineVirtualBoxAspect extends MachineAspect {
         }
       }
     }
+  }
+  
+  protected static Logger _privk3_LOGGER(final MachineVirtualBoxAspectMachine_VirtualBoxAspectProperties _self_, final Machine_VirtualBox _self) {
+     return _self_.LOGGER; 
+  }
+  
+  protected static void _privk3_LOGGER(final MachineVirtualBoxAspectMachine_VirtualBoxAspectProperties _self_, final Machine_VirtualBox _self, final Logger LOGGER) {
+    _self_.LOGGER = LOGGER; try {
+    
+    			for (java.lang.reflect.Method m : _self.getClass().getMethods()) {
+    				if (m.getName().equals("set" + "LOGGER")
+    						&& m.getParameterTypes().length == 1) {
+    					m.invoke(_self, LOGGER);
+    
+    				}
+    			}
+    		} catch (Exception e) {
+    			// Chut !
+    		} 
   }
   
   protected static boolean _privk3_isDeployed(final MachineVirtualBoxAspectMachine_VirtualBoxAspectProperties _self_, final Machine_VirtualBox _self) {

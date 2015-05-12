@@ -71,7 +71,6 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.occiware.clouddesigner.occi.docker.Contains;
 import org.occiware.clouddesigner.occi.docker.DockerFactory;
 import org.occiware.clouddesigner.occi.docker.DockerPackage;
@@ -92,9 +91,13 @@ import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.Do
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.Provider;
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerUtil;
 import org.occiware.clouddesigner.occi.infrastructure.ComputeStatus;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @SuppressWarnings("all")
 public class ModelHandler {
+  private static Logger LOGGER = LoggerFactory.getLogger(ModelHandler.class);
+  
   /**
    * Dynamic EMF
    */
@@ -107,8 +110,8 @@ public class ModelHandler {
     for (final EClassifier eClassifier : eClassifiers) {
       {
         String _name = eClassifier.getName();
-        InputOutput.<String>println(_name);
-        InputOutput.<String>println(" ");
+        ModelHandler.LOGGER.info(_name);
+        ModelHandler.LOGGER.info(" ");
         if ((eClassifier instanceof EClass)) {
           final EClass eClass = ((EClass) eClassifier);
           final EList<EAttribute> eAttributes = eClass.getEAttributes();
@@ -119,7 +122,7 @@ public class ModelHandler {
             String _name_2 = _eAttributeType.getName();
             String _plus_1 = (_plus + _name_2);
             String _plus_2 = (_plus_1 + ") ");
-            InputOutput.<String>println(_plus_2);
+            ModelHandler.LOGGER.info(_plus_2);
           }
           boolean _and = false;
           EList<EAttribute> _eAttributes = eClass.getEAttributes();
@@ -134,8 +137,7 @@ public class ModelHandler {
             _and = _not_1;
           }
           if (_and) {
-            InputOutput.println();
-            InputOutput.<String>println(" References: ");
+            ModelHandler.LOGGER.info(" References: ");
           }
           final EList<EReference> eReferences = eClass.getEReferences();
           for (final EReference eReference : eReferences) {
@@ -151,25 +153,23 @@ public class ModelHandler {
             int _upperBound = eReference.getUpperBound();
             String _plus_8 = (_plus_7 + Integer.valueOf(_upperBound));
             String _plus_9 = (_plus_8 + "])");
-            InputOutput.<String>println(_plus_9);
+            ModelHandler.LOGGER.info(_plus_9);
           }
           EList<EOperation> _eOperations = eClass.getEOperations();
           boolean _isEmpty_2 = _eOperations.isEmpty();
           boolean _not_2 = (!_isEmpty_2);
           if (_not_2) {
-            InputOutput.println();
-            InputOutput.<String>println(" Operations: ");
+            ModelHandler.LOGGER.info(" Operations: ");
             EList<EOperation> _eOperations_1 = eClass.getEOperations();
             for (final EOperation eOperation : _eOperations_1) {
               EClassifier _eType = eOperation.getEType();
               String _plus_10 = (_eType + " ");
               String _name_5 = eOperation.getName();
               String _plus_11 = (_plus_10 + _name_5);
-              InputOutput.<String>println(_plus_11);
+              ModelHandler.LOGGER.info(_plus_11);
             }
           }
         }
-        InputOutput.println();
       }
     }
   }
@@ -207,13 +207,14 @@ public class ModelHandler {
       File temp = File.createTempFile("tempfile", "dockerinstancesonlymodel.xmi");
       String _absolutePath = temp.getAbsolutePath();
       final URI uri = URI.createURI(_absolutePath);
-      InputOutput.<URI>println(uri);
+      String _string = uri.toString();
+      ModelHandler.LOGGER.info(_string);
       final Resource r = resourceSet.createResource(uri);
       boolean _equals = Objects.equal(r, null);
       if (_equals) {
         throw new NullPointerException("The resource is null.");
       }
-      InputOutput.<String>println(("Resource: " + r));
+      ModelHandler.LOGGER.info(("Resource: " + r));
       EList<EObject> _contents_1 = r.getContents();
       _contents_1.add(vboxInstance);
       r.save(null);
@@ -349,7 +350,8 @@ public class ModelHandler {
     EList<EObject> _contents = resource.getContents();
     EObject _get = _contents.get(0);
     final Machine m = ((Machine) _get);
-    InputOutput.<Machine>println(m);
+    String _string = m.toString();
+    ModelHandler.LOGGER.info(_string);
     return m;
   }
   
@@ -368,9 +370,10 @@ public class ModelHandler {
       String _plus = (basePath + _name);
       String _plus_1 = (_plus + ".xmi");
       File temp = new File(_plus_1);
-      InputOutput.<File>println(temp);
       String _absolutePath = temp.getAbsolutePath();
-      final URI uri = URI.createURI(_absolutePath);
+      ModelHandler.LOGGER.info(_absolutePath);
+      String _absolutePath_1 = temp.getAbsolutePath();
+      final URI uri = URI.createURI(_absolutePath_1);
       Resource resource = resourceSet.createResource(uri);
       final XMIResource res = ((XMIResource) resource);
       Map<Object, Object> _defaultLoadOptions = res.getDefaultLoadOptions();
@@ -484,7 +487,8 @@ public class ModelHandler {
     EList<EObject> _contents = resource.getContents();
     EObject _get = _contents.get(0);
     final Machine m = ((Machine) _get);
-    InputOutput.<Machine>println(m);
+    String _string = m.toString();
+    ModelHandler.LOGGER.info(_string);
     return m;
   }
   
@@ -693,12 +697,12 @@ public class ModelHandler {
           ComputeStatus _get_6 = ComputeStatus.get(0);
           newvbox.setState(_get_6);
         }
-        InputOutput.<String>println(("Model setting: " + newvbox));
+        ModelHandler.LOGGER.info(("Model setting: " + newvbox));
       } else {
         if ((vbox instanceof Machine_Amazon_EC2)) {
           Machine_Amazon_EC2 newvbox_1 = ((Machine_Amazon_EC2) vbox);
           this.machineFactory(newvbox_1, node, state);
-          InputOutput.<String>println(("Model setting: " + newvbox_1));
+          ModelHandler.LOGGER.info(("Model setting: " + newvbox_1));
         }
       }
       ComputeStatus _state = vbox.getState();
@@ -887,9 +891,10 @@ public class ModelHandler {
       String _plus = (basePath + _name);
       String _plus_1 = (_plus + ".xmi");
       File temp = new File(_plus_1);
-      InputOutput.<File>println(temp);
       String _absolutePath = temp.getAbsolutePath();
-      final URI uri = URI.createURI(_absolutePath);
+      ModelHandler.LOGGER.info(_absolutePath);
+      String _absolutePath_1 = temp.getAbsolutePath();
+      final URI uri = URI.createURI(_absolutePath_1);
       Resource resource = resourceSet.createResource(uri);
       final XMIResource res = ((XMIResource) resource);
       Map<Object, Object> _defaultLoadOptions = res.getDefaultLoadOptions();
@@ -924,9 +929,10 @@ public class ModelHandler {
       String _plus = (basePath + _name);
       String _plus_1 = (_plus + ".xmi");
       File temp = new File(_plus_1);
-      InputOutput.<File>println(temp);
       String _absolutePath = temp.getAbsolutePath();
-      final URI uri = URI.createURI(_absolutePath);
+      ModelHandler.LOGGER.info(_absolutePath);
+      String _absolutePath_1 = temp.getAbsolutePath();
+      final URI uri = URI.createURI(_absolutePath_1);
       Resource resource = resourceSet.createResource(uri);
       final XMIResource res = ((XMIResource) resource);
       Map<Object, Object> _defaultLoadOptions = res.getDefaultLoadOptions();
