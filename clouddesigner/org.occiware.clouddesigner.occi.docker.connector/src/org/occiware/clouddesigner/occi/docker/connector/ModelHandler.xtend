@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.occiware.clouddesigner.occi.docker.connector
 
+import com.github.dockerjava.api.model.Link
 import java.io.BufferedReader
 import java.io.File
 import java.io.FileInputStream
@@ -28,8 +29,21 @@ import java.util.Iterator
 import java.util.List
 import java.util.Map
 import org.codehaus.jackson.JsonNode
+import org.eclipse.emf.common.notify.Notifier
 import org.eclipse.emf.common.util.EList
 import org.eclipse.emf.common.util.URI
+import org.eclipse.emf.compare.EMFCompare
+import org.eclipse.emf.compare.match.DefaultComparisonFactory
+import org.eclipse.emf.compare.match.DefaultEqualityHelperFactory
+import org.eclipse.emf.compare.match.DefaultMatchEngine
+import org.eclipse.emf.compare.match.IComparisonFactory
+import org.eclipse.emf.compare.match.IMatchEngine
+import org.eclipse.emf.compare.match.eobject.IEObjectMatcher
+import org.eclipse.emf.compare.match.impl.MatchEngineFactoryImpl
+import org.eclipse.emf.compare.match.impl.MatchEngineFactoryRegistryImpl
+import org.eclipse.emf.compare.scope.DefaultComparisonScope
+import org.eclipse.emf.compare.scope.IComparisonScope
+import org.eclipse.emf.compare.utils.UseIdentifiers
 import org.eclipse.emf.ecore.EAttribute
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EClassifier
@@ -50,27 +64,13 @@ import org.occiware.clouddesigner.occi.docker.DockerPackage
 import org.occiware.clouddesigner.occi.docker.Machine
 import org.occiware.clouddesigner.occi.docker.Machine_Amazon_EC2
 import org.occiware.clouddesigner.occi.docker.Machine_VirtualBox
+import org.occiware.clouddesigner.occi.docker.connector.dockerjava.DockerContainerManager
+import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerMachineManager
+import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.Provider
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerUtil
 import org.occiware.clouddesigner.occi.infrastructure.ComputeStatus
-import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.Provider
-import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerMachineManager
-import org.eclipse.emf.compare.EMFCompare
-import org.eclipse.emf.compare.scope.DefaultComparisonScope
-import org.eclipse.emf.common.notify.Notifier
-import org.eclipse.emf.compare.match.eobject.IEObjectMatcher
-import org.eclipse.emf.compare.match.DefaultMatchEngine
-import org.eclipse.emf.compare.match.IComparisonFactory
-import org.eclipse.emf.compare.match.IMatchEngine
-import org.eclipse.emf.compare.match.DefaultComparisonFactory
-import org.eclipse.emf.compare.postprocessor.IPostProcessor
-import org.eclipse.emf.compare.scope.IComparisonScope
-import org.eclipse.emf.compare.utils.UseIdentifiers
-import org.eclipse.emf.compare.match.DefaultEqualityHelperFactory
-import org.eclipse.emf.compare.match.impl.MatchEngineFactoryImpl
-import org.eclipse.emf.compare.match.impl.MatchEngineFactoryRegistryImpl
-import org.occiware.clouddesigner.occi.docker.connector.dockerjava.DockerContainerManager
-import org.slf4j.LoggerFactory
 import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 
 class ModelHandler {
 
@@ -495,7 +495,7 @@ class ModelHandler {
 						linkContainerToMachine(container, vbox)
 						val inspectContainer = instance.inspectContainer(vbox, container.id)
 						if (!inspectContainer.hostConfig.links.isEmpty) {
-							for (com.github.dockerjava.api.model.Link link : inspectContainer.hostConfig.links) {
+							for (Link link : inspectContainer.hostConfig.links) {
 								linkContainerToContainer(container, getContainerByName(modelContainers, link.name))
 
 							}
