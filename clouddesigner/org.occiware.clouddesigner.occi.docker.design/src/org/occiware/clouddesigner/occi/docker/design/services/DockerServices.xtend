@@ -7,6 +7,7 @@
  * 
  * Contributors:
  * - Fawaz PARAISO 
+ * - William PIERS
  *******************************************************************************/
 package org.occiware.clouddesigner.occi.docker.design.services
 
@@ -119,7 +120,7 @@ class DockerServices {
 		var dialog = new ProgressMonitorDialog(getShell())
 		dialog.run(false, true, runnable)
 	}
-	
+
 	def Shell getShell() {
 		return Display.current.activeShell
 	}
