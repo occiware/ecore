@@ -15,6 +15,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.occiware.clouddesigner.occi.docker.DockerFactory;
 import org.occiware.clouddesigner.occi.docker.Machine;
 import org.occiware.clouddesigner.occi.docker.Machine_VirtualBox;
@@ -55,6 +56,7 @@ public class DockerObserver {
       new EContentAdapter() {
         public void notifyChanged(final Notification notification) {
           Machine machine = cpMachine;
+          InputOutput.<String>println("<-------------------------Attention on veut me modifier -------------------------->\n\n\n\n\n\n\n\n");
         }
       });
     return machine;

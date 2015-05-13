@@ -13,6 +13,7 @@ package org.occiware.clouddesigner.occi.docker.connector;
 
 import com.google.common.base.Objects;
 import org.occiware.clouddesigner.occi.docker.connector.MachineManager;
+import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerObserver;
 import org.occiware.clouddesigner.occi.docker.impl.Machine_VirtualBoxImpl;
 import org.occiware.clouddesigner.occi.infrastructure.RestartMethod;
 import org.occiware.clouddesigner.occi.infrastructure.StopMethod;
@@ -64,6 +65,8 @@ public class ExecutableMachine_VirtualBox extends Machine_VirtualBoxImpl {
   
   public void start() {
     this.manager.start();
+    final DockerObserver observer = new DockerObserver();
+    observer.listener(this);
   }
   
   public void startAll() {

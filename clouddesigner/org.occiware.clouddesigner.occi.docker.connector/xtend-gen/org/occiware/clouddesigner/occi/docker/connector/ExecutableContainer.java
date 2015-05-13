@@ -19,6 +19,7 @@ import java.util.HashMap;
 import java.util.Map;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.occiware.clouddesigner.OCCI.Resource;
 import org.occiware.clouddesigner.occi.docker.Contains;
 import org.occiware.clouddesigner.occi.docker.DockerFactory;
@@ -75,8 +76,22 @@ public class ExecutableContainer extends ContainerImpl {
       boolean _equalsIgnoreCase = _string.equalsIgnoreCase("active");
       if (_equalsIgnoreCase) {
         final DockerContainerManager dockerContainerManager = new DockerContainerManager();
-        String _name = this.compute.getName();
-        dockerContainerManager.startContainer(machine, _name);
+        ComputeStatus _state_1 = this.compute.getState();
+        String _string_1 = _state_1.toString();
+        boolean _equalsIgnoreCase_1 = _string_1.equalsIgnoreCase("active");
+        if (_equalsIgnoreCase_1) {
+          try {
+            String _name = this.compute.getName();
+            dockerContainerManager.stopContainer(machine, _name);
+          } catch (final Throwable _t) {
+            if (_t instanceof Exception) {
+              final Exception e = (Exception)_t;
+              this.compute.setState(ComputeStatus.INACTIVE);
+            } else {
+              throw Exceptions.sneakyThrow(_t);
+            }
+          }
+        }
       }
     }
     

@@ -45,7 +45,6 @@ import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.occiware.clouddesigner.occi.docker.Container;
-import org.occiware.clouddesigner.occi.docker.DockerFactory;
 import org.occiware.clouddesigner.occi.docker.Machine;
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerMachineManager;
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerConfig;
@@ -86,7 +85,6 @@ public class DockerContainerManager {
   }
   
   public Map<DockerClient, CreateContainerResponse> createContainer(final Machine machine, final Container container, final Multimap<String, String> containerDependency) {
-    DockerFactory.eINSTANCE.eClass();
     DockerClient dockerClient = null;
     boolean _notEquals = (!Objects.equal(this.dockerClient, null));
     if (_notEquals) {
@@ -261,6 +259,12 @@ public class DockerContainerManager {
       String _command_1 = container.getCommand();
       final String[] cmd = _command_1.split(",");
       create.withCmd(cmd);
+    } else {
+      String _command_2 = container.getCommand();
+      boolean _equals_1 = Objects.equal(_command_2, null);
+      if (_equals_1) {
+        create.withCmd("sleep", "9999");
+      }
     }
     int _cpu_shares = container.getCpu_shares();
     boolean _greaterThan = (_cpu_shares > 0);
@@ -301,11 +305,28 @@ public class DockerContainerManager {
     boolean _notEquals_6 = (!Objects.equal(_ports, null));
     if (_notEquals_6) {
       String _ports_1 = container.getPorts();
-      int _parseInt = Integer.parseInt(_ports_1);
+      final String[] ports = _ports_1.split(":");
+      String _get = ports[0];
+      int _parseInt = Integer.parseInt(_get);
       ExposedPort port = ExposedPort.tcp(_parseInt);
       final Ports portBindings = new Ports();
-      Ports.Binding _Binding = Ports.Binding(Integer.valueOf(11022));
-      portBindings.bind(port, _Binding);
+      int _size = ((List<String>)Conversions.doWrapArray(ports)).size();
+      boolean _equals_2 = (_size == 2);
+      if (_equals_2) {
+        String _get_1 = ports[1];
+        int _parseInt_1 = Integer.parseInt(_get_1);
+        Ports.Binding _Binding = Ports.Binding(Integer.valueOf(_parseInt_1));
+        portBindings.bind(port, _Binding);
+      } else {
+        int _size_1 = ((List<String>)Conversions.doWrapArray(ports)).size();
+        boolean _equals_3 = (_size_1 == 1);
+        if (_equals_3) {
+          String _get_2 = ports[0];
+          int _parseInt_2 = Integer.parseInt(_get_2);
+          Ports.Binding _Binding_1 = Ports.Binding(Integer.valueOf(_parseInt_2));
+          portBindings.bind(port, _Binding_1);
+        }
+      }
       create.withPortBindings(portBindings);
     }
     String _name = container.getName();
@@ -377,30 +398,30 @@ public class DockerContainerManager {
     boolean _containsKey = containerDependency.containsKey(_name_2);
     if (_containsKey) {
       String _name_3 = container.getName();
-      Collection<String> _get = containerDependency.get(_name_3);
-      LinkedHashSet<String> _linkedHashSet = new LinkedHashSet<String>(_get);
+      Collection<String> _get_3 = containerDependency.get(_name_3);
+      LinkedHashSet<String> _linkedHashSet = new LinkedHashSet<String>(_get_3);
       final List<String> depdupeContainers = new ArrayList<String>(_linkedHashSet);
       List<Link> dockeClientlinks = new ArrayList<Link>();
       Link dockeClientlink = null;
       for (final String entry : depdupeContainers) {
         {
           String _name_4 = container.getName();
-          String _plus = (_name_4 + "To");
+          String _plus = (_name_4 + "LinkTo");
           String _plus_1 = (_plus + entry);
           Link _link = new Link(entry, _plus_1);
           dockeClientlink = _link;
           dockeClientlinks.add(dockeClientlink);
         }
       }
-      int _size = depdupeContainers.size();
-      boolean _greaterThan_4 = (_size > 1);
+      int _size_2 = depdupeContainers.size();
+      boolean _greaterThan_4 = (_size_2 > 1);
       if (_greaterThan_4) {
         final List<Link> _converted_dockeClientlinks = (List<Link>)dockeClientlinks;
         create.withLinks(((Link[])Conversions.unwrapArray(_converted_dockeClientlinks, Link.class)));
       } else {
-        int _size_1 = depdupeContainers.size();
-        boolean _equals_1 = (_size_1 == 1);
-        if (_equals_1) {
+        int _size_3 = depdupeContainers.size();
+        boolean _equals_4 = (_size_3 == 1);
+        if (_equals_4) {
           create.withLinks(dockeClientlink);
         }
       }
@@ -488,6 +509,23 @@ public class DockerContainerManager {
     return _xblockexpression;
   }
   
+  public Void stopContainer(final Machine machine, final String containerId) {
+    Void _xblockexpression = null;
+    {
+      DockerClient dockerClient = null;
+      boolean _notEquals = (!Objects.equal(this.dockerClient, null));
+      if (_notEquals) {
+        dockerClient = this.dockerClient;
+      } else {
+        DockerClient _setConfig = this.setConfig(machine);
+        dockerClient = _setConfig;
+      }
+      StopContainerCmd _stopContainerCmd = dockerClient.stopContainerCmd(containerId);
+      _xblockexpression = _stopContainerCmd.exec();
+    }
+    return _xblockexpression;
+  }
+  
   public Integer waitContainer(final Machine machine, final Container container) {
     Integer _xblockexpression = null;
     {
@@ -531,7 +569,7 @@ public class DockerContainerManager {
       DockerClient _setConfig = this.setConfig(machine);
       dockerClient = _setConfig;
     }
-    String containerImage = "busybox";
+    String containerImage = image;
     boolean _equals = containerImage.equals("");
     if (_equals) {
       containerImage = "busybox";

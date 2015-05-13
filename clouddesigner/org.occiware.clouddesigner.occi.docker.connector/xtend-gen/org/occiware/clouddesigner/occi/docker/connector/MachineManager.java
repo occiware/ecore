@@ -142,22 +142,38 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
         boolean _not_1 = (!_linkFound);
         if (_not_1) {
           EList<Link> _links_1 = this.compute.getLinks();
-          final Procedure1<Link> _function = new Procedure1<Link>() {
-            public void apply(final Link elt) {
-              Resource _target = elt.getTarget();
-              ((ExecutableContainer) _target).createContainer(MachineManager.this.machine, MachineManager.this.containerDependency);
+          for (final Link link : _links_1) {
+            {
+              Resource _target = link.getTarget();
+              final ExecutableContainer con = ((ExecutableContainer) _target);
+              String _name_3 = con.getName();
+              boolean _containerIsDeployed = this.containerIsDeployed(_name_3, this.machine);
+              boolean _not_2 = (!_containerIsDeployed);
+              if (_not_2) {
+                con.createContainer(this.machine);
+                con.start();
+              } else {
+                con.start();
+              }
             }
-          };
-          IterableExtensions.<Link>forEach(_links_1, _function);
+          }
         } else {
           final Multimap<String, String> dependencies = this.containerDependency;
           List<Container> _deploymentOrder = this.deploymentOrder();
-          final Procedure1<Container> _function_1 = new Procedure1<Container>() {
-            public void apply(final Container c) {
-              ((ExecutableContainer) c).createContainer(MachineManager.this.machine, dependencies);
+          for (final Container c : _deploymentOrder) {
+            {
+              final ExecutableContainer con = ((ExecutableContainer) c);
+              String _name_3 = con.getName();
+              boolean _containerIsDeployed = this.containerIsDeployed(_name_3, this.compute);
+              boolean _not_2 = (!_containerIsDeployed);
+              if (_not_2) {
+                con.createContainer(this.machine, dependencies);
+                con.start();
+              } else {
+                con.start();
+              }
             }
-          };
-          IterableExtensions.<Container>forEach(_deploymentOrder, _function_1);
+          }
         }
       }
     } else {
@@ -176,21 +192,37 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
           boolean _not_3 = (!_linkFound_1);
           if (_not_3) {
             EList<Link> _links_3 = this.compute.getLinks();
-            final Procedure1<Link> _function_2 = new Procedure1<Link>() {
-              public void apply(final Link elt) {
-                Resource _target = elt.getTarget();
-                ((ExecutableContainer) _target).createContainer(MachineManager.this.compute, MachineManager.this.containerDependency);
+            for (final Link link_1 : _links_3) {
+              {
+                Resource _target = link_1.getTarget();
+                final ExecutableContainer con = ((ExecutableContainer) _target);
+                String _name_5 = con.getName();
+                boolean _containerIsDeployed = this.containerIsDeployed(_name_5, this.machine);
+                boolean _not_4 = (!_containerIsDeployed);
+                if (_not_4) {
+                  con.createContainer(this.machine);
+                  con.start();
+                } else {
+                  con.start();
+                }
               }
-            };
-            IterableExtensions.<Link>forEach(_links_3, _function_2);
+            }
           } else {
             List<Container> _deploymentOrder_1 = this.deploymentOrder();
-            final Procedure1<Container> _function_3 = new Procedure1<Container>() {
-              public void apply(final Container c) {
-                ((ExecutableContainer) c).createContainer(MachineManager.this.compute, MachineManager.this.containerDependency);
+            for (final Container c_1 : _deploymentOrder_1) {
+              {
+                final ExecutableContainer con = ((ExecutableContainer) c_1);
+                String _name_5 = con.getName();
+                boolean _containerIsDeployed = this.containerIsDeployed(_name_5, this.compute);
+                boolean _not_4 = (!_containerIsDeployed);
+                if (_not_4) {
+                  con.createContainer(this.machine, this.containerDependency);
+                  con.start();
+                } else {
+                  con.start();
+                }
               }
-            };
-            IterableExtensions.<Container>forEach(_deploymentOrder_1, _function_3);
+            }
           }
         }
       }
@@ -357,6 +389,34 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
       }
     }
     return leafContainers;
+  }
+  
+  public boolean containerIsDeployed(final String containerName, final Machine machine) {
+    final DockerContainerManager containers = new DockerContainerManager();
+    final List<com.github.dockerjava.api.model.Container> listContainers = containers.listContainer(machine);
+    for (final com.github.dockerjava.api.model.Container c : listContainers) {
+      {
+        String contName = null;
+        String[] _names = c.getNames();
+        final String name = _names[0];
+        final String linkName = "LinkTo";
+        final int index = name.indexOf(linkName);
+        if ((index == (-1))) {
+          String _replaceAll = name.replaceAll("/", "");
+          contName = _replaceAll;
+        } else {
+          int _length = linkName.length();
+          int _plus = (index + _length);
+          String _substring = name.substring(_plus);
+          contName = _substring;
+        }
+        boolean _equalsIgnoreCase = contName.equalsIgnoreCase(containerName);
+        if (_equalsIgnoreCase) {
+          return true;
+        }
+      }
+    }
+    return false;
   }
   
   /**

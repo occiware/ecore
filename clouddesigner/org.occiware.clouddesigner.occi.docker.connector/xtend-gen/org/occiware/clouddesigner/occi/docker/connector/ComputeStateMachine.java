@@ -174,6 +174,7 @@ public class ComputeStateMachine<T extends Compute> {
     String _name = _class.getName();
     String _plus = (_name + ":start_from_active_state() - DO NOTHING");
     ComputeStateMachine.LOGGER.info(_plus);
+    this.startAll_execute();
   }
   
   /**
