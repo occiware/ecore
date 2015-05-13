@@ -218,9 +218,6 @@ class DockerContainerManager {
 			val String[] ports = container.ports.split(":")
 			var ExposedPort port = ExposedPort.tcp(Integer.parseInt(ports.get(0)))
 			val Ports portBindings = new Ports
-			val Random randomGenerator = new Random
-
-			//11022 + randomGenerator.nextInt(200)
 			if (ports.size == 2) {
 				portBindings.bind(port, Ports.Binding(Integer.parseInt(ports.get(1))))
 
@@ -272,7 +269,7 @@ class DockerContainerManager {
 			var List<Link> dockeClientlinks = new ArrayList<Link>
 			var Link dockeClientlink = null
 			for (String entry : depdupeContainers) {
-				dockeClientlink = new Link(entry, container.name + "To" + entry)
+				dockeClientlink = new Link(entry, container.name + "LinkTo" + entry)
 				dockeClientlinks.add(dockeClientlink)
 			}
 			if (depdupeContainers.size > 1) {
