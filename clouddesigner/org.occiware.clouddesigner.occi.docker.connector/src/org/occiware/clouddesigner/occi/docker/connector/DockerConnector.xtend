@@ -68,6 +68,8 @@ import org.occiware.clouddesigner.occi.infrastructure.SuspendMethod
 import static com.google.common.base.Preconditions.checkNotNull
 import org.slf4j.LoggerFactory
 import org.slf4j.Logger
+import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerObserver
+import org.occiware.clouddesigner.occi.docker.Container
 
 /**
  * This class overrides the generated EMF factory of the Docker package.
@@ -290,6 +292,7 @@ class ComputeStateMachine<T extends Compute> {
 	 */
 	def start_from_active_state() {
 		LOGGER.info(this.class.name + ":start_from_active_state() - DO NOTHING")
+		startAll_execute
 	}
 
 	/**
@@ -519,7 +522,13 @@ class ExecutableContainer extends ContainerImpl {
 			val machine = getCurrentMachine
 			if (machine.state.toString.equalsIgnoreCase("active")) {
 				val dockerContainerManager = new DockerContainerManager
-				dockerContainerManager.startContainer(machine, this.compute.name)
+				if (this.compute.state.toString.equalsIgnoreCase("active")) {
+					try {
+						dockerContainerManager.stopContainer(machine, this.compute.name)
+					} catch (Exception e) {
+						this.compute.state = ComputeStatus.INACTIVE
+					}
+				}
 			}
 		}
 
@@ -726,12 +735,38 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 
 				// Start the containers without create graph
 				if (!this.linkFound) {
-					compute.links.forEach[elt|
-						(elt.target as ExecutableContainer).createContainer(this.machine, this.containerDependency)]
+					for (Link link : compute.links) {
+						val con = link.target as ExecutableContainer
+						if (!containerIsDeployed(con.name, this.machine)) {
+
+							// Create container
+							con.createContainer(this.machine)
+
+							// Start container
+							con.start
+						} else {
+
+							// Start container
+							con.start
+						}
+					}
 				} else { // Create the graph
 					val dependencies = this.containerDependency
-					this.deploymentOrder.forEach[c|
-						(c as ExecutableContainer).createContainer(this.machine, dependencies)]
+					for (Container c : this.deploymentOrder) {
+						val con = c as ExecutableContainer
+						if (!containerIsDeployed(con.name, compute)) {
+
+							// Create container
+							con.createContainer(this.machine, dependencies)
+
+							// Start container
+							con.start
+						} else {
+
+							// Start container
+							con.start
+						}
+					}
 				}
 			}
 		} else {
@@ -748,11 +783,37 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 
 					// Start the containers without create graph
 					if (!this.linkFound) {
-						compute.links.forEach[elt|
-							(elt.target as ExecutableContainer).createContainer(compute, this.containerDependency)]
-					} else { // Create the graph
-						this.deploymentOrder.forEach[c|
-							(c as ExecutableContainer).createContainer(compute, this.containerDependency)]
+						for (Link link : compute.links) {
+							val con = link.target as ExecutableContainer
+							if (!containerIsDeployed(con.name, this.machine)) {
+
+								// Create container
+								con.createContainer(this.machine)
+
+								// Start container
+								con.start
+							} else {
+
+								// Start container
+								con.start
+							}
+						}
+					} else {
+						for (Container c : this.deploymentOrder) {
+							val con = c as ExecutableContainer
+							if (!containerIsDeployed(con.name, compute)) {
+
+								// Create container
+								con.createContainer(this.machine, this.containerDependency)
+
+								// Start container
+								con.start
+							} else {
+
+								// Start container
+								con.start
+							}
+						}
 					}
 				}
 			}
@@ -863,6 +924,28 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 			}
 		}
 		return leafContainers
+	}
+
+	def boolean containerIsDeployed(String containerName, Machine machine) {
+		val containers = new DockerContainerManager
+		val listContainers = containers.listContainer(machine)
+		for (com.github.dockerjava.api.model.Container c : listContainers) {
+			var String contName = null
+			val name = c.names.get(0)
+			val linkName = "To"
+			val index = name.indexOf(linkName)
+			if (index == -1) {
+				contName = name.replaceAll("/", "")
+			} else {
+
+				// index = index + linkName.length
+				contName = name.substring(index + linkName.length)
+			}
+			if (contName.equalsIgnoreCase(containerName)) {
+				return true
+			}
+		}
+		return false
 	}
 
 	/**
@@ -1217,7 +1300,13 @@ class ExecutableMachine_VirtualBox extends Machine_VirtualBoxImpl {
 	}
 
 	// Delegation to the manager.
-	override def start() { manager.start() }
+	override def start() {
+		manager.start()
+
+		// Add listener here
+		val observer = new DockerObserver
+		observer.listener(this)
+	}
 
 	def startAll() { manager.startAll }
 
