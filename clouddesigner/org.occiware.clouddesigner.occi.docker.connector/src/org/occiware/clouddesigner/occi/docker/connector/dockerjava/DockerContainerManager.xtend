@@ -1,4 +1,4 @@
- /*******************************************************************************
+/*******************************************************************************
  * Copyright (c) 2015 INRIA.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -21,26 +21,27 @@ import com.github.dockerjava.api.model.Ports
 import com.github.dockerjava.api.model.Volume
 import com.github.dockerjava.core.DockerClientBuilder
 import com.github.dockerjava.core.DockerClientConfig
+import com.google.common.collect.Multimap
 import java.net.URI
 import java.net.URL
+import java.util.ArrayList
 import java.util.LinkedHashMap
+import java.util.LinkedHashSet
 import java.util.List
 import java.util.Map
+import java.util.Random
 import org.occiware.clouddesigner.occi.docker.Container
-import org.occiware.clouddesigner.occi.docker.DockerFactory
 import org.occiware.clouddesigner.occi.docker.Machine
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerMachineManager
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerConfig
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerUtil
-import com.google.common.collect.Multimap
-import java.util.LinkedHashSet
-import java.util.ArrayList
-import org.slf4j.LoggerFactory
 import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 
 class DockerContainerManager {
 	private DockerClient dockerClient = null
 	private List<String> images = newArrayList
+
 	// Initialize logger for DockerContainerManager.
 	private static Logger LOGGER = LoggerFactory.getLogger(typeof(DockerContainerManager))
 
@@ -71,9 +72,6 @@ class DockerContainerManager {
 	}
 
 	def createContainer(Machine machine, Container container, Multimap<String, String> containerDependency) {
-
-		// Initialize the model
-		DockerFactory.eINSTANCE.eClass
 
 		var DockerClient dockerClient = null
 
@@ -192,9 +190,11 @@ class DockerContainerManager {
 		}
 		if (container.command != null) {
 
-			//TODO command as "sleep", "9999"
+			// The command is something like: sleep, 9999
 			val String[] cmd = container.command.split(",")
 			create.withCmd(cmd)
+		} else if (container.command == null) {
+			create.withCmd("sleep", "9999")
 		}
 		if (container.cpu_shares > 0) {
 			create.withCpuShares(container.cpu_shares)
@@ -215,9 +215,18 @@ class DockerContainerManager {
 			create.withEnv(container.environment)
 		}
 		if (container.ports != null) {
-			var ExposedPort port = ExposedPort.tcp(Integer.parseInt(container.ports))
+			val String[] ports = container.ports.split(":")
+			var ExposedPort port = ExposedPort.tcp(Integer.parseInt(ports.get(0)))
 			val Ports portBindings = new Ports
-			portBindings.bind(port, Ports.Binding(11022)) //TODO Create dynamique port number
+			val Random randomGenerator = new Random
+
+			//11022 + randomGenerator.nextInt(200)
+			if (ports.size == 2) {
+				portBindings.bind(port, Ports.Binding(Integer.parseInt(ports.get(1))))
+
+			} else if (ports.size == 1) {
+				portBindings.bind(port, Ports.Binding(Integer.parseInt(ports.get(0))))
+			}
 			create.withPortBindings(portBindings)
 		}
 		if (container.name != null) {
@@ -324,6 +333,7 @@ class DockerContainerManager {
 		}
 		dockerClient.startContainerCmd(containerId).exec
 	}
+
 	def stopContainer(Machine machine, Container container) {
 		var DockerClient dockerClient = null
 
@@ -335,6 +345,19 @@ class DockerContainerManager {
 
 		}
 		dockerClient.stopContainerCmd(container.id).exec
+	}
+
+	def stopContainer(Machine machine, String containerId) {
+		var DockerClient dockerClient = null
+
+		// Set dockerClient
+		if (this.dockerClient != null) {
+			dockerClient = this.dockerClient
+		} else {
+			dockerClient = setConfig(machine)
+
+		}
+		dockerClient.stopContainerCmd(containerId).exec
 	}
 
 	def waitContainer(Machine machine, Container container) {
@@ -363,11 +386,6 @@ class DockerContainerManager {
 		}
 		val List<com.github.dockerjava.api.model.Container> containers = dockerClient.listContainersCmd().
 			withShowAll(true).exec()
-
-		//		for (com.github.dockerjava.api.model.Container c : containers) {
-		//			for (com.github.dockerjava.api.model.Container.Port p : c.ports) {
-		//			}
-		//		}
 		return containers
 	}
 
@@ -383,7 +401,7 @@ class DockerContainerManager {
 		} else {
 			dockerClient = setConfig(machine)
 		}
-		var containerImage = "busybox"
+		var containerImage = image
 		if (containerImage.equals("")) {
 			containerImage = "busybox"
 		}
