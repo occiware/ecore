@@ -932,7 +932,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 		for (com.github.dockerjava.api.model.Container c : listContainers) {
 			var String contName = null
 			val name = c.names.get(0)
-			val linkName = "To"
+			val linkName = "LinkTo"
 			val index = name.indexOf(linkName)
 			if (index == -1) {
 				contName = name.replaceAll("/", "")
