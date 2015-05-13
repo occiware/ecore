@@ -16,8 +16,10 @@ import org.eclipse.emf.ecore.util.EcoreUtil
 import org.occiware.clouddesigner.occi.docker.DockerFactory
 import org.occiware.clouddesigner.occi.docker.Machine
 import org.occiware.clouddesigner.occi.docker.Machine_VirtualBox
-import org.slf4j.LoggerFactory
 import org.slf4j.Logger
+import org.slf4j.LoggerFactory
+
+import static org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerObserver.*
 
 class DockerObserver {
 		// Initialize logger for CommandFactory.
@@ -56,6 +58,7 @@ class DockerObserver {
 
 					// Rollback changes 
 					var machine = cpMachine
+					println("<-------------------------Attention on veut me modifier -------------------------->\n\n\n\n\n\n\n\n")
 				}
 			}
 		)
