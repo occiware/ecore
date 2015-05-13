@@ -7,6 +7,7 @@
  * 
  * Contributors:
  * - Fawaz PARAISO
+ * - William PIERS
  */
 package org.occiware.clouddesigner.occi.docker.design.services;
 
