@@ -2,9 +2,9 @@
 <?eclipse version="3.0"?>
 <plugin>
   <extension point="org.eclipse.sirius.componentization">
-    <component class="defaultpackage.Activator"
-               id="Workbench"
-	       name="OCCIware">
+    <component class="org.occiware.clouddesigner.occi.design.Activator"
+               id="org.occiware.clouddesigner.occi.design"
+	       name="OCCI Designer">
     </component>
   </extension>
 </plugin>

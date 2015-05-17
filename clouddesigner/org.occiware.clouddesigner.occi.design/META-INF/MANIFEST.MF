@@ -1,12 +1,12 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Workbench
-Bundle-SymbolicName: workbench;singleton:=true
+Bundle-Name: OCCI-Designer
+Bundle-SymbolicName: org.occiware.clouddesigner.occi.design;singleton:=true
 Bundle-Version: 1.0.0
-Bundle-Activator: defaultpackage.Activator
+Bundle-Activator: org.occiware.clouddesigner.occi.design.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.sirius,
  org.eclipse.sirius.common.acceleo.mtl
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.5

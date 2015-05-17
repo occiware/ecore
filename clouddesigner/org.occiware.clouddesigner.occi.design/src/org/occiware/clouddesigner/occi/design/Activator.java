@@ -1,4 +1,4 @@
-package defaultpackage;
+package org.occiware.clouddesigner.occi.design;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -13,7 +13,7 @@ import org.osgi.framework.BundleContext;
  */
 public class Activator extends AbstractUIPlugin {
     // The plug-in ID
-    public static final String PLUGIN_ID = "Workbench";
+    public static final String PLUGIN_ID = "org.occiware.clouddesigner.occi.design";
 
     // The shared instance
     private static Activator plugin;
