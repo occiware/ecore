@@ -11,12 +11,9 @@
 package org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager;
 
 import org.occiware.clouddesigner.occi.docker.Machine;
-import org.occiware.clouddesigner.occi.docker.Machine_VirtualBox;
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.DockerAspect;
-import org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineVirtualBoxAspect;
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.command.CommandFactory;
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.ProcessManager;
-import org.occiware.clouddesigner.occi.infrastructure.ComputeStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -29,14 +26,8 @@ public class DockerMachineManager {
   private final static DockerAspect instanceAspect = new DockerAspect();
   
   public static boolean createHostCmd(final Runtime runtime, final Machine machine) {
-    Machine_VirtualBox _loadMachine_VirtualBox = DockerMachineManager.instanceAspect.loadMachine_VirtualBox();
-    final String command = MachineVirtualBoxAspect.createMachineCommand(_loadMachine_VirtualBox);
-    DockerMachineManager.LOGGER.info((" Run ::==> " + command));
-    ProcessManager.runCommand(command, runtime, true);
-    ComputeStatus _get = ComputeStatus.get(0);
-    machine.setState(_get);
-    String _name = machine.getName();
-    return DockerMachineManager.setEnvCmd(runtime, _name);
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method createMachineCommand is undefined for the type DockerMachineManager");
   }
   
   public static boolean listMachinesCmd(final Runtime runtime) {

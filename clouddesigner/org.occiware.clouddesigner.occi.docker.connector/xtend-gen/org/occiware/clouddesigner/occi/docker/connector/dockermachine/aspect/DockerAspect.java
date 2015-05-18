@@ -37,18 +37,6 @@ import org.occiware.clouddesigner.occi.docker.Machine_VMware_vCloud_Air;
 import org.occiware.clouddesigner.occi.docker.Machine_VMware_vSphere;
 import org.occiware.clouddesigner.occi.docker.Machine_VirtualBox;
 import org.occiware.clouddesigner.occi.docker.connector.ModelHandler;
-import org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineAmazonEC2Aspect;
-import org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineDigitalOceanAspect;
-import org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineGoogleComputeEngineAspect;
-import org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineIBMSoftLayerAspect;
-import org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineMicrosoftAzureAspect;
-import org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineMicrosoftHyperVAspect;
-import org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineOpenStackAspect;
-import org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineRackspaceAspect;
-import org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineVMwarevCloudAirAspect;
-import org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineVMwarevSphereAspect;
-import org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.MachineVirtualBoxAspect;
-import org.occiware.clouddesigner.occi.docker.connector.dockermachine.aspect.Machine_VMwareFusionAspect;
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -153,129 +141,35 @@ public class DockerAspect {
   }
   
   public void start() {
-    boolean _notEquals = (!Objects.equal(this.machine_VirtualBox, null));
-    if (_notEquals) {
-      MachineVirtualBoxAspect.machineStart(this.machine_VirtualBox);
-      return;
-    }
-    boolean _notEquals_1 = (!Objects.equal(this.machine_Amazon_EC2, null));
-    if (_notEquals_1) {
-      MachineAmazonEC2Aspect.machineStart(this.machine_Amazon_EC2);
-      return;
-    }
-    boolean _notEquals_2 = (!Objects.equal(this.machine_Digital_Ocean, null));
-    if (_notEquals_2) {
-      MachineDigitalOceanAspect.machineStart(this.machine_Digital_Ocean);
-      return;
-    }
-    boolean _notEquals_3 = (!Objects.equal(this.machine_Google_Compute_Engine, null));
-    if (_notEquals_3) {
-      MachineGoogleComputeEngineAspect.machineStart(this.machine_Google_Compute_Engine);
-      return;
-    }
-    boolean _notEquals_4 = (!Objects.equal(this.machine_IBM_SoftLayer, null));
-    if (_notEquals_4) {
-      MachineIBMSoftLayerAspect.machineStart(this.machine_IBM_SoftLayer);
-      return;
-    }
-    boolean _notEquals_5 = (!Objects.equal(this.machine_Microsoft_Azure, null));
-    if (_notEquals_5) {
-      MachineMicrosoftAzureAspect.machineStart(this.machine_Microsoft_Azure);
-      return;
-    }
-    boolean _notEquals_6 = (!Objects.equal(this.machine_Microsoft_Hyper_V, null));
-    if (_notEquals_6) {
-      MachineMicrosoftHyperVAspect.machineStart(this.machine_Microsoft_Hyper_V);
-      return;
-    }
-    boolean _notEquals_7 = (!Objects.equal(this.machine_OpenStack, null));
-    if (_notEquals_7) {
-      MachineOpenStackAspect.machineStart(this.machine_OpenStack);
-      return;
-    }
-    boolean _notEquals_8 = (!Objects.equal(this.machine_Rackspace, null));
-    if (_notEquals_8) {
-      MachineRackspaceAspect.machineStart(this.machine_Rackspace);
-      return;
-    }
-    boolean _notEquals_9 = (!Objects.equal(this.machine_VMware_Fusion, null));
-    if (_notEquals_9) {
-      Machine_VMwareFusionAspect.machineStart(this.machine_VMware_Fusion);
-      return;
-    }
-    boolean _notEquals_10 = (!Objects.equal(this.machine_VMware_vCloud_Air, null));
-    if (_notEquals_10) {
-      MachineVMwarevCloudAirAspect.machineStart(this.machine_VMware_vCloud_Air);
-      return;
-    }
-    boolean _notEquals_11 = (!Objects.equal(this.machine_VMware_vSphere, null));
-    if (_notEquals_11) {
-      MachineVMwarevSphereAspect.machineStart(this.machine_VMware_vSphere);
-      return;
-    }
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method machineStart is undefined for the type DockerAspect"
+      + "\nThe method machineStart is undefined for the type DockerAspect"
+      + "\nThe method machineStart is undefined for the type DockerAspect"
+      + "\nThe method machineStart is undefined for the type DockerAspect"
+      + "\nThe method machineStart is undefined for the type DockerAspect"
+      + "\nThe method machineStart is undefined for the type DockerAspect"
+      + "\nThe method machineStart is undefined for the type DockerAspect"
+      + "\nThe method machineStart is undefined for the type DockerAspect"
+      + "\nThe method machineStart is undefined for the type DockerAspect"
+      + "\nThe method machineStart is undefined for the type DockerAspect"
+      + "\nThe method machineStart is undefined for the type DockerAspect"
+      + "\nThe method machineStart is undefined for the type DockerAspect");
   }
   
   public void startAll() {
-    boolean _notEquals = (!Objects.equal(this.machine_VirtualBox, null));
-    if (_notEquals) {
-      MachineVirtualBoxAspect.machineStartAll(this.machine_VirtualBox);
-      return;
-    }
-    boolean _notEquals_1 = (!Objects.equal(this.machine_Amazon_EC2, null));
-    if (_notEquals_1) {
-      MachineAmazonEC2Aspect.machineStartAll(this.machine_Amazon_EC2);
-      return;
-    }
-    boolean _notEquals_2 = (!Objects.equal(this.machine_Digital_Ocean, null));
-    if (_notEquals_2) {
-      MachineDigitalOceanAspect.machineStartAll(this.machine_Digital_Ocean);
-      return;
-    }
-    boolean _notEquals_3 = (!Objects.equal(this.machine_Google_Compute_Engine, null));
-    if (_notEquals_3) {
-      MachineGoogleComputeEngineAspect.machineStartAll(this.machine_Google_Compute_Engine);
-      return;
-    }
-    boolean _notEquals_4 = (!Objects.equal(this.machine_IBM_SoftLayer, null));
-    if (_notEquals_4) {
-      MachineIBMSoftLayerAspect.machineStartAll(this.machine_IBM_SoftLayer);
-      return;
-    }
-    boolean _notEquals_5 = (!Objects.equal(this.machine_Microsoft_Azure, null));
-    if (_notEquals_5) {
-      MachineMicrosoftAzureAspect.machineStartAll(this.machine_Microsoft_Azure);
-      return;
-    }
-    boolean _notEquals_6 = (!Objects.equal(this.machine_Microsoft_Hyper_V, null));
-    if (_notEquals_6) {
-      MachineMicrosoftHyperVAspect.machineStartAll(this.machine_Microsoft_Hyper_V);
-      return;
-    }
-    boolean _notEquals_7 = (!Objects.equal(this.machine_OpenStack, null));
-    if (_notEquals_7) {
-      MachineOpenStackAspect.machineStartAll(this.machine_OpenStack);
-      return;
-    }
-    boolean _notEquals_8 = (!Objects.equal(this.machine_Rackspace, null));
-    if (_notEquals_8) {
-      MachineRackspaceAspect.machineStartAll(this.machine_Rackspace);
-      return;
-    }
-    boolean _notEquals_9 = (!Objects.equal(this.machine_VMware_Fusion, null));
-    if (_notEquals_9) {
-      Machine_VMwareFusionAspect.machineStartAll(this.machine_VMware_Fusion);
-      return;
-    }
-    boolean _notEquals_10 = (!Objects.equal(this.machine_VMware_vCloud_Air, null));
-    if (_notEquals_10) {
-      MachineVMwarevCloudAirAspect.machineStartAll(this.machine_VMware_vCloud_Air);
-      return;
-    }
-    boolean _notEquals_11 = (!Objects.equal(this.machine_VMware_vSphere, null));
-    if (_notEquals_11) {
-      MachineVMwarevSphereAspect.machineStartAll(this.machine_VMware_vSphere);
-      return;
-    }
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method machineStartAll is undefined for the type DockerAspect"
+      + "\nThe method machineStartAll is undefined for the type DockerAspect"
+      + "\nThe method machineStartAll is undefined for the type DockerAspect"
+      + "\nThe method machineStartAll is undefined for the type DockerAspect"
+      + "\nThe method machineStartAll is undefined for the type DockerAspect"
+      + "\nThe method machineStartAll is undefined for the type DockerAspect"
+      + "\nThe method machineStartAll is undefined for the type DockerAspect"
+      + "\nThe method machineStartAll is undefined for the type DockerAspect"
+      + "\nThe method machineStartAll is undefined for the type DockerAspect"
+      + "\nThe method machineStartAll is undefined for the type DockerAspect"
+      + "\nThe method machineStartAll is undefined for the type DockerAspect"
+      + "\nThe method machineStartAll is undefined for the type DockerAspect");
   }
   
   public void register(final Machine machine) {
@@ -404,6 +298,7 @@ public class DockerAspect {
           if (_notEquals) {
             EList<Link> _links_1 = machine.getLinks();
             final Procedure1<Link> _function = new Procedure1<Link>() {
+              @Override
               public void apply(final Link elt) {
                 EList<Resource> _resources = DockerAspect.this.configuration.getResources();
                 Resource _target = elt.getTarget();
@@ -433,6 +328,7 @@ public class DockerAspect {
   }
   
   public void synchronize() {
-    MachineVirtualBoxAspect.synchronize(this.machine_VirtualBox);
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method synchronize is undefined for the type DockerAspect");
   }
 }

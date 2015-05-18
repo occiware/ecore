@@ -25,18 +25,22 @@ import org.occiware.clouddesigner.occi.infrastructure.SuspendMethod;
 public class ExecutableMachine extends MachineImpl {
   private final ComputeStateMachine<Machine> stateMachine = new ComputeStateMachine<Machine>(this);
   
+  @Override
   public void start() {
     this.stateMachine.start();
   }
   
+  @Override
   public void stop(final StopMethod method) {
     this.stateMachine.stop(method);
   }
   
+  @Override
   public void restart(final RestartMethod method) {
     this.stateMachine.restart(method);
   }
   
+  @Override
   public void suspend(final SuspendMethod method) {
     this.stateMachine.suspend(method);
   }
