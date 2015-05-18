@@ -16,8 +16,9 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  org.occiware.clouddesigner.occi;visibility:=reexport,
  org.eclipse.xtext.xbase,
  org.eclipse.xtext.generator,
- org.apache.commons.logging
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+ org.apache.commons.logging,
+ org.eclipse.emf.mwe2.launch
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Import-Package: com.ibm.icu.text;version="4.0.0",
  org.apache.log4j;version="1.2.15"
 Export-Package: org.occiware.clouddesigner.occi.xtext,
