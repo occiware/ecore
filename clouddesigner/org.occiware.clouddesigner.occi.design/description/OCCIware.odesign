@@ -46,28 +46,28 @@
         <containerMappings name="KindContainer" semanticCandidatesExpression="feature:kinds" synchronizationLock="true" domainClass="OCCI.Kind" childrenPresentation="List">
           <subNodeMappings name="Attribute" semanticCandidatesExpression="feature:attributes" domainClass="OCCI.Attribute">
             <conditionnalStyles predicateExpression="ocl:type&lt;>null and default&lt;>null">
-              <style xsi:type="style:SquareDescription" labelSize="10" showIcon="false" labelExpression="ocl:name + ': ' + type.name + '=' + default" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+              <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="ocl:name + ': ' + type.name + '=' + default" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="ocl:type=null and default&lt;>null">
-              <style xsi:type="style:SquareDescription" labelSize="10" showIcon="false" labelExpression="ocl:name + '=' + default" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+              <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="ocl:name + '=' + default" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="ocl:type&lt;>null and default = null">
-              <style xsi:type="style:SquareDescription" labelSize="10" showIcon="false" labelExpression="ocl:name + ': ' + type.name" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+              <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="ocl:name + ': ' + type.name" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               </style>
             </conditionnalStyles>
-            <conditionnalStyles predicateExpression="ocl:type=null and default&lt;>null">
-              <style xsi:type="style:SquareDescription" labelSize="10" showIcon="false" labelExpression="ocl:name + '=' + default" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+            <conditionnalStyles predicateExpression="ocl:type=null and default=null">
+              <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="ocl:name" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -75,7 +75,7 @@
             </conditionnalStyles>
           </subNodeMappings>
           <subNodeMappings name="Action" semanticCandidatesExpression="feature:actions" domainClass="OCCI.Action">
-            <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="ocl:self.term + '()'" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+            <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="service:render" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -121,7 +121,7 @@
             </conditionnalStyles>
           </subNodeMappings>
           <subNodeMappings name="Action" semanticCandidatesExpression="feature:actions" domainClass="OCCI.Action">
-            <style xsi:type="style:SquareDescription" labelSize="10" showIcon="false" labelExpression="ocl:self.term + '()'" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+            <style xsi:type="style:SquareDescription" labelSize="10" showIcon="false" labelExpression="service:render" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -133,6 +133,43 @@
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.0"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="EC EDataType" preconditionExpression="service:isEDataType" semanticCandidatesExpression="feature:types" domainClass="ecore.EDataType" childrenPresentation="List">
+          <subNodeMappings name="EC_DataType_InstanceClassName" semanticCandidatesExpression="var:self" domainClass="ecore.EDataType">
+            <style xsi:type="style:BundledImageDescription" labelSize="10" labelFormat="italic" showIcon="false" labelExpression="feature:instanceClassName" sizeComputationExpression="1">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="EC_DataType EStringToStringMapEntry" semanticCandidatesExpression="ocl:self.eAnnotations.details" domainClass="ecore.EStringToStringMapEntry">
+            <style xsi:type="style:BundledImageDescription" labelSize="10" labelExpression="ocl:self.key+'='+self.value" labelAlignment="LEFT" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" labelSize="10" widthComputationExpression="14" heightComputationExpression="5" backgroundStyle="Liquid">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="EC EEnum" semanticCandidatesExpression="feature:types" domainClass="ecore.EEnum" childrenPresentation="List">
+          <subNodeMappings name="EC EEnumLiteral" semanticCandidatesExpression="feature:eLiterals" domainClass="ecore.EEnumLiteral">
+            <style xsi:type="style:BundledImageDescription" labelSize="10" labelAlignment="LEFT" sizeComputationExpression="1">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" labelSize="10" backgroundStyle="Liquid">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </containerMappings>
         <toolSections name="Extension">
@@ -162,6 +199,28 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="OCCI.Mixin" referenceName="mixins">
                   <subModelOperations xsi:type="tool:SetValue" featureName="term" valueExpression="ocl:'Mixin' + Set{}->size().toString()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="Attribute" nodeMappings="//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute'] //@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='Attribute']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="OCCI.Attribute" referenceName="attributes">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="ocl:'attribute' + Set{}->size().toString()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="Action" nodeMappings="//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Action'] //@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='Action']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="OCCI.Action" referenceName="actions">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="term" valueExpression="ocl:'action' + Set{}->size().toString()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -202,27 +261,32 @@
             </initialOperation>
           </ownedTools>
         </toolSections>
-        <toolSections name="Attribute" label="Attribute">
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="Attribute" nodeMappings="//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute'] //@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='Attribute']">
+        <toolSections name="S DataType" label="DataType">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="DataType" containerMappings="//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="OCCI.Attribute" referenceName="attributes">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="ocl:'attribute' + Set{}->size().toString()"/>
-                </subModelOperations>
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EDataType" referenceName="types"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-        </toolSections>
-        <toolSections name="Action" label="Action">
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="Action" nodeMappings="//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Action'] //@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='Action']">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="Enum" containerMappings="//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="OCCI.Action" referenceName="actions">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="term" valueExpression="ocl:'action' + Set{}->size().toString()"/>
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EEnum" referenceName="types"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="Literal" nodeMappings="//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EEnumLiteral" referenceName="eLiterals">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="literal"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -230,6 +294,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
+    <ownedJavaExtensions qualifiedClassName="org.occiware.clouddesigner.occi.design.services.DesignServices"/>
   </ownedViewpoints>
   <ownedViewpoints name="OCCI Configuration" modelFileExtension="xmi">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Configuration diagram" domainClass="OCCI.Configuration">
