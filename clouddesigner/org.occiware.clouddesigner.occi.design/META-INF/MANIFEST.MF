@@ -7,6 +7,7 @@ Bundle-Activator: org.occiware.clouddesigner.occi.design.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.sirius,
- org.eclipse.sirius.common.acceleo.mtl
+ org.eclipse.sirius.common.acceleo.mtl,
+ org.occiware.clouddesigner.occi
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
