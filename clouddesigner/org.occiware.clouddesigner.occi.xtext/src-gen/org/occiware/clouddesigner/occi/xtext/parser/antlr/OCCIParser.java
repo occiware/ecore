@@ -25,7 +25,7 @@ public class OCCIParser extends org.eclipse.xtext.parser.antlr.AbstractAntlrPars
 	
 	@Override 
 	protected String getDefaultRuleName() {
-		return "Extension";
+		return "Grammar";
 	}
 	
 	public OCCIGrammarAccess getGrammarAccess() {

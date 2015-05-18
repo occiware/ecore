@@ -1,94 +1,235 @@
+/**
+ * This file contains the textual syntax of the OCCIware Description Language (OCCIwareDL).
+ *
+ * Copyright 2015 - Inria
+ *
+ * Contributors:
+ * - Philippe Merle - Inria
+ */
+
 grammar org.occiware.clouddesigner.occi.xtext.OCCI with org.eclipse.xtext.xbase.Xbase
 
 import "http://schemas.ogf.org/occi"
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 
-Extension returns Extension:
-	'Extension'
-	name=STRING
-	'{'
-	'scheme' scheme=STRING
-	('import' '(' ^import+=[Extension|QualifiedName] ("," ^import+=[Extension|QualifiedName])* ')')?
-	('kinds' '{' kinds+=Kind ("," kinds+=Kind)* '}')?
-	('mixins' '{' mixins+=Mixin ("," mixins+=Mixin)* '}')?
-	//	('types' '{' types+=EDataType ("," types+=EDataType)* '}')?
-	'}';
+// BNF
+// <Grammar> ::= <ExtensionDecl> | <ConfigurationDecl>
+//
 
-Kind returns Kind:
-	'Kind'
+Grammar returns ecore::EObject:
+	ExtensionDecl | ConfigurationDecl
+	;
+
+// BNF
+// <ExtensionDecl> ::= `extension' <ID> `:' <URI> <ImportDecl>* ( <KindDecl> | <MixinDecl> | <DataTypeDecl> | <EnumTypeDecl> )*
+//
+// <ImportDecl> ::= `import' <URI> ( `as' <ID> )?
+//
+
+ExtensionDecl returns Extension:
+	'extension'
+	name=ID ':' scheme=URI
+	( 'import' ^import+=[Extension|URI] ( 'as' ID )? )* // TODO where storing the ID?
+	( kinds+=KindDecl
+	| mixins+=MixinDecl
+	| types+=DataTypeDecl
+    | types+=EnumTypeDecl
+	)*
+	;
+
+// BNF
+// <KindDecl> ::= `kind' <ID> ( `extends' <KindRef> )? `{' ( `title' <STRING> )? ( <AttributeDecl> | <ActionDecl> )* `}' 
+//
+// <KindRef> ::= <ID> ( `.' <ID> )?
+//
+
+KindDecl returns Kind:
+	'kind'
 	term=ID
+	( 'extends' parent=[Kind|QualifiedID] )?
 	'{'
-	'scheme' scheme=STRING
-	('title' title=STRING)?
-	('parent' parent=[Kind|QualifiedName])?
-	('attributes' '{' attributes+=Attribute ("," attributes+=Attribute)* '}')?
-	('actions' '{' actions+=Action ("," actions+=Action)* '}')?
-	'}';
+    ( 'title' title=STRING )?
+    (
+      attributes+=AttributeDecl
+    | actions+=ActionDecl
+    )*
+    '}'
+	;
 
-Mixin returns Mixin:
-	'Mixin'
+// BNF
+// <MixinDecl> ::= `mixin' <ID> ( `depends' <MixinRef> ( `,' <MixinRef> )* )? ( `applies' <KindRef> ( `,' <KindRef> )* )? `{' ( `scheme' <URI> )? ( `title' <STRING> )? ( <AttributeDecl> | <ActionDecl> )* `}' 
+//
+// <MixinRef> ::= <ID> ( `.' <ID> )?
+//
+
+MixinDecl returns Mixin:
+	'mixin'
 	term=ID
+	( 'depends' depends+=[Mixin|QualifiedID] ( ',' depends+=[Mixin|QualifiedID] )* )?
+	( 'applies' applies+=[Kind|QualifiedID] ( ',' applies+=[Kind|QualifiedID] )* )?
 	'{'
-	'scheme' scheme=STRING
-	('title' title=STRING)?
-	('depends' '(' depends+=[Mixin|QualifiedName] ("," depends+=[Mixin|QualifiedName])* ')')?
-	('applies' '(' applies+=[Kind|QualifiedName] ("," applies+=[Kind|QualifiedName])* ')')?
-	('attributes' '{' attributes+=Attribute ("," attributes+=Attribute)* '}')?
-	('actions' '{' actions+=Action ("," actions+=Action)* '}')?
-	'}';
+    ( 'scheme' scheme=URI )?
+    ( 'title' title=STRING )?
+    (
+      attributes+=AttributeDecl
+    | actions+=ActionDecl
+    )*
+    '}'
+    ;
 
-Attribute returns Attribute:
-	'Attribute'
-	name=STRING
-	'{'
-	('mutable' mutable=EBoolean)?
-	('required' required=EBoolean)?
-	('default' default=STRING)?
-	('description' description=STRING)?
-//	('type' type=[EDataType|QualifiedName])?
-	'}';
+// BNF
+// <AttributeDecl> ::= `attribute' `mutable'? `required'? <ID> `:' <DataTypeRef> ( `*' )? ( `=' <STRING> )? ( `{' ( `description' <STRING> )? `}' )?
+//
+// <DataTypeRef> ::= <ID> ( `.' <ID> )?
+//
 
-Action returns Action:
-	'Action'
+AttributeDecl returns Attribute:
+	'attribute'
+	( mutable?='mutable' )?
+	( required?='required' )?
+	name=ID
+	':'
+	type=[ecore::EDataType|QualifiedID]
+	( '*' )?
+	( '=' default=STRING )?
+	(
+	'{' ('description' description=STRING )? '}' )?
+	;
+
+// BNF
+// <ActionDecl> ::= `action' <ID> `(' ( <ID> `:' <DataTypeRef> `*'? ( `,' <ID> `:' <DataTypeRef> `*'? )* )? `)' ( `{' `title' <STRING> `}' )?
+//
+
+ActionDecl returns Action:
+	'action'
 	term=ID
-	'{'
-	'scheme' scheme=STRING
-	('title' title=STRING)?
-	('attributes' '{' attributes+=Attribute ("," attributes+=Attribute)* '}')?
-	'}';
+	'('
+	( attributes+=ParameterDecl ( ',' attributes+=ParameterDecl )* )?
+	')'
+	( '{' 'title' title=STRING '}' )?
+	;
 
-EDataType returns ecore::EDataType:
-	EDataType_Impl | EEnum;
+ParameterDecl returns Attribute:
+    name=ID 
+    ':'
+    type=[ecore::EDataType|QualifiedID]
+    ( multiple_values?='*' )?
+    ;
 
-EBoolean returns ecore::EBoolean:
-	'true' | 'false';
+// BNF  
+// <DataTypeDecl> ::= `datatype' ( `serializable' )? <ID> `:' <STRING> ( `{' <DataTypeAnnotation>+ `}' )?
+//
+// <DataTypeAnnotation> ::=
+//   `minExclusive' `=' <Integer>
+// | `minInclusive' `=' <Integer>
+// | `maxExclusive' `=' <Integer>
+// | `maxInclusive' `=' <Integer>
+// | `totalDigits' `=' <PositiveInteger>
+// | `fractionDigits' `=' <PositiveInteger>
+// | `length' `=' <PositiveInteger>
+// | `minLength' `=' <PositiveInteger>
+// | `maxLength' `=' <PositiveInteger>
+// | `whiteSpace' `=' <PositiveInteger>
+// | `pattern' `=' <STRING>
 
-EInt returns ecore::EInt:
-	'-'? INT;
-
-EEnum returns ecore::EEnum:
-	{ecore::EEnum}
-	'EEnum'
-	name=STRING
-	'{'
-	('instanceTypeName' instanceTypeName=STRING)?
-	('eLiterals' '{' eLiterals+=EEnumLiteral ("," eLiterals+=EEnumLiteral)* '}')?
-	'}';
-
-EEnumLiteral returns ecore::EEnumLiteral:
-	{ecore::EEnumLiteral}
-	'EEnumLiteral'
-	name=STRING
-	'{'
-	('value' value=EInt)?
-	('literal' literal=STRING)?
-	'}';
-
-EDataType_Impl returns ecore::EDataType:
+DataTypeDecl returns ecore::EDataType:
 	{ecore::EDataType}
-	'EDataType'
-	name=STRING
+	'datatype'
+	( serializable?='serializable' )?
+	name=ID ':' instanceTypeName=STRING
+	( '{' eAnnotations+=DataTypeAnnotations '}' )?
+	;
+
+DataTypeAnnotations returns ecore::EAnnotation:
+//	source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData" // TODO comment affecter à source cette valeur sans que cela apparaisse dans la syntaxe ?
+	details+=DataTypeAnnotation+
+	;
+
+DataTypeAnnotation returns ecore::EStringToStringMapEntry:
+	  key='minExclusive' '=' value=Integer
+	| key='minInclusive' "minInclusive" '=' value=Integer
+	| key='maxExclusive' '=' value=Integer
+	| key='maxInclusive' '=' value=Integer
+	| key='totalDigits' '=' value=PositiveInteger
+	| key='fractionDigits' '=' value=PositiveInteger
+	| key='length' '=' value=PositiveInteger
+	| key='minLength' '=' value=PositiveInteger
+	| key='maxLength' '=' value=PositiveInteger
+	| key='whiteSpace' '=' value=PositiveInteger
+	| key='pattern' '=' value=STRING
+	;
+    
+// BNF
+// <EnumTypeDecl> ::= `enum' <ID> `{' <ID> ( `,' <ID> )* `}'
+//
+
+EnumTypeDecl returns ecore::EEnum:
+	{ecore::EEnum}
+	'enum'
+	name=ID
+	'{' eLiterals+=EnumLiteralDecl ( ',' eLiterals+=EnumLiteralDecl )* '}'
+	;
+
+EnumLiteralDecl returns ecore::EEnumLiteral:
+	{ecore::EEnumLiteral}
+	name=ID
+	;
+
+// BNF
+// <ConfigurationDecl> ::= `configuration' <UseDecl>* <ResourceDecl>*
+//
+ConfigurationDecl returns Configuration:
+	{Configuration}
+	'configuration'
+	( 'use' use+=[Extension|URI] ( 'as' ID )? )* // TODO where storing the ID?
+	resources+=ResourceDecl*
+	;
+
+// BNF
+// <UseDecl> ::= `use' <URI> ( `as' <ID> )?
+//
+
+// BNF
+// <ResourceDecl> ::= `resource' <URI> `:' <KindRef> ( `mixins' <MixinRef> ( `,' <MixinRef> )* )? `{' <StateDecl>* <LinkDecl>* `}'
+//
+ResourceDecl returns Resource:
+	'resource'
+	id=URI
+	':'
+	kind=[Kind|QualifiedID]
+	( 'mixins' mixins+=[Mixin|QualifiedID] ( ',' mixins+=[Mixin|QualifiedID] )* )?
 	'{'
-	('instanceTypeName' instanceTypeName=STRING)?
+	attributes+=StateDecl*
+	links+=LinkDecl*
 	'}';
-	
+
+// BNF
+// <StateDecl> ::= `state' <ID> `=' <STRING>
+//
+StateDecl returns AttributeState:
+	'state' name=ID '=' value=STRING
+	;
+
+// BNF
+// <LinkDecl> ::= `link' <URI> `:' <KindRef> ( `mixins' <MixinRef> ( `,' <MixinRef> )* )? `target' <URI> `{' <StateDecl>* `}'
+//
+LinkDecl returns Link:
+	'link'
+	id=URI
+	':'
+	kind=[Kind|QualifiedID]
+	( 'mixins' mixins+=[Mixin|QualifiedID] ( ',' mixins+=[Mixin|QualifiedID] )* )?
+	'target' target=[Resource|URI]
+	'{'
+	attributes+=StateDecl*
+	'}'
+	;
+
+terminal URI: 
+  "'" ( '\\'('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') | !('\\'|"'") )* "'";
+
+QualifiedID: ID ( '.' ID )? ;
+
+Integer returns String: '-'? INT ;
+
+PositiveInteger returns String: INT ;
