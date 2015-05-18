@@ -36,7 +36,7 @@ public class Generate extends AbstractAcceleoGenerator {
 	 *
 	 * @generated
 	 */
-	public static final String MODULE_FILE_NAME = "/org/occiware/clouddesigner/occi/gen/curl/main/generate";
+	public static final String MODULE_FILE_NAME = "generate";
 
 	/**
 	 * The name of the templates that are to be generated.
