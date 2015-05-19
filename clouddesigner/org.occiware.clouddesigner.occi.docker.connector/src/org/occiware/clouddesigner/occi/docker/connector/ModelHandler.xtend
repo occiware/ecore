@@ -71,6 +71,15 @@ import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.Docke
 import org.occiware.clouddesigner.occi.infrastructure.ComputeStatus
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import org.occiware.clouddesigner.occi.docker.Machine_Digital_Ocean
+import org.occiware.clouddesigner.occi.docker.Machine_VMware_Fusion
+import org.occiware.clouddesigner.occi.docker.Machine_Google_Compute_Engine
+import org.occiware.clouddesigner.occi.docker.Machine_IBM_SoftLayer
+import org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Azure
+import org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Hyper_V
+import org.occiware.clouddesigner.occi.docker.Machine_OpenStack
+import org.occiware.clouddesigner.occi.docker.Machine_Rackspace
+import org.occiware.clouddesigner.occi.docker.Machine_VMware_vSphere
 
 class ModelHandler {
 
@@ -478,6 +487,60 @@ class ModelHandler {
 				LOGGER.info("Model setting: " + newvbox)
 			} else if (vbox instanceof Machine_Amazon_EC2) {
 				var newvbox = vbox as Machine_Amazon_EC2
+
+				// Set values
+				machineFactory(newvbox, node, state)
+				LOGGER.info("Model setting: " + newvbox)
+			} else if (vbox instanceof Machine_Digital_Ocean) {
+				var newvbox = vbox as Machine_Digital_Ocean
+
+				// Set values
+				machineFactory(newvbox, node, state)
+				LOGGER.info("Model setting: " + newvbox)
+			} else if (vbox instanceof Machine_VMware_Fusion) {
+				var newvbox = vbox as Machine_VMware_Fusion
+
+				// Set values
+				machineFactory(newvbox, node, state)
+				LOGGER.info("Model setting: " + newvbox)
+			} else if (vbox instanceof Machine_Google_Compute_Engine) {
+				var newvbox = vbox as Machine_Google_Compute_Engine
+
+				// Set values
+				machineFactory(newvbox, node, state)
+				LOGGER.info("Model setting: " + newvbox)
+			} else if (vbox instanceof Machine_IBM_SoftLayer) {
+				var newvbox = vbox as Machine_IBM_SoftLayer
+
+				// Set values
+				machineFactory(newvbox, node, state)
+				LOGGER.info("Model setting: " + newvbox)
+			} else if (vbox instanceof Machine_Microsoft_Azure) {
+				var newvbox = vbox as Machine_Microsoft_Azure
+
+				// Set values
+				machineFactory(newvbox, node, state)
+				LOGGER.info("Model setting: " + newvbox)
+			} else if (vbox instanceof Machine_Microsoft_Hyper_V) {
+				var newvbox = vbox as Machine_Microsoft_Hyper_V
+
+				// Set values
+				machineFactory(newvbox, node, state)
+				LOGGER.info("Model setting: " + newvbox)
+			} else if (vbox instanceof Machine_OpenStack) {
+				var newvbox = vbox as Machine_OpenStack
+
+				// Set values
+				machineFactory(newvbox, node, state)
+				LOGGER.info("Model setting: " + newvbox)
+			} else if (vbox instanceof Machine_Rackspace) {
+				var newvbox = vbox as Machine_Rackspace
+
+				// Set values
+				machineFactory(newvbox, node, state)
+				LOGGER.info("Model setting: " + newvbox)
+			} else if (vbox instanceof Machine_VMware_vSphere) {
+				var newvbox = vbox as Machine_VMware_vSphere
 
 				// Set values
 				machineFactory(newvbox, node, state)
