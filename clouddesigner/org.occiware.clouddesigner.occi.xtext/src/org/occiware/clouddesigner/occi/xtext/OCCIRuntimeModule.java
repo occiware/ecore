@@ -4,6 +4,12 @@
 package org.occiware.clouddesigner.occi.xtext;
 
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
+import org.eclipse.xtext.parsetree.reconstr.ITransientValueService;
+import org.eclipse.xtext.resource.IDerivedStateComputer;
+import org.eclipse.xtext.resource.IResourceDescription;
+import org.eclipse.xtext.resource.DerivedStateAwareResource;
+import org.eclipse.xtext.resource.DerivedStateAwareResourceDescriptionManager;
+import org.eclipse.xtext.resource.XtextResource;
 import org.occiware.clouddesigner.occi.xtext.scoping.NameProvider;
 
 /**
@@ -15,5 +21,34 @@ public class OCCIRuntimeModule extends
 	@Override
 	public Class<? extends IQualifiedNameProvider> bindIQualifiedNameProvider() {
 		return NameProvider.class;
+	}
+
+	/**
+	 * @return the class implementing IDerivedStateComputer.
+	 */
+	public Class<? extends IDerivedStateComputer> bindIDerivedStateComputer() {
+	    return OCCIDerivedStateComputer.class;
+	}
+
+	// Not needed for Xbase-projects but needed for not Xbase-projects.
+	@Override
+	public Class<? extends XtextResource> bindXtextResource() {
+		return DerivedStateAwareResource.class;
+	}
+
+	// Not needed for Xbase-projects but needed for not Xbase-projects.
+	public Class<? extends IResourceDescription.Manager> bindIResourceDescriptionManager() {
+		return DerivedStateAwareResourceDescriptionManager.class;
+	}
+
+	/**
+	 * @return the class implementing ITransientValueService.
+	 */
+	public Class<? extends ITransientValueService> bindITransientValueService() {
+	    return OCCITransientValueService.class;
+	}
+
+	 public Class<?> bindITransientValueService2() {
+	    return OCCITransientValueService2.class;
 	}
 }
