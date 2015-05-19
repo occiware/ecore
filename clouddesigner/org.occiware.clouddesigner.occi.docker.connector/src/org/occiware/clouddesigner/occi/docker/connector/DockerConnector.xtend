@@ -1004,7 +1004,7 @@ class ExecutableMachine_Amazon_EC2 extends Machine_Amazon_EC2Impl {
 	 */
 	val manager = new MachineManager(this) {
 		override def getDriverName() {
-			"amazonec2" // TODO: check driver name
+			"amazonec2"
 		}
 
 		override def appendDriverParameters(StringBuilder sb) {
@@ -1038,7 +1038,7 @@ class ExecutableMachine_Digital_Ocean extends Machine_Digital_OceanImpl {
 	 */
 	val manager = new MachineManager(this) {
 		override def getDriverName() {
-			"digitalocean" // TODO: check driver name
+			"digitalocean"
 		}
 
 		override def appendDriverParameters(StringBuilder sb) {
@@ -1072,7 +1072,7 @@ class ExecutableMachine_Google_Compute_Engine extends Machine_Google_Compute_Eng
 	 */
 	val manager = new MachineManager(this) {
 		override def getDriverName() {
-			"google" // TODO: check driver name
+			"google"
 		}
 
 		override def appendDriverParameters(StringBuilder sb) {
@@ -1106,7 +1106,7 @@ class ExecutableMachine_IBM_SoftLayer extends Machine_IBM_SoftLayerImpl {
 	 */
 	val manager = new MachineManager(this) {
 		override def getDriverName() {
-			"ibmsoflayer" // TODO: check driver name
+			"softlayer"
 		}
 
 		override def appendDriverParameters(StringBuilder sb) {
@@ -1140,7 +1140,7 @@ class ExecutableMachine_Microsoft_Azure extends Machine_Microsoft_AzureImpl {
 	 */
 	val manager = new MachineManager(this) {
 		override def getDriverName() {
-			"azure" // TODO: check driver name
+			"azure"
 		}
 
 		override def appendDriverParameters(StringBuilder sb) {
@@ -1208,7 +1208,7 @@ class ExecutableMachine_OpenStack extends Machine_OpenStackImpl {
 	 */
 	val manager = new MachineManager(this) {
 		override def getDriverName() {
-			"openstack" // TODO: check driver name
+			"openstack"
 		}
 
 		override def appendDriverParameters(StringBuilder sb) {
@@ -1242,7 +1242,7 @@ class ExecutableMachine_Rackspace extends Machine_RackspaceImpl {
 	 */
 	val manager = new MachineManager(this) {
 		override def getDriverName() {
-			"rackspace" // TODO: check driver name
+			"rackspace"
 		}
 
 		override def appendDriverParameters(StringBuilder sb) {
@@ -1329,13 +1329,21 @@ class ExecutableMachine_VMware_Fusion extends Machine_VMware_FusionImpl {
 	 */
 	val manager = new MachineManager(this) {
 		override def getDriverName() {
-			"fusion" // TODO: check driver name
+			"vmwarefusion"
 		}
 
 		override def appendDriverParameters(StringBuilder sb) {
-
-			// TODO: must be implemented
-			throw new UnsupportedOperationException
+			if (disk_size > 0) {
+				sb.append(" --vmwarefusion-disk-size ").append(disk_size)
+			}
+			if (memory > 0.0F) {
+				sb.append(" --vmwarefusion-memory-size ").append(memory)
+			} else if (memory == 0.0F) {
+				sb.append(" --vmwarefusion-memory-size ").append(1024.0)
+			}
+			if (boot2docker_url != null) {
+				sb.append(" --vmwarefusion-boot2docker-url ").append(boot2docker_url)
+			}
 		}
 	}
 
@@ -1363,7 +1371,7 @@ class ExecutableMachine_VMware_vCloud_Air extends Machine_VMware_vCloud_AirImpl 
 	 */
 	val manager = new MachineManager(this) {
 		override def getDriverName() {
-			"vcloudair" // TODO: check driver name
+			"vmwarevcloudair"
 		}
 
 		override def appendDriverParameters(StringBuilder sb) {
@@ -1397,7 +1405,7 @@ class ExecutableMachine_VMware_vSphere extends Machine_VMware_vSphereImpl {
 	 */
 	val manager = new MachineManager(this) {
 		override def getDriverName() {
-			"vsphere" // TODO: check driver name
+			"vmwarevsphere"
 		}
 
 		override def appendDriverParameters(StringBuilder sb) {
