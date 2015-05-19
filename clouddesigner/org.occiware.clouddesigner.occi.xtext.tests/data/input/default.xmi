@@ -3,7 +3,7 @@
     xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI"
     xmlns:OCCI="http://schemas.ogf.org/occi"
-    name="OCCI Core"
+    name="core"
     scheme="http://schemas.ogf.org/occi/core#">
   <kinds term="resource"
       scheme="http://schemas.ogf.org/occi/core#"

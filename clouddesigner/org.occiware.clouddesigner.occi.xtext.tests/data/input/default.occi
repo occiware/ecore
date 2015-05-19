@@ -1,19 +1,21 @@
-Extension "OCCI Core" {
-	scheme "http://schemas.ogf.org/occi/core#" 
-	kinds {
-		Kind entity {
-			scheme "http://schemas.ogf.org/occi/core#" 
-			title "Entity type"
-		},
-		Kind resource {
-			scheme "http://schemas.ogf.org/occi/core#" 
-			title "Resource"
-			parent entity
-			attributes {
-				Attribute "aa" {
-					
-				}
-			}
-		}
-	}
+extension core : 'http://schemas.ogf.org/occi/core#'
+
+datatype String : "java.lang.String"
+datatype Boolean : "boolean"
+datatype Number : "int"
+
+datatype Positive : "int" { minInclusive = 0 }
+
+kind entity { title "Entity type" }
+
+kind ^resource extends entity {
+  title "Resource type"
+   attribute aa : Number
+   action foo(p1 : Number, p2 : String, p3 : Boolean)
+}
+
+mixin essai {
+  title "Essai type"
+   attribute bb : Number
+   action bar(p1 : Number, p2 : String, p3 : Boolean)
 }

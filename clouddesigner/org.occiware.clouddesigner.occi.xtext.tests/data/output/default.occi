@@ -1,10 +1,7 @@
-Extension "OCCI Core" {
-	scheme "http://schemas.ogf.org/occi/core#" kinds {
-		Kind resource {
-			scheme "http://schemas.ogf.org/occi/core#" title "Resource" parent entity
-		},
-		Kind entity {
-			scheme "http://schemas.ogf.org/occi/core#" title "Entity type"
-		}
-	}
+extension core : http://schemas.ogf.org/occi/core# kind ^resource extends entity
+{
+	title "Resource"
+}
+kind entity {
+	title "Entity type"
 }
