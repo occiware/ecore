@@ -17,22 +17,25 @@ import org.occiware.clouddesigner.OCCI.Extension;
 import org.occiware.clouddesigner.OCCI.Kind;
 import org.occiware.clouddesigner.OCCI.Mixin;
 
+/**
+ * Some EMF fields of the OCCIware metamodel are not explicitly set by OCCI.xtext:
+ * - Kind.scheme
+ * - Mixin.scheme
+ * - Action.scheme
+ * - EDataType.eAnnotations.source
+ * So in order to have correct metamodel instances, this class sets these fields automatically to a correct value.
+ */
 @SuppressWarnings("all")
 public class OCCIDerivedStateComputer implements IDerivedStateComputer {
-  @Override
-  public void discardDerivedState(final DerivedStateAwareResource resource) {
-    System.out.println("discardDerivedState begin");
-    TreeIterator<EObject> _allContents = resource.getAllContents();
-    final Procedure1<EObject> _function = new Procedure1<EObject>() {
-      @Override
-      public void apply(final EObject r) {
-        System.out.println(("discardDerivedState " + r));
-      }
-    };
-    IteratorExtensions.<EObject>forEach(_allContents, _function);
-    System.out.println("discardDerivedState end");
-  }
-  
+  /**
+   * override discardDerivedState(DerivedStateAwareResource resource) {
+   * System.out.println("discardDerivedState begin")
+   * resource.allContents.forEach [ r |
+   * System.out.println("discardDerivedState " + r)
+   * ]
+   * System.out.println("discardDerivedState end")
+   * }
+   */
   @Override
   public void installDerivedState(final DerivedStateAwareResource resource, final boolean preLinkingPhase) {
     TreeIterator<EObject> _allContents = resource.getAllContents();
