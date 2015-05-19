@@ -21,20 +21,35 @@ public final class XTextUtils {
 	}
 
 	public static void parse(URI uri) throws IOException {
+		System.out.println("Loading " + uri + "...");
 		Resource source = resourceSet.getResource(uri, true);
+		System.out.println(uri + " loaded");
+
 		Resource target = resourceSet.createResource(URI
 				.createURI("data/output/"
 						+ uri.lastSegment().replace(".occi", ".xmi")));
+		
 		target.getContents().addAll(source.getContents());
+
+		System.out.println("Saving " + target.getURI() + "...");
 		target.save(Collections.EMPTY_MAP);
+		System.out.println(target.getURI() + " saved");
 	}
 
 	public static void serialize(URI uri) throws IOException {
+		System.out.println("Loading " + uri + "...");
 		Resource source = resourceSet.getResource(uri, true);
+		System.out.println(uri + " loaded");
+
 		Resource target = resourceSet.createResource(URI
 				.createURI("data/output/"
 						+ uri.lastSegment().replace(".xmi", ".occi")));
+
+		System.out.println("Before addAll");
 		target.getContents().addAll(source.getContents());
+
+		System.out.println("Saving " + target.getURI() + "...");
 		target.save(Collections.EMPTY_MAP);
+		System.out.println(target.getURI() + " saved");
 	}
 }
