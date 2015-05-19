@@ -45,7 +45,6 @@ public final class XTextUtils {
 				.createURI("data/output/"
 						+ uri.lastSegment().replace(".xmi", ".occi")));
 
-		System.out.println("Before addAll");
 		target.getContents().addAll(source.getContents());
 
 		System.out.println("Saving " + target.getURI() + "...");
