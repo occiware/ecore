@@ -511,34 +511,6 @@ finally {
 
 
 
-// Entry rule entryRuleURI
-entryRuleURI 
-:
-{ before(grammarAccess.getURIRule()); }
-	 ruleURI
-{ after(grammarAccess.getURIRule()); } 
-	 EOF 
-;
-
-// Rule URI
-ruleURI
-    @init {
-		int stackSize = keepStackSize();
-    }
-	:
-(
-{ before(grammarAccess.getURIAccess().getSTRINGTerminalRuleCall()); }
-	RULE_STRING
-{ after(grammarAccess.getURIAccess().getSTRINGTerminalRuleCall()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-
 // Entry rule entryRuleQualifiedID
 entryRuleQualifiedID 
 :
@@ -6569,8 +6541,8 @@ rule__ExtensionDecl__SchemeAssignment_3
     }
 :
 (
-{ before(grammarAccess.getExtensionDeclAccess().getSchemeURIParserRuleCall_3_0()); }
-	ruleURI{ after(grammarAccess.getExtensionDeclAccess().getSchemeURIParserRuleCall_3_0()); }
+{ before(grammarAccess.getExtensionDeclAccess().getSchemeSTRINGTerminalRuleCall_3_0()); }
+	RULE_STRING{ after(grammarAccess.getExtensionDeclAccess().getSchemeSTRINGTerminalRuleCall_3_0()); }
 )
 
 ;
@@ -6586,8 +6558,8 @@ rule__ExtensionDecl__ImportAssignment_4_1
 (
 { before(grammarAccess.getExtensionDeclAccess().getImportExtensionCrossReference_4_1_0()); }
 (
-{ before(grammarAccess.getExtensionDeclAccess().getImportExtensionURIParserRuleCall_4_1_0_1()); }
-	ruleURI{ after(grammarAccess.getExtensionDeclAccess().getImportExtensionURIParserRuleCall_4_1_0_1()); }
+{ before(grammarAccess.getExtensionDeclAccess().getImportExtensionSTRINGTerminalRuleCall_4_1_0_1()); }
+	RULE_STRING{ after(grammarAccess.getExtensionDeclAccess().getImportExtensionSTRINGTerminalRuleCall_4_1_0_1()); }
 )
 { after(grammarAccess.getExtensionDeclAccess().getImportExtensionCrossReference_4_1_0()); }
 )
@@ -6833,8 +6805,8 @@ rule__MixinDecl__SchemeAssignment_5_1
     }
 :
 (
-{ before(grammarAccess.getMixinDeclAccess().getSchemeURIParserRuleCall_5_1_0()); }
-	ruleURI{ after(grammarAccess.getMixinDeclAccess().getSchemeURIParserRuleCall_5_1_0()); }
+{ before(grammarAccess.getMixinDeclAccess().getSchemeSTRINGTerminalRuleCall_5_1_0()); }
+	RULE_STRING{ after(grammarAccess.getMixinDeclAccess().getSchemeSTRINGTerminalRuleCall_5_1_0()); }
 )
 
 ;
@@ -7683,8 +7655,8 @@ rule__ConfigurationDecl__UseAssignment_2_1
 (
 { before(grammarAccess.getConfigurationDeclAccess().getUseExtensionCrossReference_2_1_0()); }
 (
-{ before(grammarAccess.getConfigurationDeclAccess().getUseExtensionURIParserRuleCall_2_1_0_1()); }
-	ruleURI{ after(grammarAccess.getConfigurationDeclAccess().getUseExtensionURIParserRuleCall_2_1_0_1()); }
+{ before(grammarAccess.getConfigurationDeclAccess().getUseExtensionSTRINGTerminalRuleCall_2_1_0_1()); }
+	RULE_STRING{ after(grammarAccess.getConfigurationDeclAccess().getUseExtensionSTRINGTerminalRuleCall_2_1_0_1()); }
 )
 { after(grammarAccess.getConfigurationDeclAccess().getUseExtensionCrossReference_2_1_0()); }
 )
@@ -7715,8 +7687,8 @@ rule__ResourceDecl__IdAssignment_1
     }
 :
 (
-{ before(grammarAccess.getResourceDeclAccess().getIdURIParserRuleCall_1_0()); }
-	ruleURI{ after(grammarAccess.getResourceDeclAccess().getIdURIParserRuleCall_1_0()); }
+{ before(grammarAccess.getResourceDeclAccess().getIdSTRINGTerminalRuleCall_1_0()); }
+	RULE_STRING{ after(grammarAccess.getResourceDeclAccess().getIdSTRINGTerminalRuleCall_1_0()); }
 )
 
 ;
@@ -7847,8 +7819,8 @@ rule__LinkDecl__IdAssignment_1
     }
 :
 (
-{ before(grammarAccess.getLinkDeclAccess().getIdURIParserRuleCall_1_0()); }
-	ruleURI{ after(grammarAccess.getLinkDeclAccess().getIdURIParserRuleCall_1_0()); }
+{ before(grammarAccess.getLinkDeclAccess().getIdSTRINGTerminalRuleCall_1_0()); }
+	RULE_STRING{ after(grammarAccess.getLinkDeclAccess().getIdSTRINGTerminalRuleCall_1_0()); }
 )
 
 ;
@@ -7921,8 +7893,8 @@ rule__LinkDecl__TargetAssignment_6
 (
 { before(grammarAccess.getLinkDeclAccess().getTargetResourceCrossReference_6_0()); }
 (
-{ before(grammarAccess.getLinkDeclAccess().getTargetResourceURIParserRuleCall_6_0_1()); }
-	ruleURI{ after(grammarAccess.getLinkDeclAccess().getTargetResourceURIParserRuleCall_6_0_1()); }
+{ before(grammarAccess.getLinkDeclAccess().getTargetResourceSTRINGTerminalRuleCall_6_0_1()); }
+	RULE_STRING{ after(grammarAccess.getLinkDeclAccess().getTargetResourceSTRINGTerminalRuleCall_6_0_1()); }
 )
 { after(grammarAccess.getLinkDeclAccess().getTargetResourceCrossReference_6_0()); }
 )

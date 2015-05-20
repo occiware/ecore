@@ -72,7 +72,7 @@ public class OCCIDerivedStateComputer implements IDerivedStateComputer {
             String _scheme_5 = ownerCategory.getScheme();
             String _scheme_6 = ownerCategory.getScheme();
             int _length = _scheme_6.length();
-            int _minus = (_length - 2);
+            int _minus = (_length - 1);
             String _substring = _scheme_5.substring(0, _minus);
             String _plus = (_substring + "/");
             String _term = ownerCategory.getTerm();

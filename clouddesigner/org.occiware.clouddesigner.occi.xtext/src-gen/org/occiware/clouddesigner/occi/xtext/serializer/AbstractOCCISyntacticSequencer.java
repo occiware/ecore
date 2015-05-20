@@ -99,9 +99,9 @@ public abstract class AbstractOCCISyntacticSequencer extends AbstractSyntacticSe
 	 *     ('as' ID)?
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     use+=[Extension|URI] (ambiguity) 'use' use+=[Extension|URI]
-	 *     use+=[Extension|URI] (ambiguity) (rule end)
-	 *     use+=[Extension|URI] (ambiguity) resources+=ResourceDecl
+	 *     use+=[Extension|STRING] (ambiguity) 'use' use+=[Extension|STRING]
+	 *     use+=[Extension|STRING] (ambiguity) (rule end)
+	 *     use+=[Extension|STRING] (ambiguity) resources+=ResourceDecl
 	 */
 	protected void emit_ConfigurationDecl___AsKeyword_2_2_0_IDTerminalRuleCall_2_2_1__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -112,12 +112,12 @@ public abstract class AbstractOCCISyntacticSequencer extends AbstractSyntacticSe
 	 *     ('as' ID)?
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     import+=[Extension|URI] (ambiguity) 'import' import+=[Extension|URI]
-	 *     import+=[Extension|URI] (ambiguity) (rule end)
-	 *     import+=[Extension|URI] (ambiguity) kinds+=KindDecl
-	 *     import+=[Extension|URI] (ambiguity) mixins+=MixinDecl
-	 *     import+=[Extension|URI] (ambiguity) types+=DataTypeDecl
-	 *     import+=[Extension|URI] (ambiguity) types+=EnumTypeDecl
+	 *     import+=[Extension|STRING] (ambiguity) 'import' import+=[Extension|STRING]
+	 *     import+=[Extension|STRING] (ambiguity) (rule end)
+	 *     import+=[Extension|STRING] (ambiguity) kinds+=KindDecl
+	 *     import+=[Extension|STRING] (ambiguity) mixins+=MixinDecl
+	 *     import+=[Extension|STRING] (ambiguity) types+=DataTypeDecl
+	 *     import+=[Extension|STRING] (ambiguity) types+=EnumTypeDecl
 	 */
 	protected void emit_ExtensionDecl___AsKeyword_4_2_0_IDTerminalRuleCall_4_2_1__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);

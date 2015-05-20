@@ -278,18 +278,18 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleExtensionDecl"
-    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:116:1: ruleExtensionDecl returns [EObject current=null] : (otherlv_0= 'extension' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ':' ( (lv_scheme_3_0= ruleURI ) ) (otherlv_4= 'import' ( ( ruleURI ) ) (otherlv_6= 'as' this_ID_7= RULE_ID )? )* ( ( (lv_kinds_8_0= ruleKindDecl ) ) | ( (lv_mixins_9_0= ruleMixinDecl ) ) | ( (lv_types_10_0= ruleDataTypeDecl ) ) | ( (lv_types_11_0= ruleEnumTypeDecl ) ) )* ) ;
+    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:116:1: ruleExtensionDecl returns [EObject current=null] : (otherlv_0= 'extension' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ':' ( (lv_scheme_3_0= RULE_STRING ) ) (otherlv_4= 'import' ( (otherlv_5= RULE_STRING ) ) (otherlv_6= 'as' this_ID_7= RULE_ID )? )* ( ( (lv_kinds_8_0= ruleKindDecl ) ) | ( (lv_mixins_9_0= ruleMixinDecl ) ) | ( (lv_types_10_0= ruleDataTypeDecl ) ) | ( (lv_types_11_0= ruleEnumTypeDecl ) ) )* ) ;
     public final EObject ruleExtensionDecl() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
         Token lv_name_1_0=null;
         Token otherlv_2=null;
+        Token lv_scheme_3_0=null;
         Token otherlv_4=null;
+        Token otherlv_5=null;
         Token otherlv_6=null;
         Token this_ID_7=null;
-        AntlrDatatypeRuleToken lv_scheme_3_0 = null;
-
         EObject lv_kinds_8_0 = null;
 
         EObject lv_mixins_9_0 = null;
@@ -302,11 +302,11 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:119:28: ( (otherlv_0= 'extension' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ':' ( (lv_scheme_3_0= ruleURI ) ) (otherlv_4= 'import' ( ( ruleURI ) ) (otherlv_6= 'as' this_ID_7= RULE_ID )? )* ( ( (lv_kinds_8_0= ruleKindDecl ) ) | ( (lv_mixins_9_0= ruleMixinDecl ) ) | ( (lv_types_10_0= ruleDataTypeDecl ) ) | ( (lv_types_11_0= ruleEnumTypeDecl ) ) )* ) )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:120:1: (otherlv_0= 'extension' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ':' ( (lv_scheme_3_0= ruleURI ) ) (otherlv_4= 'import' ( ( ruleURI ) ) (otherlv_6= 'as' this_ID_7= RULE_ID )? )* ( ( (lv_kinds_8_0= ruleKindDecl ) ) | ( (lv_mixins_9_0= ruleMixinDecl ) ) | ( (lv_types_10_0= ruleDataTypeDecl ) ) | ( (lv_types_11_0= ruleEnumTypeDecl ) ) )* )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:119:28: ( (otherlv_0= 'extension' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ':' ( (lv_scheme_3_0= RULE_STRING ) ) (otherlv_4= 'import' ( (otherlv_5= RULE_STRING ) ) (otherlv_6= 'as' this_ID_7= RULE_ID )? )* ( ( (lv_kinds_8_0= ruleKindDecl ) ) | ( (lv_mixins_9_0= ruleMixinDecl ) ) | ( (lv_types_10_0= ruleDataTypeDecl ) ) | ( (lv_types_11_0= ruleEnumTypeDecl ) ) )* ) )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:120:1: (otherlv_0= 'extension' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ':' ( (lv_scheme_3_0= RULE_STRING ) ) (otherlv_4= 'import' ( (otherlv_5= RULE_STRING ) ) (otherlv_6= 'as' this_ID_7= RULE_ID )? )* ( ( (lv_kinds_8_0= ruleKindDecl ) ) | ( (lv_mixins_9_0= ruleMixinDecl ) ) | ( (lv_types_10_0= ruleDataTypeDecl ) ) | ( (lv_types_11_0= ruleEnumTypeDecl ) ) )* )
             {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:120:1: (otherlv_0= 'extension' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ':' ( (lv_scheme_3_0= ruleURI ) ) (otherlv_4= 'import' ( ( ruleURI ) ) (otherlv_6= 'as' this_ID_7= RULE_ID )? )* ( ( (lv_kinds_8_0= ruleKindDecl ) ) | ( (lv_mixins_9_0= ruleMixinDecl ) ) | ( (lv_types_10_0= ruleDataTypeDecl ) ) | ( (lv_types_11_0= ruleEnumTypeDecl ) ) )* )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:120:3: otherlv_0= 'extension' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ':' ( (lv_scheme_3_0= ruleURI ) ) (otherlv_4= 'import' ( ( ruleURI ) ) (otherlv_6= 'as' this_ID_7= RULE_ID )? )* ( ( (lv_kinds_8_0= ruleKindDecl ) ) | ( (lv_mixins_9_0= ruleMixinDecl ) ) | ( (lv_types_10_0= ruleDataTypeDecl ) ) | ( (lv_types_11_0= ruleEnumTypeDecl ) ) )*
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:120:1: (otherlv_0= 'extension' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ':' ( (lv_scheme_3_0= RULE_STRING ) ) (otherlv_4= 'import' ( (otherlv_5= RULE_STRING ) ) (otherlv_6= 'as' this_ID_7= RULE_ID )? )* ( ( (lv_kinds_8_0= ruleKindDecl ) ) | ( (lv_mixins_9_0= ruleMixinDecl ) ) | ( (lv_types_10_0= ruleDataTypeDecl ) ) | ( (lv_types_11_0= ruleEnumTypeDecl ) ) )* )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:120:3: otherlv_0= 'extension' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ':' ( (lv_scheme_3_0= RULE_STRING ) ) (otherlv_4= 'import' ( (otherlv_5= RULE_STRING ) ) (otherlv_6= 'as' this_ID_7= RULE_ID )? )* ( ( (lv_kinds_8_0= ruleKindDecl ) ) | ( (lv_mixins_9_0= ruleMixinDecl ) ) | ( (lv_types_10_0= ruleDataTypeDecl ) ) | ( (lv_types_11_0= ruleEnumTypeDecl ) ) )*
             {
             otherlv_0=(Token)match(input,11,FollowSets000.FOLLOW_11_in_ruleExtensionDecl241); 
 
@@ -342,30 +342,25 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
                 	newLeafNode(otherlv_2, grammarAccess.getExtensionDeclAccess().getColonKeyword_2());
                 
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:146:1: ( (lv_scheme_3_0= ruleURI ) )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:147:1: (lv_scheme_3_0= ruleURI )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:146:1: ( (lv_scheme_3_0= RULE_STRING ) )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:147:1: (lv_scheme_3_0= RULE_STRING )
             {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:147:1: (lv_scheme_3_0= ruleURI )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:148:3: lv_scheme_3_0= ruleURI
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:147:1: (lv_scheme_3_0= RULE_STRING )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:148:3: lv_scheme_3_0= RULE_STRING
             {
-             
-            	        newCompositeNode(grammarAccess.getExtensionDeclAccess().getSchemeURIParserRuleCall_3_0()); 
-            	    
-            pushFollow(FollowSets000.FOLLOW_ruleURI_in_ruleExtensionDecl296);
-            lv_scheme_3_0=ruleURI();
+            lv_scheme_3_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleExtensionDecl292); 
 
-            state._fsp--;
-
+            			newLeafNode(lv_scheme_3_0, grammarAccess.getExtensionDeclAccess().getSchemeSTRINGTerminalRuleCall_3_0()); 
+            		
 
             	        if (current==null) {
-            	            current = createModelElementForParent(grammarAccess.getExtensionDeclRule());
+            	            current = createModelElement(grammarAccess.getExtensionDeclRule());
             	        }
-                   		set(
+                   		setWithLastConsumed(
                    			current, 
                    			"scheme",
                     		lv_scheme_3_0, 
-                    		"URI");
-            	        afterParserOrEnumRuleCall();
+                    		"STRING");
             	    
 
             }
@@ -373,7 +368,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:164:2: (otherlv_4= 'import' ( ( ruleURI ) ) (otherlv_6= 'as' this_ID_7= RULE_ID )? )*
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:164:2: (otherlv_4= 'import' ( (otherlv_5= RULE_STRING ) ) (otherlv_6= 'as' this_ID_7= RULE_ID )? )*
             loop3:
             do {
                 int alt3=2;
@@ -386,41 +381,34 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
                 switch (alt3) {
             	case 1 :
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:164:4: otherlv_4= 'import' ( ( ruleURI ) ) (otherlv_6= 'as' this_ID_7= RULE_ID )?
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:164:4: otherlv_4= 'import' ( (otherlv_5= RULE_STRING ) ) (otherlv_6= 'as' this_ID_7= RULE_ID )?
             	    {
-            	    otherlv_4=(Token)match(input,13,FollowSets000.FOLLOW_13_in_ruleExtensionDecl309); 
+            	    otherlv_4=(Token)match(input,13,FollowSets000.FOLLOW_13_in_ruleExtensionDecl310); 
 
             	        	newLeafNode(otherlv_4, grammarAccess.getExtensionDeclAccess().getImportKeyword_4_0());
             	        
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:168:1: ( ( ruleURI ) )
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:169:1: ( ruleURI )
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:168:1: ( (otherlv_5= RULE_STRING ) )
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:169:1: (otherlv_5= RULE_STRING )
             	    {
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:169:1: ( ruleURI )
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:170:3: ruleURI
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:169:1: (otherlv_5= RULE_STRING )
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:170:3: otherlv_5= RULE_STRING
             	    {
 
             	    			if (current==null) {
             	    	            current = createModelElement(grammarAccess.getExtensionDeclRule());
             	    	        }
             	            
-            	     
-            	    	        newCompositeNode(grammarAccess.getExtensionDeclAccess().getImportExtensionCrossReference_4_1_0()); 
-            	    	    
-            	    pushFollow(FollowSets000.FOLLOW_ruleURI_in_ruleExtensionDecl332);
-            	    ruleURI();
+            	    otherlv_5=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleExtensionDecl330); 
 
-            	    state._fsp--;
-
-            	     
-            	    	        afterParserOrEnumRuleCall();
-            	    	    
+            	    		newLeafNode(otherlv_5, grammarAccess.getExtensionDeclAccess().getImportExtensionCrossReference_4_1_0()); 
+            	    	
 
             	    }
 
 
             	    }
 
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:183:2: (otherlv_6= 'as' this_ID_7= RULE_ID )?
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:181:2: (otherlv_6= 'as' this_ID_7= RULE_ID )?
             	    int alt2=2;
             	    int LA2_0 = input.LA(1);
 
@@ -429,13 +417,13 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
             	    }
             	    switch (alt2) {
             	        case 1 :
-            	            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:183:4: otherlv_6= 'as' this_ID_7= RULE_ID
+            	            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:181:4: otherlv_6= 'as' this_ID_7= RULE_ID
             	            {
-            	            otherlv_6=(Token)match(input,14,FollowSets000.FOLLOW_14_in_ruleExtensionDecl345); 
+            	            otherlv_6=(Token)match(input,14,FollowSets000.FOLLOW_14_in_ruleExtensionDecl343); 
 
             	                	newLeafNode(otherlv_6, grammarAccess.getExtensionDeclAccess().getAsKeyword_4_2_0());
             	                
-            	            this_ID_7=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleExtensionDecl356); 
+            	            this_ID_7=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleExtensionDecl354); 
             	             
             	                newLeafNode(this_ID_7, grammarAccess.getExtensionDeclAccess().getIDTerminalRuleCall_4_2_1()); 
             	                
@@ -454,7 +442,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:191:5: ( ( (lv_kinds_8_0= ruleKindDecl ) ) | ( (lv_mixins_9_0= ruleMixinDecl ) ) | ( (lv_types_10_0= ruleDataTypeDecl ) ) | ( (lv_types_11_0= ruleEnumTypeDecl ) ) )*
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:189:5: ( ( (lv_kinds_8_0= ruleKindDecl ) ) | ( (lv_mixins_9_0= ruleMixinDecl ) ) | ( (lv_types_10_0= ruleDataTypeDecl ) ) | ( (lv_types_11_0= ruleEnumTypeDecl ) ) )*
             loop4:
             do {
                 int alt4=5;
@@ -484,18 +472,18 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
                 switch (alt4) {
             	case 1 :
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:191:6: ( (lv_kinds_8_0= ruleKindDecl ) )
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:189:6: ( (lv_kinds_8_0= ruleKindDecl ) )
             	    {
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:191:6: ( (lv_kinds_8_0= ruleKindDecl ) )
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:192:1: (lv_kinds_8_0= ruleKindDecl )
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:189:6: ( (lv_kinds_8_0= ruleKindDecl ) )
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:190:1: (lv_kinds_8_0= ruleKindDecl )
             	    {
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:192:1: (lv_kinds_8_0= ruleKindDecl )
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:193:3: lv_kinds_8_0= ruleKindDecl
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:190:1: (lv_kinds_8_0= ruleKindDecl )
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:191:3: lv_kinds_8_0= ruleKindDecl
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getExtensionDeclAccess().getKindsKindDeclParserRuleCall_5_0_0()); 
             	    	    
-            	    pushFollow(FollowSets000.FOLLOW_ruleKindDecl_in_ruleExtensionDecl381);
+            	    pushFollow(FollowSets000.FOLLOW_ruleKindDecl_in_ruleExtensionDecl379);
             	    lv_kinds_8_0=ruleKindDecl();
 
             	    state._fsp--;
@@ -521,18 +509,18 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
             	    }
             	    break;
             	case 2 :
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:210:6: ( (lv_mixins_9_0= ruleMixinDecl ) )
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:208:6: ( (lv_mixins_9_0= ruleMixinDecl ) )
             	    {
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:210:6: ( (lv_mixins_9_0= ruleMixinDecl ) )
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:211:1: (lv_mixins_9_0= ruleMixinDecl )
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:208:6: ( (lv_mixins_9_0= ruleMixinDecl ) )
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:209:1: (lv_mixins_9_0= ruleMixinDecl )
             	    {
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:211:1: (lv_mixins_9_0= ruleMixinDecl )
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:212:3: lv_mixins_9_0= ruleMixinDecl
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:209:1: (lv_mixins_9_0= ruleMixinDecl )
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:210:3: lv_mixins_9_0= ruleMixinDecl
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getExtensionDeclAccess().getMixinsMixinDeclParserRuleCall_5_1_0()); 
             	    	    
-            	    pushFollow(FollowSets000.FOLLOW_ruleMixinDecl_in_ruleExtensionDecl408);
+            	    pushFollow(FollowSets000.FOLLOW_ruleMixinDecl_in_ruleExtensionDecl406);
             	    lv_mixins_9_0=ruleMixinDecl();
 
             	    state._fsp--;
@@ -558,18 +546,18 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
             	    }
             	    break;
             	case 3 :
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:229:6: ( (lv_types_10_0= ruleDataTypeDecl ) )
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:227:6: ( (lv_types_10_0= ruleDataTypeDecl ) )
             	    {
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:229:6: ( (lv_types_10_0= ruleDataTypeDecl ) )
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:230:1: (lv_types_10_0= ruleDataTypeDecl )
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:227:6: ( (lv_types_10_0= ruleDataTypeDecl ) )
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:228:1: (lv_types_10_0= ruleDataTypeDecl )
             	    {
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:230:1: (lv_types_10_0= ruleDataTypeDecl )
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:231:3: lv_types_10_0= ruleDataTypeDecl
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:228:1: (lv_types_10_0= ruleDataTypeDecl )
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:229:3: lv_types_10_0= ruleDataTypeDecl
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getExtensionDeclAccess().getTypesDataTypeDeclParserRuleCall_5_2_0()); 
             	    	    
-            	    pushFollow(FollowSets000.FOLLOW_ruleDataTypeDecl_in_ruleExtensionDecl435);
+            	    pushFollow(FollowSets000.FOLLOW_ruleDataTypeDecl_in_ruleExtensionDecl433);
             	    lv_types_10_0=ruleDataTypeDecl();
 
             	    state._fsp--;
@@ -595,18 +583,18 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
             	    }
             	    break;
             	case 4 :
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:248:6: ( (lv_types_11_0= ruleEnumTypeDecl ) )
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:246:6: ( (lv_types_11_0= ruleEnumTypeDecl ) )
             	    {
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:248:6: ( (lv_types_11_0= ruleEnumTypeDecl ) )
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:249:1: (lv_types_11_0= ruleEnumTypeDecl )
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:246:6: ( (lv_types_11_0= ruleEnumTypeDecl ) )
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:247:1: (lv_types_11_0= ruleEnumTypeDecl )
             	    {
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:249:1: (lv_types_11_0= ruleEnumTypeDecl )
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:250:3: lv_types_11_0= ruleEnumTypeDecl
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:247:1: (lv_types_11_0= ruleEnumTypeDecl )
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:248:3: lv_types_11_0= ruleEnumTypeDecl
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getExtensionDeclAccess().getTypesEnumTypeDeclParserRuleCall_5_3_0()); 
             	    	    
-            	    pushFollow(FollowSets000.FOLLOW_ruleEnumTypeDecl_in_ruleExtensionDecl462);
+            	    pushFollow(FollowSets000.FOLLOW_ruleEnumTypeDecl_in_ruleExtensionDecl460);
             	    lv_types_11_0=ruleEnumTypeDecl();
 
             	    state._fsp--;
@@ -658,7 +646,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleKindDecl"
-    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:274:1: entryRuleKindDecl returns [EObject current=null] : iv_ruleKindDecl= ruleKindDecl EOF ;
+    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:272:1: entryRuleKindDecl returns [EObject current=null] : iv_ruleKindDecl= ruleKindDecl EOF ;
     public final EObject entryRuleKindDecl() throws RecognitionException {
         EObject current = null;
 
@@ -666,17 +654,17 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:275:2: (iv_ruleKindDecl= ruleKindDecl EOF )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:276:2: iv_ruleKindDecl= ruleKindDecl EOF
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:273:2: (iv_ruleKindDecl= ruleKindDecl EOF )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:274:2: iv_ruleKindDecl= ruleKindDecl EOF
             {
              newCompositeNode(grammarAccess.getKindDeclRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleKindDecl_in_entryRuleKindDecl500);
+            pushFollow(FollowSets000.FOLLOW_ruleKindDecl_in_entryRuleKindDecl498);
             iv_ruleKindDecl=ruleKindDecl();
 
             state._fsp--;
 
              current =iv_ruleKindDecl; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleKindDecl510); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleKindDecl508); 
 
             }
 
@@ -694,7 +682,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleKindDecl"
-    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:283:1: ruleKindDecl returns [EObject current=null] : (otherlv_0= 'kind' ( (lv_term_1_0= RULE_ID ) ) (otherlv_2= 'extends' ( ( ruleQualifiedID ) ) )? otherlv_4= '{' (otherlv_5= 'title' ( (lv_title_6_0= RULE_STRING ) ) )? ( ( (lv_attributes_7_0= ruleAttributeDecl ) ) | ( (lv_actions_8_0= ruleActionDecl ) ) )* otherlv_9= '}' ) ;
+    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:281:1: ruleKindDecl returns [EObject current=null] : (otherlv_0= 'kind' ( (lv_term_1_0= RULE_ID ) ) (otherlv_2= 'extends' ( ( ruleQualifiedID ) ) )? otherlv_4= '{' (otherlv_5= 'title' ( (lv_title_6_0= RULE_STRING ) ) )? ( ( (lv_attributes_7_0= ruleAttributeDecl ) ) | ( (lv_actions_8_0= ruleActionDecl ) ) )* otherlv_9= '}' ) ;
     public final EObject ruleKindDecl() throws RecognitionException {
         EObject current = null;
 
@@ -713,23 +701,23 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:286:28: ( (otherlv_0= 'kind' ( (lv_term_1_0= RULE_ID ) ) (otherlv_2= 'extends' ( ( ruleQualifiedID ) ) )? otherlv_4= '{' (otherlv_5= 'title' ( (lv_title_6_0= RULE_STRING ) ) )? ( ( (lv_attributes_7_0= ruleAttributeDecl ) ) | ( (lv_actions_8_0= ruleActionDecl ) ) )* otherlv_9= '}' ) )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:287:1: (otherlv_0= 'kind' ( (lv_term_1_0= RULE_ID ) ) (otherlv_2= 'extends' ( ( ruleQualifiedID ) ) )? otherlv_4= '{' (otherlv_5= 'title' ( (lv_title_6_0= RULE_STRING ) ) )? ( ( (lv_attributes_7_0= ruleAttributeDecl ) ) | ( (lv_actions_8_0= ruleActionDecl ) ) )* otherlv_9= '}' )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:284:28: ( (otherlv_0= 'kind' ( (lv_term_1_0= RULE_ID ) ) (otherlv_2= 'extends' ( ( ruleQualifiedID ) ) )? otherlv_4= '{' (otherlv_5= 'title' ( (lv_title_6_0= RULE_STRING ) ) )? ( ( (lv_attributes_7_0= ruleAttributeDecl ) ) | ( (lv_actions_8_0= ruleActionDecl ) ) )* otherlv_9= '}' ) )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:285:1: (otherlv_0= 'kind' ( (lv_term_1_0= RULE_ID ) ) (otherlv_2= 'extends' ( ( ruleQualifiedID ) ) )? otherlv_4= '{' (otherlv_5= 'title' ( (lv_title_6_0= RULE_STRING ) ) )? ( ( (lv_attributes_7_0= ruleAttributeDecl ) ) | ( (lv_actions_8_0= ruleActionDecl ) ) )* otherlv_9= '}' )
             {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:287:1: (otherlv_0= 'kind' ( (lv_term_1_0= RULE_ID ) ) (otherlv_2= 'extends' ( ( ruleQualifiedID ) ) )? otherlv_4= '{' (otherlv_5= 'title' ( (lv_title_6_0= RULE_STRING ) ) )? ( ( (lv_attributes_7_0= ruleAttributeDecl ) ) | ( (lv_actions_8_0= ruleActionDecl ) ) )* otherlv_9= '}' )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:287:3: otherlv_0= 'kind' ( (lv_term_1_0= RULE_ID ) ) (otherlv_2= 'extends' ( ( ruleQualifiedID ) ) )? otherlv_4= '{' (otherlv_5= 'title' ( (lv_title_6_0= RULE_STRING ) ) )? ( ( (lv_attributes_7_0= ruleAttributeDecl ) ) | ( (lv_actions_8_0= ruleActionDecl ) ) )* otherlv_9= '}'
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:285:1: (otherlv_0= 'kind' ( (lv_term_1_0= RULE_ID ) ) (otherlv_2= 'extends' ( ( ruleQualifiedID ) ) )? otherlv_4= '{' (otherlv_5= 'title' ( (lv_title_6_0= RULE_STRING ) ) )? ( ( (lv_attributes_7_0= ruleAttributeDecl ) ) | ( (lv_actions_8_0= ruleActionDecl ) ) )* otherlv_9= '}' )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:285:3: otherlv_0= 'kind' ( (lv_term_1_0= RULE_ID ) ) (otherlv_2= 'extends' ( ( ruleQualifiedID ) ) )? otherlv_4= '{' (otherlv_5= 'title' ( (lv_title_6_0= RULE_STRING ) ) )? ( ( (lv_attributes_7_0= ruleAttributeDecl ) ) | ( (lv_actions_8_0= ruleActionDecl ) ) )* otherlv_9= '}'
             {
-            otherlv_0=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleKindDecl547); 
+            otherlv_0=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleKindDecl545); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getKindDeclAccess().getKindKeyword_0());
                 
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:291:1: ( (lv_term_1_0= RULE_ID ) )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:292:1: (lv_term_1_0= RULE_ID )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:289:1: ( (lv_term_1_0= RULE_ID ) )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:290:1: (lv_term_1_0= RULE_ID )
             {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:292:1: (lv_term_1_0= RULE_ID )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:293:3: lv_term_1_0= RULE_ID
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:290:1: (lv_term_1_0= RULE_ID )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:291:3: lv_term_1_0= RULE_ID
             {
-            lv_term_1_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleKindDecl564); 
+            lv_term_1_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleKindDecl562); 
 
             			newLeafNode(lv_term_1_0, grammarAccess.getKindDeclAccess().getTermIDTerminalRuleCall_1_0()); 
             		
@@ -749,7 +737,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:309:2: (otherlv_2= 'extends' ( ( ruleQualifiedID ) ) )?
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:307:2: (otherlv_2= 'extends' ( ( ruleQualifiedID ) ) )?
             int alt5=2;
             int LA5_0 = input.LA(1);
 
@@ -758,17 +746,17 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
             }
             switch (alt5) {
                 case 1 :
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:309:4: otherlv_2= 'extends' ( ( ruleQualifiedID ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:307:4: otherlv_2= 'extends' ( ( ruleQualifiedID ) )
                     {
-                    otherlv_2=(Token)match(input,16,FollowSets000.FOLLOW_16_in_ruleKindDecl582); 
+                    otherlv_2=(Token)match(input,16,FollowSets000.FOLLOW_16_in_ruleKindDecl580); 
 
                         	newLeafNode(otherlv_2, grammarAccess.getKindDeclAccess().getExtendsKeyword_2_0());
                         
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:313:1: ( ( ruleQualifiedID ) )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:314:1: ( ruleQualifiedID )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:311:1: ( ( ruleQualifiedID ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:312:1: ( ruleQualifiedID )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:314:1: ( ruleQualifiedID )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:315:3: ruleQualifiedID
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:312:1: ( ruleQualifiedID )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:313:3: ruleQualifiedID
                     {
 
                     			if (current==null) {
@@ -778,7 +766,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
                      
                     	        newCompositeNode(grammarAccess.getKindDeclAccess().getParentKindCrossReference_2_1_0()); 
                     	    
-                    pushFollow(FollowSets000.FOLLOW_ruleQualifiedID_in_ruleKindDecl605);
+                    pushFollow(FollowSets000.FOLLOW_ruleQualifiedID_in_ruleKindDecl603);
                     ruleQualifiedID();
 
                     state._fsp--;
@@ -798,11 +786,11 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_4=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleKindDecl619); 
+            otherlv_4=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleKindDecl617); 
 
                 	newLeafNode(otherlv_4, grammarAccess.getKindDeclAccess().getLeftCurlyBracketKeyword_3());
                 
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:332:1: (otherlv_5= 'title' ( (lv_title_6_0= RULE_STRING ) ) )?
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:330:1: (otherlv_5= 'title' ( (lv_title_6_0= RULE_STRING ) ) )?
             int alt6=2;
             int LA6_0 = input.LA(1);
 
@@ -811,19 +799,19 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
             }
             switch (alt6) {
                 case 1 :
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:332:3: otherlv_5= 'title' ( (lv_title_6_0= RULE_STRING ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:330:3: otherlv_5= 'title' ( (lv_title_6_0= RULE_STRING ) )
                     {
-                    otherlv_5=(Token)match(input,18,FollowSets000.FOLLOW_18_in_ruleKindDecl632); 
+                    otherlv_5=(Token)match(input,18,FollowSets000.FOLLOW_18_in_ruleKindDecl630); 
 
                         	newLeafNode(otherlv_5, grammarAccess.getKindDeclAccess().getTitleKeyword_4_0());
                         
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:336:1: ( (lv_title_6_0= RULE_STRING ) )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:337:1: (lv_title_6_0= RULE_STRING )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:334:1: ( (lv_title_6_0= RULE_STRING ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:335:1: (lv_title_6_0= RULE_STRING )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:337:1: (lv_title_6_0= RULE_STRING )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:338:3: lv_title_6_0= RULE_STRING
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:335:1: (lv_title_6_0= RULE_STRING )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:336:3: lv_title_6_0= RULE_STRING
                     {
-                    lv_title_6_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleKindDecl649); 
+                    lv_title_6_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleKindDecl647); 
 
                     			newLeafNode(lv_title_6_0, grammarAccess.getKindDeclAccess().getTitleSTRINGTerminalRuleCall_4_1_0()); 
                     		
@@ -849,7 +837,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:354:4: ( ( (lv_attributes_7_0= ruleAttributeDecl ) ) | ( (lv_actions_8_0= ruleActionDecl ) ) )*
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:352:4: ( ( (lv_attributes_7_0= ruleAttributeDecl ) ) | ( (lv_actions_8_0= ruleActionDecl ) ) )*
             loop7:
             do {
                 int alt7=3;
@@ -865,18 +853,18 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
                 switch (alt7) {
             	case 1 :
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:354:5: ( (lv_attributes_7_0= ruleAttributeDecl ) )
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:352:5: ( (lv_attributes_7_0= ruleAttributeDecl ) )
             	    {
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:354:5: ( (lv_attributes_7_0= ruleAttributeDecl ) )
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:355:1: (lv_attributes_7_0= ruleAttributeDecl )
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:352:5: ( (lv_attributes_7_0= ruleAttributeDecl ) )
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:353:1: (lv_attributes_7_0= ruleAttributeDecl )
             	    {
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:355:1: (lv_attributes_7_0= ruleAttributeDecl )
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:356:3: lv_attributes_7_0= ruleAttributeDecl
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:353:1: (lv_attributes_7_0= ruleAttributeDecl )
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:354:3: lv_attributes_7_0= ruleAttributeDecl
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getKindDeclAccess().getAttributesAttributeDeclParserRuleCall_5_0_0()); 
             	    	    
-            	    pushFollow(FollowSets000.FOLLOW_ruleAttributeDecl_in_ruleKindDecl678);
+            	    pushFollow(FollowSets000.FOLLOW_ruleAttributeDecl_in_ruleKindDecl676);
             	    lv_attributes_7_0=ruleAttributeDecl();
 
             	    state._fsp--;
@@ -902,18 +890,18 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
             	    }
             	    break;
             	case 2 :
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:373:6: ( (lv_actions_8_0= ruleActionDecl ) )
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:371:6: ( (lv_actions_8_0= ruleActionDecl ) )
             	    {
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:373:6: ( (lv_actions_8_0= ruleActionDecl ) )
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:374:1: (lv_actions_8_0= ruleActionDecl )
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:371:6: ( (lv_actions_8_0= ruleActionDecl ) )
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:372:1: (lv_actions_8_0= ruleActionDecl )
             	    {
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:374:1: (lv_actions_8_0= ruleActionDecl )
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:375:3: lv_actions_8_0= ruleActionDecl
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:372:1: (lv_actions_8_0= ruleActionDecl )
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:373:3: lv_actions_8_0= ruleActionDecl
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getKindDeclAccess().getActionsActionDeclParserRuleCall_5_1_0()); 
             	    	    
-            	    pushFollow(FollowSets000.FOLLOW_ruleActionDecl_in_ruleKindDecl705);
+            	    pushFollow(FollowSets000.FOLLOW_ruleActionDecl_in_ruleKindDecl703);
             	    lv_actions_8_0=ruleActionDecl();
 
             	    state._fsp--;
@@ -944,7 +932,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            otherlv_9=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleKindDecl719); 
+            otherlv_9=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleKindDecl717); 
 
                 	newLeafNode(otherlv_9, grammarAccess.getKindDeclAccess().getRightCurlyBracketKeyword_6());
                 
@@ -969,7 +957,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleMixinDecl"
-    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:403:1: entryRuleMixinDecl returns [EObject current=null] : iv_ruleMixinDecl= ruleMixinDecl EOF ;
+    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:401:1: entryRuleMixinDecl returns [EObject current=null] : iv_ruleMixinDecl= ruleMixinDecl EOF ;
     public final EObject entryRuleMixinDecl() throws RecognitionException {
         EObject current = null;
 
@@ -977,17 +965,17 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:404:2: (iv_ruleMixinDecl= ruleMixinDecl EOF )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:405:2: iv_ruleMixinDecl= ruleMixinDecl EOF
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:402:2: (iv_ruleMixinDecl= ruleMixinDecl EOF )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:403:2: iv_ruleMixinDecl= ruleMixinDecl EOF
             {
              newCompositeNode(grammarAccess.getMixinDeclRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleMixinDecl_in_entryRuleMixinDecl755);
+            pushFollow(FollowSets000.FOLLOW_ruleMixinDecl_in_entryRuleMixinDecl753);
             iv_ruleMixinDecl=ruleMixinDecl();
 
             state._fsp--;
 
              current =iv_ruleMixinDecl; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleMixinDecl765); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleMixinDecl763); 
 
             }
 
@@ -1005,7 +993,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleMixinDecl"
-    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:412:1: ruleMixinDecl returns [EObject current=null] : (otherlv_0= 'mixin' ( (lv_term_1_0= RULE_ID ) ) (otherlv_2= 'depends' ( ( ruleQualifiedID ) ) (otherlv_4= ',' ( ( ruleQualifiedID ) ) )* )? (otherlv_6= 'applies' ( ( ruleQualifiedID ) ) (otherlv_8= ',' ( ( ruleQualifiedID ) ) )* )? otherlv_10= '{' (otherlv_11= 'scheme' ( (lv_scheme_12_0= ruleURI ) ) )? (otherlv_13= 'title' ( (lv_title_14_0= RULE_STRING ) ) )? ( ( (lv_attributes_15_0= ruleAttributeDecl ) ) | ( (lv_actions_16_0= ruleActionDecl ) ) )* otherlv_17= '}' ) ;
+    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:410:1: ruleMixinDecl returns [EObject current=null] : (otherlv_0= 'mixin' ( (lv_term_1_0= RULE_ID ) ) (otherlv_2= 'depends' ( ( ruleQualifiedID ) ) (otherlv_4= ',' ( ( ruleQualifiedID ) ) )* )? (otherlv_6= 'applies' ( ( ruleQualifiedID ) ) (otherlv_8= ',' ( ( ruleQualifiedID ) ) )* )? otherlv_10= '{' (otherlv_11= 'scheme' ( (lv_scheme_12_0= RULE_STRING ) ) )? (otherlv_13= 'title' ( (lv_title_14_0= RULE_STRING ) ) )? ( ( (lv_attributes_15_0= ruleAttributeDecl ) ) | ( (lv_actions_16_0= ruleActionDecl ) ) )* otherlv_17= '}' ) ;
     public final EObject ruleMixinDecl() throws RecognitionException {
         EObject current = null;
 
@@ -1017,11 +1005,10 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
         Token otherlv_8=null;
         Token otherlv_10=null;
         Token otherlv_11=null;
+        Token lv_scheme_12_0=null;
         Token otherlv_13=null;
         Token lv_title_14_0=null;
         Token otherlv_17=null;
-        AntlrDatatypeRuleToken lv_scheme_12_0 = null;
-
         EObject lv_attributes_15_0 = null;
 
         EObject lv_actions_16_0 = null;
@@ -1030,23 +1017,23 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:415:28: ( (otherlv_0= 'mixin' ( (lv_term_1_0= RULE_ID ) ) (otherlv_2= 'depends' ( ( ruleQualifiedID ) ) (otherlv_4= ',' ( ( ruleQualifiedID ) ) )* )? (otherlv_6= 'applies' ( ( ruleQualifiedID ) ) (otherlv_8= ',' ( ( ruleQualifiedID ) ) )* )? otherlv_10= '{' (otherlv_11= 'scheme' ( (lv_scheme_12_0= ruleURI ) ) )? (otherlv_13= 'title' ( (lv_title_14_0= RULE_STRING ) ) )? ( ( (lv_attributes_15_0= ruleAttributeDecl ) ) | ( (lv_actions_16_0= ruleActionDecl ) ) )* otherlv_17= '}' ) )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:416:1: (otherlv_0= 'mixin' ( (lv_term_1_0= RULE_ID ) ) (otherlv_2= 'depends' ( ( ruleQualifiedID ) ) (otherlv_4= ',' ( ( ruleQualifiedID ) ) )* )? (otherlv_6= 'applies' ( ( ruleQualifiedID ) ) (otherlv_8= ',' ( ( ruleQualifiedID ) ) )* )? otherlv_10= '{' (otherlv_11= 'scheme' ( (lv_scheme_12_0= ruleURI ) ) )? (otherlv_13= 'title' ( (lv_title_14_0= RULE_STRING ) ) )? ( ( (lv_attributes_15_0= ruleAttributeDecl ) ) | ( (lv_actions_16_0= ruleActionDecl ) ) )* otherlv_17= '}' )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:413:28: ( (otherlv_0= 'mixin' ( (lv_term_1_0= RULE_ID ) ) (otherlv_2= 'depends' ( ( ruleQualifiedID ) ) (otherlv_4= ',' ( ( ruleQualifiedID ) ) )* )? (otherlv_6= 'applies' ( ( ruleQualifiedID ) ) (otherlv_8= ',' ( ( ruleQualifiedID ) ) )* )? otherlv_10= '{' (otherlv_11= 'scheme' ( (lv_scheme_12_0= RULE_STRING ) ) )? (otherlv_13= 'title' ( (lv_title_14_0= RULE_STRING ) ) )? ( ( (lv_attributes_15_0= ruleAttributeDecl ) ) | ( (lv_actions_16_0= ruleActionDecl ) ) )* otherlv_17= '}' ) )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:414:1: (otherlv_0= 'mixin' ( (lv_term_1_0= RULE_ID ) ) (otherlv_2= 'depends' ( ( ruleQualifiedID ) ) (otherlv_4= ',' ( ( ruleQualifiedID ) ) )* )? (otherlv_6= 'applies' ( ( ruleQualifiedID ) ) (otherlv_8= ',' ( ( ruleQualifiedID ) ) )* )? otherlv_10= '{' (otherlv_11= 'scheme' ( (lv_scheme_12_0= RULE_STRING ) ) )? (otherlv_13= 'title' ( (lv_title_14_0= RULE_STRING ) ) )? ( ( (lv_attributes_15_0= ruleAttributeDecl ) ) | ( (lv_actions_16_0= ruleActionDecl ) ) )* otherlv_17= '}' )
             {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:416:1: (otherlv_0= 'mixin' ( (lv_term_1_0= RULE_ID ) ) (otherlv_2= 'depends' ( ( ruleQualifiedID ) ) (otherlv_4= ',' ( ( ruleQualifiedID ) ) )* )? (otherlv_6= 'applies' ( ( ruleQualifiedID ) ) (otherlv_8= ',' ( ( ruleQualifiedID ) ) )* )? otherlv_10= '{' (otherlv_11= 'scheme' ( (lv_scheme_12_0= ruleURI ) ) )? (otherlv_13= 'title' ( (lv_title_14_0= RULE_STRING ) ) )? ( ( (lv_attributes_15_0= ruleAttributeDecl ) ) | ( (lv_actions_16_0= ruleActionDecl ) ) )* otherlv_17= '}' )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:416:3: otherlv_0= 'mixin' ( (lv_term_1_0= RULE_ID ) ) (otherlv_2= 'depends' ( ( ruleQualifiedID ) ) (otherlv_4= ',' ( ( ruleQualifiedID ) ) )* )? (otherlv_6= 'applies' ( ( ruleQualifiedID ) ) (otherlv_8= ',' ( ( ruleQualifiedID ) ) )* )? otherlv_10= '{' (otherlv_11= 'scheme' ( (lv_scheme_12_0= ruleURI ) ) )? (otherlv_13= 'title' ( (lv_title_14_0= RULE_STRING ) ) )? ( ( (lv_attributes_15_0= ruleAttributeDecl ) ) | ( (lv_actions_16_0= ruleActionDecl ) ) )* otherlv_17= '}'
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:414:1: (otherlv_0= 'mixin' ( (lv_term_1_0= RULE_ID ) ) (otherlv_2= 'depends' ( ( ruleQualifiedID ) ) (otherlv_4= ',' ( ( ruleQualifiedID ) ) )* )? (otherlv_6= 'applies' ( ( ruleQualifiedID ) ) (otherlv_8= ',' ( ( ruleQualifiedID ) ) )* )? otherlv_10= '{' (otherlv_11= 'scheme' ( (lv_scheme_12_0= RULE_STRING ) ) )? (otherlv_13= 'title' ( (lv_title_14_0= RULE_STRING ) ) )? ( ( (lv_attributes_15_0= ruleAttributeDecl ) ) | ( (lv_actions_16_0= ruleActionDecl ) ) )* otherlv_17= '}' )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:414:3: otherlv_0= 'mixin' ( (lv_term_1_0= RULE_ID ) ) (otherlv_2= 'depends' ( ( ruleQualifiedID ) ) (otherlv_4= ',' ( ( ruleQualifiedID ) ) )* )? (otherlv_6= 'applies' ( ( ruleQualifiedID ) ) (otherlv_8= ',' ( ( ruleQualifiedID ) ) )* )? otherlv_10= '{' (otherlv_11= 'scheme' ( (lv_scheme_12_0= RULE_STRING ) ) )? (otherlv_13= 'title' ( (lv_title_14_0= RULE_STRING ) ) )? ( ( (lv_attributes_15_0= ruleAttributeDecl ) ) | ( (lv_actions_16_0= ruleActionDecl ) ) )* otherlv_17= '}'
             {
-            otherlv_0=(Token)match(input,20,FollowSets000.FOLLOW_20_in_ruleMixinDecl802); 
+            otherlv_0=(Token)match(input,20,FollowSets000.FOLLOW_20_in_ruleMixinDecl800); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getMixinDeclAccess().getMixinKeyword_0());
                 
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:420:1: ( (lv_term_1_0= RULE_ID ) )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:421:1: (lv_term_1_0= RULE_ID )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:418:1: ( (lv_term_1_0= RULE_ID ) )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:419:1: (lv_term_1_0= RULE_ID )
             {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:421:1: (lv_term_1_0= RULE_ID )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:422:3: lv_term_1_0= RULE_ID
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:419:1: (lv_term_1_0= RULE_ID )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:420:3: lv_term_1_0= RULE_ID
             {
-            lv_term_1_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleMixinDecl819); 
+            lv_term_1_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleMixinDecl817); 
 
             			newLeafNode(lv_term_1_0, grammarAccess.getMixinDeclAccess().getTermIDTerminalRuleCall_1_0()); 
             		
@@ -1066,7 +1053,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:438:2: (otherlv_2= 'depends' ( ( ruleQualifiedID ) ) (otherlv_4= ',' ( ( ruleQualifiedID ) ) )* )?
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:436:2: (otherlv_2= 'depends' ( ( ruleQualifiedID ) ) (otherlv_4= ',' ( ( ruleQualifiedID ) ) )* )?
             int alt9=2;
             int LA9_0 = input.LA(1);
 
@@ -1075,17 +1062,17 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
             }
             switch (alt9) {
                 case 1 :
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:438:4: otherlv_2= 'depends' ( ( ruleQualifiedID ) ) (otherlv_4= ',' ( ( ruleQualifiedID ) ) )*
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:436:4: otherlv_2= 'depends' ( ( ruleQualifiedID ) ) (otherlv_4= ',' ( ( ruleQualifiedID ) ) )*
                     {
-                    otherlv_2=(Token)match(input,21,FollowSets000.FOLLOW_21_in_ruleMixinDecl837); 
+                    otherlv_2=(Token)match(input,21,FollowSets000.FOLLOW_21_in_ruleMixinDecl835); 
 
                         	newLeafNode(otherlv_2, grammarAccess.getMixinDeclAccess().getDependsKeyword_2_0());
                         
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:442:1: ( ( ruleQualifiedID ) )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:443:1: ( ruleQualifiedID )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:440:1: ( ( ruleQualifiedID ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:441:1: ( ruleQualifiedID )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:443:1: ( ruleQualifiedID )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:444:3: ruleQualifiedID
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:441:1: ( ruleQualifiedID )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:442:3: ruleQualifiedID
                     {
 
                     			if (current==null) {
@@ -1095,7 +1082,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
                      
                     	        newCompositeNode(grammarAccess.getMixinDeclAccess().getDependsMixinCrossReference_2_1_0()); 
                     	    
-                    pushFollow(FollowSets000.FOLLOW_ruleQualifiedID_in_ruleMixinDecl860);
+                    pushFollow(FollowSets000.FOLLOW_ruleQualifiedID_in_ruleMixinDecl858);
                     ruleQualifiedID();
 
                     state._fsp--;
@@ -1109,7 +1096,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:457:2: (otherlv_4= ',' ( ( ruleQualifiedID ) ) )*
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:455:2: (otherlv_4= ',' ( ( ruleQualifiedID ) ) )*
                     loop8:
                     do {
                         int alt8=2;
@@ -1122,17 +1109,17 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
                         switch (alt8) {
                     	case 1 :
-                    	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:457:4: otherlv_4= ',' ( ( ruleQualifiedID ) )
+                    	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:455:4: otherlv_4= ',' ( ( ruleQualifiedID ) )
                     	    {
-                    	    otherlv_4=(Token)match(input,22,FollowSets000.FOLLOW_22_in_ruleMixinDecl873); 
+                    	    otherlv_4=(Token)match(input,22,FollowSets000.FOLLOW_22_in_ruleMixinDecl871); 
 
                     	        	newLeafNode(otherlv_4, grammarAccess.getMixinDeclAccess().getCommaKeyword_2_2_0());
                     	        
-                    	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:461:1: ( ( ruleQualifiedID ) )
-                    	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:462:1: ( ruleQualifiedID )
+                    	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:459:1: ( ( ruleQualifiedID ) )
+                    	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:460:1: ( ruleQualifiedID )
                     	    {
-                    	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:462:1: ( ruleQualifiedID )
-                    	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:463:3: ruleQualifiedID
+                    	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:460:1: ( ruleQualifiedID )
+                    	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:461:3: ruleQualifiedID
                     	    {
 
                     	    			if (current==null) {
@@ -1142,7 +1129,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
                     	     
                     	    	        newCompositeNode(grammarAccess.getMixinDeclAccess().getDependsMixinCrossReference_2_2_1_0()); 
                     	    	    
-                    	    pushFollow(FollowSets000.FOLLOW_ruleQualifiedID_in_ruleMixinDecl896);
+                    	    pushFollow(FollowSets000.FOLLOW_ruleQualifiedID_in_ruleMixinDecl894);
                     	    ruleQualifiedID();
 
                     	    state._fsp--;
@@ -1171,7 +1158,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:476:6: (otherlv_6= 'applies' ( ( ruleQualifiedID ) ) (otherlv_8= ',' ( ( ruleQualifiedID ) ) )* )?
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:474:6: (otherlv_6= 'applies' ( ( ruleQualifiedID ) ) (otherlv_8= ',' ( ( ruleQualifiedID ) ) )* )?
             int alt11=2;
             int LA11_0 = input.LA(1);
 
@@ -1180,17 +1167,17 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
             }
             switch (alt11) {
                 case 1 :
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:476:8: otherlv_6= 'applies' ( ( ruleQualifiedID ) ) (otherlv_8= ',' ( ( ruleQualifiedID ) ) )*
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:474:8: otherlv_6= 'applies' ( ( ruleQualifiedID ) ) (otherlv_8= ',' ( ( ruleQualifiedID ) ) )*
                     {
-                    otherlv_6=(Token)match(input,23,FollowSets000.FOLLOW_23_in_ruleMixinDecl913); 
+                    otherlv_6=(Token)match(input,23,FollowSets000.FOLLOW_23_in_ruleMixinDecl911); 
 
                         	newLeafNode(otherlv_6, grammarAccess.getMixinDeclAccess().getAppliesKeyword_3_0());
                         
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:480:1: ( ( ruleQualifiedID ) )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:481:1: ( ruleQualifiedID )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:478:1: ( ( ruleQualifiedID ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:479:1: ( ruleQualifiedID )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:481:1: ( ruleQualifiedID )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:482:3: ruleQualifiedID
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:479:1: ( ruleQualifiedID )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:480:3: ruleQualifiedID
                     {
 
                     			if (current==null) {
@@ -1200,7 +1187,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
                      
                     	        newCompositeNode(grammarAccess.getMixinDeclAccess().getAppliesKindCrossReference_3_1_0()); 
                     	    
-                    pushFollow(FollowSets000.FOLLOW_ruleQualifiedID_in_ruleMixinDecl936);
+                    pushFollow(FollowSets000.FOLLOW_ruleQualifiedID_in_ruleMixinDecl934);
                     ruleQualifiedID();
 
                     state._fsp--;
@@ -1214,7 +1201,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:495:2: (otherlv_8= ',' ( ( ruleQualifiedID ) ) )*
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:493:2: (otherlv_8= ',' ( ( ruleQualifiedID ) ) )*
                     loop10:
                     do {
                         int alt10=2;
@@ -1227,17 +1214,17 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
                         switch (alt10) {
                     	case 1 :
-                    	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:495:4: otherlv_8= ',' ( ( ruleQualifiedID ) )
+                    	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:493:4: otherlv_8= ',' ( ( ruleQualifiedID ) )
                     	    {
-                    	    otherlv_8=(Token)match(input,22,FollowSets000.FOLLOW_22_in_ruleMixinDecl949); 
+                    	    otherlv_8=(Token)match(input,22,FollowSets000.FOLLOW_22_in_ruleMixinDecl947); 
 
                     	        	newLeafNode(otherlv_8, grammarAccess.getMixinDeclAccess().getCommaKeyword_3_2_0());
                     	        
-                    	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:499:1: ( ( ruleQualifiedID ) )
-                    	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:500:1: ( ruleQualifiedID )
+                    	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:497:1: ( ( ruleQualifiedID ) )
+                    	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:498:1: ( ruleQualifiedID )
                     	    {
-                    	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:500:1: ( ruleQualifiedID )
-                    	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:501:3: ruleQualifiedID
+                    	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:498:1: ( ruleQualifiedID )
+                    	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:499:3: ruleQualifiedID
                     	    {
 
                     	    			if (current==null) {
@@ -1247,7 +1234,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
                     	     
                     	    	        newCompositeNode(grammarAccess.getMixinDeclAccess().getAppliesKindCrossReference_3_2_1_0()); 
                     	    	    
-                    	    pushFollow(FollowSets000.FOLLOW_ruleQualifiedID_in_ruleMixinDecl972);
+                    	    pushFollow(FollowSets000.FOLLOW_ruleQualifiedID_in_ruleMixinDecl970);
                     	    ruleQualifiedID();
 
                     	    state._fsp--;
@@ -1276,11 +1263,11 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_10=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleMixinDecl988); 
+            otherlv_10=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleMixinDecl986); 
 
                 	newLeafNode(otherlv_10, grammarAccess.getMixinDeclAccess().getLeftCurlyBracketKeyword_4());
                 
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:518:1: (otherlv_11= 'scheme' ( (lv_scheme_12_0= ruleURI ) ) )?
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:516:1: (otherlv_11= 'scheme' ( (lv_scheme_12_0= RULE_STRING ) ) )?
             int alt12=2;
             int LA12_0 = input.LA(1);
 
@@ -1289,36 +1276,31 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
             }
             switch (alt12) {
                 case 1 :
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:518:3: otherlv_11= 'scheme' ( (lv_scheme_12_0= ruleURI ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:516:3: otherlv_11= 'scheme' ( (lv_scheme_12_0= RULE_STRING ) )
                     {
-                    otherlv_11=(Token)match(input,24,FollowSets000.FOLLOW_24_in_ruleMixinDecl1001); 
+                    otherlv_11=(Token)match(input,24,FollowSets000.FOLLOW_24_in_ruleMixinDecl999); 
 
                         	newLeafNode(otherlv_11, grammarAccess.getMixinDeclAccess().getSchemeKeyword_5_0());
                         
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:522:1: ( (lv_scheme_12_0= ruleURI ) )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:523:1: (lv_scheme_12_0= ruleURI )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:520:1: ( (lv_scheme_12_0= RULE_STRING ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:521:1: (lv_scheme_12_0= RULE_STRING )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:523:1: (lv_scheme_12_0= ruleURI )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:524:3: lv_scheme_12_0= ruleURI
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:521:1: (lv_scheme_12_0= RULE_STRING )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:522:3: lv_scheme_12_0= RULE_STRING
                     {
-                     
-                    	        newCompositeNode(grammarAccess.getMixinDeclAccess().getSchemeURIParserRuleCall_5_1_0()); 
-                    	    
-                    pushFollow(FollowSets000.FOLLOW_ruleURI_in_ruleMixinDecl1022);
-                    lv_scheme_12_0=ruleURI();
+                    lv_scheme_12_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleMixinDecl1016); 
 
-                    state._fsp--;
-
+                    			newLeafNode(lv_scheme_12_0, grammarAccess.getMixinDeclAccess().getSchemeSTRINGTerminalRuleCall_5_1_0()); 
+                    		
 
                     	        if (current==null) {
-                    	            current = createModelElementForParent(grammarAccess.getMixinDeclRule());
+                    	            current = createModelElement(grammarAccess.getMixinDeclRule());
                     	        }
-                           		set(
+                           		setWithLastConsumed(
                            			current, 
                            			"scheme",
                             		lv_scheme_12_0, 
-                            		"URI");
-                    	        afterParserOrEnumRuleCall();
+                            		"STRING");
                     	    
 
                     }
@@ -1332,7 +1314,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:540:4: (otherlv_13= 'title' ( (lv_title_14_0= RULE_STRING ) ) )?
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:538:4: (otherlv_13= 'title' ( (lv_title_14_0= RULE_STRING ) ) )?
             int alt13=2;
             int LA13_0 = input.LA(1);
 
@@ -1341,19 +1323,19 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
             }
             switch (alt13) {
                 case 1 :
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:540:6: otherlv_13= 'title' ( (lv_title_14_0= RULE_STRING ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:538:6: otherlv_13= 'title' ( (lv_title_14_0= RULE_STRING ) )
                     {
-                    otherlv_13=(Token)match(input,18,FollowSets000.FOLLOW_18_in_ruleMixinDecl1037); 
+                    otherlv_13=(Token)match(input,18,FollowSets000.FOLLOW_18_in_ruleMixinDecl1036); 
 
                         	newLeafNode(otherlv_13, grammarAccess.getMixinDeclAccess().getTitleKeyword_6_0());
                         
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:544:1: ( (lv_title_14_0= RULE_STRING ) )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:545:1: (lv_title_14_0= RULE_STRING )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:542:1: ( (lv_title_14_0= RULE_STRING ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:543:1: (lv_title_14_0= RULE_STRING )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:545:1: (lv_title_14_0= RULE_STRING )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:546:3: lv_title_14_0= RULE_STRING
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:543:1: (lv_title_14_0= RULE_STRING )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:544:3: lv_title_14_0= RULE_STRING
                     {
-                    lv_title_14_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleMixinDecl1054); 
+                    lv_title_14_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleMixinDecl1053); 
 
                     			newLeafNode(lv_title_14_0, grammarAccess.getMixinDeclAccess().getTitleSTRINGTerminalRuleCall_6_1_0()); 
                     		
@@ -1379,7 +1361,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:562:4: ( ( (lv_attributes_15_0= ruleAttributeDecl ) ) | ( (lv_actions_16_0= ruleActionDecl ) ) )*
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:560:4: ( ( (lv_attributes_15_0= ruleAttributeDecl ) ) | ( (lv_actions_16_0= ruleActionDecl ) ) )*
             loop14:
             do {
                 int alt14=3;
@@ -1395,18 +1377,18 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
                 switch (alt14) {
             	case 1 :
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:562:5: ( (lv_attributes_15_0= ruleAttributeDecl ) )
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:560:5: ( (lv_attributes_15_0= ruleAttributeDecl ) )
             	    {
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:562:5: ( (lv_attributes_15_0= ruleAttributeDecl ) )
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:563:1: (lv_attributes_15_0= ruleAttributeDecl )
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:560:5: ( (lv_attributes_15_0= ruleAttributeDecl ) )
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:561:1: (lv_attributes_15_0= ruleAttributeDecl )
             	    {
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:563:1: (lv_attributes_15_0= ruleAttributeDecl )
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:564:3: lv_attributes_15_0= ruleAttributeDecl
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:561:1: (lv_attributes_15_0= ruleAttributeDecl )
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:562:3: lv_attributes_15_0= ruleAttributeDecl
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getMixinDeclAccess().getAttributesAttributeDeclParserRuleCall_7_0_0()); 
             	    	    
-            	    pushFollow(FollowSets000.FOLLOW_ruleAttributeDecl_in_ruleMixinDecl1083);
+            	    pushFollow(FollowSets000.FOLLOW_ruleAttributeDecl_in_ruleMixinDecl1082);
             	    lv_attributes_15_0=ruleAttributeDecl();
 
             	    state._fsp--;
@@ -1432,18 +1414,18 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
             	    }
             	    break;
             	case 2 :
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:581:6: ( (lv_actions_16_0= ruleActionDecl ) )
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:579:6: ( (lv_actions_16_0= ruleActionDecl ) )
             	    {
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:581:6: ( (lv_actions_16_0= ruleActionDecl ) )
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:582:1: (lv_actions_16_0= ruleActionDecl )
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:579:6: ( (lv_actions_16_0= ruleActionDecl ) )
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:580:1: (lv_actions_16_0= ruleActionDecl )
             	    {
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:582:1: (lv_actions_16_0= ruleActionDecl )
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:583:3: lv_actions_16_0= ruleActionDecl
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:580:1: (lv_actions_16_0= ruleActionDecl )
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:581:3: lv_actions_16_0= ruleActionDecl
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getMixinDeclAccess().getActionsActionDeclParserRuleCall_7_1_0()); 
             	    	    
-            	    pushFollow(FollowSets000.FOLLOW_ruleActionDecl_in_ruleMixinDecl1110);
+            	    pushFollow(FollowSets000.FOLLOW_ruleActionDecl_in_ruleMixinDecl1109);
             	    lv_actions_16_0=ruleActionDecl();
 
             	    state._fsp--;
@@ -1474,7 +1456,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            otherlv_17=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleMixinDecl1124); 
+            otherlv_17=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleMixinDecl1123); 
 
                 	newLeafNode(otherlv_17, grammarAccess.getMixinDeclAccess().getRightCurlyBracketKeyword_8());
                 
@@ -1499,7 +1481,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleAttributeDecl"
-    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:611:1: entryRuleAttributeDecl returns [EObject current=null] : iv_ruleAttributeDecl= ruleAttributeDecl EOF ;
+    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:609:1: entryRuleAttributeDecl returns [EObject current=null] : iv_ruleAttributeDecl= ruleAttributeDecl EOF ;
     public final EObject entryRuleAttributeDecl() throws RecognitionException {
         EObject current = null;
 
@@ -1507,17 +1489,17 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:612:2: (iv_ruleAttributeDecl= ruleAttributeDecl EOF )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:613:2: iv_ruleAttributeDecl= ruleAttributeDecl EOF
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:610:2: (iv_ruleAttributeDecl= ruleAttributeDecl EOF )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:611:2: iv_ruleAttributeDecl= ruleAttributeDecl EOF
             {
              newCompositeNode(grammarAccess.getAttributeDeclRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleAttributeDecl_in_entryRuleAttributeDecl1160);
+            pushFollow(FollowSets000.FOLLOW_ruleAttributeDecl_in_entryRuleAttributeDecl1159);
             iv_ruleAttributeDecl=ruleAttributeDecl();
 
             state._fsp--;
 
              current =iv_ruleAttributeDecl; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleAttributeDecl1170); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleAttributeDecl1169); 
 
             }
 
@@ -1535,7 +1517,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAttributeDecl"
-    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:620:1: ruleAttributeDecl returns [EObject current=null] : (otherlv_0= 'attribute' ( (lv_mutable_1_0= 'mutable' ) )? ( (lv_required_2_0= 'required' ) )? ( (lv_name_3_0= RULE_ID ) ) otherlv_4= ':' ( ( ruleQualifiedID ) ) (otherlv_6= '*' )? (otherlv_7= '=' ( (lv_default_8_0= RULE_STRING ) ) )? (otherlv_9= '{' (otherlv_10= 'description' ( (lv_description_11_0= RULE_STRING ) ) )? otherlv_12= '}' )? ) ;
+    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:618:1: ruleAttributeDecl returns [EObject current=null] : (otherlv_0= 'attribute' ( (lv_mutable_1_0= 'mutable' ) )? ( (lv_required_2_0= 'required' ) )? ( (lv_name_3_0= RULE_ID ) ) otherlv_4= ':' ( ( ruleQualifiedID ) ) (otherlv_6= '*' )? (otherlv_7= '=' ( (lv_default_8_0= RULE_STRING ) ) )? (otherlv_9= '{' (otherlv_10= 'description' ( (lv_description_11_0= RULE_STRING ) ) )? otherlv_12= '}' )? ) ;
     public final EObject ruleAttributeDecl() throws RecognitionException {
         EObject current = null;
 
@@ -1555,17 +1537,17 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:623:28: ( (otherlv_0= 'attribute' ( (lv_mutable_1_0= 'mutable' ) )? ( (lv_required_2_0= 'required' ) )? ( (lv_name_3_0= RULE_ID ) ) otherlv_4= ':' ( ( ruleQualifiedID ) ) (otherlv_6= '*' )? (otherlv_7= '=' ( (lv_default_8_0= RULE_STRING ) ) )? (otherlv_9= '{' (otherlv_10= 'description' ( (lv_description_11_0= RULE_STRING ) ) )? otherlv_12= '}' )? ) )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:624:1: (otherlv_0= 'attribute' ( (lv_mutable_1_0= 'mutable' ) )? ( (lv_required_2_0= 'required' ) )? ( (lv_name_3_0= RULE_ID ) ) otherlv_4= ':' ( ( ruleQualifiedID ) ) (otherlv_6= '*' )? (otherlv_7= '=' ( (lv_default_8_0= RULE_STRING ) ) )? (otherlv_9= '{' (otherlv_10= 'description' ( (lv_description_11_0= RULE_STRING ) ) )? otherlv_12= '}' )? )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:621:28: ( (otherlv_0= 'attribute' ( (lv_mutable_1_0= 'mutable' ) )? ( (lv_required_2_0= 'required' ) )? ( (lv_name_3_0= RULE_ID ) ) otherlv_4= ':' ( ( ruleQualifiedID ) ) (otherlv_6= '*' )? (otherlv_7= '=' ( (lv_default_8_0= RULE_STRING ) ) )? (otherlv_9= '{' (otherlv_10= 'description' ( (lv_description_11_0= RULE_STRING ) ) )? otherlv_12= '}' )? ) )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:622:1: (otherlv_0= 'attribute' ( (lv_mutable_1_0= 'mutable' ) )? ( (lv_required_2_0= 'required' ) )? ( (lv_name_3_0= RULE_ID ) ) otherlv_4= ':' ( ( ruleQualifiedID ) ) (otherlv_6= '*' )? (otherlv_7= '=' ( (lv_default_8_0= RULE_STRING ) ) )? (otherlv_9= '{' (otherlv_10= 'description' ( (lv_description_11_0= RULE_STRING ) ) )? otherlv_12= '}' )? )
             {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:624:1: (otherlv_0= 'attribute' ( (lv_mutable_1_0= 'mutable' ) )? ( (lv_required_2_0= 'required' ) )? ( (lv_name_3_0= RULE_ID ) ) otherlv_4= ':' ( ( ruleQualifiedID ) ) (otherlv_6= '*' )? (otherlv_7= '=' ( (lv_default_8_0= RULE_STRING ) ) )? (otherlv_9= '{' (otherlv_10= 'description' ( (lv_description_11_0= RULE_STRING ) ) )? otherlv_12= '}' )? )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:624:3: otherlv_0= 'attribute' ( (lv_mutable_1_0= 'mutable' ) )? ( (lv_required_2_0= 'required' ) )? ( (lv_name_3_0= RULE_ID ) ) otherlv_4= ':' ( ( ruleQualifiedID ) ) (otherlv_6= '*' )? (otherlv_7= '=' ( (lv_default_8_0= RULE_STRING ) ) )? (otherlv_9= '{' (otherlv_10= 'description' ( (lv_description_11_0= RULE_STRING ) ) )? otherlv_12= '}' )?
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:622:1: (otherlv_0= 'attribute' ( (lv_mutable_1_0= 'mutable' ) )? ( (lv_required_2_0= 'required' ) )? ( (lv_name_3_0= RULE_ID ) ) otherlv_4= ':' ( ( ruleQualifiedID ) ) (otherlv_6= '*' )? (otherlv_7= '=' ( (lv_default_8_0= RULE_STRING ) ) )? (otherlv_9= '{' (otherlv_10= 'description' ( (lv_description_11_0= RULE_STRING ) ) )? otherlv_12= '}' )? )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:622:3: otherlv_0= 'attribute' ( (lv_mutable_1_0= 'mutable' ) )? ( (lv_required_2_0= 'required' ) )? ( (lv_name_3_0= RULE_ID ) ) otherlv_4= ':' ( ( ruleQualifiedID ) ) (otherlv_6= '*' )? (otherlv_7= '=' ( (lv_default_8_0= RULE_STRING ) ) )? (otherlv_9= '{' (otherlv_10= 'description' ( (lv_description_11_0= RULE_STRING ) ) )? otherlv_12= '}' )?
             {
-            otherlv_0=(Token)match(input,25,FollowSets000.FOLLOW_25_in_ruleAttributeDecl1207); 
+            otherlv_0=(Token)match(input,25,FollowSets000.FOLLOW_25_in_ruleAttributeDecl1206); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getAttributeDeclAccess().getAttributeKeyword_0());
                 
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:628:1: ( (lv_mutable_1_0= 'mutable' ) )?
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:626:1: ( (lv_mutable_1_0= 'mutable' ) )?
             int alt15=2;
             int LA15_0 = input.LA(1);
 
@@ -1574,12 +1556,12 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
             }
             switch (alt15) {
                 case 1 :
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:629:1: (lv_mutable_1_0= 'mutable' )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:627:1: (lv_mutable_1_0= 'mutable' )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:629:1: (lv_mutable_1_0= 'mutable' )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:630:3: lv_mutable_1_0= 'mutable'
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:627:1: (lv_mutable_1_0= 'mutable' )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:628:3: lv_mutable_1_0= 'mutable'
                     {
-                    lv_mutable_1_0=(Token)match(input,26,FollowSets000.FOLLOW_26_in_ruleAttributeDecl1225); 
+                    lv_mutable_1_0=(Token)match(input,26,FollowSets000.FOLLOW_26_in_ruleAttributeDecl1224); 
 
                             newLeafNode(lv_mutable_1_0, grammarAccess.getAttributeDeclAccess().getMutableMutableKeyword_1_0());
                         
@@ -1598,7 +1580,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:643:3: ( (lv_required_2_0= 'required' ) )?
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:641:3: ( (lv_required_2_0= 'required' ) )?
             int alt16=2;
             int LA16_0 = input.LA(1);
 
@@ -1607,12 +1589,12 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
             }
             switch (alt16) {
                 case 1 :
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:644:1: (lv_required_2_0= 'required' )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:642:1: (lv_required_2_0= 'required' )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:644:1: (lv_required_2_0= 'required' )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:645:3: lv_required_2_0= 'required'
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:642:1: (lv_required_2_0= 'required' )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:643:3: lv_required_2_0= 'required'
                     {
-                    lv_required_2_0=(Token)match(input,27,FollowSets000.FOLLOW_27_in_ruleAttributeDecl1257); 
+                    lv_required_2_0=(Token)match(input,27,FollowSets000.FOLLOW_27_in_ruleAttributeDecl1256); 
 
                             newLeafNode(lv_required_2_0, grammarAccess.getAttributeDeclAccess().getRequiredRequiredKeyword_2_0());
                         
@@ -1631,13 +1613,13 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:658:3: ( (lv_name_3_0= RULE_ID ) )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:659:1: (lv_name_3_0= RULE_ID )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:656:3: ( (lv_name_3_0= RULE_ID ) )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:657:1: (lv_name_3_0= RULE_ID )
             {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:659:1: (lv_name_3_0= RULE_ID )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:660:3: lv_name_3_0= RULE_ID
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:657:1: (lv_name_3_0= RULE_ID )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:658:3: lv_name_3_0= RULE_ID
             {
-            lv_name_3_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleAttributeDecl1288); 
+            lv_name_3_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleAttributeDecl1287); 
 
             			newLeafNode(lv_name_3_0, grammarAccess.getAttributeDeclAccess().getNameIDTerminalRuleCall_3_0()); 
             		
@@ -1657,15 +1639,15 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_4=(Token)match(input,12,FollowSets000.FOLLOW_12_in_ruleAttributeDecl1305); 
+            otherlv_4=(Token)match(input,12,FollowSets000.FOLLOW_12_in_ruleAttributeDecl1304); 
 
                 	newLeafNode(otherlv_4, grammarAccess.getAttributeDeclAccess().getColonKeyword_4());
                 
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:680:1: ( ( ruleQualifiedID ) )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:681:1: ( ruleQualifiedID )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:678:1: ( ( ruleQualifiedID ) )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:679:1: ( ruleQualifiedID )
             {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:681:1: ( ruleQualifiedID )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:682:3: ruleQualifiedID
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:679:1: ( ruleQualifiedID )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:680:3: ruleQualifiedID
             {
 
             			if (current==null) {
@@ -1675,7 +1657,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
              
             	        newCompositeNode(grammarAccess.getAttributeDeclAccess().getTypeEDataTypeCrossReference_5_0()); 
             	    
-            pushFollow(FollowSets000.FOLLOW_ruleQualifiedID_in_ruleAttributeDecl1328);
+            pushFollow(FollowSets000.FOLLOW_ruleQualifiedID_in_ruleAttributeDecl1327);
             ruleQualifiedID();
 
             state._fsp--;
@@ -1689,7 +1671,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:695:2: (otherlv_6= '*' )?
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:693:2: (otherlv_6= '*' )?
             int alt17=2;
             int LA17_0 = input.LA(1);
 
@@ -1698,9 +1680,9 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
             }
             switch (alt17) {
                 case 1 :
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:695:4: otherlv_6= '*'
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:693:4: otherlv_6= '*'
                     {
-                    otherlv_6=(Token)match(input,28,FollowSets000.FOLLOW_28_in_ruleAttributeDecl1341); 
+                    otherlv_6=(Token)match(input,28,FollowSets000.FOLLOW_28_in_ruleAttributeDecl1340); 
 
                         	newLeafNode(otherlv_6, grammarAccess.getAttributeDeclAccess().getAsteriskKeyword_6());
                         
@@ -1710,7 +1692,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:699:3: (otherlv_7= '=' ( (lv_default_8_0= RULE_STRING ) ) )?
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:697:3: (otherlv_7= '=' ( (lv_default_8_0= RULE_STRING ) ) )?
             int alt18=2;
             int LA18_0 = input.LA(1);
 
@@ -1719,19 +1701,19 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
             }
             switch (alt18) {
                 case 1 :
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:699:5: otherlv_7= '=' ( (lv_default_8_0= RULE_STRING ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:697:5: otherlv_7= '=' ( (lv_default_8_0= RULE_STRING ) )
                     {
-                    otherlv_7=(Token)match(input,29,FollowSets000.FOLLOW_29_in_ruleAttributeDecl1356); 
+                    otherlv_7=(Token)match(input,29,FollowSets000.FOLLOW_29_in_ruleAttributeDecl1355); 
 
                         	newLeafNode(otherlv_7, grammarAccess.getAttributeDeclAccess().getEqualsSignKeyword_7_0());
                         
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:703:1: ( (lv_default_8_0= RULE_STRING ) )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:704:1: (lv_default_8_0= RULE_STRING )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:701:1: ( (lv_default_8_0= RULE_STRING ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:702:1: (lv_default_8_0= RULE_STRING )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:704:1: (lv_default_8_0= RULE_STRING )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:705:3: lv_default_8_0= RULE_STRING
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:702:1: (lv_default_8_0= RULE_STRING )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:703:3: lv_default_8_0= RULE_STRING
                     {
-                    lv_default_8_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleAttributeDecl1373); 
+                    lv_default_8_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleAttributeDecl1372); 
 
                     			newLeafNode(lv_default_8_0, grammarAccess.getAttributeDeclAccess().getDefaultSTRINGTerminalRuleCall_7_1_0()); 
                     		
@@ -1757,7 +1739,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:721:4: (otherlv_9= '{' (otherlv_10= 'description' ( (lv_description_11_0= RULE_STRING ) ) )? otherlv_12= '}' )?
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:719:4: (otherlv_9= '{' (otherlv_10= 'description' ( (lv_description_11_0= RULE_STRING ) ) )? otherlv_12= '}' )?
             int alt20=2;
             int LA20_0 = input.LA(1);
 
@@ -1766,13 +1748,13 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
             }
             switch (alt20) {
                 case 1 :
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:721:6: otherlv_9= '{' (otherlv_10= 'description' ( (lv_description_11_0= RULE_STRING ) ) )? otherlv_12= '}'
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:719:6: otherlv_9= '{' (otherlv_10= 'description' ( (lv_description_11_0= RULE_STRING ) ) )? otherlv_12= '}'
                     {
-                    otherlv_9=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleAttributeDecl1393); 
+                    otherlv_9=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleAttributeDecl1392); 
 
                         	newLeafNode(otherlv_9, grammarAccess.getAttributeDeclAccess().getLeftCurlyBracketKeyword_8_0());
                         
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:725:1: (otherlv_10= 'description' ( (lv_description_11_0= RULE_STRING ) ) )?
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:723:1: (otherlv_10= 'description' ( (lv_description_11_0= RULE_STRING ) ) )?
                     int alt19=2;
                     int LA19_0 = input.LA(1);
 
@@ -1781,19 +1763,19 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
                     }
                     switch (alt19) {
                         case 1 :
-                            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:725:3: otherlv_10= 'description' ( (lv_description_11_0= RULE_STRING ) )
+                            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:723:3: otherlv_10= 'description' ( (lv_description_11_0= RULE_STRING ) )
                             {
-                            otherlv_10=(Token)match(input,30,FollowSets000.FOLLOW_30_in_ruleAttributeDecl1406); 
+                            otherlv_10=(Token)match(input,30,FollowSets000.FOLLOW_30_in_ruleAttributeDecl1405); 
 
                                 	newLeafNode(otherlv_10, grammarAccess.getAttributeDeclAccess().getDescriptionKeyword_8_1_0());
                                 
-                            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:729:1: ( (lv_description_11_0= RULE_STRING ) )
-                            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:730:1: (lv_description_11_0= RULE_STRING )
+                            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:727:1: ( (lv_description_11_0= RULE_STRING ) )
+                            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:728:1: (lv_description_11_0= RULE_STRING )
                             {
-                            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:730:1: (lv_description_11_0= RULE_STRING )
-                            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:731:3: lv_description_11_0= RULE_STRING
+                            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:728:1: (lv_description_11_0= RULE_STRING )
+                            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:729:3: lv_description_11_0= RULE_STRING
                             {
-                            lv_description_11_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleAttributeDecl1423); 
+                            lv_description_11_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleAttributeDecl1422); 
 
                             			newLeafNode(lv_description_11_0, grammarAccess.getAttributeDeclAccess().getDescriptionSTRINGTerminalRuleCall_8_1_1_0()); 
                             		
@@ -1819,7 +1801,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_12=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleAttributeDecl1442); 
+                    otherlv_12=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleAttributeDecl1441); 
 
                         	newLeafNode(otherlv_12, grammarAccess.getAttributeDeclAccess().getRightCurlyBracketKeyword_8_2());
                         
@@ -1850,7 +1832,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleActionDecl"
-    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:759:1: entryRuleActionDecl returns [EObject current=null] : iv_ruleActionDecl= ruleActionDecl EOF ;
+    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:757:1: entryRuleActionDecl returns [EObject current=null] : iv_ruleActionDecl= ruleActionDecl EOF ;
     public final EObject entryRuleActionDecl() throws RecognitionException {
         EObject current = null;
 
@@ -1858,17 +1840,17 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:760:2: (iv_ruleActionDecl= ruleActionDecl EOF )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:761:2: iv_ruleActionDecl= ruleActionDecl EOF
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:758:2: (iv_ruleActionDecl= ruleActionDecl EOF )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:759:2: iv_ruleActionDecl= ruleActionDecl EOF
             {
              newCompositeNode(grammarAccess.getActionDeclRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleActionDecl_in_entryRuleActionDecl1480);
+            pushFollow(FollowSets000.FOLLOW_ruleActionDecl_in_entryRuleActionDecl1479);
             iv_ruleActionDecl=ruleActionDecl();
 
             state._fsp--;
 
              current =iv_ruleActionDecl; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleActionDecl1490); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleActionDecl1489); 
 
             }
 
@@ -1886,7 +1868,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleActionDecl"
-    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:768:1: ruleActionDecl returns [EObject current=null] : (otherlv_0= 'action' ( (lv_term_1_0= RULE_ID ) ) otherlv_2= '(' ( ( (lv_attributes_3_0= ruleParameterDecl ) ) (otherlv_4= ',' ( (lv_attributes_5_0= ruleParameterDecl ) ) )* )? otherlv_6= ')' (otherlv_7= '{' otherlv_8= 'title' ( (lv_title_9_0= RULE_STRING ) ) otherlv_10= '}' )? ) ;
+    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:766:1: ruleActionDecl returns [EObject current=null] : (otherlv_0= 'action' ( (lv_term_1_0= RULE_ID ) ) otherlv_2= '(' ( ( (lv_attributes_3_0= ruleParameterDecl ) ) (otherlv_4= ',' ( (lv_attributes_5_0= ruleParameterDecl ) ) )* )? otherlv_6= ')' (otherlv_7= '{' otherlv_8= 'title' ( (lv_title_9_0= RULE_STRING ) ) otherlv_10= '}' )? ) ;
     public final EObject ruleActionDecl() throws RecognitionException {
         EObject current = null;
 
@@ -1907,23 +1889,23 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:771:28: ( (otherlv_0= 'action' ( (lv_term_1_0= RULE_ID ) ) otherlv_2= '(' ( ( (lv_attributes_3_0= ruleParameterDecl ) ) (otherlv_4= ',' ( (lv_attributes_5_0= ruleParameterDecl ) ) )* )? otherlv_6= ')' (otherlv_7= '{' otherlv_8= 'title' ( (lv_title_9_0= RULE_STRING ) ) otherlv_10= '}' )? ) )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:772:1: (otherlv_0= 'action' ( (lv_term_1_0= RULE_ID ) ) otherlv_2= '(' ( ( (lv_attributes_3_0= ruleParameterDecl ) ) (otherlv_4= ',' ( (lv_attributes_5_0= ruleParameterDecl ) ) )* )? otherlv_6= ')' (otherlv_7= '{' otherlv_8= 'title' ( (lv_title_9_0= RULE_STRING ) ) otherlv_10= '}' )? )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:769:28: ( (otherlv_0= 'action' ( (lv_term_1_0= RULE_ID ) ) otherlv_2= '(' ( ( (lv_attributes_3_0= ruleParameterDecl ) ) (otherlv_4= ',' ( (lv_attributes_5_0= ruleParameterDecl ) ) )* )? otherlv_6= ')' (otherlv_7= '{' otherlv_8= 'title' ( (lv_title_9_0= RULE_STRING ) ) otherlv_10= '}' )? ) )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:770:1: (otherlv_0= 'action' ( (lv_term_1_0= RULE_ID ) ) otherlv_2= '(' ( ( (lv_attributes_3_0= ruleParameterDecl ) ) (otherlv_4= ',' ( (lv_attributes_5_0= ruleParameterDecl ) ) )* )? otherlv_6= ')' (otherlv_7= '{' otherlv_8= 'title' ( (lv_title_9_0= RULE_STRING ) ) otherlv_10= '}' )? )
             {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:772:1: (otherlv_0= 'action' ( (lv_term_1_0= RULE_ID ) ) otherlv_2= '(' ( ( (lv_attributes_3_0= ruleParameterDecl ) ) (otherlv_4= ',' ( (lv_attributes_5_0= ruleParameterDecl ) ) )* )? otherlv_6= ')' (otherlv_7= '{' otherlv_8= 'title' ( (lv_title_9_0= RULE_STRING ) ) otherlv_10= '}' )? )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:772:3: otherlv_0= 'action' ( (lv_term_1_0= RULE_ID ) ) otherlv_2= '(' ( ( (lv_attributes_3_0= ruleParameterDecl ) ) (otherlv_4= ',' ( (lv_attributes_5_0= ruleParameterDecl ) ) )* )? otherlv_6= ')' (otherlv_7= '{' otherlv_8= 'title' ( (lv_title_9_0= RULE_STRING ) ) otherlv_10= '}' )?
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:770:1: (otherlv_0= 'action' ( (lv_term_1_0= RULE_ID ) ) otherlv_2= '(' ( ( (lv_attributes_3_0= ruleParameterDecl ) ) (otherlv_4= ',' ( (lv_attributes_5_0= ruleParameterDecl ) ) )* )? otherlv_6= ')' (otherlv_7= '{' otherlv_8= 'title' ( (lv_title_9_0= RULE_STRING ) ) otherlv_10= '}' )? )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:770:3: otherlv_0= 'action' ( (lv_term_1_0= RULE_ID ) ) otherlv_2= '(' ( ( (lv_attributes_3_0= ruleParameterDecl ) ) (otherlv_4= ',' ( (lv_attributes_5_0= ruleParameterDecl ) ) )* )? otherlv_6= ')' (otherlv_7= '{' otherlv_8= 'title' ( (lv_title_9_0= RULE_STRING ) ) otherlv_10= '}' )?
             {
-            otherlv_0=(Token)match(input,31,FollowSets000.FOLLOW_31_in_ruleActionDecl1527); 
+            otherlv_0=(Token)match(input,31,FollowSets000.FOLLOW_31_in_ruleActionDecl1526); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getActionDeclAccess().getActionKeyword_0());
                 
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:776:1: ( (lv_term_1_0= RULE_ID ) )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:777:1: (lv_term_1_0= RULE_ID )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:774:1: ( (lv_term_1_0= RULE_ID ) )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:775:1: (lv_term_1_0= RULE_ID )
             {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:777:1: (lv_term_1_0= RULE_ID )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:778:3: lv_term_1_0= RULE_ID
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:775:1: (lv_term_1_0= RULE_ID )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:776:3: lv_term_1_0= RULE_ID
             {
-            lv_term_1_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleActionDecl1544); 
+            lv_term_1_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleActionDecl1543); 
 
             			newLeafNode(lv_term_1_0, grammarAccess.getActionDeclAccess().getTermIDTerminalRuleCall_1_0()); 
             		
@@ -1943,11 +1925,11 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,32,FollowSets000.FOLLOW_32_in_ruleActionDecl1561); 
+            otherlv_2=(Token)match(input,32,FollowSets000.FOLLOW_32_in_ruleActionDecl1560); 
 
                 	newLeafNode(otherlv_2, grammarAccess.getActionDeclAccess().getLeftParenthesisKeyword_2());
                 
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:798:1: ( ( (lv_attributes_3_0= ruleParameterDecl ) ) (otherlv_4= ',' ( (lv_attributes_5_0= ruleParameterDecl ) ) )* )?
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:796:1: ( ( (lv_attributes_3_0= ruleParameterDecl ) ) (otherlv_4= ',' ( (lv_attributes_5_0= ruleParameterDecl ) ) )* )?
             int alt22=2;
             int LA22_0 = input.LA(1);
 
@@ -1956,18 +1938,18 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
             }
             switch (alt22) {
                 case 1 :
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:798:2: ( (lv_attributes_3_0= ruleParameterDecl ) ) (otherlv_4= ',' ( (lv_attributes_5_0= ruleParameterDecl ) ) )*
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:796:2: ( (lv_attributes_3_0= ruleParameterDecl ) ) (otherlv_4= ',' ( (lv_attributes_5_0= ruleParameterDecl ) ) )*
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:798:2: ( (lv_attributes_3_0= ruleParameterDecl ) )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:799:1: (lv_attributes_3_0= ruleParameterDecl )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:796:2: ( (lv_attributes_3_0= ruleParameterDecl ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:797:1: (lv_attributes_3_0= ruleParameterDecl )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:799:1: (lv_attributes_3_0= ruleParameterDecl )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:800:3: lv_attributes_3_0= ruleParameterDecl
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:797:1: (lv_attributes_3_0= ruleParameterDecl )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:798:3: lv_attributes_3_0= ruleParameterDecl
                     {
                      
                     	        newCompositeNode(grammarAccess.getActionDeclAccess().getAttributesParameterDeclParserRuleCall_3_0_0()); 
                     	    
-                    pushFollow(FollowSets000.FOLLOW_ruleParameterDecl_in_ruleActionDecl1583);
+                    pushFollow(FollowSets000.FOLLOW_ruleParameterDecl_in_ruleActionDecl1582);
                     lv_attributes_3_0=ruleParameterDecl();
 
                     state._fsp--;
@@ -1989,7 +1971,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:816:2: (otherlv_4= ',' ( (lv_attributes_5_0= ruleParameterDecl ) ) )*
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:814:2: (otherlv_4= ',' ( (lv_attributes_5_0= ruleParameterDecl ) ) )*
                     loop21:
                     do {
                         int alt21=2;
@@ -2002,22 +1984,22 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
                         switch (alt21) {
                     	case 1 :
-                    	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:816:4: otherlv_4= ',' ( (lv_attributes_5_0= ruleParameterDecl ) )
+                    	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:814:4: otherlv_4= ',' ( (lv_attributes_5_0= ruleParameterDecl ) )
                     	    {
-                    	    otherlv_4=(Token)match(input,22,FollowSets000.FOLLOW_22_in_ruleActionDecl1596); 
+                    	    otherlv_4=(Token)match(input,22,FollowSets000.FOLLOW_22_in_ruleActionDecl1595); 
 
                     	        	newLeafNode(otherlv_4, grammarAccess.getActionDeclAccess().getCommaKeyword_3_1_0());
                     	        
-                    	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:820:1: ( (lv_attributes_5_0= ruleParameterDecl ) )
-                    	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:821:1: (lv_attributes_5_0= ruleParameterDecl )
+                    	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:818:1: ( (lv_attributes_5_0= ruleParameterDecl ) )
+                    	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:819:1: (lv_attributes_5_0= ruleParameterDecl )
                     	    {
-                    	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:821:1: (lv_attributes_5_0= ruleParameterDecl )
-                    	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:822:3: lv_attributes_5_0= ruleParameterDecl
+                    	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:819:1: (lv_attributes_5_0= ruleParameterDecl )
+                    	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:820:3: lv_attributes_5_0= ruleParameterDecl
                     	    {
                     	     
                     	    	        newCompositeNode(grammarAccess.getActionDeclAccess().getAttributesParameterDeclParserRuleCall_3_1_1_0()); 
                     	    	    
-                    	    pushFollow(FollowSets000.FOLLOW_ruleParameterDecl_in_ruleActionDecl1617);
+                    	    pushFollow(FollowSets000.FOLLOW_ruleParameterDecl_in_ruleActionDecl1616);
                     	    lv_attributes_5_0=ruleParameterDecl();
 
                     	    state._fsp--;
@@ -2054,11 +2036,11 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_6=(Token)match(input,33,FollowSets000.FOLLOW_33_in_ruleActionDecl1633); 
+            otherlv_6=(Token)match(input,33,FollowSets000.FOLLOW_33_in_ruleActionDecl1632); 
 
                 	newLeafNode(otherlv_6, grammarAccess.getActionDeclAccess().getRightParenthesisKeyword_4());
                 
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:842:1: (otherlv_7= '{' otherlv_8= 'title' ( (lv_title_9_0= RULE_STRING ) ) otherlv_10= '}' )?
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:840:1: (otherlv_7= '{' otherlv_8= 'title' ( (lv_title_9_0= RULE_STRING ) ) otherlv_10= '}' )?
             int alt23=2;
             int LA23_0 = input.LA(1);
 
@@ -2067,23 +2049,23 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
             }
             switch (alt23) {
                 case 1 :
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:842:3: otherlv_7= '{' otherlv_8= 'title' ( (lv_title_9_0= RULE_STRING ) ) otherlv_10= '}'
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:840:3: otherlv_7= '{' otherlv_8= 'title' ( (lv_title_9_0= RULE_STRING ) ) otherlv_10= '}'
                     {
-                    otherlv_7=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleActionDecl1646); 
+                    otherlv_7=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleActionDecl1645); 
 
                         	newLeafNode(otherlv_7, grammarAccess.getActionDeclAccess().getLeftCurlyBracketKeyword_5_0());
                         
-                    otherlv_8=(Token)match(input,18,FollowSets000.FOLLOW_18_in_ruleActionDecl1658); 
+                    otherlv_8=(Token)match(input,18,FollowSets000.FOLLOW_18_in_ruleActionDecl1657); 
 
                         	newLeafNode(otherlv_8, grammarAccess.getActionDeclAccess().getTitleKeyword_5_1());
                         
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:850:1: ( (lv_title_9_0= RULE_STRING ) )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:851:1: (lv_title_9_0= RULE_STRING )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:848:1: ( (lv_title_9_0= RULE_STRING ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:849:1: (lv_title_9_0= RULE_STRING )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:851:1: (lv_title_9_0= RULE_STRING )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:852:3: lv_title_9_0= RULE_STRING
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:849:1: (lv_title_9_0= RULE_STRING )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:850:3: lv_title_9_0= RULE_STRING
                     {
-                    lv_title_9_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleActionDecl1675); 
+                    lv_title_9_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleActionDecl1674); 
 
                     			newLeafNode(lv_title_9_0, grammarAccess.getActionDeclAccess().getTitleSTRINGTerminalRuleCall_5_2_0()); 
                     		
@@ -2103,7 +2085,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_10=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleActionDecl1692); 
+                    otherlv_10=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleActionDecl1691); 
 
                         	newLeafNode(otherlv_10, grammarAccess.getActionDeclAccess().getRightCurlyBracketKeyword_5_3());
                         
@@ -2134,7 +2116,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleParameterDecl"
-    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:880:1: entryRuleParameterDecl returns [EObject current=null] : iv_ruleParameterDecl= ruleParameterDecl EOF ;
+    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:878:1: entryRuleParameterDecl returns [EObject current=null] : iv_ruleParameterDecl= ruleParameterDecl EOF ;
     public final EObject entryRuleParameterDecl() throws RecognitionException {
         EObject current = null;
 
@@ -2142,17 +2124,17 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:881:2: (iv_ruleParameterDecl= ruleParameterDecl EOF )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:882:2: iv_ruleParameterDecl= ruleParameterDecl EOF
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:879:2: (iv_ruleParameterDecl= ruleParameterDecl EOF )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:880:2: iv_ruleParameterDecl= ruleParameterDecl EOF
             {
              newCompositeNode(grammarAccess.getParameterDeclRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleParameterDecl_in_entryRuleParameterDecl1730);
+            pushFollow(FollowSets000.FOLLOW_ruleParameterDecl_in_entryRuleParameterDecl1729);
             iv_ruleParameterDecl=ruleParameterDecl();
 
             state._fsp--;
 
              current =iv_ruleParameterDecl; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleParameterDecl1740); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleParameterDecl1739); 
 
             }
 
@@ -2170,7 +2152,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleParameterDecl"
-    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:889:1: ruleParameterDecl returns [EObject current=null] : ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= ':' ( ( ruleQualifiedID ) ) ( (lv_multiple_values_3_0= '*' ) )? ) ;
+    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:887:1: ruleParameterDecl returns [EObject current=null] : ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= ':' ( ( ruleQualifiedID ) ) ( (lv_multiple_values_3_0= '*' ) )? ) ;
     public final EObject ruleParameterDecl() throws RecognitionException {
         EObject current = null;
 
@@ -2181,19 +2163,19 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:892:28: ( ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= ':' ( ( ruleQualifiedID ) ) ( (lv_multiple_values_3_0= '*' ) )? ) )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:893:1: ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= ':' ( ( ruleQualifiedID ) ) ( (lv_multiple_values_3_0= '*' ) )? )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:890:28: ( ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= ':' ( ( ruleQualifiedID ) ) ( (lv_multiple_values_3_0= '*' ) )? ) )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:891:1: ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= ':' ( ( ruleQualifiedID ) ) ( (lv_multiple_values_3_0= '*' ) )? )
             {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:893:1: ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= ':' ( ( ruleQualifiedID ) ) ( (lv_multiple_values_3_0= '*' ) )? )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:893:2: ( (lv_name_0_0= RULE_ID ) ) otherlv_1= ':' ( ( ruleQualifiedID ) ) ( (lv_multiple_values_3_0= '*' ) )?
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:891:1: ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= ':' ( ( ruleQualifiedID ) ) ( (lv_multiple_values_3_0= '*' ) )? )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:891:2: ( (lv_name_0_0= RULE_ID ) ) otherlv_1= ':' ( ( ruleQualifiedID ) ) ( (lv_multiple_values_3_0= '*' ) )?
             {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:893:2: ( (lv_name_0_0= RULE_ID ) )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:894:1: (lv_name_0_0= RULE_ID )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:891:2: ( (lv_name_0_0= RULE_ID ) )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:892:1: (lv_name_0_0= RULE_ID )
             {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:894:1: (lv_name_0_0= RULE_ID )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:895:3: lv_name_0_0= RULE_ID
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:892:1: (lv_name_0_0= RULE_ID )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:893:3: lv_name_0_0= RULE_ID
             {
-            lv_name_0_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleParameterDecl1782); 
+            lv_name_0_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleParameterDecl1781); 
 
             			newLeafNode(lv_name_0_0, grammarAccess.getParameterDeclAccess().getNameIDTerminalRuleCall_0_0()); 
             		
@@ -2213,15 +2195,15 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,12,FollowSets000.FOLLOW_12_in_ruleParameterDecl1799); 
+            otherlv_1=(Token)match(input,12,FollowSets000.FOLLOW_12_in_ruleParameterDecl1798); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getParameterDeclAccess().getColonKeyword_1());
                 
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:915:1: ( ( ruleQualifiedID ) )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:916:1: ( ruleQualifiedID )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:913:1: ( ( ruleQualifiedID ) )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:914:1: ( ruleQualifiedID )
             {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:916:1: ( ruleQualifiedID )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:917:3: ruleQualifiedID
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:914:1: ( ruleQualifiedID )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:915:3: ruleQualifiedID
             {
 
             			if (current==null) {
@@ -2231,7 +2213,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
              
             	        newCompositeNode(grammarAccess.getParameterDeclAccess().getTypeEDataTypeCrossReference_2_0()); 
             	    
-            pushFollow(FollowSets000.FOLLOW_ruleQualifiedID_in_ruleParameterDecl1822);
+            pushFollow(FollowSets000.FOLLOW_ruleQualifiedID_in_ruleParameterDecl1821);
             ruleQualifiedID();
 
             state._fsp--;
@@ -2245,7 +2227,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:930:2: ( (lv_multiple_values_3_0= '*' ) )?
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:928:2: ( (lv_multiple_values_3_0= '*' ) )?
             int alt24=2;
             int LA24_0 = input.LA(1);
 
@@ -2254,12 +2236,12 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
             }
             switch (alt24) {
                 case 1 :
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:931:1: (lv_multiple_values_3_0= '*' )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:929:1: (lv_multiple_values_3_0= '*' )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:931:1: (lv_multiple_values_3_0= '*' )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:932:3: lv_multiple_values_3_0= '*'
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:929:1: (lv_multiple_values_3_0= '*' )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:930:3: lv_multiple_values_3_0= '*'
                     {
-                    lv_multiple_values_3_0=(Token)match(input,28,FollowSets000.FOLLOW_28_in_ruleParameterDecl1840); 
+                    lv_multiple_values_3_0=(Token)match(input,28,FollowSets000.FOLLOW_28_in_ruleParameterDecl1839); 
 
                             newLeafNode(lv_multiple_values_3_0, grammarAccess.getParameterDeclAccess().getMultiple_valuesAsteriskKeyword_3_0());
                         
@@ -2299,7 +2281,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleDataTypeDecl"
-    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:953:1: entryRuleDataTypeDecl returns [EObject current=null] : iv_ruleDataTypeDecl= ruleDataTypeDecl EOF ;
+    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:951:1: entryRuleDataTypeDecl returns [EObject current=null] : iv_ruleDataTypeDecl= ruleDataTypeDecl EOF ;
     public final EObject entryRuleDataTypeDecl() throws RecognitionException {
         EObject current = null;
 
@@ -2307,17 +2289,17 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:954:2: (iv_ruleDataTypeDecl= ruleDataTypeDecl EOF )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:955:2: iv_ruleDataTypeDecl= ruleDataTypeDecl EOF
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:952:2: (iv_ruleDataTypeDecl= ruleDataTypeDecl EOF )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:953:2: iv_ruleDataTypeDecl= ruleDataTypeDecl EOF
             {
              newCompositeNode(grammarAccess.getDataTypeDeclRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleDataTypeDecl_in_entryRuleDataTypeDecl1890);
+            pushFollow(FollowSets000.FOLLOW_ruleDataTypeDecl_in_entryRuleDataTypeDecl1889);
             iv_ruleDataTypeDecl=ruleDataTypeDecl();
 
             state._fsp--;
 
              current =iv_ruleDataTypeDecl; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleDataTypeDecl1900); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleDataTypeDecl1899); 
 
             }
 
@@ -2335,7 +2317,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleDataTypeDecl"
-    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:962:1: ruleDataTypeDecl returns [EObject current=null] : ( () otherlv_1= 'datatype' ( (lv_serializable_2_0= 'serializable' ) )? ( (lv_name_3_0= RULE_ID ) ) otherlv_4= ':' ( (lv_instanceTypeName_5_0= RULE_STRING ) ) (otherlv_6= '{' ( (lv_eAnnotations_7_0= ruleDataTypeAnnotations ) ) otherlv_8= '}' )? ) ;
+    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:960:1: ruleDataTypeDecl returns [EObject current=null] : ( () otherlv_1= 'datatype' ( (lv_serializable_2_0= 'serializable' ) )? ( (lv_name_3_0= RULE_ID ) ) otherlv_4= ':' ( (lv_instanceTypeName_5_0= RULE_STRING ) ) (otherlv_6= '{' ( (lv_eAnnotations_7_0= ruleDataTypeAnnotations ) ) otherlv_8= '}' )? ) ;
     public final EObject ruleDataTypeDecl() throws RecognitionException {
         EObject current = null;
 
@@ -2352,14 +2334,14 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:965:28: ( ( () otherlv_1= 'datatype' ( (lv_serializable_2_0= 'serializable' ) )? ( (lv_name_3_0= RULE_ID ) ) otherlv_4= ':' ( (lv_instanceTypeName_5_0= RULE_STRING ) ) (otherlv_6= '{' ( (lv_eAnnotations_7_0= ruleDataTypeAnnotations ) ) otherlv_8= '}' )? ) )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:966:1: ( () otherlv_1= 'datatype' ( (lv_serializable_2_0= 'serializable' ) )? ( (lv_name_3_0= RULE_ID ) ) otherlv_4= ':' ( (lv_instanceTypeName_5_0= RULE_STRING ) ) (otherlv_6= '{' ( (lv_eAnnotations_7_0= ruleDataTypeAnnotations ) ) otherlv_8= '}' )? )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:963:28: ( ( () otherlv_1= 'datatype' ( (lv_serializable_2_0= 'serializable' ) )? ( (lv_name_3_0= RULE_ID ) ) otherlv_4= ':' ( (lv_instanceTypeName_5_0= RULE_STRING ) ) (otherlv_6= '{' ( (lv_eAnnotations_7_0= ruleDataTypeAnnotations ) ) otherlv_8= '}' )? ) )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:964:1: ( () otherlv_1= 'datatype' ( (lv_serializable_2_0= 'serializable' ) )? ( (lv_name_3_0= RULE_ID ) ) otherlv_4= ':' ( (lv_instanceTypeName_5_0= RULE_STRING ) ) (otherlv_6= '{' ( (lv_eAnnotations_7_0= ruleDataTypeAnnotations ) ) otherlv_8= '}' )? )
             {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:966:1: ( () otherlv_1= 'datatype' ( (lv_serializable_2_0= 'serializable' ) )? ( (lv_name_3_0= RULE_ID ) ) otherlv_4= ':' ( (lv_instanceTypeName_5_0= RULE_STRING ) ) (otherlv_6= '{' ( (lv_eAnnotations_7_0= ruleDataTypeAnnotations ) ) otherlv_8= '}' )? )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:966:2: () otherlv_1= 'datatype' ( (lv_serializable_2_0= 'serializable' ) )? ( (lv_name_3_0= RULE_ID ) ) otherlv_4= ':' ( (lv_instanceTypeName_5_0= RULE_STRING ) ) (otherlv_6= '{' ( (lv_eAnnotations_7_0= ruleDataTypeAnnotations ) ) otherlv_8= '}' )?
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:964:1: ( () otherlv_1= 'datatype' ( (lv_serializable_2_0= 'serializable' ) )? ( (lv_name_3_0= RULE_ID ) ) otherlv_4= ':' ( (lv_instanceTypeName_5_0= RULE_STRING ) ) (otherlv_6= '{' ( (lv_eAnnotations_7_0= ruleDataTypeAnnotations ) ) otherlv_8= '}' )? )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:964:2: () otherlv_1= 'datatype' ( (lv_serializable_2_0= 'serializable' ) )? ( (lv_name_3_0= RULE_ID ) ) otherlv_4= ':' ( (lv_instanceTypeName_5_0= RULE_STRING ) ) (otherlv_6= '{' ( (lv_eAnnotations_7_0= ruleDataTypeAnnotations ) ) otherlv_8= '}' )?
             {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:966:2: ()
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:967:5: 
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:964:2: ()
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:965:5: 
             {
 
                     current = forceCreateModelElement(
@@ -2369,11 +2351,11 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,34,FollowSets000.FOLLOW_34_in_ruleDataTypeDecl1946); 
+            otherlv_1=(Token)match(input,34,FollowSets000.FOLLOW_34_in_ruleDataTypeDecl1945); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getDataTypeDeclAccess().getDatatypeKeyword_1());
                 
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:976:1: ( (lv_serializable_2_0= 'serializable' ) )?
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:974:1: ( (lv_serializable_2_0= 'serializable' ) )?
             int alt25=2;
             int LA25_0 = input.LA(1);
 
@@ -2382,12 +2364,12 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
             }
             switch (alt25) {
                 case 1 :
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:977:1: (lv_serializable_2_0= 'serializable' )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:975:1: (lv_serializable_2_0= 'serializable' )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:977:1: (lv_serializable_2_0= 'serializable' )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:978:3: lv_serializable_2_0= 'serializable'
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:975:1: (lv_serializable_2_0= 'serializable' )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:976:3: lv_serializable_2_0= 'serializable'
                     {
-                    lv_serializable_2_0=(Token)match(input,35,FollowSets000.FOLLOW_35_in_ruleDataTypeDecl1964); 
+                    lv_serializable_2_0=(Token)match(input,35,FollowSets000.FOLLOW_35_in_ruleDataTypeDecl1963); 
 
                             newLeafNode(lv_serializable_2_0, grammarAccess.getDataTypeDeclAccess().getSerializableSerializableKeyword_2_0());
                         
@@ -2406,13 +2388,13 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:991:3: ( (lv_name_3_0= RULE_ID ) )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:992:1: (lv_name_3_0= RULE_ID )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:989:3: ( (lv_name_3_0= RULE_ID ) )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:990:1: (lv_name_3_0= RULE_ID )
             {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:992:1: (lv_name_3_0= RULE_ID )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:993:3: lv_name_3_0= RULE_ID
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:990:1: (lv_name_3_0= RULE_ID )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:991:3: lv_name_3_0= RULE_ID
             {
-            lv_name_3_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleDataTypeDecl1995); 
+            lv_name_3_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleDataTypeDecl1994); 
 
             			newLeafNode(lv_name_3_0, grammarAccess.getDataTypeDeclAccess().getNameIDTerminalRuleCall_3_0()); 
             		
@@ -2432,17 +2414,17 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_4=(Token)match(input,12,FollowSets000.FOLLOW_12_in_ruleDataTypeDecl2012); 
+            otherlv_4=(Token)match(input,12,FollowSets000.FOLLOW_12_in_ruleDataTypeDecl2011); 
 
                 	newLeafNode(otherlv_4, grammarAccess.getDataTypeDeclAccess().getColonKeyword_4());
                 
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1013:1: ( (lv_instanceTypeName_5_0= RULE_STRING ) )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1014:1: (lv_instanceTypeName_5_0= RULE_STRING )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1011:1: ( (lv_instanceTypeName_5_0= RULE_STRING ) )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1012:1: (lv_instanceTypeName_5_0= RULE_STRING )
             {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1014:1: (lv_instanceTypeName_5_0= RULE_STRING )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1015:3: lv_instanceTypeName_5_0= RULE_STRING
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1012:1: (lv_instanceTypeName_5_0= RULE_STRING )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1013:3: lv_instanceTypeName_5_0= RULE_STRING
             {
-            lv_instanceTypeName_5_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleDataTypeDecl2029); 
+            lv_instanceTypeName_5_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleDataTypeDecl2028); 
 
             			newLeafNode(lv_instanceTypeName_5_0, grammarAccess.getDataTypeDeclAccess().getInstanceTypeNameSTRINGTerminalRuleCall_5_0()); 
             		
@@ -2462,7 +2444,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1031:2: (otherlv_6= '{' ( (lv_eAnnotations_7_0= ruleDataTypeAnnotations ) ) otherlv_8= '}' )?
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1029:2: (otherlv_6= '{' ( (lv_eAnnotations_7_0= ruleDataTypeAnnotations ) ) otherlv_8= '}' )?
             int alt26=2;
             int LA26_0 = input.LA(1);
 
@@ -2471,22 +2453,22 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
             }
             switch (alt26) {
                 case 1 :
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1031:4: otherlv_6= '{' ( (lv_eAnnotations_7_0= ruleDataTypeAnnotations ) ) otherlv_8= '}'
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1029:4: otherlv_6= '{' ( (lv_eAnnotations_7_0= ruleDataTypeAnnotations ) ) otherlv_8= '}'
                     {
-                    otherlv_6=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleDataTypeDecl2047); 
+                    otherlv_6=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleDataTypeDecl2046); 
 
                         	newLeafNode(otherlv_6, grammarAccess.getDataTypeDeclAccess().getLeftCurlyBracketKeyword_6_0());
                         
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1035:1: ( (lv_eAnnotations_7_0= ruleDataTypeAnnotations ) )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1036:1: (lv_eAnnotations_7_0= ruleDataTypeAnnotations )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1033:1: ( (lv_eAnnotations_7_0= ruleDataTypeAnnotations ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1034:1: (lv_eAnnotations_7_0= ruleDataTypeAnnotations )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1036:1: (lv_eAnnotations_7_0= ruleDataTypeAnnotations )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1037:3: lv_eAnnotations_7_0= ruleDataTypeAnnotations
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1034:1: (lv_eAnnotations_7_0= ruleDataTypeAnnotations )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1035:3: lv_eAnnotations_7_0= ruleDataTypeAnnotations
                     {
                      
                     	        newCompositeNode(grammarAccess.getDataTypeDeclAccess().getEAnnotationsDataTypeAnnotationsParserRuleCall_6_1_0()); 
                     	    
-                    pushFollow(FollowSets000.FOLLOW_ruleDataTypeAnnotations_in_ruleDataTypeDecl2068);
+                    pushFollow(FollowSets000.FOLLOW_ruleDataTypeAnnotations_in_ruleDataTypeDecl2067);
                     lv_eAnnotations_7_0=ruleDataTypeAnnotations();
 
                     state._fsp--;
@@ -2508,7 +2490,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_8=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleDataTypeDecl2080); 
+                    otherlv_8=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleDataTypeDecl2079); 
 
                         	newLeafNode(otherlv_8, grammarAccess.getDataTypeDeclAccess().getRightCurlyBracketKeyword_6_2());
                         
@@ -2539,7 +2521,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleDataTypeAnnotations"
-    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1065:1: entryRuleDataTypeAnnotations returns [EObject current=null] : iv_ruleDataTypeAnnotations= ruleDataTypeAnnotations EOF ;
+    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1063:1: entryRuleDataTypeAnnotations returns [EObject current=null] : iv_ruleDataTypeAnnotations= ruleDataTypeAnnotations EOF ;
     public final EObject entryRuleDataTypeAnnotations() throws RecognitionException {
         EObject current = null;
 
@@ -2547,17 +2529,17 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1066:2: (iv_ruleDataTypeAnnotations= ruleDataTypeAnnotations EOF )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1067:2: iv_ruleDataTypeAnnotations= ruleDataTypeAnnotations EOF
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1064:2: (iv_ruleDataTypeAnnotations= ruleDataTypeAnnotations EOF )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1065:2: iv_ruleDataTypeAnnotations= ruleDataTypeAnnotations EOF
             {
              newCompositeNode(grammarAccess.getDataTypeAnnotationsRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleDataTypeAnnotations_in_entryRuleDataTypeAnnotations2118);
+            pushFollow(FollowSets000.FOLLOW_ruleDataTypeAnnotations_in_entryRuleDataTypeAnnotations2117);
             iv_ruleDataTypeAnnotations=ruleDataTypeAnnotations();
 
             state._fsp--;
 
              current =iv_ruleDataTypeAnnotations; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleDataTypeAnnotations2128); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleDataTypeAnnotations2127); 
 
             }
 
@@ -2575,7 +2557,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleDataTypeAnnotations"
-    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1074:1: ruleDataTypeAnnotations returns [EObject current=null] : ( (lv_details_0_0= ruleDataTypeAnnotation ) )+ ;
+    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1072:1: ruleDataTypeAnnotations returns [EObject current=null] : ( (lv_details_0_0= ruleDataTypeAnnotation ) )+ ;
     public final EObject ruleDataTypeAnnotations() throws RecognitionException {
         EObject current = null;
 
@@ -2585,10 +2567,10 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1077:28: ( ( (lv_details_0_0= ruleDataTypeAnnotation ) )+ )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1078:1: ( (lv_details_0_0= ruleDataTypeAnnotation ) )+
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1075:28: ( ( (lv_details_0_0= ruleDataTypeAnnotation ) )+ )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1076:1: ( (lv_details_0_0= ruleDataTypeAnnotation ) )+
             {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1078:1: ( (lv_details_0_0= ruleDataTypeAnnotation ) )+
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1076:1: ( (lv_details_0_0= ruleDataTypeAnnotation ) )+
             int cnt27=0;
             loop27:
             do {
@@ -2602,15 +2584,15 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
                 switch (alt27) {
             	case 1 :
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1079:1: (lv_details_0_0= ruleDataTypeAnnotation )
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1077:1: (lv_details_0_0= ruleDataTypeAnnotation )
             	    {
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1079:1: (lv_details_0_0= ruleDataTypeAnnotation )
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1080:3: lv_details_0_0= ruleDataTypeAnnotation
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1077:1: (lv_details_0_0= ruleDataTypeAnnotation )
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1078:3: lv_details_0_0= ruleDataTypeAnnotation
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getDataTypeAnnotationsAccess().getDetailsDataTypeAnnotationParserRuleCall_0()); 
             	    	    
-            	    pushFollow(FollowSets000.FOLLOW_ruleDataTypeAnnotation_in_ruleDataTypeAnnotations2173);
+            	    pushFollow(FollowSets000.FOLLOW_ruleDataTypeAnnotation_in_ruleDataTypeAnnotations2172);
             	    lv_details_0_0=ruleDataTypeAnnotation();
 
             	    state._fsp--;
@@ -2660,7 +2642,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleDataTypeAnnotation"
-    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1104:1: entryRuleDataTypeAnnotation returns [EObject current=null] : iv_ruleDataTypeAnnotation= ruleDataTypeAnnotation EOF ;
+    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1102:1: entryRuleDataTypeAnnotation returns [EObject current=null] : iv_ruleDataTypeAnnotation= ruleDataTypeAnnotation EOF ;
     public final EObject entryRuleDataTypeAnnotation() throws RecognitionException {
         EObject current = null;
 
@@ -2668,17 +2650,17 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1105:2: (iv_ruleDataTypeAnnotation= ruleDataTypeAnnotation EOF )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1106:2: iv_ruleDataTypeAnnotation= ruleDataTypeAnnotation EOF
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1103:2: (iv_ruleDataTypeAnnotation= ruleDataTypeAnnotation EOF )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1104:2: iv_ruleDataTypeAnnotation= ruleDataTypeAnnotation EOF
             {
              newCompositeNode(grammarAccess.getDataTypeAnnotationRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleDataTypeAnnotation_in_entryRuleDataTypeAnnotation2209);
+            pushFollow(FollowSets000.FOLLOW_ruleDataTypeAnnotation_in_entryRuleDataTypeAnnotation2208);
             iv_ruleDataTypeAnnotation=ruleDataTypeAnnotation();
 
             state._fsp--;
 
              current =iv_ruleDataTypeAnnotation; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleDataTypeAnnotation2219); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleDataTypeAnnotation2218); 
 
             }
 
@@ -2696,7 +2678,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleDataTypeAnnotation"
-    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1113:1: ruleDataTypeAnnotation returns [EObject current=null] : ( ( ( (lv_key_0_0= 'minExclusive' ) ) otherlv_1= '=' ( (lv_value_2_0= ruleInteger ) ) ) | ( ( (lv_key_3_0= 'minInclusive' ) ) otherlv_4= 'minInclusive' otherlv_5= '=' ( (lv_value_6_0= ruleInteger ) ) ) | ( ( (lv_key_7_0= 'maxExclusive' ) ) otherlv_8= '=' ( (lv_value_9_0= ruleInteger ) ) ) | ( ( (lv_key_10_0= 'maxInclusive' ) ) otherlv_11= '=' ( (lv_value_12_0= ruleInteger ) ) ) | ( ( (lv_key_13_0= 'totalDigits' ) ) otherlv_14= '=' ( (lv_value_15_0= rulePositiveInteger ) ) ) | ( ( (lv_key_16_0= 'fractionDigits' ) ) otherlv_17= '=' ( (lv_value_18_0= rulePositiveInteger ) ) ) | ( ( (lv_key_19_0= 'length' ) ) otherlv_20= '=' ( (lv_value_21_0= rulePositiveInteger ) ) ) | ( ( (lv_key_22_0= 'minLength' ) ) otherlv_23= '=' ( (lv_value_24_0= rulePositiveInteger ) ) ) | ( ( (lv_key_25_0= 'maxLength' ) ) otherlv_26= '=' ( (lv_value_27_0= rulePositiveInteger ) ) ) | ( ( (lv_key_28_0= 'whiteSpace' ) ) otherlv_29= '=' ( (lv_value_30_0= rulePositiveInteger ) ) ) | ( ( (lv_key_31_0= 'pattern' ) ) otherlv_32= '=' ( (lv_value_33_0= RULE_STRING ) ) ) ) ;
+    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1111:1: ruleDataTypeAnnotation returns [EObject current=null] : ( ( ( (lv_key_0_0= 'minExclusive' ) ) otherlv_1= '=' ( (lv_value_2_0= ruleInteger ) ) ) | ( ( (lv_key_3_0= 'minInclusive' ) ) otherlv_4= 'minInclusive' otherlv_5= '=' ( (lv_value_6_0= ruleInteger ) ) ) | ( ( (lv_key_7_0= 'maxExclusive' ) ) otherlv_8= '=' ( (lv_value_9_0= ruleInteger ) ) ) | ( ( (lv_key_10_0= 'maxInclusive' ) ) otherlv_11= '=' ( (lv_value_12_0= ruleInteger ) ) ) | ( ( (lv_key_13_0= 'totalDigits' ) ) otherlv_14= '=' ( (lv_value_15_0= rulePositiveInteger ) ) ) | ( ( (lv_key_16_0= 'fractionDigits' ) ) otherlv_17= '=' ( (lv_value_18_0= rulePositiveInteger ) ) ) | ( ( (lv_key_19_0= 'length' ) ) otherlv_20= '=' ( (lv_value_21_0= rulePositiveInteger ) ) ) | ( ( (lv_key_22_0= 'minLength' ) ) otherlv_23= '=' ( (lv_value_24_0= rulePositiveInteger ) ) ) | ( ( (lv_key_25_0= 'maxLength' ) ) otherlv_26= '=' ( (lv_value_27_0= rulePositiveInteger ) ) ) | ( ( (lv_key_28_0= 'whiteSpace' ) ) otherlv_29= '=' ( (lv_value_30_0= rulePositiveInteger ) ) ) | ( ( (lv_key_31_0= 'pattern' ) ) otherlv_32= '=' ( (lv_value_33_0= RULE_STRING ) ) ) ) ;
     public final EObject ruleDataTypeAnnotation() throws RecognitionException {
         EObject current = null;
 
@@ -2748,10 +2730,10 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1116:28: ( ( ( ( (lv_key_0_0= 'minExclusive' ) ) otherlv_1= '=' ( (lv_value_2_0= ruleInteger ) ) ) | ( ( (lv_key_3_0= 'minInclusive' ) ) otherlv_4= 'minInclusive' otherlv_5= '=' ( (lv_value_6_0= ruleInteger ) ) ) | ( ( (lv_key_7_0= 'maxExclusive' ) ) otherlv_8= '=' ( (lv_value_9_0= ruleInteger ) ) ) | ( ( (lv_key_10_0= 'maxInclusive' ) ) otherlv_11= '=' ( (lv_value_12_0= ruleInteger ) ) ) | ( ( (lv_key_13_0= 'totalDigits' ) ) otherlv_14= '=' ( (lv_value_15_0= rulePositiveInteger ) ) ) | ( ( (lv_key_16_0= 'fractionDigits' ) ) otherlv_17= '=' ( (lv_value_18_0= rulePositiveInteger ) ) ) | ( ( (lv_key_19_0= 'length' ) ) otherlv_20= '=' ( (lv_value_21_0= rulePositiveInteger ) ) ) | ( ( (lv_key_22_0= 'minLength' ) ) otherlv_23= '=' ( (lv_value_24_0= rulePositiveInteger ) ) ) | ( ( (lv_key_25_0= 'maxLength' ) ) otherlv_26= '=' ( (lv_value_27_0= rulePositiveInteger ) ) ) | ( ( (lv_key_28_0= 'whiteSpace' ) ) otherlv_29= '=' ( (lv_value_30_0= rulePositiveInteger ) ) ) | ( ( (lv_key_31_0= 'pattern' ) ) otherlv_32= '=' ( (lv_value_33_0= RULE_STRING ) ) ) ) )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1117:1: ( ( ( (lv_key_0_0= 'minExclusive' ) ) otherlv_1= '=' ( (lv_value_2_0= ruleInteger ) ) ) | ( ( (lv_key_3_0= 'minInclusive' ) ) otherlv_4= 'minInclusive' otherlv_5= '=' ( (lv_value_6_0= ruleInteger ) ) ) | ( ( (lv_key_7_0= 'maxExclusive' ) ) otherlv_8= '=' ( (lv_value_9_0= ruleInteger ) ) ) | ( ( (lv_key_10_0= 'maxInclusive' ) ) otherlv_11= '=' ( (lv_value_12_0= ruleInteger ) ) ) | ( ( (lv_key_13_0= 'totalDigits' ) ) otherlv_14= '=' ( (lv_value_15_0= rulePositiveInteger ) ) ) | ( ( (lv_key_16_0= 'fractionDigits' ) ) otherlv_17= '=' ( (lv_value_18_0= rulePositiveInteger ) ) ) | ( ( (lv_key_19_0= 'length' ) ) otherlv_20= '=' ( (lv_value_21_0= rulePositiveInteger ) ) ) | ( ( (lv_key_22_0= 'minLength' ) ) otherlv_23= '=' ( (lv_value_24_0= rulePositiveInteger ) ) ) | ( ( (lv_key_25_0= 'maxLength' ) ) otherlv_26= '=' ( (lv_value_27_0= rulePositiveInteger ) ) ) | ( ( (lv_key_28_0= 'whiteSpace' ) ) otherlv_29= '=' ( (lv_value_30_0= rulePositiveInteger ) ) ) | ( ( (lv_key_31_0= 'pattern' ) ) otherlv_32= '=' ( (lv_value_33_0= RULE_STRING ) ) ) )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1114:28: ( ( ( ( (lv_key_0_0= 'minExclusive' ) ) otherlv_1= '=' ( (lv_value_2_0= ruleInteger ) ) ) | ( ( (lv_key_3_0= 'minInclusive' ) ) otherlv_4= 'minInclusive' otherlv_5= '=' ( (lv_value_6_0= ruleInteger ) ) ) | ( ( (lv_key_7_0= 'maxExclusive' ) ) otherlv_8= '=' ( (lv_value_9_0= ruleInteger ) ) ) | ( ( (lv_key_10_0= 'maxInclusive' ) ) otherlv_11= '=' ( (lv_value_12_0= ruleInteger ) ) ) | ( ( (lv_key_13_0= 'totalDigits' ) ) otherlv_14= '=' ( (lv_value_15_0= rulePositiveInteger ) ) ) | ( ( (lv_key_16_0= 'fractionDigits' ) ) otherlv_17= '=' ( (lv_value_18_0= rulePositiveInteger ) ) ) | ( ( (lv_key_19_0= 'length' ) ) otherlv_20= '=' ( (lv_value_21_0= rulePositiveInteger ) ) ) | ( ( (lv_key_22_0= 'minLength' ) ) otherlv_23= '=' ( (lv_value_24_0= rulePositiveInteger ) ) ) | ( ( (lv_key_25_0= 'maxLength' ) ) otherlv_26= '=' ( (lv_value_27_0= rulePositiveInteger ) ) ) | ( ( (lv_key_28_0= 'whiteSpace' ) ) otherlv_29= '=' ( (lv_value_30_0= rulePositiveInteger ) ) ) | ( ( (lv_key_31_0= 'pattern' ) ) otherlv_32= '=' ( (lv_value_33_0= RULE_STRING ) ) ) ) )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1115:1: ( ( ( (lv_key_0_0= 'minExclusive' ) ) otherlv_1= '=' ( (lv_value_2_0= ruleInteger ) ) ) | ( ( (lv_key_3_0= 'minInclusive' ) ) otherlv_4= 'minInclusive' otherlv_5= '=' ( (lv_value_6_0= ruleInteger ) ) ) | ( ( (lv_key_7_0= 'maxExclusive' ) ) otherlv_8= '=' ( (lv_value_9_0= ruleInteger ) ) ) | ( ( (lv_key_10_0= 'maxInclusive' ) ) otherlv_11= '=' ( (lv_value_12_0= ruleInteger ) ) ) | ( ( (lv_key_13_0= 'totalDigits' ) ) otherlv_14= '=' ( (lv_value_15_0= rulePositiveInteger ) ) ) | ( ( (lv_key_16_0= 'fractionDigits' ) ) otherlv_17= '=' ( (lv_value_18_0= rulePositiveInteger ) ) ) | ( ( (lv_key_19_0= 'length' ) ) otherlv_20= '=' ( (lv_value_21_0= rulePositiveInteger ) ) ) | ( ( (lv_key_22_0= 'minLength' ) ) otherlv_23= '=' ( (lv_value_24_0= rulePositiveInteger ) ) ) | ( ( (lv_key_25_0= 'maxLength' ) ) otherlv_26= '=' ( (lv_value_27_0= rulePositiveInteger ) ) ) | ( ( (lv_key_28_0= 'whiteSpace' ) ) otherlv_29= '=' ( (lv_value_30_0= rulePositiveInteger ) ) ) | ( ( (lv_key_31_0= 'pattern' ) ) otherlv_32= '=' ( (lv_value_33_0= RULE_STRING ) ) ) )
             {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1117:1: ( ( ( (lv_key_0_0= 'minExclusive' ) ) otherlv_1= '=' ( (lv_value_2_0= ruleInteger ) ) ) | ( ( (lv_key_3_0= 'minInclusive' ) ) otherlv_4= 'minInclusive' otherlv_5= '=' ( (lv_value_6_0= ruleInteger ) ) ) | ( ( (lv_key_7_0= 'maxExclusive' ) ) otherlv_8= '=' ( (lv_value_9_0= ruleInteger ) ) ) | ( ( (lv_key_10_0= 'maxInclusive' ) ) otherlv_11= '=' ( (lv_value_12_0= ruleInteger ) ) ) | ( ( (lv_key_13_0= 'totalDigits' ) ) otherlv_14= '=' ( (lv_value_15_0= rulePositiveInteger ) ) ) | ( ( (lv_key_16_0= 'fractionDigits' ) ) otherlv_17= '=' ( (lv_value_18_0= rulePositiveInteger ) ) ) | ( ( (lv_key_19_0= 'length' ) ) otherlv_20= '=' ( (lv_value_21_0= rulePositiveInteger ) ) ) | ( ( (lv_key_22_0= 'minLength' ) ) otherlv_23= '=' ( (lv_value_24_0= rulePositiveInteger ) ) ) | ( ( (lv_key_25_0= 'maxLength' ) ) otherlv_26= '=' ( (lv_value_27_0= rulePositiveInteger ) ) ) | ( ( (lv_key_28_0= 'whiteSpace' ) ) otherlv_29= '=' ( (lv_value_30_0= rulePositiveInteger ) ) ) | ( ( (lv_key_31_0= 'pattern' ) ) otherlv_32= '=' ( (lv_value_33_0= RULE_STRING ) ) ) )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1115:1: ( ( ( (lv_key_0_0= 'minExclusive' ) ) otherlv_1= '=' ( (lv_value_2_0= ruleInteger ) ) ) | ( ( (lv_key_3_0= 'minInclusive' ) ) otherlv_4= 'minInclusive' otherlv_5= '=' ( (lv_value_6_0= ruleInteger ) ) ) | ( ( (lv_key_7_0= 'maxExclusive' ) ) otherlv_8= '=' ( (lv_value_9_0= ruleInteger ) ) ) | ( ( (lv_key_10_0= 'maxInclusive' ) ) otherlv_11= '=' ( (lv_value_12_0= ruleInteger ) ) ) | ( ( (lv_key_13_0= 'totalDigits' ) ) otherlv_14= '=' ( (lv_value_15_0= rulePositiveInteger ) ) ) | ( ( (lv_key_16_0= 'fractionDigits' ) ) otherlv_17= '=' ( (lv_value_18_0= rulePositiveInteger ) ) ) | ( ( (lv_key_19_0= 'length' ) ) otherlv_20= '=' ( (lv_value_21_0= rulePositiveInteger ) ) ) | ( ( (lv_key_22_0= 'minLength' ) ) otherlv_23= '=' ( (lv_value_24_0= rulePositiveInteger ) ) ) | ( ( (lv_key_25_0= 'maxLength' ) ) otherlv_26= '=' ( (lv_value_27_0= rulePositiveInteger ) ) ) | ( ( (lv_key_28_0= 'whiteSpace' ) ) otherlv_29= '=' ( (lv_value_30_0= rulePositiveInteger ) ) ) | ( ( (lv_key_31_0= 'pattern' ) ) otherlv_32= '=' ( (lv_value_33_0= RULE_STRING ) ) ) )
             int alt28=11;
             switch ( input.LA(1) ) {
             case 36:
@@ -2818,18 +2800,18 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
             switch (alt28) {
                 case 1 :
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1117:2: ( ( (lv_key_0_0= 'minExclusive' ) ) otherlv_1= '=' ( (lv_value_2_0= ruleInteger ) ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1115:2: ( ( (lv_key_0_0= 'minExclusive' ) ) otherlv_1= '=' ( (lv_value_2_0= ruleInteger ) ) )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1117:2: ( ( (lv_key_0_0= 'minExclusive' ) ) otherlv_1= '=' ( (lv_value_2_0= ruleInteger ) ) )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1117:3: ( (lv_key_0_0= 'minExclusive' ) ) otherlv_1= '=' ( (lv_value_2_0= ruleInteger ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1115:2: ( ( (lv_key_0_0= 'minExclusive' ) ) otherlv_1= '=' ( (lv_value_2_0= ruleInteger ) ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1115:3: ( (lv_key_0_0= 'minExclusive' ) ) otherlv_1= '=' ( (lv_value_2_0= ruleInteger ) )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1117:3: ( (lv_key_0_0= 'minExclusive' ) )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1118:1: (lv_key_0_0= 'minExclusive' )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1115:3: ( (lv_key_0_0= 'minExclusive' ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1116:1: (lv_key_0_0= 'minExclusive' )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1118:1: (lv_key_0_0= 'minExclusive' )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1119:3: lv_key_0_0= 'minExclusive'
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1116:1: (lv_key_0_0= 'minExclusive' )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1117:3: lv_key_0_0= 'minExclusive'
                     {
-                    lv_key_0_0=(Token)match(input,36,FollowSets000.FOLLOW_36_in_ruleDataTypeAnnotation2263); 
+                    lv_key_0_0=(Token)match(input,36,FollowSets000.FOLLOW_36_in_ruleDataTypeAnnotation2262); 
 
                             newLeafNode(lv_key_0_0, grammarAccess.getDataTypeAnnotationAccess().getKeyMinExclusiveKeyword_0_0_0());
                         
@@ -2845,20 +2827,20 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_1=(Token)match(input,29,FollowSets000.FOLLOW_29_in_ruleDataTypeAnnotation2288); 
+                    otherlv_1=(Token)match(input,29,FollowSets000.FOLLOW_29_in_ruleDataTypeAnnotation2287); 
 
                         	newLeafNode(otherlv_1, grammarAccess.getDataTypeAnnotationAccess().getEqualsSignKeyword_0_1());
                         
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1136:1: ( (lv_value_2_0= ruleInteger ) )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1137:1: (lv_value_2_0= ruleInteger )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1134:1: ( (lv_value_2_0= ruleInteger ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1135:1: (lv_value_2_0= ruleInteger )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1137:1: (lv_value_2_0= ruleInteger )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1138:3: lv_value_2_0= ruleInteger
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1135:1: (lv_value_2_0= ruleInteger )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1136:3: lv_value_2_0= ruleInteger
                     {
                      
                     	        newCompositeNode(grammarAccess.getDataTypeAnnotationAccess().getValueIntegerParserRuleCall_0_2_0()); 
                     	    
-                    pushFollow(FollowSets000.FOLLOW_ruleInteger_in_ruleDataTypeAnnotation2309);
+                    pushFollow(FollowSets000.FOLLOW_ruleInteger_in_ruleDataTypeAnnotation2308);
                     lv_value_2_0=ruleInteger();
 
                     state._fsp--;
@@ -2887,18 +2869,18 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1155:6: ( ( (lv_key_3_0= 'minInclusive' ) ) otherlv_4= 'minInclusive' otherlv_5= '=' ( (lv_value_6_0= ruleInteger ) ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1153:6: ( ( (lv_key_3_0= 'minInclusive' ) ) otherlv_4= 'minInclusive' otherlv_5= '=' ( (lv_value_6_0= ruleInteger ) ) )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1155:6: ( ( (lv_key_3_0= 'minInclusive' ) ) otherlv_4= 'minInclusive' otherlv_5= '=' ( (lv_value_6_0= ruleInteger ) ) )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1155:7: ( (lv_key_3_0= 'minInclusive' ) ) otherlv_4= 'minInclusive' otherlv_5= '=' ( (lv_value_6_0= ruleInteger ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1153:6: ( ( (lv_key_3_0= 'minInclusive' ) ) otherlv_4= 'minInclusive' otherlv_5= '=' ( (lv_value_6_0= ruleInteger ) ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1153:7: ( (lv_key_3_0= 'minInclusive' ) ) otherlv_4= 'minInclusive' otherlv_5= '=' ( (lv_value_6_0= ruleInteger ) )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1155:7: ( (lv_key_3_0= 'minInclusive' ) )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1156:1: (lv_key_3_0= 'minInclusive' )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1153:7: ( (lv_key_3_0= 'minInclusive' ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1154:1: (lv_key_3_0= 'minInclusive' )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1156:1: (lv_key_3_0= 'minInclusive' )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1157:3: lv_key_3_0= 'minInclusive'
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1154:1: (lv_key_3_0= 'minInclusive' )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1155:3: lv_key_3_0= 'minInclusive'
                     {
-                    lv_key_3_0=(Token)match(input,37,FollowSets000.FOLLOW_37_in_ruleDataTypeAnnotation2335); 
+                    lv_key_3_0=(Token)match(input,37,FollowSets000.FOLLOW_37_in_ruleDataTypeAnnotation2334); 
 
                             newLeafNode(lv_key_3_0, grammarAccess.getDataTypeAnnotationAccess().getKeyMinInclusiveKeyword_1_0_0());
                         
@@ -2914,24 +2896,24 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_4=(Token)match(input,37,FollowSets000.FOLLOW_37_in_ruleDataTypeAnnotation2360); 
+                    otherlv_4=(Token)match(input,37,FollowSets000.FOLLOW_37_in_ruleDataTypeAnnotation2359); 
 
                         	newLeafNode(otherlv_4, grammarAccess.getDataTypeAnnotationAccess().getMinInclusiveKeyword_1_1());
                         
-                    otherlv_5=(Token)match(input,29,FollowSets000.FOLLOW_29_in_ruleDataTypeAnnotation2372); 
+                    otherlv_5=(Token)match(input,29,FollowSets000.FOLLOW_29_in_ruleDataTypeAnnotation2371); 
 
                         	newLeafNode(otherlv_5, grammarAccess.getDataTypeAnnotationAccess().getEqualsSignKeyword_1_2());
                         
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1178:1: ( (lv_value_6_0= ruleInteger ) )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1179:1: (lv_value_6_0= ruleInteger )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1176:1: ( (lv_value_6_0= ruleInteger ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1177:1: (lv_value_6_0= ruleInteger )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1179:1: (lv_value_6_0= ruleInteger )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1180:3: lv_value_6_0= ruleInteger
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1177:1: (lv_value_6_0= ruleInteger )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1178:3: lv_value_6_0= ruleInteger
                     {
                      
                     	        newCompositeNode(grammarAccess.getDataTypeAnnotationAccess().getValueIntegerParserRuleCall_1_3_0()); 
                     	    
-                    pushFollow(FollowSets000.FOLLOW_ruleInteger_in_ruleDataTypeAnnotation2393);
+                    pushFollow(FollowSets000.FOLLOW_ruleInteger_in_ruleDataTypeAnnotation2392);
                     lv_value_6_0=ruleInteger();
 
                     state._fsp--;
@@ -2960,18 +2942,18 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1197:6: ( ( (lv_key_7_0= 'maxExclusive' ) ) otherlv_8= '=' ( (lv_value_9_0= ruleInteger ) ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1195:6: ( ( (lv_key_7_0= 'maxExclusive' ) ) otherlv_8= '=' ( (lv_value_9_0= ruleInteger ) ) )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1197:6: ( ( (lv_key_7_0= 'maxExclusive' ) ) otherlv_8= '=' ( (lv_value_9_0= ruleInteger ) ) )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1197:7: ( (lv_key_7_0= 'maxExclusive' ) ) otherlv_8= '=' ( (lv_value_9_0= ruleInteger ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1195:6: ( ( (lv_key_7_0= 'maxExclusive' ) ) otherlv_8= '=' ( (lv_value_9_0= ruleInteger ) ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1195:7: ( (lv_key_7_0= 'maxExclusive' ) ) otherlv_8= '=' ( (lv_value_9_0= ruleInteger ) )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1197:7: ( (lv_key_7_0= 'maxExclusive' ) )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1198:1: (lv_key_7_0= 'maxExclusive' )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1195:7: ( (lv_key_7_0= 'maxExclusive' ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1196:1: (lv_key_7_0= 'maxExclusive' )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1198:1: (lv_key_7_0= 'maxExclusive' )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1199:3: lv_key_7_0= 'maxExclusive'
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1196:1: (lv_key_7_0= 'maxExclusive' )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1197:3: lv_key_7_0= 'maxExclusive'
                     {
-                    lv_key_7_0=(Token)match(input,38,FollowSets000.FOLLOW_38_in_ruleDataTypeAnnotation2419); 
+                    lv_key_7_0=(Token)match(input,38,FollowSets000.FOLLOW_38_in_ruleDataTypeAnnotation2418); 
 
                             newLeafNode(lv_key_7_0, grammarAccess.getDataTypeAnnotationAccess().getKeyMaxExclusiveKeyword_2_0_0());
                         
@@ -2987,20 +2969,20 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_8=(Token)match(input,29,FollowSets000.FOLLOW_29_in_ruleDataTypeAnnotation2444); 
+                    otherlv_8=(Token)match(input,29,FollowSets000.FOLLOW_29_in_ruleDataTypeAnnotation2443); 
 
                         	newLeafNode(otherlv_8, grammarAccess.getDataTypeAnnotationAccess().getEqualsSignKeyword_2_1());
                         
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1216:1: ( (lv_value_9_0= ruleInteger ) )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1217:1: (lv_value_9_0= ruleInteger )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1214:1: ( (lv_value_9_0= ruleInteger ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1215:1: (lv_value_9_0= ruleInteger )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1217:1: (lv_value_9_0= ruleInteger )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1218:3: lv_value_9_0= ruleInteger
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1215:1: (lv_value_9_0= ruleInteger )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1216:3: lv_value_9_0= ruleInteger
                     {
                      
                     	        newCompositeNode(grammarAccess.getDataTypeAnnotationAccess().getValueIntegerParserRuleCall_2_2_0()); 
                     	    
-                    pushFollow(FollowSets000.FOLLOW_ruleInteger_in_ruleDataTypeAnnotation2465);
+                    pushFollow(FollowSets000.FOLLOW_ruleInteger_in_ruleDataTypeAnnotation2464);
                     lv_value_9_0=ruleInteger();
 
                     state._fsp--;
@@ -3029,18 +3011,18 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1235:6: ( ( (lv_key_10_0= 'maxInclusive' ) ) otherlv_11= '=' ( (lv_value_12_0= ruleInteger ) ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1233:6: ( ( (lv_key_10_0= 'maxInclusive' ) ) otherlv_11= '=' ( (lv_value_12_0= ruleInteger ) ) )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1235:6: ( ( (lv_key_10_0= 'maxInclusive' ) ) otherlv_11= '=' ( (lv_value_12_0= ruleInteger ) ) )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1235:7: ( (lv_key_10_0= 'maxInclusive' ) ) otherlv_11= '=' ( (lv_value_12_0= ruleInteger ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1233:6: ( ( (lv_key_10_0= 'maxInclusive' ) ) otherlv_11= '=' ( (lv_value_12_0= ruleInteger ) ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1233:7: ( (lv_key_10_0= 'maxInclusive' ) ) otherlv_11= '=' ( (lv_value_12_0= ruleInteger ) )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1235:7: ( (lv_key_10_0= 'maxInclusive' ) )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1236:1: (lv_key_10_0= 'maxInclusive' )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1233:7: ( (lv_key_10_0= 'maxInclusive' ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1234:1: (lv_key_10_0= 'maxInclusive' )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1236:1: (lv_key_10_0= 'maxInclusive' )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1237:3: lv_key_10_0= 'maxInclusive'
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1234:1: (lv_key_10_0= 'maxInclusive' )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1235:3: lv_key_10_0= 'maxInclusive'
                     {
-                    lv_key_10_0=(Token)match(input,39,FollowSets000.FOLLOW_39_in_ruleDataTypeAnnotation2491); 
+                    lv_key_10_0=(Token)match(input,39,FollowSets000.FOLLOW_39_in_ruleDataTypeAnnotation2490); 
 
                             newLeafNode(lv_key_10_0, grammarAccess.getDataTypeAnnotationAccess().getKeyMaxInclusiveKeyword_3_0_0());
                         
@@ -3056,20 +3038,20 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_11=(Token)match(input,29,FollowSets000.FOLLOW_29_in_ruleDataTypeAnnotation2516); 
+                    otherlv_11=(Token)match(input,29,FollowSets000.FOLLOW_29_in_ruleDataTypeAnnotation2515); 
 
                         	newLeafNode(otherlv_11, grammarAccess.getDataTypeAnnotationAccess().getEqualsSignKeyword_3_1());
                         
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1254:1: ( (lv_value_12_0= ruleInteger ) )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1255:1: (lv_value_12_0= ruleInteger )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1252:1: ( (lv_value_12_0= ruleInteger ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1253:1: (lv_value_12_0= ruleInteger )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1255:1: (lv_value_12_0= ruleInteger )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1256:3: lv_value_12_0= ruleInteger
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1253:1: (lv_value_12_0= ruleInteger )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1254:3: lv_value_12_0= ruleInteger
                     {
                      
                     	        newCompositeNode(grammarAccess.getDataTypeAnnotationAccess().getValueIntegerParserRuleCall_3_2_0()); 
                     	    
-                    pushFollow(FollowSets000.FOLLOW_ruleInteger_in_ruleDataTypeAnnotation2537);
+                    pushFollow(FollowSets000.FOLLOW_ruleInteger_in_ruleDataTypeAnnotation2536);
                     lv_value_12_0=ruleInteger();
 
                     state._fsp--;
@@ -3098,18 +3080,18 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1273:6: ( ( (lv_key_13_0= 'totalDigits' ) ) otherlv_14= '=' ( (lv_value_15_0= rulePositiveInteger ) ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1271:6: ( ( (lv_key_13_0= 'totalDigits' ) ) otherlv_14= '=' ( (lv_value_15_0= rulePositiveInteger ) ) )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1273:6: ( ( (lv_key_13_0= 'totalDigits' ) ) otherlv_14= '=' ( (lv_value_15_0= rulePositiveInteger ) ) )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1273:7: ( (lv_key_13_0= 'totalDigits' ) ) otherlv_14= '=' ( (lv_value_15_0= rulePositiveInteger ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1271:6: ( ( (lv_key_13_0= 'totalDigits' ) ) otherlv_14= '=' ( (lv_value_15_0= rulePositiveInteger ) ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1271:7: ( (lv_key_13_0= 'totalDigits' ) ) otherlv_14= '=' ( (lv_value_15_0= rulePositiveInteger ) )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1273:7: ( (lv_key_13_0= 'totalDigits' ) )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1274:1: (lv_key_13_0= 'totalDigits' )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1271:7: ( (lv_key_13_0= 'totalDigits' ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1272:1: (lv_key_13_0= 'totalDigits' )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1274:1: (lv_key_13_0= 'totalDigits' )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1275:3: lv_key_13_0= 'totalDigits'
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1272:1: (lv_key_13_0= 'totalDigits' )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1273:3: lv_key_13_0= 'totalDigits'
                     {
-                    lv_key_13_0=(Token)match(input,40,FollowSets000.FOLLOW_40_in_ruleDataTypeAnnotation2563); 
+                    lv_key_13_0=(Token)match(input,40,FollowSets000.FOLLOW_40_in_ruleDataTypeAnnotation2562); 
 
                             newLeafNode(lv_key_13_0, grammarAccess.getDataTypeAnnotationAccess().getKeyTotalDigitsKeyword_4_0_0());
                         
@@ -3125,20 +3107,20 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_14=(Token)match(input,29,FollowSets000.FOLLOW_29_in_ruleDataTypeAnnotation2588); 
+                    otherlv_14=(Token)match(input,29,FollowSets000.FOLLOW_29_in_ruleDataTypeAnnotation2587); 
 
                         	newLeafNode(otherlv_14, grammarAccess.getDataTypeAnnotationAccess().getEqualsSignKeyword_4_1());
                         
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1292:1: ( (lv_value_15_0= rulePositiveInteger ) )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1293:1: (lv_value_15_0= rulePositiveInteger )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1290:1: ( (lv_value_15_0= rulePositiveInteger ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1291:1: (lv_value_15_0= rulePositiveInteger )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1293:1: (lv_value_15_0= rulePositiveInteger )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1294:3: lv_value_15_0= rulePositiveInteger
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1291:1: (lv_value_15_0= rulePositiveInteger )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1292:3: lv_value_15_0= rulePositiveInteger
                     {
                      
                     	        newCompositeNode(grammarAccess.getDataTypeAnnotationAccess().getValuePositiveIntegerParserRuleCall_4_2_0()); 
                     	    
-                    pushFollow(FollowSets000.FOLLOW_rulePositiveInteger_in_ruleDataTypeAnnotation2609);
+                    pushFollow(FollowSets000.FOLLOW_rulePositiveInteger_in_ruleDataTypeAnnotation2608);
                     lv_value_15_0=rulePositiveInteger();
 
                     state._fsp--;
@@ -3167,18 +3149,18 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 6 :
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1311:6: ( ( (lv_key_16_0= 'fractionDigits' ) ) otherlv_17= '=' ( (lv_value_18_0= rulePositiveInteger ) ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1309:6: ( ( (lv_key_16_0= 'fractionDigits' ) ) otherlv_17= '=' ( (lv_value_18_0= rulePositiveInteger ) ) )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1311:6: ( ( (lv_key_16_0= 'fractionDigits' ) ) otherlv_17= '=' ( (lv_value_18_0= rulePositiveInteger ) ) )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1311:7: ( (lv_key_16_0= 'fractionDigits' ) ) otherlv_17= '=' ( (lv_value_18_0= rulePositiveInteger ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1309:6: ( ( (lv_key_16_0= 'fractionDigits' ) ) otherlv_17= '=' ( (lv_value_18_0= rulePositiveInteger ) ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1309:7: ( (lv_key_16_0= 'fractionDigits' ) ) otherlv_17= '=' ( (lv_value_18_0= rulePositiveInteger ) )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1311:7: ( (lv_key_16_0= 'fractionDigits' ) )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1312:1: (lv_key_16_0= 'fractionDigits' )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1309:7: ( (lv_key_16_0= 'fractionDigits' ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1310:1: (lv_key_16_0= 'fractionDigits' )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1312:1: (lv_key_16_0= 'fractionDigits' )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1313:3: lv_key_16_0= 'fractionDigits'
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1310:1: (lv_key_16_0= 'fractionDigits' )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1311:3: lv_key_16_0= 'fractionDigits'
                     {
-                    lv_key_16_0=(Token)match(input,41,FollowSets000.FOLLOW_41_in_ruleDataTypeAnnotation2635); 
+                    lv_key_16_0=(Token)match(input,41,FollowSets000.FOLLOW_41_in_ruleDataTypeAnnotation2634); 
 
                             newLeafNode(lv_key_16_0, grammarAccess.getDataTypeAnnotationAccess().getKeyFractionDigitsKeyword_5_0_0());
                         
@@ -3194,20 +3176,20 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_17=(Token)match(input,29,FollowSets000.FOLLOW_29_in_ruleDataTypeAnnotation2660); 
+                    otherlv_17=(Token)match(input,29,FollowSets000.FOLLOW_29_in_ruleDataTypeAnnotation2659); 
 
                         	newLeafNode(otherlv_17, grammarAccess.getDataTypeAnnotationAccess().getEqualsSignKeyword_5_1());
                         
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1330:1: ( (lv_value_18_0= rulePositiveInteger ) )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1331:1: (lv_value_18_0= rulePositiveInteger )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1328:1: ( (lv_value_18_0= rulePositiveInteger ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1329:1: (lv_value_18_0= rulePositiveInteger )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1331:1: (lv_value_18_0= rulePositiveInteger )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1332:3: lv_value_18_0= rulePositiveInteger
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1329:1: (lv_value_18_0= rulePositiveInteger )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1330:3: lv_value_18_0= rulePositiveInteger
                     {
                      
                     	        newCompositeNode(grammarAccess.getDataTypeAnnotationAccess().getValuePositiveIntegerParserRuleCall_5_2_0()); 
                     	    
-                    pushFollow(FollowSets000.FOLLOW_rulePositiveInteger_in_ruleDataTypeAnnotation2681);
+                    pushFollow(FollowSets000.FOLLOW_rulePositiveInteger_in_ruleDataTypeAnnotation2680);
                     lv_value_18_0=rulePositiveInteger();
 
                     state._fsp--;
@@ -3236,18 +3218,18 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 7 :
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1349:6: ( ( (lv_key_19_0= 'length' ) ) otherlv_20= '=' ( (lv_value_21_0= rulePositiveInteger ) ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1347:6: ( ( (lv_key_19_0= 'length' ) ) otherlv_20= '=' ( (lv_value_21_0= rulePositiveInteger ) ) )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1349:6: ( ( (lv_key_19_0= 'length' ) ) otherlv_20= '=' ( (lv_value_21_0= rulePositiveInteger ) ) )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1349:7: ( (lv_key_19_0= 'length' ) ) otherlv_20= '=' ( (lv_value_21_0= rulePositiveInteger ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1347:6: ( ( (lv_key_19_0= 'length' ) ) otherlv_20= '=' ( (lv_value_21_0= rulePositiveInteger ) ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1347:7: ( (lv_key_19_0= 'length' ) ) otherlv_20= '=' ( (lv_value_21_0= rulePositiveInteger ) )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1349:7: ( (lv_key_19_0= 'length' ) )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1350:1: (lv_key_19_0= 'length' )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1347:7: ( (lv_key_19_0= 'length' ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1348:1: (lv_key_19_0= 'length' )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1350:1: (lv_key_19_0= 'length' )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1351:3: lv_key_19_0= 'length'
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1348:1: (lv_key_19_0= 'length' )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1349:3: lv_key_19_0= 'length'
                     {
-                    lv_key_19_0=(Token)match(input,42,FollowSets000.FOLLOW_42_in_ruleDataTypeAnnotation2707); 
+                    lv_key_19_0=(Token)match(input,42,FollowSets000.FOLLOW_42_in_ruleDataTypeAnnotation2706); 
 
                             newLeafNode(lv_key_19_0, grammarAccess.getDataTypeAnnotationAccess().getKeyLengthKeyword_6_0_0());
                         
@@ -3263,20 +3245,20 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_20=(Token)match(input,29,FollowSets000.FOLLOW_29_in_ruleDataTypeAnnotation2732); 
+                    otherlv_20=(Token)match(input,29,FollowSets000.FOLLOW_29_in_ruleDataTypeAnnotation2731); 
 
                         	newLeafNode(otherlv_20, grammarAccess.getDataTypeAnnotationAccess().getEqualsSignKeyword_6_1());
                         
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1368:1: ( (lv_value_21_0= rulePositiveInteger ) )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1369:1: (lv_value_21_0= rulePositiveInteger )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1366:1: ( (lv_value_21_0= rulePositiveInteger ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1367:1: (lv_value_21_0= rulePositiveInteger )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1369:1: (lv_value_21_0= rulePositiveInteger )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1370:3: lv_value_21_0= rulePositiveInteger
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1367:1: (lv_value_21_0= rulePositiveInteger )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1368:3: lv_value_21_0= rulePositiveInteger
                     {
                      
                     	        newCompositeNode(grammarAccess.getDataTypeAnnotationAccess().getValuePositiveIntegerParserRuleCall_6_2_0()); 
                     	    
-                    pushFollow(FollowSets000.FOLLOW_rulePositiveInteger_in_ruleDataTypeAnnotation2753);
+                    pushFollow(FollowSets000.FOLLOW_rulePositiveInteger_in_ruleDataTypeAnnotation2752);
                     lv_value_21_0=rulePositiveInteger();
 
                     state._fsp--;
@@ -3305,18 +3287,18 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 8 :
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1387:6: ( ( (lv_key_22_0= 'minLength' ) ) otherlv_23= '=' ( (lv_value_24_0= rulePositiveInteger ) ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1385:6: ( ( (lv_key_22_0= 'minLength' ) ) otherlv_23= '=' ( (lv_value_24_0= rulePositiveInteger ) ) )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1387:6: ( ( (lv_key_22_0= 'minLength' ) ) otherlv_23= '=' ( (lv_value_24_0= rulePositiveInteger ) ) )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1387:7: ( (lv_key_22_0= 'minLength' ) ) otherlv_23= '=' ( (lv_value_24_0= rulePositiveInteger ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1385:6: ( ( (lv_key_22_0= 'minLength' ) ) otherlv_23= '=' ( (lv_value_24_0= rulePositiveInteger ) ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1385:7: ( (lv_key_22_0= 'minLength' ) ) otherlv_23= '=' ( (lv_value_24_0= rulePositiveInteger ) )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1387:7: ( (lv_key_22_0= 'minLength' ) )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1388:1: (lv_key_22_0= 'minLength' )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1385:7: ( (lv_key_22_0= 'minLength' ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1386:1: (lv_key_22_0= 'minLength' )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1388:1: (lv_key_22_0= 'minLength' )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1389:3: lv_key_22_0= 'minLength'
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1386:1: (lv_key_22_0= 'minLength' )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1387:3: lv_key_22_0= 'minLength'
                     {
-                    lv_key_22_0=(Token)match(input,43,FollowSets000.FOLLOW_43_in_ruleDataTypeAnnotation2779); 
+                    lv_key_22_0=(Token)match(input,43,FollowSets000.FOLLOW_43_in_ruleDataTypeAnnotation2778); 
 
                             newLeafNode(lv_key_22_0, grammarAccess.getDataTypeAnnotationAccess().getKeyMinLengthKeyword_7_0_0());
                         
@@ -3332,20 +3314,20 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_23=(Token)match(input,29,FollowSets000.FOLLOW_29_in_ruleDataTypeAnnotation2804); 
+                    otherlv_23=(Token)match(input,29,FollowSets000.FOLLOW_29_in_ruleDataTypeAnnotation2803); 
 
                         	newLeafNode(otherlv_23, grammarAccess.getDataTypeAnnotationAccess().getEqualsSignKeyword_7_1());
                         
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1406:1: ( (lv_value_24_0= rulePositiveInteger ) )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1407:1: (lv_value_24_0= rulePositiveInteger )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1404:1: ( (lv_value_24_0= rulePositiveInteger ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1405:1: (lv_value_24_0= rulePositiveInteger )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1407:1: (lv_value_24_0= rulePositiveInteger )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1408:3: lv_value_24_0= rulePositiveInteger
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1405:1: (lv_value_24_0= rulePositiveInteger )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1406:3: lv_value_24_0= rulePositiveInteger
                     {
                      
                     	        newCompositeNode(grammarAccess.getDataTypeAnnotationAccess().getValuePositiveIntegerParserRuleCall_7_2_0()); 
                     	    
-                    pushFollow(FollowSets000.FOLLOW_rulePositiveInteger_in_ruleDataTypeAnnotation2825);
+                    pushFollow(FollowSets000.FOLLOW_rulePositiveInteger_in_ruleDataTypeAnnotation2824);
                     lv_value_24_0=rulePositiveInteger();
 
                     state._fsp--;
@@ -3374,18 +3356,18 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 9 :
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1425:6: ( ( (lv_key_25_0= 'maxLength' ) ) otherlv_26= '=' ( (lv_value_27_0= rulePositiveInteger ) ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1423:6: ( ( (lv_key_25_0= 'maxLength' ) ) otherlv_26= '=' ( (lv_value_27_0= rulePositiveInteger ) ) )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1425:6: ( ( (lv_key_25_0= 'maxLength' ) ) otherlv_26= '=' ( (lv_value_27_0= rulePositiveInteger ) ) )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1425:7: ( (lv_key_25_0= 'maxLength' ) ) otherlv_26= '=' ( (lv_value_27_0= rulePositiveInteger ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1423:6: ( ( (lv_key_25_0= 'maxLength' ) ) otherlv_26= '=' ( (lv_value_27_0= rulePositiveInteger ) ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1423:7: ( (lv_key_25_0= 'maxLength' ) ) otherlv_26= '=' ( (lv_value_27_0= rulePositiveInteger ) )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1425:7: ( (lv_key_25_0= 'maxLength' ) )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1426:1: (lv_key_25_0= 'maxLength' )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1423:7: ( (lv_key_25_0= 'maxLength' ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1424:1: (lv_key_25_0= 'maxLength' )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1426:1: (lv_key_25_0= 'maxLength' )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1427:3: lv_key_25_0= 'maxLength'
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1424:1: (lv_key_25_0= 'maxLength' )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1425:3: lv_key_25_0= 'maxLength'
                     {
-                    lv_key_25_0=(Token)match(input,44,FollowSets000.FOLLOW_44_in_ruleDataTypeAnnotation2851); 
+                    lv_key_25_0=(Token)match(input,44,FollowSets000.FOLLOW_44_in_ruleDataTypeAnnotation2850); 
 
                             newLeafNode(lv_key_25_0, grammarAccess.getDataTypeAnnotationAccess().getKeyMaxLengthKeyword_8_0_0());
                         
@@ -3401,20 +3383,20 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_26=(Token)match(input,29,FollowSets000.FOLLOW_29_in_ruleDataTypeAnnotation2876); 
+                    otherlv_26=(Token)match(input,29,FollowSets000.FOLLOW_29_in_ruleDataTypeAnnotation2875); 
 
                         	newLeafNode(otherlv_26, grammarAccess.getDataTypeAnnotationAccess().getEqualsSignKeyword_8_1());
                         
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1444:1: ( (lv_value_27_0= rulePositiveInteger ) )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1445:1: (lv_value_27_0= rulePositiveInteger )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1442:1: ( (lv_value_27_0= rulePositiveInteger ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1443:1: (lv_value_27_0= rulePositiveInteger )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1445:1: (lv_value_27_0= rulePositiveInteger )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1446:3: lv_value_27_0= rulePositiveInteger
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1443:1: (lv_value_27_0= rulePositiveInteger )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1444:3: lv_value_27_0= rulePositiveInteger
                     {
                      
                     	        newCompositeNode(grammarAccess.getDataTypeAnnotationAccess().getValuePositiveIntegerParserRuleCall_8_2_0()); 
                     	    
-                    pushFollow(FollowSets000.FOLLOW_rulePositiveInteger_in_ruleDataTypeAnnotation2897);
+                    pushFollow(FollowSets000.FOLLOW_rulePositiveInteger_in_ruleDataTypeAnnotation2896);
                     lv_value_27_0=rulePositiveInteger();
 
                     state._fsp--;
@@ -3443,18 +3425,18 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 10 :
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1463:6: ( ( (lv_key_28_0= 'whiteSpace' ) ) otherlv_29= '=' ( (lv_value_30_0= rulePositiveInteger ) ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1461:6: ( ( (lv_key_28_0= 'whiteSpace' ) ) otherlv_29= '=' ( (lv_value_30_0= rulePositiveInteger ) ) )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1463:6: ( ( (lv_key_28_0= 'whiteSpace' ) ) otherlv_29= '=' ( (lv_value_30_0= rulePositiveInteger ) ) )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1463:7: ( (lv_key_28_0= 'whiteSpace' ) ) otherlv_29= '=' ( (lv_value_30_0= rulePositiveInteger ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1461:6: ( ( (lv_key_28_0= 'whiteSpace' ) ) otherlv_29= '=' ( (lv_value_30_0= rulePositiveInteger ) ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1461:7: ( (lv_key_28_0= 'whiteSpace' ) ) otherlv_29= '=' ( (lv_value_30_0= rulePositiveInteger ) )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1463:7: ( (lv_key_28_0= 'whiteSpace' ) )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1464:1: (lv_key_28_0= 'whiteSpace' )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1461:7: ( (lv_key_28_0= 'whiteSpace' ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1462:1: (lv_key_28_0= 'whiteSpace' )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1464:1: (lv_key_28_0= 'whiteSpace' )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1465:3: lv_key_28_0= 'whiteSpace'
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1462:1: (lv_key_28_0= 'whiteSpace' )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1463:3: lv_key_28_0= 'whiteSpace'
                     {
-                    lv_key_28_0=(Token)match(input,45,FollowSets000.FOLLOW_45_in_ruleDataTypeAnnotation2923); 
+                    lv_key_28_0=(Token)match(input,45,FollowSets000.FOLLOW_45_in_ruleDataTypeAnnotation2922); 
 
                             newLeafNode(lv_key_28_0, grammarAccess.getDataTypeAnnotationAccess().getKeyWhiteSpaceKeyword_9_0_0());
                         
@@ -3470,20 +3452,20 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_29=(Token)match(input,29,FollowSets000.FOLLOW_29_in_ruleDataTypeAnnotation2948); 
+                    otherlv_29=(Token)match(input,29,FollowSets000.FOLLOW_29_in_ruleDataTypeAnnotation2947); 
 
                         	newLeafNode(otherlv_29, grammarAccess.getDataTypeAnnotationAccess().getEqualsSignKeyword_9_1());
                         
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1482:1: ( (lv_value_30_0= rulePositiveInteger ) )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1483:1: (lv_value_30_0= rulePositiveInteger )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1480:1: ( (lv_value_30_0= rulePositiveInteger ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1481:1: (lv_value_30_0= rulePositiveInteger )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1483:1: (lv_value_30_0= rulePositiveInteger )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1484:3: lv_value_30_0= rulePositiveInteger
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1481:1: (lv_value_30_0= rulePositiveInteger )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1482:3: lv_value_30_0= rulePositiveInteger
                     {
                      
                     	        newCompositeNode(grammarAccess.getDataTypeAnnotationAccess().getValuePositiveIntegerParserRuleCall_9_2_0()); 
                     	    
-                    pushFollow(FollowSets000.FOLLOW_rulePositiveInteger_in_ruleDataTypeAnnotation2969);
+                    pushFollow(FollowSets000.FOLLOW_rulePositiveInteger_in_ruleDataTypeAnnotation2968);
                     lv_value_30_0=rulePositiveInteger();
 
                     state._fsp--;
@@ -3512,18 +3494,18 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 11 :
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1501:6: ( ( (lv_key_31_0= 'pattern' ) ) otherlv_32= '=' ( (lv_value_33_0= RULE_STRING ) ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1499:6: ( ( (lv_key_31_0= 'pattern' ) ) otherlv_32= '=' ( (lv_value_33_0= RULE_STRING ) ) )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1501:6: ( ( (lv_key_31_0= 'pattern' ) ) otherlv_32= '=' ( (lv_value_33_0= RULE_STRING ) ) )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1501:7: ( (lv_key_31_0= 'pattern' ) ) otherlv_32= '=' ( (lv_value_33_0= RULE_STRING ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1499:6: ( ( (lv_key_31_0= 'pattern' ) ) otherlv_32= '=' ( (lv_value_33_0= RULE_STRING ) ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1499:7: ( (lv_key_31_0= 'pattern' ) ) otherlv_32= '=' ( (lv_value_33_0= RULE_STRING ) )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1501:7: ( (lv_key_31_0= 'pattern' ) )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1502:1: (lv_key_31_0= 'pattern' )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1499:7: ( (lv_key_31_0= 'pattern' ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1500:1: (lv_key_31_0= 'pattern' )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1502:1: (lv_key_31_0= 'pattern' )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1503:3: lv_key_31_0= 'pattern'
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1500:1: (lv_key_31_0= 'pattern' )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1501:3: lv_key_31_0= 'pattern'
                     {
-                    lv_key_31_0=(Token)match(input,46,FollowSets000.FOLLOW_46_in_ruleDataTypeAnnotation2995); 
+                    lv_key_31_0=(Token)match(input,46,FollowSets000.FOLLOW_46_in_ruleDataTypeAnnotation2994); 
 
                             newLeafNode(lv_key_31_0, grammarAccess.getDataTypeAnnotationAccess().getKeyPatternKeyword_10_0_0());
                         
@@ -3539,17 +3521,17 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_32=(Token)match(input,29,FollowSets000.FOLLOW_29_in_ruleDataTypeAnnotation3020); 
+                    otherlv_32=(Token)match(input,29,FollowSets000.FOLLOW_29_in_ruleDataTypeAnnotation3019); 
 
                         	newLeafNode(otherlv_32, grammarAccess.getDataTypeAnnotationAccess().getEqualsSignKeyword_10_1());
                         
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1520:1: ( (lv_value_33_0= RULE_STRING ) )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1521:1: (lv_value_33_0= RULE_STRING )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1518:1: ( (lv_value_33_0= RULE_STRING ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1519:1: (lv_value_33_0= RULE_STRING )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1521:1: (lv_value_33_0= RULE_STRING )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1522:3: lv_value_33_0= RULE_STRING
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1519:1: (lv_value_33_0= RULE_STRING )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1520:3: lv_value_33_0= RULE_STRING
                     {
-                    lv_value_33_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleDataTypeAnnotation3037); 
+                    lv_value_33_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleDataTypeAnnotation3036); 
 
                     			newLeafNode(lv_value_33_0, grammarAccess.getDataTypeAnnotationAccess().getValueSTRINGTerminalRuleCall_10_2_0()); 
                     		
@@ -3596,7 +3578,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleEnumTypeDecl"
-    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1546:1: entryRuleEnumTypeDecl returns [EObject current=null] : iv_ruleEnumTypeDecl= ruleEnumTypeDecl EOF ;
+    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1544:1: entryRuleEnumTypeDecl returns [EObject current=null] : iv_ruleEnumTypeDecl= ruleEnumTypeDecl EOF ;
     public final EObject entryRuleEnumTypeDecl() throws RecognitionException {
         EObject current = null;
 
@@ -3604,17 +3586,17 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1547:2: (iv_ruleEnumTypeDecl= ruleEnumTypeDecl EOF )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1548:2: iv_ruleEnumTypeDecl= ruleEnumTypeDecl EOF
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1545:2: (iv_ruleEnumTypeDecl= ruleEnumTypeDecl EOF )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1546:2: iv_ruleEnumTypeDecl= ruleEnumTypeDecl EOF
             {
              newCompositeNode(grammarAccess.getEnumTypeDeclRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleEnumTypeDecl_in_entryRuleEnumTypeDecl3079);
+            pushFollow(FollowSets000.FOLLOW_ruleEnumTypeDecl_in_entryRuleEnumTypeDecl3078);
             iv_ruleEnumTypeDecl=ruleEnumTypeDecl();
 
             state._fsp--;
 
              current =iv_ruleEnumTypeDecl; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleEnumTypeDecl3089); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleEnumTypeDecl3088); 
 
             }
 
@@ -3632,7 +3614,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleEnumTypeDecl"
-    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1555:1: ruleEnumTypeDecl returns [EObject current=null] : ( () otherlv_1= 'enum' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= '{' ( (lv_eLiterals_4_0= ruleEnumLiteralDecl ) ) (otherlv_5= ',' ( (lv_eLiterals_6_0= ruleEnumLiteralDecl ) ) )* otherlv_7= '}' ) ;
+    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1553:1: ruleEnumTypeDecl returns [EObject current=null] : ( () otherlv_1= 'enum' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= '{' ( (lv_eLiterals_4_0= ruleEnumLiteralDecl ) ) (otherlv_5= ',' ( (lv_eLiterals_6_0= ruleEnumLiteralDecl ) ) )* otherlv_7= '}' ) ;
     public final EObject ruleEnumTypeDecl() throws RecognitionException {
         EObject current = null;
 
@@ -3649,14 +3631,14 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1558:28: ( ( () otherlv_1= 'enum' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= '{' ( (lv_eLiterals_4_0= ruleEnumLiteralDecl ) ) (otherlv_5= ',' ( (lv_eLiterals_6_0= ruleEnumLiteralDecl ) ) )* otherlv_7= '}' ) )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1559:1: ( () otherlv_1= 'enum' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= '{' ( (lv_eLiterals_4_0= ruleEnumLiteralDecl ) ) (otherlv_5= ',' ( (lv_eLiterals_6_0= ruleEnumLiteralDecl ) ) )* otherlv_7= '}' )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1556:28: ( ( () otherlv_1= 'enum' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= '{' ( (lv_eLiterals_4_0= ruleEnumLiteralDecl ) ) (otherlv_5= ',' ( (lv_eLiterals_6_0= ruleEnumLiteralDecl ) ) )* otherlv_7= '}' ) )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1557:1: ( () otherlv_1= 'enum' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= '{' ( (lv_eLiterals_4_0= ruleEnumLiteralDecl ) ) (otherlv_5= ',' ( (lv_eLiterals_6_0= ruleEnumLiteralDecl ) ) )* otherlv_7= '}' )
             {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1559:1: ( () otherlv_1= 'enum' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= '{' ( (lv_eLiterals_4_0= ruleEnumLiteralDecl ) ) (otherlv_5= ',' ( (lv_eLiterals_6_0= ruleEnumLiteralDecl ) ) )* otherlv_7= '}' )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1559:2: () otherlv_1= 'enum' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= '{' ( (lv_eLiterals_4_0= ruleEnumLiteralDecl ) ) (otherlv_5= ',' ( (lv_eLiterals_6_0= ruleEnumLiteralDecl ) ) )* otherlv_7= '}'
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1557:1: ( () otherlv_1= 'enum' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= '{' ( (lv_eLiterals_4_0= ruleEnumLiteralDecl ) ) (otherlv_5= ',' ( (lv_eLiterals_6_0= ruleEnumLiteralDecl ) ) )* otherlv_7= '}' )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1557:2: () otherlv_1= 'enum' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= '{' ( (lv_eLiterals_4_0= ruleEnumLiteralDecl ) ) (otherlv_5= ',' ( (lv_eLiterals_6_0= ruleEnumLiteralDecl ) ) )* otherlv_7= '}'
             {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1559:2: ()
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1560:5: 
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1557:2: ()
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1558:5: 
             {
 
                     current = forceCreateModelElement(
@@ -3666,17 +3648,17 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,47,FollowSets000.FOLLOW_47_in_ruleEnumTypeDecl3135); 
+            otherlv_1=(Token)match(input,47,FollowSets000.FOLLOW_47_in_ruleEnumTypeDecl3134); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getEnumTypeDeclAccess().getEnumKeyword_1());
                 
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1569:1: ( (lv_name_2_0= RULE_ID ) )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1570:1: (lv_name_2_0= RULE_ID )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1567:1: ( (lv_name_2_0= RULE_ID ) )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1568:1: (lv_name_2_0= RULE_ID )
             {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1570:1: (lv_name_2_0= RULE_ID )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1571:3: lv_name_2_0= RULE_ID
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1568:1: (lv_name_2_0= RULE_ID )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1569:3: lv_name_2_0= RULE_ID
             {
-            lv_name_2_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleEnumTypeDecl3152); 
+            lv_name_2_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleEnumTypeDecl3151); 
 
             			newLeafNode(lv_name_2_0, grammarAccess.getEnumTypeDeclAccess().getNameIDTerminalRuleCall_2_0()); 
             		
@@ -3696,20 +3678,20 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_3=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleEnumTypeDecl3169); 
+            otherlv_3=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleEnumTypeDecl3168); 
 
                 	newLeafNode(otherlv_3, grammarAccess.getEnumTypeDeclAccess().getLeftCurlyBracketKeyword_3());
                 
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1591:1: ( (lv_eLiterals_4_0= ruleEnumLiteralDecl ) )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1592:1: (lv_eLiterals_4_0= ruleEnumLiteralDecl )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1589:1: ( (lv_eLiterals_4_0= ruleEnumLiteralDecl ) )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1590:1: (lv_eLiterals_4_0= ruleEnumLiteralDecl )
             {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1592:1: (lv_eLiterals_4_0= ruleEnumLiteralDecl )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1593:3: lv_eLiterals_4_0= ruleEnumLiteralDecl
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1590:1: (lv_eLiterals_4_0= ruleEnumLiteralDecl )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1591:3: lv_eLiterals_4_0= ruleEnumLiteralDecl
             {
              
             	        newCompositeNode(grammarAccess.getEnumTypeDeclAccess().getELiteralsEnumLiteralDeclParserRuleCall_4_0()); 
             	    
-            pushFollow(FollowSets000.FOLLOW_ruleEnumLiteralDecl_in_ruleEnumTypeDecl3190);
+            pushFollow(FollowSets000.FOLLOW_ruleEnumLiteralDecl_in_ruleEnumTypeDecl3189);
             lv_eLiterals_4_0=ruleEnumLiteralDecl();
 
             state._fsp--;
@@ -3731,7 +3713,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1609:2: (otherlv_5= ',' ( (lv_eLiterals_6_0= ruleEnumLiteralDecl ) ) )*
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1607:2: (otherlv_5= ',' ( (lv_eLiterals_6_0= ruleEnumLiteralDecl ) ) )*
             loop29:
             do {
                 int alt29=2;
@@ -3744,22 +3726,22 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
                 switch (alt29) {
             	case 1 :
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1609:4: otherlv_5= ',' ( (lv_eLiterals_6_0= ruleEnumLiteralDecl ) )
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1607:4: otherlv_5= ',' ( (lv_eLiterals_6_0= ruleEnumLiteralDecl ) )
             	    {
-            	    otherlv_5=(Token)match(input,22,FollowSets000.FOLLOW_22_in_ruleEnumTypeDecl3203); 
+            	    otherlv_5=(Token)match(input,22,FollowSets000.FOLLOW_22_in_ruleEnumTypeDecl3202); 
 
             	        	newLeafNode(otherlv_5, grammarAccess.getEnumTypeDeclAccess().getCommaKeyword_5_0());
             	        
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1613:1: ( (lv_eLiterals_6_0= ruleEnumLiteralDecl ) )
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1614:1: (lv_eLiterals_6_0= ruleEnumLiteralDecl )
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1611:1: ( (lv_eLiterals_6_0= ruleEnumLiteralDecl ) )
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1612:1: (lv_eLiterals_6_0= ruleEnumLiteralDecl )
             	    {
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1614:1: (lv_eLiterals_6_0= ruleEnumLiteralDecl )
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1615:3: lv_eLiterals_6_0= ruleEnumLiteralDecl
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1612:1: (lv_eLiterals_6_0= ruleEnumLiteralDecl )
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1613:3: lv_eLiterals_6_0= ruleEnumLiteralDecl
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getEnumTypeDeclAccess().getELiteralsEnumLiteralDeclParserRuleCall_5_1_0()); 
             	    	    
-            	    pushFollow(FollowSets000.FOLLOW_ruleEnumLiteralDecl_in_ruleEnumTypeDecl3224);
+            	    pushFollow(FollowSets000.FOLLOW_ruleEnumLiteralDecl_in_ruleEnumTypeDecl3223);
             	    lv_eLiterals_6_0=ruleEnumLiteralDecl();
 
             	    state._fsp--;
@@ -3790,7 +3772,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            otherlv_7=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleEnumTypeDecl3238); 
+            otherlv_7=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleEnumTypeDecl3237); 
 
                 	newLeafNode(otherlv_7, grammarAccess.getEnumTypeDeclAccess().getRightCurlyBracketKeyword_6());
                 
@@ -3815,7 +3797,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleEnumLiteralDecl"
-    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1643:1: entryRuleEnumLiteralDecl returns [EObject current=null] : iv_ruleEnumLiteralDecl= ruleEnumLiteralDecl EOF ;
+    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1641:1: entryRuleEnumLiteralDecl returns [EObject current=null] : iv_ruleEnumLiteralDecl= ruleEnumLiteralDecl EOF ;
     public final EObject entryRuleEnumLiteralDecl() throws RecognitionException {
         EObject current = null;
 
@@ -3823,17 +3805,17 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1644:2: (iv_ruleEnumLiteralDecl= ruleEnumLiteralDecl EOF )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1645:2: iv_ruleEnumLiteralDecl= ruleEnumLiteralDecl EOF
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1642:2: (iv_ruleEnumLiteralDecl= ruleEnumLiteralDecl EOF )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1643:2: iv_ruleEnumLiteralDecl= ruleEnumLiteralDecl EOF
             {
              newCompositeNode(grammarAccess.getEnumLiteralDeclRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleEnumLiteralDecl_in_entryRuleEnumLiteralDecl3274);
+            pushFollow(FollowSets000.FOLLOW_ruleEnumLiteralDecl_in_entryRuleEnumLiteralDecl3273);
             iv_ruleEnumLiteralDecl=ruleEnumLiteralDecl();
 
             state._fsp--;
 
              current =iv_ruleEnumLiteralDecl; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleEnumLiteralDecl3284); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleEnumLiteralDecl3283); 
 
             }
 
@@ -3851,7 +3833,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleEnumLiteralDecl"
-    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1652:1: ruleEnumLiteralDecl returns [EObject current=null] : ( () ( (lv_name_1_0= RULE_ID ) ) ) ;
+    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1650:1: ruleEnumLiteralDecl returns [EObject current=null] : ( () ( (lv_name_1_0= RULE_ID ) ) ) ;
     public final EObject ruleEnumLiteralDecl() throws RecognitionException {
         EObject current = null;
 
@@ -3860,14 +3842,14 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1655:28: ( ( () ( (lv_name_1_0= RULE_ID ) ) ) )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1656:1: ( () ( (lv_name_1_0= RULE_ID ) ) )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1653:28: ( ( () ( (lv_name_1_0= RULE_ID ) ) ) )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1654:1: ( () ( (lv_name_1_0= RULE_ID ) ) )
             {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1656:1: ( () ( (lv_name_1_0= RULE_ID ) ) )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1656:2: () ( (lv_name_1_0= RULE_ID ) )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1654:1: ( () ( (lv_name_1_0= RULE_ID ) ) )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1654:2: () ( (lv_name_1_0= RULE_ID ) )
             {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1656:2: ()
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1657:5: 
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1654:2: ()
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1655:5: 
             {
 
                     current = forceCreateModelElement(
@@ -3877,13 +3859,13 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1662:2: ( (lv_name_1_0= RULE_ID ) )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1663:1: (lv_name_1_0= RULE_ID )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1660:2: ( (lv_name_1_0= RULE_ID ) )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1661:1: (lv_name_1_0= RULE_ID )
             {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1663:1: (lv_name_1_0= RULE_ID )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1664:3: lv_name_1_0= RULE_ID
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1661:1: (lv_name_1_0= RULE_ID )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1662:3: lv_name_1_0= RULE_ID
             {
-            lv_name_1_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleEnumLiteralDecl3335); 
+            lv_name_1_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleEnumLiteralDecl3334); 
 
             			newLeafNode(lv_name_1_0, grammarAccess.getEnumLiteralDeclAccess().getNameIDTerminalRuleCall_1_0()); 
             		
@@ -3924,7 +3906,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleConfigurationDecl"
-    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1688:1: entryRuleConfigurationDecl returns [EObject current=null] : iv_ruleConfigurationDecl= ruleConfigurationDecl EOF ;
+    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1686:1: entryRuleConfigurationDecl returns [EObject current=null] : iv_ruleConfigurationDecl= ruleConfigurationDecl EOF ;
     public final EObject entryRuleConfigurationDecl() throws RecognitionException {
         EObject current = null;
 
@@ -3932,17 +3914,17 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1689:2: (iv_ruleConfigurationDecl= ruleConfigurationDecl EOF )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1690:2: iv_ruleConfigurationDecl= ruleConfigurationDecl EOF
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1687:2: (iv_ruleConfigurationDecl= ruleConfigurationDecl EOF )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1688:2: iv_ruleConfigurationDecl= ruleConfigurationDecl EOF
             {
              newCompositeNode(grammarAccess.getConfigurationDeclRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleConfigurationDecl_in_entryRuleConfigurationDecl3376);
+            pushFollow(FollowSets000.FOLLOW_ruleConfigurationDecl_in_entryRuleConfigurationDecl3375);
             iv_ruleConfigurationDecl=ruleConfigurationDecl();
 
             state._fsp--;
 
              current =iv_ruleConfigurationDecl; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleConfigurationDecl3386); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleConfigurationDecl3385); 
 
             }
 
@@ -3960,12 +3942,13 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleConfigurationDecl"
-    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1697:1: ruleConfigurationDecl returns [EObject current=null] : ( () otherlv_1= 'configuration' (otherlv_2= 'use' ( ( ruleURI ) ) (otherlv_4= 'as' this_ID_5= RULE_ID )? )* ( (lv_resources_6_0= ruleResourceDecl ) )* ) ;
+    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1695:1: ruleConfigurationDecl returns [EObject current=null] : ( () otherlv_1= 'configuration' (otherlv_2= 'use' ( (otherlv_3= RULE_STRING ) ) (otherlv_4= 'as' this_ID_5= RULE_ID )? )* ( (lv_resources_6_0= ruleResourceDecl ) )* ) ;
     public final EObject ruleConfigurationDecl() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_1=null;
         Token otherlv_2=null;
+        Token otherlv_3=null;
         Token otherlv_4=null;
         Token this_ID_5=null;
         EObject lv_resources_6_0 = null;
@@ -3974,14 +3957,14 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1700:28: ( ( () otherlv_1= 'configuration' (otherlv_2= 'use' ( ( ruleURI ) ) (otherlv_4= 'as' this_ID_5= RULE_ID )? )* ( (lv_resources_6_0= ruleResourceDecl ) )* ) )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1701:1: ( () otherlv_1= 'configuration' (otherlv_2= 'use' ( ( ruleURI ) ) (otherlv_4= 'as' this_ID_5= RULE_ID )? )* ( (lv_resources_6_0= ruleResourceDecl ) )* )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1698:28: ( ( () otherlv_1= 'configuration' (otherlv_2= 'use' ( (otherlv_3= RULE_STRING ) ) (otherlv_4= 'as' this_ID_5= RULE_ID )? )* ( (lv_resources_6_0= ruleResourceDecl ) )* ) )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1699:1: ( () otherlv_1= 'configuration' (otherlv_2= 'use' ( (otherlv_3= RULE_STRING ) ) (otherlv_4= 'as' this_ID_5= RULE_ID )? )* ( (lv_resources_6_0= ruleResourceDecl ) )* )
             {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1701:1: ( () otherlv_1= 'configuration' (otherlv_2= 'use' ( ( ruleURI ) ) (otherlv_4= 'as' this_ID_5= RULE_ID )? )* ( (lv_resources_6_0= ruleResourceDecl ) )* )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1701:2: () otherlv_1= 'configuration' (otherlv_2= 'use' ( ( ruleURI ) ) (otherlv_4= 'as' this_ID_5= RULE_ID )? )* ( (lv_resources_6_0= ruleResourceDecl ) )*
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1699:1: ( () otherlv_1= 'configuration' (otherlv_2= 'use' ( (otherlv_3= RULE_STRING ) ) (otherlv_4= 'as' this_ID_5= RULE_ID )? )* ( (lv_resources_6_0= ruleResourceDecl ) )* )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1699:2: () otherlv_1= 'configuration' (otherlv_2= 'use' ( (otherlv_3= RULE_STRING ) ) (otherlv_4= 'as' this_ID_5= RULE_ID )? )* ( (lv_resources_6_0= ruleResourceDecl ) )*
             {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1701:2: ()
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1702:5: 
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1699:2: ()
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1700:5: 
             {
 
                     current = forceCreateModelElement(
@@ -3991,11 +3974,11 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,48,FollowSets000.FOLLOW_48_in_ruleConfigurationDecl3432); 
+            otherlv_1=(Token)match(input,48,FollowSets000.FOLLOW_48_in_ruleConfigurationDecl3431); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getConfigurationDeclAccess().getConfigurationKeyword_1());
                 
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1711:1: (otherlv_2= 'use' ( ( ruleURI ) ) (otherlv_4= 'as' this_ID_5= RULE_ID )? )*
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1709:1: (otherlv_2= 'use' ( (otherlv_3= RULE_STRING ) ) (otherlv_4= 'as' this_ID_5= RULE_ID )? )*
             loop31:
             do {
                 int alt31=2;
@@ -4008,41 +3991,34 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
                 switch (alt31) {
             	case 1 :
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1711:3: otherlv_2= 'use' ( ( ruleURI ) ) (otherlv_4= 'as' this_ID_5= RULE_ID )?
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1709:3: otherlv_2= 'use' ( (otherlv_3= RULE_STRING ) ) (otherlv_4= 'as' this_ID_5= RULE_ID )?
             	    {
-            	    otherlv_2=(Token)match(input,49,FollowSets000.FOLLOW_49_in_ruleConfigurationDecl3445); 
+            	    otherlv_2=(Token)match(input,49,FollowSets000.FOLLOW_49_in_ruleConfigurationDecl3444); 
 
             	        	newLeafNode(otherlv_2, grammarAccess.getConfigurationDeclAccess().getUseKeyword_2_0());
             	        
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1715:1: ( ( ruleURI ) )
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1716:1: ( ruleURI )
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1713:1: ( (otherlv_3= RULE_STRING ) )
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1714:1: (otherlv_3= RULE_STRING )
             	    {
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1716:1: ( ruleURI )
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1717:3: ruleURI
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1714:1: (otherlv_3= RULE_STRING )
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1715:3: otherlv_3= RULE_STRING
             	    {
 
             	    			if (current==null) {
             	    	            current = createModelElement(grammarAccess.getConfigurationDeclRule());
             	    	        }
             	            
-            	     
-            	    	        newCompositeNode(grammarAccess.getConfigurationDeclAccess().getUseExtensionCrossReference_2_1_0()); 
-            	    	    
-            	    pushFollow(FollowSets000.FOLLOW_ruleURI_in_ruleConfigurationDecl3468);
-            	    ruleURI();
+            	    otherlv_3=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleConfigurationDecl3464); 
 
-            	    state._fsp--;
-
-            	     
-            	    	        afterParserOrEnumRuleCall();
-            	    	    
+            	    		newLeafNode(otherlv_3, grammarAccess.getConfigurationDeclAccess().getUseExtensionCrossReference_2_1_0()); 
+            	    	
 
             	    }
 
 
             	    }
 
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1730:2: (otherlv_4= 'as' this_ID_5= RULE_ID )?
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1726:2: (otherlv_4= 'as' this_ID_5= RULE_ID )?
             	    int alt30=2;
             	    int LA30_0 = input.LA(1);
 
@@ -4051,13 +4027,13 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
             	    }
             	    switch (alt30) {
             	        case 1 :
-            	            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1730:4: otherlv_4= 'as' this_ID_5= RULE_ID
+            	            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1726:4: otherlv_4= 'as' this_ID_5= RULE_ID
             	            {
-            	            otherlv_4=(Token)match(input,14,FollowSets000.FOLLOW_14_in_ruleConfigurationDecl3481); 
+            	            otherlv_4=(Token)match(input,14,FollowSets000.FOLLOW_14_in_ruleConfigurationDecl3477); 
 
             	                	newLeafNode(otherlv_4, grammarAccess.getConfigurationDeclAccess().getAsKeyword_2_2_0());
             	                
-            	            this_ID_5=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleConfigurationDecl3492); 
+            	            this_ID_5=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleConfigurationDecl3488); 
             	             
             	                newLeafNode(this_ID_5, grammarAccess.getConfigurationDeclAccess().getIDTerminalRuleCall_2_2_1()); 
             	                
@@ -4076,7 +4052,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1738:5: ( (lv_resources_6_0= ruleResourceDecl ) )*
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1734:5: ( (lv_resources_6_0= ruleResourceDecl ) )*
             loop32:
             do {
                 int alt32=2;
@@ -4089,15 +4065,15 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
                 switch (alt32) {
             	case 1 :
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1739:1: (lv_resources_6_0= ruleResourceDecl )
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1735:1: (lv_resources_6_0= ruleResourceDecl )
             	    {
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1739:1: (lv_resources_6_0= ruleResourceDecl )
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1740:3: lv_resources_6_0= ruleResourceDecl
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1735:1: (lv_resources_6_0= ruleResourceDecl )
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1736:3: lv_resources_6_0= ruleResourceDecl
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getConfigurationDeclAccess().getResourcesResourceDeclParserRuleCall_3_0()); 
             	    	    
-            	    pushFollow(FollowSets000.FOLLOW_ruleResourceDecl_in_ruleConfigurationDecl3516);
+            	    pushFollow(FollowSets000.FOLLOW_ruleResourceDecl_in_ruleConfigurationDecl3512);
             	    lv_resources_6_0=ruleResourceDecl();
 
             	    state._fsp--;
@@ -4146,7 +4122,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleResourceDecl"
-    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1764:1: entryRuleResourceDecl returns [EObject current=null] : iv_ruleResourceDecl= ruleResourceDecl EOF ;
+    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1760:1: entryRuleResourceDecl returns [EObject current=null] : iv_ruleResourceDecl= ruleResourceDecl EOF ;
     public final EObject entryRuleResourceDecl() throws RecognitionException {
         EObject current = null;
 
@@ -4154,17 +4130,17 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1765:2: (iv_ruleResourceDecl= ruleResourceDecl EOF )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1766:2: iv_ruleResourceDecl= ruleResourceDecl EOF
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1761:2: (iv_ruleResourceDecl= ruleResourceDecl EOF )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1762:2: iv_ruleResourceDecl= ruleResourceDecl EOF
             {
              newCompositeNode(grammarAccess.getResourceDeclRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleResourceDecl_in_entryRuleResourceDecl3553);
+            pushFollow(FollowSets000.FOLLOW_ruleResourceDecl_in_entryRuleResourceDecl3549);
             iv_ruleResourceDecl=ruleResourceDecl();
 
             state._fsp--;
 
              current =iv_ruleResourceDecl; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleResourceDecl3563); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleResourceDecl3559); 
 
             }
 
@@ -4182,18 +4158,17 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleResourceDecl"
-    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1773:1: ruleResourceDecl returns [EObject current=null] : (otherlv_0= 'resource' ( (lv_id_1_0= ruleURI ) ) otherlv_2= ':' ( ( ruleQualifiedID ) ) (otherlv_4= 'mixins' ( ( ruleQualifiedID ) ) (otherlv_6= ',' ( ( ruleQualifiedID ) ) )* )? otherlv_8= '{' ( (lv_attributes_9_0= ruleStateDecl ) )* ( (lv_links_10_0= ruleLinkDecl ) )* otherlv_11= '}' ) ;
+    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1769:1: ruleResourceDecl returns [EObject current=null] : (otherlv_0= 'resource' ( (lv_id_1_0= RULE_STRING ) ) otherlv_2= ':' ( ( ruleQualifiedID ) ) (otherlv_4= 'mixins' ( ( ruleQualifiedID ) ) (otherlv_6= ',' ( ( ruleQualifiedID ) ) )* )? otherlv_8= '{' ( (lv_attributes_9_0= ruleStateDecl ) )* ( (lv_links_10_0= ruleLinkDecl ) )* otherlv_11= '}' ) ;
     public final EObject ruleResourceDecl() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
+        Token lv_id_1_0=null;
         Token otherlv_2=null;
         Token otherlv_4=null;
         Token otherlv_6=null;
         Token otherlv_8=null;
         Token otherlv_11=null;
-        AntlrDatatypeRuleToken lv_id_1_0 = null;
-
         EObject lv_attributes_9_0 = null;
 
         EObject lv_links_10_0 = null;
@@ -4202,40 +4177,35 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1776:28: ( (otherlv_0= 'resource' ( (lv_id_1_0= ruleURI ) ) otherlv_2= ':' ( ( ruleQualifiedID ) ) (otherlv_4= 'mixins' ( ( ruleQualifiedID ) ) (otherlv_6= ',' ( ( ruleQualifiedID ) ) )* )? otherlv_8= '{' ( (lv_attributes_9_0= ruleStateDecl ) )* ( (lv_links_10_0= ruleLinkDecl ) )* otherlv_11= '}' ) )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1777:1: (otherlv_0= 'resource' ( (lv_id_1_0= ruleURI ) ) otherlv_2= ':' ( ( ruleQualifiedID ) ) (otherlv_4= 'mixins' ( ( ruleQualifiedID ) ) (otherlv_6= ',' ( ( ruleQualifiedID ) ) )* )? otherlv_8= '{' ( (lv_attributes_9_0= ruleStateDecl ) )* ( (lv_links_10_0= ruleLinkDecl ) )* otherlv_11= '}' )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1772:28: ( (otherlv_0= 'resource' ( (lv_id_1_0= RULE_STRING ) ) otherlv_2= ':' ( ( ruleQualifiedID ) ) (otherlv_4= 'mixins' ( ( ruleQualifiedID ) ) (otherlv_6= ',' ( ( ruleQualifiedID ) ) )* )? otherlv_8= '{' ( (lv_attributes_9_0= ruleStateDecl ) )* ( (lv_links_10_0= ruleLinkDecl ) )* otherlv_11= '}' ) )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1773:1: (otherlv_0= 'resource' ( (lv_id_1_0= RULE_STRING ) ) otherlv_2= ':' ( ( ruleQualifiedID ) ) (otherlv_4= 'mixins' ( ( ruleQualifiedID ) ) (otherlv_6= ',' ( ( ruleQualifiedID ) ) )* )? otherlv_8= '{' ( (lv_attributes_9_0= ruleStateDecl ) )* ( (lv_links_10_0= ruleLinkDecl ) )* otherlv_11= '}' )
             {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1777:1: (otherlv_0= 'resource' ( (lv_id_1_0= ruleURI ) ) otherlv_2= ':' ( ( ruleQualifiedID ) ) (otherlv_4= 'mixins' ( ( ruleQualifiedID ) ) (otherlv_6= ',' ( ( ruleQualifiedID ) ) )* )? otherlv_8= '{' ( (lv_attributes_9_0= ruleStateDecl ) )* ( (lv_links_10_0= ruleLinkDecl ) )* otherlv_11= '}' )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1777:3: otherlv_0= 'resource' ( (lv_id_1_0= ruleURI ) ) otherlv_2= ':' ( ( ruleQualifiedID ) ) (otherlv_4= 'mixins' ( ( ruleQualifiedID ) ) (otherlv_6= ',' ( ( ruleQualifiedID ) ) )* )? otherlv_8= '{' ( (lv_attributes_9_0= ruleStateDecl ) )* ( (lv_links_10_0= ruleLinkDecl ) )* otherlv_11= '}'
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1773:1: (otherlv_0= 'resource' ( (lv_id_1_0= RULE_STRING ) ) otherlv_2= ':' ( ( ruleQualifiedID ) ) (otherlv_4= 'mixins' ( ( ruleQualifiedID ) ) (otherlv_6= ',' ( ( ruleQualifiedID ) ) )* )? otherlv_8= '{' ( (lv_attributes_9_0= ruleStateDecl ) )* ( (lv_links_10_0= ruleLinkDecl ) )* otherlv_11= '}' )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1773:3: otherlv_0= 'resource' ( (lv_id_1_0= RULE_STRING ) ) otherlv_2= ':' ( ( ruleQualifiedID ) ) (otherlv_4= 'mixins' ( ( ruleQualifiedID ) ) (otherlv_6= ',' ( ( ruleQualifiedID ) ) )* )? otherlv_8= '{' ( (lv_attributes_9_0= ruleStateDecl ) )* ( (lv_links_10_0= ruleLinkDecl ) )* otherlv_11= '}'
             {
-            otherlv_0=(Token)match(input,50,FollowSets000.FOLLOW_50_in_ruleResourceDecl3600); 
+            otherlv_0=(Token)match(input,50,FollowSets000.FOLLOW_50_in_ruleResourceDecl3596); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getResourceDeclAccess().getResourceKeyword_0());
                 
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1781:1: ( (lv_id_1_0= ruleURI ) )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1782:1: (lv_id_1_0= ruleURI )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1777:1: ( (lv_id_1_0= RULE_STRING ) )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1778:1: (lv_id_1_0= RULE_STRING )
             {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1782:1: (lv_id_1_0= ruleURI )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1783:3: lv_id_1_0= ruleURI
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1778:1: (lv_id_1_0= RULE_STRING )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1779:3: lv_id_1_0= RULE_STRING
             {
-             
-            	        newCompositeNode(grammarAccess.getResourceDeclAccess().getIdURIParserRuleCall_1_0()); 
-            	    
-            pushFollow(FollowSets000.FOLLOW_ruleURI_in_ruleResourceDecl3621);
-            lv_id_1_0=ruleURI();
+            lv_id_1_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleResourceDecl3613); 
 
-            state._fsp--;
-
+            			newLeafNode(lv_id_1_0, grammarAccess.getResourceDeclAccess().getIdSTRINGTerminalRuleCall_1_0()); 
+            		
 
             	        if (current==null) {
-            	            current = createModelElementForParent(grammarAccess.getResourceDeclRule());
+            	            current = createModelElement(grammarAccess.getResourceDeclRule());
             	        }
-                   		set(
+                   		setWithLastConsumed(
                    			current, 
                    			"id",
                     		lv_id_1_0, 
-                    		"URI");
-            	        afterParserOrEnumRuleCall();
+                    		"STRING");
             	    
 
             }
@@ -4243,15 +4213,15 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,12,FollowSets000.FOLLOW_12_in_ruleResourceDecl3633); 
+            otherlv_2=(Token)match(input,12,FollowSets000.FOLLOW_12_in_ruleResourceDecl3630); 
 
                 	newLeafNode(otherlv_2, grammarAccess.getResourceDeclAccess().getColonKeyword_2());
                 
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1803:1: ( ( ruleQualifiedID ) )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1804:1: ( ruleQualifiedID )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1799:1: ( ( ruleQualifiedID ) )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1800:1: ( ruleQualifiedID )
             {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1804:1: ( ruleQualifiedID )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1805:3: ruleQualifiedID
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1800:1: ( ruleQualifiedID )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1801:3: ruleQualifiedID
             {
 
             			if (current==null) {
@@ -4261,7 +4231,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
              
             	        newCompositeNode(grammarAccess.getResourceDeclAccess().getKindKindCrossReference_3_0()); 
             	    
-            pushFollow(FollowSets000.FOLLOW_ruleQualifiedID_in_ruleResourceDecl3656);
+            pushFollow(FollowSets000.FOLLOW_ruleQualifiedID_in_ruleResourceDecl3653);
             ruleQualifiedID();
 
             state._fsp--;
@@ -4275,7 +4245,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1818:2: (otherlv_4= 'mixins' ( ( ruleQualifiedID ) ) (otherlv_6= ',' ( ( ruleQualifiedID ) ) )* )?
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1814:2: (otherlv_4= 'mixins' ( ( ruleQualifiedID ) ) (otherlv_6= ',' ( ( ruleQualifiedID ) ) )* )?
             int alt34=2;
             int LA34_0 = input.LA(1);
 
@@ -4284,17 +4254,17 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
             }
             switch (alt34) {
                 case 1 :
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1818:4: otherlv_4= 'mixins' ( ( ruleQualifiedID ) ) (otherlv_6= ',' ( ( ruleQualifiedID ) ) )*
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1814:4: otherlv_4= 'mixins' ( ( ruleQualifiedID ) ) (otherlv_6= ',' ( ( ruleQualifiedID ) ) )*
                     {
-                    otherlv_4=(Token)match(input,51,FollowSets000.FOLLOW_51_in_ruleResourceDecl3669); 
+                    otherlv_4=(Token)match(input,51,FollowSets000.FOLLOW_51_in_ruleResourceDecl3666); 
 
                         	newLeafNode(otherlv_4, grammarAccess.getResourceDeclAccess().getMixinsKeyword_4_0());
                         
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1822:1: ( ( ruleQualifiedID ) )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1823:1: ( ruleQualifiedID )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1818:1: ( ( ruleQualifiedID ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1819:1: ( ruleQualifiedID )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1823:1: ( ruleQualifiedID )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1824:3: ruleQualifiedID
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1819:1: ( ruleQualifiedID )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1820:3: ruleQualifiedID
                     {
 
                     			if (current==null) {
@@ -4304,7 +4274,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
                      
                     	        newCompositeNode(grammarAccess.getResourceDeclAccess().getMixinsMixinCrossReference_4_1_0()); 
                     	    
-                    pushFollow(FollowSets000.FOLLOW_ruleQualifiedID_in_ruleResourceDecl3692);
+                    pushFollow(FollowSets000.FOLLOW_ruleQualifiedID_in_ruleResourceDecl3689);
                     ruleQualifiedID();
 
                     state._fsp--;
@@ -4318,7 +4288,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1837:2: (otherlv_6= ',' ( ( ruleQualifiedID ) ) )*
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1833:2: (otherlv_6= ',' ( ( ruleQualifiedID ) ) )*
                     loop33:
                     do {
                         int alt33=2;
@@ -4331,17 +4301,17 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
                         switch (alt33) {
                     	case 1 :
-                    	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1837:4: otherlv_6= ',' ( ( ruleQualifiedID ) )
+                    	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1833:4: otherlv_6= ',' ( ( ruleQualifiedID ) )
                     	    {
-                    	    otherlv_6=(Token)match(input,22,FollowSets000.FOLLOW_22_in_ruleResourceDecl3705); 
+                    	    otherlv_6=(Token)match(input,22,FollowSets000.FOLLOW_22_in_ruleResourceDecl3702); 
 
                     	        	newLeafNode(otherlv_6, grammarAccess.getResourceDeclAccess().getCommaKeyword_4_2_0());
                     	        
-                    	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1841:1: ( ( ruleQualifiedID ) )
-                    	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1842:1: ( ruleQualifiedID )
+                    	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1837:1: ( ( ruleQualifiedID ) )
+                    	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1838:1: ( ruleQualifiedID )
                     	    {
-                    	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1842:1: ( ruleQualifiedID )
-                    	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1843:3: ruleQualifiedID
+                    	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1838:1: ( ruleQualifiedID )
+                    	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1839:3: ruleQualifiedID
                     	    {
 
                     	    			if (current==null) {
@@ -4351,7 +4321,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
                     	     
                     	    	        newCompositeNode(grammarAccess.getResourceDeclAccess().getMixinsMixinCrossReference_4_2_1_0()); 
                     	    	    
-                    	    pushFollow(FollowSets000.FOLLOW_ruleQualifiedID_in_ruleResourceDecl3728);
+                    	    pushFollow(FollowSets000.FOLLOW_ruleQualifiedID_in_ruleResourceDecl3725);
                     	    ruleQualifiedID();
 
                     	    state._fsp--;
@@ -4380,11 +4350,11 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_8=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleResourceDecl3744); 
+            otherlv_8=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleResourceDecl3741); 
 
                 	newLeafNode(otherlv_8, grammarAccess.getResourceDeclAccess().getLeftCurlyBracketKeyword_5());
                 
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1860:1: ( (lv_attributes_9_0= ruleStateDecl ) )*
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1856:1: ( (lv_attributes_9_0= ruleStateDecl ) )*
             loop35:
             do {
                 int alt35=2;
@@ -4397,15 +4367,15 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
                 switch (alt35) {
             	case 1 :
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1861:1: (lv_attributes_9_0= ruleStateDecl )
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1857:1: (lv_attributes_9_0= ruleStateDecl )
             	    {
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1861:1: (lv_attributes_9_0= ruleStateDecl )
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1862:3: lv_attributes_9_0= ruleStateDecl
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1857:1: (lv_attributes_9_0= ruleStateDecl )
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1858:3: lv_attributes_9_0= ruleStateDecl
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getResourceDeclAccess().getAttributesStateDeclParserRuleCall_6_0()); 
             	    	    
-            	    pushFollow(FollowSets000.FOLLOW_ruleStateDecl_in_ruleResourceDecl3765);
+            	    pushFollow(FollowSets000.FOLLOW_ruleStateDecl_in_ruleResourceDecl3762);
             	    lv_attributes_9_0=ruleStateDecl();
 
             	    state._fsp--;
@@ -4433,7 +4403,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1878:3: ( (lv_links_10_0= ruleLinkDecl ) )*
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1874:3: ( (lv_links_10_0= ruleLinkDecl ) )*
             loop36:
             do {
                 int alt36=2;
@@ -4446,15 +4416,15 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
                 switch (alt36) {
             	case 1 :
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1879:1: (lv_links_10_0= ruleLinkDecl )
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1875:1: (lv_links_10_0= ruleLinkDecl )
             	    {
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1879:1: (lv_links_10_0= ruleLinkDecl )
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1880:3: lv_links_10_0= ruleLinkDecl
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1875:1: (lv_links_10_0= ruleLinkDecl )
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1876:3: lv_links_10_0= ruleLinkDecl
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getResourceDeclAccess().getLinksLinkDeclParserRuleCall_7_0()); 
             	    	    
-            	    pushFollow(FollowSets000.FOLLOW_ruleLinkDecl_in_ruleResourceDecl3787);
+            	    pushFollow(FollowSets000.FOLLOW_ruleLinkDecl_in_ruleResourceDecl3784);
             	    lv_links_10_0=ruleLinkDecl();
 
             	    state._fsp--;
@@ -4482,7 +4452,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            otherlv_11=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleResourceDecl3800); 
+            otherlv_11=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleResourceDecl3797); 
 
                 	newLeafNode(otherlv_11, grammarAccess.getResourceDeclAccess().getRightCurlyBracketKeyword_8());
                 
@@ -4507,7 +4477,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleStateDecl"
-    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1908:1: entryRuleStateDecl returns [EObject current=null] : iv_ruleStateDecl= ruleStateDecl EOF ;
+    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1904:1: entryRuleStateDecl returns [EObject current=null] : iv_ruleStateDecl= ruleStateDecl EOF ;
     public final EObject entryRuleStateDecl() throws RecognitionException {
         EObject current = null;
 
@@ -4515,17 +4485,17 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1909:2: (iv_ruleStateDecl= ruleStateDecl EOF )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1910:2: iv_ruleStateDecl= ruleStateDecl EOF
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1905:2: (iv_ruleStateDecl= ruleStateDecl EOF )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1906:2: iv_ruleStateDecl= ruleStateDecl EOF
             {
              newCompositeNode(grammarAccess.getStateDeclRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleStateDecl_in_entryRuleStateDecl3836);
+            pushFollow(FollowSets000.FOLLOW_ruleStateDecl_in_entryRuleStateDecl3833);
             iv_ruleStateDecl=ruleStateDecl();
 
             state._fsp--;
 
              current =iv_ruleStateDecl; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleStateDecl3846); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleStateDecl3843); 
 
             }
 
@@ -4543,7 +4513,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleStateDecl"
-    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1917:1: ruleStateDecl returns [EObject current=null] : (otherlv_0= 'state' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '=' ( (lv_value_3_0= RULE_STRING ) ) ) ;
+    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1913:1: ruleStateDecl returns [EObject current=null] : (otherlv_0= 'state' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '=' ( (lv_value_3_0= RULE_STRING ) ) ) ;
     public final EObject ruleStateDecl() throws RecognitionException {
         EObject current = null;
 
@@ -4555,23 +4525,23 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1920:28: ( (otherlv_0= 'state' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '=' ( (lv_value_3_0= RULE_STRING ) ) ) )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1921:1: (otherlv_0= 'state' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '=' ( (lv_value_3_0= RULE_STRING ) ) )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1916:28: ( (otherlv_0= 'state' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '=' ( (lv_value_3_0= RULE_STRING ) ) ) )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1917:1: (otherlv_0= 'state' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '=' ( (lv_value_3_0= RULE_STRING ) ) )
             {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1921:1: (otherlv_0= 'state' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '=' ( (lv_value_3_0= RULE_STRING ) ) )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1921:3: otherlv_0= 'state' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '=' ( (lv_value_3_0= RULE_STRING ) )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1917:1: (otherlv_0= 'state' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '=' ( (lv_value_3_0= RULE_STRING ) ) )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1917:3: otherlv_0= 'state' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '=' ( (lv_value_3_0= RULE_STRING ) )
             {
-            otherlv_0=(Token)match(input,52,FollowSets000.FOLLOW_52_in_ruleStateDecl3883); 
+            otherlv_0=(Token)match(input,52,FollowSets000.FOLLOW_52_in_ruleStateDecl3880); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getStateDeclAccess().getStateKeyword_0());
                 
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1925:1: ( (lv_name_1_0= RULE_ID ) )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1926:1: (lv_name_1_0= RULE_ID )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1921:1: ( (lv_name_1_0= RULE_ID ) )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1922:1: (lv_name_1_0= RULE_ID )
             {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1926:1: (lv_name_1_0= RULE_ID )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1927:3: lv_name_1_0= RULE_ID
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1922:1: (lv_name_1_0= RULE_ID )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1923:3: lv_name_1_0= RULE_ID
             {
-            lv_name_1_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleStateDecl3900); 
+            lv_name_1_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleStateDecl3897); 
 
             			newLeafNode(lv_name_1_0, grammarAccess.getStateDeclAccess().getNameIDTerminalRuleCall_1_0()); 
             		
@@ -4591,17 +4561,17 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,29,FollowSets000.FOLLOW_29_in_ruleStateDecl3917); 
+            otherlv_2=(Token)match(input,29,FollowSets000.FOLLOW_29_in_ruleStateDecl3914); 
 
                 	newLeafNode(otherlv_2, grammarAccess.getStateDeclAccess().getEqualsSignKeyword_2());
                 
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1947:1: ( (lv_value_3_0= RULE_STRING ) )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1948:1: (lv_value_3_0= RULE_STRING )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1943:1: ( (lv_value_3_0= RULE_STRING ) )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1944:1: (lv_value_3_0= RULE_STRING )
             {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1948:1: (lv_value_3_0= RULE_STRING )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1949:3: lv_value_3_0= RULE_STRING
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1944:1: (lv_value_3_0= RULE_STRING )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1945:3: lv_value_3_0= RULE_STRING
             {
-            lv_value_3_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleStateDecl3934); 
+            lv_value_3_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleStateDecl3931); 
 
             			newLeafNode(lv_value_3_0, grammarAccess.getStateDeclAccess().getValueSTRINGTerminalRuleCall_3_0()); 
             		
@@ -4642,7 +4612,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleLinkDecl"
-    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1973:1: entryRuleLinkDecl returns [EObject current=null] : iv_ruleLinkDecl= ruleLinkDecl EOF ;
+    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1969:1: entryRuleLinkDecl returns [EObject current=null] : iv_ruleLinkDecl= ruleLinkDecl EOF ;
     public final EObject entryRuleLinkDecl() throws RecognitionException {
         EObject current = null;
 
@@ -4650,17 +4620,17 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1974:2: (iv_ruleLinkDecl= ruleLinkDecl EOF )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1975:2: iv_ruleLinkDecl= ruleLinkDecl EOF
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1970:2: (iv_ruleLinkDecl= ruleLinkDecl EOF )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1971:2: iv_ruleLinkDecl= ruleLinkDecl EOF
             {
              newCompositeNode(grammarAccess.getLinkDeclRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleLinkDecl_in_entryRuleLinkDecl3975);
+            pushFollow(FollowSets000.FOLLOW_ruleLinkDecl_in_entryRuleLinkDecl3972);
             iv_ruleLinkDecl=ruleLinkDecl();
 
             state._fsp--;
 
              current =iv_ruleLinkDecl; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleLinkDecl3985); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleLinkDecl3982); 
 
             }
 
@@ -4678,59 +4648,54 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleLinkDecl"
-    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1982:1: ruleLinkDecl returns [EObject current=null] : (otherlv_0= 'link' ( (lv_id_1_0= ruleURI ) ) otherlv_2= ':' ( ( ruleQualifiedID ) ) (otherlv_4= 'mixins' ( ( ruleQualifiedID ) ) (otherlv_6= ',' ( ( ruleQualifiedID ) ) )* )? otherlv_8= 'target' ( ( ruleURI ) ) otherlv_10= '{' ( (lv_attributes_11_0= ruleStateDecl ) )* otherlv_12= '}' ) ;
+    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1978:1: ruleLinkDecl returns [EObject current=null] : (otherlv_0= 'link' ( (lv_id_1_0= RULE_STRING ) ) otherlv_2= ':' ( ( ruleQualifiedID ) ) (otherlv_4= 'mixins' ( ( ruleQualifiedID ) ) (otherlv_6= ',' ( ( ruleQualifiedID ) ) )* )? otherlv_8= 'target' ( (otherlv_9= RULE_STRING ) ) otherlv_10= '{' ( (lv_attributes_11_0= ruleStateDecl ) )* otherlv_12= '}' ) ;
     public final EObject ruleLinkDecl() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
+        Token lv_id_1_0=null;
         Token otherlv_2=null;
         Token otherlv_4=null;
         Token otherlv_6=null;
         Token otherlv_8=null;
+        Token otherlv_9=null;
         Token otherlv_10=null;
         Token otherlv_12=null;
-        AntlrDatatypeRuleToken lv_id_1_0 = null;
-
         EObject lv_attributes_11_0 = null;
 
 
          enterRule(); 
             
         try {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1985:28: ( (otherlv_0= 'link' ( (lv_id_1_0= ruleURI ) ) otherlv_2= ':' ( ( ruleQualifiedID ) ) (otherlv_4= 'mixins' ( ( ruleQualifiedID ) ) (otherlv_6= ',' ( ( ruleQualifiedID ) ) )* )? otherlv_8= 'target' ( ( ruleURI ) ) otherlv_10= '{' ( (lv_attributes_11_0= ruleStateDecl ) )* otherlv_12= '}' ) )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1986:1: (otherlv_0= 'link' ( (lv_id_1_0= ruleURI ) ) otherlv_2= ':' ( ( ruleQualifiedID ) ) (otherlv_4= 'mixins' ( ( ruleQualifiedID ) ) (otherlv_6= ',' ( ( ruleQualifiedID ) ) )* )? otherlv_8= 'target' ( ( ruleURI ) ) otherlv_10= '{' ( (lv_attributes_11_0= ruleStateDecl ) )* otherlv_12= '}' )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1981:28: ( (otherlv_0= 'link' ( (lv_id_1_0= RULE_STRING ) ) otherlv_2= ':' ( ( ruleQualifiedID ) ) (otherlv_4= 'mixins' ( ( ruleQualifiedID ) ) (otherlv_6= ',' ( ( ruleQualifiedID ) ) )* )? otherlv_8= 'target' ( (otherlv_9= RULE_STRING ) ) otherlv_10= '{' ( (lv_attributes_11_0= ruleStateDecl ) )* otherlv_12= '}' ) )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1982:1: (otherlv_0= 'link' ( (lv_id_1_0= RULE_STRING ) ) otherlv_2= ':' ( ( ruleQualifiedID ) ) (otherlv_4= 'mixins' ( ( ruleQualifiedID ) ) (otherlv_6= ',' ( ( ruleQualifiedID ) ) )* )? otherlv_8= 'target' ( (otherlv_9= RULE_STRING ) ) otherlv_10= '{' ( (lv_attributes_11_0= ruleStateDecl ) )* otherlv_12= '}' )
             {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1986:1: (otherlv_0= 'link' ( (lv_id_1_0= ruleURI ) ) otherlv_2= ':' ( ( ruleQualifiedID ) ) (otherlv_4= 'mixins' ( ( ruleQualifiedID ) ) (otherlv_6= ',' ( ( ruleQualifiedID ) ) )* )? otherlv_8= 'target' ( ( ruleURI ) ) otherlv_10= '{' ( (lv_attributes_11_0= ruleStateDecl ) )* otherlv_12= '}' )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1986:3: otherlv_0= 'link' ( (lv_id_1_0= ruleURI ) ) otherlv_2= ':' ( ( ruleQualifiedID ) ) (otherlv_4= 'mixins' ( ( ruleQualifiedID ) ) (otherlv_6= ',' ( ( ruleQualifiedID ) ) )* )? otherlv_8= 'target' ( ( ruleURI ) ) otherlv_10= '{' ( (lv_attributes_11_0= ruleStateDecl ) )* otherlv_12= '}'
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1982:1: (otherlv_0= 'link' ( (lv_id_1_0= RULE_STRING ) ) otherlv_2= ':' ( ( ruleQualifiedID ) ) (otherlv_4= 'mixins' ( ( ruleQualifiedID ) ) (otherlv_6= ',' ( ( ruleQualifiedID ) ) )* )? otherlv_8= 'target' ( (otherlv_9= RULE_STRING ) ) otherlv_10= '{' ( (lv_attributes_11_0= ruleStateDecl ) )* otherlv_12= '}' )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1982:3: otherlv_0= 'link' ( (lv_id_1_0= RULE_STRING ) ) otherlv_2= ':' ( ( ruleQualifiedID ) ) (otherlv_4= 'mixins' ( ( ruleQualifiedID ) ) (otherlv_6= ',' ( ( ruleQualifiedID ) ) )* )? otherlv_8= 'target' ( (otherlv_9= RULE_STRING ) ) otherlv_10= '{' ( (lv_attributes_11_0= ruleStateDecl ) )* otherlv_12= '}'
             {
-            otherlv_0=(Token)match(input,53,FollowSets000.FOLLOW_53_in_ruleLinkDecl4022); 
+            otherlv_0=(Token)match(input,53,FollowSets000.FOLLOW_53_in_ruleLinkDecl4019); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getLinkDeclAccess().getLinkKeyword_0());
                 
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1990:1: ( (lv_id_1_0= ruleURI ) )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1991:1: (lv_id_1_0= ruleURI )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1986:1: ( (lv_id_1_0= RULE_STRING ) )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1987:1: (lv_id_1_0= RULE_STRING )
             {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1991:1: (lv_id_1_0= ruleURI )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1992:3: lv_id_1_0= ruleURI
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1987:1: (lv_id_1_0= RULE_STRING )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1988:3: lv_id_1_0= RULE_STRING
             {
-             
-            	        newCompositeNode(grammarAccess.getLinkDeclAccess().getIdURIParserRuleCall_1_0()); 
-            	    
-            pushFollow(FollowSets000.FOLLOW_ruleURI_in_ruleLinkDecl4043);
-            lv_id_1_0=ruleURI();
+            lv_id_1_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleLinkDecl4036); 
 
-            state._fsp--;
-
+            			newLeafNode(lv_id_1_0, grammarAccess.getLinkDeclAccess().getIdSTRINGTerminalRuleCall_1_0()); 
+            		
 
             	        if (current==null) {
-            	            current = createModelElementForParent(grammarAccess.getLinkDeclRule());
+            	            current = createModelElement(grammarAccess.getLinkDeclRule());
             	        }
-                   		set(
+                   		setWithLastConsumed(
                    			current, 
                    			"id",
                     		lv_id_1_0, 
-                    		"URI");
-            	        afterParserOrEnumRuleCall();
+                    		"STRING");
             	    
 
             }
@@ -4738,15 +4703,15 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,12,FollowSets000.FOLLOW_12_in_ruleLinkDecl4055); 
+            otherlv_2=(Token)match(input,12,FollowSets000.FOLLOW_12_in_ruleLinkDecl4053); 
 
                 	newLeafNode(otherlv_2, grammarAccess.getLinkDeclAccess().getColonKeyword_2());
                 
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2012:1: ( ( ruleQualifiedID ) )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2013:1: ( ruleQualifiedID )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2008:1: ( ( ruleQualifiedID ) )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2009:1: ( ruleQualifiedID )
             {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2013:1: ( ruleQualifiedID )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2014:3: ruleQualifiedID
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2009:1: ( ruleQualifiedID )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2010:3: ruleQualifiedID
             {
 
             			if (current==null) {
@@ -4756,7 +4721,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
              
             	        newCompositeNode(grammarAccess.getLinkDeclAccess().getKindKindCrossReference_3_0()); 
             	    
-            pushFollow(FollowSets000.FOLLOW_ruleQualifiedID_in_ruleLinkDecl4078);
+            pushFollow(FollowSets000.FOLLOW_ruleQualifiedID_in_ruleLinkDecl4076);
             ruleQualifiedID();
 
             state._fsp--;
@@ -4770,7 +4735,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2027:2: (otherlv_4= 'mixins' ( ( ruleQualifiedID ) ) (otherlv_6= ',' ( ( ruleQualifiedID ) ) )* )?
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2023:2: (otherlv_4= 'mixins' ( ( ruleQualifiedID ) ) (otherlv_6= ',' ( ( ruleQualifiedID ) ) )* )?
             int alt38=2;
             int LA38_0 = input.LA(1);
 
@@ -4779,17 +4744,17 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
             }
             switch (alt38) {
                 case 1 :
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2027:4: otherlv_4= 'mixins' ( ( ruleQualifiedID ) ) (otherlv_6= ',' ( ( ruleQualifiedID ) ) )*
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2023:4: otherlv_4= 'mixins' ( ( ruleQualifiedID ) ) (otherlv_6= ',' ( ( ruleQualifiedID ) ) )*
                     {
-                    otherlv_4=(Token)match(input,51,FollowSets000.FOLLOW_51_in_ruleLinkDecl4091); 
+                    otherlv_4=(Token)match(input,51,FollowSets000.FOLLOW_51_in_ruleLinkDecl4089); 
 
                         	newLeafNode(otherlv_4, grammarAccess.getLinkDeclAccess().getMixinsKeyword_4_0());
                         
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2031:1: ( ( ruleQualifiedID ) )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2032:1: ( ruleQualifiedID )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2027:1: ( ( ruleQualifiedID ) )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2028:1: ( ruleQualifiedID )
                     {
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2032:1: ( ruleQualifiedID )
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2033:3: ruleQualifiedID
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2028:1: ( ruleQualifiedID )
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2029:3: ruleQualifiedID
                     {
 
                     			if (current==null) {
@@ -4799,7 +4764,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
                      
                     	        newCompositeNode(grammarAccess.getLinkDeclAccess().getMixinsMixinCrossReference_4_1_0()); 
                     	    
-                    pushFollow(FollowSets000.FOLLOW_ruleQualifiedID_in_ruleLinkDecl4114);
+                    pushFollow(FollowSets000.FOLLOW_ruleQualifiedID_in_ruleLinkDecl4112);
                     ruleQualifiedID();
 
                     state._fsp--;
@@ -4813,7 +4778,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2046:2: (otherlv_6= ',' ( ( ruleQualifiedID ) ) )*
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2042:2: (otherlv_6= ',' ( ( ruleQualifiedID ) ) )*
                     loop37:
                     do {
                         int alt37=2;
@@ -4826,17 +4791,17 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
                         switch (alt37) {
                     	case 1 :
-                    	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2046:4: otherlv_6= ',' ( ( ruleQualifiedID ) )
+                    	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2042:4: otherlv_6= ',' ( ( ruleQualifiedID ) )
                     	    {
-                    	    otherlv_6=(Token)match(input,22,FollowSets000.FOLLOW_22_in_ruleLinkDecl4127); 
+                    	    otherlv_6=(Token)match(input,22,FollowSets000.FOLLOW_22_in_ruleLinkDecl4125); 
 
                     	        	newLeafNode(otherlv_6, grammarAccess.getLinkDeclAccess().getCommaKeyword_4_2_0());
                     	        
-                    	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2050:1: ( ( ruleQualifiedID ) )
-                    	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2051:1: ( ruleQualifiedID )
+                    	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2046:1: ( ( ruleQualifiedID ) )
+                    	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2047:1: ( ruleQualifiedID )
                     	    {
-                    	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2051:1: ( ruleQualifiedID )
-                    	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2052:3: ruleQualifiedID
+                    	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2047:1: ( ruleQualifiedID )
+                    	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2048:3: ruleQualifiedID
                     	    {
 
                     	    			if (current==null) {
@@ -4846,7 +4811,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
                     	     
                     	    	        newCompositeNode(grammarAccess.getLinkDeclAccess().getMixinsMixinCrossReference_4_2_1_0()); 
                     	    	    
-                    	    pushFollow(FollowSets000.FOLLOW_ruleQualifiedID_in_ruleLinkDecl4150);
+                    	    pushFollow(FollowSets000.FOLLOW_ruleQualifiedID_in_ruleLinkDecl4148);
                     	    ruleQualifiedID();
 
                     	    state._fsp--;
@@ -4875,43 +4840,36 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_8=(Token)match(input,54,FollowSets000.FOLLOW_54_in_ruleLinkDecl4166); 
+            otherlv_8=(Token)match(input,54,FollowSets000.FOLLOW_54_in_ruleLinkDecl4164); 
 
                 	newLeafNode(otherlv_8, grammarAccess.getLinkDeclAccess().getTargetKeyword_5());
                 
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2069:1: ( ( ruleURI ) )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2070:1: ( ruleURI )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2065:1: ( (otherlv_9= RULE_STRING ) )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2066:1: (otherlv_9= RULE_STRING )
             {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2070:1: ( ruleURI )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2071:3: ruleURI
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2066:1: (otherlv_9= RULE_STRING )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2067:3: otherlv_9= RULE_STRING
             {
 
             			if (current==null) {
             	            current = createModelElement(grammarAccess.getLinkDeclRule());
             	        }
                     
-             
-            	        newCompositeNode(grammarAccess.getLinkDeclAccess().getTargetResourceCrossReference_6_0()); 
-            	    
-            pushFollow(FollowSets000.FOLLOW_ruleURI_in_ruleLinkDecl4189);
-            ruleURI();
+            otherlv_9=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleLinkDecl4184); 
 
-            state._fsp--;
-
-             
-            	        afterParserOrEnumRuleCall();
-            	    
+            		newLeafNode(otherlv_9, grammarAccess.getLinkDeclAccess().getTargetResourceCrossReference_6_0()); 
+            	
 
             }
 
 
             }
 
-            otherlv_10=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleLinkDecl4201); 
+            otherlv_10=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleLinkDecl4196); 
 
                 	newLeafNode(otherlv_10, grammarAccess.getLinkDeclAccess().getLeftCurlyBracketKeyword_7());
                 
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2088:1: ( (lv_attributes_11_0= ruleStateDecl ) )*
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2082:1: ( (lv_attributes_11_0= ruleStateDecl ) )*
             loop39:
             do {
                 int alt39=2;
@@ -4924,15 +4882,15 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
                 switch (alt39) {
             	case 1 :
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2089:1: (lv_attributes_11_0= ruleStateDecl )
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2083:1: (lv_attributes_11_0= ruleStateDecl )
             	    {
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2089:1: (lv_attributes_11_0= ruleStateDecl )
-            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2090:3: lv_attributes_11_0= ruleStateDecl
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2083:1: (lv_attributes_11_0= ruleStateDecl )
+            	    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2084:3: lv_attributes_11_0= ruleStateDecl
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getLinkDeclAccess().getAttributesStateDeclParserRuleCall_8_0()); 
             	    	    
-            	    pushFollow(FollowSets000.FOLLOW_ruleStateDecl_in_ruleLinkDecl4222);
+            	    pushFollow(FollowSets000.FOLLOW_ruleStateDecl_in_ruleLinkDecl4217);
             	    lv_attributes_11_0=ruleStateDecl();
 
             	    state._fsp--;
@@ -4960,7 +4918,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            otherlv_12=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleLinkDecl4235); 
+            otherlv_12=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleLinkDecl4230); 
 
                 	newLeafNode(otherlv_12, grammarAccess.getLinkDeclAccess().getRightCurlyBracketKeyword_9());
                 
@@ -4984,81 +4942,8 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleLinkDecl"
 
 
-    // $ANTLR start "entryRuleURI"
-    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2118:1: entryRuleURI returns [String current=null] : iv_ruleURI= ruleURI EOF ;
-    public final String entryRuleURI() throws RecognitionException {
-        String current = null;
-
-        AntlrDatatypeRuleToken iv_ruleURI = null;
-
-
-        try {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2119:2: (iv_ruleURI= ruleURI EOF )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2120:2: iv_ruleURI= ruleURI EOF
-            {
-             newCompositeNode(grammarAccess.getURIRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleURI_in_entryRuleURI4272);
-            iv_ruleURI=ruleURI();
-
-            state._fsp--;
-
-             current =iv_ruleURI.getText(); 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleURI4283); 
-
-            }
-
-        }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
-                appendSkippedTokens();
-            } 
-        finally {
-        }
-        return current;
-    }
-    // $ANTLR end "entryRuleURI"
-
-
-    // $ANTLR start "ruleURI"
-    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2127:1: ruleURI returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : this_STRING_0= RULE_STRING ;
-    public final AntlrDatatypeRuleToken ruleURI() throws RecognitionException {
-        AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
-
-        Token this_STRING_0=null;
-
-         enterRule(); 
-            
-        try {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2130:28: (this_STRING_0= RULE_STRING )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2131:5: this_STRING_0= RULE_STRING
-            {
-            this_STRING_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleURI4322); 
-
-            		current.merge(this_STRING_0);
-                
-             
-                newLeafNode(this_STRING_0, grammarAccess.getURIAccess().getSTRINGTerminalRuleCall()); 
-                
-
-            }
-
-             leaveRule(); 
-        }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
-                appendSkippedTokens();
-            } 
-        finally {
-        }
-        return current;
-    }
-    // $ANTLR end "ruleURI"
-
-
     // $ANTLR start "entryRuleQualifiedID"
-    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2146:1: entryRuleQualifiedID returns [String current=null] : iv_ruleQualifiedID= ruleQualifiedID EOF ;
+    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2112:1: entryRuleQualifiedID returns [String current=null] : iv_ruleQualifiedID= ruleQualifiedID EOF ;
     public final String entryRuleQualifiedID() throws RecognitionException {
         String current = null;
 
@@ -5066,17 +4951,17 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2147:2: (iv_ruleQualifiedID= ruleQualifiedID EOF )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2148:2: iv_ruleQualifiedID= ruleQualifiedID EOF
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2113:2: (iv_ruleQualifiedID= ruleQualifiedID EOF )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2114:2: iv_ruleQualifiedID= ruleQualifiedID EOF
             {
              newCompositeNode(grammarAccess.getQualifiedIDRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleQualifiedID_in_entryRuleQualifiedID4367);
+            pushFollow(FollowSets000.FOLLOW_ruleQualifiedID_in_entryRuleQualifiedID4267);
             iv_ruleQualifiedID=ruleQualifiedID();
 
             state._fsp--;
 
              current =iv_ruleQualifiedID.getText(); 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleQualifiedID4378); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleQualifiedID4278); 
 
             }
 
@@ -5094,7 +4979,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleQualifiedID"
-    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2155:1: ruleQualifiedID returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )? ) ;
+    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2121:1: ruleQualifiedID returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )? ) ;
     public final AntlrDatatypeRuleToken ruleQualifiedID() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -5105,20 +4990,20 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2158:28: ( (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )? ) )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2159:1: (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )? )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2124:28: ( (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )? ) )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2125:1: (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )? )
             {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2159:1: (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )? )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2159:6: this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )?
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2125:1: (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )? )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2125:6: this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )?
             {
-            this_ID_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleQualifiedID4418); 
+            this_ID_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleQualifiedID4318); 
 
             		current.merge(this_ID_0);
                 
              
                 newLeafNode(this_ID_0, grammarAccess.getQualifiedIDAccess().getIDTerminalRuleCall_0()); 
                 
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2166:1: (kw= '.' this_ID_2= RULE_ID )?
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2132:1: (kw= '.' this_ID_2= RULE_ID )?
             int alt40=2;
             int LA40_0 = input.LA(1);
 
@@ -5127,14 +5012,14 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
             }
             switch (alt40) {
                 case 1 :
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2167:2: kw= '.' this_ID_2= RULE_ID
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2133:2: kw= '.' this_ID_2= RULE_ID
                     {
-                    kw=(Token)match(input,55,FollowSets000.FOLLOW_55_in_ruleQualifiedID4437); 
+                    kw=(Token)match(input,55,FollowSets000.FOLLOW_55_in_ruleQualifiedID4337); 
 
                             current.merge(kw);
                             newLeafNode(kw, grammarAccess.getQualifiedIDAccess().getFullStopKeyword_1_0()); 
                         
-                    this_ID_2=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleQualifiedID4452); 
+                    this_ID_2=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleQualifiedID4352); 
 
                     		current.merge(this_ID_2);
                         
@@ -5168,7 +5053,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleInteger"
-    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2187:1: entryRuleInteger returns [String current=null] : iv_ruleInteger= ruleInteger EOF ;
+    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2153:1: entryRuleInteger returns [String current=null] : iv_ruleInteger= ruleInteger EOF ;
     public final String entryRuleInteger() throws RecognitionException {
         String current = null;
 
@@ -5176,17 +5061,17 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2188:2: (iv_ruleInteger= ruleInteger EOF )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2189:2: iv_ruleInteger= ruleInteger EOF
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2154:2: (iv_ruleInteger= ruleInteger EOF )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2155:2: iv_ruleInteger= ruleInteger EOF
             {
              newCompositeNode(grammarAccess.getIntegerRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleInteger_in_entryRuleInteger4500);
+            pushFollow(FollowSets000.FOLLOW_ruleInteger_in_entryRuleInteger4400);
             iv_ruleInteger=ruleInteger();
 
             state._fsp--;
 
              current =iv_ruleInteger.getText(); 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleInteger4511); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleInteger4411); 
 
             }
 
@@ -5204,7 +5089,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleInteger"
-    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2196:1: ruleInteger returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : ( (kw= '-' )? this_INT_1= RULE_INT ) ;
+    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2162:1: ruleInteger returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : ( (kw= '-' )? this_INT_1= RULE_INT ) ;
     public final AntlrDatatypeRuleToken ruleInteger() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -5214,13 +5099,13 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2199:28: ( ( (kw= '-' )? this_INT_1= RULE_INT ) )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2200:1: ( (kw= '-' )? this_INT_1= RULE_INT )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2165:28: ( ( (kw= '-' )? this_INT_1= RULE_INT ) )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2166:1: ( (kw= '-' )? this_INT_1= RULE_INT )
             {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2200:1: ( (kw= '-' )? this_INT_1= RULE_INT )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2200:2: (kw= '-' )? this_INT_1= RULE_INT
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2166:1: ( (kw= '-' )? this_INT_1= RULE_INT )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2166:2: (kw= '-' )? this_INT_1= RULE_INT
             {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2200:2: (kw= '-' )?
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2166:2: (kw= '-' )?
             int alt41=2;
             int LA41_0 = input.LA(1);
 
@@ -5229,9 +5114,9 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
             }
             switch (alt41) {
                 case 1 :
-                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2201:2: kw= '-'
+                    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2167:2: kw= '-'
                     {
-                    kw=(Token)match(input,56,FollowSets000.FOLLOW_56_in_ruleInteger4550); 
+                    kw=(Token)match(input,56,FollowSets000.FOLLOW_56_in_ruleInteger4450); 
 
                             current.merge(kw);
                             newLeafNode(kw, grammarAccess.getIntegerAccess().getHyphenMinusKeyword_0()); 
@@ -5242,7 +5127,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
             }
 
-            this_INT_1=(Token)match(input,RULE_INT,FollowSets000.FOLLOW_RULE_INT_in_ruleInteger4567); 
+            this_INT_1=(Token)match(input,RULE_INT,FollowSets000.FOLLOW_RULE_INT_in_ruleInteger4467); 
 
             		current.merge(this_INT_1);
                 
@@ -5270,7 +5155,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRulePositiveInteger"
-    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2221:1: entryRulePositiveInteger returns [String current=null] : iv_rulePositiveInteger= rulePositiveInteger EOF ;
+    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2187:1: entryRulePositiveInteger returns [String current=null] : iv_rulePositiveInteger= rulePositiveInteger EOF ;
     public final String entryRulePositiveInteger() throws RecognitionException {
         String current = null;
 
@@ -5278,17 +5163,17 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2222:2: (iv_rulePositiveInteger= rulePositiveInteger EOF )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2223:2: iv_rulePositiveInteger= rulePositiveInteger EOF
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2188:2: (iv_rulePositiveInteger= rulePositiveInteger EOF )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2189:2: iv_rulePositiveInteger= rulePositiveInteger EOF
             {
              newCompositeNode(grammarAccess.getPositiveIntegerRule()); 
-            pushFollow(FollowSets000.FOLLOW_rulePositiveInteger_in_entryRulePositiveInteger4613);
+            pushFollow(FollowSets000.FOLLOW_rulePositiveInteger_in_entryRulePositiveInteger4513);
             iv_rulePositiveInteger=rulePositiveInteger();
 
             state._fsp--;
 
              current =iv_rulePositiveInteger.getText(); 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRulePositiveInteger4624); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRulePositiveInteger4524); 
 
             }
 
@@ -5306,7 +5191,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulePositiveInteger"
-    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2230:1: rulePositiveInteger returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : this_INT_0= RULE_INT ;
+    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2196:1: rulePositiveInteger returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : this_INT_0= RULE_INT ;
     public final AntlrDatatypeRuleToken rulePositiveInteger() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -5315,10 +5200,10 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2233:28: (this_INT_0= RULE_INT )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2234:5: this_INT_0= RULE_INT
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2199:28: (this_INT_0= RULE_INT )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:2200:5: this_INT_0= RULE_INT
             {
-            this_INT_0=(Token)match(input,RULE_INT,FollowSets000.FOLLOW_RULE_INT_in_rulePositiveInteger4663); 
+            this_INT_0=(Token)match(input,RULE_INT,FollowSets000.FOLLOW_RULE_INT_in_rulePositiveInteger4563); 
 
             		current.merge(this_INT_0);
                 
@@ -5357,200 +5242,197 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_11_in_ruleExtensionDecl241 = new BitSet(new long[]{0x0000000000000010L});
         public static final BitSet FOLLOW_RULE_ID_in_ruleExtensionDecl258 = new BitSet(new long[]{0x0000000000001000L});
         public static final BitSet FOLLOW_12_in_ruleExtensionDecl275 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_ruleURI_in_ruleExtensionDecl296 = new BitSet(new long[]{0x000080040010A002L});
-        public static final BitSet FOLLOW_13_in_ruleExtensionDecl309 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_ruleURI_in_ruleExtensionDecl332 = new BitSet(new long[]{0x000080040010E002L});
-        public static final BitSet FOLLOW_14_in_ruleExtensionDecl345 = new BitSet(new long[]{0x0000000000000010L});
-        public static final BitSet FOLLOW_RULE_ID_in_ruleExtensionDecl356 = new BitSet(new long[]{0x000080040010A002L});
-        public static final BitSet FOLLOW_ruleKindDecl_in_ruleExtensionDecl381 = new BitSet(new long[]{0x0000800400108002L});
-        public static final BitSet FOLLOW_ruleMixinDecl_in_ruleExtensionDecl408 = new BitSet(new long[]{0x0000800400108002L});
-        public static final BitSet FOLLOW_ruleDataTypeDecl_in_ruleExtensionDecl435 = new BitSet(new long[]{0x0000800400108002L});
-        public static final BitSet FOLLOW_ruleEnumTypeDecl_in_ruleExtensionDecl462 = new BitSet(new long[]{0x0000800400108002L});
-        public static final BitSet FOLLOW_ruleKindDecl_in_entryRuleKindDecl500 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleKindDecl510 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_15_in_ruleKindDecl547 = new BitSet(new long[]{0x0000000000000010L});
-        public static final BitSet FOLLOW_RULE_ID_in_ruleKindDecl564 = new BitSet(new long[]{0x0000000000030000L});
-        public static final BitSet FOLLOW_16_in_ruleKindDecl582 = new BitSet(new long[]{0x0000000000000010L});
-        public static final BitSet FOLLOW_ruleQualifiedID_in_ruleKindDecl605 = new BitSet(new long[]{0x0000000000020000L});
-        public static final BitSet FOLLOW_17_in_ruleKindDecl619 = new BitSet(new long[]{0x00000000820C0000L});
-        public static final BitSet FOLLOW_18_in_ruleKindDecl632 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_RULE_STRING_in_ruleKindDecl649 = new BitSet(new long[]{0x0000000082080000L});
-        public static final BitSet FOLLOW_ruleAttributeDecl_in_ruleKindDecl678 = new BitSet(new long[]{0x0000000082080000L});
-        public static final BitSet FOLLOW_ruleActionDecl_in_ruleKindDecl705 = new BitSet(new long[]{0x0000000082080000L});
-        public static final BitSet FOLLOW_19_in_ruleKindDecl719 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleMixinDecl_in_entryRuleMixinDecl755 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleMixinDecl765 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_20_in_ruleMixinDecl802 = new BitSet(new long[]{0x0000000000000010L});
-        public static final BitSet FOLLOW_RULE_ID_in_ruleMixinDecl819 = new BitSet(new long[]{0x0000000000A20000L});
-        public static final BitSet FOLLOW_21_in_ruleMixinDecl837 = new BitSet(new long[]{0x0000000000000010L});
-        public static final BitSet FOLLOW_ruleQualifiedID_in_ruleMixinDecl860 = new BitSet(new long[]{0x0000000000C20000L});
-        public static final BitSet FOLLOW_22_in_ruleMixinDecl873 = new BitSet(new long[]{0x0000000000000010L});
-        public static final BitSet FOLLOW_ruleQualifiedID_in_ruleMixinDecl896 = new BitSet(new long[]{0x0000000000C20000L});
-        public static final BitSet FOLLOW_23_in_ruleMixinDecl913 = new BitSet(new long[]{0x0000000000000010L});
-        public static final BitSet FOLLOW_ruleQualifiedID_in_ruleMixinDecl936 = new BitSet(new long[]{0x0000000000420000L});
-        public static final BitSet FOLLOW_22_in_ruleMixinDecl949 = new BitSet(new long[]{0x0000000000000010L});
-        public static final BitSet FOLLOW_ruleQualifiedID_in_ruleMixinDecl972 = new BitSet(new long[]{0x0000000000420000L});
-        public static final BitSet FOLLOW_17_in_ruleMixinDecl988 = new BitSet(new long[]{0x00000000830C0000L});
-        public static final BitSet FOLLOW_24_in_ruleMixinDecl1001 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_ruleURI_in_ruleMixinDecl1022 = new BitSet(new long[]{0x00000000820C0000L});
-        public static final BitSet FOLLOW_18_in_ruleMixinDecl1037 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_RULE_STRING_in_ruleMixinDecl1054 = new BitSet(new long[]{0x0000000082080000L});
-        public static final BitSet FOLLOW_ruleAttributeDecl_in_ruleMixinDecl1083 = new BitSet(new long[]{0x0000000082080000L});
-        public static final BitSet FOLLOW_ruleActionDecl_in_ruleMixinDecl1110 = new BitSet(new long[]{0x0000000082080000L});
-        public static final BitSet FOLLOW_19_in_ruleMixinDecl1124 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleAttributeDecl_in_entryRuleAttributeDecl1160 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleAttributeDecl1170 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_25_in_ruleAttributeDecl1207 = new BitSet(new long[]{0x000000000C000010L});
-        public static final BitSet FOLLOW_26_in_ruleAttributeDecl1225 = new BitSet(new long[]{0x0000000008000010L});
-        public static final BitSet FOLLOW_27_in_ruleAttributeDecl1257 = new BitSet(new long[]{0x0000000000000010L});
-        public static final BitSet FOLLOW_RULE_ID_in_ruleAttributeDecl1288 = new BitSet(new long[]{0x0000000000001000L});
-        public static final BitSet FOLLOW_12_in_ruleAttributeDecl1305 = new BitSet(new long[]{0x0000000000000010L});
-        public static final BitSet FOLLOW_ruleQualifiedID_in_ruleAttributeDecl1328 = new BitSet(new long[]{0x0000000030020002L});
-        public static final BitSet FOLLOW_28_in_ruleAttributeDecl1341 = new BitSet(new long[]{0x0000000020020002L});
-        public static final BitSet FOLLOW_29_in_ruleAttributeDecl1356 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_RULE_STRING_in_ruleAttributeDecl1373 = new BitSet(new long[]{0x0000000000020002L});
-        public static final BitSet FOLLOW_17_in_ruleAttributeDecl1393 = new BitSet(new long[]{0x0000000040080000L});
-        public static final BitSet FOLLOW_30_in_ruleAttributeDecl1406 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_RULE_STRING_in_ruleAttributeDecl1423 = new BitSet(new long[]{0x0000000000080000L});
-        public static final BitSet FOLLOW_19_in_ruleAttributeDecl1442 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleActionDecl_in_entryRuleActionDecl1480 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleActionDecl1490 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_31_in_ruleActionDecl1527 = new BitSet(new long[]{0x0000000000000010L});
-        public static final BitSet FOLLOW_RULE_ID_in_ruleActionDecl1544 = new BitSet(new long[]{0x0000000100000000L});
-        public static final BitSet FOLLOW_32_in_ruleActionDecl1561 = new BitSet(new long[]{0x0000000200000010L});
-        public static final BitSet FOLLOW_ruleParameterDecl_in_ruleActionDecl1583 = new BitSet(new long[]{0x0000000200400000L});
-        public static final BitSet FOLLOW_22_in_ruleActionDecl1596 = new BitSet(new long[]{0x0000000000000010L});
-        public static final BitSet FOLLOW_ruleParameterDecl_in_ruleActionDecl1617 = new BitSet(new long[]{0x0000000200400000L});
-        public static final BitSet FOLLOW_33_in_ruleActionDecl1633 = new BitSet(new long[]{0x0000000000020002L});
-        public static final BitSet FOLLOW_17_in_ruleActionDecl1646 = new BitSet(new long[]{0x0000000000040000L});
-        public static final BitSet FOLLOW_18_in_ruleActionDecl1658 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_RULE_STRING_in_ruleActionDecl1675 = new BitSet(new long[]{0x0000000000080000L});
-        public static final BitSet FOLLOW_19_in_ruleActionDecl1692 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleParameterDecl_in_entryRuleParameterDecl1730 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleParameterDecl1740 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_RULE_ID_in_ruleParameterDecl1782 = new BitSet(new long[]{0x0000000000001000L});
-        public static final BitSet FOLLOW_12_in_ruleParameterDecl1799 = new BitSet(new long[]{0x0000000000000010L});
-        public static final BitSet FOLLOW_ruleQualifiedID_in_ruleParameterDecl1822 = new BitSet(new long[]{0x0000000010000002L});
-        public static final BitSet FOLLOW_28_in_ruleParameterDecl1840 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleDataTypeDecl_in_entryRuleDataTypeDecl1890 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleDataTypeDecl1900 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_34_in_ruleDataTypeDecl1946 = new BitSet(new long[]{0x0000000800000010L});
-        public static final BitSet FOLLOW_35_in_ruleDataTypeDecl1964 = new BitSet(new long[]{0x0000000000000010L});
-        public static final BitSet FOLLOW_RULE_ID_in_ruleDataTypeDecl1995 = new BitSet(new long[]{0x0000000000001000L});
-        public static final BitSet FOLLOW_12_in_ruleDataTypeDecl2012 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_RULE_STRING_in_ruleDataTypeDecl2029 = new BitSet(new long[]{0x0000000000020002L});
-        public static final BitSet FOLLOW_17_in_ruleDataTypeDecl2047 = new BitSet(new long[]{0x00007FF000000000L});
-        public static final BitSet FOLLOW_ruleDataTypeAnnotations_in_ruleDataTypeDecl2068 = new BitSet(new long[]{0x0000000000080000L});
-        public static final BitSet FOLLOW_19_in_ruleDataTypeDecl2080 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleDataTypeAnnotations_in_entryRuleDataTypeAnnotations2118 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleDataTypeAnnotations2128 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleDataTypeAnnotation_in_ruleDataTypeAnnotations2173 = new BitSet(new long[]{0x00007FF000000002L});
-        public static final BitSet FOLLOW_ruleDataTypeAnnotation_in_entryRuleDataTypeAnnotation2209 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleDataTypeAnnotation2219 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_36_in_ruleDataTypeAnnotation2263 = new BitSet(new long[]{0x0000000020000000L});
-        public static final BitSet FOLLOW_29_in_ruleDataTypeAnnotation2288 = new BitSet(new long[]{0x0100000000000040L});
-        public static final BitSet FOLLOW_ruleInteger_in_ruleDataTypeAnnotation2309 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_37_in_ruleDataTypeAnnotation2335 = new BitSet(new long[]{0x0000002000000000L});
-        public static final BitSet FOLLOW_37_in_ruleDataTypeAnnotation2360 = new BitSet(new long[]{0x0000000020000000L});
-        public static final BitSet FOLLOW_29_in_ruleDataTypeAnnotation2372 = new BitSet(new long[]{0x0100000000000040L});
-        public static final BitSet FOLLOW_ruleInteger_in_ruleDataTypeAnnotation2393 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_38_in_ruleDataTypeAnnotation2419 = new BitSet(new long[]{0x0000000020000000L});
-        public static final BitSet FOLLOW_29_in_ruleDataTypeAnnotation2444 = new BitSet(new long[]{0x0100000000000040L});
-        public static final BitSet FOLLOW_ruleInteger_in_ruleDataTypeAnnotation2465 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_39_in_ruleDataTypeAnnotation2491 = new BitSet(new long[]{0x0000000020000000L});
-        public static final BitSet FOLLOW_29_in_ruleDataTypeAnnotation2516 = new BitSet(new long[]{0x0100000000000040L});
-        public static final BitSet FOLLOW_ruleInteger_in_ruleDataTypeAnnotation2537 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_40_in_ruleDataTypeAnnotation2563 = new BitSet(new long[]{0x0000000020000000L});
-        public static final BitSet FOLLOW_29_in_ruleDataTypeAnnotation2588 = new BitSet(new long[]{0x0000000000000040L});
-        public static final BitSet FOLLOW_rulePositiveInteger_in_ruleDataTypeAnnotation2609 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_41_in_ruleDataTypeAnnotation2635 = new BitSet(new long[]{0x0000000020000000L});
-        public static final BitSet FOLLOW_29_in_ruleDataTypeAnnotation2660 = new BitSet(new long[]{0x0000000000000040L});
-        public static final BitSet FOLLOW_rulePositiveInteger_in_ruleDataTypeAnnotation2681 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_42_in_ruleDataTypeAnnotation2707 = new BitSet(new long[]{0x0000000020000000L});
-        public static final BitSet FOLLOW_29_in_ruleDataTypeAnnotation2732 = new BitSet(new long[]{0x0000000000000040L});
-        public static final BitSet FOLLOW_rulePositiveInteger_in_ruleDataTypeAnnotation2753 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_43_in_ruleDataTypeAnnotation2779 = new BitSet(new long[]{0x0000000020000000L});
-        public static final BitSet FOLLOW_29_in_ruleDataTypeAnnotation2804 = new BitSet(new long[]{0x0000000000000040L});
-        public static final BitSet FOLLOW_rulePositiveInteger_in_ruleDataTypeAnnotation2825 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_44_in_ruleDataTypeAnnotation2851 = new BitSet(new long[]{0x0000000020000000L});
-        public static final BitSet FOLLOW_29_in_ruleDataTypeAnnotation2876 = new BitSet(new long[]{0x0000000000000040L});
-        public static final BitSet FOLLOW_rulePositiveInteger_in_ruleDataTypeAnnotation2897 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_45_in_ruleDataTypeAnnotation2923 = new BitSet(new long[]{0x0000000020000000L});
-        public static final BitSet FOLLOW_29_in_ruleDataTypeAnnotation2948 = new BitSet(new long[]{0x0000000000000040L});
-        public static final BitSet FOLLOW_rulePositiveInteger_in_ruleDataTypeAnnotation2969 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_46_in_ruleDataTypeAnnotation2995 = new BitSet(new long[]{0x0000000020000000L});
-        public static final BitSet FOLLOW_29_in_ruleDataTypeAnnotation3020 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_RULE_STRING_in_ruleDataTypeAnnotation3037 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleEnumTypeDecl_in_entryRuleEnumTypeDecl3079 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleEnumTypeDecl3089 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_47_in_ruleEnumTypeDecl3135 = new BitSet(new long[]{0x0000000000000010L});
-        public static final BitSet FOLLOW_RULE_ID_in_ruleEnumTypeDecl3152 = new BitSet(new long[]{0x0000000000020000L});
-        public static final BitSet FOLLOW_17_in_ruleEnumTypeDecl3169 = new BitSet(new long[]{0x0000000000000010L});
-        public static final BitSet FOLLOW_ruleEnumLiteralDecl_in_ruleEnumTypeDecl3190 = new BitSet(new long[]{0x0000000000480000L});
-        public static final BitSet FOLLOW_22_in_ruleEnumTypeDecl3203 = new BitSet(new long[]{0x0000000000000010L});
-        public static final BitSet FOLLOW_ruleEnumLiteralDecl_in_ruleEnumTypeDecl3224 = new BitSet(new long[]{0x0000000000480000L});
-        public static final BitSet FOLLOW_19_in_ruleEnumTypeDecl3238 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleEnumLiteralDecl_in_entryRuleEnumLiteralDecl3274 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleEnumLiteralDecl3284 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_RULE_ID_in_ruleEnumLiteralDecl3335 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleConfigurationDecl_in_entryRuleConfigurationDecl3376 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleConfigurationDecl3386 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_48_in_ruleConfigurationDecl3432 = new BitSet(new long[]{0x0006000000000002L});
-        public static final BitSet FOLLOW_49_in_ruleConfigurationDecl3445 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_ruleURI_in_ruleConfigurationDecl3468 = new BitSet(new long[]{0x0006000000004002L});
-        public static final BitSet FOLLOW_14_in_ruleConfigurationDecl3481 = new BitSet(new long[]{0x0000000000000010L});
-        public static final BitSet FOLLOW_RULE_ID_in_ruleConfigurationDecl3492 = new BitSet(new long[]{0x0006000000000002L});
-        public static final BitSet FOLLOW_ruleResourceDecl_in_ruleConfigurationDecl3516 = new BitSet(new long[]{0x0004000000000002L});
-        public static final BitSet FOLLOW_ruleResourceDecl_in_entryRuleResourceDecl3553 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleResourceDecl3563 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_50_in_ruleResourceDecl3600 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_ruleURI_in_ruleResourceDecl3621 = new BitSet(new long[]{0x0000000000001000L});
-        public static final BitSet FOLLOW_12_in_ruleResourceDecl3633 = new BitSet(new long[]{0x0000000000000010L});
-        public static final BitSet FOLLOW_ruleQualifiedID_in_ruleResourceDecl3656 = new BitSet(new long[]{0x0008000000020000L});
-        public static final BitSet FOLLOW_51_in_ruleResourceDecl3669 = new BitSet(new long[]{0x0000000000000010L});
-        public static final BitSet FOLLOW_ruleQualifiedID_in_ruleResourceDecl3692 = new BitSet(new long[]{0x0000000000420000L});
-        public static final BitSet FOLLOW_22_in_ruleResourceDecl3705 = new BitSet(new long[]{0x0000000000000010L});
-        public static final BitSet FOLLOW_ruleQualifiedID_in_ruleResourceDecl3728 = new BitSet(new long[]{0x0000000000420000L});
-        public static final BitSet FOLLOW_17_in_ruleResourceDecl3744 = new BitSet(new long[]{0x0030000000080000L});
-        public static final BitSet FOLLOW_ruleStateDecl_in_ruleResourceDecl3765 = new BitSet(new long[]{0x0030000000080000L});
-        public static final BitSet FOLLOW_ruleLinkDecl_in_ruleResourceDecl3787 = new BitSet(new long[]{0x0020000000080000L});
-        public static final BitSet FOLLOW_19_in_ruleResourceDecl3800 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleStateDecl_in_entryRuleStateDecl3836 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleStateDecl3846 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_52_in_ruleStateDecl3883 = new BitSet(new long[]{0x0000000000000010L});
-        public static final BitSet FOLLOW_RULE_ID_in_ruleStateDecl3900 = new BitSet(new long[]{0x0000000020000000L});
-        public static final BitSet FOLLOW_29_in_ruleStateDecl3917 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_RULE_STRING_in_ruleStateDecl3934 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleLinkDecl_in_entryRuleLinkDecl3975 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleLinkDecl3985 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_53_in_ruleLinkDecl4022 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_ruleURI_in_ruleLinkDecl4043 = new BitSet(new long[]{0x0000000000001000L});
-        public static final BitSet FOLLOW_12_in_ruleLinkDecl4055 = new BitSet(new long[]{0x0000000000000010L});
-        public static final BitSet FOLLOW_ruleQualifiedID_in_ruleLinkDecl4078 = new BitSet(new long[]{0x0048000000000000L});
-        public static final BitSet FOLLOW_51_in_ruleLinkDecl4091 = new BitSet(new long[]{0x0000000000000010L});
-        public static final BitSet FOLLOW_ruleQualifiedID_in_ruleLinkDecl4114 = new BitSet(new long[]{0x0040000000400000L});
-        public static final BitSet FOLLOW_22_in_ruleLinkDecl4127 = new BitSet(new long[]{0x0000000000000010L});
-        public static final BitSet FOLLOW_ruleQualifiedID_in_ruleLinkDecl4150 = new BitSet(new long[]{0x0040000000400000L});
-        public static final BitSet FOLLOW_54_in_ruleLinkDecl4166 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_ruleURI_in_ruleLinkDecl4189 = new BitSet(new long[]{0x0000000000020000L});
-        public static final BitSet FOLLOW_17_in_ruleLinkDecl4201 = new BitSet(new long[]{0x0010000000080000L});
-        public static final BitSet FOLLOW_ruleStateDecl_in_ruleLinkDecl4222 = new BitSet(new long[]{0x0010000000080000L});
-        public static final BitSet FOLLOW_19_in_ruleLinkDecl4235 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleURI_in_entryRuleURI4272 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleURI4283 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_RULE_STRING_in_ruleURI4322 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleQualifiedID_in_entryRuleQualifiedID4367 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleQualifiedID4378 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_RULE_ID_in_ruleQualifiedID4418 = new BitSet(new long[]{0x0080000000000002L});
-        public static final BitSet FOLLOW_55_in_ruleQualifiedID4437 = new BitSet(new long[]{0x0000000000000010L});
-        public static final BitSet FOLLOW_RULE_ID_in_ruleQualifiedID4452 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleInteger_in_entryRuleInteger4500 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleInteger4511 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_56_in_ruleInteger4550 = new BitSet(new long[]{0x0000000000000040L});
-        public static final BitSet FOLLOW_RULE_INT_in_ruleInteger4567 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rulePositiveInteger_in_entryRulePositiveInteger4613 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRulePositiveInteger4624 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_RULE_INT_in_rulePositiveInteger4663 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_RULE_STRING_in_ruleExtensionDecl292 = new BitSet(new long[]{0x000080040010A002L});
+        public static final BitSet FOLLOW_13_in_ruleExtensionDecl310 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_RULE_STRING_in_ruleExtensionDecl330 = new BitSet(new long[]{0x000080040010E002L});
+        public static final BitSet FOLLOW_14_in_ruleExtensionDecl343 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_RULE_ID_in_ruleExtensionDecl354 = new BitSet(new long[]{0x000080040010A002L});
+        public static final BitSet FOLLOW_ruleKindDecl_in_ruleExtensionDecl379 = new BitSet(new long[]{0x0000800400108002L});
+        public static final BitSet FOLLOW_ruleMixinDecl_in_ruleExtensionDecl406 = new BitSet(new long[]{0x0000800400108002L});
+        public static final BitSet FOLLOW_ruleDataTypeDecl_in_ruleExtensionDecl433 = new BitSet(new long[]{0x0000800400108002L});
+        public static final BitSet FOLLOW_ruleEnumTypeDecl_in_ruleExtensionDecl460 = new BitSet(new long[]{0x0000800400108002L});
+        public static final BitSet FOLLOW_ruleKindDecl_in_entryRuleKindDecl498 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleKindDecl508 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_15_in_ruleKindDecl545 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_RULE_ID_in_ruleKindDecl562 = new BitSet(new long[]{0x0000000000030000L});
+        public static final BitSet FOLLOW_16_in_ruleKindDecl580 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_ruleQualifiedID_in_ruleKindDecl603 = new BitSet(new long[]{0x0000000000020000L});
+        public static final BitSet FOLLOW_17_in_ruleKindDecl617 = new BitSet(new long[]{0x00000000820C0000L});
+        public static final BitSet FOLLOW_18_in_ruleKindDecl630 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_RULE_STRING_in_ruleKindDecl647 = new BitSet(new long[]{0x0000000082080000L});
+        public static final BitSet FOLLOW_ruleAttributeDecl_in_ruleKindDecl676 = new BitSet(new long[]{0x0000000082080000L});
+        public static final BitSet FOLLOW_ruleActionDecl_in_ruleKindDecl703 = new BitSet(new long[]{0x0000000082080000L});
+        public static final BitSet FOLLOW_19_in_ruleKindDecl717 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleMixinDecl_in_entryRuleMixinDecl753 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleMixinDecl763 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_20_in_ruleMixinDecl800 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_RULE_ID_in_ruleMixinDecl817 = new BitSet(new long[]{0x0000000000A20000L});
+        public static final BitSet FOLLOW_21_in_ruleMixinDecl835 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_ruleQualifiedID_in_ruleMixinDecl858 = new BitSet(new long[]{0x0000000000C20000L});
+        public static final BitSet FOLLOW_22_in_ruleMixinDecl871 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_ruleQualifiedID_in_ruleMixinDecl894 = new BitSet(new long[]{0x0000000000C20000L});
+        public static final BitSet FOLLOW_23_in_ruleMixinDecl911 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_ruleQualifiedID_in_ruleMixinDecl934 = new BitSet(new long[]{0x0000000000420000L});
+        public static final BitSet FOLLOW_22_in_ruleMixinDecl947 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_ruleQualifiedID_in_ruleMixinDecl970 = new BitSet(new long[]{0x0000000000420000L});
+        public static final BitSet FOLLOW_17_in_ruleMixinDecl986 = new BitSet(new long[]{0x00000000830C0000L});
+        public static final BitSet FOLLOW_24_in_ruleMixinDecl999 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_RULE_STRING_in_ruleMixinDecl1016 = new BitSet(new long[]{0x00000000820C0000L});
+        public static final BitSet FOLLOW_18_in_ruleMixinDecl1036 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_RULE_STRING_in_ruleMixinDecl1053 = new BitSet(new long[]{0x0000000082080000L});
+        public static final BitSet FOLLOW_ruleAttributeDecl_in_ruleMixinDecl1082 = new BitSet(new long[]{0x0000000082080000L});
+        public static final BitSet FOLLOW_ruleActionDecl_in_ruleMixinDecl1109 = new BitSet(new long[]{0x0000000082080000L});
+        public static final BitSet FOLLOW_19_in_ruleMixinDecl1123 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleAttributeDecl_in_entryRuleAttributeDecl1159 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleAttributeDecl1169 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_25_in_ruleAttributeDecl1206 = new BitSet(new long[]{0x000000000C000010L});
+        public static final BitSet FOLLOW_26_in_ruleAttributeDecl1224 = new BitSet(new long[]{0x0000000008000010L});
+        public static final BitSet FOLLOW_27_in_ruleAttributeDecl1256 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_RULE_ID_in_ruleAttributeDecl1287 = new BitSet(new long[]{0x0000000000001000L});
+        public static final BitSet FOLLOW_12_in_ruleAttributeDecl1304 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_ruleQualifiedID_in_ruleAttributeDecl1327 = new BitSet(new long[]{0x0000000030020002L});
+        public static final BitSet FOLLOW_28_in_ruleAttributeDecl1340 = new BitSet(new long[]{0x0000000020020002L});
+        public static final BitSet FOLLOW_29_in_ruleAttributeDecl1355 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_RULE_STRING_in_ruleAttributeDecl1372 = new BitSet(new long[]{0x0000000000020002L});
+        public static final BitSet FOLLOW_17_in_ruleAttributeDecl1392 = new BitSet(new long[]{0x0000000040080000L});
+        public static final BitSet FOLLOW_30_in_ruleAttributeDecl1405 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_RULE_STRING_in_ruleAttributeDecl1422 = new BitSet(new long[]{0x0000000000080000L});
+        public static final BitSet FOLLOW_19_in_ruleAttributeDecl1441 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleActionDecl_in_entryRuleActionDecl1479 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleActionDecl1489 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_31_in_ruleActionDecl1526 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_RULE_ID_in_ruleActionDecl1543 = new BitSet(new long[]{0x0000000100000000L});
+        public static final BitSet FOLLOW_32_in_ruleActionDecl1560 = new BitSet(new long[]{0x0000000200000010L});
+        public static final BitSet FOLLOW_ruleParameterDecl_in_ruleActionDecl1582 = new BitSet(new long[]{0x0000000200400000L});
+        public static final BitSet FOLLOW_22_in_ruleActionDecl1595 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_ruleParameterDecl_in_ruleActionDecl1616 = new BitSet(new long[]{0x0000000200400000L});
+        public static final BitSet FOLLOW_33_in_ruleActionDecl1632 = new BitSet(new long[]{0x0000000000020002L});
+        public static final BitSet FOLLOW_17_in_ruleActionDecl1645 = new BitSet(new long[]{0x0000000000040000L});
+        public static final BitSet FOLLOW_18_in_ruleActionDecl1657 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_RULE_STRING_in_ruleActionDecl1674 = new BitSet(new long[]{0x0000000000080000L});
+        public static final BitSet FOLLOW_19_in_ruleActionDecl1691 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleParameterDecl_in_entryRuleParameterDecl1729 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleParameterDecl1739 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_RULE_ID_in_ruleParameterDecl1781 = new BitSet(new long[]{0x0000000000001000L});
+        public static final BitSet FOLLOW_12_in_ruleParameterDecl1798 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_ruleQualifiedID_in_ruleParameterDecl1821 = new BitSet(new long[]{0x0000000010000002L});
+        public static final BitSet FOLLOW_28_in_ruleParameterDecl1839 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleDataTypeDecl_in_entryRuleDataTypeDecl1889 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleDataTypeDecl1899 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_34_in_ruleDataTypeDecl1945 = new BitSet(new long[]{0x0000000800000010L});
+        public static final BitSet FOLLOW_35_in_ruleDataTypeDecl1963 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_RULE_ID_in_ruleDataTypeDecl1994 = new BitSet(new long[]{0x0000000000001000L});
+        public static final BitSet FOLLOW_12_in_ruleDataTypeDecl2011 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_RULE_STRING_in_ruleDataTypeDecl2028 = new BitSet(new long[]{0x0000000000020002L});
+        public static final BitSet FOLLOW_17_in_ruleDataTypeDecl2046 = new BitSet(new long[]{0x00007FF000000000L});
+        public static final BitSet FOLLOW_ruleDataTypeAnnotations_in_ruleDataTypeDecl2067 = new BitSet(new long[]{0x0000000000080000L});
+        public static final BitSet FOLLOW_19_in_ruleDataTypeDecl2079 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleDataTypeAnnotations_in_entryRuleDataTypeAnnotations2117 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleDataTypeAnnotations2127 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleDataTypeAnnotation_in_ruleDataTypeAnnotations2172 = new BitSet(new long[]{0x00007FF000000002L});
+        public static final BitSet FOLLOW_ruleDataTypeAnnotation_in_entryRuleDataTypeAnnotation2208 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleDataTypeAnnotation2218 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_36_in_ruleDataTypeAnnotation2262 = new BitSet(new long[]{0x0000000020000000L});
+        public static final BitSet FOLLOW_29_in_ruleDataTypeAnnotation2287 = new BitSet(new long[]{0x0100000000000040L});
+        public static final BitSet FOLLOW_ruleInteger_in_ruleDataTypeAnnotation2308 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_37_in_ruleDataTypeAnnotation2334 = new BitSet(new long[]{0x0000002000000000L});
+        public static final BitSet FOLLOW_37_in_ruleDataTypeAnnotation2359 = new BitSet(new long[]{0x0000000020000000L});
+        public static final BitSet FOLLOW_29_in_ruleDataTypeAnnotation2371 = new BitSet(new long[]{0x0100000000000040L});
+        public static final BitSet FOLLOW_ruleInteger_in_ruleDataTypeAnnotation2392 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_38_in_ruleDataTypeAnnotation2418 = new BitSet(new long[]{0x0000000020000000L});
+        public static final BitSet FOLLOW_29_in_ruleDataTypeAnnotation2443 = new BitSet(new long[]{0x0100000000000040L});
+        public static final BitSet FOLLOW_ruleInteger_in_ruleDataTypeAnnotation2464 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_39_in_ruleDataTypeAnnotation2490 = new BitSet(new long[]{0x0000000020000000L});
+        public static final BitSet FOLLOW_29_in_ruleDataTypeAnnotation2515 = new BitSet(new long[]{0x0100000000000040L});
+        public static final BitSet FOLLOW_ruleInteger_in_ruleDataTypeAnnotation2536 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_40_in_ruleDataTypeAnnotation2562 = new BitSet(new long[]{0x0000000020000000L});
+        public static final BitSet FOLLOW_29_in_ruleDataTypeAnnotation2587 = new BitSet(new long[]{0x0000000000000040L});
+        public static final BitSet FOLLOW_rulePositiveInteger_in_ruleDataTypeAnnotation2608 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_41_in_ruleDataTypeAnnotation2634 = new BitSet(new long[]{0x0000000020000000L});
+        public static final BitSet FOLLOW_29_in_ruleDataTypeAnnotation2659 = new BitSet(new long[]{0x0000000000000040L});
+        public static final BitSet FOLLOW_rulePositiveInteger_in_ruleDataTypeAnnotation2680 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_42_in_ruleDataTypeAnnotation2706 = new BitSet(new long[]{0x0000000020000000L});
+        public static final BitSet FOLLOW_29_in_ruleDataTypeAnnotation2731 = new BitSet(new long[]{0x0000000000000040L});
+        public static final BitSet FOLLOW_rulePositiveInteger_in_ruleDataTypeAnnotation2752 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_43_in_ruleDataTypeAnnotation2778 = new BitSet(new long[]{0x0000000020000000L});
+        public static final BitSet FOLLOW_29_in_ruleDataTypeAnnotation2803 = new BitSet(new long[]{0x0000000000000040L});
+        public static final BitSet FOLLOW_rulePositiveInteger_in_ruleDataTypeAnnotation2824 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_44_in_ruleDataTypeAnnotation2850 = new BitSet(new long[]{0x0000000020000000L});
+        public static final BitSet FOLLOW_29_in_ruleDataTypeAnnotation2875 = new BitSet(new long[]{0x0000000000000040L});
+        public static final BitSet FOLLOW_rulePositiveInteger_in_ruleDataTypeAnnotation2896 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_45_in_ruleDataTypeAnnotation2922 = new BitSet(new long[]{0x0000000020000000L});
+        public static final BitSet FOLLOW_29_in_ruleDataTypeAnnotation2947 = new BitSet(new long[]{0x0000000000000040L});
+        public static final BitSet FOLLOW_rulePositiveInteger_in_ruleDataTypeAnnotation2968 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_46_in_ruleDataTypeAnnotation2994 = new BitSet(new long[]{0x0000000020000000L});
+        public static final BitSet FOLLOW_29_in_ruleDataTypeAnnotation3019 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_RULE_STRING_in_ruleDataTypeAnnotation3036 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleEnumTypeDecl_in_entryRuleEnumTypeDecl3078 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleEnumTypeDecl3088 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_47_in_ruleEnumTypeDecl3134 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_RULE_ID_in_ruleEnumTypeDecl3151 = new BitSet(new long[]{0x0000000000020000L});
+        public static final BitSet FOLLOW_17_in_ruleEnumTypeDecl3168 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_ruleEnumLiteralDecl_in_ruleEnumTypeDecl3189 = new BitSet(new long[]{0x0000000000480000L});
+        public static final BitSet FOLLOW_22_in_ruleEnumTypeDecl3202 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_ruleEnumLiteralDecl_in_ruleEnumTypeDecl3223 = new BitSet(new long[]{0x0000000000480000L});
+        public static final BitSet FOLLOW_19_in_ruleEnumTypeDecl3237 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleEnumLiteralDecl_in_entryRuleEnumLiteralDecl3273 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleEnumLiteralDecl3283 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_RULE_ID_in_ruleEnumLiteralDecl3334 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleConfigurationDecl_in_entryRuleConfigurationDecl3375 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleConfigurationDecl3385 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_48_in_ruleConfigurationDecl3431 = new BitSet(new long[]{0x0006000000000002L});
+        public static final BitSet FOLLOW_49_in_ruleConfigurationDecl3444 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_RULE_STRING_in_ruleConfigurationDecl3464 = new BitSet(new long[]{0x0006000000004002L});
+        public static final BitSet FOLLOW_14_in_ruleConfigurationDecl3477 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_RULE_ID_in_ruleConfigurationDecl3488 = new BitSet(new long[]{0x0006000000000002L});
+        public static final BitSet FOLLOW_ruleResourceDecl_in_ruleConfigurationDecl3512 = new BitSet(new long[]{0x0004000000000002L});
+        public static final BitSet FOLLOW_ruleResourceDecl_in_entryRuleResourceDecl3549 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleResourceDecl3559 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_50_in_ruleResourceDecl3596 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_RULE_STRING_in_ruleResourceDecl3613 = new BitSet(new long[]{0x0000000000001000L});
+        public static final BitSet FOLLOW_12_in_ruleResourceDecl3630 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_ruleQualifiedID_in_ruleResourceDecl3653 = new BitSet(new long[]{0x0008000000020000L});
+        public static final BitSet FOLLOW_51_in_ruleResourceDecl3666 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_ruleQualifiedID_in_ruleResourceDecl3689 = new BitSet(new long[]{0x0000000000420000L});
+        public static final BitSet FOLLOW_22_in_ruleResourceDecl3702 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_ruleQualifiedID_in_ruleResourceDecl3725 = new BitSet(new long[]{0x0000000000420000L});
+        public static final BitSet FOLLOW_17_in_ruleResourceDecl3741 = new BitSet(new long[]{0x0030000000080000L});
+        public static final BitSet FOLLOW_ruleStateDecl_in_ruleResourceDecl3762 = new BitSet(new long[]{0x0030000000080000L});
+        public static final BitSet FOLLOW_ruleLinkDecl_in_ruleResourceDecl3784 = new BitSet(new long[]{0x0020000000080000L});
+        public static final BitSet FOLLOW_19_in_ruleResourceDecl3797 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleStateDecl_in_entryRuleStateDecl3833 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleStateDecl3843 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_52_in_ruleStateDecl3880 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_RULE_ID_in_ruleStateDecl3897 = new BitSet(new long[]{0x0000000020000000L});
+        public static final BitSet FOLLOW_29_in_ruleStateDecl3914 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_RULE_STRING_in_ruleStateDecl3931 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleLinkDecl_in_entryRuleLinkDecl3972 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleLinkDecl3982 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_53_in_ruleLinkDecl4019 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_RULE_STRING_in_ruleLinkDecl4036 = new BitSet(new long[]{0x0000000000001000L});
+        public static final BitSet FOLLOW_12_in_ruleLinkDecl4053 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_ruleQualifiedID_in_ruleLinkDecl4076 = new BitSet(new long[]{0x0048000000000000L});
+        public static final BitSet FOLLOW_51_in_ruleLinkDecl4089 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_ruleQualifiedID_in_ruleLinkDecl4112 = new BitSet(new long[]{0x0040000000400000L});
+        public static final BitSet FOLLOW_22_in_ruleLinkDecl4125 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_ruleQualifiedID_in_ruleLinkDecl4148 = new BitSet(new long[]{0x0040000000400000L});
+        public static final BitSet FOLLOW_54_in_ruleLinkDecl4164 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_RULE_STRING_in_ruleLinkDecl4184 = new BitSet(new long[]{0x0000000000020000L});
+        public static final BitSet FOLLOW_17_in_ruleLinkDecl4196 = new BitSet(new long[]{0x0010000000080000L});
+        public static final BitSet FOLLOW_ruleStateDecl_in_ruleLinkDecl4217 = new BitSet(new long[]{0x0010000000080000L});
+        public static final BitSet FOLLOW_19_in_ruleLinkDecl4230 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleQualifiedID_in_entryRuleQualifiedID4267 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleQualifiedID4278 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_RULE_ID_in_ruleQualifiedID4318 = new BitSet(new long[]{0x0080000000000002L});
+        public static final BitSet FOLLOW_55_in_ruleQualifiedID4337 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_RULE_ID_in_ruleQualifiedID4352 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleInteger_in_entryRuleInteger4400 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleInteger4411 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_56_in_ruleInteger4450 = new BitSet(new long[]{0x0000000000000040L});
+        public static final BitSet FOLLOW_RULE_INT_in_ruleInteger4467 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rulePositiveInteger_in_entryRulePositiveInteger4513 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRulePositiveInteger4524 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_RULE_INT_in_rulePositiveInteger4563 = new BitSet(new long[]{0x0000000000000002L});
     }
 
 

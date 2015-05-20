@@ -125,7 +125,7 @@ public abstract class AbstractOCCISemanticSequencer extends AbstractDelegatingSe
 	
 	/**
 	 * Constraint:
-	 *     (use+=[Extension|URI]* resources+=ResourceDecl*)
+	 *     (use+=[Extension|STRING]* resources+=ResourceDecl*)
 	 */
 	protected void sequence_ConfigurationDecl(EObject context, Configuration semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -191,7 +191,7 @@ public abstract class AbstractOCCISemanticSequencer extends AbstractDelegatingSe
 	
 	/**
 	 * Constraint:
-	 *     (name=ID scheme=URI import+=[Extension|URI]* (kinds+=KindDecl | mixins+=MixinDecl | types+=DataTypeDecl | types+=EnumTypeDecl)*)
+	 *     (name=ID scheme=STRING import+=[Extension|STRING]* (kinds+=KindDecl | mixins+=MixinDecl | types+=DataTypeDecl | types+=EnumTypeDecl)*)
 	 */
 	protected void sequence_ExtensionDecl(EObject context, Extension semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -209,7 +209,7 @@ public abstract class AbstractOCCISemanticSequencer extends AbstractDelegatingSe
 	
 	/**
 	 * Constraint:
-	 *     (id=URI kind=[Kind|QualifiedID] (mixins+=[Mixin|QualifiedID] mixins+=[Mixin|QualifiedID]*)? target=[Resource|URI] attributes+=StateDecl*)
+	 *     (id=STRING kind=[Kind|QualifiedID] (mixins+=[Mixin|QualifiedID] mixins+=[Mixin|QualifiedID]*)? target=[Resource|STRING] attributes+=StateDecl*)
 	 */
 	protected void sequence_LinkDecl(EObject context, Link semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -222,7 +222,7 @@ public abstract class AbstractOCCISemanticSequencer extends AbstractDelegatingSe
 	 *         term=ID 
 	 *         (depends+=[Mixin|QualifiedID] depends+=[Mixin|QualifiedID]*)? 
 	 *         (applies+=[Kind|QualifiedID] applies+=[Kind|QualifiedID]*)? 
-	 *         scheme=URI? 
+	 *         scheme=STRING? 
 	 *         title=STRING? 
 	 *         (attributes+=AttributeDecl | actions+=ActionDecl)*
 	 *     )
@@ -243,7 +243,7 @@ public abstract class AbstractOCCISemanticSequencer extends AbstractDelegatingSe
 	
 	/**
 	 * Constraint:
-	 *     (id=URI kind=[Kind|QualifiedID] (mixins+=[Mixin|QualifiedID] mixins+=[Mixin|QualifiedID]*)? attributes+=StateDecl* links+=LinkDecl*)
+	 *     (id=STRING kind=[Kind|QualifiedID] (mixins+=[Mixin|QualifiedID] mixins+=[Mixin|QualifiedID]*)? attributes+=StateDecl* links+=LinkDecl*)
 	 */
 	protected void sequence_ResourceDecl(EObject context, Resource semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

@@ -24,6 +24,7 @@ public class OCCIGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cExtensionDeclParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cConfigurationDeclParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
+		//// Let's note that for URI was replaced by STRING in the following XText rules.
 		//// BNF
 		//// <Grammar> ::= <ExtensionDecl> | <ConfigurationDecl>
 		////
@@ -49,12 +50,12 @@ public class OCCIGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cColonKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cSchemeAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cSchemeURIParserRuleCall_3_0 = (RuleCall)cSchemeAssignment_3.eContents().get(0);
+		private final RuleCall cSchemeSTRINGTerminalRuleCall_3_0 = (RuleCall)cSchemeAssignment_3.eContents().get(0);
 		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
 		private final Keyword cImportKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
 		private final Assignment cImportAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
 		private final CrossReference cImportExtensionCrossReference_4_1_0 = (CrossReference)cImportAssignment_4_1.eContents().get(0);
-		private final RuleCall cImportExtensionURIParserRuleCall_4_1_0_1 = (RuleCall)cImportExtensionCrossReference_4_1_0.eContents().get(1);
+		private final RuleCall cImportExtensionSTRINGTerminalRuleCall_4_1_0_1 = (RuleCall)cImportExtensionCrossReference_4_1_0.eContents().get(1);
 		private final Group cGroup_4_2 = (Group)cGroup_4.eContents().get(2);
 		private final Keyword cAsKeyword_4_2_0 = (Keyword)cGroup_4_2.eContents().get(0);
 		private final RuleCall cIDTerminalRuleCall_4_2_1 = (RuleCall)cGroup_4_2.eContents().get(1);
@@ -74,11 +75,11 @@ public class OCCIGrammarAccess extends AbstractGrammarElementFinder {
 		//// <ImportDecl> ::= `import' <URI> ( `as' <ID> )?
 		////
 		//ExtensionDecl returns Extension:
-		//	"extension" name=ID ":" scheme=URI ("import" ^import+=[Extension|URI] ("as" ID)?)* // TODO where storing the ID?
+		//	"extension" name=ID ":" scheme= / * URI * / STRING ("import" ^import+= / * URI * / [Extension|STRING] ("as" ID)?)* // TODO where storing the ID?
 		//	(kinds+=KindDecl | mixins+=MixinDecl | types+=DataTypeDecl | types+=EnumTypeDecl)*;
 		@Override public ParserRule getRule() { return rule; }
 
-		//"extension" name=ID ":" scheme=URI ("import" ^import+=[Extension|URI] ("as" ID)?)* // TODO where storing the ID?
+		//"extension" name=ID ":" scheme= / * URI * / STRING ("import" ^import+= / * URI * / [Extension|STRING] ("as" ID)?)* // TODO where storing the ID?
 		//(kinds+=KindDecl | mixins+=MixinDecl | types+=DataTypeDecl | types+=EnumTypeDecl)*
 		public Group getGroup() { return cGroup; }
 
@@ -94,26 +95,26 @@ public class OCCIGrammarAccess extends AbstractGrammarElementFinder {
 		//":"
 		public Keyword getColonKeyword_2() { return cColonKeyword_2; }
 
-		//scheme=URI
+		//scheme= / * URI * / STRING
 		public Assignment getSchemeAssignment_3() { return cSchemeAssignment_3; }
 
-		//URI
-		public RuleCall getSchemeURIParserRuleCall_3_0() { return cSchemeURIParserRuleCall_3_0; }
+		/// * URI * / STRING
+		public RuleCall getSchemeSTRINGTerminalRuleCall_3_0() { return cSchemeSTRINGTerminalRuleCall_3_0; }
 
-		//("import" ^import+=[Extension|URI] ("as" ID)?)*
+		//("import" ^import+= / * URI * / [Extension|STRING] ("as" ID)?)*
 		public Group getGroup_4() { return cGroup_4; }
 
 		//"import"
 		public Keyword getImportKeyword_4_0() { return cImportKeyword_4_0; }
 
-		//^import+=[Extension|URI]
+		//^import+= / * URI * / [Extension|STRING]
 		public Assignment getImportAssignment_4_1() { return cImportAssignment_4_1; }
 
-		//[Extension|URI]
+		/// * URI * / [Extension|STRING]
 		public CrossReference getImportExtensionCrossReference_4_1_0() { return cImportExtensionCrossReference_4_1_0; }
 
-		//URI
-		public RuleCall getImportExtensionURIParserRuleCall_4_1_0_1() { return cImportExtensionURIParserRuleCall_4_1_0_1; }
+		//STRING
+		public RuleCall getImportExtensionSTRINGTerminalRuleCall_4_1_0_1() { return cImportExtensionSTRINGTerminalRuleCall_4_1_0_1; }
 
 		//("as" ID)?
 		public Group getGroup_4_2() { return cGroup_4_2; }
@@ -277,7 +278,7 @@ public class OCCIGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
 		private final Keyword cSchemeKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
 		private final Assignment cSchemeAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
-		private final RuleCall cSchemeURIParserRuleCall_5_1_0 = (RuleCall)cSchemeAssignment_5_1.eContents().get(0);
+		private final RuleCall cSchemeSTRINGTerminalRuleCall_5_1_0 = (RuleCall)cSchemeAssignment_5_1.eContents().get(0);
 		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
 		private final Keyword cTitleKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
 		private final Assignment cTitleAssignment_6_1 = (Assignment)cGroup_6.eContents().get(1);
@@ -296,13 +297,13 @@ public class OCCIGrammarAccess extends AbstractGrammarElementFinder {
 		////
 		//MixinDecl returns Mixin:
 		//	"mixin" term=ID ("depends" depends+=[Mixin|QualifiedID] ("," depends+=[Mixin|QualifiedID])*)? ("applies"
-		//	applies+=[Kind|QualifiedID] ("," applies+=[Kind|QualifiedID])*)? "{" ("scheme" scheme=URI)? ("title" title=STRING)?
-		//	(attributes+=AttributeDecl | actions+=ActionDecl)* "}";
+		//	applies+=[Kind|QualifiedID] ("," applies+=[Kind|QualifiedID])*)? "{" ("scheme" scheme=STRING)? / * URI * / ("title"
+		//	title=STRING)? (attributes+=AttributeDecl | actions+=ActionDecl)* "}";
 		@Override public ParserRule getRule() { return rule; }
 
 		//"mixin" term=ID ("depends" depends+=[Mixin|QualifiedID] ("," depends+=[Mixin|QualifiedID])*)? ("applies"
-		//applies+=[Kind|QualifiedID] ("," applies+=[Kind|QualifiedID])*)? "{" ("scheme" scheme=URI)? ("title" title=STRING)?
-		//(attributes+=AttributeDecl | actions+=ActionDecl)* "}"
+		//applies+=[Kind|QualifiedID] ("," applies+=[Kind|QualifiedID])*)? "{" ("scheme" scheme=STRING)? / * URI * / ("title"
+		//title=STRING)? (attributes+=AttributeDecl | actions+=ActionDecl)* "}"
 		public Group getGroup() { return cGroup; }
 
 		//"mixin"
@@ -377,17 +378,17 @@ public class OCCIGrammarAccess extends AbstractGrammarElementFinder {
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_4() { return cLeftCurlyBracketKeyword_4; }
 
-		//("scheme" scheme=URI)?
+		//("scheme" scheme=STRING)?
 		public Group getGroup_5() { return cGroup_5; }
 
 		//"scheme"
 		public Keyword getSchemeKeyword_5_0() { return cSchemeKeyword_5_0; }
 
-		//scheme=URI
+		//scheme=STRING
 		public Assignment getSchemeAssignment_5_1() { return cSchemeAssignment_5_1; }
 
-		//URI
-		public RuleCall getSchemeURIParserRuleCall_5_1_0() { return cSchemeURIParserRuleCall_5_1_0; }
+		//STRING
+		public RuleCall getSchemeSTRINGTerminalRuleCall_5_1_0() { return cSchemeSTRINGTerminalRuleCall_5_1_0; }
 
 		//("title" title=STRING)?
 		public Group getGroup_6() { return cGroup_6; }
@@ -1148,7 +1149,7 @@ public class OCCIGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cUseKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
 		private final Assignment cUseAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
 		private final CrossReference cUseExtensionCrossReference_2_1_0 = (CrossReference)cUseAssignment_2_1.eContents().get(0);
-		private final RuleCall cUseExtensionURIParserRuleCall_2_1_0_1 = (RuleCall)cUseExtensionCrossReference_2_1_0.eContents().get(1);
+		private final RuleCall cUseExtensionSTRINGTerminalRuleCall_2_1_0_1 = (RuleCall)cUseExtensionCrossReference_2_1_0.eContents().get(1);
 		private final Group cGroup_2_2 = (Group)cGroup_2.eContents().get(2);
 		private final Keyword cAsKeyword_2_2_0 = (Keyword)cGroup_2_2.eContents().get(0);
 		private final RuleCall cIDTerminalRuleCall_2_2_1 = (RuleCall)cGroup_2_2.eContents().get(1);
@@ -1159,11 +1160,11 @@ public class OCCIGrammarAccess extends AbstractGrammarElementFinder {
 		//// <ConfigurationDecl> ::= `configuration' <UseDecl>* <ResourceDecl>*
 		////
 		//ConfigurationDecl returns Configuration:
-		//	{Configuration} "configuration" ("use" use+=[Extension|URI] ("as" ID)?)* // TODO where storing the ID?
+		//	{Configuration} "configuration" ("use" use+=[Extension|STRING] ("as" ID)?)* // TODO where storing the ID?
 		//	resources+=ResourceDecl*;
 		@Override public ParserRule getRule() { return rule; }
 
-		//{Configuration} "configuration" ("use" use+=[Extension|URI] ("as" ID)?)* // TODO where storing the ID?
+		//{Configuration} "configuration" ("use" use+=[Extension|STRING] ("as" ID)?)* // TODO where storing the ID?
 		//resources+=ResourceDecl*
 		public Group getGroup() { return cGroup; }
 
@@ -1173,20 +1174,20 @@ public class OCCIGrammarAccess extends AbstractGrammarElementFinder {
 		//"configuration"
 		public Keyword getConfigurationKeyword_1() { return cConfigurationKeyword_1; }
 
-		//("use" use+=[Extension|URI] ("as" ID)?)*
+		//("use" use+=[Extension|STRING] ("as" ID)?)*
 		public Group getGroup_2() { return cGroup_2; }
 
 		//"use"
 		public Keyword getUseKeyword_2_0() { return cUseKeyword_2_0; }
 
-		//use+=[Extension|URI]
+		//use+=[Extension|STRING]
 		public Assignment getUseAssignment_2_1() { return cUseAssignment_2_1; }
 
-		//[Extension|URI]
+		//[Extension|STRING]
 		public CrossReference getUseExtensionCrossReference_2_1_0() { return cUseExtensionCrossReference_2_1_0; }
 
-		//URI
-		public RuleCall getUseExtensionURIParserRuleCall_2_1_0_1() { return cUseExtensionURIParserRuleCall_2_1_0_1; }
+		//STRING
+		public RuleCall getUseExtensionSTRINGTerminalRuleCall_2_1_0_1() { return cUseExtensionSTRINGTerminalRuleCall_2_1_0_1; }
 
 		//("as" ID)?
 		public Group getGroup_2_2() { return cGroup_2_2; }
@@ -1209,7 +1210,7 @@ public class OCCIGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cResourceKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cIdAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cIdURIParserRuleCall_1_0 = (RuleCall)cIdAssignment_1.eContents().get(0);
+		private final RuleCall cIdSTRINGTerminalRuleCall_1_0 = (RuleCall)cIdAssignment_1.eContents().get(0);
 		private final Keyword cColonKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cKindAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final CrossReference cKindKindCrossReference_3_0 = (CrossReference)cKindAssignment_3.eContents().get(0);
@@ -1238,22 +1239,22 @@ public class OCCIGrammarAccess extends AbstractGrammarElementFinder {
 		//// <ResourceDecl> ::= `resource' <URI> `:' <KindRef> ( `mixins' <MixinRef> ( `,' <MixinRef> )* )? `{' <StateDecl>* <LinkDecl>* `}'
 		////
 		//ResourceDecl returns Resource:
-		//	"resource" id=URI ":" kind=[Kind|QualifiedID] ("mixins" mixins+=[Mixin|QualifiedID] (","
+		//	"resource" id= / * URI * / STRING ":" kind=[Kind|QualifiedID] ("mixins" mixins+=[Mixin|QualifiedID] (","
 		//	mixins+=[Mixin|QualifiedID])*)? "{" attributes+=StateDecl* links+=LinkDecl* "}";
 		@Override public ParserRule getRule() { return rule; }
 
-		//"resource" id=URI ":" kind=[Kind|QualifiedID] ("mixins" mixins+=[Mixin|QualifiedID] ("," mixins+=[Mixin|QualifiedID])*)?
-		//"{" attributes+=StateDecl* links+=LinkDecl* "}"
+		//"resource" id= / * URI * / STRING ":" kind=[Kind|QualifiedID] ("mixins" mixins+=[Mixin|QualifiedID] (","
+		//mixins+=[Mixin|QualifiedID])*)? "{" attributes+=StateDecl* links+=LinkDecl* "}"
 		public Group getGroup() { return cGroup; }
 
 		//"resource"
 		public Keyword getResourceKeyword_0() { return cResourceKeyword_0; }
 
-		//id=URI
+		//id= / * URI * / STRING
 		public Assignment getIdAssignment_1() { return cIdAssignment_1; }
 
-		//URI
-		public RuleCall getIdURIParserRuleCall_1_0() { return cIdURIParserRuleCall_1_0; }
+		/// * URI * / STRING
+		public RuleCall getIdSTRINGTerminalRuleCall_1_0() { return cIdSTRINGTerminalRuleCall_1_0; }
 
 		//":"
 		public Keyword getColonKeyword_2() { return cColonKeyword_2; }
@@ -1360,7 +1361,7 @@ public class OCCIGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cLinkKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cIdAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cIdURIParserRuleCall_1_0 = (RuleCall)cIdAssignment_1.eContents().get(0);
+		private final RuleCall cIdSTRINGTerminalRuleCall_1_0 = (RuleCall)cIdAssignment_1.eContents().get(0);
 		private final Keyword cColonKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cKindAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final CrossReference cKindKindCrossReference_3_0 = (CrossReference)cKindAssignment_3.eContents().get(0);
@@ -1378,7 +1379,7 @@ public class OCCIGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cTargetKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		private final Assignment cTargetAssignment_6 = (Assignment)cGroup.eContents().get(6);
 		private final CrossReference cTargetResourceCrossReference_6_0 = (CrossReference)cTargetAssignment_6.eContents().get(0);
-		private final RuleCall cTargetResourceURIParserRuleCall_6_0_1 = (RuleCall)cTargetResourceCrossReference_6_0.eContents().get(1);
+		private final RuleCall cTargetResourceSTRINGTerminalRuleCall_6_0_1 = (RuleCall)cTargetResourceCrossReference_6_0.eContents().get(1);
 		private final Keyword cLeftCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		private final Assignment cAttributesAssignment_8 = (Assignment)cGroup.eContents().get(8);
 		private final RuleCall cAttributesStateDeclParserRuleCall_8_0 = (RuleCall)cAttributesAssignment_8.eContents().get(0);
@@ -1388,22 +1389,22 @@ public class OCCIGrammarAccess extends AbstractGrammarElementFinder {
 		//// <LinkDecl> ::= `link' <URI> `:' <KindRef> ( `mixins' <MixinRef> ( `,' <MixinRef> )* )? `target' <URI> `{' <StateDecl>* `}'
 		////
 		//LinkDecl returns Link:
-		//	"link" id=URI ":" kind=[Kind|QualifiedID] ("mixins" mixins+=[Mixin|QualifiedID] ("," mixins+=[Mixin|QualifiedID])*)?
-		//	"target" target=[Resource|URI] "{" attributes+=StateDecl* "}";
+		//	"link" id= / * URI * / STRING ":" kind=[Kind|QualifiedID] ("mixins" mixins+=[Mixin|QualifiedID] (","
+		//	mixins+=[Mixin|QualifiedID])*)? "target" target= / * URI * / [Resource|STRING] "{" attributes+=StateDecl* "}";
 		@Override public ParserRule getRule() { return rule; }
 
-		//"link" id=URI ":" kind=[Kind|QualifiedID] ("mixins" mixins+=[Mixin|QualifiedID] ("," mixins+=[Mixin|QualifiedID])*)?
-		//"target" target=[Resource|URI] "{" attributes+=StateDecl* "}"
+		//"link" id= / * URI * / STRING ":" kind=[Kind|QualifiedID] ("mixins" mixins+=[Mixin|QualifiedID] (","
+		//mixins+=[Mixin|QualifiedID])*)? "target" target= / * URI * / [Resource|STRING] "{" attributes+=StateDecl* "}"
 		public Group getGroup() { return cGroup; }
 
 		//"link"
 		public Keyword getLinkKeyword_0() { return cLinkKeyword_0; }
 
-		//id=URI
+		//id= / * URI * / STRING
 		public Assignment getIdAssignment_1() { return cIdAssignment_1; }
 
-		//URI
-		public RuleCall getIdURIParserRuleCall_1_0() { return cIdURIParserRuleCall_1_0; }
+		/// * URI * / STRING
+		public RuleCall getIdSTRINGTerminalRuleCall_1_0() { return cIdSTRINGTerminalRuleCall_1_0; }
 
 		//":"
 		public Keyword getColonKeyword_2() { return cColonKeyword_2; }
@@ -1450,14 +1451,14 @@ public class OCCIGrammarAccess extends AbstractGrammarElementFinder {
 		//"target"
 		public Keyword getTargetKeyword_5() { return cTargetKeyword_5; }
 
-		//target=[Resource|URI]
+		//target= / * URI * / [Resource|STRING]
 		public Assignment getTargetAssignment_6() { return cTargetAssignment_6; }
 
-		//[Resource|URI]
+		/// * URI * / [Resource|STRING]
 		public CrossReference getTargetResourceCrossReference_6_0() { return cTargetResourceCrossReference_6_0; }
 
-		//URI
-		public RuleCall getTargetResourceURIParserRuleCall_6_0_1() { return cTargetResourceURIParserRuleCall_6_0_1; }
+		//STRING
+		public RuleCall getTargetResourceSTRINGTerminalRuleCall_6_0_1() { return cTargetResourceSTRINGTerminalRuleCall_6_0_1; }
 
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_7() { return cLeftCurlyBracketKeyword_7; }
@@ -1472,18 +1473,6 @@ public class OCCIGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getRightCurlyBracketKeyword_9() { return cRightCurlyBracketKeyword_9; }
 	}
 
-	public class URIElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "URI");
-		private final RuleCall cSTRINGTerminalRuleCall = (RuleCall)rule.eContents().get(1);
-		
-		//URI:
-		//	STRING;
-		@Override public ParserRule getRule() { return rule; }
-
-		//STRING
-		public RuleCall getSTRINGTerminalRuleCall() { return cSTRINGTerminalRuleCall; }
-	}
-
 	public class QualifiedIDElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "QualifiedID");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -1492,6 +1481,7 @@ public class OCCIGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cFullStopKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
 		private final RuleCall cIDTerminalRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
 		
+		//// URI: STRING;
 		//QualifiedID:
 		//	ID ("." ID)?;
 		@Override public ParserRule getRule() { return rule; }
@@ -1561,7 +1551,6 @@ public class OCCIGrammarAccess extends AbstractGrammarElementFinder {
 	private final ResourceDeclElements pResourceDecl;
 	private final StateDeclElements pStateDecl;
 	private final LinkDeclElements pLinkDecl;
-	private final URIElements pURI;
 	private final QualifiedIDElements pQualifiedID;
 	private final IntegerElements pInteger;
 	private final PositiveIntegerElements pPositiveInteger;
@@ -1591,7 +1580,6 @@ public class OCCIGrammarAccess extends AbstractGrammarElementFinder {
 		this.pResourceDecl = new ResourceDeclElements();
 		this.pStateDecl = new StateDeclElements();
 		this.pLinkDecl = new LinkDeclElements();
-		this.pURI = new URIElements();
 		this.pQualifiedID = new QualifiedIDElements();
 		this.pInteger = new IntegerElements();
 		this.pPositiveInteger = new PositiveIntegerElements();
@@ -1624,6 +1612,7 @@ public class OCCIGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	
+	//// Let's note that for URI was replaced by STRING in the following XText rules.
 	//// BNF
 	//// <Grammar> ::= <ExtensionDecl> | <ConfigurationDecl>
 	////
@@ -1643,7 +1632,7 @@ public class OCCIGrammarAccess extends AbstractGrammarElementFinder {
 	//// <ImportDecl> ::= `import' <URI> ( `as' <ID> )?
 	////
 	//ExtensionDecl returns Extension:
-	//	"extension" name=ID ":" scheme=URI ("import" ^import+=[Extension|URI] ("as" ID)?)* // TODO where storing the ID?
+	//	"extension" name=ID ":" scheme= / * URI * / STRING ("import" ^import+= / * URI * / [Extension|STRING] ("as" ID)?)* // TODO where storing the ID?
 	//	(kinds+=KindDecl | mixins+=MixinDecl | types+=DataTypeDecl | types+=EnumTypeDecl)*;
 	public ExtensionDeclElements getExtensionDeclAccess() {
 		return pExtensionDecl;
@@ -1676,8 +1665,8 @@ public class OCCIGrammarAccess extends AbstractGrammarElementFinder {
 	////
 	//MixinDecl returns Mixin:
 	//	"mixin" term=ID ("depends" depends+=[Mixin|QualifiedID] ("," depends+=[Mixin|QualifiedID])*)? ("applies"
-	//	applies+=[Kind|QualifiedID] ("," applies+=[Kind|QualifiedID])*)? "{" ("scheme" scheme=URI)? ("title" title=STRING)?
-	//	(attributes+=AttributeDecl | actions+=ActionDecl)* "}";
+	//	applies+=[Kind|QualifiedID] ("," applies+=[Kind|QualifiedID])*)? "{" ("scheme" scheme=STRING)? / * URI * / ("title"
+	//	title=STRING)? (attributes+=AttributeDecl | actions+=ActionDecl)* "}";
 	public MixinDeclElements getMixinDeclAccess() {
 		return pMixinDecl;
 	}
@@ -1803,7 +1792,7 @@ public class OCCIGrammarAccess extends AbstractGrammarElementFinder {
 	//// <ConfigurationDecl> ::= `configuration' <UseDecl>* <ResourceDecl>*
 	////
 	//ConfigurationDecl returns Configuration:
-	//	{Configuration} "configuration" ("use" use+=[Extension|URI] ("as" ID)?)* // TODO where storing the ID?
+	//	{Configuration} "configuration" ("use" use+=[Extension|STRING] ("as" ID)?)* // TODO where storing the ID?
 	//	resources+=ResourceDecl*;
 	public ConfigurationDeclElements getConfigurationDeclAccess() {
 		return pConfigurationDecl;
@@ -1820,7 +1809,7 @@ public class OCCIGrammarAccess extends AbstractGrammarElementFinder {
 	//// <ResourceDecl> ::= `resource' <URI> `:' <KindRef> ( `mixins' <MixinRef> ( `,' <MixinRef> )* )? `{' <StateDecl>* <LinkDecl>* `}'
 	////
 	//ResourceDecl returns Resource:
-	//	"resource" id=URI ":" kind=[Kind|QualifiedID] ("mixins" mixins+=[Mixin|QualifiedID] (","
+	//	"resource" id= / * URI * / STRING ":" kind=[Kind|QualifiedID] ("mixins" mixins+=[Mixin|QualifiedID] (","
 	//	mixins+=[Mixin|QualifiedID])*)? "{" attributes+=StateDecl* links+=LinkDecl* "}";
 	public ResourceDeclElements getResourceDeclAccess() {
 		return pResourceDecl;
@@ -1847,8 +1836,8 @@ public class OCCIGrammarAccess extends AbstractGrammarElementFinder {
 	//// <LinkDecl> ::= `link' <URI> `:' <KindRef> ( `mixins' <MixinRef> ( `,' <MixinRef> )* )? `target' <URI> `{' <StateDecl>* `}'
 	////
 	//LinkDecl returns Link:
-	//	"link" id=URI ":" kind=[Kind|QualifiedID] ("mixins" mixins+=[Mixin|QualifiedID] ("," mixins+=[Mixin|QualifiedID])*)?
-	//	"target" target=[Resource|URI] "{" attributes+=StateDecl* "}";
+	//	"link" id= / * URI * / STRING ":" kind=[Kind|QualifiedID] ("mixins" mixins+=[Mixin|QualifiedID] (","
+	//	mixins+=[Mixin|QualifiedID])*)? "target" target= / * URI * / [Resource|STRING] "{" attributes+=StateDecl* "}";
 	public LinkDeclElements getLinkDeclAccess() {
 		return pLinkDecl;
 	}
@@ -1857,16 +1846,7 @@ public class OCCIGrammarAccess extends AbstractGrammarElementFinder {
 		return getLinkDeclAccess().getRule();
 	}
 
-	//URI:
-	//	STRING;
-	public URIElements getURIAccess() {
-		return pURI;
-	}
-	
-	public ParserRule getURIRule() {
-		return getURIAccess().getRule();
-	}
-
+	//// URI: STRING;
 	//QualifiedID:
 	//	ID ("." ID)?;
 	public QualifiedIDElements getQualifiedIDAccess() {

@@ -145,19 +145,19 @@ ruleExtensionDecl returns [EObject current=null]
     }
 (
 (
-		{ 
-	        newCompositeNode(grammarAccess.getExtensionDeclAccess().getSchemeURIParserRuleCall_3_0()); 
-	    }
-		lv_scheme_3_0=ruleURI		{
+		lv_scheme_3_0=RULE_STRING
+		{
+			newLeafNode(lv_scheme_3_0, grammarAccess.getExtensionDeclAccess().getSchemeSTRINGTerminalRuleCall_3_0()); 
+		}
+		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getExtensionDeclRule());
+	            $current = createModelElement(grammarAccess.getExtensionDeclRule());
 	        }
-       		set(
+       		setWithLastConsumed(
        			$current, 
        			"scheme",
         		lv_scheme_3_0, 
-        		"URI");
-	        afterParserOrEnumRuleCall();
+        		"STRING");
 	    }
 
 )
@@ -172,12 +172,10 @@ ruleExtensionDecl returns [EObject current=null]
 	            $current = createModelElement(grammarAccess.getExtensionDeclRule());
 	        }
         }
-		{ 
-	        newCompositeNode(grammarAccess.getExtensionDeclAccess().getImportExtensionCrossReference_4_1_0()); 
-	    }
-		ruleURI		{ 
-	        afterParserOrEnumRuleCall();
-	    }
+	otherlv_5=RULE_STRING
+	{
+		newLeafNode(otherlv_5, grammarAccess.getExtensionDeclAccess().getImportExtensionCrossReference_4_1_0()); 
+	}
 
 )
 )(	otherlv_6='as' 
@@ -521,19 +519,19 @@ ruleMixinDecl returns [EObject current=null]
     }
 (
 (
-		{ 
-	        newCompositeNode(grammarAccess.getMixinDeclAccess().getSchemeURIParserRuleCall_5_1_0()); 
-	    }
-		lv_scheme_12_0=ruleURI		{
+		lv_scheme_12_0=RULE_STRING
+		{
+			newLeafNode(lv_scheme_12_0, grammarAccess.getMixinDeclAccess().getSchemeSTRINGTerminalRuleCall_5_1_0()); 
+		}
+		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getMixinDeclRule());
+	            $current = createModelElement(grammarAccess.getMixinDeclRule());
 	        }
-       		set(
+       		setWithLastConsumed(
        			$current, 
        			"scheme",
         		lv_scheme_12_0, 
-        		"URI");
-	        afterParserOrEnumRuleCall();
+        		"STRING");
 	    }
 
 )
@@ -1719,12 +1717,10 @@ ruleConfigurationDecl returns [EObject current=null]
 	            $current = createModelElement(grammarAccess.getConfigurationDeclRule());
 	        }
         }
-		{ 
-	        newCompositeNode(grammarAccess.getConfigurationDeclAccess().getUseExtensionCrossReference_2_1_0()); 
-	    }
-		ruleURI		{ 
-	        afterParserOrEnumRuleCall();
-	    }
+	otherlv_3=RULE_STRING
+	{
+		newLeafNode(otherlv_3, grammarAccess.getConfigurationDeclAccess().getUseExtensionCrossReference_2_1_0()); 
+	}
 
 )
 )(	otherlv_4='as' 
@@ -1780,19 +1776,19 @@ ruleResourceDecl returns [EObject current=null]
     }
 (
 (
-		{ 
-	        newCompositeNode(grammarAccess.getResourceDeclAccess().getIdURIParserRuleCall_1_0()); 
-	    }
-		lv_id_1_0=ruleURI		{
+		lv_id_1_0=RULE_STRING
+		{
+			newLeafNode(lv_id_1_0, grammarAccess.getResourceDeclAccess().getIdSTRINGTerminalRuleCall_1_0()); 
+		}
+		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getResourceDeclRule());
+	            $current = createModelElement(grammarAccess.getResourceDeclRule());
 	        }
-       		set(
+       		setWithLastConsumed(
        			$current, 
        			"id",
         		lv_id_1_0, 
-        		"URI");
-	        afterParserOrEnumRuleCall();
+        		"STRING");
 	    }
 
 )
@@ -1989,19 +1985,19 @@ ruleLinkDecl returns [EObject current=null]
     }
 (
 (
-		{ 
-	        newCompositeNode(grammarAccess.getLinkDeclAccess().getIdURIParserRuleCall_1_0()); 
-	    }
-		lv_id_1_0=ruleURI		{
+		lv_id_1_0=RULE_STRING
+		{
+			newLeafNode(lv_id_1_0, grammarAccess.getLinkDeclAccess().getIdSTRINGTerminalRuleCall_1_0()); 
+		}
+		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getLinkDeclRule());
+	            $current = createModelElement(grammarAccess.getLinkDeclRule());
 	        }
-       		set(
+       		setWithLastConsumed(
        			$current, 
        			"id",
         		lv_id_1_0, 
-        		"URI");
-	        afterParserOrEnumRuleCall();
+        		"STRING");
 	    }
 
 )
@@ -2073,12 +2069,10 @@ ruleLinkDecl returns [EObject current=null]
 	            $current = createModelElement(grammarAccess.getLinkDeclRule());
 	        }
         }
-		{ 
-	        newCompositeNode(grammarAccess.getLinkDeclAccess().getTargetResourceCrossReference_6_0()); 
-	    }
-		ruleURI		{ 
-	        afterParserOrEnumRuleCall();
-	    }
+	otherlv_9=RULE_STRING
+	{
+		newLeafNode(otherlv_9, grammarAccess.getLinkDeclAccess().getTargetResourceCrossReference_6_0()); 
+	}
 
 )
 )	otherlv_10='{' 
@@ -2109,34 +2103,6 @@ ruleLinkDecl returns [EObject current=null]
     }
 )
 ;
-
-
-
-
-
-// Entry rule entryRuleURI
-entryRuleURI returns [String current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getURIRule()); } 
-	 iv_ruleURI=ruleURI 
-	 { $current=$iv_ruleURI.current.getText(); }  
-	 EOF 
-;
-
-// Rule URI
-ruleURI returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-    this_STRING_0=RULE_STRING    {
-		$current.merge(this_STRING_0);
-    }
-
-    { 
-    newLeafNode(this_STRING_0, grammarAccess.getURIAccess().getSTRINGTerminalRuleCall()); 
-    }
-
-    ;
 
 
 
