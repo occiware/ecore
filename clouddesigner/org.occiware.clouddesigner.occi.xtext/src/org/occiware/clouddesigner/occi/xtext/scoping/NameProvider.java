@@ -1,5 +1,6 @@
 package org.occiware.clouddesigner.occi.xtext.scoping;
 
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
@@ -16,6 +17,9 @@ public class NameProvider extends IQualifiedNameProvider.AbstractImpl {
 	public QualifiedName getFullyQualifiedName(EObject obj) {
 		if (obj.eIsProxy())
 			return null;
+		if(obj instanceof EDataType) {
+			return qualifiedNameConverter.toQualifiedName(((EDataType)obj).getName());
+		}
 		String name = new OCCISwitch<String>() {
 
 			public String caseExtension(
@@ -27,6 +31,9 @@ public class NameProvider extends IQualifiedNameProvider.AbstractImpl {
 				return object.getTerm();
 			};
 
+			public String caseMixin(org.occiware.clouddesigner.OCCI.Mixin object) {
+				return object.getTerm();
+			};
 		}.doSwitch(obj);
 		if (name == null)
 			return null;
