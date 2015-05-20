@@ -29,7 +29,6 @@ import java.util.LinkedHashMap
 import java.util.LinkedHashSet
 import java.util.List
 import java.util.Map
-import java.util.Random
 import org.occiware.clouddesigner.occi.docker.Container
 import org.occiware.clouddesigner.occi.docker.Machine
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerMachineManager
