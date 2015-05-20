@@ -32,7 +32,7 @@ To lunch the modeler follow these steps:
 
 * Import the project "org.occiware.clouddesigner.occi.docker.samples" using `Import`, `Projects from Git`.
 
-* When the project is imported, make a right click on it and choose  `Viewpoint Selections`.
+* When the project is imported, make a right click on it and choose  `Viewpoints Selection`.
 
 ![Viewpoint Selections](https://raw.githubusercontent.com/occiware/dev-tools/master/eclipse/images/vs.png "Viewpoint Selections")
 
