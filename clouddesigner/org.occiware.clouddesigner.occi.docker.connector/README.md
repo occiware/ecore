@@ -20,23 +20,23 @@ Change the configuration below according to your requirements in the file ecore/
 
 Lunch the modeler
 ----------------
-To lunch the modeler follow the steps
+To lunch the modeler follow these steps
 
-Start your eclipse IDE in `Run` menu chose `Run Configurations..`
+* Start your eclipse IDE in `Run` menu chose `Run Configurations..` (We assume that the OCCIWARE/ecore project is already lunched in your IDE).
 
 ![Run Configurations...](https://raw.githubusercontent.com/occiware/dev-tools/master/eclipse/images/run.png "Run Configurations...")
 
-Click on `Run` button.
+* Click on `Run` button.
 
-After few minutes, a new Eclipse IDE will appears.
+* After few minutes, a new Eclipse IDE will appears.
 
-Import the project "org.occiware.clouddesigner.occi.docker.samples" using `Import`, `Projects from Git`
+* Import the project "org.occiware.clouddesigner.occi.docker.samples" using `Import`, `Projects from Git`.
 
-When the project is imported, make a right click on it and choose  `Viewpoint Selections`.
+* When the project is imported, make a right click on it and choose  `Viewpoint Selections`.
 
 ![Viewpoint Selections](https://raw.githubusercontent.com/occiware/dev-tools/master/eclipse/images/vs.png "Viewpoint Selections")
 
-Check that the `docker` box is checked as shown in the picture below.
+* Check that the `docker` box is checked as shown in the picture below.
 
 ![Viewpoint Selections](https://raw.githubusercontent.com/occiware/dev-tools/master/eclipse/images/view.png "Viewpoint Selections")
 
