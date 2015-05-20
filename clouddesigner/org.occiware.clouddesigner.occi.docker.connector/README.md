@@ -48,6 +48,5 @@ This video shows how to:
   
   * Use all actions defined with the connector (see the document belongs): [Docker Connector Backlog](https://docs.google.com/document/d/1X1DtfjoB8PehV69BcCt8jGXZN40UNc97wSc3lbg-Lr0/edit)
   
-  * [![ScreenShot](https://raw.githubusercontent.com/occiware/dev-tools/master/eclipse/images/docker-demo-youtube.png)](http://youtu.be/vt5fpE0bzSY)
+  [![Docker Modeler Demo](https://raw.githubusercontent.com/occiware/dev-tools/master/eclipse/images/docker-demo-youtube.png)](http://youtu.be/vt5fpE0bzSY)
   
-  * [![Docker Modeler Demo](http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](http://www.youtube.com/watch?v=2SZXi71L0qQ)
