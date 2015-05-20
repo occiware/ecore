@@ -50,7 +50,7 @@ class OCCIDerivedStateComputer implements IDerivedStateComputer {
       	if(action.scheme == null) {
       		val ownerCategory = (action.eContainer as Category)
       		// Set the scheme of an Action instance related to the scheme of its owning Category instance.
-      		action.scheme = ownerCategory.scheme.substring(0, ownerCategory.scheme.length-2) + '/' + ownerCategory.term + "/action#"
+      		action.scheme = ownerCategory.scheme.substring(0, ownerCategory.scheme.length-1) + '/' + ownerCategory.term + "/action#"
       	}
       }
       if(r instanceof EDataType) {
