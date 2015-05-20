@@ -1,5 +1,6 @@
-extension core : http://schemas.ogf.org/occi/core# kind ^resource extends entity
-{
+extension core : "http://schemas.ogf.org/occi/core#"
+kind ^resource extends
+entity {
 	title "Resource"
 }
 kind entity {
