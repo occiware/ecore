@@ -21,6 +21,13 @@ public class OCCIFormatter extends AbstractDeclarativeFormatter {
 	@Inject extension OCCIGrammarAccess
 	
 	override protected configureFormatting(FormattingConfig c) {
+
+		c.setLinewrap(0, 1, 1).before(getKindDeclRule)
+
+//		for(extendsKeyword: findKeywords('extends')) {
+//          c.setNoLinewrap().after(extendsKeyword)
+//        }
+
 		for(pair: findKeywordPairs('{', '}')) {
 			c.setIndentation(pair.first, pair.second)
 			c.setLinewrap(1).after(pair.first)
