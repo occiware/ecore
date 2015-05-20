@@ -52,7 +52,6 @@ public class ExecutableContainer extends ContainerImpl {
     /**
      * Start the Docker container.
      */
-    @Override
     public void start_execute() {
       ExecutableContainer.LOGGER.info("EXECUTE container start");
       final Machine machine = ExecutableContainer.this.getCurrentMachine();
@@ -69,7 +68,6 @@ public class ExecutableContainer extends ContainerImpl {
     /**
      * Stop the Docker container.
      */
-    @Override
     public void stop_execute(final StopMethod method) {
       ExecutableContainer.LOGGER.info("EXECUTE container stop");
       final Machine machine = ExecutableContainer.this.getCurrentMachine();
@@ -100,7 +98,6 @@ public class ExecutableContainer extends ContainerImpl {
     /**
      * Restart the Docker container.
      */
-    @Override
     public void restart_execute(final RestartMethod method) {
       ExecutableContainer.LOGGER.info("EXECUTE container restart");
       this.stop_execute(StopMethod.GRACEFUL);
@@ -110,28 +107,23 @@ public class ExecutableContainer extends ContainerImpl {
     /**
      * Suspend the Docker container.
      */
-    @Override
     public void suspend_execute(final SuspendMethod method) {
       ExecutableContainer.LOGGER.info("EXECUTE container suspend");
     }
   };
   
-  @Override
   public void start() {
     this.stateMachine.start();
   }
   
-  @Override
   public void stop(final StopMethod method) {
     this.stateMachine.stop(method);
   }
   
-  @Override
   public void restart(final RestartMethod method) {
     this.stateMachine.restart(method);
   }
   
-  @Override
   public void suspend(final SuspendMethod method) {
     this.stateMachine.suspend(method);
   }

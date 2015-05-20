@@ -78,7 +78,6 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
   /**
    * Start a Docker machine.
    */
-  @Override
   public void start_execute() {
     final Runtime runtime = Runtime.getRuntime();
     final StringBuilder command = new StringBuilder();
@@ -112,7 +111,6 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
     }
   }
   
-  @Override
   public void startAll_execute() {
     final Runtime runtime = Runtime.getRuntime();
     final StringBuilder command = new StringBuilder();
@@ -289,7 +287,6 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
       if (_greaterThan) {
         EList<Link> _links_3 = this.compute.getLinks();
         final Procedure1<Link> _function = new Procedure1<Link>() {
-          @Override
           public void apply(final Link elt) {
             Resource _target = elt.getTarget();
             ((ExecutableContainer) _target).stop(StopMethod.GRACEFUL);
@@ -358,7 +355,6 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
       }
     }
     final Procedure1<Container> _function = new Procedure1<Container>() {
-      @Override
       public void apply(final Container c) {
         String _name = c.getName();
         MachineManager.LOGGER.info(_name);
@@ -372,7 +368,6 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
     final List<Container> containers = CollectionLiterals.<Container>newArrayList();
     EList<Link> _links = this.compute.getLinks();
     final Procedure1<Link> _function = new Procedure1<Link>() {
-      @Override
       public void apply(final Link elt) {
         Resource _target = elt.getTarget();
         containers.add(((Container) _target));
@@ -427,7 +422,6 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
   /**
    * Stop a Docker machine.
    */
-  @Override
   public void stop_execute(final StopMethod method) {
     boolean _equals = Objects.equal(method, StopMethod.GRACEFUL);
     if (_equals) {
@@ -455,7 +449,6 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
   /**
    * Restart a Docker machine.
    */
-  @Override
   public void restart_execute(final RestartMethod method) {
     String _name = this.compute.getName();
     String _plus = ("EXECUTE COMMAND: docker machine restart " + _name);
@@ -467,7 +460,6 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
   /**
    * Suspend a Docker machine.
    */
-  @Override
   public void suspend_execute(final SuspendMethod method) {
     String _name = this.compute.getName();
     String _plus = ("EXECUTE COMMAND: docker machine suspend " + _name);

@@ -81,6 +81,7 @@ import org.occiware.clouddesigner.occi.docker.Machine_Google_Compute_Engine;
 import org.occiware.clouddesigner.occi.docker.Machine_IBM_SoftLayer;
 import org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Azure;
 import org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Hyper_V;
+import org.occiware.clouddesigner.occi.docker.Machine_OpenStack;
 import org.occiware.clouddesigner.occi.docker.Machine_Rackspace;
 import org.occiware.clouddesigner.occi.docker.Machine_VMware_Fusion;
 import org.occiware.clouddesigner.occi.docker.Machine_VMware_vCloud_Air;
@@ -703,6 +704,60 @@ public class ModelHandler {
           Machine_Amazon_EC2 newvbox_1 = ((Machine_Amazon_EC2) vbox);
           this.machineFactory(newvbox_1, node, state);
           ModelHandler.LOGGER.info(("Model setting: " + newvbox_1));
+        } else {
+          if ((vbox instanceof Machine_Digital_Ocean)) {
+            Machine_Digital_Ocean newvbox_2 = ((Machine_Digital_Ocean) vbox);
+            this.machineFactory(newvbox_2, node, state);
+            ModelHandler.LOGGER.info(("Model setting: " + newvbox_2));
+          } else {
+            if ((vbox instanceof Machine_VMware_Fusion)) {
+              Machine_VMware_Fusion newvbox_3 = ((Machine_VMware_Fusion) vbox);
+              this.machineFactory(newvbox_3, node, state);
+              ModelHandler.LOGGER.info(("Model setting: " + newvbox_3));
+            } else {
+              if ((vbox instanceof Machine_Google_Compute_Engine)) {
+                Machine_Google_Compute_Engine newvbox_4 = ((Machine_Google_Compute_Engine) vbox);
+                this.machineFactory(newvbox_4, node, state);
+                ModelHandler.LOGGER.info(("Model setting: " + newvbox_4));
+              } else {
+                if ((vbox instanceof Machine_IBM_SoftLayer)) {
+                  Machine_IBM_SoftLayer newvbox_5 = ((Machine_IBM_SoftLayer) vbox);
+                  this.machineFactory(newvbox_5, node, state);
+                  ModelHandler.LOGGER.info(("Model setting: " + newvbox_5));
+                } else {
+                  if ((vbox instanceof Machine_Microsoft_Azure)) {
+                    Machine_Microsoft_Azure newvbox_6 = ((Machine_Microsoft_Azure) vbox);
+                    this.machineFactory(newvbox_6, node, state);
+                    ModelHandler.LOGGER.info(("Model setting: " + newvbox_6));
+                  } else {
+                    if ((vbox instanceof Machine_Microsoft_Hyper_V)) {
+                      Machine_Microsoft_Hyper_V newvbox_7 = ((Machine_Microsoft_Hyper_V) vbox);
+                      this.machineFactory(newvbox_7, node, state);
+                      ModelHandler.LOGGER.info(("Model setting: " + newvbox_7));
+                    } else {
+                      if ((vbox instanceof Machine_OpenStack)) {
+                        Machine_OpenStack newvbox_8 = ((Machine_OpenStack) vbox);
+                        this.machineFactory(newvbox_8, node, state);
+                        ModelHandler.LOGGER.info(("Model setting: " + newvbox_8));
+                      } else {
+                        if ((vbox instanceof Machine_Rackspace)) {
+                          Machine_Rackspace newvbox_9 = ((Machine_Rackspace) vbox);
+                          this.machineFactory(newvbox_9, node, state);
+                          ModelHandler.LOGGER.info(("Model setting: " + newvbox_9));
+                        } else {
+                          if ((vbox instanceof Machine_VMware_vSphere)) {
+                            Machine_VMware_vSphere newvbox_10 = ((Machine_VMware_vSphere) vbox);
+                            this.machineFactory(newvbox_10, node, state);
+                            ModelHandler.LOGGER.info(("Model setting: " + newvbox_10));
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
       }
       ComputeStatus _state = vbox.getState();
