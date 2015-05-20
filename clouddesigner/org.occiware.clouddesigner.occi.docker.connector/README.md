@@ -43,16 +43,11 @@ Check that the `docker` box is checked as shown in the picture below.
 Demo
 ----
 This video shows how to:
-  
-	1. Lunch the modeler.
-	
-	2. Use all actions defined with the connector (see the document belongs):[Docker Connector Backlog](https://docs.google.com/document/d/1X1DtfjoB8PehV69BcCt8jGXZN40UNc97wSc3lbg-Lr0/edit)
-	
-	[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](http://youtu.be/2SZXi71L0qQ)
-	
-	<a href="https://youtu.be/2SZXi71L0qQ" target="_blank"><img src="http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg" alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
-	
-	
 
-	
-	
+  * Lunch the modeler.
+  
+  * Use all actions defined with the connector (see the document belongs): [Docker Connector Backlog](https://docs.google.com/document/d/1X1DtfjoB8PehV69BcCt8jGXZN40UNc97wSc3lbg-Lr0/edit)
+  
+  * [![ScreenShot](https://raw.githubusercontent.com/occiware/dev-tools/master/eclipse/images/docker-demo-youtube.png)](http://youtu.be/vt5fpE0bzSY)
+  
+  * [![Docker Modeler Demo](http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](http://www.youtube.com/watch?v=2SZXi71L0qQ)
