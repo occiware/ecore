@@ -20,7 +20,7 @@ Change the configuration below according to your requirements in the file ecore/
 
 Lunch the modeler
 ----------------
-To lunch the modeler follow these steps
+To lunch the modeler follow these steps:
 
 * Start your eclipse IDE in `Run` menu chose `Run Configurations..` (We assume that the OCCIWARE/ecore project is already lunched in your IDE).
 
