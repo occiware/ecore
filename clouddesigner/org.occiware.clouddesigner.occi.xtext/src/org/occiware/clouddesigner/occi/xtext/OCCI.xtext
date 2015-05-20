@@ -12,6 +12,8 @@ grammar org.occiware.clouddesigner.occi.xtext.OCCI with org.eclipse.xtext.common
 import "http://schemas.ogf.org/occi"
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 
+// Let's note that for URI was replaced by STRING in the following XText rules.
+
 // BNF
 // <Grammar> ::= <ExtensionDecl> | <ConfigurationDecl>
 //
@@ -28,8 +30,8 @@ Grammar returns ecore::EObject:
 
 ExtensionDecl returns Extension:
 	'extension'
-	name=ID ':' scheme=URI
-	( 'import' ^import+=[Extension|URI] ( 'as' ID )? )* // TODO where storing the ID?
+	name=ID ':' scheme=STRING /* URI */
+	( 'import' ^import+=[Extension|STRING /* URI */] ( 'as' ID )? )* // TODO where storing the ID?
 	( kinds+=KindDecl
 	| mixins+=MixinDecl
 	| types+=DataTypeDecl
@@ -68,7 +70,7 @@ MixinDecl returns Mixin:
 	( 'depends' depends+=[Mixin|QualifiedID] ( ',' depends+=[Mixin|QualifiedID] )* )?
 	( 'applies' applies+=[Kind|QualifiedID] ( ',' applies+=[Kind|QualifiedID] )* )?
 	'{'
-    ( 'scheme' scheme=URI )?
+    ( 'scheme' scheme=STRING /* URI */ )?
     ( 'title' title=STRING )?
     (
       attributes+=AttributeDecl
@@ -180,7 +182,7 @@ EnumLiteralDecl returns ecore::EEnumLiteral:
 ConfigurationDecl returns Configuration:
 	{Configuration}
 	'configuration'
-	( 'use' use+=[Extension|URI] ( 'as' ID )? )* // TODO where storing the ID?
+	( 'use' use+=[Extension|STRING] ( 'as' ID )? )* // TODO where storing the ID?
 	resources+=ResourceDecl*
 	;
 
@@ -193,7 +195,7 @@ ConfigurationDecl returns Configuration:
 //
 ResourceDecl returns Resource:
 	'resource'
-	id=URI
+	id=STRING /* URI */
 	':'
 	kind=[Kind|QualifiedID]
 	( 'mixins' mixins+=[Mixin|QualifiedID] ( ',' mixins+=[Mixin|QualifiedID] )* )?
@@ -214,17 +216,17 @@ StateDecl returns AttributeState:
 //
 LinkDecl returns Link:
 	'link'
-	id=URI
+	id=STRING /* URI */
 	':'
 	kind=[Kind|QualifiedID]
 	( 'mixins' mixins+=[Mixin|QualifiedID] ( ',' mixins+=[Mixin|QualifiedID] )* )?
-	'target' target=[Resource|URI]
+	'target' target=[Resource|STRING /* URI */]
 	'{'
 	attributes+=StateDecl*
 	'}'
 	;
 
-URI: STRING;
+// URI: STRING;
 
 QualifiedID: ID ( '.' ID )? ;
 
