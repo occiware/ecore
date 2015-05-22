@@ -7,4 +7,15 @@
 	       name="OCCI Designer">
     </component>
   </extension>
+    <extension point="org.eclipse.ui.newWizards">
+      <wizard
+            class="org.occiware.clouddesigner.occi.design.wizard.NewExtensionWizard"
+            icon="images/ModelingProject.gif"
+            id="org.occiware.clouddesigner.occi.design.wizardID"
+            name="OCCI Extension Project"
+            project="true">
+         <description>Create a new Modeling project to specify an OCCI Extension.</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
 </plugin>

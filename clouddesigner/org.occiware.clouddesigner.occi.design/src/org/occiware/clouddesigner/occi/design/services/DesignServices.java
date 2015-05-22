@@ -17,18 +17,18 @@ public class DesignServices {
      * Computes the label of an Action.
      */
     public String render(Action action) {
-    	System.out.println("Render " + action);
+    	System.out.println("Render " + action); //$NON-NLS-1$
 		StringBuilder sb = new StringBuilder();
 		sb.append(action.getTerm());
 		sb.append('(');
 		boolean first = true;
 		for(Attribute param : action.getAttributes()) {
 			if (!first) {
-				sb.append(", ");
+				sb.append(", "); //$NON-NLS-1$
 			} else {
 				first = false;
 			}
-			sb.append(param.getName()).append(" : ").append(param.getType().getName());
+			sb.append(param.getName()).append(" : ").append(param.getType().getName()); //$NON-NLS-1$
 		}
 		sb.append(')');
 		return sb.toString();

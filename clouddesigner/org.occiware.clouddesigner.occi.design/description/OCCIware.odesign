@@ -45,6 +45,11 @@
         </containerMappings>
         <containerMappings name="KindContainer" semanticCandidatesExpression="feature:kinds" synchronizationLock="true" domainClass="OCCI.Kind" childrenPresentation="List">
           <subNodeMappings name="Attribute" semanticCandidatesExpression="feature:attributes" domainClass="OCCI.Attribute">
+            <style xsi:type="style:SquareDescription" labelSize="10" showIcon="false" labelExpression="ocl:name" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
             <conditionnalStyles predicateExpression="ocl:type&lt;>null and default&lt;>null">
               <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="ocl:name + ': ' + type.name + '=' + default" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -91,6 +96,11 @@
         </containerMappings>
         <containerMappings name="MixinContainer" semanticCandidatesExpression="feature:mixins" synchronizationLock="true" domainClass="OCCI.Mixin" childrenPresentation="List">
           <subNodeMappings name="Attribute" semanticCandidatesExpression="feature:attributes" domainClass="OCCI.Attribute">
+            <style xsi:type="style:SquareDescription" labelSize="10" showIcon="false" labelExpression="ocl:name" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
             <conditionnalStyles predicateExpression="ocl:type&lt;>null and default&lt;>null">
               <style xsi:type="style:SquareDescription" labelSize="10" showIcon="false" labelExpression="ocl:name + ': ' + type.name + '=' + default" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -315,7 +325,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="ResourceToResource" sourceMapping="//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']" targetMapping="//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']" targetFinderExpression="feature:resourcese">
+        <edgeMappings name="ResourceToResource" sourceMapping="//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']" targetMapping="//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']" targetFinderExpression="feature:resources">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
