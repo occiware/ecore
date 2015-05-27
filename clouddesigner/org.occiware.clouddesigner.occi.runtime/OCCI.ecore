@@ -97,7 +97,7 @@
   <eClassifiers xsi:type="ecore:EDataType" name="Number" instanceClassName="int"/>
   <eClassifiers xsi:type="ecore:EDataType" name="Boolean" instanceClassName="boolean"/>
   <eClassifiers xsi:type="ecore:EClass" name="Runtime" eSuperTypes="#//Resource">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="#//String"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="#//String"
         changeable="false" unsettable="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="#//String"
         changeable="false" unsettable="true"/>

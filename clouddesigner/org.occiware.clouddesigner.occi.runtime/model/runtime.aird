@@ -1991,6 +1991,11 @@
             <labelColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </computedStyleDescriptions>
+          <computedStyleDescriptions xmi:type="style:BundledImageDescription" xmi:id="_aZ4jcgR-EeWE4dIn-V7FPw" labelFormat="bold" labelExpression="service:render" labelAlignment="LEFT" tooltipExpression="service:renderTooltip" sizeComputationExpression="1">
+            <borderColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </computedStyleDescriptions>
           <cache xmi:type="diagram:DiagramElementMapping2ModelElement" xmi:id="_817CMgRwEeWE4dIn-V7FPw">
             <key xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
             <value xmi:type="diagram:ModelElement2ViewVariable" xmi:id="_817CMwRwEeWE4dIn-V7FPw">
@@ -2078,6 +2083,14 @@
               <value xmi:type="diagram:ViewVariable2ContainerVariable" xmi:id="_CwAE4QR6EeWE4dIn-V7FPw" key="_p3kLsAR5EeWE4dIn-V7FPw">
                 <value xmi:type="diagram:ContainerVariable2StyleDescription" xmi:id="_CwAE4wR6EeWE4dIn-V7FPw" value="_CwAE4gR6EeWE4dIn-V7FPw">
                   <key xmi:type="ecore:EClass" href="../OCCI.ecore#//AccessControl"/>
+                </value>
+              </value>
+            </value>
+            <value xmi:type="diagram:ModelElement2ViewVariable" xmi:id="_aZ4jcAR-EeWE4dIn-V7FPw">
+              <key xmi:type="ecore:EAttribute" href="../OCCI.ecore#//Runtime/name"/>
+              <value xmi:type="diagram:ViewVariable2ContainerVariable" xmi:id="_aZ4jcQR-EeWE4dIn-V7FPw" key="_VAUUMARyEeWE4dIn-V7FPw">
+                <value xmi:type="diagram:ContainerVariable2StyleDescription" xmi:id="_aZ4jcwR-EeWE4dIn-V7FPw" value="_aZ4jcgR-EeWE4dIn-V7FPw">
+                  <key xmi:type="ecore:EClass" href="../OCCI.ecore#//Runtime"/>
                 </value>
               </value>
             </value>
@@ -2366,11 +2379,10 @@
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_VAUUMARyEeWE4dIn-V7FPw" name="name : String" tooltipText="&#xA;ERROR : The required feature 'eAttributeType' of 'org.eclipse.emf.ecore.impl.EAttributeImpl@f006e8d{platform:/resource/org.occiware.clouddesigner.occi.runtime/OCCI.ecore#//Runtime/newAttribute}' must be set&#xA;ERROR : The typed element must have a type">
           <target xmi:type="ecore:EAttribute" href="../OCCI.ecore#//Runtime/name"/>
           <semanticElements xmi:type="ecore:EAttribute" href="../OCCI.ecore#//Runtime/name"/>
-          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_mUqw4ARyEeWE4dIn-V7FPw" labelAlignment="LEFT">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_mUqw4QRyEeWE4dIn-V7FPw"/>
-            <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
-            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_mUqw4gRyEeWE4dIn-V7FPw"/>
-            <color xmi:type="viewpoint:RGBValues" xmi:id="_mUqw4wRyEeWE4dIn-V7FPw"/>
+          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_aZ5KgAR-EeWE4dIn-V7FPw" labelFormat="bold" labelAlignment="LEFT" description="_aZ4jcgR-EeWE4dIn-V7FPw">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_aZ5KgQR-EeWE4dIn-V7FPw"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_aZ5KggR-EeWE4dIn-V7FPw"/>
+            <color xmi:type="viewpoint:RGBValues" xmi:id="_aZ5KgwR-EeWE4dIn-V7FPw"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
         </ownedElements>
