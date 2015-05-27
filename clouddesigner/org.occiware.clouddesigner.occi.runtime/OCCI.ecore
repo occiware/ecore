@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="OCCI" nsURI="http://schemas.ogf.org/occi" nsPrefix="OCCI">
+  <eAnnotations source="http://www.eclipse.org/OCL/Import">
+    <details key="ecore" value="http://www.eclipse.org/emf/2002/Ecore"/>
+  </eAnnotations>
+  <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+    <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="settingDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="Category" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="term" lowerBound="1" eType="#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="scheme" lowerBound="1"
+        eType="#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attributes" upperBound="-1"
+        eType="#//Attribute" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Attribute">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mutable" eType="#//Boolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="required" eType="#//Boolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="default" eType="#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EDataType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="multiple_values" eType="#//Boolean"
+        defaultValueLiteral="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Kind" eSuperTypes="#//Category">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parent" eType="#//Kind"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="actions" upperBound="-1"
+        eType="#//Action" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="entities" upperBound="-1"
+        eType="#//Entity" changeable="false" derived="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+        <details key="derivation" value="Entity.allInstances()->select(kind = self)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Action" eSuperTypes="#//Category"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Mixin" eSuperTypes="#//Category">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="actions" upperBound="-1"
+        eType="#//Action" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="depends" upperBound="-1"
+        eType="#//Mixin"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="applies" upperBound="-1"
+        eType="#//Kind"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="entities" upperBound="-1"
+        eType="#//Entity" changeable="false" derived="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+        <details key="derivation" value="Entity.allInstances()->select(mixins->includes(self))"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Entity" abstract="true">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="IdUnique AttributesNameUnique"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="IdUnique" value="Entity.allInstances()->isUnique(id)"/>
+      <details key="AttributesNameUnique" value="attributes->isUnique(name)"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="#//URI"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="kind" eType="#//Kind"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mixins" upperBound="-1"
+        eType="#//Mixin"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attributes" upperBound="-1"
+        eType="#//AttributeState" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AttributeState">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="#//String"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Resource" eSuperTypes="#//Entity">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="links" upperBound="-1"
+        eType="#//Link" containment="true" eOpposite="#//Link/source"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Link" eSuperTypes="#//Entity">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
+        eType="#//Resource" eOpposite="#//Resource/links"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+        eType="#//Resource"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Configuration">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="AllResourcesLinksTargetsInConfiguration"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="AllResourcesLinksTargetsInConfiguration" value="resources.links.target->forAll(r | r.oclContainer() = self)"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="resources" upperBound="-1"
+        eType="#//Resource" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="URI" instanceClassName="java.lang.String"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="String" instanceClassName="java.lang.String"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="Number" instanceClassName="int"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="Boolean" instanceClassName="boolean"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Runtime" eSuperTypes="#//Resource">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="#//String"
+        changeable="false" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="#//String"
+        changeable="false" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="occi_version" lowerBound="1"
+        eType="#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="location" eType="#//URI"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Backend" eSuperTypes="#//Resource">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="#//String"
+        changeable="false" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="#//String"
+        changeable="false" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="api" eType="#//String"
+        changeable="false" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="location" eType="#//URI"
+        changeable="false" unsettable="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Mountpoint" eSuperTypes="#//Link">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="path" eType="#//String"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Capabilities" eSuperTypes="#//Link"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AccessControl" eSuperTypes="#//Resource">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="priority" lowerBound="1"
+        eType="#//Number"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="policy" lowerBound="1"
+        eType="#//ACLPolicy"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="action" eType="#//ACLAction"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="path" eType="#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="owner" eType="#//String"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ACLPolicy">
+    <eLiterals name="allow"/>
+    <eLiterals name="deny"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ACLAction">
+    <eLiterals name="create"/>
+    <eLiterals name="read"/>
+    <eLiterals name="update"/>
+    <eLiterals name="delete"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="ACLOwner" instanceTypeName="newDataType7"/>
+</ecore:EPackage>

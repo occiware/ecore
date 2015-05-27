@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.occiware.clouddesigner.occi.runtime
+Bundle-SymbolicName: org.occiware.clouddesigner.occi.runtime; singleton:=true
+Bundle-Version: 0.1.0.qualifier
+Require-Bundle: org.eclipse.emf.ecore
