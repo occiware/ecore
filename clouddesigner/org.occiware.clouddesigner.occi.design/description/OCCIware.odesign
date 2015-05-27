@@ -182,14 +182,14 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </containerMappings>
-        <toolSections name="Extension">
-          <ownedTools xsi:type="tool:SelectionWizardDescription" name="Import" candidatesExpression="OCCI.Extension">
-            <element name="element"/>
-            <containerView name="containerView"/>
-            <container name="container"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container"/>
-            </initialOperation>
+        <toolSections name="Tool">
+          <ownedTools xsi:type="tool:PopupMenu" name="Import">
+            <menuItemDescription xsi:type="tool:OperationAction" name="OCCI Extension" icon="/org.occiware.clouddesigner.occi.design/images/import.gif">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:importExtension"/>
+              </initialOperation>
+            </menuItemDescription>
           </ownedTools>
         </toolSections>
         <toolSections name="Category" label="Category">
