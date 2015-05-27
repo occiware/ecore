@@ -119,13 +119,12 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="path" eType="#//String"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Capabilities" eSuperTypes="#//Link"/>
-  <eClassifiers xsi:type="ecore:EClass" name="AccessControl" eSuperTypes="#//Resource">
+  <eClassifiers xsi:type="ecore:EClass" name="AccessControl" eSuperTypes="#//Link">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="priority" lowerBound="1"
         eType="#//Number"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="policy" lowerBound="1"
         eType="#//ACLPolicy"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="action" eType="#//ACLAction"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="path" eType="#//String"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="owner" eType="#//String"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ACLPolicy">
@@ -138,5 +137,4 @@
     <eLiterals name="update"/>
     <eLiterals name="delete"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EDataType" name="ACLOwner" instanceTypeName="newDataType7"/>
 </ecore:EPackage>
