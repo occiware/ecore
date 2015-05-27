@@ -110,8 +110,6 @@
         changeable="false" unsettable="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="#//String"
         changeable="false" unsettable="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="api" eType="#//String"
-        changeable="false" unsettable="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="location" eType="#//URI"
         changeable="false" unsettable="true"/>
   </eClassifiers>
@@ -136,5 +134,24 @@
     <eLiterals name="read"/>
     <eLiterals name="update"/>
     <eLiterals name="delete"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HTTPBackend" abstract="true" interface="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="protocol" eType="#//HTTPBackendType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="server" eType="#//String"
+        defaultValueLiteral="localhost"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="port" lowerBound="1" eType="#//Number"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="HTTPBackendType">
+    <eLiterals name="http"/>
+    <eLiterals name="https"/>
+    <eLiterals name="http2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DBusBackend" abstract="true" interface="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="service" lowerBound="1"
+        eType="#//String"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CustomBackend" abstract="true" interface="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="apidoc" lowerBound="1"
+        eType="#//URI"/>
   </eClassifiers>
 </ecore:EPackage>
