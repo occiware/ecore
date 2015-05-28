@@ -134,4 +134,14 @@ class DockerUtil {
 			IOUtils.closeQuietly(response)
 		}
 	}
+	
+	def static isInteger(String value) {
+		try {
+			Integer.parseInt(value)
+		} catch (NumberFormatException e) {
+			return false
+		}
+		return true
+	}
+	
 }
