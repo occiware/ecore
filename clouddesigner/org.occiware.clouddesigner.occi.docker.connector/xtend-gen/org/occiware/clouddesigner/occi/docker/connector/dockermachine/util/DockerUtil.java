@@ -203,4 +203,18 @@ public class DockerUtil {
       IOUtils.closeQuietly(response);
     }
   }
+  
+  public static boolean isInteger(final String value) {
+    try {
+      Integer.parseInt(value);
+    } catch (final Throwable _t) {
+      if (_t instanceof NumberFormatException) {
+        final NumberFormatException e = (NumberFormatException)_t;
+        return false;
+      } else {
+        throw Exceptions.sneakyThrow(_t);
+      }
+    }
+    return true;
+  }
 }

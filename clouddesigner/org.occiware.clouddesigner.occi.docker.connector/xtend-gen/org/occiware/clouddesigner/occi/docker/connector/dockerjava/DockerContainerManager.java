@@ -29,6 +29,17 @@ import com.github.dockerjava.core.DockerClientBuilder;
 import com.github.dockerjava.core.DockerClientConfig;
 import com.google.common.base.Objects;
 import com.google.common.collect.Multimap;
+import com.jcraft.jsch.Channel;
+import com.jcraft.jsch.ChannelExec;
+import com.jcraft.jsch.HostKey;
+import com.jcraft.jsch.JSch;
+import com.jcraft.jsch.JSchException;
+import com.jcraft.jsch.Session;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
 import java.net.URL;
@@ -54,7 +65,7 @@ import org.slf4j.LoggerFactory;
 
 @SuppressWarnings("all")
 public class DockerContainerManager {
-  private DockerClient dockerClient = null;
+  private static DockerClient dockerClient = null;
   
   private List<String> images = CollectionLiterals.<String>newArrayList();
   
@@ -65,14 +76,14 @@ public class DockerContainerManager {
   
   public DockerContainerManager(final Machine machine) {
     DockerClient _setConfig = this.setConfig(machine);
-    this.dockerClient = _setConfig;
+    DockerContainerManager.dockerClient = _setConfig;
   }
   
   public Map<DockerClient, CreateContainerResponse> createContainer(final Machine machine, final Container container) {
     DockerClient dockerClient = null;
-    boolean _notEquals = (!Objects.equal(this.dockerClient, null));
+    boolean _notEquals = (!Objects.equal(DockerContainerManager.dockerClient, null));
     if (_notEquals) {
-      dockerClient = this.dockerClient;
+      dockerClient = DockerContainerManager.dockerClient;
     } else {
       DockerClient _setConfig = this.setConfig(machine);
       dockerClient = _setConfig;
@@ -86,9 +97,9 @@ public class DockerContainerManager {
   
   public Map<DockerClient, CreateContainerResponse> createContainer(final Machine machine, final Container container, final Multimap<String, String> containerDependency) {
     DockerClient dockerClient = null;
-    boolean _notEquals = (!Objects.equal(this.dockerClient, null));
+    boolean _notEquals = (!Objects.equal(DockerContainerManager.dockerClient, null));
     if (_notEquals) {
-      dockerClient = this.dockerClient;
+      dockerClient = DockerContainerManager.dockerClient;
     } else {
       DockerClient _setConfig = this.setConfig(machine);
       dockerClient = _setConfig;
@@ -444,9 +455,9 @@ public class DockerContainerManager {
   
   public InspectContainerResponse inspectContainer(final Machine machine, final String containerId) {
     DockerClient dockerClient = null;
-    boolean _notEquals = (!Objects.equal(this.dockerClient, null));
+    boolean _notEquals = (!Objects.equal(DockerContainerManager.dockerClient, null));
     if (_notEquals) {
-      dockerClient = this.dockerClient;
+      dockerClient = DockerContainerManager.dockerClient;
     } else {
       DockerClient _setConfig = this.setConfig(machine);
       dockerClient = _setConfig;
@@ -460,9 +471,9 @@ public class DockerContainerManager {
     Void _xblockexpression = null;
     {
       DockerClient dockerClient = null;
-      boolean _notEquals = (!Objects.equal(this.dockerClient, null));
+      boolean _notEquals = (!Objects.equal(DockerContainerManager.dockerClient, null));
       if (_notEquals) {
-        dockerClient = this.dockerClient;
+        dockerClient = DockerContainerManager.dockerClient;
       } else {
         DockerClient _setConfig = this.setConfig(machine);
         dockerClient = _setConfig;
@@ -478,9 +489,9 @@ public class DockerContainerManager {
     Void _xblockexpression = null;
     {
       DockerClient dockerClient = null;
-      boolean _notEquals = (!Objects.equal(this.dockerClient, null));
+      boolean _notEquals = (!Objects.equal(DockerContainerManager.dockerClient, null));
       if (_notEquals) {
-        dockerClient = this.dockerClient;
+        dockerClient = DockerContainerManager.dockerClient;
       } else {
         DockerClient _setConfig = this.setConfig(machine);
         dockerClient = _setConfig;
@@ -495,9 +506,9 @@ public class DockerContainerManager {
     Void _xblockexpression = null;
     {
       DockerClient dockerClient = null;
-      boolean _notEquals = (!Objects.equal(this.dockerClient, null));
+      boolean _notEquals = (!Objects.equal(DockerContainerManager.dockerClient, null));
       if (_notEquals) {
-        dockerClient = this.dockerClient;
+        dockerClient = DockerContainerManager.dockerClient;
       } else {
         DockerClient _setConfig = this.setConfig(machine);
         dockerClient = _setConfig;
@@ -513,9 +524,9 @@ public class DockerContainerManager {
     Void _xblockexpression = null;
     {
       DockerClient dockerClient = null;
-      boolean _notEquals = (!Objects.equal(this.dockerClient, null));
+      boolean _notEquals = (!Objects.equal(DockerContainerManager.dockerClient, null));
       if (_notEquals) {
-        dockerClient = this.dockerClient;
+        dockerClient = DockerContainerManager.dockerClient;
       } else {
         DockerClient _setConfig = this.setConfig(machine);
         dockerClient = _setConfig;
@@ -530,9 +541,9 @@ public class DockerContainerManager {
     Integer _xblockexpression = null;
     {
       DockerClient dockerClient = null;
-      boolean _notEquals = (!Objects.equal(this.dockerClient, null));
+      boolean _notEquals = (!Objects.equal(DockerContainerManager.dockerClient, null));
       if (_notEquals) {
-        dockerClient = this.dockerClient;
+        dockerClient = DockerContainerManager.dockerClient;
       } else {
         DockerClient _setConfig = this.setConfig(machine);
         dockerClient = _setConfig;
@@ -546,9 +557,9 @@ public class DockerContainerManager {
   
   public List<com.github.dockerjava.api.model.Container> listContainer(final Machine machine) {
     DockerClient dockerClient = null;
-    boolean _notEquals = (!Objects.equal(this.dockerClient, null));
+    boolean _notEquals = (!Objects.equal(DockerContainerManager.dockerClient, null));
     if (_notEquals) {
-      dockerClient = this.dockerClient;
+      dockerClient = DockerContainerManager.dockerClient;
     } else {
       DockerClient _setConfig = this.setConfig(machine);
       dockerClient = _setConfig;
@@ -562,9 +573,9 @@ public class DockerContainerManager {
   public DockerClient pullImage(final Machine machine, final String image) {
     DockerContainerManager.LOGGER.info(("Image setting: " + image));
     DockerClient dockerClient = null;
-    boolean _notEquals = (!Objects.equal(this.dockerClient, null));
+    boolean _notEquals = (!Objects.equal(DockerContainerManager.dockerClient, null));
     if (_notEquals) {
-      dockerClient = this.dockerClient;
+      dockerClient = DockerContainerManager.dockerClient;
     } else {
       DockerClient _setConfig = this.setConfig(machine);
       dockerClient = _setConfig;
@@ -573,6 +584,7 @@ public class DockerContainerManager {
     boolean _equals = containerImage.equals("");
     if (_equals) {
       containerImage = "busybox";
+      DockerContainerManager.LOGGER.info("Je rentre ici");
     }
     String output = null;
     boolean _contains = this.images.contains(containerImage);
@@ -596,7 +608,8 @@ public class DockerContainerManager {
       final DockerConfig lconfig = new DockerConfig();
       final Properties dockerClientconfig = lconfig.loadConfig();
       String _name = machine.getName();
-      DockerContainerManager.LOGGER.info(_name);
+      String _plus = ("Connection inside ---> " + _name);
+      DockerContainerManager.LOGGER.info(_plus);
       Runtime _runtime = Runtime.getRuntime();
       String _name_1 = machine.getName();
       String ENDPOINT = DockerMachineManager.urlCmd(_runtime, _name_1);
@@ -636,5 +649,179 @@ public class DockerContainerManager {
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
+  }
+  
+  public void connect() {
+    Session session = null;
+    final File test = new File("test");
+    final String host = "192.168.99.100";
+    try {
+      final JSch jsc = new JSch();
+      jsc.setKnownHosts("test");
+      jsc.addIdentity("/Users/spirals/.docker/machine/machines/bingo/id_rsa");
+      final String user = "docker";
+      Session _session = jsc.getSession(user, host, 22);
+      session = _session;
+      session.connect();
+    } catch (final Throwable _t) {
+      if (_t instanceof JSchException) {
+        final JSchException e = (JSchException)_t;
+        String _string = e.toString();
+        DockerContainerManager.LOGGER.info(_string);
+        HostKey _hostKey = session.getHostKey();
+        String _key = _hostKey.getKey();
+        this.addHost(_key, host, "test");
+      } else {
+        throw Exceptions.sneakyThrow(_t);
+      }
+    }
+    try {
+      final JSch jsc_1 = new JSch();
+      jsc_1.setKnownHosts("test");
+      jsc_1.addIdentity("/Users/spirals/.docker/machine/machines/bingo/id_rsa");
+      final String user_1 = "docker";
+      Session _session_1 = jsc_1.getSession(user_1, host, 22);
+      session = _session_1;
+      session.connect();
+      final Channel channel = session.openChannel("shell");
+      channel.setInputStream(System.in);
+      channel.setOutputStream(System.out);
+      channel.connect();
+    } catch (final Throwable _t_1) {
+      if (_t_1 instanceof JSchException) {
+        final JSchException e_1 = (JSchException)_t_1;
+        String _string_1 = e_1.toString();
+        DockerContainerManager.LOGGER.info(_string_1);
+      } else {
+        throw Exceptions.sneakyThrow(_t_1);
+      }
+    }
+  }
+  
+  public void connect(final String host, final String privateKey, final String command) {
+    try {
+      Session session = null;
+      final String user = "docker";
+      final File tempDir = this.createTempDir("knowHosts");
+      String _plus = (tempDir + "/hosts");
+      final File test = new File(_plus);
+      boolean _exists = test.exists();
+      boolean _not = (!_exists);
+      if (_not) {
+        test.createNewFile();
+      }
+      try {
+        final JSch jsc = new JSch();
+        String _absolutePath = test.getAbsolutePath();
+        jsc.setKnownHosts(_absolutePath);
+        jsc.addIdentity(privateKey);
+        Session _session = jsc.getSession(user, host, 22);
+        session = _session;
+        session.connect();
+      } catch (final Throwable _t) {
+        if (_t instanceof JSchException) {
+          final JSchException e = (JSchException)_t;
+          String _string = e.toString();
+          DockerContainerManager.LOGGER.info(_string);
+          HostKey _hostKey = session.getHostKey();
+          String _key = _hostKey.getKey();
+          String _plus_1 = (tempDir + "/hosts");
+          this.addHost(_key, host, _plus_1);
+        } else {
+          throw Exceptions.sneakyThrow(_t);
+        }
+      }
+      try {
+        final JSch jsc_1 = new JSch();
+        String _absolutePath_1 = test.getAbsolutePath();
+        jsc_1.setKnownHosts(_absolutePath_1);
+        jsc_1.addIdentity(privateKey);
+        final String exCommand = ((("sudo sh -c " + "\"") + command) + "\"");
+        DockerContainerManager.LOGGER.info(exCommand);
+        Session _session_1 = jsc_1.getSession(user, host, 22);
+        session = _session_1;
+        session.connect();
+        final Channel channel = session.openChannel("exec");
+        ((ChannelExec) channel).setCommand(exCommand);
+        ((ChannelExec) channel).setErrStream(System.err);
+        channel.connect();
+      } catch (final Throwable _t_1) {
+        if (_t_1 instanceof JSchException) {
+          final JSchException e_1 = (JSchException)_t_1;
+          String _string_1 = e_1.toString();
+          DockerContainerManager.LOGGER.info(_string_1);
+        } else {
+          throw Exceptions.sneakyThrow(_t_1);
+        }
+      }
+      session.disconnect();
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  public void addHost(final String key, final String ip, final String knowHosts) {
+    try {
+      final FileWriter tmpwriter = new FileWriter(knowHosts, true);
+      final String newLine = (((ip + " ssh-rsa ") + key) + "\n");
+      boolean _hostAlreadyExist = this.hostAlreadyExist(newLine, knowHosts);
+      boolean _not = (!_hostAlreadyExist);
+      if (_not) {
+        tmpwriter.append(newLine);
+        DockerContainerManager.LOGGER.info(((ip + " ssh-rsa ") + key));
+        tmpwriter.flush();
+        tmpwriter.close();
+      }
+    } catch (final Throwable _t) {
+      if (_t instanceof IOException) {
+        final IOException e = (IOException)_t;
+        e.printStackTrace();
+      } else {
+        throw Exceptions.sneakyThrow(_t);
+      }
+    }
+  }
+  
+  public boolean hostAlreadyExist(final String newLine, final String knowHosts) {
+    try {
+      final File hostFile = new File(knowHosts);
+      FileReader _fileReader = new FileReader(hostFile);
+      BufferedReader br = new BufferedReader(_fileReader);
+      String line = null;
+      while ((!Objects.equal((line = br.readLine()), null))) {
+        String _trim = line.trim();
+        String _trim_1 = newLine.trim();
+        boolean _equalsIgnoreCase = _trim.equalsIgnoreCase(_trim_1);
+        if (_equalsIgnoreCase) {
+          return true;
+        }
+      }
+      br.close();
+      return false;
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  public File createTempDir(final String baseName) {
+    String _property = System.getProperty("java.io.tmpdir");
+    final File baseDir = new File(_property);
+    File tempDir = new File(baseDir, baseName);
+    boolean _exists = tempDir.exists();
+    boolean _not = (!_exists);
+    if (_not) {
+      boolean _mkdir = tempDir.mkdir();
+      if (_mkdir) {
+        return tempDir;
+      }
+    } else {
+      return tempDir;
+    }
+    return null;
+  }
+  
+  public static void main(final String[] args) {
+    final DockerContainerManager main = new DockerContainerManager();
+    main.connect();
   }
 }

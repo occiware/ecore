@@ -28,6 +28,7 @@ import org.occiware.clouddesigner.occi.docker.Link;
 import org.occiware.clouddesigner.occi.docker.Machine;
 import org.occiware.clouddesigner.occi.docker.connector.ComputeStateMachine;
 import org.occiware.clouddesigner.occi.docker.connector.dockerjava.DockerContainerManager;
+import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerObserver;
 import org.occiware.clouddesigner.occi.docker.impl.ContainerImpl;
 import org.occiware.clouddesigner.occi.infrastructure.ComputeStatus;
 import org.occiware.clouddesigner.occi.infrastructure.RestartMethod;
@@ -45,6 +46,8 @@ public class ExecutableContainer extends ContainerImpl {
   
   private Map<DockerClient, CreateContainerResponse> map = null;
   
+  protected DockerContainerManager dockerContainerManager = new DockerContainerManager();
+  
   /**
    * Docker containers have a state machine.
    */
@@ -59,9 +62,8 @@ public class ExecutableContainer extends ContainerImpl {
       String _string = _state.toString();
       boolean _equalsIgnoreCase = _string.equalsIgnoreCase("active");
       if (_equalsIgnoreCase) {
-        final DockerContainerManager dockerContainerManager = new DockerContainerManager();
         String _name = this.compute.getName();
-        dockerContainerManager.startContainer(machine, _name);
+        ExecutableContainer.this.dockerContainerManager.startContainer(machine, _name);
       }
     }
     
@@ -75,14 +77,13 @@ public class ExecutableContainer extends ContainerImpl {
       String _string = _state.toString();
       boolean _equalsIgnoreCase = _string.equalsIgnoreCase("active");
       if (_equalsIgnoreCase) {
-        final DockerContainerManager dockerContainerManager = new DockerContainerManager();
         ComputeStatus _state_1 = this.compute.getState();
         String _string_1 = _state_1.toString();
         boolean _equalsIgnoreCase_1 = _string_1.equalsIgnoreCase("active");
         if (_equalsIgnoreCase_1) {
           try {
             String _name = this.compute.getName();
-            dockerContainerManager.stopContainer(machine, _name);
+            ExecutableContainer.this.dockerContainerManager.stopContainer(machine, _name);
           } catch (final Throwable _t) {
             if (_t instanceof Exception) {
               final Exception e = (Exception)_t;
@@ -114,6 +115,9 @@ public class ExecutableContainer extends ContainerImpl {
   
   public void start() {
     this.stateMachine.start();
+    final DockerObserver observer = new DockerObserver();
+    final Machine machine = this.getCurrentMachine();
+    observer.listener(this, machine);
   }
   
   public void stop(final StopMethod method) {
@@ -129,10 +133,9 @@ public class ExecutableContainer extends ContainerImpl {
   }
   
   public Map<DockerClient, CreateContainerResponse> createContainer(final Machine machine, final Multimap<String, String> containerDependency) {
-    DockerContainerManager dockercontainerManager = new DockerContainerManager();
     Map<DockerClient, CreateContainerResponse> result = new HashMap<DockerClient, CreateContainerResponse>();
-    dockercontainerManager.pullImage(machine, this.image);
-    Map<DockerClient, CreateContainerResponse> _createContainer = dockercontainerManager.createContainer(machine, this, containerDependency);
+    this.dockerContainerManager.pullImage(machine, this.image);
+    Map<DockerClient, CreateContainerResponse> _createContainer = this.dockerContainerManager.createContainer(machine, this, containerDependency);
     result = _createContainer;
     HashMap<DockerClient, CreateContainerResponse> _hashMap = new HashMap<DockerClient, CreateContainerResponse>(result);
     this.map = _hashMap;
@@ -140,9 +143,8 @@ public class ExecutableContainer extends ContainerImpl {
   }
   
   public void createContainer(final Machine machine) {
-    DockerContainerManager dockercontainerManager = new DockerContainerManager();
-    dockercontainerManager.pullImage(machine, this.image);
-    dockercontainerManager.createContainer(machine, this);
+    this.dockerContainerManager.pullImage(machine, this.image);
+    this.dockerContainerManager.createContainer(machine, this);
   }
   
   public org.occiware.clouddesigner.occi.docker.Container linkContainerToContainer(final org.occiware.clouddesigner.occi.docker.Container container) {

@@ -19,11 +19,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.TreeIterator;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.occiware.clouddesigner.OCCI.Link;
 import org.occiware.clouddesigner.OCCI.Resource;
@@ -56,6 +53,8 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
   protected Multimap<String, String> containerDependency = ArrayListMultimap.<String, String>create();
   
   protected Machine machine;
+  
+  protected DockerContainerManager dockerContainerManager = new DockerContainerManager();
   
   /**
    * Construct a Docker machine manager for a given Docker machine.
@@ -235,66 +234,13 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
   public void synchronize() {
     final Map<String, String> hosts = DockerUtil.getHosts();
     final ModelHandler instanceMH = new ModelHandler();
-    final DockerContainerManager instance = new DockerContainerManager();
+    final DockerContainerManager instance = new DockerContainerManager(this.compute);
     String _name = this.compute.getName();
     String _name_1 = this.compute.getName();
     String _get = hosts.get(_name_1);
     final Machine machine = instanceMH.getModel(_name, _get);
     ComputeStatus _state = machine.getState();
     this.compute.setState(_state);
-    ComputeStatus _state_1 = this.compute.getState();
-    String _string = _state_1.toString();
-    boolean _equalsIgnoreCase = _string.equalsIgnoreCase("active");
-    if (_equalsIgnoreCase) {
-      final List<com.github.dockerjava.api.model.Container> contains = instance.listContainer(machine);
-      boolean _notEquals = (!Objects.equal(contains, null));
-      if (_notEquals) {
-        final List<Container> modelContainers = instanceMH.buildContainer(this.compute, contains);
-        for (final Container container : modelContainers) {
-          ((ExecutableContainer) container).linkContainerToMachine(this.compute);
-        }
-        EList<Link> _links = this.compute.getLinks();
-        boolean _notEquals_1 = (!Objects.equal(_links, null));
-        if (_notEquals_1) {
-          EList<Link> _links_1 = this.compute.getLinks();
-          for (final Link link : _links_1) {
-            {
-              EObject _eContainer = this.compute.eContainer();
-              org.eclipse.emf.ecore.resource.Resource _eResource = _eContainer.eResource();
-              TreeIterator<EObject> _allContents = _eResource.getAllContents();
-              List<EObject> _list = IteratorExtensions.<EObject>toList(_allContents);
-              _list.add(link);
-              if ((link instanceof Link)) {
-                final Contains c = ((Contains) link);
-                Resource _target = c.getTarget();
-                if ((_target instanceof Container)) {
-                  EObject _eContainer_1 = this.compute.eContainer();
-                  org.eclipse.emf.ecore.resource.Resource _eResource_1 = _eContainer_1.eResource();
-                  TreeIterator<EObject> _allContents_1 = _eResource_1.getAllContents();
-                  List<EObject> _list_1 = IteratorExtensions.<EObject>toList(_allContents_1);
-                  Resource _target_1 = c.getTarget();
-                  _list_1.add(((Container) _target_1));
-                }
-              }
-            }
-          }
-        }
-      }
-    } else {
-      EList<Link> _links_2 = this.compute.getLinks();
-      int _size = _links_2.size();
-      boolean _greaterThan = (_size > 0);
-      if (_greaterThan) {
-        EList<Link> _links_3 = this.compute.getLinks();
-        final Procedure1<Link> _function = new Procedure1<Link>() {
-          public void apply(final Link elt) {
-            Resource _target = elt.getTarget();
-            ((ExecutableContainer) _target).stop(StopMethod.GRACEFUL);
-          }
-        };
-        IterableExtensions.<Link>forEach(_links_3, _function);
-      }
-    }
   }
   
   public boolean linkFound() {
@@ -392,8 +338,7 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
   }
   
   public boolean containerIsDeployed(final String containerName, final Machine machine) {
-    final DockerContainerManager containers = new DockerContainerManager();
-    final List<com.github.dockerjava.api.model.Container> listContainers = containers.listContainer(machine);
+    final List<com.github.dockerjava.api.model.Container> listContainers = this.dockerContainerManager.listContainer(machine);
     for (final com.github.dockerjava.api.model.Container c : listContainers) {
       {
         String contName = null;

@@ -83,4 +83,13 @@ public class DockerMachineManager {
     final String temp = _outputCommand.replace("tcp", "https");
     return temp;
   }
+  
+  public static String ipCmd(final Runtime runtime, final String machineName) {
+    final String command = DockerMachineManager.cf.createUrlCommand(machineName);
+    String _outputCommand = ProcessManager.getOutputCommand(command, runtime);
+    final String temp = _outputCommand.replace("tcp://", "");
+    final int index = temp.indexOf(":");
+    final String newTemp = temp.substring(0, index);
+    return newTemp;
+  }
 }
