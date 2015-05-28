@@ -36,9 +36,20 @@ import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.Docke
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerUtil
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import com.jcraft.jsch.JSch
+import com.jcraft.jsch.Session
+import com.jcraft.jsch.Channel
+import com.jcraft.jsch.UserInfo
+import java.io.FileWriter
+import java.io.IOException
+import com.jcraft.jsch.JSchException
+import java.io.File
+import com.jcraft.jsch.ChannelExec
+import java.io.BufferedReader
+import java.io.FileReader
 
 class DockerContainerManager {
-	private DockerClient dockerClient = null
+	private static DockerClient dockerClient = null
 	private List<String> images = newArrayList
 
 	// Initialize logger for DockerContainerManager.
@@ -48,15 +59,15 @@ class DockerContainerManager {
 	}
 
 	new(Machine machine) {
-		this.dockerClient = setConfig(machine)
+		DockerContainerManager.dockerClient = setConfig(machine)
 	}
 
 	def createContainer(Machine machine, Container container) {
 		var DockerClient dockerClient = null
 
 		// Set dockerClient
-		if (this.dockerClient != null) {
-			dockerClient = this.dockerClient
+		if (DockerContainerManager.dockerClient != null) {
+			dockerClient = DockerContainerManager.dockerClient
 		} else {
 			dockerClient = setConfig(machine)
 
@@ -75,11 +86,10 @@ class DockerContainerManager {
 		var DockerClient dockerClient = null
 
 		// Set dockerClient
-		if (this.dockerClient != null) {
-			dockerClient = this.dockerClient
+		if (DockerContainerManager.dockerClient != null) {
+			dockerClient = DockerContainerManager.dockerClient
 		} else {
 			dockerClient = setConfig(machine)
-
 		}
 		var Map<DockerClient, CreateContainerResponse> result = new LinkedHashMap<DockerClient, CreateContainerResponse>
 		val create = containerFactory(container, dockerClient, containerDependency)
@@ -284,7 +294,7 @@ class DockerContainerManager {
 		val dockerClient = map.keySet().iterator().next() as DockerClient
 		val createContainerResponse = map.get(dockerClient) as CreateContainerResponse
 		val InspectContainerResponse inspectContainerResponse = dockerClient.inspectContainerCmd(
-			createContainerResponse.getId()).exec();
+			createContainerResponse.getId()).exec()
 		return inspectContainerResponse
 
 	}
@@ -293,13 +303,13 @@ class DockerContainerManager {
 		var DockerClient dockerClient = null
 
 		// Set dockerClient
-		if (this.dockerClient != null) {
-			dockerClient = this.dockerClient
+		if (DockerContainerManager.dockerClient != null) {
+			dockerClient = DockerContainerManager.dockerClient
 		} else {
 			dockerClient = setConfig(machine)
 
 		}
-		val InspectContainerResponse inspectContainerResponse = dockerClient.inspectContainerCmd(containerId).exec();
+		val InspectContainerResponse inspectContainerResponse = dockerClient.inspectContainerCmd(containerId).exec()
 		return inspectContainerResponse
 
 	}
@@ -308,8 +318,8 @@ class DockerContainerManager {
 		var DockerClient dockerClient = null
 
 		// Set dockerClient
-		if (this.dockerClient != null) {
-			dockerClient = this.dockerClient
+		if (DockerContainerManager.dockerClient != null) {
+			dockerClient = DockerContainerManager.dockerClient
 		} else {
 			dockerClient = setConfig(machine)
 
@@ -321,8 +331,8 @@ class DockerContainerManager {
 		var DockerClient dockerClient = null
 
 		// Set dockerClient
-		if (this.dockerClient != null) {
-			dockerClient = this.dockerClient
+		if (DockerContainerManager.dockerClient != null) {
+			dockerClient = DockerContainerManager.dockerClient
 		} else {
 			dockerClient = setConfig(machine)
 
@@ -334,8 +344,8 @@ class DockerContainerManager {
 		var DockerClient dockerClient = null
 
 		// Set dockerClient
-		if (this.dockerClient != null) {
-			dockerClient = this.dockerClient
+		if (DockerContainerManager.dockerClient != null) {
+			dockerClient = DockerContainerManager.dockerClient
 		} else {
 			dockerClient = setConfig(machine)
 
@@ -347,8 +357,8 @@ class DockerContainerManager {
 		var DockerClient dockerClient = null
 
 		// Set dockerClient
-		if (this.dockerClient != null) {
-			dockerClient = this.dockerClient
+		if (DockerContainerManager.dockerClient != null) {
+			dockerClient = DockerContainerManager.dockerClient
 		} else {
 			dockerClient = setConfig(machine)
 
@@ -360,8 +370,8 @@ class DockerContainerManager {
 		var DockerClient dockerClient = null
 
 		// Set dockerClient
-		if (this.dockerClient != null) {
-			dockerClient = this.dockerClient
+		if (DockerContainerManager.dockerClient != null) {
+			dockerClient = DockerContainerManager.dockerClient
 		} else {
 			dockerClient = setConfig(machine)
 
@@ -374,8 +384,8 @@ class DockerContainerManager {
 		var DockerClient dockerClient = null
 
 		// Set dockerClient
-		if (this.dockerClient != null) {
-			dockerClient = this.dockerClient
+		if (DockerContainerManager.dockerClient != null) {
+			dockerClient = DockerContainerManager.dockerClient
 		} else {
 			dockerClient = setConfig(machine)
 
@@ -392,14 +402,15 @@ class DockerContainerManager {
 		var DockerClient dockerClient = null
 
 		// Set dockerClient
-		if (this.dockerClient != null) {
-			dockerClient = this.dockerClient
+		if (DockerContainerManager.dockerClient != null) {
+			dockerClient = DockerContainerManager.dockerClient
 		} else {
 			dockerClient = setConfig(machine)
 		}
 		var containerImage = image
 		if (containerImage.equals("")) {
 			containerImage = "busybox"
+			LOGGER.info("Je rentre ici")
 		}
 		var String output = null
 		if (!images.contains(containerImage)) {
@@ -419,7 +430,7 @@ class DockerContainerManager {
 	def DockerClient setConfig(Machine machine) {
 		val lconfig = new DockerConfig
 		val dockerClientconfig = lconfig.loadConfig
-		LOGGER.info(machine.name)
+		LOGGER.info("Connection inside ---> " + machine.name)
 		var String ENDPOINT = DockerMachineManager.urlCmd(Runtime.getRuntime, machine.name)
 		val String certPath = DockerUtil.getEnv(machine.name)
 		val String port = ":2376"
@@ -436,4 +447,91 @@ class DockerContainerManager {
 		val DockerClient dockerClient = DockerClientBuilder.getInstance(config).build()
 		return dockerClient
 	}
+
+	def void connect(String host, String privateKey, String command) {
+		var Session session = null
+		val user = "docker"
+		val tempDir = createTempDir("knowHosts")
+		val File test = new File(tempDir + "/hosts")
+
+		// Do not remove an existing file
+		if (!test.exists) {
+			test.createNewFile
+		}
+
+		try {
+			val JSch jsc = new JSch
+			jsc.setKnownHosts(test.absolutePath)
+			jsc.addIdentity(privateKey)
+			session = jsc.getSession(user, host, 22)
+			session.connect()
+
+		} catch (JSchException e) {
+			LOGGER.info(e.toString)
+			addHost(session.getHostKey().getKey(), host, tempDir + "/hosts")
+		}
+
+		try {
+			val JSch jsc = new JSch
+			jsc.setKnownHosts(test.absolutePath)
+			jsc.addIdentity(privateKey)
+			val exCommand = "sudo sh -c " + "\"" + command + "\""
+			LOGGER.info(exCommand)
+			session = jsc.getSession(user, host, 22)
+			session.connect()
+			val Channel channel = session.openChannel("exec")
+			(channel as ChannelExec).setCommand(exCommand)
+			(channel as ChannelExec).setErrStream(System.err)
+			channel.connect()
+		} catch (JSchException e) {
+			LOGGER.info(e.toString)
+
+		}
+		session.disconnect()
+	}
+
+	def void addHost(String key, String ip, String knowHosts) {
+		try {
+			val FileWriter tmpwriter = new FileWriter(knowHosts, true)
+			val String newLine = ip + " ssh-rsa " + key + "\n"
+			if (!hostAlreadyExist(newLine, knowHosts)) {
+				tmpwriter.append(newLine)
+				LOGGER.info(ip + " ssh-rsa " + key)
+
+				tmpwriter.flush()
+				tmpwriter.close()
+			}
+
+		} catch (IOException e) {
+			e.printStackTrace()
+		}
+	}
+
+	def boolean hostAlreadyExist(String newLine, String knowHosts) {
+		val File hostFile = new File(knowHosts)
+		var BufferedReader br = new BufferedReader(new FileReader(hostFile))
+		var String line = null
+		while ((line = br.readLine()) != null) {
+			if (line.trim.equalsIgnoreCase(newLine.trim)) {
+				return true
+			}
+		}
+		br.close()
+		return false
+	}
+
+	def File createTempDir(String baseName) {
+		val File baseDir = new File(System.getProperty("java.io.tmpdir"))
+		var File tempDir = new File(baseDir, baseName)
+		if (!tempDir.exists) {
+			if (tempDir.mkdir()) {
+				return tempDir
+			}
+		} else {
+			return tempDir
+
+		}
+
+	}
+
 }
