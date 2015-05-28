@@ -122,6 +122,12 @@
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:importModel"/>
               </initialOperation>
             </menuItemDescription>
+            <menuItemDescription xsi:type="tool_1:OperationAction" name="Restart" precondition="[oclIsKindOf(Machine) or oclIsKindOf(Container)/]" icon="/org.occiware.clouddesigner.occi.docker.design/images/restart.gif">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:restart"/>
+              </initialOperation>
+            </menuItemDescription>
           </ownedTools>
         </toolSections>
         <toolSections name="Configuration">
