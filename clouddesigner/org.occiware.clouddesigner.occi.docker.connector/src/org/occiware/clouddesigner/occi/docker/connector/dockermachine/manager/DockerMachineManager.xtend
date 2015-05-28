@@ -80,4 +80,13 @@ class DockerMachineManager {
 		val temp = ProcessManager.getOutputCommand(command, runtime).replace("tcp", "https")
 		return temp
 	}
+	
+	def static ipCmd(Runtime runtime, String machineName) {
+		val String command = cf.createUrlCommand(machineName)
+		val temp = ProcessManager.getOutputCommand(command, runtime).replace("tcp://", "")
+		val index = temp.indexOf(":")
+		val newTemp = temp.substring(0, index)
+		return newTemp
+	}
+	
 }
