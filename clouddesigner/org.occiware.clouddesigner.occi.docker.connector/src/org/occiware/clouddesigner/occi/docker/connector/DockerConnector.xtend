@@ -496,6 +496,7 @@ class ExecutableContainer extends ContainerImpl {
 	// Initialize logger for ExecutableContainer.
 	private static Logger LOGGER = LoggerFactory.getLogger(typeof(ExecutableContainer))
 	var Map<DockerClient, CreateContainerResponse> map = null
+	protected DockerContainerManager dockerContainerManager = new DockerContainerManager
 
 	/**
 	 * Docker containers have a state machine.
@@ -509,7 +510,6 @@ class ExecutableContainer extends ContainerImpl {
 			LOGGER.info("EXECUTE container start")
 			val machine = getCurrentMachine
 			if (machine.state.toString.equalsIgnoreCase("active")) {
-				val dockerContainerManager = new DockerContainerManager
 				dockerContainerManager.startContainer(machine, this.compute.name)
 			}
 		}
@@ -521,7 +521,6 @@ class ExecutableContainer extends ContainerImpl {
 			LOGGER.info("EXECUTE container stop")
 			val machine = getCurrentMachine
 			if (machine.state.toString.equalsIgnoreCase("active")) {
-				val dockerContainerManager = new DockerContainerManager
 				if (this.compute.state.toString.equalsIgnoreCase("active")) {
 					try {
 						dockerContainerManager.stopContainer(machine, this.compute.name)
@@ -550,7 +549,13 @@ class ExecutableContainer extends ContainerImpl {
 	}
 
 	// Delegation to the container state machine.
-	override def start() { stateMachine.start }
+	override def start() { 
+		stateMachine.start
+		// Add listener here
+		val observer = new DockerObserver
+		val machine = getCurrentMachine
+		observer.listener(this, machine)
+	}
 
 	override def stop(StopMethod method) { stateMachine.stop(method) }
 
@@ -560,24 +565,22 @@ class ExecutableContainer extends ContainerImpl {
 
 	def Map<DockerClient, CreateContainerResponse> createContainer(Machine machine,
 		Multimap<String, String> containerDependency) {
-		var DockerContainerManager dockercontainerManager = new DockerContainerManager
 
 		// Set dockerClient
 		var Map<DockerClient, CreateContainerResponse> result = new HashMap<DockerClient, CreateContainerResponse>
 
 		// Download image
-		dockercontainerManager.pullImage(machine, this.image)
-		result = dockercontainerManager.createContainer(machine, this, containerDependency)
+		dockerContainerManager.pullImage(machine, this.image)
+		result = dockerContainerManager.createContainer(machine, this, containerDependency)
 		this.map = new HashMap<DockerClient, CreateContainerResponse>(result)
 		return result
 	}
 
 	def void createContainer(Machine machine) {
-		var DockerContainerManager dockercontainerManager = new DockerContainerManager
 
 		// Download image
-		dockercontainerManager.pullImage(machine, this.image)
-		dockercontainerManager.createContainer(machine, this)
+		dockerContainerManager.pullImage(machine, this.image)
+		dockerContainerManager.createContainer(machine, this)
 	}
 
 	def org.occiware.clouddesigner.occi.docker.Container linkContainerToContainer(
@@ -645,6 +648,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 	private static Logger LOGGER = LoggerFactory.getLogger(typeof(MachineManager))
 	protected Multimap<String, String> containerDependency = ArrayListMultimap.create
 	protected Machine machine
+	protected DockerContainerManager dockerContainerManager = new DockerContainerManager
 
 	/**
 	 * Construct a Docker machine manager for a given Docker machine.
@@ -690,7 +694,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 		val hosts = DockerUtil.getHosts
 		if (!hosts.containsKey(compute.name)) { // Check if machine exists in the real environment
 
-			// Create VitualBox machine and start it
+			// Create the machine and start it
 			ProcessManager.runCommand(command.toString, runtime, true)
 		} else {
 			if (!activeHosts.containsKey(compute.name)) {
@@ -724,7 +728,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 		val hosts = DockerUtil.getHosts
 		if (!hosts.containsKey(compute.name)) { // Check if machine exists in the real environment
 
-			// Create VitualBox machine and start it
+			// Create the machine and start it
 			ProcessManager.runCommand(command.toString, runtime, true)
 
 			// Set state
@@ -827,10 +831,10 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 		// compare
 		val hosts = DockerUtil.getHosts
 		val instanceMH = new ModelHandler
-		val instance = new DockerContainerManager
+		val instance = new DockerContainerManager(this.compute)
 		val machine = instanceMH.getModel(this.compute.name, hosts.get(this.compute.name))
 		this.compute.state = machine.state
-
+		/* 
 		if (this.compute.state.toString.equalsIgnoreCase("active")) {
 
 			// Introspect containers
@@ -863,6 +867,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 
 			}
 		}
+		*/
 	}
 
 	def boolean linkFound() {
@@ -927,8 +932,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 	}
 
 	def boolean containerIsDeployed(String containerName, Machine machine) {
-		val containers = new DockerContainerManager
-		val listContainers = containers.listContainer(machine)
+		val listContainers = dockerContainerManager.listContainer(machine)
 		for (com.github.dockerjava.api.model.Container c : listContainers) {
 			var String contName = null
 			val name = c.names.get(0)
