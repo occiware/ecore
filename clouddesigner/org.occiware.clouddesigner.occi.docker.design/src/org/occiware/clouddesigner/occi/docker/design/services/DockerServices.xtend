@@ -24,6 +24,7 @@ import org.occiware.clouddesigner.occi.docker.Machine
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableDockerFactory
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableDockerModel
 import org.occiware.clouddesigner.occi.infrastructure.StopMethod
+import org.occiware.clouddesigner.occi.infrastructure.RestartMethod
 
 class DockerServices {
 
@@ -114,6 +115,28 @@ class DockerServices {
 					var container = eo as Container
 					val main = new ExecutableDockerModel(container)
 					main.container.stop(StopMethod.GRACEFUL)
+				}
+			}
+		}
+		var dialog = new ProgressMonitorDialog(getShell())
+		dialog.run(false, true, runnable)
+	}
+	
+	/**
+	 * Popup menu restart action.
+	 */
+	def void restart(EObject eo) {
+		var runnable = new IRunnableWithProgress() {
+			override run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+				if (eo instanceof Machine) {
+					var machine = eo as Machine
+					val main = new ExecutableDockerModel(machine)
+					main.restart
+
+				} else if (eo instanceof Container) {
+					var container = eo as Container
+					val main = new ExecutableDockerModel(container)
+					main.container.restart(RestartMethod.GRACEFUL)
 				}
 			}
 		}
