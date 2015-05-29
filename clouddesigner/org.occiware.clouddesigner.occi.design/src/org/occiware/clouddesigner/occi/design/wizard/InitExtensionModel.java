@@ -62,6 +62,11 @@ public class InitExtensionModel extends WorkspaceModifyOperation {
 	private final String extensionName;
 
 	/**
+	 * The scheme of the Extension.
+	 */
+	private final String extensionScheme;
+
+	/**
 	 * Constructor.
 	 *
 	 * @param project
@@ -69,11 +74,13 @@ public class InitExtensionModel extends WorkspaceModifyOperation {
 	 * @param rootObjectName
 	 *            The name of the semantic root element
 	 * @param extensionName
+	 * @param extensionScheme
 	 */
-	public InitExtensionModel(IProject project, String extensionName) {
+	public InitExtensionModel(IProject project, String extensionName, String extensionScheme) {
 		super(null);
 		this.project = project;
 		this.extensionName = extensionName;
+		this.extensionScheme = extensionScheme;
 	}
 
 	/**
@@ -90,7 +97,7 @@ public class InitExtensionModel extends WorkspaceModifyOperation {
 				public void run() {
 					// Create default empty Extension model
 					InitExtensionModel.createSemanticResource(project,
-							extensionName);
+							extensionName, extensionScheme);
 
 					// Enable OCCI viewpoints
 					final ModelingProject modelingProject = created.get();
@@ -109,9 +116,10 @@ public class InitExtensionModel extends WorkspaceModifyOperation {
 	 *            Name of the OCCI file
 	 */
 	public static Option<IFile> createSemanticResource(final IProject project,
-			final String extensionName) {
+			final String extensionName, String extensionScheme) {
 		final Extension rootObject = OCCIFactory.eINSTANCE.createExtension();
 		rootObject.setName(extensionName);
+		rootObject.setScheme(extensionScheme);
 		final Option<ModelingProject> modelingProject = ModelingProject
 				.asModelingProject(project);
 		final Session session = modelingProject.get().getSession();

@@ -65,6 +65,13 @@ public class NewExtensionWizard extends BasicNewProjectResourceWizard {
 
 	private Text extensionNameText;
 
+	/**
+	 * Scheme of the Extension.
+	 */
+	protected String extensionScheme;
+
+	private Text extensionSchemeText;
+
 	private void openRepresentation(IProject curProject,
 			IProgressMonitor monitor) {
 		final Option<ModelingProject> optionalModelingProject = ModelingProject
@@ -114,7 +121,7 @@ public class NewExtensionWizard extends BasicNewProjectResourceWizard {
 							Messages.NewExtensionWizard_ProjectCreationError, e));
 		}
 
-		if (project == null || extensionName == null) {
+		if (project == null || extensionName == null || extensionScheme == null) {
 			throw new IllegalArgumentException();
 		}
 
@@ -129,7 +136,7 @@ public class NewExtensionWizard extends BasicNewProjectResourceWizard {
 				// BasicNewProjectResourceWizard to implement the perspective
 				// switch easily.
 				final InitExtensionModel init = new InitExtensionModel(project,
-						extensionName);
+						extensionName, extensionScheme);
 				try {
 					getContainer().run(false, true, init);
 				} catch (final InterruptedException e) {
@@ -256,6 +263,24 @@ public class NewExtensionWizard extends BasicNewProjectResourceWizard {
 					@Override
 					public void modifyText(ModifyEvent e) {
 						extensionName = extensionNameText.getText();
+					}
+				});
+
+				Label schemeLabel = new Label(extensionGroup, SWT.NONE);
+				schemeLabel
+						.setText(Messages.NewExtensionWizard_ExtensionSchemeLabel);
+				schemeLabel.setFont(parent.getFont());
+
+				extensionSchemeText = new Text(extensionGroup, SWT.BORDER);
+				GridData data1 = new GridData(GridData.FILL_HORIZONTAL);
+				extensionSchemeText.setLayoutData(data1);
+				extensionSchemeText.setFont(parent.getFont());
+
+				extensionSchemeText.addModifyListener(new ModifyListener() {
+
+					@Override
+					public void modifyText(ModifyEvent e) {
+						extensionScheme = extensionSchemeText.getText();
 					}
 				});
 			}

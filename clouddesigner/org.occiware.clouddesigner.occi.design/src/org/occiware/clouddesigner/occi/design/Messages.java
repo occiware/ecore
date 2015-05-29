@@ -5,6 +5,7 @@ import org.eclipse.osgi.util.NLS;
 public class Messages extends NLS {
 	private static final String BUNDLE_NAME = "org.occiware.clouddesigner.occi.design.messages"; //$NON-NLS-1$
 	public static String NewExtensionWizard_ExtensionNameLabel;
+	public static String NewExtensionWizard_ExtensionSchemeLabel;
 	public static String NewExtensionWizard_ModelCreationError;
 	public static String NewExtensionWizard_PageDescription;
 	public static String NewExtensionWizard_PageName;
