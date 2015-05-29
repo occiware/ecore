@@ -24,7 +24,6 @@ public class DesignServices {
 	 * Computes the label of an Action.
 	 */
 	public String render(Action action) {
-		System.out.println("Render " + action); //$NON-NLS-1$
 		StringBuilder sb = new StringBuilder();
 		sb.append(action.getTerm());
 		sb.append('(');
