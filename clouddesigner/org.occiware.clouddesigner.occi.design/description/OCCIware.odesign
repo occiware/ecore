@@ -183,8 +183,8 @@
           </style>
         </containerMappings>
         <toolSections name="Tool">
-          <ownedTools xsi:type="tool:PopupMenu" name="Import">
-            <menuItemDescription xsi:type="tool:OperationAction" name="OCCI Extension" icon="/org.occiware.clouddesigner.occi.design/images/import.gif">
+          <ownedTools xsi:type="tool:PopupMenu" name="Cloud Designer">
+            <menuItemDescription xsi:type="tool:OperationAction" name="Import OCCI Extension" precondition="[oclIsKindOf(Extension)/]" icon="/org.occiware.clouddesigner.occi.design/images/import.gif">
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:importExtension"/>
