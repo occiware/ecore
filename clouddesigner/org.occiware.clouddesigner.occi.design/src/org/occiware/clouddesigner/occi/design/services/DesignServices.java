@@ -11,7 +11,10 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.occiware.clouddesigner.OCCI.Action;
 import org.occiware.clouddesigner.OCCI.Attribute;
+import org.occiware.clouddesigner.OCCI.Category;
 import org.occiware.clouddesigner.OCCI.Extension;
+import org.occiware.clouddesigner.OCCI.Kind;
+import org.occiware.clouddesigner.OCCI.Mixin;
 
 public class DesignServices {
 
@@ -39,6 +42,29 @@ public class DesignServices {
 		}
 		sb.append(')');
 		return sb.toString();
+	}
+
+	/**
+	 * Computes the initial term of an Action.
+	 */
+	public String initialActionTerm(Action action) {
+	  Object container = action.eContainer();
+	  int nb = 0;
+	  if(container instanceof Kind) {
+		  nb = ((Kind)container).getActions().size();
+	  } else if(container instanceof Mixin) {
+		  nb = ((Mixin)container).getActions().size();
+	  }
+	  return "action" + nb;
+	}
+
+	/**
+	 * Computes the initial scheme of an Action.
+	 */
+	public String initialActionScheme(Action action) {
+	  Category category = (Category)action.eContainer();
+	  String scheme = category.getScheme();
+	  return scheme.substring(0, scheme.length()-1) + "/" + category.getTerm() + "/action#";
 	}
 
 	public void importExtension(Extension extension) {
