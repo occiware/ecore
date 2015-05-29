@@ -198,7 +198,10 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="OCCI.Kind" referenceName="kinds"/>
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="OCCI.Kind" referenceName="kinds">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="term" valueExpression="['kind' + container.oclAsType(Extension).kinds->size().toString()/]"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="scheme" valueExpression="[container.oclAsType(Extension).scheme/]"/>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -208,7 +211,8 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="OCCI.Mixin" referenceName="mixins">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="term" valueExpression="ocl:'Mixin' + Set{}->size().toString()"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="term" valueExpression="['mixin' + container.oclAsType(Extension).mixins->size().toString()/]"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="scheme" valueExpression="[container.oclAsType(Extension).scheme/]"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -219,7 +223,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="OCCI.Attribute" referenceName="attributes">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="ocl:'attribute' + Set{}->size().toString()"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['attribute' + container.oclAsType(Category).attributes->size().toString()/]"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -230,7 +234,8 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="OCCI.Action" referenceName="actions">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="term" valueExpression="ocl:'action' + Set{}->size().toString()"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="term" valueExpression="service:initialActionTerm"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="scheme" valueExpression="service:initialActionScheme"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
