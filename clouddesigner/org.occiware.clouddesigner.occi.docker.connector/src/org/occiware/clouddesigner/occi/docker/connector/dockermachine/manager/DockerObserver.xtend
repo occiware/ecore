@@ -31,27 +31,7 @@ class DockerObserver {
 
 	// Initialize logger for CommandFactory.
 	private static Logger LOGGER = LoggerFactory.getLogger(typeof(DockerObserver))
-
-	def static listener() {
-
-		/*
-		 * ADD listener
-		 */
-		// Initialize the model and Retrieve the default factory singleton
-		val vbox = DockerFactory.eINSTANCE.createMachine_VirtualBox
-		vbox.eAdapters.add(
-			new EContentAdapter() {
-				public override notifyChanged(Notification notification) {
-					LOGGER.info("Ancienne Valeur : " + notification.oldValue)
-					LOGGER.info("Nouvelle Valeur : " + notification.newValue)
-					val m = notification.notifier as Machine_VirtualBox
-					LOGGER.info("La memoire" + m.memory)
-				}
-			}
-		)
-
-		return vbox
-	}
+	var protected static Container cpContainer = null
 
 	def listener(Machine machine) {
 
@@ -62,6 +42,8 @@ class DockerObserver {
 		machine.eAdapters.add(
 			new EContentAdapter() {
 				public override notifyChanged(Notification notification) {
+					LOGGER.info("Ancienne Valeur : " + notification.oldValue)
+					LOGGER.info("Nouvelle Valeur : " + notification.newValue)
 
 					// Rollback changes 
 					var machine = cpMachine
@@ -77,7 +59,7 @@ class DockerObserver {
 	def listener(Container container, Machine machine) {
 
 		// Make a reference copy
-		val cpContainer = EcoreUtil.copy(container) as ExecutableContainer
+		cpContainer = EcoreUtil.copy(container) as ExecutableContainer
 		val privateKey = DockerUtil.getEnv(machine.name) + "/" + "id_rsa"
 		val host = DockerMachineManager.ipCmd(Runtime.getRuntime, machine.name)
 
@@ -85,24 +67,37 @@ class DockerObserver {
 		container.eAdapters.add(
 			new EContentAdapter() {
 				public override notifyChanged(Notification notification) {
-					println("<-------------------------The Container has Changed -------------------------->\n\n\n\n\n\n\n\n")
+					LOGGER.info("The Container has Changed")
 					var newContainer = notification.notifier as Container
-					println("CPU: " + container.cores)
-					println("CPU1: " + cpContainer.cores)
-					println("CPU2: " + newContainer.cores)
-					val containerId = getcontainerId(newContainer.name, machine)
+					val containerId = getContainerId(newContainer.name, machine)
+					LOGGER.info("Ancienne Valeur : " + notification.oldValue)
+					LOGGER.info("Nouvelle Valeur : " + notification.newValue)
 
 					// CPU Changes
 					if (!cpContainer.cores.equals(newContainer.cores)) {
 						val cpuManager = new CPUManager
 
 						// Update CPU value
+						cpContainer.cores = container.cores
 						cpuManager.setCPUValue(host, privateKey, containerId, String.valueOf(newContainer.cores))
+					}
+
+					// CPU Frequency Changes
+					if (!cpContainer.speed.equals(newContainer.speed)) {
+						val cpuManager = new CPUManager
+
+						// Update CPU value
+						cpContainer.cores = container.cores
+						cpuManager.setFreqValue(host, privateKey, containerId,
+							String.valueOf(Math.round(newContainer.speed)))
 					}
 
 					// Memory changes
 					if (!cpContainer.memory.equals(newContainer.memory)) {
 						val memoryManager = new MemoryManager
+
+						// Update Memory value
+						cpContainer.memory = container.memory
 						memoryManager.setMemValue(host, privateKey, containerId, String.valueOf(newContainer.memory))
 					}
 				}
@@ -112,7 +107,7 @@ class DockerObserver {
 		return container
 	}
 
-	def String getcontainerId(String containerName, Machine machine) {
+	def String getContainerId(String containerName, Machine machine) {
 		val dockerContainerManager = new DockerContainerManager
 		val listContainers = dockerContainerManager.listContainer(machine)
 		for (com.github.dockerjava.api.model.Container c : listContainers) {
