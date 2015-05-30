@@ -282,7 +282,9 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EDataType" referenceName="types"/>
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EDataType" referenceName="types">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['DataType' + container.oclAsType(Extension).types->size().toString()/]"/>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -291,7 +293,9 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EEnum" referenceName="types"/>
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EEnum" referenceName="types">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['Enum' + container.oclAsType(Extension).types->size().toString()/]"/>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
