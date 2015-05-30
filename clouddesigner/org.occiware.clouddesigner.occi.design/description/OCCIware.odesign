@@ -35,7 +35,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="ImportContainer" semanticCandidatesExpression="feature:import" domainClass="OCCI.Extension" reusedContainerMappings="//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer'] //@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']">
+        <containerMappings name="ImportContainer" semanticCandidatesExpression="feature:import" domainClass="OCCI.Extension" reusedContainerMappings="//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer'] //@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer'] //@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType'] //@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']">
           <style xsi:type="style:FlatContainerStyleDescription" labelSize="12" labelFormat="bold">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
