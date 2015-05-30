@@ -510,7 +510,13 @@ class ExecutableContainer extends ContainerImpl {
 			LOGGER.info("EXECUTE container start")
 			val machine = getCurrentMachine
 			if (machine.state.toString.equalsIgnoreCase("active")) {
-				dockerContainerManager.startContainer(machine, this.compute.name)
+				try{
+					dockerContainerManager.startContainer(machine, this.compute.name)
+					
+				}catch(Exception e){
+					createContainer(machine)
+					dockerContainerManager.startContainer(machine, this.compute.name)
+				}
 			}
 		}
 
