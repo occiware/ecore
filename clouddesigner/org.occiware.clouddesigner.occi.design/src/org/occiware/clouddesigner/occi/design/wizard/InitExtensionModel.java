@@ -132,11 +132,17 @@ public class InitExtensionModel extends WorkspaceModifyOperation {
 							@Override
 							protected void doExecute() {
 
+								final ResourceSetImpl resourceSet = new ResourceSetImpl();
+								/* load the occi-core.xmi extension. */
+								final Resource occiCoreResource = resourceSet.getResource(URI.createPlatformPluginURI("org.occiware.clouddesigner.occi/model/occi-core.xmi", true), true);
+								final Extension occiCoreExtension = (Extension)occiCoreResource.getContents().get(0);
+								/* import the OCCI Core extension. */
+								rootObject.getImport().add(occiCoreExtension);
+
 								final URI semanticModelURI = URI
 										.createPlatformResourceURI(
 												platformPath, true);
-								final Resource res = new ResourceSetImpl()
-										.createResource(semanticModelURI);
+								final Resource res = resourceSet.createResource(semanticModelURI);
 								/* Add the initial model object to the contents. */
 
 								if (rootObject != null) {
