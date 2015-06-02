@@ -19,15 +19,15 @@ import org.occiware.clouddesigner.OCCI.Mixin
  */
 class OCCIDerivedStateComputer implements IDerivedStateComputer {
 	
-/*
   override discardDerivedState(DerivedStateAwareResource resource) {
+/*
     System.out.println("discardDerivedState begin")
     resource.allContents.forEach [ r |
       System.out.println("discardDerivedState " + r)
     ]
     System.out.println("discardDerivedState end")
-  }
 */
+  }
   
   override installDerivedState(DerivedStateAwareResource resource, boolean preLinkingPhase) {
     resource.allContents.forEach [ r |
