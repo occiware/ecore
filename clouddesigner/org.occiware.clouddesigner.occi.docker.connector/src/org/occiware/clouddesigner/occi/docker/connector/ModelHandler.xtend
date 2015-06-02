@@ -181,6 +181,7 @@ class ModelHandler {
 		m.put(Provider.ibm.toString, DockerFactory.eINSTANCE.createMachine_IBM_SoftLayer)
 		m.put(Provider.azure.toString, DockerFactory.eINSTANCE.createMachine_Microsoft_Azure)
 		m.put("microsofthyperv", DockerFactory.eINSTANCE.createMachine_Microsoft_Hyper_V)
+		m.put("openstack", DockerFactory.eINSTANCE.createMachine_OpenStack)
 		m.put(Provider.rackspace.toString, DockerFactory.eINSTANCE.createMachine_Rackspace)
 		m.put("vmwarefusion", DockerFactory.eINSTANCE.createMachine_VMware_Fusion)
 		m.put("vmwarevcloud", DockerFactory.eINSTANCE.createMachine_VMware_vCloud_Air)
@@ -531,7 +532,7 @@ class ModelHandler {
 				var newvbox = vbox as Machine_OpenStack
 
 				// Set values
-				machineFactory(newvbox, node, state)
+				machineFactory_OpenStack(newvbox, node, state)
 				LOGGER.info("Model setting: " + newvbox)
 			} else if (vbox instanceof Machine_Rackspace) {
 				var newvbox = vbox as Machine_Rackspace
@@ -551,7 +552,7 @@ class ModelHandler {
 			if (vbox.state.toString.equalsIgnoreCase("active")) {
 
 				// Introspect containers
-				val List<com.github.dockerjava.api.model.Container> containers = instance.listContainer(vbox)
+				val List<com.github.dockerjava.api.model.Container> containers = instance.listContainer(vbox.name)
 				if (containers != null) {
 					var modelContainers = buildContainer(vbox, containers)
 					for (Container container : modelContainers) {
@@ -584,6 +585,28 @@ class ModelHandler {
 		vbox.name = node.get("Driver").get("MachineName").toString.replaceAll("\"", "")
 		vbox.memory = Float.parseFloat(node.get("Driver").get("Memory").toString)
 		vbox.cores = Integer.parseInt(node.get("Driver").get("CPU").toString)
+		if (state == "Running") {
+			vbox.state = ComputeStatus.get(0)
+		}
+		if (state == "Stopped") {
+			vbox.state = ComputeStatus.get(1)
+		}
+	}
+	
+	def machineFactory_OpenStack(Machine_OpenStack vbox, JsonNode node, String state) {
+		vbox.name = node.get("Driver").get("MachineName").toString.replaceAll("\"", "")
+		vbox.auth_url = node.get("Driver").get("AuthUrl").toString.replaceAll("\"", "")
+		vbox.username = node.get("Driver").get("Username").toString.replaceAll("\"", "")
+		vbox.password = node.get("Driver").get("Password").toString.replaceAll("\"", "")
+		vbox.tenant_name = node.get("Driver").get("TenantName").toString.replaceAll("\"", "")
+		vbox.tenant_id = node.get("Driver").get("TenantId").toString.replaceAll("\"", "")
+		vbox.region = node.get("Driver").get("Region").toString.replaceAll("\"", "")
+		vbox.endpoint_type = node.get("Driver").get("EndpointType").toString.replaceAll("\"", "")
+		vbox.flavor_id = node.get("Driver").get("FlavorId").toString.replaceAll("\"", "")
+		vbox.floatingip_pool = node.get("Driver").get("FloatingIpPool").toString.replaceAll("\"", "")
+		vbox.image_id = node.get("Driver").get("ImageId").toString.replaceAll("\"", "")
+		vbox.net_id = node.get("Driver").get("NetworkId").toString.replaceAll("\"", "")
+		vbox.sec_groups = node.get("Driver").get("SecurityGroups").toString.replaceAll("\\[\"", "").replaceAll("\"\\]", "").replaceAll("\"", "")
 		if (state == "Running") {
 			vbox.state = ComputeStatus.get(0)
 		}
