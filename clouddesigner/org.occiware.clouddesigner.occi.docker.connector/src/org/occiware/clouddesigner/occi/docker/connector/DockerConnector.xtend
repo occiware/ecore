@@ -510,10 +510,10 @@ class ExecutableContainer extends ContainerImpl {
 			LOGGER.info("EXECUTE container start")
 			val machine = getCurrentMachine
 			if (machine.state.toString.equalsIgnoreCase("active")) {
-				try{
+				try {
 					dockerContainerManager.startContainer(machine, this.compute.name)
-					
-				}catch(Exception e){
+
+				} catch (Exception e) {
 					createContainer(machine)
 					dockerContainerManager.startContainer(machine, this.compute.name)
 				}
@@ -555,8 +555,9 @@ class ExecutableContainer extends ContainerImpl {
 	}
 
 	// Delegation to the container state machine.
-	override def start() { 
+	override def start() {
 		stateMachine.start
+
 		// Add listener here
 		val observer = new DockerObserver
 		val machine = getCurrentMachine
@@ -690,8 +691,16 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 		checkNotNull(driverName, "Driver name is null")
 
 		// Create the machine command
-		command.append("docker-machine create --driver ").append(getDriverName).append(' ').append(compute.name)
-		appendDriverParameters(command)
+		command.append("docker-machine -D create --driver ").append(getDriverName)
+		if (getDriverName.equalsIgnoreCase("virtualbox") || getDriverName.equalsIgnoreCase("vmwarefusion")) {
+			command.append(' ').append(compute.name)
+			appendDriverParameters(command)
+		} else {
+			appendDriverParameters(command)
+			command.append(' ').append(compute.name)
+		}
+
+		println("CMD : " + command.toString)
 
 		// Get the active machine
 		val activeHosts = DockerUtil.getActiveHosts
@@ -724,9 +733,14 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 		checkNotNull(driverName, "Driver name is null")
 
 		// Create the machine command
-		command.append("docker-machine create --driver ").append(getDriverName).append(' ').append(compute.name)
-		appendDriverParameters(command)
-
+		command.append("docker-machine -D create --driver ").append(getDriverName)
+		if (getDriverName.equalsIgnoreCase("virtualbox") || getDriverName.equalsIgnoreCase("vmwarefusion")) {
+			command.append(' ').append(compute.name)
+			appendDriverParameters(command)
+		} else {
+			appendDriverParameters(command)
+			command.append(' ').append(compute.name)
+		}
 		// Get the active machine
 		val activeHosts = DockerUtil.getActiveHosts
 
@@ -840,7 +854,8 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 		val instance = new DockerContainerManager(this.compute)
 		val machine = instanceMH.getModel(this.compute.name, hosts.get(this.compute.name))
 		this.compute.state = machine.state
-		/* 
+
+	/* 
 		if (this.compute.state.toString.equalsIgnoreCase("active")) {
 
 			// Introspect containers
@@ -938,7 +953,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 	}
 
 	def boolean containerIsDeployed(String containerName, Machine machine) {
-		val listContainers = dockerContainerManager.listContainer(machine)
+		val listContainers = dockerContainerManager.listContainer(machine.name)
 		for (com.github.dockerjava.api.model.Container c : listContainers) {
 			var String contName = null
 			val name = c.names.get(0)
@@ -1223,8 +1238,41 @@ class ExecutableMachine_OpenStack extends Machine_OpenStackImpl {
 
 		override def appendDriverParameters(StringBuilder sb) {
 
-			// TODO: must be implemented
-			throw new UnsupportedOperationException
+			// TODO Check not attributes
+			if (!auth_url.isEmpty) {
+				sb.append(" --openstack-auth-url ").append(auth_url)
+			}
+			if (!flavor_id.isEmpty) {
+				sb.append(" --openstack-flavor-id ").append(flavor_id)
+			}
+			if (!image_id.isEmpty) {
+				sb.append(" --openstack-image-id ").append(image_id)
+			}
+			if (!tenant_id.isEmpty) {
+				sb.append(" --openstack-tenant-id ").append(tenant_id)
+			}
+			if (!tenant_name.isEmpty) {
+				sb.append(" --openstack-tenant-name ").append(tenant_name)
+			}
+			if (!username.isEmpty) {
+				sb.append(" --openstack-username ").append(username)
+			}
+			if (!password.isEmpty) {
+				sb.append(" --openstack-password ").append(password)
+			}
+			if (!floatingip_pool.isEmpty) {
+				sb.append(" --openstack-floatingip-pool ").append(floatingip_pool)
+			}
+			if (!sec_groups.equals(null)) {
+
+				//TODO list of secure group.
+				sb.append(" --openstack-sec-groups ").append(sec_groups)
+			} else {
+				sb.append(" --openstack-sec-groups ").append("default")
+			}
+
+			// Should be fixed in the model.
+			sb.append(" --openstack-ssh-user ").append("ubuntu")
 		}
 	}
 
