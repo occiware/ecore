@@ -109,7 +109,7 @@ class DockerObserver {
 
 	def String getContainerId(String containerName, Machine machine) {
 		val dockerContainerManager = new DockerContainerManager
-		val listContainers = dockerContainerManager.listContainer(machine)
+		val listContainers = dockerContainerManager.listContainer(machine.name)
 		for (com.github.dockerjava.api.model.Container c : listContainers) {
 			var String contName = null
 			val name = c.names.get(0)
