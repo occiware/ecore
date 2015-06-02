@@ -75,7 +75,8 @@ public class DockerContainerManager {
   }
   
   public DockerContainerManager(final Machine machine) {
-    DockerClient _setConfig = this.setConfig(machine);
+    String _name = machine.getName();
+    DockerClient _setConfig = this.setConfig(_name);
     DockerContainerManager.dockerClient = _setConfig;
   }
   
@@ -85,7 +86,8 @@ public class DockerContainerManager {
     if (_notEquals) {
       dockerClient = DockerContainerManager.dockerClient;
     } else {
-      DockerClient _setConfig = this.setConfig(machine);
+      String _name = machine.getName();
+      DockerClient _setConfig = this.setConfig(_name);
       dockerClient = _setConfig;
     }
     Map<DockerClient, CreateContainerResponse> result = new LinkedHashMap<DockerClient, CreateContainerResponse>();
@@ -101,7 +103,8 @@ public class DockerContainerManager {
     if (_notEquals) {
       dockerClient = DockerContainerManager.dockerClient;
     } else {
-      DockerClient _setConfig = this.setConfig(machine);
+      String _name = machine.getName();
+      DockerClient _setConfig = this.setConfig(_name);
       dockerClient = _setConfig;
     }
     Map<DockerClient, CreateContainerResponse> result = new LinkedHashMap<DockerClient, CreateContainerResponse>();
@@ -459,7 +462,8 @@ public class DockerContainerManager {
     if (_notEquals) {
       dockerClient = DockerContainerManager.dockerClient;
     } else {
-      DockerClient _setConfig = this.setConfig(machine);
+      String _name = machine.getName();
+      DockerClient _setConfig = this.setConfig(_name);
       dockerClient = _setConfig;
     }
     InspectContainerCmd _inspectContainerCmd = dockerClient.inspectContainerCmd(containerId);
@@ -475,7 +479,8 @@ public class DockerContainerManager {
       if (_notEquals) {
         dockerClient = DockerContainerManager.dockerClient;
       } else {
-        DockerClient _setConfig = this.setConfig(machine);
+        String _name = machine.getName();
+        DockerClient _setConfig = this.setConfig(_name);
         dockerClient = _setConfig;
       }
       String _id = container.getId();
@@ -493,7 +498,8 @@ public class DockerContainerManager {
       if (_notEquals) {
         dockerClient = DockerContainerManager.dockerClient;
       } else {
-        DockerClient _setConfig = this.setConfig(machine);
+        String _name = machine.getName();
+        DockerClient _setConfig = this.setConfig(_name);
         dockerClient = _setConfig;
       }
       StartContainerCmd _startContainerCmd = dockerClient.startContainerCmd(containerId);
@@ -510,7 +516,8 @@ public class DockerContainerManager {
       if (_notEquals) {
         dockerClient = DockerContainerManager.dockerClient;
       } else {
-        DockerClient _setConfig = this.setConfig(machine);
+        String _name = machine.getName();
+        DockerClient _setConfig = this.setConfig(_name);
         dockerClient = _setConfig;
       }
       String _id = container.getId();
@@ -528,7 +535,8 @@ public class DockerContainerManager {
       if (_notEquals) {
         dockerClient = DockerContainerManager.dockerClient;
       } else {
-        DockerClient _setConfig = this.setConfig(machine);
+        String _name = machine.getName();
+        DockerClient _setConfig = this.setConfig(_name);
         dockerClient = _setConfig;
       }
       StopContainerCmd _stopContainerCmd = dockerClient.stopContainerCmd(containerId);
@@ -545,7 +553,8 @@ public class DockerContainerManager {
       if (_notEquals) {
         dockerClient = DockerContainerManager.dockerClient;
       } else {
-        DockerClient _setConfig = this.setConfig(machine);
+        String _name = machine.getName();
+        DockerClient _setConfig = this.setConfig(_name);
         dockerClient = _setConfig;
       }
       String _id = container.getId();
@@ -555,13 +564,13 @@ public class DockerContainerManager {
     return _xblockexpression;
   }
   
-  public List<com.github.dockerjava.api.model.Container> listContainer(final Machine machine) {
+  public List<com.github.dockerjava.api.model.Container> listContainer(final String machineName) {
     DockerClient dockerClient = null;
     boolean _notEquals = (!Objects.equal(DockerContainerManager.dockerClient, null));
     if (_notEquals) {
       dockerClient = DockerContainerManager.dockerClient;
     } else {
-      DockerClient _setConfig = this.setConfig(machine);
+      DockerClient _setConfig = this.setConfig(machineName);
       dockerClient = _setConfig;
     }
     ListContainersCmd _listContainersCmd = dockerClient.listContainersCmd();
@@ -577,14 +586,15 @@ public class DockerContainerManager {
     if (_notEquals) {
       dockerClient = DockerContainerManager.dockerClient;
     } else {
-      DockerClient _setConfig = this.setConfig(machine);
+      String _name = machine.getName();
+      DockerClient _setConfig = this.setConfig(_name);
       dockerClient = _setConfig;
     }
     String containerImage = image;
     boolean _equals = containerImage.equals("");
     if (_equals) {
       containerImage = "busybox";
-      DockerContainerManager.LOGGER.info("Je rentre ici");
+      DockerContainerManager.LOGGER.info("Use default image: busybox");
     }
     String output = null;
     boolean _contains = this.images.contains(containerImage);
@@ -603,19 +613,26 @@ public class DockerContainerManager {
     return dockerClient;
   }
   
-  public DockerClient setConfig(final Machine machine) {
+  public DockerClient setConfig(final String machine) {
     try {
       final DockerConfig lconfig = new DockerConfig();
       final Properties dockerClientconfig = lconfig.loadConfig();
-      String _name = machine.getName();
-      String _plus = ("Connection inside ---> " + _name);
-      DockerContainerManager.LOGGER.info(_plus);
+      DockerContainerManager.LOGGER.info(("Connection inside docker-machine ---> " + machine));
+      String port = null;
       Runtime _runtime = Runtime.getRuntime();
-      String _name_1 = machine.getName();
-      String ENDPOINT = DockerMachineManager.urlCmd(_runtime, _name_1);
-      String _name_2 = machine.getName();
-      final String certPath = DockerUtil.getEnv(_name_2);
-      final String port = ":2376";
+      String ENDPOINT = DockerMachineManager.urlCmd(_runtime, machine);
+      final String certPath = DockerUtil.getEnv(machine);
+      String _oS = DockerUtil.getOS();
+      boolean _equals = _oS.equals("osx");
+      if (_equals) {
+        port = ":2376";
+      } else {
+        String _oS_1 = DockerUtil.getOS();
+        boolean _equals_1 = _oS_1.equals("uni");
+        if (_equals_1) {
+          port = ":2375";
+        }
+      }
       final URL url = new URL(ENDPOINT);
       String _protocol = url.getProtocol();
       String _host = url.getHost();
@@ -818,10 +835,5 @@ public class DockerContainerManager {
       return tempDir;
     }
     return null;
-  }
-  
-  public static void main(final String[] args) {
-    final DockerContainerManager main = new DockerContainerManager();
-    main.connect();
   }
 }

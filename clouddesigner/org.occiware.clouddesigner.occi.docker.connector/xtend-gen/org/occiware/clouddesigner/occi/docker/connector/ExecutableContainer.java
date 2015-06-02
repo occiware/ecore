@@ -62,8 +62,19 @@ public class ExecutableContainer extends ContainerImpl {
       String _string = _state.toString();
       boolean _equalsIgnoreCase = _string.equalsIgnoreCase("active");
       if (_equalsIgnoreCase) {
-        String _name = this.compute.getName();
-        ExecutableContainer.this.dockerContainerManager.startContainer(machine, _name);
+        try {
+          String _name = this.compute.getName();
+          ExecutableContainer.this.dockerContainerManager.startContainer(machine, _name);
+        } catch (final Throwable _t) {
+          if (_t instanceof Exception) {
+            final Exception e = (Exception)_t;
+            ExecutableContainer.this.createContainer(machine);
+            String _name_1 = this.compute.getName();
+            ExecutableContainer.this.dockerContainerManager.startContainer(machine, _name_1);
+          } else {
+            throw Exceptions.sneakyThrow(_t);
+          }
+        }
       }
     }
     

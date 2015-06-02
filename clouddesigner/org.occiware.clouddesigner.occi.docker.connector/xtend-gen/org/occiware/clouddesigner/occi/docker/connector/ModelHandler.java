@@ -257,6 +257,8 @@ public class ModelHandler {
     m.put(_string_5, _createMachine_Microsoft_Azure);
     Machine_Microsoft_Hyper_V _createMachine_Microsoft_Hyper_V = DockerFactory.eINSTANCE.createMachine_Microsoft_Hyper_V();
     m.put("microsofthyperv", _createMachine_Microsoft_Hyper_V);
+    Machine_OpenStack _createMachine_OpenStack = DockerFactory.eINSTANCE.createMachine_OpenStack();
+    m.put("openstack", _createMachine_OpenStack);
     String _string_6 = Provider.rackspace.toString();
     Machine_Rackspace _createMachine_Rackspace = DockerFactory.eINSTANCE.createMachine_Rackspace();
     m.put(_string_6, _createMachine_Rackspace);
@@ -737,7 +739,7 @@ public class ModelHandler {
                     } else {
                       if ((vbox instanceof Machine_OpenStack)) {
                         Machine_OpenStack newvbox_8 = ((Machine_OpenStack) vbox);
-                        this.machineFactory(newvbox_8, node, state);
+                        this.machineFactory_OpenStack(newvbox_8, node, state);
                         ModelHandler.LOGGER.info(("Model setting: " + newvbox_8));
                       } else {
                         if ((vbox instanceof Machine_Rackspace)) {
@@ -764,7 +766,8 @@ public class ModelHandler {
       String _string_3 = _state.toString();
       boolean _equalsIgnoreCase = _string_3.equalsIgnoreCase("active");
       if (_equalsIgnoreCase) {
-        final List<Container> containers = instance.listContainer(vbox);
+        String _name = vbox.getName();
+        final List<Container> containers = instance.listContainer(_name);
         boolean _notEquals_1 = (!Objects.equal(containers, null));
         if (_notEquals_1) {
           List<org.occiware.clouddesigner.occi.docker.Container> modelContainers = this.buildContainer(vbox, containers);
@@ -781,8 +784,8 @@ public class ModelHandler {
                 HostConfig _hostConfig_1 = inspectContainer.getHostConfig();
                 Link[] _links_1 = _hostConfig_1.getLinks();
                 for (final Link link : _links_1) {
-                  String _name = link.getName();
-                  org.occiware.clouddesigner.occi.docker.Container _containerByName = this.getContainerByName(modelContainers, _name);
+                  String _name_1 = link.getName();
+                  org.occiware.clouddesigner.occi.docker.Container _containerByName = this.getContainerByName(modelContainers, _name_1);
                   this.linkContainerToContainer(container, _containerByName);
                 }
               }
@@ -831,6 +834,86 @@ public class ModelHandler {
     if (_equals_1) {
       ComputeStatus _get_7 = ComputeStatus.get(1);
       vbox.setState(_get_7);
+    }
+  }
+  
+  public void machineFactory_OpenStack(final Machine_OpenStack vbox, final JsonNode node, final String state) {
+    JsonNode _get = node.get("Driver");
+    JsonNode _get_1 = _get.get("MachineName");
+    String _string = _get_1.toString();
+    String _replaceAll = _string.replaceAll("\"", "");
+    vbox.setName(_replaceAll);
+    JsonNode _get_2 = node.get("Driver");
+    JsonNode _get_3 = _get_2.get("AuthUrl");
+    String _string_1 = _get_3.toString();
+    String _replaceAll_1 = _string_1.replaceAll("\"", "");
+    vbox.setAuth_url(_replaceAll_1);
+    JsonNode _get_4 = node.get("Driver");
+    JsonNode _get_5 = _get_4.get("Username");
+    String _string_2 = _get_5.toString();
+    String _replaceAll_2 = _string_2.replaceAll("\"", "");
+    vbox.setUsername(_replaceAll_2);
+    JsonNode _get_6 = node.get("Driver");
+    JsonNode _get_7 = _get_6.get("Password");
+    String _string_3 = _get_7.toString();
+    String _replaceAll_3 = _string_3.replaceAll("\"", "");
+    vbox.setPassword(_replaceAll_3);
+    JsonNode _get_8 = node.get("Driver");
+    JsonNode _get_9 = _get_8.get("TenantName");
+    String _string_4 = _get_9.toString();
+    String _replaceAll_4 = _string_4.replaceAll("\"", "");
+    vbox.setTenant_name(_replaceAll_4);
+    JsonNode _get_10 = node.get("Driver");
+    JsonNode _get_11 = _get_10.get("TenantId");
+    String _string_5 = _get_11.toString();
+    String _replaceAll_5 = _string_5.replaceAll("\"", "");
+    vbox.setTenant_id(_replaceAll_5);
+    JsonNode _get_12 = node.get("Driver");
+    JsonNode _get_13 = _get_12.get("Region");
+    String _string_6 = _get_13.toString();
+    String _replaceAll_6 = _string_6.replaceAll("\"", "");
+    vbox.setRegion(_replaceAll_6);
+    JsonNode _get_14 = node.get("Driver");
+    JsonNode _get_15 = _get_14.get("EndpointType");
+    String _string_7 = _get_15.toString();
+    String _replaceAll_7 = _string_7.replaceAll("\"", "");
+    vbox.setEndpoint_type(_replaceAll_7);
+    JsonNode _get_16 = node.get("Driver");
+    JsonNode _get_17 = _get_16.get("FlavorId");
+    String _string_8 = _get_17.toString();
+    String _replaceAll_8 = _string_8.replaceAll("\"", "");
+    vbox.setFlavor_id(_replaceAll_8);
+    JsonNode _get_18 = node.get("Driver");
+    JsonNode _get_19 = _get_18.get("FloatingIpPool");
+    String _string_9 = _get_19.toString();
+    String _replaceAll_9 = _string_9.replaceAll("\"", "");
+    vbox.setFloatingip_pool(_replaceAll_9);
+    JsonNode _get_20 = node.get("Driver");
+    JsonNode _get_21 = _get_20.get("ImageId");
+    String _string_10 = _get_21.toString();
+    String _replaceAll_10 = _string_10.replaceAll("\"", "");
+    vbox.setImage_id(_replaceAll_10);
+    JsonNode _get_22 = node.get("Driver");
+    JsonNode _get_23 = _get_22.get("NetworkId");
+    String _string_11 = _get_23.toString();
+    String _replaceAll_11 = _string_11.replaceAll("\"", "");
+    vbox.setNet_id(_replaceAll_11);
+    JsonNode _get_24 = node.get("Driver");
+    JsonNode _get_25 = _get_24.get("SecurityGroups");
+    String _string_12 = _get_25.toString();
+    String _replaceAll_12 = _string_12.replaceAll("\\[\"", "");
+    String _replaceAll_13 = _replaceAll_12.replaceAll("\"\\]", "");
+    String _replaceAll_14 = _replaceAll_13.replaceAll("\"", "");
+    vbox.setSec_groups(_replaceAll_14);
+    boolean _equals = Objects.equal(state, "Running");
+    if (_equals) {
+      ComputeStatus _get_26 = ComputeStatus.get(0);
+      vbox.setState(_get_26);
+    }
+    boolean _equals_1 = Objects.equal(state, "Stopped");
+    if (_equals_1) {
+      ComputeStatus _get_27 = ComputeStatus.get(1);
+      vbox.setState(_get_27);
     }
   }
   

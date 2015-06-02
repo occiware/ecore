@@ -34,6 +34,8 @@ import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.Do
 
 @SuppressWarnings("all")
 public class DockerUtil {
+  protected static String OS = System.getProperty("os.name").toLowerCase();
+  
   public static JsonNode jsonify(final String jsonString) {
     try {
       boolean _or = false;
@@ -216,5 +218,66 @@ public class DockerUtil {
       }
     }
     return true;
+  }
+  
+  public static boolean isWindows() {
+    int _indexOf = DockerUtil.OS.indexOf("win");
+    return (_indexOf >= 0);
+  }
+  
+  public static boolean isMac() {
+    int _indexOf = DockerUtil.OS.indexOf("mac");
+    return (_indexOf >= 0);
+  }
+  
+  public static boolean isUnix() {
+    boolean _or = false;
+    boolean _or_1 = false;
+    int _indexOf = DockerUtil.OS.indexOf("nix");
+    boolean _greaterEqualsThan = (_indexOf >= 0);
+    if (_greaterEqualsThan) {
+      _or_1 = true;
+    } else {
+      int _indexOf_1 = DockerUtil.OS.indexOf("nux");
+      boolean _greaterEqualsThan_1 = (_indexOf_1 >= 0);
+      _or_1 = _greaterEqualsThan_1;
+    }
+    if (_or_1) {
+      _or = true;
+    } else {
+      int _indexOf_2 = DockerUtil.OS.indexOf("aix");
+      boolean _greaterThan = (_indexOf_2 > 0);
+      _or = _greaterThan;
+    }
+    return _or;
+  }
+  
+  public static boolean isSolaris() {
+    int _indexOf = DockerUtil.OS.indexOf("sunos");
+    return (_indexOf >= 0);
+  }
+  
+  public static String getOS() {
+    boolean _isWindows = DockerUtil.isWindows();
+    if (_isWindows) {
+      return "win";
+    } else {
+      boolean _isMac = DockerUtil.isMac();
+      if (_isMac) {
+        return "osx";
+      } else {
+        boolean _isUnix = DockerUtil.isUnix();
+        if (_isUnix) {
+          return "uni";
+        } else {
+          boolean _isSolaris = DockerUtil.isSolaris();
+          if (_isSolaris) {
+            return "sol";
+          } else {
+            return "err";
+          }
+        }
+      }
+    }
   }
 }

@@ -18,9 +18,7 @@ import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.occiware.clouddesigner.occi.docker.Container;
-import org.occiware.clouddesigner.occi.docker.DockerFactory;
 import org.occiware.clouddesigner.occi.docker.Machine;
-import org.occiware.clouddesigner.occi.docker.Machine_VirtualBox;
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableContainer;
 import org.occiware.clouddesigner.occi.docker.connector.dockerjava.DockerContainerManager;
 import org.occiware.clouddesigner.occi.docker.connector.dockerjava.cgroup.CPUManager;
@@ -34,9 +32,12 @@ import org.slf4j.LoggerFactory;
 public class DockerObserver {
   private static Logger LOGGER = LoggerFactory.getLogger(DockerObserver.class);
   
-  public static Machine_VirtualBox listener() {
-    final Machine_VirtualBox vbox = DockerFactory.eINSTANCE.createMachine_VirtualBox();
-    EList<Adapter> _eAdapters = vbox.eAdapters();
+  protected static Container cpContainer = null;
+  
+  public Machine listener(final Machine machine) {
+    Machine _copy = EcoreUtil.<Machine>copy(machine);
+    final Machine cpMachine = ((Machine) _copy);
+    EList<Adapter> _eAdapters = machine.eAdapters();
     _eAdapters.add(
       new EContentAdapter() {
         public void notifyChanged(final Notification notification) {
@@ -46,23 +47,6 @@ public class DockerObserver {
           Object _newValue = notification.getNewValue();
           String _plus_1 = ("Nouvelle Valeur : " + _newValue);
           DockerObserver.LOGGER.info(_plus_1);
-          Object _notifier = notification.getNotifier();
-          final Machine_VirtualBox m = ((Machine_VirtualBox) _notifier);
-          float _memory = m.getMemory();
-          String _plus_2 = ("La memoire" + Float.valueOf(_memory));
-          DockerObserver.LOGGER.info(_plus_2);
-        }
-      });
-    return vbox;
-  }
-  
-  public Machine listener(final Machine machine) {
-    Machine _copy = EcoreUtil.<Machine>copy(machine);
-    final Machine cpMachine = ((Machine) _copy);
-    EList<Adapter> _eAdapters = machine.eAdapters();
-    _eAdapters.add(
-      new EContentAdapter() {
-        public void notifyChanged(final Notification notification) {
           Machine machine = cpMachine;
           InputOutput.<String>println(
             "<-------------------------Attention on veut me modifier -------------------------->\n\n\n\n\n\n\n\n");
@@ -73,7 +57,7 @@ public class DockerObserver {
   
   public Container listener(final Container container, final Machine machine) {
     Container _copy = EcoreUtil.<Container>copy(container);
-    final ExecutableContainer cpContainer = ((ExecutableContainer) _copy);
+    DockerObserver.cpContainer = ((ExecutableContainer) _copy);
     String _name = machine.getName();
     String _env = DockerUtil.getEnv(_name);
     String _plus = (_env + "/");
@@ -85,48 +69,63 @@ public class DockerObserver {
     _eAdapters.add(
       new EContentAdapter() {
         public void notifyChanged(final Notification notification) {
-          InputOutput.<String>println("<-------------------------The Container has Changed -------------------------->\n\n\n\n\n\n\n\n");
+          DockerObserver.LOGGER.info("The Container has Changed");
           Object _notifier = notification.getNotifier();
           Container newContainer = ((Container) _notifier);
-          int _cores = container.getCores();
-          String _plus = ("CPU: " + Integer.valueOf(_cores));
-          InputOutput.<String>println(_plus);
-          int _cores_1 = cpContainer.getCores();
-          String _plus_1 = ("CPU1: " + Integer.valueOf(_cores_1));
-          InputOutput.<String>println(_plus_1);
-          int _cores_2 = newContainer.getCores();
-          String _plus_2 = ("CPU2: " + Integer.valueOf(_cores_2));
-          InputOutput.<String>println(_plus_2);
           String _name = newContainer.getName();
-          final String containerId = DockerObserver.this.getcontainerId(_name, machine);
-          int _cores_3 = cpContainer.getCores();
-          int _cores_4 = newContainer.getCores();
-          boolean _equals = Integer.valueOf(_cores_3).equals(Integer.valueOf(_cores_4));
+          final String containerId = DockerObserver.this.getContainerId(_name, machine);
+          Object _oldValue = notification.getOldValue();
+          String _plus = ("Ancienne Valeur : " + _oldValue);
+          DockerObserver.LOGGER.info(_plus);
+          Object _newValue = notification.getNewValue();
+          String _plus_1 = ("Nouvelle Valeur : " + _newValue);
+          DockerObserver.LOGGER.info(_plus_1);
+          int _cores = DockerObserver.cpContainer.getCores();
+          int _cores_1 = newContainer.getCores();
+          boolean _equals = Integer.valueOf(_cores).equals(Integer.valueOf(_cores_1));
           boolean _not = (!_equals);
           if (_not) {
             final CPUManager cpuManager = new CPUManager();
-            int _cores_5 = newContainer.getCores();
-            String _valueOf = String.valueOf(_cores_5);
+            int _cores_2 = container.getCores();
+            DockerObserver.cpContainer.setCores(_cores_2);
+            int _cores_3 = newContainer.getCores();
+            String _valueOf = String.valueOf(_cores_3);
             cpuManager.setCPUValue(host, privateKey, containerId, _valueOf);
           }
-          float _memory = cpContainer.getMemory();
-          float _memory_1 = newContainer.getMemory();
-          boolean _equals_1 = Float.valueOf(_memory).equals(Float.valueOf(_memory_1));
+          float _speed = DockerObserver.cpContainer.getSpeed();
+          float _speed_1 = newContainer.getSpeed();
+          boolean _equals_1 = Float.valueOf(_speed).equals(Float.valueOf(_speed_1));
           boolean _not_1 = (!_equals_1);
           if (_not_1) {
+            final CPUManager cpuManager_1 = new CPUManager();
+            int _cores_4 = container.getCores();
+            DockerObserver.cpContainer.setCores(_cores_4);
+            float _speed_2 = newContainer.getSpeed();
+            int _round = Math.round(_speed_2);
+            String _valueOf_1 = String.valueOf(_round);
+            cpuManager_1.setFreqValue(host, privateKey, containerId, _valueOf_1);
+          }
+          float _memory = DockerObserver.cpContainer.getMemory();
+          float _memory_1 = newContainer.getMemory();
+          boolean _equals_2 = Float.valueOf(_memory).equals(Float.valueOf(_memory_1));
+          boolean _not_2 = (!_equals_2);
+          if (_not_2) {
             final MemoryManager memoryManager = new MemoryManager();
-            float _memory_2 = newContainer.getMemory();
-            String _valueOf_1 = String.valueOf(_memory_2);
-            memoryManager.setMemValue(host, privateKey, containerId, _valueOf_1);
+            float _memory_2 = container.getMemory();
+            DockerObserver.cpContainer.setMemory(_memory_2);
+            float _memory_3 = newContainer.getMemory();
+            String _valueOf_2 = String.valueOf(_memory_3);
+            memoryManager.setMemValue(host, privateKey, containerId, _valueOf_2);
           }
         }
       });
     return container;
   }
   
-  public String getcontainerId(final String containerName, final Machine machine) {
+  public String getContainerId(final String containerName, final Machine machine) {
     final DockerContainerManager dockerContainerManager = new DockerContainerManager();
-    final List<com.github.dockerjava.api.model.Container> listContainers = dockerContainerManager.listContainer(machine);
+    String _name = machine.getName();
+    final List<com.github.dockerjava.api.model.Container> listContainers = dockerContainerManager.listContainer(_name);
     for (final com.github.dockerjava.api.model.Container c : listContainers) {
       {
         String contName = null;
