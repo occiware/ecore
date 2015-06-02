@@ -1,4 +1,4 @@
- /*******************************************************************************
+/*******************************************************************************
  * Copyright (c) 2015 INRIA.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -27,6 +27,8 @@ import org.codehaus.jackson.map.ObjectMapper
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerMachineManager
 
 class DockerUtil {
+	protected static String OS = System.getProperty("os.name").toLowerCase()
+
 	def static jsonify(String jsonString) {
 		if (jsonString != null || jsonString == "") {
 			val ObjectMapper mapper = new ObjectMapper
@@ -45,6 +47,7 @@ class DockerUtil {
 			var String[] st = data.split("\\r?\\n")
 			val list = Arrays.copyOfRange(st, 1, st.length)
 			for (line : list) {
+
 				// clean the line
 				var l = line
 				l = l.replaceAll("\\*", "")
@@ -87,7 +90,7 @@ class DockerUtil {
 
 	def static getEnv(String machineName) {
 		val String data = DockerMachineManager.getEnvCmd(Runtime.getRuntime, machineName)
-		var List<String []> hosts = new ArrayList
+		var List<String[]> hosts = new ArrayList
 		var String[] result = null
 		if (data != null) {
 			var String[] st = data.split("\\r?\\n")
@@ -104,9 +107,9 @@ class DockerUtil {
 	}
 
 	def deleteAllOldModels() {
-		val File myFile = new File("Models");
+		val File myFile = new File("Models")
 		if (myFile.isDirectory()) {
-			myFile.delete();
+			myFile.delete()
 		}
 	}
 
@@ -134,7 +137,7 @@ class DockerUtil {
 			IOUtils.closeQuietly(response)
 		}
 	}
-	
+
 	def static isInteger(String value) {
 		try {
 			Integer.parseInt(value)
@@ -143,5 +146,35 @@ class DockerUtil {
 		}
 		return true
 	}
-	
+
+	def static boolean isWindows() {
+		return (OS.indexOf("win") >= 0)
+	}
+
+	def static boolean isMac() {
+		return (OS.indexOf("mac") >= 0)
+	}
+
+	def static boolean isUnix() {
+		return (OS.indexOf("nix") >= 0 || OS.indexOf("nux") >= 0 || OS.indexOf("aix") > 0 )
+	}
+
+	def static boolean isSolaris() {
+		return (OS.indexOf("sunos") >= 0)
+	}
+
+	def static String getOS() {
+		if (isWindows()) {
+			return "win"
+		} else if (isMac()) {
+			return "osx"
+		} else if (isUnix()) {
+			return "uni"
+		} else if (isSolaris()) {
+			return "sol"
+		} else {
+			return "err"
+		}
+	}
+
 }
