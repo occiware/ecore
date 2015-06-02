@@ -25,6 +25,7 @@ import org.occiware.clouddesigner.occi.docker.DockerFactory;
 import org.occiware.clouddesigner.occi.docker.Machine;
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableDockerFactory;
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableDockerModel;
+import org.occiware.clouddesigner.occi.infrastructure.RestartMethod;
 import org.occiware.clouddesigner.occi.infrastructure.StopMethod;
 
 @SuppressWarnings("all")
@@ -138,6 +139,34 @@ public class DockerServices {
               Container container = ((Container) eo);
               final ExecutableDockerModel main_1 = new ExecutableDockerModel(container);
               main_1.container.stop(StopMethod.GRACEFUL);
+            }
+          }
+        }
+      };
+      Shell _shell = this.getShell();
+      ProgressMonitorDialog dialog = new ProgressMonitorDialog(_shell);
+      dialog.run(false, true, runnable);
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  /**
+   * Popup menu restart action.
+   */
+  public void restart(final EObject eo) {
+    try {
+      IRunnableWithProgress runnable = new IRunnableWithProgress() {
+        public void run(final IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+          if ((eo instanceof Machine)) {
+            Machine machine = ((Machine) eo);
+            final ExecutableDockerModel main = new ExecutableDockerModel(machine);
+            main.restart();
+          } else {
+            if ((eo instanceof Container)) {
+              Container container = ((Container) eo);
+              final ExecutableDockerModel main_1 = new ExecutableDockerModel(container);
+              main_1.container.restart(RestartMethod.GRACEFUL);
             }
           }
         }
