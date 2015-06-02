@@ -59,7 +59,7 @@ class DockerContainerManager {
 	}
 
 	new(Machine machine) {
-		DockerContainerManager.dockerClient = setConfig(machine)
+		DockerContainerManager.dockerClient = setConfig(machine.name)
 	}
 
 	def createContainer(Machine machine, Container container) {
@@ -69,8 +69,7 @@ class DockerContainerManager {
 		if (DockerContainerManager.dockerClient != null) {
 			dockerClient = DockerContainerManager.dockerClient
 		} else {
-			dockerClient = setConfig(machine)
-
+			dockerClient = setConfig(machine.name)
 		}
 		var Map<DockerClient, CreateContainerResponse> result = new LinkedHashMap<DockerClient, CreateContainerResponse>
 		val create = containerFactory(container, dockerClient)
@@ -89,7 +88,7 @@ class DockerContainerManager {
 		if (DockerContainerManager.dockerClient != null) {
 			dockerClient = DockerContainerManager.dockerClient
 		} else {
-			dockerClient = setConfig(machine)
+			dockerClient = setConfig(machine.name)
 		}
 		var Map<DockerClient, CreateContainerResponse> result = new LinkedHashMap<DockerClient, CreateContainerResponse>
 		val create = containerFactory(container, dockerClient, containerDependency)
@@ -306,7 +305,7 @@ class DockerContainerManager {
 		if (DockerContainerManager.dockerClient != null) {
 			dockerClient = DockerContainerManager.dockerClient
 		} else {
-			dockerClient = setConfig(machine)
+			dockerClient = setConfig(machine.name)
 
 		}
 		val InspectContainerResponse inspectContainerResponse = dockerClient.inspectContainerCmd(containerId).exec()
@@ -321,7 +320,7 @@ class DockerContainerManager {
 		if (DockerContainerManager.dockerClient != null) {
 			dockerClient = DockerContainerManager.dockerClient
 		} else {
-			dockerClient = setConfig(machine)
+			dockerClient = setConfig(machine.name)
 
 		}
 		dockerClient.startContainerCmd(container.id).exec
@@ -334,7 +333,7 @@ class DockerContainerManager {
 		if (DockerContainerManager.dockerClient != null) {
 			dockerClient = DockerContainerManager.dockerClient
 		} else {
-			dockerClient = setConfig(machine)
+			dockerClient = setConfig(machine.name)
 
 		}
 		dockerClient.startContainerCmd(containerId).exec
@@ -347,7 +346,7 @@ class DockerContainerManager {
 		if (DockerContainerManager.dockerClient != null) {
 			dockerClient = DockerContainerManager.dockerClient
 		} else {
-			dockerClient = setConfig(machine)
+			dockerClient = setConfig(machine.name)
 
 		}
 		dockerClient.stopContainerCmd(container.id).exec
@@ -360,7 +359,7 @@ class DockerContainerManager {
 		if (DockerContainerManager.dockerClient != null) {
 			dockerClient = DockerContainerManager.dockerClient
 		} else {
-			dockerClient = setConfig(machine)
+			dockerClient = setConfig(machine.name)
 
 		}
 		dockerClient.stopContainerCmd(containerId).exec
@@ -373,13 +372,13 @@ class DockerContainerManager {
 		if (DockerContainerManager.dockerClient != null) {
 			dockerClient = DockerContainerManager.dockerClient
 		} else {
-			dockerClient = setConfig(machine)
+			dockerClient = setConfig(machine.name)
 
 		}
 		dockerClient.waitContainerCmd(container.id).exec
 	}
 
-	def List<com.github.dockerjava.api.model.Container> listContainer(Machine machine) {
+	def List<com.github.dockerjava.api.model.Container> listContainer(String machineName) {
 
 		var DockerClient dockerClient = null
 
@@ -387,7 +386,7 @@ class DockerContainerManager {
 		if (DockerContainerManager.dockerClient != null) {
 			dockerClient = DockerContainerManager.dockerClient
 		} else {
-			dockerClient = setConfig(machine)
+			dockerClient = setConfig(machineName)
 
 		}
 		val List<com.github.dockerjava.api.model.Container> containers = dockerClient.listContainersCmd().
@@ -405,12 +404,12 @@ class DockerContainerManager {
 		if (DockerContainerManager.dockerClient != null) {
 			dockerClient = DockerContainerManager.dockerClient
 		} else {
-			dockerClient = setConfig(machine)
+			dockerClient = setConfig(machine.name)
 		}
 		var containerImage = image
 		if (containerImage.equals("")) {
 			containerImage = "busybox"
-			LOGGER.info("Je rentre ici")
+			LOGGER.info("Use default image: busybox")
 		}
 		var String output = null
 		if (!images.contains(containerImage)) {
@@ -427,13 +426,18 @@ class DockerContainerManager {
 
 	}
 
-	def DockerClient setConfig(Machine machine) {
+	def DockerClient setConfig(String machine) {
 		val lconfig = new DockerConfig
 		val dockerClientconfig = lconfig.loadConfig
-		LOGGER.info("Connection inside ---> " + machine.name)
-		var String ENDPOINT = DockerMachineManager.urlCmd(Runtime.getRuntime, machine.name)
-		val String certPath = DockerUtil.getEnv(machine.name)
-		val String port = ":2376"
+		LOGGER.info("Connection inside docker-machine ---> " + machine)
+		var String port = null
+		var String ENDPOINT = DockerMachineManager.urlCmd(Runtime.getRuntime, machine)
+		val String certPath = DockerUtil.getEnv(machine)
+		if (DockerUtil.getOS.equals("osx")) {
+			port = ":2376"
+		} else if (DockerUtil.getOS.equals("uni")) {
+			port = ":2375"
+		}
 		val url = new URL(ENDPOINT)
 		val URI uri = new URI(url.getProtocol(), url.getHost(), url.getPath(), url.getQuery(), null)
 		val dockerUri = uri.toString + port
@@ -446,6 +450,41 @@ class DockerContainerManager {
 			withDockerCertPath(certPath).build()
 		val DockerClient dockerClient = DockerClientBuilder.getInstance(config).build()
 		return dockerClient
+	}
+
+	def void connect() {
+		var Session session = null
+		val File test = new File("test")
+		val host = "192.168.99.100"
+
+		try {
+			val JSch jsc = new JSch
+			jsc.setKnownHosts("test")
+			jsc.addIdentity("/Users/spirals/.docker/machine/machines/bingo/id_rsa")
+			val user = "docker"
+			session = jsc.getSession(user, host, 22)
+			session.connect()
+
+		} catch (JSchException e) {
+			LOGGER.info(e.toString)
+			addHost(session.getHostKey().getKey(), host, "test")
+		}
+
+		try {
+			val JSch jsc = new JSch
+			jsc.setKnownHosts("test")
+			jsc.addIdentity("/Users/spirals/.docker/machine/machines/bingo/id_rsa")
+			val user = "docker"
+			session = jsc.getSession(user, host, 22)
+			session.connect()
+
+			val Channel channel = session.openChannel("shell")
+			channel.setInputStream(System.in)
+			channel.setOutputStream(System.out)
+			channel.connect()
+		} catch (JSchException e) {
+			LOGGER.info(e.toString)
+		}
 	}
 
 	def void connect(String host, String privateKey, String command) {
