@@ -2,9 +2,12 @@ OCCIWARE-DOCKER-CONNECTOR
 =========================
 This sub project aims to provide the necessaries tools for executing the OCCIWARE model in real execution environment.
 
-Prerequisite
-------------
-You should have an account or register yourself on: https://hub.docker.com/account/signup/.
+Prerequisites
+-------------
+	Supports Docker client version 0.2.0
+	Be sure the Docker daemon is running.
+	You should have an account or register yourself on: https://hub.docker.com/account/signup/.
+	
 
 Configuration
 -------------
