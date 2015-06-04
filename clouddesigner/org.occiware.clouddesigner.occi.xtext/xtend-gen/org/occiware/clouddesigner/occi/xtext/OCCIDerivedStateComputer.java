@@ -27,15 +27,10 @@ import org.occiware.clouddesigner.OCCI.Mixin;
  */
 @SuppressWarnings("all")
 public class OCCIDerivedStateComputer implements IDerivedStateComputer {
-  /**
-   * override discardDerivedState(DerivedStateAwareResource resource) {
-   * System.out.println("discardDerivedState begin")
-   * resource.allContents.forEach [ r |
-   * System.out.println("discardDerivedState " + r)
-   * ]
-   * System.out.println("discardDerivedState end")
-   * }
-   */
+  @Override
+  public void discardDerivedState(final DerivedStateAwareResource resource) {
+  }
+  
   @Override
   public void installDerivedState(final DerivedStateAwareResource resource, final boolean preLinkingPhase) {
     TreeIterator<EObject> _allContents = resource.getAllContents();
