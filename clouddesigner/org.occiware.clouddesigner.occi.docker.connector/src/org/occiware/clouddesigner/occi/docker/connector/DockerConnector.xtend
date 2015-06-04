@@ -742,6 +742,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 			appendDriverParameters(command)
 			command.append(' ').append(compute.name)
 		}
+
 		// Get the active machine
 		val activeHosts = DockerUtil.getActiveHosts
 
@@ -843,8 +844,9 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 						}
 					}
 				}
-			}else{
-								// Create the Containers belong to this machine.
+			} else {
+
+				// Create the Containers belong to this machine.
 				if (compute.links.size > 0) {
 
 					// Start the containers without create graph
@@ -882,7 +884,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 						}
 					}
 				}
-				
+
 			}
 		}
 
@@ -1077,8 +1079,45 @@ class ExecutableMachine_Amazon_EC2 extends Machine_Amazon_EC2Impl {
 
 		override def appendDriverParameters(StringBuilder sb) {
 
-			// TODO: must be implemented
-			throw new UnsupportedOperationException
+			// TODO Check not null of attributes
+			checkNotNull(access_key, "access_key is null")
+			checkNotNull(secret_key, "secret_key is null")
+			checkNotNull(vpc_id, "vpc_id is null")
+			checkNotNull(zone, "zone is null")
+
+			if (StringUtils.isNotBlank(access_key)) {
+				sb.append(" --amazonec2-access-key ").append(access_key)
+			}
+			if (StringUtils.isNotBlank(secret_key)) {
+				sb.append(" --amazonec2-secret-key ").append(secret_key)
+			}
+			if (StringUtils.isNotBlank(vpc_id)) {
+				sb.append(" --amazonec2-vpc-id ").append(vpc_id)
+			}
+			if (StringUtils.isNotBlank(zone)) {
+				sb.append(" --amazonec2-zone ").append(zone)
+			}
+			if (StringUtils.isNotBlank(ami)) {
+				sb.append(" --amazonec2-ami ").append(ami)
+			}
+			if (StringUtils.isNotBlank(region)) {
+				sb.append(" --amazonec2-region ").append(region)
+			}
+			if (StringUtils.isNotBlank(instance_type)) {
+				sb.append(" --amazonec2-instance-type ").append(instance_type)
+			}
+			if (root_size > 0) {
+				sb.append(" --amazonec2-root-size ").append(root_size)
+			}
+			if (StringUtils.isNotBlank(subnet_id)) {
+				sb.append(" --amazonec2-subnet-id ").append(subnet_id)
+			}
+			if (StringUtils.isNotBlank(session_token)) {
+				sb.append(" --amazonec2-session-token ").append(session_token)
+			}
+			if (StringUtils.isNotBlank(security_group)) {
+				sb.append(" --amazonec2-security-group ").append(security_group)
+			}
 		}
 	}
 
@@ -1110,9 +1149,22 @@ class ExecutableMachine_Digital_Ocean extends Machine_Digital_OceanImpl {
 		}
 
 		override def appendDriverParameters(StringBuilder sb) {
+			checkNotNull(access_token, "access_token is null")
+			checkNotNull(size, "size is null")
+			if (StringUtils.isNotBlank(access_token)) {
+				sb.append(" --digitalocean-access-token ").append(access_token)
+			}
+			if (StringUtils.isNotBlank(size)) {
+				sb.append(" --digitalocean-size ").append(size)
+			}
+			if (StringUtils.isNotBlank(region)) {
+				sb.append(" --digitalocean-region ").append(region)
+			}
+			if (StringUtils.isNotBlank(image)) {
+				sb.append(" --digitalocean-image ").append(image)
+			}
 
-			// TODO: must be implemented
-			throw new UnsupportedOperationException
+		// Update the model with the new attributs			
 		}
 	}
 
@@ -1145,8 +1197,21 @@ class ExecutableMachine_Google_Compute_Engine extends Machine_Google_Compute_Eng
 
 		override def appendDriverParameters(StringBuilder sb) {
 
-			// TODO: must be implemented
-			throw new UnsupportedOperationException
+			checkNotNull(project, "project is null")
+			if (StringUtils.isNotBlank(project)) {
+				sb.append(" --google-project ").append(project)
+			}
+			if (StringUtils.isNotBlank(username)) {
+				sb.append(" --google-username ").append(username)
+			}
+			if (StringUtils.isNotBlank(machine_type)) {
+				sb.append(" --google-machine-type ").append(machine_type)
+			}
+			if (StringUtils.isNotBlank(zone)) {
+				sb.append(" --google-zone ").append(zone)
+			}
+
+		// TODO update the model attributs
 		}
 	}
 
@@ -1179,8 +1244,42 @@ class ExecutableMachine_IBM_SoftLayer extends Machine_IBM_SoftLayerImpl {
 
 		override def appendDriverParameters(StringBuilder sb) {
 
-			// TODO: must be implemented
-			throw new UnsupportedOperationException
+			// TODO Check not attributes
+			if (StringUtils.isNotBlank(user)) {
+				sb.append(" --softlayer-user ").append(user)
+			}
+			if (StringUtils.isNotBlank(domain)) {
+				sb.append(" --softlayer-domain ").append(domain)
+			}
+			if (StringUtils.isNotBlank(api_endpoint)) {
+				sb.append(" --softlayer-api-endpoint ").append(api_endpoint)
+			}
+			if (StringUtils.isNotBlank(api_key)) {
+				sb.append(" --softlayer-api-key ").append(api_key)
+			}
+			if (cpu > 0) {
+				sb.append(" --softlayer-cpu ").append(cpu)
+			}
+			if (disk_size > 0) {
+				sb.append(" --softlayer-disk-size ").append(disk_size)
+			}
+			if (memory > 0) {
+				sb.append(" --softlayer-memory ").append(memory)
+			}
+			if (StringUtils.isNotBlank(hostname)) {
+				sb.append(" --softlayer-hostname ").append(hostname)
+			}
+			if (StringUtils.isNotBlank(image)) {
+				sb.append(" --softlayer-image ").append(image)
+			}
+			if (private_net_only) {
+				sb.append(" --softlayer-private-net-only ").append(private_net_only)
+			}
+			if (local_disk) {
+				sb.append(" --softlayer-local-disk ").append(local_disk)
+			}
+
+		// Update the model attributs
 		}
 	}
 
@@ -1213,8 +1312,18 @@ class ExecutableMachine_Microsoft_Azure extends Machine_Microsoft_AzureImpl {
 
 		override def appendDriverParameters(StringBuilder sb) {
 
-			// TODO: must be implemented
-			throw new UnsupportedOperationException
+			// TODO Check not attributes
+			checkNotNull(subscription_id, "subscription_id is null")
+			checkNotNull(subscription_cert, "subscription_cert is null")
+
+			if (StringUtils.isNotBlank(subscription_id)) {
+				sb.append(" --azure-subscription-id ").append(subscription_id)
+			}
+			if (StringUtils.isNotBlank(subscription_cert)) {
+				sb.append(" --azure-subscription-cert ").append(subscription_cert)
+			}
+
+		// Update the model with new attributs
 		}
 	}
 
@@ -1282,14 +1391,14 @@ class ExecutableMachine_OpenStack extends Machine_OpenStackImpl {
 		override def appendDriverParameters(StringBuilder sb) {
 
 			// TODO Check not attributes
-			checkNotNull(auth_url , "auth_url is null")
-			checkNotNull(flavor_id , "flavor_id is null")
-			checkNotNull(image_id , "image_id is null")
-			checkNotNull(tenant_id , "tenant_id is null")
-			checkNotNull(tenant_name , "tenant_name is null")
-			checkNotNull(username , "username is null")
-			checkNotNull(password , "password is null")
-			checkNotNull(floatingip_pool , "floatingip_pool is null")
+			checkNotNull(auth_url, "auth_url is null")
+			checkNotNull(flavor_id, "flavor_id is null")
+			checkNotNull(image_id, "image_id is null")
+			checkNotNull(tenant_id, "tenant_id is null")
+			checkNotNull(tenant_name, "tenant_name is null")
+			checkNotNull(username, "username is null")
+			checkNotNull(password, "password is null")
+			checkNotNull(floatingip_pool, "floatingip_pool is null")
 			if (!auth_url.isEmpty) {
 				sb.append(" --openstack-auth-url ").append(auth_url)
 			}
@@ -1318,7 +1427,7 @@ class ExecutableMachine_OpenStack extends Machine_OpenStackImpl {
 				sb.append(" --openstack-region ").append(region)
 			}
 			if (StringUtils.isNotBlank(net_id)) {
-				
+
 				sb.append(" --openstack-net-id ").append(net_id)
 			}
 			if (StringUtils.isNotBlank(sec_groups)) {
@@ -1363,8 +1472,33 @@ class ExecutableMachine_Rackspace extends Machine_RackspaceImpl {
 
 		override def appendDriverParameters(StringBuilder sb) {
 
-			// TODO: must be implemented
-			throw new UnsupportedOperationException
+			checkNotNull(api_key, "api_key is null")
+			checkNotNull(username, "username is null")
+			checkNotNull(region, "region is null")
+
+			if (StringUtils.isNotBlank(api_key)) {
+				sb.append(" --rackspace-api-key ").append(api_key)
+			}
+			if (StringUtils.isNotBlank(username)) {
+				sb.append(" --rackspace-username ").append(username)
+			}
+			if (StringUtils.isNotBlank(region)) {
+				sb.append(" --rackspace-region ").append(region)
+			}
+			if (StringUtils.isNotBlank(endpoint_type)) {
+				sb.append(" --rackspace-endpoint-type ").append(endpoint_type)
+			}
+			if (StringUtils.isNotBlank(ssh_user)) {
+				sb.append(" --rackspace-ssh-user ").append(ssh_user)
+			}
+			if (ssh_port > 0) {
+				sb.append(" --rackspace-ssh-port ").append(ssh_port)
+			}
+			if (StringUtils.isNotBlank(flavor_id)) {
+				sb.append(" --rackspace-flavor-id ").append(flavor_id)
+			}
+
+		// TODO update the model attributs
 		}
 	}
 
@@ -1492,8 +1626,48 @@ class ExecutableMachine_VMware_vCloud_Air extends Machine_VMware_vCloud_AirImpl 
 
 		override def appendDriverParameters(StringBuilder sb) {
 
-			// TODO: must be implemented
-			throw new UnsupportedOperationException
+			// TODO Check not attributes
+			if (StringUtils.isNotBlank(username)) {
+				sb.append(" --vmwarevcloudair-username ").append(username)
+			}
+			if (StringUtils.isNotBlank(password)) {
+				sb.append(" --vmwarevcloudair-password ").append(password)
+			}
+			if (StringUtils.isNotBlank(computeid)) {
+				sb.append(" --vmwarevcloudair-computeid ").append(computeid)
+			}
+			if (cpu_count > 0) {
+				sb.append(" --vmwarevcloudair-computeid ").append(cpu_count)
+			}
+			if (StringUtils.isNotBlank(catalog)) {
+				sb.append(" --vmwarevcloudair-catalog ").append(catalog)
+			}
+			if (docker_port > 0) {
+				sb.append(" --vmwarevcloudair-docker-port ").append(docker_port)
+			}
+			if (StringUtils.isNotBlank(edgegateway)) {
+				sb.append(" --vmwarevcloudair-edgegateway ").append(edgegateway)
+			}
+			if (memory_size > 0) {
+				sb.append(" --vmwarevcloudair-edgegateway ").append(memory_size)
+			}
+			if (provision) {
+				sb.append(" --vmwarevcloudair-provision ").append(provision)
+			}
+			if (StringUtils.isNotBlank(publicip)) {
+				sb.append(" --vmwarevcloudair-publicip ").append(publicip)
+			}
+			if (StringUtils.isNotBlank(orgvdcnetwork)) {
+				sb.append(" --vmwarevcloudair-orgvdcnetwork ").append(orgvdcnetwork)
+			}
+			if (ssh_port > 0) {
+				sb.append(" --vmwarevcloudair-ssh-port ").append(ssh_port)
+			}
+			if (StringUtils.isNotBlank(vdcid)) {
+				sb.append(" --vmwarevcloudair-vdcid ").append(vdcid)
+			}
+
+		// Update the model attributs
 		}
 	}
 
@@ -1526,8 +1700,41 @@ class ExecutableMachine_VMware_vSphere extends Machine_VMware_vSphereImpl {
 
 		override def appendDriverParameters(StringBuilder sb) {
 
-			// TODO: must be implemented
-			throw new UnsupportedOperationException
+			// TODO Check not null of attributes
+			if (StringUtils.isNotBlank(username)) {
+				sb.append(" --vmwarevsphere-username ").append(username)
+			}
+			if (StringUtils.isNotBlank(password)) {
+				sb.append(" --vmwarevsphere-password ").append(password)
+			}
+			if (StringUtils.isNotBlank(datacenter)) {
+				sb.append(" --vmwarevsphere-datacenter ").append(datacenter)
+			}
+			if (StringUtils.isNotBlank(vcenter)) {
+				sb.append(" --vmwarevsphere-vcenter ").append(vcenter)
+			}
+			if (StringUtils.isNotBlank(datastore)) {
+				sb.append(" --vmwarevsphere-datastore ").append(datastore)
+			}
+			if (StringUtils.isNotBlank(network)) {
+				sb.append(" --vmwarevsphere-network ").append(network)
+			}
+			if (StringUtils.isNotBlank(boot2docker_url)) {
+				sb.append(" --vmwarevsphere-boot2docker-url ").append(boot2docker_url)
+			}
+			if (StringUtils.isNotBlank(compute_ip)) {
+				sb.append(" --vmwarevsphere-compute-ip ").append(compute_ip)
+			}
+			if (StringUtils.isNotBlank(pool)) {
+				sb.append(" --vmwarevsphere-pool ").append(pool)
+			}
+			if (memory > 0) {
+				sb.append(" --vmwarevsphere-memory-size ").append(memory)
+			}
+			if (disk_size > 0) {
+				sb.append(" --vmwarevsphere-disk-size ").append(disk_size)
+			}
+
 		}
 	}
 
