@@ -565,11 +565,4 @@ class DockerContainerManager {
 
 	}
 
-	def static void main(String[] args) {
-		val main = new DockerContainerManager
-
-		//		main.connect
-		main.listContainer("occiware")
-	}
-
 }
