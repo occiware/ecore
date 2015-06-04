@@ -13,25 +13,24 @@ package org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager
 import org.eclipse.emf.common.notify.Notification
 import org.eclipse.emf.ecore.util.EContentAdapter
 import org.eclipse.emf.ecore.util.EcoreUtil
-import org.occiware.clouddesigner.occi.docker.DockerFactory
+import org.occiware.clouddesigner.occi.docker.Container
 import org.occiware.clouddesigner.occi.docker.Machine
-import org.occiware.clouddesigner.occi.docker.Machine_VirtualBox
+import org.occiware.clouddesigner.occi.docker.connector.ExecutableContainer
+import org.occiware.clouddesigner.occi.docker.connector.dockerjava.DockerContainerManager
+import org.occiware.clouddesigner.occi.docker.connector.dockerjava.cgroup.CPUManager
+import org.occiware.clouddesigner.occi.docker.connector.dockerjava.cgroup.MemoryManager
+import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerUtil
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
 import static org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerObserver.*
-import org.occiware.clouddesigner.occi.docker.Container
-import org.occiware.clouddesigner.occi.docker.connector.ExecutableContainer
-import org.occiware.clouddesigner.occi.docker.connector.dockerjava.cgroup.CPUManager
-import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerUtil
-import org.occiware.clouddesigner.occi.docker.connector.dockerjava.cgroup.MemoryManager
-import org.occiware.clouddesigner.occi.docker.connector.dockerjava.DockerContainerManager
 
 class DockerObserver {
 
 	// Initialize logger for CommandFactory.
 	private static Logger LOGGER = LoggerFactory.getLogger(typeof(DockerObserver))
 	var protected static Container cpContainer = null
+	var protected static Machine cpMachine = null
 
 	def listener(Machine machine) {
 
@@ -42,13 +41,19 @@ class DockerObserver {
 		machine.eAdapters.add(
 			new EContentAdapter() {
 				public override notifyChanged(Notification notification) {
+					LOGGER.info("The Container has Changed")
+					var newMachine = notification.notifier as Machine
+
+					// Name Changes
+					if (!cpMachine.name.equals(newMachine.name)) {
+						machine.name = notification.oldValue.toString
+
+						// Throw an exception
+						throw new UnsupportedOperationException
+
+					}
 					LOGGER.info("Ancienne Valeur : " + notification.oldValue)
 					LOGGER.info("Nouvelle Valeur : " + notification.newValue)
-
-					// Rollback changes 
-					var machine = cpMachine
-					println(
-						"<-------------------------Attention on veut me modifier -------------------------->\n\n\n\n\n\n\n\n")
 				}
 			}
 		)
