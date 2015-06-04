@@ -22,13 +22,25 @@ import com.github.dockerjava.api.model.Volume
 import com.github.dockerjava.core.DockerClientBuilder
 import com.github.dockerjava.core.DockerClientConfig
 import com.google.common.collect.Multimap
+import com.jcraft.jsch.Channel
+import com.jcraft.jsch.ChannelExec
+import com.jcraft.jsch.JSch
+import com.jcraft.jsch.JSchException
+import com.jcraft.jsch.Session
+import java.io.BufferedReader
+import java.io.File
+import java.io.FileReader
+import java.io.FileWriter
+import java.io.IOException
 import java.net.URI
 import java.net.URL
 import java.util.ArrayList
+import java.util.HashMap
 import java.util.LinkedHashMap
 import java.util.LinkedHashSet
 import java.util.List
 import java.util.Map
+import org.apache.commons.lang.StringUtils
 import org.occiware.clouddesigner.occi.docker.Container
 import org.occiware.clouddesigner.occi.docker.Machine
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerMachineManager
@@ -36,21 +48,11 @@ import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.Docke
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerUtil
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import com.jcraft.jsch.JSch
-import com.jcraft.jsch.Session
-import com.jcraft.jsch.Channel
-import com.jcraft.jsch.UserInfo
-import java.io.FileWriter
-import java.io.IOException
-import com.jcraft.jsch.JSchException
-import java.io.File
-import com.jcraft.jsch.ChannelExec
-import java.io.BufferedReader
-import java.io.FileReader
 
 class DockerContainerManager {
 	private static DockerClient dockerClient = null
-	private List<String> images = newArrayList
+	
+	private Map<String, List<String>> images = new HashMap<String, List<String>>
 
 	// Initialize logger for DockerContainerManager.
 	private static Logger LOGGER = LoggerFactory.getLogger(typeof(DockerContainerManager))
@@ -59,16 +61,13 @@ class DockerContainerManager {
 	}
 
 	new(Machine machine) {
-		DockerContainerManager.dockerClient = setConfig(machine.name)
+		dockerClient = setConfig(machine.name)
 	}
 
 	def createContainer(Machine machine, Container container) {
-		var DockerClient dockerClient = null
-
+		
 		// Set dockerClient
-		if (DockerContainerManager.dockerClient != null) {
-			dockerClient = DockerContainerManager.dockerClient
-		} else {
+		if (dockerClient == null) {
 			dockerClient = setConfig(machine.name)
 		}
 		var Map<DockerClient, CreateContainerResponse> result = new LinkedHashMap<DockerClient, CreateContainerResponse>
@@ -82,12 +81,8 @@ class DockerContainerManager {
 
 	def createContainer(Machine machine, Container container, Multimap<String, String> containerDependency) {
 
-		var DockerClient dockerClient = null
-
 		// Set dockerClient
-		if (DockerContainerManager.dockerClient != null) {
-			dockerClient = DockerContainerManager.dockerClient
-		} else {
+		if (dockerClient == null) {
 			dockerClient = setConfig(machine.name)
 		}
 		var Map<DockerClient, CreateContainerResponse> result = new LinkedHashMap<DockerClient, CreateContainerResponse>
@@ -302,11 +297,8 @@ class DockerContainerManager {
 		var DockerClient dockerClient = null
 
 		// Set dockerClient
-		if (DockerContainerManager.dockerClient != null) {
-			dockerClient = DockerContainerManager.dockerClient
-		} else {
+		if (dockerClient == null) {
 			dockerClient = setConfig(machine.name)
-
 		}
 		val InspectContainerResponse inspectContainerResponse = dockerClient.inspectContainerCmd(containerId).exec()
 		return inspectContainerResponse
@@ -330,11 +322,8 @@ class DockerContainerManager {
 		var DockerClient dockerClient = null
 
 		// Set dockerClient
-		if (DockerContainerManager.dockerClient != null) {
-			dockerClient = DockerContainerManager.dockerClient
-		} else {
+		if (dockerClient == null) {
 			dockerClient = setConfig(machine.name)
-
 		}
 		dockerClient.startContainerCmd(containerId).exec
 	}
@@ -343,11 +332,8 @@ class DockerContainerManager {
 		var DockerClient dockerClient = null
 
 		// Set dockerClient
-		if (DockerContainerManager.dockerClient != null) {
-			dockerClient = DockerContainerManager.dockerClient
-		} else {
+		if (dockerClient == null) {
 			dockerClient = setConfig(machine.name)
-
 		}
 		dockerClient.stopContainerCmd(container.id).exec
 	}
@@ -356,11 +342,8 @@ class DockerContainerManager {
 		var DockerClient dockerClient = null
 
 		// Set dockerClient
-		if (DockerContainerManager.dockerClient != null) {
-			dockerClient = DockerContainerManager.dockerClient
-		} else {
+		if (dockerClient == null) {
 			dockerClient = setConfig(machine.name)
-
 		}
 		dockerClient.stopContainerCmd(containerId).exec
 	}
@@ -369,11 +352,8 @@ class DockerContainerManager {
 		var DockerClient dockerClient = null
 
 		// Set dockerClient
-		if (DockerContainerManager.dockerClient != null) {
-			dockerClient = DockerContainerManager.dockerClient
-		} else {
+		if (dockerClient == null) {
 			dockerClient = setConfig(machine.name)
-
 		}
 		dockerClient.waitContainerCmd(container.id).exec
 	}
@@ -383,11 +363,8 @@ class DockerContainerManager {
 		var DockerClient dockerClient = null
 
 		// Set dockerClient
-		if (DockerContainerManager.dockerClient != null) {
-			dockerClient = DockerContainerManager.dockerClient
-		} else {
+		if (dockerClient == null) {
 			dockerClient = setConfig(machineName)
-
 		}
 		val List<com.github.dockerjava.api.model.Container> containers = dockerClient.listContainersCmd().
 			withShowAll(true).exec()
@@ -396,25 +373,21 @@ class DockerContainerManager {
 
 	def pullImage(Machine machine, String image) {
 
-		LOGGER.info("Image setting: " + image)
-
 		var DockerClient dockerClient = null
 
 		// Set dockerClient
-		if (DockerContainerManager.dockerClient != null) {
-			dockerClient = DockerContainerManager.dockerClient
-		} else {
+		if (dockerClient == null) {
 			dockerClient = setConfig(machine.name)
 		}
 		var containerImage = image
-		if (containerImage.equals("")) {
+		if (!StringUtils.isNotBlank(containerImage)) {
 			containerImage = "busybox"
-			LOGGER.info("Use default image: busybox")
+			LOGGER.info("Use default image: "+ containerImage)
 		}
 		var String output = null
-		if (!images.contains(containerImage)) {
+		if (!machineContainsImage(machine.name, containerImage)) {
 			LOGGER.info("Downloading image: ->" + containerImage)
-			images.add(containerImage)
+			addImageToMachine(machine.name, containerImage)
 
 			// Download a pre-built image
 			output = DockerUtil.asString(dockerClient.pullImageCmd(containerImage).withTag("latest").exec)
@@ -425,7 +398,26 @@ class DockerContainerManager {
 		return dockerClient
 
 	}
-
+	
+	def boolean machineContainsImage(String machine, String image){
+		if(images.get(machine) != null){
+			return images.get(machine).contains(image)
+		}
+		return false
+	}
+	
+	def void addImageToMachine(String machine, String image){
+		if(!images.containsKey(machine)){
+			var tempList = new ArrayList
+			tempList.add(image)
+			images.put(machine, tempList)
+		}else{
+			var tempList = images.get(machine)
+			tempList.add(image)
+			images.put(machine, tempList)
+		}
+	}
+	
 	def DockerClient setConfig(String machine) {
 		val lconfig = new DockerConfig
 		val dockerClientconfig = lconfig.loadConfig
@@ -441,7 +433,7 @@ class DockerContainerManager {
 		val url = new URL(ENDPOINT)
 		val URI uri = new URI(url.getProtocol(), url.getHost(), url.getPath(), url.getQuery(), null)
 		val dockerUri = uri.toString + port
-		LOGGER.info(uri.toString)
+		LOGGER.info("Connection inside machine: " + machine + " with uri: " + dockerUri.toString)
 		val DockerClientConfig config = DockerClientConfig.createDefaultConfigBuilder.withVersion(
 			dockerClientconfig.get("docker.version").toString).withUri(dockerUri).withUsername(
 			dockerClientconfig.get("docker.username").toString).withPassword(
@@ -571,6 +563,13 @@ class DockerContainerManager {
 
 		}
 
+	}
+
+	def static void main(String[] args) {
+		val main = new DockerContainerManager
+
+		//		main.connect
+		main.listContainer("occiware")
 	}
 
 }
