@@ -80,8 +80,8 @@ class DockerUtil {
 
 	def static getActiveHosts() {
 		var Map<String, String> hosts = new HashMap
-		for (Map.Entry<String, String> entry : hosts.entrySet) {
-			if (entry.value == "Running") {
+		for (Map.Entry<String, String> entry : getHosts.entrySet) {
+			if (entry.value.equalsIgnoreCase("Running")) {
 				hosts.put(entry.key, entry.value)
 			}
 		}
