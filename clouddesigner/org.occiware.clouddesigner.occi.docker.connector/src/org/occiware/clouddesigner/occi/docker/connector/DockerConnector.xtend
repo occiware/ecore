@@ -70,6 +70,7 @@ import org.slf4j.LoggerFactory
 import org.slf4j.Logger
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerObserver
 import org.occiware.clouddesigner.occi.docker.Container
+import org.apache.commons.lang.StringUtils
 
 /**
  * This class overrides the generated EMF factory of the Docker package.
@@ -793,7 +794,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 					}
 				}
 			}
-		} else {
+		} else { // The machine is active just create the containers
 			if (!activeHosts.containsKey(compute.name)) {
 
 				// Start the machine
@@ -803,6 +804,47 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 				compute.state = ComputeStatus.ACTIVE
 
 				// Create the Containers belong to this machine.
+				if (compute.links.size > 0) {
+
+					// Start the containers without create graph
+					if (!this.linkFound) {
+						for (Link link : compute.links) {
+							val con = link.target as ExecutableContainer
+							if (!containerIsDeployed(con.name, this.machine)) {
+
+								// Create container
+								LOGGER.info("Creating the container: " + con.name)
+								con.createContainer(this.machine)
+								LOGGER.info("The container is created")
+
+								// Start container
+								con.start
+							} else {
+
+								// Start container
+								con.start
+							}
+						}
+					} else {
+						for (Container c : this.deploymentOrder) {
+							val con = c as ExecutableContainer
+							if (!containerIsDeployed(con.name, compute)) {
+
+								// Create container
+								con.createContainer(this.machine, this.containerDependency)
+
+								// Start container
+								con.start
+							} else {
+
+								// Start container
+								con.start
+							}
+						}
+					}
+				}
+			}else{
+								// Create the Containers belong to this machine.
 				if (compute.links.size > 0) {
 
 					// Start the containers without create graph
@@ -840,6 +882,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 						}
 					}
 				}
+				
 			}
 		}
 
@@ -1239,6 +1282,14 @@ class ExecutableMachine_OpenStack extends Machine_OpenStackImpl {
 		override def appendDriverParameters(StringBuilder sb) {
 
 			// TODO Check not attributes
+			checkNotNull(auth_url , "auth_url is null")
+			checkNotNull(flavor_id , "flavor_id is null")
+			checkNotNull(image_id , "image_id is null")
+			checkNotNull(tenant_id , "tenant_id is null")
+			checkNotNull(tenant_name , "tenant_name is null")
+			checkNotNull(username , "username is null")
+			checkNotNull(password , "password is null")
+			checkNotNull(floatingip_pool , "floatingip_pool is null")
 			if (!auth_url.isEmpty) {
 				sb.append(" --openstack-auth-url ").append(auth_url)
 			}
@@ -1263,7 +1314,14 @@ class ExecutableMachine_OpenStack extends Machine_OpenStackImpl {
 			if (!floatingip_pool.isEmpty) {
 				sb.append(" --openstack-floatingip-pool ").append(floatingip_pool)
 			}
-			if (!sec_groups.equals(null)) {
+			if (StringUtils.isNotBlank(region)) {
+				sb.append(" --openstack-region ").append(region)
+			}
+			if (StringUtils.isNotBlank(net_id)) {
+				
+				sb.append(" --openstack-net-id ").append(net_id)
+			}
+			if (StringUtils.isNotBlank(sec_groups)) {
 
 				//TODO list of secure group.
 				sb.append(" --openstack-sec-groups ").append(sec_groups)
