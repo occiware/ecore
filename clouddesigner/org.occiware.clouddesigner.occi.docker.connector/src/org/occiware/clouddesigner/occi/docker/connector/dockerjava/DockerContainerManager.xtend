@@ -63,6 +63,10 @@ class DockerContainerManager {
 	new(Machine machine) {
 		dockerClient = setConfig(machine.name)
 	}
+	
+	new(String machineName) {
+		dockerClient = setConfig(machineName)
+	}
 
 	def createContainer(Machine machine, Container container) {
 		
@@ -94,6 +98,16 @@ class DockerContainerManager {
 		return result
 	}
 
+	def void removeContainer(String machineName, String containerId) {
+		
+		// Set dockerClient
+		if (dockerClient == null) {
+			dockerClient = setConfig(machineName)
+		}
+		
+		dockerClient.removeContainerCmd(containerId).exec
+	}
+	
 	def containerFactory(Container container, DockerClient dockerClient) {
 		var CreateContainerCmd create = null
 		if (container.image != null) {
