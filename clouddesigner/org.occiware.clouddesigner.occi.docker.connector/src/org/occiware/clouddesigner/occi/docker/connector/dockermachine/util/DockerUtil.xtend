@@ -55,7 +55,12 @@ class DockerUtil {
 				if (lsCmd.length >= 3 && lsCmd.length < 5) {
 					hosts.put(lsCmd.get(0), lsCmd.get(2))
 				} else if (lsCmd.length >= 5) {
-					hosts.put(lsCmd.get(0), lsCmd.get(3))
+					if(lsCmd.contains("(master)")){
+						hosts.put(lsCmd.get(0), lsCmd.get(2))
+					}else{
+						hosts.put(lsCmd.get(0), lsCmd.get(3))
+					}
+					
 				}
 			}
 		}
