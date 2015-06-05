@@ -11,6 +11,7 @@
  */
 package org.occiware.clouddesigner.occi.docker.connector;
 
+import org.apache.commons.lang.StringUtils;
 import org.occiware.clouddesigner.occi.docker.connector.MachineManager;
 import org.occiware.clouddesigner.occi.docker.impl.Machine_VMware_vCloud_AirImpl;
 import org.occiware.clouddesigner.occi.infrastructure.RestartMethod;
@@ -31,7 +32,66 @@ public class ExecutableMachine_VMware_vCloud_Air extends Machine_VMware_vCloud_A
     }
     
     public void appendDriverParameters(final StringBuilder sb) {
-      throw new UnsupportedOperationException();
+      boolean _isNotBlank = StringUtils.isNotBlank(ExecutableMachine_VMware_vCloud_Air.this.username);
+      if (_isNotBlank) {
+        StringBuilder _append = sb.append(" --vmwarevcloudair-username ");
+        _append.append(ExecutableMachine_VMware_vCloud_Air.this.username);
+      }
+      boolean _isNotBlank_1 = StringUtils.isNotBlank(ExecutableMachine_VMware_vCloud_Air.this.password);
+      if (_isNotBlank_1) {
+        StringBuilder _append_1 = sb.append(" --vmwarevcloudair-password ");
+        _append_1.append(ExecutableMachine_VMware_vCloud_Air.this.password);
+      }
+      boolean _isNotBlank_2 = StringUtils.isNotBlank(ExecutableMachine_VMware_vCloud_Air.this.computeid);
+      if (_isNotBlank_2) {
+        StringBuilder _append_2 = sb.append(" --vmwarevcloudair-computeid ");
+        _append_2.append(ExecutableMachine_VMware_vCloud_Air.this.computeid);
+      }
+      if ((ExecutableMachine_VMware_vCloud_Air.this.cpu_count > 0)) {
+        StringBuilder _append_3 = sb.append(" --vmwarevcloudair-computeid ");
+        _append_3.append(ExecutableMachine_VMware_vCloud_Air.this.cpu_count);
+      }
+      boolean _isNotBlank_3 = StringUtils.isNotBlank(ExecutableMachine_VMware_vCloud_Air.this.catalog);
+      if (_isNotBlank_3) {
+        StringBuilder _append_4 = sb.append(" --vmwarevcloudair-catalog ");
+        _append_4.append(ExecutableMachine_VMware_vCloud_Air.this.catalog);
+      }
+      if ((ExecutableMachine_VMware_vCloud_Air.this.docker_port > 0)) {
+        StringBuilder _append_5 = sb.append(" --vmwarevcloudair-docker-port ");
+        _append_5.append(ExecutableMachine_VMware_vCloud_Air.this.docker_port);
+      }
+      boolean _isNotBlank_4 = StringUtils.isNotBlank(ExecutableMachine_VMware_vCloud_Air.this.edgegateway);
+      if (_isNotBlank_4) {
+        StringBuilder _append_6 = sb.append(" --vmwarevcloudair-edgegateway ");
+        _append_6.append(ExecutableMachine_VMware_vCloud_Air.this.edgegateway);
+      }
+      if ((ExecutableMachine_VMware_vCloud_Air.this.memory_size > 0)) {
+        StringBuilder _append_7 = sb.append(" --vmwarevcloudair-edgegateway ");
+        _append_7.append(ExecutableMachine_VMware_vCloud_Air.this.memory_size);
+      }
+      if (ExecutableMachine_VMware_vCloud_Air.this.provision) {
+        StringBuilder _append_8 = sb.append(" --vmwarevcloudair-provision ");
+        _append_8.append(ExecutableMachine_VMware_vCloud_Air.this.provision);
+      }
+      boolean _isNotBlank_5 = StringUtils.isNotBlank(ExecutableMachine_VMware_vCloud_Air.this.publicip);
+      if (_isNotBlank_5) {
+        StringBuilder _append_9 = sb.append(" --vmwarevcloudair-publicip ");
+        _append_9.append(ExecutableMachine_VMware_vCloud_Air.this.publicip);
+      }
+      boolean _isNotBlank_6 = StringUtils.isNotBlank(ExecutableMachine_VMware_vCloud_Air.this.orgvdcnetwork);
+      if (_isNotBlank_6) {
+        StringBuilder _append_10 = sb.append(" --vmwarevcloudair-orgvdcnetwork ");
+        _append_10.append(ExecutableMachine_VMware_vCloud_Air.this.orgvdcnetwork);
+      }
+      if ((ExecutableMachine_VMware_vCloud_Air.this.ssh_port > 0)) {
+        StringBuilder _append_11 = sb.append(" --vmwarevcloudair-ssh-port ");
+        _append_11.append(ExecutableMachine_VMware_vCloud_Air.this.ssh_port);
+      }
+      boolean _isNotBlank_7 = StringUtils.isNotBlank(ExecutableMachine_VMware_vCloud_Air.this.vdcid);
+      if (_isNotBlank_7) {
+        StringBuilder _append_12 = sb.append(" --vmwarevcloudair-vdcid ");
+        _append_12.append(ExecutableMachine_VMware_vCloud_Air.this.vdcid);
+      }
     }
   };
   

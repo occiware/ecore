@@ -11,6 +11,8 @@
  */
 package org.occiware.clouddesigner.occi.docker.connector;
 
+import com.google.common.base.Preconditions;
+import org.apache.commons.lang.StringUtils;
 import org.occiware.clouddesigner.occi.docker.connector.MachineManager;
 import org.occiware.clouddesigner.occi.docker.impl.Machine_OpenStackImpl;
 import org.occiware.clouddesigner.occi.infrastructure.RestartMethod;
@@ -31,6 +33,14 @@ public class ExecutableMachine_OpenStack extends Machine_OpenStackImpl {
     }
     
     public void appendDriverParameters(final StringBuilder sb) {
+      Preconditions.<String>checkNotNull(ExecutableMachine_OpenStack.this.auth_url, "auth_url is null");
+      Preconditions.<String>checkNotNull(ExecutableMachine_OpenStack.this.flavor_id, "flavor_id is null");
+      Preconditions.<String>checkNotNull(ExecutableMachine_OpenStack.this.image_id, "image_id is null");
+      Preconditions.<String>checkNotNull(ExecutableMachine_OpenStack.this.tenant_id, "tenant_id is null");
+      Preconditions.<String>checkNotNull(ExecutableMachine_OpenStack.this.tenant_name, "tenant_name is null");
+      Preconditions.<String>checkNotNull(ExecutableMachine_OpenStack.this.username, "username is null");
+      Preconditions.<String>checkNotNull(ExecutableMachine_OpenStack.this.password, "password is null");
+      Preconditions.<String>checkNotNull(ExecutableMachine_OpenStack.this.floatingip_pool, "floatingip_pool is null");
       boolean _isEmpty = ExecutableMachine_OpenStack.this.auth_url.isEmpty();
       boolean _not = (!_isEmpty);
       if (_not) {
@@ -79,17 +89,26 @@ public class ExecutableMachine_OpenStack extends Machine_OpenStackImpl {
         StringBuilder _append_7 = sb.append(" --openstack-floatingip-pool ");
         _append_7.append(ExecutableMachine_OpenStack.this.floatingip_pool);
       }
-      boolean _equals = ExecutableMachine_OpenStack.this.sec_groups.equals(null);
-      boolean _not_8 = (!_equals);
-      if (_not_8) {
-        StringBuilder _append_8 = sb.append(" --openstack-sec-groups ");
-        _append_8.append(ExecutableMachine_OpenStack.this.sec_groups);
-      } else {
-        StringBuilder _append_9 = sb.append(" --openstack-sec-groups ");
-        _append_9.append("default");
+      boolean _isNotBlank = StringUtils.isNotBlank(ExecutableMachine_OpenStack.this.region);
+      if (_isNotBlank) {
+        StringBuilder _append_8 = sb.append(" --openstack-region ");
+        _append_8.append(ExecutableMachine_OpenStack.this.region);
       }
-      StringBuilder _append_10 = sb.append(" --openstack-ssh-user ");
-      _append_10.append("ubuntu");
+      boolean _isNotBlank_1 = StringUtils.isNotBlank(ExecutableMachine_OpenStack.this.net_id);
+      if (_isNotBlank_1) {
+        StringBuilder _append_9 = sb.append(" --openstack-net-id ");
+        _append_9.append(ExecutableMachine_OpenStack.this.net_id);
+      }
+      boolean _isNotBlank_2 = StringUtils.isNotBlank(ExecutableMachine_OpenStack.this.sec_groups);
+      if (_isNotBlank_2) {
+        StringBuilder _append_10 = sb.append(" --openstack-sec-groups ");
+        _append_10.append(ExecutableMachine_OpenStack.this.sec_groups);
+      } else {
+        StringBuilder _append_11 = sb.append(" --openstack-sec-groups ");
+        _append_11.append("default");
+      }
+      StringBuilder _append_12 = sb.append(" --openstack-ssh-user ");
+      _append_12.append("ubuntu");
     }
   };
   

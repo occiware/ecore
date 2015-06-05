@@ -92,9 +92,16 @@ public class DockerUtil {
             int _length_3 = lsCmd.length;
             boolean _greaterEqualsThan_1 = (_length_3 >= 5);
             if (_greaterEqualsThan_1) {
-              String _get_2 = lsCmd[0];
-              String _get_3 = lsCmd[3];
-              hosts.put(_get_2, _get_3);
+              boolean _contains = ((List<String>)Conversions.doWrapArray(lsCmd)).contains("(master)");
+              if (_contains) {
+                String _get_2 = lsCmd[0];
+                String _get_3 = lsCmd[2];
+                hosts.put(_get_2, _get_3);
+              } else {
+                String _get_4 = lsCmd[0];
+                String _get_5 = lsCmd[3];
+                hosts.put(_get_4, _get_5);
+              }
             }
           }
         }
@@ -126,11 +133,12 @@ public class DockerUtil {
   
   public static Map<String, String> getActiveHosts() {
     Map<String, String> hosts = new HashMap<String, String>();
-    Set<Map.Entry<String, String>> _entrySet = hosts.entrySet();
+    Map<String, String> _hosts = DockerUtil.getHosts();
+    Set<Map.Entry<String, String>> _entrySet = _hosts.entrySet();
     for (final Map.Entry<String, String> entry : _entrySet) {
       String _value = entry.getValue();
-      boolean _equals = Objects.equal(_value, "Running");
-      if (_equals) {
+      boolean _equalsIgnoreCase = _value.equalsIgnoreCase("Running");
+      if (_equalsIgnoreCase) {
         String _key = entry.getKey();
         String _value_1 = entry.getValue();
         hosts.put(_key, _value_1);

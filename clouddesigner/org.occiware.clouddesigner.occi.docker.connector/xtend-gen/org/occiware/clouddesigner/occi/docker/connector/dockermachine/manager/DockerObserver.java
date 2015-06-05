@@ -16,7 +16,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.occiware.clouddesigner.occi.docker.Container;
 import org.occiware.clouddesigner.occi.docker.Machine;
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableContainer;
@@ -34,6 +33,8 @@ public class DockerObserver {
   
   protected static Container cpContainer = null;
   
+  protected static Machine cpMachine = null;
+  
   public Machine listener(final Machine machine) {
     Machine _copy = EcoreUtil.<Machine>copy(machine);
     final Machine cpMachine = ((Machine) _copy);
@@ -41,15 +42,25 @@ public class DockerObserver {
     _eAdapters.add(
       new EContentAdapter() {
         public void notifyChanged(final Notification notification) {
-          Object _oldValue = notification.getOldValue();
-          String _plus = ("Ancienne Valeur : " + _oldValue);
+          DockerObserver.LOGGER.info("The Container has Changed");
+          Object _notifier = notification.getNotifier();
+          Machine newMachine = ((Machine) _notifier);
+          String _name = cpMachine.getName();
+          String _name_1 = newMachine.getName();
+          boolean _equals = _name.equals(_name_1);
+          boolean _not = (!_equals);
+          if (_not) {
+            Object _oldValue = notification.getOldValue();
+            String _string = _oldValue.toString();
+            machine.setName(_string);
+            throw new UnsupportedOperationException();
+          }
+          Object _oldValue_1 = notification.getOldValue();
+          String _plus = ("Ancienne Valeur : " + _oldValue_1);
           DockerObserver.LOGGER.info(_plus);
           Object _newValue = notification.getNewValue();
           String _plus_1 = ("Nouvelle Valeur : " + _newValue);
           DockerObserver.LOGGER.info(_plus_1);
-          Machine machine = cpMachine;
-          InputOutput.<String>println(
-            "<-------------------------Attention on veut me modifier -------------------------->\n\n\n\n\n\n\n\n");
         }
       });
     return machine;

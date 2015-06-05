@@ -667,7 +667,7 @@ public class ModelHandler {
     }
   }
   
-  public Machine getModel(final String machine, final String state) {
+  public Machine getModel(final String machine, final String state, final boolean machineExists) {
     final DockerContainerManager instance = new DockerContainerManager();
     Runtime _runtime = Runtime.getRuntime();
     String _inspectHostCmd = DockerMachineManager.inspectHostCmd(_runtime, machine);
@@ -681,25 +681,7 @@ public class ModelHandler {
       Machine vbox = _modelEClass.get(_replaceAll);
       if ((vbox instanceof Machine_VirtualBox)) {
         Machine_VirtualBox newvbox = ((Machine_VirtualBox) vbox);
-        this.machineFactory(newvbox, node, state);
-        JsonNode _get_1 = node.get("Driver");
-        JsonNode _get_2 = _get_1.get("DiskSize");
-        String _string_1 = _get_2.toString();
-        int _parseInt = Integer.parseInt(_string_1);
-        newvbox.setDisk_size(_parseInt);
-        JsonNode _get_3 = node.get("Driver");
-        JsonNode _get_4 = _get_3.get("Boot2DockerURL");
-        String _string_2 = _get_4.toString();
-        String _replaceAll_1 = _string_2.replaceAll("\"", "");
-        newvbox.setBoot2docker_url(_replaceAll_1);
-        boolean _equals = Objects.equal(state, "Stopped");
-        if (_equals) {
-          ComputeStatus _get_5 = ComputeStatus.get(1);
-          newvbox.setState(_get_5);
-        } else {
-          ComputeStatus _get_6 = ComputeStatus.get(0);
-          newvbox.setState(_get_6);
-        }
+        this.machineFactory_VBOX(newvbox, node, state);
         ModelHandler.LOGGER.info(("Model setting: " + newvbox));
       } else {
         if ((vbox instanceof Machine_Amazon_EC2)) {
@@ -714,7 +696,7 @@ public class ModelHandler {
           } else {
             if ((vbox instanceof Machine_VMware_Fusion)) {
               Machine_VMware_Fusion newvbox_3 = ((Machine_VMware_Fusion) vbox);
-              this.machineFactory(newvbox_3, node, state);
+              this.machineFactory_Fusion(newvbox_3, node, state);
               ModelHandler.LOGGER.info(("Model setting: " + newvbox_3));
             } else {
               if ((vbox instanceof Machine_Google_Compute_Engine)) {
@@ -762,31 +744,33 @@ public class ModelHandler {
           }
         }
       }
-      ComputeStatus _state = vbox.getState();
-      String _string_3 = _state.toString();
-      boolean _equalsIgnoreCase = _string_3.equalsIgnoreCase("active");
-      if (_equalsIgnoreCase) {
-        String _name = vbox.getName();
-        final List<Container> containers = instance.listContainer(_name);
-        boolean _notEquals_1 = (!Objects.equal(containers, null));
-        if (_notEquals_1) {
-          List<org.occiware.clouddesigner.occi.docker.Container> modelContainers = this.buildContainer(vbox, containers);
-          for (final org.occiware.clouddesigner.occi.docker.Container container : modelContainers) {
-            {
-              this.linkContainerToMachine(container, vbox);
-              String _id = container.getId();
-              final InspectContainerResponse inspectContainer = instance.inspectContainer(vbox, _id);
-              HostConfig _hostConfig = inspectContainer.getHostConfig();
-              Link[] _links = _hostConfig.getLinks();
-              boolean _isEmpty = ((List<Link>)Conversions.doWrapArray(_links)).isEmpty();
-              boolean _not = (!_isEmpty);
-              if (_not) {
-                HostConfig _hostConfig_1 = inspectContainer.getHostConfig();
-                Link[] _links_1 = _hostConfig_1.getLinks();
-                for (final Link link : _links_1) {
-                  String _name_1 = link.getName();
-                  org.occiware.clouddesigner.occi.docker.Container _containerByName = this.getContainerByName(modelContainers, _name_1);
-                  this.linkContainerToContainer(container, _containerByName);
+      if ((!machineExists)) {
+        ComputeStatus _state = vbox.getState();
+        String _string_1 = _state.toString();
+        boolean _equalsIgnoreCase = _string_1.equalsIgnoreCase("active");
+        if (_equalsIgnoreCase) {
+          String _name = vbox.getName();
+          final List<Container> containers = instance.listContainer(_name);
+          boolean _notEquals_1 = (!Objects.equal(containers, null));
+          if (_notEquals_1) {
+            List<org.occiware.clouddesigner.occi.docker.Container> modelContainers = this.buildContainer(vbox, containers);
+            for (final org.occiware.clouddesigner.occi.docker.Container container : modelContainers) {
+              {
+                this.linkContainerToMachine(container, vbox);
+                String _id = container.getId();
+                final InspectContainerResponse inspectContainer = instance.inspectContainer(vbox, _id);
+                HostConfig _hostConfig = inspectContainer.getHostConfig();
+                Link[] _links = _hostConfig.getLinks();
+                boolean _isEmpty = ((List<Link>)Conversions.doWrapArray(_links)).isEmpty();
+                boolean _not = (!_isEmpty);
+                if (_not) {
+                  HostConfig _hostConfig_1 = inspectContainer.getHostConfig();
+                  Link[] _links_1 = _hostConfig_1.getLinks();
+                  for (final Link link : _links_1) {
+                    String _name_1 = link.getName();
+                    org.occiware.clouddesigner.occi.docker.Container _containerByName = this.getContainerByName(modelContainers, _name_1);
+                    this.linkContainerToContainer(container, _containerByName);
+                  }
                 }
               }
             }
@@ -834,6 +818,95 @@ public class ModelHandler {
     if (_equals_1) {
       ComputeStatus _get_7 = ComputeStatus.get(1);
       vbox.setState(_get_7);
+    }
+  }
+  
+  public void machineFactory_VBOX(final Machine_VirtualBox vbox, final JsonNode node, final String state) {
+    JsonNode _get = node.get("Driver");
+    JsonNode _get_1 = _get.get("MachineName");
+    String _string = _get_1.toString();
+    String _replaceAll = _string.replaceAll("\"", "");
+    vbox.setName(_replaceAll);
+    JsonNode _get_2 = node.get("Driver");
+    JsonNode _get_3 = _get_2.get("Memory");
+    String _string_1 = _get_3.toString();
+    float _parseFloat = Float.parseFloat(_string_1);
+    vbox.setMemory(_parseFloat);
+    JsonNode _get_4 = node.get("Driver");
+    JsonNode _get_5 = _get_4.get("DiskSize");
+    String _string_2 = _get_5.toString();
+    int _parseInt = Integer.parseInt(_string_2);
+    vbox.setDisk_size(_parseInt);
+    JsonNode _get_6 = node.get("Driver");
+    JsonNode _get_7 = _get_6.get("CPU");
+    String _string_3 = _get_7.toString();
+    int _parseInt_1 = Integer.parseInt(_string_3);
+    vbox.setCores(_parseInt_1);
+    JsonNode _get_8 = node.get("Driver");
+    JsonNode _get_9 = _get_8.get("Boot2DockerURL");
+    String _string_4 = _get_9.toString();
+    String _replaceAll_1 = _string_4.replaceAll("\"", "");
+    vbox.setBoot2docker_url(_replaceAll_1);
+    boolean _equals = Objects.equal(state, "Running");
+    if (_equals) {
+      ComputeStatus _get_10 = ComputeStatus.get(0);
+      vbox.setState(_get_10);
+    }
+    boolean _equals_1 = Objects.equal(state, "Stopped");
+    if (_equals_1) {
+      ComputeStatus _get_11 = ComputeStatus.get(1);
+      vbox.setState(_get_11);
+    }
+  }
+  
+  public void machineFactory_Fusion(final Machine_VMware_Fusion vbox, final JsonNode node, final String state) {
+    JsonNode _get = node.get("Driver");
+    JsonNode _get_1 = _get.get("MachineName");
+    String _string = _get_1.toString();
+    String _replaceAll = _string.replaceAll("\"", "");
+    vbox.setName(_replaceAll);
+    JsonNode _get_2 = node.get("Driver");
+    JsonNode _get_3 = _get_2.get("Memory");
+    String _string_1 = _get_3.toString();
+    float _parseFloat = Float.parseFloat(_string_1);
+    vbox.setMemory(_parseFloat);
+    JsonNode _get_4 = node.get("Driver");
+    JsonNode _get_5 = _get_4.get("DiskSize");
+    String _string_2 = _get_5.toString();
+    int _parseInt = Integer.parseInt(_string_2);
+    vbox.setDisk_size(_parseInt);
+    try {
+      JsonNode _get_6 = node.get("Driver");
+      JsonNode _get_7 = _get_6.get("CPU");
+      String _string_3 = _get_7.toString();
+      int _parseInt_1 = Integer.parseInt(_string_3);
+      vbox.setCores(_parseInt_1);
+    } catch (final Throwable _t) {
+      if (_t instanceof NullPointerException) {
+        final NullPointerException e = (NullPointerException)_t;
+        JsonNode _get_8 = node.get("Driver");
+        JsonNode _get_9 = _get_8.get("CPUs");
+        String _string_4 = _get_9.toString();
+        int _parseInt_2 = Integer.parseInt(_string_4);
+        vbox.setCores(_parseInt_2);
+      } else {
+        throw Exceptions.sneakyThrow(_t);
+      }
+    }
+    JsonNode _get_10 = node.get("Driver");
+    JsonNode _get_11 = _get_10.get("Boot2DockerURL");
+    String _string_5 = _get_11.toString();
+    String _replaceAll_1 = _string_5.replaceAll("\"", "");
+    vbox.setBoot2docker_url(_replaceAll_1);
+    boolean _equals = Objects.equal(state, "Running");
+    if (_equals) {
+      ComputeStatus _get_12 = ComputeStatus.get(0);
+      vbox.setState(_get_12);
+    }
+    boolean _equals_1 = Objects.equal(state, "Stopped");
+    if (_equals_1) {
+      ComputeStatus _get_13 = ComputeStatus.get(1);
+      vbox.setState(_get_13);
     }
   }
   
@@ -902,7 +975,8 @@ public class ModelHandler {
     JsonNode _get_25 = _get_24.get("SecurityGroups");
     String _string_12 = _get_25.toString();
     String _replaceAll_12 = _string_12.replaceAll("\\[\"", "");
-    String _replaceAll_13 = _replaceAll_12.replaceAll("\"\\]", "");
+    String _replaceAll_13 = _replaceAll_12.replaceAll("\"\\]", 
+      "");
     String _replaceAll_14 = _replaceAll_13.replaceAll("\"", "");
     vbox.setSec_groups(_replaceAll_14);
     boolean _equals = Objects.equal(state, "Running");
@@ -985,7 +1059,7 @@ public class ModelHandler {
   }
   
   public List<org.occiware.clouddesigner.occi.docker.Container> buildContainer(final Machine machine, final List<Container> containers) {
-    final DockerContainerManager instance = new DockerContainerManager();
+    final DockerContainerManager instance = new DockerContainerManager(machine);
     List<org.occiware.clouddesigner.occi.docker.Container> containerList = CollectionLiterals.<org.occiware.clouddesigner.occi.docker.Container>newArrayList();
     for (final Container c : containers) {
       {
@@ -1005,9 +1079,11 @@ public class ModelHandler {
         String _id_2 = c.getId();
         modelContainer.setContainerid(_id_2);
         InspectContainerResponse.ContainerState _state = currentContainer.getState();
-        String _string = _state.toString();
-        ComputeStatus _byName = ComputeStatus.getByName(_string);
-        modelContainer.setState(_byName);
+        boolean _isRunning = _state.isRunning();
+        if (_isRunning) {
+          ComputeStatus _get = ComputeStatus.get(0);
+          modelContainer.setState(_get);
+        }
         containerList.add(modelContainer);
       }
     }

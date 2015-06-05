@@ -11,6 +11,8 @@
  */
 package org.occiware.clouddesigner.occi.docker.connector;
 
+import com.google.common.base.Preconditions;
+import org.apache.commons.lang.StringUtils;
 import org.occiware.clouddesigner.occi.docker.connector.MachineManager;
 import org.occiware.clouddesigner.occi.docker.impl.Machine_Microsoft_AzureImpl;
 import org.occiware.clouddesigner.occi.infrastructure.RestartMethod;
@@ -31,7 +33,18 @@ public class ExecutableMachine_Microsoft_Azure extends Machine_Microsoft_AzureIm
     }
     
     public void appendDriverParameters(final StringBuilder sb) {
-      throw new UnsupportedOperationException();
+      Preconditions.<String>checkNotNull(ExecutableMachine_Microsoft_Azure.this.subscription_id, "subscription_id is null");
+      Preconditions.<String>checkNotNull(ExecutableMachine_Microsoft_Azure.this.subscription_cert, "subscription_cert is null");
+      boolean _isNotBlank = StringUtils.isNotBlank(ExecutableMachine_Microsoft_Azure.this.subscription_id);
+      if (_isNotBlank) {
+        StringBuilder _append = sb.append(" --azure-subscription-id ");
+        _append.append(ExecutableMachine_Microsoft_Azure.this.subscription_id);
+      }
+      boolean _isNotBlank_1 = StringUtils.isNotBlank(ExecutableMachine_Microsoft_Azure.this.subscription_cert);
+      if (_isNotBlank_1) {
+        StringBuilder _append_1 = sb.append(" --azure-subscription-cert ");
+        _append_1.append(ExecutableMachine_Microsoft_Azure.this.subscription_cert);
+      }
     }
   };
   

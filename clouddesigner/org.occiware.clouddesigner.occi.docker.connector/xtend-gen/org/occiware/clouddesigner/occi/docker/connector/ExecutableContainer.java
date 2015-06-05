@@ -158,6 +158,11 @@ public class ExecutableContainer extends ContainerImpl {
     this.dockerContainerManager.createContainer(machine, this);
   }
   
+  public void removeContainer(final Machine machine) {
+    String _name = machine.getName();
+    this.dockerContainerManager.removeContainer(_name, this.name);
+  }
+  
   public org.occiware.clouddesigner.occi.docker.Container linkContainerToContainer(final org.occiware.clouddesigner.occi.docker.Container container) {
     DockerFactory _dockerFactory = DockerPackage.eINSTANCE.getDockerFactory();
     Link links = _dockerFactory.createLink();
