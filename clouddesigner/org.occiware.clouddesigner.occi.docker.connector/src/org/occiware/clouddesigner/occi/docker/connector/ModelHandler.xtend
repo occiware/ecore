@@ -467,7 +467,7 @@ class ModelHandler {
 		}
 	}
 
-	def Machine getModel(String machine, String state) {
+	def Machine getModel(String machine, String state, boolean machineExists) {
 		val instance = new DockerContainerManager
 		val node = DockerUtil.jsonify(DockerMachineManager.inspectHostCmd(Runtime.getRuntime, machine))
 		if (node != null) {
@@ -477,14 +477,7 @@ class ModelHandler {
 				var newvbox = vbox as Machine_VirtualBox
 
 				// Set values
-				machineFactory(newvbox, node, state)
-				newvbox.disk_size = Integer.parseInt(node.get("Driver").get("DiskSize").toString)
-				newvbox.boot2docker_url = node.get("Driver").get("Boot2DockerURL").toString.replaceAll("\"", "")
-				if (state == "Stopped") {
-					newvbox.state = ComputeStatus.get(1)
-				} else {
-					newvbox.state = ComputeStatus.get(0)
-				}
+				machineFactory_VBOX(newvbox, node, state)
 				LOGGER.info("Model setting: " + newvbox)
 			} else if (vbox instanceof Machine_Amazon_EC2) {
 				var newvbox = vbox as Machine_Amazon_EC2
@@ -502,7 +495,7 @@ class ModelHandler {
 				var newvbox = vbox as Machine_VMware_Fusion
 
 				// Set values
-				machineFactory(newvbox, node, state)
+				machineFactory_Fusion(newvbox, node, state)
 				LOGGER.info("Model setting: " + newvbox)
 			} else if (vbox instanceof Machine_Google_Compute_Engine) {
 				var newvbox = vbox as Machine_Google_Compute_Engine
@@ -547,28 +540,30 @@ class ModelHandler {
 				machineFactory(newvbox, node, state)
 				LOGGER.info("Model setting: " + newvbox)
 			}
+			if (!machineExists) { //ignore the machine if it exists.
 
-			// Check machine state
-			if (vbox.state.toString.equalsIgnoreCase("active")) {
+				// Check machine state
+				if (vbox.state.toString.equalsIgnoreCase("active")) {
 
-				// Introspect containers
-				val List<com.github.dockerjava.api.model.Container> containers = instance.listContainer(vbox.name)
-				if (containers != null) {
-					var modelContainers = buildContainer(vbox, containers)
-					for (Container container : modelContainers) {
-						linkContainerToMachine(container, vbox)
-						val inspectContainer = instance.inspectContainer(vbox, container.id)
-						if (!inspectContainer.hostConfig.links.isEmpty) {
-							for (Link link : inspectContainer.hostConfig.links) {
-								linkContainerToContainer(container, getContainerByName(modelContainers, link.name))
+					// Introspect containers
+					val List<com.github.dockerjava.api.model.Container> containers = instance.listContainer(vbox.name)
+					if (containers != null) {
+						var modelContainers = buildContainer(vbox, containers)
+						for (Container container : modelContainers) {
+							linkContainerToMachine(container, vbox)
+							val inspectContainer = instance.inspectContainer(vbox, container.id)
+							if (!inspectContainer.hostConfig.links.isEmpty) {
+								for (Link link : inspectContainer.hostConfig.links) {
+									linkContainerToContainer(container, getContainerByName(modelContainers, link.name))
 
+								}
 							}
 						}
 					}
+
 				}
 
 			}
-
 			return vbox
 		}
 	}
@@ -592,7 +587,40 @@ class ModelHandler {
 			vbox.state = ComputeStatus.get(1)
 		}
 	}
-	
+
+	def machineFactory_VBOX(Machine_VirtualBox vbox, JsonNode node, String state) {
+		vbox.name = node.get("Driver").get("MachineName").toString.replaceAll("\"", "")
+		vbox.memory = Float.parseFloat(node.get("Driver").get("Memory").toString)
+		vbox.disk_size = Integer.parseInt(node.get("Driver").get("DiskSize").toString)
+		vbox.cores = Integer.parseInt(node.get("Driver").get("CPU").toString)
+		vbox.boot2docker_url = node.get("Driver").get("Boot2DockerURL").toString.replaceAll("\"", "")
+
+		if (state == "Running") {
+			vbox.state = ComputeStatus.get(0)
+		}
+		if (state == "Stopped") {
+			vbox.state = ComputeStatus.get(1)
+		}
+	}
+
+	def machineFactory_Fusion(Machine_VMware_Fusion vbox, JsonNode node, String state) {
+		vbox.name = node.get("Driver").get("MachineName").toString.replaceAll("\"", "")
+		vbox.memory = Float.parseFloat(node.get("Driver").get("Memory").toString)
+		vbox.disk_size = Integer.parseInt(node.get("Driver").get("DiskSize").toString)
+		try {
+			vbox.cores = Integer.parseInt(node.get("Driver").get("CPU").toString)
+		} catch (NullPointerException e) {
+			vbox.cores = Integer.parseInt(node.get("Driver").get("CPUs").toString)
+		}
+		vbox.boot2docker_url = node.get("Driver").get("Boot2DockerURL").toString.replaceAll("\"", "")
+		if (state == "Running") {
+			vbox.state = ComputeStatus.get(0)
+		}
+		if (state == "Stopped") {
+			vbox.state = ComputeStatus.get(1)
+		}
+	}
+
 	def machineFactory_OpenStack(Machine_OpenStack vbox, JsonNode node, String state) {
 		vbox.name = node.get("Driver").get("MachineName").toString.replaceAll("\"", "")
 		vbox.auth_url = node.get("Driver").get("AuthUrl").toString.replaceAll("\"", "")
@@ -606,7 +634,8 @@ class ModelHandler {
 		vbox.floatingip_pool = node.get("Driver").get("FloatingIpPool").toString.replaceAll("\"", "")
 		vbox.image_id = node.get("Driver").get("ImageId").toString.replaceAll("\"", "")
 		vbox.net_id = node.get("Driver").get("NetworkId").toString.replaceAll("\"", "")
-		vbox.sec_groups = node.get("Driver").get("SecurityGroups").toString.replaceAll("\\[\"", "").replaceAll("\"\\]", "").replaceAll("\"", "")
+		vbox.sec_groups = node.get("Driver").get("SecurityGroups").toString.replaceAll("\\[\"", "").replaceAll("\"\\]",
+			"").replaceAll("\"", "")
 		if (state == "Running") {
 			vbox.state = ComputeStatus.get(0)
 		}
@@ -666,7 +695,7 @@ class ModelHandler {
 	}
 
 	def List<Container> buildContainer(Machine machine, List<com.github.dockerjava.api.model.Container> containers) {
-		val instance = new DockerContainerManager
+		val instance = new DockerContainerManager(machine)
 
 		// Retrieve the default factory singleton
 		var List<Container> containerList = newArrayList
@@ -680,7 +709,9 @@ class ModelHandler {
 			modelContainer.image = currentContainer.imageId
 			modelContainer.command = c.command
 			modelContainer.containerid = c.id
-			modelContainer.state = ComputeStatus.getByName(currentContainer.state.toString)
+			if(currentContainer.state.running){
+				modelContainer.state = ComputeStatus.get(0)
+			}
 			containerList.add(modelContainer)
 		}
 
