@@ -71,6 +71,7 @@ import org.slf4j.Logger
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerObserver
 import org.occiware.clouddesigner.occi.docker.Container
 import org.apache.commons.lang.StringUtils
+import java.util.Collections
 
 /**
  * This class overrides the generated EMF factory of the Docker package.
@@ -588,7 +589,13 @@ class ExecutableContainer extends ContainerImpl {
 
 		// Download image
 		dockerContainerManager.pullImage(machine, this.image)
+
+		// Create the container
 		dockerContainerManager.createContainer(machine, this)
+	}
+
+	def void removeContainer(Machine machine) {
+		dockerContainerManager.removeContainer(machine.name, this.name)
 	}
 
 	def org.occiware.clouddesigner.occi.docker.Container linkContainerToContainer(
@@ -893,16 +900,69 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 
 	def void synchronize() {
 
-		// compare
+		// Get all hosts in the real environment
 		val hosts = DockerUtil.getHosts
 		val instanceMH = new ModelHandler
-		val instance = new DockerContainerManager(this.compute)
-		val machine = instanceMH.getModel(this.compute.name, hosts.get(this.compute.name))
-		this.compute.state = machine.state
 
-	/* 
+		val instance = new DockerContainerManager(this.compute)
+		val machine = instanceMH.getModel(this.compute.name, hosts.get(this.compute.name), false)
+		this.compute.state = machine.state
 		if (this.compute.state.toString.equalsIgnoreCase("active")) {
 
+			if (this.compute.links.size > 0) {
+
+				// Create the containers without create graph
+				if (!this.linkFound) {
+					var containersInModel = new ArrayList<String>
+					for (Link link : compute.links) {
+						val contains = link as Contains
+						if (contains.target instanceof Container) {
+							val con = contains.target as ExecutableContainer
+							containersInModel.add(con.name)
+							if (!containerIsDeployed(con.name, this.machine)) {
+
+								// Create container
+								LOGGER.info("Creating the container: " + con.name)
+								con.createContainer(this.machine)
+								LOGGER.info("The container is created")
+							}
+						}
+					}
+
+					// Remove the containers
+					var containersToRemove = containerInReal(this.compute.name)
+					if (!containersToRemove.empty) {
+						containersToRemove.removeAll(containersInModel)
+						for (String id : containersToRemove) {
+							instance.removeContainer(this.compute.name, id)
+						}
+
+					}
+				} else {
+					var containersInModel = new ArrayList<String>
+					for (Container c : this.deploymentOrder) {
+						val con = c as ExecutableContainer
+						containersInModel.add(c.name)
+						if (!containerIsDeployed(con.name, compute)) {
+
+							// Create container
+							con.createContainer(this.machine, this.containerDependency)
+						}
+					}
+
+					// Remove the containers
+					var containersToRemove = containerInReal(this.compute.name)
+					if (!containersToRemove.empty) {
+						containersToRemove.removeAll(containersInModel)
+						for (String id : containersToRemove) {
+							instance.removeContainer(this.compute.name, id)
+						}
+					}
+
+				}
+			}
+
+		/*
 			// Introspect containers
 			val contains = instance.listContainer(machine)
 			if (contains != null) {
@@ -924,7 +984,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 
 				}
 			}
-
+			 */
 		} else {
 			if (compute.links.size > 0) {
 
@@ -933,16 +993,19 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 
 			}
 		}
-		*/
+
 	}
 
 	def boolean linkFound() {
 		val List<org.occiware.clouddesigner.occi.docker.Container> containers = this.containers
 		var boolean link = false
 		for (org.occiware.clouddesigner.occi.docker.Container c : containers) {
-			if (c.links.size > 0) {
-				link = true
-				return link
+			if (c != null) {
+				if (c.links.size > 0) {
+					link = true
+					return link
+				}
+
 			}
 		}
 		return link
@@ -953,8 +1016,9 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 		var Graph<org.occiware.clouddesigner.occi.docker.Container> graph = new Graph<org.occiware.clouddesigner.occi.docker.Container>
 
 		for (Link l : compute.links) {
-			val container = l.target as org.occiware.clouddesigner.occi.docker.Container
-			if (!container.links.isEmpty) {
+			val contains = l as Contains
+			if (contains.target instanceof Container) {
+				val container = contains.target as org.occiware.clouddesigner.occi.docker.Container
 				for (Link cl : container.links) {
 					if (cl.target instanceof org.occiware.clouddesigner.occi.docker.Container) {
 						graph.addDependency(container, (cl.target as org.occiware.clouddesigner.occi.docker.Container))
@@ -962,7 +1026,20 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 							(cl.target as org.occiware.clouddesigner.occi.docker.Container).name)
 					}
 				}
+
 			}
+
+		//			val container = contains.target as org.occiware.clouddesigner.occi.docker.Container
+		//			//!container.links.isEmpty
+		//			if (container.links != null) {
+		//				for (Link cl : container.links) {
+		//					if (cl.target instanceof org.occiware.clouddesigner.occi.docker.Container) {
+		//						graph.addDependency(container, (cl.target as org.occiware.clouddesigner.occi.docker.Container))
+		//						this.containerDependency.put(container.name,
+		//							(cl.target as org.occiware.clouddesigner.occi.docker.Container).name)
+		//					}
+		//				}
+		//			}
 		}
 
 		for (GraphNode<org.occiware.clouddesigner.occi.docker.Container> c : graph.deploymentOrder) {
@@ -983,6 +1060,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 	def List<org.occiware.clouddesigner.occi.docker.Container> getContainers() {
 		val List<org.occiware.clouddesigner.occi.docker.Container> containers = newArrayList
 		compute.links.forEach[elt|containers.add((elt.target as org.occiware.clouddesigner.occi.docker.Container))]
+		containers.removeAll(Collections.singleton(null))
 		return containers
 	}
 
@@ -1016,6 +1094,26 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 			}
 		}
 		return false
+	}
+
+	def List<String> containerInReal(String machineName) {
+		var containers = new ArrayList<String>
+		val listContainers = dockerContainerManager.listContainer(machineName)
+		for (com.github.dockerjava.api.model.Container c : listContainers) {
+			var String contName = null
+			val name = c.names.get(0)
+			val linkName = "LinkTo"
+			val index = name.indexOf(linkName)
+			if (index == -1) {
+				contName = name.replaceAll("/", "")
+			} else {
+
+				// index = index + linkName.length
+				contName = name.substring(index + linkName.length)
+			}
+			containers.add(contName)
+		}
+		return containers
 	}
 
 	/**
@@ -2069,8 +2167,9 @@ class ExecutableDockerModel {
 		val instanceMH = new ModelHandler
 		LOGGER.info(hosts.toString)
 		for (Map.Entry<String, String> entry : hosts.entrySet) {
-			var machine = instanceMH.getModel(entry.getKey(), entry.getValue())
-			if (!containMachine(machine)) {
+			val machineExistInModeler = containMachine(entry.getKey())
+			if (!machineExistInModeler) {
+				var machine = instanceMH.getModel(entry.getKey(), entry.getValue(), machineExistInModeler)
 				this.configuration.resources.add(machine)
 				if (machine.links != null) {
 					machine.links.forEach[elt|
@@ -2081,10 +2180,10 @@ class ExecutableDockerModel {
 		}
 	}
 
-	def boolean containMachine(Machine machine) {
+	def boolean containMachine(String machineName) {
 		for (Resource r : this.configuration.resources) {
 			if (r instanceof Machine) {
-				if ((r as Machine).name == machine.name) {
+				if ((r as Machine).name == machineName) {
 					return true
 				}
 			}
