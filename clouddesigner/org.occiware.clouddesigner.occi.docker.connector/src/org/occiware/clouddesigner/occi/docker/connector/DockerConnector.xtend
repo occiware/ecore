@@ -498,7 +498,10 @@ class ExecutableContainer extends ContainerImpl {
 	// Initialize logger for ExecutableContainer.
 	private static Logger LOGGER = LoggerFactory.getLogger(typeof(ExecutableContainer))
 	var Map<DockerClient, CreateContainerResponse> map = null
-	protected DockerContainerManager dockerContainerManager = new DockerContainerManager
+	protected static DockerContainerManager dockerContainerManager = null
+
+	// This is a cache of containers current machine
+	protected static Map<String, Machine> listCurrentMachine = new HashMap
 
 	/**
 	 * Docker containers have a state machine.
@@ -513,8 +516,10 @@ class ExecutableContainer extends ContainerImpl {
 			val machine = getCurrentMachine
 			if (machine.state.toString.equalsIgnoreCase("active")) {
 				try {
+					if (dockerContainerManager == null) {
+						dockerContainerManager = new DockerContainerManager(machine)
+					}
 					dockerContainerManager.startContainer(machine, this.compute.name)
-
 				} catch (Exception e) {
 					createContainer(machine)
 					dockerContainerManager.startContainer(machine, this.compute.name)
@@ -531,6 +536,9 @@ class ExecutableContainer extends ContainerImpl {
 			if (machine.state.toString.equalsIgnoreCase("active")) {
 				if (this.compute.state.toString.equalsIgnoreCase("active")) {
 					try {
+						if (dockerContainerManager == null) {
+							dockerContainerManager = new DockerContainerManager(machine)
+						}
 						dockerContainerManager.stopContainer(machine, this.compute.name)
 					} catch (Exception e) {
 						this.compute.state = ComputeStatus.INACTIVE
@@ -577,6 +585,9 @@ class ExecutableContainer extends ContainerImpl {
 
 		// Set dockerClient
 		var Map<DockerClient, CreateContainerResponse> result = new HashMap<DockerClient, CreateContainerResponse>
+		if (dockerContainerManager == null) {
+			dockerContainerManager = new DockerContainerManager
+		}
 
 		// Download image
 		dockerContainerManager.pullImage(machine, this.image)
@@ -586,6 +597,9 @@ class ExecutableContainer extends ContainerImpl {
 	}
 
 	def void createContainer(Machine machine) {
+		if (dockerContainerManager == null) {
+			dockerContainerManager = new DockerContainerManager
+		}
 
 		// Download image
 		dockerContainerManager.pullImage(machine, this.image)
@@ -595,6 +609,9 @@ class ExecutableContainer extends ContainerImpl {
 	}
 
 	def void removeContainer(Machine machine) {
+		if (dockerContainerManager == null) {
+			dockerContainerManager = new DockerContainerManager
+		}
 		dockerContainerManager.removeContainer(machine.name, this.name)
 	}
 
@@ -624,13 +641,27 @@ class ExecutableContainer extends ContainerImpl {
 	}
 
 	def Machine getCurrentMachine() {
+
+		// Checks if the current machine is cached
+		if (listCurrentMachine.containsKey(this.name)) {
+			return listCurrentMachine.get(this.name)
+		}
+
+		// get the current machine
 		for (EObject eo : this.eContainer.eContents) {
 			if (eo instanceof Machine) {
 				val machine = eo as Machine
 				for (Link l : machine.links) {
-					if ((l.target as ExecutableContainer).id == this.id) {
-						return machine
+					val contains = l as Contains
+					if (contains.target instanceof Container) {
+						if ((l.target as ExecutableContainer).id == this.id) {
+
+							// Update the cache
+							listCurrentMachine.put(this.name, machine)
+							return machine
+						}
 					}
+
 				}
 			}
 		}
@@ -769,18 +800,23 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 				// Start the containers without create graph
 				if (!this.linkFound) {
 					for (Link link : compute.links) {
-						val con = link.target as ExecutableContainer
-						if (!containerIsDeployed(con.name, this.machine)) {
+						val contains = link as Contains
+						if (contains.target instanceof Container) {
+							val con = contains.target as ExecutableContainer
 
-							// Create container
-							con.createContainer(this.machine)
+							// The container does not exists in the machine
+							if (!containerIsDeployed(con.name, this.machine)) {
 
-							// Start container
-							con.start
-						} else {
+								// Create container
+								con.createContainer(this.machine)
 
-							// Start container
-							con.start
+								// Start container
+								con.start
+							} else { // The conatiner exists
+
+								// Start container
+								con.start
+							}
 						}
 					}
 				} else { // Create the graph
@@ -817,25 +853,32 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 					// Start the containers without create graph
 					if (!this.linkFound) {
 						for (Link link : compute.links) {
-							val con = link.target as ExecutableContainer
-							if (!containerIsDeployed(con.name, this.machine)) {
+							val contains = link as Contains
+							if (contains.target instanceof Container) {
+								val con = contains.target as ExecutableContainer
 
-								// Create container
-								LOGGER.info("Creating the container: " + con.name)
-								con.createContainer(this.machine)
-								LOGGER.info("The container is created")
+								// The container does not exists in the machine
+								if (!containerIsDeployed(con.name, this.machine)) {
 
-								// Start container
-								con.start
-							} else {
+									// Create container
+									LOGGER.info("Creating the container: " + con.name)
+									con.createContainer(this.machine)
+									LOGGER.info("The container is created")
 
-								// Start container
-								con.start
+									// Start container
+									con.start
+								} else { // The machine exists
+
+									// Start container
+									con.start
+								}
 							}
 						}
 					} else {
 						for (Container c : this.deploymentOrder) {
 							val con = c as ExecutableContainer
+
+							// The container does not exists in the machine
 							if (!containerIsDeployed(con.name, compute)) {
 
 								// Create container
@@ -843,7 +886,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 
 								// Start container
 								con.start
-							} else {
+							} else { // The container exists
 
 								// Start container
 								con.start
@@ -859,23 +902,28 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 					// Start the containers without create graph
 					if (!this.linkFound) {
 						for (Link link : compute.links) {
-							val con = link.target as ExecutableContainer
-							if (!containerIsDeployed(con.name, this.machine)) {
+							val contains = link as Contains
+							if (contains.target instanceof Container) {
+								val con = contains.target as ExecutableContainer
+								if (!containerIsDeployed(con.name, this.machine)) {
 
-								// Create container
-								con.createContainer(this.machine)
+									// Create container
+									con.createContainer(this.machine)
 
-								// Start container
-								con.start
-							} else {
+									// Start container
+									con.start
+								} else {
 
-								// Start container
-								con.start
+									// Start container
+									con.start
+								}
 							}
 						}
 					} else {
 						for (Container c : this.deploymentOrder) {
 							val con = c as ExecutableContainer
+
+							// The container does not exists in the machine
 							if (!containerIsDeployed(con.name, compute)) {
 
 								// Create container
@@ -883,7 +931,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 
 								// Start container
 								con.start
-							} else {
+							} else { // The container exists
 
 								// Start container
 								con.start
@@ -943,6 +991,8 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 					for (Container c : this.deploymentOrder) {
 						val con = c as ExecutableContainer
 						containersInModel.add(c.name)
+
+						// The container does not exists in the machine
 						if (!containerIsDeployed(con.name, compute)) {
 
 							// Create container
@@ -1028,18 +1078,6 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 				}
 
 			}
-
-		//			val container = contains.target as org.occiware.clouddesigner.occi.docker.Container
-		//			//!container.links.isEmpty
-		//			if (container.links != null) {
-		//				for (Link cl : container.links) {
-		//					if (cl.target instanceof org.occiware.clouddesigner.occi.docker.Container) {
-		//						graph.addDependency(container, (cl.target as org.occiware.clouddesigner.occi.docker.Container))
-		//						this.containerDependency.put(container.name,
-		//							(cl.target as org.occiware.clouddesigner.occi.docker.Container).name)
-		//					}
-		//				}
-		//			}
 		}
 
 		for (GraphNode<org.occiware.clouddesigner.occi.docker.Container> c : graph.deploymentOrder) {
