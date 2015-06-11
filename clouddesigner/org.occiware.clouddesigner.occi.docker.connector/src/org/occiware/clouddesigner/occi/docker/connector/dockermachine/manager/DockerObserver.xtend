@@ -24,6 +24,7 @@ import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
 import static org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerObserver.*
+import org.apache.commons.lang.StringUtils
 
 class DockerObserver {
 
@@ -74,12 +75,15 @@ class DockerObserver {
 				public override notifyChanged(Notification notification) {
 					LOGGER.info("The Container has Changed")
 					var newContainer = notification.notifier as Container
-					val containerId = getContainerId(newContainer.name, machine)
+					var String containerId = null
 					LOGGER.info("Ancienne Valeur : " + notification.oldValue)
 					LOGGER.info("Nouvelle Valeur : " + notification.newValue)
 
 					// CPU Changes
 					if (!cpContainer.cores.equals(newContainer.cores)) {
+						if (!StringUtils.isNotBlank(containerId)) {
+							containerId = getContainerId(newContainer.name, machine)
+						}
 						val cpuManager = new CPUManager
 
 						// Update CPU value
@@ -89,6 +93,10 @@ class DockerObserver {
 
 					// CPU Frequency Changes
 					if (!cpContainer.speed.equals(newContainer.speed)) {
+						if (!StringUtils.isNotBlank(containerId)) {
+							containerId = getContainerId(newContainer.name, machine)
+						}
+
 						val cpuManager = new CPUManager
 
 						// Update CPU value
@@ -99,6 +107,10 @@ class DockerObserver {
 
 					// Memory changes
 					if (!cpContainer.memory.equals(newContainer.memory)) {
+						if (!StringUtils.isNotBlank(containerId)) {
+							containerId = getContainerId(newContainer.name, machine)
+						}
+
 						val memoryManager = new MemoryManager
 
 						// Update Memory value
