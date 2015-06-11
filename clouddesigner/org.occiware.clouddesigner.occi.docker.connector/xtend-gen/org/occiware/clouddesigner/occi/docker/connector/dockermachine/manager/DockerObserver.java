@@ -11,6 +11,7 @@
 package org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager;
 
 import java.util.List;
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
@@ -83,8 +84,7 @@ public class DockerObserver {
           DockerObserver.LOGGER.info("The Container has Changed");
           Object _notifier = notification.getNotifier();
           Container newContainer = ((Container) _notifier);
-          String _name = newContainer.getName();
-          final String containerId = DockerObserver.this.getContainerId(_name, machine);
+          String containerId = null;
           Object _oldValue = notification.getOldValue();
           String _plus = ("Ancienne Valeur : " + _oldValue);
           DockerObserver.LOGGER.info(_plus);
@@ -96,6 +96,13 @@ public class DockerObserver {
           boolean _equals = Integer.valueOf(_cores).equals(Integer.valueOf(_cores_1));
           boolean _not = (!_equals);
           if (_not) {
+            boolean _isNotBlank = StringUtils.isNotBlank(containerId);
+            boolean _not_1 = (!_isNotBlank);
+            if (_not_1) {
+              String _name = newContainer.getName();
+              String _containerId = DockerObserver.this.getContainerId(_name, machine);
+              containerId = _containerId;
+            }
             final CPUManager cpuManager = new CPUManager();
             int _cores_2 = container.getCores();
             DockerObserver.cpContainer.setCores(_cores_2);
@@ -106,8 +113,15 @@ public class DockerObserver {
           float _speed = DockerObserver.cpContainer.getSpeed();
           float _speed_1 = newContainer.getSpeed();
           boolean _equals_1 = Float.valueOf(_speed).equals(Float.valueOf(_speed_1));
-          boolean _not_1 = (!_equals_1);
-          if (_not_1) {
+          boolean _not_2 = (!_equals_1);
+          if (_not_2) {
+            boolean _isNotBlank_1 = StringUtils.isNotBlank(containerId);
+            boolean _not_3 = (!_isNotBlank_1);
+            if (_not_3) {
+              String _name_1 = newContainer.getName();
+              String _containerId_1 = DockerObserver.this.getContainerId(_name_1, machine);
+              containerId = _containerId_1;
+            }
             final CPUManager cpuManager_1 = new CPUManager();
             int _cores_4 = container.getCores();
             DockerObserver.cpContainer.setCores(_cores_4);
@@ -119,8 +133,15 @@ public class DockerObserver {
           float _memory = DockerObserver.cpContainer.getMemory();
           float _memory_1 = newContainer.getMemory();
           boolean _equals_2 = Float.valueOf(_memory).equals(Float.valueOf(_memory_1));
-          boolean _not_2 = (!_equals_2);
-          if (_not_2) {
+          boolean _not_4 = (!_equals_2);
+          if (_not_4) {
+            boolean _isNotBlank_2 = StringUtils.isNotBlank(containerId);
+            boolean _not_5 = (!_isNotBlank_2);
+            if (_not_5) {
+              String _name_2 = newContainer.getName();
+              String _containerId_2 = DockerObserver.this.getContainerId(_name_2, machine);
+              containerId = _containerId_2;
+            }
             final MemoryManager memoryManager = new MemoryManager();
             float _memory_2 = container.getMemory();
             DockerObserver.cpContainer.setMemory(_memory_2);

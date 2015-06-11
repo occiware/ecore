@@ -69,6 +69,8 @@ import org.slf4j.LoggerFactory;
 public class DockerContainerManager {
   private static DockerClient dockerClient = null;
   
+  private static String currentMachine = null;
+  
   private Map<String, List<String>> images = new HashMap<String, List<String>>();
   
   private static Logger LOGGER = LoggerFactory.getLogger(DockerContainerManager.class);
@@ -93,6 +95,15 @@ public class DockerContainerManager {
       String _name = machine.getName();
       DockerClient _setConfig = this.setConfig(_name);
       DockerContainerManager.dockerClient = _setConfig;
+    } else {
+      String _name_1 = machine.getName();
+      boolean _equalsIgnoreCase = DockerContainerManager.currentMachine.equalsIgnoreCase(_name_1);
+      boolean _not = (!_equalsIgnoreCase);
+      if (_not) {
+        String _name_2 = machine.getName();
+        DockerClient _setConfig_1 = this.setConfig(_name_2);
+        DockerContainerManager.dockerClient = _setConfig_1;
+      }
     }
     Map<DockerClient, CreateContainerResponse> result = new LinkedHashMap<DockerClient, CreateContainerResponse>();
     final CreateContainerCmd create = this.containerFactory(container, DockerContainerManager.dockerClient);
@@ -107,6 +118,15 @@ public class DockerContainerManager {
       String _name = machine.getName();
       DockerClient _setConfig = this.setConfig(_name);
       DockerContainerManager.dockerClient = _setConfig;
+    } else {
+      String _name_1 = machine.getName();
+      boolean _equalsIgnoreCase = DockerContainerManager.currentMachine.equalsIgnoreCase(_name_1);
+      boolean _not = (!_equalsIgnoreCase);
+      if (_not) {
+        String _name_2 = machine.getName();
+        DockerClient _setConfig_1 = this.setConfig(_name_2);
+        DockerContainerManager.dockerClient = _setConfig_1;
+      }
     }
     Map<DockerClient, CreateContainerResponse> result = new LinkedHashMap<DockerClient, CreateContainerResponse>();
     final CreateContainerCmd create = this.containerFactory(container, DockerContainerManager.dockerClient, containerDependency);
@@ -120,6 +140,13 @@ public class DockerContainerManager {
     if (_equals) {
       DockerClient _setConfig = this.setConfig(machineName);
       DockerContainerManager.dockerClient = _setConfig;
+    } else {
+      boolean _equalsIgnoreCase = DockerContainerManager.currentMachine.equalsIgnoreCase(machineName);
+      boolean _not = (!_equalsIgnoreCase);
+      if (_not) {
+        DockerClient _setConfig_1 = this.setConfig(machineName);
+        DockerContainerManager.dockerClient = _setConfig_1;
+      }
     }
     RemoveContainerCmd _removeContainerCmd = DockerContainerManager.dockerClient.removeContainerCmd(containerId);
     _removeContainerCmd.exec();
@@ -468,14 +495,22 @@ public class DockerContainerManager {
   }
   
   public InspectContainerResponse inspectContainer(final Machine machine, final String containerId) {
-    DockerClient dockerClient = null;
-    boolean _equals = Objects.equal(dockerClient, null);
+    boolean _equals = Objects.equal(DockerContainerManager.dockerClient, null);
     if (_equals) {
       String _name = machine.getName();
       DockerClient _setConfig = this.setConfig(_name);
-      dockerClient = _setConfig;
+      DockerContainerManager.dockerClient = _setConfig;
+    } else {
+      String _name_1 = machine.getName();
+      boolean _equalsIgnoreCase = DockerContainerManager.currentMachine.equalsIgnoreCase(_name_1);
+      boolean _not = (!_equalsIgnoreCase);
+      if (_not) {
+        String _name_2 = machine.getName();
+        DockerClient _setConfig_1 = this.setConfig(_name_2);
+        DockerContainerManager.dockerClient = _setConfig_1;
+      }
     }
-    InspectContainerCmd _inspectContainerCmd = dockerClient.inspectContainerCmd(containerId);
+    InspectContainerCmd _inspectContainerCmd = DockerContainerManager.dockerClient.inspectContainerCmd(containerId);
     final InspectContainerResponse inspectContainerResponse = _inspectContainerCmd.exec();
     return inspectContainerResponse;
   }
@@ -483,17 +518,21 @@ public class DockerContainerManager {
   public Void startContainer(final Machine machine, final Container container) {
     Void _xblockexpression = null;
     {
-      DockerClient dockerClient = null;
       boolean _notEquals = (!Objects.equal(DockerContainerManager.dockerClient, null));
       if (_notEquals) {
-        dockerClient = DockerContainerManager.dockerClient;
+        DockerContainerManager.dockerClient = DockerContainerManager.dockerClient;
       } else {
         String _name = machine.getName();
-        DockerClient _setConfig = this.setConfig(_name);
-        dockerClient = _setConfig;
+        boolean _equalsIgnoreCase = DockerContainerManager.currentMachine.equalsIgnoreCase(_name);
+        boolean _not = (!_equalsIgnoreCase);
+        if (_not) {
+          String _name_1 = machine.getName();
+          DockerClient _setConfig = this.setConfig(_name_1);
+          DockerContainerManager.dockerClient = _setConfig;
+        }
       }
       String _id = container.getId();
-      StartContainerCmd _startContainerCmd = dockerClient.startContainerCmd(_id);
+      StartContainerCmd _startContainerCmd = DockerContainerManager.dockerClient.startContainerCmd(_id);
       _xblockexpression = _startContainerCmd.exec();
     }
     return _xblockexpression;
@@ -502,14 +541,22 @@ public class DockerContainerManager {
   public Void startContainer(final Machine machine, final String containerId) {
     Void _xblockexpression = null;
     {
-      DockerClient dockerClient = null;
-      boolean _equals = Objects.equal(dockerClient, null);
+      boolean _equals = Objects.equal(DockerContainerManager.dockerClient, null);
       if (_equals) {
         String _name = machine.getName();
         DockerClient _setConfig = this.setConfig(_name);
-        dockerClient = _setConfig;
+        DockerContainerManager.dockerClient = _setConfig;
+      } else {
+        String _name_1 = machine.getName();
+        boolean _equalsIgnoreCase = DockerContainerManager.currentMachine.equalsIgnoreCase(_name_1);
+        boolean _not = (!_equalsIgnoreCase);
+        if (_not) {
+          String _name_2 = machine.getName();
+          DockerClient _setConfig_1 = this.setConfig(_name_2);
+          DockerContainerManager.dockerClient = _setConfig_1;
+        }
       }
-      StartContainerCmd _startContainerCmd = dockerClient.startContainerCmd(containerId);
+      StartContainerCmd _startContainerCmd = DockerContainerManager.dockerClient.startContainerCmd(containerId);
       _xblockexpression = _startContainerCmd.exec();
     }
     return _xblockexpression;
@@ -518,15 +565,23 @@ public class DockerContainerManager {
   public Void stopContainer(final Machine machine, final Container container) {
     Void _xblockexpression = null;
     {
-      DockerClient dockerClient = null;
-      boolean _equals = Objects.equal(dockerClient, null);
+      boolean _equals = Objects.equal(DockerContainerManager.dockerClient, null);
       if (_equals) {
         String _name = machine.getName();
         DockerClient _setConfig = this.setConfig(_name);
-        dockerClient = _setConfig;
+        DockerContainerManager.dockerClient = _setConfig;
+      } else {
+        String _name_1 = machine.getName();
+        boolean _equalsIgnoreCase = DockerContainerManager.currentMachine.equalsIgnoreCase(_name_1);
+        boolean _not = (!_equalsIgnoreCase);
+        if (_not) {
+          String _name_2 = machine.getName();
+          DockerClient _setConfig_1 = this.setConfig(_name_2);
+          DockerContainerManager.dockerClient = _setConfig_1;
+        }
       }
       String _id = container.getId();
-      StopContainerCmd _stopContainerCmd = dockerClient.stopContainerCmd(_id);
+      StopContainerCmd _stopContainerCmd = DockerContainerManager.dockerClient.stopContainerCmd(_id);
       _xblockexpression = _stopContainerCmd.exec();
     }
     return _xblockexpression;
@@ -535,14 +590,22 @@ public class DockerContainerManager {
   public Void stopContainer(final Machine machine, final String containerId) {
     Void _xblockexpression = null;
     {
-      DockerClient dockerClient = null;
-      boolean _equals = Objects.equal(dockerClient, null);
+      boolean _equals = Objects.equal(DockerContainerManager.dockerClient, null);
       if (_equals) {
         String _name = machine.getName();
         DockerClient _setConfig = this.setConfig(_name);
-        dockerClient = _setConfig;
+        DockerContainerManager.dockerClient = _setConfig;
+      } else {
+        String _name_1 = machine.getName();
+        boolean _equalsIgnoreCase = DockerContainerManager.currentMachine.equalsIgnoreCase(_name_1);
+        boolean _not = (!_equalsIgnoreCase);
+        if (_not) {
+          String _name_2 = machine.getName();
+          DockerClient _setConfig_1 = this.setConfig(_name_2);
+          DockerContainerManager.dockerClient = _setConfig_1;
+        }
       }
-      StopContainerCmd _stopContainerCmd = dockerClient.stopContainerCmd(containerId);
+      StopContainerCmd _stopContainerCmd = DockerContainerManager.dockerClient.stopContainerCmd(containerId);
       _xblockexpression = _stopContainerCmd.exec();
     }
     return _xblockexpression;
@@ -551,57 +614,79 @@ public class DockerContainerManager {
   public Integer waitContainer(final Machine machine, final Container container) {
     Integer _xblockexpression = null;
     {
-      DockerClient dockerClient = null;
-      boolean _equals = Objects.equal(dockerClient, null);
+      boolean _equals = Objects.equal(DockerContainerManager.dockerClient, null);
       if (_equals) {
         String _name = machine.getName();
         DockerClient _setConfig = this.setConfig(_name);
-        dockerClient = _setConfig;
+        DockerContainerManager.dockerClient = _setConfig;
+      } else {
+        String _name_1 = machine.getName();
+        boolean _equalsIgnoreCase = DockerContainerManager.currentMachine.equalsIgnoreCase(_name_1);
+        boolean _not = (!_equalsIgnoreCase);
+        if (_not) {
+          String _name_2 = machine.getName();
+          DockerClient _setConfig_1 = this.setConfig(_name_2);
+          DockerContainerManager.dockerClient = _setConfig_1;
+        }
       }
       String _id = container.getId();
-      WaitContainerCmd _waitContainerCmd = dockerClient.waitContainerCmd(_id);
+      WaitContainerCmd _waitContainerCmd = DockerContainerManager.dockerClient.waitContainerCmd(_id);
       _xblockexpression = _waitContainerCmd.exec();
     }
     return _xblockexpression;
   }
   
   public List<com.github.dockerjava.api.model.Container> listContainer(final String machineName) {
-    DockerClient dockerClient = null;
-    boolean _equals = Objects.equal(dockerClient, null);
+    boolean _equals = Objects.equal(DockerContainerManager.dockerClient, null);
     if (_equals) {
       DockerClient _setConfig = this.setConfig(machineName);
-      dockerClient = _setConfig;
+      DockerContainerManager.dockerClient = _setConfig;
+    } else {
+      boolean _equalsIgnoreCase = DockerContainerManager.currentMachine.equalsIgnoreCase(machineName);
+      boolean _not = (!_equalsIgnoreCase);
+      if (_not) {
+        DockerClient _setConfig_1 = this.setConfig(machineName);
+        DockerContainerManager.dockerClient = _setConfig_1;
+      }
     }
-    ListContainersCmd _listContainersCmd = dockerClient.listContainersCmd();
+    ListContainersCmd _listContainersCmd = DockerContainerManager.dockerClient.listContainersCmd();
     ListContainersCmd _withShowAll = _listContainersCmd.withShowAll(true);
     final List<com.github.dockerjava.api.model.Container> containers = _withShowAll.exec();
     return containers;
   }
   
   public DockerClient pullImage(final Machine machine, final String image) {
-    DockerClient dockerClient = null;
-    boolean _equals = Objects.equal(dockerClient, null);
+    boolean _equals = Objects.equal(DockerContainerManager.dockerClient, null);
     if (_equals) {
       String _name = machine.getName();
       DockerClient _setConfig = this.setConfig(_name);
-      dockerClient = _setConfig;
+      DockerContainerManager.dockerClient = _setConfig;
+    } else {
+      String _name_1 = machine.getName();
+      boolean _equalsIgnoreCase = DockerContainerManager.currentMachine.equalsIgnoreCase(_name_1);
+      boolean _not = (!_equalsIgnoreCase);
+      if (_not) {
+        String _name_2 = machine.getName();
+        DockerClient _setConfig_1 = this.setConfig(_name_2);
+        DockerContainerManager.dockerClient = _setConfig_1;
+      }
     }
     String containerImage = image;
     boolean _isNotBlank = StringUtils.isNotBlank(containerImage);
-    boolean _not = (!_isNotBlank);
-    if (_not) {
+    boolean _not_1 = (!_isNotBlank);
+    if (_not_1) {
       containerImage = "busybox";
       DockerContainerManager.LOGGER.info(("Use default image: " + containerImage));
     }
     String output = null;
-    String _name_1 = machine.getName();
-    boolean _machineContainsImage = this.machineContainsImage(_name_1, containerImage);
-    boolean _not_1 = (!_machineContainsImage);
-    if (_not_1) {
+    String _name_3 = machine.getName();
+    boolean _machineContainsImage = this.machineContainsImage(_name_3, containerImage);
+    boolean _not_2 = (!_machineContainsImage);
+    if (_not_2) {
       DockerContainerManager.LOGGER.info(("Downloading image: ->" + containerImage));
-      String _name_2 = machine.getName();
-      this.addImageToMachine(_name_2, containerImage);
-      PullImageCmd _pullImageCmd = dockerClient.pullImageCmd(containerImage);
+      String _name_4 = machine.getName();
+      this.addImageToMachine(_name_4, containerImage);
+      PullImageCmd _pullImageCmd = DockerContainerManager.dockerClient.pullImageCmd(containerImage);
       PullImageCmd _withTag = _pullImageCmd.withTag("latest");
       InputStream _exec = _withTag.exec();
       String _asString = DockerUtil.asString(_exec);
@@ -609,7 +694,7 @@ public class DockerContainerManager {
       DockerContainerManager.LOGGER.info(output);
       DockerContainerManager.LOGGER.info("Download is finished");
     }
-    return dockerClient;
+    return DockerContainerManager.dockerClient;
   }
   
   public boolean machineContainsImage(final String machine, final String image) {
@@ -686,6 +771,7 @@ public class DockerContainerManager {
       final DockerClientConfig config = _withDockerCertPath.build();
       DockerClientBuilder _instance = DockerClientBuilder.getInstance(config);
       final DockerClient dockerClient = _instance.build();
+      DockerContainerManager.currentMachine = machine;
       return dockerClient;
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);

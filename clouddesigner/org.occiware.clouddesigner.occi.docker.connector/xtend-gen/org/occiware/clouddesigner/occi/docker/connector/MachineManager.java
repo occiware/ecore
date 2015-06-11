@@ -183,16 +183,20 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
           EList<Link> _links_1 = this.compute.getLinks();
           for (final Link link : _links_1) {
             {
-              Resource _target = link.getTarget();
-              final ExecutableContainer con = ((ExecutableContainer) _target);
-              String _name_4 = con.getName();
-              boolean _containerIsDeployed = this.containerIsDeployed(_name_4, this.machine);
-              boolean _not_2 = (!_containerIsDeployed);
-              if (_not_2) {
-                con.createContainer(this.machine);
-                con.start();
-              } else {
-                con.start();
+              final Contains contains = ((Contains) link);
+              Resource _target = contains.getTarget();
+              if ((_target instanceof Container)) {
+                Resource _target_1 = contains.getTarget();
+                final ExecutableContainer con = ((ExecutableContainer) _target_1);
+                String _name_4 = con.getName();
+                boolean _containerIsDeployed = this.containerIsDeployed(_name_4, this.machine);
+                boolean _not_2 = (!_containerIsDeployed);
+                if (_not_2) {
+                  con.createContainer(this.machine);
+                  con.start();
+                } else {
+                  con.start();
+                }
               }
             }
           }
@@ -233,20 +237,24 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
             EList<Link> _links_3 = this.compute.getLinks();
             for (final Link link_1 : _links_3) {
               {
-                Resource _target = link_1.getTarget();
-                final ExecutableContainer con = ((ExecutableContainer) _target);
-                String _name_6 = con.getName();
-                boolean _containerIsDeployed = this.containerIsDeployed(_name_6, this.machine);
-                boolean _not_4 = (!_containerIsDeployed);
-                if (_not_4) {
-                  String _name_7 = con.getName();
-                  String _plus = ("Creating the container: " + _name_7);
-                  MachineManager.LOGGER.info(_plus);
-                  con.createContainer(this.machine);
-                  MachineManager.LOGGER.info("The container is created");
-                  con.start();
-                } else {
-                  con.start();
+                final Contains contains = ((Contains) link_1);
+                Resource _target = contains.getTarget();
+                if ((_target instanceof Container)) {
+                  Resource _target_1 = contains.getTarget();
+                  final ExecutableContainer con = ((ExecutableContainer) _target_1);
+                  String _name_6 = con.getName();
+                  boolean _containerIsDeployed = this.containerIsDeployed(_name_6, this.machine);
+                  boolean _not_4 = (!_containerIsDeployed);
+                  if (_not_4) {
+                    String _name_7 = con.getName();
+                    String _plus = ("Creating the container: " + _name_7);
+                    MachineManager.LOGGER.info(_plus);
+                    con.createContainer(this.machine);
+                    MachineManager.LOGGER.info("The container is created");
+                    con.start();
+                  } else {
+                    con.start();
+                  }
                 }
               }
             }
@@ -279,16 +287,20 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
             EList<Link> _links_5 = this.compute.getLinks();
             for (final Link link_2 : _links_5) {
               {
-                Resource _target = link_2.getTarget();
-                final ExecutableContainer con = ((ExecutableContainer) _target);
-                String _name_6 = con.getName();
-                boolean _containerIsDeployed = this.containerIsDeployed(_name_6, this.machine);
-                boolean _not_5 = (!_containerIsDeployed);
-                if (_not_5) {
-                  con.createContainer(this.machine);
-                  con.start();
-                } else {
-                  con.start();
+                final Contains contains = ((Contains) link_2);
+                Resource _target = contains.getTarget();
+                if ((_target instanceof Container)) {
+                  Resource _target_1 = contains.getTarget();
+                  final ExecutableContainer con = ((ExecutableContainer) _target_1);
+                  String _name_6 = con.getName();
+                  boolean _containerIsDeployed = this.containerIsDeployed(_name_6, this.machine);
+                  boolean _not_5 = (!_containerIsDeployed);
+                  if (_not_5) {
+                    con.createContainer(this.machine);
+                    con.start();
+                  } else {
+                    con.start();
+                  }
                 }
               }
             }

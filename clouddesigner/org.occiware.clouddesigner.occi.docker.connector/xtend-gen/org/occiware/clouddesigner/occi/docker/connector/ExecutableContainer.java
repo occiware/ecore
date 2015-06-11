@@ -19,6 +19,7 @@ import java.util.HashMap;
 import java.util.Map;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.occiware.clouddesigner.OCCI.Resource;
 import org.occiware.clouddesigner.occi.docker.Contains;
@@ -46,7 +47,9 @@ public class ExecutableContainer extends ContainerImpl {
   
   private Map<DockerClient, CreateContainerResponse> map = null;
   
-  protected DockerContainerManager dockerContainerManager = new DockerContainerManager();
+  protected static DockerContainerManager dockerContainerManager = null;
+  
+  protected static Map<String, Machine> listCurrentMachine = new HashMap<String, Machine>();
   
   /**
    * Docker containers have a state machine.
@@ -63,14 +66,19 @@ public class ExecutableContainer extends ContainerImpl {
       boolean _equalsIgnoreCase = _string.equalsIgnoreCase("active");
       if (_equalsIgnoreCase) {
         try {
+          boolean _equals = Objects.equal(ExecutableContainer.dockerContainerManager, null);
+          if (_equals) {
+            DockerContainerManager _dockerContainerManager = new DockerContainerManager(machine);
+            ExecutableContainer.dockerContainerManager = _dockerContainerManager;
+          }
           String _name = this.compute.getName();
-          ExecutableContainer.this.dockerContainerManager.startContainer(machine, _name);
+          ExecutableContainer.dockerContainerManager.startContainer(machine, _name);
         } catch (final Throwable _t) {
           if (_t instanceof Exception) {
             final Exception e = (Exception)_t;
             ExecutableContainer.this.createContainer(machine);
             String _name_1 = this.compute.getName();
-            ExecutableContainer.this.dockerContainerManager.startContainer(machine, _name_1);
+            ExecutableContainer.dockerContainerManager.startContainer(machine, _name_1);
           } else {
             throw Exceptions.sneakyThrow(_t);
           }
@@ -93,8 +101,13 @@ public class ExecutableContainer extends ContainerImpl {
         boolean _equalsIgnoreCase_1 = _string_1.equalsIgnoreCase("active");
         if (_equalsIgnoreCase_1) {
           try {
+            boolean _equals = Objects.equal(ExecutableContainer.dockerContainerManager, null);
+            if (_equals) {
+              DockerContainerManager _dockerContainerManager = new DockerContainerManager(machine);
+              ExecutableContainer.dockerContainerManager = _dockerContainerManager;
+            }
             String _name = this.compute.getName();
-            ExecutableContainer.this.dockerContainerManager.stopContainer(machine, _name);
+            ExecutableContainer.dockerContainerManager.stopContainer(machine, _name);
           } catch (final Throwable _t) {
             if (_t instanceof Exception) {
               final Exception e = (Exception)_t;
@@ -145,8 +158,13 @@ public class ExecutableContainer extends ContainerImpl {
   
   public Map<DockerClient, CreateContainerResponse> createContainer(final Machine machine, final Multimap<String, String> containerDependency) {
     Map<DockerClient, CreateContainerResponse> result = new HashMap<DockerClient, CreateContainerResponse>();
-    this.dockerContainerManager.pullImage(machine, this.image);
-    Map<DockerClient, CreateContainerResponse> _createContainer = this.dockerContainerManager.createContainer(machine, this, containerDependency);
+    boolean _equals = Objects.equal(ExecutableContainer.dockerContainerManager, null);
+    if (_equals) {
+      DockerContainerManager _dockerContainerManager = new DockerContainerManager();
+      ExecutableContainer.dockerContainerManager = _dockerContainerManager;
+    }
+    ExecutableContainer.dockerContainerManager.pullImage(machine, this.image);
+    Map<DockerClient, CreateContainerResponse> _createContainer = ExecutableContainer.dockerContainerManager.createContainer(machine, this, containerDependency);
     result = _createContainer;
     HashMap<DockerClient, CreateContainerResponse> _hashMap = new HashMap<DockerClient, CreateContainerResponse>(result);
     this.map = _hashMap;
@@ -154,13 +172,23 @@ public class ExecutableContainer extends ContainerImpl {
   }
   
   public void createContainer(final Machine machine) {
-    this.dockerContainerManager.pullImage(machine, this.image);
-    this.dockerContainerManager.createContainer(machine, this);
+    boolean _equals = Objects.equal(ExecutableContainer.dockerContainerManager, null);
+    if (_equals) {
+      DockerContainerManager _dockerContainerManager = new DockerContainerManager();
+      ExecutableContainer.dockerContainerManager = _dockerContainerManager;
+    }
+    ExecutableContainer.dockerContainerManager.pullImage(machine, this.image);
+    ExecutableContainer.dockerContainerManager.createContainer(machine, this);
   }
   
   public void removeContainer(final Machine machine) {
+    boolean _equals = Objects.equal(ExecutableContainer.dockerContainerManager, null);
+    if (_equals) {
+      DockerContainerManager _dockerContainerManager = new DockerContainerManager();
+      ExecutableContainer.dockerContainerManager = _dockerContainerManager;
+    }
     String _name = machine.getName();
-    this.dockerContainerManager.removeContainer(_name, this.name);
+    ExecutableContainer.dockerContainerManager.removeContainer(_name, this.name);
   }
   
   public org.occiware.clouddesigner.occi.docker.Container linkContainerToContainer(final org.occiware.clouddesigner.occi.docker.Container container) {
@@ -181,16 +209,27 @@ public class ExecutableContainer extends ContainerImpl {
   }
   
   public Machine getCurrentMachine() {
+    boolean _containsKey = ExecutableContainer.listCurrentMachine.containsKey(this.name);
+    if (_containsKey) {
+      return ExecutableContainer.listCurrentMachine.get(this.name);
+    }
     EList<EObject> _eContents = this.eContainer.eContents();
     for (final EObject eo : _eContents) {
       if ((eo instanceof Machine)) {
         final Machine machine = ((Machine) eo);
         EList<org.occiware.clouddesigner.OCCI.Link> _links = machine.getLinks();
         for (final org.occiware.clouddesigner.OCCI.Link l : _links) {
-          Resource _target = l.getTarget();
-          boolean _equals = Objects.equal(((ExecutableContainer) _target).id, this.id);
-          if (_equals) {
-            return machine;
+          {
+            final Contains contains = ((Contains) l);
+            Resource _target = contains.getTarget();
+            if ((_target instanceof MinimalEObjectImpl.Container)) {
+              Resource _target_1 = l.getTarget();
+              boolean _equals = Objects.equal(((ExecutableContainer) _target_1).id, this.id);
+              if (_equals) {
+                ExecutableContainer.listCurrentMachine.put(this.name, machine);
+                return machine;
+              }
+            }
           }
         }
       }
