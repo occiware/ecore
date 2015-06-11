@@ -51,7 +51,9 @@ import org.slf4j.LoggerFactory
 
 class DockerContainerManager {
 	private static DockerClient dockerClient = null
-	
+
+	private static String currentMachine = null
+
 	private Map<String, List<String>> images = new HashMap<String, List<String>>
 
 	// Initialize logger for DockerContainerManager.
@@ -63,15 +65,17 @@ class DockerContainerManager {
 	new(Machine machine) {
 		dockerClient = setConfig(machine.name)
 	}
-	
+
 	new(String machineName) {
 		dockerClient = setConfig(machineName)
 	}
 
 	def createContainer(Machine machine, Container container) {
-		
+
 		// Set dockerClient
 		if (dockerClient == null) {
+			dockerClient = setConfig(machine.name)
+		} else if (!currentMachine.equalsIgnoreCase(machine.name)) {
 			dockerClient = setConfig(machine.name)
 		}
 		var Map<DockerClient, CreateContainerResponse> result = new LinkedHashMap<DockerClient, CreateContainerResponse>
@@ -88,6 +92,8 @@ class DockerContainerManager {
 		// Set dockerClient
 		if (dockerClient == null) {
 			dockerClient = setConfig(machine.name)
+		} else if (!currentMachine.equalsIgnoreCase(machine.name)) {
+			dockerClient = setConfig(machine.name)
 		}
 		var Map<DockerClient, CreateContainerResponse> result = new LinkedHashMap<DockerClient, CreateContainerResponse>
 		val create = containerFactory(container, dockerClient, containerDependency)
@@ -99,15 +105,17 @@ class DockerContainerManager {
 	}
 
 	def void removeContainer(String machineName, String containerId) {
-		
+
 		// Set dockerClient
 		if (dockerClient == null) {
 			dockerClient = setConfig(machineName)
+		} else if (!currentMachine.equalsIgnoreCase(machineName)) {
+			dockerClient = setConfig(machineName)
 		}
-		
+
 		dockerClient.removeContainerCmd(containerId).exec
 	}
-	
+
 	def containerFactory(Container container, DockerClient dockerClient) {
 		var CreateContainerCmd create = null
 		if (container.image != null) {
@@ -308,10 +316,11 @@ class DockerContainerManager {
 	}
 
 	def InspectContainerResponse inspectContainer(Machine machine, String containerId) {
-		var DockerClient dockerClient = null
 
 		// Set dockerClient
 		if (dockerClient == null) {
+			dockerClient = setConfig(machine.name)
+		} else if (!currentMachine.equalsIgnoreCase(machine.name)) {
 			dockerClient = setConfig(machine.name)
 		}
 		val InspectContainerResponse inspectContainerResponse = dockerClient.inspectContainerCmd(containerId).exec()
@@ -320,53 +329,55 @@ class DockerContainerManager {
 	}
 
 	def startContainer(Machine machine, Container container) {
-		var DockerClient dockerClient = null
 
 		// Set dockerClient
-		if (DockerContainerManager.dockerClient != null) {
+		if (dockerClient != null) {
 			dockerClient = DockerContainerManager.dockerClient
-		} else {
+		} else if (!currentMachine.equalsIgnoreCase(machine.name)) {
 			dockerClient = setConfig(machine.name)
-
 		}
 		dockerClient.startContainerCmd(container.id).exec
 	}
 
 	def startContainer(Machine machine, String containerId) {
-		var DockerClient dockerClient = null
 
 		// Set dockerClient
 		if (dockerClient == null) {
+			dockerClient = setConfig(machine.name)
+		}else if (!currentMachine.equalsIgnoreCase(machine.name)) {
 			dockerClient = setConfig(machine.name)
 		}
 		dockerClient.startContainerCmd(containerId).exec
 	}
 
 	def stopContainer(Machine machine, Container container) {
-		var DockerClient dockerClient = null
 
 		// Set dockerClient
 		if (dockerClient == null) {
+			dockerClient = setConfig(machine.name)
+		} else if (!currentMachine.equalsIgnoreCase(machine.name)) {
 			dockerClient = setConfig(machine.name)
 		}
 		dockerClient.stopContainerCmd(container.id).exec
 	}
 
 	def stopContainer(Machine machine, String containerId) {
-		var DockerClient dockerClient = null
 
 		// Set dockerClient
 		if (dockerClient == null) {
+			dockerClient = setConfig(machine.name)
+		} else if (!currentMachine.equalsIgnoreCase(machine.name)) {
 			dockerClient = setConfig(machine.name)
 		}
 		dockerClient.stopContainerCmd(containerId).exec
 	}
 
 	def waitContainer(Machine machine, Container container) {
-		var DockerClient dockerClient = null
 
 		// Set dockerClient
 		if (dockerClient == null) {
+			dockerClient = setConfig(machine.name)
+		} else if (!currentMachine.equalsIgnoreCase(machine.name)) {
 			dockerClient = setConfig(machine.name)
 		}
 		dockerClient.waitContainerCmd(container.id).exec
@@ -374,10 +385,10 @@ class DockerContainerManager {
 
 	def List<com.github.dockerjava.api.model.Container> listContainer(String machineName) {
 
-		var DockerClient dockerClient = null
-
 		// Set dockerClient
 		if (dockerClient == null) {
+			dockerClient = setConfig(machineName)
+		} else if (!currentMachine.equalsIgnoreCase(machineName)) {
 			dockerClient = setConfig(machineName)
 		}
 		val List<com.github.dockerjava.api.model.Container> containers = dockerClient.listContainersCmd().
@@ -387,16 +398,16 @@ class DockerContainerManager {
 
 	def pullImage(Machine machine, String image) {
 
-		var DockerClient dockerClient = null
-
 		// Set dockerClient
 		if (dockerClient == null) {
+			dockerClient = setConfig(machine.name)
+		} else if (!currentMachine.equalsIgnoreCase(machine.name)) {
 			dockerClient = setConfig(machine.name)
 		}
 		var containerImage = image
 		if (!StringUtils.isNotBlank(containerImage)) {
 			containerImage = "busybox"
-			LOGGER.info("Use default image: "+ containerImage)
+			LOGGER.info("Use default image: " + containerImage)
 		}
 		var String output = null
 		if (!machineContainsImage(machine.name, containerImage)) {
@@ -412,26 +423,26 @@ class DockerContainerManager {
 		return dockerClient
 
 	}
-	
-	def boolean machineContainsImage(String machine, String image){
-		if(images.get(machine) != null){
+
+	def boolean machineContainsImage(String machine, String image) {
+		if (images.get(machine) != null) {
 			return images.get(machine).contains(image)
 		}
 		return false
 	}
-	
-	def void addImageToMachine(String machine, String image){
-		if(!images.containsKey(machine)){
+
+	def void addImageToMachine(String machine, String image) {
+		if (!images.containsKey(machine)) {
 			var tempList = new ArrayList
 			tempList.add(image)
 			images.put(machine, tempList)
-		}else{
+		} else {
 			var tempList = images.get(machine)
 			tempList.add(image)
 			images.put(machine, tempList)
 		}
 	}
-	
+
 	def DockerClient setConfig(String machine) {
 		val lconfig = new DockerConfig
 		val dockerClientconfig = lconfig.loadConfig
@@ -455,6 +466,9 @@ class DockerContainerManager {
 			dockerClientconfig.get("docker.email").toString).withServerAddress("https://index.docker.io/v1/").
 			withDockerCertPath(certPath).build()
 		val DockerClient dockerClient = DockerClientBuilder.getInstance(config).build()
+
+		// Set the current machine
+		currentMachine = machine
 		return dockerClient
 	}
 
@@ -574,9 +588,14 @@ class DockerContainerManager {
 			}
 		} else {
 			return tempDir
-
 		}
+	}
 
+	def static void main(String[] args) {
+		val main = new DockerContainerManager
+
+		//		main.connect
+		main.listContainer("occiware")
 	}
 
 }
