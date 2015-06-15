@@ -11,11 +11,11 @@ import org.eclipse.xtext.resource.IDerivedStateComputer;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
-import org.occiware.clouddesigner.OCCI.Action;
-import org.occiware.clouddesigner.OCCI.Category;
-import org.occiware.clouddesigner.OCCI.Extension;
-import org.occiware.clouddesigner.OCCI.Kind;
-import org.occiware.clouddesigner.OCCI.Mixin;
+import org.occiware.clouddesigner.occi.Action;
+import org.occiware.clouddesigner.occi.Category;
+import org.occiware.clouddesigner.occi.Extension;
+import org.occiware.clouddesigner.occi.Kind;
+import org.occiware.clouddesigner.occi.Mixin;
 
 /**
  * Some EMF fields of the OCCIware metamodel are not explicitly set by OCCI.xtext:

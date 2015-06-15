@@ -31,8 +31,8 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
-import org.occiware.clouddesigner.OCCI.Extension;
-import org.occiware.clouddesigner.OCCI.OCCIFactory;
+import org.occiware.clouddesigner.occi.Extension;
+import org.occiware.clouddesigner.occi.OCCIFactory;
 import org.occiware.clouddesigner.occi.design.Activator;
 import org.occiware.clouddesigner.occi.design.Messages;
 

@@ -10,15 +10,15 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.occiware.clouddesigner.OCCI.Attribute;
-import org.occiware.clouddesigner.OCCI.AttributeState;
-import org.occiware.clouddesigner.OCCI.Configuration;
-import org.occiware.clouddesigner.OCCI.Extension;
-import org.occiware.clouddesigner.OCCI.Kind;
-import org.occiware.clouddesigner.OCCI.Link;
-import org.occiware.clouddesigner.OCCI.OCCIFactory;
-import org.occiware.clouddesigner.OCCI.OCCIPackage;
-import org.occiware.clouddesigner.OCCI.Resource;
+import org.occiware.clouddesigner.occi.Attribute;
+import org.occiware.clouddesigner.occi.AttributeState;
+import org.occiware.clouddesigner.occi.Configuration;
+import org.occiware.clouddesigner.occi.Extension;
+import org.occiware.clouddesigner.occi.Kind;
+import org.occiware.clouddesigner.occi.Link;
+import org.occiware.clouddesigner.occi.OCCIFactory;
+import org.occiware.clouddesigner.occi.OCCIPackage;
+import org.occiware.clouddesigner.occi.Resource;
 import org.occiware.clouddesigner.occi.docker.DockerPackage;
 import org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage;
 import org.occiware.clouddesigner.occi.xtext.OCCIStandaloneSetup;
@@ -66,14 +66,14 @@ public class Ecore2OCCI implements IConverterPaths {
 		Configuration targetConfig = OCCIFactory.eINSTANCE
 				.createConfiguration();
 		// create all resources
-		for (org.occiware.clouddesigner.OCCI.Resource sourceResource : sourceConfig
+		for (org.occiware.clouddesigner.occi.Resource sourceResource : sourceConfig
 				.getResources()) {
-			org.occiware.clouddesigner.OCCI.Resource targetResource = convertResource(sourceResource);
+			org.occiware.clouddesigner.occi.Resource targetResource = convertResource(sourceResource);
 			targetConfig.getResources().add(targetResource);
 		}
 
 		// create & resolve links
-		for (org.occiware.clouddesigner.OCCI.Resource sourceResource : sourceConfig
+		for (org.occiware.clouddesigner.occi.Resource sourceResource : sourceConfig
 				.getResources()) {
 			Resource targetResource = mappedResources.get(sourceResource);
 			for (Link sourceLink : sourceResource.getLinks()) {
@@ -85,9 +85,9 @@ public class Ecore2OCCI implements IConverterPaths {
 		return targetConfig;
 	}
 
-	private org.occiware.clouddesigner.OCCI.Resource convertResource(
-			org.occiware.clouddesigner.OCCI.Resource sourceResource) {
-		org.occiware.clouddesigner.OCCI.Resource targetResource = OCCIFactory.eINSTANCE
+	private org.occiware.clouddesigner.occi.Resource convertResource(
+			org.occiware.clouddesigner.occi.Resource sourceResource) {
+		org.occiware.clouddesigner.occi.Resource targetResource = OCCIFactory.eINSTANCE
 				.createResource();
 		targetResource.setId(sourceResource.getId());
 		Kind kind = getKind(sourceResource.eClass());

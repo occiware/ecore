@@ -3,8 +3,8 @@ package org.occiware.clouddesigner.occi.xtext;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.xtext.parsetree.reconstr.impl.DefaultTransientValueService;
-import org.occiware.clouddesigner.OCCI.Category;
-import org.occiware.clouddesigner.OCCI.OCCIPackage;
+import org.occiware.clouddesigner.occi.Category;
+import org.occiware.clouddesigner.occi.OCCIPackage;
 
 @SuppressWarnings("all")
 public class OCCITransientValueService extends DefaultTransientValueService {

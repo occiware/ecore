@@ -21,7 +21,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.xtext.xbase.lib.Exceptions;
-import org.occiware.clouddesigner.OCCI.Resource;
+import org.occiware.clouddesigner.occi.Resource;
 import org.occiware.clouddesigner.occi.docker.Contains;
 import org.occiware.clouddesigner.occi.docker.DockerFactory;
 import org.occiware.clouddesigner.occi.docker.DockerPackage;
@@ -58,6 +58,7 @@ public class ExecutableContainer extends ContainerImpl {
     /**
      * Start the Docker container.
      */
+    @Override
     public void start_execute() {
       ExecutableContainer.LOGGER.info("EXECUTE container start");
       final Machine machine = ExecutableContainer.this.getCurrentMachine();
@@ -89,6 +90,7 @@ public class ExecutableContainer extends ContainerImpl {
     /**
      * Stop the Docker container.
      */
+    @Override
     public void stop_execute(final StopMethod method) {
       ExecutableContainer.LOGGER.info("EXECUTE container stop");
       final Machine machine = ExecutableContainer.this.getCurrentMachine();
@@ -123,6 +125,7 @@ public class ExecutableContainer extends ContainerImpl {
     /**
      * Restart the Docker container.
      */
+    @Override
     public void restart_execute(final RestartMethod method) {
       ExecutableContainer.LOGGER.info("EXECUTE container restart");
       this.stop_execute(StopMethod.GRACEFUL);
@@ -132,11 +135,13 @@ public class ExecutableContainer extends ContainerImpl {
     /**
      * Suspend the Docker container.
      */
+    @Override
     public void suspend_execute(final SuspendMethod method) {
       ExecutableContainer.LOGGER.info("EXECUTE container suspend");
     }
   };
   
+  @Override
   public void start() {
     this.stateMachine.start();
     final DockerObserver observer = new DockerObserver();
@@ -144,14 +149,17 @@ public class ExecutableContainer extends ContainerImpl {
     observer.listener(this, machine);
   }
   
+  @Override
   public void stop(final StopMethod method) {
     this.stateMachine.stop(method);
   }
   
+  @Override
   public void restart(final RestartMethod method) {
     this.stateMachine.restart(method);
   }
   
+  @Override
   public void suspend(final SuspendMethod method) {
     this.stateMachine.suspend(method);
   }
@@ -203,7 +211,7 @@ public class ExecutableContainer extends ContainerImpl {
     DockerFactory _dockerFactory = DockerPackage.eINSTANCE.getDockerFactory();
     Contains contains = _dockerFactory.createContains();
     contains.setTarget(this);
-    EList<org.occiware.clouddesigner.OCCI.Link> _links = machine.getLinks();
+    EList<org.occiware.clouddesigner.occi.Link> _links = machine.getLinks();
     _links.add(contains);
     return machine;
   }
@@ -217,8 +225,8 @@ public class ExecutableContainer extends ContainerImpl {
     for (final EObject eo : _eContents) {
       if ((eo instanceof Machine)) {
         final Machine machine = ((Machine) eo);
-        EList<org.occiware.clouddesigner.OCCI.Link> _links = machine.getLinks();
-        for (final org.occiware.clouddesigner.OCCI.Link l : _links) {
+        EList<org.occiware.clouddesigner.occi.Link> _links = machine.getLinks();
+        for (final org.occiware.clouddesigner.occi.Link l : _links) {
           {
             final Contains contains = ((Contains) l);
             Resource _target = contains.getTarget();

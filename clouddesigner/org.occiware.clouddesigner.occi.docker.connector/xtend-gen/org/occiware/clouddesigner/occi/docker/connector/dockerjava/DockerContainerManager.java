@@ -946,9 +946,4 @@ public class DockerContainerManager {
     }
     return null;
   }
-  
-  public static void main(final String[] args) {
-    final DockerContainerManager main = new DockerContainerManager();
-    main.listContainer("occiware");
-  }
 }

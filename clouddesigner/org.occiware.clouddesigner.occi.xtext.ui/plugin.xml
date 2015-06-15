@@ -21,16 +21,16 @@
             commandId="org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclaration">
             <activeWhen>
                 <reference
-                    definitionId="org.occiware.clouddesigner.occi.xtext.OCCI.Editor.opened">
+                    definitionId="org.occiware.clouddesigner.occi.xtext.occi.Editor.opened">
                 </reference>
             </activeWhen>
         </handler>
         <handler
             class="org.occiware.clouddesigner.occi.xtext.ui.OCCIExecutableExtensionFactory:org.eclipse.xtext.ui.editor.handler.ValidateActionHandler"
-            commandId="org.occiware.clouddesigner.occi.xtext.OCCI.validate">
+            commandId="org.occiware.clouddesigner.occi.xtext.occi.validate">
          <activeWhen>
             <reference
-                    definitionId="org.occiware.clouddesigner.occi.xtext.OCCI.Editor.opened">
+                    definitionId="org.occiware.clouddesigner.occi.xtext.occi.Editor.opened">
             </reference>
          </activeWhen>
       	</handler>
@@ -39,7 +39,7 @@
             class="org.occiware.clouddesigner.occi.xtext.ui.OCCIExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedNameHandler"
             commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName">
             <activeWhen>
-				<reference definitionId="org.occiware.clouddesigner.occi.xtext.OCCI.Editor.opened" />
+				<reference definitionId="org.occiware.clouddesigner.occi.xtext.occi.Editor.opened" />
             </activeWhen>
         </handler>
         <handler
@@ -47,7 +47,7 @@
             commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedName">
             <activeWhen>
             	<and>
-            		<reference definitionId="org.occiware.clouddesigner.occi.xtext.OCCI.XtextEditor.opened" />
+            		<reference definitionId="org.occiware.clouddesigner.occi.xtext.occi.XtextEditor.opened" />
 	                <iterate>
 						<adapt type="org.eclipse.xtext.ui.editor.outline.IOutlineNode" />
 					</iterate>
@@ -56,7 +56,7 @@
         </handler>
     </extension>
     <extension point="org.eclipse.core.expressions.definitions">
-        <definition id="org.occiware.clouddesigner.occi.xtext.OCCI.Editor.opened">
+        <definition id="org.occiware.clouddesigner.occi.xtext.occi.Editor.opened">
             <and>
                 <reference definitionId="isActiveEditorAnInstanceOfXtextEditor"/>
                 <with variable="activeEditor">
@@ -66,7 +66,7 @@
                 </with>        
             </and>
         </definition>
-        <definition id="org.occiware.clouddesigner.occi.xtext.OCCI.XtextEditor.opened">
+        <definition id="org.occiware.clouddesigner.occi.xtext.occi.XtextEditor.opened">
             <and>
                 <reference definitionId="isXtextEditorActive"/>
                 <with variable="activeEditor">
@@ -88,14 +88,14 @@
         <page
             category="org.occiware.clouddesigner.occi.xtext.OCCI"
             class="org.occiware.clouddesigner.occi.xtext.ui.OCCIExecutableExtensionFactory:org.eclipse.xtext.ui.editor.syntaxcoloring.SyntaxColoringPreferencePage"
-            id="org.occiware.clouddesigner.occi.xtext.OCCI.coloring"
+            id="org.occiware.clouddesigner.occi.xtext.occi.coloring"
             name="Syntax Coloring">
             <keywordReference id="org.occiware.clouddesigner.occi.xtext.ui.keyword_OCCI"/>
         </page>
         <page
             category="org.occiware.clouddesigner.occi.xtext.OCCI"
             class="org.occiware.clouddesigner.occi.xtext.ui.OCCIExecutableExtensionFactory:org.eclipse.xtext.ui.editor.templates.XtextTemplatePreferencePage"
-            id="org.occiware.clouddesigner.occi.xtext.OCCI.templates"
+            id="org.occiware.clouddesigner.occi.xtext.occi.templates"
             name="Templates">
             <keywordReference id="org.occiware.clouddesigner.occi.xtext.ui.keyword_OCCI"/>
         </page>
@@ -123,7 +123,7 @@
          point="org.eclipse.ui.commands">
       <command
             description="Trigger expensive validation"
-            id="org.occiware.clouddesigner.occi.xtext.OCCI.validate"
+            id="org.occiware.clouddesigner.occi.xtext.occi.validate"
             name="Validate">
       </command>
       <!-- copy qualified name -->
@@ -144,12 +144,12 @@
         <menuContribution
             locationURI="popup:#TextEditorContext?after=group.edit">
              <command
-                 commandId="org.occiware.clouddesigner.occi.xtext.OCCI.validate"
+                 commandId="org.occiware.clouddesigner.occi.xtext.occi.validate"
                  style="push"
                  tooltip="Trigger expensive validation">
             <visibleWhen checkEnabled="false">
                 <reference
-                    definitionId="org.occiware.clouddesigner.occi.xtext.OCCI.Editor.opened">
+                    definitionId="org.occiware.clouddesigner.occi.xtext.occi.Editor.opened">
                 </reference>
             </visibleWhen>
          </command>  
@@ -159,7 +159,7 @@
          	<command commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName" 
          		style="push" tooltip="Copy Qualified Name">
             	<visibleWhen checkEnabled="false">
-                	<reference definitionId="org.occiware.clouddesigner.occi.xtext.OCCI.Editor.opened" />
+                	<reference definitionId="org.occiware.clouddesigner.occi.xtext.occi.Editor.opened" />
             	</visibleWhen>
          	</command>  
          </menuContribution>
@@ -167,7 +167,7 @@
          	<command commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName"
             	style="push" tooltip="Copy Qualified Name">
             	<visibleWhen checkEnabled="false">
-                	<reference definitionId="org.occiware.clouddesigner.occi.xtext.OCCI.Editor.opened" />
+                	<reference definitionId="org.occiware.clouddesigner.occi.xtext.occi.Editor.opened" />
             	</visibleWhen>
          	</command>  
          </menuContribution>
@@ -176,7 +176,7 @@
 				style="push" tooltip="Copy Qualified Name">
          		<visibleWhen checkEnabled="false">
 	            	<and>
-	            		<reference definitionId="org.occiware.clouddesigner.occi.xtext.OCCI.XtextEditor.opened" />
+	            		<reference definitionId="org.occiware.clouddesigner.occi.xtext.occi.XtextEditor.opened" />
 						<iterate>
 							<adapt type="org.eclipse.xtext.ui.editor.outline.IOutlineNode" />
 						</iterate>
@@ -189,7 +189,7 @@
 		<menuContribution locationURI="popup:#TextEditorContext?endof=group.find">
 			<command commandId="org.eclipse.xtext.ui.editor.FindReferences">
 				<visibleWhen checkEnabled="false">
-                	<reference definitionId="org.occiware.clouddesigner.occi.xtext.OCCI.Editor.opened">
+                	<reference definitionId="org.occiware.clouddesigner.occi.xtext.occi.Editor.opened">
                 	</reference>
             	</visibleWhen>
 			</command>
@@ -201,7 +201,7 @@
             commandId="org.eclipse.xtext.ui.editor.FindReferences">
             <activeWhen>
                 <reference
-                    definitionId="org.occiware.clouddesigner.occi.xtext.OCCI.Editor.opened">
+                    definitionId="org.occiware.clouddesigner.occi.xtext.occi.Editor.opened">
                 </reference>
             </activeWhen>
         </handler>
@@ -260,7 +260,7 @@
         <page
             category="org.occiware.clouddesigner.occi.xtext.OCCI"
             class="org.occiware.clouddesigner.occi.xtext.ui.OCCIExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
-            id="org.occiware.clouddesigner.occi.xtext.OCCI.compiler.preferencePage"
+            id="org.occiware.clouddesigner.occi.xtext.occi.compiler.preferencePage"
             name="Compiler">
             <keywordReference id="org.occiware.clouddesigner.occi.xtext.ui.keyword_OCCI"/>
         </page>
@@ -270,7 +270,7 @@
         <page
             category="org.occiware.clouddesigner.occi.xtext.OCCI"
             class="org.occiware.clouddesigner.occi.xtext.ui.OCCIExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
-            id="org.occiware.clouddesigner.occi.xtext.OCCI.compiler.propertyPage"
+            id="org.occiware.clouddesigner.occi.xtext.occi.compiler.propertyPage"
             name="Compiler">
             <keywordReference id="org.occiware.clouddesigner.occi.xtext.ui.keyword_OCCI"/>
             <enabledWhen>
@@ -283,10 +283,10 @@
 		<menuContribution locationURI="popup:#TextEditorContext?after=xtext.ui.openDeclaration">
 			<command
 				commandId="org.eclipse.xtext.ui.OpenGeneratedFileCommand"
-				id="org.occiware.clouddesigner.occi.xtext.OCCI.OpenGeneratedCode"
+				id="org.occiware.clouddesigner.occi.xtext.occi.OpenGeneratedCode"
 				style="push">
 					<visibleWhen checkEnabled="false">
-						<reference definitionId="org.occiware.clouddesigner.occi.xtext.OCCI.Editor.opened" />
+						<reference definitionId="org.occiware.clouddesigner.occi.xtext.occi.Editor.opened" />
 					</visibleWhen>
 			</command>
 		</menuContribution>
@@ -296,7 +296,7 @@
 			class="org.occiware.clouddesigner.occi.xtext.ui.OCCIExecutableExtensionFactory:org.eclipse.xtext.ui.generator.trace.OpenGeneratedFileHandler"
 			commandId="org.eclipse.xtext.ui.OpenGeneratedFileCommand">
 				<activeWhen>
-					<reference definitionId="org.occiware.clouddesigner.occi.xtext.OCCI.Editor.opened" />
+					<reference definitionId="org.occiware.clouddesigner.occi.xtext.occi.Editor.opened" />
 				</activeWhen>
 		</handler>
 	</extension>
@@ -309,7 +309,7 @@
 			commandId="org.eclipse.xtext.ui.editor.outline.QuickOutline">
 			<activeWhen>
 				<reference
-					definitionId="org.occiware.clouddesigner.occi.xtext.OCCI.Editor.opened">
+					definitionId="org.occiware.clouddesigner.occi.xtext.occi.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
@@ -329,7 +329,7 @@
 				style="push"
 				tooltip="Open Quick Outline">
 				<visibleWhen checkEnabled="false">
-					<reference definitionId="org.occiware.clouddesigner.occi.xtext.OCCI.Editor.opened"/>
+					<reference definitionId="org.occiware.clouddesigner.occi.xtext.occi.Editor.opened"/>
 				</visibleWhen>
 			</command>
 		</menuContribution>
@@ -369,7 +369,7 @@
 			commandId="org.eclipse.xtext.ui.refactoring.RenameElement">
 			<activeWhen>
 				<reference
-					definitionId="org.occiware.clouddesigner.occi.xtext.OCCI.Editor.opened">
+					definitionId="org.occiware.clouddesigner.occi.xtext.occi.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
@@ -381,7 +381,7 @@
                style="push">
             <visibleWhen checkEnabled="false">
                <reference
-                     definitionId="org.occiware.clouddesigner.occi.xtext.OCCI.Editor.opened">
+                     definitionId="org.occiware.clouddesigner.occi.xtext.occi.Editor.opened">
                </reference>
             </visibleWhen>
          </command>
@@ -391,26 +391,26 @@
 	    <page
 	        category="org.occiware.clouddesigner.occi.xtext.OCCI"
 	        class="org.occiware.clouddesigner.occi.xtext.ui.OCCIExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.RefactoringPreferencePage"
-	        id="org.occiware.clouddesigner.occi.xtext.OCCI.refactoring"
+	        id="org.occiware.clouddesigner.occi.xtext.occi.refactoring"
 	        name="Refactoring">
 	        <keywordReference id="org.occiware.clouddesigner.occi.xtext.ui.keyword_OCCI"/>
 	    </page>
 	</extension>
 
   <extension point="org.eclipse.compare.contentViewers">
-    <viewer id="org.occiware.clouddesigner.occi.xtext.OCCI.compare.contentViewers"
+    <viewer id="org.occiware.clouddesigner.occi.xtext.occi.compare.contentViewers"
             class="org.occiware.clouddesigner.occi.xtext.ui.OCCIExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
             extensions="occi">
     </viewer>
   </extension>
   <extension point="org.eclipse.compare.contentMergeViewers">
-    <viewer id="org.occiware.clouddesigner.occi.xtext.OCCI.compare.contentMergeViewers"
+    <viewer id="org.occiware.clouddesigner.occi.xtext.occi.compare.contentMergeViewers"
             class="org.occiware.clouddesigner.occi.xtext.ui.OCCIExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
             extensions="occi" label="OCCI Compare">
      </viewer>
   </extension>
   <extension point="org.eclipse.ui.editors.documentProviders">
-    <provider id="org.occiware.clouddesigner.occi.xtext.OCCI.editors.documentProviders"
+    <provider id="org.occiware.clouddesigner.occi.xtext.occi.editors.documentProviders"
             class="org.occiware.clouddesigner.occi.xtext.ui.OCCIExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
             extensions="occi">
     </provider>

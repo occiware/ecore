@@ -14,7 +14,7 @@ Workflow {
 	bean = StandaloneSetup {
 		scanClassPath = true
 		platformUri = "${runtimeProject}/.."
-		registerGeneratedEPackage = "org.occiware.clouddesigner.OCCI.OCCIPackage"
+		registerGeneratedEPackage = "org.occiware.clouddesigner.occi.OCCIPackage"
 		registerGenModelFile = "platform:/resource/org.occiware.clouddesigner.occi/model/OCCI.genmodel"
 		registerGeneratedEPackage = "org.eclipse.emf.ecore.EcorePackage"
 		registerGenModelFile = "platform:/resource/org.eclipse.emf.ecore/model/Ecore.genmodel"

@@ -20,8 +20,8 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.XMIResource;
-import org.occiware.clouddesigner.OCCI.Attribute;
-import org.occiware.clouddesigner.OCCI.Kind;
+import org.occiware.clouddesigner.occi.Attribute;
+import org.occiware.clouddesigner.occi.Kind;
 
 public final class ConverterUtils {
 

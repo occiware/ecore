@@ -13,10 +13,10 @@ import org.eclipse.emf.ecore.EParameter;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.occiware.clouddesigner.OCCI.Action;
-import org.occiware.clouddesigner.OCCI.Attribute;
-import org.occiware.clouddesigner.OCCI.Extension;
-import org.occiware.clouddesigner.OCCI.Kind;
+import org.occiware.clouddesigner.occi.Action;
+import org.occiware.clouddesigner.occi.Attribute;
+import org.occiware.clouddesigner.occi.Extension;
+import org.occiware.clouddesigner.occi.Kind;
 
 public class OCCIExtension2Ecore {
 

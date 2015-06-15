@@ -1,8 +1,8 @@
 package org.occiware.clouddesigner.occi2ecore.docker;
 
-import org.occiware.clouddesigner.OCCI.Action;
-import org.occiware.clouddesigner.OCCI.Attribute;
-import org.occiware.clouddesigner.OCCI.Category;
+import org.occiware.clouddesigner.occi.Action;
+import org.occiware.clouddesigner.occi.Attribute;
+import org.occiware.clouddesigner.occi.Category;
 import org.occiware.clouddesigner.occi2ecore.utils.OCCIExtension2Ecore;
 
 /*
@@ -15,7 +15,7 @@ import org.occiware.clouddesigner.occi2ecore.utils.OCCIExtension2Ecore;
 public class ConvertDocker extends OCCIExtension2Ecore {
 
 	protected org.eclipse.emf.ecore.EAttribute convertAttribute(
-			org.occiware.clouddesigner.OCCI.Attribute attribute) {
+			org.occiware.clouddesigner.occi.Attribute attribute) {
 		if (isValid(attribute)) {
 			return super.convertAttribute(attribute);
 		}
@@ -23,7 +23,7 @@ public class ConvertDocker extends OCCIExtension2Ecore {
 	};
 
 	protected org.eclipse.emf.ecore.EOperation convertAction(
-			org.occiware.clouddesigner.OCCI.Action action) {
+			org.occiware.clouddesigner.occi.Action action) {
 		if (isValid(action)) {
 			return super.convertAction(action);
 		}

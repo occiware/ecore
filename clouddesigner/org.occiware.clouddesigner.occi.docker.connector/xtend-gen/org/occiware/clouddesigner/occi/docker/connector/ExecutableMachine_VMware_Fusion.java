@@ -27,10 +27,12 @@ public class ExecutableMachine_VMware_Fusion extends Machine_VMware_FusionImpl {
    * The machine manager.
    */
   private final MachineManager manager = new MachineManager(this) {
+    @Override
     public String getDriverName() {
       return "vmwarefusion";
     }
     
+    @Override
     public void appendDriverParameters(final StringBuilder sb) {
       if ((ExecutableMachine_VMware_Fusion.this.disk_size > 0)) {
         StringBuilder _append = sb.append(" --vmwarefusion-disk-size ");
@@ -57,18 +59,22 @@ public class ExecutableMachine_VMware_Fusion extends Machine_VMware_FusionImpl {
     this.manager.startAll();
   }
   
+  @Override
   public void start() {
     this.manager.start();
   }
   
+  @Override
   public void stop(final StopMethod method) {
     this.manager.stop(method);
   }
   
+  @Override
   public void restart(final RestartMethod method) {
     this.manager.restart(method);
   }
   
+  @Override
   public void suspend(final SuspendMethod method) {
     this.manager.suspend(method);
   }

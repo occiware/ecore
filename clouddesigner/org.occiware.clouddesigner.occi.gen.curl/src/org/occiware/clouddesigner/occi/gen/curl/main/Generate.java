@@ -23,7 +23,7 @@ import org.eclipse.emf.common.util.Monitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.occiware.clouddesigner.OCCI.OCCIPackage;
+import org.occiware.clouddesigner.occi.OCCIPackage;
 
 /**
  * Entry point of the 'Generate' generation module.
@@ -36,7 +36,7 @@ public class Generate extends AbstractAcceleoGenerator {
 	 *
 	 * @generated
 	 */
-	public static final String MODULE_FILE_NAME = "generate";
+	public static final String MODULE_FILE_NAME = "/org/occiware/clouddesigner/occi/gen/curl/main/generate";
 
 	/**
 	 * The name of the templates that are to be generated.

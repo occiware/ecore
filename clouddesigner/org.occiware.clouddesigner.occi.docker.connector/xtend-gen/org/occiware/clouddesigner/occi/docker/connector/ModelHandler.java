@@ -1168,7 +1168,7 @@ public class ModelHandler {
   public void linkContainerToMachine(final org.occiware.clouddesigner.occi.docker.Container container, final Machine machine) {
     Contains contains = DockerFactory.eINSTANCE.createContains();
     contains.setTarget(container);
-    EList<org.occiware.clouddesigner.OCCI.Link> _links = machine.getLinks();
+    EList<org.occiware.clouddesigner.occi.Link> _links = machine.getLinks();
     _links.add(contains);
   }
   
@@ -1177,7 +1177,7 @@ public class ModelHandler {
     for (final org.occiware.clouddesigner.occi.docker.Container c : containers) {
       {
         contains.setTarget(c);
-        EList<org.occiware.clouddesigner.OCCI.Link> _links = machine.getLinks();
+        EList<org.occiware.clouddesigner.occi.Link> _links = machine.getLinks();
         _links.add(contains);
       }
     }
@@ -1187,7 +1187,7 @@ public class ModelHandler {
   public void linkContainerToContainer(final org.occiware.clouddesigner.occi.docker.Container left, final org.occiware.clouddesigner.occi.docker.Container right) {
     org.occiware.clouddesigner.occi.docker.Link links = DockerFactory.eINSTANCE.createLink();
     links.setTarget(right);
-    EList<org.occiware.clouddesigner.OCCI.Link> _links = left.getLinks();
+    EList<org.occiware.clouddesigner.occi.Link> _links = left.getLinks();
     _links.add(links);
   }
   

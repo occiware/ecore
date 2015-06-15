@@ -10,7 +10,7 @@
       <!-- @generated OCCI -->
       <factory
             uri="http://schemas.ogf.org/occi"
-            class="org.occiware.clouddesigner.OCCI.provider.OCCIItemProviderAdapterFactory"
+            class="org.occiware.clouddesigner.occi.provider.OCCIItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
                org.eclipse.emf.edit.provider.IStructuredItemContentProvider

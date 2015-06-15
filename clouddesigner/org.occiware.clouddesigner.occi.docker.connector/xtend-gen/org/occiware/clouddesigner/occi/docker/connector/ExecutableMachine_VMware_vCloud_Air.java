@@ -27,10 +27,12 @@ public class ExecutableMachine_VMware_vCloud_Air extends Machine_VMware_vCloud_A
    * The machine manager.
    */
   private final MachineManager manager = new MachineManager(this) {
+    @Override
     public String getDriverName() {
       return "vmwarevcloudair";
     }
     
+    @Override
     public void appendDriverParameters(final StringBuilder sb) {
       boolean _isNotBlank = StringUtils.isNotBlank(ExecutableMachine_VMware_vCloud_Air.this.username);
       if (_isNotBlank) {
@@ -99,18 +101,22 @@ public class ExecutableMachine_VMware_vCloud_Air extends Machine_VMware_vCloud_A
     this.manager.startAll();
   }
   
+  @Override
   public void start() {
     this.manager.start();
   }
   
+  @Override
   public void stop(final StopMethod method) {
     this.manager.stop(method);
   }
   
+  @Override
   public void restart(final RestartMethod method) {
     this.manager.restart(method);
   }
   
+  @Override
   public void suspend(final SuspendMethod method) {
     this.manager.suspend(method);
   }

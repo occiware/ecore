@@ -3,8 +3,8 @@ package org.occiware.clouddesigner.occi.docker.gen.conf.services;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.occiware.clouddesigner.OCCI.Link;
-import org.occiware.clouddesigner.OCCI.Resource;
+import org.occiware.clouddesigner.occi.Link;
+import org.occiware.clouddesigner.occi.Resource;
 import org.occiware.clouddesigner.occi.docker.Container;
 import org.occiware.clouddesigner.occi.docker.Machine;
 

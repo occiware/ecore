@@ -13,12 +13,12 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
-import org.occiware.clouddesigner.OCCI.AttributeState;
-import org.occiware.clouddesigner.OCCI.Configuration;
-import org.occiware.clouddesigner.OCCI.Link;
-import org.occiware.clouddesigner.OCCI.OCCIFactory;
-import org.occiware.clouddesigner.OCCI.OCCIPackage;
-import org.occiware.clouddesigner.OCCI.Resource;
+import org.occiware.clouddesigner.occi.AttributeState;
+import org.occiware.clouddesigner.occi.Configuration;
+import org.occiware.clouddesigner.occi.Link;
+import org.occiware.clouddesigner.occi.OCCIFactory;
+import org.occiware.clouddesigner.occi.OCCIPackage;
+import org.occiware.clouddesigner.occi.Resource;
 import org.occiware.clouddesigner.occi2ecore.utils.ConverterUtils;
 
 public class ConvertDockerConfig {

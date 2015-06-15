@@ -10,7 +10,7 @@
       <!-- @generated OCCI -->
       <package
             uri="http://schemas.ogf.org/occi"
-            class="org.occiware.clouddesigner.OCCI.OCCIPackage"
+            class="org.occiware.clouddesigner.occi.OCCIPackage"
             genModel="model/OCCI.genmodel"/>
    </extension>
 
