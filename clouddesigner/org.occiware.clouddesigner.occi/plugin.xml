@@ -5,13 +5,20 @@
 -->
 
 <plugin>
-
+   <extension-point id="occie" name="org.occiware.clouddesigner.occi.occie" schema="schema/occie.exsd"/>
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated OCCI -->
       <package
             uri="http://schemas.ogf.org/occi"
             class="org.occiware.clouddesigner.occi.OCCIPackage"
             genModel="model/OCCI.genmodel"/>
+   </extension>
+   <extension
+         point="org.occiware.clouddesigner.occi.occie">
+      <occie
+            file="model/Core.occie"
+            scheme="http://schemas.ogf.org/occi/core#">
+      </occie>
    </extension>
 
 </plugin>

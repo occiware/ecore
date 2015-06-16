@@ -13,5 +13,12 @@
             class="org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage"
             genModel="model/Infrastructure.genmodel"/>
    </extension>
+   <extension
+         point="org.occiware.clouddesigner.occi.occie">
+      <occie
+            file="model/Infrastructure.occie"
+            scheme="http://schemas.ogf.org/occi/infrastructure#">
+      </occie>
+   </extension>
 
 </plugin>

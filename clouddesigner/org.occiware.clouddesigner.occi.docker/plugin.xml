@@ -13,5 +13,12 @@
             class="org.occiware.clouddesigner.occi.docker.DockerPackage"
             genModel="model/Docker.genmodel"/>
    </extension>
+   <extension
+         point="org.occiware.clouddesigner.occi.occie">
+      <occie
+            file="model/Docker.occie"
+            scheme="http://occiware.org/docker#">
+      </occie>
+   </extension>
 
 </plugin>

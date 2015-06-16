@@ -49,7 +49,7 @@ import com.google.common.collect.Maps;
  *         href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class InitExtensionModel extends WorkspaceModifyOperation {
-	static final String FILE_EXT = ".xmi"; //$NON-NLS-1$
+	static final String FILE_EXT = ".occie"; //$NON-NLS-1$
 
 	/**
 	 * The project.
@@ -134,7 +134,7 @@ public class InitExtensionModel extends WorkspaceModifyOperation {
 
 								final ResourceSetImpl resourceSet = new ResourceSetImpl();
 								/* load the occi-core.xmi extension. */
-								final Resource occiCoreResource = resourceSet.getResource(URI.createPlatformPluginURI("org.occiware.clouddesigner.occi/model/occi-core.xmi", true), true);
+								final Resource occiCoreResource = resourceSet.getResource(URI.createPlatformPluginURI("org.occiware.clouddesigner.occi/model/Core.occie", true), true);
 								final Extension occiCoreExtension = (Extension)occiCoreResource.getContents().get(0);
 								/* import the OCCI Core extension. */
 								rootObject.getImport().add(occiCoreExtension);
