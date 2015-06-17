@@ -7,6 +7,7 @@ Prerequisites
 	Supports Docker client version 0.2.0
 	Be sure the Docker daemon is running.
 	You should have an account or register yourself on: https://hub.docker.com/account/signup/.
+	To use the driver ```vmwarevsphere```, you should install ```govc``` CLI as described here: https://github.com/vmware/govmomi/tree/master/govc.
 	
 
 Configuration
