@@ -4,7 +4,7 @@ import com.google.common.base.Objects;
 import java.security.SecureRandom;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtext.xbase.lib.ExclusiveRange;
-import org.occiware.clouddesigner.OCCI.Link;
+import org.occiware.clouddesigner.occi.Link;
 import org.occiware.clouddesigner.occi.docker.Container;
 import org.occiware.clouddesigner.occi.docker.Contains;
 import org.occiware.clouddesigner.occi.docker.DockerFactory;

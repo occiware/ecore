@@ -20,9 +20,9 @@ import java.util.HashMap
 import java.util.List
 import java.util.Map
 import org.eclipse.emf.ecore.EObject
-import org.occiware.clouddesigner.OCCI.Configuration
-import org.occiware.clouddesigner.OCCI.Link
-import org.occiware.clouddesigner.OCCI.Resource
+import org.occiware.clouddesigner.occi.Configuration
+import org.occiware.clouddesigner.occi.Link
+import org.occiware.clouddesigner.occi.Resource
 import org.occiware.clouddesigner.occi.docker.Contains
 import org.occiware.clouddesigner.occi.docker.DockerPackage
 import org.occiware.clouddesigner.occi.docker.Machine

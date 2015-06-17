@@ -48,12 +48,12 @@ public class OCCIJvmModelInferrer extends AbstractModelInferrer {
    *            rely on linking using the index if isPreIndexingPhase is
    *            <code>true</code>.
    */
-  protected void _infer(final org.occiware.clouddesigner.OCCI.Extension element, final IJvmDeclaredTypeAcceptor acceptor, final boolean isPreIndexingPhase) {
+  protected void _infer(final org.occiware.clouddesigner.occi.Extension element, final IJvmDeclaredTypeAcceptor acceptor, final boolean isPreIndexingPhase) {
   }
   
   public void infer(final EObject element, final IJvmDeclaredTypeAcceptor acceptor, final boolean isPreIndexingPhase) {
-    if (element instanceof org.occiware.clouddesigner.OCCI.Extension) {
-      _infer((org.occiware.clouddesigner.OCCI.Extension)element, acceptor, isPreIndexingPhase);
+    if (element instanceof org.occiware.clouddesigner.occi.Extension) {
+      _infer((org.occiware.clouddesigner.occi.Extension)element, acceptor, isPreIndexingPhase);
       return;
     } else if (element != null) {
       _infer(element, acceptor, isPreIndexingPhase);

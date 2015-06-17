@@ -4,8 +4,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService;
 import org.eclipse.xtext.serializer.sequencer.TransientValueService;
-import org.occiware.clouddesigner.OCCI.Category;
-import org.occiware.clouddesigner.OCCI.OCCIPackage;
+import org.occiware.clouddesigner.occi.Category;
+import org.occiware.clouddesigner.occi.OCCIPackage;
 
 @SuppressWarnings("restriction")
 public class OCCITransientValueService2 extends TransientValueService {

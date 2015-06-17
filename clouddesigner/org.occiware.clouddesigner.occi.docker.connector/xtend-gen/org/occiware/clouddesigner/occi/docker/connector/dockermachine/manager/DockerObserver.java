@@ -42,6 +42,7 @@ public class DockerObserver {
     EList<Adapter> _eAdapters = machine.eAdapters();
     _eAdapters.add(
       new EContentAdapter() {
+        @Override
         public void notifyChanged(final Notification notification) {
           DockerObserver.LOGGER.info("The Container has Changed");
           Object _notifier = notification.getNotifier();
@@ -80,6 +81,7 @@ public class DockerObserver {
     EList<Adapter> _eAdapters = container.eAdapters();
     _eAdapters.add(
       new EContentAdapter() {
+        @Override
         public void notifyChanged(final Notification notification) {
           DockerObserver.LOGGER.info("The Container has Changed");
           Object _notifier = notification.getNotifier();

@@ -3,10 +3,10 @@
  */
 package org.occiware.clouddesigner.occi.xtext.parser.antlr;
 
-import com.google.inject.Inject;
-
 import org.eclipse.xtext.parser.antlr.XtextTokenStream;
 import org.occiware.clouddesigner.occi.xtext.services.OCCIGrammarAccess;
+
+import com.google.inject.Inject;
 
 public class OCCIParser extends org.eclipse.xtext.parser.antlr.AbstractAntlrParser {
 	

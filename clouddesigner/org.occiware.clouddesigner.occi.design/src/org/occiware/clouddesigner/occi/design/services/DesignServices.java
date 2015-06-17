@@ -9,12 +9,12 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
-import org.occiware.clouddesigner.OCCI.Action;
-import org.occiware.clouddesigner.OCCI.Attribute;
-import org.occiware.clouddesigner.OCCI.Category;
-import org.occiware.clouddesigner.OCCI.Extension;
-import org.occiware.clouddesigner.OCCI.Kind;
-import org.occiware.clouddesigner.OCCI.Mixin;
+import org.occiware.clouddesigner.occi.Action;
+import org.occiware.clouddesigner.occi.Attribute;
+import org.occiware.clouddesigner.occi.Category;
+import org.occiware.clouddesigner.occi.Extension;
+import org.occiware.clouddesigner.occi.Kind;
+import org.occiware.clouddesigner.occi.Mixin;
 
 public class DesignServices {
 

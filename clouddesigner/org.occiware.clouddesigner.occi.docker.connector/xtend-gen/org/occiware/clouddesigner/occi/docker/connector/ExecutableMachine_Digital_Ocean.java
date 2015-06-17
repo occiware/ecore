@@ -28,10 +28,12 @@ public class ExecutableMachine_Digital_Ocean extends Machine_Digital_OceanImpl {
    * The machine manager.
    */
   private final MachineManager manager = new MachineManager(this) {
+    @Override
     public String getDriverName() {
       return "digitalocean";
     }
     
+    @Override
     public void appendDriverParameters(final StringBuilder sb) {
       Preconditions.<String>checkNotNull(ExecutableMachine_Digital_Ocean.this.access_token, "access_token is null");
       Preconditions.<String>checkNotNull(ExecutableMachine_Digital_Ocean.this.size, "size is null");
@@ -62,18 +64,22 @@ public class ExecutableMachine_Digital_Ocean extends Machine_Digital_OceanImpl {
     this.manager.startAll();
   }
   
+  @Override
   public void start() {
     this.manager.start();
   }
   
+  @Override
   public void stop(final StopMethod method) {
     this.manager.stop(method);
   }
   
+  @Override
   public void restart(final RestartMethod method) {
     this.manager.restart(method);
   }
   
+  @Override
   public void suspend(final SuspendMethod method) {
     this.manager.suspend(method);
   }

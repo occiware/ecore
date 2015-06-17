@@ -5,10 +5,10 @@ package org.occiware.clouddesigner.occi.xtext;
 
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.parsetree.reconstr.ITransientValueService;
-import org.eclipse.xtext.resource.IDerivedStateComputer;
-import org.eclipse.xtext.resource.IResourceDescription;
 import org.eclipse.xtext.resource.DerivedStateAwareResource;
 import org.eclipse.xtext.resource.DerivedStateAwareResourceDescriptionManager;
+import org.eclipse.xtext.resource.IDerivedStateComputer;
+import org.eclipse.xtext.resource.IResourceDescription;
 import org.eclipse.xtext.resource.XtextResource;
 import org.occiware.clouddesigner.occi.xtext.scoping.NameProvider;
 

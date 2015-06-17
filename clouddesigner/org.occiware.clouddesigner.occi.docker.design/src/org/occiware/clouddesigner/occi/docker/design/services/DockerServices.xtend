@@ -18,7 +18,7 @@ import org.eclipse.jface.dialogs.ProgressMonitorDialog
 import org.eclipse.jface.operation.IRunnableWithProgress
 import org.eclipse.swt.widgets.Display
 import org.eclipse.swt.widgets.Shell
-import org.occiware.clouddesigner.OCCI.Configuration
+import org.occiware.clouddesigner.occi.Configuration
 import org.occiware.clouddesigner.occi.docker.Container
 import org.occiware.clouddesigner.occi.docker.Machine
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableDockerFactory

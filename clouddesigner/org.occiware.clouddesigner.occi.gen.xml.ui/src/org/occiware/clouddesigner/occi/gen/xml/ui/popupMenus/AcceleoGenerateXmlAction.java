@@ -12,12 +12,12 @@ package org.occiware.clouddesigner.occi.gen.xml.ui.popupMenus;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.ArrayList;
 
-import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IContainer;
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -28,11 +28,11 @@ import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.occiware.clouddesigner.occi.gen.xml.ui.Activator;
-import org.occiware.clouddesigner.occi.gen.xml.ui.common.GenerateAll;
 import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.ActionDelegate;
+import org.occiware.clouddesigner.occi.gen.xml.ui.Activator;
+import org.occiware.clouddesigner.occi.gen.xml.ui.common.GenerateAll;
 
 /**
  * Xml code generation.

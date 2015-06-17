@@ -28,10 +28,12 @@ public class ExecutableMachine_OpenStack extends Machine_OpenStackImpl {
    * The machine manager.
    */
   private final MachineManager manager = new MachineManager(this) {
+    @Override
     public String getDriverName() {
       return "openstack";
     }
     
+    @Override
     public void appendDriverParameters(final StringBuilder sb) {
       Preconditions.<String>checkNotNull(ExecutableMachine_OpenStack.this.auth_url, "auth_url is null");
       Preconditions.<String>checkNotNull(ExecutableMachine_OpenStack.this.flavor_id, "flavor_id is null");
@@ -116,18 +118,22 @@ public class ExecutableMachine_OpenStack extends Machine_OpenStackImpl {
     this.manager.startAll();
   }
   
+  @Override
   public void start() {
     this.manager.start();
   }
   
+  @Override
   public void stop(final StopMethod method) {
     this.manager.stop(method);
   }
   
+  @Override
   public void restart(final RestartMethod method) {
     this.manager.restart(method);
   }
   
+  @Override
   public void suspend(final SuspendMethod method) {
     this.manager.suspend(method);
   }

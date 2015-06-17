@@ -3,8 +3,6 @@
  */
 package org.occiware.clouddesigner.occi.xtext.serializer;
 
-import com.google.inject.Inject;
-import com.google.inject.Provider;
 import org.eclipse.emf.common.util.BasicEMap.Entry;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EDataType;
@@ -12,27 +10,23 @@ import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcorePackage;
-import org.eclipse.xtext.serializer.acceptor.ISemanticSequenceAcceptor;
 import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
-import org.eclipse.xtext.serializer.diagnostic.ISemanticSequencerDiagnosticProvider;
-import org.eclipse.xtext.serializer.diagnostic.ISerializationDiagnostic.Acceptor;
 import org.eclipse.xtext.serializer.sequencer.AbstractDelegatingSemanticSequencer;
-import org.eclipse.xtext.serializer.sequencer.GenericSequencer;
 import org.eclipse.xtext.serializer.sequencer.ISemanticNodeProvider.INodesForEObjectProvider;
-import org.eclipse.xtext.serializer.sequencer.ISemanticSequencer;
-import org.eclipse.xtext.serializer.sequencer.ITransientValueService;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
-import org.occiware.clouddesigner.OCCI.Action;
-import org.occiware.clouddesigner.OCCI.Attribute;
-import org.occiware.clouddesigner.OCCI.AttributeState;
-import org.occiware.clouddesigner.OCCI.Configuration;
-import org.occiware.clouddesigner.OCCI.Extension;
-import org.occiware.clouddesigner.OCCI.Kind;
-import org.occiware.clouddesigner.OCCI.Link;
-import org.occiware.clouddesigner.OCCI.Mixin;
-import org.occiware.clouddesigner.OCCI.OCCIPackage;
-import org.occiware.clouddesigner.OCCI.Resource;
+import org.occiware.clouddesigner.occi.Action;
+import org.occiware.clouddesigner.occi.Attribute;
+import org.occiware.clouddesigner.occi.AttributeState;
+import org.occiware.clouddesigner.occi.Configuration;
+import org.occiware.clouddesigner.occi.Extension;
+import org.occiware.clouddesigner.occi.Kind;
+import org.occiware.clouddesigner.occi.Link;
+import org.occiware.clouddesigner.occi.Mixin;
+import org.occiware.clouddesigner.occi.OCCIPackage;
+import org.occiware.clouddesigner.occi.Resource;
 import org.occiware.clouddesigner.occi.xtext.services.OCCIGrammarAccess;
+
+import com.google.inject.Inject;
 
 @SuppressWarnings("all")
 public abstract class AbstractOCCISemanticSequencer extends AbstractDelegatingSemanticSequencer {

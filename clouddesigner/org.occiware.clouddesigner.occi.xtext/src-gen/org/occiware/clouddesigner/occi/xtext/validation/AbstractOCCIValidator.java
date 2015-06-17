@@ -5,6 +5,7 @@ package org.occiware.clouddesigner.occi.xtext.validation;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.eclipse.emf.ecore.EPackage;
 
 public class AbstractOCCIValidator extends org.eclipse.xtext.validation.AbstractDeclarativeValidator {
