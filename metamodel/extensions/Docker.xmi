@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<OCCI:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:OCCI="http://schemas.ogf.org/occi" xsi:schemaLocation="http://schemas.ogf.org/occi ../OCCI.ecore" name="Docker" scheme="http://schemas.occiware.org/docker#">
+<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:occi="http://schemas.ogf.org/occi" name="Docker" scheme="http://schemas.occiware.org/docker#">
   <import href="Core.xmi#/"/>
   <kinds term="container" scheme="http://schemas.occiware.org/docker#" title="Container Resource">
     <parent href="Core.xmi#//@kinds[term='resource']"/>
@@ -19,4 +19,4 @@
   <kinds term="conflicts" scheme="http://schemas.occiware.org/docker#" title="Conflicts Link">
     <parent href="Core.xmi#//@kinds[term='link']"/>
   </kinds>
-</OCCI:Extension>
+</occi:Extension>

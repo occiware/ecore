@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<OCCI:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:OCCI="http://schemas.ogf.org/occi" xsi:schemaLocation="http://schemas.ogf.org/occi ../OCCI.ecore" name="All OCCI Extensions" scheme="http://occiware.org#">
+<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:occi="http://schemas.ogf.org/occi" name="All OCCI Extensions" scheme="http://occiware.org#">
   <import href="Core.xmi#/"/>
   <import href="Infrastructure.xmi#/"/>
   <import href="Compute_Resource_Templates.xmi#/"/>
@@ -8,4 +8,4 @@
   <import href="Docker.xmi#/"/>
   <import href="Monitoring.xmi#/"/>
   <import href="ServiceManager.xmi#/"/>
-</OCCI:Extension>
+</occi:Extension>

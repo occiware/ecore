@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<OCCI:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:OCCI="http://schemas.ogf.org/occi" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xsi:schemaLocation="http://schemas.ogf.org/occi ../OCCI.ecore" name="OCNI" scheme="http://exem.com/ocni#">
+<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:occi="http://schemas.ogf.org/occi" name="OCNI" scheme="http://exem.com/ocni#">
   <import href="Core.xmi#/"/>
   <import href="Infrastructure.xmi#/"/>
   <kinds term="CloNeNode" scheme="http://exem.com/ocni#">
@@ -64,4 +64,4 @@
   <types name="Loss" instanceClassName="java.lang.String"/>
   <types name="RoutingScheme" instanceClassName="ocni.RoutingScheme"/>
   <types xsi:type="ecore:EEnum" name="State"/>
-</OCCI:Extension>
+</occi:Extension>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<OCCI:Configuration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:OCCI="http://schemas.ogf.org/occi" xsi:schemaLocation="http://schemas.ogf.org/occi ../OCCI.ecore">
+<occi:Configuration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:occi="http://schemas.ogf.org/occi">
   <use href="../extensions/Core.xmi#/"/>
   <resources id="r1">
     <kind href="../extensions/Core.xmi#//@kinds[term='resource']"/>
@@ -7,4 +7,4 @@
   <resources id="r1">
     <kind href="../extensions/Core.xmi#//@kinds[term='resource']"/>
   </resources>
-</OCCI:Configuration>
+</occi:Configuration>

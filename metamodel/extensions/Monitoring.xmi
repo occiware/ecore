@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<OCCI:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:OCCI="http://schemas.ogf.org/occi" xsi:schemaLocation="http://schemas.ogf.org/occi ../OCCI.ecore" name="OCCI Monitoring" scheme="http://schemas.ogf.org/occi/monitoring#">
+<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:occi="http://schemas.ogf.org/occi" name="OCCI Monitoring" scheme="http://schemas.ogf.org/occi/monitoring#">
   <import href="Core.xmi#/"/>
   <kinds term="sensor" scheme="http://schemas.ogf.org/occi/monitoring#" title="Sensor Resource">
     <attributes name="occi.sensor.period" mutable="true" required="true" description="Sensing period">
@@ -34,4 +34,4 @@
   <mixins term="metric" scheme="http://schemas.ogf.org/occi/monitoring/collector#" title="Collector Metric Mixin" applies="//@kinds[term='collector']"/>
   <mixins term="aggregator" scheme="http://schemas.ogf.org/occi/monitoring/sensor#" title="Aggregator Mixin" applies="//@kinds[term='sensor']"/>
   <mixins term="publisher" scheme="http://schemas.ogf.org/occi/monitoring/sensor#" title="Publisher Mixin" applies="//@kinds[term='sensor']"/>
-</OCCI:Extension>
+</occi:Extension>
