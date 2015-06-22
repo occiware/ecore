@@ -2,7 +2,7 @@ import '../OCCI.ecore'
 
 library 'Core.ocl'
 
-package OCCI
+package occi
 
 context Configuration
 inv MachineNameUnique:

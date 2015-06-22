@@ -1,6 +1,6 @@
 import '../OCCI.ecore'
 
-package OCCI
+package occi
 
 context Category
 def : identity : String = scheme + term
