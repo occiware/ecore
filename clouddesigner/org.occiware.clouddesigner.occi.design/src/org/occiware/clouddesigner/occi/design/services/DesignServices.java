@@ -4,7 +4,6 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.edit.ui.action.LoadResourceAction.LoadResourceDialog;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.swt.widgets.Display;
@@ -70,7 +69,7 @@ public class DesignServices {
 	public void importExtension(Extension extension) {
 		Shell shell = Display.getCurrent().getActiveShell();
 		Session session = SessionManager.INSTANCE.getSession(extension);
-		LoadResourceDialog dialog = new LoadResourceDialog(shell,
+		LoadExtensionDialog dialog = new LoadExtensionDialog(shell,
 				session.getTransactionalEditingDomain());
 		dialog.open();
 
