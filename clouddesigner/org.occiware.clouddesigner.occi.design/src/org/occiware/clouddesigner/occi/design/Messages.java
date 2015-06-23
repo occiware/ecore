@@ -17,6 +17,9 @@ public class Messages extends NLS {
 	public static String NewExtensionWizard_PageTitle;
 	public static String NewExtensionWizard_ProjectCreationError;
 	public static String NewExtensionWizard_RepresentationCreationError;
+	public static String RegisterExtensionAction_ExtRegistration;
+	public static String RegisterExtensionAction_ExtRegistrationError;
+	public static String RegisterExtensionAction_RegisteredExtension;
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, Messages.class);
