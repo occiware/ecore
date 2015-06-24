@@ -48,7 +48,7 @@ public class OCCI2Ecore implements IConverterPaths {
 				+ DOCKER_SAMPLE2_OCCI_PATH, "file:/" + DOCKER_SAMPLE2_DSL_PATH);
 	}
 
-	private static EPackage convertExtension(String extensionPath,
+	protected static EPackage convertExtension(String extensionPath,
 			String metamodelPath) throws IOException {
 		Extension dockerExt = (Extension) ConverterUtils.getRootElement(
 				resourceSet, "file:/" + extensionPath);
