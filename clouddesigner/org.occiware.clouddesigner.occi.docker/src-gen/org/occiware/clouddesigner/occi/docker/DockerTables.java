@@ -2,9 +2,9 @@
  *************************************************************************
  * This code is 100% auto-generated
  * from:
- *   platform:/resource/org.occiware.clouddesigner.occi.docker/model/Docker.ecore
+ *   /org.occiware.clouddesigner.occi.docker/model/Docker.ecore
  * using:
- *   platform:/resource/org.occiware.clouddesigner.occi.docker/model/Docker.genmodel
+ *   /org.occiware.clouddesigner.occi.docker/model/Docker.genmodel
  *   org.eclipse.ocl.examples.codegen.oclinecore.OCLinEcoreTables
  *
  * Do not edit it.
@@ -12,30 +12,33 @@
 package org.occiware.clouddesigner.occi.docker;
 
 import java.lang.String;
-import org.eclipse.ocl.examples.domain.elements.DomainParameterTypes;
-import org.eclipse.ocl.examples.domain.elements.DomainTypeParameters;
-import org.eclipse.ocl.examples.domain.ids.ClassId;
-import org.eclipse.ocl.examples.domain.ids.CollectionTypeId;
-import org.eclipse.ocl.examples.domain.ids.DataTypeId;
-import org.eclipse.ocl.examples.domain.ids.EnumerationId;
-import org.eclipse.ocl.examples.domain.ids.IdManager;
-import org.eclipse.ocl.examples.domain.ids.MetaclassId;
-import org.eclipse.ocl.examples.domain.ids.NsURIPackageId;
-import org.eclipse.ocl.examples.domain.ids.PropertyId;
-import org.eclipse.ocl.examples.domain.ids.TuplePartId;
-import org.eclipse.ocl.examples.domain.ids.TupleTypeId;
-import org.eclipse.ocl.examples.domain.ids.TypeId;
-import org.eclipse.ocl.examples.library.ecore.EcoreExecutorEnumeration;
-import org.eclipse.ocl.examples.library.ecore.EcoreExecutorEnumerationLiteral;
-import org.eclipse.ocl.examples.library.ecore.EcoreExecutorPackage;
-import org.eclipse.ocl.examples.library.ecore.EcoreExecutorProperty;
-import org.eclipse.ocl.examples.library.ecore.EcoreExecutorType;
-import org.eclipse.ocl.examples.library.executor.ExecutorFragment;
-import org.eclipse.ocl.examples.library.executor.ExecutorOperation;
-import org.eclipse.ocl.examples.library.executor.ExecutorProperty;
-import org.eclipse.ocl.examples.library.executor.ExecutorStandardLibrary;
-import org.eclipse.ocl.examples.library.oclstdlib.OCLstdlibTables;
-import org.eclipse.ocl.examples.pivot.PivotTables;
+import org.eclipse.ocl.pivot.ParameterTypes;
+import org.eclipse.ocl.pivot.PivotTables;
+import org.eclipse.ocl.pivot.TemplateParameters;
+import org.eclipse.ocl.pivot.ids.ClassId;
+import org.eclipse.ocl.pivot.ids.CollectionTypeId;
+import org.eclipse.ocl.pivot.ids.DataTypeId;
+import org.eclipse.ocl.pivot.ids.EnumerationId;
+import org.eclipse.ocl.pivot.ids.IdManager;
+import org.eclipse.ocl.pivot.ids.NsURIPackageId;
+import org.eclipse.ocl.pivot.ids.PropertyId;
+import org.eclipse.ocl.pivot.ids.RootPackageId;
+import org.eclipse.ocl.pivot.ids.TuplePartId;
+import org.eclipse.ocl.pivot.ids.TupleTypeId;
+import org.eclipse.ocl.pivot.ids.TypeId;
+import org.eclipse.ocl.pivot.internal.library.ecore.EcoreExecutorEnumeration;
+import org.eclipse.ocl.pivot.internal.library.ecore.EcoreExecutorEnumerationLiteral;
+import org.eclipse.ocl.pivot.internal.library.ecore.EcoreExecutorPackage;
+import org.eclipse.ocl.pivot.internal.library.ecore.EcoreExecutorProperty;
+import org.eclipse.ocl.pivot.internal.library.ecore.EcoreExecutorType;
+import org.eclipse.ocl.pivot.internal.library.executor.ExecutorFragment;
+import org.eclipse.ocl.pivot.internal.library.executor.ExecutorOperation;
+import org.eclipse.ocl.pivot.internal.library.executor.ExecutorProperty;
+import org.eclipse.ocl.pivot.internal.library.executor.ExecutorStandardLibrary;
+import org.eclipse.ocl.pivot.oclstdlib.OCLstdlibTables;
+import org.eclipse.ocl.pivot.utilities.TypeUtil;
+import org.eclipse.ocl.pivot.utilities.ValueUtil;
+import org.eclipse.ocl.pivot.values.IntegerValue;
 import org.occiware.clouddesigner.occi.OCCIPackage;
 import org.occiware.clouddesigner.occi.OCCITables;
 import org.occiware.clouddesigner.occi.docker.DockerPackage;
@@ -51,10 +54,14 @@ import org.occiware.clouddesigner.occi.infrastructure.InfrastructureTables;
 @SuppressWarnings("nls")
 public class DockerTables
 {
+	static {
+		Init.initStart();
+	}
+
 	/**
 	 *	The package descriptor for the package.
 	 */
-	public static final /*@NonNull*/ EcoreExecutorPackage PACKAGE = new EcoreExecutorPackage(DockerPackage.eINSTANCE, null);
+	public static final /*@NonNull*/ EcoreExecutorPackage PACKAGE = new EcoreExecutorPackage(DockerPackage.eINSTANCE);
 
 	/**
 	 *	The library of all packages and types.
@@ -64,9 +71,11 @@ public class DockerTables
 	/**
 	 *	Constants used by auto-generated code.
 	 */
+    public static final /*@NonNull*/ /*@NonInvalid*/ RootPackageId PACKid_$metamodel$ = IdManager.getRootPackageId("$metamodel$");
     public static final /*@NonNull*/ /*@NonInvalid*/ NsURIPackageId PACKid_http_c_s_s_occiware_org_s_docker = IdManager.getNsURIPackageId("http://occiware.org/docker", null, DockerPackage.eINSTANCE);
     public static final /*@NonNull*/ /*@NonInvalid*/ NsURIPackageId PACKid_http_c_s_s_schemas_ogf_org_s_occi = IdManager.getNsURIPackageId("http://schemas.ogf.org/occi", null, OCCIPackage.eINSTANCE);
     public static final /*@NonNull*/ /*@NonInvalid*/ NsURIPackageId PACKid_http_c_s_s_schemas_ogf_org_s_occi_s_infrastructure = IdManager.getNsURIPackageId("http://schemas.ogf.org/occi/infrastructure", null, null);
+    public static final /*@NonNull*/ /*@NonInvalid*/ ClassId CLSSid_Class = DockerTables.PACKid_$metamodel$.getClassId("Class", 0);
     public static final /*@NonNull*/ /*@NonInvalid*/ ClassId CLSSid_Compute = DockerTables.PACKid_http_c_s_s_schemas_ogf_org_s_occi_s_infrastructure.getClassId("Compute", 0);
     public static final /*@NonNull*/ /*@NonInvalid*/ ClassId CLSSid_Container = DockerTables.PACKid_http_c_s_s_occiware_org_s_docker.getClassId("Container", 0);
     public static final /*@NonNull*/ /*@NonInvalid*/ ClassId CLSSid_Contains = DockerTables.PACKid_http_c_s_s_occiware_org_s_docker.getClassId("Contains", 0);
@@ -79,17 +88,23 @@ public class DockerTables
     public static final /*@NonNull*/ /*@NonInvalid*/ DataTypeId DATAid_GiB = DockerTables.PACKid_http_c_s_s_schemas_ogf_org_s_occi_s_infrastructure.getDataTypeId("GiB", 0);
     public static final /*@NonNull*/ /*@NonInvalid*/ DataTypeId DATAid_Number = DockerTables.PACKid_http_c_s_s_schemas_ogf_org_s_occi.getDataTypeId("Number", 0);
     public static final /*@NonNull*/ /*@NonInvalid*/ EnumerationId ENUMid_Mode = DockerTables.PACKid_http_c_s_s_occiware_org_s_docker.getEnumerationId("Mode");
+    public static final /*@NonNull*/ /*@NonInvalid*/ IntegerValue INT_0 = ValueUtil.integerValueOf("0");
     public static final /*@NonNull*/ /*@NonInvalid*/ TuplePartId PARTid_ = IdManager.getTuplePartId(0, "message", TypeId.STRING);
     public static final /*@NonNull*/ /*@NonInvalid*/ TuplePartId PARTid__0 = IdManager.getTuplePartId(1, "status", TypeId.BOOLEAN);
     public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId SEQ_PRIMid_Real = TypeId.SEQUENCE.getSpecializedId(TypeId.REAL);
+    public static final /*@NonNull*/ /*@NonInvalid*/ String STR_Container_c_c_ContainerLinkAliasUnique = "Container::ContainerLinkAliasUnique";
+    public static final /*@NonNull*/ /*@NonInvalid*/ String STR_Container_c_c_ContainerNoCycleBetweenContainers = "Container::ContainerNoCycleBetweenContainers";
     public static final /*@NonNull*/ /*@NonInvalid*/ String STR_Containers_32_consume_32 = "Containers consume ";
-    public static final /*@NonNull*/ /*@NonInvalid*/ String STR__32_when_32_memory_32_is_32_equa = " when memory is equals to ";
+    public static final /*@NonNull*/ /*@NonInvalid*/ String STR_Link_c_c_LinkCanOnlyConnectColocalizedContainers = "Link::LinkCanOnlyConnectColocalizedContainers";
+    public static final /*@NonNull*/ /*@NonInvalid*/ String STR_Link_c_c_LinkSourceAsContainer = "Link::LinkSourceAsContainer";
+    public static final /*@NonNull*/ /*@NonInvalid*/ String STR_Link_c_c_LinkTargetAsContainer = "Link::LinkTargetAsContainer";
+    public static final /*@NonNull*/ /*@NonInvalid*/ String STR_Machine_VirtualBox_c_c_ContainersUsedTooMemory = "Machine_VirtualBox::ContainersUsedTooMemory";
+    public static final /*@NonNull*/ /*@NonInvalid*/ String STR_Machine_c_c_MachineNameUnique = "Machine::MachineNameUnique";
+    public static final /*@NonNull*/ /*@NonInvalid*/ String STR_Volumesfrom_c_c_VolumesFromCanOnlyConnectColocalizedContainers = "Volumesfrom::VolumesFromCanOnlyConnectColocalizedContainers";
+    public static final /*@NonNull*/ /*@NonInvalid*/ String STR_Volumesfrom_c_c_VolumesFromSourceAsContainer = "Volumesfrom::VolumesFromSourceAsContainer";
+    public static final /*@NonNull*/ /*@NonInvalid*/ String STR_Volumesfrom_c_c_VolumesFromTargetAsContainer = "Volumesfrom::VolumesFromTargetAsContainer";
+    public static final /*@NonNull*/ /*@NonInvalid*/ String STR__32_when_32_memory_32_is_32_equals_32_to_32 = " when memory is equals to ";
     public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId BAG_CLSSid_Resource = TypeId.BAG.getSpecializedId(DockerTables.CLSSid_Resource);
-    public static final /*@NonNull*/ /*@NonInvalid*/ MetaclassId METAid_Metaclass = TypeId.METACLASS.getSpecializedId(DockerTables.CLSSid_Link_0);
-    public static final /*@NonNull*/ /*@NonInvalid*/ MetaclassId METAid_Metaclass_0 = TypeId.METACLASS.getSpecializedId(DockerTables.CLSSid_Volumesfrom);
-    public static final /*@NonNull*/ /*@NonInvalid*/ MetaclassId METAid_Metaclass_1 = TypeId.METACLASS.getSpecializedId(DockerTables.CLSSid_Container);
-    public static final /*@NonNull*/ /*@NonInvalid*/ MetaclassId METAid_Metaclass_2 = TypeId.METACLASS.getSpecializedId(DockerTables.CLSSid_Contains);
-    public static final /*@NonNull*/ /*@NonInvalid*/ MetaclassId METAid_Metaclass_3 = TypeId.METACLASS.getSpecializedId(DockerTables.CLSSid_Machine);
     public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_Link = TypeId.ORDERED_SET.getSpecializedId(DockerTables.CLSSid_Link);
     public static final /*@NonNull*/ /*@NonInvalid*/ PropertyId PROPid_memory = DockerTables.CLSSid_Compute.getPropertyId("memory");
     public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId SEQ_CLSSid_Container = TypeId.SEQUENCE.getSpecializedId(DockerTables.CLSSid_Container);
@@ -102,12 +117,31 @@ public class DockerTables
 	/**
 	 *	The type parameters for templated types and operations.
 	 */
-	public static class TypeParameters {	}
+	public static class TypeParameters {
+		static {
+			Init.initStart();
+			DockerTables.init();
+		}
+
+		static {
+			Init.initEnd();
+		}
+
+		/**
+		 * Force initialization of the fields of DockerTables::TypeParameters and all preceding sub-packages.
+		 */
+		public static void init() {}
+	}
 
 	/**
 	 *	The type descriptors for each type.
 	 */
 	public static class Types {
+		static {
+			Init.initStart();
+			TypeParameters.init();
+		}
+
 		public static final /*@NonNull*/ EcoreExecutorType _Container = new EcoreExecutorType(DockerPackage.Literals.CONTAINER, PACKAGE, 0);
 		public static final /*@NonNull*/ EcoreExecutorType _Contains = new EcoreExecutorType(DockerPackage.Literals.CONTAINS, PACKAGE, 0);
 		public static final /*@NonNull*/ EcoreExecutorType _Link = new EcoreExecutorType(DockerPackage.Literals.LINK, PACKAGE, 0);
@@ -153,12 +187,12 @@ public class DockerTables
 		 */
 		static {
 			PACKAGE.init(LIBRARY, types);
-			TypeFragments.init();
-			FragmentOperations.init();
-			FragmentProperties.init();
-			EnumerationLiterals.init();
+			Init.initEnd();
 		}
 
+		/**
+		 * Force initialization of the fields of DockerTables::Types and all preceding sub-packages.
+		 */
 		public static void init() {}
 	}
 
@@ -166,6 +200,11 @@ public class DockerTables
 	 *	The fragment descriptors for the local elements of each type and its supertypes.
 	 */
 	public static class Fragments {
+		static {
+			Init.initStart();
+			Types.init();
+		}
+
 		private static final /*@NonNull*/ ExecutorFragment _Container__Compute = new ExecutorFragment(Types._Container, InfrastructureTables.Types._Compute);
 		private static final /*@NonNull*/ ExecutorFragment _Container__Container = new ExecutorFragment(Types._Container, DockerTables.Types._Container);
 		private static final /*@NonNull*/ ExecutorFragment _Container__Entity = new ExecutorFragment(Types._Container, OCCITables.Types._Entity);
@@ -180,8 +219,8 @@ public class DockerTables
 		private static final /*@NonNull*/ ExecutorFragment _Contains__OclElement = new ExecutorFragment(Types._Contains, OCLstdlibTables.Types._OclElement);
 
 		private static final /*@NonNull*/ ExecutorFragment _Link__Entity = new ExecutorFragment(Types._Link, OCCITables.Types._Entity);
-		private static final /*@NonNull*/ ExecutorFragment _Link__Link_1 = new ExecutorFragment(Types._Link, DockerTables.Types._Link);
 		private static final /*@NonNull*/ ExecutorFragment _Link__Link = new ExecutorFragment(Types._Link, OCCITables.Types._Link);
+		private static final /*@NonNull*/ ExecutorFragment _Link__Link_1 = new ExecutorFragment(Types._Link, DockerTables.Types._Link);
 		private static final /*@NonNull*/ ExecutorFragment _Link__OclAny = new ExecutorFragment(Types._Link, OCLstdlibTables.Types._OclAny);
 		private static final /*@NonNull*/ ExecutorFragment _Link__OclElement = new ExecutorFragment(Types._Link, OCLstdlibTables.Types._OclElement);
 
@@ -299,7 +338,6 @@ public class DockerTables
 		private static final /*@NonNull*/ ExecutorFragment _Mode__OclAny = new ExecutorFragment(Types._Mode, OCLstdlibTables.Types._OclAny);
 		private static final /*@NonNull*/ ExecutorFragment _Mode__OclElement = new ExecutorFragment(Types._Mode, OCLstdlibTables.Types._OclElement);
 		private static final /*@NonNull*/ ExecutorFragment _Mode__OclType = new ExecutorFragment(Types._Mode, OCLstdlibTables.Types._OclType);
-		private static final /*@NonNull*/ ExecutorFragment _Mode__ParameterableElement = new ExecutorFragment(Types._Mode, PivotTables.Types._ParameterableElement);
 		private static final /*@NonNull*/ ExecutorFragment _Mode__TemplateableElement = new ExecutorFragment(Types._Mode, PivotTables.Types._TemplateableElement);
 		private static final /*@NonNull*/ ExecutorFragment _Mode__Type = new ExecutorFragment(Types._Mode, PivotTables.Types._Type);
 		private static final /*@NonNull*/ ExecutorFragment _Mode__Visitable = new ExecutorFragment(Types._Mode, PivotTables.Types._Visitable);
@@ -310,43 +348,76 @@ public class DockerTables
 		private static final /*@NonNull*/ ExecutorFragment _Volumesfrom__OclElement = new ExecutorFragment(Types._Volumesfrom, OCLstdlibTables.Types._OclElement);
 		private static final /*@NonNull*/ ExecutorFragment _Volumesfrom__Volumesfrom = new ExecutorFragment(Types._Volumesfrom, DockerTables.Types._Volumesfrom);
 
-		/*
-		 * Force initialization.
-		 */
-		public static void init() {
-			Types.init();
+		static {
+			Init.initEnd();
 		}
+
+		/**
+		 * Force initialization of the fields of DockerTables::Fragments and all preceding sub-packages.
+		 */
+		public static void init() {}
 	}
 
 	/**
 	 *	The parameter lists shared by operations.
 	 */
 	public static class Parameters {
-		public static final /*@NonNull*/ DomainParameterTypes _ = new DomainParameterTypes();
-		public static final /*@NonNull*/ DomainParameterTypes _String = new DomainParameterTypes(OCCITables.Types._String);
+		static {
+			Init.initStart();
+			Fragments.init();
+		}
+
+		public static final /*@NonNull*/ ParameterTypes _ = TypeUtil.createParameterTypes();
+		public static final /*@NonNull*/ ParameterTypes _String = TypeUtil.createParameterTypes(OCCITables.Types._String);
+
+		static {
+			Init.initEnd();
+		}
+
+		/**
+		 * Force initialization of the fields of DockerTables::Parameters and all preceding sub-packages.
+		 */
+		public static void init() {}
 	}
 
 	/**
 	 *	The operation descriptors for each operation of each type.
 	 */
 	public static class Operations {
-		public static final /*@NonNull*/ ExecutorOperation _Container__create = new ExecutorOperation("create", Parameters._, Types._Container,
-			0, DomainTypeParameters.EMPTY_LIST, null);
-		public static final /*@NonNull*/ ExecutorOperation _Container__kill = new ExecutorOperation("kill", Parameters._String, Types._Container,
-			1, DomainTypeParameters.EMPTY_LIST, null);
-		public static final /*@NonNull*/ ExecutorOperation _Container__pause = new ExecutorOperation("pause", Parameters._, Types._Container,
-			2, DomainTypeParameters.EMPTY_LIST, null);
-		public static final /*@NonNull*/ ExecutorOperation _Container__run = new ExecutorOperation("run", Parameters._, Types._Container,
-			3, DomainTypeParameters.EMPTY_LIST, null);
-		public static final /*@NonNull*/ ExecutorOperation _Container__unpause = new ExecutorOperation("unpause", Parameters._, Types._Container,
-			4, DomainTypeParameters.EMPTY_LIST, null);
+		static {
+			Init.initStart();
+			Parameters.init();
+		}
 
+		public static final /*@NonNull*/ ExecutorOperation _Container__create = new ExecutorOperation("create", Parameters._, Types._Container,
+			0, TemplateParameters.EMPTY_LIST, null);
+		public static final /*@NonNull*/ ExecutorOperation _Container__kill = new ExecutorOperation("kill", Parameters._String, Types._Container,
+			1, TemplateParameters.EMPTY_LIST, null);
+		public static final /*@NonNull*/ ExecutorOperation _Container__pause = new ExecutorOperation("pause", Parameters._, Types._Container,
+			2, TemplateParameters.EMPTY_LIST, null);
+		public static final /*@NonNull*/ ExecutorOperation _Container__run = new ExecutorOperation("run", Parameters._, Types._Container,
+			3, TemplateParameters.EMPTY_LIST, null);
+		public static final /*@NonNull*/ ExecutorOperation _Container__unpause = new ExecutorOperation("unpause", Parameters._, Types._Container,
+			4, TemplateParameters.EMPTY_LIST, null);
+
+		static {
+			Init.initEnd();
+		}
+
+		/**
+		 * Force initialization of the fields of DockerTables::Operations and all preceding sub-packages.
+		 */
+		public static void init() {}
 	}
 
 	/**
 	 *	The property descriptors for each property of each type.
 	 */
 	public static class Properties {
+		static {
+			Init.initStart();
+			Operations.init();
+		}
 
 		public static final /*@NonNull*/ ExecutorProperty _Container__add_host = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__ADD_HOST, Types._Container, 0);
 		public static final /*@NonNull*/ ExecutorProperty _Container__build = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__BUILD, Types._Container, 1);
@@ -493,19 +564,25 @@ public class DockerTables
 		public static final /*@NonNull*/ ExecutorProperty _Machine_VirtualBox__disk_size = new EcoreExecutorProperty(DockerPackage.Literals.MACHINE_VIRTUAL_BOX__DISK_SIZE, Types._Machine_VirtualBox, 1);
 
 		public static final /*@NonNull*/ ExecutorProperty _Volumesfrom__mode = new EcoreExecutorProperty(DockerPackage.Literals.VOLUMESFROM__MODE, Types._Volumesfrom, 0);
-
-		/*
-		 * Force initialization.
-		 */
-		public static void init() {
-			Types.init();
+		static {
+			Init.initEnd();
 		}
+
+		/**
+		 * Force initialization of the fields of DockerTables::Properties and all preceding sub-packages.
+		 */
+		public static void init() {}
 	}
 
 	/**
 	 *	The fragments for all base types in depth order: OclAny first, OclSelf last.
 	 */
 	public static class TypeFragments {
+		static {
+			Init.initStart();
+			Properties.init();
+		}
+
 		private static final /*@NonNull*/ ExecutorFragment[] _Container =
 		{
 			Fragments._Container__OclAny /* 0 */,
@@ -701,7 +778,6 @@ public class DockerTables
 			Fragments._Mode__Visitable /* 2 */,
 			Fragments._Mode__Element /* 3 */,
 			Fragments._Mode__NamedElement /* 4 */,
-			Fragments._Mode__ParameterableElement /* 4 */,
 			Fragments._Mode__TemplateableElement /* 4 */,
 			Fragments._Mode__Namespace /* 5 */,
 			Fragments._Mode__Type /* 5 */,
@@ -710,7 +786,7 @@ public class DockerTables
 			Fragments._Mode__Enumeration /* 8 */,
 			Fragments._Mode__Mode /* 9 */
 		};
-		private static final /*@NonNull*/ int[] __Mode = { 1,1,3,1,3,2,1,1,1,1 };
+		private static final /*@NonNull*/ int[] __Mode = { 1,1,3,1,2,2,1,1,1,1 };
 
 		private static final /*@NonNull*/ ExecutorFragment[] _Volumesfrom =
 		{
@@ -725,10 +801,7 @@ public class DockerTables
 		/**
 		 *	Install the fragment descriptors in the class descriptors.
 		 */
-		public static void init() {
-			Fragments.init();
-			Properties.init();
-
+		static {
 			Types._Container.initFragments(_Container, __Container);
 			Types._Contains.initFragments(_Contains, __Contains);
 			Types._Link.initFragments(_Link, __Link);
@@ -747,40 +820,52 @@ public class DockerTables
 			Types._Machine_VirtualBox.initFragments(_Machine_VirtualBox, __Machine_VirtualBox);
 			Types._Mode.initFragments(_Mode, __Mode);
 			Types._Volumesfrom.initFragments(_Volumesfrom, __Volumesfrom);
+
+			Init.initEnd();
 		}
+
+		/**
+		 * Force initialization of the fields of DockerTables::TypeFragments and all preceding sub-packages.
+		 */
+		public static void init() {}
 	}
 
 	/**
 	 *	The lists of local operations or local operation overrides for each fragment of each type.
 	 */
 	public static class FragmentOperations {
+		static {
+			Init.initStart();
+			TypeFragments.init();
+		}
+
 		private static final /*@NonNull*/ ExecutorOperation[] _Container__Container = {
 			DockerTables.Operations._Container__create /* create() */,
-			DockerTables.Operations._Container__kill /* kill(String) */,
+			DockerTables.Operations._Container__kill /* kill(String[1]) */,
 			DockerTables.Operations._Container__pause /* pause() */,
 			DockerTables.Operations._Container__run /* run() */,
 			DockerTables.Operations._Container__unpause /* unpause() */
 		};
 		private static final /*@NonNull*/ ExecutorOperation[] _Container__Compute = {
-			InfrastructureTables.Operations._Compute__restart /* restart(RestartMethod) */,
+			InfrastructureTables.Operations._Compute__restart /* restart(RestartMethod[1]) */,
 			InfrastructureTables.Operations._Compute__start /* start() */,
-			InfrastructureTables.Operations._Compute__stop /* stop(StopMethod) */,
-			InfrastructureTables.Operations._Compute__suspend /* suspend(SuspendMethod) */
+			InfrastructureTables.Operations._Compute__stop /* stop(StopMethod[1]) */,
+			InfrastructureTables.Operations._Compute__suspend /* suspend(SuspendMethod[1]) */
 		};
 		private static final /*@NonNull*/ ExecutorOperation[] _Container__Entity = {};
 		private static final /*@NonNull*/ ExecutorOperation[] _Container__OclAny = {
-			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf) */,
-			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf) */,
+			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
+			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclAsSet /* oclAsSet() */,
-			OCLstdlibTables.Operations._OclAny__oclAsType /* oclAsType(TT)(Metaclass(TT)) */,
-			OCLstdlibTables.Operations._OclAny__oclIsInState /* oclIsInState(OclState) */,
+			OCLstdlibTables.Operations._OclAny__oclAsType /* oclAsType(TT)(TT[?]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsInState /* oclIsInState(OclState[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclIsInvalid /* oclIsInvalid() */,
-			OCLstdlibTables.Operations._OclAny__oclIsKindOf /* oclIsKindOf(T)(Metaclass(T)) */,
+			OCLstdlibTables.Operations._OclAny__oclIsKindOf /* oclIsKindOf(OclType[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclIsNew /* oclIsNew() */,
-			OCLstdlibTables.Operations._OclAny__oclIsTypeOf /* oclIsTypeOf(T)(Metaclass(T)) */,
+			OCLstdlibTables.Operations._OclAny__oclIsTypeOf /* oclIsTypeOf(OclType[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclIsUndefined /* oclIsUndefined() */,
 			OCLstdlibTables.Operations._OclAny__0_oclLog /* oclLog() */,
-			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String) */,
+			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclType /* oclType() */,
 			OCLstdlibTables.Operations._OclAny__toString /* toString() */
 		};
@@ -795,18 +880,18 @@ public class DockerTables
 		private static final /*@NonNull*/ ExecutorOperation[] _Contains__Entity = {};
 		private static final /*@NonNull*/ ExecutorOperation[] _Contains__Link = {};
 		private static final /*@NonNull*/ ExecutorOperation[] _Contains__OclAny = {
-			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf) */,
-			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf) */,
+			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
+			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclAsSet /* oclAsSet() */,
-			OCLstdlibTables.Operations._OclAny__oclAsType /* oclAsType(TT)(Metaclass(TT)) */,
-			OCLstdlibTables.Operations._OclAny__oclIsInState /* oclIsInState(OclState) */,
+			OCLstdlibTables.Operations._OclAny__oclAsType /* oclAsType(TT)(TT[?]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsInState /* oclIsInState(OclState[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclIsInvalid /* oclIsInvalid() */,
-			OCLstdlibTables.Operations._OclAny__oclIsKindOf /* oclIsKindOf(T)(Metaclass(T)) */,
+			OCLstdlibTables.Operations._OclAny__oclIsKindOf /* oclIsKindOf(OclType[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclIsNew /* oclIsNew() */,
-			OCLstdlibTables.Operations._OclAny__oclIsTypeOf /* oclIsTypeOf(T)(Metaclass(T)) */,
+			OCLstdlibTables.Operations._OclAny__oclIsTypeOf /* oclIsTypeOf(OclType[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclIsUndefined /* oclIsUndefined() */,
 			OCLstdlibTables.Operations._OclAny__0_oclLog /* oclLog() */,
-			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String) */,
+			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclType /* oclType() */,
 			OCLstdlibTables.Operations._OclAny__toString /* toString() */
 		};
@@ -820,18 +905,18 @@ public class DockerTables
 		private static final /*@NonNull*/ ExecutorOperation[] _Link__Entity = {};
 		private static final /*@NonNull*/ ExecutorOperation[] _Link__Link = {};
 		private static final /*@NonNull*/ ExecutorOperation[] _Link__OclAny = {
-			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf) */,
-			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf) */,
+			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
+			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclAsSet /* oclAsSet() */,
-			OCLstdlibTables.Operations._OclAny__oclAsType /* oclAsType(TT)(Metaclass(TT)) */,
-			OCLstdlibTables.Operations._OclAny__oclIsInState /* oclIsInState(OclState) */,
+			OCLstdlibTables.Operations._OclAny__oclAsType /* oclAsType(TT)(TT[?]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsInState /* oclIsInState(OclState[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclIsInvalid /* oclIsInvalid() */,
-			OCLstdlibTables.Operations._OclAny__oclIsKindOf /* oclIsKindOf(T)(Metaclass(T)) */,
+			OCLstdlibTables.Operations._OclAny__oclIsKindOf /* oclIsKindOf(OclType[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclIsNew /* oclIsNew() */,
-			OCLstdlibTables.Operations._OclAny__oclIsTypeOf /* oclIsTypeOf(T)(Metaclass(T)) */,
+			OCLstdlibTables.Operations._OclAny__oclIsTypeOf /* oclIsTypeOf(OclType[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclIsUndefined /* oclIsUndefined() */,
 			OCLstdlibTables.Operations._OclAny__0_oclLog /* oclLog() */,
-			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String) */,
+			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclType /* oclType() */,
 			OCLstdlibTables.Operations._OclAny__toString /* toString() */
 		};
@@ -843,25 +928,25 @@ public class DockerTables
 
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine__Machine = {};
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine__Compute = {
-			InfrastructureTables.Operations._Compute__restart /* restart(RestartMethod) */,
+			InfrastructureTables.Operations._Compute__restart /* restart(RestartMethod[1]) */,
 			InfrastructureTables.Operations._Compute__start /* start() */,
-			InfrastructureTables.Operations._Compute__stop /* stop(StopMethod) */,
-			InfrastructureTables.Operations._Compute__suspend /* suspend(SuspendMethod) */
+			InfrastructureTables.Operations._Compute__stop /* stop(StopMethod[1]) */,
+			InfrastructureTables.Operations._Compute__suspend /* suspend(SuspendMethod[1]) */
 		};
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine__Entity = {};
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine__OclAny = {
-			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf) */,
-			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf) */,
+			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
+			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclAsSet /* oclAsSet() */,
-			OCLstdlibTables.Operations._OclAny__oclAsType /* oclAsType(TT)(Metaclass(TT)) */,
-			OCLstdlibTables.Operations._OclAny__oclIsInState /* oclIsInState(OclState) */,
+			OCLstdlibTables.Operations._OclAny__oclAsType /* oclAsType(TT)(TT[?]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsInState /* oclIsInState(OclState[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclIsInvalid /* oclIsInvalid() */,
-			OCLstdlibTables.Operations._OclAny__oclIsKindOf /* oclIsKindOf(T)(Metaclass(T)) */,
+			OCLstdlibTables.Operations._OclAny__oclIsKindOf /* oclIsKindOf(OclType[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclIsNew /* oclIsNew() */,
-			OCLstdlibTables.Operations._OclAny__oclIsTypeOf /* oclIsTypeOf(T)(Metaclass(T)) */,
+			OCLstdlibTables.Operations._OclAny__oclIsTypeOf /* oclIsTypeOf(OclType[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclIsUndefined /* oclIsUndefined() */,
 			OCLstdlibTables.Operations._OclAny__0_oclLog /* oclLog() */,
-			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String) */,
+			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclType /* oclType() */,
 			OCLstdlibTables.Operations._OclAny__toString /* toString() */
 		};
@@ -874,26 +959,26 @@ public class DockerTables
 
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_Amazon_EC2__Machine_Amazon_EC2 = {};
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_Amazon_EC2__Compute = {
-			InfrastructureTables.Operations._Compute__restart /* restart(RestartMethod) */,
+			InfrastructureTables.Operations._Compute__restart /* restart(RestartMethod[1]) */,
 			InfrastructureTables.Operations._Compute__start /* start() */,
-			InfrastructureTables.Operations._Compute__stop /* stop(StopMethod) */,
-			InfrastructureTables.Operations._Compute__suspend /* suspend(SuspendMethod) */
+			InfrastructureTables.Operations._Compute__stop /* stop(StopMethod[1]) */,
+			InfrastructureTables.Operations._Compute__suspend /* suspend(SuspendMethod[1]) */
 		};
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_Amazon_EC2__Entity = {};
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_Amazon_EC2__Machine = {};
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_Amazon_EC2__OclAny = {
-			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf) */,
-			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf) */,
+			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
+			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclAsSet /* oclAsSet() */,
-			OCLstdlibTables.Operations._OclAny__oclAsType /* oclAsType(TT)(Metaclass(TT)) */,
-			OCLstdlibTables.Operations._OclAny__oclIsInState /* oclIsInState(OclState) */,
+			OCLstdlibTables.Operations._OclAny__oclAsType /* oclAsType(TT)(TT[?]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsInState /* oclIsInState(OclState[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclIsInvalid /* oclIsInvalid() */,
-			OCLstdlibTables.Operations._OclAny__oclIsKindOf /* oclIsKindOf(T)(Metaclass(T)) */,
+			OCLstdlibTables.Operations._OclAny__oclIsKindOf /* oclIsKindOf(OclType[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclIsNew /* oclIsNew() */,
-			OCLstdlibTables.Operations._OclAny__oclIsTypeOf /* oclIsTypeOf(T)(Metaclass(T)) */,
+			OCLstdlibTables.Operations._OclAny__oclIsTypeOf /* oclIsTypeOf(OclType[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclIsUndefined /* oclIsUndefined() */,
 			OCLstdlibTables.Operations._OclAny__0_oclLog /* oclLog() */,
-			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String) */,
+			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclType /* oclType() */,
 			OCLstdlibTables.Operations._OclAny__toString /* toString() */
 		};
@@ -906,26 +991,26 @@ public class DockerTables
 
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_Digital_Ocean__Machine_Digital_Ocean = {};
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_Digital_Ocean__Compute = {
-			InfrastructureTables.Operations._Compute__restart /* restart(RestartMethod) */,
+			InfrastructureTables.Operations._Compute__restart /* restart(RestartMethod[1]) */,
 			InfrastructureTables.Operations._Compute__start /* start() */,
-			InfrastructureTables.Operations._Compute__stop /* stop(StopMethod) */,
-			InfrastructureTables.Operations._Compute__suspend /* suspend(SuspendMethod) */
+			InfrastructureTables.Operations._Compute__stop /* stop(StopMethod[1]) */,
+			InfrastructureTables.Operations._Compute__suspend /* suspend(SuspendMethod[1]) */
 		};
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_Digital_Ocean__Entity = {};
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_Digital_Ocean__Machine = {};
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_Digital_Ocean__OclAny = {
-			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf) */,
-			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf) */,
+			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
+			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclAsSet /* oclAsSet() */,
-			OCLstdlibTables.Operations._OclAny__oclAsType /* oclAsType(TT)(Metaclass(TT)) */,
-			OCLstdlibTables.Operations._OclAny__oclIsInState /* oclIsInState(OclState) */,
+			OCLstdlibTables.Operations._OclAny__oclAsType /* oclAsType(TT)(TT[?]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsInState /* oclIsInState(OclState[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclIsInvalid /* oclIsInvalid() */,
-			OCLstdlibTables.Operations._OclAny__oclIsKindOf /* oclIsKindOf(T)(Metaclass(T)) */,
+			OCLstdlibTables.Operations._OclAny__oclIsKindOf /* oclIsKindOf(OclType[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclIsNew /* oclIsNew() */,
-			OCLstdlibTables.Operations._OclAny__oclIsTypeOf /* oclIsTypeOf(T)(Metaclass(T)) */,
+			OCLstdlibTables.Operations._OclAny__oclIsTypeOf /* oclIsTypeOf(OclType[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclIsUndefined /* oclIsUndefined() */,
 			OCLstdlibTables.Operations._OclAny__0_oclLog /* oclLog() */,
-			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String) */,
+			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclType /* oclType() */,
 			OCLstdlibTables.Operations._OclAny__toString /* toString() */
 		};
@@ -938,26 +1023,26 @@ public class DockerTables
 
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_Google_Compute_Engine__Machine_Google_Compute_Engine = {};
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_Google_Compute_Engine__Compute = {
-			InfrastructureTables.Operations._Compute__restart /* restart(RestartMethod) */,
+			InfrastructureTables.Operations._Compute__restart /* restart(RestartMethod[1]) */,
 			InfrastructureTables.Operations._Compute__start /* start() */,
-			InfrastructureTables.Operations._Compute__stop /* stop(StopMethod) */,
-			InfrastructureTables.Operations._Compute__suspend /* suspend(SuspendMethod) */
+			InfrastructureTables.Operations._Compute__stop /* stop(StopMethod[1]) */,
+			InfrastructureTables.Operations._Compute__suspend /* suspend(SuspendMethod[1]) */
 		};
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_Google_Compute_Engine__Entity = {};
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_Google_Compute_Engine__Machine = {};
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_Google_Compute_Engine__OclAny = {
-			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf) */,
-			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf) */,
+			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
+			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclAsSet /* oclAsSet() */,
-			OCLstdlibTables.Operations._OclAny__oclAsType /* oclAsType(TT)(Metaclass(TT)) */,
-			OCLstdlibTables.Operations._OclAny__oclIsInState /* oclIsInState(OclState) */,
+			OCLstdlibTables.Operations._OclAny__oclAsType /* oclAsType(TT)(TT[?]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsInState /* oclIsInState(OclState[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclIsInvalid /* oclIsInvalid() */,
-			OCLstdlibTables.Operations._OclAny__oclIsKindOf /* oclIsKindOf(T)(Metaclass(T)) */,
+			OCLstdlibTables.Operations._OclAny__oclIsKindOf /* oclIsKindOf(OclType[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclIsNew /* oclIsNew() */,
-			OCLstdlibTables.Operations._OclAny__oclIsTypeOf /* oclIsTypeOf(T)(Metaclass(T)) */,
+			OCLstdlibTables.Operations._OclAny__oclIsTypeOf /* oclIsTypeOf(OclType[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclIsUndefined /* oclIsUndefined() */,
 			OCLstdlibTables.Operations._OclAny__0_oclLog /* oclLog() */,
-			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String) */,
+			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclType /* oclType() */,
 			OCLstdlibTables.Operations._OclAny__toString /* toString() */
 		};
@@ -970,26 +1055,26 @@ public class DockerTables
 
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_IBM_SoftLayer__Machine_IBM_SoftLayer = {};
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_IBM_SoftLayer__Compute = {
-			InfrastructureTables.Operations._Compute__restart /* restart(RestartMethod) */,
+			InfrastructureTables.Operations._Compute__restart /* restart(RestartMethod[1]) */,
 			InfrastructureTables.Operations._Compute__start /* start() */,
-			InfrastructureTables.Operations._Compute__stop /* stop(StopMethod) */,
-			InfrastructureTables.Operations._Compute__suspend /* suspend(SuspendMethod) */
+			InfrastructureTables.Operations._Compute__stop /* stop(StopMethod[1]) */,
+			InfrastructureTables.Operations._Compute__suspend /* suspend(SuspendMethod[1]) */
 		};
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_IBM_SoftLayer__Entity = {};
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_IBM_SoftLayer__Machine = {};
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_IBM_SoftLayer__OclAny = {
-			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf) */,
-			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf) */,
+			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
+			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclAsSet /* oclAsSet() */,
-			OCLstdlibTables.Operations._OclAny__oclAsType /* oclAsType(TT)(Metaclass(TT)) */,
-			OCLstdlibTables.Operations._OclAny__oclIsInState /* oclIsInState(OclState) */,
+			OCLstdlibTables.Operations._OclAny__oclAsType /* oclAsType(TT)(TT[?]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsInState /* oclIsInState(OclState[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclIsInvalid /* oclIsInvalid() */,
-			OCLstdlibTables.Operations._OclAny__oclIsKindOf /* oclIsKindOf(T)(Metaclass(T)) */,
+			OCLstdlibTables.Operations._OclAny__oclIsKindOf /* oclIsKindOf(OclType[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclIsNew /* oclIsNew() */,
-			OCLstdlibTables.Operations._OclAny__oclIsTypeOf /* oclIsTypeOf(T)(Metaclass(T)) */,
+			OCLstdlibTables.Operations._OclAny__oclIsTypeOf /* oclIsTypeOf(OclType[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclIsUndefined /* oclIsUndefined() */,
 			OCLstdlibTables.Operations._OclAny__0_oclLog /* oclLog() */,
-			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String) */,
+			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclType /* oclType() */,
 			OCLstdlibTables.Operations._OclAny__toString /* toString() */
 		};
@@ -1002,26 +1087,26 @@ public class DockerTables
 
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_Microsoft_Azure__Machine_Microsoft_Azure = {};
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_Microsoft_Azure__Compute = {
-			InfrastructureTables.Operations._Compute__restart /* restart(RestartMethod) */,
+			InfrastructureTables.Operations._Compute__restart /* restart(RestartMethod[1]) */,
 			InfrastructureTables.Operations._Compute__start /* start() */,
-			InfrastructureTables.Operations._Compute__stop /* stop(StopMethod) */,
-			InfrastructureTables.Operations._Compute__suspend /* suspend(SuspendMethod) */
+			InfrastructureTables.Operations._Compute__stop /* stop(StopMethod[1]) */,
+			InfrastructureTables.Operations._Compute__suspend /* suspend(SuspendMethod[1]) */
 		};
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_Microsoft_Azure__Entity = {};
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_Microsoft_Azure__Machine = {};
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_Microsoft_Azure__OclAny = {
-			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf) */,
-			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf) */,
+			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
+			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclAsSet /* oclAsSet() */,
-			OCLstdlibTables.Operations._OclAny__oclAsType /* oclAsType(TT)(Metaclass(TT)) */,
-			OCLstdlibTables.Operations._OclAny__oclIsInState /* oclIsInState(OclState) */,
+			OCLstdlibTables.Operations._OclAny__oclAsType /* oclAsType(TT)(TT[?]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsInState /* oclIsInState(OclState[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclIsInvalid /* oclIsInvalid() */,
-			OCLstdlibTables.Operations._OclAny__oclIsKindOf /* oclIsKindOf(T)(Metaclass(T)) */,
+			OCLstdlibTables.Operations._OclAny__oclIsKindOf /* oclIsKindOf(OclType[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclIsNew /* oclIsNew() */,
-			OCLstdlibTables.Operations._OclAny__oclIsTypeOf /* oclIsTypeOf(T)(Metaclass(T)) */,
+			OCLstdlibTables.Operations._OclAny__oclIsTypeOf /* oclIsTypeOf(OclType[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclIsUndefined /* oclIsUndefined() */,
 			OCLstdlibTables.Operations._OclAny__0_oclLog /* oclLog() */,
-			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String) */,
+			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclType /* oclType() */,
 			OCLstdlibTables.Operations._OclAny__toString /* toString() */
 		};
@@ -1034,26 +1119,26 @@ public class DockerTables
 
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_Microsoft_Hyper_V__Machine_Microsoft_Hyper_V = {};
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_Microsoft_Hyper_V__Compute = {
-			InfrastructureTables.Operations._Compute__restart /* restart(RestartMethod) */,
+			InfrastructureTables.Operations._Compute__restart /* restart(RestartMethod[1]) */,
 			InfrastructureTables.Operations._Compute__start /* start() */,
-			InfrastructureTables.Operations._Compute__stop /* stop(StopMethod) */,
-			InfrastructureTables.Operations._Compute__suspend /* suspend(SuspendMethod) */
+			InfrastructureTables.Operations._Compute__stop /* stop(StopMethod[1]) */,
+			InfrastructureTables.Operations._Compute__suspend /* suspend(SuspendMethod[1]) */
 		};
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_Microsoft_Hyper_V__Entity = {};
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_Microsoft_Hyper_V__Machine = {};
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_Microsoft_Hyper_V__OclAny = {
-			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf) */,
-			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf) */,
+			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
+			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclAsSet /* oclAsSet() */,
-			OCLstdlibTables.Operations._OclAny__oclAsType /* oclAsType(TT)(Metaclass(TT)) */,
-			OCLstdlibTables.Operations._OclAny__oclIsInState /* oclIsInState(OclState) */,
+			OCLstdlibTables.Operations._OclAny__oclAsType /* oclAsType(TT)(TT[?]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsInState /* oclIsInState(OclState[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclIsInvalid /* oclIsInvalid() */,
-			OCLstdlibTables.Operations._OclAny__oclIsKindOf /* oclIsKindOf(T)(Metaclass(T)) */,
+			OCLstdlibTables.Operations._OclAny__oclIsKindOf /* oclIsKindOf(OclType[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclIsNew /* oclIsNew() */,
-			OCLstdlibTables.Operations._OclAny__oclIsTypeOf /* oclIsTypeOf(T)(Metaclass(T)) */,
+			OCLstdlibTables.Operations._OclAny__oclIsTypeOf /* oclIsTypeOf(OclType[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclIsUndefined /* oclIsUndefined() */,
 			OCLstdlibTables.Operations._OclAny__0_oclLog /* oclLog() */,
-			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String) */,
+			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclType /* oclType() */,
 			OCLstdlibTables.Operations._OclAny__toString /* toString() */
 		};
@@ -1066,26 +1151,26 @@ public class DockerTables
 
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_OpenStack__Machine_OpenStack = {};
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_OpenStack__Compute = {
-			InfrastructureTables.Operations._Compute__restart /* restart(RestartMethod) */,
+			InfrastructureTables.Operations._Compute__restart /* restart(RestartMethod[1]) */,
 			InfrastructureTables.Operations._Compute__start /* start() */,
-			InfrastructureTables.Operations._Compute__stop /* stop(StopMethod) */,
-			InfrastructureTables.Operations._Compute__suspend /* suspend(SuspendMethod) */
+			InfrastructureTables.Operations._Compute__stop /* stop(StopMethod[1]) */,
+			InfrastructureTables.Operations._Compute__suspend /* suspend(SuspendMethod[1]) */
 		};
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_OpenStack__Entity = {};
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_OpenStack__Machine = {};
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_OpenStack__OclAny = {
-			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf) */,
-			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf) */,
+			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
+			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclAsSet /* oclAsSet() */,
-			OCLstdlibTables.Operations._OclAny__oclAsType /* oclAsType(TT)(Metaclass(TT)) */,
-			OCLstdlibTables.Operations._OclAny__oclIsInState /* oclIsInState(OclState) */,
+			OCLstdlibTables.Operations._OclAny__oclAsType /* oclAsType(TT)(TT[?]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsInState /* oclIsInState(OclState[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclIsInvalid /* oclIsInvalid() */,
-			OCLstdlibTables.Operations._OclAny__oclIsKindOf /* oclIsKindOf(T)(Metaclass(T)) */,
+			OCLstdlibTables.Operations._OclAny__oclIsKindOf /* oclIsKindOf(OclType[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclIsNew /* oclIsNew() */,
-			OCLstdlibTables.Operations._OclAny__oclIsTypeOf /* oclIsTypeOf(T)(Metaclass(T)) */,
+			OCLstdlibTables.Operations._OclAny__oclIsTypeOf /* oclIsTypeOf(OclType[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclIsUndefined /* oclIsUndefined() */,
 			OCLstdlibTables.Operations._OclAny__0_oclLog /* oclLog() */,
-			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String) */,
+			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclType /* oclType() */,
 			OCLstdlibTables.Operations._OclAny__toString /* toString() */
 		};
@@ -1098,26 +1183,26 @@ public class DockerTables
 
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_Rackspace__Machine_Rackspace = {};
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_Rackspace__Compute = {
-			InfrastructureTables.Operations._Compute__restart /* restart(RestartMethod) */,
+			InfrastructureTables.Operations._Compute__restart /* restart(RestartMethod[1]) */,
 			InfrastructureTables.Operations._Compute__start /* start() */,
-			InfrastructureTables.Operations._Compute__stop /* stop(StopMethod) */,
-			InfrastructureTables.Operations._Compute__suspend /* suspend(SuspendMethod) */
+			InfrastructureTables.Operations._Compute__stop /* stop(StopMethod[1]) */,
+			InfrastructureTables.Operations._Compute__suspend /* suspend(SuspendMethod[1]) */
 		};
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_Rackspace__Entity = {};
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_Rackspace__Machine = {};
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_Rackspace__OclAny = {
-			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf) */,
-			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf) */,
+			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
+			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclAsSet /* oclAsSet() */,
-			OCLstdlibTables.Operations._OclAny__oclAsType /* oclAsType(TT)(Metaclass(TT)) */,
-			OCLstdlibTables.Operations._OclAny__oclIsInState /* oclIsInState(OclState) */,
+			OCLstdlibTables.Operations._OclAny__oclAsType /* oclAsType(TT)(TT[?]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsInState /* oclIsInState(OclState[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclIsInvalid /* oclIsInvalid() */,
-			OCLstdlibTables.Operations._OclAny__oclIsKindOf /* oclIsKindOf(T)(Metaclass(T)) */,
+			OCLstdlibTables.Operations._OclAny__oclIsKindOf /* oclIsKindOf(OclType[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclIsNew /* oclIsNew() */,
-			OCLstdlibTables.Operations._OclAny__oclIsTypeOf /* oclIsTypeOf(T)(Metaclass(T)) */,
+			OCLstdlibTables.Operations._OclAny__oclIsTypeOf /* oclIsTypeOf(OclType[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclIsUndefined /* oclIsUndefined() */,
 			OCLstdlibTables.Operations._OclAny__0_oclLog /* oclLog() */,
-			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String) */,
+			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclType /* oclType() */,
 			OCLstdlibTables.Operations._OclAny__toString /* toString() */
 		};
@@ -1130,26 +1215,26 @@ public class DockerTables
 
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_VMware_Fusion__Machine_VMware_Fusion = {};
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_VMware_Fusion__Compute = {
-			InfrastructureTables.Operations._Compute__restart /* restart(RestartMethod) */,
+			InfrastructureTables.Operations._Compute__restart /* restart(RestartMethod[1]) */,
 			InfrastructureTables.Operations._Compute__start /* start() */,
-			InfrastructureTables.Operations._Compute__stop /* stop(StopMethod) */,
-			InfrastructureTables.Operations._Compute__suspend /* suspend(SuspendMethod) */
+			InfrastructureTables.Operations._Compute__stop /* stop(StopMethod[1]) */,
+			InfrastructureTables.Operations._Compute__suspend /* suspend(SuspendMethod[1]) */
 		};
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_VMware_Fusion__Entity = {};
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_VMware_Fusion__Machine = {};
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_VMware_Fusion__OclAny = {
-			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf) */,
-			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf) */,
+			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
+			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclAsSet /* oclAsSet() */,
-			OCLstdlibTables.Operations._OclAny__oclAsType /* oclAsType(TT)(Metaclass(TT)) */,
-			OCLstdlibTables.Operations._OclAny__oclIsInState /* oclIsInState(OclState) */,
+			OCLstdlibTables.Operations._OclAny__oclAsType /* oclAsType(TT)(TT[?]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsInState /* oclIsInState(OclState[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclIsInvalid /* oclIsInvalid() */,
-			OCLstdlibTables.Operations._OclAny__oclIsKindOf /* oclIsKindOf(T)(Metaclass(T)) */,
+			OCLstdlibTables.Operations._OclAny__oclIsKindOf /* oclIsKindOf(OclType[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclIsNew /* oclIsNew() */,
-			OCLstdlibTables.Operations._OclAny__oclIsTypeOf /* oclIsTypeOf(T)(Metaclass(T)) */,
+			OCLstdlibTables.Operations._OclAny__oclIsTypeOf /* oclIsTypeOf(OclType[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclIsUndefined /* oclIsUndefined() */,
 			OCLstdlibTables.Operations._OclAny__0_oclLog /* oclLog() */,
-			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String) */,
+			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclType /* oclType() */,
 			OCLstdlibTables.Operations._OclAny__toString /* toString() */
 		};
@@ -1162,26 +1247,26 @@ public class DockerTables
 
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_VMware_vCloud_Air__Machine_VMware_vCloud_Air = {};
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_VMware_vCloud_Air__Compute = {
-			InfrastructureTables.Operations._Compute__restart /* restart(RestartMethod) */,
+			InfrastructureTables.Operations._Compute__restart /* restart(RestartMethod[1]) */,
 			InfrastructureTables.Operations._Compute__start /* start() */,
-			InfrastructureTables.Operations._Compute__stop /* stop(StopMethod) */,
-			InfrastructureTables.Operations._Compute__suspend /* suspend(SuspendMethod) */
+			InfrastructureTables.Operations._Compute__stop /* stop(StopMethod[1]) */,
+			InfrastructureTables.Operations._Compute__suspend /* suspend(SuspendMethod[1]) */
 		};
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_VMware_vCloud_Air__Entity = {};
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_VMware_vCloud_Air__Machine = {};
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_VMware_vCloud_Air__OclAny = {
-			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf) */,
-			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf) */,
+			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
+			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclAsSet /* oclAsSet() */,
-			OCLstdlibTables.Operations._OclAny__oclAsType /* oclAsType(TT)(Metaclass(TT)) */,
-			OCLstdlibTables.Operations._OclAny__oclIsInState /* oclIsInState(OclState) */,
+			OCLstdlibTables.Operations._OclAny__oclAsType /* oclAsType(TT)(TT[?]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsInState /* oclIsInState(OclState[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclIsInvalid /* oclIsInvalid() */,
-			OCLstdlibTables.Operations._OclAny__oclIsKindOf /* oclIsKindOf(T)(Metaclass(T)) */,
+			OCLstdlibTables.Operations._OclAny__oclIsKindOf /* oclIsKindOf(OclType[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclIsNew /* oclIsNew() */,
-			OCLstdlibTables.Operations._OclAny__oclIsTypeOf /* oclIsTypeOf(T)(Metaclass(T)) */,
+			OCLstdlibTables.Operations._OclAny__oclIsTypeOf /* oclIsTypeOf(OclType[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclIsUndefined /* oclIsUndefined() */,
 			OCLstdlibTables.Operations._OclAny__0_oclLog /* oclLog() */,
-			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String) */,
+			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclType /* oclType() */,
 			OCLstdlibTables.Operations._OclAny__toString /* toString() */
 		};
@@ -1194,26 +1279,26 @@ public class DockerTables
 
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_VMware_vSphere__Machine_VMware_vSphere = {};
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_VMware_vSphere__Compute = {
-			InfrastructureTables.Operations._Compute__restart /* restart(RestartMethod) */,
+			InfrastructureTables.Operations._Compute__restart /* restart(RestartMethod[1]) */,
 			InfrastructureTables.Operations._Compute__start /* start() */,
-			InfrastructureTables.Operations._Compute__stop /* stop(StopMethod) */,
-			InfrastructureTables.Operations._Compute__suspend /* suspend(SuspendMethod) */
+			InfrastructureTables.Operations._Compute__stop /* stop(StopMethod[1]) */,
+			InfrastructureTables.Operations._Compute__suspend /* suspend(SuspendMethod[1]) */
 		};
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_VMware_vSphere__Entity = {};
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_VMware_vSphere__Machine = {};
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_VMware_vSphere__OclAny = {
-			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf) */,
-			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf) */,
+			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
+			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclAsSet /* oclAsSet() */,
-			OCLstdlibTables.Operations._OclAny__oclAsType /* oclAsType(TT)(Metaclass(TT)) */,
-			OCLstdlibTables.Operations._OclAny__oclIsInState /* oclIsInState(OclState) */,
+			OCLstdlibTables.Operations._OclAny__oclAsType /* oclAsType(TT)(TT[?]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsInState /* oclIsInState(OclState[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclIsInvalid /* oclIsInvalid() */,
-			OCLstdlibTables.Operations._OclAny__oclIsKindOf /* oclIsKindOf(T)(Metaclass(T)) */,
+			OCLstdlibTables.Operations._OclAny__oclIsKindOf /* oclIsKindOf(OclType[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclIsNew /* oclIsNew() */,
-			OCLstdlibTables.Operations._OclAny__oclIsTypeOf /* oclIsTypeOf(T)(Metaclass(T)) */,
+			OCLstdlibTables.Operations._OclAny__oclIsTypeOf /* oclIsTypeOf(OclType[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclIsUndefined /* oclIsUndefined() */,
 			OCLstdlibTables.Operations._OclAny__0_oclLog /* oclLog() */,
-			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String) */,
+			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclType /* oclType() */,
 			OCLstdlibTables.Operations._OclAny__toString /* toString() */
 		};
@@ -1226,26 +1311,26 @@ public class DockerTables
 
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_VirtualBox__Machine_VirtualBox = {};
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_VirtualBox__Compute = {
-			InfrastructureTables.Operations._Compute__restart /* restart(RestartMethod) */,
+			InfrastructureTables.Operations._Compute__restart /* restart(RestartMethod[1]) */,
 			InfrastructureTables.Operations._Compute__start /* start() */,
-			InfrastructureTables.Operations._Compute__stop /* stop(StopMethod) */,
-			InfrastructureTables.Operations._Compute__suspend /* suspend(SuspendMethod) */
+			InfrastructureTables.Operations._Compute__stop /* stop(StopMethod[1]) */,
+			InfrastructureTables.Operations._Compute__suspend /* suspend(SuspendMethod[1]) */
 		};
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_VirtualBox__Entity = {};
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_VirtualBox__Machine = {};
 		private static final /*@NonNull*/ ExecutorOperation[] _Machine_VirtualBox__OclAny = {
-			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf) */,
-			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf) */,
+			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
+			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclAsSet /* oclAsSet() */,
-			OCLstdlibTables.Operations._OclAny__oclAsType /* oclAsType(TT)(Metaclass(TT)) */,
-			OCLstdlibTables.Operations._OclAny__oclIsInState /* oclIsInState(OclState) */,
+			OCLstdlibTables.Operations._OclAny__oclAsType /* oclAsType(TT)(TT[?]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsInState /* oclIsInState(OclState[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclIsInvalid /* oclIsInvalid() */,
-			OCLstdlibTables.Operations._OclAny__oclIsKindOf /* oclIsKindOf(T)(Metaclass(T)) */,
+			OCLstdlibTables.Operations._OclAny__oclIsKindOf /* oclIsKindOf(OclType[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclIsNew /* oclIsNew() */,
-			OCLstdlibTables.Operations._OclAny__oclIsTypeOf /* oclIsTypeOf(T)(Metaclass(T)) */,
+			OCLstdlibTables.Operations._OclAny__oclIsTypeOf /* oclIsTypeOf(OclType[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclIsUndefined /* oclIsUndefined() */,
 			OCLstdlibTables.Operations._OclAny__0_oclLog /* oclLog() */,
-			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String) */,
+			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclType /* oclType() */,
 			OCLstdlibTables.Operations._OclAny__toString /* toString() */
 		};
@@ -1261,7 +1346,7 @@ public class DockerTables
 		private static final /*@NonNull*/ ExecutorOperation[] _Mode__DataType = {};
 		private static final /*@NonNull*/ ExecutorOperation[] _Mode__Element = {
 			PivotTables.Operations._Element__allOwnedElements /* allOwnedElements() */,
-			PivotTables.Operations._Element__getValue /* getValue(Type,String) */
+			PivotTables.Operations._Element__getValue /* getValue(Type[1],String[1]) */
 		};
 		private static final /*@NonNull*/ ExecutorOperation[] _Mode__Enumeration = {
 			PivotTables.Operations._Enumeration__allInstances /* allInstances() */
@@ -1270,18 +1355,18 @@ public class DockerTables
 		private static final /*@NonNull*/ ExecutorOperation[] _Mode__NamedElement = {};
 		private static final /*@NonNull*/ ExecutorOperation[] _Mode__Namespace = {};
 		private static final /*@NonNull*/ ExecutorOperation[] _Mode__OclAny = {
-			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf) */,
-			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf) */,
+			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
+			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclAsSet /* oclAsSet() */,
-			OCLstdlibTables.Operations._OclAny__oclAsType /* oclAsType(TT)(Metaclass(TT)) */,
-			OCLstdlibTables.Operations._OclAny__oclIsInState /* oclIsInState(OclState) */,
+			OCLstdlibTables.Operations._OclAny__oclAsType /* oclAsType(TT)(TT[?]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsInState /* oclIsInState(OclState[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclIsInvalid /* oclIsInvalid() */,
-			OCLstdlibTables.Operations._OclAny__oclIsKindOf /* oclIsKindOf(T)(Metaclass(T)) */,
+			OCLstdlibTables.Operations._OclAny__oclIsKindOf /* oclIsKindOf(OclType[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclIsNew /* oclIsNew() */,
-			OCLstdlibTables.Operations._OclAny__oclIsTypeOf /* oclIsTypeOf(T)(Metaclass(T)) */,
+			OCLstdlibTables.Operations._OclAny__oclIsTypeOf /* oclIsTypeOf(OclType[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclIsUndefined /* oclIsUndefined() */,
 			OCLstdlibTables.Operations._OclAny__0_oclLog /* oclLog() */,
-			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String) */,
+			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclType /* oclType() */,
 			OCLstdlibTables.Operations._OclAny__toString /* toString() */
 		};
@@ -1291,18 +1376,15 @@ public class DockerTables
 			OCLstdlibTables.Operations._OclElement__oclContents /* oclContents() */
 		};
 		private static final /*@NonNull*/ ExecutorOperation[] _Mode__OclType = {
-			OCLstdlibTables.Operations._OclType__conformsTo /* conformsTo(OclType) */
+			OCLstdlibTables.Operations._OclType__conformsTo /* conformsTo(OclType[?]) */
 		};
-		private static final /*@NonNull*/ ExecutorOperation[] _Mode__ParameterableElement = {
-			PivotTables.Operations._ParameterableElement__isCompatibleWith /* isCompatibleWith(ParameterableElement) */,
-			PivotTables.Operations._ParameterableElement__isTemplateParameter /* isTemplateParameter() */
-		};
-		private static final /*@NonNull*/ ExecutorOperation[] _Mode__TemplateableElement = {
-			PivotTables.Operations._TemplateableElement__isTemplate /* isTemplate() */,
-			PivotTables.Operations._TemplateableElement__parameterableElements /* parameterableElements() */
-		};
+		private static final /*@NonNull*/ ExecutorOperation[] _Mode__TemplateableElement = {};
 		private static final /*@NonNull*/ ExecutorOperation[] _Mode__Type = {
-			PivotTables.Operations._Type__specializeIn /* specializeIn(OCLExpression,Type) */
+			PivotTables.Operations._Type__conformsTo /* conformsTo(Type[?]) */,
+			PivotTables.Operations._Type__flattenedType /* flattenedType() */,
+			PivotTables.Operations._Type__isClass /* isClass() */,
+			PivotTables.Operations._Type__isTemplateParameter /* isTemplateParameter() */,
+			PivotTables.Operations._Type__specializeIn /* specializeIn(CallExp[1],Type[1]) */
 		};
 		private static final /*@NonNull*/ ExecutorOperation[] _Mode__Visitable = {};
 
@@ -1310,18 +1392,18 @@ public class DockerTables
 		private static final /*@NonNull*/ ExecutorOperation[] _Volumesfrom__Entity = {};
 		private static final /*@NonNull*/ ExecutorOperation[] _Volumesfrom__Link = {};
 		private static final /*@NonNull*/ ExecutorOperation[] _Volumesfrom__OclAny = {
-			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf) */,
-			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf) */,
+			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
+			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclAsSet /* oclAsSet() */,
-			OCLstdlibTables.Operations._OclAny__oclAsType /* oclAsType(TT)(Metaclass(TT)) */,
-			OCLstdlibTables.Operations._OclAny__oclIsInState /* oclIsInState(OclState) */,
+			OCLstdlibTables.Operations._OclAny__oclAsType /* oclAsType(TT)(TT[?]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsInState /* oclIsInState(OclState[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclIsInvalid /* oclIsInvalid() */,
-			OCLstdlibTables.Operations._OclAny__oclIsKindOf /* oclIsKindOf(T)(Metaclass(T)) */,
+			OCLstdlibTables.Operations._OclAny__oclIsKindOf /* oclIsKindOf(OclType[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclIsNew /* oclIsNew() */,
-			OCLstdlibTables.Operations._OclAny__oclIsTypeOf /* oclIsTypeOf(T)(Metaclass(T)) */,
+			OCLstdlibTables.Operations._OclAny__oclIsTypeOf /* oclIsTypeOf(OclType[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclIsUndefined /* oclIsUndefined() */,
 			OCLstdlibTables.Operations._OclAny__0_oclLog /* oclLog() */,
-			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String) */,
+			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclType /* oclType() */,
 			OCLstdlibTables.Operations._OclAny__toString /* toString() */
 		};
@@ -1334,9 +1416,7 @@ public class DockerTables
 		/*
 		 *	Install the operation descriptors in the fragment descriptors.
 		 */
-		public static void init() {
-			TypeFragments.init();
-
+		static {
 			Fragments._Container__Compute.initOperations(_Container__Compute);
 			Fragments._Container__Container.initOperations(_Container__Container);
 			Fragments._Container__Entity.initOperations(_Container__Entity);
@@ -1351,8 +1431,8 @@ public class DockerTables
 			Fragments._Contains__OclElement.initOperations(_Contains__OclElement);
 
 			Fragments._Link__Entity.initOperations(_Link__Entity);
-			Fragments._Link__Link_1.initOperations(_Link__Link_1);
 			Fragments._Link__Link.initOperations(_Link__Link);
+			Fragments._Link__Link_1.initOperations(_Link__Link_1);
 			Fragments._Link__OclAny.initOperations(_Link__OclAny);
 			Fragments._Link__OclElement.initOperations(_Link__OclElement);
 
@@ -1470,7 +1550,6 @@ public class DockerTables
 			Fragments._Mode__OclAny.initOperations(_Mode__OclAny);
 			Fragments._Mode__OclElement.initOperations(_Mode__OclElement);
 			Fragments._Mode__OclType.initOperations(_Mode__OclType);
-			Fragments._Mode__ParameterableElement.initOperations(_Mode__ParameterableElement);
 			Fragments._Mode__TemplateableElement.initOperations(_Mode__TemplateableElement);
 			Fragments._Mode__Type.initOperations(_Mode__Type);
 			Fragments._Mode__Visitable.initOperations(_Mode__Visitable);
@@ -1480,13 +1559,25 @@ public class DockerTables
 			Fragments._Volumesfrom__OclAny.initOperations(_Volumesfrom__OclAny);
 			Fragments._Volumesfrom__OclElement.initOperations(_Volumesfrom__OclElement);
 			Fragments._Volumesfrom__Volumesfrom.initOperations(_Volumesfrom__Volumesfrom);
+
+			Init.initEnd();
 		}
+
+		/**
+		 * Force initialization of the fields of DockerTables::FragmentOperations and all preceding sub-packages.
+		 */
+		public static void init() {}
 	}
 
 	/**
 	 *	The lists of local properties for the local fragment of each type.
 	 */
 	public static class FragmentProperties {
+		static {
+			Init.initStart();
+			FragmentOperations.init();
+		}
+
 		private static final /*@NonNull*/ ExecutorProperty[] _Container = {
 			DockerTables.Properties._Container__add_host,
 			DockerTables.Properties._Container__build,
@@ -1719,9 +1810,7 @@ public class DockerTables
 		/**
 		 *	Install the property descriptors in the fragment descriptors.
 		 */
-		public static void init() {
-			TypeFragments.init();
-
+		static {
 			Fragments._Container__Container.initProperties(_Container);
 			Fragments._Contains__Contains.initProperties(_Contains);
 			Fragments._Link__Link_1.initProperties(_Link);
@@ -1740,13 +1829,25 @@ public class DockerTables
 			Fragments._Machine_VirtualBox__Machine_VirtualBox.initProperties(_Machine_VirtualBox);
 			Fragments._Mode__Mode.initProperties(_Mode);
 			Fragments._Volumesfrom__Volumesfrom.initProperties(_Volumesfrom);
+
+			Init.initEnd();
 		}
+
+		/**
+		 * Force initialization of the fields of DockerTables::FragmentProperties and all preceding sub-packages.
+		 */
+		public static void init() {}
 	}
 
 	/**
 	 *	The lists of enumeration literals for each enumeration.
 	 */
 	public static class EnumerationLiterals {
+		static {
+			Init.initStart();
+			FragmentProperties.init();
+		}
+
 		public static final /*@NonNull*/ EcoreExecutorEnumerationLiteral _Mode__read_write = new EcoreExecutorEnumerationLiteral(DockerPackage.Literals.MODE.getEEnumLiteral("read_write"), Types._Mode, 0);
 		public static final /*@NonNull*/ EcoreExecutorEnumerationLiteral _Mode__read_only = new EcoreExecutorEnumerationLiteral(DockerPackage.Literals.MODE.getEEnumLiteral("read_only"), Types._Mode, 1);
 		private static final /*@NonNull*/ EcoreExecutorEnumerationLiteral[] _Mode = {
@@ -1759,15 +1860,58 @@ public class DockerTables
 		 */
 		static {
 			Types._Mode.initLiterals(_Mode);
+
+			Init.initEnd();
 		}
 
+		/**
+		 * Force initialization of the fields of DockerTables::EnumerationLiterals and all preceding sub-packages.
+		 */
 		public static void init() {}
 	}
 
-	/*
-	 * Force initialization.
+	/**
+	 * The multiple packages above avoid problems with the Java 65536 byte limit but introduce a difficulty in ensuring that
+	 * static construction occurs in the disciplined order of the packages when construction may start in any of the packages.
+	 * The problem is resolved by ensuring that the static construction of each package first initializes its immediate predecessor.
+	 * On completion of predecessor initialization, the residual packages are initialized by starting an initialization in the last package.
+	 * This class maintains a count so that the various predecessors can distinguish whether they are the starting point and so
+	 * ensure that residual construction occurs just once after all predecessors.
 	 */
-	static {
-		Types.init();
+	private static class Init {
+		/**
+		 * Counter of nested static constructions. On return to zero residual construction starts. -ve once residual construction started.
+		 */
+		private static int initCount = 0;
+
+		/**
+		 * Invoked at the start of a static construction to defer residual cobstruction until primary constructions complete.
+		 */
+		private static void initStart() {
+			if (initCount >= 0) {
+				initCount++;
+			}
+		}
+
+		/**
+		 * Invoked at the end of a static construction to activate residual cobstruction once primary constructions complete.
+		 */
+		private static void initEnd() {
+			if (initCount > 0) {
+				if (--initCount == 0) {
+					initCount = -1;
+					EnumerationLiterals.init();
+				}
+			}
+		}
 	}
+
+	static {
+		Init.initEnd();
+	}
+
+	/*
+	 * Force initialization of outer fields. Inner fields are lazily initialized.
+	 */
+	public static void init() {}
 }

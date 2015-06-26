@@ -23,10 +23,11 @@ import org.occiware.clouddesigner.occi.docker.Container
 import org.occiware.clouddesigner.occi.docker.Machine
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableDockerFactory
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableDockerModel
-import org.occiware.clouddesigner.occi.infrastructure.StopMethod
 import org.occiware.clouddesigner.occi.infrastructure.RestartMethod
+import org.occiware.clouddesigner.occi.infrastructure.StopMethod
+import org.occiware.clouddesigner.occi.AbstractOCCIKindResolver
 
-class DockerServices {
+class DockerServices extends AbstractOCCIKindResolver{
 
 	// Initialize the executable Docker factory.
 	val init = ExecutableDockerFactory.init()
@@ -121,7 +122,7 @@ class DockerServices {
 		var dialog = new ProgressMonitorDialog(getShell())
 		dialog.run(false, true, runnable)
 	}
-	
+
 	/**
 	 * Popup menu restart action.
 	 */
@@ -147,4 +148,5 @@ class DockerServices {
 	def Shell getShell() {
 		return Display.current.activeShell
 	}
+
 }

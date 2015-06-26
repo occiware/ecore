@@ -19,6 +19,7 @@ import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.occiware.clouddesigner.occi.AbstractOCCIKindResolver;
 import org.occiware.clouddesigner.occi.Configuration;
 import org.occiware.clouddesigner.occi.docker.Container;
 import org.occiware.clouddesigner.occi.docker.DockerFactory;
@@ -29,7 +30,7 @@ import org.occiware.clouddesigner.occi.infrastructure.RestartMethod;
 import org.occiware.clouddesigner.occi.infrastructure.StopMethod;
 
 @SuppressWarnings("all")
-public class DockerServices {
+public class DockerServices extends AbstractOCCIKindResolver {
   private final DockerFactory init = ExecutableDockerFactory.init();
   
   /**

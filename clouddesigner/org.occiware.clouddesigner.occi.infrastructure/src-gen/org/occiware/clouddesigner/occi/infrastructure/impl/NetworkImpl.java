@@ -7,6 +7,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.occiware.clouddesigner.occi.impl.ResourceImpl;
 import org.occiware.clouddesigner.occi.infrastructure.ComputeStatus;
 import org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage;
 import org.occiware.clouddesigner.occi.infrastructure.Network;
@@ -26,7 +27,7 @@ import org.occiware.clouddesigner.occi.infrastructure.Network;
  *
  * @generated
  */
-public class NetworkImpl extends org.occiware.clouddesigner.occi.impl.ResourceImpl implements Network {
+public class NetworkImpl extends ResourceImpl implements Network {
 	/**
 	 * The default value of the '{@link #getVlan() <em>Vlan</em>}' attribute.
 	 * <!-- begin-user-doc -->

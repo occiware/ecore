@@ -7,6 +7,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.occiware.clouddesigner.occi.impl.ResourceImpl;
 import org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage;
 import org.occiware.clouddesigner.occi.infrastructure.Storage;
 import org.occiware.clouddesigner.occi.infrastructure.StorageStatus;
@@ -25,7 +26,7 @@ import org.occiware.clouddesigner.occi.infrastructure.StorageStatus;
  *
  * @generated
  */
-public class StorageImpl extends org.occiware.clouddesigner.occi.impl.ResourceImpl implements Storage {
+public class StorageImpl extends ResourceImpl implements Storage {
 	/**
 	 * The default value of the '{@link #getSize() <em>Size</em>}' attribute.
 	 * <!-- begin-user-doc -->

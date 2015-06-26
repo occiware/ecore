@@ -2287,26 +2287,31 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		  (containerEClass, 
 		   source, 
 		   new String[] {
+			 "constraints", "ContainerNoCycleBetweenContainers ContainerLinkAliasUnique"
 		   });	
 		addAnnotation
 		  (linkEClass, 
 		   source, 
 		   new String[] {
+			 "constraints", "LinkSourceAsContainer LinkTargetAsContainer LinkCanOnlyConnectColocalizedContainers"
 		   });	
 		addAnnotation
 		  (volumesfromEClass, 
 		   source, 
 		   new String[] {
+			 "constraints", "VolumesFromSourceAsContainer VolumesFromTargetAsContainer VolumesFromCanOnlyConnectColocalizedContainers"
 		   });	
 		addAnnotation
 		  (machineEClass, 
 		   source, 
 		   new String[] {
+			 "constraints", "MachineNameUnique"
 		   });	
 		addAnnotation
 		  (machine_VirtualBoxEClass, 
 		   source, 
 		   new String[] {
+			 "constraints", "ContainersUsedTooMemory"
 		   });
 	}
 

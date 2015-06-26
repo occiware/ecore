@@ -3,67 +3,27 @@
 package org.occiware.clouddesigner.occi.docker.impl;
 
 import java.lang.reflect.InvocationTargetException;
-
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.BasicDiagnostic;
-import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.emf.ecore.util.EObjectValidator;
-
-import org.eclipse.ocl.examples.codegen.java.UnboxedExplicitNavigationProperty;
-
-import org.eclipse.ocl.examples.domain.elements.DomainType;
-
-import org.eclipse.ocl.examples.domain.evaluation.DomainEvaluator;
-
-import org.eclipse.ocl.examples.domain.ids.TypeId;
-
-import org.eclipse.ocl.examples.domain.messages.EvaluatorMessages;
-
-import org.eclipse.ocl.examples.domain.types.IdResolver;
-
-import org.eclipse.ocl.examples.domain.utilities.DomainUtil;
-
-import org.eclipse.ocl.examples.domain.values.OrderedSetValue;
-import org.eclipse.ocl.examples.domain.values.RealValue;
-import org.eclipse.ocl.examples.domain.values.SequenceValue;
-import org.eclipse.ocl.examples.domain.values.TupleValue;
-
-import org.eclipse.ocl.examples.domain.values.impl.InvalidValueException;
-
-import org.eclipse.ocl.examples.domain.values.util.ValuesUtil;
-
-import org.eclipse.ocl.examples.library.collection.CollectionSumOperation;
-
-import org.eclipse.ocl.examples.library.numeric.NumericLessThanEqualOperation;
-
-import org.eclipse.ocl.examples.library.oclany.OclAnyOclAsTypeOperation;
-import org.eclipse.ocl.examples.library.oclany.OclAnyOclIsKindOfOperation;
-import org.eclipse.ocl.examples.library.oclany.OclAnyToStringOperation;
-
-import org.eclipse.ocl.examples.library.string.StringConcatOperation;
-
-import org.eclipse.ocl.examples.pivot.utilities.PivotUtil;
-
+import org.eclipse.ocl.pivot.evaluation.Evaluator;
+import org.eclipse.ocl.pivot.internal.utilities.PivotUtilInternal;
+import org.eclipse.ocl.pivot.library.oclany.OclComparableLessThanEqualOperation;
+import org.eclipse.ocl.pivot.library.string.CGStringGetSeverityOperation;
+import org.eclipse.ocl.pivot.library.string.CGStringLogDiagnosticOperation;
+import org.eclipse.ocl.pivot.utilities.ClassUtil;
+import org.eclipse.ocl.pivot.utilities.ValueUtil;
+import org.eclipse.ocl.pivot.values.IntegerValue;
 import org.occiware.clouddesigner.occi.Link;
 import org.occiware.clouddesigner.occi.Resource;
-
 import org.occiware.clouddesigner.occi.docker.DockerPackage;
 import org.occiware.clouddesigner.occi.docker.DockerTables;
 import org.occiware.clouddesigner.occi.docker.Machine_VirtualBox;
-
-import org.occiware.clouddesigner.occi.docker.util.DockerValidator;
 
 /**
  * <!-- begin-user-doc -->
@@ -189,112 +149,127 @@ public class Machine_VirtualBoxImpl extends MachineImpl implements Machine_Virtu
 	public boolean ContainersUsedTooMemory(final DiagnosticChain diagnostics, final Map<Object, Object> context) {
 		/**
 		 * 
-		 * inv ContainersUsedTooMemory: Tuple {
-		 * 	message : String = 'Containers consume ' + (links->select(oclIsKindOf(docker::Contains)).target.oclAsType(Container).memory->sum()).toString() + ' when memory is equals to ' + memory.toString(),
-		 * 	status : Boolean = 
-		 * 			(links->select(oclIsKindOf(docker::Contains)).target.oclAsType(Container).memory->sum()) <= memory
-		 * }.status
+		 * inv ContainersUsedTooMemory:
+		 *   let
+		 *     severity : Integer[1] = 'Machine_VirtualBox::ContainersUsedTooMemory'.getSeverity()
+		 *   in
+		 *     if severity <= 0
+		 *     then true
+		 *     else
+		 *       let
+		 *         status : Boolean[1] = Tuple{message = 'Containers consume ' +
+		 *           links->select(oclIsKindOf(Contains))
+		 *           .target.oclAsType(Container)
+		 *           .memory->sum()
+		 *           .toString() + ' when memory is equals to ' +
+		 *           memory.toString()
+		 *           , status = links->select(oclIsKindOf(Contains))
+		 *           .target.oclAsType(Container)
+		 *           .memory->sum() <= memory
+		 *         }.status
+		 *       in
+		 *         'Machine_VirtualBox::ContainersUsedTooMemory'.logDiagnostic(self, diagnostics, context, severity, status, 0)
+		 *     endif
 		 */
-		final /*@NonNull*/ /*@NonInvalid*/ DomainEvaluator evaluator = PivotUtil.getEvaluator(this);
-		final /*@NonNull*/ /*@NonInvalid*/ UnboxedExplicitNavigationProperty IMPPROPid_memory_2 = new UnboxedExplicitNavigationProperty(DockerTables.PROPid_memory);
-		final /*@NonNull*/ /*@NonInvalid*/ IdResolver idResolver = evaluator.getIdResolver();
-		final /*@NonNull*/ /*@Thrown*/ List<Link> links_0 = this.getLinks();
-		final /*@Nullable*/ /*@Thrown*/ Number memory_2 = (Number)IMPPROPid_memory_2.evaluate(evaluator, TypeId.REAL, this);
-		final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_links_0 = idResolver.createOrderedSetOfAll(DockerTables.ORD_CLSSid_Link, links_0);
-		final /*@Nullable*/ /*@Thrown*/ RealValue BOXED_memory_2 = memory_2 == null ? null : ValuesUtil.realValueOf(memory_2);
-		/*@NonNull*/ /*@Thrown*/ OrderedSetValue.Accumulator accumulator = ValuesUtil.createOrderedSetAccumulatorValue(DockerTables.ORD_CLSSid_Link);
-		/*@Nullable*/ Iterator<?> ITERATOR__1_3 = BOXED_links_0.iterator();
-		/*@NonNull*/ /*@Thrown*/ OrderedSetValue select_0;
-		while (true) {
-		    if (!ITERATOR__1_3.hasNext()) {
-		        select_0 = accumulator;
-		        break;
-		    }
-		    /*@Nullable*/ /*@NonInvalid*/ Link _1_3 = (Link)ITERATOR__1_3.next();
-		    /**
-		     * oclIsKindOf(Contains)
-		     */
-		    final /*@NonNull*/ /*@NonInvalid*/ DomainType TYP_docker_c_c_Contains_1 = idResolver.getType(DockerTables.CLSSid_Contains, null);
-		    final /*@Thrown*/ boolean oclIsKindOf_0 = DomainUtil.nonNullState(OclAnyOclIsKindOfOperation.INSTANCE.evaluate(evaluator, _1_3, TYP_docker_c_c_Contains_1).booleanValue());
-		    //
-		    if (oclIsKindOf_0 == ValuesUtil.TRUE_VALUE) {
-		        accumulator.add(_1_3);
-		    }
+		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
+		final /*@NonNull*/ /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.IdResolver idResolver = evaluator.getIdResolver();
+		final /*@NonNull*/ /*@NonInvalid*/ IntegerValue severity_0 = ClassUtil.nonNullState(CGStringGetSeverityOperation.INSTANCE.evaluate(evaluator, DockerTables.STR_Machine_VirtualBox_c_c_ContainersUsedTooMemory));
+		final /*@NonInvalid*/ boolean le = ClassUtil.nonNullState(OclComparableLessThanEqualOperation.INSTANCE.evaluate(evaluator, severity_0, DockerTables.INT_0).booleanValue());
+		/*@NonInvalid*/ boolean symbol_1;
+		if (le) {
+		    symbol_1 = ValueUtil.TRUE_VALUE;
 		}
-		/*@NonNull*/ /*@Thrown*/ SequenceValue.Accumulator accumulator_0 = ValuesUtil.createSequenceAccumulatorValue(DockerTables.SEQ_CLSSid_Resource);
-		/*@Nullable*/ Iterator<?> ITERATOR__1_4 = select_0.iterator();
-		/*@NonNull*/ /*@Thrown*/ SequenceValue collect_4;
-		while (true) {
-		    if (!ITERATOR__1_4.hasNext()) {
-		        collect_4 = accumulator_0;
-		        break;
+		else {
+		    final /*@NonNull*/ /*@NonInvalid*/ org.eclipse.ocl.pivot.internal.library.UnboxedExplicitNavigationProperty IMPPROPid_memory_2 = new org.eclipse.ocl.pivot.internal.library.UnboxedExplicitNavigationProperty(DockerTables.PROPid_memory);
+		    final /*@NonNull*/ /*@Thrown*/ List<Link> links_0 = this.getLinks();
+		    final /*@Nullable*/ /*@Thrown*/ Number memory_2 = (Number)IMPPROPid_memory_2.evaluate(evaluator, org.eclipse.ocl.pivot.ids.TypeId.REAL, this);
+		    final /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.OrderedSetValue BOXED_links_0 = idResolver.createOrderedSetOfAll(DockerTables.ORD_CLSSid_Link, links_0);
+		    final /*@Nullable*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.RealValue BOXED_memory_2 = memory_2 == null ? null : ValueUtil.realValueOf(memory_2);
+		    /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.OrderedSetValue.Accumulator accumulator = ValueUtil.createOrderedSetAccumulatorValue(DockerTables.ORD_CLSSid_Link);
+		    /*@Nullable*/ Iterator<?> ITERATOR__1_3 = BOXED_links_0.iterator();
+		    /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.OrderedSetValue select_0;
+		    while (true) {
+		        if (!ITERATOR__1_3.hasNext()) {
+		            select_0 = accumulator;
+		            break;
+		        }
+		        /*@Nullable*/ /*@NonInvalid*/ Link _1_3 = (Link)ITERATOR__1_3.next();
+		        /**
+		         * oclIsKindOf(Contains)
+		         */
+		        final /*@NonNull*/ /*@NonInvalid*/ org.eclipse.ocl.pivot.Class TYP_docker_c_c_Contains_1 = idResolver.getClass(DockerTables.CLSSid_Contains, null);
+		        final /*@Thrown*/ boolean oclIsKindOf_0 = ClassUtil.nonNullState(org.eclipse.ocl.pivot.library.oclany.OclAnyOclIsKindOfOperation.INSTANCE.evaluate(evaluator, _1_3, TYP_docker_c_c_Contains_1).booleanValue());
+		        //
+		        if (oclIsKindOf_0 == ValueUtil.TRUE_VALUE) {
+		            accumulator.add(_1_3);
+		        }
 		    }
-		    /*@Nullable*/ /*@NonInvalid*/ Link _1_4 = (Link)ITERATOR__1_4.next();
-		    /**
-		     * target
-		     */
-		    if (_1_4 == null) {
-		        throw new InvalidValueException("Null source for \'occi::Link::target\'");
+		    /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.SequenceValue.Accumulator accumulator_0 = ValueUtil.createSequenceAccumulatorValue(DockerTables.SEQ_CLSSid_Resource);
+		    /*@Nullable*/ Iterator<?> ITERATOR__1_4 = select_0.iterator();
+		    /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.SequenceValue collect_4;
+		    while (true) {
+		        if (!ITERATOR__1_4.hasNext()) {
+		            collect_4 = accumulator_0;
+		            break;
+		        }
+		        /*@Nullable*/ /*@NonInvalid*/ Link _1_4 = (Link)ITERATOR__1_4.next();
+		        /**
+		         * target
+		         */
+		        if (_1_4 == null) {
+		            throw new org.eclipse.ocl.pivot.values.InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Link::target\'");
+		        }
+		        final /*@NonNull*/ /*@Thrown*/ Resource target_0 = _1_4.getTarget();
+		        //
+		        accumulator_0.add(target_0);
 		    }
-		    final /*@NonNull*/ /*@Thrown*/ Resource target_0 = _1_4.getTarget();
-		    //
-		    accumulator_0.add(target_0);
-		}
-		/*@NonNull*/ /*@Thrown*/ SequenceValue.Accumulator accumulator_1 = ValuesUtil.createSequenceAccumulatorValue(DockerTables.SEQ_CLSSid_Container);
-		/*@Nullable*/ Iterator<?> ITERATOR__1_5 = collect_4.iterator();
-		/*@NonNull*/ /*@Thrown*/ SequenceValue collect_3;
-		while (true) {
-		    if (!ITERATOR__1_5.hasNext()) {
-		        collect_3 = accumulator_1;
-		        break;
+		    /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.SequenceValue.Accumulator accumulator_1 = ValueUtil.createSequenceAccumulatorValue(DockerTables.SEQ_CLSSid_Container);
+		    /*@NonNull*/ Iterator<?> ITERATOR__1_5 = collect_4.iterator();
+		    /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.SequenceValue collect_3;
+		    while (true) {
+		        if (!ITERATOR__1_5.hasNext()) {
+		            collect_3 = accumulator_1;
+		            break;
+		        }
+		        /*@NonNull*/ /*@NonInvalid*/ Resource _1_5 = (Resource)ITERATOR__1_5.next();
+		        /**
+		         * oclAsType(Container)
+		         */
+		        final /*@NonNull*/ /*@NonInvalid*/ org.eclipse.ocl.pivot.Class TYP_docker_c_c_Container_1 = idResolver.getClass(DockerTables.CLSSid_Container, null);
+		        final /*@NonNull*/ /*@Thrown*/ org.occiware.clouddesigner.occi.docker.Container oclAsType_0 = ClassUtil.nonNullState((org.occiware.clouddesigner.occi.docker.Container)org.eclipse.ocl.pivot.library.oclany.OclAnyOclAsTypeOperation.INSTANCE.evaluate(evaluator, _1_5, TYP_docker_c_c_Container_1));
+		        //
+		        accumulator_1.add(oclAsType_0);
 		    }
-		    /*@Nullable*/ /*@NonInvalid*/ Resource _1_5 = (Resource)ITERATOR__1_5.next();
-		    /**
-		     * oclAsType(Container)
-		     */
-		    final /*@NonNull*/ /*@NonInvalid*/ DomainType TYP_docker_c_c_Container_1 = idResolver.getType(DockerTables.CLSSid_Container, null);
-		    final /*@Nullable*/ /*@Thrown*/ org.occiware.clouddesigner.occi.docker.Container oclAsType_0 = (org.occiware.clouddesigner.occi.docker.Container)OclAnyOclAsTypeOperation.INSTANCE.evaluate(evaluator, _1_5, TYP_docker_c_c_Container_1);
-		    //
-		    accumulator_1.add(oclAsType_0);
-		}
-		/*@NonNull*/ /*@Thrown*/ SequenceValue.Accumulator accumulator_2 = ValuesUtil.createSequenceAccumulatorValue(DockerTables.SEQ_PRIMid_Real);
-		/*@Nullable*/ Iterator<?> ITERATOR__1_6 = collect_3.iterator();
-		/*@NonNull*/ /*@Thrown*/ SequenceValue collect_2;
-		while (true) {
-		    if (!ITERATOR__1_6.hasNext()) {
-		        collect_2 = accumulator_2;
-		        break;
+		    /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.SequenceValue.Accumulator accumulator_2 = ValueUtil.createSequenceAccumulatorValue(DockerTables.SEQ_PRIMid_Real);
+		    /*@NonNull*/ Iterator<?> ITERATOR__1_6 = collect_3.iterator();
+		    /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.SequenceValue collect_2;
+		    while (true) {
+		        if (!ITERATOR__1_6.hasNext()) {
+		            collect_2 = accumulator_2;
+		            break;
+		        }
+		        /*@NonNull*/ /*@NonInvalid*/ org.occiware.clouddesigner.occi.docker.Container _1_6 = (org.occiware.clouddesigner.occi.docker.Container)ITERATOR__1_6.next();
+		        /**
+		         * memory
+		         */
+		        final /*@Nullable*/ /*@Thrown*/ Number memory_1 = (Number)IMPPROPid_memory_2.evaluate(evaluator, org.eclipse.ocl.pivot.ids.TypeId.REAL, _1_6);
+		        final /*@Nullable*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.RealValue BOXED_memory_1 = memory_1 == null ? null : ValueUtil.realValueOf(memory_1);
+		        //
+		        accumulator_2.add(BOXED_memory_1);
 		    }
-		    /*@Nullable*/ /*@NonInvalid*/ org.occiware.clouddesigner.occi.docker.Container _1_6 = (org.occiware.clouddesigner.occi.docker.Container)ITERATOR__1_6.next();
-		    /**
-		     * memory
-		     */
-		    if (_1_6 == null) {
-		        throw new InvalidValueException("Null source for \'infrastructure::Compute::memory\'");
-		    }
-		    final /*@Nullable*/ /*@Thrown*/ Number memory_1 = (Number)IMPPROPid_memory_2.evaluate(evaluator, TypeId.REAL, _1_6);
-		    final /*@Nullable*/ /*@Thrown*/ RealValue BOXED_memory_1 = memory_1 == null ? null : ValuesUtil.realValueOf(memory_1);
-		    //
-		    accumulator_2.add(BOXED_memory_1);
+		    final /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.RealValue sum_3 = ClassUtil.nonNullState((org.eclipse.ocl.pivot.values.RealValue)org.eclipse.ocl.pivot.library.collection.CollectionSumOperation.INSTANCE.evaluate(evaluator, org.eclipse.ocl.pivot.ids.TypeId.REAL, collect_2));
+		    final /*@NonNull*/ /*@Thrown*/ String toString = ClassUtil.nonNullState(org.eclipse.ocl.pivot.library.oclany.OclAnyToStringOperation.INSTANCE.evaluate(sum_3));
+		    final /*@NonNull*/ /*@NonInvalid*/ String sum_0 = ClassUtil.nonNullState(org.eclipse.ocl.pivot.library.string.StringConcatOperation.INSTANCE.evaluate(DockerTables.STR_Containers_32_consume_32, toString));
+		    final /*@NonNull*/ /*@NonInvalid*/ String sum_1 = ClassUtil.nonNullState(org.eclipse.ocl.pivot.library.string.StringConcatOperation.INSTANCE.evaluate(sum_0, DockerTables.STR__32_when_32_memory_32_is_32_equals_32_to_32));
+		    final /*@NonNull*/ /*@Thrown*/ String toString_0 = ClassUtil.nonNullState(org.eclipse.ocl.pivot.library.oclany.OclAnyToStringOperation.INSTANCE.evaluate(BOXED_memory_2));
+		    final /*@NonNull*/ /*@NonInvalid*/ String sum_2 = ClassUtil.nonNullState(org.eclipse.ocl.pivot.library.string.StringConcatOperation.INSTANCE.evaluate(sum_1, toString_0));
+		    final /*@Thrown*/ boolean le_0 = ClassUtil.nonNullState(OclComparableLessThanEqualOperation.INSTANCE.evaluate(evaluator, sum_3, BOXED_memory_2).booleanValue());
+		    final /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.TupleValue symbol_0 = ValueUtil.createTupleOfEach(DockerTables.TUPLid_, sum_2, le_0);
+		    final /*@NonInvalid*/ boolean status = (Boolean)symbol_0.getValue(1/*status*/);
+		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, org.eclipse.ocl.pivot.ids.TypeId.BOOLEAN, DockerTables.STR_Machine_VirtualBox_c_c_ContainersUsedTooMemory, this, diagnostics, context, severity_0, status, DockerTables.INT_0).booleanValue());
+		    symbol_1 = logDiagnostic;
 		}
-		final /*@NonNull*/ /*@Thrown*/ RealValue sum_3 = DomainUtil.nonNullState((RealValue)CollectionSumOperation.INSTANCE.evaluate(evaluator, TypeId.REAL, collect_2));
-		final /*@NonNull*/ /*@Thrown*/ String toString = DomainUtil.nonNullState(OclAnyToStringOperation.INSTANCE.evaluate(sum_3));
-		final /*@NonNull*/ /*@Thrown*/ String sum_0 = DomainUtil.nonNullState(StringConcatOperation.INSTANCE.evaluate(DockerTables.STR_Containers_32_consume_32, toString));
-		final /*@NonNull*/ /*@Thrown*/ String sum_1 = DomainUtil.nonNullState(StringConcatOperation.INSTANCE.evaluate(sum_0, DockerTables.STR__32_when_32_memory_32_is_32_equa));
-		final /*@NonNull*/ /*@Thrown*/ String toString_0 = DomainUtil.nonNullState(OclAnyToStringOperation.INSTANCE.evaluate(BOXED_memory_2));
-		final /*@NonNull*/ /*@Thrown*/ String sum_2 = DomainUtil.nonNullState(StringConcatOperation.INSTANCE.evaluate(sum_1, toString_0));
-		final /*@Thrown*/ boolean le = DomainUtil.nonNullState(NumericLessThanEqualOperation.INSTANCE.evaluate(sum_3, BOXED_memory_2).booleanValue());
-		final /*@NonNull*/ /*@Thrown*/ TupleValue symbol_0 = ValuesUtil.createTupleOfEach(DockerTables.TUPLid_, sum_2, le);
-		final /*@NonInvalid*/ boolean status = (Boolean)symbol_0.getValue(1/*status*/);
-		if (status == ValuesUtil.TRUE_VALUE) {
-		    return true;
-		}
-		if (diagnostics != null) {
-		    int severity = Diagnostic.WARNING;
-		    String message = DomainUtil.bind(EvaluatorMessages.ValidationConstraintIsNotSatisfied_ERROR_, new Object[]{"Machine_VirtualBox", "ContainersUsedTooMemory", EObjectValidator.getObjectLabel(this, context)});
-		    diagnostics.add(new BasicDiagnostic(severity, DockerValidator.DIAGNOSTIC_SOURCE, DockerValidator.MACHINE_VIRTUAL_BOX__CONTAINERS_USED_TOO_MEMORY, message, new Object [] { this }));
-		}
-		return false;
+		return Boolean.TRUE == symbol_1;
 	}
 
 	/**

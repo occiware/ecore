@@ -2,6 +2,8 @@
  */
 package org.occiware.clouddesigner.occi.infrastructure;
 
+import org.occiware.clouddesigner.occi.Link;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -21,7 +23,7 @@ package org.occiware.clouddesigner.occi.infrastructure;
  * @model
  * @generated
  */
-public interface Networkinterface extends org.occiware.clouddesigner.occi.Link {
+public interface Networkinterface extends Link {
 	/**
 	 * Returns the value of the '<em><b>Interface</b></em>' attribute.
 	 * <!-- begin-user-doc -->

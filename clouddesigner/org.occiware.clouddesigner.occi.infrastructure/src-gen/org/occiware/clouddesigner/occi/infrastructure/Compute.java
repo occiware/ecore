@@ -2,6 +2,8 @@
  */
 package org.occiware.clouddesigner.occi.infrastructure;
 
+import org.occiware.clouddesigner.occi.Resource;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -24,7 +26,7 @@ package org.occiware.clouddesigner.occi.infrastructure;
  * @model
  * @generated
  */
-public interface Compute extends org.occiware.clouddesigner.occi.Resource {
+public interface Compute extends Resource {
 	/**
 	 * Returns the value of the '<em><b>Architecture</b></em>' attribute.
 	 * The literals are from the enumeration {@link org.occiware.clouddesigner.occi.infrastructure.Architecture}.

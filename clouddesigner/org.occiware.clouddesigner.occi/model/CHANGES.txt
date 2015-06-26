@@ -1,2 +1,0 @@
-- Entity.kind n'est plus required car on utilise l'héritage EMF à la place
-- desactivé les contraintes OCL liées aux Kinds

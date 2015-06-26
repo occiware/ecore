@@ -234,8 +234,10 @@ public class DockerValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(container, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateEntity_IdUnique(container, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateEntity_AttributesNameUnique(container, diagnostics, context);
-		if (result || diagnostics != null) result &= validateContainer_ContainerLinkAliasUnique(container, diagnostics, context);
+		if (result || diagnostics != null) result &= occiValidator.validateEntity_KindCompatibleWithOneAppliesOfEachMixin(container, diagnostics, context);
+		if (result || diagnostics != null) result &= occiValidator.validateResource_ResourceKindIsInParent(container, diagnostics, context);
 		if (result || diagnostics != null) result &= validateContainer_ContainerNoCycleBetweenContainers(container, diagnostics, context);
+		if (result || diagnostics != null) result &= validateContainer_ContainerLinkAliasUnique(container, diagnostics, context);
 		return result;
 	}
 
@@ -276,8 +278,10 @@ public class DockerValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(link, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateEntity_IdUnique(link, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateEntity_AttributesNameUnique(link, diagnostics, context);
-		if (result || diagnostics != null) result &= validateLink_LinkTargetAsContainer(link, diagnostics, context);
+		if (result || diagnostics != null) result &= occiValidator.validateEntity_KindCompatibleWithOneAppliesOfEachMixin(link, diagnostics, context);
+		if (result || diagnostics != null) result &= occiValidator.validateLink_LinkKindIsInParent(link, diagnostics, context);
 		if (result || diagnostics != null) result &= validateLink_LinkSourceAsContainer(link, diagnostics, context);
+		if (result || diagnostics != null) result &= validateLink_LinkTargetAsContainer(link, diagnostics, context);
 		if (result || diagnostics != null) result &= validateLink_LinkCanOnlyConnectColocalizedContainers(link, diagnostics, context);
 		return result;
 	}
@@ -329,6 +333,8 @@ public class DockerValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(volumesfrom, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateEntity_IdUnique(volumesfrom, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateEntity_AttributesNameUnique(volumesfrom, diagnostics, context);
+		if (result || diagnostics != null) result &= occiValidator.validateEntity_KindCompatibleWithOneAppliesOfEachMixin(volumesfrom, diagnostics, context);
+		if (result || diagnostics != null) result &= occiValidator.validateLink_LinkKindIsInParent(volumesfrom, diagnostics, context);
 		if (result || diagnostics != null) result &= validateVolumesfrom_VolumesFromSourceAsContainer(volumesfrom, diagnostics, context);
 		if (result || diagnostics != null) result &= validateVolumesfrom_VolumesFromTargetAsContainer(volumesfrom, diagnostics, context);
 		if (result || diagnostics != null) result &= validateVolumesfrom_VolumesFromCanOnlyConnectColocalizedContainers(volumesfrom, diagnostics, context);
@@ -382,6 +388,8 @@ public class DockerValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(contains, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateEntity_IdUnique(contains, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateEntity_AttributesNameUnique(contains, diagnostics, context);
+		if (result || diagnostics != null) result &= occiValidator.validateEntity_KindCompatibleWithOneAppliesOfEachMixin(contains, diagnostics, context);
+		if (result || diagnostics != null) result &= occiValidator.validateLink_LinkKindIsInParent(contains, diagnostics, context);
 		return result;
 	}
 
@@ -402,6 +410,8 @@ public class DockerValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(machine, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateEntity_IdUnique(machine, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateEntity_AttributesNameUnique(machine, diagnostics, context);
+		if (result || diagnostics != null) result &= occiValidator.validateEntity_KindCompatibleWithOneAppliesOfEachMixin(machine, diagnostics, context);
+		if (result || diagnostics != null) result &= occiValidator.validateResource_ResourceKindIsInParent(machine, diagnostics, context);
 		if (result || diagnostics != null) result &= validateMachine_MachineNameUnique(machine, diagnostics, context);
 		return result;
 	}
@@ -433,6 +443,8 @@ public class DockerValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(machine_Amazon_EC2, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateEntity_IdUnique(machine_Amazon_EC2, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateEntity_AttributesNameUnique(machine_Amazon_EC2, diagnostics, context);
+		if (result || diagnostics != null) result &= occiValidator.validateEntity_KindCompatibleWithOneAppliesOfEachMixin(machine_Amazon_EC2, diagnostics, context);
+		if (result || diagnostics != null) result &= occiValidator.validateResource_ResourceKindIsInParent(machine_Amazon_EC2, diagnostics, context);
 		if (result || diagnostics != null) result &= validateMachine_MachineNameUnique(machine_Amazon_EC2, diagnostics, context);
 		return result;
 	}
@@ -454,6 +466,8 @@ public class DockerValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(machine_Digital_Ocean, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateEntity_IdUnique(machine_Digital_Ocean, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateEntity_AttributesNameUnique(machine_Digital_Ocean, diagnostics, context);
+		if (result || diagnostics != null) result &= occiValidator.validateEntity_KindCompatibleWithOneAppliesOfEachMixin(machine_Digital_Ocean, diagnostics, context);
+		if (result || diagnostics != null) result &= occiValidator.validateResource_ResourceKindIsInParent(machine_Digital_Ocean, diagnostics, context);
 		if (result || diagnostics != null) result &= validateMachine_MachineNameUnique(machine_Digital_Ocean, diagnostics, context);
 		return result;
 	}
@@ -475,6 +489,8 @@ public class DockerValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(machine_Google_Compute_Engine, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateEntity_IdUnique(machine_Google_Compute_Engine, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateEntity_AttributesNameUnique(machine_Google_Compute_Engine, diagnostics, context);
+		if (result || diagnostics != null) result &= occiValidator.validateEntity_KindCompatibleWithOneAppliesOfEachMixin(machine_Google_Compute_Engine, diagnostics, context);
+		if (result || diagnostics != null) result &= occiValidator.validateResource_ResourceKindIsInParent(machine_Google_Compute_Engine, diagnostics, context);
 		if (result || diagnostics != null) result &= validateMachine_MachineNameUnique(machine_Google_Compute_Engine, diagnostics, context);
 		return result;
 	}
@@ -496,6 +512,8 @@ public class DockerValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(machine_IBM_SoftLayer, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateEntity_IdUnique(machine_IBM_SoftLayer, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateEntity_AttributesNameUnique(machine_IBM_SoftLayer, diagnostics, context);
+		if (result || diagnostics != null) result &= occiValidator.validateEntity_KindCompatibleWithOneAppliesOfEachMixin(machine_IBM_SoftLayer, diagnostics, context);
+		if (result || diagnostics != null) result &= occiValidator.validateResource_ResourceKindIsInParent(machine_IBM_SoftLayer, diagnostics, context);
 		if (result || diagnostics != null) result &= validateMachine_MachineNameUnique(machine_IBM_SoftLayer, diagnostics, context);
 		return result;
 	}
@@ -517,6 +535,8 @@ public class DockerValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(machine_Microsoft_Azure, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateEntity_IdUnique(machine_Microsoft_Azure, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateEntity_AttributesNameUnique(machine_Microsoft_Azure, diagnostics, context);
+		if (result || diagnostics != null) result &= occiValidator.validateEntity_KindCompatibleWithOneAppliesOfEachMixin(machine_Microsoft_Azure, diagnostics, context);
+		if (result || diagnostics != null) result &= occiValidator.validateResource_ResourceKindIsInParent(machine_Microsoft_Azure, diagnostics, context);
 		if (result || diagnostics != null) result &= validateMachine_MachineNameUnique(machine_Microsoft_Azure, diagnostics, context);
 		return result;
 	}
@@ -538,6 +558,8 @@ public class DockerValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(machine_Microsoft_Hyper_V, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateEntity_IdUnique(machine_Microsoft_Hyper_V, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateEntity_AttributesNameUnique(machine_Microsoft_Hyper_V, diagnostics, context);
+		if (result || diagnostics != null) result &= occiValidator.validateEntity_KindCompatibleWithOneAppliesOfEachMixin(machine_Microsoft_Hyper_V, diagnostics, context);
+		if (result || diagnostics != null) result &= occiValidator.validateResource_ResourceKindIsInParent(machine_Microsoft_Hyper_V, diagnostics, context);
 		if (result || diagnostics != null) result &= validateMachine_MachineNameUnique(machine_Microsoft_Hyper_V, diagnostics, context);
 		return result;
 	}
@@ -559,6 +581,8 @@ public class DockerValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(machine_OpenStack, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateEntity_IdUnique(machine_OpenStack, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateEntity_AttributesNameUnique(machine_OpenStack, diagnostics, context);
+		if (result || diagnostics != null) result &= occiValidator.validateEntity_KindCompatibleWithOneAppliesOfEachMixin(machine_OpenStack, diagnostics, context);
+		if (result || diagnostics != null) result &= occiValidator.validateResource_ResourceKindIsInParent(machine_OpenStack, diagnostics, context);
 		if (result || diagnostics != null) result &= validateMachine_MachineNameUnique(machine_OpenStack, diagnostics, context);
 		return result;
 	}
@@ -580,6 +604,8 @@ public class DockerValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(machine_Rackspace, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateEntity_IdUnique(machine_Rackspace, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateEntity_AttributesNameUnique(machine_Rackspace, diagnostics, context);
+		if (result || diagnostics != null) result &= occiValidator.validateEntity_KindCompatibleWithOneAppliesOfEachMixin(machine_Rackspace, diagnostics, context);
+		if (result || diagnostics != null) result &= occiValidator.validateResource_ResourceKindIsInParent(machine_Rackspace, diagnostics, context);
 		if (result || diagnostics != null) result &= validateMachine_MachineNameUnique(machine_Rackspace, diagnostics, context);
 		return result;
 	}
@@ -601,6 +627,8 @@ public class DockerValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(machine_VirtualBox, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateEntity_IdUnique(machine_VirtualBox, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateEntity_AttributesNameUnique(machine_VirtualBox, diagnostics, context);
+		if (result || diagnostics != null) result &= occiValidator.validateEntity_KindCompatibleWithOneAppliesOfEachMixin(machine_VirtualBox, diagnostics, context);
+		if (result || diagnostics != null) result &= occiValidator.validateResource_ResourceKindIsInParent(machine_VirtualBox, diagnostics, context);
 		if (result || diagnostics != null) result &= validateMachine_MachineNameUnique(machine_VirtualBox, diagnostics, context);
 		if (result || diagnostics != null) result &= validateMachine_VirtualBox_ContainersUsedTooMemory(machine_VirtualBox, diagnostics, context);
 		return result;
@@ -633,6 +661,8 @@ public class DockerValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(machine_VMware_Fusion, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateEntity_IdUnique(machine_VMware_Fusion, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateEntity_AttributesNameUnique(machine_VMware_Fusion, diagnostics, context);
+		if (result || diagnostics != null) result &= occiValidator.validateEntity_KindCompatibleWithOneAppliesOfEachMixin(machine_VMware_Fusion, diagnostics, context);
+		if (result || diagnostics != null) result &= occiValidator.validateResource_ResourceKindIsInParent(machine_VMware_Fusion, diagnostics, context);
 		if (result || diagnostics != null) result &= validateMachine_MachineNameUnique(machine_VMware_Fusion, diagnostics, context);
 		return result;
 	}
@@ -654,6 +684,8 @@ public class DockerValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(machine_VMware_vCloud_Air, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateEntity_IdUnique(machine_VMware_vCloud_Air, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateEntity_AttributesNameUnique(machine_VMware_vCloud_Air, diagnostics, context);
+		if (result || diagnostics != null) result &= occiValidator.validateEntity_KindCompatibleWithOneAppliesOfEachMixin(machine_VMware_vCloud_Air, diagnostics, context);
+		if (result || diagnostics != null) result &= occiValidator.validateResource_ResourceKindIsInParent(machine_VMware_vCloud_Air, diagnostics, context);
 		if (result || diagnostics != null) result &= validateMachine_MachineNameUnique(machine_VMware_vCloud_Air, diagnostics, context);
 		return result;
 	}
@@ -675,6 +707,8 @@ public class DockerValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(machine_VMware_vSphere, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateEntity_IdUnique(machine_VMware_vSphere, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateEntity_AttributesNameUnique(machine_VMware_vSphere, diagnostics, context);
+		if (result || diagnostics != null) result &= occiValidator.validateEntity_KindCompatibleWithOneAppliesOfEachMixin(machine_VMware_vSphere, diagnostics, context);
+		if (result || diagnostics != null) result &= occiValidator.validateResource_ResourceKindIsInParent(machine_VMware_vSphere, diagnostics, context);
 		if (result || diagnostics != null) result &= validateMachine_MachineNameUnique(machine_VMware_vSphere, diagnostics, context);
 		return result;
 	}

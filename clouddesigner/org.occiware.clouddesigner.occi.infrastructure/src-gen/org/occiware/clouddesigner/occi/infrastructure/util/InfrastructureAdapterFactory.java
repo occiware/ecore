@@ -6,6 +6,9 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
+import org.occiware.clouddesigner.occi.Entity;
+import org.occiware.clouddesigner.occi.Link;
+import org.occiware.clouddesigner.occi.Resource;
 import org.occiware.clouddesigner.occi.infrastructure.*;
 
 /**
@@ -85,15 +88,15 @@ public class InfrastructureAdapterFactory extends AdapterFactoryImpl {
 				return createNetworkinterfaceAdapter();
 			}
 			@Override
-			public Adapter caseEntity(org.occiware.clouddesigner.occi.Entity object) {
+			public Adapter caseEntity(Entity object) {
 				return createEntityAdapter();
 			}
 			@Override
-			public Adapter caseResource(org.occiware.clouddesigner.occi.Resource object) {
+			public Adapter caseResource(Resource object) {
 				return createResourceAdapter();
 			}
 			@Override
-			public Adapter caseLink(org.occiware.clouddesigner.occi.Link object) {
+			public Adapter caseLink(Link object) {
 				return createLinkAdapter();
 			}
 			@Override

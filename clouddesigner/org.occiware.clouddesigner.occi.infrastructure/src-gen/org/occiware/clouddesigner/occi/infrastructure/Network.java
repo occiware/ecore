@@ -2,6 +2,8 @@
  */
 package org.occiware.clouddesigner.occi.infrastructure;
 
+import org.occiware.clouddesigner.occi.Resource;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -21,7 +23,7 @@ package org.occiware.clouddesigner.occi.infrastructure;
  * @model
  * @generated
  */
-public interface Network extends org.occiware.clouddesigner.occi.Resource {
+public interface Network extends Resource {
 	/**
 	 * Returns the value of the '<em><b>Vlan</b></em>' attribute.
 	 * <!-- begin-user-doc -->

@@ -26,7 +26,7 @@
     <extension
           point="org.eclipse.ui.popupMenus">
        <objectContribution
-             id="org.occiware.clouddesigner.occi.design.contribution1"
+             id="org.occiware.clouddesigner.occi.design.contribution.occie"
              nameFilter="*.occie"
              objectClass="org.eclipse.core.resources.IFile">
           <menu
@@ -40,7 +40,7 @@
           <action
                 class="org.occiware.clouddesigner.occi.design.popup.actions.RegisterExtensionAction"
                 enablesFor="1"
-                id="org.occiware.clouddesigner.occi.design.newAction"
+                id="org.occiware.clouddesigner.occi.design.registerExtensionAction"
                 label="RegisterExtension"
                 menubarPath="org.occiware.clouddesigner.occi.design.menu/group">
           </action>

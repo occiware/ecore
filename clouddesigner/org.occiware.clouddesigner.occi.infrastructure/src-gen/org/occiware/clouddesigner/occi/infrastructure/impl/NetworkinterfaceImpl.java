@@ -5,6 +5,7 @@ package org.occiware.clouddesigner.occi.infrastructure.impl;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.occiware.clouddesigner.occi.impl.LinkImpl;
 import org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage;
 import org.occiware.clouddesigner.occi.infrastructure.NetworkInterfaceStatus;
 import org.occiware.clouddesigner.occi.infrastructure.Networkinterface;
@@ -24,7 +25,7 @@ import org.occiware.clouddesigner.occi.infrastructure.Networkinterface;
  *
  * @generated
  */
-public class NetworkinterfaceImpl extends org.occiware.clouddesigner.occi.impl.LinkImpl implements Networkinterface {
+public class NetworkinterfaceImpl extends LinkImpl implements Networkinterface {
 	/**
 	 * The default value of the '{@link #getInterface() <em>Interface</em>}' attribute.
 	 * <!-- begin-user-doc -->

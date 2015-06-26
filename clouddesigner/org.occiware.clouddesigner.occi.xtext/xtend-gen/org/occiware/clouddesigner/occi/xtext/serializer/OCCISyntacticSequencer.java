@@ -3,6 +3,7 @@
  */
 package org.occiware.clouddesigner.occi.xtext.serializer;
 
+import org.occiware.clouddesigner.occi.xtext.serializer.AbstractOCCISyntacticSequencer;
 
 @SuppressWarnings("all")
 public class OCCISyntacticSequencer extends AbstractOCCISyntacticSequencer {

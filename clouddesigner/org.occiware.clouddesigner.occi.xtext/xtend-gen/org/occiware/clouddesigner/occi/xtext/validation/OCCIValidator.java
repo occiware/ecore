@@ -3,6 +3,7 @@
  */
 package org.occiware.clouddesigner.occi.xtext.validation;
 
+import org.occiware.clouddesigner.occi.xtext.validation.AbstractOCCIValidator;
 
 /**
  * This class contains custom validation rules.
