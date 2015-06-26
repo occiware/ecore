@@ -20,5 +20,9 @@
             scheme="http://occiware.org/docker#">
       </occie>
    </extension>
-
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <parser
+            type="docker"
+            class="org.occiware.clouddesigner.occi.util.OCCIResourceFactoryImpl"/>
+   </extension>
 </plugin>

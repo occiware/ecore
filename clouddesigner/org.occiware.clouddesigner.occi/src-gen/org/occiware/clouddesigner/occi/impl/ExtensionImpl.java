@@ -20,13 +20,31 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.ocl.pivot.evaluation.Evaluator;
+import org.eclipse.ocl.pivot.ids.IdResolver;
+import org.eclipse.ocl.pivot.ids.TypeId;
 import org.eclipse.ocl.pivot.internal.utilities.PivotUtilInternal;
+import org.eclipse.ocl.pivot.library.classifier.ClassifierAllInstancesOperation;
+import org.eclipse.ocl.pivot.library.classifier.ClassifierOclContainerOperation;
+import org.eclipse.ocl.pivot.library.collection.CollectionIncludesOperation;
+import org.eclipse.ocl.pivot.library.collection.CollectionIntersectionOperation;
+import org.eclipse.ocl.pivot.library.collection.CollectionIsEmptyOperation;
+import org.eclipse.ocl.pivot.library.logical.BooleanImpliesOperation;
+import org.eclipse.ocl.pivot.library.logical.BooleanOrOperation;
+import org.eclipse.ocl.pivot.library.numeric.NumericMinusOperation;
 import org.eclipse.ocl.pivot.library.oclany.OclComparableLessThanEqualOperation;
 import org.eclipse.ocl.pivot.library.string.CGStringGetSeverityOperation;
 import org.eclipse.ocl.pivot.library.string.CGStringLogDiagnosticOperation;
+import org.eclipse.ocl.pivot.library.string.StringSizeOperation;
+import org.eclipse.ocl.pivot.library.string.StringSubstringOperation;
 import org.eclipse.ocl.pivot.messages.PivotMessages;
 import org.eclipse.ocl.pivot.utilities.ClassUtil;
 import org.eclipse.ocl.pivot.utilities.ValueUtil;
+import org.eclipse.ocl.pivot.values.BagValue;
+import org.eclipse.ocl.pivot.values.IntegerValue;
+import org.eclipse.ocl.pivot.values.InvalidValueException;
+import org.eclipse.ocl.pivot.values.OrderedSetValue;
+import org.eclipse.ocl.pivot.values.SequenceValue;
+import org.eclipse.ocl.pivot.values.SetValue;
 import org.occiware.clouddesigner.occi.Extension;
 import org.occiware.clouddesigner.occi.Kind;
 import org.occiware.clouddesigner.occi.Mixin;
@@ -261,8 +279,8 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		 *     endif
 		 */
 		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
-		final /*@NonNull*/ /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.IdResolver idResolver = evaluator.getIdResolver();
-		final /*@NonNull*/ /*@NonInvalid*/ org.eclipse.ocl.pivot.values.IntegerValue severity_0 = ClassUtil.nonNullState(CGStringGetSeverityOperation.INSTANCE.evaluate(evaluator, OCCITables.STR_Extension_c_c_KindsSchemeValid));
+		final /*@NonNull*/ /*@NonInvalid*/ IdResolver idResolver = evaluator.getIdResolver();
+		final /*@NonNull*/ /*@NonInvalid*/ IntegerValue severity_0 = ClassUtil.nonNullState(CGStringGetSeverityOperation.INSTANCE.evaluate(evaluator, OCCITables.STR_Extension_c_c_KindsSchemeValid));
 		final /*@NonInvalid*/ boolean le = ClassUtil.nonNullState(OclComparableLessThanEqualOperation.INSTANCE.evaluate(evaluator, severity_0, OCCITables.INT_0).booleanValue());
 		/*@NonInvalid*/ boolean symbol_0;
 		if (le) {
@@ -272,7 +290,7 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		    /*@NonNull*/ /*@Caught*/ Object CAUGHT_status;
 		    try {
 		        final /*@NonNull*/ /*@Thrown*/ List<Kind> kinds = this.getKinds();
-		        final /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.OrderedSetValue BOXED_kinds = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Kind, kinds);
+		        final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_kinds = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Kind, kinds);
 		        /*@Nullable*/ /*@Thrown*/ Object accumulator = ValueUtil.TRUE_VALUE;
 		        /*@Nullable*/ Iterator<?> ITERATOR_k = BOXED_kinds.iterator();
 		        /*@Thrown*/ boolean status;
@@ -282,7 +300,7 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		                    status = ValueUtil.TRUE_VALUE;
 		                }
 		                else {
-		                    throw (org.eclipse.ocl.pivot.values.InvalidValueException)accumulator;
+		                    throw (InvalidValueException)accumulator;
 		                }
 		                break;
 		            }
@@ -293,7 +311,7 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		            /*@NonNull*/ /*@Caught*/ Object CAUGHT_eq;
 		            try {
 		                if (k == null) {
-		                    throw new org.eclipse.ocl.pivot.values.InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Category::scheme\'");
+		                    throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Category::scheme\'");
 		                }
 		                final /*@NonNull*/ /*@Thrown*/ String scheme = k.getScheme();
 		                final /*@NonNull*/ /*@Thrown*/ String scheme_0 = this.getScheme();
@@ -311,11 +329,11 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		            else if (CAUGHT_eq == ValueUtil.TRUE_VALUE) {				// Normal successful body evaluation result
 		                ;															// Carry on
 		            }
-		            else if (CAUGHT_eq instanceof org.eclipse.ocl.pivot.values.InvalidValueException) {		// Abnormal exception evaluation result
+		            else if (CAUGHT_eq instanceof InvalidValueException) {		// Abnormal exception evaluation result
 		                accumulator = CAUGHT_eq;									// Cache an exception failure
 		            }
 		            else {															// Impossible badly typed result
-		                accumulator = new org.eclipse.ocl.pivot.values.InvalidValueException(PivotMessages.NonBooleanBody, "forAll");
+		                accumulator = new InvalidValueException(PivotMessages.NonBooleanBody, "forAll");
 		            }
 		        }
 		        CAUGHT_status = status;
@@ -323,7 +341,7 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		    catch (Exception e) {
 		        CAUGHT_status = ValueUtil.createInvalidValue(e);
 		    }
-		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, org.eclipse.ocl.pivot.ids.TypeId.BOOLEAN, OCCITables.STR_Extension_c_c_KindsSchemeValid, this, diagnostics, context, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
+		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Extension_c_c_KindsSchemeValid, this, diagnostics, context, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
 		    symbol_0 = logDiagnostic;
 		}
 		return Boolean.TRUE == symbol_0;
@@ -354,8 +372,8 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		 *     endif
 		 */
 		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
-		final /*@NonNull*/ /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.IdResolver idResolver = evaluator.getIdResolver();
-		final /*@NonNull*/ /*@NonInvalid*/ org.eclipse.ocl.pivot.values.IntegerValue severity_0 = ClassUtil.nonNullState(CGStringGetSeverityOperation.INSTANCE.evaluate(evaluator, OCCITables.STR_Extension_c_c_KindParentLocalOrImported));
+		final /*@NonNull*/ /*@NonInvalid*/ IdResolver idResolver = evaluator.getIdResolver();
+		final /*@NonNull*/ /*@NonInvalid*/ IntegerValue severity_0 = ClassUtil.nonNullState(CGStringGetSeverityOperation.INSTANCE.evaluate(evaluator, OCCITables.STR_Extension_c_c_KindParentLocalOrImported));
 		final /*@NonInvalid*/ boolean le = ClassUtil.nonNullState(OclComparableLessThanEqualOperation.INSTANCE.evaluate(evaluator, severity_0, OCCITables.INT_0).booleanValue());
 		/*@NonInvalid*/ boolean symbol_1;
 		if (le) {
@@ -365,7 +383,7 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		    /*@Nullable*/ /*@Caught*/ Object CAUGHT_status;
 		    try {
 		        final /*@NonNull*/ /*@Thrown*/ List<Kind> kinds = this.getKinds();
-		        final /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.OrderedSetValue BOXED_kinds = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Kind, kinds);
+		        final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_kinds = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Kind, kinds);
 		        /*@Nullable*/ /*@Thrown*/ Object accumulator = ValueUtil.TRUE_VALUE;
 		        /*@Nullable*/ Iterator<?> ITERATOR__1 = BOXED_kinds.iterator();
 		        /*@Nullable*/ /*@Thrown*/ Boolean status;
@@ -378,7 +396,7 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		                    status = ValueUtil.TRUE_VALUE;
 		                }
 		                else {
-		                    throw (org.eclipse.ocl.pivot.values.InvalidValueException)accumulator;
+		                    throw (InvalidValueException)accumulator;
 		                }
 		                break;
 		            }
@@ -393,7 +411,7 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		                /*@NonNull*/ /*@Caught*/ Object CAUGHT_ne;
 		                try {
 		                    if (_1 == null) {
-		                        throw new org.eclipse.ocl.pivot.values.InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Kind::parent\'");
+		                        throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Kind::parent\'");
 		                    }
 		                    final /*@Nullable*/ /*@Thrown*/ Kind parent = _1.getParent();
 		                    final /*@Thrown*/ boolean ne = parent != null;
@@ -407,10 +425,10 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		                    /*@Nullable*/ /*@Caught*/ Object CAUGHT_parentExtension;
 		                    try {
 		                        if (_1 == null) {
-		                            throw new org.eclipse.ocl.pivot.values.InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Kind::parent\'");
+		                            throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Kind::parent\'");
 		                        }
 		                        final /*@Nullable*/ /*@Thrown*/ Kind parent_0 = _1.getParent();
-		                        final /*@Nullable*/ /*@Thrown*/ Object parentExtension = org.eclipse.ocl.pivot.library.classifier.ClassifierOclContainerOperation.INSTANCE.evaluate(evaluator, parent_0);
+		                        final /*@Nullable*/ /*@Thrown*/ Object parentExtension = ClassifierOclContainerOperation.INSTANCE.evaluate(evaluator, parent_0);
 		                        CAUGHT_parentExtension = parentExtension;
 		                    }
 		                    catch (Exception e) {
@@ -418,8 +436,8 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		                    }
 		                    /*@NonNull*/ /*@Caught*/ Object CAUGHT_eq;
 		                    try {
-		                        if (CAUGHT_parentExtension instanceof org.eclipse.ocl.pivot.values.InvalidValueException) {
-		                            throw (org.eclipse.ocl.pivot.values.InvalidValueException)CAUGHT_parentExtension;
+		                        if (CAUGHT_parentExtension instanceof InvalidValueException) {
+		                            throw (InvalidValueException)CAUGHT_parentExtension;
 		                        }
 		                        final /*@Thrown*/ boolean eq = this.equals(CAUGHT_parentExtension);
 		                        CAUGHT_eq = eq;
@@ -430,23 +448,23 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		                    /*@NonNull*/ /*@Caught*/ Object CAUGHT_includes;
 		                    try {
 		                        final /*@NonNull*/ /*@Thrown*/ List<Extension> symbol_0 = this.getImport();
-		                        final /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.OrderedSetValue BOXED_symbol_0 = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Extension, symbol_0);
-		                        if (CAUGHT_parentExtension instanceof org.eclipse.ocl.pivot.values.InvalidValueException) {
-		                            throw (org.eclipse.ocl.pivot.values.InvalidValueException)CAUGHT_parentExtension;
+		                        final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_symbol_0 = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Extension, symbol_0);
+		                        if (CAUGHT_parentExtension instanceof InvalidValueException) {
+		                            throw (InvalidValueException)CAUGHT_parentExtension;
 		                        }
-		                        final /*@Thrown*/ boolean includes = ClassUtil.nonNullState(org.eclipse.ocl.pivot.library.collection.CollectionIncludesOperation.INSTANCE.evaluate(BOXED_symbol_0, CAUGHT_parentExtension).booleanValue());
+		                        final /*@Thrown*/ boolean includes = ClassUtil.nonNullState(CollectionIncludesOperation.INSTANCE.evaluate(BOXED_symbol_0, CAUGHT_parentExtension).booleanValue());
 		                        CAUGHT_includes = includes;
 		                    }
 		                    catch (Exception e) {
 		                        CAUGHT_includes = ValueUtil.createInvalidValue(e);
 		                    }
-		                    final /*@Nullable*/ /*@Thrown*/ Boolean or = org.eclipse.ocl.pivot.library.logical.BooleanOrOperation.INSTANCE.evaluate(CAUGHT_eq, CAUGHT_includes);
+		                    final /*@Nullable*/ /*@Thrown*/ Boolean or = BooleanOrOperation.INSTANCE.evaluate(CAUGHT_eq, CAUGHT_includes);
 		                    CAUGHT_or = or;
 		                }
 		                catch (Exception e) {
 		                    CAUGHT_or = ValueUtil.createInvalidValue(e);
 		                }
-		                final /*@Nullable*/ /*@Thrown*/ Boolean implies = org.eclipse.ocl.pivot.library.logical.BooleanImpliesOperation.INSTANCE.evaluate(CAUGHT_ne, CAUGHT_or);
+		                final /*@Nullable*/ /*@Thrown*/ Boolean implies = BooleanImpliesOperation.INSTANCE.evaluate(CAUGHT_ne, CAUGHT_or);
 		                CAUGHT_implies = implies;
 		            }
 		            catch (Exception e) {
@@ -465,11 +483,11 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		                    accumulator = null;										// Cache a null failure
 		                }
 		            }
-		            else if (CAUGHT_implies instanceof org.eclipse.ocl.pivot.values.InvalidValueException) {		// Abnormal exception evaluation result
+		            else if (CAUGHT_implies instanceof InvalidValueException) {		// Abnormal exception evaluation result
 		                accumulator = CAUGHT_implies;									// Cache an exception failure
 		            }
 		            else {															// Impossible badly typed result
-		                accumulator = new org.eclipse.ocl.pivot.values.InvalidValueException(PivotMessages.NonBooleanBody, "forAll");
+		                accumulator = new InvalidValueException(PivotMessages.NonBooleanBody, "forAll");
 		            }
 		        }
 		        CAUGHT_status = status;
@@ -477,7 +495,7 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		    catch (Exception e) {
 		        CAUGHT_status = ValueUtil.createInvalidValue(e);
 		    }
-		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, org.eclipse.ocl.pivot.ids.TypeId.BOOLEAN, OCCITables.STR_Extension_c_c_KindParentLocalOrImported, this, diagnostics, context, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
+		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Extension_c_c_KindParentLocalOrImported, this, diagnostics, context, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
 		    symbol_1 = logDiagnostic;
 		}
 		return Boolean.TRUE == symbol_1;
@@ -506,8 +524,8 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		 *     endif
 		 */
 		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
-		final /*@NonNull*/ /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.IdResolver idResolver = evaluator.getIdResolver();
-		final /*@NonNull*/ /*@NonInvalid*/ org.eclipse.ocl.pivot.values.IntegerValue severity_0 = ClassUtil.nonNullState(CGStringGetSeverityOperation.INSTANCE.evaluate(evaluator, OCCITables.STR_Extension_c_c_MixinsSchemeValid));
+		final /*@NonNull*/ /*@NonInvalid*/ IdResolver idResolver = evaluator.getIdResolver();
+		final /*@NonNull*/ /*@NonInvalid*/ IntegerValue severity_0 = ClassUtil.nonNullState(CGStringGetSeverityOperation.INSTANCE.evaluate(evaluator, OCCITables.STR_Extension_c_c_MixinsSchemeValid));
 		final /*@NonInvalid*/ boolean le = ClassUtil.nonNullState(OclComparableLessThanEqualOperation.INSTANCE.evaluate(evaluator, severity_0, OCCITables.INT_0).booleanValue());
 		/*@NonInvalid*/ boolean symbol_0;
 		if (le) {
@@ -517,7 +535,7 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		    /*@NonNull*/ /*@Caught*/ Object CAUGHT_status;
 		    try {
 		        final /*@NonNull*/ /*@Thrown*/ List<Mixin> mixins = this.getMixins();
-		        final /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.OrderedSetValue BOXED_mixins = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Mixin, mixins);
+		        final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_mixins = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Mixin, mixins);
 		        /*@Nullable*/ /*@Thrown*/ Object accumulator = ValueUtil.TRUE_VALUE;
 		        /*@Nullable*/ Iterator<?> ITERATOR_m = BOXED_mixins.iterator();
 		        /*@Thrown*/ boolean status;
@@ -527,7 +545,7 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		                    status = ValueUtil.TRUE_VALUE;
 		                }
 		                else {
-		                    throw (org.eclipse.ocl.pivot.values.InvalidValueException)accumulator;
+		                    throw (InvalidValueException)accumulator;
 		                }
 		                break;
 		            }
@@ -540,14 +558,14 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		            /*@NonNull*/ /*@Caught*/ Object CAUGHT_eq;
 		            try {
 		                final /*@NonNull*/ /*@Thrown*/ String scheme_1 = this.getScheme();
-		                final /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.IntegerValue size_0 = ClassUtil.nonNullState(org.eclipse.ocl.pivot.library.string.StringSizeOperation.INSTANCE.evaluate(scheme_1));
-		                final /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.IntegerValue diff_0 = ClassUtil.nonNullState((org.eclipse.ocl.pivot.values.IntegerValue)org.eclipse.ocl.pivot.library.numeric.NumericMinusOperation.INSTANCE.evaluate(size_0, OCCITables.INT_1));
+		                final /*@NonNull*/ /*@Thrown*/ IntegerValue size_0 = ClassUtil.nonNullState(StringSizeOperation.INSTANCE.evaluate(scheme_1));
+		                final /*@NonNull*/ /*@Thrown*/ IntegerValue diff_0 = ClassUtil.nonNullState((IntegerValue)NumericMinusOperation.INSTANCE.evaluate(size_0, OCCITables.INT_1));
 		                if (m == null) {
-		                    throw new org.eclipse.ocl.pivot.values.InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Category::scheme\'");
+		                    throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Category::scheme\'");
 		                }
 		                final /*@NonNull*/ /*@Thrown*/ String scheme = m.getScheme();
-		                final /*@NonNull*/ /*@Thrown*/ String substring = ClassUtil.nonNullState(org.eclipse.ocl.pivot.library.string.StringSubstringOperation.INSTANCE.evaluate(scheme, OCCITables.INT_1, diff_0));
-		                final /*@NonNull*/ /*@Thrown*/ String substring_0 = ClassUtil.nonNullState(org.eclipse.ocl.pivot.library.string.StringSubstringOperation.INSTANCE.evaluate(scheme_1, OCCITables.INT_1, diff_0));
+		                final /*@NonNull*/ /*@Thrown*/ String substring = ClassUtil.nonNullState(StringSubstringOperation.INSTANCE.evaluate(scheme, OCCITables.INT_1, diff_0));
+		                final /*@NonNull*/ /*@Thrown*/ String substring_0 = ClassUtil.nonNullState(StringSubstringOperation.INSTANCE.evaluate(scheme_1, OCCITables.INT_1, diff_0));
 		                final /*@Thrown*/ boolean eq = substring.equals(substring_0);
 		                CAUGHT_eq = eq;
 		            }
@@ -562,11 +580,11 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		            else if (CAUGHT_eq == ValueUtil.TRUE_VALUE) {				// Normal successful body evaluation result
 		                ;															// Carry on
 		            }
-		            else if (CAUGHT_eq instanceof org.eclipse.ocl.pivot.values.InvalidValueException) {		// Abnormal exception evaluation result
+		            else if (CAUGHT_eq instanceof InvalidValueException) {		// Abnormal exception evaluation result
 		                accumulator = CAUGHT_eq;									// Cache an exception failure
 		            }
 		            else {															// Impossible badly typed result
-		                accumulator = new org.eclipse.ocl.pivot.values.InvalidValueException(PivotMessages.NonBooleanBody, "forAll");
+		                accumulator = new InvalidValueException(PivotMessages.NonBooleanBody, "forAll");
 		            }
 		        }
 		        CAUGHT_status = status;
@@ -574,7 +592,7 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		    catch (Exception e) {
 		        CAUGHT_status = ValueUtil.createInvalidValue(e);
 		    }
-		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, org.eclipse.ocl.pivot.ids.TypeId.BOOLEAN, OCCITables.STR_Extension_c_c_MixinsSchemeValid, this, diagnostics, context, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
+		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Extension_c_c_MixinsSchemeValid, this, diagnostics, context, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
 		    symbol_0 = logDiagnostic;
 		}
 		return Boolean.TRUE == symbol_0;
@@ -602,8 +620,8 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		 *     endif
 		 */
 		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
-		final /*@NonNull*/ /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.IdResolver idResolver = evaluator.getIdResolver();
-		final /*@NonNull*/ /*@NonInvalid*/ org.eclipse.ocl.pivot.values.IntegerValue severity_0 = ClassUtil.nonNullState(CGStringGetSeverityOperation.INSTANCE.evaluate(evaluator, OCCITables.STR_Extension_c_c_TermUnicity));
+		final /*@NonNull*/ /*@NonInvalid*/ IdResolver idResolver = evaluator.getIdResolver();
+		final /*@NonNull*/ /*@NonInvalid*/ IntegerValue severity_0 = ClassUtil.nonNullState(CGStringGetSeverityOperation.INSTANCE.evaluate(evaluator, OCCITables.STR_Extension_c_c_TermUnicity));
 		final /*@NonInvalid*/ boolean le = ClassUtil.nonNullState(OclComparableLessThanEqualOperation.INSTANCE.evaluate(evaluator, severity_0, OCCITables.INT_0).booleanValue());
 		/*@NonInvalid*/ boolean symbol_0;
 		if (le) {
@@ -613,10 +631,10 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		    /*@NonNull*/ /*@Caught*/ Object CAUGHT_status;
 		    try {
 		        final /*@NonNull*/ /*@Thrown*/ List<Kind> kinds = this.getKinds();
-		        final /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.OrderedSetValue BOXED_kinds = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Kind, kinds);
-		        /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.SequenceValue.Accumulator accumulator = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_PRIMid_String);
+		        final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_kinds = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Kind, kinds);
+		        /*@NonNull*/ /*@Thrown*/ SequenceValue.Accumulator accumulator = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_PRIMid_String);
 		        /*@Nullable*/ Iterator<?> ITERATOR__1 = BOXED_kinds.iterator();
-		        /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.SequenceValue collect;
+		        /*@NonNull*/ /*@Thrown*/ SequenceValue collect;
 		        while (true) {
 		            if (!ITERATOR__1.hasNext()) {
 		                collect = accumulator;
@@ -627,17 +645,17 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		             * term
 		             */
 		            if (_1 == null) {
-		                throw new org.eclipse.ocl.pivot.values.InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Category::term\'");
+		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Category::term\'");
 		            }
 		            final /*@NonNull*/ /*@Thrown*/ String term = _1.getTerm();
 		            //
 		            accumulator.add(term);
 		        }
 		        final /*@NonNull*/ /*@Thrown*/ List<Mixin> mixins = this.getMixins();
-		        final /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.OrderedSetValue BOXED_mixins = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Mixin, mixins);
-		        /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.SequenceValue.Accumulator accumulator_0 = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_PRIMid_String);
+		        final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_mixins = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Mixin, mixins);
+		        /*@NonNull*/ /*@Thrown*/ SequenceValue.Accumulator accumulator_0 = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_PRIMid_String);
 		        /*@Nullable*/ Iterator<?> ITERATOR__1_0 = BOXED_mixins.iterator();
-		        /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.SequenceValue collect_0;
+		        /*@NonNull*/ /*@Thrown*/ SequenceValue collect_0;
 		        while (true) {
 		            if (!ITERATOR__1_0.hasNext()) {
 		                collect_0 = accumulator_0;
@@ -648,20 +666,20 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		             * term
 		             */
 		            if (_1_0 == null) {
-		                throw new org.eclipse.ocl.pivot.values.InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Category::term\'");
+		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Category::term\'");
 		            }
 		            final /*@NonNull*/ /*@Thrown*/ String term_0 = _1_0.getTerm();
 		            //
 		            accumulator_0.add(term_0);
 		        }
-		        final /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.BagValue intersection = ClassUtil.nonNullState((org.eclipse.ocl.pivot.values.BagValue)org.eclipse.ocl.pivot.library.collection.CollectionIntersectionOperation.INSTANCE.evaluate(collect, collect_0));
-		        final /*@Thrown*/ boolean status = ClassUtil.nonNullState(org.eclipse.ocl.pivot.library.collection.CollectionIsEmptyOperation.INSTANCE.evaluate(intersection).booleanValue());
+		        final /*@NonNull*/ /*@Thrown*/ BagValue intersection = ClassUtil.nonNullState((BagValue)CollectionIntersectionOperation.INSTANCE.evaluate(collect, collect_0));
+		        final /*@Thrown*/ boolean status = ClassUtil.nonNullState(CollectionIsEmptyOperation.INSTANCE.evaluate(intersection).booleanValue());
 		        CAUGHT_status = status;
 		    }
 		    catch (Exception e) {
 		        CAUGHT_status = ValueUtil.createInvalidValue(e);
 		    }
-		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, org.eclipse.ocl.pivot.ids.TypeId.BOOLEAN, OCCITables.STR_Extension_c_c_TermUnicity, this, diagnostics, context, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
+		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Extension_c_c_TermUnicity, this, diagnostics, context, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
 		    symbol_0 = logDiagnostic;
 		}
 		return Boolean.TRUE == symbol_0;
@@ -691,8 +709,8 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		 *     endif
 		 */
 		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
-		final /*@NonNull*/ /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.IdResolver idResolver = evaluator.getIdResolver();
-		final /*@NonNull*/ /*@NonInvalid*/ org.eclipse.ocl.pivot.values.IntegerValue severity_0 = ClassUtil.nonNullState(CGStringGetSeverityOperation.INSTANCE.evaluate(evaluator, OCCITables.STR_Extension_c_c_MixinAppliesLocalOrImported));
+		final /*@NonNull*/ /*@NonInvalid*/ IdResolver idResolver = evaluator.getIdResolver();
+		final /*@NonNull*/ /*@NonInvalid*/ IntegerValue severity_0 = ClassUtil.nonNullState(CGStringGetSeverityOperation.INSTANCE.evaluate(evaluator, OCCITables.STR_Extension_c_c_MixinAppliesLocalOrImported));
 		final /*@NonInvalid*/ boolean le = ClassUtil.nonNullState(OclComparableLessThanEqualOperation.INSTANCE.evaluate(evaluator, severity_0, OCCITables.INT_0).booleanValue());
 		/*@NonInvalid*/ boolean symbol_1;
 		if (le) {
@@ -702,10 +720,10 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		    /*@Nullable*/ /*@Caught*/ Object CAUGHT_status;
 		    try {
 		        final /*@NonNull*/ /*@Thrown*/ List<Mixin> mixins = this.getMixins();
-		        final /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.OrderedSetValue BOXED_mixins = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Mixin, mixins);
-		        /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.SequenceValue.Accumulator accumulator = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_CLSSid_Kind);
+		        final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_mixins = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Mixin, mixins);
+		        /*@NonNull*/ /*@Thrown*/ SequenceValue.Accumulator accumulator = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_CLSSid_Kind);
 		        /*@Nullable*/ Iterator<?> ITERATOR__1 = BOXED_mixins.iterator();
-		        /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.SequenceValue collect;
+		        /*@NonNull*/ /*@Thrown*/ SequenceValue collect;
 		        while (true) {
 		            if (!ITERATOR__1.hasNext()) {
 		                collect = accumulator;
@@ -716,10 +734,10 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		             * applies
 		             */
 		            if (_1 == null) {
-		                throw new org.eclipse.ocl.pivot.values.InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Mixin::applies\'");
+		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Mixin::applies\'");
 		            }
 		            final /*@NonNull*/ /*@Thrown*/ List<Kind> applies = _1.getApplies();
-		            final /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.OrderedSetValue BOXED_applies = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Kind, applies);
+		            final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_applies = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Kind, applies);
 		            //
 		            for (Object value : BOXED_applies.flatten().getElements()) {
 		                accumulator.add(value);
@@ -737,7 +755,7 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		                    status = ValueUtil.TRUE_VALUE;
 		                }
 		                else {
-		                    throw (org.eclipse.ocl.pivot.values.InvalidValueException)accumulator_0;
+		                    throw (InvalidValueException)accumulator_0;
 		                }
 		                break;
 		            }
@@ -751,7 +769,7 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		            try {
 		                /*@Nullable*/ /*@Caught*/ Object CAUGHT_extension;
 		                try {
-		                    final /*@Nullable*/ /*@Thrown*/ Object extension = org.eclipse.ocl.pivot.library.classifier.ClassifierOclContainerOperation.INSTANCE.evaluate(evaluator, _1_0);
+		                    final /*@Nullable*/ /*@Thrown*/ Object extension = ClassifierOclContainerOperation.INSTANCE.evaluate(evaluator, _1_0);
 		                    CAUGHT_extension = extension;
 		                }
 		                catch (Exception e) {
@@ -759,8 +777,8 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		                }
 		                /*@NonNull*/ /*@Caught*/ Object CAUGHT_eq;
 		                try {
-		                    if (CAUGHT_extension instanceof org.eclipse.ocl.pivot.values.InvalidValueException) {
-		                        throw (org.eclipse.ocl.pivot.values.InvalidValueException)CAUGHT_extension;
+		                    if (CAUGHT_extension instanceof InvalidValueException) {
+		                        throw (InvalidValueException)CAUGHT_extension;
 		                    }
 		                    final /*@Thrown*/ boolean eq = this.equals(CAUGHT_extension);
 		                    CAUGHT_eq = eq;
@@ -771,17 +789,17 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		                /*@NonNull*/ /*@Caught*/ Object CAUGHT_includes;
 		                try {
 		                    final /*@NonNull*/ /*@Thrown*/ List<Extension> symbol_0 = this.getImport();
-		                    final /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.OrderedSetValue BOXED_symbol_0 = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Extension, symbol_0);
-		                    if (CAUGHT_extension instanceof org.eclipse.ocl.pivot.values.InvalidValueException) {
-		                        throw (org.eclipse.ocl.pivot.values.InvalidValueException)CAUGHT_extension;
+		                    final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_symbol_0 = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Extension, symbol_0);
+		                    if (CAUGHT_extension instanceof InvalidValueException) {
+		                        throw (InvalidValueException)CAUGHT_extension;
 		                    }
-		                    final /*@Thrown*/ boolean includes = ClassUtil.nonNullState(org.eclipse.ocl.pivot.library.collection.CollectionIncludesOperation.INSTANCE.evaluate(BOXED_symbol_0, CAUGHT_extension).booleanValue());
+		                    final /*@Thrown*/ boolean includes = ClassUtil.nonNullState(CollectionIncludesOperation.INSTANCE.evaluate(BOXED_symbol_0, CAUGHT_extension).booleanValue());
 		                    CAUGHT_includes = includes;
 		                }
 		                catch (Exception e) {
 		                    CAUGHT_includes = ValueUtil.createInvalidValue(e);
 		                }
-		                final /*@Nullable*/ /*@Thrown*/ Boolean or = org.eclipse.ocl.pivot.library.logical.BooleanOrOperation.INSTANCE.evaluate(CAUGHT_eq, CAUGHT_includes);
+		                final /*@Nullable*/ /*@Thrown*/ Boolean or = BooleanOrOperation.INSTANCE.evaluate(CAUGHT_eq, CAUGHT_includes);
 		                CAUGHT_or = or;
 		            }
 		            catch (Exception e) {
@@ -800,11 +818,11 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		                    accumulator_0 = null;										// Cache a null failure
 		                }
 		            }
-		            else if (CAUGHT_or instanceof org.eclipse.ocl.pivot.values.InvalidValueException) {		// Abnormal exception evaluation result
+		            else if (CAUGHT_or instanceof InvalidValueException) {		// Abnormal exception evaluation result
 		                accumulator_0 = CAUGHT_or;									// Cache an exception failure
 		            }
 		            else {															// Impossible badly typed result
-		                accumulator_0 = new org.eclipse.ocl.pivot.values.InvalidValueException(PivotMessages.NonBooleanBody, "forAll");
+		                accumulator_0 = new InvalidValueException(PivotMessages.NonBooleanBody, "forAll");
 		            }
 		        }
 		        CAUGHT_status = status;
@@ -812,7 +830,7 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		    catch (Exception e) {
 		        CAUGHT_status = ValueUtil.createInvalidValue(e);
 		    }
-		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, org.eclipse.ocl.pivot.ids.TypeId.BOOLEAN, OCCITables.STR_Extension_c_c_MixinAppliesLocalOrImported, this, diagnostics, context, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
+		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Extension_c_c_MixinAppliesLocalOrImported, this, diagnostics, context, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
 		    symbol_1 = logDiagnostic;
 		}
 		return Boolean.TRUE == symbol_1;
@@ -840,8 +858,8 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		 *     endif
 		 */
 		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
-		final /*@NonNull*/ /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.IdResolver idResolver = evaluator.getIdResolver();
-		final /*@NonNull*/ /*@NonInvalid*/ org.eclipse.ocl.pivot.values.IntegerValue severity_0 = ClassUtil.nonNullState(CGStringGetSeverityOperation.INSTANCE.evaluate(evaluator, OCCITables.STR_Extension_c_c_SchemeUnique));
+		final /*@NonNull*/ /*@NonInvalid*/ IdResolver idResolver = evaluator.getIdResolver();
+		final /*@NonNull*/ /*@NonInvalid*/ IntegerValue severity_0 = ClassUtil.nonNullState(CGStringGetSeverityOperation.INSTANCE.evaluate(evaluator, OCCITables.STR_Extension_c_c_SchemeUnique));
 		final /*@NonInvalid*/ boolean le = ClassUtil.nonNullState(OclComparableLessThanEqualOperation.INSTANCE.evaluate(evaluator, severity_0, OCCITables.INT_0).booleanValue());
 		/*@NonInvalid*/ boolean symbol_0;
 		if (le) {
@@ -851,8 +869,8 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		    /*@NonNull*/ /*@Caught*/ Object CAUGHT_status;
 		    try {
 		        final /*@NonNull*/ /*@NonInvalid*/ org.eclipse.ocl.pivot.Class TYP_occi_c_c_Extension_0 = idResolver.getClass(OCCITables.CLSSid_Extension, null);
-		        final /*@NonNull*/ /*@NonInvalid*/ org.eclipse.ocl.pivot.values.SetValue allInstances = ClassUtil.nonNullState(org.eclipse.ocl.pivot.library.classifier.ClassifierAllInstancesOperation.INSTANCE.evaluate(evaluator, OCCITables.SET_CLSSid_Extension, TYP_occi_c_c_Extension_0));
-		        /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.SetValue.Accumulator accumulator = ValueUtil.createSetAccumulatorValue(OCCITables.SET_CLSSid_Extension);
+		        final /*@NonNull*/ /*@NonInvalid*/ SetValue allInstances = ClassUtil.nonNullState(ClassifierAllInstancesOperation.INSTANCE.evaluate(evaluator, OCCITables.SET_CLSSid_Extension, TYP_occi_c_c_Extension_0));
+		        /*@NonNull*/ /*@Thrown*/ SetValue.Accumulator accumulator = ValueUtil.createSetAccumulatorValue(OCCITables.SET_CLSSid_Extension);
 		        /*@NonNull*/ Iterator<?> ITERATOR__1 = allInstances.iterator();
 		        /*@Thrown*/ boolean status;
 		        while (true) {
@@ -879,7 +897,7 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		    catch (Exception e) {
 		        CAUGHT_status = ValueUtil.createInvalidValue(e);
 		    }
-		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, org.eclipse.ocl.pivot.ids.TypeId.BOOLEAN, OCCITables.STR_Extension_c_c_SchemeUnique, this, diagnostics, context, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
+		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Extension_c_c_SchemeUnique, this, diagnostics, context, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
 		    symbol_0 = logDiagnostic;
 		}
 		return Boolean.TRUE == symbol_0;
@@ -909,8 +927,8 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		 *     endif
 		 */
 		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
-		final /*@NonNull*/ /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.IdResolver idResolver = evaluator.getIdResolver();
-		final /*@NonNull*/ /*@NonInvalid*/ org.eclipse.ocl.pivot.values.IntegerValue severity_0 = ClassUtil.nonNullState(CGStringGetSeverityOperation.INSTANCE.evaluate(evaluator, OCCITables.STR_Extension_c_c_MixinDependsLocalOrImported));
+		final /*@NonNull*/ /*@NonInvalid*/ IdResolver idResolver = evaluator.getIdResolver();
+		final /*@NonNull*/ /*@NonInvalid*/ IntegerValue severity_0 = ClassUtil.nonNullState(CGStringGetSeverityOperation.INSTANCE.evaluate(evaluator, OCCITables.STR_Extension_c_c_MixinDependsLocalOrImported));
 		final /*@NonInvalid*/ boolean le = ClassUtil.nonNullState(OclComparableLessThanEqualOperation.INSTANCE.evaluate(evaluator, severity_0, OCCITables.INT_0).booleanValue());
 		/*@NonInvalid*/ boolean symbol_1;
 		if (le) {
@@ -920,10 +938,10 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		    /*@Nullable*/ /*@Caught*/ Object CAUGHT_status;
 		    try {
 		        final /*@NonNull*/ /*@Thrown*/ List<Mixin> mixins = this.getMixins();
-		        final /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.OrderedSetValue BOXED_mixins = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Mixin, mixins);
-		        /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.SequenceValue.Accumulator accumulator = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_CLSSid_Mixin);
+		        final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_mixins = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Mixin, mixins);
+		        /*@NonNull*/ /*@Thrown*/ SequenceValue.Accumulator accumulator = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_CLSSid_Mixin);
 		        /*@Nullable*/ Iterator<?> ITERATOR__1 = BOXED_mixins.iterator();
-		        /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.SequenceValue collect;
+		        /*@NonNull*/ /*@Thrown*/ SequenceValue collect;
 		        while (true) {
 		            if (!ITERATOR__1.hasNext()) {
 		                collect = accumulator;
@@ -934,10 +952,10 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		             * depends
 		             */
 		            if (_1 == null) {
-		                throw new org.eclipse.ocl.pivot.values.InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Mixin::depends\'");
+		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Mixin::depends\'");
 		            }
 		            final /*@NonNull*/ /*@Thrown*/ List<Mixin> depends = _1.getDepends();
-		            final /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.OrderedSetValue BOXED_depends = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Mixin, depends);
+		            final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_depends = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Mixin, depends);
 		            //
 		            for (Object value : BOXED_depends.flatten().getElements()) {
 		                accumulator.add(value);
@@ -955,7 +973,7 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		                    status = ValueUtil.TRUE_VALUE;
 		                }
 		                else {
-		                    throw (org.eclipse.ocl.pivot.values.InvalidValueException)accumulator_0;
+		                    throw (InvalidValueException)accumulator_0;
 		                }
 		                break;
 		            }
@@ -969,7 +987,7 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		            try {
 		                /*@Nullable*/ /*@Caught*/ Object CAUGHT_extension;
 		                try {
-		                    final /*@Nullable*/ /*@Thrown*/ Object extension = org.eclipse.ocl.pivot.library.classifier.ClassifierOclContainerOperation.INSTANCE.evaluate(evaluator, _1_0);
+		                    final /*@Nullable*/ /*@Thrown*/ Object extension = ClassifierOclContainerOperation.INSTANCE.evaluate(evaluator, _1_0);
 		                    CAUGHT_extension = extension;
 		                }
 		                catch (Exception e) {
@@ -977,8 +995,8 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		                }
 		                /*@NonNull*/ /*@Caught*/ Object CAUGHT_eq;
 		                try {
-		                    if (CAUGHT_extension instanceof org.eclipse.ocl.pivot.values.InvalidValueException) {
-		                        throw (org.eclipse.ocl.pivot.values.InvalidValueException)CAUGHT_extension;
+		                    if (CAUGHT_extension instanceof InvalidValueException) {
+		                        throw (InvalidValueException)CAUGHT_extension;
 		                    }
 		                    final /*@Thrown*/ boolean eq = this.equals(CAUGHT_extension);
 		                    CAUGHT_eq = eq;
@@ -989,17 +1007,17 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		                /*@NonNull*/ /*@Caught*/ Object CAUGHT_includes;
 		                try {
 		                    final /*@NonNull*/ /*@Thrown*/ List<Extension> symbol_0 = this.getImport();
-		                    final /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.OrderedSetValue BOXED_symbol_0 = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Extension, symbol_0);
-		                    if (CAUGHT_extension instanceof org.eclipse.ocl.pivot.values.InvalidValueException) {
-		                        throw (org.eclipse.ocl.pivot.values.InvalidValueException)CAUGHT_extension;
+		                    final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_symbol_0 = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Extension, symbol_0);
+		                    if (CAUGHT_extension instanceof InvalidValueException) {
+		                        throw (InvalidValueException)CAUGHT_extension;
 		                    }
-		                    final /*@Thrown*/ boolean includes = ClassUtil.nonNullState(org.eclipse.ocl.pivot.library.collection.CollectionIncludesOperation.INSTANCE.evaluate(BOXED_symbol_0, CAUGHT_extension).booleanValue());
+		                    final /*@Thrown*/ boolean includes = ClassUtil.nonNullState(CollectionIncludesOperation.INSTANCE.evaluate(BOXED_symbol_0, CAUGHT_extension).booleanValue());
 		                    CAUGHT_includes = includes;
 		                }
 		                catch (Exception e) {
 		                    CAUGHT_includes = ValueUtil.createInvalidValue(e);
 		                }
-		                final /*@Nullable*/ /*@Thrown*/ Boolean or = org.eclipse.ocl.pivot.library.logical.BooleanOrOperation.INSTANCE.evaluate(CAUGHT_eq, CAUGHT_includes);
+		                final /*@Nullable*/ /*@Thrown*/ Boolean or = BooleanOrOperation.INSTANCE.evaluate(CAUGHT_eq, CAUGHT_includes);
 		                CAUGHT_or = or;
 		            }
 		            catch (Exception e) {
@@ -1018,11 +1036,11 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		                    accumulator_0 = null;										// Cache a null failure
 		                }
 		            }
-		            else if (CAUGHT_or instanceof org.eclipse.ocl.pivot.values.InvalidValueException) {		// Abnormal exception evaluation result
+		            else if (CAUGHT_or instanceof InvalidValueException) {		// Abnormal exception evaluation result
 		                accumulator_0 = CAUGHT_or;									// Cache an exception failure
 		            }
 		            else {															// Impossible badly typed result
-		                accumulator_0 = new org.eclipse.ocl.pivot.values.InvalidValueException(PivotMessages.NonBooleanBody, "forAll");
+		                accumulator_0 = new InvalidValueException(PivotMessages.NonBooleanBody, "forAll");
 		            }
 		        }
 		        CAUGHT_status = status;
@@ -1030,7 +1048,7 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		    catch (Exception e) {
 		        CAUGHT_status = ValueUtil.createInvalidValue(e);
 		    }
-		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, org.eclipse.ocl.pivot.ids.TypeId.BOOLEAN, OCCITables.STR_Extension_c_c_MixinDependsLocalOrImported, this, diagnostics, context, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
+		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Extension_c_c_MixinDependsLocalOrImported, this, diagnostics, context, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
 		    symbol_1 = logDiagnostic;
 		}
 		return Boolean.TRUE == symbol_1;

@@ -18,13 +18,22 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.ocl.pivot.evaluation.Evaluator;
+import org.eclipse.ocl.pivot.ids.IdResolver;
 import org.eclipse.ocl.pivot.ids.TypeId;
 import org.eclipse.ocl.pivot.internal.utilities.PivotUtilInternal;
+import org.eclipse.ocl.pivot.library.classifier.ClassifierAllInstancesOperation;
 import org.eclipse.ocl.pivot.library.oclany.OclComparableLessThanEqualOperation;
 import org.eclipse.ocl.pivot.library.string.CGStringGetSeverityOperation;
 import org.eclipse.ocl.pivot.library.string.CGStringLogDiagnosticOperation;
+import org.eclipse.ocl.pivot.library.string.StringConcatOperation;
+import org.eclipse.ocl.pivot.library.string.StringSizeOperation;
+import org.eclipse.ocl.pivot.library.string.StringSubstringOperation;
 import org.eclipse.ocl.pivot.utilities.ClassUtil;
 import org.eclipse.ocl.pivot.utilities.ValueUtil;
+import org.eclipse.ocl.pivot.values.IntegerValue;
+import org.eclipse.ocl.pivot.values.InvalidValueException;
+import org.eclipse.ocl.pivot.values.OrderedSetValue;
+import org.eclipse.ocl.pivot.values.SetValue;
 import org.occiware.clouddesigner.occi.Attribute;
 import org.occiware.clouddesigner.occi.Category;
 import org.occiware.clouddesigner.occi.OCCIPackage;
@@ -231,8 +240,8 @@ public abstract class CategoryImpl extends MinimalEObjectImpl.Container implemen
 		 *     endif
 		 */
 		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
-		final /*@NonNull*/ /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.IdResolver idResolver = evaluator.getIdResolver();
-		final /*@NonNull*/ /*@NonInvalid*/ org.eclipse.ocl.pivot.values.IntegerValue severity_0 = ClassUtil.nonNullState(CGStringGetSeverityOperation.INSTANCE.evaluate(evaluator, OCCITables.STR_Category_c_c_AttributesNameUnique));
+		final /*@NonNull*/ /*@NonInvalid*/ IdResolver idResolver = evaluator.getIdResolver();
+		final /*@NonNull*/ /*@NonInvalid*/ IntegerValue severity_0 = ClassUtil.nonNullState(CGStringGetSeverityOperation.INSTANCE.evaluate(evaluator, OCCITables.STR_Category_c_c_AttributesNameUnique));
 		final /*@NonInvalid*/ boolean le = ClassUtil.nonNullState(OclComparableLessThanEqualOperation.INSTANCE.evaluate(evaluator, severity_0, OCCITables.INT_0).booleanValue());
 		/*@NonInvalid*/ boolean symbol_0;
 		if (le) {
@@ -242,8 +251,8 @@ public abstract class CategoryImpl extends MinimalEObjectImpl.Container implemen
 		    /*@NonNull*/ /*@Caught*/ Object CAUGHT_status;
 		    try {
 		        final /*@NonNull*/ /*@Thrown*/ List<Attribute> attributes = this.getAttributes();
-		        final /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.OrderedSetValue BOXED_attributes = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Attribute, attributes);
-		        /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.SetValue.Accumulator accumulator = ValueUtil.createSetAccumulatorValue(OCCITables.ORD_CLSSid_Attribute);
+		        final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_attributes = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Attribute, attributes);
+		        /*@NonNull*/ /*@Thrown*/ SetValue.Accumulator accumulator = ValueUtil.createSetAccumulatorValue(OCCITables.ORD_CLSSid_Attribute);
 		        /*@Nullable*/ Iterator<?> ITERATOR__1 = BOXED_attributes.iterator();
 		        /*@Thrown*/ boolean status;
 		        while (true) {
@@ -256,7 +265,7 @@ public abstract class CategoryImpl extends MinimalEObjectImpl.Container implemen
 		             * name
 		             */
 		            if (_1 == null) {
-		                throw new org.eclipse.ocl.pivot.values.InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Attribute::name\'");
+		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Attribute::name\'");
 		            }
 		            final /*@NonNull*/ /*@Thrown*/ String name = _1.getName();
 		            //
@@ -301,8 +310,8 @@ public abstract class CategoryImpl extends MinimalEObjectImpl.Container implemen
 		 *     endif
 		 */
 		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
-		final /*@NonNull*/ /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.IdResolver idResolver = evaluator.getIdResolver();
-		final /*@NonNull*/ /*@NonInvalid*/ org.eclipse.ocl.pivot.values.IntegerValue severity_0 = ClassUtil.nonNullState(CGStringGetSeverityOperation.INSTANCE.evaluate(evaluator, OCCITables.STR_Category_c_c_IdentityUnique));
+		final /*@NonNull*/ /*@NonInvalid*/ IdResolver idResolver = evaluator.getIdResolver();
+		final /*@NonNull*/ /*@NonInvalid*/ IntegerValue severity_0 = ClassUtil.nonNullState(CGStringGetSeverityOperation.INSTANCE.evaluate(evaluator, OCCITables.STR_Category_c_c_IdentityUnique));
 		final /*@NonInvalid*/ boolean le = ClassUtil.nonNullState(OclComparableLessThanEqualOperation.INSTANCE.evaluate(evaluator, severity_0, OCCITables.INT_0).booleanValue());
 		/*@NonInvalid*/ boolean symbol_0;
 		if (le) {
@@ -312,8 +321,8 @@ public abstract class CategoryImpl extends MinimalEObjectImpl.Container implemen
 		    /*@NonNull*/ /*@Caught*/ Object CAUGHT_status;
 		    try {
 		        final /*@NonNull*/ /*@NonInvalid*/ org.eclipse.ocl.pivot.Class TYP_occi_c_c_Category = idResolver.getClass(OCCITables.CLSSid_Category, null);
-		        final /*@NonNull*/ /*@NonInvalid*/ org.eclipse.ocl.pivot.values.SetValue allInstances = ClassUtil.nonNullState(org.eclipse.ocl.pivot.library.classifier.ClassifierAllInstancesOperation.INSTANCE.evaluate(evaluator, OCCITables.SET_CLSSid_Category, TYP_occi_c_c_Category));
-		        /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.SetValue.Accumulator accumulator = ValueUtil.createSetAccumulatorValue(OCCITables.SET_CLSSid_Category);
+		        final /*@NonNull*/ /*@NonInvalid*/ SetValue allInstances = ClassUtil.nonNullState(ClassifierAllInstancesOperation.INSTANCE.evaluate(evaluator, OCCITables.SET_CLSSid_Category, TYP_occi_c_c_Category));
+		        /*@NonNull*/ /*@Thrown*/ SetValue.Accumulator accumulator = ValueUtil.createSetAccumulatorValue(OCCITables.SET_CLSSid_Category);
 		        /*@NonNull*/ Iterator<?> ITERATOR__1 = allInstances.iterator();
 		        /*@Thrown*/ boolean status;
 		        while (true) {
@@ -327,7 +336,7 @@ public abstract class CategoryImpl extends MinimalEObjectImpl.Container implemen
 		             */
 		            final /*@NonNull*/ /*@Thrown*/ String scheme = _1.getScheme();
 		            final /*@NonNull*/ /*@Thrown*/ String term = _1.getTerm();
-		            final /*@NonNull*/ /*@Thrown*/ String sum = ClassUtil.nonNullState(org.eclipse.ocl.pivot.library.string.StringConcatOperation.INSTANCE.evaluate(scheme, term));
+		            final /*@NonNull*/ /*@Thrown*/ String sum = ClassUtil.nonNullState(StringConcatOperation.INSTANCE.evaluate(scheme, term));
 		            //
 		            if (accumulator.includes(sum) == ValueUtil.TRUE_VALUE) {
 		                status = ValueUtil.FALSE_VALUE;			// Abort after second find
@@ -371,7 +380,7 @@ public abstract class CategoryImpl extends MinimalEObjectImpl.Container implemen
 		 *     endif
 		 */
 		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
-		final /*@NonNull*/ /*@NonInvalid*/ org.eclipse.ocl.pivot.values.IntegerValue severity_0 = ClassUtil.nonNullState(CGStringGetSeverityOperation.INSTANCE.evaluate(evaluator, OCCITables.STR_Category_c_c_SchemeEndsWithSharp));
+		final /*@NonNull*/ /*@NonInvalid*/ IntegerValue severity_0 = ClassUtil.nonNullState(CGStringGetSeverityOperation.INSTANCE.evaluate(evaluator, OCCITables.STR_Category_c_c_SchemeEndsWithSharp));
 		final /*@NonInvalid*/ boolean le = ClassUtil.nonNullState(OclComparableLessThanEqualOperation.INSTANCE.evaluate(evaluator, severity_0, OCCITables.INT_0).booleanValue());
 		/*@NonInvalid*/ boolean symbol_0;
 		if (le) {
@@ -381,8 +390,8 @@ public abstract class CategoryImpl extends MinimalEObjectImpl.Container implemen
 		    /*@NonNull*/ /*@Caught*/ Object CAUGHT_status;
 		    try {
 		        final /*@NonNull*/ /*@Thrown*/ String scheme = this.getScheme();
-		        final /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.IntegerValue size_0 = ClassUtil.nonNullState(org.eclipse.ocl.pivot.library.string.StringSizeOperation.INSTANCE.evaluate(scheme));
-		        final /*@NonNull*/ /*@Thrown*/ String substring = ClassUtil.nonNullState(org.eclipse.ocl.pivot.library.string.StringSubstringOperation.INSTANCE.evaluate(scheme, size_0, size_0));
+		        final /*@NonNull*/ /*@Thrown*/ IntegerValue size_0 = ClassUtil.nonNullState(StringSizeOperation.INSTANCE.evaluate(scheme));
+		        final /*@NonNull*/ /*@Thrown*/ String substring = ClassUtil.nonNullState(StringSubstringOperation.INSTANCE.evaluate(scheme, size_0, size_0));
 		        final /*@Thrown*/ boolean status = substring.equals(OCCITables.STR__35);
 		        CAUGHT_status = status;
 		    }

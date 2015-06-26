@@ -19,14 +19,31 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.ocl.pivot.StandardLibrary;
 import org.eclipse.ocl.pivot.evaluation.Evaluator;
+import org.eclipse.ocl.pivot.ids.IdResolver;
+import org.eclipse.ocl.pivot.ids.TypeId;
+import org.eclipse.ocl.pivot.internal.library.executor.ExecutorSingleIterationManager;
 import org.eclipse.ocl.pivot.internal.utilities.PivotUtilInternal;
+import org.eclipse.ocl.pivot.library.AbstractBinaryOperation;
+import org.eclipse.ocl.pivot.library.LibraryIteration;
+import org.eclipse.ocl.pivot.library.classifier.ClassifierOclContainerOperation;
+import org.eclipse.ocl.pivot.library.collection.CollectionExcludesAllOperation;
+import org.eclipse.ocl.pivot.library.collection.CollectionExcludesOperation;
+import org.eclipse.ocl.pivot.library.logical.BooleanAndOperation;
+import org.eclipse.ocl.pivot.library.oclany.OclAnyOclAsSetOperation;
+import org.eclipse.ocl.pivot.library.oclany.OclAnyOclAsTypeOperation;
 import org.eclipse.ocl.pivot.library.oclany.OclComparableLessThanEqualOperation;
 import org.eclipse.ocl.pivot.library.string.CGStringGetSeverityOperation;
 import org.eclipse.ocl.pivot.library.string.CGStringLogDiagnosticOperation;
 import org.eclipse.ocl.pivot.messages.PivotMessages;
+import org.eclipse.ocl.pivot.oclstdlib.OCLstdlibTables;
 import org.eclipse.ocl.pivot.utilities.ClassUtil;
 import org.eclipse.ocl.pivot.utilities.ValueUtil;
+import org.eclipse.ocl.pivot.values.BagValue;
 import org.eclipse.ocl.pivot.values.IntegerValue;
+import org.eclipse.ocl.pivot.values.InvalidValueException;
+import org.eclipse.ocl.pivot.values.OrderedSetValue;
+import org.eclipse.ocl.pivot.values.SequenceValue;
+import org.eclipse.ocl.pivot.values.SetValue;
 import org.occiware.clouddesigner.occi.Action;
 import org.occiware.clouddesigner.occi.Attribute;
 import org.occiware.clouddesigner.occi.Entity;
@@ -184,7 +201,7 @@ public class KindImpl extends CategoryImpl implements Kind {
 		 *     endif
 		 */
 		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
-		final /*@NonNull*/ /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.IdResolver idResolver = evaluator.getIdResolver();
+		final /*@NonNull*/ /*@NonInvalid*/ IdResolver idResolver = evaluator.getIdResolver();
 		final /*@NonNull*/ /*@NonInvalid*/ IntegerValue severity_0 = ClassUtil.nonNullState(CGStringGetSeverityOperation.INSTANCE.evaluate(evaluator, OCCITables.STR_Kind_c_c_CorrectScheme));
 		final /*@NonInvalid*/ boolean le = ClassUtil.nonNullState(OclComparableLessThanEqualOperation.INSTANCE.evaluate(evaluator, severity_0, OCCITables.INT_0).booleanValue());
 		/*@NonInvalid*/ boolean symbol_0;
@@ -196,8 +213,8 @@ public class KindImpl extends CategoryImpl implements Kind {
 		    try {
 		        final /*@NonNull*/ /*@NonInvalid*/ org.eclipse.ocl.pivot.Class TYP_occi_c_c_Extension = idResolver.getClass(OCCITables.CLSSid_Extension, null);
 		        final /*@NonNull*/ /*@Thrown*/ String scheme = this.getScheme();
-		        final /*@Nullable*/ /*@NonInvalid*/ Object oclContainer = org.eclipse.ocl.pivot.library.classifier.ClassifierOclContainerOperation.INSTANCE.evaluate(evaluator, this);
-		        final /*@NonNull*/ /*@Thrown*/ Extension oclAsType = ClassUtil.nonNullState((Extension)org.eclipse.ocl.pivot.library.oclany.OclAnyOclAsTypeOperation.INSTANCE.evaluate(evaluator, oclContainer, TYP_occi_c_c_Extension));
+		        final /*@Nullable*/ /*@NonInvalid*/ Object oclContainer = ClassifierOclContainerOperation.INSTANCE.evaluate(evaluator, this);
+		        final /*@NonNull*/ /*@Thrown*/ Extension oclAsType = ClassUtil.nonNullState((Extension)OclAnyOclAsTypeOperation.INSTANCE.evaluate(evaluator, oclContainer, TYP_occi_c_c_Extension));
 		        final /*@NonNull*/ /*@Thrown*/ String scheme_0 = oclAsType.getScheme();
 		        final /*@Thrown*/ boolean status = scheme.equals(scheme_0);
 		        CAUGHT_status = status;
@@ -205,7 +222,7 @@ public class KindImpl extends CategoryImpl implements Kind {
 		    catch (Exception e) {
 		        CAUGHT_status = ValueUtil.createInvalidValue(e);
 		    }
-		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, org.eclipse.ocl.pivot.ids.TypeId.BOOLEAN, OCCITables.STR_Kind_c_c_CorrectScheme, this, diagnostics, context, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
+		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Kind_c_c_CorrectScheme, this, diagnostics, context, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
 		    symbol_0 = logDiagnostic;
 		}
 		return Boolean.TRUE == symbol_0;
@@ -233,7 +250,7 @@ public class KindImpl extends CategoryImpl implements Kind {
 		 *     endif
 		 */
 		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
-		final /*@NonNull*/ /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.IdResolver idResolver = evaluator.getIdResolver();
+		final /*@NonNull*/ /*@NonInvalid*/ IdResolver idResolver = evaluator.getIdResolver();
 		final /*@NonNull*/ /*@NonInvalid*/ StandardLibrary standardLibrary = idResolver.getStandardLibrary();
 		final /*@NonNull*/ /*@NonInvalid*/ IntegerValue severity_0 = ClassUtil.nonNullState(CGStringGetSeverityOperation.INSTANCE.evaluate(evaluator, OCCITables.STR_Kind_c_c_NoCyclicInheritance));
 		final /*@NonInvalid*/ boolean le = ClassUtil.nonNullState(OclComparableLessThanEqualOperation.INSTANCE.evaluate(evaluator, severity_0, OCCITables.INT_0).booleanValue());
@@ -245,36 +262,36 @@ public class KindImpl extends CategoryImpl implements Kind {
 		    /*@NonNull*/ /*@Caught*/ Object CAUGHT_status;
 		    try {
 		        final /*@Nullable*/ /*@Thrown*/ Kind parent = this.getParent();
-		        final /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.SetValue oclAsSet = ClassUtil.nonNullState(org.eclipse.ocl.pivot.library.oclany.OclAnyOclAsSetOperation.INSTANCE.evaluate(evaluator, OCCITables.SET_CLSSid_Kind, parent));
+		        final /*@NonNull*/ /*@Thrown*/ SetValue oclAsSet = ClassUtil.nonNullState(OclAnyOclAsSetOperation.INSTANCE.evaluate(evaluator, OCCITables.SET_CLSSid_Kind, parent));
 		        final /*@NonNull*/ org.eclipse.ocl.pivot.Class TYPE_closure_0 = evaluator.getStaticTypeOf(oclAsSet);
-		        final /*@NonNull*/ org.eclipse.ocl.pivot.library.LibraryIteration IMPL_closure_0 = (org.eclipse.ocl.pivot.library.LibraryIteration)TYPE_closure_0.lookupImplementation(standardLibrary, org.eclipse.ocl.pivot.oclstdlib.OCLstdlibTables.Operations._Set__closure);
+		        final /*@NonNull*/ LibraryIteration IMPL_closure_0 = (LibraryIteration)TYPE_closure_0.lookupImplementation(standardLibrary, OCLstdlibTables.Operations._Set__closure);
 		        final /*@NonNull*/ Object ACC_closure_0 = IMPL_closure_0.createAccumulatorValue(evaluator, OCCITables.SET_CLSSid_Kind, OCCITables.CLSSid_Kind);
 		        /**
 		         * Implementation of the iterator body.
 		         */
-		        final /*@NonNull*/ org.eclipse.ocl.pivot.library.AbstractBinaryOperation BODY_closure_0 = new org.eclipse.ocl.pivot.library.AbstractBinaryOperation() {
+		        final /*@NonNull*/ AbstractBinaryOperation BODY_closure_0 = new AbstractBinaryOperation() {
 		            /**
 		             * parent
 		             */
 		            @Override
-		            public /*@Nullable*/ Object evaluate(final /*@NonNull*/ Evaluator evaluator, final /*@NonNull*/ org.eclipse.ocl.pivot.ids.TypeId typeId, final /*@Nullable*/ Object oclAsSet, final /*@Nullable*/ /*@NonInvalid*/ Object _1) {
+		            public /*@Nullable*/ Object evaluate(final /*@NonNull*/ Evaluator evaluator, final /*@NonNull*/ TypeId typeId, final /*@Nullable*/ Object oclAsSet, final /*@Nullable*/ /*@NonInvalid*/ Object _1) {
 		                final /*@Nullable*/ /*@NonInvalid*/ Kind symbol_0 = (Kind)_1;
 		                if (symbol_0 == null) {
-		                    throw new org.eclipse.ocl.pivot.values.InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Kind::parent\'");
+		                    throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Kind::parent\'");
 		                }
 		                final /*@Nullable*/ /*@Thrown*/ Kind parent_0 = symbol_0.getParent();
 		                return parent_0;
 		            }
 		        };
-		        final /*@NonNull*/  org.eclipse.ocl.pivot.internal.library.executor.ExecutorSingleIterationManager MGR_closure_0 = new org.eclipse.ocl.pivot.internal.library.executor.ExecutorSingleIterationManager(evaluator, OCCITables.SET_CLSSid_Kind, BODY_closure_0, oclAsSet, ACC_closure_0);
-		        final /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.SetValue closure = ClassUtil.nonNullState((org.eclipse.ocl.pivot.values.SetValue)IMPL_closure_0.evaluateIteration(MGR_closure_0));
-		        final /*@Thrown*/ boolean status = ClassUtil.nonNullState(org.eclipse.ocl.pivot.library.collection.CollectionExcludesOperation.INSTANCE.evaluate(closure, this).booleanValue());
+		        final /*@NonNull*/  ExecutorSingleIterationManager MGR_closure_0 = new ExecutorSingleIterationManager(evaluator, OCCITables.SET_CLSSid_Kind, BODY_closure_0, oclAsSet, ACC_closure_0);
+		        final /*@NonNull*/ /*@Thrown*/ SetValue closure = ClassUtil.nonNullState((SetValue)IMPL_closure_0.evaluateIteration(MGR_closure_0));
+		        final /*@Thrown*/ boolean status = ClassUtil.nonNullState(CollectionExcludesOperation.INSTANCE.evaluate(closure, this).booleanValue());
 		        CAUGHT_status = status;
 		    }
 		    catch (Exception e) {
 		        CAUGHT_status = ValueUtil.createInvalidValue(e);
 		    }
-		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, org.eclipse.ocl.pivot.ids.TypeId.BOOLEAN, OCCITables.STR_Kind_c_c_NoCyclicInheritance, this, diagnostics, context, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
+		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Kind_c_c_NoCyclicInheritance, this, diagnostics, context, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
 		    symbol_1 = logDiagnostic;
 		}
 		return Boolean.TRUE == symbol_1;
@@ -303,7 +320,7 @@ public class KindImpl extends CategoryImpl implements Kind {
 		 *     endif
 		 */
 		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
-		final /*@NonNull*/ /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.IdResolver idResolver = evaluator.getIdResolver();
+		final /*@NonNull*/ /*@NonInvalid*/ IdResolver idResolver = evaluator.getIdResolver();
 		final /*@NonNull*/ /*@NonInvalid*/ StandardLibrary standardLibrary = idResolver.getStandardLibrary();
 		final /*@NonNull*/ /*@NonInvalid*/ IntegerValue severity_0 = ClassUtil.nonNullState(CGStringGetSeverityOperation.INSTANCE.evaluate(evaluator, OCCITables.STR_Kind_c_c_AttributesNameNotAlreadyDefinedInParent));
 		final /*@NonInvalid*/ boolean le = ClassUtil.nonNullState(OclComparableLessThanEqualOperation.INSTANCE.evaluate(evaluator, severity_0, OCCITables.INT_0).booleanValue());
@@ -315,10 +332,10 @@ public class KindImpl extends CategoryImpl implements Kind {
 		    /*@NonNull*/ /*@Caught*/ Object CAUGHT_status;
 		    try {
 		        final /*@NonNull*/ /*@Thrown*/ List<Attribute> attributes = this.getAttributes();
-		        final /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.OrderedSetValue BOXED_attributes = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Attribute, attributes);
-		        /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.SequenceValue.Accumulator accumulator = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_PRIMid_String);
+		        final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_attributes = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Attribute, attributes);
+		        /*@NonNull*/ /*@Thrown*/ SequenceValue.Accumulator accumulator = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_PRIMid_String);
 		        /*@Nullable*/ Iterator<?> ITERATOR__1 = BOXED_attributes.iterator();
-		        /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.SequenceValue collect;
+		        /*@NonNull*/ /*@Thrown*/ SequenceValue collect;
 		        while (true) {
 		            if (!ITERATOR__1.hasNext()) {
 		                collect = accumulator;
@@ -329,39 +346,39 @@ public class KindImpl extends CategoryImpl implements Kind {
 		             * name
 		             */
 		            if (_1 == null) {
-		                throw new org.eclipse.ocl.pivot.values.InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Attribute::name\'");
+		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Attribute::name\'");
 		            }
 		            final /*@NonNull*/ /*@Thrown*/ String name = _1.getName();
 		            //
 		            accumulator.add(name);
 		        }
 		        final /*@Nullable*/ /*@Thrown*/ Kind parent = this.getParent();
-		        final /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.SetValue oclAsSet = ClassUtil.nonNullState(org.eclipse.ocl.pivot.library.oclany.OclAnyOclAsSetOperation.INSTANCE.evaluate(evaluator, OCCITables.SET_CLSSid_Kind, parent));
+		        final /*@NonNull*/ /*@Thrown*/ SetValue oclAsSet = ClassUtil.nonNullState(OclAnyOclAsSetOperation.INSTANCE.evaluate(evaluator, OCCITables.SET_CLSSid_Kind, parent));
 		        final /*@NonNull*/ org.eclipse.ocl.pivot.Class TYPE_closure_0 = evaluator.getStaticTypeOf(oclAsSet);
-		        final /*@NonNull*/ org.eclipse.ocl.pivot.library.LibraryIteration IMPL_closure_0 = (org.eclipse.ocl.pivot.library.LibraryIteration)TYPE_closure_0.lookupImplementation(standardLibrary, org.eclipse.ocl.pivot.oclstdlib.OCLstdlibTables.Operations._Set__closure);
+		        final /*@NonNull*/ LibraryIteration IMPL_closure_0 = (LibraryIteration)TYPE_closure_0.lookupImplementation(standardLibrary, OCLstdlibTables.Operations._Set__closure);
 		        final /*@NonNull*/ Object ACC_closure_0 = IMPL_closure_0.createAccumulatorValue(evaluator, OCCITables.SET_CLSSid_Kind, OCCITables.CLSSid_Kind);
 		        /**
 		         * Implementation of the iterator body.
 		         */
-		        final /*@NonNull*/ org.eclipse.ocl.pivot.library.AbstractBinaryOperation BODY_closure_0 = new org.eclipse.ocl.pivot.library.AbstractBinaryOperation() {
+		        final /*@NonNull*/ AbstractBinaryOperation BODY_closure_0 = new AbstractBinaryOperation() {
 		            /**
 		             * parent
 		             */
 		            @Override
-		            public /*@Nullable*/ Object evaluate(final /*@NonNull*/ Evaluator evaluator, final /*@NonNull*/ org.eclipse.ocl.pivot.ids.TypeId typeId, final /*@Nullable*/ Object oclAsSet, final /*@Nullable*/ /*@NonInvalid*/ Object _1_0) {
+		            public /*@Nullable*/ Object evaluate(final /*@NonNull*/ Evaluator evaluator, final /*@NonNull*/ TypeId typeId, final /*@Nullable*/ Object oclAsSet, final /*@Nullable*/ /*@NonInvalid*/ Object _1_0) {
 		                final /*@Nullable*/ /*@NonInvalid*/ Kind symbol_0 = (Kind)_1_0;
 		                if (symbol_0 == null) {
-		                    throw new org.eclipse.ocl.pivot.values.InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Kind::parent\'");
+		                    throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Kind::parent\'");
 		                }
 		                final /*@Nullable*/ /*@Thrown*/ Kind parent_0 = symbol_0.getParent();
 		                return parent_0;
 		            }
 		        };
-		        final /*@NonNull*/  org.eclipse.ocl.pivot.internal.library.executor.ExecutorSingleIterationManager MGR_closure_0 = new org.eclipse.ocl.pivot.internal.library.executor.ExecutorSingleIterationManager(evaluator, OCCITables.SET_CLSSid_Kind, BODY_closure_0, oclAsSet, ACC_closure_0);
-		        final /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.SetValue closure = ClassUtil.nonNullState((org.eclipse.ocl.pivot.values.SetValue)IMPL_closure_0.evaluateIteration(MGR_closure_0));
-		        /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.BagValue.Accumulator accumulator_0 = ValueUtil.createBagAccumulatorValue(OCCITables.BAG_CLSSid_Attribute);
+		        final /*@NonNull*/  ExecutorSingleIterationManager MGR_closure_0 = new ExecutorSingleIterationManager(evaluator, OCCITables.SET_CLSSid_Kind, BODY_closure_0, oclAsSet, ACC_closure_0);
+		        final /*@NonNull*/ /*@Thrown*/ SetValue closure = ClassUtil.nonNullState((SetValue)IMPL_closure_0.evaluateIteration(MGR_closure_0));
+		        /*@NonNull*/ /*@Thrown*/ BagValue.Accumulator accumulator_0 = ValueUtil.createBagAccumulatorValue(OCCITables.BAG_CLSSid_Attribute);
 		        /*@Nullable*/ Iterator<?> ITERATOR__1_1 = closure.iterator();
-		        /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.BagValue collect_1;
+		        /*@NonNull*/ /*@Thrown*/ BagValue collect_1;
 		        while (true) {
 		            if (!ITERATOR__1_1.hasNext()) {
 		                collect_1 = accumulator_0;
@@ -372,18 +389,18 @@ public class KindImpl extends CategoryImpl implements Kind {
 		             * attributes
 		             */
 		            if (_1_1 == null) {
-		                throw new org.eclipse.ocl.pivot.values.InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Category::attributes\'");
+		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Category::attributes\'");
 		            }
 		            final /*@NonNull*/ /*@Thrown*/ List<Attribute> attributes_0 = _1_1.getAttributes();
-		            final /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.OrderedSetValue BOXED_attributes_0 = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Attribute, attributes_0);
+		            final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_attributes_0 = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Attribute, attributes_0);
 		            //
 		            for (Object value : BOXED_attributes_0.flatten().getElements()) {
 		                accumulator_0.add(value);
 		            }
 		        }
-		        /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.BagValue.Accumulator accumulator_1 = ValueUtil.createBagAccumulatorValue(OCCITables.BAG_PRIMid_String);
+		        /*@NonNull*/ /*@Thrown*/ BagValue.Accumulator accumulator_1 = ValueUtil.createBagAccumulatorValue(OCCITables.BAG_PRIMid_String);
 		        /*@Nullable*/ Iterator<?> ITERATOR__1_2 = collect_1.iterator();
-		        /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.BagValue collect_0;
+		        /*@NonNull*/ /*@Thrown*/ BagValue collect_0;
 		        while (true) {
 		            if (!ITERATOR__1_2.hasNext()) {
 		                collect_0 = accumulator_1;
@@ -394,19 +411,19 @@ public class KindImpl extends CategoryImpl implements Kind {
 		             * name
 		             */
 		            if (_1_2 == null) {
-		                throw new org.eclipse.ocl.pivot.values.InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Attribute::name\'");
+		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Attribute::name\'");
 		            }
 		            final /*@NonNull*/ /*@Thrown*/ String name_0 = _1_2.getName();
 		            //
 		            accumulator_1.add(name_0);
 		        }
-		        final /*@Thrown*/ boolean status = ClassUtil.nonNullState(org.eclipse.ocl.pivot.library.collection.CollectionExcludesAllOperation.INSTANCE.evaluate(collect, collect_0).booleanValue());
+		        final /*@Thrown*/ boolean status = ClassUtil.nonNullState(CollectionExcludesAllOperation.INSTANCE.evaluate(collect, collect_0).booleanValue());
 		        CAUGHT_status = status;
 		    }
 		    catch (Exception e) {
 		        CAUGHT_status = ValueUtil.createInvalidValue(e);
 		    }
-		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, org.eclipse.ocl.pivot.ids.TypeId.BOOLEAN, OCCITables.STR_Kind_c_c_AttributesNameNotAlreadyDefinedInParent, this, diagnostics, context, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
+		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Kind_c_c_AttributesNameNotAlreadyDefinedInParent, this, diagnostics, context, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
 		    symbol_1 = logDiagnostic;
 		}
 		return Boolean.TRUE == symbol_1;
@@ -432,7 +449,7 @@ public class KindImpl extends CategoryImpl implements Kind {
 		 *     endif
 		 */
 		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
-		final /*@NonNull*/ /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.IdResolver idResolver = evaluator.getIdResolver();
+		final /*@NonNull*/ /*@NonInvalid*/ IdResolver idResolver = evaluator.getIdResolver();
 		final /*@NonNull*/ /*@NonInvalid*/ IntegerValue severity_0 = ClassUtil.nonNullState(CGStringGetSeverityOperation.INSTANCE.evaluate(evaluator, OCCITables.STR_Kind_c_c_ActionTermUnicity));
 		final /*@NonInvalid*/ boolean le = ClassUtil.nonNullState(OclComparableLessThanEqualOperation.INSTANCE.evaluate(evaluator, severity_0, OCCITables.INT_0).booleanValue());
 		/*@NonInvalid*/ boolean symbol_0;
@@ -443,8 +460,8 @@ public class KindImpl extends CategoryImpl implements Kind {
 		    /*@NonNull*/ /*@Caught*/ Object CAUGHT_status;
 		    try {
 		        final /*@NonNull*/ /*@Thrown*/ List<Action> actions = this.getActions();
-		        final /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.OrderedSetValue BOXED_actions = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Action, actions);
-		        /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.SetValue.Accumulator accumulator = ValueUtil.createSetAccumulatorValue(OCCITables.ORD_CLSSid_Action);
+		        final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_actions = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Action, actions);
+		        /*@NonNull*/ /*@Thrown*/ SetValue.Accumulator accumulator = ValueUtil.createSetAccumulatorValue(OCCITables.ORD_CLSSid_Action);
 		        /*@Nullable*/ Iterator<?> ITERATOR__1 = BOXED_actions.iterator();
 		        /*@Thrown*/ boolean status;
 		        while (true) {
@@ -457,7 +474,7 @@ public class KindImpl extends CategoryImpl implements Kind {
 		             * term
 		             */
 		            if (_1 == null) {
-		                throw new org.eclipse.ocl.pivot.values.InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Category::term\'");
+		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Category::term\'");
 		            }
 		            final /*@NonNull*/ /*@Thrown*/ String term = _1.getTerm();
 		            //
@@ -474,7 +491,7 @@ public class KindImpl extends CategoryImpl implements Kind {
 		    catch (Exception e) {
 		        CAUGHT_status = ValueUtil.createInvalidValue(e);
 		    }
-		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, org.eclipse.ocl.pivot.ids.TypeId.BOOLEAN, OCCITables.STR_Kind_c_c_ActionTermUnicity, this, diagnostics, context, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
+		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Kind_c_c_ActionTermUnicity, this, diagnostics, context, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
 		    symbol_0 = logDiagnostic;
 		}
 		return Boolean.TRUE == symbol_0;
@@ -502,7 +519,7 @@ public class KindImpl extends CategoryImpl implements Kind {
 		 *     endif
 		 */
 		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
-		final /*@NonNull*/ /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.IdResolver idResolver = evaluator.getIdResolver();
+		final /*@NonNull*/ /*@NonInvalid*/ IdResolver idResolver = evaluator.getIdResolver();
 		final /*@NonNull*/ /*@NonInvalid*/ StandardLibrary standardLibrary = idResolver.getStandardLibrary();
 		final /*@NonNull*/ /*@NonInvalid*/ IntegerValue severity_0 = ClassUtil.nonNullState(CGStringGetSeverityOperation.INSTANCE.evaluate(evaluator, OCCITables.STR_Kind_c_c_EntityKindIsRootParent));
 		final /*@NonInvalid*/ boolean le = ClassUtil.nonNullState(OclComparableLessThanEqualOperation.INSTANCE.evaluate(evaluator, severity_0, OCCITables.INT_0).booleanValue());
@@ -513,29 +530,29 @@ public class KindImpl extends CategoryImpl implements Kind {
 		else {
 		    /*@Nullable*/ /*@Caught*/ Object CAUGHT_status;
 		    try {
-		        final /*@NonNull*/ /*@NonInvalid*/ org.eclipse.ocl.pivot.values.SetValue oclAsSet = ClassUtil.nonNullState(org.eclipse.ocl.pivot.library.oclany.OclAnyOclAsSetOperation.INSTANCE.evaluate(evaluator, OCCITables.SET_CLSSid_Kind, this));
+		        final /*@NonNull*/ /*@NonInvalid*/ SetValue oclAsSet = ClassUtil.nonNullState(OclAnyOclAsSetOperation.INSTANCE.evaluate(evaluator, OCCITables.SET_CLSSid_Kind, this));
 		        final /*@NonNull*/ org.eclipse.ocl.pivot.Class TYPE_closure_0 = evaluator.getStaticTypeOf(oclAsSet);
-		        final /*@NonNull*/ org.eclipse.ocl.pivot.library.LibraryIteration IMPL_closure_0 = (org.eclipse.ocl.pivot.library.LibraryIteration)TYPE_closure_0.lookupImplementation(standardLibrary, org.eclipse.ocl.pivot.oclstdlib.OCLstdlibTables.Operations._Set__closure);
+		        final /*@NonNull*/ LibraryIteration IMPL_closure_0 = (LibraryIteration)TYPE_closure_0.lookupImplementation(standardLibrary, OCLstdlibTables.Operations._Set__closure);
 		        final /*@NonNull*/ Object ACC_closure_0 = IMPL_closure_0.createAccumulatorValue(evaluator, OCCITables.SET_CLSSid_Kind, OCCITables.CLSSid_Kind);
 		        /**
 		         * Implementation of the iterator body.
 		         */
-		        final /*@NonNull*/ org.eclipse.ocl.pivot.library.AbstractBinaryOperation BODY_closure_0 = new org.eclipse.ocl.pivot.library.AbstractBinaryOperation() {
+		        final /*@NonNull*/ AbstractBinaryOperation BODY_closure_0 = new AbstractBinaryOperation() {
 		            /**
 		             * parent
 		             */
 		            @Override
-		            public /*@Nullable*/ Object evaluate(final /*@NonNull*/ Evaluator evaluator, final /*@NonNull*/ org.eclipse.ocl.pivot.ids.TypeId typeId, final /*@Nullable*/ Object oclAsSet, final /*@Nullable*/ /*@NonInvalid*/ Object _1) {
+		            public /*@Nullable*/ Object evaluate(final /*@NonNull*/ Evaluator evaluator, final /*@NonNull*/ TypeId typeId, final /*@Nullable*/ Object oclAsSet, final /*@Nullable*/ /*@NonInvalid*/ Object _1) {
 		                final /*@Nullable*/ /*@NonInvalid*/ Kind symbol_0 = (Kind)_1;
 		                if (symbol_0 == null) {
-		                    throw new org.eclipse.ocl.pivot.values.InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Kind::parent\'");
+		                    throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Kind::parent\'");
 		                }
 		                final /*@Nullable*/ /*@Thrown*/ Kind parent = symbol_0.getParent();
 		                return parent;
 		            }
 		        };
-		        final /*@NonNull*/  org.eclipse.ocl.pivot.internal.library.executor.ExecutorSingleIterationManager MGR_closure_0 = new org.eclipse.ocl.pivot.internal.library.executor.ExecutorSingleIterationManager(evaluator, OCCITables.SET_CLSSid_Kind, BODY_closure_0, oclAsSet, ACC_closure_0);
-		        final /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.SetValue closure = ClassUtil.nonNullState((org.eclipse.ocl.pivot.values.SetValue)IMPL_closure_0.evaluateIteration(MGR_closure_0));
+		        final /*@NonNull*/  ExecutorSingleIterationManager MGR_closure_0 = new ExecutorSingleIterationManager(evaluator, OCCITables.SET_CLSSid_Kind, BODY_closure_0, oclAsSet, ACC_closure_0);
+		        final /*@NonNull*/ /*@Thrown*/ SetValue closure = ClassUtil.nonNullState((SetValue)IMPL_closure_0.evaluateIteration(MGR_closure_0));
 		        /*@Nullable*/ /*@Thrown*/ Object accumulator = ValueUtil.FALSE_VALUE;
 		        /*@Nullable*/ Iterator<?> ITERATOR_k = closure.iterator();
 		        /*@Nullable*/ /*@Thrown*/ Boolean status;
@@ -548,7 +565,7 @@ public class KindImpl extends CategoryImpl implements Kind {
 		                    status = ValueUtil.FALSE_VALUE;
 		                }
 		                else {
-		                    throw (org.eclipse.ocl.pivot.values.InvalidValueException)accumulator;
+		                    throw (InvalidValueException)accumulator;
 		                }
 		                break;
 		            }
@@ -563,7 +580,7 @@ public class KindImpl extends CategoryImpl implements Kind {
 		                    /*@NonNull*/ /*@Caught*/ Object CAUGHT_eq;
 		                    try {
 		                        if (k == null) {
-		                            throw new org.eclipse.ocl.pivot.values.InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Category::term\'");
+		                            throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Category::term\'");
 		                        }
 		                        final /*@NonNull*/ /*@Thrown*/ String term = k.getTerm();
 		                        final /*@Thrown*/ boolean eq = term.equals(OCCITables.STR_entity);
@@ -575,7 +592,7 @@ public class KindImpl extends CategoryImpl implements Kind {
 		                    /*@NonNull*/ /*@Caught*/ Object CAUGHT_eq_0;
 		                    try {
 		                        if (k == null) {
-		                            throw new org.eclipse.ocl.pivot.values.InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Category::scheme\'");
+		                            throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Category::scheme\'");
 		                        }
 		                        final /*@NonNull*/ /*@Thrown*/ String scheme = k.getScheme();
 		                        final /*@Thrown*/ boolean eq_0 = scheme.equals(OCCITables.STR_http_c_s_s_schemas_ogf_org_s_occi_s_core_35);
@@ -584,7 +601,7 @@ public class KindImpl extends CategoryImpl implements Kind {
 		                    catch (Exception e) {
 		                        CAUGHT_eq_0 = ValueUtil.createInvalidValue(e);
 		                    }
-		                    final /*@Nullable*/ /*@Thrown*/ Boolean and = org.eclipse.ocl.pivot.library.logical.BooleanAndOperation.INSTANCE.evaluate(CAUGHT_eq, CAUGHT_eq_0);
+		                    final /*@Nullable*/ /*@Thrown*/ Boolean and = BooleanAndOperation.INSTANCE.evaluate(CAUGHT_eq, CAUGHT_eq_0);
 		                    CAUGHT_and = and;
 		                }
 		                catch (Exception e) {
@@ -593,7 +610,7 @@ public class KindImpl extends CategoryImpl implements Kind {
 		                /*@NonNull*/ /*@Caught*/ Object CAUGHT_eq_1;
 		                try {
 		                    if (k == null) {
-		                        throw new org.eclipse.ocl.pivot.values.InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Kind::parent\'");
+		                        throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Kind::parent\'");
 		                    }
 		                    final /*@Nullable*/ /*@Thrown*/ Kind parent_0 = k.getParent();
 		                    final /*@Thrown*/ boolean eq_1 = parent_0 == null;
@@ -602,7 +619,7 @@ public class KindImpl extends CategoryImpl implements Kind {
 		                catch (Exception e) {
 		                    CAUGHT_eq_1 = ValueUtil.createInvalidValue(e);
 		                }
-		                final /*@Nullable*/ /*@Thrown*/ Boolean and_0 = org.eclipse.ocl.pivot.library.logical.BooleanAndOperation.INSTANCE.evaluate(CAUGHT_and, CAUGHT_eq_1);
+		                final /*@Nullable*/ /*@Thrown*/ Boolean and_0 = BooleanAndOperation.INSTANCE.evaluate(CAUGHT_and, CAUGHT_eq_1);
 		                CAUGHT_and_0 = and_0;
 		            }
 		            catch (Exception e) {
@@ -621,11 +638,11 @@ public class KindImpl extends CategoryImpl implements Kind {
 		                    accumulator = null;										// Cache a null failure
 		                }
 		            }
-		            else if (CAUGHT_and_0 instanceof org.eclipse.ocl.pivot.values.InvalidValueException) {		// Abnormal exception evaluation result
+		            else if (CAUGHT_and_0 instanceof InvalidValueException) {		// Abnormal exception evaluation result
 		                accumulator = CAUGHT_and_0;									// Cache an exception failure
 		            }
 		            else {															// Impossible badly typed result
-		                accumulator = new org.eclipse.ocl.pivot.values.InvalidValueException(PivotMessages.NonBooleanBody, "exists");
+		                accumulator = new InvalidValueException(PivotMessages.NonBooleanBody, "exists");
 		            }
 		        }
 		        CAUGHT_status = status;
@@ -633,7 +650,7 @@ public class KindImpl extends CategoryImpl implements Kind {
 		    catch (Exception e) {
 		        CAUGHT_status = ValueUtil.createInvalidValue(e);
 		    }
-		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, org.eclipse.ocl.pivot.ids.TypeId.BOOLEAN, OCCITables.STR_Kind_c_c_EntityKindIsRootParent, this, diagnostics, context, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
+		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Kind_c_c_EntityKindIsRootParent, this, diagnostics, context, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
 		    symbol_1 = logDiagnostic;
 		}
 		return Boolean.TRUE == symbol_1;

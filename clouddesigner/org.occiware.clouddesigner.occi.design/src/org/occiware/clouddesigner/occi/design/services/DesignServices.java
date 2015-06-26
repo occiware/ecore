@@ -1,5 +1,6 @@
 package org.occiware.clouddesigner.occi.design.services;
 
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcorePackage;
@@ -69,11 +70,12 @@ public class DesignServices {
 	public void importExtension(Extension extension) {
 		Shell shell = Display.getCurrent().getActiveShell();
 		Session session = SessionManager.INSTANCE.getSession(extension);
-		LoadExtensionDialog dialog = new LoadExtensionDialog(shell,
+				LoadExtensionDialog dialog = new LoadExtensionDialog(shell,
 				session.getTransactionalEditingDomain());
 		dialog.open();
 
 		for (URI uri : dialog.getURIs()) {
+			session.addSemanticResource(uri, new NullProgressMonitor());
 			Resource resource = session.getTransactionalEditingDomain()
 					.getResourceSet().getResource(uri, true);
 			if (!resource.getContents().isEmpty()

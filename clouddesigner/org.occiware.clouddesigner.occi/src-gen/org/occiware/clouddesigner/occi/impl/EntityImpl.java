@@ -20,14 +20,28 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.ocl.pivot.StandardLibrary;
 import org.eclipse.ocl.pivot.evaluation.Evaluator;
+import org.eclipse.ocl.pivot.ids.IdResolver;
+import org.eclipse.ocl.pivot.ids.TypeId;
+import org.eclipse.ocl.pivot.internal.library.executor.ExecutorSingleIterationManager;
 import org.eclipse.ocl.pivot.internal.utilities.PivotUtilInternal;
+import org.eclipse.ocl.pivot.library.AbstractBinaryOperation;
+import org.eclipse.ocl.pivot.library.LibraryIteration;
+import org.eclipse.ocl.pivot.library.classifier.ClassifierAllInstancesOperation;
+import org.eclipse.ocl.pivot.library.collection.CollectionIncludesOperation;
+import org.eclipse.ocl.pivot.library.collection.CollectionNotEmptyOperation;
+import org.eclipse.ocl.pivot.library.logical.BooleanImpliesOperation;
+import org.eclipse.ocl.pivot.library.oclany.OclAnyOclAsSetOperation;
 import org.eclipse.ocl.pivot.library.oclany.OclComparableLessThanEqualOperation;
 import org.eclipse.ocl.pivot.library.string.CGStringGetSeverityOperation;
 import org.eclipse.ocl.pivot.library.string.CGStringLogDiagnosticOperation;
 import org.eclipse.ocl.pivot.messages.PivotMessages;
+import org.eclipse.ocl.pivot.oclstdlib.OCLstdlibTables;
 import org.eclipse.ocl.pivot.utilities.ClassUtil;
 import org.eclipse.ocl.pivot.utilities.ValueUtil;
 import org.eclipse.ocl.pivot.values.IntegerValue;
+import org.eclipse.ocl.pivot.values.InvalidValueException;
+import org.eclipse.ocl.pivot.values.OrderedSetValue;
+import org.eclipse.ocl.pivot.values.SetValue;
 import org.occiware.clouddesigner.occi.AttributeState;
 import org.occiware.clouddesigner.occi.Entity;
 import org.occiware.clouddesigner.occi.Kind;
@@ -224,7 +238,7 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 		 *     endif
 		 */
 		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
-		final /*@NonNull*/ /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.IdResolver idResolver = evaluator.getIdResolver();
+		final /*@NonNull*/ /*@NonInvalid*/ IdResolver idResolver = evaluator.getIdResolver();
 		final /*@NonNull*/ /*@NonInvalid*/ IntegerValue severity_0 = ClassUtil.nonNullState(CGStringGetSeverityOperation.INSTANCE.evaluate(evaluator, OCCITables.STR_Entity_c_c_AttributesNameUnique));
 		final /*@NonInvalid*/ boolean le = ClassUtil.nonNullState(OclComparableLessThanEqualOperation.INSTANCE.evaluate(evaluator, severity_0, OCCITables.INT_0).booleanValue());
 		/*@NonInvalid*/ boolean symbol_0;
@@ -235,8 +249,8 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 		    /*@NonNull*/ /*@Caught*/ Object CAUGHT_status;
 		    try {
 		        final /*@NonNull*/ /*@Thrown*/ List<AttributeState> attributes = this.getAttributes();
-		        final /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.OrderedSetValue BOXED_attributes = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_AttributeState, attributes);
-		        /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.SetValue.Accumulator accumulator = ValueUtil.createSetAccumulatorValue(OCCITables.ORD_CLSSid_AttributeState);
+		        final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_attributes = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_AttributeState, attributes);
+		        /*@NonNull*/ /*@Thrown*/ SetValue.Accumulator accumulator = ValueUtil.createSetAccumulatorValue(OCCITables.ORD_CLSSid_AttributeState);
 		        /*@Nullable*/ Iterator<?> ITERATOR__1 = BOXED_attributes.iterator();
 		        /*@Thrown*/ boolean status;
 		        while (true) {
@@ -249,7 +263,7 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 		             * name
 		             */
 		            if (_1 == null) {
-		                throw new org.eclipse.ocl.pivot.values.InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::AttributeState::name\'");
+		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::AttributeState::name\'");
 		            }
 		            final /*@NonNull*/ /*@Thrown*/ String name = _1.getName();
 		            //
@@ -266,7 +280,7 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 		    catch (Exception e) {
 		        CAUGHT_status = ValueUtil.createInvalidValue(e);
 		    }
-		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, org.eclipse.ocl.pivot.ids.TypeId.BOOLEAN, OCCITables.STR_Entity_c_c_AttributesNameUnique, this, diagnostics, context, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
+		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Entity_c_c_AttributesNameUnique, this, diagnostics, context, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
 		    symbol_0 = logDiagnostic;
 		}
 		return Boolean.TRUE == symbol_0;
@@ -296,7 +310,7 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 		 *     endif
 		 */
 		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
-		final /*@NonNull*/ /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.IdResolver idResolver = evaluator.getIdResolver();
+		final /*@NonNull*/ /*@NonInvalid*/ IdResolver idResolver = evaluator.getIdResolver();
 		final /*@NonNull*/ /*@NonInvalid*/ IntegerValue severity_0 = ClassUtil.nonNullState(CGStringGetSeverityOperation.INSTANCE.evaluate(evaluator, OCCITables.STR_Entity_c_c_KindCompatibleWithOneAppliesOfEachMixin));
 		final /*@NonInvalid*/ boolean le = ClassUtil.nonNullState(OclComparableLessThanEqualOperation.INSTANCE.evaluate(evaluator, severity_0, OCCITables.INT_0).booleanValue());
 		/*@NonInvalid*/ boolean symbol_1;
@@ -307,7 +321,7 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 		    /*@Nullable*/ /*@Caught*/ Object CAUGHT_status;
 		    try {
 		        final /*@NonNull*/ /*@Thrown*/ List<Mixin> mixins = this.getMixins();
-		        final /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.OrderedSetValue BOXED_mixins = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Mixin, mixins);
+		        final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_mixins = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Mixin, mixins);
 		        /*@Nullable*/ /*@Thrown*/ Object accumulator = ValueUtil.TRUE_VALUE;
 		        /*@Nullable*/ Iterator<?> ITERATOR_m = BOXED_mixins.iterator();
 		        /*@Nullable*/ /*@Thrown*/ Boolean status;
@@ -320,7 +334,7 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 		                    status = ValueUtil.TRUE_VALUE;
 		                }
 		                else {
-		                    throw (org.eclipse.ocl.pivot.values.InvalidValueException)accumulator;
+		                    throw (InvalidValueException)accumulator;
 		                }
 		                break;
 		            }
@@ -335,11 +349,11 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 		                /*@NonNull*/ /*@Caught*/ Object CAUGHT_notEmpty;
 		                try {
 		                    if (m == null) {
-		                        throw new org.eclipse.ocl.pivot.values.InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Mixin::applies\'");
+		                        throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Mixin::applies\'");
 		                    }
 		                    final /*@NonNull*/ /*@Thrown*/ List<Kind> applies = m.getApplies();
-		                    final /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.OrderedSetValue BOXED_applies = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Kind, applies);
-		                    final /*@Thrown*/ boolean notEmpty = ClassUtil.nonNullState(org.eclipse.ocl.pivot.library.collection.CollectionNotEmptyOperation.INSTANCE.evaluate(BOXED_applies).booleanValue());
+		                    final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_applies = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Kind, applies);
+		                    final /*@Thrown*/ boolean notEmpty = ClassUtil.nonNullState(CollectionNotEmptyOperation.INSTANCE.evaluate(BOXED_applies).booleanValue());
 		                    CAUGHT_notEmpty = notEmpty;
 		                }
 		                catch (Exception e) {
@@ -348,10 +362,10 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 		                /*@NonNull*/ /*@Caught*/ Object CAUGHT_exists;
 		                try {
 		                    if (m == null) {
-		                        throw new org.eclipse.ocl.pivot.values.InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Mixin::applies\'");
+		                        throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Mixin::applies\'");
 		                    }
 		                    final /*@NonNull*/ /*@Thrown*/ List<Kind> applies_0 = m.getApplies();
-		                    final /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.OrderedSetValue BOXED_applies_0 = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Kind, applies_0);
+		                    final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_applies_0 = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Kind, applies_0);
 		                    /*@Nullable*/ /*@Thrown*/ Object accumulator_0 = ValueUtil.FALSE_VALUE;
 		                    /*@Nullable*/ Iterator<?> ITERATOR_k = BOXED_applies_0.iterator();
 		                    /*@Thrown*/ boolean exists;
@@ -361,7 +375,7 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 		                                exists = ValueUtil.FALSE_VALUE;
 		                            }
 		                            else {
-		                                throw (org.eclipse.ocl.pivot.values.InvalidValueException)accumulator_0;
+		                                throw (InvalidValueException)accumulator_0;
 		                            }
 		                            break;
 		                        }
@@ -373,30 +387,30 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 		                        /*@NonNull*/ /*@Caught*/ Object CAUGHT_includes;
 		                        try {
 		                            final /*@NonNull*/ /*@Thrown*/ Kind kind = this.getKind();
-		                            final /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.SetValue oclAsSet = ClassUtil.nonNullState(org.eclipse.ocl.pivot.library.oclany.OclAnyOclAsSetOperation.INSTANCE.evaluate(evaluator, OCCITables.SET_CLSSid_Kind, kind));
+		                            final /*@NonNull*/ /*@Thrown*/ SetValue oclAsSet = ClassUtil.nonNullState(OclAnyOclAsSetOperation.INSTANCE.evaluate(evaluator, OCCITables.SET_CLSSid_Kind, kind));
 		                            final /*@NonNull*/ org.eclipse.ocl.pivot.Class TYPE_closure_0 = evaluator.getStaticTypeOf(oclAsSet);
-		                            final /*@NonNull*/ org.eclipse.ocl.pivot.library.LibraryIteration IMPL_closure_0 = (org.eclipse.ocl.pivot.library.LibraryIteration)TYPE_closure_0.lookupImplementation(standardLibrary, org.eclipse.ocl.pivot.oclstdlib.OCLstdlibTables.Operations._Set__closure);
+		                            final /*@NonNull*/ LibraryIteration IMPL_closure_0 = (LibraryIteration)TYPE_closure_0.lookupImplementation(standardLibrary, OCLstdlibTables.Operations._Set__closure);
 		                            final /*@NonNull*/ Object ACC_closure_0 = IMPL_closure_0.createAccumulatorValue(evaluator, OCCITables.SET_CLSSid_Kind, OCCITables.CLSSid_Kind);
 		                            /**
 		                             * Implementation of the iterator body.
 		                             */
-		                            final /*@NonNull*/ org.eclipse.ocl.pivot.library.AbstractBinaryOperation BODY_closure_0 = new org.eclipse.ocl.pivot.library.AbstractBinaryOperation() {
+		                            final /*@NonNull*/ AbstractBinaryOperation BODY_closure_0 = new AbstractBinaryOperation() {
 		                                /**
 		                                 * parent
 		                                 */
 		                                @Override
-		                                public /*@Nullable*/ Object evaluate(final /*@NonNull*/ Evaluator evaluator, final /*@NonNull*/ org.eclipse.ocl.pivot.ids.TypeId typeId, final /*@Nullable*/ Object oclAsSet, final /*@Nullable*/ /*@NonInvalid*/ Object _1) {
+		                                public /*@Nullable*/ Object evaluate(final /*@NonNull*/ Evaluator evaluator, final /*@NonNull*/ TypeId typeId, final /*@Nullable*/ Object oclAsSet, final /*@Nullable*/ /*@NonInvalid*/ Object _1) {
 		                                    final /*@Nullable*/ /*@NonInvalid*/ Kind symbol_0 = (Kind)_1;
 		                                    if (symbol_0 == null) {
-		                                        throw new org.eclipse.ocl.pivot.values.InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Kind::parent\'");
+		                                        throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Kind::parent\'");
 		                                    }
 		                                    final /*@Nullable*/ /*@Thrown*/ Kind parent = symbol_0.getParent();
 		                                    return parent;
 		                                }
 		                            };
-		                            final /*@NonNull*/  org.eclipse.ocl.pivot.internal.library.executor.ExecutorSingleIterationManager MGR_closure_0 = new org.eclipse.ocl.pivot.internal.library.executor.ExecutorSingleIterationManager(evaluator, OCCITables.SET_CLSSid_Kind, BODY_closure_0, oclAsSet, ACC_closure_0);
-		                            final /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.SetValue closure = ClassUtil.nonNullState((org.eclipse.ocl.pivot.values.SetValue)IMPL_closure_0.evaluateIteration(MGR_closure_0));
-		                            final /*@Thrown*/ boolean includes = ClassUtil.nonNullState(org.eclipse.ocl.pivot.library.collection.CollectionIncludesOperation.INSTANCE.evaluate(closure, k).booleanValue());
+		                            final /*@NonNull*/  ExecutorSingleIterationManager MGR_closure_0 = new ExecutorSingleIterationManager(evaluator, OCCITables.SET_CLSSid_Kind, BODY_closure_0, oclAsSet, ACC_closure_0);
+		                            final /*@NonNull*/ /*@Thrown*/ SetValue closure = ClassUtil.nonNullState((SetValue)IMPL_closure_0.evaluateIteration(MGR_closure_0));
+		                            final /*@Thrown*/ boolean includes = ClassUtil.nonNullState(CollectionIncludesOperation.INSTANCE.evaluate(closure, k).booleanValue());
 		                            CAUGHT_includes = includes;
 		                        }
 		                        catch (Exception e) {
@@ -410,11 +424,11 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 		                        else if (CAUGHT_includes == ValueUtil.FALSE_VALUE) {				// Normal unsuccessful body evaluation result
 		                            ;															// Carry on
 		                        }
-		                        else if (CAUGHT_includes instanceof org.eclipse.ocl.pivot.values.InvalidValueException) {		// Abnormal exception evaluation result
+		                        else if (CAUGHT_includes instanceof InvalidValueException) {		// Abnormal exception evaluation result
 		                            accumulator_0 = CAUGHT_includes;									// Cache an exception failure
 		                        }
 		                        else {															// Impossible badly typed result
-		                            accumulator_0 = new org.eclipse.ocl.pivot.values.InvalidValueException(PivotMessages.NonBooleanBody, "exists");
+		                            accumulator_0 = new InvalidValueException(PivotMessages.NonBooleanBody, "exists");
 		                        }
 		                    }
 		                    CAUGHT_exists = exists;
@@ -422,7 +436,7 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 		                catch (Exception e) {
 		                    CAUGHT_exists = ValueUtil.createInvalidValue(e);
 		                }
-		                final /*@Nullable*/ /*@Thrown*/ Boolean implies = org.eclipse.ocl.pivot.library.logical.BooleanImpliesOperation.INSTANCE.evaluate(CAUGHT_notEmpty, CAUGHT_exists);
+		                final /*@Nullable*/ /*@Thrown*/ Boolean implies = BooleanImpliesOperation.INSTANCE.evaluate(CAUGHT_notEmpty, CAUGHT_exists);
 		                CAUGHT_implies = implies;
 		            }
 		            catch (Exception e) {
@@ -441,11 +455,11 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 		                    accumulator = null;										// Cache a null failure
 		                }
 		            }
-		            else if (CAUGHT_implies instanceof org.eclipse.ocl.pivot.values.InvalidValueException) {		// Abnormal exception evaluation result
+		            else if (CAUGHT_implies instanceof InvalidValueException) {		// Abnormal exception evaluation result
 		                accumulator = CAUGHT_implies;									// Cache an exception failure
 		            }
 		            else {															// Impossible badly typed result
-		                accumulator = new org.eclipse.ocl.pivot.values.InvalidValueException(PivotMessages.NonBooleanBody, "forAll");
+		                accumulator = new InvalidValueException(PivotMessages.NonBooleanBody, "forAll");
 		            }
 		        }
 		        CAUGHT_status = status;
@@ -453,7 +467,7 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 		    catch (Exception e) {
 		        CAUGHT_status = ValueUtil.createInvalidValue(e);
 		    }
-		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, org.eclipse.ocl.pivot.ids.TypeId.BOOLEAN, OCCITables.STR_Entity_c_c_KindCompatibleWithOneAppliesOfEachMixin, this, diagnostics, context, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
+		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Entity_c_c_KindCompatibleWithOneAppliesOfEachMixin, this, diagnostics, context, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
 		    symbol_1 = logDiagnostic;
 		}
 		return Boolean.TRUE == symbol_1;
@@ -479,7 +493,7 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 		 *     endif
 		 */
 		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
-		final /*@NonNull*/ /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.IdResolver idResolver = evaluator.getIdResolver();
+		final /*@NonNull*/ /*@NonInvalid*/ IdResolver idResolver = evaluator.getIdResolver();
 		final /*@NonNull*/ /*@NonInvalid*/ IntegerValue severity_0 = ClassUtil.nonNullState(CGStringGetSeverityOperation.INSTANCE.evaluate(evaluator, OCCITables.STR_Entity_c_c_IdUnique));
 		final /*@NonInvalid*/ boolean le = ClassUtil.nonNullState(OclComparableLessThanEqualOperation.INSTANCE.evaluate(evaluator, severity_0, OCCITables.INT_0).booleanValue());
 		/*@NonInvalid*/ boolean symbol_0;
@@ -490,8 +504,8 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 		    /*@NonNull*/ /*@Caught*/ Object CAUGHT_status;
 		    try {
 		        final /*@NonNull*/ /*@NonInvalid*/ org.eclipse.ocl.pivot.Class TYP_occi_c_c_Entity_0 = idResolver.getClass(OCCITables.CLSSid_Entity, null);
-		        final /*@NonNull*/ /*@NonInvalid*/ org.eclipse.ocl.pivot.values.SetValue allInstances = ClassUtil.nonNullState(org.eclipse.ocl.pivot.library.classifier.ClassifierAllInstancesOperation.INSTANCE.evaluate(evaluator, OCCITables.SET_CLSSid_Entity, TYP_occi_c_c_Entity_0));
-		        /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.SetValue.Accumulator accumulator = ValueUtil.createSetAccumulatorValue(OCCITables.SET_CLSSid_Entity);
+		        final /*@NonNull*/ /*@NonInvalid*/ SetValue allInstances = ClassUtil.nonNullState(ClassifierAllInstancesOperation.INSTANCE.evaluate(evaluator, OCCITables.SET_CLSSid_Entity, TYP_occi_c_c_Entity_0));
+		        /*@NonNull*/ /*@Thrown*/ SetValue.Accumulator accumulator = ValueUtil.createSetAccumulatorValue(OCCITables.SET_CLSSid_Entity);
 		        /*@NonNull*/ Iterator<?> ITERATOR__1 = allInstances.iterator();
 		        /*@Thrown*/ boolean status;
 		        while (true) {
@@ -518,7 +532,7 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 		    catch (Exception e) {
 		        CAUGHT_status = ValueUtil.createInvalidValue(e);
 		    }
-		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, org.eclipse.ocl.pivot.ids.TypeId.BOOLEAN, OCCITables.STR_Entity_c_c_IdUnique, this, diagnostics, context, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
+		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Entity_c_c_IdUnique, this, diagnostics, context, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
 		    symbol_0 = logDiagnostic;
 		}
 		return Boolean.TRUE == symbol_0;

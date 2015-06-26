@@ -9,8 +9,8 @@
     <details key="Use Delegates" value="false"/>
   </genAnnotations>
   <foreignModel>OCCI.ecore</foreignModel>
-  <genPackages prefix="OCCI" basePackage="org.occiware.clouddesigner" disposableProviderFactory="true"
-      ecorePackage="OCCI.ecore#/">
+  <genPackages prefix="OCCI" basePackage="org.occiware.clouddesigner" resource="XMI"
+      disposableProviderFactory="true" ecorePackage="OCCI.ecore#/">
     <genDataTypes ecoreDataType="OCCI.ecore#//URI"/>
     <genDataTypes ecoreDataType="OCCI.ecore#//String"/>
     <genDataTypes ecoreDataType="OCCI.ecore#//Number"/>

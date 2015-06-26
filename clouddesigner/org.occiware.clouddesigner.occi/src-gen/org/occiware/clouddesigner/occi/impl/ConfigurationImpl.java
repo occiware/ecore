@@ -17,15 +17,22 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.ocl.pivot.evaluation.Evaluator;
+import org.eclipse.ocl.pivot.ids.IdResolver;
 import org.eclipse.ocl.pivot.ids.TypeId;
 import org.eclipse.ocl.pivot.internal.utilities.PivotUtilInternal;
+import org.eclipse.ocl.pivot.library.classifier.ClassifierOclContainerOperation;
+import org.eclipse.ocl.pivot.library.collection.CollectionIncludesAllOperation;
 import org.eclipse.ocl.pivot.library.oclany.OclComparableLessThanEqualOperation;
 import org.eclipse.ocl.pivot.library.string.CGStringGetSeverityOperation;
 import org.eclipse.ocl.pivot.library.string.CGStringLogDiagnosticOperation;
 import org.eclipse.ocl.pivot.messages.PivotMessages;
 import org.eclipse.ocl.pivot.utilities.ClassUtil;
 import org.eclipse.ocl.pivot.utilities.ValueUtil;
+import org.eclipse.ocl.pivot.values.CollectionValue;
 import org.eclipse.ocl.pivot.values.IntegerValue;
+import org.eclipse.ocl.pivot.values.InvalidValueException;
+import org.eclipse.ocl.pivot.values.OrderedSetValue;
+import org.eclipse.ocl.pivot.values.SequenceValue;
 import org.occiware.clouddesigner.occi.Configuration;
 import org.occiware.clouddesigner.occi.Extension;
 import org.occiware.clouddesigner.occi.Kind;
@@ -136,7 +143,7 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		 *     endif
 		 */
 		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
-		final /*@NonNull*/ /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.IdResolver idResolver = evaluator.getIdResolver();
+		final /*@NonNull*/ /*@NonInvalid*/ IdResolver idResolver = evaluator.getIdResolver();
 		final /*@NonNull*/ /*@NonInvalid*/ IntegerValue severity_0 = ClassUtil.nonNullState(CGStringGetSeverityOperation.INSTANCE.evaluate(evaluator, OCCITables.STR_Configuration_c_c_AllResourcesLinksKindsInUse));
 		final /*@NonInvalid*/ boolean le = ClassUtil.nonNullState(OclComparableLessThanEqualOperation.INSTANCE.evaluate(evaluator, severity_0, OCCITables.INT_0).booleanValue());
 		/*@NonInvalid*/ boolean symbol_0;
@@ -147,12 +154,12 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		    /*@NonNull*/ /*@Caught*/ Object CAUGHT_status;
 		    try {
 		        final /*@NonNull*/ /*@Thrown*/ List<Extension> use = this.getUse();
-		        final /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.OrderedSetValue BOXED_use = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Extension, use);
+		        final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_use = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Extension, use);
 		        final /*@NonNull*/ /*@Thrown*/ List<Resource> resources = this.getResources();
-		        final /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.OrderedSetValue BOXED_resources = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Resource, resources);
-		        /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.SequenceValue.Accumulator accumulator = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_CLSSid_Link);
+		        final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_resources = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Resource, resources);
+		        /*@NonNull*/ /*@Thrown*/ SequenceValue.Accumulator accumulator = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_CLSSid_Link);
 		        /*@Nullable*/ Iterator<?> ITERATOR__1 = BOXED_resources.iterator();
-		        /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.SequenceValue collect_1;
+		        /*@NonNull*/ /*@Thrown*/ SequenceValue collect_1;
 		        while (true) {
 		            if (!ITERATOR__1.hasNext()) {
 		                collect_1 = accumulator;
@@ -163,18 +170,18 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		             * links
 		             */
 		            if (_1 == null) {
-		                throw new org.eclipse.ocl.pivot.values.InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Resource::links\'");
+		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Resource::links\'");
 		            }
 		            final /*@NonNull*/ /*@Thrown*/ List<Link> links = _1.getLinks();
-		            final /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.OrderedSetValue BOXED_links = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Link, links);
+		            final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_links = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Link, links);
 		            //
 		            for (Object value : BOXED_links.flatten().getElements()) {
 		                accumulator.add(value);
 		            }
 		        }
-		        /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.SequenceValue.Accumulator accumulator_0 = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_CLSSid_Kind);
+		        /*@NonNull*/ /*@Thrown*/ SequenceValue.Accumulator accumulator_0 = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_CLSSid_Kind);
 		        /*@Nullable*/ Iterator<?> ITERATOR__1_0 = collect_1.iterator();
-		        /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.SequenceValue collect_0;
+		        /*@NonNull*/ /*@Thrown*/ SequenceValue collect_0;
 		        while (true) {
 		            if (!ITERATOR__1_0.hasNext()) {
 		                collect_0 = accumulator_0;
@@ -185,15 +192,15 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		             * kind
 		             */
 		            if (_1_0 == null) {
-		                throw new org.eclipse.ocl.pivot.values.InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Entity::kind\'");
+		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Entity::kind\'");
 		            }
 		            final /*@NonNull*/ /*@Thrown*/ Kind kind = _1_0.getKind();
 		            //
 		            accumulator_0.add(kind);
 		        }
-		        /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.SequenceValue.Accumulator accumulator_1 = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_CLSSid_OclElement);
+		        /*@NonNull*/ /*@Thrown*/ SequenceValue.Accumulator accumulator_1 = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_CLSSid_OclElement);
 		        /*@NonNull*/ Iterator<?> ITERATOR__1_1 = collect_0.iterator();
-		        /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.SequenceValue collect;
+		        /*@NonNull*/ /*@Thrown*/ SequenceValue collect;
 		        while (true) {
 		            if (!ITERATOR__1_1.hasNext()) {
 		                collect = accumulator_1;
@@ -203,10 +210,10 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		            /**
 		             * oclContainer()
 		             */
-		            final /*@Nullable*/ /*@NonInvalid*/ Object oclContainer = org.eclipse.ocl.pivot.library.classifier.ClassifierOclContainerOperation.INSTANCE.evaluate(evaluator, _1_1);
+		            final /*@Nullable*/ /*@NonInvalid*/ Object oclContainer = ClassifierOclContainerOperation.INSTANCE.evaluate(evaluator, _1_1);
 		            //
-		            if (oclContainer instanceof org.eclipse.ocl.pivot.values.CollectionValue) {
-		                for (Object value : ((org.eclipse.ocl.pivot.values.CollectionValue)oclContainer).flatten().getElements()) {
+		            if (oclContainer instanceof CollectionValue) {
+		                for (Object value : ((CollectionValue)oclContainer).flatten().getElements()) {
 		                    accumulator_1.add(value);
 		                }
 		            }
@@ -214,7 +221,7 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		                accumulator_1.add(oclContainer);
 		            }
 		        }
-		        final /*@Thrown*/ boolean status = ClassUtil.nonNullState(org.eclipse.ocl.pivot.library.collection.CollectionIncludesAllOperation.INSTANCE.evaluate(BOXED_use, collect).booleanValue());
+		        final /*@Thrown*/ boolean status = ClassUtil.nonNullState(CollectionIncludesAllOperation.INSTANCE.evaluate(BOXED_use, collect).booleanValue());
 		        CAUGHT_status = status;
 		    }
 		    catch (Exception e) {
@@ -249,7 +256,7 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		 *     endif
 		 */
 		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
-		final /*@NonNull*/ /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.IdResolver idResolver = evaluator.getIdResolver();
+		final /*@NonNull*/ /*@NonInvalid*/ IdResolver idResolver = evaluator.getIdResolver();
 		final /*@NonNull*/ /*@NonInvalid*/ IntegerValue severity_0 = ClassUtil.nonNullState(CGStringGetSeverityOperation.INSTANCE.evaluate(evaluator, OCCITables.STR_Configuration_c_c_AllResourcesLinksTargetsInConfiguration));
 		final /*@NonInvalid*/ boolean le = ClassUtil.nonNullState(OclComparableLessThanEqualOperation.INSTANCE.evaluate(evaluator, severity_0, OCCITables.INT_0).booleanValue());
 		/*@NonInvalid*/ boolean symbol_0;
@@ -260,10 +267,10 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		    /*@NonNull*/ /*@Caught*/ Object CAUGHT_status;
 		    try {
 		        final /*@NonNull*/ /*@Thrown*/ List<Resource> resources = this.getResources();
-		        final /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.OrderedSetValue BOXED_resources = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Resource, resources);
-		        /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.SequenceValue.Accumulator accumulator = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_CLSSid_Link);
+		        final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_resources = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Resource, resources);
+		        /*@NonNull*/ /*@Thrown*/ SequenceValue.Accumulator accumulator = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_CLSSid_Link);
 		        /*@Nullable*/ Iterator<?> ITERATOR__1 = BOXED_resources.iterator();
-		        /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.SequenceValue collect_0;
+		        /*@NonNull*/ /*@Thrown*/ SequenceValue collect_0;
 		        while (true) {
 		            if (!ITERATOR__1.hasNext()) {
 		                collect_0 = accumulator;
@@ -274,18 +281,18 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		             * links
 		             */
 		            if (_1 == null) {
-		                throw new org.eclipse.ocl.pivot.values.InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Resource::links\'");
+		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Resource::links\'");
 		            }
 		            final /*@NonNull*/ /*@Thrown*/ List<Link> links = _1.getLinks();
-		            final /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.OrderedSetValue BOXED_links = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Link, links);
+		            final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_links = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Link, links);
 		            //
 		            for (Object value : BOXED_links.flatten().getElements()) {
 		                accumulator.add(value);
 		            }
 		        }
-		        /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.SequenceValue.Accumulator accumulator_0 = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_CLSSid_Resource);
+		        /*@NonNull*/ /*@Thrown*/ SequenceValue.Accumulator accumulator_0 = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_CLSSid_Resource);
 		        /*@Nullable*/ Iterator<?> ITERATOR__1_0 = collect_0.iterator();
-		        /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.SequenceValue collect;
+		        /*@NonNull*/ /*@Thrown*/ SequenceValue collect;
 		        while (true) {
 		            if (!ITERATOR__1_0.hasNext()) {
 		                collect = accumulator_0;
@@ -296,7 +303,7 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		             * target
 		             */
 		            if (_1_0 == null) {
-		                throw new org.eclipse.ocl.pivot.values.InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Link::target\'");
+		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Link::target\'");
 		            }
 		            final /*@NonNull*/ /*@Thrown*/ Resource target = _1_0.getTarget();
 		            //
@@ -311,7 +318,7 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		                    status = ValueUtil.TRUE_VALUE;
 		                }
 		                else {
-		                    throw (org.eclipse.ocl.pivot.values.InvalidValueException)accumulator_1;
+		                    throw (InvalidValueException)accumulator_1;
 		                }
 		                break;
 		            }
@@ -319,7 +326,7 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		            /**
 		             * r.oclContainer() = self
 		             */
-		            final /*@Nullable*/ /*@NonInvalid*/ Object oclContainer = org.eclipse.ocl.pivot.library.classifier.ClassifierOclContainerOperation.INSTANCE.evaluate(evaluator, r);
+		            final /*@Nullable*/ /*@NonInvalid*/ Object oclContainer = ClassifierOclContainerOperation.INSTANCE.evaluate(evaluator, r);
 		            final /*@NonInvalid*/ boolean eq = this.equals(oclContainer);
 		            //
 		            if (eq == ValueUtil.FALSE_VALUE) {					// Normal unsuccessful body evaluation result
@@ -330,7 +337,7 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		                ;															// Carry on
 		            }
 		            else {															// Impossible badly typed result
-		                accumulator_1 = new org.eclipse.ocl.pivot.values.InvalidValueException(PivotMessages.NonBooleanBody, "forAll");
+		                accumulator_1 = new InvalidValueException(PivotMessages.NonBooleanBody, "forAll");
 		            }
 		        }
 		        CAUGHT_status = status;
@@ -366,7 +373,7 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		 *     endif
 		 */
 		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
-		final /*@NonNull*/ /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.IdResolver idResolver = evaluator.getIdResolver();
+		final /*@NonNull*/ /*@NonInvalid*/ IdResolver idResolver = evaluator.getIdResolver();
 		final /*@NonNull*/ /*@NonInvalid*/ IntegerValue severity_0 = ClassUtil.nonNullState(CGStringGetSeverityOperation.INSTANCE.evaluate(evaluator, OCCITables.STR_Configuration_c_c_AllResourcesKindsInUse));
 		final /*@NonInvalid*/ boolean le = ClassUtil.nonNullState(OclComparableLessThanEqualOperation.INSTANCE.evaluate(evaluator, severity_0, OCCITables.INT_0).booleanValue());
 		/*@NonInvalid*/ boolean symbol_0;
@@ -377,12 +384,12 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		    /*@NonNull*/ /*@Caught*/ Object CAUGHT_status;
 		    try {
 		        final /*@NonNull*/ /*@Thrown*/ List<Extension> use = this.getUse();
-		        final /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.OrderedSetValue BOXED_use = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Extension, use);
+		        final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_use = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Extension, use);
 		        final /*@NonNull*/ /*@Thrown*/ List<Resource> resources = this.getResources();
-		        final /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.OrderedSetValue BOXED_resources = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Resource, resources);
-		        /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.SequenceValue.Accumulator accumulator = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_CLSSid_Kind);
+		        final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_resources = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Resource, resources);
+		        /*@NonNull*/ /*@Thrown*/ SequenceValue.Accumulator accumulator = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_CLSSid_Kind);
 		        /*@Nullable*/ Iterator<?> ITERATOR__1 = BOXED_resources.iterator();
-		        /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.SequenceValue collect_0;
+		        /*@NonNull*/ /*@Thrown*/ SequenceValue collect_0;
 		        while (true) {
 		            if (!ITERATOR__1.hasNext()) {
 		                collect_0 = accumulator;
@@ -393,15 +400,15 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		             * kind
 		             */
 		            if (_1 == null) {
-		                throw new org.eclipse.ocl.pivot.values.InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Entity::kind\'");
+		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Entity::kind\'");
 		            }
 		            final /*@NonNull*/ /*@Thrown*/ Kind kind = _1.getKind();
 		            //
 		            accumulator.add(kind);
 		        }
-		        /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.SequenceValue.Accumulator accumulator_0 = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_CLSSid_OclElement);
+		        /*@NonNull*/ /*@Thrown*/ SequenceValue.Accumulator accumulator_0 = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_CLSSid_OclElement);
 		        /*@NonNull*/ Iterator<?> ITERATOR__1_0 = collect_0.iterator();
-		        /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.SequenceValue collect;
+		        /*@NonNull*/ /*@Thrown*/ SequenceValue collect;
 		        while (true) {
 		            if (!ITERATOR__1_0.hasNext()) {
 		                collect = accumulator_0;
@@ -411,10 +418,10 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		            /**
 		             * oclContainer()
 		             */
-		            final /*@Nullable*/ /*@NonInvalid*/ Object oclContainer = org.eclipse.ocl.pivot.library.classifier.ClassifierOclContainerOperation.INSTANCE.evaluate(evaluator, _1_0);
+		            final /*@Nullable*/ /*@NonInvalid*/ Object oclContainer = ClassifierOclContainerOperation.INSTANCE.evaluate(evaluator, _1_0);
 		            //
-		            if (oclContainer instanceof org.eclipse.ocl.pivot.values.CollectionValue) {
-		                for (Object value : ((org.eclipse.ocl.pivot.values.CollectionValue)oclContainer).flatten().getElements()) {
+		            if (oclContainer instanceof CollectionValue) {
+		                for (Object value : ((CollectionValue)oclContainer).flatten().getElements()) {
 		                    accumulator_0.add(value);
 		                }
 		            }
@@ -422,7 +429,7 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		                accumulator_0.add(oclContainer);
 		            }
 		        }
-		        final /*@Thrown*/ boolean status = ClassUtil.nonNullState(org.eclipse.ocl.pivot.library.collection.CollectionIncludesAllOperation.INSTANCE.evaluate(BOXED_use, collect).booleanValue());
+		        final /*@Thrown*/ boolean status = ClassUtil.nonNullState(CollectionIncludesAllOperation.INSTANCE.evaluate(BOXED_use, collect).booleanValue());
 		        CAUGHT_status = status;
 		    }
 		    catch (Exception e) {
@@ -457,7 +464,7 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		 *     endif
 		 */
 		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
-		final /*@NonNull*/ /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.IdResolver idResolver = evaluator.getIdResolver();
+		final /*@NonNull*/ /*@NonInvalid*/ IdResolver idResolver = evaluator.getIdResolver();
 		final /*@NonNull*/ /*@NonInvalid*/ IntegerValue severity_0 = ClassUtil.nonNullState(CGStringGetSeverityOperation.INSTANCE.evaluate(evaluator, OCCITables.STR_Configuration_c_c_AllResourcesMixinsInUse));
 		final /*@NonInvalid*/ boolean le = ClassUtil.nonNullState(OclComparableLessThanEqualOperation.INSTANCE.evaluate(evaluator, severity_0, OCCITables.INT_0).booleanValue());
 		/*@NonInvalid*/ boolean symbol_0;
@@ -468,12 +475,12 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		    /*@NonNull*/ /*@Caught*/ Object CAUGHT_status;
 		    try {
 		        final /*@NonNull*/ /*@Thrown*/ List<Extension> use = this.getUse();
-		        final /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.OrderedSetValue BOXED_use = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Extension, use);
+		        final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_use = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Extension, use);
 		        final /*@NonNull*/ /*@Thrown*/ List<Resource> resources = this.getResources();
-		        final /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.OrderedSetValue BOXED_resources = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Resource, resources);
-		        /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.SequenceValue.Accumulator accumulator = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_CLSSid_Mixin);
+		        final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_resources = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Resource, resources);
+		        /*@NonNull*/ /*@Thrown*/ SequenceValue.Accumulator accumulator = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_CLSSid_Mixin);
 		        /*@Nullable*/ Iterator<?> ITERATOR__1 = BOXED_resources.iterator();
-		        /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.SequenceValue collect_0;
+		        /*@NonNull*/ /*@Thrown*/ SequenceValue collect_0;
 		        while (true) {
 		            if (!ITERATOR__1.hasNext()) {
 		                collect_0 = accumulator;
@@ -484,18 +491,18 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		             * mixins
 		             */
 		            if (_1 == null) {
-		                throw new org.eclipse.ocl.pivot.values.InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Entity::mixins\'");
+		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Entity::mixins\'");
 		            }
 		            final /*@NonNull*/ /*@Thrown*/ List<Mixin> mixins = _1.getMixins();
-		            final /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.OrderedSetValue BOXED_mixins = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Mixin, mixins);
+		            final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_mixins = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Mixin, mixins);
 		            //
 		            for (Object value : BOXED_mixins.flatten().getElements()) {
 		                accumulator.add(value);
 		            }
 		        }
-		        /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.SequenceValue.Accumulator accumulator_0 = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_CLSSid_OclElement);
+		        /*@NonNull*/ /*@Thrown*/ SequenceValue.Accumulator accumulator_0 = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_CLSSid_OclElement);
 		        /*@Nullable*/ Iterator<?> ITERATOR__1_0 = collect_0.iterator();
-		        /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.SequenceValue collect;
+		        /*@NonNull*/ /*@Thrown*/ SequenceValue collect;
 		        while (true) {
 		            if (!ITERATOR__1_0.hasNext()) {
 		                collect = accumulator_0;
@@ -505,10 +512,10 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		            /**
 		             * oclContainer()
 		             */
-		            final /*@Nullable*/ /*@Thrown*/ Object oclContainer = org.eclipse.ocl.pivot.library.classifier.ClassifierOclContainerOperation.INSTANCE.evaluate(evaluator, _1_0);
+		            final /*@Nullable*/ /*@Thrown*/ Object oclContainer = ClassifierOclContainerOperation.INSTANCE.evaluate(evaluator, _1_0);
 		            //
-		            if (oclContainer instanceof org.eclipse.ocl.pivot.values.CollectionValue) {
-		                for (Object value : ((org.eclipse.ocl.pivot.values.CollectionValue)oclContainer).flatten().getElements()) {
+		            if (oclContainer instanceof CollectionValue) {
+		                for (Object value : ((CollectionValue)oclContainer).flatten().getElements()) {
 		                    accumulator_0.add(value);
 		                }
 		            }
@@ -516,7 +523,7 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		                accumulator_0.add(oclContainer);
 		            }
 		        }
-		        final /*@Thrown*/ boolean status = ClassUtil.nonNullState(org.eclipse.ocl.pivot.library.collection.CollectionIncludesAllOperation.INSTANCE.evaluate(BOXED_use, collect).booleanValue());
+		        final /*@Thrown*/ boolean status = ClassUtil.nonNullState(CollectionIncludesAllOperation.INSTANCE.evaluate(BOXED_use, collect).booleanValue());
 		        CAUGHT_status = status;
 		    }
 		    catch (Exception e) {
@@ -551,7 +558,7 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		 *     endif
 		 */
 		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
-		final /*@NonNull*/ /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.IdResolver idResolver = evaluator.getIdResolver();
+		final /*@NonNull*/ /*@NonInvalid*/ IdResolver idResolver = evaluator.getIdResolver();
 		final /*@NonNull*/ /*@NonInvalid*/ IntegerValue severity_0 = ClassUtil.nonNullState(CGStringGetSeverityOperation.INSTANCE.evaluate(evaluator, OCCITables.STR_Configuration_c_c_AllResourcesLinksMixinsInUse));
 		final /*@NonInvalid*/ boolean le = ClassUtil.nonNullState(OclComparableLessThanEqualOperation.INSTANCE.evaluate(evaluator, severity_0, OCCITables.INT_0).booleanValue());
 		/*@NonInvalid*/ boolean symbol_0;
@@ -562,12 +569,12 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		    /*@NonNull*/ /*@Caught*/ Object CAUGHT_status;
 		    try {
 		        final /*@NonNull*/ /*@Thrown*/ List<Extension> use = this.getUse();
-		        final /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.OrderedSetValue BOXED_use = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Extension, use);
+		        final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_use = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Extension, use);
 		        final /*@NonNull*/ /*@Thrown*/ List<Resource> resources = this.getResources();
-		        final /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.OrderedSetValue BOXED_resources = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Resource, resources);
-		        /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.SequenceValue.Accumulator accumulator = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_CLSSid_Link);
+		        final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_resources = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Resource, resources);
+		        /*@NonNull*/ /*@Thrown*/ SequenceValue.Accumulator accumulator = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_CLSSid_Link);
 		        /*@Nullable*/ Iterator<?> ITERATOR__1 = BOXED_resources.iterator();
-		        /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.SequenceValue collect_1;
+		        /*@NonNull*/ /*@Thrown*/ SequenceValue collect_1;
 		        while (true) {
 		            if (!ITERATOR__1.hasNext()) {
 		                collect_1 = accumulator;
@@ -578,18 +585,18 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		             * links
 		             */
 		            if (_1 == null) {
-		                throw new org.eclipse.ocl.pivot.values.InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Resource::links\'");
+		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Resource::links\'");
 		            }
 		            final /*@NonNull*/ /*@Thrown*/ List<Link> links = _1.getLinks();
-		            final /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.OrderedSetValue BOXED_links = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Link, links);
+		            final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_links = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Link, links);
 		            //
 		            for (Object value : BOXED_links.flatten().getElements()) {
 		                accumulator.add(value);
 		            }
 		        }
-		        /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.SequenceValue.Accumulator accumulator_0 = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_CLSSid_Mixin);
+		        /*@NonNull*/ /*@Thrown*/ SequenceValue.Accumulator accumulator_0 = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_CLSSid_Mixin);
 		        /*@Nullable*/ Iterator<?> ITERATOR__1_0 = collect_1.iterator();
-		        /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.SequenceValue collect_0;
+		        /*@NonNull*/ /*@Thrown*/ SequenceValue collect_0;
 		        while (true) {
 		            if (!ITERATOR__1_0.hasNext()) {
 		                collect_0 = accumulator_0;
@@ -600,18 +607,18 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		             * mixins
 		             */
 		            if (_1_0 == null) {
-		                throw new org.eclipse.ocl.pivot.values.InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Entity::mixins\'");
+		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Entity::mixins\'");
 		            }
 		            final /*@NonNull*/ /*@Thrown*/ List<Mixin> mixins = _1_0.getMixins();
-		            final /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.OrderedSetValue BOXED_mixins = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Mixin, mixins);
+		            final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_mixins = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Mixin, mixins);
 		            //
 		            for (Object value : BOXED_mixins.flatten().getElements()) {
 		                accumulator_0.add(value);
 		            }
 		        }
-		        /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.SequenceValue.Accumulator accumulator_1 = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_CLSSid_OclElement);
+		        /*@NonNull*/ /*@Thrown*/ SequenceValue.Accumulator accumulator_1 = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_CLSSid_OclElement);
 		        /*@Nullable*/ Iterator<?> ITERATOR__1_1 = collect_0.iterator();
-		        /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.SequenceValue collect;
+		        /*@NonNull*/ /*@Thrown*/ SequenceValue collect;
 		        while (true) {
 		            if (!ITERATOR__1_1.hasNext()) {
 		                collect = accumulator_1;
@@ -621,10 +628,10 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		            /**
 		             * oclContainer()
 		             */
-		            final /*@Nullable*/ /*@Thrown*/ Object oclContainer = org.eclipse.ocl.pivot.library.classifier.ClassifierOclContainerOperation.INSTANCE.evaluate(evaluator, _1_1);
+		            final /*@Nullable*/ /*@Thrown*/ Object oclContainer = ClassifierOclContainerOperation.INSTANCE.evaluate(evaluator, _1_1);
 		            //
-		            if (oclContainer instanceof org.eclipse.ocl.pivot.values.CollectionValue) {
-		                for (Object value : ((org.eclipse.ocl.pivot.values.CollectionValue)oclContainer).flatten().getElements()) {
+		            if (oclContainer instanceof CollectionValue) {
+		                for (Object value : ((CollectionValue)oclContainer).flatten().getElements()) {
 		                    accumulator_1.add(value);
 		                }
 		            }
@@ -632,7 +639,7 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		                accumulator_1.add(oclContainer);
 		            }
 		        }
-		        final /*@Thrown*/ boolean status = ClassUtil.nonNullState(org.eclipse.ocl.pivot.library.collection.CollectionIncludesAllOperation.INSTANCE.evaluate(BOXED_use, collect).booleanValue());
+		        final /*@Thrown*/ boolean status = ClassUtil.nonNullState(CollectionIncludesAllOperation.INSTANCE.evaluate(BOXED_use, collect).booleanValue());
 		        CAUGHT_status = status;
 		    }
 		    catch (Exception e) {
