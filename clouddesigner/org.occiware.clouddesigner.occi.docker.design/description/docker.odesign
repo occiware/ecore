@@ -142,7 +142,7 @@
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Contains" referenceName="links" variableName="containsInstance">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="source" valueExpression="var:container"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="var:containerInstance"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="var:containsInstance"/>
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:addKind"/>
                   </subModelOperations>
                 </subModelOperations>
