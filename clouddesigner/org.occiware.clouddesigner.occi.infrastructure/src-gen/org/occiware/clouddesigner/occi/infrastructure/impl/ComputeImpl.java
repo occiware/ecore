@@ -7,6 +7,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.occiware.clouddesigner.occi.impl.ResourceImpl;
 import org.occiware.clouddesigner.occi.infrastructure.Architecture;
 import org.occiware.clouddesigner.occi.infrastructure.Compute;
 import org.occiware.clouddesigner.occi.infrastructure.ComputeStatus;
@@ -33,7 +34,7 @@ import org.occiware.clouddesigner.occi.infrastructure.SuspendMethod;
  *
  * @generated
  */
-public class ComputeImpl extends org.occiware.clouddesigner.occi.impl.ResourceImpl implements Compute {
+public class ComputeImpl extends ResourceImpl implements Compute {
 	/**
 	 * The default value of the '{@link #getArchitecture() <em>Architecture</em>}' attribute.
 	 * <!-- begin-user-doc -->

@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:OCCI="http://schemas.ogf.org/occi" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:docker="http://occiware.org/docker" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_nt3V8Mi9EeSvM7ZM4Utgjg" selectedViews="_WDJ04OqBEeSeWY7CMC2KVw" version="8.1.1">
-  <models xmi:type="OCCI:Configuration" href="first-docker-configuration.xmi#/"/>
-  <models xmi:type="OCCI:Configuration" href="demo.xmi#/"/>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:docker="http://occiware.org/docker" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:occi="http://schemas.ogf.org/occi" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_nt3V8Mi9EeSvM7ZM4Utgjg" selectedViews="_WDJ04OqBEeSeWY7CMC2KVw" version="8.1.1">
+  <models xmi:type="occi:Extension" href="platform:/plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#/"/>
+  <models xmi:type="occi:Extension" href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#/"/>
+  <models xmi:type="occi:Extension" href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#/"/>
+  <models xmi:type="ecore:EPackage" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#/"/>
+  <models xmi:type="ecore:EPackage" href="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#/"/>
+  <models xmi:type="occi:Configuration" href="demo.docker#/"/>
+  <models xmi:type="occi:Configuration" href="first-docker-configuration.docker#/"/>
   <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_g9Uc8MjCEeSvM7ZM4Utgjg" initialized="true">
     <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_-0lTcMvqEeSSB8ZjIO7DKA" name="new Docker configuration">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_-0udYMvqEeSSB8ZjIO7DKA" source="GMF_DIAGRAMS">
@@ -129,8 +134,8 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']"/>
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_XG9u4N0mEeSCfcqSk4rTAQ" name="webserver" outgoingEdges="_XHAyMN0mEeSCfcqSk4rTAQ" incomingEdges="_XHCnYN0mEeSCfcqSk4rTAQ" width="5" height="5" resizeKind="NSEW">
-          <target xmi:type="docker:Machine_VirtualBox" href="first-docker-configuration.xmi#//@resources.0"/>
-          <semanticElements xmi:type="docker:Machine_VirtualBox" href="first-docker-configuration.xmi#//@resources.0"/>
+          <target xmi:type="docker:Machine_VirtualBox" href="first-docker-configuration.docker#//@resources.0"/>
+          <semanticElements xmi:type="docker:Machine_VirtualBox" href="first-docker-configuration.docker#//@resources.0"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_XG9u4d0mEeSCfcqSk4rTAQ" showIcon="false" workspacePath="/org.occiware.clouddesigner.occi.docker.design/images/mcol-closed-box.svg">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_XG9u4t0mEeSCfcqSk4rTAQ"/>
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/resource/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']/@style"/>
@@ -139,8 +144,8 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']"/>
         </ownedDiagramElements>
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_XG-V8N0mEeSCfcqSk4rTAQ" name="db" outgoingEdges="_XHCnYN0mEeSCfcqSk4rTAQ" incomingEdges="_XHAyMN0mEeSCfcqSk4rTAQ" width="5" height="5" resizeKind="NSEW">
-          <target xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.1"/>
-          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.1"/>
+          <target xmi:type="docker:Container" href="first-docker-configuration.docker#//@resources.1"/>
+          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.docker#//@resources.1"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_XG-V8d0mEeSCfcqSk4rTAQ" showIcon="false" workspacePath="/org.occiware.clouddesigner.occi.docker.design/images/mcol-closed-box.svg">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_XG-V8t0mEeSCfcqSk4rTAQ"/>
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/resource/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']/@style"/>
@@ -159,8 +164,8 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']"/>
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_XG-9AN0mEeSCfcqSk4rTAQ" name="web" outgoingEdges="_XHBZQN0mEeSCfcqSk4rTAQ" width="5" height="5" resizeKind="NSEW">
-          <target xmi:type="docker:Machine_VirtualBox" href="demo.xmi#//@resources.0"/>
-          <semanticElements xmi:type="docker:Machine_VirtualBox" href="demo.xmi#//@resources.0"/>
+          <target xmi:type="docker:Machine_VirtualBox" href="demo.docker#//@resources.0"/>
+          <semanticElements xmi:type="docker:Machine_VirtualBox" href="demo.docker#//@resources.0"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_XG_kEN0mEeSCfcqSk4rTAQ" showIcon="false" workspacePath="/org.occiware.clouddesigner.occi.docker.design/images/mcol-closed-box.svg">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_XG_kEd0mEeSCfcqSk4rTAQ"/>
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/resource/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']/@style"/>
@@ -169,8 +174,8 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']"/>
         </ownedDiagramElements>
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_XG_kE90mEeSCfcqSk4rTAQ" name="db" incomingEdges="_XHBZQN0mEeSCfcqSk4rTAQ" width="5" height="5" resizeKind="NSEW">
-          <target xmi:type="docker:Container" href="demo.xmi#//@resources.1"/>
-          <semanticElements xmi:type="docker:Container" href="demo.xmi#//@resources.1"/>
+          <target xmi:type="docker:Container" href="demo.docker#//@resources.1"/>
+          <semanticElements xmi:type="docker:Container" href="demo.docker#//@resources.1"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_XG_kFN0mEeSCfcqSk4rTAQ" showIcon="false" workspacePath="/org.occiware.clouddesigner.occi.docker.design/images/mcol-closed-box.svg">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_XG_kFd0mEeSCfcqSk4rTAQ"/>
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/resource/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']/@style"/>
@@ -180,8 +185,8 @@
         </ownedDiagramElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_XHAyMN0mEeSCfcqSk4rTAQ" name="db" sourceNode="_XG9u4N0mEeSCfcqSk4rTAQ" targetNode="_XG-V8N0mEeSCfcqSk4rTAQ">
-        <target xmi:type="docker:Contains" href="first-docker-configuration.xmi#//@resources.0/@links.0"/>
-        <semanticElements xmi:type="docker:Contains" href="first-docker-configuration.xmi#//@resources.0/@links.0"/>
+        <target xmi:type="docker:Contains" href="first-docker-configuration.docker#//@resources.0/@links.0"/>
+        <semanticElements xmi:type="docker:Contains" href="first-docker-configuration.docker#//@resources.0/@links.0"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_XHAyMd0mEeSCfcqSk4rTAQ" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_XHAyMt0mEeSCfcqSk4rTAQ" red="39" green="76" blue="114"/>
@@ -192,8 +197,8 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_XHBZQN0mEeSCfcqSk4rTAQ" name="db" sourceNode="_XG-9AN0mEeSCfcqSk4rTAQ" targetNode="_XG_kE90mEeSCfcqSk4rTAQ">
-        <target xmi:type="docker:Contains" href="demo.xmi#//@resources.0/@links.0"/>
-        <semanticElements xmi:type="docker:Contains" href="demo.xmi#//@resources.0/@links.0"/>
+        <target xmi:type="docker:Contains" href="demo.docker#//@resources.0/@links.0"/>
+        <semanticElements xmi:type="docker:Contains" href="demo.docker#//@resources.0/@links.0"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_XHBZQd0mEeSCfcqSk4rTAQ" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_XHBZQt0mEeSCfcqSk4rTAQ" red="39" green="76" blue="114"/>
@@ -204,8 +209,8 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_XHCnYN0mEeSCfcqSk4rTAQ" sourceNode="_XG-V8N0mEeSCfcqSk4rTAQ" targetNode="_XG9u4N0mEeSCfcqSk4rTAQ">
-        <target xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.1/@links.0"/>
-        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.1/@links.0"/>
+        <target xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.1/@links.0"/>
+        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.1/@links.0"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_XHCnYd0mEeSCfcqSk4rTAQ" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Volumesfrom']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_XHCnYt0mEeSCfcqSk4rTAQ" red="136" green="136" blue="136"/>
@@ -218,7 +223,7 @@
       <description xmi:type="description_1:DiagramDescription" href="platform:/resource/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']"/>
       <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_-0lTjcvqEeSSB8ZjIO7DKA"/>
       <activatedLayers xmi:type="description_1:Layer" href="platform:/resource/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer"/>
-      <target xmi:type="OCCI:Configuration" href="first-docker-configuration.xmi#/"/>
+      <target xmi:type="occi:Configuration" href="first-docker-configuration.docker#/"/>
     </ownedRepresentations>
     <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_JUbSEM4-EeSkPP1isAw2Wg" name="new Docker configuration">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_JUe8cM4-EeSkPP1isAw2Wg" source="GMF_DIAGRAMS">
@@ -346,8 +351,8 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']"/>
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_EoQ-8N0mEeSCfcqSk4rTAQ" name="webserver" visible="false" outgoingEdges="_EoUpUN0mEeSCfcqSk4rTAQ" incomingEdges="_EoWegN0mEeSCfcqSk4rTAQ" width="5" height="5" resizeKind="NSEW">
-          <target xmi:type="docker:Machine_VirtualBox" href="first-docker-configuration.xmi#//@resources.0"/>
-          <semanticElements xmi:type="docker:Machine_VirtualBox" href="first-docker-configuration.xmi#//@resources.0"/>
+          <target xmi:type="docker:Machine_VirtualBox" href="first-docker-configuration.docker#//@resources.0"/>
+          <semanticElements xmi:type="docker:Machine_VirtualBox" href="first-docker-configuration.docker#//@resources.0"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_EoRmAN0mEeSCfcqSk4rTAQ" showIcon="false" workspacePath="/org.occiware.clouddesigner.occi.docker.design/images/mcol-closed-box.svg">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_EoRmAd0mEeSCfcqSk4rTAQ"/>
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/resource/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']/@style"/>
@@ -356,8 +361,8 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']"/>
         </ownedDiagramElements>
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_EoRmA90mEeSCfcqSk4rTAQ" name="db" visible="false" outgoingEdges="_EoWegN0mEeSCfcqSk4rTAQ" incomingEdges="_EoUpUN0mEeSCfcqSk4rTAQ" width="5" height="5" resizeKind="NSEW">
-          <target xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.1"/>
-          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.1"/>
+          <target xmi:type="docker:Container" href="first-docker-configuration.docker#//@resources.1"/>
+          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.docker#//@resources.1"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_EoSNEN0mEeSCfcqSk4rTAQ" showIcon="false" workspacePath="/org.occiware.clouddesigner.occi.docker.design/images/mcol-closed-box.svg">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_EoSNEd0mEeSCfcqSk4rTAQ"/>
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/resource/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']/@style"/>
@@ -376,8 +381,8 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']"/>
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_EoS0IN0mEeSCfcqSk4rTAQ" name="web" visible="false" outgoingEdges="_EoVQYN0mEeSCfcqSk4rTAQ" width="5" height="5" resizeKind="NSEW">
-          <target xmi:type="docker:Machine_VirtualBox" href="demo.xmi#//@resources.0"/>
-          <semanticElements xmi:type="docker:Machine_VirtualBox" href="demo.xmi#//@resources.0"/>
+          <target xmi:type="docker:Machine_VirtualBox" href="demo.docker#//@resources.0"/>
+          <semanticElements xmi:type="docker:Machine_VirtualBox" href="demo.docker#//@resources.0"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_EoS0Id0mEeSCfcqSk4rTAQ" showIcon="false" workspacePath="/org.occiware.clouddesigner.occi.docker.design/images/mcol-closed-box.svg">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_EoS0It0mEeSCfcqSk4rTAQ"/>
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/resource/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']/@style"/>
@@ -386,8 +391,8 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']"/>
         </ownedDiagramElements>
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_EoTbMN0mEeSCfcqSk4rTAQ" name="db" visible="false" incomingEdges="_EoVQYN0mEeSCfcqSk4rTAQ" width="5" height="5" resizeKind="NSEW">
-          <target xmi:type="docker:Container" href="demo.xmi#//@resources.1"/>
-          <semanticElements xmi:type="docker:Container" href="demo.xmi#//@resources.1"/>
+          <target xmi:type="docker:Container" href="demo.docker#//@resources.1"/>
+          <semanticElements xmi:type="docker:Container" href="demo.docker#//@resources.1"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_EoTbMd0mEeSCfcqSk4rTAQ" showIcon="false" workspacePath="/org.occiware.clouddesigner.occi.docker.design/images/mcol-closed-box.svg">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_EoTbMt0mEeSCfcqSk4rTAQ"/>
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/resource/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']/@style"/>
@@ -397,8 +402,8 @@
         </ownedDiagramElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_EoUpUN0mEeSCfcqSk4rTAQ" name="db" visible="false" sourceNode="_EoQ-8N0mEeSCfcqSk4rTAQ" targetNode="_EoRmA90mEeSCfcqSk4rTAQ">
-        <target xmi:type="docker:Contains" href="first-docker-configuration.xmi#//@resources.0/@links.0"/>
-        <semanticElements xmi:type="docker:Contains" href="first-docker-configuration.xmi#//@resources.0/@links.0"/>
+        <target xmi:type="docker:Contains" href="first-docker-configuration.docker#//@resources.0/@links.0"/>
+        <semanticElements xmi:type="docker:Contains" href="first-docker-configuration.docker#//@resources.0/@links.0"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_EoUpUd0mEeSCfcqSk4rTAQ" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_EoUpUt0mEeSCfcqSk4rTAQ" red="39" green="76" blue="114"/>
@@ -409,8 +414,8 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_EoVQYN0mEeSCfcqSk4rTAQ" name="db" visible="false" sourceNode="_EoS0IN0mEeSCfcqSk4rTAQ" targetNode="_EoTbMN0mEeSCfcqSk4rTAQ">
-        <target xmi:type="docker:Contains" href="demo.xmi#//@resources.0/@links.0"/>
-        <semanticElements xmi:type="docker:Contains" href="demo.xmi#//@resources.0/@links.0"/>
+        <target xmi:type="docker:Contains" href="demo.docker#//@resources.0/@links.0"/>
+        <semanticElements xmi:type="docker:Contains" href="demo.docker#//@resources.0/@links.0"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_EoVQYd0mEeSCfcqSk4rTAQ" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_EoVQYt0mEeSCfcqSk4rTAQ" red="39" green="76" blue="114"/>
@@ -421,8 +426,8 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_EoWegN0mEeSCfcqSk4rTAQ" visible="false" sourceNode="_EoRmA90mEeSCfcqSk4rTAQ" targetNode="_EoQ-8N0mEeSCfcqSk4rTAQ">
-        <target xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.1/@links.0"/>
-        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.1/@links.0"/>
+        <target xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.1/@links.0"/>
+        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.1/@links.0"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_EoWegd0mEeSCfcqSk4rTAQ" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Volumesfrom']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_EoWegt0mEeSCfcqSk4rTAQ" red="136" green="136" blue="136"/>
@@ -435,7 +440,7 @@
       <description xmi:type="description_1:DiagramDescription" href="platform:/resource/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']"/>
       <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_JUbSPM4-EeSkPP1isAw2Wg"/>
       <activatedLayers xmi:type="description_1:Layer" href="platform:/resource/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer"/>
-      <target xmi:type="OCCI:Configuration" href="demo.xmi#/"/>
+      <target xmi:type="occi:Configuration" href="demo.docker#/"/>
     </ownedRepresentations>
     <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_o8HQAOpiEeSZK93nv-cciQ" name="new Docker configuration">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_o8lxIOpiEeSZK93nv-cciQ" source="GMF_DIAGRAMS">
@@ -453,8 +458,8 @@
         </data>
       </ownedAnnotationEntries>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_InNIwepjEeSZK93nv-cciQ">
-        <target xmi:type="docker:Container" href="demo.xmi#//@resources.2"/>
-        <semanticElements xmi:type="docker:Container" href="demo.xmi#//@resources.2"/>
+        <target xmi:type="docker:Container" href="demo.docker#//@resources.2"/>
+        <semanticElements xmi:type="docker:Container" href="demo.docker#//@resources.2"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_InNIwupjEeSZK93nv-cciQ" labelAlignment="LEFT">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_InNIw-pjEeSZK93nv-cciQ"/>
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@style"/>
@@ -467,7 +472,7 @@
       <description xmi:type="description_1:DiagramDescription" href="platform:/resource/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']"/>
       <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_o8NWrOpiEeSZK93nv-cciQ"/>
       <activatedLayers xmi:type="description_1:Layer" href="platform:/resource/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer"/>
-      <target xmi:type="OCCI:Configuration" href="demo.xmi#/"/>
+      <target xmi:type="occi:Configuration" href="demo.docker#/"/>
     </ownedRepresentations>
     <viewpoint xmi:type="description:Viewpoint" href="platform:/resource/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']"/>
   </ownedViews>
@@ -1304,8 +1309,8 @@
         </data>
       </ownedAnnotationEntries>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_yuBnceqNEeSd3eZOQZdKlw" name="localhost">
-        <target xmi:type="docker:Machine_VirtualBox" href="first-docker-configuration.xmi#//@resources.0"/>
-        <semanticElements xmi:type="docker:Machine_VirtualBox" href="first-docker-configuration.xmi#//@resources.0"/>
+        <target xmi:type="docker:Machine_VirtualBox" href="first-docker-configuration.docker#//@resources.0"/>
+        <semanticElements xmi:type="docker:Machine_VirtualBox" href="first-docker-configuration.docker#//@resources.0"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_LgIrMPTLEeSN3fw508t7kQ" borderSize="1" borderSizeComputationExpression="1">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_LgIrMfTLEeSN3fw508t7kQ"/>
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@conditionnalStyles.2/@style"/>
@@ -1315,8 +1320,8 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']"/>
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_yuBnd-qNEeSd3eZOQZdKlw" name="webserver" outgoingEdges="_yuCOjOqNEeSd3eZOQZdKlw" incomingEdges="_yuCOluqNEeSd3eZOQZdKlw" width="5" height="5" resizeKind="NSEW">
-          <target xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.1"/>
-          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.1"/>
+          <target xmi:type="docker:Container" href="first-docker-configuration.docker#//@resources.1"/>
+          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.docker#//@resources.1"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_LiCvsPTLEeSN3fw508t7kQ" showIcon="false" workspacePath="/org.occiware.clouddesigner.occi.docker.design/images/mcol-closed-box_red.svg">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_LiCvsfTLEeSN3fw508t7kQ"/>
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']/@conditionnalStyles.2/@style"/>
@@ -1325,8 +1330,8 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']"/>
         </ownedDiagramElements>
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_yuBne-qNEeSd3eZOQZdKlw" name="db" outgoingEdges="_yuCOluqNEeSd3eZOQZdKlw" incomingEdges="_yuCOjOqNEeSd3eZOQZdKlw" width="5" height="5" resizeKind="NSEW">
-          <target xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.2"/>
-          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.2"/>
+          <target xmi:type="docker:Container" href="first-docker-configuration.docker#//@resources.2"/>
+          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.docker#//@resources.2"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_LiEk4PTLEeSN3fw508t7kQ" showIcon="false" workspacePath="/org.occiware.clouddesigner.occi.docker.design/images/mcol-closed-box_red.svg">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_LiEk4fTLEeSN3fw508t7kQ"/>
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']/@conditionnalStyles.2/@style"/>
@@ -1336,8 +1341,8 @@
         </ownedDiagramElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_yuCOjOqNEeSd3eZOQZdKlw" name="db" sourceNode="_yuBnd-qNEeSd3eZOQZdKlw" targetNode="_yuBne-qNEeSd3eZOQZdKlw">
-        <target xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.1/@links.0"/>
-        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.1/@links.0"/>
+        <target xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.1/@links.0"/>
+        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.1/@links.0"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_yuCOjeqNEeSd3eZOQZdKlw" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_yuCOjuqNEeSd3eZOQZdKlw" red="39" green="76" blue="114"/>
@@ -1348,8 +1353,8 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_yuCOluqNEeSd3eZOQZdKlw" sourceNode="_yuBne-qNEeSd3eZOQZdKlw" targetNode="_yuBnd-qNEeSd3eZOQZdKlw">
-        <target xmi:type="docker:Volumesfrom" href="first-docker-configuration.xmi#//@resources.2/@links.0"/>
-        <semanticElements xmi:type="docker:Volumesfrom" href="first-docker-configuration.xmi#//@resources.2/@links.0"/>
+        <target xmi:type="docker:Volumesfrom" href="first-docker-configuration.docker#//@resources.2/@links.0"/>
+        <semanticElements xmi:type="docker:Volumesfrom" href="first-docker-configuration.docker#//@resources.2/@links.0"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_yuCOl-qNEeSd3eZOQZdKlw" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Volumesfrom']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_yuCOmOqNEeSd3eZOQZdKlw" red="136" green="136" blue="136"/>
@@ -1360,8 +1365,8 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Volumesfrom']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_LgMVkPTLEeSN3fw508t7kQ" name="template">
-        <target xmi:type="docker:Machine_VirtualBox" href="first-docker-configuration.xmi#//@resources.3"/>
-        <semanticElements xmi:type="docker:Machine_VirtualBox" href="first-docker-configuration.xmi#//@resources.3"/>
+        <target xmi:type="docker:Machine_VirtualBox" href="first-docker-configuration.docker#//@resources.3"/>
+        <semanticElements xmi:type="docker:Machine_VirtualBox" href="first-docker-configuration.docker#//@resources.3"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1374,8 +1379,8 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']"/>
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_LgX7wPTLEeSN3fw508t7kQ" name="monitor" width="5" height="5" resizeKind="NSEW">
-          <target xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.4"/>
-          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.4"/>
+          <target xmi:type="docker:Container" href="first-docker-configuration.docker#//@resources.4"/>
+          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.docker#//@resources.4"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_LhJX0PTLEeSN3fw508t7kQ" showIcon="false" workspacePath="/org.occiware.clouddesigner.occi.docker.design/images/mcol-closed-box_red.svg">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_LhJX0fTLEeSN3fw508t7kQ"/>
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']/@conditionnalStyles.2/@style"/>
@@ -1384,8 +1389,8 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']"/>
         </ownedDiagramElements>
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_LhKl8PTLEeSN3fw508t7kQ" name="database" outgoingEdges="_LiQyIPTLEeSN3fw508t7kQ" incomingEdges="_LiT1cPTLEeSN3fw508t7kQ" width="5" height="5" resizeKind="NSEW">
-          <target xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.5"/>
-          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.5"/>
+          <target xmi:type="docker:Container" href="first-docker-configuration.docker#//@resources.5"/>
+          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.docker#//@resources.5"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_LhL0EPTLEeSN3fw508t7kQ" showIcon="false" workspacePath="/org.occiware.clouddesigner.occi.docker.design/images/mcol-closed-box_red.svg">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_LhL0EfTLEeSN3fw508t7kQ"/>
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']/@conditionnalStyles.2/@style"/>
@@ -1394,8 +1399,8 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']"/>
         </ownedDiagramElements>
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_LhMbIPTLEeSN3fw508t7kQ" name="webserver" outgoingEdges="_LiSAQPTLEeSN3fw508t7kQ" incomingEdges="_LiQyIPTLEeSN3fw508t7kQ _LiUcgPTLEeSN3fw508t7kQ" width="5" height="5" resizeKind="NSEW">
-          <target xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.6"/>
-          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.6"/>
+          <target xmi:type="docker:Container" href="first-docker-configuration.docker#//@resources.6"/>
+          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.docker#//@resources.6"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_LhOQUPTLEeSN3fw508t7kQ" showIcon="false" workspacePath="/org.occiware.clouddesigner.occi.docker.design/images/mcol-closed-box_red.svg">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_LhOQUfTLEeSN3fw508t7kQ"/>
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']/@conditionnalStyles.2/@style"/>
@@ -1404,8 +1409,8 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']"/>
         </ownedDiagramElements>
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_LhO3YPTLEeSN3fw508t7kQ" name="backend" outgoingEdges="_LiSnUPTLEeSN3fw508t7kQ _LiT1cPTLEeSN3fw508t7kQ _LiUcgPTLEeSN3fw508t7kQ" width="5" height="5" resizeKind="NSEW">
-          <target xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.7"/>
-          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.7"/>
+          <target xmi:type="docker:Container" href="first-docker-configuration.docker#//@resources.7"/>
+          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.docker#//@resources.7"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_LhQFgPTLEeSN3fw508t7kQ" showIcon="false" workspacePath="/org.occiware.clouddesigner.occi.docker.design/images/mcol-closed-box_red.svg">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_LhQFgfTLEeSN3fw508t7kQ"/>
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']/@conditionnalStyles.2/@style"/>
@@ -1414,8 +1419,8 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']"/>
         </ownedDiagramElements>
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_LhQskPTLEeSN3fw508t7kQ" name="redis" incomingEdges="_LiSAQPTLEeSN3fw508t7kQ" width="5" height="5" resizeKind="NSEW">
-          <target xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.8"/>
-          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.8"/>
+          <target xmi:type="docker:Container" href="first-docker-configuration.docker#//@resources.8"/>
+          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.docker#//@resources.8"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_LhShwPTLEeSN3fw508t7kQ" showIcon="false" workspacePath="/org.occiware.clouddesigner.occi.docker.design/images/mcol-closed-box_red.svg">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_LhShwfTLEeSN3fw508t7kQ"/>
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']/@conditionnalStyles.2/@style"/>
@@ -1424,8 +1429,8 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']"/>
         </ownedDiagramElements>
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_LhTI0PTLEeSN3fw508t7kQ" name="python" incomingEdges="_LiSnUPTLEeSN3fw508t7kQ" width="5" height="5" resizeKind="NSEW">
-          <target xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.9"/>
-          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.9"/>
+          <target xmi:type="docker:Container" href="first-docker-configuration.docker#//@resources.9"/>
+          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.docker#//@resources.9"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_LhU-APTLEeSN3fw508t7kQ" showIcon="false" workspacePath="/org.occiware.clouddesigner.occi.docker.design/images/mcol-closed-box_red.svg">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_LhU-AfTLEeSN3fw508t7kQ"/>
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']/@conditionnalStyles.2/@style"/>
@@ -1435,8 +1440,8 @@
         </ownedDiagramElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_LgOx0PTLEeSN3fw508t7kQ" name="test">
-        <target xmi:type="docker:Machine_VirtualBox" href="first-docker-configuration.xmi#//@resources.10"/>
-        <semanticElements xmi:type="docker:Machine_VirtualBox" href="first-docker-configuration.xmi#//@resources.10"/>
+        <target xmi:type="docker:Machine_VirtualBox" href="first-docker-configuration.docker#//@resources.10"/>
+        <semanticElements xmi:type="docker:Machine_VirtualBox" href="first-docker-configuration.docker#//@resources.10"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1449,8 +1454,8 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']"/>
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_LhWMIPTLEeSN3fw508t7kQ" name="monitor" width="5" height="5" resizeKind="NSEW">
-          <target xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.11"/>
-          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.11"/>
+          <target xmi:type="docker:Container" href="first-docker-configuration.docker#//@resources.11"/>
+          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.docker#//@resources.11"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_pyvJ0PlnEeSkvKTW2L1TlQ" showIcon="false" workspacePath="/org.occiware.clouddesigner.occi.docker.design/images/mcol-closed-box_red.svg">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_pyvJ0flnEeSkvKTW2L1TlQ"/>
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']/@conditionnalStyles.2/@style"/>
@@ -1459,8 +1464,8 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']"/>
         </ownedDiagramElements>
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_LhYoYPTLEeSN3fw508t7kQ" name="backend" outgoingEdges="_LiVDlPTLEeSN3fw508t7kQ _LiWRsPTLEeSN3fw508t7kQ _LiW4wPTLEeSN3fw508t7kQ" width="5" height="5" resizeKind="NSEW">
-          <target xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.12"/>
-          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.12"/>
+          <target xmi:type="docker:Container" href="first-docker-configuration.docker#//@resources.12"/>
+          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.docker#//@resources.12"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_pywX8PlnEeSkvKTW2L1TlQ" showIcon="false" workspacePath="/org.occiware.clouddesigner.occi.docker.design/images/mcol-closed-box_red.svg">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_pywX8flnEeSkvKTW2L1TlQ"/>
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']/@conditionnalStyles.2/@style"/>
@@ -1469,8 +1474,8 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']"/>
         </ownedDiagramElements>
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_LhadkPTLEeSN3fw508t7kQ" name="database" outgoingEdges="_LiXf0PTLEeSN3fw508t7kQ" incomingEdges="_LiWRsPTLEeSN3fw508t7kQ" width="5" height="5" resizeKind="NSEW">
-          <target xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.13"/>
-          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.13"/>
+          <target xmi:type="docker:Container" href="first-docker-configuration.docker#//@resources.13"/>
+          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.docker#//@resources.13"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_pyw_APlnEeSkvKTW2L1TlQ" showIcon="false" workspacePath="/org.occiware.clouddesigner.occi.docker.design/images/mcol-closed-box_red.svg">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_pyw_AflnEeSkvKTW2L1TlQ"/>
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']/@conditionnalStyles.2/@style"/>
@@ -1479,8 +1484,8 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']"/>
         </ownedDiagramElements>
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_Lhdg4PTLEeSN3fw508t7kQ" name="webserver" outgoingEdges="_LiYG4PTLEeSN3fw508t7kQ" incomingEdges="_LiVDlPTLEeSN3fw508t7kQ _LiXf0PTLEeSN3fw508t7kQ" width="5" height="5" resizeKind="NSEW">
-          <target xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.14"/>
-          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.14"/>
+          <target xmi:type="docker:Container" href="first-docker-configuration.docker#//@resources.14"/>
+          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.docker#//@resources.14"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_pyyNIPlnEeSkvKTW2L1TlQ" showIcon="false" workspacePath="/org.occiware.clouddesigner.occi.docker.design/images/mcol-closed-box_red.svg">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_pyyNIflnEeSkvKTW2L1TlQ"/>
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']/@conditionnalStyles.2/@style"/>
@@ -1489,8 +1494,8 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']"/>
         </ownedDiagramElements>
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_LhfWEPTLEeSN3fw508t7kQ" name="python" incomingEdges="_LiW4wPTLEeSN3fw508t7kQ" width="5" height="5" resizeKind="NSEW">
-          <target xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.15"/>
-          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.15"/>
+          <target xmi:type="docker:Container" href="first-docker-configuration.docker#//@resources.15"/>
+          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.docker#//@resources.15"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_pyy0MPlnEeSkvKTW2L1TlQ" showIcon="false" workspacePath="/org.occiware.clouddesigner.occi.docker.design/images/mcol-closed-box_red.svg">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_pyy0MflnEeSkvKTW2L1TlQ"/>
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']/@conditionnalStyles.2/@style"/>
@@ -1499,8 +1504,8 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']"/>
         </ownedDiagramElements>
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_LhhLQPTLEeSN3fw508t7kQ" name="redis" incomingEdges="_LiYG4PTLEeSN3fw508t7kQ" width="5" height="5" resizeKind="NSEW">
-          <target xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.16"/>
-          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.16"/>
+          <target xmi:type="docker:Container" href="first-docker-configuration.docker#//@resources.16"/>
+          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.docker#//@resources.16"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_py0CUPlnEeSkvKTW2L1TlQ" showIcon="false" workspacePath="/org.occiware.clouddesigner.occi.docker.design/images/mcol-closed-box_red.svg">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_py0CUflnEeSkvKTW2L1TlQ"/>
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']/@conditionnalStyles.2/@style"/>
@@ -1510,8 +1515,8 @@
         </ownedDiagramElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_LgROEPTLEeSN3fw508t7kQ" name="home-automation">
-        <target xmi:type="docker:Machine_VirtualBox" href="first-docker-configuration.xmi#//@resources.17"/>
-        <semanticElements xmi:type="docker:Machine_VirtualBox" href="first-docker-configuration.xmi#//@resources.17"/>
+        <target xmi:type="docker:Machine_VirtualBox" href="first-docker-configuration.docker#//@resources.17"/>
+        <semanticElements xmi:type="docker:Machine_VirtualBox" href="first-docker-configuration.docker#//@resources.17"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1524,8 +1529,8 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']"/>
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_LhkOkPTLEeSN3fw508t7kQ" name="sqlite" incomingEdges="_8QTKgPT3EeSpH8kD_evW8w" width="5" height="5" resizeKind="NSEW">
-          <target xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.18"/>
-          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.18"/>
+          <target xmi:type="docker:Container" href="first-docker-configuration.docker#//@resources.18"/>
+          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.docker#//@resources.18"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_Eji1sPlvEeSFhbi3SbkAnQ" showIcon="false" workspacePath="/org.occiware.clouddesigner.occi.docker.design/images/mcol-closed-box_red.svg">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_Eji1sflvEeSFhbi3SbkAnQ"/>
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']/@conditionnalStyles.2/@style"/>
@@ -1534,8 +1539,8 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']"/>
         </ownedDiagramElements>
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_LhmDwPTLEeSN3fw508t7kQ" name="REST-API" outgoingEdges="_8QTKgPT3EeSpH8kD_evW8w _8QUYoPT3EeSpH8kD_evW8w" incomingEdges="_8QWN0PT3EeSpH8kD_evW8w" width="5" height="5" resizeKind="NSEW">
-          <target xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.19"/>
-          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.19"/>
+          <target xmi:type="docker:Container" href="first-docker-configuration.docker#//@resources.19"/>
+          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.docker#//@resources.19"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_J7_hEPlvEeSFhbi3SbkAnQ" showIcon="false" workspacePath="/org.occiware.clouddesigner.occi.docker.design/images/mcol-closed-box_red.svg">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J7_hEflvEeSFhbi3SbkAnQ"/>
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']/@conditionnalStyles.2/@style"/>
@@ -1544,8 +1549,8 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']"/>
         </ownedDiagramElements>
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_LhogAPTLEeSN3fw508t7kQ" name="mosquitto" outgoingEdges="_8QVmwPT3EeSpH8kD_evW8w" incomingEdges="_8QUYoPT3EeSpH8kD_evW8w" width="5" height="5" resizeKind="NSEW">
-          <target xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.20"/>
-          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.20"/>
+          <target xmi:type="docker:Container" href="first-docker-configuration.docker#//@resources.20"/>
+          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.docker#//@resources.20"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_PzXkIPlvEeSFhbi3SbkAnQ" showIcon="false" workspacePath="/org.occiware.clouddesigner.occi.docker.design/images/mcol-closed-box_red.svg">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_PzXkIflvEeSFhbi3SbkAnQ"/>
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']/@conditionnalStyles.2/@style"/>
@@ -1554,8 +1559,8 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']"/>
         </ownedDiagramElements>
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_LhqVMPTLEeSN3fw508t7kQ" name="frontend" outgoingEdges="_8QWN0PT3EeSpH8kD_evW8w" width="5" height="5" resizeKind="NSEW">
-          <target xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.21"/>
-          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.21"/>
+          <target xmi:type="docker:Container" href="first-docker-configuration.docker#//@resources.21"/>
+          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.docker#//@resources.21"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_HOaggPlvEeSFhbi3SbkAnQ" showIcon="false" workspacePath="/org.occiware.clouddesigner.occi.docker.design/images/mcol-closed-box_red.svg">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_HOaggflvEeSFhbi3SbkAnQ"/>
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']/@conditionnalStyles.2/@style"/>
@@ -1564,8 +1569,8 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']"/>
         </ownedDiagramElements>
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_LhsKYPTLEeSN3fw508t7kQ" name="monitor" incomingEdges="_8QVmwPT3EeSpH8kD_evW8w" width="5" height="5" resizeKind="NSEW">
-          <target xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.22"/>
-          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.22"/>
+          <target xmi:type="docker:Container" href="first-docker-configuration.docker#//@resources.22"/>
+          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.docker#//@resources.22"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_BgHg8PlvEeSFhbi3SbkAnQ" showIcon="false" workspacePath="/org.occiware.clouddesigner.occi.docker.design/images/mcol-closed-box_red.svg">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_BgHg8flvEeSFhbi3SbkAnQ"/>
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']/@conditionnalStyles.2/@style"/>
@@ -1575,8 +1580,8 @@
         </ownedDiagramElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_LiQyIPTLEeSN3fw508t7kQ" sourceNode="_LhKl8PTLEeSN3fw508t7kQ" targetNode="_LhMbIPTLEeSN3fw508t7kQ">
-        <target xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.5/@links.0"/>
-        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.5/@links.0"/>
+        <target xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.5/@links.0"/>
+        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.5/@links.0"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_LiRZMPTLEeSN3fw508t7kQ" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_LiRZMfTLEeSN3fw508t7kQ" red="39" green="76" blue="114"/>
@@ -1587,8 +1592,8 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_LiSAQPTLEeSN3fw508t7kQ" sourceNode="_LhMbIPTLEeSN3fw508t7kQ" targetNode="_LhQskPTLEeSN3fw508t7kQ">
-        <target xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.6/@links.0"/>
-        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.6/@links.0"/>
+        <target xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.6/@links.0"/>
+        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.6/@links.0"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_LiSAQfTLEeSN3fw508t7kQ" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_LiSAQvTLEeSN3fw508t7kQ" red="39" green="76" blue="114"/>
@@ -1599,8 +1604,8 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_LiSnUPTLEeSN3fw508t7kQ" sourceNode="_LhO3YPTLEeSN3fw508t7kQ" targetNode="_LhTI0PTLEeSN3fw508t7kQ">
-        <target xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.7/@links.0"/>
-        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.7/@links.0"/>
+        <target xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.7/@links.0"/>
+        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.7/@links.0"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_LiTOYPTLEeSN3fw508t7kQ" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_LiTOYfTLEeSN3fw508t7kQ" red="39" green="76" blue="114"/>
@@ -1611,8 +1616,8 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_LiT1cPTLEeSN3fw508t7kQ" sourceNode="_LhO3YPTLEeSN3fw508t7kQ" targetNode="_LhKl8PTLEeSN3fw508t7kQ">
-        <target xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.7/@links.1"/>
-        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.7/@links.1"/>
+        <target xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.7/@links.1"/>
+        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.7/@links.1"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_LiT1cfTLEeSN3fw508t7kQ" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_LiT1cvTLEeSN3fw508t7kQ" red="39" green="76" blue="114"/>
@@ -1623,8 +1628,8 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_LiUcgPTLEeSN3fw508t7kQ" sourceNode="_LhO3YPTLEeSN3fw508t7kQ" targetNode="_LhMbIPTLEeSN3fw508t7kQ">
-        <target xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.7/@links.2"/>
-        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.7/@links.2"/>
+        <target xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.7/@links.2"/>
+        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.7/@links.2"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_LiVDkPTLEeSN3fw508t7kQ" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_LiVDkfTLEeSN3fw508t7kQ" red="39" green="76" blue="114"/>
@@ -1635,8 +1640,8 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_LiVDlPTLEeSN3fw508t7kQ" sourceNode="_LhYoYPTLEeSN3fw508t7kQ" targetNode="_Lhdg4PTLEeSN3fw508t7kQ">
-        <target xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.12/@links.0"/>
-        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.12/@links.0"/>
+        <target xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.12/@links.0"/>
+        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.12/@links.0"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_LiVqoPTLEeSN3fw508t7kQ" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_LiVqofTLEeSN3fw508t7kQ" red="39" green="76" blue="114"/>
@@ -1647,8 +1652,8 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_LiWRsPTLEeSN3fw508t7kQ" sourceNode="_LhYoYPTLEeSN3fw508t7kQ" targetNode="_LhadkPTLEeSN3fw508t7kQ">
-        <target xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.12/@links.1"/>
-        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.12/@links.1"/>
+        <target xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.12/@links.1"/>
+        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.12/@links.1"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_LiWRsfTLEeSN3fw508t7kQ" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_LiWRsvTLEeSN3fw508t7kQ" red="39" green="76" blue="114"/>
@@ -1659,8 +1664,8 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_LiW4wPTLEeSN3fw508t7kQ" sourceNode="_LhYoYPTLEeSN3fw508t7kQ" targetNode="_LhfWEPTLEeSN3fw508t7kQ">
-        <target xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.12/@links.2"/>
-        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.12/@links.2"/>
+        <target xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.12/@links.2"/>
+        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.12/@links.2"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_LiW4wfTLEeSN3fw508t7kQ" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_LiW4wvTLEeSN3fw508t7kQ" red="39" green="76" blue="114"/>
@@ -1671,8 +1676,8 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_LiXf0PTLEeSN3fw508t7kQ" sourceNode="_LhadkPTLEeSN3fw508t7kQ" targetNode="_Lhdg4PTLEeSN3fw508t7kQ">
-        <target xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.13/@links.0"/>
-        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.13/@links.0"/>
+        <target xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.13/@links.0"/>
+        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.13/@links.0"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_LiXf0fTLEeSN3fw508t7kQ" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_LiXf0vTLEeSN3fw508t7kQ" red="39" green="76" blue="114"/>
@@ -1683,8 +1688,8 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_LiYG4PTLEeSN3fw508t7kQ" sourceNode="_Lhdg4PTLEeSN3fw508t7kQ" targetNode="_LhhLQPTLEeSN3fw508t7kQ">
-        <target xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.14/@links.0"/>
-        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.14/@links.0"/>
+        <target xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.14/@links.0"/>
+        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.14/@links.0"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_LiYt8PTLEeSN3fw508t7kQ" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_LiYt8fTLEeSN3fw508t7kQ" red="39" green="76" blue="114"/>
@@ -1695,8 +1700,8 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_8L5LoPT3EeSpH8kD_evW8w" name="Storm-topology">
-        <target xmi:type="docker:Machine_VirtualBox" href="first-docker-configuration.xmi#//@resources.23"/>
-        <semanticElements xmi:type="docker:Machine_VirtualBox" href="first-docker-configuration.xmi#//@resources.23"/>
+        <target xmi:type="docker:Machine_VirtualBox" href="first-docker-configuration.docker#//@resources.23"/>
+        <semanticElements xmi:type="docker:Machine_VirtualBox" href="first-docker-configuration.docker#//@resources.23"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1709,8 +1714,8 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']"/>
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_8MZh8PT3EeSpH8kD_evW8w" name="word-spout-2" outgoingEdges="_8QXb8PT3EeSpH8kD_evW8w _8QYDAPT3EeSpH8kD_evW8w _8QZRIPT3EeSpH8kD_evW8w" width="5" height="5" resizeKind="NSEW">
-          <target xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.24"/>
-          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.24"/>
+          <target xmi:type="docker:Container" href="first-docker-configuration.docker#//@resources.24"/>
+          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.docker#//@resources.24"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_-Uku0PlqEeSkvKTW2L1TlQ" showIcon="false" workspacePath="/org.occiware.clouddesigner.occi.docker.design/images/mcol-closed-box_red.svg">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_-Uku0flqEeSkvKTW2L1TlQ"/>
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']/@conditionnalStyles.2/@style"/>
@@ -1719,8 +1724,8 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']"/>
         </ownedDiagramElements>
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_8NbcsPT3EeSpH8kD_evW8w" name="word-spout-1" outgoingEdges="_8QbGUPT3EeSpH8kD_evW8w _8QcUcPT3EeSpH8kD_evW8w _8Qc7gPT3EeSpH8kD_evW8w" width="5" height="5" resizeKind="NSEW">
-          <target xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.25"/>
-          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.25"/>
+          <target xmi:type="docker:Container" href="first-docker-configuration.docker#//@resources.25"/>
+          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.docker#//@resources.25"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_-UlV4PlqEeSkvKTW2L1TlQ" showIcon="false" workspacePath="/org.occiware.clouddesigner.occi.docker.design/images/mcol-closed-box_red.svg">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_-UlV4flqEeSkvKTW2L1TlQ"/>
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']/@conditionnalStyles.2/@style"/>
@@ -1729,8 +1734,8 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']"/>
         </ownedDiagramElements>
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_8NdR4PT3EeSpH8kD_evW8w" name="count-bolt-3" outgoingEdges="_8QeJoPT3EeSpH8kD_evW8w _8QjCIPT3EeSpH8kD_evW8w" incomingEdges="_8QZRIPT3EeSpH8kD_evW8w _8Qc7gPT3EeSpH8kD_evW8w" width="5" height="5" resizeKind="NSEW">
-          <target xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.26"/>
-          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.26"/>
+          <target xmi:type="docker:Container" href="first-docker-configuration.docker#//@resources.26"/>
+          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.docker#//@resources.26"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_-UmkAPlqEeSkvKTW2L1TlQ" showIcon="false" workspacePath="/org.occiware.clouddesigner.occi.docker.design/images/mcol-closed-box_red.svg">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_-UmkAflqEeSkvKTW2L1TlQ"/>
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']/@conditionnalStyles.2/@style"/>
@@ -1739,8 +1744,8 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']"/>
         </ownedDiagramElements>
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_8NgVMPT3EeSpH8kD_evW8w" name="count-bolt-2" outgoingEdges="_8QjpMPT3EeSpH8kD_evW8w _8Q1WAPT3EeSpH8kD_evW8w" incomingEdges="_8QYDAPT3EeSpH8kD_evW8w _8QcUcPT3EeSpH8kD_evW8w" width="5" height="5" resizeKind="NSEW">
-          <target xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.27"/>
-          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.27"/>
+          <target xmi:type="docker:Container" href="first-docker-configuration.docker#//@resources.27"/>
+          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.docker#//@resources.27"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_-UnLEPlqEeSkvKTW2L1TlQ" showIcon="false" workspacePath="/org.occiware.clouddesigner.occi.docker.design/images/mcol-closed-box_red.svg">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_-UnLEflqEeSkvKTW2L1TlQ"/>
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']/@conditionnalStyles.2/@style"/>
@@ -1749,8 +1754,8 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']"/>
         </ownedDiagramElements>
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_8NixcPT3EeSpH8kD_evW8w" name="count-bolt-1" outgoingEdges="_8Q2kIPT3EeSpH8kD_evW8w _8Q3LMPT3EeSpH8kD_evW8w" incomingEdges="_8QXb8PT3EeSpH8kD_evW8w _8QbGUPT3EeSpH8kD_evW8w" width="5" height="5" resizeKind="NSEW">
-          <target xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.28"/>
-          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.28"/>
+          <target xmi:type="docker:Container" href="first-docker-configuration.docker#//@resources.28"/>
+          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.docker#//@resources.28"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_-UoZMPlqEeSkvKTW2L1TlQ" showIcon="false" workspacePath="/org.occiware.clouddesigner.occi.docker.design/images/mcol-closed-box_red.svg">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_-UoZMflqEeSkvKTW2L1TlQ"/>
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']/@conditionnalStyles.2/@style"/>
@@ -1759,8 +1764,8 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']"/>
         </ownedDiagramElements>
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_8NkmoPT3EeSpH8kD_evW8w" name="rolling-count-bolt-2" outgoingEdges="_8Q4ZUPT3EeSpH8kD_evW8w" incomingEdges="_8QjCIPT3EeSpH8kD_evW8w _8Q1WAPT3EeSpH8kD_evW8w _8Q3LMPT3EeSpH8kD_evW8w" width="5" height="5" resizeKind="NSEW">
-          <target xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.29"/>
-          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.29"/>
+          <target xmi:type="docker:Container" href="first-docker-configuration.docker#//@resources.29"/>
+          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.docker#//@resources.29"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_-UpAQPlqEeSkvKTW2L1TlQ" showIcon="false" workspacePath="/org.occiware.clouddesigner.occi.docker.design/images/mcol-closed-box_red.svg">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_-UpAQflqEeSkvKTW2L1TlQ"/>
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']/@conditionnalStyles.2/@style"/>
@@ -1769,8 +1774,8 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']"/>
         </ownedDiagramElements>
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_8NnC4PT3EeSpH8kD_evW8w" name="rolling-count-bolt-1" outgoingEdges="_8Q5AYPT3EeSpH8kD_evW8w" incomingEdges="_8QeJoPT3EeSpH8kD_evW8w _8QjpMPT3EeSpH8kD_evW8w _8Q2kIPT3EeSpH8kD_evW8w" width="5" height="5" resizeKind="NSEW">
-          <target xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.30"/>
-          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.30"/>
+          <target xmi:type="docker:Container" href="first-docker-configuration.docker#//@resources.30"/>
+          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.docker#//@resources.30"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_-UpnUPlqEeSkvKTW2L1TlQ" showIcon="false" workspacePath="/org.occiware.clouddesigner.occi.docker.design/images/mcol-closed-box_red.svg">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_-UpnUflqEeSkvKTW2L1TlQ"/>
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']/@conditionnalStyles.2/@style"/>
@@ -1779,8 +1784,8 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']"/>
         </ownedDiagramElements>
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_8No4EPT3EeSpH8kD_evW8w" name="ranking-bolt" incomingEdges="_8Q4ZUPT3EeSpH8kD_evW8w _8Q5AYPT3EeSpH8kD_evW8w" width="5" height="5" resizeKind="NSEW">
-          <target xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.31"/>
-          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.xmi#//@resources.31"/>
+          <target xmi:type="docker:Container" href="first-docker-configuration.docker#//@resources.31"/>
+          <semanticElements xmi:type="docker:Container" href="first-docker-configuration.docker#//@resources.31"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_-UqOYPlqEeSkvKTW2L1TlQ" showIcon="false" workspacePath="/org.occiware.clouddesigner.occi.docker.design/images/mcol-closed-box_red.svg">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_-UqOYflqEeSkvKTW2L1TlQ"/>
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']/@conditionnalStyles.2/@style"/>
@@ -1790,8 +1795,8 @@
         </ownedDiagramElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_8QTKgPT3EeSpH8kD_evW8w" sourceNode="_LhmDwPTLEeSN3fw508t7kQ" targetNode="_LhkOkPTLEeSN3fw508t7kQ">
-        <target xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.19/@links.0"/>
-        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.19/@links.0"/>
+        <target xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.19/@links.0"/>
+        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.19/@links.0"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_8QTKgfT3EeSpH8kD_evW8w" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_8QTxkPT3EeSpH8kD_evW8w" red="39" green="76" blue="114"/>
@@ -1802,8 +1807,8 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_8QUYoPT3EeSpH8kD_evW8w" sourceNode="_LhmDwPTLEeSN3fw508t7kQ" targetNode="_LhogAPTLEeSN3fw508t7kQ">
-        <target xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.19/@links.1"/>
-        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.19/@links.1"/>
+        <target xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.19/@links.1"/>
+        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.19/@links.1"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_8QUYofT3EeSpH8kD_evW8w" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_8QUYovT3EeSpH8kD_evW8w" red="39" green="76" blue="114"/>
@@ -1814,8 +1819,8 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_8QVmwPT3EeSpH8kD_evW8w" sourceNode="_LhogAPTLEeSN3fw508t7kQ" targetNode="_LhsKYPTLEeSN3fw508t7kQ">
-        <target xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.20/@links.0"/>
-        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.20/@links.0"/>
+        <target xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.20/@links.0"/>
+        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.20/@links.0"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_8QVmwfT3EeSpH8kD_evW8w" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_8QVmwvT3EeSpH8kD_evW8w" red="39" green="76" blue="114"/>
@@ -1826,8 +1831,8 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_8QWN0PT3EeSpH8kD_evW8w" sourceNode="_LhqVMPTLEeSN3fw508t7kQ" targetNode="_LhmDwPTLEeSN3fw508t7kQ">
-        <target xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.21/@links.0"/>
-        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.21/@links.0"/>
+        <target xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.21/@links.0"/>
+        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.21/@links.0"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_8QW04PT3EeSpH8kD_evW8w" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_8QW04fT3EeSpH8kD_evW8w" red="39" green="76" blue="114"/>
@@ -1838,8 +1843,8 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_8QXb8PT3EeSpH8kD_evW8w" sourceNode="_8MZh8PT3EeSpH8kD_evW8w" targetNode="_8NixcPT3EeSpH8kD_evW8w">
-        <target xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.24/@links.0"/>
-        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.24/@links.0"/>
+        <target xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.24/@links.0"/>
+        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.24/@links.0"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_8QXb8fT3EeSpH8kD_evW8w" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_8QXb8vT3EeSpH8kD_evW8w" red="39" green="76" blue="114"/>
@@ -1850,8 +1855,8 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_8QYDAPT3EeSpH8kD_evW8w" sourceNode="_8MZh8PT3EeSpH8kD_evW8w" targetNode="_8NgVMPT3EeSpH8kD_evW8w">
-        <target xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.24/@links.1"/>
-        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.24/@links.1"/>
+        <target xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.24/@links.1"/>
+        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.24/@links.1"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_8QYqEPT3EeSpH8kD_evW8w" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_8QYqEfT3EeSpH8kD_evW8w" red="39" green="76" blue="114"/>
@@ -1862,8 +1867,8 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_8QZRIPT3EeSpH8kD_evW8w" sourceNode="_8MZh8PT3EeSpH8kD_evW8w" targetNode="_8NdR4PT3EeSpH8kD_evW8w">
-        <target xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.24/@links.2"/>
-        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.24/@links.2"/>
+        <target xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.24/@links.2"/>
+        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.24/@links.2"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_8QZRIfT3EeSpH8kD_evW8w" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_8QZRIvT3EeSpH8kD_evW8w" red="39" green="76" blue="114"/>
@@ -1874,8 +1879,8 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_8QbGUPT3EeSpH8kD_evW8w" sourceNode="_8NbcsPT3EeSpH8kD_evW8w" targetNode="_8NixcPT3EeSpH8kD_evW8w">
-        <target xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.25/@links.0"/>
-        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.25/@links.0"/>
+        <target xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.25/@links.0"/>
+        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.25/@links.0"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_8QbtYPT3EeSpH8kD_evW8w" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_8QbtYfT3EeSpH8kD_evW8w" red="39" green="76" blue="114"/>
@@ -1886,8 +1891,8 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_8QcUcPT3EeSpH8kD_evW8w" sourceNode="_8NbcsPT3EeSpH8kD_evW8w" targetNode="_8NgVMPT3EeSpH8kD_evW8w">
-        <target xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.25/@links.1"/>
-        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.25/@links.1"/>
+        <target xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.25/@links.1"/>
+        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.25/@links.1"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_8QcUcfT3EeSpH8kD_evW8w" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_8QcUcvT3EeSpH8kD_evW8w" red="39" green="76" blue="114"/>
@@ -1898,8 +1903,8 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_8Qc7gPT3EeSpH8kD_evW8w" sourceNode="_8NbcsPT3EeSpH8kD_evW8w" targetNode="_8NdR4PT3EeSpH8kD_evW8w">
-        <target xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.25/@links.2"/>
-        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.25/@links.2"/>
+        <target xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.25/@links.2"/>
+        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.25/@links.2"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_8QdikPT3EeSpH8kD_evW8w" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_8QdikfT3EeSpH8kD_evW8w" red="39" green="76" blue="114"/>
@@ -1910,8 +1915,8 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_8QeJoPT3EeSpH8kD_evW8w" sourceNode="_8NdR4PT3EeSpH8kD_evW8w" targetNode="_8NnC4PT3EeSpH8kD_evW8w">
-        <target xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.26/@links.0"/>
-        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.26/@links.0"/>
+        <target xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.26/@links.0"/>
+        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.26/@links.0"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_8QewsPT3EeSpH8kD_evW8w" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_8QewsfT3EeSpH8kD_evW8w" red="39" green="76" blue="114"/>
@@ -1922,8 +1927,8 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_8QjCIPT3EeSpH8kD_evW8w" sourceNode="_8NdR4PT3EeSpH8kD_evW8w" targetNode="_8NkmoPT3EeSpH8kD_evW8w">
-        <target xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.26/@links.1"/>
-        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.26/@links.1"/>
+        <target xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.26/@links.1"/>
+        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.26/@links.1"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_8QjCIfT3EeSpH8kD_evW8w" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_8QjCIvT3EeSpH8kD_evW8w" red="39" green="76" blue="114"/>
@@ -1934,8 +1939,8 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_8QjpMPT3EeSpH8kD_evW8w" sourceNode="_8NgVMPT3EeSpH8kD_evW8w" targetNode="_8NnC4PT3EeSpH8kD_evW8w">
-        <target xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.27/@links.0"/>
-        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.27/@links.0"/>
+        <target xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.27/@links.0"/>
+        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.27/@links.0"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_8QkQQPT3EeSpH8kD_evW8w" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_8QkQQfT3EeSpH8kD_evW8w" red="39" green="76" blue="114"/>
@@ -1946,8 +1951,8 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_8Q1WAPT3EeSpH8kD_evW8w" sourceNode="_8NgVMPT3EeSpH8kD_evW8w" targetNode="_8NkmoPT3EeSpH8kD_evW8w">
-        <target xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.27/@links.1"/>
-        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.27/@links.1"/>
+        <target xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.27/@links.1"/>
+        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.27/@links.1"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_8Q19EPT3EeSpH8kD_evW8w" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_8Q19EfT3EeSpH8kD_evW8w" red="39" green="76" blue="114"/>
@@ -1958,8 +1963,8 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_8Q2kIPT3EeSpH8kD_evW8w" sourceNode="_8NixcPT3EeSpH8kD_evW8w" targetNode="_8NnC4PT3EeSpH8kD_evW8w">
-        <target xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.28/@links.0"/>
-        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.28/@links.0"/>
+        <target xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.28/@links.0"/>
+        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.28/@links.0"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_8Q2kIfT3EeSpH8kD_evW8w" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_8Q2kIvT3EeSpH8kD_evW8w" red="39" green="76" blue="114"/>
@@ -1970,8 +1975,8 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_8Q3LMPT3EeSpH8kD_evW8w" sourceNode="_8NixcPT3EeSpH8kD_evW8w" targetNode="_8NkmoPT3EeSpH8kD_evW8w">
-        <target xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.28/@links.1"/>
-        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.28/@links.1"/>
+        <target xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.28/@links.1"/>
+        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.28/@links.1"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_8Q3yQPT3EeSpH8kD_evW8w" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_8Q3yQfT3EeSpH8kD_evW8w" red="39" green="76" blue="114"/>
@@ -1982,8 +1987,8 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_8Q4ZUPT3EeSpH8kD_evW8w" sourceNode="_8NkmoPT3EeSpH8kD_evW8w" targetNode="_8No4EPT3EeSpH8kD_evW8w">
-        <target xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.29/@links.0"/>
-        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.29/@links.0"/>
+        <target xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.29/@links.0"/>
+        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.29/@links.0"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_8Q4ZUfT3EeSpH8kD_evW8w" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_8Q4ZUvT3EeSpH8kD_evW8w" red="39" green="76" blue="114"/>
@@ -1994,8 +1999,8 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_8Q5AYPT3EeSpH8kD_evW8w" sourceNode="_8NnC4PT3EeSpH8kD_evW8w" targetNode="_8No4EPT3EeSpH8kD_evW8w">
-        <target xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.30/@links.0"/>
-        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.xmi#//@resources.30/@links.0"/>
+        <target xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.30/@links.0"/>
+        <semanticElements xmi:type="docker:Link" href="first-docker-configuration.docker#//@resources.30/@links.0"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_8Q5AYfT3EeSpH8kD_evW8w" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_8Q5AYvT3EeSpH8kD_evW8w" red="39" green="76" blue="114"/>
@@ -2008,7 +2013,109 @@
       <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']"/>
       <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_yuCOm-qNEeSd3eZOQZdKlw"/>
       <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer"/>
-      <target xmi:type="OCCI:Configuration" href="first-docker-configuration.xmi#/"/>
+      <target xmi:type="occi:Configuration" href="first-docker-configuration.docker#/"/>
+    </ownedRepresentations>
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_dXPdcBscEeWweJ6AX3cIAw" name="new Docker configuration">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_dXVkEBscEeWweJ6AX3cIAw" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_dXVkERscEeWweJ6AX3cIAw" type="Sirius" element="_dXPdcBscEeWweJ6AX3cIAw" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_dXbqsBscEeWweJ6AX3cIAw" type="2002" element="_dXPdcRscEeWweJ6AX3cIAw">
+            <children xmi:type="notation:Node" xmi:id="_dXhxUBscEeWweJ6AX3cIAw" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_dXhxURscEeWweJ6AX3cIAw" type="7001">
+              <children xmi:type="notation:Node" xmi:id="_dXhxVBscEeWweJ6AX3cIAw" type="3007" element="_dXPddxscEeWweJ6AX3cIAw">
+                <children xmi:type="notation:Node" xmi:id="_dXhxVxscEeWweJ6AX3cIAw" type="5003">
+                  <layoutConstraint xmi:type="notation:Location" xmi:id="_dXhxWBscEeWweJ6AX3cIAw" y="-21"/>
+                </children>
+                <children xmi:type="notation:Node" xmi:id="_dYMftRscEeWweJ6AX3cIAw" type="3005" element="_dXPdeBscEeWweJ6AX3cIAw">
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_dYMfthscEeWweJ6AX3cIAw" fontName="Segoe UI"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dYMftxscEeWweJ6AX3cIAw"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_dXhxVRscEeWweJ6AX3cIAw" fontName="Segoe UI" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dXhxVhscEeWweJ6AX3cIAw" x="30" y="109" width="50" height="50"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_dYMfsBscEeWweJ6AX3cIAw" type="3007" element="_dXPdexscEeWweJ6AX3cIAw">
+                <children xmi:type="notation:Node" xmi:id="_dYMfsxscEeWweJ6AX3cIAw" type="5003">
+                  <layoutConstraint xmi:type="notation:Location" xmi:id="_dYMftBscEeWweJ6AX3cIAw" y="-21"/>
+                </children>
+                <children xmi:type="notation:Node" xmi:id="_dYSmUBscEeWweJ6AX3cIAw" type="3005" element="_dXPdfBscEeWweJ6AX3cIAw">
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_dYSmURscEeWweJ6AX3cIAw" fontName="Segoe UI"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dYSmUhscEeWweJ6AX3cIAw"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_dYMfsRscEeWweJ6AX3cIAw" fontName="Segoe UI" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dYMfshscEeWweJ6AX3cIAw" x="30" y="29" width="50" height="50"/>
+              </children>
+              <styles xmi:type="notation:SortingStyle" xmi:id="_dXhxUhscEeWweJ6AX3cIAw"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_dXhxUxscEeWweJ6AX3cIAw"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_dXbqsRscEeWweJ6AX3cIAw" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dXbqshscEeWweJ6AX3cIAw"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_dXVkEhscEeWweJ6AX3cIAw"/>
+          <edges xmi:type="notation:Edge" xmi:id="_dYYs8BscEeWweJ6AX3cIAw" type="4001" element="_dXPdfxscEeWweJ6AX3cIAw" source="_dXhxVBscEeWweJ6AX3cIAw" target="_dYMfsBscEeWweJ6AX3cIAw">
+            <children xmi:type="notation:Node" xmi:id="_dYYs9BscEeWweJ6AX3cIAw" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dYYs9RscEeWweJ6AX3cIAw" y="-10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_dYYs9hscEeWweJ6AX3cIAw" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dYYs9xscEeWweJ6AX3cIAw" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_dYYs-BscEeWweJ6AX3cIAw" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dYYs-RscEeWweJ6AX3cIAw" y="10"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_dYYs8RscEeWweJ6AX3cIAw"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_dYYs8hscEeWweJ6AX3cIAw" fontName="Segoe UI" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_dYYs8xscEeWweJ6AX3cIAw" points="[0, 0, 0, 60]$[0, -60, 0, 0]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_dYezkBscEeWweJ6AX3cIAw" id="(0.5,0.0)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_dYezkRscEeWweJ6AX3cIAw" id="(0.5,1.0)"/>
+          </edges>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_dXPdcRscEeWweJ6AX3cIAw" name="demo">
+        <target xmi:type="docker:Machine_VirtualBox" href="demo.docker#//@resources.0"/>
+        <semanticElements xmi:type="docker:Machine_VirtualBox" href="demo.docker#//@resources.0"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_dXPdchscEeWweJ6AX3cIAw" borderSize="1" borderSizeComputationExpression="1">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_dXPdcxscEeWweJ6AX3cIAw"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@conditionnalStyles.2/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_dXPddBscEeWweJ6AX3cIAw"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_dXPddRscEeWweJ6AX3cIAw" red="255" green="255" blue="255"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_dXPddhscEeWweJ6AX3cIAw" red="246" green="139" blue="139"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']"/>
+        <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_dXPddxscEeWweJ6AX3cIAw" name="web" outgoingEdges="_dXPdfxscEeWweJ6AX3cIAw" width="5" height="5" resizeKind="NSEW">
+          <target xmi:type="docker:Container" href="demo.docker#//@resources.1"/>
+          <semanticElements xmi:type="docker:Container" href="demo.docker#//@resources.1"/>
+          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_dXPdeBscEeWweJ6AX3cIAw" showIcon="false" workspacePath="/org.occiware.clouddesigner.occi.docker.design/images/mcol-closed-box_red.svg">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_dXPdeRscEeWweJ6AX3cIAw"/>
+            <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']/@conditionnalStyles.2/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_dXPdehscEeWweJ6AX3cIAw"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']"/>
+        </ownedDiagramElements>
+        <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_dXPdexscEeWweJ6AX3cIAw" name="db" incomingEdges="_dXPdfxscEeWweJ6AX3cIAw" width="5" height="5" resizeKind="NSEW">
+          <target xmi:type="docker:Container" href="demo.docker#//@resources.2"/>
+          <semanticElements xmi:type="docker:Container" href="demo.docker#//@resources.2"/>
+          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_dXPdfBscEeWweJ6AX3cIAw" showIcon="false" workspacePath="/org.occiware.clouddesigner.occi.docker.design/images/mcol-closed-box_red.svg">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_dXPdfRscEeWweJ6AX3cIAw"/>
+            <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']/@conditionnalStyles.2/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_dXPdfhscEeWweJ6AX3cIAw"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']"/>
+        </ownedDiagramElements>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_dXPdfxscEeWweJ6AX3cIAw" name="db" sourceNode="_dXPddxscEeWweJ6AX3cIAw" targetNode="_dXPdexscEeWweJ6AX3cIAw">
+        <target xmi:type="docker:Link" href="demo.docker#//@resources.1/@links.0"/>
+        <semanticElements xmi:type="docker:Link" href="demo.docker#//@resources.1/@links.0"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_dXPdgBscEeWweJ6AX3cIAw" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']/@style"/>
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_dXPdgRscEeWweJ6AX3cIAw" red="39" green="76" blue="114"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_dXPdghscEeWweJ6AX3cIAw" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_dXPdgxscEeWweJ6AX3cIAw"/>
+          </centerLabelStyle>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_dXPdhBscEeWweJ6AX3cIAw"/>
+      <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer"/>
+      <target xmi:type="occi:Configuration" href="demo.docker#/"/>
     </ownedRepresentations>
     <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']"/>
   </ownedViews>

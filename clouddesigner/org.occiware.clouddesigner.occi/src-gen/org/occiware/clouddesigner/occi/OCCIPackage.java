@@ -115,13 +115,40 @@ public interface OCCIPackage extends EPackage {
 	int CATEGORY_FEATURE_COUNT = 4;
 
 	/**
+	 * The operation id for the '<em>Attributes Name Unique</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CATEGORY___ATTRIBUTES_NAME_UNIQUE__DIAGNOSTICCHAIN_MAP = 0;
+
+	/**
+	 * The operation id for the '<em>Identity Unique</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CATEGORY___IDENTITY_UNIQUE__DIAGNOSTICCHAIN_MAP = 1;
+
+	/**
+	 * The operation id for the '<em>Scheme Ends With Sharp</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CATEGORY___SCHEME_ENDS_WITH_SHARP__DIAGNOSTICCHAIN_MAP = 2;
+
+	/**
 	 * The number of operations of the '<em>Category</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CATEGORY_OPERATION_COUNT = 0;
+	int CATEGORY_OPERATION_COUNT = 3;
 
 	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.impl.AttributeImpl <em>Attribute</em>}' class.
@@ -297,13 +324,85 @@ public interface OCCIPackage extends EPackage {
 	int KIND_FEATURE_COUNT = CATEGORY_FEATURE_COUNT + 3;
 
 	/**
+	 * The operation id for the '<em>Attributes Name Unique</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int KIND___ATTRIBUTES_NAME_UNIQUE__DIAGNOSTICCHAIN_MAP = CATEGORY___ATTRIBUTES_NAME_UNIQUE__DIAGNOSTICCHAIN_MAP;
+
+	/**
+	 * The operation id for the '<em>Identity Unique</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int KIND___IDENTITY_UNIQUE__DIAGNOSTICCHAIN_MAP = CATEGORY___IDENTITY_UNIQUE__DIAGNOSTICCHAIN_MAP;
+
+	/**
+	 * The operation id for the '<em>Scheme Ends With Sharp</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int KIND___SCHEME_ENDS_WITH_SHARP__DIAGNOSTICCHAIN_MAP = CATEGORY___SCHEME_ENDS_WITH_SHARP__DIAGNOSTICCHAIN_MAP;
+
+	/**
+	 * The operation id for the '<em>Correct Scheme</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int KIND___CORRECT_SCHEME__DIAGNOSTICCHAIN_MAP = CATEGORY_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>No Cyclic Inheritance</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int KIND___NO_CYCLIC_INHERITANCE__DIAGNOSTICCHAIN_MAP = CATEGORY_OPERATION_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Attributes Name Not Already Defined In Parent</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int KIND___ATTRIBUTES_NAME_NOT_ALREADY_DEFINED_IN_PARENT__DIAGNOSTICCHAIN_MAP = CATEGORY_OPERATION_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Action Term Unicity</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int KIND___ACTION_TERM_UNICITY__DIAGNOSTICCHAIN_MAP = CATEGORY_OPERATION_COUNT + 3;
+
+	/**
+	 * The operation id for the '<em>Entity Kind Is Root Parent</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int KIND___ENTITY_KIND_IS_ROOT_PARENT__DIAGNOSTICCHAIN_MAP = CATEGORY_OPERATION_COUNT + 4;
+
+	/**
 	 * The number of operations of the '<em>Kind</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int KIND_OPERATION_COUNT = CATEGORY_OPERATION_COUNT + 0;
+	int KIND_OPERATION_COUNT = CATEGORY_OPERATION_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.impl.ActionImpl <em>Action</em>}' class.
@@ -361,13 +460,49 @@ public interface OCCIPackage extends EPackage {
 	int ACTION_FEATURE_COUNT = CATEGORY_FEATURE_COUNT + 0;
 
 	/**
+	 * The operation id for the '<em>Attributes Name Unique</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION___ATTRIBUTES_NAME_UNIQUE__DIAGNOSTICCHAIN_MAP = CATEGORY___ATTRIBUTES_NAME_UNIQUE__DIAGNOSTICCHAIN_MAP;
+
+	/**
+	 * The operation id for the '<em>Identity Unique</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION___IDENTITY_UNIQUE__DIAGNOSTICCHAIN_MAP = CATEGORY___IDENTITY_UNIQUE__DIAGNOSTICCHAIN_MAP;
+
+	/**
+	 * The operation id for the '<em>Scheme Ends With Sharp</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION___SCHEME_ENDS_WITH_SHARP__DIAGNOSTICCHAIN_MAP = CATEGORY___SCHEME_ENDS_WITH_SHARP__DIAGNOSTICCHAIN_MAP;
+
+	/**
+	 * The operation id for the '<em>Correct Scheme</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION___CORRECT_SCHEME__DIAGNOSTICCHAIN_MAP = CATEGORY_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>Action</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ACTION_OPERATION_COUNT = CATEGORY_OPERATION_COUNT + 0;
+	int ACTION_OPERATION_COUNT = CATEGORY_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.impl.MixinImpl <em>Mixin</em>}' class.
@@ -461,13 +596,76 @@ public interface OCCIPackage extends EPackage {
 	int MIXIN_FEATURE_COUNT = CATEGORY_FEATURE_COUNT + 4;
 
 	/**
+	 * The operation id for the '<em>Attributes Name Unique</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MIXIN___ATTRIBUTES_NAME_UNIQUE__DIAGNOSTICCHAIN_MAP = CATEGORY___ATTRIBUTES_NAME_UNIQUE__DIAGNOSTICCHAIN_MAP;
+
+	/**
+	 * The operation id for the '<em>Identity Unique</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MIXIN___IDENTITY_UNIQUE__DIAGNOSTICCHAIN_MAP = CATEGORY___IDENTITY_UNIQUE__DIAGNOSTICCHAIN_MAP;
+
+	/**
+	 * The operation id for the '<em>Scheme Ends With Sharp</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MIXIN___SCHEME_ENDS_WITH_SHARP__DIAGNOSTICCHAIN_MAP = CATEGORY___SCHEME_ENDS_WITH_SHARP__DIAGNOSTICCHAIN_MAP;
+
+	/**
+	 * The operation id for the '<em>Action Term Unicity</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MIXIN___ACTION_TERM_UNICITY__DIAGNOSTICCHAIN_MAP = CATEGORY_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>No Cyclic Inheritance</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MIXIN___NO_CYCLIC_INHERITANCE__DIAGNOSTICCHAIN_MAP = CATEGORY_OPERATION_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Correct Scheme</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MIXIN___CORRECT_SCHEME__DIAGNOSTICCHAIN_MAP = CATEGORY_OPERATION_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Attributes Name Not Already Defined In Depends</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MIXIN___ATTRIBUTES_NAME_NOT_ALREADY_DEFINED_IN_DEPENDS__DIAGNOSTICCHAIN_MAP = CATEGORY_OPERATION_COUNT + 3;
+
+	/**
 	 * The number of operations of the '<em>Mixin</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MIXIN_OPERATION_COUNT = CATEGORY_OPERATION_COUNT + 0;
+	int MIXIN_OPERATION_COUNT = CATEGORY_OPERATION_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.impl.EntityImpl <em>Entity</em>}' class.
@@ -525,22 +723,31 @@ public interface OCCIPackage extends EPackage {
 	int ENTITY_FEATURE_COUNT = 4;
 
 	/**
-	 * The operation id for the '<em>Id Unique</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENTITY___ID_UNIQUE__DIAGNOSTICCHAIN_MAP = 0;
-
-	/**
 	 * The operation id for the '<em>Attributes Name Unique</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENTITY___ATTRIBUTES_NAME_UNIQUE__DIAGNOSTICCHAIN_MAP = 1;
+	int ENTITY___ATTRIBUTES_NAME_UNIQUE__DIAGNOSTICCHAIN_MAP = 0;
+
+	/**
+	 * The operation id for the '<em>Kind Compatible With One Applies Of Each Mixin</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY___KIND_COMPATIBLE_WITH_ONE_APPLIES_OF_EACH_MIXIN__DIAGNOSTICCHAIN_MAP = 1;
+
+	/**
+	 * The operation id for the '<em>Id Unique</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY___ID_UNIQUE__DIAGNOSTICCHAIN_MAP = 2;
 
 	/**
 	 * The number of operations of the '<em>Entity</em>' class.
@@ -549,7 +756,7 @@ public interface OCCIPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENTITY_OPERATION_COUNT = 2;
+	int ENTITY_OPERATION_COUNT = 3;
 
 	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.impl.AttributeStateImpl <em>Attribute State</em>}' class.
@@ -662,15 +869,6 @@ public interface OCCIPackage extends EPackage {
 	int RESOURCE_FEATURE_COUNT = ENTITY_FEATURE_COUNT + 1;
 
 	/**
-	 * The operation id for the '<em>Id Unique</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESOURCE___ID_UNIQUE__DIAGNOSTICCHAIN_MAP = ENTITY___ID_UNIQUE__DIAGNOSTICCHAIN_MAP;
-
-	/**
 	 * The operation id for the '<em>Attributes Name Unique</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -680,13 +878,40 @@ public interface OCCIPackage extends EPackage {
 	int RESOURCE___ATTRIBUTES_NAME_UNIQUE__DIAGNOSTICCHAIN_MAP = ENTITY___ATTRIBUTES_NAME_UNIQUE__DIAGNOSTICCHAIN_MAP;
 
 	/**
+	 * The operation id for the '<em>Kind Compatible With One Applies Of Each Mixin</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE___KIND_COMPATIBLE_WITH_ONE_APPLIES_OF_EACH_MIXIN__DIAGNOSTICCHAIN_MAP = ENTITY___KIND_COMPATIBLE_WITH_ONE_APPLIES_OF_EACH_MIXIN__DIAGNOSTICCHAIN_MAP;
+
+	/**
+	 * The operation id for the '<em>Id Unique</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE___ID_UNIQUE__DIAGNOSTICCHAIN_MAP = ENTITY___ID_UNIQUE__DIAGNOSTICCHAIN_MAP;
+
+	/**
+	 * The operation id for the '<em>Resource Kind Is In Parent</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE___RESOURCE_KIND_IS_IN_PARENT__DIAGNOSTICCHAIN_MAP = ENTITY_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>Resource</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_OPERATION_COUNT = ENTITY_OPERATION_COUNT + 0;
+	int RESOURCE_OPERATION_COUNT = ENTITY_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.impl.LinkImpl <em>Link</em>}' class.
@@ -762,15 +987,6 @@ public interface OCCIPackage extends EPackage {
 	int LINK_FEATURE_COUNT = ENTITY_FEATURE_COUNT + 2;
 
 	/**
-	 * The operation id for the '<em>Id Unique</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LINK___ID_UNIQUE__DIAGNOSTICCHAIN_MAP = ENTITY___ID_UNIQUE__DIAGNOSTICCHAIN_MAP;
-
-	/**
 	 * The operation id for the '<em>Attributes Name Unique</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -780,13 +996,40 @@ public interface OCCIPackage extends EPackage {
 	int LINK___ATTRIBUTES_NAME_UNIQUE__DIAGNOSTICCHAIN_MAP = ENTITY___ATTRIBUTES_NAME_UNIQUE__DIAGNOSTICCHAIN_MAP;
 
 	/**
+	 * The operation id for the '<em>Kind Compatible With One Applies Of Each Mixin</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINK___KIND_COMPATIBLE_WITH_ONE_APPLIES_OF_EACH_MIXIN__DIAGNOSTICCHAIN_MAP = ENTITY___KIND_COMPATIBLE_WITH_ONE_APPLIES_OF_EACH_MIXIN__DIAGNOSTICCHAIN_MAP;
+
+	/**
+	 * The operation id for the '<em>Id Unique</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINK___ID_UNIQUE__DIAGNOSTICCHAIN_MAP = ENTITY___ID_UNIQUE__DIAGNOSTICCHAIN_MAP;
+
+	/**
+	 * The operation id for the '<em>Link Kind Is In Parent</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINK___LINK_KIND_IS_IN_PARENT__DIAGNOSTICCHAIN_MAP = ENTITY_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>Link</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LINK_OPERATION_COUNT = ENTITY_OPERATION_COUNT + 0;
+	int LINK_OPERATION_COUNT = ENTITY_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.impl.ExtensionImpl <em>Extension</em>}' class.
@@ -862,13 +1105,76 @@ public interface OCCIPackage extends EPackage {
 	int EXTENSION_FEATURE_COUNT = 6;
 
 	/**
+	 * The operation id for the '<em>Kinds Scheme Valid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION___KINDS_SCHEME_VALID__DIAGNOSTICCHAIN_MAP = 0;
+
+	/**
+	 * The operation id for the '<em>Kind Parent Local Or Imported</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION___KIND_PARENT_LOCAL_OR_IMPORTED__DIAGNOSTICCHAIN_MAP = 1;
+
+	/**
+	 * The operation id for the '<em>Mixins Scheme Valid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION___MIXINS_SCHEME_VALID__DIAGNOSTICCHAIN_MAP = 2;
+
+	/**
+	 * The operation id for the '<em>Term Unicity</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION___TERM_UNICITY__DIAGNOSTICCHAIN_MAP = 3;
+
+	/**
+	 * The operation id for the '<em>Mixin Applies Local Or Imported</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION___MIXIN_APPLIES_LOCAL_OR_IMPORTED__DIAGNOSTICCHAIN_MAP = 4;
+
+	/**
+	 * The operation id for the '<em>Scheme Unique</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION___SCHEME_UNIQUE__DIAGNOSTICCHAIN_MAP = 5;
+
+	/**
+	 * The operation id for the '<em>Mixin Depends Local Or Imported</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION___MIXIN_DEPENDS_LOCAL_OR_IMPORTED__DIAGNOSTICCHAIN_MAP = 6;
+
+	/**
 	 * The number of operations of the '<em>Extension</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXTENSION_OPERATION_COUNT = 0;
+	int EXTENSION_OPERATION_COUNT = 7;
 
 	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.impl.ConfigurationImpl <em>Configuration</em>}' class.
@@ -908,13 +1214,49 @@ public interface OCCIPackage extends EPackage {
 	int CONFIGURATION_FEATURE_COUNT = 2;
 
 	/**
+	 * The operation id for the '<em>All Resources Links Kinds In Use</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONFIGURATION___ALL_RESOURCES_LINKS_KINDS_IN_USE__DIAGNOSTICCHAIN_MAP = 0;
+
+	/**
 	 * The operation id for the '<em>All Resources Links Targets In Configuration</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONFIGURATION___ALL_RESOURCES_LINKS_TARGETS_IN_CONFIGURATION__DIAGNOSTICCHAIN_MAP = 0;
+	int CONFIGURATION___ALL_RESOURCES_LINKS_TARGETS_IN_CONFIGURATION__DIAGNOSTICCHAIN_MAP = 1;
+
+	/**
+	 * The operation id for the '<em>All Resources Kinds In Use</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONFIGURATION___ALL_RESOURCES_KINDS_IN_USE__DIAGNOSTICCHAIN_MAP = 2;
+
+	/**
+	 * The operation id for the '<em>All Resources Mixins In Use</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONFIGURATION___ALL_RESOURCES_MIXINS_IN_USE__DIAGNOSTICCHAIN_MAP = 3;
+
+	/**
+	 * The operation id for the '<em>All Resources Links Mixins In Use</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONFIGURATION___ALL_RESOURCES_LINKS_MIXINS_IN_USE__DIAGNOSTICCHAIN_MAP = 4;
 
 	/**
 	 * The number of operations of the '<em>Configuration</em>' class.
@@ -923,7 +1265,7 @@ public interface OCCIPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONFIGURATION_OPERATION_COUNT = 1;
+	int CONFIGURATION_OPERATION_COUNT = 5;
 
 	/**
 	 * The meta object id for the '<em>URI</em>' data type.
@@ -1017,6 +1359,36 @@ public interface OCCIPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getCategory_Attributes();
+
+	/**
+	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.Category#AttributesNameUnique(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Attributes Name Unique</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Attributes Name Unique</em>' operation.
+	 * @see org.occiware.clouddesigner.occi.Category#AttributesNameUnique(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getCategory__AttributesNameUnique__DiagnosticChain_Map();
+
+	/**
+	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.Category#IdentityUnique(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Identity Unique</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Identity Unique</em>' operation.
+	 * @see org.occiware.clouddesigner.occi.Category#IdentityUnique(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getCategory__IdentityUnique__DiagnosticChain_Map();
+
+	/**
+	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.Category#SchemeEndsWithSharp(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Scheme Ends With Sharp</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Scheme Ends With Sharp</em>' operation.
+	 * @see org.occiware.clouddesigner.occi.Category#SchemeEndsWithSharp(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getCategory__SchemeEndsWithSharp__DiagnosticChain_Map();
 
 	/**
 	 * Returns the meta object for class '{@link org.occiware.clouddesigner.occi.Attribute <em>Attribute</em>}'.
@@ -1149,6 +1521,56 @@ public interface OCCIPackage extends EPackage {
 	EReference getKind_Entities();
 
 	/**
+	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.Kind#CorrectScheme(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Correct Scheme</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Correct Scheme</em>' operation.
+	 * @see org.occiware.clouddesigner.occi.Kind#CorrectScheme(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getKind__CorrectScheme__DiagnosticChain_Map();
+
+	/**
+	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.Kind#NoCyclicInheritance(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>No Cyclic Inheritance</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>No Cyclic Inheritance</em>' operation.
+	 * @see org.occiware.clouddesigner.occi.Kind#NoCyclicInheritance(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getKind__NoCyclicInheritance__DiagnosticChain_Map();
+
+	/**
+	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.Kind#AttributesNameNotAlreadyDefinedInParent(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Attributes Name Not Already Defined In Parent</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Attributes Name Not Already Defined In Parent</em>' operation.
+	 * @see org.occiware.clouddesigner.occi.Kind#AttributesNameNotAlreadyDefinedInParent(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getKind__AttributesNameNotAlreadyDefinedInParent__DiagnosticChain_Map();
+
+	/**
+	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.Kind#ActionTermUnicity(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Action Term Unicity</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Action Term Unicity</em>' operation.
+	 * @see org.occiware.clouddesigner.occi.Kind#ActionTermUnicity(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getKind__ActionTermUnicity__DiagnosticChain_Map();
+
+	/**
+	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.Kind#EntityKindIsRootParent(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Entity Kind Is Root Parent</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Entity Kind Is Root Parent</em>' operation.
+	 * @see org.occiware.clouddesigner.occi.Kind#EntityKindIsRootParent(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getKind__EntityKindIsRootParent__DiagnosticChain_Map();
+
+	/**
 	 * Returns the meta object for class '{@link org.occiware.clouddesigner.occi.Action <em>Action</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1157,6 +1579,16 @@ public interface OCCIPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getAction();
+
+	/**
+	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.Action#CorrectScheme(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Correct Scheme</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Correct Scheme</em>' operation.
+	 * @see org.occiware.clouddesigner.occi.Action#CorrectScheme(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getAction__CorrectScheme__DiagnosticChain_Map();
 
 	/**
 	 * Returns the meta object for class '{@link org.occiware.clouddesigner.occi.Mixin <em>Mixin</em>}'.
@@ -1211,6 +1643,46 @@ public interface OCCIPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getMixin_Entities();
+
+	/**
+	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.Mixin#ActionTermUnicity(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Action Term Unicity</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Action Term Unicity</em>' operation.
+	 * @see org.occiware.clouddesigner.occi.Mixin#ActionTermUnicity(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getMixin__ActionTermUnicity__DiagnosticChain_Map();
+
+	/**
+	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.Mixin#NoCyclicInheritance(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>No Cyclic Inheritance</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>No Cyclic Inheritance</em>' operation.
+	 * @see org.occiware.clouddesigner.occi.Mixin#NoCyclicInheritance(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getMixin__NoCyclicInheritance__DiagnosticChain_Map();
+
+	/**
+	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.Mixin#CorrectScheme(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Correct Scheme</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Correct Scheme</em>' operation.
+	 * @see org.occiware.clouddesigner.occi.Mixin#CorrectScheme(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getMixin__CorrectScheme__DiagnosticChain_Map();
+
+	/**
+	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.Mixin#AttributesNameNotAlreadyDefinedInDepends(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Attributes Name Not Already Defined In Depends</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Attributes Name Not Already Defined In Depends</em>' operation.
+	 * @see org.occiware.clouddesigner.occi.Mixin#AttributesNameNotAlreadyDefinedInDepends(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getMixin__AttributesNameNotAlreadyDefinedInDepends__DiagnosticChain_Map();
 
 	/**
 	 * Returns the meta object for class '{@link org.occiware.clouddesigner.occi.Entity <em>Entity</em>}'.
@@ -1277,6 +1749,16 @@ public interface OCCIPackage extends EPackage {
 	EOperation getEntity__AttributesNameUnique__DiagnosticChain_Map();
 
 	/**
+	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.Entity#KindCompatibleWithOneAppliesOfEachMixin(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Kind Compatible With One Applies Of Each Mixin</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Kind Compatible With One Applies Of Each Mixin</em>' operation.
+	 * @see org.occiware.clouddesigner.occi.Entity#KindCompatibleWithOneAppliesOfEachMixin(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getEntity__KindCompatibleWithOneAppliesOfEachMixin__DiagnosticChain_Map();
+
+	/**
 	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.Entity#IdUnique(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Id Unique</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1340,6 +1822,16 @@ public interface OCCIPackage extends EPackage {
 	EReference getResource_Links();
 
 	/**
+	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.Resource#ResourceKindIsInParent(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Resource Kind Is In Parent</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Resource Kind Is In Parent</em>' operation.
+	 * @see org.occiware.clouddesigner.occi.Resource#ResourceKindIsInParent(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getResource__ResourceKindIsInParent__DiagnosticChain_Map();
+
+	/**
 	 * Returns the meta object for class '{@link org.occiware.clouddesigner.occi.Link <em>Link</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1370,6 +1862,16 @@ public interface OCCIPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getLink_Target();
+
+	/**
+	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.Link#LinkKindIsInParent(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Link Kind Is In Parent</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Link Kind Is In Parent</em>' operation.
+	 * @see org.occiware.clouddesigner.occi.Link#LinkKindIsInParent(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getLink__LinkKindIsInParent__DiagnosticChain_Map();
 
 	/**
 	 * Returns the meta object for class '{@link org.occiware.clouddesigner.occi.Extension <em>Extension</em>}'.
@@ -1448,6 +1950,76 @@ public interface OCCIPackage extends EPackage {
 	EReference getExtension_Types();
 
 	/**
+	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.Extension#KindsSchemeValid(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Kinds Scheme Valid</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Kinds Scheme Valid</em>' operation.
+	 * @see org.occiware.clouddesigner.occi.Extension#KindsSchemeValid(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getExtension__KindsSchemeValid__DiagnosticChain_Map();
+
+	/**
+	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.Extension#KindParentLocalOrImported(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Kind Parent Local Or Imported</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Kind Parent Local Or Imported</em>' operation.
+	 * @see org.occiware.clouddesigner.occi.Extension#KindParentLocalOrImported(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getExtension__KindParentLocalOrImported__DiagnosticChain_Map();
+
+	/**
+	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.Extension#MixinsSchemeValid(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Mixins Scheme Valid</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Mixins Scheme Valid</em>' operation.
+	 * @see org.occiware.clouddesigner.occi.Extension#MixinsSchemeValid(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getExtension__MixinsSchemeValid__DiagnosticChain_Map();
+
+	/**
+	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.Extension#TermUnicity(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Term Unicity</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Term Unicity</em>' operation.
+	 * @see org.occiware.clouddesigner.occi.Extension#TermUnicity(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getExtension__TermUnicity__DiagnosticChain_Map();
+
+	/**
+	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.Extension#MixinAppliesLocalOrImported(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Mixin Applies Local Or Imported</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Mixin Applies Local Or Imported</em>' operation.
+	 * @see org.occiware.clouddesigner.occi.Extension#MixinAppliesLocalOrImported(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getExtension__MixinAppliesLocalOrImported__DiagnosticChain_Map();
+
+	/**
+	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.Extension#SchemeUnique(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Scheme Unique</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Scheme Unique</em>' operation.
+	 * @see org.occiware.clouddesigner.occi.Extension#SchemeUnique(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getExtension__SchemeUnique__DiagnosticChain_Map();
+
+	/**
+	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.Extension#MixinDependsLocalOrImported(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Mixin Depends Local Or Imported</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Mixin Depends Local Or Imported</em>' operation.
+	 * @see org.occiware.clouddesigner.occi.Extension#MixinDependsLocalOrImported(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getExtension__MixinDependsLocalOrImported__DiagnosticChain_Map();
+
+	/**
 	 * Returns the meta object for class '{@link org.occiware.clouddesigner.occi.Configuration <em>Configuration</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1480,6 +2052,16 @@ public interface OCCIPackage extends EPackage {
 	EReference getConfiguration_Resources();
 
 	/**
+	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.Configuration#AllResourcesLinksKindsInUse(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>All Resources Links Kinds In Use</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>All Resources Links Kinds In Use</em>' operation.
+	 * @see org.occiware.clouddesigner.occi.Configuration#AllResourcesLinksKindsInUse(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getConfiguration__AllResourcesLinksKindsInUse__DiagnosticChain_Map();
+
+	/**
 	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.Configuration#AllResourcesLinksTargetsInConfiguration(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>All Resources Links Targets In Configuration</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1488,6 +2070,36 @@ public interface OCCIPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getConfiguration__AllResourcesLinksTargetsInConfiguration__DiagnosticChain_Map();
+
+	/**
+	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.Configuration#AllResourcesKindsInUse(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>All Resources Kinds In Use</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>All Resources Kinds In Use</em>' operation.
+	 * @see org.occiware.clouddesigner.occi.Configuration#AllResourcesKindsInUse(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getConfiguration__AllResourcesKindsInUse__DiagnosticChain_Map();
+
+	/**
+	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.Configuration#AllResourcesMixinsInUse(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>All Resources Mixins In Use</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>All Resources Mixins In Use</em>' operation.
+	 * @see org.occiware.clouddesigner.occi.Configuration#AllResourcesMixinsInUse(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getConfiguration__AllResourcesMixinsInUse__DiagnosticChain_Map();
+
+	/**
+	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.Configuration#AllResourcesLinksMixinsInUse(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>All Resources Links Mixins In Use</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>All Resources Links Mixins In Use</em>' operation.
+	 * @see org.occiware.clouddesigner.occi.Configuration#AllResourcesLinksMixinsInUse(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getConfiguration__AllResourcesLinksMixinsInUse__DiagnosticChain_Map();
 
 	/**
 	 * Returns the meta object for data type '{@link java.lang.String <em>URI</em>}'.
@@ -1597,6 +2209,30 @@ public interface OCCIPackage extends EPackage {
 		EReference CATEGORY__ATTRIBUTES = eINSTANCE.getCategory_Attributes();
 
 		/**
+		 * The meta object literal for the '<em><b>Attributes Name Unique</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation CATEGORY___ATTRIBUTES_NAME_UNIQUE__DIAGNOSTICCHAIN_MAP = eINSTANCE.getCategory__AttributesNameUnique__DiagnosticChain_Map();
+
+		/**
+		 * The meta object literal for the '<em><b>Identity Unique</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation CATEGORY___IDENTITY_UNIQUE__DIAGNOSTICCHAIN_MAP = eINSTANCE.getCategory__IdentityUnique__DiagnosticChain_Map();
+
+		/**
+		 * The meta object literal for the '<em><b>Scheme Ends With Sharp</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation CATEGORY___SCHEME_ENDS_WITH_SHARP__DIAGNOSTICCHAIN_MAP = eINSTANCE.getCategory__SchemeEndsWithSharp__DiagnosticChain_Map();
+
+		/**
 		 * The meta object literal for the '{@link org.occiware.clouddesigner.occi.impl.AttributeImpl <em>Attribute</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1697,6 +2333,46 @@ public interface OCCIPackage extends EPackage {
 		EReference KIND__ENTITIES = eINSTANCE.getKind_Entities();
 
 		/**
+		 * The meta object literal for the '<em><b>Correct Scheme</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation KIND___CORRECT_SCHEME__DIAGNOSTICCHAIN_MAP = eINSTANCE.getKind__CorrectScheme__DiagnosticChain_Map();
+
+		/**
+		 * The meta object literal for the '<em><b>No Cyclic Inheritance</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation KIND___NO_CYCLIC_INHERITANCE__DIAGNOSTICCHAIN_MAP = eINSTANCE.getKind__NoCyclicInheritance__DiagnosticChain_Map();
+
+		/**
+		 * The meta object literal for the '<em><b>Attributes Name Not Already Defined In Parent</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation KIND___ATTRIBUTES_NAME_NOT_ALREADY_DEFINED_IN_PARENT__DIAGNOSTICCHAIN_MAP = eINSTANCE.getKind__AttributesNameNotAlreadyDefinedInParent__DiagnosticChain_Map();
+
+		/**
+		 * The meta object literal for the '<em><b>Action Term Unicity</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation KIND___ACTION_TERM_UNICITY__DIAGNOSTICCHAIN_MAP = eINSTANCE.getKind__ActionTermUnicity__DiagnosticChain_Map();
+
+		/**
+		 * The meta object literal for the '<em><b>Entity Kind Is Root Parent</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation KIND___ENTITY_KIND_IS_ROOT_PARENT__DIAGNOSTICCHAIN_MAP = eINSTANCE.getKind__EntityKindIsRootParent__DiagnosticChain_Map();
+
+		/**
 		 * The meta object literal for the '{@link org.occiware.clouddesigner.occi.impl.ActionImpl <em>Action</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1705,6 +2381,14 @@ public interface OCCIPackage extends EPackage {
 		 * @generated
 		 */
 		EClass ACTION = eINSTANCE.getAction();
+
+		/**
+		 * The meta object literal for the '<em><b>Correct Scheme</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ACTION___CORRECT_SCHEME__DIAGNOSTICCHAIN_MAP = eINSTANCE.getAction__CorrectScheme__DiagnosticChain_Map();
 
 		/**
 		 * The meta object literal for the '{@link org.occiware.clouddesigner.occi.impl.MixinImpl <em>Mixin</em>}' class.
@@ -1747,6 +2431,38 @@ public interface OCCIPackage extends EPackage {
 		 * @generated
 		 */
 		EReference MIXIN__ENTITIES = eINSTANCE.getMixin_Entities();
+
+		/**
+		 * The meta object literal for the '<em><b>Action Term Unicity</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation MIXIN___ACTION_TERM_UNICITY__DIAGNOSTICCHAIN_MAP = eINSTANCE.getMixin__ActionTermUnicity__DiagnosticChain_Map();
+
+		/**
+		 * The meta object literal for the '<em><b>No Cyclic Inheritance</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation MIXIN___NO_CYCLIC_INHERITANCE__DIAGNOSTICCHAIN_MAP = eINSTANCE.getMixin__NoCyclicInheritance__DiagnosticChain_Map();
+
+		/**
+		 * The meta object literal for the '<em><b>Correct Scheme</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation MIXIN___CORRECT_SCHEME__DIAGNOSTICCHAIN_MAP = eINSTANCE.getMixin__CorrectScheme__DiagnosticChain_Map();
+
+		/**
+		 * The meta object literal for the '<em><b>Attributes Name Not Already Defined In Depends</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation MIXIN___ATTRIBUTES_NAME_NOT_ALREADY_DEFINED_IN_DEPENDS__DIAGNOSTICCHAIN_MAP = eINSTANCE.getMixin__AttributesNameNotAlreadyDefinedInDepends__DiagnosticChain_Map();
 
 		/**
 		 * The meta object literal for the '{@link org.occiware.clouddesigner.occi.impl.EntityImpl <em>Entity</em>}' class.
@@ -1797,6 +2513,14 @@ public interface OCCIPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation ENTITY___ATTRIBUTES_NAME_UNIQUE__DIAGNOSTICCHAIN_MAP = eINSTANCE.getEntity__AttributesNameUnique__DiagnosticChain_Map();
+
+		/**
+		 * The meta object literal for the '<em><b>Kind Compatible With One Applies Of Each Mixin</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ENTITY___KIND_COMPATIBLE_WITH_ONE_APPLIES_OF_EACH_MIXIN__DIAGNOSTICCHAIN_MAP = eINSTANCE.getEntity__KindCompatibleWithOneAppliesOfEachMixin__DiagnosticChain_Map();
 
 		/**
 		 * The meta object literal for the '<em><b>Id Unique</b></em>' operation.
@@ -1851,6 +2575,14 @@ public interface OCCIPackage extends EPackage {
 		EReference RESOURCE__LINKS = eINSTANCE.getResource_Links();
 
 		/**
+		 * The meta object literal for the '<em><b>Resource Kind Is In Parent</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation RESOURCE___RESOURCE_KIND_IS_IN_PARENT__DIAGNOSTICCHAIN_MAP = eINSTANCE.getResource__ResourceKindIsInParent__DiagnosticChain_Map();
+
+		/**
 		 * The meta object literal for the '{@link org.occiware.clouddesigner.occi.impl.LinkImpl <em>Link</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1875,6 +2607,14 @@ public interface OCCIPackage extends EPackage {
 		 * @generated
 		 */
 		EReference LINK__TARGET = eINSTANCE.getLink_Target();
+
+		/**
+		 * The meta object literal for the '<em><b>Link Kind Is In Parent</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation LINK___LINK_KIND_IS_IN_PARENT__DIAGNOSTICCHAIN_MAP = eINSTANCE.getLink__LinkKindIsInParent__DiagnosticChain_Map();
 
 		/**
 		 * The meta object literal for the '{@link org.occiware.clouddesigner.occi.impl.ExtensionImpl <em>Extension</em>}' class.
@@ -1935,6 +2675,62 @@ public interface OCCIPackage extends EPackage {
 		EReference EXTENSION__TYPES = eINSTANCE.getExtension_Types();
 
 		/**
+		 * The meta object literal for the '<em><b>Kinds Scheme Valid</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation EXTENSION___KINDS_SCHEME_VALID__DIAGNOSTICCHAIN_MAP = eINSTANCE.getExtension__KindsSchemeValid__DiagnosticChain_Map();
+
+		/**
+		 * The meta object literal for the '<em><b>Kind Parent Local Or Imported</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation EXTENSION___KIND_PARENT_LOCAL_OR_IMPORTED__DIAGNOSTICCHAIN_MAP = eINSTANCE.getExtension__KindParentLocalOrImported__DiagnosticChain_Map();
+
+		/**
+		 * The meta object literal for the '<em><b>Mixins Scheme Valid</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation EXTENSION___MIXINS_SCHEME_VALID__DIAGNOSTICCHAIN_MAP = eINSTANCE.getExtension__MixinsSchemeValid__DiagnosticChain_Map();
+
+		/**
+		 * The meta object literal for the '<em><b>Term Unicity</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation EXTENSION___TERM_UNICITY__DIAGNOSTICCHAIN_MAP = eINSTANCE.getExtension__TermUnicity__DiagnosticChain_Map();
+
+		/**
+		 * The meta object literal for the '<em><b>Mixin Applies Local Or Imported</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation EXTENSION___MIXIN_APPLIES_LOCAL_OR_IMPORTED__DIAGNOSTICCHAIN_MAP = eINSTANCE.getExtension__MixinAppliesLocalOrImported__DiagnosticChain_Map();
+
+		/**
+		 * The meta object literal for the '<em><b>Scheme Unique</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation EXTENSION___SCHEME_UNIQUE__DIAGNOSTICCHAIN_MAP = eINSTANCE.getExtension__SchemeUnique__DiagnosticChain_Map();
+
+		/**
+		 * The meta object literal for the '<em><b>Mixin Depends Local Or Imported</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation EXTENSION___MIXIN_DEPENDS_LOCAL_OR_IMPORTED__DIAGNOSTICCHAIN_MAP = eINSTANCE.getExtension__MixinDependsLocalOrImported__DiagnosticChain_Map();
+
+		/**
 		 * The meta object literal for the '{@link org.occiware.clouddesigner.occi.impl.ConfigurationImpl <em>Configuration</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1961,12 +2757,44 @@ public interface OCCIPackage extends EPackage {
 		EReference CONFIGURATION__RESOURCES = eINSTANCE.getConfiguration_Resources();
 
 		/**
+		 * The meta object literal for the '<em><b>All Resources Links Kinds In Use</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation CONFIGURATION___ALL_RESOURCES_LINKS_KINDS_IN_USE__DIAGNOSTICCHAIN_MAP = eINSTANCE.getConfiguration__AllResourcesLinksKindsInUse__DiagnosticChain_Map();
+
+		/**
 		 * The meta object literal for the '<em><b>All Resources Links Targets In Configuration</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EOperation CONFIGURATION___ALL_RESOURCES_LINKS_TARGETS_IN_CONFIGURATION__DIAGNOSTICCHAIN_MAP = eINSTANCE.getConfiguration__AllResourcesLinksTargetsInConfiguration__DiagnosticChain_Map();
+
+		/**
+		 * The meta object literal for the '<em><b>All Resources Kinds In Use</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation CONFIGURATION___ALL_RESOURCES_KINDS_IN_USE__DIAGNOSTICCHAIN_MAP = eINSTANCE.getConfiguration__AllResourcesKindsInUse__DiagnosticChain_Map();
+
+		/**
+		 * The meta object literal for the '<em><b>All Resources Mixins In Use</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation CONFIGURATION___ALL_RESOURCES_MIXINS_IN_USE__DIAGNOSTICCHAIN_MAP = eINSTANCE.getConfiguration__AllResourcesMixinsInUse__DiagnosticChain_Map();
+
+		/**
+		 * The meta object literal for the '<em><b>All Resources Links Mixins In Use</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation CONFIGURATION___ALL_RESOURCES_LINKS_MIXINS_IN_USE__DIAGNOSTICCHAIN_MAP = eINSTANCE.getConfiguration__AllResourcesLinksMixinsInUse__DiagnosticChain_Map();
 
 		/**
 		 * The meta object literal for the '<em>URI</em>' data type.

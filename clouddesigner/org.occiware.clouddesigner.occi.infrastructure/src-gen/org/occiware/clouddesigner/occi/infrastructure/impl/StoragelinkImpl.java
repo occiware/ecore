@@ -5,6 +5,7 @@ package org.occiware.clouddesigner.occi.infrastructure.impl;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.occiware.clouddesigner.occi.impl.LinkImpl;
 import org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage;
 import org.occiware.clouddesigner.occi.infrastructure.StorageLinkStatus;
 import org.occiware.clouddesigner.occi.infrastructure.Storagelink;
@@ -24,7 +25,7 @@ import org.occiware.clouddesigner.occi.infrastructure.Storagelink;
  *
  * @generated
  */
-public class StoragelinkImpl extends org.occiware.clouddesigner.occi.impl.LinkImpl implements Storagelink {
+public class StoragelinkImpl extends LinkImpl implements Storagelink {
 	/**
 	 * The default value of the '{@link #getDeviceid() <em>Deviceid</em>}' attribute.
 	 * <!-- begin-user-doc -->

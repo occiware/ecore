@@ -1,6 +1,6 @@
 import 'OCCI.ecore'
 
-package OCCI
+package occi
 
 --
 -- Semantics of the core concepts.

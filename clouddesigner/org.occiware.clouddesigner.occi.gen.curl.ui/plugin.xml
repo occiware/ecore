@@ -5,9 +5,9 @@
       <objectContribution
             adaptable="true"
             objectClass="org.eclipse.core.resources.IFile"
-            nameFilter="*.*"
+            nameFilter="*.docker"
             id="org.occiware.clouddesigner.occi.gen.curl.ui.popupMenus.contribution.IFile">
-         <menu id="org.eclipse.acceleo.module.menu" label="Acceleo Model to Text" path="additionsAcceleo">
+         <menu id="org.eclipse.acceleo.module.menu" label="Generate" path="additionsAcceleo">
                <groupMarker name="acceleo"/> 
          </menu>
          <action

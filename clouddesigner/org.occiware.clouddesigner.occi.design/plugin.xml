@@ -23,4 +23,27 @@
          <selection class="org.eclipse.core.resources.IResource"/>
       </wizard>
    </extension>
+    <extension
+          point="org.eclipse.ui.popupMenus">
+       <objectContribution
+             id="org.occiware.clouddesigner.occi.design.contribution.occie"
+             nameFilter="*.occie"
+             objectClass="org.eclipse.core.resources.IFile">
+          <menu
+                id="org.occiware.clouddesigner.occi.design.menu"
+                label="Cloud Designer"
+                path="additionsCloudDesigner">
+             <separator
+                   name="group">
+             </separator>
+          </menu>
+          <action
+                class="org.occiware.clouddesigner.occi.design.popup.actions.RegisterExtensionAction"
+                enablesFor="1"
+                id="org.occiware.clouddesigner.occi.design.registerExtensionAction"
+                label="RegisterExtension"
+                menubarPath="org.occiware.clouddesigner.occi.design.menu/group">
+          </action>
+       </objectContribution>
+    </extension>
 </plugin>

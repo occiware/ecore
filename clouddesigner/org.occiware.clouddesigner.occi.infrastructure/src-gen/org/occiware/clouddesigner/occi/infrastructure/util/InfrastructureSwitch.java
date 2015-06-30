@@ -5,6 +5,9 @@ package org.occiware.clouddesigner.occi.infrastructure.util;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
+import org.occiware.clouddesigner.occi.Entity;
+import org.occiware.clouddesigner.occi.Link;
+import org.occiware.clouddesigner.occi.Resource;
 import org.occiware.clouddesigner.occi.infrastructure.*;
 
 /**
@@ -194,7 +197,7 @@ public class InfrastructureSwitch<T> extends Switch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseEntity(org.occiware.clouddesigner.occi.Entity object) {
+	public T caseEntity(Entity object) {
 		return null;
 	}
 
@@ -209,7 +212,7 @@ public class InfrastructureSwitch<T> extends Switch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseResource(org.occiware.clouddesigner.occi.Resource object) {
+	public T caseResource(Resource object) {
 		return null;
 	}
 
@@ -224,7 +227,7 @@ public class InfrastructureSwitch<T> extends Switch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseLink(org.occiware.clouddesigner.occi.Link object) {
+	public T caseLink(Link object) {
 		return null;
 	}
 

@@ -3,8 +3,8 @@
  */
 package org.occiware.clouddesigner.occi.xtext.formatting;
 
+import com.google.inject.Inject;
 import java.util.List;
-
 import org.eclipse.xtext.Keyword;
 import org.eclipse.xtext.ParserRule;
 import org.eclipse.xtext.TerminalRule;
@@ -13,8 +13,6 @@ import org.eclipse.xtext.formatting.impl.FormattingConfig;
 import org.eclipse.xtext.util.Pair;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.occiware.clouddesigner.occi.xtext.services.OCCIGrammarAccess;
-
-import com.google.inject.Inject;
 
 /**
  * This class contains custom formatting declarations.
