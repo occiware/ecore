@@ -1,8 +1,10 @@
 package org.occiware.clouddesigner.occi.design.wizard;
 
+import java.io.ByteArrayInputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
@@ -14,6 +16,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
+import org.eclipse.pde.internal.core.project.PDEProject;
+import org.eclipse.pde.internal.ui.wizards.tools.ConvertProjectToPluginOperation;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.business.api.session.Session;
@@ -108,11 +112,11 @@ public class NewExtensionWizard extends BasicNewProjectResourceWizard {
 	 */
 	@Override
 	public boolean performFinish() {
+		IProgressMonitor monitor = new NullProgressMonitor();
 		try {
 			project = ModelingProjectManager.INSTANCE.createNewModelingProject(
 					newProjectPage.getProjectName(),
-					newProjectPage.getLocationPath(), true,
-					new NullProgressMonitor());
+					newProjectPage.getLocationPath(), true, monitor);
 		} catch (CoreException e) {
 			Activator
 					.getDefault()
@@ -205,7 +209,28 @@ public class NewExtensionWizard extends BasicNewProjectResourceWizard {
 			}
 		};
 		try {
+			// create modeling project
 			getContainer().run(false, true, op);
+
+			// convert to plugin project
+			getContainer().run(
+					false,
+					true,
+					new ConvertProjectToPluginOperation(
+							new IProject[] { project }, false));
+
+			// convert to OCCIE plugin
+			getContainer().run(false, true, new WorkspaceModifyOperation() {
+
+				@Override
+				protected void execute(IProgressMonitor monitor)
+						throws CoreException, InvocationTargetException,
+						InterruptedException {
+					configureOCCIEExtension(monitor);
+				}
+
+			});
+
 		} catch (final InvocationTargetException e) {
 			if (e.getTargetException() instanceof CoreException) {
 				ErrorDialog.openError(getContainer().getShell(),
@@ -222,8 +247,38 @@ public class NewExtensionWizard extends BasicNewProjectResourceWizard {
 		} catch (final InterruptedException e) {
 			return false;
 		}
-
 		return true;
+	}
+
+	private void configureOCCIEExtension(IProgressMonitor monitor)
+			throws CoreException {
+		IFile manifest = PDEProject.getManifest(project);
+		String manifestContent = "Manifest-Version: 1.0\n"
+				+ "Bundle-ManifestVersion: 2\n" + "Bundle-Name: "
+				+ project.getName() + "\n" + "Bundle-SymbolicName: "
+				+ project.getName() + ";singleton:=true\n"
+				+ "Bundle-Version: 1.0.0.qualifier\n"
+				+ "Require-Bundle: org.occiware.clouddesigner.occi\n";
+		manifest.setContents(
+				new ByteArrayInputStream(manifestContent.getBytes()), true,
+				false, monitor);
+
+		IFile pluginXML = PDEProject.getPluginXml(project);
+		String pluginContent = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+				+ "<?eclipse version=\"3.0\"?>\n"
+				+ "<plugin>\n"
+				+ "<extension point=\"org.occiware.clouddesigner.occi.occie\">\n"
+				+ "<occie file=\"model/" + extensionName + ".occie\" scheme=\""
+				+ extensionScheme + "\">\n" + "</occie>\n" + "</extension>\n"
+				+ "</plugin>\n";
+		pluginXML.create(new ByteArrayInputStream(pluginContent.getBytes()),
+				true, monitor);
+
+		IFile build = PDEProject.getBuildProperties(project);
+		String buildContent = "bin.includes = META-INF/,\\n"
+				+ "               plugin.xml";
+		build.setContents(new ByteArrayInputStream(buildContent.getBytes()),
+				true, false, monitor);
 	}
 
 	@Override
