@@ -16,6 +16,7 @@ public interface IConverterPaths {
 
 	String DOCKER_EXT_PATH = WORKSPACE_PATH + "/metamodel/docker/Docker.xmi";
 
+	String HYPERVISOR_EXT_PATH = WORKSPACE_PATH + "/clouddesigner/org.occiware.clouddesigner.occi.infrastructure.connector/src/model/Hypervisor.xmi";
 	/*
 	 * OCCI Metamodels
 	 */
@@ -25,6 +26,9 @@ public interface IConverterPaths {
 	String DOCKER_MM_PATH = WORKSPACE_PATH
 			+ "/clouddesigner/org.occiware.clouddesigner.occi.docker/model/Docker.ecore";
 
+	String HYPERVISOR_MM_PATH = WORKSPACE_PATH
+			+ "/clouddesigner/org.occiware.clouddesigner.occi.infrastructure.connector/src/model/Hypervisor.ecore";
+	
 	/*
 	 * OCCI Samples
 	 */
