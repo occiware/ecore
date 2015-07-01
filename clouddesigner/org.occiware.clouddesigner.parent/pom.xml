@@ -24,6 +24,8 @@
 		<module>../org.occiware.clouddesigner.occi.docker.edit</module>
 		<module>../org.occiware.clouddesigner.occi.edit</module>
 		<module>../org.occiware.clouddesigner.occi.infrastructure</module>
+		<module>../org.occiware.clouddesigner.occi.infrastructure.connector</module>
+		<module>../org.occiware.clouddesigner.occi.infrastructure.design</module>
 		<module>../org.occiware.clouddesigner.occi.infrastructure.edit</module>
 		<module>../org.occiware.clouddesigner.feature</module>
 		<module>../org.occiware.clouddesigner.repository</module>
@@ -31,6 +33,7 @@
 
 	<properties>
 		<tycho-version>0.20.0</tycho-version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
 	<repositories>
@@ -46,11 +49,22 @@
 			<url>http://www.kermeta.org/k3/update</url>
 		</repository>
 		<repository>
-		<!-- TODO investigate -->
-		<!-- should be covered by luna repo but for some reason occi.xtext needs it -->
+			<!-- TODO investigate -->
+			<!-- should be covered by luna repo but for some reason occi.xtext needs 
+				it -->
 			<id>xtext-update-site</id>
 			<layout>p2</layout>
 			<url>http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/</url>
+		</repository>
+		<repository>
+			<id>mvnrepository</id>
+			<url>http://repo1.maven.org/maven2</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
 		</repository>
 	</repositories>
 	<build>
@@ -61,6 +75,26 @@
 				<artifactId>tycho-maven-plugin</artifactId>
 				<version>${tycho-version}</version>
 				<extensions>true</extensions>
+				<configuration>
+					<pomDependencies>consider</pomDependencies>
+					<environments>
+						<environment>
+							<os>win32</os>
+							<ws>win32</ws>
+							<arch>x86</arch>
+						</environment>
+						<environment>
+							<os>linux</os>
+							<ws>gtk</ws>
+							<arch>x86_64</arch>
+						</environment>
+						<environment>
+							<os>macosx</os>
+							<ws>cocoa</ws>
+							<arch>x86_64</arch>
+						</environment>
+					</environments>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
