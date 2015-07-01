@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<domain type="vbox">
+    <name>libvirt-machine</name>
+    <uuid>c4199f6f-65ab-4aca-b66a-207d452cc897</uuid>
+    <os>
+        <type>hvm</type>
+        <boot dev="cdrom"/>
+        <boot dev="hd"/>
+    </os>
+    <memory>654321</memory>
+    <currentMemory>654321</currentMemory>
+    <vcpu>2</vcpu>
+    <features>
+        <pae></pae>
+        <acpi></acpi>
+        <apic></apic>
+    </features>
+    <on_poweroff>destroy</on_poweroff>
+    <on_reboot>restart</on_reboot>
+    <on_crash>restart</on_crash>
+    <clock offset="localtime"/>
+    <devices>
+        <disk type="file" device="cdrom">
+            <source file="/var/folders/j0/89hqn0_126gc5j4nbs4tfhy40000gn/T/storagec4199f6f-65ab-4aca-b66a-207d452cc897.vdi"/>
+            <target dev="hdc" bus="ide"/>
+        </disk>
+        <disk type="file" device="disk">
+            <source file="/Users/spirals/Downloads/vbox.vdi"/>
+            <target dev="hdd" bus="sata"/>
+        </disk>
+        <input type="mouse" bus="ps2"/>
+        <input type="keyboard" bus="ps2"/>
+        <graphics type="vnc" port="-1"/>
+    </devices>
+</domain>

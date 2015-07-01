@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<domain type="vbox">
+    <name>libvirt-machine</name>
+    <uuid>_pO-kUPfZEeSRgs1ZCA6tWw</uuid>
+    <memory>0.0</memory>
+    <currentMemory>0.0</currentMemory>
+    <vcpu>0</vcpu>
+    <on_poweroff>destroy</on_poweroff>
+    <on_reboot>restart</on_reboot>
+    <on_crash>restart</on_crash>
+    <clock offset="localtime"/>
+</domain>

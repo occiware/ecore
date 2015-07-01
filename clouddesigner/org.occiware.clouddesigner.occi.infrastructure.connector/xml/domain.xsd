@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="domain">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="name" type="xsd:string" />
+        <xsd:element name="uuid" type="xsd:string" />
+        <xsd:element name="os">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="type" type="xsd:string" />
+              <xsd:element maxOccurs="unbounded" name="boot">
+                <xsd:complexType>
+                  <xsd:attribute name="dev" type="xsd:string" />
+                </xsd:complexType>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+        <xsd:element name="memory" type="xsd:int" />
+        <xsd:element name="currentMemory" type="xsd:int" />
+        <xsd:element name="vcpu" type="xsd:int" />
+        <xsd:element name="features">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="pae" type="xsd:string" />
+              <xsd:element name="acpi" type="xsd:string" />
+              <xsd:element name="apic" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+        <xsd:element name="on_poweroff" type="xsd:string" />
+        <xsd:element name="on_reboot" type="xsd:string" />
+        <xsd:element name="on_crash" type="xsd:string" />
+        <xsd:element name="clock">
+          <xsd:complexType>
+            <xsd:attribute name="offset" type="xsd:string" />
+          </xsd:complexType>
+        </xsd:element>
+        <xsd:element name="devices">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="emulator" type="xsd:string" />
+              <xsd:element maxOccurs="unbounded" name="disk">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="source">
+                      <xsd:complexType>
+                        <xsd:attribute name="file" type="xsd:string" />
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="target">
+                      <xsd:complexType>
+                        <xsd:attribute name="dev" type="xsd:string" />
+                        <xsd:attribute name="bus" type="xsd:string" />
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="readonly" type="xsd:string" />
+                  </xsd:sequence>
+                  <xsd:attribute name="type" type="xsd:string" />
+                  <xsd:attribute name="device" type="xsd:string" />
+                </xsd:complexType>
+              </xsd:element>
+              <xsd:element name="filesystem">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="source">
+                      <xsd:complexType>
+                        <xsd:attribute name="dir" type="xsd:string" />
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="target">
+                      <xsd:complexType>
+                        <xsd:attribute name="dir" type="xsd:string" />
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                  <xsd:attribute name="type" type="xsd:string" />
+                </xsd:complexType>
+              </xsd:element>
+              <xsd:element maxOccurs="unbounded" name="interface">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="source">
+                      <xsd:complexType>
+                        <xsd:attribute name="bridge" type="xsd:string" />
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="mac">
+                      <xsd:complexType>
+                        <xsd:attribute name="address" type="xsd:string" />
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="model">
+                      <xsd:complexType>
+                        <xsd:attribute name="type" type="xsd:string" />
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                  <xsd:attribute name="type" type="xsd:string" />
+                </xsd:complexType>
+              </xsd:element>
+              <xsd:element name="sound">
+                <xsd:complexType>
+                  <xsd:attribute name="model" type="xsd:string" />
+                </xsd:complexType>
+              </xsd:element>
+              <xsd:element maxOccurs="unbounded" name="parallel">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="source">
+                      <xsd:complexType>
+                        <xsd:attribute name="path" type="xsd:string" />
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="target">
+                      <xsd:complexType>
+                        <xsd:attribute name="port" type="xsd:int" />
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                  <xsd:attribute name="type" type="xsd:string" />
+                </xsd:complexType>
+              </xsd:element>
+              <xsd:element maxOccurs="unbounded" name="serial">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="source">
+                      <xsd:complexType>
+                        <xsd:attribute name="path" type="xsd:string" />
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="target">
+                      <xsd:complexType>
+                        <xsd:attribute name="port" type="xsd:int" />
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                  <xsd:attribute name="type" type="xsd:string" />
+                </xsd:complexType>
+              </xsd:element>
+              <xsd:element maxOccurs="unbounded" name="hostdev">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="source">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="vendor">
+                            <xsd:complexType>
+                              <xsd:attribute name="id" type="xsd:string" />
+                            </xsd:complexType>
+                          </xsd:element>
+                          <xsd:element name="product">
+                            <xsd:complexType>
+                              <xsd:attribute name="id" type="xsd:string" />
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                  <xsd:attribute name="mode" type="xsd:string" />
+                  <xsd:attribute name="type" type="xsd:string" />
+                </xsd:complexType>
+              </xsd:element>
+              <xsd:element maxOccurs="unbounded" name="input">
+                <xsd:complexType>
+                  <xsd:attribute name="type" type="xsd:string" />
+                  <xsd:attribute name="bus" type="xsd:string" />
+                </xsd:complexType>
+              </xsd:element>
+              <xsd:element name="graphics">
+                <xsd:complexType>
+                  <xsd:attribute name="type" type="xsd:string" />
+                  <xsd:attribute name="port" type="xsd:int" />
+                  <xsd:attribute name="autoport" type="xsd:string" />
+                  <xsd:attribute name="keymap" type="xsd:string" />
+                  <xsd:attribute name="listen" type="xsd:string" />
+                </xsd:complexType>
+              </xsd:element>
+              <xsd:element name="console">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="target">
+                      <xsd:complexType>
+                        <xsd:attribute name="type" type="xsd:string" />
+                        <xsd:attribute name="port" type="xsd:int" />
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                  <xsd:attribute name="type" type="xsd:string" />
+                </xsd:complexType>
+              </xsd:element>
+              <xsd:element name="video">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="model">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="acceleration">
+                            <xsd:complexType>
+                              <xsd:attribute name="accel3d" type="xsd:string" />
+                              <xsd:attribute name="accel2d" type="xsd:string" />
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                        <xsd:attribute name="type" type="xsd:string" />
+                        <xsd:attribute name="vram" type="xsd:int" />
+                        <xsd:attribute name="heads" type="xsd:int" />
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+      <xsd:attribute name="type" type="xsd:string" />
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

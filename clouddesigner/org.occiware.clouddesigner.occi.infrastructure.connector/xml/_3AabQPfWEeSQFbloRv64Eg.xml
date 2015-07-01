@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<domain type="vbox">
+    <name>_3AabQPfWEeSQFbloRv64Eg</name>
+    <uuid>_3AabQPfWEeSQFbloRv64Eg</uuid>
+    <memory>0.0</memory>
+    <currentMemory>0.0</currentMemory>
+    <vcpu>0</vcpu>
+    <on_poweroff>destroy</on_poweroff>
+    <on_reboot>restart</on_reboot>
+    <on_crash>restart</on_crash>
+    <clock offset="localtime"/>
+</domain>

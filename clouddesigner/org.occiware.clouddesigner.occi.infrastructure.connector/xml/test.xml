@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<domain type='vbox'>
+  <name>vbox</name>
+  <uuid>4dab22b31d52d8f32516782e98ab3fa0</uuid>
+
+  <os>
+    <type>hvm</type>
+    <boot dev='cdrom'/>
+    <boot dev='hd'/>
+    <boot dev='fd'/>
+    <boot dev='network'/>
+  </os>
+
+  <memory>2097152</memory>
+  <currentMemory>2097152</currentMemory>
+  <vcpu>1</vcpu>
+
+  <features>
+    <pae/>
+    <acpi/>
+    <apic/>
+  </features>
+  <on_poweroff>destroy</on_poweroff>
+  <on_reboot>restart</on_reboot>
+  <on_crash>restart</on_crash>
+  <clock offset='localtime'/>
+  <devices>
+    <disk type='file' device='cdrom'>
+      <source file='/Users/spirals/Downloads/ubuntu-14.04-server-i386.iso'/>
+      <target dev='hdc' bus='ide'/>
+      <readonly/>
+    </disk>
+
+    <disk type='file' device='disk'>
+      <source file='/home/user/tmp/vbox.vdi'/>
+      <target dev='hdd' bus='sata'/>
+    </disk>
+
+    <disk type='file' device='disk'>
+      <source file='/var/folders/j0/89hqn0_126gc5j4nbs4tfhy40000gn/T/storage07a532d6-187b-48cb-8a10-f0dbca6a0d3f.vdi'/>
+      <target dev='hda' bus='ide'/>
+    </disk>
+
+    <disk type='file' device='floppy'>
+      <source file='/home/user/tmp/WIN98C.IMG'/>
+      <target dev='fda'/>
+    </disk>
+
+    <filesystem type='mount'>
+      <source dir='/home/user/stuff'/>
+      <target dir='my-shared-folder'/>
+    </filesystem>
+
+    <!--BRIDGE-->
+    <interface type='bridge'>
+      <source bridge='eth0'/>
+      <mac address='00:16:3e:5d:c7:9e'/>
+      <model type='am79c973'/>
+    </interface>
+
+    <!--NAT-->
+    <interface type='user'>
+      <mac address='56:16:3e:5d:c7:9e'/>
+      <model type='82540eM'/>
+    </interface>
+
+    <sound model='sb16'/>
+
+    <parallel type='dev'>
+      <source path='/dev/pts/1'/>
+      <target port='0'/>
+    </parallel>
+
+    <parallel type='dev'>
+      <source path='/dev/pts/2'/>
+      <target port='1'/>
+    </parallel>
+
+    <serial type="dev">
+      <source path="/dev/ttyS0"/>
+      <target port="0"/>
+    </serial>
+
+    <serial type="pipe">
+      <source path="/tmp/serial.txt"/>
+      <target port="1"/>
+    </serial>
+
+    <hostdev mode='subsystem' type='usb'>
+      <source>
+        <vendor id='0x1234'/>
+        <product id='0xbeef'/>
+      </source>
+    </hostdev>
+
+    <hostdev mode='subsystem' type='usb'>
+      <source>
+        <vendor id='0x4321'/>
+        <product id='0xfeeb'/>
+      </source>
+    </hostdev>
+    <input type='tablet' bus='usb'/>
+    <input type='mouse' bus='ps2'/>
+    <graphics type="vnc" port="-1"/>
+    <console type='pty'>
+      <target type='serial' port='0'/>
+    </console>
+  </devices>
+</domain>

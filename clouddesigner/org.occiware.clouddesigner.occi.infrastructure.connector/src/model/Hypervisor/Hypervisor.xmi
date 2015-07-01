@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OCCI:Extension
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:OCCI="http://schemas.ogf.org/occi"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xsi:schemaLocation="http://schemas.ogf.org/occi ../OCCI.ecore"
+    name="OCCIware Hypervisor"
+    scheme="http://occiware.org/hypervisor#">
+  <import href="../Core.xmi#/"/>
+  <import href="../Infrastructure.xmi#/"/>
+  <kinds term="machine"
+      scheme="http://occiware.org/hypervisor#"
+      title="Machine resource">
+    <attributes
+        name="name"
+        description="Hypervisor name.">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="uuid"
+        description="The machine unique ID.">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="offset"
+        default="localtime"
+        description="This will be set if the guest XML contains a request for a clock synced to localtime.">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <parent
+        href="../Infrastructure.xmi#//@kinds[term='compute']"/>
+  </kinds>
+  <kinds term="contains"
+      scheme="http://occiware.org/hypervisor#">
+    <parent
+        href="../Core.xmi#//@kinds[term='link']"/>
+  </kinds>
+  <kinds term="disk"
+      scheme="http://occiware.org/hypervisor#"
+      title="Disk resource">
+    <attributes
+        name="type"
+        required="true"
+        description="The kind of disk.">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="device"
+        required="true"
+        description="Specify the disk device's.">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="source"
+        required="true">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="target"
+        required="true">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="readonly"
+        default="false">
+      <type
+          href="../OCCI.ecore#//Boolean"/>
+    </attributes>
+    <parent
+        href="../Infrastructure.xmi#//@kinds[term='storage']"/>
+  </kinds>
+  <kinds term="interface"
+      scheme="http://occiware.org/hypervisor#"
+      title="Interface resource">
+    <attributes
+        name="type"
+        required="true">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="source">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="model">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="mac_addresss">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <parent
+        href="../Infrastructure.xmi#//@kinds[term='network']"/>
+  </kinds>
+  <kinds term="machine_VirtualBox"
+      scheme="http://occiware.org/hypervisor#"
+      title="Machine on VirtualBox"
+      parent="//@kinds[term='machine']">
+    <attributes
+        name="type"
+        required="true"
+        default="hvm"
+        description="This type is specific to Libvirt."
+        type="//@types.2"/>
+    <attributes
+        name="boot"
+        description="The machine boot device."
+        type="//@types.2"
+        multiple_values="true"/>
+    <attributes
+        name="features"
+        default="acpi"
+        description="The flag specify the Advanced Configuration and Power Interface(ACPI), the Physical Address Extension (PAE) and the Advanced Programmable Interrupt Controller (APIC)."
+        type="//@types.1"
+        multiple_values="true"/>
+    <attributes
+        name="on_poweroff"
+        description="Action to do when the machine is poweroff.">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="on_reboot"
+        description="Action to do when the machine is rebooting.">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="on_crash"
+        description="Action to do when the machine crached.">
+      <type
+          href="../OCCI.ecore#//String"/>
+    </attributes>
+    <attributes
+        name="memory"
+        required="true"
+        default="256000"
+        description="This sets the maximum memory for the guest at boot time in KB.">
+      <type
+          href="../OCCI.ecore#//Number"/>
+    </attributes>
+    <attributes
+        name="current_memory"
+        default=""
+        description="This sets the lower memory for the guest at boot time in KB.">
+      <type
+          href="../OCCI.ecore#//Number"/>
+    </attributes>
+    <attributes
+        name="vcpu"
+        default="1"
+        description="The number of virtual CPUs to create.">
+      <type
+          href="../OCCI.ecore#//Number"/>
+    </attributes>
+  </kinds>
+  <types xsi:type="ecore:EEnum"
+      name="CLOCK">
+    <eLiterals
+        name="offset"/>
+  </types>
+  <types xsi:type="ecore:EEnum"
+      name="FEATURES">
+    <eLiterals
+        name="acpi"/>
+    <eLiterals
+        name="pae"/>
+    <eLiterals
+        name="apic"/>
+  </types>
+  <types xsi:type="ecore:EEnum"
+      name="OS">
+    <eLiterals
+        name="type"/>
+    <eLiterals
+        name="boot"/>
+    <eLiterals
+        name="kernel"/>
+    <eLiterals
+        name="ramdisk"/>
+    <eLiterals
+        name="cmdline"/>
+  </types>
+</OCCI:Extension>

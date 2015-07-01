@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<domain type="vbox">
+    <name>libvirt-machine</name>
+    <uuid>7d9c6e59-ea8f-49b9-af01-5f10a1a1608d</uuid>
+    <memory>256000.0</memory>
+    <currentMemory>256000.0</currentMemory>
+    <vcpu>1</vcpu>
+    <on_poweroff>destroy</on_poweroff>
+    <on_reboot>restart</on_reboot>
+    <on_crash>restart</on_crash>
+    <clock offset="localtime"/>
+    <devices>
+        <disk type="file" device="disk">
+            <source/>
+            <target dev="hda"/>
+        </disk>
+        <graphics type="vnc" port="-1"/>
+        <input type="mouse" bus="ps2"/>
+    </devices>
+</domain>

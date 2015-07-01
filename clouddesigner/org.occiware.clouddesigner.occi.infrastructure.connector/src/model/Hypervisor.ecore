@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="hypervisor" nsURI="http://occiware.org/hypervisor" nsPrefix="hypervisor">
+  <eClassifiers xsi:type="ecore:EEnum" name="CLOCK">
+    <eLiterals name="offset"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="FEATURES">
+    <eLiterals name="acpi"/>
+    <eLiterals name="pae"/>
+    <eLiterals name="apic"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="OS">
+    <eLiterals name="type"/>
+    <eLiterals name="boot"/>
+    <eLiterals name="kernel"/>
+    <eLiterals name="ramdisk"/>
+    <eLiterals name="cmdline"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Machine" eSuperTypes="../../../org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.ecore#//Compute">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType OCCI.ecore#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="boot" eType="ecore:EDataType OCCI.ecore#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="uuid" eType="ecore:EDataType OCCI.ecore#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="offset" eType="ecore:EDataType OCCI.ecore#//String"
+        defaultValueLiteral="localtime"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="os_type" lowerBound="1"
+        eType="ecore:EDataType OCCI.ecore#//String"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Contains" eSuperTypes="../../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Link"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Disk" eSuperTypes="../../../org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.ecore#//Storage">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType OCCI.ecore#//String"
+        defaultValueLiteral="Disk"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" lowerBound="1" eType="ecore:EDataType OCCI.ecore#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="device" lowerBound="1"
+        eType="ecore:EDataType OCCI.ecore#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="source" lowerBound="1"
+        eType="ecore:EDataType OCCI.ecore#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="readonly" eType="ecore:EDataType OCCI.ecore#//Boolean"
+        defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="target_dev" eType="ecore:EDataType OCCI.ecore#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="target_bus" eType="ecore:EDataType OCCI.ecore#//String"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Interface" eSuperTypes="../../../org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.ecore#//Network">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType OCCI.ecore#//String"
+        defaultValueLiteral="interface"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" lowerBound="1" eType="ecore:EDataType OCCI.ecore#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="model" eType="ecore:EDataType OCCI.ecore#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mac_addresss" eType="ecore:EDataType OCCI.ecore#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="route" eType="ecore:EDataType OCCI.ecore#//String"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Machine_VirtualBox" eSuperTypes="#//Machine">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" lowerBound="1" eType="ecore:EDataType OCCI.ecore#//String"
+        defaultValueLiteral="hvm"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="features" eType="#//FEATURES"
+        defaultValueLiteral="acpi"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="on_poweroff" eType="ecore:EDataType OCCI.ecore#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="on_reboot" eType="ecore:EDataType OCCI.ecore#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="on_crash" eType="ecore:EDataType OCCI.ecore#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="current_memory" eType="ecore:EDataType OCCI.ecore#//Number"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="vcpu" eType="ecore:EDataType OCCI.ecore#//Number"
+        defaultValueLiteral="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Bridge" eSuperTypes="#//Interface">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="source_bridge" eType="ecore:EDataType OCCI.ecore#//String"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="User" eSuperTypes="#//Interface"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Parallel" eSuperTypes="../../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Resource">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType OCCI.ecore#//String"
+        defaultValueLiteral="parallel"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="source" eType="ecore:EDataType OCCI.ecore#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="target" lowerBound="1"
+        eType="ecore:EDataType OCCI.ecore#//String"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Serial" eSuperTypes="../../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Resource">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType OCCI.ecore#//String"
+        defaultValueLiteral="serial"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="source" eType="ecore:EDataType OCCI.ecore#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="target" eType="ecore:EDataType OCCI.ecore#//String"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Direct" eSuperTypes="#//Interface">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="source_dev" eType="ecore:EDataType OCCI.ecore#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="source_mode" eType="ecore:EDataType OCCI.ecore#//String"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Ethernet" eSuperTypes="../../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Resource">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="target_dev" eType="ecore:EDataType OCCI.ecore#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="script_path" eType="ecore:EDataType OCCI.ecore#//String"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Filesystem" eSuperTypes="../../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Resource">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType OCCI.ecore#//String"
+        defaultValueLiteral="filesystem"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="source" lowerBound="1"
+        eType="ecore:EDataType OCCI.ecore#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="target" lowerBound="1"
+        eType="ecore:EDataType OCCI.ecore#//String"/>
+  </eClassifiers>
+</ecore:EPackage>

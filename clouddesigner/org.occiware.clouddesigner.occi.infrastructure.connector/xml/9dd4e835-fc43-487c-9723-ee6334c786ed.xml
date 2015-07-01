@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<domain type="vbox">
+    <name>libvirt-machine</name>
+    <uuid>9dd4e835-fc43-487c-9723-ee6334c786ed</uuid>
+    <memory>256000</memory>
+    <currentMemory>256000</currentMemory>
+    <vcpu>1</vcpu>
+    <on_poweroff>destroy</on_poweroff>
+    <on_reboot>restart</on_reboot>
+    <on_crash>restart</on_crash>
+    <clock offset="localtime"/>
+    <devices>
+        <disk type="file" device="disk">
+            <source file="/var/lib/libvirt/images/Whonix-Gateway.qcow2"/>
+            <target dev="hda"/>
+        </disk>
+        <graphics type="vnc" port="-1"/>
+        <input type="mouse" bus="ps2"/>
+    </devices>
+    <features>
+        <acpi></acpi>
+    </features>
+    <os>
+        <type>hvm</type>
+        <boot dev="hd"/>
+    </os>
+</domain>
