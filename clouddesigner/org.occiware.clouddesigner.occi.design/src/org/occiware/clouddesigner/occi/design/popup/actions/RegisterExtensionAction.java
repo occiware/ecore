@@ -1,9 +1,6 @@
 package org.occiware.clouddesigner.occi.design.popup.actions;
 
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -18,7 +15,6 @@ import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 import org.occiware.clouddesigner.occi.Extension;
 import org.occiware.clouddesigner.occi.OCCIRegistry;
-import org.occiware.clouddesigner.occi.design.Activator;
 import org.occiware.clouddesigner.occi.design.Messages;
 
 public class RegisterExtensionAction implements IObjectActionDelegate {
@@ -54,20 +50,8 @@ public class RegisterExtensionAction implements IObjectActionDelegate {
 			Resource r = rs.getResource(uri, true);
 
 			Extension extension = (Extension) r.getContents().get(0);
-
-			try {
-				OCCIRegistry.getInstance().registerExtension(
-						extension.getScheme(), uri.toString());
-			} catch (CoreException e) {
-				Activator
-						.getDefault()
-						.getLog()
-						.log(new Status(
-								IStatus.ERROR,
-								Activator.PLUGIN_ID,
-								Messages.RegisterExtensionAction_ExtRegistrationError,
-								e));
-			}
+			OCCIRegistry.getInstance().registerExtension(extension.getScheme(),
+					uri.toString());
 			MessageDialog.openInformation(shell,
 					Messages.RegisterExtensionAction_ExtRegistration,
 					Messages.RegisterExtensionAction_RegisteredExtension

@@ -17,7 +17,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.sirius.ui,
  org.eclipse.emf.transaction,
  org.eclipse.emf.edit.ui,
- org.occiware.clouddesigner.occi.edit
+ org.occiware.clouddesigner.occi.edit,
+ org.eclipse.pde.ui
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 

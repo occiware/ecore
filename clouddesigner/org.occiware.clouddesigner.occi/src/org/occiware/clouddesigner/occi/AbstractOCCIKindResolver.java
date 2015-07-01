@@ -3,7 +3,6 @@ package org.occiware.clouddesigner.occi;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 
@@ -12,7 +11,7 @@ public class AbstractOCCIKindResolver {
 
 	private Map<EClass, Kind> kindPerEClass = new HashMap<EClass, Kind>();
 
-	public void addKind(Entity entity) throws CoreException {
+	public void addKind(Entity entity) {
 		if (entity.getKind() == null) {
 			Kind entityKind = kindPerEClass.get(entity.eClass());
 			if (entityKind == null) {

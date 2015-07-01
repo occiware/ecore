@@ -1,8 +1,12 @@
 package org.occiware.clouddesigner.occi.design.wizard;
 
+import java.io.ByteArrayInputStream;
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
@@ -13,7 +17,12 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.jface.dialogs.ErrorDialog;
+import org.eclipse.jface.layout.TableColumnLayout;
 import org.eclipse.jface.operation.IRunnableWithProgress;
+import org.eclipse.jface.viewers.ArrayContentProvider;
+import org.eclipse.jface.viewers.CheckboxTableViewer;
+import org.eclipse.pde.internal.core.project.PDEProject;
+import org.eclipse.pde.internal.ui.wizards.tools.ConvertProjectToPluginOperation;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.business.api.session.Session;
@@ -30,11 +39,13 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
 import org.eclipse.ui.wizards.newresource.BasicNewProjectResourceWizard;
+import org.occiware.clouddesigner.occi.OCCIRegistry;
 import org.occiware.clouddesigner.occi.design.Activator;
 import org.occiware.clouddesigner.occi.design.Messages;
 
@@ -49,6 +60,96 @@ import org.occiware.clouddesigner.occi.design.Messages;
  */
 public class NewExtensionWizard extends BasicNewProjectResourceWizard {
 
+	private final class NewExtensionWizardPage extends
+			WizardNewProjectCreationPage {
+		private static final String OCCI_CORE_EXTENSION_SCHEME = "http://schemas.ogf.org/occi/core#";
+		private CheckboxTableViewer refExtensionViewer;
+
+		private NewExtensionWizardPage(String pageName) {
+			super(pageName);
+		}
+
+		@Override
+		public void createControl(Composite parent) {
+			super.createControl(parent);
+			Composite control = (Composite) getControl();
+
+			Composite extensionGroup = new Composite(control, SWT.NONE);
+			GridLayout layout = new GridLayout();
+			layout.numColumns = 2;
+			extensionGroup.setLayout(layout);
+			extensionGroup
+					.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+
+			Label projectLabel = new Label(extensionGroup, SWT.NONE);
+			projectLabel
+					.setText(Messages.NewExtensionWizard_ExtensionNameLabel);
+			projectLabel.setFont(parent.getFont());
+
+			extensionNameText = new Text(extensionGroup, SWT.BORDER);
+			GridData data = new GridData(GridData.FILL_HORIZONTAL);
+			extensionNameText.setLayoutData(data);
+			extensionNameText.setFont(parent.getFont());
+
+			extensionNameText.addModifyListener(new ModifyListener() {
+
+				@Override
+				public void modifyText(ModifyEvent e) {
+					extensionName = extensionNameText.getText();
+				}
+			});
+
+			Label schemeLabel = new Label(extensionGroup, SWT.NONE);
+			schemeLabel
+					.setText(Messages.NewExtensionWizard_ExtensionSchemeLabel);
+			schemeLabel.setFont(parent.getFont());
+
+			extensionSchemeText = new Text(extensionGroup, SWT.BORDER);
+			GridData data1 = new GridData(GridData.FILL_HORIZONTAL);
+			extensionSchemeText.setLayoutData(data1);
+			extensionSchemeText.setFont(parent.getFont());
+
+			extensionSchemeText.addModifyListener(new ModifyListener() {
+				@Override
+				public void modifyText(ModifyEvent e) {
+					extensionScheme = extensionSchemeText.getText();
+				}
+			});
+
+			Label refOccieLabel = new Label(extensionGroup, SWT.NONE);
+			refOccieLabel.setLayoutData(new GridData(SWT.LEFT, SWT.TOP, true,
+					true));
+			refOccieLabel
+					.setText(Messages.NewExtensionWizard_RefExtensionLabel);
+			refOccieLabel.setFont(parent.getFont());
+
+			Composite composite = new Composite(extensionGroup, SWT.NULL);
+			GridData layoutData = new GridData(SWT.FILL, SWT.FILL, true, true);
+			composite.setLayoutData(layoutData);
+			TableColumnLayout tableLayout = new TableColumnLayout();
+			composite.setLayout(tableLayout);
+
+			Table table = new Table(composite, SWT.CHECK | SWT.MULTI
+					| SWT.BORDER | SWT.FULL_SELECTION | SWT.H_SCROLL
+					| SWT.V_SCROLL);
+			refExtensionViewer = new CheckboxTableViewer(table);
+
+			refExtensionViewer.setContentProvider(ArrayContentProvider
+					.getInstance());
+
+			Collection<String> registeredExtensions = new ArrayList<String>(
+					OCCIRegistry.getInstance().getRegisteredExtensions());
+			registeredExtensions.remove(OCCI_CORE_EXTENSION_SCHEME);
+			refExtensionViewer.setInput(registeredExtensions);
+		}
+
+		public String[] getRefExtensionSchemes() {
+			return Arrays.copyOf(refExtensionViewer.getCheckedElements(),
+					refExtensionViewer.getCheckedElements().length,
+					String[].class);
+		}
+	}
+
 	private static final String EXTENSION_DIAGRAM_NAME = "Extension diagram"; //$NON-NLS-1$
 
 	/**
@@ -56,7 +157,7 @@ public class NewExtensionWizard extends BasicNewProjectResourceWizard {
 	 */
 	protected IProject project;
 
-	protected WizardNewProjectCreationPage newProjectPage;
+	protected NewExtensionWizardPage newProjectPage;
 
 	/**
 	 * Name of the Extension.
@@ -87,7 +188,7 @@ public class NewExtensionWizard extends BasicNewProjectResourceWizard {
 								final RepresentationDescription description = DialectManager.INSTANCE
 										.getDescription(representation);
 								if (EXTENSION_DIAGRAM_NAME.equals(description
-										.getName())) { //$NON-NLS-1$
+										.getName())) {
 									DialectUIManager.INSTANCE.openEditor(
 											session, representation, monitor);
 									return;
@@ -108,11 +209,11 @@ public class NewExtensionWizard extends BasicNewProjectResourceWizard {
 	 */
 	@Override
 	public boolean performFinish() {
+		IProgressMonitor monitor = new NullProgressMonitor();
 		try {
 			project = ModelingProjectManager.INSTANCE.createNewModelingProject(
 					newProjectPage.getProjectName(),
-					newProjectPage.getLocationPath(), true,
-					new NullProgressMonitor());
+					newProjectPage.getLocationPath(), true, monitor);
 		} catch (CoreException e) {
 			Activator
 					.getDefault()
@@ -136,7 +237,8 @@ public class NewExtensionWizard extends BasicNewProjectResourceWizard {
 				// BasicNewProjectResourceWizard to implement the perspective
 				// switch easily.
 				final InitExtensionModel init = new InitExtensionModel(project,
-						extensionName, extensionScheme);
+						extensionName, extensionScheme,
+						newProjectPage.getRefExtensionSchemes());
 				try {
 					getContainer().run(false, true, init);
 				} catch (final InterruptedException e) {
@@ -205,7 +307,28 @@ public class NewExtensionWizard extends BasicNewProjectResourceWizard {
 			}
 		};
 		try {
+			// create modeling project
 			getContainer().run(false, true, op);
+
+			// convert to plugin project
+			getContainer().run(
+					false,
+					true,
+					new ConvertProjectToPluginOperation(
+							new IProject[] { project }, false));
+
+			// convert to OCCIE plugin
+			getContainer().run(false, true, new WorkspaceModifyOperation() {
+
+				@Override
+				protected void execute(IProgressMonitor monitor)
+						throws CoreException, InvocationTargetException,
+						InterruptedException {
+					configureOCCIEExtension(monitor);
+				}
+
+			});
+
 		} catch (final InvocationTargetException e) {
 			if (e.getTargetException() instanceof CoreException) {
 				ErrorDialog.openError(getContainer().getShell(),
@@ -222,8 +345,38 @@ public class NewExtensionWizard extends BasicNewProjectResourceWizard {
 		} catch (final InterruptedException e) {
 			return false;
 		}
-
 		return true;
+	}
+
+	private void configureOCCIEExtension(IProgressMonitor monitor)
+			throws CoreException {
+		IFile manifest = PDEProject.getManifest(project);
+		String manifestContent = "Manifest-Version: 1.0\n"
+				+ "Bundle-ManifestVersion: 2\n" + "Bundle-Name: "
+				+ project.getName() + "\n" + "Bundle-SymbolicName: "
+				+ project.getName() + ";singleton:=true\n"
+				+ "Bundle-Version: 1.0.0.qualifier\n"
+				+ "Require-Bundle: org.occiware.clouddesigner.occi\n";
+		manifest.setContents(
+				new ByteArrayInputStream(manifestContent.getBytes()), true,
+				false, monitor);
+
+		IFile pluginXML = PDEProject.getPluginXml(project);
+		String pluginContent = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+				+ "<?eclipse version=\"3.0\"?>\n"
+				+ "<plugin>\n"
+				+ "<extension point=\"org.occiware.clouddesigner.occi.occie\">\n"
+				+ "<occie file=\"model/" + extensionName + ".occie\" scheme=\""
+				+ extensionScheme + "\">\n" + "</occie>\n" + "</extension>\n"
+				+ "</plugin>\n";
+		pluginXML.create(new ByteArrayInputStream(pluginContent.getBytes()),
+				true, monitor);
+
+		IFile build = PDEProject.getBuildProperties(project);
+		String buildContent = "bin.includes = META-INF/,\\n"
+				+ "               plugin.xml";
+		build.setContents(new ByteArrayInputStream(buildContent.getBytes()),
+				true, false, monitor);
 	}
 
 	@Override
@@ -233,58 +386,8 @@ public class NewExtensionWizard extends BasicNewProjectResourceWizard {
 		// page.
 		// super.addPages();
 
-		newProjectPage = new WizardNewProjectCreationPage(
-				Messages.NewExtensionWizard_PageName) {
-
-			@Override
-			public void createControl(Composite parent) {
-				super.createControl(parent);
-				Composite control = (Composite) getControl();
-
-				Composite extensionGroup = new Composite(control, SWT.NONE);
-				GridLayout layout = new GridLayout();
-				layout.numColumns = 2;
-				extensionGroup.setLayout(layout);
-				extensionGroup.setLayoutData(new GridData(
-						GridData.FILL_HORIZONTAL));
-
-				Label projectLabel = new Label(extensionGroup, SWT.NONE);
-				projectLabel
-						.setText(Messages.NewExtensionWizard_ExtensionNameLabel);
-				projectLabel.setFont(parent.getFont());
-
-				extensionNameText = new Text(extensionGroup, SWT.BORDER);
-				GridData data = new GridData(GridData.FILL_HORIZONTAL);
-				extensionNameText.setLayoutData(data);
-				extensionNameText.setFont(parent.getFont());
-
-				extensionNameText.addModifyListener(new ModifyListener() {
-
-					@Override
-					public void modifyText(ModifyEvent e) {
-						extensionName = extensionNameText.getText();
-					}
-				});
-
-				Label schemeLabel = new Label(extensionGroup, SWT.NONE);
-				schemeLabel
-						.setText(Messages.NewExtensionWizard_ExtensionSchemeLabel);
-				schemeLabel.setFont(parent.getFont());
-
-				extensionSchemeText = new Text(extensionGroup, SWT.BORDER);
-				GridData data1 = new GridData(GridData.FILL_HORIZONTAL);
-				extensionSchemeText.setLayoutData(data1);
-				extensionSchemeText.setFont(parent.getFont());
-
-				extensionSchemeText.addModifyListener(new ModifyListener() {
-
-					@Override
-					public void modifyText(ModifyEvent e) {
-						extensionScheme = extensionSchemeText.getText();
-					}
-				});
-			}
-		};
+		newProjectPage = new NewExtensionWizardPage(
+				Messages.NewExtensionWizard_PageName);
 		newProjectPage.setInitialProjectName(""); //$NON-NLS-1$
 		newProjectPage.setTitle(Messages.NewExtensionWizard_PageTitle);
 		newProjectPage
