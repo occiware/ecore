@@ -1,12 +1,9 @@
-package org.occiware.clouddesigner.occi.design.services;
+package org.occiware.clouddesigner.occi.design.dialog;
 
 import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.ui.action.LoadResourceAction.LoadResourceDialog;
 import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
@@ -25,7 +22,6 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.dialogs.ElementListSelectionDialog;
 import org.occiware.clouddesigner.occi.Extension;
 import org.occiware.clouddesigner.occi.OCCIRegistry;
-import org.occiware.clouddesigner.occi.design.Activator;
 import org.occiware.clouddesigner.occi.design.Messages;
 import org.occiware.clouddesigner.occi.provider.OCCIEditPlugin;
 
@@ -70,20 +66,9 @@ public class LoadExtensionDialog extends LoadResourceDialog {
 						if (result != null) {
 							StringBuffer schemes = new StringBuffer();
 							for (int i = 0, length = result.length; i < length; i++) {
-								try {
-									schemes.append(OCCIRegistry.getInstance()
-											.getExtensionURI(
-													String.valueOf(result[i])));
-								} catch (CoreException e) {
-									Activator
-											.getDefault()
-											.getLog()
-											.log(new Status(
-													IStatus.ERROR,
-													Activator.PLUGIN_ID,
-													Messages.LoadExtensionDialog_URIFromSchemeError,
-													e));
-								}
+								schemes.append(OCCIRegistry.getInstance()
+										.getExtensionURI(
+												String.valueOf(result[i])));
 								schemes.append("  "); //$NON-NLS-1$
 							}
 							uriField.setText((uriField.getText() + "  " + schemes //$NON-NLS-1$
@@ -112,7 +97,7 @@ public class LoadExtensionDialog extends LoadResourceDialog {
 			setTitle(Messages.LoadExtensionDialog_SelectExtension);
 		}
 
-		protected void updateElements() throws CoreException {
+		protected void updateElements() {
 			Object[] result = OCCIRegistry
 					.getInstance()
 					.getRegisteredExtensions()
@@ -130,20 +115,7 @@ public class LoadExtensionDialog extends LoadResourceDialog {
 			GridLayout layout = new GridLayout();
 			layout.numColumns = 2;
 			buttonGroup.setLayout(layout);
-
-			try {
-				updateElements();
-			} catch (CoreException e) {
-				Activator
-						.getDefault()
-						.getLog()
-						.log(new Status(
-								IStatus.ERROR,
-								Activator.PLUGIN_ID,
-								Messages.LoadExtensionDialog_ListExtensionError,
-								e));
-			}
-
+			updateElements();
 			return result;
 		}
 	}

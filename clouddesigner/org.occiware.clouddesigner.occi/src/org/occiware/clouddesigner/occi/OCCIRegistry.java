@@ -26,13 +26,13 @@ public final class OCCIRegistry {
 	 * 
 	 * @throws CoreException
 	 */
-	private OCCIRegistry() throws CoreException {
+	private OCCIRegistry() {
 		initialize();
 	}
 
 	private static OCCIRegistry instance;
 
-	public static OCCIRegistry getInstance() throws CoreException {
+	public static OCCIRegistry getInstance() {
 		if (instance == null) {
 			instance = new OCCIRegistry();
 		}
@@ -45,7 +45,7 @@ public final class OCCIRegistry {
 	 * @throws CoreException
 	 *             if the registry cannot be initialized
 	 */
-	public void initialize() throws CoreException {
+	public void initialize() {
 		if (Platform.isRunning()) {
 			registry.clear();
 			final IExtension[] extensions = Platform.getExtensionRegistry()

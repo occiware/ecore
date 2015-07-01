@@ -15,6 +15,7 @@ import org.occiware.clouddesigner.occi.Category;
 import org.occiware.clouddesigner.occi.Extension;
 import org.occiware.clouddesigner.occi.Kind;
 import org.occiware.clouddesigner.occi.Mixin;
+import org.occiware.clouddesigner.occi.design.dialog.LoadExtensionDialog;
 
 public class DesignServices {
 

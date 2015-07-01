@@ -33,6 +33,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.occiware.clouddesigner.occi.Extension;
 import org.occiware.clouddesigner.occi.OCCIFactory;
+import org.occiware.clouddesigner.occi.OCCIRegistry;
 import org.occiware.clouddesigner.occi.design.Activator;
 import org.occiware.clouddesigner.occi.design.Messages;
 
@@ -66,6 +67,8 @@ public class InitExtensionModel extends WorkspaceModifyOperation {
 	 */
 	private final String extensionScheme;
 
+	private String[] refExtensionSchemes;
+
 	/**
 	 * Constructor.
 	 *
@@ -76,11 +79,13 @@ public class InitExtensionModel extends WorkspaceModifyOperation {
 	 * @param extensionName
 	 * @param extensionScheme
 	 */
-	public InitExtensionModel(IProject project, String extensionName, String extensionScheme) {
+	public InitExtensionModel(IProject project, String extensionName,
+			String extensionScheme, String... refExtensionSchemes) {
 		super(null);
 		this.project = project;
 		this.extensionName = extensionName;
 		this.extensionScheme = extensionScheme;
+		this.refExtensionSchemes = refExtensionSchemes;
 	}
 
 	/**
@@ -96,8 +101,7 @@ public class InitExtensionModel extends WorkspaceModifyOperation {
 
 				public void run() {
 					// Create default empty Extension model
-					InitExtensionModel.createSemanticResource(project,
-							extensionName, extensionScheme);
+					createSemanticResource();
 
 					// Enable OCCI viewpoints
 					final ModelingProject modelingProject = created.get();
@@ -115,8 +119,7 @@ public class InitExtensionModel extends WorkspaceModifyOperation {
 	 * @param extensionName
 	 *            Name of the OCCI file
 	 */
-	public static Option<IFile> createSemanticResource(final IProject project,
-			final String extensionName, String extensionScheme) {
+	private Option<IFile> createSemanticResource() {
 		final Extension rootObject = OCCIFactory.eINSTANCE.createExtension();
 		rootObject.setName(extensionName);
 		rootObject.setScheme(extensionScheme);
@@ -134,15 +137,34 @@ public class InitExtensionModel extends WorkspaceModifyOperation {
 
 								final ResourceSetImpl resourceSet = new ResourceSetImpl();
 								/* load the occi-core.xmi extension. */
-								final Resource occiCoreResource = resourceSet.getResource(URI.createPlatformPluginURI("org.occiware.clouddesigner.occi/model/Core.occie", true), true);
-								final Extension occiCoreExtension = (Extension)occiCoreResource.getContents().get(0);
+								final Resource occiCoreResource = resourceSet.getResource(
+										URI.createPlatformPluginURI(
+												"org.occiware.clouddesigner.occi/model/Core.occie",
+												true), true);
+								final Extension occiCoreExtension = (Extension) occiCoreResource
+										.getContents().get(0);
 								/* import the OCCI Core extension. */
 								rootObject.getImport().add(occiCoreExtension);
+
+								// add referenced extensions
+								for (String refExtensionScheme : refExtensionSchemes) {
+									String refExtensionURI = OCCIRegistry
+											.getInstance().getExtensionURI(
+													refExtensionScheme);
+									final Resource refExtensionResource = resourceSet
+											.getResource(URI.createURI(
+													refExtensionURI, true),
+													true);
+									final Extension refExtension = (Extension) refExtensionResource
+											.getContents().get(0);
+									rootObject.getImport().add(refExtension);
+								}
 
 								final URI semanticModelURI = URI
 										.createPlatformResourceURI(
 												platformPath, true);
-								final Resource res = resourceSet.createResource(semanticModelURI);
+								final Resource res = resourceSet
+										.createResource(semanticModelURI);
 								/* Add the initial model object to the contents. */
 
 								if (rootObject != null) {
