@@ -16,23 +16,19 @@
 		<module>../org.occiware.clouddesigner.occi.gen.xml</module>
 		<module>../org.occiware.clouddesigner.occi.gen.xml.ui</module>
 		<module>../org.occiware.clouddesigner.occi</module>
-		<module>../org.occiware.clouddesigner.occi.xtext</module>
-		<module>../org.occiware.clouddesigner.occi.xtext.ui</module>
 		<module>../org.occiware.clouddesigner.occi.docker</module>
 		<module>../org.occiware.clouddesigner.occi.docker.connector</module>
 		<module>../org.occiware.clouddesigner.occi.docker.design</module>
 		<module>../org.occiware.clouddesigner.occi.docker.edit</module>
 		<module>../org.occiware.clouddesigner.occi.edit</module>
 		<module>../org.occiware.clouddesigner.occi.infrastructure</module>
-		<module>../org.occiware.clouddesigner.occi.infrastructure.connector</module>
-		<module>../org.occiware.clouddesigner.occi.infrastructure.design</module>
 		<module>../org.occiware.clouddesigner.occi.infrastructure.edit</module>
 		<module>../org.occiware.clouddesigner.feature</module>
 		<module>../org.occiware.clouddesigner.repository</module>
 	</modules>
 
 	<properties>
-		<tycho-version>0.20.0</tycho-version>
+		<tycho-version>0.23.0</tycho-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
