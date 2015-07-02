@@ -16,6 +16,8 @@
 		<module>../org.occiware.clouddesigner.occi.gen.xml</module>
 		<module>../org.occiware.clouddesigner.occi.gen.xml.ui</module>
 		<module>../org.occiware.clouddesigner.occi</module>
+		<module>../org.occiware.clouddesigner.occi.xtext</module>
+		<module>../org.occiware.clouddesigner.occi.xtext.ui</module>
 		<module>../org.occiware.clouddesigner.occi.docker</module>
 		<module>../org.occiware.clouddesigner.occi.docker.connector</module>
 		<module>../org.occiware.clouddesigner.occi.docker.design</module>
