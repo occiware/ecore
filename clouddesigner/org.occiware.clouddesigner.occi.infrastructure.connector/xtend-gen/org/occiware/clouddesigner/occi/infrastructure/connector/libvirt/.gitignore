@@ -7,3 +7,12 @@
 /.JCloudsManager.java._trace
 /.LibvirtExecutableModel.java._trace
 /.LibvirtManager.java._trace
+/ComputeStateMachine.java
+/ExecutablJcloudsModel.java
+/ExecutableInfrastructureFactory.java
+/ExecutableLibvirtModel.java
+/ExecutableMachine.java
+/ExecutableMachine_VirtualBox.java
+/JCloudsManager.java
+/LibvirtExecutableModel.java
+/LibvirtManager.java

@@ -39,22 +39,14 @@
 	<repositories>
 		<!-- configure p2 repository to resolve against -->
 		<repository>
-			<id>luna</id>
+			<id>mars</id>
 			<layout>p2</layout>
-			<url>http://download.eclipse.org/releases/luna</url>
+			<url>http://download.eclipse.org/releases/mars</url>
 		</repository>
 		<repository>
 			<id>k3</id>
 			<layout>p2</layout>
 			<url>http://www.kermeta.org/k3/update</url>
-		</repository>
-		<repository>
-			<!-- TODO investigate -->
-			<!-- should be covered by luna repo but for some reason occi.xtext needs 
-				it -->
-			<id>xtext-update-site</id>
-			<layout>p2</layout>
-			<url>http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/</url>
 		</repository>
 		<repository>
 			<id>mvnrepository</id>

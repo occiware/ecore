@@ -16,6 +16,7 @@ public class InfrastructureServices {
   public void start(final EObject eo) {
     try {
       IRunnableWithProgress runnable = new IRunnableWithProgress() {
+        @Override
         public void run(final IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
           if ((eo instanceof Machine)) {
             Machine machine = ((Machine) eo);
