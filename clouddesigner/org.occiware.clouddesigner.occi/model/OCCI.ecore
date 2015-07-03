@@ -31,7 +31,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="required" eType="#//Boolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="default" eType="#//String"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="#//String"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EDataType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EDataType"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="multiple_values" eType="#//Boolean"
         defaultValueLiteral="false"/>
   </eClassifiers>
@@ -152,7 +152,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="mixins" upperBound="-1"
         eType="#//Mixin" containment="true" eKeys="#//Category/term"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="types" upperBound="-1"
-        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EDataType"
+        eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EDataType"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Configuration">

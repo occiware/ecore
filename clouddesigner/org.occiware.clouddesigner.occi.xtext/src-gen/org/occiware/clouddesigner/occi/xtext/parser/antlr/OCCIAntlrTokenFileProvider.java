@@ -4,7 +4,6 @@
 package org.occiware.clouddesigner.occi.xtext.parser.antlr;
 
 import java.io.InputStream;
-
 import org.eclipse.xtext.parser.antlr.IAntlrTokenFileProvider;
 
 public class OCCIAntlrTokenFileProvider implements IAntlrTokenFileProvider {
