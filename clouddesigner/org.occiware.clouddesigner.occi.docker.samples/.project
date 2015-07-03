@@ -10,14 +10,8 @@
 			<arguments>
 			</arguments>
 		</buildCommand>
-		<buildCommand>
-			<name>org.eclipse.pde.SchemaBuilder</name>
-			<arguments>
-			</arguments>
-		</buildCommand>
 	</buildSpec>
 	<natures>
 		<nature>org.eclipse.sirius.nature.modelingproject</nature>
-		<nature>org.eclipse.pde.PluginNature</nature>
 	</natures>
 </projectDescription>
