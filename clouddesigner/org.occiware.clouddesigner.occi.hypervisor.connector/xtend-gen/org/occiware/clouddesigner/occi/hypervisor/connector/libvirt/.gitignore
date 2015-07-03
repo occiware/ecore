@@ -1,0 +1,11 @@
+/.Test.java._trace
+/.ComputeStateMachine.java._trace
+/.ExecutablJcloudsModel.java._trace
+/.ExecutableInfrastructureFactory.java._trace
+/.ExecutableLibvirtModel.java._trace
+/.ExecutableMachine.java._trace
+/.ExecutableMachine_VirtualBox.java._trace
+/.JCloudsManager.java._trace
+/.LibvirtExecutableModel.java._trace
+/.LibvirtManager.java._trace
+/.ExecutableHypervisorFactory.java._trace
