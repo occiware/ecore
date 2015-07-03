@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description" xmi:id="_Nq-eICGZEeWCAqrkIA96EQ" selectedViews="_PoxAgCGZEeWCAqrkIA96EQ" version="8.1.1">
+  <models xmi:type="description:Group" href="platform:/resource/org.occiware.clouddesigner.occi.hypervisor.design/description/hypervisor.odesign#/"/>
+  <models xmi:type="description:Environment" href="environment:/viewpoint#/"/>
+  <models xmi:type="ecore:EPackage" href="platform:/resource/org.occiware.clouddesigner.occi.hypervisor/model/Hypervisor.ecore#/"/>
+  <models xmi:type="ecore:EPackage" href="platform:/resource/org.occiware.clouddesigner.occi/model/OCCI.ecore#/"/>
+  <models xmi:type="ecore:EPackage" href="platform:/resource/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.ecore#/"/>
+  <models xmi:type="ecore:EPackage" href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_PoxAgCGZEeWCAqrkIA96EQ" initialized="true">
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/resource/org.occiware.clouddesigner.occi.hypervisor.design/description/hypervisor.odesign#//@ownedViewpoints[name='Hypervisor']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>
