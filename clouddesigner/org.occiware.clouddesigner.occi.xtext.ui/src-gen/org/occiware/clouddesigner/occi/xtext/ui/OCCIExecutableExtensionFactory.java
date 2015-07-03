@@ -4,10 +4,11 @@
 package org.occiware.clouddesigner.occi.xtext.ui;
 
 import org.eclipse.xtext.ui.guice.AbstractGuiceAwareExecutableExtensionFactory;
-import org.occiware.clouddesigner.occi.xtext.ui.internal.OCCIActivator;
 import org.osgi.framework.Bundle;
 
 import com.google.inject.Injector;
+
+import org.occiware.clouddesigner.occi.xtext.ui.internal.OCCIActivator;
 
 /**
  * This class was generated. Customizations should only happen in a newly

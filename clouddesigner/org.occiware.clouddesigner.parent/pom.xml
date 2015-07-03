@@ -7,24 +7,38 @@
 	<packaging>pom</packaging>
 
 	<modules>
-		<module>../org.occiware.clouddesigner.occi.docker.gen.conf</module>
-		<module>../org.occiware.clouddesigner.occi.docker.gen.conf.ui</module>
+		<!-- OCCI -->
+		<module>../org.occiware.clouddesigner.occi</module>
+		<module>../org.occiware.clouddesigner.occi.edit</module>
+		<module>../org.occiware.clouddesigner.occi.design</module>
+
+		<!-- OCCI generators -->
 		<module>../org.occiware.clouddesigner.occi.gen.curl</module>
 		<module>../org.occiware.clouddesigner.occi.gen.curl.ui</module>
 		<module>../org.occiware.clouddesigner.occi.gen.doc</module>
 		<module>../org.occiware.clouddesigner.occi.gen.doc.ui</module>
 		<module>../org.occiware.clouddesigner.occi.gen.xml</module>
 		<module>../org.occiware.clouddesigner.occi.gen.xml.ui</module>
-		<module>../org.occiware.clouddesigner.occi</module>
-		<module>../org.occiware.clouddesigner.occi.xtext</module>
-		<module>../org.occiware.clouddesigner.occi.xtext.ui</module>
-		<module>../org.occiware.clouddesigner.occi.docker</module>
-		<module>../org.occiware.clouddesigner.occi.docker.connector</module>
-		<module>../org.occiware.clouddesigner.occi.docker.design</module>
-		<module>../org.occiware.clouddesigner.occi.docker.edit</module>
-		<module>../org.occiware.clouddesigner.occi.edit</module>
+
+		<!-- Infrastructure -->
 		<module>../org.occiware.clouddesigner.occi.infrastructure</module>
 		<module>../org.occiware.clouddesigner.occi.infrastructure.edit</module>
+
+		<!-- Docker -->
+		<module>../org.occiware.clouddesigner.occi.docker</module>
+		<module>../org.occiware.clouddesigner.occi.docker.edit</module>
+		<module>../org.occiware.clouddesigner.occi.docker.connector</module>
+		<module>../org.occiware.clouddesigner.occi.docker.design</module>
+
+		<!-- Docker generators -->
+		<module>../org.occiware.clouddesigner.occi.docker.gen.conf</module>
+		<module>../org.occiware.clouddesigner.occi.docker.gen.conf.ui</module>
+		
+		<!-- OCCI Xtext -->
+		<module>../org.occiware.clouddesigner.occi.xtext</module>
+		<module>../org.occiware.clouddesigner.occi.xtext.ui</module>
+
+		<!-- Releng -->
 		<module>../org.occiware.clouddesigner.feature</module>
 		<module>../org.occiware.clouddesigner.repository</module>
 	</modules>
@@ -65,8 +79,12 @@
 				<artifactId>tycho-maven-plugin</artifactId>
 				<version>${tycho-version}</version>
 				<extensions>true</extensions>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>target-platform-configuration</artifactId>
+				<version>${tycho-version}</version>
 				<configuration>
-					<pomDependencies>consider</pomDependencies>
 					<environments>
 						<environment>
 							<os>win32</os>

@@ -3,6 +3,8 @@
  */
 package org.occiware.clouddesigner.occi.xtext.serializer;
 
+import com.google.inject.Inject;
+import com.google.inject.Provider;
 import org.eclipse.emf.common.util.BasicEMap.Entry;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EDataType;
@@ -10,9 +12,15 @@ import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.xtext.serializer.acceptor.ISemanticSequenceAcceptor;
 import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
+import org.eclipse.xtext.serializer.diagnostic.ISemanticSequencerDiagnosticProvider;
+import org.eclipse.xtext.serializer.diagnostic.ISerializationDiagnostic.Acceptor;
 import org.eclipse.xtext.serializer.sequencer.AbstractDelegatingSemanticSequencer;
+import org.eclipse.xtext.serializer.sequencer.GenericSequencer;
 import org.eclipse.xtext.serializer.sequencer.ISemanticNodeProvider.INodesForEObjectProvider;
+import org.eclipse.xtext.serializer.sequencer.ISemanticSequencer;
+import org.eclipse.xtext.serializer.sequencer.ITransientValueService;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
 import org.occiware.clouddesigner.occi.Action;
 import org.occiware.clouddesigner.occi.Attribute;
@@ -26,8 +34,6 @@ import org.occiware.clouddesigner.occi.OCCIPackage;
 import org.occiware.clouddesigner.occi.Resource;
 import org.occiware.clouddesigner.occi.xtext.services.OCCIGrammarAccess;
 
-import com.google.inject.Inject;
-
 @SuppressWarnings("all")
 public abstract class AbstractOCCISemanticSequencer extends AbstractDelegatingSemanticSequencer {
 
@@ -36,7 +42,24 @@ public abstract class AbstractOCCISemanticSequencer extends AbstractDelegatingSe
 	
 	@Override
 	public void createSequence(EObject context, EObject semanticObject) {
-		if(semanticObject.eClass().getEPackage() == OCCIPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
+		if(semanticObject.eClass().getEPackage() == EcorePackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
+			case EcorePackage.EANNOTATION:
+				sequence_DataTypeAnnotations(context, (EAnnotation) semanticObject); 
+				return; 
+			case EcorePackage.EDATA_TYPE:
+				sequence_DataTypeDecl(context, (EDataType) semanticObject); 
+				return; 
+			case EcorePackage.EENUM:
+				sequence_EnumTypeDecl(context, (EEnum) semanticObject); 
+				return; 
+			case EcorePackage.EENUM_LITERAL:
+				sequence_EnumLiteralDecl(context, (EEnumLiteral) semanticObject); 
+				return; 
+			case EcorePackage.ESTRING_TO_STRING_MAP_ENTRY:
+				sequence_DataTypeAnnotation(context, (Entry<?, ?>) semanticObject); 
+				return; 
+			}
+		else if(semanticObject.eClass().getEPackage() == OCCIPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
 			case OCCIPackage.ACTION:
 				sequence_ActionDecl(context, (Action) semanticObject); 
 				return; 
@@ -70,23 +93,6 @@ public abstract class AbstractOCCISemanticSequencer extends AbstractDelegatingSe
 				return; 
 			case OCCIPackage.RESOURCE:
 				sequence_ResourceDecl(context, (Resource) semanticObject); 
-				return; 
-			}
-		else if(semanticObject.eClass().getEPackage() == EcorePackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
-			case EcorePackage.EANNOTATION:
-				sequence_DataTypeAnnotations(context, (EAnnotation) semanticObject); 
-				return; 
-			case EcorePackage.EDATA_TYPE:
-				sequence_DataTypeDecl(context, (EDataType) semanticObject); 
-				return; 
-			case EcorePackage.EENUM:
-				sequence_EnumTypeDecl(context, (EEnum) semanticObject); 
-				return; 
-			case EcorePackage.EENUM_LITERAL:
-				sequence_EnumLiteralDecl(context, (EEnumLiteral) semanticObject); 
-				return; 
-			case EcorePackage.ESTRING_TO_STRING_MAP_ENTRY:
-				sequence_DataTypeAnnotation(context, (Entry<?, ?>) semanticObject); 
 				return; 
 			}
 		if (errorAcceptor != null) errorAcceptor.accept(diagnosticProvider.createInvalidContextOrTypeDiagnostic(semanticObject, context));
