@@ -13,7 +13,6 @@ Require-Bundle: org.eclipse.core.runtime,
  org.occiware.clouddesigner.occi.hypervisor;visibility:=reexport,
  org.eclipse.emf.edit;visibility:=reexport,
  org.occiware.clouddesigner.occi.infrastructure;visibility:=reexport,
- org.occiware.clouddesigner.occi.infrastructure.edit;visibility:=reexport,
  org.occiware.clouddesigner.occi;visibility:=reexport,
  org.occiware.clouddesigner.occi.edit;visibility:=reexport
 Bundle-ActivationPolicy: lazy
