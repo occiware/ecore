@@ -7,7 +7,7 @@
   <models xmi:type="ecore:EPackage" href="platform:/resource/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.ecore#/"/>
   <models xmi:type="ecore:EPackage" href="platform:/resource/org.occiware.clouddesigner.occi/model/OCCI.ecore#/"/>
   <models xmi:type="ecore:EPackage" href="http://www.eclipse.org/emf/2002/Ecore#/"/>
-  <models xmi:type="occi:Configuration" href="first-infrastructure-configuration.xmi#/"/>
+  <models xmi:type="ecore:EPackage" href="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#/"/>
   <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_YuYs4CAHEeW0AtJp08KE7w" initialized="true">
     <viewpoint xmi:type="description:Viewpoint" href="platform:/resource/org.occiware.clouddesigner.occi.infrastructure.design/description/infrastructure.odesign#//@ownedViewpoints[name='Infrastructure']"/>
   </ownedViews>
@@ -18,11 +18,12 @@
           <styles xmi:type="notation:DiagramStyle" xmi:id="_iuNNwiCQEeWE6eLzh85tsA"/>
         </data>
       </ownedAnnotationEntries>
-      <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure.design/description/infrastructure.odesign#//@ownedViewpoints[name='Infrastructure']/@ownedRepresentations[name='Infrastructure%20configuration']"/>
+      <description xmi:type="description_1:DiagramDescription" href="platform:/resource/org.occiware.clouddesigner.occi.infrastructure.design/description/infrastructure.odesign#//@ownedViewpoints[name='Infrastructure']/@ownedRepresentations[name='Infrastructure%20configuration']"/>
       <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_iuCOoCCQEeWE6eLzh85tsA"/>
-      <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure.design/description/infrastructure.odesign#//@ownedViewpoints[name='Infrastructure']/@ownedRepresentations[name='Infrastructure%20configuration']/@defaultLayer"/>
+      <activatedLayers xmi:type="description_1:Layer" href="platform:/resource/org.occiware.clouddesigner.occi.infrastructure.design/description/infrastructure.odesign#//@ownedViewpoints[name='Infrastructure']/@ownedRepresentations[name='Infrastructure%20configuration']/@defaultLayer"/>
       <target xmi:type="occi:Configuration" href="first-infrastructure-configuration.xmi#/"/>
     </ownedRepresentations>
-    <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure.design/description/infrastructure.odesign#//@ownedViewpoints[name='Infrastructure']"/>
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/resource/org.occiware.clouddesigner.occi.infrastructure.design/description/infrastructure.odesign#//@ownedViewpoints[name='Infrastructure']"/>
   </ownedViews>
+  <models xmi:type="occi:Configuration" href="first-infrastructure-configuration.xmi#/"/>
 </viewpoint:DAnalysis>
