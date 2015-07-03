@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description" xmi:id="_X_LdgCAHEeW0AtJp08KE7w" selectedViews="_YuYs4CAHEeW0AtJp08KE7w" version="8.1.1">
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:occi="http://schemas.ogf.org/occi" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description" xmi:id="_X_LdgCAHEeW0AtJp08KE7w" selectedViews="_hF-rsCCQEeWE6eLzh85tsA" version="8.1.1">
   <models xmi:type="description:Group" href="platform:/resource/org.occiware.clouddesigner.occi.infrastructure.design/description/infrastructure.odesign#/"/>
   <models xmi:type="description:Environment" href="environment:/viewpoint#/"/>
   <models xmi:type="ecore:EPackage" href="platform:/resource/org.occiware.clouddesigner.occi.infrastructure.connector/src/model/Hypervisor.ecore#/"/>
@@ -7,7 +7,22 @@
   <models xmi:type="ecore:EPackage" href="platform:/resource/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.ecore#/"/>
   <models xmi:type="ecore:EPackage" href="platform:/resource/org.occiware.clouddesigner.occi/model/OCCI.ecore#/"/>
   <models xmi:type="ecore:EPackage" href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+  <models xmi:type="occi:Configuration" href="first-infrastructure-configuration.xmi#/"/>
   <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_YuYs4CAHEeW0AtJp08KE7w" initialized="true">
     <viewpoint xmi:type="description:Viewpoint" href="platform:/resource/org.occiware.clouddesigner.occi.infrastructure.design/description/infrastructure.odesign#//@ownedViewpoints[name='Infrastructure']"/>
+  </ownedViews>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_hF-rsCCQEeWE6eLzh85tsA" initialized="true">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_iuBnkCCQEeWE6eLzh85tsA" name="new Infrastructure configuration">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_iuNNwCCQEeWE6eLzh85tsA" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_iuNNwSCQEeWE6eLzh85tsA" type="Sirius" element="_iuBnkCCQEeWE6eLzh85tsA" measurementUnit="Pixel">
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_iuNNwiCQEeWE6eLzh85tsA"/>
+        </data>
+      </ownedAnnotationEntries>
+      <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure.design/description/infrastructure.odesign#//@ownedViewpoints[name='Infrastructure']/@ownedRepresentations[name='Infrastructure%20configuration']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_iuCOoCCQEeWE6eLzh85tsA"/>
+      <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure.design/description/infrastructure.odesign#//@ownedViewpoints[name='Infrastructure']/@ownedRepresentations[name='Infrastructure%20configuration']/@defaultLayer"/>
+      <target xmi:type="occi:Configuration" href="first-infrastructure-configuration.xmi#/"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure.design/description/infrastructure.odesign#//@ownedViewpoints[name='Infrastructure']"/>
   </ownedViews>
 </viewpoint:DAnalysis>
