@@ -1,5 +1,6 @@
 package org.occiware.clouddesigner.occi.infrastructure.design.services;
 
+import hypervisor.HypervisorFactory;
 import hypervisor.Machine;
 import java.lang.reflect.InvocationTargetException;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -10,13 +11,15 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.InputOutput;
+import org.occiware.clouddesigner.occi.infrastructure.connector.libvirt.ExecutableInfrastructureFactory;
 
 @SuppressWarnings("all")
 public class InfrastructureServices {
+  private final HypervisorFactory init = ExecutableInfrastructureFactory.init();
+  
   public void start(final EObject eo) {
     try {
       IRunnableWithProgress runnable = new IRunnableWithProgress() {
-        @Override
         public void run(final IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
           if ((eo instanceof Machine)) {
             Machine machine = ((Machine) eo);
