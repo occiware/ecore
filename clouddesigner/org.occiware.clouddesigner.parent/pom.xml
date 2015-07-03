@@ -20,9 +20,11 @@
 		<module>../org.occiware.clouddesigner.occi.gen.xml</module>
 		<module>../org.occiware.clouddesigner.occi.gen.xml.ui</module>
 
-		<!-- Infrastructure -->
-		<module>../org.occiware.clouddesigner.occi.infrastructure</module>
-		<module>../org.occiware.clouddesigner.occi.infrastructure.edit</module>
+		<!-- Hypervisor -->
+		<module>../org.occiware.clouddesigner.occi.hypervisor</module>
+		<module>../org.occiware.clouddesigner.occi.hypervisor.connector</module>
+		<module>../org.occiware.clouddesigner.occi.hypervisor.design</module>
+		<module>../org.occiware.clouddesigner.occi.hypervisor.samples</module>
 
 		<!-- Docker -->
 		<module>../org.occiware.clouddesigner.occi.docker</module>
