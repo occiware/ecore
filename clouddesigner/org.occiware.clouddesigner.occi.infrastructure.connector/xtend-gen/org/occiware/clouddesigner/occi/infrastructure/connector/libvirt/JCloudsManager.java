@@ -44,14 +44,12 @@ public abstract class JCloudsManager extends ComputeStateMachine<Compute> {
   /**
    * Start JClouds node.
    */
-  @Override
   public void start_execute() {
   }
   
   /**
    * Stop a JClouds node.
    */
-  @Override
   public void stop_execute(final StopMethod method) {
     boolean _equals = Objects.equal(method, StopMethod.GRACEFUL);
     if (_equals) {
@@ -64,7 +62,6 @@ public abstract class JCloudsManager extends ComputeStateMachine<Compute> {
   /**
    * Restart a JClouds node.
    */
-  @Override
   public void restart_execute(final RestartMethod method) {
     String _hostname = this.compute.getHostname();
     String _plus = ("EXECUTE COMMAND:  machine restart " + _hostname);
@@ -74,7 +71,6 @@ public abstract class JCloudsManager extends ComputeStateMachine<Compute> {
   /**
    * Suspend a JClouds node.
    */
-  @Override
   public void suspend_execute(final SuspendMethod method) {
     String _hostname = this.compute.getHostname();
     String _plus = ("EXECUTE COMMAND:  machine suspend " + _hostname);

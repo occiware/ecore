@@ -53,7 +53,6 @@ public abstract class LibvirtManager extends ComputeStateMachine<Machine> {
   /**
    * Start Libvirt node.
    */
-  @Override
   public void start_execute() {
     final DomainMarshaller domainMarshaller = new DomainMarshaller();
     domainMarshaller.loadUri();
@@ -93,7 +92,6 @@ public abstract class LibvirtManager extends ComputeStateMachine<Machine> {
   /**
    * Stop a libvirt node.
    */
-  @Override
   public void stop_execute(final StopMethod method) {
     boolean _equals = Objects.equal(method, StopMethod.GRACEFUL);
     if (_equals) {
@@ -106,7 +104,6 @@ public abstract class LibvirtManager extends ComputeStateMachine<Machine> {
   /**
    * Restart a libvirt node.
    */
-  @Override
   public void restart_execute(final RestartMethod method) {
     String _hostname = this.compute.getHostname();
     String _plus = ("EXECUTE COMMAND:  machine restart " + _hostname);
@@ -116,7 +113,6 @@ public abstract class LibvirtManager extends ComputeStateMachine<Machine> {
   /**
    * Suspend a libvirt node.
    */
-  @Override
   public void suspend_execute(final SuspendMethod method) {
     String _hostname = this.compute.getHostname();
     String _plus = ("EXECUTE COMMAND:  machine suspend " + _hostname);
