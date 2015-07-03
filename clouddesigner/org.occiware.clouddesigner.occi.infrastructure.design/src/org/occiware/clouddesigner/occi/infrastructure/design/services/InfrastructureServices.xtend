@@ -8,8 +8,12 @@ import hypervisor.Machine
 import org.eclipse.jface.dialogs.ProgressMonitorDialog
 import org.eclipse.swt.widgets.Shell
 import org.eclipse.swt.widgets.Display
+import org.occiware.clouddesigner.occi.infrastructure.connector.libvirt.ExecutableInfrastructureFactory
 
 class InfrastructureServices {
+	// Initialize the executable Docker factory.
+	val init = ExecutableInfrastructureFactory.init()
+	
 	def void start(EObject eo) {
 		var runnable = new IRunnableWithProgress() {
 			override run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {

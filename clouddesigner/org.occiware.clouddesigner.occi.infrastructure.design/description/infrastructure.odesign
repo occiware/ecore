@@ -37,7 +37,7 @@
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </subNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="10" arcHeight="10" borderSizeComputationExpression="5">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -85,7 +85,7 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Configuration">
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Disk" nodeMappings="//@ownedViewpoints[name='Infrastructure']/@ownedRepresentations[name='Infrastructure%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Disk']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Disk" nodeMappings="//@ownedViewpoints[name='Infrastructure']/@ownedRepresentations[name='Infrastructure%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Disk']" iconPath="/org.occiware.clouddesigner.occi.infrastructure.connector.edit/icons/full/obj16/Disk.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -100,7 +100,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Interface" nodeMappings="//@ownedViewpoints[name='Infrastructure']/@ownedRepresentations[name='Infrastructure%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Interface']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Interface" nodeMappings="//@ownedViewpoints[name='Infrastructure']/@ownedRepresentations[name='Infrastructure%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Interface']" iconPath="/org.occiware.clouddesigner.occi.infrastructure.connector.edit/icons/full/obj16/Interface.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -116,7 +116,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Filesystem" nodeMappings="//@ownedViewpoints[name='Infrastructure']/@ownedRepresentations[name='Infrastructure%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Filesystem']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Filesystem" nodeMappings="//@ownedViewpoints[name='Infrastructure']/@ownedRepresentations[name='Infrastructure%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Filesystem']" iconPath="/org.occiware.clouddesigner.occi.infrastructure.connector.edit/icons/full/obj16/Filesystem.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -132,7 +132,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Parallel" nodeMappings="//@ownedViewpoints[name='Infrastructure']/@ownedRepresentations[name='Infrastructure%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Parallel']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Parallel" nodeMappings="//@ownedViewpoints[name='Infrastructure']/@ownedRepresentations[name='Infrastructure%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Parallel']" iconPath="/org.occiware.clouddesigner.occi.infrastructure.connector.edit/icons/full/obj16/Parallel.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -148,7 +148,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Serial" nodeMappings="//@ownedViewpoints[name='Infrastructure']/@ownedRepresentations[name='Infrastructure%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Serial']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Serial" nodeMappings="//@ownedViewpoints[name='Infrastructure']/@ownedRepresentations[name='Infrastructure%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Serial']" iconPath="/org.occiware.clouddesigner.occi.infrastructure.connector.edit/icons/full/obj16/Serial.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -164,11 +164,13 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Virtual Box" containerMappings="//@ownedViewpoints[name='Infrastructure']/@ownedRepresentations[name='Infrastructure%20configuration']/@defaultLayer/@containerMappings[name='Machine']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Virtual Box" containerMappings="//@ownedViewpoints[name='Infrastructure']/@ownedRepresentations[name='Infrastructure%20configuration']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.infrastructure.connector.edit/icons/full/obj16/Machine_VirtualBox.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="hypervisor.Machine_VirtualBox" referenceName="resources"/>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="hypervisor.Machine_VirtualBox" referenceName="resources">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container"/>
+              </firstModelOperations>
             </initialOperation>
           </ownedTools>
         </toolSections>
