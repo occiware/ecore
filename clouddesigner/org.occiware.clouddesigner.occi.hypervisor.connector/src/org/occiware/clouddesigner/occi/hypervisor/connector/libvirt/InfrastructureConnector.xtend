@@ -24,9 +24,9 @@ import org.occiware.clouddesigner.occi.infrastructure.ComputeStatus
 import org.occiware.clouddesigner.occi.infrastructure.RestartMethod
 import org.occiware.clouddesigner.occi.infrastructure.StopMethod
 import org.occiware.clouddesigner.occi.infrastructure.SuspendMethod
-import org.occiware.clouddesigner.occi.infrastructure.connector.libvirt.util.DomainMarshaller
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import org.occiware.clouddesigner.occi.hypervisor.connector.libvirt.util.DomainMarshaller
 
 /**
  * This class overrides the generated EMF factory of the  package.
