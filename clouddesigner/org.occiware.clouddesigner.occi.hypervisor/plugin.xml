@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated Hypervisor -->
+      <package
+            uri="http://occiware.org/hypervisor"
+            class="org.occiware.clouddesigner.occi.hypervisor.HypervisorPackage"
+            genModel="model/Hypervisor.genmodel"/>
+   </extension>
+   <extension
+         point="org.occiware.clouddesigner.occi.occie">
+      <occie
+            file="model/Hypervisor.occie"
+            scheme="http://occiware.org/hypervisor#">
+      </occie>
+   </extension>
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <parser
+            type="hypervisor"
+            class="org.occiware.clouddesigner.occi.util.OCCIResourceFactoryImpl"/>
+   </extension>
+
+</plugin>
