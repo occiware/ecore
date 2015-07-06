@@ -12,9 +12,14 @@
 package org.occiware.clouddesigner.occi.hypervisor.connector.libvirt;
 
 import com.google.common.base.Objects;
+import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.InputOutput;
+import org.libvirt.Connect;
 import org.occiware.clouddesigner.occi.hypervisor.Machine;
+import org.occiware.clouddesigner.occi.hypervisor.connector.generated.Domain;
 import org.occiware.clouddesigner.occi.hypervisor.connector.libvirt.ComputeStateMachine;
+import org.occiware.clouddesigner.occi.hypervisor.connector.libvirt.util.DomainMarshaller;
+import org.occiware.clouddesigner.occi.infrastructure.ComputeStatus;
 import org.occiware.clouddesigner.occi.infrastructure.RestartMethod;
 import org.occiware.clouddesigner.occi.infrastructure.StopMethod;
 import org.occiware.clouddesigner.occi.infrastructure.SuspendMethod;
@@ -49,14 +54,39 @@ public abstract class LibvirtManager extends ComputeStateMachine<Machine> {
    * Start Libvirt node.
    */
   public void start_execute() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nDomainMarshaller cannot be resolved."
-      + "\nloadUri cannot be resolved"
-      + "\nuri cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\ncreateComputeDescription cannot be resolved"
-      + "\nasString cannot be resolved"
-      + "\ngetUuid cannot be resolved");
+    final DomainMarshaller domainMarshaller = new DomainMarshaller();
+    domainMarshaller.loadUri();
+    Connect connection = null;
+    String _driver = this.getDriver();
+    final String libvirtURI = domainMarshaller.uri.get(_driver);
+    boolean _notEquals = (!Objects.equal(libvirtURI, null));
+    if (_notEquals) {
+      LibvirtManager.LOGGER.info("Hypervisor URI is: {}", libvirtURI);
+      try {
+        Connect _connect = new Connect(libvirtURI);
+        connection = _connect;
+        final Domain vmDomain = domainMarshaller.createComputeDescription(this.compute);
+        String _uuid = vmDomain.getUuid();
+        String domainDescription = domainMarshaller.asString(_uuid);
+        LibvirtManager.LOGGER.info(("Domain description: " + domainDescription));
+        final org.libvirt.Domain domain = connection.domainDefineXML(domainDescription);
+        String _uUIDString = domain.getUUIDString();
+        LibvirtManager.LOGGER.debug("VM with id {} is created.", _uUIDString);
+        domain.create();
+        String _id = this.compute.getId();
+        LibvirtManager.LOGGER.info("VM with id {} is running.", _id);
+        LibvirtManager.LOGGER.debug("closing connection to libvirt");
+        connection.close();
+      } catch (final Throwable _t) {
+        if (_t instanceof Exception) {
+          final Exception e = (Exception)_t;
+          LibvirtManager.LOGGER.error("Error while processing. ", e);
+          this.compute.setState(ComputeStatus.INACTIVE);
+        } else {
+          throw Exceptions.sneakyThrow(_t);
+        }
+      }
+    }
   }
   
   /**

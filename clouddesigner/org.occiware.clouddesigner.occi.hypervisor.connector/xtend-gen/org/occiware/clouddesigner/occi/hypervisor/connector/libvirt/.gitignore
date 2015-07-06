@@ -9,3 +9,12 @@
 /.LibvirtExecutableModel.java._trace
 /.LibvirtManager.java._trace
 /.ExecutableHypervisorFactory.java._trace
+/ComputeStateMachine.java
+/ExecutablJcloudsModel.java
+/ExecutableHypervisorFactory.java
+/ExecutableLibvirtModel.java
+/ExecutableMachine.java
+/ExecutableMachine_VirtualBox.java
+/JCloudsManager.java
+/LibvirtExecutableModel.java
+/LibvirtManager.java
