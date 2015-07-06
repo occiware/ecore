@@ -7,7 +7,7 @@ Bundle-ClassPath: .
 Bundle-Activator: org.occiware.clouddesigner.occi.provider.OCCIEditPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.occiware.clouddesigner.occi.provider
 Require-Bundle: org.eclipse.core.runtime,
  org.occiware.clouddesigner.occi;visibility:=reexport,
