@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:occi="http://schemas.ogf.org/occi" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://schemas.ogf.org/occi platform:/resource/org.occiware.clouddesigner.occi/model/OCCI.ecore" xmi:id="_Nq-eICGZEeWCAqrkIA96EQ" selectedViews="_PoxAgCGZEeWCAqrkIA96EQ" version="10.0.0.201505222000">
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:occi="http://schemas.ogf.org/occi" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description" xmi:id="_Nq-eICGZEeWCAqrkIA96EQ" selectedViews="_MJ_NQCSeEeWTs4j2Au1-Bw" version="10.0.0.201505222000">
   <semanticResources>platform:/resource/org.occiware.clouddesigner.occi.hypervisor.design/description/hypervisor.odesign</semanticResources>
   <semanticResources>environment:/viewpoint</semanticResources>
   <semanticResources>platform:/resource/org.occiware.clouddesigner.occi.hypervisor/model/Hypervisor.ecore</semanticResources>
@@ -7,6 +7,7 @@
   <semanticResources>platform:/resource/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.ecore</semanticResources>
   <semanticResources>http://www.eclipse.org/emf/2002/Ecore</semanticResources>
   <semanticResources>first-hypervisor-configuration.xmi</semanticResources>
+  <semanticResources>platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore</semanticResources>
   <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_PoxAgCGZEeWCAqrkIA96EQ">
     <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_l5vY8CPuEeWc25KQFRchgw" name="new Hypervisor configuration">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_l5wnECPuEeWc25KQFRchgw" source="DANNOTATION_CUSTOMIZATION_KEY">
@@ -23,5 +24,22 @@
       <target xmi:type="occi:Configuration" href="first-hypervisor-configuration.xmi#/"/>
     </ownedRepresentations>
     <viewpoint xmi:type="description:Viewpoint" href="platform:/resource/org.occiware.clouddesigner.occi.hypervisor.design/description/hypervisor.odesign#//@ownedViewpoints[name='Hypervisor']"/>
+  </ownedViews>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_MJ_NQCSeEeWTs4j2Au1-Bw">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_NZJIACSeEeWTs4j2Au1-Bw" name="new Hypervisor configuration">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_NZJIASSeEeWTs4j2Au1-Bw" source="DANNOTATION_CUSTOMIZATION_KEY">
+        <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_NZJIAiSeEeWTs4j2Au1-Bw"/>
+      </ownedAnnotationEntries>
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_NZlz8CSeEeWTs4j2Au1-Bw" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_NZlz8SSeEeWTs4j2Au1-Bw" type="Sirius" element="_NZJIACSeEeWTs4j2Au1-Bw" measurementUnit="Pixel">
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_NZlz8iSeEeWTs4j2Au1-Bw"/>
+        </data>
+      </ownedAnnotationEntries>
+      <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.hypervisor.design/description/hypervisor.odesign#//@ownedViewpoints[name='Hypervisor']/@ownedRepresentations[name='Hypervisor%20configuration']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_NZJIAySeEeWTs4j2Au1-Bw"/>
+      <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.occiware.clouddesigner.occi.hypervisor.design/description/hypervisor.odesign#//@ownedViewpoints[name='Hypervisor']/@ownedRepresentations[name='Hypervisor%20configuration']/@defaultLayer"/>
+      <target xmi:type="occi:Configuration" href="first-hypervisor-configuration.xmi#/"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.occiware.clouddesigner.occi.hypervisor.design/description/hypervisor.odesign#//@ownedViewpoints[name='Hypervisor']"/>
   </ownedViews>
 </viewpoint:DAnalysis>
