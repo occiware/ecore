@@ -7,6 +7,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.occiware.clouddesigner.occi.OCCIPackage;
@@ -187,6 +188,7 @@ public class HypervisorPackageImpl extends EPackageImpl implements HypervisorPac
 		isInited = true;
 
 		// Initialize simple dependencies
+		EcorePackage.eINSTANCE.eClass();
 		InfrastructurePackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects

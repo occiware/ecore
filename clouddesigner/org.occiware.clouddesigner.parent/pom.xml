@@ -26,9 +26,9 @@
 		
 		<!-- Hypervisor -->
 		<module>../org.occiware.clouddesigner.occi.hypervisor</module>
+		<module>../org.occiware.clouddesigner.occi.hypervisor.edit</module>
 		<module>../org.occiware.clouddesigner.occi.hypervisor.connector</module>
 		<module>../org.occiware.clouddesigner.occi.hypervisor.design</module>
-		<module>../org.occiware.clouddesigner.occi.hypervisor.samples</module>
 
 		<!-- Docker -->
 		<module>../org.occiware.clouddesigner.occi.docker</module>

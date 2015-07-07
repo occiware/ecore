@@ -9,9 +9,9 @@
     <relativePath>../org.occiware.clouddesigner.parent/pom.xml</relativePath>
   </parent>
   <groupId>Clouddesigner</groupId>
-  <artifactId>org.occiware.clouddesigner.occi.hypervisor.samples</artifactId>
+  <artifactId>org.occiware.clouddesigner.occi.hypervisor.edit</artifactId>
   <version>0.1.0-SNAPSHOT</version>
-  <name>org.occiware.clouddesigner.occi.hypervisor.samples</name>
+  <name>org.occiware.clouddesigner.occi.hypervisor.edit</name>
   <packaging>eclipse-plugin</packaging>
   <url>http://occiware.org</url>
 </project>

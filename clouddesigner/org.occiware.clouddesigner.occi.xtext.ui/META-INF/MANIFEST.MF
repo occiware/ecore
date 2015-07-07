@@ -20,7 +20,7 @@ Require-Bundle: org.eclipse.xtext.ui,
  org.eclipse.xtext.xbase.ui,
  org.eclipse.jdt.debug.ui
 Import-Package: org.apache.log4j
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.occiware.clouddesigner.occi.xtext.ui.quickfix,
  org.occiware.clouddesigner.occi.xtext.ui.contentassist,
  org.occiware.clouddesigner.occi.xtext.ui.internal,

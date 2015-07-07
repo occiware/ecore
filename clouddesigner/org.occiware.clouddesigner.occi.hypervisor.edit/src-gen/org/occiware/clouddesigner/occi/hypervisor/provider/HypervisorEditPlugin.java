@@ -6,6 +6,7 @@ import org.eclipse.emf.common.EMFPlugin;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 
+import org.eclipse.emf.ecore.provider.EcoreEditPlugin;
 import org.occiware.clouddesigner.occi.infrastructure.provider.InfrastructureEditPlugin;
 
 import org.occiware.clouddesigner.occi.provider.OCCIEditPlugin;
@@ -42,6 +43,7 @@ public final class HypervisorEditPlugin extends EMFPlugin {
 	public HypervisorEditPlugin() {
 		super
 		  (new ResourceLocator [] {
+		     EcoreEditPlugin.INSTANCE,
 		     InfrastructureEditPlugin.INSTANCE,
 		     OCCIEditPlugin.INSTANCE,
 		   });

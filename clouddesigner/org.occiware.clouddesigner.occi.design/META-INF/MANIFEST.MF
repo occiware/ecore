@@ -20,5 +20,5 @@ Require-Bundle: org.eclipse.ui,
  org.occiware.clouddesigner.occi.edit,
  org.eclipse.pde.ui
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 

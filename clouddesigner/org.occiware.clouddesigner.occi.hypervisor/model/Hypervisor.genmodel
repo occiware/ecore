@@ -4,7 +4,7 @@
     editDirectory="/org.occiware.clouddesigner.occi.hypervisor.edit/src-gen" modelPluginID="org.occiware.clouddesigner.occi.hypervisor"
     modelName="Hypervisor" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" copyrightFields="false"
-    usedGenPackages="../../org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.genmodel#//infrastructure ../../org.occiware.clouddesigner.occi/model/OCCI.genmodel#//occi"
+    usedGenPackages="../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.genmodel#//infrastructure ../../org.occiware.clouddesigner.occi/model/OCCI.genmodel#//occi"
     operationReflection="true" importOrganizing="true">
   <foreignModel>Hypervisor.ecore</foreignModel>
   <genPackages prefix="Hypervisor" basePackage="org.occiware.clouddesigner.occi" disposableProviderFactory="true"

@@ -25,27 +25,33 @@ public class ExecutableMachine extends MachineImpl {
    * The hypervisor manager.
    */
   private final LibvirtManager manager = new LibvirtManager(this) {
+    @Override
     public String getDriver() {
       return "vbox";
     }
     
+    @Override
     public void appendHypervisorParameters(final String sb) {
       throw new UnsupportedOperationException();
     }
   };
   
+  @Override
   public void start() {
     this.manager.start();
   }
   
+  @Override
   public void stop(final StopMethod method) {
     this.manager.stop(method);
   }
   
+  @Override
   public void restart(final RestartMethod method) {
     this.manager.restart(method);
   }
   
+  @Override
   public void suspend(final SuspendMethod method) {
     this.manager.suspend(method);
   }

@@ -44,6 +44,7 @@ public class ExecutableHypervisorFactory extends HypervisorFactoryImpl {
   /**
    * Create an executable Machine instance.
    */
+  @Override
   public Machine createMachine() {
     Class<? extends ExecutableHypervisorFactory> _class = this.getClass();
     String _name = _class.getName();
@@ -55,6 +56,7 @@ public class ExecutableHypervisorFactory extends HypervisorFactoryImpl {
   /**
    * Create an executable Machine_VirtualBox instance.
    */
+  @Override
   public Machine_VirtualBox createMachine_VirtualBox() {
     Class<? extends ExecutableHypervisorFactory> _class = this.getClass();
     String _name = _class.getName();
