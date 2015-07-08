@@ -7,7 +7,7 @@ Bundle-ClassPath: .
 Bundle-Activator: org.occiware.clouddesigner.occi.hypervisor.provider.HypervisorEditPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.occiware.clouddesigner.occi.hypervisor.provider
 Require-Bundle: org.eclipse.core.runtime,
  org.occiware.clouddesigner.occi.hypervisor;visibility:=reexport,
