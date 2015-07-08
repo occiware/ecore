@@ -337,4 +337,32 @@ litigation.
          version="0.0.0"
          unpack="false"/>
 
+   <plugin
+         id="org.occiware.clouddesigner.occi.hypervisor"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.occiware.clouddesigner.occi.hypervisor.connector"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.occiware.clouddesigner.occi.hypervisor.design"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.occiware.clouddesigner.occi.hypervisor.edit"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
 </feature>

@@ -47,6 +47,8 @@
 		<!-- Releng -->
 		<module>../org.occiware.clouddesigner.feature</module>
 		<module>../org.occiware.clouddesigner.repository</module>
+		<module>../org.occiware.clouddesigner.dependencies</module>
+		<module>../org.occiware.clouddesigner.product</module>
 	</modules>
 
 	<properties>
