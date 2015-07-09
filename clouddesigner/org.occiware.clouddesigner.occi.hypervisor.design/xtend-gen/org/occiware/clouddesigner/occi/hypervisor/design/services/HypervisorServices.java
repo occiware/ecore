@@ -13,6 +13,7 @@ import org.occiware.clouddesigner.occi.AbstractOCCIKindResolver;
 import org.occiware.clouddesigner.occi.hypervisor.HypervisorFactory;
 import org.occiware.clouddesigner.occi.hypervisor.Machine;
 import org.occiware.clouddesigner.occi.hypervisor.connector.libvirt.ExecutableHypervisorFactory;
+import org.occiware.clouddesigner.occi.hypervisor.connector.libvirt.ExecutableHypervisorModel;
 
 @SuppressWarnings("all")
 public class HypervisorServices extends AbstractOCCIKindResolver {
@@ -25,7 +26,30 @@ public class HypervisorServices extends AbstractOCCIKindResolver {
         public void run(final IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
           if ((eo instanceof Machine)) {
             Machine machine = ((Machine) eo);
+            final ExecutableHypervisorModel main = new ExecutableHypervisorModel(machine);
+            main.start();
             InputOutput.<String>println("Start button is activated ...");
+          }
+        }
+      };
+      Shell _shell = this.getShell();
+      ProgressMonitorDialog dialog = new ProgressMonitorDialog(_shell);
+      dialog.run(false, true, runnable);
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  public void stop(final EObject eo) {
+    try {
+      IRunnableWithProgress runnable = new IRunnableWithProgress() {
+        @Override
+        public void run(final IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+          if ((eo instanceof Machine)) {
+            Machine machine = ((Machine) eo);
+            final ExecutableHypervisorModel main = new ExecutableHypervisorModel(machine);
+            main.stop();
+            InputOutput.<String>println("Stop button is activated ...");
           }
         }
       };
