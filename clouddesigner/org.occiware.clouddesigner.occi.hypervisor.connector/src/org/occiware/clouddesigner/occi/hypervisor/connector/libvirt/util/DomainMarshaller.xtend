@@ -66,6 +66,7 @@ class DomainMarshaller {
 //		domain.type = compute.driver
 		domain.setName(compute.name)
 		domain.setUuid(id)
+		compute.uuid = id
 		domain.setMemory(Math.round(compute.memory))
 		domain.setCurrentMemory(Math.round(compute.memory))
 		domain.setVcpu(compute.cores)
