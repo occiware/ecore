@@ -27,7 +27,7 @@ public class LibvirtExecutableModel {
     ExecutableHypervisorFactory.init();
     final HypervisorFactory factory = HypervisorPackage.eINSTANCE.getHypervisorFactory();
     final Machine_VirtualBox machine = factory.createMachine_VirtualBox();
-    machine.setName("libvirt-machine");
+    machine.setName("libvirt-machine-b");
     String _id = machine.getId();
     machine.setHostname(_id);
     machine.setMemory(654321f);

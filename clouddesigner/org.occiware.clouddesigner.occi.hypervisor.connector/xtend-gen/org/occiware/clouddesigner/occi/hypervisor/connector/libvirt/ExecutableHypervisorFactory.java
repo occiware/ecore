@@ -60,7 +60,7 @@ public class ExecutableHypervisorFactory extends HypervisorFactoryImpl {
   public Machine_VirtualBox createMachine_VirtualBox() {
     Class<? extends ExecutableHypervisorFactory> _class = this.getClass();
     String _name = _class.getName();
-    String _plus = (_name + ":createCompute()");
+    String _plus = (_name + ":createMachine_VirtualBox()");
     InputOutput.<String>println(_plus);
     return new ExecutableMachine_VirtualBox();
   }

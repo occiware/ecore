@@ -74,6 +74,7 @@ public class DomainMarshaller {
     String _name = compute.getName();
     domain.setName(_name);
     domain.setUuid(id);
+    compute.setUuid(id);
     float _memory = compute.getMemory();
     int _round = Math.round(_memory);
     domain.setMemory(_round);

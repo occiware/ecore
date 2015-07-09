@@ -11,7 +11,7 @@
  */
 package org.occiware.clouddesigner.occi.hypervisor.connector.libvirt;
 
-import org.occiware.clouddesigner.occi.hypervisor.connector.libvirt.LibvirtManager;
+import org.occiware.clouddesigner.occi.hypervisor.connector.libvirt.HypervisorManager;
 import org.occiware.clouddesigner.occi.hypervisor.impl.MachineImpl;
 import org.occiware.clouddesigner.occi.infrastructure.RestartMethod;
 import org.occiware.clouddesigner.occi.infrastructure.StopMethod;
@@ -24,7 +24,7 @@ public class ExecutableMachine extends MachineImpl {
   /**
    * The hypervisor manager.
    */
-  private final LibvirtManager manager = new LibvirtManager(this) {
+  private final HypervisorManager manager = new HypervisorManager(this) {
     @Override
     public String getDriver() {
       return "vbox";
