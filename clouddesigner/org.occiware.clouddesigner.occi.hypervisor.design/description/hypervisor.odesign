@@ -96,7 +96,7 @@
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Contains" referenceName="links" variableName="containsInstance">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="source" valueExpression="var:container"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="var:containsInstance"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="var:diskInstance"/>
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:addKind"/>
                   </subModelOperations>
                 </subModelOperations>
@@ -108,13 +108,13 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:eContainer">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Interface" referenceName="resources" variableName="InterfaceInstance">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Interface" referenceName="resources" variableName="interfaceInstance">
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:addKind"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Contains" referenceName="links" variableName="containsInstance">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="source" valueExpression="var:container"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="var:containsInstance"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="var:interfaceInstance"/>
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:addKind"/>
                   </subModelOperations>
                 </subModelOperations>
@@ -130,9 +130,9 @@
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:addKind"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Contains" referenceName="resources" variableName="containsInstance">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Contains" referenceName="links" variableName="containsInstance">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="source" valueExpression="var:container"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="var:containsInstance"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="var:filesystemInstance"/>
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:addKind"/>
                   </subModelOperations>
                 </subModelOperations>
@@ -148,9 +148,9 @@
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:addKind"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Contains" referenceName="resources" variableName="containsInstance">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Contains" referenceName="links" variableName="containsInstance">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="source" valueExpression="var:container"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="var:containsInstance"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="var:parallelInstance"/>
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:addKind"/>
                   </subModelOperations>
                 </subModelOperations>
@@ -166,9 +166,9 @@
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:addKind"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Contains" referenceName="resources" variableName="containsInstance">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Contains" referenceName="links" variableName="containsInstance">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="source" valueExpression="var:container"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="var:containsInstance"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="var:serialInstance"/>
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:addKind"/>
                   </subModelOperations>
                 </subModelOperations>
@@ -187,6 +187,6 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedJavaExtensions qualifiedClassName="org.occiware.clouddesigner.occi.hypervisor.design.services.InfrastructureServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.occiware.clouddesigner.occi.hypervisor.design.services.HypervisorServices"/>
   </ownedViewpoints>
 </description:Group>

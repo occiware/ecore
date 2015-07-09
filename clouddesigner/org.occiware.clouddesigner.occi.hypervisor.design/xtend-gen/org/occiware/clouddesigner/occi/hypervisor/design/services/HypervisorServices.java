@@ -9,12 +9,13 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.InputOutput;
+import org.occiware.clouddesigner.occi.AbstractOCCIKindResolver;
 import org.occiware.clouddesigner.occi.hypervisor.HypervisorFactory;
 import org.occiware.clouddesigner.occi.hypervisor.Machine;
 import org.occiware.clouddesigner.occi.hypervisor.connector.libvirt.ExecutableHypervisorFactory;
 
 @SuppressWarnings("all")
-public class HypervisorServices {
+public class HypervisorServices extends AbstractOCCIKindResolver {
   private final HypervisorFactory init = ExecutableHypervisorFactory.init();
   
   public void start(final EObject eo) {
