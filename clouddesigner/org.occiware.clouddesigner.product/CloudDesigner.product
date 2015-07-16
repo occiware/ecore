@@ -38,18 +38,16 @@
    <vm>
       <windows include="false">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8</windows>
    </vm>
-  
+
+   <plugins>
+   </plugins>
+
    <features>
       <feature id="org.occiware.clouddesigner.dependencies" version="0.1.0.qualifier"/>
-      <feature id="org.occiware.clouddesigner.feature" version="0.1.0.qualifier"/>
+      <feature id="org.occiware.clouddesigner.occi.hypervisor.feature" version="0.1.0.qualifier"/>
+      <feature id="org.occiware.clouddesigner.occi.docker.feature" version="0.1.0.qualifier"/>
+      <feature id="org.occiware.clouddesigner.occi.feature" version="0.1.0.qualifier"/>
    </features>
-
-   <preferencesInfo>
-      <targetfile overwrite="false"/>
-   </preferencesInfo>
-
-   <cssInfo>
-   </cssInfo>
 
    <configurations>
       <plugin id="org.eclipse.core.runtime" autoStart="true" startLevel="4" />
@@ -62,5 +60,12 @@
       <property name="org.eclipse.ui/org.eclipse.ui.edit.text.encoding" value="UTF-8" />
       <property name="osgi.instance.area.default" value="@user.home/workspace-customide" />
    </configurations>
-   
+
+   <preferencesInfo>
+      <targetfile overwrite="false"/>
+   </preferencesInfo>
+
+   <cssInfo>
+   </cssInfo>
+
 </product>
