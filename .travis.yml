@@ -10,5 +10,5 @@ script:
 
 after_script:
 - cd ../.. 
-#- chmod a+x promote.sh 
-#- ./promote.sh
+#- chmod a+x travis-promote.sh 
+#- ./travis-promote.sh
