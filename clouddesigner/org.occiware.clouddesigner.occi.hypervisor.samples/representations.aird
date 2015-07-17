@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:occi="http://schemas.ogf.org/occi" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description" xmi:id="_Nq-eICGZEeWCAqrkIA96EQ" selectedViews="_MJ_NQCSeEeWTs4j2Au1-Bw" version="10.0.0.201505222000">
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:hypervisor="http://occiware.org/hypervisor" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:occi="http://schemas.ogf.org/occi" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_Nq-eICGZEeWCAqrkIA96EQ" selectedViews="_MJ_NQCSeEeWTs4j2Au1-Bw" version="10.0.0.201505222000">
   <semanticResources>platform:/resource/org.occiware.clouddesigner.occi.hypervisor.design/description/hypervisor.odesign</semanticResources>
   <semanticResources>environment:/viewpoint</semanticResources>
   <semanticResources>platform:/resource/org.occiware.clouddesigner.occi.hypervisor/model/Hypervisor.ecore</semanticResources>
@@ -8,6 +8,10 @@
   <semanticResources>http://www.eclipse.org/emf/2002/Ecore</semanticResources>
   <semanticResources>first-hypervisor-configuration.xmi</semanticResources>
   <semanticResources>platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore</semanticResources>
+  <semanticResources>platform:/plugin/org.occiware.clouddesigner.occi.hypervisor/model/Hypervisor.occie</semanticResources>
+  <semanticResources>platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie</semanticResources>
+  <semanticResources>platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie</semanticResources>
+  <semanticResources>platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore</semanticResources>
   <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_PoxAgCGZEeWCAqrkIA96EQ">
     <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_l5vY8CPuEeWc25KQFRchgw" name="new Hypervisor configuration">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_l5wnECPuEeWc25KQFRchgw" source="DANNOTATION_CUSTOMIZATION_KEY">
@@ -32,9 +36,136 @@
       </ownedAnnotationEntries>
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_NZlz8CSeEeWTs4j2Au1-Bw" source="GMF_DIAGRAMS">
         <data xmi:type="notation:Diagram" xmi:id="_NZlz8SSeEeWTs4j2Au1-Bw" type="Sirius" element="_NZJIACSeEeWTs4j2Au1-Bw" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_lTLVkCYaEeWdabuLPjptoA" type="2002" element="_lRTtUCYaEeWdabuLPjptoA">
+            <children xmi:type="notation:Node" xmi:id="_lTMjsCYaEeWdabuLPjptoA" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_lTNKwCYaEeWdabuLPjptoA" type="7001">
+              <children xmi:type="notation:Node" xmi:id="_nwYX0CYaEeWdabuLPjptoA" type="3007" element="_nwE10CYaEeWdabuLPjptoA">
+                <children xmi:type="notation:Node" xmi:id="_nwY-4CYaEeWdabuLPjptoA" type="5003">
+                  <layoutConstraint xmi:type="notation:Location" xmi:id="_nwY-4SYaEeWdabuLPjptoA" y="-21"/>
+                </children>
+                <children xmi:type="notation:Node" xmi:id="_nwnoYCYaEeWdabuLPjptoA" type="3005" element="_nwGD8CYaEeWdabuLPjptoA">
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_nwnoYSYaEeWdabuLPjptoA" fontName=".Helvetica Neue DeskInterface"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nwnoYiYaEeWdabuLPjptoA"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_nwYX0SYaEeWdabuLPjptoA" fontName=".Helvetica Neue DeskInterface" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nwYX0iYaEeWdabuLPjptoA" x="78" y="40" width="50" height="50"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_hZM94CYbEeWdabuLPjptoA" type="3007" element="_hYGxsCYbEeWdabuLPjptoA">
+                <children xmi:type="notation:Node" xmi:id="_hZNk8CYbEeWdabuLPjptoA" type="5003">
+                  <layoutConstraint xmi:type="notation:Location" xmi:id="_hZNk8SYbEeWdabuLPjptoA" y="-21"/>
+                </children>
+                <children xmi:type="notation:Node" xmi:id="_hZpp0CYbEeWdabuLPjptoA" type="3005" element="_hYHYwCYbEeWdabuLPjptoA">
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_hZpp0SYbEeWdabuLPjptoA" fontName=".Helvetica Neue DeskInterface"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hZpp0iYbEeWdabuLPjptoA"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_hZM94SYbEeWdabuLPjptoA" fontName=".Helvetica Neue DeskInterface" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hZM94iYbEeWdabuLPjptoA" x="18" y="110" width="49" height="49"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_mgyiwCYbEeWdabuLPjptoA" type="3007" element="_mf3VsCYbEeWdabuLPjptoA">
+                <children xmi:type="notation:Node" xmi:id="_mgyiwyYbEeWdabuLPjptoA" type="5003">
+                  <layoutConstraint xmi:type="notation:Location" xmi:id="_mgyixCYbEeWdabuLPjptoA" x="-144" y="-21"/>
+                </children>
+                <children xmi:type="notation:Node" xmi:id="_mgzw4CYbEeWdabuLPjptoA" type="3005" element="_mf38wCYbEeWdabuLPjptoA">
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_mgzw4SYbEeWdabuLPjptoA" fontName=".Helvetica Neue DeskInterface"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_mgzw4iYbEeWdabuLPjptoA"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_mgyiwSYbEeWdabuLPjptoA" fontName=".Helvetica Neue DeskInterface" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_mgyiwiYbEeWdabuLPjptoA" x="134" y="102" width="53" height="53"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_20ZUICYbEeWdabuLPjptoA" type="3007" element="_2zbDwCYbEeWdabuLPjptoA">
+                <children xmi:type="notation:Node" xmi:id="_20ZUIyYbEeWdabuLPjptoA" type="5003">
+                  <layoutConstraint xmi:type="notation:Location" xmi:id="_20ZUJCYbEeWdabuLPjptoA" x="-180" y="-21"/>
+                </children>
+                <children xmi:type="notation:Node" xmi:id="_21C0YCYbEeWdabuLPjptoA" type="3005" element="_2zbDwSYbEeWdabuLPjptoA">
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_21C0YSYbEeWdabuLPjptoA" fontName=".Helvetica Neue DeskInterface"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_21C0YiYbEeWdabuLPjptoA"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_20ZUISYbEeWdabuLPjptoA" fontName=".Helvetica Neue DeskInterface" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_20ZUIiYbEeWdabuLPjptoA" x="194" y="30" width="69" height="69"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_v3vRwCYgEeWNxoiCGL4eUg" type="3007" element="_vzJFoCYgEeWNxoiCGL4eUg">
+                <children xmi:type="notation:Node" xmi:id="_v4SrYCYgEeWNxoiCGL4eUg" type="5003">
+                  <layoutConstraint xmi:type="notation:Location" xmi:id="_v4SrYSYgEeWNxoiCGL4eUg" y="-21"/>
+                </children>
+                <children xmi:type="notation:Node" xmi:id="_v5HKwCYgEeWNxoiCGL4eUg" type="3005" element="_vzKTwCYgEeWNxoiCGL4eUg">
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_v5HKwSYgEeWNxoiCGL4eUg" fontName=".Helvetica Neue DeskInterface"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_v5HKwiYgEeWNxoiCGL4eUg"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_v3vRwSYgEeWNxoiCGL4eUg" fontName=".Helvetica Neue DeskInterface" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_v3vRwiYgEeWNxoiCGL4eUg" x="10" y="40" width="50" height="50"/>
+              </children>
+              <styles xmi:type="notation:SortingStyle" xmi:id="_lTNKwSYaEeWdabuLPjptoA"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_lTNKwiYaEeWdabuLPjptoA"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_lTLVkSYaEeWdabuLPjptoA" fontName=".Helvetica Neue DeskInterface" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_lTLVkiYaEeWdabuLPjptoA" x="148" y="124"/>
+          </children>
           <styles xmi:type="notation:DiagramStyle" xmi:id="_NZlz8iSeEeWTs4j2Au1-Bw"/>
         </data>
       </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_lRTtUCYaEeWdabuLPjptoA" name="myboxi">
+        <target xmi:type="hypervisor:Machine_VirtualBox" href="first-hypervisor-configuration.xmi#//@resources.1"/>
+        <semanticElements xmi:type="hypervisor:Machine_VirtualBox" href="first-hypervisor-configuration.xmi#//@resources.1"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_hoK30CvKEeWKAK_4JgR-KQ" foregroundColor="246,139,139">
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.hypervisor.design/description/hypervisor.odesign#//@ownedViewpoints[name='Hypervisor']/@ownedRepresentations[name='Hypervisor%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@conditionnalStyles.2/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.hypervisor.design/description/hypervisor.odesign#//@ownedViewpoints[name='Hypervisor']/@ownedRepresentations[name='Hypervisor%20configuration']/@defaultLayer/@containerMappings[name='Machine']"/>
+        <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_nwE10CYaEeWdabuLPjptoA" name="Disk" width="5" height="5" resizeKind="NSEW">
+          <target xmi:type="hypervisor:Disk" href="first-hypervisor-configuration.xmi#//@resources.2"/>
+          <semanticElements xmi:type="hypervisor:Disk" href="first-hypervisor-configuration.xmi#//@resources.2"/>
+          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_nwGD8CYaEeWdabuLPjptoA" workspacePath="/org.occiware.clouddesigner.occi.hypervisor.design/images/mcol-closed-box.svg">
+            <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.hypervisor.design/description/hypervisor.odesign#//@ownedViewpoints[name='Hypervisor']/@ownedRepresentations[name='Hypervisor%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Disk']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.hypervisor.design/description/hypervisor.odesign#//@ownedViewpoints[name='Hypervisor']/@ownedRepresentations[name='Hypervisor%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Disk']"/>
+        </ownedDiagramElements>
+        <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_hYGxsCYbEeWdabuLPjptoA" name="parallel" width="-1" height="-1" resizeKind="NSEW">
+          <target xmi:type="hypervisor:Parallel" href="first-hypervisor-configuration.xmi#//@resources.3"/>
+          <semanticElements xmi:type="hypervisor:Parallel" href="first-hypervisor-configuration.xmi#//@resources.3"/>
+          <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+          <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+          <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_hYHYwCYbEeWdabuLPjptoA" workspacePath="/org.occiware.clouddesigner.occi.hypervisor.design/images/mcol-closed-box.svg">
+            <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.hypervisor.design/description/hypervisor.odesign#//@ownedViewpoints[name='Hypervisor']/@ownedRepresentations[name='Hypervisor%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Parallel']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.hypervisor.design/description/hypervisor.odesign#//@ownedViewpoints[name='Hypervisor']/@ownedRepresentations[name='Hypervisor%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Parallel']"/>
+        </ownedDiagramElements>
+        <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_mf3VsCYbEeWdabuLPjptoA" name="filesystem" width="-1" height="-1" resizeKind="NSEW">
+          <target xmi:type="hypervisor:Filesystem" href="first-hypervisor-configuration.xmi#//@resources.4"/>
+          <semanticElements xmi:type="hypervisor:Filesystem" href="first-hypervisor-configuration.xmi#//@resources.4"/>
+          <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+          <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+          <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_mf38wCYbEeWdabuLPjptoA" workspacePath="/org.occiware.clouddesigner.occi.hypervisor.design/images/mcol-closed-box.svg">
+            <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.hypervisor.design/description/hypervisor.odesign#//@ownedViewpoints[name='Hypervisor']/@ownedRepresentations[name='Hypervisor%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Filesystem']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.hypervisor.design/description/hypervisor.odesign#//@ownedViewpoints[name='Hypervisor']/@ownedRepresentations[name='Hypervisor%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Filesystem']"/>
+        </ownedDiagramElements>
+        <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_2zbDwCYbEeWdabuLPjptoA" name="serial" width="-1" height="-1" resizeKind="NSEW">
+          <target xmi:type="hypervisor:Serial" href="first-hypervisor-configuration.xmi#//@resources.5"/>
+          <semanticElements xmi:type="hypervisor:Serial" href="first-hypervisor-configuration.xmi#//@resources.5"/>
+          <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+          <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+          <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_2zbDwSYbEeWdabuLPjptoA" workspacePath="/org.occiware.clouddesigner.occi.hypervisor.design/images/mcol-closed-box.svg">
+            <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.hypervisor.design/description/hypervisor.odesign#//@ownedViewpoints[name='Hypervisor']/@ownedRepresentations[name='Hypervisor%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Serial']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.hypervisor.design/description/hypervisor.odesign#//@ownedViewpoints[name='Hypervisor']/@ownedRepresentations[name='Hypervisor%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Serial']"/>
+        </ownedDiagramElements>
+        <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_vzJFoCYgEeWNxoiCGL4eUg" name="interface" width="5" height="5" resizeKind="NSEW">
+          <target xmi:type="hypervisor:Interface" href="first-hypervisor-configuration.xmi#//@resources.6"/>
+          <semanticElements xmi:type="hypervisor:Interface" href="first-hypervisor-configuration.xmi#//@resources.6"/>
+          <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+          <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+          <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_vzKTwCYgEeWNxoiCGL4eUg" workspacePath="/org.occiware.clouddesigner.occi.hypervisor.design/images/mcol-closed-box.svg">
+            <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.hypervisor.design/description/hypervisor.odesign#//@ownedViewpoints[name='Hypervisor']/@ownedRepresentations[name='Hypervisor%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Interface']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.hypervisor.design/description/hypervisor.odesign#//@ownedViewpoints[name='Hypervisor']/@ownedRepresentations[name='Hypervisor%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Interface']"/>
+        </ownedDiagramElements>
+      </ownedDiagramElements>
       <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.hypervisor.design/description/hypervisor.odesign#//@ownedViewpoints[name='Hypervisor']/@ownedRepresentations[name='Hypervisor%20configuration']"/>
       <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_NZJIAySeEeWTs4j2Au1-Bw"/>
       <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.occiware.clouddesigner.occi.hypervisor.design/description/hypervisor.odesign#//@ownedViewpoints[name='Hypervisor']/@ownedRepresentations[name='Hypervisor%20configuration']/@defaultLayer"/>
