@@ -11,6 +11,7 @@ import org.occiware.clouddesigner.occi.AbstractOCCIKindResolver
 import org.occiware.clouddesigner.occi.hypervisor.Machine
 import org.occiware.clouddesigner.occi.hypervisor.connector.libvirt.ExecutableHypervisorFactory
 import org.occiware.clouddesigner.occi.hypervisor.connector.libvirt.ExecutableHypervisorModel
+import org.occiware.clouddesigner.occi.Configuration
 
 class HypervisorServices extends AbstractOCCIKindResolver{
 		// Initialize the executable Docker factory.
@@ -23,7 +24,6 @@ class HypervisorServices extends AbstractOCCIKindResolver{
 					var machine = eo as Machine
 					val main = new ExecutableHypervisorModel(machine)
 					main.start
-					println("Start button is activated ...")
 				}
 			}
 		}
@@ -38,7 +38,6 @@ class HypervisorServices extends AbstractOCCIKindResolver{
 					var machine = eo as Machine
 					val main = new ExecutableHypervisorModel(machine)
 					main.stop
-					println("Stop button is activated ...")
 				}
 			}
 		}
@@ -46,6 +45,37 @@ class HypervisorServices extends AbstractOCCIKindResolver{
 		dialog.run(false, true, runnable)
 	}
 
+	/**
+	 * Popup menu restart action.
+	 */
+	def void restart(EObject eo) {
+		var runnable = new IRunnableWithProgress() {
+			override run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+				if (eo instanceof Machine) {
+					var machine = eo as Machine
+					val main = new ExecutableHypervisorModel(machine)
+					main.restart
+
+				}
+			}
+		}
+		var dialog = new ProgressMonitorDialog(getShell())
+		dialog.run(false, true, runnable)
+	}
+
+	/**
+	 * Popup menu importModel action.
+	 */
+	def void importModel(Configuration conf) {
+		var runnable = new IRunnableWithProgress() {
+			override run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+				val main = new ExecutableHypervisorModel(conf)
+				main.importModel
+			}
+		}
+		var dialog = new ProgressMonitorDialog(getShell())
+		dialog.run(false, true, runnable)
+	}
 	def Shell getShell() {
 		return Display.current.activeShell
 	}
