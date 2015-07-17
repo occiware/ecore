@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/org.occiware.clouddesigner.feature_0.1.0.qualifier.jar" id="org.occiware.clouddesigner.feature" version="0.1.0.qualifier">
+   <feature url="features/org.occiware.clouddesigner.occi.feature_0.1.0.qualifier.jar" id="org.occiware.clouddesigner.occi.feature" version="0.1.0.qualifier">
       <category name="Cloud Designer"/>
    </feature>
-   <category-def name="Cloud Designer" label="Cloud Designer">
-   </category-def>
+   <feature url="features/org.occiware.clouddesigner.occi.hypervisor.feature_0.1.0.qualifier.jar" id="org.occiware.clouddesigner.occi.hypervisor.feature" version="0.1.0.qualifier">
+      <category name="Cloud Designer"/>
+   </feature>
+   <feature url="features/org.occiware.clouddesigner.occi.docker.feature_0.1.0.qualifier.jar" id="org.occiware.clouddesigner.occi.docker.feature" version="0.1.0.qualifier">
+      <category name="Cloud Designer"/>
+   </feature>
+   <category-def name="Cloud Designer" label="Cloud Designer"/>
 </site>

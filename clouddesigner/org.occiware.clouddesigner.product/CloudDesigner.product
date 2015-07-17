@@ -14,8 +14,6 @@
    </configIni>
 
    <launcherArgs>
-      <programArgs>-consoleLog
-      </programArgs>
       <vmArgs>-Dosgi.requiredJavaVersion=1.7 -Xms256m -Xmx1024m
       </vmArgs>
       <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
@@ -35,20 +33,32 @@
       </win>
    </launcher>
 
+
    <vm>
       <windows include="false">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8</windows>
    </vm>
 
-	<configurations>
-   		<plugin id="org.eclipse.core.runtime" autoStart="true" startLevel="2" />
-   		<plugin id="org.eclipse.equinox.ds" autoStart="true" startLevel="3" />
-   		<plugin id="org.eclipse.equinox.event" autoStart="true" startLevel="3" />
-	</configurations>
-   
+   <plugins>
+   </plugins>
+
    <features>
       <feature id="org.occiware.clouddesigner.dependencies" version="0.1.0.qualifier"/>
-      <feature id="org.occiware.clouddesigner.feature" version="0.1.0.qualifier"/>
+      <feature id="org.occiware.clouddesigner.occi.hypervisor.feature" version="0.1.0.qualifier"/>
+      <feature id="org.occiware.clouddesigner.occi.docker.feature" version="0.1.0.qualifier"/>
+      <feature id="org.occiware.clouddesigner.occi.feature" version="0.1.0.qualifier"/>
    </features>
+
+   <configurations>
+      <plugin id="org.eclipse.core.runtime" autoStart="true" startLevel="4" />
+      <plugin id="org.eclipse.equinox.common" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.equinox.ds" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.equinox.event" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.equinox.p2.reconciler.dropins" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.equinox.simpleconfigurator" autoStart="true" startLevel="1" />
+      <property name="org.eclipse.core.resources/encoding" value="UTF-8" />
+      <property name="org.eclipse.ui/org.eclipse.ui.edit.text.encoding" value="UTF-8" />
+      <property name="osgi.instance.area.default" value="./workspace" />
+   </configurations>
 
    <preferencesInfo>
       <targetfile overwrite="false"/>

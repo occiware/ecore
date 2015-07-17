@@ -1,0 +1,14 @@
+env:
+  global:
+    secure: UWYPl5yZ3cSNTsof4DoRJNeDuDUiTQN56I/t8fL40IrYxK2uUzMhaD/WsdqHclWipIgqbM0cUOMQ9wE0Br1zDT5TYTzBnLJQWnONnr51bGNYGRUx6bEPAitDyfU5ZwP0QF6ABgFmoQ0xQOIcOIIcnc6kIXLAG2QLp4AKeqvmDkaSBd1zc+NrD9KA6Ww+2yPby35DqwYWVrnu8h3fWRUlkF+ITtPpez743hZ2BIKAbUZ9ysHy1fdidha58NCKgPUZMkYy9Owuz8Y4VOMMLhgE5bO6Jt1/8/P4aEHNItKyclah2tkA92Sl1YLxU+3F1o6BXAaJOxiPq5/bQhlt+B+jsI+eS/pDvM5RBUJqcVQaybcEHu+wcm/ptOkODzsySTYYF1VTw0p5hCoG6kyEhasEhnhQA9QQqVVUcmj6aW72N2p99yGuypohgadzRLSPokrd5KJkjN6p7FtYvSSTQmyUaCJlaaaZZSfZsj8PXv7I4yiOzMnge+Yrc77pZXtCz/MK68tr2/440BUdRxtP1RHlIGIeMxeiKn+cA0yw+9HK0kPLIR4ZPozgoVx/KPSXFi35Oe9ypG803BSDVdTRH553r0UtsjFoJUcNB3m1YDlHRU7rIKuGjWmeckLUyhqob7FhILlbTAn7bEtiBg0ROSGSnTVg6BqwZifQQvdl1h/IF5U=
+
+language: java
+
+script:
+- cd clouddesigner/org.occiware.clouddesigner.parent 
+- mvn clean verify
+
+after_script:
+- cd ../.. 
+#- chmod a+x travis-promote.sh 
+#- ./travis-promote.sh

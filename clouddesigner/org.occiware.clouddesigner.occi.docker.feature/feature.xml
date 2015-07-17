@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="org.occiware.clouddesigner.feature"
+      id="org.occiware.clouddesigner.occi.docker.feature"
       label="Cloud Designer"
       version="0.1.0.qualifier"
       provider-name="Obeo">
@@ -205,13 +205,6 @@ litigation.
    </license>
 
    <plugin
-         id="org.occiware.clouddesigner.occi"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.occiware.clouddesigner.occi.docker"
          download-size="0"
          install-size="0"
@@ -240,69 +233,6 @@ litigation.
          unpack="false"/>
 
    <plugin
-         id="org.occiware.clouddesigner.occi.edit"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.occiware.clouddesigner.occi.gen.curl"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.occiware.clouddesigner.occi.gen.curl.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.occiware.clouddesigner.occi.gen.doc"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.occiware.clouddesigner.occi.gen.doc.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.occiware.clouddesigner.occi.gen.xml"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.occiware.clouddesigner.occi.gen.xml.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.occiware.clouddesigner.occi.infrastructure"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.occiware.clouddesigner.occi.infrastructure.edit"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.occiware.clouddesigner.occi.docker.connector"
          download-size="0"
          install-size="0"
@@ -311,55 +241,6 @@ litigation.
 
    <plugin
          id="org.occiware.clouddesigner.occi.docker.design"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.occiware.clouddesigner.occi.xtext"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.occiware.clouddesigner.occi.xtext.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.occiware.clouddesigner.occi.design"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.occiware.clouddesigner.occi.hypervisor"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.occiware.clouddesigner.occi.hypervisor.connector"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.occiware.clouddesigner.occi.hypervisor.design"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.occiware.clouddesigner.occi.hypervisor.edit"
          download-size="0"
          install-size="0"
          version="0.0.0"
