@@ -28,6 +28,13 @@ import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.occiware.clouddesigner.occi.hypervisor.connector.libvirt.util.DomainMarshaller
 import org.occiware.clouddesigner.occi.Configuration
+import org.libvirt.NodeInfo
+import org.libvirt.LibvirtException
+import org.occiware.clouddesigner.occi.hypervisor.HypervisorFactory
+import java.util.HashMap
+import java.util.Map
+import org.occiware.clouddesigner.occi.Resource
+import java.util.List
 
 /**
  * This class overrides the generated EMF factory of the  package.
@@ -358,22 +365,34 @@ abstract class HypervisorManager extends ComputeStateMachine<Machine> {
 				val vmDomain = domainMarshaller.createComputeDescription(this.compute)
 				var String domainDescription = domainMarshaller.asString(vmDomain.getUuid)
 				LOGGER.info("Domain description: " + domainDescription)
+				// Check if machine exists 
+				if (listMachines.contains(this.compute.name)) {
+					val Domain domain = connection.domainLookupByName(this.compute.name)
+					// start the machine
+					domain.create()
+					LOGGER.debug("VM with id {} is started.", domain.UUIDString)
 
-				// create vm domain for libvirt
-				val Domain domain = connection.domainDefineXML(domainDescription)
-				LOGGER.debug("VM with id {} is created.", domain.UUIDString)
+					LOGGER.info("VM with id {} is running.", this.compute.id)
 
-				domain.create()
-				LOGGER.info("VM with id {} is running.", this.compute.id)
+				} else { // The machine does not exist
+				// create domain 
+					val Domain domain = connection.domainDefineXML(domainDescription)
+					domain.create()
 
-				// save hypervisor for stop, suspend and resume
+					LOGGER.debug("VM with id {} is created.", domain.UUIDString)
+
+					LOGGER.info("VM with id {} is running.", this.compute.id)
+				}
+
+				// TODO save hypervisor for stop, suspend and resume
 				// methods
 				// ComputeLocation location = new ComputeLocation(libvirtURI, this.compute);
 				LOGGER.debug("closing connection to libvirt")
-				connection.close()
+				connection.close
 			} catch (Exception e) {
 				LOGGER.error("Error while processing. ", e)
 				this.compute.state = ComputeStatus.INACTIVE
+				connection.close
 			}
 		}
 	}
@@ -391,19 +410,38 @@ abstract class HypervisorManager extends ComputeStateMachine<Machine> {
 		if (libvirtURI != null) {
 			LOGGER.info("Hypervisor URI is: {}", libvirtURI)
 			try {
+				var Domain domain = null
 				// initialize connection to vm
 				connection = new Connect(libvirtURI)
-				val domain = connection.domainLookupByUUIDString(this.compute.uuid)
-				LOGGER.debug("going to shutdown vm {} through acpi-event", this.compute.id)
-				if (method == StopMethod.GRACEFUL) {
-					domain.shutdown
+				// Check if machine exists 
+				if (listMachines.contains(this.compute.name)) {
+					domain = connection.domainLookupByName(this.compute.name)
+					// stop the machine
+					if (method == StopMethod.GRACEFUL) {
+						domain.shutdown
+					}
+					if (method == StopMethod.POWEROFF) {
+						domain.destroy
+					}
+
+					LOGGER.debug("VM with id {} is stopped.", domain.UUIDString)
+
+					LOGGER.info("VM with id {} is going down.", this.compute.id)
+
+				} else { // The machine does not exist
+					domain = connection.domainLookupByUUIDString(this.compute.uuid)
+					LOGGER.debug("going to shutdown vm {} through acpi-event", this.compute.id)
+					if (method == StopMethod.GRACEFUL) {
+						domain.shutdown
+					}
+					if (method == StopMethod.POWEROFF) {
+						domain.destroy
+					}
 				}
-				if (method == StopMethod.POWEROFF) {
-					domain.destroy
-				}
-				
+				connection.close
 			} catch (Exception e) {
 				LOGGER.error("Exception caught: ", e)
+				connection.close
 			}
 		}
 		// Execute the -machine stop command.
@@ -416,18 +454,54 @@ abstract class HypervisorManager extends ComputeStateMachine<Machine> {
 	 * Restart a libvirt node.
 	 */
 	override def restart_execute(RestartMethod method) {
-		println("EXECUTE COMMAND:  machine restart " + compute.hostname);
-
-	// TODO: must be implemented
+		println("EXECUTE COMMAND:  machine restart " + compute.hostname)
+		stop_execute(StopMethod.GRACEFUL)
+		start_execute()
 	}
 
 	/**
 	 * Suspend a libvirt node.
 	 */
 	override def suspend_execute(SuspendMethod method) {
-		println("EXECUTE COMMAND:  machine suspend " + compute.hostname);
-
+		println("EXECUTE COMMAND:  machine suspend " + compute.hostname)
 	// TODO: must be implemented
+	}
+
+	def List<String> listMachines() {
+		val listMachines = newArrayList()
+
+		val domainMarshaller = new DomainMarshaller
+		domainMarshaller.loadUri
+		var Connect connection = null;
+		val String libvirtURI = domainMarshaller.uri.get("vbox")
+		if (libvirtURI != null) {
+			LOGGER.info("Hypervisor URI is: {}", libvirtURI)
+			try {
+				// initialize connection to vm
+				connection = new Connect(libvirtURI)
+				val String[] definedDomainNames = connection.listDefinedDomains()
+				val int[] activeDomainIds = connection.listDomains
+				// Get inactive domain
+				for (String definedDomainName : definedDomainNames) {
+					println(definedDomainName)
+					val Domain inactiveDomain = connection.domainLookupByName(definedDomainName)
+					listMachines.add(inactiveDomain.name)
+				}
+				// Get active domain
+				for (int domainnId : activeDomainIds) {
+					println(domainnId)
+					val Domain activeDomain = connection.domainLookupByID(domainnId)
+					listMachines.add(activeDomain.name)
+				}
+				connection.close
+			} catch (LibvirtException e) {
+				LOGGER.error("Exception caught: ", e)
+				connection.close
+			}
+		}
+
+		return listMachines
+
 	}
 }
 
@@ -584,6 +658,11 @@ class ExecutableHypervisorModel {
 			machine_VirtualBox.start
 			return;
 		}
+		if (machine_VirtualBox != null) {
+			machine_VirtualBox.start
+			return;
+		}
+
 	}
 
 	def void stop() {
@@ -592,9 +671,113 @@ class ExecutableHypervisorModel {
 			return;
 		}
 	}
+
+	def void restart() {
+		if (machine_VirtualBox != null) {
+			machine_VirtualBox.restart(RestartMethod.GRACEFUL)
+			return;
+		}
+	}
+
+	def void importModel() {
+		val domainMarshaller = new DomainMarshaller
+		domainMarshaller.loadUri
+		var Connect connection = null;
+		val String libvirtURI = domainMarshaller.uri.get("vbox")
+		if (libvirtURI != null) {
+			LOGGER.info("Hypervisor URI is: {}", libvirtURI)
+			try {
+				// initialize connection to vm
+				connection = new Connect(libvirtURI)
+				val String[] definedDomainNames = connection.listDefinedDomains()
+				val int[] activeDomainIds = connection.listDomains
+				// Get inactive domain
+				for (String definedDomainName : definedDomainNames) {
+					println(definedDomainName)
+					val Domain inactiveDomain = connection.domainLookupByName(definedDomainName)
+					val machineExistInModeler = containMachine(inactiveDomain.name)
+					if (!machineExistInModeler) {
+						buildModel(inactiveDomain) // Create the machine in stopped state
+					}
+				}
+				// Get active domain
+				for (int domainnId : activeDomainIds) {
+					println(domainnId)
+					val Domain activeDomain = connection.domainLookupByID(domainnId)
+					val machineExistInModeler = containMachine(activeDomain.name)
+					if (!machineExistInModeler) {
+						buildModel(activeDomain) // Create the machine in running state
+					}
+				}
+				connection.close
+			} catch (LibvirtException e) {
+				LOGGER.error("Exception caught: ", e)
+				connection.close
+			}
+		}
+
+	}
+
+	def void buildModel(Domain domain) {
+		var machine = getModel(domain)
+		this.configuration.resources.add(machine)
+	}
+
+	def Machine getModel(Domain domain) {
+		var vbox = getmodelEClass.get("virtualbox") // TODO use dynamic driver name.
+		if (vbox instanceof Machine_VirtualBox) {
+			var newvbox = vbox as Machine_VirtualBox
+
+			// Set values
+			machineFactory_VBOX(newvbox, domain)
+			LOGGER.info("Model setting: " + newvbox)
+			return newvbox
+		}
+	}
+
+	def void machineFactory_VBOX(Machine_VirtualBox vbox, Domain domain) {
+		vbox.name = domain.name
+//		println(domain.getXMLDesc(1))
+		println(domain.info.state.name)
+		// VIR_DOMAIN_SHUTOFF
+		// VIR_DOMAIN_RUNNING
+		vbox.memory = domain.info.memory as float
+		vbox.cores = domain.info.nrVirtCpu
+		if (domain.info.state.name == "VIR_DOMAIN_RUNNING") {
+			vbox.state = ComputeStatus.get(0)
+		}
+		if (domain.info.state.name == "VIR_DOMAIN_SHUTOFF") {
+			vbox.state = ComputeStatus.get(1)
+		}
+	}
+
+	def boolean containMachine(String machineName) {
+		for (Resource r : this.configuration.resources) {
+			if (r instanceof Machine) {
+				if ((r as Machine).name == machineName) {
+					return true
+				}
+			}
+		}
+		return false
+	}
+
+	def getmodelEClass() {
+		val Map<String, Machine> m = new HashMap
+
+		// TODO verify the good driver name
+		m.put("virtualbox", HypervisorFactory.eINSTANCE.createMachine_VirtualBox)
+//		m.put("microsofthyperv", HypervisorFactory.eINSTANCE.createMachine_Microsoft_Hyper_V)
+//		m.put("openstack", HypervisorFactory.eINSTANCE.createMachine_OpenStack)
+//		m.put("vmwarefusion", HypervisorFactory.eINSTANCE.createMachine_VMware_Fusion)
+//		m.put("vmwarevcloud", HypervisorFactory.eINSTANCE.createMachine_VMware_vCloud_Air)
+//		m.put("vmwaresphere", HypervisorFactory.eINSTANCE.createMachine_VMware_vSphere)
+		return m
+	}
+
 }
 
-class ExecutablJcloudsModel {
+class ExecutableJcloudsModel {
 }
 
 class LibvirtExecutableModel {
@@ -603,57 +786,63 @@ class LibvirtExecutableModel {
 		// Initialize the executable Docker factory.
 		ExecutableHypervisorFactory.init
 
-		// Obtain the Infrastructure package factory.
-		val factory = HypervisorPackage.eINSTANCE.hypervisorFactory
+//		// Import
+//		val main = new ExecutableHypervisorModel()
+//		main.importModel
 
-		// Create a VirtualBox machine.
-		val machine = factory.createMachine_VirtualBox
-		machine.name = "libvirt-machine-b"
-		machine.hostname = machine.id
-		machine.memory = 654321f
-		machine.cores = 2
-
-		// Create Interface
-		val network = factory.createInterface
-		network.type = 'bridge'
-		network.label = "en0" // Set ethx for linux
-		network.model = "82540EM"
-		network.mac_addresss = '00:0c:29:76:78:50'
-
-		// Put the network inside the machine.
-		val contains = factory.createContains
-		contains.target = network
-		machine.links.add(contains)
-
-		// Create Disk
-		val disk = factory.createDisk
-		disk.device = "cdrom"
-		disk.source = "/Users/spirals/Downloads/ubuntu-14.04-server-i386.iso"
+	/*
+	 * // Obtain the Infrastructure package factory.
+	 * val factory = HypervisorPackage.eINSTANCE.hypervisorFactory
+	 * 
+	 * // Create a VirtualBox machine.
+	 * val machine = factory.createMachine_VirtualBox
+	 * machine.name = "libvirt-machine-b"
+	 * machine.hostname = machine.id
+	 * machine.memory = 654321f
+	 * machine.cores = 2
+	 * 
+	 * // Create Interface
+	 * val network = factory.createInterface
+	 * network.type = 'bridge'
+	 * network.label = "en0" // Set ethx for linux
+	 * network.model = "82540EM"
+	 * network.mac_addresss = '00:0c:29:76:78:50'
+	 * 
+	 * // Put the network inside the machine.
+	 * val contains = factory.createContains
+	 * contains.target = network
+	 * machine.links.add(contains)
+	 * 
+	 * // Create Disk
+	 * val disk = factory.createDisk
+	 * disk.device = "cdrom"
+	 * disk.source = "/Users/spirals/Downloads/ubuntu-14.04-server-i386.iso"
+	 * 
+	 */
 //		disk.target = ""
-		/*
-		 * // Create Network
-		 * val network = factory.createEthernet
-		 * network.label = "en0" // Set ethx for linux
-		 * 
-		 * // NetworkLink
-		 * val networkInterface = factory.createInterface
-		 * networkInterface.target = network
-		 * 
-		 * //		networkInterface.mac = value
-		 * machine.links.add(networkInterface)
-		 * 
-		 * // Create storage
-		 * val storage = factory.createStorage
-		 * 
-		 * // StorageLink
-		 * val storageLink = factory.createStoragelink
-		 * 
-		 * //		storageLink.deviceid = value
-		 * storageLink.target = storage
-		 * machine.links.add(storageLink)
-		 */
-		machine.start
-
+	/*
+	 * // Create Network
+	 * val network = factory.createEthernet
+	 * network.label = "en0" // Set ethx for linux
+	 * 
+	 * // NetworkLink
+	 * val networkInterface = factory.createInterface
+	 * networkInterface.target = network
+	 * 
+	 * //		networkInterface.mac = value
+	 * machine.links.add(networkInterface)
+	 * 
+	 * // Create storage
+	 * val storage = factory.createStorage
+	 * 
+	 * // StorageLink
+	 * val storageLink = factory.createStoragelink
+	 * 
+	 * //		storageLink.deviceid = value
+	 * storageLink.target = storage
+	 * machine.links.add(storageLink)
+	 */
+//		machine.start
 	}
 
 }
