@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.libvirt.Connect;
+import org.libvirt.ConnectAuth;
 import org.libvirt.Domain;
 import org.libvirt.DomainInfo;
 import org.libvirt.LibvirtException;
@@ -27,6 +28,7 @@ import org.occiware.clouddesigner.occi.hypervisor.HypervisorFactory;
 import org.occiware.clouddesigner.occi.hypervisor.Machine;
 import org.occiware.clouddesigner.occi.hypervisor.Machine_VirtualBox;
 import org.occiware.clouddesigner.occi.hypervisor.connector.libvirt.ExecutableMachine_VirtualBox;
+import org.occiware.clouddesigner.occi.hypervisor.connector.libvirt.util.CustomsConnectAuth;
 import org.occiware.clouddesigner.occi.hypervisor.connector.libvirt.util.DomainMarshaller;
 import org.occiware.clouddesigner.occi.infrastructure.ComputeStatus;
 import org.occiware.clouddesigner.occi.infrastructure.RestartMethod;
@@ -84,6 +86,63 @@ public class ExecutableHypervisorModel {
     if (_notEquals) {
       this.machine_VirtualBox.restart(RestartMethod.GRACEFUL);
       return;
+    }
+  }
+  
+  public void connectToVMWARE() {
+    try {
+      final int connectFlags = 0;
+      final DomainMarshaller domainMarshaller = new DomainMarshaller();
+      domainMarshaller.loadUri();
+      Connect connection = null;
+      final String libvirtURI = domainMarshaller.uri.get("vmware");
+      boolean _notEquals = (!Objects.equal(libvirtURI, null));
+      if (_notEquals) {
+        ExecutableHypervisorModel.LOGGER.info("Hypervisor URI is: {}", libvirtURI);
+        try {
+          final ConnectAuth cAuth = new CustomsConnectAuth("!Scalair1!");
+          Connect _connect = new Connect(libvirtURI, cAuth, connectFlags);
+          connection = _connect;
+          final String[] inactiveDomainNames = connection.listDefinedDomains();
+          final int[] activeDomainIds = connection.listDomains();
+          for (final String definedDomainName : inactiveDomainNames) {
+            {
+              InputOutput.<String>println(definedDomainName);
+              final Domain inactiveDomain = connection.domainLookupByName(definedDomainName);
+              String _name = inactiveDomain.getName();
+              final boolean machineExistInModeler = this.containMachine(_name);
+              if ((!machineExistInModeler)) {
+                this.buildModel(inactiveDomain);
+              }
+            }
+          }
+          for (final int domainnId : activeDomainIds) {
+            {
+              InputOutput.<Integer>println(Integer.valueOf(domainnId));
+              final Domain activeDomain = connection.domainLookupByID(domainnId);
+              String _name = activeDomain.getName();
+              final boolean machineExistInModeler = this.containMachine(_name);
+              if ((!machineExistInModeler)) {
+                this.buildModel(activeDomain);
+              }
+            }
+          }
+          connection.close();
+        } catch (final Throwable _t) {
+          if (_t instanceof LibvirtException) {
+            final LibvirtException e = (LibvirtException)_t;
+            ExecutableHypervisorModel.LOGGER.error("Exception caught: ", e);
+            boolean _notEquals_1 = (!Objects.equal(connection, null));
+            if (_notEquals_1) {
+              connection.close();
+            }
+          } else {
+            throw Exceptions.sneakyThrow(_t);
+          }
+        }
+      }
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
     }
   }
   

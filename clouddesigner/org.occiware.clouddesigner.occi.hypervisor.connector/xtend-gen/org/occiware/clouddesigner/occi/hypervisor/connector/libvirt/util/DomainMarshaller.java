@@ -56,6 +56,7 @@ public class DomainMarshaller {
   
   public void loadUri() {
     this.uri.put("vbox", "vbox+unix:///session");
+    this.uri.put("vmware", "vpx://root@185.8.253.211/Datacenters/Production/host/OCCIWARE/172.16.225.11?no_verify=1");
   }
   
   /**
