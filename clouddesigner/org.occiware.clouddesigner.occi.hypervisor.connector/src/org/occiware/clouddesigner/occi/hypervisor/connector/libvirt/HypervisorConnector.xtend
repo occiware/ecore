@@ -11,11 +11,21 @@
  *******************************************************************************/
 package org.occiware.clouddesigner.occi.hypervisor.connector.libvirt
 
+import java.util.HashMap
+import java.util.List
+import java.util.Map
 import org.libvirt.Connect
+import org.libvirt.ConnectAuth
 import org.libvirt.Domain
+import org.libvirt.LibvirtException
+import org.occiware.clouddesigner.occi.Configuration
+import org.occiware.clouddesigner.occi.Resource
+import org.occiware.clouddesigner.occi.hypervisor.HypervisorFactory
 import org.occiware.clouddesigner.occi.hypervisor.HypervisorPackage
 import org.occiware.clouddesigner.occi.hypervisor.Machine
 import org.occiware.clouddesigner.occi.hypervisor.Machine_VirtualBox
+import org.occiware.clouddesigner.occi.hypervisor.connector.libvirt.util.CustomsConnectAuth
+import org.occiware.clouddesigner.occi.hypervisor.connector.libvirt.util.DomainMarshaller
 import org.occiware.clouddesigner.occi.hypervisor.impl.HypervisorFactoryImpl
 import org.occiware.clouddesigner.occi.hypervisor.impl.MachineImpl
 import org.occiware.clouddesigner.occi.hypervisor.impl.Machine_VirtualBoxImpl
@@ -26,15 +36,6 @@ import org.occiware.clouddesigner.occi.infrastructure.StopMethod
 import org.occiware.clouddesigner.occi.infrastructure.SuspendMethod
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import org.occiware.clouddesigner.occi.hypervisor.connector.libvirt.util.DomainMarshaller
-import org.occiware.clouddesigner.occi.Configuration
-import org.libvirt.NodeInfo
-import org.libvirt.LibvirtException
-import org.occiware.clouddesigner.occi.hypervisor.HypervisorFactory
-import java.util.HashMap
-import java.util.Map
-import org.occiware.clouddesigner.occi.Resource
-import java.util.List
 
 /**
  * This class overrides the generated EMF factory of the  package.
@@ -679,6 +680,52 @@ class ExecutableHypervisorModel {
 		}
 	}
 
+	def void connectToVMWARE() {
+		val int connectFlags = 0
+		val domainMarshaller = new DomainMarshaller
+		domainMarshaller.loadUri
+		var Connect connection = null;
+		val String libvirtURI = domainMarshaller.uri.get("vmware")
+		if (libvirtURI != null) {
+			LOGGER.info("Hypervisor URI is: {}", libvirtURI)
+			try {
+				// Auth
+				// val ConnectAuth cAuth = new ConnectAuthDefault()
+				val ConnectAuth cAuth = new CustomsConnectAuth("!Scalair1!")
+				// initialize connection to vm
+				connection = new Connect(libvirtURI, cAuth, connectFlags)
+				val String[] inactiveDomainNames = connection.listDefinedDomains()
+				val int[] activeDomainIds = connection.listDomains
+				// Get inactive domain
+				for (String definedDomainName : inactiveDomainNames) {
+					println(definedDomainName)
+					val Domain inactiveDomain = connection.domainLookupByName(definedDomainName)
+//					println(inactiveDomain.getXMLDesc(0))
+					val machineExistInModeler = containMachine(inactiveDomain.name)
+					if (!machineExistInModeler) {
+						buildModel(inactiveDomain) // Create the machine in stopped state
+					}
+				}
+				// Get active domain
+				for (int domainnId : activeDomainIds) {
+					println(domainnId)
+					val Domain activeDomain = connection.domainLookupByID(domainnId)
+					val machineExistInModeler = containMachine(activeDomain.name)
+					if (!machineExistInModeler) {
+						buildModel(activeDomain) // Create the machine in running state
+					}
+				}
+				connection.close
+			} catch (LibvirtException e) {
+				LOGGER.error("Exception caught: ", e)
+				if (connection != null) {
+					connection.close
+				}
+			}
+		}
+
+	}
+
 	def void importModel() {
 		val domainMarshaller = new DomainMarshaller
 		domainMarshaller.loadUri
@@ -695,6 +742,7 @@ class ExecutableHypervisorModel {
 				for (String definedDomainName : definedDomainNames) {
 					println(definedDomainName)
 					val Domain inactiveDomain = connection.domainLookupByName(definedDomainName)
+//					println(inactiveDomain.getXMLDesc(0))
 					val machineExistInModeler = containMachine(inactiveDomain.name)
 					if (!machineExistInModeler) {
 						buildModel(inactiveDomain) // Create the machine in stopped state
@@ -787,9 +835,9 @@ class LibvirtExecutableModel {
 		ExecutableHypervisorFactory.init
 
 //		// Import
-//		val main = new ExecutableHypervisorModel()
+		val main = new ExecutableHypervisorModel()
+		main.connectToVMWARE
 //		main.importModel
-
 	/*
 	 * // Obtain the Infrastructure package factory.
 	 * val factory = HypervisorPackage.eINSTANCE.hypervisorFactory
