@@ -15,12 +15,19 @@
       <wizard
             class="org.occiware.clouddesigner.occi.design.wizard.NewExtensionWizard"
             icon="images/ModelingProject.gif"
-            id="org.occiware.clouddesigner.occi.design.wizardID"
+            id="org.occiware.clouddesigner.occi.design.wizard.NewExtensionWizard"
             name="OCCI Extension Project"
             category="org.occiware.clouddesigner"
             project="true">
          <description>Create a new Modeling project to specify an OCCI Extension.</description>
          <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+     <wizard
+            category="org.occiware.clouddesigner"
+            class="org.occiware.clouddesigner.occi.design.wizard.NewConfigurationWizard"
+            icon="images/Configuration.gif"
+            id="org.occiware.clouddesigner.occi.design.wizard.NewConfigurationWizard"
+            name="OCCI Configuration File">
       </wizard>
    </extension>
     <extension

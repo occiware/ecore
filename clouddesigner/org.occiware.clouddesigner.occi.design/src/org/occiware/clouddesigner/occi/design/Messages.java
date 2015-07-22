@@ -7,6 +7,11 @@ public class Messages extends NLS {
 	public static String LoadExtensionDialog_ExtensionRegistry;
 	public static String LoadExtensionDialog_SelectExtension;
 	public static String LoadExtensionDialog_SelectRegisteredExtension;
+	public static String NewConfigurationWizard_DefaultModelName;
+	public static String NewConfigurationWizard_FileExtError;
+	public static String NewConfigurationWizard_PageDescription;
+	public static String NewConfigurationWizard_PageTitle;
+	public static String NewConfigurationWizard_WindowTitle;
 	public static String NewExtensionWizard_ExtensionNameLabel;
 	public static String NewExtensionWizard_ExtensionSchemeLabel;
 	public static String NewExtensionWizard_ModelCreationError;

@@ -43,14 +43,14 @@ import com.google.common.collect.Maps;
  * An operation to create and initialize a new session with empty semantic
  * extension model.
  *
- * @author Stephane Thibaudeau <a
- *         href="mailto:stephane.thibaudeau@obeo.fr">stephane
+ * @author Stephane Thibaudeau
+ *         <a href="mailto:stephane.thibaudeau@obeo.fr">stephane
  *         .thibaudeau@obeo.fr</a>
- * @author Melanie Bats <a
- *         href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
+ * @author Melanie Bats
+ *         <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class InitExtensionModel extends WorkspaceModifyOperation {
-	static final String FILE_EXT = ".occie"; //$NON-NLS-1$
+	private static final String EXTENSION_VIEWPOINT_URI = "viewpoint:/org.occiware.clouddesigner.occi.design/OCCI Extension"; //$NON-NLS-1$
 
 	/**
 	 * The project.
@@ -68,6 +68,7 @@ public class InitExtensionModel extends WorkspaceModifyOperation {
 	private final String extensionScheme;
 
 	private String[] refExtensionSchemes;
+	private URI semanticModelURI;
 
 	/**
 	 * Constructor.
@@ -79,8 +80,8 @@ public class InitExtensionModel extends WorkspaceModifyOperation {
 	 * @param extensionName
 	 * @param extensionScheme
 	 */
-	public InitExtensionModel(IProject project, String extensionName,
-			String extensionScheme, String... refExtensionSchemes) {
+	public InitExtensionModel(IProject project, String extensionName, String extensionScheme,
+			String... refExtensionSchemes) {
 		super(null);
 		this.project = project;
 		this.extensionName = extensionName;
@@ -92,20 +93,19 @@ public class InitExtensionModel extends WorkspaceModifyOperation {
 	 * {@inheritDoc}
 	 */
 	@Override
-	protected void execute(final IProgressMonitor monitor)
-			throws CoreException, InterruptedException {
-		final Option<ModelingProject> created = ModelingProject
-				.asModelingProject(project);
+	protected void execute(final IProgressMonitor monitor) throws CoreException, InterruptedException {
+		final Option<ModelingProject> created = ModelingProject.asModelingProject(project);
 		if (created.some()) {
 			Display.getDefault().syncExec(new Runnable() {
 
+				@Override
 				public void run() {
 					// Create default empty Extension model
 					createSemanticResource();
 
 					// Enable OCCI viewpoints
 					final ModelingProject modelingProject = created.get();
-					OCCIViewpoints.enable(modelingProject.getSession());
+					WizardUtils.enableViewpoint(modelingProject.getSession(), EXTENSION_VIEWPOINT_URI);
 				}
 			});
 		}
@@ -123,74 +123,54 @@ public class InitExtensionModel extends WorkspaceModifyOperation {
 		final Extension rootObject = OCCIFactory.eINSTANCE.createExtension();
 		rootObject.setName(extensionName);
 		rootObject.setScheme(extensionScheme);
-		final Option<ModelingProject> modelingProject = ModelingProject
-				.asModelingProject(project);
+		final Option<ModelingProject> modelingProject = ModelingProject.asModelingProject(project);
 		final Session session = modelingProject.get().getSession();
 		final String platformPath = getNewModelFilePath(project, extensionName);
-		session.getTransactionalEditingDomain()
-				.getCommandStack()
-				.execute(
-						new RecordingCommand(session
-								.getTransactionalEditingDomain()) {
-							@Override
-							protected void doExecute() {
+		session.getTransactionalEditingDomain().getCommandStack()
+				.execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
 
-								final ResourceSetImpl resourceSet = new ResourceSetImpl();
-								/* load the occi-core.xmi extension. */
-								final Resource occiCoreResource = resourceSet.getResource(
-										URI.createPlatformPluginURI(
-												"org.occiware.clouddesigner.occi/model/Core.occie",
-												true), true);
-								final Extension occiCoreExtension = (Extension) occiCoreResource
-										.getContents().get(0);
-								/* import the OCCI Core extension. */
-								rootObject.getImport().add(occiCoreExtension);
+					@Override
+					protected void doExecute() {
 
-								// add referenced extensions
-								for (String refExtensionScheme : refExtensionSchemes) {
-									String refExtensionURI = OCCIRegistry
-											.getInstance().getExtensionURI(
-													refExtensionScheme);
-									final Resource refExtensionResource = resourceSet
-											.getResource(URI.createURI(
-													refExtensionURI, true),
-													true);
-									final Extension refExtension = (Extension) refExtensionResource
-											.getContents().get(0);
-									rootObject.getImport().add(refExtension);
-								}
+						final ResourceSetImpl resourceSet = new ResourceSetImpl();
+						/* load the occi-core.xmi extension. */
+						final Resource occiCoreResource = resourceSet.getResource(
+								URI.createPlatformPluginURI("org.occiware.clouddesigner.occi/model/Core.occie", true),
+								true);
+						final Extension occiCoreExtension = (Extension) occiCoreResource.getContents().get(0);
+						/* import the OCCI Core extension. */
+						rootObject.getImport().add(occiCoreExtension);
 
-								final URI semanticModelURI = URI
-										.createPlatformResourceURI(
-												platformPath, true);
-								final Resource res = resourceSet
-										.createResource(semanticModelURI);
-								/* Add the initial model object to the contents. */
+						// add referenced extensions
+						for (String refExtensionScheme : refExtensionSchemes) {
+							String refExtensionURI = OCCIRegistry.getInstance().getExtensionURI(refExtensionScheme);
+							final Resource refExtensionResource = resourceSet
+									.getResource(URI.createURI(refExtensionURI, true), true);
+							final Extension refExtension = (Extension) refExtensionResource.getContents().get(0);
+							rootObject.getImport().add(refExtension);
+						}
 
-								if (rootObject != null) {
-									res.getContents().add(rootObject);
-								}
-								try {
-									res.save(Maps.newHashMap());
-								} catch (final IOException e) {
-									Activator
-											.getDefault()
-											.getLog()
-											.log(new Status(
-													IStatus.ERROR,
-													Activator.PLUGIN_ID,
-													Messages.NewExtensionWizard_ModelCreationError,
-													e));
-								}
+						semanticModelURI = URI.createPlatformResourceURI(platformPath, true);
 
-								session.addSemanticResource(semanticModelURI,
-										new NullProgressMonitor());
+						final Resource res = resourceSet.createResource(semanticModelURI);
+						/* Add the initial model object to the contents. */
 
-								session.save(new NullProgressMonitor());
-							}
-						});
-		return Options.newSome(ResourcesPlugin.getWorkspace().getRoot()
-				.getFile(new Path(platformPath)));
+						if (rootObject != null) {
+							res.getContents().add(rootObject);
+						}
+						try {
+							res.save(Maps.newHashMap());
+						} catch (final IOException e) {
+							Activator.getDefault().getLog().log(new Status(IStatus.ERROR, Activator.PLUGIN_ID,
+									Messages.NewExtensionWizard_ModelCreationError, e));
+						}
+
+						session.addSemanticResource(semanticModelURI, new NullProgressMonitor());
+
+						session.save(new NullProgressMonitor());
+					}
+				});
+		return Options.newSome(ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(platformPath)));
 	}
 
 	/**
@@ -202,9 +182,12 @@ public class InitExtensionModel extends WorkspaceModifyOperation {
 	 *            File name
 	 * @return model file path
 	 */
-	private static String getNewModelFilePath(IProject project,
-			String extensionName) {
+	private static String getNewModelFilePath(IProject project, String extensionName) {
 		return '/' + project.getName() + "/model/" //$NON-NLS-1$
-				+ extensionName.toLowerCase() + FILE_EXT;
+				+ extensionName.toLowerCase() + "." + NewExtensionWizard.EXTENSION_FILEEXT;
+	}
+
+	public URI getSemanticModelURI() {
+		return semanticModelURI;
 	}
 }

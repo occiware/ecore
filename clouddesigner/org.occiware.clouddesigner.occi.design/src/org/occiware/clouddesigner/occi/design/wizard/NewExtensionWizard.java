@@ -3,7 +3,6 @@ package org.occiware.clouddesigner.occi.design.wizard;
 import java.io.ByteArrayInputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 
 import org.eclipse.core.resources.IFile;
@@ -14,8 +13,6 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.layout.TableColumnLayout;
 import org.eclipse.jface.operation.IRunnableWithProgress;
@@ -23,15 +20,8 @@ import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.CheckboxTableViewer;
 import org.eclipse.pde.internal.core.project.PDEProject;
 import org.eclipse.pde.internal.ui.wizards.tools.ConvertProjectToPluginOperation;
-import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
-import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.ext.base.Option;
-import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager;
-import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.DView;
-import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -62,9 +52,13 @@ import com.google.common.base.Strings;
  */
 public class NewExtensionWizard extends BasicNewProjectResourceWizard {
 
+	private static final String EXTENSION_DIAGRAM_NAME = "Extension diagram"; //$NON-NLS-1$
+
+	protected static final String EXTENSION_FILEEXT = "occie"; //$NON-NLS-1$
+
+	private CheckboxTableViewer refExtensionViewer;
+
 	private final class NewExtensionWizardPage extends WizardNewProjectCreationPage {
-		private static final String OCCI_CORE_EXTENSION_SCHEME = "http://schemas.ogf.org/occi/core#";
-		private CheckboxTableViewer refExtensionViewer;
 
 		private NewExtensionWizardPage(String pageName) {
 			super(pageName);
@@ -135,13 +129,9 @@ public class NewExtensionWizard extends BasicNewProjectResourceWizard {
 
 			Collection<String> registeredExtensions = new ArrayList<String>(
 					OCCIRegistry.getInstance().getRegisteredExtensions());
-			registeredExtensions.remove(OCCI_CORE_EXTENSION_SCHEME);
+			// added by default
+			registeredExtensions.remove(WizardUtils.OCCI_CORE_EXTENSION_SCHEME);
 			refExtensionViewer.setInput(registeredExtensions);
-		}
-
-		public String[] getRefExtensionSchemes() {
-			return Arrays.copyOf(refExtensionViewer.getCheckedElements(),
-					refExtensionViewer.getCheckedElements().length, String[].class);
 		}
 
 		@Override
@@ -151,8 +141,6 @@ public class NewExtensionWizard extends BasicNewProjectResourceWizard {
 					&& !Strings.isNullOrEmpty(extensionSchemeText.getText().trim());
 		}
 	}
-
-	private static final String EXTENSION_DIAGRAM_NAME = "Extension diagram"; //$NON-NLS-1$
 
 	/**
 	 * project.
@@ -175,29 +163,6 @@ public class NewExtensionWizard extends BasicNewProjectResourceWizard {
 
 	private Text extensionSchemeText;
 
-	private void openRepresentation(IProject curProject, IProgressMonitor monitor) {
-		final Option<ModelingProject> optionalModelingProject = ModelingProject.asModelingProject(curProject);
-		if (optionalModelingProject.some()) {
-			final Session session = optionalModelingProject.get().getSession();
-			if (session != null) {
-				if (!session.getSelectedViews().isEmpty()) {
-					for (final DView view : session.getSelectedViews()) {
-						if (!view.getOwnedRepresentations().isEmpty()) {
-							for (final DRepresentation representation : view.getOwnedRepresentations()) {
-								final RepresentationDescription description = DialectManager.INSTANCE
-										.getDescription(representation);
-								if (EXTENSION_DIAGRAM_NAME.equals(description.getName())) {
-									DialectUIManager.INSTANCE.openEditor(session, representation, monitor);
-									return;
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-
 	/**
 	 * Create a default model then select it in the explorer and switch to
 	 * modeling perspective. The project, the rootObjectName and the
@@ -210,6 +175,8 @@ public class NewExtensionWizard extends BasicNewProjectResourceWizard {
 		try {
 			project = ModelingProjectManager.INSTANCE.createNewModelingProject(newProjectPage.getProjectName(),
 					newProjectPage.getLocationPath(), true, monitor);
+
+			ModelingProject.asModelingProject(project).get().getSession().getSelectedViewpoints(false);
 		} catch (CoreException e) {
 			Activator.getDefault().getLog().log(new Status(IStatus.ERROR, Activator.PLUGIN_ID,
 					Messages.NewExtensionWizard_ProjectCreationError, e));
@@ -229,7 +196,7 @@ public class NewExtensionWizard extends BasicNewProjectResourceWizard {
 				// BasicNewProjectResourceWizard to implement the perspective
 				// switch easily.
 				final InitExtensionModel init = new InitExtensionModel(project, extensionName, extensionScheme,
-						newProjectPage.getRefExtensionSchemes());
+						WizardUtils.getRefExtensionSchemes(refExtensionViewer));
 				try {
 					getContainer().run(false, true, init);
 				} catch (final InterruptedException e) {
@@ -240,40 +207,18 @@ public class NewExtensionWizard extends BasicNewProjectResourceWizard {
 				}
 
 				// Get the newly created file
-				final IResource newModelFile = project.findMember(extensionName + InitExtensionModel.FILE_EXT);
+				final IResource newModelFile = project.findMember(extensionName + "." + EXTENSION_FILEEXT);
 
 				// Switch to the modeling perspective
-				updatePerspective();
+				// updatePerspective();
+				PlatformUI.getWorkbench().showPerspective(WizardUtils.MODELING_PERSPECTIVE_ID,
+						PlatformUI.getWorkbench().getActiveWorkbenchWindow());
 
 				// Select it in the explorer
 				selectAndReveal(newModelFile, PlatformUI.getWorkbench().getActiveWorkbenchWindow());
 
-				// Init the representation
-				final Option<ModelingProject> optionalModelingProject = ModelingProject.asModelingProject(project);
-				if (optionalModelingProject.some()) {
-					final Session session = optionalModelingProject.get().getSession();
-
-					final EObject rootObject = session.getSemanticResources().iterator().next().getContents().get(0);
-					final RepresentationDescription representationDescription = getRepresentationDescription(rootObject,
-							session, EXTENSION_DIAGRAM_NAME);
-
-					RecordingCommand createcommand = new RecordingCommand(session.getTransactionalEditingDomain()) {
-
-						@Override
-						protected void doExecute() {
-							DialectManager.INSTANCE.createRepresentation(extensionName, rootObject,
-									representationDescription, session, new NullProgressMonitor());
-						}
-					};
-					try {
-						session.getTransactionalEditingDomain().getCommandStack().execute(createcommand);
-					} catch (Exception e) {
-						Activator.getDefault().getLog().log(new Status(IStatus.ERROR, Activator.PLUGIN_ID,
-								Messages.NewExtensionWizard_RepresentationCreationError, e));
-					}
-					// Open the diagram
-					openRepresentation(project, monitor);
-				}
+				WizardUtils.openDiagram(monitor, project, EXTENSION_DIAGRAM_NAME, extensionName, WizardUtils.getRoot(
+						ModelingProject.asModelingProject(project).get().getSession(), init.getSemanticModelURI()));
 			}
 		};
 		try {
@@ -339,29 +284,6 @@ public class NewExtensionWizard extends BasicNewProjectResourceWizard {
 		newProjectPage.setTitle(Messages.NewExtensionWizard_PageTitle);
 		newProjectPage.setDescription(Messages.NewExtensionWizard_PageDescription);
 		addPage(newProjectPage);
-	}
-
-	/**
-	 * Get a representation description.
-	 *
-	 * @param eObject
-	 *            Semantic object
-	 * @param session
-	 *            Session
-	 * @param representationDescriptionId
-	 *            Representation description id
-	 * @return Representation description
-	 */
-	private static RepresentationDescription getRepresentationDescription(EObject eObject, Session session,
-			String representationDescriptionId) {
-		final Collection<RepresentationDescription> representationDescriptions = DialectManager.INSTANCE
-				.getAvailableRepresentationDescriptions(session.getSelectedViewpoints(false), eObject);
-		for (final RepresentationDescription representationDescription : representationDescriptions) {
-			if (representationDescriptionId.equals(representationDescription.getName())) {
-				return representationDescription;
-			}
-		}
-		return null;
 	}
 
 }
