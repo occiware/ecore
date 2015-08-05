@@ -37,7 +37,7 @@
              nameFilter="*.occie"
              objectClass="org.eclipse.core.resources.IFile">
           <menu
-                id="org.occiware.clouddesigner.occi.design.menu"
+                id="org.occiware.clouddesigner.menu"
                 label="Cloud Designer"
                 path="additionsCloudDesigner">
              <separator
@@ -49,7 +49,7 @@
                 enablesFor="1"
                 id="org.occiware.clouddesigner.occi.design.registerExtensionAction"
                 label="RegisterExtension"
-                menubarPath="org.occiware.clouddesigner.occi.design.menu/group">
+                menubarPath="org.occiware.clouddesigner.menu/group">
           </action>
        </objectContribution>
     </extension>
