@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="OCCIware" version="10.0.0.201505222000">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="OCCIware" version="10.0.0.201505222000">
   <ownedViewpoints name="OCCI Extension" modelFileExtension="occie">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Extension diagram" domainClass="occi.Extension">
       <metamodel href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#/"/>
@@ -45,8 +45,8 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
         </containerMappings>
-        <containerMappings name="KindContainer" semanticCandidatesExpression="feature:kinds" synchronizationLock="true" domainClass="occi.Kind" childrenPresentation="List">
-          <subNodeMappings name="Attribute" semanticCandidatesExpression="feature:attributes" domainClass="occi.Attribute">
+        <containerMappings name="KindContainer" labelDirectEdit="//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='EditTerm']" semanticCandidatesExpression="feature:kinds" synchronizationLock="true" domainClass="occi.Kind" childrenPresentation="List">
+          <subNodeMappings name="Attribute" labelDirectEdit="//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='EditName']" semanticCandidatesExpression="feature:attributes" domainClass="occi.Attribute">
             <style xsi:type="style:SquareDescription" labelSize="10" showIcon="false" labelExpression="[name/]" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -81,7 +81,7 @@
               </style>
             </conditionnalStyles>
           </subNodeMappings>
-          <subNodeMappings name="Action" semanticCandidatesExpression="feature:actions" domainClass="occi.Action">
+          <subNodeMappings name="Action" labelDirectEdit="//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='EditTerm']" semanticCandidatesExpression="feature:actions" domainClass="occi.Action">
             <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="service:render" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -97,7 +97,7 @@
             <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.0"/>
           </style>
         </containerMappings>
-        <containerMappings name="MixinContainer" semanticCandidatesExpression="feature:mixins" synchronizationLock="true" domainClass="occi.Mixin" childrenPresentation="List">
+        <containerMappings name="MixinContainer" labelDirectEdit="//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='EditTerm']" semanticCandidatesExpression="feature:mixins" synchronizationLock="true" domainClass="occi.Mixin" childrenPresentation="List">
           <subNodeMappings name="Attribute" semanticCandidatesExpression="feature:attributes" domainClass="occi.Attribute">
             <style xsi:type="style:SquareDescription" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -149,7 +149,7 @@
             <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.0"/>
           </style>
         </containerMappings>
-        <containerMappings name="EC EDataType" preconditionExpression="service:isEDataType" semanticCandidatesExpression="feature:types" domainClass="ecore.EDataType" childrenPresentation="List">
+        <containerMappings name="EC EDataType" preconditionExpression="service:isEDataType" labelDirectEdit="//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='EditName']" semanticCandidatesExpression="feature:types" domainClass="ecore.EDataType" childrenPresentation="List">
           <subNodeMappings name="EC_DataType_InstanceClassName" semanticCandidatesExpression="var:self" domainClass="ecore.EDataType">
             <style xsi:type="style:BundledImageDescription" labelSize="10" showIcon="false" labelExpression="feature:instanceClassName" sizeComputationExpression="1">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -172,8 +172,8 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </containerMappings>
-        <containerMappings name="EC EEnum" semanticCandidatesExpression="feature:types" domainClass="ecore.EEnum" childrenPresentation="List">
-          <subNodeMappings name="EC EEnumLiteral" semanticCandidatesExpression="feature:eLiterals" domainClass="ecore.EEnumLiteral">
+        <containerMappings name="EC EEnum" labelDirectEdit="//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='EditName']" semanticCandidatesExpression="feature:types" domainClass="ecore.EEnum" childrenPresentation="List">
+          <subNodeMappings name="EC EEnumLiteral" labelDirectEdit="//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='EditName']" semanticCandidatesExpression="feature:eLiterals" domainClass="ecore.EEnumLiteral">
             <style xsi:type="style:BundledImageDescription" labelSize="10" labelAlignment="LEFT" sizeComputationExpression="1">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -188,129 +188,141 @@
           </style>
         </containerMappings>
         <toolSections name="Tool">
-          <ownedTools xsi:type="tool:PopupMenu" name="Cloud Designer">
-            <menuItemDescription xsi:type="tool:OperationAction" name="Import OCCI Extension" precondition="[oclIsKindOf(Extension)/]" icon="/org.occiware.clouddesigner.occi.design/images/import.gif">
+          <ownedTools xsi:type="tool:DirectEditLabel" name="EditTerm">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="term" valueExpression="var:arg0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="EditName">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:arg0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:PopupMenu" name="Cloud Designer">
+            <menuItemDescription xsi:type="tool_1:OperationAction" name="Import OCCI Extension" precondition="[oclIsKindOf(Extension)/]" icon="/org.occiware.clouddesigner.occi.design/images/import.gif">
               <view name="views"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:importExtension"/>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:importExtension"/>
               </initialOperation>
             </menuItemDescription>
           </ownedTools>
         </toolSections>
         <toolSections name="Category" label="Category">
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="Kind" containerMappings="//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Kind" containerMappings="//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="occi.Kind" referenceName="kinds">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="term" valueExpression="['kind' + container.oclAsType(Extension).kinds->size().toString()/]"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="scheme" valueExpression="[container.oclAsType(Extension).scheme/]"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="occi.Kind" referenceName="kinds">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="term" valueExpression="['kind' + container.oclAsType(Extension).kinds->size().toString()/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="scheme" valueExpression="[container.oclAsType(Extension).scheme/]"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="Mixin" containerMappings="//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Mixin" containerMappings="//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="occi.Mixin" referenceName="mixins">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="term" valueExpression="['mixin' + container.oclAsType(Extension).mixins->size().toString()/]"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="scheme" valueExpression="[container.oclAsType(Extension).scheme/]"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="occi.Mixin" referenceName="mixins">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="term" valueExpression="['mixin' + container.oclAsType(Extension).mixins->size().toString()/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="scheme" valueExpression="[container.oclAsType(Extension).scheme/]"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="Attribute" nodeMappings="//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute'] //@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='Attribute']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Attribute" nodeMappings="//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute'] //@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='Attribute']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="occi.Attribute" referenceName="attributes">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['attribute' + container.oclAsType(Category).attributes->size().toString()/]"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="occi.Attribute" referenceName="attributes">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['attribute' + container.oclAsType(Category).attributes->size().toString()/]"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="Action" nodeMappings="//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Action'] //@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='Action']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Action" nodeMappings="//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Action'] //@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='Action']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="occi.Action" referenceName="actions">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="term" valueExpression="service:initialActionTerm"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="scheme" valueExpression="service:initialActionScheme"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="occi.Action" referenceName="actions">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="term" valueExpression="service:initialActionTerm"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="scheme" valueExpression="service:initialActionScheme"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
         </toolSections>
         <toolSections name="Relation" label="Relation">
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Parent" edgeMappings="//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Parent" edgeMappings="//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
-                <subModelOperations xsi:type="tool:SetValue" featureName="parent" valueExpression="var:target"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="parent" valueExpression="var:target"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Depends" edgeMappings="//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='DependsEdge']">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Depends" edgeMappings="//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='DependsEdge']">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
-                <subModelOperations xsi:type="tool:SetValue" featureName="depends" valueExpression="var:target"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="depends" valueExpression="var:target"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Applies" edgeMappings="//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='AppliesEdge']">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Applies" edgeMappings="//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='AppliesEdge']">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
-                <subModelOperations xsi:type="tool:SetValue" featureName="applies" valueExpression="var:target"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="applies" valueExpression="var:target"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
         </toolSections>
         <toolSections name="S DataType" label="DataType">
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="DataType" containerMappings="//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="DataType" containerMappings="//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EDataType" referenceName="types">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['DataType' + container.oclAsType(Extension).types->size().toString()/]"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore.EDataType" referenceName="types">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['DataType' + container.oclAsType(Extension).types->size().toString()/]"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="Enum" containerMappings="//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Enum" containerMappings="//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EEnum" referenceName="types">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['Enum' + container.oclAsType(Extension).types->size().toString()/]"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore.EEnum" referenceName="types">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['Enum' + container.oclAsType(Extension).types->size().toString()/]"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="Literal" nodeMappings="//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Literal" nodeMappings="//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EEnumLiteral" referenceName="eLiterals">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="literal"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore.EEnumLiteral" referenceName="eLiterals">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="literal"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -340,7 +352,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="ResourceToResource" sourceMapping="//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']" targetMapping="//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']" targetFinderExpression="feature:resources">
+        <edgeMappings name="ResourceToResource" sourceMapping="//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']" targetMapping="//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']" targetFinderExpression="[links->collect(target)/]">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -365,7 +377,7 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </subNodeMappings>
-          <subNodeMappings name="AttributeValue" semanticCandidatesExpression="feature:attributes" domainClass="occi.AttributeValue">
+          <subNodeMappings name="AttributeState" semanticCandidatesExpression="feature:attributes" domainClass="occi.AttributeState">
             <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="[name+'= '+value/]" labelAlignment="LEFT" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -397,7 +409,7 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </subNodeMappings>
-          <subNodeMappings name="AttributeValue" semanticCandidatesExpression="feature:attributes" domainClass="occi.AttributeValue">
+          <subNodeMappings name="AttributeState" semanticCandidatesExpression="feature:attributes" domainClass="occi.AttributeState">
             <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="[name+'= '+value/]" labelAlignment="LEFT" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -413,48 +425,48 @@
           </style>
         </containerMappings>
         <toolSections name="Environment">
-          <ownedTools xsi:type="tool:PaneBasedSelectionWizardDescription" name="Import" candidatesExpression="feature:extension" preSelectedCandidatesExpression="feature:extension">
+          <ownedTools xsi:type="tool_1:PaneBasedSelectionWizardDescription" name="Import" candidatesExpression="feature:extension" preSelectedCandidatesExpression="feature:extension">
             <element name="element"/>
             <containerView name="containerView"/>
             <container name="container"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element"/>
             </initialOperation>
           </ownedTools>
         </toolSections>
         <toolSections name="Entity" label="Category">
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="Resource" containerMappings="//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Resource" containerMappings="//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="occi.Resource" referenceName="resources"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="occi.Resource" referenceName="resources"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Link" edgeMappings="//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@edgeMappings[name='ResourceToResource']">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Link" edgeMappings="//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@edgeMappings[name='ResourceToResource']">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="occi.Link" referenceName="link" variableName="link">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="var:target"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="occi.Link" referenceName="link" variableName="link">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="var:target"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
         </toolSections>
         <toolSections name="Attribute">
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="Attribute" nodeMappings="//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='LinkContainer']/@subNodeMappings[name='AttributeValue'] //@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subNodeMappings[name='AttributeValue']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Attribute" nodeMappings="//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='LinkContainer']/@subNodeMappings[name='AttributeState'] //@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subNodeMappings[name='AttributeState']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="occi.AttributeValue" referenceName="attribute">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="AttributeName"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="value" valueExpression="Value"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="occi.AttributeState" referenceName="attribute">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="AttributeName"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="value" valueExpression="Value"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
