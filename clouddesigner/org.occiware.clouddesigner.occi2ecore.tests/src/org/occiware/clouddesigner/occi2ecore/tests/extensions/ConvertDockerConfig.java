@@ -1,4 +1,4 @@
-package org.occiware.clouddesigner.occi2ecore.docker;
+package org.occiware.clouddesigner.occi2ecore.tests.extensions;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -19,7 +19,7 @@ import org.occiware.clouddesigner.occi.Link;
 import org.occiware.clouddesigner.occi.OCCIFactory;
 import org.occiware.clouddesigner.occi.OCCIPackage;
 import org.occiware.clouddesigner.occi.Resource;
-import org.occiware.clouddesigner.occi2ecore.utils.ConverterUtils;
+import org.occiware.clouddesigner.occi2ecore.ConverterUtils;
 
 public class ConvertDockerConfig {
 	private ResourceSet resourceSet = new ResourceSetImpl();

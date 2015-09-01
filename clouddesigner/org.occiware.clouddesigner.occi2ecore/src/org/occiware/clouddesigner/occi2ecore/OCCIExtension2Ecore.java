@@ -1,4 +1,4 @@
-package org.occiware.clouddesigner.occi2ecore.utils;
+package org.occiware.clouddesigner.occi2ecore;
 
 import java.util.HashMap;
 import java.util.Map;

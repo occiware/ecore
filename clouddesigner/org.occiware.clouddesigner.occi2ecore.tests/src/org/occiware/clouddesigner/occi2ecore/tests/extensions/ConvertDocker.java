@@ -1,9 +1,9 @@
-package org.occiware.clouddesigner.occi2ecore.docker;
+package org.occiware.clouddesigner.occi2ecore.tests.extensions;
 
 import org.occiware.clouddesigner.occi.Action;
 import org.occiware.clouddesigner.occi.Attribute;
 import org.occiware.clouddesigner.occi.Category;
-import org.occiware.clouddesigner.occi2ecore.utils.OCCIExtension2Ecore;
+import org.occiware.clouddesigner.occi2ecore.OCCIExtension2Ecore;
 
 /*
  * Modifications de Docker.xmi pour ne pas interférer avec les éléments hérités de OCCI et Infrastructure :

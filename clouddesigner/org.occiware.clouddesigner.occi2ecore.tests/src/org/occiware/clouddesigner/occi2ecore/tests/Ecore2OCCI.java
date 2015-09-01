@@ -1,4 +1,4 @@
-package org.occiware.clouddesigner.occi2ecore;
+package org.occiware.clouddesigner.occi2ecore.tests;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -22,7 +22,7 @@ import org.occiware.clouddesigner.occi.Resource;
 import org.occiware.clouddesigner.occi.docker.DockerPackage;
 import org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage;
 import org.occiware.clouddesigner.occi.xtext.OCCIStandaloneSetup;
-import org.occiware.clouddesigner.occi2ecore.utils.ConverterUtils;
+import org.occiware.clouddesigner.occi2ecore.ConverterUtils;
 
 public class Ecore2OCCI implements IConverterPaths {
 
@@ -35,12 +35,9 @@ public class Ecore2OCCI implements IConverterPaths {
 	public static ResourceSet resourceSet = new ResourceSetImpl();
 
 	static {
-		resourceSet.getPackageRegistry().put(OCCIPackage.eNS_URI,
-				OCCIPackage.eINSTANCE);
-		resourceSet.getPackageRegistry().put(InfrastructurePackage.eNS_URI,
-				InfrastructurePackage.eINSTANCE);
-		resourceSet.getPackageRegistry().put(DockerPackage.eNS_URI,
-				DockerPackage.eINSTANCE);
+		resourceSet.getPackageRegistry().put(OCCIPackage.eNS_URI, OCCIPackage.eINSTANCE);
+		resourceSet.getPackageRegistry().put(InfrastructurePackage.eNS_URI, InfrastructurePackage.eINSTANCE);
+		resourceSet.getPackageRegistry().put(DockerPackage.eNS_URI, DockerPackage.eINSTANCE);
 		OCCIStandaloneSetup.doSetup();
 	}
 
@@ -51,30 +48,27 @@ public class Ecore2OCCI implements IConverterPaths {
 	}
 
 	public static void main(String[] args) throws IOException {
-		ConverterUtils.save(resourceSet, new Ecore2OCCI()
-				.convertConfig((Configuration) ConverterUtils.getRootElement(
-						resourceSet, "file:/" + DOCKER_SAMPLE1_DSL_PATH)),
+		ConverterUtils.save(resourceSet,
+				new Ecore2OCCI().convertConfig(
+						(Configuration) ConverterUtils.getRootElement(resourceSet, "file:/" + DOCKER_SAMPLE1_DSL_PATH)),
 				"output/docker_sample1_OCCI.xmi");
-		ConverterUtils.save(resourceSet, new Ecore2OCCI()
-				.convertConfig((Configuration) ConverterUtils.getRootElement(
-						resourceSet, "file:/" + DOCKER_SAMPLE2_DSL_PATH)),
+		ConverterUtils.save(resourceSet,
+				new Ecore2OCCI().convertConfig(
+						(Configuration) ConverterUtils.getRootElement(resourceSet, "file:/" + DOCKER_SAMPLE2_DSL_PATH)),
 				"output/docker_sample2_OCCI.xmi");
 		// use the ".occi" extension to serialize using xtext
 	}
 
 	private Configuration convertConfig(Configuration sourceConfig) {
-		Configuration targetConfig = OCCIFactory.eINSTANCE
-				.createConfiguration();
+		Configuration targetConfig = OCCIFactory.eINSTANCE.createConfiguration();
 		// create all resources
-		for (org.occiware.clouddesigner.occi.Resource sourceResource : sourceConfig
-				.getResources()) {
+		for (org.occiware.clouddesigner.occi.Resource sourceResource : sourceConfig.getResources()) {
 			org.occiware.clouddesigner.occi.Resource targetResource = convertResource(sourceResource);
 			targetConfig.getResources().add(targetResource);
 		}
 
 		// create & resolve links
-		for (org.occiware.clouddesigner.occi.Resource sourceResource : sourceConfig
-				.getResources()) {
+		for (org.occiware.clouddesigner.occi.Resource sourceResource : sourceConfig.getResources()) {
 			Resource targetResource = mappedResources.get(sourceResource);
 			for (Link sourceLink : sourceResource.getLinks()) {
 				targetResource.getLinks().add(convertLink(sourceLink));
@@ -87,25 +81,20 @@ public class Ecore2OCCI implements IConverterPaths {
 
 	private org.occiware.clouddesigner.occi.Resource convertResource(
 			org.occiware.clouddesigner.occi.Resource sourceResource) {
-		org.occiware.clouddesigner.occi.Resource targetResource = OCCIFactory.eINSTANCE
-				.createResource();
+		org.occiware.clouddesigner.occi.Resource targetResource = OCCIFactory.eINSTANCE.createResource();
 		targetResource.setId(sourceResource.getId());
 		Kind kind = getKind(sourceResource.eClass());
 		targetResource.setKind(kind);
 
 		Set<EAttribute> setAttributes = new HashSet<EAttribute>();
 		for (Attribute attribute : ConverterUtils.getAllAttributes(kind)) {
-			String convertedAttributeName = ConverterUtils.formatName(attribute
-					.getName());
-			EAttribute eAttribute = (EAttribute) sourceResource.eClass()
-					.getEStructuralFeature(convertedAttributeName);
+			String convertedAttributeName = ConverterUtils.formatName(attribute.getName());
+			EAttribute eAttribute = (EAttribute) sourceResource.eClass().getEStructuralFeature(convertedAttributeName);
 			// an attr cannot be set twice
 			if (eAttribute != null && !setAttributes.contains(eAttribute)) {
 				Object value = sourceResource.eGet(eAttribute);
-				if (value != null
-						&& !value.equals(eAttribute.getDefaultValue())) {
-					AttributeState attributeState = OCCIFactory.eINSTANCE
-							.createAttributeState();
+				if (value != null && !value.equals(eAttribute.getDefaultValue())) {
+					AttributeState attributeState = OCCIFactory.eINSTANCE.createAttributeState();
 					attributeState.setName(attribute.getName());
 					attributeState.setValue(String.valueOf(value));
 					targetResource.getAttributes().add(attributeState);
@@ -126,17 +115,13 @@ public class Ecore2OCCI implements IConverterPaths {
 		targetLink.setTarget(mappedResources.get(sourceLink.getTarget()));
 		Set<EAttribute> setAttributes = new HashSet<EAttribute>();
 		for (Attribute attribute : ConverterUtils.getAllAttributes(kind)) {
-			String convertedAttributeName = ConverterUtils.formatName(attribute
-					.getName());
-			EAttribute eAttribute = (EAttribute) sourceLink.eClass()
-					.getEStructuralFeature(convertedAttributeName);
+			String convertedAttributeName = ConverterUtils.formatName(attribute.getName());
+			EAttribute eAttribute = (EAttribute) sourceLink.eClass().getEStructuralFeature(convertedAttributeName);
 			// an attr cannot be set twice
 			if (eAttribute != null && !setAttributes.contains(eAttribute)) {
 				Object value = sourceLink.eGet(eAttribute);
-				if (value != null
-						&& !value.equals(eAttribute.getDefaultValue())) {
-					AttributeState attributeState = OCCIFactory.eINSTANCE
-							.createAttributeState();
+				if (value != null && !value.equals(eAttribute.getDefaultValue())) {
+					AttributeState attributeState = OCCIFactory.eINSTANCE.createAttributeState();
 					attributeState.setName(attribute.getName());
 					attributeState.setValue(String.valueOf(value));
 					targetLink.getAttributes().add(attributeState);
@@ -161,8 +146,7 @@ public class Ecore2OCCI implements IConverterPaths {
 	}
 
 	private void registerExtension(String path) {
-		Extension ext = (Extension) ConverterUtils.getRootElement(resourceSet,
-				"file:/" + path);
+		Extension ext = (Extension) ConverterUtils.getRootElement(resourceSet, "file:/" + path);
 		extensions.put(ext.getScheme(), ext);
 	}
 }
