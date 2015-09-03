@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Acceleo Design Module Runtime Plug-in
 Bundle-SymbolicName: org.occiware.clouddesigner.occi2ecore.gen.design
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 0.1.0.qualifier
 Bundle-Activator: org.occiware.clouddesigner.occi2ecore.gen.design.Activator
 Bundle-Vendor: Eclipse Modeling Project
 Require-Bundle: org.eclipse.core.runtime,

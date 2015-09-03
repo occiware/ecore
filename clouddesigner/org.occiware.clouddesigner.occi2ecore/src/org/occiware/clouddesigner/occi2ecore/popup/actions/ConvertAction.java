@@ -5,7 +5,12 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
 import org.eclipse.emf.codegen.ecore.genmodel.GenPackage;
@@ -32,6 +37,8 @@ public class ConvertAction implements IObjectActionDelegate {
 
 	private ISelection selection;
 
+	private Collection<GenPackage> usedPackages = new ArrayList<GenPackage>();
+
 	/**
 	 * Constructor for Action1.
 	 */
@@ -54,7 +61,7 @@ public class ConvertAction implements IObjectActionDelegate {
 		IFile occieFile = (IFile) ((IStructuredSelection) selection).getFirstElement();
 		try {
 			generateExtension(occieFile.getFullPath().removeFileExtension().lastSegment().toLowerCase(),
-					occieFile.getParent().getLocation().toString(), new ArrayList<GenPackage>());
+					occieFile.getParent().getLocation().toString());
 		} catch (InvocationTargetException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -62,6 +69,9 @@ public class ConvertAction implements IObjectActionDelegate {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (CoreException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -75,8 +85,12 @@ public class ConvertAction implements IObjectActionDelegate {
 		this.selection = selection;
 	}
 
-	public static GenPackage generateExtension(String extensionName, String modelPath,
-			Collection<GenPackage> usedPackages) throws IOException, InvocationTargetException, InterruptedException {
+	public void generateExtension(String extensionName, String modelPath)
+			throws IOException, InvocationTargetException, InterruptedException, CoreException {
+
+		/*
+		 * OCCIE => Ecore conversion
+		 */
 
 		ResourceSet resourceSet = new ResourceSetImpl();
 		EPackage.Registry.INSTANCE.put(ECORE_PLATFORM_URI, EcorePackage.eINSTANCE);
@@ -85,6 +99,14 @@ public class ConvertAction implements IObjectActionDelegate {
 
 		Extension ext = (Extension) ConverterUtils.getRootElement(resourceSet,
 				"file:/" + modelPath + "/" + extensionName + ".occie");
+
+		EPackage ePackage = new OCCIExtension2Ecore().convertExtension(ext);
+		resourceSet.getPackageRegistry().put(ePackage.getNsURI(), ePackage);
+		ConverterUtils.persistMetamodel(resourceSet, ePackage, ecoreLocation);
+
+		/*
+		 * Fetching ext genmodels
+		 */
 
 		for (Extension extension : ext.getImport()) {
 			if (!extension.getName().equals("core")) {
@@ -98,9 +120,9 @@ public class ConvertAction implements IObjectActionDelegate {
 			}
 		}
 
-		EPackage ePackage = new OCCIExtension2Ecore().convertExtension(ext);
-		resourceSet.getPackageRegistry().put(ePackage.getNsURI(), ePackage);
-		ConverterUtils.persistMetamodel(resourceSet, ePackage, ecoreLocation);
+		/*
+		 * Create genmodel
+		 */
 
 		String modelPluginId = new Path(ecoreLocation).removeLastSegments(2).lastSegment().toString();
 		String basePackage = modelPluginId.substring(0, modelPluginId.length() - (extensionName.length() + 1));
@@ -108,11 +130,29 @@ public class ConvertAction implements IObjectActionDelegate {
 		GenPackage coreGenPackage = (GenPackage) ConverterUtils.getRootElement(resourceSet, CORE_GEN_PACKAGE_URI)
 				.eContents().get(1);
 		usedPackages.add(coreGenPackage);
-		GenPackage genPackage = EMFGenUtils.createGenModel(ePackage, ecoreLocation, basePackage, usedPackages);
+		EMFGenUtils.createGenModel(ePackage, ecoreLocation, basePackage, usedPackages);
+
+		/*
+		 * Generate model & edit
+		 */
 
 		String genModelPath = modelPath + "/" + ConverterUtils.toU1Case(extensionName) + ".genmodel";
 		EMFGenUtils.regenEMF(resourceSet, genModelPath);
-		return genPackage;
+
+		/*
+		 * Create design project
+		 */
+		IProject project = DesignGenUtils.genDesignProject(modelPluginId + ".design", ePackage.getName() + ".odesign");
+
+		/*
+		 * Create design model
+		 */
+		IContainer target = project.getFolder("description");
+		DesignGenUtils.genDesignModel(project.getWorkspace().getRoot().getFile(new Path(ecoreLocation)), target);
+
+		project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+		project.getWorkspace().getRoot().getFile(new Path(ecoreLocation)).getProject()
+				.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 	}
 
 }
