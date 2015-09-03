@@ -78,8 +78,7 @@ public final class ConverterUtils {
 		// we must use platform:/plugin URI to enable genmodels
 		String uri = kind.eResource().getURI().toString().replaceAll(".occie", ".ecore");
 		// special case for core
-		uri = uri.replaceAll("platform:/plugin/org.occiware.clouddesigner.occi/model/Core.ecore",
-				"platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore");
+		uri = uri.replaceAll("model/Core.ecore", "model/OCCI.ecore");
 		EPackage p = (EPackage) kind.eResource().getResourceSet().getResource(URI.createURI(uri), true).getContents()
 				.get(0);
 

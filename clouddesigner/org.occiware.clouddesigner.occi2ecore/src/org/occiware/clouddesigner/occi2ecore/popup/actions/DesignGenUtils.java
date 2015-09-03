@@ -1,6 +1,9 @@
 package org.occiware.clouddesigner.occi2ecore.popup.actions;
 
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 import org.eclipse.core.resources.IContainer;
@@ -29,13 +32,27 @@ public class DesignGenUtils {
 		}
 	}
 
-	public static IProject genDesignProject(String projectName, String modelName) throws CoreException {
+	public static IProject genDesignProject(String projectName, String modelName) throws CoreException, IOException {
 		final IPath projectLocationPath = ResourcesPlugin.getWorkspace().getRoot().getLocation();
 		final Shell activeShell = PlatformUI.getWorkbench().getDisplay().getActiveShell();
 		final ProgressMonitorDialog monitorDialog = new ProgressMonitorDialog(activeShell);
-		return ViewpointSpecificationProject.createNewViewpointSpecificationProject(PlatformUI.getWorkbench(),
-				projectName, projectLocationPath, modelName, ViewpointSpecificationProject.INITIAL_OBJECT_NAME,
-				ViewpointSpecificationProject.ENCODING_DEFAULT, monitorDialog);
+		IProject project = ViewpointSpecificationProject.createNewViewpointSpecificationProject(
+				PlatformUI.getWorkbench(), projectName, projectLocationPath, modelName,
+				ViewpointSpecificationProject.INITIAL_OBJECT_NAME, ViewpointSpecificationProject.ENCODING_DEFAULT,
+				monitorDialog);
+		IFile file = project.getFile("META-INF/MANIFEST.MF");
+		StringBuffer buffer = new StringBuffer();
+		BufferedReader in = new BufferedReader(new InputStreamReader(file.getContents()));
+		String inputLine;
+		while ((inputLine = in.readLine()) != null) {
+			buffer.append(inputLine + "\n");
+			if (inputLine.startsWith("Require-Bundle:")) {
+				buffer.append(" org.occiware.clouddesigner.occi,\n");
+			}
+		}
+		in.close();
+		file.setContents(new ByteArrayInputStream(buffer.toString().getBytes()), 0, null);
+		return project;
 	}
 
 	public static IProject genDesignTestProject(IProject designProject) throws CoreException {
