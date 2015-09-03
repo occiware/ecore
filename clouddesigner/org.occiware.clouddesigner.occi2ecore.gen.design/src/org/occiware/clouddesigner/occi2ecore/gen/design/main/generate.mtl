@@ -6,8 +6,8 @@
 [file (ePackage.name + '.odesign', false, 'UTF-8')]
 <?xml version="1.0" encoding="UTF-8"?>
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="[ePackage.name/]" version="10.0.0.201505222000">
-  <ownedViewpoints name="[ePackage.name.toUpperFirst()/]" label="[ePackage.name.toUpperFirst()/]">
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="[ePackage.name.toUpperFirst()/] configuration" domainClass="Configuration">
+  <ownedViewpoints name="[ePackage.name.toUpperFirst()/]Configuration" label="[ePackage.name.toUpperFirst()/] Configuration">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Configuration Diagram" domainClass="Configuration">
       <defaultLayer name="Default">
 [for (resource : EClass | ePackage.getResources())]
         <containerMappings name="[resource.name/]" 
@@ -24,8 +24,8 @@
         <toolSections name="Configuration">
 [for (resource : EClass | ePackage.getResources())]
           <ownedTools xsi:type="tool:ContainerCreationDescription" 
-			name="[resource.name/]" 
-			containerMappings="//@ownedViewpoints[ '[' /]name='[ePackage.name.toUpperFirst()/]'[ ']' /]/@ownedRepresentations[ '[' /]name='[ePackage.name.toUpperFirst()/]%20configuration'[ ']' /]/@defaultLayer/@containerMappings[ '[' /]name='[resource.name/]']">
+			name="[resource.name/]"
+			containerMappings="//@ownedViewpoints[ '[' /]name='[ePackage.name.toUpperFirst()/]Configuration'[ ']' /]/@ownedRepresentations[ '[' /]name='Configuration%20Diagram'[ ']' /]/@defaultLayer/@containerMappings[ '[' /]name='[resource.name/]'[ ']' /]"> 
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>

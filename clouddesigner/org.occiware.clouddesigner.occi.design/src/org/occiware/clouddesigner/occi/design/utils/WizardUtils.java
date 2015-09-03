@@ -1,4 +1,4 @@
-package org.occiware.clouddesigner.occi.design.wizard;
+package org.occiware.clouddesigner.occi.design.utils;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -50,7 +50,7 @@ public final class WizardUtils {
 	public static RepresentationDescription getRepresentationDescription(EObject eObject, Session session,
 			String representationDescriptionId) {
 		final Collection<RepresentationDescription> representationDescriptions = DialectManager.INSTANCE
-				.getAvailableRepresentationDescriptions(session.getSelectedViewpoints(false), eObject);
+				.getAvailableRepresentationDescriptions(session.getSelectedViewpoints(true), eObject);
 		for (final RepresentationDescription representationDescription : representationDescriptions) {
 			if (representationDescriptionId.equals(representationDescription.getName())) {
 				return representationDescription;

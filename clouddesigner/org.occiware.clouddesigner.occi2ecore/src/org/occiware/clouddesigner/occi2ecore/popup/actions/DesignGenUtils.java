@@ -12,6 +12,7 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
+import org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager;
 import org.eclipse.sirius.ui.tools.api.project.ViewpointSpecificationProject;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
@@ -35,5 +36,12 @@ public class DesignGenUtils {
 		return ViewpointSpecificationProject.createNewViewpointSpecificationProject(PlatformUI.getWorkbench(),
 				projectName, projectLocationPath, modelName, ViewpointSpecificationProject.INITIAL_OBJECT_NAME,
 				ViewpointSpecificationProject.ENCODING_DEFAULT, monitorDialog);
+	}
+
+	public static IProject genDesignTestProject(IProject designProject) throws CoreException {
+		NullProgressMonitor monitor = new NullProgressMonitor();
+		final IPath projectLocationPath = ResourcesPlugin.getWorkspace().getRoot().getLocation();
+		return ModelingProjectManager.INSTANCE.createNewModelingProject(designProject.getName() + ".tests",
+				projectLocationPath, true, monitor);
 	}
 }

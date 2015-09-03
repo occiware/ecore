@@ -8,6 +8,5 @@ Require-Bundle: org.occiware.clouddesigner.occi;bundle-version="0.1.0",
  org.occiware.clouddesigner.occi.infrastructure;bundle-version="0.1.0",
  org.eclipse.emf.ecore.xmi;bundle-version="2.10.1",
  org.occiware.clouddesigner.occi.docker;bundle-version="0.1.0",
- org.occiware.clouddesigner.occi.xtext;bundle-version="0.1.0",
  org.occiware.clouddesigner.occi2ecore;bundle-version="0.1.0"
 

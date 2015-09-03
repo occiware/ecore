@@ -36,6 +36,7 @@ import org.occiware.clouddesigner.occi.OCCIFactory;
 import org.occiware.clouddesigner.occi.OCCIRegistry;
 import org.occiware.clouddesigner.occi.design.Activator;
 import org.occiware.clouddesigner.occi.design.Messages;
+import org.occiware.clouddesigner.occi.design.utils.WizardUtils;
 
 import com.google.common.collect.Maps;
 

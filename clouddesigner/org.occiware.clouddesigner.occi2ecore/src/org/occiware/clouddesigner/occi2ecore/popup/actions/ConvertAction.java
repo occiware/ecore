@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
@@ -15,17 +16,25 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
 import org.eclipse.emf.codegen.ecore.genmodel.GenPackage;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
+import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.PlatformUI;
 import org.occiware.clouddesigner.occi.Extension;
+import org.occiware.clouddesigner.occi.OCCIFactory;
+import org.occiware.clouddesigner.occi.design.utils.WizardUtils;
 import org.occiware.clouddesigner.occi2ecore.ConverterUtils;
 import org.occiware.clouddesigner.occi2ecore.OCCIExtension2Ecore;
 
@@ -150,9 +159,40 @@ public class ConvertAction implements IObjectActionDelegate {
 		IContainer target = project.getFolder("description");
 		DesignGenUtils.genDesignModel(project.getWorkspace().getRoot().getFile(new Path(ecoreLocation)), target);
 
-		project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
-		project.getWorkspace().getRoot().getFile(new Path(ecoreLocation)).getProject()
-				.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+		/*
+		 * Create design test project
+		 */
+		IProject testProject = DesignGenUtils.genDesignTestProject(project);
+
+		/*
+		 * Create design representation
+		 */
+		final Resource resource = resourceSet.createResource(URI.createURI(
+				"platform:/resource/" + testProject.getFullPath() + "/sample." + extensionName.toLowerCase()));
+		resource.getContents().add(OCCIFactory.eINSTANCE.createConfiguration());
+		resource.save(Collections.EMPTY_MAP);
+
+		// switch perspective
+		PlatformUI.getWorkbench().showPerspective("org.eclipse.sirius.ui.tools.perspective.modeling",
+				PlatformUI.getWorkbench().getActiveWorkbenchWindow());
+
+		final Session session = ModelingProject.asModelingProject(testProject).get().getSession();
+		session.getTransactionalEditingDomain().getCommandStack()
+				.execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
+					@Override
+					protected void doExecute() {
+						session.addSemanticResource(resource.getURI(), new NullProgressMonitor());
+					}
+				});
+
+		WizardUtils.enableViewpoint(session,
+				"viewpoint:/" + project.getName() + '/' + ConverterUtils.toU1Case(extensionName) + "Configuration");
+		String diagramInstanceName = "Sample " + extensionName;
+		EObject root = WizardUtils.getRoot(session, resource.getURI());
+		WizardUtils.openDiagram(new NullProgressMonitor(), testProject, "Configuration Diagram", diagramInstanceName,
+				root);
+
+		project.getWorkspace().getRoot().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 	}
 
 }

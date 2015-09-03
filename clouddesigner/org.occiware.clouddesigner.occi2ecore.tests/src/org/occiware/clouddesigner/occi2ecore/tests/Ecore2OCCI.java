@@ -21,7 +21,6 @@ import org.occiware.clouddesigner.occi.OCCIPackage;
 import org.occiware.clouddesigner.occi.Resource;
 import org.occiware.clouddesigner.occi.docker.DockerPackage;
 import org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage;
-import org.occiware.clouddesigner.occi.xtext.OCCIStandaloneSetup;
 import org.occiware.clouddesigner.occi2ecore.ConverterUtils;
 
 public class Ecore2OCCI implements IConverterPaths {
@@ -38,7 +37,7 @@ public class Ecore2OCCI implements IConverterPaths {
 		resourceSet.getPackageRegistry().put(OCCIPackage.eNS_URI, OCCIPackage.eINSTANCE);
 		resourceSet.getPackageRegistry().put(InfrastructurePackage.eNS_URI, InfrastructurePackage.eINSTANCE);
 		resourceSet.getPackageRegistry().put(DockerPackage.eNS_URI, DockerPackage.eINSTANCE);
-		OCCIStandaloneSetup.doSetup();
+		// OCCIStandaloneSetup.doSetup(); // for xtext
 	}
 
 	public Ecore2OCCI() {
