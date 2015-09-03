@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="docker" version="10.0.0.201505222000">
+  <ownedViewpoints name="Docker" label="Docker">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Docker configuration" domainClass="Configuration">
+      <defaultLayer name="Default">
+        <containerMappings name="Container" 
+			semanticCandidatesExpression="[resources->select(oclIsTypeOf(docker::Container))/]" 
+			domainClass="docker.Container">
+          <style xsi:type="style:FlatContainerStyleDescription" labelAlignment="LEFT" roundedCorner="true">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style> 
+        </containerMappings>
+        <containerMappings name="Machine" 
+			semanticCandidatesExpression="[resources->select(oclIsTypeOf(docker::Machine))/]" 
+			domainClass="docker.Machine">
+          <style xsi:type="style:FlatContainerStyleDescription" labelAlignment="LEFT" roundedCorner="true">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style> 
+        </containerMappings>
+        <containerMappings name="Machine_Amazon_EC2" 
+			semanticCandidatesExpression="[resources->select(oclIsTypeOf(docker::Machine_Amazon_EC2))/]" 
+			domainClass="docker.Machine_Amazon_EC2">
+          <style xsi:type="style:FlatContainerStyleDescription" labelAlignment="LEFT" roundedCorner="true">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style> 
+        </containerMappings>
+        <containerMappings name="Machine_Digital_Ocean" 
+			semanticCandidatesExpression="[resources->select(oclIsTypeOf(docker::Machine_Digital_Ocean))/]" 
+			domainClass="docker.Machine_Digital_Ocean">
+          <style xsi:type="style:FlatContainerStyleDescription" labelAlignment="LEFT" roundedCorner="true">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style> 
+        </containerMappings>
+        <containerMappings name="Machine_Google_Compute_Engine" 
+			semanticCandidatesExpression="[resources->select(oclIsTypeOf(docker::Machine_Google_Compute_Engine))/]" 
+			domainClass="docker.Machine_Google_Compute_Engine">
+          <style xsi:type="style:FlatContainerStyleDescription" labelAlignment="LEFT" roundedCorner="true">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style> 
+        </containerMappings>
+        <containerMappings name="Machine_IBM_SoftLayer" 
+			semanticCandidatesExpression="[resources->select(oclIsTypeOf(docker::Machine_IBM_SoftLayer))/]" 
+			domainClass="docker.Machine_IBM_SoftLayer">
+          <style xsi:type="style:FlatContainerStyleDescription" labelAlignment="LEFT" roundedCorner="true">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style> 
+        </containerMappings>
+        <containerMappings name="Machine_Microsoft_Azure" 
+			semanticCandidatesExpression="[resources->select(oclIsTypeOf(docker::Machine_Microsoft_Azure))/]" 
+			domainClass="docker.Machine_Microsoft_Azure">
+          <style xsi:type="style:FlatContainerStyleDescription" labelAlignment="LEFT" roundedCorner="true">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style> 
+        </containerMappings>
+        <containerMappings name="Machine_Microsoft_Hyper_V" 
+			semanticCandidatesExpression="[resources->select(oclIsTypeOf(docker::Machine_Microsoft_Hyper_V))/]" 
+			domainClass="docker.Machine_Microsoft_Hyper_V">
+          <style xsi:type="style:FlatContainerStyleDescription" labelAlignment="LEFT" roundedCorner="true">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style> 
+        </containerMappings>
+        <containerMappings name="Machine_OpenStack" 
+			semanticCandidatesExpression="[resources->select(oclIsTypeOf(docker::Machine_OpenStack))/]" 
+			domainClass="docker.Machine_OpenStack">
+          <style xsi:type="style:FlatContainerStyleDescription" labelAlignment="LEFT" roundedCorner="true">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style> 
+        </containerMappings>
+        <containerMappings name="Machine_Rackspace" 
+			semanticCandidatesExpression="[resources->select(oclIsTypeOf(docker::Machine_Rackspace))/]" 
+			domainClass="docker.Machine_Rackspace">
+          <style xsi:type="style:FlatContainerStyleDescription" labelAlignment="LEFT" roundedCorner="true">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style> 
+        </containerMappings>
+        <containerMappings name="Machine_VirtualBox" 
+			semanticCandidatesExpression="[resources->select(oclIsTypeOf(docker::Machine_VirtualBox))/]" 
+			domainClass="docker.Machine_VirtualBox">
+          <style xsi:type="style:FlatContainerStyleDescription" labelAlignment="LEFT" roundedCorner="true">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style> 
+        </containerMappings>
+        <containerMappings name="Machine_VMware_Fusion" 
+			semanticCandidatesExpression="[resources->select(oclIsTypeOf(docker::Machine_VMware_Fusion))/]" 
+			domainClass="docker.Machine_VMware_Fusion">
+          <style xsi:type="style:FlatContainerStyleDescription" labelAlignment="LEFT" roundedCorner="true">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style> 
+        </containerMappings>
+        <containerMappings name="Machine_VMware_vCloud_Air" 
+			semanticCandidatesExpression="[resources->select(oclIsTypeOf(docker::Machine_VMware_vCloud_Air))/]" 
+			domainClass="docker.Machine_VMware_vCloud_Air">
+          <style xsi:type="style:FlatContainerStyleDescription" labelAlignment="LEFT" roundedCorner="true">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style> 
+        </containerMappings>
+        <containerMappings name="Machine_VMware_vSphere" 
+			semanticCandidatesExpression="[resources->select(oclIsTypeOf(docker::Machine_VMware_vSphere))/]" 
+			domainClass="docker.Machine_VMware_vSphere">
+          <style xsi:type="style:FlatContainerStyleDescription" labelAlignment="LEFT" roundedCorner="true">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style> 
+        </containerMappings>
+        <toolSections name="Configuration">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" 
+			name="Container" 
+			containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Container']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="docker.Container" referenceName="resources">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:addKind"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" 
+			name="Machine" 
+			containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="docker.Machine" referenceName="resources">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:addKind"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" 
+			name="Machine_Amazon_EC2" 
+			containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine_Amazon_EC2']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="docker.Machine_Amazon_EC2" referenceName="resources">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:addKind"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" 
+			name="Machine_Digital_Ocean" 
+			containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine_Digital_Ocean']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="docker.Machine_Digital_Ocean" referenceName="resources">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:addKind"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" 
+			name="Machine_Google_Compute_Engine" 
+			containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine_Google_Compute_Engine']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="docker.Machine_Google_Compute_Engine" referenceName="resources">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:addKind"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" 
+			name="Machine_IBM_SoftLayer" 
+			containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine_IBM_SoftLayer']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="docker.Machine_IBM_SoftLayer" referenceName="resources">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:addKind"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" 
+			name="Machine_Microsoft_Azure" 
+			containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine_Microsoft_Azure']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="docker.Machine_Microsoft_Azure" referenceName="resources">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:addKind"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" 
+			name="Machine_Microsoft_Hyper_V" 
+			containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine_Microsoft_Hyper_V']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="docker.Machine_Microsoft_Hyper_V" referenceName="resources">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:addKind"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" 
+			name="Machine_OpenStack" 
+			containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine_OpenStack']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="docker.Machine_OpenStack" referenceName="resources">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:addKind"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" 
+			name="Machine_Rackspace" 
+			containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine_Rackspace']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="docker.Machine_Rackspace" referenceName="resources">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:addKind"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" 
+			name="Machine_VirtualBox" 
+			containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine_VirtualBox']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="docker.Machine_VirtualBox" referenceName="resources">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:addKind"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" 
+			name="Machine_VMware_Fusion" 
+			containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine_VMware_Fusion']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="docker.Machine_VMware_Fusion" referenceName="resources">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:addKind"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" 
+			name="Machine_VMware_vCloud_Air" 
+			containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine_VMware_vCloud_Air']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="docker.Machine_VMware_vCloud_Air" referenceName="resources">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:addKind"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" 
+			name="Machine_VMware_vSphere" 
+			containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine_VMware_vSphere']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="docker.Machine_VMware_vSphere" referenceName="resources">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:addKind"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedJavaExtensions qualifiedClassName="org.occiware.clouddesigner.occi.docker.design.services.DockerServices"/>
+  </ownedViewpoints>
+</description:Group>
