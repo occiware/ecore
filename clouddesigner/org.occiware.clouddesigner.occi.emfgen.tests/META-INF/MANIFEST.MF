@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: OCCI2Ecore Test Bundle
+Bundle-SymbolicName: org.occiware.clouddesigner.occi.emfgen.tests;singleton:=true
+Bundle-Version: 0.1.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Require-Bundle: org.occiware.clouddesigner.occi;bundle-version="0.1.0",
+ org.occiware.clouddesigner.occi.infrastructure;bundle-version="0.1.0",
+ org.eclipse.emf.ecore.xmi;bundle-version="2.10.1",
+ org.occiware.clouddesigner.occi.docker;bundle-version="0.1.0",
+ org.occiware.clouddesigner.occi.emfgen.ui;bundle-version="0.1.0",
+ org.occiware.clouddesigner.occi.emfgen;bundle-version="0.1.0"
+

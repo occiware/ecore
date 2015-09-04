@@ -44,6 +44,11 @@
 		<module>../org.occiware.clouddesigner.occi.xtext</module>
 		<module>../org.occiware.clouddesigner.occi.xtext.ui</module>
 
+		<!--  OCCI2Ecore -->
+		<module>../org.occiware.clouddesigner.occi.emfgen</module>
+		<module>../org.occiware.clouddesigner.occi.emfgen.ui</module>
+		<module>../org.occiware.clouddesigner.occi.emfgen.design</module>
+		
 		<!-- Releng -->
 		<module>../org.occiware.clouddesigner.occi.feature</module>
 		<module>../org.occiware.clouddesigner.occi.docker.feature</module>
