@@ -1,5 +1,7 @@
 #!/bin/bash
 API=https://api.bintray.com
+BINTRAY_R=https://dl.bintray.com/$BINTRAY_USER/generic
+BINTRAY_W=$API/content/$BINTRAY_USER/generic
 BINTRAY_USER=wpiers
 BINTRAY_API_KEY=$KEY
 BINTRAY_OWNER=wpiers
@@ -9,7 +11,19 @@ PCK_VERSION=0.1.0
 PATH_TO_REPOSITORY=clouddesigner/org.occiware.clouddesigner.repository/target/repository
 
 function main() {
-deploy_updatesite
+clean
+#deploy_updatesite
+}
+
+function clean() {
+curl -u$BINTRAY_USER:$KEY -X DELETE $BINTRAY_W/content.jar
+curl -u$BINTRAY_USER:$KEY -X DELETE $BINTRAY_W/artifacts.jar
+for file in $(curl --list-only --silent -u$BINTRAY_USER:$KEY $BINTRAY_R/plugins/ | grep '.jar' | sed 's/.*href=".//' | sed 's/".*//');
+do curl -u$BINTRAY_USER:$KEY -X DELETE $BINTRAY_W/$file
+done
+for file in $(curl --list-only --silent -u$BINTRAY_USER:$KEY $BINTRAY_R/feature/ | grep '.jar' | sed 's/.*href=".//' | sed 's/".*//');
+do curl -u$BINTRAY_USER:$KEY -X DELETE $BINTRAY_W/$file
+done
 }
 
 function deploy_updatesite() {
