@@ -6,7 +6,7 @@ BINTRAY_W=https://api.bintray.com/content/$BINTRAY_USER/generic
 
 # clear last nightly products 
 NIGHTLY_PATTERN=$PRODUCT.$VERSION.N
-for file in $(curl --list-only --silent -u$BINTRAY_USER:$KEY $BINTRAY_R/ | grep 'href="#'$NIGHTLY_PATTERN | sed 's/.*href="#//' | sed 's/".*//');
+for file in $(curl --list-only --silent -u$BINTRAY_USER:$KEY $BINTRAY_R/ | grep $NIGHTLY_PATTERN | sed 's/.*href=".//' | sed 's/".*//');
 do curl -u$BINTRAY_USER:$KEY -X DELETE $BINTRAY_W/$file
 done
 
