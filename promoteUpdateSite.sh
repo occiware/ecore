@@ -12,7 +12,7 @@ PATH_TO_REPOSITORY=clouddesigner/org.occiware.clouddesigner.repository/target/re
 
 function main() {
 clean
-#deploy_updatesite
+deploy_updatesite
 }
 
 function clean() {
