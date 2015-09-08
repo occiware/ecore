@@ -38,7 +38,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedJavaExtensions qualifiedClassName="org.occiware.clouddesigner.occi.docker.design.services.DockerServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.occiware.clouddesigner.occi.design.services.DesignServices"/>
   </ownedViewpoints>
 </description:Group>
 [/file]
