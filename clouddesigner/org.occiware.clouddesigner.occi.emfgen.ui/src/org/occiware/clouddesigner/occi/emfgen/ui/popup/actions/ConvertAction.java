@@ -5,16 +5,22 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
-import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
 import org.eclipse.emf.codegen.ecore.genmodel.GenPackage;
+import org.eclipse.emf.codegen.ecore.genmodel.presentation.GeneratorUIUtil;
+import org.eclipse.emf.codegen.ecore.genmodel.util.GenModelUtil;
+import org.eclipse.emf.common.util.BasicMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -24,14 +30,17 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.jface.action.IAction;
+import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.WorkbenchException;
 import org.occiware.clouddesigner.occi.Extension;
 import org.occiware.clouddesigner.occi.OCCIFactory;
 import org.occiware.clouddesigner.occi.design.utils.WizardUtils;
@@ -46,7 +55,9 @@ public class ConvertAction implements IObjectActionDelegate {
 
 	private ISelection selection;
 
-	private Collection<GenPackage> usedPackages = new ArrayList<GenPackage>();
+	private ResourceSet resourceSet = new ResourceSetImpl();
+
+	private Shell shell = PlatformUI.getWorkbench().getDisplay().getActiveShell();;
 
 	/**
 	 * Constructor for Action1.
@@ -69,20 +80,37 @@ public class ConvertAction implements IObjectActionDelegate {
 	public void run(IAction action) {
 		IFile occieFile = (IFile) ((IStructuredSelection) selection).getFirstElement();
 		try {
-			generateExtension(occieFile.getFullPath().removeFileExtension().lastSegment().toLowerCase(),
-					occieFile.getParent().getLocation().toString());
+			// final IProgressMonitor monitor = new NullProgressMonitor();
+			final IProgressMonitor monitor = new ProgressMonitorDialog(shell).getProgressMonitor();
+
+			String extensionName = occieFile.getFullPath().removeFileExtension().lastSegment();
+			String modelPath = occieFile.getParent().getLocation().toString();
+			String ecoreLocation = modelPath + '/' + ConverterUtils.toU1Case(extensionName) + ".ecore";
+			String modelPluginName = new Path(ecoreLocation).removeLastSegments(2).lastSegment().toString();
+			String designName = extensionName + ".odesign";
+			String designProjectName = modelPluginName + ".design";
+			String genModelPath = modelPath + '/' + ConverterUtils.toU1Case(extensionName) + ".genmodel";
+			String basePackage = "";
+			if (!modelPluginName.equals(extensionName)) {
+				basePackage = modelPluginName.substring(0, modelPluginName.length() - (extensionName.length() + 1));
+			}
+
+			generateEMFModels(extensionName, ecoreLocation, basePackage);
+			generateEMFCode(genModelPath);
+			IProject project = generateDesignProject(ecoreLocation, designName, designProjectName,
+					new NullProgressMonitor());// TODO fix monitor
+			generateDesignTestProject(project, extensionName, new NullProgressMonitor());// TODO
+																							// fix
+																							// monitor
+
 		} catch (InvocationTargetException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Activator.getDefault().getLog().log(new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage(), e));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Activator.getDefault().getLog().log(new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage(), e));
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Activator.getDefault().getLog().log(new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage(), e));
 		} catch (CoreException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Activator.getDefault().getLog().log(new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage(), e));
 		}
 	}
 
@@ -94,21 +122,13 @@ public class ConvertAction implements IObjectActionDelegate {
 		this.selection = selection;
 	}
 
-	public void generateExtension(String extensionName, String modelPath)
-			throws IOException, InvocationTargetException, InterruptedException, CoreException {
-
+	private void generateEMFModels(String extensionName, String ecoreLocation, String basePackage) throws IOException {
 		/*
 		 * OCCIE => Ecore conversion
 		 */
-
-		ResourceSet resourceSet = new ResourceSetImpl();
 		EPackage.Registry.INSTANCE.put(ECORE_PLATFORM_URI, EcorePackage.eINSTANCE);
-
-		String ecoreLocation = modelPath + "/" + ConverterUtils.toU1Case(extensionName) + ".ecore";
-
 		Extension ext = (Extension) ConverterUtils.getRootElement(resourceSet,
-				"file:/" + modelPath + "/" + extensionName + ".occie");
-
+				"file:/" + ecoreLocation.substring(0, ecoreLocation.length() - 5) + "occie");
 		EPackage ePackage = new OCCIExtension2Ecore().convertExtension(ext);
 		resourceSet.getPackageRegistry().put(ePackage.getNsURI(), ePackage);
 		ConverterUtils.persistMetamodel(resourceSet, ePackage, ecoreLocation);
@@ -116,7 +136,7 @@ public class ConvertAction implements IObjectActionDelegate {
 		/*
 		 * Fetching ext genmodels
 		 */
-
+		Collection<GenPackage> usedPackages = new ArrayList<GenPackage>();
 		for (Extension extension : ext.getImport()) {
 			if (!extension.getName().equals("core")) {
 				GenModel genModel = (GenModel) resourceSet
@@ -132,37 +152,55 @@ public class ConvertAction implements IObjectActionDelegate {
 		/*
 		 * Create genmodel
 		 */
-
-		String modelPluginId = new Path(ecoreLocation).removeLastSegments(2).lastSegment().toString();
-		String basePackage = modelPluginId.substring(0, modelPluginId.length() - (extensionName.length() + 1));
-
 		GenPackage coreGenPackage = (GenPackage) ConverterUtils.getRootElement(resourceSet, CORE_GEN_PACKAGE_URI)
 				.eContents().get(1);
 		usedPackages.add(coreGenPackage);
-		EMFGenUtils.createGenModel(ePackage, ecoreLocation, basePackage, usedPackages);
+		GenUtils.createGenModel(ePackage, ecoreLocation, basePackage, usedPackages);
+	}
 
+	/**
+	 * TODO merge monitor
+	 */
+	private void generateEMFCode(String genModelPath) throws InvocationTargetException, InterruptedException {
 		/*
 		 * Generate model & edit
 		 */
+		List<URI> uris = new ArrayList<URI>();
+		uris.add(URI.createFileURI(genModelPath));
+		List<GenModel> genModels = GeneratorUIUtil.loadGenModels(new NullProgressMonitor(), uris, shell);
+		GeneratorUIUtil.GeneratorOperation editOp = new GeneratorUIUtil.GeneratorOperation(shell);
+		editOp.addGeneratorAndArguments(GenModelUtil.createGenerator(genModels.get(0)), genModels.get(0),
+				"org.eclipse.emf.codegen.ecore.genmodel.generator.EditProject", "Edit");
+		editOp.addGeneratorAndArguments(GenModelUtil.createGenerator(genModels.get(0)), genModels.get(0),
+				"org.eclipse.emf.codegen.ecore.genmodel.generator.ModelProject", "Model");
+		ProgressMonitorDialog progressMonitorDialog = new ProgressMonitorDialog(shell);
+		progressMonitorDialog.run(true, true, editOp);
+	}
 
-		String genModelPath = modelPath + "/" + ConverterUtils.toU1Case(extensionName) + ".genmodel";
-		EMFGenUtils.regenEMF(resourceSet, genModelPath);
-
+	private IProject generateDesignProject(String ecoreLocation, String designName, String designProjectName,
+			final IProgressMonitor monitor) throws CoreException, IOException {
 		/*
 		 * Create design project
 		 */
-		IProject project = DesignGenUtils.genDesignProject(modelPluginId + ".design", ePackage.getName() + ".odesign");
+		IProject project = GenUtils.genDesignProject(designProjectName, designName, new ProgressMonitorDialog(shell));
 
 		/*
 		 * Create design model
 		 */
-		IContainer target = project.getFolder("description");
-		DesignGenUtils.genDesignModel(project.getWorkspace().getRoot().getFile(new Path(ecoreLocation)), target);
+		org.occiware.clouddesigner.occi.emfgen.design.main.Generate generator = new org.occiware.clouddesigner.occi.emfgen.design.main.Generate(
+				URI.createFileURI(ecoreLocation), project.getFolder("description").getLocation().toFile(),
+				new ArrayList<String>());
+		generator.doGenerate(BasicMonitor.toMonitor(monitor));
+		project.refreshLocal(IResource.DEPTH_INFINITE, monitor);
+		return project;
+	}
 
+	private void generateDesignTestProject(IProject project, String extensionName, final IProgressMonitor monitor)
+			throws CoreException, IOException, WorkbenchException {
 		/*
 		 * Create design test project
 		 */
-		IProject testProject = DesignGenUtils.genDesignTestProject(project);
+		IProject testProject = GenUtils.genDesignTestProject(project, monitor);
 
 		/*
 		 * Create design representation
@@ -181,7 +219,7 @@ public class ConvertAction implements IObjectActionDelegate {
 				.execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
 					@Override
 					protected void doExecute() {
-						session.addSemanticResource(resource.getURI(), new NullProgressMonitor());
+						session.addSemanticResource(resource.getURI(), monitor);
 					}
 				});
 
@@ -189,10 +227,9 @@ public class ConvertAction implements IObjectActionDelegate {
 				"viewpoint:/" + project.getName() + '/' + ConverterUtils.toU1Case(extensionName) + "Configuration");
 		String diagramInstanceName = "Sample " + extensionName;
 		EObject root = WizardUtils.getRoot(session, resource.getURI());
-		WizardUtils.openDiagram(new NullProgressMonitor(), testProject, "Configuration Diagram", diagramInstanceName,
-				root);
+		WizardUtils.openDiagram(monitor, testProject, "Configuration Diagram", diagramInstanceName, root);
 
-		project.getWorkspace().getRoot().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+		project.getWorkspace().getRoot().refreshLocal(IResource.DEPTH_INFINITE, monitor);
 	}
 
 }

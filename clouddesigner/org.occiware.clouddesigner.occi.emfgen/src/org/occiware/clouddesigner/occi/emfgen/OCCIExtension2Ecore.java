@@ -25,11 +25,14 @@ public class OCCIExtension2Ecore {
 	private Map<Kind, EClass> mappedKinds = new HashMap<Kind, EClass>();
 
 	private EClass getMappedEClass(Kind kind) {
-		// retrieve from currently converted kinds
-		EClass res = mappedKinds.get(kind);
-		if (res == null) {
-			// retrieve from installed extension
-			res = ConverterUtils.getMappedEClass(kind);
+		EClass res = null;
+		if (kind != null) {
+			// retrieve from currently converted kinds
+			res = mappedKinds.get(kind);
+			if (res == null) {
+				// retrieve from installed extension
+				res = ConverterUtils.getMappedEClass(kind);
+			}
 		}
 		return res;
 	}
@@ -62,11 +65,13 @@ public class OCCIExtension2Ecore {
 		// resolve links
 		for (Kind kind : extension.getKinds()) {
 			EClass mappedEClass = getMappedEClass(kind);
-			EClass mappedParentEClass = getMappedEClass(kind.getParent());
-			if (mappedParentEClass != null) {
-				mappedEClass.getESuperTypes().add(mappedParentEClass);
-			} else {
-				throw new IllegalArgumentException("Not found: " + kind.getParent());
+			if (kind.getParent() != null) {
+				EClass mappedParentEClass = getMappedEClass(kind.getParent());
+				if (mappedParentEClass != null) {
+					mappedEClass.getESuperTypes().add(mappedParentEClass);
+				} else {
+					throw new IllegalArgumentException("Not found: " + kind.getParent());
+				}
 			}
 		}
 		return ePackage;

@@ -1,29 +1,64 @@
 package org.occiware.clouddesigner.occi.emfgen.ui.popup.actions;
 
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
+import java.io.InputStreamReader;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.List;
 
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.codegen.ecore.genmodel.GenJDKLevel;
 import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
 import org.eclipse.emf.codegen.ecore.genmodel.GenModelFactory;
 import org.eclipse.emf.codegen.ecore.genmodel.GenPackage;
-import org.eclipse.emf.codegen.ecore.genmodel.presentation.GeneratorUIUtil;
-import org.eclipse.emf.codegen.ecore.genmodel.util.GenModelUtil;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Shell;
+import org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager;
+import org.eclipse.sirius.ui.tools.api.project.ViewpointSpecificationProject;
+import org.eclipse.ui.PlatformUI;
 import org.occiware.clouddesigner.occi.emfgen.ConverterUtils;
 
-public final class EMFGenUtils {
+public class GenUtils {
+
+	public static IProject genDesignProject(String projectName, String modelName, ProgressMonitorDialog dialog)
+			throws CoreException, IOException {
+		final IPath projectLocationPath = ResourcesPlugin.getWorkspace().getRoot().getLocation();
+		IProject project = ViewpointSpecificationProject.createNewViewpointSpecificationProject(
+				PlatformUI.getWorkbench(), projectName, projectLocationPath, modelName,
+				ViewpointSpecificationProject.INITIAL_OBJECT_NAME, ViewpointSpecificationProject.ENCODING_DEFAULT,
+				dialog);
+
+		// add dependency to the metamodel
+		IFile file = project.getFile("META-INF/MANIFEST.MF");
+		StringBuffer buffer = new StringBuffer();
+		BufferedReader in = new BufferedReader(new InputStreamReader(file.getContents()));
+		String inputLine;
+		while ((inputLine = in.readLine()) != null) {
+			buffer.append(inputLine + "\n");
+			if (inputLine.startsWith("Require-Bundle:")) {
+				buffer.append(" org.occiware.clouddesigner.occi,\n");
+				buffer.append(" org.occiware.clouddesigner.occi.design,\n");
+			}
+		}
+		in.close();
+		file.setContents(new ByteArrayInputStream(buffer.toString().getBytes()), 0, null);
+		return project;
+	}
+
+	public static IProject genDesignTestProject(IProject designProject, IProgressMonitor monitor) throws CoreException {
+		final IPath projectLocationPath = ResourcesPlugin.getWorkspace().getRoot().getLocation();
+		return ModelingProjectManager.INSTANCE.createNewModelingProject(designProject.getName() + ".tests",
+				projectLocationPath, true, monitor);
+	}
 
 	public static GenPackage createGenModel(final EPackage rootPackage, final String ecoreLocation, String basePackage,
 			Collection<GenPackage> usedGenPackages) throws IOException {
@@ -50,22 +85,5 @@ public final class EMFGenUtils {
 		genModelResource.getContents().add(genModel);
 		genModelResource.save(Collections.EMPTY_MAP);
 		return genPackage;
-	}
-
-	public static void regenEMF(ResourceSet resourceSet, String genModelPath)
-			throws InvocationTargetException, InterruptedException {
-		Shell shell = Display.getCurrent().getActiveShell();
-		List<URI> uris = new ArrayList<URI>();
-		uris.add(URI.createFileURI(genModelPath));
-		List<GenModel> genModels = GeneratorUIUtil.loadGenModels(new org.eclipse.core.runtime.NullProgressMonitor(),
-				uris, shell);
-
-		GeneratorUIUtil.GeneratorOperation editOp = new GeneratorUIUtil.GeneratorOperation(shell);
-		editOp.addGeneratorAndArguments(GenModelUtil.createGenerator(genModels.get(0)), genModels.get(0),
-				"org.eclipse.emf.codegen.ecore.genmodel.generator.EditProject", "Edit");
-		editOp.addGeneratorAndArguments(GenModelUtil.createGenerator(genModels.get(0)), genModels.get(0),
-				"org.eclipse.emf.codegen.ecore.genmodel.generator.ModelProject", "Model");
-		new ProgressMonitorDialog(shell).run(true, true, editOp);
-
 	}
 }
