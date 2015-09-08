@@ -22,12 +22,14 @@ curl -u$BINTRAY_USER:$KEY -X DELETE $BINTRAY_W/content.jar
 echo "deleting artifacts.jar"
 curl -u$BINTRAY_USER:$KEY -X DELETE $BINTRAY_W/artifacts.jar
 for file in $(curl --list-only --silent -u$BINTRAY_USER:$KEY $BINTRAY_R/plugins/ | grep '.jar' | sed 's/.*href=".//' | sed 's/".*//');
+do 
 echo "deleting "$file
-do curl -u$BINTRAY_USER:$KEY -X DELETE $BINTRAY_W/$file
+curl -u$BINTRAY_USER:$KEY -X DELETE $BINTRAY_W/$file
 done
 for file in $(curl --list-only --silent -u$BINTRAY_USER:$KEY $BINTRAY_R/feature/ | grep '.jar' | sed 's/.*href=".//' | sed 's/".*//');
+do 
 echo "deleting "$file
-do curl -u$BINTRAY_USER:$KEY -X DELETE $BINTRAY_W/$file
+curl -u$BINTRAY_USER:$KEY -X DELETE $BINTRAY_W/$file
 done
 }
 
