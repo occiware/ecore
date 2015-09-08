@@ -16,19 +16,23 @@ deploy_updatesite
 }
 
 function clean() {
+echo "cleaning old update site"
+echo "deleting content.jar"
 curl -u$BINTRAY_USER:$KEY -X DELETE $BINTRAY_W/content.jar
+echo "deleting artifacts.jar"
 curl -u$BINTRAY_USER:$KEY -X DELETE $BINTRAY_W/artifacts.jar
 for file in $(curl --list-only --silent -u$BINTRAY_USER:$KEY $BINTRAY_R/plugins/ | grep '.jar' | sed 's/.*href=".//' | sed 's/".*//');
+echo "deleting "$file
 do curl -u$BINTRAY_USER:$KEY -X DELETE $BINTRAY_W/$file
 done
 for file in $(curl --list-only --silent -u$BINTRAY_USER:$KEY $BINTRAY_R/feature/ | grep '.jar' | sed 's/.*href=".//' | sed 's/".*//');
+echo "deleting "$file
 do curl -u$BINTRAY_USER:$KEY -X DELETE $BINTRAY_W/$file
 done
 }
 
 function deploy_updatesite() {
 echo "${BINTRAY_USER}"
-echo "${BINTRAY_API_KEY}"
 echo "${BINTRAY_OWNER}"
 echo "${BINTRAY_REPO}"
 echo "${PCK_NAME}"
