@@ -215,9 +215,6 @@ public class NewExtensionWizard extends BasicNewProjectResourceWizard {
 				PlatformUI.getWorkbench().showPerspective(WizardUtils.MODELING_PERSPECTIVE_ID,
 						PlatformUI.getWorkbench().getActiveWorkbenchWindow());
 
-				// Select it in the explorer
-				selectAndReveal(newModelFile, PlatformUI.getWorkbench().getActiveWorkbenchWindow());
-
 				WizardUtils.openDiagram(monitor, project, EXTENSION_DIAGRAM_NAME, extensionName, WizardUtils.getRoot(
 						ModelingProject.asModelingProject(project).get().getSession(), init.getSemanticModelURI()));
 
@@ -242,6 +239,8 @@ public class NewExtensionWizard extends BasicNewProjectResourceWizard {
 				}
 
 			});
+
+			project.refreshLocal(IResource.DEPTH_INFINITE, monitor);
 
 		} catch (final InvocationTargetException e) {
 			if (e.getTargetException() instanceof CoreException) {

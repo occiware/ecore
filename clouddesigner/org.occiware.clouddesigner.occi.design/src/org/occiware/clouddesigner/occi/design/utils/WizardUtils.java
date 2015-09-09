@@ -62,7 +62,7 @@ public final class WizardUtils {
 	/**
 	 * The current perspective must be modeling.
 	 */
-	public static void openDiagram(IProgressMonitor monitor, IProject project, String diagramName,
+	public static void openDiagram(final IProgressMonitor monitor, IProject project, final String diagramName,
 			final String diagramInstanceName, final EObject rootObject) {
 		// Init the representation
 		final Option<ModelingProject> optionalModelingProject = ModelingProject.asModelingProject(project);
@@ -77,7 +77,21 @@ public final class WizardUtils {
 				@Override
 				protected void doExecute() {
 					DialectManager.INSTANCE.createRepresentation(diagramInstanceName, rootObject,
-							representationDescription, session, new NullProgressMonitor());
+							representationDescription, session, monitor);
+					if (!session.getSelectedViews().isEmpty()) {
+						for (final DView view : session.getSelectedViews()) {
+							if (!view.getOwnedRepresentations().isEmpty()) {
+								for (final DRepresentation representation : view.getOwnedRepresentations()) {
+									final RepresentationDescription description = DialectManager.INSTANCE
+											.getDescription(representation);
+									if (diagramName.equals(description.getName())) {
+										DialectUIManager.INSTANCE.openEditor(session, representation, monitor);
+										return;
+									}
+								}
+							}
+						}
+					}
 				}
 			};
 			try {
@@ -85,31 +99,6 @@ public final class WizardUtils {
 			} catch (Exception e) {
 				Activator.getDefault().getLog().log(new Status(IStatus.ERROR, Activator.PLUGIN_ID,
 						Messages.NewExtensionWizard_RepresentationCreationError, e));
-			}
-			// Open the diagram
-			openRepresentation(project, monitor, diagramName);
-		}
-	}
-
-	private static void openRepresentation(IProject curProject, IProgressMonitor monitor, String diagramName) {
-		final Option<ModelingProject> optionalModelingProject = ModelingProject.asModelingProject(curProject);
-		if (optionalModelingProject.some()) {
-			final Session session = optionalModelingProject.get().getSession();
-			if (session != null) {
-				if (!session.getSelectedViews().isEmpty()) {
-					for (final DView view : session.getSelectedViews()) {
-						if (!view.getOwnedRepresentations().isEmpty()) {
-							for (final DRepresentation representation : view.getOwnedRepresentations()) {
-								final RepresentationDescription description = DialectManager.INSTANCE
-										.getDescription(representation);
-								if (diagramName.equals(description.getName())) {
-									DialectUIManager.INSTANCE.openEditor(session, representation, monitor);
-									return;
-								}
-							}
-						}
-					}
-				}
 			}
 		}
 	}

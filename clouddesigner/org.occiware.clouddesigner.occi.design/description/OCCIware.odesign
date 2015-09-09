@@ -464,7 +464,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="occi.AttributeState" referenceName="attribute">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="occi.AttributeState" referenceName="attributes">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="AttributeName"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="value" valueExpression="Value"/>
                 </subModelOperations>
