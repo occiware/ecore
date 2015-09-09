@@ -220,6 +220,7 @@ public class NewExtensionWizard extends BasicNewProjectResourceWizard {
 
 				WizardUtils.openDiagram(monitor, project, EXTENSION_DIAGRAM_NAME, extensionName, WizardUtils.getRoot(
 						ModelingProject.asModelingProject(project).get().getSession(), init.getSemanticModelURI()));
+
 			}
 		};
 		try {
@@ -228,6 +229,8 @@ public class NewExtensionWizard extends BasicNewProjectResourceWizard {
 
 			// convert to plugin project
 			getContainer().run(false, true, new ConvertProjectToPluginOperation(new IProject[] { project }, false));
+
+			project.refreshLocal(IResource.DEPTH_INFINITE, monitor);
 
 			// convert to OCCIE plugin
 			getContainer().run(false, true, new WorkspaceModifyOperation() {
@@ -250,6 +253,9 @@ public class NewExtensionWizard extends BasicNewProjectResourceWizard {
 			}
 		} catch (final InterruptedException e) {
 			return false;
+		} catch (CoreException e) {
+			ErrorDialog.openError(getContainer().getShell(), Messages.NewExtensionWizard_ModelCreationError, null,
+					e.getStatus());
 		}
 		return true;
 	}
