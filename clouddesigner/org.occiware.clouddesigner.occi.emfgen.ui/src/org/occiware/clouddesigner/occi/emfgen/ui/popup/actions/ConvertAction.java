@@ -1,5 +1,6 @@
 package org.occiware.clouddesigner.occi.emfgen.ui.popup.actions;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
@@ -33,6 +34,7 @@ import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.pde.internal.core.project.PDEProject;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.swt.widgets.Shell;
@@ -80,9 +82,6 @@ public class ConvertAction implements IObjectActionDelegate {
 	public void run(IAction action) {
 		IFile occieFile = (IFile) ((IStructuredSelection) selection).getFirstElement();
 		try {
-			// final IProgressMonitor monitor = new NullProgressMonitor();
-			final IProgressMonitor monitor = new ProgressMonitorDialog(shell).getProgressMonitor();
-
 			String extensionName = occieFile.getFullPath().removeFileExtension().lastSegment();
 			String modelPath = occieFile.getParent().getLocation().toString();
 			String ecoreLocation = modelPath + '/' + ConverterUtils.toU1Case(extensionName) + ".ecore";
@@ -97,12 +96,20 @@ public class ConvertAction implements IObjectActionDelegate {
 
 			generateEMFModels(extensionName, ecoreLocation, basePackage);
 			generateEMFCode(genModelPath);
+
+			IFile build = PDEProject.getBuildProperties(occieFile.getProject());
+			String buildContent = "bin.includes = .,\\\n               model/,\\\n               META-INF/,\\\n               plugin.xml,\\\n               plugin.properties\njars.compile.order = .\nsource.. = src-gen/\noutput.. = bin/\n";
+			build.setContents(new ByteArrayInputStream(buildContent.getBytes()), true, false,
+					new NullProgressMonitor());
+
 			IProject project = generateDesignProject(ecoreLocation, designName, designProjectName,
 					new NullProgressMonitor());// TODO fix monitor
-			generateDesignTestProject(project, extensionName, new NullProgressMonitor());// TODO
-																							// fix
-																							// monitor
 
+			// TODO we must install model & restart the IDE first
+			// generateDesignTestProject(project, extensionName, new
+			// NullProgressMonitor());// TODO
+			// fix
+			// monitor
 		} catch (InvocationTargetException e) {
 			Activator.getDefault().getLog().log(new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage(), e));
 		} catch (IOException e) {

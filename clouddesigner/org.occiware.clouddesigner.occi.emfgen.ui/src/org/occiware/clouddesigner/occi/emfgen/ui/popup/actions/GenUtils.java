@@ -22,6 +22,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
+import org.eclipse.pde.internal.core.project.PDEProject;
 import org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager;
 import org.eclipse.sirius.ui.tools.api.project.ViewpointSpecificationProject;
 import org.eclipse.ui.PlatformUI;
@@ -38,7 +39,7 @@ public class GenUtils {
 				dialog);
 
 		// add dependency to the metamodel
-		IFile file = project.getFile("META-INF/MANIFEST.MF");
+		IFile file = PDEProject.getManifest(project);
 		StringBuffer buffer = new StringBuffer();
 		BufferedReader in = new BufferedReader(new InputStreamReader(file.getContents()));
 		String inputLine;
