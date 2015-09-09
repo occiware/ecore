@@ -107,6 +107,10 @@ public class NewExtensionWizard extends BasicNewProjectResourceWizard {
 				@Override
 				public void modifyText(ModifyEvent e) {
 					extensionScheme = extensionSchemeText.getText();
+					if (!extensionScheme.endsWith("#")) {
+						extensionScheme += "#";
+						extensionSchemeText.setText(extensionScheme);
+					}
 					setPageComplete(validatePage());
 				}
 			});
@@ -274,7 +278,7 @@ public class NewExtensionWizard extends BasicNewProjectResourceWizard {
 		pluginXML.create(new ByteArrayInputStream(pluginContent.getBytes()), true, monitor);
 
 		IFile build = PDEProject.getBuildProperties(project);
-		String buildContent = "bin.includes = META-INF/,\\n" + "               plugin.xml";
+		String buildContent = "bin.includes = META-INF/,plugin.xml";
 		build.setContents(new ByteArrayInputStream(buildContent.getBytes()), true, false, monitor);
 	}
 
