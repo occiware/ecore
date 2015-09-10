@@ -102,8 +102,10 @@ public class ConvertAction implements IObjectActionDelegate {
 			build.setContents(new ByteArrayInputStream(buildContent.getBytes()), true, false,
 					new NullProgressMonitor());
 
-			IProject project = generateDesignProject(ecoreLocation, designName, designProjectName,
-					new NullProgressMonitor());// TODO fix monitor
+			// TODO the generation must be iterative (i.e. not with acceleo)
+			// IProject project = generateDesignProject(ecoreLocation,
+			// designName, designProjectName,
+			// new NullProgressMonitor());// TODO fix monitor
 
 			// TODO we must install model & restart the IDE first
 			// generateDesignTestProject(project, extensionName, new
@@ -134,6 +136,7 @@ public class ConvertAction implements IObjectActionDelegate {
 		 * OCCIE => Ecore conversion
 		 */
 		EPackage.Registry.INSTANCE.put(ECORE_PLATFORM_URI, EcorePackage.eINSTANCE);
+		resourceSet = new ResourceSetImpl();
 		Extension ext = (Extension) ConverterUtils.getRootElement(resourceSet,
 				"file:/" + ecoreLocation.substring(0, ecoreLocation.length() - 5) + "occie");
 		EPackage ePackage = new OCCIExtension2Ecore().convertExtension(ext);
