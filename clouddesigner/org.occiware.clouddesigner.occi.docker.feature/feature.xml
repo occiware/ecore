@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.occiware.clouddesigner.occi.docker.feature"
-      label="Cloud Designer"
+      label="Docker Extension"
       version="0.1.0.qualifier"
       provider-name="Obeo">
 
