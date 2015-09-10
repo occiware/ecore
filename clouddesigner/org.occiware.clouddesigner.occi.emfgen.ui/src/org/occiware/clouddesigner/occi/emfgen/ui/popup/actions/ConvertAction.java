@@ -86,8 +86,7 @@ public class ConvertAction implements IObjectActionDelegate {
 			String modelPath = occieFile.getParent().getLocation().toString();
 			String ecoreLocation = modelPath + '/' + ConverterUtils.toU1Case(extensionName) + ".ecore";
 			String modelPluginName = new Path(ecoreLocation).removeLastSegments(2).lastSegment().toString();
-			String designName = extensionName + ".odesign";
-			String designProjectName = modelPluginName + ".design";
+
 			String genModelPath = modelPath + '/' + ConverterUtils.toU1Case(extensionName) + ".genmodel";
 			String basePackage = "";
 			if (!modelPluginName.equals(extensionName)) {
@@ -95,6 +94,9 @@ public class ConvertAction implements IObjectActionDelegate {
 			}
 
 			generateEMFModels(extensionName, ecoreLocation, basePackage);
+
+			occieFile.getParent().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+
 			generateEMFCode(genModelPath);
 
 			IFile build = PDEProject.getBuildProperties(occieFile.getProject());
@@ -103,6 +105,8 @@ public class ConvertAction implements IObjectActionDelegate {
 					new NullProgressMonitor());
 
 			// TODO the generation must be iterative (i.e. not with acceleo)
+			// String designName = extensionName + ".odesign";
+			// String designProjectName = modelPluginName + ".design";
 			// IProject project = generateDesignProject(ecoreLocation,
 			// designName, designProjectName,
 			// new NullProgressMonitor());// TODO fix monitor
