@@ -109,7 +109,6 @@ public class NewExtensionWizard extends BasicNewProjectResourceWizard {
 					extensionScheme = extensionSchemeText.getText();
 					if (!extensionScheme.endsWith("#")) {
 						extensionScheme += "#";
-						extensionSchemeText.setText(extensionScheme);
 					}
 					setPageComplete(validatePage());
 				}
