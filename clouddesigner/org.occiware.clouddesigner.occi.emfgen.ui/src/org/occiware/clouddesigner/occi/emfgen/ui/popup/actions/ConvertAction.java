@@ -5,14 +5,11 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
@@ -21,31 +18,22 @@ import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
 import org.eclipse.emf.codegen.ecore.genmodel.GenPackage;
 import org.eclipse.emf.codegen.ecore.genmodel.presentation.GeneratorUIUtil;
 import org.eclipse.emf.codegen.ecore.genmodel.util.GenModelUtil;
-import org.eclipse.emf.common.util.BasicMonitor;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcorePackage;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.pde.internal.core.project.PDEProject;
-import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
-import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.WorkbenchException;
 import org.occiware.clouddesigner.occi.Extension;
-import org.occiware.clouddesigner.occi.OCCIFactory;
-import org.occiware.clouddesigner.occi.design.utils.WizardUtils;
 import org.occiware.clouddesigner.occi.emfgen.ConverterUtils;
 import org.occiware.clouddesigner.occi.emfgen.OCCIExtension2Ecore;
 
@@ -94,28 +82,13 @@ public class ConvertAction implements IObjectActionDelegate {
 			}
 
 			generateEMFModels(extensionName, ecoreLocation, basePackage);
-
 			occieFile.getParent().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
-
 			generateEMFCode(genModelPath);
 
 			IFile build = PDEProject.getBuildProperties(occieFile.getProject());
 			String buildContent = "bin.includes = .,\\\n               model/,\\\n               META-INF/,\\\n               plugin.xml,\\\n               plugin.properties\njars.compile.order = .\nsource.. = src-gen/\noutput.. = bin/\n";
 			build.setContents(new ByteArrayInputStream(buildContent.getBytes()), true, false,
 					new NullProgressMonitor());
-
-			// TODO the generation must be iterative (i.e. not with acceleo)
-			// String designName = extensionName + ".odesign";
-			// String designProjectName = modelPluginName + ".design";
-			// IProject project = generateDesignProject(ecoreLocation,
-			// designName, designProjectName,
-			// new NullProgressMonitor());// TODO fix monitor
-
-			// TODO we must install model & restart the IDE first
-			// generateDesignTestProject(project, extensionName, new
-			// NullProgressMonitor());// TODO
-			// fix
-			// monitor
 		} catch (InvocationTargetException e) {
 			Activator.getDefault().getLog().log(new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage(), e));
 		} catch (IOException e) {
@@ -189,61 +162,6 @@ public class ConvertAction implements IObjectActionDelegate {
 				"org.eclipse.emf.codegen.ecore.genmodel.generator.ModelProject", "Model");
 		ProgressMonitorDialog progressMonitorDialog = new ProgressMonitorDialog(shell);
 		progressMonitorDialog.run(true, true, editOp);
-	}
-
-	private IProject generateDesignProject(String ecoreLocation, String designName, String designProjectName,
-			final IProgressMonitor monitor) throws CoreException, IOException {
-		/*
-		 * Create design project
-		 */
-		IProject project = GenUtils.genDesignProject(designProjectName, designName, new ProgressMonitorDialog(shell));
-
-		/*
-		 * Create design model
-		 */
-		org.occiware.clouddesigner.occi.emfgen.design.main.Generate generator = new org.occiware.clouddesigner.occi.emfgen.design.main.Generate(
-				URI.createFileURI(ecoreLocation), project.getFolder("description").getLocation().toFile(),
-				new ArrayList<String>());
-		generator.doGenerate(BasicMonitor.toMonitor(monitor));
-		project.refreshLocal(IResource.DEPTH_INFINITE, monitor);
-		return project;
-	}
-
-	private void generateDesignTestProject(IProject project, String extensionName, final IProgressMonitor monitor)
-			throws CoreException, IOException, WorkbenchException {
-		/*
-		 * Create design test project
-		 */
-		IProject testProject = GenUtils.genDesignTestProject(project, monitor);
-
-		/*
-		 * Create design representation
-		 */
-		final Resource resource = resourceSet.createResource(URI.createURI(
-				"platform:/resource/" + testProject.getFullPath() + "/sample." + extensionName.toLowerCase()));
-		resource.getContents().add(OCCIFactory.eINSTANCE.createConfiguration());
-		resource.save(Collections.EMPTY_MAP);
-
-		// switch perspective
-		PlatformUI.getWorkbench().showPerspective("org.eclipse.sirius.ui.tools.perspective.modeling",
-				PlatformUI.getWorkbench().getActiveWorkbenchWindow());
-
-		final Session session = ModelingProject.asModelingProject(testProject).get().getSession();
-		session.getTransactionalEditingDomain().getCommandStack()
-				.execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
-					@Override
-					protected void doExecute() {
-						session.addSemanticResource(resource.getURI(), monitor);
-					}
-				});
-
-		WizardUtils.enableViewpoint(session,
-				"viewpoint:/" + project.getName() + '/' + ConverterUtils.toU1Case(extensionName) + "Configuration");
-		String diagramInstanceName = "Sample " + extensionName;
-		EObject root = WizardUtils.getRoot(session, resource.getURI());
-		WizardUtils.openDiagram(monitor, testProject, "Configuration Diagram", diagramInstanceName, root);
-
-		project.getWorkspace().getRoot().refreshLocal(IResource.DEPTH_INFINITE, monitor);
 	}
 
 }
