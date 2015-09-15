@@ -15,6 +15,7 @@ import org.occiware.clouddesigner.occi.Category;
 import org.occiware.clouddesigner.occi.Extension;
 import org.occiware.clouddesigner.occi.Kind;
 import org.occiware.clouddesigner.occi.Mixin;
+import org.occiware.clouddesigner.occi.OCCIPackage;
 import org.occiware.clouddesigner.occi.design.dialog.LoadExtensionDialog;
 
 public class DesignServices {
@@ -38,8 +39,7 @@ public class DesignServices {
 			} else {
 				first = false;
 			}
-			sb.append(param.getName())
-					.append(" : ").append(param.getType().getName()); //$NON-NLS-1$
+			sb.append(param.getName()).append(" : ").append(param.getType().getName()); //$NON-NLS-1$
 		}
 		sb.append(')');
 		return sb.toString();
@@ -49,44 +49,42 @@ public class DesignServices {
 	 * Computes the initial term of an Action.
 	 */
 	public String initialActionTerm(Action action) {
-	  Object container = action.eContainer();
-	  int nb = 0;
-	  if(container instanceof Kind) {
-		  nb = ((Kind)container).getActions().size();
-	  } else if(container instanceof Mixin) {
-		  nb = ((Mixin)container).getActions().size();
-	  }
-	  return "action" + nb;
+		Object container = action.eContainer();
+		int nb = 0;
+		if (container instanceof Kind) {
+			nb = ((Kind) container).getActions().size();
+		} else if (container instanceof Mixin) {
+			nb = ((Mixin) container).getActions().size();
+		}
+		return "action" + nb;
 	}
 
 	/**
 	 * Computes the initial scheme of an Action.
 	 */
 	public String initialActionScheme(Action action) {
-	  Category category = (Category)action.eContainer();
-	  String scheme = category.getScheme();
-	  return scheme.substring(0, scheme.length()-1) + "/" + category.getTerm() + "/action#";
+		Category category = (Category) action.eContainer();
+		String scheme = category.getScheme();
+		return scheme.substring(0, scheme.length() - 1) + "/" + category.getTerm() + "/action#";
 	}
 
 	public void importExtension(Extension extension) {
 		Shell shell = Display.getCurrent().getActiveShell();
 		Session session = SessionManager.INSTANCE.getSession(extension);
-				LoadExtensionDialog dialog = new LoadExtensionDialog(shell,
-				session.getTransactionalEditingDomain());
+		LoadExtensionDialog dialog = new LoadExtensionDialog(shell, session.getTransactionalEditingDomain());
 		dialog.open();
 
 		for (URI uri : dialog.getURIs()) {
 			session.addSemanticResource(uri, new NullProgressMonitor());
-			Resource resource = session.getTransactionalEditingDomain()
-					.getResourceSet().getResource(uri, true);
-			if (!resource.getContents().isEmpty()
-					&& (resource.getContents().get(0) instanceof Extension)
-					&& !extension.getImport().contains(
-							resource.getContents().get(0))) {
-				extension.getImport().add(
-						(Extension) resource.getContents().get(0));
+			Resource resource = session.getTransactionalEditingDomain().getResourceSet().getResource(uri, true);
+			if (!resource.getContents().isEmpty() && (resource.getContents().get(0) instanceof Extension)
+					&& !extension.getImport().contains(resource.getContents().get(0))) {
+				extension.getImport().add((Extension) resource.getContents().get(0));
 			}
 		}
+	}
 
+	public void setStringType(Attribute attribute) {
+		attribute.setType(OCCIPackage.eINSTANCE.getString());
 	}
 }
