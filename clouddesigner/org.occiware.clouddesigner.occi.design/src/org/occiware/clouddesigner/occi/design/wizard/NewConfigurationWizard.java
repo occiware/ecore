@@ -178,7 +178,9 @@ public class NewConfigurationWizard extends Wizard implements INewWizard {
 								PlatformUI.getWorkbench().getActiveWorkbenchWindow());
 
 						IProject project = modelFile.getProject();
-						ModelingProjectManager.INSTANCE.convertToModelingProject(project, progressMonitor);
+						if (!project.hasNature("org.eclipse.sirius.nature.modelingproject")) {
+							ModelingProjectManager.INSTANCE.convertToModelingProject(project, progressMonitor);
+						}
 						final Session session = ModelingProject.asModelingProject(project).get().getSession();
 						session.getTransactionalEditingDomain().getCommandStack()
 								.execute(new RecordingCommand(session.getTransactionalEditingDomain()) {

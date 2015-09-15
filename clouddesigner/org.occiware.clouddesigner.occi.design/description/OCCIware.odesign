@@ -37,12 +37,11 @@
           </style>
         </edgeMappings>
         <containerMappings name="ImportContainer" semanticCandidatesExpression="feature:import" domainClass="occi.Extension" reusedContainerMappings="//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer'] //@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer'] //@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType'] //@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']">
-          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" labelSize="12">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" labelSize="12" foregroundColor="//@userColorsPalettes[name=null]/@entries[name='ImportColor']">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelFormat>bold</labelFormat>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
         </containerMappings>
         <containerMappings name="KindContainer" labelDirectEdit="//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='EditTerm']" semanticCandidatesExpression="feature:kinds" synchronizationLock="true" domainClass="occi.Kind" childrenPresentation="List">
@@ -88,13 +87,10 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </subNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" labelSize="12" showIcon="false" labelExpression="feature:term">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="8" arcHeight="8" borderColor="//@userColorsPalettes[name=null]/@entries[name='KindBorderColor']" labelSize="12" showIcon="false" labelExpression="feature:term" roundedCorner="true" foregroundColor="//@userColorsPalettes[name=null]/@entries[name='KindColor']">
             <labelFormat>bold</labelFormat>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
-            <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.0"/>
           </style>
         </containerMappings>
         <containerMappings name="MixinContainer" labelDirectEdit="//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='EditTerm']" semanticCandidatesExpression="feature:mixins" synchronizationLock="true" domainClass="occi.Mixin" childrenPresentation="List">
@@ -140,13 +136,10 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </subNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" labelSize="12" showIcon="false" labelExpression="feature:term">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="8" arcHeight="8" borderColor="//@userColorsPalettes[name=null]/@entries[name='MixinBorderColor']" labelSize="12" showIcon="false" labelExpression="feature:term" roundedCorner="true" foregroundColor="//@userColorsPalettes[name=null]/@entries[name='MixinColor']">
             <labelFormat>bold</labelFormat>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
-            <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.0"/>
           </style>
         </containerMappings>
         <containerMappings name="EC EDataType" preconditionExpression="service:isEDataType" labelDirectEdit="//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='EditName']" semanticCandidatesExpression="feature:types" domainClass="ecore.EDataType" childrenPresentation="List">
@@ -165,11 +158,10 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </subNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" labelSize="10" widthComputationExpression="14" heightComputationExpression="5" backgroundStyle="Liquid">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" labelSize="10" widthComputationExpression="14" heightComputationExpression="5" backgroundStyle="Liquid" foregroundColor="//@userColorsPalettes[name=null]/@entries[name='DataTypeColor']">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </containerMappings>
         <containerMappings name="EC EEnum" labelDirectEdit="//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='EditName']" semanticCandidatesExpression="feature:types" domainClass="ecore.EEnum" childrenPresentation="List">
@@ -180,11 +172,10 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </subNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" labelSize="10" backgroundStyle="Liquid">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" labelSize="10" backgroundStyle="Liquid" foregroundColor="//@userColorsPalettes[name=null]/@entries[name='DataTypeColor']">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </containerMappings>
         <toolSections name="Tool">
@@ -200,13 +191,14 @@
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:arg0"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:PopupMenu" name="Cloud Designer">
-            <menuItemDescription xsi:type="tool_1:OperationAction" name="Import OCCI Extension" precondition="[oclIsKindOf(Extension)/]" icon="/org.occiware.clouddesigner.occi.design/images/import.gif">
-              <view name="views"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:importExtension"/>
-              </initialOperation>
-            </menuItemDescription>
+        </toolSections>
+        <toolSections name="Extension" label="Extension">
+          <ownedTools xsi:type="tool_1:ToolDescription" name="Import Extension" iconPath="/org.occiware.clouddesigner.occi.design/images/search.gif">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:importExtension"/>
+            </initialOperation>
           </ownedTools>
         </toolSections>
         <toolSections name="Category" label="Category">
@@ -352,14 +344,6 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="ResourceToResource" sourceMapping="//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']" targetMapping="//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']" targetFinderExpression="[links->collect(target)/]">
-          <style sizeComputationExpression="2">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            <centerLabelStyleDescription>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </centerLabelStyleDescription>
-          </style>
-        </edgeMappings>
         <containerMappings name="ResourceContainer" semanticCandidatesExpression="feature:resources" domainClass="occi.Resource" childrenPresentation="List">
           <subNodeMappings name="Kind" semanticCandidatesExpression="feature:kind" domainClass="occi.Kind">
             <style xsi:type="style:SquareDescription" labelSize="10" showIcon="false" labelExpression="[scheme+term/]" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
@@ -384,12 +368,11 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </subNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" labelSize="10" labelExpression="[id+': '+kind.term/]">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" labelSize="10" labelExpression="[id+': '+kind.term/]" foregroundColor="//@userColorsPalettes[name=null]/@entries[name='ResourceColor']">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelFormat>bold</labelFormat>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
           </style>
         </containerMappings>
         <containerMappings name="LinkContainer" semanticCandidatesExpression="[resources.links/]" domainClass="occi.Link" childrenPresentation="List">
@@ -424,13 +407,11 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
         </containerMappings>
-        <toolSections name="Environment">
-          <ownedTools xsi:type="tool_1:PaneBasedSelectionWizardDescription" name="Import" candidatesExpression="feature:extension" preSelectedCandidatesExpression="feature:extension">
-            <element name="element"/>
-            <containerView name="containerView"/>
-            <container name="container"/>
+        <toolSections name="Tool">
+          <ownedTools xsi:type="tool:DirectEditLabel" name="EditID">
+            <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element"/>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="id" valueExpression="var:arg0"/>
             </initialOperation>
           </ownedTools>
         </toolSections>
@@ -444,14 +425,14 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Link" edgeMappings="//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@edgeMappings[name='ResourceToResource']">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Link">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="occi.Link" referenceName="link" variableName="link">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="occi.Link" referenceName="links" variableName="link">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="var:target"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -475,45 +456,14 @@
       </defaultLayer>
     </ownedRepresentations>
   </ownedViewpoints>
-  <ownedViewpoints name="OCCI Configuration with containment" modelFileExtension="occic">
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="OCCI Configuration with containment" domainClass="occi.Configuration">
-      <metamodel href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#/"/>
-      <defaultLayer name="Default">
-        <edgeMappings name="LinkEdge" sourceMapping="//@ownedViewpoints[name='OCCI%20Configuration%20with%20containment']/@ownedRepresentations[name='OCCI%20Configuration%20with%20containment']/@defaultLayer/@containerMappings[name='ResourceContainer1']/@borderedNodeMappings[name='BorderedLink']" targetMapping="//@ownedViewpoints[name='OCCI%20Configuration%20with%20containment']/@ownedRepresentations[name='OCCI%20Configuration%20with%20containment']/@defaultLayer/@containerMappings[name='ResourceContainer1'] //@ownedViewpoints[name='OCCI%20Configuration%20with%20containment']/@ownedRepresentations[name='OCCI%20Configuration%20with%20containment']/@defaultLayer/@containerMappings[name='ResourceContainer1']/@subContainerMappings[name='ContainedResource']" targetFinderExpression="feature:target">
-          <style sizeComputationExpression="2">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            <centerLabelStyleDescription>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </centerLabelStyleDescription>
-          </style>
-        </edgeMappings>
-        <containerMappings name="ResourceContainer1" preconditionExpression="[container.oclAsType(Configuration).resources.links->select(kind.term= 'contains').target->excludes(self)/]" semanticCandidatesExpression="feature:resources" domainClass="occi.Resource">
-          <borderedNodeMappings name="BorderedLink" preconditionExpression="[kind.term &lt;> 'contains'/]" semanticCandidatesExpression="feature:links" domainClass="occi.Link">
-            <style xsi:type="style:BundledImageDescription" labelSize="10" labelExpression="[id+': '+kind.term/]" labelPosition="node" resizeKind="NSEW">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <labelFormat>bold</labelFormat>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
-            </style>
-          </borderedNodeMappings>
-          <subContainerMappings name="ContainedResource" semanticCandidatesExpression="[links->select(kind.term = 'contains').target/]" domainClass="occi.Resource" reusedBorderedNodeMappings="//@ownedViewpoints[name='OCCI%20Configuration%20with%20containment']/@ownedRepresentations[name='OCCI%20Configuration%20with%20containment']/@defaultLayer/@containerMappings[name='ResourceContainer1']/@borderedNodeMappings[name='BorderedLink']" reusedContainerMappings="//@ownedViewpoints[name='OCCI%20Configuration%20with%20containment']/@ownedRepresentations[name='OCCI%20Configuration%20with%20containment']/@defaultLayer/@containerMappings[name='ResourceContainer1']">
-            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" labelSize="10" labelExpression="[id+': '+kind.term/]">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <labelFormat>bold</labelFormat>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
-            </style>
-          </subContainerMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" labelSize="10" labelExpression="[id+': '+kind.term/]">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <labelFormat>bold</labelFormat>
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
-          </style>
-        </containerMappings>
-      </defaultLayer>
-    </ownedRepresentations>
-  </ownedViewpoints>
+  <userColorsPalettes>
+    <entries xsi:type="description:UserFixedColor" red="187" green="242" blue="196" name="KindColor"/>
+    <entries xsi:type="description:UserFixedColor" red="0" green="47" blue="0" name="KindBorderColor"/>
+    <entries xsi:type="description:UserFixedColor" red="187" green="221" blue="255" name="MixinColor"/>
+    <entries xsi:type="description:UserFixedColor" red="0" green="37" blue="74" name="MixinBorderColor"/>
+    <entries xsi:type="description:UserFixedColor" red="255" green="255" blue="168" name="ResourceColor"/>
+    <entries xsi:type="description:UserFixedColor" red="255" green="216" blue="176" name="LinkColor"/>
+    <entries xsi:type="description:UserFixedColor" red="214" green="214" blue="214" name="ImportColor"/>
+    <entries xsi:type="description:UserFixedColor" red="255" green="255" blue="255" name="DataTypeColor"/>
+  </userColorsPalettes>
 </description:Group>

@@ -6,6 +6,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
@@ -18,15 +19,20 @@ import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
 import org.eclipse.emf.codegen.ecore.genmodel.GenPackage;
 import org.eclipse.emf.codegen.ecore.genmodel.presentation.GeneratorUIUtil;
 import org.eclipse.emf.codegen.ecore.genmodel.util.GenModelUtil;
+import org.eclipse.emf.common.util.BasicDiagnostic;
+import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.jface.action.IAction;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.ocl.pivot.utilities.LabelUtil;
 import org.eclipse.pde.internal.core.project.PDEProject;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IActionDelegate;
@@ -80,8 +86,12 @@ public class ConvertAction implements IObjectActionDelegate {
 			if (!modelPluginName.equals(extensionName)) {
 				basePackage = modelPluginName.substring(0, modelPluginName.length() - (extensionName.length() + 1));
 			}
-
-			generateEMFModels(extensionName, ecoreLocation, basePackage);
+			try {
+				generateEMFModels(extensionName, ecoreLocation, basePackage);
+			} catch (IllegalArgumentException e) {
+				MessageDialog.openError(shell, "Invalid Extension", e.getMessage());
+				return;
+			}
 			occieFile.getParent().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 			generateEMFCode(genModelPath);
 
@@ -116,6 +126,24 @@ public class ConvertAction implements IObjectActionDelegate {
 		resourceSet = new ResourceSetImpl();
 		Extension ext = (Extension) ConverterUtils.getRootElement(resourceSet,
 				"file:/" + ecoreLocation.substring(0, ecoreLocation.length() - 5) + "occie");
+
+		Map<Object, Object> validationContext = LabelUtil.createDefaultContext(Diagnostician.INSTANCE);
+		BasicDiagnostic diagnostics = Diagnostician.INSTANCE.createDefaultDiagnostic(ext);
+		if (!Diagnostician.INSTANCE.validate(ext, diagnostics, validationContext)) {
+			StringBuilder message = null;
+			for (Diagnostic diagnostic : diagnostics.getChildren()) {
+				if (message == null) {
+					message = new StringBuilder();
+				} else {
+					message.append("\n");
+				}
+				message.append(diagnostic.getMessage());
+			}
+			if (message != null) {
+				throw new IllegalArgumentException(message.toString());
+			}
+		}
+
 		EPackage ePackage = new OCCIExtension2Ecore().convertExtension(ext);
 		resourceSet.getPackageRegistry().put(ePackage.getNsURI(), ePackage);
 		ConverterUtils.persistMetamodel(resourceSet, ePackage, ecoreLocation);
