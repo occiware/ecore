@@ -77,7 +77,7 @@ public class MixinItemProvider extends CategoryItemProvider {
 	protected void addAppliesPropertyDescriptor(Object object) {
 		final IItemLabelProvider lp = new IItemLabelProvider() {
 			public String getText(Object object) {
-				if (object != null) {
+				if (object instanceof Kind) {
 					return ((Kind) object).getScheme() + ((Kind) object).getTerm();
 				}
 				return "";
@@ -94,7 +94,7 @@ public class MixinItemProvider extends CategoryItemProvider {
 						OCCIPackage.Literals.MIXIN__APPLIES, true, false, true, null, null, null) {
 					@Override
 					public IItemLabelProvider getLabelProvider(Object object) {
-						if (object instanceof Kind) {
+						if (object instanceof Mixin) {
 							return lp;
 						}
 						return super.getLabelProvider(object);

@@ -21,8 +21,10 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.occiware.clouddesigner.occi.Attribute;
 import org.occiware.clouddesigner.occi.AttributeState;
+import org.occiware.clouddesigner.occi.Category;
+import org.occiware.clouddesigner.occi.Entity;
+import org.occiware.clouddesigner.occi.Kind;
 import org.occiware.clouddesigner.occi.OCCIPackage;
-import org.occiware.clouddesigner.occi.Resource;
 
 /**
  * This is the item provider adapter for a
@@ -67,6 +69,20 @@ public class AttributeStateItemProvider extends ItemProviderAdapter implements I
 	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
+		final IItemLabelProvider lp = new IItemLabelProvider() {
+			public String getText(Object object) {
+				if (object instanceof Attribute) {
+					Attribute attr = (Attribute) object;
+					Category cat = ((Category) attr.eContainer());
+					return '[' + cat.getTerm() + "] " + attr.getName() + ':' + attr.getType().getName();
+				}
+				return "";
+			}
+
+			public Object getImage(Object object) {
+				return null;
+			}
+		};
 		itemPropertyDescriptors
 				.add(new ItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 						getResourceLocator(), getString("_UI_AttributeState_name_feature"),
@@ -75,18 +91,55 @@ public class AttributeStateItemProvider extends ItemProviderAdapter implements I
 						OCCIPackage.Literals.ATTRIBUTE_STATE__NAME, true, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null) {
 					@Override
-					public Collection getChoiceOfValues(Object arg0) {
-						List<String> l = new ArrayList<String>();
-						if (arg0 instanceof AttributeState && ((AttributeState) arg0).eContainer() instanceof Resource
-								&& ((Resource) ((AttributeState) arg0).eContainer()).getKind() != null) {
-							for (Attribute attribute : ((Resource) ((AttributeState) arg0).eContainer()).getKind()
-									.getAttributes()) {
-								l.add(attribute.getName());
+					public Collection<?> getChoiceOfValues(Object arg0) {
+						List<Attribute> l = new ArrayList<Attribute>();
+						Kind kind = ((Entity) ((AttributeState) arg0).eContainer()).getKind();
+						if (arg0 instanceof AttributeState && ((AttributeState) arg0).eContainer() instanceof Entity
+								&& kind != null) {
+							for (Attribute attribute : getAllAttributes(kind)) {
+								l.add(attribute);
 							}
 						}
 						return l;
 					}
+
+					@Override
+					public void setPropertyValue(Object object, Object value) {
+						if (object instanceof AttributeState && value instanceof Attribute) {
+							AttributeState as = (AttributeState) object;
+							as.setName(((Attribute) value).getName());
+						}
+						super.setPropertyValue(object, value);
+					}
+
+					@Override
+					public IItemLabelProvider getLabelProvider(Object object) {
+						if (object instanceof AttributeState) {
+							return lp;
+						}
+						return super.getLabelProvider(object);
+					}
+
+					@Override
+					public Object getPropertyValue(Object object) {
+						if (object instanceof Attribute) {
+							return ((Attribute) object).getName();
+						}
+						return super.getPropertyValue(object);
+					}
 				});
+	}
+
+	/**
+	 * @generated NOT
+	 */
+	private static Collection<Attribute> getAllAttributes(Kind kind) {
+		List<Attribute> res = new ArrayList<Attribute>();
+		if (kind.getParent() != null) {
+			res.addAll(getAllAttributes(kind.getParent()));
+		}
+		res.addAll(kind.getAttributes());
+		return res;
 	}
 
 	/**

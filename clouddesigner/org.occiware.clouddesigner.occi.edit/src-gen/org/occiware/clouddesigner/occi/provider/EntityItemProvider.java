@@ -102,7 +102,7 @@ public class EntityItemProvider extends ItemProviderAdapter implements IEditingD
 						OCCIPackage.Literals.ENTITY__KIND, true, false, true, null, null, null) {
 					@Override
 					public IItemLabelProvider getLabelProvider(Object object) {
-						if (object instanceof Kind) {
+						if (object instanceof Entity) {
 							return lp;
 						}
 						return super.getLabelProvider(object);
