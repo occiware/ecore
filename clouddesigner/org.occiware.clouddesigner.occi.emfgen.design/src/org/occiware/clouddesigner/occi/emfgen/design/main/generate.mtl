@@ -13,7 +13,7 @@
         <containerMappings name="[resource.name/]" 
 			semanticCandidatesExpression="feature:resources" 
 			domainClass="[ePackage.name/].[resource.name/]">
-          <style xsi:type="style:FlatContainerStyleDescription" labelAlignment="LEFT" roundedCorner="true">
+          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="feature:id" labelAlignment="LEFT" roundedCorner="true">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[ '[' /]name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[ '[' /]name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[ '[' /]name='white']"/>
