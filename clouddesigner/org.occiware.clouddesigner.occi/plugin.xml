@@ -15,7 +15,7 @@
    </extension>
 
    <extension point="org.eclipse.emf.ecore.extension_parser">
-      <!-- @generated OCCI -->
+      <!-- @generated NOT OCCI -->
       <parser
             type="occie"
             class="org.occiware.clouddesigner.occi.util.OCCIResourceFactoryImpl"/>
