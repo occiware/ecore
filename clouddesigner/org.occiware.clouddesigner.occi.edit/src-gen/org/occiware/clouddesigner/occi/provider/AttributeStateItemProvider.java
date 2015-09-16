@@ -76,7 +76,7 @@ public class AttributeStateItemProvider extends ItemProviderAdapter implements I
 					Category cat = ((Category) attr.eContainer());
 					return '[' + cat.getTerm() + "] " + attr.getName() + ':' + attr.getType().getName();
 				}
-				return "";
+				return String.valueOf(object);
 			}
 
 			public Object getImage(Object object) {
