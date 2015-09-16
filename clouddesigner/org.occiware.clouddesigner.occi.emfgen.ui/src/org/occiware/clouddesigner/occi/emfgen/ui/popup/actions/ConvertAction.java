@@ -83,7 +83,7 @@ public class ConvertAction implements IObjectActionDelegate {
 
 			String genModelPath = modelPath + '/' + ConverterUtils.toU1Case(extensionName) + ".genmodel";
 			String basePackage = "";
-			if (!modelPluginName.equals(extensionName)) {
+			if (modelPluginName.endsWith(extensionName) && !modelPluginName.equals(extensionName)) {
 				basePackage = modelPluginName.substring(0, modelPluginName.length() - (extensionName.length() + 1));
 			}
 			try {
