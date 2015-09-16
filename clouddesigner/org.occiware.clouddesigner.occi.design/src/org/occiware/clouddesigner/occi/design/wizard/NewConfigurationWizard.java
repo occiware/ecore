@@ -214,7 +214,6 @@ public class NewConfigurationWizard extends Wizard implements INewWizard {
 		Exception exception)
 
 		{
-			System.err.println(exception);
 			Activator.getDefault().getLog().log(new Status(IStatus.ERROR, Activator.PLUGIN_ID, exception.getMessage()));
 			return false;
 		}

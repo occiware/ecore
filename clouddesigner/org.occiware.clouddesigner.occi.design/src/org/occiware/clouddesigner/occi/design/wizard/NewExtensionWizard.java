@@ -11,7 +11,6 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.layout.TableColumnLayout;
@@ -175,89 +174,93 @@ public class NewExtensionWizard extends BasicNewProjectResourceWizard {
 	 */
 	@Override
 	public boolean performFinish() {
-		IProgressMonitor monitor = new NullProgressMonitor();
 		try {
-			project = ModelingProjectManager.INSTANCE.createNewModelingProject(newProjectPage.getProjectName(),
-					newProjectPage.getLocationPath(), true, monitor);
-
-			ModelingProject.asModelingProject(project).get().getSession().getSelectedViewpoints(false);
-		} catch (CoreException e) {
-			Activator.getDefault().getLog().log(new Status(IStatus.ERROR, Activator.PLUGIN_ID,
-					Messages.NewExtensionWizard_ProjectCreationError, e));
-		}
-
-		if (project == null || extensionName == null || extensionScheme == null) {
-			throw new IllegalArgumentException();
-		}
-
-		final IRunnableWithProgress op = new WorkspaceModifyOperation(null) {
-			@Override
-			protected void execute(IProgressMonitor monitor) throws CoreException, InterruptedException {
-				// Do not call super as we don't want to use the super perform
-				// method to create the project,
-				// in our case the project was created using the modeling
-				// project api, we need to extends the
-				// BasicNewProjectResourceWizard to implement the perspective
-				// switch easily.
-				final InitExtensionModel init = new InitExtensionModel(project, extensionName, extensionScheme,
-						WizardUtils.getRefExtensionSchemes(refExtensionViewer));
-				try {
-					getContainer().run(false, true, init);
-				} catch (final InterruptedException e) {
-					// Ignore.
-				} catch (final InvocationTargetException e) {
-					Activator.getDefault().getLog().log(new Status(IStatus.ERROR, Activator.PLUGIN_ID,
-							Messages.NewExtensionWizard_ModelCreationError, e));
-				}
-
-				// Get the newly created file
-				final IResource newModelFile = project.findMember(extensionName + "." + EXTENSION_FILEEXT);
-
-				// Switch to the modeling perspective
-				// updatePerspective();
-				PlatformUI.getWorkbench().showPerspective(WizardUtils.MODELING_PERSPECTIVE_ID,
-						PlatformUI.getWorkbench().getActiveWorkbenchWindow());
-
-				WizardUtils.openDiagram(monitor, project, EXTENSION_DIAGRAM_NAME, extensionName, WizardUtils.getRoot(
-						ModelingProject.asModelingProject(project).get().getSession(), init.getSemanticModelURI()));
-
-			}
-		};
-		try {
-			// create modeling project
-			getContainer().run(false, true, op);
-
-			// convert to plugin project
-			getContainer().run(false, true, new ConvertProjectToPluginOperation(new IProject[] { project }, false));
-
-			project.refreshLocal(IResource.DEPTH_INFINITE, monitor);
-
-			// convert to OCCIE plugin
-			getContainer().run(false, true, new WorkspaceModifyOperation() {
+			getContainer().run(false, false, new IRunnableWithProgress() {
 
 				@Override
-				protected void execute(IProgressMonitor monitor)
-						throws CoreException, InvocationTargetException, InterruptedException {
-					configureOCCIEExtension(monitor);
+				public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+					try {
+						project = ModelingProjectManager.INSTANCE.createNewModelingProject(
+								newProjectPage.getProjectName(), newProjectPage.getLocationPath(), true, monitor);
+
+						ModelingProject.asModelingProject(project).get().getSession().getSelectedViewpoints(false);
+					} catch (CoreException e) {
+						Activator.getDefault().getLog().log(new Status(IStatus.ERROR, Activator.PLUGIN_ID,
+								Messages.NewExtensionWizard_ProjectCreationError, e));
+					}
+
+					if (project == null || extensionName == null || extensionScheme == null) {
+						throw new IllegalArgumentException();
+					}
+
+					final IRunnableWithProgress op = new WorkspaceModifyOperation(null) {
+						@Override
+						protected void execute(IProgressMonitor monitor) throws CoreException, InterruptedException {
+							final InitExtensionModel init = new InitExtensionModel(project, extensionName,
+									extensionScheme, WizardUtils.getRefExtensionSchemes(refExtensionViewer));
+							try {
+								getContainer().run(false, true, init);
+							} catch (final InterruptedException e) {
+								// Ignore.
+							} catch (final InvocationTargetException e) {
+								Activator.getDefault().getLog().log(new Status(IStatus.ERROR, Activator.PLUGIN_ID,
+										Messages.NewExtensionWizard_ModelCreationError, e));
+							}
+
+							// Get the newly created file
+							final IResource newModelFile = project.findMember(extensionName + "." + EXTENSION_FILEEXT);
+
+							// Switch to the modeling perspective
+							// updatePerspective();
+							PlatformUI.getWorkbench().showPerspective(WizardUtils.MODELING_PERSPECTIVE_ID,
+									PlatformUI.getWorkbench().getActiveWorkbenchWindow());
+
+							WizardUtils.openDiagram(monitor, project, EXTENSION_DIAGRAM_NAME, extensionName,
+									WizardUtils.getRoot(ModelingProject.asModelingProject(project).get().getSession(),
+											init.getSemanticModelURI()));
+
+						}
+					};
+					try {
+						// create modeling project
+						getContainer().run(false, true, op);
+
+						// convert to plugin project
+						getContainer().run(false, true,
+								new ConvertProjectToPluginOperation(new IProject[] { project }, false));
+
+						project.refreshLocal(IResource.DEPTH_INFINITE, monitor);
+
+						// convert to OCCIE plugin
+						getContainer().run(false, true, new WorkspaceModifyOperation() {
+
+							@Override
+							protected void execute(IProgressMonitor monitor)
+									throws CoreException, InvocationTargetException, InterruptedException {
+								configureOCCIEExtension(monitor);
+							}
+
+						});
+
+						project.refreshLocal(IResource.DEPTH_INFINITE, monitor);
+
+					} catch (final InvocationTargetException e) {
+						if (e.getTargetException() instanceof CoreException) {
+							ErrorDialog.openError(getContainer().getShell(),
+									Messages.NewExtensionWizard_ModelCreationError, null,
+									((CoreException) e.getTargetException()).getStatus());
+						} else {
+							Activator.getDefault().getLog().log(new Status(IStatus.ERROR, Activator.PLUGIN_ID,
+									Messages.NewExtensionWizard_ModelCreationError, e));
+						}
+					} catch (CoreException | InterruptedException e) {
+						Activator.getDefault().getLog()
+								.log(new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage(), e));
+					}
 				}
-
 			});
-
-			project.refreshLocal(IResource.DEPTH_INFINITE, monitor);
-
-		} catch (final InvocationTargetException e) {
-			if (e.getTargetException() instanceof CoreException) {
-				ErrorDialog.openError(getContainer().getShell(), Messages.NewExtensionWizard_ModelCreationError, null,
-						((CoreException) e.getTargetException()).getStatus());
-			} else {
-				Activator.getDefault().getLog().log(new Status(IStatus.ERROR, Activator.PLUGIN_ID,
-						Messages.NewExtensionWizard_ModelCreationError, e));
-			}
-		} catch (final InterruptedException e) {
-			return false;
-		} catch (CoreException e) {
-			ErrorDialog.openError(getContainer().getShell(), Messages.NewExtensionWizard_ModelCreationError, null,
-					e.getStatus());
+		} catch (InvocationTargetException | InterruptedException e) {
+			Activator.getDefault().getLog().log(new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage(), e));
 		}
 		return true;
 	}
