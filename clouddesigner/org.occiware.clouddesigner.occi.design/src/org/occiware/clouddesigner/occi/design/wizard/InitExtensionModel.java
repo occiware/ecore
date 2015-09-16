@@ -23,7 +23,6 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.business.api.session.Session;
@@ -133,9 +132,8 @@ public class InitExtensionModel extends WorkspaceModifyOperation {
 					@Override
 					protected void doExecute() {
 
-						final ResourceSetImpl resourceSet = new ResourceSetImpl();
 						/* load the occi-core.xmi extension. */
-						final Resource occiCoreResource = resourceSet.getResource(
+						final Resource occiCoreResource = session.getSessionResource().getResourceSet().getResource(
 								URI.createPlatformPluginURI("org.occiware.clouddesigner.occi/model/Core.occie", true),
 								true);
 						final Extension occiCoreExtension = (Extension) occiCoreResource.getContents().get(0);
@@ -145,7 +143,7 @@ public class InitExtensionModel extends WorkspaceModifyOperation {
 						// add referenced extensions
 						for (String refExtensionScheme : refExtensionSchemes) {
 							String refExtensionURI = OCCIRegistry.getInstance().getExtensionURI(refExtensionScheme);
-							final Resource refExtensionResource = resourceSet
+							final Resource refExtensionResource = session.getSessionResource().getResourceSet()
 									.getResource(URI.createURI(refExtensionURI, true), true);
 							final Extension refExtension = (Extension) refExtensionResource.getContents().get(0);
 							rootObject.getImport().add(refExtension);
@@ -153,7 +151,7 @@ public class InitExtensionModel extends WorkspaceModifyOperation {
 
 						semanticModelURI = URI.createPlatformResourceURI(platformPath, true);
 
-						final Resource res = resourceSet.createResource(semanticModelURI);
+						final Resource res = session.getSessionResource().getResourceSet().createResource(semanticModelURI);
 						/* Add the initial model object to the contents. */
 
 						if (rootObject != null) {

@@ -1,8 +1,13 @@
 package org.occiware.clouddesigner.occi.design.services;
 
+import java.util.Iterator;
+
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.session.Session;
@@ -16,9 +21,12 @@ import org.occiware.clouddesigner.occi.Extension;
 import org.occiware.clouddesigner.occi.Kind;
 import org.occiware.clouddesigner.occi.Mixin;
 import org.occiware.clouddesigner.occi.OCCIPackage;
+import org.occiware.clouddesigner.occi.OCCIRegistry;
 import org.occiware.clouddesigner.occi.design.dialog.LoadExtensionDialog;
 
 public class DesignServices {
+
+	private EDataType stringType;
 
 	// service:isEDataType
 	public Boolean isEDataType(EObject eObj) {
@@ -85,6 +93,15 @@ public class DesignServices {
 	}
 
 	public void setStringType(Attribute attribute) {
-		attribute.setType(OCCIPackage.eINSTANCE.getString());
+		Session session = SessionManager.INSTANCE.getSession(attribute);
+		Resource resource = session.getSessionResource().getResourceSet().getResource(
+				URI.createPlatformPluginURI("org.occiware.clouddesigner.occi/model/OCCI.ecore", true), true);
+		for (EClassifier ec : ((EPackage) resource.getContents().get(0)).getEClassifiers()) {
+			if (ec instanceof EDataType && ec.getName().equals("String")) {
+				// default type
+				attribute.setType((EDataType) ec);
+			}
+		}
+
 	}
 }
