@@ -1,0 +1,1650 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:mtl="http://www.eclipse.org/acceleo/mtl/3.0" xmlns:ocl.ecore="http://www.eclipse.org/ocl/1.1.0/Ecore">
+  <mtl:Module name="genSH" nsURI="org::occiware::clouddesigner::occi::docker::gen::conf::files::genSH" startHeaderPosition="30" endHeaderPosition="363">
+    <input>
+      <takesTypesFrom href="http://occiware.org/docker#/"/>
+    </input>
+    <input>
+      <takesTypesFrom href="http://schemas.ogf.org/occi/infrastructure#/"/>
+    </input>
+    <input>
+      <takesTypesFrom href="http://schemas.ogf.org/occi#/"/>
+    </input>
+    <ownedModuleElement xsi:type="mtl:Template" name="generateSH" visibility="Public">
+      <body xsi:type="mtl:FileBlock" openMode="OverWrite">
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="#!/bin/sh&#xD;&#xA;&#xD;&#xA;"/>
+        <body xsi:type="mtl:ForBlock">
+          <body xsi:type="mtl:TemplateInvocation" definition="/0/genMachine">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="machine" referredVariable="/0/generateSH/%/%.1/machine">
+              <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Machine"/>
+            </argument>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;"/>
+          <loopVariable name="machine">
+            <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Machine"/>
+          </loopVariable>
+          <iterSet xsi:type="ocl.ecore:OperationCallExp" eType="/3/OrderedSet(Machine)" referredOperation="/1/oclstdlib_Collection(T)_Class/filter">
+            <source xsi:type="ocl.ecore:PropertyCallExp" eType="/3/OrderedSet(Resource)">
+              <source xsi:type="ocl.ecore:VariableExp" name="configuration" referredVariable="/0/generateSH/configuration">
+                <eType xsi:type="ecore:EClass" href="http://schemas.ogf.org/occi#//Configuration"/>
+              </source>
+              <referredProperty xsi:type="ecore:EReference" href="http://schemas.ogf.org/occi#//Configuration/resources"/>
+            </source>
+            <argument xsi:type="ocl.ecore:TypeExp" eType="/9/Machine">
+              <referredType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Machine"/>
+            </argument>
+          </iterSet>
+        </body>
+        <fileUrl xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="docker-conf.sh">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </fileUrl>
+        <charset xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="UTF-8">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </charset>
+      </body>
+      <parameter name="configuration">
+        <eType xsi:type="ecore:EClass" href="http://schemas.ogf.org/occi#//Configuration"/>
+      </parameter>
+    </ownedModuleElement>
+    <ownedModuleElement xsi:type="mtl:Template" name="genMachine" visibility="Public">
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="# Create the Docker "/>
+      <body xsi:type="ocl.ecore:PropertyCallExp">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <source xsi:type="ocl.ecore:OperationCallExp">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/19">
+            <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Machine"/>
+          </source>
+          <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/emf/2002/Ecore#//EObject/eClass"/>
+        </source>
+        <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" named "/>
+      <body xsi:type="ocl.ecore:PropertyCallExp">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/20">
+          <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Machine"/>
+        </source>
+        <referredProperty xsi:type="ecore:EAttribute" href="http://occiware.org/docker#//Machine/name"/>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;docker-machine create "/>
+      <body xsi:type="mtl:TemplateInvocation" definition="/0/genDriverConfig">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <argument xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/21">
+          <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Machine"/>
+        </argument>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" "/>
+      <body xsi:type="ocl.ecore:PropertyCallExp">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/22">
+          <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Machine"/>
+        </source>
+        <referredProperty xsi:type="ecore:EAttribute" href="http://occiware.org/docker#//Machine/name"/>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;&#xD;&#xA;"/>
+      <body xsi:type="ocl.ecore:IteratorExp" name="collect" eType="/3/Sequence(String)">
+        <source xsi:type="mtl:QueryInvocation" eType="/3/Sequence(Container)" definition="/0/getOrderedContainers">
+          <argument xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/23">
+            <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Machine"/>
+          </argument>
+        </source>
+        <body xsi:type="mtl:TemplateInvocation" definition="/0/genContainer">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <argument xsi:type="ocl.ecore:VariableExp" name="temp1" referredVariable="/0/genMachine/collect/temp1">
+            <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Container"/>
+          </argument>
+          <argument xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="machine" referredVariable="/0/genMachine/machine">
+              <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Machine"/>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="http://occiware.org/docker#//Machine/name"/>
+          </argument>
+        </body>
+        <iterator xsi:type="ocl.ecore:Variable" name="temp1">
+          <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Container"/>
+        </iterator>
+      </body>
+      <parameter name="machine">
+        <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Machine"/>
+      </parameter>
+    </ownedModuleElement>
+    <ownedModuleElement xsi:type="mtl:Template" name="genDriverConfig" visibility="Public">
+      <parameter name="machine">
+        <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Machine"/>
+      </parameter>
+      <post xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/trim">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/27">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </source>
+      </post>
+    </ownedModuleElement>
+    <ownedModuleElement xsi:type="mtl:Template" name="genDriverConfig" visibility="Public">
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" --driver=virtualbox"/>
+      <body xsi:type="mtl:IfBlock">
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" --virtualbox-memory "/>
+        <body xsi:type="mtl:QueryInvocation" definition="/0/toInteger">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+          <argument xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Real"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/35">
+              <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Machine_VirtualBox"/>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="http://schemas.ogf.org/occi/infrastructure#//Compute/memory"/>
+          </argument>
+        </body>
+        <ifExpr xsi:type="ocl.ecore:OperationCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+          <source xsi:type="ocl.ecore:OperationCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+            <source xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Real"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/34">
+                <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Machine_VirtualBox"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://schemas.ogf.org/occi/infrastructure#//Compute/memory"/>
+            </source>
+            <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Real_Class/oclIsUndefined"/>
+          </source>
+          <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean_Class/not"/>
+        </ifExpr>
+      </body>
+      <body xsi:type="mtl:IfBlock">
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" --virtualbox-disk-size "/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/37">
+            <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Machine_VirtualBox"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://occiware.org/docker#//Machine_VirtualBox/disk_size"/>
+        </body>
+        <ifExpr xsi:type="ocl.ecore:OperationCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+          <source xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/36">
+              <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Machine_VirtualBox"/>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="http://occiware.org/docker#//Machine_VirtualBox/disk_size"/>
+          </source>
+          <argument xsi:type="ocl.ecore:NullLiteralExp">
+            <eType xsi:type="ocl.ecore:VoidType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclVoid"/>
+          </argument>
+          <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer_Class/%3C%3E"/>
+        </ifExpr>
+      </body>
+      <parameter name="machine">
+        <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Machine_VirtualBox"/>
+      </parameter>
+      <post xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/trim">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/32">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </source>
+      </post>
+    </ownedModuleElement>
+    <ownedModuleElement xsi:type="mtl:Template" name="genContainer" visibility="Public">
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="# Create the Docker Container named "/>
+      <body xsi:type="ocl.ecore:PropertyCallExp">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/42">
+          <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Container"/>
+        </source>
+        <referredProperty xsi:type="ecore:EAttribute" href="http://occiware.org/docker#//Container/name"/>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;docker $(docker-machine config "/>
+      <body xsi:type="ocl.ecore:VariableExp" name="machineName" referredVariable="/0/genContainer/machineName.2">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=") create --name "/>
+      <body xsi:type="ocl.ecore:PropertyCallExp">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/44">
+          <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Container"/>
+        </source>
+        <referredProperty xsi:type="ecore:EAttribute" href="http://occiware.org/docker#//Container/name"/>
+      </body>
+      <body xsi:type="mtl:IfBlock">
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" -P"/>
+        <ifExpr xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/45">
+            <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Container"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://occiware.org/docker#//Container/publish_all"/>
+        </ifExpr>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" "/>
+      <body xsi:type="mtl:TemplateInvocation" definition="/0/genLinkConfig">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <argument xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/46">
+          <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Container"/>
+        </argument>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" "/>
+      <body xsi:type="mtl:IfBlock">
+        <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/trim">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/48">
+              <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Container"/>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="http://occiware.org/docker#//Container/image"/>
+          </source>
+        </body>
+        <ifExpr xsi:type="ocl.ecore:OperationCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+          <source xsi:type="ocl.ecore:OperationCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+            <source xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/47">
+                <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Container"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://occiware.org/docker#//Container/image"/>
+            </source>
+            <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/oclIsUndefined"/>
+          </source>
+          <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean_Class/not"/>
+        </ifExpr>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" "/>
+      <body xsi:type="mtl:IfBlock">
+        <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/trim">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/50">
+              <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Container"/>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="http://occiware.org/docker#//Container/command"/>
+          </source>
+        </body>
+        <ifExpr xsi:type="ocl.ecore:OperationCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+          <source xsi:type="ocl.ecore:OperationCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+            <source xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/49">
+                <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Container"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://occiware.org/docker#//Container/command"/>
+            </source>
+            <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/oclIsUndefined"/>
+          </source>
+          <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean_Class/not"/>
+        </ifExpr>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;&#xD;&#xA;# Start the Docker Container named "/>
+      <body xsi:type="ocl.ecore:PropertyCallExp">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/51">
+          <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Container"/>
+        </source>
+        <referredProperty xsi:type="ecore:EAttribute" href="http://occiware.org/docker#//Container/name"/>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;docker $(docker-machine config "/>
+      <body xsi:type="ocl.ecore:VariableExp" name="machineName" referredVariable="/0/genContainer/machineName.2">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=") start "/>
+      <body xsi:type="ocl.ecore:PropertyCallExp">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/53">
+          <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Container"/>
+        </source>
+        <referredProperty xsi:type="ecore:EAttribute" href="http://occiware.org/docker#//Container/name"/>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;&#xD;&#xA;"/>
+      <parameter name="container">
+        <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Container"/>
+      </parameter>
+      <parameter name="machineName">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </parameter>
+    </ownedModuleElement>
+    <ownedModuleElement xsi:type="mtl:Template" name="genLinkConfig" visibility="Public">
+      <body xsi:type="mtl:ForBlock">
+        <body xsi:type="mtl:LetBlock">
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="  --link "/>
+          <body xsi:type="ocl.ecore:VariableExp" name="name" referredVariable="/0/genLinkConfig/%/%/name.1">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=":"/>
+          <body xsi:type="mtl:IfBlock">
+            <body xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="link" referredVariable="/0/genLinkConfig/%/link">
+                <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Link"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://occiware.org/docker#//Link/alias"/>
+            </body>
+            <ifExpr xsi:type="ocl.ecore:OperationCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+              <source xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="link" referredVariable="/0/genLinkConfig/%/link">
+                  <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Link"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://occiware.org/docker#//Link/alias"/>
+              </source>
+              <argument xsi:type="ocl.ecore:NullLiteralExp">
+                <eType xsi:type="ocl.ecore:VoidType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclVoid"/>
+              </argument>
+              <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/%3C%3E"/>
+            </ifExpr>
+            <else>
+              <body xsi:type="ocl.ecore:VariableExp" name="name" referredVariable="/0/genLinkConfig/%/%/name.1">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              </body>
+            </else>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;"/>
+          <letVariable name="name">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <initExpression xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:OperationCallExp">
+                <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Container"/>
+                <source xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ecore:EClass" href="http://schemas.ogf.org/occi#//Resource"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="link" referredVariable="/0/genLinkConfig/%/link">
+                    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Link"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EReference" href="http://schemas.ogf.org/occi#//Link/target"/>
+                </source>
+                <argument xsi:type="ocl.ecore:TypeExp" eType="/9/Container">
+                  <referredType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Container"/>
+                </argument>
+                <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny_Class/oclAsType"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://occiware.org/docker#//Container/name"/>
+            </initExpression>
+          </letVariable>
+        </body>
+        <loopVariable name="link">
+          <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Link"/>
+        </loopVariable>
+        <iterSet xsi:type="ocl.ecore:OperationCallExp" eType="/3/OrderedSet(Link).1" referredOperation="/1/oclstdlib_Collection(T)_Class/filter">
+          <source xsi:type="ocl.ecore:PropertyCallExp" eType="/3/OrderedSet(Link)">
+            <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/59">
+              <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Container"/>
+            </source>
+            <referredProperty xsi:type="ecore:EReference" href="http://schemas.ogf.org/occi#//Resource/links"/>
+          </source>
+          <argument xsi:type="ocl.ecore:TypeExp" eType="/9/Link">
+            <referredType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Link"/>
+          </argument>
+        </iterSet>
+      </body>
+      <parameter name="container">
+        <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Container"/>
+      </parameter>
+      <post xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/trim">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/57">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </source>
+      </post>
+    </ownedModuleElement>
+    <ownedModuleElement xsi:type="mtl:Query" name="getOrderedContainers" visibility="Public" type="/3/Sequence(Container)">
+      <parameter name="machine">
+        <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Machine"/>
+      </parameter>
+      <expression xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_OclAny_Class/invoke">
+        <eType xsi:type="ocl.ecore:AnyType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+        <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/70">
+          <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Machine"/>
+        </source>
+        <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="org.occiware.clouddesigner.occi.docker.gen.conf.services.GenUtils">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </argument>
+        <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="getOrderedContainers(org.occiware.clouddesigner.occi.docker.Machine)">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </argument>
+        <argument xsi:type="ocl.ecore:CollectionLiteralExp" eType="/3/Sequence(Machine)" kind="Sequence">
+          <part xsi:type="ocl.ecore:CollectionItem">
+            <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Machine"/>
+            <item xsi:type="ocl.ecore:VariableExp" name="machine" referredVariable="/0/getOrderedContainers/machine">
+              <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Machine"/>
+            </item>
+          </part>
+        </argument>
+      </expression>
+    </ownedModuleElement>
+    <ownedModuleElement xsi:type="mtl:Query" name="toInteger" visibility="Public">
+      <parameter name="real">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Real"/>
+      </parameter>
+      <expression xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_OclAny_Class/invoke">
+        <eType xsi:type="ocl.ecore:AnyType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+        <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/73">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Real"/>
+        </source>
+        <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="org.occiware.clouddesigner.occi.docker.gen.conf.services.GenUtils">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </argument>
+        <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="toInteger(java.lang.Float)">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </argument>
+        <argument xsi:type="ocl.ecore:CollectionLiteralExp" eType="/3/Sequence(Real)" kind="Sequence">
+          <part xsi:type="ocl.ecore:CollectionItem">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Real"/>
+            <item xsi:type="ocl.ecore:VariableExp" name="real" referredVariable="/0/toInteger/real">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Real"/>
+            </item>
+          </part>
+        </argument>
+      </expression>
+      <type xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+    </ownedModuleElement>
+  </mtl:Module>
+  <ecore:EPackage name="additions">
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_String_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eAnnotations>
+      <eOperations name="trim">
+        <eAnnotations source="MTL non-standard"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Integer_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Real_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Real"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ecore_EObject_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+      </eAnnotations>
+      <eOperations name="generateSH">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/generateSH"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="configuration">
+          <eType xsi:type="ecore:EClass" href="http://schemas.ogf.org/occi#//Configuration"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="genMachine">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/genMachine"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="machine">
+          <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Machine"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="genDriverConfig">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/genDriverConfig"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="machine">
+          <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Machine"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="genDriverConfig">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/genDriverConfig.1"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="machine">
+          <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Machine_VirtualBox"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="genContainer">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/genContainer"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="container">
+          <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Container"/>
+        </eParameters>
+        <eParameters name="machineName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="genLinkConfig">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/genLinkConfig"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="container">
+          <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Container"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="getOrderedContainers" eType="/3/Sequence(Container)">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/getOrderedContainers"/>
+        <eParameters name="machine">
+          <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Machine"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="toInteger">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/toInteger"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+        <eParameters name="real">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Real"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OclAny_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+      </eAnnotations>
+      <eOperations name="invoke">
+        <eAnnotations source="MTL non-standard"/>
+        <eType xsi:type="ocl.ecore:AnyType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+        <eParameters name="class">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="method">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="arguments">
+          <eType xsi:type="ocl.ecore:SequenceType" href="http://www.eclipse.org/acceleo/mtl/3.0/mtlnonstdlib.ecore#//Sequence(OclAny)"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Collection(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Collection(T)"/>
+      </eAnnotations>
+      <eOperations name="filter">
+        <eAnnotations source="MTL non-standard"/>
+        <eType xsi:type="ocl.ecore:CollectionType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Collection(T)"/>
+        <eParameters name="filter">
+          <eType xsi:type="ocl.ecore:TypeType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclType"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Sequence(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OrderedSet(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="occi_Configuration_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://schemas.ogf.org/occi#//Configuration"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="docker_Machine_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://occiware.org/docker#//Machine"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="docker_Machine_VirtualBox_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://occiware.org/docker#//Machine_VirtualBox"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="docker_Container_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://occiware.org/docker#//Container"/>
+      </eAnnotations>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ecore:EPackage name="collections">
+    <eClassifiers xsi:type="ocl.ecore:SequenceType" name="Sequence(Container)" instanceClassName="java.util.List">
+      <elementType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Container"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:OrderedSetType" name="OrderedSet(Resource)" instanceClassName="java.util.LinkedHashSet">
+      <elementType xsi:type="ecore:EClass" href="http://schemas.ogf.org/occi#//Resource"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:OrderedSetType" name="OrderedSet(Machine)" instanceClassName="java.util.LinkedHashSet">
+      <elementType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Machine"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:SequenceType" name="Sequence(String)" instanceClassName="java.util.List">
+      <elementType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:OrderedSetType" name="OrderedSet(Link)" instanceClassName="java.util.LinkedHashSet">
+      <elementType xsi:type="ecore:EClass" href="http://schemas.ogf.org/occi#//Link"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:OrderedSetType" name="OrderedSet(Link)" instanceClassName="java.util.LinkedHashSet">
+      <elementType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Link"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:SequenceType" name="Sequence(Machine)" instanceClassName="java.util.List">
+      <elementType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Machine"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:SequenceType" name="Sequence(OclAny)" instanceClassName="java.util.List">
+      <elementType xsi:type="ocl.ecore:AnyType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:SequenceType" name="Sequence(Real)" instanceClassName="java.util.List">
+      <elementType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Real"/>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://schemas.ogf.org/occi#//Configuration"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://schemas.ogf.org/occi#//Configuration"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://schemas.ogf.org/occi#//Configuration"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://schemas.ogf.org/occi#//Configuration"/>
+  </ocl.ecore:Variable>
+  <ecore:EPackage name="types">
+    <eClassifiers xsi:type="ocl.ecore:TypeType" name="Machine">
+      <referredType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Machine"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:TypeType" name="Link">
+      <referredType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Link"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:TypeType" name="Container">
+      <referredType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Container"/>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://schemas.ogf.org/occi#//Configuration"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Machine"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Machine"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://schemas.ogf.org/occi#//Configuration"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Machine"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Machine"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Machine"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Machine"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Machine"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Machine"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Machine"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Machine"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Machine"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Machine_VirtualBox"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Machine_VirtualBox"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Machine_VirtualBox"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Machine_VirtualBox"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Machine_VirtualBox"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Machine_VirtualBox"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Container"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Container"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Container"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Container"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Container"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Container"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Container"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Container"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Container"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Container"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Container"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Container"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Container"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Container"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Container"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Container"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Container"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Link"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Link"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Link"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Link"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Link"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Link"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Container"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Machine"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker#//Machine"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Real"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Real"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ecore:EAnnotation source="positions">
+    <eAnnotations source="positions.0" references="/0/generateSH">
+      <details key="start" value="155"/>
+      <details key="end" value="395"/>
+      <details key="line" value="4"/>
+    </eAnnotations>
+    <eAnnotations source="positions.1" references="/0/generateSH/%">
+      <details key="start" value="216"/>
+      <details key="end" value="382"/>
+      <details key="line" value="5"/>
+    </eAnnotations>
+    <eAnnotations source="positions.2" references="/0/generateSH/%/%">
+      <details key="start" value="259"/>
+      <details key="end" value="272"/>
+      <details key="line" value="6"/>
+    </eAnnotations>
+    <eAnnotations source="positions.3" references="/0/generateSH/%/%.1">
+      <details key="start" value="272"/>
+      <details key="end" value="373"/>
+      <details key="line" value="8"/>
+    </eAnnotations>
+    <eAnnotations source="positions.4" references="/0/generateSH/%/%.1/%">
+      <details key="start" value="343"/>
+      <details key="end" value="363"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.5" references="/0/generateSH/%/%.1/%/machine">
+      <details key="start" value="343"/>
+      <details key="end" value="350"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.6" references="/0/generateSH/%/%.1/%.1">
+      <details key="start" value="365"/>
+      <details key="end" value="367"/>
+      <details key="line" value="10"/>
+    </eAnnotations>
+    <eAnnotations source="positions.7" references="/0/generateSH/%/%.1/machine">
+      <details key="start" value="278"/>
+      <details key="end" value="295"/>
+      <details key="line" value="8"/>
+    </eAnnotations>
+    <eAnnotations source="positions.8" references="/0/generateSH/%/%.1/%.2">
+      <details key="start" value="298"/>
+      <details key="end" value="338"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.9" references="/0/generateSH/%/%.1/%.2/%">
+      <details key="start" value="298"/>
+      <details key="end" value="321"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.10" references="/0/generateSH/%/%.1/%.2/%/configuration">
+      <details key="start" value="298"/>
+      <details key="end" value="311"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.11" references="/0/generateSH/%/%.1/%.2/%.1">
+      <details key="start" value="330"/>
+      <details key="end" value="337"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.12" references="/0/generateSH/%/%.2">
+      <details key="start" value="223"/>
+      <details key="end" value="239"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.13" references="/0/generateSH/%/%.3">
+      <details key="start" value="248"/>
+      <details key="end" value="255"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.14" references="/0/generateSH/configuration">
+      <details key="start" value="183"/>
+      <details key="end" value="212"/>
+      <details key="line" value="4"/>
+    </eAnnotations>
+    <eAnnotations source="positions.15" references="/0/genMachine">
+      <details key="start" value="399"/>
+      <details key="end" value="621"/>
+      <details key="line" value="14"/>
+    </eAnnotations>
+    <eAnnotations source="positions.16" references="/0/genMachine/%">
+      <details key="start" value="450"/>
+      <details key="end" value="470"/>
+      <details key="line" value="15"/>
+    </eAnnotations>
+    <eAnnotations source="positions.17" references="/0/genMachine/%.1">
+      <details key="start" value="471"/>
+      <details key="end" value="484"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.18" references="/0/genMachine/%.1/%">
+      <details key="start" value="471"/>
+      <details key="end" value="479"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.19" references="/0/genMachine/%.1/%/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.20" references="/0/genMachine/%.2">
+      <details key="start" value="486"/>
+      <details key="end" value="493"/>
+      <details key="line" value="15"/>
+    </eAnnotations>
+    <eAnnotations source="positions.21" references="/0/genMachine/%.3">
+      <details key="start" value="494"/>
+      <details key="end" value="498"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.22" references="/0/genMachine/%.3/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.23" references="/0/genMachine/%.4">
+      <details key="start" value="500"/>
+      <details key="end" value="524"/>
+      <details key="line" value="16"/>
+    </eAnnotations>
+    <eAnnotations source="positions.24" references="/0/genMachine/%.5">
+      <details key="start" value="525"/>
+      <details key="end" value="542"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.25" references="/0/genMachine/%.5/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.26" references="/0/genMachine/%.6">
+      <details key="start" value="544"/>
+      <details key="end" value="545"/>
+      <details key="line" value="16"/>
+    </eAnnotations>
+    <eAnnotations source="positions.27" references="/0/genMachine/%.7">
+      <details key="start" value="546"/>
+      <details key="end" value="550"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.28" references="/0/genMachine/%.7/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.29" references="/0/genMachine/%.8">
+      <details key="start" value="552"/>
+      <details key="end" value="556"/>
+      <details key="line" value="17"/>
+    </eAnnotations>
+    <eAnnotations source="positions.30" references="/0/genMachine/collect">
+      <details key="start" value="557"/>
+      <details key="end" value="606"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.31" references="/0/genMachine/collect/%">
+      <details key="start" value="557"/>
+      <details key="end" value="579"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.32" references="/0/genMachine/collect/%/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.33" references="/0/genMachine/collect/%.1">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.34" references="/0/genMachine/collect/%.1/temp1">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.35" references="/0/genMachine/collect/%.1/%">
+      <details key="start" value="593"/>
+      <details key="end" value="605"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.36" references="/0/genMachine/collect/%.1/%/machine">
+      <details key="start" value="593"/>
+      <details key="end" value="600"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.37" references="/0/genMachine/collect/temp1">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.38" references="/0/genMachine/machine">
+      <details key="start" value="428"/>
+      <details key="end" value="445"/>
+      <details key="line" value="14"/>
+    </eAnnotations>
+    <eAnnotations source="positions.39" references="/0/genDriverConfig">
+      <details key="start" value="625"/>
+      <details key="end" value="705"/>
+      <details key="line" value="21"/>
+    </eAnnotations>
+    <eAnnotations source="positions.40" references="/0/genDriverConfig/machine">
+      <details key="start" value="659"/>
+      <details key="end" value="676"/>
+      <details key="line" value="21"/>
+    </eAnnotations>
+    <eAnnotations source="positions.41" references="/0/genDriverConfig/%">
+      <details key="start" value="684"/>
+      <details key="end" value="690"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.42" references="/0/genDriverConfig/%/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.43" references="/0/genDriverConfig.1">
+      <details key="start" value="709"/>
+      <details key="end" value="963"/>
+      <details key="line" value="24"/>
+    </eAnnotations>
+    <eAnnotations source="positions.44" references="/0/genDriverConfig.1/%">
+      <details key="start" value="789"/>
+      <details key="end" value="809"/>
+      <details key="line" value="25"/>
+    </eAnnotations>
+    <eAnnotations source="positions.45" references="/0/genDriverConfig.1/%.1">
+      <details key="start" value="809"/>
+      <details key="end" value="887"/>
+      <details key="line" value="25"/>
+    </eAnnotations>
+    <eAnnotations source="positions.46" references="/0/genDriverConfig.1/%.1/%">
+      <details key="start" value="841"/>
+      <details key="end" value="862"/>
+      <details key="line" value="25"/>
+    </eAnnotations>
+    <eAnnotations source="positions.47" references="/0/genDriverConfig.1/%.1/%.1">
+      <details key="start" value="863"/>
+      <details key="end" value="880"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.48" references="/0/genDriverConfig.1/%.1/%.1/%">
+      <details key="start" value="873"/>
+      <details key="end" value="879"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.49" references="/0/genDriverConfig.1/%.1/%.1/%/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.50" references="/0/genDriverConfig.1/%.1/%.2">
+      <details key="start" value="813"/>
+      <details key="end" value="840"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.51" references="/0/genDriverConfig.1/%.1/%.2/%">
+      <details key="start" value="817"/>
+      <details key="end" value="840"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.52" references="/0/genDriverConfig.1/%.1/%.2/%/%">
+      <details key="start" value="817"/>
+      <details key="end" value="823"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.53" references="/0/genDriverConfig.1/%.1/%.2/%/%/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.54" references="/0/genDriverConfig.1/%.2">
+      <details key="start" value="887"/>
+      <details key="end" value="950"/>
+      <details key="line" value="25"/>
+    </eAnnotations>
+    <eAnnotations source="positions.55" references="/0/genDriverConfig.1/%.2/%">
+      <details key="start" value="909"/>
+      <details key="end" value="933"/>
+      <details key="line" value="25"/>
+    </eAnnotations>
+    <eAnnotations source="positions.56" references="/0/genDriverConfig.1/%.2/%.1">
+      <details key="start" value="934"/>
+      <details key="end" value="943"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.57" references="/0/genDriverConfig.1/%.2/%.1/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.58" references="/0/genDriverConfig.1/%.2/%.2">
+      <details key="start" value="891"/>
+      <details key="end" value="908"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.59" references="/0/genDriverConfig.1/%.2/%.2/%">
+      <details key="start" value="891"/>
+      <details key="end" value="900"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.60" references="/0/genDriverConfig.1/%.2/%.2/%/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.61" references="/0/genDriverConfig.1/%.2/%.2/%.1">
+      <details key="start" value="904"/>
+      <details key="end" value="908"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.62" references="/0/genDriverConfig.1/machine">
+      <details key="start" value="743"/>
+      <details key="end" value="771"/>
+      <details key="line" value="24"/>
+    </eAnnotations>
+    <eAnnotations source="positions.63" references="/0/genDriverConfig.1/%.3">
+      <details key="start" value="779"/>
+      <details key="end" value="785"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.64" references="/0/genDriverConfig.1/%.3/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.65" references="/0/genContainer">
+      <details key="start" value="967"/>
+      <details key="end" value="1435"/>
+      <details key="line" value="28"/>
+    </eAnnotations>
+    <eAnnotations source="positions.66" references="/0/genContainer/%">
+      <details key="start" value="1046"/>
+      <details key="end" value="1082"/>
+      <details key="line" value="29"/>
+    </eAnnotations>
+    <eAnnotations source="positions.67" references="/0/genContainer/%.1">
+      <details key="start" value="1083"/>
+      <details key="end" value="1087"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.68" references="/0/genContainer/%.1/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.69" references="/0/genContainer/%.2">
+      <details key="start" value="1089"/>
+      <details key="end" value="1122"/>
+      <details key="line" value="30"/>
+    </eAnnotations>
+    <eAnnotations source="positions.70" references="/0/genContainer/machineName">
+      <details key="start" value="1123"/>
+      <details key="end" value="1134"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.71" references="/0/genContainer/%.3">
+      <details key="start" value="1136"/>
+      <details key="end" value="1152"/>
+      <details key="line" value="30"/>
+    </eAnnotations>
+    <eAnnotations source="positions.72" references="/0/genContainer/%.4">
+      <details key="start" value="1153"/>
+      <details key="end" value="1157"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.73" references="/0/genContainer/%.4/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.74" references="/0/genContainer/%.5">
+      <details key="start" value="1159"/>
+      <details key="end" value="1183"/>
+      <details key="line" value="30"/>
+    </eAnnotations>
+    <eAnnotations source="positions.75" references="/0/genContainer/%.5/%">
+      <details key="start" value="1175"/>
+      <details key="end" value="1178"/>
+      <details key="line" value="30"/>
+    </eAnnotations>
+    <eAnnotations source="positions.76" references="/0/genContainer/%.5/%.1">
+      <details key="start" value="1163"/>
+      <details key="end" value="1174"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.77" references="/0/genContainer/%.5/%.1/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.78" references="/0/genContainer/%.6">
+      <details key="start" value="1183"/>
+      <details key="end" value="1184"/>
+      <details key="line" value="30"/>
+    </eAnnotations>
+    <eAnnotations source="positions.79" references="/0/genContainer/%.7">
+      <details key="start" value="1185"/>
+      <details key="end" value="1200"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.80" references="/0/genContainer/%.7/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.81" references="/0/genContainer/%.8">
+      <details key="start" value="1202"/>
+      <details key="end" value="1203"/>
+      <details key="line" value="30"/>
+    </eAnnotations>
+    <eAnnotations source="positions.82" references="/0/genContainer/%.9">
+      <details key="start" value="1203"/>
+      <details key="end" value="1254"/>
+      <details key="line" value="30"/>
+    </eAnnotations>
+    <eAnnotations source="positions.83" references="/0/genContainer/%.9/%">
+      <details key="start" value="1235"/>
+      <details key="end" value="1247"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.84" references="/0/genContainer/%.9/%/%">
+      <details key="start" value="1235"/>
+      <details key="end" value="1240"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.85" references="/0/genContainer/%.9/%/%/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.86" references="/0/genContainer/%.9/%.1">
+      <details key="start" value="1207"/>
+      <details key="end" value="1233"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.87" references="/0/genContainer/%.9/%.1/%">
+      <details key="start" value="1211"/>
+      <details key="end" value="1233"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.88" references="/0/genContainer/%.9/%.1/%/%">
+      <details key="start" value="1211"/>
+      <details key="end" value="1216"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.89" references="/0/genContainer/%.9/%.1/%/%/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.90" references="/0/genContainer/%.10">
+      <details key="start" value="1254"/>
+      <details key="end" value="1255"/>
+      <details key="line" value="30"/>
+    </eAnnotations>
+    <eAnnotations source="positions.91" references="/0/genContainer/%.11">
+      <details key="start" value="1255"/>
+      <details key="end" value="1310"/>
+      <details key="line" value="30"/>
+    </eAnnotations>
+    <eAnnotations source="positions.92" references="/0/genContainer/%.11/%">
+      <details key="start" value="1289"/>
+      <details key="end" value="1303"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.93" references="/0/genContainer/%.11/%/%">
+      <details key="start" value="1289"/>
+      <details key="end" value="1296"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.94" references="/0/genContainer/%.11/%/%/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.95" references="/0/genContainer/%.11/%.1">
+      <details key="start" value="1259"/>
+      <details key="end" value="1287"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.96" references="/0/genContainer/%.11/%.1/%">
+      <details key="start" value="1263"/>
+      <details key="end" value="1287"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.97" references="/0/genContainer/%.11/%.1/%/%">
+      <details key="start" value="1263"/>
+      <details key="end" value="1270"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.98" references="/0/genContainer/%.11/%.1/%/%/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.99" references="/0/genContainer/%.12">
+      <details key="start" value="1310"/>
+      <details key="end" value="1349"/>
+      <details key="line" value="31"/>
+    </eAnnotations>
+    <eAnnotations source="positions.100" references="/0/genContainer/%.13">
+      <details key="start" value="1350"/>
+      <details key="end" value="1354"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.101" references="/0/genContainer/%.13/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.102" references="/0/genContainer/%.14">
+      <details key="start" value="1356"/>
+      <details key="end" value="1389"/>
+      <details key="line" value="33"/>
+    </eAnnotations>
+    <eAnnotations source="positions.103" references="/0/genContainer/machineName.1">
+      <details key="start" value="1390"/>
+      <details key="end" value="1401"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.104" references="/0/genContainer/%.15">
+      <details key="start" value="1403"/>
+      <details key="end" value="1411"/>
+      <details key="line" value="33"/>
+    </eAnnotations>
+    <eAnnotations source="positions.105" references="/0/genContainer/%.16">
+      <details key="start" value="1412"/>
+      <details key="end" value="1416"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.106" references="/0/genContainer/%.16/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.107" references="/0/genContainer/%.17">
+      <details key="start" value="1418"/>
+      <details key="end" value="1422"/>
+      <details key="line" value="34"/>
+    </eAnnotations>
+    <eAnnotations source="positions.108" references="/0/genContainer/container">
+      <details key="start" value="998"/>
+      <details key="end" value="1019"/>
+      <details key="line" value="28"/>
+    </eAnnotations>
+    <eAnnotations source="positions.109" references="/0/genContainer/machineName.2">
+      <details key="start" value="1021"/>
+      <details key="end" value="1041"/>
+      <details key="line" value="28"/>
+    </eAnnotations>
+    <eAnnotations source="positions.110" references="/0/genLinkConfig">
+      <details key="start" value="1439"/>
+      <details key="end" value="1722"/>
+      <details key="line" value="38"/>
+    </eAnnotations>
+    <eAnnotations source="positions.111" references="/0/genLinkConfig/%">
+      <details key="start" value="1510"/>
+      <details key="end" value="1709"/>
+      <details key="line" value="39"/>
+    </eAnnotations>
+    <eAnnotations source="positions.112" references="/0/genLinkConfig/%/%">
+      <details key="start" value="1561"/>
+      <details key="end" value="1701"/>
+      <details key="line" value="40"/>
+    </eAnnotations>
+    <eAnnotations source="positions.113" references="/0/genLinkConfig/%/%/%">
+      <details key="start" value="1622"/>
+      <details key="end" value="1631"/>
+      <details key="line" value="41"/>
+    </eAnnotations>
+    <eAnnotations source="positions.114" references="/0/genLinkConfig/%/%/name">
+      <details key="start" value="1632"/>
+      <details key="end" value="1636"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.115" references="/0/genLinkConfig/%/%/%.1">
+      <details key="start" value="1638"/>
+      <details key="end" value="1639"/>
+      <details key="line" value="41"/>
+    </eAnnotations>
+    <eAnnotations source="positions.116" references="/0/genLinkConfig/%/%/%.2">
+      <details key="start" value="1639"/>
+      <details key="end" value="1693"/>
+      <details key="line" value="41"/>
+    </eAnnotations>
+    <eAnnotations source="positions.117" references="/0/genLinkConfig/%/%/%.2/%">
+      <details key="start" value="1663"/>
+      <details key="end" value="1673"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.118" references="/0/genLinkConfig/%/%/%.2/%/link">
+      <details key="start" value="1663"/>
+      <details key="end" value="1667"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.119" references="/0/genLinkConfig/%/%/%.2/%.1">
+      <details key="start" value="1643"/>
+      <details key="end" value="1661"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.120" references="/0/genLinkConfig/%/%/%.2/%.1/%">
+      <details key="start" value="1643"/>
+      <details key="end" value="1653"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.121" references="/0/genLinkConfig/%/%/%.2/%.1/%/link">
+      <details key="start" value="1643"/>
+      <details key="end" value="1647"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.122" references="/0/genLinkConfig/%/%/%.2/%.1/%.1">
+      <details key="start" value="1657"/>
+      <details key="end" value="1661"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.123" references="/0/genLinkConfig/%/%/%.2/%.2">
+      <details key="start" value="1675"/>
+      <details key="end" value="1688"/>
+      <details key="line" value="41"/>
+    </eAnnotations>
+    <eAnnotations source="positions.124" references="/0/genLinkConfig/%/%/%.2/%.2/name">
+      <details key="start" value="1682"/>
+      <details key="end" value="1686"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.125" references="/0/genLinkConfig/%/%/%.3">
+      <details key="start" value="1693"/>
+      <details key="end" value="1695"/>
+      <details key="line" value="42"/>
+    </eAnnotations>
+    <eAnnotations source="positions.126" references="/0/genLinkConfig/%/%/name.1">
+      <details key="start" value="1566"/>
+      <details key="end" value="1619"/>
+      <details key="line" value="40"/>
+    </eAnnotations>
+    <eAnnotations source="positions.127" references="/0/genLinkConfig/%/%/name.1/%">
+      <details key="start" value="1583"/>
+      <details key="end" value="1620"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.128" references="/0/genLinkConfig/%/%/name.1/%/%">
+      <details key="start" value="1583"/>
+      <details key="end" value="1615"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.129" references="/0/genLinkConfig/%/%/name.1/%/%/%">
+      <details key="start" value="1583"/>
+      <details key="end" value="1594"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.130" references="/0/genLinkConfig/%/%/name.1/%/%/%/link">
+      <details key="start" value="1583"/>
+      <details key="end" value="1587"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.131" references="/0/genLinkConfig/%/%/name.1/%/%/%.1">
+      <details key="start" value="1605"/>
+      <details key="end" value="1614"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.132" references="/0/genLinkConfig/%/link">
+      <details key="start" value="1516"/>
+      <details key="end" value="1527"/>
+      <details key="line" value="39"/>
+    </eAnnotations>
+    <eAnnotations source="positions.133" references="/0/genLinkConfig/%/%.1">
+      <details key="start" value="1530"/>
+      <details key="end" value="1557"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.134" references="/0/genLinkConfig/%/%.1/%">
+      <details key="start" value="1530"/>
+      <details key="end" value="1535"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.135" references="/0/genLinkConfig/%/%.1/%/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.136" references="/0/genLinkConfig/%/%.1/%.1">
+      <details key="start" value="1544"/>
+      <details key="end" value="1556"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.137" references="/0/genLinkConfig/container">
+      <details key="start" value="1471"/>
+      <details key="end" value="1492"/>
+      <details key="line" value="38"/>
+    </eAnnotations>
+    <eAnnotations source="positions.138" references="/0/genLinkConfig/%.1">
+      <details key="start" value="1500"/>
+      <details key="end" value="1506"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.139" references="/0/genLinkConfig/%.1/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.140" references="/0/getOrderedContainers">
+      <details key="start" value="1726"/>
+      <details key="end" value="1983"/>
+      <details key="line" value="46"/>
+    </eAnnotations>
+    <eAnnotations source="positions.141" references="/0/getOrderedContainers/machine">
+      <details key="start" value="1761"/>
+      <details key="end" value="1778"/>
+      <details key="line" value="46"/>
+    </eAnnotations>
+    <eAnnotations source="positions.142" references="/0/getOrderedContainers/%">
+      <details key="start" value="1806"/>
+      <details key="end" value="1981"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.143" references="/0/getOrderedContainers/%/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.144" references="/0/getOrderedContainers/%/%">
+      <details key="start" value="1816"/>
+      <details key="end" value="1883"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.145" references="/0/getOrderedContainers/%/%.1">
+      <details key="start" value="1888"/>
+      <details key="end" value="1958"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.146" references="/0/getOrderedContainers/%/%.2">
+      <details key="start" value="1963"/>
+      <details key="end" value="1980"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.147" references="/0/getOrderedContainers/%/%.2/%/machine">
+      <details key="start" value="1972"/>
+      <details key="end" value="1979"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.148" references="/0/toInteger">
+      <details key="start" value="1987"/>
+      <details key="end" value="2169"/>
+      <details key="line" value="52"/>
+    </eAnnotations>
+    <eAnnotations source="positions.149" references="/0/toInteger/real">
+      <details key="start" value="2011"/>
+      <details key="end" value="2021"/>
+      <details key="line" value="52"/>
+    </eAnnotations>
+    <eAnnotations source="positions.150" references="/0/toInteger/%">
+      <details key="start" value="2037"/>
+      <details key="end" value="2167"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.151" references="/0/toInteger/%/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.152" references="/0/toInteger/%/%">
+      <details key="start" value="2047"/>
+      <details key="end" value="2114"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.153" references="/0/toInteger/%/%.1">
+      <details key="start" value="2119"/>
+      <details key="end" value="2147"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.154" references="/0/toInteger/%/%.2">
+      <details key="start" value="2152"/>
+      <details key="end" value="2166"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.155" references="/0/toInteger/%/%.2/%/real">
+      <details key="start" value="2161"/>
+      <details key="end" value="2165"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+  </ecore:EAnnotation>
+</xmi:XMI>
