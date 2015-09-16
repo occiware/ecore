@@ -178,7 +178,7 @@ public abstract class CategoryImpl extends MinimalEObjectImpl.Container implemen
 	 */
 	public String getScheme() {
 		if (scheme == null && eContainer() != null && eContainer() instanceof Extension) {
-			scheme = ((Category) eContainer()).getScheme();
+			scheme = ((Extension) eContainer()).getScheme();
 		}
 		return scheme;
 	}

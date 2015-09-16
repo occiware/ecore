@@ -181,9 +181,8 @@ public class AttributeItemProvider extends ItemProviderAdapter implements IEditi
 
 					@Override
 					public Collection<?> getChoiceOfValues(Object object) {
-						Collection<?> choiceOfValues = super.getChoiceOfValues(object);
 						List<EDataType> list = new ArrayList<EDataType>();
-						for (Object choice : choiceOfValues) {
+						for (Object choice : super.getChoiceOfValues(object)) {
 							if (choice instanceof EDataType && ((EDataType) choice).eContainer() != null
 									&& ((((EDataType) choice).eContainer() instanceof Extension)
 											|| (((EPackage) ((EDataType) choice).eContainer()).getNsURI()

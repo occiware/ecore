@@ -354,7 +354,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="ResourceContainer" semanticCandidatesExpression="feature:resources" domainClass="occi.Resource" childrenPresentation="List">
+        <containerMappings name="ResourceContainer" labelDirectEdit="//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='EditID']" semanticCandidatesExpression="feature:resources" domainClass="occi.Resource" childrenPresentation="List">
           <subNodeMappings name="Kind" semanticCandidatesExpression="feature:kind" domainClass="occi.Kind">
             <style xsi:type="style:SquareDescription" labelSize="10" showIcon="false" labelExpression="[scheme+term/]" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -384,7 +384,7 @@
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </containerMappings>
-        <containerMappings name="LinkContainer" semanticCandidatesExpression="[resources.links/]" domainClass="occi.Link" childrenPresentation="List">
+        <containerMappings name="LinkContainer" labelDirectEdit="//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='EditID']" semanticCandidatesExpression="[resources.links/]" domainClass="occi.Link" childrenPresentation="List">
           <subNodeMappings name="Kind" semanticCandidatesExpression="feature:kind" domainClass="occi.Kind">
             <style xsi:type="style:SquareDescription" labelSize="10" showIcon="false" labelExpression="[scheme+term/]" labelAlignment="LEFT" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>

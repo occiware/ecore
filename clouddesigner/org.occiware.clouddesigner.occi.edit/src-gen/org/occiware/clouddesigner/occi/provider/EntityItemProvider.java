@@ -3,7 +3,9 @@
 package org.occiware.clouddesigner.occi.provider;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
@@ -19,10 +21,18 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.occiware.clouddesigner.occi.Configuration;
 import org.occiware.clouddesigner.occi.Entity;
+import org.occiware.clouddesigner.occi.Extension;
 import org.occiware.clouddesigner.occi.Kind;
+import org.occiware.clouddesigner.occi.Link;
 import org.occiware.clouddesigner.occi.OCCIFactory;
 import org.occiware.clouddesigner.occi.OCCIPackage;
+import org.occiware.clouddesigner.occi.Resource;
+
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 
 /**
  * This is the item provider adapter for a
@@ -33,6 +43,9 @@ import org.occiware.clouddesigner.occi.OCCIPackage;
  */
 public class EntityItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
 		IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+	private static final String CORE_EXT_LINK_KIND_ID = "http://schemas.ogf.org/occi/core#link";
+	private static final String CORE_EXT_RESOURCE_KIND_ID = "http://schemas.ogf.org/occi/core#resource";
+
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -107,7 +120,48 @@ public class EntityItemProvider extends ItemProviderAdapter implements IEditingD
 						}
 						return super.getLabelProvider(object);
 					}
+
+					@SuppressWarnings("unchecked")
+					@Override
+					public Collection<?> getChoiceOfValues(final Object object) {
+						Set<Kind> choices = new HashSet<Kind>();
+						if (object instanceof Resource) {
+							for (Extension ext : ((Configuration) ((Resource) object).eContainer()).getUse()) {
+								choices.addAll(getAllKinds(ext));
+							}
+						} else if (object instanceof Link) {
+							for (Extension ext : ((Configuration) ((Link) object).eContainer().eContainer()).getUse()) {
+								choices.addAll(getAllKinds(ext));
+							}
+						}
+						return Lists.newArrayList(Iterables.filter(choices, new Predicate() {
+							public boolean apply(Object input) {
+								if (object instanceof Resource) {
+									return isOfGivenKind((Kind) input, CORE_EXT_RESOURCE_KIND_ID);
+								} else if (object instanceof Link) {
+									return isOfGivenKind((Kind) input, CORE_EXT_LINK_KIND_ID);
+								}
+								return false;
+							}
+						}));
+					}
+
 				});
+
+	}
+
+	private static boolean isOfGivenKind(Kind kind, String id) {
+		return ((kind.getScheme() + kind.getTerm()).equals(id))
+				|| (kind.getParent() != null && isOfGivenKind(kind.getParent(), id));
+	}
+
+	private static Collection<? extends Kind> getAllKinds(Extension ext) {
+		Set<Kind> kinds = new HashSet<Kind>();
+		for (Extension imp : ext.getImport()) {
+			kinds.addAll(getAllKinds(imp));
+		}
+		kinds.addAll(ext.getKinds());
+		return kinds;
 	}
 
 	/**
