@@ -44,6 +44,15 @@ public class OCCIExtension2Ecore {
 		ePackage.setName(formattedName);
 		ePackage.setNsPrefix(formattedName);
 		ePackage.setNsURI(ConverterUtils.convertScheme2URI(extension.getScheme()));
+
+		// TODO fetch occi package
+		// but won't solve issue if user wants to use types from installed
+		// models
+		// EClass root = EcoreFactory.eINSTANCE.createEClass();
+		// ePackage.getEClassifiers().add(root);
+		// root.setName(ConverterUtils.toU1Case(extension.getName()+"Configuration"));
+		// root.getESuperTypes().add(OCCIPackage.eINSTANCE.getConfiguration());
+
 		for (EDataType type : extension.getTypes()) {
 			EDataType copiedType = EcoreUtil.copy(type);
 			copiedTypes.put(type, copiedType);
