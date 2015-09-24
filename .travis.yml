@@ -1,11 +1,5 @@
 env:
-  global:
-    secure: YS69YcdJEL9X7sZTjHDDUW0KV6dF3DTZTMgwNZq10pb52nz1Yyeoo7E3OYjhQob53Y59y2ict0NRAupTZnn2JVXZX24GlHqM6rlzC1yc3ABYz9aFVSJi5vpH+LMoQibGNMg184aEYNxFi5dt6/CjapeHHWq67H4LtXRoj2Hf+iM=
   language: java
 script:
 - cd clouddesigner/org.occiware.clouddesigner.parent
 - mvn clean verify
-after_script:
-- cd ../..
-- chmod +x promoteUpdateSite.sh
-- "./promoteUpdateSite.sh"
