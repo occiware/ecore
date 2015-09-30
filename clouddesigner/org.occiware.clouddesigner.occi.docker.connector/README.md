@@ -10,7 +10,7 @@ Prerequisites
 	To use the driver ```vmwarevsphere```, you should install ```govc``` CLI as described here: https://github.com/vmware/govmomi/tree/master/govc.
 	
 	Setting the docker-machine command (You should download the binary file docker-machine):
-	$ ln -s docker-machine /bin/docker-machine
+	$ ln -s /path/to-file/docker-machine /bin/docker-machine
 	
 
 Configuration
