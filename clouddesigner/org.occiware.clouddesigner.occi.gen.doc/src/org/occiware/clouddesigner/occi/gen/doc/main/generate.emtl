@@ -146,11 +146,11 @@
           <body xsi:type="mtl:TemplateInvocation" definition="/0/generateType">
             <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
             <argument xsi:type="ocl.ecore:VariableExp" name="temp1" referredVariable="/0/generateExtension/%/collect.2/temp4">
-              <eType xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EDataType"/>
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EDataType"/>
             </argument>
           </body>
           <iterator xsi:type="ocl.ecore:Variable" name="temp4">
-            <eType xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EDataType"/>
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EDataType"/>
           </iterator>
         </body>
         <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;&#xD;&#xA;"/>
@@ -425,7 +425,7 @@
         <body xsi:type="mtl:TemplateInvocation" definition="/0/generateAnchor.1">
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
           <argument xsi:type="ocl.ecore:PropertyCallExp">
-            <eType xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EDataType"/>
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EDataType"/>
             <source xsi:type="ocl.ecore:VariableExp" name="attribute" referredVariable="/0/generateAttribute/attribute">
               <eType xsi:type="ecore:EClass" href="http://schemas.ogf.org/occi#//Attribute"/>
             </source>
@@ -435,7 +435,7 @@
         <ifExpr xsi:type="ocl.ecore:OperationCallExp">
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
           <source xsi:type="ocl.ecore:PropertyCallExp">
-            <eType xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EDataType"/>
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EDataType"/>
             <source xsi:type="ocl.ecore:VariableExp" name="attribute" referredVariable="/0/generateAttribute/attribute">
               <eType xsi:type="ecore:EClass" href="http://schemas.ogf.org/occi#//Attribute"/>
             </source>
@@ -1056,7 +1056,7 @@
       <elementType xsi:type="ecore:EClass" href="http://schemas.ogf.org/occi#//Mixin"/>
     </eClassifiers>
     <eClassifiers xsi:type="ocl.ecore:OrderedSetType" name="OrderedSet(EDataType)" instanceClassName="java.util.LinkedHashSet">
-      <elementType xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EDataType"/>
+      <elementType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EDataType"/>
     </eClassifiers>
     <eClassifiers xsi:type="ocl.ecore:OrderedSetType" name="OrderedSet(Action)" instanceClassName="java.util.LinkedHashSet">
       <elementType xsi:type="ecore:EClass" href="http://schemas.ogf.org/occi#//Action"/>

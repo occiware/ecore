@@ -1,0 +1,11 @@
+<project default="emtl_copy">
+
+    <target name="emtl_copy">
+    	<copy todir="src">
+    	  <fileset dir="bin">
+    	    <include name="**/*.emtl"/>
+    	  </fileset>
+    	</copy>
+    </target>
+
+</project>
