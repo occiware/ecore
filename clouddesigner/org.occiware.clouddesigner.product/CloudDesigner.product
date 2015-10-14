@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="%productName" uid="org.occiware.clouddesigner.product" id="org.eclipse.platform.ide" application="org.eclipse.ui.ide.workbench" version="0.1.0.qualifier" useFeatures="true" includeLaunchers="true">
+<product name="Cloud Designer" uid="org.occiware.clouddesigner.product" id="org.eclipse.platform.ide" application="org.eclipse.ui.ide.workbench" version="0.1.0.qualifier" useFeatures="true" includeLaunchers="true">
 
    <aboutInfo>
       <image path="eclipse_lg.png"/>
@@ -33,7 +33,6 @@
       </win>
    </launcher>
 
-
    <vm>
       <windows include="false">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8</windows>
    </vm>
@@ -59,6 +58,10 @@
       <property name="org.eclipse.ui/org.eclipse.ui.edit.text.encoding" value="UTF-8" />
       <property name="osgi.instance.area.default" value="./workspace" />
    </configurations>
+
+   <repositories>
+      <repository location="http://www.obeo.fr/download/occiware/repository" enabled="true" />
+   </repositories>
 
    <preferencesInfo>
       <targetfile overwrite="false"/>
