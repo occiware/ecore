@@ -251,7 +251,7 @@
          point="org.eclipse.xtext.builder.participant">
       <participant
             class="org.occiware.clouddesigner.occi.xtext.ui.OCCIExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant"
-            fileExtensions="occi"
+            fileExtensions="occic,occie"
             >
       </participant>
    </extension>
@@ -400,19 +400,21 @@
   <extension point="org.eclipse.compare.contentViewers">
     <viewer id="org.occiware.clouddesigner.occi.xtext.occi.compare.contentViewers"
             class="org.occiware.clouddesigner.occi.xtext.ui.OCCIExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
-            extensions="occi">
+            extensions="occic">
     </viewer>
   </extension>
   <extension point="org.eclipse.compare.contentMergeViewers">
     <viewer id="org.occiware.clouddesigner.occi.xtext.occi.compare.contentMergeViewers"
             class="org.occiware.clouddesigner.occi.xtext.ui.OCCIExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
-            extensions="occi" label="OCCI Compare">
+            extensions="occic" label="OCCI Compare">
      </viewer>
   </extension>
   <extension point="org.eclipse.ui.editors.documentProviders">
-    <provider id="org.occiware.clouddesigner.occi.xtext.occi.editors.documentProviders"
-            class="org.occiware.clouddesigner.occi.xtext.ui.OCCIExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
-            extensions="occi">
+    <provider
+          class="org.occiware.clouddesigner.occi.xtext.ui.OCCIExecutableExtensionFactory:org.occiware.clouddesigner.occi.xtext.ui.OCCIDocumentProvider"
+          extensions="occic"
+          id="org.occiware.clouddesigner.occi.xtext.occi.editors.documentProviders"
+          inputTypes=" ">
     </provider>
   </extension>
   <extension point="org.eclipse.team.core.fileTypes">
@@ -421,5 +423,4 @@
             type="text">
     </fileTypes>
   </extension>
-
 </plugin>

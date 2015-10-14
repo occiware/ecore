@@ -3,7 +3,11 @@
  */
 package org.occiware.clouddesigner.occi.xtext.ui;
 
+import org.eclipse.ocl.xtext.oclinecore.ui.OCLinEcoreEditorCallback;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eclipse.xtext.ui.editor.IXtextEditorCallback;
+import org.eclipse.xtext.ui.editor.model.IResourceForEditorInputFactory;
+import org.eclipse.xtext.ui.editor.model.XtextDocumentProvider;
 
 /**
  * Use this class to register components to be used within the IDE.
@@ -11,5 +15,19 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 public class OCCIUiModule extends org.occiware.clouddesigner.occi.xtext.ui.AbstractOCCIUiModule {
 	public OCCIUiModule(AbstractUIPlugin plugin) {
 		super(plugin);
+	}
+
+	public Class<? extends XtextDocumentProvider> bindXtextDocumentProvider() {
+		return OCCIDocumentProvider.class;
+	}
+
+	@Override
+	public Class<? extends IResourceForEditorInputFactory> bindIResourceForEditorInputFactory() {
+		return OCCIResourceForEditorInputFactory.class;
+	}
+
+	@Override
+	public Class<? extends IXtextEditorCallback> bindIXtextEditorCallback() {
+		return OCLinEcoreEditorCallback.class;
 	}
 }
