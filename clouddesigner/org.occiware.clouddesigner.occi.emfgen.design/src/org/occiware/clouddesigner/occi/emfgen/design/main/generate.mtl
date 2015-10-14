@@ -25,7 +25,7 @@
 [for (resource : EClass | ePackage.getResources())]
           <ownedTools xsi:type="tool:ContainerCreationDescription" 
 			name="Create [resource.name/]"
-			containerMappings="//@ownedViewpoints[ '[' /]name='[ePackage.name.toUpperFirst()/]Configuration'[ ']' /]/@ownedRepresentations[ '[' /]name='Configuration%20Diagram'[ ']' /]/@defaultLayer/@containerMappings[ '[' /]name='[resource.name/]'[ ']' /]"> 
+			containerMappings="//@ownedViewpoints[ '[' /]name='[ePackage.name.toUpperFirst()/]Configuration'[ ']' /]/@ownedRepresentations[ '[' /]name='[ePackage.name.toUpperFirst()/]Configuration%20Diagram'[ ']' /]/@defaultLayer/@containerMappings[ '[' /]name='[resource.name/]'[ ']' /]"> 
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
