@@ -3,9 +3,7 @@
  */
 package org.occiware.clouddesigner.occi.xtext.ui;
 
-import org.eclipse.ocl.xtext.oclinecore.ui.OCLinEcoreEditorCallback;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
-import org.eclipse.xtext.ui.editor.IXtextEditorCallback;
 import org.eclipse.xtext.ui.editor.model.IResourceForEditorInputFactory;
 import org.eclipse.xtext.ui.editor.model.XtextDocumentProvider;
 
@@ -26,8 +24,4 @@ public class OCCIUiModule extends org.occiware.clouddesigner.occi.xtext.ui.Abstr
 		return OCCIResourceForEditorInputFactory.class;
 	}
 
-	@Override
-	public Class<? extends IXtextEditorCallback> bindIXtextEditorCallback() {
-		return OCLinEcoreEditorCallback.class;
-	}
 }
