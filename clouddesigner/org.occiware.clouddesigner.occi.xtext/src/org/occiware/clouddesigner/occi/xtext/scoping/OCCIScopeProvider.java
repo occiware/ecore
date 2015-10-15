@@ -4,7 +4,7 @@
 package org.occiware.clouddesigner.occi.xtext.scoping;
 
 import java.util.ArrayList;
-import java.util.function.Consumer;
+
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EReference;
@@ -20,25 +20,22 @@ import org.occiware.clouddesigner.occi.Extension;
 /**
  * This class contains custom scoping description.
  * 
- * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#scoping
+ * See
+ * https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#scoping
  * on how and when to use it.
  */
 @SuppressWarnings("all")
 public class OCCIScopeProvider extends AbstractDeclarativeScopeProvider {
-  public IScope scope_Extension_import(final Extension ext, final EReference ref) {
-    final ArrayList<IEObjectDescription> res = new ArrayList<IEObjectDescription>();
-    EList<Extension> _import = ext.getImport();
-    final Consumer<Extension> _function = new Consumer<Extension>() {
-      @Override
-      public void accept(final Extension e) {
-        URI _uRI = EcoreUtil.getURI(e);
-        String _string = _uRI.toString();
-        QualifiedName _create = QualifiedName.create(_string);
-        IEObjectDescription _create_1 = EObjectDescription.create(_create, e);
-        res.add(_create_1);
-      }
-    };
-    _import.forEach(_function);
-    return new SimpleScope(IScope.NULLSCOPE, res);
-  }
+	public IScope scope_Extension_import(final Extension ext, final EReference ref) {
+		final ArrayList<IEObjectDescription> res = new ArrayList<IEObjectDescription>();
+		EList<Extension> _import = ext.getImport();
+		for (Extension extension : _import) {
+			URI _uRI = EcoreUtil.getURI(extension);
+			String _string = _uRI.toString();
+			QualifiedName _create = QualifiedName.create(_string);
+			IEObjectDescription _create_1 = EObjectDescription.create(_create, extension);
+			res.add(_create_1);
+		}
+		return new SimpleScope(IScope.NULLSCOPE, res);
+	}
 }

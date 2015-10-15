@@ -6,8 +6,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.ecore.xmi.XMLResource;
-import org.eclipse.emf.ecore.xmi.impl.URIHandlerImpl;
 import org.eclipse.xtext.linking.lazy.LazyLinker;
 import org.eclipse.xtext.nodemodel.INode;
 import org.occiware.clouddesigner.occi.OCCIPackage;
