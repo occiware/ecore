@@ -1,7 +1,5 @@
 package org.occiware.clouddesigner.occi.design.services;
 
-import java.util.Iterator;
-
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClassifier;
@@ -20,13 +18,9 @@ import org.occiware.clouddesigner.occi.Category;
 import org.occiware.clouddesigner.occi.Extension;
 import org.occiware.clouddesigner.occi.Kind;
 import org.occiware.clouddesigner.occi.Mixin;
-import org.occiware.clouddesigner.occi.OCCIPackage;
-import org.occiware.clouddesigner.occi.OCCIRegistry;
 import org.occiware.clouddesigner.occi.design.dialog.LoadExtensionDialog;
 
 public class DesignServices {
-
-	private EDataType stringType;
 
 	// service:isEDataType
 	public Boolean isEDataType(EObject eObj) {
