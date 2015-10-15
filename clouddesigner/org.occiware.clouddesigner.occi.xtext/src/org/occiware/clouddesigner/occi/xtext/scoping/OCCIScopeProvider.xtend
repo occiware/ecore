@@ -3,13 +3,31 @@
  */
 package org.occiware.clouddesigner.occi.xtext.scoping
 
+import java.util.ArrayList
+import org.eclipse.emf.ecore.EReference
+import org.eclipse.emf.ecore.util.EcoreUtil
+import org.eclipse.xtext.naming.QualifiedName
+import org.eclipse.xtext.resource.EObjectDescription
+import org.eclipse.xtext.resource.IEObjectDescription
+import org.eclipse.xtext.scoping.IScope
+import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider
+import org.eclipse.xtext.scoping.impl.SimpleScope
+import org.occiware.clouddesigner.occi.Extension
+
 /**
  * This class contains custom scoping description.
  * 
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#scoping
  * on how and when to use it.
- *
+ * 
  */
-class OCCIScopeProvider extends org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider {
+class OCCIScopeProvider extends AbstractDeclarativeScopeProvider {
 
+	def public IScope scope_Extension_import(Extension ext, EReference ref) {
+		val res = new ArrayList<IEObjectDescription>();
+		ext.import.forEach [ e |
+			res.add(EObjectDescription.create(QualifiedName.create(EcoreUtil.getURI(e).toString), e))
+		]
+		return new SimpleScope(IScope.NULLSCOPE, res)
+	}
 }

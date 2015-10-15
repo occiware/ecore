@@ -11,13 +11,13 @@ import org.eclipse.xtext.resource.IDerivedStateComputer;
 import org.eclipse.xtext.resource.IResourceDescription;
 import org.eclipse.xtext.resource.XtextResource;
 import org.occiware.clouddesigner.occi.xtext.scoping.NameProvider;
+import org.occiware.clouddesigner.occi.xtext.scoping.OCCILinker;
 
 /**
  * Use this class to register components to be used at runtime / without the
  * Equinox extension registry.
  */
-public class OCCIRuntimeModule extends
-		org.occiware.clouddesigner.occi.xtext.AbstractOCCIRuntimeModule {
+public class OCCIRuntimeModule extends org.occiware.clouddesigner.occi.xtext.AbstractOCCIRuntimeModule {
 	@Override
 	public Class<? extends IQualifiedNameProvider> bindIQualifiedNameProvider() {
 		return NameProvider.class;
@@ -27,7 +27,7 @@ public class OCCIRuntimeModule extends
 	 * @return the class implementing IDerivedStateComputer.
 	 */
 	public Class<? extends IDerivedStateComputer> bindIDerivedStateComputer() {
-	    return OCCIDerivedStateComputer.class;
+		return OCCIDerivedStateComputer.class;
 	}
 
 	// Not needed for Xbase-projects but needed for not Xbase-projects.
@@ -45,10 +45,14 @@ public class OCCIRuntimeModule extends
 	 * @return the class implementing ITransientValueService.
 	 */
 	public Class<? extends ITransientValueService> bindITransientValueService() {
-	    return OCCITransientValueService.class;
+		return OCCITransientValueService.class;
 	}
 
-	 public Class<?> bindITransientValueService2() {
-	    return OCCITransientValueService2.class;
+	public Class<?> bindITransientValueService2() {
+		return OCCITransientValueService2.class;
+	}
+
+	public Class<? extends org.eclipse.xtext.linking.ILinker> bindILinker() {
+		return OCCILinker.class;
 	}
 }

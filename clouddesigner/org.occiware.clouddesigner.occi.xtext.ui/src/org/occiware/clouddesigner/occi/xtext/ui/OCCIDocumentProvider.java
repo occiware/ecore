@@ -14,6 +14,8 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.xmi.XMLResource;
+import org.eclipse.emf.ecore.xmi.impl.URIHandlerImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.xtext.resource.XtextResource;
@@ -65,6 +67,8 @@ public class OCCIDocumentProvider extends XtextDocumentProvider {
 					((org.eclipse.ui.part.FileEditorInput) element).getFile().getFullPath().toString(), true);
 			resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("*", new XMIResourceFactoryImpl());
 			Resource xmiResource = resourceSet.getResource(uri, true);
+			((XMLResource) xmiResource).getDefaultSaveOptions().put(XMLResource.OPTION_URI_HANDLER,
+					new URIHandlerImpl.PlatformSchemeAware());
 			xmiResource.getContents().clear();
 			xmiResource.getContents().addAll(xtextResource.getContents());
 			xmiResource.save(Collections.EMPTY_MAP);

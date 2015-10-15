@@ -1,6 +1,6 @@
-extension core : "http://schemas.ogf.org/occi/core#"
-kind ^resource extends
-entity {
+extension aaaa : "http://schemas.ogf.org/occi/aaa#" import "Core.occie#/"
+kind
+^resource extends entity {
 	title "Resource"
 }
 kind entity {

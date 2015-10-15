@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="ASCII"?>
-<OCCI:Extension
+<occi:Extension
     xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI"
-    xmlns:OCCI="http://schemas.ogf.org/occi"
-    name="core"
-    scheme="http://schemas.ogf.org/occi/core#">
+    xmlns:occi="http://schemas.ogf.org/occi"
+    name="aaaa"
+    scheme="http://schemas.ogf.org/occi/aaa#">
+  <import href="Core.occie#/"/>
   <kinds term="resource"
       scheme="http://schemas.ogf.org/occi/core#"
       title="Resource"
@@ -12,4 +13,4 @@
   <kinds term="entity"
       scheme="http://schemas.ogf.org/occi/core#"
       title="Entity type"/>
-</OCCI:Extension>
+</occi:Extension>

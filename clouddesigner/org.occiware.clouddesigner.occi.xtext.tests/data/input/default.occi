@@ -1,4 +1,6 @@
-extension core : 'http://schemas.ogf.org/occi/core#'
+extension rrr : 'rrr#'
+
+import 'Core.occie#/'
 
 datatype String : "java.lang.String"
 datatype Boolean : "boolean"

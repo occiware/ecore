@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="ASCII"?>
-<OCCI:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:OCCI="http://schemas.ogf.org/occi" name="core" scheme="http://schemas.ogf.org/occi/core#">
-  <kinds term="entity" scheme="http://schemas.ogf.org/occi/core#" title="Entity type"/>
-  <kinds term="resource" scheme="http://schemas.ogf.org/occi/core#" title="Resource type" parent="//@kinds[term='entity']">
+<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:occi="http://schemas.ogf.org/occi" name="rrr" scheme="rrr#">
+  <import href="Core.occie#/"/>
+  <kinds term="entity" scheme="rrr#" title="Entity type"/>
+  <kinds term="resource" scheme="rrr#" title="Resource type" parent="//@kinds[term='entity']">
     <attributes name="aa" type="//@types.2"/>
-    <actions term="foo" scheme="http://schemas.ogf.org/occi/core/resource/action#">
+    <actions term="foo" scheme="rrr/resource/action#">
       <attributes name="p1" type="//@types.2"/>
       <attributes name="p2" type="//@types.0"/>
       <attributes name="p3" type="//@types.1"/>
     </actions>
   </kinds>
-  <mixins term="essai" scheme="http://schemas.ogf.org/occi/core#" title="Essai type">
+  <mixins term="essai" scheme="rrr#" title="Essai type">
     <attributes name="bb" type="//@types.2"/>
-    <actions term="bar" scheme="http://schemas.ogf.org/occi/core/essai/action#">
+    <actions term="bar" scheme="rrr/essai/action#">
       <attributes name="p1" type="//@types.2"/>
       <attributes name="p2" type="//@types.0"/>
       <attributes name="p3" type="//@types.1"/>
@@ -25,4 +26,4 @@
       <details key="minInclusive" value="0"/>
     </eAnnotations>
   </types>
-</OCCI:Extension>
+</occi:Extension>
