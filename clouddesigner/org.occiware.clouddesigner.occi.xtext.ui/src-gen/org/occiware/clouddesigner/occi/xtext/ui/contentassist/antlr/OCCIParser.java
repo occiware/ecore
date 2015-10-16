@@ -129,7 +129,7 @@ public class OCCIParser extends AbstractContentAssistParser {
 					put(grammarAccess.getParameterDeclAccess().getMultiple_valuesAssignment_3(), "rule__ParameterDecl__Multiple_valuesAssignment_3");
 					put(grammarAccess.getDataTypeDeclAccess().getSerializableAssignment_2(), "rule__DataTypeDecl__SerializableAssignment_2");
 					put(grammarAccess.getDataTypeDeclAccess().getNameAssignment_3(), "rule__DataTypeDecl__NameAssignment_3");
-					put(grammarAccess.getDataTypeDeclAccess().getInstanceTypeNameAssignment_5(), "rule__DataTypeDecl__InstanceTypeNameAssignment_5");
+					put(grammarAccess.getDataTypeDeclAccess().getInstanceClassNameAssignment_5(), "rule__DataTypeDecl__InstanceClassNameAssignment_5");
 					put(grammarAccess.getDataTypeDeclAccess().getEAnnotationsAssignment_6_1(), "rule__DataTypeDecl__EAnnotationsAssignment_6_1");
 					put(grammarAccess.getDataTypeAnnotationsAccess().getDetailsAssignment(), "rule__DataTypeAnnotations__DetailsAssignment");
 					put(grammarAccess.getDataTypeAnnotationAccess().getKeyAssignment_0_0(), "rule__DataTypeAnnotation__KeyAssignment_0_0");

@@ -138,7 +138,7 @@ DataTypeDecl returns ecore::EDataType:
 	{ecore::EDataType}
 	'datatype'
 	( serializable?='serializable' )?
-	name=ID ':' instanceTypeName=STRING
+	name=ID ':' instanceClassName=STRING
 	( '{' eAnnotations+=DataTypeAnnotations '}' )?
 	;
 

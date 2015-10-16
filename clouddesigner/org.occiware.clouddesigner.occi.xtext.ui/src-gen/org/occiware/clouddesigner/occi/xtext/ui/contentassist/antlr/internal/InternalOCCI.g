@@ -3436,9 +3436,9 @@ rule__DataTypeDecl__Group__5__Impl
     }
 :
 (
-{ before(grammarAccess.getDataTypeDeclAccess().getInstanceTypeNameAssignment_5()); }
-(rule__DataTypeDecl__InstanceTypeNameAssignment_5)
-{ after(grammarAccess.getDataTypeDeclAccess().getInstanceTypeNameAssignment_5()); }
+{ before(grammarAccess.getDataTypeDeclAccess().getInstanceClassNameAssignment_5()); }
+(rule__DataTypeDecl__InstanceClassNameAssignment_5)
+{ after(grammarAccess.getDataTypeDeclAccess().getInstanceClassNameAssignment_5()); }
 )
 
 ;
@@ -7124,14 +7124,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__DataTypeDecl__InstanceTypeNameAssignment_5
+rule__DataTypeDecl__InstanceClassNameAssignment_5
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getDataTypeDeclAccess().getInstanceTypeNameSTRINGTerminalRuleCall_5_0()); }
-	RULE_STRING{ after(grammarAccess.getDataTypeDeclAccess().getInstanceTypeNameSTRINGTerminalRuleCall_5_0()); }
+{ before(grammarAccess.getDataTypeDeclAccess().getInstanceClassNameSTRINGTerminalRuleCall_5_0()); }
+	RULE_STRING{ after(grammarAccess.getDataTypeDeclAccess().getInstanceClassNameSTRINGTerminalRuleCall_5_0()); }
 )
 
 ;

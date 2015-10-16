@@ -24,60 +24,60 @@ public class InternalOCCIParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
         "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_INT", "RULE_ID", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'extension'", "':'", "'import'", "'as'", "'kind'", "'{'", "'}'", "'extends'", "'title'", "'mixin'", "'depends'", "','", "'applies'", "'scheme'", "'attribute'", "'*'", "'='", "'description'", "'action'", "'('", "')'", "'datatype'", "'minInclusive'", "'enum'", "'configuration'", "'use'", "'resource'", "'mixins'", "'state'", "'link'", "'target'", "'.'", "'-'", "'mutable'", "'required'", "'serializable'", "'minExclusive'", "'maxExclusive'", "'maxInclusive'", "'totalDigits'", "'fractionDigits'", "'length'", "'minLength'", "'maxLength'", "'whiteSpace'", "'pattern'"
     };
-    public static final int T__50=50;
-    public static final int T__19=19;
-    public static final int T__15=15;
-    public static final int T__16=16;
-    public static final int T__17=17;
-    public static final int T__18=18;
-    public static final int T__11=11;
-    public static final int T__55=55;
-    public static final int T__12=12;
-    public static final int T__56=56;
-    public static final int T__13=13;
-    public static final int T__14=14;
-    public static final int T__51=51;
-    public static final int T__52=52;
-    public static final int T__53=53;
-    public static final int T__54=54;
     public static final int RULE_ID=5;
-    public static final int T__26=26;
-    public static final int T__27=27;
-    public static final int T__28=28;
-    public static final int RULE_INT=4;
     public static final int T__29=29;
-    public static final int T__22=22;
-    public static final int RULE_ML_COMMENT=7;
-    public static final int T__23=23;
-    public static final int T__24=24;
+    public static final int T__28=28;
+    public static final int T__27=27;
+    public static final int T__26=26;
     public static final int T__25=25;
-    public static final int T__20=20;
+    public static final int T__24=24;
+    public static final int T__23=23;
+    public static final int T__22=22;
+    public static final int RULE_ANY_OTHER=10;
     public static final int T__21=21;
-    public static final int RULE_STRING=6;
+    public static final int T__20=20;
+    public static final int EOF=-1;
+    public static final int T__55=55;
+    public static final int T__56=56;
+    public static final int T__19=19;
+    public static final int T__51=51;
+    public static final int T__16=16;
+    public static final int T__52=52;
+    public static final int T__15=15;
+    public static final int T__53=53;
+    public static final int T__18=18;
+    public static final int T__54=54;
+    public static final int T__17=17;
+    public static final int T__12=12;
+    public static final int T__11=11;
+    public static final int T__14=14;
+    public static final int T__13=13;
+    public static final int RULE_INT=4;
+    public static final int T__50=50;
+    public static final int T__42=42;
+    public static final int T__43=43;
+    public static final int T__40=40;
+    public static final int T__41=41;
+    public static final int T__46=46;
+    public static final int T__47=47;
+    public static final int T__44=44;
+    public static final int T__45=45;
+    public static final int T__48=48;
+    public static final int T__49=49;
     public static final int RULE_SL_COMMENT=8;
-    public static final int T__37=37;
-    public static final int T__38=38;
-    public static final int T__39=39;
+    public static final int RULE_ML_COMMENT=7;
+    public static final int T__30=30;
+    public static final int T__31=31;
+    public static final int RULE_STRING=6;
+    public static final int T__32=32;
     public static final int T__33=33;
     public static final int T__34=34;
     public static final int T__35=35;
     public static final int T__36=36;
-    public static final int EOF=-1;
-    public static final int T__30=30;
-    public static final int T__31=31;
-    public static final int T__32=32;
+    public static final int T__37=37;
+    public static final int T__38=38;
+    public static final int T__39=39;
     public static final int RULE_WS=9;
-    public static final int RULE_ANY_OTHER=10;
-    public static final int T__48=48;
-    public static final int T__49=49;
-    public static final int T__44=44;
-    public static final int T__45=45;
-    public static final int T__46=46;
-    public static final int T__47=47;
-    public static final int T__40=40;
-    public static final int T__41=41;
-    public static final int T__42=42;
-    public static final int T__43=43;
 
     // delegates
     // delegators
@@ -9411,31 +9411,31 @@ public class InternalOCCIParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__DataTypeDecl__Group__5__Impl"
-    // ../org.occiware.clouddesigner.occi.xtext.ui/src-gen/org/occiware/clouddesigner/occi/xtext/ui/contentassist/antlr/internal/InternalOCCI.g:3433:1: rule__DataTypeDecl__Group__5__Impl : ( ( rule__DataTypeDecl__InstanceTypeNameAssignment_5 ) ) ;
+    // ../org.occiware.clouddesigner.occi.xtext.ui/src-gen/org/occiware/clouddesigner/occi/xtext/ui/contentassist/antlr/internal/InternalOCCI.g:3433:1: rule__DataTypeDecl__Group__5__Impl : ( ( rule__DataTypeDecl__InstanceClassNameAssignment_5 ) ) ;
     public final void rule__DataTypeDecl__Group__5__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.occiware.clouddesigner.occi.xtext.ui/src-gen/org/occiware/clouddesigner/occi/xtext/ui/contentassist/antlr/internal/InternalOCCI.g:3437:1: ( ( ( rule__DataTypeDecl__InstanceTypeNameAssignment_5 ) ) )
-            // ../org.occiware.clouddesigner.occi.xtext.ui/src-gen/org/occiware/clouddesigner/occi/xtext/ui/contentassist/antlr/internal/InternalOCCI.g:3438:1: ( ( rule__DataTypeDecl__InstanceTypeNameAssignment_5 ) )
+            // ../org.occiware.clouddesigner.occi.xtext.ui/src-gen/org/occiware/clouddesigner/occi/xtext/ui/contentassist/antlr/internal/InternalOCCI.g:3437:1: ( ( ( rule__DataTypeDecl__InstanceClassNameAssignment_5 ) ) )
+            // ../org.occiware.clouddesigner.occi.xtext.ui/src-gen/org/occiware/clouddesigner/occi/xtext/ui/contentassist/antlr/internal/InternalOCCI.g:3438:1: ( ( rule__DataTypeDecl__InstanceClassNameAssignment_5 ) )
             {
-            // ../org.occiware.clouddesigner.occi.xtext.ui/src-gen/org/occiware/clouddesigner/occi/xtext/ui/contentassist/antlr/internal/InternalOCCI.g:3438:1: ( ( rule__DataTypeDecl__InstanceTypeNameAssignment_5 ) )
-            // ../org.occiware.clouddesigner.occi.xtext.ui/src-gen/org/occiware/clouddesigner/occi/xtext/ui/contentassist/antlr/internal/InternalOCCI.g:3439:1: ( rule__DataTypeDecl__InstanceTypeNameAssignment_5 )
+            // ../org.occiware.clouddesigner.occi.xtext.ui/src-gen/org/occiware/clouddesigner/occi/xtext/ui/contentassist/antlr/internal/InternalOCCI.g:3438:1: ( ( rule__DataTypeDecl__InstanceClassNameAssignment_5 ) )
+            // ../org.occiware.clouddesigner.occi.xtext.ui/src-gen/org/occiware/clouddesigner/occi/xtext/ui/contentassist/antlr/internal/InternalOCCI.g:3439:1: ( rule__DataTypeDecl__InstanceClassNameAssignment_5 )
             {
-             before(grammarAccess.getDataTypeDeclAccess().getInstanceTypeNameAssignment_5()); 
-            // ../org.occiware.clouddesigner.occi.xtext.ui/src-gen/org/occiware/clouddesigner/occi/xtext/ui/contentassist/antlr/internal/InternalOCCI.g:3440:1: ( rule__DataTypeDecl__InstanceTypeNameAssignment_5 )
-            // ../org.occiware.clouddesigner.occi.xtext.ui/src-gen/org/occiware/clouddesigner/occi/xtext/ui/contentassist/antlr/internal/InternalOCCI.g:3440:2: rule__DataTypeDecl__InstanceTypeNameAssignment_5
+             before(grammarAccess.getDataTypeDeclAccess().getInstanceClassNameAssignment_5()); 
+            // ../org.occiware.clouddesigner.occi.xtext.ui/src-gen/org/occiware/clouddesigner/occi/xtext/ui/contentassist/antlr/internal/InternalOCCI.g:3440:1: ( rule__DataTypeDecl__InstanceClassNameAssignment_5 )
+            // ../org.occiware.clouddesigner.occi.xtext.ui/src-gen/org/occiware/clouddesigner/occi/xtext/ui/contentassist/antlr/internal/InternalOCCI.g:3440:2: rule__DataTypeDecl__InstanceClassNameAssignment_5
             {
-            pushFollow(FollowSets000.FOLLOW_rule__DataTypeDecl__InstanceTypeNameAssignment_5_in_rule__DataTypeDecl__Group__5__Impl6933);
-            rule__DataTypeDecl__InstanceTypeNameAssignment_5();
+            pushFollow(FollowSets000.FOLLOW_rule__DataTypeDecl__InstanceClassNameAssignment_5_in_rule__DataTypeDecl__Group__5__Impl6933);
+            rule__DataTypeDecl__InstanceClassNameAssignment_5();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getDataTypeDeclAccess().getInstanceTypeNameAssignment_5()); 
+             after(grammarAccess.getDataTypeDeclAccess().getInstanceClassNameAssignment_5()); 
 
             }
 
@@ -18819,9 +18819,9 @@ public class InternalOCCIParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__DataTypeDecl__NameAssignment_3"
 
 
-    // $ANTLR start "rule__DataTypeDecl__InstanceTypeNameAssignment_5"
-    // ../org.occiware.clouddesigner.occi.xtext.ui/src-gen/org/occiware/clouddesigner/occi/xtext/ui/contentassist/antlr/internal/InternalOCCI.g:7127:1: rule__DataTypeDecl__InstanceTypeNameAssignment_5 : ( RULE_STRING ) ;
-    public final void rule__DataTypeDecl__InstanceTypeNameAssignment_5() throws RecognitionException {
+    // $ANTLR start "rule__DataTypeDecl__InstanceClassNameAssignment_5"
+    // ../org.occiware.clouddesigner.occi.xtext.ui/src-gen/org/occiware/clouddesigner/occi/xtext/ui/contentassist/antlr/internal/InternalOCCI.g:7127:1: rule__DataTypeDecl__InstanceClassNameAssignment_5 : ( RULE_STRING ) ;
+    public final void rule__DataTypeDecl__InstanceClassNameAssignment_5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -18832,9 +18832,9 @@ public class InternalOCCIParser extends AbstractInternalContentAssistParser {
             // ../org.occiware.clouddesigner.occi.xtext.ui/src-gen/org/occiware/clouddesigner/occi/xtext/ui/contentassist/antlr/internal/InternalOCCI.g:7132:1: ( RULE_STRING )
             // ../org.occiware.clouddesigner.occi.xtext.ui/src-gen/org/occiware/clouddesigner/occi/xtext/ui/contentassist/antlr/internal/InternalOCCI.g:7133:1: RULE_STRING
             {
-             before(grammarAccess.getDataTypeDeclAccess().getInstanceTypeNameSTRINGTerminalRuleCall_5_0()); 
-            match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_rule__DataTypeDecl__InstanceTypeNameAssignment_514230); 
-             after(grammarAccess.getDataTypeDeclAccess().getInstanceTypeNameSTRINGTerminalRuleCall_5_0()); 
+             before(grammarAccess.getDataTypeDeclAccess().getInstanceClassNameSTRINGTerminalRuleCall_5_0()); 
+            match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_rule__DataTypeDecl__InstanceClassNameAssignment_514230); 
+             after(grammarAccess.getDataTypeDeclAccess().getInstanceClassNameSTRINGTerminalRuleCall_5_0()); 
 
             }
 
@@ -18853,7 +18853,7 @@ public class InternalOCCIParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__DataTypeDecl__InstanceTypeNameAssignment_5"
+    // $ANTLR end "rule__DataTypeDecl__InstanceClassNameAssignment_5"
 
 
     // $ANTLR start "rule__DataTypeDecl__EAnnotationsAssignment_6_1"
@@ -21048,7 +21048,7 @@ public class InternalOCCIParser extends AbstractInternalContentAssistParser {
         public static final BitSet FOLLOW_12_in_rule__DataTypeDecl__Group__4__Impl6872 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_rule__DataTypeDecl__Group__5__Impl_in_rule__DataTypeDecl__Group__56903 = new BitSet(new long[]{0x0000000000010000L});
         public static final BitSet FOLLOW_rule__DataTypeDecl__Group__6_in_rule__DataTypeDecl__Group__56906 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__DataTypeDecl__InstanceTypeNameAssignment_5_in_rule__DataTypeDecl__Group__5__Impl6933 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__DataTypeDecl__InstanceClassNameAssignment_5_in_rule__DataTypeDecl__Group__5__Impl6933 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_rule__DataTypeDecl__Group__6__Impl_in_rule__DataTypeDecl__Group__66963 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_rule__DataTypeDecl__Group_6__0_in_rule__DataTypeDecl__Group__6__Impl6990 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_rule__DataTypeDecl__Group_6__0__Impl_in_rule__DataTypeDecl__Group_6__07035 = new BitSet(new long[]{0x01FF800200000000L});
@@ -21344,7 +21344,7 @@ public class InternalOCCIParser extends AbstractInternalContentAssistParser {
         public static final BitSet FOLLOW_26_in_rule__ParameterDecl__Multiple_valuesAssignment_314116 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_46_in_rule__DataTypeDecl__SerializableAssignment_214160 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_RULE_ID_in_rule__DataTypeDecl__NameAssignment_314199 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_RULE_STRING_in_rule__DataTypeDecl__InstanceTypeNameAssignment_514230 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_RULE_STRING_in_rule__DataTypeDecl__InstanceClassNameAssignment_514230 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleDataTypeAnnotations_in_rule__DataTypeDecl__EAnnotationsAssignment_6_114261 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleDataTypeAnnotation_in_rule__DataTypeAnnotations__DetailsAssignment14292 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_47_in_rule__DataTypeAnnotation__KeyAssignment_0_014328 = new BitSet(new long[]{0x0000000000000002L});

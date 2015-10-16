@@ -23,60 +23,60 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
         "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'extension'", "':'", "'import'", "'as'", "'kind'", "'extends'", "'{'", "'title'", "'}'", "'mixin'", "'depends'", "','", "'applies'", "'scheme'", "'attribute'", "'mutable'", "'required'", "'*'", "'='", "'description'", "'action'", "'('", "')'", "'datatype'", "'serializable'", "'minExclusive'", "'minInclusive'", "'maxExclusive'", "'maxInclusive'", "'totalDigits'", "'fractionDigits'", "'length'", "'minLength'", "'maxLength'", "'whiteSpace'", "'pattern'", "'enum'", "'configuration'", "'use'", "'resource'", "'mixins'", "'state'", "'link'", "'target'", "'.'", "'-'"
     };
-    public static final int T__50=50;
-    public static final int T__19=19;
-    public static final int T__15=15;
-    public static final int T__16=16;
-    public static final int T__17=17;
-    public static final int T__18=18;
-    public static final int T__11=11;
-    public static final int T__55=55;
-    public static final int T__12=12;
-    public static final int T__56=56;
-    public static final int T__13=13;
-    public static final int T__14=14;
-    public static final int T__51=51;
-    public static final int T__52=52;
-    public static final int T__53=53;
-    public static final int T__54=54;
     public static final int RULE_ID=4;
-    public static final int T__26=26;
-    public static final int T__27=27;
-    public static final int T__28=28;
-    public static final int RULE_INT=6;
     public static final int T__29=29;
-    public static final int T__22=22;
-    public static final int RULE_ML_COMMENT=7;
-    public static final int T__23=23;
-    public static final int T__24=24;
+    public static final int T__28=28;
+    public static final int T__27=27;
+    public static final int T__26=26;
     public static final int T__25=25;
-    public static final int T__20=20;
+    public static final int T__24=24;
+    public static final int T__23=23;
+    public static final int T__22=22;
+    public static final int RULE_ANY_OTHER=10;
     public static final int T__21=21;
-    public static final int RULE_STRING=5;
+    public static final int T__20=20;
+    public static final int EOF=-1;
+    public static final int T__55=55;
+    public static final int T__56=56;
+    public static final int T__19=19;
+    public static final int T__51=51;
+    public static final int T__16=16;
+    public static final int T__52=52;
+    public static final int T__15=15;
+    public static final int T__53=53;
+    public static final int T__18=18;
+    public static final int T__54=54;
+    public static final int T__17=17;
+    public static final int T__12=12;
+    public static final int T__11=11;
+    public static final int T__14=14;
+    public static final int T__13=13;
+    public static final int RULE_INT=6;
+    public static final int T__50=50;
+    public static final int T__42=42;
+    public static final int T__43=43;
+    public static final int T__40=40;
+    public static final int T__41=41;
+    public static final int T__46=46;
+    public static final int T__47=47;
+    public static final int T__44=44;
+    public static final int T__45=45;
+    public static final int T__48=48;
+    public static final int T__49=49;
     public static final int RULE_SL_COMMENT=8;
-    public static final int T__37=37;
-    public static final int T__38=38;
-    public static final int T__39=39;
+    public static final int RULE_ML_COMMENT=7;
+    public static final int T__30=30;
+    public static final int T__31=31;
+    public static final int RULE_STRING=5;
+    public static final int T__32=32;
     public static final int T__33=33;
     public static final int T__34=34;
     public static final int T__35=35;
     public static final int T__36=36;
-    public static final int EOF=-1;
-    public static final int T__30=30;
-    public static final int T__31=31;
-    public static final int T__32=32;
+    public static final int T__37=37;
+    public static final int T__38=38;
+    public static final int T__39=39;
     public static final int RULE_WS=9;
-    public static final int RULE_ANY_OTHER=10;
-    public static final int T__48=48;
-    public static final int T__49=49;
-    public static final int T__44=44;
-    public static final int T__45=45;
-    public static final int T__46=46;
-    public static final int T__47=47;
-    public static final int T__40=40;
-    public static final int T__41=41;
-    public static final int T__42=42;
-    public static final int T__43=43;
 
     // delegates
     // delegators
@@ -2317,7 +2317,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleDataTypeDecl"
-    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:960:1: ruleDataTypeDecl returns [EObject current=null] : ( () otherlv_1= 'datatype' ( (lv_serializable_2_0= 'serializable' ) )? ( (lv_name_3_0= RULE_ID ) ) otherlv_4= ':' ( (lv_instanceTypeName_5_0= RULE_STRING ) ) (otherlv_6= '{' ( (lv_eAnnotations_7_0= ruleDataTypeAnnotations ) ) otherlv_8= '}' )? ) ;
+    // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:960:1: ruleDataTypeDecl returns [EObject current=null] : ( () otherlv_1= 'datatype' ( (lv_serializable_2_0= 'serializable' ) )? ( (lv_name_3_0= RULE_ID ) ) otherlv_4= ':' ( (lv_instanceClassName_5_0= RULE_STRING ) ) (otherlv_6= '{' ( (lv_eAnnotations_7_0= ruleDataTypeAnnotations ) ) otherlv_8= '}' )? ) ;
     public final EObject ruleDataTypeDecl() throws RecognitionException {
         EObject current = null;
 
@@ -2325,7 +2325,7 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
         Token lv_serializable_2_0=null;
         Token lv_name_3_0=null;
         Token otherlv_4=null;
-        Token lv_instanceTypeName_5_0=null;
+        Token lv_instanceClassName_5_0=null;
         Token otherlv_6=null;
         Token otherlv_8=null;
         EObject lv_eAnnotations_7_0 = null;
@@ -2334,11 +2334,11 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:963:28: ( ( () otherlv_1= 'datatype' ( (lv_serializable_2_0= 'serializable' ) )? ( (lv_name_3_0= RULE_ID ) ) otherlv_4= ':' ( (lv_instanceTypeName_5_0= RULE_STRING ) ) (otherlv_6= '{' ( (lv_eAnnotations_7_0= ruleDataTypeAnnotations ) ) otherlv_8= '}' )? ) )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:964:1: ( () otherlv_1= 'datatype' ( (lv_serializable_2_0= 'serializable' ) )? ( (lv_name_3_0= RULE_ID ) ) otherlv_4= ':' ( (lv_instanceTypeName_5_0= RULE_STRING ) ) (otherlv_6= '{' ( (lv_eAnnotations_7_0= ruleDataTypeAnnotations ) ) otherlv_8= '}' )? )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:963:28: ( ( () otherlv_1= 'datatype' ( (lv_serializable_2_0= 'serializable' ) )? ( (lv_name_3_0= RULE_ID ) ) otherlv_4= ':' ( (lv_instanceClassName_5_0= RULE_STRING ) ) (otherlv_6= '{' ( (lv_eAnnotations_7_0= ruleDataTypeAnnotations ) ) otherlv_8= '}' )? ) )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:964:1: ( () otherlv_1= 'datatype' ( (lv_serializable_2_0= 'serializable' ) )? ( (lv_name_3_0= RULE_ID ) ) otherlv_4= ':' ( (lv_instanceClassName_5_0= RULE_STRING ) ) (otherlv_6= '{' ( (lv_eAnnotations_7_0= ruleDataTypeAnnotations ) ) otherlv_8= '}' )? )
             {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:964:1: ( () otherlv_1= 'datatype' ( (lv_serializable_2_0= 'serializable' ) )? ( (lv_name_3_0= RULE_ID ) ) otherlv_4= ':' ( (lv_instanceTypeName_5_0= RULE_STRING ) ) (otherlv_6= '{' ( (lv_eAnnotations_7_0= ruleDataTypeAnnotations ) ) otherlv_8= '}' )? )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:964:2: () otherlv_1= 'datatype' ( (lv_serializable_2_0= 'serializable' ) )? ( (lv_name_3_0= RULE_ID ) ) otherlv_4= ':' ( (lv_instanceTypeName_5_0= RULE_STRING ) ) (otherlv_6= '{' ( (lv_eAnnotations_7_0= ruleDataTypeAnnotations ) ) otherlv_8= '}' )?
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:964:1: ( () otherlv_1= 'datatype' ( (lv_serializable_2_0= 'serializable' ) )? ( (lv_name_3_0= RULE_ID ) ) otherlv_4= ':' ( (lv_instanceClassName_5_0= RULE_STRING ) ) (otherlv_6= '{' ( (lv_eAnnotations_7_0= ruleDataTypeAnnotations ) ) otherlv_8= '}' )? )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:964:2: () otherlv_1= 'datatype' ( (lv_serializable_2_0= 'serializable' ) )? ( (lv_name_3_0= RULE_ID ) ) otherlv_4= ':' ( (lv_instanceClassName_5_0= RULE_STRING ) ) (otherlv_6= '{' ( (lv_eAnnotations_7_0= ruleDataTypeAnnotations ) ) otherlv_8= '}' )?
             {
             // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:964:2: ()
             // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:965:5: 
@@ -2418,15 +2418,15 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
 
                 	newLeafNode(otherlv_4, grammarAccess.getDataTypeDeclAccess().getColonKeyword_4());
                 
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1011:1: ( (lv_instanceTypeName_5_0= RULE_STRING ) )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1012:1: (lv_instanceTypeName_5_0= RULE_STRING )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1011:1: ( (lv_instanceClassName_5_0= RULE_STRING ) )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1012:1: (lv_instanceClassName_5_0= RULE_STRING )
             {
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1012:1: (lv_instanceTypeName_5_0= RULE_STRING )
-            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1013:3: lv_instanceTypeName_5_0= RULE_STRING
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1012:1: (lv_instanceClassName_5_0= RULE_STRING )
+            // ../org.occiware.clouddesigner.occi.xtext/src-gen/org/occiware/clouddesigner/occi/xtext/parser/antlr/internal/InternalOCCI.g:1013:3: lv_instanceClassName_5_0= RULE_STRING
             {
-            lv_instanceTypeName_5_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleDataTypeDecl2028); 
+            lv_instanceClassName_5_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleDataTypeDecl2028); 
 
-            			newLeafNode(lv_instanceTypeName_5_0, grammarAccess.getDataTypeDeclAccess().getInstanceTypeNameSTRINGTerminalRuleCall_5_0()); 
+            			newLeafNode(lv_instanceClassName_5_0, grammarAccess.getDataTypeDeclAccess().getInstanceClassNameSTRINGTerminalRuleCall_5_0()); 
             		
 
             	        if (current==null) {
@@ -2434,8 +2434,8 @@ public class InternalOCCIParser extends AbstractInternalAntlrParser {
             	        }
                    		setWithLastConsumed(
                    			current, 
-                   			"instanceTypeName",
-                    		lv_instanceTypeName_5_0, 
+                   			"instanceClassName",
+                    		lv_instanceClassName_5_0, 
                     		"STRING");
             	    
 

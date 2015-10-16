@@ -674,8 +674,8 @@ public class OCCIGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cNameIDTerminalRuleCall_3_0 = (RuleCall)cNameAssignment_3.eContents().get(0);
 		private final Keyword cColonKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cInstanceTypeNameAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cInstanceTypeNameSTRINGTerminalRuleCall_5_0 = (RuleCall)cInstanceTypeNameAssignment_5.eContents().get(0);
+		private final Assignment cInstanceClassNameAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cInstanceClassNameSTRINGTerminalRuleCall_5_0 = (RuleCall)cInstanceClassNameAssignment_5.eContents().get(0);
 		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
 		private final Keyword cLeftCurlyBracketKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
 		private final Assignment cEAnnotationsAssignment_6_1 = (Assignment)cGroup_6.eContents().get(1);
@@ -698,11 +698,11 @@ public class OCCIGrammarAccess extends AbstractGrammarElementFinder {
 		//// | `whiteSpace' `=' <PositiveInteger>
 		//// | `pattern' `=' <STRING>
 		//DataTypeDecl returns ecore::EDataType:
-		//	{ecore::EDataType} "datatype" serializable?="serializable"? name=ID ":" instanceTypeName=STRING ("{"
+		//	{ecore::EDataType} "datatype" serializable?="serializable"? name=ID ":" instanceClassName=STRING ("{"
 		//	eAnnotations+=DataTypeAnnotations "}")?;
 		@Override public ParserRule getRule() { return rule; }
 
-		//{ecore::EDataType} "datatype" serializable?="serializable"? name=ID ":" instanceTypeName=STRING ("{"
+		//{ecore::EDataType} "datatype" serializable?="serializable"? name=ID ":" instanceClassName=STRING ("{"
 		//eAnnotations+=DataTypeAnnotations "}")?
 		public Group getGroup() { return cGroup; }
 
@@ -727,11 +727,11 @@ public class OCCIGrammarAccess extends AbstractGrammarElementFinder {
 		//":"
 		public Keyword getColonKeyword_4() { return cColonKeyword_4; }
 
-		//instanceTypeName=STRING
-		public Assignment getInstanceTypeNameAssignment_5() { return cInstanceTypeNameAssignment_5; }
+		//instanceClassName=STRING
+		public Assignment getInstanceClassNameAssignment_5() { return cInstanceClassNameAssignment_5; }
 
 		//STRING
-		public RuleCall getInstanceTypeNameSTRINGTerminalRuleCall_5_0() { return cInstanceTypeNameSTRINGTerminalRuleCall_5_0; }
+		public RuleCall getInstanceClassNameSTRINGTerminalRuleCall_5_0() { return cInstanceClassNameSTRINGTerminalRuleCall_5_0; }
 
 		//("{" eAnnotations+=DataTypeAnnotations "}")?
 		public Group getGroup_6() { return cGroup_6; }
@@ -1731,7 +1731,7 @@ public class OCCIGrammarAccess extends AbstractGrammarElementFinder {
 	//// | `whiteSpace' `=' <PositiveInteger>
 	//// | `pattern' `=' <STRING>
 	//DataTypeDecl returns ecore::EDataType:
-	//	{ecore::EDataType} "datatype" serializable?="serializable"? name=ID ":" instanceTypeName=STRING ("{"
+	//	{ecore::EDataType} "datatype" serializable?="serializable"? name=ID ":" instanceClassName=STRING ("{"
 	//	eAnnotations+=DataTypeAnnotations "}")?;
 	public DataTypeDeclElements getDataTypeDeclAccess() {
 		return pDataTypeDecl;

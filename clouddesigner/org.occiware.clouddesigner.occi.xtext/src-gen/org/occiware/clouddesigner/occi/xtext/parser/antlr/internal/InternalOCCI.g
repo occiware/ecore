@@ -1010,9 +1010,9 @@ ruleDataTypeDecl returns [EObject current=null]
     }
 (
 (
-		lv_instanceTypeName_5_0=RULE_STRING
+		lv_instanceClassName_5_0=RULE_STRING
 		{
-			newLeafNode(lv_instanceTypeName_5_0, grammarAccess.getDataTypeDeclAccess().getInstanceTypeNameSTRINGTerminalRuleCall_5_0()); 
+			newLeafNode(lv_instanceClassName_5_0, grammarAccess.getDataTypeDeclAccess().getInstanceClassNameSTRINGTerminalRuleCall_5_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -1020,8 +1020,8 @@ ruleDataTypeDecl returns [EObject current=null]
 	        }
        		setWithLastConsumed(
        			$current, 
-       			"instanceTypeName",
-        		lv_instanceTypeName_5_0, 
+       			"instanceClassName",
+        		lv_instanceClassName_5_0, 
         		"STRING");
 	    }
 

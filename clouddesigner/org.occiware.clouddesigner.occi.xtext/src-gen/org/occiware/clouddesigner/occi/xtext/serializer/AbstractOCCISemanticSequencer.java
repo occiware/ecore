@@ -164,7 +164,7 @@ public abstract class AbstractOCCISemanticSequencer extends AbstractDelegatingSe
 	
 	/**
 	 * Constraint:
-	 *     (serializable?='serializable'? name=ID instanceTypeName=STRING eAnnotations+=DataTypeAnnotations?)
+	 *     (serializable?='serializable'? name=ID instanceClassName=STRING eAnnotations+=DataTypeAnnotations?)
 	 */
 	protected void sequence_DataTypeDecl(EObject context, EDataType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
