@@ -24,6 +24,13 @@ public class OCCIFormatter extends AbstractDeclarativeFormatter {
 
 		c.setLinewrap(0, 1, 1).before(getKindDeclRule)
 
+		for(import: findKeywords('import')) {
+			c.setNoLinewrap().after(import)
+			c.setLinewrap().before(import)
+        }
+
+		c.setLinewrap(0, 1, 1).before(getDataTypeDeclRule)
+
 //		for(extendsKeyword: findKeywords('extends')) {
 //          c.setNoLinewrap().after(extendsKeyword)
 //        }

@@ -33,42 +33,54 @@ public class OCCIFormatter extends AbstractDeclarativeFormatter {
     FormattingConfig.LinewrapLocator _setLinewrap = c.setLinewrap(0, 1, 1);
     ParserRule _kindDeclRule = this._oCCIGrammarAccess.getKindDeclRule();
     _setLinewrap.before(_kindDeclRule);
+    List<Keyword> _findKeywords = this._oCCIGrammarAccess.findKeywords("import");
+    for (final Keyword import_ : _findKeywords) {
+      {
+        FormattingConfig.NoLinewrapLocator _setNoLinewrap = c.setNoLinewrap();
+        _setNoLinewrap.after(import_);
+        FormattingConfig.LinewrapLocator _setLinewrap_1 = c.setLinewrap();
+        _setLinewrap_1.before(import_);
+      }
+    }
+    FormattingConfig.LinewrapLocator _setLinewrap_1 = c.setLinewrap(0, 1, 1);
+    ParserRule _dataTypeDeclRule = this._oCCIGrammarAccess.getDataTypeDeclRule();
+    _setLinewrap_1.before(_dataTypeDeclRule);
     List<Pair<Keyword, Keyword>> _findKeywordPairs = this._oCCIGrammarAccess.findKeywordPairs("{", "}");
     for (final Pair<Keyword, Keyword> pair : _findKeywordPairs) {
       {
         Keyword _first = pair.getFirst();
         Keyword _second = pair.getSecond();
         c.setIndentation(_first, _second);
-        FormattingConfig.LinewrapLocator _setLinewrap_1 = c.setLinewrap(1);
-        Keyword _first_1 = pair.getFirst();
-        _setLinewrap_1.after(_first_1);
         FormattingConfig.LinewrapLocator _setLinewrap_2 = c.setLinewrap(1);
-        Keyword _second_1 = pair.getSecond();
-        _setLinewrap_2.before(_second_1);
+        Keyword _first_1 = pair.getFirst();
+        _setLinewrap_2.after(_first_1);
         FormattingConfig.LinewrapLocator _setLinewrap_3 = c.setLinewrap(1);
+        Keyword _second_1 = pair.getSecond();
+        _setLinewrap_3.before(_second_1);
+        FormattingConfig.LinewrapLocator _setLinewrap_4 = c.setLinewrap(1);
         Keyword _second_2 = pair.getSecond();
-        _setLinewrap_3.after(_second_2);
+        _setLinewrap_4.after(_second_2);
       }
     }
-    List<Keyword> _findKeywords = this._oCCIGrammarAccess.findKeywords(",");
-    for (final Keyword comma : _findKeywords) {
+    List<Keyword> _findKeywords_1 = this._oCCIGrammarAccess.findKeywords(",");
+    for (final Keyword comma : _findKeywords_1) {
       {
         FormattingConfig.NoLinewrapLocator _setNoLinewrap = c.setNoLinewrap();
         _setNoLinewrap.before(comma);
         FormattingConfig.NoSpaceLocator _setNoSpace = c.setNoSpace();
         _setNoSpace.before(comma);
-        FormattingConfig.LinewrapLocator _setLinewrap_1 = c.setLinewrap();
-        _setLinewrap_1.after(comma);
+        FormattingConfig.LinewrapLocator _setLinewrap_2 = c.setLinewrap();
+        _setLinewrap_2.after(comma);
       }
     }
-    FormattingConfig.LinewrapLocator _setLinewrap_1 = c.setLinewrap(0, 1, 2);
-    TerminalRule _sL_COMMENTRule = this._oCCIGrammarAccess.getSL_COMMENTRule();
-    _setLinewrap_1.before(_sL_COMMENTRule);
     FormattingConfig.LinewrapLocator _setLinewrap_2 = c.setLinewrap(0, 1, 2);
+    TerminalRule _sL_COMMENTRule = this._oCCIGrammarAccess.getSL_COMMENTRule();
+    _setLinewrap_2.before(_sL_COMMENTRule);
+    FormattingConfig.LinewrapLocator _setLinewrap_3 = c.setLinewrap(0, 1, 2);
     TerminalRule _mL_COMMENTRule = this._oCCIGrammarAccess.getML_COMMENTRule();
-    _setLinewrap_2.before(_mL_COMMENTRule);
-    FormattingConfig.LinewrapLocator _setLinewrap_3 = c.setLinewrap(0, 1, 1);
+    _setLinewrap_3.before(_mL_COMMENTRule);
+    FormattingConfig.LinewrapLocator _setLinewrap_4 = c.setLinewrap(0, 1, 1);
     TerminalRule _mL_COMMENTRule_1 = this._oCCIGrammarAccess.getML_COMMENTRule();
-    _setLinewrap_3.after(_mL_COMMENTRule_1);
+    _setLinewrap_4.after(_mL_COMMENTRule_1);
   }
 }
