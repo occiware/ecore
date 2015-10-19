@@ -20,20 +20,29 @@ public class OCCIFormatter extends AbstractDeclarativeFormatter {
 	
 	@Inject extension OCCIGrammarAccess
 	
-	override protected configureFormatting(FormattingConfig c) {
-
-		c.setLinewrap(0, 1, 1).before(getKindDeclRule)
+	override protected configureFormatting(FormattingConfig c)
+	{
+		c.setLinewrap(1).before(getKindDeclRule)
 
 		for(import: findKeywords('import')) {
 			c.setNoLinewrap().after(import)
 			c.setLinewrap().before(import)
         }
 
-		c.setLinewrap(0, 1, 1).before(getDataTypeDeclRule)
+		c.setLinewrap(1).before(getAttributeDeclRule)
+		c.setLinewrap(1).before(getActionDeclRule)
+
+		c.setLinewrap(1).before(getDataTypeDeclRule)
+		c.setLinewrap(1).before(getEnumTypeDeclRule)
 
 //		for(extendsKeyword: findKeywords('extends')) {
 //          c.setNoLinewrap().after(extendsKeyword)
 //        }
+
+		for(parenthesis: findKeywords('(')) {
+			c.setNoLinewrap().before(parenthesis)
+			c.setNoSpace().after(parenthesis)
+		}
 
 		for(pair: findKeywordPairs('{', '}')) {
 			c.setIndentation(pair.first, pair.second)
