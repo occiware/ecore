@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtext.naming.QualifiedName;
@@ -15,7 +16,10 @@ import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
 import org.eclipse.xtext.scoping.impl.SimpleScope;
+import org.occiware.clouddesigner.occi.Attribute;
 import org.occiware.clouddesigner.occi.Extension;
+import org.occiware.clouddesigner.occi.Kind;
+import org.occiware.clouddesigner.occi.Mixin;
 
 /**
  * This class contains custom scoping description.
@@ -26,6 +30,19 @@ import org.occiware.clouddesigner.occi.Extension;
  */
 @SuppressWarnings("all")
 public class OCCIScopeProvider extends AbstractDeclarativeScopeProvider {
+
+	private String getKindTerm(Kind kind)
+	{
+		String name = kind.getTerm();
+		if("resource".equals(name)) {
+			return "^resource";
+		}
+		if("link".equals(name)) {
+			return "^link";
+		}
+		return name;		
+	}
+
 	public IScope scope_Extension_import(final Extension ext, final EReference ref) {
 		final ArrayList<IEObjectDescription> res = new ArrayList<IEObjectDescription>();
 		EList<Extension> _import = ext.getImport();
@@ -38,4 +55,60 @@ public class OCCIScopeProvider extends AbstractDeclarativeScopeProvider {
 		}
 		return new SimpleScope(IScope.NULLSCOPE, res);
 	}
+
+ 	public IScope scope_Kind_parent(final Kind kind, final EReference ref) {
+		final ArrayList<IEObjectDescription> res = new ArrayList<IEObjectDescription>();
+		Extension extension = (Extension)kind.eContainer();
+		for(Kind k : extension.getKinds()) {
+			res.add(EObjectDescription.create(QualifiedName.create(getKindTerm(k)), k));
+		}
+		for(Extension importExtension : extension.getImport()) {
+			for(Kind k : importExtension.getKinds()) {
+				res.add(EObjectDescription.create(QualifiedName.create(importExtension.getName(), getKindTerm(k)), k));
+			}
+		}
+		return new SimpleScope(IScope.NULLSCOPE, res);
+ 	}
+
+ 	public IScope scope_Mixin_depends(final Mixin mixin, final EReference ref) {
+		final ArrayList<IEObjectDescription> res = new ArrayList<IEObjectDescription>();
+		Extension extension = (Extension)mixin.eContainer();
+		for(Mixin m : extension.getMixins()) {
+			res.add(EObjectDescription.create(QualifiedName.create(m.getTerm()), m));
+		}
+		for(Extension importExtension : extension.getImport()) {
+			for(Mixin m : importExtension.getMixins()) {
+				res.add(EObjectDescription.create(QualifiedName.create(importExtension.getName(), m.getTerm()), m));
+			}
+		}
+		return new SimpleScope(IScope.NULLSCOPE, res);
+ 	}
+
+ 	public IScope scope_Mixin_applies(final Mixin mixin, final EReference ref) {
+		final ArrayList<IEObjectDescription> res = new ArrayList<IEObjectDescription>();
+		Extension extension = (Extension)mixin.eContainer();
+		for(Kind k : extension.getKinds()) {
+			res.add(EObjectDescription.create(QualifiedName.create(getKindTerm(k)), k));
+		}
+		for(Extension importExtension : extension.getImport()) {
+			for(Kind k : importExtension.getKinds()) {
+				res.add(EObjectDescription.create(QualifiedName.create(importExtension.getName(), getKindTerm(k)), k));
+			}
+		}
+		return new SimpleScope(IScope.NULLSCOPE, res);
+ 	}
+ 	
+ 	public IScope scope_Attribute_type(final Attribute attribute, final EReference ref) {
+		final ArrayList<IEObjectDescription> res = new ArrayList<IEObjectDescription>();
+		Extension extension = (Extension)attribute.eContainer().eContainer();
+		for(EDataType type : extension.getTypes()) {
+			res.add(EObjectDescription.create(QualifiedName.create(type.getName()), type));
+		}
+		for(Extension importExtension : extension.getImport()) {
+			for(EDataType type : importExtension.getTypes()) {
+				res.add(EObjectDescription.create(QualifiedName.create(importExtension.getName(), type.getName()), type));
+			}
+		}
+		return new SimpleScope(IScope.NULLSCOPE, res);
+ 	}
 }
