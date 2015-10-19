@@ -89,13 +89,12 @@ public class DesignServices {
 	public void setStringType(Attribute attribute) {
 		Session session = SessionManager.INSTANCE.getSession(attribute);
 		Resource resource = session.getSessionResource().getResourceSet().getResource(
-				URI.createPlatformPluginURI("org.occiware.clouddesigner.occi/model/OCCI.ecore", true), true);
-		for (EClassifier ec : ((EPackage) resource.getContents().get(0)).getEClassifiers()) {
-			if (ec instanceof EDataType && ec.getName().equals("String")) {
+				URI.createPlatformPluginURI("org.occiware.clouddesigner.occi/model/Core.occie", true), true);
+		for (EDataType dt : ((Extension) resource.getContents().get(0)).getTypes()) {
+			if (dt.getName().equals("String")) {
 				// default type
-				attribute.setType((EDataType) ec);
+				attribute.setType(dt);
 			}
 		}
-
 	}
 }
