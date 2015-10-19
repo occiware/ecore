@@ -14,6 +14,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.URIHandlerImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
@@ -71,6 +72,8 @@ public class OCCIDocumentProvider extends XtextDocumentProvider {
 					new URIHandlerImpl.PlatformSchemeAware());
 			xmiResource.getContents().clear();
 			xmiResource.getContents().addAll(xtextResource.getContents());
+			// SUPER IMPORTANT to avoid to have references to temp.occi
+			EcoreUtil.resolveAll(xmiResource);			
 			xmiResource.save(Collections.EMPTY_MAP);
 		} catch (IOException e) {
 			throw new CoreException(
