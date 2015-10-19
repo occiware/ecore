@@ -9,7 +9,7 @@
             class="org.occiware.clouddesigner.occi.xtext.ui.OCCIExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
             contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
             default="true"
-            extensions="occi"
+            extensions="occi, occie, occic"
             id="org.occiware.clouddesigner.occi.xtext.OCCI"
             name="OCCI Editor">
         </editor>
