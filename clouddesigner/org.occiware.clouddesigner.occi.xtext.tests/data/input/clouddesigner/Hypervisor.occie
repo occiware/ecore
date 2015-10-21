@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:occi="http://schemas.ogf.org/occi" name="OCCIware Hypervisor" scheme="http://occiware.org/hypervisor#">
+  <import href="../../org.occiware.clouddesigner.occi/model/Core.occie#/"/>
+  <import href="../../org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#/"/>
+  <kinds term="machine" scheme="http://occiware.org/hypervisor#" title="Machine resource">
+    <attributes name="name" description="Hypervisor name.">
+      <type href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </attributes>
+    <attributes name="boot" description="The machine boot device." multiple_values="true">
+      <type href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </attributes>
+    <attributes name="uuid" description="The machine unique ID.">
+      <type href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </attributes>
+    <attributes name="offset" default="localtime" description="This will be set if the guest XML contains a request for a clock synced to localtime.">
+      <type href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </attributes>
+    <attributes name="os_type" required="true">
+      <type href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </attributes>
+    <parent href="../../org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='compute']"/>
+  </kinds>
+  <kinds term="contains" scheme="http://occiware.org/hypervisor#">
+    <parent href="../../org.occiware.clouddesigner.occi/model/Core.occie#//@kinds[term='link']"/>
+  </kinds>
+  <kinds term="disk" scheme="http://occiware.org/hypervisor#" title="Disk resource">
+    <attributes name="name" default="Disk" description="The default name of the resource">
+      <type href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </attributes>
+    <attributes name="type" required="true" description="The kind of disk.">
+      <type href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </attributes>
+    <attributes name="device" required="true" description="Specify the disk device's.">
+      <type href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </attributes>
+    <attributes name="source" required="true">
+      <type href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </attributes>
+    <attributes name="readonly" default="false">
+      <type href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean"/>
+    </attributes>
+    <attributes name="target_dev">
+      <type href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </attributes>
+    <attributes name="target_bus">
+      <type href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </attributes>
+    <parent href="../../org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='storage']"/>
+  </kinds>
+  <kinds term="interface" scheme="http://occiware.org/hypervisor#" title="Interface resource">
+    <attributes name="name" default="interface" description="The interface resource">
+      <type href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </attributes>
+    <attributes name="type" required="true" description="The interface type">
+      <type href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </attributes>
+    <attributes name="model" description="The interface model">
+      <type href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </attributes>
+    <attributes name="mac_addresss">
+      <type href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </attributes>
+    <attributes name="route" mutable="true">
+      <type href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </attributes>
+    <parent href="../../org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='network']"/>
+  </kinds>
+  <kinds term="machine_VirtualBox" scheme="http://occiware.org/hypervisor#" title="Machine on VirtualBox" parent="//@kinds[term='machine']">
+    <attributes name="type" required="true" default="hvm" description="This type is specific to Libvirt.">
+      <type href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </attributes>
+    <attributes name="features" default="acpi" description="The flag specify the Advanced Configuration and Power Interface(ACPI), the Physical Address Extension (PAE) and the Advanced Programmable Interrupt Controller (APIC)." type="//@types.1" multiple_values="true"/>
+    <attributes name="on_poweroff" description="Action to do when the machine is poweroff.">
+      <type href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </attributes>
+    <attributes name="on_reboot" description="Action to do when the machine is rebooting.">
+      <type href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </attributes>
+    <attributes name="on_crash" description="Action to do when the machine crached.">
+      <type href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </attributes>
+    <attributes name="memory" required="true" default="256000" description="This sets the maximum memory for the guest at boot time in KB.">
+      <type href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number"/>
+    </attributes>
+    <attributes name="current_memory" default="" description="This sets the lower memory for the guest at boot time in KB.">
+      <type href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number"/>
+    </attributes>
+    <attributes name="vcpu" default="1" description="The number of virtual CPUs to create.">
+      <type href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number"/>
+    </attributes>
+  </kinds>
+  <kinds term="bridge" scheme="http://occiware.org/hypervisor#" title="Bridge interface" parent="//@kinds[term='interface']">
+    <attributes name="source_bridge">
+      <type href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </attributes>
+  </kinds>
+  <kinds term="user" scheme="http://occiware.org/hypervisor#" title="User interface" parent="//@kinds[term='interface']"/>
+  <kinds term="parallel" scheme="http://occiware.org/hypervisor#" title="Parallel resource">
+    <attributes name="name" default="parallel" description="The parallel resource name">
+      <type href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </attributes>
+    <attributes name="source">
+      <type href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </attributes>
+    <attributes name="target" required="true">
+      <type href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </attributes>
+    <parent href="../../org.occiware.clouddesigner.occi/model/Core.occie#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds term="serial" scheme="http://occiware.org/hypervisor#" title="Serial resource">
+    <attributes name="name" default="serial">
+      <type href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </attributes>
+    <attributes name="source">
+      <type href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </attributes>
+    <attributes name="target">
+      <type href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </attributes>
+    <parent href="../../org.occiware.clouddesigner.occi/model/Core.occie#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds term="direct" scheme="http://occiware.org/hypervisor#" title="Direct Interface" parent="//@kinds[term='interface']">
+    <attributes name="source_dev">
+      <type href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </attributes>
+    <attributes name="source_mode">
+      <type href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </attributes>
+  </kinds>
+  <kinds term="ethernet" scheme="http://occiware.org/hypervisor#" title="Ethernet resource">
+    <attributes name="target_dev">
+      <type href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </attributes>
+    <attributes name="script_path">
+      <type href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </attributes>
+    <parent href="../../org.occiware.clouddesigner.occi/model/Core.occie#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds term="filesystem" scheme="http://occiware.org/hypervisor#" title="Filesystem resource">
+    <attributes name="name" default="filesystem" description="">
+      <type href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </attributes>
+    <attributes name="source" required="true">
+      <type href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </attributes>
+    <attributes name="target" required="true">
+      <type href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </attributes>
+    <parent href="../../org.occiware.clouddesigner.occi/model/Core.occie#//@kinds[term='resource']"/>
+  </kinds>
+  <types xsi:type="ecore:EEnum" name="CLOCK">
+    <eLiterals name="offset"/>
+  </types>
+  <types xsi:type="ecore:EEnum" name="FEATURES">
+    <eLiterals name="acpi"/>
+    <eLiterals name="pae"/>
+    <eLiterals name="apic"/>
+  </types>
+  <types xsi:type="ecore:EEnum" name="OS">
+    <eLiterals name="type"/>
+    <eLiterals name="boot"/>
+    <eLiterals name="kernel"/>
+    <eLiterals name="ramdisk"/>
+    <eLiterals name="cmdline"/>
+  </types>
+</occi:Extension>

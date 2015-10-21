@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: OCCI Test Bundle
 Bundle-SymbolicName: org.occiware.clouddesigner.occi.xtext.tests
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 0.1.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: org.eclipse.emf.ecore;bundle-version="2.10.2",
  org.eclipse.xtext.junit4,
@@ -14,7 +14,8 @@ Require-Bundle: org.eclipse.emf.ecore;bundle-version="2.10.2",
  org.objectweb.asm;bundle-version="[5.0.1,6.0.0)";resolution:=optional,
  org.eclipse.xtext.xbase.lib,
  org.occiware.clouddesigner.occi.xtext,
- org.occiware.clouddesigner.occi.xtext.ui
+ org.occiware.clouddesigner.occi.xtext.ui,
+ org.junit;bundle-version="4.12.0"
 Import-Package: org.junit;version="4.5.0",
  org.junit.runner;version="4.5.0",
  org.junit.runner.manipulation;version="4.5.0",
