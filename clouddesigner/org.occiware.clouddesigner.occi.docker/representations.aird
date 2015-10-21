@@ -11,6 +11,7 @@
   <semanticResources>model/Docker.occie</semanticResources>
   <semanticResources>platform:/resource/org.occiware.clouddesigner.occi/model/Core.occie</semanticResources>
   <semanticResources>platform:/resource/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie</semanticResources>
+  <semanticResources>platform:/resource/org.eclipse.emf.ecore/model/Ecore.genmodel</semanticResources>
   <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_DJTQwM43EeSqdt6vuFnfEw">
     <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_DMiyAM43EeSqdt6vuFnfEw" name="docker class diagram">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_DMjZEM43EeSqdt6vuFnfEw" source="GMF_DIAGRAMS">
@@ -1737,7 +1738,7 @@
     <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
   </ownedViews>
   <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_T_S3IFbnEeWSde0I4olrxA">
-    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_U27pwFbnEeWSde0I4olrxA" name="new Extension diagram">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_U27pwFbnEeWSde0I4olrxA" name="OCCIware Docker Extension Diagram">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_U27pwVbnEeWSde0I4olrxA" source="DANNOTATION_CUSTOMIZATION_KEY">
         <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_U27pwlbnEeWSde0I4olrxA"/>
       </ownedAnnotationEntries>
@@ -3557,7 +3558,7 @@
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_U27pw1bnEeWSde0I4olrxA" name="core" incomingEdges="_U28RvFbnEeWSde0I4olrxA">
         <target xmi:type="occi:Extension" href="platform:/resource/org.occiware.clouddesigner.occi/model/Core.occie#/"/>
         <semanticElements xmi:type="occi:Extension" href="platform:/resource/org.occiware.clouddesigner.occi/model/Core.occie#/"/>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U27pxFbnEeWSde0I4olrxA" labelSize="12">
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U27pxFbnEeWSde0I4olrxA" labelSize="12" foregroundColor="214,214,214">
           <labelFormat>bold</labelFormat>
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='ImportContainer']/@style"/>
         </ownedStyle>
@@ -3565,7 +3566,7 @@
         <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_U27pxVbnEeWSde0I4olrxA" name="entity" incomingEdges="_U28RaFbnEeWSde0I4olrxA _U28Ra1bnEeWSde0I4olrxA">
           <target xmi:type="occi:Kind" href="platform:/resource/org.occiware.clouddesigner.occi/model/Core.occie#//@kinds[term='entity']"/>
           <semanticElements xmi:type="occi:Kind" href="platform:/resource/org.occiware.clouddesigner.occi/model/Core.occie#//@kinds[term='entity']"/>
-          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U27pxlbnEeWSde0I4olrxA" labelSize="12" showIcon="false" foregroundColor="138,226,52">
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U27pxlbnEeWSde0I4olrxA" labelSize="12" showIcon="false" borderColor="0,47,0" backgroundStyle="GradientTopToBottom" backgroundColor="187,242,196" foregroundColor="255,255,255">
             <labelFormat>bold</labelFormat>
             <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@style"/>
           </ownedStyle>
@@ -3582,7 +3583,7 @@
         <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_U27pyVbnEeWSde0I4olrxA" name="resource" outgoingEdges="_U28RaFbnEeWSde0I4olrxA" incomingEdges="_U28RblbnEeWSde0I4olrxA _U28RcVbnEeWSde0I4olrxA _U28RdFbnEeWSde0I4olrxA _U28RuVbnEeWSde0I4olrxA">
           <target xmi:type="occi:Kind" href="platform:/resource/org.occiware.clouddesigner.occi/model/Core.occie#//@kinds[term='resource']"/>
           <semanticElements xmi:type="occi:Kind" href="platform:/resource/org.occiware.clouddesigner.occi/model/Core.occie#//@kinds[term='resource']"/>
-          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U27pylbnEeWSde0I4olrxA" labelSize="12" showIcon="false" foregroundColor="138,226,52">
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U27pylbnEeWSde0I4olrxA" labelSize="12" showIcon="false" borderColor="0,47,0" backgroundStyle="GradientTopToBottom" backgroundColor="187,242,196" foregroundColor="255,255,255">
             <labelFormat>bold</labelFormat>
             <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@style"/>
           </ownedStyle>
@@ -3599,7 +3600,7 @@
         <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_U27pzVbnEeWSde0I4olrxA" name="link" outgoingEdges="_U28Ra1bnEeWSde0I4olrxA" incomingEdges="_U28Rd1bnEeWSde0I4olrxA _U28RelbnEeWSde0I4olrxA _U28RgFbnEeWSde0I4olrxA _U28Rg1bnEeWSde0I4olrxA _U28RhlbnEeWSde0I4olrxA">
           <target xmi:type="occi:Kind" href="platform:/resource/org.occiware.clouddesigner.occi/model/Core.occie#//@kinds[term='link']"/>
           <semanticElements xmi:type="occi:Kind" href="platform:/resource/org.occiware.clouddesigner.occi/model/Core.occie#//@kinds[term='link']"/>
-          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U27pzlbnEeWSde0I4olrxA" labelSize="12" showIcon="false" foregroundColor="138,226,52">
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U27pzlbnEeWSde0I4olrxA" labelSize="12" showIcon="false" borderColor="0,47,0" backgroundStyle="GradientTopToBottom" backgroundColor="187,242,196" foregroundColor="255,255,255">
             <labelFormat>bold</labelFormat>
             <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@style"/>
           </ownedStyle>
@@ -3657,10 +3658,10 @@
           </ownedElements>
         </ownedDiagramElements>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_U27p21bnEeWSde0I4olrxA" name="OCCI Infrastructure" outgoingEdges="_U28RvFbnEeWSde0I4olrxA">
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_U27p21bnEeWSde0I4olrxA" name="infrastructure" outgoingEdges="_U28RvFbnEeWSde0I4olrxA">
         <target xmi:type="occi:Extension" href="platform:/resource/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#/"/>
         <semanticElements xmi:type="occi:Extension" href="platform:/resource/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#/"/>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U27p3FbnEeWSde0I4olrxA" labelSize="12">
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U27p3FbnEeWSde0I4olrxA" labelSize="12" foregroundColor="214,214,214">
           <labelFormat>bold</labelFormat>
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='ImportContainer']/@style"/>
         </ownedStyle>
@@ -3668,7 +3669,7 @@
         <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_U27p3VbnEeWSde0I4olrxA" name="network" outgoingEdges="_U28RblbnEeWSde0I4olrxA" incomingEdges="_U28RsFbnEeWSde0I4olrxA">
           <target xmi:type="occi:Kind" href="platform:/resource/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='network']"/>
           <semanticElements xmi:type="occi:Kind" href="platform:/resource/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='network']"/>
-          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U27p3lbnEeWSde0I4olrxA" labelSize="12" showIcon="false" foregroundColor="138,226,52">
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U27p3lbnEeWSde0I4olrxA" labelSize="12" showIcon="false" borderColor="0,47,0" backgroundStyle="GradientTopToBottom" backgroundColor="187,242,196" foregroundColor="255,255,255">
             <labelFormat>bold</labelFormat>
             <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@style"/>
           </ownedStyle>
@@ -3717,7 +3718,7 @@
         <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_U27p6VbnEeWSde0I4olrxA" name="compute" outgoingEdges="_U28RcVbnEeWSde0I4olrxA" incomingEdges="_U28RfVbnEeWSde0I4olrxA _U28RiVbnEeWSde0I4olrxA _U28RtlbnEeWSde0I4olrxA">
           <target xmi:type="occi:Kind" href="platform:/resource/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='compute']"/>
           <semanticElements xmi:type="occi:Kind" href="platform:/resource/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='compute']"/>
-          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U27p6lbnEeWSde0I4olrxA" labelSize="12" showIcon="false" foregroundColor="138,226,52">
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U27p6lbnEeWSde0I4olrxA" labelSize="12" showIcon="false" borderColor="0,47,0" backgroundStyle="GradientTopToBottom" backgroundColor="187,242,196" foregroundColor="255,255,255">
             <labelFormat>bold</labelFormat>
             <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@style"/>
           </ownedStyle>
@@ -3806,7 +3807,7 @@
         <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_U27p_1bnEeWSde0I4olrxA" name="storage" outgoingEdges="_U28RdFbnEeWSde0I4olrxA">
           <target xmi:type="occi:Kind" href="platform:/resource/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='storage']"/>
           <semanticElements xmi:type="occi:Kind" href="platform:/resource/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='storage']"/>
-          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U27qAFbnEeWSde0I4olrxA" labelSize="12" showIcon="false" foregroundColor="138,226,52">
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U27qAFbnEeWSde0I4olrxA" labelSize="12" showIcon="false" borderColor="0,47,0" backgroundStyle="GradientTopToBottom" backgroundColor="187,242,196" foregroundColor="255,255,255">
             <labelFormat>bold</labelFormat>
             <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@style"/>
           </ownedStyle>
@@ -3871,7 +3872,7 @@
         <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_U27qD1bnEeWSde0I4olrxA" name="storagelink" outgoingEdges="_U28Rd1bnEeWSde0I4olrxA">
           <target xmi:type="occi:Kind" href="platform:/resource/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='storagelink']"/>
           <semanticElements xmi:type="occi:Kind" href="platform:/resource/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='storagelink']"/>
-          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U27qEFbnEeWSde0I4olrxA" labelSize="12" showIcon="false" foregroundColor="138,226,52">
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U27qEFbnEeWSde0I4olrxA" labelSize="12" showIcon="false" borderColor="0,47,0" backgroundStyle="GradientTopToBottom" backgroundColor="187,242,196" foregroundColor="255,255,255">
             <labelFormat>bold</labelFormat>
             <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@style"/>
           </ownedStyle>
@@ -3904,7 +3905,7 @@
         <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_U27qF1bnEeWSde0I4olrxA" name="networkinterface" outgoingEdges="_U28RelbnEeWSde0I4olrxA" incomingEdges="_U28Rs1bnEeWSde0I4olrxA">
           <target xmi:type="occi:Kind" href="platform:/resource/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='networkinterface']"/>
           <semanticElements xmi:type="occi:Kind" href="platform:/resource/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='networkinterface']"/>
-          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U27qGFbnEeWSde0I4olrxA" labelSize="12" showIcon="false" foregroundColor="138,226,52">
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U27qGFbnEeWSde0I4olrxA" labelSize="12" showIcon="false" borderColor="0,47,0" backgroundStyle="GradientTopToBottom" backgroundColor="187,242,196" foregroundColor="255,255,255">
             <labelFormat>bold</labelFormat>
             <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@style"/>
           </ownedStyle>
@@ -3937,7 +3938,7 @@
         <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_U27qH1bnEeWSde0I4olrxA" name="ipnetwork" outgoingEdges="_U28RsFbnEeWSde0I4olrxA">
           <target xmi:type="occi:Mixin" href="platform:/resource/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@mixins[term='ipnetwork']"/>
           <semanticElements xmi:type="occi:Mixin" href="platform:/resource/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@mixins[term='ipnetwork']"/>
-          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U27qIFbnEeWSde0I4olrxA" labelSize="12" showIcon="false" foregroundColor="114,159,207">
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U27qIFbnEeWSde0I4olrxA" labelSize="12" showIcon="false" borderColor="0,37,74" backgroundStyle="GradientTopToBottom" backgroundColor="187,221,255" foregroundColor="255,255,255">
             <labelFormat>bold</labelFormat>
             <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@style"/>
           </ownedStyle>
@@ -3945,7 +3946,7 @@
           <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_U27qIVbnEeWSde0I4olrxA" name="occi.network.address: IpAddressRange">
             <target xmi:type="occi:Attribute" href="platform:/resource/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@mixins[term='ipnetwork']/@attributes.0"/>
             <semanticElements xmi:type="occi:Attribute" href="platform:/resource/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@mixins[term='ipnetwork']/@attributes.0"/>
-            <ownedStyle xmi:type="diagram:Square" xmi:id="_U27qIlbnEeWSde0I4olrxA" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
+            <ownedStyle xmi:type="diagram:Square" xmi:id="_U27qIlbnEeWSde0I4olrxA" labelSize="10" labelAlignment="LEFT" labelPosition="node">
               <description xmi:type="style:SquareDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='Attribute']/@conditionnalStyles.2/@style"/>
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='Attribute']"/>
@@ -3953,7 +3954,7 @@
           <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_U27qI1bnEeWSde0I4olrxA" name="occi.network.gateway: IpAddress">
             <target xmi:type="occi:Attribute" href="platform:/resource/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@mixins[term='ipnetwork']/@attributes.1"/>
             <semanticElements xmi:type="occi:Attribute" href="platform:/resource/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@mixins[term='ipnetwork']/@attributes.1"/>
-            <ownedStyle xmi:type="diagram:Square" xmi:id="_U27qJFbnEeWSde0I4olrxA" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
+            <ownedStyle xmi:type="diagram:Square" xmi:id="_U27qJFbnEeWSde0I4olrxA" labelSize="10" labelAlignment="LEFT" labelPosition="node">
               <description xmi:type="style:SquareDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='Attribute']/@conditionnalStyles.2/@style"/>
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='Attribute']"/>
@@ -3961,7 +3962,7 @@
           <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_U27qJVbnEeWSde0I4olrxA" name="occi.network.allocation: Allocation">
             <target xmi:type="occi:Attribute" href="platform:/resource/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@mixins[term='ipnetwork']/@attributes.2"/>
             <semanticElements xmi:type="occi:Attribute" href="platform:/resource/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@mixins[term='ipnetwork']/@attributes.2"/>
-            <ownedStyle xmi:type="diagram:Square" xmi:id="_U27qJlbnEeWSde0I4olrxA" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
+            <ownedStyle xmi:type="diagram:Square" xmi:id="_U27qJlbnEeWSde0I4olrxA" labelSize="10" labelAlignment="LEFT" labelPosition="node">
               <description xmi:type="style:SquareDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='Attribute']/@conditionnalStyles.2/@style"/>
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='Attribute']"/>
@@ -3970,7 +3971,7 @@
         <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_U27qJ1bnEeWSde0I4olrxA" name="ipnetworkinterface" outgoingEdges="_U28Rs1bnEeWSde0I4olrxA">
           <target xmi:type="occi:Mixin" href="platform:/resource/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@mixins[term='ipnetworkinterface']"/>
           <semanticElements xmi:type="occi:Mixin" href="platform:/resource/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@mixins[term='ipnetworkinterface']"/>
-          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U27qKFbnEeWSde0I4olrxA" labelSize="12" showIcon="false" foregroundColor="114,159,207">
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U27qKFbnEeWSde0I4olrxA" labelSize="12" showIcon="false" borderColor="0,37,74" backgroundStyle="GradientTopToBottom" backgroundColor="187,221,255" foregroundColor="255,255,255">
             <labelFormat>bold</labelFormat>
             <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@style"/>
           </ownedStyle>
@@ -3978,7 +3979,7 @@
           <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_U27qKVbnEeWSde0I4olrxA" name="occi.networkinterface.address: IpAddress">
             <target xmi:type="occi:Attribute" href="platform:/resource/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@mixins[term='ipnetworkinterface']/@attributes.0"/>
             <semanticElements xmi:type="occi:Attribute" href="platform:/resource/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@mixins[term='ipnetworkinterface']/@attributes.0"/>
-            <ownedStyle xmi:type="diagram:Square" xmi:id="_U27qKlbnEeWSde0I4olrxA" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
+            <ownedStyle xmi:type="diagram:Square" xmi:id="_U27qKlbnEeWSde0I4olrxA" labelSize="10" labelAlignment="LEFT" labelPosition="node">
               <description xmi:type="style:SquareDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='Attribute']/@conditionnalStyles.2/@style"/>
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='Attribute']"/>
@@ -3986,7 +3987,7 @@
           <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_U27qK1bnEeWSde0I4olrxA" name="occi.networkinterface.gateway: IpAddress">
             <target xmi:type="occi:Attribute" href="platform:/resource/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@mixins[term='ipnetworkinterface']/@attributes.1"/>
             <semanticElements xmi:type="occi:Attribute" href="platform:/resource/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@mixins[term='ipnetworkinterface']/@attributes.1"/>
-            <ownedStyle xmi:type="diagram:Square" xmi:id="_U27qLFbnEeWSde0I4olrxA" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
+            <ownedStyle xmi:type="diagram:Square" xmi:id="_U27qLFbnEeWSde0I4olrxA" labelSize="10" labelAlignment="LEFT" labelPosition="node">
               <description xmi:type="style:SquareDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='Attribute']/@conditionnalStyles.2/@style"/>
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='Attribute']"/>
@@ -3994,7 +3995,7 @@
           <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_U27qLVbnEeWSde0I4olrxA" name="occi.networkinterface.allocation: Allocation">
             <target xmi:type="occi:Attribute" href="platform:/resource/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@mixins[term='ipnetworkinterface']/@attributes.2"/>
             <semanticElements xmi:type="occi:Attribute" href="platform:/resource/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@mixins[term='ipnetworkinterface']/@attributes.2"/>
-            <ownedStyle xmi:type="diagram:Square" xmi:id="_U27qLlbnEeWSde0I4olrxA" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
+            <ownedStyle xmi:type="diagram:Square" xmi:id="_U27qLlbnEeWSde0I4olrxA" labelSize="10" labelAlignment="LEFT" labelPosition="node">
               <description xmi:type="style:SquareDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='Attribute']/@conditionnalStyles.2/@style"/>
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='Attribute']"/>
@@ -4003,7 +4004,7 @@
         <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_U27qL1bnEeWSde0I4olrxA" name="os_tpl" outgoingEdges="_U28RtlbnEeWSde0I4olrxA">
           <target xmi:type="occi:Mixin" href="platform:/resource/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@mixins[term='os_tpl']"/>
           <semanticElements xmi:type="occi:Mixin" href="platform:/resource/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@mixins[term='os_tpl']"/>
-          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U27qMFbnEeWSde0I4olrxA" labelSize="12" showIcon="false" foregroundColor="114,159,207">
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U27qMFbnEeWSde0I4olrxA" labelSize="12" showIcon="false" borderColor="0,37,74" backgroundStyle="GradientTopToBottom" backgroundColor="187,221,255" foregroundColor="255,255,255">
             <labelFormat>bold</labelFormat>
             <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@style"/>
           </ownedStyle>
@@ -4012,7 +4013,7 @@
         <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_U27qMVbnEeWSde0I4olrxA" name="resource_tpl" outgoingEdges="_U28RuVbnEeWSde0I4olrxA">
           <target xmi:type="occi:Mixin" href="platform:/resource/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@mixins[term='resource_tpl']"/>
           <semanticElements xmi:type="occi:Mixin" href="platform:/resource/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@mixins[term='resource_tpl']"/>
-          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U27qMlbnEeWSde0I4olrxA" labelSize="12" showIcon="false" foregroundColor="114,159,207">
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U27qMlbnEeWSde0I4olrxA" labelSize="12" showIcon="false" borderColor="0,37,74" backgroundStyle="GradientTopToBottom" backgroundColor="187,221,255" foregroundColor="255,255,255">
             <labelFormat>bold</labelFormat>
             <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@style"/>
           </ownedStyle>
@@ -4453,7 +4454,7 @@
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_U27qmVbnEeWSde0I4olrxA" name="container" outgoingEdges="_U28RfVbnEeWSde0I4olrxA">
         <target xmi:type="occi:Kind" href="model/Docker.occie#//@kinds[term='container']"/>
         <semanticElements xmi:type="occi:Kind" href="model/Docker.occie#//@kinds[term='container']"/>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U27qmlbnEeWSde0I4olrxA" labelSize="12" showIcon="false" foregroundColor="138,226,52">
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U27qmlbnEeWSde0I4olrxA" labelSize="12" showIcon="false" borderColor="0,47,0" backgroundStyle="GradientTopToBottom" backgroundColor="187,242,196" foregroundColor="255,255,255">
           <labelFormat>bold</labelFormat>
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@style"/>
         </ownedStyle>
@@ -4830,7 +4831,7 @@
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_U27q91bnEeWSde0I4olrxA" name="link" outgoingEdges="_U28RgFbnEeWSde0I4olrxA">
         <target xmi:type="occi:Kind" href="model/Docker.occie#//@kinds[term='link']"/>
         <semanticElements xmi:type="occi:Kind" href="model/Docker.occie#//@kinds[term='link']"/>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U27q-FbnEeWSde0I4olrxA" labelSize="12" showIcon="false" foregroundColor="138,226,52">
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U27q-FbnEeWSde0I4olrxA" labelSize="12" showIcon="false" borderColor="0,47,0" backgroundStyle="GradientTopToBottom" backgroundColor="187,242,196" foregroundColor="255,255,255">
           <labelFormat>bold</labelFormat>
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@style"/>
         </ownedStyle>
@@ -4847,7 +4848,7 @@
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_U27q-1bnEeWSde0I4olrxA" name="volumesfrom" outgoingEdges="_U28Rg1bnEeWSde0I4olrxA">
         <target xmi:type="occi:Kind" href="model/Docker.occie#//@kinds[term='volumesfrom']"/>
         <semanticElements xmi:type="occi:Kind" href="model/Docker.occie#//@kinds[term='volumesfrom']"/>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U27q_FbnEeWSde0I4olrxA" labelSize="12" showIcon="false" foregroundColor="138,226,52">
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U27q_FbnEeWSde0I4olrxA" labelSize="12" showIcon="false" borderColor="0,47,0" backgroundStyle="GradientTopToBottom" backgroundColor="187,242,196" foregroundColor="255,255,255">
           <labelFormat>bold</labelFormat>
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@style"/>
         </ownedStyle>
@@ -4867,7 +4868,7 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U27rAFbnEeWSde0I4olrxA" labelSize="12" showIcon="false" foregroundColor="138,226,52">
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U27rAFbnEeWSde0I4olrxA" labelSize="12" showIcon="false" borderColor="0,47,0" backgroundStyle="GradientTopToBottom" backgroundColor="187,242,196" foregroundColor="255,255,255">
           <labelFormat>bold</labelFormat>
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@style"/>
         </ownedStyle>
@@ -4876,7 +4877,7 @@
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_U27rAVbnEeWSde0I4olrxA" name="machine" outgoingEdges="_U28RiVbnEeWSde0I4olrxA" incomingEdges="_U28RjFbnEeWSde0I4olrxA _U28Rj1bnEeWSde0I4olrxA _U28RklbnEeWSde0I4olrxA _U28RlVbnEeWSde0I4olrxA _U28RmFbnEeWSde0I4olrxA _U28Rm1bnEeWSde0I4olrxA _U28RnlbnEeWSde0I4olrxA _U28RoVbnEeWSde0I4olrxA _U28RpFbnEeWSde0I4olrxA _U28Rp1bnEeWSde0I4olrxA _U28RqlbnEeWSde0I4olrxA _U28RrVbnEeWSde0I4olrxA">
         <target xmi:type="occi:Kind" href="model/Docker.occie#//@kinds[term='machine']"/>
         <semanticElements xmi:type="occi:Kind" href="model/Docker.occie#//@kinds[term='machine']"/>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U27rAlbnEeWSde0I4olrxA" labelSize="12" showIcon="false" foregroundColor="138,226,52">
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U27rAlbnEeWSde0I4olrxA" labelSize="12" showIcon="false" borderColor="0,47,0" backgroundStyle="GradientTopToBottom" backgroundColor="187,242,196" foregroundColor="255,255,255">
           <labelFormat>bold</labelFormat>
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@style"/>
         </ownedStyle>
@@ -4893,7 +4894,7 @@
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_U27rBVbnEeWSde0I4olrxA" name="machine_Amazon_EC2" outgoingEdges="_U28RjFbnEeWSde0I4olrxA">
         <target xmi:type="occi:Kind" href="model/Docker.occie#//@kinds[term='machine_Amazon_EC2']"/>
         <semanticElements xmi:type="occi:Kind" href="model/Docker.occie#//@kinds[term='machine_Amazon_EC2']"/>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U27rBlbnEeWSde0I4olrxA" labelSize="12" showIcon="false" foregroundColor="138,226,52">
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U27rBlbnEeWSde0I4olrxA" labelSize="12" showIcon="false" borderColor="0,47,0" backgroundStyle="GradientTopToBottom" backgroundColor="187,242,196" foregroundColor="255,255,255">
           <labelFormat>bold</labelFormat>
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@style"/>
         </ownedStyle>
@@ -4990,7 +4991,7 @@
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_U27rHVbnEeWSde0I4olrxA" name="machine_Digital_Ocean" outgoingEdges="_U28Rj1bnEeWSde0I4olrxA">
         <target xmi:type="occi:Kind" href="model/Docker.occie#//@kinds[term='machine_Digital_Ocean']"/>
         <semanticElements xmi:type="occi:Kind" href="model/Docker.occie#//@kinds[term='machine_Digital_Ocean']"/>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U27rHlbnEeWSde0I4olrxA" labelSize="12" showIcon="false" foregroundColor="138,226,52">
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U27rHlbnEeWSde0I4olrxA" labelSize="12" showIcon="false" borderColor="0,47,0" backgroundStyle="GradientTopToBottom" backgroundColor="187,242,196" foregroundColor="255,255,255">
           <labelFormat>bold</labelFormat>
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@style"/>
         </ownedStyle>
@@ -5031,7 +5032,7 @@
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_U27rJ1bnEeWSde0I4olrxA" name="machine_Google_Compute_Engine" outgoingEdges="_U28RklbnEeWSde0I4olrxA">
         <target xmi:type="occi:Kind" href="model/Docker.occie#//@kinds[term='machine_Google_Compute_Engine']"/>
         <semanticElements xmi:type="occi:Kind" href="model/Docker.occie#//@kinds[term='machine_Google_Compute_Engine']"/>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U27rKFbnEeWSde0I4olrxA" labelSize="12" showIcon="false" foregroundColor="138,226,52">
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U27rKFbnEeWSde0I4olrxA" labelSize="12" showIcon="false" borderColor="0,47,0" backgroundStyle="GradientTopToBottom" backgroundColor="187,242,196" foregroundColor="255,255,255">
           <labelFormat>bold</labelFormat>
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@style"/>
         </ownedStyle>
@@ -5080,7 +5081,7 @@
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_U27rM1bnEeWSde0I4olrxA" name="machine_IBM_SoftLayer" outgoingEdges="_U28RlVbnEeWSde0I4olrxA">
         <target xmi:type="occi:Kind" href="model/Docker.occie#//@kinds[term='machine_IBM_SoftLayer']"/>
         <semanticElements xmi:type="occi:Kind" href="model/Docker.occie#//@kinds[term='machine_IBM_SoftLayer']"/>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U27rNFbnEeWSde0I4olrxA" labelSize="12" showIcon="false" foregroundColor="138,226,52">
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U27rNFbnEeWSde0I4olrxA" labelSize="12" showIcon="false" borderColor="0,47,0" backgroundStyle="GradientTopToBottom" backgroundColor="187,242,196" foregroundColor="255,255,255">
           <labelFormat>bold</labelFormat>
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@style"/>
         </ownedStyle>
@@ -5193,7 +5194,7 @@
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_U28Q2lbnEeWSde0I4olrxA" name="machine_Microsoft_Azure" outgoingEdges="_U28RmFbnEeWSde0I4olrxA">
         <target xmi:type="occi:Kind" href="model/Docker.occie#//@kinds[term='machine_Microsoft_Azure']"/>
         <semanticElements xmi:type="occi:Kind" href="model/Docker.occie#//@kinds[term='machine_Microsoft_Azure']"/>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U28Q21bnEeWSde0I4olrxA" labelSize="12" showIcon="false" foregroundColor="138,226,52">
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U28Q21bnEeWSde0I4olrxA" labelSize="12" showIcon="false" borderColor="0,47,0" backgroundStyle="GradientTopToBottom" backgroundColor="187,242,196" foregroundColor="255,255,255">
           <labelFormat>bold</labelFormat>
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@style"/>
         </ownedStyle>
@@ -5218,7 +5219,7 @@
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_U28Q4FbnEeWSde0I4olrxA" name="machine_Microsoft_Hyper_V" outgoingEdges="_U28Rm1bnEeWSde0I4olrxA">
         <target xmi:type="occi:Kind" href="model/Docker.occie#//@kinds[term='machine_Microsoft_Hyper_V']"/>
         <semanticElements xmi:type="occi:Kind" href="model/Docker.occie#//@kinds[term='machine_Microsoft_Hyper_V']"/>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U28Q4VbnEeWSde0I4olrxA" labelSize="12" showIcon="false" foregroundColor="138,226,52">
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U28Q4VbnEeWSde0I4olrxA" labelSize="12" showIcon="false" borderColor="0,47,0" backgroundStyle="GradientTopToBottom" backgroundColor="187,242,196" foregroundColor="255,255,255">
           <labelFormat>bold</labelFormat>
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@style"/>
         </ownedStyle>
@@ -5267,7 +5268,7 @@
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_U28Q7FbnEeWSde0I4olrxA" name="machine_OpenStack" outgoingEdges="_U28RnlbnEeWSde0I4olrxA">
         <target xmi:type="occi:Kind" href="model/Docker.occie#//@kinds[term='machine_OpenStack']"/>
         <semanticElements xmi:type="occi:Kind" href="model/Docker.occie#//@kinds[term='machine_OpenStack']"/>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U28Q7VbnEeWSde0I4olrxA" labelSize="12" showIcon="false" foregroundColor="138,226,52">
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U28Q7VbnEeWSde0I4olrxA" labelSize="12" showIcon="false" borderColor="0,47,0" backgroundStyle="GradientTopToBottom" backgroundColor="187,242,196" foregroundColor="255,255,255">
           <labelFormat>bold</labelFormat>
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@style"/>
         </ownedStyle>
@@ -5372,7 +5373,7 @@
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_U28RBlbnEeWSde0I4olrxA" name="machine_Rackspace" outgoingEdges="_U28RoVbnEeWSde0I4olrxA">
         <target xmi:type="occi:Kind" href="model/Docker.occie#//@kinds[term='machine_Rackspace']"/>
         <semanticElements xmi:type="occi:Kind" href="model/Docker.occie#//@kinds[term='machine_Rackspace']"/>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U28RB1bnEeWSde0I4olrxA" labelSize="12" showIcon="false" foregroundColor="138,226,52">
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U28RB1bnEeWSde0I4olrxA" labelSize="12" showIcon="false" borderColor="0,47,0" backgroundStyle="GradientTopToBottom" backgroundColor="187,242,196" foregroundColor="255,255,255">
           <labelFormat>bold</labelFormat>
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@style"/>
         </ownedStyle>
@@ -5445,7 +5446,7 @@
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_U28RGFbnEeWSde0I4olrxA" name="machine_VirtualBox" outgoingEdges="_U28RpFbnEeWSde0I4olrxA">
         <target xmi:type="occi:Kind" href="model/Docker.occie#//@kinds[term='machine_VirtualBox']"/>
         <semanticElements xmi:type="occi:Kind" href="model/Docker.occie#//@kinds[term='machine_VirtualBox']"/>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U28RGVbnEeWSde0I4olrxA" labelSize="12" showIcon="false" foregroundColor="138,226,52">
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U28RGVbnEeWSde0I4olrxA" labelSize="12" showIcon="false" borderColor="0,47,0" backgroundStyle="GradientTopToBottom" backgroundColor="187,242,196" foregroundColor="255,255,255">
           <labelFormat>bold</labelFormat>
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@style"/>
         </ownedStyle>
@@ -5478,7 +5479,7 @@
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_U28RIFbnEeWSde0I4olrxA" name="machine_VMware_Fusion" outgoingEdges="_U28Rp1bnEeWSde0I4olrxA">
         <target xmi:type="occi:Kind" href="model/Docker.occie#//@kinds[term='machine_VMware_Fusion']"/>
         <semanticElements xmi:type="occi:Kind" href="model/Docker.occie#//@kinds[term='machine_VMware_Fusion']"/>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U28RIVbnEeWSde0I4olrxA" labelSize="12" showIcon="false" foregroundColor="138,226,52">
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U28RIVbnEeWSde0I4olrxA" labelSize="12" showIcon="false" borderColor="0,47,0" backgroundStyle="GradientTopToBottom" backgroundColor="187,242,196" foregroundColor="255,255,255">
           <labelFormat>bold</labelFormat>
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@style"/>
         </ownedStyle>
@@ -5511,7 +5512,7 @@
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_U28RKFbnEeWSde0I4olrxA" name="machine_VMware_vCloud_Air" outgoingEdges="_U28RqlbnEeWSde0I4olrxA">
         <target xmi:type="occi:Kind" href="model/Docker.occie#//@kinds[term='machine_VMware_vCloud_Air']"/>
         <semanticElements xmi:type="occi:Kind" href="model/Docker.occie#//@kinds[term='machine_VMware_vCloud_Air']"/>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U28RKVbnEeWSde0I4olrxA" labelSize="12" showIcon="false" foregroundColor="138,226,52">
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U28RKVbnEeWSde0I4olrxA" labelSize="12" showIcon="false" borderColor="0,47,0" backgroundStyle="GradientTopToBottom" backgroundColor="187,242,196" foregroundColor="255,255,255">
           <labelFormat>bold</labelFormat>
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@style"/>
         </ownedStyle>
@@ -5640,7 +5641,7 @@
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_U28RSFbnEeWSde0I4olrxA" name="machine_VMware_vSphere" outgoingEdges="_U28RrVbnEeWSde0I4olrxA">
         <target xmi:type="occi:Kind" href="model/Docker.occie#//@kinds[term='machine_VMware_vSphere']"/>
         <semanticElements xmi:type="occi:Kind" href="model/Docker.occie#//@kinds[term='machine_VMware_vSphere']"/>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U28RSVbnEeWSde0I4olrxA" labelSize="12" showIcon="false" foregroundColor="138,226,52">
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_U28RSVbnEeWSde0I4olrxA" labelSize="12" showIcon="false" borderColor="0,47,0" backgroundStyle="GradientTopToBottom" backgroundColor="187,242,196" foregroundColor="255,255,255">
           <labelFormat>bold</labelFormat>
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@style"/>
         </ownedStyle>
