@@ -160,8 +160,11 @@ public class AttributeItemProvider extends ItemProviderAdapter implements IEditi
 						return ((EPackage) ((EDataType) object).eContainer()).getNsURI() + '#'
 								+ ((EDataType) object).getName();
 					} else if (((EDataType) object).eContainer() instanceof Extension) {
-						return ((Extension) ((EDataType) object).eContainer()).getScheme() + '#'
-								+ ((EDataType) object).getName();
+						String scheme = ((Extension) ((EDataType) object).eContainer()).getScheme();
+						if (!scheme.endsWith("#")) {
+							scheme += "#";
+						}
+						return scheme + ((EDataType) object).getName();
 					}
 					return ((EDataType) object).getName() + '[' + ((EDataType) object).getInstanceTypeName() + ']';
 				}
