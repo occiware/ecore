@@ -80,7 +80,7 @@ MixinDecl returns Mixin:
     ;
 
 // BNF
-// <AttributeDecl> ::= `attribute' `mutable'? `required'? <ID> `:' <DataTypeRef> ( `*' )? ( `=' <STRING> )? ( `{' ( `description' <STRING> )? `}' )?
+// <AttributeDecl> ::= `attribute' `mutable'? `required'? <QualifiedID> `:' <DataTypeRef> ( `*' )? ( `=' <STRING> )? ( `{' ( `description' <STRING> )? `}' )?
 //
 // <DataTypeRef> ::= <ID> ( `.' <ID> )?
 //
@@ -89,17 +89,17 @@ AttributeDecl returns Attribute:
 	'attribute'
 	( mutable?='mutable' )?
 	( required?='required' )?
-	name=ID
+	name=QualifiedID
 	':'
 	type=[ecore::EDataType|QualifiedID]
-	( '*' )?
+	( multiple_values?='*' )?
 	( '=' default=STRING )?
 	(
 	'{' ('description' description=STRING )? '}' )?
 	;
 
 // BNF
-// <ActionDecl> ::= `action' <ID> `(' ( <ID> `:' <DataTypeRef> `*'? ( `,' <ID> `:' <DataTypeRef> `*'? )* )? `)' ( `{' `title' <STRING> `}' )?
+// <ActionDecl> ::= `action' <ID> `(' ( <ParameterDecl> ( `,' <ParameterDecl> )* )? `)' ( `{' `title' <STRING> `}' )?
 //
 
 ActionDecl returns Action:
@@ -111,16 +111,34 @@ ActionDecl returns Action:
 	( '{' 'title' title=STRING '}' )?
 	;
 
+// BNF
+// <ParameterDecl> ::= <QualifiedID> `:' <DataTypeRef> `*'? ( '=' <STRING> )?
+//
+
 ParameterDecl returns Attribute:
-    name=ID 
+    name=QualifiedID 
     ':'
     type=[ecore::EDataType|QualifiedID]
     ( multiple_values?='*' )?
+	( '=' default=STRING )?
     ;
 
 // BNF  
-// <DataTypeDecl> ::= `datatype' ( `serializable' )? <ID> `:' <STRING> ( `{' <DataTypeAnnotation>+ `}' )?
+// <DataTypeDecl> ::= `datatype' <ID> `:' <STRING> ( `{' <DataTypeAnnotation>+ `}' )?
 //
+
+DataTypeDecl returns ecore::EDataType:
+	{ecore::EDataType}
+	'datatype'
+	name=ID ':' instanceClassName=STRING
+	( '{' eAnnotations+=DataTypeAnnotations '}' )?
+	;
+
+DataTypeAnnotations returns ecore::EAnnotation:
+	details+=DataTypeAnnotation+
+	;
+
+// BNF
 // <DataTypeAnnotation> ::=
 //   `minExclusive' `=' <Integer>
 // | `minInclusive' `=' <Integer>
@@ -131,24 +149,13 @@ ParameterDecl returns Attribute:
 // | `length' `=' <PositiveInteger>
 // | `minLength' `=' <PositiveInteger>
 // | `maxLength' `=' <PositiveInteger>
-// | `whiteSpace' `=' <PositiveInteger>
+// | `whiteSpace' `=' <STRING>
 // | `pattern' `=' <STRING>
-
-DataTypeDecl returns ecore::EDataType:
-	{ecore::EDataType}
-	'datatype'
-	( serializable?='serializable' )?
-	name=ID ':' instanceClassName=STRING
-	( '{' eAnnotations+=DataTypeAnnotations '}' )?
-	;
-
-DataTypeAnnotations returns ecore::EAnnotation:
-	details+=DataTypeAnnotation+
-	;
+//
 
 DataTypeAnnotation returns ecore::EStringToStringMapEntry:
 	  key='minExclusive' '=' value=Integer
-	| key='minInclusive' "minInclusive" '=' value=Integer
+	| key='minInclusive' '=' value=Integer
 	| key='maxExclusive' '=' value=Integer
 	| key='maxInclusive' '=' value=Integer
 	| key='totalDigits' '=' value=PositiveInteger
@@ -156,7 +163,7 @@ DataTypeAnnotation returns ecore::EStringToStringMapEntry:
 	| key='length' '=' value=PositiveInteger
 	| key='minLength' '=' value=PositiveInteger
 	| key='maxLength' '=' value=PositiveInteger
-	| key='whiteSpace' '=' value=PositiveInteger
+	| key='whiteSpace' '=' value=STRING
 	| key='pattern' '=' value=STRING
 	;
     
@@ -179,16 +186,15 @@ EnumLiteralDecl returns ecore::EEnumLiteral:
 // BNF
 // <ConfigurationDecl> ::= `configuration' <UseDecl>* <ResourceDecl>*
 //
+// <UseDecl> ::= `use' <URI> ( `as' <ID> )?
+//
+
 ConfigurationDecl returns Configuration:
 	{Configuration}
 	'configuration'
-	( 'use' use+=[Extension|STRING] ( 'as' ID )? )* // TODO where storing the ID?
+	( 'use' use+=[Extension|STRING /* URI */] ( 'as' ID )? )* // TODO where storing the ID?
 	resources+=ResourceDecl*
 	;
-
-// BNF
-// <UseDecl> ::= `use' <URI> ( `as' <ID> )?
-//
 
 // BNF
 // <ResourceDecl> ::= `resource' <URI> `:' <KindRef> ( `mixins' <MixinRef> ( `,' <MixinRef> )* )? `{' <StateDecl>* <LinkDecl>* `}'
@@ -205,10 +211,10 @@ ResourceDecl returns Resource:
 	'}';
 
 // BNF
-// <StateDecl> ::= `state' <ID> `=' <STRING>
+// <StateDecl> ::= `state' <QualifiedID> `=' <STRING>
 //
 StateDecl returns AttributeState:
-	'state' name=ID '=' value=STRING
+	'state' name=QualifiedID '=' value=STRING
 	;
 
 // BNF
@@ -228,7 +234,10 @@ LinkDecl returns Link:
 
 // URI: STRING;
 
-QualifiedID: ID ( '.' ID )? ;
+QualifiedID : (ID | QUALIFIED_ID) ;
+
+terminal QUALIFIED_ID : 
+  '^'?('a'..'z'|'A'..'Z'|'_')('a'..'z'|'A'..'Z'|'_'|'0'..'9')*  '.' ('a'..'z'|'A'..'Z'|'_')('a'..'z'|'A'..'Z'|'_'|'0'..'9')* ( '.' ('a'..'z'|'A'..'Z'|'_')('a'..'z'|'A'..'Z'|'_'|'0'..'9')* )*;
 
 Integer returns String: '-'? INT ;
 

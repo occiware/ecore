@@ -42,6 +42,7 @@ public class OCCIParser extends AbstractContentAssistParser {
 					put(grammarAccess.getKindDeclAccess().getAlternatives_5(), "rule__KindDecl__Alternatives_5");
 					put(grammarAccess.getMixinDeclAccess().getAlternatives_7(), "rule__MixinDecl__Alternatives_7");
 					put(grammarAccess.getDataTypeAnnotationAccess().getAlternatives(), "rule__DataTypeAnnotation__Alternatives");
+					put(grammarAccess.getQualifiedIDAccess().getAlternatives(), "rule__QualifiedID__Alternatives");
 					put(grammarAccess.getExtensionDeclAccess().getGroup(), "rule__ExtensionDecl__Group__0");
 					put(grammarAccess.getExtensionDeclAccess().getGroup_4(), "rule__ExtensionDecl__Group_4__0");
 					put(grammarAccess.getExtensionDeclAccess().getGroup_4_2(), "rule__ExtensionDecl__Group_4_2__0");
@@ -64,8 +65,9 @@ public class OCCIParser extends AbstractContentAssistParser {
 					put(grammarAccess.getActionDeclAccess().getGroup_3_1(), "rule__ActionDecl__Group_3_1__0");
 					put(grammarAccess.getActionDeclAccess().getGroup_5(), "rule__ActionDecl__Group_5__0");
 					put(grammarAccess.getParameterDeclAccess().getGroup(), "rule__ParameterDecl__Group__0");
+					put(grammarAccess.getParameterDeclAccess().getGroup_4(), "rule__ParameterDecl__Group_4__0");
 					put(grammarAccess.getDataTypeDeclAccess().getGroup(), "rule__DataTypeDecl__Group__0");
-					put(grammarAccess.getDataTypeDeclAccess().getGroup_6(), "rule__DataTypeDecl__Group_6__0");
+					put(grammarAccess.getDataTypeDeclAccess().getGroup_5(), "rule__DataTypeDecl__Group_5__0");
 					put(grammarAccess.getDataTypeAnnotationAccess().getGroup_0(), "rule__DataTypeAnnotation__Group_0__0");
 					put(grammarAccess.getDataTypeAnnotationAccess().getGroup_1(), "rule__DataTypeAnnotation__Group_1__0");
 					put(grammarAccess.getDataTypeAnnotationAccess().getGroup_2(), "rule__DataTypeAnnotation__Group_2__0");
@@ -90,8 +92,6 @@ public class OCCIParser extends AbstractContentAssistParser {
 					put(grammarAccess.getLinkDeclAccess().getGroup(), "rule__LinkDecl__Group__0");
 					put(grammarAccess.getLinkDeclAccess().getGroup_4(), "rule__LinkDecl__Group_4__0");
 					put(grammarAccess.getLinkDeclAccess().getGroup_4_2(), "rule__LinkDecl__Group_4_2__0");
-					put(grammarAccess.getQualifiedIDAccess().getGroup(), "rule__QualifiedID__Group__0");
-					put(grammarAccess.getQualifiedIDAccess().getGroup_1(), "rule__QualifiedID__Group_1__0");
 					put(grammarAccess.getIntegerAccess().getGroup(), "rule__Integer__Group__0");
 					put(grammarAccess.getExtensionDeclAccess().getNameAssignment_1(), "rule__ExtensionDecl__NameAssignment_1");
 					put(grammarAccess.getExtensionDeclAccess().getSchemeAssignment_3(), "rule__ExtensionDecl__SchemeAssignment_3");
@@ -118,6 +118,7 @@ public class OCCIParser extends AbstractContentAssistParser {
 					put(grammarAccess.getAttributeDeclAccess().getRequiredAssignment_2(), "rule__AttributeDecl__RequiredAssignment_2");
 					put(grammarAccess.getAttributeDeclAccess().getNameAssignment_3(), "rule__AttributeDecl__NameAssignment_3");
 					put(grammarAccess.getAttributeDeclAccess().getTypeAssignment_5(), "rule__AttributeDecl__TypeAssignment_5");
+					put(grammarAccess.getAttributeDeclAccess().getMultiple_valuesAssignment_6(), "rule__AttributeDecl__Multiple_valuesAssignment_6");
 					put(grammarAccess.getAttributeDeclAccess().getDefaultAssignment_7_1(), "rule__AttributeDecl__DefaultAssignment_7_1");
 					put(grammarAccess.getAttributeDeclAccess().getDescriptionAssignment_8_1_1(), "rule__AttributeDecl__DescriptionAssignment_8_1_1");
 					put(grammarAccess.getActionDeclAccess().getTermAssignment_1(), "rule__ActionDecl__TermAssignment_1");
@@ -127,15 +128,15 @@ public class OCCIParser extends AbstractContentAssistParser {
 					put(grammarAccess.getParameterDeclAccess().getNameAssignment_0(), "rule__ParameterDecl__NameAssignment_0");
 					put(grammarAccess.getParameterDeclAccess().getTypeAssignment_2(), "rule__ParameterDecl__TypeAssignment_2");
 					put(grammarAccess.getParameterDeclAccess().getMultiple_valuesAssignment_3(), "rule__ParameterDecl__Multiple_valuesAssignment_3");
-					put(grammarAccess.getDataTypeDeclAccess().getSerializableAssignment_2(), "rule__DataTypeDecl__SerializableAssignment_2");
-					put(grammarAccess.getDataTypeDeclAccess().getNameAssignment_3(), "rule__DataTypeDecl__NameAssignment_3");
-					put(grammarAccess.getDataTypeDeclAccess().getInstanceClassNameAssignment_5(), "rule__DataTypeDecl__InstanceClassNameAssignment_5");
-					put(grammarAccess.getDataTypeDeclAccess().getEAnnotationsAssignment_6_1(), "rule__DataTypeDecl__EAnnotationsAssignment_6_1");
+					put(grammarAccess.getParameterDeclAccess().getDefaultAssignment_4_1(), "rule__ParameterDecl__DefaultAssignment_4_1");
+					put(grammarAccess.getDataTypeDeclAccess().getNameAssignment_2(), "rule__DataTypeDecl__NameAssignment_2");
+					put(grammarAccess.getDataTypeDeclAccess().getInstanceClassNameAssignment_4(), "rule__DataTypeDecl__InstanceClassNameAssignment_4");
+					put(grammarAccess.getDataTypeDeclAccess().getEAnnotationsAssignment_5_1(), "rule__DataTypeDecl__EAnnotationsAssignment_5_1");
 					put(grammarAccess.getDataTypeAnnotationsAccess().getDetailsAssignment(), "rule__DataTypeAnnotations__DetailsAssignment");
 					put(grammarAccess.getDataTypeAnnotationAccess().getKeyAssignment_0_0(), "rule__DataTypeAnnotation__KeyAssignment_0_0");
 					put(grammarAccess.getDataTypeAnnotationAccess().getValueAssignment_0_2(), "rule__DataTypeAnnotation__ValueAssignment_0_2");
 					put(grammarAccess.getDataTypeAnnotationAccess().getKeyAssignment_1_0(), "rule__DataTypeAnnotation__KeyAssignment_1_0");
-					put(grammarAccess.getDataTypeAnnotationAccess().getValueAssignment_1_3(), "rule__DataTypeAnnotation__ValueAssignment_1_3");
+					put(grammarAccess.getDataTypeAnnotationAccess().getValueAssignment_1_2(), "rule__DataTypeAnnotation__ValueAssignment_1_2");
 					put(grammarAccess.getDataTypeAnnotationAccess().getKeyAssignment_2_0(), "rule__DataTypeAnnotation__KeyAssignment_2_0");
 					put(grammarAccess.getDataTypeAnnotationAccess().getValueAssignment_2_2(), "rule__DataTypeAnnotation__ValueAssignment_2_2");
 					put(grammarAccess.getDataTypeAnnotationAccess().getKeyAssignment_3_0(), "rule__DataTypeAnnotation__KeyAssignment_3_0");

@@ -112,8 +112,9 @@ public abstract class AbstractOCCISemanticSequencer extends AbstractDelegatingSe
 	 *     (
 	 *         mutable?='mutable'? 
 	 *         required?='required'? 
-	 *         name=ID 
+	 *         name=QualifiedID 
 	 *         type=[EDataType|QualifiedID] 
+	 *         multiple_values?='*'? 
 	 *         default=STRING? 
 	 *         description=STRING?
 	 *     )
@@ -144,7 +145,7 @@ public abstract class AbstractOCCISemanticSequencer extends AbstractDelegatingSe
 	 *         (key='length' value=PositiveInteger) | 
 	 *         (key='minLength' value=PositiveInteger) | 
 	 *         (key='maxLength' value=PositiveInteger) | 
-	 *         (key='whiteSpace' value=PositiveInteger) | 
+	 *         (key='whiteSpace' value=STRING) | 
 	 *         (key='pattern' value=STRING)
 	 *     )
 	 */
@@ -164,7 +165,7 @@ public abstract class AbstractOCCISemanticSequencer extends AbstractDelegatingSe
 	
 	/**
 	 * Constraint:
-	 *     (serializable?='serializable'? name=ID instanceClassName=STRING eAnnotations+=DataTypeAnnotations?)
+	 *     (name=ID instanceClassName=STRING eAnnotations+=DataTypeAnnotations?)
 	 */
 	protected void sequence_DataTypeDecl(EObject context, EDataType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -234,7 +235,7 @@ public abstract class AbstractOCCISemanticSequencer extends AbstractDelegatingSe
 	
 	/**
 	 * Constraint:
-	 *     (name=ID type=[EDataType|QualifiedID] multiple_values?='*'?)
+	 *     (name=QualifiedID type=[EDataType|QualifiedID] multiple_values?='*'? default=STRING?)
 	 */
 	protected void sequence_ParameterDecl(EObject context, Attribute semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -252,7 +253,7 @@ public abstract class AbstractOCCISemanticSequencer extends AbstractDelegatingSe
 	
 	/**
 	 * Constraint:
-	 *     (name=ID value=STRING)
+	 *     (name=QualifiedID value=STRING)
 	 */
 	protected void sequence_StateDecl(EObject context, AttributeState semanticObject) {
 		if(errorAcceptor != null) {
@@ -263,7 +264,7 @@ public abstract class AbstractOCCISemanticSequencer extends AbstractDelegatingSe
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getStateDeclAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getStateDeclAccess().getNameQualifiedIDParserRuleCall_1_0(), semanticObject.getName());
 		feeder.accept(grammarAccess.getStateDeclAccess().getValueSTRINGTerminalRuleCall_3_0(), semanticObject.getValue());
 		feeder.finish();
 	}
