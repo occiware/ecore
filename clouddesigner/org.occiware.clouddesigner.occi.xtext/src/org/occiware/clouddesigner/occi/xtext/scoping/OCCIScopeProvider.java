@@ -10,6 +10,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.resource.EObjectDescription;
 import org.eclipse.xtext.resource.IEObjectDescription;
@@ -31,18 +32,6 @@ import org.occiware.clouddesigner.occi.Mixin;
 @SuppressWarnings("all")
 public class OCCIScopeProvider extends AbstractDeclarativeScopeProvider {
 
-	private String getKindTerm(Kind kind)
-	{
-		String name = kind.getTerm();
-		if("resource".equals(name)) {
-			return "^resource";
-		}
-		if("link".equals(name)) {
-			return "^link";
-		}
-		return name;		
-	}
-
 	public IScope scope_Extension_import(final Extension ext, final EReference ref) {
 		final ArrayList<IEObjectDescription> res = new ArrayList<IEObjectDescription>();
 		EList<Extension> _import = ext.getImport();
@@ -60,11 +49,11 @@ public class OCCIScopeProvider extends AbstractDeclarativeScopeProvider {
 		final ArrayList<IEObjectDescription> res = new ArrayList<IEObjectDescription>();
 		Extension extension = (Extension)kind.eContainer();
 		for(Kind k : extension.getKinds()) {
-			res.add(EObjectDescription.create(QualifiedName.create(getKindTerm(k)), k));
+			res.add(EObjectDescription.create(QualifiedName.create(k.getTerm()), k));
 		}
 		for(Extension importExtension : extension.getImport()) {
 			for(Kind k : importExtension.getKinds()) {
-				res.add(EObjectDescription.create(QualifiedName.create(importExtension.getName(), getKindTerm(k)), k));
+				res.add(EObjectDescription.create(QualifiedName.create(importExtension.getName(), k.getTerm()), k));
 			}
 		}
 		return new SimpleScope(IScope.NULLSCOPE, res);
@@ -88,11 +77,11 @@ public class OCCIScopeProvider extends AbstractDeclarativeScopeProvider {
 		final ArrayList<IEObjectDescription> res = new ArrayList<IEObjectDescription>();
 		Extension extension = (Extension)mixin.eContainer();
 		for(Kind k : extension.getKinds()) {
-			res.add(EObjectDescription.create(QualifiedName.create(getKindTerm(k)), k));
+			res.add(EObjectDescription.create(QualifiedName.create(k.getTerm()), k));
 		}
 		for(Extension importExtension : extension.getImport()) {
 			for(Kind k : importExtension.getKinds()) {
-				res.add(EObjectDescription.create(QualifiedName.create(importExtension.getName(), getKindTerm(k)), k));
+				res.add(EObjectDescription.create(QualifiedName.create(importExtension.getName(), k.getTerm()), k));
 			}
 		}
 		return new SimpleScope(IScope.NULLSCOPE, res);
@@ -100,7 +89,7 @@ public class OCCIScopeProvider extends AbstractDeclarativeScopeProvider {
  	
  	public IScope scope_Attribute_type(final Attribute attribute, final EReference ref) {
 		final ArrayList<IEObjectDescription> res = new ArrayList<IEObjectDescription>();
-		Extension extension = (Extension)attribute.eContainer().eContainer();
+		Extension extension = (Extension)EcoreUtil2.getRootContainer(attribute);
 		for(EDataType type : extension.getTypes()) {
 			res.add(EObjectDescription.create(QualifiedName.create(type.getName()), type));
 		}
