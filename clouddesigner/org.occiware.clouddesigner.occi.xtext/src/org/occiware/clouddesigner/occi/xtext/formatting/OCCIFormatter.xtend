@@ -35,13 +35,17 @@ public class OCCIFormatter extends AbstractDeclarativeFormatter {
 		c.setLinewrap(1).before(getDataTypeDeclRule)
 		c.setLinewrap(1).before(getEnumTypeDeclRule)
 
+		c.setLinewrap(1).before(getDataTypeAnnotationRule)
+
 //		for(extendsKeyword: findKeywords('extends')) {
 //          c.setNoLinewrap().after(extendsKeyword)
 //        }
 
-		for(parenthesis: findKeywords('(')) {
-			c.setNoLinewrap().before(parenthesis)
-			c.setNoSpace().after(parenthesis)
+		for(pair: findKeywordPairs('(', ')')) {
+			c.setNoLinewrap().before(pair.first)
+			c.setNoSpace().after(pair.first)
+			c.setNoLinewrap().before(pair.second)
+			c.setNoSpace().before(pair.second)
 		}
 
 		for(pair: findKeywordPairs('{', '}')) {
