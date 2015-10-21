@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<occi:Extension 
-xmi:version="2.0" 
-xmlns:xmi="http://www.omg.org/XMI" 
-xmlns:occi="http://schemas.ogf.org/occi" 
-name="test" 
-scheme="test#">
+<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:occi="http://schemas.ogf.org/occi" name="test" scheme="test#">
   <import href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#/"/>
   <kinds term="kind1" scheme="test#">
     <parent href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@kinds[term='resource']"/>

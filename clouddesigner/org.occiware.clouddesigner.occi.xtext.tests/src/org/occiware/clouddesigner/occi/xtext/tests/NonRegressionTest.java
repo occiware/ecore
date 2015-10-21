@@ -60,7 +60,6 @@ public class NonRegressionTest implements FileFilter {
 
 	@Override
 	public boolean accept(File pathname) {
-		System.err.println(pathname);
 		return !ignored.contains(pathname.toString());
 	}
 }
