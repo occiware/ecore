@@ -1,0 +1,7 @@
+extension test : "test#"
+import "platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#/"
+kind kind1 extends core.^resource {
+}
+kind kind2 extends kind1 {
+	attribute attribute1 : core.String
+}

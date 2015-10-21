@@ -1,8 +1,0 @@
-extension aaaa : "http://schemas.ogf.org/occi/aaa#" import "Core.occie#/"
-kind
-^resource extends entity {
-	title "Resource"
-}
-kind entity {
-	title "Entity type"
-}
