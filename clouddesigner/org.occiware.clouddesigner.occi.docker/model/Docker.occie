@@ -6,10 +6,10 @@
     xmlns:OCCI="http://schemas.ogf.org/occi"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
     xsi:schemaLocation="http://schemas.ogf.org/occi"
-    name="OCCIware Docker"
+    name="docker"
     scheme="http://occiware.org/docker#">
-  <import href="../../org.occiware.clouddesigner.occi/model/Core.occie#/"/>
-  <import href="../../org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#/"/>
+  <import href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#/"/>
+  <import href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#/"/>
   <kinds term="container"
       scheme="http://occiware.org/docker#"
       title="Container Resource">
@@ -18,247 +18,247 @@
         required="true"
         description="The name of this Container instance">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="containerid"
         description="The ID of this Container instance">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="image"
         description="The image of this Container instance">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="build"
         description="The build directory of this Container instance">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="command"
         default=""
         description="Override the default command in Dockerfile">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="ports"
         description="The ports of this Container instance"
         multiple_values="true">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="expose"
         description="The exposed ports of this Container instance"
         multiple_values="true">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="volumes"
         description="The list of volumes"
         multiple_values="true">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="environment"
         description="Environment variables"
         multiple_values="true">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="env_file"
         multiple_values="true">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="net"
         description="'bridge',  'none', 'container:[name or id]', or 'host'">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="dns"
         description="Custom DNS servers"
         multiple_values="true">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="dns_search"
         description="Custom DNS search domains"
         multiple_values="true">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="cap_add"
         description="Add container capabilities"
         multiple_values="true">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="cap_drop"
         description="Drop container capabilities"
         multiple_values="true">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="working_dir"
         description="Working directory">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="entrypoint"
         description="Entry point">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="user">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="hostname">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="domainname">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="mem_limit">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.2"/>
     </attributes>
     <attributes
         name="memory_swap"
         description="Memory swap limit">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.2"/>
     </attributes>
     <attributes
         name="privileged"
         default="false">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.1"/>
     </attributes>
     <attributes
         name="restart"
         default="">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="stdin_open"
         default=""
         description="">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.1"/>
     </attributes>
     <attributes
         name="interactive"
         required="true"
         default="false">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.1"/>
     </attributes>
     <attributes
         name="tty"
         default="false">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.1"/>
     </attributes>
     <attributes
         name="cpu_shares"
         default="0"
         description="CPU shares for this Docker container">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.2"/>
     </attributes>
     <attributes
         name="pid"
         description="'' or 'host'">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="ipc"
         description="'', 'host' or 'container:[name:id]'">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="add_host"
         multiple_values="true">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="mac_address">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="rm">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.1"/>
     </attributes>
     <attributes
         name="security_opt"
         multiple_values="true">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="device"
         multiple_values="true">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="lxc_conf"
         multiple_values="true">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="cpuset"
         default=""
         description="">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="publish_all"
         default="false"
         description="Publish all exposed ports to random ports on the host interfaces">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.1"/>
     </attributes>
     <attributes
         name="read_only"
         default="false"
         description="Mount the container's root filesystem as read only">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.1"/>
     </attributes>
     <parent
-        href="../../org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='compute']"/>
+        href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='compute']"/>
     <actions
         term="create"
         scheme="http://occiware.org/docker/container/action#"/>
@@ -286,7 +286,7 @@
           required="true"
           default="KILL">
         <type
-            href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+            href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
       </attributes>
     </actions>
   </kinds>
@@ -297,10 +297,10 @@
         name="alias"
         description="The alias of this Link instance">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <parent
-        href="../../org.occiware.clouddesigner.occi/model/Core.occie#//@kinds[term='link']"/>
+        href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@kinds[term='link']"/>
   </kinds>
   <kinds term="volumesfrom"
       scheme="http://occiware.org/docker#"
@@ -311,12 +311,12 @@
         description="The mode of this VolumesFrom instance"
         type="//@types.0"/>
     <parent
-        href="../../org.occiware.clouddesigner.occi/model/Core.occie#//@kinds[term='link']"/>
+        href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@kinds[term='link']"/>
   </kinds>
   <kinds term="contains"
       scheme="http://occiware.org/docker#">
     <parent
-        href="../../org.occiware.clouddesigner.occi/model/Core.occie#//@kinds[term='link']"/>
+        href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@kinds[term='link']"/>
   </kinds>
   <kinds term="machine"
       scheme="http://occiware.org/docker#"
@@ -325,10 +325,10 @@
         name="name"
         required="true">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <parent
-        href="../../org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='compute']"/>
+        href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='compute']"/>
   </kinds>
   <kinds term="machine_Amazon_EC2"
       scheme="http://occiware.org/docker#"
@@ -339,75 +339,75 @@
         required="true"
         description="Your access key id for the Amazon Web Services API">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="ami"
         default="ami-4ae27e22"
         description="The AMI ID of the instance to use">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="instance_type"
         default="t2.micro"
         description="The instance type to run">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="region"
         default="us-east-1"
         description="The region to use when launching the instance">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="root_size"
         default="16"
         description="The root disk size of the instance (in GB)">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.2"/>
     </attributes>
     <attributes
         name="secret_key"
         required="true"
         description="Your secret access key for the Amazon Web Services API">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="security_group"
         default="docker-machine"
         description="AWS VPC security group name">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="session_token"
         description="Your session token for the Amazon Web Services API">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="subnet_id"
         description="AWS VPC subnet id">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="vpc_id"
         required="true"
         description="Your VPC ID to launch the instance in">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="zone"
         default="a"
         description="The AWS zone launch the instance in (i.e. one of a,b,c,d,e)">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
   </kinds>
   <kinds term="machine_Digital_Ocean"
@@ -419,28 +419,28 @@
         required="true"
         description="Your personal access token for the Digital Ocean API">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="image"
         default="docker"
         description="The name of the Digital Ocean image to use">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="region"
         default="nyc3"
         description="The region to create the droplet in">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="size"
         default="512mb"
         description="The size of the Digital Ocean driver (larger than default options are of the form 2gb)">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
   </kinds>
   <kinds term="machine_Google_Compute_Engine"
@@ -452,35 +452,35 @@
         default="us-central1-a"
         description="The zone to launch the instance">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="machine_type"
         default="f1-micro"
         description="The type of instance">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="username"
         default="docker-user"
         description="The username to use for the instance">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="instance_name"
         default="docker-machine"
         description="The name of the instance">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="project"
         required="true"
         description="The name of your project to use when launching the instance">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
   </kinds>
   <kinds term="machine_IBM_SoftLayer"
@@ -491,84 +491,84 @@
         name="api_endpoint"
         description="Change softlayer API endpoint">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="user"
         required="true"
         description="username for your softlayer account, api key needs to match this user">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="api_key"
         required="true"
         description="API key for your user account">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="cpu"
         description="Number of CPU's for the machine">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.2"/>
     </attributes>
     <attributes
         name="disk_size"
         default=""
         description="Size of the disk in MB. 0 sets the softlayer default">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.2"/>
     </attributes>
     <attributes
         name="domain"
         required="true"
         description="domain name for the machine">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="hostname"
         description="hostname for the machine">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="hourly_billing"
         default="true"
         description="Sets the hourly billing flag (default), otherwise uses monthly billing">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.1"/>
     </attributes>
     <attributes
         name="image"
         description="OS Image to use">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="local_disk"
         description="Use local machine disk instead of softlayer SAN">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.1"/>
     </attributes>
     <attributes
         name="memory"
         description="Memory for host in MB">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.2"/>
     </attributes>
     <attributes
         name="private_net_only"
         description="Disable public networking">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.1"/>
     </attributes>
     <attributes
         name="region"
         description="softlayer region">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
   </kinds>
   <kinds term="machine_Microsoft_Azure"
@@ -580,14 +580,14 @@
         required="true"
         description="Your Azure subscription ID (A GUID like d255d8d7-5af0-4f5c-8a3e-1545044b861e)">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="subscription_cert"
         required="true"
         description="Your Azure subscription cert">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
   </kinds>
   <kinds term="machine_Microsoft_Hyper_V"
@@ -598,33 +598,33 @@
         name="boot2docker_location"
         description="Location of a local boot2docker iso to use. Overrides the URL option below">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="boot2docker_url"
         description="The URL of the boot2docker iso. Defaults to the latest available version">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="disk_size"
         default="20000"
         description="Size of disk for the host in MB">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.2"/>
     </attributes>
     <attributes
         name="memory"
         default="1024"
         description="Size of memory for the host in MB. The machine is setup to use dynamic memory">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.2"/>
     </attributes>
     <attributes
         name="virtual_switch"
         description="Name of the virtual switch to use. Defaults to first found">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
   </kinds>
   <kinds term="machine_OpenStack"
@@ -636,74 +636,74 @@
         required="true"
         description="The flavor ID to use when creating the machine">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="image_id"
         required="true"
         description="The image ID to use when creating the machine">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="auth_url"
         description="Keystone service base URL">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="username"
         description="User identifer to authenticate with">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="password"
         description="User password. It can be omitted if the standard environment variable OS_PASSWORD is set.">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="tenant_name"
         description="Identify the tenant in which the machine will be created">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="tenant_id"
         description="Identify the tenant in which the machine will be created">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="region"
         description="The region to work on. Can be omitted if there is only one region on the OpenStack">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="endpoint_type"
         description="Endpoint type can be internalURL, adminURL on publicURL. If is a helper for the driver to choose the right URL in the OpenStack service catalog. If not provided the default id publicURL">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="net_id"
         description="The private network id the machine will be connected on. If your OpenStack project project contains only one private network it will be use automatically">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="sec_groups"
         description="If security groups are available on your OpenStack you can specify a comma separated list to use for the machine (e.g. secgrp001,secgrp002)">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="floatingip_pool"
         description="The IP pool that will be used to get a public IP an assign it to the machine. If there is an IP address already allocated but not assigned to any machine, this IP will be chosen and assigned to the machine. If there is no IP address already allocated a new IP will be allocated and assigned to the machine">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
   </kinds>
   <kinds term="machine_Rackspace"
@@ -715,56 +715,56 @@
         required="true"
         description="Rackspace account username">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="api_key"
         required="true"
         description="Rackspace API key">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="region"
         required="true"
         description="Rackspace region name">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="endpoint_type"
         default="publicURL"
         description="Rackspace endpoint type (adminURL, internalURL or the default publicURL)">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="image_id"
         default="Ubuntu 14.10 (Utopic Unicorn) (PVHVM)"
         description="Rackspace image ID ">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="flavor_id"
         default="General Purpose 1GB"
         description="Rackspace flavor ID">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="ssh_user"
         default="root"
         description="SSH user for the newly booted machine">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="ssh_port"
         default="22"
         description="SSH port for the newly booted machine">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.2"/>
     </attributes>
   </kinds>
   <kinds term="machine_VirtualBox"
@@ -775,21 +775,21 @@
         name="boot2docker_url"
         description="The URL of the boot2docker image. Default to the latest available version">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="disk_size"
         default="20000"
         description="Size of disk for the host in MB">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.2"/>
     </attributes>
     <attributes
         name="memory"
         default="1024"
         description="Size of memory for the host in MB">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.2"/>
     </attributes>
   </kinds>
   <kinds term="machine_VMware_Fusion"
@@ -800,21 +800,21 @@
         name="boot2docker_url"
         description="URL for boot2docker image">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="disk_size"
         default="20000"
         description="Size of disk for host VM (in MB)">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.2"/>
     </attributes>
     <attributes
         name="memory_size"
         default="1024"
         description="Size of memory for host VM (in MB)">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.2"/>
     </attributes>
   </kinds>
   <kinds term="machine_VMware_vCloud_Air"
@@ -826,102 +826,102 @@
         required="true"
         description="vCloud Air Username">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="password"
         required="true"
         description="vCloud Air Password">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="catalog"
         default="Public Catalog"
         description="Catalog ">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="catalogitem"
         default="Ubuntu Server 12.04 LTS (amd64 20140927)"
         description="Catalog Item ">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="computeid"
         description="Compute ID (if using Dedicated Cloud)">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="cpu_count"
         default="1"
         description="VM Cpu Count">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.2"/>
     </attributes>
     <attributes
         name="docker_port"
         default="2376"
         description="Docker port ">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.2"/>
     </attributes>
     <attributes
         name="edgegateway"
         default="&lt;vdcid>"
         description="Organization Edge Gateway">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="memory_size"
         default="2048"
         description="VM Memory Size in MB">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.2"/>
     </attributes>
     <attributes
         name="vapp_name"
         default="&lt;autogenerated>"
         description="vApp Name">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="orgvdcnetwork"
         default="&lt;vdcid>-default-routed"
         description="Organization VDC Network to attach">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="provision"
         default="true"
         description="Install Docker binaries">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.1"/>
     </attributes>
     <attributes
         name="publicip"
         description="Org Public IP to use">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="ssh_port"
         default="22"
         description="SSH port">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.2"/>
     </attributes>
     <attributes
         name="vdcid"
         description="Virtual Data Center ID">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
   </kinds>
   <kinds term="machine_VMware_vSphere"
@@ -933,78 +933,78 @@
         required="true"
         description="vSphere Username">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="password"
         required="true"
         description="vSphere Password">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="boot2docker_url"
         required="true"
         description="URL for boot2docker image">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="compute_ip"
         description="Compute host IP where the Docker VM will be instantiated">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="cpu_count"
         default="2"
         description="CPU number for Docker VM">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.2"/>
     </attributes>
     <attributes
         name="datacenter"
         description="Datacenter for Docker VM (must be set to ha-datacenter when connecting to a single host)">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="datastore"
         description="Datastore for Docker VM">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="disk_size"
         default="20000"
         description="Size of disk for Docker VM (in MB)">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.2"/>
     </attributes>
     <attributes
         name="memory_size"
         default="2048"
         description="Size of memory for Docker VM (in MB) ">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.2"/>
     </attributes>
     <attributes
         name="network"
         description="Network where the Docker VM will be attached">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="pool"
         description="Resource pool for Docker VM">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes
         name="vcenter"
         description=" IP/hostname for vCenter (or ESXi if connecting directly to a single host)">
       <type
-          href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
   </kinds>
   <types xsi:type="ecore:EEnum"
