@@ -42,7 +42,7 @@
 		
 		<!-- OCCI Xtext -->
 		<module>../org.occiware.clouddesigner.occi.xtext</module>
-		<module>../org.occiware.clouddesigner.occi.xtext.tests</module>
+		<!--<module>../org.occiware.clouddesigner.occi.xtext.tests</module>-->
 		<module>../org.occiware.clouddesigner.occi.xtext.ui</module>
 
 		<!--  OCCI2Ecore -->
