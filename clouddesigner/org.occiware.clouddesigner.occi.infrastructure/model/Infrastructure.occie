@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="ASCII"?>
-<OCCI:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:OCCI="http://schemas.ogf.org/occi" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xsi:schemaLocation="http://schemas.ogf.org/occi" name="OCCI Infrastructure" scheme="http://schemas.ogf.org/occi/infrastructure#">
-  <import href="../../org.occiware.clouddesigner.occi/model/Core.occie#/"/>
+<OCCI:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:OCCI="http://schemas.ogf.org/occi" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xsi:schemaLocation="http://schemas.ogf.org/occi" name="infrastructure" scheme="http://schemas.ogf.org/occi/infrastructure#">
+  <import href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#/"/>
   <kinds term="network" scheme="http://schemas.ogf.org/occi/infrastructure#" title="Network Resource">
     <attributes name="occi.network.vlan" mutable="true" description="802.1q VLAN Identifier (e.g. 343)" type="//@types.1"/>
     <attributes name="occi.network.label" mutable="true" description="Tag based VLANs (e.g. external-dmz)" type="//@types.2"/>
     <attributes name="occi.network.state" required="true" description="Current state of the instance" type="//@types.4"/>
-    <parent href="../../org.occiware.clouddesigner.occi/model/Core.occie#//@kinds[term='resource']"/>
+    <parent href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@kinds[term='resource']"/>
     <actions term="up" scheme="http://schemas.ogf.org/occi/infrastructure/network/action#"/>
     <actions term="down" scheme="http://schemas.ogf.org/occi/infrastructure/network/action#"/>
   </kinds>
@@ -13,12 +13,12 @@
     <attributes name="occi.compute.architecture" mutable="true" description="CPU Architecture of the instance" type="//@types.6"/>
     <attributes name="occi.compute.cores" mutable="true" description="Number of CPU cores assigned to the instance" type="//@types.13"/>
     <attributes name="occi.compute.hostname" mutable="true" description="Fully Qualified DNS hostname for the instance">
-      <type href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes name="occi.compute.speed" mutable="true" description="CPU Clock frequency (speed) in gigahertz" type="//@types.14"/>
     <attributes name="occi.compute.memory" mutable="true" description="Maximum RAM in gigabytes allocated to the instance" type="//@types.15"/>
     <attributes name="occi.compute.state" required="true" default="inactive" description="Current state of the instance" type="//@types.4"/>
-    <parent href="../../org.occiware.clouddesigner.occi/model/Core.occie#//@kinds[term='resource']"/>
+    <parent href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@kinds[term='resource']"/>
     <actions term="start" scheme="http://schemas.ogf.org/occi/infrastructure/compute/action#" title="Start the system"/>
     <actions term="stop" scheme="http://schemas.ogf.org/occi/infrastructure/compute/action#" title="Stop the system (graceful, acpioff or poweroff)">
       <attributes name="method" required="true" type="//@types.7"/>
@@ -33,7 +33,7 @@
   <kinds term="storage" scheme="http://schemas.ogf.org/occi/infrastructure#" title="Storage Resource">
     <attributes name="occi.storage.size" mutable="true" required="true" description="Storage size in gigabytes of the instance" type="//@types.15"/>
     <attributes name="occi.storage.state" required="true" description="Current status of the instance" type="//@types.11"/>
-    <parent href="../../org.occiware.clouddesigner.occi/model/Core.occie#//@kinds[term='resource']"/>
+    <parent href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@kinds[term='resource']"/>
     <actions term="online" scheme="http://schemas.ogf.org/occi/infrastructure/storage/action#" title="Set storage online"/>
     <actions term="offline" scheme="http://schemas.ogf.org/occi/infrastructure/storage/action#" title="Set storage offline"/>
     <actions term="backup" scheme="http://schemas.ogf.org/occi/infrastructure/storage/action#" title="Set storage as backup"/>
@@ -44,23 +44,23 @@
   </kinds>
   <kinds term="storagelink" scheme="http://schemas.ogf.org/occi/infrastructure#" title="StorageLink Link">
     <attributes name="occi.storagelink.deviceid" mutable="true" required="true" description="Device identifier as defined by the OCCI service provider">
-      <type href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes name="occi.storagelink.mountpoint" mutable="true" description="Point to where the storage is mounted in the guest OS">
-      <type href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes name="occi.storagelink.state" required="true" description="Current status of the instance" type="//@types.12"/>
-    <parent href="../../org.occiware.clouddesigner.occi/model/Core.occie#//@kinds[term='link']"/>
+    <parent href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@kinds[term='link']"/>
   </kinds>
   <kinds term="networkinterface" scheme="http://schemas.ogf.org/occi/infrastructure#" title="NetworkInterface Link">
     <attributes name="occi.networkinterface.interface" required="true" description="Identifier that relates the link to the link's device interface">
-      <type href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes name="occi.networkinterface.mac" mutable="true" required="true" default="" description="MAC address associated with the link's device interface">
-      <type href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes name="occi.networkinterface.state" required="true" description="Current status of the instance" type="//@types.5"/>
-    <parent href="../../org.occiware.clouddesigner.occi/model/Core.occie#//@kinds[term='link']"/>
+    <parent href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@kinds[term='link']"/>
   </kinds>
   <mixins term="ipnetwork" scheme="http://schemas.ogf.org/occi/infrastructure/network#" title="IP Networking Mixin" applies="//@kinds[term='network']">
     <attributes name="occi.network.address" mutable="true" description="Internet Protocol (IP) network address (e.g. 192.168.0.1/24, fc00::/7)" type="//@types.16"/>
@@ -74,7 +74,7 @@
   </mixins>
   <mixins term="os_tpl" scheme="http://schemas.ogf.org/occi/infrastructure#" title="OS Template" applies="//@kinds[term='compute']"/>
   <mixins term="resource_tpl" scheme="http://schemas.ogf.org/occi/infrastructure#" title="Resource template">
-    <applies href="../../org.occiware.clouddesigner.occi/model/Core.occie#//@kinds[term='resource']"/>
+    <applies href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@kinds[term='resource']"/>
   </mixins>
   <types xsi:type="ecore:EEnum" name="SuspendMethod">
     <eLiterals name="hibernate"/>
