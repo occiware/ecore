@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ASCII"?>
+<occi:Configuration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:occi="http://schemas.ogf.org/occi">
+  <use href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#/"/>
+  <resources id="compute1">
+    <kind href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='compute']"/>
+    <links id="ni1" target="//@resources.2">
+      <kind href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='networkinterface']"/>
+      <mixins href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@mixins[term='ipnetworkinterface']"/>
+    </links>
+  </resources>
+  <resources id="compute2">
+    <kind href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='compute']"/>
+    <links id="ni2" target="//@resources.2">
+      <kind href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='networkinterface']"/>
+      <mixins href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@mixins[term='ipnetworkinterface']"/>
+    </links>
+  </resources>
+  <resources id="network1">
+    <kind href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='network']"/>
+    <mixins href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@mixins[term='ipnetwork']"/>
+  </resources>
+</occi:Configuration>

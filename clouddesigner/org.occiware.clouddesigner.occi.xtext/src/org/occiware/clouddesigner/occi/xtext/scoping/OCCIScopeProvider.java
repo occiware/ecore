@@ -18,9 +18,13 @@ import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
 import org.eclipse.xtext.scoping.impl.SimpleScope;
 import org.occiware.clouddesigner.occi.Attribute;
+import org.occiware.clouddesigner.occi.Configuration;
+import org.occiware.clouddesigner.occi.Entity;
 import org.occiware.clouddesigner.occi.Extension;
 import org.occiware.clouddesigner.occi.Kind;
+import org.occiware.clouddesigner.occi.Link;
 import org.occiware.clouddesigner.occi.Mixin;
+import org.occiware.clouddesigner.occi.Resource;
 
 /**
  * This class contains custom scoping description.
@@ -32,17 +36,16 @@ import org.occiware.clouddesigner.occi.Mixin;
 @SuppressWarnings("all")
 public class OCCIScopeProvider extends AbstractDeclarativeScopeProvider {
 
-	public IScope scope_Extension_import(final Extension ext, final EReference ref) {
-		final ArrayList<IEObjectDescription> res = new ArrayList<IEObjectDescription>();
-		EList<Extension> _import = ext.getImport();
-		for (Extension extension : _import) {
-			URI _uRI = EcoreUtil.getURI(extension);
-			String _string = _uRI.toString();
-			QualifiedName _create = QualifiedName.create(_string);
-			IEObjectDescription _create_1 = EObjectDescription.create(_create, extension);
-			res.add(_create_1);
+	private IScope scopeForExtensions(final EList<Extension> extensions) {
+		final ArrayList<IEObjectDescription> result = new ArrayList<IEObjectDescription>();
+		for (Extension extension : extensions) {
+			result.add(EObjectDescription.create(QualifiedName.create(EcoreUtil.getURI(extension).toString()), extension));
 		}
-		return new SimpleScope(IScope.NULLSCOPE, res);
+		return new SimpleScope(IScope.NULLSCOPE, result);
+	}
+
+	public IScope scope_Extension_import(final Extension extension, final EReference ref) {
+		return scopeForExtensions(extension.getImport());
 	}
 
  	public IScope scope_Kind_parent(final Kind kind, final EReference ref) {
@@ -99,5 +102,40 @@ public class OCCIScopeProvider extends AbstractDeclarativeScopeProvider {
 			}
 		}
 		return new SimpleScope(IScope.NULLSCOPE, res);
+ 	}
+
+	public IScope scope_Configuration_use(final Configuration configuration, final EReference ref) {
+		return scopeForExtensions(configuration.getUse());
+	}
+
+ 	public IScope scope_Entity_kind(final Entity entity, final EReference ref) {
+		final ArrayList<IEObjectDescription> result = new ArrayList<IEObjectDescription>();
+		Configuration configuration = (Configuration)EcoreUtil2.getRootContainer(entity);
+		for(Extension useExtension : configuration.getUse()) {
+			for(Kind kind : useExtension.getKinds()) {
+				result.add(EObjectDescription.create(QualifiedName.create(useExtension.getName(), kind.getTerm()), kind));
+			}
+		}
+		return new SimpleScope(IScope.NULLSCOPE, result);
+ 	}
+
+ 	public IScope scope_Entity_mixins(final Entity entity, final EReference ref) {
+		final ArrayList<IEObjectDescription> result = new ArrayList<IEObjectDescription>();
+		Configuration configuration = (Configuration)EcoreUtil2.getRootContainer(entity);
+		for(Extension useExtension : configuration.getUse()) {
+			for(Mixin mixin : useExtension.getMixins()) {
+				result.add(EObjectDescription.create(QualifiedName.create(useExtension.getName(), mixin.getTerm()), mixin));
+			}
+		}
+		return new SimpleScope(IScope.NULLSCOPE, result);
+ 	}
+
+ 	public IScope scope_Link_target(final Link link, final EReference ref) {
+		final ArrayList<IEObjectDescription> result = new ArrayList<IEObjectDescription>();
+		Configuration configuration = (Configuration)EcoreUtil2.getRootContainer(link);
+		for(Resource resource : configuration.getResources()) {
+			result.add(EObjectDescription.create(QualifiedName.create(resource.getId()), resource));
+		}
+		return new SimpleScope(IScope.NULLSCOPE, result);
  	}
 }

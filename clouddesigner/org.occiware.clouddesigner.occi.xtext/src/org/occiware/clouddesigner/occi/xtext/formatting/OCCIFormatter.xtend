@@ -29,6 +29,11 @@ public class OCCIFormatter extends AbstractDeclarativeFormatter {
 			c.setLinewrap().before(import)
         }
 
+		for(use: findKeywords('use')) {
+			c.setNoLinewrap().after(use)
+			c.setLinewrap().before(use)
+        }
+
 		c.setLinewrap(1).before(getAttributeDeclRule)
 		c.setLinewrap(1).before(getActionDeclRule)
 
@@ -36,6 +41,10 @@ public class OCCIFormatter extends AbstractDeclarativeFormatter {
 		c.setLinewrap(1).before(getEnumTypeDeclRule)
 
 		c.setLinewrap(1).before(getDataTypeAnnotationRule)
+
+		c.setLinewrap(1).before(getResourceDeclRule)
+		c.setLinewrap(1).before(getLinkDeclRule)
+		c.setLinewrap(1).before(getStateDeclRule)
 
 //		for(extendsKeyword: findKeywords('extends')) {
 //          c.setNoLinewrap().after(extendsKeyword)

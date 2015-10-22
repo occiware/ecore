@@ -13,7 +13,8 @@ import org.occiware.clouddesigner.occi.OCCIPackage;
 public class OCCILinker extends LazyLinker {
 	@Override
 	protected EObject createProxy(EObject obj, INode node, EReference eRef) {
-		if (eRef.equals(OCCIPackage.eINSTANCE.getExtension_Import())) {
+		if (eRef.equals(OCCIPackage.eINSTANCE.getExtension_Import())
+			|| eRef.equals(OCCIPackage.eINSTANCE.getConfiguration_Use()) ) {
 			EClass referenceType = getProxyType(obj, eRef);
 			final EObject proxy = EcoreUtil.create(referenceType);
 			((InternalEObject) proxy)
