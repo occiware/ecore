@@ -4,7 +4,7 @@
 [template public main(configuration : Configuration)]
 [comment @main/]
 
-[file ('curl/create-configuration.sh', false, 'UTF-8')]
+[file ('curl/' + configurationFileName(configuration) + '.sh', false, 'UTF-8')]
 #!/bin/sh
 
 SERVER=$1
@@ -39,3 +39,9 @@ curl $COPTS -X PUT $SERVER[entity.generateUrl()/] -H 'Content-Type: text/occi' -
 -H 'X-OCCI-Attribute: [attribute.name/]=[if type->includes('int') or type->includes('float')][attribute.value/][else]"[attribute.value/]"[/if]'
 [/let]
 [/template]
+
+[query public configurationFileName(configuration : Configuration) : String
+	= invoke(
+	'org.occiware.clouddesigner.occi.gen.curl.services.GenUtils', 
+	'configurationFileName(org.occiware.clouddesigner.occi.Configuration)', 
+	Sequence{configuration})/]
