@@ -2,10 +2,10 @@ package org.occiware.clouddesigner.occi.design.services;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EClassifier;
+// import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EPackage;
+// import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.session.Session;
@@ -15,8 +15,10 @@ import org.eclipse.swt.widgets.Shell;
 import org.occiware.clouddesigner.occi.Action;
 import org.occiware.clouddesigner.occi.Attribute;
 import org.occiware.clouddesigner.occi.Category;
+import org.occiware.clouddesigner.occi.Entity;
 import org.occiware.clouddesigner.occi.Extension;
 import org.occiware.clouddesigner.occi.Kind;
+import org.occiware.clouddesigner.occi.Link;
 import org.occiware.clouddesigner.occi.Mixin;
 import org.occiware.clouddesigner.occi.design.dialog.LoadExtensionDialog;
 
@@ -87,14 +89,51 @@ public class DesignServices {
 	}
 
 	public void setStringType(Attribute attribute) {
-		Session session = SessionManager.INSTANCE.getSession(attribute);
-		Resource resource = session.getSessionResource().getResourceSet().getResource(
-				URI.createPlatformPluginURI("org.occiware.clouddesigner.occi/model/Core.occie", true), true);
-		for (EDataType dt : ((Extension) resource.getContents().get(0)).getTypes()) {
+		for (EDataType dt : getCoreExtension(attribute).getTypes()) {
 			if (dt.getName().equals("String")) {
 				// default type
 				attribute.setType(dt);
 			}
 		}
+	}
+
+	/**
+	 * Set the initial kind of a Resource.
+	 */
+	public void setResourceKind(org.occiware.clouddesigner.occi.Resource resource) {
+		setEntityKind(resource, "resource");
+	}
+
+	/**
+	 * Set the initial kind of a Link.
+	 */
+	public void setLinkKind(Link link) {
+		setEntityKind(link, "link");
+	}
+
+	/**
+	 * Set the initial kind of an Entity.
+	 */
+	private void setEntityKind(Entity entity, String kindTerm) {
+		System.out.println("SEARCH " + kindTerm );
+		for (Kind kind : getCoreExtension(entity).getKinds()) {
+			if (kind.getTerm().equals(kindTerm)) {
+				entity.setKind(kind);
+				System.out.println(kindTerm + " FOUND");
+				return;
+			}
+		}
+		System.out.println(kindTerm + "NOT FOUND");
+	}
+
+	/**
+	 * Get the OCCI core extension.
+	 */
+	private Extension getCoreExtension(EObject eobject)
+	{
+		Session session = SessionManager.INSTANCE.getSession(eobject);
+		Resource resource = session.getSessionResource().getResourceSet().getResource(
+					URI.createPlatformPluginURI("org.occiware.clouddesigner.occi/model/Core.occie", true), true);
+		return (Extension) resource.getContents().get(0);
 	}
 }
