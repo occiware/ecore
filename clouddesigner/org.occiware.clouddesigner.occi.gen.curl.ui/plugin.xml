@@ -7,16 +7,16 @@
             objectClass="org.eclipse.core.resources.IFile"
             nameFilter="*.occic"
             id="org.occiware.clouddesigner.occi.gen.curl.ui.popupMenus.contribution.IFile">
-         <menu id="org.eclipse.acceleo.module.menu" label="Generate" path="additionsAcceleo">
-               <groupMarker name="acceleo"/> 
+         <menu id="org.occiware.clouddesigner.menu" label="Cloud Designer" path="additionsCloudDesigner">
+               <separator name="group"/>
          </menu>
          <action
                class="org.occiware.clouddesigner.occi.gen.curl.ui.popupMenus.AcceleoGenerateCurlAction"
                enablesFor="+"
                id="org.occiware.clouddesigner.occi.gen.curl.ui.popupMenus.acceleoGenerateCurlAction"
                icon="icons/default.gif"
-               label="Generate Curl"
-               menubarPath="org.eclipse.acceleo.module.menu/acceleo"/>
+               label="Generate curl script"
+               menubarPath="org.occiware.clouddesigner.menu/group"/>
       </objectContribution>
    </extension>
 </plugin>
