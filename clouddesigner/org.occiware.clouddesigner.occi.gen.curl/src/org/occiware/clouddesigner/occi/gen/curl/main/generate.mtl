@@ -4,7 +4,7 @@
 [template public main(configuration : Configuration)]
 [comment @main/]
 
-[file ('create-configuration.sh', false, 'UTF-8')]
+[file ('curl/create-configuration.sh', false, 'UTF-8')]
 #!/bin/sh
 
 SERVER=$1
