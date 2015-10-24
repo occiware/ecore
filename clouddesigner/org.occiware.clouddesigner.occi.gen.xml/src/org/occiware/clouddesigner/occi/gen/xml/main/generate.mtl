@@ -15,70 +15,70 @@
 <occi:extension xmlns:occi="http://schemas.ogf.org/occi"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://schemas.ogf.org/occi occi.xsd " 
-    name="[e.name/]" >
-
-	[for (k: Kind | e.kinds)]
-    [kind(k)/]
-	[/for]
-	[for (m: Mixin | e.mixins)]
-    [mixin(m)/]
-	[/for]
+    xsi:schemaLocation="http://schemas.ogf.org/occi occi.xsd "
+    name="[e.name/]"
+    scheme="[e.scheme/]"
+    version="1"
+    status="stable">
+[for (k: Kind | e.kinds)]
+[kind(k)/]
+[/for]
+[for (m: Mixin | e.mixins)]
+[mixin(m)/]
+[/for]
 </occi:extension>
 [/file]
 [/template]
 
 [template public kind(k: Kind)]
+
   <!-- Kind: [k.title /] -->
   <occi:kind term="[k.term/]" scheme="[k.scheme/]" title="[k.title/]">
 [if k.parent <> null]
     <occi:parent term="[k.parent.term/]" scheme="[k.parent.scheme/]" />
 [/if]
-	[for (a: Attribute | k.attributes)]
-	  [attribute(a)/]
-	[/for]
-	[for (a: Action | k.actions)]
-	  [action(a)/]
-	[/for]
+[for (a: Attribute | k.attributes)]
+    [attribute(a)/]
+[/for]
+[for (a: Action | k.actions)]
+[action(a)/]
+[/for]
   </occi:kind>
 [/template]
 
 [template public mixin(m: Mixin)]
+
   <!-- Mixin: [m.title/] -->
   <occi:mixin term="[m.term/]" scheme="[m.scheme/]" title="[m.title/]" >
-	[for (c: Category | m.depends)]
-	<occi:depends term="[c.term/]" scheme="[c.scheme/]" />
-	[/for]
-	[for (c: Category | m.applies)]
-	<occi:applies term="[c.term/]" scheme="[c.scheme/]" />
-	[/for]
-    [for (a: Attribute | m.attributes)]
-	[attribute(a)/]
-	[/for]
-	[for (a: Action | m.actions)]
-	[action(a)/]
-	[/for]
+[for (md: Mixin | m.depends)]
+    <occi:depends term="[md.term/]" scheme="[md.scheme/]" />
+[/for]
+[for (k: Kind | m.applies)]
+    <occi:applies term="[k.term/]" scheme="[k.scheme/]" />
+[/for]
+[for (a: Attribute | m.attributes)]
+    [attribute(a)/]
+[/for]
+[for (a: Action | m.actions)]
+[action(a)/]
+[/for]
   </occi:mixin>
 [/template]
 
 [template public attribute(a: Attribute)]
-	<occi:attribute 
-      name="[a.name/]" 
-      type="[toXMLtype(a.type.instanceClassName)/]" 
-      title="[a.description/]" />
+<occi:attribute name="[a.name/]"[if (a.mutable = false)] immutable="true"[/if] use="[if (a.required)]required[else]optional[/if]"[if (a.default <> null)] default="[a.default/]"[/if] type="[a.type.toXmlSchemaType()/]" title="[a.description/]"/>
 [/template]
 
 [template public action(a: Action)]
-  <!-- Action: [a.title/] -->
-  <occi:action term="[a.term/]" scheme="[a.scheme/]" title="[a.title/]" >
-    [for (at: Attribute | a.attributes)]
-    [attribute(at)/]
-    [/for]
-  </occi:action>
+    <occi:action term="[a.term/]" scheme="[a.scheme/]" title="[a.title/]" >
+[for (at: Attribute | a.attributes)]
+      [attribute(at)/]
+[/for]
+    </occi:action>
 [/template]
 
-[query public toXMLtype(javatype : String) : String
+[query public toXmlSchemaType(datatype : EDataType) : String
 	= invoke(
 	'org.occiware.clouddesigner.occi.gen.xml.services.GenUtils', 
-	'toXMLtype(java.lang.String)', 
-	Sequence{javatype})/]
+	'toXmlSchemaType(org.eclipse.emf.ecore.EDataType)', 
+	Sequence{datatype})/]

@@ -7,6 +7,7 @@
  *
  * Contributors:
  *     Jean Parpaillon <jean.parpaillon@inria.fr>
+ *     Philippe Merle <philippe.merle@inria.fr>
  *******************************************************************************/
 package org.occiware.clouddesigner.occi.gen.xml.main;
 
