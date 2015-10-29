@@ -217,9 +217,9 @@ public class ExecutableContainer extends ContainerImpl {
   }
   
   public Machine getCurrentMachine() {
-    boolean _containsKey = ExecutableContainer.listCurrentMachine.containsKey(this.name);
+    boolean _containsKey = ExecutableContainer.listCurrentMachine.containsKey(this.id);
     if (_containsKey) {
-      return ExecutableContainer.listCurrentMachine.get(this.name);
+      return ExecutableContainer.listCurrentMachine.get(this.id);
     }
     EList<EObject> _eContents = this.eContainer.eContents();
     for (final EObject eo : _eContents) {
