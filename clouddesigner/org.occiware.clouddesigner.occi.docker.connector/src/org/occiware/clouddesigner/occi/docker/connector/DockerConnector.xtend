@@ -657,7 +657,7 @@ class ExecutableContainer extends ContainerImpl {
 						if ((l.target as ExecutableContainer).id == this.id) {
 
 							// Update the cache
-							listCurrentMachine.put(this.name, machine)
+							listCurrentMachine.put(this.id, machine)
 							return machine
 						}
 					}
@@ -870,7 +870,9 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 								} else { // The machine exists
 
 									// Start container
+									LOGGER.info("Trying to start container: " + con.name)
 									con.start
+									LOGGER.info("Started ...")
 								}
 							}
 						}
@@ -889,7 +891,9 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 							} else { // The container exists
 
 								// Start container
+								LOGGER.info("Trying to start container: " + con.name)
 								con.start
+								LOGGER.info("Started ... ")
 							}
 						}
 					}
@@ -915,7 +919,9 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 								} else {
 
 									// Start container
+									LOGGER.info("Trying to start container: " + con.name)
 									con.start
+									LOGGER.info("Started ...")
 								}
 							}
 						}
@@ -930,10 +936,14 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 								con.createContainer(this.machine, this.containerDependency)
 
 								// Start container
+								LOGGER.info("Trying to start container: " + con.name)
 								con.start
+								LOGGER.info("Started ... ")
 							} else { // The container exists
 
 								// Start container
+								LOGGER.info("Trying to start container: " + con.name)
+								LOGGER.info("Started ... ")
 								con.start
 							}
 						}
