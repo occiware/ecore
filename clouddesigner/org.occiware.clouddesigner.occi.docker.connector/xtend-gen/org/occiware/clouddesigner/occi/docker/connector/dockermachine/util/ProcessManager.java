@@ -156,7 +156,8 @@ public class ProcessManager {
   public static String getOutputCommand(final String command, final Runtime r) {
     StringBuffer result = new StringBuffer();
     try {
-      final Process process = r.exec(command);
+      final String[] env = { "/bin/bash", "-c", command };
+      final Process process = r.exec(env);
       InputStream _inputStream = process.getInputStream();
       final InputStreamReader input = new InputStreamReader(_inputStream);
       BufferedReader reader = new BufferedReader(input);
@@ -178,7 +179,8 @@ public class ProcessManager {
   
   public static String getCommandOutput(final String command, final Runtime r, final boolean suppress) {
     try {
-      Process process = r.exec(command);
+      String[] env = { "/bin/bash", "-c", command };
+      Process process = r.exec(env);
       InputStream _inputStream = process.getInputStream();
       ProcessManager.OutputHandler out = new ProcessManager.OutputHandler(_inputStream);
       InputStream _errorStream = process.getErrorStream();
@@ -258,5 +260,12 @@ public class ProcessManager {
       }
     }
     return false;
+  }
+  
+  public static void main(final String[] args) {
+    final String command = " docker-machine ls";
+    Runtime _runtime = Runtime.getRuntime();
+    final String p = ProcessManager.getOutputCommand(command, _runtime);
+    InputOutput.<String>println(p);
   }
 }
