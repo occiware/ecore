@@ -26,9 +26,15 @@ import org.codehaus.jackson.JsonParser
 import org.codehaus.jackson.map.ObjectMapper
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerMachineManager
 
+import org.slf4j.LoggerFactory
+import org.slf4j.Logger
+
+
 class DockerUtil {
 	protected static String OS = System.getProperty("os.name").toLowerCase()
-
+		// Initialize logger for Graph.
+	private static Logger LOGGER = LoggerFactory.getLogger(typeof(DockerUtil))
+	
 	def static jsonify(String jsonString) {
 		if (jsonString != null || jsonString == "") {
 			val ObjectMapper mapper = new ObjectMapper
@@ -97,18 +103,21 @@ class DockerUtil {
 		val String data = DockerMachineManager.getEnvCmd(Runtime.getRuntime, machineName)
 		var List<String[]> hosts = new ArrayList
 		var String[] result = null
+		val String charset  = "DOCKER_CERT_PATH"
 		if (data != null) {
 			var String[] st = data.split("\\r?\\n")
 			for (line : st) {
-				if (line.startsWith("export")) {
+				if (line.startsWith("export") && line.contains(charset)) {
 					val String[] lsCmd = line.split("\\s+")
 					hosts.add(lsCmd)
+					//var currentLine = (hosts.get(0) as String[]).get(1)
+					var currentLine = lsCmd.get(1)
+					result = currentLine.split("=")
+					return result.get(1).replaceAll("\"", "")
 				}
 			}
-			var currentLine = (hosts.get(1) as String[]).get(1)
-			result = currentLine.split("=")
 		}
-		return result.get(1).replaceAll("\"", "")
+		return null
 	}
 
 	def deleteAllOldModels() {
