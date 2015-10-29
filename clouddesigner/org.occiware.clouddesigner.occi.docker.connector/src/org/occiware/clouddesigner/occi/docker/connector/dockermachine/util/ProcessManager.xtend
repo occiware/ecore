@@ -23,10 +23,10 @@ class ProcessManager {
 
 	def static String getOutputCommand(String command, Runtime r) {
 
-		//var String result = ""
 		var StringBuffer result = new StringBuffer
 		try {
-			val Process process = r.exec(command)
+			val String[] env = #["/bin/bash", "-c", command]
+			val Process process = r.exec(env)
 			val input = new InputStreamReader(process.inputStream)
 			var BufferedReader reader = new BufferedReader(input)
 			var String line
@@ -44,7 +44,8 @@ class ProcessManager {
 
 	def static String getCommandOutput(String command, Runtime r, boolean suppress) {
 		try {
-			var Process process = r.exec(command);
+			var String[] env = #["/bin/bash", "-c", command]
+			var Process process = r.exec(env)
 			var OutputHandler out = new OutputHandler(process.inputStream)
 			new StreamHandler(process.errorStream, System.err)
 			val int result = process.waitFor
@@ -199,5 +200,11 @@ class ProcessManager {
 
 		}
 	}
-
+	
+	def static void main(String[] args) {
+		val command = " docker-machine ls"
+		val p = ProcessManager.getOutputCommand(command, Runtime.getRuntime())
+		println(p)
+	}
+	
 }
