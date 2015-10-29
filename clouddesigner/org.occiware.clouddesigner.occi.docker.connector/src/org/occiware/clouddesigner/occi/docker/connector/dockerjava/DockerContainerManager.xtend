@@ -147,10 +147,17 @@ class DockerContainerManager {
 		if (container.environment != null) {
 			create.withEnv(container.environment)
 		}
-		if (container.ports != null) {
-			var ExposedPort port = ExposedPort.tcp(Integer.parseInt(container.ports))
+		if (StringUtils.isNotBlank(container.ports)) {
+			val String[] l_r_ports = container.ports.split(":")
+			var ExposedPort port = ExposedPort.tcp(Integer.parseInt(l_r_ports.get(0)))
 			val Ports portBindings = new Ports
-			portBindings.bind(port, Ports.Binding(11022)) //TODO Create dynamique port number
+			if(l_r_ports.size >1 ){
+				if(StringUtils.isNotBlank(l_r_ports.get(1))){
+					portBindings.bind(port, Ports.Binding(Integer.parseInt(l_r_ports.get(0)))) //TODO Create dynamique port number
+				}else{
+					portBindings.bind(port, Ports.Binding(32768)) //TODO Create dynamique port number
+				}
+			}
 			create.withPortBindings(portBindings)
 		}
 		if (container.name != null) {
@@ -415,7 +422,11 @@ class DockerContainerManager {
 			addImageToMachine(machine.name, containerImage)
 
 			// Download a pre-built image
-			output = DockerUtil.asString(dockerClient.pullImageCmd(containerImage).withTag("latest").exec)
+			try {
+				output = DockerUtil.asString(dockerClient.pullImageCmd(containerImage).withTag("latest").exec)
+			} catch (Exception e) {
+				LOGGER.error(e.message)
+			}
 			LOGGER.info(output)
 			LOGGER.info("Download is finished")
 		}
@@ -450,6 +461,7 @@ class DockerContainerManager {
 		var String port = null
 		var String ENDPOINT = DockerMachineManager.urlCmd(Runtime.getRuntime, machine)
 		val String certPath = DockerUtil.getEnv(machine)
+		LOGGER.info("DOCKER_CERT_PATH=" + certPath)
 		if (DockerUtil.getOS.equals("osx")) {
 			port = ":2376"
 		} else if (DockerUtil.getOS.equals("uni")) {
