@@ -31,10 +31,14 @@ import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerMachineManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @SuppressWarnings("all")
 public class DockerUtil {
   protected static String OS = System.getProperty("os.name").toLowerCase();
+  
+  private static Logger LOGGER = LoggerFactory.getLogger(DockerUtil.class);
   
   public static JsonNode jsonify(final String jsonString) {
     try {
@@ -152,23 +156,31 @@ public class DockerUtil {
     final String data = DockerMachineManager.getEnvCmd(_runtime, machineName);
     List<String[]> hosts = new ArrayList<String[]>();
     String[] result = null;
+    final String charset = "DOCKER_CERT_PATH";
     boolean _notEquals = (!Objects.equal(data, null));
     if (_notEquals) {
       String[] st = data.split("\\r?\\n");
       for (final String line : st) {
+        boolean _and = false;
         boolean _startsWith = line.startsWith("export");
-        if (_startsWith) {
+        if (!_startsWith) {
+          _and = false;
+        } else {
+          boolean _contains = line.contains(charset);
+          _and = _contains;
+        }
+        if (_and) {
           final String[] lsCmd = line.split("\\s+");
           hosts.add(lsCmd);
+          String currentLine = lsCmd[1];
+          String[] _split = currentLine.split("=");
+          result = _split;
+          String _get = result[1];
+          return _get.replaceAll("\"", "");
         }
       }
-      String[] _get = hosts.get(1);
-      String currentLine = ((String[]) _get)[1];
-      String[] _split = currentLine.split("=");
-      result = _split;
     }
-    String _get_1 = result[1];
-    return _get_1.replaceAll("\"", "");
+    return null;
   }
   
   public boolean deleteAllOldModels() {
