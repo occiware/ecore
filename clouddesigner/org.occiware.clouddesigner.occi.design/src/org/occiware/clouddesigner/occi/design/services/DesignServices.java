@@ -115,15 +115,12 @@ public class DesignServices {
 	 * Set the initial kind of an Entity.
 	 */
 	private void setEntityKind(Entity entity, String kindTerm) {
-		System.out.println("SEARCH " + kindTerm );
 		for (Kind kind : getCoreExtension(entity).getKinds()) {
 			if (kind.getTerm().equals(kindTerm)) {
 				entity.setKind(kind);
-				System.out.println(kindTerm + " FOUND");
 				return;
 			}
 		}
-		System.out.println(kindTerm + "NOT FOUND");
 	}
 
 	/**
