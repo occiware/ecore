@@ -211,25 +211,40 @@ public class DockerContainerManager {
       create.withEnv(_environment_1);
     }
     String _ports = container.getPorts();
-    boolean _notEquals_6 = (!Objects.equal(_ports, null));
-    if (_notEquals_6) {
+    boolean _isNotBlank = StringUtils.isNotBlank(_ports);
+    if (_isNotBlank) {
       String _ports_1 = container.getPorts();
-      int _parseInt = Integer.parseInt(_ports_1);
+      final String[] l_r_ports = _ports_1.split(":");
+      String _get = l_r_ports[0];
+      int _parseInt = Integer.parseInt(_get);
       ExposedPort port = ExposedPort.tcp(_parseInt);
       final Ports portBindings = new Ports();
-      Ports.Binding _Binding = Ports.Binding(Integer.valueOf(11022));
-      portBindings.bind(port, _Binding);
+      int _size = ((List<String>)Conversions.doWrapArray(l_r_ports)).size();
+      boolean _greaterThan_1 = (_size > 1);
+      if (_greaterThan_1) {
+        String _get_1 = l_r_ports[1];
+        boolean _isNotBlank_1 = StringUtils.isNotBlank(_get_1);
+        if (_isNotBlank_1) {
+          String _get_2 = l_r_ports[0];
+          int _parseInt_1 = Integer.parseInt(_get_2);
+          Ports.Binding _Binding = Ports.Binding(Integer.valueOf(_parseInt_1));
+          portBindings.bind(port, _Binding);
+        } else {
+          Ports.Binding _Binding_1 = Ports.Binding(Integer.valueOf(32768));
+          portBindings.bind(port, _Binding_1);
+        }
+      }
       create.withPortBindings(portBindings);
     }
     String _name = container.getName();
-    boolean _notEquals_7 = (!Objects.equal(_name, null));
-    if (_notEquals_7) {
+    boolean _notEquals_6 = (!Objects.equal(_name, null));
+    if (_notEquals_6) {
       String _name_1 = container.getName();
       create.withName(_name_1);
     }
     String _net = container.getNet();
-    boolean _notEquals_8 = (!Objects.equal(_net, null));
-    if (_notEquals_8) {
+    boolean _notEquals_7 = (!Objects.equal(_net, null));
+    if (_notEquals_7) {
       String _net_1 = container.getNet();
       create.withNetworkMode(_net_1);
     }
@@ -249,39 +264,39 @@ public class DockerContainerManager {
       create.withStdInOnce(_isStdin_open_1);
     }
     String _user = container.getUser();
-    boolean _notEquals_9 = (!Objects.equal(_user, null));
-    if (_notEquals_9) {
+    boolean _notEquals_8 = (!Objects.equal(_user, null));
+    if (_notEquals_8) {
       String _user_1 = container.getUser();
       create.withUser(_user_1);
     }
     String _volumes = container.getVolumes();
-    boolean _notEquals_10 = (!Objects.equal(_volumes, null));
-    if (_notEquals_10) {
+    boolean _notEquals_9 = (!Objects.equal(_volumes, null));
+    if (_notEquals_9) {
       String _volumes_1 = container.getVolumes();
       Volume _volume = new Volume(_volumes_1);
       create.withVolumes(_volume);
     }
     int _mem_limit = container.getMem_limit();
-    boolean _greaterThan_1 = (_mem_limit > 0);
-    if (_greaterThan_1) {
+    boolean _greaterThan_2 = (_mem_limit > 0);
+    if (_greaterThan_2) {
       int _mem_limit_1 = container.getMem_limit();
       create.withMemoryLimit(_mem_limit_1);
     }
     int _memory_swap = container.getMemory_swap();
-    boolean _greaterThan_2 = (_memory_swap > 0);
-    if (_greaterThan_2) {
+    boolean _greaterThan_3 = (_memory_swap > 0);
+    if (_greaterThan_3) {
       int _memory_swap_1 = container.getMemory_swap();
       create.withMemorySwap(_memory_swap_1);
     }
     String _lxc_conf = container.getLxc_conf();
-    boolean _notEquals_11 = (!Objects.equal(_lxc_conf, null));
-    if (_notEquals_11) {
+    boolean _notEquals_10 = (!Objects.equal(_lxc_conf, null));
+    if (_notEquals_10) {
       final LxcConf lxcCon = new LxcConf("key", "value");
       create.withLxcConf(lxcCon);
     }
     int _cores = container.getCores();
-    boolean _greaterThan_3 = (_cores > 0);
-    if (_greaterThan_3) {
+    boolean _greaterThan_4 = (_cores > 0);
+    if (_greaterThan_4) {
       int _cores_1 = container.getCores();
       String _valueOf = String.valueOf(_cores_1);
       create.withCpuset(_valueOf);
@@ -686,11 +701,21 @@ public class DockerContainerManager {
       DockerContainerManager.LOGGER.info(("Downloading image: ->" + containerImage));
       String _name_4 = machine.getName();
       this.addImageToMachine(_name_4, containerImage);
-      PullImageCmd _pullImageCmd = DockerContainerManager.dockerClient.pullImageCmd(containerImage);
-      PullImageCmd _withTag = _pullImageCmd.withTag("latest");
-      InputStream _exec = _withTag.exec();
-      String _asString = DockerUtil.asString(_exec);
-      output = _asString;
+      try {
+        PullImageCmd _pullImageCmd = DockerContainerManager.dockerClient.pullImageCmd(containerImage);
+        PullImageCmd _withTag = _pullImageCmd.withTag("latest");
+        InputStream _exec = _withTag.exec();
+        String _asString = DockerUtil.asString(_exec);
+        output = _asString;
+      } catch (final Throwable _t) {
+        if (_t instanceof Exception) {
+          final Exception e = (Exception)_t;
+          String _message = e.getMessage();
+          DockerContainerManager.LOGGER.error(_message);
+        } else {
+          throw Exceptions.sneakyThrow(_t);
+        }
+      }
       DockerContainerManager.LOGGER.info(output);
       DockerContainerManager.LOGGER.info("Download is finished");
     }
@@ -730,6 +755,7 @@ public class DockerContainerManager {
       Runtime _runtime = Runtime.getRuntime();
       String ENDPOINT = DockerMachineManager.urlCmd(_runtime, machine);
       final String certPath = DockerUtil.getEnv(machine);
+      DockerContainerManager.LOGGER.info(("DOCKER_CERT_PATH=" + certPath));
       String _oS = DockerUtil.getOS();
       boolean _equals = _oS.equals("osx");
       if (_equals) {
