@@ -255,7 +255,11 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
                     MachineManager.LOGGER.info("The container is created");
                     con.start();
                   } else {
+                    String _name_8 = con.getName();
+                    String _plus_1 = ("Trying to start container: " + _name_8);
+                    MachineManager.LOGGER.info(_plus_1);
                     con.start();
+                    MachineManager.LOGGER.info("Started ...");
                   }
                 }
               }
@@ -272,7 +276,11 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
                   con.createContainer(this.machine, this.containerDependency);
                   con.start();
                 } else {
+                  String _name_7 = con.getName();
+                  String _plus = ("Trying to start container: " + _name_7);
+                  MachineManager.LOGGER.info(_plus);
                   con.start();
+                  MachineManager.LOGGER.info("Started ... ");
                 }
               }
             }
@@ -301,7 +309,11 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
                     con.createContainer(this.machine);
                     con.start();
                   } else {
+                    String _name_7 = con.getName();
+                    String _plus = ("Trying to start container: " + _name_7);
+                    MachineManager.LOGGER.info(_plus);
                     con.start();
+                    MachineManager.LOGGER.info("Started ...");
                   }
                 }
               }
@@ -316,8 +328,16 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
                 boolean _not_5 = (!_containerIsDeployed);
                 if (_not_5) {
                   con.createContainer(this.machine, this.containerDependency);
+                  String _name_7 = con.getName();
+                  String _plus = ("Trying to start container: " + _name_7);
+                  MachineManager.LOGGER.info(_plus);
                   con.start();
+                  MachineManager.LOGGER.info("Started ... ");
                 } else {
+                  String _name_8 = con.getName();
+                  String _plus_1 = ("Trying to start container: " + _name_8);
+                  MachineManager.LOGGER.info(_plus_1);
+                  MachineManager.LOGGER.info("Started ... ");
                   con.start();
                 }
               }
