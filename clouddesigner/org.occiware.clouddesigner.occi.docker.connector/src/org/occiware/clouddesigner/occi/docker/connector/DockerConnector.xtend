@@ -643,8 +643,8 @@ class ExecutableContainer extends ContainerImpl {
 	def Machine getCurrentMachine() {
 
 		// Checks if the current machine is cached
-		if (listCurrentMachine.containsKey(this.name)) {
-			return listCurrentMachine.get(this.name)
+		if (listCurrentMachine.containsKey(this.id)) {
+			return listCurrentMachine.get(this.id)
 		}
 
 		// get the current machine
