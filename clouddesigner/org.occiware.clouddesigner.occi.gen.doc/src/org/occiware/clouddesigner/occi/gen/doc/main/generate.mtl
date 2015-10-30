@@ -9,6 +9,8 @@
 
 [template public generateExtension(extension : Extension)]
 [file ('textile/'+extension.name+'.textile', false, 'UTF-8')]
+Generated at [getNow()/] from [getFilePath(extension)/] by org.occiware.clouddesigner.occi.gen.doc
+
 h1. OCCI Extension: [extension.name/]
 
 | *Name* | [extension.name/] |
@@ -148,3 +150,16 @@ Literals:
 [/if]
 [/let]
 [/template]
+
+[query public getNow() : String
+	= invoke(
+	'org.occiware.clouddesigner.occi.gen.doc.services.GenUtils', 
+	'getNow()', 
+	Sequence{})/]
+
+[query public getFilePath(extension : Extension) : String
+	= invoke(
+	'org.occiware.clouddesigner.occi.gen.doc.services.GenUtils', 
+	'getFilePath(org.occiware.clouddesigner.occi.Extension)', 
+	Sequence{extension})/]
+
