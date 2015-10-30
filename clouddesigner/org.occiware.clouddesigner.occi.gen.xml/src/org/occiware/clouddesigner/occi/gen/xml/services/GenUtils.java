@@ -10,11 +10,69 @@
  *******************************************************************************/
 package org.occiware.clouddesigner.occi.gen.xml.services;
 
+import java.util.Date;
 import java.util.HashMap;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
+import org.occiware.clouddesigner.occi.Extension;
 
-public class GenUtils {
+public class GenUtils
+{
+	/**
+	 * Get the current date.
+	 * @return the current date.
+	 */
+	public String getNow() {
+		return new Date().toString();
+	}
+
+	/**
+	 * Get the file path of an extension.
+	 * @param extension the given extension.
+	 * @return the file path of the given extension.
+	 */
+	public String getFilePath(Extension extension) {
+		return extension.eResource().getURI().toString();
+	}
+
+	/**
+	 * Escape a string to XML string.
+	 * @param string the original string.
+	 * @result the escaped XML string.
+	 */
+	public String toEscapedXmlString(String string) {
+		if(string == null) {
+			return null;
+		}
+		StringBuilder escapedXML = new StringBuilder();
+		for (char c : string.toCharArray()) {
+			switch (c) {
+			case '<':
+				escapedXML.append("&lt;");
+				break;
+			case '>':
+				escapedXML.append("&gt;");
+				break;
+			case '\"':
+				escapedXML.append("&quot;");
+				break;
+			case '&':
+				escapedXML.append("&amp;");
+				break;
+			case '\'':
+				escapedXML.append("&apos;");
+				break;
+			default:
+				if (c > 0x7e) {
+					escapedXML.append("&#" + ((int) c) + ";");
+				} else {
+					escapedXML.append(c);
+				}
+			}
+		}
+		return escapedXML.toString();
+	}
+
 	/**
 	 * XML Schema namespace.
 	 */
