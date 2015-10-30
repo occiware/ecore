@@ -5,10 +5,13 @@
 [comment @main/]
 
 [file ('curl/' + configurationFileName(configuration) + '.sh', false, 'UTF-8')]
-#!/bin/sh
+#! /bin/sh
+#
+# Generated at [getNow()/] from [getFilePath(configuration)/] by org.occiware.clouddesigner.occi.gen.curl
+#
 
-SERVER=$1
-COPTS="-s -v" # -i
+OCCI_SERVER_URL=$1
+CURL_OPTS="-s -v -i"
 
 [for (resource : Resource | configuration.resources)]
 [resource.generateCurl()/]
@@ -25,8 +28,7 @@ COPTS="-s -v" # -i
 [/template]
 
 [template public generateCurl(entity: Entity) post (trim())]
-[comment TODO: generate mixins/]
-curl $COPTS -X PUT $SERVER[entity.generateUrl()/] -H 'Content-Type: text/occi' -H 'Category: [entity.kind.term/]; scheme="[entity.kind.scheme/]"; class="kind";'[for (attribute : AttributeState | entity.attributes)] [generateAttribute(attribute, entity.kind)/][/for]
+curl $CURL_OPTS -X PUT $OCCI_SERVER_URL[entity.generateUrl()/] -H 'Content-Type: text/occi' -H 'Category: [entity.kind.term/]; scheme="[entity.kind.scheme/]"; class="kind"[for (mixin : Mixin | entity.mixins)], [mixin.term/]; scheme="[mixin.scheme/]"; class="mixin"[/for];'[for (attribute : AttributeState | entity.attributes)] [generateAttribute(attribute, entity.kind)/][/for]
 [/template]
 
 [template public generateUrl(entity : Entity) post (trim())]
@@ -39,6 +41,18 @@ curl $COPTS -X PUT $SERVER[entity.generateUrl()/] -H 'Content-Type: text/occi' -
 -H 'X-OCCI-Attribute: [attribute.name/]=[if type->includes('int') or type->includes('float')][attribute.value/][else]"[attribute.value/]"[/if]'
 [/let]
 [/template]
+
+[query public getNow() : String
+	= invoke(
+	'org.occiware.clouddesigner.occi.gen.curl.services.GenUtils', 
+	'getNow()', 
+	Sequence{})/]
+
+[query public getFilePath(configuration : Configuration) : String
+	= invoke(
+	'org.occiware.clouddesigner.occi.gen.curl.services.GenUtils', 
+	'getFilePath(org.occiware.clouddesigner.occi.Configuration)', 
+	Sequence{configuration})/]
 
 [query public configurationFileName(configuration : Configuration) : String
 	= invoke(
