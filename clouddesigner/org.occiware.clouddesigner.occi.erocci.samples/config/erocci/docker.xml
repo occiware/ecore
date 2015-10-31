@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated at Sat Oct 31 11:07:55 CET 2015 from platform:/plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie by org.occiware.clouddesigner.occi.gen.xml -->
+<occi:extension xmlns:occi="http://schemas.ogf.org/occi"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://schemas.ogf.org/occi occi.xsd"
+    name="docker"
+    scheme="http://occiware.org/docker#"
+    version="1"
+    status="stable">
+
+  <!-- Kind: Container Resource -->
+  <occi:kind term="container" scheme="http://occiware.org/docker#" title="Container Resource">
+    <occi:parent term="compute" scheme="http://schemas.ogf.org/occi/infrastructure#"/>
+    <occi:attribute name="name" immutable="true" use="required" type="xs:string" title="The name of this Container instance"/>
+    <occi:attribute name="containerid" immutable="true" use="optional" type="xs:string" title="The ID of this Container instance"/>
+    <occi:attribute name="image" immutable="true" use="optional" type="xs:string" title="The image of this Container instance"/>
+    <occi:attribute name="build" immutable="true" use="optional" type="xs:string" title="The build directory of this Container instance"/>
+    <occi:attribute name="command" immutable="true" use="optional" default="" type="xs:string" title="Override the default command in Dockerfile"/>
+    <occi:attribute name="ports" immutable="true" use="optional" type="xs:string" title="The ports of this Container instance"/>
+    <occi:attribute name="expose" immutable="true" use="optional" type="xs:string" title="The exposed ports of this Container instance"/>
+    <occi:attribute name="volumes" immutable="true" use="optional" type="xs:string" title="The list of volumes"/>
+    <occi:attribute name="environment" immutable="true" use="optional" type="xs:string" title="Environment variables"/>
+    <occi:attribute name="env_file" immutable="true" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="net" immutable="true" use="optional" type="xs:string" title="&apos;bridge&apos;,  &apos;none&apos;, &apos;container:[name or id]&apos;, or &apos;host&apos;"/>
+    <occi:attribute name="dns" immutable="true" use="optional" type="xs:string" title="Custom DNS servers"/>
+    <occi:attribute name="dns_search" immutable="true" use="optional" type="xs:string" title="Custom DNS search domains"/>
+    <occi:attribute name="cap_add" immutable="true" use="optional" type="xs:string" title="Add container capabilities"/>
+    <occi:attribute name="cap_drop" immutable="true" use="optional" type="xs:string" title="Drop container capabilities"/>
+    <occi:attribute name="working_dir" immutable="true" use="optional" type="xs:string" title="Working directory"/>
+    <occi:attribute name="entrypoint" immutable="true" use="optional" type="xs:string" title="Entry point"/>
+    <occi:attribute name="user" immutable="true" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="hostname" immutable="true" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="domainname" immutable="true" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="mem_limit" immutable="true" use="optional" type="xs:integer" title=""/>
+    <occi:attribute name="memory_swap" immutable="true" use="optional" type="xs:integer" title="Memory swap limit"/>
+    <occi:attribute name="privileged" immutable="true" use="optional" default="false" type="xs:boolean" title=""/>
+    <occi:attribute name="restart" immutable="true" use="optional" default="" type="xs:string" title=""/>
+    <occi:attribute name="stdin_open" immutable="true" use="optional" default="" type="xs:boolean" title=""/>
+    <occi:attribute name="interactive" immutable="true" use="required" default="false" type="xs:boolean" title=""/>
+    <occi:attribute name="tty" immutable="true" use="optional" default="false" type="xs:boolean" title=""/>
+    <occi:attribute name="cpu_shares" immutable="true" use="optional" default="0" type="xs:integer" title="CPU shares for this Docker container"/>
+    <occi:attribute name="pid" immutable="true" use="optional" type="xs:string" title="&apos;&apos; or &apos;host&apos;"/>
+    <occi:attribute name="ipc" immutable="true" use="optional" type="xs:string" title="&apos;&apos;, &apos;host&apos; or &apos;container:[name:id]&apos;"/>
+    <occi:attribute name="add_host" immutable="true" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="mac_address" immutable="true" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="rm" immutable="true" use="optional" type="xs:boolean" title=""/>
+    <occi:attribute name="security_opt" immutable="true" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="device" immutable="true" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="lxc_conf" immutable="true" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="cpuset" immutable="true" use="optional" default="" type="xs:string" title=""/>
+    <occi:attribute name="publish_all" immutable="true" use="optional" default="false" type="xs:boolean" title="Publish all exposed ports to random ports on the host interfaces"/>
+    <occi:attribute name="read_only" immutable="true" use="optional" default="false" type="xs:boolean" title="Mount the container&apos;s root filesystem as read only"/>
+    <occi:action term="create" scheme="http://occiware.org/docker/container/action#" title="">
+    </occi:action>
+    <occi:action term="start" scheme="http://occiware.org/docker/container/action#" title="">
+    </occi:action>
+    <occi:action term="stop" scheme="http://occiware.org/docker/container/action#" title="">
+    </occi:action>
+    <occi:action term="run" scheme="http://occiware.org/docker/container/action#" title="">
+    </occi:action>
+    <occi:action term="pause" scheme="http://occiware.org/docker/container/action#" title="">
+    </occi:action>
+    <occi:action term="unpause" scheme="http://occiware.org/docker/container/action#" title="">
+    </occi:action>
+    <occi:action term="kill" scheme="http://occiware.org/docker/container/action#" title="">
+      <occi:attribute name="signal" immutable="true" use="required" default="KILL" type="xs:string" title=""/>
+    </occi:action>
+  </occi:kind>
+
+  <!-- Kind: Link between containers -->
+  <occi:kind term="link" scheme="http://occiware.org/docker#" title="Link between containers">
+    <occi:parent term="link" scheme="http://schemas.ogf.org/occi/core#"/>
+    <occi:attribute name="alias" immutable="true" use="optional" type="xs:string" title="The alias of this Link instance"/>
+  </occi:kind>
+
+  <!-- Kind: VolumsFrom -->
+  <occi:kind term="volumesfrom" scheme="http://occiware.org/docker#" title="VolumsFrom">
+    <occi:parent term="link" scheme="http://schemas.ogf.org/occi/core#"/>
+    <occi:attribute name="mode" immutable="true" use="optional" default="read_write" type="xs:string" title="The mode of this VolumesFrom instance"/>
+  </occi:kind>
+
+  <!-- Kind:  -->
+  <occi:kind term="contains" scheme="http://occiware.org/docker#" title="">
+    <occi:parent term="link" scheme="http://schemas.ogf.org/occi/core#"/>
+  </occi:kind>
+
+  <!-- Kind: Machine Resource -->
+  <occi:kind term="machine" scheme="http://occiware.org/docker#" title="Machine Resource">
+    <occi:parent term="compute" scheme="http://schemas.ogf.org/occi/infrastructure#"/>
+    <occi:attribute name="name" immutable="true" use="required" type="xs:string" title=""/>
+  </occi:kind>
+
+  <!-- Kind: Machine on Amazon EC2 -->
+  <occi:kind term="machine_Amazon_EC2" scheme="http://occiware.org/docker#" title="Machine on Amazon EC2">
+    <occi:parent term="machine" scheme="http://occiware.org/docker#"/>
+    <occi:attribute name="access_key" immutable="true" use="required" type="xs:string" title="Your access key id for the Amazon Web Services API"/>
+    <occi:attribute name="ami" immutable="true" use="optional" default="ami-4ae27e22" type="xs:string" title="The AMI ID of the instance to use"/>
+    <occi:attribute name="instance_type" immutable="true" use="optional" default="t2.micro" type="xs:string" title="The instance type to run"/>
+    <occi:attribute name="region" immutable="true" use="optional" default="us-east-1" type="xs:string" title="The region to use when launching the instance"/>
+    <occi:attribute name="root_size" immutable="true" use="optional" default="16" type="xs:integer" title="The root disk size of the instance (in GB)"/>
+    <occi:attribute name="secret_key" immutable="true" use="required" type="xs:string" title="Your secret access key for the Amazon Web Services API"/>
+    <occi:attribute name="security_group" immutable="true" use="optional" default="docker-machine" type="xs:string" title="AWS VPC security group name"/>
+    <occi:attribute name="session_token" immutable="true" use="optional" type="xs:string" title="Your session token for the Amazon Web Services API"/>
+    <occi:attribute name="subnet_id" immutable="true" use="optional" type="xs:string" title="AWS VPC subnet id"/>
+    <occi:attribute name="vpc_id" immutable="true" use="required" type="xs:string" title="Your VPC ID to launch the instance in"/>
+    <occi:attribute name="zone" immutable="true" use="optional" default="a" type="xs:string" title="The AWS zone launch the instance in (i.e. one of a,b,c,d,e)"/>
+  </occi:kind>
+
+  <!-- Kind: Machine on Digital Ocean -->
+  <occi:kind term="machine_Digital_Ocean" scheme="http://occiware.org/docker#" title="Machine on Digital Ocean">
+    <occi:parent term="machine" scheme="http://occiware.org/docker#"/>
+    <occi:attribute name="access_token" immutable="true" use="required" type="xs:string" title="Your personal access token for the Digital Ocean API"/>
+    <occi:attribute name="image" immutable="true" use="optional" default="docker" type="xs:string" title="The name of the Digital Ocean image to use"/>
+    <occi:attribute name="region" immutable="true" use="optional" default="nyc3" type="xs:string" title="The region to create the droplet in"/>
+    <occi:attribute name="size" immutable="true" use="optional" default="512mb" type="xs:string" title="The size of the Digital Ocean driver (larger than default options are of the form 2gb)"/>
+  </occi:kind>
+
+  <!-- Kind: Machine on Google Compute Engine -->
+  <occi:kind term="machine_Google_Compute_Engine" scheme="http://occiware.org/docker#" title="Machine on Google Compute Engine">
+    <occi:parent term="machine" scheme="http://occiware.org/docker#"/>
+    <occi:attribute name="zone" immutable="true" use="optional" default="us-central1-a" type="xs:string" title="The zone to launch the instance"/>
+    <occi:attribute name="machine_type" immutable="true" use="optional" default="f1-micro" type="xs:string" title="The type of instance"/>
+    <occi:attribute name="username" immutable="true" use="optional" default="docker-user" type="xs:string" title="The username to use for the instance"/>
+    <occi:attribute name="instance_name" immutable="true" use="optional" default="docker-machine" type="xs:string" title="The name of the instance"/>
+    <occi:attribute name="project" immutable="true" use="required" type="xs:string" title="The name of your project to use when launching the instance"/>
+  </occi:kind>
+
+  <!-- Kind: Machine on IBM SoftLayer -->
+  <occi:kind term="machine_IBM_SoftLayer" scheme="http://occiware.org/docker#" title="Machine on IBM SoftLayer">
+    <occi:parent term="machine" scheme="http://occiware.org/docker#"/>
+    <occi:attribute name="api_endpoint" immutable="true" use="optional" type="xs:string" title="Change softlayer API endpoint"/>
+    <occi:attribute name="user" immutable="true" use="required" type="xs:string" title="username for your softlayer account, api key needs to match this user"/>
+    <occi:attribute name="api_key" immutable="true" use="required" type="xs:string" title="API key for your user account"/>
+    <occi:attribute name="cpu" immutable="true" use="optional" type="xs:integer" title="Number of CPU&apos;s for the machine"/>
+    <occi:attribute name="disk_size" immutable="true" use="optional" default="" type="xs:integer" title="Size of the disk in MB. 0 sets the softlayer default"/>
+    <occi:attribute name="domain" immutable="true" use="required" type="xs:string" title="domain name for the machine"/>
+    <occi:attribute name="hostname" immutable="true" use="optional" type="xs:string" title="hostname for the machine"/>
+    <occi:attribute name="hourly_billing" immutable="true" use="optional" default="true" type="xs:boolean" title="Sets the hourly billing flag (default), otherwise uses monthly billing"/>
+    <occi:attribute name="image" immutable="true" use="optional" type="xs:string" title="OS Image to use"/>
+    <occi:attribute name="local_disk" immutable="true" use="optional" type="xs:boolean" title="Use local machine disk instead of softlayer SAN"/>
+    <occi:attribute name="memory" immutable="true" use="optional" type="xs:integer" title="Memory for host in MB"/>
+    <occi:attribute name="private_net_only" immutable="true" use="optional" type="xs:boolean" title="Disable public networking"/>
+    <occi:attribute name="region" immutable="true" use="optional" type="xs:string" title="softlayer region"/>
+  </occi:kind>
+
+  <!-- Kind: Machine on Microsoft Azure -->
+  <occi:kind term="machine_Microsoft_Azure" scheme="http://occiware.org/docker#" title="Machine on Microsoft Azure">
+    <occi:parent term="machine" scheme="http://occiware.org/docker#"/>
+    <occi:attribute name="subscription_id" immutable="true" use="required" type="xs:string" title="Your Azure subscription ID (A GUID like d255d8d7-5af0-4f5c-8a3e-1545044b861e)"/>
+    <occi:attribute name="subscription_cert" immutable="true" use="required" type="xs:string" title="Your Azure subscription cert"/>
+  </occi:kind>
+
+  <!-- Kind: Machine on Microsoft Hyper-V -->
+  <occi:kind term="machine_Microsoft_Hyper_V" scheme="http://occiware.org/docker#" title="Machine on Microsoft Hyper-V">
+    <occi:parent term="machine" scheme="http://occiware.org/docker#"/>
+    <occi:attribute name="boot2docker_location" immutable="true" use="optional" type="xs:string" title="Location of a local boot2docker iso to use. Overrides the URL option below"/>
+    <occi:attribute name="boot2docker_url" immutable="true" use="optional" type="xs:string" title="The URL of the boot2docker iso. Defaults to the latest available version"/>
+    <occi:attribute name="disk_size" immutable="true" use="optional" default="20000" type="xs:integer" title="Size of disk for the host in MB"/>
+    <occi:attribute name="memory" immutable="true" use="optional" default="1024" type="xs:integer" title="Size of memory for the host in MB. The machine is setup to use dynamic memory"/>
+    <occi:attribute name="virtual_switch" immutable="true" use="optional" type="xs:string" title="Name of the virtual switch to use. Defaults to first found"/>
+  </occi:kind>
+
+  <!-- Kind: Machine on OpenStack -->
+  <occi:kind term="machine_OpenStack" scheme="http://occiware.org/docker#" title="Machine on OpenStack">
+    <occi:parent term="machine" scheme="http://occiware.org/docker#"/>
+    <occi:attribute name="flavor_id" immutable="true" use="required" type="xs:string" title="The flavor ID to use when creating the machine"/>
+    <occi:attribute name="image_id" immutable="true" use="required" type="xs:string" title="The image ID to use when creating the machine"/>
+    <occi:attribute name="auth_url" immutable="true" use="optional" type="xs:string" title="Keystone service base URL"/>
+    <occi:attribute name="username" immutable="true" use="optional" type="xs:string" title="User identifer to authenticate with"/>
+    <occi:attribute name="password" immutable="true" use="optional" type="xs:string" title="User password. It can be omitted if the standard environment variable OS_PASSWORD is set."/>
+    <occi:attribute name="tenant_name" immutable="true" use="optional" type="xs:string" title="Identify the tenant in which the machine will be created"/>
+    <occi:attribute name="tenant_id" immutable="true" use="optional" type="xs:string" title="Identify the tenant in which the machine will be created"/>
+    <occi:attribute name="region" immutable="true" use="optional" type="xs:string" title="The region to work on. Can be omitted if there is only one region on the OpenStack"/>
+    <occi:attribute name="endpoint_type" immutable="true" use="optional" type="xs:string" title="Endpoint type can be internalURL, adminURL on publicURL. If is a helper for the driver to choose the right URL in the OpenStack service catalog. If not provided the default id publicURL"/>
+    <occi:attribute name="net_id" immutable="true" use="optional" type="xs:string" title="The private network id the machine will be connected on. If your OpenStack project project contains only one private network it will be use automatically"/>
+    <occi:attribute name="sec_groups" immutable="true" use="optional" type="xs:string" title="If security groups are available on your OpenStack you can specify a comma separated list to use for the machine (e.g. secgrp001,secgrp002)"/>
+    <occi:attribute name="floatingip_pool" immutable="true" use="optional" type="xs:string" title="The IP pool that will be used to get a public IP an assign it to the machine. If there is an IP address already allocated but not assigned to any machine, this IP will be chosen and assigned to the machine. If there is no IP address already allocated a new IP will be allocated and assigned to the machine"/>
+  </occi:kind>
+
+  <!-- Kind: Machine on Rackspace cloud -->
+  <occi:kind term="machine_Rackspace" scheme="http://occiware.org/docker#" title="Machine on Rackspace cloud">
+    <occi:parent term="machine" scheme="http://occiware.org/docker#"/>
+    <occi:attribute name="username" immutable="true" use="required" type="xs:string" title="Rackspace account username"/>
+    <occi:attribute name="api_key" immutable="true" use="required" type="xs:string" title="Rackspace API key"/>
+    <occi:attribute name="region" immutable="true" use="required" type="xs:string" title="Rackspace region name"/>
+    <occi:attribute name="endpoint_type" immutable="true" use="optional" default="publicURL" type="xs:string" title="Rackspace endpoint type (adminURL, internalURL or the default publicURL)"/>
+    <occi:attribute name="image_id" immutable="true" use="optional" default="Ubuntu 14.10 (Utopic Unicorn) (PVHVM)" type="xs:string" title="Rackspace image ID "/>
+    <occi:attribute name="flavor_id" immutable="true" use="optional" default="General Purpose 1GB" type="xs:string" title="Rackspace flavor ID"/>
+    <occi:attribute name="ssh_user" immutable="true" use="optional" default="root" type="xs:string" title="SSH user for the newly booted machine"/>
+    <occi:attribute name="ssh_port" immutable="true" use="optional" default="22" type="xs:integer" title="SSH port for the newly booted machine"/>
+  </occi:kind>
+
+  <!-- Kind: Machine on VirtualBox -->
+  <occi:kind term="machine_VirtualBox" scheme="http://occiware.org/docker#" title="Machine on VirtualBox">
+    <occi:parent term="machine" scheme="http://occiware.org/docker#"/>
+    <occi:attribute name="boot2docker_url" immutable="true" use="optional" type="xs:string" title="The URL of the boot2docker image. Default to the latest available version"/>
+    <occi:attribute name="disk_size" immutable="true" use="optional" default="20000" type="xs:integer" title="Size of disk for the host in MB"/>
+    <occi:attribute name="memory" immutable="true" use="optional" default="1024" type="xs:integer" title="Size of memory for the host in MB"/>
+  </occi:kind>
+
+  <!-- Kind: Machine on VMware Fusion -->
+  <occi:kind term="machine_VMware_Fusion" scheme="http://occiware.org/docker#" title="Machine on VMware Fusion">
+    <occi:parent term="machine" scheme="http://occiware.org/docker#"/>
+    <occi:attribute name="boot2docker_url" immutable="true" use="optional" type="xs:string" title="URL for boot2docker image"/>
+    <occi:attribute name="disk_size" immutable="true" use="optional" default="20000" type="xs:integer" title="Size of disk for host VM (in MB)"/>
+    <occi:attribute name="memory_size" immutable="true" use="optional" default="1024" type="xs:integer" title="Size of memory for host VM (in MB)"/>
+  </occi:kind>
+
+  <!-- Kind: Machine on VMware vCloud Air -->
+  <occi:kind term="machine_VMware_vCloud_Air" scheme="http://occiware.org/docker#" title="Machine on VMware vCloud Air">
+    <occi:parent term="machine" scheme="http://occiware.org/docker#"/>
+    <occi:attribute name="username" immutable="true" use="required" type="xs:string" title="vCloud Air Username"/>
+    <occi:attribute name="password" immutable="true" use="required" type="xs:string" title="vCloud Air Password"/>
+    <occi:attribute name="catalog" immutable="true" use="optional" default="Public Catalog" type="xs:string" title="Catalog "/>
+    <occi:attribute name="catalogitem" immutable="true" use="optional" default="Ubuntu Server 12.04 LTS (amd64 20140927)" type="xs:string" title="Catalog Item "/>
+    <occi:attribute name="computeid" immutable="true" use="optional" type="xs:string" title="Compute ID (if using Dedicated Cloud)"/>
+    <occi:attribute name="cpu_count" immutable="true" use="optional" default="1" type="xs:integer" title="VM Cpu Count"/>
+    <occi:attribute name="docker_port" immutable="true" use="optional" default="2376" type="xs:integer" title="Docker port "/>
+    <occi:attribute name="edgegateway" immutable="true" use="optional" default="&lt;vdcid&gt;" type="xs:string" title="Organization Edge Gateway"/>
+    <occi:attribute name="memory_size" immutable="true" use="optional" default="2048" type="xs:integer" title="VM Memory Size in MB"/>
+    <occi:attribute name="vapp_name" immutable="true" use="optional" default="&lt;autogenerated&gt;" type="xs:string" title="vApp Name"/>
+    <occi:attribute name="orgvdcnetwork" immutable="true" use="optional" default="&lt;vdcid&gt;-default-routed" type="xs:string" title="Organization VDC Network to attach"/>
+    <occi:attribute name="provision" immutable="true" use="optional" default="true" type="xs:boolean" title="Install Docker binaries"/>
+    <occi:attribute name="publicip" immutable="true" use="optional" type="xs:string" title="Org Public IP to use"/>
+    <occi:attribute name="ssh_port" immutable="true" use="optional" default="22" type="xs:integer" title="SSH port"/>
+    <occi:attribute name="vdcid" immutable="true" use="optional" type="xs:string" title="Virtual Data Center ID"/>
+  </occi:kind>
+
+  <!-- Kind: Machine on VMware vSphere -->
+  <occi:kind term="machine_VMware_vSphere" scheme="http://occiware.org/docker#" title="Machine on VMware vSphere">
+    <occi:parent term="machine" scheme="http://occiware.org/docker#"/>
+    <occi:attribute name="username" immutable="true" use="required" type="xs:string" title="vSphere Username"/>
+    <occi:attribute name="password" immutable="true" use="required" type="xs:string" title="vSphere Password"/>
+    <occi:attribute name="boot2docker_url" immutable="true" use="required" type="xs:string" title="URL for boot2docker image"/>
+    <occi:attribute name="compute_ip" immutable="true" use="optional" type="xs:string" title="Compute host IP where the Docker VM will be instantiated"/>
+    <occi:attribute name="cpu_count" immutable="true" use="optional" default="2" type="xs:integer" title="CPU number for Docker VM"/>
+    <occi:attribute name="datacenter" immutable="true" use="optional" type="xs:string" title="Datacenter for Docker VM (must be set to ha-datacenter when connecting to a single host)"/>
+    <occi:attribute name="datastore" immutable="true" use="optional" type="xs:string" title="Datastore for Docker VM"/>
+    <occi:attribute name="disk_size" immutable="true" use="optional" default="20000" type="xs:integer" title="Size of disk for Docker VM (in MB)"/>
+    <occi:attribute name="memory_size" immutable="true" use="optional" default="2048" type="xs:integer" title="Size of memory for Docker VM (in MB) "/>
+    <occi:attribute name="network" immutable="true" use="optional" type="xs:string" title="Network where the Docker VM will be attached"/>
+    <occi:attribute name="pool" immutable="true" use="optional" type="xs:string" title="Resource pool for Docker VM"/>
+    <occi:attribute name="vcenter" immutable="true" use="optional" type="xs:string" title=" IP/hostname for vCenter (or ESXi if connecting directly to a single host)"/>
+  </occi:kind>
+</occi:extension>

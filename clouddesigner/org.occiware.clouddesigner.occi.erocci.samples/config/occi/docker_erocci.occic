@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ASCII"?>
+<occi:Configuration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:docker="http://occiware.org/docker" xmlns:occi="http://schemas.ogf.org/occi">
+  <use href="platform:/plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#/"/>
+  <resources xsi:type="docker:Machine_VirtualBox" id="_uEZL8H6gEeWnDLHK1wRq-g" name="OCCIware">
+    <kind href="platform:/plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='machine_VirtualBox']"/>
+    <links xsi:type="docker:Contains" id="_8QwkAH6gEeWnDLHK1wRq-g" target="//@resources.1">
+      <kind href="platform:/plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='contains']"/>
+    </links>
+  </resources>
+  <resources xsi:type="docker:Container" id="_8QFOkH6gEeWnDLHK1wRq-g" name="erocci" image="erocci/erocci" ports="8080:80" expose="" volumes="`pwd`/config/erocci:/tmp:rw" working_dir="">
+    <kind href="platform:/plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='container']"/>
+  </resources>
+</occi:Configuration>
