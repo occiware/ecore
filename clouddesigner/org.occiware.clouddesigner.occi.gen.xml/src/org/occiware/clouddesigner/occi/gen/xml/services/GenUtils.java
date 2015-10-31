@@ -86,7 +86,9 @@ public class GenUtils
 		javaTypesToXmlSchemaTypes.put("char",    XML_SCHEMA_NAMESPACE + "string"); // TODO: find a better type that string.
 		javaTypesToXmlSchemaTypes.put("byte",    XML_SCHEMA_NAMESPACE + "byte");
 		javaTypesToXmlSchemaTypes.put("short",   XML_SCHEMA_NAMESPACE + "short");
-		javaTypesToXmlSchemaTypes.put("int",     XML_SCHEMA_NAMESPACE + "int");
+// TODO: It should be better to map to xs:int instead of xs:integer but erocci does not support xs:int
+//		javaTypesToXmlSchemaTypes.put("int",     XML_SCHEMA_NAMESPACE + "int");
+		javaTypesToXmlSchemaTypes.put("int",     XML_SCHEMA_NAMESPACE + "integer");
 		javaTypesToXmlSchemaTypes.put("long",    XML_SCHEMA_NAMESPACE + "long");
 		javaTypesToXmlSchemaTypes.put("float",   XML_SCHEMA_NAMESPACE + "float");
 		javaTypesToXmlSchemaTypes.put("double",  XML_SCHEMA_NAMESPACE + "double");
