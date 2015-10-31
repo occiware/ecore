@@ -30,47 +30,47 @@ and
 
 ## Script-based manual erocci demonstration
 
-* Start a shell and go to this folder:
+Start a shell and go to this folder:
 
-	$ cd <FOLDER-WHERE-THIS-MODULE-IS>/org.occiware.clouddesigner.occi.erocci.samples
+    $ cd <FOLDER-WHERE-THIS-MODULE-IS>/org.occiware.clouddesigner.occi.erocci.samples
 
-* Create a Docker machine named OCCIware:
+Create a Docker machine named OCCIware:
 
-	$ docker-machine create --driver virtualbox OCCIware
+    $ docker-machine create --driver virtualbox OCCIware
 
-* Set the Docker environment variables to use the OCCIware machine:
+Set the Docker environment variables to use the OCCIware machine:
 
-	$ eval "$(docker-machine env OCCIware)"
+    $ eval "$(docker-machine env OCCIware)"
 
-* Run erocci Docker-based container on the OCCIware machine:
+Run erocci Docker-based container on the OCCIware machine:
 
-	$ docker run --name erocci -p 8080:80 -v `pwd`/config/erocci:/tmp:rw -d erocci/erocci
+    $ docker run --name erocci -p 8080:80 -v `pwd`/config/erocci:/tmp:rw -d erocci/erocci
 
-	- '-p 8080:80' exports the port 80 of the erocci container to the port 8080 of the OCCIware machine.
-	- '-v `pwd`/config/erocci:/tmp:rw' replaces the default erocci configuration by the configuration stored in the config/erocci/ folder.
+- `-p 8080:80 exports the port 80 of the erocci container to the port 8080 of the OCCIware machine.
+- `-v \`pwd\`/config/erocci:/tmp:rw replaces the default erocci configuration by the configuration stored in the `config/erocci/ folder.
 
-* Display the URL of the running erocci:
+Display the URL of the running erocci:
 
-	EROCCI_URL=http://`docker-machine ip OCCIware`:8080
-	echo erocci is running at $EROCCI_URL
+	$ EROCCI_URL=http://`docker-machine ip OCCIware`:8080
+	$ echo erocci is running at $EROCCI_URL
 
-* Display all OCCI categories managed by the running erocci:
+Display all OCCI categories managed by the running erocci:
 
-	$ curl $EROCCI_URL/-/
+    $ curl $EROCCI_URL/-/
 
-* Display all OCCI entities managed by the running erocci:
+Display all OCCI entities managed by the running erocci:
 
-	scripts/erocci-show-all-entities.sh $EROCCI_URL
+    $ scripts/erocci-show-all-entities.sh $EROCCI_URL
 
-* Create several OCCI resources:
+Create several OCCI resources:
 
-	$ scripts/infrastructure.occic.sh $EROCCI_URL
+    $ scripts/infrastructure.occic.sh $EROCCI_URL
 
-* Display all previously created OCCI entities:
+Display all previously created OCCI entities:
 
 	$ scripts/erocci-show-all-entities.sh $EROCCI_URL
 
-* Clean up the environment:
+Clean up the environment:
 
 	$ docker-machine rm -f OCCIware
 
