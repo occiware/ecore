@@ -24,6 +24,7 @@ import org.occiware.clouddesigner.occi.AttributeState;
 import org.occiware.clouddesigner.occi.Category;
 import org.occiware.clouddesigner.occi.Entity;
 import org.occiware.clouddesigner.occi.Kind;
+import org.occiware.clouddesigner.occi.Mixin;
 import org.occiware.clouddesigner.occi.OCCIPackage;
 
 /**
@@ -74,7 +75,7 @@ public class AttributeStateItemProvider extends ItemProviderAdapter implements I
 				if (object instanceof Attribute) {
 					Attribute attr = (Attribute) object;
 					Category cat = ((Category) attr.eContainer());
-					return '[' + cat.getTerm() + "] " + attr.getName() + ':' + attr.getType().getName();
+					return '[' + cat.getTerm() + "] " + attr.getName() + ": " + attr.getType().getName();
 				}
 				return String.valueOf(object);
 			}
@@ -92,15 +93,15 @@ public class AttributeStateItemProvider extends ItemProviderAdapter implements I
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null) {
 					@Override
 					public Collection<?> getChoiceOfValues(Object arg0) {
-						List<Attribute> l = new ArrayList<Attribute>();
-						Kind kind = ((Entity) ((AttributeState) arg0).eContainer()).getKind();
-						if (arg0 instanceof AttributeState && ((AttributeState) arg0).eContainer() instanceof Entity
-								&& kind != null) {
-							for (Attribute attribute : getAllAttributes(kind)) {
-								l.add(attribute);
-							}
+						List<Attribute> attributes = new ArrayList<Attribute>();
+						if (arg0 instanceof AttributeState) {
+							Entity ownerEntity = (Entity) ((AttributeState) arg0).eContainer();
+							addAllAttributes(attributes, ownerEntity.getKind());
+							for(Mixin mixin : ownerEntity.getMixins()) {
+								addAllAttributes(attributes, mixin);
+							}							
 						}
-						return l;
+						return attributes;
 					}
 
 					@Override
@@ -133,13 +134,21 @@ public class AttributeStateItemProvider extends ItemProviderAdapter implements I
 	/**
 	 * @generated NOT
 	 */
-	private static Collection<Attribute> getAllAttributes(Kind kind) {
-		List<Attribute> res = new ArrayList<Attribute>();
+	private static void addAllAttributes(Collection<Attribute> attributes, Kind kind) {
 		if (kind.getParent() != null) {
-			res.addAll(getAllAttributes(kind.getParent()));
+			addAllAttributes(attributes, kind.getParent());
 		}
-		res.addAll(kind.getAttributes());
-		return res;
+		attributes.addAll(kind.getAttributes());
+	}
+
+	/**
+	 * @generated NOT
+	 */
+	private static void addAllAttributes(Collection<Attribute> attributes, Mixin mixin) {
+		for(Mixin md : mixin.getDepends()) {
+			addAllAttributes(attributes, md);
+		}
+		attributes.addAll(mixin.getAttributes());
 	}
 
 	/**
