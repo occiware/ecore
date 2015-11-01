@@ -1,6 +1,6 @@
 #! /bin/sh
 #
-# Generated at Sun Nov 01 15:19:45 CET 2015 from platform:/resource/org.occiware.clouddesigner.occi.erocci.samples/config/occi/infrastructure.occic by org.occiware.clouddesigner.occi.gen.curl
+# Generated at Sun Nov 01 21:40:09 CET 2015 from platform:/resource/org.occiware.clouddesigner.occi.erocci.samples/config/occi/infrastructure.occic by org.occiware.clouddesigner.occi.gen.curl
 #
 
 OCCI_SERVER_URL=$1

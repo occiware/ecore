@@ -1,6 +1,6 @@
 #! /bin/sh
 #
-# Generated at Sun Nov 01 15:19:39 CET 2015 from platform:/resource/org.occiware.clouddesigner.occi.erocci.samples/config/occi/docker_erocci.occic by org.occiware.clouddesigner.occi.docker.gen.conf
+# Generated at Sun Nov 01 21:40:02 CET 2015 from platform:/resource/org.occiware.clouddesigner.occi.erocci.samples/config/occi/docker_erocci.occic by org.occiware.clouddesigner.occi.docker.gen.conf
 #
 
 # Create the Docker Machine_VirtualBox named OCCIware
