@@ -1,8 +1,9 @@
 /**
+ * Contributors:
+ * - Philippe Merle <philippe.merle@inria.fr>
  */
 package org.occiware.clouddesigner.occi.provider;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -23,9 +24,8 @@ import org.occiware.clouddesigner.occi.Attribute;
 import org.occiware.clouddesigner.occi.AttributeState;
 import org.occiware.clouddesigner.occi.Category;
 import org.occiware.clouddesigner.occi.Entity;
-import org.occiware.clouddesigner.occi.Kind;
-import org.occiware.clouddesigner.occi.Mixin;
 import org.occiware.clouddesigner.occi.OCCIPackage;
+import org.occiware.clouddesigner.occi.OCCIUtils;
 
 /**
  * This is the item provider adapter for a
@@ -92,16 +92,8 @@ public class AttributeStateItemProvider extends ItemProviderAdapter implements I
 						OCCIPackage.Literals.ATTRIBUTE_STATE__NAME, true, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null) {
 					@Override
-					public Collection<?> getChoiceOfValues(Object arg0) {
-						List<Attribute> attributes = new ArrayList<Attribute>();
-						if (arg0 instanceof AttributeState) {
-							Entity ownerEntity = (Entity) ((AttributeState) arg0).eContainer();
-							addAllAttributes(attributes, ownerEntity.getKind());
-							for(Mixin mixin : ownerEntity.getMixins()) {
-								addAllAttributes(attributes, mixin);
-							}							
-						}
-						return attributes;
+					public Collection<?> getChoiceOfValues(Object arg0) {						
+						return OCCIUtils.getAllAttributes((Entity) ((AttributeState) arg0).eContainer());
 					}
 
 					@Override
@@ -129,26 +121,6 @@ public class AttributeStateItemProvider extends ItemProviderAdapter implements I
 						return super.getPropertyValue(object);
 					}
 				});
-	}
-
-	/**
-	 * @generated NOT
-	 */
-	private static void addAllAttributes(Collection<Attribute> attributes, Kind kind) {
-		if (kind.getParent() != null) {
-			addAllAttributes(attributes, kind.getParent());
-		}
-		attributes.addAll(kind.getAttributes());
-	}
-
-	/**
-	 * @generated NOT
-	 */
-	private static void addAllAttributes(Collection<Attribute> attributes, Mixin mixin) {
-		for(Mixin md : mixin.getDepends()) {
-			addAllAttributes(attributes, md);
-		}
-		attributes.addAll(mixin.getAttributes());
 	}
 
 	/**
