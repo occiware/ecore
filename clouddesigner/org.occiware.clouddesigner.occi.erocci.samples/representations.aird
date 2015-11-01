@@ -1074,7 +1074,7 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_uGWTwH6gEeWnDLHK1wRq-g" labelSize="12" borderSize="1" borderSizeComputationExpression="1" foregroundColor="246,139,139">
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_pdV7AICSEeWMfbbPLc08Hg" labelSize="12" borderSize="1" borderSizeComputationExpression="1" foregroundColor="246,139,139">
           <customFeatures>labelSize</customFeatures>
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.docker.design/description/docker.odesign#//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@conditionnalStyles.2/@style"/>
         </ownedStyle>
