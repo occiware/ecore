@@ -1,5 +1,6 @@
 /**
- * Contributors: Philippe Merle <philippe.merle@inria.fr>
+ * Contributors:
+ * - Philippe Merle <philippe.merle@inria.fr>
  */
 package org.occiware.clouddesigner.occi.impl;
 
