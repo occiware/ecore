@@ -1,9 +1,12 @@
 /**
+ * Contributors: Philippe Merle <philippe.merle@inria.fr>
  */
 package org.occiware.clouddesigner.occi.impl;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -11,7 +14,9 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
@@ -43,12 +48,15 @@ import org.eclipse.ocl.pivot.values.IntegerValue;
 import org.eclipse.ocl.pivot.values.InvalidValueException;
 import org.eclipse.ocl.pivot.values.OrderedSetValue;
 import org.eclipse.ocl.pivot.values.SetValue;
+import org.occiware.clouddesigner.occi.Attribute;
 import org.occiware.clouddesigner.occi.AttributeState;
 import org.occiware.clouddesigner.occi.Entity;
 import org.occiware.clouddesigner.occi.Kind;
 import org.occiware.clouddesigner.occi.Mixin;
 import org.occiware.clouddesigner.occi.OCCIPackage;
 import org.occiware.clouddesigner.occi.OCCITables;
+import org.occiware.clouddesigner.occi.OCCIUtils;
+import org.occiware.clouddesigner.occi.impl.AttributeStateImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -124,6 +132,7 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 	 */
 	protected EntityImpl() {
 		super();
+		// Generate a new ID for this entity.
 		setId(EcoreUtil.generateUUID());
 	}
 
@@ -211,12 +220,65 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EList<AttributeState> getAttributes() {
 		if (attributes == null) {
-			attributes = new EObjectContainmentEList<AttributeState>(AttributeState.class, this, OCCIPackage.ENTITY__ATTRIBUTES);
+			attributes = new EObjectContainmentEList<AttributeState>(AttributeState.class, this, OCCIPackage.ENTITY__ATTRIBUTES);			
 		}
+
+		//
+		// Synchronize OCCI attributes from EMF attributes.
+		//
+
+		// Array to store doublons of OCCI attribute states.
+		final ArrayList<AttributeState> toRemove = new ArrayList<AttributeState>();
+
+		// Compute a map of all current OCCI attribute state instances.
+		final HashMap<String, AttributeState> map = new HashMap<String, AttributeState>();
+		for(AttributeState attributeState : attributes) {
+			String attributeStateName = attributeState.getName();
+			AttributeState oldAttributeState = map.get(attributeStateName);
+			if(oldAttributeState != null) {
+				toRemove.add(oldAttributeState);
+			}
+			map.put(attributeStateName, attributeState);
+		}
+
+		// Remove doublons of OCCI attribute state instances.
+		for(AttributeState attributeState : toRemove) {
+			attributes.remove(attributeState);
+		}
+		
+		// Iterate over all OCCI attributes of this entity.
+		for(Attribute attribute : OCCIUtils.getAllAttributes(this)) {
+			final String attributeName = attribute.getName();
+			// Search the Ecore structural feature associated to this OCCI attribute.
+			final EStructuralFeature eStructuralFeature = eClass().getEStructuralFeature(OCCIUtils.computeEmfAttributeNameFromOcciAttributeName(attributeName));
+			// If this is an Ecore attribute then
+			if(eStructuralFeature != null && eStructuralFeature instanceof EAttribute) {
+				final int featureId = eStructuralFeature.getFeatureID();
+				// If this Ecore attribute is set then
+				if(eIsSet(featureId)) {
+					// Search the associated attribute state from the map.
+					AttributeState attributeState = map.get(attributeName);
+					// If not found then create it.
+					if(attributeState == null) {
+						attributeState = new AttributeStateImpl();
+						attributeState.setName(attributeName);;
+						attributes.add(attributeState);
+					}
+					// Get the Ecore attribute value.
+					final String valueAsString = eGet(featureId, true, true).toString();
+					// If this value has changed then
+					if(!valueAsString.equals(attributeState.getValue())) {
+						// Set the attribute set value.
+						attributeState.setValue(valueAsString);
+					}
+				}
+			}
+		}
+
 		return attributes;
 	}
 
