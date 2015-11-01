@@ -33,7 +33,8 @@ echo Displaying all OCCI entities managed by the running erocci...
 scripts/erocci-show-all-entities.sh $EROCCI_URL
 
 echo Creating several OCCI resources...
-scripts/infrastructure.occic.sh $EROCCI_URL
+src-gen/curl/infrastructure.occic.sh $EROCCI_URL
+src-gen/curl/docker_erocci.occic.sh $EROCCI_URL
 
 echo Displaying all previously created OCCI entities...
 scripts/erocci-show-all-entities.sh $EROCCI_URL
