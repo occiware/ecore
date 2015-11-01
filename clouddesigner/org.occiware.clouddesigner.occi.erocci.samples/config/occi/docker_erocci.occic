@@ -7,7 +7,7 @@
       <kind href="platform:/plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='contains']"/>
     </links>
   </resources>
-  <resources xsi:type="docker:Container" id="_8QFOkH6gEeWnDLHK1wRq-g" name="erocci" image="erocci/erocci" ports="8080:80" expose="" volumes="`pwd`/config/erocci:/tmp:rw" working_dir="">
+  <resources xsi:type="docker:Container" id="_8QFOkH6gEeWnDLHK1wRq-g" name="erocci" image="erocci/erocci" ports="8080:80" expose="" volumes="`pwd`/config/erocci:/tmp" working_dir="">
     <kind href="platform:/plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='container']"/>
   </resources>
 </occi:Configuration>

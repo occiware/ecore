@@ -44,10 +44,10 @@ Set the Docker environment variables to use the OCCIware machine:
 
 Run erocci Docker-based container on the OCCIware machine:
 
-    $ docker run --name erocci -p 8080:80 -v `pwd`/config/erocci:/tmp:rw -d erocci/erocci
+    $ docker run --name erocci -p 8080:80 -v `pwd`/config/erocci:/tmp -d erocci/erocci
 
 - `-p 8080:80` exports the port 80 of the erocci container to the port 8080 of the OCCIware machine.
-- `-v 'pwd'/config/erocci:/tmp:rw` replaces the default erocci configuration by the configuration stored in the `config/erocci/` folder.
+- `-v 'pwd'/config/erocci:/tmp` replaces the default erocci configuration by the configuration stored in the `config/erocci/` folder.
 
 Display the URL of the running erocci:
 
