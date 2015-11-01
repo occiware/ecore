@@ -2,8 +2,11 @@
 [module genSH('http://occiware.org/docker', 'http://schemas.ogf.org/occi/infrastructure', 'http://schemas.ogf.org/occi')]
 
 [template public generateSH(configuration : Configuration)]
-[file ('docker-conf.sh', false, 'UTF-8')]
-#!/bin/sh
+[file ('docker/' + configurationFileName(configuration) + '.sh', false, 'UTF-8')]
+#! /bin/sh
+#
+# Generated at [getNow()/] from [getFilePath(configuration)/] by org.occiware.clouddesigner.occi.docker.gen.conf
+#
 
 [for (machine : Machine | configuration.resources->filter(Machine))]
 [machine.genMachine()/]
@@ -15,22 +18,27 @@
 # Create the Docker [eClass().name/] named [name/]
 docker-machine create [genDriverConfig()/] [name/]
 
-[getOrderedContainers().genContainer(machine.name)/]
+eval "$(docker-machine env [name/])"
+
+[getOrderedContainers().genContainer()/]
 [/template]
 
 [template public genDriverConfig (machine : Machine) post (trim())]
 [/template]
 
 [template public genDriverConfig (machine : Machine_VirtualBox) post (trim())]
- --driver=virtualbox[if not memory.oclIsUndefined()] --virtualbox-memory [toInteger(memory)/][/if][if disk_size <> null] --virtualbox-disk-size [disk_size/][/if]
+ --driver=virtualbox[if (not memory.oclIsUndefined() and memory <> 0)] --virtualbox-memory [toInteger(memory)/][/if][if (not disk_size.oclIsUndefined() and disk_size <> null)] --virtualbox-disk-size [disk_size/][/if]
 [/template]
 
-[template public genContainer (container : Container, machineName : String) ]
+[comment TODO: Add genDriverConfig for each Machine_* /]
+
+[template public genContainer (container : Container) ]
 # Create the Docker Container named [name/]
-docker $(docker-machine config [machineName/]) create --name [name/][if publish_all] -P[/if] [genLinkConfig()/] [if not image.oclIsUndefined()][image.trim()/][/if] [if not command.oclIsUndefined()][command.trim()/][/if]
+[comment TODO: Add other parameters of the docker create command. /]
+docker create --name [name/][if publish_all] -P[/if][if (not volumes.oclIsUndefined())] -v [volumes.trim()/][/if][if (not ports.oclIsUndefined())] -p [ports.trim()/][/if][genLinkConfig()/][if (not image.oclIsUndefined())] [image.trim()/][/if][if (not command.oclIsUndefined())] [command.trim()/][/if]
 
 # Start the Docker Container named [name/]
-docker $(docker-machine config [machineName/]) start [name/]
+docker start [name/]
 
 
 [/template]
@@ -42,6 +50,24 @@ docker $(docker-machine config [machineName/]) start [name/]
 [/let]
 [/for]
 [/template]
+
+[query public getNow() : String
+	= invoke(
+	'org.occiware.clouddesigner.occi.docker.gen.conf.services.GenUtils', 
+	'getNow()', 
+	Sequence{})/]
+
+[query public getFilePath(configuration : Configuration) : String
+	= invoke(
+	'org.occiware.clouddesigner.occi.docker.gen.conf.services.GenUtils', 
+	'getFilePath(org.occiware.clouddesigner.occi.Configuration)', 
+	Sequence{configuration})/]
+
+[query public configurationFileName(configuration : Configuration) : String
+	= invoke(
+	'org.occiware.clouddesigner.occi.docker.gen.conf.services.GenUtils', 
+	'configurationFileName(org.occiware.clouddesigner.occi.Configuration)', 
+	Sequence{configuration})/]
 
 [query public getOrderedContainers(machine : Machine) : Sequence(Container)
 	= invoke(

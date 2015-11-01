@@ -2,7 +2,7 @@
 [module genCompose('http://occiware.org/docker', 'http://schemas.ogf.org/occi/infrastructure', 'http://schemas.ogf.org/occi')]
  
 [template public generateCompose(configuration : Configuration)]
-[file ('docker-compose.yml', false, 'UTF-8')]
+[file ('docker/compose.yml', false, 'UTF-8')]
 [for (container : Container | configuration.resources->filter(Container))]
 [container.name/]:
 [if (not container.build.oclIsUndefined())]

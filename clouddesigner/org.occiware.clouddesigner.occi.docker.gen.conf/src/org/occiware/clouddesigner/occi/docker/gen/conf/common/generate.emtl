@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:mtl="http://www.eclipse.org/acceleo/mtl/3.0" xmlns:ocl.ecore="http://www.eclipse.org/ocl/1.1.0/Ecore">
-  <mtl:Module name="generate" nsURI="org::occiware::clouddesigner::occi::docker::gen::conf::common::generate" startHeaderPosition="30" endHeaderPosition="237">
+  <mtl:Module name="generate" nsURI="org::occiware::clouddesigner::occi::docker::gen::conf::common::generate" startHeaderPosition="29" endHeaderPosition="235">
     <input>
       <takesTypesFrom href="http://occiware.org/docker#/"/>
     </input>
@@ -20,7 +20,7 @@
           <eType xsi:type="ecore:EClass" href="http://schemas.ogf.org/occi#//Configuration"/>
         </argument>
       </body>
-      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;"/>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
       <body xsi:type="mtl:TemplateInvocation">
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <definition href="platform:/resource/org.occiware.clouddesigner.occi.docker.gen.conf/bin/org/occiware/clouddesigner/occi/docker/gen/conf/files/genSH.emtl#/0/generateSH"/>
@@ -152,38 +152,38 @@
   </ocl.ecore:Variable>
   <ecore:EAnnotation source="positions">
     <eAnnotations source="positions.0" references="/0/generateElement">
-      <details key="start" value="321"/>
-      <details key="end" value="482"/>
+      <details key="start" value="317"/>
+      <details key="end" value="474"/>
       <details key="line" value="5"/>
     </eAnnotations>
     <eAnnotations source="positions.1" references="/0/generateElement/%">
-      <details key="start" value="407"/>
-      <details key="end" value="437"/>
+      <details key="start" value="401"/>
+      <details key="end" value="431"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.2" references="/0/generateElement/%/configuration">
-      <details key="start" value="423"/>
-      <details key="end" value="436"/>
+      <details key="start" value="417"/>
+      <details key="end" value="430"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.3" references="/0/generateElement/%.1">
-      <details key="start" value="439"/>
-      <details key="end" value="441"/>
+      <details key="start" value="433"/>
+      <details key="end" value="434"/>
       <details key="line" value="8"/>
     </eAnnotations>
     <eAnnotations source="positions.4" references="/0/generateElement/%.2">
-      <details key="start" value="442"/>
-      <details key="end" value="467"/>
+      <details key="start" value="435"/>
+      <details key="end" value="460"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.5" references="/0/generateElement/%.2/configuration">
-      <details key="start" value="453"/>
-      <details key="end" value="466"/>
+      <details key="start" value="446"/>
+      <details key="end" value="459"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.6" references="/0/generateElement/configuration">
-      <details key="start" value="354"/>
-      <details key="end" value="383"/>
+      <details key="start" value="350"/>
+      <details key="end" value="379"/>
       <details key="line" value="5"/>
     </eAnnotations>
   </ecore:EAnnotation>
