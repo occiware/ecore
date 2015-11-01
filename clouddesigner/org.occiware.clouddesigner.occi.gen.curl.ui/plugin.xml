@@ -15,7 +15,7 @@
                enablesFor="+"
                id="org.occiware.clouddesigner.occi.gen.curl.ui.popupMenus.acceleoGenerateCurlAction"
                icon="icons/default.gif"
-               label="Generate curl script"
+               label="Generate deployment script with curl commands"
                menubarPath="org.occiware.clouddesigner.menu/group"/>
       </objectContribution>
    </extension>
