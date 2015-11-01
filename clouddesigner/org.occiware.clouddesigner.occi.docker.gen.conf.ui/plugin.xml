@@ -5,18 +5,18 @@
       <objectContribution
             adaptable="true"
             objectClass="org.eclipse.core.resources.IFile"
-            nameFilter="*.docker"
+            nameFilter="*.occic"
             id="org.occiware.clouddesigner.occi.docker.gen.conf.ui.popupMenus.contribution.IFile">
-         <menu id="org.eclipse.acceleo.module.menu" label="Generate" path="additionsAcceleo">
-               <groupMarker name="acceleo"/> 
+         <menu id="org.occiware.clouddesigner.menu" label="Cloud Designer" path="additionsCloudDesigner">
+               <separator name="group"/>
          </menu>
          <action
                class="org.occiware.clouddesigner.occi.docker.gen.conf.ui.popupMenus.AcceleoGenerateConfAction"
                enablesFor="+"
                id="org.occiware.clouddesigner.occi.docker.gen.conf.ui.popupMenus.acceleoGenerateConfAction"
                icon="icons/default.gif"
-               label="Generate Conf"
-               menubarPath="org.eclipse.acceleo.module.menu/acceleo"/>
+               label="Generate deployment script with Docker commands"
+               menubarPath="org.occiware.clouddesigner.menu/group"/>
       </objectContribution>
    </extension>
 </plugin>
