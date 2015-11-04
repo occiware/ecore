@@ -31,7 +31,6 @@ class ProcessManager {
 			} else if(DockerUtil.getOS.equalsIgnoreCase("win")){
 				env = #["cmd", "/c", command]
 			}
-			//val String[] env = #["/bin/bash", "-c", command]
 			val Process process = r.exec(env)
 			val input = new InputStreamReader(process.inputStream)
 			var BufferedReader reader = new BufferedReader(input)
