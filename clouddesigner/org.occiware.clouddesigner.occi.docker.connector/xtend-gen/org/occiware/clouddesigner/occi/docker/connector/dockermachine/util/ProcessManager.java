@@ -23,6 +23,7 @@ import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.InputOutput;
+import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerUtil;
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.Output;
 
 @SuppressWarnings("all")
@@ -155,8 +156,27 @@ public class ProcessManager {
   
   public static String getOutputCommand(final String command, final Runtime r) {
     StringBuffer result = new StringBuffer();
+    String[] env = null;
     try {
-      final String[] env = { "/bin/bash", "-c", command };
+      boolean _or = false;
+      String _oS = DockerUtil.getOS();
+      boolean _equalsIgnoreCase = _oS.equalsIgnoreCase("osx");
+      if (_equalsIgnoreCase) {
+        _or = true;
+      } else {
+        String _oS_1 = DockerUtil.getOS();
+        boolean _equalsIgnoreCase_1 = _oS_1.equalsIgnoreCase("uni");
+        _or = _equalsIgnoreCase_1;
+      }
+      if (_or) {
+        env = new String[] { "/bin/bash", "-c", command };
+      } else {
+        String _oS_2 = DockerUtil.getOS();
+        boolean _equalsIgnoreCase_2 = _oS_2.equalsIgnoreCase("win");
+        if (_equalsIgnoreCase_2) {
+          env = new String[] { "cmd", "/c", command };
+        }
+      }
       final Process process = r.exec(env);
       InputStream _inputStream = process.getInputStream();
       final InputStreamReader input = new InputStreamReader(_inputStream);

@@ -1,10 +1,10 @@
- /*******************************************************************************
+/*******************************************************************************
  * Copyright (c) 2015 INRIA.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  * 	- Fawaz PARAISO 
  *******************************************************************************/
@@ -24,8 +24,14 @@ class ProcessManager {
 	def static String getOutputCommand(String command, Runtime r) {
 
 		var StringBuffer result = new StringBuffer
+		var String[] env = null
 		try {
-			val String[] env = #["/bin/bash", "-c", command]
+			if (DockerUtil.getOS.equalsIgnoreCase("osx") || DockerUtil.getOS.equalsIgnoreCase("uni")) {
+				env = #["/bin/bash", "-c", command]
+			} else if(DockerUtil.getOS.equalsIgnoreCase("win")){
+				env = #["cmd", "/c", command]
+			}
+			//val String[] env = #["/bin/bash", "-c", command]
 			val Process process = r.exec(env)
 			val input = new InputStreamReader(process.inputStream)
 			var BufferedReader reader = new BufferedReader(input)
@@ -123,8 +129,8 @@ class ProcessManager {
 			super(inputStream, null)
 			this.din = new DataInputStream(inputStream)
 
-		//		this.reader = null
-		//		this.writer = null
+		// this.reader = null
+		// this.writer = null
 		}
 
 		def getData() {
@@ -200,11 +206,11 @@ class ProcessManager {
 
 		}
 	}
-	
+
 	def static void main(String[] args) {
 		val command = " docker-machine ls"
 		val p = ProcessManager.getOutputCommand(command, Runtime.getRuntime())
 		println(p)
 	}
-	
+
 }
