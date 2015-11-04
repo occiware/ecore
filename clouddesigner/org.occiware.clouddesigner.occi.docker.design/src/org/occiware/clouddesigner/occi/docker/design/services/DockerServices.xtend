@@ -25,9 +25,8 @@ import org.occiware.clouddesigner.occi.docker.connector.ExecutableDockerFactory
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableDockerModel
 import org.occiware.clouddesigner.occi.infrastructure.RestartMethod
 import org.occiware.clouddesigner.occi.infrastructure.StopMethod
-import org.occiware.clouddesigner.occi.AbstractOCCIKindResolver
 
-class DockerServices extends AbstractOCCIKindResolver{
+class DockerServices {
 
 	// Initialize the executable Docker factory.
 	val init = ExecutableDockerFactory.init()

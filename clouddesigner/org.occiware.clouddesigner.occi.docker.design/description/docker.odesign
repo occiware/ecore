@@ -136,14 +136,11 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:eContainer">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Container" referenceName="resources" variableName="containerInstance">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:addKind"/>
-                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Container" referenceName="resources" variableName="containerInstance"/>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Contains" referenceName="links" variableName="containsInstance">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="source" valueExpression="var:container"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="var:containerInstance"/>
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:addKind"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -157,7 +154,6 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="docker.Link" referenceName="links">
                 <subModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="var:target"/>
-                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:addKind"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -169,7 +165,6 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Volumesfrom" referenceName="links">
                 <subModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="var:target"/>
-                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:addKind"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -177,90 +172,70 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="docker.Machine_VirtualBox" referenceName="resources">
-                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:addKind"/>
-              </firstModelOperations>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="docker.Machine_VirtualBox" referenceName="resources"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:ContainerCreationDescription" name="OpenStack" containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Machine_OpenStack.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machine_OpenStack" referenceName="resources">
-                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:addKind"/>
-              </firstModelOperations>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machine_OpenStack" referenceName="resources"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:ContainerCreationDescription" name="Microsoft Azure" containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Machine_Microsoft_Azure.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machine_Microsoft_Azure" referenceName="resources">
-                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:addKind"/>
-              </firstModelOperations>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machine_Microsoft_Azure" referenceName="resources"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:ContainerCreationDescription" name="Vmware Fusion" containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Machine_VMware_Fusion.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machine_VMware_Fusion" referenceName="resources">
-                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:addKind"/>
-              </firstModelOperations>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machine_VMware_Fusion" referenceName="resources"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:ContainerCreationDescription" name="Rackspace" containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Machine_Rackspace.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machine_Rackspace" referenceName="resources">
-                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:addKind"/>
-              </firstModelOperations>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machine_Rackspace" referenceName="resources"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:ContainerCreationDescription" name="Vmware vSphere" containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Machine_VMware_vSphere.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machine_VMware_vSphere" referenceName="resources">
-                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:addKind"/>
-              </firstModelOperations>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machine_VMware_vSphere" referenceName="resources"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:ContainerCreationDescription" name="Google CE" containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Machine_Google_Compute_Engine.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machine_Google_Compute_Engine" referenceName="resources">
-                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:addKind"/>
-              </firstModelOperations>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machine_Google_Compute_Engine" referenceName="resources"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:ContainerCreationDescription" name="IBM SoftLayer" containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Machine_IBM_SoftLayer.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machine_IBM_SoftLayer" referenceName="resources">
-                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:addKind"/>
-              </firstModelOperations>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machine_IBM_SoftLayer" referenceName="resources"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:ContainerCreationDescription" name="Amazon EC2" containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Machine_Amazon_EC2.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machine_Amazon_EC2" referenceName="resources">
-                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:addKind"/>
-              </firstModelOperations>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machine_Amazon_EC2" referenceName="resources"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:ContainerCreationDescription" name="Microsoft_Hyper_V" containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Machine_Microsoft_Hyper_V.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machine_Microsoft_Hyper_V" referenceName="resources">
-                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:addKind"/>
-              </firstModelOperations>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machine_Microsoft_Hyper_V" referenceName="resources"/>
             </initialOperation>
           </ownedTools>
         </toolSections>
