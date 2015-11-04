@@ -17,13 +17,12 @@ import org.eclipse.jface.dialogs.ProgressMonitorDialog
 import org.eclipse.jface.operation.IRunnableWithProgress
 import org.eclipse.swt.widgets.Display
 import org.eclipse.swt.widgets.Shell
-import org.occiware.clouddesigner.occi.AbstractOCCIKindResolver
 import org.occiware.clouddesigner.occi.hypervisor.Machine
 import org.occiware.clouddesigner.occi.hypervisor.connector.libvirt.ExecutableHypervisorFactory
 import org.occiware.clouddesigner.occi.hypervisor.connector.libvirt.ExecutableHypervisorModel
 import org.occiware.clouddesigner.occi.Configuration
 
-class HypervisorServices extends AbstractOCCIKindResolver{
+class HypervisorServices {
 		// Initialize the executable Docker factory.
 	val init = ExecutableHypervisorFactory.init()
 	
