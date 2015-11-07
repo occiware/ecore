@@ -430,7 +430,6 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="occi.Resource" referenceName="resources">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:setResourceKind"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="id" valueExpression="['r' + container.oclAsType(Configuration).resources->size().toString()/]"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -444,7 +443,6 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="occi.Link" referenceName="links" variableName="link">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:setLinkKind"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="id" valueExpression="['l' + source.oclAsType(Resource).links->size().toString()/]">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="var:target"/>
                   </subModelOperations>
