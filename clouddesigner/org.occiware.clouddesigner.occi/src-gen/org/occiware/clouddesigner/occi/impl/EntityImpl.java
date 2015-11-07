@@ -57,6 +57,7 @@ import org.occiware.clouddesigner.occi.Mixin;
 import org.occiware.clouddesigner.occi.OCCIPackage;
 import org.occiware.clouddesigner.occi.OCCITables;
 import org.occiware.clouddesigner.occi.OCCIUtils;
+import org.occiware.clouddesigner.occi.OCCIKindResolver;
 import org.occiware.clouddesigner.occi.impl.AttributeStateImpl;
 
 /**
@@ -171,7 +172,7 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Kind getKind() {
 		if (kind != null && kind.eIsProxy()) {
@@ -182,6 +183,18 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OCCIPackage.ENTITY__KIND, oldKind, kind));
 			}
 		}
+
+		// If kind is not set then
+		if(kind == null) {
+			try {
+				// Try to resolve it automatically.
+				kind = OCCIKindResolver.resolveKind(this);
+			} catch(Exception exc) {
+				// TODO: This should never happens :-(
+				exc.printStackTrace(System.err);
+			}
+		}
+		
 		return kind;
 	}
 
