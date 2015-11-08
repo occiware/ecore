@@ -1,3 +1,14 @@
+/*******************************************************************************
+ * Copyright (c) 2015 Obeo, Inria
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ * 	   William Piers <william.piers@obeo.fr>
+ *     Philippe Merle <philippe.merle@inria.fr>
+ *******************************************************************************/
 package org.occiware.clouddesigner.occi.emfgen;
 
 import java.io.BufferedInputStream;
@@ -17,6 +28,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -53,7 +65,7 @@ public final class ConverterUtils {
 	public static void save(ResourceSet resourceSet, EObject rootElement, String path) throws IOException {
 		Resource resource = resourceSet.createResource(URI.createURI(path));
 		resource.getContents().add(rootElement);
-		Map options = new HashMap();
+		Map<String, String> options = new HashMap<String, String>();
 		options.put(XMIResource.OPTION_ENCODING, "UTF-8");
 		resource.save(options);
 	}
@@ -72,17 +84,19 @@ public final class ConverterUtils {
 		return temp;
 	}
 
-	public static EClass getMappedEClass(Kind kind) {
-		String eClassName = toU1Case(kind.getTerm());
-
+	/**
+	 * Get the Ecore package associated to a given OCCI object.
+	 * @param occiObject the given OCCI object.
+	 * @return the assocaited Ecore package.
+	 */
+	public static EPackage getEPackage(EObject occiObject) {
 		// we must use platform:/plugin URI to enable genmodels
-		String uri = kind.eResource().getURI().toString().replaceAll(".occie", ".ecore");
+		String uri = occiObject.eResource().getURI().toString().replaceAll(".occie", ".ecore");
 		// special case for core
 		uri = uri.replaceAll("model/Core.ecore", "model/OCCI.ecore");
-		EPackage p = (EPackage) kind.eResource().getResourceSet().getResource(URI.createURI(uri), true).getContents()
+		EPackage p = (EPackage) occiObject.eResource().getResourceSet().getResource(URI.createURI(uri), true).getContents()
 				.get(0);
-
-		return (EClass) p.getEClassifier(eClassName);
+		return p;
 	}
 
 	public static String convertScheme2URI(String scheme) {
@@ -98,7 +112,7 @@ public final class ConverterUtils {
 		}
 		return res;
 	}
-
+	
 	public static void persistMetamodel(ResourceSet resourceSet, EPackage generated, String path) throws IOException {
 		if (new File(path).exists()) {
 			EPackage existing = (EPackage) ConverterUtils.getRootElement(resourceSet, "file:/" + path);
