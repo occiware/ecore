@@ -27,6 +27,7 @@ import java.util.Map;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -95,6 +96,10 @@ public final class ConverterUtils {
 		EPackage p = (EPackage) occiObject.eResource().getResourceSet().getResource(URI.createURI(uri), true).getContents()
 				.get(0);
 		return p;
+	}
+
+	public static EClass getMappedEClass(Kind kind) {
+		return (EClass) ConverterUtils.getEPackage(kind).getEClassifier(ConverterUtils.toU1Case(kind.getTerm()));
 	}
 
 	public static String convertScheme2URI(String scheme) {
