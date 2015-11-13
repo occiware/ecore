@@ -254,7 +254,10 @@ public class ExecutableDockerFactory extends DockerFactoryImpl {
   public Machine_VMware_vCloud_Air createMachine_VMware_vCloud_Air() {
     ExecutableMachine_VMware_vCloud_Air _xblockexpression = null;
     {
-      ExecutableDockerFactory.LOGGER.info("ExecutableDockerFactory:createMachine_VMware_vCloud_Air()");
+      Class<? extends ExecutableDockerFactory> _class = this.getClass();
+      String _name = _class.getName();
+      String _plus = (_name + ":createMachine_VMware_vCloud_Air()");
+      ExecutableDockerFactory.LOGGER.info(_plus);
       _xblockexpression = new ExecutableMachine_VMware_vCloud_Air();
     }
     return _xblockexpression;
