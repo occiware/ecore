@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="true"
+            objectClass="org.eclipse.core.resources.IFile"
+            nameFilter="*.occie"
+            id="org.occiware.clouddesigner.occi.gen.alloy.ui.popupMenus.contribution.IFile">
+         <menu id="org.occiware.clouddesigner.menu" label="Cloud Designer" path="additionsCloudDesigner">
+               <separator name="group"/>
+         </menu>
+         <action
+               class="org.occiware.clouddesigner.occi.gen.alloy.ui.popupMenus.AcceleoGenerateAlloyAction"
+               enablesFor="+"
+               id="org.occiware.clouddesigner.occi.gen.alloy.ui.popupMenus.acceleoGenerateAlloyAction"
+               icon="icons/default.gif"
+               label="Generate Alloy specification"
+               menubarPath="org.occiware.clouddesigner.menu/group"/>
+      </objectContribution>
+   </extension>
+</plugin>

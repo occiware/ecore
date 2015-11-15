@@ -1,0 +1,375 @@
+[comment encoding = UTF-8 /]
+[module generate('http://www.eclipse.org/emf/2002/Ecore','http://schemas.ogf.org/occi')]
+
+[template public generate(extension : Extension)]
+[comment @main /]
+[generateStaticSemantics(extension)/]
+[generateDynamicSemantics(extension)/]
+[/template]
+
+[template public generateStaticSemantics(extension : Extension)]
+[file ('alloy/'+extension.name+'.als', false, 'UTF-8')]
+// Generated at [getNow()/] from [getFilePath(extension)/] by org.occiware.clouddesigner.occi.gen.alloy
+
+// ======================================================================
+//
+// Static Semantics for OCCI Extension '[extension.name/]'
+//
+// ======================================================================
+
+module [extension.name/]
+
+open util/boolean
+open OCCI
+
+// ======================================================================
+//
+// Imported extensions
+//
+// ======================================================================
+
+[for (imported : Extension | extension.import)]
+open [imported.name/]
+[/for]
+
+// ======================================================================
+//
+// OCCI extension '[extension.name/]'
+//
+// ======================================================================
+
+one sig extension extends Extension {} {
+    name = "[extension.name/]"
+    scheme = "[extension.scheme/]"
+    [if (extension.import->isEmpty())]no import[else]import = [for (e : Extension | extension.import) separator(' + ')][e.name/]/extension[/for][/if]
+    [if (extension.kinds->isEmpty())]no kinds[else]kinds = [for (kind : Kind | extension.kinds) separator(' + ')][kind.term/][/for][/if]
+    [if (extension.mixins->isEmpty())]no mixins[else]mixins = [for (mixin : Mixin | extension.mixins) separator(' + ')][mixin.term/][/for][/if]
+    [if (extension.types->isEmpty())]no types[else]types = [for (type : EDataType | extension.types) separator(' + ')][type.name/]_DataType[/for][/if]
+}
+[for (kind : Kind | extension.kinds)]
+[generateStaticSemantics(kind)/]
+[/for]
+[for (mixin : Mixin | extension.mixins)]
+[generateStaticSemantics(mixin)/]
+[/for]
+[for (type : EDataType | extension.types)]
+[generateStaticSemantics(type)/]
+[/for]
+
+// ======================================================================
+// Check consistency, i.e., there is at least one instance of this model.
+// ======================================================================
+
+run Consistency {} for 10
+
+// ======================================================================
+// Instance containing the OCCI Type System only.
+// ======================================================================
+
+run The_OCCI_Type_System {} for 0
+
+[/file]
+[/template]
+
+[template public generateStringField(label : String, value : String) post (trim())]
+    [if (value = null or value.size() = 0)]no [label/][else][label/] = "[value/]"[/if]
+[/template]
+
+[template public generateTermSchemeTitle(category : Category)]
+term = "[category.term/]"
+scheme = "[category.scheme/]"
+[generateStringField('title', category.title)/]
+[/template]
+
+[template public generateStaticSemantics(kind : Kind)]
+
+// ======================================================================
+//
+// OCCI kind '[kind.scheme/][kind.term/]'
+//
+// ======================================================================
+
+one sig [kind.term/] extends Kind {} {
+    [generateTermSchemeTitle(kind)/]
+    [if (kind.parent = null)]no parent[else]parent = [getKind(kind.parent, kind)/][/if]
+    [if (kind.attributes->isEmpty())]no attributes[else]attributes = [for (attribute : Attribute | kind.attributes) separator(' + ')][getSigName(attribute)/][/for][/if]
+    [if (kind.actions->isEmpty())]no actions[else]actions = [for (action : Action | kind.actions) separator(' + ')][getSigName(action)/][/for][/if]
+    entities in [toU1Case(kind.term)/]
+}
+[for (attribute : Attribute | kind.attributes)]
+[generateStaticSemantics(attribute)/]
+[/for]
+[for (action : Action | kind.actions)]
+[generateStaticSemantics(action)/]
+[/for]
+
+// ======================================================================
+// Signature for [toU1Case(kind.term)/]
+// ======================================================================
+
+sig [toU1Case(kind.term)/] extends [getKindSig2(kind.parent, kind)/] {
+[for (attribute : Attribute | kind.attributes)]
+    [getName(attribute)/] : [if (attribute.required)]one[else]lone[/if] [generateSigAttributeType(attribute,null)/],
+[/for]
+} {
+    hasKind['['/][kind.term/][']'/]
+}
+[/template]
+
+[template public generateStaticSemantics(mixin : Mixin)]
+
+// ======================================================================
+//
+// OCCI mixin '[mixin.scheme/][mixin.term/]'
+//
+// ======================================================================
+
+one sig [mixin.term/] extends Mixin {} {
+    [generateTermSchemeTitle(mixin)/]
+    [if (mixin.depends->isEmpty())]no depends[else]depends = [for (mixin : Mixin | mixin.depends) separator(' + ')][mixin.term/][/for][/if]
+    [if (mixin.applies->isEmpty())]no applies[else]applies = [for (kind : Kind | mixin.applies) separator(' + ')][kind.term/][/for][/if]
+    [if (mixin.attributes->isEmpty())]no attributes[else]attributes = [for (attribute : Attribute | mixin.attributes) separator(' + ')][getSigName(attribute)/][/for][/if]
+    [if (mixin.actions->isEmpty())]no actions[else]actions = [for (action : Action | mixin.actions) separator(' + ')][getSigName(action)/][/for][/if]
+    entities in [toU1Case(mixin.term)/]
+}
+[for (attribute : Attribute | mixin.attributes)]
+[generateStaticSemantics(attribute)/]
+[/for]
+[for (action : Action | mixin.actions)]
+[generateStaticSemantics(action)/]
+[/for]
+
+// ======================================================================
+// Signature for [toU1Case(mixin.term)/]
+// ======================================================================
+
+sig [toU1Case(mixin.term)/] in [if(mixin.applies->isEmpty())]core/Entity[else][for (kd : Kind | mixin.applies) separator(' + ')][getKindSig1(kd, mixin)/][/for][/if] {
+[for (attribute : Attribute | mixin.attributes)]
+    [getName(attribute)/] : [if (attribute.required)]one[else]lone[/if] [generateSigAttributeType(attribute,null)/],
+[/for]
+}
+[/template]
+
+[template public generateStaticSemantics(attribute : Attribute)]
+
+//
+// OCCI attribute '[attribute.name/]'
+//
+one sig [getSigName(attribute)/] extends Attribute {} {
+    name = "[attribute.name/]"
+    [if (attribute.type = null)]no type [else]type = [generateSigAttributeType(attribute,'_DataType')/][/if]
+    mutable = [generate(attribute.mutable)/]
+    required = [generate(attribute.required)/]
+    [generateStringField('default', attribute.default)/]
+    [generateStringField('description', attribute.description)/]
+    multiple_values = [generate(attribute.multiple_values)/]
+}
+[/template]
+
+[template public generate(bool : Boolean)]
+[if(bool)]True[else]False[/if]
+[/template]
+
+[template public generateStaticSemantics(action : Action)]
+
+//
+// OCCI action '[action.scheme/][action.term/]'
+//
+one sig [getSigName(action)/] extends Action {} {
+    [generateTermSchemeTitle(action)/]
+    [if (action.attributes->isEmpty())]no attributes[else]attributes = [for (attribute : Attribute | action.attributes) separator(' + ')][getSigName(attribute)/][/for][/if]
+}
+[for (attribute : Attribute | action.attributes)][generateStaticSemantics(attribute)/][/for]
+[/template]
+
+[template public generateStaticSemantics(type : EDataType)]
+
+//
+// OCCI data type [type.name/]
+//
+one sig [type.name/]_DataType extends DataType {} {
+    name = "[type.name/]"
+}
+
+[generateTypeSig(type)/]
+[/template]
+
+[template public generateTypeSig(type : EDataType)]
+let [type.name/]=String
+[/template]
+
+[template public generateTypeSig(type : EEnum)]
+enum [type.name/] { [for (literal : EEnumLiteral | type.eLiterals) separator(', ')][type.name/]_[literal.name/][/for]}
+[/template]
+
+[template public generateDynamicSemantics(extension : Extension)]
+[file ('alloy/'+extension.name+'_behaviour.als', false, 'UTF-8')]
+// Generated at [getNow()/] from [getFilePath(extension)/] by org.occiware.clouddesigner.occi.gen.alloy
+
+// ======================================================================
+//
+// Dynamic Semantics for OCCI Extensions '[extension.name/]'
+//
+// ======================================================================
+
+module [extension.name/]_behaviour
+
+open util/boolean
+open OCCI
+open [extension.name/]
+
+//
+// Imported extensions
+//
+[for (imported : Extension | extension.import)]
+open [imported.name/]
+[/for]
+[for (kind : Kind | extension.kinds)]
+[generateDynamicSemantics(kind)/]
+[/for]
+[for (mixin : Mixin | extension.mixins)]
+[generateDynamicSemantics(mixin)/]
+[/for]
+
+// ======================================================================
+// Check consistency, i.e., there is at least one instance of this model.
+// ======================================================================
+
+run Consistency {} for 10
+
+[/file]
+[/template]
+
+[template public generateDynamicSemantics(kind : Kind)]
+
+// ======================================================================
+//
+// OCCI kind '[kind.scheme/][kind.term/]'
+//
+// ======================================================================
+[let KindSigName : String = toU1Case(kind.term)]
+
+//
+// Equivalence predicate between two [KindSigName/] atoms.
+//
+[let firstLetter : String = kind.term.first(1)]
+pred iso[KindSigName/]['['/][firstLetter/]1, [firstLetter/]2: [KindSigName/][']'/]
+{
+    // Comment following lines when this is not the expected behaviour.
+    iso[KindSigName/]['['/][firstLetter/]1, [firstLetter/]2[']'/] // same [kind.parent.term/]
+[let stateAttribute : Attribute = getStateAttribute(kind.attributes)]
+[for (attribute : Attribute | kind.attributes)]
+[if(attribute <> stateAttribute)]
+    [firstLetter/]1.[getName(attribute)/] = [firstLetter/]2.[getName(attribute)/] // same [attribute.name/]
+[else]
+    // [firstLetter/]1.[getName(attribute)/] = [firstLetter/]2.[getName(attribute)/] // could be different [attribute.name/]
+[/if]
+[/for]
+[/let]
+}
+[/let]
+
+[for (action : Action | kind.actions)]
+[generateDynamicSemantics(action, KindSigName)/]
+[/for]
+[/let]
+[/template]
+
+[template public generateDynamicSemantics(mixin : Mixin)]
+
+// ======================================================================
+//
+// OCCI mixin '[mixin.scheme/][mixin.term/]'
+//
+// ======================================================================
+[let MixinSigName : String = toU1Case(mixin.term)]
+
+//
+// Equivalence predicate between two [MixinSigName/] atoms.
+//
+[let firstLetter : String = mixin.term.first(1)]
+pred iso[MixinSigName/]['['/][firstLetter/]1, [firstLetter/]2: [MixinSigName/][']'/]
+{
+    // Comment following lines when this is not the expected behaviour.
+[for (attribute : Attribute | mixin.attributes)]
+    [firstLetter/]1.[getName(attribute)/] = [firstLetter/]2.[getName(attribute)/] // same [attribute.name/]
+[/for]
+}
+[/let]
+[for (action : Action | mixin.actions)]
+[generateDynamicSemantics(action, MixinSigName)/]
+[/for]
+[/let]
+[/template]
+
+[template public generateDynamicSemantics(action : Action, categorySig : String)]
+
+//
+// OCCI Action '[action.scheme/][action.term/]'
+//
+
+[let ownerCategory : Category = action.eContainer().oclAsType(Category)]
+[let stateAttribute : Attribute = getStateAttribute(ownerCategory.attributes)]
+pred [action.term/]['['/]before: [categorySig/][for (attribute : Attribute | action.attributes)], [attribute.name/] : [generateSigAttributeType(attribute,null)/][/for], after: [categorySig/][']'/]
+{
+// Warning: Following is a generated default behaviour that should be certainly updated!
+    // Precondition before executing the action [action.term/]
+    before.[getName(stateAttribute)/] = [generateSigAttributeType(stateAttribute,'')/]_[stateAttribute.type.oclAsType(EEnum).eLiterals->asSequence()->first().name/]
+    // Postcondition after executing the action [action.term/]
+    iso[toU1Case(ownerCategory.term)/]['['/]after, before[']'/]
+    after.[getName(stateAttribute)/] = [generateSigAttributeType(stateAttribute,'')/]_[stateAttribute.type.oclAsType(EEnum).eLiterals->asSequence()->first().name/]
+}
+[/let]
+[/let]
+[/template]
+
+[query public getNow() : String
+	= invoke(
+	'org.occiware.clouddesigner.occi.gen.alloy.services.GenUtils', 
+	'getNow()', 
+	Sequence{})/]
+
+[query public getFilePath(extension : Extension) : String
+	= invoke(
+	'org.occiware.clouddesigner.occi.gen.alloy.services.GenUtils', 
+	'getFilePath(org.occiware.clouddesigner.occi.Extension)', 
+	Sequence{extension})/]
+
+[query public toU1Case(string : String) : String = string.substring(1, 1).toUpperCase() + string.substring(2) /]
+
+[query public getScopeMixin(ctx : Mixin, kind : Kind) : String =
+		if(kind.eResource().eContents()->at(1).oclAsType(Extension) <> ctx.eResource().eContents()->at(1).oclAsType(Extension)) then
+			kind.eResource().eContents()->at(1).oclAsType(Extension).name + '/'
+		else
+			 ''
+		endif
+/]
+
+[query public getScopeKind(ctx : Kind, kind : Kind) : String =
+		if(kind.eResource().eContents()->at(1).oclAsType(Extension) <> ctx.eResource().eContents()->at(1).oclAsType(Extension)) then
+			kind.eResource().eContents()->at(1).oclAsType(Extension).name + '/'
+		else
+			 ''
+		endif
+/]
+
+[query public getKindSig1(kind : Kind, ctx : Mixin) : String = getScopeMixin(ctx, kind) + toU1Case(kind.term) /]
+
+[query public getKindSig2(kind : Kind, ctx : Kind) : String = getScopeKind(ctx, kind) + toU1Case(kind.term) /] 
+
+[query public getKind(kind : Kind, ctx : Kind) : String = getScopeKind(ctx, kind) + kind.term /]
+
+[query public getSigName(action : Action) : String = action.eContainer().oclAsType(Category).term + '_' + action.term /]
+
+[query public getName(attribute : Attribute) : String = attribute.name.replaceAll('\\.', '_') /]
+
+[query public getSigName(attribute : Attribute) : String = attribute.eContainer().oclAsType(Category).term + '_' + getName(attribute) /]
+
+[query public generateSigAttributeType(attribute : Attribute, suffix : String) : String
+	= invoke(
+	'org.occiware.clouddesigner.occi.gen.alloy.services.GenUtils', 
+	'generateSigAttributeType(org.occiware.clouddesigner.occi.Attribute, java.lang.String)', 
+	Sequence{attribute,suffix})/]
+
+[query public getStateAttribute(attributes : OrderedSet(Attribute)) : Attribute =
+    attributes->any(mutable = false and name.endsWith('state') and type.oclIsTypeOf(EEnum))/]
