@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import org.eclipse.emf.ecore.EObject;
+
 public final class OCCIUtils
 {
 	/**
@@ -115,7 +117,8 @@ public final class OCCIUtils
 		if(entity instanceof Resource) {
 			return (Configuration)entity.eContainer();
 		} else if(entity instanceof Link) {
-			return (Configuration)entity.eContainer().eContainer();
+			EObject econtainer = entity.eContainer();
+			return (econtainer == null) ? null : (Configuration)econtainer.eContainer();
 		} else {
 			throw new Error("Given entity is not a resource or link");
 		}
