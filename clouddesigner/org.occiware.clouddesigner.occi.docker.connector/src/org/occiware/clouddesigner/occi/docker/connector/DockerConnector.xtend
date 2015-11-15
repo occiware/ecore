@@ -195,7 +195,7 @@ class ExecutableDockerFactory extends DockerFactoryImpl {
 	 * Create an executable Machine_VMware_vCloud_Air instance.
 	 */
 	override def createMachine_VMware_vCloud_Air() {
-		LOGGER.info("ExecutableDockerFactory:createMachine_VMware_vCloud_Air()")
+		LOGGER.info(this.class.name + ":createMachine_VMware_vCloud_Air()")
 		new ExecutableMachine_VMware_vCloud_Air
 	}
 
