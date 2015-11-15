@@ -21,6 +21,13 @@
 
 # Install OCCIware OCCI jar into the local repo.
 
+	mvn install:install-file -Dfile="SOMEWHERE/org.occiware.clouddesigner.parent-0.1.0-SNAPSHOT.pom" \
+	                         -DgroupId=Clouddesigner \
+	                         -DartifactId=org.occiware.clouddesigner.parent \
+	                         -Dversion=0.1.0-SNAPSHOT \
+	                         -Dpackaging=pom \
+	                         -DlocalRepositoryPath=repo/
+
 	mvn install:install-file -Dfile="$CLOUD_DESIGNER/org.occiware.clouddesigner.occi-0.1.0-SNAPSHOT.jar" \
 	                         -DgroupId=Clouddesigner \
 	                         -DartifactId=org.occiware.clouddesigner.occi \
