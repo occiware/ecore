@@ -219,6 +219,20 @@ litigation.
          unpack="false"/>
 
    <plugin
+         id="org.occiware.clouddesigner.occi.gen.alloy"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.occiware.clouddesigner.occi.gen.alloy.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
          id="org.occiware.clouddesigner.occi.gen.curl"
          download-size="0"
          install-size="0"
