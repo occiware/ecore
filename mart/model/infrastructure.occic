@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="ASCII"?>
 <occi:Configuration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:occi="http://schemas.ogf.org/occi">
-  <use href="model/infrastructure.occie#/"/>
-  <use href="model/core.occie#/"/>
+  <use href="http://schemas.ogf.org/occi/infrastructure#/"/>
+  <use href="http://schemas.ogf.org/occi/core#/"/>
   <resources id="vm1">
-    <kind href="model/infrastructure.occie#//@kinds[term='compute']"/>
+    <kind href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='compute']"/>
     <attributes name="occi.compute.hostname" value="vm1"/>
     <attributes name="occi.compute.architecture" value="x64"/>
     <attributes name="occi.compute.cores" value="4"/>
     <attributes name="occi.compute.memory" value="4"/>
     <links id="ni1" target="//@resources.3">
-      <kind href="model/infrastructure.occie#//@kinds[term='networkinterface']"/>
-      <mixins href="model/infrastructure.occie#//@mixins[term='ipnetworkinterface']"/>
+      <kind href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='networkinterface']"/>
+      <mixins href="http://schemas.ogf.org/occi/infrastructure#//@mixins[term='ipnetworkinterface']"/>
       <attributes name="occi.networkinterface.mac" value="aa:bb:cc:dd:ee:11"/>
       <attributes name="occi.networkinterface.interface" value="eth0"/>
       <attributes name="occi.networkinterface.address" value="10.1.0.100/16"/>
@@ -18,25 +18,25 @@
       <attributes name="occi.networkinterface.allocation" value="static"/>
     </links>
     <links id="sl1" target="//@resources.2">
-      <kind href="model/infrastructure.occie#//@kinds[term='storagelink']"/>
+      <kind href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='storagelink']"/>
       <attributes name="occi.storagelink.deviceid" value="nfs:..."/>
       <attributes name="occi.storagelink.mountpoint" value="/mnt/scratch"/>
     </links>
   </resources>
   <resources id="vm2">
-    <kind href="model/infrastructure.occie#//@kinds[term='compute']"/>
+    <kind href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='compute']"/>
     <attributes name="occi.compute.hostname" value="vm2"/>
     <attributes name="occi.compute.architecture" value="x64"/>
     <attributes name="occi.compute.cores" value="2"/>
     <attributes name="occi.compute.memory" value="16"/>
     <links id="sl2" target="//@resources.2">
-      <kind href="model/infrastructure.occie#//@kinds[term='storagelink']"/>
+      <kind href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='storagelink']"/>
       <attributes name="occi.storagelink.deviceid" value="nfs:..."/>
       <attributes name="occi.storagelink.mountpoint" value="/mnt/scratch"/>
     </links>
     <links id="ni2" target="//@resources.3">
-      <kind href="model/infrastructure.occie#//@kinds[term='networkinterface']"/>
-      <mixins href="model/infrastructure.occie#//@mixins[term='ipnetworkinterface']"/>
+      <kind href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='networkinterface']"/>
+      <mixins href="http://schemas.ogf.org/occi/infrastructure#//@mixins[term='ipnetworkinterface']"/>
       <attributes name="occi.networkinterface.mac" value="aa:bb:cc:dd:ee:12"/>
       <attributes name="occi.networkinterface.interface" value="eth0"/>
       <attributes name="occi.networkinterface.address" value="10.1.0.101/16"/>
@@ -45,12 +45,12 @@
     </links>
   </resources>
   <resources id="storage1">
-    <kind href="model/infrastructure.occie#//@kinds[term='storage']"/>
+    <kind href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='storage']"/>
     <attributes name="occi.storage.size" value="100000"/>
   </resources>
   <resources id="network1">
-    <kind href="model/infrastructure.occie#//@kinds[term='network']"/>
-    <mixins href="model/infrastructure.occie#//@mixins[term='ipnetwork']"/>
+    <kind href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='network']"/>
+    <mixins href="http://schemas.ogf.org/occi/infrastructure#//@mixins[term='ipnetwork']"/>
     <attributes name="occi.network.vlan" value="12"/>
     <attributes name="occi.network.label" value="private"/>
     <attributes name="occi.network.address" value="10.1.0.0/16"/>

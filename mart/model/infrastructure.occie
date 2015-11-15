@@ -7,7 +7,7 @@
     xmlns:occi="http://schemas.ogf.org/occi"
     name="infrastructure"
     scheme="http://schemas.ogf.org/occi/infrastructure#">
-  <import href="model/core.occie#/"/>
+  <import href="http://schemas.ogf.org/occi/core#/"/>
   <kinds term="network"
       scheme="http://schemas.ogf.org/occi/infrastructure#"
       title="Network Resource">
@@ -28,7 +28,7 @@
         description="Current state of the instance"
         type="//@types.3"/>
     <parent
-        href="model/core.occie#//@kinds[term='resource']"/>
+        href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
     <actions
         term="up"
         scheme="http://schemas.ogf.org/occi/infrastructure/network/action#"/>
@@ -54,7 +54,7 @@
         mutable="true"
         description="Fully Qualified DNS hostname for the instance">
       <type
-          href="model/core.occie#//@types.0"/>
+          href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
     <attributes
         name="occi.compute.speed"
@@ -73,7 +73,7 @@
         description="Current state of the instance"
         type="//@types.4"/>
     <parent
-        href="model/core.occie#//@kinds[term='resource']"/>
+        href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
     <actions
         term="start"
         scheme="http://schemas.ogf.org/occi/infrastructure/compute/action#"
@@ -121,7 +121,7 @@
         description="Current status of the instance"
         type="//@types.11"/>
     <parent
-        href="model/core.occie#//@kinds[term='resource']"/>
+        href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
     <actions
         term="online"
         scheme="http://schemas.ogf.org/occi/infrastructure/storage/action#"
@@ -157,14 +157,14 @@
         required="true"
         description="Device identifier as defined by the OCCI service provider">
       <type
-          href="model/core.occie#//@types.0"/>
+          href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
     <attributes
         name="occi.storagelink.mountpoint"
         mutable="true"
         description="Point to where the storage is mounted in the guest OS">
       <type
-          href="model/core.occie#//@types.0"/>
+          href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
     <attributes
         name="occi.storagelink.state"
@@ -172,7 +172,7 @@
         description="Current status of the instance"
         type="//@types.12"/>
     <parent
-        href="model/core.occie#//@kinds[term='link']"/>
+        href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds term="networkinterface"
       scheme="http://schemas.ogf.org/occi/infrastructure#"
@@ -182,7 +182,7 @@
         required="true"
         description="Identifier that relates the link to the link's device interface">
       <type
-          href="model/core.occie#//@types.0"/>
+          href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
     <attributes
         name="occi.networkinterface.mac"
@@ -190,7 +190,7 @@
         required="true"
         description="MAC address associated with the link's device interface">
       <type
-          href="model/core.occie#//@types.0"/>
+          href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
     <attributes
         name="occi.networkinterface.state"
@@ -198,7 +198,7 @@
         description="Current status of the instance"
         type="//@types.5"/>
     <parent
-        href="model/core.occie#//@kinds[term='link']"/>
+        href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <mixins term="ipnetwork"
       scheme="http://schemas.ogf.org/occi/infrastructure/network#"
@@ -250,7 +250,7 @@
       scheme="http://schemas.ogf.org/occi/infrastructure#"
       title="Resource template">
     <applies
-        href="model/core.occie#//@kinds[term='resource']"/>
+        href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </mixins>
   <types xsi:type="ecore:EEnum"
       name="SuspendMethod">

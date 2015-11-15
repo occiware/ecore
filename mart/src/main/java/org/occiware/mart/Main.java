@@ -17,7 +17,6 @@ import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.Resource.Factory.Registry;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.Diagnostician;
 
 import org.occiware.clouddesigner.occi.Action;
@@ -34,6 +33,7 @@ import org.occiware.clouddesigner.occi.OCCIFactory;
 import org.occiware.clouddesigner.occi.OCCIRegistry;
 import org.occiware.clouddesigner.occi.OCCIPackage;
 import org.occiware.clouddesigner.occi.util.OCCIResourceFactoryImpl;
+import org.occiware.clouddesigner.occi.util.OCCIResourceSet;
 
 public class Main
 {
@@ -45,12 +45,14 @@ public class Main
 		// Init EMF to dealt with OCCI files.
 		Registry.INSTANCE.getExtensionToFactoryMap().put("occie", new OCCIResourceFactoryImpl());
 		Registry.INSTANCE.getExtensionToFactoryMap().put("occic", new OCCIResourceFactoryImpl());
+		Registry.INSTANCE.getExtensionToFactoryMap().put("*", new OCCIResourceFactoryImpl());
 
 		// Register the OCCI package into EMF.
 		OCCIPackage.eINSTANCE.toString();	
 
-		// Register the OCCI Core Model.
+		// Register OCCI extensions.
 		OCCIRegistry.getInstance().registerExtension("http://schemas.ogf.org/occi/core#", "model/core.occie");
+		OCCIRegistry.getInstance().registerExtension("http://schemas.ogf.org/occi/infrastructure#", "model/infrastructure.occie");
 	}
 
 	/**
@@ -60,18 +62,34 @@ public class Main
 	public static void main(String[] args)
 	{
 		System.out.println("Loading model/core.occie...");
-		Extension core = loadExtension("model/core.occie");
-		print(core);
-		if(validate(core)) {
+		Extension core1 = loadExtension("model/core.occie");
+		print(core1);
+		if(validate(core1)) {
 			System.out.println("Youpi model/core.occie was validated by EMF and OCL Validation.");
 		}
 		System.out.println("");
 
+		System.out.println("Loading http://schemas.ogf.org/occi/core...");
+		Extension core2 = loadExtension("http://schemas.ogf.org/occi/core");
+		print(core2);
+		if(validate(core2)) {
+			System.out.println("Youpi http://schemas.ogf.org/occi/core was validated by EMF and OCL Validation.");
+		}
+		System.out.println("");
+
 		System.out.println("Loading model/infrastructure.occie...");
-		Extension infrastructure = loadExtension("model/infrastructure.occie");
-		print(infrastructure);
-		if(validate(infrastructure)) {
+		Extension infrastructure1 = loadExtension("model/infrastructure.occie");
+		print(infrastructure1);
+		if(validate(infrastructure1)) {
 			System.out.println("Youpi model/infrastructure.occie was validated by EMF and OCL Validation.");
+		}
+		System.out.println("");
+
+		System.out.println("Loading http://schemas.ogf.org/occi/infrastructure...");
+		Extension infrastructure2 = loadExtension("http://schemas.ogf.org/occi/infrastructure");
+		print(infrastructure2);
+		if(validate(infrastructure2)) {
+			System.out.println("Youpi http://schemas.ogf.org/occi/infrastructure was validated by EMF and OCL Validation.");
 		}
 		System.out.println("");
 
@@ -340,7 +358,7 @@ public class Main
 	private static Object loadOCCI(String uri)
 	{
 		 // Create a new resource set.
-		 ResourceSet resourceSet = new ResourceSetImpl();
+		 ResourceSet resourceSet = new OCCIResourceSet();
 		 // Load the OCCI resource.
 		 org.eclipse.emf.ecore.resource.Resource resource = resourceSet.getResource(URI.createURI(uri), true);
 		 // Return the first element.
