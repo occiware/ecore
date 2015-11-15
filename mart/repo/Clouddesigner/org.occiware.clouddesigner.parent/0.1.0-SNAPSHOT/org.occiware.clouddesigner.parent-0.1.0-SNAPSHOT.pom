@@ -1,0 +1,134 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>Clouddesigner</groupId>
+	<artifactId>org.occiware.clouddesigner.parent</artifactId>
+	<version>0.1.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<modules>
+		<!-- OCCI -->
+		<module>../org.occiware.clouddesigner.occi</module>
+		<module>../org.occiware.clouddesigner.occi.edit</module>
+		<module>../org.occiware.clouddesigner.occi.design</module>
+
+		<!-- OCCI generators -->
+<!-- 
+		<module>../org.occiware.clouddesigner.occi.gen.alloy</module>
+		<module>../org.occiware.clouddesigner.occi.gen.alloy.ui</module>
+ -->
+ 		<module>../org.occiware.clouddesigner.occi.gen.curl</module>
+		<module>../org.occiware.clouddesigner.occi.gen.curl.ui</module>
+		<module>../org.occiware.clouddesigner.occi.gen.doc</module>
+		<module>../org.occiware.clouddesigner.occi.gen.doc.ui</module>
+		<module>../org.occiware.clouddesigner.occi.gen.xml</module>
+		<module>../org.occiware.clouddesigner.occi.gen.xml.ui</module>
+
+		<!-- Infrastructure -->
+		<module>../org.occiware.clouddesigner.occi.infrastructure</module>
+		<module>../org.occiware.clouddesigner.occi.infrastructure.edit</module>
+		
+		<!-- Hypervisor -->
+		<module>../org.occiware.clouddesigner.occi.hypervisor</module>
+		<module>../org.occiware.clouddesigner.occi.hypervisor.edit</module>
+		<module>../org.occiware.clouddesigner.occi.hypervisor.connector</module>
+		<module>../org.occiware.clouddesigner.occi.hypervisor.design</module>
+
+		<!-- Docker -->
+		<module>../org.occiware.clouddesigner.occi.docker</module>
+		<module>../org.occiware.clouddesigner.occi.docker.edit</module>
+		<module>../org.occiware.clouddesigner.occi.docker.connector</module>
+		<module>../org.occiware.clouddesigner.occi.docker.design</module>
+
+		<!-- Docker generators -->
+		<module>../org.occiware.clouddesigner.occi.docker.gen.conf</module>
+		<module>../org.occiware.clouddesigner.occi.docker.gen.conf.ui</module>
+		
+		<!-- OCCI Xtext -->
+		<module>../org.occiware.clouddesigner.occi.xtext</module>
+		<!--<module>../org.occiware.clouddesigner.occi.xtext.tests</module>-->
+		<module>../org.occiware.clouddesigner.occi.xtext.ui</module>
+
+		<!--  OCCI2Ecore -->
+		<module>../org.occiware.clouddesigner.occi.emfgen</module>
+		<module>../org.occiware.clouddesigner.occi.emfgen.ui</module>
+		<module>../org.occiware.clouddesigner.occi.emfgen.design</module>
+		
+		<!-- Releng -->
+		<module>../org.occiware.clouddesigner.occi.feature</module>
+		<module>../org.occiware.clouddesigner.occi.docker.feature</module>
+		<module>../org.occiware.clouddesigner.occi.hypervisor.feature</module>
+		<module>../org.occiware.clouddesigner.repository</module>
+		<module>../org.occiware.clouddesigner.dependencies</module>
+		<module>../org.occiware.clouddesigner.product</module>
+	</modules>
+
+	<properties>
+		<tycho-version>0.22.0</tycho-version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<repositories>
+		<!-- configure p2 repository to resolve against -->
+		<repository>
+			<id>sirius_mars_3.1</id>
+			<layout>p2</layout>
+			<url>http://download.eclipse.org/sirius/updates/releases/3.1.1/mars</url>
+		</repository>
+		<repository>
+			<id>mars</id>
+			<layout>p2</layout>
+			<url>http://download.eclipse.org/releases/mars</url>
+		</repository>
+		<repository>
+			<id>k3</id>
+			<layout>p2</layout>
+			<url>http://www.kermeta.org/k3/update</url>
+		</repository>
+		<repository>
+			<id>mvnrepository</id>
+			<url>http://repo1.maven.org/maven2</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+		</repository>
+	</repositories>
+	<build>
+		<plugins>
+			<plugin>
+				<!-- enable tycho build extension -->
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<extensions>true</extensions>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>target-platform-configuration</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<environments>
+						<environment>
+							<os>win32</os>
+							<ws>win32</ws>
+							<arch>x86_64</arch>
+						</environment>
+						<environment>
+							<os>linux</os>
+							<ws>gtk</ws>
+							<arch>x86_64</arch>
+						</environment>
+						<environment>
+							<os>macosx</os>
+							<ws>cocoa</ws>
+							<arch>x86_64</arch>
+						</environment>
+					</environments>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
