@@ -13,9 +13,9 @@ package org.occiware.clouddesigner.occi.gen.alloy.services;
 import java.util.Date;
 
 import org.eclipse.emf.ecore.EDataType;
-import org.eclipse.emf.ecore.EObject;
 
 import org.occiware.clouddesigner.occi.Attribute;
+import org.occiware.clouddesigner.occi.Category;
 import org.occiware.clouddesigner.occi.Extension;
 import org.occiware.clouddesigner.occi.Kind;
 
@@ -37,32 +37,51 @@ public class GenUtils
 	public String getFilePath(Extension extension) {
 		return extension.eResource().getURI().toString();
 	}
-/*
-	public String getScope(Kind kind, EObject context)
+
+	/**
+	 * 
+	 * @param category
+	 * @param context
+	 * @return
+	 */
+	public String getScope(Category category, Category context)
 	{
-		Extension kindExtension = (Extension)kind.eContainer();
-		Extension contextExtension = (Extension)context.eContainer(); // eResource().getContents().get(0);
-		if(kindExtension != contextExtension) {
-			return kindExtension.getName() + '/';
+		StringBuffer sb = new StringBuffer();
+		if((Extension)category.eContainer() != (Extension)context.eContainer()) {
+			sb.append(((Extension)category.eContainer()).getName()).append('/');
 		}
-		return "";
+		return sb.toString();
 	}
-*/
-	public String generateSigAttributeType(Attribute attribute, String suffix)
+
+	/**
+	 * 
+	 * @param kind
+	 * @return
+	 */
+	public String getScope4KindParent(Kind kind)
+	{
+		return getScope(kind.getParent(), kind);
+	}
+
+	/**
+	 * 
+	 * @param attribute
+	 * @param suffix
+	 * @return
+	 */
+	public String getSigAttributeType(Attribute attribute, String suffix)
 	{
 		StringBuffer sb = new StringBuffer();
 		EDataType type = attribute.getType();
 		Extension typeExtension = (Extension)type.eContainer();
 		Extension attributeExtension = (Extension)attribute.eResource().getContents().get(0);
 		if(typeExtension != attributeExtension) {
-			if(! (suffix == null && type.getName().equals("String"))) {
+			if(!type.getName().equals("String")) {
 				sb.append(typeExtension.getName()).append('/');
 			}
 		}
 		sb.append(type.getName());
-		if(suffix != null) {
-			sb.append(suffix);
-		}
+		sb.append(suffix);
 		return sb.toString();
 	}
 }
