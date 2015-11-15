@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
- * 	   William Piers <william.piers@obeo.fr>
- *     Philippe Merle <philippe.merle@inria.fr>
+ * - William Piers <william.piers@obeo.fr>
+ * - Philippe Merle <philippe.merle@inria.fr>
  *******************************************************************************/
 package org.occiware.clouddesigner.occi;
 
@@ -19,7 +19,8 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+
+import org.occiware.clouddesigner.occi.util.OCCIResourceSet;
 
 public class OCCIKindResolver
 {
@@ -107,7 +108,7 @@ public class OCCIKindResolver
 					 resourceSet = entityResource.getResourceSet();
 				 } else {
 					 // Create a new resource set.
-					 resourceSet = new ResourceSetImpl();
+					 resourceSet = new OCCIResourceSet();
 				 }
 				 // Load the extension.
 				 Resource extensionResource = resourceSet.getResource(URI.createURI(extensionURI), true);
