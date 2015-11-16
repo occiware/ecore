@@ -17,6 +17,12 @@ Compile the example:
 
 	mvn compile
 
-Execute the example:
+Execute the example without EMF/OCL validation:
 
 	mvn exec:java
+
+Execute the example with EMF/OCL validation:
+
+	mvn -Pwith-validation exec:java
+
+The second execution mode adds more runtime dependencies required by Eclipse OCL validation.
