@@ -143,7 +143,7 @@ public class Main
 				// Add this link to the resource.
 				resource.getLinks().add(link);
 				// Set the target of this link.
-				link.setTarget(resource);
+//				link.setTarget(resource);
 				// Add some attributes to this link.
 				for(int k=0; k<5; k++) {
 					// Create an OCCI attribute state.
@@ -303,6 +303,8 @@ public class Main
 	 */
 	public static boolean validate(EObject occi)
 	{
+		if(!Boolean.getBoolean("validation")) { return true; }
+		// Does the validation when the Java system property 'validation' is set to 'true'.
 		Diagnostic diagnostic = Diagnostician.INSTANCE.validate(occi);
 		if (diagnostic.getSeverity() != Diagnostic.OK) {
 			StringBuffer stringBuffer = printDiagnostic(diagnostic, "", new StringBuffer());
