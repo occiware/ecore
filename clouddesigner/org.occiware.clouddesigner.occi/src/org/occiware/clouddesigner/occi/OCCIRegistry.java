@@ -46,6 +46,7 @@ public final class OCCIRegistry {
 	 *             if the registry cannot be initialized
 	 */
 	public void initialize() {
+	  try {
 		if (Platform.isRunning()) {
 			registry.clear();
 			final IExtension[] extensions = Platform.getExtensionRegistry()
@@ -60,6 +61,9 @@ public final class OCCIRegistry {
 				}
 			}
 		}
+	  } catch(NoClassDefFoundError ncdfe) {
+		  System.out.println("Running out of an Eclipse Platform...");
+	  }
 	}
 
 	/**
