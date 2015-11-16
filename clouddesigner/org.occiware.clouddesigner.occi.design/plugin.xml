@@ -48,7 +48,7 @@
                 class="org.occiware.clouddesigner.occi.design.popup.actions.RegisterExtensionAction"
                 enablesFor="1"
                 id="org.occiware.clouddesigner.occi.design.registerExtensionAction"
-                label="RegisterExtension"
+                label="Register OCCI Extension"
                 menubarPath="org.occiware.clouddesigner.menu/group">
           </action>
        </objectContribution>
