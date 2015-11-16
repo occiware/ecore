@@ -109,7 +109,7 @@ one sig [kind.term/] extends Kind {} {
 
 sig [toU1Case(kind.term)/] extends [getKindParentSig(kind)/] {
 [for (attribute : Attribute | kind.attributes)]
-    [getName(attribute)/] : [if (attribute.required)]one[else]lone[/if] [getSigAttributeType(attribute,'')/],
+    [getName(attribute)/] : [if (attribute.required)]one[else]lone[/if] [getSigAttributeType(attribute,null)/],
 [/for]
 } {
     hasKind['['/][kind.term/][']'/]
@@ -126,8 +126,8 @@ sig [toU1Case(kind.term)/] extends [getKindParentSig(kind)/] {
 
 one sig [mixin.term/] extends Mixin {} {
     [generateTermSchemeTitle(mixin)/]
-    [if (mixin.depends->isEmpty())]no depends[else]depends = [for (mixin : Mixin | mixin.depends) separator(' + ')][mixin.term/][/for][/if]
-    [if (mixin.applies->isEmpty())]no applies[else]applies = [for (kind : Kind | mixin.applies) separator(' + ')][kind.term/][/for][/if]
+    [if (mixin.depends->isEmpty())]no depends[else]depends = [for (md : Mixin | mixin.depends) separator(' + ')][getMixin(md, mixin)/][/for][/if]
+    [if (mixin.applies->isEmpty())]no applies[else]applies = [for (kind : Kind | mixin.applies) separator(' + ')][getKind(kind, mixin)/][/for][/if]
     [if (mixin.attributes->isEmpty())]no attributes[else]attributes = [for (attribute : Attribute | mixin.attributes) separator(' + ')][getSigName(attribute)/][/for][/if]
     [if (mixin.actions->isEmpty())]no actions[else]actions = [for (action : Action | mixin.actions) separator(' + ')][getSigName(action)/][/for][/if]
     entities in [toU1Case(mixin.term)/]
@@ -145,7 +145,7 @@ one sig [mixin.term/] extends Mixin {} {
 
 sig [toU1Case(mixin.term)/] in [if(mixin.applies->isEmpty())]core/Entity[else][for (kd : Kind | mixin.applies) separator(' + ')][getKindSig(kd, mixin)/][/for][/if] {
 [for (attribute : Attribute | mixin.attributes)]
-    [getName(attribute)/] : [if (attribute.required)]one[else]lone[/if] [getSigAttributeType(attribute,'')/],
+    [getName(attribute)/] : [if (attribute.required)]one[else]lone[/if] [getSigAttributeType(attribute,null)/],
 [/for]
 }
 [/template]
@@ -311,14 +311,14 @@ pred iso[MixinSigName/]['['/][firstLetter/]1, [firstLetter/]2: [MixinSigName/]['
 
 [let ownerCategory : Category = action.eContainer().oclAsType(Category)]
 [let stateAttribute : Attribute = getStateAttribute(ownerCategory.attributes)]
-pred [action.term/]['['/]before: [categorySig/][for (attribute : Attribute | action.attributes)], [attribute.name/] : [getSigAttributeType(attribute,'')/][/for], after: [categorySig/][']'/]
+pred [action.term/]['['/]before: [categorySig/][for (attribute : Attribute | action.attributes)], [attribute.name/] : [getSigAttributeType(attribute,null)/][/for], after: [categorySig/][']'/]
 {
 // Warning: Following is a generated default behaviour that should be certainly updated!
     // Precondition before executing the action [action.term/]
-    before.[getName(stateAttribute)/] = [getSigAttributeType(stateAttribute,'')/]_[stateAttribute.type.oclAsType(EEnum).eLiterals->asSequence()->first().name/]
+    before.[getName(stateAttribute)/] = [getSigAttributeType(stateAttribute,null)/]_[stateAttribute.type.oclAsType(EEnum).eLiterals->asSequence()->first().name/]
     // Postcondition after executing the action [action.term/]
     iso[toU1Case(ownerCategory.term)/]['['/]after, before[']'/]
-    after.[getName(stateAttribute)/] = [getSigAttributeType(stateAttribute,'')/]_[stateAttribute.type.oclAsType(EEnum).eLiterals->asSequence()->first().name/]
+    after.[getName(stateAttribute)/] = [getSigAttributeType(stateAttribute,null)/]_[stateAttribute.type.oclAsType(EEnum).eLiterals->asSequence()->first().name/]
 }
 [/let]
 [/let]
@@ -338,6 +338,12 @@ pred [action.term/]['['/]before: [categorySig/][for (attribute : Attribute | act
 
 [query public toU1Case(string : String) : String = string.substring(1,1).toUpperCase() + string.substring(2) /]
 
+[query public getScope4Mixin(mixin : Mixin, ctx : Mixin) : String
+	= invoke(
+	'org.occiware.clouddesigner.occi.gen.alloy.services.GenUtils', 
+	'getScope(org.occiware.clouddesigner.occi.Category, org.occiware.clouddesigner.occi.Category)', 
+	Sequence{mixin,ctx})/]
+
 [query public getScope4Mixin(kind : Kind, ctx : Mixin) : String
 	= invoke(
 	'org.occiware.clouddesigner.occi.gen.alloy.services.GenUtils', 
@@ -349,6 +355,10 @@ pred [action.term/]['['/]before: [categorySig/][for (attribute : Attribute | act
 	'org.occiware.clouddesigner.occi.gen.alloy.services.GenUtils', 
 	'getScope4KindParent(org.occiware.clouddesigner.occi.Kind)', 
 	Sequence{kind})/]
+
+[query public getMixin(mixin : Mixin, ctx : Mixin) : String = getScope4Mixin(mixin, ctx) + mixin.term /]
+
+[query public getKind(kind : Kind, ctx : Mixin) : String = getScope4Mixin(kind, ctx) + kind.term /]
 
 [query public getKindSig(kind : Kind, ctx : Mixin) : String = getScope4Mixin(kind, ctx) + toU1Case(kind.term) /]
 

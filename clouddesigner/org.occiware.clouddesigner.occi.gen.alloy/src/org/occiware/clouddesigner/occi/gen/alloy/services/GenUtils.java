@@ -76,12 +76,14 @@ public class GenUtils
 		Extension typeExtension = (Extension)type.eContainer();
 		Extension attributeExtension = (Extension)attribute.eResource().getContents().get(0);
 		if(typeExtension != attributeExtension) {
-			if(!type.getName().equals("String")) {
+			if(! (suffix == null && type.getName().equals("String"))) {
 				sb.append(typeExtension.getName()).append('/');
 			}
 		}
 		sb.append(type.getName());
-		sb.append(suffix);
+		if(suffix != null) {
+			sb.append(suffix);
+		}
 		return sb.toString();
 	}
 }
