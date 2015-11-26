@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="OCCIware" version="10.1.0.201507271600">
+  <ownedViewpoints name="OCCI Configuration - jOCCI connector" modelFileExtension="occic">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="OCCI Configuration - jOCCI connector" domainClass="occi.Configuration">
+      <metamodel href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#/"/>
+      <defaultLayer name="Default">
+        <reusedMappings xsi:type="description_1:EdgeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@edgeMappings[name='LinkEdge']"/>
+        <reusedMappings xsi:type="description_1:EdgeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@edgeMappings[name='TargetEdge']"/>
+        <reusedMappings xsi:type="description_1:EdgeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@edgeMappings[name='ResourceToResource']"/>
+        <reusedMappings xsi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']"/>
+        <reusedMappings xsi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='LinkContainer']"/>
+        <toolSections name="Tool">
+          <reusedTools xsi:type="tool:DirectEditLabel" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='EditID']"/>
+        </toolSections>
+        <toolSections name="Configuration">
+          <ownedTools xsi:type="tool_1:ToolDescription" name="Import Configuration" iconPath="/org.occiware.clouddesigner.occi.design/images/search.gif">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:importConfiguration"/>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Entity" label="Entity">
+          <reusedTools xsi:type="tool:ContainerCreationDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Resource']"/>
+          <reusedTools xsi:type="tool:EdgeCreationDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Link']"/>
+        </toolSections>
+        <toolSections name="Attribute">
+          <reusedTools xsi:type="tool:NodeCreationDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Attribute']"/>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedJavaExtensions qualifiedClassName="org.occiware.clouddesigner.occi.connector.jocci.DesignServices"/>
+  </ownedViewpoints>
+  <userColorsPalettes name="CloudDesigner">
+    <entries xsi:type="description:UserFixedColor" red="187" green="242" blue="196" name="KindColor"/>
+    <entries xsi:type="description:UserFixedColor" red="0" green="47" blue="0" name="KindBorderColor"/>
+    <entries xsi:type="description:UserFixedColor" red="187" green="221" blue="255" name="MixinColor"/>
+    <entries xsi:type="description:UserFixedColor" red="0" green="37" blue="74" name="MixinBorderColor"/>
+    <entries xsi:type="description:UserFixedColor" red="255" green="255" blue="168" name="ResourceColor"/>
+    <entries xsi:type="description:UserFixedColor" red="255" green="216" blue="176" name="LinkColor"/>
+    <entries xsi:type="description:UserFixedColor" red="214" green="214" blue="214" name="ImportColor"/>
+    <entries xsi:type="description:UserFixedColor" red="255" green="255" blue="255" name="DataTypeColor"/>
+  </userColorsPalettes>
+</description:Group>
