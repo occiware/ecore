@@ -22,6 +22,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.occiware.clouddesigner.occi.util.OCCIResourceSet;
 
 /**
  *
@@ -218,14 +219,21 @@ public class Importer
 				session.addSemanticResource(uri, new NullProgressMonitor());
 				resource = session.getTransactionalEditingDomain().getResourceSet().getResource(uri, true);
 			} else {
-				resource = configuration.eResource().getResourceSet().getResource(uri, true);
+				resource = configuration.eResource();
+				if(resource != null) {
+					resource = resource.getResourceSet().getResource(uri, true);
+				} else {
+					resource = new OCCIResourceSet().getResource(uri, true);
+				}
 			}
 			extension = (org.occiware.clouddesigner.occi.Extension)resource.getContents().get(0);
 		} else {
 			extension = org.occiware.clouddesigner.occi.OCCIFactory.eINSTANCE.createExtension();
 			extension.setName(scheme.substring(scheme.lastIndexOf("/") + 1, scheme.length()-2));
 			extension.setScheme(scheme);
-			configuration.eResource().getContents().add(extension);
+			if(configuration.eResource() != null) {
+				configuration.eResource().getContents().add(extension);
+			}
 		}
 		configuration.getUse().add(extension);
 		return extension;
