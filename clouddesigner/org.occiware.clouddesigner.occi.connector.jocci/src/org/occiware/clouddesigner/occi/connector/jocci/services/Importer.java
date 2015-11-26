@@ -211,10 +211,15 @@ public class Importer
 		String extensionURI = org.occiware.clouddesigner.occi.OCCIRegistry.getInstance().getExtensionURI(scheme);
 		if(extensionURI != null) {
 			// Load the OCCI extension.
-			Session session = SessionManager.INSTANCE.getSession(configuration);
 			URI uri = URI.createURI(extensionURI);
-			session.addSemanticResource(uri, new NullProgressMonitor());
-			Resource resource = session.getTransactionalEditingDomain().getResourceSet().getResource(uri, true);
+			Resource resource = null;
+			Session session = SessionManager.INSTANCE.getSession(configuration);
+			if(session != null) {
+				session.addSemanticResource(uri, new NullProgressMonitor());
+				resource = session.getTransactionalEditingDomain().getResourceSet().getResource(uri, true);
+			} else {
+				resource = configuration.eResource().getResourceSet().getResource(uri, true);
+			}
 			extension = (org.occiware.clouddesigner.occi.Extension)resource.getContents().get(0);
 		} else {
 			extension = org.occiware.clouddesigner.occi.OCCIFactory.eINSTANCE.createExtension();

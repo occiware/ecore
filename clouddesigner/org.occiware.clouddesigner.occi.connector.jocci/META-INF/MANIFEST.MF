@@ -33,4 +33,4 @@ Require-Bundle: org.eclipse.core.runtime,
  org.occiware.clouddesigner.occi.edit,
  org.eclipse.pde.ui,
  org.occiware.clouddesigner.occi.design;bundle-version="0.1.0"
-Export-Package: org.occiware.clouddesigner.occi.connector.jocci
+Export-Package: org.occiware.clouddesigner.occi.connector.jocci.services

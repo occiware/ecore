@@ -30,7 +30,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedJavaExtensions qualifiedClassName="org.occiware.clouddesigner.occi.connector.jocci.DesignServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.occiware.clouddesigner.occi.connector.jocci.services.DesignServices"/>
   </ownedViewpoints>
   <userColorsPalettes name="CloudDesigner">
     <entries xsi:type="description:UserFixedColor" red="187" green="242" blue="196" name="KindColor"/>

@@ -4,7 +4,20 @@
   <extension point="org.eclipse.sirius.componentization">
     <component class="org.occiware.clouddesigner.occi.connector.jocci.Activator"
                id="org.occiware.clouddesigner.occi.connector.jocci"
-	       name="jocci">
+	           name="jocci">
     </component>
   </extension>
-</plugin>
+  <extension point="org.eclipse.ui.newWizards">
+    <category
+        id = "org.occiware.clouddesigner"
+	    name="Cloud Designer">
+    </category>
+    <wizard
+            category="org.occiware.clouddesigner"
+            class="org.occiware.clouddesigner.occi.connector.jocci.wizards.NewConfigurationWizard"
+            icon="platform:/plugin/org.occiware.clouddesigner.occi.design/images/Configuration.gif"
+            id="org.occiware.clouddesigner.occi.connector.jocci.wizard.NewConfigurationWizard"
+            name="OCCI Configuration File with jOCCI connector">
+     </wizard>
+   </extension>
+ </plugin>
