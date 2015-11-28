@@ -30,19 +30,32 @@ import org.occiware.clouddesigner.occi.util.OCCIResourceSet;
  */
 public class Importer
 {
-	public static void importFromOcciServer(org.occiware.clouddesigner.occi.Configuration configuration, String serverURL)
-					throws cz.cesnet.cloud.occi.api.exception.CommunicationException
+	public static cz.cesnet.cloud.occi.api.Client newJocciClient(String serverURL)
+			throws cz.cesnet.cloud.occi.api.exception.CommunicationException
 	{
 		// Create a jOCCI client.
-		cz.cesnet.cloud.occi.api.Client client = new cz.cesnet.cloud.occi.api.http.HTTPClient(java.net.URI.create(serverURL));
+		cz.cesnet.cloud.occi.api.Client jocciClient = new cz.cesnet.cloud.occi.api.http.HTTPClient(java.net.URI.create(serverURL));
 		// Connect to the OCCI server.
-    	client.connect();
+		jocciClient.connect();
 
-    	// Update the jOCCI model when erocci used.
-    	updateModelForErocci(client.getModel());
+		// Update the jOCCI model when erocci used.
+		updateModelForErocci(jocciClient.getModel());
+
+		return jocciClient;
+	}
+
+	public static void importFromOcciServer(org.occiware.clouddesigner.occi.Configuration configuration, String serverUrl)
+			throws cz.cesnet.cloud.occi.api.exception.CommunicationException
+	{
+		importFromOcciServer(configuration, newJocciClient(serverUrl));
+	}
+
+	public static void importFromOcciServer(org.occiware.clouddesigner.occi.Configuration configuration, cz.cesnet.cloud.occi.api.Client jocciClient)
+					throws cz.cesnet.cloud.occi.api.exception.CommunicationException
+	{
 
     	// Get the list of entities' uris.
-    	List<java.net.URI> uris = client.list();
+    	List<java.net.URI> uris = jocciClient.list();
 
     	// List storing all entities of the OCCI server.
     	List<cz.cesnet.cloud.occi.core.Entity> entities = new ArrayList<cz.cesnet.cloud.occi.core.Entity>();
@@ -52,7 +65,7 @@ public class Importer
     	// Get all OCCI server's entities.
     	for(java.net.URI uri : uris) {
     		// Get the OCCI entities
-    		cz.cesnet.cloud.occi.core.Entity entity = client.describe(uri).get(0);
+    		cz.cesnet.cloud.occi.core.Entity entity = jocciClient.describe(uri).get(0);
     		entities.add(entity);
     		entities2uri.put(entity, uri.toString());
     	}

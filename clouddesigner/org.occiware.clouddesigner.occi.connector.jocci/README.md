@@ -1,13 +1,13 @@
 # Introduction
 
-This connector allows to interact with OCCI servers:
-* import OCCI entities from an OCCI server
-* create/read/update/delete OCCI entities hosted by an OCCI server
-* execute OCCI actions on OCCI entities
+This connector allows one to interact with OCCI servers:
+* Import OCCI entities from an OCCI server
+* Create/Retrieve/Update/Delete OCCI entities hosted by an OCCI server
+* Execute OCCI actions on OCCI entities
 
 Current supported OCCI servers are [erocci](http://erocci.ow2.org) and [rOCCI](https://github.com/EGI-FCTF/rOCCI).
 
-This connector is based on [jOCCI](https://github.com/EGI-FCTF/jOCCI-api), a Java-based OCCI client library.
+This connector is based on [jOCCI](https://github.com/EGI-FCTF/jOCCI-api), an open source Java-based OCCI client library.
 
 # Usage
 
@@ -22,3 +22,18 @@ This connector is based on [jOCCI](https://github.com/EGI-FCTF/jOCCI-api), a Jav
 * Then a new OCCI configuration file is created and contains all OCCI entities hosted by the OCCI server:
 
 ![Create a new OCCI Configuration File with jOCCI connector - step 3](screenshots/new-OCCI-Configuration-File-with-jOCCI-connector-3.png "Create a new OCCI Configuration File with jOCCI connector - step 3")
+
+* Select a CRUD operation (Create, Retrieve, Update, Execute action, and Delete) in the palette then select the OCCI entity on which to apply the CRUD operation:
+
+![CRUD Operations](screenshots/CRUD-Operations.png "CRUD Operations")
+
+* Select "Execute action..." to execute an OCCI action on an OCCI entity:
+
+![Execute an OCCI Action](screenshots/Execute-an-OCCI-Action.png "Execute an OCCI Action")
+
+# TODO
+
+* Retrieve OCCI entities from an OCCI server
+* Execute OCCI actions on OCCI entities
+* Report errors through the Eclipse error report system
+* Deal with OCCI server authentication
