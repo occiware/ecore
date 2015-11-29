@@ -36,6 +36,12 @@ public class OcciActionDialog extends Dialog {
 	}
 
 	@Override
+    protected void configureShell(Shell shell) {
+        super.configureShell(shell);
+        shell.setText(Messages.OcciActionDialog_WindowTitle);
+    }
+
+	@Override
 	protected Control createDialogArea(Composite parent) {
 		Composite area = (Composite) super.createDialogArea(parent);
 		Composite container = new Composite(area, SWT.NONE);
