@@ -29,11 +29,11 @@ This connector is based on [jOCCI](https://github.com/EGI-FCTF/jOCCI-api), an op
 
 * Select "Execute action..." to execute an OCCI action on an OCCI entity:
 
-![Execute an OCCI Action](screenshots/Execute-an-OCCI-Action.png "Execute an OCCI Action")
+![Execute an OCCI Action](screenshots/Execute-OCCI-Action.png "Execute an OCCI Action")
 
 # TODO
 
 * Retrieve OCCI entities from an OCCI server
-* Execute OCCI actions on OCCI entities
+* Deal with parameters of OCCI actions to execute
 * Report errors through the Eclipse error report system
 * Deal with OCCI server authentication

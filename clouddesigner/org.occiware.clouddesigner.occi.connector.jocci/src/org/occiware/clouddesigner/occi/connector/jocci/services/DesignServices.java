@@ -15,16 +15,20 @@ import cz.cesnet.cloud.occi.api.Client;
 import cz.cesnet.cloud.occi.api.EntityBuilder;
 import cz.cesnet.cloud.occi.api.exception.CommunicationException;
 import cz.cesnet.cloud.occi.api.exception.EntityBuildingException;
-// import Resource;
+import cz.cesnet.cloud.occi.core.ActionInstance;
 import cz.cesnet.cloud.occi.exception.InvalidAttributeValueException;
 
 import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 
+import org.occiware.clouddesigner.occi.Action;
 import org.occiware.clouddesigner.occi.Configuration;
+import org.occiware.clouddesigner.occi.connector.jocci.dialogs.OcciActionDialog;
 import org.occiware.clouddesigner.occi.connector.jocci.dialogs.OcciServerDialog;
 
 public class DesignServices {
@@ -33,8 +37,8 @@ public class DesignServices {
 	private Client jocciClient;
 
 	/**
-	 * 
-	 * @param throwable
+	 * Report an exception.
+	 * @param throwable the exception to report.
 	 */
 	private static void reportException(Throwable throwable)
 	{
@@ -55,7 +59,9 @@ public class DesignServices {
 			occiServerDialog.create();
 			if (occiServerDialog.open() == Window.OK) {
 				String occiServerUrl = occiServerDialog.getOcciServerUrl();
-				// TODO: check !occiServerUrl.isEmpty()
+				if(occiServerUrl == null || occiServerUrl.isEmpty()) {
+					return null;
+				}
 				try {
 					// Create a jOCCI client.
 					jocciClient = Importer.newJocciClient(occiServerUrl);
@@ -69,15 +75,20 @@ public class DesignServices {
 	}
 
 	/**
-	 * 
-	 * @param category
-	 * @return
+	 * Create an URI for a given category.
+	 * @param category the given category.
+	 * @return the created URI.
 	 */
 	private static URI createURI(org.occiware.clouddesigner.occi.Category category)
 	{
 		return URI.create(category.getScheme() + category.getTerm());
 	}
 
+	/**
+	 * Get the location of a given entity.
+	 * @param entity the given entity.
+	 * @return its location inside the OCCI server.
+	 */
 	private String getLocation(org.occiware.clouddesigner.occi.Entity entity)
 	{
 		org.occiware.clouddesigner.occi.Kind entityKind = entity.getKind();
@@ -89,18 +100,24 @@ public class DesignServices {
 		return jocciKind.getLocation().toString() + entity.getId();
 	}
 
+	/**
+	 * Create a jOCCI entity from an OCCIware entity.
+	 * @param entity the OCCIware entity.
+	 * @return the jOCCI entity.
+	 */
 	private cz.cesnet.cloud.occi.core.Entity newJocciEntity(org.occiware.clouddesigner.occi.Entity entity)
 	{
 		// Get the jOCCI model.
         Model jocciModel = jocciClient.getModel();
         // Get an jOCCI entity builder.
         EntityBuilder eb = new EntityBuilder(jocciModel);
-        
+
         // The jOCCI entity to create.
         cz.cesnet.cloud.occi.core.Entity jocciEntity = null;
-        
+
         if(entity instanceof org.occiware.clouddesigner.occi.Resource) {
         	try {
+        		// Create an jOCCI resource.
         		jocciEntity = eb.getResource(createURI(entity.getKind()));
         	} catch (EntityBuildingException ebe) {
 				reportException(ebe);
@@ -110,6 +127,7 @@ public class DesignServices {
         	org.occiware.clouddesigner.occi.Link link = (org.occiware.clouddesigner.occi.Link)entity;
         	cz.cesnet.cloud.occi.core.Link jocciLink = null;
         	try {
+        		// Create an jOCCI link.
         		jocciLink = eb.getLink(createURI(entity.getKind()));
         		jocciEntity = jocciLink;
         	} catch (EntityBuildingException ebe) {
@@ -133,7 +151,7 @@ public class DesignServices {
         	reportException(new Error("Must be a Resource or a Link"));
         	return null;
         }
-        
+
         // Iterate over all entity's mixins.
         for(org.occiware.clouddesigner.occi.Mixin mixin : entity.getMixins()) {
         	cz.cesnet.cloud.occi.core.Mixin jocciMixin = jocciModel.findMixin(createURI(mixin));
@@ -181,20 +199,22 @@ public class DesignServices {
 
         // Create the jOCCI entity.
         cz.cesnet.cloud.occi.core.Entity jocciEntity = newJocciEntity(entity);
-
         if(jocciEntity != null) {
-        	URI location = null;
-        	try {
-        		// Create the OCCI resource.
-        		location = jocciClient.create(jocciEntity);
-        	} catch (CommunicationException ce) {
-        		reportException(ce);
-        		return;
-        	}
-        	String path = location.getPath();
-        	String id = path.substring(path.lastIndexOf('/') + 1);
-        	entity.setId(id);
+        	return;
         }
+
+        URI location = null;
+        try {
+        	// Create the OCCI resource.
+        	location = jocciClient.create(jocciEntity);
+        } catch (CommunicationException ce) {
+        	reportException(ce);
+        	return;
+        }
+        // Update the ID of the entity.
+        String path = location.getPath();
+        String id = path.substring(path.lastIndexOf('/') + 1);
+        entity.setId(id);
 	}
 
 	/**
@@ -224,6 +244,9 @@ public class DesignServices {
 
         // Create the jOCCI entity.
         cz.cesnet.cloud.occi.core.Entity jocciEntity = newJocciEntity(entity);
+        if(jocciEntity == null) {
+        	return;
+        }
         try {
 			jocciEntity.setId(entity.getId());
 		} catch (InvalidAttributeValueException iave) {
@@ -231,15 +254,13 @@ public class DesignServices {
 			return;
 		}
 
-        if(jocciEntity != null) {
-        	try {
-        		// Update the OCCI resource.
-        		boolean updated = jocciClient.update(jocciEntity);
-        		System.out.println("was " + getLocation(entity) + " updated? " + updated);
-        	} catch (CommunicationException ce) {
-        		reportException(ce);
-        		return;
-        	}
+        try {
+        	// Update the OCCI resource.
+        	boolean updated = jocciClient.update(jocciEntity);
+        	System.out.println("was " + getLocation(entity) + " updated? " + updated);
+        } catch (CommunicationException ce) {
+        	reportException(ce);
+        	return;
         }
 	}
 
@@ -253,8 +274,72 @@ public class DesignServices {
 		if(jocciClient == null) {
 			return;
 		}
-		System.err.println("executeAction not implemented!");
-		// TODO: Implement it.
+
+		// Get all actions of the entity.
+		List<Action> actions = new ArrayList<Action>();
+		addActions(entity, actions);
+
+		// Display the OCCI action dialog.
+		Shell shell = Display.getCurrent().getActiveShell();
+		OcciActionDialog occiActionDialog = new OcciActionDialog(shell, actions.toArray(new Action[actions.size()]));
+		occiActionDialog.create();
+		if (occiActionDialog.open() != Window.OK) {
+			return;
+		}
+		String selectedAction = occiActionDialog.getSelectedAction();
+		if(selectedAction == null || selectedAction.isEmpty()) {
+			return;
+		}
+
+		// Get an jOCCI entity builder.
+        EntityBuilder eb = new EntityBuilder(jocciClient.getModel());
+        
+        // Create a jOCCI action instance.
+		ActionInstance actionInstance;
+		try {
+			actionInstance = eb.getActionInstance(URI.create(selectedAction));
+		} catch (EntityBuildingException ebe) {
+			reportException(ebe);
+			return;
+		}
+
+		// TODO: add action's parameters.
+
+		// Execute the OCCI action.
+        try {
+        	boolean status = jocciClient.trigger(URI.create(getLocation(entity)), actionInstance);
+	        if (status) {
+	        	System.out.println(selectedAction + " triggered: OK");
+	        } else {
+	        	System.out.println(selectedAction + " triggered: FAIL");
+	        }
+		} catch (CommunicationException ce) {
+			reportException(ce);
+			return;
+		}
+	}
+
+	private static void addActions(org.occiware.clouddesigner.occi.Entity entity, List<Action> actions)
+	{
+		addActions(entity.getKind(), actions);
+		for(org.occiware.clouddesigner.occi.Mixin mixin : entity.getMixins()) {
+			addActions(mixin, actions);
+		}
+	}
+
+	private static void addActions(org.occiware.clouddesigner.occi.Kind kind, List<Action> actions)
+	{
+		if(kind == null) { return; }
+		addActions(kind.getParent(), actions);
+		actions.addAll(kind.getActions());
+	}
+
+	private static void addActions(org.occiware.clouddesigner.occi.Mixin mixin, List<Action> actions)
+	{
+		for(org.occiware.clouddesigner.occi.Mixin depend : mixin.getDepends()) {
+			addActions(depend, actions);
+		}
+		actions.addAll(mixin.getActions());
 	}
 
 	/**
@@ -271,25 +356,26 @@ public class DesignServices {
 		boolean deleted = false;
 		try {
 			deleted = jocciClient.delete(URI.create(getLocation(entity)));
+			System.out.println("was " + getLocation(entity) + " deleted? " + deleted);
 		} catch (CommunicationException ce) {
 			reportException(ce);
 			return;
 		}
 
-		System.out.println("was " + getLocation(entity) + " deleted? " + deleted);
+		if(!deleted) {
+			return;
+		}
 
-		if(deleted) {
-			if(entity instanceof org.occiware.clouddesigner.occi.Resource) {
-				Configuration configuration = (Configuration)entity.eContainer();
-				configuration.getResources().remove(entity);
-			} else if(entity instanceof org.occiware.clouddesigner.occi.Link) {
-				org.occiware.clouddesigner.occi.Link link = (org.occiware.clouddesigner.occi.Link)entity;
-				link.getSource().getLinks().remove(link);
-			} else {
-				// Should never happen!
-				reportException(new Error("Must be a Resource or a Link"));
-				return;
-			}
+		if(entity instanceof org.occiware.clouddesigner.occi.Resource) {
+			Configuration configuration = (Configuration)entity.eContainer();
+			configuration.getResources().remove(entity);
+		} else if(entity instanceof org.occiware.clouddesigner.occi.Link) {
+			org.occiware.clouddesigner.occi.Link link = (org.occiware.clouddesigner.occi.Link)entity;
+			link.getSource().getLinks().remove(link);
+		} else {
+			// Should never happen!
+			reportException(new Error("Must be a Resource or a Link"));
+			return;
 		}
 	}
 }

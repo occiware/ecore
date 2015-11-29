@@ -12,24 +12,27 @@ package org.occiware.clouddesigner.occi.connector.jocci.dialogs;
 
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
-import org.eclipse.swt.widgets.Text;
+import org.eclipse.swt.widgets.List;
 
+import org.occiware.clouddesigner.occi.Action;
 import org.occiware.clouddesigner.occi.connector.jocci.Messages;
 
-public class OcciServerDialog extends Dialog {
+public class OcciActionDialog extends Dialog {
 
-	private Text txtOcciServerUrl;
+	private Action[] actions;
+	private String selectedAction;
 
-	private String occiServerUrl;
-
-	public OcciServerDialog(Shell parentShell) {
+	public OcciActionDialog(Shell parentShell, Action[] actions) {
 		super(parentShell);
+		this.actions = actions;
 	}
 
 	@Override
@@ -40,9 +43,20 @@ public class OcciServerDialog extends Dialog {
 		GridLayout layout = new GridLayout(2, false);
 		container.setLayout(layout);
 		Label lbtOcciServerUrl = new Label(container, SWT.NONE);
-		lbtOcciServerUrl.setText(Messages.OcciServerDialog_Label);
-		txtOcciServerUrl = new Text(container, SWT.BORDER);
-		txtOcciServerUrl.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+		lbtOcciServerUrl.setText(Messages.OcciActionDialog_Label);
+		final List listOcciActions = new List (container, SWT.BORDER | SWT.SINGLE | SWT.V_SCROLL);
+		listOcciActions.addSelectionListener(
+				  new SelectionAdapter() {
+					  @Override
+					  public void widgetSelected(SelectionEvent e) {
+						  selectedAction = listOcciActions.getSelection()[0];
+					  }					  
+				  }
+				);
+		listOcciActions.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+		for(Action action : actions) {
+			listOcciActions.add(action.getScheme() +  action.getTerm());
+		}
 		return area;
 	}
 
@@ -51,13 +65,8 @@ public class OcciServerDialog extends Dialog {
 		return true;
 	}
 
-	@Override
-	protected void okPressed() {
-		occiServerUrl = txtOcciServerUrl.getText();
-		super.okPressed();
+	public String getSelectedAction() {
+		return selectedAction;
 	}
 
-	public String getOcciServerUrl() {
-		return occiServerUrl;
-	}
 }

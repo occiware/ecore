@@ -21,6 +21,8 @@ public class Messages extends NLS {
 	public static String NewConfigurationWizard_WindowTitle;
 	public static String NewConfigurationWizard_OcciServerUrl;
 	public static String NewConfigurationWizard_OcciServerUrlRequired;
+	public static String OcciServerDialog_Label;
+	public static String OcciActionDialog_Label;
 
 	static {
 		// initialize resource bundle
