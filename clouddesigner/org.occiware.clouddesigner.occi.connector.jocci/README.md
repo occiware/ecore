@@ -33,6 +33,6 @@ This connector is based on [jOCCI](https://github.com/EGI-FCTF/jOCCI-api), an op
 
 # TODO
 
-* Retrieve OCCI entities from an OCCI server
+* Complete retrieving OCCI entities from an OCCI server (changed kind/mixins/attributes)
 * Deal with parameters of OCCI actions to execute
 * Deal with OCCI server authentication

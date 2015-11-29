@@ -130,7 +130,7 @@ public class Importer
     	}
 	}
 
-	private static final Set<String> attributesToOmit = new HashSet<String>();
+	public static final Set<String> attributesToOmit = new HashSet<String>();
 	static {
 		attributesToOmit.add("occi.core.id");
 		attributesToOmit.add("occi.core.source");
@@ -172,7 +172,7 @@ public class Importer
 				targetAttribute.setName(sourceAttribute.getKey().getName());
 				targetAttribute.setValue(sourceAttribute.getValue());
 			}
-		}		
+		}
 	}
 
 	private static org.occiware.clouddesigner.occi.Kind searchKind(org.occiware.clouddesigner.occi.Configuration configuration, cz.cesnet.cloud.occi.core.Kind kind)

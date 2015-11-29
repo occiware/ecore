@@ -21,6 +21,7 @@ import cz.cesnet.cloud.occi.exception.InvalidAttributeValueException;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -81,13 +82,23 @@ public class DesignServices {
 	}
 
 	/**
+	 * Get the identifier for a given category.
+	 * @param category the given category.
+	 * @return its identifier, aka scheme + term.
+	 */
+	private static String getIdentifier(org.occiware.clouddesigner.occi.Category category)
+	{
+		return category.getScheme() + category.getTerm();
+	}
+
+	/**
 	 * Create an URI for a given category.
 	 * @param category the given category.
 	 * @return the created URI.
 	 */
 	private static URI createURI(org.occiware.clouddesigner.occi.Category category)
 	{
-		return URI.create(category.getScheme() + category.getTerm());
+		return URI.create(getIdentifier(category));
 	}
 
 	/**
@@ -176,6 +187,58 @@ public class DesignServices {
         return jocciEntity;
 	}
 
+	private void convertJocciEntity2Entity(
+					cz.cesnet.cloud.occi.core.Entity source, 
+					org.occiware.clouddesigner.occi.Entity target)
+	{
+		// Set the target entity's id.
+		target.setId(source.getId());
+		// Set the target entity's kind.
+		String sourceKindIdentifier = source.getKind().getIdentifier();
+		if(sourceKindIdentifier.equals(getIdentifier(target.getKind()))) {
+			// Nothing to do as the kind has not been changed.
+		} else {
+			// TODO: implement it
+			System.err.println("Entity's kind has been changed to " + sourceKindIdentifier);
+//			org.occiware.clouddesigner.occi.Kind targetKind = searchKind(configuration, source.getKind());
+//			if(targetKind != null) {
+//				target.setKind(targetKind);
+//			} else {
+				// TODO: Use Eclipse error report.
+//				System.err.println("Kind " + sourceKindIdentifier + " unknown!");
+//			}
+		}
+		// TODO: implement it
+		// Set target entity's mixins.
+// 		List<org.occiware.clouddesigner.occi.Mixin> targetMixins = target.getMixins();
+//		for(cz.cesnet.cloud.occi.core.Mixin mixin : source.getMixins()) {
+//			String mixinIdentifier = mixin.getIdentifier();
+//			org.occiware.clouddesigner.occi.Mixin targetMixin = searchMixin(configuration, mixin);
+//			if(targetMixin != null) {
+//				targetMixins.add(targetMixin);
+//			} else {
+				// TODO: Use Eclipse error report.
+//				System.err.println("Mixin " + mixinIdentifier + " unknown!");
+//			}
+//		}
+		// Create all target entity's attributes.
+		List<org.occiware.clouddesigner.occi.AttributeState> targetAttributes = target.getAttributes();
+		targetAttributes.clear();
+		for(Map.Entry<cz.cesnet.cloud.occi.core.Attribute, String> sourceAttribute : source.getAttributes().entrySet()) {
+			String attributeName = sourceAttribute.getKey().getName();
+			if(!Importer.attributesToOmit.contains(attributeName)) {
+				org.occiware.clouddesigner.occi.AttributeState targetAttribute = org.occiware.clouddesigner.occi.OCCIFactory.eINSTANCE.createAttributeState();
+				targetAttributes.add(targetAttribute);
+				targetAttribute.setName(sourceAttribute.getKey().getName());
+				targetAttribute.setValue(sourceAttribute.getValue());
+			}
+		}
+		if(source instanceof cz.cesnet.cloud.occi.core.Link) {
+			// TODO: deal with Link
+			System.err.println("TODO: Deal with a Link instance");
+		}
+	}
+
 	/**
 	 * Import into a configuration.
 	 * @param configuration
@@ -235,8 +298,19 @@ public class DesignServices {
 		if(jocciClient == null) {
 			return;
 		}
-		// TODO: implement
-		reportException(new Error("retrieveEntity not implemented!"));
+
+		// Retrieve the jOCCI entity.
+		cz.cesnet.cloud.occi.core.Entity jocciEntity = null;
+		try {
+			jocciEntity = jocciClient.describe(URI.create(getLocation(entity))).get(0);
+		} catch (CommunicationException ce) {
+			reportException(ce);
+			return;
+		}
+
+		convertJocciEntity2Entity(jocciEntity, entity);
+
+        MessageDialog.openInformation(Display.getCurrent().getActiveShell(), "Retrieve OCCI Entity", "Entity " + getLocation(entity) + " retrieved");
 	}
 
 	/**
