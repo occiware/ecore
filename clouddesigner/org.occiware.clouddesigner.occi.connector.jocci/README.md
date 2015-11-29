@@ -35,5 +35,4 @@ This connector is based on [jOCCI](https://github.com/EGI-FCTF/jOCCI-api), an op
 
 * Retrieve OCCI entities from an OCCI server
 * Deal with parameters of OCCI actions to execute
-* Report errors through the Eclipse error report system
 * Deal with OCCI server authentication

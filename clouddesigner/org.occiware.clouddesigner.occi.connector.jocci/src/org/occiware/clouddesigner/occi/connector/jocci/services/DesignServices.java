@@ -22,12 +22,17 @@ import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.jface.dialogs.ErrorDialog;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 
 import org.occiware.clouddesigner.occi.Action;
 import org.occiware.clouddesigner.occi.Configuration;
+import org.occiware.clouddesigner.occi.connector.jocci.Activator;
 import org.occiware.clouddesigner.occi.connector.jocci.dialogs.OcciActionDialog;
 import org.occiware.clouddesigner.occi.connector.jocci.dialogs.OcciServerDialog;
 
@@ -42,8 +47,9 @@ public class DesignServices {
 	 */
 	private static void reportException(Throwable throwable)
 	{
-		// TODO: use Eclipse error logs.
-		throwable.printStackTrace(System.err);
+		Shell shell = Display.getCurrent().getActiveShell();
+		Status status = new Status(IStatus.ERROR, Activator.PLUGIN_ID, 0, null, throwable);
+		ErrorDialog.openError(shell, null, throwable.getMessage(), status);
 	}
 
 	/**
@@ -215,6 +221,8 @@ public class DesignServices {
         String path = location.getPath();
         String id = path.substring(path.lastIndexOf('/') + 1);
         entity.setId(id);
+
+        MessageDialog.openInformation(Display.getCurrent().getActiveShell(), "Create OCCI Entity", "Entity " + location.toString() + " created");
 	}
 
 	/**
@@ -228,7 +236,7 @@ public class DesignServices {
 			return;
 		}
 		// TODO: implement
-		System.err.println("retrieveEntity not implemented!");
+		reportException(new Error("retrieveEntity not implemented!"));
 	}
 
 	/**
@@ -257,7 +265,11 @@ public class DesignServices {
         try {
         	// Update the OCCI resource.
         	boolean updated = jocciClient.update(jocciEntity);
-        	System.out.println("was " + getLocation(entity) + " updated? " + updated);
+        	if(updated) {
+              MessageDialog.openInformation(Display.getCurrent().getActiveShell(), "Update OCCI Entity", "Entity " + getLocation(entity) + " updated");
+        	} else {
+              MessageDialog.openWarning(Display.getCurrent().getActiveShell(), "Update OCCI Entity", "Entity " + getLocation(entity) + " not updated");
+        	}
         } catch (CommunicationException ce) {
         	reportException(ce);
         	return;
@@ -308,11 +320,11 @@ public class DesignServices {
 		// Execute the OCCI action.
         try {
         	boolean status = jocciClient.trigger(URI.create(getLocation(entity)), actionInstance);
-	        if (status) {
-	        	System.out.println(selectedAction + " triggered: OK");
-	        } else {
-	        	System.out.println(selectedAction + " triggered: FAIL");
-	        }
+        	if(status) {
+                MessageDialog.openInformation(Display.getCurrent().getActiveShell(), "Execute OCCI Action", "Action " + selectedAction + " on " + getLocation(entity) + " executed");
+          	} else {
+                MessageDialog.openWarning(Display.getCurrent().getActiveShell(), "Execute OCCI Action", "Action " + selectedAction + " on " + getLocation(entity) + " failed");
+          	}
 		} catch (CommunicationException ce) {
 			reportException(ce);
 			return;
@@ -356,15 +368,17 @@ public class DesignServices {
 		boolean deleted = false;
 		try {
 			deleted = jocciClient.delete(URI.create(getLocation(entity)));
-			System.out.println("was " + getLocation(entity) + " deleted? " + deleted);
 		} catch (CommunicationException ce) {
 			reportException(ce);
 			return;
 		}
 
-		if(!deleted) {
+    	if(deleted) {
+            MessageDialog.openInformation(Display.getCurrent().getActiveShell(), "Delete OCCI Entity", "Entity " + getLocation(entity) + " deleted");
+      	} else {
+            MessageDialog.openWarning(Display.getCurrent().getActiveShell(), "Delete OCCI Entity", "Entity " + getLocation(entity) + " not deleted");
 			return;
-		}
+      	}
 
 		if(entity instanceof org.occiware.clouddesigner.occi.Resource) {
 			Configuration configuration = (Configuration)entity.eContainer();
