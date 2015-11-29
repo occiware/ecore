@@ -199,7 +199,7 @@ public class DesignServices {
 
         // Create the jOCCI entity.
         cz.cesnet.cloud.occi.core.Entity jocciEntity = newJocciEntity(entity);
-        if(jocciEntity != null) {
+        if(jocciEntity == null) {
         	return;
         }
 
