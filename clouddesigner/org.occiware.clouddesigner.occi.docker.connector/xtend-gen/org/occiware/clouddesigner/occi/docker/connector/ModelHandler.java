@@ -12,6 +12,7 @@ package org.occiware.clouddesigner.occi.docker.connector;
 
 import com.github.dockerjava.api.command.InspectContainerResponse;
 import com.github.dockerjava.api.model.Container;
+import com.github.dockerjava.api.model.ContainerConfig;
 import com.github.dockerjava.api.model.HostConfig;
 import com.github.dockerjava.api.model.Link;
 import com.google.common.base.Objects;
@@ -27,6 +28,7 @@ import java.io.StringReader;
 import java.io.StringWriter;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.IdentityHashMap;
@@ -150,7 +152,8 @@ public class ModelHandler {
             String _plus_5 = (_plus_4 + "[");
             int _lowerBound = eReference.getLowerBound();
             String _plus_6 = (_plus_5 + Integer.valueOf(_lowerBound));
-            String _plus_7 = (_plus_6 + "..");
+            String _plus_7 = (_plus_6 + 
+              "..");
             int _upperBound = eReference.getUpperBound();
             String _plus_8 = (_plus_7 + Integer.valueOf(_upperBound));
             String _plus_9 = (_plus_8 + "])");
@@ -1079,8 +1082,8 @@ public class ModelHandler {
         String _id_2 = c.getId();
         modelContainer.setContainerid(_id_2);
         InspectContainerResponse.ContainerState _state = currentContainer.getState();
-        boolean _isRunning = _state.isRunning();
-        if (_isRunning) {
+        Boolean _isRunning = _state.isRunning();
+        if ((_isRunning).booleanValue()) {
           ComputeStatus _get = ComputeStatus.get(0);
           modelContainer.setState(_get);
         }
@@ -1088,6 +1091,36 @@ public class ModelHandler {
       }
     }
     return containerList;
+  }
+  
+  public org.occiware.clouddesigner.occi.docker.Container buildContainer(final Machine machine, final String containerId) {
+    final DockerContainerManager instance = new DockerContainerManager(machine);
+    final InspectContainerResponse currentContainer = instance.inspectContainer(machine, containerId);
+    currentContainer.getId();
+    org.occiware.clouddesigner.occi.docker.Container modelContainer = DockerFactory.eINSTANCE.createContainer();
+    String _id = currentContainer.getId();
+    modelContainer.setId(_id);
+    String _name = currentContainer.getName();
+    String _replace = _name.replace("/", "");
+    modelContainer.setName(_replace);
+    String _imageId = currentContainer.getImageId();
+    modelContainer.setImage(_imageId);
+    ContainerConfig _config = currentContainer.getConfig();
+    String[] _entrypoint = _config.getEntrypoint();
+    String _string = Arrays.toString(_entrypoint);
+    String _replace_1 = _string.replace("[", "");
+    String _replace_2 = _replace_1.replace("]", "");
+    modelContainer.setCommand(_replace_2);
+    String _id_1 = currentContainer.getId();
+    modelContainer.setContainerid(_id_1);
+    InspectContainerResponse.ContainerState _state = currentContainer.getState();
+    Boolean _isRunning = _state.isRunning();
+    if ((_isRunning).booleanValue()) {
+      modelContainer.setState(ComputeStatus.ACTIVE);
+    } else {
+      modelContainer.setState(ComputeStatus.INACTIVE);
+    }
+    return modelContainer;
   }
   
   public String saveMachine(final Machine machine) {

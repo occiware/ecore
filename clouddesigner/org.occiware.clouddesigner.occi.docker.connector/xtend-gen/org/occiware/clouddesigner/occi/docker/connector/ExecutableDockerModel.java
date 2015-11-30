@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
- * 	- Philippe MERLE
+ * - Philippe MERLE
  * 	- Fawaz PARAISO
  */
 package org.occiware.clouddesigner.occi.docker.connector;
@@ -476,7 +476,8 @@ public class ExecutableDockerModel {
               public void apply(final Link elt) {
                 EList<Resource> _resources = ExecutableDockerModel.this.configuration.getResources();
                 Resource _target = elt.getTarget();
-                _resources.add(((Container) _target));
+                _resources.add(
+                  ((Container) _target));
               }
             };
             IterableExtensions.<Link>forEach(_links_1, _function);

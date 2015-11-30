@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
- * 	- Philippe MERLE
+ * - Philippe MERLE
  * 	- Fawaz PARAISO
  */
 package org.occiware.clouddesigner.occi.docker.connector;

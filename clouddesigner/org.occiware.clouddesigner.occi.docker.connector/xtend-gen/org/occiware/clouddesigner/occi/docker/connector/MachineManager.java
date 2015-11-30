@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
- * 	- Philippe MERLE
+ * - Philippe MERLE
  * 	- Fawaz PARAISO
  */
 package org.occiware.clouddesigner.occi.docker.connector;
@@ -22,7 +22,6 @@ import java.util.Map;
 import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.occiware.clouddesigner.occi.Link;
@@ -113,8 +112,7 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
       _append_2.append(_name_2);
     }
     String _string = command.toString();
-    String _plus = ("CMD : " + _string);
-    InputOutput.<String>println(_plus);
+    MachineManager.LOGGER.info("CMD : #{}", _string);
     final Map<String, String> activeHosts = DockerUtil.getActiveHosts();
     final Map<String, String> hosts = DockerUtil.getHosts();
     String _name_3 = this.compute.getName();

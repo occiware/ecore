@@ -13,6 +13,7 @@ package org.occiware.clouddesigner.occi.docker.connector.dockerjava;
 import com.github.dockerjava.api.DockerClient;
 import com.github.dockerjava.api.command.CreateContainerCmd;
 import com.github.dockerjava.api.command.CreateContainerResponse;
+import com.github.dockerjava.api.command.EventsCmd;
 import com.github.dockerjava.api.command.InspectContainerCmd;
 import com.github.dockerjava.api.command.InspectContainerResponse;
 import com.github.dockerjava.api.command.ListContainersCmd;
@@ -28,6 +29,8 @@ import com.github.dockerjava.api.model.Ports;
 import com.github.dockerjava.api.model.Volume;
 import com.github.dockerjava.core.DockerClientBuilder;
 import com.github.dockerjava.core.DockerClientConfig;
+import com.github.dockerjava.core.command.PullImageResultCallback;
+import com.github.dockerjava.core.command.WaitContainerResultCallback;
 import com.google.common.base.Objects;
 import com.google.common.collect.Multimap;
 import com.jcraft.jsch.Channel;
@@ -41,7 +44,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URI;
 import java.net.URL;
 import java.util.ArrayList;
@@ -59,6 +61,7 @@ import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.occiware.clouddesigner.occi.docker.Container;
 import org.occiware.clouddesigner.occi.docker.Machine;
+import org.occiware.clouddesigner.occi.docker.connector.EventCallBack;
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerMachineManager;
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerConfig;
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerUtil;
@@ -89,6 +92,14 @@ public class DockerContainerManager {
     DockerContainerManager.dockerClient = _setConfig;
   }
   
+  public DockerContainerManager(final Machine machine, final EventCallBack event) {
+    String _name = machine.getName();
+    DockerClient _setConfig = this.setConfig(_name);
+    DockerContainerManager.dockerClient = _setConfig;
+    EventsCmd _eventsCmd = DockerContainerManager.dockerClient.eventsCmd();
+    _eventsCmd.<EventCallBack>exec(event);
+  }
+  
   public Map<DockerClient, CreateContainerResponse> createContainer(final Machine machine, final Container container) {
     boolean _equals = Objects.equal(DockerContainerManager.dockerClient, null);
     if (_equals) {
@@ -108,6 +119,11 @@ public class DockerContainerManager {
     Map<DockerClient, CreateContainerResponse> result = new LinkedHashMap<DockerClient, CreateContainerResponse>();
     final CreateContainerCmd create = this.containerFactory(container, DockerContainerManager.dockerClient);
     final CreateContainerResponse rcontainer = create.exec();
+    String _id = rcontainer.getId();
+    container.setContainerid(_id);
+    String _containerid = container.getContainerid();
+    String _plus = ("Set the ContainerID : " + _containerid);
+    DockerContainerManager.LOGGER.info(_plus);
     result.put(DockerContainerManager.dockerClient, rcontainer);
     return result;
   }
@@ -131,6 +147,11 @@ public class DockerContainerManager {
     Map<DockerClient, CreateContainerResponse> result = new LinkedHashMap<DockerClient, CreateContainerResponse>();
     final CreateContainerCmd create = this.containerFactory(container, DockerContainerManager.dockerClient, containerDependency);
     final CreateContainerResponse rcontainer = create.exec();
+    String _id = rcontainer.getId();
+    container.setContainerid(_id);
+    String _containerid = container.getContainerid();
+    String _plus = ("Set the ContainerID : " + _containerid);
+    DockerContainerManager.LOGGER.info(_plus);
     result.put(DockerContainerManager.dockerClient, rcontainer);
     return result;
   }
@@ -179,7 +200,7 @@ public class DockerContainerManager {
     boolean _greaterThan = (_cpu_shares > 0);
     if (_greaterThan) {
       int _cpu_shares_1 = container.getCpu_shares();
-      create.withCpuShares(_cpu_shares_1);
+      create.withCpuShares(Integer.valueOf(_cpu_shares_1));
     }
     String _add_host = container.getAdd_host();
     boolean _notEquals_2 = (!Objects.equal(_add_host, null));
@@ -191,12 +212,12 @@ public class DockerContainerManager {
     boolean _notEquals_3 = (!Objects.equal(_cpuset, null));
     if (_notEquals_3) {
       String _cpuset_1 = container.getCpuset();
-      create.withCpuset(_cpuset_1);
+      create.withCpusetCpus(_cpuset_1);
     }
     boolean _isPrivileged = container.isPrivileged();
     if (_isPrivileged) {
       boolean _isPrivileged_1 = container.isPrivileged();
-      create.withPrivileged(_isPrivileged_1);
+      create.withPrivileged(Boolean.valueOf(_isPrivileged_1));
     }
     String _dns = container.getDns();
     boolean _notEquals_4 = (!Objects.equal(_dns, null));
@@ -251,17 +272,17 @@ public class DockerContainerManager {
     boolean _isPublish_all = container.isPublish_all();
     if (_isPublish_all) {
       boolean _isPublish_all_1 = container.isPublish_all();
-      create.withPublishAllPorts(_isPublish_all_1);
+      create.withPublishAllPorts(Boolean.valueOf(_isPublish_all_1));
     }
     boolean _isTty = container.isTty();
     if (_isTty) {
       boolean _isTty_1 = container.isTty();
-      create.withTty(_isTty_1);
+      create.withTty(Boolean.valueOf(_isTty_1));
     }
     boolean _isStdin_open = container.isStdin_open();
     if (_isStdin_open) {
       boolean _isStdin_open_1 = container.isStdin_open();
-      create.withStdInOnce(_isStdin_open_1);
+      create.withStdInOnce(Boolean.valueOf(_isStdin_open_1));
     }
     String _user = container.getUser();
     boolean _notEquals_8 = (!Objects.equal(_user, null));
@@ -280,13 +301,15 @@ public class DockerContainerManager {
     boolean _greaterThan_2 = (_mem_limit > 0);
     if (_greaterThan_2) {
       int _mem_limit_1 = container.getMem_limit();
-      create.withMemoryLimit(_mem_limit_1);
+      Long _valueOf = Long.valueOf(_mem_limit_1);
+      create.withMemory(_valueOf);
     }
     int _memory_swap = container.getMemory_swap();
     boolean _greaterThan_3 = (_memory_swap > 0);
     if (_greaterThan_3) {
       int _memory_swap_1 = container.getMemory_swap();
-      create.withMemorySwap(_memory_swap_1);
+      Long _valueOf_1 = Long.valueOf(_memory_swap_1);
+      create.withMemory(_valueOf_1);
     }
     String _lxc_conf = container.getLxc_conf();
     boolean _notEquals_10 = (!Objects.equal(_lxc_conf, null));
@@ -298,8 +321,8 @@ public class DockerContainerManager {
     boolean _greaterThan_4 = (_cores > 0);
     if (_greaterThan_4) {
       int _cores_1 = container.getCores();
-      String _valueOf = String.valueOf(_cores_1);
-      create.withCpuset(_valueOf);
+      String _valueOf_2 = String.valueOf(_cores_1);
+      create.withCpusetCpus(_valueOf_2);
     }
     return create;
   }
@@ -337,7 +360,7 @@ public class DockerContainerManager {
     boolean _greaterThan = (_cpu_shares > 0);
     if (_greaterThan) {
       int _cpu_shares_1 = container.getCpu_shares();
-      create.withCpuShares(_cpu_shares_1);
+      create.withCpuShares(Integer.valueOf(_cpu_shares_1));
     }
     String _add_host = container.getAdd_host();
     boolean _notEquals_2 = (!Objects.equal(_add_host, null));
@@ -349,12 +372,12 @@ public class DockerContainerManager {
     boolean _notEquals_3 = (!Objects.equal(_cpuset, null));
     if (_notEquals_3) {
       String _cpuset_1 = container.getCpuset();
-      create.withCpuset(_cpuset_1);
+      create.withCpusetCpus(_cpuset_1);
     }
     boolean _isPrivileged = container.isPrivileged();
     if (_isPrivileged) {
       boolean _isPrivileged_1 = container.isPrivileged();
-      create.withPrivileged(_isPrivileged_1);
+      create.withPrivileged(Boolean.valueOf(_isPrivileged_1));
     }
     String _dns = container.getDns();
     boolean _notEquals_4 = (!Objects.equal(_dns, null));
@@ -411,17 +434,17 @@ public class DockerContainerManager {
     boolean _isPublish_all = container.isPublish_all();
     if (_isPublish_all) {
       boolean _isPublish_all_1 = container.isPublish_all();
-      create.withPublishAllPorts(_isPublish_all_1);
+      create.withPublishAllPorts(Boolean.valueOf(_isPublish_all_1));
     }
     boolean _isTty = container.isTty();
     if (_isTty) {
       boolean _isTty_1 = container.isTty();
-      create.withTty(_isTty_1);
+      create.withTty(Boolean.valueOf(_isTty_1));
     }
     boolean _isStdin_open = container.isStdin_open();
     if (_isStdin_open) {
       boolean _isStdin_open_1 = container.isStdin_open();
-      create.withStdInOnce(_isStdin_open_1);
+      create.withStdInOnce(Boolean.valueOf(_isStdin_open_1));
     }
     String _user = container.getUser();
     boolean _notEquals_9 = (!Objects.equal(_user, null));
@@ -440,13 +463,15 @@ public class DockerContainerManager {
     boolean _greaterThan_1 = (_mem_limit > 0);
     if (_greaterThan_1) {
       int _mem_limit_1 = container.getMem_limit();
-      create.withMemoryLimit(_mem_limit_1);
+      Long _valueOf = Long.valueOf(_mem_limit_1);
+      create.withMemory(_valueOf);
     }
     int _memory_swap = container.getMemory_swap();
     boolean _greaterThan_2 = (_memory_swap > 0);
     if (_greaterThan_2) {
       int _memory_swap_1 = container.getMemory_swap();
-      create.withMemorySwap(_memory_swap_1);
+      Long _valueOf_1 = Long.valueOf(_memory_swap_1);
+      create.withMemorySwap(_valueOf_1);
     }
     String _lxc_conf = container.getLxc_conf();
     boolean _notEquals_11 = (!Objects.equal(_lxc_conf, null));
@@ -458,8 +483,8 @@ public class DockerContainerManager {
     boolean _greaterThan_3 = (_cores > 0);
     if (_greaterThan_3) {
       int _cores_1 = container.getCores();
-      String _valueOf = String.valueOf(_cores_1);
-      create.withCpuset(_valueOf);
+      String _valueOf_2 = String.valueOf(_cores_1);
+      create.withCpusetCpus(_valueOf_2);
     }
     String _name_2 = container.getName();
     boolean _containsKey = containerDependency.containsKey(_name_2);
@@ -483,8 +508,7 @@ public class DockerContainerManager {
       int _size_2 = depdupeContainers.size();
       boolean _greaterThan_4 = (_size_2 > 1);
       if (_greaterThan_4) {
-        final List<Link> _converted_dockeClientlinks = (List<Link>)dockeClientlinks;
-        create.withLinks(((Link[])Conversions.unwrapArray(_converted_dockeClientlinks, Link.class)));
+        create.withLinks(dockeClientlinks);
       } else {
         int _size_3 = depdupeContainers.size();
         boolean _equals_4 = (_size_3 == 1);
@@ -530,27 +554,24 @@ public class DockerContainerManager {
     return inspectContainerResponse;
   }
   
-  public Void startContainer(final Machine machine, final Container container) {
-    Void _xblockexpression = null;
-    {
-      boolean _notEquals = (!Objects.equal(DockerContainerManager.dockerClient, null));
-      if (_notEquals) {
-        DockerContainerManager.dockerClient = DockerContainerManager.dockerClient;
-      } else {
-        String _name = machine.getName();
-        boolean _equalsIgnoreCase = DockerContainerManager.currentMachine.equalsIgnoreCase(_name);
-        boolean _not = (!_equalsIgnoreCase);
-        if (_not) {
-          String _name_1 = machine.getName();
-          DockerClient _setConfig = this.setConfig(_name_1);
-          DockerContainerManager.dockerClient = _setConfig;
-        }
+  public DockerClient startContainer(final Machine machine, final Container container) {
+    DockerClient _xifexpression = null;
+    boolean _notEquals = (!Objects.equal(DockerContainerManager.dockerClient, null));
+    if (_notEquals) {
+      _xifexpression = DockerContainerManager.dockerClient = DockerContainerManager.dockerClient;
+    } else {
+      DockerClient _xifexpression_1 = null;
+      String _name = machine.getName();
+      boolean _equalsIgnoreCase = DockerContainerManager.currentMachine.equalsIgnoreCase(_name);
+      boolean _not = (!_equalsIgnoreCase);
+      if (_not) {
+        String _name_1 = machine.getName();
+        DockerClient _setConfig = this.setConfig(_name_1);
+        _xifexpression_1 = DockerContainerManager.dockerClient = _setConfig;
       }
-      String _id = container.getId();
-      StartContainerCmd _startContainerCmd = DockerContainerManager.dockerClient.startContainerCmd(_id);
-      _xblockexpression = _startContainerCmd.exec();
+      _xifexpression = _xifexpression_1;
     }
-    return _xblockexpression;
+    return _xifexpression;
   }
   
   public Void startContainer(final Machine machine, final String containerId) {
@@ -646,7 +667,9 @@ public class DockerContainerManager {
       }
       String _id = container.getId();
       WaitContainerCmd _waitContainerCmd = DockerContainerManager.dockerClient.waitContainerCmd(_id);
-      _xblockexpression = _waitContainerCmd.exec();
+      WaitContainerResultCallback _waitContainerResultCallback = new WaitContainerResultCallback();
+      WaitContainerResultCallback _exec = _waitContainerCmd.<WaitContainerResultCallback>exec(_waitContainerResultCallback);
+      _xblockexpression = _exec.awaitStatusCode();
     }
     return _xblockexpression;
   }
@@ -665,7 +688,7 @@ public class DockerContainerManager {
       }
     }
     ListContainersCmd _listContainersCmd = DockerContainerManager.dockerClient.listContainersCmd();
-    ListContainersCmd _withShowAll = _listContainersCmd.withShowAll(true);
+    ListContainersCmd _withShowAll = _listContainersCmd.withShowAll(Boolean.valueOf(true));
     final List<com.github.dockerjava.api.model.Container> containers = _withShowAll.exec();
     return containers;
   }
@@ -704,9 +727,9 @@ public class DockerContainerManager {
       try {
         PullImageCmd _pullImageCmd = DockerContainerManager.dockerClient.pullImageCmd(containerImage);
         PullImageCmd _withTag = _pullImageCmd.withTag("latest");
-        InputStream _exec = _withTag.exec();
-        String _asString = DockerUtil.asString(_exec);
-        output = _asString;
+        PullImageResultCallback _pullImageResultCallback = new PullImageResultCallback();
+        PullImageResultCallback _exec = _withTag.<PullImageResultCallback>exec(_pullImageResultCallback);
+        _exec.awaitSuccess();
       } catch (final Throwable _t) {
         if (_t instanceof Exception) {
           final Exception e = (Exception)_t;
