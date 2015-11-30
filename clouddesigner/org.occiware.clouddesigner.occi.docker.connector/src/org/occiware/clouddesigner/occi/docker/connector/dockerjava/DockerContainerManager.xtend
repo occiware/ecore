@@ -21,6 +21,8 @@ import com.github.dockerjava.api.model.Ports
 import com.github.dockerjava.api.model.Volume
 import com.github.dockerjava.core.DockerClientBuilder
 import com.github.dockerjava.core.DockerClientConfig
+import com.github.dockerjava.core.command.PullImageResultCallback
+import com.github.dockerjava.core.command.WaitContainerResultCallback
 import com.google.common.collect.Multimap
 import com.jcraft.jsch.Channel
 import com.jcraft.jsch.ChannelExec
@@ -48,6 +50,9 @@ import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.Docke
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerUtil
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import com.github.dockerjava.api.model.EventFilters
+import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerEventCallback
+import org.occiware.clouddesigner.occi.docker.connector.EventCallBack
 
 class DockerContainerManager {
 	private static DockerClient dockerClient = null
@@ -63,11 +68,18 @@ class DockerContainerManager {
 	}
 
 	new(Machine machine) {
-		dockerClient = setConfig(machine.name)
+		dockerClient = setConfig(machine.name)		
 	}
 
 	new(String machineName) {
-		dockerClient = setConfig(machineName)
+		dockerClient = setConfig(machineName)		
+	}
+	
+	new(Machine machine, EventCallBack event) {
+		dockerClient = setConfig(machine.name)
+
+		// listened to Events
+		dockerClient.eventsCmd().exec(event); 
 	}
 
 	def createContainer(Machine machine, Container container) {
@@ -78,11 +90,17 @@ class DockerContainerManager {
 		} else if (!currentMachine.equalsIgnoreCase(machine.name)) {
 			dockerClient = setConfig(machine.name)
 		}
+				
 		var Map<DockerClient, CreateContainerResponse> result = new LinkedHashMap<DockerClient, CreateContainerResponse>
 		val create = containerFactory(container, dockerClient)
 
 		// Run Execution
 		val CreateContainerResponse rcontainer = create.exec
+		
+		// Set container ID
+		container.containerid = rcontainer.id
+		LOGGER.info("Set the ContainerID : "+ container.containerid)
+		
 		result.put(dockerClient, rcontainer)
 		return result
 	}
@@ -100,6 +118,12 @@ class DockerContainerManager {
 
 		// Run Execution
 		val CreateContainerResponse rcontainer = create.exec
+
+		// Set container ID
+		container.containerid = rcontainer.id
+		LOGGER.info("Set the ContainerID : "+ container.containerid)
+
+		
 		result.put(dockerClient, rcontainer)
 		return result
 	}
@@ -136,7 +160,7 @@ class DockerContainerManager {
 			create.withHostName(container.hostname)
 		}
 		if (container.cpuset != null) {
-			create.withCpuset(container.cpuset)
+			create.withCpusetCpus(container.cpuset)
 		}
 		if (container.privileged) {
 			create.withPrivileged(container.privileged)
@@ -182,10 +206,10 @@ class DockerContainerManager {
 			create.withVolumes(new Volume(container.volumes))
 		}
 		if (container.mem_limit > 0) {
-			create.withMemoryLimit(container.mem_limit)
+			create.withMemory(Long.valueOf(container.mem_limit))
 		}
 		if (container.memory_swap > 0) {
-			create.withMemorySwap(container.memory_swap)
+			create.withMemory(Long.valueOf(container.memory_swap))
 		}
 		if (container.lxc_conf != null) {
 
@@ -194,7 +218,7 @@ class DockerContainerManager {
 			create.withLxcConf(lxcCon)
 		}
 		if (container.cores > 0) {
-			create.withCpuset(String.valueOf(container.cores))
+			create.withCpusetCpus(String.valueOf(container.cores))
 		}
 
 		//		if (container.links.size > 0) {
@@ -235,7 +259,7 @@ class DockerContainerManager {
 			create.withHostName(container.hostname)
 		}
 		if (container.cpuset != null) {
-			create.withCpuset(container.cpuset)
+			create.withCpusetCpus(container.cpuset)
 		}
 		if (container.privileged) {
 			create.withPrivileged(container.privileged)
@@ -280,10 +304,10 @@ class DockerContainerManager {
 			create.withVolumes(new Volume(container.volumes))
 		}
 		if (container.mem_limit > 0) {
-			create.withMemoryLimit(container.mem_limit)
+			create.withMemory(Long.valueOf(container.mem_limit))
 		}
 		if (container.memory_swap > 0) {
-			create.withMemorySwap(container.memory_swap)
+			create.withMemorySwap(Long.valueOf(container.memory_swap))
 		}
 		if (container.lxc_conf != null) {
 
@@ -292,7 +316,7 @@ class DockerContainerManager {
 			create.withLxcConf(lxcCon)
 		}
 		if (container.cores > 0) {
-			create.withCpuset(String.valueOf(container.cores))
+			create.withCpusetCpus(String.valueOf(container.cores))
 		}
 
 		if (containerDependency.containsKey(container.name)) {
@@ -343,7 +367,9 @@ class DockerContainerManager {
 		} else if (!currentMachine.equalsIgnoreCase(machine.name)) {
 			dockerClient = setConfig(machine.name)
 		}
-		dockerClient.startContainerCmd(container.id).exec
+//		// listened to Events
+//		dockerClient.eventsCmd().withFilters(new EventFilters().withEvent("start")).exec(new DockerEventCallback(machine)); 
+//		dockerClient.startContainerCmd(container.id).exec
 	}
 
 	def startContainer(Machine machine, String containerId) {
@@ -354,6 +380,8 @@ class DockerContainerManager {
 		}else if (!currentMachine.equalsIgnoreCase(machine.name)) {
 			dockerClient = setConfig(machine.name)
 		}
+//		//Listened to Events
+//		dockerClient.eventsCmd().withFilters(new EventFilters().withEvent("start")).exec(new DockerEventCallback(machine));
 		dockerClient.startContainerCmd(containerId).exec
 	}
 
@@ -365,6 +393,8 @@ class DockerContainerManager {
 		} else if (!currentMachine.equalsIgnoreCase(machine.name)) {
 			dockerClient = setConfig(machine.name)
 		}
+//		// Listened to events
+//		dockerClient.eventsCmd().withFilters(new EventFilters().withEvent("stop")).exec(new DockerEventCallback(machine));
 		dockerClient.stopContainerCmd(container.id).exec
 	}
 
@@ -376,6 +406,8 @@ class DockerContainerManager {
 		} else if (!currentMachine.equalsIgnoreCase(machine.name)) {
 			dockerClient = setConfig(machine.name)
 		}
+//		//Listened to events 
+//		dockerClient.eventsCmd().withFilters(new EventFilters().withEvent("stop")).exec(new DockerEventCallback(machine));
 		dockerClient.stopContainerCmd(containerId).exec
 	}
 
@@ -387,7 +419,7 @@ class DockerContainerManager {
 		} else if (!currentMachine.equalsIgnoreCase(machine.name)) {
 			dockerClient = setConfig(machine.name)
 		}
-		dockerClient.waitContainerCmd(container.id).exec
+		dockerClient.waitContainerCmd(container.id).exec(new WaitContainerResultCallback()).awaitStatusCode()
 	}
 
 	def List<com.github.dockerjava.api.model.Container> listContainer(String machineName) {
@@ -423,7 +455,8 @@ class DockerContainerManager {
 
 			// Download a pre-built image
 			try {
-				output = DockerUtil.asString(dockerClient.pullImageCmd(containerImage).withTag("latest").exec)
+				dockerClient.pullImageCmd(containerImage).withTag("latest").exec(new PullImageResultCallback()).awaitSuccess()
+				//output = DockerUtil.asString(resp)
 			} catch (Exception e) {
 				LOGGER.error(e.message)
 			}

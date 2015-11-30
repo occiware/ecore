@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  * 	- Fawaz PARAISO 
  *******************************************************************************/
@@ -80,6 +80,7 @@ import org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Hyper_V
 import org.occiware.clouddesigner.occi.docker.Machine_OpenStack
 import org.occiware.clouddesigner.occi.docker.Machine_Rackspace
 import org.occiware.clouddesigner.occi.docker.Machine_VMware_vSphere
+import java.util.Arrays
 
 class ModelHandler {
 
@@ -114,8 +115,8 @@ class ModelHandler {
 				val EList<EReference> eReferences = eClass.EReferences
 				for (EReference eReference : eReferences) {
 					LOGGER.info(
-						eReference.getName() + "(" + eReference.EReferenceType.name + "[" + eReference.lowerBound + ".." +
-							eReference.upperBound + "])")
+						eReference.getName() + "(" + eReference.EReferenceType.name + "[" + eReference.lowerBound +
+							".." + eReference.upperBound + "])")
 				}
 				if (!eClass.getEOperations().isEmpty()) {
 					LOGGER.info(" Operations: ")
@@ -157,7 +158,7 @@ class ModelHandler {
 		r.contents.add(vboxInstance)
 		r.save(null)
 
-	//resourceSet.packageRegistry.put("http://occiware.org/docker", ePackage)
+	// resourceSet.packageRegistry.put("http://occiware.org/docker", ePackage)
 	}
 
 	def loadModel() {
@@ -173,7 +174,7 @@ class ModelHandler {
 	def getmodelEClass() {
 		val Map<String, Machine> m = new HashMap
 
-		//TODO verify the good driver name
+		// TODO verify the good driver name
 		m.put(Provider.virtualbox.toString, DockerFactory.eINSTANCE.createMachine_VirtualBox)
 		m.put(Provider.amazonec2.toString, DockerFactory.eINSTANCE.createMachine_Amazon_EC2)
 		m.put(Provider.digitalocean.toString, DockerFactory.eINSTANCE.createMachine_Digital_Ocean)
@@ -252,7 +253,7 @@ class ModelHandler {
 		resourceSet.resourceFactoryRegistry.extensionToFactoryMap.put("xmi", new XMIResourceFactoryImpl)
 		val String basePath = this.class.classLoader.getResource(".").path
 
-		//var File temp = File.createTempFile("tempfile", machine.name + ".xmi")
+		// var File temp = File.createTempFile("tempfile", machine.name + ".xmi")
 		var File temp = new File(basePath + machine.name + ".xmi")
 		LOGGER.info(temp.absolutePath)
 		val uri = URI.createURI(temp.absolutePath)
@@ -540,8 +541,7 @@ class ModelHandler {
 				machineFactory(newvbox, node, state)
 				LOGGER.info("Model setting: " + newvbox)
 			}
-			if (!machineExists) { //ignore the machine if it exists.
-
+			if (!machineExists) { // ignore the machine if it exists.
 				// Check machine state
 				if (vbox.state.toString.equalsIgnoreCase("active")) {
 
@@ -697,19 +697,19 @@ class ModelHandler {
 	def List<Container> buildContainer(Machine machine, List<com.github.dockerjava.api.model.Container> containers) {
 		val instance = new DockerContainerManager(machine)
 
-		// Retrieve the default factory singleton
 		var List<Container> containerList = newArrayList
 		for (com.github.dockerjava.api.model.Container c : containers) {
 			val currentContainer = instance.inspectContainer(machine, c.id)
 			currentContainer.id
 
+			// Retrieve the default factory singleton
 			var modelContainer = DockerFactory.eINSTANCE.createContainer
 			modelContainer.id = c.id
 			modelContainer.name = currentContainer.name.replace("/", "")
 			modelContainer.image = currentContainer.imageId
 			modelContainer.command = c.command
 			modelContainer.containerid = c.id
-			if(currentContainer.state.running){
+			if (currentContainer.state.running) {
 				modelContainer.state = ComputeStatus.get(0)
 			}
 			containerList.add(modelContainer)
@@ -718,12 +718,33 @@ class ModelHandler {
 		return containerList
 	}
 
+	def Container buildContainer(Machine machine, String containerId) {
+		val instance = new DockerContainerManager(machine)
+		val currentContainer = instance.inspectContainer(machine, containerId)
+		currentContainer.id
+
+		// Retrieve the default factory singleton
+		var modelContainer = DockerFactory.eINSTANCE.createContainer
+		modelContainer.id = currentContainer.id
+		modelContainer.name = currentContainer.name.replace("/", "")
+		modelContainer.image = currentContainer.imageId
+		modelContainer.command = Arrays.toString(currentContainer.config.entrypoint).replace("[", "").replace("]", "")
+		modelContainer.containerid = currentContainer.id
+		if (currentContainer.state.running) {
+			modelContainer.state = ComputeStatus.ACTIVE
+		} else {
+			modelContainer.state = ComputeStatus.INACTIVE
+		}
+
+		return modelContainer
+	}
+
 	def saveMachine(Machine machine) {
 		val resourceSet = new ResourceSetImpl
 		resourceSet.resourceFactoryRegistry.extensionToFactoryMap.put("xmi", new XMIResourceFactoryImpl)
 		val String basePath = this.class.classLoader.getResource(".").path
 
-		//var File temp = File.createTempFile("tempfile", machine.name + ".xmi")
+		// var File temp = File.createTempFile("tempfile", machine.name + ".xmi")
 		var File temp = new File(basePath + machine.name + ".xmi")
 		LOGGER.info(temp.absolutePath)
 		val uri = URI.createURI(temp.absolutePath)
@@ -748,7 +769,7 @@ class ModelHandler {
 		resourceSet.resourceFactoryRegistry.extensionToFactoryMap.put("xmi", new XMIResourceFactoryImpl)
 		val String basePath = this.class.classLoader.getResource(".").path
 
-		//var File temp = File.createTempFile("tempfile", machine.name + ".xmi")
+		// var File temp = File.createTempFile("tempfile", machine.name + ".xmi")
 		var File temp = new File(basePath + container.name + ".xmi")
 		LOGGER.info(temp.absolutePath)
 		val uri = URI.createURI(temp.absolutePath)

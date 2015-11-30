@@ -4,22 +4,32 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
- *	- Philippe MERLE
+ * - Philippe MERLE
  * 	- Fawaz PARAISO 
  *******************************************************************************/
 package org.occiware.clouddesigner.occi.docker.connector
 
 import com.github.dockerjava.api.DockerClient
 import com.github.dockerjava.api.command.CreateContainerResponse
+import com.github.dockerjava.api.model.Event
+import com.github.dockerjava.core.command.EventsResultCallback
 import com.google.common.collect.ArrayListMultimap
 import com.google.common.collect.Multimap
 import java.util.ArrayList
+import java.util.Collections
 import java.util.HashMap
 import java.util.List
 import java.util.Map
+import org.apache.commons.lang.StringUtils
+import org.eclipse.emf.common.command.Command
 import org.eclipse.emf.ecore.EObject
+import org.eclipse.emf.transaction.RecordingCommand
+import org.eclipse.emf.transaction.RollbackException
+import org.eclipse.emf.transaction.TransactionalCommandStack
+import org.eclipse.emf.transaction.TransactionalEditingDomain
+import org.eclipse.emf.transaction.util.TransactionUtil
 import org.occiware.clouddesigner.occi.Configuration
 import org.occiware.clouddesigner.occi.Link
 import org.occiware.clouddesigner.occi.Resource
@@ -42,6 +52,7 @@ import org.occiware.clouddesigner.occi.docker.connector.dockerjava.DockerContain
 import org.occiware.clouddesigner.occi.docker.connector.dockerjava.graph.Graph
 import org.occiware.clouddesigner.occi.docker.connector.dockerjava.graph.GraphNode
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerMachineManager
+import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerObserver
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerUtil
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.ProcessManager
 import org.occiware.clouddesigner.occi.docker.impl.ContainerImpl
@@ -64,14 +75,12 @@ import org.occiware.clouddesigner.occi.infrastructure.ComputeStatus
 import org.occiware.clouddesigner.occi.infrastructure.RestartMethod
 import org.occiware.clouddesigner.occi.infrastructure.StopMethod
 import org.occiware.clouddesigner.occi.infrastructure.SuspendMethod
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 
 import static com.google.common.base.Preconditions.checkNotNull
-import org.slf4j.LoggerFactory
-import org.slf4j.Logger
-import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerObserver
-import org.occiware.clouddesigner.occi.docker.Container
-import org.apache.commons.lang.StringUtils
-import java.util.Collections
+import static org.occiware.clouddesigner.occi.docker.connector.EventCallBack.*
+import static org.occiware.clouddesigner.occi.docker.connector.ExecutableContainer.*
 
 /**
  * This class overrides the generated EMF factory of the Docker package.
@@ -490,6 +499,107 @@ class ComputeStateMachine<T extends Compute> {
 	}
 }
 
+class EventCallBack extends EventsResultCallback {
+	// Initialize logger for EventCallBack.
+	private static Logger LOGGER = LoggerFactory.getLogger(typeof(EventCallBack))
+	var ExecutableContainer container
+
+	new(ExecutableContainer container) {
+		this.container = container
+	}
+
+	def modifyResourceSet(Resource resource, String state, String containerId) {
+		// Creating an editing domain
+		var TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(resource.eResource.resourceSet)
+		var Command cmd = new RecordingCommand(domain) {
+			override protected void doExecute() {
+				// these modifications require a write transaction in this editing domain
+				if (state.equalsIgnoreCase("stop")) {
+					(resource as ExecutableContainer).state = ComputeStatus.INACTIVE
+				}
+				if (state.equalsIgnoreCase("start")) {
+					(resource as ExecutableContainer).state = ComputeStatus.ACTIVE
+				}
+				if (state.equalsIgnoreCase("create")) {
+					val instanceMH = new ModelHandler
+					LOGGER.info("<=************************=>")
+					var machine = getCurrentMachine(resource as ExecutableContainer)
+					var org.occiware.clouddesigner.occi.docker.Container c = instanceMH.buildContainer(machine, containerId)
+					instanceMH.linkContainerToMachine(c, machine)
+				}
+
+			}
+		};
+
+		try {
+			(domain.getCommandStack() as TransactionalCommandStack).execute(cmd, null); // default options
+		} catch (RollbackException rbe) {
+			LOGGER.error(rbe.getStatus().toString)
+		}
+	}
+
+	override def void onNext(Event event) {
+		LOGGER.info("Received event #{}", event)
+		var machine = this.container.currentMachine
+		// Apply modification only when the machine is active
+		if (machine.state == ComputeStatus.ACTIVE) {
+			for (Link l : machine.links) {
+				var contains = l as Contains
+				if (contains.target instanceof org.occiware.clouddesigner.occi.docker.Container) {
+					if ((l.target as ExecutableContainer).containerid == event.id) {
+
+						if (event.getStatus().equalsIgnoreCase("stop")) {
+							modifyResourceSet(l.target, event.getStatus(), event.id)
+							LOGGER.info("Apply stop notification to model")
+						}
+						if (event.getStatus().equalsIgnoreCase("start")) {
+							modifyResourceSet(l.target, event.getStatus(), event.id)
+							LOGGER.info("Apply start notification to model")
+						}
+					} else {
+						modifyResourceSet(l.target, event.getStatus(), event.id)
+						LOGGER.info("Apply create notification to model")
+					}
+				}
+
+			}
+		}
+	}
+
+	def getCurrentMachine(ExecutableContainer container) {
+		// get the current machine
+		for (EObject eo : container.eContainer.eContents) {
+			if (eo instanceof Machine) {
+				val machine = eo as Machine
+				for (Link l : machine.links) {
+					val contains = l as Contains
+					if (contains.target instanceof org.occiware.clouddesigner.occi.docker.Container) {
+						if ((l.target as ExecutableContainer).id == container.id) {
+							return machine
+						}
+					}
+
+				}
+			}
+		}
+		return null
+	}
+
+	def listContainers(Machine machine) {
+		var containers = new ArrayList
+		for (Link l : machine.links) {
+			var contains = l as Contains
+			if (contains.target instanceof org.occiware.clouddesigner.occi.docker.Container) {
+				containers.add(contains.target as ExecutableContainer)
+			}
+
+		}
+
+		return containers
+	}
+
+}
+
 /**
  * This class implements an executable Docker container.
  */
@@ -502,6 +612,9 @@ class ExecutableContainer extends ContainerImpl {
 
 	// This is a cache of containers current machine
 	protected static Map<String, Machine> listCurrentMachine = new HashMap
+
+	// Listener of the events
+	var eventCallback = new EventCallBack(this)
 
 	/**
 	 * Docker containers have a state machine.
@@ -517,7 +630,7 @@ class ExecutableContainer extends ContainerImpl {
 			if (machine.state.toString.equalsIgnoreCase("active")) {
 				try {
 					if (dockerContainerManager == null) {
-						dockerContainerManager = new DockerContainerManager(machine)
+						dockerContainerManager = new DockerContainerManager(machine, eventCallback)
 					}
 					dockerContainerManager.startContainer(machine, this.compute.name)
 				} catch (Exception e) {
@@ -537,7 +650,7 @@ class ExecutableContainer extends ContainerImpl {
 				if (this.compute.state.toString.equalsIgnoreCase("active")) {
 					try {
 						if (dockerContainerManager == null) {
-							dockerContainerManager = new DockerContainerManager(machine)
+							dockerContainerManager = new DockerContainerManager(machine, eventCallback)
 						}
 						dockerContainerManager.stopContainer(machine, this.compute.name)
 					} catch (Exception e) {
@@ -586,7 +699,7 @@ class ExecutableContainer extends ContainerImpl {
 		// Set dockerClient
 		var Map<DockerClient, CreateContainerResponse> result = new HashMap<DockerClient, CreateContainerResponse>
 		if (dockerContainerManager == null) {
-			dockerContainerManager = new DockerContainerManager
+			dockerContainerManager = new DockerContainerManager(machine, eventCallback)
 		}
 
 		// Download image
@@ -598,7 +711,7 @@ class ExecutableContainer extends ContainerImpl {
 
 	def void createContainer(Machine machine) {
 		if (dockerContainerManager == null) {
-			dockerContainerManager = new DockerContainerManager
+			dockerContainerManager = new DockerContainerManager(machine, eventCallback)
 		}
 
 		// Download image
@@ -610,7 +723,7 @@ class ExecutableContainer extends ContainerImpl {
 
 	def void removeContainer(Machine machine) {
 		if (dockerContainerManager == null) {
-			dockerContainerManager = new DockerContainerManager
+			dockerContainerManager = new DockerContainerManager(machine, eventCallback)
 		}
 		dockerContainerManager.removeContainer(machine.name, this.name)
 	}
@@ -653,7 +766,7 @@ class ExecutableContainer extends ContainerImpl {
 				val machine = eo as Machine
 				for (Link l : machine.links) {
 					val contains = l as Contains
-					if (contains.target instanceof Container) {
+					if (contains.target instanceof org.eclipse.emf.ecore.impl.MinimalEObjectImpl.Container) {
 						if ((l.target as ExecutableContainer).id == this.id) {
 
 							// Update the cache
@@ -739,7 +852,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 			command.append(' ').append(compute.name)
 		}
 
-		println("CMD : " + command.toString)
+		LOGGER.info("CMD : #{}", command.toString)
 
 		// Get the active machine
 		val activeHosts = DockerUtil.getActiveHosts
@@ -747,8 +860,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 		// Get the existing machines
 		val hosts = DockerUtil.getHosts
 		if (!hosts.containsKey(compute.name)) { // Check if machine exists in the real environment
-
-			// Create the machine and start it
+		// Create the machine and start it
 			ProcessManager.runCommand(command.toString, runtime, true)
 		} else {
 			if (!activeHosts.containsKey(compute.name)) {
@@ -787,21 +899,20 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 		// Get the existing machines
 		val hosts = DockerUtil.getHosts
 		if (!hosts.containsKey(compute.name)) { // Check if machine exists in the real environment
-
-			// Create the machine and start it
+		// Create the machine and start it
 			ProcessManager.runCommand(command.toString, runtime, true)
 
 			// Set state
 			compute.state = ComputeStatus.ACTIVE
 
-			//Create the Containers belong to this machine.
+			// Create the Containers belong to this machine.
 			if (compute.links.size > 0) {
 
 				// Start the containers without create graph
 				if (!this.linkFound) {
 					for (Link link : compute.links) {
 						val contains = link as Contains
-						if (contains.target instanceof Container) {
+						if (contains.target instanceof org.occiware.clouddesigner.occi.docker.Container) {
 							val con = contains.target as ExecutableContainer
 
 							// The container does not exists in the machine
@@ -813,15 +924,14 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 								// Start container
 								con.start
 							} else { // The conatiner exists
-
-								// Start container
+							// Start container
 								con.start
 							}
 						}
 					}
 				} else { // Create the graph
 					val dependencies = this.containerDependency
-					for (Container c : this.deploymentOrder) {
+					for (org.occiware.clouddesigner.occi.docker.Container c : this.deploymentOrder) {
 						val con = c as ExecutableContainer
 						if (!containerIsDeployed(con.name, compute)) {
 
@@ -854,7 +964,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 					if (!this.linkFound) {
 						for (Link link : compute.links) {
 							val contains = link as Contains
-							if (contains.target instanceof Container) {
+							if (contains.target instanceof org.occiware.clouddesigner.occi.docker.Container) {
 								val con = contains.target as ExecutableContainer
 
 								// The container does not exists in the machine
@@ -868,8 +978,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 									// Start container
 									con.start
 								} else { // The machine exists
-
-									// Start container
+								// Start container
 									LOGGER.info("Trying to start container: " + con.name)
 									con.start
 									LOGGER.info("Started ...")
@@ -877,7 +986,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 							}
 						}
 					} else {
-						for (Container c : this.deploymentOrder) {
+						for (org.occiware.clouddesigner.occi.docker.Container c : this.deploymentOrder) {
 							val con = c as ExecutableContainer
 
 							// The container does not exists in the machine
@@ -889,8 +998,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 								// Start container
 								con.start
 							} else { // The container exists
-
-								// Start container
+							// Start container
 								LOGGER.info("Trying to start container: " + con.name)
 								con.start
 								LOGGER.info("Started ... ")
@@ -907,7 +1015,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 					if (!this.linkFound) {
 						for (Link link : compute.links) {
 							val contains = link as Contains
-							if (contains.target instanceof Container) {
+							if (contains.target instanceof org.occiware.clouddesigner.occi.docker.Container) {
 								val con = contains.target as ExecutableContainer
 								if (!containerIsDeployed(con.name, this.machine)) {
 
@@ -926,7 +1034,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 							}
 						}
 					} else {
-						for (Container c : this.deploymentOrder) {
+						for (org.occiware.clouddesigner.occi.docker.Container c : this.deploymentOrder) {
 							val con = c as ExecutableContainer
 
 							// The container does not exists in the machine
@@ -940,8 +1048,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 								con.start
 								LOGGER.info("Started ... ")
 							} else { // The container exists
-
-								// Start container
+							// Start container
 								LOGGER.info("Trying to start container: " + con.name)
 								LOGGER.info("Started ... ")
 								con.start
@@ -974,7 +1081,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 					var containersInModel = new ArrayList<String>
 					for (Link link : compute.links) {
 						val contains = link as Contains
-						if (contains.target instanceof Container) {
+						if (contains.target instanceof org.occiware.clouddesigner.occi.docker.Container) {
 							val con = contains.target as ExecutableContainer
 							containersInModel.add(con.name)
 							if (!containerIsDeployed(con.name, this.machine)) {
@@ -998,7 +1105,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 					}
 				} else {
 					var containersInModel = new ArrayList<String>
-					for (Container c : this.deploymentOrder) {
+					for (org.occiware.clouddesigner.occi.docker.Container c : this.deploymentOrder) {
 						val con = c as ExecutableContainer
 						containersInModel.add(c.name)
 
@@ -1023,28 +1130,28 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 			}
 
 		/*
-			// Introspect containers
-			val contains = instance.listContainer(machine)
-			if (contains != null) {
-				val modelContainers = instanceMH.buildContainer(this.compute, contains)
-				for (org.occiware.clouddesigner.occi.docker.Container container : modelContainers) {
-					(container as ExecutableContainer).linkContainerToMachine(this.compute)
-				}
-				if (this.compute.links != null) {
-					for (Link link : compute.links) {
-						this.compute.eContainer.eResource.allContents.toList.add(link)
-						if (link instanceof Link) {
-							val c = link as Contains
-							if (c.target instanceof org.occiware.clouddesigner.occi.docker.Container) {
-								this.compute.eContainer.eResource.allContents.toList.add(
-									(c.target as org.occiware.clouddesigner.occi.docker.Container))
-							}
-						}
-					}
-
-				}
-			}
-			 */
+		 * 	// Introspect containers
+		 * 	val contains = instance.listContainer(machine)
+		 * 	if (contains != null) {
+		 * 		val modelContainers = instanceMH.buildContainer(this.compute, contains)
+		 * 		for (org.occiware.clouddesigner.occi.docker.Container container : modelContainers) {
+		 * 			(container as ExecutableContainer).linkContainerToMachine(this.compute)
+		 * 		}
+		 * 		if (this.compute.links != null) {
+		 * 			for (Link link : compute.links) {
+		 * 				this.compute.eContainer.eResource.allContents.toList.add(link)
+		 * 				if (link instanceof Link) {
+		 * 					val c = link as Contains
+		 * 					if (c.target instanceof org.occiware.clouddesigner.occi.docker.Container) {
+		 * 						this.compute.eContainer.eResource.allContents.toList.add(
+		 * 							(c.target as org.occiware.clouddesigner.occi.docker.Container))
+		 * 					}
+		 * 				}
+		 * 			}
+		 * 
+		 * 		}
+		 * 	}
+		 */
 		} else {
 			if (compute.links.size > 0) {
 
@@ -1077,11 +1184,11 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 
 		for (Link l : compute.links) {
 			val contains = l as Contains
-			if (contains.target instanceof Container) {
+			if (contains.target instanceof org.occiware.clouddesigner.occi.docker.Container) {
 				val container = contains.target as org.occiware.clouddesigner.occi.docker.Container
 				for (Link cl : container.links) {
 					if (cl.target instanceof org.occiware.clouddesigner.occi.docker.Container) {
-						graph.addDependency(container, (cl.target as org.occiware.clouddesigner.occi.docker.Container))
+						graph.addDependency(container,(cl.target as org.occiware.clouddesigner.occi.docker.Container))
 						this.containerDependency.put(container.name,
 							(cl.target as org.occiware.clouddesigner.occi.docker.Container).name)
 					}
@@ -1175,7 +1282,8 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 				if (link instanceof Link) {
 					val contains = link as Contains
 					if (contains.target instanceof org.occiware.clouddesigner.occi.docker.Container) {
-						val org.occiware.clouddesigner.occi.docker.Container container = contains.target as org.occiware.clouddesigner.occi.docker.Container
+						val org.occiware.clouddesigner.occi.docker.Container container = contains.
+							target as org.occiware.clouddesigner.occi.docker.Container
 						container.stop(StopMethod.GRACEFUL)
 					}
 				}
@@ -1578,7 +1686,7 @@ class ExecutableMachine_OpenStack extends Machine_OpenStackImpl {
 			}
 			if (StringUtils.isNotBlank(sec_groups)) {
 
-				//TODO list of secure group.
+				// TODO list of secure group.
 				sb.append(" --openstack-sec-groups ").append(sec_groups)
 			} else {
 				sb.append(" --openstack-sec-groups ").append("default")
@@ -2220,9 +2328,10 @@ class ExecutableDockerModel {
 				var machine = instanceMH.getModel(entry.getKey(), entry.getValue(), machineExistInModeler)
 				this.configuration.resources.add(machine)
 				if (machine.links != null) {
-					machine.links.forEach[elt|
-						this.configuration.resources.add(
-							(elt.target as org.occiware.clouddesigner.occi.docker.Container))]
+					machine.links.forEach [ elt |
+						this.configuration.resources.add((
+							elt.target as org.occiware.clouddesigner.occi.docker.Container))
+					]
 				}
 			}
 		}

@@ -28,7 +28,7 @@ import org.apache.commons.lang.StringUtils
 
 class DockerObserver {
 
-	// Initialize logger for CommandFactory.
+	// Initialize logger for DockerObserver.
 	private static Logger LOGGER = LoggerFactory.getLogger(typeof(DockerObserver))
 	var protected static Container cpContainer = null
 	var protected static Machine cpMachine = null
