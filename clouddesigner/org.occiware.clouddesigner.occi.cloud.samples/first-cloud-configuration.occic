@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="ASCII"?>
+<occi:Configuration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:occi="http://schemas.ogf.org/occi">
+  <use href="file:/Users/spirals/git/ecore/clouddesigner/org.occiware.clouddesigner.occi.cloud/model/cloud.occie#/"/>
+</occi:Configuration>
