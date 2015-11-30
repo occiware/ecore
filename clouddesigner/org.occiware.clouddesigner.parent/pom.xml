@@ -22,6 +22,9 @@
 		<module>../org.occiware.clouddesigner.occi.gen.xml</module>
 		<module>../org.occiware.clouddesigner.occi.gen.xml.ui</module>
 
+		<!-- OCCI connectors -->
+		<module>../org.occiware.clouddesigner.occi.connector.jocci</module>
+
 		<!-- Infrastructure -->
 		<module>../org.occiware.clouddesigner.occi.infrastructure</module>
 		<module>../org.occiware.clouddesigner.occi.infrastructure.edit</module>
