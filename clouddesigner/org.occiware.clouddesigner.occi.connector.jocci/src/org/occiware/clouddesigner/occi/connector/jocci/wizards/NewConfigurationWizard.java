@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
@@ -42,7 +43,9 @@ import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
@@ -142,9 +145,11 @@ public class NewConfigurationWizard extends Wizard implements INewWizard {
 						resource.getContents().add(rootObject);
 						try {
 							Importer.importFromOcciServer(rootObject, newFileCreationPage.getOcciServerUrl());
-						} catch(Throwable exc) {
-							// TODO: Use Eclipse error report.
-							exc.printStackTrace(System.err);
+						} catch(Throwable throwable) {
+							Shell shell = Display.getCurrent().getActiveShell();
+							Status status = new Status(IStatus.ERROR, Activator.PLUGIN_ID, 0, null, throwable);
+							ErrorDialog.openError(shell, null, throwable.getMessage(), status);
+							return;
 						}
 
 						// Save the contents of the resource to the file system.
