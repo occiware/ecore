@@ -4,7 +4,7 @@ This sub project aims to provide the necessaries tools for executing the OCCIWAR
 
 Prerequisites
 -------------
-	Supports Docker client version 0.2.0
+	Supports Docker client version 1.8.3
 	Be sure the Docker daemon is running.
 	You should have an account or register yourself on: https://hub.docker.com/account/signup/.
 	To use the driver ```vmwarevsphere```, you should install ```govc``` CLI as described here: https://github.com/vmware/govmomi/tree/master/govc.
@@ -21,13 +21,13 @@ Change the configuration below according to your requirements in the file ecore/
 	docker.username=dockeruser
 	docker.password=iloveocciware
 	docker.email=dockeruser@occiware.org
-	docker.version=1.16
+	docker.version=1.20
 	docker.url=https://index.docker.io/v1/
 	
 
 Lunch the modeler
 ----------------
-To lunch the modeler follow these steps:
+To lunch the modeler from eclipse with ecore source code follow these steps:
 
 * Start your eclipse IDE in `Run` menu chose `Run Configurations..` (We assume that the OCCIWARE/ecore project is already lunched in your IDE).
 
@@ -46,6 +46,49 @@ To lunch the modeler follow these steps:
 * Check that the `docker` box is checked as shown in the picture below.
 
 ![Viewpoint Selections](https://raw.githubusercontent.com/occiware/dev-tools/master/eclipse/images/view.png "Viewpoint Selections")
+
+To lunch the modeler from eclipse with ecore source code follow these steps:
+
+* Start the occiware studio
+
+* Create new project 
+![Viewpoint Selections](https://raw.githubusercontent.com/occiware/dev-tools/master/eclipse/images/new_projet.png "New project")
+
+
+* Specify the project name 
+![Viewpoint Selections](https://raw.githubusercontent.com/occiware/dev-tools/master/eclipse/images/docker-modeler.png "Specify the project name")
+
+
+
+* Create docker configuration 
+![Viewpoint Selections](https://raw.githubusercontent.com/occiware/dev-tools/master/eclipse/images/other_project.png "Create the configuration")
+
+
+
+* Select `OCCI Configuration File` in the wizard
+![Viewpoint Selections](https://raw.githubusercontent.com/occiware/dev-tools/master/eclipse/images/wizard.png "Select the appropriate configuration")
+
+
+
+* Set the configuration name and chose `http://occiware.org/docker# as referenced extension
+![Viewpoint Selections](https://raw.githubusercontent.com/occiware/dev-tools/master/eclipse/images/configuration.png "Select the docker reference extension")
+
+
+
+* Set the `Viewpoints Selection` 
+![Viewpoint Selections](https://raw.githubusercontent.com/occiware/dev-tools/master/eclipse/images/viewpoint_project.png "Select the viewpoints selction")
+
+
+* Create a new machine and one container inside 
+![Viewpoint Selections](https://raw.githubusercontent.com/occiware/dev-tools/master/eclipse/images/ex_design.png "create a new machine")
+
+
+* Select `Startall` in the contextual menu `Execute`in order to start both the machine and the docker
+![Viewpoint Selections](https://raw.githubusercontent.com/occiware/dev-tools/master/eclipse/images/ex_design_on.png "create a new machine")
+
+
+* You can also import all machines deployed in the execution environment
+![Viewpoint Selections](https://raw.githubusercontent.com/occiware/dev-tools/master/eclipse/images/after_import.png "create a new machine")
 
 Demo
 ----
