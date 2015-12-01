@@ -25,11 +25,15 @@ Change the configuration below according to your requirements in the file ecore/
 	docker.url=https://index.docker.io/v1/
 	
 
-Lunch the modeler
+Launch the modeler
 ----------------
-To lunch the modeler from eclipse with ecore source code follow these steps:
+There are two ways to launch the docker connector.
 
-* Start your eclipse IDE in `Run` menu chose `Run Configurations..` (We assume that the OCCIWARE/ecore project is already lunched in your IDE).
+	* Using the occiware studio here: http://www.obeo.fr/download/occiware/
+	* Using the eclispe with ecore source code
+To launch the modeler from eclipse with ecore source code follow these steps:
+
+* Start your eclipse IDE in `Run` menu chose `Run Configurations..` (We assume that the OCCIWARE/ecore project is already launched in your IDE).
 
 ![Run Configurations...](https://raw.githubusercontent.com/occiware/dev-tools/master/eclipse/images/run.png "Run Configurations...")
 
@@ -47,7 +51,7 @@ To lunch the modeler from eclipse with ecore source code follow these steps:
 
 ![Viewpoint Selections](https://raw.githubusercontent.com/occiware/dev-tools/master/eclipse/images/view.png "Viewpoint Selections")
 
-To lunch the modeler from eclipse with ecore source code follow these steps:
+To launch the modeler from eclipse with ecore source code follow these steps:
 
 * Start the occiware studio
 
@@ -94,7 +98,7 @@ Demo
 ----
 This video shows how to:
 
-  * Lunch the modeler.
+  * Launch the modeler.
   
   * Use all actions defined with the connector (see the document belongs): [Docker Connector Backlog](https://docs.google.com/document/d/1X1DtfjoB8PehV69BcCt8jGXZN40UNc97wSc3lbg-Lr0/edit)
   
