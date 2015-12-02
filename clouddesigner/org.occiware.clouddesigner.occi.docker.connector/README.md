@@ -60,28 +60,19 @@ To launch the modeler from eclipse with ecore source code follow these steps:
 ![Viewpoint Selections](https://raw.githubusercontent.com/occiware/dev-tools/master/eclipse/images/new_projet.png "New project")
 
 
-* Specify the project name 
-![Viewpoint Selections](https://raw.githubusercontent.com/occiware/dev-tools/master/eclipse/images/docker-modeler.png "Specify the project name")
-
-
 
 * Create docker configuration 
-![Viewpoint Selections](https://raw.githubusercontent.com/occiware/dev-tools/master/eclipse/images/other_project.png "Create the configuration")
+![Viewpoint Selections](https://raw.githubusercontent.com/occiware/dev-tools/master/eclipse/images/set_config.png "Create the configuration")
 
 
 
-* Select `OCCI Configuration File` in the wizard
-![Viewpoint Selections](https://raw.githubusercontent.com/occiware/dev-tools/master/eclipse/images/wizard.png "Select the appropriate configuration")
+* Set the configuration name in the wizard
+![Viewpoint Selections](https://raw.githubusercontent.com/occiware/dev-tools/master/eclipse/images/set_configuration_name.png "Select the appropriate configuration")
 
 
 
-* Set the configuration name and chose `http://occiware.org/docker# as referenced extension
-![Viewpoint Selections](https://raw.githubusercontent.com/occiware/dev-tools/master/eclipse/images/configuration.png "Select the docker reference extension")
-
-
-
-* Set the `Viewpoints Selection` 
-![Viewpoint Selections](https://raw.githubusercontent.com/occiware/dev-tools/master/eclipse/images/viewpoint_project.png "Select the viewpoints selction")
+* You should get something like this
+![Viewpoint Selections](https://raw.githubusercontent.com/occiware/dev-tools/master/eclipse/images/rendering_docker_modeler.png "Select the docker reference extension")
 
 
 * Create a new machine and one container inside 
