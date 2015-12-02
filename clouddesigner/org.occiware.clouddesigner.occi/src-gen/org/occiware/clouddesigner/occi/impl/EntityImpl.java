@@ -136,6 +136,16 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 		super();
 		// Generate a new ID for this entity.
 		setId(EcoreUtil.generateUUID());
+		// If kind is not set then
+		if(kind == null) {
+			try {
+				// Try to resolve it automatically.
+				kind = OCCIKindResolver.resolveKind(this);
+			} catch(Exception exc) {
+				// TODO: This should never happens :-(
+				exc.printStackTrace(System.err);
+			}
+		}
 	}
 
 	/**
@@ -172,7 +182,7 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public Kind getKind() {
 		if (kind != null && kind.eIsProxy()) {
@@ -183,18 +193,6 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OCCIPackage.ENTITY__KIND, oldKind, kind));
 			}
 		}
-
-		// If kind is not set then
-		if(kind == null) {
-			try {
-				// Try to resolve it automatically.
-				kind = OCCIKindResolver.resolveKind(this);
-			} catch(Exception exc) {
-				// TODO: This should never happens :-(
-				exc.printStackTrace(System.err);
-			}
-		}
-		
 		return kind;
 	}
 
