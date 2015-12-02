@@ -5,7 +5,7 @@
       <objectContribution
             adaptable="true"
             objectClass="org.eclipse.core.resources.IFile"
-            nameFilter="*.occic"
+            nameFilter="*.docker"
             id="org.occiware.clouddesigner.occi.docker.gen.conf.ui.popupMenus.contribution.IFile">
          <menu id="org.occiware.clouddesigner.menu" label="Cloud Designer" path="additionsCloudDesigner">
                <separator name="group"/>
