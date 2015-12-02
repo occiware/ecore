@@ -21,7 +21,6 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelectionCallback;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.occiware.clouddesigner.occi.design.Activator;
 import org.occiware.clouddesigner.occi.design.Messages;
@@ -76,22 +75,9 @@ public final class WizardUtils {
 
 				@Override
 				protected void doExecute() {
-					DialectManager.INSTANCE.createRepresentation(diagramInstanceName, rootObject,
+					DRepresentation representation = DialectManager.INSTANCE.createRepresentation(diagramInstanceName, rootObject,
 							representationDescription, session, monitor);
-					if (!session.getSelectedViews().isEmpty()) {
-						for (final DView view : session.getSelectedViews()) {
-							if (!view.getOwnedRepresentations().isEmpty()) {
-								for (final DRepresentation representation : view.getOwnedRepresentations()) {
-									final RepresentationDescription description = DialectManager.INSTANCE
-											.getDescription(representation);
-									if (diagramName.equals(description.getName())) {
-										DialectUIManager.INSTANCE.openEditor(session, representation, monitor);
-										return;
-									}
-								}
-							}
-						}
-					}
+					DialectUIManager.INSTANCE.openEditor(session, representation, monitor);
 				}
 			};
 			try {
