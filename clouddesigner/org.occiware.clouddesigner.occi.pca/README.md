@@ -2,7 +2,7 @@
 
 This project contains the OCCI extension for ProActive Cloud Automation.
 
-The following figure shows the content of this OCCI example, i.e., both mixin `compute` and enumeration `SLA`:
+The following figure shows the content of this OCCI extension, i.e., both mixin `compute` and enumeration `SLA`:
 
 ![ProActive Cloud Automation OCCI Extension diagram](documentation/images/ProActive-Cloud-Automation-OCCI-Extension-diagram.png "ProActive Cloud Automation OCCI Extension diagram")
 
