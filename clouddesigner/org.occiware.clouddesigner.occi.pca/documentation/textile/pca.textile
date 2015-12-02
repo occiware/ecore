@@ -1,4 +1,4 @@
-Generated at Wed Dec 02 16:40:20 CET 2015 from platform:/resource/org.occiware.clouddesigner.occi.pca/model/ProActiveCloudAutomation.occie by org.occiware.clouddesigner.occi.gen.doc
+Generated at Wed Dec 02 21:11:54 CET 2015 from platform:/resource/org.occiware.clouddesigner.occi.pca/model/ProActive-Cloud-Automation.occie by org.occiware.clouddesigner.occi.gen.doc
 
 h1. OCCI Extension: pca
 
@@ -21,7 +21,7 @@ h2. Mixin compute
 
 | *Term* | compute |
 | *Scheme* | http://proactive.ow2.org# |
-| *Title* | ProActive Compute mixin |
+| *Title* | ProActive Cloud Automation Compute mixin |
 
 h3. Depends
 
@@ -33,17 +33,17 @@ h3. Applies
 h3. Attributes
 
 | *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
-| occi.compute.localstorage | <a href="infrastructure.textile#datatype-positiveinteger">PositiveInteger</a> | false | false |  |  |
-| sla | <a href="pca.textile#enum-sla">SLA</a> | false | false |  |  |
-| occi.compute.lease.stop.warning | <a href="infrastructure.textile#datatype-positiveinteger">PositiveInteger</a> | false | false |  |  |
-| occi.compute.lease.stop | <a href="infrastructure.textile#datatype-positiveinteger">PositiveInteger</a> | false | false |  |  |
-| occi.compute.lease.delete.warning | <a href="infrastructure.textile#datatype-positiveinteger">PositiveInteger</a> | false | false |  |  |
-| occi.compute.lease.delete | <a href="infrastructure.textile#datatype-positiveinteger">PositiveInteger</a> | false | false |  |  |
-| occi.compute.password | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
-| occi.compute.template_name | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
-| occi.compute.os | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
-| occi.compute.vendor.vmpath | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
-| occi.compute.vendor.location | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+| occi.compute.localstorage | <a href="infrastructure.textile#datatype-positiveinteger">PositiveInteger</a> | false | true |  |  |
+| sla | <a href="pca.textile#enum-sla">SLA</a> | false | true |  |  |
+| occi.compute.lease.stop.warning | <a href="infrastructure.textile#datatype-positiveinteger">PositiveInteger</a> | false | true |  |  |
+| occi.compute.lease.stop | <a href="infrastructure.textile#datatype-positiveinteger">PositiveInteger</a> | false | true |  |  |
+| occi.compute.lease.delete.warning | <a href="infrastructure.textile#datatype-positiveinteger">PositiveInteger</a> | false | true |  |  |
+| occi.compute.lease.delete | <a href="infrastructure.textile#datatype-positiveinteger">PositiveInteger</a> | false | true |  |  |
+| occi.compute.password | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| occi.compute.template_name | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| occi.compute.os | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| occi.compute.vendor.vmpath | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| occi.compute.vendor.location | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
 
 h3. Actions
 

@@ -1,65 +1,140 @@
 <?xml version="1.0" encoding="ASCII"?>
-<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:occi="http://schemas.ogf.org/occi" name="pca" scheme="http://proactive.ow2.org#">
+<occi:Extension
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:occi="http://schemas.ogf.org/occi"
+    name="pca"
+    scheme="http://proactive.ow2.org#">
   <import href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#/"/>
   <import href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#/"/>
-  <mixins term="compute" scheme="http://proactive.ow2.org#" title="ProActive Cloud Automation Compute mixin">
-    <attributes name="occi.compute.localstorage">
-      <type href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@types.13"/>
+  <mixins term="compute"
+      scheme="http://proactive.ow2.org#"
+      title="ProActive Cloud Automation Compute mixin">
+    <attributes
+        name="occi.compute.localstorage"
+        mutable="true">
+      <type
+          href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@types.13"/>
     </attributes>
-    <attributes name="sla" type="//@types.0"/>
-    <attributes name="occi.compute.lease.stop.warning">
-      <type href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@types.13"/>
+    <attributes
+        name="sla"
+        mutable="true"
+        type="//@types.0"/>
+    <attributes
+        name="occi.compute.lease.stop.warning"
+        mutable="true">
+      <type
+          href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@types.13"/>
     </attributes>
-    <attributes name="occi.compute.lease.stop">
-      <type href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@types.13"/>
+    <attributes
+        name="occi.compute.lease.stop"
+        mutable="true">
+      <type
+          href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@types.13"/>
     </attributes>
-    <attributes name="occi.compute.lease.delete.warning">
-      <type href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@types.13"/>
+    <attributes
+        name="occi.compute.lease.delete.warning"
+        mutable="true">
+      <type
+          href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@types.13"/>
     </attributes>
-    <attributes name="occi.compute.lease.delete">
-      <type href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@types.13"/>
+    <attributes
+        name="occi.compute.lease.delete"
+        mutable="true">
+      <type
+          href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@types.13"/>
     </attributes>
-    <attributes name="occi.compute.password">
-      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    <attributes
+        name="occi.compute.password"
+        mutable="true">
+      <type
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
-    <attributes name="occi.compute.template_name">
-      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    <attributes
+        name="occi.compute.template_name"
+        mutable="true">
+      <type
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
-    <attributes name="occi.compute.os">
-      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    <attributes
+        name="occi.compute.os"
+        mutable="true">
+      <type
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
-    <attributes name="occi.compute.vendor.vmpath">
-      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    <attributes
+        name="occi.compute.vendor.vmpath"
+        mutable="true">
+      <type
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
-    <attributes name="occi.compute.vendor.location">
-      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    <attributes
+        name="occi.compute.vendor.location"
+        mutable="true">
+      <type
+          href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
-    <actions term="snapshot" scheme="http://proactive.ow2.org/compute/action#" title="Snapshoter VM"/>
-    <actions term="template" scheme="http://proactive.ow2.org/compute/action#" title="Cr&#xe9;er un mod&#xe8;le &#xe0; partir d'une VM existante">
-      <attributes name="occi.compute.template_name" default="">
-        <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    <actions
+        term="snapshot"
+        scheme="http://proactive.ow2.org/compute/action#"
+        title="Snapshoter VM"/>
+    <actions
+        term="template"
+        scheme="http://proactive.ow2.org/compute/action#"
+        title="Cr&#xe9;er un mod&#xe8;le &#xe0; partir d'une VM existante">
+      <attributes
+          name="occi.compute.template_name"
+          default="">
+        <type
+            href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
       </attributes>
     </actions>
-    <actions term="collate" scheme="http://proactive.ow2.org/compute/action#">
-      <attributes name="affinity.target">
-        <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    <actions
+        term="collate"
+        scheme="http://proactive.ow2.org/compute/action#">
+      <attributes
+          name="affinity.target">
+        <type
+            href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
       </attributes>
     </actions>
-    <actions term="decollate" scheme="http://proactive.ow2.org/compute/action#">
-      <attributes name="affinity.target">
-        <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    <actions
+        term="decollate"
+        scheme="http://proactive.ow2.org/compute/action#">
+      <attributes
+          name="affinity.target">
+        <type
+            href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
       </attributes>
     </actions>
-    <actions term="set_sla" scheme="http://proactive.ow2.org/compute/action#" title="Modifier un SLA">
-      <attributes name="sla" type="//@types.0"/>
+    <actions
+        term="set_sla"
+        scheme="http://proactive.ow2.org/compute/action#"
+        title="Modifier un SLA">
+      <attributes
+          name="sla"
+          type="//@types.0"/>
     </actions>
-    <actions term="snapshot_revert" scheme="http://proactive.ow2.org/compute/action#" title="Restauration d'un snapshot"/>
-    <actions term="snapshot_delete" scheme="http://proactive.ow2.org/compute/action#" title="Suppression d'un snapshot"/>
-    <applies href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='compute']"/>
+    <actions
+        term="snapshot_revert"
+        scheme="http://proactive.ow2.org/compute/action#"
+        title="Restauration d'un snapshot"/>
+    <actions
+        term="snapshot_delete"
+        scheme="http://proactive.ow2.org/compute/action#"
+        title="Suppression d'un snapshot"/>
+    <applies
+        href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='compute']"/>
   </mixins>
-  <types xsi:type="ecore:EEnum" name="SLA">
-    <eLiterals name="gold"/>
-    <eLiterals name="silver"/>
-    <eLiterals name="bronze"/>
+  <types xsi:type="ecore:EEnum"
+      name="SLA">
+    <eLiterals
+        name="gold"/>
+    <eLiterals
+        name="silver"/>
+    <eLiterals
+        name="bronze"/>
   </types>
 </occi:Extension>
