@@ -31,6 +31,7 @@ There are two ways to launch the docker connector.
 
 	* Using the occiware studio here: http://www.obeo.fr/download/occiware/
 	* Using the eclispe with ecore source code
+
 To launch the modeler from eclipse with ecore source code follow these steps:
 
 * Start your eclipse IDE in `Run` menu chose `Run Configurations..` (We assume that the OCCIWARE/ecore project is already launched in your IDE).
