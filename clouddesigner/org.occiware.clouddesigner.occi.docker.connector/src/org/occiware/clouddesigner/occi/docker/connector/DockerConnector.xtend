@@ -81,6 +81,9 @@ import org.slf4j.LoggerFactory
 import static com.google.common.base.Preconditions.checkNotNull
 import static org.occiware.clouddesigner.occi.docker.connector.EventCallBack.*
 import static org.occiware.clouddesigner.occi.docker.connector.ExecutableContainer.*
+import com.github.dockerjava.api.model.Statistics
+import com.github.dockerjava.core.async.ResultCallbackTemplate
+import org.occiware.clouddesigner.occi.OCCIFactory
 
 /**
  * This class overrides the generated EMF factory of the Docker package.
@@ -499,6 +502,10 @@ class ComputeStateMachine<T extends Compute> {
 	}
 }
 
+
+/**
+ * This class notifies a new events to the connector.
+ */
 class EventCallBack extends EventsResultCallback {
 	// Initialize logger for EventCallBack.
 	private static Logger LOGGER = LoggerFactory.getLogger(typeof(EventCallBack))
@@ -522,10 +529,13 @@ class EventCallBack extends EventsResultCallback {
 				}
 				if (state.equalsIgnoreCase("create")) {
 					val instanceMH = new ModelHandler
-					LOGGER.info("<=************************=>")
 					var machine = getCurrentMachine(resource as ExecutableContainer)
 					var org.occiware.clouddesigner.occi.docker.Container c = instanceMH.buildContainer(machine, containerId)
 					instanceMH.linkContainerToMachine(c, machine)
+					if(machine.eContainer instanceof Configuration){
+						(machine.eContainer as Configuration).resources.add(c as ExecutableContainer)
+						LOGGER.info("Load new container")
+					}
 				}
 
 			}
@@ -537,7 +547,7 @@ class EventCallBack extends EventsResultCallback {
 			LOGGER.error(rbe.getStatus().toString)
 		}
 	}
-
+	
 	override def void onNext(Event event) {
 		LOGGER.info("Received event #{}", event)
 		var machine = this.container.currentMachine
@@ -547,7 +557,6 @@ class EventCallBack extends EventsResultCallback {
 				var contains = l as Contains
 				if (contains.target instanceof org.occiware.clouddesigner.occi.docker.Container) {
 					if ((l.target as ExecutableContainer).containerid == event.id) {
-
 						if (event.getStatus().equalsIgnoreCase("stop")) {
 							modifyResourceSet(l.target, event.getStatus(), event.id)
 							LOGGER.info("Apply stop notification to model")
@@ -557,8 +566,10 @@ class EventCallBack extends EventsResultCallback {
 							LOGGER.info("Apply start notification to model")
 						}
 					} else {
-						modifyResourceSet(l.target, event.getStatus(), event.id)
-						LOGGER.info("Apply create notification to model")
+						if (event.getStatus().equalsIgnoreCase("create")) {
+							modifyResourceSet(l.target, event.getStatus(), event.id)
+							LOGGER.info("Apply create notification to model")							
+						}
 					}
 				}
 
@@ -601,6 +612,35 @@ class EventCallBack extends EventsResultCallback {
 }
 
 /**
+ * This class notifies stats events to the connector.
+ */
+ class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statistics> {
+	// Initialize logger for StatsCallback.
+	private static Logger LOGGER = LoggerFactory.getLogger(typeof(StatsCallback))
+
+	var private Boolean gotStats = false;
+
+	var ExecutableContainer container
+
+	new(ExecutableContainer container) {
+		this.container = container
+	}
+
+	override def void onNext(Statistics stats) {
+		LOGGER.info("Received stats #{} ", stats);
+		if (stats != null) {
+			gotStats = true;
+		}
+	}
+
+	def Boolean gotStats() {
+		return gotStats;
+	}
+
+}
+
+
+/**
  * This class implements an executable Docker container.
  */
 class ExecutableContainer extends ContainerImpl {
@@ -615,6 +655,9 @@ class ExecutableContainer extends ContainerImpl {
 
 	// Listener of the events
 	var eventCallback = new EventCallBack(this)
+
+	// Listener of the stats
+	//var statsCallback = new StatsCallback(this)
 
 	/**
 	 * Docker containers have a state machine.
@@ -632,6 +675,11 @@ class ExecutableContainer extends ContainerImpl {
 					if (dockerContainerManager == null) {
 						dockerContainerManager = new DockerContainerManager(machine, eventCallback)
 					}
+					val dockerClient = dockerContainerManager.dockerClient
+
+					// Listened to stats
+//					dockerClient.statsCmd().withContainerId(this.compute.containerid).exec(statsCallback)
+
 					dockerContainerManager.startContainer(machine, this.compute.name)
 				} catch (Exception e) {
 					createContainer(machine)

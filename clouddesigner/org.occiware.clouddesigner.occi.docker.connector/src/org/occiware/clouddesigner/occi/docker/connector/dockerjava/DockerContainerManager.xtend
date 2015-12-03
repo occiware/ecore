@@ -45,14 +45,12 @@ import java.util.Map
 import org.apache.commons.lang.StringUtils
 import org.occiware.clouddesigner.occi.docker.Container
 import org.occiware.clouddesigner.occi.docker.Machine
+import org.occiware.clouddesigner.occi.docker.connector.EventCallBack
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerMachineManager
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerConfig
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerUtil
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import com.github.dockerjava.api.model.EventFilters
-import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerEventCallback
-import org.occiware.clouddesigner.occi.docker.connector.EventCallBack
 
 class DockerContainerManager {
 	private static DockerClient dockerClient = null
@@ -80,6 +78,10 @@ class DockerContainerManager {
 
 		// listened to Events
 		dockerClient.eventsCmd().exec(event); 
+
+		// listened to stats
+		//dockerClient.statsCmd().exec(statsCallback) 
+
 	}
 
 	def createContainer(Machine machine, Container container) {
@@ -634,6 +636,10 @@ class DockerContainerManager {
 		} else {
 			return tempDir
 		}
+	}
+	
+	def getDockerClient(){
+		return dockerClient
 	}
 
 }

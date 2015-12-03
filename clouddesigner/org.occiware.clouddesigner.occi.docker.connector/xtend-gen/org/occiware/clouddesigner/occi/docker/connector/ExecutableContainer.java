@@ -75,6 +75,7 @@ public class ExecutableContainer extends ContainerImpl {
             DockerContainerManager _dockerContainerManager = new DockerContainerManager(machine, ExecutableContainer.this.eventCallback);
             ExecutableContainer.dockerContainerManager = _dockerContainerManager;
           }
+          final DockerClient dockerClient = ExecutableContainer.dockerContainerManager.getDockerClient();
           String _name = this.compute.getName();
           ExecutableContainer.dockerContainerManager.startContainer(machine, _name);
         } catch (final Throwable _t) {

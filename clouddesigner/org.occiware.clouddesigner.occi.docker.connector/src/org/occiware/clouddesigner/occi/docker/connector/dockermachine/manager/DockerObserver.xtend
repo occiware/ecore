@@ -74,7 +74,10 @@ class DockerObserver {
 			new EContentAdapter() {
 				public override notifyChanged(Notification notification) {
 					LOGGER.info("The Container has Changed")
-					var newContainer = notification.notifier as Container
+					var Container newContainer = null
+					if(notification.notifier instanceof Container){
+					newContainer = notification.notifier as Container						
+					}
 					var String containerId = null
 					LOGGER.info("Ancienne Valeur : " + notification.oldValue)
 					LOGGER.info("Nouvelle Valeur : " + notification.newValue)
