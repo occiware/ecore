@@ -637,9 +637,5 @@ class DockerContainerManager {
 			return tempDir
 		}
 	}
-	
-	def getDockerClient(){
-		return dockerClient
-	}
 
 }

@@ -675,11 +675,6 @@ class ExecutableContainer extends ContainerImpl {
 					if (dockerContainerManager == null) {
 						dockerContainerManager = new DockerContainerManager(machine, eventCallback)
 					}
-					val dockerClient = dockerContainerManager.dockerClient
-
-					// Listened to stats
-//					dockerClient.statsCmd().withContainerId(this.compute.containerid).exec(statsCallback)
-
 					dockerContainerManager.startContainer(machine, this.compute.name)
 				} catch (Exception e) {
 					createContainer(machine)
