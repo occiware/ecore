@@ -1,0 +1,121 @@
+Generated at Wed Dec 02 21:11:54 CET 2015 from platform:/resource/org.occiware.clouddesigner.occi.pca/model/ProActive-Cloud-Automation.occie by org.occiware.clouddesigner.occi.gen.doc
+
+h1. OCCI Extension: pca
+
+| *Name* | pca |
+| *Scheme* | http://proactive.ow2.org# |
+
+h1. Imports
+
+| *Name* | *Scheme* |
+| <a href="core.textile">core</a> | http://schemas.ogf.org/occi/core# |
+| <a href="infrastructure.textile">infrastructure</a> | http://schemas.ogf.org/occi/infrastructure# |
+
+h1. Kinds
+
+
+
+h1. Mixins
+
+h2. Mixin compute
+
+| *Term* | compute |
+| *Scheme* | http://proactive.ow2.org# |
+| *Title* | ProActive Cloud Automation Compute mixin |
+
+h3. Depends
+
+
+h3. Applies
+
+* <a href="infrastructure.textile#kind-compute">http://schemas.ogf.org/occi/infrastructure#compute</a>
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.compute.localstorage | <a href="infrastructure.textile#datatype-positiveinteger">PositiveInteger</a> | false | true |  |  |
+| sla | <a href="pca.textile#enum-sla">SLA</a> | false | true |  |  |
+| occi.compute.lease.stop.warning | <a href="infrastructure.textile#datatype-positiveinteger">PositiveInteger</a> | false | true |  |  |
+| occi.compute.lease.stop | <a href="infrastructure.textile#datatype-positiveinteger">PositiveInteger</a> | false | true |  |  |
+| occi.compute.lease.delete.warning | <a href="infrastructure.textile#datatype-positiveinteger">PositiveInteger</a> | false | true |  |  |
+| occi.compute.lease.delete | <a href="infrastructure.textile#datatype-positiveinteger">PositiveInteger</a> | false | true |  |  |
+| occi.compute.password | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| occi.compute.template_name | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| occi.compute.os | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| occi.compute.vendor.vmpath | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| occi.compute.vendor.location | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+
+h3. Actions
+
+h4. Action snapshot
+
+| *Term* | snapshot |
+| *Scheme* | http://proactive.ow2.org/compute/action# |
+| *Title* | Snapshoter VM |
+
+
+h4. Action template
+
+| *Term* | template |
+| *Scheme* | http://proactive.ow2.org/compute/action# |
+| *Title* | Créer un modèle à partir d'une VM existante |
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.compute.template_name | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+
+h4. Action collate
+
+| *Term* | collate |
+| *Scheme* | http://proactive.ow2.org/compute/action# |
+| *Title* |  |
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| affinity.target | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+
+h4. Action decollate
+
+| *Term* | decollate |
+| *Scheme* | http://proactive.ow2.org/compute/action# |
+| *Title* |  |
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| affinity.target | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+
+h4. Action set_sla
+
+| *Term* | set_sla |
+| *Scheme* | http://proactive.ow2.org/compute/action# |
+| *Title* | Modifier un SLA |
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| sla | <a href="pca.textile#enum-sla">SLA</a> | false | false |  |  |
+
+h4. Action snapshot_revert
+
+| *Term* | snapshot_revert |
+| *Scheme* | http://proactive.ow2.org/compute/action# |
+| *Title* | Restauration d'un snapshot |
+
+
+h4. Action snapshot_delete
+
+| *Term* | snapshot_delete |
+| *Scheme* | http://proactive.ow2.org/compute/action# |
+| *Title* | Suppression d'un snapshot |
+
+
+
+
+
+
+h1. Types
+
+h2. Enum SLA
+
+Literals:
+* gold  
+* silver  
+* bronze  
+
+
+

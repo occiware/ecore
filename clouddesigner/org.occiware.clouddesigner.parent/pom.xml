@@ -28,6 +28,9 @@
 		<!-- Infrastructure -->
 		<module>../org.occiware.clouddesigner.occi.infrastructure</module>
 		<module>../org.occiware.clouddesigner.occi.infrastructure.edit</module>
+
+		<!-- ProActive Cloud Automation -->
+		<module>../org.occiware.clouddesigner.occi.pca</module>
 		
 		<!-- Cloud -->
 		<!-- <module>../org.occiware.clouddesigner.occi.cloud</module> -->

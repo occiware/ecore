@@ -84,8 +84,12 @@ public class DockerObserver {
         @Override
         public void notifyChanged(final Notification notification) {
           DockerObserver.LOGGER.info("The Container has Changed");
+          Container newContainer = null;
           Object _notifier = notification.getNotifier();
-          Container newContainer = ((Container) _notifier);
+          if ((_notifier instanceof Container)) {
+            Object _notifier_1 = notification.getNotifier();
+            newContainer = ((Container) _notifier_1);
+          }
           String containerId = null;
           Object _oldValue = notification.getOldValue();
           String _plus = ("Ancienne Valeur : " + _oldValue);

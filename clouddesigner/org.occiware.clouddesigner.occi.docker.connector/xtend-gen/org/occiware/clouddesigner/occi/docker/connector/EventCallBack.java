@@ -27,6 +27,7 @@ import org.eclipse.emf.transaction.TransactionalCommandStack;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.occiware.clouddesigner.occi.Configuration;
 import org.occiware.clouddesigner.occi.Link;
 import org.occiware.clouddesigner.occi.Resource;
 import org.occiware.clouddesigner.occi.docker.Container;
@@ -38,6 +39,9 @@ import org.occiware.clouddesigner.occi.infrastructure.ComputeStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * This class notifies a new events to the connector.
+ */
 @SuppressWarnings("all")
 public class EventCallBack extends EventsResultCallback {
   private static Logger LOGGER = LoggerFactory.getLogger(EventCallBack.class);
@@ -67,10 +71,16 @@ public class EventCallBack extends EventsResultCallback {
           boolean _equalsIgnoreCase_2 = state.equalsIgnoreCase("create");
           if (_equalsIgnoreCase_2) {
             final ModelHandler instanceMH = new ModelHandler();
-            EventCallBack.LOGGER.info("<=************************=>");
             Machine machine = EventCallBack.this.getCurrentMachine(((ExecutableContainer) resource));
             Container c = instanceMH.buildContainer(machine, containerId);
             instanceMH.linkContainerToMachine(c, machine);
+            EObject _eContainer = machine.eContainer();
+            if ((_eContainer instanceof Configuration)) {
+              EObject _eContainer_1 = machine.eContainer();
+              EList<Resource> _resources = ((Configuration) _eContainer_1).getResources();
+              _resources.add(((ExecutableContainer) c));
+              EventCallBack.LOGGER.info("Load new container");
+            }
           }
         }
       };
@@ -129,11 +139,15 @@ public class EventCallBack extends EventsResultCallback {
                 EventCallBack.LOGGER.info("Apply start notification to model");
               }
             } else {
-              Resource _target_4 = l.getTarget();
               String _status_4 = event.getStatus();
-              String _id_3 = event.getId();
-              this.modifyResourceSet(_target_4, _status_4, _id_3);
-              EventCallBack.LOGGER.info("Apply create notification to model");
+              boolean _equalsIgnoreCase_2 = _status_4.equalsIgnoreCase("create");
+              if (_equalsIgnoreCase_2) {
+                Resource _target_4 = l.getTarget();
+                String _status_5 = event.getStatus();
+                String _id_3 = event.getId();
+                this.modifyResourceSet(_target_4, _status_5, _id_3);
+                EventCallBack.LOGGER.info("Apply create notification to model");
+              }
             }
           }
         }
