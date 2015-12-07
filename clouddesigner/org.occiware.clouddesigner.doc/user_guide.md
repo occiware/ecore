@@ -9,7 +9,7 @@ Unzip the bundle, then launch the eclipse application.
 
 You can type « ./workspace » to locate the workspace under the CloudDesigner installation directory.
 
-# The OCCI Extension Designer
+# Create a new OCCI Extension
 
 This tool allow to create new OCCI extensions, which can be used to define configurations and to generate tooling. To create a new extension, follow the steps below :
 
@@ -26,6 +26,8 @@ This tool allow to create new OCCI extensions, which can be used to define confi
 ![altText](images/user/CreateExtProject.png "Create Extension Project") 
 
 *   Select the extensions you wish to extend (you will be able to change that later) and click « Finish »
+
+# The OCCI Extension Designer
 
 *   Once the diagram is opened you can create elements. For instance to attach a kind to its parent you can use the parent edge tool or set the parent in the property view, in the Semantic tab.
 
@@ -56,3 +58,13 @@ If the new extension has been registered using the « Register Extension » ac
 Finally, you can create the configuration.
 
 ![altText](images/user/Config.png "Configuration")
+
+# Using the generators
+
+The .occie extension model can be used as source of several generators: Textile, Alloy, Erocci. To generate one of those artefacts right-click on the .occie file and choose a generator from the CloudDesigner menu:
+
+![altText](images/user/Generators.png "Generators")
+
+![altText](images/user/GenResult.png "Generation result")
+
+A CURL script can be generated from the same menu with .occic (Configurations) files.
