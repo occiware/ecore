@@ -67,6 +67,7 @@ import org.occiware.clouddesigner.occi.docker.connector.StatsCallback;
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerMachineManager;
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerConfig;
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerUtil;
+import org.occiware.clouddesigner.occi.docker.preference.preferences.PreferenceValues;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -80,6 +81,8 @@ public class DockerContainerManager {
   
   private static Logger LOGGER = LoggerFactory.getLogger(DockerContainerManager.class);
   
+  private PreferenceValues properties = new PreferenceValues();
+  
   private StatsCallback stats = null;
   
   private Boolean setStats = Boolean.valueOf(false);
@@ -89,18 +92,18 @@ public class DockerContainerManager {
   
   public DockerContainerManager(final Machine machine) {
     String _name = machine.getName();
-    DockerClient _setConfig = this.setConfig(_name);
+    DockerClient _setConfig = this.setConfig(_name, this.properties);
     DockerContainerManager.dockerClient = _setConfig;
   }
   
   public DockerContainerManager(final String machineName) {
-    DockerClient _setConfig = this.setConfig(machineName);
+    DockerClient _setConfig = this.setConfig(machineName, this.properties);
     DockerContainerManager.dockerClient = _setConfig;
   }
   
   public DockerContainerManager(final Machine machine, final EventCallBack event, final StatsCallback stats) {
     String _name = machine.getName();
-    DockerClient _setConfig = this.setConfig(_name);
+    DockerClient _setConfig = this.setConfig(_name, this.properties);
     DockerContainerManager.dockerClient = _setConfig;
     EventsCmd _eventsCmd = DockerContainerManager.dockerClient.eventsCmd();
     _eventsCmd.<EventCallBack>exec(event);
@@ -111,7 +114,7 @@ public class DockerContainerManager {
     boolean _equals = Objects.equal(DockerContainerManager.dockerClient, null);
     if (_equals) {
       String _name = machine.getName();
-      DockerClient _setConfig = this.setConfig(_name);
+      DockerClient _setConfig = this.setConfig(_name, this.properties);
       DockerContainerManager.dockerClient = _setConfig;
     } else {
       String _name_1 = machine.getName();
@@ -119,7 +122,7 @@ public class DockerContainerManager {
       boolean _not = (!_equalsIgnoreCase);
       if (_not) {
         String _name_2 = machine.getName();
-        DockerClient _setConfig_1 = this.setConfig(_name_2);
+        DockerClient _setConfig_1 = this.setConfig(_name_2, this.properties);
         DockerContainerManager.dockerClient = _setConfig_1;
       }
     }
@@ -139,7 +142,7 @@ public class DockerContainerManager {
     boolean _equals = Objects.equal(DockerContainerManager.dockerClient, null);
     if (_equals) {
       String _name = machine.getName();
-      DockerClient _setConfig = this.setConfig(_name);
+      DockerClient _setConfig = this.setConfig(_name, this.properties);
       DockerContainerManager.dockerClient = _setConfig;
     } else {
       String _name_1 = machine.getName();
@@ -147,7 +150,7 @@ public class DockerContainerManager {
       boolean _not = (!_equalsIgnoreCase);
       if (_not) {
         String _name_2 = machine.getName();
-        DockerClient _setConfig_1 = this.setConfig(_name_2);
+        DockerClient _setConfig_1 = this.setConfig(_name_2, this.properties);
         DockerContainerManager.dockerClient = _setConfig_1;
       }
     }
@@ -166,13 +169,13 @@ public class DockerContainerManager {
   public void removeContainer(final String machineName, final String containerId) {
     boolean _equals = Objects.equal(DockerContainerManager.dockerClient, null);
     if (_equals) {
-      DockerClient _setConfig = this.setConfig(machineName);
+      DockerClient _setConfig = this.setConfig(machineName, this.properties);
       DockerContainerManager.dockerClient = _setConfig;
     } else {
       boolean _equalsIgnoreCase = DockerContainerManager.currentMachine.equalsIgnoreCase(machineName);
       boolean _not = (!_equalsIgnoreCase);
       if (_not) {
-        DockerClient _setConfig_1 = this.setConfig(machineName);
+        DockerClient _setConfig_1 = this.setConfig(machineName, this.properties);
         DockerContainerManager.dockerClient = _setConfig_1;
       }
     }
@@ -544,7 +547,7 @@ public class DockerContainerManager {
     boolean _equals = Objects.equal(DockerContainerManager.dockerClient, null);
     if (_equals) {
       String _name = machine.getName();
-      DockerClient _setConfig = this.setConfig(_name);
+      DockerClient _setConfig = this.setConfig(_name, this.properties);
       DockerContainerManager.dockerClient = _setConfig;
     } else {
       String _name_1 = machine.getName();
@@ -552,7 +555,7 @@ public class DockerContainerManager {
       boolean _not = (!_equalsIgnoreCase);
       if (_not) {
         String _name_2 = machine.getName();
-        DockerClient _setConfig_1 = this.setConfig(_name_2);
+        DockerClient _setConfig_1 = this.setConfig(_name_2, this.properties);
         DockerContainerManager.dockerClient = _setConfig_1;
       }
     }
@@ -573,7 +576,7 @@ public class DockerContainerManager {
         boolean _not = (!_equalsIgnoreCase);
         if (_not) {
           String _name_1 = machine.getName();
-          DockerClient _setConfig = this.setConfig(_name_1);
+          DockerClient _setConfig = this.setConfig(_name_1, this.properties);
           DockerContainerManager.dockerClient = _setConfig;
         }
       }
@@ -594,7 +597,7 @@ public class DockerContainerManager {
       boolean _equals = Objects.equal(DockerContainerManager.dockerClient, null);
       if (_equals) {
         String _name = machine.getName();
-        DockerClient _setConfig = this.setConfig(_name);
+        DockerClient _setConfig = this.setConfig(_name, this.properties);
         DockerContainerManager.dockerClient = _setConfig;
       } else {
         String _name_1 = machine.getName();
@@ -602,7 +605,7 @@ public class DockerContainerManager {
         boolean _not = (!_equalsIgnoreCase);
         if (_not) {
           String _name_2 = machine.getName();
-          DockerClient _setConfig_1 = this.setConfig(_name_2);
+          DockerClient _setConfig_1 = this.setConfig(_name_2, this.properties);
           DockerContainerManager.dockerClient = _setConfig_1;
         }
       }
@@ -618,7 +621,7 @@ public class DockerContainerManager {
       boolean _equals = Objects.equal(DockerContainerManager.dockerClient, null);
       if (_equals) {
         String _name = machine.getName();
-        DockerClient _setConfig = this.setConfig(_name);
+        DockerClient _setConfig = this.setConfig(_name, this.properties);
         DockerContainerManager.dockerClient = _setConfig;
       } else {
         String _name_1 = machine.getName();
@@ -626,7 +629,7 @@ public class DockerContainerManager {
         boolean _not = (!_equalsIgnoreCase);
         if (_not) {
           String _name_2 = machine.getName();
-          DockerClient _setConfig_1 = this.setConfig(_name_2);
+          DockerClient _setConfig_1 = this.setConfig(_name_2, this.properties);
           DockerContainerManager.dockerClient = _setConfig_1;
         }
       }
@@ -643,7 +646,7 @@ public class DockerContainerManager {
       boolean _equals = Objects.equal(DockerContainerManager.dockerClient, null);
       if (_equals) {
         String _name = machine.getName();
-        DockerClient _setConfig = this.setConfig(_name);
+        DockerClient _setConfig = this.setConfig(_name, this.properties);
         DockerContainerManager.dockerClient = _setConfig;
       } else {
         String _name_1 = machine.getName();
@@ -651,7 +654,7 @@ public class DockerContainerManager {
         boolean _not = (!_equalsIgnoreCase);
         if (_not) {
           String _name_2 = machine.getName();
-          DockerClient _setConfig_1 = this.setConfig(_name_2);
+          DockerClient _setConfig_1 = this.setConfig(_name_2, this.properties);
           DockerContainerManager.dockerClient = _setConfig_1;
         }
       }
@@ -667,7 +670,7 @@ public class DockerContainerManager {
       boolean _equals = Objects.equal(DockerContainerManager.dockerClient, null);
       if (_equals) {
         String _name = machine.getName();
-        DockerClient _setConfig = this.setConfig(_name);
+        DockerClient _setConfig = this.setConfig(_name, this.properties);
         DockerContainerManager.dockerClient = _setConfig;
       } else {
         String _name_1 = machine.getName();
@@ -675,7 +678,7 @@ public class DockerContainerManager {
         boolean _not = (!_equalsIgnoreCase);
         if (_not) {
           String _name_2 = machine.getName();
-          DockerClient _setConfig_1 = this.setConfig(_name_2);
+          DockerClient _setConfig_1 = this.setConfig(_name_2, this.properties);
           DockerContainerManager.dockerClient = _setConfig_1;
         }
       }
@@ -691,13 +694,13 @@ public class DockerContainerManager {
   public List<com.github.dockerjava.api.model.Container> listContainer(final String machineName) {
     boolean _equals = Objects.equal(DockerContainerManager.dockerClient, null);
     if (_equals) {
-      DockerClient _setConfig = this.setConfig(machineName);
+      DockerClient _setConfig = this.setConfig(machineName, this.properties);
       DockerContainerManager.dockerClient = _setConfig;
     } else {
       boolean _equalsIgnoreCase = DockerContainerManager.currentMachine.equalsIgnoreCase(machineName);
       boolean _not = (!_equalsIgnoreCase);
       if (_not) {
-        DockerClient _setConfig_1 = this.setConfig(machineName);
+        DockerClient _setConfig_1 = this.setConfig(machineName, this.properties);
         DockerContainerManager.dockerClient = _setConfig_1;
       }
     }
@@ -711,7 +714,7 @@ public class DockerContainerManager {
     boolean _equals = Objects.equal(DockerContainerManager.dockerClient, null);
     if (_equals) {
       String _name = machine.getName();
-      DockerClient _setConfig = this.setConfig(_name);
+      DockerClient _setConfig = this.setConfig(_name, this.properties);
       DockerContainerManager.dockerClient = _setConfig;
     } else {
       String _name_1 = machine.getName();
@@ -719,7 +722,7 @@ public class DockerContainerManager {
       boolean _not = (!_equalsIgnoreCase);
       if (_not) {
         String _name_2 = machine.getName();
-        DockerClient _setConfig_1 = this.setConfig(_name_2);
+        DockerClient _setConfig_1 = this.setConfig(_name_2, this.properties);
         DockerContainerManager.dockerClient = _setConfig_1;
       }
     }
@@ -783,7 +786,7 @@ public class DockerContainerManager {
     }
   }
   
-  public DockerClient setConfig(final String machine) {
+  public DockerClient setConfig(final String machine, final PreferenceValues properties) {
     try {
       final DockerConfig lconfig = new DockerConfig();
       final Properties dockerClientconfig = lconfig.loadConfig();
@@ -820,15 +823,12 @@ public class DockerContainerManager {
       String _string_2 = _get.toString();
       DockerClientConfig.DockerClientConfigBuilder _withVersion = _createDefaultConfigBuilder.withVersion(_string_2);
       DockerClientConfig.DockerClientConfigBuilder _withUri = _withVersion.withUri(dockerUri);
-      Object _get_1 = dockerClientconfig.get("docker.username");
-      String _string_3 = _get_1.toString();
-      DockerClientConfig.DockerClientConfigBuilder _withUsername = _withUri.withUsername(_string_3);
-      Object _get_2 = dockerClientconfig.get("docker.password");
-      String _string_4 = _get_2.toString();
-      DockerClientConfig.DockerClientConfigBuilder _withPassword = _withUsername.withPassword(_string_4);
-      Object _get_3 = dockerClientconfig.get("docker.email");
-      String _string_5 = _get_3.toString();
-      DockerClientConfig.DockerClientConfigBuilder _withEmail = _withPassword.withEmail(_string_5);
+      String _username = properties.getUsername();
+      DockerClientConfig.DockerClientConfigBuilder _withUsername = _withUri.withUsername(_username);
+      String _password = properties.getPassword();
+      DockerClientConfig.DockerClientConfigBuilder _withPassword = _withUsername.withPassword(_password);
+      String _email = properties.getEmail();
+      DockerClientConfig.DockerClientConfigBuilder _withEmail = _withPassword.withEmail(_email);
       DockerClientConfig.DockerClientConfigBuilder _withServerAddress = _withEmail.withServerAddress("https://index.docker.io/v1/");
       DockerClientConfig.DockerClientConfigBuilder _withDockerCertPath = _withServerAddress.withDockerCertPath(certPath);
       final DockerClientConfig config = _withDockerCertPath.build();
