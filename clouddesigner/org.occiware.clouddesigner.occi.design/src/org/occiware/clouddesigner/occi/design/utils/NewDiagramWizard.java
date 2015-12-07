@@ -13,6 +13,7 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -151,14 +152,15 @@ public class NewDiagramWizard extends Wizard implements INewWizard {
 
 						IProject project = modelFile.getProject();
 						if (!project.hasNature("org.eclipse.sirius.nature.modelingproject")) {
-							ModelingProjectManager.INSTANCE.convertToModelingProject(project, progressMonitor);
+							ModelingProjectManager.INSTANCE.convertToModelingProject(project,
+									new NullProgressMonitor());
 						}
 						final Session session = ModelingProject.asModelingProject(project).get().getSession();
 						session.getTransactionalEditingDomain().getCommandStack()
 								.execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
 							@Override
 							protected void doExecute() {
-								session.addSemanticResource(resource.getURI(), progressMonitor);
+								session.addSemanticResource(resource.getURI(), new NullProgressMonitor());
 							}
 						});
 
