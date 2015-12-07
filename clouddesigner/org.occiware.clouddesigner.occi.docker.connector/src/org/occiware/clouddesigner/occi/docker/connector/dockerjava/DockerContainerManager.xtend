@@ -46,12 +46,13 @@ import org.apache.commons.lang.StringUtils
 import org.occiware.clouddesigner.occi.docker.Container
 import org.occiware.clouddesigner.occi.docker.Machine
 import org.occiware.clouddesigner.occi.docker.connector.EventCallBack
+import org.occiware.clouddesigner.occi.docker.connector.StatsCallback
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerMachineManager
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerConfig
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerUtil
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import org.occiware.clouddesigner.occi.docker.connector.StatsCallback
+import org.occiware.clouddesigner.occi.docker.preference.preferences.PreferenceValues
 
 class DockerContainerManager {
 	private static DockerClient dockerClient = null
@@ -63,6 +64,9 @@ class DockerContainerManager {
 	// Initialize logger for DockerContainerManager.
 	private static Logger LOGGER = LoggerFactory.getLogger(typeof(DockerContainerManager))
 	
+	private PreferenceValues properties = new PreferenceValues
+	
+	
 	private StatsCallback stats = null
 	
 	private Boolean setStats = false
@@ -71,15 +75,15 @@ class DockerContainerManager {
 	}
 
 	new(Machine machine) {
-		dockerClient = setConfig(machine.name)		
+		dockerClient = setConfig(machine.name, properties)		
 	}
 
 	new(String machineName) {
-		dockerClient = setConfig(machineName)		
+		dockerClient = setConfig(machineName, properties)		
 	}
 	
 	new(Machine machine, EventCallBack event, StatsCallback stats) {
-		dockerClient = setConfig(machine.name)
+		dockerClient = setConfig(machine.name, properties)
 
 		// listened to Events
 		dockerClient.eventsCmd().exec(event)
@@ -94,9 +98,9 @@ class DockerContainerManager {
 
 		// Set dockerClient
 		if (dockerClient == null) {
-			dockerClient = setConfig(machine.name)
+			dockerClient = setConfig(machine.name, properties)
 		} else if (!currentMachine.equalsIgnoreCase(machine.name)) {
-			dockerClient = setConfig(machine.name)
+			dockerClient = setConfig(machine.name, properties)
 		}
 				
 		var Map<DockerClient, CreateContainerResponse> result = new LinkedHashMap<DockerClient, CreateContainerResponse>
@@ -117,9 +121,9 @@ class DockerContainerManager {
 
 		// Set dockerClient
 		if (dockerClient == null) {
-			dockerClient = setConfig(machine.name)
+			dockerClient = setConfig(machine.name, properties)
 		} else if (!currentMachine.equalsIgnoreCase(machine.name)) {
-			dockerClient = setConfig(machine.name)
+			dockerClient = setConfig(machine.name, properties)
 		}
 		var Map<DockerClient, CreateContainerResponse> result = new LinkedHashMap<DockerClient, CreateContainerResponse>
 		val create = containerFactory(container, dockerClient, containerDependency)
@@ -140,9 +144,9 @@ class DockerContainerManager {
 
 		// Set dockerClient
 		if (dockerClient == null) {
-			dockerClient = setConfig(machineName)
+			dockerClient = setConfig(machineName, properties)
 		} else if (!currentMachine.equalsIgnoreCase(machineName)) {
-			dockerClient = setConfig(machineName)
+			dockerClient = setConfig(machineName, properties)
 		}
 
 		dockerClient.removeContainerCmd(containerId).exec
@@ -358,9 +362,9 @@ class DockerContainerManager {
 
 		// Set dockerClient
 		if (dockerClient == null) {
-			dockerClient = setConfig(machine.name)
+			dockerClient = setConfig(machine.name, properties)
 		} else if (!currentMachine.equalsIgnoreCase(machine.name)) {
-			dockerClient = setConfig(machine.name)
+			dockerClient = setConfig(machine.name, properties)
 		}
 		val InspectContainerResponse inspectContainerResponse = dockerClient.inspectContainerCmd(containerId).exec()
 		return inspectContainerResponse
@@ -373,13 +377,13 @@ class DockerContainerManager {
 		if (dockerClient != null) {
 			dockerClient = DockerContainerManager.dockerClient
 		} else if (!currentMachine.equalsIgnoreCase(machine.name)) {
-			dockerClient = setConfig(machine.name)
+			dockerClient = setConfig(machine.name, properties)
 		}
 		// listened to Events
 		dockerClient.statsCmd().exec(this.stats)
 		if(!setStats){
 //			dockerClient.statsCmd(container.containerid).exec(stats)
-			
+		
 		}
 	}
 
@@ -387,21 +391,22 @@ class DockerContainerManager {
 
 		// Set dockerClient
 		if (dockerClient == null) {
-			dockerClient = setConfig(machine.name)
+			dockerClient = setConfig(machine.name, properties)
 		}else if (!currentMachine.equalsIgnoreCase(machine.name)) {
-			dockerClient = setConfig(machine.name)
+			dockerClient = setConfig(machine.name, properties)
 		}
 		//Listened to Events
 		dockerClient.startContainerCmd(containerId).exec
+		
 	}
 
 	def stopContainer(Machine machine, Container container) {
 
 		// Set dockerClient
 		if (dockerClient == null) {
-			dockerClient = setConfig(machine.name)
+			dockerClient = setConfig(machine.name, properties)
 		} else if (!currentMachine.equalsIgnoreCase(machine.name)) {
-			dockerClient = setConfig(machine.name)
+			dockerClient = setConfig(machine.name, properties)
 		}
 		// Stop the container
 		dockerClient.stopContainerCmd(container.id).exec
@@ -411,9 +416,9 @@ class DockerContainerManager {
 
 		// Set dockerClient
 		if (dockerClient == null) {
-			dockerClient = setConfig(machine.name)
+			dockerClient = setConfig(machine.name, properties)
 		} else if (!currentMachine.equalsIgnoreCase(machine.name)) {
-			dockerClient = setConfig(machine.name)
+			dockerClient = setConfig(machine.name, properties)
 		}
 //		//Listened to events 
 		dockerClient.stopContainerCmd(containerId).exec
@@ -423,9 +428,9 @@ class DockerContainerManager {
 
 		// Set dockerClient
 		if (dockerClient == null) {
-			dockerClient = setConfig(machine.name)
+			dockerClient = setConfig(machine.name, properties)
 		} else if (!currentMachine.equalsIgnoreCase(machine.name)) {
-			dockerClient = setConfig(machine.name)
+			dockerClient = setConfig(machine.name, properties)
 		}
 		dockerClient.waitContainerCmd(container.id).exec(new WaitContainerResultCallback()).awaitStatusCode()
 	}
@@ -434,9 +439,9 @@ class DockerContainerManager {
 
 		// Set dockerClient
 		if (dockerClient == null) {
-			dockerClient = setConfig(machineName)
+			dockerClient = setConfig(machineName, properties)
 		} else if (!currentMachine.equalsIgnoreCase(machineName)) {
-			dockerClient = setConfig(machineName)
+			dockerClient = setConfig(machineName, properties)
 		}
 		val List<com.github.dockerjava.api.model.Container> containers = dockerClient.listContainersCmd().
 			withShowAll(true).exec()
@@ -447,9 +452,9 @@ class DockerContainerManager {
 
 		// Set dockerClient
 		if (dockerClient == null) {
-			dockerClient = setConfig(machine.name)
+			dockerClient = setConfig(machine.name, properties)
 		} else if (!currentMachine.equalsIgnoreCase(machine.name)) {
-			dockerClient = setConfig(machine.name)
+			dockerClient = setConfig(machine.name, properties)
 		}
 		var containerImage = image
 		if (!StringUtils.isNotBlank(containerImage)) {
@@ -495,7 +500,7 @@ class DockerContainerManager {
 		}
 	}
 
-	def DockerClient setConfig(String machine) {
+	def DockerClient setConfig(String machine, PreferenceValues properties) {
 		val lconfig = new DockerConfig
 		val dockerClientconfig = lconfig.loadConfig
 		LOGGER.info("Connection inside docker-machine ---> " + machine)
@@ -513,10 +518,7 @@ class DockerContainerManager {
 		val dockerUri = uri.toString + port
 		LOGGER.info("Connection inside machine: " + machine + " with uri: " + dockerUri.toString)
 		val DockerClientConfig config = DockerClientConfig.createDefaultConfigBuilder.withVersion(
-			dockerClientconfig.get("docker.version").toString).withUri(dockerUri).withUsername(
-			dockerClientconfig.get("docker.username").toString).withPassword(
-			dockerClientconfig.get("docker.password").toString).withEmail(
-			dockerClientconfig.get("docker.email").toString).withServerAddress("https://index.docker.io/v1/").
+			dockerClientconfig.get("docker.version").toString).withUri(dockerUri).withUsername(properties.username).withPassword(properties.password).withEmail(properties.email).withServerAddress("https://index.docker.io/v1/").
 			withDockerCertPath(certPath).build()
 		val DockerClient dockerClient = DockerClientBuilder.getInstance(config).build()
 
