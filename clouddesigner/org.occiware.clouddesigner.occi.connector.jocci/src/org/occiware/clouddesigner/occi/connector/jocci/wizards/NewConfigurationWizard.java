@@ -58,6 +58,7 @@ public class NewConfigurationWizard extends NewDiagramWizard {
 			Shell shell = Display.getCurrent().getActiveShell();
 			Status status = new Status(IStatus.ERROR, Activator.PLUGIN_ID, 0, null, throwable);
 			ErrorDialog.openError(shell, null, throwable.getMessage(), status);
+			throwable.printStackTrace(System.err);
 			return;
 		}
 	}
