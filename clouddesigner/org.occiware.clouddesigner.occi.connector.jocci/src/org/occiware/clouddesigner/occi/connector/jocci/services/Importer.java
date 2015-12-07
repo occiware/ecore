@@ -72,10 +72,9 @@ public class Importer
     		// Compute entity's uri related to the OCCI server.
     		String uriAsString = uri.toString();
     		if(jocciClient.getEndpoint().getHost().equals(uri.getHost())) {
-//    		if(uriAsString.startsWith(jocciClientUri)) {
     			uriAsString = uri.getPath();
     		}
-    		System.out.println(jocciClientUri + "   " + uriAsString);
+//    		System.out.println(jocciClientUri + "   " + uriAsString);
     		entities2uri.put(entity, uriAsString);
     	}
 
