@@ -20,6 +20,7 @@ import com.github.dockerjava.api.command.ListContainersCmd;
 import com.github.dockerjava.api.command.PullImageCmd;
 import com.github.dockerjava.api.command.RemoveContainerCmd;
 import com.github.dockerjava.api.command.StartContainerCmd;
+import com.github.dockerjava.api.command.StatsCmd;
 import com.github.dockerjava.api.command.StopContainerCmd;
 import com.github.dockerjava.api.command.WaitContainerCmd;
 import com.github.dockerjava.api.model.ExposedPort;
@@ -62,6 +63,7 @@ import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.occiware.clouddesigner.occi.docker.Container;
 import org.occiware.clouddesigner.occi.docker.Machine;
 import org.occiware.clouddesigner.occi.docker.connector.EventCallBack;
+import org.occiware.clouddesigner.occi.docker.connector.StatsCallback;
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerMachineManager;
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerConfig;
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerUtil;
@@ -78,6 +80,10 @@ public class DockerContainerManager {
   
   private static Logger LOGGER = LoggerFactory.getLogger(DockerContainerManager.class);
   
+  private StatsCallback stats = null;
+  
+  private Boolean setStats = Boolean.valueOf(false);
+  
   public DockerContainerManager() {
   }
   
@@ -92,12 +98,13 @@ public class DockerContainerManager {
     DockerContainerManager.dockerClient = _setConfig;
   }
   
-  public DockerContainerManager(final Machine machine, final EventCallBack event) {
+  public DockerContainerManager(final Machine machine, final EventCallBack event, final StatsCallback stats) {
     String _name = machine.getName();
     DockerClient _setConfig = this.setConfig(_name);
     DockerContainerManager.dockerClient = _setConfig;
     EventsCmd _eventsCmd = DockerContainerManager.dockerClient.eventsCmd();
     _eventsCmd.<EventCallBack>exec(event);
+    this.stats = stats;
   }
   
   public Map<DockerClient, CreateContainerResponse> createContainer(final Machine machine, final Container container) {
@@ -554,24 +561,31 @@ public class DockerContainerManager {
     return inspectContainerResponse;
   }
   
-  public DockerClient startContainer(final Machine machine, final Container container) {
-    DockerClient _xifexpression = null;
-    boolean _notEquals = (!Objects.equal(DockerContainerManager.dockerClient, null));
-    if (_notEquals) {
-      _xifexpression = DockerContainerManager.dockerClient = DockerContainerManager.dockerClient;
-    } else {
-      DockerClient _xifexpression_1 = null;
-      String _name = machine.getName();
-      boolean _equalsIgnoreCase = DockerContainerManager.currentMachine.equalsIgnoreCase(_name);
-      boolean _not = (!_equalsIgnoreCase);
-      if (_not) {
-        String _name_1 = machine.getName();
-        DockerClient _setConfig = this.setConfig(_name_1);
-        _xifexpression_1 = DockerContainerManager.dockerClient = _setConfig;
+  public Object startContainer(final Machine machine, final Container container) {
+    Object _xblockexpression = null;
+    {
+      boolean _notEquals = (!Objects.equal(DockerContainerManager.dockerClient, null));
+      if (_notEquals) {
+        DockerContainerManager.dockerClient = DockerContainerManager.dockerClient;
+      } else {
+        String _name = machine.getName();
+        boolean _equalsIgnoreCase = DockerContainerManager.currentMachine.equalsIgnoreCase(_name);
+        boolean _not = (!_equalsIgnoreCase);
+        if (_not) {
+          String _name_1 = machine.getName();
+          DockerClient _setConfig = this.setConfig(_name_1);
+          DockerContainerManager.dockerClient = _setConfig;
+        }
       }
-      _xifexpression = _xifexpression_1;
+      StatsCmd _statsCmd = DockerContainerManager.dockerClient.statsCmd();
+      _statsCmd.<StatsCallback>exec(this.stats);
+      Object _xifexpression = null;
+      if ((!(this.setStats).booleanValue())) {
+        _xifexpression = null;
+      }
+      _xblockexpression = _xifexpression;
     }
-    return _xifexpression;
+    return _xblockexpression;
   }
   
   public Void startContainer(final Machine machine, final String containerId) {
