@@ -37,23 +37,23 @@ public class Importer
 		cz.cesnet.cloud.occi.api.Client jocciClient = new cz.cesnet.cloud.occi.api.http.HTTPClient(java.net.URI.create(serverURL));
 		// Connect to the OCCI server.
 		jocciClient.connect();
-
-		// Update the jOCCI model when erocci used.
-		updateModelForErocci(jocciClient.getModel());
-
+		// Return the jOCCI client.
 		return jocciClient;
 	}
 
 	public static void importFromOcciServer(org.occiware.clouddesigner.occi.Configuration configuration, String serverUrl)
 			throws cz.cesnet.cloud.occi.api.exception.CommunicationException
 	{
-		importFromOcciServer(configuration, newJocciClient(serverUrl));
+		cz.cesnet.cloud.occi.api.Client jocciClient = newJocciClient(serverUrl);
+		// Update the jOCCI model when erocci used.
+		updateModelForErocci(jocciClient.getModel());
+		// Import entities from the OCCI server.
+		importFromOcciServer(configuration, jocciClient);
 	}
 
 	public static void importFromOcciServer(org.occiware.clouddesigner.occi.Configuration configuration, cz.cesnet.cloud.occi.api.Client jocciClient)
 					throws cz.cesnet.cloud.occi.api.exception.CommunicationException
 	{
-
     	// Get the list of entities' uris.
     	List<java.net.URI> uris = jocciClient.list();
 
@@ -62,12 +62,21 @@ public class Importer
     	// Map associating each entity and its uri.
     	Map<cz.cesnet.cloud.occi.core.Entity, String> entities2uri = new HashMap<cz.cesnet.cloud.occi.core.Entity, String>();
 
-    	// Get all OCCI server's entities.
+		String jocciClientUri = jocciClient.getEndpoint().toString();
+
+		// Get all OCCI server's entities.
     	for(java.net.URI uri : uris) {
     		// Get the OCCI entities
     		cz.cesnet.cloud.occi.core.Entity entity = jocciClient.describe(uri).get(0);
     		entities.add(entity);
-    		entities2uri.put(entity, uri.toString());
+    		// Compute entity's uri related to the OCCI server.
+    		String uriAsString = uri.toString();
+    		if(jocciClient.getEndpoint().getHost().equals(uri.getHost())) {
+//    		if(uriAsString.startsWith(jocciClientUri)) {
+    			uriAsString = uri.getPath();
+    		}
+    		System.out.println(jocciClientUri + "   " + uriAsString);
+    		entities2uri.put(entity, uriAsString);
     	}
 
 		// Obtain the factory to create OCCI objects.
@@ -98,6 +107,24 @@ public class Importer
 				org.occiware.clouddesigner.occi.Resource targetResource = targetResources.get(entities2uri.get(sourceResource));
 				// Copy the source resource to the target resource.
 				copyEntity(configuration, sourceResource, targetResource);
+				// Copy all resource's links.
+				for(cz.cesnet.cloud.occi.core.Link sourceLink : sourceResource.getLinks()) {
+					// Create the target link.
+					org.occiware.clouddesigner.occi.Link targetLink = factory.createLink();
+					// Add this link to the target resource.
+					targetLink.setSource(targetResource);
+					// Copy the source link to the target link.
+					copyEntity(configuration, sourceLink, targetLink);
+					// Set the target's link target.
+					String sourceLinkTarget = sourceLink.getTarget();
+					org.occiware.clouddesigner.occi.Resource linkTargetResource = targetResources.get(sourceLinkTarget);
+					if(linkTargetResource != null) {
+						targetLink.setTarget(linkTargetResource);
+					} else {
+						// TODO: Use Eclipse error report.
+						System.err.println("Resource " + sourceLinkTarget + " unknown!");
+					}
+				}
 			} else if (entity instanceof cz.cesnet.cloud.occi.core.Link) {
 				// Get the source link.
 				cz.cesnet.cloud.occi.core.Link sourceLink = (cz.cesnet.cloud.occi.core.Link)entity;
