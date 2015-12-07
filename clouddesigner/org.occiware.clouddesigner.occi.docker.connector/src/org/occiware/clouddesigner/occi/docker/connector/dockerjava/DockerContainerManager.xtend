@@ -51,6 +51,7 @@ import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.Docke
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerUtil
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import org.occiware.clouddesigner.occi.docker.connector.StatsCallback
 
 class DockerContainerManager {
 	private static DockerClient dockerClient = null
@@ -61,6 +62,10 @@ class DockerContainerManager {
 
 	// Initialize logger for DockerContainerManager.
 	private static Logger LOGGER = LoggerFactory.getLogger(typeof(DockerContainerManager))
+	
+	private StatsCallback stats = null
+	
+	private Boolean setStats = false
 
 	new() {
 	}
@@ -73,14 +78,15 @@ class DockerContainerManager {
 		dockerClient = setConfig(machineName)		
 	}
 	
-	new(Machine machine, EventCallBack event) {
+	new(Machine machine, EventCallBack event, StatsCallback stats) {
 		dockerClient = setConfig(machine.name)
 
 		// listened to Events
-		dockerClient.eventsCmd().exec(event); 
-
+		dockerClient.eventsCmd().exec(event)
+		
+		this.stats = stats
 		// listened to stats
-		//dockerClient.statsCmd().exec(statsCallback) 
+		//dockerClient.statsCmd().exec(stats) 
 
 	}
 
@@ -369,9 +375,12 @@ class DockerContainerManager {
 		} else if (!currentMachine.equalsIgnoreCase(machine.name)) {
 			dockerClient = setConfig(machine.name)
 		}
-//		// listened to Events
-//		dockerClient.eventsCmd().withFilters(new EventFilters().withEvent("start")).exec(new DockerEventCallback(machine)); 
-//		dockerClient.startContainerCmd(container.id).exec
+		// listened to Events
+		dockerClient.statsCmd().exec(this.stats)
+		if(!setStats){
+//			dockerClient.statsCmd(container.containerid).exec(stats)
+			
+		}
 	}
 
 	def startContainer(Machine machine, String containerId) {
@@ -382,8 +391,7 @@ class DockerContainerManager {
 		}else if (!currentMachine.equalsIgnoreCase(machine.name)) {
 			dockerClient = setConfig(machine.name)
 		}
-//		//Listened to Events
-//		dockerClient.eventsCmd().withFilters(new EventFilters().withEvent("start")).exec(new DockerEventCallback(machine));
+		//Listened to Events
 		dockerClient.startContainerCmd(containerId).exec
 	}
 
@@ -395,8 +403,7 @@ class DockerContainerManager {
 		} else if (!currentMachine.equalsIgnoreCase(machine.name)) {
 			dockerClient = setConfig(machine.name)
 		}
-//		// Listened to events
-//		dockerClient.eventsCmd().withFilters(new EventFilters().withEvent("stop")).exec(new DockerEventCallback(machine));
+		// Stop the container
 		dockerClient.stopContainerCmd(container.id).exec
 	}
 
@@ -409,7 +416,6 @@ class DockerContainerManager {
 			dockerClient = setConfig(machine.name)
 		}
 //		//Listened to events 
-//		dockerClient.eventsCmd().withFilters(new EventFilters().withEvent("stop")).exec(new DockerEventCallback(machine));
 		dockerClient.stopContainerCmd(containerId).exec
 	}
 

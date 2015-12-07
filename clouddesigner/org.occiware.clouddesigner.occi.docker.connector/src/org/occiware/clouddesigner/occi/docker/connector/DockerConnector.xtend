@@ -14,6 +14,8 @@ package org.occiware.clouddesigner.occi.docker.connector
 import com.github.dockerjava.api.DockerClient
 import com.github.dockerjava.api.command.CreateContainerResponse
 import com.github.dockerjava.api.model.Event
+import com.github.dockerjava.api.model.Statistics
+import com.github.dockerjava.core.async.ResultCallbackTemplate
 import com.github.dockerjava.core.command.EventsResultCallback
 import com.google.common.collect.ArrayListMultimap
 import com.google.common.collect.Multimap
@@ -81,9 +83,6 @@ import org.slf4j.LoggerFactory
 import static com.google.common.base.Preconditions.checkNotNull
 import static org.occiware.clouddesigner.occi.docker.connector.EventCallBack.*
 import static org.occiware.clouddesigner.occi.docker.connector.ExecutableContainer.*
-import com.github.dockerjava.api.model.Statistics
-import com.github.dockerjava.core.async.ResultCallbackTemplate
-import org.occiware.clouddesigner.occi.OCCIFactory
 
 /**
  * This class overrides the generated EMF factory of the Docker package.
@@ -529,7 +528,7 @@ class EventCallBack extends EventsResultCallback {
 				}
 				if (state.equalsIgnoreCase("create")) {
 					val instanceMH = new ModelHandler
-					var machine = getCurrentMachine(resource as ExecutableContainer)
+					var machine = (resource as ExecutableContainer).currentMachine
 					var org.occiware.clouddesigner.occi.docker.Container c = instanceMH.buildContainer(machine, containerId)
 					instanceMH.linkContainerToMachine(c, machine)
 					if(machine.eContainer instanceof Configuration){
@@ -575,25 +574,6 @@ class EventCallBack extends EventsResultCallback {
 
 			}
 		}
-	}
-
-	def getCurrentMachine(ExecutableContainer container) {
-		// get the current machine
-		for (EObject eo : container.eContainer.eContents) {
-			if (eo instanceof Machine) {
-				val machine = eo as Machine
-				for (Link l : machine.links) {
-					val contains = l as Contains
-					if (contains.target instanceof org.occiware.clouddesigner.occi.docker.Container) {
-						if ((l.target as ExecutableContainer).id == container.id) {
-							return machine
-						}
-					}
-
-				}
-			}
-		}
-		return null
 	}
 
 	def listContainers(Machine machine) {
@@ -657,7 +637,7 @@ class ExecutableContainer extends ContainerImpl {
 	var eventCallback = new EventCallBack(this)
 
 	// Listener of the stats
-	//var statsCallback = new StatsCallback(this)
+	var statsCallback = new StatsCallback(this)
 
 	/**
 	 * Docker containers have a state machine.
@@ -673,7 +653,7 @@ class ExecutableContainer extends ContainerImpl {
 			if (machine.state.toString.equalsIgnoreCase("active")) {
 				try {
 					if (dockerContainerManager == null) {
-						dockerContainerManager = new DockerContainerManager(machine, eventCallback)
+						dockerContainerManager = new DockerContainerManager(machine, eventCallback, statsCallback)
 					}
 					dockerContainerManager.startContainer(machine, this.compute.name)
 				} catch (Exception e) {
@@ -693,7 +673,7 @@ class ExecutableContainer extends ContainerImpl {
 				if (this.compute.state.toString.equalsIgnoreCase("active")) {
 					try {
 						if (dockerContainerManager == null) {
-							dockerContainerManager = new DockerContainerManager(machine, eventCallback)
+							dockerContainerManager = new DockerContainerManager(machine, eventCallback, statsCallback)
 						}
 						dockerContainerManager.stopContainer(machine, this.compute.name)
 					} catch (Exception e) {
@@ -742,7 +722,7 @@ class ExecutableContainer extends ContainerImpl {
 		// Set dockerClient
 		var Map<DockerClient, CreateContainerResponse> result = new HashMap<DockerClient, CreateContainerResponse>
 		if (dockerContainerManager == null) {
-			dockerContainerManager = new DockerContainerManager(machine, eventCallback)
+			dockerContainerManager = new DockerContainerManager(machine, eventCallback, statsCallback)
 		}
 
 		// Download image
@@ -754,7 +734,7 @@ class ExecutableContainer extends ContainerImpl {
 
 	def void createContainer(Machine machine) {
 		if (dockerContainerManager == null) {
-			dockerContainerManager = new DockerContainerManager(machine, eventCallback)
+			dockerContainerManager = new DockerContainerManager(machine, eventCallback, statsCallback)
 		}
 
 		// Download image
@@ -766,7 +746,7 @@ class ExecutableContainer extends ContainerImpl {
 
 	def void removeContainer(Machine machine) {
 		if (dockerContainerManager == null) {
-			dockerContainerManager = new DockerContainerManager(machine, eventCallback)
+			dockerContainerManager = new DockerContainerManager(machine, eventCallback, statsCallback)
 		}
 		dockerContainerManager.removeContainer(machine.name, this.name)
 	}
@@ -809,7 +789,7 @@ class ExecutableContainer extends ContainerImpl {
 				val machine = eo as Machine
 				for (Link l : machine.links) {
 					val contains = l as Contains
-					if (contains.target instanceof org.eclipse.emf.ecore.impl.MinimalEObjectImpl.Container) {
+					if (contains.target instanceof org.occiware.clouddesigner.occi.docker.Container) {
 						if ((l.target as ExecutableContainer).id == this.id) {
 
 							// Update the cache

@@ -71,7 +71,7 @@ public class EventCallBack extends EventsResultCallback {
           boolean _equalsIgnoreCase_2 = state.equalsIgnoreCase("create");
           if (_equalsIgnoreCase_2) {
             final ModelHandler instanceMH = new ModelHandler();
-            Machine machine = EventCallBack.this.getCurrentMachine(((ExecutableContainer) resource));
+            Machine machine = ((ExecutableContainer) resource).getCurrentMachine();
             Container c = instanceMH.buildContainer(machine, containerId);
             instanceMH.linkContainerToMachine(c, machine);
             EObject _eContainer = machine.eContainer();
@@ -153,33 +153,6 @@ public class EventCallBack extends EventsResultCallback {
         }
       }
     }
-  }
-  
-  public Machine getCurrentMachine(final ExecutableContainer container) {
-    EObject _eContainer = container.eContainer();
-    EList<EObject> _eContents = _eContainer.eContents();
-    for (final EObject eo : _eContents) {
-      if ((eo instanceof Machine)) {
-        final Machine machine = ((Machine) eo);
-        EList<Link> _links = machine.getLinks();
-        for (final Link l : _links) {
-          {
-            final Contains contains = ((Contains) l);
-            Resource _target = contains.getTarget();
-            if ((_target instanceof Container)) {
-              Resource _target_1 = l.getTarget();
-              String _id = ((ExecutableContainer) _target_1).getId();
-              String _id_1 = container.getId();
-              boolean _equals = Objects.equal(_id, _id_1);
-              if (_equals) {
-                return machine;
-              }
-            }
-          }
-        }
-      }
-    }
-    return null;
   }
   
   public ArrayList<ExecutableContainer> listContainers(final Machine machine) {

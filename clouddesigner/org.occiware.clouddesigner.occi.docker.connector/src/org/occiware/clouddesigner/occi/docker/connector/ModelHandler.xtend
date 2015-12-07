@@ -707,8 +707,19 @@ class ModelHandler {
 			modelContainer.id = c.id
 			modelContainer.name = currentContainer.name.replace("/", "")
 			modelContainer.image = currentContainer.imageId
-			modelContainer.command = c.command
-			modelContainer.containerid = c.id
+			modelContainer.command = Arrays.toString(currentContainer.config.cmd).replace("[", "").replace("]", "")
+			modelContainer.containerid = currentContainer.id
+			modelContainer.ports = Arrays.toString(currentContainer.config.exposedPorts).replace("[", "").replace("]", "")
+			modelContainer.mac_address = currentContainer.config.macAddress
+			modelContainer.domainname = currentContainer.config.domainName
+			modelContainer.hostname = currentContainer.config.hostName
+			modelContainer.working_dir = currentContainer.config.workingDir
+			modelContainer.entrypoint = Arrays.toString(currentContainer.config.entrypoint)
+			modelContainer.environment = Arrays.toString(currentContainer.config.env).replace("[", "").replace("]", "")
+			modelContainer.tty =  currentContainer.config.tty
+			modelContainer.stdin_open = currentContainer.config.stdinOpen
+			modelContainer.pid = currentContainer.processLabel
+			
 			if (currentContainer.state.running) {
 				modelContainer.state = ComputeStatus.get(0)
 			}
@@ -725,20 +736,22 @@ class ModelHandler {
 
 		// Retrieve the default factory singleton
 		var modelContainer = DockerFactory.eINSTANCE.createContainer
+		// Set the container data
 		modelContainer.id = currentContainer.id
 		modelContainer.name = currentContainer.name.replace("/", "")
-		LOGGER.info("Container Name:" + modelContainer.name)
 		modelContainer.image = currentContainer.imageId
 		modelContainer.command = Arrays.toString(currentContainer.config.cmd).replace("[", "").replace("]", "")
-		LOGGER.info("Container command:" + modelContainer.command)
 		modelContainer.containerid = currentContainer.id
-		modelContainer.ports = Arrays.toString(currentContainer.config.exposedPorts)
+		modelContainer.ports = Arrays.toString(currentContainer.config.exposedPorts).replace("[", "").replace("]", "")
 		modelContainer.mac_address = currentContainer.config.macAddress
 		modelContainer.domainname = currentContainer.config.domainName
 		modelContainer.hostname = currentContainer.config.hostName
 		modelContainer.working_dir = currentContainer.config.workingDir
 		modelContainer.entrypoint = Arrays.toString(currentContainer.config.entrypoint)
-		modelContainer.environment = Arrays.toString(currentContainer.config.env)
+		modelContainer.environment = Arrays.toString(currentContainer.config.env).replace("[", "").replace("]", "")
+		modelContainer.tty =  currentContainer.config.tty
+		modelContainer.stdin_open = currentContainer.config.stdinOpen
+		modelContainer.pid = currentContainer.processLabel
 		if (currentContainer.state.running) {
 			modelContainer.state = ComputeStatus.ACTIVE
 		} else {
