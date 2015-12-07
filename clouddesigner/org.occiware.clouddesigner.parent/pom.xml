@@ -50,6 +50,7 @@
 		<module>../org.occiware.clouddesigner.occi.docker.edit</module>
 		<module>../org.occiware.clouddesigner.occi.docker.connector</module>
 		<module>../org.occiware.clouddesigner.occi.docker.design</module>
+		<module>../org.occiware.clouddesigner.occi.docker.preference</module>
 
 		<!-- Docker generators -->
 		<module>../org.occiware.clouddesigner.occi.docker.gen.conf</module>
