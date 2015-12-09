@@ -1,3 +1,14 @@
+/*******************************************************************************
+ * Copyright (c) 2015 INRIA.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ * 	- Fawaz PARAISO 
+ *******************************************************************************/
+
 package org.occiware.clouddesigner.occi.docker.preference.preferences;
 
 import org.eclipse.jface.preference.*;
@@ -25,6 +36,8 @@ public class DockerPreference extends FieldEditorPreferencePage implements IWork
 	private StringFieldEditor username;
 	private StringFieldEditor password;
 	private StringFieldEditor email;
+	private StringFieldEditor version;
+	private StringFieldEditor url;
 
 	// Initialize logger for DockerPreference.
 	private static Logger LOGGER = LoggerFactory.getLogger(PreferenceValues.class);
@@ -41,30 +54,23 @@ public class DockerPreference extends FieldEditorPreferencePage implements IWork
 	 * editor knows how to save and restore itself.
 	 */
 	public void createFieldEditors() {
-		// addField(new DirectoryFieldEditor(PreferenceConstants.P_PATH,
-		// "&Directory preference:", getFieldEditorParent()));
-		// addField(
-		// new BooleanFieldEditor(
-		// PreferenceConstants.P_BOOLEAN,
-		// "&An example of a boolean preference",
-		// getFieldEditorParent()));
-		//
-		// addField(new RadioGroupFieldEditor(
-		// PreferenceConstants.P_CHOICE,
-		// "An example of a multiple-choice preference",
-		// 1,
-		// new String[][] { { "&Choice 1", "choice1" }, {
-		// "C&hoice 2", "choice2" }
-		// }, getFieldEditorParent()));
 
-		username = new StringFieldEditor(PreferenceConstants.P_STRING_USERNAME, "Docker &username:",
-				getFieldEditorParent());
+		username = new StringFieldEditor(PreferenceConstants.P_STRING_USERNAME, "Docker &username:" ,getFieldEditorParent());
 		addField(username);
-		password = new StringFieldEditor(PreferenceConstants.P_STRING_PASSWORD, "Docker &password:",
-				getFieldEditorParent());
+
+		password = new StringFieldEditor(PreferenceConstants.P_STRING_PASSWORD, "Docker &password:" ,getFieldEditorParent());
 		addField(password);
+
 		email = new StringFieldEditor(PreferenceConstants.P_STRING_EMAIL, "Docker &email:", getFieldEditorParent());
 		addField(email);
+		
+		version = new StringFieldEditor(PreferenceConstants.P_STRING_VERSION, "Docker &version:", getFieldEditorParent());
+		addField(version);
+
+		url = new StringFieldEditor(PreferenceConstants.P_STRING_URL, "Docker &url:", getFieldEditorParent());
+		addField(url);
+
+		LOGGER.info("All text fields where created");
 		
 		// add change listener to the preferences store so that we are notified
 //		Activator.getDefault().getPreferenceStore()

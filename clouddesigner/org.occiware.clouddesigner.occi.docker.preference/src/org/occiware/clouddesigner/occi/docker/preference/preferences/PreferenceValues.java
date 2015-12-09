@@ -1,3 +1,14 @@
+/*******************************************************************************
+ * Copyright (c) 2015 INRIA.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ * 	- Fawaz PARAISO 
+ *******************************************************************************/
+
 package org.occiware.clouddesigner.occi.docker.preference.preferences;
 
 import org.eclipse.core.commands.AbstractHandler;
@@ -23,6 +34,10 @@ public class PreferenceValues extends AbstractHandler{
 	private String password;
 	
 	private String email;
+	
+	private String version;	
+
+	private String url;
 
 	public PreferenceValues() {
 		String username = Activator.getDefault().getPreferenceStore().getString(PreferenceConstants.P_STRING_USERNAME);
@@ -48,6 +63,14 @@ public class PreferenceValues extends AbstractHandler{
             	setEmail(event.getNewValue().toString());
               }
 
+            if (event.getProperty() == PreferenceConstants.P_STRING_VERSION) {
+            	setEmail(event.getNewValue().toString());
+              }
+
+            if (event.getProperty() == PreferenceConstants.P_STRING_URL) {
+            	setEmail(event.getNewValue().toString());
+              }
+            
           }
         });		
 
@@ -95,6 +118,18 @@ public class PreferenceValues extends AbstractHandler{
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public String getVersion() {
+		return version;
+	}
+	public void setVersion(String version) {
+		this.version = version;
+	}
+	public String getUrl() {
+		return url;
+	}
+	public void setUrl(String url) {
+		this.url = url;
 	}
 	
 	
