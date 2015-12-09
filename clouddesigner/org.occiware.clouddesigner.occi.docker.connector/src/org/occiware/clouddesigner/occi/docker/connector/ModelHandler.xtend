@@ -739,10 +739,14 @@ class ModelHandler {
 		// Set the container data
 		modelContainer.id = currentContainer.id
 		modelContainer.name = currentContainer.name.replace("/", "")
-		modelContainer.image = currentContainer.imageId
-		modelContainer.command = Arrays.toString(currentContainer.config.cmd).replace("[", "").replace("]", "")
+		modelContainer.image = currentContainer.config.image
+		if(!currentContainer.config.cmd.nullOrEmpty){
+			modelContainer.command = Arrays.toString(currentContainer.config.cmd).replace("[", "").replace("]", "")
+		}
 		modelContainer.containerid = currentContainer.id
-		modelContainer.ports = Arrays.toString(currentContainer.config.exposedPorts).replace("[", "").replace("]", "")
+		if(!currentContainer.config.exposedPorts.nullOrEmpty){
+			modelContainer.ports = Arrays.toString(currentContainer.config.exposedPorts).replace("[", "").replace("]", "")
+		}
 		modelContainer.mac_address = currentContainer.config.macAddress
 		modelContainer.domainname = currentContainer.config.domainName
 		modelContainer.hostname = currentContainer.config.hostName

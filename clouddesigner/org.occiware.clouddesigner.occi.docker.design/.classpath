@@ -9,6 +9,6 @@
 	<classpathentry kind="lib" path="lib/log4j-1.2.17.jar"/>
 	<classpathentry kind="lib" path="lib/slf4j-api-1.7.12.jar"/>
 	<classpathentry kind="lib" path="lib/slf4j-log4j12-1.7.12.jar"/>
-	<classpathentry kind="lib" path="lib/docker-java-2.1.2-jar-with-dependencies.jar"/>
+	<classpathentry kind="lib" path="lib/docker-java-3.0.0-SNAPSHOT-jar-with-dependencies.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

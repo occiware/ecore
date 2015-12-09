@@ -1,3 +1,4 @@
+/.gitignore
 /DockerMachineManager.java
 /DockerObserver.java
 /Provider.java

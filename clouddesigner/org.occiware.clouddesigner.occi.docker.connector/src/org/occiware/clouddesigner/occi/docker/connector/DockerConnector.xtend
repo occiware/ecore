@@ -83,6 +83,9 @@ import org.slf4j.LoggerFactory
 import static com.google.common.base.Preconditions.checkNotNull
 import static org.occiware.clouddesigner.occi.docker.connector.EventCallBack.*
 import static org.occiware.clouddesigner.occi.docker.connector.ExecutableContainer.*
+import org.eclipse.emf.common.util.EList
+import java.util.Iterator
+import java.util.ConcurrentModificationException
 
 /**
  * This class overrides the generated EMF factory of the Docker package.
@@ -92,7 +95,7 @@ import static org.occiware.clouddesigner.occi.docker.connector.ExecutableContain
  */
 class ExecutableDockerFactory extends DockerFactoryImpl {
 
-	// Initialize logger for Graph.
+	// Initialize logger for ExecutableDockerFactory.
 	private static Logger LOGGER = LoggerFactory.getLogger(typeof(ExecutableDockerFactory))
 
 	/**
@@ -552,26 +555,31 @@ class EventCallBack extends EventsResultCallback {
 		var machine = this.container.currentMachine
 		// Apply modification only when the machine is active
 		if (machine.state == ComputeStatus.ACTIVE) {
-			for (Link l : machine.links) {
-				var contains = l as Contains
-				if (contains.target instanceof org.occiware.clouddesigner.occi.docker.Container) {
-					if ((l.target as ExecutableContainer).containerid == event.id) {
-						if (event.getStatus().equalsIgnoreCase("stop")) {
-							modifyResourceSet(l.target, event.getStatus(), event.id)
-							LOGGER.info("Apply stop notification to model")
-						}
-						if (event.getStatus().equalsIgnoreCase("start")) {
-							modifyResourceSet(l.target, event.getStatus(), event.id)
-							LOGGER.info("Apply start notification to model")
-						}
-					} else {
-						if (event.getStatus().equalsIgnoreCase("create")) {
-							modifyResourceSet(l.target, event.getStatus(), event.id)
-							LOGGER.info("Apply create notification to model")							
+			var EList<Link> links = machine.links
+			var Iterator <Link> iterat = links.iterator();
+			while (iterat.hasNext) {
+				var Link contains = iterat.next
+				if (contains!=null ) {
+					if (contains.target instanceof org.occiware.clouddesigner.occi.docker.Container) {
+						if ((contains.target as ExecutableContainer).containerid == event.id) {
+							if (event.getStatus().equalsIgnoreCase("stop")) {
+								modifyResourceSet(contains.target, event.getStatus(), event.id)
+								LOGGER.info("Apply stop notification to model")
+							}
+							if (event.getStatus().equalsIgnoreCase("start")) {
+								modifyResourceSet(contains.target, event.getStatus(), event.id)
+								LOGGER.info("Apply start notification to model")
+							}
+						} else {
+							if (event.getStatus().equalsIgnoreCase("create")) {
+								modifyResourceSet(contains.target, event.getStatus(), event.id)
+								LOGGER.info("Apply create notification to model")							
+							}
 						}
 					}
-				}
 
+			}
+			
 			}
 		}
 	}
@@ -971,7 +979,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 					}
 				}
 			}
-		} else { // The machine is active just create the containers
+		} else { // The machine exits, just start it and create the containers inside it
 			if (!activeHosts.containsKey(compute.name)) {
 
 				// Start the machine

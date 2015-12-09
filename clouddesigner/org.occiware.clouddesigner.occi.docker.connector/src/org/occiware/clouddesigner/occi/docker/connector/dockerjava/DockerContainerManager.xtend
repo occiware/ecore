@@ -87,11 +87,8 @@ class DockerContainerManager {
 
 		// listened to Events
 		dockerClient.eventsCmd().exec(event)
-		
 		this.stats = stats
-		// listened to stats
-		//dockerClient.statsCmd().exec(stats) 
-
+		
 	}
 
 	def createContainer(Machine machine, Container container) {
@@ -379,12 +376,13 @@ class DockerContainerManager {
 		} else if (!currentMachine.equalsIgnoreCase(machine.name)) {
 			dockerClient = setConfig(machine.name, properties)
 		}
+
+		//Start the container
+		dockerClient.startContainerCmd(container.containerid).exec
+
 		// listened to Events
-		dockerClient.statsCmd().exec(this.stats)
-		if(!setStats){
-//			dockerClient.statsCmd(container.containerid).exec(stats)
-		
-		}
+//		dockerClient.statsCmd(container.containerid).exec(this.stats)
+
 	}
 
 	def startContainer(Machine machine, String containerId) {
@@ -395,8 +393,11 @@ class DockerContainerManager {
 		}else if (!currentMachine.equalsIgnoreCase(machine.name)) {
 			dockerClient = setConfig(machine.name, properties)
 		}
-		//Listened to Events
+		//Start the container
 		dockerClient.startContainerCmd(containerId).exec
+
+		// listened to the stats Events
+//		dockerClient.statsCmd(containerId).exec(this.stats)
 		
 	}
 
@@ -420,7 +421,7 @@ class DockerContainerManager {
 		} else if (!currentMachine.equalsIgnoreCase(machine.name)) {
 			dockerClient = setConfig(machine.name, properties)
 		}
-//		//Listened to events 
+		//Stop the container 
 		dockerClient.stopContainerCmd(containerId).exec
 	}
 
@@ -501,8 +502,6 @@ class DockerContainerManager {
 	}
 
 	def DockerClient setConfig(String machine, PreferenceValues properties) {
-		val lconfig = new DockerConfig
-		val dockerClientconfig = lconfig.loadConfig
 		LOGGER.info("Connection inside docker-machine ---> " + machine)
 		var String port = null
 		var String ENDPOINT = DockerMachineManager.urlCmd(Runtime.getRuntime, machine)
@@ -517,8 +516,7 @@ class DockerContainerManager {
 		val URI uri = new URI(url.getProtocol(), url.getHost(), url.getPath(), url.getQuery(), null)
 		val dockerUri = uri.toString + port
 		LOGGER.info("Connection inside machine: " + machine + " with uri: " + dockerUri.toString)
-		val DockerClientConfig config = DockerClientConfig.createDefaultConfigBuilder.withVersion(
-			dockerClientconfig.get("docker.version").toString).withUri(dockerUri).withUsername(properties.username).withPassword(properties.password).withEmail(properties.email).withServerAddress("https://index.docker.io/v1/").
+		val DockerClientConfig config = DockerClientConfig.createDefaultConfigBuilder.withVersion(properties.version).withUri(dockerUri).withUsername(properties.username).withPassword(properties.password).withEmail(properties.email).withServerAddress(properties.url).
 			withDockerCertPath(certPath).build()
 		val DockerClient dockerClient = DockerClientBuilder.getInstance(config).build()
 

@@ -74,6 +74,7 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.occiware.clouddesigner.occi.docker.Contains;
 import org.occiware.clouddesigner.occi.docker.DockerFactory;
 import org.occiware.clouddesigner.occi.docker.DockerPackage;
@@ -1123,8 +1124,8 @@ public class ModelHandler {
         String _processLabel = currentContainer.getProcessLabel();
         modelContainer.setPid(_processLabel);
         InspectContainerResponse.ContainerState _state = currentContainer.getState();
-        Boolean _isRunning = _state.isRunning();
-        if ((_isRunning).booleanValue()) {
+        Boolean _running = _state.getRunning();
+        if ((_running).booleanValue()) {
           ComputeStatus _get = ComputeStatus.get(0);
           modelContainer.setState(_get);
         }
@@ -1144,55 +1145,68 @@ public class ModelHandler {
     String _name = currentContainer.getName();
     String _replace = _name.replace("/", "");
     modelContainer.setName(_replace);
-    String _imageId = currentContainer.getImageId();
-    modelContainer.setImage(_imageId);
     ContainerConfig _config = currentContainer.getConfig();
-    String[] _cmd = _config.getCmd();
-    String _string = Arrays.toString(_cmd);
-    String _replace_1 = _string.replace("[", "");
-    String _replace_2 = _replace_1.replace("]", "");
-    modelContainer.setCommand(_replace_2);
+    String _image = _config.getImage();
+    modelContainer.setImage(_image);
+    ContainerConfig _config_1 = currentContainer.getConfig();
+    String[] _cmd = _config_1.getCmd();
+    boolean _isNullOrEmpty = IterableExtensions.isNullOrEmpty(((Iterable<?>)Conversions.doWrapArray(_cmd)));
+    boolean _not = (!_isNullOrEmpty);
+    if (_not) {
+      ContainerConfig _config_2 = currentContainer.getConfig();
+      String[] _cmd_1 = _config_2.getCmd();
+      String _string = Arrays.toString(_cmd_1);
+      String _replace_1 = _string.replace("[", "");
+      String _replace_2 = _replace_1.replace("]", "");
+      modelContainer.setCommand(_replace_2);
+    }
     String _id_1 = currentContainer.getId();
     modelContainer.setContainerid(_id_1);
-    ContainerConfig _config_1 = currentContainer.getConfig();
-    ExposedPort[] _exposedPorts = _config_1.getExposedPorts();
-    String _string_1 = Arrays.toString(_exposedPorts);
-    String _replace_3 = _string_1.replace("[", "");
-    String _replace_4 = _replace_3.replace("]", "");
-    modelContainer.setPorts(_replace_4);
-    ContainerConfig _config_2 = currentContainer.getConfig();
-    String _macAddress = _config_2.getMacAddress();
-    modelContainer.setMac_address(_macAddress);
     ContainerConfig _config_3 = currentContainer.getConfig();
-    String _domainName = _config_3.getDomainName();
-    modelContainer.setDomainname(_domainName);
-    ContainerConfig _config_4 = currentContainer.getConfig();
-    String _hostName = _config_4.getHostName();
-    modelContainer.setHostname(_hostName);
+    ExposedPort[] _exposedPorts = _config_3.getExposedPorts();
+    boolean _isNullOrEmpty_1 = IterableExtensions.isNullOrEmpty(((Iterable<?>)Conversions.doWrapArray(_exposedPorts)));
+    boolean _not_1 = (!_isNullOrEmpty_1);
+    if (_not_1) {
+      ContainerConfig _config_4 = currentContainer.getConfig();
+      ExposedPort[] _exposedPorts_1 = _config_4.getExposedPorts();
+      String _string_1 = Arrays.toString(_exposedPorts_1);
+      String _replace_3 = _string_1.replace("[", "");
+      String _replace_4 = _replace_3.replace("]", "");
+      modelContainer.setPorts(_replace_4);
+    }
     ContainerConfig _config_5 = currentContainer.getConfig();
-    String _workingDir = _config_5.getWorkingDir();
-    modelContainer.setWorking_dir(_workingDir);
+    String _macAddress = _config_5.getMacAddress();
+    modelContainer.setMac_address(_macAddress);
     ContainerConfig _config_6 = currentContainer.getConfig();
-    String[] _entrypoint = _config_6.getEntrypoint();
+    String _domainName = _config_6.getDomainName();
+    modelContainer.setDomainname(_domainName);
+    ContainerConfig _config_7 = currentContainer.getConfig();
+    String _hostName = _config_7.getHostName();
+    modelContainer.setHostname(_hostName);
+    ContainerConfig _config_8 = currentContainer.getConfig();
+    String _workingDir = _config_8.getWorkingDir();
+    modelContainer.setWorking_dir(_workingDir);
+    ContainerConfig _config_9 = currentContainer.getConfig();
+    String[] _entrypoint = _config_9.getEntrypoint();
     String _string_2 = Arrays.toString(_entrypoint);
     modelContainer.setEntrypoint(_string_2);
-    ContainerConfig _config_7 = currentContainer.getConfig();
-    String[] _env = _config_7.getEnv();
+    ContainerConfig _config_10 = currentContainer.getConfig();
+    String[] _env = _config_10.getEnv();
     String _string_3 = Arrays.toString(_env);
     String _replace_5 = _string_3.replace("[", "");
     String _replace_6 = _replace_5.replace("]", "");
     modelContainer.setEnvironment(_replace_6);
-    ContainerConfig _config_8 = currentContainer.getConfig();
-    Boolean _isTty = _config_8.isTty();
+    ContainerConfig _config_11 = currentContainer.getConfig();
+    Boolean _isTty = _config_11.isTty();
     modelContainer.setTty((_isTty).booleanValue());
-    ContainerConfig _config_9 = currentContainer.getConfig();
-    Boolean _isStdinOpen = _config_9.isStdinOpen();
+    ContainerConfig _config_12 = currentContainer.getConfig();
+    Boolean _isStdinOpen = _config_12.isStdinOpen();
     modelContainer.setStdin_open((_isStdinOpen).booleanValue());
     String _processLabel = currentContainer.getProcessLabel();
     modelContainer.setPid(_processLabel);
     InspectContainerResponse.ContainerState _state = currentContainer.getState();
-    Boolean _isRunning = _state.isRunning();
-    if ((_isRunning).booleanValue()) {
+    Boolean _running = _state.getRunning();
+    if ((_running).booleanValue()) {
       modelContainer.setState(ComputeStatus.ACTIVE);
     } else {
       modelContainer.setState(ComputeStatus.INACTIVE);

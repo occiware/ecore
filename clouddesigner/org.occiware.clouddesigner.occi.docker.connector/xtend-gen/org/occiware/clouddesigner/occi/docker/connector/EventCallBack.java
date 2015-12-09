@@ -15,6 +15,7 @@ import com.github.dockerjava.api.model.Event;
 import com.github.dockerjava.core.command.EventsResultCallback;
 import com.google.common.base.Objects;
 import java.util.ArrayList;
+import java.util.Iterator;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandStack;
@@ -109,44 +110,48 @@ public class EventCallBack extends EventsResultCallback {
     ComputeStatus _state = machine.getState();
     boolean _equals = Objects.equal(_state, ComputeStatus.ACTIVE);
     if (_equals) {
-      EList<Link> _links = machine.getLinks();
-      for (final Link l : _links) {
+      EList<Link> links = machine.getLinks();
+      Iterator<Link> iterat = links.iterator();
+      while (iterat.hasNext()) {
         {
-          Contains contains = ((Contains) l);
-          Resource _target = contains.getTarget();
-          if ((_target instanceof Container)) {
-            Resource _target_1 = l.getTarget();
-            String _containerid = ((ExecutableContainer) _target_1).getContainerid();
-            String _id = event.getId();
-            boolean _equals_1 = Objects.equal(_containerid, _id);
-            if (_equals_1) {
-              String _status = event.getStatus();
-              boolean _equalsIgnoreCase = _status.equalsIgnoreCase("stop");
-              if (_equalsIgnoreCase) {
-                Resource _target_2 = l.getTarget();
-                String _status_1 = event.getStatus();
-                String _id_1 = event.getId();
-                this.modifyResourceSet(_target_2, _status_1, _id_1);
-                EventCallBack.LOGGER.info("Apply stop notification to model");
-              }
-              String _status_2 = event.getStatus();
-              boolean _equalsIgnoreCase_1 = _status_2.equalsIgnoreCase("start");
-              if (_equalsIgnoreCase_1) {
-                Resource _target_3 = l.getTarget();
-                String _status_3 = event.getStatus();
-                String _id_2 = event.getId();
-                this.modifyResourceSet(_target_3, _status_3, _id_2);
-                EventCallBack.LOGGER.info("Apply start notification to model");
-              }
-            } else {
-              String _status_4 = event.getStatus();
-              boolean _equalsIgnoreCase_2 = _status_4.equalsIgnoreCase("create");
-              if (_equalsIgnoreCase_2) {
-                Resource _target_4 = l.getTarget();
-                String _status_5 = event.getStatus();
-                String _id_3 = event.getId();
-                this.modifyResourceSet(_target_4, _status_5, _id_3);
-                EventCallBack.LOGGER.info("Apply create notification to model");
+          Link contains = iterat.next();
+          boolean _notEquals = (!Objects.equal(contains, null));
+          if (_notEquals) {
+            Resource _target = contains.getTarget();
+            if ((_target instanceof Container)) {
+              Resource _target_1 = contains.getTarget();
+              String _containerid = ((ExecutableContainer) _target_1).getContainerid();
+              String _id = event.getId();
+              boolean _equals_1 = Objects.equal(_containerid, _id);
+              if (_equals_1) {
+                String _status = event.getStatus();
+                boolean _equalsIgnoreCase = _status.equalsIgnoreCase("stop");
+                if (_equalsIgnoreCase) {
+                  Resource _target_2 = contains.getTarget();
+                  String _status_1 = event.getStatus();
+                  String _id_1 = event.getId();
+                  this.modifyResourceSet(_target_2, _status_1, _id_1);
+                  EventCallBack.LOGGER.info("Apply stop notification to model");
+                }
+                String _status_2 = event.getStatus();
+                boolean _equalsIgnoreCase_1 = _status_2.equalsIgnoreCase("start");
+                if (_equalsIgnoreCase_1) {
+                  Resource _target_3 = contains.getTarget();
+                  String _status_3 = event.getStatus();
+                  String _id_2 = event.getId();
+                  this.modifyResourceSet(_target_3, _status_3, _id_2);
+                  EventCallBack.LOGGER.info("Apply start notification to model");
+                }
+              } else {
+                String _status_4 = event.getStatus();
+                boolean _equalsIgnoreCase_2 = _status_4.equalsIgnoreCase("create");
+                if (_equalsIgnoreCase_2) {
+                  Resource _target_4 = contains.getTarget();
+                  String _status_5 = event.getStatus();
+                  String _id_3 = event.getId();
+                  this.modifyResourceSet(_target_4, _status_5, _id_3);
+                  EventCallBack.LOGGER.info("Apply create notification to model");
+                }
               }
             }
           }

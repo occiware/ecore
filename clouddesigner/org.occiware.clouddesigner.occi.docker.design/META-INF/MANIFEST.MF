@@ -4,7 +4,7 @@ Bundle-Name: org.occiware.clouddesigner.occi.docker.design
 Bundle-SymbolicName: org.occiware.clouddesigner.occi.docker.design;singleton:=true
 Bundle-Version: 0.1.0.qualifier
 Bundle-ClassPath: .,
- lib/docker-java-2.1.2-jar-with-dependencies.jar,
+ lib/docker-java-3.0.0-SNAPSHOT-jar-with-dependencies.jar,
  lib/log4j-1.2.17.jar,
  lib/slf4j-api-1.7.12.jar,
  lib/slf4j-log4j12-1.7.12.jar
