@@ -16,18 +16,6 @@ Prerequisites
 	$ ln -s /path/to-file/govc /usr/bin/govc
 	
 
-Configuration
--------------
-Change the configuration below according to your requirements in the file ecore/clouddesigner/org.occiware.clouddesigner.occi.docker.connector/src/resources/docker.properties.
-
-#### Properties
-	docker.username=dockeruser
-	docker.password=iloveocciware
-	docker.email=dockeruser@occiware.org
-	docker.version=1.20
-	docker.url=https://index.docker.io/v1/
-	
-
 Launch the modeler
 ----------------
 There are two ways to launch the docker connector.
@@ -39,6 +27,21 @@ There are two ways to launch the docker connector.
 To launch the modeler from OCCIware Studio follow these steps:
 
 * Start the occiware studio you have downloaded [here](http://www.obeo.fr/download/occiware/)
+
+Configuration
+-------------
+This configuration is optional, let the default value if you do not change it. However, if you want to use a specific docker images you should configure it according to your requirements.
+
+#### Go to the Prefrerences
+	On WINDOWS PLATFORM or Linux PLATFORM : Window > Preferences  dialog page will appear
+	On MAC OS X PLATFORM : eclipse > Preferences  dialog page will appear like this :
+
+![Preferences](https://raw.githubusercontent.com/occiware/dev-tools/master/eclipse/images/preferences.png "Docker preferences")
+
+Click on the `Docker Preferences` button in order to change the settings. Change the configuration below according to your requirements in the Docker modeler.
+
+![Preferences](https://raw.githubusercontent.com/occiware/dev-tools/master/eclipse/images/docker_preferences.png "Docker preferences")
+		
 
 * Create new project 
 ![Viewpoint Selections](https://raw.githubusercontent.com/occiware/dev-tools/master/eclipse/images/new_projet.png "New project")
