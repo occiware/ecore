@@ -81,11 +81,14 @@ import org.occiware.clouddesigner.occi.docker.Machine_OpenStack
 import org.occiware.clouddesigner.occi.docker.Machine_Rackspace
 import org.occiware.clouddesigner.occi.docker.Machine_VMware_vSphere
 import java.util.Arrays
+import static com.google.common.base.Preconditions.checkArgument
 
 class ModelHandler {
 
 	// Initialize logger for ModelHandler.
 	private static Logger LOGGER = LoggerFactory.getLogger(typeof(ModelHandler))
+	
+	private val Map<String, Machine> modelHandler = getmodelEClass
 
 	/*
 	 * Dynamic EMF 
@@ -181,12 +184,12 @@ class ModelHandler {
 		m.put(Provider.google.toString, DockerFactory.eINSTANCE.createMachine_Google_Compute_Engine)
 		m.put(Provider.ibm.toString, DockerFactory.eINSTANCE.createMachine_IBM_SoftLayer)
 		m.put(Provider.azure.toString, DockerFactory.eINSTANCE.createMachine_Microsoft_Azure)
-		m.put("microsofthyperv", DockerFactory.eINSTANCE.createMachine_Microsoft_Hyper_V)
-		m.put("openstack", DockerFactory.eINSTANCE.createMachine_OpenStack)
+		m.put(Provider.microsofthyperv.toString, DockerFactory.eINSTANCE.createMachine_Microsoft_Hyper_V)
+		m.put(Provider.openstack.toString, DockerFactory.eINSTANCE.createMachine_OpenStack)
 		m.put(Provider.rackspace.toString, DockerFactory.eINSTANCE.createMachine_Rackspace)
-		m.put("vmwarefusion", DockerFactory.eINSTANCE.createMachine_VMware_Fusion)
-		m.put("vmwarevcloud", DockerFactory.eINSTANCE.createMachine_VMware_vCloud_Air)
-		m.put("vmwaresphere", DockerFactory.eINSTANCE.createMachine_VMware_vSphere)
+		m.put(Provider.vmwarefusion.toString, DockerFactory.eINSTANCE.createMachine_VMware_Fusion)
+		m.put(Provider.vmwarevcloudair.toString, DockerFactory.eINSTANCE.createMachine_VMware_vCloud_Air)
+		m.put(Provider.vmwarevsphere.toString, DockerFactory.eINSTANCE.createMachine_VMware_vSphere)
 
 		return m
 	}
@@ -472,7 +475,8 @@ class ModelHandler {
 		val instance = new DockerContainerManager
 		val node = DockerUtil.jsonify(DockerMachineManager.inspectHostCmd(Runtime.getRuntime, machine))
 		if (node != null) {
-			var vbox = getmodelEClass.get(node.get("DriverName").toString.replaceAll("\"", ""))
+			
+			var vbox = modelHandler.get(node.get("DriverName").toString.replaceAll("\"", ""))
 
 			if (vbox instanceof Machine_VirtualBox) {
 				var newvbox = vbox as Machine_VirtualBox
@@ -740,13 +744,13 @@ class ModelHandler {
 		modelContainer.id = currentContainer.id
 		modelContainer.name = currentContainer.name.replace("/", "")
 		modelContainer.image = currentContainer.config.image
-		if(!currentContainer.config.cmd.nullOrEmpty){
+		if(!currentContainer.config.cmd.isEmpty){
 			modelContainer.command = Arrays.toString(currentContainer.config.cmd).replace("[", "").replace("]", "")
 		}
 		modelContainer.containerid = currentContainer.id
-		if(!currentContainer.config.exposedPorts.nullOrEmpty){
-			modelContainer.ports = Arrays.toString(currentContainer.config.exposedPorts).replace("[", "").replace("]", "")
-		}
+//		if(!currentContainer.config.exposedPorts.empty){
+//			modelContainer.ports = Arrays.toString(currentContainer.config.exposedPorts).replace("[", "").replace("]", "")
+//		}
 		modelContainer.mac_address = currentContainer.config.macAddress
 		modelContainer.domainname = currentContainer.config.domainName
 		modelContainer.hostname = currentContainer.config.hostName

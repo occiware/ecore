@@ -504,7 +504,6 @@ class ComputeStateMachine<T extends Compute> {
 	}
 }
 
-
 /**
  * This class notifies a new events to the connector.
  */
@@ -532,9 +531,10 @@ class EventCallBack extends EventsResultCallback {
 				if (state.equalsIgnoreCase("create")) {
 					val instanceMH = new ModelHandler
 					var machine = (resource as ExecutableContainer).currentMachine
-					var org.occiware.clouddesigner.occi.docker.Container c = instanceMH.buildContainer(machine, containerId)
+					var org.occiware.clouddesigner.occi.docker.Container c = instanceMH.buildContainer(machine,
+						containerId)
 					instanceMH.linkContainerToMachine(c, machine)
-					if(machine.eContainer instanceof Configuration){
+					if (machine.eContainer instanceof Configuration) {
 						(machine.eContainer as Configuration).resources.add(c as ExecutableContainer)
 						LOGGER.info("Load new container")
 					}
@@ -549,37 +549,43 @@ class EventCallBack extends EventsResultCallback {
 			LOGGER.error(rbe.getStatus().toString)
 		}
 	}
-	
+
 	override def void onNext(Event event) {
 		LOGGER.info("Received event #{}", event)
 		var machine = this.container.currentMachine
 		// Apply modification only when the machine is active
 		if (machine.state == ComputeStatus.ACTIVE) {
 			var EList<Link> links = machine.links
-			var Iterator <Link> iterat = links.iterator();
-			while (iterat.hasNext) {
-				var Link contains = iterat.next
-				if (contains!=null ) {
-					if (contains.target instanceof org.occiware.clouddesigner.occi.docker.Container) {
-						if ((contains.target as ExecutableContainer).containerid == event.id) {
-							if (event.getStatus().equalsIgnoreCase("stop")) {
-								modifyResourceSet(contains.target, event.getStatus(), event.id)
-								LOGGER.info("Apply stop notification to model")
-							}
-							if (event.getStatus().equalsIgnoreCase("start")) {
-								modifyResourceSet(contains.target, event.getStatus(), event.id)
-								LOGGER.info("Apply start notification to model")
-							}
-						} else {
-							if (event.getStatus().equalsIgnoreCase("create")) {
-								modifyResourceSet(contains.target, event.getStatus(), event.id)
-								LOGGER.info("Apply create notification to model")							
+			LOGGER.info("Link size #{}", links.size)
+			try {
+
+				for (Link l : links) {
+					var contains = l as Contains
+					if (contains != null) {
+						if (contains.target instanceof org.occiware.clouddesigner.occi.docker.Container) {
+							if ((contains.target as ExecutableContainer).containerid == event.id) {
+								if (event.getStatus().equalsIgnoreCase("stop")) {
+									modifyResourceSet(contains.target, event.getStatus(), event.id)
+									LOGGER.info("Apply stop notification to model")
+								}
+								if (event.getStatus().equalsIgnoreCase("start")) {
+									modifyResourceSet(contains.target, event.getStatus(), event.id)
+									LOGGER.info("Apply start notification to model")
+								}
+							} else {
+								if (event.getStatus().equalsIgnoreCase("create") &&
+									!containerIsInsideMachine(machine, event.id)) {
+									modifyResourceSet(contains.target, event.getStatus(), event.id)
+									LOGGER.info("Apply create notification to model")
+								}
 							}
 						}
+
 					}
 
-			}
-			
+				}
+
+			} catch (Exception e) {
 			}
 		}
 	}
@@ -591,10 +597,36 @@ class EventCallBack extends EventsResultCallback {
 			if (contains.target instanceof org.occiware.clouddesigner.occi.docker.Container) {
 				containers.add(contains.target as ExecutableContainer)
 			}
-
 		}
-
 		return containers
+	}
+
+	def boolean containerIsInsideMachine(Machine machine, String containerId) {
+		val container = dockerContainerManager.inspectContainer(machine, containerId)
+		val name = container.name.replaceAll("/", "")
+		var listContainer = listContainers(machine)
+		for (ExecutableContainer ec : listContainer) {
+			if (ec.name.equalsIgnoreCase(name)) {
+				return true
+			}
+		}
+		return false
+	}
+
+	def Resource getResourceById(Machine machine, String containerId) {
+		var EList<Link> links = machine.links
+		var Iterator<Link> iterat = links.iterator()
+		while (iterat.hasNext) {
+			var Link contains = iterat.next
+			if (contains != null) {
+				if (contains.target instanceof org.occiware.clouddesigner.occi.docker.Container) {
+					if ((contains.target as ExecutableContainer).containerid == containerId) {
+						return contains.target
+					}
+				}
+			}
+		}
+		return null
 	}
 
 }
@@ -602,7 +634,7 @@ class EventCallBack extends EventsResultCallback {
 /**
  * This class notifies stats events to the connector.
  */
- class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statistics> {
+class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statistics> {
 	// Initialize logger for StatsCallback.
 	private static Logger LOGGER = LoggerFactory.getLogger(typeof(StatsCallback))
 
@@ -626,7 +658,6 @@ class EventCallBack extends EventsResultCallback {
 	}
 
 }
-
 
 /**
  * This class implements an executable Docker container.
@@ -827,6 +858,7 @@ class ExecutableMachine extends MachineImpl {
 	override def restart(RestartMethod method) { stateMachine.restart(method) }
 
 	override def suspend(SuspendMethod method) { stateMachine.suspend(method) }
+
 }
 
 /**

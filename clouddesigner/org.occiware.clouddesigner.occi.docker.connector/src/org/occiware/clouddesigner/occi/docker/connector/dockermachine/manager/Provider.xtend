@@ -22,5 +22,6 @@ enum Provider {
 	vmwarevcloudair,
 	vmwarevsphere,
 	ibm,
-	azure
+	azure,
+	microsofthyperv
 }
