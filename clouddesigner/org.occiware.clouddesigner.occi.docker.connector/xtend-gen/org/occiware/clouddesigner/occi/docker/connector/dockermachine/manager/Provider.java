@@ -34,5 +34,7 @@ public enum Provider {
   
   ibm,
   
-  azure;
+  azure,
+  
+  microsofthyperv;
 }

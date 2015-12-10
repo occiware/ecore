@@ -74,7 +74,6 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.occiware.clouddesigner.occi.docker.Contains;
 import org.occiware.clouddesigner.occi.docker.DockerFactory;
 import org.occiware.clouddesigner.occi.docker.DockerPackage;
@@ -102,6 +101,8 @@ import org.slf4j.LoggerFactory;
 @SuppressWarnings("all")
 public class ModelHandler {
   private static Logger LOGGER = LoggerFactory.getLogger(ModelHandler.class);
+  
+  private final Map<String, Machine> modelHandler = this.getmodelEClass();
   
   /**
    * Dynamic EMF
@@ -260,19 +261,24 @@ public class ModelHandler {
     String _string_5 = Provider.azure.toString();
     Machine_Microsoft_Azure _createMachine_Microsoft_Azure = DockerFactory.eINSTANCE.createMachine_Microsoft_Azure();
     m.put(_string_5, _createMachine_Microsoft_Azure);
+    String _string_6 = Provider.microsofthyperv.toString();
     Machine_Microsoft_Hyper_V _createMachine_Microsoft_Hyper_V = DockerFactory.eINSTANCE.createMachine_Microsoft_Hyper_V();
-    m.put("microsofthyperv", _createMachine_Microsoft_Hyper_V);
+    m.put(_string_6, _createMachine_Microsoft_Hyper_V);
+    String _string_7 = Provider.openstack.toString();
     Machine_OpenStack _createMachine_OpenStack = DockerFactory.eINSTANCE.createMachine_OpenStack();
-    m.put("openstack", _createMachine_OpenStack);
-    String _string_6 = Provider.rackspace.toString();
+    m.put(_string_7, _createMachine_OpenStack);
+    String _string_8 = Provider.rackspace.toString();
     Machine_Rackspace _createMachine_Rackspace = DockerFactory.eINSTANCE.createMachine_Rackspace();
-    m.put(_string_6, _createMachine_Rackspace);
+    m.put(_string_8, _createMachine_Rackspace);
+    String _string_9 = Provider.vmwarefusion.toString();
     Machine_VMware_Fusion _createMachine_VMware_Fusion = DockerFactory.eINSTANCE.createMachine_VMware_Fusion();
-    m.put("vmwarefusion", _createMachine_VMware_Fusion);
+    m.put(_string_9, _createMachine_VMware_Fusion);
+    String _string_10 = Provider.vmwarevcloudair.toString();
     Machine_VMware_vCloud_Air _createMachine_VMware_vCloud_Air = DockerFactory.eINSTANCE.createMachine_VMware_vCloud_Air();
-    m.put("vmwarevcloud", _createMachine_VMware_vCloud_Air);
+    m.put(_string_10, _createMachine_VMware_vCloud_Air);
+    String _string_11 = Provider.vmwarevsphere.toString();
     Machine_VMware_vSphere _createMachine_VMware_vSphere = DockerFactory.eINSTANCE.createMachine_VMware_vSphere();
-    m.put("vmwaresphere", _createMachine_VMware_vSphere);
+    m.put(_string_11, _createMachine_VMware_vSphere);
     return m;
   }
   
@@ -679,11 +685,10 @@ public class ModelHandler {
     final JsonNode node = DockerUtil.jsonify(_inspectHostCmd);
     boolean _notEquals = (!Objects.equal(node, null));
     if (_notEquals) {
-      Map<String, Machine> _modelEClass = this.getmodelEClass();
       JsonNode _get = node.get("DriverName");
       String _string = _get.toString();
       String _replaceAll = _string.replaceAll("\"", "");
-      Machine vbox = _modelEClass.get(_replaceAll);
+      Machine vbox = this.modelHandler.get(_replaceAll);
       if ((vbox instanceof Machine_VirtualBox)) {
         Machine_VirtualBox newvbox = ((Machine_VirtualBox) vbox);
         this.machineFactory_VBOX(newvbox, node, state);
@@ -1150,8 +1155,8 @@ public class ModelHandler {
     modelContainer.setImage(_image);
     ContainerConfig _config_1 = currentContainer.getConfig();
     String[] _cmd = _config_1.getCmd();
-    boolean _isNullOrEmpty = IterableExtensions.isNullOrEmpty(((Iterable<?>)Conversions.doWrapArray(_cmd)));
-    boolean _not = (!_isNullOrEmpty);
+    boolean _isEmpty = ((List<String>)Conversions.doWrapArray(_cmd)).isEmpty();
+    boolean _not = (!_isEmpty);
     if (_not) {
       ContainerConfig _config_2 = currentContainer.getConfig();
       String[] _cmd_1 = _config_2.getCmd();
@@ -1163,44 +1168,32 @@ public class ModelHandler {
     String _id_1 = currentContainer.getId();
     modelContainer.setContainerid(_id_1);
     ContainerConfig _config_3 = currentContainer.getConfig();
-    ExposedPort[] _exposedPorts = _config_3.getExposedPorts();
-    boolean _isNullOrEmpty_1 = IterableExtensions.isNullOrEmpty(((Iterable<?>)Conversions.doWrapArray(_exposedPorts)));
-    boolean _not_1 = (!_isNullOrEmpty_1);
-    if (_not_1) {
-      ContainerConfig _config_4 = currentContainer.getConfig();
-      ExposedPort[] _exposedPorts_1 = _config_4.getExposedPorts();
-      String _string_1 = Arrays.toString(_exposedPorts_1);
-      String _replace_3 = _string_1.replace("[", "");
-      String _replace_4 = _replace_3.replace("]", "");
-      modelContainer.setPorts(_replace_4);
-    }
-    ContainerConfig _config_5 = currentContainer.getConfig();
-    String _macAddress = _config_5.getMacAddress();
+    String _macAddress = _config_3.getMacAddress();
     modelContainer.setMac_address(_macAddress);
-    ContainerConfig _config_6 = currentContainer.getConfig();
-    String _domainName = _config_6.getDomainName();
+    ContainerConfig _config_4 = currentContainer.getConfig();
+    String _domainName = _config_4.getDomainName();
     modelContainer.setDomainname(_domainName);
-    ContainerConfig _config_7 = currentContainer.getConfig();
-    String _hostName = _config_7.getHostName();
+    ContainerConfig _config_5 = currentContainer.getConfig();
+    String _hostName = _config_5.getHostName();
     modelContainer.setHostname(_hostName);
-    ContainerConfig _config_8 = currentContainer.getConfig();
-    String _workingDir = _config_8.getWorkingDir();
+    ContainerConfig _config_6 = currentContainer.getConfig();
+    String _workingDir = _config_6.getWorkingDir();
     modelContainer.setWorking_dir(_workingDir);
+    ContainerConfig _config_7 = currentContainer.getConfig();
+    String[] _entrypoint = _config_7.getEntrypoint();
+    String _string_1 = Arrays.toString(_entrypoint);
+    modelContainer.setEntrypoint(_string_1);
+    ContainerConfig _config_8 = currentContainer.getConfig();
+    String[] _env = _config_8.getEnv();
+    String _string_2 = Arrays.toString(_env);
+    String _replace_3 = _string_2.replace("[", "");
+    String _replace_4 = _replace_3.replace("]", "");
+    modelContainer.setEnvironment(_replace_4);
     ContainerConfig _config_9 = currentContainer.getConfig();
-    String[] _entrypoint = _config_9.getEntrypoint();
-    String _string_2 = Arrays.toString(_entrypoint);
-    modelContainer.setEntrypoint(_string_2);
-    ContainerConfig _config_10 = currentContainer.getConfig();
-    String[] _env = _config_10.getEnv();
-    String _string_3 = Arrays.toString(_env);
-    String _replace_5 = _string_3.replace("[", "");
-    String _replace_6 = _replace_5.replace("]", "");
-    modelContainer.setEnvironment(_replace_6);
-    ContainerConfig _config_11 = currentContainer.getConfig();
-    Boolean _isTty = _config_11.isTty();
+    Boolean _isTty = _config_9.isTty();
     modelContainer.setTty((_isTty).booleanValue());
-    ContainerConfig _config_12 = currentContainer.getConfig();
-    Boolean _isStdinOpen = _config_12.isStdinOpen();
+    ContainerConfig _config_10 = currentContainer.getConfig();
+    Boolean _isStdinOpen = _config_10.isStdinOpen();
     modelContainer.setStdin_open((_isStdinOpen).booleanValue());
     String _processLabel = currentContainer.getProcessLabel();
     modelContainer.setPid(_processLabel);

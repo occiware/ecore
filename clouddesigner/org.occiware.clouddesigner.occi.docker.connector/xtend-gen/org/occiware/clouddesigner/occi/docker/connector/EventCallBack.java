@@ -11,6 +11,7 @@
  */
 package org.occiware.clouddesigner.occi.docker.connector;
 
+import com.github.dockerjava.api.command.InspectContainerResponse;
 import com.github.dockerjava.api.model.Event;
 import com.github.dockerjava.core.command.EventsResultCallback;
 import com.google.common.base.Objects;
@@ -111,50 +112,68 @@ public class EventCallBack extends EventsResultCallback {
     boolean _equals = Objects.equal(_state, ComputeStatus.ACTIVE);
     if (_equals) {
       EList<Link> links = machine.getLinks();
-      Iterator<Link> iterat = links.iterator();
-      while (iterat.hasNext()) {
-        {
-          Link contains = iterat.next();
-          boolean _notEquals = (!Objects.equal(contains, null));
-          if (_notEquals) {
-            Resource _target = contains.getTarget();
-            if ((_target instanceof Container)) {
-              Resource _target_1 = contains.getTarget();
-              String _containerid = ((ExecutableContainer) _target_1).getContainerid();
-              String _id = event.getId();
-              boolean _equals_1 = Objects.equal(_containerid, _id);
-              if (_equals_1) {
-                String _status = event.getStatus();
-                boolean _equalsIgnoreCase = _status.equalsIgnoreCase("stop");
-                if (_equalsIgnoreCase) {
-                  Resource _target_2 = contains.getTarget();
-                  String _status_1 = event.getStatus();
-                  String _id_1 = event.getId();
-                  this.modifyResourceSet(_target_2, _status_1, _id_1);
-                  EventCallBack.LOGGER.info("Apply stop notification to model");
-                }
-                String _status_2 = event.getStatus();
-                boolean _equalsIgnoreCase_1 = _status_2.equalsIgnoreCase("start");
-                if (_equalsIgnoreCase_1) {
-                  Resource _target_3 = contains.getTarget();
-                  String _status_3 = event.getStatus();
-                  String _id_2 = event.getId();
-                  this.modifyResourceSet(_target_3, _status_3, _id_2);
-                  EventCallBack.LOGGER.info("Apply start notification to model");
-                }
-              } else {
-                String _status_4 = event.getStatus();
-                boolean _equalsIgnoreCase_2 = _status_4.equalsIgnoreCase("create");
-                if (_equalsIgnoreCase_2) {
-                  Resource _target_4 = contains.getTarget();
-                  String _status_5 = event.getStatus();
-                  String _id_3 = event.getId();
-                  this.modifyResourceSet(_target_4, _status_5, _id_3);
-                  EventCallBack.LOGGER.info("Apply create notification to model");
+      int _size = links.size();
+      EventCallBack.LOGGER.info("Link size #{}", Integer.valueOf(_size));
+      try {
+        for (final Link l : links) {
+          {
+            Contains contains = ((Contains) l);
+            boolean _notEquals = (!Objects.equal(contains, null));
+            if (_notEquals) {
+              Resource _target = contains.getTarget();
+              if ((_target instanceof Container)) {
+                Resource _target_1 = contains.getTarget();
+                String _containerid = ((ExecutableContainer) _target_1).getContainerid();
+                String _id = event.getId();
+                boolean _equals_1 = Objects.equal(_containerid, _id);
+                if (_equals_1) {
+                  String _status = event.getStatus();
+                  boolean _equalsIgnoreCase = _status.equalsIgnoreCase("stop");
+                  if (_equalsIgnoreCase) {
+                    Resource _target_2 = contains.getTarget();
+                    String _status_1 = event.getStatus();
+                    String _id_1 = event.getId();
+                    this.modifyResourceSet(_target_2, _status_1, _id_1);
+                    EventCallBack.LOGGER.info("Apply stop notification to model");
+                  }
+                  String _status_2 = event.getStatus();
+                  boolean _equalsIgnoreCase_1 = _status_2.equalsIgnoreCase("start");
+                  if (_equalsIgnoreCase_1) {
+                    Resource _target_3 = contains.getTarget();
+                    String _status_3 = event.getStatus();
+                    String _id_2 = event.getId();
+                    this.modifyResourceSet(_target_3, _status_3, _id_2);
+                    EventCallBack.LOGGER.info("Apply start notification to model");
+                  }
+                } else {
+                  boolean _and = false;
+                  String _status_4 = event.getStatus();
+                  boolean _equalsIgnoreCase_2 = _status_4.equalsIgnoreCase("create");
+                  if (!_equalsIgnoreCase_2) {
+                    _and = false;
+                  } else {
+                    String _id_3 = event.getId();
+                    boolean _containerIsInsideMachine = this.containerIsInsideMachine(machine, _id_3);
+                    boolean _not = (!_containerIsInsideMachine);
+                    _and = _not;
+                  }
+                  if (_and) {
+                    Resource _target_4 = contains.getTarget();
+                    String _status_5 = event.getStatus();
+                    String _id_4 = event.getId();
+                    this.modifyResourceSet(_target_4, _status_5, _id_4);
+                    EventCallBack.LOGGER.info("Apply create notification to model");
+                  }
                 }
               }
             }
           }
+        }
+      } catch (final Throwable _t) {
+        if (_t instanceof Exception) {
+          final Exception e = (Exception)_t;
+        } else {
+          throw Exceptions.sneakyThrow(_t);
         }
       }
     }
@@ -174,5 +193,43 @@ public class EventCallBack extends EventsResultCallback {
       }
     }
     return containers;
+  }
+  
+  public boolean containerIsInsideMachine(final Machine machine, final String containerId) {
+    final InspectContainerResponse container = ExecutableContainer.dockerContainerManager.inspectContainer(machine, containerId);
+    String _name = container.getName();
+    final String name = _name.replaceAll("/", "");
+    ArrayList<ExecutableContainer> listContainer = this.listContainers(machine);
+    for (final ExecutableContainer ec : listContainer) {
+      String _name_1 = ec.getName();
+      boolean _equalsIgnoreCase = _name_1.equalsIgnoreCase(name);
+      if (_equalsIgnoreCase) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public Resource getResourceById(final Machine machine, final String containerId) {
+    EList<Link> links = machine.getLinks();
+    Iterator<Link> iterat = links.iterator();
+    while (iterat.hasNext()) {
+      {
+        Link contains = iterat.next();
+        boolean _notEquals = (!Objects.equal(contains, null));
+        if (_notEquals) {
+          Resource _target = contains.getTarget();
+          if ((_target instanceof Container)) {
+            Resource _target_1 = contains.getTarget();
+            String _containerid = ((ExecutableContainer) _target_1).getContainerid();
+            boolean _equals = Objects.equal(_containerid, containerId);
+            if (_equals) {
+              return contains.getTarget();
+            }
+          }
+        }
+      }
+    }
+    return null;
   }
 }
