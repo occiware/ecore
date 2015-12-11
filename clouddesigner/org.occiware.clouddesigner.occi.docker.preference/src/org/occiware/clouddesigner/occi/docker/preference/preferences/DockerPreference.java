@@ -41,7 +41,7 @@ public class DockerPreference extends FieldEditorPreferencePage implements IWork
 
 	// Initialize logger for DockerPreference.
 	private static Logger LOGGER = LoggerFactory.getLogger(PreferenceValues.class);
-	
+
 	public DockerPreference() {
 		super(GRID);
 		setPreferenceStore(Activator.getDefault().getPreferenceStore());
@@ -55,40 +55,62 @@ public class DockerPreference extends FieldEditorPreferencePage implements IWork
 	 */
 	public void createFieldEditors() {
 
-		username = new StringFieldEditor(PreferenceConstants.P_STRING_USERNAME, "Docker &username:" ,getFieldEditorParent());
+		username = new StringFieldEditor(PreferenceConstants.P_STRING_USERNAME, "Docker &username:",
+				getFieldEditorParent());
 		addField(username);
 
-		password = new StringFieldEditor(PreferenceConstants.P_STRING_PASSWORD, "Docker &password:" ,getFieldEditorParent());
+		password = new StringFieldEditor(PreferenceConstants.P_STRING_PASSWORD, "Docker &password:",
+				getFieldEditorParent());
 		addField(password);
 
 		email = new StringFieldEditor(PreferenceConstants.P_STRING_EMAIL, "Docker &email:", getFieldEditorParent());
 		addField(email);
-		
-		version = new StringFieldEditor(PreferenceConstants.P_STRING_VERSION, "Docker &version:", getFieldEditorParent());
+
+		version = new StringFieldEditor(PreferenceConstants.P_STRING_VERSION, "Docker &version:",
+				getFieldEditorParent());
 		addField(version);
 
 		url = new StringFieldEditor(PreferenceConstants.P_STRING_URL, "Docker &url:", getFieldEditorParent());
 		addField(url);
-
 		LOGGER.info("All text fields where created");
-		
+
 		// add change listener to the preferences store so that we are notified
-//		Activator.getDefault().getPreferenceStore()
-//        .addPropertyChangeListener(new IPropertyChangeListener() {
-//          @Override
-//          public void propertyChange(PropertyChangeEvent event) {
-//            if (event.getProperty() == PreferenceConstants.P_STRING_USERNAME) {
-//            	LOGGER.info(event.getNewValue().toString() + "\n\n\n\n\n");
-//            }
-//            if (event.getProperty() == PreferenceConstants.P_STRING_PASSWORD) {
-//            	LOGGER.info(event.getNewValue().toString() + "\n\n\n\n\n");
-//              }
-//            if (event.getProperty() == PreferenceConstants.P_STRING_EMAIL) {
-//            	LOGGER.info(event.getNewValue().toString() + "\n\n\n\n\n");
-//              }
-//
-//          }
-//        });		
+		Activator.getDefault().getPreferenceStore().addPropertyChangeListener(new IPropertyChangeListener() {
+			@Override
+			public void propertyChange(PropertyChangeEvent event) {
+				if (event.getProperty() == PreferenceConstants.P_STRING_USERNAME) {
+					LOGGER.info(event.getNewValue().toString());
+					textValidation(event, PreferenceConstants.E_MSG_USERNAME);
+				}
+				if (event.getProperty() == PreferenceConstants.P_STRING_PASSWORD) {
+					LOGGER.info(event.getNewValue().toString());
+					textValidation(event, PreferenceConstants.E_MSG_PASSWORD);
+				}
+				if (event.getProperty() == PreferenceConstants.P_STRING_EMAIL) {
+					LOGGER.info(event.getNewValue().toString());
+					textValidation(event, PreferenceConstants.E_MSG_EMAIL);
+				}
+				if (event.getProperty() == PreferenceConstants.P_STRING_VERSION) {
+					LOGGER.info(event.getNewValue().toString());
+					textValidation(event, PreferenceConstants.E_MSG_VERSION);
+				}
+				if (event.getProperty() == PreferenceConstants.P_STRING_URL) {
+					LOGGER.info(event.getNewValue().toString());
+					textValidation(event, PreferenceConstants.E_MSG_URL);
+				}
+
+			}
+
+			private void textValidation(PropertyChangeEvent event, String errorMessage) {
+				if (event.getNewValue() != null && !event.getNewValue().equals("")) {
+					setErrorMessage(null);
+					setValid(true);
+				} else {
+					setErrorMessage(errorMessage);
+					setValid(false);
+				}
+			}
+		});
 	}
 
 	protected void checkState() {
