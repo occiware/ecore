@@ -231,7 +231,7 @@
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machine_Amazon_EC2" referenceName="resources"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Microsoft_Hyper_V" containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Machine_Microsoft_Hyper_V.gif">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Microsoft_Hyper_V" label="Microsoft Hyperver-V" containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Machine_Microsoft_Hyper_V.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
