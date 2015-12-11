@@ -88,8 +88,6 @@ class ModelHandler {
 	// Initialize logger for ModelHandler.
 	private static Logger LOGGER = LoggerFactory.getLogger(typeof(ModelHandler))
 	
-	private val Map<String, Machine> modelHandler = getmodelEClass
-
 	/*
 	 * Dynamic EMF 
 	 */
@@ -476,7 +474,7 @@ class ModelHandler {
 		val node = DockerUtil.jsonify(DockerMachineManager.inspectHostCmd(Runtime.getRuntime, machine))
 		if (node != null) {
 			
-			var vbox = modelHandler.get(node.get("DriverName").toString.replaceAll("\"", ""))
+			var vbox = getmodelEClass.get(node.get("DriverName").toString.replaceAll("\"", ""))
 
 			if (vbox instanceof Machine_VirtualBox) {
 				var newvbox = vbox as Machine_VirtualBox

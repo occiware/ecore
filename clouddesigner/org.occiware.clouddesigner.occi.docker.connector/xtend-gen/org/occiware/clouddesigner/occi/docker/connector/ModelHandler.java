@@ -102,8 +102,6 @@ import org.slf4j.LoggerFactory;
 public class ModelHandler {
   private static Logger LOGGER = LoggerFactory.getLogger(ModelHandler.class);
   
-  private final Map<String, Machine> modelHandler = this.getmodelEClass();
-  
   /**
    * Dynamic EMF
    */
@@ -685,10 +683,11 @@ public class ModelHandler {
     final JsonNode node = DockerUtil.jsonify(_inspectHostCmd);
     boolean _notEquals = (!Objects.equal(node, null));
     if (_notEquals) {
+      Map<String, Machine> _modelEClass = this.getmodelEClass();
       JsonNode _get = node.get("DriverName");
       String _string = _get.toString();
       String _replaceAll = _string.replaceAll("\"", "");
-      Machine vbox = this.modelHandler.get(_replaceAll);
+      Machine vbox = _modelEClass.get(_replaceAll);
       if ((vbox instanceof Machine_VirtualBox)) {
         Machine_VirtualBox newvbox = ((Machine_VirtualBox) vbox);
         this.machineFactory_VBOX(newvbox, node, state);
