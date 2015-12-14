@@ -33,10 +33,10 @@
 		<module>../org.occiware.clouddesigner.occi.pca</module>
 		
 		<!-- Cloud -->
-		<!-- <module>../org.occiware.clouddesigner.occi.cloud</module> -->
-		<!-- <module>../org.occiware.clouddesigner.occi.cloud.edit</module> -->
-		<!--<module>../org.occiware.clouddesigner.occi.cloud.connector</module> -->
-		<!--<module>../org.occiware.clouddesigner.occi.cloud.design</module> -->
+		<module>../org.occiware.clouddesigner.occi.cloud</module>
+		<module>../org.occiware.clouddesigner.occi.cloud.edit</module>
+		<module>../org.occiware.clouddesigner.occi.cloud.connector</module>
+		<module>../org.occiware.clouddesigner.occi.cloud.design</module>
 
 
 		<!-- Hypervisor -->
