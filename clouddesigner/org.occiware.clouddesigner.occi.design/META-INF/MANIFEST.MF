@@ -3,6 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: OCCI-Designer
 Bundle-SymbolicName: org.occiware.clouddesigner.occi.design;singleton:=true
 Bundle-Version: 0.1.0.qualifier
+Bundle-ClassPath: .
 Bundle-Activator: org.occiware.clouddesigner.occi.design.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
@@ -18,7 +19,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.transaction,
  org.eclipse.emf.edit.ui,
  org.occiware.clouddesigner.occi.edit,
- org.eclipse.pde.ui
+ org.eclipse.pde.ui,
+ com.google.guava;bundle-version="15.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.occiware.clouddesigner.occi.design.dialog,
