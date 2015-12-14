@@ -1,2 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xmi:id="_BsGu8JLEEeWuhuMUxy4yJA" version="10.0.0.201505222000"/>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:occi="http://schemas.ogf.org/occi" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description" xmi:id="_BsGu8JLEEeWuhuMUxy4yJA" selectedViews="_UPG6oJLFEeWkTMzx_firUg" version="10.0.0.201505222000">
+  <semanticResources>first-cloud-configuration.occic</semanticResources>
+  <semanticResources>file:/Users/spirals/git/ecore/clouddesigner/org.occiware.clouddesigner.occi.cloud/model/Cloud.occie</semanticResources>
+  <semanticResources>platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie</semanticResources>
+  <semanticResources>platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie</semanticResources>
+  <semanticResources>platform:/resource/org.occiware.clouddesigner.occi/model/OCCI.ecore</semanticResources>
+  <semanticResources>platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore</semanticResources>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_PjL-EJLFEeWkTMzx_firUg">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_Pjxz8JLFEeWkTMzx_firUg" name="first-cloud-configuration">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_Pjxz8ZLFEeWkTMzx_firUg" source="DANNOTATION_CUSTOMIZATION_KEY">
+        <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_Pjxz8pLFEeWkTMzx_firUg"/>
+      </ownedAnnotationEntries>
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_Pj6W0JLFEeWkTMzx_firUg" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_Pj6W0ZLFEeWkTMzx_firUg" type="Sirius" element="_Pjxz8JLFEeWkTMzx_firUg" measurementUnit="Pixel">
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_Pj6W0pLFEeWkTMzx_firUg"/>
+        </data>
+      </ownedAnnotationEntries>
+      <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_Pjxz85LFEeWkTMzx_firUg"/>
+      <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer"/>
+      <target xmi:type="occi:Configuration" href="first-cloud-configuration.occic#/"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']"/>
+  </ownedViews>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_UPG6oJLFEeWkTMzx_firUg">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_v-rZAJLFEeWkTMzx_firUg" name="first-cloud-configuration">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_v-rZAZLFEeWkTMzx_firUg" source="DANNOTATION_CUSTOMIZATION_KEY">
+        <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_v-rZApLFEeWkTMzx_firUg"/>
+      </ownedAnnotationEntries>
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_v-rZBJLFEeWkTMzx_firUg" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_v-rZBZLFEeWkTMzx_firUg" type="Sirius" element="_v-rZAJLFEeWkTMzx_firUg" measurementUnit="Pixel">
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_v-rZBpLFEeWkTMzx_firUg"/>
+        </data>
+      </ownedAnnotationEntries>
+      <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.cloud.design/description/Cloud.odesign#//@ownedViewpoints[name='Cloud']/@ownedRepresentations[name='Cloud%20configuration']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_v-rZA5LFEeWkTMzx_firUg"/>
+      <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.occiware.clouddesigner.occi.cloud.design/description/Cloud.odesign#//@ownedViewpoints[name='Cloud']/@ownedRepresentations[name='Cloud%20configuration']/@defaultLayer"/>
+      <target xmi:type="occi:Configuration" href="first-cloud-configuration.occic#/"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.occiware.clouddesigner.occi.cloud.design/description/Cloud.odesign#//@ownedViewpoints[name='Cloud']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

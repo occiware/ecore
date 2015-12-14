@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
 <occi:Configuration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:occi="http://schemas.ogf.org/occi">
-  <use href="file:/Users/spirals/git/ecore/clouddesigner/org.occiware.clouddesigner.occi.cloud/model/cloud.occie#/"/>
+  <use href="file:/Users/spirals/git/ecore/clouddesigner/org.occiware.clouddesigner.occi.cloud/model/Cloud.occie#/"/>
+  <use href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#/"/>
 </occi:Configuration>
