@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="ASCII"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.occiware.clouddesigner.occi.cloud/src-gen"
+    editDirectory="/org.occiware.clouddesigner.occi.cloud.edit/src-gen" modelPluginID="org.occiware.clouddesigner.occi.cloud"
+    modelName="Cloud" complianceLevel="7.0" copyrightFields="false" editorPluginID="org.occiware.clouddesigner.occi.cloud.edit"
+    usedGenPackages="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.genmodel#//infrastructure platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.genmodel#//occi">
+  <foreignModel>Cloud.ecore</foreignModel>
+  <genPackages prefix="Cloud" basePackage="org.occiware.clouddesigner.occi" disposableProviderFactory="true"
+      ecorePackage="file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#/">
+    <genClasses ecoreClass="file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine/name"/>
+    </genClasses>
+    <genClasses ecoreClass="file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_CloudSigma">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_CloudSigma/provider"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_CloudSigma/email"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_CloudSigma/password"/>
+    </genClasses>
+    <genClasses ecoreClass="file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_Amazon_EC2">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_Amazon_EC2/provider"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_Amazon_EC2/access_key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_Amazon_EC2/secret_key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_Amazon_EC2/region"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_Amazon_EC2/image"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_Amazon_EC2/security_group"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_Amazon_EC2/key_pair"/>
+    </genClasses>
+    <genClasses ecoreClass="file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_Gogrid">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_Gogrid/provider"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_Gogrid/key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_Gogrid/shared_secret"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_Gogrid/image_id"/>
+    </genClasses>
+    <genClasses ecoreClass="file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_Hp_Helion">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_Hp_Helion/provider"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_Hp_Helion/tenant"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_Hp_Helion/access_key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_Hp_Helion/secret_key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_Hp_Helion/image"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_Hp_Helion/zone"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_Hp_Helion/flavor_id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_Hp_Helion/key_pair"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_Hp_Helion/security_group"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_Hp_Helion/floating_ip"/>
+    </genClasses>
+    <genClasses ecoreClass="file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_GCE">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_GCE/zone"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_GCE/region"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_GCE/machine_type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_GCE/machine_url"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_GCE/firewall_tag"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_GCE/startup_script"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_GCE/json_file"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_GCE/provider"/>
+    </genClasses>
+    <genClasses ecoreClass="file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_RackSpace">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_RackSpace/provider"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_RackSpace/username"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_RackSpace/api_key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_RackSpace/region"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_RackSpace/image"/>
+    </genClasses>
+    <genClasses ecoreClass="file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_ProfitBricks">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_ProfitBricks/provider"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_ProfitBricks/username"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_ProfitBricks/api_key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_ProfitBricks/email"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_ProfitBricks/password"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_ProfitBricks/location"/>
+    </genClasses>
+    <genClasses ecoreClass="file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_OpenStack">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_OpenStack/provider"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_OpenStack/tenant"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_OpenStack/username"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_OpenStack/password"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_OpenStack/endpoint"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_OpenStack/image_id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_OpenStack/flavor_name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_OpenStack/flavor_id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_OpenStack/security_group"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_OpenStack/network_name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_OpenStack/network_id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_OpenStack/floating_ip_pool"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_OpenStack/image_name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_OpenStack/keypair"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_OpenStack/region"/>
+    </genClasses>
+    <genClasses ecoreClass="file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_SoftLayer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_SoftLayer/provider"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_SoftLayer/username"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_SoftLayer/api_key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_SoftLayer/location_id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_SoftLayer/image_id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_SoftLayer/domain_name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_SoftLayer/disk_type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_SoftLayer/tenant"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#//Machine_SoftLayer/endpoint"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
