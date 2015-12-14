@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="cloud" version="10.1.0.201507271600">
+  <ownedViewpoints name="Cloud">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Cloud configuration" domainClass="Configuration">
+      <metamodel href="../../org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore#/"/>
+      <metamodel href="../../org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.ecore#/"/>
+      <metamodel href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#/"/>
+      <defaultLayer name="Default">
+        <containerMappings name="Machine" labelDirectEdit="//@ownedViewpoints[name='Cloud']/@ownedRepresentations[name='Cloud%20configuration']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit']" semanticCandidatesExpression="feature:resources" domainClass="Machine">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="feature:id" labelAlignment="LEFT" roundedCorner="true">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+          <conditionnalStyles predicateExpression="[state.toString().equalsIgnoreCase('active')/]">
+            <style xsi:type="style:FlatContainerStyleDescription">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="[state.toString().equalsIgnoreCase('suspended')/]">
+            <style xsi:type="style:FlatContainerStyleDescription">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="[state.toString().equalsIgnoreCase('inactive')/]">
+            <style xsi:type="style:FlatContainerStyleDescription">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+            </style>
+          </conditionnalStyles>
+        </containerMappings>
+        <toolSections name="Tool" label="Tool">
+          <ownedTools xsi:type="tool:DirectEditLabel" name="Edit">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:arg0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:PopupMenu" name="Execute" precondition="[oclIsKindOf(Machine) or oclIsKindOf(Configuration)/]">
+            <menuItemDescription xsi:type="tool_1:OperationAction" name="Start" precondition="[oclIsKindOf(Machine)]" icon="/org.occiware.clouddesigner.occi.cloud.design/images/start.gif">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:start"/>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool_1:OperationAction" name="Stop" precondition="[oclIsKindOf(Machine)]" icon="/org.occiware.clouddesigner.occi.cloud.design/images/stop.gif">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:stop"/>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool_1:OperationAction" name="Restart" precondition="[oclIsKindOf(Machine)]" icon="/org.occiware.clouddesigner.occi.cloud.design/images/restart.gif">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:restart"/>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool_1:OperationAction" name="Import" precondition="[oclIsKindOf(Configuration)]" icon="/org.occiware.clouddesigner.occi.cloud.design/images/import.gif">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:import"/>
+              </initialOperation>
+            </menuItemDescription>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Configuration">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Machine_CloudSigma" label="CloudSigma" containerMappings="//@ownedViewpoints[name='Cloud']/@ownedRepresentations[name='Cloud%20configuration']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.cloud.edit/icons/full/obj16/Machine_CloudSigma.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="cloud.Machine_CloudSigma" referenceName="resources"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Machine_Amazon_EC2" label="Amazon_EC2" containerMappings="//@ownedViewpoints[name='Cloud']/@ownedRepresentations[name='Cloud%20configuration']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.cloud.edit/icons/full/obj16/Machine_Amazon_EC2.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="cloud.Machine_Amazon_EC2" referenceName="resources"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Machine_Gogrid" label="Gogrid" containerMappings="//@ownedViewpoints[name='Cloud']/@ownedRepresentations[name='Cloud%20configuration']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.cloud.edit/icons/full/obj16/Machine_Gogrid.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="cloud.Machine_Gogrid" referenceName="resources"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Machine_Hp_Helion" label="Hp_Helion" containerMappings="//@ownedViewpoints[name='Cloud']/@ownedRepresentations[name='Cloud%20configuration']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.cloud.edit/icons/full/obj16/Machine_Hp_Helion.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="cloud.Machine_Hp_Helion" referenceName="resources"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Machine_GCE" label="Google CE" containerMappings="//@ownedViewpoints[name='Cloud']/@ownedRepresentations[name='Cloud%20configuration']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.cloud.edit/icons/full/obj16/Machine_GCE.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="cloud.Machine_GCE" referenceName="resources"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Machine_RackSpace" label="RackSpace" containerMappings="//@ownedViewpoints[name='Cloud']/@ownedRepresentations[name='Cloud%20configuration']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.cloud.edit/icons/full/obj16/Machine_Rackspace.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="cloud.Machine_RackSpace" referenceName="resources"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Machine_ProfitBricks" label="ProfitBricks" containerMappings="//@ownedViewpoints[name='Cloud']/@ownedRepresentations[name='Cloud%20configuration']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.cloud.edit/icons/full/obj16/Machine_ProfitBricks.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="cloud.Machine_ProfitBricks" referenceName="resources"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Machine_OpenStack" label="OpenStack" containerMappings="//@ownedViewpoints[name='Cloud']/@ownedRepresentations[name='Cloud%20configuration']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.cloud.edit/icons/full/obj16/Machine_OpenStack.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="cloud.Machine_OpenStack" referenceName="resources"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Machine_SoftLayer" label="SoftLayer" containerMappings="//@ownedViewpoints[name='Cloud']/@ownedRepresentations[name='Cloud%20configuration']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.cloud.edit/icons/full/obj16/Machine_SoftLayer.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="cloud.Machine_SoftLayer" referenceName="resources"/>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedJavaExtensions qualifiedClassName="org.occiware.clouddesigner.occi.design.services.CloudServices"/>
+  </ownedViewpoints>
+</description:Group>

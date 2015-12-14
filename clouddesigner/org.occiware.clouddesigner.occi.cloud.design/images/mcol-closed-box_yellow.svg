@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg2"
+   sodipodi:docname="mcol-closed-box_red.svg"
+   viewBox="0 0 51.089 40.938"
+   sodipodi:version="0.32"
+   version="1.0"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   inkscape:version="0.48.2 r9819"
+   width="100%"
+   height="100%">
+  <defs
+     id="defs4">
+    <linearGradient
+       id="linearGradient4294"
+       inkscape:collect="always">
+      <stop
+         id="stop4296"
+         style="stop-color:#ffffff;stop-opacity:0.668"
+         offset="0" />
+      <stop
+         id="stop4298"
+         style="stop-color:#ffffff;stop-opacity:0"
+         offset="1" />
+    </linearGradient>
+    <radialGradient
+       id="radialGradient3861"
+       gradientUnits="userSpaceOnUse"
+       cy="522.12"
+       cx="-59.603"
+       gradientTransform="matrix(1.0178,0,0,0.13108,127.26,37.243)"
+       r="61.166"
+       inkscape:collect="always">
+      <stop
+         id="stop5032"
+         style="stop-color:#000000;stop-opacity:.20833"
+         offset="0" />
+      <stop
+         id="stop5034"
+         style="stop-color:#000000;stop-opacity:0"
+         offset="1" />
+    </radialGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4294"
+       id="linearGradient3008"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.34104,0,0,0.34104,-22.945,38.883)"
+       x1="-81.671"
+       y1="-10.987"
+       x2="-83.837"
+       y2="190.88" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4294"
+       id="linearGradient3011"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.34104,0,0,0.34104,-22.945,38.883)"
+       x1="-81.671"
+       y1="-10.987"
+       x2="-83.837"
+       y2="190.88" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     inkscape:showpageshadow="false"
+     inkscape:zoom="11.313708"
+     height="48px"
+     borderopacity="1.0"
+     inkscape:current-layer="layer1"
+     inkscape:cx="27.7204"
+     inkscape:cy="16.961837"
+     showgrid="false"
+     width="48px"
+     showguides="true"
+     bordercolor="#666666"
+     inkscape:window-x="-8"
+     inkscape:guide-bbox="true"
+     inkscape:window-y="-8"
+     inkscape:window-width="1680"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     pagecolor="#ffffff"
+     inkscape:document-units="px"
+     inkscape:window-height="988"
+     showborder="false"
+     inkscape:window-maximized="1" />
+  <g
+     id="layer1"
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     transform="translate(68.106 -65.31)">
+    <path
+       sodipodi:cx="66.597786"
+       sodipodi:cy="105.68266"
+       transform="matrix(0.41762,0,0,0.83114,-70.374,8.4978)"
+       d="m 127.76384,105.68266 a 61.16605,11.926199 0 1 1 -122.332104,0 61.16605,11.926199 0 1 1 122.332104,0 z"
+       sodipodi:type="arc"
+       style="color:#000000;fill:url(#radialGradient3861);fill-rule:evenodd"
+       sodipodi:ry="11.926199"
+       sodipodi:rx="61.16605"
+       id="path3763" />
+    <path
+       inkscape:connector-curvature="0"
+       d="m -38.948,75.144 -19.427,-4.64 -0.125,24.826 19.552,4.638 V 75.144 z"
+       style="fill:#ffdd55;stroke:#000000;stroke-linecap:square;stroke-linejoin:round;stroke-opacity:1"
+       sodipodi:nodetypes="ccccc"
+       id="rect2732" />
+    <path
+       inkscape:connector-curvature="0"
+       d="m -38.558,75.14 14.016,-4.212 0.089,24.395 -14.068,4.552 -0.037,-24.735 z"
+       style="fill:#ffdd55;stroke:#000000;stroke-linecap:square;stroke-linejoin:round;stroke-opacity:1"
+       sodipodi:nodetypes="ccccc"
+       id="path3727" />
+    <path
+       inkscape:connector-curvature="0"
+       d="m -44.023,65.927 19.687,4.712 -14.493,4.236 -19.671,-4.556 14.477,-4.392 z"
+       style="fill:#ffe680;stroke:#000000;stroke-linecap:square;stroke-linejoin:round;stroke-opacity:1"
+       sodipodi:nodetypes="ccccc"
+       id="path3729" />
+    <path
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccsc"
+       inkscape:transform-center-y="-8.3223685"
+       inkscape:transform-center-x="-10.429825"
+       d="m -49.486,72.594 -8.773,-2.365 14.168,-4.419 9.568,2.485 -14.963,4.299 z"
+       style="fill:#ffe680;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linejoin:round;stroke-opacity:1"
+       id="path3733" />
+    <path
+       inkscape:connector-curvature="0"
+       d="m -39.48,75.479 v 12.886 c -3.277,3.315 -18.561,-21.473 -18.369,1.66 l 0.008,-18.935 18.361,4.389 z"
+       style="opacity:0.81172001;fill:url(#linearGradient3011);fill-rule:evenodd"
+       sodipodi:nodetypes="ccccc"
+       id="path3753" />
+    <path
+       inkscape:connector-curvature="0"
+       d="m -38.049,75.468 v 12.886 c 4.603,-18.914 13.277,-12.179 12.923,-16.775 l -12.923,3.889 z"
+       style="opacity:0.81172001;fill:url(#linearGradient3008);fill-rule:evenodd"
+       sodipodi:nodetypes="cccc"
+       id="path3757" />
+  </g>
+  <metadata
+     id="metadata25">
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/publicdomain/" />
+        <dc:publisher>
+          <cc:Agent
+             rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title></dc:title>
+        <dc:date>2008-03-19T23:36:12</dc:date>
+        <dc:description>A closed cardboard box.</dc:description>
+        <dc:source>https://openclipart.org/detail/15872/closed-box-by-mcol</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>mcol</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>box</rdf:li>
+            <rdf:li>cardboard</rdf:li>
+            <rdf:li>cartoon</rdf:li>
+            <rdf:li>container</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>
