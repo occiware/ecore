@@ -12,4 +12,17 @@
 	       name="cloud">
     </component>
   </extension>
+    <extension point="org.eclipse.ui.newWizards">
+      <category
+        id = "org.occiware.clouddesigner"
+      name="Cloud Designer">
+      </category>
+     <wizard
+            category="org.occiware.clouddesigner"
+            class="org.occiware.clouddesigner.occi.cloud.design.wizard.NewConfigurationWizard"
+            icon="images/Configuration.gif"
+            id="org.occiware.clouddesigner.occi.cloud.design.wizard.NewConfigurationWizard"
+            name="Cloud Configuration File">
+      </wizard>
+   </extension>
 </plugin>
