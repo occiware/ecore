@@ -48,11 +48,10 @@ import org.occiware.clouddesigner.occi.docker.Machine
 import org.occiware.clouddesigner.occi.docker.connector.EventCallBack
 import org.occiware.clouddesigner.occi.docker.connector.StatsCallback
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerMachineManager
-import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerConfig
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerUtil
+import org.occiware.clouddesigner.occi.docker.preference.preferences.PreferenceValues
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import org.occiware.clouddesigner.occi.docker.preference.preferences.PreferenceValues
 
 class DockerContainerManager {
 	private static DockerClient dockerClient = null
@@ -516,7 +515,7 @@ class DockerContainerManager {
 		val URI uri = new URI(url.getProtocol(), url.getHost(), url.getPath(), url.getQuery(), null)
 		val dockerUri = uri.toString + port
 		LOGGER.info("Connection inside machine: " + machine + " with uri: " + dockerUri.toString)
-		val DockerClientConfig config = DockerClientConfig.createDefaultConfigBuilder.withVersion(properties.version).withUri(dockerUri).withUsername(properties.username).withPassword(properties.password).withEmail(properties.email).withServerAddress(properties.url).
+		val DockerClientConfig config = DockerClientConfig.createDefaultConfigBuilder.withVersion(properties.version.trim).withUri(dockerUri).withUsername(properties.username.trim).withPassword(properties.password.trim).withEmail(properties.email.trim).withServerAddress(properties.url.trim).
 			withDockerCertPath(certPath).build()
 		val DockerClient dockerClient = DockerClientBuilder.getInstance(config).build()
 

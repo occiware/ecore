@@ -36,48 +36,48 @@ This configuration is optional, let the default value if you do not change it. H
 	On WINDOWS PLATFORM or Linux PLATFORM : Window > Preferences  dialog page will appear
 	On MAC OS X PLATFORM : eclipse > Preferences  dialog page will appear like this :
 
-![Preferences](https://raw.githubusercontent.com/occiware/dev-tools/master/eclipse/images/preferences.png "Docker preferences")
+![Preferences](documentation/images/preferences.png "Docker preferences")
 
 Click on the `Docker Preferences` button in order to change the settings. Change the configuration below according to your requirements in the Docker modeler.
 
-![Preferences](https://raw.githubusercontent.com/occiware/dev-tools/master/eclipse/images/docker_preferences.png "Docker preferences")
+![Preferences](documentation/images/docker_preferences.png "Docker preferences")
 		
 
 * Create new project 
-![Viewpoint Selections](https://raw.githubusercontent.com/occiware/dev-tools/master/eclipse/images/new_projet.png "New project")
+![Viewpoint Selections](documentation/images/new_projet.png "New project")
 
 
 
 * Create the docker configuration 
-![Viewpoint Selections](https://raw.githubusercontent.com/occiware/dev-tools/master/eclipse/images/set_config.png "Create the configuration")
+![Viewpoint Selections](documentation/images/set_config.png "Create the configuration")
 
 
 
 * Set the configuration name in the wizard
-![Viewpoint Selections](https://raw.githubusercontent.com/occiware/dev-tools/master/eclipse/images/set_configuration_name.png "Select the appropriate configuration")
+![Viewpoint Selections](documentation/images/set_configuration_name.png "Select the appropriate configuration")
 
 
 
 * You should get something like this
-![Viewpoint Selections](https://raw.githubusercontent.com/occiware/dev-tools/master/eclipse/images/rendering_docker_modeler.png "Select the docker reference extension")
+![Viewpoint Selections](documentation/images/rendering_docker_modeler.png "Select the docker reference extension")
 
 
 * Create a new machine and one container inside the machine
-![Viewpoint Selections](https://raw.githubusercontent.com/occiware/dev-tools/master/eclipse/images/ex_design.png "create a new machine")
+![Viewpoint Selections](documentation/images/ex_design.png "create a new machine")
 
 
 * Select `Startall` in the contextual menu `Execute`in order to start both the machine and the docker
-![Viewpoint Selections](https://raw.githubusercontent.com/occiware/dev-tools/master/eclipse/images/ex_design_on.png "create a new machine")
+![Viewpoint Selections](documentation/images/ex_design_on.png "create a new machine")
 
 
 * You can also import all machines deployed in the execution environment
-![Viewpoint Selections](https://raw.githubusercontent.com/occiware/dev-tools/master/eclipse/images/after_import.png "create a new machine")
+![Viewpoint Selections](documentation/images/after_import.png "create a new machine")
 
 To launch the modeler from eclipse with ecore source code follow these steps:
 
 * Start your eclipse IDE in `Run` menu chose `Run Configurations..` (We assume that the OCCIWARE/ecore project is already launched in your IDE).
 
-![Run Configurations...](https://raw.githubusercontent.com/occiware/dev-tools/master/eclipse/images/run.png "Run Configurations...")
+![Run Configurations...](documentation/images/run.png "Run Configurations...")
 
 * Click on `Run` button.
 
@@ -87,11 +87,11 @@ To launch the modeler from eclipse with ecore source code follow these steps:
 
 * When the project is imported, make a right click on it and choose  `Viewpoints Selection`.
 
-![Viewpoint Selections](https://raw.githubusercontent.com/occiware/dev-tools/master/eclipse/images/vs.png "Viewpoint Selections")
+![Viewpoint Selections](documentation/images/vs.png "Viewpoint Selections")
 
 * Check that the `docker` box is checked as shown in the picture below.
 
-![Viewpoint Selections](https://raw.githubusercontent.com/occiware/dev-tools/master/eclipse/images/view.png "Viewpoint Selections")
+![Viewpoint Selections](documentation/images/view.png "Viewpoint Selections")
 
 Demo
 ----
