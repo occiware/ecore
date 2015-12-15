@@ -72,6 +72,7 @@ public class DockerPreference extends FieldEditorPreferencePage implements IWork
 
 		url = new StringFieldEditor(PreferenceConstants.P_STRING_URL, "Docker &url:", getFieldEditorParent());
 		addField(url);
+		
 		LOGGER.info("All text fields where created");
 
 		// add change listener to the preferences store so that we are notified
@@ -142,6 +143,24 @@ public class DockerPreference extends FieldEditorPreferencePage implements IWork
 			setValid(false);
 		}
 
+		// Validate docker version
+		if (version.getStringValue() != null && !version.getStringValue().equals("")) {
+			setErrorMessage(null);
+			setValid(true);
+		} else {
+			setErrorMessage(PreferenceConstants.E_MSG_VERSION);
+			setValid(false);
+		}
+
+		// Validate docker url
+		if (url.getStringValue() != null && !url.getStringValue().equals("")) {
+			setErrorMessage(null);
+			setValid(true);
+		} else {
+			setErrorMessage(PreferenceConstants.E_MSG_URL);
+			setValid(false);
+		}
+		
 	}
 
 	public void propertyChange(PropertyChangeEvent event) {

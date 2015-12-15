@@ -50,10 +50,10 @@ public class PreferenceValues extends AbstractHandler{
 		setEmail(email);
 
 		String version = Activator.getDefault().getPreferenceStore().getString(PreferenceConstants.P_STRING_VERSION);
-		setEmail(version);
+		setVersion(version);
 
 		String url = Activator.getDefault().getPreferenceStore().getString(PreferenceConstants.P_STRING_URL);
-		setEmail(url);
+		setUrl(url);
 		
 		Activator.getDefault().getPreferenceStore()
         .addPropertyChangeListener(new IPropertyChangeListener() {
