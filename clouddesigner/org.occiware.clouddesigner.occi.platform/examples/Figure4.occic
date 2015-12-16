@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ASCII"?>
+<occi:Configuration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:occi="http://schemas.ogf.org/occi">
+  <use href="../model/platform.occie#/"/>
+  <use href="templates.occie#/"/>
+  <resources id="myapp">
+    <kind href="../model/platform.occie#//@kinds[term='application']"/>
+    <mixins href="templates.occie#//@mixins[term='small']"/>
+    <mixins href="templates.occie#//@mixins[term='python']"/>
+    <attributes name="occi.app.name" value="myapp"/>
+    <attributes name="occi.app.context" value="git@git.example.com"/>
+    <attributes name="occi.app.url" value="myapp.example.com"/>
+    <attributes name="occi.app.state" value="active"/>
+  </resources>
+</occi:Configuration>

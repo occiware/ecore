@@ -1,0 +1,64 @@
+Generated at Wed Dec 16 01:12:23 CET 2015 from platform:/resource/org.occiware.clouddesigner.occi.platform/examples/templates.occie by org.occiware.clouddesigner.occi.gen.doc
+
+h1. OCCI Extension: templates
+
+| *Name* | templates |
+| *Scheme* | http://example.com/templates/platform# |
+
+h1. Imports
+
+| *Name* | *Scheme* |
+| <a href="platform.textile">platform</a> | http://schemas.ogf.org/occi/platform# |
+
+h1. Kinds
+
+
+
+h1. Mixins
+
+h2. Mixin small
+
+| *Term* | small |
+| *Scheme* | http://example.com/templates/platform# |
+| *Title* |  |
+
+h3. Depends
+
+* <a href="platform.textile#mixin-res_tpl">http://schemas.ogf.org/occi/platform#res_tpl</a>
+
+h3. Applies
+
+
+h3. Attributes
+
+
+h3. Actions
+
+
+
+h2. Mixin python
+
+| *Term* | python |
+| *Scheme* | http://example.com/templates/platform# |
+| *Title* |  |
+
+h3. Depends
+
+* <a href="platform.textile#mixin-app_tpl">http://schemas.ogf.org/occi/platform#app_tpl</a>
+
+h3. Applies
+
+
+h3. Attributes
+
+
+h3. Actions
+
+
+
+
+
+h1. Types
+
+
+

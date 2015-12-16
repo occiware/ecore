@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ASCII"?>
+<occi:Extension
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:occi="http://schemas.ogf.org/occi"
+    name="templates"
+    scheme="http://example.com/templates/platform#">
+  <import href="../model/platform.occie#/"/>
+  <mixins term="small"
+      scheme="http://example.com/templates/platform#">
+    <depends
+        href="../model/platform.occie#//@mixins[term='res_tpl']"/>
+  </mixins>
+  <mixins term="python"
+      scheme="http://example.com/templates/platform#"
+      title="">
+    <depends
+        href="../model/platform.occie#//@mixins[term='app_tpl']"/>
+  </mixins>
+</occi:Extension>

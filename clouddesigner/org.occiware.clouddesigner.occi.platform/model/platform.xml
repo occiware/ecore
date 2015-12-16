@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated at Wed Dec 16 00:44:35 CET 2015 from platform:/resource/org.occiware.clouddesigner.occi.platform/model/platform.occie by org.occiware.clouddesigner.occi.gen.xml -->
+<occi:extension xmlns:occi="http://schemas.ogf.org/occi"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://schemas.ogf.org/occi occi.xsd"
+    name="platform"
+    scheme="http://schemas.ogf.org/occi/platform#"
+    version="1"
+    status="stable">
+
+  <!-- Kind: Application -->
+  <occi:kind term="application" scheme="http://schemas.ogf.org/occi/platform#" title="Application">
+    <occi:parent term="resource" scheme="http://schemas.ogf.org/occi/core#"/>
+    <occi:attribute name="occi.app.name" use="optional" type="xs:string" title="Name of the application."/>
+    <occi:attribute name="occi.app.context" immutable="true" use="optional" type="" title="URL for contextualizing the app."/>
+    <occi:attribute name="occi.app.url" immutable="true" use="optional" type="" title="DNS entry."/>
+    <occi:attribute name="occi.app.state" immutable="true" use="optional" type="xs:string" title="State of the application."/>
+    <occi:attribute name="occi.app.state.message" immutable="true" use="optional" type="xs:string" title="Human-readable explanation of the current instance state."/>
+    <occi:action term="start" scheme="http://schemas.ogf.org/occi/platform/application/action#" title="Start the application.">
+    </occi:action>
+    <occi:action term="stop" scheme="http://schemas.ogf.org/occi/platform/application/action#" title="Stop the application.">
+    </occi:action>
+  </occi:kind>
+
+  <!-- Kind: Component -->
+  <occi:kind term="component" scheme="http://schemas.ogf.org/occi/platform#" title="Component">
+    <occi:parent term="resource" scheme="http://schemas.ogf.org/occi/core#"/>
+    <occi:attribute name="occi.component.state" immutable="true" use="optional" type="xs:string" title="State of the component."/>
+    <occi:attribute name="occi.component.state.message" immutable="true" use="optional" type="xs:string" title="Human-readable explanation of the current instance state."/>
+    <occi:action term="start" scheme="http://schemas.ogf.org/occi/platform/component/action#" title="Start the application.">
+    </occi:action>
+    <occi:action term="stop" scheme="http://schemas.ogf.org/occi/platform/component/action#" title="Stop the application.">
+    </occi:action>
+  </occi:kind>
+
+  <!-- Kind: ComponentLink -->
+  <occi:kind term="componentlink" scheme="http://schemas.ogf.org/occi/platform#" title="ComponentLink">
+    <occi:parent term="link" scheme="http://schemas.ogf.org/occi/core#"/>
+  </occi:kind>
+
+  <!-- Mixin: Application Template -->
+  <occi:mixin term="app_tpl" scheme="http://schemas.ogf.org/occi/platform#" title="Application Template">
+    <occi:applies term="application" scheme="http://schemas.ogf.org/occi/platform#"/>
+  </occi:mixin>
+
+  <!-- Mixin: Resource Template -->
+  <occi:mixin term="res_tpl" scheme="http://schemas.ogf.org/occi/platform#" title="Resource Template">
+    <occi:applies term="application" scheme="http://schemas.ogf.org/occi/platform#"/>
+    <occi:applies term="component" scheme="http://schemas.ogf.org/occi/platform#"/>
+  </occi:mixin>
+
+  <!-- Mixin: Database Mixin -->
+  <occi:mixin term="database" scheme="http://schemas.ogf.org/occi/platform#" title="Database Mixin">
+    <occi:applies term="component" scheme="http://schemas.ogf.org/occi/platform#"/>
+    <occi:attribute name="occi.database.version" immutable="true" use="optional" type="xs:string" title="Version of the database."/>
+  </occi:mixin>
+
+  <!-- Mixin: Database Link -->
+  <occi:mixin term="databaselink" scheme="http://schemas.ogf.org/occi/platform#" title="Database Link">
+    <occi:applies term="componentlink" scheme="http://schemas.ogf.org/occi/platform#"/>
+    <occi:attribute name="occi.database.uri" immutable="true" use="optional" type="" title="Connection URI for the database."/>
+    <occi:attribute name="occi.database.username" immutable="true" use="optional" type="" title="Username."/>
+    <occi:attribute name="occi.database.token" immutable="true" use="optional" type="" title="Token."/>
+  </occi:mixin>
+</occi:extension>
