@@ -22,10 +22,12 @@ import com.google.common.collect.Multimap
 import java.util.ArrayList
 import java.util.Collections
 import java.util.HashMap
+import java.util.Iterator
 import java.util.List
 import java.util.Map
 import org.apache.commons.lang.StringUtils
 import org.eclipse.emf.common.command.Command
+import org.eclipse.emf.common.util.EList
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.transaction.RecordingCommand
 import org.eclipse.emf.transaction.RollbackException
@@ -81,11 +83,7 @@ import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
 import static com.google.common.base.Preconditions.checkNotNull
-import static org.occiware.clouddesigner.occi.docker.connector.EventCallBack.*
 import static org.occiware.clouddesigner.occi.docker.connector.ExecutableContainer.*
-import org.eclipse.emf.common.util.EList
-import java.util.Iterator
-import java.util.ConcurrentModificationException
 
 /**
  * This class overrides the generated EMF factory of the Docker package.
