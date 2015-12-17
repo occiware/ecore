@@ -2,6 +2,9 @@
 <occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:occi="http://schemas.ogf.org/occi" name="simulation" scheme="simulation#">
   <import href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#/"/>
   <import href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#/"/>
+  <kinds term="contains" scheme="simulation#" title="cloudSim resources link">
+    <parent href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@kinds[term='link']"/>
+  </kinds>
   <mixins term="datacenter" scheme="simulation#" title="datacenter mixin">
     <attributes name="os" required="true" default="Linux" description="operating system">
       <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
