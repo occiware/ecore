@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+<extension point="org.occiware.clouddesigner.occi.occie">
+<occie file="model/simulation.occie" scheme="simulation#">
+</occie>
+</extension>
+</plugin>
