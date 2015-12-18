@@ -200,7 +200,8 @@ public class DockerContainerManager {
     boolean _notEquals_1 = (!Objects.equal(_command, null));
     if (_notEquals_1) {
       String _command_1 = container.getCommand();
-      final String[] cmd = _command_1.split(",");
+      String _deleteWhitespace = StringUtils.deleteWhitespace(_command_1);
+      final String[] cmd = _deleteWhitespace.split(",");
       create.withCmd(cmd);
     }
     int _cpu_shares = container.getCpu_shares();
@@ -354,7 +355,8 @@ public class DockerContainerManager {
     boolean _notEquals_1 = (!Objects.equal(_command, null));
     if (_notEquals_1) {
       String _command_1 = container.getCommand();
-      final String[] cmd = _command_1.split(",");
+      String _deleteWhitespace = StringUtils.deleteWhitespace(_command_1);
+      final String[] cmd = _deleteWhitespace.split(",");
       create.withCmd(cmd);
     } else {
       String _command_2 = container.getCommand();

@@ -36,6 +36,7 @@ import java.util.IdentityHashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import org.apache.commons.lang.StringUtils;
 import org.codehaus.jackson.JsonNode;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.util.EList;
@@ -1162,7 +1163,8 @@ public class ModelHandler {
       String _string = Arrays.toString(_cmd_1);
       String _replace_1 = _string.replace("[", "");
       String _replace_2 = _replace_1.replace("]", "");
-      modelContainer.setCommand(_replace_2);
+      String _deleteWhitespace = StringUtils.deleteWhitespace(_replace_2);
+      modelContainer.setCommand(_deleteWhitespace);
     }
     String _id_1 = currentContainer.getId();
     modelContainer.setContainerid(_id_1);
