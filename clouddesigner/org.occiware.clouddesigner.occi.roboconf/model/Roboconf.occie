@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="ASCII"?>
+<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:occi="http://schemas.ogf.org/occi" name="Roboconf" scheme="http://schemas.occiware.org/roboconf#">
+  <import href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#/"/>
+  <kinds term="application_template" scheme="http://schemas.occiware.org/roboconf#" title="Application Template">
+    <attributes name="roboconf.name">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="roboconf.description">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <parent href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds term="application" scheme="http://schemas.occiware.org/roboconf#" title="Application">
+    <attributes name="roboconf.name">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="roboconf.description">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="roboconf.qualifier">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <parent href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@kinds[term='resource']"/>
+    <actions term="deployAndStartAll" scheme="http://schemas.occiware.org/roboconf/application/action#" title="Deploy and Start All"/>
+    <actions term="stopAll" scheme="http://schemas.occiware.org/roboconf/application/action#" title="Stop All"/>
+    <actions term="undeployAll" scheme="http://schemas.occiware.org/roboconf/application/action#" title="Undeploy All"/>
+  </kinds>
+  <kinds term="instance" scheme="http://schemas.occiware.org/roboconf#" title="Instance">
+    <attributes name="roboconf.name">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="roboconf.status" type="//@types.1"/>
+    <attributes name="roboconf.overriddenExports" type="//@types.0"/>
+    <parent href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@kinds[term='resource']"/>
+    <actions term="changeInstanceState" scheme="http://schemas.occiware.org/roboconf/instance/action#" title="Change Instance State"/>
+    <actions term="delete" scheme="http://schemas.occiware.org/roboconf/instance/action#" title="Delete"/>
+  </kinds>
+  <kinds term="facet" scheme="http://schemas.occiware.org/roboconf#" title="Facet">
+    <attributes name="roboconf.name">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="roboconf.exportedVariables" type="//@types.0"/>
+    <parent href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds term="component" scheme="http://schemas.occiware.org/roboconf#" title="Component" parent="//@kinds[term='facet']">
+    <attributes name="roboconf.installerName">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="roboconf.importedVariables" type="//@types.0"/>
+  </kinds>
+  <kinds term="association" scheme="http://schemas.occiware.org/roboconf#" title="Association">
+    <parent href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@kinds[term='link']"/>
+  </kinds>
+  <kinds term="deployedOn" scheme="http://schemas.occiware.org/roboconf#" title="Deployed on">
+    <parent href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@kinds[term='link']"/>
+  </kinds>
+  <types name="Map" instanceClassName="java.util.HashMap"/>
+  <types xsi:type="ecore:EEnum" name="InstanceStatus">
+    <eLiterals name="NOT_DEPLOYED"/>
+    <eLiterals name="DEPLOYED_AND_STOPPED"/>
+    <eLiterals name="DEPLOYED_AND_STARTED"/>
+    <eLiterals name="DEPLOYING"/>
+    <eLiterals name="STARTING"/>
+    <eLiterals name="STOPPING"/>
+    <eLiterals name="UNDEPLOYING"/>
+    <eLiterals name="PROBLEM"/>
+    <eLiterals name="UNRESOLVED"/>
+  </types>
+</occi:Extension>
