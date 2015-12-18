@@ -50,20 +50,23 @@
     <attributes name="id" required="true">
       <type href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@types.13"/>
     </attributes>
-    <attributes name="ramProvisioner" required="true" type="//@types.4"/>
-    <attributes name="bwProvisioner" required="true" type="//@types.5"/>
+    <attributes name="ramProvisioner" required="true" type="//@types.3"/>
+    <attributes name="bwProvisioner" required="true" type="//@types.4"/>
     <attributes name="storage" required="true">
       <type href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@types.13"/>
     </attributes>
-    <attributes name="peList" required="true" type="//@types.2"/>
-    <attributes name="vmScheduler" required="true" type="//@types.7"/>
-    <attributes name="ram" required="true" type="//@types.8"/>
+    <attributes name="cores" required="true">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@types.13"/>
+    </attributes>
+    <attributes name="vmScheduler" required="true" type="//@types.6"/>
+    <attributes name="ram" required="true" type="//@types.7"/>
     <attributes name="bw" required="true">
       <type href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@types.13"/>
     </attributes>
-    <attributes name="storage" required="true">
+    <attributes name="mips" required="true">
       <type href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@types.13"/>
     </attributes>
+    <attributes name="PeProvisioner" required="true" type="//@types.8"/>
     <applies href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='compute']"/>
   </mixins>
   <mixins term="VM" scheme="simulation#">
@@ -91,24 +94,24 @@
     <attributes name="vmm" required="true" description="virtual machine monitor">
       <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
     </attributes>
-    <attributes name="CloudletScheduler" required="true" description="cloudletScheduler policy for cloudlets" type="//@types.6"/>
+    <attributes name="CloudletScheduler" required="true" description="cloudletScheduler policy for cloudlets" type="//@types.5"/>
     <applies href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='compute']"/>
   </mixins>
   <mixins term="HarddriveStorage" scheme="simulation#">
     <applies href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='storage']"/>
   </mixins>
   <mixins term="SanStorage" scheme="simulation#">
-    <attributes name="bandwidth" required="true" description="Network bandwidth" type="//@types.3"/>
-    <attributes name="networkLatency" required="true" description="Network latency" type="//@types.3"/>
+    <attributes name="bandwidth" required="true" description="Network bandwidth" type="//@types.2"/>
+    <attributes name="networkLatency" required="true" description="Network latency" type="//@types.2"/>
     <applies href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='storage']"/>
   </mixins>
   <types name="floatType" instanceClassName="java.lang.Float"/>
   <types name="UtilizationModel" instanceClassName="org.cloudbus.cloudsim.UtilizationModel"/>
-  <types name="List" instanceClassName="java.util.List"/>
   <types name="doubleType" instanceClassName="java.lang.Double"/>
   <types name="RamProvisioner" instanceClassName="org.cloudbus.cloudsim.provisioners.RamProvisioner"/>
   <types name="BwProvisioner" instanceClassName="org.cloudbus.cloudsim.provisioners.BwProvisioner"/>
   <types name="CloudletScheduler" instanceClassName="org.cloudbus.cloudsim.CloudletScheduler"/>
   <types name="VmScheduler" instanceClassName="org.cloudbus.cloudsim.VmScheduler"/>
   <types name="MB" instanceClassName="float"/>
+  <types name="PeProvisioner" instanceClassName="org.cloudbus.cloudsim.provisioners.PeProvisioner"/>
 </occi:Extension>
