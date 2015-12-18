@@ -156,9 +156,7 @@ class DockerContainerManager {
 			create = dockerClient.createContainerCmd("busybox")
 		}
 		if (container.command != null) {
-
-			//TODO command as "sleep", "9999"
-			val String[] cmd = container.command.split(",")
+			val String[] cmd = StringUtils.deleteWhitespace(container.command).split(",")
 			create.withCmd(cmd)
 		}
 		if (container.cpu_shares > 0) {
@@ -253,9 +251,8 @@ class DockerContainerManager {
 			create = dockerClient.createContainerCmd("busybox")
 		}
 		if (container.command != null) {
-
 			// The command is something like: sleep, 9999
-			val String[] cmd = container.command.split(",")
+			val String[] cmd = StringUtils.deleteWhitespace(container.command).split(",")
 			create.withCmd(cmd)
 		} else if (container.command == null) {
 			create.withCmd("sleep", "9999")

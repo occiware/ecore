@@ -82,6 +82,7 @@ import org.occiware.clouddesigner.occi.docker.Machine_Rackspace
 import org.occiware.clouddesigner.occi.docker.Machine_VMware_vSphere
 import java.util.Arrays
 import static com.google.common.base.Preconditions.checkArgument
+import org.apache.commons.lang.StringUtils
 
 class ModelHandler {
 
@@ -743,7 +744,7 @@ class ModelHandler {
 		modelContainer.name = currentContainer.name.replace("/", "")
 		modelContainer.image = currentContainer.config.image
 		if(!currentContainer.config.cmd.isEmpty){
-			modelContainer.command = Arrays.toString(currentContainer.config.cmd).replace("[", "").replace("]", "")
+			modelContainer.command = StringUtils.deleteWhitespace(Arrays.toString(currentContainer.config.cmd).replace("[", "").replace("]", ""))
 		}
 		modelContainer.containerid = currentContainer.id
 //		if(!currentContainer.config.exposedPorts.empty){
