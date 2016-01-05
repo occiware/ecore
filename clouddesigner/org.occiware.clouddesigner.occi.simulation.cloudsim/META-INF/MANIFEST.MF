@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Cloudsim
+Bundle-SymbolicName: org.occiware.clouddesigner.occi.simulation.cloudsim
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: org.occiware.clouddesigner.occi.simulation.cloudsim.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
