@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<occi:Configuration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hypervisor="http://occiware.org/hypervisor" xmlns:occi="http://schemas.ogf.org/occi">
+  <resources xsi:type="hypervisor:Machine_VirtualBox" id="_0wMNEKTVEeWtMMpxQSQYag">
+    <kind href="platform:/plugin/org.occiware.clouddesigner.occi.hypervisor/model/Hypervisor.occie#//@kinds[term='machine_VirtualBox']"/>
+    <links xsi:type="hypervisor:Contains" id="_36HycKTVEeWtMMpxQSQYag" target="//@resources.2">
+      <kind href="platform:/plugin/org.occiware.clouddesigner.occi.hypervisor/model/Hypervisor.occie#//@kinds[term='contains']"/>
+    </links>
+	<mixins href="platform:/plugin/org.occiware.clouddesigner.occi.simulator/model/simulation.occie#//@mixins[term='datacenter']"/>
+	<attributes name="os" value="Linux"/>
+    <attributes name="vmm" value="Xen"/>
+    <attributes name="time_zone" value="10.0"/>
+    <attributes name="cost" value="3.0"/>
+    <attributes name="costPerMem" value="0.05"/>
+    <attributes name="costPerStorage" value="0.001"/>
+    <attributes name="costPerBw" value="0.0"/>
+    <attributes name="name" value="datacenter_0"/>
+    <attributes name="schedulingInterval" value="0"/>
+	<links id="_1UsBQKTVEeWtMMpxQSQYag" target="//@resources.1"> <!--contains host -->
+		<kind href="platform:/plugin/org.occiware.clouddesigner.occi.simulator/model/simulation.occie#//@kinds[term='contains']"/>
+	</links>
+	</resources>
+
+  <resources xsi:type="hypervisor:Machine_VirtualBox" id="_1UsBQKTVEeWtMMpxQSQYag">
+    <kind href="platform:/plugin/org.occiware.clouddesigner.occi.hypervisor/model/Hypervisor.occie#//@kinds[term='machine_VirtualBox']"/>
+    <links xsi:type="hypervisor:Contains" id="_4kXCQaTVEeWtMMpxQSQYag" target="//@resources.3">
+      <kind href="platform:/plugin/org.occiware.clouddesigner.occi.hypervisor/model/Hypervisor.occie#//@kinds[term='contains']"/>
+    </links>
+	<mixins href="platform:/plugin/org.occiware.clouddesigner.occi.simulator/model/simulation.occie#//@mixins[term='host']"/>
+	<attributes name="id" required="0"/>
+    <attributes name="ramProvisioner" value="RamProvisionerSimple"/>
+    <attributes name="bwProvisioner" value="BwProvisionerSimple"/>
+    <attributes name="storage" value="10000"/>
+    <attributes name="cores" value="1"/>
+    <attributes name="vmScheduler" value="VmSchedulerTimeShared"/>
+    <attributes name="ram" value="2048"/>
+    <attributes name="bw" value="10000"/>
+	<attributes name="mips" value="1000"/>
+    <attributes name="PeProvisioner" value="PeProvisionerSimple"/>
+  </resources>
+
+  <resources xsi:type="hypervisor:Disk" id="_36GkUKTVEeWtMMpxQSQYag">
+    <kind href="platform:/plugin/org.occiware.clouddesigner.occi.hypervisor/model/Hypervisor.occie#//@kinds[term='disk']"/>
+  </resources>
+  <resources xsi:type="hypervisor:Disk" id="_4kXCQKTVEeWtMMpxQSQYag">
+    <kind href="platform:/plugin/org.occiware.clouddesigner.occi.hypervisor/model/Hypervisor.occie#//@kinds[term='disk']"/>
+  </resources>
+</occi:Configuration>

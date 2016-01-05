@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:occi="http://schemas.ogf.org/occi" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_VC72IKSeEeWei_z-6syrVA" selectedViews="_VEcSAKSeEeWei_z-6syrVA _BIotcLOdEeWhJ7StER8_aQ" version="10.1.0.201509162000">
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:occi="http://schemas.ogf.org/occi" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_VC72IKSeEeWei_z-6syrVA" selectedViews="_VEcSAKSeEeWei_z-6syrVA _BIotcLOdEeWhJ7StER8_aQ _PvjhQLOiEeWeObOWOxqbfQ" version="10.1.0.201509162000">
   <semanticResources>model/simulation.occie</semanticResources>
   <semanticResources>platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie</semanticResources>
   <semanticResources>platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie</semanticResources>
+  <semanticResources>platform:/plugin/org.occiware.clouddesigner.occi.hypervisor/model/Hypervisor.occie</semanticResources>
+  <semanticResources>file:/home/mehdi/Bureau/tmp/ecore/clouddesigner/org.occiware.clouddesigner.occi.simulation/model/simulation.occie</semanticResources>
+  <semanticResources>example/example.occic</semanticResources>
   <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_VEcSAKSeEeWei_z-6syrVA">
     <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_VLptQKSeEeWei_z-6syrVA" name="simulation">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_VLptQaSeEeWei_z-6syrVA" source="DANNOTATION_CUSTOMIZATION_KEY">
@@ -3496,6 +3499,23 @@
       <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer"/>
       <target xmi:type="occi:Configuration" href="example/simulation_infra.occic#/"/>
     </ownedRepresentations>
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_aw8LELOiEeWeObOWOxqbfQ" name="example">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_aw8LEbOiEeWeObOWOxqbfQ" source="DANNOTATION_CUSTOMIZATION_KEY">
+        <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_aw8LErOiEeWeObOWOxqbfQ"/>
+      </ownedAnnotationEntries>
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_aw_OYLOiEeWeObOWOxqbfQ" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_aw_OYbOiEeWeObOWOxqbfQ" type="Sirius" element="_aw8LELOiEeWeObOWOxqbfQ" measurementUnit="Pixel">
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_aw_OYrOiEeWeObOWOxqbfQ"/>
+        </data>
+      </ownedAnnotationEntries>
+      <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_aw8LE7OiEeWeObOWOxqbfQ"/>
+      <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer"/>
+      <target xmi:type="occi:Configuration" href="example/example.occic#/"/>
+    </ownedRepresentations>
     <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']"/>
+  </ownedViews>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_PvjhQLOiEeWeObOWOxqbfQ">
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']"/>
   </ownedViews>
 </viewpoint:DAnalysis>
