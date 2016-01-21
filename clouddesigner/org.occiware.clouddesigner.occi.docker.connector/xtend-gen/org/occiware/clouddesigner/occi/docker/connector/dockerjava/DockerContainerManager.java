@@ -240,27 +240,30 @@ public class DockerContainerManager {
       create.withEnv(_environment_1);
     }
     String _ports = container.getPorts();
-    boolean _isNotBlank = StringUtils.isNotBlank(_ports);
+    String _plus = ("Container ports = " + _ports);
+    DockerContainerManager.LOGGER.info(_plus);
+    String _ports_1 = container.getPorts();
+    boolean _isNotBlank = StringUtils.isNotBlank(_ports_1);
     if (_isNotBlank) {
-      String _ports_1 = container.getPorts();
-      final String[] l_r_ports = _ports_1.split(":");
+      String _ports_2 = container.getPorts();
+      final String[] l_r_ports = _ports_2.split(":");
       String _get = l_r_ports[0];
       int _parseInt = Integer.parseInt(_get);
-      ExposedPort port = ExposedPort.tcp(_parseInt);
+      ExposedPort tcp = ExposedPort.tcp(_parseInt);
       final Ports portBindings = new Ports();
       int _size = ((List<String>)Conversions.doWrapArray(l_r_ports)).size();
-      boolean _greaterThan_1 = (_size > 1);
-      if (_greaterThan_1) {
+      boolean _equals_1 = (_size == 2);
+      if (_equals_1) {
         String _get_1 = l_r_ports[1];
         boolean _isNotBlank_1 = StringUtils.isNotBlank(_get_1);
         if (_isNotBlank_1) {
-          String _get_2 = l_r_ports[0];
+          String _get_2 = l_r_ports[1];
           int _parseInt_1 = Integer.parseInt(_get_2);
           Ports.Binding _Binding = Ports.Binding(Integer.valueOf(_parseInt_1));
-          portBindings.bind(port, _Binding);
+          portBindings.bind(tcp, _Binding);
         } else {
           Ports.Binding _Binding_1 = Ports.Binding(Integer.valueOf(32768));
-          portBindings.bind(port, _Binding_1);
+          portBindings.bind(tcp, _Binding_1);
         }
       }
       create.withPortBindings(portBindings);
@@ -306,15 +309,15 @@ public class DockerContainerManager {
       create.withVolumes(_volume);
     }
     int _mem_limit = container.getMem_limit();
-    boolean _greaterThan_2 = (_mem_limit > 0);
-    if (_greaterThan_2) {
+    boolean _greaterThan_1 = (_mem_limit > 0);
+    if (_greaterThan_1) {
       int _mem_limit_1 = container.getMem_limit();
       Long _valueOf = Long.valueOf(_mem_limit_1);
       create.withMemory(_valueOf);
     }
     int _memory_swap = container.getMemory_swap();
-    boolean _greaterThan_3 = (_memory_swap > 0);
-    if (_greaterThan_3) {
+    boolean _greaterThan_2 = (_memory_swap > 0);
+    if (_greaterThan_2) {
       int _memory_swap_1 = container.getMemory_swap();
       Long _valueOf_1 = Long.valueOf(_memory_swap_1);
       create.withMemory(_valueOf_1);
@@ -326,8 +329,8 @@ public class DockerContainerManager {
       create.withLxcConf(lxcCon);
     }
     int _cores = container.getCores();
-    boolean _greaterThan_4 = (_cores > 0);
-    if (_greaterThan_4) {
+    boolean _greaterThan_3 = (_cores > 0);
+    if (_greaterThan_3) {
       int _cores_1 = container.getCores();
       String _valueOf_2 = String.valueOf(_cores_1);
       create.withCpusetCpus(_valueOf_2);

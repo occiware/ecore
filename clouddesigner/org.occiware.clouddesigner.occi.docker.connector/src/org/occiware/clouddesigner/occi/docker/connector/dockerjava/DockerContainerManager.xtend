@@ -177,15 +177,18 @@ class DockerContainerManager {
 		if (container.environment != null) {
 			create.withEnv(container.environment)
 		}
+		LOGGER.info("Container ports = "+ container.ports)
 		if (StringUtils.isNotBlank(container.ports)) {
 			val String[] l_r_ports = container.ports.split(":")
-			var ExposedPort port = ExposedPort.tcp(Integer.parseInt(l_r_ports.get(0)))
+			var ExposedPort tcp = ExposedPort.tcp(Integer.parseInt(l_r_ports.get(0)))
 			val Ports portBindings = new Ports
-			if(l_r_ports.size >1 ){
+			// Exposed port l_r_ports.get(0)
+			// Binding port l_r_ports.get(1)
+			if(l_r_ports.size == 2 ){
 				if(StringUtils.isNotBlank(l_r_ports.get(1))){
-					portBindings.bind(port, Ports.Binding(Integer.parseInt(l_r_ports.get(0)))) //TODO Create dynamique port number
+					portBindings.bind(tcp, Ports.Binding(Integer.parseInt(l_r_ports.get(1))))
 				}else{
-					portBindings.bind(port, Ports.Binding(32768)) //TODO Create dynamique port number
+					portBindings.bind(tcp, Ports.Binding(32768)) //TODO Create dynamique port number
 				}
 			}
 			create.withPortBindings(portBindings)
@@ -378,7 +381,6 @@ class DockerContainerManager {
 
 		// listened to Events
 //		dockerClient.statsCmd(container.containerid).exec(this.stats)
-
 	}
 
 	def startContainer(Machine machine, String containerId) {
