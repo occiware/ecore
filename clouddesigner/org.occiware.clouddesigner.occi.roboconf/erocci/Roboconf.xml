@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated at Fri Jan 29 17:30:35 CET 2016 from platform:/resource/org.occiware.clouddesigner.occi.roboconf/model/Roboconf.occie by org.occiware.clouddesigner.occi.gen.xml -->
+<occi:extension xmlns:occi="http://schemas.ogf.org/occi"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://schemas.ogf.org/occi occi.xsd"
+    name="Roboconf"
+    scheme="http://schemas.occiware.org/roboconf#"
+    version="1"
+    status="stable">
+
+  <!-- Kind: Application Template -->
+  <occi:kind term="application_template" scheme="http://schemas.occiware.org/roboconf#" title="Application Template">
+    <occi:parent term="resource" scheme="http://schemas.ogf.org/occi/core#"/>
+    <occi:attribute name="roboconf.name" immutable="true" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="roboconf.description" immutable="true" use="optional" type="xs:string" title=""/>
+  </occi:kind>
+
+  <!-- Kind: Application -->
+  <occi:kind term="application" scheme="http://schemas.occiware.org/roboconf#" title="Application">
+    <occi:parent term="resource" scheme="http://schemas.ogf.org/occi/core#"/>
+    <occi:attribute name="roboconf.name" immutable="true" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="roboconf.description" immutable="true" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="roboconf.qualifier" immutable="true" use="optional" type="xs:string" title=""/>
+    <occi:action term="deployAndStartAll" scheme="http://schemas.occiware.org/roboconf/application/action#" title="Deploy and Start All">
+    </occi:action>
+    <occi:action term="stopAll" scheme="http://schemas.occiware.org/roboconf/application/action#" title="Stop All">
+    </occi:action>
+    <occi:action term="undeployAll" scheme="http://schemas.occiware.org/roboconf/application/action#" title="Undeploy All">
+    </occi:action>
+  </occi:kind>
+
+  <!-- Kind: Instance -->
+  <occi:kind term="instance" scheme="http://schemas.occiware.org/roboconf#" title="Instance">
+    <occi:parent term="resource" scheme="http://schemas.ogf.org/occi/core#"/>
+    <occi:attribute name="roboconf.name" immutable="true" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="roboconf.status" immutable="true" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="roboconf.overriddenExports" immutable="true" use="optional" type="xs:string" title=""/>
+    <occi:action term="changeInstanceState" scheme="http://schemas.occiware.org/roboconf/instance/action#" title="Change Instance State">
+    </occi:action>
+    <occi:action term="delete" scheme="http://schemas.occiware.org/roboconf/instance/action#" title="Delete">
+    </occi:action>
+  </occi:kind>
+
+  <!-- Kind: Facet -->
+  <occi:kind term="facet" scheme="http://schemas.occiware.org/roboconf#" title="Facet">
+    <occi:parent term="resource" scheme="http://schemas.ogf.org/occi/core#"/>
+    <occi:attribute name="roboconf.name" immutable="true" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="roboconf.exportedVariables" immutable="true" use="optional" type="xs:string" title=""/>
+  </occi:kind>
+
+  <!-- Kind: Component -->
+  <occi:kind term="component" scheme="http://schemas.occiware.org/roboconf#" title="Component">
+    <occi:parent term="facet" scheme="http://schemas.occiware.org/roboconf#"/>
+    <occi:attribute name="roboconf.installerName" immutable="true" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="roboconf.importedVariables" immutable="true" use="optional" type="xs:string" title=""/>
+  </occi:kind>
+
+  <!-- Kind: Association -->
+  <occi:kind term="association" scheme="http://schemas.occiware.org/roboconf#" title="Association">
+    <occi:parent term="link" scheme="http://schemas.ogf.org/occi/core#"/>
+  </occi:kind>
+
+  <!-- Kind: Deployed on -->
+  <occi:kind term="deployedOn" scheme="http://schemas.occiware.org/roboconf#" title="Deployed on">
+    <occi:parent term="link" scheme="http://schemas.ogf.org/occi/core#"/>
+  </occi:kind>
+</occi:extension>
