@@ -110,6 +110,14 @@ public class GenUtils
        }
 
        // For EDataType, Java instance class names are converted to XML Schema types.
-       return javaTypesToXmlSchemaTypes.get(datatype.getInstanceClassName());
+       String xmlType = javaTypesToXmlSchemaTypes.get(datatype.getInstanceClassName());
+
+       // Check if the XML type was found.
+       if(xmlType != null) {
+    	   return xmlType;
+       }
+
+       // XML type was not found then return xs:string currently.
+       return XML_SCHEMA_NAMESPACE + "string";
 	}
 }
