@@ -1,0 +1,194 @@
+Generated at Fri Jan 29 17:17:59 CET 2016 from platform:/resource/org.occiware.clouddesigner.occi.roboconf/model/Roboconf.occie by org.occiware.clouddesigner.occi.gen.doc
+
+h1. OCCI Extension: Roboconf
+
+| *Name* | Roboconf |
+| *Scheme* | http://schemas.occiware.org/roboconf# |
+
+h1. Imports
+
+| *Name* | *Scheme* |
+| <a href="core.textile">core</a> | http://schemas.ogf.org/occi/core# |
+
+h1. Kinds
+
+h2. Kind application_template
+
+| *Term* | application_template |
+| *Scheme* | http://schemas.occiware.org/roboconf# |
+| *Title* | Application Template |
+| *Parent* | <a href="core.textile#kind-resource">http://schemas.ogf.org/occi/core#resource</a> |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| roboconf.name | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+| roboconf.description | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+
+h3. Actions
+
+
+
+h2. Kind application
+
+| *Term* | application |
+| *Scheme* | http://schemas.occiware.org/roboconf# |
+| *Title* | Application |
+| *Parent* | <a href="core.textile#kind-resource">http://schemas.ogf.org/occi/core#resource</a> |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| roboconf.name | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+| roboconf.description | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+| roboconf.qualifier | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+
+h3. Actions
+
+h4. Action deployAndStartAll
+
+| *Term* | deployAndStartAll |
+| *Scheme* | http://schemas.occiware.org/roboconf/application/action# |
+| *Title* | Deploy and Start All |
+
+
+h4. Action stopAll
+
+| *Term* | stopAll |
+| *Scheme* | http://schemas.occiware.org/roboconf/application/action# |
+| *Title* | Stop All |
+
+
+h4. Action undeployAll
+
+| *Term* | undeployAll |
+| *Scheme* | http://schemas.occiware.org/roboconf/application/action# |
+| *Title* | Undeploy All |
+
+
+
+
+h2. Kind instance
+
+| *Term* | instance |
+| *Scheme* | http://schemas.occiware.org/roboconf# |
+| *Title* | Instance |
+| *Parent* | <a href="core.textile#kind-resource">http://schemas.ogf.org/occi/core#resource</a> |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| roboconf.name | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+| roboconf.status | <a href="Roboconf.textile#enum-instancestatus">InstanceStatus</a> | false | false |  |  |
+| roboconf.overriddenExports | <a href="Roboconf.textile#datatype-map">Map</a> | false | false |  |  |
+
+h3. Actions
+
+h4. Action changeInstanceState
+
+| *Term* | changeInstanceState |
+| *Scheme* | http://schemas.occiware.org/roboconf/instance/action# |
+| *Title* | Change Instance State |
+
+
+h4. Action delete
+
+| *Term* | delete |
+| *Scheme* | http://schemas.occiware.org/roboconf/instance/action# |
+| *Title* | Delete |
+
+
+
+
+h2. Kind facet
+
+| *Term* | facet |
+| *Scheme* | http://schemas.occiware.org/roboconf# |
+| *Title* | Facet |
+| *Parent* | <a href="core.textile#kind-resource">http://schemas.ogf.org/occi/core#resource</a> |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| roboconf.name | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+| roboconf.exportedVariables | <a href="Roboconf.textile#datatype-map">Map</a> | false | false |  |  |
+
+h3. Actions
+
+
+
+h2. Kind component
+
+| *Term* | component |
+| *Scheme* | http://schemas.occiware.org/roboconf# |
+| *Title* | Component |
+| *Parent* | <a href="Roboconf.textile#kind-facet">http://schemas.occiware.org/roboconf#facet</a> |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| roboconf.installerName | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+| roboconf.importedVariables | <a href="Roboconf.textile#datatype-map">Map</a> | false | false |  |  |
+
+h3. Actions
+
+
+
+h2. Kind association
+
+| *Term* | association |
+| *Scheme* | http://schemas.occiware.org/roboconf# |
+| *Title* | Association |
+| *Parent* | <a href="core.textile#kind-link">http://schemas.ogf.org/occi/core#link</a> |
+
+h3. Attributes
+
+
+h3. Actions
+
+
+
+h2. Kind deployedOn
+
+| *Term* | deployedOn |
+| *Scheme* | http://schemas.occiware.org/roboconf# |
+| *Title* | Deployed on |
+| *Parent* | <a href="core.textile#kind-link">http://schemas.ogf.org/occi/core#link</a> |
+
+h3. Attributes
+
+
+h3. Actions
+
+
+
+
+
+h1. Mixins
+
+
+
+h1. Types
+
+h2. Datatype Map
+
+h3. Type java.util.HashMap
+
+h3. Annotations
+
+
+h2. Enum InstanceStatus
+
+Literals:
+* NOT_DEPLOYED  
+* DEPLOYED_AND_STOPPED  
+* DEPLOYED_AND_STARTED  
+* DEPLOYING  
+* STARTING  
+* STOPPING  
+* UNDEPLOYING  
+* PROBLEM  
+* UNRESOLVED  
+
+
+
