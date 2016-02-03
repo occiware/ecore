@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            id="org.occiware.clouddesigner.occi.simulation.cloudsim.commands.sampleCommand"
+            name="Sample Command">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="org.occiware.clouddesigner.occi.simulation.cloudsim.handlers.SampleHandler"
+            commandId="org.occiware.clouddesigner.occi.simulation.cloudsim.commands.sampleCommand">
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
+         <toolbar
+               id="org.occiware.clouddesigner.occi.simulation.cloudsim.toolbars.sampleToolbar">
+            <command
+                  commandId="org.occiware.clouddesigner.occi.simulation.cloudsim.commands.sampleCommand"
+                  icon="icons/sample.gif"
+                  id="org.occiware.clouddesigner.occi.simulation.cloudsim.toolbars.sampleCommand"
+                  tooltip="Test CLOUDSIM">
+            </command>
+         </toolbar>
+      </menuContribution>
+   </extension>
+
+</plugin>
