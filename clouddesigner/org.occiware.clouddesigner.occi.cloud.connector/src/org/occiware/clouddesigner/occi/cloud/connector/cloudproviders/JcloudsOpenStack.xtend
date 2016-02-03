@@ -13,22 +13,101 @@ import java.util.HashMap
 import java.io.IOException
 import org.jclouds.openstack.nova.v2_0.options.CreateServerOptions
 import org.jclouds.openstack.nova.v2_0.domain.ServerCreated
+import org.jclouds.compute.ComputeServiceContext
+import org.jclouds.compute.domain.TemplateBuilder
+import org.jclouds.compute.domain.Template
+import org.jclouds.compute.domain.Image;
+import java.util.Set
+import org.jclouds.compute.domain.NodeMetadata
+import java.util.ArrayList
+import org.jclouds.compute.domain.ComputeMetadata
+import java.util.List
+import org.jclouds.compute.domain.Hardware
+import java.io.Closeable
+import com.google.common.io.Closeables
+import java.util.Random
+import org.jclouds.domain.Location
+import com.google.common.base.Optional
+import org.jclouds.openstack.nova.v2_0.extensions.VolumeApi
+import org.jclouds.openstack.nova.v2_0.domain.Volume
+import org.jclouds.openstack.nova.v2_0.options.CreateVolumeOptions
+import org.jclouds.openstack.nova.v2_0.domain.VolumeAttachment
 
-class JcloudsOpenStack {
+class JcloudsOpenStack extends IaaSHandler implements Closeable {
 
 	// Initialize logger for JcloudsOpenStack.
 	private static Logger LOGGER = LoggerFactory.getLogger(typeof(JcloudsOpenStack))
 
 	private var Machine_OpenStack machine;
 
+	private var ComputeServiceContext context;
+
 	new() {
 	}
 
 	new(Machine_OpenStack machine) {
 		this.machine = machine
+		this.context = createContext
+	}
+	
+	/**
+	 * Initialize the context
+	 */
+	def createContext() {
+		val Iterable<Module> modules = ImmutableSet.<Module>of()
+		var ComputeServiceContext context = ContextBuilder.newBuilder(this.machine.provider).credentials(this.identity,
+			this.machine.password).endpoint(this.machine.endpoint).modules(modules).buildView(
+			typeof(ComputeServiceContext))
+
+		return context
+
 	}
 
-	def String createMachine() {
+	/**
+	 * Create a new machine on OpenStack
+	 */
+	override def createMachine() {
+		try {
+			LOGGER.info("Creating machine ..")
+			var String groupName = "graphical" // TODO Generate random group
+			// this.machine.
+			var TemplateBuilder templateBuilder = this.context.computeService.templateBuilder()
+			if (this.machine.region != null) {
+				templateBuilder.locationId(this.machine.region)
+			} else {
+				// Choose a random region
+				var location = getOneElement(listLocations)
+				templateBuilder.locationId(location.id)
+			}
+			if (this.machine.flavor_id != null) { // TODO
+				templateBuilder.hardwareId(this.machine.flavor_id); // provider id or id in Hardware Profile
+			} else {
+				// Choose a random hardware
+				var hardware = getOneElement(listHardware)
+				templateBuilder.hardwareId(hardware.providerId); // provider id or id in Hardware Profile
+			}
+			if (this.machine.image_id != null) {
+				templateBuilder.imageId(this.machine.image_id); // Image id in Image
+			} else {
+				// Choose a random image
+				var image = getOneElement(listImages)
+				templateBuilder.fromImage(image) // The image instance
+			}
+			var Template template = templateBuilder.build();
+			LOGGER.info("Adding node to group = " + groupName)
+			var Set<? extends NodeMetadata> nodes = this.context.computeService.createNodesInGroup(groupName, 1,
+				template)
+			var NodeMetadata lastNodeMetadata = nodes.iterator().next()
+			// Update the machine 
+			this.machine.id = lastNodeMetadata.id
+			
+			return lastNodeMetadata.id
+		} catch (Exception exception) {
+		}
+		return null
+	}
+
+	def String createMachines() {
 		LOGGER.info("Creating machine ..")
 		var Iterable<Module> modules = ImmutableSet.<Module>of(new SLF4JLoggingModule());
 		var NovaApi novaApi = ContextBuilder.newBuilder(this.machine.provider).endpoint(this.machine.endpoint).
@@ -48,18 +127,144 @@ class JcloudsOpenStack {
 			val String machineId = server.getId();
 			novaApi.close();
 
+			// Update the machine 
+			this.machine.id = machineId
 			return machineId
 
 		} catch (IOException e) {
-//			 LOGGER.error(e.message.toString)
+//			 LOGGER.error(e.message)
 		}
+
+		return null
 
 	}
 
 	/**
-	 * 
+	 * List all images available on OpenStack
+	 */
+	override def List<Image> listImages() {
+		var Set<? extends Image> images = this.context.computeService.listImages();
+		if (images != null) {
+			return new ArrayList<Image>(images);
+		}
+		return new ArrayList<Image>();
+	}
+
+	/**
+	 * List all images available on OpenStack
+	 */
+	override def List<NodeMetadata> listMachines() {
+		var Set<? extends ComputeMetadata> nodes = this.context.computeService.listNodes();
+		var List<NodeMetadata> instancesList = new ArrayList<NodeMetadata>();
+		if (nodes != null) {
+			for (ComputeMetadata node : nodes) {
+				var NodeMetadata metadata = this.context.computeService.getNodeMetadata(node.getId());
+				instancesList.add(metadata);
+			}
+		}
+		return instancesList;
+	}
+
+	/**
+	 * List all hardware available on OpenStack
+	 */
+	override def List<Hardware> listHardware() {
+		var Set<? extends Hardware> flavors = this.context.computeService.listHardwareProfiles();
+		if (flavors != null) {
+			return new ArrayList<Hardware>(flavors);
+		}
+		return new ArrayList<Hardware>();
+	}
+	
+	/**
+	 * List all locations on a OpensStack
+	 */
+	override def List<Location> listLocations() {
+		var List<Location> instancesList = new ArrayList<Location>();
+		var Set<? extends Location> listAssignableLocations = this.context.computeService.listAssignableLocations
+		instancesList.addAll(listAssignableLocations)
+
+		return instancesList
+	}
+	
+	def terminateMachine(String machineId) {
+	}
+	
+	/**
+	 * Restart a machine
+	 */
+	override def restartMachine() {
+	}
+
+	/**
+	 * start a machine
+	 */
+	override def startMachine() {
+	}
+	
+	/**
+	 * Stop machine
+	 */
+	override def stopMachine() {
+		try {
+			this.context.computeService.suspendNode(this.machine.id)
+		} catch (Exception e) {
+		}
+	}
+
+	/**
+	 * Retrieve user identity
 	 */
 	def String identity() {
-		return this.machine.tenant + ":" + this.machine.tenant // tenantName:userName
-	}	
+		return this.machine.tenant + ":" + this.machine.username // tenantName:userName
+	}
+
+	def <T> getOneElement(List<T> element) {
+		return element.get(new Random().nextInt(element.size()))
+	}
+
+	/**
+	 * Always close the service when no longer used.
+	 */
+	override close() {
+		Closeables.close(this.context, true);
+	}
+	
+	/**
+	 *  Create volume
+	 */
+	override def createVolume(String volumeName, Integer size) {
+		var Optional<? extends VolumeApi> volumeTypeOption
+		var NovaApi novaApi = this.context.unwrapApi(typeof(NovaApi))
+		var VolumeApi volumesApi = novaApi.getVolumeExtensionForZone("siel").get(); //TODO change Zone
+		var Volume volume = volumesApi.create(size, CreateVolumeOptions.Builder.name(volumeName).description("OCCIware volume"));
+		
+		return volume
+		
+	}
+	/**
+	 * Attach volume to a machine
+	 */
+	override def attachVolume(String volumeId){
+		var NovaApi novaApi = this.context.unwrapApi(typeof(NovaApi))
+		var VolumeApi volumesApi = novaApi.getVolumeExtensionForZone("siel").get(); //TODO change zone
+		var VolumeAttachment result = volumesApi.attachVolumeToServerAsDevice(volumeId, this.machine.id, "/dev/vdc");
+	}
+	/**
+	 * Detach volume from machine
+	 */
+	override def detachVolume(String volumeId){
+		var NovaApi novaApi = this.context.unwrapApi(typeof(NovaApi))
+		var VolumeApi volumesApi = novaApi.getVolumeExtensionForZone("siel").get(); //TODO change zone
+		volumesApi.detachVolumeFromServer(volumeId, this.machine.id)				
+	}
+	
+	/**
+	 * Delete volume from machine
+	 */
+	override def deleteVolume(){
+		var NovaApi novaApi = this.context.unwrapApi(typeof(NovaApi))
+		var VolumeApi volumesApi = novaApi.getVolumeExtensionForZone("siel").get(); //TODO change zone
+		volumesApi.delete(this.machine.id)				
+	}
 }

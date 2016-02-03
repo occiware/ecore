@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableSet
 import com.google.inject.Module
 import org.jclouds.ContextBuilder
 import org.jclouds.compute.ComputeServiceContext
+import org.jclouds.openstack.v2_0.services.Image
 
 class OpenStackTest {
 
@@ -20,6 +21,18 @@ class OpenStackTest {
 				.endpoint("http://ow2-04.xsalto.net:5000/v2.0")
 				.modules(modules)
 				.buildView(typeof(ComputeServiceContext))
+				
+		for (image : context.computeService.listImages) {
+			println(image) 
+		}
+		
+		println("###########################")
+		
+		for (hardware : context.computeService.listHardwareProfiles) {
+			println(hardware)
+		}
+//		context.computeService.
+		
 	}
 	
 	def static void main(String[] args) {
