@@ -8,9 +8,7 @@
   <kinds term="datacenterKind" scheme="simulation#">
     <attributes name="costPerMem" required="true" default="0.05" description="the cost of using memory in this resource" type="//@types.0"/>
     <attributes name="costPerStorage" required="true" default="0.001" description="the cost of using storage in this resource" type="//@types.0"/>
-    <attributes name="schedulingInterval" required="true" default="0" description="scheduling Interval">
-      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.2"/>
-    </attributes>
+    <attributes name="schedulingInterval" required="true" default="0" description="scheduling Interval" type="//@types.2"/>
     <attributes name="vmm" required="true" default="Xen" description="virtual machine monitoring">
       <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
@@ -51,7 +49,7 @@
     <attributes name="bw" required="true">
       <type href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@types.13"/>
     </attributes>
-    <attributes name="id" required="true">
+    <attributes name="id_host" required="true" description="">
       <type href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@types.13"/>
     </attributes>
     <attributes name="ramProvisioner" required="true" type="//@types.3"/>
@@ -79,7 +77,7 @@
     <attributes name="vmm" required="true" description="virtual machine monitor">
       <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
-    <attributes name="id" required="true" description="unique ID of the VM">
+    <attributes name="id_vm" required="true" description="unique ID of the VM">
       <type href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@types.13"/>
     </attributes>
     <attributes name="mips" required="true" description="The mips">
@@ -112,9 +110,7 @@
     <attributes name="name" required="true" default="" description="name of data center">
       <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
-    <attributes name="schedulingInterval" required="true" default="0" description="scheduling Interval">
-      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.2"/>
-    </attributes>
+    <attributes name="schedulingInterval" required="true" default="0" description="scheduling Interval" type="//@types.2"/>
     <applies href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='compute']"/>
   </mixins>
   <mixins term="cloudlet" scheme="simulation#" title="cloudlet mixin">
@@ -139,7 +135,7 @@
     <applies href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='compute']"/>
   </mixins>
   <mixins term="host" scheme="simulation#">
-    <attributes name="id" required="true">
+    <attributes name="id_host" required="true">
       <type href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@types.13"/>
     </attributes>
     <attributes name="ramProvisioner" required="true" type="//@types.3"/>
@@ -162,7 +158,7 @@
     <applies href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='compute']"/>
   </mixins>
   <mixins term="VM" scheme="simulation#">
-    <attributes name="id" required="true" description="unique ID of the VM">
+    <attributes name="id_vm" required="true" description="unique ID of the VM">
       <type href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@types.13"/>
     </attributes>
     <attributes name="mips" required="true" description="The mips">
@@ -198,12 +194,12 @@
     <applies href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='storage']"/>
   </mixins>
   <types name="floatType" instanceClassName="java.lang.Float"/>
-  <types name="UtilizationModel" instanceClassName="org.cloudbus.cloudsim.UtilizationModel"/>
+  <types name="UtilizationModel" instanceClassName="org.occiware.clouddesigner.occi.simulation.cloudsim.UtilizationModel"/>
   <types name="doubleType" instanceClassName="java.lang.Double"/>
-  <types name="RamProvisioner" instanceClassName="org.cloudbus.cloudsim.provisioners.RamProvisioner"/>
-  <types name="BwProvisioner" instanceClassName="org.cloudbus.cloudsim.provisioners.BwProvisioner"/>
-  <types name="CloudletScheduler" instanceClassName="org.cloudbus.cloudsim.CloudletScheduler"/>
-  <types name="VmScheduler" instanceClassName="org.cloudbus.cloudsim.VmScheduler"/>
+  <types name="RamProvisioner" instanceClassName="org.occiware.clouddesigner.occi.simulation.cloudsim.provisioners.RamProvisioner"/>
+  <types name="BwProvisioner" instanceClassName="org.occiware.clouddesigner.occi.simulation.cloudsim.provisioners.BwProvisioner"/>
+  <types name="CloudletScheduler" instanceClassName="org.occiware.clouddesigner.occi.simulation.cloudsim.CloudletScheduler"/>
+  <types name="VmScheduler" instanceClassName="org.occiware.clouddesigner.occi.simulation.cloudsim.VmScheduler"/>
   <types name="MB" instanceClassName="float"/>
-  <types name="PeProvisioner" instanceClassName="org.cloudbus.cloudsim.provisioners.PeProvisioner"/>
+  <types name="PeProvisioner" instanceClassName="org.occiware.clouddesigner.occi.simulation.cloudsim.provisioners.PeProvisioner"/>
 </occi:Extension>
