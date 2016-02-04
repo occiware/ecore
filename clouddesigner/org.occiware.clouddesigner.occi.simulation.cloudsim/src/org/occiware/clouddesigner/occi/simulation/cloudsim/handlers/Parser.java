@@ -24,24 +24,29 @@ public class Parser {
 
 	Configuration configuration;
 
-	public Parser(Configuration conf){
-		this.configuration = conf;
+	public Parser(Configuration config){
+		this.configuration= config;
 	}
 
-	public void parsing(){
+	public List<Object> parsing(){
 		System.out.println("start parsing ...");
+		List<Object> entities = new ArrayList<>();
 
 		for(Resource resource : configuration.getResources()) {
 			Kind resourceKind = resource.getKind();
 			if(resourceKind.getScheme().contains("simulation")){
 				if(resourceKind.getTerm().contains("datacenter")){ //datacenterKind
 					Dc dc = DcFromResource(resource);
+					entities.add(dc);
 				}else if(resourceKind.getTerm().contains("host")){//hostKind
 					Host host = HostFromResource(resource);
+					entities.add(host);
 				}else if(resourceKind.getTerm().contains("VM")){//VMKind
 					VM vm = VMFromResource(resource);
+					entities.add(vm);
 				}else if(resourceKind.getTerm().contains("cloudlet")){ //cloudletKind
 					Cloudlet cloudlet = CloudletFromResource(resource);
+					entities.add(cloudlet);
 				}else{ 
 
 				}
@@ -50,15 +55,19 @@ public class Parser {
 					if(mixin.getScheme().contains("simulation")){
 						if(mixin.getTerm().contains("datacenter")){
 							Dc dc = DcFromResource(resource);
+							entities.add(dc);
 							System.out.println(dc);
 						}else if(mixin.getTerm().contains("host")){
 							Host host = HostFromResource(resource);
+							entities.add(host);
 							System.out.println(host);
 						}else if (mixin.getTerm().contains("VM")){
 							VM vm = VMFromResource(resource);
+							entities.add(vm);
 							System.out.println(vm);
 						}else if (mixin.getTerm().contains("cloudlet")){
 							Cloudlet cloudlet = CloudletFromResource(resource);
+							entities.add(cloudlet);
 							System.out.println(cloudlet);
 						}
 					}
@@ -67,6 +76,7 @@ public class Parser {
 			}
 
 		}
+		return entities;
 	}
 
 	/*********************************************************************************/
@@ -121,9 +131,19 @@ public class Parser {
 			else if (as.getName().equals("vmm")) vmm = as.getValue();
 			else if (as.getName().equals("cloudletScheduler")) cloudletScheduler = as.getValue();
 		}
-		//resource linked to host
+		//resource linked to VM
 		for(Link link : resource.getLinks()) {
-			idTarget.add(link.getTarget().getId());
+			boolean iscloudlet =false;
+			if(link.getTarget().getKind().getTerm().contains("cloudlet"))
+				iscloudlet = true;
+			else{
+				for(Mixin m: link.getTarget().getMixins()){
+					if(m.getTerm().contains("cloudlet"))
+						iscloudlet = true;
+				}
+			}
+			if(iscloudlet)
+				idTarget.add(link.getTarget().getId());
 		}
 
 		return new VM(id, idTarget, id_vm, userId, numberOfPes, ram, mips,
@@ -146,9 +166,19 @@ public class Parser {
 			else if (as.getName().contains("bwProvisioner")) bwProvisioner = as.getValue();
 			else if (as.getName().contains("vmScheduler")) vmScheduler = as.getValue();
 		}
-		//resource linked to host
+		//VM linked to host
 		for(Link link : resource.getLinks()) {
-			idTarget.add(link.getTarget().getId());
+			boolean isVM =false;
+			if(link.getTarget().getKind().getTerm().contains("VM"))
+				isVM = true;
+			else{
+				for(Mixin m: link.getTarget().getMixins()){
+					if(m.getTerm().contains("VM"))
+						isVM = true;
+				}
+			}
+			if(isVM)
+				idTarget.add(link.getTarget().getId());
 		}
 
 		return new Host(id, idTarget, id_host, mips, core, ramProvisioner,
@@ -176,10 +206,22 @@ public class Parser {
 			else if(as.getName().equals("schedulingInterval")) schedulingInterval = Double.parseDouble(as.getValue());
 
 		}
-		//resource linked to datacenter
+		
+		//host linked to datacenter
 		for(Link link : resource.getLinks()) {
-			idTarget.add(link.getTarget().getId());
+			boolean isHost =false;
+			if(link.getTarget().getKind().getTerm().contains("host"))
+				isHost = true;
+			else{
+				for(Mixin m: link.getTarget().getMixins()){
+					if(m.getTerm().contains("host"))
+						isHost = true;
+				}
+			}
+			if(isHost)
+				idTarget.add(link.getTarget().getId());
 		}
+		
 		//create datacenter
 		return new Dc(id, idTarget, name, architecture, os, vmm, timeZone, costPerSec, costPerMem, 
 				costPerStorage, costPerBw, schedulingInterval);
@@ -190,7 +232,7 @@ public class Parser {
 	/******************************  PRIVATE CLASSES *********************************/
 	/*********************************************************************************/
 	/*********************************************************************************/
-	private class Cloudlet {
+	protected class Cloudlet {
 		String id; //ressourceId
 		List<String> idTarget;
 		int cloudletId,pesNumber;
@@ -218,11 +260,9 @@ public class Parser {
 					+ cloudletOutputSize + ", utilizationModelCpu=" + utilizationModelCpu + ", utilizationModelRam="
 					+ utilizationModelRam + ", utilizationModelBw=" + utilizationModelBw + "]";
 		}
-
-
 	}
 
-	private class VM {
+	protected class VM {
 		String id; //ressourceId
 		List<String> idTarget;
 		int id_vm, userId, numberOfPes, ram;
@@ -255,7 +295,7 @@ public class Parser {
 	}
 
 
-	private class Host {
+	protected class Host {
 		String id; //ressourceId
 		List<String> idTarget;
 		int id_host, mips, core;
@@ -279,11 +319,9 @@ public class Parser {
 					+ core + ", ramProvisioner=" + ramProvisioner + ", bwProvisioner=" + bwProvisioner
 					+ ", vmScheduler=" + vmScheduler + ", storage=" + storage + "]";
 		}
-
-
 	}
 
-	private class Dc {
+	protected class Dc {
 		String id;
 		List<String> targetId; //list of hosts
 		String vmm, os, name;
@@ -314,6 +352,5 @@ public class Parser {
 					+ costPerBw + "]";
 		}
 	}
-
 
 }

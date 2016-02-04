@@ -1,5 +1,8 @@
 package org.occiware.clouddesigner.occi.simulation.cloudsim.handlers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
@@ -39,28 +42,34 @@ public class SampleHandler extends AbstractHandler {
 		System.out.println("----------------------------");
 		String url = "platform:/plugin/org.occiware.clouddesigner.occi.simulation.cloudsim/data/example.occic";
 		Configuration config = loadConfiguration(url);
-		//print(config);
-		Parser parse = new Parser(config);
-		parse.parsing();
-		
 		if(validate(config)) {
-			System.out.println("Youpi "+url+" was validated by EMF and OCL Validation.");
+			System.out.println("Done ... "+url+" was validated by EMF and OCL Validation.");
 		}else{
 			System.err.println("Not validated by EMF and OCL");
 			return null;
 		}
-
+		
+		BrigeConfigSimulation bridge = new BrigeConfigSimulation(config);
+		bridge.ExtaractEntities();
+		if(bridge.checkEntities()){
+			System.out.println("ok");
+		}else{
+			System.err.println("Thanks to verify your linked resources in configuration");
+		}
+		
 		return null;
 	}
 
 
-	public static Configuration loadConfiguration(String configurationURI){
+	private Configuration loadConfiguration(String configurationURI){
 		return (Configuration)loadOCCI(configurationURI);
 	}
 
-	public static boolean validate(EObject occi)
+	private boolean validate(EObject occi)
 	{
-		if(!Boolean.getBoolean("validation")) { return true; }
+		if(!Boolean.getBoolean("validation")) { 
+			return true; 
+		}
 		Diagnostic diagnostic = Diagnostician.INSTANCE.validate(occi);
 		if (diagnostic.getSeverity() != Diagnostic.OK) {
 			StringBuffer stringBuffer = printDiagnostic(diagnostic, "", new StringBuffer());
@@ -70,7 +79,7 @@ public class SampleHandler extends AbstractHandler {
 		return true;
 	}
 
-	private static StringBuffer printDiagnostic(Diagnostic diagnostic, String indent, StringBuffer stringBuffer)
+	private StringBuffer printDiagnostic(Diagnostic diagnostic, String indent, StringBuffer stringBuffer)
 	{
 		stringBuffer.append(indent);
 		stringBuffer.append(diagnostic.getMessage());
@@ -88,49 +97,4 @@ public class SampleHandler extends AbstractHandler {
 		return resource.getContents().get(0);
 	}
 
-
-	private void print(Configuration configuration)
-	{
-		System.out.println("Configuration");
-		System.out.println("  - used extensions:");
-		for(Extension extension : configuration.getUse()) {
-			System.out.println("    * Extension " + extension.getName() + " " + extension.getScheme());
-		}
-		System.out.println("  - resources:");
-		for(Resource resource : configuration.getResources()) {
-			System.out.println("    * Resource id " + resource.getId());
-			Kind resourceKind = resource.getKind();
-			System.out.println("      - Kind " + resourceKind.getScheme() + resourceKind.getTerm());
-			System.out.println("      - mixins:");
-			for(Mixin mixin : resource.getMixins()) {
-				System.out.println("        * Mixin " + mixin.getScheme() + mixin.getTerm());
-			}
-			System.out.println("      - attributes:");
-			for(AttributeState as : resource.getAttributes()) {
-				System.out.println("        * AttributeState " + as.getName() + "=" + as.getValue());
-			}
-			System.out.println("      - links:");
-			for(Link link : resource.getLinks()) {
-				System.out.println("        * Link id " + link.getId());
-				Kind linkKind = link.getKind();
-				System.out.println("         - Kind " + linkKind.getScheme() + linkKind.getTerm());
-				System.out.println("         - mixins:");
-				for(Mixin mixin : link.getMixins()) {
-					System.out.println("        * Mixin " + mixin.getScheme() + mixin.getTerm());
-				}
-				System.out.println("         - attributes:");
-				for(AttributeState as : link.getAttributes()) {
-					System.out.println("           * AttributeState " + as.getName() + "=" + as.getValue());
-				}
-				Resource source = link.getSource();
-				System.out.println("        - source id " + source.getId());
-				Resource target = link.getTarget();
-				if(target != null) {
-					System.out.println("        - target id " + target.getId());
-				} else {
-					System.out.println("        - no target");
-				}
-			}
-		}
-	}
 }
