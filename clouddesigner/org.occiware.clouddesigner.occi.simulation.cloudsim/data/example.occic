@@ -32,13 +32,13 @@
         value="0.001"/>
     <attributes
         name="costPerBw"
-        value="0.0"/>
+        value="0.3"/>
     <attributes
         name="name"
         value="datacenter_0"/>
     <attributes
         name="schedulingInterval"
-        value="0"/>
+        value="0.004"/>
     <attributes
         name="os_type"
         value=""/>
@@ -62,8 +62,8 @@
     <mixins
         href="platform:/plugin/org.occiware.clouddesigner.occi.simulation/model/simulation.occie#//@mixins[term='host']"/>
     <attributes
-        name="id"
-        value="_1UsBQKTVEeWtMMpxQSQYag"/>
+        name="id_host"
+        value="1"/>
     <attributes
         name="ramProvisioner"
         value="RamProvisionerSimple"/>

@@ -30,40 +30,37 @@ public class SampleHandler extends AbstractHandler {
 	public SampleHandler() {
 	}
 
+
 	/**
 	 * the command has been executed, so extract extract the needed information
 	 * from the application context.
 	 */
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-
-		Configuration conf1 = loadConfiguration("platform:/plugin/org.occiware.clouddesigner.occi.simulation.cloudsim/data/example.occic");
-		print(conf1);
-		if(validate(conf1)) {
-			System.out.println("Youpi model/infrastructure.occic was validated by EMF and OCL Validation.");
+		System.out.println("----------------------------");
+		String url = "platform:/plugin/org.occiware.clouddesigner.occi.simulation.cloudsim/data/example.occic";
+		Configuration config = loadConfiguration(url);
+		//print(config);
+		Parser parse = new Parser(config);
+		parse.parsing();
+		
+		if(validate(config)) {
+			System.out.println("Youpi "+url+" was validated by EMF and OCL Validation.");
+		}else{
+			System.err.println("Not validated by EMF and OCL");
+			return null;
 		}
-		System.out.println("");
-
-
-		/*ResourceSet resourceSet = new ResourceSetImpl();
-		Resource configurationResource = resourceSet.getResource(
-				URI.createURI(
-						"platform:/plugin/org.occiware.clouddesigner.occi.simulation.cloudsim/data/example.occic"),
-				true);
-		System.out.println(">>> "+configurationResource.getContents().size());*/
 
 		return null;
 	}
 
 
-	public static Configuration loadConfiguration(String configurationURI)
-	{
+	public static Configuration loadConfiguration(String configurationURI){
 		return (Configuration)loadOCCI(configurationURI);
 	}
 
 	public static boolean validate(EObject occi)
 	{
 		if(!Boolean.getBoolean("validation")) { return true; }
-		// Does the validation when the Java system property 'validation' is set to 'true'.
 		Diagnostic diagnostic = Diagnostician.INSTANCE.validate(occi);
 		if (diagnostic.getSeverity() != Diagnostic.OK) {
 			StringBuffer stringBuffer = printDiagnostic(diagnostic, "", new StringBuffer());
@@ -72,7 +69,7 @@ public class SampleHandler extends AbstractHandler {
 		}
 		return true;
 	}
-	
+
 	private static StringBuffer printDiagnostic(Diagnostic diagnostic, String indent, StringBuffer stringBuffer)
 	{
 		stringBuffer.append(indent);
@@ -86,16 +83,13 @@ public class SampleHandler extends AbstractHandler {
 
 	private static Object loadOCCI(String uri)
 	{
-		// Create a new resource set.
 		ResourceSet resourceSet = new OCCIResourceSet();
-		// Load the OCCI resource.
 		org.eclipse.emf.ecore.resource.Resource resource = resourceSet.getResource(URI.createURI(uri), true);
-		// Return the first element.
 		return resource.getContents().get(0);
 	}
 
 
-	public static void print(Configuration configuration)
+	private void print(Configuration configuration)
 	{
 		System.out.println("Configuration");
 		System.out.println("  - used extensions:");
