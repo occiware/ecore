@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="ASCII"?>
+<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:occi="http://schemas.ogf.org/occi" name="cloud" scheme="http://occiware.org/cloud#">
+  <import href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#/"/>
+  <import href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#/"/>
+  <kinds term="machine" scheme="http://occiware.org/cloud#" title="Machine Resource">
+    <attributes name="name" required="true">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <parent href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='compute']"/>
+  </kinds>
+  <kinds term="machine_CloudSigma" scheme="http://occiware.org/cloud#" title="Machine on CloudSigma" parent="//@kinds[term='machine']">
+    <attributes name="provider" required="true">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="email" required="true">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="password" required="true">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+  </kinds>
+  <kinds term="machine_Amazon_EC2" scheme="http://occiware.org/cloud#" title="Machine on Amazon EC2" parent="//@kinds[term='machine']">
+    <attributes name="provider" required="true">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="access_key" required="true">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="secret_key" required="true">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="region">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="image">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="security_group">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="key_pair">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+  </kinds>
+  <kinds term="machine_Gogrid" scheme="http://occiware.org/cloud#" title="Machine on Gogrid" parent="//@kinds[term='machine']">
+    <attributes name="provider" required="true">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="key" required="true">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="shared_secret" required="true">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="image_id">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+  </kinds>
+  <kinds term="machine_Hp_Helion" scheme="http://occiware.org/cloud#" title="Machine on HP Helion" parent="//@kinds[term='machine']">
+    <attributes name="provider" required="true">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="tenant" required="true">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="access_key" required="true">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="secret_key" required="true">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="image">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="zone">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="flavor_id">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="key_pair">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="security_group">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="floating_ip">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+  </kinds>
+  <kinds term="machine_GCE" scheme="http://occiware.org/cloud#" title="MAchine on Goolge Compute ENgine" parent="//@kinds[term='machine']">
+    <attributes name="zone">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="region">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="machine_type">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="machine_url">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="firewall_tag">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="startup_script">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="json_file" required="true">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="provider" required="true">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+  </kinds>
+  <kinds term="machine_RackSpace" scheme="http://occiware.org/cloud#" title="Machine on RackSpace" parent="//@kinds[term='machine']">
+    <attributes name="provider" required="true">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="username" required="true">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="api_key" required="true">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="region">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="image">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+  </kinds>
+  <kinds term="machine_ProfitBricks" scheme="http://occiware.org/cloud#" title="Machine on ProfitBricks" parent="//@kinds[term='machine']">
+    <attributes name="provider" required="true">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="username" required="true">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="api_key" required="true">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="email">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="password">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="location">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+  </kinds>
+  <kinds term="machine_OpenStack" scheme="http://occiware.org/cloud#" title="Machine on OpenStack" parent="//@kinds[term='machine']">
+    <attributes name="provider" required="true">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="tenant" required="true">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="username" required="true">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="password" required="true">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="endpoint" required="true">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="image_id">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="flavor_name">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="flavor_id">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="security_group">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="network_name">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="network_id">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="floating_ip_pool">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="image_name">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="keypair">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="region">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+  </kinds>
+  <kinds term="machine_SoftLayer" scheme="http://occiware.org/cloud#" title="Machine on SoftLayer" parent="//@kinds[term='machine']">
+    <attributes name="provider" required="true">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="username" required="true">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="api_key" required="true">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="location_id">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="image_id">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="domain_name">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="disk_type">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="tenant">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="endpoint">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+  </kinds>
+</occi:Extension>
