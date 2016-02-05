@@ -2,6 +2,8 @@ package org.occiware.clouddesigner.occi.simulation.cloudsim.handlers;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -18,6 +20,7 @@ import org.occiware.clouddesigner.occi.Kind;
 import org.occiware.clouddesigner.occi.Link;
 import org.occiware.clouddesigner.occi.Mixin;
 import org.occiware.clouddesigner.occi.Resource;
+import org.occiware.clouddesigner.occi.simulation.cloudsim.handlers.Parser.Entity;
 import org.occiware.clouddesigner.occi.util.OCCIResourceSet;
 
 /**
@@ -42,6 +45,8 @@ public class SampleHandler extends AbstractHandler {
 		System.out.println("----------------------------");
 		String url = "platform:/plugin/org.occiware.clouddesigner.occi.simulation.cloudsim/data/example.occic";
 		Configuration config = loadConfiguration(url);
+		
+		//Verify OCL in the loaded configuration
 		if(validate(config)) {
 			System.out.println("Done ... "+url+" was validated by EMF and OCL Validation.");
 		}else{
@@ -49,10 +54,15 @@ public class SampleHandler extends AbstractHandler {
 			return null;
 		}
 		
-		BrigeConfigSimulation bridge = new BrigeConfigSimulation(config);
-		bridge.ExtaractEntities();
+		//extract attributes from configuration
+		BrigeConfigSimulation bridge = new BrigeConfigSimulation(config); 
+		Map<Entity, Set<Entity>> entities= bridge.ExtaractEntities();
+		
 		if(bridge.checkEntities()){
-			System.out.println("ok");
+			System.out.println("Configuration contains correct informations");
+			Simulation simulation = new Simulation(entities);
+			simulation.runExtension();
+			
 		}else{
 			System.err.println("Thanks to verify your linked resources in configuration");
 		}
