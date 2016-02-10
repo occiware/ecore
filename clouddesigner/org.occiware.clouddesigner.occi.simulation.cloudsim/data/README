@@ -1,0 +1,10 @@
+test_1: tag with mixin
+1 datacenter, 1 HOST, 1 VM, 1 cloudLet
+
+test_2: tag with mixin
+datacenter1 : 1 HOST, 1 VM, 1 cloudLet
+datacenter2: 1 HOST, 1 VM, 1 cloudLet
+
+test_2: resource as Kind
+1 datacenter, 1 HOST, 1 VM, 1 cloudLet
+

@@ -43,7 +43,7 @@ public class SampleHandler extends AbstractHandler {
 	 */
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		System.out.println("----------------------------");
-		String url = "platform:/plugin/org.occiware.clouddesigner.occi.simulation.cloudsim/data/example.occic";
+		String url = "platform:/plugin/org.occiware.clouddesigner.occi.simulation.cloudsim/data/test_3.occic";
 		Configuration config = loadConfiguration(url);
 		
 		//Verify OCL in the loaded configuration

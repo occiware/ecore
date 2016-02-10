@@ -71,6 +71,7 @@ public class Simulation {
 			Object obj = it.next();
 			if (obj instanceof Dc_Config) {
 				Datacenter dc = createDatacenter((Dc_Config)obj);
+				
 				List<Host> listHost = dc.getHostList();
 
 				//broker for each user 
@@ -153,37 +154,39 @@ public class Simulation {
 		Iterator<Entity> itForDataCenter = linkedToDataCenter.iterator();
 		while (itForDataCenter.hasNext()) {
 			Host_Config host = (Host_Config)itForDataCenter.next();
-			int hostId = host.id_host, ram = host.ram; 
+			int hostId = host.id_host, ram = host.ram, numPe = host.core; 
 			long storage = host.storage, bw = host.bw ; 
-			int mips = host.mips, numPe = host.core;
+			double mips = host.mips ;
 			String peProvisioner = host.peProvisioner;
 			String ramProvisioner = host.ramProvisioner;
 			String bwProvisioner = host.bwProvisioner;
 			String vmScheduler = host.vmScheduler;
-
+			
 			try {
 				Class<?> classPeProvi = Class.forName("org.occiware.clouddesigner.occi.simulation.cloudsim.provisioners."+peProvisioner);
-				Constructor<?> consPeProvi = classPeProvi.getConstructor(String.class);
+				Constructor<?> consPeProvi = classPeProvi.getConstructor(Double.class);
 				Object peProvis = consPeProvi.newInstance(mips);
 				for (int p = 0; p < numPe; p++)
 					peList.add(new Pe(0, (PeProvisioner) peProvis));
 
 				Class<?> classRamProvi = Class.forName("org.occiware.clouddesigner.occi.simulation.cloudsim.provisioners."+ramProvisioner);
-				Constructor<?> consRamProvi = classRamProvi.getConstructor(String.class);
+				Constructor<?> consRamProvi = classRamProvi.getConstructor(Integer.class);
 				Object ramProvis = consRamProvi.newInstance(ram);
 
 				Class<?> classBwProvi = Class.forName("org.occiware.clouddesigner.occi.simulation.cloudsim.provisioners."+bwProvisioner);
-				Constructor<?> consBwProvi = classBwProvi.getConstructor(String.class);
+				Constructor<?> consBwProvi = classBwProvi.getConstructor(Long.class);
 				Object bwProvis = consBwProvi.newInstance(bw);
 
 				Class<?> classVmSched = Class.forName("org.occiware.clouddesigner.occi.simulation.cloudsim."+vmScheduler);
-				Constructor<?> consVmSched = classVmSched.getConstructor(String.class);
+				Constructor<?> consVmSched = classVmSched.getConstructor(List.class);
 				Object vmSched = consVmSched.newInstance(peList);
 
 				Host h = new Host(hostId, (RamProvisioner) ramProvis, (BwProvisioner)bwProvis, 
 						storage, peList, (VmScheduler) vmSched);
+				
 				hostList.add(h);
 			} catch (Exception e) {
+				System.err.println("Exception in createDatacenter");
 				e.printStackTrace();
 			}
 		}
@@ -228,7 +231,7 @@ public class Simulation {
 
 		try {
 			Class<?> classCloudletSchedul = Class.forName("org.occiware.clouddesigner.occi.simulation.cloudsim."+cloudletSchedul);
-			Constructor<?> consCloudletSchedul = classCloudletSchedul.getConstructor(String.class);
+			Constructor<?> consCloudletSchedul = classCloudletSchedul.getConstructor();
 			Object cloudletSchedulObject = consCloudletSchedul.newInstance();
 
 			// TODO: retreive Scheduler from Mixin
@@ -253,15 +256,15 @@ public class Simulation {
 
 		try {
 			Class<?> classModelCPU = Class.forName("org.occiware.clouddesigner.occi.simulation.cloudsim."+utilizationModelCpu);
-			Constructor<?> consModelCPU = classModelCPU.getConstructor(String.class);
+			Constructor<?> consModelCPU = classModelCPU.getConstructor();
 			Object modelCPUObject = consModelCPU.newInstance();
 
 			Class<?> classModelRam = Class.forName("org.occiware.clouddesigner.occi.simulation.cloudsim."+utilizationModelRam);
-			Constructor<?> consModelRam = classModelRam.getConstructor(String.class);
+			Constructor<?> consModelRam = classModelRam.getConstructor();
 			Object modelRamObject = consModelRam.newInstance();
 
 			Class<?> classModelBw = Class.forName("org.occiware.clouddesigner.occi.simulation.cloudsim."+utilizationModelBw);
-			Constructor<?> consModelBw = classModelBw.getConstructor(String.class);
+			Constructor<?> consModelBw = classModelBw.getConstructor();
 			Object modelBwObject = consModelBw.newInstance();
 
 			// TODO: mixin for utilizationModel

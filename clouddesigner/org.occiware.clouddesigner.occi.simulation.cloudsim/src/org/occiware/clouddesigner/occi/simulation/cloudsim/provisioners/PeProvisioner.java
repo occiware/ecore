@@ -25,7 +25,10 @@ public abstract class PeProvisioner {
 
 	/** The available mips. */
 	private double availableMips;
-
+	
+	public PeProvisioner(){
+		
+	}
 	/**
 	 * Creates the new PeProvisioner.
 	 * 

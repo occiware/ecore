@@ -31,7 +31,7 @@ public class BwProvisionerSimple extends BwProvisioner {
 	 * 
 	 * @param bw the bw
 	 */
-	public BwProvisionerSimple(long bw) {
+	public BwProvisionerSimple(Long bw) {
 		super(bw);
 		setBwTable(new HashMap<String, Long>());
 	}

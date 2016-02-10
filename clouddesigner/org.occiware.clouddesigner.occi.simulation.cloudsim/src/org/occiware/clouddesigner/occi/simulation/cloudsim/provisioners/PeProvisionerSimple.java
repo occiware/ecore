@@ -26,6 +26,10 @@ public class PeProvisionerSimple extends PeProvisioner {
 	/** The pe table. */
 	private Map<String, List<Double>> peTable;
 
+	
+	public PeProvisionerSimple() {
+		super();
+	}
 	/**
 	 * Creates the PeProvisionerSimple object.
 	 * 
@@ -34,7 +38,7 @@ public class PeProvisionerSimple extends PeProvisioner {
 	 * @pre $none
 	 * @post $none
 	 */
-	public PeProvisionerSimple(double availableMips) {
+	public PeProvisionerSimple(Double availableMips) {
 		super(availableMips);
 		setPeTable(new HashMap<String, ArrayList<Double>>());
 	}

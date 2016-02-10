@@ -39,15 +39,19 @@ public class Parser {
 				if(resourceKind.getTerm().contains("datacenter")){ //datacenterKind
 					Dc_Config dc = DcFromResource(resource);
 					entities.put(dc,new HashSet<Entity>());
+					System.out.println(dc);
 				}else if(resourceKind.getTerm().contains("host")){//hostKind
 					Host_Config host = HostFromResource(resource);
 					entities.put(host, new HashSet<Entity>());
+					System.out.println(host);
 				}else if(resourceKind.getTerm().contains("VM")){//VMKind
 					VM_Config vm = VMFromResource(resource);
 					entities.put(vm, new HashSet<Entity>());
+					System.out.println(vm);
 				}else if(resourceKind.getTerm().contains("cloudlet")){ //cloudletKind
 					Cloudlet_Config cloudlet = CloudletFromResource(resource);
 					entities.put(cloudlet, new HashSet<Entity>());
+					System.out.println(cloudlet);
 				}else{ 
 
 				}
@@ -125,7 +129,7 @@ public class Parser {
 	private VM_Config VMFromResource(Resource resource){
 		String id = resource.getId(); //ressourceId
 		List<String> idTarget = new ArrayList<String>();
-		int id_vm=0, userId=0, numberOfPes=0, ram=0;
+		int id_vm=0, numberOfPes=0, ram=0;
 		double mips=0;
 		long bw=0, size=0;
 		String vmm="";
@@ -136,9 +140,8 @@ public class Parser {
 			else if (as.getName().contains("speed")) mips = Double.parseDouble(as.getValue());//mips ?
 			else if (as.getName().contains("core")) numberOfPes = Integer.parseInt(as.getValue());//numberOfPes ?
 			else if (as.getName().contains("memory")) ram = Integer.parseInt(as.getValue());//ram ?
-			else if (as.getName().equals("userId")) userId = Integer.parseInt(as.getValue());
 			else if (as.getName().equals("bw")) bw = Long.parseLong(as.getValue());
-			else if (as.getName().equals("size")) size = Long.parseLong(as.getValue());
+			else if (as.getName().equals("storage")) size = Long.parseLong(as.getValue());
 			else if (as.getName().equals("vmm")) vmm = as.getValue();
 			else if (as.getName().equals("cloudletScheduler")) cloudletScheduler = as.getValue();
 		}
@@ -155,28 +158,29 @@ public class Parser {
 			}
 		}
 
-		return new VM_Config(id, idTarget, id_vm, userId, numberOfPes, ram, mips,
+		return new VM_Config(id, idTarget, id_vm, numberOfPes, ram, mips,
 				bw, size, vmm, cloudletScheduler) ;
 	}	
 
 	private Host_Config HostFromResource(Resource resource){
 		String id = resource.getId(); //ressourceId
 		List<String> idTarget = new ArrayList<String>();
-		int id_host=0, mips=0, core=0, ram=0, bw=0;
+		int id_host=0, core=0, ram=0, bw=0;
 		String ramProvisioner="", bwProvisioner="", peProvisioner="",vmScheduler="";
 		long storage=0;
+		double mips=0;
 
 		for(AttributeState as : resource.getAttributes()) {
 			if(as.getName().equals("id_host")) id_host = Integer.parseInt(as.getValue());
-			else if (as.getName().contains("speed")) mips = Integer.parseInt(as.getValue());//mips ?
-			else if (as.getName().contains("core")) core = Integer.parseInt(as.getValue());
-			else if (as.getName().contains("ram")) ram = Integer.parseInt(as.getValue());
-			else if (as.getName().contains("bw")) bw = Integer.parseInt(as.getValue());
-			else if (as.getName().contains("storage")) storage = Long.parseLong(as.getValue());
-			else if (as.getName().contains("ramProvisioner")) ramProvisioner = as.getValue();
-			else if (as.getName().contains("bwProvisioner")) bwProvisioner = as.getValue();
-			else if (as.getName().contains("vmScheduler")) vmScheduler = as.getValue();
-			else if (as.getName().contains("PeProvisioner")) peProvisioner = as.getValue();
+			else if (as.getName().contains("speed")) mips = Double.parseDouble(as.getValue());//mips ?
+			else if (as.getName().contains("cores")) core = Integer.parseInt(as.getValue());
+			else if (as.getName().equals("ram")) ram = Integer.parseInt(as.getValue());
+			else if (as.getName().equals("bw")) bw = Integer.parseInt(as.getValue());
+			else if (as.getName().equals("storage")) storage = Long.parseLong(as.getValue());
+			else if (as.getName().equals("ramProvisioner")) ramProvisioner = as.getValue();
+			else if (as.getName().equals("bwProvisioner")) bwProvisioner = as.getValue();
+			else if (as.getName().equals("vmScheduler")) vmScheduler = as.getValue();
+			else if (as.getName().equals("peProvisioner")) peProvisioner = as.getValue();
 		}
 		//VM linked to host
 		for(Link link : resource.getLinks()) {
@@ -204,7 +208,7 @@ public class Parser {
 		String architecture = "", os="", vmm="", name="";
 		double schedulingInterval= 0, timeZone=0, costPerSec=0, costPerMem=0, costPerStorage=0, costPerBw=0;
 		for(AttributeState as : resource.getAttributes()) {
-			if(as.getName().contains("architecture")) architecture = as.getValue();
+			if(as.getName().contains("arch")) architecture = as.getValue();
 			else if(as.getName().equals("os")) os = as.getValue();
 			else if(as.getName().equals("vmm")) vmm = as.getValue();
 			else if(as.getName().equals("time_zone")) timeZone = Double.parseDouble(as.getValue());
@@ -280,18 +284,17 @@ public class Parser {
 	protected class VM_Config implements Entity{
 		String id; //ressourceId
 		List<String> idTarget;
-		int id_vm, userId, numberOfPes, ram;
+		int id_vm, numberOfPes, ram;
 		double mips;
 		long bw, size;
 		String vmm;
 		String cloudletScheduler;
 
-		public VM_Config(String id, List<String> idTarget, int id_vm, int userId, int numberOfPes, int ram, double mips,
+		public VM_Config(String id, List<String> idTarget, int id_vm, int numberOfPes, int ram, double mips,
 				long bw, long size, String vmm, String cloudletScheduler) {
 			this.id = id;
 			this.idTarget = idTarget;
 			this.id_vm = id_vm;
-			this.userId = userId;
 			this.numberOfPes = numberOfPes;
 			this.ram = ram;
 			this.mips = mips;
@@ -303,8 +306,8 @@ public class Parser {
 
 		@Override
 		public String toString() {
-			return "VM [id=" + id + ", idTarget=" + idTarget + ", id_vm=" + id_vm + ", userId=" + userId
-					+ ", numberOfPes=" + numberOfPes + ", ram=" + ram + ", mips=" + mips + ", bw=" + bw + ", size="
+			return "VM [id=" + id + ", idTarget=" + idTarget + ", id_vm=" + id_vm + 
+					", numberOfPes=" + numberOfPes + ", ram=" + ram + ", mips=" + mips + ", bw=" + bw + ", size="
 					+ size + ", vmm=" + vmm + ", cloudletScheduler=" + cloudletScheduler + "]";
 		}
 
@@ -322,10 +325,11 @@ public class Parser {
 	protected class Host_Config implements Entity{
 		String id; //ressourceId
 		List<String> idTarget;
-		int id_host, mips, core, ram, bw;
+		int id_host, core, ram, bw;
+		double mips;
 		String ramProvisioner, bwProvisioner,peProvisioner, vmScheduler;
 		long storage;
-		public Host_Config(String id, List<String> idTarget, int id_host, int mips, int core, String ramProvisioner,
+		public Host_Config(String id, List<String> idTarget, int id_host, double mips, int core, String ramProvisioner,
 				String bwProvisioner, String vmScheduler, String peProvisioner, long storage, int ram, int bw) {
 			this.id = id;
 			this.idTarget = idTarget;
