@@ -61,6 +61,8 @@ public class Main
 	 */
 	public static void main(String[] args)
 	{
+		reportJavaInformation();
+
 		System.out.println("Loading model/core.occie...");
 		Extension core1 = loadExtension("model/core.occie");
 		print(core1);
@@ -107,6 +109,8 @@ public class Main
 		if(validate(conf2)) {
 			System.out.println("Youpi configuration created programmatically was validated by EMF and OCL Validation.");
 		}
+
+		reportJavaInformation();
 	}
 	
 	/**
@@ -365,5 +369,33 @@ public class Main
 		 org.eclipse.emf.ecore.resource.Resource resource = resourceSet.getResource(URI.createURI(uri), true);
 		 // Return the first element.
 		 return resource.getContents().get(0);
+	}
+
+	public static void reportJavaInformation()
+	{
+        // Getting the runtime reference from system.
+		java.lang.Runtime runtime = java.lang.Runtime.getRuntime();
+		System.out.println("Java Runtime available processor = " + runtime.availableProcessors());
+		System.out.println("Java Runtime max memory   = " + runtime.maxMemory());
+		System.out.println("Java Runtime total memory = " + runtime.totalMemory());
+		System.out.println("Java Runtime free memory  = " + runtime.freeMemory());
+
+	      
+        int mb = 1024*1024;
+        System.out.println("##### Heap utilization statistics [MB] #####");
+         
+        //Print used memory
+        System.out.println("Used Memory:"
+            + (runtime.totalMemory() - runtime.freeMemory()) / mb);
+ 
+        //Print free memory
+        System.out.println("Free Memory:"
+            + runtime.freeMemory() / mb);
+         
+        //Print total available memory
+        System.out.println("Total Memory:" + runtime.totalMemory() / mb);
+ 
+        //Print Maximum available memory
+        System.out.println("Max Memory:" + runtime.maxMemory() / mb);
 	}
 }
