@@ -51,6 +51,7 @@ h3. Action to EOperation
 h3. Attribute to EParameter
 
 Each attribute of an action is converted to an EParameter, using the following mappings:
+
 | OCCI | Ecore | notes |
 | term | name | format |
 | type | type | resolve using lookup in registered EPackages |
@@ -63,7 +64,6 @@ h3. Attribute to EAttribute
 | type | type | resolve using lookup in registered EPackages |
 | default | defaultValue | |
 | self.isRequired | self.lowerBound = 1 | |
-
 
 h3. Mixin to EClass
 
