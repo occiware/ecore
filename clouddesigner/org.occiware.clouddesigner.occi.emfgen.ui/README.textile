@@ -21,18 +21,55 @@ This is a prototype utility to revert conversion of previously converted configu
 h2. Mapping 
 
 The following sections lists the mappings between OCCI and Ecore that are used by the OCCI2Ecore conversion.
+The sections shows the detailed mapping between the OCCI concept and its match in ecore.
 
-TODO accurate description
+If for a mapping a specific process is necessary, it is mentioned in the "notes" column. 
 
-h3. Extension => EPackage
-h3. Kind => EClass
-h3. Attribute => EAttribute
-h3. Action => EOperation
+h3. Extension to EPackage
 
-Each attribute of the action is converted to an EParameter.
+| OCCI | Ecore | notes |
+| name | name | format |
+| name | nsPrefix | format |
+| scheme | nsURI | format |
+| types | eClassifiers | copy of EDatatypes (concept shared by OCCI and Ecore) |
+| kinds | eClassifiers | loop call of "Kind to EClass" |
 
-h3. Mixin => EClass
+h3. Kind to EClass
+
+| OCCI | Ecore | notes |
+| kind | eSupertype | resolve using lookup in registered EPackages |
+| term | name | format |
+| attributes | eAttributes | loop call of "Attribute to EAttribute" |
+| actions | eOperations | loop call of "Action to EOperation" |
+
+h3. Action to EOperation
+
+| OCCI | Ecore | notes |
+| term | name | format |
+| attributes | eParameters | loop call of "Attribute to EParameter" |
+
+h3. Attribute to EParameter
+
+Each attribute of an action is converted to an EParameter, using the following mappings:
+| OCCI | Ecore | notes |
+| term | name | format |
+| type | type | resolve using lookup in registered EPackages |
+| self.isRequired | self.lowerBound = 1 | |
+
+h3. Attribute to EAttribute
+
+| OCCI | Ecore | notes |
+| term | name | format |
+| type | type | resolve using lookup in registered EPackages |
+| default | defaultValue | |
+| self.isRequired | self.lowerBound = 1 | |
+
+
+h3. Mixin to EClass
 
 Not implemented yet.
+
+
+
 
 
