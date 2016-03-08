@@ -10,8 +10,8 @@ Here are the different steps of the conversion:
 * ConvertDockerConfiguration: converts Docker configurations into configuration using Docker metamodel instead of OCCI.ecore kinds
 The OCCI2Ecore class launches the whole conversion.
 
-The generated ecore will may differ from the previous version, but those changes are not relevant. To get rid of them reload the model from the genmodel, EMF will update the ecore.
-The buil.xml file does the reload & generates model / edit code.
+The generated ecore may differ from the previous version, but those changes are not relevant. To get rid of them reload the model from the genmodel, EMF will update the ecore.
+The build.xml file does the reload & generates model / edit code.
 After that there might be some errors to correct, as missing casts in OCL-generated code. Also some paths in comments may change but it is not relevant.
 
 h3. Ecore to OCCI
@@ -20,19 +20,62 @@ This is a prototype utility to revert conversion of previously converted configu
 
 h2. Mapping 
 
-The following sections lists the mappings between OCCI and Ecore that are used by the OCCI2Ecore conversion.
+The following section lists the mappings between OCCI and Ecore concepts that are used by the OCCI2Ecore conversion.
+The section shows the detailed mapping between the OCCI concept and its match in Ecore.
 
-TODO accurate description
+If for a mapping a specific process is necessary, it is mentioned in the "notes" column. 
 
-h3. Extension => EPackage
-h3. Kind => EClass
-h3. Attribute => EAttribute
-h3. Action => EOperation
+h3. Extension to EPackage
 
-Each attribute of the action is converted to an EParameter.
+| OCCI | Ecore | notes |
+| name | name | format |
+| name | nsPrefix | format |
+| scheme | nsURI | format |
+| import | ??? | ??? |
+| kinds | eClassifiers | loop call of "Kind to EClass" |
+| mixins | eClassifiers | loop call of "Mixin to EClass" |
+| types | eClassifiers | deep copy of EDataTypes (concept shared by OCCI and Ecore) |
 
-h3. Mixin => EClass
+h3. Kind to EClass
+
+| OCCI | Ecore | notes |
+| term | name | format |
+| scheme | ??? | ??? |
+| title | ??? | ??? |
+| attributes | eAttributes | loop call of "Attribute to EAttribute" |
+| actions | eOperations | loop call of "Action to EOperation" |
+| parent | eSupertype | resolve using lookup in registered EPackages |
+
+h3. Mixin to EClass
 
 Not implemented yet.
 
+h3. Attribute to EAttribute
 
+| OCCI | Ecore | notes |
+| name | name | format |
+| mutable | ??? | ??? |
+| required = true | lowerBound = 1 | |
+| default | defaultValue | |
+| description | ??? | ??? |
+| type | type | resolve using lookup in registered EPackages |
+
+h3. Action to EOperation
+
+| OCCI | Ecore | notes |
+| term | name | format |
+| scheme | ??? | ??? |
+| title | ??? | ??? |
+| attributes | eParameters | loop call of "Attribute to EParameter" |
+
+h3. Attribute to EParameter
+
+Each attribute of an action is converted to an EParameter, using the following mapping rules:
+
+| OCCI | Ecore | notes |
+| name | name | format |
+| mutable | ??? | ??? |
+| required = true | lowerBound = 1 | |
+| default | ??? | ??? |
+| description | ??? | ??? |
+| type | type | resolve using lookup in registered EPackages |

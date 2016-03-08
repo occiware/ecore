@@ -11,16 +11,24 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
+
+import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EOperation;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -54,6 +62,7 @@ import org.occiware.clouddesigner.occi.AttributeState;
 import org.occiware.clouddesigner.occi.Entity;
 import org.occiware.clouddesigner.occi.Kind;
 import org.occiware.clouddesigner.occi.Mixin;
+import org.occiware.clouddesigner.occi.OCCIFactory;
 import org.occiware.clouddesigner.occi.OCCIPackage;
 import org.occiware.clouddesigner.occi.OCCITables;
 import org.occiware.clouddesigner.occi.OCCIUtils;
@@ -135,7 +144,7 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 	protected EntityImpl() {
 		super();
 		// Generate a new ID for this entity.
-		setId(EcoreUtil.generateUUID());
+		setId(UUID.randomUUID().toString());
 		// If kind is not set then
 		if(kind == null) {
 			try {
@@ -146,6 +155,11 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 				exc.printStackTrace(System.err);
 			}
 		}
+		// Add a default attribute occi.core.id (mandatory ref. GFD.185 section 3.1 p6).
+		AttributeState attrState = OCCIFactory.eINSTANCE.createAttributeState();
+		attrState.setName("occi.core.id");
+		attrState.setValue(getId());
+		getAttributes().add(attrState);
 	}
 
 	/**
