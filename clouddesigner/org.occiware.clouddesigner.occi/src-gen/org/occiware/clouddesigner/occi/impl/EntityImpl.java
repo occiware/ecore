@@ -158,7 +158,7 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 		// Add a default attribute occi.core.id (mandatory ref. GFD.185 section 3.1 p6).
 		AttributeState attrState = OCCIFactory.eINSTANCE.createAttributeState();
 		attrState.setName("occi.core.id");
-		attrState.setValue("urn:uuid:" + getId());
+		attrState.setValue(getId());
 		getAttributes().add(attrState);
 	}
 
