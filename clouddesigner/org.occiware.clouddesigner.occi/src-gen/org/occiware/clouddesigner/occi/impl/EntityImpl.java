@@ -11,6 +11,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.DiagnosticChain;
@@ -135,7 +137,7 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 	protected EntityImpl() {
 		super();
 		// Generate a new ID for this entity.
-		setId(EcoreUtil.generateUUID());
+		setId(UUID.randomUUID().toString());
 		// If kind is not set then
 		if(kind == null) {
 			try {
