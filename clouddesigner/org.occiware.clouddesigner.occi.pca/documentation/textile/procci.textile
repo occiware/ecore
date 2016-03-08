@@ -1,0 +1,323 @@
+
+h1. OCCI Extension: procci
+
+| *Name* | procci |
+| *Scheme* | procci# |
+
+h1. Imports
+
+| *Name* | *Scheme* |
+| <a href=".textile"></a> |  |
+
+h1. Kinds
+
+h2. Kind Network
+
+| *Term* | Network |
+| *Scheme* | procci# |
+| *Title* |  |
+| *Parent* | <a href="invalid.textile#kind-"></a> |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.network.vlan |  | true | true |  |  |
+| occi.network.label |  | true | true |  |  |
+| occi.network.state | <a href="procci.textile#enum-occi.infrastructure.linkstate">occi.infrastructure.linkstate</a> | false | false |  |  |
+| occi.network.state.mesage |  | false | false |  |  |
+
+h3. Actions
+
+h4. Action up
+
+| *Term* | up |
+| *Scheme* | procci/Network/action# |
+| *Title* |  |
+
+
+h4. Action down
+
+| *Term* | down |
+| *Scheme* | procci/Network/action# |
+| *Title* |  |
+
+
+
+
+h2. Kind Compute
+
+| *Term* | Compute |
+| *Scheme* | procci# |
+| *Title* |  |
+| *Parent* | <a href="invalid.textile#kind-"></a> |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.compute.architecture | <a href="procci.textile#enum-occi.infrastructure.architecture">occi.infrastructure.architecture</a> | true | true |  |  |
+| occi.compute.cores |  | true | true |  |  |
+| occi.compute.hostname |  | true | true |  |  |
+| occi.compute.memory |  | true | true |  |  |
+| occi.compute.state |  | false | false |  |  |
+| occi.compute.share |  | true | true |  |  |
+| occi.compute.state.message |  | false | false |  |  |
+
+h3. Actions
+
+h4. Action start
+
+| *Term* | start |
+| *Scheme* | procci/Compute/action# |
+| *Title* |  |
+
+
+h4. Action stop
+
+| *Term* | stop |
+| *Scheme* | procci/Compute/action# |
+| *Title* |  |
+
+
+h4. Action restart
+
+| *Term* | restart |
+| *Scheme* | procci/Compute/action# |
+| *Title* |  |
+
+
+h4. Action save
+
+| *Term* | save |
+| *Scheme* | procci/Compute/action# |
+| *Title* |  |
+
+
+h4. Action suspend
+
+| *Term* | suspend |
+| *Scheme* | procci/Compute/action# |
+| *Title* |  |
+
+
+
+
+h2. Kind Storage
+
+| *Term* | Storage |
+| *Scheme* | procci# |
+| *Title* |  |
+| *Parent* | <a href="invalid.textile#kind-"></a> |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.storage.size | <a href="procci.textile#datatype-float">Float</a> | true | true |  |  |
+| occi.storage.state | <a href="procci.textile#enum-occi.infrastructure.storagestate">occi.infrastructure.storagestate</a> | false | false |  |  |
+| occi.storage.state.message |  | false | false |  |  |
+
+h3. Actions
+
+h4. Action online
+
+| *Term* | online |
+| *Scheme* | procci/Storage/action# |
+| *Title* |  |
+
+
+h4. Action offline
+
+| *Term* | offline |
+| *Scheme* | procci/Storage/action# |
+| *Title* |  |
+
+
+
+
+h2. Kind StorageLink
+
+| *Term* | StorageLink |
+| *Scheme* | procci# |
+| *Title* |  |
+| *Parent* | <a href="invalid.textile#kind-"></a> |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.storagelink.deviceid |  | true | true |  |  |
+| occi.storagelink.mountpoint |  | true | true |  |  |
+| occi.storagelink.state | <a href="procci.textile#enum-occi.infrastructure.storagestate">occi.infrastructure.storagestate</a> | true | true |  |  |
+| occi.storagelink.state.message | <a href="procci.textile#enum-occi.infrastructure.linkstate">occi.infrastructure.linkstate</a> | false | false |  |  |
+
+h3. Actions
+
+
+
+h2. Kind NetworkInterface
+
+| *Term* | NetworkInterface |
+| *Scheme* | procci# |
+| *Title* |  |
+| *Parent* | <a href="invalid.textile#kind-"></a> |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.networkinterface.interface |  | true | false |  |  |
+| occi.networkinterface.mac |  | true | true |  |  |
+| occi.networkinterface.state | <a href="procci.textile#enum-occi.infrastructure.linkstate">occi.infrastructure.linkstate</a> | false | false |  |  |
+| occi.networkinterface.state.message |  | false | false |  |  |
+
+h3. Actions
+
+
+
+
+
+h1. Mixins
+
+h2. Mixin IPNetwork
+
+| *Term* | IPNetwork |
+| *Scheme* | procci# |
+| *Title* |  |
+
+h3. Depends
+
+
+h3. Applies
+
+* <a href="procci.textile#kind-Network">procci#Network</a>
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.network.address |  | true | true |  |  |
+| occi.network.gateway |  | true | true |  |  |
+| occi.network.allocation | <a href="procci.textile#enum-occi.infrastrcture.computestate">occi.infrastrcture.computestate</a> | true | true |  |  |
+
+h3. Actions
+
+
+
+h2. Mixin IPNetworkInterface
+
+| *Term* | IPNetworkInterface |
+| *Scheme* | procci# |
+| *Title* |  |
+
+h3. Depends
+
+
+h3. Applies
+
+* <a href="procci.textile#kind-NetworkInterface">procci#NetworkInterface</a>
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.networkinterface.address | <a href="procci.textile#datatype-ipaddress">IPAddress</a> | true | true |  |  |
+| occi.networkinterface.gateway | <a href="procci.textile#datatype-ipaddress">IPAddress</a> | true | true |  |  |
+| occi.networkinterface.allocation | <a href="procci.textile#enum-occi.infrastructure.allocation">occi.infrastructure.allocation</a> | true | true |  |  |
+
+h3. Actions
+
+
+
+h2. Mixin Credentials
+
+| *Term* | Credentials |
+| *Scheme* | procci# |
+| *Title* |  |
+
+h3. Depends
+
+
+h3. Applies
+
+* <a href="procci.textile#kind-Compute">procci#Compute</a>
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.credentials.ssh.publickey |  | true | true |  |  |
+
+h3. Actions
+
+
+
+h2. Mixin Contextualization
+
+| *Term* | Contextualization |
+| *Scheme* | procci# |
+| *Title* |  |
+
+h3. Depends
+
+
+h3. Applies
+
+* <a href="procci.textile#kind-Compute">procci#Compute</a>
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.compute.userdata |  | true | true |  |  |
+
+h3. Actions
+
+
+
+
+
+h1. Types
+
+h2. Enum occi.infrastructure.architecture
+
+Literals:
+* x86  
+* x64  
+
+h2. Enum occi.infrastructure.linkstate
+
+Literals:
+* active  
+* inactive  
+* error  
+
+h2. Enum occi.infrastrcture.computestate
+
+Literals:
+* active  
+* inactive  
+* suspended  
+* error  
+
+h2. Enum occi.infrastructure.storagestate
+
+Literals:
+* online  
+* offline  
+* error  
+
+h2. Datatype Float
+
+h3. Type 
+
+h3. Annotations
+
+
+h2. Enum occi.infrastructure.allocation
+
+Literals:
+* static  
+* dynamic  
+
+h2. Datatype IPAddress
+
+h3. Type 
+
+h3. Annotations
+
+
+
+

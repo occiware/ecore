@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="ASCII"?>
+<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:occi="http://schemas.ogf.org/occi" name="procci" scheme="procci#">
+  <import href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#/"/>
+  <kinds term="Network" scheme="procci#">
+    <attributes name="occi.network.vlan" mutable="true" required="true">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number"/>
+    </attributes>
+    <attributes name="occi.network.label" mutable="true" required="true">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </attributes>
+    <attributes name="occi.network.state" type="//@types.1"/>
+    <attributes name="occi.network.state.mesage">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <parent href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@kinds[term='resource']"/>
+    <actions term="up" scheme="procci/Network/action#"/>
+    <actions term="down" scheme="procci/Network/action#"/>
+  </kinds>
+  <kinds term="Compute" scheme="procci#">
+    <attributes name="occi.compute.architecture" mutable="true" required="true" type="//@types.0"/>
+    <attributes name="occi.compute.cores" mutable="true" required="true" description="">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number"/>
+    </attributes>
+    <attributes name="occi.compute.hostname" mutable="true" required="true">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="occi.compute.memory" mutable="true" required="true">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="occi.compute.state">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <attributes name="occi.compute.share" mutable="true" required="true">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number"/>
+    </attributes>
+    <attributes name="occi.compute.state.message">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <parent href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@kinds[term='resource']"/>
+    <actions term="start" scheme="procci/Compute/action#"/>
+    <actions term="stop" scheme="procci/Compute/action#"/>
+    <actions term="restart" scheme="procci/Compute/action#"/>
+    <actions term="save" scheme="procci/Compute/action#"/>
+    <actions term="suspend" scheme="procci/Compute/action#"/>
+  </kinds>
+  <kinds term="Storage" scheme="procci#">
+    <attributes name="occi.storage.size" mutable="true" required="true" type="//@types.4"/>
+    <attributes name="occi.storage.state" type="//@types.3"/>
+    <attributes name="occi.storage.state.message">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+    <parent href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@kinds[term='resource']"/>
+    <actions term="online" scheme="procci/Storage/action#"/>
+    <actions term="offline" scheme="procci/Storage/action#"/>
+  </kinds>
+  <kinds term="StorageLink" scheme="procci#">
+    <attributes name="occi.storagelink.deviceid" mutable="true" required="true">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </attributes>
+    <attributes name="occi.storagelink.mountpoint" mutable="true" required="true">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </attributes>
+    <attributes name="occi.storagelink.state" mutable="true" required="true" type="//@types.3"/>
+    <attributes name="occi.storagelink.state.message" type="//@types.1"/>
+    <parent href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@kinds[term='link']"/>
+  </kinds>
+  <kinds term="NetworkInterface" scheme="procci#">
+    <attributes name="occi.networkinterface.interface" required="true">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </attributes>
+    <attributes name="occi.networkinterface.mac" mutable="true" required="true">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </attributes>
+    <attributes name="occi.networkinterface.state" type="//@types.1"/>
+    <attributes name="occi.networkinterface.state.message">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </attributes>
+    <parent href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@kinds[term='link']"/>
+  </kinds>
+  <mixins term="IPNetwork" scheme="procci#" applies="//@kinds[term='Network']">
+    <attributes name="occi.network.address" mutable="true" required="true">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </attributes>
+    <attributes name="occi.network.gateway" mutable="true" required="true">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </attributes>
+    <attributes name="occi.network.allocation" mutable="true" required="true" type="//@types.2"/>
+  </mixins>
+  <mixins term="IPNetworkInterface" scheme="procci#" applies="//@kinds[term='NetworkInterface']">
+    <attributes name="occi.networkinterface.address" mutable="true" required="true" type="//@types.6"/>
+    <attributes name="occi.networkinterface.gateway" mutable="true" required="true" type="//@types.6"/>
+    <attributes name="occi.networkinterface.allocation" mutable="true" required="true" type="//@types.5"/>
+  </mixins>
+  <mixins term="Credentials" scheme="procci#" applies="//@kinds[term='Compute']">
+    <attributes name="occi.credentials.ssh.publickey" mutable="true" required="true">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+    </attributes>
+  </mixins>
+  <mixins term="Contextualization" scheme="procci#" applies="//@kinds[term='Compute']">
+    <attributes name="occi.compute.userdata" mutable="true" required="true">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+    </attributes>
+  </mixins>
+  <types xsi:type="ecore:EEnum" name="occi.infrastructure.architecture">
+    <eLiterals name="x86"/>
+    <eLiterals name="x64"/>
+  </types>
+  <types xsi:type="ecore:EEnum" name="occi.infrastructure.linkstate">
+    <eLiterals name="active"/>
+    <eLiterals name="inactive"/>
+    <eLiterals name="error"/>
+  </types>
+  <types xsi:type="ecore:EEnum" name="occi.infrastrcture.computestate">
+    <eLiterals name="active"/>
+    <eLiterals name="inactive"/>
+    <eLiterals name="suspended"/>
+    <eLiterals name="error"/>
+  </types>
+  <types xsi:type="ecore:EEnum" name="occi.infrastructure.storagestate">
+    <eLiterals name="online"/>
+    <eLiterals name="offline"/>
+    <eLiterals name="error"/>
+  </types>
+  <types name="Float"/>
+  <types xsi:type="ecore:EEnum" name="occi.infrastructure.allocation">
+    <eLiterals name="static"/>
+    <eLiterals name="dynamic"/>
+  </types>
+  <types name="IPAddress"/>
+</occi:Extension>
