@@ -155,11 +155,6 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 				exc.printStackTrace(System.err);
 			}
 		}
-		// Add a default attribute occi.core.id (mandatory ref. GFD.185 section 3.1 p6).
-		AttributeState attrState = OCCIFactory.eINSTANCE.createAttributeState();
-		attrState.setName("occi.core.id");
-		attrState.setValue(getId());
-		getAttributes().add(attrState);
 	}
 
 	/**
@@ -275,6 +270,23 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 		for(AttributeState attributeState : toRemove) {
 			attributes.remove(attributeState);
 		}
+		
+		// Add a default attribute occi.core.id (mandatory ref. GFD.185 section 3.1 p6).
+		// only if occi.core.id doesnt exist.
+		boolean occiCoreIdExist = false;
+		for (AttributeState attributeState : attributes) {
+			if (attributeState.getName().equals("occi.core.id")) {
+				occiCoreIdExist = true;
+				break;
+			}
+		}
+		if (!occiCoreIdExist) {
+			AttributeState attrState = OCCIFactory.eINSTANCE.createAttributeState();
+			attrState.setName("occi.core.id");
+			attrState.setValue(getId());
+			attributes.add(attrState);
+		}
+		
 		
 		// Iterate over all OCCI attributes of this entity.
 		for(Attribute attribute : OCCIUtils.getAllAttributes(this)) {
