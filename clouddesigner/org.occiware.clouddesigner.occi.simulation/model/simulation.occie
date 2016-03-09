@@ -5,6 +5,9 @@
   <kinds term="contains" scheme="simulation#" title="cloudSim resources link">
     <parent href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@kinds[term='link']"/>
   </kinds>
+  <kinds term="SimulationResource" scheme="http://occiware.org/simulation#">
+    <parent href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@kinds[term='resource']"/>
+  </kinds>
   <mixins term="datacenter" scheme="simulation#" title="datacenter mixin">
     <attributes name="os" required="true" default="Linux" description="operating system">
       <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
