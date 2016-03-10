@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Inria
+ * Copyright (c) 2015-16 Inria
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -48,7 +48,7 @@ public class Main
 		Registry.INSTANCE.getExtensionToFactoryMap().put("*", new OCCIResourceFactoryImpl());
 
 		// Register the OCCI package into EMF.
-		OCCIPackage.eINSTANCE.toString();	
+		OCCIPackage.eINSTANCE.toString();
 
 		// Register OCCI extensions.
 		OCCIRegistry.getInstance().registerExtension("http://schemas.ogf.org/occi/core#", "model/core.occie");
