@@ -22,6 +22,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.compare;bundle-version="3.1.1",
  org.occiware.clouddesigner.occi.docker.connector,
  org.occiware.clouddesigner.occi.docker.edit;bundle-version="0.1.0",
- org.occiware.clouddesigner.occi.design;bundle-version="0.1.0"
+ org.occiware.clouddesigner.occi.design;bundle-version="0.1.0",
+ org.occiware.clouddesigner.occi.emfgen.ui;bundle-version="0.1.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7

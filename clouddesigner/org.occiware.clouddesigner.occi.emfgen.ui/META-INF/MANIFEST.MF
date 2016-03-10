@@ -22,3 +22,4 @@ Require-Bundle: org.occiware.clouddesigner.occi;bundle-version="0.1.0",
 Import-Package: org.eclipse.core.runtime
 Bundle-Activator: org.occiware.clouddesigner.occi.emfgen.ui.popup.actions.Activator
 Bundle-ActivationPolicy: lazy
+Export-Package: org.occiware.clouddesigner.occi.emfgen.ui.popup.actions
