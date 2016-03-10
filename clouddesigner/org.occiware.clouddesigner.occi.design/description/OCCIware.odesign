@@ -179,13 +179,13 @@
           </style>
         </containerMappings>
         <toolSections name="Tool">
-          <ownedTools xsi:type="tool:DirectEditLabel" name="EditTerm">
+          <ownedTools xsi:type="tool:DirectEditLabel" name="EditTerm" inputLabelExpression="feature:term">
             <mask mask="{0}"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="term" valueExpression="var:arg0"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DirectEditLabel" name="EditName">
+          <ownedTools xsi:type="tool:DirectEditLabel" name="EditName" inputLabelExpression="feature:name">
             <mask mask="{0}"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:arg0"/>
