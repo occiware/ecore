@@ -31,7 +31,7 @@ h3. Extension to EPackage
 | name | name | format |
 | name | nsPrefix | format |
 | scheme | nsURI | format |
-| import | ??? | ??? |
+| import | | unused |
 | kinds | eClassifiers | loop call of "Kind to EClass" |
 | mixins | eClassifiers | loop call of "Mixin to EClass" |
 | types | eClassifiers | deep copy of EDataTypes (concept shared by OCCI and Ecore) |
@@ -40,8 +40,8 @@ h3. Kind to EClass
 
 | OCCI | Ecore | notes |
 | term | name | format |
-| scheme | ??? | ??? |
-| title | ??? | ??? |
+| scheme | | unused |
+| title | | unused |
 | attributes | eAttributes | loop call of "Attribute to EAttribute" |
 | actions | eOperations | loop call of "Action to EOperation" |
 | parent | eSupertype | resolve using lookup in registered EPackages |
@@ -54,18 +54,18 @@ h3. Attribute to EAttribute
 
 | OCCI | Ecore | notes |
 | name | name | format |
-| mutable | ??? | ??? |
+| mutable | | unused |
 | required = true | lowerBound = 1 | |
 | default | defaultValue | |
-| description | ??? | ??? |
+| description | | unused |
 | type | type | resolve using lookup in registered EPackages |
 
 h3. Action to EOperation
 
 | OCCI | Ecore | notes |
 | term | name | format |
-| scheme | ??? | ??? |
-| title | ??? | ??? |
+| scheme | | unused |
+| title | | unused |
 | attributes | eParameters | loop call of "Attribute to EParameter" |
 
 h3. Attribute to EParameter
@@ -74,8 +74,8 @@ Each attribute of an action is converted to an EParameter, using the following m
 
 | OCCI | Ecore | notes |
 | name | name | format |
-| mutable | ??? | ??? |
+| mutable | | unused |
 | required = true | lowerBound = 1 | |
-| default | ??? | ??? |
-| description | ??? | ??? |
+| default | | unused |
+| description | | unused |
 | type | type | resolve using lookup in registered EPackages |
