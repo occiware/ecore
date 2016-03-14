@@ -6,6 +6,16 @@
   <semanticResources>platform:/plugin/org.occiware.clouddesigner.occi.hypervisor/model/Hypervisor.occie</semanticResources>
   <semanticResources>file:/home/mehdi/Bureau/tmp/ecore/clouddesigner/org.occiware.clouddesigner.occi.simulation/model/simulation.occie</semanticResources>
   <semanticResources>example/example.occic</semanticResources>
+  <semanticResources>model/Simulation.occie</semanticResources>
+  <semanticResources>model/Simulation.ecore</semanticResources>
+  <semanticResources>platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore</semanticResources>
+  <semanticResources>platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore</semanticResources>
+  <semanticResources>model/Simulation.genmodel</semanticResources>
+  <semanticResources>platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.genmodel</semanticResources>
+  <semanticResources>platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.genmodel</semanticResources>
+  <semanticResources>file://home/mehdi/Bureau/occiware/ecore/clouddesigner/org.occiware.clouddesigner.occi.simulation/model/Simulation.ecore</semanticResources>
+  <semanticResources>platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.ecore</semanticResources>
+  <semanticResources>platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel</semanticResources>
   <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_VEcSAKSeEeWei_z-6syrVA">
     <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_VLptQKSeEeWei_z-6syrVA" name="simulation">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_VLptQaSeEeWei_z-6syrVA" source="DANNOTATION_CUSTOMIZATION_KEY">
