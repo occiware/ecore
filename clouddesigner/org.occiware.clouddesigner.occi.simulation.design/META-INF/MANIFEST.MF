@@ -8,6 +8,14 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.core.resources,
  org.eclipse.sirius,
- org.eclipse.sirius.common.acceleo.aql
+ org.eclipse.sirius.common.acceleo.mtl,
+ org.occiware.clouddesigner.occi.simulation,
+ org.occiware.clouddesigner.occi,
+ org.occiware.clouddesigner.occi.design,
+ org.eclipse.sirius.common.acceleo.aql,
+ org.eclipse.emf.common,
+ org.eclipse.emf.ecore.xmi,
+ org.eclipse.emf.compare;bundle-version="3.1.1",
+ org.eclipse.emf.transaction;bundle-version="1.9.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
