@@ -2,5 +2,5 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Procci
 Bundle-SymbolicName: org.occiware.clouddesigner.occi.pca;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 0.1.0.qualifier
 Require-Bundle: org.occiware.clouddesigner.occi
