@@ -1,15 +1,13 @@
-package org.occiware.clouddesigner.occi.emfgen.tests;
+package org.occiware.clouddesigner.occi.emfgen;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.EObject;
 import org.occiware.clouddesigner.occi.Attribute;
 import org.occiware.clouddesigner.occi.AttributeState;
 import org.occiware.clouddesigner.occi.Configuration;
@@ -17,48 +15,16 @@ import org.occiware.clouddesigner.occi.Extension;
 import org.occiware.clouddesigner.occi.Kind;
 import org.occiware.clouddesigner.occi.Link;
 import org.occiware.clouddesigner.occi.OCCIFactory;
-import org.occiware.clouddesigner.occi.OCCIPackage;
+import org.occiware.clouddesigner.occi.OCCIRegistry;
 import org.occiware.clouddesigner.occi.Resource;
-import org.occiware.clouddesigner.occi.docker.DockerPackage;
-import org.occiware.clouddesigner.occi.emfgen.ConverterUtils;
-import org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage;
 
-public class Ecore2OCCI implements IConverterPaths {
+public class Ecore2OCCI {
 
 	private Map<Resource, Resource> mappedResources = new HashMap<Resource, Resource>();
 
 	private Set<Extension> usedExtensions = new HashSet<Extension>();
 
-	private Map<String, Extension> extensions = new HashMap<String, Extension>();
-
-	public static ResourceSet resourceSet = new ResourceSetImpl();
-
-	static {
-		resourceSet.getPackageRegistry().put(OCCIPackage.eNS_URI, OCCIPackage.eINSTANCE);
-		resourceSet.getPackageRegistry().put(InfrastructurePackage.eNS_URI, InfrastructurePackage.eINSTANCE);
-		resourceSet.getPackageRegistry().put(DockerPackage.eNS_URI, DockerPackage.eINSTANCE);
-		// OCCIStandaloneSetup.doSetup(); // for xtext
-	}
-
-	public Ecore2OCCI() {
-		registerExtension(CORE_EXT_PATH);
-		registerExtension(INFRA_EXT_PATH);
-		registerExtension(DOCKER_EXT_PATH);
-	}
-
-	public static void main(String[] args) throws IOException {
-		ConverterUtils.save(resourceSet,
-				new Ecore2OCCI().convertConfig(
-						(Configuration) ConverterUtils.getRootElement(resourceSet, "file:/" + DOCKER_SAMPLE1_DSL_PATH)),
-				"output/docker_sample1_OCCI.xmi");
-		ConverterUtils.save(resourceSet,
-				new Ecore2OCCI().convertConfig(
-						(Configuration) ConverterUtils.getRootElement(resourceSet, "file:/" + DOCKER_SAMPLE2_DSL_PATH)),
-				"output/docker_sample2_OCCI.xmi");
-		// use the ".occi" extension to serialize using xtext
-	}
-
-	private Configuration convertConfig(Configuration sourceConfig) {
+	public Configuration convertConfig(Configuration sourceConfig) {
 		Configuration targetConfig = OCCIFactory.eINSTANCE.createConfiguration();
 		// create all resources
 		for (org.occiware.clouddesigner.occi.Resource sourceResource : sourceConfig.getResources()) {
@@ -82,7 +48,7 @@ public class Ecore2OCCI implements IConverterPaths {
 			org.occiware.clouddesigner.occi.Resource sourceResource) {
 		org.occiware.clouddesigner.occi.Resource targetResource = OCCIFactory.eINSTANCE.createResource();
 		targetResource.setId(sourceResource.getId());
-		Kind kind = getKind(sourceResource.eClass());
+		Kind kind = getKind(sourceResource);
 		targetResource.setKind(kind);
 
 		Set<EAttribute> setAttributes = new HashSet<EAttribute>();
@@ -108,7 +74,7 @@ public class Ecore2OCCI implements IConverterPaths {
 	private Link convertLink(Link sourceLink) {
 		Link targetLink = OCCIFactory.eINSTANCE.createLink();
 		targetLink.setId(sourceLink.getId());
-		Kind kind = getKind(sourceLink.eClass());
+		Kind kind = getKind(sourceLink);
 		targetLink.setKind(kind);
 		targetLink.setSource(mappedResources.get(sourceLink.getSource()));
 		targetLink.setTarget(mappedResources.get(sourceLink.getTarget()));
@@ -131,10 +97,13 @@ public class Ecore2OCCI implements IConverterPaths {
 		return targetLink;
 	}
 
-	private Kind getKind(EClass type) {
-		String term = type.getName();
-		String scheme = type.getEPackage().getNsURI() + '#';
-		Extension extension = extensions.get(scheme);
+	private Kind getKind(EObject element) {
+		String term = element.eClass().getName();
+		String scheme = element.eClass().getEPackage().getNsURI() + '#';
+		String extensionURI = OCCIRegistry.getInstance().getExtensionURI(scheme);
+		final org.eclipse.emf.ecore.resource.Resource extensionResource = element.eResource().getResourceSet()
+				.getResource(URI.createURI(extensionURI, true), true);
+		final Extension extension = (Extension) extensionResource.getContents().get(0);
 		for (Kind kind : extension.getKinds()) {
 			if (kind.getTerm().equalsIgnoreCase(term)) {
 				usedExtensions.add(extension);
@@ -142,10 +111,5 @@ public class Ecore2OCCI implements IConverterPaths {
 			}
 		}
 		return null;
-	}
-
-	private void registerExtension(String path) {
-		Extension ext = (Extension) ConverterUtils.getRootElement(resourceSet, "file:/" + path);
-		extensions.put(ext.getScheme(), ext);
 	}
 }

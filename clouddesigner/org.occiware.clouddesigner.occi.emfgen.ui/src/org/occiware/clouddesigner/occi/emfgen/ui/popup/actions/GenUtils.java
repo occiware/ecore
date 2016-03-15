@@ -77,7 +77,7 @@ public class GenUtils {
 		genModel.getUsedGenPackages().addAll(usedGenPackages);
 		genModel.initialize(Collections.singleton(rootPackage));
 		GenPackage genPackage = genModel.getGenPackages().get(0);
-		genPackage.setPrefix(rootPackage.getNsPrefix());
+		genPackage.setPrefix(ConverterUtils.toU1Case(rootPackage.getNsPrefix()));
 		genPackage.setBasePackage(basePackage);
 
 		URI genModelURI = URI

@@ -13,7 +13,6 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
 import org.eclipse.emf.codegen.ecore.genmodel.GenPackage;
@@ -76,24 +75,49 @@ public class ConvertAction implements IObjectActionDelegate {
 	public void run(IAction action) {
 		IFile occieFile = (IFile) ((IStructuredSelection) selection).getFirstElement();
 		try {
-			String extensionName = occieFile.getFullPath().removeFileExtension().lastSegment();
-			String modelPath = occieFile.getParent().getLocation().toString();
-			String ecoreLocation = modelPath + '/' + ConverterUtils.toU1Case(extensionName) + ".ecore";
-			String modelPluginName = new Path(ecoreLocation).removeLastSegments(2).lastSegment().toString();
+			EPackage.Registry.INSTANCE.put(ECORE_PLATFORM_URI, EcorePackage.eINSTANCE);
+			resourceSet = new ResourceSetImpl();
+			Extension ext = (Extension) ConverterUtils.getRootElement(resourceSet,
+					"file:/" + occieFile.getLocation().toString());
 
-			String genModelPath = modelPath + '/' + ConverterUtils.toU1Case(extensionName) + ".genmodel";
-			String basePackage = "";
-			if (modelPluginName.endsWith(extensionName) && !modelPluginName.equals(extensionName)) {
-				basePackage = modelPluginName.substring(0, modelPluginName.length() - (extensionName.length() + 1));
+			Map<Object, Object> validationContext = LabelUtil.createDefaultContext(Diagnostician.INSTANCE);
+			BasicDiagnostic diagnostics = Diagnostician.INSTANCE.createDefaultDiagnostic(ext);
+			if (!Diagnostician.INSTANCE.validate(ext, diagnostics, validationContext)) {
+				StringBuilder message = null;
+				for (Diagnostic diagnostic : diagnostics.getChildren()) {
+					if (message == null) {
+						message = new StringBuilder();
+					} else {
+						message.append("\n");
+					}
+					message.append(diagnostic.getMessage());
+				}
+				if (message != null) {
+					MessageDialog.openError(shell, "Invalid Extension", message.toString());
+					return;
+				}
 			}
+
+			// set a base package if necessary
+			String basePackage = "";
+			String projectName = occieFile.getProject().getName();
+			String extensionName = ext.getName();
+			if (projectName.toLowerCase().endsWith(extensionName.toLowerCase())
+					&& projectName.length() > extensionName.length()) {
+				basePackage = projectName.substring(0, projectName.length() - (extensionName.length() + 1))
+						.toLowerCase();
+			}
+
 			try {
-				generateEMFModels(extensionName, ecoreLocation, basePackage);
+				generateEMFModels(ext,
+						occieFile.getLocation().removeFileExtension().addFileExtension("ecore").toString(),
+						basePackage);
 			} catch (IllegalArgumentException e) {
 				MessageDialog.openError(shell, "Invalid Extension", e.getMessage());
 				return;
 			}
 			occieFile.getParent().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
-			generateEMFCode(genModelPath);
+			generateEMFCode(occieFile.getLocation().removeFileExtension().addFileExtension("genmodel ").toString());
 
 			IFile build = PDEProject.getBuildProperties(occieFile.getProject());
 			String buildContent = "bin.includes = .,\\\n               model/,\\\n               META-INF/,\\\n               plugin.xml,\\\n               plugin.properties\njars.compile.order = .\nsource.. = src-gen/\noutput.. = bin/\n";
@@ -118,32 +142,10 @@ public class ConvertAction implements IObjectActionDelegate {
 		this.selection = selection;
 	}
 
-	private void generateEMFModels(String extensionName, String ecoreLocation, String basePackage) throws IOException {
+	private void generateEMFModels(Extension ext, String ecoreLocation, String basePackage) throws IOException {
 		/*
 		 * OCCIE => Ecore conversion
 		 */
-		EPackage.Registry.INSTANCE.put(ECORE_PLATFORM_URI, EcorePackage.eINSTANCE);
-		resourceSet = new ResourceSetImpl();
-		Extension ext = (Extension) ConverterUtils.getRootElement(resourceSet,
-				"file:/" + ecoreLocation.substring(0, ecoreLocation.length() - 5) + "occie");
-
-		Map<Object, Object> validationContext = LabelUtil.createDefaultContext(Diagnostician.INSTANCE);
-		BasicDiagnostic diagnostics = Diagnostician.INSTANCE.createDefaultDiagnostic(ext);
-		if (!Diagnostician.INSTANCE.validate(ext, diagnostics, validationContext)) {
-			StringBuilder message = null;
-			for (Diagnostic diagnostic : diagnostics.getChildren()) {
-				if (message == null) {
-					message = new StringBuilder();
-				} else {
-					message.append("\n");
-				}
-				message.append(diagnostic.getMessage());
-			}
-			if (message != null) {
-				throw new IllegalArgumentException(message.toString());
-			}
-		}
-
 		EPackage ePackage = new OCCIExtension2Ecore().convertExtension(ext);
 		resourceSet.getPackageRegistry().put(ePackage.getNsURI(), ePackage);
 		ConverterUtils.persistMetamodel(resourceSet, ePackage, ecoreLocation);

@@ -14,10 +14,12 @@ package org.occiware.clouddesigner.occi.emfgen;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EDataType;
+import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EParameter;
@@ -32,8 +34,8 @@ import org.occiware.clouddesigner.occi.Kind;
 /**
  * Convert an OCCI Extension to Ecore.
  */
-public class OCCIExtension2Ecore
-{
+public class OCCIExtension2Ecore {
+	private static final String EANNOTATION_SOURCE = "OCCIE2Ecore";
 	/**
 	 * Store mapping from OCCI Kind to Ecore EClass.
 	 */
@@ -41,7 +43,9 @@ public class OCCIExtension2Ecore
 
 	/**
 	 * Get the EClass associated to an OCCI Kind.
-	 * @param kind the given OCCI kind.
+	 * 
+	 * @param kind
+	 *            the given OCCI kind.
 	 * @return the EClass.
 	 */
 	private EClass getMappedEClass(Kind kind) {
@@ -64,10 +68,12 @@ public class OCCIExtension2Ecore
 	 * Store mapping from OCCI EDataType to Ecore EClassifier.
 	 */
 	private Map<EDataType, EClassifier> occiType2emfType = new HashMap<EDataType, EClassifier>();
-	
+
 	/**
 	 * Get the EMF data type associated to an OCCI data type.
-	 * @param type the given OCCI data type.
+	 * 
+	 * @param type
+	 *            the given OCCI data type.
 	 * @return the EMF data type.
 	 */
 	private EClassifier getMappedType(EDataType type) {
@@ -77,7 +83,7 @@ public class OCCIExtension2Ecore
 		} else {
 			// retrieve from currently converted data types
 			res = occiType2emfType.get(type);
-			if(res == null) {
+			if (res == null) {
 				// retrieve from installed extensions.
 				EPackage p = ConverterUtils.getEPackage(type);
 				res = p.getEClassifier(type.getName());
@@ -90,7 +96,9 @@ public class OCCIExtension2Ecore
 
 	/**
 	 * Convert an OCCI extension to an Ecore package.
-	 * @param extension the OCCI extension to convert.
+	 * 
+	 * @param extension
+	 *            the OCCI extension to convert.
 	 * @return the resulting Ecore package.
 	 */
 	public EPackage convertExtension(Extension extension) {
@@ -113,7 +121,8 @@ public class OCCIExtension2Ecore
 		// root.setName(ConverterUtils.toU1Case(extension.getName()+"Configuration"));
 		// root.getESuperTypes().add(OCCIPackage.eINSTANCE.getConfiguration());
 
-		// Convert all data types of the OCCI extension to data types of the Ecore package.
+		// Convert all data types of the OCCI extension to data types of the
+		// Ecore package.
 		for (EDataType type : extension.getTypes()) {
 			// Copy the OCCI data type.
 			EDataType copiedType = EcoreUtil.copy(type);
@@ -149,9 +158,10 @@ public class OCCIExtension2Ecore
 			// If kind has a parent kind then
 			if (kind.getParent() != null) {
 				// Get the Ecore class of the OCCI kind's parent.
-				EClass mappedParentEClass = getMappedEClass(kind.getParent());				
+				EClass mappedParentEClass = getMappedEClass(kind.getParent());
 				if (mappedParentEClass != null) {
-					// The Ecore class of the kind's parent is a super type of the Ecore class of the OCCI kind.
+					// The Ecore class of the kind's parent is a super type of
+					// the Ecore class of the OCCI kind.
 					mappedEClass.getESuperTypes().add(mappedParentEClass);
 				} else {
 					// Should never happen!
@@ -184,7 +194,9 @@ public class OCCIExtension2Ecore
 
 	/**
 	 * Convert an OCCI kind to an Ecore class.
-	 * @param kind the OCCI kind to convert.
+	 * 
+	 * @param kind
+	 *            the OCCI kind to convert.
 	 * @return the resulting Ecore class.
 	 */
 	protected EClass convertKind(Kind kind) {
@@ -197,7 +209,8 @@ public class OCCIExtension2Ecore
 			// Convert each OCCI attribute to an Ecore attribute.
 			EAttribute convertAttribute = convertAttribute(attribute);
 			if (convertAttribute != null) {
-				// Add the Ecore attribute as a structural feature of the Ecore class.
+				// Add the Ecore attribute as a structural feature of the Ecore
+				// class.
 				eClass.getEStructuralFeatures().add(convertAttribute);
 			}
 		}
@@ -210,6 +223,7 @@ public class OCCIExtension2Ecore
 				eClass.getEOperations().add(convertAction);
 			}
 		}
+		attachInfo(eClass, "title", kind.getTitle());
 		// Keep the Ecore class into a cache to search it later.
 		occiKind2emfEclass.put(kind, eClass);
 		return eClass;
@@ -217,7 +231,9 @@ public class OCCIExtension2Ecore
 
 	/**
 	 * Convert an OCCI action to an Ecore operation.
-	 * @param action the OCCI action to convert.
+	 * 
+	 * @param action
+	 *            the OCCI action to convert.
 	 * @return the resulting Ecore operation.
 	 */
 	protected EOperation convertAction(Action action) {
@@ -227,19 +243,23 @@ public class OCCIExtension2Ecore
 		eOperation.setName(ConverterUtils.formatName(action.getTerm()));
 		// Convert all attributes of the OCCI action.
 		for (Attribute attribute : action.getAttributes()) {
-			// Each OCCI attribute of the OCCI action is converted to an Ecore parameter of the Ecore operation.
+			// Each OCCI attribute of the OCCI action is converted to an Ecore
+			// parameter of the Ecore operation.
 			EParameter convertParameter = convertParameter(attribute);
 			if (convertParameter != null) {
 				// Add the Ecore parameter to the Ecore operation.
 				eOperation.getEParameters().add(convertParameter);
 			}
 		}
+		attachInfo(eOperation, "title", action.getTitle());
 		return eOperation;
 	}
 
 	/**
 	 * Convert an OCCI action's attribute to an Ecore operation parameter.
-	 * @param attribute the OCCI attribute to convert.
+	 * 
+	 * @param attribute
+	 *            the OCCI attribute to convert.
 	 * @return the resulting Ecore operation parameter.
 	 */
 	protected EParameter convertParameter(Attribute attribute) {
@@ -249,16 +269,20 @@ public class OCCIExtension2Ecore
 		eParam.setName(ConverterUtils.formatName(attribute.getName()));
 		// Set the type of the Ecore parameter.
 		eParam.setEType(getMappedType(attribute.getType()));
-		// If the OCCI attribute is required then the Ecore parameter is also required.
+		// If the OCCI attribute is required then the Ecore parameter is also
+		// required.
 		if (attribute.isRequired()) {
 			eParam.setLowerBound(1);
 		}
+		attachInfo(eParam, "description", attribute.getDescription());
 		return eParam;
 	}
 
 	/**
 	 * Convert an OCCI attribute to an Ecore attribute.
-	 * @param attribute the OCCI attribute to convert.
+	 * 
+	 * @param attribute
+	 *            the OCCI attribute to convert.
 	 * @return the resulting Ecore attribute.
 	 */
 	protected EAttribute convertAttribute(Attribute attribute) {
@@ -277,7 +301,18 @@ public class OCCIExtension2Ecore
 		if (attribute.isRequired()) {
 			eAttr.setLowerBound(1);
 		}
+		attachInfo(eAttr, "description", attribute.getDescription());
 		// TODO: setUpperBound(-1) if attribute.multiple_value
 		return eAttr;
+	}
+
+	private void attachInfo(EModelElement element, String key, String value) {
+		EAnnotation annotation = element.getEAnnotation(EANNOTATION_SOURCE);
+		if (annotation == null) {
+			annotation = EcoreFactory.eINSTANCE.createEAnnotation();
+			annotation.setSource(EANNOTATION_SOURCE);
+			element.getEAnnotations().add(annotation);
+		}
+		annotation.getDetails().put(key, value);
 	}
 }
