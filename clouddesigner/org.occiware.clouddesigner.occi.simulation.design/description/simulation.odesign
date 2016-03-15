@@ -33,6 +33,6 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedJavaExtensions qualifiedClassName="org.occiware.clouddesigner.occi.simulation.services.DesignServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.occiware.clouddesigner.occi.simulation.design.services.DesignServices"/>
   </ownedViewpoints>
 </description:Group>
