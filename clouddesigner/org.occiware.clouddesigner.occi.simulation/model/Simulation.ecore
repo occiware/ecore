@@ -17,7 +17,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SimulationResource" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Resource">
     <eAnnotations source="OCCIE2Ecore">
-      <details key="title"/>
+      <details key="title" value=""/>
     </eAnnotations>
   </eClassifiers>
 </ecore:EPackage>
