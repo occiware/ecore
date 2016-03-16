@@ -1,8 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.0"?>
 <plugin>
-<extension point="org.occiware.clouddesigner.occi.occie">
-<occie file="model/simulation.occie" scheme="simulation#">
-</occie>
-</extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated Simulation -->
+      <package
+            uri="http://occiware.org/simulation"
+            class="org.occiware.clouddesigner.occi.simulation.SimulationPackage"
+            genModel="model/Simulation.genmodel"/>
+   </extension>
+   <extension
+         point="org.occiware.clouddesigner.occi.occie">
+      <occie
+            file="model/Simulation.occie"
+            scheme="http://occiware.org/simulation#">
+      </occie>
+   </extension>
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <parser
+            type="simulation"
+            class="org.occiware.clouddesigner.occi.util.OCCIResourceFactoryImpl"/>
+   </extension>
+
 </plugin>
