@@ -8,3 +8,6 @@ The following figure shows the content of this OCCI extension :
 
 The full Textile documentation of this OCCI extension is available [here](documentation/textile/procci.textile).
 
+The following figure shows an [OCCI configuration example](examples/configuration_example.occic) using this OCCI extension: 
+
+![Configuration Example](documentation/pictures/pca_configuration.jpg "Configuration Example")
