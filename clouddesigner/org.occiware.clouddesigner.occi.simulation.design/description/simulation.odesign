@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" name="simulation" version="10.1.3.201511131800">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="simulation" version="10.1.3.201511131800">
   <ownedViewpoints name="Simulation" label="Simulation Configuration">
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Simulation Configuration" domainClass="Configuration">
-      <metamodel href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#/"/>
-      <metamodel href="../../org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.ecore#/"/>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Simulation Configuration" domainClass="occi.Configuration">
       <metamodel href="../../org.occiware.clouddesigner.occi.simulation/model/Simulation.ecore#/"/>
+      <metamodel href="http://schemas.ogf.org/occi#/"/>
+      <metamodel href="http://schemas.ogf.org/occi/infrastructure#/"/>
       <defaultLayer name="Default">
-        <edgeMappings name="Link" sourceMapping="//@ownedViewpoints[name='Simulation']/@ownedRepresentations[name='Simulation%20Configuration']/@defaultLayer/@containerMappings[name='SimulationResource']" targetMapping="//@ownedViewpoints[name='Simulation']/@ownedRepresentations[name='Simulation%20Configuration']/@defaultLayer/@containerMappings[name='SimulationResource']" targetFinderExpression="feature:target" sourceFinderExpression="feature:source" domainClass="occi.Link" useDomainElement="true">
+        <edgeMappings name="Link" sourceMapping="//@ownedViewpoints[name='Simulation']/@ownedRepresentations[name='Simulation%20Configuration']/@defaultLayer/@containerMappings[name='ResourceContainer']" targetMapping="//@ownedViewpoints[name='Simulation']/@ownedRepresentations[name='Simulation%20Configuration']/@defaultLayer/@containerMappings[name='ResourceContainer']" targetFinderExpression="feature:target" sourceFinderExpression="feature:source" domainClass="occi.Link" useDomainElement="true">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -14,8 +14,15 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="SimulationResource" semanticCandidatesExpression="feature:resources" domainClass="occi.Resource">
-          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="feature:id" labelAlignment="LEFT" roundedCorner="true">
+        <containerMappings name="ResourceContainer" label="ResourceContainer" semanticCandidatesExpression="feature:resources" domainClass="occi.Resource" childrenPresentation="List">
+          <subNodeMappings name="Kind" semanticCandidatesExpression="feature:kind" domainClass="occi.Kind">
+            <style xsi:type="style:SquareDescription" labelExpression="[scheme+term/]" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="[id+': '+kind.term/]">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -28,6 +35,17 @@
             <elementView name="elementView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:importExtension"/>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Category">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="SimulationResource" containerMappings="//@ownedViewpoints[name='Simulation']/@ownedRepresentations[name='Simulation%20Configuration']/@defaultLayer/@containerMappings[name='ResourceContainer']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="occi.Resource" referenceName="resources"/>
+              </firstModelOperations>
             </initialOperation>
           </ownedTools>
         </toolSections>

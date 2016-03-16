@@ -28,6 +28,26 @@
       </category>
    </extension>
         <extension
-              point="org.eclipse.ui.popupMenus">
-        </extension>
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            id="org.occiware.clouddesigner.occi.simulation.design.contribution"
+            nameFilter="*.simulation"
+            objectClass="org.eclipse.core.resources.IFile">
+          <menu
+                id="org.occiware.clouddesigner.menu"
+                label="Cloud Designer"
+                path="additionsCloudDesigner">
+             <separator
+                   name="group">
+             </separator>
+             </menu>
+         <action
+               class="org.occiware.clouddesigner.occi.emfgen.ui.popup.actions.Ecore2OCCIAction"
+               enablesFor="1"
+               id="org.occiware.clouddesigner.occi.simulation.ecore2occi"
+               label="Convert to standard OCCI Configuration File"
+               menubarPath="org.occiware.clouddesigner.menu/group">
+         </action>
+      </objectContribution>
+   </extension>
 </plugin>
