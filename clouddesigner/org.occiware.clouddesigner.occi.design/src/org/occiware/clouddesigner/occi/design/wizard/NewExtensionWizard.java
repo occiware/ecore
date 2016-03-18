@@ -208,7 +208,9 @@ public class NewExtensionWizard extends BasicNewProjectResourceWizard {
 							}
 
 							// Get the newly created file
-							final IResource newModelFile = project.findMember(extensionName + "." + EXTENSION_FILEEXT);
+							final IResource newModelFile = project.findMember("/model/" //$NON-NLS-1$
+									+ extensionName.toLowerCase() + "." + NewExtensionWizard.EXTENSION_FILEEXT);
+							selectAndReveal(newModelFile, PlatformUI.getWorkbench().getActiveWorkbenchWindow());
 
 							// Switch to the modeling perspective
 							// updatePerspective();

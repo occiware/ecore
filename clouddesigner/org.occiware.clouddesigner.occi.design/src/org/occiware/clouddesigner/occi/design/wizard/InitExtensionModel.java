@@ -125,7 +125,7 @@ public class InitExtensionModel extends WorkspaceModifyOperation {
 		rootObject.setScheme(extensionScheme);
 		final Option<ModelingProject> modelingProject = ModelingProject.asModelingProject(project);
 		final Session session = modelingProject.get().getSession();
-		final String platformPath = getNewModelFilePath(project, extensionName);
+		final String platformPath = getSemanticModelFilePath();
 		session.getTransactionalEditingDomain().getCommandStack()
 				.execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
 
@@ -151,7 +151,8 @@ public class InitExtensionModel extends WorkspaceModifyOperation {
 
 						semanticModelURI = URI.createPlatformResourceURI(platformPath, true);
 
-						final Resource res = session.getSessionResource().getResourceSet().createResource(semanticModelURI);
+						final Resource res = session.getSessionResource().getResourceSet()
+								.createResource(semanticModelURI);
 						/* Add the initial model object to the contents. */
 
 						if (rootObject != null) {
@@ -181,7 +182,7 @@ public class InitExtensionModel extends WorkspaceModifyOperation {
 	 *            File name
 	 * @return model file path
 	 */
-	private static String getNewModelFilePath(IProject project, String extensionName) {
+	private String getSemanticModelFilePath() {
 		return '/' + project.getName() + "/model/" //$NON-NLS-1$
 				+ extensionName.toLowerCase() + "." + NewExtensionWizard.EXTENSION_FILEEXT;
 	}
