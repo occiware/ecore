@@ -361,6 +361,7 @@ class DockerContainerManager {
 			dockerClient = setConfig(machine.name, properties)
 		} else if (!currentMachine.equalsIgnoreCase(machine.name)) {
 			dockerClient = setConfig(machine.name, properties)
+			currentMachine = machine.name
 		}
 		val InspectContainerResponse inspectContainerResponse = dockerClient.inspectContainerCmd(containerId).exec()
 		return inspectContainerResponse

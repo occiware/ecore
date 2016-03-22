@@ -1143,7 +1143,6 @@ public class ModelHandler {
   public org.occiware.clouddesigner.occi.docker.Container buildContainer(final Machine machine, final String containerId) {
     final DockerContainerManager instance = new DockerContainerManager(machine);
     final InspectContainerResponse currentContainer = instance.inspectContainer(machine, containerId);
-    currentContainer.getId();
     org.occiware.clouddesigner.occi.docker.Container modelContainer = DockerFactory.eINSTANCE.createContainer();
     String _id = currentContainer.getId();
     modelContainer.setId(_id);
@@ -1307,6 +1306,13 @@ public class ModelHandler {
     links.setTarget(right);
     EList<org.occiware.clouddesigner.occi.Link> _links = left.getLinks();
     _links.add(links);
+  }
+  
+  public void removeContainerFromMachine(final org.occiware.clouddesigner.occi.docker.Container container, final Machine machine) {
+    Contains contains = DockerFactory.eINSTANCE.createContains();
+    contains.setTarget(container);
+    EList<org.occiware.clouddesigner.occi.Link> _links = machine.getLinks();
+    _links.remove(contains);
   }
   
   public boolean isSimilar(final Notifier left, final Notifier right) {

@@ -84,6 +84,20 @@ public class EventCallBack extends EventsResultCallback {
               EventCallBack.LOGGER.info("Load new container");
             }
           }
+          boolean _equalsIgnoreCase_3 = state.equalsIgnoreCase("destroy");
+          if (_equalsIgnoreCase_3) {
+            final ModelHandler instanceMH_1 = new ModelHandler();
+            Container container = ((Container) resource);
+            Machine machine_1 = ((ExecutableContainer) resource).getCurrentMachine();
+            instanceMH_1.removeContainerFromMachine(container, machine_1);
+            EObject _eContainer_2 = machine_1.eContainer();
+            if ((_eContainer_2 instanceof Configuration)) {
+              EObject _eContainer_3 = machine_1.eContainer();
+              EList<Resource> _resources_1 = ((Configuration) _eContainer_3).getResources();
+              _resources_1.remove(((ExecutableContainer) container));
+              EventCallBack.LOGGER.info("Destroy a container");
+            }
+          }
         }
       };
       try {
@@ -145,23 +159,32 @@ public class EventCallBack extends EventsResultCallback {
                     this.modifyResourceSet(_target_3, _status_3, _id_2);
                     EventCallBack.LOGGER.info("Apply start notification to model");
                   }
+                  String _status_4 = event.getStatus();
+                  boolean _equalsIgnoreCase_2 = _status_4.equalsIgnoreCase("destroy");
+                  if (_equalsIgnoreCase_2) {
+                    Resource _target_4 = contains.getTarget();
+                    String _status_5 = event.getStatus();
+                    String _id_3 = event.getId();
+                    this.modifyResourceSet(_target_4, _status_5, _id_3);
+                    EventCallBack.LOGGER.info("Apply destroy notification to model");
+                  }
                 } else {
                   boolean _and = false;
-                  String _status_4 = event.getStatus();
-                  boolean _equalsIgnoreCase_2 = _status_4.equalsIgnoreCase("create");
-                  if (!_equalsIgnoreCase_2) {
+                  String _status_6 = event.getStatus();
+                  boolean _equalsIgnoreCase_3 = _status_6.equalsIgnoreCase("create");
+                  if (!_equalsIgnoreCase_3) {
                     _and = false;
                   } else {
-                    String _id_3 = event.getId();
-                    boolean _containerIsInsideMachine = this.containerIsInsideMachine(machine, _id_3);
+                    String _id_4 = event.getId();
+                    boolean _containerIsInsideMachine = this.containerIsInsideMachine(machine, _id_4);
                     boolean _not = (!_containerIsInsideMachine);
                     _and = _not;
                   }
                   if (_and) {
-                    Resource _target_4 = contains.getTarget();
-                    String _status_5 = event.getStatus();
-                    String _id_4 = event.getId();
-                    this.modifyResourceSet(_target_4, _status_5, _id_4);
+                    Resource _target_5 = contains.getTarget();
+                    String _status_7 = event.getStatus();
+                    String _id_5 = event.getId();
+                    this.modifyResourceSet(_target_5, _status_7, _id_5);
                     EventCallBack.LOGGER.info("Apply create notification to model");
                   }
                 }

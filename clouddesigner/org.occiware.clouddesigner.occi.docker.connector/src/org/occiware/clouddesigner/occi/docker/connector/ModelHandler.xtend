@@ -22,12 +22,14 @@ import java.io.Reader
 import java.io.StringReader
 import java.io.StringWriter
 import java.util.ArrayList
+import java.util.Arrays
 import java.util.Collections
 import java.util.HashMap
 import java.util.IdentityHashMap
 import java.util.Iterator
 import java.util.List
 import java.util.Map
+import org.apache.commons.lang.StringUtils
 import org.codehaus.jackson.JsonNode
 import org.eclipse.emf.common.notify.Notifier
 import org.eclipse.emf.common.util.EList
@@ -63,6 +65,15 @@ import org.occiware.clouddesigner.occi.docker.DockerFactory
 import org.occiware.clouddesigner.occi.docker.DockerPackage
 import org.occiware.clouddesigner.occi.docker.Machine
 import org.occiware.clouddesigner.occi.docker.Machine_Amazon_EC2
+import org.occiware.clouddesigner.occi.docker.Machine_Digital_Ocean
+import org.occiware.clouddesigner.occi.docker.Machine_Google_Compute_Engine
+import org.occiware.clouddesigner.occi.docker.Machine_IBM_SoftLayer
+import org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Azure
+import org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Hyper_V
+import org.occiware.clouddesigner.occi.docker.Machine_OpenStack
+import org.occiware.clouddesigner.occi.docker.Machine_Rackspace
+import org.occiware.clouddesigner.occi.docker.Machine_VMware_Fusion
+import org.occiware.clouddesigner.occi.docker.Machine_VMware_vSphere
 import org.occiware.clouddesigner.occi.docker.Machine_VirtualBox
 import org.occiware.clouddesigner.occi.docker.connector.dockerjava.DockerContainerManager
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerMachineManager
@@ -71,18 +82,6 @@ import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.Docke
 import org.occiware.clouddesigner.occi.infrastructure.ComputeStatus
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import org.occiware.clouddesigner.occi.docker.Machine_Digital_Ocean
-import org.occiware.clouddesigner.occi.docker.Machine_VMware_Fusion
-import org.occiware.clouddesigner.occi.docker.Machine_Google_Compute_Engine
-import org.occiware.clouddesigner.occi.docker.Machine_IBM_SoftLayer
-import org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Azure
-import org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Hyper_V
-import org.occiware.clouddesigner.occi.docker.Machine_OpenStack
-import org.occiware.clouddesigner.occi.docker.Machine_Rackspace
-import org.occiware.clouddesigner.occi.docker.Machine_VMware_vSphere
-import java.util.Arrays
-import static com.google.common.base.Preconditions.checkArgument
-import org.apache.commons.lang.StringUtils
 
 class ModelHandler {
 
@@ -735,7 +734,7 @@ class ModelHandler {
 	def Container buildContainer(Machine machine, String containerId) {
 		val instance = new DockerContainerManager(machine)
 		val currentContainer = instance.inspectContainer(machine, containerId)
-		currentContainer.id
+		//currentContainer.id
 
 		// Retrieve the default factory singleton
 		var modelContainer = DockerFactory.eINSTANCE.createContainer
@@ -850,6 +849,16 @@ class ModelHandler {
 
 		// Link Container to another
 		left.links.add(links)
+	}
+
+	def void removeContainerFromMachine(Container container, Machine machine) {
+
+		// Retrieve the default factory singleton
+		var contains = DockerFactory.eINSTANCE.createContains
+
+		// Add Container to the Contains
+		contains.target = container
+		machine.links.remove(contains)
 	}
 
 	def isSimilar(Notifier left, Notifier right) {

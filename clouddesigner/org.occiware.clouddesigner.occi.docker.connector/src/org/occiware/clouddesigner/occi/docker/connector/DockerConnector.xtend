@@ -84,6 +84,7 @@ import org.slf4j.LoggerFactory
 
 import static com.google.common.base.Preconditions.checkNotNull
 import static org.occiware.clouddesigner.occi.docker.connector.ExecutableContainer.*
+import org.occiware.clouddesigner.occi.docker.Container
 
 /**
  * This class overrides the generated EMF factory of the Docker package.
@@ -537,7 +538,16 @@ class EventCallBack extends EventsResultCallback {
 						LOGGER.info("Load new container")
 					}
 				}
-
+				if (state.equalsIgnoreCase("destroy")) {
+					val instanceMH = new ModelHandler
+					var container = (resource as Container)
+					var machine = (resource as ExecutableContainer).currentMachine
+					instanceMH.removeContainerFromMachine(container, machine)
+					if (machine.eContainer instanceof Configuration) {
+						(machine.eContainer as Configuration).resources.remove(container as ExecutableContainer)
+						LOGGER.info("Destroy a container")
+					}
+				}
 			}
 		};
 
@@ -570,6 +580,11 @@ class EventCallBack extends EventsResultCallback {
 									modifyResourceSet(contains.target, event.getStatus(), event.id)
 									LOGGER.info("Apply start notification to model")
 								}
+								if (event.getStatus().equalsIgnoreCase("destroy")) {
+									modifyResourceSet(contains.target, event.getStatus(), event.id)
+									LOGGER.info("Apply destroy notification to model")
+								}
+								
 							} else {
 								if (event.getStatus().equalsIgnoreCase("create") &&
 									!containerIsInsideMachine(machine, event.id)) {
