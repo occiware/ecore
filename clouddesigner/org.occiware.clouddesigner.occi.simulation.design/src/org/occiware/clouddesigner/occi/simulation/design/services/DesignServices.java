@@ -10,16 +10,21 @@
  *******************************************************************************/
 package org.occiware.clouddesigner.occi.simulation.design.services;
 
+import java.util.Collection;
+import java.util.List;
+
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.occiware.clouddesigner.occi.Attribute;
+import org.occiware.clouddesigner.occi.AttributeState;
 import org.occiware.clouddesigner.occi.Extension;
 import org.occiware.clouddesigner.occi.Kind;
 import org.occiware.clouddesigner.occi.Mixin;
 import org.occiware.clouddesigner.occi.OCCIFactory;
 import org.occiware.clouddesigner.occi.OCCIRegistry;
+import org.occiware.clouddesigner.occi.OCCIUtils;
 import org.occiware.clouddesigner.occi.Resource;
 
 
@@ -56,9 +61,15 @@ public class DesignServices {
 				&& !extension.getImport().contains(extensionResource.getContents().get(0))) {
 			extension.getImport().add((Extension) extensionResource.getContents().get(0));
 		}
-		for (Mixin mixin : extension.getMixins()) {
+		for (Mixin mixin : extension.getMixins()) {			
 			if(mixin.getTerm().contains(term)){
 				resource.getMixins().add(mixin);
+				for(Attribute att: mixin.getAttributes()){
+					AttributeState as = OCCIFactory.eINSTANCE.createAttributeState();
+					as.setName(att.getName());
+					as.setValue(att.getDefault());
+					resource.getAttributes().add(as);
+				}
 			}
 		}
 	}
