@@ -6,14 +6,10 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: org.occiware.clouddesigner.occi.simulation,
- org.occiware.clouddesigner.occi.simulation.impl,
- org.occiware.clouddesigner.occi.simulation.util
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.ocl.pivot;visibility:=reexport,
  org.occiware.clouddesigner.occi.infrastructure;visibility:=reexport,
- org.occiware.clouddesigner.occi;visibility:=reexport,
- org.occiware.clouddesigner.occi.simulation.cloudsim
+ org.occiware.clouddesigner.occi;visibility:=reexport
 Bundle-ActivationPolicy: lazy
