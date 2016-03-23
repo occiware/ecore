@@ -20,4 +20,11 @@
             name="Simulation Configuration File">
      </wizard>
      </extension>
+  <extension
+        point="org.eclipse.emf.ecore.factory_override">
+     <factory
+           class="org.occiware.clouddesigner.occi.simulation.cloudsim.handlers.Parser"
+           uri="http://occiware.org/simulation">
+     </factory>
+  </extension>
 </plugin>

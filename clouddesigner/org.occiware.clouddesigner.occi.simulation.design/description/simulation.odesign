@@ -125,6 +125,16 @@
             </initialOperation>
           </ownedTools>
         </toolSections>
+        <toolSections name="Execution">
+          <ownedTools xsi:type="tool_1:PopupMenu" name="Execute">
+            <menuItemDescription xsi:type="tool_1:OperationAction" name="Start">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:start"/>
+              </initialOperation>
+            </menuItemDescription>
+          </ownedTools>
+        </toolSections>
       </defaultLayer>
     </ownedRepresentations>
     <ownedJavaExtensions qualifiedClassName="org.occiware.clouddesigner.occi.simulation.design.services.DesignServices"/>
