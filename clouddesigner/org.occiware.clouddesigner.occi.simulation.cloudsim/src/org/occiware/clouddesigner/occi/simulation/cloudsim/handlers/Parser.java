@@ -406,7 +406,7 @@ public class Parser {
 		}
 	}
 	
-	protected interface Entity{
+	public interface Entity{
 		public String getId();
 		public List<String> getLinkedResourceId();
 		public String toString();
