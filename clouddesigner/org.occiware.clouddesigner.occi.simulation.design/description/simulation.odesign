@@ -3,7 +3,7 @@
   <ownedViewpoints name="Simulation Configuration" modelFileExtension="occic">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Simulation Configuration" domainClass="occi.Configuration" enablePopupBars="true">
       <defaultLayer name="Default">
-        <edgeMappings name="LinkEdge" sourceMapping="//@ownedViewpoints[name='Simulation%20Configuration']/@ownedRepresentations[name='Simulation%20Configuration']/@defaultLayer/@containerMappings[name='ResourceContainer']" targetMapping="//@ownedViewpoints[name='Simulation%20Configuration']/@ownedRepresentations[name='Simulation%20Configuration']/@defaultLayer/@containerMappings[name='LinkContainer']" targetFinderExpression="feature:links">
+        <edgeMappings name="LinkEdge" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Simulation%20Configuration']/@ownedRepresentations[name='Simulation%20Configuration']/@defaultLayer/@containerMappings[name='ResourceContainer']" targetMapping="//@ownedViewpoints[name='Simulation%20Configuration']/@ownedRepresentations[name='Simulation%20Configuration']/@defaultLayer/@containerMappings[name='LinkContainer']" targetFinderExpression="feature:links">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -11,7 +11,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="TargetEdge" sourceMapping="//@ownedViewpoints[name='Simulation%20Configuration']/@ownedRepresentations[name='Simulation%20Configuration']/@defaultLayer/@containerMappings[name='LinkContainer']" targetMapping="//@ownedViewpoints[name='Simulation%20Configuration']/@ownedRepresentations[name='Simulation%20Configuration']/@defaultLayer/@containerMappings[name='ResourceContainer']" targetFinderExpression="feature:target">
+        <edgeMappings name="TargetEdge" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Simulation%20Configuration']/@ownedRepresentations[name='Simulation%20Configuration']/@defaultLayer/@containerMappings[name='LinkContainer']" targetMapping="//@ownedViewpoints[name='Simulation%20Configuration']/@ownedRepresentations[name='Simulation%20Configuration']/@defaultLayer/@containerMappings[name='ResourceContainer']" targetFinderExpression="feature:target">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -66,6 +66,13 @@
           </subNodeMappings>
           <subNodeMappings name="Mixin" semanticCandidatesExpression="feature:mixins" domainClass="occi.Mixin">
             <style xsi:type="style:SquareDescription" labelExpression="[scheme+term/]" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="AttributeState" semanticCandidatesExpression="feature:attributes" domainClass="occi.AttributeState">
+            <style xsi:type="style:SquareDescription" labelExpression="[name+'= '+value/]" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
