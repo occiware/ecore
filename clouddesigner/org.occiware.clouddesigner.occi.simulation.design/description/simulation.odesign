@@ -35,13 +35,21 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </subNodeMappings>
-          <subNodeMappings name="Mixin" semanticCandidatesExpression="feature:mixins" domainClass="occi.Mixin">
-            <style xsi:type="style:SquareDescription" labelExpression="[scheme+term/]" labelPosition="node" resizeKind="NSEW">
+          <subContainerMappings name="MixinContainer" semanticCandidatesExpression="feature:mixins" domainClass="occi.Mixin" childrenPresentation="List">
+            <subNodeMappings name="Attribute" semanticCandidatesExpression="feature:attributes" domainClass="occi.Attribute">
+              <style xsi:type="style:SquareDescription" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              </style>
+            </subNodeMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="feature:term">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
             </style>
-          </subNodeMappings>
+          </subContainerMappings>
           <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="[id+': '+kind.term/]">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
