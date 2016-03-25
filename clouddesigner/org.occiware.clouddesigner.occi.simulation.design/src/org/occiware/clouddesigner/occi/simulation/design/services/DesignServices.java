@@ -15,11 +15,19 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
 import org.occiware.clouddesigner.occi.Attribute;
 import org.occiware.clouddesigner.occi.AttributeState;
 import org.occiware.clouddesigner.occi.Configuration;
@@ -83,21 +91,32 @@ public class DesignServices {
 	}
 
 	public void start(Configuration config) {
-		System.out.println("start simulation ");
+		System.out.println("start simulation ... ");
 		//print(conf);
 		BrigeConfigSimulation bridge = new BrigeConfigSimulation(config); 
 		Map<Entity, Set<Entity>> entities= bridge.ExtaractEntities();
-
+		Shell shell = this.getShell();
 		if(bridge.checkEntities()){
 			System.out.println("Configuration contains correct informations");
 			Simulation simulation = new Simulation(entities);
 			simulation.runExtension();
+			MessageDialog dialog = new MessageDialog(shell, "Simulation Result",null,simulation.getResult(),
+					MessageDialog.INFORMATION,new String[]{"OK"},0);
+			dialog.open();
+			//MessageDialog.openInformation(shell, "Simulation Result", simulation.getResult());
 
 		}else{
 			System.err.println("Thanks to verify your linked resources in configuration");
+			MessageDialog.openInformation(shell, "Info", "Thanks to verify your linked resources in configuration");
 		}
+		
+		
 	}
 
+	public Shell getShell() {
+		Display _current = Display.getCurrent();
+		return _current.getActiveShell();
+	}
 
 	public static void print(Configuration configuration)
 	{
