@@ -102,6 +102,7 @@ public class ConfigurationItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(OCCIPackage.Literals.CONFIGURATION__RESOURCES);
+			childrenFeatures.add(OCCIPackage.Literals.CONFIGURATION__MIXINS);
 		}
 		return childrenFeatures;
 	}
@@ -155,6 +156,7 @@ public class ConfigurationItemProvider
 
 		switch (notification.getFeatureID(Configuration.class)) {
 			case OCCIPackage.CONFIGURATION__RESOURCES:
+			case OCCIPackage.CONFIGURATION__MIXINS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -176,6 +178,11 @@ public class ConfigurationItemProvider
 			(createChildParameter
 				(OCCIPackage.Literals.CONFIGURATION__RESOURCES,
 				 OCCIFactory.eINSTANCE.createResource()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(OCCIPackage.Literals.CONFIGURATION__MIXINS,
+				 OCCIFactory.eINSTANCE.createMixin()));
 	}
 
 	/**

@@ -20,12 +20,8 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.occiware.clouddesigner.occi.Attribute;
 import org.occiware.clouddesigner.occi.AttributeState;
-import org.occiware.clouddesigner.occi.Category;
-import org.occiware.clouddesigner.occi.Entity;
 import org.occiware.clouddesigner.occi.OCCIPackage;
-import org.occiware.clouddesigner.occi.OCCIUtils;
 
 /**
  * This is the item provider adapter for a
@@ -64,63 +60,25 @@ public class AttributeStateItemProvider extends ItemProviderAdapter implements I
 	}
 
 	/**
-	 * This adds a property descriptor for the Name feature. <!-- begin-user-doc
+	 * This adds a property descriptor for the Name feature.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
-		final IItemLabelProvider lp = new IItemLabelProvider() {
-			public String getText(Object object) {
-				if (object instanceof Attribute) {
-					Attribute attr = (Attribute) object;
-					Category cat = ((Category) attr.eContainer());
-					return '[' + cat.getTerm() + "] " + attr.getName() + ": " + attr.getType().getName();
-				}
-				return String.valueOf(object);
-			}
-
-			public Object getImage(Object object) {
-				return null;
-			}
-		};
-		itemPropertyDescriptors
-				.add(new ItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_AttributeState_name_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_AttributeState_name_feature",
-								"_UI_AttributeState_type"),
-						OCCIPackage.Literals.ATTRIBUTE_STATE__NAME, true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null) {
-					@Override
-					public Collection<?> getChoiceOfValues(Object arg0) {						
-						return OCCIUtils.getAllAttributes((Entity) ((AttributeState) arg0).eContainer());
-					}
-
-					@Override
-					public void setPropertyValue(Object object, Object value) {
-						if (object instanceof AttributeState && value instanceof Attribute) {
-							AttributeState as = (AttributeState) object;
-							as.setName(((Attribute) value).getName());
-						}
-						super.setPropertyValue(object, value);
-					}
-
-					@Override
-					public IItemLabelProvider getLabelProvider(Object object) {
-						if (object instanceof AttributeState) {
-							return lp;
-						}
-						return super.getLabelProvider(object);
-					}
-
-					@Override
-					public Object getPropertyValue(Object object) {
-						if (object instanceof Attribute) {
-							return ((Attribute) object).getName();
-						}
-						return super.getPropertyValue(object);
-					}
-				});
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_AttributeState_name_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_AttributeState_name_feature", "_UI_AttributeState_type"),
+				 OCCIPackage.Literals.ATTRIBUTE_STATE__NAME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -130,19 +88,25 @@ public class AttributeStateItemProvider extends ItemProviderAdapter implements I
 	 * @generated
 	 */
 	protected void addValuePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_AttributeState_value_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_AttributeState_value_feature",
-								"_UI_AttributeState_type"),
-						OCCIPackage.Literals.ATTRIBUTE_STATE__VALUE, true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_AttributeState_value_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_AttributeState_value_feature", "_UI_AttributeState_type"),
+				 OCCIPackage.Literals.ATTRIBUTE_STATE__VALUE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
-	 * This returns AttributeState.gif. <!-- begin-user-doc --> <!--
+	 * This returns AttributeState.gif.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -151,24 +115,24 @@ public class AttributeStateItemProvider extends ItemProviderAdapter implements I
 	}
 
 	/**
-	 * This returns the label text for the adapted class. <!-- begin-user-doc
+	 * This returns the label text for the adapted class.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((AttributeState) object).getName();
-		return label == null || label.length() == 0 ? getString("_UI_AttributeState_type")
-				: getString("_UI_AttributeState_type") + " " + label;
+		String label = ((AttributeState)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_AttributeState_type") :
+			getString("_UI_AttributeState_type") + " " + label;
 	}
 
 	/**
-	 * This handles model notifications by calling {@link #updateChildren} to
-	 * update any cached children and by creating a viewer notification, which
-	 * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
+	 * This handles model notifications by calling {@link #updateChildren} to update any cached
+	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -176,10 +140,10 @@ public class AttributeStateItemProvider extends ItemProviderAdapter implements I
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(AttributeState.class)) {
-		case OCCIPackage.ATTRIBUTE_STATE__NAME:
-		case OCCIPackage.ATTRIBUTE_STATE__VALUE:
-			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-			return;
+			case OCCIPackage.ATTRIBUTE_STATE__NAME:
+			case OCCIPackage.ATTRIBUTE_STATE__VALUE:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
 		}
 		super.notifyChanged(notification);
 	}
