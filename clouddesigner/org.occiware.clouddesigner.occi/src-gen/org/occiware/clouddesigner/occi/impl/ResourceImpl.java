@@ -3,36 +3,55 @@
 package org.occiware.clouddesigner.occi.impl;
 
 import java.lang.reflect.InvocationTargetException;
+
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
+
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.ocl.pivot.StandardLibrary;
+
 import org.eclipse.ocl.pivot.evaluation.Evaluator;
+
 import org.eclipse.ocl.pivot.ids.IdResolver;
 import org.eclipse.ocl.pivot.ids.TypeId;
+
 import org.eclipse.ocl.pivot.internal.library.executor.ExecutorSingleIterationManager;
+
 import org.eclipse.ocl.pivot.internal.utilities.PivotUtilInternal;
+
 import org.eclipse.ocl.pivot.library.AbstractBinaryOperation;
 import org.eclipse.ocl.pivot.library.LibraryIteration;
+
 import org.eclipse.ocl.pivot.library.logical.BooleanAndOperation;
+
 import org.eclipse.ocl.pivot.library.oclany.OclAnyOclAsSetOperation;
 import org.eclipse.ocl.pivot.library.oclany.OclComparableLessThanEqualOperation;
+
 import org.eclipse.ocl.pivot.library.string.CGStringGetSeverityOperation;
 import org.eclipse.ocl.pivot.library.string.CGStringLogDiagnosticOperation;
+
 import org.eclipse.ocl.pivot.messages.PivotMessages;
+
 import org.eclipse.ocl.pivot.oclstdlib.OCLstdlibTables;
+
 import org.eclipse.ocl.pivot.utilities.ClassUtil;
 import org.eclipse.ocl.pivot.utilities.ValueUtil;
+
 import org.eclipse.ocl.pivot.values.IntegerValue;
 import org.eclipse.ocl.pivot.values.InvalidValueException;
 import org.eclipse.ocl.pivot.values.SetValue;
+
 import org.occiware.clouddesigner.occi.Kind;
 import org.occiware.clouddesigner.occi.Link;
 import org.occiware.clouddesigner.occi.OCCIPackage;
@@ -109,10 +128,10 @@ public class ResourceImpl extends EntityImpl implements Resource {
 		 *     then true
 		 *     else
 		 *       let
-		 *         status : Boolean[?] = kind->closure(parent)
+		 *         status : OclAny[?] = kind->closure(parent)
 		 *         ->exists(k | k.term = 'resource' and k.scheme = 'http://schemas.ogf.org/occi/core#')
 		 *       in
-		 *         'Resource::ResourceKindIsInParent'.logDiagnostic(self, diagnostics, context, severity, status, 0)
+		 *         'Resource::ResourceKindIsInParent'.logDiagnostic(self, null, diagnostics, context, null, severity, status, 0)
 		 *     endif
 		 */
 		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
@@ -228,7 +247,7 @@ public class ResourceImpl extends EntityImpl implements Resource {
 		    catch (Exception e) {
 		        CAUGHT_status = ValueUtil.createInvalidValue(e);
 		    }
-		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Resource_c_c_ResourceKindIsInParent, this, diagnostics, context, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
+		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Resource_c_c_ResourceKindIsInParent, this, null, diagnostics, context, null, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
 		    symbol_1 = logDiagnostic;
 		}
 		return Boolean.TRUE == symbol_1;

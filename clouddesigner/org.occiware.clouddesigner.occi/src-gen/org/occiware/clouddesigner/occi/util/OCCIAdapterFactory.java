@@ -4,20 +4,12 @@ package org.occiware.clouddesigner.occi.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
+
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
+
 import org.eclipse.emf.ecore.EObject;
-import org.occiware.clouddesigner.occi.Action;
-import org.occiware.clouddesigner.occi.Attribute;
-import org.occiware.clouddesigner.occi.AttributeState;
-import org.occiware.clouddesigner.occi.Category;
-import org.occiware.clouddesigner.occi.Configuration;
-import org.occiware.clouddesigner.occi.Entity;
-import org.occiware.clouddesigner.occi.Extension;
-import org.occiware.clouddesigner.occi.Kind;
-import org.occiware.clouddesigner.occi.Link;
-import org.occiware.clouddesigner.occi.Mixin;
-import org.occiware.clouddesigner.occi.OCCIPackage;
-import org.occiware.clouddesigner.occi.Resource;
+
+import org.occiware.clouddesigner.occi.*;
 
 /**
  * <!-- begin-user-doc -->

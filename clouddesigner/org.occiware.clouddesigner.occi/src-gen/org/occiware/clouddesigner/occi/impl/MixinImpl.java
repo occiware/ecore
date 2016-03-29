@@ -3,44 +3,65 @@
 package org.occiware.clouddesigner.occi.impl;
 
 import java.lang.reflect.InvocationTargetException;
+
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.ocl.pivot.StandardLibrary;
+
 import org.eclipse.ocl.pivot.evaluation.Evaluator;
+
 import org.eclipse.ocl.pivot.ids.IdResolver;
 import org.eclipse.ocl.pivot.ids.TypeId;
+
 import org.eclipse.ocl.pivot.internal.library.executor.ExecutorSingleIterationManager;
+
 import org.eclipse.ocl.pivot.internal.utilities.PivotUtilInternal;
+
 import org.eclipse.ocl.pivot.library.AbstractBinaryOperation;
 import org.eclipse.ocl.pivot.library.LibraryIteration;
+
 import org.eclipse.ocl.pivot.library.classifier.ClassifierOclContainerOperation;
+
 import org.eclipse.ocl.pivot.library.collection.CollectionExcludesAllOperation;
 import org.eclipse.ocl.pivot.library.collection.CollectionExcludesOperation;
+
 import org.eclipse.ocl.pivot.library.numeric.NumericMinusOperation;
+
 import org.eclipse.ocl.pivot.library.oclany.OclAnyOclAsTypeOperation;
+import org.eclipse.ocl.pivot.library.oclany.OclAnyOclIsTypeOfOperation;
 import org.eclipse.ocl.pivot.library.oclany.OclComparableLessThanEqualOperation;
+
 import org.eclipse.ocl.pivot.library.string.CGStringGetSeverityOperation;
 import org.eclipse.ocl.pivot.library.string.CGStringLogDiagnosticOperation;
 import org.eclipse.ocl.pivot.library.string.StringSizeOperation;
 import org.eclipse.ocl.pivot.library.string.StringSubstringOperation;
+
 import org.eclipse.ocl.pivot.oclstdlib.OCLstdlibTables;
+
 import org.eclipse.ocl.pivot.utilities.ClassUtil;
 import org.eclipse.ocl.pivot.utilities.ValueUtil;
+
 import org.eclipse.ocl.pivot.values.IntegerValue;
 import org.eclipse.ocl.pivot.values.InvalidValueException;
 import org.eclipse.ocl.pivot.values.OrderedSetValue;
 import org.eclipse.ocl.pivot.values.SequenceValue;
 import org.eclipse.ocl.pivot.values.SetValue;
+
 import org.occiware.clouddesigner.occi.Action;
 import org.occiware.clouddesigner.occi.Attribute;
 import org.occiware.clouddesigner.occi.Entity;
@@ -188,9 +209,9 @@ public class MixinImpl extends CategoryImpl implements Mixin {
 		 *     if severity <= 0
 		 *     then true
 		 *     else
-		 *       let status : Boolean[1] = actions->isUnique(term)
+		 *       let status : OclAny[1] = actions->isUnique(term)
 		 *       in
-		 *         'Mixin::ActionTermUnicity'.logDiagnostic(self, diagnostics, context, severity, status, 0)
+		 *         'Mixin::ActionTermUnicity'.logDiagnostic(self, null, diagnostics, context, null, severity, status, 0)
 		 *     endif
 		 */
 		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
@@ -236,7 +257,7 @@ public class MixinImpl extends CategoryImpl implements Mixin {
 		    catch (Exception e) {
 		        CAUGHT_status = ValueUtil.createInvalidValue(e);
 		    }
-		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Mixin_c_c_ActionTermUnicity, this, diagnostics, context, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
+		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Mixin_c_c_ActionTermUnicity, this, null, diagnostics, context, null, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
 		    symbol_0 = logDiagnostic;
 		}
 		return Boolean.TRUE == symbol_0;
@@ -257,10 +278,10 @@ public class MixinImpl extends CategoryImpl implements Mixin {
 		 *     then true
 		 *     else
 		 *       let
-		 *         status : Boolean[1] = depends->closure(depends)
+		 *         status : OclAny[1] = depends->closure(depends)
 		 *         ->excludes(self)
 		 *       in
-		 *         'Mixin::NoCyclicInheritance'.logDiagnostic(self, diagnostics, context, severity, status, 0)
+		 *         'Mixin::NoCyclicInheritance'.logDiagnostic(self, null, diagnostics, context, null, severity, status, 0)
 		 *     endif
 		 */
 		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
@@ -306,7 +327,7 @@ public class MixinImpl extends CategoryImpl implements Mixin {
 		    catch (Exception e) {
 		        CAUGHT_status = ValueUtil.createInvalidValue(e);
 		    }
-		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Mixin_c_c_NoCyclicInheritance, this, diagnostics, context, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
+		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Mixin_c_c_NoCyclicInheritance, this, null, diagnostics, context, null, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
 		    symbol_1 = logDiagnostic;
 		}
 		return Boolean.TRUE == symbol_1;
@@ -327,46 +348,59 @@ public class MixinImpl extends CategoryImpl implements Mixin {
 		 *     then true
 		 *     else
 		 *       let
-		 *         status : Boolean[1] = let
-		 *           ownerScheme : String[1] = self.oclContainer()
-		 *           .oclAsType(Extension).scheme
+		 *         status : OclAny[1] = let owner : OclElement[?] = self.oclContainer()
 		 *         in
-		 *           scheme.substring(1, ownerScheme.size() - 1) =
-		 *           ownerScheme.substring(1, ownerScheme.size() - 1)
+		 *           if owner.oclIsTypeOf(Extension)
+		 *           then
+		 *             let
+		 *               ownerScheme : String[1] = owner.oclAsType(Extension).scheme
+		 *             in
+		 *               scheme.substring(1, ownerScheme.size() - 1) =
+		 *               ownerScheme.substring(1, ownerScheme.size() - 1)
+		 *           else true
+		 *           endif
 		 *       in
-		 *         'Mixin::CorrectScheme'.logDiagnostic(self, diagnostics, context, severity, status, 0)
+		 *         'Mixin::CorrectScheme'.logDiagnostic(self, null, diagnostics, context, null, severity, status, 0)
 		 *     endif
 		 */
 		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
 		final /*@NonNull*/ /*@NonInvalid*/ IdResolver idResolver = evaluator.getIdResolver();
 		final /*@NonNull*/ /*@NonInvalid*/ IntegerValue severity_0 = ClassUtil.nonNullState(CGStringGetSeverityOperation.INSTANCE.evaluate(evaluator, OCCITables.STR_Mixin_c_c_CorrectScheme));
 		final /*@NonInvalid*/ boolean le = ClassUtil.nonNullState(OclComparableLessThanEqualOperation.INSTANCE.evaluate(evaluator, severity_0, OCCITables.INT_0).booleanValue());
-		/*@NonInvalid*/ boolean symbol_0;
+		/*@NonInvalid*/ boolean symbol_1;
 		if (le) {
-		    symbol_0 = ValueUtil.TRUE_VALUE;
+		    symbol_1 = ValueUtil.TRUE_VALUE;
 		}
 		else {
-		    /*@NonNull*/ /*@Caught*/ Object CAUGHT_eq;
+		    /*@NonNull*/ /*@Caught*/ Object CAUGHT_symbol_0;
 		    try {
+		        final /*@Nullable*/ /*@NonInvalid*/ Object owner = ClassifierOclContainerOperation.INSTANCE.evaluate(evaluator, this);
 		        final /*@NonNull*/ /*@NonInvalid*/ org.eclipse.ocl.pivot.Class TYP_occi_c_c_Extension_0 = idResolver.getClass(OCCITables.CLSSid_Extension, null);
-		        final /*@Nullable*/ /*@NonInvalid*/ Object oclContainer = ClassifierOclContainerOperation.INSTANCE.evaluate(evaluator, this);
-		        final /*@NonNull*/ /*@Thrown*/ Extension oclAsType = ClassUtil.nonNullState((Extension)OclAnyOclAsTypeOperation.INSTANCE.evaluate(evaluator, oclContainer, TYP_occi_c_c_Extension_0));
-		        final /*@NonNull*/ /*@Thrown*/ String ownerScheme = oclAsType.getScheme();
-		        final /*@NonNull*/ /*@Thrown*/ IntegerValue size_0 = ClassUtil.nonNullState(StringSizeOperation.INSTANCE.evaluate(ownerScheme));
-		        final /*@NonNull*/ /*@Thrown*/ IntegerValue diff_0 = ClassUtil.nonNullState((IntegerValue)NumericMinusOperation.INSTANCE.evaluate(size_0, OCCITables.INT_1));
-		        final /*@NonNull*/ /*@Thrown*/ String scheme = this.getScheme();
-		        final /*@NonNull*/ /*@Thrown*/ String substring = ClassUtil.nonNullState(StringSubstringOperation.INSTANCE.evaluate(scheme, OCCITables.INT_1, diff_0));
-		        final /*@NonNull*/ /*@Thrown*/ String substring_0 = ClassUtil.nonNullState(StringSubstringOperation.INSTANCE.evaluate(ownerScheme, OCCITables.INT_1, diff_0));
-		        final /*@Thrown*/ boolean eq = substring.equals(substring_0);
-		        CAUGHT_eq = eq;
+		        final /*@Thrown*/ boolean oclIsTypeOf = ClassUtil.nonNullState(OclAnyOclIsTypeOfOperation.INSTANCE.evaluate(evaluator, owner, TYP_occi_c_c_Extension_0).booleanValue());
+		        /*@Thrown*/ boolean symbol_0;
+		        if (oclIsTypeOf) {
+		            final /*@NonNull*/ /*@Thrown*/ Extension oclAsType = ClassUtil.nonNullState((Extension)OclAnyOclAsTypeOperation.INSTANCE.evaluate(evaluator, owner, TYP_occi_c_c_Extension_0));
+		            final /*@NonNull*/ /*@Thrown*/ String ownerScheme = oclAsType.getScheme();
+		            final /*@NonNull*/ /*@Thrown*/ IntegerValue size_0 = ClassUtil.nonNullState(StringSizeOperation.INSTANCE.evaluate(ownerScheme));
+		            final /*@NonNull*/ /*@Thrown*/ IntegerValue diff_0 = ClassUtil.nonNullState((IntegerValue)NumericMinusOperation.INSTANCE.evaluate(size_0, OCCITables.INT_1));
+		            final /*@NonNull*/ /*@Thrown*/ String scheme = this.getScheme();
+		            final /*@NonNull*/ /*@Thrown*/ String substring = ClassUtil.nonNullState(StringSubstringOperation.INSTANCE.evaluate(scheme, OCCITables.INT_1, diff_0));
+		            final /*@NonNull*/ /*@Thrown*/ String substring_0 = ClassUtil.nonNullState(StringSubstringOperation.INSTANCE.evaluate(ownerScheme, OCCITables.INT_1, diff_0));
+		            final /*@Thrown*/ boolean eq = substring.equals(substring_0);
+		            symbol_0 = eq;
+		        }
+		        else {
+		            symbol_0 = ValueUtil.TRUE_VALUE;
+		        }
+		        CAUGHT_symbol_0 = symbol_0;
 		    }
 		    catch (Exception e) {
-		        CAUGHT_eq = ValueUtil.createInvalidValue(e);
+		        CAUGHT_symbol_0 = ValueUtil.createInvalidValue(e);
 		    }
-		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Mixin_c_c_CorrectScheme, this, diagnostics, context, severity_0, CAUGHT_eq, OCCITables.INT_0).booleanValue());
-		    symbol_0 = logDiagnostic;
+		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Mixin_c_c_CorrectScheme, this, null, diagnostics, context, null, severity_0, CAUGHT_symbol_0, OCCITables.INT_0).booleanValue());
+		    symbol_1 = logDiagnostic;
 		}
-		return Boolean.TRUE == symbol_0;
+		return Boolean.TRUE == symbol_1;
 	}
 
 	/**
@@ -385,10 +419,10 @@ public class MixinImpl extends CategoryImpl implements Mixin {
 		 *     then true
 		 *     else
 		 *       let
-		 *         status : Boolean[1] = attributes.name->excludesAll(
+		 *         status : OclAny[1] = attributes.name->excludesAll(
 		 *           depends->closure(depends).attributes.name)
 		 *       in
-		 *         'Mixin::AttributesNameNotAlreadyDefinedInDepends'.logDiagnostic(self, diagnostics, context, severity, status, 0)
+		 *         'Mixin::AttributesNameNotAlreadyDefinedInDepends'.logDiagnostic(self, null, diagnostics, context, null, severity, status, 0)
 		 *     endif
 		 */
 		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
@@ -496,7 +530,7 @@ public class MixinImpl extends CategoryImpl implements Mixin {
 		    catch (Exception e) {
 		        CAUGHT_status = ValueUtil.createInvalidValue(e);
 		    }
-		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Mixin_c_c_AttributesNameNotAlreadyDefinedInDepends, this, diagnostics, context, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
+		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Mixin_c_c_AttributesNameNotAlreadyDefinedInDepends, this, null, diagnostics, context, null, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
 		    symbol_1 = logDiagnostic;
 		}
 		return Boolean.TRUE == symbol_1;

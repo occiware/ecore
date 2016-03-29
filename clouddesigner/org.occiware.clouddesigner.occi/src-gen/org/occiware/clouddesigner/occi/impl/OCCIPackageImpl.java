@@ -2,8 +2,6 @@
  */
 package org.occiware.clouddesigner.occi.impl;
 
-import static org.occiware.clouddesigner.occi.OCCIPackage.RESOURCE;
-
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
@@ -12,7 +10,9 @@ import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EValidator;
+
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+
 import org.occiware.clouddesigner.occi.Action;
 import org.occiware.clouddesigner.occi.Attribute;
 import org.occiware.clouddesigner.occi.AttributeState;
@@ -26,6 +26,7 @@ import org.occiware.clouddesigner.occi.Mixin;
 import org.occiware.clouddesigner.occi.OCCIFactory;
 import org.occiware.clouddesigner.occi.OCCIPackage;
 import org.occiware.clouddesigner.occi.Resource;
+
 import org.occiware.clouddesigner.occi.util.OCCIValidator;
 
 /**
@@ -854,7 +855,16 @@ public class OCCIPackageImpl extends EPackageImpl implements OCCIPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getConfiguration__AllResourcesLinksKindsInUse__DiagnosticChain_Map() {
+	public EReference getConfiguration_Mixins() {
+		return (EReference)configurationEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getConfiguration__AllMixinsAreTags__DiagnosticChain_Map() {
 		return configurationEClass.getEOperations().get(0);
 	}
 
@@ -881,7 +891,7 @@ public class OCCIPackageImpl extends EPackageImpl implements OCCIPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getConfiguration__AllResourcesMixinsInUse__DiagnosticChain_Map() {
+	public EOperation getConfiguration__AllResourcesLinksMixinsInUse__DiagnosticChain_Map() {
 		return configurationEClass.getEOperations().get(3);
 	}
 
@@ -890,8 +900,17 @@ public class OCCIPackageImpl extends EPackageImpl implements OCCIPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getConfiguration__AllResourcesLinksMixinsInUse__DiagnosticChain_Map() {
+	public EOperation getConfiguration__AllResourcesMixinsInUse__DiagnosticChain_Map() {
 		return configurationEClass.getEOperations().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getConfiguration__AllResourcesLinksKindsInUse__DiagnosticChain_Map() {
+		return configurationEClass.getEOperations().get(5);
 	}
 
 	/**
@@ -1039,11 +1058,13 @@ public class OCCIPackageImpl extends EPackageImpl implements OCCIPackage {
 		configurationEClass = createEClass(CONFIGURATION);
 		createEReference(configurationEClass, CONFIGURATION__USE);
 		createEReference(configurationEClass, CONFIGURATION__RESOURCES);
-		createEOperation(configurationEClass, CONFIGURATION___ALL_RESOURCES_LINKS_KINDS_IN_USE__DIAGNOSTICCHAIN_MAP);
+		createEReference(configurationEClass, CONFIGURATION__MIXINS);
+		createEOperation(configurationEClass, CONFIGURATION___ALL_MIXINS_ARE_TAGS__DIAGNOSTICCHAIN_MAP);
 		createEOperation(configurationEClass, CONFIGURATION___ALL_RESOURCES_LINKS_TARGETS_IN_CONFIGURATION__DIAGNOSTICCHAIN_MAP);
 		createEOperation(configurationEClass, CONFIGURATION___ALL_RESOURCES_KINDS_IN_USE__DIAGNOSTICCHAIN_MAP);
-		createEOperation(configurationEClass, CONFIGURATION___ALL_RESOURCES_MIXINS_IN_USE__DIAGNOSTICCHAIN_MAP);
 		createEOperation(configurationEClass, CONFIGURATION___ALL_RESOURCES_LINKS_MIXINS_IN_USE__DIAGNOSTICCHAIN_MAP);
+		createEOperation(configurationEClass, CONFIGURATION___ALL_RESOURCES_MIXINS_IN_USE__DIAGNOSTICCHAIN_MAP);
+		createEOperation(configurationEClass, CONFIGURATION___ALL_RESOURCES_LINKS_KINDS_IN_USE__DIAGNOSTICCHAIN_MAP);
 
 		// Create data types
 		uriEDataType = createEDataType(URI);
@@ -1370,8 +1391,9 @@ public class OCCIPackageImpl extends EPackageImpl implements OCCIPackage {
 		initEClass(configurationEClass, Configuration.class, "Configuration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getConfiguration_Use(), this.getExtension(), null, "use", null, 0, -1, Configuration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getConfiguration_Resources(), this.getResource(), null, "resources", null, 0, -1, Configuration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConfiguration_Mixins(), this.getMixin(), null, "mixins", null, 0, -1, Configuration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		op = initEOperation(getConfiguration__AllResourcesLinksKindsInUse__DiagnosticChain_Map(), ecorePackage.getEBoolean(), "AllResourcesLinksKindsInUse", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getConfiguration__AllMixinsAreTags__DiagnosticChain_Map(), ecorePackage.getEBoolean(), "AllMixinsAreTags", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(ecorePackage.getEMap());
 		g2 = createEGenericType(ecorePackage.getEJavaObject());
@@ -1398,6 +1420,15 @@ public class OCCIPackageImpl extends EPackageImpl implements OCCIPackage {
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = initEOperation(getConfiguration__AllResourcesLinksMixinsInUse__DiagnosticChain_Map(), ecorePackage.getEBoolean(), "AllResourcesLinksMixinsInUse", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(ecorePackage.getEMap());
+		g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		op = initEOperation(getConfiguration__AllResourcesMixinsInUse__DiagnosticChain_Map(), ecorePackage.getEBoolean(), "AllResourcesMixinsInUse", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(ecorePackage.getEMap());
@@ -1407,7 +1438,7 @@ public class OCCIPackageImpl extends EPackageImpl implements OCCIPackage {
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = initEOperation(getConfiguration__AllResourcesLinksMixinsInUse__DiagnosticChain_Map(), ecorePackage.getEBoolean(), "AllResourcesLinksMixinsInUse", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getConfiguration__AllResourcesLinksKindsInUse__DiagnosticChain_Map(), ecorePackage.getEBoolean(), "AllResourcesLinksKindsInUse", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(ecorePackage.getEMap());
 		g2 = createEGenericType(ecorePackage.getEJavaObject());
@@ -1513,7 +1544,7 @@ public class OCCIPackageImpl extends EPackageImpl implements OCCIPackage {
 		  (configurationEClass, 
 		   source, 
 		   new String[] {
-			 "constraints", "AllResourcesKindsInUse AllResourcesMixinsInUse AllResourcesLinksKindsInUse AllResourcesLinksMixinsInUse AllResourcesLinksTargetsInConfiguration"
+			 "constraints", "AllResourcesKindsInUse AllResourcesMixinsInUse AllResourcesLinksKindsInUse AllResourcesLinksMixinsInUse AllResourcesLinksTargetsInConfiguration AllMixinsAreTags"
 		   });
 	}
 

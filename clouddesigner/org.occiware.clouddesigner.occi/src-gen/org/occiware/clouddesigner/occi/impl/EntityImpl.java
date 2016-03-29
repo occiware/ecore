@@ -12,26 +12,18 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
-
-import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EOperation;
-import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.ocl.pivot.StandardLibrary;
 import org.eclipse.ocl.pivot.evaluation.Evaluator;
@@ -334,9 +326,9 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 		 *     if severity <= 0
 		 *     then true
 		 *     else
-		 *       let status : Boolean[1] = attributes->isUnique(name)
+		 *       let status : OclAny[1] = attributes->isUnique(name)
 		 *       in
-		 *         'Entity::AttributesNameUnique'.logDiagnostic(self, diagnostics, context, severity, status, 0)
+		 *         'Entity::AttributesNameUnique'.logDiagnostic(self, null, diagnostics, context, null, severity, status, 0)
 		 *     endif
 		 */
 		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
@@ -382,7 +374,7 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 		    catch (Exception e) {
 		        CAUGHT_status = ValueUtil.createInvalidValue(e);
 		    }
-		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Entity_c_c_AttributesNameUnique, this, diagnostics, context, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
+		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Entity_c_c_AttributesNameUnique, this, null, diagnostics, context, null, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
 		    symbol_0 = logDiagnostic;
 		}
 		return Boolean.TRUE == symbol_0;
@@ -404,11 +396,11 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 		 *     then true
 		 *     else
 		 *       let
-		 *         status : Boolean[?] = mixins->forAll(m |
+		 *         status : OclAny[?] = mixins->forAll(m |
 		 *           m.applies->notEmpty() implies
 		 *           m.applies->exists(k | kind->closure(parent)->includes(k)))
 		 *       in
-		 *         'Entity::KindCompatibleWithOneAppliesOfEachMixin'.logDiagnostic(self, diagnostics, context, severity, status, 0)
+		 *         'Entity::KindCompatibleWithOneAppliesOfEachMixin'.logDiagnostic(self, null, diagnostics, context, null, severity, status, 0)
 		 *     endif
 		 */
 		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
@@ -569,7 +561,7 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 		    catch (Exception e) {
 		        CAUGHT_status = ValueUtil.createInvalidValue(e);
 		    }
-		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Entity_c_c_KindCompatibleWithOneAppliesOfEachMixin, this, diagnostics, context, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
+		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Entity_c_c_KindCompatibleWithOneAppliesOfEachMixin, this, null, diagnostics, context, null, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
 		    symbol_1 = logDiagnostic;
 		}
 		return Boolean.TRUE == symbol_1;
@@ -589,9 +581,9 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 		 *     if severity <= 0
 		 *     then true
 		 *     else
-		 *       let status : Boolean[1] = Entity.allInstances()->isUnique(id)
+		 *       let status : OclAny[1] = Entity.allInstances()->isUnique(id)
 		 *       in
-		 *         'Entity::IdUnique'.logDiagnostic(self, diagnostics, context, severity, status, 0)
+		 *         'Entity::IdUnique'.logDiagnostic(self, null, diagnostics, context, null, severity, status, 0)
 		 *     endif
 		 */
 		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
@@ -634,7 +626,7 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 		    catch (Exception e) {
 		        CAUGHT_status = ValueUtil.createInvalidValue(e);
 		    }
-		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Entity_c_c_IdUnique, this, diagnostics, context, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
+		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Entity_c_c_IdUnique, this, null, diagnostics, context, null, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
 		    symbol_0 = logDiagnostic;
 		}
 		return Boolean.TRUE == symbol_0;

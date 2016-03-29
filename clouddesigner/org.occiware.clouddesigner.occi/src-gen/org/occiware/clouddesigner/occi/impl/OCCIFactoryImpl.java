@@ -6,19 +6,12 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
+
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.occiware.clouddesigner.occi.Action;
-import org.occiware.clouddesigner.occi.Attribute;
-import org.occiware.clouddesigner.occi.AttributeState;
-import org.occiware.clouddesigner.occi.Configuration;
-import org.occiware.clouddesigner.occi.Extension;
-import org.occiware.clouddesigner.occi.Kind;
-import org.occiware.clouddesigner.occi.Link;
-import org.occiware.clouddesigner.occi.Mixin;
-import org.occiware.clouddesigner.occi.OCCIFactory;
-import org.occiware.clouddesigner.occi.OCCIPackage;
-import org.occiware.clouddesigner.occi.Resource;
+
+import org.occiware.clouddesigner.occi.*;
 
 /**
  * <!-- begin-user-doc -->

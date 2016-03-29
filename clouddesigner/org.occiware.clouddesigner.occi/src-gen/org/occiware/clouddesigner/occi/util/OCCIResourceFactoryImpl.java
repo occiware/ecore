@@ -3,10 +3,10 @@
 package org.occiware.clouddesigner.occi.util;
 
 import org.eclipse.emf.common.util.URI;
+
 import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.resource.impl.ResourceFactoryImpl;
-import org.eclipse.emf.ecore.xmi.XMLResource;
-import org.eclipse.emf.ecore.xmi.impl.URIHandlerImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -35,7 +35,6 @@ public class OCCIResourceFactoryImpl extends ResourceFactoryImpl {
 	@Override
 	public Resource createResource(URI uri) {
 		Resource result = new OCCIResourceImpl(uri);
-		((XMLResource) result).getDefaultSaveOptions().put(XMLResource.OPTION_URI_HANDLER, new URIHandlerImpl.PlatformSchemeAware());
 		return result;
 	}
 

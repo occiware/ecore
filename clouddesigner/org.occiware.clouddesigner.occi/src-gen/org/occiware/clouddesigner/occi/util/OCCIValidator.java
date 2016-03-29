@@ -3,22 +3,15 @@
 package org.occiware.clouddesigner.occi.util;
 
 import java.util.Map;
+
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.ResourceLocator;
+
 import org.eclipse.emf.ecore.EPackage;
+
 import org.eclipse.emf.ecore.util.EObjectValidator;
-import org.occiware.clouddesigner.occi.Action;
-import org.occiware.clouddesigner.occi.Attribute;
-import org.occiware.clouddesigner.occi.AttributeState;
-import org.occiware.clouddesigner.occi.Category;
-import org.occiware.clouddesigner.occi.Configuration;
-import org.occiware.clouddesigner.occi.Entity;
-import org.occiware.clouddesigner.occi.Extension;
-import org.occiware.clouddesigner.occi.Kind;
-import org.occiware.clouddesigner.occi.Link;
-import org.occiware.clouddesigner.occi.Mixin;
-import org.occiware.clouddesigner.occi.OCCIPackage;
-import org.occiware.clouddesigner.occi.Resource;
+
+import org.occiware.clouddesigner.occi.*;
 
 /**
  * <!-- begin-user-doc -->
@@ -247,12 +240,12 @@ public class OCCIValidator extends EObjectValidator {
 	public static final int EXTENSION__MIXIN_DEPENDS_LOCAL_OR_IMPORTED = 25;
 
 	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'All Resources Links Kinds In Use' of 'Configuration'.
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'All Mixins Are Tags' of 'Configuration'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONFIGURATION__ALL_RESOURCES_LINKS_KINDS_IN_USE = 26;
+	public static final int CONFIGURATION__ALL_MIXINS_ARE_TAGS = 26;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'All Resources Links Targets In Configuration' of 'Configuration'.
@@ -271,20 +264,28 @@ public class OCCIValidator extends EObjectValidator {
 	public static final int CONFIGURATION__ALL_RESOURCES_KINDS_IN_USE = 28;
 
 	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'All Resources Mixins In Use' of 'Configuration'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int CONFIGURATION__ALL_RESOURCES_MIXINS_IN_USE = 29;
-
-	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'All Resources Links Mixins In Use' of 'Configuration'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONFIGURATION__ALL_RESOURCES_LINKS_MIXINS_IN_USE = 30;
+	public static final int CONFIGURATION__ALL_RESOURCES_LINKS_MIXINS_IN_USE = 29;
+
+	/**
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'All Resources Mixins In Use' of 'Configuration'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final int CONFIGURATION__ALL_RESOURCES_MIXINS_IN_USE = 30;
+
+	/**
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'All Resources Links Kinds In Use' of 'Configuration'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final int CONFIGURATION__ALL_RESOURCES_LINKS_KINDS_IN_USE = 31;
 
 	/**
 	 * A constant with a fixed name that can be used as the base value for additional hand written constants.
@@ -292,7 +293,7 @@ public class OCCIValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final int GENERATED_DIAGNOSTIC_CODE_COUNT = 30;
+	private static final int GENERATED_DIAGNOSTIC_CODE_COUNT = 31;
 
 	/**
 	 * A constant with a fixed name that can be used as the base value for additional hand written constants in a derived class.
@@ -389,16 +390,6 @@ public class OCCIValidator extends EObjectValidator {
 	}
 
 	/**
-	 * Validates the AttributesNameUnique constraint of '<em>Category</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateCategory_AttributesNameUnique(Category category, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return category.AttributesNameUnique(diagnostics, context);
-	}
-
-	/**
 	 * Validates the IdentityUnique constraint of '<em>Category</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -416,6 +407,16 @@ public class OCCIValidator extends EObjectValidator {
 	 */
 	public boolean validateCategory_SchemeEndsWithSharp(Category category, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return category.SchemeEndsWithSharp(diagnostics, context);
+	}
+
+	/**
+	 * Validates the AttributesNameUnique constraint of '<em>Category</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateCategory_AttributesNameUnique(Category category, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return category.AttributesNameUnique(diagnostics, context);
 	}
 
 	/**
@@ -454,6 +455,16 @@ public class OCCIValidator extends EObjectValidator {
 	}
 
 	/**
+	 * Validates the ActionTermUnicity constraint of '<em>Kind</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateKind_ActionTermUnicity(Kind kind, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return kind.ActionTermUnicity(diagnostics, context);
+	}
+
+	/**
 	 * Validates the CorrectScheme constraint of '<em>Kind</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -474,26 +485,6 @@ public class OCCIValidator extends EObjectValidator {
 	}
 
 	/**
-	 * Validates the AttributesNameNotAlreadyDefinedInParent constraint of '<em>Kind</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateKind_AttributesNameNotAlreadyDefinedInParent(Kind kind, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return kind.AttributesNameNotAlreadyDefinedInParent(diagnostics, context);
-	}
-
-	/**
-	 * Validates the ActionTermUnicity constraint of '<em>Kind</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateKind_ActionTermUnicity(Kind kind, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return kind.ActionTermUnicity(diagnostics, context);
-	}
-
-	/**
 	 * Validates the EntityKindIsRootParent constraint of '<em>Kind</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -501,6 +492,16 @@ public class OCCIValidator extends EObjectValidator {
 	 */
 	public boolean validateKind_EntityKindIsRootParent(Kind kind, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return kind.EntityKindIsRootParent(diagnostics, context);
+	}
+
+	/**
+	 * Validates the AttributesNameNotAlreadyDefinedInParent constraint of '<em>Kind</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateKind_AttributesNameNotAlreadyDefinedInParent(Kind kind, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return kind.AttributesNameNotAlreadyDefinedInParent(diagnostics, context);
 	}
 
 	/**
@@ -571,16 +572,6 @@ public class OCCIValidator extends EObjectValidator {
 	}
 
 	/**
-	 * Validates the NoCyclicInheritance constraint of '<em>Mixin</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateMixin_NoCyclicInheritance(Mixin mixin, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return mixin.NoCyclicInheritance(diagnostics, context);
-	}
-
-	/**
 	 * Validates the CorrectScheme constraint of '<em>Mixin</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -588,6 +579,16 @@ public class OCCIValidator extends EObjectValidator {
 	 */
 	public boolean validateMixin_CorrectScheme(Mixin mixin, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return mixin.CorrectScheme(diagnostics, context);
+	}
+
+	/**
+	 * Validates the NoCyclicInheritance constraint of '<em>Mixin</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateMixin_NoCyclicInheritance(Mixin mixin, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return mixin.NoCyclicInheritance(diagnostics, context);
 	}
 
 	/**
@@ -622,6 +623,16 @@ public class OCCIValidator extends EObjectValidator {
 	}
 
 	/**
+	 * Validates the IdUnique constraint of '<em>Entity</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateEntity_IdUnique(Entity entity, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return entity.IdUnique(diagnostics, context);
+	}
+
+	/**
 	 * Validates the AttributesNameUnique constraint of '<em>Entity</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -639,16 +650,6 @@ public class OCCIValidator extends EObjectValidator {
 	 */
 	public boolean validateEntity_KindCompatibleWithOneAppliesOfEachMixin(Entity entity, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return entity.KindCompatibleWithOneAppliesOfEachMixin(diagnostics, context);
-	}
-
-	/**
-	 * Validates the IdUnique constraint of '<em>Entity</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateEntity_IdUnique(Entity entity, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return entity.IdUnique(diagnostics, context);
 	}
 
 	/**
@@ -750,6 +751,16 @@ public class OCCIValidator extends EObjectValidator {
 	}
 
 	/**
+	 * Validates the SchemeUnique constraint of '<em>Extension</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateExtension_SchemeUnique(Extension extension, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return extension.SchemeUnique(diagnostics, context);
+	}
+
+	/**
 	 * Validates the KindsSchemeValid constraint of '<em>Extension</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -757,16 +768,6 @@ public class OCCIValidator extends EObjectValidator {
 	 */
 	public boolean validateExtension_KindsSchemeValid(Extension extension, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return extension.KindsSchemeValid(diagnostics, context);
-	}
-
-	/**
-	 * Validates the KindParentLocalOrImported constraint of '<em>Extension</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateExtension_KindParentLocalOrImported(Extension extension, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return extension.KindParentLocalOrImported(diagnostics, context);
 	}
 
 	/**
@@ -790,23 +791,13 @@ public class OCCIValidator extends EObjectValidator {
 	}
 
 	/**
-	 * Validates the MixinAppliesLocalOrImported constraint of '<em>Extension</em>'.
+	 * Validates the KindParentLocalOrImported constraint of '<em>Extension</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateExtension_MixinAppliesLocalOrImported(Extension extension, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return extension.MixinAppliesLocalOrImported(diagnostics, context);
-	}
-
-	/**
-	 * Validates the SchemeUnique constraint of '<em>Extension</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateExtension_SchemeUnique(Extension extension, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return extension.SchemeUnique(diagnostics, context);
+	public boolean validateExtension_KindParentLocalOrImported(Extension extension, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return extension.KindParentLocalOrImported(diagnostics, context);
 	}
 
 	/**
@@ -817,6 +808,16 @@ public class OCCIValidator extends EObjectValidator {
 	 */
 	public boolean validateExtension_MixinDependsLocalOrImported(Extension extension, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return extension.MixinDependsLocalOrImported(diagnostics, context);
+	}
+
+	/**
+	 * Validates the MixinAppliesLocalOrImported constraint of '<em>Extension</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateExtension_MixinAppliesLocalOrImported(Extension extension, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return extension.MixinAppliesLocalOrImported(diagnostics, context);
 	}
 
 	/**
@@ -839,27 +840,8 @@ public class OCCIValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validateConfiguration_AllResourcesLinksKindsInUse(configuration, diagnostics, context);
 		if (result || diagnostics != null) result &= validateConfiguration_AllResourcesLinksMixinsInUse(configuration, diagnostics, context);
 		if (result || diagnostics != null) result &= validateConfiguration_AllResourcesLinksTargetsInConfiguration(configuration, diagnostics, context);
+		if (result || diagnostics != null) result &= validateConfiguration_AllMixinsAreTags(configuration, diagnostics, context);
 		return result;
-	}
-
-	/**
-	 * Validates the AllResourcesLinksKindsInUse constraint of '<em>Configuration</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateConfiguration_AllResourcesLinksKindsInUse(Configuration configuration, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return configuration.AllResourcesLinksKindsInUse(diagnostics, context);
-	}
-
-	/**
-	 * Validates the AllResourcesLinksTargetsInConfiguration constraint of '<em>Configuration</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateConfiguration_AllResourcesLinksTargetsInConfiguration(Configuration configuration, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return configuration.AllResourcesLinksTargetsInConfiguration(diagnostics, context);
 	}
 
 	/**
@@ -883,6 +865,16 @@ public class OCCIValidator extends EObjectValidator {
 	}
 
 	/**
+	 * Validates the AllResourcesLinksKindsInUse constraint of '<em>Configuration</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateConfiguration_AllResourcesLinksKindsInUse(Configuration configuration, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return configuration.AllResourcesLinksKindsInUse(diagnostics, context);
+	}
+
+	/**
 	 * Validates the AllResourcesLinksMixinsInUse constraint of '<em>Configuration</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -890,6 +882,26 @@ public class OCCIValidator extends EObjectValidator {
 	 */
 	public boolean validateConfiguration_AllResourcesLinksMixinsInUse(Configuration configuration, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return configuration.AllResourcesLinksMixinsInUse(diagnostics, context);
+	}
+
+	/**
+	 * Validates the AllResourcesLinksTargetsInConfiguration constraint of '<em>Configuration</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateConfiguration_AllResourcesLinksTargetsInConfiguration(Configuration configuration, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return configuration.AllResourcesLinksTargetsInConfiguration(diagnostics, context);
+	}
+
+	/**
+	 * Validates the AllMixinsAreTags constraint of '<em>Configuration</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateConfiguration_AllMixinsAreTags(Configuration configuration, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return configuration.AllMixinsAreTags(diagnostics, context);
 	}
 
 	/**

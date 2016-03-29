@@ -90,6 +90,7 @@ public class OCCITables
     public static final /*@NonNull*/ /*@NonInvalid*/ String STR_Category_c_c_AttributesNameUnique = "Category::AttributesNameUnique";
     public static final /*@NonNull*/ /*@NonInvalid*/ String STR_Category_c_c_IdentityUnique = "Category::IdentityUnique";
     public static final /*@NonNull*/ /*@NonInvalid*/ String STR_Category_c_c_SchemeEndsWithSharp = "Category::SchemeEndsWithSharp";
+    public static final /*@NonNull*/ /*@NonInvalid*/ String STR_Configuration_c_c_AllMixinsAreTags = "Configuration::AllMixinsAreTags";
     public static final /*@NonNull*/ /*@NonInvalid*/ String STR_Configuration_c_c_AllResourcesKindsInUse = "Configuration::AllResourcesKindsInUse";
     public static final /*@NonNull*/ /*@NonInvalid*/ String STR_Configuration_c_c_AllResourcesLinksKindsInUse = "Configuration::AllResourcesLinksKindsInUse";
     public static final /*@NonNull*/ /*@NonInvalid*/ String STR_Configuration_c_c_AllResourcesLinksMixinsInUse = "Configuration::AllResourcesLinksMixinsInUse";
@@ -332,6 +333,7 @@ public class OCCITables
 		public static final /*@NonNull*/ ParameterTypes _Integer = TypeUtil.createParameterTypes(OCLstdlibTables.Types._Integer);
 		public static final /*@NonNull*/ ParameterTypes _Integer___Integer = TypeUtil.createParameterTypes(OCLstdlibTables.Types._Integer, OCLstdlibTables.Types._Integer);
 		public static final /*@NonNull*/ ParameterTypes _OclAny___OclAny___OclAny___Integer___Boolean___Integer = TypeUtil.createParameterTypes(OCLstdlibTables.Types._OclAny, OCLstdlibTables.Types._OclAny, OCLstdlibTables.Types._OclAny, OCLstdlibTables.Types._Integer, OCLstdlibTables.Types._Boolean, OCLstdlibTables.Types._Integer);
+		public static final /*@NonNull*/ ParameterTypes _OclAny___OclAny___OclAny___OclAny___String___Integer___OclAny___Integer = TypeUtil.createParameterTypes(OCLstdlibTables.Types._OclAny, OCLstdlibTables.Types._OclAny, OCLstdlibTables.Types._OclAny, OCLstdlibTables.Types._OclAny, OCLstdlibTables.Types._String, OCLstdlibTables.Types._Integer, OCLstdlibTables.Types._OclAny, OCLstdlibTables.Types._Integer);
 		public static final /*@NonNull*/ ParameterTypes _OclSelf = TypeUtil.createParameterTypes(OCLstdlibTables.Types._OclSelf);
 		public static final /*@NonNull*/ ParameterTypes _String = TypeUtil.createParameterTypes(OCLstdlibTables.Types._String);
 		public static final /*@NonNull*/ ParameterTypes _String___Boolean = TypeUtil.createParameterTypes(OCLstdlibTables.Types._String, OCLstdlibTables.Types._Boolean);
@@ -407,48 +409,50 @@ public class OCCITables
 			14, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringIndexOfOperation.INSTANCE);
 		public static final /*@NonNull*/ ExecutorOperation _String__lastIndexOf = new ExecutorOperation("lastIndexOf", Parameters._String, Types._String,
 			15, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringLastIndexOfOperation.INSTANCE);
-		public static final /*@NonNull*/ ExecutorOperation _String__logDiagnostic = new ExecutorOperation("logDiagnostic", Parameters._OclAny___OclAny___OclAny___Integer___Boolean___Integer, Types._String,
+		public static final /*@NonNull*/ ExecutorOperation _String__0_logDiagnostic = new ExecutorOperation("logDiagnostic", Parameters._OclAny___OclAny___OclAny___Integer___Boolean___Integer, Types._String,
 			16, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.CGStringLogDiagnosticOperation.INSTANCE);
+		public static final /*@NonNull*/ ExecutorOperation _String__1_logDiagnostic = new ExecutorOperation("logDiagnostic", Parameters._OclAny___OclAny___OclAny___OclAny___String___Integer___OclAny___Integer, Types._String,
+			17, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.CGStringLogDiagnosticOperation.INSTANCE);
 		public static final /*@NonNull*/ ExecutorOperation _String__matches = new ExecutorOperation("matches", Parameters._String, Types._String,
-			17, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringMatchesOperation.INSTANCE);
+			18, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringMatchesOperation.INSTANCE);
 		public static final /*@NonNull*/ ExecutorOperation _String__replaceAll = new ExecutorOperation("replaceAll", Parameters._String___String, Types._String,
-			18, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringReplaceAllOperation.INSTANCE);
+			19, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringReplaceAllOperation.INSTANCE);
 		public static final /*@NonNull*/ ExecutorOperation _String__replaceFirst = new ExecutorOperation("replaceFirst", Parameters._String___String, Types._String,
-			19, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringReplaceFirstOperation.INSTANCE);
+			20, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringReplaceFirstOperation.INSTANCE);
 		public static final /*@NonNull*/ ExecutorOperation _String__size = new ExecutorOperation("size", Parameters._, Types._String,
-			20, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringSizeOperation.INSTANCE);
+			21, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringSizeOperation.INSTANCE);
 		public static final /*@NonNull*/ ExecutorOperation _String__startsWith = new ExecutorOperation("startsWith", Parameters._String, Types._String,
-			21, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringStartsWithOperation.INSTANCE);
+			22, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringStartsWithOperation.INSTANCE);
 		public static final /*@NonNull*/ ExecutorOperation _String__substituteAll = new ExecutorOperation("substituteAll", Parameters._String___String, Types._String,
-			22, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringSubstituteAllOperation.INSTANCE);
+			23, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringSubstituteAllOperation.INSTANCE);
 		public static final /*@NonNull*/ ExecutorOperation _String__substituteFirst = new ExecutorOperation("substituteFirst", Parameters._String___String, Types._String,
-			23, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringSubstituteFirstOperation.INSTANCE);
+			24, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringSubstituteFirstOperation.INSTANCE);
 		public static final /*@NonNull*/ ExecutorOperation _String__substring = new ExecutorOperation("substring", Parameters._Integer___Integer, Types._String,
-			24, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringSubstringOperation.INSTANCE);
+			25, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringSubstringOperation.INSTANCE);
 		public static final /*@NonNull*/ ExecutorOperation _String__toBoolean = new ExecutorOperation("toBoolean", Parameters._, Types._String,
-			25, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringToBooleanOperation.INSTANCE);
+			26, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringToBooleanOperation.INSTANCE);
 		public static final /*@NonNull*/ ExecutorOperation _String__toInteger = new ExecutorOperation("toInteger", Parameters._, Types._String,
-			26, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringToIntegerOperation.INSTANCE);
+			27, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringToIntegerOperation.INSTANCE);
 		public static final /*@NonNull*/ ExecutorOperation _String__toLower = new ExecutorOperation("toLower", Parameters._, Types._String,
-			27, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringToLowerCaseOperation.INSTANCE);
-		public static final /*@NonNull*/ ExecutorOperation _String__toLowerCase = new ExecutorOperation("toLowerCase", Parameters._, Types._String,
 			28, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringToLowerCaseOperation.INSTANCE);
+		public static final /*@NonNull*/ ExecutorOperation _String__toLowerCase = new ExecutorOperation("toLowerCase", Parameters._, Types._String,
+			29, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringToLowerCaseOperation.INSTANCE);
 		public static final /*@NonNull*/ ExecutorOperation _String__toReal = new ExecutorOperation("toReal", Parameters._, Types._String,
-			29, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringToRealOperation.INSTANCE);
+			30, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringToRealOperation.INSTANCE);
 		public static final /*@NonNull*/ ExecutorOperation _String__toString = new ExecutorOperation("toString", Parameters._, Types._String,
-			30, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.oclany.OclAnyToStringOperation.INSTANCE);
+			31, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.oclany.OclAnyToStringOperation.INSTANCE);
 		public static final /*@NonNull*/ ExecutorOperation _String__toUpper = new ExecutorOperation("toUpper", Parameters._, Types._String,
-			31, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringToUpperCaseOperation.INSTANCE);
-		public static final /*@NonNull*/ ExecutorOperation _String__toUpperCase = new ExecutorOperation("toUpperCase", Parameters._, Types._String,
 			32, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringToUpperCaseOperation.INSTANCE);
+		public static final /*@NonNull*/ ExecutorOperation _String__toUpperCase = new ExecutorOperation("toUpperCase", Parameters._, Types._String,
+			33, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringToUpperCaseOperation.INSTANCE);
 		public static final /*@NonNull*/ ExecutorOperation _String__0_tokenize = new ExecutorOperation("tokenize", Parameters._, Types._String,
-			33, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringTokenizeOperation.INSTANCE);
-		public static final /*@NonNull*/ ExecutorOperation _String__1_tokenize = new ExecutorOperation("tokenize", Parameters._String, Types._String,
 			34, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringTokenizeOperation.INSTANCE);
-		public static final /*@NonNull*/ ExecutorOperation _String__2_tokenize = new ExecutorOperation("tokenize", Parameters._String___Boolean, Types._String,
+		public static final /*@NonNull*/ ExecutorOperation _String__1_tokenize = new ExecutorOperation("tokenize", Parameters._String, Types._String,
 			35, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringTokenizeOperation.INSTANCE);
+		public static final /*@NonNull*/ ExecutorOperation _String__2_tokenize = new ExecutorOperation("tokenize", Parameters._String___Boolean, Types._String,
+			36, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringTokenizeOperation.INSTANCE);
 		public static final /*@NonNull*/ ExecutorOperation _String__trim = new ExecutorOperation("trim", Parameters._, Types._String,
-			36, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringTrimOperation.INSTANCE);
+			37, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringTrimOperation.INSTANCE);
 
 		static {
 			Init.initEnd();
@@ -490,8 +494,9 @@ public class OCCITables
 		public static final /*@NonNull*/ ExecutorProperty _Category__term = new EcoreExecutorProperty(OCCIPackage.Literals.CATEGORY__TERM, Types._Category, 2);
 		public static final /*@NonNull*/ ExecutorProperty _Category__title = new EcoreExecutorProperty(OCCIPackage.Literals.CATEGORY__TITLE, Types._Category, 3);
 
-		public static final /*@NonNull*/ ExecutorProperty _Configuration__resources = new EcoreExecutorProperty(OCCIPackage.Literals.CONFIGURATION__RESOURCES, Types._Configuration, 0);
-		public static final /*@NonNull*/ ExecutorProperty _Configuration__use = new EcoreExecutorProperty(OCCIPackage.Literals.CONFIGURATION__USE, Types._Configuration, 1);
+		public static final /*@NonNull*/ ExecutorProperty _Configuration__mixins = new EcoreExecutorProperty(OCCIPackage.Literals.CONFIGURATION__MIXINS, Types._Configuration, 0);
+		public static final /*@NonNull*/ ExecutorProperty _Configuration__resources = new EcoreExecutorProperty(OCCIPackage.Literals.CONFIGURATION__RESOURCES, Types._Configuration, 1);
+		public static final /*@NonNull*/ ExecutorProperty _Configuration__use = new EcoreExecutorProperty(OCCIPackage.Literals.CONFIGURATION__USE, Types._Configuration, 2);
 
 		public static final /*@NonNull*/ ExecutorProperty _Entity__attributes = new EcoreExecutorProperty(OCCIPackage.Literals.ENTITY__ATTRIBUTES, Types._Entity, 0);
 		public static final /*@NonNull*/ ExecutorProperty _Entity__id = new EcoreExecutorProperty(OCCIPackage.Literals.ENTITY__ID, Types._Entity, 1);
@@ -524,9 +529,10 @@ public class OCCITables
 		public static final /*@NonNull*/ ExecutorProperty _Mixin__applies = new EcoreExecutorProperty(OCCIPackage.Literals.MIXIN__APPLIES, Types._Mixin, 1);
 		public static final /*@NonNull*/ ExecutorProperty _Mixin__depends = new EcoreExecutorProperty(OCCIPackage.Literals.MIXIN__DEPENDS, Types._Mixin, 2);
 		public static final /*@NonNull*/ ExecutorProperty _Mixin__entities = new EcoreExecutorProperty(OCCIPackage.Literals.MIXIN__ENTITIES, Types._Mixin, 3);
-		public static final /*@NonNull*/ ExecutorProperty _Mixin__Entity__mixins = new ExecutorPropertyWithImplementation("Entity", Types._Mixin, 4, new EcoreLibraryOppositeProperty(OCCIPackage.Literals.ENTITY__MIXINS));
-		public static final /*@NonNull*/ ExecutorProperty _Mixin__Extension__mixins = new ExecutorPropertyWithImplementation("Extension", Types._Mixin, 5, new EcoreLibraryOppositeProperty(OCCIPackage.Literals.EXTENSION__MIXINS));
-		public static final /*@NonNull*/ ExecutorProperty _Mixin__Mixin__depends = new ExecutorPropertyWithImplementation("Mixin", Types._Mixin, 6, new EcoreLibraryOppositeProperty(OCCIPackage.Literals.MIXIN__DEPENDS));
+		public static final /*@NonNull*/ ExecutorProperty _Mixin__Configuration__mixins = new ExecutorPropertyWithImplementation("Configuration", Types._Mixin, 4, new EcoreLibraryOppositeProperty(OCCIPackage.Literals.CONFIGURATION__MIXINS));
+		public static final /*@NonNull*/ ExecutorProperty _Mixin__Entity__mixins = new ExecutorPropertyWithImplementation("Entity", Types._Mixin, 5, new EcoreLibraryOppositeProperty(OCCIPackage.Literals.ENTITY__MIXINS));
+		public static final /*@NonNull*/ ExecutorProperty _Mixin__Extension__mixins = new ExecutorPropertyWithImplementation("Extension", Types._Mixin, 6, new EcoreLibraryOppositeProperty(OCCIPackage.Literals.EXTENSION__MIXINS));
+		public static final /*@NonNull*/ ExecutorProperty _Mixin__Mixin__depends = new ExecutorPropertyWithImplementation("Mixin", Types._Mixin, 7, new EcoreLibraryOppositeProperty(OCCIPackage.Literals.MIXIN__DEPENDS));
 
 		public static final /*@NonNull*/ ExecutorProperty _Resource__links = new EcoreExecutorProperty(OCCIPackage.Literals.RESOURCE__LINKS, Types._Resource, 0);
 		public static final /*@NonNull*/ ExecutorProperty _Resource__Configuration__resources = new ExecutorPropertyWithImplementation("Configuration", Types._Resource, 1, new EcoreLibraryOppositeProperty(OCCIPackage.Literals.CONFIGURATION__RESOURCES));
@@ -1078,8 +1084,14 @@ public class OCCITables
 			OCLstdlibTables.Operations._String__concat /* concat(String[?]) */,
 			OCLstdlibTables.Operations._String__endsWith /* endsWith(String[?]) */,
 			OCLstdlibTables.Operations._String__equalsIgnoreCase /* equalsIgnoreCase(String[?]) */,
+// TODO: Bug into the OCLinEcore generator.
+//			OCLstdlibTables.Operations._String__getSeverity /* getSeverity() */,
 			OCLstdlibTables.Operations._String__indexOf /* indexOf(String[?]) */,
 			OCLstdlibTables.Operations._String__lastIndexOf /* lastIndexOf(String[?]) */,
+// TODO: Bug into the OCLinEcore generator.
+//			OCLstdlibTables.Operations._String__0_logDiagnostic /* logDiagnostic(OclAny[1],OclAny[?],OclAny[?],Integer[1],Boolean[?],Integer[1]) */,
+// TODO: Bug into the OCLinEcore generator.
+//			OCLstdlibTables.Operations._String__1_logDiagnostic /* logDiagnostic(OclAny[1],OclAny[?],OclAny[?],OclAny[?],String[?],Integer[1],OclAny[?],Integer[1]) */,
 			OCLstdlibTables.Operations._String__matches /* matches(String[?]) */,
 			OCLstdlibTables.Operations._String__replaceAll /* replaceAll(String[?],String[?]) */,
 			OCLstdlibTables.Operations._String__replaceFirst /* replaceFirst(String[?],String[?]) */,
@@ -1181,8 +1193,14 @@ public class OCCITables
 			OCLstdlibTables.Operations._String__concat /* concat(String[?]) */,
 			OCLstdlibTables.Operations._String__endsWith /* endsWith(String[?]) */,
 			OCLstdlibTables.Operations._String__equalsIgnoreCase /* equalsIgnoreCase(String[?]) */,
+// TODO: Bug into the OCLinEcore generator.
+//			OCLstdlibTables.Operations._String__getSeverity /* getSeverity() */,
 			OCLstdlibTables.Operations._String__indexOf /* indexOf(String[?]) */,
 			OCLstdlibTables.Operations._String__lastIndexOf /* lastIndexOf(String[?]) */,
+// TODO: Bug into the OCLinEcore generator.
+//			OCLstdlibTables.Operations._String__0_logDiagnostic /* logDiagnostic(OclAny[1],OclAny[?],OclAny[?],Integer[1],Boolean[?],Integer[1]) */,
+// TODO: Bug into the OCLinEcore generator.
+//			OCLstdlibTables.Operations._String__1_logDiagnostic /* logDiagnostic(OclAny[1],OclAny[?],OclAny[?],OclAny[?],String[?],Integer[1],OclAny[?],Integer[1]) */,
 			OCLstdlibTables.Operations._String__matches /* matches(String[?]) */,
 			OCLstdlibTables.Operations._String__replaceAll /* replaceAll(String[?],String[?]) */,
 			OCLstdlibTables.Operations._String__replaceFirst /* replaceFirst(String[?],String[?]) */,
@@ -1335,6 +1353,7 @@ public class OCCITables
 		};
 
 		private static final /*@NonNull*/ ExecutorProperty[] _Configuration = {
+			OCCITables.Properties._Configuration__mixins,
 			OCCITables.Properties._Configuration__resources,
 			OCCITables.Properties._Configuration__use
 		};
@@ -1393,6 +1412,7 @@ public class OCCITables
 			OCCITables.Properties._Category__scheme,
 			OCCITables.Properties._Category__term,
 			OCCITables.Properties._Category__title,
+			OCCITables.Properties._Mixin__Configuration__mixins,
 			OCCITables.Properties._Mixin__Entity__mixins,
 			OCCITables.Properties._Mixin__Extension__mixins,
 			OCCITables.Properties._Mixin__Mixin__depends

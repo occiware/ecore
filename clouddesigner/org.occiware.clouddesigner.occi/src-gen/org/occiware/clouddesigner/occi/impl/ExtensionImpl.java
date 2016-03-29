@@ -3,48 +3,67 @@
 package org.occiware.clouddesigner.occi.impl;
 
 import java.lang.reflect.InvocationTargetException;
+
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.ocl.pivot.evaluation.Evaluator;
+
 import org.eclipse.ocl.pivot.ids.IdResolver;
 import org.eclipse.ocl.pivot.ids.TypeId;
+
 import org.eclipse.ocl.pivot.internal.utilities.PivotUtilInternal;
+
 import org.eclipse.ocl.pivot.library.classifier.ClassifierAllInstancesOperation;
 import org.eclipse.ocl.pivot.library.classifier.ClassifierOclContainerOperation;
+
 import org.eclipse.ocl.pivot.library.collection.CollectionIncludesOperation;
 import org.eclipse.ocl.pivot.library.collection.CollectionIntersectionOperation;
 import org.eclipse.ocl.pivot.library.collection.CollectionIsEmptyOperation;
+
 import org.eclipse.ocl.pivot.library.logical.BooleanImpliesOperation;
 import org.eclipse.ocl.pivot.library.logical.BooleanOrOperation;
+
 import org.eclipse.ocl.pivot.library.numeric.NumericMinusOperation;
+
 import org.eclipse.ocl.pivot.library.oclany.OclComparableLessThanEqualOperation;
+
 import org.eclipse.ocl.pivot.library.string.CGStringGetSeverityOperation;
 import org.eclipse.ocl.pivot.library.string.CGStringLogDiagnosticOperation;
 import org.eclipse.ocl.pivot.library.string.StringSizeOperation;
 import org.eclipse.ocl.pivot.library.string.StringSubstringOperation;
+
 import org.eclipse.ocl.pivot.messages.PivotMessages;
+
 import org.eclipse.ocl.pivot.utilities.ClassUtil;
 import org.eclipse.ocl.pivot.utilities.ValueUtil;
+
 import org.eclipse.ocl.pivot.values.BagValue;
 import org.eclipse.ocl.pivot.values.IntegerValue;
 import org.eclipse.ocl.pivot.values.InvalidValueException;
 import org.eclipse.ocl.pivot.values.OrderedSetValue;
 import org.eclipse.ocl.pivot.values.SequenceValue;
 import org.eclipse.ocl.pivot.values.SetValue;
+
 import org.occiware.clouddesigner.occi.Extension;
 import org.occiware.clouddesigner.occi.Kind;
 import org.occiware.clouddesigner.occi.Mixin;
@@ -273,9 +292,9 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		 *     if severity <= 0
 		 *     then true
 		 *     else
-		 *       let status : Boolean[?] = kinds->forAll(k | k.scheme = self.scheme)
+		 *       let status : OclAny[?] = kinds->forAll(k | k.scheme = self.scheme)
 		 *       in
-		 *         'Extension::KindsSchemeValid'.logDiagnostic(self, diagnostics, context, severity, status, 0)
+		 *         'Extension::KindsSchemeValid'.logDiagnostic(self, null, diagnostics, context, null, severity, status, 0)
 		 *     endif
 		 */
 		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
@@ -341,7 +360,7 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		    catch (Exception e) {
 		        CAUGHT_status = ValueUtil.createInvalidValue(e);
 		    }
-		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Extension_c_c_KindsSchemeValid, this, diagnostics, context, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
+		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Extension_c_c_KindsSchemeValid, this, null, diagnostics, context, null, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
 		    symbol_0 = logDiagnostic;
 		}
 		return Boolean.TRUE == symbol_0;
@@ -363,12 +382,12 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		 *     then true
 		 *     else
 		 *       let
-		 *         status : Boolean[?] = kinds->forAll(parent <> null implies
+		 *         status : OclAny[?] = kinds->forAll(parent <> null implies
 		 *           let parentExtension : OclElement[?] = parent.oclContainer()
 		 *           in parentExtension = self or
 		 *             import->includes(parentExtension))
 		 *       in
-		 *         'Extension::KindParentLocalOrImported'.logDiagnostic(self, diagnostics, context, severity, status, 0)
+		 *         'Extension::KindParentLocalOrImported'.logDiagnostic(self, null, diagnostics, context, null, severity, status, 0)
 		 *     endif
 		 */
 		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
@@ -495,7 +514,7 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		    catch (Exception e) {
 		        CAUGHT_status = ValueUtil.createInvalidValue(e);
 		    }
-		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Extension_c_c_KindParentLocalOrImported, this, diagnostics, context, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
+		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Extension_c_c_KindParentLocalOrImported, this, null, diagnostics, context, null, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
 		    symbol_1 = logDiagnostic;
 		}
 		return Boolean.TRUE == symbol_1;
@@ -516,11 +535,11 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		 *     then true
 		 *     else
 		 *       let
-		 *         status : Boolean[?] = mixins->forAll(m |
+		 *         status : OclAny[?] = mixins->forAll(m |
 		 *           m.scheme.substring(1, scheme.size() - 1) =
 		 *           scheme.substring(1, scheme.size() - 1))
 		 *       in
-		 *         'Extension::MixinsSchemeValid'.logDiagnostic(self, diagnostics, context, severity, status, 0)
+		 *         'Extension::MixinsSchemeValid'.logDiagnostic(self, null, diagnostics, context, null, severity, status, 0)
 		 *     endif
 		 */
 		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
@@ -592,7 +611,7 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		    catch (Exception e) {
 		        CAUGHT_status = ValueUtil.createInvalidValue(e);
 		    }
-		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Extension_c_c_MixinsSchemeValid, this, diagnostics, context, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
+		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Extension_c_c_MixinsSchemeValid, this, null, diagnostics, context, null, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
 		    symbol_0 = logDiagnostic;
 		}
 		return Boolean.TRUE == symbol_0;
@@ -613,10 +632,10 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		 *     then true
 		 *     else
 		 *       let
-		 *         status : Boolean[1] = kinds.term->intersection(mixins.term)
+		 *         status : OclAny[1] = kinds.term->intersection(mixins.term)
 		 *         ->isEmpty()
 		 *       in
-		 *         'Extension::TermUnicity'.logDiagnostic(self, diagnostics, context, severity, status, 0)
+		 *         'Extension::TermUnicity'.logDiagnostic(self, null, diagnostics, context, null, severity, status, 0)
 		 *     endif
 		 */
 		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
@@ -679,7 +698,7 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		    catch (Exception e) {
 		        CAUGHT_status = ValueUtil.createInvalidValue(e);
 		    }
-		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Extension_c_c_TermUnicity, this, diagnostics, context, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
+		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Extension_c_c_TermUnicity, this, null, diagnostics, context, null, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
 		    symbol_0 = logDiagnostic;
 		}
 		return Boolean.TRUE == symbol_0;
@@ -701,11 +720,11 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		 *     then true
 		 *     else
 		 *       let
-		 *         status : Boolean[?] = mixins.applies->forAll(
+		 *         status : OclAny[?] = mixins.applies->forAll(
 		 *           let extension : OclElement[?] = oclContainer()
 		 *           in extension = self or import->includes(extension))
 		 *       in
-		 *         'Extension::MixinAppliesLocalOrImported'.logDiagnostic(self, diagnostics, context, severity, status, 0)
+		 *         'Extension::MixinAppliesLocalOrImported'.logDiagnostic(self, null, diagnostics, context, null, severity, status, 0)
 		 *     endif
 		 */
 		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
@@ -830,7 +849,7 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		    catch (Exception e) {
 		        CAUGHT_status = ValueUtil.createInvalidValue(e);
 		    }
-		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Extension_c_c_MixinAppliesLocalOrImported, this, diagnostics, context, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
+		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Extension_c_c_MixinAppliesLocalOrImported, this, null, diagnostics, context, null, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
 		    symbol_1 = logDiagnostic;
 		}
 		return Boolean.TRUE == symbol_1;
@@ -850,11 +869,9 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		 *     if severity <= 0
 		 *     then true
 		 *     else
-		 *       let
-		 *         status : Boolean[1] = Extension.allInstances()
-		 *         ->isUnique(scheme)
+		 *       let status : OclAny[1] = Extension.allInstances()->isUnique(scheme)
 		 *       in
-		 *         'Extension::SchemeUnique'.logDiagnostic(self, diagnostics, context, severity, status, 0)
+		 *         'Extension::SchemeUnique'.logDiagnostic(self, null, diagnostics, context, null, severity, status, 0)
 		 *     endif
 		 */
 		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
@@ -897,7 +914,7 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		    catch (Exception e) {
 		        CAUGHT_status = ValueUtil.createInvalidValue(e);
 		    }
-		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Extension_c_c_SchemeUnique, this, diagnostics, context, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
+		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Extension_c_c_SchemeUnique, this, null, diagnostics, context, null, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
 		    symbol_0 = logDiagnostic;
 		}
 		return Boolean.TRUE == symbol_0;
@@ -919,11 +936,11 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		 *     then true
 		 *     else
 		 *       let
-		 *         status : Boolean[?] = mixins.depends->forAll(
+		 *         status : OclAny[?] = mixins.depends->forAll(
 		 *           let extension : OclElement[?] = oclContainer()
 		 *           in extension = self or import->includes(extension))
 		 *       in
-		 *         'Extension::MixinDependsLocalOrImported'.logDiagnostic(self, diagnostics, context, severity, status, 0)
+		 *         'Extension::MixinDependsLocalOrImported'.logDiagnostic(self, null, diagnostics, context, null, severity, status, 0)
 		 *     endif
 		 */
 		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
@@ -1048,7 +1065,7 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		    catch (Exception e) {
 		        CAUGHT_status = ValueUtil.createInvalidValue(e);
 		    }
-		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Extension_c_c_MixinDependsLocalOrImported, this, diagnostics, context, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
+		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Extension_c_c_MixinDependsLocalOrImported, this, null, diagnostics, context, null, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
 		    symbol_1 = logDiagnostic;
 		}
 		return Boolean.TRUE == symbol_1;

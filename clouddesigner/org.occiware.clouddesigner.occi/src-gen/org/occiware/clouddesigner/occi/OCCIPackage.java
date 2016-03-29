@@ -1205,22 +1205,31 @@ public interface OCCIPackage extends EPackage {
 	int CONFIGURATION__RESOURCES = 1;
 
 	/**
+	 * The feature id for the '<em><b>Mixins</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONFIGURATION__MIXINS = 2;
+
+	/**
 	 * The number of structural features of the '<em>Configuration</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONFIGURATION_FEATURE_COUNT = 2;
+	int CONFIGURATION_FEATURE_COUNT = 3;
 
 	/**
-	 * The operation id for the '<em>All Resources Links Kinds In Use</em>' operation.
+	 * The operation id for the '<em>All Mixins Are Tags</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONFIGURATION___ALL_RESOURCES_LINKS_KINDS_IN_USE__DIAGNOSTICCHAIN_MAP = 0;
+	int CONFIGURATION___ALL_MIXINS_ARE_TAGS__DIAGNOSTICCHAIN_MAP = 0;
 
 	/**
 	 * The operation id for the '<em>All Resources Links Targets In Configuration</em>' operation.
@@ -1241,22 +1250,31 @@ public interface OCCIPackage extends EPackage {
 	int CONFIGURATION___ALL_RESOURCES_KINDS_IN_USE__DIAGNOSTICCHAIN_MAP = 2;
 
 	/**
-	 * The operation id for the '<em>All Resources Mixins In Use</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONFIGURATION___ALL_RESOURCES_MIXINS_IN_USE__DIAGNOSTICCHAIN_MAP = 3;
-
-	/**
 	 * The operation id for the '<em>All Resources Links Mixins In Use</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONFIGURATION___ALL_RESOURCES_LINKS_MIXINS_IN_USE__DIAGNOSTICCHAIN_MAP = 4;
+	int CONFIGURATION___ALL_RESOURCES_LINKS_MIXINS_IN_USE__DIAGNOSTICCHAIN_MAP = 3;
+
+	/**
+	 * The operation id for the '<em>All Resources Mixins In Use</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONFIGURATION___ALL_RESOURCES_MIXINS_IN_USE__DIAGNOSTICCHAIN_MAP = 4;
+
+	/**
+	 * The operation id for the '<em>All Resources Links Kinds In Use</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONFIGURATION___ALL_RESOURCES_LINKS_KINDS_IN_USE__DIAGNOSTICCHAIN_MAP = 5;
 
 	/**
 	 * The number of operations of the '<em>Configuration</em>' class.
@@ -1265,7 +1283,7 @@ public interface OCCIPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONFIGURATION_OPERATION_COUNT = 5;
+	int CONFIGURATION_OPERATION_COUNT = 6;
 
 	/**
 	 * The meta object id for the '<em>URI</em>' data type.
@@ -2052,14 +2070,25 @@ public interface OCCIPackage extends EPackage {
 	EReference getConfiguration_Resources();
 
 	/**
-	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.Configuration#AllResourcesLinksKindsInUse(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>All Resources Links Kinds In Use</em>}' operation.
+	 * Returns the meta object for the containment reference list '{@link org.occiware.clouddesigner.occi.Configuration#getMixins <em>Mixins</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>All Resources Links Kinds In Use</em>' operation.
-	 * @see org.occiware.clouddesigner.occi.Configuration#AllResourcesLinksKindsInUse(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @return the meta object for the containment reference list '<em>Mixins</em>'.
+	 * @see org.occiware.clouddesigner.occi.Configuration#getMixins()
+	 * @see #getConfiguration()
 	 * @generated
 	 */
-	EOperation getConfiguration__AllResourcesLinksKindsInUse__DiagnosticChain_Map();
+	EReference getConfiguration_Mixins();
+
+	/**
+	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.Configuration#AllMixinsAreTags(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>All Mixins Are Tags</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>All Mixins Are Tags</em>' operation.
+	 * @see org.occiware.clouddesigner.occi.Configuration#AllMixinsAreTags(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getConfiguration__AllMixinsAreTags__DiagnosticChain_Map();
 
 	/**
 	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.Configuration#AllResourcesLinksTargetsInConfiguration(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>All Resources Links Targets In Configuration</em>}' operation.
@@ -2082,6 +2111,16 @@ public interface OCCIPackage extends EPackage {
 	EOperation getConfiguration__AllResourcesKindsInUse__DiagnosticChain_Map();
 
 	/**
+	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.Configuration#AllResourcesLinksMixinsInUse(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>All Resources Links Mixins In Use</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>All Resources Links Mixins In Use</em>' operation.
+	 * @see org.occiware.clouddesigner.occi.Configuration#AllResourcesLinksMixinsInUse(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getConfiguration__AllResourcesLinksMixinsInUse__DiagnosticChain_Map();
+
+	/**
 	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.Configuration#AllResourcesMixinsInUse(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>All Resources Mixins In Use</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2092,14 +2131,14 @@ public interface OCCIPackage extends EPackage {
 	EOperation getConfiguration__AllResourcesMixinsInUse__DiagnosticChain_Map();
 
 	/**
-	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.Configuration#AllResourcesLinksMixinsInUse(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>All Resources Links Mixins In Use</em>}' operation.
+	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.Configuration#AllResourcesLinksKindsInUse(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>All Resources Links Kinds In Use</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>All Resources Links Mixins In Use</em>' operation.
-	 * @see org.occiware.clouddesigner.occi.Configuration#AllResourcesLinksMixinsInUse(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @return the meta object for the '<em>All Resources Links Kinds In Use</em>' operation.
+	 * @see org.occiware.clouddesigner.occi.Configuration#AllResourcesLinksKindsInUse(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
-	EOperation getConfiguration__AllResourcesLinksMixinsInUse__DiagnosticChain_Map();
+	EOperation getConfiguration__AllResourcesLinksKindsInUse__DiagnosticChain_Map();
 
 	/**
 	 * Returns the meta object for data type '{@link java.lang.String <em>URI</em>}'.
@@ -2757,12 +2796,20 @@ public interface OCCIPackage extends EPackage {
 		EReference CONFIGURATION__RESOURCES = eINSTANCE.getConfiguration_Resources();
 
 		/**
-		 * The meta object literal for the '<em><b>All Resources Links Kinds In Use</b></em>' operation.
+		 * The meta object literal for the '<em><b>Mixins</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation CONFIGURATION___ALL_RESOURCES_LINKS_KINDS_IN_USE__DIAGNOSTICCHAIN_MAP = eINSTANCE.getConfiguration__AllResourcesLinksKindsInUse__DiagnosticChain_Map();
+		EReference CONFIGURATION__MIXINS = eINSTANCE.getConfiguration_Mixins();
+
+		/**
+		 * The meta object literal for the '<em><b>All Mixins Are Tags</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation CONFIGURATION___ALL_MIXINS_ARE_TAGS__DIAGNOSTICCHAIN_MAP = eINSTANCE.getConfiguration__AllMixinsAreTags__DiagnosticChain_Map();
 
 		/**
 		 * The meta object literal for the '<em><b>All Resources Links Targets In Configuration</b></em>' operation.
@@ -2781,6 +2828,14 @@ public interface OCCIPackage extends EPackage {
 		EOperation CONFIGURATION___ALL_RESOURCES_KINDS_IN_USE__DIAGNOSTICCHAIN_MAP = eINSTANCE.getConfiguration__AllResourcesKindsInUse__DiagnosticChain_Map();
 
 		/**
+		 * The meta object literal for the '<em><b>All Resources Links Mixins In Use</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation CONFIGURATION___ALL_RESOURCES_LINKS_MIXINS_IN_USE__DIAGNOSTICCHAIN_MAP = eINSTANCE.getConfiguration__AllResourcesLinksMixinsInUse__DiagnosticChain_Map();
+
+		/**
 		 * The meta object literal for the '<em><b>All Resources Mixins In Use</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2789,12 +2844,12 @@ public interface OCCIPackage extends EPackage {
 		EOperation CONFIGURATION___ALL_RESOURCES_MIXINS_IN_USE__DIAGNOSTICCHAIN_MAP = eINSTANCE.getConfiguration__AllResourcesMixinsInUse__DiagnosticChain_Map();
 
 		/**
-		 * The meta object literal for the '<em><b>All Resources Links Mixins In Use</b></em>' operation.
+		 * The meta object literal for the '<em><b>All Resources Links Kinds In Use</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation CONFIGURATION___ALL_RESOURCES_LINKS_MIXINS_IN_USE__DIAGNOSTICCHAIN_MAP = eINSTANCE.getConfiguration__AllResourcesLinksMixinsInUse__DiagnosticChain_Map();
+		EOperation CONFIGURATION___ALL_RESOURCES_LINKS_KINDS_IN_USE__DIAGNOSTICCHAIN_MAP = eINSTANCE.getConfiguration__AllResourcesLinksKindsInUse__DiagnosticChain_Map();
 
 		/**
 		 * The meta object literal for the '<em>URI</em>' data type.

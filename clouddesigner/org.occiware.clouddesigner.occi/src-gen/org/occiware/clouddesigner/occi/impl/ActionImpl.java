@@ -3,26 +3,39 @@
 package org.occiware.clouddesigner.occi.impl;
 
 import java.lang.reflect.InvocationTargetException;
+
 import java.util.Map;
+
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
+
 import org.eclipse.ocl.pivot.evaluation.Evaluator;
+
 import org.eclipse.ocl.pivot.ids.IdResolver;
 import org.eclipse.ocl.pivot.ids.TypeId;
+
 import org.eclipse.ocl.pivot.internal.utilities.PivotUtilInternal;
+
 import org.eclipse.ocl.pivot.library.classifier.ClassifierOclContainerOperation;
+
 import org.eclipse.ocl.pivot.library.numeric.NumericMinusOperation;
+
 import org.eclipse.ocl.pivot.library.oclany.OclAnyOclAsTypeOperation;
 import org.eclipse.ocl.pivot.library.oclany.OclComparableLessThanEqualOperation;
+
 import org.eclipse.ocl.pivot.library.string.CGStringGetSeverityOperation;
 import org.eclipse.ocl.pivot.library.string.CGStringLogDiagnosticOperation;
 import org.eclipse.ocl.pivot.library.string.StringConcatOperation;
 import org.eclipse.ocl.pivot.library.string.StringSizeOperation;
 import org.eclipse.ocl.pivot.library.string.StringSubstringOperation;
+
 import org.eclipse.ocl.pivot.utilities.ClassUtil;
 import org.eclipse.ocl.pivot.utilities.ValueUtil;
+
 import org.eclipse.ocl.pivot.values.IntegerValue;
+
 import org.occiware.clouddesigner.occi.Action;
 import org.occiware.clouddesigner.occi.Category;
 import org.occiware.clouddesigner.occi.OCCIPackage;
@@ -70,13 +83,13 @@ public class ActionImpl extends CategoryImpl implements Action {
 		 *     then true
 		 *     else
 		 *       let
-		 *         status : Boolean[1] = let
+		 *         status : OclAny[1] = let
 		 *           category : ::Category[1] = oclContainer()
 		 *           .oclAsType(Category)
 		 *         in scheme =
 		 *           category.scheme.substring(1, category.scheme.size() - 1) + '/' + category.term + '/action#'
 		 *       in
-		 *         'Action::CorrectScheme'.logDiagnostic(self, diagnostics, context, severity, status, 0)
+		 *         'Action::CorrectScheme'.logDiagnostic(self, null, diagnostics, context, null, severity, status, 0)
 		 *     endif
 		 */
 		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
@@ -108,7 +121,7 @@ public class ActionImpl extends CategoryImpl implements Action {
 		    catch (Exception e) {
 		        CAUGHT_eq = ValueUtil.createInvalidValue(e);
 		    }
-		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Action_c_c_CorrectScheme, this, diagnostics, context, severity_0, CAUGHT_eq, OCCITables.INT_0).booleanValue());
+		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Action_c_c_CorrectScheme, this, null, diagnostics, context, null, severity_0, CAUGHT_eq, OCCITables.INT_0).booleanValue());
 		    symbol_0 = logDiagnostic;
 		}
 		return Boolean.TRUE == symbol_0;
