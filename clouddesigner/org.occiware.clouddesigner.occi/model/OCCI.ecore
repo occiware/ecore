@@ -31,7 +31,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="required" eType="#//Boolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="default" eType="#//String"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="#//String"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EDataType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EDataType"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="multiple_values" eType="#//Boolean"
         defaultValueLiteral="false"/>
   </eClassifiers>
@@ -70,7 +70,7 @@
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
       <details key="ActionTermUnicity" value="actions->isUnique(term)"/>
-      <details key="CorrectScheme" value="let ownerScheme = self.oclContainer().oclAsType(Extension).scheme in scheme.substring(1,ownerScheme.size()-1) = ownerScheme.substring(1,ownerScheme.size()-1)"/>
+      <details key="CorrectScheme" value="&#xA;&#x9;&#x9;  /* Previously let ownerScheme = owner.oclAsType(Extension).scheme in scheme.substring(1,ownerScheme.size()-1) = ownerScheme.substring(1,ownerScheme.size()-1) */&#xA;&#x9;&#x9;  let owner = self.oclContainer()&#xA;&#x9;&#x9;  in if owner.oclIsTypeOf(Extension) then&#xA;&#x9;&#x9;       let ownerScheme = owner.oclAsType(Extension).scheme&#xA;&#x9;&#x9;       in scheme.substring(1,ownerScheme.size()-1) = ownerScheme.substring(1,ownerScheme.size()-1)&#xA;&#x9;&#x9;     else&#xA;&#x9;&#x9;       true&#xA;&#x9;&#x9;     endif"/>
       <details key="NoCyclicInheritance" value="depends->closure(depends)->excludes(self)"/>
       <details key="AttributesNameNotAlreadyDefinedInDepends" value="attributes.name->excludesAll(depends->closure(depends).attributes.name)"/>
     </eAnnotations>
@@ -152,23 +152,25 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="mixins" upperBound="-1"
         eType="#//Mixin" containment="true" eKeys="#//Category/term"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="types" upperBound="-1"
-        eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EDataType"
-        containment="true"/>
+        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EDataType" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Configuration">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="AllResourcesKindsInUse AllResourcesMixinsInUse AllResourcesLinksKindsInUse AllResourcesLinksMixinsInUse AllResourcesLinksTargetsInConfiguration"/>
+      <details key="constraints" value="AllResourcesKindsInUse AllResourcesMixinsInUse AllResourcesLinksKindsInUse AllResourcesLinksMixinsInUse AllResourcesLinksTargetsInConfiguration AllMixinsAreTags"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
       <details key="AllResourcesKindsInUse" value="use->includesAll(resources.kind.oclContainer())"/>
-      <details key="AllResourcesMixinsInUse" value="use->includesAll(resources.mixins.oclContainer())"/>
+      <details key="AllResourcesMixinsInUse" value="&#xA;&#x9;&#x9;  /* Previously use->includesAll(resources.mixins.oclContainer()) */&#xA;&#x9;&#x9;  resources.mixins->forAll(mo | let mixinOwner = mo.oclContainer()&#xA;&#x9;&#x9;  &#x9;                            in if mixinOwner.oclIsTypeOf(Extension) then&#xA;&#x9;&#x9;  &#x9;                                 self.use->includes(mo.oclAsType(Extension))&#xA;&#x9;&#x9;  &#x9;                                else&#xA;&#x9;&#x9;  &#x9;                                  self.mixins->includes(mo)&#xA;&#x9;&#x9;  &#x9;                                 endif&#xA;&#x9;&#x9;  &#x9;                      )"/>
       <details key="AllResourcesLinksKindsInUse" value="use->includesAll(resources.links.kind.oclContainer())"/>
-      <details key="AllResourcesLinksMixinsInUse" value="use->includesAll(resources.links.mixins.oclContainer())"/>
+      <details key="AllResourcesLinksMixinsInUse" value="&#xA;&#x9;&#x9;  /* Previously use->includesAll(resources.links.mixins.oclContainer()) */&#xA;&#x9;&#x9;  resources.links.mixins->forAll(mo | let mixinOwner = mo.oclContainer()&#xA;&#x9;&#x9;  &#x9;                                  in if mixinOwner.oclIsTypeOf(Extension) then&#xA;&#x9;&#x9;  &#x9;                                    self.use->includes(mo.oclAsType(Extension))&#xA;&#x9;&#x9;  &#x9;                                  else&#xA;&#x9;&#x9;  &#x9;                                    self.mixins->includes(mo)&#xA;&#x9;&#x9;  &#x9;                                  endif&#xA;&#x9;&#x9;  &#x9;                            )"/>
       <details key="AllResourcesLinksTargetsInConfiguration" value="resources.links.target->forAll(r | r.oclContainer() = self)"/>
+      <details key="AllMixinsAreTags" value="mixins->forAll(attributes->isEmpty() and actions->isEmpty() and depends->isEmpty())"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="use" upperBound="-1" eType="#//Extension"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="resources" upperBound="-1"
         eType="#//Resource" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mixins" upperBound="-1"
+        eType="#//Mixin" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="URI" instanceClassName="java.lang.String"/>
   <eClassifiers xsi:type="ecore:EDataType" name="String" instanceClassName="java.lang.String"/>
