@@ -58,7 +58,9 @@ import org.occiware.clouddesigner.occi.infrastructure.Compute;
  * </ul>
  *
  * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer()
- * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='ContainerNoCycleBetweenContainers ContainerLinkAliasUnique'"
+ * @model annotation="OCCIE2Ecore title='Container Resource'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='ContainerNoCycleBetweenContainers ContainerLinkAliasUnique'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot ContainerNoCycleBetweenContainers='\n\t\t\tlinks->closure(links->select(oclIsKindOf(Link) or oclIsKindOf(Volumesfrom)).target.links->select(oclIsKindOf(Link) or oclIsKindOf(Volumesfrom))).target->excludes(self)' ContainerLinkAliasUnique='\n\t\t\tlinks->select(oclIsKindOf(Link))->isUnique(oclAsType(docker::Link).alias)'"
  * @generated
  */
 public interface Container extends Compute {
@@ -74,7 +76,7 @@ public interface Container extends Compute {
 	 * @see #setName(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Name()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!name'"
+	 *        annotation="OCCIE2Ecore description='The name of this Container instance'"
 	 * @generated
 	 */
 	String getName();
@@ -101,7 +103,7 @@ public interface Container extends Compute {
 	 * @see #setContainerid(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Containerid()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!containerid'"
+	 *        annotation="OCCIE2Ecore description='The ID of this Container instance'"
 	 * @generated
 	 */
 	String getContainerid();
@@ -128,7 +130,7 @@ public interface Container extends Compute {
 	 * @see #setImage(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Image()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!image'"
+	 *        annotation="OCCIE2Ecore description='The image of this Container instance'"
 	 * @generated
 	 */
 	String getImage();
@@ -155,7 +157,7 @@ public interface Container extends Compute {
 	 * @see #setBuild(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Build()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!build'"
+	 *        annotation="OCCIE2Ecore description='The build directory of this Container instance'"
 	 * @generated
 	 */
 	String getBuild();
@@ -182,7 +184,7 @@ public interface Container extends Compute {
 	 * @see #setCommand(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Command()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!command'"
+	 *        annotation="OCCIE2Ecore description='Override the default command in Dockerfile'"
 	 * @generated
 	 */
 	String getCommand();
@@ -209,7 +211,7 @@ public interface Container extends Compute {
 	 * @see #setPorts(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Ports()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!ports'"
+	 *        annotation="OCCIE2Ecore description='The ports of this Container instance'"
 	 * @generated
 	 */
 	String getPorts();
@@ -236,7 +238,7 @@ public interface Container extends Compute {
 	 * @see #setExpose(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Expose()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!expose'"
+	 *        annotation="OCCIE2Ecore description='The exposed ports of this Container instance'"
 	 * @generated
 	 */
 	String getExpose();
@@ -263,7 +265,7 @@ public interface Container extends Compute {
 	 * @see #setVolumes(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Volumes()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!volumes'"
+	 *        annotation="OCCIE2Ecore description='The list of volumes'"
 	 * @generated
 	 */
 	String getVolumes();
@@ -290,7 +292,7 @@ public interface Container extends Compute {
 	 * @see #setEnvironment(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Environment()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!environment'"
+	 *        annotation="OCCIE2Ecore description='Environment variables'"
 	 * @generated
 	 */
 	String getEnvironment();
@@ -317,7 +319,7 @@ public interface Container extends Compute {
 	 * @see #setEnv_file(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Env_file()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!env_file'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getEnv_file();
@@ -344,7 +346,7 @@ public interface Container extends Compute {
 	 * @see #setNet(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Net()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!net'"
+	 *        annotation="OCCIE2Ecore description='\'bridge\',  \'none\', \'container:[name or id]\', or \'host\''"
 	 * @generated
 	 */
 	String getNet();
@@ -371,7 +373,7 @@ public interface Container extends Compute {
 	 * @see #setDns(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Dns()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!dns'"
+	 *        annotation="OCCIE2Ecore description='Custom DNS servers'"
 	 * @generated
 	 */
 	String getDns();
@@ -398,7 +400,7 @@ public interface Container extends Compute {
 	 * @see #setDns_search(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Dns_search()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!dns_search'"
+	 *        annotation="OCCIE2Ecore description='Custom DNS search domains'"
 	 * @generated
 	 */
 	String getDns_search();
@@ -425,7 +427,7 @@ public interface Container extends Compute {
 	 * @see #setCap_add(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Cap_add()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!cap_add'"
+	 *        annotation="OCCIE2Ecore description='Add container capabilities'"
 	 * @generated
 	 */
 	String getCap_add();
@@ -452,7 +454,7 @@ public interface Container extends Compute {
 	 * @see #setCap_drop(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Cap_drop()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!cap_drop'"
+	 *        annotation="OCCIE2Ecore description='Drop container capabilities'"
 	 * @generated
 	 */
 	String getCap_drop();
@@ -479,7 +481,7 @@ public interface Container extends Compute {
 	 * @see #setWorking_dir(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Working_dir()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!working_dir'"
+	 *        annotation="OCCIE2Ecore description='Working directory'"
 	 * @generated
 	 */
 	String getWorking_dir();
@@ -506,7 +508,7 @@ public interface Container extends Compute {
 	 * @see #setEntrypoint(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Entrypoint()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!entrypoint'"
+	 *        annotation="OCCIE2Ecore description='Entry point'"
 	 * @generated
 	 */
 	String getEntrypoint();
@@ -533,7 +535,7 @@ public interface Container extends Compute {
 	 * @see #setUser(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_User()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!user'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getUser();
@@ -560,7 +562,7 @@ public interface Container extends Compute {
 	 * @see #setDomainname(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Domainname()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!domainname'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getDomainname();
@@ -587,7 +589,7 @@ public interface Container extends Compute {
 	 * @see #setMem_limit(int)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Mem_limit()
 	 * @model dataType="org.occiware.clouddesigner.occi.Number"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!mem_limit'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	int getMem_limit();
@@ -614,7 +616,7 @@ public interface Container extends Compute {
 	 * @see #setMemory_swap(int)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Memory_swap()
 	 * @model dataType="org.occiware.clouddesigner.occi.Number"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!memory_swap'"
+	 *        annotation="OCCIE2Ecore description='Memory swap limit'"
 	 * @generated
 	 */
 	int getMemory_swap();
@@ -642,7 +644,7 @@ public interface Container extends Compute {
 	 * @see #setPrivileged(boolean)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Privileged()
 	 * @model default="false" dataType="org.occiware.clouddesigner.occi.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!privileged'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	boolean isPrivileged();
@@ -669,7 +671,7 @@ public interface Container extends Compute {
 	 * @see #setRestart(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Restart()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!restart'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getRestart();
@@ -696,7 +698,7 @@ public interface Container extends Compute {
 	 * @see #setStdin_open(boolean)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Stdin_open()
 	 * @model dataType="org.occiware.clouddesigner.occi.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!stdin_open'"
+	 *        annotation="OCCIE2Ecore description=''"
 	 * @generated
 	 */
 	boolean isStdin_open();
@@ -724,7 +726,7 @@ public interface Container extends Compute {
 	 * @see #setInteractive(boolean)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Interactive()
 	 * @model default="false" dataType="org.occiware.clouddesigner.occi.Boolean" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!interactive'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	boolean isInteractive();
@@ -752,7 +754,7 @@ public interface Container extends Compute {
 	 * @see #setTty(boolean)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Tty()
 	 * @model default="false" dataType="org.occiware.clouddesigner.occi.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!tty'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	boolean isTty();
@@ -780,7 +782,7 @@ public interface Container extends Compute {
 	 * @see #setCpu_shares(int)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Cpu_shares()
 	 * @model default="0" dataType="org.occiware.clouddesigner.occi.Number"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!cpu_shares'"
+	 *        annotation="OCCIE2Ecore description='CPU shares for this Docker container'"
 	 * @generated
 	 */
 	int getCpu_shares();
@@ -807,7 +809,7 @@ public interface Container extends Compute {
 	 * @see #setPid(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Pid()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!pid'"
+	 *        annotation="OCCIE2Ecore description='\'\' or \'host\''"
 	 * @generated
 	 */
 	String getPid();
@@ -834,7 +836,7 @@ public interface Container extends Compute {
 	 * @see #setIpc(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Ipc()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!ipc'"
+	 *        annotation="OCCIE2Ecore description='\'\', \'host\' or \'container:[name:id]\''"
 	 * @generated
 	 */
 	String getIpc();
@@ -861,7 +863,7 @@ public interface Container extends Compute {
 	 * @see #setAdd_host(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Add_host()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!add_host'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getAdd_host();
@@ -888,7 +890,7 @@ public interface Container extends Compute {
 	 * @see #setMac_address(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Mac_address()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!mac_address'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getMac_address();
@@ -915,7 +917,7 @@ public interface Container extends Compute {
 	 * @see #setRm(boolean)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Rm()
 	 * @model dataType="org.occiware.clouddesigner.occi.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!rm'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	boolean isRm();
@@ -942,7 +944,7 @@ public interface Container extends Compute {
 	 * @see #setSecurity_opt(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Security_opt()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!security_opt'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getSecurity_opt();
@@ -969,7 +971,7 @@ public interface Container extends Compute {
 	 * @see #setDevice(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Device()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!device'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getDevice();
@@ -996,7 +998,7 @@ public interface Container extends Compute {
 	 * @see #setLxc_conf(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Lxc_conf()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!lxc_conf'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getLxc_conf();
@@ -1023,7 +1025,7 @@ public interface Container extends Compute {
 	 * @see #setCpuset(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Cpuset()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!cpuset'"
+	 *        annotation="OCCIE2Ecore description=''"
 	 * @generated
 	 */
 	String getCpuset();
@@ -1051,7 +1053,7 @@ public interface Container extends Compute {
 	 * @see #setPublish_all(boolean)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Publish_all()
 	 * @model default="false" dataType="org.occiware.clouddesigner.occi.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!publish_all'"
+	 *        annotation="OCCIE2Ecore description='Publish all exposed ports to random ports on the host interfaces'"
 	 * @generated
 	 */
 	boolean isPublish_all();
@@ -1079,7 +1081,7 @@ public interface Container extends Compute {
 	 * @see #setRead_only(boolean)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Read_only()
 	 * @model default="false" dataType="org.occiware.clouddesigner.occi.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!read_only'"
+	 *        annotation="OCCIE2Ecore description='Mount the container\'s root filesystem as read only'"
 	 * @generated
 	 */
 	boolean isRead_only();
@@ -1097,7 +1099,7 @@ public interface Container extends Compute {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!create()'"
+	 * @model annotation="OCCIE2Ecore title='null'"
 	 * @generated
 	 */
 	void create();
@@ -1105,7 +1107,23 @@ public interface Container extends Compute {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!run()'"
+	 * @model annotation="OCCIE2Ecore title='null'"
+	 * @generated
+	 */
+	void start();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model annotation="OCCIE2Ecore title='null'"
+	 * @generated
+	 */
+	void stop();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model annotation="OCCIE2Ecore title='null'"
 	 * @generated
 	 */
 	void run();
@@ -1113,7 +1131,7 @@ public interface Container extends Compute {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!pause()'"
+	 * @model annotation="OCCIE2Ecore title='null'"
 	 * @generated
 	 */
 	void pause();
@@ -1121,7 +1139,7 @@ public interface Container extends Compute {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!unpause()'"
+	 * @model annotation="OCCIE2Ecore title=''"
 	 * @generated
 	 */
 	void unpause();
@@ -1130,25 +1148,10 @@ public interface Container extends Compute {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model signalDataType="org.occiware.clouddesigner.occi.String" signalRequired="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Container!kill(String)'"
+	 *        signalAnnotation="OCCIE2Ecore description='null'"
+	 *        annotation="OCCIE2Ecore title='null'"
 	 * @generated
 	 */
 	void kill(String signal);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='/**\n * \n * inv ContainerLinkAliasUnique:\n *   let\n *     severity : Integer[1] = \'Container::ContainerLinkAliasUnique\'.getSeverity()\n *   in\n *     if severity <= 0\n *     then true\n *     else\n *       let\n *         status : Boolean[1] = links->select(oclIsKindOf(Link))\n *         ->isUnique(oclAsType(Link).alias)\n *       in\n *         \'Container::ContainerLinkAliasUnique\'.logDiagnostic(self, diagnostics, context, severity, status, 0)\n *     endif\n \052/\nfinal /*@NonNull\052/ /*@NonInvalid\052/ <%org.eclipse.ocl.pivot.evaluation.Evaluator%> evaluator = <%org.eclipse.ocl.pivot.internal.utilities.PivotUtilInternal%>.getEvaluator(this);\nfinal /*@NonNull\052/ /*@NonInvalid\052/ <%org.eclipse.ocl.pivot.ids.IdResolver%> idResolver = evaluator.getIdResolver();\nfinal /*@NonNull\052/ /*@NonInvalid\052/ <%org.eclipse.ocl.pivot.values.IntegerValue%> severity_0 = <%org.eclipse.ocl.pivot.utilities.ClassUtil%>.nonNullState(<%org.eclipse.ocl.pivot.library.string.CGStringGetSeverityOperation%>.INSTANCE.evaluate(evaluator, <%org.occiware.clouddesigner.occi.docker.DockerTables%>.STR_Container_c_c_ContainerLinkAliasUnique));\nfinal /*@NonInvalid\052/ boolean le = <%org.eclipse.ocl.pivot.utilities.ClassUtil%>.nonNullState(<%org.eclipse.ocl.pivot.library.oclany.OclComparableLessThanEqualOperation%>.INSTANCE.evaluate(evaluator, severity_0, <%org.occiware.clouddesigner.occi.docker.DockerTables%>.INT_0).booleanValue());\n/*@NonInvalid\052/ boolean symbol_0;\nif (le) {\n    symbol_0 = <%org.eclipse.ocl.pivot.utilities.ValueUtil%>.TRUE_VALUE;\n}\nelse {\n    /*@NonNull\052/ /*@Caught\052/ <%java.lang.Object%> CAUGHT_status;\n    try {\n        final /*@NonNull\052/ /*@Thrown\052/ <%java.util.List%><<%org.occiware.clouddesigner.occi.Link%>> links = this.getLinks();\n        final /*@NonNull\052/ /*@Thrown\052/ <%org.eclipse.ocl.pivot.values.OrderedSetValue%> BOXED_links = idResolver.createOrderedSetOfAll(<%org.occiware.clouddesigner.occi.docker.DockerTables%>.ORD_CLSSid_Link, links);\n        /*@NonNull\052/ /*@Thrown\052/ <%org.eclipse.ocl.pivot.values.OrderedSetValue%>.Accumulator accumulator = <%org.eclipse.ocl.pivot.utilities.ValueUtil%>.createOrderedSetAccumulatorValue(<%org.occiware.clouddesigner.occi.docker.DockerTables%>.ORD_CLSSid_Link);\n        /*@Nullable\052/ <%java.util.Iterator%><?> ITERATOR__1 = BOXED_links.iterator();\n        /*@NonNull\052/ /*@Thrown\052/ <%org.eclipse.ocl.pivot.values.OrderedSetValue%> select;\n        while (true) {\n            if (!ITERATOR__1.hasNext()) {\n                select = accumulator;\n                break;\n            }\n            /*@Nullable\052/ /*@NonInvalid\052/ <%org.occiware.clouddesigner.occi.Link%> _1 = (<%org.occiware.clouddesigner.occi.Link%>)ITERATOR__1.next();\n            /**\n             * oclIsKindOf(Link)\n             \052/\n            final /*@NonNull\052/ /*@NonInvalid\052/ <%org.eclipse.ocl.pivot.Class%> TYP_docker_c_c_Link_0 = idResolver.getClass(<%org.occiware.clouddesigner.occi.docker.DockerTables%>.CLSSid_Link_0, null);\n            final /*@Thrown\052/ boolean oclIsKindOf = <%org.eclipse.ocl.pivot.utilities.ClassUtil%>.nonNullState(<%org.eclipse.ocl.pivot.library.oclany.OclAnyOclIsKindOfOperation%>.INSTANCE.evaluate(evaluator, _1, TYP_docker_c_c_Link_0).booleanValue());\n            //\n            if (oclIsKindOf == <%org.eclipse.ocl.pivot.utilities.ValueUtil%>.TRUE_VALUE) {\n                accumulator.add(_1);\n            }\n        }\n        /*@NonNull\052/ /*@Thrown\052/ <%org.eclipse.ocl.pivot.values.SetValue%>.Accumulator accumulator_0 = <%org.eclipse.ocl.pivot.utilities.ValueUtil%>.createSetAccumulatorValue(<%org.occiware.clouddesigner.occi.docker.DockerTables%>.ORD_CLSSid_Link);\n        /*@Nullable\052/ <%java.util.Iterator%><?> ITERATOR__1_0 = select.iterator();\n        /*@Thrown\052/ boolean status;\n        while (true) {\n            if (!ITERATOR__1_0.hasNext()) {\n                status = <%org.eclipse.ocl.pivot.utilities.ValueUtil%>.TRUE_VALUE;\n                break;\n            }\n            /*@Nullable\052/ /*@NonInvalid\052/ <%org.occiware.clouddesigner.occi.Link%> _1_0 = (<%org.occiware.clouddesigner.occi.Link%>)ITERATOR__1_0.next();\n            /**\n             * oclAsType(Link).alias\n             \052/\n            final /*@NonNull\052/ /*@NonInvalid\052/ <%org.eclipse.ocl.pivot.Class%> TYP_docker_c_c_Link_1 = idResolver.getClass(<%org.occiware.clouddesigner.occi.docker.DockerTables%>.CLSSid_Link_0, null);\n            final /*@NonNull\052/ /*@Thrown\052/ <%org.occiware.clouddesigner.occi.docker.Link%> oclAsType = <%org.eclipse.ocl.pivot.utilities.ClassUtil%>.nonNullState((<%org.occiware.clouddesigner.occi.docker.Link%>)<%org.eclipse.ocl.pivot.library.oclany.OclAnyOclAsTypeOperation%>.INSTANCE.evaluate(evaluator, _1_0, TYP_docker_c_c_Link_1));\n            final /*@Nullable\052/ /*@Thrown\052/ <%java.lang.String%> alias = oclAsType.getAlias();\n            //\n            if (accumulator_0.includes(alias) == <%org.eclipse.ocl.pivot.utilities.ValueUtil%>.TRUE_VALUE) {\n                status = <%org.eclipse.ocl.pivot.utilities.ValueUtil%>.FALSE_VALUE;\t\t\t// Abort after second find\n                break;\n            }\n            else {\n                accumulator_0.add(alias);\n            }\n        }\n        CAUGHT_status = status;\n    }\n    catch (<%java.lang.Exception%> e) {\n        CAUGHT_status = <%org.eclipse.ocl.pivot.utilities.ValueUtil%>.createInvalidValue(e);\n    }\n    final /*@NonInvalid\052/ boolean logDiagnostic = <%org.eclipse.ocl.pivot.utilities.ClassUtil%>.nonNullState(<%org.eclipse.ocl.pivot.library.string.CGStringLogDiagnosticOperation%>.INSTANCE.evaluate(evaluator, <%org.eclipse.ocl.pivot.ids.TypeId%>.BOOLEAN, <%org.occiware.clouddesigner.occi.docker.DockerTables%>.STR_Container_c_c_ContainerLinkAliasUnique, this, diagnostics, context, severity_0, CAUGHT_status, <%org.occiware.clouddesigner.occi.docker.DockerTables%>.INT_0).booleanValue());\n    symbol_0 = logDiagnostic;\n}\nreturn Boolean.TRUE == symbol_0;'"
-	 * @generated
-	 */
-	boolean ContainerLinkAliasUnique(DiagnosticChain diagnostics, Map<Object, Object> context);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='/**\n * \n * inv ContainerNoCycleBetweenContainers:\n *   let\n *     severity : Integer[1] = \'Container::ContainerNoCycleBetweenContainers\'.getSeverity()\n *   in\n *     if severity <= 0\n *     then true\n *     else\n *       let\n *         status : Boolean[1] = links->closure(\n *           links->select(\n *             oclIsKindOf(Link) or\n *             oclIsKindOf(Volumesfrom))\n *           .target.links->select(\n *             oclIsKindOf(Link) or\n *             oclIsKindOf(Volumesfrom)))\n *         .target->excludes(self)\n *       in\n *         \'Container::ContainerNoCycleBetweenContainers\'.logDiagnostic(self, diagnostics, context, severity, status, 0)\n *     endif\n \052/\nfinal /*@NonNull\052/ /*@NonInvalid\052/ <%org.eclipse.ocl.pivot.evaluation.Evaluator%> evaluator = <%org.eclipse.ocl.pivot.internal.utilities.PivotUtilInternal%>.getEvaluator(this);\nfinal /*@NonNull\052/ /*@NonInvalid\052/ <%org.eclipse.ocl.pivot.ids.IdResolver%> idResolver = evaluator.getIdResolver();\nfinal /*@NonNull\052/ /*@NonInvalid\052/ <%org.eclipse.ocl.pivot.StandardLibrary%> standardLibrary = idResolver.getStandardLibrary();\nfinal /*@NonNull\052/ /*@NonInvalid\052/ <%org.eclipse.ocl.pivot.values.IntegerValue%> severity_0 = <%org.eclipse.ocl.pivot.utilities.ClassUtil%>.nonNullState(<%org.eclipse.ocl.pivot.library.string.CGStringGetSeverityOperation%>.INSTANCE.evaluate(evaluator, <%org.occiware.clouddesigner.occi.docker.DockerTables%>.STR_Container_c_c_ContainerNoCycleBetweenContainers));\nfinal /*@NonInvalid\052/ boolean le = <%org.eclipse.ocl.pivot.utilities.ClassUtil%>.nonNullState(<%org.eclipse.ocl.pivot.library.oclany.OclComparableLessThanEqualOperation%>.INSTANCE.evaluate(evaluator, severity_0, <%org.occiware.clouddesigner.occi.docker.DockerTables%>.INT_0).booleanValue());\n/*@NonInvalid\052/ boolean symbol_0;\nif (le) {\n    symbol_0 = <%org.eclipse.ocl.pivot.utilities.ValueUtil%>.TRUE_VALUE;\n}\nelse {\n    /*@NonNull\052/ /*@Caught\052/ <%java.lang.Object%> CAUGHT_status;\n    try {\n        final /*@NonNull\052/ /*@Thrown\052/ <%java.util.List%><<%org.occiware.clouddesigner.occi.Link%>> links = this.getLinks();\n        final /*@NonNull\052/ /*@Thrown\052/ <%org.eclipse.ocl.pivot.values.OrderedSetValue%> BOXED_links = idResolver.createOrderedSetOfAll(<%org.occiware.clouddesigner.occi.docker.DockerTables%>.ORD_CLSSid_Link, links);\n        final /*@NonNull\052/ <%org.eclipse.ocl.pivot.Class%> TYPE_closure_0 = evaluator.getStaticTypeOf(BOXED_links);\n        final /*@NonNull\052/ <%org.eclipse.ocl.pivot.library.LibraryIteration%> IMPL_closure_0 = (<%org.eclipse.ocl.pivot.library.LibraryIteration%>)TYPE_closure_0.lookupImplementation(standardLibrary, <%org.eclipse.ocl.pivot.oclstdlib.OCLstdlibTables%>.Operations._OrderedSet__closure);\n        final /*@NonNull\052/ Object ACC_closure_0 = IMPL_closure_0.createAccumulatorValue(evaluator, <%org.occiware.clouddesigner.occi.docker.DockerTables%>.ORD_CLSSid_Link, <%org.occiware.clouddesigner.occi.docker.DockerTables%>.SEQ_CLSSid_Link);\n        /**\n         * Implementation of the iterator body.\n         \052/\n        final /*@NonNull\052/ <%org.eclipse.ocl.pivot.library.AbstractBinaryOperation%> BODY_closure_0 = new <%org.eclipse.ocl.pivot.library.AbstractBinaryOperation%>()\n        {\n            /**\n             * \n             * links->select(oclIsKindOf(Link) or oclIsKindOf(Volumesfrom))\n             * .target.links->select(\n             *   oclIsKindOf(Link) or\n             *   oclIsKindOf(Volumesfrom))\n             \052/\n            @Override\n            public /*@Nullable\052/ Object evaluate(final /*@NonNull\052/ <%org.eclipse.ocl.pivot.evaluation.Evaluator%> evaluator, final /*@NonNull\052/ <%org.eclipse.ocl.pivot.ids.TypeId%> typeId, final /*@Nullable\052/ Object BOXED_links, final /*@Nullable\052/ /*@NonInvalid\052/ <%java.lang.Object%> _1_3) {\n                /*@NonNull\052/ /*@Thrown\052/ <%org.eclipse.ocl.pivot.values.OrderedSetValue%>.Accumulator accumulator = <%org.eclipse.ocl.pivot.utilities.ValueUtil%>.createOrderedSetAccumulatorValue(<%org.occiware.clouddesigner.occi.docker.DockerTables%>.ORD_CLSSid_Link);\n                /*@Nullable\052/ <%java.util.Iterator%><?> ITERATOR__1 = BOXED_links.iterator();\n                /*@NonNull\052/ /*@Thrown\052/ <%org.eclipse.ocl.pivot.values.OrderedSetValue%> select_0;\n                while (true) {\n                    if (!ITERATOR__1.hasNext()) {\n                        select_0 = accumulator;\n                        break;\n                    }\n                    /*@Nullable\052/ /*@NonInvalid\052/ <%org.occiware.clouddesigner.occi.Link%> _1 = (<%org.occiware.clouddesigner.occi.Link%>)ITERATOR__1.next();\n                    /**\n                     * oclIsKindOf(Link) or oclIsKindOf(Volumesfrom)\n                     \052/\n                    /*@NonNull\052/ /*@Caught\052/ <%java.lang.Object%> CAUGHT_oclIsKindOf;\n                    try {\n                        final /*@NonNull\052/ /*@NonInvalid\052/ <%org.eclipse.ocl.pivot.Class%> TYP_docker_c_c_Link = idResolver.getClass(<%org.occiware.clouddesigner.occi.docker.DockerTables%>.CLSSid_Link_0, null);\n                        final /*@Thrown\052/ boolean oclIsKindOf = <%org.eclipse.ocl.pivot.utilities.ClassUtil%>.nonNullState(<%org.eclipse.ocl.pivot.library.oclany.OclAnyOclIsKindOfOperation%>.INSTANCE.evaluate(evaluator, _1, TYP_docker_c_c_Link).booleanValue());\n                        CAUGHT_oclIsKindOf = oclIsKindOf;\n                    }\n                    catch (<%java.lang.Exception%> e) {\n                        CAUGHT_oclIsKindOf = <%org.eclipse.ocl.pivot.utilities.ValueUtil%>.createInvalidValue(e);\n                    }\n                    /*@NonNull\052/ /*@Caught\052/ <%java.lang.Object%> CAUGHT_oclIsKindOf_0;\n                    try {\n                        final /*@NonNull\052/ /*@NonInvalid\052/ <%org.eclipse.ocl.pivot.Class%> TYP_docker_c_c_Volumesfrom = idResolver.getClass(<%org.occiware.clouddesigner.occi.docker.DockerTables%>.CLSSid_Volumesfrom, null);\n                        final /*@Thrown\052/ boolean oclIsKindOf_0 = <%org.eclipse.ocl.pivot.utilities.ClassUtil%>.nonNullState(<%org.eclipse.ocl.pivot.library.oclany.OclAnyOclIsKindOfOperation%>.INSTANCE.evaluate(evaluator, _1, TYP_docker_c_c_Volumesfrom).booleanValue());\n                        CAUGHT_oclIsKindOf_0 = oclIsKindOf_0;\n                    }\n                    catch (<%java.lang.Exception%> e) {\n                        CAUGHT_oclIsKindOf_0 = <%org.eclipse.ocl.pivot.utilities.ValueUtil%>.createInvalidValue(e);\n                    }\n                    final /*@Nullable\052/ /*@Thrown\052/ <%java.lang.Boolean%> or = <%org.eclipse.ocl.pivot.library.logical.BooleanOrOperation%>.INSTANCE.evaluate(CAUGHT_oclIsKindOf, CAUGHT_oclIsKindOf_0);\n                    if (or == null) {\n                        throw new <%org.eclipse.ocl.pivot.values.InvalidValueException%>(\"Null body for \\\'OrderedSet(T).select(OrderedSet.T[?] | Lambda T() : Boolean[1]) : OrderedSet(T)\\\'\");\n                    }\n                    //\n                    if (or == <%org.eclipse.ocl.pivot.utilities.ValueUtil%>.TRUE_VALUE) {\n                        accumulator.add(_1);\n                    }\n                }\n                /*@NonNull\052/ /*@Thrown\052/ <%org.eclipse.ocl.pivot.values.SequenceValue%>.Accumulator accumulator_0 = <%org.eclipse.ocl.pivot.utilities.ValueUtil%>.createSequenceAccumulatorValue(<%org.occiware.clouddesigner.occi.docker.DockerTables%>.SEQ_CLSSid_Resource);\n                /*@Nullable\052/ <%java.util.Iterator%><?> ITERATOR__1_0 = select_0.iterator();\n                /*@NonNull\052/ /*@Thrown\052/ <%org.eclipse.ocl.pivot.values.SequenceValue%> collect_1;\n                while (true) {\n                    if (!ITERATOR__1_0.hasNext()) {\n                        collect_1 = accumulator_0;\n                        break;\n                    }\n                    /*@Nullable\052/ /*@NonInvalid\052/ <%org.occiware.clouddesigner.occi.Link%> _1_0 = (<%org.occiware.clouddesigner.occi.Link%>)ITERATOR__1_0.next();\n                    /**\n                     * target\n                     \052/\n                    if (_1_0 == null) {\n                        throw new <%org.eclipse.ocl.pivot.values.InvalidValueException%>(\"Null source for \\\'\\\'http://schemas.ogf.org/occi\\\'::Link::target\\\'\");\n                    }\n                    final /*@NonNull\052/ /*@Thrown\052/ <%org.occiware.clouddesigner.occi.Resource%> target = _1_0.getTarget();\n                    //\n                    accumulator_0.add(target);\n                }\n                /*@NonNull\052/ /*@Thrown\052/ <%org.eclipse.ocl.pivot.values.SequenceValue%>.Accumulator accumulator_1 = <%org.eclipse.ocl.pivot.utilities.ValueUtil%>.createSequenceAccumulatorValue(<%org.occiware.clouddesigner.occi.docker.DockerTables%>.SEQ_CLSSid_Link);\n                /*@NonNull\052/ <%java.util.Iterator%><?> ITERATOR__1_1 = collect_1.iterator();\n                /*@NonNull\052/ /*@Thrown\052/ <%org.eclipse.ocl.pivot.values.SequenceValue%> collect_0;\n                while (true) {\n                    if (!ITERATOR__1_1.hasNext()) {\n                        collect_0 = accumulator_1;\n                        break;\n                    }\n                    /*@NonNull\052/ /*@NonInvalid\052/ <%org.occiware.clouddesigner.occi.Resource%> _1_1 = (<%org.occiware.clouddesigner.occi.Resource%>)ITERATOR__1_1.next();\n                    /**\n                     * links\n                     \052/\n                    final /*@NonNull\052/ /*@Thrown\052/ <%java.util.List%><<%org.occiware.clouddesigner.occi.Link%>> links_1 = _1_1.getLinks();\n                    final /*@NonNull\052/ /*@Thrown\052/ <%org.eclipse.ocl.pivot.values.OrderedSetValue%> BOXED_links_1 = idResolver.createOrderedSetOfAll(<%org.occiware.clouddesigner.occi.docker.DockerTables%>.ORD_CLSSid_Link, links_1);\n                    //\n                    for (Object value : BOXED_links_1.flatten().getElements()) {\n                        accumulator_1.add(value);\n                    }\n                }\n                /*@NonNull\052/ /*@Thrown\052/ <%org.eclipse.ocl.pivot.values.SequenceValue%>.Accumulator accumulator_2 = <%org.eclipse.ocl.pivot.utilities.ValueUtil%>.createSequenceAccumulatorValue(<%org.occiware.clouddesigner.occi.docker.DockerTables%>.SEQ_CLSSid_Link);\n                /*@Nullable\052/ <%java.util.Iterator%><?> ITERATOR__1_2 = collect_0.iterator();\n                /*@NonNull\052/ /*@Thrown\052/ <%org.eclipse.ocl.pivot.values.SequenceValue%> select;\n                while (true) {\n                    if (!ITERATOR__1_2.hasNext()) {\n                        select = accumulator_2;\n                        break;\n                    }\n                    /*@Nullable\052/ /*@NonInvalid\052/ <%org.occiware.clouddesigner.occi.Link%> _1_2 = (<%org.occiware.clouddesigner.occi.Link%>)ITERATOR__1_2.next();\n                    /**\n                     * oclIsKindOf(Link) or oclIsKindOf(Volumesfrom)\n                     \052/\n                    /*@NonNull\052/ /*@Caught\052/ <%java.lang.Object%> CAUGHT_oclIsKindOf_1;\n                    try {\n                        final /*@NonNull\052/ /*@NonInvalid\052/ <%org.eclipse.ocl.pivot.Class%> TYP_docker_c_c_Link_0 = idResolver.getClass(<%org.occiware.clouddesigner.occi.docker.DockerTables%>.CLSSid_Link_0, null);\n                        final /*@Thrown\052/ boolean oclIsKindOf_1 = <%org.eclipse.ocl.pivot.utilities.ClassUtil%>.nonNullState(<%org.eclipse.ocl.pivot.library.oclany.OclAnyOclIsKindOfOperation%>.INSTANCE.evaluate(evaluator, _1_2, TYP_docker_c_c_Link_0).booleanValue());\n                        CAUGHT_oclIsKindOf_1 = oclIsKindOf_1;\n                    }\n                    catch (<%java.lang.Exception%> e) {\n                        CAUGHT_oclIsKindOf_1 = <%org.eclipse.ocl.pivot.utilities.ValueUtil%>.createInvalidValue(e);\n                    }\n                    /*@NonNull\052/ /*@Caught\052/ <%java.lang.Object%> CAUGHT_oclIsKindOf_2;\n                    try {\n                        final /*@NonNull\052/ /*@NonInvalid\052/ <%org.eclipse.ocl.pivot.Class%> TYP_docker_c_c_Volumesfrom_0 = idResolver.getClass(<%org.occiware.clouddesigner.occi.docker.DockerTables%>.CLSSid_Volumesfrom, null);\n                        final /*@Thrown\052/ boolean oclIsKindOf_2 = <%org.eclipse.ocl.pivot.utilities.ClassUtil%>.nonNullState(<%org.eclipse.ocl.pivot.library.oclany.OclAnyOclIsKindOfOperation%>.INSTANCE.evaluate(evaluator, _1_2, TYP_docker_c_c_Volumesfrom_0).booleanValue());\n                        CAUGHT_oclIsKindOf_2 = oclIsKindOf_2;\n                    }\n                    catch (<%java.lang.Exception%> e) {\n                        CAUGHT_oclIsKindOf_2 = <%org.eclipse.ocl.pivot.utilities.ValueUtil%>.createInvalidValue(e);\n                    }\n                    final /*@Nullable\052/ /*@Thrown\052/ <%java.lang.Boolean%> or_0 = <%org.eclipse.ocl.pivot.library.logical.BooleanOrOperation%>.INSTANCE.evaluate(CAUGHT_oclIsKindOf_1, CAUGHT_oclIsKindOf_2);\n                    if (or_0 == null) {\n                        throw new <%org.eclipse.ocl.pivot.values.InvalidValueException%>(\"Null body for \\\'Sequence(T).select(Sequence.T[?] | Lambda T() : Boolean[1]) : Sequence(T)\\\'\");\n                    }\n                    //\n                    if (or_0 == <%org.eclipse.ocl.pivot.utilities.ValueUtil%>.TRUE_VALUE) {\n                        accumulator_2.add(_1_2);\n                    }\n                }\n                return select;\n            }\n        };\n        final /*@NonNull\052/  <%org.eclipse.ocl.pivot.internal.library.executor.ExecutorSingleIterationManager%> MGR_closure_0 = new <%org.eclipse.ocl.pivot.internal.library.executor.ExecutorSingleIterationManager%>(evaluator, <%org.occiware.clouddesigner.occi.docker.DockerTables%>.ORD_CLSSid_Link, BODY_closure_0, BOXED_links, ACC_closure_0);\n        final /*@NonNull\052/ /*@Thrown\052/ <%org.eclipse.ocl.pivot.values.OrderedSetValue%> closure = <%org.eclipse.ocl.pivot.utilities.ClassUtil%>.nonNullState((<%org.eclipse.ocl.pivot.values.OrderedSetValue%>)IMPL_closure_0.evaluateIteration(MGR_closure_0));\n        /*@NonNull\052/ /*@Thrown\052/ <%org.eclipse.ocl.pivot.values.SequenceValue%>.Accumulator accumulator_3 = <%org.eclipse.ocl.pivot.utilities.ValueUtil%>.createSequenceAccumulatorValue(<%org.occiware.clouddesigner.occi.docker.DockerTables%>.SEQ_CLSSid_Resource);\n        /*@Nullable\052/ <%java.util.Iterator%><?> ITERATOR__1_4 = closure.iterator();\n        /*@NonNull\052/ /*@Thrown\052/ <%org.eclipse.ocl.pivot.values.SequenceValue%> collect;\n        while (true) {\n            if (!ITERATOR__1_4.hasNext()) {\n                collect = accumulator_3;\n                break;\n            }\n            /*@Nullable\052/ /*@NonInvalid\052/ <%org.occiware.clouddesigner.occi.Link%> _1_4 = (<%org.occiware.clouddesigner.occi.Link%>)ITERATOR__1_4.next();\n            /**\n             * target\n             \052/\n            if (_1_4 == null) {\n                throw new <%org.eclipse.ocl.pivot.values.InvalidValueException%>(\"Null source for \\\'\\\'http://schemas.ogf.org/occi\\\'::Link::target\\\'\");\n            }\n            final /*@NonNull\052/ /*@Thrown\052/ <%org.occiware.clouddesigner.occi.Resource%> target_0 = _1_4.getTarget();\n            //\n            accumulator_3.add(target_0);\n        }\n        final /*@Thrown\052/ boolean status = <%org.eclipse.ocl.pivot.utilities.ClassUtil%>.nonNullState(<%org.eclipse.ocl.pivot.library.collection.CollectionExcludesOperation%>.INSTANCE.evaluate(collect, this).booleanValue());\n        CAUGHT_status = status;\n    }\n    catch (<%java.lang.Exception%> e) {\n        CAUGHT_status = <%org.eclipse.ocl.pivot.utilities.ValueUtil%>.createInvalidValue(e);\n    }\n    final /*@NonInvalid\052/ boolean logDiagnostic = <%org.eclipse.ocl.pivot.utilities.ClassUtil%>.nonNullState(<%org.eclipse.ocl.pivot.library.string.CGStringLogDiagnosticOperation%>.INSTANCE.evaluate(evaluator, <%org.eclipse.ocl.pivot.ids.TypeId%>.BOOLEAN, <%org.occiware.clouddesigner.occi.docker.DockerTables%>.STR_Container_c_c_ContainerNoCycleBetweenContainers, this, diagnostics, context, severity_0, CAUGHT_status, <%org.occiware.clouddesigner.occi.docker.DockerTables%>.INT_0).booleanValue());\n    symbol_0 = logDiagnostic;\n}\nreturn Boolean.TRUE == symbol_0;'"
-	 * @generated
-	 */
-	boolean ContainerNoCycleBetweenContainers(DiagnosticChain diagnostics, Map<Object, Object> context);
 
 } // Container

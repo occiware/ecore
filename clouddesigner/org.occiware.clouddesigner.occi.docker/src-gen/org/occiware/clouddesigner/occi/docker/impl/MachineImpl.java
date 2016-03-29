@@ -103,71 +103,6 @@ public class MachineImpl extends ComputeImpl implements Machine {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean MachineNameUnique(final DiagnosticChain diagnostics, final Map<Object, Object> context) {
-		/**
-		 * 
-		 * inv MachineNameUnique:
-		 *   let severity : Integer[1] = 'Machine::MachineNameUnique'.getSeverity()
-		 *   in
-		 *     if severity <= 0
-		 *     then true
-		 *     else
-		 *       let status : Boolean[1] = Machine.allInstances()->isUnique(name)
-		 *       in
-		 *         'Machine::MachineNameUnique'.logDiagnostic(self, diagnostics, context, severity, status, 0)
-		 *     endif
-		 */
-		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
-		final /*@NonNull*/ /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.IdResolver idResolver = evaluator.getIdResolver();
-		final /*@NonNull*/ /*@NonInvalid*/ IntegerValue severity_0 = ClassUtil.nonNullState(CGStringGetSeverityOperation.INSTANCE.evaluate(evaluator, DockerTables.STR_Machine_c_c_MachineNameUnique));
-		final /*@NonInvalid*/ boolean le = ClassUtil.nonNullState(OclComparableLessThanEqualOperation.INSTANCE.evaluate(evaluator, severity_0, DockerTables.INT_0).booleanValue());
-		/*@NonInvalid*/ boolean symbol_0;
-		if (le) {
-		    symbol_0 = ValueUtil.TRUE_VALUE;
-		}
-		else {
-		    /*@NonNull*/ /*@Caught*/ Object CAUGHT_status;
-		    try {
-		        final /*@NonNull*/ /*@NonInvalid*/ org.eclipse.ocl.pivot.Class TYP_docker_c_c_Machine = idResolver.getClass(DockerTables.CLSSid_Machine, null);
-		        final /*@NonNull*/ /*@NonInvalid*/ org.eclipse.ocl.pivot.values.SetValue allInstances = ClassUtil.nonNullState(org.eclipse.ocl.pivot.library.classifier.ClassifierAllInstancesOperation.INSTANCE.evaluate(evaluator, DockerTables.SET_CLSSid_Machine, TYP_docker_c_c_Machine));
-		        /*@NonNull*/ /*@Thrown*/ org.eclipse.ocl.pivot.values.SetValue.Accumulator accumulator = ValueUtil.createSetAccumulatorValue(DockerTables.SET_CLSSid_Machine);
-		        /*@NonNull*/ Iterator<?> ITERATOR__1 = allInstances.iterator();
-		        /*@Thrown*/ boolean status;
-		        while (true) {
-		            if (!ITERATOR__1.hasNext()) {
-		                status = ValueUtil.TRUE_VALUE;
-		                break;
-		            }
-		            /*@NonNull*/ /*@NonInvalid*/ Machine _1 = (Machine)ITERATOR__1.next();
-		            /**
-		             * name
-		             */
-		            final /*@NonNull*/ /*@Thrown*/ String name = _1.getName();
-		            //
-		            if (accumulator.includes(name) == ValueUtil.TRUE_VALUE) {
-		                status = ValueUtil.FALSE_VALUE;			// Abort after second find
-		                break;
-		            }
-		            else {
-		                accumulator.add(name);
-		            }
-		        }
-		        CAUGHT_status = status;
-		    }
-		    catch (Exception e) {
-		        CAUGHT_status = ValueUtil.createInvalidValue(e);
-		    }
-		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, DockerTables.STR_Machine_c_c_MachineNameUnique, this, diagnostics, context, severity_0, CAUGHT_status, DockerTables.INT_0).booleanValue());
-		    symbol_0 = logDiagnostic;
-		}
-		return Boolean.TRUE == symbol_0;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -219,21 +154,6 @@ public class MachineImpl extends ComputeImpl implements Machine {
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	@SuppressWarnings("unchecked")
-	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
-		switch (operationID) {
-			case DockerPackage.MACHINE___MACHINE_NAME_UNIQUE__DIAGNOSTICCHAIN_MAP:
-				return MachineNameUnique((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
-		}
-		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

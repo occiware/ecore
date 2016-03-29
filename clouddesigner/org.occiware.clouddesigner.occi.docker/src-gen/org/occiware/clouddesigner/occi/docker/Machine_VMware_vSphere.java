@@ -27,7 +27,7 @@ package org.occiware.clouddesigner.occi.docker;
  * </ul>
  *
  * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_vSphere()
- * @model
+ * @model annotation="OCCIE2Ecore title='Machine on VMware vSphere'"
  * @generated
  */
 public interface Machine_VMware_vSphere extends Machine {
@@ -43,7 +43,7 @@ public interface Machine_VMware_vSphere extends Machine {
 	 * @see #setUsername(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_vSphere_Username()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_VMware_vSphere!username'"
+	 *        annotation="OCCIE2Ecore description='vSphere Username'"
 	 * @generated
 	 */
 	String getUsername();
@@ -70,7 +70,7 @@ public interface Machine_VMware_vSphere extends Machine {
 	 * @see #setPassword(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_vSphere_Password()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_VMware_vSphere!password'"
+	 *        annotation="OCCIE2Ecore description='vSphere Password'"
 	 * @generated
 	 */
 	String getPassword();
@@ -97,7 +97,7 @@ public interface Machine_VMware_vSphere extends Machine {
 	 * @see #setBoot2docker_url(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_vSphere_Boot2docker_url()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_VMware_vSphere!boot2docker_url'"
+	 *        annotation="OCCIE2Ecore description='URL for boot2docker image'"
 	 * @generated
 	 */
 	String getBoot2docker_url();
@@ -124,7 +124,7 @@ public interface Machine_VMware_vSphere extends Machine {
 	 * @see #setCompute_ip(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_vSphere_Compute_ip()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_VMware_vSphere!compute_ip'"
+	 *        annotation="OCCIE2Ecore description='Compute host IP where the Docker VM will be instantiated'"
 	 * @generated
 	 */
 	String getCompute_ip();
@@ -152,7 +152,7 @@ public interface Machine_VMware_vSphere extends Machine {
 	 * @see #setCpu_count(int)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_vSphere_Cpu_count()
 	 * @model default="2" dataType="org.occiware.clouddesigner.occi.Number"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_VMware_vSphere!cpu_count'"
+	 *        annotation="OCCIE2Ecore description='CPU number for Docker VM'"
 	 * @generated
 	 */
 	int getCpu_count();
@@ -179,7 +179,7 @@ public interface Machine_VMware_vSphere extends Machine {
 	 * @see #setDatacenter(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_vSphere_Datacenter()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_VMware_vSphere!datacenter'"
+	 *        annotation="OCCIE2Ecore description='Datacenter for Docker VM (must be set to ha-datacenter when connecting to a single host)'"
 	 * @generated
 	 */
 	String getDatacenter();
@@ -206,7 +206,7 @@ public interface Machine_VMware_vSphere extends Machine {
 	 * @see #setDatastore(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_vSphere_Datastore()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_VMware_vSphere!datastore'"
+	 *        annotation="OCCIE2Ecore description='Datastore for Docker VM'"
 	 * @generated
 	 */
 	String getDatastore();
@@ -234,7 +234,7 @@ public interface Machine_VMware_vSphere extends Machine {
 	 * @see #setDisk_size(int)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_vSphere_Disk_size()
 	 * @model default="20000" dataType="org.occiware.clouddesigner.occi.Number"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_VMware_vSphere!disk_size'"
+	 *        annotation="OCCIE2Ecore description='Size of disk for Docker VM (in MB)'"
 	 * @generated
 	 */
 	int getDisk_size();
@@ -262,7 +262,7 @@ public interface Machine_VMware_vSphere extends Machine {
 	 * @see #setMemory_size(int)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_vSphere_Memory_size()
 	 * @model default="2048" dataType="org.occiware.clouddesigner.occi.Number"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_VMware_vSphere!memory_size'"
+	 *        annotation="OCCIE2Ecore description='Size of memory for Docker VM (in MB) '"
 	 * @generated
 	 */
 	int getMemory_size();
@@ -289,7 +289,7 @@ public interface Machine_VMware_vSphere extends Machine {
 	 * @see #setNetwork(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_vSphere_Network()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_VMware_vSphere!network'"
+	 *        annotation="OCCIE2Ecore description='Network where the Docker VM will be attached'"
 	 * @generated
 	 */
 	String getNetwork();
@@ -316,7 +316,7 @@ public interface Machine_VMware_vSphere extends Machine {
 	 * @see #setPool(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_vSphere_Pool()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_VMware_vSphere!pool'"
+	 *        annotation="OCCIE2Ecore description='Resource pool for Docker VM'"
 	 * @generated
 	 */
 	String getPool();
@@ -343,7 +343,7 @@ public interface Machine_VMware_vSphere extends Machine {
 	 * @see #setVcenter(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_vSphere_Vcenter()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_VMware_vSphere!vcenter'"
+	 *        annotation="OCCIE2Ecore description=' IP/hostname for vCenter (or ESXi if connecting directly to a single host)'"
 	 * @generated
 	 */
 	String getVcenter();

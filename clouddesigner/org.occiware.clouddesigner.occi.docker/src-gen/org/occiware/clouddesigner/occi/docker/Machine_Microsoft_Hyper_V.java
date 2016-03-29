@@ -19,7 +19,7 @@ package org.occiware.clouddesigner.occi.docker;
  * </ul>
  *
  * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Microsoft_Hyper_V()
- * @model
+ * @model annotation="OCCIE2Ecore title='Machine on Microsoft Hyper-V'"
  * @generated
  */
 public interface Machine_Microsoft_Hyper_V extends Machine {
@@ -35,7 +35,7 @@ public interface Machine_Microsoft_Hyper_V extends Machine {
 	 * @see #setBoot2docker_location(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Microsoft_Hyper_V_Boot2docker_location()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_Microsoft_Hyper_V!boot2docker_location'"
+	 *        annotation="OCCIE2Ecore description='Location of a local boot2docker iso to use. Overrides the URL option below'"
 	 * @generated
 	 */
 	String getBoot2docker_location();
@@ -62,7 +62,7 @@ public interface Machine_Microsoft_Hyper_V extends Machine {
 	 * @see #setBoot2docker_url(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Microsoft_Hyper_V_Boot2docker_url()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_Microsoft_Hyper_V!boot2docker_url'"
+	 *        annotation="OCCIE2Ecore description='The URL of the boot2docker iso. Defaults to the latest available version'"
 	 * @generated
 	 */
 	String getBoot2docker_url();
@@ -90,7 +90,7 @@ public interface Machine_Microsoft_Hyper_V extends Machine {
 	 * @see #setDisk_size(int)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Microsoft_Hyper_V_Disk_size()
 	 * @model default="20000" dataType="org.occiware.clouddesigner.occi.Number"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_Microsoft_Hyper_V!disk_size'"
+	 *        annotation="OCCIE2Ecore description='Size of disk for the host in MB'"
 	 * @generated
 	 */
 	int getDisk_size();
@@ -117,7 +117,7 @@ public interface Machine_Microsoft_Hyper_V extends Machine {
 	 * @see #setVirtual_switch(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Microsoft_Hyper_V_Virtual_switch()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_Microsoft_Hyper_V!virtual_switch'"
+	 *        annotation="OCCIE2Ecore description='Name of the virtual switch to use. Defaults to first found'"
 	 * @generated
 	 */
 	String getVirtual_switch();

@@ -600,69 +600,6 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getContainer__Create() {
-		return containerEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getContainer__Run() {
-		return containerEClass.getEOperations().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getContainer__Pause() {
-		return containerEClass.getEOperations().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getContainer__Unpause() {
-		return containerEClass.getEOperations().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getContainer__Kill__String() {
-		return containerEClass.getEOperations().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getContainer__ContainerLinkAliasUnique__DiagnosticChain_Map() {
-		return containerEClass.getEOperations().get(5);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getContainer__ContainerNoCycleBetweenContainers__DiagnosticChain_Map() {
-		return containerEClass.getEOperations().get(6);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getLink() {
 		return linkEClass;
 	}
@@ -681,33 +618,6 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getLink__LinkTargetAsContainer__DiagnosticChain_Map() {
-		return linkEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getLink__LinkSourceAsContainer__DiagnosticChain_Map() {
-		return linkEClass.getEOperations().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getLink__LinkCanOnlyConnectColocalizedContainers__DiagnosticChain_Map() {
-		return linkEClass.getEOperations().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getVolumesfrom() {
 		return volumesfromEClass;
 	}
@@ -719,33 +629,6 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 */
 	public EAttribute getVolumesfrom_Mode() {
 		return (EAttribute)volumesfromEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getVolumesfrom__VolumesFromSourceAsContainer__DiagnosticChain_Map() {
-		return volumesfromEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getVolumesfrom__VolumesFromTargetAsContainer__DiagnosticChain_Map() {
-		return volumesfromEClass.getEOperations().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getVolumesfrom__VolumesFromCanOnlyConnectColocalizedContainers__DiagnosticChain_Map() {
-		return volumesfromEClass.getEOperations().get(2);
 	}
 
 	/**
@@ -773,15 +656,6 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 */
 	public EAttribute getMachine_Name() {
 		return (EAttribute)machineEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getMachine__MachineNameUnique__DiagnosticChain_Map() {
-		return machineEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -1401,15 +1275,6 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getMachine_VirtualBox__ContainersUsedTooMemory__DiagnosticChain_Map() {
-		return machine_VirtualBoxEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getMachine_VMware_Fusion() {
 		return machine_VMware_FusionEClass;
 	}
@@ -1778,31 +1643,17 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		createEAttribute(containerEClass, CONTAINER__CPUSET);
 		createEAttribute(containerEClass, CONTAINER__PUBLISH_ALL);
 		createEAttribute(containerEClass, CONTAINER__READ_ONLY);
-		createEOperation(containerEClass, CONTAINER___CREATE);
-		createEOperation(containerEClass, CONTAINER___RUN);
-		createEOperation(containerEClass, CONTAINER___PAUSE);
-		createEOperation(containerEClass, CONTAINER___UNPAUSE);
-		createEOperation(containerEClass, CONTAINER___KILL__STRING);
-		createEOperation(containerEClass, CONTAINER___CONTAINER_LINK_ALIAS_UNIQUE__DIAGNOSTICCHAIN_MAP);
-		createEOperation(containerEClass, CONTAINER___CONTAINER_NO_CYCLE_BETWEEN_CONTAINERS__DIAGNOSTICCHAIN_MAP);
 
 		linkEClass = createEClass(LINK);
 		createEAttribute(linkEClass, LINK__ALIAS);
-		createEOperation(linkEClass, LINK___LINK_TARGET_AS_CONTAINER__DIAGNOSTICCHAIN_MAP);
-		createEOperation(linkEClass, LINK___LINK_SOURCE_AS_CONTAINER__DIAGNOSTICCHAIN_MAP);
-		createEOperation(linkEClass, LINK___LINK_CAN_ONLY_CONNECT_COLOCALIZED_CONTAINERS__DIAGNOSTICCHAIN_MAP);
 
 		volumesfromEClass = createEClass(VOLUMESFROM);
 		createEAttribute(volumesfromEClass, VOLUMESFROM__MODE);
-		createEOperation(volumesfromEClass, VOLUMESFROM___VOLUMES_FROM_SOURCE_AS_CONTAINER__DIAGNOSTICCHAIN_MAP);
-		createEOperation(volumesfromEClass, VOLUMESFROM___VOLUMES_FROM_TARGET_AS_CONTAINER__DIAGNOSTICCHAIN_MAP);
-		createEOperation(volumesfromEClass, VOLUMESFROM___VOLUMES_FROM_CAN_ONLY_CONNECT_COLOCALIZED_CONTAINERS__DIAGNOSTICCHAIN_MAP);
 
 		containsEClass = createEClass(CONTAINS);
 
 		machineEClass = createEClass(MACHINE);
 		createEAttribute(machineEClass, MACHINE__NAME);
-		createEOperation(machineEClass, MACHINE___MACHINE_NAME_UNIQUE__DIAGNOSTICCHAIN_MAP);
 
 		machine_Amazon_EC2EClass = createEClass(MACHINE_AMAZON_EC2);
 		createEAttribute(machine_Amazon_EC2EClass, MACHINE_AMAZON_EC2__ACCESS_KEY);
@@ -1880,7 +1731,6 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		machine_VirtualBoxEClass = createEClass(MACHINE_VIRTUAL_BOX);
 		createEAttribute(machine_VirtualBoxEClass, MACHINE_VIRTUAL_BOX__BOOT2DOCKER_URL);
 		createEAttribute(machine_VirtualBoxEClass, MACHINE_VIRTUAL_BOX__DISK_SIZE);
-		createEOperation(machine_VirtualBoxEClass, MACHINE_VIRTUAL_BOX___CONTAINERS_USED_TOO_MEMORY__DIAGNOSTICCHAIN_MAP);
 
 		machine_VMware_FusionEClass = createEClass(MACHINE_VMWARE_FUSION);
 		createEAttribute(machine_VMware_FusionEClass, MACHINE_VMWARE_FUSION__BOOT2DOCKER_URL);
@@ -1972,7 +1822,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		machine_VMware_vCloud_AirEClass.getESuperTypes().add(this.getMachine());
 		machine_VMware_vSphereEClass.getESuperTypes().add(this.getMachine());
 
-		// Initialize classes, features, and operations; add parameters
+		// Initialize classes and features; add operations and parameters
 		initEClass(containerEClass, org.occiware.clouddesigner.occi.docker.Container.class, "Container", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getContainer_Name(), theOCCIPackage.getString(), "name", null, 1, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_Containerid(), theOCCIPackage.getString(), "containerid", null, 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2013,108 +1863,31 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		initEAttribute(getContainer_Publish_all(), theOCCIPackage.getBoolean(), "publish_all", "false", 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_Read_only(), theOCCIPackage.getBoolean(), "read_only", "false", 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getContainer__Create(), null, "create", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(containerEClass, null, "create", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEOperation(getContainer__Run(), null, "run", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(containerEClass, null, "start", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEOperation(getContainer__Pause(), null, "pause", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(containerEClass, null, "stop", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEOperation(getContainer__Unpause(), null, "unpause", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(containerEClass, null, "run", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		EOperation op = initEOperation(getContainer__Kill__String(), null, "kill", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(containerEClass, null, "pause", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(containerEClass, null, "unpause", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		EOperation op = addEOperation(containerEClass, null, "kill", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theOCCIPackage.getString(), "signal", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = initEOperation(getContainer__ContainerLinkAliasUnique__DiagnosticChain_Map(), ecorePackage.getEBoolean(), "ContainerLinkAliasUnique", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED);
-		EGenericType g1 = createEGenericType(ecorePackage.getEMap());
-		EGenericType g2 = createEGenericType(ecorePackage.getEJavaObject());
-		g1.getETypeArguments().add(g2);
-		g2 = createEGenericType(ecorePackage.getEJavaObject());
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = initEOperation(getContainer__ContainerNoCycleBetweenContainers__DiagnosticChain_Map(), ecorePackage.getEBoolean(), "ContainerNoCycleBetweenContainers", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(ecorePackage.getEMap());
-		g2 = createEGenericType(ecorePackage.getEJavaObject());
-		g1.getETypeArguments().add(g2);
-		g2 = createEGenericType(ecorePackage.getEJavaObject());
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(linkEClass, Link.class, "Link", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getLink_Alias(), theOCCIPackage.getString(), "alias", null, 0, 1, Link.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		op = initEOperation(getLink__LinkTargetAsContainer__DiagnosticChain_Map(), ecorePackage.getEBoolean(), "LinkTargetAsContainer", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(ecorePackage.getEMap());
-		g2 = createEGenericType(ecorePackage.getEJavaObject());
-		g1.getETypeArguments().add(g2);
-		g2 = createEGenericType(ecorePackage.getEJavaObject());
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = initEOperation(getLink__LinkSourceAsContainer__DiagnosticChain_Map(), ecorePackage.getEBoolean(), "LinkSourceAsContainer", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(ecorePackage.getEMap());
-		g2 = createEGenericType(ecorePackage.getEJavaObject());
-		g1.getETypeArguments().add(g2);
-		g2 = createEGenericType(ecorePackage.getEJavaObject());
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = initEOperation(getLink__LinkCanOnlyConnectColocalizedContainers__DiagnosticChain_Map(), ecorePackage.getEBoolean(), "LinkCanOnlyConnectColocalizedContainers", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(ecorePackage.getEMap());
-		g2 = createEGenericType(ecorePackage.getEJavaObject());
-		g1.getETypeArguments().add(g2);
-		g2 = createEGenericType(ecorePackage.getEJavaObject());
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED);
-
 		initEClass(volumesfromEClass, Volumesfrom.class, "Volumesfrom", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getVolumesfrom_Mode(), this.getMode(), "mode", "read_write", 0, 1, Volumesfrom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		op = initEOperation(getVolumesfrom__VolumesFromSourceAsContainer__DiagnosticChain_Map(), ecorePackage.getEBoolean(), "VolumesFromSourceAsContainer", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(ecorePackage.getEMap());
-		g2 = createEGenericType(ecorePackage.getEJavaObject());
-		g1.getETypeArguments().add(g2);
-		g2 = createEGenericType(ecorePackage.getEJavaObject());
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = initEOperation(getVolumesfrom__VolumesFromTargetAsContainer__DiagnosticChain_Map(), ecorePackage.getEBoolean(), "VolumesFromTargetAsContainer", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(ecorePackage.getEMap());
-		g2 = createEGenericType(ecorePackage.getEJavaObject());
-		g1.getETypeArguments().add(g2);
-		g2 = createEGenericType(ecorePackage.getEJavaObject());
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = initEOperation(getVolumesfrom__VolumesFromCanOnlyConnectColocalizedContainers__DiagnosticChain_Map(), ecorePackage.getEBoolean(), "VolumesFromCanOnlyConnectColocalizedContainers", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(ecorePackage.getEMap());
-		g2 = createEGenericType(ecorePackage.getEJavaObject());
-		g1.getETypeArguments().add(g2);
-		g2 = createEGenericType(ecorePackage.getEJavaObject());
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(containsEClass, Contains.class, "Contains", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(machineEClass, Machine.class, "Machine", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMachine_Name(), theOCCIPackage.getString(), "name", null, 1, 1, Machine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		op = initEOperation(getMachine__MachineNameUnique__DiagnosticChain_Map(), ecorePackage.getEBoolean(), "MachineNameUnique", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(ecorePackage.getEMap());
-		g2 = createEGenericType(ecorePackage.getEJavaObject());
-		g1.getETypeArguments().add(g2);
-		g2 = createEGenericType(ecorePackage.getEJavaObject());
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(machine_Amazon_EC2EClass, Machine_Amazon_EC2.class, "Machine_Amazon_EC2", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMachine_Amazon_EC2_Access_key(), theOCCIPackage.getString(), "access_key", null, 1, 1, Machine_Amazon_EC2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2193,15 +1966,6 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		initEAttribute(getMachine_VirtualBox_Boot2docker_url(), theOCCIPackage.getString(), "boot2docker_url", null, 0, 1, Machine_VirtualBox.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_VirtualBox_Disk_size(), theOCCIPackage.getNumber(), "disk_size", "20000", 0, 1, Machine_VirtualBox.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		op = initEOperation(getMachine_VirtualBox__ContainersUsedTooMemory__DiagnosticChain_Map(), ecorePackage.getEBoolean(), "ContainersUsedTooMemory", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(ecorePackage.getEMap());
-		g2 = createEGenericType(ecorePackage.getEJavaObject());
-		g1.getETypeArguments().add(g2);
-		g2 = createEGenericType(ecorePackage.getEJavaObject());
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED);
-
 		initEClass(machine_VMware_FusionEClass, Machine_VMware_Fusion.class, "Machine_VMware_Fusion", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMachine_VMware_Fusion_Boot2docker_url(), theOCCIPackage.getString(), "boot2docker_url", null, 0, 1, Machine_VMware_Fusion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_VMware_Fusion_Disk_size(), theOCCIPackage.getNumber(), "disk_size", "20000", 0, 1, Machine_VMware_Fusion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2251,6 +2015,10 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		createImportAnnotations();
 		// http://www.eclipse.org/emf/2002/Ecore
 		createEcoreAnnotations();
+		// OCCIE2Ecore
+		createOCCIE2EcoreAnnotations();
+		// http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot
+		createPivotAnnotations();
 	}
 
 	/**
@@ -2282,6 +2050,9 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		  (this, 
 		   source, 
 		   new String[] {
+			 "invocationDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+			 "settingDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+			 "validationDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"
 		   });	
 		addAnnotation
 		  (containerEClass, 
@@ -2312,6 +2083,991 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		   source, 
 		   new String[] {
 			 "constraints", "ContainersUsedTooMemory"
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>OCCIE2Ecore</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createOCCIE2EcoreAnnotations() {
+		String source = "OCCIE2Ecore";	
+		addAnnotation
+		  (containerEClass, 
+		   source, 
+		   new String[] {
+			 "title", "Container Resource"
+		   });	
+		addAnnotation
+		  (containerEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+			 "title", null
+		   });	
+		addAnnotation
+		  (containerEClass.getEOperations().get(1), 
+		   source, 
+		   new String[] {
+			 "title", null
+		   });	
+		addAnnotation
+		  (containerEClass.getEOperations().get(2), 
+		   source, 
+		   new String[] {
+			 "title", null
+		   });	
+		addAnnotation
+		  (containerEClass.getEOperations().get(3), 
+		   source, 
+		   new String[] {
+			 "title", null
+		   });	
+		addAnnotation
+		  (containerEClass.getEOperations().get(4), 
+		   source, 
+		   new String[] {
+			 "title", null
+		   });	
+		addAnnotation
+		  (containerEClass.getEOperations().get(5), 
+		   source, 
+		   new String[] {
+			 "title", ""
+		   });	
+		addAnnotation
+		  (containerEClass.getEOperations().get(6), 
+		   source, 
+		   new String[] {
+			 "title", null
+		   });	
+		addAnnotation
+		  ((containerEClass.getEOperations().get(6)).getEParameters().get(0), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getContainer_Name(), 
+		   source, 
+		   new String[] {
+			 "description", "The name of this Container instance"
+		   });	
+		addAnnotation
+		  (getContainer_Containerid(), 
+		   source, 
+		   new String[] {
+			 "description", "The ID of this Container instance"
+		   });	
+		addAnnotation
+		  (getContainer_Image(), 
+		   source, 
+		   new String[] {
+			 "description", "The image of this Container instance"
+		   });	
+		addAnnotation
+		  (getContainer_Build(), 
+		   source, 
+		   new String[] {
+			 "description", "The build directory of this Container instance"
+		   });	
+		addAnnotation
+		  (getContainer_Command(), 
+		   source, 
+		   new String[] {
+			 "description", "Override the default command in Dockerfile"
+		   });	
+		addAnnotation
+		  (getContainer_Ports(), 
+		   source, 
+		   new String[] {
+			 "description", "The ports of this Container instance"
+		   });	
+		addAnnotation
+		  (getContainer_Expose(), 
+		   source, 
+		   new String[] {
+			 "description", "The exposed ports of this Container instance"
+		   });	
+		addAnnotation
+		  (getContainer_Volumes(), 
+		   source, 
+		   new String[] {
+			 "description", "The list of volumes"
+		   });	
+		addAnnotation
+		  (getContainer_Environment(), 
+		   source, 
+		   new String[] {
+			 "description", "Environment variables"
+		   });	
+		addAnnotation
+		  (getContainer_Env_file(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getContainer_Net(), 
+		   source, 
+		   new String[] {
+			 "description", "\'bridge\',  \'none\', \'container:[name or id]\', or \'host\'"
+		   });	
+		addAnnotation
+		  (getContainer_Dns(), 
+		   source, 
+		   new String[] {
+			 "description", "Custom DNS servers"
+		   });	
+		addAnnotation
+		  (getContainer_Dns_search(), 
+		   source, 
+		   new String[] {
+			 "description", "Custom DNS search domains"
+		   });	
+		addAnnotation
+		  (getContainer_Cap_add(), 
+		   source, 
+		   new String[] {
+			 "description", "Add container capabilities"
+		   });	
+		addAnnotation
+		  (getContainer_Cap_drop(), 
+		   source, 
+		   new String[] {
+			 "description", "Drop container capabilities"
+		   });	
+		addAnnotation
+		  (getContainer_Working_dir(), 
+		   source, 
+		   new String[] {
+			 "description", "Working directory"
+		   });	
+		addAnnotation
+		  (getContainer_Entrypoint(), 
+		   source, 
+		   new String[] {
+			 "description", "Entry point"
+		   });	
+		addAnnotation
+		  (getContainer_User(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getContainer_Domainname(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getContainer_Mem_limit(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getContainer_Memory_swap(), 
+		   source, 
+		   new String[] {
+			 "description", "Memory swap limit"
+		   });	
+		addAnnotation
+		  (getContainer_Privileged(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getContainer_Restart(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getContainer_Stdin_open(), 
+		   source, 
+		   new String[] {
+			 "description", ""
+		   });	
+		addAnnotation
+		  (getContainer_Interactive(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getContainer_Tty(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getContainer_Cpu_shares(), 
+		   source, 
+		   new String[] {
+			 "description", "CPU shares for this Docker container"
+		   });	
+		addAnnotation
+		  (getContainer_Pid(), 
+		   source, 
+		   new String[] {
+			 "description", "\'\' or \'host\'"
+		   });	
+		addAnnotation
+		  (getContainer_Ipc(), 
+		   source, 
+		   new String[] {
+			 "description", "\'\', \'host\' or \'container:[name:id]\'"
+		   });	
+		addAnnotation
+		  (getContainer_Add_host(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getContainer_Mac_address(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getContainer_Rm(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getContainer_Security_opt(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getContainer_Device(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getContainer_Lxc_conf(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getContainer_Cpuset(), 
+		   source, 
+		   new String[] {
+			 "description", ""
+		   });	
+		addAnnotation
+		  (getContainer_Publish_all(), 
+		   source, 
+		   new String[] {
+			 "description", "Publish all exposed ports to random ports on the host interfaces"
+		   });	
+		addAnnotation
+		  (getContainer_Read_only(), 
+		   source, 
+		   new String[] {
+			 "description", "Mount the container\'s root filesystem as read only"
+		   });	
+		addAnnotation
+		  (linkEClass, 
+		   source, 
+		   new String[] {
+			 "title", "Link between containers"
+		   });	
+		addAnnotation
+		  (getLink_Alias(), 
+		   source, 
+		   new String[] {
+			 "description", "The alias of this Link instance"
+		   });	
+		addAnnotation
+		  (volumesfromEClass, 
+		   source, 
+		   new String[] {
+			 "title", "VolumsFrom"
+		   });	
+		addAnnotation
+		  (getVolumesfrom_Mode(), 
+		   source, 
+		   new String[] {
+			 "description", "The mode of this VolumesFrom instance"
+		   });	
+		addAnnotation
+		  (containsEClass, 
+		   source, 
+		   new String[] {
+			 "title", null
+		   });	
+		addAnnotation
+		  (machineEClass, 
+		   source, 
+		   new String[] {
+			 "title", "Machine Resource"
+		   });	
+		addAnnotation
+		  (getMachine_Name(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (machine_Amazon_EC2EClass, 
+		   source, 
+		   new String[] {
+			 "title", "Machine on Amazon EC2"
+		   });	
+		addAnnotation
+		  (getMachine_Amazon_EC2_Access_key(), 
+		   source, 
+		   new String[] {
+			 "description", "Your access key id for the Amazon Web Services API"
+		   });	
+		addAnnotation
+		  (getMachine_Amazon_EC2_Ami(), 
+		   source, 
+		   new String[] {
+			 "description", "The AMI ID of the instance to use"
+		   });	
+		addAnnotation
+		  (getMachine_Amazon_EC2_Instance_type(), 
+		   source, 
+		   new String[] {
+			 "description", "The instance type to run"
+		   });	
+		addAnnotation
+		  (getMachine_Amazon_EC2_Region(), 
+		   source, 
+		   new String[] {
+			 "description", "The region to use when launching the instance"
+		   });	
+		addAnnotation
+		  (getMachine_Amazon_EC2_Root_size(), 
+		   source, 
+		   new String[] {
+			 "description", "The root disk size of the instance (in GB)"
+		   });	
+		addAnnotation
+		  (getMachine_Amazon_EC2_Secret_key(), 
+		   source, 
+		   new String[] {
+			 "description", "Your secret access key for the Amazon Web Services API"
+		   });	
+		addAnnotation
+		  (getMachine_Amazon_EC2_Security_group(), 
+		   source, 
+		   new String[] {
+			 "description", "AWS VPC security group name"
+		   });	
+		addAnnotation
+		  (getMachine_Amazon_EC2_Session_token(), 
+		   source, 
+		   new String[] {
+			 "description", "Your session token for the Amazon Web Services API"
+		   });	
+		addAnnotation
+		  (getMachine_Amazon_EC2_Subnet_id(), 
+		   source, 
+		   new String[] {
+			 "description", "AWS VPC subnet id"
+		   });	
+		addAnnotation
+		  (getMachine_Amazon_EC2_Vpc_id(), 
+		   source, 
+		   new String[] {
+			 "description", "Your VPC ID to launch the instance in"
+		   });	
+		addAnnotation
+		  (getMachine_Amazon_EC2_Zone(), 
+		   source, 
+		   new String[] {
+			 "description", "The AWS zone launch the instance in (i.e. one of a,b,c,d,e)"
+		   });	
+		addAnnotation
+		  (machine_Digital_OceanEClass, 
+		   source, 
+		   new String[] {
+			 "title", "Machine on Digital Ocean"
+		   });	
+		addAnnotation
+		  (getMachine_Digital_Ocean_Access_token(), 
+		   source, 
+		   new String[] {
+			 "description", "Your personal access token for the Digital Ocean API"
+		   });	
+		addAnnotation
+		  (getMachine_Digital_Ocean_Image(), 
+		   source, 
+		   new String[] {
+			 "description", "The name of the Digital Ocean image to use"
+		   });	
+		addAnnotation
+		  (getMachine_Digital_Ocean_Region(), 
+		   source, 
+		   new String[] {
+			 "description", "The region to create the droplet in"
+		   });	
+		addAnnotation
+		  (getMachine_Digital_Ocean_Size(), 
+		   source, 
+		   new String[] {
+			 "description", "The size of the Digital Ocean driver (larger than default options are of the form 2gb)"
+		   });	
+		addAnnotation
+		  (machine_Google_Compute_EngineEClass, 
+		   source, 
+		   new String[] {
+			 "title", "Machine on Google Compute Engine"
+		   });	
+		addAnnotation
+		  (getMachine_Google_Compute_Engine_Zone(), 
+		   source, 
+		   new String[] {
+			 "description", "The zone to launch the instance"
+		   });	
+		addAnnotation
+		  (getMachine_Google_Compute_Engine_Machine_type(), 
+		   source, 
+		   new String[] {
+			 "description", "The type of instance"
+		   });	
+		addAnnotation
+		  (getMachine_Google_Compute_Engine_Username(), 
+		   source, 
+		   new String[] {
+			 "description", "The username to use for the instance"
+		   });	
+		addAnnotation
+		  (getMachine_Google_Compute_Engine_Instance_name(), 
+		   source, 
+		   new String[] {
+			 "description", "The name of the instance"
+		   });	
+		addAnnotation
+		  (getMachine_Google_Compute_Engine_Project(), 
+		   source, 
+		   new String[] {
+			 "description", "The name of your project to use when launching the instance"
+		   });	
+		addAnnotation
+		  (machine_IBM_SoftLayerEClass, 
+		   source, 
+		   new String[] {
+			 "title", "Machine on IBM SoftLayer"
+		   });	
+		addAnnotation
+		  (getMachine_IBM_SoftLayer_Api_endpoint(), 
+		   source, 
+		   new String[] {
+			 "description", "Change softlayer API endpoint"
+		   });	
+		addAnnotation
+		  (getMachine_IBM_SoftLayer_User(), 
+		   source, 
+		   new String[] {
+			 "description", "username for your softlayer account, api key needs to match this user"
+		   });	
+		addAnnotation
+		  (getMachine_IBM_SoftLayer_Api_key(), 
+		   source, 
+		   new String[] {
+			 "description", "API key for your user account"
+		   });	
+		addAnnotation
+		  (getMachine_IBM_SoftLayer_Cpu(), 
+		   source, 
+		   new String[] {
+			 "description", "Number of CPU\'s for the machine"
+		   });	
+		addAnnotation
+		  (getMachine_IBM_SoftLayer_Disk_size(), 
+		   source, 
+		   new String[] {
+			 "description", "Size of the disk in MB. 0 sets the softlayer default"
+		   });	
+		addAnnotation
+		  (getMachine_IBM_SoftLayer_Domain(), 
+		   source, 
+		   new String[] {
+			 "description", "domain name for the machine"
+		   });	
+		addAnnotation
+		  (getMachine_IBM_SoftLayer_Hourly_billing(), 
+		   source, 
+		   new String[] {
+			 "description", "Sets the hourly billing flag (default), otherwise uses monthly billing"
+		   });	
+		addAnnotation
+		  (getMachine_IBM_SoftLayer_Image(), 
+		   source, 
+		   new String[] {
+			 "description", "OS Image to use"
+		   });	
+		addAnnotation
+		  (getMachine_IBM_SoftLayer_Local_disk(), 
+		   source, 
+		   new String[] {
+			 "description", "Use local machine disk instead of softlayer SAN"
+		   });	
+		addAnnotation
+		  (getMachine_IBM_SoftLayer_Private_net_only(), 
+		   source, 
+		   new String[] {
+			 "description", "Disable public networking"
+		   });	
+		addAnnotation
+		  (getMachine_IBM_SoftLayer_Region(), 
+		   source, 
+		   new String[] {
+			 "description", "softlayer region"
+		   });	
+		addAnnotation
+		  (machine_Microsoft_AzureEClass, 
+		   source, 
+		   new String[] {
+			 "title", "Machine on Microsoft Azure"
+		   });	
+		addAnnotation
+		  (getMachine_Microsoft_Azure_Subscription_id(), 
+		   source, 
+		   new String[] {
+			 "description", "Your Azure subscription ID (A GUID like d255d8d7-5af0-4f5c-8a3e-1545044b861e)"
+		   });	
+		addAnnotation
+		  (getMachine_Microsoft_Azure_Subscription_cert(), 
+		   source, 
+		   new String[] {
+			 "description", "Your Azure subscription cert"
+		   });	
+		addAnnotation
+		  (machine_Microsoft_Hyper_VEClass, 
+		   source, 
+		   new String[] {
+			 "title", "Machine on Microsoft Hyper-V"
+		   });	
+		addAnnotation
+		  (getMachine_Microsoft_Hyper_V_Boot2docker_location(), 
+		   source, 
+		   new String[] {
+			 "description", "Location of a local boot2docker iso to use. Overrides the URL option below"
+		   });	
+		addAnnotation
+		  (getMachine_Microsoft_Hyper_V_Boot2docker_url(), 
+		   source, 
+		   new String[] {
+			 "description", "The URL of the boot2docker iso. Defaults to the latest available version"
+		   });	
+		addAnnotation
+		  (getMachine_Microsoft_Hyper_V_Disk_size(), 
+		   source, 
+		   new String[] {
+			 "description", "Size of disk for the host in MB"
+		   });	
+		addAnnotation
+		  (getMachine_Microsoft_Hyper_V_Virtual_switch(), 
+		   source, 
+		   new String[] {
+			 "description", "Name of the virtual switch to use. Defaults to first found"
+		   });	
+		addAnnotation
+		  (machine_OpenStackEClass, 
+		   source, 
+		   new String[] {
+			 "title", "Machine on OpenStack"
+		   });	
+		addAnnotation
+		  (getMachine_OpenStack_Flavor_id(), 
+		   source, 
+		   new String[] {
+			 "description", "The flavor ID to use when creating the machine"
+		   });	
+		addAnnotation
+		  (getMachine_OpenStack_Image_id(), 
+		   source, 
+		   new String[] {
+			 "description", "The image ID to use when creating the machine"
+		   });	
+		addAnnotation
+		  (getMachine_OpenStack_Auth_url(), 
+		   source, 
+		   new String[] {
+			 "description", "Keystone service base URL"
+		   });	
+		addAnnotation
+		  (getMachine_OpenStack_Username(), 
+		   source, 
+		   new String[] {
+			 "description", "User identifer to authenticate with"
+		   });	
+		addAnnotation
+		  (getMachine_OpenStack_Password(), 
+		   source, 
+		   new String[] {
+			 "description", "User password. It can be omitted if the standard environment variable OS_PASSWORD is set."
+		   });	
+		addAnnotation
+		  (getMachine_OpenStack_Tenant_name(), 
+		   source, 
+		   new String[] {
+			 "description", "Identify the tenant in which the machine will be created"
+		   });	
+		addAnnotation
+		  (getMachine_OpenStack_Tenant_id(), 
+		   source, 
+		   new String[] {
+			 "description", "Identify the tenant in which the machine will be created"
+		   });	
+		addAnnotation
+		  (getMachine_OpenStack_Region(), 
+		   source, 
+		   new String[] {
+			 "description", "The region to work on. Can be omitted if there is only one region on the OpenStack"
+		   });	
+		addAnnotation
+		  (getMachine_OpenStack_Endpoint_type(), 
+		   source, 
+		   new String[] {
+			 "description", "Endpoint type can be internalURL, adminURL on publicURL. If is a helper for the driver to choose the right URL in the OpenStack service catalog. If not provided the default id publicURL"
+		   });	
+		addAnnotation
+		  (getMachine_OpenStack_Net_id(), 
+		   source, 
+		   new String[] {
+			 "description", "The private network id the machine will be connected on. If your OpenStack project project contains only one private network it will be use automatically"
+		   });	
+		addAnnotation
+		  (getMachine_OpenStack_Sec_groups(), 
+		   source, 
+		   new String[] {
+			 "description", "If security groups are available on your OpenStack you can specify a comma separated list to use for the machine (e.g. secgrp001,secgrp002)"
+		   });	
+		addAnnotation
+		  (getMachine_OpenStack_Floatingip_pool(), 
+		   source, 
+		   new String[] {
+			 "description", "The IP pool that will be used to get a public IP an assign it to the machine. If there is an IP address already allocated but not assigned to any machine, this IP will be chosen and assigned to the machine. If there is no IP address already allocated a new IP will be allocated and assigned to the machine"
+		   });	
+		addAnnotation
+		  (machine_RackspaceEClass, 
+		   source, 
+		   new String[] {
+			 "title", "Machine on Rackspace cloud"
+		   });	
+		addAnnotation
+		  (getMachine_Rackspace_Username(), 
+		   source, 
+		   new String[] {
+			 "description", "Rackspace account username"
+		   });	
+		addAnnotation
+		  (getMachine_Rackspace_Api_key(), 
+		   source, 
+		   new String[] {
+			 "description", "Rackspace API key"
+		   });	
+		addAnnotation
+		  (getMachine_Rackspace_Region(), 
+		   source, 
+		   new String[] {
+			 "description", "Rackspace region name"
+		   });	
+		addAnnotation
+		  (getMachine_Rackspace_Endpoint_type(), 
+		   source, 
+		   new String[] {
+			 "description", "Rackspace endpoint type (adminURL, internalURL or the default publicURL)"
+		   });	
+		addAnnotation
+		  (getMachine_Rackspace_Image_id(), 
+		   source, 
+		   new String[] {
+			 "description", "Rackspace image ID "
+		   });	
+		addAnnotation
+		  (getMachine_Rackspace_Flavor_id(), 
+		   source, 
+		   new String[] {
+			 "description", "Rackspace flavor ID"
+		   });	
+		addAnnotation
+		  (getMachine_Rackspace_Ssh_user(), 
+		   source, 
+		   new String[] {
+			 "description", "SSH user for the newly booted machine"
+		   });	
+		addAnnotation
+		  (getMachine_Rackspace_Ssh_port(), 
+		   source, 
+		   new String[] {
+			 "description", "SSH port for the newly booted machine"
+		   });	
+		addAnnotation
+		  (machine_VirtualBoxEClass, 
+		   source, 
+		   new String[] {
+			 "title", "Machine on VirtualBox"
+		   });	
+		addAnnotation
+		  (getMachine_VirtualBox_Boot2docker_url(), 
+		   source, 
+		   new String[] {
+			 "description", "The URL of the boot2docker image. Default to the latest available version"
+		   });	
+		addAnnotation
+		  (getMachine_VirtualBox_Disk_size(), 
+		   source, 
+		   new String[] {
+			 "description", "Size of disk for the host in MB"
+		   });	
+		addAnnotation
+		  (machine_VMware_FusionEClass, 
+		   source, 
+		   new String[] {
+			 "title", "Machine on VMware Fusion"
+		   });	
+		addAnnotation
+		  (getMachine_VMware_Fusion_Boot2docker_url(), 
+		   source, 
+		   new String[] {
+			 "description", "URL for boot2docker image"
+		   });	
+		addAnnotation
+		  (getMachine_VMware_Fusion_Disk_size(), 
+		   source, 
+		   new String[] {
+			 "description", "Size of disk for host VM (in MB)"
+		   });	
+		addAnnotation
+		  (getMachine_VMware_Fusion_Memory_size(), 
+		   source, 
+		   new String[] {
+			 "description", "Size of memory for host VM (in MB)"
+		   });	
+		addAnnotation
+		  (machine_VMware_vCloud_AirEClass, 
+		   source, 
+		   new String[] {
+			 "title", "Machine on VMware vCloud Air"
+		   });	
+		addAnnotation
+		  (getMachine_VMware_vCloud_Air_Username(), 
+		   source, 
+		   new String[] {
+			 "description", "vCloud Air Username"
+		   });	
+		addAnnotation
+		  (getMachine_VMware_vCloud_Air_Password(), 
+		   source, 
+		   new String[] {
+			 "description", "vCloud Air Password"
+		   });	
+		addAnnotation
+		  (getMachine_VMware_vCloud_Air_Catalog(), 
+		   source, 
+		   new String[] {
+			 "description", "Catalog "
+		   });	
+		addAnnotation
+		  (getMachine_VMware_vCloud_Air_Catalogitem(), 
+		   source, 
+		   new String[] {
+			 "description", "Catalog Item "
+		   });	
+		addAnnotation
+		  (getMachine_VMware_vCloud_Air_Computeid(), 
+		   source, 
+		   new String[] {
+			 "description", "Compute ID (if using Dedicated Cloud)"
+		   });	
+		addAnnotation
+		  (getMachine_VMware_vCloud_Air_Cpu_count(), 
+		   source, 
+		   new String[] {
+			 "description", "VM Cpu Count"
+		   });	
+		addAnnotation
+		  (getMachine_VMware_vCloud_Air_Docker_port(), 
+		   source, 
+		   new String[] {
+			 "description", "Docker port "
+		   });	
+		addAnnotation
+		  (getMachine_VMware_vCloud_Air_Edgegateway(), 
+		   source, 
+		   new String[] {
+			 "description", "Organization Edge Gateway"
+		   });	
+		addAnnotation
+		  (getMachine_VMware_vCloud_Air_Memory_size(), 
+		   source, 
+		   new String[] {
+			 "description", "VM Memory Size in MB"
+		   });	
+		addAnnotation
+		  (getMachine_VMware_vCloud_Air_Vapp_name(), 
+		   source, 
+		   new String[] {
+			 "description", "vApp Name"
+		   });	
+		addAnnotation
+		  (getMachine_VMware_vCloud_Air_Orgvdcnetwork(), 
+		   source, 
+		   new String[] {
+			 "description", "Organization VDC Network to attach"
+		   });	
+		addAnnotation
+		  (getMachine_VMware_vCloud_Air_Provision(), 
+		   source, 
+		   new String[] {
+			 "description", "Install Docker binaries"
+		   });	
+		addAnnotation
+		  (getMachine_VMware_vCloud_Air_Publicip(), 
+		   source, 
+		   new String[] {
+			 "description", "Org Public IP to use"
+		   });	
+		addAnnotation
+		  (getMachine_VMware_vCloud_Air_Ssh_port(), 
+		   source, 
+		   new String[] {
+			 "description", "SSH port"
+		   });	
+		addAnnotation
+		  (getMachine_VMware_vCloud_Air_Vdcid(), 
+		   source, 
+		   new String[] {
+			 "description", "Virtual Data Center ID"
+		   });	
+		addAnnotation
+		  (machine_VMware_vSphereEClass, 
+		   source, 
+		   new String[] {
+			 "title", "Machine on VMware vSphere"
+		   });	
+		addAnnotation
+		  (getMachine_VMware_vSphere_Username(), 
+		   source, 
+		   new String[] {
+			 "description", "vSphere Username"
+		   });	
+		addAnnotation
+		  (getMachine_VMware_vSphere_Password(), 
+		   source, 
+		   new String[] {
+			 "description", "vSphere Password"
+		   });	
+		addAnnotation
+		  (getMachine_VMware_vSphere_Boot2docker_url(), 
+		   source, 
+		   new String[] {
+			 "description", "URL for boot2docker image"
+		   });	
+		addAnnotation
+		  (getMachine_VMware_vSphere_Compute_ip(), 
+		   source, 
+		   new String[] {
+			 "description", "Compute host IP where the Docker VM will be instantiated"
+		   });	
+		addAnnotation
+		  (getMachine_VMware_vSphere_Cpu_count(), 
+		   source, 
+		   new String[] {
+			 "description", "CPU number for Docker VM"
+		   });	
+		addAnnotation
+		  (getMachine_VMware_vSphere_Datacenter(), 
+		   source, 
+		   new String[] {
+			 "description", "Datacenter for Docker VM (must be set to ha-datacenter when connecting to a single host)"
+		   });	
+		addAnnotation
+		  (getMachine_VMware_vSphere_Datastore(), 
+		   source, 
+		   new String[] {
+			 "description", "Datastore for Docker VM"
+		   });	
+		addAnnotation
+		  (getMachine_VMware_vSphere_Disk_size(), 
+		   source, 
+		   new String[] {
+			 "description", "Size of disk for Docker VM (in MB)"
+		   });	
+		addAnnotation
+		  (getMachine_VMware_vSphere_Memory_size(), 
+		   source, 
+		   new String[] {
+			 "description", "Size of memory for Docker VM (in MB) "
+		   });	
+		addAnnotation
+		  (getMachine_VMware_vSphere_Network(), 
+		   source, 
+		   new String[] {
+			 "description", "Network where the Docker VM will be attached"
+		   });	
+		addAnnotation
+		  (getMachine_VMware_vSphere_Pool(), 
+		   source, 
+		   new String[] {
+			 "description", "Resource pool for Docker VM"
+		   });	
+		addAnnotation
+		  (getMachine_VMware_vSphere_Vcenter(), 
+		   source, 
+		   new String[] {
+			 "description", " IP/hostname for vCenter (or ESXi if connecting directly to a single host)"
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createPivotAnnotations() {
+		String source = "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot";	
+		addAnnotation
+		  (containerEClass, 
+		   source, 
+		   new String[] {
+			 "ContainerNoCycleBetweenContainers", "\n\t\t\tlinks->closure(links->select(oclIsKindOf(Link) or oclIsKindOf(Volumesfrom)).target.links->select(oclIsKindOf(Link) or oclIsKindOf(Volumesfrom))).target->excludes(self)",
+			 "ContainerLinkAliasUnique", "\n\t\t\tlinks->select(oclIsKindOf(Link))->isUnique(oclAsType(docker::Link).alias)"
+		   });	
+		addAnnotation
+		  (linkEClass, 
+		   source, 
+		   new String[] {
+			 "LinkSourceAsContainer", "source.oclIsKindOf(Container)",
+			 "LinkTargetAsContainer", "target.oclIsKindOf(Container)",
+			 "LinkCanOnlyConnectColocalizedContainers", "\n\t\t\tContains.allInstances()->select(contains | contains.target = self.source).source = \n\t\t\tContains.allInstances()->select(contains | contains.target = self.target).source"
+		   });	
+		addAnnotation
+		  (volumesfromEClass, 
+		   source, 
+		   new String[] {
+			 "VolumesFromSourceAsContainer", "source.oclIsKindOf(Container)",
+			 "VolumesFromTargetAsContainer", "target.oclIsKindOf(Container)",
+			 "VolumesFromCanOnlyConnectColocalizedContainers", "\n\t\t\tContains.allInstances()->select(contains | contains.target = self.source).source = \n\t\t\tContains.allInstances()->select(contains | contains.target = self.target).source"
+		   });	
+		addAnnotation
+		  (machineEClass, 
+		   source, 
+		   new String[] {
+			 "MachineNameUnique", "Machine.allInstances()->isUnique(name)"
+		   });	
+		addAnnotation
+		  (machine_VirtualBoxEClass, 
+		   source, 
+		   new String[] {
+			 "ContainersUsedTooMemory", "Tuple {\n\tmessage : String = \'Containers consume \' + (links->select(oclIsKindOf(docker::Contains)).target.oclAsType(Container).memory->sum()).toString() + \' when memory is equals to \' + memory.toString(),\n\tstatus : Boolean = \n\t\t\t(links->select(oclIsKindOf(docker::Contains)).target.oclAsType(Container).memory->sum()) <= memory\n}.status"
 		   });
 	}
 

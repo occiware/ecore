@@ -30,7 +30,7 @@ package org.occiware.clouddesigner.occi.docker;
  * </ul>
  *
  * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_vCloud_Air()
- * @model
+ * @model annotation="OCCIE2Ecore title='Machine on VMware vCloud Air'"
  * @generated
  */
 public interface Machine_VMware_vCloud_Air extends Machine {
@@ -46,7 +46,7 @@ public interface Machine_VMware_vCloud_Air extends Machine {
 	 * @see #setUsername(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_vCloud_Air_Username()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_VMware_vCloud_Air!username'"
+	 *        annotation="OCCIE2Ecore description='vCloud Air Username'"
 	 * @generated
 	 */
 	String getUsername();
@@ -73,7 +73,7 @@ public interface Machine_VMware_vCloud_Air extends Machine {
 	 * @see #setPassword(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_vCloud_Air_Password()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_VMware_vCloud_Air!password'"
+	 *        annotation="OCCIE2Ecore description='vCloud Air Password'"
 	 * @generated
 	 */
 	String getPassword();
@@ -101,7 +101,7 @@ public interface Machine_VMware_vCloud_Air extends Machine {
 	 * @see #setCatalog(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_vCloud_Air_Catalog()
 	 * @model default="Public Catalog" dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_VMware_vCloud_Air!catalog'"
+	 *        annotation="OCCIE2Ecore description='Catalog '"
 	 * @generated
 	 */
 	String getCatalog();
@@ -129,7 +129,7 @@ public interface Machine_VMware_vCloud_Air extends Machine {
 	 * @see #setCatalogitem(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_vCloud_Air_Catalogitem()
 	 * @model default="Ubuntu Server 12.04 LTS (amd64 20140927)" dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_VMware_vCloud_Air!catalogitem'"
+	 *        annotation="OCCIE2Ecore description='Catalog Item '"
 	 * @generated
 	 */
 	String getCatalogitem();
@@ -156,7 +156,7 @@ public interface Machine_VMware_vCloud_Air extends Machine {
 	 * @see #setComputeid(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_vCloud_Air_Computeid()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_VMware_vCloud_Air!computeid'"
+	 *        annotation="OCCIE2Ecore description='Compute ID (if using Dedicated Cloud)'"
 	 * @generated
 	 */
 	String getComputeid();
@@ -184,7 +184,7 @@ public interface Machine_VMware_vCloud_Air extends Machine {
 	 * @see #setCpu_count(int)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_vCloud_Air_Cpu_count()
 	 * @model default="1" dataType="org.occiware.clouddesigner.occi.Number"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_VMware_vCloud_Air!cpu_count'"
+	 *        annotation="OCCIE2Ecore description='VM Cpu Count'"
 	 * @generated
 	 */
 	int getCpu_count();
@@ -212,7 +212,7 @@ public interface Machine_VMware_vCloud_Air extends Machine {
 	 * @see #setDocker_port(int)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_vCloud_Air_Docker_port()
 	 * @model default="2376" dataType="org.occiware.clouddesigner.occi.Number"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_VMware_vCloud_Air!docker_port'"
+	 *        annotation="OCCIE2Ecore description='Docker port '"
 	 * @generated
 	 */
 	int getDocker_port();
@@ -240,7 +240,7 @@ public interface Machine_VMware_vCloud_Air extends Machine {
 	 * @see #setEdgegateway(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_vCloud_Air_Edgegateway()
 	 * @model default="<vdcid>" dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_VMware_vCloud_Air!edgegateway'"
+	 *        annotation="OCCIE2Ecore description='Organization Edge Gateway'"
 	 * @generated
 	 */
 	String getEdgegateway();
@@ -268,7 +268,7 @@ public interface Machine_VMware_vCloud_Air extends Machine {
 	 * @see #setMemory_size(int)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_vCloud_Air_Memory_size()
 	 * @model default="2048" dataType="org.occiware.clouddesigner.occi.Number"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_VMware_vCloud_Air!memory_size'"
+	 *        annotation="OCCIE2Ecore description='VM Memory Size in MB'"
 	 * @generated
 	 */
 	int getMemory_size();
@@ -296,7 +296,7 @@ public interface Machine_VMware_vCloud_Air extends Machine {
 	 * @see #setVapp_name(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_vCloud_Air_Vapp_name()
 	 * @model default="<autogenerated>" dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_VMware_vCloud_Air!vapp_name'"
+	 *        annotation="OCCIE2Ecore description='vApp Name'"
 	 * @generated
 	 */
 	String getVapp_name();
@@ -324,7 +324,7 @@ public interface Machine_VMware_vCloud_Air extends Machine {
 	 * @see #setOrgvdcnetwork(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_vCloud_Air_Orgvdcnetwork()
 	 * @model default="<vdcid>-default-routed" dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_VMware_vCloud_Air!orgvdcnetwork'"
+	 *        annotation="OCCIE2Ecore description='Organization VDC Network to attach'"
 	 * @generated
 	 */
 	String getOrgvdcnetwork();
@@ -352,7 +352,7 @@ public interface Machine_VMware_vCloud_Air extends Machine {
 	 * @see #setProvision(boolean)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_vCloud_Air_Provision()
 	 * @model default="true" dataType="org.occiware.clouddesigner.occi.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_VMware_vCloud_Air!provision'"
+	 *        annotation="OCCIE2Ecore description='Install Docker binaries'"
 	 * @generated
 	 */
 	boolean isProvision();
@@ -379,7 +379,7 @@ public interface Machine_VMware_vCloud_Air extends Machine {
 	 * @see #setPublicip(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_vCloud_Air_Publicip()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_VMware_vCloud_Air!publicip'"
+	 *        annotation="OCCIE2Ecore description='Org Public IP to use'"
 	 * @generated
 	 */
 	String getPublicip();
@@ -407,7 +407,7 @@ public interface Machine_VMware_vCloud_Air extends Machine {
 	 * @see #setSsh_port(int)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_vCloud_Air_Ssh_port()
 	 * @model default="22" dataType="org.occiware.clouddesigner.occi.Number"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_VMware_vCloud_Air!ssh_port'"
+	 *        annotation="OCCIE2Ecore description='SSH port'"
 	 * @generated
 	 */
 	int getSsh_port();
@@ -434,7 +434,7 @@ public interface Machine_VMware_vCloud_Air extends Machine {
 	 * @see #setVdcid(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_vCloud_Air_Vdcid()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_VMware_vCloud_Air!vdcid'"
+	 *        annotation="OCCIE2Ecore description='Virtual Data Center ID'"
 	 * @generated
 	 */
 	String getVdcid();

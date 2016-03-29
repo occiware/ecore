@@ -23,7 +23,7 @@ package org.occiware.clouddesigner.occi.docker;
  * </ul>
  *
  * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Rackspace()
- * @model
+ * @model annotation="OCCIE2Ecore title='Machine on Rackspace cloud'"
  * @generated
  */
 public interface Machine_Rackspace extends Machine {
@@ -39,7 +39,7 @@ public interface Machine_Rackspace extends Machine {
 	 * @see #setUsername(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Rackspace_Username()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_Rackspace!username'"
+	 *        annotation="OCCIE2Ecore description='Rackspace account username'"
 	 * @generated
 	 */
 	String getUsername();
@@ -66,7 +66,7 @@ public interface Machine_Rackspace extends Machine {
 	 * @see #setApi_key(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Rackspace_Api_key()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_Rackspace!api_key'"
+	 *        annotation="OCCIE2Ecore description='Rackspace API key'"
 	 * @generated
 	 */
 	String getApi_key();
@@ -93,7 +93,7 @@ public interface Machine_Rackspace extends Machine {
 	 * @see #setRegion(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Rackspace_Region()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_Rackspace!region'"
+	 *        annotation="OCCIE2Ecore description='Rackspace region name'"
 	 * @generated
 	 */
 	String getRegion();
@@ -121,7 +121,7 @@ public interface Machine_Rackspace extends Machine {
 	 * @see #setEndpoint_type(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Rackspace_Endpoint_type()
 	 * @model default="publicURL" dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_Rackspace!endpoint_type'"
+	 *        annotation="OCCIE2Ecore description='Rackspace endpoint type (adminURL, internalURL or the default publicURL)'"
 	 * @generated
 	 */
 	String getEndpoint_type();
@@ -149,7 +149,7 @@ public interface Machine_Rackspace extends Machine {
 	 * @see #setImage_id(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Rackspace_Image_id()
 	 * @model default="Ubuntu 14.10 (Utopic Unicorn) (PVHVM)" dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_Rackspace!image_id'"
+	 *        annotation="OCCIE2Ecore description='Rackspace image ID '"
 	 * @generated
 	 */
 	String getImage_id();
@@ -177,7 +177,7 @@ public interface Machine_Rackspace extends Machine {
 	 * @see #setFlavor_id(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Rackspace_Flavor_id()
 	 * @model default="General Purpose 1GB" dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_Rackspace!flavor_id'"
+	 *        annotation="OCCIE2Ecore description='Rackspace flavor ID'"
 	 * @generated
 	 */
 	String getFlavor_id();
@@ -205,7 +205,7 @@ public interface Machine_Rackspace extends Machine {
 	 * @see #setSsh_user(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Rackspace_Ssh_user()
 	 * @model default="root" dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_Rackspace!ssh_user'"
+	 *        annotation="OCCIE2Ecore description='SSH user for the newly booted machine'"
 	 * @generated
 	 */
 	String getSsh_user();
@@ -233,7 +233,7 @@ public interface Machine_Rackspace extends Machine {
 	 * @see #setSsh_port(int)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Rackspace_Ssh_port()
 	 * @model default="22" dataType="org.occiware.clouddesigner.occi.Number"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_Rackspace!ssh_port'"
+	 *        annotation="OCCIE2Ecore description='SSH port for the newly booted machine'"
 	 * @generated
 	 */
 	int getSsh_port();

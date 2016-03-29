@@ -19,7 +19,7 @@ package org.occiware.clouddesigner.occi.docker;
  * </ul>
  *
  * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Digital_Ocean()
- * @model
+ * @model annotation="OCCIE2Ecore title='Machine on Digital Ocean'"
  * @generated
  */
 public interface Machine_Digital_Ocean extends Machine {
@@ -35,7 +35,7 @@ public interface Machine_Digital_Ocean extends Machine {
 	 * @see #setAccess_token(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Digital_Ocean_Access_token()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_Digital_Ocean!access_token'"
+	 *        annotation="OCCIE2Ecore description='Your personal access token for the Digital Ocean API'"
 	 * @generated
 	 */
 	String getAccess_token();
@@ -63,7 +63,7 @@ public interface Machine_Digital_Ocean extends Machine {
 	 * @see #setImage(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Digital_Ocean_Image()
 	 * @model default="docker" dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_Digital_Ocean!image'"
+	 *        annotation="OCCIE2Ecore description='The name of the Digital Ocean image to use'"
 	 * @generated
 	 */
 	String getImage();
@@ -91,7 +91,7 @@ public interface Machine_Digital_Ocean extends Machine {
 	 * @see #setRegion(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Digital_Ocean_Region()
 	 * @model default="nyc3" dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_Digital_Ocean!region'"
+	 *        annotation="OCCIE2Ecore description='The region to create the droplet in'"
 	 * @generated
 	 */
 	String getRegion();
@@ -119,7 +119,7 @@ public interface Machine_Digital_Ocean extends Machine {
 	 * @see #setSize(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Digital_Ocean_Size()
 	 * @model default="512mb" dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_Digital_Ocean!size'"
+	 *        annotation="OCCIE2Ecore description='The size of the Digital Ocean driver (larger than default options are of the form 2gb)'"
 	 * @generated
 	 */
 	String getSize();

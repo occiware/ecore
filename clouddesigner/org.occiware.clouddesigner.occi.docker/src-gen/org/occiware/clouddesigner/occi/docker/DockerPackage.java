@@ -27,6 +27,7 @@ import org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage;
  * @see org.occiware.clouddesigner.occi.docker.DockerFactory
  * @model kind="package"
  *        annotation="http://www.eclipse.org/OCL/Import OCCI='../../org.occiware.clouddesigner.occi/model/OCCI.ecore#/' infrastructure='../../org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.ecore#/'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore invocationDelegates='http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot' settingDelegates='http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot' validationDelegates='http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot'"
  * @generated
  */
 public interface DockerPackage extends EPackage {
@@ -523,114 +524,6 @@ public interface DockerPackage extends EPackage {
 	int CONTAINER_FEATURE_COUNT = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 38;
 
 	/**
-	 * The operation id for the '<em>Start</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTAINER___START = InfrastructurePackage.COMPUTE___START;
-
-	/**
-	 * The operation id for the '<em>Stop</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTAINER___STOP__STOPMETHOD = InfrastructurePackage.COMPUTE___STOP__STOPMETHOD;
-
-	/**
-	 * The operation id for the '<em>Restart</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTAINER___RESTART__RESTARTMETHOD = InfrastructurePackage.COMPUTE___RESTART__RESTARTMETHOD;
-
-	/**
-	 * The operation id for the '<em>Suspend</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTAINER___SUSPEND__SUSPENDMETHOD = InfrastructurePackage.COMPUTE___SUSPEND__SUSPENDMETHOD;
-
-	/**
-	 * The operation id for the '<em>Create</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTAINER___CREATE = InfrastructurePackage.COMPUTE_OPERATION_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Run</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTAINER___RUN = InfrastructurePackage.COMPUTE_OPERATION_COUNT + 1;
-
-	/**
-	 * The operation id for the '<em>Pause</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTAINER___PAUSE = InfrastructurePackage.COMPUTE_OPERATION_COUNT + 2;
-
-	/**
-	 * The operation id for the '<em>Unpause</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTAINER___UNPAUSE = InfrastructurePackage.COMPUTE_OPERATION_COUNT + 3;
-
-	/**
-	 * The operation id for the '<em>Kill</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTAINER___KILL__STRING = InfrastructurePackage.COMPUTE_OPERATION_COUNT + 4;
-
-	/**
-	 * The operation id for the '<em>Container Link Alias Unique</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTAINER___CONTAINER_LINK_ALIAS_UNIQUE__DIAGNOSTICCHAIN_MAP = InfrastructurePackage.COMPUTE_OPERATION_COUNT + 5;
-
-	/**
-	 * The operation id for the '<em>Container No Cycle Between Containers</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTAINER___CONTAINER_NO_CYCLE_BETWEEN_CONTAINERS__DIAGNOSTICCHAIN_MAP = InfrastructurePackage.COMPUTE_OPERATION_COUNT + 6;
-
-	/**
-	 * The number of operations of the '<em>Container</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTAINER_OPERATION_COUNT = InfrastructurePackage.COMPUTE_OPERATION_COUNT + 7;
-
-	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.docker.impl.LinkImpl <em>Link</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -711,42 +604,6 @@ public interface DockerPackage extends EPackage {
 	 * @ordered
 	 */
 	int LINK_FEATURE_COUNT = OCCIPackage.LINK_FEATURE_COUNT + 1;
-
-	/**
-	 * The operation id for the '<em>Link Target As Container</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LINK___LINK_TARGET_AS_CONTAINER__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Link Source As Container</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LINK___LINK_SOURCE_AS_CONTAINER__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 1;
-
-	/**
-	 * The operation id for the '<em>Link Can Only Connect Colocalized Containers</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LINK___LINK_CAN_ONLY_CONNECT_COLOCALIZED_CONTAINERS__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 2;
-
-	/**
-	 * The number of operations of the '<em>Link</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.docker.impl.VolumesfromImpl <em>Volumesfrom</em>}' class.
@@ -831,42 +688,6 @@ public interface DockerPackage extends EPackage {
 	int VOLUMESFROM_FEATURE_COUNT = OCCIPackage.LINK_FEATURE_COUNT + 1;
 
 	/**
-	 * The operation id for the '<em>Volumes From Source As Container</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VOLUMESFROM___VOLUMES_FROM_SOURCE_AS_CONTAINER__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Volumes From Target As Container</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VOLUMESFROM___VOLUMES_FROM_TARGET_AS_CONTAINER__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 1;
-
-	/**
-	 * The operation id for the '<em>Volumes From Can Only Connect Colocalized Containers</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VOLUMESFROM___VOLUMES_FROM_CAN_ONLY_CONNECT_COLOCALIZED_CONTAINERS__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 2;
-
-	/**
-	 * The number of operations of the '<em>Volumesfrom</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VOLUMESFROM_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 3;
-
-	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.docker.impl.ContainsImpl <em>Contains</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -938,15 +759,6 @@ public interface DockerPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONTAINS_FEATURE_COUNT = OCCIPackage.LINK_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>Contains</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTAINS_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.docker.impl.MachineImpl <em>Machine</em>}' class.
@@ -1074,60 +886,6 @@ public interface DockerPackage extends EPackage {
 	 * @ordered
 	 */
 	int MACHINE_FEATURE_COUNT = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 1;
-
-	/**
-	 * The operation id for the '<em>Start</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE___START = InfrastructurePackage.COMPUTE___START;
-
-	/**
-	 * The operation id for the '<em>Stop</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE___STOP__STOPMETHOD = InfrastructurePackage.COMPUTE___STOP__STOPMETHOD;
-
-	/**
-	 * The operation id for the '<em>Restart</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE___RESTART__RESTARTMETHOD = InfrastructurePackage.COMPUTE___RESTART__RESTARTMETHOD;
-
-	/**
-	 * The operation id for the '<em>Suspend</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE___SUSPEND__SUSPENDMETHOD = InfrastructurePackage.COMPUTE___SUSPEND__SUSPENDMETHOD;
-
-	/**
-	 * The operation id for the '<em>Machine Name Unique</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE___MACHINE_NAME_UNIQUE__DIAGNOSTICCHAIN_MAP = InfrastructurePackage.COMPUTE_OPERATION_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>Machine</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_OPERATION_COUNT = InfrastructurePackage.COMPUTE_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.docker.impl.Machine_Amazon_EC2Impl <em>Machine Amazon EC2</em>}' class.
@@ -1356,60 +1114,6 @@ public interface DockerPackage extends EPackage {
 	int MACHINE_AMAZON_EC2_FEATURE_COUNT = MACHINE_FEATURE_COUNT + 11;
 
 	/**
-	 * The operation id for the '<em>Start</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_AMAZON_EC2___START = MACHINE___START;
-
-	/**
-	 * The operation id for the '<em>Stop</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_AMAZON_EC2___STOP__STOPMETHOD = MACHINE___STOP__STOPMETHOD;
-
-	/**
-	 * The operation id for the '<em>Restart</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_AMAZON_EC2___RESTART__RESTARTMETHOD = MACHINE___RESTART__RESTARTMETHOD;
-
-	/**
-	 * The operation id for the '<em>Suspend</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_AMAZON_EC2___SUSPEND__SUSPENDMETHOD = MACHINE___SUSPEND__SUSPENDMETHOD;
-
-	/**
-	 * The operation id for the '<em>Machine Name Unique</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_AMAZON_EC2___MACHINE_NAME_UNIQUE__DIAGNOSTICCHAIN_MAP = MACHINE___MACHINE_NAME_UNIQUE__DIAGNOSTICCHAIN_MAP;
-
-	/**
-	 * The number of operations of the '<em>Machine Amazon EC2</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_AMAZON_EC2_OPERATION_COUNT = MACHINE_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.docker.impl.Machine_Digital_OceanImpl <em>Machine Digital Ocean</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1571,60 +1275,6 @@ public interface DockerPackage extends EPackage {
 	 * @ordered
 	 */
 	int MACHINE_DIGITAL_OCEAN_FEATURE_COUNT = MACHINE_FEATURE_COUNT + 4;
-
-	/**
-	 * The operation id for the '<em>Start</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_DIGITAL_OCEAN___START = MACHINE___START;
-
-	/**
-	 * The operation id for the '<em>Stop</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_DIGITAL_OCEAN___STOP__STOPMETHOD = MACHINE___STOP__STOPMETHOD;
-
-	/**
-	 * The operation id for the '<em>Restart</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_DIGITAL_OCEAN___RESTART__RESTARTMETHOD = MACHINE___RESTART__RESTARTMETHOD;
-
-	/**
-	 * The operation id for the '<em>Suspend</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_DIGITAL_OCEAN___SUSPEND__SUSPENDMETHOD = MACHINE___SUSPEND__SUSPENDMETHOD;
-
-	/**
-	 * The operation id for the '<em>Machine Name Unique</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_DIGITAL_OCEAN___MACHINE_NAME_UNIQUE__DIAGNOSTICCHAIN_MAP = MACHINE___MACHINE_NAME_UNIQUE__DIAGNOSTICCHAIN_MAP;
-
-	/**
-	 * The number of operations of the '<em>Machine Digital Ocean</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_DIGITAL_OCEAN_OPERATION_COUNT = MACHINE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.docker.impl.Machine_Google_Compute_EngineImpl <em>Machine Google Compute Engine</em>}' class.
@@ -1797,60 +1447,6 @@ public interface DockerPackage extends EPackage {
 	 * @ordered
 	 */
 	int MACHINE_GOOGLE_COMPUTE_ENGINE_FEATURE_COUNT = MACHINE_FEATURE_COUNT + 5;
-
-	/**
-	 * The operation id for the '<em>Start</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_GOOGLE_COMPUTE_ENGINE___START = MACHINE___START;
-
-	/**
-	 * The operation id for the '<em>Stop</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_GOOGLE_COMPUTE_ENGINE___STOP__STOPMETHOD = MACHINE___STOP__STOPMETHOD;
-
-	/**
-	 * The operation id for the '<em>Restart</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_GOOGLE_COMPUTE_ENGINE___RESTART__RESTARTMETHOD = MACHINE___RESTART__RESTARTMETHOD;
-
-	/**
-	 * The operation id for the '<em>Suspend</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_GOOGLE_COMPUTE_ENGINE___SUSPEND__SUSPENDMETHOD = MACHINE___SUSPEND__SUSPENDMETHOD;
-
-	/**
-	 * The operation id for the '<em>Machine Name Unique</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_GOOGLE_COMPUTE_ENGINE___MACHINE_NAME_UNIQUE__DIAGNOSTICCHAIN_MAP = MACHINE___MACHINE_NAME_UNIQUE__DIAGNOSTICCHAIN_MAP;
-
-	/**
-	 * The number of operations of the '<em>Machine Google Compute Engine</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_GOOGLE_COMPUTE_ENGINE_OPERATION_COUNT = MACHINE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.docker.impl.Machine_IBM_SoftLayerImpl <em>Machine IBM Soft Layer</em>}' class.
@@ -2079,60 +1675,6 @@ public interface DockerPackage extends EPackage {
 	int MACHINE_IBM_SOFT_LAYER_FEATURE_COUNT = MACHINE_FEATURE_COUNT + 11;
 
 	/**
-	 * The operation id for the '<em>Start</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_IBM_SOFT_LAYER___START = MACHINE___START;
-
-	/**
-	 * The operation id for the '<em>Stop</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_IBM_SOFT_LAYER___STOP__STOPMETHOD = MACHINE___STOP__STOPMETHOD;
-
-	/**
-	 * The operation id for the '<em>Restart</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_IBM_SOFT_LAYER___RESTART__RESTARTMETHOD = MACHINE___RESTART__RESTARTMETHOD;
-
-	/**
-	 * The operation id for the '<em>Suspend</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_IBM_SOFT_LAYER___SUSPEND__SUSPENDMETHOD = MACHINE___SUSPEND__SUSPENDMETHOD;
-
-	/**
-	 * The operation id for the '<em>Machine Name Unique</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_IBM_SOFT_LAYER___MACHINE_NAME_UNIQUE__DIAGNOSTICCHAIN_MAP = MACHINE___MACHINE_NAME_UNIQUE__DIAGNOSTICCHAIN_MAP;
-
-	/**
-	 * The number of operations of the '<em>Machine IBM Soft Layer</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_IBM_SOFT_LAYER_OPERATION_COUNT = MACHINE_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.docker.impl.Machine_Microsoft_AzureImpl <em>Machine Microsoft Azure</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2276,60 +1818,6 @@ public interface DockerPackage extends EPackage {
 	 * @ordered
 	 */
 	int MACHINE_MICROSOFT_AZURE_FEATURE_COUNT = MACHINE_FEATURE_COUNT + 2;
-
-	/**
-	 * The operation id for the '<em>Start</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_MICROSOFT_AZURE___START = MACHINE___START;
-
-	/**
-	 * The operation id for the '<em>Stop</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_MICROSOFT_AZURE___STOP__STOPMETHOD = MACHINE___STOP__STOPMETHOD;
-
-	/**
-	 * The operation id for the '<em>Restart</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_MICROSOFT_AZURE___RESTART__RESTARTMETHOD = MACHINE___RESTART__RESTARTMETHOD;
-
-	/**
-	 * The operation id for the '<em>Suspend</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_MICROSOFT_AZURE___SUSPEND__SUSPENDMETHOD = MACHINE___SUSPEND__SUSPENDMETHOD;
-
-	/**
-	 * The operation id for the '<em>Machine Name Unique</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_MICROSOFT_AZURE___MACHINE_NAME_UNIQUE__DIAGNOSTICCHAIN_MAP = MACHINE___MACHINE_NAME_UNIQUE__DIAGNOSTICCHAIN_MAP;
-
-	/**
-	 * The number of operations of the '<em>Machine Microsoft Azure</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_MICROSOFT_AZURE_OPERATION_COUNT = MACHINE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.docker.impl.Machine_Microsoft_Hyper_VImpl <em>Machine Microsoft Hyper V</em>}' class.
@@ -2493,60 +1981,6 @@ public interface DockerPackage extends EPackage {
 	 * @ordered
 	 */
 	int MACHINE_MICROSOFT_HYPER_V_FEATURE_COUNT = MACHINE_FEATURE_COUNT + 4;
-
-	/**
-	 * The operation id for the '<em>Start</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_MICROSOFT_HYPER_V___START = MACHINE___START;
-
-	/**
-	 * The operation id for the '<em>Stop</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_MICROSOFT_HYPER_V___STOP__STOPMETHOD = MACHINE___STOP__STOPMETHOD;
-
-	/**
-	 * The operation id for the '<em>Restart</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_MICROSOFT_HYPER_V___RESTART__RESTARTMETHOD = MACHINE___RESTART__RESTARTMETHOD;
-
-	/**
-	 * The operation id for the '<em>Suspend</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_MICROSOFT_HYPER_V___SUSPEND__SUSPENDMETHOD = MACHINE___SUSPEND__SUSPENDMETHOD;
-
-	/**
-	 * The operation id for the '<em>Machine Name Unique</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_MICROSOFT_HYPER_V___MACHINE_NAME_UNIQUE__DIAGNOSTICCHAIN_MAP = MACHINE___MACHINE_NAME_UNIQUE__DIAGNOSTICCHAIN_MAP;
-
-	/**
-	 * The number of operations of the '<em>Machine Microsoft Hyper V</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_MICROSOFT_HYPER_V_OPERATION_COUNT = MACHINE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.docker.impl.Machine_OpenStackImpl <em>Machine Open Stack</em>}' class.
@@ -2784,60 +2218,6 @@ public interface DockerPackage extends EPackage {
 	int MACHINE_OPEN_STACK_FEATURE_COUNT = MACHINE_FEATURE_COUNT + 12;
 
 	/**
-	 * The operation id for the '<em>Start</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_OPEN_STACK___START = MACHINE___START;
-
-	/**
-	 * The operation id for the '<em>Stop</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_OPEN_STACK___STOP__STOPMETHOD = MACHINE___STOP__STOPMETHOD;
-
-	/**
-	 * The operation id for the '<em>Restart</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_OPEN_STACK___RESTART__RESTARTMETHOD = MACHINE___RESTART__RESTARTMETHOD;
-
-	/**
-	 * The operation id for the '<em>Suspend</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_OPEN_STACK___SUSPEND__SUSPENDMETHOD = MACHINE___SUSPEND__SUSPENDMETHOD;
-
-	/**
-	 * The operation id for the '<em>Machine Name Unique</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_OPEN_STACK___MACHINE_NAME_UNIQUE__DIAGNOSTICCHAIN_MAP = MACHINE___MACHINE_NAME_UNIQUE__DIAGNOSTICCHAIN_MAP;
-
-	/**
-	 * The number of operations of the '<em>Machine Open Stack</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_OPEN_STACK_OPERATION_COUNT = MACHINE_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.docker.impl.Machine_RackspaceImpl <em>Machine Rackspace</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3037,60 +2417,6 @@ public interface DockerPackage extends EPackage {
 	int MACHINE_RACKSPACE_FEATURE_COUNT = MACHINE_FEATURE_COUNT + 8;
 
 	/**
-	 * The operation id for the '<em>Start</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_RACKSPACE___START = MACHINE___START;
-
-	/**
-	 * The operation id for the '<em>Stop</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_RACKSPACE___STOP__STOPMETHOD = MACHINE___STOP__STOPMETHOD;
-
-	/**
-	 * The operation id for the '<em>Restart</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_RACKSPACE___RESTART__RESTARTMETHOD = MACHINE___RESTART__RESTARTMETHOD;
-
-	/**
-	 * The operation id for the '<em>Suspend</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_RACKSPACE___SUSPEND__SUSPENDMETHOD = MACHINE___SUSPEND__SUSPENDMETHOD;
-
-	/**
-	 * The operation id for the '<em>Machine Name Unique</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_RACKSPACE___MACHINE_NAME_UNIQUE__DIAGNOSTICCHAIN_MAP = MACHINE___MACHINE_NAME_UNIQUE__DIAGNOSTICCHAIN_MAP;
-
-	/**
-	 * The number of operations of the '<em>Machine Rackspace</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_RACKSPACE_OPERATION_COUNT = MACHINE_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.docker.impl.Machine_VirtualBoxImpl <em>Machine Virtual Box</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3234,69 +2560,6 @@ public interface DockerPackage extends EPackage {
 	 * @ordered
 	 */
 	int MACHINE_VIRTUAL_BOX_FEATURE_COUNT = MACHINE_FEATURE_COUNT + 2;
-
-	/**
-	 * The operation id for the '<em>Start</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_VIRTUAL_BOX___START = MACHINE___START;
-
-	/**
-	 * The operation id for the '<em>Stop</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_VIRTUAL_BOX___STOP__STOPMETHOD = MACHINE___STOP__STOPMETHOD;
-
-	/**
-	 * The operation id for the '<em>Restart</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_VIRTUAL_BOX___RESTART__RESTARTMETHOD = MACHINE___RESTART__RESTARTMETHOD;
-
-	/**
-	 * The operation id for the '<em>Suspend</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_VIRTUAL_BOX___SUSPEND__SUSPENDMETHOD = MACHINE___SUSPEND__SUSPENDMETHOD;
-
-	/**
-	 * The operation id for the '<em>Machine Name Unique</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_VIRTUAL_BOX___MACHINE_NAME_UNIQUE__DIAGNOSTICCHAIN_MAP = MACHINE___MACHINE_NAME_UNIQUE__DIAGNOSTICCHAIN_MAP;
-
-	/**
-	 * The operation id for the '<em>Containers Used Too Memory</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_VIRTUAL_BOX___CONTAINERS_USED_TOO_MEMORY__DIAGNOSTICCHAIN_MAP = MACHINE_OPERATION_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>Machine Virtual Box</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_VIRTUAL_BOX_OPERATION_COUNT = MACHINE_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.docker.impl.Machine_VMware_FusionImpl <em>Machine VMware Fusion</em>}' class.
@@ -3451,60 +2714,6 @@ public interface DockerPackage extends EPackage {
 	 * @ordered
 	 */
 	int MACHINE_VMWARE_FUSION_FEATURE_COUNT = MACHINE_FEATURE_COUNT + 3;
-
-	/**
-	 * The operation id for the '<em>Start</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_VMWARE_FUSION___START = MACHINE___START;
-
-	/**
-	 * The operation id for the '<em>Stop</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_VMWARE_FUSION___STOP__STOPMETHOD = MACHINE___STOP__STOPMETHOD;
-
-	/**
-	 * The operation id for the '<em>Restart</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_VMWARE_FUSION___RESTART__RESTARTMETHOD = MACHINE___RESTART__RESTARTMETHOD;
-
-	/**
-	 * The operation id for the '<em>Suspend</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_VMWARE_FUSION___SUSPEND__SUSPENDMETHOD = MACHINE___SUSPEND__SUSPENDMETHOD;
-
-	/**
-	 * The operation id for the '<em>Machine Name Unique</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_VMWARE_FUSION___MACHINE_NAME_UNIQUE__DIAGNOSTICCHAIN_MAP = MACHINE___MACHINE_NAME_UNIQUE__DIAGNOSTICCHAIN_MAP;
-
-	/**
-	 * The number of operations of the '<em>Machine VMware Fusion</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_VMWARE_FUSION_OPERATION_COUNT = MACHINE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.docker.impl.Machine_VMware_vCloud_AirImpl <em>Machine VMware vCloud Air</em>}' class.
@@ -3769,60 +2978,6 @@ public interface DockerPackage extends EPackage {
 	int MACHINE_VMWARE_VCLOUD_AIR_FEATURE_COUNT = MACHINE_FEATURE_COUNT + 15;
 
 	/**
-	 * The operation id for the '<em>Start</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_VMWARE_VCLOUD_AIR___START = MACHINE___START;
-
-	/**
-	 * The operation id for the '<em>Stop</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_VMWARE_VCLOUD_AIR___STOP__STOPMETHOD = MACHINE___STOP__STOPMETHOD;
-
-	/**
-	 * The operation id for the '<em>Restart</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_VMWARE_VCLOUD_AIR___RESTART__RESTARTMETHOD = MACHINE___RESTART__RESTARTMETHOD;
-
-	/**
-	 * The operation id for the '<em>Suspend</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_VMWARE_VCLOUD_AIR___SUSPEND__SUSPENDMETHOD = MACHINE___SUSPEND__SUSPENDMETHOD;
-
-	/**
-	 * The operation id for the '<em>Machine Name Unique</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_VMWARE_VCLOUD_AIR___MACHINE_NAME_UNIQUE__DIAGNOSTICCHAIN_MAP = MACHINE___MACHINE_NAME_UNIQUE__DIAGNOSTICCHAIN_MAP;
-
-	/**
-	 * The number of operations of the '<em>Machine VMware vCloud Air</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_VMWARE_VCLOUD_AIR_OPERATION_COUNT = MACHINE_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.docker.impl.Machine_VMware_vSphereImpl <em>Machine VMware vSphere</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4056,60 +3211,6 @@ public interface DockerPackage extends EPackage {
 	 * @ordered
 	 */
 	int MACHINE_VMWARE_VSPHERE_FEATURE_COUNT = MACHINE_FEATURE_COUNT + 12;
-
-	/**
-	 * The operation id for the '<em>Start</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_VMWARE_VSPHERE___START = MACHINE___START;
-
-	/**
-	 * The operation id for the '<em>Stop</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_VMWARE_VSPHERE___STOP__STOPMETHOD = MACHINE___STOP__STOPMETHOD;
-
-	/**
-	 * The operation id for the '<em>Restart</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_VMWARE_VSPHERE___RESTART__RESTARTMETHOD = MACHINE___RESTART__RESTARTMETHOD;
-
-	/**
-	 * The operation id for the '<em>Suspend</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_VMWARE_VSPHERE___SUSPEND__SUSPENDMETHOD = MACHINE___SUSPEND__SUSPENDMETHOD;
-
-	/**
-	 * The operation id for the '<em>Machine Name Unique</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_VMWARE_VSPHERE___MACHINE_NAME_UNIQUE__DIAGNOSTICCHAIN_MAP = MACHINE___MACHINE_NAME_UNIQUE__DIAGNOSTICCHAIN_MAP;
-
-	/**
-	 * The number of operations of the '<em>Machine VMware vSphere</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_VMWARE_VSPHERE_OPERATION_COUNT = MACHINE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.docker.Mode <em>Mode</em>}' enum.
@@ -4551,76 +3652,6 @@ public interface DockerPackage extends EPackage {
 	EAttribute getContainer_Read_only();
 
 	/**
-	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.docker.Container#create() <em>Create</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Create</em>' operation.
-	 * @see org.occiware.clouddesigner.occi.docker.Container#create()
-	 * @generated
-	 */
-	EOperation getContainer__Create();
-
-	/**
-	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.docker.Container#run() <em>Run</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Run</em>' operation.
-	 * @see org.occiware.clouddesigner.occi.docker.Container#run()
-	 * @generated
-	 */
-	EOperation getContainer__Run();
-
-	/**
-	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.docker.Container#pause() <em>Pause</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Pause</em>' operation.
-	 * @see org.occiware.clouddesigner.occi.docker.Container#pause()
-	 * @generated
-	 */
-	EOperation getContainer__Pause();
-
-	/**
-	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.docker.Container#unpause() <em>Unpause</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Unpause</em>' operation.
-	 * @see org.occiware.clouddesigner.occi.docker.Container#unpause()
-	 * @generated
-	 */
-	EOperation getContainer__Unpause();
-
-	/**
-	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.docker.Container#kill(java.lang.String) <em>Kill</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Kill</em>' operation.
-	 * @see org.occiware.clouddesigner.occi.docker.Container#kill(java.lang.String)
-	 * @generated
-	 */
-	EOperation getContainer__Kill__String();
-
-	/**
-	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.docker.Container#ContainerLinkAliasUnique(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Container Link Alias Unique</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Container Link Alias Unique</em>' operation.
-	 * @see org.occiware.clouddesigner.occi.docker.Container#ContainerLinkAliasUnique(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getContainer__ContainerLinkAliasUnique__DiagnosticChain_Map();
-
-	/**
-	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.docker.Container#ContainerNoCycleBetweenContainers(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Container No Cycle Between Containers</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Container No Cycle Between Containers</em>' operation.
-	 * @see org.occiware.clouddesigner.occi.docker.Container#ContainerNoCycleBetweenContainers(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getContainer__ContainerNoCycleBetweenContainers__DiagnosticChain_Map();
-
-	/**
 	 * Returns the meta object for class '{@link org.occiware.clouddesigner.occi.docker.Link <em>Link</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4642,36 +3673,6 @@ public interface DockerPackage extends EPackage {
 	EAttribute getLink_Alias();
 
 	/**
-	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.docker.Link#LinkTargetAsContainer(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Link Target As Container</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Link Target As Container</em>' operation.
-	 * @see org.occiware.clouddesigner.occi.docker.Link#LinkTargetAsContainer(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getLink__LinkTargetAsContainer__DiagnosticChain_Map();
-
-	/**
-	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.docker.Link#LinkSourceAsContainer(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Link Source As Container</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Link Source As Container</em>' operation.
-	 * @see org.occiware.clouddesigner.occi.docker.Link#LinkSourceAsContainer(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getLink__LinkSourceAsContainer__DiagnosticChain_Map();
-
-	/**
-	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.docker.Link#LinkCanOnlyConnectColocalizedContainers(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Link Can Only Connect Colocalized Containers</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Link Can Only Connect Colocalized Containers</em>' operation.
-	 * @see org.occiware.clouddesigner.occi.docker.Link#LinkCanOnlyConnectColocalizedContainers(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getLink__LinkCanOnlyConnectColocalizedContainers__DiagnosticChain_Map();
-
-	/**
 	 * Returns the meta object for class '{@link org.occiware.clouddesigner.occi.docker.Volumesfrom <em>Volumesfrom</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4691,36 +3692,6 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getVolumesfrom_Mode();
-
-	/**
-	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.docker.Volumesfrom#VolumesFromSourceAsContainer(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Volumes From Source As Container</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Volumes From Source As Container</em>' operation.
-	 * @see org.occiware.clouddesigner.occi.docker.Volumesfrom#VolumesFromSourceAsContainer(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getVolumesfrom__VolumesFromSourceAsContainer__DiagnosticChain_Map();
-
-	/**
-	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.docker.Volumesfrom#VolumesFromTargetAsContainer(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Volumes From Target As Container</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Volumes From Target As Container</em>' operation.
-	 * @see org.occiware.clouddesigner.occi.docker.Volumesfrom#VolumesFromTargetAsContainer(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getVolumesfrom__VolumesFromTargetAsContainer__DiagnosticChain_Map();
-
-	/**
-	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.docker.Volumesfrom#VolumesFromCanOnlyConnectColocalizedContainers(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Volumes From Can Only Connect Colocalized Containers</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Volumes From Can Only Connect Colocalized Containers</em>' operation.
-	 * @see org.occiware.clouddesigner.occi.docker.Volumesfrom#VolumesFromCanOnlyConnectColocalizedContainers(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getVolumesfrom__VolumesFromCanOnlyConnectColocalizedContainers__DiagnosticChain_Map();
 
 	/**
 	 * Returns the meta object for class '{@link org.occiware.clouddesigner.occi.docker.Contains <em>Contains</em>}'.
@@ -4752,16 +3723,6 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getMachine_Name();
-
-	/**
-	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.docker.Machine#MachineNameUnique(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Machine Name Unique</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Machine Name Unique</em>' operation.
-	 * @see org.occiware.clouddesigner.occi.docker.Machine#MachineNameUnique(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getMachine__MachineNameUnique__DiagnosticChain_Map();
 
 	/**
 	 * Returns the meta object for class '{@link org.occiware.clouddesigner.occi.docker.Machine_Amazon_EC2 <em>Machine Amazon EC2</em>}'.
@@ -5503,16 +4464,6 @@ public interface DockerPackage extends EPackage {
 	EAttribute getMachine_VirtualBox_Disk_size();
 
 	/**
-	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.docker.Machine_VirtualBox#ContainersUsedTooMemory(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Containers Used Too Memory</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Containers Used Too Memory</em>' operation.
-	 * @see org.occiware.clouddesigner.occi.docker.Machine_VirtualBox#ContainersUsedTooMemory(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getMachine_VirtualBox__ContainersUsedTooMemory__DiagnosticChain_Map();
-
-	/**
 	 * Returns the meta object for class '{@link org.occiware.clouddesigner.occi.docker.Machine_VMware_Fusion <em>Machine VMware Fusion</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6220,62 +5171,6 @@ public interface DockerPackage extends EPackage {
 		EAttribute CONTAINER__READ_ONLY = eINSTANCE.getContainer_Read_only();
 
 		/**
-		 * The meta object literal for the '<em><b>Create</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation CONTAINER___CREATE = eINSTANCE.getContainer__Create();
-
-		/**
-		 * The meta object literal for the '<em><b>Run</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation CONTAINER___RUN = eINSTANCE.getContainer__Run();
-
-		/**
-		 * The meta object literal for the '<em><b>Pause</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation CONTAINER___PAUSE = eINSTANCE.getContainer__Pause();
-
-		/**
-		 * The meta object literal for the '<em><b>Unpause</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation CONTAINER___UNPAUSE = eINSTANCE.getContainer__Unpause();
-
-		/**
-		 * The meta object literal for the '<em><b>Kill</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation CONTAINER___KILL__STRING = eINSTANCE.getContainer__Kill__String();
-
-		/**
-		 * The meta object literal for the '<em><b>Container Link Alias Unique</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation CONTAINER___CONTAINER_LINK_ALIAS_UNIQUE__DIAGNOSTICCHAIN_MAP = eINSTANCE.getContainer__ContainerLinkAliasUnique__DiagnosticChain_Map();
-
-		/**
-		 * The meta object literal for the '<em><b>Container No Cycle Between Containers</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation CONTAINER___CONTAINER_NO_CYCLE_BETWEEN_CONTAINERS__DIAGNOSTICCHAIN_MAP = eINSTANCE.getContainer__ContainerNoCycleBetweenContainers__DiagnosticChain_Map();
-
-		/**
 		 * The meta object literal for the '{@link org.occiware.clouddesigner.occi.docker.impl.LinkImpl <em>Link</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -6294,30 +5189,6 @@ public interface DockerPackage extends EPackage {
 		EAttribute LINK__ALIAS = eINSTANCE.getLink_Alias();
 
 		/**
-		 * The meta object literal for the '<em><b>Link Target As Container</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation LINK___LINK_TARGET_AS_CONTAINER__DIAGNOSTICCHAIN_MAP = eINSTANCE.getLink__LinkTargetAsContainer__DiagnosticChain_Map();
-
-		/**
-		 * The meta object literal for the '<em><b>Link Source As Container</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation LINK___LINK_SOURCE_AS_CONTAINER__DIAGNOSTICCHAIN_MAP = eINSTANCE.getLink__LinkSourceAsContainer__DiagnosticChain_Map();
-
-		/**
-		 * The meta object literal for the '<em><b>Link Can Only Connect Colocalized Containers</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation LINK___LINK_CAN_ONLY_CONNECT_COLOCALIZED_CONTAINERS__DIAGNOSTICCHAIN_MAP = eINSTANCE.getLink__LinkCanOnlyConnectColocalizedContainers__DiagnosticChain_Map();
-
-		/**
 		 * The meta object literal for the '{@link org.occiware.clouddesigner.occi.docker.impl.VolumesfromImpl <em>Volumesfrom</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -6334,30 +5205,6 @@ public interface DockerPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute VOLUMESFROM__MODE = eINSTANCE.getVolumesfrom_Mode();
-
-		/**
-		 * The meta object literal for the '<em><b>Volumes From Source As Container</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation VOLUMESFROM___VOLUMES_FROM_SOURCE_AS_CONTAINER__DIAGNOSTICCHAIN_MAP = eINSTANCE.getVolumesfrom__VolumesFromSourceAsContainer__DiagnosticChain_Map();
-
-		/**
-		 * The meta object literal for the '<em><b>Volumes From Target As Container</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation VOLUMESFROM___VOLUMES_FROM_TARGET_AS_CONTAINER__DIAGNOSTICCHAIN_MAP = eINSTANCE.getVolumesfrom__VolumesFromTargetAsContainer__DiagnosticChain_Map();
-
-		/**
-		 * The meta object literal for the '<em><b>Volumes From Can Only Connect Colocalized Containers</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation VOLUMESFROM___VOLUMES_FROM_CAN_ONLY_CONNECT_COLOCALIZED_CONTAINERS__DIAGNOSTICCHAIN_MAP = eINSTANCE.getVolumesfrom__VolumesFromCanOnlyConnectColocalizedContainers__DiagnosticChain_Map();
 
 		/**
 		 * The meta object literal for the '{@link org.occiware.clouddesigner.occi.docker.impl.ContainsImpl <em>Contains</em>}' class.
@@ -6386,14 +5233,6 @@ public interface DockerPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute MACHINE__NAME = eINSTANCE.getMachine_Name();
-
-		/**
-		 * The meta object literal for the '<em><b>Machine Name Unique</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation MACHINE___MACHINE_NAME_UNIQUE__DIAGNOSTICCHAIN_MAP = eINSTANCE.getMachine__MachineNameUnique__DiagnosticChain_Map();
 
 		/**
 		 * The meta object literal for the '{@link org.occiware.clouddesigner.occi.docker.impl.Machine_Amazon_EC2Impl <em>Machine Amazon EC2</em>}' class.
@@ -6956,14 +5795,6 @@ public interface DockerPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute MACHINE_VIRTUAL_BOX__DISK_SIZE = eINSTANCE.getMachine_VirtualBox_Disk_size();
-
-		/**
-		 * The meta object literal for the '<em><b>Containers Used Too Memory</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation MACHINE_VIRTUAL_BOX___CONTAINERS_USED_TOO_MEMORY__DIAGNOSTICCHAIN_MAP = eINSTANCE.getMachine_VirtualBox__ContainersUsedTooMemory__DiagnosticChain_Map();
 
 		/**
 		 * The meta object literal for the '{@link org.occiware.clouddesigner.occi.docker.impl.Machine_VMware_FusionImpl <em>Machine VMware Fusion</em>}' class.

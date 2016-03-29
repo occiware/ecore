@@ -4,6 +4,7 @@ package org.occiware.clouddesigner.occi.docker.util;
 
 import java.util.Map;
 
+import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.ResourceLocator;
 
@@ -42,92 +43,12 @@ public class DockerValidator extends EObjectValidator {
 	public static final String DIAGNOSTIC_SOURCE = "org.occiware.clouddesigner.occi.docker";
 
 	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Container Link Alias Unique' of 'Container'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int CONTAINER__CONTAINER_LINK_ALIAS_UNIQUE = 1;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Container No Cycle Between Containers' of 'Container'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int CONTAINER__CONTAINER_NO_CYCLE_BETWEEN_CONTAINERS = 2;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Link Target As Container' of 'Link'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int LINK__LINK_TARGET_AS_CONTAINER = 3;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Link Source As Container' of 'Link'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int LINK__LINK_SOURCE_AS_CONTAINER = 4;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Link Can Only Connect Colocalized Containers' of 'Link'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int LINK__LINK_CAN_ONLY_CONNECT_COLOCALIZED_CONTAINERS = 5;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Volumes From Source As Container' of 'Volumesfrom'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int VOLUMESFROM__VOLUMES_FROM_SOURCE_AS_CONTAINER = 6;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Volumes From Target As Container' of 'Volumesfrom'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int VOLUMESFROM__VOLUMES_FROM_TARGET_AS_CONTAINER = 7;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Volumes From Can Only Connect Colocalized Containers' of 'Volumesfrom'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int VOLUMESFROM__VOLUMES_FROM_CAN_ONLY_CONNECT_COLOCALIZED_CONTAINERS = 8;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Machine Name Unique' of 'Machine'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int MACHINE__MACHINE_NAME_UNIQUE = 9;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Containers Used Too Memory' of 'Machine Virtual Box'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int MACHINE_VIRTUAL_BOX__CONTAINERS_USED_TOO_MEMORY = 10;
-
-	/**
 	 * A constant with a fixed name that can be used as the base value for additional hand written constants.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final int GENERATED_DIAGNOSTIC_CODE_COUNT = 10;
+	private static final int GENERATED_DIAGNOSTIC_CODE_COUNT = 0;
 
 	/**
 	 * A constant with a fixed name that can be used as the base value for additional hand written constants in a derived class.
@@ -242,13 +163,33 @@ public class DockerValidator extends EObjectValidator {
 	}
 
 	/**
+	 * The cached validation expression for the ContainerNoCycleBetweenContainers constraint of '<em>Container</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String CONTAINER__CONTAINER_NO_CYCLE_BETWEEN_CONTAINERS__EEXPRESSION = "\n" +
+		"\t\t\tlinks->closure(links->select(oclIsKindOf(Link) or oclIsKindOf(Volumesfrom)).target.links->select(oclIsKindOf(Link) or oclIsKindOf(Volumesfrom))).target->excludes(self)";
+
+	/**
 	 * Validates the ContainerLinkAliasUnique constraint of '<em>Container</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public boolean validateContainer_ContainerLinkAliasUnique(Container container, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return container.ContainerLinkAliasUnique(diagnostics, context);
+		return
+			validate
+				(DockerPackage.Literals.CONTAINER,
+				 container,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "ContainerLinkAliasUnique",
+				 CONTAINER__CONTAINER_LINK_ALIAS_UNIQUE__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
 	}
 
 	/**
@@ -258,8 +199,28 @@ public class DockerValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateContainer_ContainerNoCycleBetweenContainers(Container container, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return container.ContainerNoCycleBetweenContainers(diagnostics, context);
+		return
+			validate
+				(DockerPackage.Literals.CONTAINER,
+				 container,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "ContainerNoCycleBetweenContainers",
+				 CONTAINER__CONTAINER_NO_CYCLE_BETWEEN_CONTAINERS__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
 	}
+
+	/**
+	 * The cached validation expression for the ContainerLinkAliasUnique constraint of '<em>Container</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String CONTAINER__CONTAINER_LINK_ALIAS_UNIQUE__EEXPRESSION = "\n" +
+		"\t\t\tlinks->select(oclIsKindOf(Link))->isUnique(oclAsType(docker::Link).alias)";
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -287,14 +248,43 @@ public class DockerValidator extends EObjectValidator {
 	}
 
 	/**
+	 * The cached validation expression for the LinkSourceAsContainer constraint of '<em>Link</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String LINK__LINK_SOURCE_AS_CONTAINER__EEXPRESSION = "source.oclIsKindOf(Container)";
+
+	/**
 	 * Validates the LinkTargetAsContainer constraint of '<em>Link</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public boolean validateLink_LinkTargetAsContainer(Link link, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return link.LinkTargetAsContainer(diagnostics, context);
+		return
+			validate
+				(DockerPackage.Literals.LINK,
+				 link,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "LinkTargetAsContainer",
+				 LINK__LINK_TARGET_AS_CONTAINER__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
 	}
+
+	/**
+	 * The cached validation expression for the LinkCanOnlyConnectColocalizedContainers constraint of '<em>Link</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String LINK__LINK_CAN_ONLY_CONNECT_COLOCALIZED_CONTAINERS__EEXPRESSION = "\n" +
+		"\t\t\tContains.allInstances()->select(contains | contains.target = self.source).source = \n" +
+		"\t\t\tContains.allInstances()->select(contains | contains.target = self.target).source";
 
 	/**
 	 * Validates the LinkSourceAsContainer constraint of '<em>Link</em>'.
@@ -303,8 +293,27 @@ public class DockerValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateLink_LinkSourceAsContainer(Link link, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return link.LinkSourceAsContainer(diagnostics, context);
+		return
+			validate
+				(DockerPackage.Literals.LINK,
+				 link,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "LinkSourceAsContainer",
+				 LINK__LINK_SOURCE_AS_CONTAINER__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
 	}
+
+	/**
+	 * The cached validation expression for the LinkTargetAsContainer constraint of '<em>Link</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String LINK__LINK_TARGET_AS_CONTAINER__EEXPRESSION = "target.oclIsKindOf(Container)";
 
 	/**
 	 * Validates the LinkCanOnlyConnectColocalizedContainers constraint of '<em>Link</em>'.
@@ -313,7 +322,18 @@ public class DockerValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateLink_LinkCanOnlyConnectColocalizedContainers(Link link, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return link.LinkCanOnlyConnectColocalizedContainers(diagnostics, context);
+		return
+			validate
+				(DockerPackage.Literals.LINK,
+				 link,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "LinkCanOnlyConnectColocalizedContainers",
+				 LINK__LINK_CAN_ONLY_CONNECT_COLOCALIZED_CONTAINERS__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
 	}
 
 	/**
@@ -342,14 +362,41 @@ public class DockerValidator extends EObjectValidator {
 	}
 
 	/**
+	 * The cached validation expression for the VolumesFromSourceAsContainer constraint of '<em>Volumesfrom</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String VOLUMESFROM__VOLUMES_FROM_SOURCE_AS_CONTAINER__EEXPRESSION = "source.oclIsKindOf(Container)";
+
+	/**
 	 * Validates the VolumesFromSourceAsContainer constraint of '<em>Volumesfrom</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public boolean validateVolumesfrom_VolumesFromSourceAsContainer(Volumesfrom volumesfrom, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return volumesfrom.VolumesFromSourceAsContainer(diagnostics, context);
+		return
+			validate
+				(DockerPackage.Literals.VOLUMESFROM,
+				 volumesfrom,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "VolumesFromSourceAsContainer",
+				 VOLUMESFROM__VOLUMES_FROM_SOURCE_AS_CONTAINER__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
 	}
+
+	/**
+	 * The cached validation expression for the VolumesFromTargetAsContainer constraint of '<em>Volumesfrom</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String VOLUMESFROM__VOLUMES_FROM_TARGET_AS_CONTAINER__EEXPRESSION = "target.oclIsKindOf(Container)";
 
 	/**
 	 * Validates the VolumesFromTargetAsContainer constraint of '<em>Volumesfrom</em>'.
@@ -358,8 +405,29 @@ public class DockerValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateVolumesfrom_VolumesFromTargetAsContainer(Volumesfrom volumesfrom, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return volumesfrom.VolumesFromTargetAsContainer(diagnostics, context);
+		return
+			validate
+				(DockerPackage.Literals.VOLUMESFROM,
+				 volumesfrom,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "VolumesFromTargetAsContainer",
+				 VOLUMESFROM__VOLUMES_FROM_TARGET_AS_CONTAINER__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
 	}
+
+	/**
+	 * The cached validation expression for the VolumesFromCanOnlyConnectColocalizedContainers constraint of '<em>Volumesfrom</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String VOLUMESFROM__VOLUMES_FROM_CAN_ONLY_CONNECT_COLOCALIZED_CONTAINERS__EEXPRESSION = "\n" +
+		"\t\t\tContains.allInstances()->select(contains | contains.target = self.source).source = \n" +
+		"\t\t\tContains.allInstances()->select(contains | contains.target = self.target).source";
 
 	/**
 	 * Validates the VolumesFromCanOnlyConnectColocalizedContainers constraint of '<em>Volumesfrom</em>'.
@@ -368,7 +436,18 @@ public class DockerValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateVolumesfrom_VolumesFromCanOnlyConnectColocalizedContainers(Volumesfrom volumesfrom, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return volumesfrom.VolumesFromCanOnlyConnectColocalizedContainers(diagnostics, context);
+		return
+			validate
+				(DockerPackage.Literals.VOLUMESFROM,
+				 volumesfrom,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "VolumesFromCanOnlyConnectColocalizedContainers",
+				 VOLUMESFROM__VOLUMES_FROM_CAN_ONLY_CONNECT_COLOCALIZED_CONTAINERS__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
 	}
 
 	/**
@@ -417,13 +496,32 @@ public class DockerValidator extends EObjectValidator {
 	}
 
 	/**
+	 * The cached validation expression for the MachineNameUnique constraint of '<em>Machine</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String MACHINE__MACHINE_NAME_UNIQUE__EEXPRESSION = "Machine.allInstances()->isUnique(name)";
+
+	/**
 	 * Validates the MachineNameUnique constraint of '<em>Machine</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public boolean validateMachine_MachineNameUnique(Machine machine, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return machine.MachineNameUnique(diagnostics, context);
+		return
+			validate
+				(DockerPackage.Literals.MACHINE,
+				 machine,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "MachineNameUnique",
+				 MACHINE__MACHINE_NAME_UNIQUE__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
 	}
 
 	/**
@@ -635,13 +733,36 @@ public class DockerValidator extends EObjectValidator {
 	}
 
 	/**
+	 * The cached validation expression for the ContainersUsedTooMemory constraint of '<em>Machine Virtual Box</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String MACHINE_VIRTUAL_BOX__CONTAINERS_USED_TOO_MEMORY__EEXPRESSION = "Tuple {\n" +
+		"\tmessage : String = 'Containers consume ' + (links->select(oclIsKindOf(docker::Contains)).target.oclAsType(Container).memory->sum()).toString() + ' when memory is equals to ' + memory.toString(),\n" +
+		"\tstatus : Boolean = \n" +
+		"\t\t\t(links->select(oclIsKindOf(docker::Contains)).target.oclAsType(Container).memory->sum()) <= memory\n" +
+		"}.status";
+
+	/**
 	 * Validates the ContainersUsedTooMemory constraint of '<em>Machine Virtual Box</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public boolean validateMachine_VirtualBox_ContainersUsedTooMemory(Machine_VirtualBox machine_VirtualBox, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return machine_VirtualBox.ContainersUsedTooMemory(diagnostics, context);
+		return
+			validate
+				(DockerPackage.Literals.MACHINE_VIRTUAL_BOX,
+				 machine_VirtualBox,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "ContainersUsedTooMemory",
+				 MACHINE_VIRTUAL_BOX__CONTAINERS_USED_TOO_MEMORY__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
 	}
 
 	/**

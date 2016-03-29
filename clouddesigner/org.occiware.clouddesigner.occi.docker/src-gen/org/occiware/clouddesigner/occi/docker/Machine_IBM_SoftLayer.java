@@ -26,7 +26,7 @@ package org.occiware.clouddesigner.occi.docker;
  * </ul>
  *
  * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_IBM_SoftLayer()
- * @model
+ * @model annotation="OCCIE2Ecore title='Machine on IBM SoftLayer'"
  * @generated
  */
 public interface Machine_IBM_SoftLayer extends Machine {
@@ -42,7 +42,7 @@ public interface Machine_IBM_SoftLayer extends Machine {
 	 * @see #setApi_endpoint(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_IBM_SoftLayer_Api_endpoint()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_IBM_SoftLayer!api_endpoint'"
+	 *        annotation="OCCIE2Ecore description='Change softlayer API endpoint'"
 	 * @generated
 	 */
 	String getApi_endpoint();
@@ -69,7 +69,7 @@ public interface Machine_IBM_SoftLayer extends Machine {
 	 * @see #setUser(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_IBM_SoftLayer_User()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_IBM_SoftLayer!user'"
+	 *        annotation="OCCIE2Ecore description='username for your softlayer account, api key needs to match this user'"
 	 * @generated
 	 */
 	String getUser();
@@ -96,7 +96,7 @@ public interface Machine_IBM_SoftLayer extends Machine {
 	 * @see #setApi_key(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_IBM_SoftLayer_Api_key()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_IBM_SoftLayer!api_key'"
+	 *        annotation="OCCIE2Ecore description='API key for your user account'"
 	 * @generated
 	 */
 	String getApi_key();
@@ -123,7 +123,7 @@ public interface Machine_IBM_SoftLayer extends Machine {
 	 * @see #setCpu(int)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_IBM_SoftLayer_Cpu()
 	 * @model dataType="org.occiware.clouddesigner.occi.Number"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_IBM_SoftLayer!cpu'"
+	 *        annotation="OCCIE2Ecore description='Number of CPU\'s for the machine'"
 	 * @generated
 	 */
 	int getCpu();
@@ -150,7 +150,7 @@ public interface Machine_IBM_SoftLayer extends Machine {
 	 * @see #setDisk_size(int)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_IBM_SoftLayer_Disk_size()
 	 * @model dataType="org.occiware.clouddesigner.occi.Number"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_IBM_SoftLayer!disk_size'"
+	 *        annotation="OCCIE2Ecore description='Size of the disk in MB. 0 sets the softlayer default'"
 	 * @generated
 	 */
 	int getDisk_size();
@@ -177,7 +177,7 @@ public interface Machine_IBM_SoftLayer extends Machine {
 	 * @see #setDomain(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_IBM_SoftLayer_Domain()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_IBM_SoftLayer!domain'"
+	 *        annotation="OCCIE2Ecore description='domain name for the machine'"
 	 * @generated
 	 */
 	String getDomain();
@@ -205,7 +205,7 @@ public interface Machine_IBM_SoftLayer extends Machine {
 	 * @see #setHourly_billing(boolean)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_IBM_SoftLayer_Hourly_billing()
 	 * @model default="true" dataType="org.occiware.clouddesigner.occi.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_IBM_SoftLayer!hourly_billing'"
+	 *        annotation="OCCIE2Ecore description='Sets the hourly billing flag (default), otherwise uses monthly billing'"
 	 * @generated
 	 */
 	boolean isHourly_billing();
@@ -232,7 +232,7 @@ public interface Machine_IBM_SoftLayer extends Machine {
 	 * @see #setImage(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_IBM_SoftLayer_Image()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_IBM_SoftLayer!image'"
+	 *        annotation="OCCIE2Ecore description='OS Image to use'"
 	 * @generated
 	 */
 	String getImage();
@@ -259,7 +259,7 @@ public interface Machine_IBM_SoftLayer extends Machine {
 	 * @see #setLocal_disk(boolean)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_IBM_SoftLayer_Local_disk()
 	 * @model dataType="org.occiware.clouddesigner.occi.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_IBM_SoftLayer!local_disk'"
+	 *        annotation="OCCIE2Ecore description='Use local machine disk instead of softlayer SAN'"
 	 * @generated
 	 */
 	boolean isLocal_disk();
@@ -286,7 +286,7 @@ public interface Machine_IBM_SoftLayer extends Machine {
 	 * @see #setPrivate_net_only(boolean)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_IBM_SoftLayer_Private_net_only()
 	 * @model dataType="org.occiware.clouddesigner.occi.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_IBM_SoftLayer!private_net_only'"
+	 *        annotation="OCCIE2Ecore description='Disable public networking'"
 	 * @generated
 	 */
 	boolean isPrivate_net_only();
@@ -313,7 +313,7 @@ public interface Machine_IBM_SoftLayer extends Machine {
 	 * @see #setRegion(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_IBM_SoftLayer_Region()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_IBM_SoftLayer!region'"
+	 *        annotation="OCCIE2Ecore description='softlayer region'"
 	 * @generated
 	 */
 	String getRegion();

@@ -18,7 +18,7 @@ package org.occiware.clouddesigner.occi.docker;
  * </ul>
  *
  * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_Fusion()
- * @model
+ * @model annotation="OCCIE2Ecore title='Machine on VMware Fusion'"
  * @generated
  */
 public interface Machine_VMware_Fusion extends Machine {
@@ -34,7 +34,7 @@ public interface Machine_VMware_Fusion extends Machine {
 	 * @see #setBoot2docker_url(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_Fusion_Boot2docker_url()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_VMware_Fusion!boot2docker_url'"
+	 *        annotation="OCCIE2Ecore description='URL for boot2docker image'"
 	 * @generated
 	 */
 	String getBoot2docker_url();
@@ -62,7 +62,7 @@ public interface Machine_VMware_Fusion extends Machine {
 	 * @see #setDisk_size(int)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_Fusion_Disk_size()
 	 * @model default="20000" dataType="org.occiware.clouddesigner.occi.Number"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_VMware_Fusion!disk_size'"
+	 *        annotation="OCCIE2Ecore description='Size of disk for host VM (in MB)'"
 	 * @generated
 	 */
 	int getDisk_size();
@@ -90,7 +90,7 @@ public interface Machine_VMware_Fusion extends Machine {
 	 * @see #setMemory_size(int)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_Fusion_Memory_size()
 	 * @model default="1024" dataType="org.occiware.clouddesigner.occi.Number"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_VMware_Fusion!memory_size'"
+	 *        annotation="OCCIE2Ecore description='Size of memory for host VM (in MB)'"
 	 * @generated
 	 */
 	int getMemory_size();

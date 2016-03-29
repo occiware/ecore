@@ -27,7 +27,7 @@ package org.occiware.clouddesigner.occi.docker;
  * </ul>
  *
  * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_OpenStack()
- * @model
+ * @model annotation="OCCIE2Ecore title='Machine on OpenStack'"
  * @generated
  */
 public interface Machine_OpenStack extends Machine {
@@ -43,7 +43,7 @@ public interface Machine_OpenStack extends Machine {
 	 * @see #setFlavor_id(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_OpenStack_Flavor_id()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_OpenStack!flavor_id'"
+	 *        annotation="OCCIE2Ecore description='The flavor ID to use when creating the machine'"
 	 * @generated
 	 */
 	String getFlavor_id();
@@ -70,7 +70,7 @@ public interface Machine_OpenStack extends Machine {
 	 * @see #setImage_id(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_OpenStack_Image_id()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_OpenStack!image_id'"
+	 *        annotation="OCCIE2Ecore description='The image ID to use when creating the machine'"
 	 * @generated
 	 */
 	String getImage_id();
@@ -97,7 +97,7 @@ public interface Machine_OpenStack extends Machine {
 	 * @see #setAuth_url(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_OpenStack_Auth_url()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_OpenStack!auth_url'"
+	 *        annotation="OCCIE2Ecore description='Keystone service base URL'"
 	 * @generated
 	 */
 	String getAuth_url();
@@ -124,7 +124,7 @@ public interface Machine_OpenStack extends Machine {
 	 * @see #setUsername(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_OpenStack_Username()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_OpenStack!username'"
+	 *        annotation="OCCIE2Ecore description='User identifer to authenticate with'"
 	 * @generated
 	 */
 	String getUsername();
@@ -151,7 +151,7 @@ public interface Machine_OpenStack extends Machine {
 	 * @see #setPassword(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_OpenStack_Password()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_OpenStack!password'"
+	 *        annotation="OCCIE2Ecore description='User password. It can be omitted if the standard environment variable OS_PASSWORD is set.'"
 	 * @generated
 	 */
 	String getPassword();
@@ -178,7 +178,7 @@ public interface Machine_OpenStack extends Machine {
 	 * @see #setTenant_name(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_OpenStack_Tenant_name()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_OpenStack!tenant_name'"
+	 *        annotation="OCCIE2Ecore description='Identify the tenant in which the machine will be created'"
 	 * @generated
 	 */
 	String getTenant_name();
@@ -205,7 +205,7 @@ public interface Machine_OpenStack extends Machine {
 	 * @see #setTenant_id(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_OpenStack_Tenant_id()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_OpenStack!tenant_id'"
+	 *        annotation="OCCIE2Ecore description='Identify the tenant in which the machine will be created'"
 	 * @generated
 	 */
 	String getTenant_id();
@@ -232,7 +232,7 @@ public interface Machine_OpenStack extends Machine {
 	 * @see #setRegion(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_OpenStack_Region()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_OpenStack!region'"
+	 *        annotation="OCCIE2Ecore description='The region to work on. Can be omitted if there is only one region on the OpenStack'"
 	 * @generated
 	 */
 	String getRegion();
@@ -259,7 +259,7 @@ public interface Machine_OpenStack extends Machine {
 	 * @see #setEndpoint_type(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_OpenStack_Endpoint_type()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_OpenStack!endpoint_type'"
+	 *        annotation="OCCIE2Ecore description='Endpoint type can be internalURL, adminURL on publicURL. If is a helper for the driver to choose the right URL in the OpenStack service catalog. If not provided the default id publicURL'"
 	 * @generated
 	 */
 	String getEndpoint_type();
@@ -286,7 +286,7 @@ public interface Machine_OpenStack extends Machine {
 	 * @see #setNet_id(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_OpenStack_Net_id()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_OpenStack!net_id'"
+	 *        annotation="OCCIE2Ecore description='The private network id the machine will be connected on. If your OpenStack project project contains only one private network it will be use automatically'"
 	 * @generated
 	 */
 	String getNet_id();
@@ -313,7 +313,7 @@ public interface Machine_OpenStack extends Machine {
 	 * @see #setSec_groups(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_OpenStack_Sec_groups()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_OpenStack!sec_groups'"
+	 *        annotation="OCCIE2Ecore description='If security groups are available on your OpenStack you can specify a comma separated list to use for the machine (e.g. secgrp001,secgrp002)'"
 	 * @generated
 	 */
 	String getSec_groups();
@@ -340,7 +340,7 @@ public interface Machine_OpenStack extends Machine {
 	 * @see #setFloatingip_pool(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_OpenStack_Floatingip_pool()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_OpenStack!floatingip_pool'"
+	 *        annotation="OCCIE2Ecore description='The IP pool that will be used to get a public IP an assign it to the machine. If there is an IP address already allocated but not assigned to any machine, this IP will be chosen and assigned to the machine. If there is no IP address already allocated a new IP will be allocated and assigned to the machine'"
 	 * @generated
 	 */
 	String getFloatingip_pool();

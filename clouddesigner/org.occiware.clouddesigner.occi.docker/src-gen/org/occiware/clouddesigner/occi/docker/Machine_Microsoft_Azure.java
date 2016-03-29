@@ -17,7 +17,7 @@ package org.occiware.clouddesigner.occi.docker;
  * </ul>
  *
  * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Microsoft_Azure()
- * @model
+ * @model annotation="OCCIE2Ecore title='Machine on Microsoft Azure'"
  * @generated
  */
 public interface Machine_Microsoft_Azure extends Machine {
@@ -33,7 +33,7 @@ public interface Machine_Microsoft_Azure extends Machine {
 	 * @see #setSubscription_id(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Microsoft_Azure_Subscription_id()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_Microsoft_Azure!subscription_id'"
+	 *        annotation="OCCIE2Ecore description='Your Azure subscription ID (A GUID like d255d8d7-5af0-4f5c-8a3e-1545044b861e)'"
 	 * @generated
 	 */
 	String getSubscription_id();
@@ -60,7 +60,7 @@ public interface Machine_Microsoft_Azure extends Machine {
 	 * @see #setSubscription_cert(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Microsoft_Azure_Subscription_cert()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/docker!Machine_Microsoft_Azure!subscription_cert'"
+	 *        annotation="OCCIE2Ecore description='Your Azure subscription cert'"
 	 * @generated
 	 */
 	String getSubscription_cert();
