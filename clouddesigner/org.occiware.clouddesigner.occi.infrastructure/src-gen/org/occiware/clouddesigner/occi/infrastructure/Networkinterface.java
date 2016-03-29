@@ -20,7 +20,7 @@ import org.occiware.clouddesigner.occi.Link;
  * </ul>
  *
  * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getNetworkinterface()
- * @model
+ * @model annotation="OCCIE2Ecore title='NetworkInterface Link'"
  * @generated
  */
 public interface Networkinterface extends Link {
@@ -36,7 +36,7 @@ public interface Networkinterface extends Link {
 	 * @see #setInterface(String)
 	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getNetworkinterface_Interface()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Networkinterface!interface'"
+	 *        annotation="OCCIE2Ecore description='Identifier that relates the link to the link\'s device interface'"
 	 * @generated
 	 */
 	String getInterface();
@@ -63,7 +63,7 @@ public interface Networkinterface extends Link {
 	 * @see #setMac(String)
 	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getNetworkinterface_Mac()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Networkinterface!mac'"
+	 *        annotation="OCCIE2Ecore description='MAC address associated with the link\'s device interface'"
 	 * @generated
 	 */
 	String getMac();
@@ -92,7 +92,7 @@ public interface Networkinterface extends Link {
 	 * @see #setState(NetworkInterfaceStatus)
 	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getNetworkinterface_State()
 	 * @model required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Networkinterface!state'"
+	 *        annotation="OCCIE2Ecore description='Current status of the instance'"
 	 * @generated
 	 */
 	NetworkInterfaceStatus getState();

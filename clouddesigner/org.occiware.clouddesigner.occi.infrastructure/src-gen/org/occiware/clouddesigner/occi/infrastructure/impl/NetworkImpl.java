@@ -11,6 +11,7 @@ import org.occiware.clouddesigner.occi.impl.ResourceImpl;
 import org.occiware.clouddesigner.occi.infrastructure.ComputeStatus;
 import org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage;
 import org.occiware.clouddesigner.occi.infrastructure.Network;
+import org.occiware.clouddesigner.occi.infrastructure.NetworkStatus;
 
 /**
  * <!-- begin-user-doc -->
@@ -76,7 +77,7 @@ public class NetworkImpl extends ResourceImpl implements Network {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final ComputeStatus STATE_EDEFAULT = ComputeStatus.ACTIVE;
+	protected static final NetworkStatus STATE_EDEFAULT = NetworkStatus.INACTIVE;
 
 	/**
 	 * The cached value of the '{@link #getState() <em>State</em>}' attribute.
@@ -86,7 +87,7 @@ public class NetworkImpl extends ResourceImpl implements Network {
 	 * @generated
 	 * @ordered
 	 */
-	protected ComputeStatus state = STATE_EDEFAULT;
+	protected NetworkStatus state = STATE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -154,7 +155,7 @@ public class NetworkImpl extends ResourceImpl implements Network {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ComputeStatus getState() {
+	public NetworkStatus getState() {
 		return state;
 	}
 
@@ -163,8 +164,8 @@ public class NetworkImpl extends ResourceImpl implements Network {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setState(ComputeStatus newState) {
-		ComputeStatus oldState = state;
+	public void setState(NetworkStatus newState) {
+		NetworkStatus oldState = state;
 		state = newState == null ? STATE_EDEFAULT : newState;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, InfrastructurePackage.NETWORK__STATE, oldState, state));
@@ -176,7 +177,9 @@ public class NetworkImpl extends ResourceImpl implements Network {
 	 * @generated
 	 */
 	public void up() {
-		throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Network!up()
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -185,7 +188,9 @@ public class NetworkImpl extends ResourceImpl implements Network {
 	 * @generated
 	 */
 	public void down() {
-		throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Network!down()
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -221,7 +226,7 @@ public class NetworkImpl extends ResourceImpl implements Network {
 				setLabel((String)newValue);
 				return;
 			case InfrastructurePackage.NETWORK__STATE:
-				setState((ComputeStatus)newValue);
+				setState((NetworkStatus)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -264,24 +269,6 @@ public class NetworkImpl extends ResourceImpl implements Network {
 				return state != STATE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
-		switch (operationID) {
-			case InfrastructurePackage.NETWORK___UP:
-				up();
-				return null;
-			case InfrastructurePackage.NETWORK___DOWN:
-				down();
-				return null;
-		}
-		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

@@ -306,7 +306,9 @@ public class ComputeImpl extends ResourceImpl implements Compute {
 	 * @generated
 	 */
 	public void start() {
-		throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Compute!start()
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -314,8 +316,10 @@ public class ComputeImpl extends ResourceImpl implements Compute {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void stop(final StopMethod method) {
-		throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Compute!stop(http://schemas.ogf.org/occi/infrastructure!StopMethod)
+	public void stop(StopMethod method) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -323,8 +327,10 @@ public class ComputeImpl extends ResourceImpl implements Compute {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void restart(final RestartMethod method) {
-		throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Compute!restart(http://schemas.ogf.org/occi/infrastructure!RestartMethod)
+	public void restart(RestartMethod method) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -332,8 +338,10 @@ public class ComputeImpl extends ResourceImpl implements Compute {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void suspend(final SuspendMethod method) {
-		throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Compute!suspend(http://schemas.ogf.org/occi/infrastructure!SuspendMethod)
+	public void suspend(SuspendMethod method) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -442,30 +450,6 @@ public class ComputeImpl extends ResourceImpl implements Compute {
 				return state != STATE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
-		switch (operationID) {
-			case InfrastructurePackage.COMPUTE___START:
-				start();
-				return null;
-			case InfrastructurePackage.COMPUTE___STOP__STOPMETHOD:
-				stop((StopMethod)arguments.get(0));
-				return null;
-			case InfrastructurePackage.COMPUTE___RESTART__RESTARTMETHOD:
-				restart((RestartMethod)arguments.get(0));
-				return null;
-			case InfrastructurePackage.COMPUTE___SUSPEND__SUSPENDMETHOD:
-				suspend((SuspendMethod)arguments.get(0));
-				return null;
-		}
-		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

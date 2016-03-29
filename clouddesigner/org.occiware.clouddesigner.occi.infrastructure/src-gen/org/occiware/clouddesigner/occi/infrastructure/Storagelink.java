@@ -20,7 +20,7 @@ import org.occiware.clouddesigner.occi.Link;
  * </ul>
  *
  * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getStoragelink()
- * @model
+ * @model annotation="OCCIE2Ecore title='StorageLink Link'"
  * @generated
  */
 public interface Storagelink extends Link {
@@ -36,7 +36,7 @@ public interface Storagelink extends Link {
 	 * @see #setDeviceid(String)
 	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getStoragelink_Deviceid()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Storagelink!deviceid'"
+	 *        annotation="OCCIE2Ecore description='Device identifier as defined by the OCCI service provider'"
 	 * @generated
 	 */
 	String getDeviceid();
@@ -63,7 +63,7 @@ public interface Storagelink extends Link {
 	 * @see #setMountpoint(String)
 	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getStoragelink_Mountpoint()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Storagelink!mountpoint'"
+	 *        annotation="OCCIE2Ecore description='Point to where the storage is mounted in the guest OS'"
 	 * @generated
 	 */
 	String getMountpoint();
@@ -92,7 +92,7 @@ public interface Storagelink extends Link {
 	 * @see #setState(StorageLinkStatus)
 	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getStoragelink_State()
 	 * @model required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Storagelink!state'"
+	 *        annotation="OCCIE2Ecore description='Current status of the instance'"
 	 * @generated
 	 */
 	StorageLinkStatus getState();

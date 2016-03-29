@@ -75,53 +75,193 @@
   <eClassifiers xsi:type="ecore:EDataType" name="GHz" instanceClassName="float"/>
   <eClassifiers xsi:type="ecore:EDataType" name="GiB" instanceClassName="float"/>
   <eClassifiers xsi:type="ecore:EDataType" name="IpAddressRange" instanceClassName="java.lang.String"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Network" eSuperTypes="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Resource">
-    <eOperations name="up"/>
-    <eOperations name="down"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="vlan" eType="#//Integer4095"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" eType="#//Token"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="state" lowerBound="1" eType="#//ComputeStatus"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Network" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Resource">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title" value="Network Resource"/>
+    </eAnnotations>
+    <eOperations name="up">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="title"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="down">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="title"/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="vlan" eType="#//Integer4095">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="802.1q VLAN Identifier (e.g. 343)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" eType="#//Token">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Tag based VLANs (e.g. external-dmz)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="state" lowerBound="1" eType="#//NetworkStatus"
+        defaultValueLiteral="inactive">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Current state of the instance"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Compute" eSuperTypes="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Resource">
-    <eOperations name="start"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Compute" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Resource">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title" value="Compute Resource"/>
+    </eAnnotations>
+    <eOperations name="start">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="title" value="Start the system"/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="stop">
-      <eParameters name="method" lowerBound="1" eType="#//StopMethod"/>
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="title" value="Stop the system (graceful, acpioff or poweroff)"/>
+      </eAnnotations>
+      <eParameters name="method" lowerBound="1" eType="#//StopMethod">
+        <eAnnotations source="OCCIE2Ecore">
+          <details key="description"/>
+        </eAnnotations>
+      </eParameters>
     </eOperations>
     <eOperations name="restart">
-      <eParameters name="method" lowerBound="1" eType="#//RestartMethod"/>
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="title" value="Restart the system (graceful, warm or cold)"/>
+      </eAnnotations>
+      <eParameters name="method" lowerBound="1" eType="#//RestartMethod">
+        <eAnnotations source="OCCIE2Ecore">
+          <details key="description"/>
+        </eAnnotations>
+      </eParameters>
     </eOperations>
     <eOperations name="suspend">
-      <eParameters name="method" lowerBound="1" eType="#//SuspendMethod"/>
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="title" value="Suspend the system (hibernate or in RAM)"/>
+      </eAnnotations>
+      <eParameters name="method" lowerBound="1" eType="#//SuspendMethod">
+        <eAnnotations source="OCCIE2Ecore">
+          <details key="description"/>
+        </eAnnotations>
+      </eParameters>
     </eOperations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="architecture" eType="#//Architecture"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cores" eType="#//PositiveInteger"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hostname" eType="ecore:EDataType ../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="speed" eType="#//GHz"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="memory" eType="#//GiB"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="architecture" eType="#//Architecture">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="CPU Architecture of the instance"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cores" eType="#//PositiveInteger">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Number of CPU cores assigned to the instance"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hostname" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Fully Qualified DNS hostname for the instance"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="speed" eType="#//GHz">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="CPU Clock frequency (speed) in gigahertz"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="memory" eType="#//GiB">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Maximum RAM in gigabytes allocated to the instance"/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="state" lowerBound="1" eType="#//ComputeStatus"
-        defaultValueLiteral="inactive"/>
+        defaultValueLiteral="inactive">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Current state of the instance"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Storage" eSuperTypes="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Resource">
-    <eOperations name="online"/>
-    <eOperations name="offline"/>
-    <eOperations name="backup"/>
-    <eOperations name="snapshot"/>
-    <eOperations name="resize">
-      <eParameters name="size" lowerBound="1" eType="#//GiB"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Storage" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Resource">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title" value="Storage Resource"/>
+    </eAnnotations>
+    <eOperations name="online">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="title" value="Set storage online"/>
+      </eAnnotations>
     </eOperations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="size" lowerBound="1" eType="#//GiB"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="state" lowerBound="1" eType="#//StorageStatus"/>
+    <eOperations name="offline">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="title" value="Set storage offline"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="backup">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="title" value="Set storage as backup"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="snapshot">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="title" value="Take storage snapshot"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="resize">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="title" value="Resize storage"/>
+      </eAnnotations>
+      <eParameters name="size" lowerBound="1" eType="#//GiB">
+        <eAnnotations source="OCCIE2Ecore">
+          <details key="description"/>
+        </eAnnotations>
+      </eParameters>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="size" lowerBound="1" eType="#//GiB">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Storage size in gigabytes of the instance"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="state" lowerBound="1" eType="#//StorageStatus">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Current status of the instance"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Storagelink" eSuperTypes="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Link">
+  <eClassifiers xsi:type="ecore:EClass" name="Storagelink" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Link">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title" value="StorageLink Link"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="deviceid" lowerBound="1"
-        eType="ecore:EDataType ../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mountpoint" eType="ecore:EDataType ../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="state" lowerBound="1" eType="#//StorageLinkStatus"/>
+        eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Device identifier as defined by the OCCI service provider"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mountpoint" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Point to where the storage is mounted in the guest OS"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="state" lowerBound="1" eType="#//StorageLinkStatus">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Current status of the instance"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Networkinterface" eSuperTypes="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//Link">
+  <eClassifiers xsi:type="ecore:EClass" name="Networkinterface" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Link">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title" value="NetworkInterface Link"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="interface" lowerBound="1"
-        eType="ecore:EDataType ../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mac" lowerBound="1" eType="ecore:EDataType ../../org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="state" lowerBound="1" eType="#//NetworkInterfaceStatus"/>
+        eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Identifier that relates the link to the link's device interface"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mac" lowerBound="1" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="MAC address associated with the link's device interface"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="state" lowerBound="1" eType="#//NetworkInterfaceStatus">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Current status of the instance"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
 </ecore:EPackage>

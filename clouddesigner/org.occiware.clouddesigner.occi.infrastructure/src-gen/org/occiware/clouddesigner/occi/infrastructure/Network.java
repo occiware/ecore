@@ -20,7 +20,7 @@ import org.occiware.clouddesigner.occi.Resource;
  * </ul>
  *
  * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getNetwork()
- * @model
+ * @model annotation="OCCIE2Ecore title='Network Resource'"
  * @generated
  */
 public interface Network extends Resource {
@@ -36,7 +36,7 @@ public interface Network extends Resource {
 	 * @see #setVlan(int)
 	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getNetwork_Vlan()
 	 * @model dataType="org.occiware.clouddesigner.occi.infrastructure.Integer4095"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Network!vlan'"
+	 *        annotation="OCCIE2Ecore description='802.1q VLAN Identifier (e.g. 343)'"
 	 * @generated
 	 */
 	int getVlan();
@@ -63,7 +63,7 @@ public interface Network extends Resource {
 	 * @see #setLabel(String)
 	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getNetwork_Label()
 	 * @model dataType="org.occiware.clouddesigner.occi.infrastructure.Token"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Network!label'"
+	 *        annotation="OCCIE2Ecore description='Tag based VLANs (e.g. external-dmz)'"
 	 * @generated
 	 */
 	String getLabel();
@@ -80,7 +80,8 @@ public interface Network extends Resource {
 
 	/**
 	 * Returns the value of the '<em><b>State</b></em>' attribute.
-	 * The literals are from the enumeration {@link org.occiware.clouddesigner.occi.infrastructure.ComputeStatus}.
+	 * The default value is <code>"inactive"</code>.
+	 * The literals are from the enumeration {@link org.occiware.clouddesigner.occi.infrastructure.NetworkStatus}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>State</em>' attribute isn't clear,
@@ -88,30 +89,30 @@ public interface Network extends Resource {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>State</em>' attribute.
-	 * @see org.occiware.clouddesigner.occi.infrastructure.ComputeStatus
-	 * @see #setState(ComputeStatus)
+	 * @see org.occiware.clouddesigner.occi.infrastructure.NetworkStatus
+	 * @see #setState(NetworkStatus)
 	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getNetwork_State()
-	 * @model required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Network!state'"
+	 * @model default="inactive" required="true"
+	 *        annotation="OCCIE2Ecore description='Current state of the instance'"
 	 * @generated
 	 */
-	ComputeStatus getState();
+	NetworkStatus getState();
 
 	/**
 	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.infrastructure.Network#getState <em>State</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>State</em>' attribute.
-	 * @see org.occiware.clouddesigner.occi.infrastructure.ComputeStatus
+	 * @see org.occiware.clouddesigner.occi.infrastructure.NetworkStatus
 	 * @see #getState()
 	 * @generated
 	 */
-	void setState(ComputeStatus value);
+	void setState(NetworkStatus value);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Network!up()'"
+	 * @model annotation="OCCIE2Ecore title='null'"
 	 * @generated
 	 */
 	void up();
@@ -119,7 +120,7 @@ public interface Network extends Resource {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Network!down()'"
+	 * @model annotation="OCCIE2Ecore title='null'"
 	 * @generated
 	 */
 	void down();

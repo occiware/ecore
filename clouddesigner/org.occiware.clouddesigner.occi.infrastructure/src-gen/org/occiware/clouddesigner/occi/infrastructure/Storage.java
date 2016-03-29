@@ -19,7 +19,7 @@ import org.occiware.clouddesigner.occi.Resource;
  * </ul>
  *
  * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getStorage()
- * @model
+ * @model annotation="OCCIE2Ecore title='Storage Resource'"
  * @generated
  */
 public interface Storage extends Resource {
@@ -35,7 +35,7 @@ public interface Storage extends Resource {
 	 * @see #setSize(float)
 	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getStorage_Size()
 	 * @model dataType="org.occiware.clouddesigner.occi.infrastructure.GiB" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Storage!size'"
+	 *        annotation="OCCIE2Ecore description='Storage size in gigabytes of the instance'"
 	 * @generated
 	 */
 	float getSize();
@@ -64,7 +64,7 @@ public interface Storage extends Resource {
 	 * @see #setState(StorageStatus)
 	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getStorage_State()
 	 * @model required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Storage!state'"
+	 *        annotation="OCCIE2Ecore description='Current status of the instance'"
 	 * @generated
 	 */
 	StorageStatus getState();
@@ -83,7 +83,7 @@ public interface Storage extends Resource {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Storage!online()'"
+	 * @model annotation="OCCIE2Ecore title='Set storage online'"
 	 * @generated
 	 */
 	void online();
@@ -91,7 +91,7 @@ public interface Storage extends Resource {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Storage!offline()'"
+	 * @model annotation="OCCIE2Ecore title='Set storage offline'"
 	 * @generated
 	 */
 	void offline();
@@ -99,7 +99,7 @@ public interface Storage extends Resource {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Storage!backup()'"
+	 * @model annotation="OCCIE2Ecore title='Set storage as backup'"
 	 * @generated
 	 */
 	void backup();
@@ -107,7 +107,7 @@ public interface Storage extends Resource {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Storage!snapshot()'"
+	 * @model annotation="OCCIE2Ecore title='Take storage snapshot'"
 	 * @generated
 	 */
 	void snapshot();
@@ -116,7 +116,8 @@ public interface Storage extends Resource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model sizeDataType="org.occiware.clouddesigner.occi.infrastructure.GiB" sizeRequired="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Storage!resize(http://schemas.ogf.org/occi/infrastructure!GiB)'"
+	 *        sizeAnnotation="OCCIE2Ecore description='null'"
+	 *        annotation="OCCIE2Ecore title='Resize storage'"
 	 * @generated
 	 */
 	void resize(float size);

@@ -16,6 +16,7 @@ import org.occiware.clouddesigner.occi.OCCIPackage;
 import org.occiware.clouddesigner.occi.infrastructure.InfrastructureFactory;
 import org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage;
 import org.occiware.clouddesigner.occi.infrastructure.Storage;
+import org.occiware.clouddesigner.occi.provider.ResourceItemProvider;
 
 /**
  * This is the item provider adapter for a {@link org.occiware.clouddesigner.occi.infrastructure.Storage} object.
@@ -23,7 +24,7 @@ import org.occiware.clouddesigner.occi.infrastructure.Storage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class StorageItemProvider extends org.occiware.clouddesigner.occi.provider.ResourceItemProvider {
+public class StorageItemProvider extends ResourceItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

@@ -134,7 +134,9 @@ public class StorageImpl extends ResourceImpl implements Storage {
 	 * @generated
 	 */
 	public void online() {
-		throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Storage!online()
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -143,7 +145,9 @@ public class StorageImpl extends ResourceImpl implements Storage {
 	 * @generated
 	 */
 	public void offline() {
-		throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Storage!offline()
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -152,7 +156,9 @@ public class StorageImpl extends ResourceImpl implements Storage {
 	 * @generated
 	 */
 	public void backup() {
-		throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Storage!backup()
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -161,7 +167,9 @@ public class StorageImpl extends ResourceImpl implements Storage {
 	 * @generated
 	 */
 	public void snapshot() {
-		throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Storage!snapshot()
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -169,8 +177,10 @@ public class StorageImpl extends ResourceImpl implements Storage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void resize(final float size) {
-		throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Storage!resize(http://schemas.ogf.org/occi/infrastructure!GiB)
+	public void resize(float size) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -239,33 +249,6 @@ public class StorageImpl extends ResourceImpl implements Storage {
 				return state != STATE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
-		switch (operationID) {
-			case InfrastructurePackage.STORAGE___ONLINE:
-				online();
-				return null;
-			case InfrastructurePackage.STORAGE___OFFLINE:
-				offline();
-				return null;
-			case InfrastructurePackage.STORAGE___BACKUP:
-				backup();
-				return null;
-			case InfrastructurePackage.STORAGE___SNAPSHOT:
-				snapshot();
-				return null;
-			case InfrastructurePackage.STORAGE___RESIZE__FLOAT:
-				resize((Float)arguments.get(0));
-				return null;
-		}
-		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

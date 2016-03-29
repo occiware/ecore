@@ -23,7 +23,7 @@ import org.occiware.clouddesigner.occi.Resource;
  * </ul>
  *
  * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getCompute()
- * @model
+ * @model annotation="OCCIE2Ecore title='Compute Resource'"
  * @generated
  */
 public interface Compute extends Resource {
@@ -40,7 +40,7 @@ public interface Compute extends Resource {
 	 * @see org.occiware.clouddesigner.occi.infrastructure.Architecture
 	 * @see #setArchitecture(Architecture)
 	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getCompute_Architecture()
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Compute!architecture'"
+	 * @model annotation="OCCIE2Ecore description='CPU Architecture of the instance'"
 	 * @generated
 	 */
 	Architecture getArchitecture();
@@ -68,7 +68,7 @@ public interface Compute extends Resource {
 	 * @see #setCores(int)
 	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getCompute_Cores()
 	 * @model dataType="org.occiware.clouddesigner.occi.infrastructure.PositiveInteger"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Compute!cores'"
+	 *        annotation="OCCIE2Ecore description='Number of CPU cores assigned to the instance'"
 	 * @generated
 	 */
 	int getCores();
@@ -95,7 +95,7 @@ public interface Compute extends Resource {
 	 * @see #setHostname(String)
 	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getCompute_Hostname()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Compute!hostname'"
+	 *        annotation="OCCIE2Ecore description='Fully Qualified DNS hostname for the instance'"
 	 * @generated
 	 */
 	String getHostname();
@@ -122,7 +122,7 @@ public interface Compute extends Resource {
 	 * @see #setSpeed(float)
 	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getCompute_Speed()
 	 * @model dataType="org.occiware.clouddesigner.occi.infrastructure.GHz"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Compute!speed'"
+	 *        annotation="OCCIE2Ecore description='CPU Clock frequency (speed) in gigahertz'"
 	 * @generated
 	 */
 	float getSpeed();
@@ -149,7 +149,7 @@ public interface Compute extends Resource {
 	 * @see #setMemory(float)
 	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getCompute_Memory()
 	 * @model dataType="org.occiware.clouddesigner.occi.infrastructure.GiB"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Compute!memory'"
+	 *        annotation="OCCIE2Ecore description='Maximum RAM in gigabytes allocated to the instance'"
 	 * @generated
 	 */
 	float getMemory();
@@ -179,7 +179,7 @@ public interface Compute extends Resource {
 	 * @see #setState(ComputeStatus)
 	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getCompute_State()
 	 * @model default="inactive" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Compute!state'"
+	 *        annotation="OCCIE2Ecore description='Current state of the instance'"
 	 * @generated
 	 */
 	ComputeStatus getState();
@@ -198,7 +198,7 @@ public interface Compute extends Resource {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Compute!start()'"
+	 * @model annotation="OCCIE2Ecore title='Start the system'"
 	 * @generated
 	 */
 	void start();
@@ -207,7 +207,8 @@ public interface Compute extends Resource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model methodRequired="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Compute!stop(http://schemas.ogf.org/occi/infrastructure!StopMethod)'"
+	 *        methodAnnotation="OCCIE2Ecore description='null'"
+	 *        annotation="OCCIE2Ecore title='Stop the system (graceful, acpioff or poweroff)'"
 	 * @generated
 	 */
 	void stop(StopMethod method);
@@ -216,7 +217,8 @@ public interface Compute extends Resource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model methodRequired="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Compute!restart(http://schemas.ogf.org/occi/infrastructure!RestartMethod)'"
+	 *        methodAnnotation="OCCIE2Ecore description='null'"
+	 *        annotation="OCCIE2Ecore title='Restart the system (graceful, warm or cold)'"
 	 * @generated
 	 */
 	void restart(RestartMethod method);
@@ -225,7 +227,8 @@ public interface Compute extends Resource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model methodRequired="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/infrastructure!Compute!suspend(http://schemas.ogf.org/occi/infrastructure!SuspendMethod)'"
+	 *        methodAnnotation="OCCIE2Ecore description='null'"
+	 *        annotation="OCCIE2Ecore title='Suspend the system (hibernate or in RAM)'"
 	 * @generated
 	 */
 	void suspend(SuspendMethod method);

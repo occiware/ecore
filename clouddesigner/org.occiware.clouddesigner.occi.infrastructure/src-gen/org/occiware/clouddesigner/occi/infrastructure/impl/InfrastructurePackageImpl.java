@@ -305,24 +305,6 @@ public class InfrastructurePackageImpl extends EPackageImpl implements Infrastru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getNetwork__Up() {
-		return networkEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getNetwork__Down() {
-		return networkEClass.getEOperations().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getCompute() {
 		return computeEClass;
 	}
@@ -386,42 +368,6 @@ public class InfrastructurePackageImpl extends EPackageImpl implements Infrastru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getCompute__Start() {
-		return computeEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getCompute__Stop__StopMethod() {
-		return computeEClass.getEOperations().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getCompute__Restart__RestartMethod() {
-		return computeEClass.getEOperations().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getCompute__Suspend__SuspendMethod() {
-		return computeEClass.getEOperations().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getStorage() {
 		return storageEClass;
 	}
@@ -442,51 +388,6 @@ public class InfrastructurePackageImpl extends EPackageImpl implements Infrastru
 	 */
 	public EAttribute getStorage_State() {
 		return (EAttribute)storageEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getStorage__Online() {
-		return storageEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getStorage__Offline() {
-		return storageEClass.getEOperations().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getStorage__Backup() {
-		return storageEClass.getEOperations().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getStorage__Snapshot() {
-		return storageEClass.getEOperations().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getStorage__Resize__float() {
-		return storageEClass.getEOperations().get(4);
 	}
 
 	/**
@@ -746,8 +647,6 @@ public class InfrastructurePackageImpl extends EPackageImpl implements Infrastru
 		createEAttribute(networkEClass, NETWORK__VLAN);
 		createEAttribute(networkEClass, NETWORK__LABEL);
 		createEAttribute(networkEClass, NETWORK__STATE);
-		createEOperation(networkEClass, NETWORK___UP);
-		createEOperation(networkEClass, NETWORK___DOWN);
 
 		computeEClass = createEClass(COMPUTE);
 		createEAttribute(computeEClass, COMPUTE__ARCHITECTURE);
@@ -756,19 +655,10 @@ public class InfrastructurePackageImpl extends EPackageImpl implements Infrastru
 		createEAttribute(computeEClass, COMPUTE__SPEED);
 		createEAttribute(computeEClass, COMPUTE__MEMORY);
 		createEAttribute(computeEClass, COMPUTE__STATE);
-		createEOperation(computeEClass, COMPUTE___START);
-		createEOperation(computeEClass, COMPUTE___STOP__STOPMETHOD);
-		createEOperation(computeEClass, COMPUTE___RESTART__RESTARTMETHOD);
-		createEOperation(computeEClass, COMPUTE___SUSPEND__SUSPENDMETHOD);
 
 		storageEClass = createEClass(STORAGE);
 		createEAttribute(storageEClass, STORAGE__SIZE);
 		createEAttribute(storageEClass, STORAGE__STATE);
-		createEOperation(storageEClass, STORAGE___ONLINE);
-		createEOperation(storageEClass, STORAGE___OFFLINE);
-		createEOperation(storageEClass, STORAGE___BACKUP);
-		createEOperation(storageEClass, STORAGE___SNAPSHOT);
-		createEOperation(storageEClass, STORAGE___RESIZE__FLOAT);
 
 		storagelinkEClass = createEClass(STORAGELINK);
 		createEAttribute(storagelinkEClass, STORAGELINK__DEVICEID);
@@ -839,15 +729,15 @@ public class InfrastructurePackageImpl extends EPackageImpl implements Infrastru
 		storagelinkEClass.getESuperTypes().add(theOCCIPackage.getLink());
 		networkinterfaceEClass.getESuperTypes().add(theOCCIPackage.getLink());
 
-		// Initialize classes, features, and operations; add parameters
+		// Initialize classes and features; add operations and parameters
 		initEClass(networkEClass, Network.class, "Network", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getNetwork_Vlan(), this.getInteger4095(), "vlan", null, 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getNetwork_Label(), this.getToken(), "label", null, 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getNetwork_State(), this.getComputeStatus(), "state", null, 1, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNetwork_State(), this.getNetworkStatus(), "state", "inactive", 1, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getNetwork__Up(), null, "up", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(networkEClass, null, "up", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEOperation(getNetwork__Down(), null, "down", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(networkEClass, null, "down", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(computeEClass, Compute.class, "Compute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCompute_Architecture(), this.getArchitecture(), "architecture", null, 0, 1, Compute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -857,30 +747,30 @@ public class InfrastructurePackageImpl extends EPackageImpl implements Infrastru
 		initEAttribute(getCompute_Memory(), this.getGiB(), "memory", null, 0, 1, Compute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCompute_State(), this.getComputeStatus(), "state", "inactive", 1, 1, Compute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getCompute__Start(), null, "start", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(computeEClass, null, "start", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		EOperation op = initEOperation(getCompute__Stop__StopMethod(), null, "stop", 0, 1, IS_UNIQUE, IS_ORDERED);
+		EOperation op = addEOperation(computeEClass, null, "stop", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getStopMethod(), "method", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = initEOperation(getCompute__Restart__RestartMethod(), null, "restart", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(computeEClass, null, "restart", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getRestartMethod(), "method", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = initEOperation(getCompute__Suspend__SuspendMethod(), null, "suspend", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(computeEClass, null, "suspend", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getSuspendMethod(), "method", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(storageEClass, Storage.class, "Storage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getStorage_Size(), this.getGiB(), "size", null, 1, 1, Storage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getStorage_State(), this.getStorageStatus(), "state", null, 1, 1, Storage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getStorage__Online(), null, "online", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(storageEClass, null, "online", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEOperation(getStorage__Offline(), null, "offline", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(storageEClass, null, "offline", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEOperation(getStorage__Backup(), null, "backup", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(storageEClass, null, "backup", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEOperation(getStorage__Snapshot(), null, "snapshot", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(storageEClass, null, "snapshot", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = initEOperation(getStorage__Resize__float(), null, "resize", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(storageEClass, null, "resize", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getGiB(), "size", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(storagelinkEClass, Storagelink.class, "Storagelink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -962,6 +852,8 @@ public class InfrastructurePackageImpl extends EPackageImpl implements Infrastru
 		createPivotAnnotations();
 		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
 		createExtendedMetaDataAnnotations();
+		// OCCIE2Ecore
+		createOCCIE2EcoreAnnotations();
 	}
 
 	/**
@@ -992,6 +884,9 @@ public class InfrastructurePackageImpl extends EPackageImpl implements Infrastru
 		  (this, 
 		   source, 
 		   new String[] {
+			 "invocationDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+			 "settingDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+			 "validationDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"
 		   });	
 		addAnnotation
 		  (suspendMethodEEnum, 
@@ -1031,6 +926,238 @@ public class InfrastructurePackageImpl extends EPackageImpl implements Infrastru
 		   new String[] {
 			 "minInclusive", "0",
 			 "maxInclusive", "4095"
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>OCCIE2Ecore</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createOCCIE2EcoreAnnotations() {
+		String source = "OCCIE2Ecore";	
+		addAnnotation
+		  (networkEClass, 
+		   source, 
+		   new String[] {
+			 "title", "Network Resource"
+		   });	
+		addAnnotation
+		  (networkEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+			 "title", null
+		   });	
+		addAnnotation
+		  (networkEClass.getEOperations().get(1), 
+		   source, 
+		   new String[] {
+			 "title", null
+		   });	
+		addAnnotation
+		  (getNetwork_Vlan(), 
+		   source, 
+		   new String[] {
+			 "description", "802.1q VLAN Identifier (e.g. 343)"
+		   });	
+		addAnnotation
+		  (getNetwork_Label(), 
+		   source, 
+		   new String[] {
+			 "description", "Tag based VLANs (e.g. external-dmz)"
+		   });	
+		addAnnotation
+		  (getNetwork_State(), 
+		   source, 
+		   new String[] {
+			 "description", "Current state of the instance"
+		   });	
+		addAnnotation
+		  (computeEClass, 
+		   source, 
+		   new String[] {
+			 "title", "Compute Resource"
+		   });	
+		addAnnotation
+		  (computeEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+			 "title", "Start the system"
+		   });	
+		addAnnotation
+		  (computeEClass.getEOperations().get(1), 
+		   source, 
+		   new String[] {
+			 "title", "Stop the system (graceful, acpioff or poweroff)"
+		   });	
+		addAnnotation
+		  ((computeEClass.getEOperations().get(1)).getEParameters().get(0), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (computeEClass.getEOperations().get(2), 
+		   source, 
+		   new String[] {
+			 "title", "Restart the system (graceful, warm or cold)"
+		   });	
+		addAnnotation
+		  ((computeEClass.getEOperations().get(2)).getEParameters().get(0), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (computeEClass.getEOperations().get(3), 
+		   source, 
+		   new String[] {
+			 "title", "Suspend the system (hibernate or in RAM)"
+		   });	
+		addAnnotation
+		  ((computeEClass.getEOperations().get(3)).getEParameters().get(0), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getCompute_Architecture(), 
+		   source, 
+		   new String[] {
+			 "description", "CPU Architecture of the instance"
+		   });	
+		addAnnotation
+		  (getCompute_Cores(), 
+		   source, 
+		   new String[] {
+			 "description", "Number of CPU cores assigned to the instance"
+		   });	
+		addAnnotation
+		  (getCompute_Hostname(), 
+		   source, 
+		   new String[] {
+			 "description", "Fully Qualified DNS hostname for the instance"
+		   });	
+		addAnnotation
+		  (getCompute_Speed(), 
+		   source, 
+		   new String[] {
+			 "description", "CPU Clock frequency (speed) in gigahertz"
+		   });	
+		addAnnotation
+		  (getCompute_Memory(), 
+		   source, 
+		   new String[] {
+			 "description", "Maximum RAM in gigabytes allocated to the instance"
+		   });	
+		addAnnotation
+		  (getCompute_State(), 
+		   source, 
+		   new String[] {
+			 "description", "Current state of the instance"
+		   });	
+		addAnnotation
+		  (storageEClass, 
+		   source, 
+		   new String[] {
+			 "title", "Storage Resource"
+		   });	
+		addAnnotation
+		  (storageEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+			 "title", "Set storage online"
+		   });	
+		addAnnotation
+		  (storageEClass.getEOperations().get(1), 
+		   source, 
+		   new String[] {
+			 "title", "Set storage offline"
+		   });	
+		addAnnotation
+		  (storageEClass.getEOperations().get(2), 
+		   source, 
+		   new String[] {
+			 "title", "Set storage as backup"
+		   });	
+		addAnnotation
+		  (storageEClass.getEOperations().get(3), 
+		   source, 
+		   new String[] {
+			 "title", "Take storage snapshot"
+		   });	
+		addAnnotation
+		  (storageEClass.getEOperations().get(4), 
+		   source, 
+		   new String[] {
+			 "title", "Resize storage"
+		   });	
+		addAnnotation
+		  ((storageEClass.getEOperations().get(4)).getEParameters().get(0), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getStorage_Size(), 
+		   source, 
+		   new String[] {
+			 "description", "Storage size in gigabytes of the instance"
+		   });	
+		addAnnotation
+		  (getStorage_State(), 
+		   source, 
+		   new String[] {
+			 "description", "Current status of the instance"
+		   });	
+		addAnnotation
+		  (storagelinkEClass, 
+		   source, 
+		   new String[] {
+			 "title", "StorageLink Link"
+		   });	
+		addAnnotation
+		  (getStoragelink_Deviceid(), 
+		   source, 
+		   new String[] {
+			 "description", "Device identifier as defined by the OCCI service provider"
+		   });	
+		addAnnotation
+		  (getStoragelink_Mountpoint(), 
+		   source, 
+		   new String[] {
+			 "description", "Point to where the storage is mounted in the guest OS"
+		   });	
+		addAnnotation
+		  (getStoragelink_State(), 
+		   source, 
+		   new String[] {
+			 "description", "Current status of the instance"
+		   });	
+		addAnnotation
+		  (networkinterfaceEClass, 
+		   source, 
+		   new String[] {
+			 "title", "NetworkInterface Link"
+		   });	
+		addAnnotation
+		  (getNetworkinterface_Interface(), 
+		   source, 
+		   new String[] {
+			 "description", "Identifier that relates the link to the link\'s device interface"
+		   });	
+		addAnnotation
+		  (getNetworkinterface_Mac(), 
+		   source, 
+		   new String[] {
+			 "description", "MAC address associated with the link\'s device interface"
+		   });	
+		addAnnotation
+		  (getNetworkinterface_State(), 
+		   source, 
+		   new String[] {
+			 "description", "Current status of the instance"
 		   });
 	}
 

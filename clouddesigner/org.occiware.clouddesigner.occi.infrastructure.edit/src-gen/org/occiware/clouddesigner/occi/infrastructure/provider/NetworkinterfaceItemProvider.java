@@ -14,6 +14,7 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage;
 import org.occiware.clouddesigner.occi.infrastructure.Networkinterface;
+import org.occiware.clouddesigner.occi.provider.LinkItemProvider;
 
 /**
  * This is the item provider adapter for a {@link org.occiware.clouddesigner.occi.infrastructure.Networkinterface} object.
@@ -21,7 +22,7 @@ import org.occiware.clouddesigner.occi.infrastructure.Networkinterface;
  * <!-- end-user-doc -->
  * @generated
  */
-public class NetworkinterfaceItemProvider extends org.occiware.clouddesigner.occi.provider.LinkItemProvider {
+public class NetworkinterfaceItemProvider extends LinkItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
