@@ -79,7 +79,7 @@
     <attributes name="on_crash" description="Action to do when the machine crached.">
       <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
-    <attributes name="memory" required="true" default="256000" description="This sets the maximum memory for the guest at boot time in KB.">
+    <attributes name="maximum_memory" required="true" default="256000" description="This sets the maximum memory for the guest at boot time in KB.">
       <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.2"/>
     </attributes>
     <attributes name="current_memory" default="" description="This sets the lower memory for the guest at boot time in KB.">
