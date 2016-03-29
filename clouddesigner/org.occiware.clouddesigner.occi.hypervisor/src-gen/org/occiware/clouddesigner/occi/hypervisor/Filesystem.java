@@ -19,7 +19,7 @@ import org.occiware.clouddesigner.occi.Resource;
  * </ul>
  *
  * @see org.occiware.clouddesigner.occi.hypervisor.HypervisorPackage#getFilesystem()
- * @model
+ * @model annotation="OCCIE2Ecore title='Filesystem resource'"
  * @generated
  */
 public interface Filesystem extends Resource {
@@ -36,6 +36,7 @@ public interface Filesystem extends Resource {
 	 * @see #setName(String)
 	 * @see org.occiware.clouddesigner.occi.hypervisor.HypervisorPackage#getFilesystem_Name()
 	 * @model default="filesystem" dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description=''"
 	 * @generated
 	 */
 	String getName();
@@ -62,6 +63,7 @@ public interface Filesystem extends Resource {
 	 * @see #setSource(String)
 	 * @see org.occiware.clouddesigner.occi.hypervisor.HypervisorPackage#getFilesystem_Source()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getSource();
@@ -88,6 +90,7 @@ public interface Filesystem extends Resource {
 	 * @see #setTarget(String)
 	 * @see org.occiware.clouddesigner.occi.hypervisor.HypervisorPackage#getFilesystem_Target()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getTarget();

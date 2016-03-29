@@ -17,12 +17,13 @@ package org.occiware.clouddesigner.occi.hypervisor;
  *   <li>{@link org.occiware.clouddesigner.occi.hypervisor.Machine_VirtualBox#getOn_poweroff <em>On poweroff</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.hypervisor.Machine_VirtualBox#getOn_reboot <em>On reboot</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.hypervisor.Machine_VirtualBox#getOn_crash <em>On crash</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.hypervisor.Machine_VirtualBox#getMaximum_memory <em>Maximum memory</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.hypervisor.Machine_VirtualBox#getCurrent_memory <em>Current memory</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.hypervisor.Machine_VirtualBox#getVcpu <em>Vcpu</em>}</li>
  * </ul>
  *
  * @see org.occiware.clouddesigner.occi.hypervisor.HypervisorPackage#getMachine_VirtualBox()
- * @model
+ * @model annotation="OCCIE2Ecore title='Machine on VirtualBox'"
  * @generated
  */
 public interface Machine_VirtualBox extends Machine {
@@ -39,6 +40,7 @@ public interface Machine_VirtualBox extends Machine {
 	 * @see #setType(String)
 	 * @see org.occiware.clouddesigner.occi.hypervisor.HypervisorPackage#getMachine_VirtualBox_Type()
 	 * @model default="hvm" dataType="org.occiware.clouddesigner.occi.String" required="true"
+	 *        annotation="OCCIE2Ecore description='This type is specific to Libvirt.'"
 	 * @generated
 	 */
 	String getType();
@@ -68,6 +70,7 @@ public interface Machine_VirtualBox extends Machine {
 	 * @see #setFeatures(FEATURES)
 	 * @see org.occiware.clouddesigner.occi.hypervisor.HypervisorPackage#getMachine_VirtualBox_Features()
 	 * @model default="acpi"
+	 *        annotation="OCCIE2Ecore description='The flag specify the Advanced Configuration and Power Interface(ACPI), the Physical Address Extension (PAE) and the Advanced Programmable Interrupt Controller (APIC).'"
 	 * @generated
 	 */
 	FEATURES getFeatures();
@@ -95,6 +98,7 @@ public interface Machine_VirtualBox extends Machine {
 	 * @see #setOn_poweroff(String)
 	 * @see org.occiware.clouddesigner.occi.hypervisor.HypervisorPackage#getMachine_VirtualBox_On_poweroff()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='Action to do when the machine is poweroff.'"
 	 * @generated
 	 */
 	String getOn_poweroff();
@@ -121,6 +125,7 @@ public interface Machine_VirtualBox extends Machine {
 	 * @see #setOn_reboot(String)
 	 * @see org.occiware.clouddesigner.occi.hypervisor.HypervisorPackage#getMachine_VirtualBox_On_reboot()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='Action to do when the machine is rebooting.'"
 	 * @generated
 	 */
 	String getOn_reboot();
@@ -147,6 +152,7 @@ public interface Machine_VirtualBox extends Machine {
 	 * @see #setOn_crash(String)
 	 * @see org.occiware.clouddesigner.occi.hypervisor.HypervisorPackage#getMachine_VirtualBox_On_crash()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='Action to do when the machine crached.'"
 	 * @generated
 	 */
 	String getOn_crash();
@@ -162,6 +168,34 @@ public interface Machine_VirtualBox extends Machine {
 	void setOn_crash(String value);
 
 	/**
+	 * Returns the value of the '<em><b>Maximum memory</b></em>' attribute.
+	 * The default value is <code>"256000"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Maximum memory</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Maximum memory</em>' attribute.
+	 * @see #setMaximum_memory(int)
+	 * @see org.occiware.clouddesigner.occi.hypervisor.HypervisorPackage#getMachine_VirtualBox_Maximum_memory()
+	 * @model default="256000" dataType="org.occiware.clouddesigner.occi.Number" required="true"
+	 *        annotation="OCCIE2Ecore description='This sets the maximum memory for the guest at boot time in KB.'"
+	 * @generated
+	 */
+	int getMaximum_memory();
+
+	/**
+	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.hypervisor.Machine_VirtualBox#getMaximum_memory <em>Maximum memory</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Maximum memory</em>' attribute.
+	 * @see #getMaximum_memory()
+	 * @generated
+	 */
+	void setMaximum_memory(int value);
+
+	/**
 	 * Returns the value of the '<em><b>Current memory</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -173,6 +207,7 @@ public interface Machine_VirtualBox extends Machine {
 	 * @see #setCurrent_memory(int)
 	 * @see org.occiware.clouddesigner.occi.hypervisor.HypervisorPackage#getMachine_VirtualBox_Current_memory()
 	 * @model dataType="org.occiware.clouddesigner.occi.Number"
+	 *        annotation="OCCIE2Ecore description='This sets the lower memory for the guest at boot time in KB.'"
 	 * @generated
 	 */
 	int getCurrent_memory();
@@ -200,6 +235,7 @@ public interface Machine_VirtualBox extends Machine {
 	 * @see #setVcpu(int)
 	 * @see org.occiware.clouddesigner.occi.hypervisor.HypervisorPackage#getMachine_VirtualBox_Vcpu()
 	 * @model default="1" dataType="org.occiware.clouddesigner.occi.Number"
+	 *        annotation="OCCIE2Ecore description='The number of virtual CPUs to create.'"
 	 * @generated
 	 */
 	int getVcpu();

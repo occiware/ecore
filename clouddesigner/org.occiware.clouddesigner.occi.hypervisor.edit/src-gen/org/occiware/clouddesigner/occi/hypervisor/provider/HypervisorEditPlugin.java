@@ -43,7 +43,6 @@ public final class HypervisorEditPlugin extends EMFPlugin {
 	public HypervisorEditPlugin() {
 		super
 		  (new ResourceLocator [] {
-		     EcoreEditPlugin.INSTANCE,
 		     InfrastructureEditPlugin.INSTANCE,
 		     OCCIEditPlugin.INSTANCE,
 		   });

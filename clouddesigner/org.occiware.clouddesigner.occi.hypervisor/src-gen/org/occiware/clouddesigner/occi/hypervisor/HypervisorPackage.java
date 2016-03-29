@@ -224,51 +224,6 @@ public interface HypervisorPackage extends EPackage {
 	int MACHINE_FEATURE_COUNT = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 5;
 
 	/**
-	 * The operation id for the '<em>Start</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE___START = InfrastructurePackage.COMPUTE___START;
-
-	/**
-	 * The operation id for the '<em>Stop</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE___STOP__STOPMETHOD = InfrastructurePackage.COMPUTE___STOP__STOPMETHOD;
-
-	/**
-	 * The operation id for the '<em>Restart</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE___RESTART__RESTARTMETHOD = InfrastructurePackage.COMPUTE___RESTART__RESTARTMETHOD;
-
-	/**
-	 * The operation id for the '<em>Suspend</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE___SUSPEND__SUSPENDMETHOD = InfrastructurePackage.COMPUTE___SUSPEND__SUSPENDMETHOD;
-
-	/**
-	 * The number of operations of the '<em>Machine</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_OPERATION_COUNT = InfrastructurePackage.COMPUTE_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.hypervisor.impl.ContainsImpl <em>Contains</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -340,15 +295,6 @@ public interface HypervisorPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONTAINS_FEATURE_COUNT = OCCIPackage.LINK_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>Contains</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTAINS_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.hypervisor.impl.DiskImpl <em>Disk</em>}' class.
@@ -496,60 +442,6 @@ public interface HypervisorPackage extends EPackage {
 	int DISK_FEATURE_COUNT = InfrastructurePackage.STORAGE_FEATURE_COUNT + 7;
 
 	/**
-	 * The operation id for the '<em>Online</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DISK___ONLINE = InfrastructurePackage.STORAGE___ONLINE;
-
-	/**
-	 * The operation id for the '<em>Offline</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DISK___OFFLINE = InfrastructurePackage.STORAGE___OFFLINE;
-
-	/**
-	 * The operation id for the '<em>Backup</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DISK___BACKUP = InfrastructurePackage.STORAGE___BACKUP;
-
-	/**
-	 * The operation id for the '<em>Snapshot</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DISK___SNAPSHOT = InfrastructurePackage.STORAGE___SNAPSHOT;
-
-	/**
-	 * The operation id for the '<em>Resize</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DISK___RESIZE__FLOAT = InfrastructurePackage.STORAGE___RESIZE__FLOAT;
-
-	/**
-	 * The number of operations of the '<em>Disk</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DISK_OPERATION_COUNT = InfrastructurePackage.STORAGE_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.hypervisor.impl.InterfaceImpl <em>Interface</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -684,33 +576,6 @@ public interface HypervisorPackage extends EPackage {
 	 * @ordered
 	 */
 	int INTERFACE_FEATURE_COUNT = InfrastructurePackage.NETWORK_FEATURE_COUNT + 5;
-
-	/**
-	 * The operation id for the '<em>Up</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERFACE___UP = InfrastructurePackage.NETWORK___UP;
-
-	/**
-	 * The operation id for the '<em>Down</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERFACE___DOWN = InfrastructurePackage.NETWORK___DOWN;
-
-	/**
-	 * The number of operations of the '<em>Interface</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERFACE_OPERATION_COUNT = InfrastructurePackage.NETWORK_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.hypervisor.impl.Machine_VirtualBoxImpl <em>Machine Virtual Box</em>}' class.
@@ -912,13 +777,22 @@ public interface HypervisorPackage extends EPackage {
 	int MACHINE_VIRTUAL_BOX__ON_CRASH = MACHINE_FEATURE_COUNT + 4;
 
 	/**
+	 * The feature id for the '<em><b>Maximum memory</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VIRTUAL_BOX__MAXIMUM_MEMORY = MACHINE_FEATURE_COUNT + 5;
+
+	/**
 	 * The feature id for the '<em><b>Current memory</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MACHINE_VIRTUAL_BOX__CURRENT_MEMORY = MACHINE_FEATURE_COUNT + 5;
+	int MACHINE_VIRTUAL_BOX__CURRENT_MEMORY = MACHINE_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Vcpu</b></em>' attribute.
@@ -927,7 +801,7 @@ public interface HypervisorPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MACHINE_VIRTUAL_BOX__VCPU = MACHINE_FEATURE_COUNT + 6;
+	int MACHINE_VIRTUAL_BOX__VCPU = MACHINE_FEATURE_COUNT + 7;
 
 	/**
 	 * The number of structural features of the '<em>Machine Virtual Box</em>' class.
@@ -936,52 +810,7 @@ public interface HypervisorPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MACHINE_VIRTUAL_BOX_FEATURE_COUNT = MACHINE_FEATURE_COUNT + 7;
-
-	/**
-	 * The operation id for the '<em>Start</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_VIRTUAL_BOX___START = MACHINE___START;
-
-	/**
-	 * The operation id for the '<em>Stop</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_VIRTUAL_BOX___STOP__STOPMETHOD = MACHINE___STOP__STOPMETHOD;
-
-	/**
-	 * The operation id for the '<em>Restart</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_VIRTUAL_BOX___RESTART__RESTARTMETHOD = MACHINE___RESTART__RESTARTMETHOD;
-
-	/**
-	 * The operation id for the '<em>Suspend</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_VIRTUAL_BOX___SUSPEND__SUSPENDMETHOD = MACHINE___SUSPEND__SUSPENDMETHOD;
-
-	/**
-	 * The number of operations of the '<em>Machine Virtual Box</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_VIRTUAL_BOX_OPERATION_COUNT = MACHINE_OPERATION_COUNT + 0;
+	int MACHINE_VIRTUAL_BOX_FEATURE_COUNT = MACHINE_FEATURE_COUNT + 8;
 
 	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.hypervisor.impl.BridgeImpl <em>Bridge</em>}' class.
@@ -1129,33 +958,6 @@ public interface HypervisorPackage extends EPackage {
 	int BRIDGE_FEATURE_COUNT = INTERFACE_FEATURE_COUNT + 1;
 
 	/**
-	 * The operation id for the '<em>Up</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BRIDGE___UP = INTERFACE___UP;
-
-	/**
-	 * The operation id for the '<em>Down</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BRIDGE___DOWN = INTERFACE___DOWN;
-
-	/**
-	 * The number of operations of the '<em>Bridge</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BRIDGE_OPERATION_COUNT = INTERFACE_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.hypervisor.impl.UserImpl <em>User</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1292,33 +1094,6 @@ public interface HypervisorPackage extends EPackage {
 	int USER_FEATURE_COUNT = INTERFACE_FEATURE_COUNT + 0;
 
 	/**
-	 * The operation id for the '<em>Up</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USER___UP = INTERFACE___UP;
-
-	/**
-	 * The operation id for the '<em>Down</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USER___DOWN = INTERFACE___DOWN;
-
-	/**
-	 * The number of operations of the '<em>User</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USER_OPERATION_COUNT = INTERFACE_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.hypervisor.impl.ParallelImpl <em>Parallel</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1410,15 +1185,6 @@ public interface HypervisorPackage extends EPackage {
 	int PARALLEL_FEATURE_COUNT = OCCIPackage.RESOURCE_FEATURE_COUNT + 3;
 
 	/**
-	 * The number of operations of the '<em>Parallel</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARALLEL_OPERATION_COUNT = OCCIPackage.RESOURCE_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.hypervisor.impl.SerialImpl <em>Serial</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1508,15 +1274,6 @@ public interface HypervisorPackage extends EPackage {
 	 * @ordered
 	 */
 	int SERIAL_FEATURE_COUNT = OCCIPackage.RESOURCE_FEATURE_COUNT + 3;
-
-	/**
-	 * The number of operations of the '<em>Serial</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERIAL_OPERATION_COUNT = OCCIPackage.RESOURCE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.hypervisor.impl.DirectImpl <em>Direct</em>}' class.
@@ -1673,33 +1430,6 @@ public interface HypervisorPackage extends EPackage {
 	int DIRECT_FEATURE_COUNT = INTERFACE_FEATURE_COUNT + 2;
 
 	/**
-	 * The operation id for the '<em>Up</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIRECT___UP = INTERFACE___UP;
-
-	/**
-	 * The operation id for the '<em>Down</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIRECT___DOWN = INTERFACE___DOWN;
-
-	/**
-	 * The number of operations of the '<em>Direct</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIRECT_OPERATION_COUNT = INTERFACE_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.hypervisor.impl.EthernetImpl <em>Ethernet</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1780,15 +1510,6 @@ public interface HypervisorPackage extends EPackage {
 	 * @ordered
 	 */
 	int ETHERNET_FEATURE_COUNT = OCCIPackage.RESOURCE_FEATURE_COUNT + 2;
-
-	/**
-	 * The number of operations of the '<em>Ethernet</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ETHERNET_OPERATION_COUNT = OCCIPackage.RESOURCE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.hypervisor.impl.FilesystemImpl <em>Filesystem</em>}' class.
@@ -1880,15 +1601,6 @@ public interface HypervisorPackage extends EPackage {
 	 * @ordered
 	 */
 	int FILESYSTEM_FEATURE_COUNT = OCCIPackage.RESOURCE_FEATURE_COUNT + 3;
-
-	/**
-	 * The number of operations of the '<em>Filesystem</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FILESYSTEM_OPERATION_COUNT = OCCIPackage.RESOURCE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.hypervisor.CLOCK <em>CLOCK</em>}' enum.
@@ -2212,6 +1924,17 @@ public interface HypervisorPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getMachine_VirtualBox_On_crash();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.hypervisor.Machine_VirtualBox#getMaximum_memory <em>Maximum memory</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Maximum memory</em>'.
+	 * @see org.occiware.clouddesigner.occi.hypervisor.Machine_VirtualBox#getMaximum_memory()
+	 * @see #getMachine_VirtualBox()
+	 * @generated
+	 */
+	EAttribute getMachine_VirtualBox_Maximum_memory();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.hypervisor.Machine_VirtualBox#getCurrent_memory <em>Current memory</em>}'.
@@ -2737,6 +2460,14 @@ public interface HypervisorPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute MACHINE_VIRTUAL_BOX__ON_CRASH = eINSTANCE.getMachine_VirtualBox_On_crash();
+
+		/**
+		 * The meta object literal for the '<em><b>Maximum memory</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_VIRTUAL_BOX__MAXIMUM_MEMORY = eINSTANCE.getMachine_VirtualBox_Maximum_memory();
 
 		/**
 		 * The meta object literal for the '<em><b>Current memory</b></em>' attribute feature.

@@ -18,7 +18,7 @@ import org.occiware.clouddesigner.occi.Resource;
  * </ul>
  *
  * @see org.occiware.clouddesigner.occi.hypervisor.HypervisorPackage#getEthernet()
- * @model
+ * @model annotation="OCCIE2Ecore title='Ethernet resource'"
  * @generated
  */
 public interface Ethernet extends Resource {
@@ -34,6 +34,7 @@ public interface Ethernet extends Resource {
 	 * @see #setTarget_dev(String)
 	 * @see org.occiware.clouddesigner.occi.hypervisor.HypervisorPackage#getEthernet_Target_dev()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getTarget_dev();
@@ -60,6 +61,7 @@ public interface Ethernet extends Resource {
 	 * @see #setScript_path(String)
 	 * @see org.occiware.clouddesigner.occi.hypervisor.HypervisorPackage#getEthernet_Script_path()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getScript_path();

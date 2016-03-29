@@ -21,7 +21,7 @@ import org.occiware.clouddesigner.occi.infrastructure.Network;
  * </ul>
  *
  * @see org.occiware.clouddesigner.occi.hypervisor.HypervisorPackage#getInterface()
- * @model
+ * @model annotation="OCCIE2Ecore title='Interface resource'"
  * @generated
  */
 public interface Interface extends Network {
@@ -38,6 +38,7 @@ public interface Interface extends Network {
 	 * @see #setName(String)
 	 * @see org.occiware.clouddesigner.occi.hypervisor.HypervisorPackage#getInterface_Name()
 	 * @model default="interface" dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='The interface resource'"
 	 * @generated
 	 */
 	String getName();
@@ -64,6 +65,7 @@ public interface Interface extends Network {
 	 * @see #setType(String)
 	 * @see org.occiware.clouddesigner.occi.hypervisor.HypervisorPackage#getInterface_Type()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
+	 *        annotation="OCCIE2Ecore description='The interface type'"
 	 * @generated
 	 */
 	String getType();
@@ -90,6 +92,7 @@ public interface Interface extends Network {
 	 * @see #setModel(String)
 	 * @see org.occiware.clouddesigner.occi.hypervisor.HypervisorPackage#getInterface_Model()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='The interface model'"
 	 * @generated
 	 */
 	String getModel();
@@ -116,6 +119,7 @@ public interface Interface extends Network {
 	 * @see #setMac_addresss(String)
 	 * @see org.occiware.clouddesigner.occi.hypervisor.HypervisorPackage#getInterface_Mac_addresss()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getMac_addresss();
@@ -142,6 +146,7 @@ public interface Interface extends Network {
 	 * @see #setRoute(String)
 	 * @see org.occiware.clouddesigner.occi.hypervisor.HypervisorPackage#getInterface_Route()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getRoute();

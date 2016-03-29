@@ -16,7 +16,7 @@ package org.occiware.clouddesigner.occi.hypervisor;
  * </ul>
  *
  * @see org.occiware.clouddesigner.occi.hypervisor.HypervisorPackage#getBridge()
- * @model
+ * @model annotation="OCCIE2Ecore title='Bridge interface'"
  * @generated
  */
 public interface Bridge extends Interface {
@@ -32,6 +32,7 @@ public interface Bridge extends Interface {
 	 * @see #setSource_bridge(String)
 	 * @see org.occiware.clouddesigner.occi.hypervisor.HypervisorPackage#getBridge_Source_bridge()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getSource_bridge();

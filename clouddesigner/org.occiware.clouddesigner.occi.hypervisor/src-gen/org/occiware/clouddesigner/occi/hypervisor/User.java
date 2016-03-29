@@ -10,7 +10,7 @@ package org.occiware.clouddesigner.occi.hypervisor;
  *
  *
  * @see org.occiware.clouddesigner.occi.hypervisor.HypervisorPackage#getUser()
- * @model
+ * @model annotation="OCCIE2Ecore title='User interface'"
  * @generated
  */
 public interface User extends Interface {

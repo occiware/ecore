@@ -19,7 +19,7 @@ import org.occiware.clouddesigner.occi.Resource;
  * </ul>
  *
  * @see org.occiware.clouddesigner.occi.hypervisor.HypervisorPackage#getSerial()
- * @model
+ * @model annotation="OCCIE2Ecore title='Serial resource'"
  * @generated
  */
 public interface Serial extends Resource {
@@ -36,6 +36,7 @@ public interface Serial extends Resource {
 	 * @see #setName(String)
 	 * @see org.occiware.clouddesigner.occi.hypervisor.HypervisorPackage#getSerial_Name()
 	 * @model default="serial" dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getName();
@@ -62,6 +63,7 @@ public interface Serial extends Resource {
 	 * @see #setSource(String)
 	 * @see org.occiware.clouddesigner.occi.hypervisor.HypervisorPackage#getSerial_Source()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getSource();
@@ -88,6 +90,7 @@ public interface Serial extends Resource {
 	 * @see #setTarget(String)
 	 * @see org.occiware.clouddesigner.occi.hypervisor.HypervisorPackage#getSerial_Target()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getTarget();

@@ -188,7 +188,6 @@ public class HypervisorPackageImpl extends EPackageImpl implements HypervisorPac
 		isInited = true;
 
 		// Initialize simple dependencies
-		EcorePackage.eINSTANCE.eClass();
 		InfrastructurePackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
@@ -454,7 +453,7 @@ public class HypervisorPackageImpl extends EPackageImpl implements HypervisorPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getMachine_VirtualBox_Current_memory() {
+	public EAttribute getMachine_VirtualBox_Maximum_memory() {
 		return (EAttribute)machine_VirtualBoxEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -463,8 +462,17 @@ public class HypervisorPackageImpl extends EPackageImpl implements HypervisorPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getMachine_VirtualBox_Vcpu() {
+	public EAttribute getMachine_VirtualBox_Current_memory() {
 		return (EAttribute)machine_VirtualBoxEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMachine_VirtualBox_Vcpu() {
+		return (EAttribute)machine_VirtualBoxEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -742,6 +750,7 @@ public class HypervisorPackageImpl extends EPackageImpl implements HypervisorPac
 		createEAttribute(machine_VirtualBoxEClass, MACHINE_VIRTUAL_BOX__ON_POWEROFF);
 		createEAttribute(machine_VirtualBoxEClass, MACHINE_VIRTUAL_BOX__ON_REBOOT);
 		createEAttribute(machine_VirtualBoxEClass, MACHINE_VIRTUAL_BOX__ON_CRASH);
+		createEAttribute(machine_VirtualBoxEClass, MACHINE_VIRTUAL_BOX__MAXIMUM_MEMORY);
 		createEAttribute(machine_VirtualBoxEClass, MACHINE_VIRTUAL_BOX__CURRENT_MEMORY);
 		createEAttribute(machine_VirtualBoxEClass, MACHINE_VIRTUAL_BOX__VCPU);
 
@@ -824,7 +833,7 @@ public class HypervisorPackageImpl extends EPackageImpl implements HypervisorPac
 		ethernetEClass.getESuperTypes().add(theOCCIPackage.getResource());
 		filesystemEClass.getESuperTypes().add(theOCCIPackage.getResource());
 
-		// Initialize classes, features, and operations; add parameters
+		// Initialize classes and features; add operations and parameters
 		initEClass(machineEClass, Machine.class, "Machine", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMachine_Name(), theOCCIPackage.getString(), "name", null, 0, 1, Machine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_Boot(), theOCCIPackage.getString(), "boot", null, 0, 1, Machine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -856,6 +865,7 @@ public class HypervisorPackageImpl extends EPackageImpl implements HypervisorPac
 		initEAttribute(getMachine_VirtualBox_On_poweroff(), theOCCIPackage.getString(), "on_poweroff", null, 0, 1, Machine_VirtualBox.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_VirtualBox_On_reboot(), theOCCIPackage.getString(), "on_reboot", null, 0, 1, Machine_VirtualBox.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_VirtualBox_On_crash(), theOCCIPackage.getString(), "on_crash", null, 0, 1, Machine_VirtualBox.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_VirtualBox_Maximum_memory(), theOCCIPackage.getNumber(), "maximum_memory", "256000", 1, 1, Machine_VirtualBox.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_VirtualBox_Current_memory(), theOCCIPackage.getNumber(), "current_memory", null, 0, 1, Machine_VirtualBox.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_VirtualBox_Vcpu(), theOCCIPackage.getNumber(), "vcpu", "1", 0, 1, Machine_VirtualBox.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -905,6 +915,326 @@ public class HypervisorPackageImpl extends EPackageImpl implements HypervisorPac
 
 		// Create resource
 		createResource(eNS_URI);
+
+		// Create annotations
+		// OCCIE2Ecore
+		createOCCIE2EcoreAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>OCCIE2Ecore</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createOCCIE2EcoreAnnotations() {
+		String source = "OCCIE2Ecore";	
+		addAnnotation
+		  (machineEClass, 
+		   source, 
+		   new String[] {
+			 "title", "Machine resource"
+		   });	
+		addAnnotation
+		  (getMachine_Name(), 
+		   source, 
+		   new String[] {
+			 "description", "Hypervisor name."
+		   });	
+		addAnnotation
+		  (getMachine_Boot(), 
+		   source, 
+		   new String[] {
+			 "description", "The machine boot device."
+		   });	
+		addAnnotation
+		  (getMachine_Uuid(), 
+		   source, 
+		   new String[] {
+			 "description", "The machine unique ID."
+		   });	
+		addAnnotation
+		  (getMachine_Offset(), 
+		   source, 
+		   new String[] {
+			 "description", "This will be set if the guest XML contains a request for a clock synced to localtime."
+		   });	
+		addAnnotation
+		  (getMachine_Os_type(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (containsEClass, 
+		   source, 
+		   new String[] {
+			 "title", null
+		   });	
+		addAnnotation
+		  (diskEClass, 
+		   source, 
+		   new String[] {
+			 "title", "Disk resource"
+		   });	
+		addAnnotation
+		  (getDisk_Name(), 
+		   source, 
+		   new String[] {
+			 "description", "The default name of the resource"
+		   });	
+		addAnnotation
+		  (getDisk_Type(), 
+		   source, 
+		   new String[] {
+			 "description", "The kind of disk."
+		   });	
+		addAnnotation
+		  (getDisk_Device(), 
+		   source, 
+		   new String[] {
+			 "description", "Specify the disk device\'s."
+		   });	
+		addAnnotation
+		  (getDisk_Source(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getDisk_Readonly(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getDisk_Target_dev(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getDisk_Target_bus(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (interfaceEClass, 
+		   source, 
+		   new String[] {
+			 "title", "Interface resource"
+		   });	
+		addAnnotation
+		  (getInterface_Name(), 
+		   source, 
+		   new String[] {
+			 "description", "The interface resource"
+		   });	
+		addAnnotation
+		  (getInterface_Type(), 
+		   source, 
+		   new String[] {
+			 "description", "The interface type"
+		   });	
+		addAnnotation
+		  (getInterface_Model(), 
+		   source, 
+		   new String[] {
+			 "description", "The interface model"
+		   });	
+		addAnnotation
+		  (getInterface_Mac_addresss(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getInterface_Route(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (machine_VirtualBoxEClass, 
+		   source, 
+		   new String[] {
+			 "title", "Machine on VirtualBox"
+		   });	
+		addAnnotation
+		  (getMachine_VirtualBox_Type(), 
+		   source, 
+		   new String[] {
+			 "description", "This type is specific to Libvirt."
+		   });	
+		addAnnotation
+		  (getMachine_VirtualBox_Features(), 
+		   source, 
+		   new String[] {
+			 "description", "The flag specify the Advanced Configuration and Power Interface(ACPI), the Physical Address Extension (PAE) and the Advanced Programmable Interrupt Controller (APIC)."
+		   });	
+		addAnnotation
+		  (getMachine_VirtualBox_On_poweroff(), 
+		   source, 
+		   new String[] {
+			 "description", "Action to do when the machine is poweroff."
+		   });	
+		addAnnotation
+		  (getMachine_VirtualBox_On_reboot(), 
+		   source, 
+		   new String[] {
+			 "description", "Action to do when the machine is rebooting."
+		   });	
+		addAnnotation
+		  (getMachine_VirtualBox_On_crash(), 
+		   source, 
+		   new String[] {
+			 "description", "Action to do when the machine crached."
+		   });	
+		addAnnotation
+		  (getMachine_VirtualBox_Maximum_memory(), 
+		   source, 
+		   new String[] {
+			 "description", "This sets the maximum memory for the guest at boot time in KB."
+		   });	
+		addAnnotation
+		  (getMachine_VirtualBox_Current_memory(), 
+		   source, 
+		   new String[] {
+			 "description", "This sets the lower memory for the guest at boot time in KB."
+		   });	
+		addAnnotation
+		  (getMachine_VirtualBox_Vcpu(), 
+		   source, 
+		   new String[] {
+			 "description", "The number of virtual CPUs to create."
+		   });	
+		addAnnotation
+		  (bridgeEClass, 
+		   source, 
+		   new String[] {
+			 "title", "Bridge interface"
+		   });	
+		addAnnotation
+		  (getBridge_Source_bridge(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (userEClass, 
+		   source, 
+		   new String[] {
+			 "title", "User interface"
+		   });	
+		addAnnotation
+		  (parallelEClass, 
+		   source, 
+		   new String[] {
+			 "title", "Parallel resource"
+		   });	
+		addAnnotation
+		  (getParallel_Name(), 
+		   source, 
+		   new String[] {
+			 "description", "The parallel resource name"
+		   });	
+		addAnnotation
+		  (getParallel_Source(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getParallel_Target(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (serialEClass, 
+		   source, 
+		   new String[] {
+			 "title", "Serial resource"
+		   });	
+		addAnnotation
+		  (getSerial_Name(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getSerial_Source(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getSerial_Target(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (directEClass, 
+		   source, 
+		   new String[] {
+			 "title", "Direct Interface"
+		   });	
+		addAnnotation
+		  (getDirect_Source_dev(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getDirect_Source_mode(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (ethernetEClass, 
+		   source, 
+		   new String[] {
+			 "title", "Ethernet resource"
+		   });	
+		addAnnotation
+		  (getEthernet_Target_dev(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getEthernet_Script_path(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (filesystemEClass, 
+		   source, 
+		   new String[] {
+			 "title", "Filesystem resource"
+		   });	
+		addAnnotation
+		  (getFilesystem_Name(), 
+		   source, 
+		   new String[] {
+			 "description", ""
+		   });	
+		addAnnotation
+		  (getFilesystem_Source(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getFilesystem_Target(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });
 	}
 
 } //HypervisorPackageImpl

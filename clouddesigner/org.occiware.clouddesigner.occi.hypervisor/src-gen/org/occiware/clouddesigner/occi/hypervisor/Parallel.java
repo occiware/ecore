@@ -19,7 +19,7 @@ import org.occiware.clouddesigner.occi.Resource;
  * </ul>
  *
  * @see org.occiware.clouddesigner.occi.hypervisor.HypervisorPackage#getParallel()
- * @model
+ * @model annotation="OCCIE2Ecore title='Parallel resource'"
  * @generated
  */
 public interface Parallel extends Resource {
@@ -36,6 +36,7 @@ public interface Parallel extends Resource {
 	 * @see #setName(String)
 	 * @see org.occiware.clouddesigner.occi.hypervisor.HypervisorPackage#getParallel_Name()
 	 * @model default="parallel" dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='The parallel resource name'"
 	 * @generated
 	 */
 	String getName();
@@ -62,6 +63,7 @@ public interface Parallel extends Resource {
 	 * @see #setSource(String)
 	 * @see org.occiware.clouddesigner.occi.hypervisor.HypervisorPackage#getParallel_Source()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getSource();
@@ -88,6 +90,7 @@ public interface Parallel extends Resource {
 	 * @see #setTarget(String)
 	 * @see org.occiware.clouddesigner.occi.hypervisor.HypervisorPackage#getParallel_Target()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getTarget();

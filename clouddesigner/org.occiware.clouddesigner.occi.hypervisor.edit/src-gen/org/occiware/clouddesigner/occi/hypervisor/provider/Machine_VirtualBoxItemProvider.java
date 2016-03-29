@@ -50,6 +50,7 @@ public class Machine_VirtualBoxItemProvider extends MachineItemProvider {
 			addOn_poweroffPropertyDescriptor(object);
 			addOn_rebootPropertyDescriptor(object);
 			addOn_crashPropertyDescriptor(object);
+			addMaximum_memoryPropertyDescriptor(object);
 			addCurrent_memoryPropertyDescriptor(object);
 			addVcpuPropertyDescriptor(object);
 		}
@@ -167,6 +168,28 @@ public class Machine_VirtualBoxItemProvider extends MachineItemProvider {
 	}
 
 	/**
+	 * This adds a property descriptor for the Maximum memory feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addMaximum_memoryPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_VirtualBox_maximum_memory_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_VirtualBox_maximum_memory_feature", "_UI_Machine_VirtualBox_type"),
+				 HypervisorPackage.Literals.MACHINE_VIRTUAL_BOX__MAXIMUM_MEMORY,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Current memory feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -253,6 +276,7 @@ public class Machine_VirtualBoxItemProvider extends MachineItemProvider {
 			case HypervisorPackage.MACHINE_VIRTUAL_BOX__ON_POWEROFF:
 			case HypervisorPackage.MACHINE_VIRTUAL_BOX__ON_REBOOT:
 			case HypervisorPackage.MACHINE_VIRTUAL_BOX__ON_CRASH:
+			case HypervisorPackage.MACHINE_VIRTUAL_BOX__MAXIMUM_MEMORY:
 			case HypervisorPackage.MACHINE_VIRTUAL_BOX__CURRENT_MEMORY:
 			case HypervisorPackage.MACHINE_VIRTUAL_BOX__VCPU:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));

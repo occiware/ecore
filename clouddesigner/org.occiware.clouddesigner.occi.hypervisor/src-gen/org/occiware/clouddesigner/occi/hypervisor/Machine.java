@@ -21,7 +21,7 @@ import org.occiware.clouddesigner.occi.infrastructure.Compute;
  * </ul>
  *
  * @see org.occiware.clouddesigner.occi.hypervisor.HypervisorPackage#getMachine()
- * @model
+ * @model annotation="OCCIE2Ecore title='Machine resource'"
  * @generated
  */
 public interface Machine extends Compute {
@@ -37,6 +37,7 @@ public interface Machine extends Compute {
 	 * @see #setName(String)
 	 * @see org.occiware.clouddesigner.occi.hypervisor.HypervisorPackage#getMachine_Name()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='Hypervisor name.'"
 	 * @generated
 	 */
 	String getName();
@@ -63,6 +64,7 @@ public interface Machine extends Compute {
 	 * @see #setBoot(String)
 	 * @see org.occiware.clouddesigner.occi.hypervisor.HypervisorPackage#getMachine_Boot()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='The machine boot device.'"
 	 * @generated
 	 */
 	String getBoot();
@@ -89,6 +91,7 @@ public interface Machine extends Compute {
 	 * @see #setUuid(String)
 	 * @see org.occiware.clouddesigner.occi.hypervisor.HypervisorPackage#getMachine_Uuid()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='The machine unique ID.'"
 	 * @generated
 	 */
 	String getUuid();
@@ -116,6 +119,7 @@ public interface Machine extends Compute {
 	 * @see #setOffset(String)
 	 * @see org.occiware.clouddesigner.occi.hypervisor.HypervisorPackage#getMachine_Offset()
 	 * @model default="localtime" dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='This will be set if the guest XML contains a request for a clock synced to localtime.'"
 	 * @generated
 	 */
 	String getOffset();
@@ -142,6 +146,7 @@ public interface Machine extends Compute {
 	 * @see #setOs_type(String)
 	 * @see org.occiware.clouddesigner.occi.hypervisor.HypervisorPackage#getMachine_Os_type()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getOs_type();

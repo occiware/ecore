@@ -23,7 +23,7 @@ import org.occiware.clouddesigner.occi.infrastructure.Storage;
  * </ul>
  *
  * @see org.occiware.clouddesigner.occi.hypervisor.HypervisorPackage#getDisk()
- * @model
+ * @model annotation="OCCIE2Ecore title='Disk resource'"
  * @generated
  */
 public interface Disk extends Storage {
@@ -40,6 +40,7 @@ public interface Disk extends Storage {
 	 * @see #setName(String)
 	 * @see org.occiware.clouddesigner.occi.hypervisor.HypervisorPackage#getDisk_Name()
 	 * @model default="Disk" dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='The default name of the resource'"
 	 * @generated
 	 */
 	String getName();
@@ -66,6 +67,7 @@ public interface Disk extends Storage {
 	 * @see #setType(String)
 	 * @see org.occiware.clouddesigner.occi.hypervisor.HypervisorPackage#getDisk_Type()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
+	 *        annotation="OCCIE2Ecore description='The kind of disk.'"
 	 * @generated
 	 */
 	String getType();
@@ -92,6 +94,7 @@ public interface Disk extends Storage {
 	 * @see #setDevice(String)
 	 * @see org.occiware.clouddesigner.occi.hypervisor.HypervisorPackage#getDisk_Device()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
+	 *        annotation="OCCIE2Ecore description='Specify the disk device\'s.'"
 	 * @generated
 	 */
 	String getDevice();
@@ -118,6 +121,7 @@ public interface Disk extends Storage {
 	 * @see #setSource(String)
 	 * @see org.occiware.clouddesigner.occi.hypervisor.HypervisorPackage#getDisk_Source()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getSource();
@@ -145,6 +149,7 @@ public interface Disk extends Storage {
 	 * @see #setReadonly(boolean)
 	 * @see org.occiware.clouddesigner.occi.hypervisor.HypervisorPackage#getDisk_Readonly()
 	 * @model default="false" dataType="org.occiware.clouddesigner.occi.Boolean"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	boolean isReadonly();
@@ -171,6 +176,7 @@ public interface Disk extends Storage {
 	 * @see #setTarget_dev(String)
 	 * @see org.occiware.clouddesigner.occi.hypervisor.HypervisorPackage#getDisk_Target_dev()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getTarget_dev();
@@ -197,6 +203,7 @@ public interface Disk extends Storage {
 	 * @see #setTarget_bus(String)
 	 * @see org.occiware.clouddesigner.occi.hypervisor.HypervisorPackage#getDisk_Target_bus()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getTarget_bus();

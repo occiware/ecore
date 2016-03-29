@@ -25,6 +25,7 @@ import org.occiware.clouddesigner.occi.hypervisor.Machine_VirtualBox;
  *   <li>{@link org.occiware.clouddesigner.occi.hypervisor.impl.Machine_VirtualBoxImpl#getOn_poweroff <em>On poweroff</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.hypervisor.impl.Machine_VirtualBoxImpl#getOn_reboot <em>On reboot</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.hypervisor.impl.Machine_VirtualBoxImpl#getOn_crash <em>On crash</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.hypervisor.impl.Machine_VirtualBoxImpl#getMaximum_memory <em>Maximum memory</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.hypervisor.impl.Machine_VirtualBoxImpl#getCurrent_memory <em>Current memory</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.hypervisor.impl.Machine_VirtualBoxImpl#getVcpu <em>Vcpu</em>}</li>
  * </ul>
@@ -131,6 +132,26 @@ public class Machine_VirtualBoxImpl extends MachineImpl implements Machine_Virtu
 	 * @ordered
 	 */
 	protected String on_crash = ON_CRASH_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getMaximum_memory() <em>Maximum memory</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMaximum_memory()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int MAXIMUM_MEMORY_EDEFAULT = 256000;
+
+	/**
+	 * The cached value of the '{@link #getMaximum_memory() <em>Maximum memory</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMaximum_memory()
+	 * @generated
+	 * @ordered
+	 */
+	protected int maximum_memory = MAXIMUM_MEMORY_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getCurrent_memory() <em>Current memory</em>}' attribute.
@@ -301,6 +322,27 @@ public class Machine_VirtualBoxImpl extends MachineImpl implements Machine_Virtu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public int getMaximum_memory() {
+		return maximum_memory;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMaximum_memory(int newMaximum_memory) {
+		int oldMaximum_memory = maximum_memory;
+		maximum_memory = newMaximum_memory;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, HypervisorPackage.MACHINE_VIRTUAL_BOX__MAXIMUM_MEMORY, oldMaximum_memory, maximum_memory));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public int getCurrent_memory() {
 		return current_memory;
 	}
@@ -356,6 +398,8 @@ public class Machine_VirtualBoxImpl extends MachineImpl implements Machine_Virtu
 				return getOn_reboot();
 			case HypervisorPackage.MACHINE_VIRTUAL_BOX__ON_CRASH:
 				return getOn_crash();
+			case HypervisorPackage.MACHINE_VIRTUAL_BOX__MAXIMUM_MEMORY:
+				return getMaximum_memory();
 			case HypervisorPackage.MACHINE_VIRTUAL_BOX__CURRENT_MEMORY:
 				return getCurrent_memory();
 			case HypervisorPackage.MACHINE_VIRTUAL_BOX__VCPU:
@@ -386,6 +430,9 @@ public class Machine_VirtualBoxImpl extends MachineImpl implements Machine_Virtu
 				return;
 			case HypervisorPackage.MACHINE_VIRTUAL_BOX__ON_CRASH:
 				setOn_crash((String)newValue);
+				return;
+			case HypervisorPackage.MACHINE_VIRTUAL_BOX__MAXIMUM_MEMORY:
+				setMaximum_memory((Integer)newValue);
 				return;
 			case HypervisorPackage.MACHINE_VIRTUAL_BOX__CURRENT_MEMORY:
 				setCurrent_memory((Integer)newValue);
@@ -420,6 +467,9 @@ public class Machine_VirtualBoxImpl extends MachineImpl implements Machine_Virtu
 			case HypervisorPackage.MACHINE_VIRTUAL_BOX__ON_CRASH:
 				setOn_crash(ON_CRASH_EDEFAULT);
 				return;
+			case HypervisorPackage.MACHINE_VIRTUAL_BOX__MAXIMUM_MEMORY:
+				setMaximum_memory(MAXIMUM_MEMORY_EDEFAULT);
+				return;
 			case HypervisorPackage.MACHINE_VIRTUAL_BOX__CURRENT_MEMORY:
 				setCurrent_memory(CURRENT_MEMORY_EDEFAULT);
 				return;
@@ -448,6 +498,8 @@ public class Machine_VirtualBoxImpl extends MachineImpl implements Machine_Virtu
 				return ON_REBOOT_EDEFAULT == null ? on_reboot != null : !ON_REBOOT_EDEFAULT.equals(on_reboot);
 			case HypervisorPackage.MACHINE_VIRTUAL_BOX__ON_CRASH:
 				return ON_CRASH_EDEFAULT == null ? on_crash != null : !ON_CRASH_EDEFAULT.equals(on_crash);
+			case HypervisorPackage.MACHINE_VIRTUAL_BOX__MAXIMUM_MEMORY:
+				return maximum_memory != MAXIMUM_MEMORY_EDEFAULT;
 			case HypervisorPackage.MACHINE_VIRTUAL_BOX__CURRENT_MEMORY:
 				return current_memory != CURRENT_MEMORY_EDEFAULT;
 			case HypervisorPackage.MACHINE_VIRTUAL_BOX__VCPU:
@@ -476,6 +528,8 @@ public class Machine_VirtualBoxImpl extends MachineImpl implements Machine_Virtu
 		result.append(on_reboot);
 		result.append(", on_crash: ");
 		result.append(on_crash);
+		result.append(", maximum_memory: ");
+		result.append(maximum_memory);
 		result.append(", current_memory: ");
 		result.append(current_memory);
 		result.append(", vcpu: ");

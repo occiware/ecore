@@ -17,7 +17,7 @@ package org.occiware.clouddesigner.occi.hypervisor;
  * </ul>
  *
  * @see org.occiware.clouddesigner.occi.hypervisor.HypervisorPackage#getDirect()
- * @model
+ * @model annotation="OCCIE2Ecore title='Direct Interface'"
  * @generated
  */
 public interface Direct extends Interface {
@@ -33,6 +33,7 @@ public interface Direct extends Interface {
 	 * @see #setSource_dev(String)
 	 * @see org.occiware.clouddesigner.occi.hypervisor.HypervisorPackage#getDirect_Source_dev()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getSource_dev();
@@ -59,6 +60,7 @@ public interface Direct extends Interface {
 	 * @see #setSource_mode(String)
 	 * @see org.occiware.clouddesigner.occi.hypervisor.HypervisorPackage#getDirect_Source_mode()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getSource_mode();
