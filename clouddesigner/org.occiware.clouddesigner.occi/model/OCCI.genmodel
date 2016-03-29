@@ -4,8 +4,7 @@
     editorDirectory="/org.occiware.clouddesigner.occi.editor/src-gen" modelPluginID="org.occiware.clouddesigner.occi"
     modelName="OCCI" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
-    usedGenPackages="../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore" operationReflection="true"
-    importOrganizing="true">
+    operationReflection="true" importOrganizing="true">
   <genAnnotations source="http://www.eclipse.org/OCL/GenModel">
     <details key="Use Delegates" value="false"/>
   </genAnnotations>
@@ -71,6 +70,7 @@
     <genClasses ecoreClass="OCCI.ecore#//Configuration">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference OCCI.ecore#//Configuration/use"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OCCI.ecore#//Configuration/resources"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OCCI.ecore#//Configuration/mixins"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>
