@@ -130,11 +130,13 @@
       <type
           href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
+<!-- FIXME: Removed as already defined in Compute kind.
     <attributes
         name="hostname">
       <type
           href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
+-->
     <attributes
         name="domainname">
       <type
@@ -527,12 +529,14 @@
       <type
           href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
+<!-- FIXME: Removed as already defined in Compute kind.
     <attributes
         name="hostname"
         description="hostname for the machine">
       <type
           href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
+-->
     <attributes
         name="hourly_billing"
         default="true"
@@ -552,12 +556,14 @@
       <type
           href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.1"/>
     </attributes>
+<!-- FIXME: Removed as already defined in Compute kind.
     <attributes
         name="memory"
         description="Memory for host in MB">
       <type
           href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.2"/>
     </attributes>
+-->
     <attributes
         name="private_net_only"
         description="Disable public networking">
@@ -613,6 +619,7 @@
       <type
           href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.2"/>
     </attributes>
+<!-- FIXME: Removed as already defined in Compute kind.
     <attributes
         name="memory"
         default="1024"
@@ -620,6 +627,7 @@
       <type
           href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.2"/>
     </attributes>
+-->
     <attributes
         name="virtual_switch"
         description="Name of the virtual switch to use. Defaults to first found">
@@ -784,6 +792,7 @@
       <type
           href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.2"/>
     </attributes>
+<!-- FIXME: Removed as already defined in Compute kind.
     <attributes
         name="memory"
         default="1024"
@@ -791,6 +800,7 @@
       <type
           href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.2"/>
     </attributes>
+-->
   </kinds>
   <kinds term="machine_VMware_Fusion"
       scheme="http://occiware.org/docker#"
