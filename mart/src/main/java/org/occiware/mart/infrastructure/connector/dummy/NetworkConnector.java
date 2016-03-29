@@ -15,9 +15,7 @@
  *******************************************************************************/
 package org.occiware.mart.infrastructure.connector.dummy;
 
-// TODO: Uncomment following line related to issue https://github.com/occiware/ecore/issues/26
-// import org.occiware.clouddesigner.occi.infrastructure.NetworkStatus;
-import org.occiware.clouddesigner.occi.infrastructure.ComputeStatus;
+import org.occiware.clouddesigner.occi.infrastructure.NetworkStatus;
 
 /**
  * This class is a dummy implementation of the OCCI Infrastructure Network kind.
@@ -45,9 +43,7 @@ public class NetworkConnector
 
 		// TODO: Implement how to up this network.
 
-// TODO: Uncomment following line related to issue https://github.com/occiware/ecore/issues/26
-//		setState(NetworkStatus.ACTIVE);
-		setState(ComputeStatus.ACTIVE);
+		setState(NetworkStatus.ACTIVE);
 	}
 
 	@Override
@@ -57,8 +53,6 @@ public class NetworkConnector
 
 		// TODO: Implement how to down this network.
 
-// TODO: Uncomment following line  related to issue https://github.com/occiware/ecore/issues/26
-//		setState(NetworkStatus.INACTIVE);
-		setState(ComputeStatus.INACTIVE);
+		setState(NetworkStatus.INACTIVE);
 	}
 }
