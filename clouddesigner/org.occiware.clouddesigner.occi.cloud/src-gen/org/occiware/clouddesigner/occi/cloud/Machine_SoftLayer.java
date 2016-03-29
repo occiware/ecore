@@ -24,7 +24,7 @@ package org.occiware.clouddesigner.occi.cloud;
  * </ul>
  *
  * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_SoftLayer()
- * @model
+ * @model annotation="OCCIE2Ecore title='Machine on SoftLayer'"
  * @generated
  */
 public interface Machine_SoftLayer extends Machine {
@@ -40,6 +40,7 @@ public interface Machine_SoftLayer extends Machine {
 	 * @see #setProvider(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_SoftLayer_Provider()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getProvider();
@@ -66,6 +67,7 @@ public interface Machine_SoftLayer extends Machine {
 	 * @see #setUsername(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_SoftLayer_Username()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getUsername();
@@ -92,6 +94,7 @@ public interface Machine_SoftLayer extends Machine {
 	 * @see #setApi_key(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_SoftLayer_Api_key()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getApi_key();
@@ -118,6 +121,7 @@ public interface Machine_SoftLayer extends Machine {
 	 * @see #setLocation_id(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_SoftLayer_Location_id()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getLocation_id();
@@ -144,6 +148,7 @@ public interface Machine_SoftLayer extends Machine {
 	 * @see #setImage_id(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_SoftLayer_Image_id()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getImage_id();
@@ -170,6 +175,7 @@ public interface Machine_SoftLayer extends Machine {
 	 * @see #setDomain_name(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_SoftLayer_Domain_name()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getDomain_name();
@@ -196,6 +202,7 @@ public interface Machine_SoftLayer extends Machine {
 	 * @see #setDisk_type(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_SoftLayer_Disk_type()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getDisk_type();
@@ -222,6 +229,7 @@ public interface Machine_SoftLayer extends Machine {
 	 * @see #setTenant(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_SoftLayer_Tenant()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getTenant();
@@ -248,6 +256,7 @@ public interface Machine_SoftLayer extends Machine {
 	 * @see #setEndpoint(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_SoftLayer_Endpoint()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getEndpoint();

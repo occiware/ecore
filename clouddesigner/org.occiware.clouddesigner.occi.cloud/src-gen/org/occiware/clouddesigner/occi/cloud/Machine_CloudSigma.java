@@ -18,7 +18,7 @@ package org.occiware.clouddesigner.occi.cloud;
  * </ul>
  *
  * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_CloudSigma()
- * @model
+ * @model annotation="OCCIE2Ecore title='Machine on CloudSigma'"
  * @generated
  */
 public interface Machine_CloudSigma extends Machine {
@@ -34,6 +34,7 @@ public interface Machine_CloudSigma extends Machine {
 	 * @see #setProvider(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_CloudSigma_Provider()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getProvider();
@@ -60,6 +61,7 @@ public interface Machine_CloudSigma extends Machine {
 	 * @see #setEmail(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_CloudSigma_Email()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getEmail();
@@ -86,6 +88,7 @@ public interface Machine_CloudSigma extends Machine {
 	 * @see #setPassword(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_CloudSigma_Password()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getPassword();

@@ -30,7 +30,7 @@ package org.occiware.clouddesigner.occi.cloud;
  * </ul>
  *
  * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_OpenStack()
- * @model
+ * @model annotation="OCCIE2Ecore title='Machine on OpenStack'"
  * @generated
  */
 public interface Machine_OpenStack extends Machine {
@@ -46,6 +46,7 @@ public interface Machine_OpenStack extends Machine {
 	 * @see #setProvider(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_OpenStack_Provider()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getProvider();
@@ -72,6 +73,7 @@ public interface Machine_OpenStack extends Machine {
 	 * @see #setTenant(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_OpenStack_Tenant()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getTenant();
@@ -98,6 +100,7 @@ public interface Machine_OpenStack extends Machine {
 	 * @see #setUsername(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_OpenStack_Username()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getUsername();
@@ -124,6 +127,7 @@ public interface Machine_OpenStack extends Machine {
 	 * @see #setPassword(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_OpenStack_Password()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getPassword();
@@ -150,6 +154,7 @@ public interface Machine_OpenStack extends Machine {
 	 * @see #setEndpoint(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_OpenStack_Endpoint()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getEndpoint();
@@ -176,6 +181,7 @@ public interface Machine_OpenStack extends Machine {
 	 * @see #setImage_id(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_OpenStack_Image_id()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getImage_id();
@@ -202,6 +208,7 @@ public interface Machine_OpenStack extends Machine {
 	 * @see #setFlavor_name(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_OpenStack_Flavor_name()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getFlavor_name();
@@ -228,6 +235,7 @@ public interface Machine_OpenStack extends Machine {
 	 * @see #setFlavor_id(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_OpenStack_Flavor_id()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getFlavor_id();
@@ -254,6 +262,7 @@ public interface Machine_OpenStack extends Machine {
 	 * @see #setSecurity_group(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_OpenStack_Security_group()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getSecurity_group();
@@ -280,6 +289,7 @@ public interface Machine_OpenStack extends Machine {
 	 * @see #setNetwork_name(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_OpenStack_Network_name()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getNetwork_name();
@@ -306,6 +316,7 @@ public interface Machine_OpenStack extends Machine {
 	 * @see #setNetwork_id(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_OpenStack_Network_id()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getNetwork_id();
@@ -332,6 +343,7 @@ public interface Machine_OpenStack extends Machine {
 	 * @see #setFloating_ip_pool(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_OpenStack_Floating_ip_pool()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getFloating_ip_pool();
@@ -358,6 +370,7 @@ public interface Machine_OpenStack extends Machine {
 	 * @see #setImage_name(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_OpenStack_Image_name()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getImage_name();
@@ -384,6 +397,7 @@ public interface Machine_OpenStack extends Machine {
 	 * @see #setKeypair(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_OpenStack_Keypair()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getKeypair();
@@ -410,6 +424,7 @@ public interface Machine_OpenStack extends Machine {
 	 * @see #setRegion(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_OpenStack_Region()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getRegion();

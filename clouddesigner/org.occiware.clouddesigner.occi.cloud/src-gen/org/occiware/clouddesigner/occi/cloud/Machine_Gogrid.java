@@ -19,7 +19,7 @@ package org.occiware.clouddesigner.occi.cloud;
  * </ul>
  *
  * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_Gogrid()
- * @model
+ * @model annotation="OCCIE2Ecore title='Machine on Gogrid'"
  * @generated
  */
 public interface Machine_Gogrid extends Machine {
@@ -35,6 +35,7 @@ public interface Machine_Gogrid extends Machine {
 	 * @see #setProvider(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_Gogrid_Provider()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getProvider();
@@ -61,6 +62,7 @@ public interface Machine_Gogrid extends Machine {
 	 * @see #setKey(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_Gogrid_Key()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getKey();
@@ -87,6 +89,7 @@ public interface Machine_Gogrid extends Machine {
 	 * @see #setShared_secret(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_Gogrid_Shared_secret()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getShared_secret();
@@ -113,6 +116,7 @@ public interface Machine_Gogrid extends Machine {
 	 * @see #setImage_id(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_Gogrid_Image_id()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getImage_id();

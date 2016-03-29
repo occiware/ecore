@@ -20,7 +20,7 @@ package org.occiware.clouddesigner.occi.cloud;
  * </ul>
  *
  * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_RackSpace()
- * @model
+ * @model annotation="OCCIE2Ecore title='Machine on RackSpace'"
  * @generated
  */
 public interface Machine_RackSpace extends Machine {
@@ -36,6 +36,7 @@ public interface Machine_RackSpace extends Machine {
 	 * @see #setProvider(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_RackSpace_Provider()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getProvider();
@@ -62,6 +63,7 @@ public interface Machine_RackSpace extends Machine {
 	 * @see #setUsername(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_RackSpace_Username()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getUsername();
@@ -88,6 +90,7 @@ public interface Machine_RackSpace extends Machine {
 	 * @see #setApi_key(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_RackSpace_Api_key()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getApi_key();
@@ -114,6 +117,7 @@ public interface Machine_RackSpace extends Machine {
 	 * @see #setRegion(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_RackSpace_Region()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getRegion();
@@ -140,6 +144,7 @@ public interface Machine_RackSpace extends Machine {
 	 * @see #setImage(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_RackSpace_Image()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getImage();

@@ -25,7 +25,7 @@ package org.occiware.clouddesigner.occi.cloud;
  * </ul>
  *
  * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_Hp_Helion()
- * @model
+ * @model annotation="OCCIE2Ecore title='Machine on HP Helion'"
  * @generated
  */
 public interface Machine_Hp_Helion extends Machine {
@@ -41,6 +41,7 @@ public interface Machine_Hp_Helion extends Machine {
 	 * @see #setProvider(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_Hp_Helion_Provider()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getProvider();
@@ -67,6 +68,7 @@ public interface Machine_Hp_Helion extends Machine {
 	 * @see #setTenant(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_Hp_Helion_Tenant()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getTenant();
@@ -93,6 +95,7 @@ public interface Machine_Hp_Helion extends Machine {
 	 * @see #setAccess_key(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_Hp_Helion_Access_key()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getAccess_key();
@@ -119,6 +122,7 @@ public interface Machine_Hp_Helion extends Machine {
 	 * @see #setSecret_key(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_Hp_Helion_Secret_key()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getSecret_key();
@@ -145,6 +149,7 @@ public interface Machine_Hp_Helion extends Machine {
 	 * @see #setImage(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_Hp_Helion_Image()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getImage();
@@ -171,6 +176,7 @@ public interface Machine_Hp_Helion extends Machine {
 	 * @see #setZone(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_Hp_Helion_Zone()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getZone();
@@ -197,6 +203,7 @@ public interface Machine_Hp_Helion extends Machine {
 	 * @see #setFlavor_id(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_Hp_Helion_Flavor_id()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getFlavor_id();
@@ -223,6 +230,7 @@ public interface Machine_Hp_Helion extends Machine {
 	 * @see #setKey_pair(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_Hp_Helion_Key_pair()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getKey_pair();
@@ -249,6 +257,7 @@ public interface Machine_Hp_Helion extends Machine {
 	 * @see #setSecurity_group(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_Hp_Helion_Security_group()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getSecurity_group();
@@ -275,6 +284,7 @@ public interface Machine_Hp_Helion extends Machine {
 	 * @see #setFloating_ip(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_Hp_Helion_Floating_ip()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getFloating_ip();

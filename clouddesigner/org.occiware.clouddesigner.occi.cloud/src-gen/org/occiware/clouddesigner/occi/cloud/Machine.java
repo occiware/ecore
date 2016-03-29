@@ -17,7 +17,7 @@ import org.occiware.clouddesigner.occi.infrastructure.Compute;
  * </ul>
  *
  * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine()
- * @model
+ * @model annotation="OCCIE2Ecore title='Machine Resource'"
  * @generated
  */
 public interface Machine extends Compute {
@@ -33,6 +33,7 @@ public interface Machine extends Compute {
 	 * @see #setName(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_Name()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getName();

@@ -46,7 +46,6 @@ public final class CloudEditPlugin extends EMFPlugin {
 		  (new ResourceLocator [] {
 		     InfrastructureEditPlugin.INSTANCE,
 		     OCCIEditPlugin.INSTANCE,
-		     EcoreEditPlugin.INSTANCE,
 		   });
 	}
 

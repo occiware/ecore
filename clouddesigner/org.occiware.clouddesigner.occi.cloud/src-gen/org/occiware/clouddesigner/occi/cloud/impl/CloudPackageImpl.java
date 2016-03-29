@@ -1028,7 +1028,7 @@ public class CloudPackageImpl extends EPackageImpl implements CloudPackage {
 		machine_OpenStackEClass.getESuperTypes().add(this.getMachine());
 		machine_SoftLayerEClass.getESuperTypes().add(this.getMachine());
 
-		// Initialize classes, features, and operations; add parameters
+		// Initialize classes and features; add operations and parameters
 		initEClass(machineEClass, Machine.class, "Machine", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMachine_Name(), theOCCIPackage.getString(), "name", null, 1, 1, Machine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1119,6 +1119,488 @@ public class CloudPackageImpl extends EPackageImpl implements CloudPackage {
 
 		// Create resource
 		createResource(eNS_URI);
+
+		// Create annotations
+		// OCCIE2Ecore
+		createOCCIE2EcoreAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>OCCIE2Ecore</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createOCCIE2EcoreAnnotations() {
+		String source = "OCCIE2Ecore";	
+		addAnnotation
+		  (machineEClass, 
+		   source, 
+		   new String[] {
+			 "title", "Machine Resource"
+		   });	
+		addAnnotation
+		  (getMachine_Name(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (machine_CloudSigmaEClass, 
+		   source, 
+		   new String[] {
+			 "title", "Machine on CloudSigma"
+		   });	
+		addAnnotation
+		  (getMachine_CloudSigma_Provider(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_CloudSigma_Email(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_CloudSigma_Password(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (machine_Amazon_EC2EClass, 
+		   source, 
+		   new String[] {
+			 "title", "Machine on Amazon EC2"
+		   });	
+		addAnnotation
+		  (getMachine_Amazon_EC2_Provider(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_Amazon_EC2_Access_key(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_Amazon_EC2_Secret_key(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_Amazon_EC2_Region(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_Amazon_EC2_Image(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_Amazon_EC2_Security_group(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_Amazon_EC2_Key_pair(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (machine_GogridEClass, 
+		   source, 
+		   new String[] {
+			 "title", "Machine on Gogrid"
+		   });	
+		addAnnotation
+		  (getMachine_Gogrid_Provider(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_Gogrid_Key(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_Gogrid_Shared_secret(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_Gogrid_Image_id(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (machine_Hp_HelionEClass, 
+		   source, 
+		   new String[] {
+			 "title", "Machine on HP Helion"
+		   });	
+		addAnnotation
+		  (getMachine_Hp_Helion_Provider(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_Hp_Helion_Tenant(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_Hp_Helion_Access_key(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_Hp_Helion_Secret_key(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_Hp_Helion_Image(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_Hp_Helion_Zone(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_Hp_Helion_Flavor_id(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_Hp_Helion_Key_pair(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_Hp_Helion_Security_group(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_Hp_Helion_Floating_ip(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (machine_GCEEClass, 
+		   source, 
+		   new String[] {
+			 "title", "MAchine on Goolge Compute ENgine"
+		   });	
+		addAnnotation
+		  (getMachine_GCE_Zone(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_GCE_Region(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_GCE_Machine_type(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_GCE_Machine_url(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_GCE_Firewall_tag(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_GCE_Startup_script(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_GCE_Json_file(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_GCE_Provider(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (machine_RackSpaceEClass, 
+		   source, 
+		   new String[] {
+			 "title", "Machine on RackSpace"
+		   });	
+		addAnnotation
+		  (getMachine_RackSpace_Provider(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_RackSpace_Username(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_RackSpace_Api_key(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_RackSpace_Region(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_RackSpace_Image(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (machine_ProfitBricksEClass, 
+		   source, 
+		   new String[] {
+			 "title", "Machine on ProfitBricks"
+		   });	
+		addAnnotation
+		  (getMachine_ProfitBricks_Provider(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_ProfitBricks_Username(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_ProfitBricks_Api_key(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_ProfitBricks_Email(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_ProfitBricks_Password(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_ProfitBricks_Location(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (machine_OpenStackEClass, 
+		   source, 
+		   new String[] {
+			 "title", "Machine on OpenStack"
+		   });	
+		addAnnotation
+		  (getMachine_OpenStack_Provider(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_OpenStack_Tenant(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_OpenStack_Username(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_OpenStack_Password(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_OpenStack_Endpoint(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_OpenStack_Image_id(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_OpenStack_Flavor_name(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_OpenStack_Flavor_id(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_OpenStack_Security_group(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_OpenStack_Network_name(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_OpenStack_Network_id(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_OpenStack_Floating_ip_pool(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_OpenStack_Image_name(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_OpenStack_Keypair(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_OpenStack_Region(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (machine_SoftLayerEClass, 
+		   source, 
+		   new String[] {
+			 "title", "Machine on SoftLayer"
+		   });	
+		addAnnotation
+		  (getMachine_SoftLayer_Provider(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_SoftLayer_Username(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_SoftLayer_Api_key(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_SoftLayer_Location_id(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_SoftLayer_Image_id(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_SoftLayer_Domain_name(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_SoftLayer_Disk_type(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_SoftLayer_Tenant(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_SoftLayer_Endpoint(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });
 	}
 
 } //CloudPackageImpl

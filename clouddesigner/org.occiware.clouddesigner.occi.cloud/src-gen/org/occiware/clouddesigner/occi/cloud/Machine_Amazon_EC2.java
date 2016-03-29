@@ -22,7 +22,7 @@ package org.occiware.clouddesigner.occi.cloud;
  * </ul>
  *
  * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_Amazon_EC2()
- * @model
+ * @model annotation="OCCIE2Ecore title='Machine on Amazon EC2'"
  * @generated
  */
 public interface Machine_Amazon_EC2 extends Machine {
@@ -38,6 +38,7 @@ public interface Machine_Amazon_EC2 extends Machine {
 	 * @see #setProvider(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_Amazon_EC2_Provider()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getProvider();
@@ -64,6 +65,7 @@ public interface Machine_Amazon_EC2 extends Machine {
 	 * @see #setAccess_key(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_Amazon_EC2_Access_key()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getAccess_key();
@@ -90,6 +92,7 @@ public interface Machine_Amazon_EC2 extends Machine {
 	 * @see #setSecret_key(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_Amazon_EC2_Secret_key()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getSecret_key();
@@ -116,6 +119,7 @@ public interface Machine_Amazon_EC2 extends Machine {
 	 * @see #setRegion(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_Amazon_EC2_Region()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getRegion();
@@ -142,6 +146,7 @@ public interface Machine_Amazon_EC2 extends Machine {
 	 * @see #setImage(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_Amazon_EC2_Image()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getImage();
@@ -168,6 +173,7 @@ public interface Machine_Amazon_EC2 extends Machine {
 	 * @see #setSecurity_group(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_Amazon_EC2_Security_group()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getSecurity_group();
@@ -194,6 +200,7 @@ public interface Machine_Amazon_EC2 extends Machine {
 	 * @see #setKey_pair(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_Amazon_EC2_Key_pair()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getKey_pair();

@@ -23,7 +23,7 @@ package org.occiware.clouddesigner.occi.cloud;
  * </ul>
  *
  * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_GCE()
- * @model
+ * @model annotation="OCCIE2Ecore title='MAchine on Goolge Compute ENgine'"
  * @generated
  */
 public interface Machine_GCE extends Machine {
@@ -39,6 +39,7 @@ public interface Machine_GCE extends Machine {
 	 * @see #setZone(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_GCE_Zone()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getZone();
@@ -65,6 +66,7 @@ public interface Machine_GCE extends Machine {
 	 * @see #setRegion(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_GCE_Region()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getRegion();
@@ -91,6 +93,7 @@ public interface Machine_GCE extends Machine {
 	 * @see #setMachine_type(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_GCE_Machine_type()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getMachine_type();
@@ -117,6 +120,7 @@ public interface Machine_GCE extends Machine {
 	 * @see #setMachine_url(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_GCE_Machine_url()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getMachine_url();
@@ -143,6 +147,7 @@ public interface Machine_GCE extends Machine {
 	 * @see #setFirewall_tag(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_GCE_Firewall_tag()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getFirewall_tag();
@@ -169,6 +174,7 @@ public interface Machine_GCE extends Machine {
 	 * @see #setStartup_script(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_GCE_Startup_script()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getStartup_script();
@@ -195,6 +201,7 @@ public interface Machine_GCE extends Machine {
 	 * @see #setJson_file(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_GCE_Json_file()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getJson_file();
@@ -221,6 +228,7 @@ public interface Machine_GCE extends Machine {
 	 * @see #setProvider(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_GCE_Provider()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getProvider();

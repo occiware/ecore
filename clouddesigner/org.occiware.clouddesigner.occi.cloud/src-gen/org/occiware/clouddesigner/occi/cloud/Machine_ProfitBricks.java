@@ -21,7 +21,7 @@ package org.occiware.clouddesigner.occi.cloud;
  * </ul>
  *
  * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_ProfitBricks()
- * @model
+ * @model annotation="OCCIE2Ecore title='Machine on ProfitBricks'"
  * @generated
  */
 public interface Machine_ProfitBricks extends Machine {
@@ -37,6 +37,7 @@ public interface Machine_ProfitBricks extends Machine {
 	 * @see #setProvider(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_ProfitBricks_Provider()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getProvider();
@@ -63,6 +64,7 @@ public interface Machine_ProfitBricks extends Machine {
 	 * @see #setUsername(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_ProfitBricks_Username()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getUsername();
@@ -89,6 +91,7 @@ public interface Machine_ProfitBricks extends Machine {
 	 * @see #setApi_key(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_ProfitBricks_Api_key()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getApi_key();
@@ -115,6 +118,7 @@ public interface Machine_ProfitBricks extends Machine {
 	 * @see #setEmail(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_ProfitBricks_Email()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getEmail();
@@ -141,6 +145,7 @@ public interface Machine_ProfitBricks extends Machine {
 	 * @see #setPassword(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_ProfitBricks_Password()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getPassword();
@@ -167,6 +172,7 @@ public interface Machine_ProfitBricks extends Machine {
 	 * @see #setLocation(String)
 	 * @see org.occiware.clouddesigner.occi.cloud.CloudPackage#getMachine_ProfitBricks_Location()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getLocation();
