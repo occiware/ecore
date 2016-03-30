@@ -1092,12 +1092,20 @@ public class ModelHandler {
         modelContainer.setCommand(_replace_2);
         String _id_2 = currentContainer.getId();
         modelContainer.setContainerid(_id_2);
-        ContainerConfig _config_1 = currentContainer.getConfig();
-        ExposedPort[] _exposedPorts = _config_1.getExposedPorts();
-        String _string_1 = Arrays.toString(_exposedPorts);
-        String _replace_3 = _string_1.replace("[", "");
-        String _replace_4 = _replace_3.replace("]", "");
-        modelContainer.setPorts(_replace_4);
+        try {
+          ContainerConfig _config_1 = currentContainer.getConfig();
+          ExposedPort[] _exposedPorts = _config_1.getExposedPorts();
+          String _string_1 = Arrays.toString(_exposedPorts);
+          String _replace_3 = _string_1.replace("[", "");
+          String _replace_4 = _replace_3.replace("]", "");
+          modelContainer.setPorts(_replace_4);
+        } catch (final Throwable _t) {
+          if (_t instanceof NullPointerException) {
+            final NullPointerException exception = (NullPointerException)_t;
+          } else {
+            throw Exceptions.sneakyThrow(_t);
+          }
+        }
         ContainerConfig _config_2 = currentContainer.getConfig();
         String _macAddress = _config_2.getMacAddress();
         modelContainer.setMac_address(_macAddress);

@@ -559,6 +559,8 @@ public class DockerContainerManager {
         String _name_2 = machine.getName();
         DockerClient _setConfig_1 = this.setConfig(_name_2, this.properties);
         DockerContainerManager.dockerClient = _setConfig_1;
+        String _name_3 = machine.getName();
+        DockerContainerManager.currentMachine = _name_3;
       }
     }
     InspectContainerCmd _inspectContainerCmd = DockerContainerManager.dockerClient.inspectContainerCmd(containerId);

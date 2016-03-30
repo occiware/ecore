@@ -711,7 +711,11 @@ class ModelHandler {
 			modelContainer.image = currentContainer.imageId
 			modelContainer.command = Arrays.toString(currentContainer.config.cmd).replace("[", "").replace("]", "")
 			modelContainer.containerid = currentContainer.id
-			modelContainer.ports = Arrays.toString(currentContainer.config.exposedPorts).replace("[", "").replace("]", "")
+			try {
+				modelContainer.ports = Arrays.toString(currentContainer.config.exposedPorts).replace("[", "").replace("]", "")
+			} catch (NullPointerException exception) {
+				
+			}
 			modelContainer.mac_address = currentContainer.config.macAddress
 			modelContainer.domainname = currentContainer.config.domainName
 			modelContainer.hostname = currentContainer.config.hostName
