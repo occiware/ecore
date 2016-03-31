@@ -1,6 +1,7 @@
 package org.occiware.clouddesigner.occi.simulation.cloudsim.handlers;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -41,9 +42,15 @@ public class Simulation {
 	public static List<Cloudlet> cloudletList;
 	public static List<Vm> vmlist;
 	Map<Entity, Set<Entity>> entities;
-
+	public StringBuilder result;
+	public List<String> att, carac;
+	
+	
 	public Simulation(Map<Entity, Set<Entity>> entities){
 		this.entities = entities;
+		att = new ArrayList<String>();
+		carac = new ArrayList<String>();
+		carac.add("Cloudlet_ID,STATUS,Datacenter_ID,VM,Time,Start_Time,Finish_Time");
 	}
 
 	public void runExtension(){
@@ -138,9 +145,42 @@ public class Simulation {
 
 		for (List<Cloudlet> newList : resultList) {
 			printCloudletList(newList);
-		}
-
+			}
 		Log.printLine("Simulation finished!");
+	}
+	
+	public String getResult(){
+		String result ="";
+		for(String line: carac){
+			String[] res = line.split(",");
+			for(int i=0; i<res.length; i++){
+				result =result+ "\t \t \t \t |" +res[i];
+			}
+			result+="\n";
+		}
+		for(String line: att){
+			String[] res = line.split(",");
+			for(int i=0; i<res.length; i++){
+				if(i==0)
+				result =result+ "\t \t \t \t \t \t \t \t \t \t  \t" +res[i];
+				if(i==1)
+				result =result+ "\t \t \t \t \t \t \t \t \t \t \t \t \t \t \t  \t" +res[i];
+				if(i==2)
+				result =result+ "\t \t \t \t \t \t \t \t \t \t" +res[i];
+				if(i==3)
+				result =result+ "\t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t  \t \t  \t" +res[i];
+				if(i==4)
+				result =result+ "\t \t \t \t \t \t \t \t " +res[i];
+				if(i==5)
+				result =result+ "\t \t \t \t \t \t \t \t " +res[i];
+				if(i==6)
+					result =result+ "\t \t \t \t \t \t \t \t \t \t \t \t \t \t" +res[i];
+			}
+			result+="\n";
+		}
+		
+		
+		return result;
 	}
 
 
@@ -200,7 +240,7 @@ public class Simulation {
 
 		Datacenter datacenter = null;
 		try {
-			datacenter = new Datacenter(dc.name, characteristics, new VmAllocationPolicyOcci(hostList),
+			datacenter = new Datacenter(dc.name+""+dc.id, characteristics, new VmAllocationPolicyOcci(hostList),
 					storageList, 0);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -282,32 +322,20 @@ public class Simulation {
 	/*******************************************/
 	/*************** PRINT RESULT **************/
 	/*******************************************/
-	private static void printCloudletList(List<Cloudlet> list) {
+	private void printCloudletList(List<Cloudlet> list) {
 		int size = list.size();
-		Cloudlet cloudlet;
-
-		String indent = "    ";
-		Log.printLine();
-		Log.printLine("========== OUTPUT ==========");
-		Log.printLine("Cloudlet ID" + indent + "STATUS" + indent + "Data center ID" + indent + "VM ID" + indent + "Time"
-				+ indent + "Start Time" + indent + "Finish Time");
-
-		DecimalFormat dft = new DecimalFormat("###.##");
+		Cloudlet cloudlet;		
+		
 		for (int i = 0; i < size; i++) {
 			cloudlet = list.get(i);
-			Log.print(indent + cloudlet.getCloudletId() + indent + indent);
-
 			if (cloudlet.getCloudletStatus() == Cloudlet.SUCCESS) {
-				Log.print("SUCCESS");
-
-				Log.printLine(indent + indent + cloudlet.getResourceId() + indent + indent + indent + cloudlet.getVmId()
-				+ indent + indent + dft.format(cloudlet.getActualCPUTime()) + indent + indent
-				+ dft.format(cloudlet.getExecStartTime()) + indent + indent
-				+ dft.format(cloudlet.getFinishTime()));
+				
+				att.add(cloudlet.getCloudletId()+",SUCCESS"+","+cloudlet.getResourceId()+
+						","+cloudlet.getVmId()+","+cloudlet.getActualCPUTime()+","
+						+cloudlet.getExecStartTime()+","+cloudlet.getFinishTime());
 			}
 		}
 	}
-
 	/************************************/
 	/************ PRIVATE METHOD*********/
 	/**********************************/

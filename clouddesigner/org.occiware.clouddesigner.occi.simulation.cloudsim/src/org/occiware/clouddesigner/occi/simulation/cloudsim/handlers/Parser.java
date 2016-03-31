@@ -112,7 +112,7 @@ public class Parser {
 
 		for(AttributeState as : resource.getAttributes()) {
 			if(as.getName().equals("cloudletId")) cloudletId = Integer.parseInt(as.getValue());
-			else if (as.getName().contains("core")) pesNumber = Integer.parseInt(as.getValue());
+			else if (as.getName().contains("cores")) pesNumber = Integer.parseInt(as.getValue());
 			else if (as.getName().equals("cloudletLength")) cloudletLength = Long.parseLong(as.getValue());
 			else if (as.getName().equals("cloudletFileSize")) cloudletFileSize = Long.parseLong(as.getValue());
 			else if (as.getName().equals("cloudletOutputSize")) cloudletOutputSize = Long.parseLong(as.getValue());
@@ -136,10 +136,12 @@ public class Parser {
 		String cloudletScheduler="";
 
 		for(AttributeState as : resource.getAttributes()) {
+			//System.out.println(as.getName()+" >>>> "+as.getValue());
 			if(as.getName().equals("id_vm")) id_vm = Integer.parseInt(as.getValue());
-			else if (as.getName().contains("speed")) mips = Double.parseDouble(as.getValue());//mips ?
-			else if (as.getName().contains("core")) numberOfPes = Integer.parseInt(as.getValue());//numberOfPes ?
-			else if (as.getName().contains("memory")) ram = Integer.parseInt(as.getValue());//ram ?
+			else if (as.getName().contains("speed")  || as.getName().contains("mips")) mips = 1000*Double.parseDouble(as.getValue());
+			else if (as.getName().contains("cores")) numberOfPes = Integer.parseInt(as.getValue());
+			else if (as.getName().contains("memory")) ram = 1000*Integer.parseInt(as.getValue());//GB
+			else if (as.getName().equals("ram")) ram = Integer.parseInt(as.getValue());
 			else if (as.getName().equals("bw")) bw = Long.parseLong(as.getValue());
 			else if (as.getName().equals("storage")) size = Long.parseLong(as.getValue());
 			else if (as.getName().equals("vmm")) vmm = as.getValue();
@@ -172,8 +174,9 @@ public class Parser {
 
 		for(AttributeState as : resource.getAttributes()) {
 			if(as.getName().equals("id_host")) id_host = Integer.parseInt(as.getValue());
-			else if (as.getName().contains("speed")) mips = Double.parseDouble(as.getValue());//mips ?
+			else if (as.getName().contains("speed")  || as.getName().contains("mips")) mips = 1000*Double.parseDouble(as.getValue());
 			else if (as.getName().contains("cores")) core = Integer.parseInt(as.getValue());
+			else if (as.getName().contains("memory")) ram = 1000*Integer.parseInt(as.getValue());//GB
 			else if (as.getName().equals("ram")) ram = Integer.parseInt(as.getValue());
 			else if (as.getName().equals("bw")) bw = Integer.parseInt(as.getValue());
 			else if (as.getName().equals("storage")) storage = Long.parseLong(as.getValue());
