@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.occiware.clouddesigner.occi.Attribute;
@@ -100,9 +101,11 @@ public class DesignServices {
 			System.out.println("Configuration contains correct informations");
 			Simulation simulation = new Simulation(entities);
 			simulation.runExtension();
-			MessageDialog dialog = new MessageDialog(shell, "Simulation Result",null,simulation.getResult(),
-					MessageDialog.INFORMATION,new String[]{"OK"},0);
-			dialog.open();
+			
+			JOptionPane.showMessageDialog(null, simulation.getResult(),
+			        "Simulation Result",
+			        JOptionPane.INFORMATION_MESSAGE);
+			return;
 			//MessageDialog.openInformation(shell, "Simulation Result", simulation.getResult());
 
 		}else{
