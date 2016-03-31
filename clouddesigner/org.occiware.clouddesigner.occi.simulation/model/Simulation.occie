@@ -24,6 +24,7 @@
       <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes name="schedulingInterval" required="true" default="0" description="scheduling Interval" type="//@types.2"/>
+    <attributes name="architecture" default="x86" description="architecture"/>
     <applies href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='compute']"/>
   </mixins>
   <mixins term="cloudlet" scheme="http://occiware.org/simulation#" title="cloudlet mixin">
@@ -33,7 +34,7 @@
     <attributes name="cloudletLength" required="true" default="400000" description="The length or size (in MI) of this cloudlet to be executed in a PowerDatacenter">
       <type href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@types.13"/>
     </attributes>
-    <attributes name="pesNumber" required="true" default="1" description="the PEs number">
+    <attributes name="cores" required="true" default="1" description="the PEs number">
       <type href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@types.13"/>
     </attributes>
     <attributes name="cloudletFileSize" required="true" default="300" description="cloudletFileSize the file size (in byte) of this cloudlet BEFORE submitting to a PowerDatacenter">
@@ -64,10 +65,10 @@
     <attributes name="bw" required="true" default="10000">
       <type href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@types.13"/>
     </attributes>
-    <attributes name="mips" required="true" default="1000">
-      <type href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@types.13"/>
+    <attributes name="mips" required="true" default="1">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@types.14"/>
     </attributes>
-    <attributes name="PeProvisioner" required="true" default="PeProvisionerSimple" type="//@types.8"/>
+    <attributes name="peProvisioner" required="true" default="PeProvisionerSimple" type="//@types.8"/>
     <applies href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='compute']"/>
   </mixins>
   <mixins term="VM" scheme="http://occiware.org/simulation#">
@@ -77,11 +78,11 @@
     <attributes name="mips" required="true" default="1" description="The mips">
       <type href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@types.14"/>
     </attributes>
-    <attributes name="numberOfPes" required="true" default="1" description="numberOfPes amount of CPUs">
+    <attributes name="cores" required="true" default="1" description="numberOfPes amount of CPUs">
       <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.2"/>
     </attributes>
     <attributes name="ram" required="true" default="512" description="ram amount of ram">
-      <type href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@types.13"/>
+      <type href="file:/home/mehdi/Bureau/tmp/ecore/clouddesigner/org.occiware.clouddesigner.occi.simulation/model/simulation.occie#//@types.7"/>
     </attributes>
     <attributes name="bw" required="true" default="1000" description="bw amount of bandwidth">
       <type href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@types.13"/>
@@ -89,7 +90,7 @@
     <attributes name="size" required="true" default="10000" description="size amount of storage">
       <type href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@types.13"/>
     </attributes>
-    <attributes name="CloudletScheduler" required="true" default="CloudletSchedulerTimeShared" description="cloudletScheduler policy for cloudlets" type="//@types.5"/>
+    <attributes name="cloudletScheduler" required="true" default="CloudletSchedulerTimeShared" description="cloudletScheduler policy for cloudlets" type="//@types.5"/>
     <attributes name="userId" required="true" default="1" description="userId ID of the VM's owner">
       <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.2"/>
     </attributes>
