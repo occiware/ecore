@@ -1,2 +1,3 @@
 /.gitignore
-/CommandFactory.java
+/.CommandFactory.java._trace
+/.CommandFactory.xtendbin

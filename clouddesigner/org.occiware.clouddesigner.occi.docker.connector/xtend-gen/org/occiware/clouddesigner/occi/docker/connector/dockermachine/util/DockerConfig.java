@@ -14,10 +14,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 import org.eclipse.xtext.xbase.lib.Exceptions;
-import org.eclipse.xtext.xbase.lib.InputOutput;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @SuppressWarnings("all")
 public class DockerConfig {
+  private static Logger LOGGER = LoggerFactory.getLogger(DockerConfig.class);
+  
   private final static String DOCKER_PROPERTIES_PROPERTY = "docker.properties";
   
   public Properties loadConfig() {
@@ -29,7 +32,7 @@ public class DockerConfig {
     } catch (final Throwable _t) {
       if (_t instanceof IOException) {
         final IOException e = (IOException)_t;
-        InputOutput.<String>println("Erreur \n\n\n\n");
+        DockerConfig.LOGGER.error("Error: unable to load docker.properties file");
         throw new RuntimeException(e);
       } else {
         throw Exceptions.sneakyThrow(_t);

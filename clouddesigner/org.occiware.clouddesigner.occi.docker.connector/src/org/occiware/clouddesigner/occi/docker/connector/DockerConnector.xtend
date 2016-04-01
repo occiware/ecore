@@ -96,7 +96,7 @@ class ExecutableDockerFactory extends DockerFactoryImpl {
 
 	// Initialize logger for ExecutableDockerFactory.
 	private static Logger LOGGER = LoggerFactory.getLogger(typeof(ExecutableDockerFactory))
-
+	
 	/**
 	 * Initialize the ExecutableDockerFactory singleton.
 	 */
@@ -884,6 +884,9 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 	protected Multimap<String, String> containerDependency = ArrayListMultimap.create
 	protected Machine machine
 	protected DockerContainerManager dockerContainerManager = new DockerContainerManager
+	// Get docker-machine command
+	private var String dockerMachineCmd = DockerUtil.dockerMachineCmd
+	
 
 	/**
 	 * Construct a Docker machine manager for a given Docker machine.
@@ -917,9 +920,13 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 		// Check requirements parameters
 		checkNotNull(compute.name, "Machine name is null")
 		checkNotNull(driverName, "Driver name is null")
+		
+		// build docker-machine command
+		var String dockerMachineCMD = String.format("%s -D create --driver ", this.dockerMachineCmd) 
 
 		// Create the machine command
-		command.append("docker-machine -D create --driver ").append(getDriverName)
+		command.append(dockerMachineCMD).append(getDriverName)
+
 		if (getDriverName.equalsIgnoreCase("virtualbox") || getDriverName.equalsIgnoreCase("vmwarefusion")) {
 			command.append(' ').append(compute.name)
 			appendDriverParameters(command)

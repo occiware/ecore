@@ -16,6 +16,7 @@ import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.Proce
 import org.occiware.clouddesigner.occi.infrastructure.ComputeStatus
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerUtil
 
 class DockerMachineManager {
 	// Initialize logger for CommandFactory.
@@ -32,7 +33,13 @@ class DockerMachineManager {
 	}
 
 	def static boolean listMachinesCmd(Runtime runtime) {
-		return ProcessManager.runCommand("docker-machine ls", runtime, true)
+		var boolean result = false 
+		if (DockerUtil.getOS.equalsIgnoreCase("osx")){
+			result = ProcessManager.runCommand("/usr/local/bin/docker-machine ls", runtime, true)
+		}else{
+			result = ProcessManager.runCommand("docker-machine ls", runtime, true)
+		}
+		return result
 	}
 
 	def static String inspectHostCmd(Runtime runtime, String machine) {

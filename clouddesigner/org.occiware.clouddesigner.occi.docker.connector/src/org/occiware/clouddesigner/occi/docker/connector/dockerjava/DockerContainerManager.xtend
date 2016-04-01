@@ -52,6 +52,7 @@ import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.Docke
 import org.occiware.clouddesigner.occi.docker.preference.preferences.PreferenceValues
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerConfig
 
 class DockerContainerManager {
 	private static DockerClient dockerClient = null
@@ -501,11 +502,14 @@ class DockerContainerManager {
 	}
 
 	def DockerClient setConfig(String machine, PreferenceValues properties) {
-		LOGGER.info("Connection inside docker-machine ---> " + machine)
+		LOGGER.info("Trying to connect inside machine ---> " + machine)
 		var String port = null
 		var String ENDPOINT = DockerMachineManager.urlCmd(Runtime.getRuntime, machine)
 		val String certPath = DockerUtil.getEnv(machine)
 		LOGGER.info("DOCKER_CERT_PATH=" + certPath)
+		var DockerClientConfig config = null
+		val lconfig = new DockerConfig
+		var dockerProperties = lconfig.loadConfig
 		if (DockerUtil.getOS.equals("osx")) {
 			port = ":2376"
 		} else if (DockerUtil.getOS.equals("uni")) {
@@ -515,8 +519,21 @@ class DockerContainerManager {
 		val URI uri = new URI(url.getProtocol(), url.getHost(), url.getPath(), url.getQuery(), null)
 		val dockerUri = uri.toString + port
 		LOGGER.info("Connection inside machine: " + machine + " with uri: " + dockerUri.toString)
-		val DockerClientConfig config = DockerClientConfig.createDefaultConfigBuilder.withVersion(properties.version.trim).withUri(dockerUri).withUsername(properties.username.trim).withPassword(properties.password.trim).withEmail(properties.email.trim).withServerAddress(properties.url.trim).
+		try {
+			if (properties.version != null) {
+			config = DockerClientConfig.createDefaultConfigBuilder.withVersion(properties.version.trim).withUri(dockerUri).withUsername(properties.username.trim).withPassword(properties.password.trim).withEmail(properties.email.trim).withServerAddress(properties.url.trim).
 			withDockerCertPath(certPath).build()
+			
+		}
+		} catch (Exception exception) {
+			LOGGER.error("Loading docker-java properties files ...")
+				config = DockerClientConfig.createDefaultConfigBuilder.withVersion(
+				dockerProperties.get("docker.version").toString).withUri(dockerUri).withUsername(
+				dockerProperties.get("docker.username").toString).withPassword(
+				dockerProperties.get("docker.password").toString).withEmail(
+				dockerProperties.get("docker.email").toString).withServerAddress(
+				dockerProperties.get("docker.url").toString).withDockerCertPath(certPath).build()
+		}		
 		val DockerClient dockerClient = DockerClientBuilder.getInstance(config).build()
 
 		// Set the current machine

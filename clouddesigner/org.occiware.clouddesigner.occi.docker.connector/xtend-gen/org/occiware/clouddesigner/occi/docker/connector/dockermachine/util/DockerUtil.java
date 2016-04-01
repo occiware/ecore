@@ -40,6 +40,16 @@ public class DockerUtil {
   
   private static Logger LOGGER = LoggerFactory.getLogger(DockerUtil.class);
   
+  public static String getDockerMachineCmd() {
+    String command = "docker-machine";
+    String _oS = DockerUtil.getOS();
+    boolean _equalsIgnoreCase = _oS.equalsIgnoreCase("osx");
+    if (_equalsIgnoreCase) {
+      command = "/usr/local/bin/docker-machine";
+    }
+    return command;
+  }
+  
   public static JsonNode jsonify(final String jsonString) {
     try {
       boolean _or = false;

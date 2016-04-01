@@ -12,6 +12,7 @@ package org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager;
 
 import org.occiware.clouddesigner.occi.docker.Machine;
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.command.CommandFactory;
+import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerUtil;
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.ProcessManager;
 import org.occiware.clouddesigner.occi.infrastructure.ComputeStatus;
 import org.slf4j.Logger;
@@ -34,7 +35,17 @@ public class DockerMachineManager {
   }
   
   public static boolean listMachinesCmd(final Runtime runtime) {
-    return ProcessManager.runCommand("docker-machine ls", runtime, true);
+    boolean result = false;
+    String _oS = DockerUtil.getOS();
+    boolean _equalsIgnoreCase = _oS.equalsIgnoreCase("osx");
+    if (_equalsIgnoreCase) {
+      boolean _runCommand = ProcessManager.runCommand("/usr/local/bin/docker-machine ls", runtime, true);
+      result = _runCommand;
+    } else {
+      boolean _runCommand_1 = ProcessManager.runCommand("docker-machine ls", runtime, true);
+      result = _runCommand_1;
+    }
+    return result;
   }
   
   public static String inspectHostCmd(final Runtime runtime, final String machine) {

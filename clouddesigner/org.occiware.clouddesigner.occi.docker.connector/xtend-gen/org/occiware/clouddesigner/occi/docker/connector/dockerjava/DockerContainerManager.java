@@ -54,6 +54,7 @@ import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 import java.util.Set;
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.xtext.xbase.lib.Conversions;
@@ -63,6 +64,7 @@ import org.occiware.clouddesigner.occi.docker.Machine;
 import org.occiware.clouddesigner.occi.docker.connector.EventCallBack;
 import org.occiware.clouddesigner.occi.docker.connector.StatsCallback;
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerMachineManager;
+import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerConfig;
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerUtil;
 import org.occiware.clouddesigner.occi.docker.preference.preferences.PreferenceValues;
 import org.slf4j.Logger;
@@ -788,12 +790,15 @@ public class DockerContainerManager {
   
   public DockerClient setConfig(final String machine, final PreferenceValues properties) {
     try {
-      DockerContainerManager.LOGGER.info(("Connection inside docker-machine ---> " + machine));
+      DockerContainerManager.LOGGER.info(("Trying to connect inside machine ---> " + machine));
       String port = null;
       Runtime _runtime = Runtime.getRuntime();
       String ENDPOINT = DockerMachineManager.urlCmd(_runtime, machine);
       final String certPath = DockerUtil.getEnv(machine);
       DockerContainerManager.LOGGER.info(("DOCKER_CERT_PATH=" + certPath));
+      DockerClientConfig config = null;
+      final DockerConfig lconfig = new DockerConfig();
+      Properties dockerProperties = lconfig.loadConfig();
       String _oS = DockerUtil.getOS();
       boolean _equals = _oS.equals("osx");
       if (_equals) {
@@ -816,25 +821,59 @@ public class DockerContainerManager {
       String _string_1 = dockerUri.toString();
       String _plus = ((("Connection inside machine: " + machine) + " with uri: ") + _string_1);
       DockerContainerManager.LOGGER.info(_plus);
-      DockerClientConfig.DockerClientConfigBuilder _createDefaultConfigBuilder = DockerClientConfig.createDefaultConfigBuilder();
-      String _version = properties.getVersion();
-      String _trim = _version.trim();
-      DockerClientConfig.DockerClientConfigBuilder _withVersion = _createDefaultConfigBuilder.withVersion(_trim);
-      DockerClientConfig.DockerClientConfigBuilder _withUri = _withVersion.withUri(dockerUri);
-      String _username = properties.getUsername();
-      String _trim_1 = _username.trim();
-      DockerClientConfig.DockerClientConfigBuilder _withUsername = _withUri.withUsername(_trim_1);
-      String _password = properties.getPassword();
-      String _trim_2 = _password.trim();
-      DockerClientConfig.DockerClientConfigBuilder _withPassword = _withUsername.withPassword(_trim_2);
-      String _email = properties.getEmail();
-      String _trim_3 = _email.trim();
-      DockerClientConfig.DockerClientConfigBuilder _withEmail = _withPassword.withEmail(_trim_3);
-      String _url = properties.getUrl();
-      String _trim_4 = _url.trim();
-      DockerClientConfig.DockerClientConfigBuilder _withServerAddress = _withEmail.withServerAddress(_trim_4);
-      DockerClientConfig.DockerClientConfigBuilder _withDockerCertPath = _withServerAddress.withDockerCertPath(certPath);
-      final DockerClientConfig config = _withDockerCertPath.build();
+      try {
+        String _version = properties.getVersion();
+        boolean _notEquals = (!Objects.equal(_version, null));
+        if (_notEquals) {
+          DockerClientConfig.DockerClientConfigBuilder _createDefaultConfigBuilder = DockerClientConfig.createDefaultConfigBuilder();
+          String _version_1 = properties.getVersion();
+          String _trim = _version_1.trim();
+          DockerClientConfig.DockerClientConfigBuilder _withVersion = _createDefaultConfigBuilder.withVersion(_trim);
+          DockerClientConfig.DockerClientConfigBuilder _withUri = _withVersion.withUri(dockerUri);
+          String _username = properties.getUsername();
+          String _trim_1 = _username.trim();
+          DockerClientConfig.DockerClientConfigBuilder _withUsername = _withUri.withUsername(_trim_1);
+          String _password = properties.getPassword();
+          String _trim_2 = _password.trim();
+          DockerClientConfig.DockerClientConfigBuilder _withPassword = _withUsername.withPassword(_trim_2);
+          String _email = properties.getEmail();
+          String _trim_3 = _email.trim();
+          DockerClientConfig.DockerClientConfigBuilder _withEmail = _withPassword.withEmail(_trim_3);
+          String _url = properties.getUrl();
+          String _trim_4 = _url.trim();
+          DockerClientConfig.DockerClientConfigBuilder _withServerAddress = _withEmail.withServerAddress(_trim_4);
+          DockerClientConfig.DockerClientConfigBuilder _withDockerCertPath = _withServerAddress.withDockerCertPath(certPath);
+          DockerClientConfig _build = _withDockerCertPath.build();
+          config = _build;
+        }
+      } catch (final Throwable _t) {
+        if (_t instanceof Exception) {
+          final Exception exception = (Exception)_t;
+          DockerContainerManager.LOGGER.error("Loading docker-java properties files ...");
+          DockerClientConfig.DockerClientConfigBuilder _createDefaultConfigBuilder_1 = DockerClientConfig.createDefaultConfigBuilder();
+          Object _get = dockerProperties.get("docker.version");
+          String _string_2 = _get.toString();
+          DockerClientConfig.DockerClientConfigBuilder _withVersion_1 = _createDefaultConfigBuilder_1.withVersion(_string_2);
+          DockerClientConfig.DockerClientConfigBuilder _withUri_1 = _withVersion_1.withUri(dockerUri);
+          Object _get_1 = dockerProperties.get("docker.username");
+          String _string_3 = _get_1.toString();
+          DockerClientConfig.DockerClientConfigBuilder _withUsername_1 = _withUri_1.withUsername(_string_3);
+          Object _get_2 = dockerProperties.get("docker.password");
+          String _string_4 = _get_2.toString();
+          DockerClientConfig.DockerClientConfigBuilder _withPassword_1 = _withUsername_1.withPassword(_string_4);
+          Object _get_3 = dockerProperties.get("docker.email");
+          String _string_5 = _get_3.toString();
+          DockerClientConfig.DockerClientConfigBuilder _withEmail_1 = _withPassword_1.withEmail(_string_5);
+          Object _get_4 = dockerProperties.get("docker.url");
+          String _string_6 = _get_4.toString();
+          DockerClientConfig.DockerClientConfigBuilder _withServerAddress_1 = _withEmail_1.withServerAddress(_string_6);
+          DockerClientConfig.DockerClientConfigBuilder _withDockerCertPath_1 = _withServerAddress_1.withDockerCertPath(certPath);
+          DockerClientConfig _build_1 = _withDockerCertPath_1.build();
+          config = _build_1;
+        } else {
+          throw Exceptions.sneakyThrow(_t);
+        }
+      }
       DockerClientBuilder _instance = DockerClientBuilder.getInstance(config);
       final DockerClient dockerClient = _instance.build();
       DockerContainerManager.currentMachine = machine;

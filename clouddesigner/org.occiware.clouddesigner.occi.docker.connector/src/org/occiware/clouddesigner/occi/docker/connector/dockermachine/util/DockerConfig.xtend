@@ -12,8 +12,12 @@ package org.occiware.clouddesigner.occi.docker.connector.dockermachine.util
 
 import java.io.IOException
 import java.util.Properties
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 
 class DockerConfig {
+	// Initialize logger for CommandFactory.
+	private static Logger LOGGER = LoggerFactory.getLogger(typeof(DockerConfig))	
 	val static String DOCKER_PROPERTIES_PROPERTY = "docker.properties"
 
 	def loadConfig() {
@@ -22,7 +26,7 @@ class DockerConfig {
 			p.load(DockerConfig.getResourceAsStream("/" + DOCKER_PROPERTIES_PROPERTY))
 			return p;
 		} catch (IOException e) {
-			println("Erreur \n\n\n\n")
+			LOGGER.error("Error: unable to load docker.properties file")
 			throw new RuntimeException(e)
 		}
 	}

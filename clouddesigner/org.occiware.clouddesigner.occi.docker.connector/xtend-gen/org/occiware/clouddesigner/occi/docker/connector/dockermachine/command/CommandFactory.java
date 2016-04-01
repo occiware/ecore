@@ -10,6 +10,7 @@
  */
 package org.occiware.clouddesigner.occi.docker.connector.dockermachine.command;
 
+import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,58 +18,60 @@ import org.slf4j.LoggerFactory;
 public class CommandFactory {
   private static Logger LOGGER = LoggerFactory.getLogger(CommandFactory.class);
   
+  private String dockerMachineCmd = DockerUtil.getDockerMachineCmd();
+  
   public String createInfoCommand(final String machineName) {
-    final String command = String.format("docker-machine inspect %s", machineName);
+    final String command = String.format("%s inspect %s", this.dockerMachineCmd, machineName);
     return command;
   }
   
   public String createLsCmd() {
-    final String command = "docker-machine ls ";
+    final String command = String.format("%s ls", this.dockerMachineCmd);
     return command;
   }
   
   public String createEnvCmd(final String machineName) {
-    final String command = String.format("eval \"$(docker-machine env %s)\" ", machineName);
+    final String command = String.format("eval \"$(%s env %s)\" ", this.dockerMachineCmd, machineName);
     return command;
   }
   
   public String getEnvCmd(final String machineName) {
-    final String command = String.format("docker-machine env %s", machineName);
+    final String command = String.format("%s env %s", this.dockerMachineCmd, machineName);
     return command;
   }
   
   public String createStartCommand(final String machineName) {
-    final String command = String.format("docker-machine start %s", machineName);
+    final String command = String.format("%s start %s", this.dockerMachineCmd, machineName);
     return command;
   }
   
   public String createStopCommand(final String machineName) {
-    final String command = String.format("docker-machine stop %s", machineName);
+    final String command = String.format("%s stop %s", this.dockerMachineCmd, machineName);
     return command;
   }
   
   public String createReStartCommand(final String machineName) {
-    final String command = String.format("docker-machine restart %s", machineName);
+    final String command = String.format("%s restart %s", this.dockerMachineCmd, machineName);
     return command;
   }
   
   public String createRemoveCommand(final String machineName) {
-    final String command = String.format("docker-machine rm %s", machineName);
+    final String command = String.format("%s rm %s", this.dockerMachineCmd, machineName);
     return command;
   }
   
   public String createUrlCommand(final String machineName) {
-    final String command = String.format("docker-machine url %s", machineName);
+    final String command = String.format("%s url %s", this.dockerMachineCmd, machineName);
     return command;
   }
   
   public String createRemoveStagingCommand(final String machineName) {
-    final String command = String.format("docker-machine rm %s staging", machineName);
+    final String command = String.format("%s rm %s staging", this.dockerMachineCmd, machineName);
     return command;
   }
   
   public String createActivateCommand(final String machineName) {
-    final String command = String.format("docker-machine activate %s staging", machineName);
+    final String command = String.format("%s activate %s staging", this.dockerMachineCmd, machineName);
     return command;
   }
 }

@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  * 	- Fawaz PARAISO 
  *******************************************************************************/
@@ -29,12 +29,19 @@ import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.Do
 import org.slf4j.LoggerFactory
 import org.slf4j.Logger
 
-
 class DockerUtil {
 	protected static String OS = System.getProperty("os.name").toLowerCase()
-		// Initialize logger for Graph.
+	// Initialize logger for Graph.
 	private static Logger LOGGER = LoggerFactory.getLogger(typeof(DockerUtil))
-	
+
+	def static getDockerMachineCmd() {
+		var String command = "docker-machine"
+		if (getOS().equalsIgnoreCase("osx")) {
+			command = "/usr/local/bin/docker-machine"
+		}
+		return command
+	}
+
 	def static jsonify(String jsonString) {
 		if (jsonString != null || jsonString == "") {
 			val ObjectMapper mapper = new ObjectMapper
@@ -61,12 +68,12 @@ class DockerUtil {
 				if (lsCmd.length >= 3 && lsCmd.length < 5) {
 					hosts.put(lsCmd.get(0), lsCmd.get(2))
 				} else if (lsCmd.length >= 5) {
-					if(lsCmd.contains("(master)")){
+					if (lsCmd.contains("(master)")) {
 						hosts.put(lsCmd.get(0), lsCmd.get(2))
-					}else{
+					} else {
 						hosts.put(lsCmd.get(0), lsCmd.get(3))
 					}
-					
+
 				}
 			}
 		}
@@ -103,14 +110,14 @@ class DockerUtil {
 		val String data = DockerMachineManager.getEnvCmd(Runtime.getRuntime, machineName)
 		var List<String[]> hosts = new ArrayList
 		var String[] result = null
-		val String charset  = "DOCKER_CERT_PATH"
+		val String charset = "DOCKER_CERT_PATH"
 		if (data != null) {
 			var String[] st = data.split("\\r?\\n")
 			for (line : st) {
 				if (line.startsWith("export") && line.contains(charset)) {
 					val String[] lsCmd = line.split("\\s+")
 					hosts.add(lsCmd)
-					//var currentLine = (hosts.get(0) as String[]).get(1)
+					// var currentLine = (hosts.get(0) as String[]).get(1)
 					var currentLine = lsCmd.get(1)
 					result = currentLine.split("=")
 					return result.get(1).replaceAll("\"", "")
