@@ -11,6 +11,8 @@
 
 package org.occiware.clouddesigner.occi.docker.preference.preferences;
 
+import java.util.Properties;
+
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
@@ -20,6 +22,7 @@ import org.eclipse.jface.util.PropertyChangeEvent;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.handlers.HandlerUtil;
 import org.occiware.clouddesigner.occi.docker.preference.Activator;
+import org.occiware.clouddesigner.occi.docker.preference.PreferenceUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -40,20 +43,31 @@ public class PreferenceValues extends AbstractHandler{
 	private String url;
 
 	public PreferenceValues() {
-		String username = Activator.getDefault().getPreferenceStore().getString(PreferenceConstants.P_STRING_USERNAME);
-		setUsername(username);
-		
-		String password = Activator.getDefault().getPreferenceStore().getString(PreferenceConstants.P_STRING_PASSWORD);
-		setPassword(password);
-		
-		String email = Activator.getDefault().getPreferenceStore().getString(PreferenceConstants.P_STRING_EMAIL);
-		setEmail(email);
 
-		String version = Activator.getDefault().getPreferenceStore().getString(PreferenceConstants.P_STRING_VERSION);
-		setVersion(version);
+		try {
+			String username = Activator.getDefault().getPreferenceStore().getString(PreferenceConstants.P_STRING_USERNAME);
+			setUsername(username);
 
-		String url = Activator.getDefault().getPreferenceStore().getString(PreferenceConstants.P_STRING_URL);
-		setUrl(url);
+			String password = Activator.getDefault().getPreferenceStore().getString(PreferenceConstants.P_STRING_PASSWORD);
+			setPassword(password);
+			
+			String email = Activator.getDefault().getPreferenceStore().getString(PreferenceConstants.P_STRING_EMAIL);
+			setEmail(email);
+
+			String version = Activator.getDefault().getPreferenceStore().getString(PreferenceConstants.P_STRING_VERSION);
+			setVersion(version);
+
+			String url = Activator.getDefault().getPreferenceStore().getString(PreferenceConstants.P_STRING_URL);
+			setUrl(url);
+		} catch (NullPointerException e) {
+			// Load data from docker properties file.
+			Properties p = (new PreferenceUtil()).loadConfig();
+			setUsername(p.get("docker.username").toString());
+			setPassword(p.get("docker.password").toString());
+			setEmail(p.get("docker.email").toString());
+			setVersion(p.get("docker.version").toString());
+			setUrl(p.get("docker.url").toString());
+		}
 		
 		Activator.getDefault().getPreferenceStore()
         .addPropertyChangeListener(new IPropertyChangeListener() {
