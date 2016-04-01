@@ -2033,8 +2033,8 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		  (this, 
 		   source, 
 		   new String[] {
-			 "OCCI", "../../org.occiware.clouddesigner.occi/model/OCCI.ecore#/",
-			 "infrastructure", "../../org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.ecore#/"
+			 "OCCI", "platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#/",
+			 "infrastructure", "platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.ecore#/"
 		   });
 	}
 
