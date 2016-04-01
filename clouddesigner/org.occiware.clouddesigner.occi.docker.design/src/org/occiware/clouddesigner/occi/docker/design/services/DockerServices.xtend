@@ -105,6 +105,7 @@ class DockerServices {
 	 * Popup menu stop action.
 	 */
 	def void stop(EObject eo) {
+		var long startTime = System.currentTimeMillis();
 		var runnable = new IRunnableWithProgress() {
 			override run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
 				if (eo instanceof Machine) {
@@ -118,6 +119,9 @@ class DockerServices {
 				}
 			}
 		}
+		var long stopTime = System.currentTimeMillis();
+		var diff = stopTime - startTime
+		println("Stopped time = " + diff)
 		var dialog = new ProgressMonitorDialog(getShell())
 		dialog.run(false, true, runnable)
 	}

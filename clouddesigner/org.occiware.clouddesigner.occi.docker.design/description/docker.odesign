@@ -3,8 +3,8 @@
   <ownedViewpoints name="Docker" label="Docker">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Docker configuration" domainClass="Configuration">
       <metamodel href="../../org.occiware.clouddesigner.occi.docker/model/Docker.ecore#/"/>
-      <metamodel href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#/"/>
       <metamodel href="../../org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.ecore#/"/>
+      <metamodel href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#/"/>
       <defaultLayer name="Default">
         <edgeMappings name="Link" labelDirectEdit="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@toolSections.0/@ownedTools[name='EditLink']" sourceMapping="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']" targetMapping="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']" targetFinderExpression="feature:target" sourceFinderExpression="feature:source" domainClass="docker.Link" useDomainElement="true">
           <style sizeComputationExpression="2">
@@ -172,7 +172,7 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="docker.Machine_VirtualBox" referenceName="resources"/>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machine_VirtualBox" referenceName="resources"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:ContainerCreationDescription" name="OpenStack" containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Machine_OpenStack.gif">
@@ -236,6 +236,13 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machine_Microsoft_Hyper_V" referenceName="resources"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Digital Ocean" containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Machine_Digital_Ocean.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machine_Digital_Ocean" referenceName="resources"/>
             </initialOperation>
           </ownedTools>
         </toolSections>

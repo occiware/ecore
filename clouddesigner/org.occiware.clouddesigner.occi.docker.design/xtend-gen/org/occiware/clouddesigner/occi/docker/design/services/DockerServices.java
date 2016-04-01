@@ -19,6 +19,7 @@ import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.occiware.clouddesigner.occi.Configuration;
 import org.occiware.clouddesigner.occi.docker.Container;
 import org.occiware.clouddesigner.occi.docker.DockerFactory;
@@ -128,6 +129,7 @@ public class DockerServices {
    */
   public void stop(final EObject eo) {
     try {
+      long startTime = System.currentTimeMillis();
       IRunnableWithProgress runnable = new IRunnableWithProgress() {
         public void run(final IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
           if ((eo instanceof Machine)) {
@@ -143,6 +145,9 @@ public class DockerServices {
           }
         }
       };
+      long stopTime = System.currentTimeMillis();
+      long diff = (stopTime - startTime);
+      InputOutput.<String>println(("Stopped time = " + Long.valueOf(diff)));
       Shell _shell = this.getShell();
       ProgressMonitorDialog dialog = new ProgressMonitorDialog(_shell);
       dialog.run(false, true, runnable);
