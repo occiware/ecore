@@ -59,6 +59,31 @@ public class PreferenceValues extends AbstractHandler{
 
 			String url = Activator.getDefault().getPreferenceStore().getString(PreferenceConstants.P_STRING_URL);
 			setUrl(url);
+			Activator.getDefault().getPreferenceStore()
+	        .addPropertyChangeListener(new IPropertyChangeListener() {
+	          @Override
+	          public void propertyChange(PropertyChangeEvent event) {
+	            if (event.getProperty() == PreferenceConstants.P_STRING_USERNAME) {
+	            	setUsername(event.getNewValue().toString());
+	            }
+	            if (event.getProperty() == PreferenceConstants.P_STRING_PASSWORD) {
+	            	setPassword(event.getNewValue().toString());
+	              }
+	            if (event.getProperty() == PreferenceConstants.P_STRING_EMAIL) {
+	            	setEmail(event.getNewValue().toString());
+	              }
+
+	            if (event.getProperty() == PreferenceConstants.P_STRING_VERSION) {
+	            	setEmail(event.getNewValue().toString());
+	              }
+
+	            if (event.getProperty() == PreferenceConstants.P_STRING_URL) {
+	            	setEmail(event.getNewValue().toString());
+	              }
+	            
+	          }
+	        });		
+			
 		} catch (NullPointerException e) {
 			// Load data from docker properties file.
 			Properties p = (new PreferenceUtil()).loadConfig();
@@ -69,31 +94,6 @@ public class PreferenceValues extends AbstractHandler{
 			setUrl(p.get("docker.url").toString());
 		}
 		
-		Activator.getDefault().getPreferenceStore()
-        .addPropertyChangeListener(new IPropertyChangeListener() {
-          @Override
-          public void propertyChange(PropertyChangeEvent event) {
-            if (event.getProperty() == PreferenceConstants.P_STRING_USERNAME) {
-            	setUsername(event.getNewValue().toString());
-            }
-            if (event.getProperty() == PreferenceConstants.P_STRING_PASSWORD) {
-            	setPassword(event.getNewValue().toString());
-              }
-            if (event.getProperty() == PreferenceConstants.P_STRING_EMAIL) {
-            	setEmail(event.getNewValue().toString());
-              }
-
-            if (event.getProperty() == PreferenceConstants.P_STRING_VERSION) {
-            	setEmail(event.getNewValue().toString());
-              }
-
-            if (event.getProperty() == PreferenceConstants.P_STRING_URL) {
-            	setEmail(event.getNewValue().toString());
-              }
-            
-          }
-        });		
-
 	}
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
