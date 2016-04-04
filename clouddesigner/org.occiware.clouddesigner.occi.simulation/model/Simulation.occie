@@ -2,9 +2,6 @@
 <occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:occi="http://schemas.ogf.org/occi" name="simulation" scheme="http://occiware.org/simulation#">
   <import href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#/"/>
   <import href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#/"/>
-  <kinds term="contains" scheme="http://occiware.org/simulation#" title="cloudSim resources link">
-    <parent href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@kinds[term='link']"/>
-  </kinds>
   <kinds term="SimulationResource" scheme="http://occiware.org/simulation#" title="">
     <parent href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@kinds[term='resource']"/>
   </kinds>
@@ -24,7 +21,9 @@
       <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
     <attributes name="schedulingInterval" required="true" default="0" description="scheduling Interval" type="//@types.2"/>
-    <attributes name="architecture" default="x86" description="architecture"/>
+    <attributes name="architecture" required="true" default="x86" description="architecture">
+      <type href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@types.6"/>
+    </attributes>
     <applies href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='compute']"/>
   </mixins>
   <mixins term="cloudlet" scheme="http://occiware.org/simulation#" title="cloudlet mixin">
@@ -48,7 +47,7 @@
     <attributes name="utilizationModelBw" required="true" default="UtilizationModelFull" description="the utilization model bw" type="//@types.1"/>
     <applies href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='compute']"/>
   </mixins>
-  <mixins term="host" scheme="http://occiware.org/simulation#">
+  <mixins term="host" scheme="http://occiware.org/simulation#" title="">
     <attributes name="id_host" required="true" default="0">
       <type href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@types.13"/>
     </attributes>
@@ -71,7 +70,7 @@
     <attributes name="peProvisioner" required="true" default="PeProvisionerSimple" type="//@types.8"/>
     <applies href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='compute']"/>
   </mixins>
-  <mixins term="VM" scheme="http://occiware.org/simulation#">
+  <mixins term="VM" scheme="http://occiware.org/simulation#" title="VM mixin">
     <attributes name="id_vm" required="true" default="0" description="unique ID of the VM">
       <type href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@types.13"/>
     </attributes>
@@ -80,9 +79,6 @@
     </attributes>
     <attributes name="cores" required="true" default="1" description="numberOfPes amount of CPUs">
       <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.2"/>
-    </attributes>
-    <attributes name="ram" required="true" default="512" description="ram amount of ram">
-      <type href="file:/home/mehdi/Bureau/tmp/ecore/clouddesigner/org.occiware.clouddesigner.occi.simulation/model/simulation.occie#//@types.7"/>
     </attributes>
     <attributes name="bw" required="true" default="1000" description="bw amount of bandwidth">
       <type href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@types.13"/>
@@ -97,6 +93,7 @@
     <attributes name="vmm" required="true" default="Xen" description="virtual machine monitor">
       <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
     </attributes>
+    <attributes name="ram" default="512" description="ram amount of ram" type="//@types.7"/>
     <applies href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='compute']"/>
   </mixins>
   <mixins term="HarddriveStorage" scheme="http://occiware.org/simulation#">
