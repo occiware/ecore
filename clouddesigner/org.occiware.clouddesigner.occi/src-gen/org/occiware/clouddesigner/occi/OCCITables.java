@@ -1,4 +1,14 @@
 /*******************************************************************************
+ * Copyright (c) 2015-2016 Obeo, Inria
+ *  
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ * - William Piers <william.piers@obeo.fr>
+ * - Philippe Merle <philippe.merle@inria.fr>
  *************************************************************************
  * This code is 100% auto-generated
  * from:
@@ -1084,14 +1094,11 @@ public class OCCITables
 			OCLstdlibTables.Operations._String__concat /* concat(String[?]) */,
 			OCLstdlibTables.Operations._String__endsWith /* endsWith(String[?]) */,
 			OCLstdlibTables.Operations._String__equalsIgnoreCase /* equalsIgnoreCase(String[?]) */,
-// TODO: Bug into the OCLinEcore generator.
-//			OCLstdlibTables.Operations._String__getSeverity /* getSeverity() */,
+// FIXME:			OCLstdlibTables.Operations._String__getSeverity /* getSeverity() */,
 			OCLstdlibTables.Operations._String__indexOf /* indexOf(String[?]) */,
 			OCLstdlibTables.Operations._String__lastIndexOf /* lastIndexOf(String[?]) */,
-// TODO: Bug into the OCLinEcore generator.
-//			OCLstdlibTables.Operations._String__0_logDiagnostic /* logDiagnostic(OclAny[1],OclAny[?],OclAny[?],Integer[1],Boolean[?],Integer[1]) */,
-// TODO: Bug into the OCLinEcore generator.
-//			OCLstdlibTables.Operations._String__1_logDiagnostic /* logDiagnostic(OclAny[1],OclAny[?],OclAny[?],OclAny[?],String[?],Integer[1],OclAny[?],Integer[1]) */,
+// FIXME:			OCLstdlibTables.Operations._String__0_logDiagnostic /* logDiagnostic(OclAny[1],OclAny[?],OclAny[?],Integer[1],Boolean[?],Integer[1]) */,
+// FIXME:			OCLstdlibTables.Operations._String__1_logDiagnostic /* logDiagnostic(OclAny[1],OclAny[?],OclAny[?],OclAny[?],String[?],Integer[1],OclAny[?],Integer[1]) */,
 			OCLstdlibTables.Operations._String__matches /* matches(String[?]) */,
 			OCLstdlibTables.Operations._String__replaceAll /* replaceAll(String[?],String[?]) */,
 			OCLstdlibTables.Operations._String__replaceFirst /* replaceFirst(String[?],String[?]) */,
@@ -1193,14 +1200,11 @@ public class OCCITables
 			OCLstdlibTables.Operations._String__concat /* concat(String[?]) */,
 			OCLstdlibTables.Operations._String__endsWith /* endsWith(String[?]) */,
 			OCLstdlibTables.Operations._String__equalsIgnoreCase /* equalsIgnoreCase(String[?]) */,
-// TODO: Bug into the OCLinEcore generator.
-//			OCLstdlibTables.Operations._String__getSeverity /* getSeverity() */,
+// FIXME:			OCLstdlibTables.Operations._String__getSeverity /* getSeverity() */,
 			OCLstdlibTables.Operations._String__indexOf /* indexOf(String[?]) */,
 			OCLstdlibTables.Operations._String__lastIndexOf /* lastIndexOf(String[?]) */,
-// TODO: Bug into the OCLinEcore generator.
-//			OCLstdlibTables.Operations._String__0_logDiagnostic /* logDiagnostic(OclAny[1],OclAny[?],OclAny[?],Integer[1],Boolean[?],Integer[1]) */,
-// TODO: Bug into the OCLinEcore generator.
-//			OCLstdlibTables.Operations._String__1_logDiagnostic /* logDiagnostic(OclAny[1],OclAny[?],OclAny[?],OclAny[?],String[?],Integer[1],OclAny[?],Integer[1]) */,
+// FIXME:			OCLstdlibTables.Operations._String__0_logDiagnostic /* logDiagnostic(OclAny[1],OclAny[?],OclAny[?],Integer[1],Boolean[?],Integer[1]) */,
+// FIXME:			OCLstdlibTables.Operations._String__1_logDiagnostic /* logDiagnostic(OclAny[1],OclAny[?],OclAny[?],OclAny[?],String[?],Integer[1],OclAny[?],Integer[1]) */,
 			OCLstdlibTables.Operations._String__matches /* matches(String[?]) */,
 			OCLstdlibTables.Operations._String__replaceAll /* replaceAll(String[?],String[?]) */,
 			OCLstdlibTables.Operations._String__replaceFirst /* replaceFirst(String[?],String[?]) */,

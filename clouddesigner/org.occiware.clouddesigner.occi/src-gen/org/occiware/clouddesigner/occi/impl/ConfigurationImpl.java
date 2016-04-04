@@ -1,4 +1,14 @@
 /**
+ * Copyright (c) 2015-2016 Obeo, Inria
+ *  
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ * - William Piers <william.piers@obeo.fr>
+ * - Philippe Merle <philippe.merle@inria.fr>
  */
 package org.occiware.clouddesigner.occi.impl;
 
@@ -539,7 +549,7 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		 *           in
 		 *             if mixinOwner.oclIsTypeOf(Extension)
 		 *             then
-		 *               self.use->includes(mo.oclAsType(Extension))
+		 *               self.use->includes(mixinOwner.oclAsType(Extension))
 		 *             else self.mixins->includes(mo)
 		 *             endif)
 		 *       in
@@ -623,7 +633,7 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		             * in
 		             *   if mixinOwner.oclIsTypeOf(Extension)
 		             *   then
-		             *     self.use->includes(mo.oclAsType(Extension))
+		             *     self.use->includes(mixinOwner.oclAsType(Extension))
 		             *   else self.mixins->includes(mo)
 		             *   endif
 		             */
@@ -636,7 +646,7 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		                if (oclIsTypeOf) {
 		                    final /*@NonNull*/ /*@Thrown*/ List<Extension> use = this.getUse();
 		                    final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_use = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Extension, use);
-		                    final /*@NonNull*/ /*@Thrown*/ Extension oclAsType = ClassUtil.nonNullState((Extension)OclAnyOclAsTypeOperation.INSTANCE.evaluate(evaluator, mo, TYP_occi_c_c_Extension_0));
+		                    final /*@NonNull*/ /*@Thrown*/ Extension oclAsType = ClassUtil.nonNullState((Extension)OclAnyOclAsTypeOperation.INSTANCE.evaluate(evaluator, mixinOwner, TYP_occi_c_c_Extension_0));
 		                    final /*@Thrown*/ boolean includes = ClassUtil.nonNullState(CollectionIncludesOperation.INSTANCE.evaluate(BOXED_use, oclAsType).booleanValue());
 		                    symbol_0 = includes;
 		                }
@@ -698,7 +708,7 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		 *           in
 		 *             if mixinOwner.oclIsTypeOf(Extension)
 		 *             then
-		 *               self.use->includes(mo.oclAsType(Extension))
+		 *               self.use->includes(mixinOwner.oclAsType(Extension))
 		 *             else self.mixins->includes(mo)
 		 *             endif)
 		 *       in
@@ -760,7 +770,7 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		             * in
 		             *   if mixinOwner.oclIsTypeOf(Extension)
 		             *   then
-		             *     self.use->includes(mo.oclAsType(Extension))
+		             *     self.use->includes(mixinOwner.oclAsType(Extension))
 		             *   else self.mixins->includes(mo)
 		             *   endif
 		             */
@@ -773,7 +783,7 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		                if (oclIsTypeOf) {
 		                    final /*@NonNull*/ /*@Thrown*/ List<Extension> use = this.getUse();
 		                    final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_use = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Extension, use);
-		                    final /*@NonNull*/ /*@Thrown*/ Extension oclAsType = ClassUtil.nonNullState((Extension)OclAnyOclAsTypeOperation.INSTANCE.evaluate(evaluator, mo, TYP_occi_c_c_Extension_0));
+		                    final /*@NonNull*/ /*@Thrown*/ Extension oclAsType = ClassUtil.nonNullState((Extension)OclAnyOclAsTypeOperation.INSTANCE.evaluate(evaluator, mixinOwner, TYP_occi_c_c_Extension_0));
 		                    final /*@Thrown*/ boolean includes = ClassUtil.nonNullState(CollectionIncludesOperation.INSTANCE.evaluate(BOXED_use, oclAsType).booleanValue());
 		                    symbol_0 = includes;
 		                }
