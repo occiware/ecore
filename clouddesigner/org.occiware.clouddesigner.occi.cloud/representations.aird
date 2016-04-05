@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:occi="http://schemas.ogf.org/occi" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_mZ59EImDEeWxu-FlE04BMw" selectedViews="_mjTwsImDEeWxu-FlE04BMw" version="10.1.0.201509162000">
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:occi="http://schemas.ogf.org/occi" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_mZ59EImDEeWxu-FlE04BMw" selectedViews="_mjTwsImDEeWxu-FlE04BMw _lfMx4MaYEeWElM8_sK_nHw" version="10.1.0.201509162000">
   <semanticResources>platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie</semanticResources>
   <semanticResources>platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie</semanticResources>
   <semanticResources>model/Cloud.ecore</semanticResources>
@@ -11,7 +11,7 @@
   <semanticResources>platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.genmodel</semanticResources>
   <semanticResources>file://Users/spirals/Downloads/occiware.studio/Eclipse.app/Contents/MacOS/workspace/org.occiware.clouddesigner.occi.cloud/model/Cloud.ecore</semanticResources>
   <semanticResources>platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel</semanticResources>
-  <semanticResources>model/Cloud.occie</semanticResources>
+  <semanticResources>model/cloud.occie</semanticResources>
   <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_mjTwsImDEeWxu-FlE04BMw">
     <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_mqjoMImDEeWxu-FlE04BMw" name="OCCIware Cloud Extension Diagram">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_mqjoMYmDEeWxu-FlE04BMw" source="DANNOTATION_CUSTOMIZATION_KEY">
@@ -985,7 +985,7 @@
               <styles xmi:type="notation:FilteringStyle" xmi:id="_ErrVAondEeWWnPI7BZJhtw"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_EriLEYndEeWWnPI7BZJhtw" fontName=".SF NS Text" fontHeight="12" bold="true"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EriLEondEeWWnPI7BZJhtw" x="2608" y="628"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EriLEondEeWWnPI7BZJhtw" x="2608" y="628" height="287"/>
           </children>
           <styles xmi:type="notation:DiagramStyle" xmi:id="_mq9Q0omDEeWxu-FlE04BMw"/>
           <edges xmi:type="notation:Edge" xmi:id="_msTUoImDEeWxu-FlE04BMw" type="4001" element="_mqkP4YmDEeWxu-FlE04BMw" source="_mrfcU4mDEeWxu-FlE04BMw" target="_mre1QImDEeWxu-FlE04BMw">
@@ -1485,7 +1485,7 @@
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
           </ownedElements>
-          <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_mqjoVYmDEeWxu-FlE04BMw" name="Invalid feature as name">
+          <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_mqjoVYmDEeWxu-FlE04BMw" name="up()">
             <target xmi:type="occi:Action" href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='network']/@actions.0"/>
             <semanticElements xmi:type="occi:Action" href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='network']/@actions.0"/>
             <ownedStyle xmi:type="diagram:Square" xmi:id="_mqjoVomDEeWxu-FlE04BMw" labelSize="10" labelAlignment="LEFT" labelPosition="node">
@@ -1493,7 +1493,7 @@
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Action']"/>
           </ownedElements>
-          <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_mqjoV4mDEeWxu-FlE04BMw" name="Invalid feature as name">
+          <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_mqjoV4mDEeWxu-FlE04BMw" name="down()">
             <target xmi:type="occi:Action" href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='network']/@actions.1"/>
             <semanticElements xmi:type="occi:Action" href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='network']/@actions.1"/>
             <ownedStyle xmi:type="diagram:Square" xmi:id="_mqjoWImDEeWxu-FlE04BMw" labelSize="10" labelAlignment="LEFT" labelPosition="node">
@@ -1558,7 +1558,7 @@
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
           </ownedElements>
-          <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_mqjoZ4mDEeWxu-FlE04BMw" name="Invalid feature as name">
+          <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_mqjoZ4mDEeWxu-FlE04BMw" name="start()">
             <target xmi:type="occi:Action" href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='compute']/@actions.0"/>
             <semanticElements xmi:type="occi:Action" href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='compute']/@actions.0"/>
             <ownedStyle xmi:type="diagram:Square" xmi:id="_mqjoaImDEeWxu-FlE04BMw" labelSize="10" labelAlignment="LEFT" labelPosition="node">
@@ -1566,7 +1566,7 @@
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Action']"/>
           </ownedElements>
-          <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_mqjoaYmDEeWxu-FlE04BMw" name="Invalid feature as name">
+          <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_mqjoaYmDEeWxu-FlE04BMw" name="stop(method : StopMethod)">
             <target xmi:type="occi:Action" href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='compute']/@actions.1"/>
             <semanticElements xmi:type="occi:Action" href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='compute']/@actions.1"/>
             <ownedStyle xmi:type="diagram:Square" xmi:id="_mqjoaomDEeWxu-FlE04BMw" labelSize="10" labelAlignment="LEFT" labelPosition="node">
@@ -1574,7 +1574,7 @@
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Action']"/>
           </ownedElements>
-          <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_mqjoa4mDEeWxu-FlE04BMw" name="Invalid feature as name">
+          <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_mqjoa4mDEeWxu-FlE04BMw" name="restart(method : RestartMethod)">
             <target xmi:type="occi:Action" href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='compute']/@actions.2"/>
             <semanticElements xmi:type="occi:Action" href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='compute']/@actions.2"/>
             <ownedStyle xmi:type="diagram:Square" xmi:id="_mqkPQImDEeWxu-FlE04BMw" labelSize="10" labelAlignment="LEFT" labelPosition="node">
@@ -1582,7 +1582,7 @@
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Action']"/>
           </ownedElements>
-          <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_mqkPQYmDEeWxu-FlE04BMw" name="Invalid feature as name">
+          <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_mqkPQYmDEeWxu-FlE04BMw" name="suspend(method : SuspendMethod)">
             <target xmi:type="occi:Action" href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='compute']/@actions.3"/>
             <semanticElements xmi:type="occi:Action" href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='compute']/@actions.3"/>
             <ownedStyle xmi:type="diagram:Square" xmi:id="_mqkPQomDEeWxu-FlE04BMw" labelSize="10" labelAlignment="LEFT" labelPosition="node">
@@ -1615,7 +1615,7 @@
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
           </ownedElements>
-          <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_mqkPSYmDEeWxu-FlE04BMw" name="Invalid feature as name">
+          <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_mqkPSYmDEeWxu-FlE04BMw" name="online()">
             <target xmi:type="occi:Action" href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='storage']/@actions.0"/>
             <semanticElements xmi:type="occi:Action" href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='storage']/@actions.0"/>
             <ownedStyle xmi:type="diagram:Square" xmi:id="_mqkPSomDEeWxu-FlE04BMw" labelSize="10" labelAlignment="LEFT" labelPosition="node">
@@ -1623,7 +1623,7 @@
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Action']"/>
           </ownedElements>
-          <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_mqkPS4mDEeWxu-FlE04BMw" name="Invalid feature as name">
+          <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_mqkPS4mDEeWxu-FlE04BMw" name="offline()">
             <target xmi:type="occi:Action" href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='storage']/@actions.1"/>
             <semanticElements xmi:type="occi:Action" href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='storage']/@actions.1"/>
             <ownedStyle xmi:type="diagram:Square" xmi:id="_mqkPTImDEeWxu-FlE04BMw" labelSize="10" labelAlignment="LEFT" labelPosition="node">
@@ -1631,7 +1631,7 @@
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Action']"/>
           </ownedElements>
-          <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_mqkPTYmDEeWxu-FlE04BMw" name="Invalid feature as name">
+          <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_mqkPTYmDEeWxu-FlE04BMw" name="backup()">
             <target xmi:type="occi:Action" href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='storage']/@actions.2"/>
             <semanticElements xmi:type="occi:Action" href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='storage']/@actions.2"/>
             <ownedStyle xmi:type="diagram:Square" xmi:id="_mqkPTomDEeWxu-FlE04BMw" labelSize="10" labelAlignment="LEFT" labelPosition="node">
@@ -1639,7 +1639,7 @@
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Action']"/>
           </ownedElements>
-          <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_mqkPT4mDEeWxu-FlE04BMw" name="Invalid feature as name">
+          <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_mqkPT4mDEeWxu-FlE04BMw" name="snapshot()">
             <target xmi:type="occi:Action" href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='storage']/@actions.3"/>
             <semanticElements xmi:type="occi:Action" href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='storage']/@actions.3"/>
             <ownedStyle xmi:type="diagram:Square" xmi:id="_mqkPUImDEeWxu-FlE04BMw" labelSize="10" labelAlignment="LEFT" labelPosition="node">
@@ -1647,7 +1647,7 @@
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Action']"/>
           </ownedElements>
-          <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_mqkPUYmDEeWxu-FlE04BMw" name="Invalid feature as name">
+          <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_mqkPUYmDEeWxu-FlE04BMw" name="resize(size : GiB)">
             <target xmi:type="occi:Action" href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='storage']/@actions.4"/>
             <semanticElements xmi:type="occi:Action" href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie#//@kinds[term='storage']/@actions.4"/>
             <ownedStyle xmi:type="diagram:Square" xmi:id="_mqkPUomDEeWxu-FlE04BMw" labelSize="10" labelAlignment="LEFT" labelPosition="node">
@@ -3063,5 +3063,8 @@
       <target xmi:type="occi:Extension" href="model/cloud.occie#/"/>
     </ownedRepresentations>
     <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']"/>
+  </ownedViews>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_lfMx4MaYEeWElM8_sK_nHw">
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/resource/org.occiware.clouddesigner.occi.cloud.design/description/Cloud.odesign#//@ownedViewpoints[name='Cloud']"/>
   </ownedViews>
 </viewpoint:DAnalysis>
