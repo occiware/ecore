@@ -29,11 +29,6 @@ public class ExecutableMachine_Amazon_EC2 extends Machine_Amazon_EC2Impl {
     public String getDriverName() {
       return "amazonec2";
     }
-    
-    @Override
-    public void appendDriverParameters(final StringBuilder sb) {
-      throw new UnsupportedOperationException();
-    }
   };
   
   @Override

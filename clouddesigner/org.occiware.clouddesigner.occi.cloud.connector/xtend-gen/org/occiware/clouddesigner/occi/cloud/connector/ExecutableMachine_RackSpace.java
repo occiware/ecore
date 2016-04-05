@@ -27,12 +27,7 @@ public class ExecutableMachine_RackSpace extends Machine_RackSpaceImpl {
   private final MachineManager manager = new MachineManager(this) {
     @Override
     public String getDriverName() {
-      return "cloudsigma";
-    }
-    
-    @Override
-    public void appendDriverParameters(final StringBuilder sb) {
-      throw new UnsupportedOperationException();
+      return "rackspace";
     }
   };
   

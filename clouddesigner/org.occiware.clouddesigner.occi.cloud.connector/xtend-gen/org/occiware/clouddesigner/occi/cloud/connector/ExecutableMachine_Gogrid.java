@@ -29,11 +29,6 @@ public class ExecutableMachine_Gogrid extends Machine_GogridImpl {
     public String getDriverName() {
       return "gogrid";
     }
-    
-    @Override
-    public void appendDriverParameters(final StringBuilder sb) {
-      throw new UnsupportedOperationException();
-    }
   };
   
   @Override

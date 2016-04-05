@@ -29,11 +29,6 @@ public class ExecutableMachine_SoftLayer extends Machine_SoftLayerImpl {
     public String getDriverName() {
       return "softlayer";
     }
-    
-    @Override
-    public void appendDriverParameters(final StringBuilder sb) {
-      throw new UnsupportedOperationException();
-    }
   };
   
   @Override

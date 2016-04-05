@@ -41,6 +41,8 @@ import org.occiware.clouddesigner.occi.cloud.Machine_Hp_Helion
 import org.occiware.clouddesigner.occi.cloud.Machine_OpenStack
 import org.occiware.clouddesigner.occi.cloud.Machine_RackSpace
 import org.occiware.clouddesigner.occi.cloud.Machine_ProfitBricks
+import org.occiware.clouddesigner.occi.cloud.connector.cloudproviders.JcloudsOpenStack
+import org.occiware.clouddesigner.occi.cloud.connector.cloudproviders.JcloudsRackSpace
 
 /**
  * This class overrides the generated EMF factory of the Docker package.
@@ -52,7 +54,6 @@ class ExecutableCloudFactory extends CloudFactoryImpl {
 	// Initialize logger for ExecutableDockerModel.
 	private static Logger LOGGER = LoggerFactory.getLogger(typeof(ExecutableCloudFactory))
 
-	
 	/**
 	 * Initialize the ExecutableDockerFactory singleton.
 	 */
@@ -147,8 +148,7 @@ class ExecutableCloudFactory extends CloudFactoryImpl {
 /**
  * This class implements the state machine of any Compute resource.
  */
-class ComputeStateMachine<T extends Compute>
-{
+class ComputeStateMachine<T extends Compute> {
 	// Initialize logger for ExecutableDockerModel.
 	private static Logger LOGGER = LoggerFactory.getLogger(typeof(ComputeStateMachine))
 
@@ -160,31 +160,31 @@ class ComputeStateMachine<T extends Compute>
 	/**
 	 * Construct a compute state machine for a given Compute resource.
 	 */
-	new(T c) { compute = c }
+	new(T c) {
+		compute = c
+	}
 
 	/**
 	 * Start OCCI Action.
 	 */
 	def start() {
-		System.out.println(this.class.name + ":start() - current state is " + compute.state);
-		if(compute.state == ComputeStatus.INACTIVE) {
-			LOGGER.info(this.class.name + ":start() - move from inactive to active state");
+		LOGGER.info(this.class.name + ":start() - current state is " + compute.state);
+		if (compute.state == ComputeStatus.INACTIVE) {
 			start_from_inactive_state()
-  			compute.state = ComputeStatus.ACTIVE
-		} else
-		if(compute.state == ComputeStatus.ACTIVE) {
-			LOGGER.info(this.class.name + ":start() - already active state")
+			compute.state = ComputeStatus.ACTIVE
+			LOGGER.info(this.class.name + ":start() - move from inactive to active state");
+		} else if (compute.state == ComputeStatus.ACTIVE) {
 			start_from_active_state()
-		} else
-		if(compute.state == ComputeStatus.SUSPENDED) {
-			LOGGER.info(this.class.name + ":start() - move from suspended to active state" )
+			LOGGER.info(this.class.name + ":start() - already active state")
+		} else if (compute.state == ComputeStatus.SUSPENDED) {
 			start_from_suspended_state()
-  			compute.state = ComputeStatus.ACTIVE
+			compute.state = ComputeStatus.ACTIVE
+			LOGGER.info(this.class.name + ":start() - move from suspended to active state")
 		} else {
 			throw new RuntimeException("Must never happen!")
 		}
 		LOGGER.info(this.class.name + ":start() - final state is " + compute.state);
-		if(compute.state != ComputeStatus.ACTIVE) throw new RuntimeException("Must never happen!")  
+		if(compute.state != ComputeStatus.ACTIVE) throw new RuntimeException("Must never happen!")
 	}
 
 	/**
@@ -203,7 +203,7 @@ class ComputeStateMachine<T extends Compute>
 	 */
 	def start_from_active_state() {
 		LOGGER.info(this.class.name + ":start_from_active_state() - DO NOTHING");
-    }
+	}
 
 	/**
 	 * This method implements the transition from suspended state for the start action.
@@ -217,33 +217,31 @@ class ComputeStateMachine<T extends Compute>
 	/**
 	 * This method is the default implementation of the start action.
 	 */
- 	def void start_execute() {
+	def void start_execute() {
 		LOGGER.info(this.class.name + ":start_execute() - DO NOTHING");
-    }
- 
+	}
+
 	/**
 	 * Stop OCCI Action.
 	 */
 	def stop(StopMethod method) {
-		System.out.println(this.class.name + ":stop(" + method + ") - current state is " + compute.state);
-		if(compute.state == ComputeStatus.INACTIVE) {
-			LOGGER.info(this.class.name + ":stop() - already inactive state");
+		LOGGER.info(this.class.name + ":stop(" + method + ") - current state is " + compute.state);
+		if (compute.state == ComputeStatus.INACTIVE) {
 			stop_from_inactive_state(method)
-		} else
-		if(compute.state == ComputeStatus.ACTIVE) {
-			LOGGER.info(this.class.name + ":stop() - move from active to inactive state")
+			LOGGER.info(this.class.name + ":stop() - already inactive state");
+		} else if (compute.state == ComputeStatus.ACTIVE) {
 			stop_from_active_state(method)
-  			compute.state = ComputeStatus.INACTIVE
-		} else
-		if(compute.state == ComputeStatus.SUSPENDED) {
-			LOGGER.info(this.class.name + ":stop() - move from suspended to inactive state" )
+			compute.state = ComputeStatus.INACTIVE
+			LOGGER.info(this.class.name + ":stop() - move from active to inactive state")
+		} else if (compute.state == ComputeStatus.SUSPENDED) {
 			stop_from_suspended_state(method)
-  			compute.state = ComputeStatus.INACTIVE
+			compute.state = ComputeStatus.INACTIVE
+			LOGGER.info(this.class.name + ":stop() - move from suspended to inactive state")
 		} else {
 			throw new RuntimeException("Must never happen!")
 		}
 		LOGGER.info(this.class.name + ":stop() - final state is " + compute.state);
-		if(compute.state != ComputeStatus.INACTIVE) throw new RuntimeException("Must never happen!")  
+		if(compute.state != ComputeStatus.INACTIVE) throw new RuntimeException("Must never happen!")
 	}
 
 	/**
@@ -276,34 +274,32 @@ class ComputeStateMachine<T extends Compute>
 	/**
 	 * This method is the default implementation of the stop action.
 	 */
- 	def void stop_execute(StopMethod method) {
-		LOGGER.info(this.class.name + ":stop_execute(" + method + ") - DO NOTHING");
-    }
+	def void stop_execute(StopMethod method) {
+		LOGGER.info(this.class.name + ":stop_execute(" + method + ") -DO NOTHING");
+	}
 
 	/**
 	 * Restart OCCI Action.
 	 */
 	def restart(RestartMethod method) {
-		System.out.println(this.class.name + ":restart(" + method + ") - current state is " + compute.state);
-		if(compute.state == ComputeStatus.INACTIVE) {
-			LOGGER.info(this.class.name + ":restart(" + method + ')' + " - move from inactive to active state");
+		LOGGER.info(this.class.name + ":restart(" + method + ") - current state is " + compute.state);
+		if (compute.state == ComputeStatus.INACTIVE) {
 			restart_from_inactive_state(method)
-  			compute.state = ComputeStatus.ACTIVE
-  		} else
-		if(compute.state == ComputeStatus.ACTIVE) {
-			LOGGER.info(this.class.name + ":restart(" + method + ')' + " - move from active to active state")
+			compute.state = ComputeStatus.ACTIVE
+			LOGGER.info(this.class.name + ":restart(" + method + ')' + " - move from inactive to active state");
+		} else if (compute.state == ComputeStatus.ACTIVE) {
 			restart_from_active_state(method)
-  			compute.state = ComputeStatus.ACTIVE
-		} else
-		if(compute.state == ComputeStatus.SUSPENDED) {
-			LOGGER.info(this.class.name + ":stop() - move from suspended to active state" )
+			compute.state = ComputeStatus.ACTIVE
+			LOGGER.info(this.class.name + ":restart(" + method + ')' + " - move from active to active state")
+		} else if (compute.state == ComputeStatus.SUSPENDED) {
 			restart_from_suspended_state(method)
-  			compute.state = ComputeStatus.ACTIVE
+			compute.state = ComputeStatus.ACTIVE
+			LOGGER.info(this.class.name + ":stop() - move from suspended to active state")
 		} else {
 			throw new RuntimeException("Must never happen!")
 		}
 		LOGGER.info(this.class.name + ":restart(" + method + ')' + " - final state is " + compute.state);
-		if(compute.state != ComputeStatus.ACTIVE) throw new RuntimeException("Must never happen!")  
+		if(compute.state != ComputeStatus.ACTIVE) throw new RuntimeException("Must never happen!")
 	}
 
 	/**
@@ -336,33 +332,31 @@ class ComputeStateMachine<T extends Compute>
 	/**
 	 * This method is the default implementation of the restart action.
 	 */
-    def void restart_execute(RestartMethod method) {
-		System.out.println(this.class.name + ":restart_execute(" + method + ") - DO NOTHING");
-    }
-    
+	def void restart_execute(RestartMethod method) {
+		LOGGER.info(this.class.name + ":restart_execute(" + method + ") - DO NOTHING");
+	}
+
 	/**
 	 * Suspend OCCI Action.
 	 */
 	def suspend(SuspendMethod method) {
-		System.out.println(this.class.name + ":suspend(" + method + ") - current state is " + compute.state);
-		if(compute.state == ComputeStatus.INACTIVE) {
-			LOGGER.info(this.class.name + ":suspend() - move from inactive to suspended state");
+		LOGGER.info(this.class.name + ":suspend(" + method + ") - current state is " + compute.state);
+		if (compute.state == ComputeStatus.INACTIVE) {
 			suspend_from_inactive_state(method)
-  			compute.state = ComputeStatus.SUSPENDED
-		} else
-		if(compute.state == ComputeStatus.ACTIVE) {
-			LOGGER.info(this.class.name + ":suspend() - move from active to suspended state")
+			compute.state = ComputeStatus.SUSPENDED
+			LOGGER.info(this.class.name + ":suspend() - move from inactive to suspended state");
+		} else if (compute.state == ComputeStatus.ACTIVE) {
 			suspend_from_active_state(method)
-  			compute.state = ComputeStatus.SUSPENDED
-		} else
-		if(compute.state == ComputeStatus.SUSPENDED) {
-			LOGGER.info(this.class.name + ":suspend() - already suspended state" )
+			compute.state = ComputeStatus.SUSPENDED
+			LOGGER.info(this.class.name + ":suspend() - move from active to suspended state")
+		} else if (compute.state == ComputeStatus.SUSPENDED) {
 			suspend_from_suspended_state(method)
+			LOGGER.info(this.class.name + ":suspend() - already suspended state")
 		} else {
 			throw new RuntimeException("Must never happen!")
 		}
 		LOGGER.info(this.class.name + ":suspend() - final state is " + compute.state);
-		if(compute.state != ComputeStatus.SUSPENDED) throw new RuntimeException("Must never happen!")  
+		if(compute.state != ComputeStatus.SUSPENDED) throw new RuntimeException("Must never happen!")
 	}
 
 	/**
@@ -391,339 +385,344 @@ class ComputeStateMachine<T extends Compute>
 	def suspend_from_suspended_state(SuspendMethod method) {
 		LOGGER.info(this.class.name + ":suspend_from_suspended_state() - DO NOTHING");
 	}
-	
+
 	/**
 	 * This method is the default implementation of the suspend action.
 	 */
-    def void suspend_execute(SuspendMethod method) {
+	def void suspend_execute(SuspendMethod method) {
 		LOGGER.info(this.class.name + ":suspend_execute(" + method + ") - DO NOTHING");
-    }
+	}
 }
+
 /**
- * This class implements an executable Docker machine.
+ * This class implements an executable machine.
  */
-class ExecutableMachine extends MachineImpl
-{
+class ExecutableMachine extends MachineImpl {
 	val stateMachine = new ComputeStateMachine<Machine>(this)
 
-    // Delegation to the container state machine.
+	// Delegation to the state machine.
 	override def start() { stateMachine.start }
+
 	override def stop(StopMethod method) { stateMachine.stop(method) }
+
 	override def restart(RestartMethod method) { stateMachine.restart(method) }
+
 	override def suspend(SuspendMethod method) { stateMachine.suspend(method) }
 }
 
 /**
- * This class implements an abstract Docker machine manager.
+ * This class implements an abstract machine manager.
  */
-abstract class MachineManager extends ComputeStateMachine<Machine>
-{
-	// Initialize logger for ExecutableDockerModel.
+abstract class MachineManager extends ComputeStateMachine<Machine> {
+	// Initialize logger for ExecutableMachineModel.
 	private static Logger LOGGER = LoggerFactory.getLogger(typeof(MachineManager))
+	protected Machine machine
 
 	/**
-	 * Construct a Docker machine manager for a given Docker machine.
+	 * Construct a machine manager for a given machine.
 	 */
-    new(Machine m) { super(m) }
+	new(Machine m) {
+		super(m)
+		this.machine = m
+	}
 
 	/**
-	 * Return the Docker machine driver name.
+	 * Return the machine provider name.
 	 */
-    def abstract String getDriverName()
-    
-	/**
-	 * Append specific Docker machine driver parameters.
-	 */
-    def abstract void appendDriverParameters(StringBuilder sb)
+	def abstract String getDriverName()
 
 	/**
-	 * Start a Docker machine.
+	 * Start a Cloud machine.
 	 */
 	override def start_execute() {
-		// Execute the docker-machine start command.
-		val StringBuilder command = new StringBuilder;
-		command.append("docker machine start ").append(compute.name).append(" --driver ").append(getDriverName).append(' ');
-		appendDriverParameters(command);
-		LOGGER.info("EXECUTE COMMAND: " + command.toString);
-		// TODO: must be implemented
-	}
- 
-	/**
-	 * Stop a Docker machine.
-	 */
-	override def stop_execute(StopMethod method)
-	{
-		// Stop all Docker containers contained by this Docker machine.
-		if(method == StopMethod.GRACEFUL) {
 
+		LOGGER.info("STARTING MACHINE: " + this.compute.name)
+		// Performs start on machine according to the provider
+		if (this.compute instanceof Machine_OpenStack) {
+			var provider = new JcloudsOpenStack(this.compute as Machine_OpenStack)
+			provider.launchMachine
+		} else if (this.compute instanceof Machine_Amazon_EC2) {
+			// TODO
+		} else if (this.compute instanceof Machine_CloudSigma) {
+			// TODO
+		} else if (this.compute instanceof Machine_GCE) {
+			// TODO
+		} else if (this.compute instanceof Machine_SoftLayer) {
+			// TODO
+		} else if (this.compute instanceof Machine_Gogrid) {
+			// TODO
+		} else if (this.compute instanceof Machine_Hp_Helion) {
+			// TODO
+		} else if (this.compute instanceof Machine_RackSpace) {
+			var provider = new JcloudsRackSpace(this.compute as Machine_RackSpace)
+			provider.launchMachine
+		} else if (this.compute instanceof Machine_ProfitBricks) {
+			// TODO
+		}
+		LOGGER.info("MACHINE: " + this.compute.name + " is started ...")
+
+	}
+
+	/**
+	 * Stop a Cloud machine.
+	 */
+	override def stop_execute(StopMethod method) {
+		// Stop all this machine.
+		if (method == StopMethod.GRACEFUL) {
+			// DO SOMETHING HERE
+			if (this.compute instanceof Machine_OpenStack) {
+				var provider = new JcloudsOpenStack
+				provider.stopMachine(this.compute.id)
+			} else if (this.compute instanceof Machine_Amazon_EC2) {
+				// TODO
+			} else if (this.compute instanceof Machine_CloudSigma) {
+				// TODO
+			} else if (this.compute instanceof Machine_GCE) {
+				// TODO
+			} else if (this.compute instanceof Machine_SoftLayer) {
+				// TODO
+			} else if (this.compute instanceof Machine_Gogrid) {
+				// TODO
+			} else if (this.compute instanceof Machine_Hp_Helion) {
+				// TODO
+			} else if (this.compute instanceof Machine_RackSpace) {
+				// TODO			
+			} else if (this.compute instanceof Machine_ProfitBricks) {
+				// TODO
+			}
 		}
 
-		// Execute the docker-machine stop command.
-		LOGGER.info("EXECUTE COMMAND: docker machine stop " + compute.name);		
-		// TODO: must be implemented
+		LOGGER.info("EXECUTE STOP COMMAND on: " + compute.name);
 	}
 
 	/**
 	 * Restart a Docker machine.
 	 */
 	override def restart_execute(RestartMethod method) {
-		LOGGER.info("EXECUTE COMMAND: docker machine restart " + compute.name);
-		// TODO: must be implemented
+		LOGGER.info("EXECUTE STOP COMMAND on: " + compute.name);
+	// TODO: must be implemented
 	}
 
 	/**
 	 * Suspend a Docker machine.
 	 */
 	override def suspend_execute(SuspendMethod method) {
-		LOGGER.info("EXECUTE COMMAND: docker machine suspend " + compute.name);		
-		// TODO: must be implemented
+		LOGGER.info("EXECUTE COMMAND: docker machine suspend " + compute.name);
+	// TODO: must be implemented
 	}
 }
 
 /**
  * This class implements executable Docker Machine on Amazon EC2.
  */
-class ExecutableMachine_Amazon_EC2 extends Machine_Amazon_EC2Impl
-{ 
+class ExecutableMachine_Amazon_EC2 extends Machine_Amazon_EC2Impl {
 	/**
 	 * The machine manager.
 	 */
-	val manager = new MachineManager(this)
-	{
-    	override def getDriverName() {
-    		"amazonec2" // TODO: check driver name
-    	}
-
-		override def appendDriverParameters(StringBuilder sb) {
-			// TODO: must be implemented
-			throw new UnsupportedOperationException
+	val manager = new MachineManager(this) {
+		override def getDriverName() {
+			"amazonec2" // TODO: check driver name
 		}
 	}
 
-    // Delegation to the manager.
+	// Delegation to the manager.
 	override def start() { manager.start() }
+
 	override def stop(StopMethod method) { manager.stop(method) }
+
 	override def restart(RestartMethod method) { manager.restart(method) }
+
 	override def suspend(SuspendMethod method) { manager.suspend(method) }
 }
 
 /**
  * This class implements executable Docker Machine on CloudSigma.
  */
-class ExecutableMachine_CloudSigma extends Machine_CloudSigmaImpl
-{ 
+class ExecutableMachine_CloudSigma extends Machine_CloudSigmaImpl {
 	/**
 	 * The machine manager.
 	 */
-	val manager = new MachineManager(this)
-	{
-    	override def getDriverName() {
-    		"cloudsigma" // TODO: check driver name
-    	}
-
-		override def appendDriverParameters(StringBuilder sb) {
-			// TODO: must be implemented
-			throw new UnsupportedOperationException
+	val manager = new MachineManager(this) {
+		override def getDriverName() {
+			"cloudsigma" // TODO: check driver name
 		}
 	}
 
-    // Delegation to the manager.
+	// Delegation to the manager.
 	override def start() { manager.start() }
+
 	override def stop(StopMethod method) { manager.stop(method) }
+
 	override def restart(RestartMethod method) { manager.restart(method) }
+
 	override def suspend(SuspendMethod method) { manager.suspend(method) }
 }
 
 /**
  * This class implements executable Docker Machine on Google COmpute Engine.
  */
-class ExecutableMachine_GCE extends Machine_GCEImpl
-{ 
+class ExecutableMachine_GCE extends Machine_GCEImpl {
 	/**
 	 * The machine manager.
 	 */
-	val manager = new MachineManager(this)
-	{
-    	override def getDriverName() {
-    		"googlece" // TODO: check driver name
-    	}
-
-		override def appendDriverParameters(StringBuilder sb) {
-			// TODO: must be implemented
-			throw new UnsupportedOperationException
+	val manager = new MachineManager(this) {
+		override def getDriverName() {
+			"googlece" // TODO: check driver name
 		}
 	}
 
-    // Delegation to the manager.
+	// Delegation to the manager.
 	override def start() { manager.start() }
+
 	override def stop(StopMethod method) { manager.stop(method) }
+
 	override def restart(RestartMethod method) { manager.restart(method) }
+
 	override def suspend(SuspendMethod method) { manager.suspend(method) }
 }
 
 /**
  * This class implements executable Docker Machine on Gogrid.
  */
-class ExecutableMachine_Gogrid extends Machine_GogridImpl
-{ 
+class ExecutableMachine_Gogrid extends Machine_GogridImpl {
 	/**
 	 * The machine manager.
 	 */
-	val manager = new MachineManager(this)
-	{
-    	override def getDriverName() {
-    		"gogrid" // TODO: check driver name
-    	}
-
-		override def appendDriverParameters(StringBuilder sb) {
-			// TODO: must be implemented
-			throw new UnsupportedOperationException
+	val manager = new MachineManager(this) {
+		override def getDriverName() {
+			"gogrid" // TODO: check driver name
 		}
 	}
 
-    // Delegation to the manager.
+	// Delegation to the manager.
 	override def start() { manager.start() }
+
 	override def stop(StopMethod method) { manager.stop(method) }
+
 	override def restart(RestartMethod method) { manager.restart(method) }
+
 	override def suspend(SuspendMethod method) { manager.suspend(method) }
 }
-
 
 /**
  * This class implements executable Docker Machine on HP Helion.
  */
-class ExecutableMachine_Hp_Helion extends Machine_Hp_HelionImpl
-{ 
+class ExecutableMachine_Hp_Helion extends Machine_Hp_HelionImpl {
 	/**
 	 * The machine manager.
 	 */
-	val manager = new MachineManager(this)
-	{
-    	override def getDriverName() {
-    		"hphelion" // TODO: check driver name
-    	}
-
-		override def appendDriverParameters(StringBuilder sb) {
-			// TODO: must be implemented
-			throw new UnsupportedOperationException
+	val manager = new MachineManager(this) {
+		override def getDriverName() {
+			"hphelion" // TODO: check driver name
 		}
+
 	}
 
-    // Delegation to the manager.
+	// Delegation to the manager.
 	override def start() { manager.start() }
+
 	override def stop(StopMethod method) { manager.stop(method) }
+
 	override def restart(RestartMethod method) { manager.restart(method) }
+
 	override def suspend(SuspendMethod method) { manager.suspend(method) }
 }
 
 /**
- * This class implements executable Docker Machine on CloudSigma.
+ * This class implements executable Machine on OpenStack.
  */
-class ExecutableMachine_OpenStack extends Machine_OpenStackImpl
-{ 
+class ExecutableMachine_OpenStack extends Machine_OpenStackImpl {
 	/**
 	 * The machine manager.
 	 */
-	val manager = new MachineManager(this)
-	{
-    	override def getDriverName() {
-    		"openstack" // TODO: check driver name
-    	}
-
-		override def appendDriverParameters(StringBuilder sb) {
-			// TODO: must be implemented
-			throw new UnsupportedOperationException
+	val manager = new MachineManager(this) {
+		override def getDriverName() {
+			"openstack" // TODO: check driver name
 		}
+
 	}
 
-    // Delegation to the manager.
+	// Delegation to the manager.
 	override def start() { manager.start() }
+
 	override def stop(StopMethod method) { manager.stop(method) }
+
 	override def restart(RestartMethod method) { manager.restart(method) }
+
 	override def suspend(SuspendMethod method) { manager.suspend(method) }
 }
 
 /**
  * This class implements executable Docker Machine on ProfitBricks.
  */
-class ExecutableMachine_ProfitBricks extends Machine_ProfitBricksImpl
-{ 
+class ExecutableMachine_ProfitBricks extends Machine_ProfitBricksImpl {
 	/**
 	 * The machine manager.
 	 */
-	val manager = new MachineManager(this)
-	{
-    	override def getDriverName() {
-    		"profitbricks" // TODO: check driver name
-    	}
-
-		override def appendDriverParameters(StringBuilder sb) {
-			// TODO: must be implemented
-			throw new UnsupportedOperationException
+	val manager = new MachineManager(this) {
+		override def getDriverName() {
+			"profitbricks" // TODO: check driver name
 		}
+
 	}
 
-    // Delegation to the manager.
+	// Delegation to the manager.
 	override def start() { manager.start() }
+
 	override def stop(StopMethod method) { manager.stop(method) }
+
 	override def restart(RestartMethod method) { manager.restart(method) }
+
 	override def suspend(SuspendMethod method) { manager.suspend(method) }
 }
 
 /**
  * This class implements executable Docker Machine on RackSapce.
  */
-class ExecutableMachine_RackSpace extends Machine_RackSpaceImpl
-{ 
+class ExecutableMachine_RackSpace extends Machine_RackSpaceImpl {
 	/**
 	 * The machine manager.
 	 */
-	val manager = new MachineManager(this)
-	{
-    	override def getDriverName() {
-    		"cloudsigma" // TODO: check driver name
-    	}
-
-		override def appendDriverParameters(StringBuilder sb) {
-			// TODO: must be implemented
-			throw new UnsupportedOperationException
+	val manager = new MachineManager(this) {
+		override def getDriverName() {
+			"rackspace" // TODO: check driver name
 		}
+
 	}
 
-    // Delegation to the manager.
+	// Delegation to the manager.
 	override def start() { manager.start() }
+
 	override def stop(StopMethod method) { manager.stop(method) }
+
 	override def restart(RestartMethod method) { manager.restart(method) }
+
 	override def suspend(SuspendMethod method) { manager.suspend(method) }
 }
 
 /**
  * This class implements executable Docker Machine on SoftLayer.
  */
-class ExecutableMachine_SoftLayer extends Machine_SoftLayerImpl
-{ 
+class ExecutableMachine_SoftLayer extends Machine_SoftLayerImpl {
 	/**
 	 * The machine manager.
 	 */
-	val manager = new MachineManager(this)
-	{
-    	override def getDriverName() {
-    		"softlayer" // TODO: check driver name
-    	}
-
-		override def appendDriverParameters(StringBuilder sb) {
-			// TODO: must be implemented
-			throw new UnsupportedOperationException
+	val manager = new MachineManager(this) {
+		override def getDriverName() {
+			"softlayer" // TODO: check driver name
 		}
+
 	}
 
-    // Delegation to the manager.
+	// Delegation to the manager.
 	override def start() { manager.start() }
+
 	override def stop(StopMethod method) { manager.stop(method) }
+
 	override def restart(RestartMethod method) { manager.restart(method) }
+
 	override def suspend(SuspendMethod method) { manager.suspend(method) }
 }
-
 
 class ExecutableCloudModel {
 
@@ -812,7 +811,6 @@ class ExecutableCloudModel {
 		}
 
 	}
-
 
 	def void stop() {
 		if (machine_Amazon_EC2 != null) {
@@ -903,9 +901,8 @@ class ExecutableCloudModel {
 
 	}
 
-
 	def void importModel() {
-		//TODO
+		// TODO
 	}
 
 }

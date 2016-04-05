@@ -29,11 +29,6 @@ public class ExecutableMachine_CloudSigma extends Machine_CloudSigmaImpl {
     public String getDriverName() {
       return "cloudsigma";
     }
-    
-    @Override
-    public void appendDriverParameters(final StringBuilder sb) {
-      throw new UnsupportedOperationException();
-    }
   };
   
   @Override

@@ -18,12 +18,14 @@ import com.google.inject.Module;
 import java.io.Closeable;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.jclouds.ContextBuilder;
 import org.jclouds.compute.ComputeService;
@@ -57,6 +59,8 @@ public class JcloudsOpenStack extends IaaSHandler implements Closeable {
   
   private ComputeServiceContext context;
   
+  private NovaApi novaApi;
+  
   public JcloudsOpenStack() {
   }
   
@@ -81,6 +85,7 @@ public class JcloudsOpenStack extends IaaSHandler implements Closeable {
     ContextBuilder _modules = _endpoint_1.modules(modules);
     ComputeServiceContext context = _modules.<ComputeServiceContext>buildView(
       ComputeServiceContext.class);
+    JcloudsOpenStack.LOGGER.info("The context is created Successfully ..");
     return context;
   }
   
@@ -94,9 +99,26 @@ public class JcloudsOpenStack extends IaaSHandler implements Closeable {
       String groupName = "graphical";
       ComputeService _computeService = this.context.getComputeService();
       TemplateBuilder templateBuilder = _computeService.templateBuilder();
-      String _region = this.machine.getRegion();
-      boolean _notEquals = (!Objects.equal(_region, null));
+      String _security_group = this.machine.getSecurity_group();
+      boolean _notEquals = (!Objects.equal(_security_group, null));
       if (_notEquals) {
+        String _security_group_1 = this.machine.getSecurity_group();
+        groupName = _security_group_1;
+      }
+      String _name = this.machine.getName();
+      boolean _notEquals_1 = (!Objects.equal(_name, null));
+      if (_notEquals_1) {
+      }
+      float _memory = this.machine.getMemory();
+      boolean _greaterThan = (_memory > 0.0);
+      if (_greaterThan) {
+        float _memory_1 = this.machine.getMemory();
+        int _intValue = Float.valueOf(_memory_1).intValue();
+        templateBuilder.minRam(_intValue);
+      }
+      String _region = this.machine.getRegion();
+      boolean _notEquals_2 = (!Objects.equal(_region, null));
+      if (_notEquals_2) {
         String _region_1 = this.machine.getRegion();
         templateBuilder.locationId(_region_1);
       } else {
@@ -106,19 +128,19 @@ public class JcloudsOpenStack extends IaaSHandler implements Closeable {
         templateBuilder.locationId(_id);
       }
       String _flavor_id = this.machine.getFlavor_id();
-      boolean _notEquals_1 = (!Objects.equal(_flavor_id, null));
-      if (_notEquals_1) {
+      boolean _notEquals_3 = (!Objects.equal(_flavor_id, null));
+      if (_notEquals_3) {
         String _flavor_id_1 = this.machine.getFlavor_id();
         templateBuilder.hardwareId(_flavor_id_1);
       } else {
         List<Hardware> _listHardware = this.listHardware();
         Hardware hardware = this.<Hardware>getOneElement(_listHardware);
-        String _providerId = hardware.getProviderId();
-        templateBuilder.hardwareId(_providerId);
+        String _id_1 = hardware.getId();
+        templateBuilder.hardwareId(_id_1);
       }
       String _image_id = this.machine.getImage_id();
-      boolean _notEquals_2 = (!Objects.equal(_image_id, null));
-      if (_notEquals_2) {
+      boolean _notEquals_4 = (!Objects.equal(_image_id, null));
+      if (_notEquals_4) {
         String _image_id_1 = this.machine.getImage_id();
         templateBuilder.imageId(_image_id_1);
       } else {
@@ -127,13 +149,16 @@ public class JcloudsOpenStack extends IaaSHandler implements Closeable {
         templateBuilder.fromImage(image);
       }
       Template template = templateBuilder.build();
-      JcloudsOpenStack.LOGGER.info(("Adding node to group = " + groupName));
+      JcloudsOpenStack.LOGGER.info((" >> Adding node to group = " + groupName));
       ComputeService _computeService_1 = this.context.getComputeService();
       Set<? extends NodeMetadata> nodes = _computeService_1.createNodesInGroup(groupName, 1, template);
       Iterator<? extends NodeMetadata> _iterator = nodes.iterator();
       NodeMetadata lastNodeMetadata = _iterator.next();
-      String _id_1 = lastNodeMetadata.getId();
-      this.machine.setId(_id_1);
+      String _id_2 = lastNodeMetadata.getId();
+      this.machine.setId(_id_2);
+      String _name_1 = lastNodeMetadata.getName();
+      this.machine.setId(_name_1);
+      JcloudsOpenStack.LOGGER.info("Machine is create ...");
       return lastNodeMetadata.getId();
     } catch (final Throwable _t) {
       if (_t instanceof Exception) {
@@ -145,8 +170,102 @@ public class JcloudsOpenStack extends IaaSHandler implements Closeable {
     return null;
   }
   
+  public String launchMachine() {
+    String _name = this.machine.getName();
+    String _plus = ("Launching machine: " + _name);
+    JcloudsOpenStack.LOGGER.info(_plus);
+    SLF4JLoggingModule _sLF4JLoggingModule = new SLF4JLoggingModule();
+    Iterable<Module> modules = ImmutableSet.<Module>of(_sLF4JLoggingModule);
+    String _provider = this.machine.getProvider();
+    ContextBuilder _newBuilder = ContextBuilder.newBuilder(_provider);
+    String _endpoint = this.machine.getEndpoint();
+    ContextBuilder _endpoint_1 = _newBuilder.endpoint(_endpoint);
+    String _identity = this.identity();
+    String _password = this.machine.getPassword();
+    ContextBuilder _credentials = _endpoint_1.credentials(_identity, _password);
+    ContextBuilder _modules = _credentials.modules(modules);
+    NovaApi _buildApi = _modules.<NovaApi>buildApi(NovaApi.class);
+    this.novaApi = _buildApi;
+    List<Location> _listLocations = this.listLocations();
+    Location location = this.<Location>getOneElement(_listLocations);
+    final String anyZoneName = location.getId();
+    Map<String, String> metadata = new HashMap<String, String>(3);
+    String _name_1 = this.machine.getName();
+    metadata.put("Server Name", _name_1);
+    metadata.put("Root Instance Name", "rootInstanceName");
+    metadata.put("Created by", "CloudConnector");
+    try {
+      CreateServerOptions options = null;
+      ServerCreated server = null;
+      String _keypair = this.machine.getKeypair();
+      boolean _notEquals = (!Objects.equal(_keypair, null));
+      if (_notEquals) {
+        String _keypair_1 = this.machine.getKeypair();
+        CreateServerOptions _keyPairName = CreateServerOptions.Builder.keyPairName(_keypair_1);
+        options = _keyPairName;
+      } else {
+      }
+      String _security_group = this.machine.getSecurity_group();
+      boolean _notEquals_1 = (!Objects.equal(_security_group, null));
+      if (_notEquals_1) {
+        String _security_group_1 = this.machine.getSecurity_group();
+        CreateServerOptions _securityGroupNames = options.securityGroupNames(_security_group_1);
+        _securityGroupNames.metadata(metadata);
+      } else {
+      }
+      String _network_id = this.machine.getNetwork_id();
+      boolean _notEquals_2 = (!Objects.equal(_network_id, null));
+      if (_notEquals_2) {
+        String _network_id_1 = this.machine.getNetwork_id();
+        options.networks(Collections.<String>unmodifiableList(CollectionLiterals.<String>newArrayList(_network_id_1)));
+      }
+      String _flavor_id = this.machine.getFlavor_id();
+      boolean _notEquals_3 = (!Objects.equal(_flavor_id, null));
+      if (_notEquals_3) {
+        String _image_id = this.machine.getImage_id();
+        boolean _notEquals_4 = (!Objects.equal(_image_id, null));
+        if (_notEquals_4) {
+          ServerApi _serverApiForZone = this.novaApi.getServerApiForZone(anyZoneName);
+          String _name_2 = this.machine.getName();
+          String _image_id_1 = this.machine.getImage_id();
+          String _flavor_id_1 = this.machine.getFlavor_id();
+          ServerCreated _create = _serverApiForZone.create(_name_2, _image_id_1, _flavor_id_1, options);
+          server = _create;
+        } else {
+          List<Image> _listImages = this.listImages();
+          Image image = this.<Image>getOneElement(_listImages);
+          ServerApi _serverApiForZone_1 = this.novaApi.getServerApiForZone(anyZoneName);
+          String _name_3 = this.machine.getName();
+          String _id = image.getId();
+          String _flavor_id_2 = this.machine.getFlavor_id();
+          ServerCreated _create_1 = _serverApiForZone_1.create(_name_3, _id, _flavor_id_2, options);
+          server = _create_1;
+        }
+      } else {
+      }
+      final String machineId = server.getId();
+      this.novaApi.close();
+      this.machine.setId(machineId);
+      String _id_1 = this.machine.getId();
+      String _plus_1 = ("Machine id: " + _id_1);
+      JcloudsOpenStack.LOGGER.info(_plus_1);
+      return machineId;
+    } catch (final Throwable _t) {
+      if (_t instanceof IOException) {
+        final IOException e = (IOException)_t;
+        String _message = e.getMessage();
+        JcloudsOpenStack.LOGGER.error(_message);
+      } else {
+        throw Exceptions.sneakyThrow(_t);
+      }
+    }
+    return null;
+  }
+  
   public String createMachines() {
-    JcloudsOpenStack.LOGGER.info("Creating machine ..");
+    String _name = this.machine.getName();
+    String _plus = ("Creating machine: " + _name);
+    JcloudsOpenStack.LOGGER.info(_plus);
     SLF4JLoggingModule _sLF4JLoggingModule = new SLF4JLoggingModule();
     Iterable<Module> modules = ImmutableSet.<Module>of(_sLF4JLoggingModule);
     String _provider = this.machine.getProvider();
@@ -162,8 +281,8 @@ public class JcloudsOpenStack extends IaaSHandler implements Closeable {
     Iterator<String> _iterator = _configuredZones.iterator();
     final String anyZoneName = _iterator.next();
     Map<String, String> metadata = new HashMap<String, String>(3);
-    String _name = this.machine.getName();
-    metadata.put("Application Name", _name);
+    String _name_1 = this.machine.getName();
+    metadata.put("Application Name", _name_1);
     metadata.put("Root Instance Name", "rootInstanceName");
     metadata.put("Created by", "CloudConnector");
     try {
@@ -175,10 +294,10 @@ public class JcloudsOpenStack extends IaaSHandler implements Closeable {
       String _network_id = this.machine.getNetwork_id();
       CreateServerOptions options = _metadata.networks(_network_id);
       ServerApi _serverApiForZone = novaApi.getServerApiForZone(anyZoneName);
-      String _name_1 = this.machine.getName();
+      String _name_2 = this.machine.getName();
       String _image_id = this.machine.getImage_id();
       String _flavor_id = this.machine.getFlavor_id();
-      ServerCreated server = _serverApiForZone.create(_name_1, _image_id, _flavor_id, options);
+      ServerCreated server = _serverApiForZone.create(_name_2, _image_id, _flavor_id, options);
       final String machineId = server.getId();
       novaApi.close();
       this.machine.setId(machineId);
@@ -186,6 +305,8 @@ public class JcloudsOpenStack extends IaaSHandler implements Closeable {
     } catch (final Throwable _t) {
       if (_t instanceof IOException) {
         final IOException e = (IOException)_t;
+        String _message = e.getMessage();
+        JcloudsOpenStack.LOGGER.error(_message);
       } else {
         throw Exceptions.sneakyThrow(_t);
       }
@@ -284,6 +405,26 @@ public class JcloudsOpenStack extends IaaSHandler implements Closeable {
       ComputeService _computeService = this.context.getComputeService();
       String _id = this.machine.getId();
       _computeService.suspendNode(_id);
+      String _id_1 = this.machine.getId();
+      String _plus = ("Stopping the machine: " + _id_1);
+      JcloudsOpenStack.LOGGER.info(_plus);
+    } catch (final Throwable _t) {
+      if (_t instanceof Exception) {
+        final Exception e = (Exception)_t;
+      } else {
+        throw Exceptions.sneakyThrow(_t);
+      }
+    }
+  }
+  
+  @Override
+  public void stopMachine(final String machineId) {
+    try {
+      ComputeService _computeService = this.context.getComputeService();
+      _computeService.suspendNode(machineId);
+      String _id = this.machine.getId();
+      String _plus = ("Stopping the machine: " + _id);
+      JcloudsOpenStack.LOGGER.info(_plus);
     } catch (final Throwable _t) {
       if (_t instanceof Exception) {
         final Exception e = (Exception)_t;
@@ -317,6 +458,7 @@ public class JcloudsOpenStack extends IaaSHandler implements Closeable {
   public void close() {
     try {
       Closeables.close(this.context, true);
+      Closeables.close(this.novaApi, true);
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }

@@ -29,11 +29,6 @@ public class ExecutableMachine_ProfitBricks extends Machine_ProfitBricksImpl {
     public String getDriverName() {
       return "profitbricks";
     }
-    
-    @Override
-    public void appendDriverParameters(final StringBuilder sb) {
-      throw new UnsupportedOperationException();
-    }
   };
   
   @Override

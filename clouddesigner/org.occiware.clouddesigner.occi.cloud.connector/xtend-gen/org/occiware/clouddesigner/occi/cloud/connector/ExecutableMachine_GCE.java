@@ -29,11 +29,6 @@ public class ExecutableMachine_GCE extends Machine_GCEImpl {
     public String getDriverName() {
       return "googlece";
     }
-    
-    @Override
-    public void appendDriverParameters(final StringBuilder sb) {
-      throw new UnsupportedOperationException();
-    }
   };
   
   @Override

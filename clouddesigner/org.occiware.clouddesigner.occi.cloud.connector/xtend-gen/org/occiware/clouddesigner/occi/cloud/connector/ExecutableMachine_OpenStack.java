@@ -17,7 +17,7 @@ import org.occiware.clouddesigner.occi.infrastructure.StopMethod;
 import org.occiware.clouddesigner.occi.infrastructure.SuspendMethod;
 
 /**
- * This class implements executable Docker Machine on CloudSigma.
+ * This class implements executable Machine on OpenStack.
  */
 @SuppressWarnings("all")
 public class ExecutableMachine_OpenStack extends Machine_OpenStackImpl {
@@ -28,11 +28,6 @@ public class ExecutableMachine_OpenStack extends Machine_OpenStackImpl {
     @Override
     public String getDriverName() {
       return "openstack";
-    }
-    
-    @Override
-    public void appendDriverParameters(final StringBuilder sb) {
-      throw new UnsupportedOperationException();
     }
   };
   

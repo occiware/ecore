@@ -29,11 +29,6 @@ public class ExecutableMachine_Hp_Helion extends Machine_Hp_HelionImpl {
     public String getDriverName() {
       return "hphelion";
     }
-    
-    @Override
-    public void appendDriverParameters(final StringBuilder sb) {
-      throw new UnsupportedOperationException();
-    }
   };
   
   @Override

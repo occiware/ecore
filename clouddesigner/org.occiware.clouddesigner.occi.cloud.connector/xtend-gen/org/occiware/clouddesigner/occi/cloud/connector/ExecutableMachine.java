@@ -18,7 +18,7 @@ import org.occiware.clouddesigner.occi.infrastructure.StopMethod;
 import org.occiware.clouddesigner.occi.infrastructure.SuspendMethod;
 
 /**
- * This class implements an executable Docker machine.
+ * This class implements an executable machine.
  */
 @SuppressWarnings("all")
 public class ExecutableMachine extends MachineImpl {

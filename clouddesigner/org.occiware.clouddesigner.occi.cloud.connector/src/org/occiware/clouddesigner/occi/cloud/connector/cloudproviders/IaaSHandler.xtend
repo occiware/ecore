@@ -20,85 +20,82 @@ abstract class IaaSHandler {
 	/**
 	 * Create a machine on target provider
 	 */
-	def createMachine() {
-	}
+	def createMachine() {}
 
 	/**
 	 * Start a machine
 	 * 
 	 */
-	def startMachine() {
-	}
+	def startMachine() {}
+
+	/**
+	 * Launch a machine
+	 * 
+	 */
+	def lanchMachine() {}
 
 	/**
 	 * Stop a machine
 	 * 
 	 */
-	def void stopMachine() {
-	}
+	def void stopMachine() {}
+
+	/**
+	 * Stop a machine
+	 * 
+	 */
+
+	def void stopMachine(String machineId) {}
 
 	/**
 	 * Restart a machine
 	 * 
 	 */
-	def restartMachine() {
-	}
+	def restartMachine() {}
 
 	/**
 	 * List all machine available on the target provider
 	 * 
 	 */
-	def listMachines() {
-	}
+	def listMachines() {}
 
 	/**
 	 * List all images available on the target provider
 	 * 
 	 */
-	def listImages() {
-	}
+	def listImages() {}
 
 	/**
 	 * List all region available on the target provider
 	 * 
 	 */
-	def List<Location> listLocations() {
-	}
+	def List<Location> listLocations() {}
 
 	/**
 	 * List all hardware available on target provider
 	 * 
 	 */
-	def List<Hardware> listHardware() {
-	}
-	
+	def List<Hardware> listHardware() {}
+
 	/**
 	 * Create a volume
 	 */
-	def Volume createVolume(String volumeName, Integer size){
-		
-	}
-	
+	def Volume createVolume(String volumeName, Integer size) {}
+
 	/**
 	 * Attach a volume to machine
 	 */
-	def void attachVolume(String VolumeId){
-		
+	def void attachVolume(String VolumeId) {
 	}
-	
+
 	/**
 	 * Detach volume
 	 */
-	 def void detachVolume(String volumeId){
-	 	
-	 }
-	
+	def void detachVolume(String volumeId) {}
+
 	/**
 	 * Delete volume
 	 */
-	
-	def void deleteVolume(){
-		
-	}
+	def void deleteVolume() {}
 
 }

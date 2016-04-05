@@ -32,9 +32,22 @@ public abstract class IaaSHandler {
   }
   
   /**
+   * Launch a machine
+   */
+  public Object lanchMachine() {
+    return null;
+  }
+  
+  /**
    * Stop a machine
    */
   public void stopMachine() {
+  }
+  
+  /**
+   * Stop a machine
+   */
+  public void stopMachine(final String machineId) {
   }
   
   /**
