@@ -139,6 +139,6 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedJavaExtensions qualifiedClassName="org.occiware.clouddesigner.occi.design.services.CloudServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.occiware.clouddesigner.occi.cloud.design.services.CloudServices"/>
   </ownedViewpoints>
 </description:Group>
