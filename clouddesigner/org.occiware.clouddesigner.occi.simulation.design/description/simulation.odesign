@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="simulation" version="10.1.3.201511131800">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="simulation" version="10.1.3.201511131800">
   <ownedViewpoints name="Simulation Configuration" modelFileExtension="occic">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Simulation Configuration" domainClass="occi.Configuration" enablePopupBars="true">
       <defaultLayer name="Default">
@@ -42,7 +42,7 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </subNodeMappings>
-          <subNodeMappings name="AttributeState" labelDirectEdit="//@ownedViewpoints[name='Simulation%20Configuration']/@ownedRepresentations[name='Simulation%20Configuration']/@defaultLayer/@toolSections.0/@ownedTools[name='EditDefault']" semanticCandidatesExpression="feature:attributes" domainClass="occi.AttributeState">
+          <subNodeMappings name="AttributeState" labelDirectEdit="//@ownedViewpoints[name='Simulation%20Configuration']/@ownedRepresentations[name='Simulation%20Configuration']/@defaultLayer/@toolSections.1/@ownedTools[name='EditDefault']" semanticCandidatesExpression="feature:attributes" domainClass="occi.AttributeState">
             <style xsi:type="style:SquareDescription" labelExpression="[name+'= '+value/]" labelAlignment="LEFT" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -85,85 +85,94 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
         </containerMappings>
+        <toolSections name="Configuration">
+          <ownedTools xsi:type="tool:ToolDescription" name="Import Configuration" iconPath="/org.occiware.clouddesigner.occi.simulation.design/images/search.gif">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:importConfiguration"/>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
         <toolSections name="Tool">
-          <ownedTools xsi:type="tool:DirectEditLabel" name="EditDefault">
+          <ownedTools xsi:type="tool_1:DirectEditLabel" name="EditDefault">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:SetValue" featureName="value" valueExpression="var:arg0"/>
+              <firstModelOperations xsi:type="tool:SetValue" featureName="value" valueExpression="var:arg0"/>
             </initialOperation>
           </ownedTools>
         </toolSections>
         <toolSections name="Entity" label="Category">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Resource" containerMappings="//@ownedViewpoints[name='Simulation%20Configuration']/@ownedRepresentations[name='Simulation%20Configuration']/@defaultLayer/@containerMappings[name='ResourceContainer']">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="Resource" containerMappings="//@ownedViewpoints[name='Simulation%20Configuration']/@ownedRepresentations[name='Simulation%20Configuration']/@defaultLayer/@containerMappings[name='ResourceContainer']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="occi.Resource" referenceName="resources"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="occi.Resource" referenceName="resources"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Contains" edgeMappings="//@ownedViewpoints[name='Simulation%20Configuration']/@ownedRepresentations[name='Simulation%20Configuration']/@defaultLayer/@edgeMappings[name='ResourceToResource']">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Contains" edgeMappings="//@ownedViewpoints[name='Simulation%20Configuration']/@ownedRepresentations[name='Simulation%20Configuration']/@defaultLayer/@edgeMappings[name='ResourceToResource']">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="occi.Link" referenceName="links" variableName="link">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="var:target"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="occi.Link" referenceName="links" variableName="link">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="var:target"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
         </toolSections>
         <toolSections name="Tag">
-          <ownedTools xsi:type="tool_1:ToolDescription" name="Datacenter">
+          <ownedTools xsi:type="tool:ToolDescription" name="Datacenter">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:tagDatacenter"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:tagDatacenter"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" name="Host">
+          <ownedTools xsi:type="tool:ToolDescription" name="Host">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:tagHost"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:tagHost"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" name="VM">
+          <ownedTools xsi:type="tool:ToolDescription" name="VM">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:tagVM"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:tagVM"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" name="Application">
+          <ownedTools xsi:type="tool:ToolDescription" name="Application">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:tagApplication"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:tagApplication"/>
             </initialOperation>
           </ownedTools>
         </toolSections>
         <toolSections name="Execution">
-          <ownedTools xsi:type="tool_1:PopupMenu" name="Execute">
-            <menuItemDescription xsi:type="tool_1:OperationAction" name="Start">
+          <ownedTools xsi:type="tool:PopupMenu" name="Execute">
+            <menuItemDescription xsi:type="tool:OperationAction" name="Start">
               <view name="views"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:start"/>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:start"/>
               </initialOperation>
             </menuItemDescription>
           </ownedTools>
         </toolSections>
         <toolSections name="Attribute">
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Attribute" nodeMappings="//@ownedViewpoints[name='Simulation%20Configuration']/@ownedRepresentations[name='Simulation%20Configuration']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subNodeMappings[name='AttributeState']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="Attribute" nodeMappings="//@ownedViewpoints[name='Simulation%20Configuration']/@ownedRepresentations[name='Simulation%20Configuration']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subNodeMappings[name='AttributeState']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="occi.AttributeState" referenceName="attributes"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="occi.AttributeState" referenceName="attributes"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>

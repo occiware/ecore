@@ -11,6 +11,8 @@
 package org.occiware.clouddesigner.occi.simulation.design.services;
 
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -20,6 +22,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -40,15 +43,23 @@ import org.occiware.clouddesigner.occi.OCCIFactory;
 import org.occiware.clouddesigner.occi.OCCIRegistry;
 import org.occiware.clouddesigner.occi.OCCIUtils;
 import org.occiware.clouddesigner.occi.Resource;
+import org.occiware.clouddesigner.occi.design.dialog.LoadExtensionDialog;
 import org.occiware.clouddesigner.occi.simulation.cloudsim.handlers.BrigeConfigSimulation;
 import org.occiware.clouddesigner.occi.simulation.cloudsim.handlers.Parser.Entity;
+import org.occiware.clouddesigner.occi.util.OCCIResourceSet;
 import org.occiware.clouddesigner.occi.simulation.cloudsim.handlers.Simulation;
 
 
 public class DesignServices {
 
-	String scheme = "http://occiware.org/simulation#";
+	public static final Set<String> attributesToOmit = new HashSet<String>();
+	static {
+		attributesToOmit.add("occi.core.id");
+		attributesToOmit.add("occi.core.source");
+		attributesToOmit.add("occi.core.target");
+	};
 
+	String scheme = "http://occiware.org/simulation#";
 
 	public void tagDatacenter(Resource resource) {
 		tagResource(resource, "datacenter");
@@ -101,10 +112,10 @@ public class DesignServices {
 			System.out.println("Configuration contains correct informations");
 			Simulation simulation = new Simulation(entities);
 			simulation.runExtension();
-			
+
 			JOptionPane.showMessageDialog(null, simulation.getResult(),
-			        "Simulation Result",
-			        JOptionPane.INFORMATION_MESSAGE);
+					"Simulation Result",
+					JOptionPane.INFORMATION_MESSAGE);
 			return;
 			//MessageDialog.openInformation(shell, "Simulation Result", simulation.getResult());
 
@@ -112,8 +123,8 @@ public class DesignServices {
 			System.err.println("Thanks to verify your linked resources in configuration");
 			MessageDialog.openInformation(shell, "Info", "Thanks to verify your linked resources in configuration");
 		}
-		
-		
+
+
 	}
 
 	public Shell getShell() {
@@ -164,6 +175,196 @@ public class DesignServices {
 				}
 			}
 		}
+	}
+
+	public void importConfiguration(Configuration configuration) {
+		Shell shell = Display.getCurrent().getActiveShell();
+		Session session = SessionManager.INSTANCE.getSession(configuration);
+		LoadExtensionDialog dialog = new LoadExtensionDialog(shell, session.getTransactionalEditingDomain());
+		dialog.open();
+		
+		org.occiware.clouddesigner.occi.Extension extension = searchExtension(configuration, scheme);
+		System.out.println(extension);
+		configuration.getUse().add(extension);
+		
+		URI uri_ = dialog.getURIs().get(0);
+		Configuration conf = loadConfiguration(uri_.toString());
+		org.occiware.clouddesigner.occi.OCCIFactory factory = org.occiware.clouddesigner.occi.OCCIFactory.eINSTANCE;
+	
+		List<org.occiware.clouddesigner.occi.Resource> targetConfigurationResources = configuration.getResources();	
+		Map<String, org.occiware.clouddesigner.occi.Resource> targetResources = new HashMap<String,org.occiware.clouddesigner.occi.Resource>();
+		for(Resource resource : conf.getResources()) {
+			Resource targetResource = factory.createResource();
+			targetConfigurationResources.add(targetResource);
+			copyEntity(configuration, resource,targetResource);
+			targetResources.put(resource.getId(), targetResource);
+		}
+
+		for(Resource resource : conf.getResources()) {
+			Resource targetResource = targetResources.get(resource.getId());
+			System.out.println(">>> "+targetResource.getKind());
+			System.out.println("<<< "+resource.getKind());
+			for(Link sourceLink: resource.getLinks()){
+				org.occiware.clouddesigner.occi.Link targetLink = factory.createLink();
+				targetLink.setSource(targetResource);
+				copyEntity(configuration, sourceLink, targetLink);
+				// Set the target's link target.
+				String sourceLinkTarget = sourceLink.getTarget().getId();
+				org.occiware.clouddesigner.occi.Resource linkTargetResource = targetResources.get(sourceLinkTarget);
+				if(linkTargetResource != null) {
+					targetLink.setTarget(linkTargetResource);
+				} else {
+					System.err.println("Resource " + sourceLinkTarget + " unknown!");
+				}
+			}
+		}
+	}
+
+
+	public static Configuration loadConfiguration(String configurationURI)
+	{
+		return (Configuration)loadOCCI(configurationURI);
+	}
+
+	private static Object loadOCCI(String uri)
+	{
+		ResourceSet resourceSet = new OCCIResourceSet();
+		org.eclipse.emf.ecore.resource.Resource resource = resourceSet.getResource(URI.createURI(uri), true);
+		return resource.getContents().get(0);
+	}
+
+	private static void copyEntity(Configuration configuration, Link source, Link target)
+	{
+		target.setId(source.getId());
+		String sourceKindIdentifier = source.getId();
+		org.occiware.clouddesigner.occi.Kind targetKind = searchKind(configuration, source.getKind());
+		if(targetKind != null) {
+			target.setKind(targetKind);
+		} else {
+			System.err.println("Kind " + sourceKindIdentifier + " unknown!");
+		}
+		List<org.occiware.clouddesigner.occi.Mixin> targetMixins = target.getMixins();
+		for(Mixin mixin : source.getMixins()) {
+			org.occiware.clouddesigner.occi.Mixin targetMixin = searchMixin(configuration, mixin);
+			if(targetMixin != null) {
+				targetMixins.add(targetMixin);
+			} else {
+				System.err.println("Mixin  unknown!");
+			}
+		}
+	}
+
+
+	private static void copyEntity(Configuration configuration, Resource source, Resource target)
+	{
+		target.setId(source.getId());
+		org.occiware.clouddesigner.occi.Kind targetKind = searchKind(configuration, source.getKind());
+		if(targetKind != null) {
+			target.setKind(targetKind);
+		} else {
+			System.err.println("Kind  unknown!");
+		}
+		List<org.occiware.clouddesigner.occi.Mixin> targetMixins = target.getMixins();
+		for(Mixin mixin : source.getMixins()) {
+			org.occiware.clouddesigner.occi.Mixin targetMixin = searchMixin(configuration, mixin);
+			if(targetMixin != null) {
+				targetMixins.add(targetMixin);
+			} else {
+				System.err.println("Mixin unknown!");
+			}
+		}
+		// Create all target entity's attributes.
+		List<org.occiware.clouddesigner.occi.AttributeState> targetAttributes = target.getAttributes();
+		for(AttributeState att: source.getAttributes()) {
+			String attributeName = att.getName();
+			if(!attributesToOmit.contains(attributeName)) {
+				org.occiware.clouddesigner.occi.AttributeState targetAttribute = org.occiware.clouddesigner.occi.OCCIFactory.eINSTANCE.createAttributeState();
+				targetAttributes.add(targetAttribute);
+				targetAttribute.setName(att.getName());
+				targetAttribute.setValue(att.getValue());
+			}
+		}
+	}
+
+	private static org.occiware.clouddesigner.occi.Kind searchKind(org.occiware.clouddesigner.occi.Configuration configuration, Kind kind)
+	{
+		org.occiware.clouddesigner.occi.Extension extension = searchExtension(configuration, kind.getScheme().toString());
+		String term = kind.getTerm();
+		for(org.occiware.clouddesigner.occi.Kind k : extension.getKinds()) {
+			if(term.equals(k.getTerm())) {
+				return k;
+			}
+		}
+		return null;
+	}
+
+	private static org.occiware.clouddesigner.occi.Mixin searchMixin(org.occiware.clouddesigner.occi.Configuration configuration, Mixin mixin)
+	{
+		String mixinSchemeWithoutSharp = schemeWithoutSharp(mixin.getScheme().toString());
+		org.occiware.clouddesigner.occi.Extension extension = null;
+		for(org.occiware.clouddesigner.occi.Extension ext : configuration.getUse()) {
+			if(mixinSchemeWithoutSharp.startsWith(schemeWithoutSharp(ext.getScheme()))) {
+				extension = ext;
+				break;
+			}
+		}
+		if(extension == null) {
+			extension = searchExtension(configuration, mixin.getScheme().toString());
+		}
+
+		String term = mixin.getTerm();
+		for(org.occiware.clouddesigner.occi.Mixin m : extension.getMixins()) {
+			if(term.equals(m.getTerm())) {
+				return m;
+			}
+		}
+		org.occiware.clouddesigner.occi.Mixin result = org.occiware.clouddesigner.occi.OCCIFactory.eINSTANCE.createMixin();
+		result.setScheme(mixin.getScheme().toString());
+		result.setTerm(mixin.getTerm());
+		extension.getMixins().add(result);
+		return result;
+	}
+
+	private static org.occiware.clouddesigner.occi.Extension searchExtension(org.occiware.clouddesigner.occi.Configuration configuration, String scheme)
+	{
+		for(org.occiware.clouddesigner.occi.Extension extension : configuration.getUse()) {
+			if(scheme.equals(extension.getScheme())) {
+				return extension;
+			}
+		}
+		org.occiware.clouddesigner.occi.Extension extension = null;
+		String extensionURI = org.occiware.clouddesigner.occi.OCCIRegistry.getInstance().getExtensionURI(scheme);
+		if(extensionURI != null) {
+			// Load the OCCI extension.
+			URI uri = URI.createURI(extensionURI);
+			org.eclipse.emf.ecore.resource.Resource resource = null;
+			Session session = SessionManager.INSTANCE.getSession(configuration);
+			if(session != null) {
+				session.addSemanticResource(uri, new NullProgressMonitor());
+				resource = session.getTransactionalEditingDomain().getResourceSet().getResource(uri, true);
+			} else {
+				resource = configuration.eResource();
+				if(resource != null) {
+					resource = resource.getResourceSet().getResource(uri, true);
+				} else {
+					resource = new OCCIResourceSet().getResource(uri, true);
+				}
+			}
+			extension = (org.occiware.clouddesigner.occi.Extension)resource.getContents().get(0);
+		} else {
+			extension = org.occiware.clouddesigner.occi.OCCIFactory.eINSTANCE.createExtension();
+			extension.setName(scheme.substring(scheme.lastIndexOf("/") + 1, scheme.length()-2));
+			extension.setScheme(scheme);
+			if(configuration.eResource() != null) {
+				configuration.eResource().getContents().add(extension);
+			}
+		}
+		configuration.getUse().add(extension);
+		return extension;
+	}
+
+	private static String schemeWithoutSharp(String scheme) {
+		return scheme.substring(0, scheme.length()-2);
 	}
 
 }
