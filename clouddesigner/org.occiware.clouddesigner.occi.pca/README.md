@@ -1,15 +1,13 @@
 # ProActive Cloud Automation OCCI Extension
 
-This project contains the OCCI extension for ProActive Cloud Automation.
+This project contains the OCCI extension for Procci which is the frontend from ProActive Cloud Automation.
 
-The following figure shows the content of this OCCI extension, i.e., both mixin `compute` and enumeration `SLA`:
+The following figure shows the content of this OCCI extension :
 
-![ProActive Cloud Automation OCCI Extension diagram](documentation/images/ProActive-Cloud-Automation-OCCI-Extension-diagram.png "ProActive Cloud Automation OCCI Extension diagram")
+![Procci OCCI Extension diagram](documentation/pictures/procci.jpg "Procci OCCI Extension diagram")
 
-The full Textile documentation of this OCCI extension is available [here](documentation/textile/pca.textile).
+The full Textile documentation of this OCCI extension is available [here](documentation/textile/procci.textile).
 
-The following figure shows an [OCCI configuration example](examples/infrastructure.occic) using this OCCI extension: 
+The following figure shows an [OCCI configuration example](examples/configuration_example.occic) using this OCCI extension: 
 
-![Configuration Example](documentation/images/infrastructure.jpg "Configuration Example")
-
-Let pay attention to the OCCI attributes in bold, i.e., `sla`, `occi.compute.password`, `occi.compute.lease.delete`, and `occi.compute.vendor.location`, of the two compute `vm1` and `vm2` instances.
+![Configuration Example](documentation/pictures/pca_configuration.jpg "Configuration Example")

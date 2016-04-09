@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ASCII"?>
+<occi:Configuration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:occi="http://schemas.ogf.org/occi">
+  <use href="platform:/plugin/org.occiware.clouddesigner.occi.pca/model/procci.occie#/"/>
+  <resources id="r2">
+    <kind href="platform:/plugin/org.occiware.clouddesigner.occi.pca/model/procci.occie#//@kinds[term='Storage']"/>
+    <attributes name="occi.storage.size" value="100"/>
+    <attributes name="occi.storage.state" value="active"/>
+    <links id="l2" target="//@resources.2">
+      <kind href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@kinds[term='link']"/>
+    </links>
+  </resources>
+  <resources id="r1">
+    <kind href="platform:/plugin/org.occiware.clouddesigner.occi.pca/model/procci.occie#//@kinds[term='Network']"/>
+    <attributes name="occi.network.state" value="active"/>
+    <links id="l0" target="//@resources.3">
+      <kind href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@kinds[term='link']"/>
+    </links>
+  </resources>
+  <resources id="r3">
+    <kind href="platform:/plugin/org.occiware.clouddesigner.occi.pca/model/procci.occie#//@kinds[term='Compute']"/>
+    <attributes name="occi.compute.architecture" value="X64"/>
+    <attributes name="occi.compute.cores" value="4"/>
+    <attributes name="occi.compute.memory" value="1"/>
+    <attributes name="occi.compute.share" value="0"/>
+    <attributes name="occi.compute.state" value="active"/>
+    <links id="l1" target="//@resources.1">
+      <kind href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@kinds[term='link']"/>
+    </links>
+  </resources>
+  <resources id="r4">
+    <kind href="platform:/plugin/org.occiware.clouddesigner.occi.pca/model/procci.occie#//@kinds[term='Compute']"/>
+    <attributes name="occi.compute.architecture" value="X64"/>
+    <attributes name="occi.compute.cores" value="1"/>
+    <attributes name="occi.compute.memory" value="10"/>
+    <attributes name="occi.compute.state" value="active"/>
+    <attributes name="occi.compute.share" value="0"/>
+  </resources>
+</occi:Configuration>
