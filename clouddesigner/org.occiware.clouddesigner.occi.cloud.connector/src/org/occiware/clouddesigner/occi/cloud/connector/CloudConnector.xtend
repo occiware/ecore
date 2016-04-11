@@ -43,6 +43,11 @@ import org.occiware.clouddesigner.occi.cloud.Machine_RackSpace
 import org.occiware.clouddesigner.occi.cloud.Machine_ProfitBricks
 import org.occiware.clouddesigner.occi.cloud.connector.cloudproviders.JcloudsOpenStack
 import org.occiware.clouddesigner.occi.cloud.connector.cloudproviders.JcloudsRackSpace
+import org.occiware.clouddesigner.occi.Resource
+import com.sun.jna.platform.win32.OaIdl.ARRAYDESC.ByReference
+import java.util.ArrayList
+import org.jclouds.compute.domain.NodeMetadata
+import java.util.List
 
 /**
  * This class overrides the generated EMF factory of the Docker package.
@@ -902,7 +907,79 @@ class ExecutableCloudModel {
 	}
 
 	def void importModel() {
-		// TODO
+		var instanceMH = new ModelHandler
+		var machines = machinesInConfiguration
+		for (machine : machines) {
+			if (machine instanceof Machine_OpenStack) {
+				var tmpMachine = machine as Machine_OpenStack
+				var List<NodeMetadata> listOfMachines = (new JcloudsOpenStack(tmpMachine)).listMachines
+				for (instance : listOfMachines) {
+					// Checks if machine exists in the configuration
+					val machineExistInModeler = containMachine(instance.name)
+					if (!machineExistInModeler) {
+						var machineOpenStak = instanceMH.getModel(instance, tmpMachine.provider)
+						this.configuration.resources.add(machineOpenStak)
+					}
+
+				}
+				LOGGER.info("Import inside the OpenStack environment is done ...")
+
+			}
+			if (machine instanceof Machine_RackSpace) {
+				var tmpMachine = machine as Machine_RackSpace
+				
+				LOGGER.info("Import inside the RackSpace environment is done  ...")
+			}
+			if (machine instanceof Machine_Amazon_EC2) {
+				var tmpMachine = machine as Machine_Amazon_EC2
+				LOGGER.info("Import inside the Aamzon EC2 environment is done  ...")
+			}
+			if (machine instanceof Machine_CloudSigma) {
+				var tmpMachine = machine as Machine_CloudSigma
+				LOGGER.info("Import inside the CloudSigma environment is done  ...")
+			}
+			if (machine instanceof Machine_GCE) {
+				var tmpMachine = machine as Machine_GCE
+				LOGGER.info("Import inside the Google CE environment is done  ...")
+			}
+			if (machine instanceof Machine_Gogrid) {
+				var tmpMachine = machine as Machine_Gogrid
+				LOGGER.info("Import inside the Gogrid environment is done  ...")
+			}
+			if (machine instanceof Machine_Hp_Helion) {
+				var tmpMachine = machine as Machine_Hp_Helion
+				LOGGER.info("Import inside the HP Helion environment is done  ...")
+			}
+			if (machine instanceof Machine_ProfitBricks) {
+				var tmpMachine = machine as Machine_ProfitBricks
+				LOGGER.info("Import in ProfiBricks environment is done  ...")
+			}
+			if (machine instanceof Machine_SoftLayer) {
+				var tmpMachine = machine as Machine_SoftLayer
+				LOGGER.info("Import inside the Softlayer environment is done  ...")
+			}
+			
+		}
 	}
 
+	def boolean containMachine(String machineName) {
+		for (Resource r : this.configuration.resources) {
+			if (r instanceof Machine) {
+				if ((r as Machine).name == machineName) {
+					return true
+				}
+			}
+		}
+		return false
+	}
+
+	def List<Machine> machinesInConfiguration() {
+		var List<Machine> machines = new ArrayList<Machine>()
+		for (Resource r : this.configuration.resources) {
+			if (r instanceof Machine) {
+				machines.add(r as Machine)
+			}
+		}
+		return machines
+	}
 }

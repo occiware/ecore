@@ -193,7 +193,7 @@ public class JcloudsOpenStack extends IaaSHandler implements Closeable {
     String _name_1 = this.machine.getName();
     metadata.put("Server Name", _name_1);
     metadata.put("Root Instance Name", "rootInstanceName");
-    metadata.put("Created by", "CloudConnector");
+    metadata.put("Created by", "OCCIWARE Cloud Connector");
     try {
       CreateServerOptions options = null;
       ServerCreated server = null;
@@ -351,7 +351,7 @@ public class JcloudsOpenStack extends IaaSHandler implements Closeable {
   }
   
   /**
-   * List all hardware available on OpenStack
+   * List all hardware/flavor available on OpenStack
    */
   @Override
   public List<Hardware> listHardware() {

@@ -42,6 +42,8 @@ import org.jclouds.openstack.nova.v2_0.extensions.VolumeApi
 import org.jclouds.openstack.nova.v2_0.domain.Volume
 import org.jclouds.openstack.nova.v2_0.options.CreateVolumeOptions
 import org.jclouds.openstack.nova.v2_0.domain.VolumeAttachment
+import org.jclouds.apis.Apis
+import org.jclouds.providers.Providers
 
 class JcloudsOpenStack extends IaaSHandler implements Closeable {
 
@@ -67,6 +69,11 @@ class JcloudsOpenStack extends IaaSHandler implements Closeable {
 	 */
 	def createContext() {
 		val Iterable<Module> modules = ImmutableSet.<Module>of()
+		//var provider = Apis.withId(this.machine.provider)
+		//var p = Providers.all()
+		//LOGGER.info(p.toString)
+		//var apis = Apis.all()
+		//LOGGER.info(apis.toString)
 		var ComputeServiceContext context = ContextBuilder.newBuilder(this.machine.provider).credentials(this.identity,
 			this.machine.password).endpoint(this.machine.endpoint).modules(modules).buildView(
 			typeof(ComputeServiceContext))
@@ -147,7 +154,7 @@ class JcloudsOpenStack extends IaaSHandler implements Closeable {
 		var Map<String, String> metadata = new HashMap(3)
 		metadata.put("Server Name", this.machine.name)
 		metadata.put("Root Instance Name", "rootInstanceName")
-		metadata.put("Created by", "CloudConnector")
+		metadata.put("Created by", "OCCIWARE Cloud Connector")
 		try {
 			var CreateServerOptions options = null
 			var ServerCreated server = null
@@ -257,7 +264,7 @@ class JcloudsOpenStack extends IaaSHandler implements Closeable {
 	}
 
 	/**
-	 * List all hardware available on OpenStack
+	 * List all hardware/flavor available on OpenStack
 	 */
 	override def List<Hardware> listHardware() {
 		var Set<? extends Hardware> flavors = this.context.computeService.listHardwareProfiles();

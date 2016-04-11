@@ -11,7 +11,12 @@
 package org.occiware.clouddesigner.occi.cloud.connector;
 
 import com.google.common.base.Objects;
+import java.util.ArrayList;
+import java.util.List;
+import org.eclipse.emf.common.util.EList;
+import org.jclouds.compute.domain.NodeMetadata;
 import org.occiware.clouddesigner.occi.Configuration;
+import org.occiware.clouddesigner.occi.Resource;
 import org.occiware.clouddesigner.occi.cloud.Machine;
 import org.occiware.clouddesigner.occi.cloud.Machine_Amazon_EC2;
 import org.occiware.clouddesigner.occi.cloud.Machine_CloudSigma;
@@ -31,6 +36,8 @@ import org.occiware.clouddesigner.occi.cloud.connector.ExecutableMachine_OpenSta
 import org.occiware.clouddesigner.occi.cloud.connector.ExecutableMachine_ProfitBricks;
 import org.occiware.clouddesigner.occi.cloud.connector.ExecutableMachine_RackSpace;
 import org.occiware.clouddesigner.occi.cloud.connector.ExecutableMachine_SoftLayer;
+import org.occiware.clouddesigner.occi.cloud.connector.ModelHandler;
+import org.occiware.clouddesigner.occi.cloud.connector.cloudproviders.JcloudsOpenStack;
 import org.occiware.clouddesigner.occi.infrastructure.RestartMethod;
 import org.occiware.clouddesigner.occi.infrastructure.StopMethod;
 import org.slf4j.Logger;
@@ -258,5 +265,86 @@ public class ExecutableCloudModel {
   }
   
   public void importModel() {
+    ModelHandler instanceMH = new ModelHandler();
+    List<Machine> machines = this.machinesInConfiguration();
+    for (final Machine machine : machines) {
+      {
+        if ((machine instanceof Machine_OpenStack)) {
+          Machine_OpenStack tmpMachine = ((Machine_OpenStack) machine);
+          JcloudsOpenStack _jcloudsOpenStack = new JcloudsOpenStack(tmpMachine);
+          List<NodeMetadata> listOfMachines = _jcloudsOpenStack.listMachines();
+          for (final NodeMetadata instance : listOfMachines) {
+            {
+              String _name = instance.getName();
+              final boolean machineExistInModeler = this.containMachine(_name);
+              if ((!machineExistInModeler)) {
+                String _provider = tmpMachine.getProvider();
+                Machine machineOpenStak = instanceMH.getModel(instance, _provider);
+                EList<Resource> _resources = this.configuration.getResources();
+                _resources.add(machineOpenStak);
+              }
+            }
+          }
+          ExecutableCloudModel.LOGGER.info("Import inside the OpenStack environment is done ...");
+        }
+        if ((machine instanceof Machine_RackSpace)) {
+          Machine_RackSpace tmpMachine_1 = ((Machine_RackSpace) machine);
+          ExecutableCloudModel.LOGGER.info("Import inside the RackSpace environment is done  ...");
+        }
+        if ((machine instanceof Machine_Amazon_EC2)) {
+          Machine_Amazon_EC2 tmpMachine_2 = ((Machine_Amazon_EC2) machine);
+          ExecutableCloudModel.LOGGER.info("Import inside the Aamzon EC2 environment is done  ...");
+        }
+        if ((machine instanceof Machine_CloudSigma)) {
+          Machine_CloudSigma tmpMachine_3 = ((Machine_CloudSigma) machine);
+          ExecutableCloudModel.LOGGER.info("Import inside the CloudSigma environment is done  ...");
+        }
+        if ((machine instanceof Machine_GCE)) {
+          Machine_GCE tmpMachine_4 = ((Machine_GCE) machine);
+          ExecutableCloudModel.LOGGER.info("Import inside the Google CE environment is done  ...");
+        }
+        if ((machine instanceof Machine_Gogrid)) {
+          Machine_Gogrid tmpMachine_5 = ((Machine_Gogrid) machine);
+          ExecutableCloudModel.LOGGER.info("Import inside the Gogrid environment is done  ...");
+        }
+        if ((machine instanceof Machine_Hp_Helion)) {
+          Machine_Hp_Helion tmpMachine_6 = ((Machine_Hp_Helion) machine);
+          ExecutableCloudModel.LOGGER.info("Import inside the HP Helion environment is done  ...");
+        }
+        if ((machine instanceof Machine_ProfitBricks)) {
+          Machine_ProfitBricks tmpMachine_7 = ((Machine_ProfitBricks) machine);
+          ExecutableCloudModel.LOGGER.info("Import in ProfiBricks environment is done  ...");
+        }
+        if ((machine instanceof Machine_SoftLayer)) {
+          Machine_SoftLayer tmpMachine_8 = ((Machine_SoftLayer) machine);
+          ExecutableCloudModel.LOGGER.info("Import inside the Softlayer environment is done  ...");
+        }
+      }
+    }
+  }
+  
+  public boolean containMachine(final String machineName) {
+    EList<Resource> _resources = this.configuration.getResources();
+    for (final Resource r : _resources) {
+      if ((r instanceof Machine)) {
+        String _name = ((Machine) r).getName();
+        boolean _equals = Objects.equal(_name, machineName);
+        if (_equals) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+  
+  public List<Machine> machinesInConfiguration() {
+    List<Machine> machines = new ArrayList<Machine>();
+    EList<Resource> _resources = this.configuration.getResources();
+    for (final Resource r : _resources) {
+      if ((r instanceof Machine)) {
+        machines.add(((Machine) r));
+      }
+    }
+    return machines;
   }
 }
