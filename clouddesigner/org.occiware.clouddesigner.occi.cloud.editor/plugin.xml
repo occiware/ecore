@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ Copyright (c) 2015-2016 Inria
+ All rights reserved. This program and the accompanying materials
+ are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+ 	
+ Contributors:
+ - Fawaz Paraiso <fawaz.paraiso@inria.fr>
+ - Philippe Merle <philippe.merle@inria.fr>
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated Cloud -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="org.occiware.clouddesigner.occi.cloud.presentation.CloudModelWizardID"
+            name="%_UI_CloudModelWizard_label"
+            class="org.occiware.clouddesigner.occi.cloud.presentation.CloudModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/CloudModelFile.gif">
+         <description>%_UI_CloudModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated Cloud -->
+      <editor
+            id="org.occiware.clouddesigner.occi.cloud.presentation.CloudEditorID"
+            name="%_UI_CloudEditor_label"
+            icon="icons/full/obj16/CloudModelFile.gif"
+            extensions="cloud"
+            class="org.occiware.clouddesigner.occi.cloud.presentation.CloudEditor"
+            contributorClass="org.occiware.clouddesigner.occi.cloud.presentation.CloudActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>
