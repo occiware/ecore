@@ -1,12 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.0"?>
+
+<!--
+Copyright (c) 2015-2016 Inria
+ 
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License v1.0
+which accompanies this distribution, and is available at
+http://www.eclipse.org/legal/epl-v10.html
+
+Contributors:
+- Fawaz Paraiso <fawaz.paraiso@inria.fr>
+- Philippe Merle <philippe.merle@inria.fr>
+-->
+
 <plugin>
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated Cloud -->
       <package
-            uri="http://occiware.org/cloud"
+            uri="http://occiware.org/cloud/ecore"
             class="org.occiware.clouddesigner.occi.cloud.CloudPackage"
             genModel="model/Cloud.genmodel"/>
    </extension>
-
+   <extension
+         point="org.occiware.clouddesigner.occi.occie">
+      <occie
+            file="model/Cloud.occie"
+            scheme="http://occiware.org/cloud#">
+      </occie>
+   </extension>
+   <extension point="org.eclipse.emf.ecore.uri_mapping" >
+      <mapping source="http://occiware.org/cloud" target="platform:/plugin/org.occiware.clouddesigner.occi.cloud/model/cloud.occie"/>
+   </extension>
 </plugin>
