@@ -30,7 +30,7 @@ h3. Extension to EPackage
 | OCCI | Ecore | notes |
 | name | name | format |
 | name | nsPrefix | format |
-| scheme | nsURI | format |
+| scheme | nsURI | scheme - '#' + '/ecore' |
 | import | | unused: imports between EPackages are implicit in EMF |
 | kinds | eClassifiers | loop call of "Kind to EClass" |
 | mixins | eClassifiers | loop call of "Mixin to EClass" |
