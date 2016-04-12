@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 
 import org.occiware.clouddesigner.occi.util.OCCIResourceSet;
+import org.occiware.clouddesigner.occi.util.Occi2Ecore;
 
 public class OCCIKindResolver
 {
@@ -77,7 +78,7 @@ public class OCCIKindResolver
 			 // If extension not found then
 			 if (extension == null) {
 				 // Search URI of the extension into the OCCI extension registry.
-				 String scheme = metamodelURI + '#';
+				 String scheme = Occi2Ecore.convertEcoreNamespace2OcciScheme(metamodelURI);
 				 String extensionURI = OCCIRegistry.getInstance().getExtensionURI(scheme);
 				 // If extension URI not found then
 				 if(extensionURI == null) {
