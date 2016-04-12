@@ -59,8 +59,6 @@ import org.occiware.clouddesigner.occi.infrastructure.Compute;
  *
  * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer()
  * @model annotation="OCCIE2Ecore title='Container Resource'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='ContainerNoCycleBetweenContainers ContainerLinkAliasUnique'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot ContainerNoCycleBetweenContainers='\n\t\t\tlinks->closure(links->select(oclIsKindOf(Link) or oclIsKindOf(Volumesfrom)).target.links->select(oclIsKindOf(Link) or oclIsKindOf(Volumesfrom))).target->excludes(self)' ContainerLinkAliasUnique='\n\t\t\tlinks->select(oclIsKindOf(Link))->isUnique(oclAsType(docker::Link).alias)'"
  * @generated
  */
 public interface Container extends Compute {

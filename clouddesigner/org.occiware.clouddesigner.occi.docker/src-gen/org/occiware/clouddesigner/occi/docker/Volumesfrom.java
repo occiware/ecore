@@ -22,8 +22,6 @@ import org.occiware.clouddesigner.occi.Link;
  *
  * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getVolumesfrom()
  * @model annotation="OCCIE2Ecore title='VolumsFrom'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='VolumesFromSourceAsContainer VolumesFromTargetAsContainer VolumesFromCanOnlyConnectColocalizedContainers'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot VolumesFromSourceAsContainer='source.oclIsKindOf(Container)' VolumesFromTargetAsContainer='target.oclIsKindOf(Container)' VolumesFromCanOnlyConnectColocalizedContainers='\n\t\t\tContains.allInstances()->select(contains | contains.target = self.source).source = \n\t\t\tContains.allInstances()->select(contains | contains.target = self.target).source'"
  * @generated
  */
 public interface Volumesfrom extends Link {

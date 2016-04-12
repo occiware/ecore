@@ -20,8 +20,6 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  *
  * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getLink()
  * @model annotation="OCCIE2Ecore title='Link between containers'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='LinkSourceAsContainer LinkTargetAsContainer LinkCanOnlyConnectColocalizedContainers'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot LinkSourceAsContainer='source.oclIsKindOf(Container)' LinkTargetAsContainer='target.oclIsKindOf(Container)' LinkCanOnlyConnectColocalizedContainers='\n\t\t\tContains.allInstances()->select(contains | contains.target = self.source).source = \n\t\t\tContains.allInstances()->select(contains | contains.target = self.target).source'"
  * @generated
  */
 public interface Link extends org.occiware.clouddesigner.occi.Link {

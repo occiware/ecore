@@ -226,15 +226,6 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		// Initialize created meta-data
 		theDockerPackage.initializePackageContents();
 
-		// Register package validator
-		EValidator.Registry.INSTANCE.put
-			(theDockerPackage, 
-			 new EValidator.Descriptor() {
-				 public EValidator getEValidator() {
-					 return DockerValidator.INSTANCE;
-				 }
-			 });
-
 		// Mark meta-data to indicate it can't be changed
 		theDockerPackage.freeze();
 
@@ -2011,79 +2002,8 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		createResource(eNS_URI);
 
 		// Create annotations
-		// http://www.eclipse.org/OCL/Import
-		createImportAnnotations();
-		// http://www.eclipse.org/emf/2002/Ecore
-		createEcoreAnnotations();
 		// OCCIE2Ecore
 		createOCCIE2EcoreAnnotations();
-		// http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot
-		createPivotAnnotations();
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://www.eclipse.org/OCL/Import</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createImportAnnotations() {
-		String source = "http://www.eclipse.org/OCL/Import";	
-		addAnnotation
-		  (this, 
-		   source, 
-		   new String[] {
-			 "OCCI", "platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#/",
-			 "infrastructure", "platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.ecore#/"
-		   });
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createEcoreAnnotations() {
-		String source = "http://www.eclipse.org/emf/2002/Ecore";	
-		addAnnotation
-		  (this, 
-		   source, 
-		   new String[] {
-			 "invocationDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
-			 "settingDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
-			 "validationDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"
-		   });	
-		addAnnotation
-		  (containerEClass, 
-		   source, 
-		   new String[] {
-			 "constraints", "ContainerNoCycleBetweenContainers ContainerLinkAliasUnique"
-		   });	
-		addAnnotation
-		  (linkEClass, 
-		   source, 
-		   new String[] {
-			 "constraints", "LinkSourceAsContainer LinkTargetAsContainer LinkCanOnlyConnectColocalizedContainers"
-		   });	
-		addAnnotation
-		  (volumesfromEClass, 
-		   source, 
-		   new String[] {
-			 "constraints", "VolumesFromSourceAsContainer VolumesFromTargetAsContainer VolumesFromCanOnlyConnectColocalizedContainers"
-		   });	
-		addAnnotation
-		  (machineEClass, 
-		   source, 
-		   new String[] {
-			 "constraints", "MachineNameUnique"
-		   });	
-		addAnnotation
-		  (machine_VirtualBoxEClass, 
-		   source, 
-		   new String[] {
-			 "constraints", "ContainersUsedTooMemory"
-		   });
 	}
 
 	/**
@@ -3023,51 +2943,6 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		   source, 
 		   new String[] {
 			 "description", " IP/hostname for vCenter (or ESXi if connecting directly to a single host)"
-		   });
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createPivotAnnotations() {
-		String source = "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot";	
-		addAnnotation
-		  (containerEClass, 
-		   source, 
-		   new String[] {
-			 "ContainerNoCycleBetweenContainers", "\n\t\t\tlinks->closure(links->select(oclIsKindOf(Link) or oclIsKindOf(Volumesfrom)).target.links->select(oclIsKindOf(Link) or oclIsKindOf(Volumesfrom))).target->excludes(self)",
-			 "ContainerLinkAliasUnique", "\n\t\t\tlinks->select(oclIsKindOf(Link))->isUnique(oclAsType(docker::Link).alias)"
-		   });	
-		addAnnotation
-		  (linkEClass, 
-		   source, 
-		   new String[] {
-			 "LinkSourceAsContainer", "source.oclIsKindOf(Container)",
-			 "LinkTargetAsContainer", "target.oclIsKindOf(Container)",
-			 "LinkCanOnlyConnectColocalizedContainers", "\n\t\t\tContains.allInstances()->select(contains | contains.target = self.source).source = \n\t\t\tContains.allInstances()->select(contains | contains.target = self.target).source"
-		   });	
-		addAnnotation
-		  (volumesfromEClass, 
-		   source, 
-		   new String[] {
-			 "VolumesFromSourceAsContainer", "source.oclIsKindOf(Container)",
-			 "VolumesFromTargetAsContainer", "target.oclIsKindOf(Container)",
-			 "VolumesFromCanOnlyConnectColocalizedContainers", "\n\t\t\tContains.allInstances()->select(contains | contains.target = self.source).source = \n\t\t\tContains.allInstances()->select(contains | contains.target = self.target).source"
-		   });	
-		addAnnotation
-		  (machineEClass, 
-		   source, 
-		   new String[] {
-			 "MachineNameUnique", "Machine.allInstances()->isUnique(name)"
-		   });	
-		addAnnotation
-		  (machine_VirtualBoxEClass, 
-		   source, 
-		   new String[] {
-			 "ContainersUsedTooMemory", "Tuple {\n\tmessage : String = \'Containers consume \' + (links->select(oclIsKindOf(docker::Contains)).target.oclAsType(Container).memory->sum()).toString() + \' when memory is equals to \' + memory.toString(),\n\tstatus : Boolean = \n\t\t\t(links->select(oclIsKindOf(docker::Contains)).target.oclAsType(Container).memory->sum()) <= memory\n}.status"
 		   });
 	}
 

@@ -21,8 +21,6 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  *
  * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VirtualBox()
  * @model annotation="OCCIE2Ecore title='Machine on VirtualBox'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='ContainersUsedTooMemory'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot ContainersUsedTooMemory='Tuple {\n\tmessage : String = \'Containers consume \' + (links->select(oclIsKindOf(docker::Contains)).target.oclAsType(Container).memory->sum()).toString() + \' when memory is equals to \' + memory.toString(),\n\tstatus : Boolean = \n\t\t\t(links->select(oclIsKindOf(docker::Contains)).target.oclAsType(Container).memory->sum()) <= memory\n}.status'"
  * @generated
  */
 public interface Machine_VirtualBox extends Machine {

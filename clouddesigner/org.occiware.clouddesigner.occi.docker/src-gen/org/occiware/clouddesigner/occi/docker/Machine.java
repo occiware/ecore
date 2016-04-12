@@ -22,8 +22,6 @@ import org.occiware.clouddesigner.occi.infrastructure.Compute;
  *
  * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine()
  * @model annotation="OCCIE2Ecore title='Machine Resource'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='MachineNameUnique'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot MachineNameUnique='Machine.allInstances()->isUnique(name)'"
  * @generated
  */
 public interface Machine extends Compute {
