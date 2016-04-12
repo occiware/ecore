@@ -98,7 +98,7 @@ public final class ConverterUtils {
 		uri = uri.replaceAll(".occie", ".ecore");
 		// special case for core
 		uri = uri.replaceAll("model/Core.ecore", "model/OCCI.ecore");
-		EPackage p = (EPackage) occiObject.eResource().getResourceSet().getResource(URI.createURI(ecoreFileUri), true).getContents().get(0);
+		EPackage p = (EPackage) occiObject.eResource().getResourceSet().getResource(URI.createURI(uri), true).getContents().get(0);
 		return p;
 	}
 	
