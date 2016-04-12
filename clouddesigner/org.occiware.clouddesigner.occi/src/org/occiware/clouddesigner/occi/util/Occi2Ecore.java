@@ -18,6 +18,11 @@ package org.occiware.clouddesigner.occi.util;
 public class Occi2Ecore
 {
 	/**
+	 * Suffix added to the name space of EPackage.
+	 */
+	static final String ECORE_SUFFIX = "/ecore";
+
+	/**
 	 * This class can not be instantiated.
 	 */
 	private Occi2Ecore()
@@ -26,10 +31,19 @@ public class Occi2Ecore
 
 	/**
 	 * Converts an OCCI scheme to an Ecore name space.
-	 * @param scheme the OCCI scheme.
+	 * @param occiScheme the OCCI scheme.
 	 * @return the Ecore name space.
 	 */
-	public static String convertOcciScheme2EcoreNamespace(final String scheme) {
-		return scheme.substring(0, scheme.length()-1) + "/ecore";
+	public static String convertOcciScheme2EcoreNamespace(final String occiScheme) {
+		return occiScheme.substring(0, occiScheme.length()-1) + ECORE_SUFFIX;
+	}
+
+	/**
+	 * Converts an Ecore name space to an OCCI scheme.
+	 * @param ecoreNamespace the Ecore name space.
+	 * @return the OCCI scheme.
+	 */
+	public static String convertEcoreNamespace2OcciScheme(final String ecoreNamespace) {
+		return ecoreNamespace.substring(0, ecoreNamespace.length()-ECORE_SUFFIX.length()) + '#';
 	}
 }
