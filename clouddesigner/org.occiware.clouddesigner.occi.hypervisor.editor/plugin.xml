@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ Copyright (c) 2015-2016 Inria
+ All rights reserved. This program and the accompanying materials
+ are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+ 	
+ Contributors:
+ - Fawaz Paraiso <fawaz.paraiso@inria.fr>
+ - Philippe Merle <philippe.merle@inria.fr>
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated Hypervisor -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="org.occiware.clouddesigner.occi.hypervisor.presentation.HypervisorModelWizardID"
+            name="%_UI_HypervisorModelWizard_label"
+            class="org.occiware.clouddesigner.occi.hypervisor.presentation.HypervisorModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/HypervisorModelFile.gif">
+         <description>%_UI_HypervisorModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated Hypervisor -->
+      <editor
+            id="org.occiware.clouddesigner.occi.hypervisor.presentation.HypervisorEditorID"
+            name="%_UI_HypervisorEditor_label"
+            icon="icons/full/obj16/HypervisorModelFile.gif"
+            extensions="hypervisor"
+            class="org.occiware.clouddesigner.occi.hypervisor.presentation.HypervisorEditor"
+            contributorClass="org.occiware.clouddesigner.occi.hypervisor.presentation.HypervisorActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>
