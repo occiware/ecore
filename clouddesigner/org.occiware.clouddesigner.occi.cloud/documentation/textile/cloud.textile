@@ -1,0 +1,243 @@
+Generated at Tue Apr 12 17:31:06 CEST 2016 from platform:/resource/org.occiware.clouddesigner.occi.cloud/model/Cloud.occie by org.occiware.clouddesigner.occi.gen.doc
+
+h1. OCCI Extension: cloud
+
+| *Name* | cloud |
+| *Scheme* | http://occiware.org/cloud# |
+
+h1. Imports
+
+| *Name* | *Scheme* |
+| <a href="core.textile">core</a> | http://schemas.ogf.org/occi/core# |
+| <a href="infrastructure.textile">infrastructure</a> | http://schemas.ogf.org/occi/infrastructure# |
+
+h1. Kinds
+
+h2. Kind machine
+
+| *Term* | machine |
+| *Scheme* | http://occiware.org/cloud# |
+| *Title* | Machine Resource |
+| *Parent* | <a href="infrastructure.textile#kind-compute">http://schemas.ogf.org/occi/infrastructure#compute</a> |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| name | <a href="core.textile#datatype-string">String</a> | true | false |  |  |
+
+h3. Actions
+
+
+
+h2. Kind machine_CloudSigma
+
+| *Term* | machine_CloudSigma |
+| *Scheme* | http://occiware.org/cloud# |
+| *Title* | Machine on CloudSigma |
+| *Parent* | <a href="cloud.textile#kind-machine">http://occiware.org/cloud#machine</a> |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| provider | <a href="core.textile#datatype-string">String</a> | true | false |  |  |
+| email | <a href="core.textile#datatype-string">String</a> | true | false |  |  |
+| password | <a href="core.textile#datatype-string">String</a> | true | false |  |  |
+
+h3. Actions
+
+
+
+h2. Kind machine_Amazon_EC2
+
+| *Term* | machine_Amazon_EC2 |
+| *Scheme* | http://occiware.org/cloud# |
+| *Title* | Machine on Amazon EC2 |
+| *Parent* | <a href="cloud.textile#kind-machine">http://occiware.org/cloud#machine</a> |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| provider | <a href="core.textile#datatype-string">String</a> | true | false |  |  |
+| access_key | <a href="core.textile#datatype-string">String</a> | true | false |  |  |
+| secret_key | <a href="core.textile#datatype-string">String</a> | true | false |  |  |
+| region | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+| image | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+| security_group | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+| key_pair | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+
+h3. Actions
+
+
+
+h2. Kind machine_Gogrid
+
+| *Term* | machine_Gogrid |
+| *Scheme* | http://occiware.org/cloud# |
+| *Title* | Machine on Gogrid |
+| *Parent* | <a href="cloud.textile#kind-machine">http://occiware.org/cloud#machine</a> |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| provider | <a href="core.textile#datatype-string">String</a> | true | false |  |  |
+| key | <a href="core.textile#datatype-string">String</a> | true | false |  |  |
+| shared_secret | <a href="core.textile#datatype-string">String</a> | true | false |  |  |
+| image_id | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+
+h3. Actions
+
+
+
+h2. Kind machine_Hp_Helion
+
+| *Term* | machine_Hp_Helion |
+| *Scheme* | http://occiware.org/cloud# |
+| *Title* | Machine on HP Helion |
+| *Parent* | <a href="cloud.textile#kind-machine">http://occiware.org/cloud#machine</a> |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| provider | <a href="core.textile#datatype-string">String</a> | true | false |  |  |
+| tenant | <a href="core.textile#datatype-string">String</a> | true | false |  |  |
+| access_key | <a href="core.textile#datatype-string">String</a> | true | false |  |  |
+| secret_key | <a href="core.textile#datatype-string">String</a> | true | false |  |  |
+| image | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+| zone | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+| flavor_id | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+| key_pair | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+| security_group | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+| floating_ip | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+
+h3. Actions
+
+
+
+h2. Kind machine_GCE
+
+| *Term* | machine_GCE |
+| *Scheme* | http://occiware.org/cloud# |
+| *Title* | MAchine on Goolge Compute ENgine |
+| *Parent* | <a href="cloud.textile#kind-machine">http://occiware.org/cloud#machine</a> |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| zone | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+| region | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+| machine_type | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+| machine_url | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+| firewall_tag | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+| startup_script | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+| json_file | <a href="core.textile#datatype-string">String</a> | true | false |  |  |
+| provider | <a href="core.textile#datatype-string">String</a> | true | false |  |  |
+
+h3. Actions
+
+
+
+h2. Kind machine_RackSpace
+
+| *Term* | machine_RackSpace |
+| *Scheme* | http://occiware.org/cloud# |
+| *Title* | Machine on RackSpace |
+| *Parent* | <a href="cloud.textile#kind-machine">http://occiware.org/cloud#machine</a> |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| provider | <a href="core.textile#datatype-string">String</a> | true | false |  |  |
+| username | <a href="core.textile#datatype-string">String</a> | true | false |  |  |
+| api_key | <a href="core.textile#datatype-string">String</a> | true | false |  |  |
+| region | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+| image | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+
+h3. Actions
+
+
+
+h2. Kind machine_ProfitBricks
+
+| *Term* | machine_ProfitBricks |
+| *Scheme* | http://occiware.org/cloud# |
+| *Title* | Machine on ProfitBricks |
+| *Parent* | <a href="cloud.textile#kind-machine">http://occiware.org/cloud#machine</a> |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| provider | <a href="core.textile#datatype-string">String</a> | true | false |  |  |
+| username | <a href="core.textile#datatype-string">String</a> | true | false |  |  |
+| api_key | <a href="core.textile#datatype-string">String</a> | true | false |  |  |
+| email | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+| password | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+| location | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+
+h3. Actions
+
+
+
+h2. Kind machine_OpenStack
+
+| *Term* | machine_OpenStack |
+| *Scheme* | http://occiware.org/cloud# |
+| *Title* | Machine on OpenStack |
+| *Parent* | <a href="cloud.textile#kind-machine">http://occiware.org/cloud#machine</a> |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| provider | <a href="core.textile#datatype-string">String</a> | true | false |  |  |
+| tenant | <a href="core.textile#datatype-string">String</a> | true | false |  |  |
+| username | <a href="core.textile#datatype-string">String</a> | true | false |  |  |
+| password | <a href="core.textile#datatype-string">String</a> | true | false |  |  |
+| endpoint | <a href="core.textile#datatype-string">String</a> | true | false |  |  |
+| image_id | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+| flavor_name | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+| flavor_id | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+| security_group | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+| network_name | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+| network_id | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+| floating_ip_pool | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+| image_name | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+| keypair | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+| region | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+
+h3. Actions
+
+
+
+h2. Kind machine_SoftLayer
+
+| *Term* | machine_SoftLayer |
+| *Scheme* | http://occiware.org/cloud# |
+| *Title* | Machine on SoftLayer |
+| *Parent* | <a href="cloud.textile#kind-machine">http://occiware.org/cloud#machine</a> |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| provider | <a href="core.textile#datatype-string">String</a> | true | false |  |  |
+| username | <a href="core.textile#datatype-string">String</a> | true | false |  |  |
+| api_key | <a href="core.textile#datatype-string">String</a> | true | false |  |  |
+| location_id | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+| image_id | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+| domain_name | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+| disk_type | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+| tenant | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+| endpoint | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+
+h3. Actions
+
+
+
+
+
+h1. Mixins
+
+
+
+h1. Types
+
+
+
