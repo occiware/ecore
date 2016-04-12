@@ -24,4 +24,22 @@ Contributors:
             genModel="model/Infrastructure.genmodel"/>
    </extension>
 
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <parser
+            type="infrastructure"
+            class="org.occiware.clouddesigner.occi.util.OCCIResourceFactoryImpl"/>
+   </extension>
+   
+   <extension
+         point="org.occiware.clouddesigner.occi.occie">
+      <occie
+            file="model/Infrastructure.occie"
+            scheme="http://schemas.ogf.org/occi/infrastructure#">
+      </occie>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.uri_mapping" >
+      <mapping source="hhttp://schemas.ogf.org/occi/infrastructure" target="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie"/>
+   </extension>
+
 </plugin>
