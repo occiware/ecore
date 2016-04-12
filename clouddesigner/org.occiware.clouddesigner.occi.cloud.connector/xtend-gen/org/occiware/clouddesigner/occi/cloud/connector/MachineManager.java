@@ -105,7 +105,7 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
     if (_equals) {
       if ((this.compute instanceof Machine_OpenStack)) {
         JcloudsOpenStack provider = new JcloudsOpenStack();
-        String _id = ((Machine)this.compute).getId();
+        String _id = this.compute.getId();
         provider.stopMachine(_id);
       } else {
         if ((this.compute instanceof Machine_Amazon_EC2)) {
