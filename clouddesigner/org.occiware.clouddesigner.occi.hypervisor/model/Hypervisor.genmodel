@@ -1,9 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="ASCII"?>
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.occiware.clouddesigner.occi.hypervisor/src-gen"
-    editDirectory="/org.occiware.clouddesigner.occi.hypervisor.edit/src-gen" modelPluginID="org.occiware.clouddesigner.occi.hypervisor"
-    modelName="Hypervisor" importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0"
-    copyrightFields="false" editorPluginID="org.occiware.clouddesigner.occi.hypervisor.edit"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2015-2016 Inria&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html&#xA;&#x9;&#xA;Contributors:&#xA;- Fawaz Paraiso &lt;fawaz.paraiso@inria.fr>&#xA;- Philippe Merle &lt;philippe.merle@inria.fr>"
+    modelDirectory="/org.occiware.clouddesigner.occi.hypervisor/src-gen" editDirectory="/org.occiware.clouddesigner.occi.hypervisor.edit/src-gen"
+    editorDirectory="/org.occiware.clouddesigner.occi.hypervisor.editor/src-gen" modelPluginID="org.occiware.clouddesigner.occi.hypervisor"
+    modelName="Hypervisor" testsDirectory="/org.occiware.clouddesigner.occi.hypervisor.tests/src"
+    complianceLevel="7.0" copyrightFields="false" editPluginID="org.occiware.clouddesigner.occi.hypervisor.edit"
+    editorPluginID="org.occiware.clouddesigner.occi.hypervisor.editor" testsPluginID="org.occiware.clouddesigner.occi.hypervisor.tests"
     usedGenPackages="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.genmodel#//infrastructure platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.genmodel#//occi">
   <foreignModel>Hypervisor.ecore</foreignModel>
   <genPackages prefix="Hypervisor" basePackage="org.occiware.clouddesigner.occi" disposableProviderFactory="true"
