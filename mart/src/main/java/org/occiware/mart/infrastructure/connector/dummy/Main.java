@@ -30,6 +30,7 @@ import org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage;
 import org.occiware.clouddesigner.occi.infrastructure.Network;
 import org.occiware.clouddesigner.occi.infrastructure.Storage;
 import org.occiware.clouddesigner.occi.OCCIFactory;
+import org.occiware.clouddesigner.occi.util.Occi2Ecore;
 
 public class Main
      extends org.occiware.mart.Main
@@ -88,7 +89,7 @@ public class Main
         // ... via an extension scheme ...
 //		Extension infrastructure = loadExtension("http://schemas.ogf.org/occi/infrastructure#");
 		// ... or an extension file name.
-		Extension infrastructure = loadExtension("model/infrastructure.occie");
+		Extension infrastructure = loadExtension(getFromClasspath("/model/Infrastructure.occie"));
 
 		configuration.getUse().add(infrastructure);
 
@@ -157,11 +158,7 @@ public class Main
 		Entity createdEntity = null;
 
 		// Get the name space of the Ecore package for this kind.
-		String epackageNS = occischeme2emfns(kind.getScheme());
-		// TODO: change the NS of OCCI.ecore!
-		if(epackageNS.equals("http://schemas.ogf.org/occi/core")) {
-			epackageNS = "http://schemas.ogf.org/occi";
-		}
+		String epackageNS = Occi2Ecore.convertOcciScheme2EcoreNamespace(kind.getScheme());
 		// Get the Ecore package associated to the kind.
 		EPackage epackage = EPackage.Registry.INSTANCE.getEPackage(epackageNS);
 		if(epackage == null) {
@@ -192,16 +189,6 @@ public class Main
 		System.err.println("DEBUG: created entity=" + createdEntity);
 		// Return the new entity.
 		return createdEntity;
-	}
-
-	/**
-	 * Converts an OCCI scheme to an EMF name space.
-	 * @param scheme the OCCI scheme.
-	 * @return the EMF name space.
-	 * TODO: More this method into the org.occiware.clouddesigner.occi module.
-	 */
-	private static String occischeme2emfns(String scheme) {
-		return scheme.substring(0, scheme.length()-1);
 	}
 
 	/**
