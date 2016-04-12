@@ -3,6 +3,10 @@
   <use href="http://occiware.org/docker#/"/>
   <resources xsi:type="docker:Machine_VirtualBox" id="machine-1" memory="2048.0" name="demo" disk_size="80000">
     <kind href="http://occiware.org/docker#//@kinds[term='machine_VirtualBox']"/>
+    <attributes name="occi.core.id" value="machine-1"/>
+    <attributes name="occi.compute.memory" value="2048.0"/>
+    <attributes name="name" value="demo"/>
+    <attributes name="disk_size" value="80000"/>
     <links xsi:type="docker:Contains" id="contains-1.1" target="//@resources.1">
       <kind href="http://occiware.org/docker#//@kinds[term='contains']"/>
     </links>
@@ -12,11 +16,19 @@
   </resources>
   <resources xsi:type="docker:Container" id="container-1" name="web" image="training/webapp" command="python app.py" publish_all="true">
     <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <attributes name="occi.core.id" value="container-1"/>
+    <attributes name="name" value="web"/>
+    <attributes name="image" value="training/webapp"/>
+    <attributes name="command" value="python app.py"/>
+    <attributes name="publish_all" value="true"/>
     <links xsi:type="docker:Link" id="link-1.1" target="//@resources.2" alias="db">
       <kind href="http://occiware.org/docker#//@kinds[term='link']"/>
     </links>
   </resources>
   <resources xsi:type="docker:Container" id="container-2" name="db" image="training/postgres">
     <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <attributes name="occi.core.id" value="container-2"/>
+    <attributes name="name" value="db"/>
+    <attributes name="image" value="training/postgres"/>
   </resources>
 </occi:Configuration>
