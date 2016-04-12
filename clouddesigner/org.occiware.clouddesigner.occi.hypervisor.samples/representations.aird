@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:hypervisor="http://occiware.org/hypervisor" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:occi="http://schemas.ogf.org/occi" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_Nq-eICGZEeWCAqrkIA96EQ" selectedViews="_MJ_NQCSeEeWTs4j2Au1-Bw" version="10.0.0.201505222000">
-  <semanticResources>platform:/resource/org.occiware.clouddesigner.occi.hypervisor.design/description/hypervisor.odesign</semanticResources>
-  <semanticResources>environment:/viewpoint</semanticResources>
-  <semanticResources>platform:/resource/org.occiware.clouddesigner.occi.hypervisor/model/Hypervisor.ecore</semanticResources>
-  <semanticResources>platform:/resource/org.occiware.clouddesigner.occi/model/OCCI.ecore</semanticResources>
-  <semanticResources>platform:/resource/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.ecore</semanticResources>
-  <semanticResources>http://www.eclipse.org/emf/2002/Ecore</semanticResources>
-  <semanticResources>first-hypervisor-configuration.xmi</semanticResources>
-  <semanticResources>platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore</semanticResources>
-  <semanticResources>platform:/plugin/org.occiware.clouddesigner.occi.hypervisor/model/Hypervisor.occie</semanticResources>
-  <semanticResources>platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie</semanticResources>
-  <semanticResources>platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie</semanticResources>
-  <semanticResources>platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore</semanticResources>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:hypervisor="http://occiware.org/hypervisor/ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_Nq-eICGZEeWCAqrkIA96EQ" selectedViews="_MJ_NQCSeEeWTs4j2Au1-Bw" version="10.1.0.201509162000">
+  <semanticResources>first-hypervisor-configuration.hypervisor</semanticResources>
   <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_PoxAgCGZEeWCAqrkIA96EQ">
     <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_l5vY8CPuEeWc25KQFRchgw" name="new Hypervisor configuration">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_l5wnECPuEeWc25KQFRchgw" source="DANNOTATION_CUSTOMIZATION_KEY">
@@ -25,7 +14,7 @@
       <description xmi:type="description_1:DiagramDescription" href="platform:/resource/org.occiware.clouddesigner.occi.hypervisor.design/description/hypervisor.odesign#//@ownedViewpoints[name='Hypervisor']/@ownedRepresentations[name='Hypervisor%20configuration']"/>
       <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_l5wnEiPuEeWc25KQFRchgw"/>
       <activatedLayers xmi:type="description_1:Layer" href="platform:/resource/org.occiware.clouddesigner.occi.hypervisor.design/description/hypervisor.odesign#//@ownedViewpoints[name='Hypervisor']/@ownedRepresentations[name='Hypervisor%20configuration']/@defaultLayer"/>
-      <target xmi:type="occi:Configuration" href="first-hypervisor-configuration.xmi#/"/>
+      <target xmi:type="occi:Configuration" href="first-hypervisor-configuration.hypervisor#/"/>
     </ownedRepresentations>
     <viewpoint xmi:type="description:Viewpoint" href="platform:/resource/org.occiware.clouddesigner.occi.hypervisor.design/description/hypervisor.odesign#//@ownedViewpoints[name='Hypervisor']"/>
   </ownedViews>
@@ -104,26 +93,22 @@
         </data>
       </ownedAnnotationEntries>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_lRTtUCYaEeWdabuLPjptoA" name="myboxi">
-        <target xmi:type="hypervisor:Machine_VirtualBox" href="first-hypervisor-configuration.xmi#//@resources.1"/>
-        <semanticElements xmi:type="hypervisor:Machine_VirtualBox" href="first-hypervisor-configuration.xmi#//@resources.1"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_hoK30CvKEeWKAK_4JgR-KQ" foregroundColor="246,139,139">
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_hoK30CvKEeWKAK_4JgR-KQ" borderSize="1" borderSizeComputationExpression="1" foregroundColor="246,139,139">
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.hypervisor.design/description/hypervisor.odesign#//@ownedViewpoints[name='Hypervisor']/@ownedRepresentations[name='Hypervisor%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@conditionnalStyles.2/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.hypervisor.design/description/hypervisor.odesign#//@ownedViewpoints[name='Hypervisor']/@ownedRepresentations[name='Hypervisor%20configuration']/@defaultLayer/@containerMappings[name='Machine']"/>
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_nwE10CYaEeWdabuLPjptoA" name="Disk" width="5" height="5" resizeKind="NSEW">
-          <target xmi:type="hypervisor:Disk" href="first-hypervisor-configuration.xmi#//@resources.2"/>
-          <semanticElements xmi:type="hypervisor:Disk" href="first-hypervisor-configuration.xmi#//@resources.2"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_nwGD8CYaEeWdabuLPjptoA" workspacePath="/org.occiware.clouddesigner.occi.hypervisor.design/images/mcol-closed-box.svg">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.hypervisor.design/description/hypervisor.odesign#//@ownedViewpoints[name='Hypervisor']/@ownedRepresentations[name='Hypervisor%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Disk']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.hypervisor.design/description/hypervisor.odesign#//@ownedViewpoints[name='Hypervisor']/@ownedRepresentations[name='Hypervisor%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Disk']"/>
+          <target xmi:type="hypervisor:Disk" href="first-hypervisor-configuration.hypervisor#//@resources.2"/>
+          <semanticElements xmi:type="hypervisor:Disk" href="first-hypervisor-configuration.hypervisor#//@resources.2"/>
         </ownedDiagramElements>
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_hYGxsCYbEeWdabuLPjptoA" name="parallel" width="-1" height="-1" resizeKind="NSEW">
-          <target xmi:type="hypervisor:Parallel" href="first-hypervisor-configuration.xmi#//@resources.3"/>
-          <semanticElements xmi:type="hypervisor:Parallel" href="first-hypervisor-configuration.xmi#//@resources.3"/>
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -131,10 +116,10 @@
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.hypervisor.design/description/hypervisor.odesign#//@ownedViewpoints[name='Hypervisor']/@ownedRepresentations[name='Hypervisor%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Parallel']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.hypervisor.design/description/hypervisor.odesign#//@ownedViewpoints[name='Hypervisor']/@ownedRepresentations[name='Hypervisor%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Parallel']"/>
+          <target xmi:type="hypervisor:Parallel" href="first-hypervisor-configuration.hypervisor#//@resources.3"/>
+          <semanticElements xmi:type="hypervisor:Parallel" href="first-hypervisor-configuration.hypervisor#//@resources.3"/>
         </ownedDiagramElements>
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_mf3VsCYbEeWdabuLPjptoA" name="filesystem" width="-1" height="-1" resizeKind="NSEW">
-          <target xmi:type="hypervisor:Filesystem" href="first-hypervisor-configuration.xmi#//@resources.4"/>
-          <semanticElements xmi:type="hypervisor:Filesystem" href="first-hypervisor-configuration.xmi#//@resources.4"/>
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -142,10 +127,10 @@
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.hypervisor.design/description/hypervisor.odesign#//@ownedViewpoints[name='Hypervisor']/@ownedRepresentations[name='Hypervisor%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Filesystem']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.hypervisor.design/description/hypervisor.odesign#//@ownedViewpoints[name='Hypervisor']/@ownedRepresentations[name='Hypervisor%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Filesystem']"/>
+          <target xmi:type="hypervisor:Filesystem" href="first-hypervisor-configuration.hypervisor#//@resources.4"/>
+          <semanticElements xmi:type="hypervisor:Filesystem" href="first-hypervisor-configuration.hypervisor#//@resources.4"/>
         </ownedDiagramElements>
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_2zbDwCYbEeWdabuLPjptoA" name="serial" width="-1" height="-1" resizeKind="NSEW">
-          <target xmi:type="hypervisor:Serial" href="first-hypervisor-configuration.xmi#//@resources.5"/>
-          <semanticElements xmi:type="hypervisor:Serial" href="first-hypervisor-configuration.xmi#//@resources.5"/>
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -153,10 +138,10 @@
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.hypervisor.design/description/hypervisor.odesign#//@ownedViewpoints[name='Hypervisor']/@ownedRepresentations[name='Hypervisor%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Serial']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.hypervisor.design/description/hypervisor.odesign#//@ownedViewpoints[name='Hypervisor']/@ownedRepresentations[name='Hypervisor%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Serial']"/>
+          <target xmi:type="hypervisor:Serial" href="first-hypervisor-configuration.hypervisor#//@resources.5"/>
+          <semanticElements xmi:type="hypervisor:Serial" href="first-hypervisor-configuration.hypervisor#//@resources.5"/>
         </ownedDiagramElements>
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_vzJFoCYgEeWNxoiCGL4eUg" name="interface" width="5" height="5" resizeKind="NSEW">
-          <target xmi:type="hypervisor:Interface" href="first-hypervisor-configuration.xmi#//@resources.6"/>
-          <semanticElements xmi:type="hypervisor:Interface" href="first-hypervisor-configuration.xmi#//@resources.6"/>
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -164,12 +149,16 @@
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.hypervisor.design/description/hypervisor.odesign#//@ownedViewpoints[name='Hypervisor']/@ownedRepresentations[name='Hypervisor%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Interface']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.hypervisor.design/description/hypervisor.odesign#//@ownedViewpoints[name='Hypervisor']/@ownedRepresentations[name='Hypervisor%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Interface']"/>
+          <target xmi:type="hypervisor:Interface" href="first-hypervisor-configuration.hypervisor#//@resources.6"/>
+          <semanticElements xmi:type="hypervisor:Interface" href="first-hypervisor-configuration.hypervisor#//@resources.6"/>
         </ownedDiagramElements>
+        <target xmi:type="hypervisor:Machine_VirtualBox" href="first-hypervisor-configuration.hypervisor#//@resources.1"/>
+        <semanticElements xmi:type="hypervisor:Machine_VirtualBox" href="first-hypervisor-configuration.hypervisor#//@resources.1"/>
       </ownedDiagramElements>
       <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.hypervisor.design/description/hypervisor.odesign#//@ownedViewpoints[name='Hypervisor']/@ownedRepresentations[name='Hypervisor%20configuration']"/>
       <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_NZJIAySeEeWTs4j2Au1-Bw"/>
       <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.occiware.clouddesigner.occi.hypervisor.design/description/hypervisor.odesign#//@ownedViewpoints[name='Hypervisor']/@ownedRepresentations[name='Hypervisor%20configuration']/@defaultLayer"/>
-      <target xmi:type="occi:Configuration" href="first-hypervisor-configuration.xmi#/"/>
+      <target xmi:type="occi:Configuration" href="first-hypervisor-configuration.hypervisor#/"/>
     </ownedRepresentations>
     <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.occiware.clouddesigner.occi.hypervisor.design/description/hypervisor.odesign#//@ownedViewpoints[name='Hypervisor']"/>
   </ownedViews>
