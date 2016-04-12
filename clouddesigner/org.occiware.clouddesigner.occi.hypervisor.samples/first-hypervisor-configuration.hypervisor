@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<occi:Configuration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hypervisor="http://occiware.org/hypervisor/ecore" xmlns:occi="http://schemas.ogf.org/occi/core/ecore">
+  <use href="http://occiware.org/hypervisor#/"/>
+  <resources xsi:type="hypervisor:Serial"/>
+  <resources xsi:type="hypervisor:Machine_VirtualBox" cores="2" hostname="kalarik" memory="654321.0" name="myboxi" uuid="778cdbb4-25b7-421e-83c0-7c9975292ed8" current_memory="1024">
+    <links xsi:type="hypervisor:Contains" target="//@resources.2">
+      <kind href="http://occiware.org/hypervisor#//@kinds[term='contains']"/>
+    </links>
+    <links xsi:type="hypervisor:Contains" target="//@resources.3">
+      <kind href="http://occiware.org/hypervisor#//@kinds[term='contains']"/>
+    </links>
+    <links xsi:type="hypervisor:Contains" target="//@resources.4">
+      <kind href="http://occiware.org/hypervisor#//@kinds[term='contains']"/>
+    </links>
+    <links xsi:type="hypervisor:Contains" target="//@resources.5">
+      <kind href="http://occiware.org/hypervisor#//@kinds[term='contains']"/>
+    </links>
+    <links xsi:type="hypervisor:Contains" target="//@resources.6">
+      <kind href="http://occiware.org/hypervisor#//@kinds[term='contains']"/>
+    </links>
+  </resources>
+  <resources xsi:type="hypervisor:Disk" type="" device="cdrom" source="/Users/spirals/Downloads/ubuntu-14.04-server-i386.iso">
+    <kind href="http://occiware.org/hypervisor#//@kinds[term='disk']"/>
+  </resources>
+  <resources xsi:type="hypervisor:Parallel">
+    <kind href="http://occiware.org/hypervisor#//@kinds[term='parallel']"/>
+  </resources>
+  <resources xsi:type="hypervisor:Filesystem">
+    <kind href="http://occiware.org/hypervisor#//@kinds[term='filesystem']"/>
+  </resources>
+  <resources xsi:type="hypervisor:Serial">
+    <kind href="http://occiware.org/hypervisor#//@kinds[term='serial']"/>
+  </resources>
+  <resources xsi:type="hypervisor:Interface" label="en0" type="bridge" model="82540EM" mac_addresss="00:0c:29:76:78:50">
+    <kind href="http://occiware.org/hypervisor#//@kinds[term='interface']"/>
+  </resources>
+</occi:Configuration>
