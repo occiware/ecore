@@ -1,3 +1,14 @@
+/*******************************************************************************
+ * Copyright (c) 2015-2016 Obeo, Inria
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ * - William Piers <william.piers@obeo.fr>
+ * - Philippe Merle <philippe.merle@inria.fr>
+ *******************************************************************************/
 package org.occiware.clouddesigner.occi.design.wizard;
 
 import java.io.ByteArrayInputStream;
@@ -275,10 +286,19 @@ public class NewExtensionWizard extends BasicNewProjectResourceWizard {
 		manifest.setContents(new ByteArrayInputStream(manifestContent.getBytes()), true, false, monitor);
 
 		IFile pluginXML = PDEProject.getPluginXml(project);
-		String pluginContent = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" + "<?eclipse version=\"3.0\"?>\n"
-				+ "<plugin>\n" + "<extension point=\"org.occiware.clouddesigner.occi.occie\">\n"
-				+ "<occie file=\"model/" + extensionName + ".occie\" scheme=\"" + extensionScheme + "\">\n"
-				+ "</occie>\n" + "</extension>\n" + "</plugin>\n";
+		String pluginContent =
+				"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+				"<?eclipse version=\"3.0\"?>\n" +
+				"<plugin>\n" +
+				"  <extension point=\"org.occiware.clouddesigner.occi.occie\">\n" +
+				"    <occie file=\"model/" + extensionName + ".occie\" scheme=\"" + extensionScheme + "\">\n" +
+				"    </occie>\n" +
+				"  </extension>\n" +
+				"\n" +
+				"  <extension point=\"org.eclipse.emf.ecore.uri_mapping\">\n" +
+				"    <mapping source=\"" + extensionScheme.substring(0,extensionScheme.length()-1) + "\" target=\"platform:/plugin/" + project.getName() + "/model/" + extensionName + ".occie\"/>\n" +
+				"  </extension>\n" +
+				"</plugin>\n";
 		pluginXML.create(new ByteArrayInputStream(pluginContent.getBytes()), true, monitor);
 
 		IFile build = PDEProject.getBuildProperties(project);
