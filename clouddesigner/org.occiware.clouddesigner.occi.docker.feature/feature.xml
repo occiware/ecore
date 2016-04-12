@@ -219,6 +219,13 @@ litigation.
          unpack="false"/>
 
    <plugin
+         id="org.occiware.clouddesigner.occi.docker.editor"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
          id="org.occiware.clouddesigner.occi.docker.gen.conf"
          download-size="0"
          install-size="0"
@@ -234,6 +241,13 @@ litigation.
 
    <plugin
          id="org.occiware.clouddesigner.occi.docker.connector"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.occiware.clouddesigner.occi.docker.preference"
          download-size="0"
          install-size="0"
          version="0.0.0"
