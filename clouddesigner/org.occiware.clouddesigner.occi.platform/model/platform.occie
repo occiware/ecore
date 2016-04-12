@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="ASCII"?>
-<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:occi="http://schemas.ogf.org/occi" name="platform" scheme="http://schemas.ogf.org/occi/platform#">
-  <import href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#/"/>
+<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="platform" scheme="http://schemas.ogf.org/occi/platform#">
+  <import href="http://schemas.ogf.org/occi/core#/"/>
   <kinds term="application" scheme="http://schemas.ogf.org/occi/platform#" title="Application">
     <attributes name="occi.app.name" mutable="true" description="Name of the application.">
-      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
     <attributes name="occi.app.context" description="URL for contextualizing the app." type="//@types.0"/>
     <attributes name="occi.app.url" description="DNS entry." type="//@types.0"/>
     <attributes name="occi.app.state" description="State of the application." type="//@types.2"/>
     <attributes name="occi.app.state.message" description="Human-readable explanation of the current instance state.">
-      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <parent href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@kinds[term='resource']"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
     <actions term="start" scheme="http://schemas.ogf.org/occi/platform/application/action#" title="Start the application."/>
     <actions term="stop" scheme="http://schemas.ogf.org/occi/platform/application/action#" title="Stop the application."/>
   </kinds>
   <kinds term="component" scheme="http://schemas.ogf.org/occi/platform#" title="Component">
     <attributes name="occi.component.state" description="State of the component." type="//@types.2"/>
     <attributes name="occi.component.state.message" description="Human-readable explanation of the current instance state.">
-      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <parent href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@kinds[term='resource']"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
     <actions term="start" scheme="http://schemas.ogf.org/occi/platform/component/action#" title="Start the application."/>
     <actions term="stop" scheme="http://schemas.ogf.org/occi/platform/component/action#" title="Stop the application."/>
   </kinds>
   <kinds term="componentlink" scheme="http://schemas.ogf.org/occi/platform#" title="ComponentLink">
-    <parent href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@kinds[term='link']"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <mixins term="app_tpl" scheme="http://schemas.ogf.org/occi/platform#" title="Application Template" applies="//@kinds[term='application']"/>
   <mixins term="res_tpl" scheme="http://schemas.ogf.org/occi/platform#" title="Resource Template" applies="//@kinds[term='application'] //@kinds[term='component']"/>
   <mixins term="database" scheme="http://schemas.ogf.org/occi/platform#" title="Database Mixin" applies="//@kinds[term='component']">
     <attributes name="occi.database.version" description="Version of the database.">
-      <type href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@types.0"/>
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
   </mixins>
   <mixins term="databaselink" scheme="http://schemas.ogf.org/occi/platform#" title="Database Link" applies="//@kinds[term='componentlink']">

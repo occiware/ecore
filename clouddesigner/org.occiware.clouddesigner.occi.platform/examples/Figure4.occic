@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="ASCII"?>
-<occi:Configuration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:occi="http://schemas.ogf.org/occi">
-  <use href="../model/platform.occie#/"/>
+<occi:Configuration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:occi="http://schemas.ogf.org/occi/core/ecore">
+  <use href="http://schemas.ogf.org/occi/platform.occie#/"/>
   <use href="templates.occie#/"/>
   <resources id="myapp">
-    <kind href="../model/platform.occie#//@kinds[term='application']"/>
+    <kind href="http://schemas.ogf.org/occi/platform#//@kinds[term='application']"/>
     <mixins href="templates.occie#//@mixins[term='small']"/>
     <mixins href="templates.occie#//@mixins[term='python']"/>
     <attributes name="occi.app.name" value="myapp"/>
