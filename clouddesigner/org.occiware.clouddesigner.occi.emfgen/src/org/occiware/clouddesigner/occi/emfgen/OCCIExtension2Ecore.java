@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo, Inria
+ * Copyright (c) 2015-2016 Obeo, Inria
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,6 +30,7 @@ import org.occiware.clouddesigner.occi.Action;
 import org.occiware.clouddesigner.occi.Attribute;
 import org.occiware.clouddesigner.occi.Extension;
 import org.occiware.clouddesigner.occi.Kind;
+import org.occiware.clouddesigner.occi.util.Occi2Ecore;
 
 /**
  * Convert an OCCI Extension to Ecore.
@@ -111,7 +112,7 @@ public class OCCIExtension2Ecore {
 		// Set the name space prefix of the Ecore package.
 		ePackage.setNsPrefix(formattedName);
 		// Set the URI of the Ecore package.
-		ePackage.setNsURI(ConverterUtils.convertScheme2URI(extension.getScheme()));
+		ePackage.setNsURI(Occi2Ecore.convertOcciScheme2EcoreNamespace(extension.getScheme()));
 
 		// TODO fetch occi package
 		// but won't solve issue if user wants to use types from installed
