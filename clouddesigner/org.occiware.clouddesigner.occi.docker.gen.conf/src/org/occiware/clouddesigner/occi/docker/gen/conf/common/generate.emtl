@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:mtl="http://www.eclipse.org/acceleo/mtl/3.0" xmlns:ocl.ecore="http://www.eclipse.org/ocl/1.1.0/Ecore">
   <mtl:Module name="generate" nsURI="org::occiware::clouddesigner::occi::docker::gen::conf::common::generate" startHeaderPosition="29" endHeaderPosition="235">
-    <input>
-      <takesTypesFrom href="http://occiware.org/docker#/"/>
-    </input>
-    <input>
-      <takesTypesFrom href="http://schemas.ogf.org/occi/infrastructure#/"/>
-    </input>
+    <input/>
+    <input/>
     <input>
       <takesTypesFrom href="http://schemas.ogf.org/occi#/"/>
     </input>
@@ -108,24 +104,14 @@
         <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)"/>
       </eAnnotations>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="occi_Configuration_Class">
+    <eClassifiers xsi:type="ecore:EClass" name="OCCI_Configuration_Class">
       <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
         <references href="http://schemas.ogf.org/occi#//Configuration"/>
       </eAnnotations>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="docker_Container_Class">
+    <eClassifiers xsi:type="ecore:EClass" name="null_Class">
       <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
         <references href="http://occiware.org/docker#//Container"/>
-      </eAnnotations>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="docker_Machine_Class">
-      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
-        <references href="http://occiware.org/docker#//Machine"/>
-      </eAnnotations>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="docker_Machine_VirtualBox_Class">
-      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
-        <references href="http://occiware.org/docker#//Machine_VirtualBox"/>
       </eAnnotations>
     </eClassifiers>
   </ecore:EPackage>
