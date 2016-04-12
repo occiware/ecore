@@ -28,6 +28,13 @@
       <version>0.1.0-SNAPSHOT</version>
       <scope>compile</scope>
     </dependency>
+    <dependency>
+      <!-- OCCI Infrastructure Extension implementation. -->
+      <groupId>Clouddesigner</groupId>
+      <artifactId>org.occiware.clouddesigner.occi.infrastructure</artifactId>
+      <version>0.1.0-SNAPSHOT</version>
+      <scope>compile</scope>
+    </dependency>
     <!-- Requires Eclipse Modeling Framework. -->
      <dependency>
 	  <groupId>org.eclipse.emf</groupId>
