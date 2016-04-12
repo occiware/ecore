@@ -10,6 +10,8 @@
 		<!-- OCCI -->
 		<module>../org.occiware.clouddesigner.occi</module>
 		<module>../org.occiware.clouddesigner.occi.edit</module>
+		<module>../org.occiware.clouddesigner.occi.editor</module>
+		<module>../org.occiware.clouddesigner.occi.tests</module>
 		<module>../org.occiware.clouddesigner.occi.design</module>
 
 		<!-- OCCI generators -->
@@ -28,9 +30,14 @@
 		<!-- OCCI Infrastructure -->
 		<module>../org.occiware.clouddesigner.occi.infrastructure</module>
 		<module>../org.occiware.clouddesigner.occi.infrastructure.edit</module>
+		<module>../org.occiware.clouddesigner.occi.infrastructure.editor</module>
+		<module>../org.occiware.clouddesigner.occi.infrastructure.tests</module>
 
 		<!-- OCCI Platform -->
 		<module>../org.occiware.clouddesigner.occi.platform</module>
+		<module>../org.occiware.clouddesigner.occi.platform.edit</module>
+		<module>../org.occiware.clouddesigner.occi.platform.editor</module>
+		<module>../org.occiware.clouddesigner.occi.platform.tests</module>
 
 		<!-- ProActive Cloud Automation -->
 		<module>../org.occiware.clouddesigner.occi.pca</module>
@@ -38,18 +45,24 @@
 		<!-- Cloud -->
 		<module>../org.occiware.clouddesigner.occi.cloud</module>
 		<module>../org.occiware.clouddesigner.occi.cloud.edit</module>
+		<module>../org.occiware.clouddesigner.occi.cloud.editor</module>
+		<module>../org.occiware.clouddesigner.occi.cloud.tests</module>
 		<module>../org.occiware.clouddesigner.occi.cloud.connector</module>
 		<module>../org.occiware.clouddesigner.occi.cloud.design</module>
 
 		<!-- Hypervisor -->
 		<module>../org.occiware.clouddesigner.occi.hypervisor</module>
 		<module>../org.occiware.clouddesigner.occi.hypervisor.edit</module>
+		<module>../org.occiware.clouddesigner.occi.hypervisor.editor</module>
+		<module>../org.occiware.clouddesigner.occi.hypervisor.tests</module>
 		<module>../org.occiware.clouddesigner.occi.hypervisor.connector</module>
 		<module>../org.occiware.clouddesigner.occi.hypervisor.design</module>
 
 		<!-- Docker -->
 		<module>../org.occiware.clouddesigner.occi.docker</module>
 		<module>../org.occiware.clouddesigner.occi.docker.edit</module>
+		<module>../org.occiware.clouddesigner.occi.docker.editor</module>
+		<module>../org.occiware.clouddesigner.occi.docker.tests</module>
 		<module>../org.occiware.clouddesigner.occi.docker.connector</module>
 		<module>../org.occiware.clouddesigner.occi.docker.design</module>
 		<module>../org.occiware.clouddesigner.occi.docker.preference</module>
