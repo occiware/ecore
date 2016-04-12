@@ -39,7 +39,7 @@ Contributors:
    </extension>
 
    <extension point="org.eclipse.emf.ecore.uri_mapping" >
-      <mapping source="hhttp://schemas.ogf.org/occi/infrastructure" target="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie"/>
+      <mapping source="http://schemas.ogf.org/occi/infrastructure" target="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie"/>
    </extension>
 
 </plugin>
