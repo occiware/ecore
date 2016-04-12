@@ -290,7 +290,7 @@ public abstract class CategoryImpl extends MinimalEObjectImpl.Container implemen
 		             * name
 		             */
 		            if (_1 == null) {
-		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Attribute::name\'");
+		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Attribute::name\'");
 		            }
 		            final /*@NonNull*/ /*@Thrown*/ String name = _1.getName();
 		            //

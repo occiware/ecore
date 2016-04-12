@@ -241,7 +241,7 @@ public class LinkImpl extends EntityImpl implements Link {
 		            public /*@Nullable*/ Object evaluate(final /*@NonNull*/ Evaluator evaluator, final /*@NonNull*/ TypeId typeId, final /*@Nullable*/ Object oclAsSet, final /*@Nullable*/ /*@NonInvalid*/ Object _1) {
 		                final /*@Nullable*/ /*@NonInvalid*/ Kind symbol_0 = (Kind)_1;
 		                if (symbol_0 == null) {
-		                    throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Kind::parent\'");
+		                    throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Kind::parent\'");
 		                }
 		                final /*@Nullable*/ /*@Thrown*/ Kind parent = symbol_0.getParent();
 		                return parent;
@@ -274,7 +274,7 @@ public class LinkImpl extends EntityImpl implements Link {
 		                /*@NonNull*/ /*@Caught*/ Object CAUGHT_eq;
 		                try {
 		                    if (k == null) {
-		                        throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Category::term\'");
+		                        throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Category::term\'");
 		                    }
 		                    final /*@NonNull*/ /*@Thrown*/ String term = k.getTerm();
 		                    final /*@Thrown*/ boolean eq = term.equals(OCCITables.STR_link);
@@ -286,7 +286,7 @@ public class LinkImpl extends EntityImpl implements Link {
 		                /*@NonNull*/ /*@Caught*/ Object CAUGHT_eq_0;
 		                try {
 		                    if (k == null) {
-		                        throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Category::scheme\'");
+		                        throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Category::scheme\'");
 		                    }
 		                    final /*@NonNull*/ /*@Thrown*/ String scheme = k.getScheme();
 		                    final /*@Thrown*/ boolean eq_0 = scheme.equals(OCCITables.STR_http_c_s_s_schemas_ogf_org_s_occi_s_core_35);

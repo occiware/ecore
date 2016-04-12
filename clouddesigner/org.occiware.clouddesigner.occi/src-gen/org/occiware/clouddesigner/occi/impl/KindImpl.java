@@ -31,7 +31,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.ocl.pivot.StandardLibrary;
@@ -48,6 +47,7 @@ import org.eclipse.ocl.pivot.internal.utilities.PivotUtilInternal;
 import org.eclipse.ocl.pivot.library.AbstractBinaryOperation;
 import org.eclipse.ocl.pivot.library.LibraryIteration;
 
+import org.eclipse.ocl.pivot.library.classifier.ClassifierAllInstancesOperation;
 import org.eclipse.ocl.pivot.library.classifier.ClassifierOclContainerOperation;
 
 import org.eclipse.ocl.pivot.library.collection.CollectionExcludesAllOperation;
@@ -119,16 +119,6 @@ public class KindImpl extends CategoryImpl implements Kind {
 	 * @ordered
 	 */
 	protected EList<Action> actions;
-
-	/**
-	 * The cached value of the '{@link #getEntities() <em>Entities</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEntities()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Entity> entities;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -205,10 +195,35 @@ public class KindImpl extends CategoryImpl implements Kind {
 	 * @generated
 	 */
 	public EList<Entity> getEntities() {
-		if (entities == null) {
-			entities = new EObjectResolvingEList<Entity>(Entity.class, this, OCCIPackage.KIND__ENTITIES);
+		/**
+		 * Entity.allInstances()->select(kind = self)
+		 */
+		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
+		final /*@NonNull*/ /*@NonInvalid*/ IdResolver idResolver = evaluator.getIdResolver();
+		final /*@NonNull*/ /*@NonInvalid*/ org.eclipse.ocl.pivot.Class TYP_occi_c_c_Entity_0 = idResolver.getClass(OCCITables.CLSSid_Entity, null);
+		final /*@NonNull*/ /*@NonInvalid*/ SetValue allInstances = ClassUtil.nonNullState(ClassifierAllInstancesOperation.INSTANCE.evaluate(evaluator, OCCITables.SET_CLSSid_Entity, TYP_occi_c_c_Entity_0));
+		/*@NonNull*/ /*@Thrown*/ SetValue.Accumulator accumulator = ValueUtil.createSetAccumulatorValue(OCCITables.SET_CLSSid_Entity);
+		/*@NonNull*/ Iterator<?> ITERATOR__1 = allInstances.iterator();
+		/*@NonNull*/ /*@Thrown*/ SetValue select;
+		while (true) {
+		    if (!ITERATOR__1.hasNext()) {
+		        select = accumulator;
+		        break;
+		    }
+		    /*@NonNull*/ /*@NonInvalid*/ Entity _1 = (Entity)ITERATOR__1.next();
+		    /**
+		     * kind = self
+		     */
+		    final /*@NonNull*/ /*@Thrown*/ Kind kind = _1.getKind();
+		    final /*@Thrown*/ boolean eq = kind.equals(this);
+		    //
+		    if (eq == ValueUtil.TRUE_VALUE) {
+		        accumulator.add(_1);
+		    }
 		}
-		return entities;
+		final List<Entity> UNBOXED_select = select.asEcoreObjects(idResolver, org.occiware.clouddesigner.occi.Entity.class);
+		assert UNBOXED_select != null;
+		return (EList<Entity>)UNBOXED_select;
 	}
 
 	/**
@@ -307,7 +322,7 @@ public class KindImpl extends CategoryImpl implements Kind {
 		            public /*@Nullable*/ Object evaluate(final /*@NonNull*/ Evaluator evaluator, final /*@NonNull*/ TypeId typeId, final /*@Nullable*/ Object oclAsSet, final /*@Nullable*/ /*@NonInvalid*/ Object _1) {
 		                final /*@Nullable*/ /*@NonInvalid*/ Kind symbol_0 = (Kind)_1;
 		                if (symbol_0 == null) {
-		                    throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Kind::parent\'");
+		                    throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Kind::parent\'");
 		                }
 		                final /*@Nullable*/ /*@Thrown*/ Kind parent_0 = symbol_0.getParent();
 		                return parent_0;
@@ -376,7 +391,7 @@ public class KindImpl extends CategoryImpl implements Kind {
 		             * name
 		             */
 		            if (_1 == null) {
-		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Attribute::name\'");
+		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Attribute::name\'");
 		            }
 		            final /*@NonNull*/ /*@Thrown*/ String name = _1.getName();
 		            //
@@ -398,7 +413,7 @@ public class KindImpl extends CategoryImpl implements Kind {
 		            public /*@Nullable*/ Object evaluate(final /*@NonNull*/ Evaluator evaluator, final /*@NonNull*/ TypeId typeId, final /*@Nullable*/ Object oclAsSet, final /*@Nullable*/ /*@NonInvalid*/ Object _1_0) {
 		                final /*@Nullable*/ /*@NonInvalid*/ Kind symbol_0 = (Kind)_1_0;
 		                if (symbol_0 == null) {
-		                    throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Kind::parent\'");
+		                    throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Kind::parent\'");
 		                }
 		                final /*@Nullable*/ /*@Thrown*/ Kind parent_0 = symbol_0.getParent();
 		                return parent_0;
@@ -419,7 +434,7 @@ public class KindImpl extends CategoryImpl implements Kind {
 		             * attributes
 		             */
 		            if (_1_1 == null) {
-		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Category::attributes\'");
+		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Category::attributes\'");
 		            }
 		            final /*@NonNull*/ /*@Thrown*/ List<Attribute> attributes_0 = _1_1.getAttributes();
 		            final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_attributes_0 = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Attribute, attributes_0);
@@ -441,7 +456,7 @@ public class KindImpl extends CategoryImpl implements Kind {
 		             * name
 		             */
 		            if (_1_2 == null) {
-		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Attribute::name\'");
+		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Attribute::name\'");
 		            }
 		            final /*@NonNull*/ /*@Thrown*/ String name_0 = _1_2.getName();
 		            //
@@ -504,7 +519,7 @@ public class KindImpl extends CategoryImpl implements Kind {
 		             * term
 		             */
 		            if (_1 == null) {
-		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Category::term\'");
+		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Category::term\'");
 		            }
 		            final /*@NonNull*/ /*@Thrown*/ String term = _1.getTerm();
 		            //
@@ -575,7 +590,7 @@ public class KindImpl extends CategoryImpl implements Kind {
 		            public /*@Nullable*/ Object evaluate(final /*@NonNull*/ Evaluator evaluator, final /*@NonNull*/ TypeId typeId, final /*@Nullable*/ Object oclAsSet, final /*@Nullable*/ /*@NonInvalid*/ Object _1) {
 		                final /*@Nullable*/ /*@NonInvalid*/ Kind symbol_0 = (Kind)_1;
 		                if (symbol_0 == null) {
-		                    throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Kind::parent\'");
+		                    throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Kind::parent\'");
 		                }
 		                final /*@Nullable*/ /*@Thrown*/ Kind parent = symbol_0.getParent();
 		                return parent;
@@ -610,7 +625,7 @@ public class KindImpl extends CategoryImpl implements Kind {
 		                    /*@NonNull*/ /*@Caught*/ Object CAUGHT_eq;
 		                    try {
 		                        if (k == null) {
-		                            throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Category::term\'");
+		                            throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Category::term\'");
 		                        }
 		                        final /*@NonNull*/ /*@Thrown*/ String term = k.getTerm();
 		                        final /*@Thrown*/ boolean eq = term.equals(OCCITables.STR_entity);
@@ -622,7 +637,7 @@ public class KindImpl extends CategoryImpl implements Kind {
 		                    /*@NonNull*/ /*@Caught*/ Object CAUGHT_eq_0;
 		                    try {
 		                        if (k == null) {
-		                            throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Category::scheme\'");
+		                            throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Category::scheme\'");
 		                        }
 		                        final /*@NonNull*/ /*@Thrown*/ String scheme = k.getScheme();
 		                        final /*@Thrown*/ boolean eq_0 = scheme.equals(OCCITables.STR_http_c_s_s_schemas_ogf_org_s_occi_s_core_35);
@@ -640,7 +655,7 @@ public class KindImpl extends CategoryImpl implements Kind {
 		                /*@NonNull*/ /*@Caught*/ Object CAUGHT_eq_1;
 		                try {
 		                    if (k == null) {
-		                        throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Kind::parent\'");
+		                        throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Kind::parent\'");
 		                    }
 		                    final /*@Nullable*/ /*@Thrown*/ Kind parent_0 = k.getParent();
 		                    final /*@Thrown*/ boolean eq_1 = parent_0 == null;
@@ -770,7 +785,7 @@ public class KindImpl extends CategoryImpl implements Kind {
 			case OCCIPackage.KIND__ACTIONS:
 				return actions != null && !actions.isEmpty();
 			case OCCIPackage.KIND__ENTITIES:
-				return entities != null && !entities.isEmpty();
+				return !getEntities().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

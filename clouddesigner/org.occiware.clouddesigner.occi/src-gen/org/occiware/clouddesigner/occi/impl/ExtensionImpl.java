@@ -340,7 +340,7 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		            /*@NonNull*/ /*@Caught*/ Object CAUGHT_eq;
 		            try {
 		                if (k == null) {
-		                    throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Category::scheme\'");
+		                    throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Category::scheme\'");
 		                }
 		                final /*@NonNull*/ /*@Thrown*/ String scheme = k.getScheme();
 		                final /*@NonNull*/ /*@Thrown*/ String scheme_0 = this.getScheme();
@@ -440,7 +440,7 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		                /*@NonNull*/ /*@Caught*/ Object CAUGHT_ne;
 		                try {
 		                    if (_1 == null) {
-		                        throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Kind::parent\'");
+		                        throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Kind::parent\'");
 		                    }
 		                    final /*@Nullable*/ /*@Thrown*/ Kind parent = _1.getParent();
 		                    final /*@Thrown*/ boolean ne = parent != null;
@@ -454,7 +454,7 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		                    /*@Nullable*/ /*@Caught*/ Object CAUGHT_parentExtension;
 		                    try {
 		                        if (_1 == null) {
-		                            throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Kind::parent\'");
+		                            throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Kind::parent\'");
 		                        }
 		                        final /*@Nullable*/ /*@Thrown*/ Kind parent_0 = _1.getParent();
 		                        final /*@Nullable*/ /*@Thrown*/ Object parentExtension = ClassifierOclContainerOperation.INSTANCE.evaluate(evaluator, parent_0);
@@ -590,7 +590,7 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		                final /*@NonNull*/ /*@Thrown*/ IntegerValue size_0 = ClassUtil.nonNullState(StringSizeOperation.INSTANCE.evaluate(scheme_1));
 		                final /*@NonNull*/ /*@Thrown*/ IntegerValue diff_0 = ClassUtil.nonNullState((IntegerValue)NumericMinusOperation.INSTANCE.evaluate(size_0, OCCITables.INT_1));
 		                if (m == null) {
-		                    throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Category::scheme\'");
+		                    throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Category::scheme\'");
 		                }
 		                final /*@NonNull*/ /*@Thrown*/ String scheme = m.getScheme();
 		                final /*@NonNull*/ /*@Thrown*/ String substring = ClassUtil.nonNullState(StringSubstringOperation.INSTANCE.evaluate(scheme, OCCITables.INT_1, diff_0));
@@ -674,7 +674,7 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		             * term
 		             */
 		            if (_1 == null) {
-		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Category::term\'");
+		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Category::term\'");
 		            }
 		            final /*@NonNull*/ /*@Thrown*/ String term = _1.getTerm();
 		            //
@@ -695,7 +695,7 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		             * term
 		             */
 		            if (_1_0 == null) {
-		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Category::term\'");
+		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Category::term\'");
 		            }
 		            final /*@NonNull*/ /*@Thrown*/ String term_0 = _1_0.getTerm();
 		            //
@@ -763,7 +763,7 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		             * applies
 		             */
 		            if (_1 == null) {
-		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Mixin::applies\'");
+		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Mixin::applies\'");
 		            }
 		            final /*@NonNull*/ /*@Thrown*/ List<Kind> applies = _1.getApplies();
 		            final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_applies = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Kind, applies);
@@ -979,7 +979,7 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		             * depends
 		             */
 		            if (_1 == null) {
-		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Mixin::depends\'");
+		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Mixin::depends\'");
 		            }
 		            final /*@NonNull*/ /*@Thrown*/ List<Mixin> depends = _1.getDepends();
 		            final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_depends = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Mixin, depends);

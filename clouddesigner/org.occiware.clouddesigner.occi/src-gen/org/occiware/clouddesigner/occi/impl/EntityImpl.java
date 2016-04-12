@@ -365,7 +365,7 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 		             * name
 		             */
 		            if (_1 == null) {
-		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::AttributeState::name\'");
+		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::AttributeState::name\'");
 		            }
 		            final /*@NonNull*/ /*@Thrown*/ String name = _1.getName();
 		            //
@@ -451,7 +451,7 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 		                /*@NonNull*/ /*@Caught*/ Object CAUGHT_notEmpty;
 		                try {
 		                    if (m == null) {
-		                        throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Mixin::applies\'");
+		                        throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Mixin::applies\'");
 		                    }
 		                    final /*@NonNull*/ /*@Thrown*/ List<Kind> applies = m.getApplies();
 		                    final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_applies = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Kind, applies);
@@ -464,7 +464,7 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 		                /*@NonNull*/ /*@Caught*/ Object CAUGHT_exists;
 		                try {
 		                    if (m == null) {
-		                        throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Mixin::applies\'");
+		                        throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Mixin::applies\'");
 		                    }
 		                    final /*@NonNull*/ /*@Thrown*/ List<Kind> applies_0 = m.getApplies();
 		                    final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_applies_0 = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Kind, applies_0);
@@ -504,7 +504,7 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 		                                public /*@Nullable*/ Object evaluate(final /*@NonNull*/ Evaluator evaluator, final /*@NonNull*/ TypeId typeId, final /*@Nullable*/ Object oclAsSet, final /*@Nullable*/ /*@NonInvalid*/ Object _1) {
 		                                    final /*@Nullable*/ /*@NonInvalid*/ Kind symbol_0 = (Kind)_1;
 		                                    if (symbol_0 == null) {
-		                                        throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Kind::parent\'");
+		                                        throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Kind::parent\'");
 		                                    }
 		                                    final /*@Nullable*/ /*@Thrown*/ Kind parent = symbol_0.getParent();
 		                                    return parent;
