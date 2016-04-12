@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="platform" nsURI="http://schemas.ogf.org/occi/platform/ecore"
+    nsPrefix="platform">
+  <eClassifiers xsi:type="ecore:EDataType" name="URL" instanceClassName="java.net.URL"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="URI" instanceClassName="java.net.URI"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="Status">
+    <eLiterals name="active"/>
+    <eLiterals name="inactive"/>
+    <eLiterals name="error"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Application" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Resource">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title" value="Application"/>
+    </eAnnotations>
+    <eOperations name="start">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="title" value="Start the application."/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="stop">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="title" value="Stop the application."/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Name of the application."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="context" eType="#//URL">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="URL for contextualizing the app."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="url" eType="#//URL">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="DNS entry."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="state" eType="#//Status">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="State of the application."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="message" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Human-readable explanation of the current instance state."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Component" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Resource">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title" value="Component"/>
+    </eAnnotations>
+    <eOperations name="start">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="title" value="Start the application."/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="stop">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="title" value="Stop the application."/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="state" eType="#//Status">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="State of the component."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="message" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Human-readable explanation of the current instance state."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Componentlink" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Link">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title" value="ComponentLink"/>
+    </eAnnotations>
+  </eClassifiers>
+</ecore:EPackage>
