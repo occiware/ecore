@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo, Inria
+ * Copyright (c) 2015-2016 Obeo, Inria
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -36,7 +36,10 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.XMIResource;
 import org.occiware.clouddesigner.occi.Attribute;
+import org.occiware.clouddesigner.occi.Extension;
 import org.occiware.clouddesigner.occi.Kind;
+import org.occiware.clouddesigner.occi.OCCIRegistry;
+import org.occiware.clouddesigner.occi.util.Occi2Ecore;
 
 public final class ConverterUtils {
 
@@ -86,25 +89,21 @@ public final class ConverterUtils {
 	/**
 	 * Get the Ecore package associated to a given OCCI object.
 	 * @param occiObject the given OCCI object.
-	 * @return the assocaited Ecore package.
+	 * @return the associated Ecore package.
 	 */
 	public static EPackage getEPackage(EObject occiObject) {
+		Extension extension = ((Extension)occiObject.eContainer());
+		String uri = OCCIRegistry.getInstance().getFileURI(extension.getScheme());
 		// we must use platform:/plugin URI to enable genmodels
-		String uri = occiObject.eResource().getURI().toString().replaceAll(".occie", ".ecore");
+		uri = uri.replaceAll(".occie", ".ecore");
 		// special case for core
 		uri = uri.replaceAll("model/Core.ecore", "model/OCCI.ecore");
-		EPackage p = (EPackage) occiObject.eResource().getResourceSet().getResource(URI.createURI(uri), true).getContents()
-				.get(0);
+		EPackage p = (EPackage) occiObject.eResource().getResourceSet().getResource(URI.createURI(ecoreFileUri), true).getContents().get(0);
 		return p;
 	}
-
+	
 	public static EClass getMappedEClass(Kind kind) {
 		return (EClass) ConverterUtils.getEPackage(kind).getEClassifier(ConverterUtils.toU1Case(kind.getTerm()));
-	}
-
-	public static String convertScheme2URI(String scheme) {
-		String uri = scheme.substring(0, scheme.length() - 1);
-		return uri;
 	}
 
 	public static Collection<Attribute> getAllAttributes(Kind kind) {
