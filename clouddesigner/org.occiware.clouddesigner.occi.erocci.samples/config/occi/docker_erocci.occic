@@ -1,53 +1,23 @@
 <?xml version="1.0" encoding="ASCII"?>
-<occi:Configuration
-    xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:docker="http://occiware.org/docker"
-    xmlns:occi="http://schemas.ogf.org/occi">
-  <use href="platform:/plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#/"/>
-  <resources
-      xsi:type="docker:Machine_VirtualBox"
-      id="_uEZL8H6gEeWnDLHK1wRq-g"
-      name="OCCIware">
-    <kind href="platform:/plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='machine_VirtualBox']"/>
-    <attributes
-        name="name"
-        value="OCCIware"/>
-    <links xsi:type="docker:Contains"
-        id="_8QwkAH6gEeWnDLHK1wRq-g"
-        target="//@resources.1">
-      <kind
-          href="platform:/plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='contains']"/>
+<occi:Configuration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:docker="http://occiware.org/docker/ecore" xmlns:occi="http://schemas.ogf.org/occi/core/ecore">
+  <use href="http://occiware.org/docker#/"/>
+  <resources xsi:type="docker:Machine_VirtualBox" id="_uEZL8H6gEeWnDLHK1wRq-g" name="OCCIware">
+    <kind href="http://occiware.org/docker#//@kinds[term='machine_VirtualBox']"/>
+    <attributes name="occi.core.id" value="_uEZL8H6gEeWnDLHK1wRq-g"/>
+    <attributes name="name" value="OCCIware"/>
+    <links xsi:type="docker:Contains" id="_8QwkAH6gEeWnDLHK1wRq-g" target="//@resources.1">
+      <kind href="http://occiware.org/docker#//@kinds[term='contains']"/>
+      <attributes name="occi.core.id" value="_8QwkAH6gEeWnDLHK1wRq-g"/>
     </links>
   </resources>
-  <resources
-      xsi:type="docker:Container"
-      id="_8QFOkH6gEeWnDLHK1wRq-g"
-      name="erocci"
-      image="erocci/erocci"
-      ports="8080:80"
-      expose=""
-      volumes="`pwd`/config/erocci:/tmp"
-      working_dir="">
-    <kind href="platform:/plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='container']"/>
-    <attributes
-        name="name"
-        value="erocci"/>
-    <attributes
-        name="image"
-        value="erocci/erocci"/>
-    <attributes
-        name="ports"
-        value="8080:80"/>
-    <attributes
-        name="volumes"
-        value="`pwd`/config/erocci:/tmp"/>
-    <attributes
-        name="working_dir"
-        value=""/>
-    <attributes
-        name="expose"
-        value=""/>
+  <resources xsi:type="docker:Container" id="_8QFOkH6gEeWnDLHK1wRq-g" name="erocci" image="erocci/erocci" ports="8080:80" expose="" volumes="`pwd`/config/erocci:/tmp" working_dir="">
+    <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <attributes name="occi.core.id" value="_8QFOkH6gEeWnDLHK1wRq-g"/>
+    <attributes name="name" value="erocci"/>
+    <attributes name="image" value="erocci/erocci"/>
+    <attributes name="ports" value="8080:80"/>
+    <attributes name="volumes" value="`pwd`/config/erocci:/tmp"/>
+    <attributes name="working_dir" value=""/>
+    <attributes name="expose" value=""/>
   </resources>
 </occi:Configuration>
