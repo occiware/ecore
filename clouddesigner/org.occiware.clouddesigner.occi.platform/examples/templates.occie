@@ -9,11 +9,10 @@
   <mixins term="small"
       scheme="http://example.com/templates/platform#">
     <depends
-        href=".http://schemas.ogf.org/occi/platform#//@mixins[term='res_tpl']"/>
+        href="http://schemas.ogf.org/occi/platform#//@mixins[term='res_tpl']"/>
   </mixins>
   <mixins term="python"
-      scheme="http://example.com/templates/platform#"
-      title="">
+      scheme="http://example.com/templates/platform#">
     <depends
         href="http://schemas.ogf.org/occi/platform#//@mixins[term='app_tpl']"/>
   </mixins>

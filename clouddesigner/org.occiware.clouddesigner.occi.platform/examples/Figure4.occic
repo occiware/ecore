@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ASCII"?>
 <occi:Configuration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:occi="http://schemas.ogf.org/occi/core/ecore">
-  <use href="http://schemas.ogf.org/occi/platform.occie#/"/>
+  <use href="http://schemas.ogf.org/occi/platform#/"/>
   <use href="templates.occie#/"/>
   <resources id="myapp">
     <kind href="http://schemas.ogf.org/occi/platform#//@kinds[term='application']"/>
