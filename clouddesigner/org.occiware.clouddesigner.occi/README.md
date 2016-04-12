@@ -2,7 +2,11 @@
 
 This project implements the OCCI Core Model.
 
-The following figure shows the content of this OCCI Core extension:
+Following figure shows the OCCI Metamodel:
+
+![OCCI Metamodel diagram](documentation/images/OCCI-Metamodel-diagram.jpg "OCCI Metamodel diagram")
+
+Following figure shows the OCCI Core extension:
 
 ![OCCI Core Extension diagram](documentation/images/OCCI-Core-Extension-diagram.jpg "OCCI Core Extension diagram")
 
