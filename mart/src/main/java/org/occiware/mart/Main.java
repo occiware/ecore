@@ -51,9 +51,9 @@ public class Main
 		// Register the OCCI package into EMF.
 		OCCIPackage.eINSTANCE.toString();
 
-		// Register OCCI extensions.
-		OCCIRegistry.getInstance().registerExtension("http://schemas.ogf.org/occi/core#", "model/core.occie");
-		OCCIRegistry.getInstance().registerExtension("http://schemas.ogf.org/occi/infrastructure#", "model/infrastructure.occie");
+		// Register OCCI extensions available into the classpath.
+		OCCIRegistry.getInstance().registerExtension("http://schemas.ogf.org/occi/core#", getFromClasspath("/model/Core.occie"));
+		OCCIRegistry.getInstance().registerExtension("http://schemas.ogf.org/occi/infrastructure#", getFromClasspath("/model/Infrastructure.occie"));
 	}
 
 	/**
@@ -64,8 +64,8 @@ public class Main
 	{
 		reportJavaInformation();
 
-		System.out.println("Loading model/core.occie...");
-		Extension core1 = loadExtension("model/core.occie");
+		System.out.println("Loading classpath:/model/Core.occie...");
+		Extension core1 = loadExtension(getFromClasspath("/model/Core.occie"));
 		print(core1);
 		if(validate(core1)) {
 			System.out.println("Youpi model/core.occie was validated by EMF and OCL Validation.");
@@ -80,8 +80,8 @@ public class Main
 		}
 		System.out.println("");
 
-		System.out.println("Loading model/infrastructure.occie...");
-		Extension infrastructure1 = loadExtension("model/infrastructure.occie");
+		System.out.println("Loading classpath:/model/Infrastructure.occie...");
+		Extension infrastructure1 = loadExtension(getFromClasspath("/model/Infrastructure.occie"));
 		print(infrastructure1);
 		if(validate(infrastructure1)) {
 			System.out.println("Youpi model/infrastructure.occie was validated by EMF and OCL Validation.");
@@ -398,5 +398,10 @@ public class Main
  
         //Print Maximum available memory
         System.out.println("Max Memory:" + runtime.maxMemory() / mb);
+	}
+	
+	public static String getFromClasspath(String path)
+	{
+		return Main.class.getResource(path).toExternalForm();
 	}
 }
