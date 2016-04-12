@@ -24,8 +24,6 @@ import org.occiware.clouddesigner.occi.OCCIPackage;
  * <!-- end-user-doc -->
  * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructureFactory
  * @model kind="package"
- *        annotation="http://www.eclipse.org/OCL/Import OCCI='../../org.occiware.clouddesigner.occi/model/OCCI.ecore#/'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore invocationDelegates='http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot' settingDelegates='http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot' validationDelegates='http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot'"
  * @generated
  */
 public interface InfrastructurePackage extends EPackage {
@@ -43,7 +41,7 @@ public interface InfrastructurePackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://schemas.ogf.org/occi/infrastructure";
+	String eNS_URI = "http://schemas.ogf.org/occi/infrastructure/ecore";
 
 	/**
 	 * The package namespace name.

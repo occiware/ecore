@@ -14,8 +14,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * and utility methods for working with them.
  * <!-- end-user-doc -->
  * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getSuspendMethod()
- * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='dummy'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot dummy='true'"
+ * @model
  * @generated
  */
 public enum SuspendMethod implements Enumerator {

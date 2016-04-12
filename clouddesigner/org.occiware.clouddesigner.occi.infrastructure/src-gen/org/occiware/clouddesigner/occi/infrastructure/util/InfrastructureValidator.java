@@ -257,37 +257,7 @@ public class InfrastructureValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateSuspendMethod(SuspendMethod suspendMethod, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		boolean result = validateSuspendMethod_dummy(suspendMethod, diagnostics, context);
-		return result;
-	}
-
-	/**
-	 * The cached validation expression for the dummy constraint of '<em>Suspend Method</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected static final String SUSPEND_METHOD__DUMMY__EEXPRESSION = "true";
-
-	/**
-	 * Validates the dummy constraint of '<em>Suspend Method</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateSuspendMethod_dummy(SuspendMethod suspendMethod, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return
-			validate
-				(InfrastructurePackage.Literals.SUSPEND_METHOD,
-				 suspendMethod,
-				 diagnostics,
-				 context,
-				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
-				 "dummy",
-				 SUSPEND_METHOD__DUMMY__EEXPRESSION,
-				 Diagnostic.ERROR,
-				 DIAGNOSTIC_SOURCE,
-				 0);
+		return true;
 	}
 
 	/**
