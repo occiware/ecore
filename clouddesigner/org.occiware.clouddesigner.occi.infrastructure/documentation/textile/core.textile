@@ -1,0 +1,90 @@
+Generated at Tue Apr 12 15:49:41 CEST 2016 from http://schemas.ogf.org/occi/core by org.occiware.clouddesigner.occi.gen.doc
+
+h1. OCCI Extension: core
+
+| *Name* | core |
+| *Scheme* | http://schemas.ogf.org/occi/core# |
+
+h1. Imports
+
+| *Name* | *Scheme* |
+
+h1. Kinds
+
+h2. Kind entity
+
+| *Term* | entity |
+| *Scheme* | http://schemas.ogf.org/occi/core# |
+| *Title* | Entity type |
+| *Parent* |  |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.core.title | <a href="core.textile#datatype-string">String</a> | false | true |  | The display name of the instance. |
+
+h3. Actions
+
+
+
+h2. Kind resource
+
+| *Term* | resource |
+| *Scheme* | http://schemas.ogf.org/occi/core# |
+| *Title* | Resource |
+| *Parent* | <a href="core.textile#kind-entity">http://schemas.ogf.org/occi/core#entity</a> |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.core.summary | <a href="core.textile#datatype-string">String</a> | false | true |  | A summarising description of the Resource instance. |
+
+h3. Actions
+
+
+
+h2. Kind link
+
+| *Term* | link |
+| *Scheme* | http://schemas.ogf.org/occi/core# |
+| *Title* | Link |
+| *Parent* | <a href="core.textile#kind-entity">http://schemas.ogf.org/occi/core#entity</a> |
+
+h3. Attributes
+
+
+h3. Actions
+
+
+
+
+
+h1. Mixins
+
+
+
+h1. Types
+
+h2. Datatype String
+
+h3. Type java.lang.String
+
+h3. Annotations
+
+
+h2. Datatype Boolean
+
+h3. Type boolean
+
+h3. Annotations
+
+
+h2. Datatype Number
+
+h3. Type int
+
+h3. Annotations
+
+
+
+
