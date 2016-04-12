@@ -1,15 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="docker" nsURI="http://occiware.org/docker" nsPrefix="docker">
-  <eAnnotations source="http://www.eclipse.org/OCL/Import">
-    <details key="OCCI" value="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#/"/>
-    <details key="infrastructure" value="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.ecore#/"/>
-  </eAnnotations>
-  <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-    <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
-    <details key="settingDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
-    <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
-  </eAnnotations>
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="docker" nsURI="http://occiware.org/docker/ecore" nsPrefix="docker">
   <eClassifiers xsi:type="ecore:EEnum" name="Mode">
     <eLiterals name="read_write" literal="read_write"/>
     <eLiterals name="read_only" value="1" literal="read_only"/>
@@ -17,13 +8,6 @@
   <eClassifiers xsi:type="ecore:EClass" name="Container" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.ecore#//Compute">
     <eAnnotations source="OCCIE2Ecore">
       <details key="title" value="Container Resource"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="ContainerNoCycleBetweenContainers ContainerLinkAliasUnique"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-      <details key="ContainerNoCycleBetweenContainers" value="&#xA;&#x9;&#x9;&#x9;links->closure(links->select(oclIsKindOf(Link) or oclIsKindOf(Volumesfrom)).target.links->select(oclIsKindOf(Link) or oclIsKindOf(Volumesfrom))).target->excludes(self)"/>
-      <details key="ContainerLinkAliasUnique" value="&#xA;&#x9;&#x9;&#x9;links->select(oclIsKindOf(Link))->isUnique(oclAsType(docker::Link).alias)"/>
     </eAnnotations>
     <eOperations name="create">
       <eAnnotations source="OCCIE2Ecore">
@@ -267,14 +251,6 @@
     <eAnnotations source="OCCIE2Ecore">
       <details key="title" value="Link between containers"/>
     </eAnnotations>
-    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="LinkSourceAsContainer LinkTargetAsContainer LinkCanOnlyConnectColocalizedContainers"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-      <details key="LinkSourceAsContainer" value="source.oclIsKindOf(Container)"/>
-      <details key="LinkTargetAsContainer" value="target.oclIsKindOf(Container)"/>
-      <details key="LinkCanOnlyConnectColocalizedContainers" value="&#xA;&#x9;&#x9;&#x9;Contains.allInstances()->select(contains | contains.target = self.source).source = &#xA;&#x9;&#x9;&#x9;Contains.allInstances()->select(contains | contains.target = self.target).source"/>
-    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="alias" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
       <eAnnotations source="OCCIE2Ecore">
         <details key="description" value="The alias of this Link instance"/>
@@ -284,14 +260,6 @@
   <eClassifiers xsi:type="ecore:EClass" name="Volumesfrom" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Link">
     <eAnnotations source="OCCIE2Ecore">
       <details key="title" value="VolumsFrom"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="VolumesFromSourceAsContainer VolumesFromTargetAsContainer VolumesFromCanOnlyConnectColocalizedContainers"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-      <details key="VolumesFromSourceAsContainer" value="source.oclIsKindOf(Container)"/>
-      <details key="VolumesFromTargetAsContainer" value="target.oclIsKindOf(Container)"/>
-      <details key="VolumesFromCanOnlyConnectColocalizedContainers" value="&#xA;&#x9;&#x9;&#x9;Contains.allInstances()->select(contains | contains.target = self.source).source = &#xA;&#x9;&#x9;&#x9;Contains.allInstances()->select(contains | contains.target = self.target).source"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="mode" eType="#//Mode" defaultValueLiteral="read_write">
       <eAnnotations source="OCCIE2Ecore">
@@ -307,12 +275,6 @@
   <eClassifiers xsi:type="ecore:EClass" name="Machine" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.ecore#//Compute">
     <eAnnotations source="OCCIE2Ecore">
       <details key="title" value="Machine Resource"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="MachineNameUnique"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-      <details key="MachineNameUnique" value="Machine.allInstances()->isUnique(name)"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
       <eAnnotations source="OCCIE2Ecore">
@@ -682,12 +644,6 @@
   <eClassifiers xsi:type="ecore:EClass" name="Machine_VirtualBox" eSuperTypes="#//Machine">
     <eAnnotations source="OCCIE2Ecore">
       <details key="title" value="Machine on VirtualBox"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="ContainersUsedTooMemory"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-      <details key="ContainersUsedTooMemory" value="Tuple {&#xA;&#x9;message : String = 'Containers consume ' + (links->select(oclIsKindOf(docker::Contains)).target.oclAsType(Container).memory->sum()).toString() + ' when memory is equals to ' + memory.toString(),&#xA;&#x9;status : Boolean = &#xA;&#x9;&#x9;&#x9;(links->select(oclIsKindOf(docker::Contains)).target.oclAsType(Container).memory->sum()) &lt;= memory&#xA;}.status"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="boot2docker_url" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
       <eAnnotations source="OCCIE2Ecore">
