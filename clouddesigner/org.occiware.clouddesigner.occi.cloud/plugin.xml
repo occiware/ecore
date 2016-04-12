@@ -22,6 +22,11 @@ Contributors:
             class="org.occiware.clouddesigner.occi.cloud.CloudPackage"
             genModel="model/Cloud.genmodel"/>
    </extension>
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <parser
+            type="cloud"
+            class="org.occiware.clouddesigner.occi.util.OCCIResourceFactoryImpl"/>
+   </extension>
    <extension
          point="org.occiware.clouddesigner.occi.occie">
       <occie
@@ -30,6 +35,6 @@ Contributors:
       </occie>
    </extension>
    <extension point="org.eclipse.emf.ecore.uri_mapping" >
-      <mapping source="http://occiware.org/cloud" target="platform:/plugin/org.occiware.clouddesigner.occi.cloud/model/cloud.occie"/>
+      <mapping source="http://occiware.org/cloud" target="platform:/plugin/org.occiware.clouddesigner.occi.cloud/model/Cloud.occie"/>
    </extension>
 </plugin>
