@@ -1,3 +1,14 @@
+/*******************************************************************************
+ * Copyright (c) 2015-2016 Obeo, Inria
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ * 	   William Piers <william.piers@obeo.fr>
+ *     Philippe Merle <philippe.merle@inria.fr>
+ *******************************************************************************/
 package org.occiware.clouddesigner.occi.emfgen.ui.popup.actions;
 
 import java.io.ByteArrayInputStream;
@@ -39,6 +50,7 @@ import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 import org.occiware.clouddesigner.occi.Extension;
+import org.occiware.clouddesigner.occi.OCCIRegistry;
 import org.occiware.clouddesigner.occi.emfgen.ConverterUtils;
 import org.occiware.clouddesigner.occi.emfgen.OCCIExtension2Ecore;
 
@@ -78,7 +90,7 @@ public class ConvertAction implements IObjectActionDelegate {
 			EPackage.Registry.INSTANCE.put(ECORE_PLATFORM_URI, EcorePackage.eINSTANCE);
 			resourceSet = new ResourceSetImpl();
 			Extension ext = (Extension) ConverterUtils.getRootElement(resourceSet,
-					"file:/" + occieFile.getLocation().toString());
+					"file:" + occieFile.getLocation().toString());
 
 			Map<Object, Object> validationContext = LabelUtil.createDefaultContext(Diagnostician.INSTANCE);
 			BasicDiagnostic diagnostics = Diagnostician.INSTANCE.createDefaultDiagnostic(ext);
@@ -110,19 +122,21 @@ public class ConvertAction implements IObjectActionDelegate {
 
 			try {
 				generateEMFModels(ext,
-						occieFile.getLocation().removeFileExtension().addFileExtension("ecore").toString(),
+						occieFile,
 						basePackage);
 			} catch (IllegalArgumentException e) {
 				MessageDialog.openError(shell, "Invalid Extension", e.getMessage());
 				return;
 			}
 			occieFile.getParent().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
-			generateEMFCode(occieFile.getLocation().removeFileExtension().addFileExtension("genmodel ").toString());
+			generateEMFCode(occieFile.getLocation().removeFileExtension().addFileExtension("genmodel").toString());
 
 			IFile build = PDEProject.getBuildProperties(occieFile.getProject());
-			String buildContent = "bin.includes = .,\\\n               model/,\\\n               META-INF/,\\\n               plugin.xml,\\\n               plugin.properties\njars.compile.order = .\nsource.. = src-gen/\noutput.. = bin/\n";
-			build.setContents(new ByteArrayInputStream(buildContent.getBytes()), true, false,
+			if(!build.exists()) {
+				String buildContent = "bin.includes = .,\\\n               model/,\\\n               META-INF/,\\\n               plugin.xml,\\\n               plugin.properties\njars.compile.order = .\nsource.. = src-gen/\noutput.. = bin/\n";
+				build.setContents(new ByteArrayInputStream(buildContent.getBytes()), true, false,
 					new NullProgressMonitor());
+			}
 		} catch (InvocationTargetException e) {
 			Activator.getDefault().getLog().log(new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage(), e));
 		} catch (IOException e) {
@@ -142,13 +156,15 @@ public class ConvertAction implements IObjectActionDelegate {
 		this.selection = selection;
 	}
 
-	private void generateEMFModels(Extension ext, String ecoreLocation, String basePackage) throws IOException {
+	private void generateEMFModels(Extension ext, IFile occieFile, String basePackage) throws IOException {
 		/*
 		 * OCCIE => Ecore conversion
 		 */
 		EPackage ePackage = new OCCIExtension2Ecore().convertExtension(ext);
 		resourceSet.getPackageRegistry().put(ePackage.getNsURI(), ePackage);
-		ConverterUtils.persistMetamodel(resourceSet, ePackage, ecoreLocation);
+		ConverterUtils.persistMetamodel(resourceSet, ePackage, occieFile.getLocation().removeFileExtension().addFileExtension("ecore").toString());
+		// Reset the URI of the generated EPackage in order to have related href when saving the genmodel file.
+		ePackage.eResource().setURI(URI.createURI(occieFile.getName().replaceAll(".occie", ".ecore")));
 
 		/*
 		 * Fetching ext genmodels
@@ -156,10 +172,11 @@ public class ConvertAction implements IObjectActionDelegate {
 		Collection<GenPackage> usedPackages = new ArrayList<GenPackage>();
 		for (Extension extension : ext.getImport()) {
 			if (!extension.getName().equals("core")) {
+				String extensionFileUri = OCCIRegistry.getInstance().getFileURI(extension.getScheme());
 				GenModel genModel = (GenModel) resourceSet
 						.getResource(
 								URI.createURI(
-										extension.eResource().getURI().toString().replaceAll(".occie", ".genmodel")),
+										extensionFileUri.replaceAll(".occie", ".genmodel")),
 								true)
 						.getContents().get(0);
 				usedPackages.add(genModel.getGenPackages().get(0));
@@ -172,7 +189,7 @@ public class ConvertAction implements IObjectActionDelegate {
 		GenPackage coreGenPackage = (GenPackage) ConverterUtils.getRootElement(resourceSet, CORE_GEN_PACKAGE_URI)
 				.eContents().get(1);
 		usedPackages.add(coreGenPackage);
-		GenUtils.createGenModel(ePackage, ecoreLocation, basePackage, usedPackages);
+		GenUtils.createGenModel(ePackage, occieFile.getLocation().removeFileExtension().addFileExtension("ecore").toString(), basePackage, usedPackages);
 	}
 
 	/**
