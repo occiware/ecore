@@ -2,4 +2,5 @@ env:
   language: java
 script:
 - cd clouddesigner/org.occiware.clouddesigner.parent
+- export MAVEN_OPTS='-Xmx512M -XX:MaxPermSize=512M'
 - mvn clean verify
