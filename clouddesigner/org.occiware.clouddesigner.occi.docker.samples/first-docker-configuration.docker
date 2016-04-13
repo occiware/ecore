@@ -1,429 +1,1299 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<occi:Configuration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:docker="http://occiware.org/docker/ecore" xmlns:occi="http://schemas.ogf.org/occi/core/ecore">
-  <use href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#/"/>
-  <resources xsi:type="docker:Machine_VirtualBox" id="machine1" memory="5000.0" name="localhost">
-    <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='machine_VirtualBox']"/>
-    <attributes name="occi.core.id" value="machine1"/>
-    <attributes name="occi.compute.memory" value="5000.0"/>
-    <attributes name="name" value="localhost"/>
-    <links xsi:type="docker:Contains" id="contains-1" target="//@resources.1">
-      <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='contains']"/>
+<occi:Configuration
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:docker="http://occiware.org/docker/ecore"
+    xmlns:occi="http://schemas.ogf.org/occi/core/ecore">
+  <use href="http://occiware.org/docker#/"/>
+  <resources
+      xsi:type="docker:Machine_VirtualBox"
+      id="machine1"
+      memory="5000.0"
+      name="localhost">
+    <kind href="http://occiware.org/docker#//@kinds[term='machine_VirtualBox']"/>
+    <attributes
+        name="occi.core.id"
+        value="machine1"/>
+    <attributes
+        name="occi.compute.memory"
+        value="5000.0"/>
+    <attributes
+        name="name"
+        value="localhost"/>
+    <links xsi:type="docker:Contains"
+        id="contains-1"
+        target="//@resources.1">
+      <kind
+          href="http://occiware.org/docker#//@kinds[term='contains']"/>
+      <attributes
+          name="occi.core.id"
+          value="contains-1"/>
     </links>
-    <links xsi:type="docker:Contains" id="contains-2" target="//@resources.2">
-      <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='contains']"/>
-    </links>
-  </resources>
-  <resources xsi:type="docker:Container" id="container1" name="webserver" image="tomcat" ports="..." volumes="..." mem_limit="100">
-    <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='container']"/>
-    <attributes name="occi.core.id" value="container1"/>
-    <attributes name="name" value="webserver"/>
-    <attributes name="image" value="tomcat"/>
-    <attributes name="ports" value="..."/>
-    <attributes name="volumes" value="..."/>
-    <attributes name="mem_limit" value="100"/>
-    <links xsi:type="docker:Link" id="link-1.1" target="//@resources.2" alias="db">
-      <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='link']"/>
-    </links>
-  </resources>
-  <resources xsi:type="docker:Container" id="container2" name="db" image="mysql" ports="..." volumes="..." mem_limit="2000">
-    <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='container']"/>
-    <attributes name="occi.core.id" value="container2"/>
-    <attributes name="name" value="db"/>
-    <attributes name="image" value="mysql"/>
-    <attributes name="ports" value="..."/>
-    <attributes name="volumes" value="..."/>
-    <attributes name="mem_limit" value="2000"/>
-    <links xsi:type="docker:Volumesfrom" id="volumes-from-2.1" target="//@resources.1" mode="read_only">
-      <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='volumesfrom']"/>
-    </links>
-  </resources>
-  <resources xsi:type="docker:Machine_VirtualBox" id="_fCfsAPJkEeS2SoyWkdwcvg" cores="-1" memory="1024.0" name="template" boot2docker_url="">
-    <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='machine_VirtualBox']"/>
-    <attributes name="occi.core.id" value="_fCfsAPJkEeS2SoyWkdwcvg"/>
-    <attributes name="occi.compute.cores" value="-1"/>
-    <attributes name="occi.compute.memory" value="1024.0"/>
-    <attributes name="name" value="template"/>
-    <attributes name="boot2docker_url" value=""/>
-    <links xsi:type="docker:Contains" id="_gTBfwfJkEeS2SoyWkdwcvg" target="//@resources.4">
-      <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='contains']"/>
-    </links>
-    <links xsi:type="docker:Contains" id="_gbs6oPJkEeS2SoyWkdwcvg" target="//@resources.5">
-      <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='contains']"/>
-    </links>
-    <links xsi:type="docker:Contains" id="_gj7pkfJkEeS2SoyWkdwcvg" target="//@resources.6">
-      <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='contains']"/>
-    </links>
-    <links xsi:type="docker:Contains" id="_guabQfJkEeS2SoyWkdwcvg" target="//@resources.7">
-      <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='contains']"/>
-    </links>
-    <links xsi:type="docker:Contains" id="_g1wZYfJkEeS2SoyWkdwcvg" target="//@resources.8">
-      <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='contains']"/>
-    </links>
-    <links xsi:type="docker:Contains" id="_g9pxIPJkEeS2SoyWkdwcvg" target="//@resources.9">
-      <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='contains']"/>
-    </links>
-    <links xsi:type="docker:Contains" id="b44d6d33-df60-47b2-9ee0-13e823a2a2e1" target="//@resources.32"/>
-  </resources>
-  <resources xsi:type="docker:Container" id="d7d214d6502c0b8596af24e6fade269892316333b00eef81c1627c903bfff31d" name="monitor" containerid="" image="busybox" command="sleep,9999">
-    <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='container']"/>
-    <attributes name="occi.core.id" value="d7d214d6502c0b8596af24e6fade269892316333b00eef81c1627c903bfff31d"/>
-    <attributes name="name" value="monitor"/>
-    <attributes name="containerid" value=""/>
-    <attributes name="image" value="busybox"/>
-    <attributes name="command" value="sleep,9999"/>
-  </resources>
-  <resources xsi:type="docker:Container" id="8a2578d927d060be26b14c7bbc5ece5256e4e4e85645a44676b61da69e31f62f" name="database" containerid="" image="busybox" command="sleep,9999">
-    <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='container']"/>
-    <attributes name="occi.core.id" value="8a2578d927d060be26b14c7bbc5ece5256e4e4e85645a44676b61da69e31f62f"/>
-    <attributes name="name" value="database"/>
-    <attributes name="containerid" value=""/>
-    <attributes name="image" value="busybox"/>
-    <attributes name="command" value="sleep,9999"/>
-    <links xsi:type="docker:Link" id="_OtG8gPJlEeS2SoyWkdwcvg" target="//@resources.6">
-      <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='link']"/>
+    <links xsi:type="docker:Contains"
+        id="contains-2"
+        target="//@resources.2">
+      <kind
+          href="http://occiware.org/docker#//@kinds[term='contains']"/>
+      <attributes
+          name="occi.core.id"
+          value="contains-2"/>
     </links>
   </resources>
-  <resources xsi:type="docker:Container" id="b0e0970d46e1d750917d5b5fe97e8139235a95a062118a8dd37edcac3331bb8e" name="webserver" containerid="" image="busybox" command="sleep,9999">
-    <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='container']"/>
-    <attributes name="occi.core.id" value="b0e0970d46e1d750917d5b5fe97e8139235a95a062118a8dd37edcac3331bb8e"/>
-    <attributes name="name" value="webserver"/>
-    <attributes name="containerid" value=""/>
-    <attributes name="image" value="busybox"/>
-    <attributes name="command" value="sleep,9999"/>
-    <links xsi:type="docker:Link" id="_guabQPJkEeS2SoyWkdwcvg" target="//@resources.8">
-      <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='link']"/>
+  <resources
+      xsi:type="docker:Container"
+      id="container1"
+      name="webserver"
+      image="tomcat"
+      ports="..."
+      volumes="..."
+      mem_limit="100">
+    <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <attributes
+        name="occi.core.id"
+        value="container1"/>
+    <attributes
+        name="name"
+        value="webserver"/>
+    <attributes
+        name="image"
+        value="tomcat"/>
+    <attributes
+        name="ports"
+        value="..."/>
+    <attributes
+        name="volumes"
+        value="..."/>
+    <attributes
+        name="mem_limit"
+        value="100"/>
+    <links xsi:type="docker:Link"
+        id="link-1.1"
+        target="//@resources.2"
+        alias="db">
+      <kind
+          href="http://occiware.org/docker#//@kinds[term='link']"/>
+      <attributes
+          name="occi.core.id"
+          value="link-1.1"/>
+      <attributes
+          name="alias"
+          value="db"/>
     </links>
   </resources>
-  <resources xsi:type="docker:Container" id="08a4884ba175d390bde7392c6eae5e65347a12027bc0aad2c1aff69178e82df7" name="backend" containerid="" image="busybox" command="sleep,9999">
-    <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='container']"/>
-    <attributes name="occi.core.id" value="08a4884ba175d390bde7392c6eae5e65347a12027bc0aad2c1aff69178e82df7"/>
-    <attributes name="name" value="backend"/>
-    <attributes name="containerid" value=""/>
-    <attributes name="image" value="busybox"/>
-    <attributes name="command" value="sleep,9999"/>
-    <links xsi:type="docker:Link" id="_g1wZYPJkEeS2SoyWkdwcvg" target="//@resources.9">
-      <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='link']"/>
-    </links>
-    <links xsi:type="docker:Link" id="_NCFlIPJlEeS2SoyWkdwcvg" target="//@resources.5">
-      <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='link']"/>
-    </links>
-    <links xsi:type="docker:Link" id="_SMo-cPJlEeS2SoyWkdwcvg" target="//@resources.6">
-      <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='link']"/>
-    </links>
-  </resources>
-  <resources xsi:type="docker:Container" id="b90a607b486d71b0551792c8e76f1b31c8277e5ffd1f63b8f7c702477cc4098a" name="redis" containerid="" image="busybox" command="sleep,9999">
-    <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='container']"/>
-    <attributes name="occi.core.id" value="b90a607b486d71b0551792c8e76f1b31c8277e5ffd1f63b8f7c702477cc4098a"/>
-    <attributes name="name" value="redis"/>
-    <attributes name="containerid" value=""/>
-    <attributes name="image" value="busybox"/>
-    <attributes name="command" value="sleep,9999"/>
-  </resources>
-  <resources xsi:type="docker:Container" id="b4623180e519f2ac7a0800a1c0457a8c8d0c71160e3d123126518e572ad2aa5e" name="python" containerid="" image="busybox" command="sleep,9999">
-    <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='container']"/>
-    <attributes name="occi.core.id" value="b4623180e519f2ac7a0800a1c0457a8c8d0c71160e3d123126518e572ad2aa5e"/>
-    <attributes name="name" value="python"/>
-    <attributes name="containerid" value=""/>
-    <attributes name="image" value="busybox"/>
-    <attributes name="command" value="sleep,9999"/>
-  </resources>
-  <resources xsi:type="docker:Machine_VirtualBox" id="_N1IuIPSTEeSVK4unvxRPgw" cores="-1" memory="1024.0" name="test" boot2docker_url="">
-    <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='machine_VirtualBox']"/>
-    <attributes name="occi.core.id" value="_N1IuIPSTEeSVK4unvxRPgw"/>
-    <attributes name="occi.compute.cores" value="-1"/>
-    <attributes name="occi.compute.memory" value="1024.0"/>
-    <attributes name="name" value="test"/>
-    <attributes name="boot2docker_url" value=""/>
-    <links xsi:type="docker:Contains" id="_OrAmMPSTEeSVK4unvxRPgw" target="//@resources.11">
-      <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='contains']"/>
-    </links>
-    <links xsi:type="docker:Contains" id="_Oy26oPSTEeSVK4unvxRPgw" target="//@resources.12">
-      <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='contains']"/>
-    </links>
-    <links xsi:type="docker:Contains" id="_O7RPw_STEeSVK4unvxRPgw" target="//@resources.13">
-      <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='contains']"/>
-    </links>
-    <links xsi:type="docker:Contains" id="_PClYsfSTEeSVK4unvxRPgw" target="//@resources.14">
-      <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='contains']"/>
-    </links>
-    <links xsi:type="docker:Contains" id="_PJ-aIfSTEeSVK4unvxRPgw" target="//@resources.15">
-      <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='contains']"/>
-    </links>
-    <links xsi:type="docker:Contains" id="_PRxEMPSTEeSVK4unvxRPgw" target="//@resources.16">
-      <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='contains']"/>
+  <resources
+      xsi:type="docker:Container"
+      id="container2"
+      name="db"
+      image="mysql"
+      ports="..."
+      volumes="..."
+      mem_limit="2000">
+    <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <attributes
+        name="occi.core.id"
+        value="container2"/>
+    <attributes
+        name="name"
+        value="db"/>
+    <attributes
+        name="image"
+        value="mysql"/>
+    <attributes
+        name="ports"
+        value="..."/>
+    <attributes
+        name="volumes"
+        value="..."/>
+    <attributes
+        name="mem_limit"
+        value="2000"/>
+    <links xsi:type="docker:Volumesfrom"
+        id="volumes-from-2.1"
+        target="//@resources.1"
+        mode="read_only">
+      <kind
+          href="http://occiware.org/docker#//@kinds[term='volumesfrom']"/>
+      <attributes
+          name="occi.core.id"
+          value="volumes-from-2.1"/>
+      <attributes
+          name="mode"
+          value="read_only"/>
     </links>
   </resources>
-  <resources xsi:type="docker:Container" id="804b7e6d8cf418c6392972e2c59e0d1dfe10db9d16386d7b127f27dd8f45e925" name="monitor" containerid="804b7e6d8cf418c6392972e2c59e0d1dfe10db9d16386d7b127f27dd8f45e925" image="busybox" command="sleep,9999">
-    <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='container']"/>
-    <attributes name="occi.core.id" value="804b7e6d8cf418c6392972e2c59e0d1dfe10db9d16386d7b127f27dd8f45e925"/>
-    <attributes name="name" value="monitor"/>
-    <attributes name="containerid" value="804b7e6d8cf418c6392972e2c59e0d1dfe10db9d16386d7b127f27dd8f45e925"/>
-    <attributes name="image" value="busybox"/>
-    <attributes name="command" value="sleep,9999"/>
-  </resources>
-  <resources xsi:type="docker:Container" id="8a5df8c0763805152617623f9bc64632d4a7fa7db4855e2b39a4824d7545f1ac" name="backend" containerid="8a5df8c0763805152617623f9bc64632d4a7fa7db4855e2b39a4824d7545f1ac" image="busybox" command="sleep,9999">
-    <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='container']"/>
-    <attributes name="occi.core.id" value="8a5df8c0763805152617623f9bc64632d4a7fa7db4855e2b39a4824d7545f1ac"/>
-    <attributes name="name" value="backend"/>
-    <attributes name="containerid" value="8a5df8c0763805152617623f9bc64632d4a7fa7db4855e2b39a4824d7545f1ac"/>
-    <attributes name="image" value="busybox"/>
-    <attributes name="command" value="sleep,9999"/>
-    <links xsi:type="docker:Link" id="_O7RPwPSTEeSVK4unvxRPgw" target="//@resources.14">
-      <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='link']"/>
+  <resources
+      xsi:type="docker:Machine_VirtualBox"
+      id="_fCfsAPJkEeS2SoyWkdwcvg"
+      cores="-1"
+      memory="1024.0"
+      name="template"
+      boot2docker_url="">
+    <kind href="http://occiware.org/docker#//@kinds[term='machine_VirtualBox']"/>
+    <attributes
+        name="occi.core.id"
+        value="_fCfsAPJkEeS2SoyWkdwcvg"/>
+    <attributes
+        name="occi.compute.cores"
+        value="-1"/>
+    <attributes
+        name="occi.compute.memory"
+        value="1024.0"/>
+    <attributes
+        name="name"
+        value="template"/>
+    <attributes
+        name="boot2docker_url"
+        value=""/>
+    <links xsi:type="docker:Contains"
+        id="_gTBfwfJkEeS2SoyWkdwcvg"
+        target="//@resources.4">
+      <kind
+          href="http://occiware.org/docker#//@kinds[term='contains']"/>
+      <attributes
+          name="occi.core.id"
+          value="_gTBfwfJkEeS2SoyWkdwcvg"/>
     </links>
-    <links xsi:type="docker:Link" id="_O7RPwfSTEeSVK4unvxRPgw" target="//@resources.13">
-      <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='link']"/>
+    <links xsi:type="docker:Contains"
+        id="_gbs6oPJkEeS2SoyWkdwcvg"
+        target="//@resources.5">
+      <kind
+          href="http://occiware.org/docker#//@kinds[term='contains']"/>
+      <attributes
+          name="occi.core.id"
+          value="_gbs6oPJkEeS2SoyWkdwcvg"/>
     </links>
-    <links xsi:type="docker:Link" id="_O7RPwvSTEeSVK4unvxRPgw" target="//@resources.15">
-      <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='link']"/>
+    <links xsi:type="docker:Contains"
+        id="_gj7pkfJkEeS2SoyWkdwcvg"
+        target="//@resources.6">
+      <kind
+          href="http://occiware.org/docker#//@kinds[term='contains']"/>
+      <attributes
+          name="occi.core.id"
+          value="_gj7pkfJkEeS2SoyWkdwcvg"/>
     </links>
-  </resources>
-  <resources xsi:type="docker:Container" id="9075adc2ff334c34c07682610eadd75aaa9c27d6e7b39302a5ef5b672782aebf" name="database" containerid="9075adc2ff334c34c07682610eadd75aaa9c27d6e7b39302a5ef5b672782aebf" image="busybox" command="sleep,9999">
-    <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='container']"/>
-    <attributes name="occi.core.id" value="9075adc2ff334c34c07682610eadd75aaa9c27d6e7b39302a5ef5b672782aebf"/>
-    <attributes name="name" value="database"/>
-    <attributes name="containerid" value="9075adc2ff334c34c07682610eadd75aaa9c27d6e7b39302a5ef5b672782aebf"/>
-    <attributes name="image" value="busybox"/>
-    <attributes name="command" value="sleep,9999"/>
-    <links xsi:type="docker:Link" id="_PClYsPSTEeSVK4unvxRPgw" target="//@resources.14">
-      <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='link']"/>
+    <links xsi:type="docker:Contains"
+        id="_guabQfJkEeS2SoyWkdwcvg"
+        target="//@resources.7">
+      <kind
+          href="http://occiware.org/docker#//@kinds[term='contains']"/>
+      <attributes
+          name="occi.core.id"
+          value="_guabQfJkEeS2SoyWkdwcvg"/>
     </links>
-  </resources>
-  <resources xsi:type="docker:Container" id="34d55585e9e2923d0cd1e12173a66784d74a144a1412ca8f1f2823e8d4dbd9ce" name="webserver" containerid="34d55585e9e2923d0cd1e12173a66784d74a144a1412ca8f1f2823e8d4dbd9ce" image="busybox" command="sleep,9999">
-    <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='container']"/>
-    <attributes name="occi.core.id" value="34d55585e9e2923d0cd1e12173a66784d74a144a1412ca8f1f2823e8d4dbd9ce"/>
-    <attributes name="name" value="webserver"/>
-    <attributes name="containerid" value="34d55585e9e2923d0cd1e12173a66784d74a144a1412ca8f1f2823e8d4dbd9ce"/>
-    <attributes name="image" value="busybox"/>
-    <attributes name="command" value="sleep,9999"/>
-    <links xsi:type="docker:Link" id="_PJ-aIPSTEeSVK4unvxRPgw" target="//@resources.16">
-      <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='link']"/>
+    <links xsi:type="docker:Contains"
+        id="_g1wZYfJkEeS2SoyWkdwcvg"
+        target="//@resources.8">
+      <kind
+          href="http://occiware.org/docker#//@kinds[term='contains']"/>
+      <attributes
+          name="occi.core.id"
+          value="_g1wZYfJkEeS2SoyWkdwcvg"/>
     </links>
-  </resources>
-  <resources xsi:type="docker:Container" id="d9055f2c49a6321239459f8b50b99e1ed8568e5d4757f88d1f91aff96d35f2c6" name="python" containerid="d9055f2c49a6321239459f8b50b99e1ed8568e5d4757f88d1f91aff96d35f2c6" image="busybox" command="sleep,9999">
-    <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='container']"/>
-    <attributes name="occi.core.id" value="d9055f2c49a6321239459f8b50b99e1ed8568e5d4757f88d1f91aff96d35f2c6"/>
-    <attributes name="name" value="python"/>
-    <attributes name="containerid" value="d9055f2c49a6321239459f8b50b99e1ed8568e5d4757f88d1f91aff96d35f2c6"/>
-    <attributes name="image" value="busybox"/>
-    <attributes name="command" value="sleep,9999"/>
-  </resources>
-  <resources xsi:type="docker:Container" id="8f54046d221e0a468935e603d738bb0d384acc02d6e217e17471d28b59efaa65" name="redis" containerid="8f54046d221e0a468935e603d738bb0d384acc02d6e217e17471d28b59efaa65" image="busybox" command="sleep,9999">
-    <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='container']"/>
-    <attributes name="occi.core.id" value="8f54046d221e0a468935e603d738bb0d384acc02d6e217e17471d28b59efaa65"/>
-    <attributes name="name" value="redis"/>
-    <attributes name="containerid" value="8f54046d221e0a468935e603d738bb0d384acc02d6e217e17471d28b59efaa65"/>
-    <attributes name="image" value="busybox"/>
-    <attributes name="command" value="sleep,9999"/>
-  </resources>
-  <resources xsi:type="docker:Machine_VirtualBox" id="_UaFFAPSXEeSVK4unvxRPgw" name="home-automation">
-    <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='machine_VirtualBox']"/>
-    <attributes name="occi.core.id" value="_UaFFAPSXEeSVK4unvxRPgw"/>
-    <attributes name="name" value="home-automation"/>
-    <links xsi:type="docker:Contains" id="_rCjRQPSYEeSVK4unvxRPgw" target="//@resources.18">
-      <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='contains']"/>
+    <links xsi:type="docker:Contains"
+        id="_g9pxIPJkEeS2SoyWkdwcvg"
+        target="//@resources.9">
+      <kind
+          href="http://occiware.org/docker#//@kinds[term='contains']"/>
+      <attributes
+          name="occi.core.id"
+          value="_g9pxIPJkEeS2SoyWkdwcvg"/>
     </links>
-    <links xsi:type="docker:Contains" id="_3h6U8fSYEeSVK4unvxRPgw" target="//@resources.19">
-      <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='contains']"/>
-    </links>
-    <links xsi:type="docker:Contains" id="_D27J0PSZEeSVK4unvxRPgw" target="//@resources.20">
-      <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='contains']"/>
-    </links>
-    <links xsi:type="docker:Contains" id="_JA57YfSZEeSVK4unvxRPgw" target="//@resources.21">
-      <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='contains']"/>
-    </links>
-    <links xsi:type="docker:Contains" id="_VekV8fSZEeSVK4unvxRPgw" target="//@resources.22">
-      <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='contains']"/>
-    </links>
-  </resources>
-  <resources xsi:type="docker:Container" id="_rCiqMPSYEeSVK4unvxRPgw" name="sqlite" image="busybox" command="sleep,9999">
-    <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='container']"/>
-    <attributes name="occi.core.id" value="_rCiqMPSYEeSVK4unvxRPgw"/>
-    <attributes name="name" value="sqlite"/>
-    <attributes name="image" value="busybox"/>
-    <attributes name="command" value="sleep,9999"/>
-  </resources>
-  <resources xsi:type="docker:Container" id="_3h6U8PSYEeSVK4unvxRPgw" name="REST-API" image="busybox" command="sleep,9999" cap_drop="">
-    <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='container']"/>
-    <attributes name="occi.core.id" value="_3h6U8PSYEeSVK4unvxRPgw"/>
-    <attributes name="name" value="REST-API"/>
-    <attributes name="image" value="busybox"/>
-    <attributes name="command" value="sleep,9999"/>
-    <attributes name="cap_drop" value=""/>
-    <links xsi:type="docker:Link" id="_ODRCAPSZEeSVK4unvxRPgw" target="//@resources.18">
-      <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='link']"/>
-    </links>
-    <links xsi:type="docker:Link" id="_RivZkPSZEeSVK4unvxRPgw" target="//@resources.20">
-      <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='link']"/>
+    <links xsi:type="docker:Contains"
+        id="b44d6d33-df60-47b2-9ee0-13e823a2a2e1"
+        target="//@resources.32">
+      <kind
+          href="http://occiware.org/docker#//@kinds[term='contains']"/>
+      <attributes
+          name="occi.core.id"
+          value="b44d6d33-df60-47b2-9ee0-13e823a2a2e1"/>
     </links>
   </resources>
-  <resources xsi:type="docker:Container" id="_D26iwPSZEeSVK4unvxRPgw" name="mosquitto" image="busybox" command="sleep,9999">
-    <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='container']"/>
-    <attributes name="occi.core.id" value="_D26iwPSZEeSVK4unvxRPgw"/>
-    <attributes name="name" value="mosquitto"/>
-    <attributes name="image" value="busybox"/>
-    <attributes name="command" value="sleep,9999"/>
-    <links xsi:type="docker:Link" id="_aSmFoPSZEeSVK4unvxRPgw" target="//@resources.22">
-      <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='link']"/>
+  <resources
+      xsi:type="docker:Container"
+      id="d7d214d6502c0b8596af24e6fade269892316333b00eef81c1627c903bfff31d"
+      name="monitor"
+      containerid=""
+      image="busybox"
+      command="sleep,9999">
+    <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <attributes
+        name="occi.core.id"
+        value="d7d214d6502c0b8596af24e6fade269892316333b00eef81c1627c903bfff31d"/>
+    <attributes
+        name="name"
+        value="monitor"/>
+    <attributes
+        name="containerid"
+        value=""/>
+    <attributes
+        name="image"
+        value="busybox"/>
+    <attributes
+        name="command"
+        value="sleep,9999"/>
+  </resources>
+  <resources
+      xsi:type="docker:Container"
+      id="8a2578d927d060be26b14c7bbc5ece5256e4e4e85645a44676b61da69e31f62f"
+      name="database"
+      containerid=""
+      image="busybox"
+      command="sleep,9999">
+    <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <attributes
+        name="occi.core.id"
+        value="8a2578d927d060be26b14c7bbc5ece5256e4e4e85645a44676b61da69e31f62f"/>
+    <attributes
+        name="name"
+        value="database"/>
+    <attributes
+        name="containerid"
+        value=""/>
+    <attributes
+        name="image"
+        value="busybox"/>
+    <attributes
+        name="command"
+        value="sleep,9999"/>
+    <links xsi:type="docker:Link"
+        id="_OtG8gPJlEeS2SoyWkdwcvg"
+        target="//@resources.6">
+      <kind
+          href="http://occiware.org/docker#//@kinds[term='link']"/>
+      <attributes
+          name="occi.core.id"
+          value="_OtG8gPJlEeS2SoyWkdwcvg"/>
     </links>
   </resources>
-  <resources xsi:type="docker:Container" id="_JA57YPSZEeSVK4unvxRPgw" name="frontend" image="busybox" command="sleep,9999">
-    <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='container']"/>
-    <attributes name="occi.core.id" value="_JA57YPSZEeSVK4unvxRPgw"/>
-    <attributes name="name" value="frontend"/>
-    <attributes name="image" value="busybox"/>
-    <attributes name="command" value="sleep,9999"/>
-    <links xsi:type="docker:Link" id="_O-qTQPSZEeSVK4unvxRPgw" target="//@resources.19">
-      <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='link']"/>
+  <resources
+      xsi:type="docker:Container"
+      id="b0e0970d46e1d750917d5b5fe97e8139235a95a062118a8dd37edcac3331bb8e"
+      name="webserver"
+      containerid=""
+      image="busybox"
+      command="sleep,9999">
+    <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <attributes
+        name="occi.core.id"
+        value="b0e0970d46e1d750917d5b5fe97e8139235a95a062118a8dd37edcac3331bb8e"/>
+    <attributes
+        name="name"
+        value="webserver"/>
+    <attributes
+        name="containerid"
+        value=""/>
+    <attributes
+        name="image"
+        value="busybox"/>
+    <attributes
+        name="command"
+        value="sleep,9999"/>
+    <links xsi:type="docker:Link"
+        id="_guabQPJkEeS2SoyWkdwcvg"
+        target="//@resources.8">
+      <kind
+          href="http://occiware.org/docker#//@kinds[term='link']"/>
+      <attributes
+          name="occi.core.id"
+          value="_guabQPJkEeS2SoyWkdwcvg"/>
     </links>
   </resources>
-  <resources xsi:type="docker:Container" id="_VekV8PSZEeSVK4unvxRPgw" name="monitor" image="training/webapp" command="python,app.py" ports="5000:5000">
-    <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='container']"/>
-    <attributes name="occi.core.id" value="_VekV8PSZEeSVK4unvxRPgw"/>
-    <attributes name="name" value="monitor"/>
-    <attributes name="image" value="training/webapp"/>
-    <attributes name="command" value="python,app.py"/>
-    <attributes name="ports" value="5000:5000"/>
-  </resources>
-  <resources xsi:type="docker:Machine_VirtualBox" id="_cSgScPSaEeSVK4unvxRPgw" cores="-1" memory="1024.0" name="Storm-topology" boot2docker_url="">
-    <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='machine_VirtualBox']"/>
-    <attributes name="occi.core.id" value="_cSgScPSaEeSVK4unvxRPgw"/>
-    <attributes name="occi.compute.cores" value="-1"/>
-    <attributes name="occi.compute.memory" value="1024.0"/>
-    <attributes name="name" value="Storm-topology"/>
-    <attributes name="boot2docker_url" value=""/>
-    <links xsi:type="docker:Contains" id="_dgxcYfSaEeSVK4unvxRPgw" target="//@resources.24">
-      <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='contains']"/>
+  <resources
+      xsi:type="docker:Container"
+      id="08a4884ba175d390bde7392c6eae5e65347a12027bc0aad2c1aff69178e82df7"
+      name="backend"
+      containerid=""
+      image="busybox"
+      command="sleep,9999">
+    <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <attributes
+        name="occi.core.id"
+        value="08a4884ba175d390bde7392c6eae5e65347a12027bc0aad2c1aff69178e82df7"/>
+    <attributes
+        name="name"
+        value="backend"/>
+    <attributes
+        name="containerid"
+        value=""/>
+    <attributes
+        name="image"
+        value="busybox"/>
+    <attributes
+        name="command"
+        value="sleep,9999"/>
+    <links xsi:type="docker:Link"
+        id="_g1wZYPJkEeS2SoyWkdwcvg"
+        target="//@resources.9">
+      <kind
+          href="http://occiware.org/docker#//@kinds[term='link']"/>
+      <attributes
+          name="occi.core.id"
+          value="_g1wZYPJkEeS2SoyWkdwcvg"/>
     </links>
-    <links xsi:type="docker:Contains" id="_dpKjY_SaEeSVK4unvxRPgw" target="//@resources.25">
-      <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='contains']"/>
+    <links xsi:type="docker:Link"
+        id="_NCFlIPJlEeS2SoyWkdwcvg"
+        target="//@resources.5">
+      <kind
+          href="http://occiware.org/docker#//@kinds[term='link']"/>
+      <attributes
+          name="occi.core.id"
+          value="_NCFlIPJlEeS2SoyWkdwcvg"/>
     </links>
-    <links xsi:type="docker:Contains" id="_dxW2E_SaEeSVK4unvxRPgw" target="//@resources.26">
-      <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='contains']"/>
-    </links>
-    <links xsi:type="docker:Contains" id="_d5dpMvSaEeSVK4unvxRPgw" target="//@resources.27">
-      <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='contains']"/>
-    </links>
-    <links xsi:type="docker:Contains" id="_eBZdMvSaEeSVK4unvxRPgw" target="//@resources.28">
-      <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='contains']"/>
-    </links>
-    <links xsi:type="docker:Contains" id="_eJtEovSaEeSVK4unvxRPgw" target="//@resources.29">
-      <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='contains']"/>
-    </links>
-    <links xsi:type="docker:Contains" id="_eSKdEfSaEeSVK4unvxRPgw" target="//@resources.30">
-      <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='contains']"/>
-    </links>
-    <links xsi:type="docker:Contains" id="_eZ-8UfSaEeSVK4unvxRPgw" target="//@resources.31">
-      <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='contains']"/>
-    </links>
-  </resources>
-  <resources xsi:type="docker:Container" id="cb1b87be9ab675185e761077fb769d62bb55219d2bf174dd14796985881b646a" name="word-spout-2" containerid="" image="busybox" command="sleep,9999">
-    <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='container']"/>
-    <attributes name="occi.core.id" value="cb1b87be9ab675185e761077fb769d62bb55219d2bf174dd14796985881b646a"/>
-    <attributes name="name" value="word-spout-2"/>
-    <attributes name="containerid" value=""/>
-    <attributes name="image" value="busybox"/>
-    <attributes name="command" value="sleep,9999"/>
-    <links xsi:type="docker:Link" id="_dpKjYPSaEeSVK4unvxRPgw" target="//@resources.28">
-      <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='link']"/>
-    </links>
-    <links xsi:type="docker:Link" id="_dpKjYfSaEeSVK4unvxRPgw" target="//@resources.27">
-      <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='link']"/>
-    </links>
-    <links xsi:type="docker:Link" id="_dpKjYvSaEeSVK4unvxRPgw" target="//@resources.26">
-      <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='link']"/>
+    <links xsi:type="docker:Link"
+        id="_SMo-cPJlEeS2SoyWkdwcvg"
+        target="//@resources.6">
+      <kind
+          href="http://occiware.org/docker#//@kinds[term='link']"/>
+      <attributes
+          name="occi.core.id"
+          value="_SMo-cPJlEeS2SoyWkdwcvg"/>
     </links>
   </resources>
-  <resources xsi:type="docker:Container" id="1c247f645643ba4b57f9918b60328518fd446c7d09b456ca08d15133e07b0d26" name="word-spout-1" containerid="1c247f645643ba4b57f9918b60328518fd446c7d09b456ca08d15133e07b0d26" image="busybox" command="sleep,9999">
-    <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='container']"/>
-    <attributes name="occi.core.id" value="1c247f645643ba4b57f9918b60328518fd446c7d09b456ca08d15133e07b0d26"/>
-    <attributes name="name" value="word-spout-1"/>
-    <attributes name="containerid" value="1c247f645643ba4b57f9918b60328518fd446c7d09b456ca08d15133e07b0d26"/>
-    <attributes name="image" value="busybox"/>
-    <attributes name="command" value="sleep,9999"/>
-    <links xsi:type="docker:Link" id="_dxW2EPSaEeSVK4unvxRPgw" target="//@resources.28">
-      <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='link']"/>
+  <resources
+      xsi:type="docker:Container"
+      id="b90a607b486d71b0551792c8e76f1b31c8277e5ffd1f63b8f7c702477cc4098a"
+      name="redis"
+      containerid=""
+      image="busybox"
+      command="sleep,9999">
+    <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <attributes
+        name="occi.core.id"
+        value="b90a607b486d71b0551792c8e76f1b31c8277e5ffd1f63b8f7c702477cc4098a"/>
+    <attributes
+        name="name"
+        value="redis"/>
+    <attributes
+        name="containerid"
+        value=""/>
+    <attributes
+        name="image"
+        value="busybox"/>
+    <attributes
+        name="command"
+        value="sleep,9999"/>
+  </resources>
+  <resources
+      xsi:type="docker:Container"
+      id="b4623180e519f2ac7a0800a1c0457a8c8d0c71160e3d123126518e572ad2aa5e"
+      name="python"
+      containerid=""
+      image="busybox"
+      command="sleep,9999">
+    <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <attributes
+        name="occi.core.id"
+        value="b4623180e519f2ac7a0800a1c0457a8c8d0c71160e3d123126518e572ad2aa5e"/>
+    <attributes
+        name="name"
+        value="python"/>
+    <attributes
+        name="containerid"
+        value=""/>
+    <attributes
+        name="image"
+        value="busybox"/>
+    <attributes
+        name="command"
+        value="sleep,9999"/>
+  </resources>
+  <resources
+      xsi:type="docker:Machine_VirtualBox"
+      id="_N1IuIPSTEeSVK4unvxRPgw"
+      cores="-1"
+      memory="1024.0"
+      name="test"
+      boot2docker_url="">
+    <kind href="http://occiware.org/docker#//@kinds[term='machine_VirtualBox']"/>
+    <attributes
+        name="occi.core.id"
+        value="_N1IuIPSTEeSVK4unvxRPgw"/>
+    <attributes
+        name="occi.compute.cores"
+        value="-1"/>
+    <attributes
+        name="occi.compute.memory"
+        value="1024.0"/>
+    <attributes
+        name="name"
+        value="test"/>
+    <attributes
+        name="boot2docker_url"
+        value=""/>
+    <links xsi:type="docker:Contains"
+        id="_OrAmMPSTEeSVK4unvxRPgw"
+        target="//@resources.11">
+      <kind
+          href="http://occiware.org/docker#//@kinds[term='contains']"/>
+      <attributes
+          name="occi.core.id"
+          value="_OrAmMPSTEeSVK4unvxRPgw"/>
     </links>
-    <links xsi:type="docker:Link" id="_dxW2EfSaEeSVK4unvxRPgw" target="//@resources.27">
-      <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='link']"/>
+    <links xsi:type="docker:Contains"
+        id="_Oy26oPSTEeSVK4unvxRPgw"
+        target="//@resources.12">
+      <kind
+          href="http://occiware.org/docker#//@kinds[term='contains']"/>
+      <attributes
+          name="occi.core.id"
+          value="_Oy26oPSTEeSVK4unvxRPgw"/>
     </links>
-    <links xsi:type="docker:Link" id="_dxW2EvSaEeSVK4unvxRPgw" target="//@resources.26">
-      <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='link']"/>
+    <links xsi:type="docker:Contains"
+        id="_O7RPw_STEeSVK4unvxRPgw"
+        target="//@resources.13">
+      <kind
+          href="http://occiware.org/docker#//@kinds[term='contains']"/>
+      <attributes
+          name="occi.core.id"
+          value="_O7RPw_STEeSVK4unvxRPgw"/>
+    </links>
+    <links xsi:type="docker:Contains"
+        id="_PClYsfSTEeSVK4unvxRPgw"
+        target="//@resources.14">
+      <kind
+          href="http://occiware.org/docker#//@kinds[term='contains']"/>
+      <attributes
+          name="occi.core.id"
+          value="_PClYsfSTEeSVK4unvxRPgw"/>
+    </links>
+    <links xsi:type="docker:Contains"
+        id="_PJ-aIfSTEeSVK4unvxRPgw"
+        target="//@resources.15">
+      <kind
+          href="http://occiware.org/docker#//@kinds[term='contains']"/>
+      <attributes
+          name="occi.core.id"
+          value="_PJ-aIfSTEeSVK4unvxRPgw"/>
+    </links>
+    <links xsi:type="docker:Contains"
+        id="_PRxEMPSTEeSVK4unvxRPgw"
+        target="//@resources.16">
+      <kind
+          href="http://occiware.org/docker#//@kinds[term='contains']"/>
+      <attributes
+          name="occi.core.id"
+          value="_PRxEMPSTEeSVK4unvxRPgw"/>
     </links>
   </resources>
-  <resources xsi:type="docker:Container" id="a57d52c7246c76bd2feb5c86b898fe588de663b74f6c88a70bf4f5833604d713" name="count-bolt-3" containerid="a57d52c7246c76bd2feb5c86b898fe588de663b74f6c88a70bf4f5833604d713" image="busybox" command="sleep,9999">
-    <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='container']"/>
-    <attributes name="occi.core.id" value="a57d52c7246c76bd2feb5c86b898fe588de663b74f6c88a70bf4f5833604d713"/>
-    <attributes name="name" value="count-bolt-3"/>
-    <attributes name="containerid" value="a57d52c7246c76bd2feb5c86b898fe588de663b74f6c88a70bf4f5833604d713"/>
-    <attributes name="image" value="busybox"/>
-    <attributes name="command" value="sleep,9999"/>
-    <links xsi:type="docker:Link" id="_d5dpMPSaEeSVK4unvxRPgw" target="//@resources.30">
-      <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='link']"/>
+  <resources
+      xsi:type="docker:Container"
+      id="804b7e6d8cf418c6392972e2c59e0d1dfe10db9d16386d7b127f27dd8f45e925"
+      name="monitor"
+      containerid="804b7e6d8cf418c6392972e2c59e0d1dfe10db9d16386d7b127f27dd8f45e925"
+      image="busybox"
+      command="sleep,9999">
+    <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <attributes
+        name="occi.core.id"
+        value="804b7e6d8cf418c6392972e2c59e0d1dfe10db9d16386d7b127f27dd8f45e925"/>
+    <attributes
+        name="name"
+        value="monitor"/>
+    <attributes
+        name="containerid"
+        value="804b7e6d8cf418c6392972e2c59e0d1dfe10db9d16386d7b127f27dd8f45e925"/>
+    <attributes
+        name="image"
+        value="busybox"/>
+    <attributes
+        name="command"
+        value="sleep,9999"/>
+  </resources>
+  <resources
+      xsi:type="docker:Container"
+      id="8a5df8c0763805152617623f9bc64632d4a7fa7db4855e2b39a4824d7545f1ac"
+      name="backend"
+      containerid="8a5df8c0763805152617623f9bc64632d4a7fa7db4855e2b39a4824d7545f1ac"
+      image="busybox"
+      command="sleep,9999">
+    <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <attributes
+        name="occi.core.id"
+        value="8a5df8c0763805152617623f9bc64632d4a7fa7db4855e2b39a4824d7545f1ac"/>
+    <attributes
+        name="name"
+        value="backend"/>
+    <attributes
+        name="containerid"
+        value="8a5df8c0763805152617623f9bc64632d4a7fa7db4855e2b39a4824d7545f1ac"/>
+    <attributes
+        name="image"
+        value="busybox"/>
+    <attributes
+        name="command"
+        value="sleep,9999"/>
+    <links xsi:type="docker:Link"
+        id="_O7RPwPSTEeSVK4unvxRPgw"
+        target="//@resources.14">
+      <kind
+          href="http://occiware.org/docker#//@kinds[term='link']"/>
+      <attributes
+          name="occi.core.id"
+          value="_O7RPwPSTEeSVK4unvxRPgw"/>
     </links>
-    <links xsi:type="docker:Link" id="_d5dpMfSaEeSVK4unvxRPgw" target="//@resources.29">
-      <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='link']"/>
+    <links xsi:type="docker:Link"
+        id="_O7RPwfSTEeSVK4unvxRPgw"
+        target="//@resources.13">
+      <kind
+          href="http://occiware.org/docker#//@kinds[term='link']"/>
+      <attributes
+          name="occi.core.id"
+          value="_O7RPwfSTEeSVK4unvxRPgw"/>
+    </links>
+    <links xsi:type="docker:Link"
+        id="_O7RPwvSTEeSVK4unvxRPgw"
+        target="//@resources.15">
+      <kind
+          href="http://occiware.org/docker#//@kinds[term='link']"/>
+      <attributes
+          name="occi.core.id"
+          value="_O7RPwvSTEeSVK4unvxRPgw"/>
     </links>
   </resources>
-  <resources xsi:type="docker:Container" id="2b22b5fbcc28d21c1882743cd0291c6274ea4772446417d9400cfa64aa90f161" name="count-bolt-2" containerid="2b22b5fbcc28d21c1882743cd0291c6274ea4772446417d9400cfa64aa90f161" image="busybox" command="sleep,9999">
-    <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='container']"/>
-    <attributes name="occi.core.id" value="2b22b5fbcc28d21c1882743cd0291c6274ea4772446417d9400cfa64aa90f161"/>
-    <attributes name="name" value="count-bolt-2"/>
-    <attributes name="containerid" value="2b22b5fbcc28d21c1882743cd0291c6274ea4772446417d9400cfa64aa90f161"/>
-    <attributes name="image" value="busybox"/>
-    <attributes name="command" value="sleep,9999"/>
-    <links xsi:type="docker:Link" id="_eBZdMPSaEeSVK4unvxRPgw" target="//@resources.30">
-      <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='link']"/>
-    </links>
-    <links xsi:type="docker:Link" id="_eBZdMfSaEeSVK4unvxRPgw" target="//@resources.29">
-      <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='link']"/>
-    </links>
-  </resources>
-  <resources xsi:type="docker:Container" id="6bad9e39d72cb02ba12694d180c16ab710a68baf4f24cf43679095b7dc5ac853" name="count-bolt-1" containerid="6bad9e39d72cb02ba12694d180c16ab710a68baf4f24cf43679095b7dc5ac853" image="busybox" command="sleep,9999">
-    <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='container']"/>
-    <attributes name="occi.core.id" value="6bad9e39d72cb02ba12694d180c16ab710a68baf4f24cf43679095b7dc5ac853"/>
-    <attributes name="name" value="count-bolt-1"/>
-    <attributes name="containerid" value="6bad9e39d72cb02ba12694d180c16ab710a68baf4f24cf43679095b7dc5ac853"/>
-    <attributes name="image" value="busybox"/>
-    <attributes name="command" value="sleep,9999"/>
-    <links xsi:type="docker:Link" id="_eJtEoPSaEeSVK4unvxRPgw" target="//@resources.30">
-      <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='link']"/>
-    </links>
-    <links xsi:type="docker:Link" id="_eJtEofSaEeSVK4unvxRPgw" target="//@resources.29">
-      <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='link']"/>
-    </links>
-  </resources>
-  <resources xsi:type="docker:Container" id="640c4bcfe34ba0fd303408df0e4379e04eb066d1648a1278b4fdb00ecc6dbccf" name="rolling-count-bolt-2" containerid="640c4bcfe34ba0fd303408df0e4379e04eb066d1648a1278b4fdb00ecc6dbccf" image="busybox" command="sleep,9999">
-    <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='container']"/>
-    <attributes name="occi.core.id" value="640c4bcfe34ba0fd303408df0e4379e04eb066d1648a1278b4fdb00ecc6dbccf"/>
-    <attributes name="name" value="rolling-count-bolt-2"/>
-    <attributes name="containerid" value="640c4bcfe34ba0fd303408df0e4379e04eb066d1648a1278b4fdb00ecc6dbccf"/>
-    <attributes name="image" value="busybox"/>
-    <attributes name="command" value="sleep,9999"/>
-    <links xsi:type="docker:Link" id="_eSKdEPSaEeSVK4unvxRPgw" target="//@resources.31">
-      <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='link']"/>
+  <resources
+      xsi:type="docker:Container"
+      id="9075adc2ff334c34c07682610eadd75aaa9c27d6e7b39302a5ef5b672782aebf"
+      name="database"
+      containerid="9075adc2ff334c34c07682610eadd75aaa9c27d6e7b39302a5ef5b672782aebf"
+      image="busybox"
+      command="sleep,9999">
+    <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <attributes
+        name="occi.core.id"
+        value="9075adc2ff334c34c07682610eadd75aaa9c27d6e7b39302a5ef5b672782aebf"/>
+    <attributes
+        name="name"
+        value="database"/>
+    <attributes
+        name="containerid"
+        value="9075adc2ff334c34c07682610eadd75aaa9c27d6e7b39302a5ef5b672782aebf"/>
+    <attributes
+        name="image"
+        value="busybox"/>
+    <attributes
+        name="command"
+        value="sleep,9999"/>
+    <links xsi:type="docker:Link"
+        id="_PClYsPSTEeSVK4unvxRPgw"
+        target="//@resources.14">
+      <kind
+          href="http://occiware.org/docker#//@kinds[term='link']"/>
+      <attributes
+          name="occi.core.id"
+          value="_PClYsPSTEeSVK4unvxRPgw"/>
     </links>
   </resources>
-  <resources xsi:type="docker:Container" id="f8991567fe37f15ed936706933d920ab19b94f8ce9a30bf92c6f705cc9555319" name="rolling-count-bolt-1" containerid="f8991567fe37f15ed936706933d920ab19b94f8ce9a30bf92c6f705cc9555319" image="busybox" command="sleep,9999">
-    <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='container']"/>
-    <attributes name="occi.core.id" value="f8991567fe37f15ed936706933d920ab19b94f8ce9a30bf92c6f705cc9555319"/>
-    <attributes name="name" value="rolling-count-bolt-1"/>
-    <attributes name="containerid" value="f8991567fe37f15ed936706933d920ab19b94f8ce9a30bf92c6f705cc9555319"/>
-    <attributes name="image" value="busybox"/>
-    <attributes name="command" value="sleep,9999"/>
-    <links xsi:type="docker:Link" id="_eZ-8UPSaEeSVK4unvxRPgw" target="//@resources.31">
-      <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='link']"/>
+  <resources
+      xsi:type="docker:Container"
+      id="34d55585e9e2923d0cd1e12173a66784d74a144a1412ca8f1f2823e8d4dbd9ce"
+      name="webserver"
+      containerid="34d55585e9e2923d0cd1e12173a66784d74a144a1412ca8f1f2823e8d4dbd9ce"
+      image="busybox"
+      command="sleep,9999">
+    <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <attributes
+        name="occi.core.id"
+        value="34d55585e9e2923d0cd1e12173a66784d74a144a1412ca8f1f2823e8d4dbd9ce"/>
+    <attributes
+        name="name"
+        value="webserver"/>
+    <attributes
+        name="containerid"
+        value="34d55585e9e2923d0cd1e12173a66784d74a144a1412ca8f1f2823e8d4dbd9ce"/>
+    <attributes
+        name="image"
+        value="busybox"/>
+    <attributes
+        name="command"
+        value="sleep,9999"/>
+    <links xsi:type="docker:Link"
+        id="_PJ-aIPSTEeSVK4unvxRPgw"
+        target="//@resources.16">
+      <kind
+          href="http://occiware.org/docker#//@kinds[term='link']"/>
+      <attributes
+          name="occi.core.id"
+          value="_PJ-aIPSTEeSVK4unvxRPgw"/>
     </links>
   </resources>
-  <resources xsi:type="docker:Container" id="06f777e9d6f41827055131ce6163fb128e926c888d1a77bcf8570d837a7fa4f5" name="ranking-bolt" containerid="06f777e9d6f41827055131ce6163fb128e926c888d1a77bcf8570d837a7fa4f5" image="busybox" command="sleep,9999">
-    <kind href="../../plugin/org.occiware.clouddesigner.occi.docker/model/Docker.occie#//@kinds[term='container']"/>
-    <attributes name="occi.core.id" value="06f777e9d6f41827055131ce6163fb128e926c888d1a77bcf8570d837a7fa4f5"/>
-    <attributes name="name" value="ranking-bolt"/>
-    <attributes name="containerid" value="06f777e9d6f41827055131ce6163fb128e926c888d1a77bcf8570d837a7fa4f5"/>
-    <attributes name="image" value="busybox"/>
-    <attributes name="command" value="sleep,9999"/>
+  <resources
+      xsi:type="docker:Container"
+      id="d9055f2c49a6321239459f8b50b99e1ed8568e5d4757f88d1f91aff96d35f2c6"
+      name="python"
+      containerid="d9055f2c49a6321239459f8b50b99e1ed8568e5d4757f88d1f91aff96d35f2c6"
+      image="busybox"
+      command="sleep,9999">
+    <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <attributes
+        name="occi.core.id"
+        value="d9055f2c49a6321239459f8b50b99e1ed8568e5d4757f88d1f91aff96d35f2c6"/>
+    <attributes
+        name="name"
+        value="python"/>
+    <attributes
+        name="containerid"
+        value="d9055f2c49a6321239459f8b50b99e1ed8568e5d4757f88d1f91aff96d35f2c6"/>
+    <attributes
+        name="image"
+        value="busybox"/>
+    <attributes
+        name="command"
+        value="sleep,9999"/>
   </resources>
-  <resources xsi:type="docker:Container" id="3580412e-b037-4140-9805-6f4ba9ed6c7c">
-    <attributes name="occi.core.id" value="3580412e-b037-4140-9805-6f4ba9ed6c7c"/>
+  <resources
+      xsi:type="docker:Container"
+      id="8f54046d221e0a468935e603d738bb0d384acc02d6e217e17471d28b59efaa65"
+      name="redis"
+      containerid="8f54046d221e0a468935e603d738bb0d384acc02d6e217e17471d28b59efaa65"
+      image="busybox"
+      command="sleep,9999">
+    <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <attributes
+        name="occi.core.id"
+        value="8f54046d221e0a468935e603d738bb0d384acc02d6e217e17471d28b59efaa65"/>
+    <attributes
+        name="name"
+        value="redis"/>
+    <attributes
+        name="containerid"
+        value="8f54046d221e0a468935e603d738bb0d384acc02d6e217e17471d28b59efaa65"/>
+    <attributes
+        name="image"
+        value="busybox"/>
+    <attributes
+        name="command"
+        value="sleep,9999"/>
+  </resources>
+  <resources
+      xsi:type="docker:Machine_VirtualBox"
+      id="_UaFFAPSXEeSVK4unvxRPgw"
+      name="home-automation">
+    <kind href="http://occiware.org/docker#//@kinds[term='machine_VirtualBox']"/>
+    <attributes
+        name="occi.core.id"
+        value="_UaFFAPSXEeSVK4unvxRPgw"/>
+    <attributes
+        name="name"
+        value="home-automation"/>
+    <links xsi:type="docker:Contains"
+        id="_rCjRQPSYEeSVK4unvxRPgw"
+        target="//@resources.18">
+      <kind
+          href="http://occiware.org/docker#//@kinds[term='contains']"/>
+      <attributes
+          name="occi.core.id"
+          value="_rCjRQPSYEeSVK4unvxRPgw"/>
+    </links>
+    <links xsi:type="docker:Contains"
+        id="_3h6U8fSYEeSVK4unvxRPgw"
+        target="//@resources.19">
+      <kind
+          href="http://occiware.org/docker#//@kinds[term='contains']"/>
+      <attributes
+          name="occi.core.id"
+          value="_3h6U8fSYEeSVK4unvxRPgw"/>
+    </links>
+    <links xsi:type="docker:Contains"
+        id="_D27J0PSZEeSVK4unvxRPgw"
+        target="//@resources.20">
+      <kind
+          href="http://occiware.org/docker#//@kinds[term='contains']"/>
+      <attributes
+          name="occi.core.id"
+          value="_D27J0PSZEeSVK4unvxRPgw"/>
+    </links>
+    <links xsi:type="docker:Contains"
+        id="_JA57YfSZEeSVK4unvxRPgw"
+        target="//@resources.21">
+      <kind
+          href="http://occiware.org/docker#//@kinds[term='contains']"/>
+      <attributes
+          name="occi.core.id"
+          value="_JA57YfSZEeSVK4unvxRPgw"/>
+    </links>
+    <links xsi:type="docker:Contains"
+        id="_VekV8fSZEeSVK4unvxRPgw"
+        target="//@resources.22">
+      <kind
+          href="http://occiware.org/docker#//@kinds[term='contains']"/>
+      <attributes
+          name="occi.core.id"
+          value="_VekV8fSZEeSVK4unvxRPgw"/>
+    </links>
+  </resources>
+  <resources
+      xsi:type="docker:Container"
+      id="_rCiqMPSYEeSVK4unvxRPgw"
+      name="sqlite"
+      image="busybox"
+      command="sleep,9999">
+    <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <attributes
+        name="occi.core.id"
+        value="_rCiqMPSYEeSVK4unvxRPgw"/>
+    <attributes
+        name="name"
+        value="sqlite"/>
+    <attributes
+        name="image"
+        value="busybox"/>
+    <attributes
+        name="command"
+        value="sleep,9999"/>
+  </resources>
+  <resources
+      xsi:type="docker:Container"
+      id="_3h6U8PSYEeSVK4unvxRPgw"
+      name="REST-API"
+      image="busybox"
+      command="sleep,9999"
+      cap_drop="">
+    <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <attributes
+        name="occi.core.id"
+        value="_3h6U8PSYEeSVK4unvxRPgw"/>
+    <attributes
+        name="name"
+        value="REST-API"/>
+    <attributes
+        name="image"
+        value="busybox"/>
+    <attributes
+        name="command"
+        value="sleep,9999"/>
+    <attributes
+        name="cap_drop"
+        value=""/>
+    <links xsi:type="docker:Link"
+        id="_ODRCAPSZEeSVK4unvxRPgw"
+        target="//@resources.18">
+      <kind
+          href="http://occiware.org/docker#//@kinds[term='link']"/>
+      <attributes
+          name="occi.core.id"
+          value="_ODRCAPSZEeSVK4unvxRPgw"/>
+    </links>
+    <links xsi:type="docker:Link"
+        id="_RivZkPSZEeSVK4unvxRPgw"
+        target="//@resources.20">
+      <kind
+          href="http://occiware.org/docker#//@kinds[term='link']"/>
+      <attributes
+          name="occi.core.id"
+          value="_RivZkPSZEeSVK4unvxRPgw"/>
+    </links>
+  </resources>
+  <resources
+      xsi:type="docker:Container"
+      id="_D26iwPSZEeSVK4unvxRPgw"
+      name="mosquitto"
+      image="busybox"
+      command="sleep,9999">
+    <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <attributes
+        name="occi.core.id"
+        value="_D26iwPSZEeSVK4unvxRPgw"/>
+    <attributes
+        name="name"
+        value="mosquitto"/>
+    <attributes
+        name="image"
+        value="busybox"/>
+    <attributes
+        name="command"
+        value="sleep,9999"/>
+    <links xsi:type="docker:Link"
+        id="_aSmFoPSZEeSVK4unvxRPgw"
+        target="//@resources.22">
+      <kind
+          href="http://occiware.org/docker#//@kinds[term='link']"/>
+      <attributes
+          name="occi.core.id"
+          value="_aSmFoPSZEeSVK4unvxRPgw"/>
+    </links>
+  </resources>
+  <resources
+      xsi:type="docker:Container"
+      id="_JA57YPSZEeSVK4unvxRPgw"
+      name="frontend"
+      image="busybox"
+      command="sleep,9999">
+    <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <attributes
+        name="occi.core.id"
+        value="_JA57YPSZEeSVK4unvxRPgw"/>
+    <attributes
+        name="name"
+        value="frontend"/>
+    <attributes
+        name="image"
+        value="busybox"/>
+    <attributes
+        name="command"
+        value="sleep,9999"/>
+    <links xsi:type="docker:Link"
+        id="_O-qTQPSZEeSVK4unvxRPgw"
+        target="//@resources.19">
+      <kind
+          href="http://occiware.org/docker#//@kinds[term='link']"/>
+      <attributes
+          name="occi.core.id"
+          value="_O-qTQPSZEeSVK4unvxRPgw"/>
+    </links>
+  </resources>
+  <resources
+      xsi:type="docker:Container"
+      id="_VekV8PSZEeSVK4unvxRPgw"
+      name="monitor"
+      image="training/webapp"
+      command="python,app.py"
+      ports="5000:5000">
+    <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <attributes
+        name="occi.core.id"
+        value="_VekV8PSZEeSVK4unvxRPgw"/>
+    <attributes
+        name="name"
+        value="monitor"/>
+    <attributes
+        name="image"
+        value="training/webapp"/>
+    <attributes
+        name="command"
+        value="python,app.py"/>
+    <attributes
+        name="ports"
+        value="5000:5000"/>
+  </resources>
+  <resources
+      xsi:type="docker:Machine_VirtualBox"
+      id="_cSgScPSaEeSVK4unvxRPgw"
+      cores="-1"
+      memory="1024.0"
+      name="Storm-topology"
+      boot2docker_url="">
+    <kind href="http://occiware.org/docker#//@kinds[term='machine_VirtualBox']"/>
+    <attributes
+        name="occi.core.id"
+        value="_cSgScPSaEeSVK4unvxRPgw"/>
+    <attributes
+        name="occi.compute.cores"
+        value="-1"/>
+    <attributes
+        name="occi.compute.memory"
+        value="1024.0"/>
+    <attributes
+        name="name"
+        value="Storm-topology"/>
+    <attributes
+        name="boot2docker_url"
+        value=""/>
+    <links xsi:type="docker:Contains"
+        id="_dgxcYfSaEeSVK4unvxRPgw"
+        target="//@resources.24">
+      <kind
+          href="http://occiware.org/docker#//@kinds[term='contains']"/>
+      <attributes
+          name="occi.core.id"
+          value="_dgxcYfSaEeSVK4unvxRPgw"/>
+    </links>
+    <links xsi:type="docker:Contains"
+        id="_dpKjY_SaEeSVK4unvxRPgw"
+        target="//@resources.25">
+      <kind
+          href="http://occiware.org/docker#//@kinds[term='contains']"/>
+      <attributes
+          name="occi.core.id"
+          value="_dpKjY_SaEeSVK4unvxRPgw"/>
+    </links>
+    <links xsi:type="docker:Contains"
+        id="_dxW2E_SaEeSVK4unvxRPgw"
+        target="//@resources.26">
+      <kind
+          href="http://occiware.org/docker#//@kinds[term='contains']"/>
+      <attributes
+          name="occi.core.id"
+          value="_dxW2E_SaEeSVK4unvxRPgw"/>
+    </links>
+    <links xsi:type="docker:Contains"
+        id="_d5dpMvSaEeSVK4unvxRPgw"
+        target="//@resources.27">
+      <kind
+          href="http://occiware.org/docker#//@kinds[term='contains']"/>
+      <attributes
+          name="occi.core.id"
+          value="_d5dpMvSaEeSVK4unvxRPgw"/>
+    </links>
+    <links xsi:type="docker:Contains"
+        id="_eBZdMvSaEeSVK4unvxRPgw"
+        target="//@resources.28">
+      <kind
+          href="http://occiware.org/docker#//@kinds[term='contains']"/>
+      <attributes
+          name="occi.core.id"
+          value="_eBZdMvSaEeSVK4unvxRPgw"/>
+    </links>
+    <links xsi:type="docker:Contains"
+        id="_eJtEovSaEeSVK4unvxRPgw"
+        target="//@resources.29">
+      <kind
+          href="http://occiware.org/docker#//@kinds[term='contains']"/>
+      <attributes
+          name="occi.core.id"
+          value="_eJtEovSaEeSVK4unvxRPgw"/>
+    </links>
+    <links xsi:type="docker:Contains"
+        id="_eSKdEfSaEeSVK4unvxRPgw"
+        target="//@resources.30">
+      <kind
+          href="http://occiware.org/docker#//@kinds[term='contains']"/>
+      <attributes
+          name="occi.core.id"
+          value="_eSKdEfSaEeSVK4unvxRPgw"/>
+    </links>
+    <links xsi:type="docker:Contains"
+        id="_eZ-8UfSaEeSVK4unvxRPgw"
+        target="//@resources.31">
+      <kind
+          href="http://occiware.org/docker#//@kinds[term='contains']"/>
+      <attributes
+          name="occi.core.id"
+          value="_eZ-8UfSaEeSVK4unvxRPgw"/>
+    </links>
+  </resources>
+  <resources
+      xsi:type="docker:Container"
+      id="cb1b87be9ab675185e761077fb769d62bb55219d2bf174dd14796985881b646a"
+      name="word-spout-2"
+      containerid=""
+      image="busybox"
+      command="sleep,9999">
+    <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <attributes
+        name="occi.core.id"
+        value="cb1b87be9ab675185e761077fb769d62bb55219d2bf174dd14796985881b646a"/>
+    <attributes
+        name="name"
+        value="word-spout-2"/>
+    <attributes
+        name="containerid"
+        value=""/>
+    <attributes
+        name="image"
+        value="busybox"/>
+    <attributes
+        name="command"
+        value="sleep,9999"/>
+    <links xsi:type="docker:Link"
+        id="_dpKjYPSaEeSVK4unvxRPgw"
+        target="//@resources.28">
+      <kind
+          href="http://occiware.org/docker#//@kinds[term='link']"/>
+      <attributes
+          name="occi.core.id"
+          value="_dpKjYPSaEeSVK4unvxRPgw"/>
+    </links>
+    <links xsi:type="docker:Link"
+        id="_dpKjYfSaEeSVK4unvxRPgw"
+        target="//@resources.27">
+      <kind
+          href="http://occiware.org/docker#//@kinds[term='link']"/>
+      <attributes
+          name="occi.core.id"
+          value="_dpKjYfSaEeSVK4unvxRPgw"/>
+    </links>
+    <links xsi:type="docker:Link"
+        id="_dpKjYvSaEeSVK4unvxRPgw"
+        target="//@resources.26">
+      <kind
+          href="http://occiware.org/docker#//@kinds[term='link']"/>
+      <attributes
+          name="occi.core.id"
+          value="_dpKjYvSaEeSVK4unvxRPgw"/>
+    </links>
+  </resources>
+  <resources
+      xsi:type="docker:Container"
+      id="1c247f645643ba4b57f9918b60328518fd446c7d09b456ca08d15133e07b0d26"
+      name="word-spout-1"
+      containerid="1c247f645643ba4b57f9918b60328518fd446c7d09b456ca08d15133e07b0d26"
+      image="busybox"
+      command="sleep,9999">
+    <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <attributes
+        name="occi.core.id"
+        value="1c247f645643ba4b57f9918b60328518fd446c7d09b456ca08d15133e07b0d26"/>
+    <attributes
+        name="name"
+        value="word-spout-1"/>
+    <attributes
+        name="containerid"
+        value="1c247f645643ba4b57f9918b60328518fd446c7d09b456ca08d15133e07b0d26"/>
+    <attributes
+        name="image"
+        value="busybox"/>
+    <attributes
+        name="command"
+        value="sleep,9999"/>
+    <links xsi:type="docker:Link"
+        id="_dxW2EPSaEeSVK4unvxRPgw"
+        target="//@resources.28">
+      <kind
+          href="http://occiware.org/docker#//@kinds[term='link']"/>
+      <attributes
+          name="occi.core.id"
+          value="_dxW2EPSaEeSVK4unvxRPgw"/>
+    </links>
+    <links xsi:type="docker:Link"
+        id="_dxW2EfSaEeSVK4unvxRPgw"
+        target="//@resources.27">
+      <kind
+          href="http://occiware.org/docker#//@kinds[term='link']"/>
+      <attributes
+          name="occi.core.id"
+          value="_dxW2EfSaEeSVK4unvxRPgw"/>
+    </links>
+    <links xsi:type="docker:Link"
+        id="_dxW2EvSaEeSVK4unvxRPgw"
+        target="//@resources.26">
+      <kind
+          href="http://occiware.org/docker#//@kinds[term='link']"/>
+      <attributes
+          name="occi.core.id"
+          value="_dxW2EvSaEeSVK4unvxRPgw"/>
+    </links>
+  </resources>
+  <resources
+      xsi:type="docker:Container"
+      id="a57d52c7246c76bd2feb5c86b898fe588de663b74f6c88a70bf4f5833604d713"
+      name="count-bolt-3"
+      containerid="a57d52c7246c76bd2feb5c86b898fe588de663b74f6c88a70bf4f5833604d713"
+      image="busybox"
+      command="sleep,9999">
+    <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <attributes
+        name="occi.core.id"
+        value="a57d52c7246c76bd2feb5c86b898fe588de663b74f6c88a70bf4f5833604d713"/>
+    <attributes
+        name="name"
+        value="count-bolt-3"/>
+    <attributes
+        name="containerid"
+        value="a57d52c7246c76bd2feb5c86b898fe588de663b74f6c88a70bf4f5833604d713"/>
+    <attributes
+        name="image"
+        value="busybox"/>
+    <attributes
+        name="command"
+        value="sleep,9999"/>
+    <links xsi:type="docker:Link"
+        id="_d5dpMPSaEeSVK4unvxRPgw"
+        target="//@resources.30">
+      <kind
+          href="http://occiware.org/docker#//@kinds[term='link']"/>
+      <attributes
+          name="occi.core.id"
+          value="_d5dpMPSaEeSVK4unvxRPgw"/>
+    </links>
+    <links xsi:type="docker:Link"
+        id="_d5dpMfSaEeSVK4unvxRPgw"
+        target="//@resources.29">
+      <kind
+          href="http://occiware.org/docker#//@kinds[term='link']"/>
+      <attributes
+          name="occi.core.id"
+          value="_d5dpMfSaEeSVK4unvxRPgw"/>
+    </links>
+  </resources>
+  <resources
+      xsi:type="docker:Container"
+      id="2b22b5fbcc28d21c1882743cd0291c6274ea4772446417d9400cfa64aa90f161"
+      name="count-bolt-2"
+      containerid="2b22b5fbcc28d21c1882743cd0291c6274ea4772446417d9400cfa64aa90f161"
+      image="busybox"
+      command="sleep,9999">
+    <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <attributes
+        name="occi.core.id"
+        value="2b22b5fbcc28d21c1882743cd0291c6274ea4772446417d9400cfa64aa90f161"/>
+    <attributes
+        name="name"
+        value="count-bolt-2"/>
+    <attributes
+        name="containerid"
+        value="2b22b5fbcc28d21c1882743cd0291c6274ea4772446417d9400cfa64aa90f161"/>
+    <attributes
+        name="image"
+        value="busybox"/>
+    <attributes
+        name="command"
+        value="sleep,9999"/>
+    <links xsi:type="docker:Link"
+        id="_eBZdMPSaEeSVK4unvxRPgw"
+        target="//@resources.30">
+      <kind
+          href="http://occiware.org/docker#//@kinds[term='link']"/>
+      <attributes
+          name="occi.core.id"
+          value="_eBZdMPSaEeSVK4unvxRPgw"/>
+    </links>
+    <links xsi:type="docker:Link"
+        id="_eBZdMfSaEeSVK4unvxRPgw"
+        target="//@resources.29">
+      <kind
+          href="http://occiware.org/docker#//@kinds[term='link']"/>
+      <attributes
+          name="occi.core.id"
+          value="_eBZdMfSaEeSVK4unvxRPgw"/>
+    </links>
+  </resources>
+  <resources
+      xsi:type="docker:Container"
+      id="6bad9e39d72cb02ba12694d180c16ab710a68baf4f24cf43679095b7dc5ac853"
+      name="count-bolt-1"
+      containerid="6bad9e39d72cb02ba12694d180c16ab710a68baf4f24cf43679095b7dc5ac853"
+      image="busybox"
+      command="sleep,9999">
+    <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <attributes
+        name="occi.core.id"
+        value="6bad9e39d72cb02ba12694d180c16ab710a68baf4f24cf43679095b7dc5ac853"/>
+    <attributes
+        name="name"
+        value="count-bolt-1"/>
+    <attributes
+        name="containerid"
+        value="6bad9e39d72cb02ba12694d180c16ab710a68baf4f24cf43679095b7dc5ac853"/>
+    <attributes
+        name="image"
+        value="busybox"/>
+    <attributes
+        name="command"
+        value="sleep,9999"/>
+    <links xsi:type="docker:Link"
+        id="_eJtEoPSaEeSVK4unvxRPgw"
+        target="//@resources.30">
+      <kind
+          href="http://occiware.org/docker#//@kinds[term='link']"/>
+      <attributes
+          name="occi.core.id"
+          value="_eJtEoPSaEeSVK4unvxRPgw"/>
+    </links>
+    <links xsi:type="docker:Link"
+        id="_eJtEofSaEeSVK4unvxRPgw"
+        target="//@resources.29">
+      <kind
+          href="http://occiware.org/docker#//@kinds[term='link']"/>
+      <attributes
+          name="occi.core.id"
+          value="_eJtEofSaEeSVK4unvxRPgw"/>
+    </links>
+  </resources>
+  <resources
+      xsi:type="docker:Container"
+      id="640c4bcfe34ba0fd303408df0e4379e04eb066d1648a1278b4fdb00ecc6dbccf"
+      name="rolling-count-bolt-2"
+      containerid="640c4bcfe34ba0fd303408df0e4379e04eb066d1648a1278b4fdb00ecc6dbccf"
+      image="busybox"
+      command="sleep,9999">
+    <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <attributes
+        name="occi.core.id"
+        value="640c4bcfe34ba0fd303408df0e4379e04eb066d1648a1278b4fdb00ecc6dbccf"/>
+    <attributes
+        name="name"
+        value="rolling-count-bolt-2"/>
+    <attributes
+        name="containerid"
+        value="640c4bcfe34ba0fd303408df0e4379e04eb066d1648a1278b4fdb00ecc6dbccf"/>
+    <attributes
+        name="image"
+        value="busybox"/>
+    <attributes
+        name="command"
+        value="sleep,9999"/>
+    <links xsi:type="docker:Link"
+        id="_eSKdEPSaEeSVK4unvxRPgw"
+        target="//@resources.31">
+      <kind
+          href="http://occiware.org/docker#//@kinds[term='link']"/>
+      <attributes
+          name="occi.core.id"
+          value="_eSKdEPSaEeSVK4unvxRPgw"/>
+    </links>
+  </resources>
+  <resources
+      xsi:type="docker:Container"
+      id="f8991567fe37f15ed936706933d920ab19b94f8ce9a30bf92c6f705cc9555319"
+      name="rolling-count-bolt-1"
+      containerid="f8991567fe37f15ed936706933d920ab19b94f8ce9a30bf92c6f705cc9555319"
+      image="busybox"
+      command="sleep,9999">
+    <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <attributes
+        name="occi.core.id"
+        value="f8991567fe37f15ed936706933d920ab19b94f8ce9a30bf92c6f705cc9555319"/>
+    <attributes
+        name="name"
+        value="rolling-count-bolt-1"/>
+    <attributes
+        name="containerid"
+        value="f8991567fe37f15ed936706933d920ab19b94f8ce9a30bf92c6f705cc9555319"/>
+    <attributes
+        name="image"
+        value="busybox"/>
+    <attributes
+        name="command"
+        value="sleep,9999"/>
+    <links xsi:type="docker:Link"
+        id="_eZ-8UPSaEeSVK4unvxRPgw"
+        target="//@resources.31">
+      <kind
+          href="http://occiware.org/docker#//@kinds[term='link']"/>
+      <attributes
+          name="occi.core.id"
+          value="_eZ-8UPSaEeSVK4unvxRPgw"/>
+    </links>
+  </resources>
+  <resources
+      xsi:type="docker:Container"
+      id="06f777e9d6f41827055131ce6163fb128e926c888d1a77bcf8570d837a7fa4f5"
+      name="ranking-bolt"
+      containerid="06f777e9d6f41827055131ce6163fb128e926c888d1a77bcf8570d837a7fa4f5"
+      image="busybox"
+      command="sleep,9999">
+    <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <attributes
+        name="occi.core.id"
+        value="06f777e9d6f41827055131ce6163fb128e926c888d1a77bcf8570d837a7fa4f5"/>
+    <attributes
+        name="name"
+        value="ranking-bolt"/>
+    <attributes
+        name="containerid"
+        value="06f777e9d6f41827055131ce6163fb128e926c888d1a77bcf8570d837a7fa4f5"/>
+    <attributes
+        name="image"
+        value="busybox"/>
+    <attributes
+        name="command"
+        value="sleep,9999"/>
+  </resources>
+  <resources
+      xsi:type="docker:Container"
+      id="3580412e-b037-4140-9805-6f4ba9ed6c7c"
+      name=""
+      pid="">
+    <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <attributes
+        name="occi.core.id"
+        value="3580412e-b037-4140-9805-6f4ba9ed6c7c"/>
+    <attributes
+        name="name"
+        value=""/>
+    <attributes
+        name="pid"
+        value=""/>
   </resources>
 </occi:Configuration>
