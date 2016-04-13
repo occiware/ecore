@@ -11,7 +11,7 @@
   <groupId>Clouddesigner</groupId>
   <artifactId>org.occiware.clouddesigner.occi.hypervisor.editor</artifactId>
   <version>0.1.0-SNAPSHOT</version>
-  <name>org.occiware.clouddesigner.occi.hypervisor.edit</name>
+  <name>org.occiware.clouddesigner.occi.hypervisor.editor</name>
   <packaging>eclipse-plugin</packaging>
   <url>http://occiware.org</url>
 </project>
