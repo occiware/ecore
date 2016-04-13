@@ -18,13 +18,13 @@
    <extension point="org.eclipse.ui.newWizards">
       <!-- @generated Hypervisor -->
       <category
-            id="org.eclipse.emf.ecore.Wizard.category.ID"
-            name="%_UI_Wizard_category"/>
+        id = "org.occiware.clouddesigner"
+	    name="Cloud Designer"/>
       <wizard
             id="org.occiware.clouddesigner.occi.hypervisor.presentation.HypervisorModelWizardID"
             name="%_UI_HypervisorModelWizard_label"
             class="org.occiware.clouddesigner.occi.hypervisor.presentation.HypervisorModelWizard"
-            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            category="org.occiware.clouddesigner"
             icon="icons/full/obj16/HypervisorModelFile.gif">
          <description>%_UI_HypervisorModelWizard_description</description>
          <selection class="org.eclipse.core.resources.IResource"/>

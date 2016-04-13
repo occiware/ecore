@@ -18,13 +18,13 @@
    <extension point="org.eclipse.ui.newWizards">
       <!-- @generated platform -->
       <category
-            id="org.eclipse.emf.ecore.Wizard.category.ID"
-            name="%_UI_Wizard_category"/>
+        id = "org.occiware.clouddesigner"
+	    name="Cloud Designer"/>
       <wizard
             id="org.occiware.clouddesigner.occi.platform.presentation.PlatformModelWizardID"
             name="%_UI_PlatformModelWizard_label"
             class="org.occiware.clouddesigner.occi.platform.presentation.PlatformModelWizard"
-            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            category="org.occiware.clouddesigner"
             icon="icons/full/obj16/PlatformModelFile.gif">
          <description>%_UI_PlatformModelWizard_description</description>
          <selection class="org.eclipse.core.resources.IResource"/>
