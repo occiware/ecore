@@ -65,9 +65,10 @@ import org.occiware.clouddesigner.occi.Mixin;
 import org.occiware.clouddesigner.occi.OCCIFactory;
 import org.occiware.clouddesigner.occi.OCCIPackage;
 import org.occiware.clouddesigner.occi.OCCITables;
-import org.occiware.clouddesigner.occi.OCCIUtils;
 import org.occiware.clouddesigner.occi.OCCIKindResolver;
 import org.occiware.clouddesigner.occi.impl.AttributeStateImpl;
+import org.occiware.clouddesigner.occi.util.Occi2Ecore;
+import org.occiware.clouddesigner.occi.util.OcciHelper;
 
 /**
  * <!-- begin-user-doc -->
@@ -272,7 +273,7 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 		}
 		
 		// Add a default attribute occi.core.id (mandatory ref. GFD.185 section 3.1 p6).
-		// only if occi.core.id doesnt exist.
+		// only if occi.core.id does not exist.
 		boolean occiCoreIdExist = false;
 		for (AttributeState attributeState : attributes) {
 			if (attributeState.getName().equals("occi.core.id")) {
@@ -289,10 +290,10 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 		
 		
 		// Iterate over all OCCI attributes of this entity.
-		for(Attribute attribute : OCCIUtils.getAllAttributes(this)) {
+		for(Attribute attribute : OcciHelper.getAllAttributes(this)) {
 			final String attributeName = attribute.getName();
 			// Search the Ecore structural feature associated to this OCCI attribute.
-			final EStructuralFeature eStructuralFeature = eClass().getEStructuralFeature(OCCIUtils.computeEmfAttributeNameFromOcciAttributeName(attributeName));
+			final EStructuralFeature eStructuralFeature = eClass().getEStructuralFeature(Occi2Ecore.convertOcciAttributeName2EcoreAttributeName(attributeName));
 			// If this is an Ecore attribute then
 			if(eStructuralFeature != null && eStructuralFeature instanceof EAttribute) {
 				final int featureId = eStructuralFeature.getFeatureID();
