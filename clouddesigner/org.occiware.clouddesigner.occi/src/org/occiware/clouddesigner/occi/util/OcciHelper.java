@@ -33,7 +33,6 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.occiware.clouddesigner.occi.Attribute;
-import org.occiware.clouddesigner.occi.AttributeState;
 import org.occiware.clouddesigner.occi.Configuration;
 import org.occiware.clouddesigner.occi.Entity;
 import org.occiware.clouddesigner.occi.Extension;
@@ -42,7 +41,6 @@ import org.occiware.clouddesigner.occi.Link;
 import org.occiware.clouddesigner.occi.Mixin;
 import org.occiware.clouddesigner.occi.OCCIFactory;
 import org.occiware.clouddesigner.occi.Resource;
-import org.occiware.clouddesigner.occi.impl.AttributeStateImpl;
 
 /**
  * This class provides some utility methods for the OCCI metamodel.
