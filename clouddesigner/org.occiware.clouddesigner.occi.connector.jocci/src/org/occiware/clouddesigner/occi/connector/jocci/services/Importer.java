@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Inria
+ * Copyright (c) 2015-16 Inria
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,9 +20,9 @@ import java.util.Set;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.occiware.clouddesigner.occi.util.OCCIResourceSet;
 
 /**
  *
@@ -262,7 +262,7 @@ public class Importer
 				if(resource != null) {
 					resource = resource.getResourceSet().getResource(uri, true);
 				} else {
-					resource = new OCCIResourceSet().getResource(uri, true);
+					resource = new ResourceSetImpl().getResource(uri, true);
 				}
 			}
 			extension = (org.occiware.clouddesigner.occi.Extension)resource.getContents().get(0);
