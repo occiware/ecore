@@ -11,18 +11,23 @@
  *******************************************************************************/
 package org.occiware.clouddesigner.occi.util;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EParameter;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
@@ -327,5 +332,70 @@ public final class OcciHelper
 			}
 		}
 		throw new IllegalArgumentException("attribute '" + attributeName + "' is not found in " + entity + "!");
+	}
+
+	/**
+	 * Execute an action on an OCCI entity.
+	 * @param entity the given entity.
+	 * @param actionName the action name.
+	 * @param parameters the parameters.
+	 * @throws IllegalArgumentException Thrown when the action name is unknown or parameters are invalid.
+	 * @throws InvocationTargetException Thrown when the action throws an exception.
+	 */
+	public static void executeAction(Entity entity, String actionName, String... parameters) throws InvocationTargetException
+	{
+		// TODO: Check that actionName is an OCCI action.
+
+		// Search the Ecore operation.
+		EOperation eOperation = null;
+		for(EOperation tmp : entity.eClass().getEAllOperations()) {
+			if(tmp.getName().equals(actionName)) {
+				eOperation = tmp;
+				break;
+			}
+		}
+		// Exception if operation not found.
+		if(eOperation == null) {
+			throw new IllegalArgumentException("Ecore operation '" + actionName + "' not found!");
+		}
+
+		// Check the number of parameters.
+        EList<EParameter> eOperationParameters = eOperation.getEParameters();
+        int nbParameters = eOperationParameters.size();
+        if(parameters.length != nbParameters) {
+        	throw new IllegalArgumentException("Bad number of parameters: " + parameters.length + " given when " + nbParameters + " expected!");
+        }
+		
+		// Convert parameters according to the type of Ecore operation parameters.
+        Object[] eParameters = new Object[nbParameters];
+        Class<?>[] parameterClasses = new Class[nbParameters];
+        for(int i=0; i<nbParameters; i++) {
+        	EParameter eParameter = eOperationParameters.get(i);
+        	EDataType parameterType = (EDataType)eParameter.getEType();
+        	try {
+        		eParameters[i] = parameterType.getEPackage().getEFactoryInstance().createFromString(parameterType, parameters[i]);
+        	} catch(IllegalArgumentException e) {
+        		throw new IllegalArgumentException("Bad value for '" + eParameter.getName() + "' parameter!", e);
+        	}
+        	parameterClasses[i] = parameterType.getInstanceClass();
+        }
+
+        // Execute the Ecore operation.
+// FIXME: Does not work for Infrastructure metamodel!
+//		entity.eInvoke(eOperation, null);
+
+// FIXME: Then use Java reflection invocation.
+		try {
+			Method method = entity.getClass().getMethod(actionName, parameterClasses);
+			method.invoke(entity, eParameters);
+		} catch (NoSuchMethodException e) {
+			throw new IllegalArgumentException("Method '" + actionName + "' not found!", e);
+		} catch (SecurityException e) {
+			throw new IllegalArgumentException("Security exception on method '" + actionName + "'!", e);
+		} catch (IllegalAccessException e) {
+			throw new IllegalArgumentException("Illegal access exception on method '" + actionName + "'!", e);
+		} catch (IllegalArgumentException e) {
+			throw new IllegalArgumentException("Illegal argument exception on method '" + actionName + "'!", e);
+		}
 	}
 }

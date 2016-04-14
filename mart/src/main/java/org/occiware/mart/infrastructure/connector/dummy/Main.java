@@ -15,6 +15,8 @@
  *******************************************************************************/
 package org.occiware.mart.infrastructure.connector.dummy;
 
+import java.lang.reflect.InvocationTargetException;
+
 import org.occiware.clouddesigner.occi.Configuration;
 import org.occiware.clouddesigner.occi.Extension;
 import org.occiware.clouddesigner.occi.Link;
@@ -23,7 +25,10 @@ import org.occiware.clouddesigner.occi.OCCIFactory;
 import org.occiware.clouddesigner.occi.infrastructure.Compute;
 import org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage;
 import org.occiware.clouddesigner.occi.infrastructure.Network;
+import org.occiware.clouddesigner.occi.infrastructure.RestartMethod;
+import org.occiware.clouddesigner.occi.infrastructure.StopMethod;
 import org.occiware.clouddesigner.occi.infrastructure.Storage;
+import org.occiware.clouddesigner.occi.infrastructure.SuspendMethod;
 import org.occiware.clouddesigner.occi.util.OcciPrinter;
 import org.occiware.clouddesigner.occi.util.OcciHelper;
 import org.occiware.mart.MART;
@@ -38,8 +43,9 @@ public class Main
 	/**
 	 * Main program.
 	 * @param args command-line arguments.
+	 * @throws InvocationTargetException 
 	 */
-	public static void main(String[] args)
+	public static void main(String[] args) throws InvocationTargetException
 	{
 		// Initialize MART.
 		MART.initMART();
@@ -60,19 +66,47 @@ public class Main
 		// Execute actions on resources.
 		for(Resource resource : configurationInfrastructure.getResources()) {
 			if(resource instanceof Compute) {
+				// Static Java invocation.
 				Compute compute = (Compute)resource;
 				compute.start();
+				compute.stop(StopMethod.GRACEFUL);
+				compute.suspend(SuspendMethod.SUSPEND);
+				compute.restart(RestartMethod.WARM);
 				System.out.println(compute);
+				// Dynamic OCCI invocation.
+				OcciHelper.executeAction(resource, "start");
+				OcciHelper.executeAction(resource, "stop", "graceful");
+				OcciHelper.executeAction(resource, "suspend", "suspend");
+				OcciHelper.executeAction(resource, "restart", "warm");
+				System.out.println(resource);
 			}
 			if(resource instanceof Network) {
+				// Static Java invocation.
 				Network network = (Network)resource;
 				network.up();
+				network.down();
 				System.out.println(network);
+				// Dynamic OCCI invocation.
+				OcciHelper.executeAction(resource, "up");
+				OcciHelper.executeAction(resource, "down");
+				System.out.println(resource);
 			}
 			if(resource instanceof Storage) {
+				// Static Java invocation.
 				Storage storage = (Storage)resource;
 				storage.online();
+				storage.offline();
+				storage.backup();
+				storage.snapshot();
+				storage.resize(100);
 				System.out.println(storage);
+				// Dynamic OCCI invocation.
+				OcciHelper.executeAction(resource, "online");
+				OcciHelper.executeAction(resource, "offline");
+				OcciHelper.executeAction(resource, "backup");
+				OcciHelper.executeAction(resource, "snapshot");
+				OcciHelper.executeAction(resource, "resize", "100");
+				System.out.println(resource);
 			}
 		}
 
