@@ -23,7 +23,6 @@ import org.occiware.clouddesigner.occi.Link;
 import org.occiware.clouddesigner.occi.Resource;
 import org.occiware.clouddesigner.occi.OCCIFactory;
 import org.occiware.clouddesigner.occi.infrastructure.Compute;
-import org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage;
 import org.occiware.clouddesigner.occi.infrastructure.Network;
 import org.occiware.clouddesigner.occi.infrastructure.RestartMethod;
 import org.occiware.clouddesigner.occi.infrastructure.StopMethod;
@@ -49,10 +48,6 @@ public class Main
 	{
 		// Initialize MART.
 		MART.initMART();
-
-		// Set the EMF factory of the OCCI Infrastructure package with the factory of the infrastructure dummy connector.
-		InfrastructurePackage.eINSTANCE.setEFactoryInstance(new ConnectorFactory());
-		// TODO: This would be done into the initMART() method automatically.
 
 		MART.reportJavaInformation();
 

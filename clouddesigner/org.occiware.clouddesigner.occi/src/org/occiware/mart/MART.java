@@ -11,22 +11,23 @@
  *******************************************************************************/
 package org.occiware.mart;
 
+import java.lang.reflect.Field;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.Map;
-import java.lang.reflect.Field;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+
 import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource.Factory.Registry;
@@ -58,6 +59,9 @@ public class MART
 		final Map<String,Object> ecoreExtensionToFactoryMap = Registry.INSTANCE.getExtensionToFactoryMap();
 		// Add OCCI resource factory for any extension.
 		ecoreExtensionToFactoryMap.put("*", new OCCIResourceFactoryImpl());
+
+		// Map to store EMF package factory overriding.
+		final Map<String, EFactory> ecoreFactoryOverrideMap = new HashMap<String, EFactory>();
 
 		try {
 			// Initialize DOM.
@@ -144,16 +148,14 @@ public class MART
 											String className = childElement.getAttribute("class");
 											// Do not dealt with Eclipse packages.
 											if(!className.startsWith("org.eclipse.")) {
-												// Search the Ecore package.
-												EPackage epackage = EPackage.Registry.INSTANCE.getEPackage(uri);
+
 												try {
 													// Load the factory class.
 													Class<?> factoryClass = classLoader.loadClass(className);
 													// Instantiate the factory class.
 													EFactory eFactory = (EFactory)factoryClass.newInstance();
 													// Register the factory.
-													epackage.setEFactoryInstance(eFactory);
-													System.out.println("    - Ecore factory " + className + " for package " + uri + " registered.");
+													ecoreFactoryOverrideMap.put(uri, eFactory);
 												} catch (ClassNotFoundException e) {
 													// TODO Auto-generated catch block
 													e.printStackTrace();
@@ -248,6 +250,17 @@ public class MART
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
+		// Iterate over all Ecore factory overrides
+		for(Map.Entry<String, EFactory> entry : ecoreFactoryOverrideMap.entrySet()) {
+			String uri = entry.getKey();
+			EFactory eFactory = entry.getValue();
+			// Search the Ecore package.
+			EPackage epackage = EPackage.Registry.INSTANCE.getEPackage(uri);
+			epackage.setEFactoryInstance(eFactory);
+			System.out.println("    - Ecore factory " + eFactory.getClass().getName() + " for package " + uri + " registered.");
+		}
+
 		System.out.println("OCCIware MART initialized.");
 	}
 
