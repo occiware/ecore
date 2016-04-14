@@ -17,14 +17,18 @@ import java.util.List;
 
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.occiware.clouddesigner.occi.Attribute;
+import org.occiware.clouddesigner.occi.AttributeState;
 import org.occiware.clouddesigner.occi.Configuration;
 import org.occiware.clouddesigner.occi.Entity;
 import org.occiware.clouddesigner.occi.Extension;
@@ -33,6 +37,7 @@ import org.occiware.clouddesigner.occi.Link;
 import org.occiware.clouddesigner.occi.Mixin;
 import org.occiware.clouddesigner.occi.OCCIFactory;
 import org.occiware.clouddesigner.occi.Resource;
+import org.occiware.clouddesigner.occi.impl.AttributeStateImpl;
 
 /**
  * This class provides some utility methods for the OCCI metamodel.
@@ -275,4 +280,52 @@ public final class OcciHelper
 		return createdEntity;
 	}
 
+	/**
+	 * Set an attribute of an OCCI entity.
+	 * @param entity the given entity.
+	 * @param attributeName the attribute name.
+	 * @param attributeValue the attribute value.
+	 * @throws java.lang.IllegalArgumentException Thrown when the attribute name is unknown or the attribute value is invalid.
+	 */
+	public static void setAttribute(Entity entity, String attributeName, String attributeValue)
+	{
+		// Check that attribute name exists from this entity.
+		getAttribute(entity, attributeName);
+
+		// Search the Ecore structural feature associated to the OCCI attribute.
+		String eAttributeName = Occi2Ecore.convertOcciAttributeName2EcoreAttributeName(attributeName);
+		final EStructuralFeature eStructuralFeature = entity.eClass().getEStructuralFeature(eAttributeName);
+
+		if(eStructuralFeature == null) {
+			throw new IllegalArgumentException("Ecore structural feature '" + eAttributeName + "' not found!");
+		}
+		if(!(eStructuralFeature instanceof EAttribute)) {
+			throw new IllegalArgumentException("Ecore structural feature '" + eAttributeName + "' is not an Ecore attribute!");
+		}
+
+		// Obtain the attribute type.
+		EDataType eAttributeType = ((EAttribute)eStructuralFeature).getEAttributeType();
+
+		// Convert the attribute value according to the attribute type.
+		Object eAttributeValue = eAttributeType.getEPackage().getEFactoryInstance().createFromString(eAttributeType, attributeValue);
+
+		// Set the Ecore attribute.
+		entity.eSet(eStructuralFeature, eAttributeValue);
+	}
+
+	/**
+	 * Get an attribute of an OCCI entity.
+	 * @param entity the given entity.
+	 * @param attributeName the attribute name.
+	 * @throws java.lang.IllegalArgumentException Thrown when the attribute name is unknown.
+	 */
+	public static Attribute getAttribute(Entity entity, String attributeName)
+	{
+		for(Attribute attribute : getAllAttributes(entity)) {
+			if(attribute.getName().equals(attributeName)) {
+				return attribute;
+			}
+		}
+		throw new IllegalArgumentException("attribute '" + attributeName + "' is not found in " + entity + "!");
+	}
 }

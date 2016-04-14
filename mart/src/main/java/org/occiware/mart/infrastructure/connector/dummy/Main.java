@@ -104,34 +104,48 @@ public class Main
 
 		// Create a network resource.
 		Resource network = (Resource)OcciHelper.createEntity(OcciHelper.getKindByTerm(infrastructure, "network"));
-		// TODO: Set attributes.
+        OcciHelper.setAttribute(network, "occi.network.vlan", "10");
+        OcciHelper.setAttribute(network, "occi.network.label", "public");
+        OcciHelper.setAttribute(network, "occi.network.state", "active");
 		// Add network to the OCCI configuration.
 		configuration.getResources().add(network);
 
 		// Create a storage resource.
 		Resource storage = (Resource)OcciHelper.createEntity(OcciHelper.getKindByTerm(infrastructure, "storage"));
-		// TODO: Set attributes.
+        OcciHelper.setAttribute(storage, "occi.storage.size", "100");
+        OcciHelper.setAttribute(storage, "occi.storage.state", "online");
 		// Add storage to the OCCI configuration.
 		configuration.getResources().add(storage);
 
 		for(int i=0; i<5; i++) {
 			// Create a compute resource.
-			Resource resource = (Resource)OcciHelper.createEntity(OcciHelper.getKindByTerm(infrastructure, "compute"));			
-			// TODO: Set attributes.
+			Resource compute = (Resource)OcciHelper.createEntity(OcciHelper.getKindByTerm(infrastructure, "compute"));			
+	        OcciHelper.setAttribute(compute, "occi.compute.architecture", "x86");
+	        OcciHelper.setAttribute(compute, "occi.compute.cores", "4");
+	        OcciHelper.setAttribute(compute, "occi.compute.hostname", "compute" + i + ".occiware.org");
+	        OcciHelper.setAttribute(compute, "occi.compute.speed", "100");
+	        OcciHelper.setAttribute(compute, "occi.compute.memory", "16");
+	        OcciHelper.setAttribute(compute, "occi.compute.state", "active");
 			// Add the compute to the OCCI configuration.
-			configuration.getResources().add(resource);
+			configuration.getResources().add(compute);
+
 			// Create a storage link.
 			Link storagelink = (Link)OcciHelper.createEntity(OcciHelper.getKindByTerm(infrastructure, "storagelink"));			
 			storagelink.setTarget(storage);
-			// TODO: Set attributes.
+			OcciHelper.setAttribute(storagelink, "occi.storagelink.deviceid", "fd0");
+			OcciHelper.setAttribute(storagelink, "occi.storagelink.mountpoint", "/");
+			OcciHelper.setAttribute(storagelink, "occi.storagelink.state", "active");
 			// Add the storage link to the compute.
-			resource.getLinks().add(storagelink);
+			compute.getLinks().add(storagelink);
+
 			// Create a network interface.
 			Link networkinterface = (Link)OcciHelper.createEntity(OcciHelper.getKindByTerm(infrastructure, "networkinterface"));			
 			networkinterface.setTarget(network);
-			// TODO: Set attributes.
+			OcciHelper.setAttribute(networkinterface, "occi.networkinterface.interface", "hd0");
+			OcciHelper.setAttribute(networkinterface, "occi.networkinterface.mac", "1.1.1.1");
+			OcciHelper.setAttribute(networkinterface, "occi.networkinterface.state", "active");
 			// Add the network interface to the compute.
-			resource.getLinks().add(networkinterface);
+			compute.getLinks().add(networkinterface);
 		}
 		return configuration;
 	}
