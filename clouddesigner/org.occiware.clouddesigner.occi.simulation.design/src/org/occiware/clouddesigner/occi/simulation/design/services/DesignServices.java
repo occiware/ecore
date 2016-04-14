@@ -26,6 +26,7 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
@@ -41,12 +42,11 @@ import org.occiware.clouddesigner.occi.Link;
 import org.occiware.clouddesigner.occi.Mixin;
 import org.occiware.clouddesigner.occi.OCCIFactory;
 import org.occiware.clouddesigner.occi.OCCIRegistry;
-import org.occiware.clouddesigner.occi.OCCIUtils;
 import org.occiware.clouddesigner.occi.Resource;
 import org.occiware.clouddesigner.occi.design.dialog.LoadExtensionDialog;
 import org.occiware.clouddesigner.occi.simulation.cloudsim.handlers.BrigeConfigSimulation;
 import org.occiware.clouddesigner.occi.simulation.cloudsim.handlers.Parser.Entity;
-import org.occiware.clouddesigner.occi.util.OCCIResourceSet;
+import org.occiware.clouddesigner.occi.util.OcciHelper;
 import org.occiware.clouddesigner.occi.simulation.cloudsim.handlers.Simulation;
 
 
@@ -188,7 +188,7 @@ public class DesignServices {
 		configuration.getUse().add(extension);
 		
 		URI uri_ = dialog.getURIs().get(0);
-		Configuration conf = loadConfiguration(uri_.toString());
+		Configuration conf = OcciHelper.loadConfiguration(uri_.toString());
 		org.occiware.clouddesigner.occi.OCCIFactory factory = org.occiware.clouddesigner.occi.OCCIFactory.eINSTANCE;
 	
 		List<org.occiware.clouddesigner.occi.Resource> targetConfigurationResources = configuration.getResources();	
@@ -218,19 +218,6 @@ public class DesignServices {
 				}
 			}
 		}
-	}
-
-
-	public static Configuration loadConfiguration(String configurationURI)
-	{
-		return (Configuration)loadOCCI(configurationURI);
-	}
-
-	private static Object loadOCCI(String uri)
-	{
-		ResourceSet resourceSet = new OCCIResourceSet();
-		org.eclipse.emf.ecore.resource.Resource resource = resourceSet.getResource(URI.createURI(uri), true);
-		return resource.getContents().get(0);
 	}
 
 	private static void copyEntity(Configuration configuration, Link source, Link target)
@@ -347,7 +334,7 @@ public class DesignServices {
 				if(resource != null) {
 					resource = resource.getResourceSet().getResource(uri, true);
 				} else {
-					resource = new OCCIResourceSet().getResource(uri, true);
+					resource = new ResourceSetImpl().getResource(uri, true);
 				}
 			}
 			extension = (org.occiware.clouddesigner.occi.Extension)resource.getContents().get(0);
