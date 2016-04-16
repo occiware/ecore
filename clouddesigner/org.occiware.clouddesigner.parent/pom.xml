@@ -17,6 +17,8 @@
 		<!-- OCCI generators -->
 		<module>../org.occiware.clouddesigner.occi.gen.alloy</module>
 		<module>../org.occiware.clouddesigner.occi.gen.alloy.ui</module>
+ 		<module>../org.occiware.clouddesigner.occi.gen.connector</module>
+		<module>../org.occiware.clouddesigner.occi.gen.connector.ui</module>
  		<module>../org.occiware.clouddesigner.occi.gen.curl</module>
 		<module>../org.occiware.clouddesigner.occi.gen.curl.ui</module>
 		<module>../org.occiware.clouddesigner.occi.gen.doc</module>

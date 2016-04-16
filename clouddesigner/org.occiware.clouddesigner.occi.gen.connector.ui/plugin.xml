@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!--
+  Copyright (c) 2016 Inria
+
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+  - Philippe Merle <philippe.merle@inria.fr>
+-->
+
+<plugin>
+   <extension point="org.eclipse.ui.newWizards">
+      <category
+        id = "org.occiware.clouddesigner"
+	    name="Cloud Designer">
+      </category>
+      <wizard
+            class="org.occiware.clouddesigner.occi.gen.connector.ui.wizards.NewConnectorWizard"
+            icon="icons/ConnectorProject.gif"
+            id="org.occiware.clouddesigner.occi.gen.connector.ui.wizards.NewConnectorWizard"
+            name="Java Connector Project"
+            category="org.occiware.clouddesigner"
+            project="true">
+         <description>Create a new Java project to implement a connector for an OCCI Extension.</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+ </plugin>
