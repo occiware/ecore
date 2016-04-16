@@ -31,12 +31,15 @@
 
 		<!-- OCCI Infrastructure -->
 		<module>../org.occiware.clouddesigner.occi.infrastructure</module>
+		<module>../org.occiware.clouddesigner.occi.infrastructure.connector.dummy</module>
 		<module>../org.occiware.clouddesigner.occi.infrastructure.edit</module>
 		<module>../org.occiware.clouddesigner.occi.infrastructure.editor</module>
 		<module>../org.occiware.clouddesigner.occi.infrastructure.tests</module>
 
+
 		<!-- OCCI Platform -->
 		<module>../org.occiware.clouddesigner.occi.platform</module>
+		<module>../org.occiware.clouddesigner.occi.platform.connector.dummy</module>
 		<module>../org.occiware.clouddesigner.occi.platform.edit</module>
 		<module>../org.occiware.clouddesigner.occi.platform.editor</module>
 		<module>../org.occiware.clouddesigner.occi.platform.tests</module>
