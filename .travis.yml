@@ -1,6 +1,8 @@
 env:
   language: java
+before_install:
+  - echo "MAVEN_OPTS='-Xmx2048m -XX:MaxPermSize=512m'" > ~/.mavenrc
 script:
-- cd clouddesigner/org.occiware.clouddesigner.parent
-- export MAVEN_OPTS='-Xmx512M -XX:MaxPermSize=512M'
-- mvn clean verify
+  - cd clouddesigner/org.occiware.clouddesigner.parent
+  - export MAVEN_OPTS='-Xmx512M -XX:MaxPermSize=512M'
+  - mvn clean verify
