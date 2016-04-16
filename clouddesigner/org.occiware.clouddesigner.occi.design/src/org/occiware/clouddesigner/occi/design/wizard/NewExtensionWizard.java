@@ -46,6 +46,7 @@ import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
 import org.eclipse.ui.wizards.newresource.BasicNewProjectResourceWizard;
 import org.occiware.clouddesigner.occi.OCCIRegistry;
+import org.occiware.clouddesigner.occi.OcciCoreConstants;
 import org.occiware.clouddesigner.occi.design.Activator;
 import org.occiware.clouddesigner.occi.design.Messages;
 import org.occiware.clouddesigner.occi.design.utils.WizardUtils;
@@ -144,7 +145,7 @@ public class NewExtensionWizard extends BasicNewProjectResourceWizard {
 			Collection<String> registeredExtensions = new ArrayList<String>(
 					OCCIRegistry.getInstance().getRegisteredExtensions());
 			// added by default
-			registeredExtensions.remove(WizardUtils.OCCI_CORE_EXTENSION_SCHEME);
+			registeredExtensions.remove(OcciCoreConstants.OCCI_CORE_SCHEME);
 			refExtensionViewer.setInput(registeredExtensions);
 		}
 
