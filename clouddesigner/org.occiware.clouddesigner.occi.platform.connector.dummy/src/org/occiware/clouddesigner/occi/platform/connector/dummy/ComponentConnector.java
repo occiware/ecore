@@ -28,11 +28,11 @@ public class ComponentConnector extends org.occiware.clouddesigner.occi.platform
 		System.err.println("DEBUG constructor " + this);
 	}
 
-    /**
-     * OCCI action http://schemas.ogf.org/occi/platform/component/action#start.
-     */
+	/**
+	 * OCCI action http://schemas.ogf.org/occi/platform/component/action#start.
+	 */
 	@Override
-    public void start()
+	public void start()
 	{
 		System.err.println("DEBUG start on " + this);
 
@@ -41,11 +41,11 @@ public class ComponentConnector extends org.occiware.clouddesigner.occi.platform
 		setState(Status.ACTIVE);
 	}
 
-    /**
-     * OCCI action http://schemas.ogf.org/occi/platform/component/action#stop.
-     */
+	/**
+	 * OCCI action http://schemas.ogf.org/occi/platform/component/action#stop.
+	 */
 	@Override
-    public void stop()
+	public void stop()
 	{
 		System.err.println("DEBUG stop on " + this);
 

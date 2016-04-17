@@ -28,11 +28,11 @@ public class NetworkConnector extends org.occiware.clouddesigner.occi.infrastruc
 		System.err.println("DEBUG constructor " + this);
 	}
 
-    /**
-     * OCCI action http://schemas.ogf.org/occi/infrastructure/network/action#up.
-     */
+	/**
+	 * OCCI action http://schemas.ogf.org/occi/infrastructure/network/action#up.
+	 */
 	@Override
-    public void up()
+	public void up()
 	{
 		System.err.println("DEBUG up on " + this);
 
@@ -41,11 +41,11 @@ public class NetworkConnector extends org.occiware.clouddesigner.occi.infrastruc
 		setState(NetworkStatus.ACTIVE);
 	}
 
-    /**
-     * OCCI action http://schemas.ogf.org/occi/infrastructure/network/action#down.
-     */
+	/**
+	 * OCCI action http://schemas.ogf.org/occi/infrastructure/network/action#down.
+	 */
 	@Override
-    public void down()
+	public void down()
 	{
 		System.err.println("DEBUG down on " + this);
 

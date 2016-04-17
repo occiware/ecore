@@ -18,25 +18,25 @@ package org.occiware.clouddesigner.occi.platform.connector.dummy;
  */
 public class ConnectorFactory extends org.occiware.clouddesigner.occi.platform.impl.PlatformFactoryImpl
 {
-    /**
-     * EFactory method for OCCI kind http://schemas.ogf.org/occi/platform#application.
-     */
+	/**
+	 * EFactory method for OCCI kind http://schemas.ogf.org/occi/platform#application.
+	 */
 	@Override
 	public org.occiware.clouddesigner.occi.platform.Application createApplication() {
 		return new ApplicationConnector();
 	}
 
-    /**
-     * EFactory method for OCCI kind http://schemas.ogf.org/occi/platform#component.
-     */
+	/**
+	 * EFactory method for OCCI kind http://schemas.ogf.org/occi/platform#component.
+	 */
 	@Override
 	public org.occiware.clouddesigner.occi.platform.Component createComponent() {
 		return new ComponentConnector();
 	}
 
-    /**
-     * EFactory method for OCCI kind http://schemas.ogf.org/occi/platform#componentlink.
-     */
+	/**
+	 * EFactory method for OCCI kind http://schemas.ogf.org/occi/platform#componentlink.
+	 */
 	@Override
 	public org.occiware.clouddesigner.occi.platform.Componentlink createComponentlink() {
 		return new ComponentlinkConnector();

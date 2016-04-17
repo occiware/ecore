@@ -28,11 +28,11 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		System.err.println("DEBUG constructor " + this);
 	}
 
-    /**
-     * OCCI action http://schemas.ogf.org/occi/infrastructure/compute/action#start.
-     */
+	/**
+	 * OCCI action http://schemas.ogf.org/occi/infrastructure/compute/action#start.
+	 */
 	@Override
-    public void start()
+	public void start()
 	{
 		System.err.println("DEBUG start on " + this);
 
@@ -41,11 +41,11 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		setState(ComputeStatus.ACTIVE);
 	}
 
-    /**
-     * OCCI action http://schemas.ogf.org/occi/infrastructure/compute/action#stop.
-     */
+	/**
+	 * OCCI action http://schemas.ogf.org/occi/infrastructure/compute/action#stop.
+	 */
 	@Override
-    public void stop(final org.occiware.clouddesigner.occi.infrastructure.StopMethod method)
+	public void stop(final org.occiware.clouddesigner.occi.infrastructure.StopMethod method)
 	{
 		System.err.println("DEBUG stop on " + this);
 		System.err.println("  - method=" + method);
@@ -55,11 +55,11 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		setState(ComputeStatus.INACTIVE);
 	}
 
-    /**
-     * OCCI action http://schemas.ogf.org/occi/infrastructure/compute/action#restart.
-     */
+	/**
+	 * OCCI action http://schemas.ogf.org/occi/infrastructure/compute/action#restart.
+	 */
 	@Override
-    public void restart(final org.occiware.clouddesigner.occi.infrastructure.RestartMethod method)
+	public void restart(final org.occiware.clouddesigner.occi.infrastructure.RestartMethod method)
 	{
 		System.err.println("DEBUG restart on " + this);
 		System.err.println("  - method=" + method);
@@ -69,11 +69,11 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		setState(ComputeStatus.ACTIVE);
 	}
 
-    /**
-     * OCCI action http://schemas.ogf.org/occi/infrastructure/compute/action#suspend.
-     */
+	/**
+	 * OCCI action http://schemas.ogf.org/occi/infrastructure/compute/action#suspend.
+	 */
 	@Override
-    public void suspend(final org.occiware.clouddesigner.occi.infrastructure.SuspendMethod method)
+	public void suspend(final org.occiware.clouddesigner.occi.infrastructure.SuspendMethod method)
 	{
 		System.err.println("DEBUG suspend on " + this);
 		System.err.println("  - method=" + method);

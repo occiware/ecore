@@ -18,41 +18,41 @@ package org.occiware.clouddesigner.occi.infrastructure.connector.dummy;
  */
 public class ConnectorFactory extends org.occiware.clouddesigner.occi.infrastructure.impl.InfrastructureFactoryImpl
 {
-    /**
-     * EFactory method for OCCI kind http://schemas.ogf.org/occi/infrastructure#network.
-     */
+	/**
+	 * EFactory method for OCCI kind http://schemas.ogf.org/occi/infrastructure#network.
+	 */
 	@Override
 	public org.occiware.clouddesigner.occi.infrastructure.Network createNetwork() {
 		return new NetworkConnector();
 	}
 
-    /**
-     * EFactory method for OCCI kind http://schemas.ogf.org/occi/infrastructure#compute.
-     */
+	/**
+	 * EFactory method for OCCI kind http://schemas.ogf.org/occi/infrastructure#compute.
+	 */
 	@Override
 	public org.occiware.clouddesigner.occi.infrastructure.Compute createCompute() {
 		return new ComputeConnector();
 	}
 
-    /**
-     * EFactory method for OCCI kind http://schemas.ogf.org/occi/infrastructure#storage.
-     */
+	/**
+	 * EFactory method for OCCI kind http://schemas.ogf.org/occi/infrastructure#storage.
+	 */
 	@Override
 	public org.occiware.clouddesigner.occi.infrastructure.Storage createStorage() {
 		return new StorageConnector();
 	}
 
-    /**
-     * EFactory method for OCCI kind http://schemas.ogf.org/occi/infrastructure#storagelink.
-     */
+	/**
+	 * EFactory method for OCCI kind http://schemas.ogf.org/occi/infrastructure#storagelink.
+	 */
 	@Override
 	public org.occiware.clouddesigner.occi.infrastructure.Storagelink createStoragelink() {
 		return new StoragelinkConnector();
 	}
 
-    /**
-     * EFactory method for OCCI kind http://schemas.ogf.org/occi/infrastructure#networkinterface.
-     */
+	/**
+	 * EFactory method for OCCI kind http://schemas.ogf.org/occi/infrastructure#networkinterface.
+	 */
 	@Override
 	public org.occiware.clouddesigner.occi.infrastructure.Networkinterface createNetworkinterface() {
 		return new NetworkinterfaceConnector();

@@ -28,11 +28,11 @@ public class StorageConnector extends org.occiware.clouddesigner.occi.infrastruc
 		System.err.println("DEBUG constructor " + this);
 	}
 
-    /**
-     * OCCI action http://schemas.ogf.org/occi/infrastructure/storage/action#online.
-     */
+	/**
+	 * OCCI action http://schemas.ogf.org/occi/infrastructure/storage/action#online.
+	 */
 	@Override
-    public void online()
+	public void online()
 	{
 		System.err.println("DEBUG online on " + this);
 
@@ -41,11 +41,11 @@ public class StorageConnector extends org.occiware.clouddesigner.occi.infrastruc
 		setState(StorageStatus.ONLINE);
 	}
 
-    /**
-     * OCCI action http://schemas.ogf.org/occi/infrastructure/storage/action#offline.
-     */
+	/**
+	 * OCCI action http://schemas.ogf.org/occi/infrastructure/storage/action#offline.
+	 */
 	@Override
-    public void offline()
+	public void offline()
 	{
 		System.err.println("DEBUG offline on " + this);
 
@@ -54,11 +54,11 @@ public class StorageConnector extends org.occiware.clouddesigner.occi.infrastruc
 		setState(StorageStatus.OFFLINE);
 	}
 
-    /**
-     * OCCI action http://schemas.ogf.org/occi/infrastructure/storage/action#backup.
-     */
+	/**
+	 * OCCI action http://schemas.ogf.org/occi/infrastructure/storage/action#backup.
+	 */
 	@Override
-    public void backup()
+	public void backup()
 	{
 		System.err.println("DEBUG backup on " + this);
 
@@ -67,11 +67,11 @@ public class StorageConnector extends org.occiware.clouddesigner.occi.infrastruc
 		setState(StorageStatus.BACKUP);
 	}
 
-    /**
-     * OCCI action http://schemas.ogf.org/occi/infrastructure/storage/action#snapshot.
-     */
+	/**
+	 * OCCI action http://schemas.ogf.org/occi/infrastructure/storage/action#snapshot.
+	 */
 	@Override
-    public void snapshot()
+	public void snapshot()
 	{
 		System.err.println("DEBUG snapshot on " + this);
 
@@ -80,11 +80,11 @@ public class StorageConnector extends org.occiware.clouddesigner.occi.infrastruc
 		setState(StorageStatus.SNAPSHOT);
 	}
 
-    /**
-     * OCCI action http://schemas.ogf.org/occi/infrastructure/storage/action#resize.
-     */
+	/**
+	 * OCCI action http://schemas.ogf.org/occi/infrastructure/storage/action#resize.
+	 */
 	@Override
-    public void resize(final float size)
+	public void resize(final float size)
 	{
 		System.err.println("DEBUG resize on " + this);
 		System.err.println("  - size=" + size);

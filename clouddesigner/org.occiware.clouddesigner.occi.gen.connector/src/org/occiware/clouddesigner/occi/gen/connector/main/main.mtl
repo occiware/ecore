@@ -39,9 +39,9 @@ public class ConnectorFactory extends [getJavaPackage(extension)/].impl.[toU1Cas
 [/template]
 
 [template public generateCreateKindMethod(kind : Kind, extension : Extension)]
-    /**
-     * EFactory method for OCCI kind [kind.scheme/][kind.term/].
-     */
+	/**
+	 * EFactory method for OCCI kind [kind.scheme/][kind.term/].
+	 */
 	@Override
 [let kindClassName : String = toU1Case(kind.term)]
 	public [getJavaPackage(extension)/].[kindClassName/] create[kindClassName/]() {
@@ -90,11 +90,11 @@ public class [kindClassName/]Connector extends [getJavaPackage(extension)/].impl
 [/template]
 
 [template public generateActionMethod(action : Action, kind : Kind)]
-    /**
-     * OCCI action [action.scheme/][action.term/].
-     */
+	/**
+	 * OCCI action [action.scheme/][action.term/].
+	 */
 	@Override
-    public void [action.term/]([for (parameter : Attribute | action.attributes) separator(', ')]final [getJavaTypeName(parameter)/] [parameter.name/][/for])
+	public void [action.term/]([for (parameter : Attribute | action.attributes) separator(', ')]final [getJavaTypeName(parameter)/] [parameter.name/][/for])
 	{
 		System.err.println("DEBUG [action.term/] on " + this);
 [for (parameter : Attribute | action.attributes)]
