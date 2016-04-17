@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<?eclipse version="3.0"?>
-<plugin>
-  <extension point="org.eclipse.emf.ecore.factory_override">
-    <factory class="org.occiware.mart.infrastructure.connector.dummy.ConnectorFactory"
-             uri="http://schemas.ogf.org/occi/infrastructure/ecore">
-    </factory>
-  </extension>
-</plugin>
