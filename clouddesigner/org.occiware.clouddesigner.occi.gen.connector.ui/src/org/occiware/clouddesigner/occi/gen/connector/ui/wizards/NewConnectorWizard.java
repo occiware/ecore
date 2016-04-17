@@ -54,6 +54,7 @@ import org.occiware.clouddesigner.occi.OCCIRegistry;
 import org.occiware.clouddesigner.occi.OcciCoreConstants;
 import org.occiware.clouddesigner.occi.gen.connector.ui.Activator;
 import org.occiware.clouddesigner.occi.gen.connector.ui.common.GenerateAll;
+import org.occiware.clouddesigner.occi.util.Occi2Ecore;
 
 /**
  * The wizard to create a new OCCI connector project.
@@ -207,6 +208,8 @@ public class NewConnectorWizard extends BasicNewProjectResourceWizard {
 			"Bundle-SymbolicName: " + connectorProjectName + ";singleton:=true\n" +
 			"Bundle-Version: 0.1.0.qualifier\n" +
 			"Bundle-ClassPath: .\n" +
+			"Bundle-Vendor: OCCIware\n" +
+//			"Bundle-Localization: plugin\n" + // FIXME generate plugin.properties
 			"Bundle-RequiredExecutionEnvironment: JavaSE-1.7\n" +
 			"Bundle-ActivationPolicy: lazy\n" +
 			"Require-Bundle: " + requireBundle + "\n" +
@@ -227,7 +230,9 @@ public class NewConnectorWizard extends BasicNewProjectResourceWizard {
 				"# - Philippe Merle <philippe.merle@inria.fr>\n" +
 				"#\n" +
 				"\n" +
-				"bin.includes = META-INF/, plugin.xml";
+				"source.. = src/\n" +
+				"output.. = bin/\n" +
+				"bin.includes = META-INF/, plugin.xml, .\n";
 		build.setContents(new ByteArrayInputStream(buildContent.getBytes()), true, false, monitor);
 
 		// Generate plugin.xml
@@ -249,7 +254,7 @@ public class NewConnectorWizard extends BasicNewProjectResourceWizard {
 			"<plugin>\n" +
 			"  <extension point=\"org.eclipse.emf.ecore.factory_override\">\n" +
 			"    <factory class=\"" + connectorProjectName + ".ConnectorFactory\"\n" +
-			"             uri=\"" + extensionScheme + "\"/>\n" +
+			"             uri=\"" + Occi2Ecore.convertOcciScheme2EcoreNamespace(extensionScheme) + "\"/>\n" +
 			"  </extension>\n" +
 			"</plugin>\n";
 		pluginXML.create(new ByteArrayInputStream(pluginContent.getBytes()), true, monitor);

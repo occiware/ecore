@@ -14,6 +14,6 @@
 <plugin>
   <extension point="org.eclipse.emf.ecore.factory_override">
     <factory class="org.occiware.clouddesigner.occi.platform.connector.dummy.ConnectorFactory"
-             uri="http://schemas.ogf.org/occi/platform#"/>
+             uri="http://schemas.ogf.org/occi/platform/ecore"/>
   </extension>
 </plugin>
