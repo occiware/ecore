@@ -8,6 +8,9 @@ Export-Package: org.occiware.mart
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,
- org.occiware.clouddesigner.occi;visibility:=reexport,
  javax.servlet;bundle-version="3.1.0",
- org.occiware.clouddesigner.occi.infrastructure;bundle-version="0.1.0"
+ org.occiware.clouddesigner.occi;visibility:=reexport,
+ org.occiware.clouddesigner.occi.infrastructure,
+ org.occiware.clouddesigner.occi.infrastructure.connector.dummy,
+ org.occiware.clouddesigner.occi.platform,
+ org.occiware.clouddesigner.occi.platform.connector.dummy
