@@ -44,6 +44,8 @@ public class Main
 	 */
 	public static void main(String[] args)
 	{
+		MART.reportJavaInformation();
+
 		// Initialize MART.
 		MART.initMART();
 		
