@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <metadata>
   <groupId>Clouddesigner</groupId>
-  <artifactId>org.occiware.clouddesigner.occi</artifactId>
+  <artifactId>org.occiware.clouddesigner.occi.infrastructure</artifactId>
   <versioning>
     <versions>
       <version>0.1.0-SNAPSHOT</version>
     </versions>
-    <lastUpdated>20160417215808</lastUpdated>
+    <lastUpdated>20160417215835</lastUpdated>
   </versioning>
 </metadata>

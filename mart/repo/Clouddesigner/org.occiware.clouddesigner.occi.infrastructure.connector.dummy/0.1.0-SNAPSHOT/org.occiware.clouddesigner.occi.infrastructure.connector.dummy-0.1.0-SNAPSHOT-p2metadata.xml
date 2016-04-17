@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<units size='1'>
+  <unit id='org.occiware.clouddesigner.occi.infrastructure.connector.dummy' version='0.1.0.201604172159'>
+    <update id='org.occiware.clouddesigner.occi.infrastructure.connector.dummy' range='[0.0.0,0.1.0.201604172159)' severity='0'/>
+    <properties size='5'>
+      <property name='org.eclipse.equinox.p2.name' value='org.occiware.clouddesigner.occi.infrastructure.connector.dummy'/>
+      <property name='org.eclipse.equinox.p2.provider' value='OCCIware'/>
+      <property name='maven-groupId' value='Clouddesigner'/>
+      <property name='maven-artifactId' value='org.occiware.clouddesigner.occi.infrastructure.connector.dummy'/>
+      <property name='maven-version' value='0.1.0-SNAPSHOT'/>
+    </properties>
+    <provides size='4'>
+      <provided namespace='org.eclipse.equinox.p2.iu' name='org.occiware.clouddesigner.occi.infrastructure.connector.dummy' version='0.1.0.201604172159'/>
+      <provided namespace='osgi.bundle' name='org.occiware.clouddesigner.occi.infrastructure.connector.dummy' version='0.1.0.201604172159'/>
+      <provided namespace='java.package' name='org.occiware.clouddesigner.occi.infrastructure.connector.dummy' version='0.0.0'/>
+      <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+    </provides>
+    <requires size='1'>
+      <required namespace='osgi.bundle' name='org.occiware.clouddesigner.occi.infrastructure' range='0.0.0'/>
+    </requires>
+    <artifacts size='1'>
+      <artifact classifier='osgi.bundle' id='org.occiware.clouddesigner.occi.infrastructure.connector.dummy' version='0.1.0.201604172159'/>
+    </artifacts>
+    <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+    <touchpointData size='1'>
+      <instructions size='1'>
+        <instruction key='manifest'>
+          Bundle-SymbolicName: org.occiware.clouddesigner.occi.infrastructure.connector.dummy;singleton:=true&#xA;Bundle-Version: 0.1.0.201604172159&#xA;
+        </instruction>
+      </instructions>
+    </touchpointData>
+  </unit>
+</units>

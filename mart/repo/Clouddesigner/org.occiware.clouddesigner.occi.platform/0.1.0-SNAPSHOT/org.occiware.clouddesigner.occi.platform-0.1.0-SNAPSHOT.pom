@@ -9,7 +9,7 @@
    <relativePath>../org.occiware.clouddesigner.parent/pom.xml</relativePath>
   </parent>
   <groupId>Clouddesigner</groupId>
-  <artifactId>org.occiware.clouddesigner.occi</artifactId>
+  <artifactId>org.occiware.clouddesigner.occi.platform</artifactId>
   <version>0.1.0-SNAPSHOT</version>
   <packaging>eclipse-plugin</packaging>
 </project>
