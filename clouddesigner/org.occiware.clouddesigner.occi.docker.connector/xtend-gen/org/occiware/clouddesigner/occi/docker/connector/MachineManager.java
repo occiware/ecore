@@ -143,7 +143,8 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
     Preconditions.<String>checkNotNull(_name, "Machine name is null");
     String _driverName = this.getDriverName();
     Preconditions.<String>checkNotNull(_driverName, "Driver name is null");
-    StringBuilder _append = command.append("docker-machine -D create --driver ");
+    String dockerMachineCMD = String.format("%s -D create --driver ", this.dockerMachineCmd);
+    StringBuilder _append = command.append(dockerMachineCMD);
     String _driverName_1 = this.getDriverName();
     _append.append(_driverName_1);
     boolean _or = false;

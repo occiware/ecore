@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="ASCII"?>
-<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:occi="http://schemas.ogf.org/occi" name="OCCIware Docker" scheme="http://occiware.org/docker#">
+<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:occi="http://schemas.ogf.org/occi" name="OCCIware Docker" scheme="http://occiware.org/occi/docker#">
   <import href="../extensions/Core.xmi#/"/>
   <import href="../extensions/Infrastructure.xmi#/"/>
-  <kinds term="container" scheme="http://occiware.org/docker#" title="Container Resource">
+  <kinds term="container" scheme="http://occiware.org/occi/docker#" title="Container Resource">
     <attributes name="name" required="true" description="The name of this Container instance">
       <type href="../OCCI.ecore#//String"/>
     </attributes>
@@ -121,38 +121,38 @@
       <type href="../OCCI.ecore#//Boolean"/>
     </attributes>
     <parent href="../extensions/Infrastructure.xmi#//@kinds[term='compute']"/>
-    <actions term="create" scheme="http://occiware.org/docker/container/action#"/>
-    <actions term="start" scheme="http://occiware.org/docker/container/action#"/>
-    <actions term="stop" scheme="http://occiware.org/docker/container/action#"/>
-    <actions term="run" scheme="http://occiware.org/docker/container/action#"/>
-    <actions term="pause" scheme="http://occiware.org/docker/container/action#"/>
-    <actions term="unpause" scheme="http://occiware.org/docker/container/action#" title=""/>
-    <actions term="kill" scheme="http://occiware.org/docker/container/action#">
+    <actions term="create" scheme="http://occiware.org/occi/docker/container/action#"/>
+    <actions term="start" scheme="http://occiware.org/occi/docker/container/action#"/>
+    <actions term="stop" scheme="http://occiware.org/occi/docker/container/action#"/>
+    <actions term="run" scheme="http://occiware.org/occi/docker/container/action#"/>
+    <actions term="pause" scheme="http://occiware.org/occi/docker/container/action#"/>
+    <actions term="unpause" scheme="http://occiware.org/occi/docker/container/action#" title=""/>
+    <actions term="kill" scheme="http://occiware.org/occi/docker/container/action#">
       <attributes name="signal" required="true" default="KILL">
         <type href="../OCCI.ecore#//String"/>
       </attributes>
     </actions>
   </kinds>
-  <kinds term="link" scheme="http://occiware.org/docker#" title="Link between containers">
+  <kinds term="link" scheme="http://occiware.org/occi/docker#" title="Link between containers">
     <attributes name="alias" description="The alias of this Link instance">
       <type href="../OCCI.ecore#//String"/>
     </attributes>
     <parent href="../extensions/Core.xmi#//@kinds[term='link']"/>
   </kinds>
-  <kinds term="volumesfrom" scheme="http://occiware.org/docker#" title="VolumsFrom">
+  <kinds term="volumesfrom" scheme="http://occiware.org/occi/docker#" title="VolumsFrom">
     <attributes name="mode" default="read_write" description="The mode of this VolumesFrom instance" type="//@types.0"/>
     <parent href="../extensions/Core.xmi#//@kinds[term='link']"/>
   </kinds>
-  <kinds term="contains" scheme="http://occiware.org/docker#">
+  <kinds term="contains" scheme="http://occiware.org/occi/docker#">
     <parent href="../extensions/Core.xmi#//@kinds[term='link']"/>
   </kinds>
-  <kinds term="machine" scheme="http://occiware.org/docker#" title="Machine Resource">
+  <kinds term="machine" scheme="http://occiware.org/occi/docker#" title="Machine Resource">
     <attributes name="name" required="true">
       <type href="../OCCI.ecore#//String"/>
     </attributes>
     <parent href="../extensions/Infrastructure.xmi#//@kinds[term='compute']"/>
   </kinds>
-  <kinds term="machine_Amazon_EC2" scheme="http://occiware.org/docker#" title="Machine on Amazon EC2" parent="//@kinds[term='machine']">
+  <kinds term="machine_Amazon_EC2" scheme="http://occiware.org/occi/docker#" title="Machine on Amazon EC2" parent="//@kinds[term='machine']">
     <attributes name="access_key" required="true" description="Your access key id for the Amazon Web Services API">
       <type href="../OCCI.ecore#//String"/>
     </attributes>
@@ -187,7 +187,7 @@
       <type href="../OCCI.ecore#//String"/>
     </attributes>
   </kinds>
-  <kinds term="machine_Digital_Ocean" scheme="http://occiware.org/docker#" title="Machine on Digital Ocean" parent="//@kinds[term='machine']">
+  <kinds term="machine_Digital_Ocean" scheme="http://occiware.org/occi/docker#" title="Machine on Digital Ocean" parent="//@kinds[term='machine']">
     <attributes name="access_token" required="true" description="Your personal access token for the Digital Ocean API">
       <type href="../OCCI.ecore#//String"/>
     </attributes>
@@ -201,7 +201,7 @@
       <type href="../OCCI.ecore#//String"/>
     </attributes>
   </kinds>
-  <kinds term="machine_Google_Compute_Engine" scheme="http://occiware.org/docker#" title="Machine on Google Compute Engine" parent="//@kinds[term='machine']">
+  <kinds term="machine_Google_Compute_Engine" scheme="http://occiware.org/occi/docker#" title="Machine on Google Compute Engine" parent="//@kinds[term='machine']">
     <attributes name="zone" default="us-central1-a" description="The zone to launch the instance">
       <type href="../OCCI.ecore#//String"/>
     </attributes>
@@ -218,7 +218,7 @@
       <type href="../OCCI.ecore#//String"/>
     </attributes>
   </kinds>
-  <kinds term="machine_IBM_SoftLayer" scheme="http://occiware.org/docker#" title="Machine on IBM SoftLayer" parent="//@kinds[term='machine']">
+  <kinds term="machine_IBM_SoftLayer" scheme="http://occiware.org/occi/docker#" title="Machine on IBM SoftLayer" parent="//@kinds[term='machine']">
     <attributes name="api_endpoint" description="Change softlayer API endpoint">
       <type href="../OCCI.ecore#//String"/>
     </attributes>
@@ -259,7 +259,7 @@
       <type href="../OCCI.ecore#//String"/>
     </attributes>
   </kinds>
-  <kinds term="machine_Microsoft_Azure" scheme="http://occiware.org/docker#" title="Machine on Microsoft Azure" parent="//@kinds[term='machine']">
+  <kinds term="machine_Microsoft_Azure" scheme="http://occiware.org/occi/docker#" title="Machine on Microsoft Azure" parent="//@kinds[term='machine']">
     <attributes name="subscription_id" required="true" description="Your Azure subscription ID (A GUID like d255d8d7-5af0-4f5c-8a3e-1545044b861e)">
       <type href="../OCCI.ecore#//String"/>
     </attributes>
@@ -267,7 +267,7 @@
       <type href="../OCCI.ecore#//String"/>
     </attributes>
   </kinds>
-  <kinds term="machine_Microsoft_Hyper_V" scheme="http://occiware.org/docker#" title="Machine on Microsoft Hyper-V" parent="//@kinds[term='machine']">
+  <kinds term="machine_Microsoft_Hyper_V" scheme="http://occiware.org/occi/docker#" title="Machine on Microsoft Hyper-V" parent="//@kinds[term='machine']">
     <attributes name="boot2docker_location" description="Location of a local boot2docker iso to use. Overrides the URL option below">
       <type href="../OCCI.ecore#//String"/>
     </attributes>
@@ -284,7 +284,7 @@
       <type href="../OCCI.ecore#//String"/>
     </attributes>
   </kinds>
-  <kinds term="machine_OpenStack" scheme="http://occiware.org/docker#" title="Machine on OpenStack" parent="//@kinds[term='machine']">
+  <kinds term="machine_OpenStack" scheme="http://occiware.org/occi/docker#" title="Machine on OpenStack" parent="//@kinds[term='machine']">
     <attributes name="flavor_id" required="true" description="The flavor ID to use when creating the machine">
       <type href="../OCCI.ecore#//String"/>
     </attributes>
@@ -322,7 +322,7 @@
       <type href="../OCCI.ecore#//String"/>
     </attributes>
   </kinds>
-  <kinds term="machine_Rackspace" scheme="http://occiware.org/docker#" title="Machine on Rackspace cloud" parent="//@kinds[term='machine']">
+  <kinds term="machine_Rackspace" scheme="http://occiware.org/occi/docker#" title="Machine on Rackspace cloud" parent="//@kinds[term='machine']">
     <attributes name="username" required="true" description="Rackspace account username">
       <type href="../OCCI.ecore#//String"/>
     </attributes>
@@ -348,7 +348,7 @@
       <type href="../OCCI.ecore#//Number"/>
     </attributes>
   </kinds>
-  <kinds term="machine_VirtualBox" scheme="http://occiware.org/docker#" title="Machine on VirtualBox" parent="//@kinds[term='machine']">
+  <kinds term="machine_VirtualBox" scheme="http://occiware.org/occi/docker#" title="Machine on VirtualBox" parent="//@kinds[term='machine']">
     <attributes name="boot2docker_url" description="The URL of the boot2docker image. Default to the latest available version">
       <type href="../OCCI.ecore#//String"/>
     </attributes>
@@ -359,7 +359,7 @@
       <type href="../OCCI.ecore#//Number"/>
     </attributes>
   </kinds>
-  <kinds term="machine_VMware_Fusion" scheme="http://occiware.org/docker#" title="Machine on VMware Fusion" parent="//@kinds[term='machine']">
+  <kinds term="machine_VMware_Fusion" scheme="http://occiware.org/occi/docker#" title="Machine on VMware Fusion" parent="//@kinds[term='machine']">
     <attributes name="boot2docker_url" description="URL for boot2docker image">
       <type href="../OCCI.ecore#//String"/>
     </attributes>
@@ -370,7 +370,7 @@
       <type href="../OCCI.ecore#//Number"/>
     </attributes>
   </kinds>
-  <kinds term="machine_VMware_vCloud_Air" scheme="http://occiware.org/docker#" title="Machine on VMware vCloud Air" parent="//@kinds[term='machine']">
+  <kinds term="machine_VMware_vCloud_Air" scheme="http://occiware.org/occi/docker#" title="Machine on VMware vCloud Air" parent="//@kinds[term='machine']">
     <attributes name="username" required="true" description="vCloud Air Username">
       <type href="../OCCI.ecore#//String"/>
     </attributes>
@@ -417,7 +417,7 @@
       <type href="../OCCI.ecore#//String"/>
     </attributes>
   </kinds>
-  <kinds term="machine_VMware_vSphere" scheme="http://occiware.org/docker#" title="Machine on VMware vSphere" parent="//@kinds[term='machine']">
+  <kinds term="machine_VMware_vSphere" scheme="http://occiware.org/occi/docker#" title="Machine on VMware vSphere" parent="//@kinds[term='machine']">
     <attributes name="username" required="true" description="vSphere Username">
       <type href="../OCCI.ecore#//String"/>
     </attributes>

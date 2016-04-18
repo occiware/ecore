@@ -6,7 +6,7 @@
     name="OCCIware Docker" >
 
       <!-- Kind: Container Resource -->
-      <occi:kind term="container" scheme="http://occiware.org/docker#" title="Container Resource">
+      <occi:kind term="container" scheme="http://occiware.org/occi/docker#" title="Container Resource">
         <occi:parent term="compute" scheme="http://schemas.ogf.org/occi/infrastructure#" />
     	  	<occi:attribute 
     	        name="name" 
@@ -165,25 +165,25 @@
     	        type="" 
     	        title="Mount the container's root filesystem as read only" />
     	    <!-- Action:  -->
-    	    <occi:action term="create" scheme="http://occiware.org/docker/container/action#" title="" >
+    	    <occi:action term="create" scheme="http://occiware.org/occi/docker/container/action#" title="" >
     	    </occi:action>
     	    <!-- Action:  -->
-    	    <occi:action term="start" scheme="http://occiware.org/docker/container/action#" title="" >
+    	    <occi:action term="start" scheme="http://occiware.org/occi/docker/container/action#" title="" >
     	    </occi:action>
     	    <!-- Action:  -->
-    	    <occi:action term="stop" scheme="http://occiware.org/docker/container/action#" title="" >
+    	    <occi:action term="stop" scheme="http://occiware.org/occi/docker/container/action#" title="" >
     	    </occi:action>
     	    <!-- Action:  -->
-    	    <occi:action term="run" scheme="http://occiware.org/docker/container/action#" title="" >
+    	    <occi:action term="run" scheme="http://occiware.org/occi/docker/container/action#" title="" >
     	    </occi:action>
     	    <!-- Action:  -->
-    	    <occi:action term="pause" scheme="http://occiware.org/docker/container/action#" title="" >
+    	    <occi:action term="pause" scheme="http://occiware.org/occi/docker/container/action#" title="" >
     	    </occi:action>
     	    <!-- Action:  -->
-    	    <occi:action term="unpause" scheme="http://occiware.org/docker/container/action#" title="" >
+    	    <occi:action term="unpause" scheme="http://occiware.org/occi/docker/container/action#" title="" >
     	    </occi:action>
     	    <!-- Action:  -->
-    	    <occi:action term="kill" scheme="http://occiware.org/docker/container/action#" title="" >
+    	    <occi:action term="kill" scheme="http://occiware.org/occi/docker/container/action#" title="" >
     	      	<occi:attribute 
     	            name="signal" 
     	            type="xsd:string" 
@@ -191,7 +191,7 @@
     	    </occi:action>
       </occi:kind>
       <!-- Kind: Link between containers -->
-      <occi:kind term="link" scheme="http://occiware.org/docker#" title="Link between containers">
+      <occi:kind term="link" scheme="http://occiware.org/occi/docker#" title="Link between containers">
         <occi:parent term="link" scheme="http://schemas.ogf.org/occi/core#" />
     	  	<occi:attribute 
     	        name="alias" 
@@ -199,7 +199,7 @@
     	        title="The alias of this Link instance" />
       </occi:kind>
       <!-- Kind: VolumsFrom -->
-      <occi:kind term="volumesfrom" scheme="http://occiware.org/docker#" title="VolumsFrom">
+      <occi:kind term="volumesfrom" scheme="http://occiware.org/occi/docker#" title="VolumsFrom">
         <occi:parent term="link" scheme="http://schemas.ogf.org/occi/core#" />
     	  	<occi:attribute 
     	        name="mode" 
@@ -207,11 +207,11 @@
     	        title="The mode of this VolumesFrom instance" />
       </occi:kind>
       <!-- Kind:  -->
-      <occi:kind term="contains" scheme="http://occiware.org/docker#" title="">
+      <occi:kind term="contains" scheme="http://occiware.org/occi/docker#" title="">
         <occi:parent term="link" scheme="http://schemas.ogf.org/occi/core#" />
       </occi:kind>
       <!-- Kind: Machine Resource -->
-      <occi:kind term="machine" scheme="http://occiware.org/docker#" title="Machine Resource">
+      <occi:kind term="machine" scheme="http://occiware.org/occi/docker#" title="Machine Resource">
         <occi:parent term="compute" scheme="http://schemas.ogf.org/occi/infrastructure#" />
     	  	<occi:attribute 
     	        name="name" 
@@ -219,40 +219,40 @@
     	        title="" />
       </occi:kind>
       <!-- Kind: Machine on Amazon EC2 -->
-      <occi:kind term="machine_Amazon_EC2" scheme="http://occiware.org/docker#" title="Machine on Amazon EC2">
-        <occi:parent term="machine" scheme="http://occiware.org/docker#" />
+      <occi:kind term="machine_Amazon_EC2" scheme="http://occiware.org/occi/docker#" title="Machine on Amazon EC2">
+        <occi:parent term="machine" scheme="http://occiware.org/occi/docker#" />
       </occi:kind>
       <!-- Kind: Machine on Digital Ocean -->
-      <occi:kind term="machine_Digital_Ocean" scheme="http://occiware.org/docker#" title="Machine on Digital Ocean">
-        <occi:parent term="machine" scheme="http://occiware.org/docker#" />
+      <occi:kind term="machine_Digital_Ocean" scheme="http://occiware.org/occi/docker#" title="Machine on Digital Ocean">
+        <occi:parent term="machine" scheme="http://occiware.org/occi/docker#" />
       </occi:kind>
       <!-- Kind: Machine on Google Compute Engine -->
-      <occi:kind term="machine_Google_Compute_Engine" scheme="http://occiware.org/docker#" title="Machine on Google Compute Engine">
-        <occi:parent term="machine" scheme="http://occiware.org/docker#" />
+      <occi:kind term="machine_Google_Compute_Engine" scheme="http://occiware.org/occi/docker#" title="Machine on Google Compute Engine">
+        <occi:parent term="machine" scheme="http://occiware.org/occi/docker#" />
       </occi:kind>
       <!-- Kind: Machine on IBM SoftLayer -->
-      <occi:kind term="machine_IBM_SoftLayer" scheme="http://occiware.org/docker#" title="Machine on IBM SoftLayer">
-        <occi:parent term="machine" scheme="http://occiware.org/docker#" />
+      <occi:kind term="machine_IBM_SoftLayer" scheme="http://occiware.org/occi/docker#" title="Machine on IBM SoftLayer">
+        <occi:parent term="machine" scheme="http://occiware.org/occi/docker#" />
       </occi:kind>
       <!-- Kind: Machine on Microsoft Azure -->
-      <occi:kind term="machine_Microsoft_Azure" scheme="http://occiware.org/docker#" title="Machine on Microsoft Azure">
-        <occi:parent term="machine" scheme="http://occiware.org/docker#" />
+      <occi:kind term="machine_Microsoft_Azure" scheme="http://occiware.org/occi/docker#" title="Machine on Microsoft Azure">
+        <occi:parent term="machine" scheme="http://occiware.org/occi/docker#" />
       </occi:kind>
       <!-- Kind: Machine on Microsoft Hyper-V -->
-      <occi:kind term="machine_Microsoft_Hyper_V" scheme="http://occiware.org/docker#" title="Machine on Microsoft Hyper-V">
-        <occi:parent term="machine" scheme="http://occiware.org/docker#" />
+      <occi:kind term="machine_Microsoft_Hyper_V" scheme="http://occiware.org/occi/docker#" title="Machine on Microsoft Hyper-V">
+        <occi:parent term="machine" scheme="http://occiware.org/occi/docker#" />
       </occi:kind>
       <!-- Kind: Machine on OpenStack -->
-      <occi:kind term="machine_OpenStack" scheme="http://occiware.org/docker#" title="Machine on OpenStack">
-        <occi:parent term="machine" scheme="http://occiware.org/docker#" />
+      <occi:kind term="machine_OpenStack" scheme="http://occiware.org/occi/docker#" title="Machine on OpenStack">
+        <occi:parent term="machine" scheme="http://occiware.org/occi/docker#" />
       </occi:kind>
       <!-- Kind: Machine on Rackspace cloud -->
-      <occi:kind term="machine_Rackspace" scheme="http://occiware.org/docker#" title="Machine on Rackspace cloud">
-        <occi:parent term="machine" scheme="http://occiware.org/docker#" />
+      <occi:kind term="machine_Rackspace" scheme="http://occiware.org/occi/docker#" title="Machine on Rackspace cloud">
+        <occi:parent term="machine" scheme="http://occiware.org/occi/docker#" />
       </occi:kind>
       <!-- Kind: Machine on VirtualBox -->
-      <occi:kind term="machine_VirtualBox" scheme="http://occiware.org/docker#" title="Machine on VirtualBox">
-        <occi:parent term="machine" scheme="http://occiware.org/docker#" />
+      <occi:kind term="machine_VirtualBox" scheme="http://occiware.org/occi/docker#" title="Machine on VirtualBox">
+        <occi:parent term="machine" scheme="http://occiware.org/occi/docker#" />
     	  	<occi:attribute 
     	        name="boot2docker_url" 
     	        type="xsd:string" 
@@ -267,15 +267,15 @@
     	        title="Size of memory for the host in MB" />
       </occi:kind>
       <!-- Kind: Machine on VMware Fusion -->
-      <occi:kind term="machine_VMware_Fusion" scheme="http://occiware.org/docker#" title="Machine on VMware Fusion">
-        <occi:parent term="machine" scheme="http://occiware.org/docker#" />
+      <occi:kind term="machine_VMware_Fusion" scheme="http://occiware.org/occi/docker#" title="Machine on VMware Fusion">
+        <occi:parent term="machine" scheme="http://occiware.org/occi/docker#" />
       </occi:kind>
       <!-- Kind: Machine on VMware vCloud Air -->
-      <occi:kind term="machine_VMware_vCloud_Air" scheme="http://occiware.org/docker#" title="Machine on VMware vCloud Air">
-        <occi:parent term="machine" scheme="http://occiware.org/docker#" />
+      <occi:kind term="machine_VMware_vCloud_Air" scheme="http://occiware.org/occi/docker#" title="Machine on VMware vCloud Air">
+        <occi:parent term="machine" scheme="http://occiware.org/occi/docker#" />
       </occi:kind>
       <!-- Kind: Machine on VMware vSphere -->
-      <occi:kind term="machine_VMware_vSphere" scheme="http://occiware.org/docker#" title="Machine on VMware vSphere">
-        <occi:parent term="machine" scheme="http://occiware.org/docker#" />
+      <occi:kind term="machine_VMware_vSphere" scheme="http://occiware.org/occi/docker#" title="Machine on VMware vSphere">
+        <occi:parent term="machine" scheme="http://occiware.org/occi/docker#" />
       </occi:kind>
 </occi:extension>

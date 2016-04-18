@@ -1,7 +1,7 @@
 h1. OCCI Extension: OCCIware Docker
 
 | *Name* | OCCIware Docker |
-| *Scheme* | http://occiware.org/docker# |
+| *Scheme* | http://occiware.org/occi/docker# |
 
 h1. Imports
 
@@ -14,7 +14,7 @@ h1. Kinds
 h2. Kind container
 
 | *Term* | container |
-| *Scheme* | http://occiware.org/docker# |
+| *Scheme* | http://occiware.org/occi/docker# |
 | *Title* | Container Resource |
 | *Parent* | <a href="OCCI Infrastructure.textile#kind-compute">http://schemas.ogf.org/occi/infrastructure#compute</a> |
 
@@ -66,49 +66,49 @@ h3. Actions
 h4. Action create
 
 | *Term* | create |
-| *Scheme* | http://occiware.org/docker/container/action# |
+| *Scheme* | http://occiware.org/occi/docker/container/action# |
 | *Title* |  |
 
 
 h4. Action start
 
 | *Term* | start |
-| *Scheme* | http://occiware.org/docker/container/action# |
+| *Scheme* | http://occiware.org/occi/docker/container/action# |
 | *Title* |  |
 
 
 h4. Action stop
 
 | *Term* | stop |
-| *Scheme* | http://occiware.org/docker/container/action# |
+| *Scheme* | http://occiware.org/occi/docker/container/action# |
 | *Title* |  |
 
 
 h4. Action run
 
 | *Term* | run |
-| *Scheme* | http://occiware.org/docker/container/action# |
+| *Scheme* | http://occiware.org/occi/docker/container/action# |
 | *Title* |  |
 
 
 h4. Action pause
 
 | *Term* | pause |
-| *Scheme* | http://occiware.org/docker/container/action# |
+| *Scheme* | http://occiware.org/occi/docker/container/action# |
 | *Title* |  |
 
 
 h4. Action unpause
 
 | *Term* | unpause |
-| *Scheme* | http://occiware.org/docker/container/action# |
+| *Scheme* | http://occiware.org/occi/docker/container/action# |
 | *Title* |  |
 
 
 h4. Action kill
 
 | *Term* | kill |
-| *Scheme* | http://occiware.org/docker/container/action# |
+| *Scheme* | http://occiware.org/occi/docker/container/action# |
 | *Title* |  |
 
 | *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
@@ -119,7 +119,7 @@ h4. Action kill
 h2. Kind link
 
 | *Term* | link |
-| *Scheme* | http://occiware.org/docker# |
+| *Scheme* | http://occiware.org/occi/docker# |
 | *Title* | Link between containers |
 | *Parent* | <a href="OCCI Core.textile#kind-link">http://schemas.ogf.org/occi/core#link</a> |
 
@@ -135,7 +135,7 @@ h3. Actions
 h2. Kind volumesfrom
 
 | *Term* | volumesfrom |
-| *Scheme* | http://occiware.org/docker# |
+| *Scheme* | http://occiware.org/occi/docker# |
 | *Title* | VolumsFrom |
 | *Parent* | <a href="OCCI Core.textile#kind-link">http://schemas.ogf.org/occi/core#link</a> |
 
@@ -151,7 +151,7 @@ h3. Actions
 h2. Kind contains
 
 | *Term* | contains |
-| *Scheme* | http://occiware.org/docker# |
+| *Scheme* | http://occiware.org/occi/docker# |
 | *Title* |  |
 | *Parent* | <a href="OCCI Core.textile#kind-link">http://schemas.ogf.org/occi/core#link</a> |
 
@@ -165,7 +165,7 @@ h3. Actions
 h2. Kind machine
 
 | *Term* | machine |
-| *Scheme* | http://occiware.org/docker# |
+| *Scheme* | http://occiware.org/occi/docker# |
 | *Title* | Machine Resource |
 | *Parent* | <a href="OCCI Infrastructure.textile#kind-compute">http://schemas.ogf.org/occi/infrastructure#compute</a> |
 
@@ -181,9 +181,9 @@ h3. Actions
 h2. Kind machine_Amazon_EC2
 
 | *Term* | machine_Amazon_EC2 |
-| *Scheme* | http://occiware.org/docker# |
+| *Scheme* | http://occiware.org/occi/docker# |
 | *Title* | Machine on Amazon EC2 |
-| *Parent* | <a href="OCCIware Docker.textile#kind-machine">http://occiware.org/docker#machine</a> |
+| *Parent* | <a href="OCCIware Docker.textile#kind-machine">http://occiware.org/occi/docker#machine</a> |
 
 h3. Attributes
 
@@ -207,9 +207,9 @@ h3. Actions
 h2. Kind machine_Digital_Ocean
 
 | *Term* | machine_Digital_Ocean |
-| *Scheme* | http://occiware.org/docker# |
+| *Scheme* | http://occiware.org/occi/docker# |
 | *Title* | Machine on Digital Ocean |
-| *Parent* | <a href="OCCIware Docker.textile#kind-machine">http://occiware.org/docker#machine</a> |
+| *Parent* | <a href="OCCIware Docker.textile#kind-machine">http://occiware.org/occi/docker#machine</a> |
 
 h3. Attributes
 
@@ -226,9 +226,9 @@ h3. Actions
 h2. Kind machine_Google_Compute_Engine
 
 | *Term* | machine_Google_Compute_Engine |
-| *Scheme* | http://occiware.org/docker# |
+| *Scheme* | http://occiware.org/occi/docker# |
 | *Title* | Machine on Google Compute Engine |
-| *Parent* | <a href="OCCIware Docker.textile#kind-machine">http://occiware.org/docker#machine</a> |
+| *Parent* | <a href="OCCIware Docker.textile#kind-machine">http://occiware.org/occi/docker#machine</a> |
 
 h3. Attributes
 
@@ -246,9 +246,9 @@ h3. Actions
 h2. Kind machine_IBM_SoftLayer
 
 | *Term* | machine_IBM_SoftLayer |
-| *Scheme* | http://occiware.org/docker# |
+| *Scheme* | http://occiware.org/occi/docker# |
 | *Title* | Machine on IBM SoftLayer |
-| *Parent* | <a href="OCCIware Docker.textile#kind-machine">http://occiware.org/docker#machine</a> |
+| *Parent* | <a href="OCCIware Docker.textile#kind-machine">http://occiware.org/occi/docker#machine</a> |
 
 h3. Attributes
 
@@ -274,9 +274,9 @@ h3. Actions
 h2. Kind machine_Microsoft_Azure
 
 | *Term* | machine_Microsoft_Azure |
-| *Scheme* | http://occiware.org/docker# |
+| *Scheme* | http://occiware.org/occi/docker# |
 | *Title* | Machine on Microsoft Azure |
-| *Parent* | <a href="OCCIware Docker.textile#kind-machine">http://occiware.org/docker#machine</a> |
+| *Parent* | <a href="OCCIware Docker.textile#kind-machine">http://occiware.org/occi/docker#machine</a> |
 
 h3. Attributes
 
@@ -291,9 +291,9 @@ h3. Actions
 h2. Kind machine_Microsoft_Hyper_V
 
 | *Term* | machine_Microsoft_Hyper_V |
-| *Scheme* | http://occiware.org/docker# |
+| *Scheme* | http://occiware.org/occi/docker# |
 | *Title* | Machine on Microsoft Hyper-V |
-| *Parent* | <a href="OCCIware Docker.textile#kind-machine">http://occiware.org/docker#machine</a> |
+| *Parent* | <a href="OCCIware Docker.textile#kind-machine">http://occiware.org/occi/docker#machine</a> |
 
 h3. Attributes
 
@@ -311,9 +311,9 @@ h3. Actions
 h2. Kind machine_OpenStack
 
 | *Term* | machine_OpenStack |
-| *Scheme* | http://occiware.org/docker# |
+| *Scheme* | http://occiware.org/occi/docker# |
 | *Title* | Machine on OpenStack |
-| *Parent* | <a href="OCCIware Docker.textile#kind-machine">http://occiware.org/docker#machine</a> |
+| *Parent* | <a href="OCCIware Docker.textile#kind-machine">http://occiware.org/occi/docker#machine</a> |
 
 h3. Attributes
 
@@ -338,9 +338,9 @@ h3. Actions
 h2. Kind machine_Rackspace
 
 | *Term* | machine_Rackspace |
-| *Scheme* | http://occiware.org/docker# |
+| *Scheme* | http://occiware.org/occi/docker# |
 | *Title* | Machine on Rackspace cloud |
-| *Parent* | <a href="OCCIware Docker.textile#kind-machine">http://occiware.org/docker#machine</a> |
+| *Parent* | <a href="OCCIware Docker.textile#kind-machine">http://occiware.org/occi/docker#machine</a> |
 
 h3. Attributes
 
@@ -361,9 +361,9 @@ h3. Actions
 h2. Kind machine_VirtualBox
 
 | *Term* | machine_VirtualBox |
-| *Scheme* | http://occiware.org/docker# |
+| *Scheme* | http://occiware.org/occi/docker# |
 | *Title* | Machine on VirtualBox |
-| *Parent* | <a href="OCCIware Docker.textile#kind-machine">http://occiware.org/docker#machine</a> |
+| *Parent* | <a href="OCCIware Docker.textile#kind-machine">http://occiware.org/occi/docker#machine</a> |
 
 h3. Attributes
 
@@ -379,9 +379,9 @@ h3. Actions
 h2. Kind machine_VMware_Fusion
 
 | *Term* | machine_VMware_Fusion |
-| *Scheme* | http://occiware.org/docker# |
+| *Scheme* | http://occiware.org/occi/docker# |
 | *Title* | Machine on VMware Fusion |
-| *Parent* | <a href="OCCIware Docker.textile#kind-machine">http://occiware.org/docker#machine</a> |
+| *Parent* | <a href="OCCIware Docker.textile#kind-machine">http://occiware.org/occi/docker#machine</a> |
 
 h3. Attributes
 
@@ -397,9 +397,9 @@ h3. Actions
 h2. Kind machine_VMware_vCloud_Air
 
 | *Term* | machine_VMware_vCloud_Air |
-| *Scheme* | http://occiware.org/docker# |
+| *Scheme* | http://occiware.org/occi/docker# |
 | *Title* | Machine on VMware vCloud Air |
-| *Parent* | <a href="OCCIware Docker.textile#kind-machine">http://occiware.org/docker#machine</a> |
+| *Parent* | <a href="OCCIware Docker.textile#kind-machine">http://occiware.org/occi/docker#machine</a> |
 
 h3. Attributes
 
@@ -427,9 +427,9 @@ h3. Actions
 h2. Kind machine_VMware_vSphere
 
 | *Term* | machine_VMware_vSphere |
-| *Scheme* | http://occiware.org/docker# |
+| *Scheme* | http://occiware.org/occi/docker# |
 | *Title* | Machine on VMware vSphere |
-| *Parent* | <a href="OCCIware Docker.textile#kind-machine">http://occiware.org/docker#machine</a> |
+| *Parent* | <a href="OCCIware Docker.textile#kind-machine">http://occiware.org/occi/docker#machine</a> |
 
 h3. Attributes
 

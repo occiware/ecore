@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:mtl="http://www.eclipse.org/acceleo/mtl/3.0" xmlns:ocl.ecore="http://www.eclipse.org/ocl/1.1.0/Ecore">
-  <mtl:Module name="genCompose" nsURI="org::occiware::clouddesigner::occi::docker::gen::conf::files::genCompose" startHeaderPosition="29" endHeaderPosition="382">
+  <mtl:Module name="genCompose" nsURI="org::occiware::clouddesigner::occi::docker::gen::conf::files::genCompose" startHeaderPosition="29" endHeaderPosition="387">
     <input>
-      <takesTypesFrom href="http://occiware.org/docker/ecore#/"/>
+      <takesTypesFrom href="http://occiware.org/occi/docker/ecore#/"/>
     </input>
     <input>
       <takesTypesFrom href="http://schemas.ogf.org/occi/infrastructure/ecore#/"/>
@@ -16,9 +16,9 @@
           <body xsi:type="ocl.ecore:PropertyCallExp">
             <eType xsi:type="ecore:EDataType" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
             <source xsi:type="ocl.ecore:VariableExp" name="container" referredVariable="/0/generateCompose/%/%/container">
-              <eType xsi:type="ecore:EClass" href="http://occiware.org/docker/ecore#//Container"/>
+              <eType xsi:type="ecore:EClass" href="http://occiware.org/occi/docker/ecore#//Container"/>
             </source>
-            <referredProperty xsi:type="ecore:EAttribute" href="http://occiware.org/docker/ecore#//Container/name"/>
+            <referredProperty xsi:type="ecore:EAttribute" href="http://occiware.org/occi/docker/ecore#//Container/name"/>
           </body>
           <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=":&#xA;"/>
           <body xsi:type="mtl:IfBlock">
@@ -26,9 +26,9 @@
             <body xsi:type="ocl.ecore:PropertyCallExp">
               <eType xsi:type="ecore:EDataType" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
               <source xsi:type="ocl.ecore:VariableExp" name="container" referredVariable="/0/generateCompose/%/%/container">
-                <eType xsi:type="ecore:EClass" href="http://occiware.org/docker/ecore#//Container"/>
+                <eType xsi:type="ecore:EClass" href="http://occiware.org/occi/docker/ecore#//Container"/>
               </source>
-              <referredProperty xsi:type="ecore:EAttribute" href="http://occiware.org/docker/ecore#//Container/build"/>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://occiware.org/occi/docker/ecore#//Container/build"/>
             </body>
             <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
             <ifExpr xsi:type="ocl.ecore:OperationCallExp">
@@ -38,9 +38,9 @@
                 <source xsi:type="ocl.ecore:PropertyCallExp">
                   <eType xsi:type="ecore:EDataType" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
                   <source xsi:type="ocl.ecore:VariableExp" name="container" referredVariable="/0/generateCompose/%/%/container">
-                    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker/ecore#//Container"/>
+                    <eType xsi:type="ecore:EClass" href="http://occiware.org/occi/docker/ecore#//Container"/>
                   </source>
-                  <referredProperty xsi:type="ecore:EAttribute" href="http://occiware.org/docker/ecore#//Container/build"/>
+                  <referredProperty xsi:type="ecore:EAttribute" href="http://occiware.org/occi/docker/ecore#//Container/build"/>
                 </source>
                 <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny_Class/oclIsUndefined"/>
               </source>
@@ -52,9 +52,9 @@
             <body xsi:type="ocl.ecore:PropertyCallExp">
               <eType xsi:type="ecore:EDataType" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
               <source xsi:type="ocl.ecore:VariableExp" name="container" referredVariable="/0/generateCompose/%/%/container">
-                <eType xsi:type="ecore:EClass" href="http://occiware.org/docker/ecore#//Container"/>
+                <eType xsi:type="ecore:EClass" href="http://occiware.org/occi/docker/ecore#//Container"/>
               </source>
-              <referredProperty xsi:type="ecore:EAttribute" href="http://occiware.org/docker/ecore#//Container/image"/>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://occiware.org/occi/docker/ecore#//Container/image"/>
             </body>
             <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
             <ifExpr xsi:type="ocl.ecore:OperationCallExp">
@@ -64,9 +64,9 @@
                 <source xsi:type="ocl.ecore:PropertyCallExp">
                   <eType xsi:type="ecore:EDataType" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
                   <source xsi:type="ocl.ecore:VariableExp" name="container" referredVariable="/0/generateCompose/%/%/container">
-                    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker/ecore#//Container"/>
+                    <eType xsi:type="ecore:EClass" href="http://occiware.org/occi/docker/ecore#//Container"/>
                   </source>
-                  <referredProperty xsi:type="ecore:EAttribute" href="http://occiware.org/docker/ecore#//Container/image"/>
+                  <referredProperty xsi:type="ecore:EAttribute" href="http://occiware.org/occi/docker/ecore#//Container/image"/>
                 </source>
                 <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny_Class/oclIsUndefined"/>
               </source>
@@ -78,9 +78,9 @@
             <body xsi:type="ocl.ecore:PropertyCallExp">
               <eType xsi:type="ecore:EDataType" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
               <source xsi:type="ocl.ecore:VariableExp" name="container" referredVariable="/0/generateCompose/%/%/container">
-                <eType xsi:type="ecore:EClass" href="http://occiware.org/docker/ecore#//Container"/>
+                <eType xsi:type="ecore:EClass" href="http://occiware.org/occi/docker/ecore#//Container"/>
               </source>
-              <referredProperty xsi:type="ecore:EAttribute" href="http://occiware.org/docker/ecore#//Container/command"/>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://occiware.org/occi/docker/ecore#//Container/command"/>
             </body>
             <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
             <ifExpr xsi:type="ocl.ecore:OperationCallExp">
@@ -90,9 +90,9 @@
                 <source xsi:type="ocl.ecore:PropertyCallExp">
                   <eType xsi:type="ecore:EDataType" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
                   <source xsi:type="ocl.ecore:VariableExp" name="container" referredVariable="/0/generateCompose/%/%/container">
-                    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker/ecore#//Container"/>
+                    <eType xsi:type="ecore:EClass" href="http://occiware.org/occi/docker/ecore#//Container"/>
                   </source>
-                  <referredProperty xsi:type="ecore:EAttribute" href="http://occiware.org/docker/ecore#//Container/command"/>
+                  <referredProperty xsi:type="ecore:EAttribute" href="http://occiware.org/occi/docker/ecore#//Container/command"/>
                 </source>
                 <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny_Class/oclIsUndefined"/>
               </source>
@@ -104,9 +104,9 @@
             <body xsi:type="ocl.ecore:PropertyCallExp">
               <eType xsi:type="ecore:EDataType" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
               <source xsi:type="ocl.ecore:VariableExp" name="container" referredVariable="/0/generateCompose/%/%/container">
-                <eType xsi:type="ecore:EClass" href="http://occiware.org/docker/ecore#//Container"/>
+                <eType xsi:type="ecore:EClass" href="http://occiware.org/occi/docker/ecore#//Container"/>
               </source>
-              <referredProperty xsi:type="ecore:EAttribute" href="http://occiware.org/docker/ecore#//Container/ports"/>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://occiware.org/occi/docker/ecore#//Container/ports"/>
             </body>
             <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot;&#xA;"/>
             <ifExpr xsi:type="ocl.ecore:OperationCallExp">
@@ -116,9 +116,9 @@
                 <source xsi:type="ocl.ecore:PropertyCallExp">
                   <eType xsi:type="ecore:EDataType" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
                   <source xsi:type="ocl.ecore:VariableExp" name="container" referredVariable="/0/generateCompose/%/%/container">
-                    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker/ecore#//Container"/>
+                    <eType xsi:type="ecore:EClass" href="http://occiware.org/occi/docker/ecore#//Container"/>
                   </source>
-                  <referredProperty xsi:type="ecore:EAttribute" href="http://occiware.org/docker/ecore#//Container/ports"/>
+                  <referredProperty xsi:type="ecore:EAttribute" href="http://occiware.org/occi/docker/ecore#//Container/ports"/>
                 </source>
                 <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny_Class/oclIsUndefined"/>
               </source>
@@ -130,9 +130,9 @@
             <body xsi:type="ocl.ecore:PropertyCallExp">
               <eType xsi:type="ecore:EDataType" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
               <source xsi:type="ocl.ecore:VariableExp" name="container" referredVariable="/0/generateCompose/%/%/container">
-                <eType xsi:type="ecore:EClass" href="http://occiware.org/docker/ecore#//Container"/>
+                <eType xsi:type="ecore:EClass" href="http://occiware.org/occi/docker/ecore#//Container"/>
               </source>
-              <referredProperty xsi:type="ecore:EAttribute" href="http://occiware.org/docker/ecore#//Container/env_file"/>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://occiware.org/occi/docker/ecore#//Container/env_file"/>
             </body>
             <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot;&#xA;"/>
             <ifExpr xsi:type="ocl.ecore:OperationCallExp">
@@ -142,9 +142,9 @@
                 <source xsi:type="ocl.ecore:PropertyCallExp">
                   <eType xsi:type="ecore:EDataType" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
                   <source xsi:type="ocl.ecore:VariableExp" name="container" referredVariable="/0/generateCompose/%/%/container">
-                    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker/ecore#//Container"/>
+                    <eType xsi:type="ecore:EClass" href="http://occiware.org/occi/docker/ecore#//Container"/>
                   </source>
-                  <referredProperty xsi:type="ecore:EAttribute" href="http://occiware.org/docker/ecore#//Container/env_file"/>
+                  <referredProperty xsi:type="ecore:EAttribute" href="http://occiware.org/occi/docker/ecore#//Container/env_file"/>
                 </source>
                 <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny_Class/oclIsUndefined"/>
               </source>
@@ -161,18 +161,18 @@
                 <body xsi:type="ocl.ecore:PropertyCallExp">
                   <eType xsi:type="ecore:EDataType" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
                   <source xsi:type="ocl.ecore:VariableExp" name="link" referredVariable="/0/generateCompose/%/%/%.7/%.1/link">
-                    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker/ecore#//Link"/>
+                    <eType xsi:type="ecore:EClass" href="http://occiware.org/occi/docker/ecore#//Link"/>
                   </source>
-                  <referredProperty xsi:type="ecore:EAttribute" href="http://occiware.org/docker/ecore#//Link/alias"/>
+                  <referredProperty xsi:type="ecore:EAttribute" href="http://occiware.org/occi/docker/ecore#//Link/alias"/>
                 </body>
                 <ifExpr xsi:type="ocl.ecore:OperationCallExp">
                   <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
                   <source xsi:type="ocl.ecore:PropertyCallExp">
                     <eType xsi:type="ecore:EDataType" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
                     <source xsi:type="ocl.ecore:VariableExp" name="link" referredVariable="/0/generateCompose/%/%/%.7/%.1/link">
-                      <eType xsi:type="ecore:EClass" href="http://occiware.org/docker/ecore#//Link"/>
+                      <eType xsi:type="ecore:EClass" href="http://occiware.org/occi/docker/ecore#//Link"/>
                     </source>
-                    <referredProperty xsi:type="ecore:EAttribute" href="http://occiware.org/docker/ecore#//Link/alias"/>
+                    <referredProperty xsi:type="ecore:EAttribute" href="http://occiware.org/occi/docker/ecore#//Link/alias"/>
                   </source>
                   <argument xsi:type="ocl.ecore:NullLiteralExp">
                     <eType xsi:type="ocl.ecore:VoidType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclVoid"/>
@@ -182,11 +182,11 @@
               </body>
               <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
               <loopVariable name="link">
-                <eType xsi:type="ecore:EClass" href="http://occiware.org/docker/ecore#//Link"/>
+                <eType xsi:type="ecore:EClass" href="http://occiware.org/occi/docker/ecore#//Link"/>
               </loopVariable>
               <iterSet xsi:type="mtl:QueryInvocation" eType="/3/Collection(Link)" definition="/0/getLinks">
                 <argument xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/24">
-                  <eType xsi:type="ecore:EClass" href="http://occiware.org/docker/ecore#//Container"/>
+                  <eType xsi:type="ecore:EClass" href="http://occiware.org/occi/docker/ecore#//Container"/>
                 </argument>
               </iterSet>
             </body>
@@ -196,7 +196,7 @@
                 <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
                 <source xsi:type="mtl:QueryInvocation" eType="/3/Collection(Link)" definition="/0/getLinks">
                   <argument xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/23">
-                    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker/ecore#//Container"/>
+                    <eType xsi:type="ecore:EClass" href="http://occiware.org/occi/docker/ecore#//Container"/>
                   </argument>
                 </source>
                 <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Collection(T)_Class/isEmpty"/>
@@ -206,7 +206,7 @@
           </body>
           <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
           <loopVariable name="container">
-            <eType xsi:type="ecore:EClass" href="http://occiware.org/docker/ecore#//Container"/>
+            <eType xsi:type="ecore:EClass" href="http://occiware.org/occi/docker/ecore#//Container"/>
           </loopVariable>
           <iterSet xsi:type="ocl.ecore:OperationCallExp" eType="/3/OrderedSet(Container)" referredOperation="/1/oclstdlib_Collection(T)_Class/filter">
             <source xsi:type="ocl.ecore:PropertyCallExp" eType="/3/OrderedSet(Resource)">
@@ -216,7 +216,7 @@
               <referredProperty xsi:type="ecore:EReference" href="http://schemas.ogf.org/occi/core/ecore#//Configuration/resources"/>
             </source>
             <argument xsi:type="ocl.ecore:TypeExp" eType="/9/Container">
-              <referredType xsi:type="ecore:EClass" href="http://occiware.org/docker/ecore#//Container"/>
+              <referredType xsi:type="ecore:EClass" href="http://occiware.org/occi/docker/ecore#//Container"/>
             </argument>
           </iterSet>
         </body>
@@ -233,7 +233,7 @@
     </ownedModuleElement>
     <ownedModuleElement xsi:type="mtl:Query" name="getLinks" visibility="Public" type="/3/Collection(Link)">
       <parameter name="container">
-        <eType xsi:type="ecore:EClass" href="http://occiware.org/docker/ecore#//Container"/>
+        <eType xsi:type="ecore:EClass" href="http://occiware.org/occi/docker/ecore#//Container"/>
       </parameter>
     </ownedModuleElement>
   </mtl:Module>
@@ -273,7 +273,7 @@
         </eAnnotations>
         <eAnnotations source="MTL" references="/0/getLinks"/>
         <eParameters name="container">
-          <eType xsi:type="ecore:EClass" href="http://occiware.org/docker/ecore#//Container"/>
+          <eType xsi:type="ecore:EClass" href="http://occiware.org/occi/docker/ecore#//Container"/>
         </eParameters>
       </eOperations>
     </eClassifiers>
@@ -311,7 +311,7 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="docker_Container_Class">
       <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
-        <references href="http://occiware.org/docker/ecore#//Container"/>
+        <references href="http://occiware.org/occi/docker/ecore#//Container"/>
       </eAnnotations>
     </eClassifiers>
   </ecore:EPackage>
@@ -320,19 +320,19 @@
   </ocl.ecore:Variable>
   <ecore:EPackage name="collections">
     <eClassifiers xsi:type="ocl.ecore:CollectionType" name="Collection(Link)" instanceClassName="java.util.Collection">
-      <elementType xsi:type="ecore:EClass" href="http://occiware.org/docker/ecore#//Link"/>
+      <elementType xsi:type="ecore:EClass" href="http://occiware.org/occi/docker/ecore#//Link"/>
     </eClassifiers>
     <eClassifiers xsi:type="ocl.ecore:OrderedSetType" name="OrderedSet(Resource)" instanceClassName="java.util.LinkedHashSet">
       <elementType xsi:type="ecore:EClass" href="http://schemas.ogf.org/occi/core/ecore#//Resource"/>
     </eClassifiers>
     <eClassifiers xsi:type="ocl.ecore:OrderedSetType" name="OrderedSet(Container)" instanceClassName="java.util.LinkedHashSet">
-      <elementType xsi:type="ecore:EClass" href="http://occiware.org/docker/ecore#//Container"/>
+      <elementType xsi:type="ecore:EClass" href="http://occiware.org/occi/docker/ecore#//Container"/>
     </eClassifiers>
     <eClassifiers xsi:type="ocl.ecore:SetType" name="Set(OclInvalid)" instanceClassName="java.util.Set">
       <elementType xsi:type="ocl.ecore:InvalidType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclInvalid"/>
     </eClassifiers>
     <eClassifiers xsi:type="ocl.ecore:SetType" instanceClassName="java.util.Set">
-      <elementType xsi:type="ecore:EClass" href="http://occiware.org/docker/ecore#//Link"/>
+      <elementType xsi:type="ecore:EClass" href="http://occiware.org/occi/docker/ecore#//Link"/>
     </eClassifiers>
   </ecore:EPackage>
   <ocl.ecore:Variable name="self">
@@ -352,74 +352,74 @@
   </ocl.ecore:Variable>
   <ecore:EPackage name="types">
     <eClassifiers xsi:type="ocl.ecore:TypeType" name="Container">
-      <referredType xsi:type="ecore:EClass" href="http://occiware.org/docker/ecore#//Container"/>
+      <referredType xsi:type="ecore:EClass" href="http://occiware.org/occi/docker/ecore#//Container"/>
     </eClassifiers>
     <eClassifiers xsi:type="ocl.ecore:TypeType">
-      <referredType xsi:type="ecore:EClass" href="http://occiware.org/docker/ecore#//Link"/>
+      <referredType xsi:type="ecore:EClass" href="http://occiware.org/occi/docker/ecore#//Link"/>
     </eClassifiers>
   </ecore:EPackage>
   <ocl.ecore:Variable name="self">
     <eType xsi:type="ecore:EClass" href="http://schemas.ogf.org/occi/core/ecore#//Configuration"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker/ecore#//Container"/>
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/occi/docker/ecore#//Container"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker/ecore#//Container"/>
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/occi/docker/ecore#//Container"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker/ecore#//Container"/>
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/occi/docker/ecore#//Container"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker/ecore#//Container"/>
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/occi/docker/ecore#//Container"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker/ecore#//Container"/>
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/occi/docker/ecore#//Container"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker/ecore#//Container"/>
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/occi/docker/ecore#//Container"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker/ecore#//Container"/>
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/occi/docker/ecore#//Container"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker/ecore#//Container"/>
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/occi/docker/ecore#//Container"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker/ecore#//Container"/>
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/occi/docker/ecore#//Container"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker/ecore#//Container"/>
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/occi/docker/ecore#//Container"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker/ecore#//Container"/>
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/occi/docker/ecore#//Container"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker/ecore#//Container"/>
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/occi/docker/ecore#//Container"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker/ecore#//Container"/>
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/occi/docker/ecore#//Container"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker/ecore#//Container"/>
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/occi/docker/ecore#//Container"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker/ecore#//Link"/>
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/occi/docker/ecore#//Link"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
     <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker/ecore#//Link"/>
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/occi/docker/ecore#//Link"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker/ecore#//Link"/>
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/occi/docker/ecore#//Link"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker/ecore#//Link"/>
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/occi/docker/ecore#//Link"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker/ecore#//Container"/>
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/occi/docker/ecore#//Container"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="i">
     <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
@@ -434,297 +434,297 @@
     <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker/ecore#//Container"/>
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/occi/docker/ecore#//Container"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
     <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker/ecore#//Container"/>
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/occi/docker/ecore#//Container"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
     <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://occiware.org/docker/ecore#//Container"/>
+    <eType xsi:type="ecore:EClass" href="http://occiware.org/occi/docker/ecore#//Container"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
     <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
   </ocl.ecore:Variable>
   <ecore:EAnnotation source="positions">
     <eAnnotations source="positions.0" references="/0/generateCompose">
-      <details key="start" value="181"/>
-      <details key="end" value="1130"/>
+      <details key="start" value="186"/>
+      <details key="end" value="1135"/>
       <details key="line" value="4"/>
     </eAnnotations>
     <eAnnotations source="positions.1" references="/0/generateCompose/%">
-      <details key="start" value="246"/>
-      <details key="end" value="1118"/>
+      <details key="start" value="251"/>
+      <details key="end" value="1123"/>
       <details key="line" value="5"/>
     </eAnnotations>
     <eAnnotations source="positions.2" references="/0/generateCompose/%/%">
-      <details key="start" value="292"/>
-      <details key="end" value="1110"/>
+      <details key="start" value="297"/>
+      <details key="end" value="1115"/>
       <details key="line" value="6"/>
     </eAnnotations>
     <eAnnotations source="positions.3" references="/0/generateCompose/%/%/%">
-      <details key="start" value="368"/>
-      <details key="end" value="382"/>
+      <details key="start" value="373"/>
+      <details key="end" value="387"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.4" references="/0/generateCompose/%/%/%/container">
-      <details key="start" value="368"/>
-      <details key="end" value="377"/>
+      <details key="start" value="373"/>
+      <details key="end" value="382"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.5" references="/0/generateCompose/%/%/%.1">
-      <details key="start" value="384"/>
-      <details key="end" value="386"/>
+      <details key="start" value="389"/>
+      <details key="end" value="391"/>
       <details key="line" value="7"/>
     </eAnnotations>
     <eAnnotations source="positions.6" references="/0/generateCompose/%/%/%.2">
-      <details key="start" value="386"/>
-      <details key="end" value="463"/>
+      <details key="start" value="391"/>
+      <details key="end" value="468"/>
       <details key="line" value="8"/>
     </eAnnotations>
     <eAnnotations source="positions.7" references="/0/generateCompose/%/%/%.2/%">
-      <details key="start" value="430"/>
-      <details key="end" value="439"/>
+      <details key="start" value="435"/>
+      <details key="end" value="444"/>
       <details key="line" value="9"/>
     </eAnnotations>
     <eAnnotations source="positions.8" references="/0/generateCompose/%/%/%.2/%.1">
-      <details key="start" value="440"/>
-      <details key="end" value="455"/>
+      <details key="start" value="445"/>
+      <details key="end" value="460"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.9" references="/0/generateCompose/%/%/%.2/%.1/container">
-      <details key="start" value="440"/>
-      <details key="end" value="449"/>
+      <details key="start" value="445"/>
+      <details key="end" value="454"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.10" references="/0/generateCompose/%/%/%.2/%.2">
-      <details key="start" value="457"/>
-      <details key="end" value="458"/>
+      <details key="start" value="462"/>
+      <details key="end" value="463"/>
       <details key="line" value="10"/>
     </eAnnotations>
     <eAnnotations source="positions.11" references="/0/generateCompose/%/%/%.2/%.3">
-      <details key="start" value="390"/>
-      <details key="end" value="428"/>
+      <details key="start" value="395"/>
+      <details key="end" value="433"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.12" references="/0/generateCompose/%/%/%.2/%.3/%">
-      <details key="start" value="395"/>
-      <details key="end" value="427"/>
+      <details key="start" value="400"/>
+      <details key="end" value="432"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.13" references="/0/generateCompose/%/%/%.2/%.3/%/%">
-      <details key="start" value="395"/>
-      <details key="end" value="410"/>
+      <details key="start" value="400"/>
+      <details key="end" value="415"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.14" references="/0/generateCompose/%/%/%.2/%.3/%/%/container">
-      <details key="start" value="395"/>
-      <details key="end" value="404"/>
+      <details key="start" value="400"/>
+      <details key="end" value="409"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.15" references="/0/generateCompose/%/%/%.3">
-      <details key="start" value="464"/>
-      <details key="end" value="541"/>
+      <details key="start" value="469"/>
+      <details key="end" value="546"/>
       <details key="line" value="11"/>
     </eAnnotations>
     <eAnnotations source="positions.16" references="/0/generateCompose/%/%/%.3/%">
-      <details key="start" value="508"/>
-      <details key="end" value="517"/>
+      <details key="start" value="513"/>
+      <details key="end" value="522"/>
       <details key="line" value="12"/>
     </eAnnotations>
     <eAnnotations source="positions.17" references="/0/generateCompose/%/%/%.3/%.1">
-      <details key="start" value="518"/>
-      <details key="end" value="533"/>
+      <details key="start" value="523"/>
+      <details key="end" value="538"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.18" references="/0/generateCompose/%/%/%.3/%.1/container">
-      <details key="start" value="518"/>
-      <details key="end" value="527"/>
+      <details key="start" value="523"/>
+      <details key="end" value="532"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.19" references="/0/generateCompose/%/%/%.3/%.2">
-      <details key="start" value="535"/>
-      <details key="end" value="536"/>
+      <details key="start" value="540"/>
+      <details key="end" value="541"/>
       <details key="line" value="13"/>
     </eAnnotations>
     <eAnnotations source="positions.20" references="/0/generateCompose/%/%/%.3/%.3">
-      <details key="start" value="468"/>
-      <details key="end" value="506"/>
+      <details key="start" value="473"/>
+      <details key="end" value="511"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.21" references="/0/generateCompose/%/%/%.3/%.3/%">
-      <details key="start" value="473"/>
-      <details key="end" value="505"/>
+      <details key="start" value="478"/>
+      <details key="end" value="510"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.22" references="/0/generateCompose/%/%/%.3/%.3/%/%">
-      <details key="start" value="473"/>
-      <details key="end" value="488"/>
+      <details key="start" value="478"/>
+      <details key="end" value="493"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.23" references="/0/generateCompose/%/%/%.3/%.3/%/%/container">
-      <details key="start" value="473"/>
-      <details key="end" value="482"/>
+      <details key="start" value="478"/>
+      <details key="end" value="487"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.24" references="/0/generateCompose/%/%/%.4">
-      <details key="start" value="542"/>
-      <details key="end" value="625"/>
+      <details key="start" value="547"/>
+      <details key="end" value="630"/>
       <details key="line" value="14"/>
     </eAnnotations>
     <eAnnotations source="positions.25" references="/0/generateCompose/%/%/%.4/%">
-      <details key="start" value="588"/>
-      <details key="end" value="599"/>
+      <details key="start" value="593"/>
+      <details key="end" value="604"/>
       <details key="line" value="15"/>
     </eAnnotations>
     <eAnnotations source="positions.26" references="/0/generateCompose/%/%/%.4/%.1">
-      <details key="start" value="600"/>
-      <details key="end" value="617"/>
+      <details key="start" value="605"/>
+      <details key="end" value="622"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.27" references="/0/generateCompose/%/%/%.4/%.1/container">
-      <details key="start" value="600"/>
-      <details key="end" value="609"/>
+      <details key="start" value="605"/>
+      <details key="end" value="614"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.28" references="/0/generateCompose/%/%/%.4/%.2">
-      <details key="start" value="619"/>
-      <details key="end" value="620"/>
+      <details key="start" value="624"/>
+      <details key="end" value="625"/>
       <details key="line" value="16"/>
     </eAnnotations>
     <eAnnotations source="positions.29" references="/0/generateCompose/%/%/%.4/%.3">
-      <details key="start" value="546"/>
-      <details key="end" value="586"/>
+      <details key="start" value="551"/>
+      <details key="end" value="591"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.30" references="/0/generateCompose/%/%/%.4/%.3/%">
-      <details key="start" value="551"/>
-      <details key="end" value="585"/>
+      <details key="start" value="556"/>
+      <details key="end" value="590"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.31" references="/0/generateCompose/%/%/%.4/%.3/%/%">
-      <details key="start" value="551"/>
-      <details key="end" value="568"/>
+      <details key="start" value="556"/>
+      <details key="end" value="573"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.32" references="/0/generateCompose/%/%/%.4/%.3/%/%/container">
-      <details key="start" value="551"/>
-      <details key="end" value="560"/>
+      <details key="start" value="556"/>
+      <details key="end" value="565"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.33" references="/0/generateCompose/%/%/%.5">
-      <details key="start" value="681"/>
-      <details key="end" value="766"/>
+      <details key="start" value="686"/>
+      <details key="end" value="771"/>
       <details key="line" value="18"/>
     </eAnnotations>
     <eAnnotations source="positions.34" references="/0/generateCompose/%/%/%.5/%">
-      <details key="start" value="725"/>
-      <details key="end" value="741"/>
+      <details key="start" value="730"/>
+      <details key="end" value="746"/>
       <details key="line" value="19"/>
     </eAnnotations>
     <eAnnotations source="positions.35" references="/0/generateCompose/%/%/%.5/%.1">
-      <details key="start" value="742"/>
-      <details key="end" value="757"/>
+      <details key="start" value="747"/>
+      <details key="end" value="762"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.36" references="/0/generateCompose/%/%/%.5/%.1/container">
-      <details key="start" value="742"/>
-      <details key="end" value="751"/>
+      <details key="start" value="747"/>
+      <details key="end" value="756"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.37" references="/0/generateCompose/%/%/%.5/%.2">
-      <details key="start" value="759"/>
-      <details key="end" value="761"/>
+      <details key="start" value="764"/>
+      <details key="end" value="766"/>
       <details key="line" value="20"/>
     </eAnnotations>
     <eAnnotations source="positions.38" references="/0/generateCompose/%/%/%.5/%.3">
-      <details key="start" value="685"/>
-      <details key="end" value="723"/>
+      <details key="start" value="690"/>
+      <details key="end" value="728"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.39" references="/0/generateCompose/%/%/%.5/%.3/%">
-      <details key="start" value="690"/>
-      <details key="end" value="722"/>
+      <details key="start" value="695"/>
+      <details key="end" value="727"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.40" references="/0/generateCompose/%/%/%.5/%.3/%/%">
-      <details key="start" value="690"/>
-      <details key="end" value="705"/>
+      <details key="start" value="695"/>
+      <details key="end" value="710"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.41" references="/0/generateCompose/%/%/%.5/%.3/%/%/container">
-      <details key="start" value="690"/>
-      <details key="end" value="699"/>
+      <details key="start" value="695"/>
+      <details key="end" value="704"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.42" references="/0/generateCompose/%/%/%.6">
-      <details key="start" value="822"/>
-      <details key="end" value="916"/>
+      <details key="start" value="827"/>
+      <details key="end" value="921"/>
       <details key="line" value="23"/>
     </eAnnotations>
     <eAnnotations source="positions.43" references="/0/generateCompose/%/%/%.6/%">
-      <details key="start" value="869"/>
-      <details key="end" value="888"/>
+      <details key="start" value="874"/>
+      <details key="end" value="893"/>
       <details key="line" value="24"/>
     </eAnnotations>
     <eAnnotations source="positions.44" references="/0/generateCompose/%/%/%.6/%.1">
-      <details key="start" value="889"/>
-      <details key="end" value="907"/>
+      <details key="start" value="894"/>
+      <details key="end" value="912"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.45" references="/0/generateCompose/%/%/%.6/%.1/container">
-      <details key="start" value="889"/>
-      <details key="end" value="898"/>
+      <details key="start" value="894"/>
+      <details key="end" value="903"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.46" references="/0/generateCompose/%/%/%.6/%.2">
-      <details key="start" value="909"/>
-      <details key="end" value="911"/>
+      <details key="start" value="914"/>
+      <details key="end" value="916"/>
       <details key="line" value="25"/>
     </eAnnotations>
     <eAnnotations source="positions.47" references="/0/generateCompose/%/%/%.6/%.3">
-      <details key="start" value="826"/>
-      <details key="end" value="867"/>
+      <details key="start" value="831"/>
+      <details key="end" value="872"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.48" references="/0/generateCompose/%/%/%.6/%.3/%">
-      <details key="start" value="831"/>
-      <details key="end" value="866"/>
+      <details key="start" value="836"/>
+      <details key="end" value="871"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.49" references="/0/generateCompose/%/%/%.6/%.3/%/%">
-      <details key="start" value="831"/>
-      <details key="end" value="849"/>
+      <details key="start" value="836"/>
+      <details key="end" value="854"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.50" references="/0/generateCompose/%/%/%.6/%.3/%/%/container">
-      <details key="start" value="831"/>
-      <details key="end" value="840"/>
+      <details key="start" value="836"/>
+      <details key="end" value="845"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.51" references="/0/generateCompose/%/%/%.7">
-      <details key="start" value="917"/>
-      <details key="end" value="1102"/>
+      <details key="start" value="922"/>
+      <details key="end" value="1107"/>
       <details key="line" value="27"/>
     </eAnnotations>
     <eAnnotations source="positions.52" references="/0/generateCompose/%/%/%.7/%">
-      <details key="start" value="950"/>
-      <details key="end" value="959"/>
+      <details key="start" value="955"/>
+      <details key="end" value="964"/>
       <details key="line" value="28"/>
     </eAnnotations>
     <eAnnotations source="positions.53" references="/0/generateCompose/%/%/%.7/%.1">
-      <details key="start" value="960"/>
-      <details key="end" value="1096"/>
+      <details key="start" value="965"/>
+      <details key="end" value="1101"/>
       <details key="line" value="29"/>
     </eAnnotations>
     <eAnnotations source="positions.54" references="/0/generateCompose/%/%/%.7/%.1/%">
-      <details key="start" value="1001"/>
-      <details key="end" value="1004"/>
+      <details key="start" value="1006"/>
+      <details key="end" value="1009"/>
       <details key="line" value="30"/>
     </eAnnotations>
     <eAnnotations source="positions.55" references="/0/generateCompose/%/%/%.7/%.1/%.1">
@@ -733,58 +733,58 @@
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.56" references="/0/generateCompose/%/%/%.7/%.1/%.2">
-      <details key="start" value="1044"/>
-      <details key="end" value="1088"/>
+      <details key="start" value="1049"/>
+      <details key="end" value="1093"/>
       <details key="line" value="30"/>
     </eAnnotations>
     <eAnnotations source="positions.57" references="/0/generateCompose/%/%/%.7/%.1/%.2/%">
-      <details key="start" value="1069"/>
-      <details key="end" value="1070"/>
+      <details key="start" value="1074"/>
+      <details key="end" value="1075"/>
       <details key="line" value="30"/>
     </eAnnotations>
     <eAnnotations source="positions.58" references="/0/generateCompose/%/%/%.7/%.1/%.2/%.1">
-      <details key="start" value="1071"/>
-      <details key="end" value="1081"/>
+      <details key="start" value="1076"/>
+      <details key="end" value="1086"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.59" references="/0/generateCompose/%/%/%.7/%.1/%.2/%.1/link">
-      <details key="start" value="1071"/>
-      <details key="end" value="1075"/>
+      <details key="start" value="1076"/>
+      <details key="end" value="1080"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.60" references="/0/generateCompose/%/%/%.7/%.1/%.2/%.2">
-      <details key="start" value="1048"/>
-      <details key="end" value="1068"/>
+      <details key="start" value="1053"/>
+      <details key="end" value="1073"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.61" references="/0/generateCompose/%/%/%.7/%.1/%.2/%.2/%">
-      <details key="start" value="1049"/>
-      <details key="end" value="1059"/>
+      <details key="start" value="1054"/>
+      <details key="end" value="1064"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.62" references="/0/generateCompose/%/%/%.7/%.1/%.2/%.2/%/link">
-      <details key="start" value="1049"/>
-      <details key="end" value="1053"/>
+      <details key="start" value="1054"/>
+      <details key="end" value="1058"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.63" references="/0/generateCompose/%/%/%.7/%.1/%.2/%.2/%.1">
-      <details key="start" value="1063"/>
-      <details key="end" value="1067"/>
+      <details key="start" value="1068"/>
+      <details key="end" value="1072"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.64" references="/0/generateCompose/%/%/%.7/%.1/%.3">
-      <details key="start" value="1088"/>
-      <details key="end" value="1089"/>
+      <details key="start" value="1093"/>
+      <details key="end" value="1094"/>
       <details key="line" value="31"/>
     </eAnnotations>
     <eAnnotations source="positions.65" references="/0/generateCompose/%/%/%.7/%.1/link">
-      <details key="start" value="966"/>
-      <details key="end" value="985"/>
+      <details key="start" value="971"/>
+      <details key="end" value="990"/>
       <details key="line" value="29"/>
     </eAnnotations>
     <eAnnotations source="positions.66" references="/0/generateCompose/%/%/%.7/%.1/%.4">
-      <details key="start" value="988"/>
-      <details key="end" value="998"/>
+      <details key="start" value="993"/>
+      <details key="end" value="1003"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.67" references="/0/generateCompose/%/%/%.7/%.1/%.4/self">
@@ -793,18 +793,18 @@
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.68" references="/0/generateCompose/%/%/%.7/%.2">
-      <details key="start" value="921"/>
-      <details key="end" value="948"/>
+      <details key="start" value="926"/>
+      <details key="end" value="953"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.69" references="/0/generateCompose/%/%/%.7/%.2/%">
-      <details key="start" value="926"/>
-      <details key="end" value="947"/>
+      <details key="start" value="931"/>
+      <details key="end" value="952"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.70" references="/0/generateCompose/%/%/%.7/%.2/%/%">
-      <details key="start" value="926"/>
-      <details key="end" value="936"/>
+      <details key="start" value="931"/>
+      <details key="end" value="941"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.71" references="/0/generateCompose/%/%/%.7/%.2/%/%/self">
@@ -813,58 +813,58 @@
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.72" references="/0/generateCompose/%/%/%.8">
-      <details key="start" value="1103"/>
-      <details key="end" value="1104"/>
+      <details key="start" value="1108"/>
+      <details key="end" value="1109"/>
       <details key="line" value="33"/>
     </eAnnotations>
     <eAnnotations source="positions.73" references="/0/generateCompose/%/%/container">
-      <details key="start" value="298"/>
-      <details key="end" value="319"/>
+      <details key="start" value="303"/>
+      <details key="end" value="324"/>
       <details key="line" value="6"/>
     </eAnnotations>
     <eAnnotations source="positions.74" references="/0/generateCompose/%/%/%.9">
-      <details key="start" value="322"/>
-      <details key="end" value="364"/>
+      <details key="start" value="327"/>
+      <details key="end" value="369"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.75" references="/0/generateCompose/%/%/%.9/%">
-      <details key="start" value="322"/>
-      <details key="end" value="345"/>
+      <details key="start" value="327"/>
+      <details key="end" value="350"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.76" references="/0/generateCompose/%/%/%.9/%/configuration">
-      <details key="start" value="322"/>
-      <details key="end" value="335"/>
+      <details key="start" value="327"/>
+      <details key="end" value="340"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.77" references="/0/generateCompose/%/%/%.9/%.1">
-      <details key="start" value="354"/>
-      <details key="end" value="363"/>
+      <details key="start" value="359"/>
+      <details key="end" value="368"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.78" references="/0/generateCompose/%/%.1">
-      <details key="start" value="253"/>
-      <details key="end" value="273"/>
+      <details key="start" value="258"/>
+      <details key="end" value="278"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.79" references="/0/generateCompose/%/%.2">
-      <details key="start" value="282"/>
-      <details key="end" value="289"/>
+      <details key="start" value="287"/>
+      <details key="end" value="294"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.80" references="/0/generateCompose/configuration">
-      <details key="start" value="214"/>
-      <details key="end" value="243"/>
+      <details key="start" value="219"/>
+      <details key="end" value="248"/>
       <details key="line" value="4"/>
     </eAnnotations>
     <eAnnotations source="positions.81" references="/0/getLinks">
-      <details key="start" value="1132"/>
-      <details key="end" value="1247"/>
+      <details key="start" value="1137"/>
+      <details key="end" value="1252"/>
       <details key="line" value="38"/>
     </eAnnotations>
     <eAnnotations source="positions.82" references="/0/getLinks/container">
-      <details key="start" value="1156"/>
-      <details key="end" value="1177"/>
+      <details key="start" value="1161"/>
+      <details key="end" value="1182"/>
       <details key="line" value="38"/>
     </eAnnotations>
   </ecore:EAnnotation>

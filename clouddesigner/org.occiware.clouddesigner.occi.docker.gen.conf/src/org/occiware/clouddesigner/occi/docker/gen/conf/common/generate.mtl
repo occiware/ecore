@@ -1,5 +1,5 @@
 [comment encoding = UTF-8 /]
-[module generate('http://occiware.org/docker/ecore', 'http://schemas.ogf.org/occi/infrastructure/ecore', 'http://schemas.ogf.org/occi/core/ecore')]
+[module generate('http://occiware.org/occi/docker/ecore', 'http://schemas.ogf.org/occi/infrastructure/ecore', 'http://schemas.ogf.org/occi/core/ecore')]
 [import org::occiware::clouddesigner::occi::docker::gen::conf::files::genCompose /]
 [import org::occiware::clouddesigner::occi::docker::gen::conf::files::genSH /]
 [template public generateElement(configuration : Configuration)]

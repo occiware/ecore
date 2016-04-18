@@ -159,7 +159,7 @@ class ModelHandler {
 		r.contents.add(vboxInstance)
 		r.save(null)
 
-	// resourceSet.packageRegistry.put("http://occiware.org/docker", ePackage)
+	// resourceSet.packageRegistry.put("http://occiware.org/occi/docker", ePackage)
 	}
 
 	def loadModel() {

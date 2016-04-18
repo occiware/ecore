@@ -15427,7 +15427,7 @@
           <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_HOO44suREeSsupsm8DZhNw" red="77" green="137" blue="20"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']"/>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_HOO448uREeSsupsm8DZhNw" name="http://occiware.org/docker#machine_VirtualBox">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_HOO448uREeSsupsm8DZhNw" name="http://occiware.org/occi/docker#machine_VirtualBox">
           <target xmi:type="occi:Kind" href="docker/Docker.xmi#//@kinds[term='machine_VirtualBox']"/>
           <semanticElements xmi:type="occi:Kind" href="docker/Docker.xmi#//@kinds[term='machine_VirtualBox']"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_HOO45MuREeSsupsm8DZhNw" labelSize="10" labelFormat="bold" showIcon="false" labelAlignment="LEFT" labelPosition="node">
@@ -15486,7 +15486,7 @@
           <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_HOO4_MuREeSsupsm8DZhNw" red="77" green="137" blue="20"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']"/>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_HOO4_cuREeSsupsm8DZhNw" name="http://occiware.org/docker#container">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_HOO4_cuREeSsupsm8DZhNw" name="http://occiware.org/occi/docker#container">
           <target xmi:type="occi:Kind" href="docker/Docker.xmi#//@kinds[term='container']"/>
           <semanticElements xmi:type="occi:Kind" href="docker/Docker.xmi#//@kinds[term='container']"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_HOO4_suREeSsupsm8DZhNw" labelSize="10" labelFormat="bold" showIcon="false" labelAlignment="LEFT" labelPosition="node">
@@ -15556,7 +15556,7 @@
           <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_HOO5G8uREeSsupsm8DZhNw" red="77" green="137" blue="20"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']"/>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_HOO5HMuREeSsupsm8DZhNw" name="http://occiware.org/docker#container">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_HOO5HMuREeSsupsm8DZhNw" name="http://occiware.org/occi/docker#container">
           <target xmi:type="occi:Kind" href="docker/Docker.xmi#//@kinds[term='container']"/>
           <semanticElements xmi:type="occi:Kind" href="docker/Docker.xmi#//@kinds[term='container']"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_HOO5HcuREeSsupsm8DZhNw" labelSize="10" labelFormat="bold" showIcon="false" labelAlignment="LEFT" labelPosition="node">
@@ -15604,7 +15604,7 @@
           <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_HOO5MMuREeSsupsm8DZhNw" red="209" green="209" blue="209"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='LinkContainer']"/>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_HOO5McuREeSsupsm8DZhNw" name="http://occiware.org/docker#contains">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_HOO5McuREeSsupsm8DZhNw" name="http://occiware.org/occi/docker#contains">
           <target xmi:type="occi:Kind" href="docker/Docker.xmi#//@kinds[term='contains']"/>
           <semanticElements xmi:type="occi:Kind" href="docker/Docker.xmi#//@kinds[term='contains']"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_HOO5MsuREeSsupsm8DZhNw" labelSize="10" labelFormat="bold" showIcon="false" labelAlignment="LEFT">
@@ -15630,7 +15630,7 @@
           <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_HOO5O8uREeSsupsm8DZhNw" red="209" green="209" blue="209"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='LinkContainer']"/>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_HOO5PMuREeSsupsm8DZhNw" name="http://occiware.org/docker#contains">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_HOO5PMuREeSsupsm8DZhNw" name="http://occiware.org/occi/docker#contains">
           <target xmi:type="occi:Kind" href="docker/Docker.xmi#//@kinds[term='contains']"/>
           <semanticElements xmi:type="occi:Kind" href="docker/Docker.xmi#//@kinds[term='contains']"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_HOO5PcuREeSsupsm8DZhNw" labelSize="10" labelFormat="bold" showIcon="false" labelAlignment="LEFT">
@@ -15656,7 +15656,7 @@
           <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_HOO5RsuREeSsupsm8DZhNw" red="209" green="209" blue="209"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='LinkContainer']"/>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_HOO5R8uREeSsupsm8DZhNw" name="http://occiware.org/docker#link">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_HOO5R8uREeSsupsm8DZhNw" name="http://occiware.org/occi/docker#link">
           <target xmi:type="occi:Kind" href="docker/Docker.xmi#//@kinds[term='link']"/>
           <semanticElements xmi:type="occi:Kind" href="docker/Docker.xmi#//@kinds[term='link']"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_HOO5SMuREeSsupsm8DZhNw" labelSize="10" labelFormat="bold" showIcon="false" labelAlignment="LEFT">
@@ -16042,7 +16042,7 @@
           <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_y27JhNAaEeSULpYNt2FUjA" red="77" green="137" blue="20"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']"/>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_y3JzANAaEeSULpYNt2FUjA" name="http://occiware.org/docker#machine_VirtualBox">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_y3JzANAaEeSULpYNt2FUjA" name="http://occiware.org/occi/docker#machine_VirtualBox">
           <target xmi:type="occi:Kind" href="docker/Docker.xmi#//@kinds[term='machine_VirtualBox']"/>
           <semanticElements xmi:type="occi:Kind" href="docker/Docker.xmi#//@kinds[term='machine_VirtualBox']"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_y3LBINAaEeSULpYNt2FUjA" labelSize="10" labelFormat="bold" showIcon="false" labelAlignment="LEFT" labelPosition="node">
@@ -16090,7 +16090,7 @@
           <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_y3GIpNAaEeSULpYNt2FUjA" red="77" green="137" blue="20"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']"/>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_y3P5oNAaEeSULpYNt2FUjA" name="http://occiware.org/docker#machine_VirtualBox">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_y3P5oNAaEeSULpYNt2FUjA" name="http://occiware.org/occi/docker#machine_VirtualBox">
           <target xmi:type="occi:Kind" href="docker/Docker.xmi#//@kinds[term='machine_VirtualBox']"/>
           <semanticElements xmi:type="occi:Kind" href="docker/Docker.xmi#//@kinds[term='machine_VirtualBox']"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_y3RHwNAaEeSULpYNt2FUjA" labelSize="10" labelFormat="bold" showIcon="false" labelAlignment="LEFT" labelPosition="node">
@@ -16138,7 +16138,7 @@
           <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_y3HWxNAaEeSULpYNt2FUjA" red="77" green="137" blue="20"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']"/>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_y3XOYNAaEeSULpYNt2FUjA" name="http://occiware.org/docker#container">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_y3XOYNAaEeSULpYNt2FUjA" name="http://occiware.org/occi/docker#container">
           <target xmi:type="occi:Kind" href="docker/Docker.xmi#//@kinds[term='container']"/>
           <semanticElements xmi:type="occi:Kind" href="docker/Docker.xmi#//@kinds[term='container']"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_y3YcgNAaEeSULpYNt2FUjA" labelSize="10" labelFormat="bold" showIcon="false" labelAlignment="LEFT" labelPosition="node">
@@ -16219,7 +16219,7 @@
           <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_y3Ik5NAaEeSULpYNt2FUjA" red="77" green="137" blue="20"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']"/>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_y3hmcNAaEeSULpYNt2FUjA" name="http://occiware.org/docker#container">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_y3hmcNAaEeSULpYNt2FUjA" name="http://occiware.org/occi/docker#container">
           <target xmi:type="occi:Kind" href="docker/Docker.xmi#//@kinds[term='container']"/>
           <semanticElements xmi:type="occi:Kind" href="docker/Docker.xmi#//@kinds[term='container']"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_y3i0kNAaEeSULpYNt2FUjA" labelSize="10" labelFormat="bold" showIcon="false" labelAlignment="LEFT" labelPosition="node">
@@ -16300,7 +16300,7 @@
           <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_y3tztNAaEeSULpYNt2FUjA" red="209" green="209" blue="209"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='LinkContainer']"/>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_y3ysMNAaEeSULpYNt2FUjA" name="http://occiware.org/docker#contains">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_y3ysMNAaEeSULpYNt2FUjA" name="http://occiware.org/occi/docker#contains">
           <target xmi:type="occi:Kind" href="docker/Docker.xmi#//@kinds[term='contains']"/>
           <semanticElements xmi:type="occi:Kind" href="docker/Docker.xmi#//@kinds[term='contains']"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_y3z6UNAaEeSULpYNt2FUjA" labelSize="10" labelFormat="bold" showIcon="false" labelAlignment="LEFT">
@@ -16326,7 +16326,7 @@
           <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_y3vB1NAaEeSULpYNt2FUjA" red="209" green="209" blue="209"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='LinkContainer']"/>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_y30hYNAaEeSULpYNt2FUjA" name="http://occiware.org/docker#contains">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_y30hYNAaEeSULpYNt2FUjA" name="http://occiware.org/occi/docker#contains">
           <target xmi:type="occi:Kind" href="docker/Docker.xmi#//@kinds[term='contains']"/>
           <semanticElements xmi:type="occi:Kind" href="docker/Docker.xmi#//@kinds[term='contains']"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_y31vgNAaEeSULpYNt2FUjA" labelSize="10" labelFormat="bold" showIcon="false" labelAlignment="LEFT">
@@ -16352,7 +16352,7 @@
           <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_y3wP9NAaEeSULpYNt2FUjA" red="209" green="209" blue="209"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='LinkContainer']"/>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_y329oNAaEeSULpYNt2FUjA" name="http://occiware.org/docker#link">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_y329oNAaEeSULpYNt2FUjA" name="http://occiware.org/occi/docker#link">
           <target xmi:type="occi:Kind" href="docker/Docker.xmi#//@kinds[term='link']"/>
           <semanticElements xmi:type="occi:Kind" href="docker/Docker.xmi#//@kinds[term='link']"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_y34LwNAaEeSULpYNt2FUjA" labelSize="10" labelFormat="bold" showIcon="false" labelAlignment="LEFT">
@@ -16389,7 +16389,7 @@
           <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_y3xeFNAaEeSULpYNt2FUjA" red="209" green="209" blue="209"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/workbench/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='LinkContainer']"/>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_y37PENAaEeSULpYNt2FUjA" name="http://occiware.org/docker#volumesfrom">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_y37PENAaEeSULpYNt2FUjA" name="http://occiware.org/occi/docker#volumesfrom">
           <target xmi:type="occi:Kind" href="docker/Docker.xmi#//@kinds[term='volumesfrom']"/>
           <semanticElements xmi:type="occi:Kind" href="docker/Docker.xmi#//@kinds[term='volumesfrom']"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_y38dMNAaEeSULpYNt2FUjA" labelSize="10" labelFormat="bold" showIcon="false" labelAlignment="LEFT">

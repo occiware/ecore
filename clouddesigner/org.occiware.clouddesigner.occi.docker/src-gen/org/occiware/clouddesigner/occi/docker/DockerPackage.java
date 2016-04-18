@@ -50,7 +50,7 @@ public interface DockerPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://occiware.org/docker/ecore";
+	String eNS_URI = "http://occiware.org/occi/docker/ecore";
 
 	/**
 	 * The package namespace name.

@@ -967,7 +967,8 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 		checkNotNull(driverName, "Driver name is null")
 
 		// Create the machine command
-		command.append("docker-machine -D create --driver ").append(getDriverName)
+		var String dockerMachineCMD = String.format("%s -D create --driver ", this.dockerMachineCmd)
+		command.append(dockerMachineCMD).append(getDriverName)
 		if (getDriverName.equalsIgnoreCase("virtualbox") || getDriverName.equalsIgnoreCase("vmwarefusion")) {
 			command.append(' ').append(compute.name)
 			appendDriverParameters(command)

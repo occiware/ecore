@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:docker="http://occiware.org/docker/ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_1Xo7oH6WEeWlb7kxECroag" selectedViews="_r7IvgH6XEeWnDLHK1wRq-g _pB7-sH6gEeWnDLHK1wRq-g" version="10.1.0.201509162000">
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:docker="http://occiware.org/occi/docker/ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_1Xo7oH6WEeWlb7kxECroag" selectedViews="_r7IvgH6XEeWnDLHK1wRq-g _pB7-sH6gEeWnDLHK1wRq-g" version="10.1.0.201509162000">
   <semanticResources>config/occi/docker_erocci.occic</semanticResources>
   <semanticResources>config/occi/infrastructure.occic</semanticResources>
   <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_1hkTsH6WEeWlb7kxECroag">
@@ -1080,9 +1080,9 @@
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']"/>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_WkXzAH6nEeWnDLHK1wRq-g" name="http://occiware.org/docker#machine_VirtualBox">
-          <target xmi:type="occi:Kind" href="http://occiware.org/docker#//@kinds[term='machine_VirtualBox']"/>
-          <semanticElements xmi:type="occi:Kind" href="http://occiware.org/docker#//@kinds[term='machine_VirtualBox']"/>
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_WkXzAH6nEeWnDLHK1wRq-g" name="http://occiware.org/occi/docker#machine_VirtualBox">
+          <target xmi:type="occi:Kind" href="http://occiware.org/occi/docker#//@kinds[term='machine_VirtualBox']"/>
+          <semanticElements xmi:type="occi:Kind" href="http://occiware.org/occi/docker#//@kinds[term='machine_VirtualBox']"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_WkYaEH6nEeWnDLHK1wRq-g" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
             <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subNodeMappings[name='Kind']/@style"/>
           </ownedStyle>
@@ -1116,9 +1116,9 @@
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']"/>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_WkYaEX6nEeWnDLHK1wRq-g" name="http://occiware.org/docker#container">
-          <target xmi:type="occi:Kind" href="http://occiware.org/docker#//@kinds[term='container']"/>
-          <semanticElements xmi:type="occi:Kind" href="http://occiware.org/docker#//@kinds[term='container']"/>
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_WkYaEX6nEeWnDLHK1wRq-g" name="http://occiware.org/occi/docker#container">
+          <target xmi:type="occi:Kind" href="http://occiware.org/occi/docker#//@kinds[term='container']"/>
+          <semanticElements xmi:type="occi:Kind" href="http://occiware.org/occi/docker#//@kinds[term='container']"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_WkZBIH6nEeWnDLHK1wRq-g" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node">
             <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subNodeMappings[name='Kind']/@style"/>
           </ownedStyle>
@@ -1192,9 +1192,9 @@
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='LinkContainer']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='LinkContainer']"/>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_WkhkAH6nEeWnDLHK1wRq-g" name="http://occiware.org/docker#contains">
-          <target xmi:type="occi:Kind" href="http://occiware.org/docker#//@kinds[term='contains']"/>
-          <semanticElements xmi:type="occi:Kind" href="http://occiware.org/docker#//@kinds[term='contains']"/>
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_WkhkAH6nEeWnDLHK1wRq-g" name="http://occiware.org/occi/docker#contains">
+          <target xmi:type="occi:Kind" href="http://occiware.org/occi/docker#//@kinds[term='contains']"/>
+          <semanticElements xmi:type="occi:Kind" href="http://occiware.org/occi/docker#//@kinds[term='contains']"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_WkiLEH6nEeWnDLHK1wRq-g" labelSize="10" showIcon="false" labelAlignment="LEFT">
             <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='LinkContainer']/@subNodeMappings[name='Kind']/@style"/>
           </ownedStyle>

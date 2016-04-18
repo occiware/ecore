@@ -3,15 +3,15 @@
     xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:docker="http://occiware.org/docker/ecore"
+    xmlns:docker="http://occiware.org/occi/docker/ecore"
     xmlns:occi="http://schemas.ogf.org/occi/core/ecore">
-  <use href="http://occiware.org/docker#/"/>
+  <use href="http://occiware.org/occi/docker#/"/>
   <resources
       xsi:type="docker:Machine_VirtualBox"
       id="machine1"
       memory="5000.0"
       name="localhost">
-    <kind href="http://occiware.org/docker#//@kinds[term='machine_VirtualBox']"/>
+    <kind href="http://occiware.org/occi/docker#//@kinds[term='machine_VirtualBox']"/>
     <attributes
         name="occi.core.id"
         value="machine1"/>
@@ -25,7 +25,7 @@
         id="contains-1"
         target="//@resources.1">
       <kind
-          href="http://occiware.org/docker#//@kinds[term='contains']"/>
+          href="http://occiware.org/occi/docker#//@kinds[term='contains']"/>
       <attributes
           name="occi.core.id"
           value="contains-1"/>
@@ -34,7 +34,7 @@
         id="contains-2"
         target="//@resources.2">
       <kind
-          href="http://occiware.org/docker#//@kinds[term='contains']"/>
+          href="http://occiware.org/occi/docker#//@kinds[term='contains']"/>
       <attributes
           name="occi.core.id"
           value="contains-2"/>
@@ -48,7 +48,7 @@
       ports="..."
       volumes="..."
       mem_limit="100">
-    <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <kind href="http://occiware.org/occi/docker#//@kinds[term='container']"/>
     <attributes
         name="occi.core.id"
         value="container1"/>
@@ -72,7 +72,7 @@
         target="//@resources.2"
         alias="db">
       <kind
-          href="http://occiware.org/docker#//@kinds[term='link']"/>
+          href="http://occiware.org/occi/docker#//@kinds[term='link']"/>
       <attributes
           name="occi.core.id"
           value="link-1.1"/>
@@ -89,7 +89,7 @@
       ports="..."
       volumes="..."
       mem_limit="2000">
-    <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <kind href="http://occiware.org/occi/docker#//@kinds[term='container']"/>
     <attributes
         name="occi.core.id"
         value="container2"/>
@@ -113,7 +113,7 @@
         target="//@resources.1"
         mode="read_only">
       <kind
-          href="http://occiware.org/docker#//@kinds[term='volumesfrom']"/>
+          href="http://occiware.org/occi/docker#//@kinds[term='volumesfrom']"/>
       <attributes
           name="occi.core.id"
           value="volumes-from-2.1"/>
@@ -129,7 +129,7 @@
       memory="1024.0"
       name="template"
       boot2docker_url="">
-    <kind href="http://occiware.org/docker#//@kinds[term='machine_VirtualBox']"/>
+    <kind href="http://occiware.org/occi/docker#//@kinds[term='machine_VirtualBox']"/>
     <attributes
         name="occi.core.id"
         value="_fCfsAPJkEeS2SoyWkdwcvg"/>
@@ -149,7 +149,7 @@
         id="_gTBfwfJkEeS2SoyWkdwcvg"
         target="//@resources.4">
       <kind
-          href="http://occiware.org/docker#//@kinds[term='contains']"/>
+          href="http://occiware.org/occi/docker#//@kinds[term='contains']"/>
       <attributes
           name="occi.core.id"
           value="_gTBfwfJkEeS2SoyWkdwcvg"/>
@@ -158,7 +158,7 @@
         id="_gbs6oPJkEeS2SoyWkdwcvg"
         target="//@resources.5">
       <kind
-          href="http://occiware.org/docker#//@kinds[term='contains']"/>
+          href="http://occiware.org/occi/docker#//@kinds[term='contains']"/>
       <attributes
           name="occi.core.id"
           value="_gbs6oPJkEeS2SoyWkdwcvg"/>
@@ -167,7 +167,7 @@
         id="_gj7pkfJkEeS2SoyWkdwcvg"
         target="//@resources.6">
       <kind
-          href="http://occiware.org/docker#//@kinds[term='contains']"/>
+          href="http://occiware.org/occi/docker#//@kinds[term='contains']"/>
       <attributes
           name="occi.core.id"
           value="_gj7pkfJkEeS2SoyWkdwcvg"/>
@@ -176,7 +176,7 @@
         id="_guabQfJkEeS2SoyWkdwcvg"
         target="//@resources.7">
       <kind
-          href="http://occiware.org/docker#//@kinds[term='contains']"/>
+          href="http://occiware.org/occi/docker#//@kinds[term='contains']"/>
       <attributes
           name="occi.core.id"
           value="_guabQfJkEeS2SoyWkdwcvg"/>
@@ -185,7 +185,7 @@
         id="_g1wZYfJkEeS2SoyWkdwcvg"
         target="//@resources.8">
       <kind
-          href="http://occiware.org/docker#//@kinds[term='contains']"/>
+          href="http://occiware.org/occi/docker#//@kinds[term='contains']"/>
       <attributes
           name="occi.core.id"
           value="_g1wZYfJkEeS2SoyWkdwcvg"/>
@@ -194,7 +194,7 @@
         id="_g9pxIPJkEeS2SoyWkdwcvg"
         target="//@resources.9">
       <kind
-          href="http://occiware.org/docker#//@kinds[term='contains']"/>
+          href="http://occiware.org/occi/docker#//@kinds[term='contains']"/>
       <attributes
           name="occi.core.id"
           value="_g9pxIPJkEeS2SoyWkdwcvg"/>
@@ -203,7 +203,7 @@
         id="b44d6d33-df60-47b2-9ee0-13e823a2a2e1"
         target="//@resources.32">
       <kind
-          href="http://occiware.org/docker#//@kinds[term='contains']"/>
+          href="http://occiware.org/occi/docker#//@kinds[term='contains']"/>
       <attributes
           name="occi.core.id"
           value="b44d6d33-df60-47b2-9ee0-13e823a2a2e1"/>
@@ -216,7 +216,7 @@
       containerid=""
       image="busybox"
       command="sleep,9999">
-    <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <kind href="http://occiware.org/occi/docker#//@kinds[term='container']"/>
     <attributes
         name="occi.core.id"
         value="d7d214d6502c0b8596af24e6fade269892316333b00eef81c1627c903bfff31d"/>
@@ -240,7 +240,7 @@
       containerid=""
       image="busybox"
       command="sleep,9999">
-    <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <kind href="http://occiware.org/occi/docker#//@kinds[term='container']"/>
     <attributes
         name="occi.core.id"
         value="8a2578d927d060be26b14c7bbc5ece5256e4e4e85645a44676b61da69e31f62f"/>
@@ -260,7 +260,7 @@
         id="_OtG8gPJlEeS2SoyWkdwcvg"
         target="//@resources.6">
       <kind
-          href="http://occiware.org/docker#//@kinds[term='link']"/>
+          href="http://occiware.org/occi/docker#//@kinds[term='link']"/>
       <attributes
           name="occi.core.id"
           value="_OtG8gPJlEeS2SoyWkdwcvg"/>
@@ -273,7 +273,7 @@
       containerid=""
       image="busybox"
       command="sleep,9999">
-    <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <kind href="http://occiware.org/occi/docker#//@kinds[term='container']"/>
     <attributes
         name="occi.core.id"
         value="b0e0970d46e1d750917d5b5fe97e8139235a95a062118a8dd37edcac3331bb8e"/>
@@ -293,7 +293,7 @@
         id="_guabQPJkEeS2SoyWkdwcvg"
         target="//@resources.8">
       <kind
-          href="http://occiware.org/docker#//@kinds[term='link']"/>
+          href="http://occiware.org/occi/docker#//@kinds[term='link']"/>
       <attributes
           name="occi.core.id"
           value="_guabQPJkEeS2SoyWkdwcvg"/>
@@ -306,7 +306,7 @@
       containerid=""
       image="busybox"
       command="sleep,9999">
-    <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <kind href="http://occiware.org/occi/docker#//@kinds[term='container']"/>
     <attributes
         name="occi.core.id"
         value="08a4884ba175d390bde7392c6eae5e65347a12027bc0aad2c1aff69178e82df7"/>
@@ -326,7 +326,7 @@
         id="_g1wZYPJkEeS2SoyWkdwcvg"
         target="//@resources.9">
       <kind
-          href="http://occiware.org/docker#//@kinds[term='link']"/>
+          href="http://occiware.org/occi/docker#//@kinds[term='link']"/>
       <attributes
           name="occi.core.id"
           value="_g1wZYPJkEeS2SoyWkdwcvg"/>
@@ -335,7 +335,7 @@
         id="_NCFlIPJlEeS2SoyWkdwcvg"
         target="//@resources.5">
       <kind
-          href="http://occiware.org/docker#//@kinds[term='link']"/>
+          href="http://occiware.org/occi/docker#//@kinds[term='link']"/>
       <attributes
           name="occi.core.id"
           value="_NCFlIPJlEeS2SoyWkdwcvg"/>
@@ -344,7 +344,7 @@
         id="_SMo-cPJlEeS2SoyWkdwcvg"
         target="//@resources.6">
       <kind
-          href="http://occiware.org/docker#//@kinds[term='link']"/>
+          href="http://occiware.org/occi/docker#//@kinds[term='link']"/>
       <attributes
           name="occi.core.id"
           value="_SMo-cPJlEeS2SoyWkdwcvg"/>
@@ -357,7 +357,7 @@
       containerid=""
       image="busybox"
       command="sleep,9999">
-    <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <kind href="http://occiware.org/occi/docker#//@kinds[term='container']"/>
     <attributes
         name="occi.core.id"
         value="b90a607b486d71b0551792c8e76f1b31c8277e5ffd1f63b8f7c702477cc4098a"/>
@@ -381,7 +381,7 @@
       containerid=""
       image="busybox"
       command="sleep,9999">
-    <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <kind href="http://occiware.org/occi/docker#//@kinds[term='container']"/>
     <attributes
         name="occi.core.id"
         value="b4623180e519f2ac7a0800a1c0457a8c8d0c71160e3d123126518e572ad2aa5e"/>
@@ -405,7 +405,7 @@
       memory="1024.0"
       name="test"
       boot2docker_url="">
-    <kind href="http://occiware.org/docker#//@kinds[term='machine_VirtualBox']"/>
+    <kind href="http://occiware.org/occi/docker#//@kinds[term='machine_VirtualBox']"/>
     <attributes
         name="occi.core.id"
         value="_N1IuIPSTEeSVK4unvxRPgw"/>
@@ -425,7 +425,7 @@
         id="_OrAmMPSTEeSVK4unvxRPgw"
         target="//@resources.11">
       <kind
-          href="http://occiware.org/docker#//@kinds[term='contains']"/>
+          href="http://occiware.org/occi/docker#//@kinds[term='contains']"/>
       <attributes
           name="occi.core.id"
           value="_OrAmMPSTEeSVK4unvxRPgw"/>
@@ -434,7 +434,7 @@
         id="_Oy26oPSTEeSVK4unvxRPgw"
         target="//@resources.12">
       <kind
-          href="http://occiware.org/docker#//@kinds[term='contains']"/>
+          href="http://occiware.org/occi/docker#//@kinds[term='contains']"/>
       <attributes
           name="occi.core.id"
           value="_Oy26oPSTEeSVK4unvxRPgw"/>
@@ -443,7 +443,7 @@
         id="_O7RPw_STEeSVK4unvxRPgw"
         target="//@resources.13">
       <kind
-          href="http://occiware.org/docker#//@kinds[term='contains']"/>
+          href="http://occiware.org/occi/docker#//@kinds[term='contains']"/>
       <attributes
           name="occi.core.id"
           value="_O7RPw_STEeSVK4unvxRPgw"/>
@@ -452,7 +452,7 @@
         id="_PClYsfSTEeSVK4unvxRPgw"
         target="//@resources.14">
       <kind
-          href="http://occiware.org/docker#//@kinds[term='contains']"/>
+          href="http://occiware.org/occi/docker#//@kinds[term='contains']"/>
       <attributes
           name="occi.core.id"
           value="_PClYsfSTEeSVK4unvxRPgw"/>
@@ -461,7 +461,7 @@
         id="_PJ-aIfSTEeSVK4unvxRPgw"
         target="//@resources.15">
       <kind
-          href="http://occiware.org/docker#//@kinds[term='contains']"/>
+          href="http://occiware.org/occi/docker#//@kinds[term='contains']"/>
       <attributes
           name="occi.core.id"
           value="_PJ-aIfSTEeSVK4unvxRPgw"/>
@@ -470,7 +470,7 @@
         id="_PRxEMPSTEeSVK4unvxRPgw"
         target="//@resources.16">
       <kind
-          href="http://occiware.org/docker#//@kinds[term='contains']"/>
+          href="http://occiware.org/occi/docker#//@kinds[term='contains']"/>
       <attributes
           name="occi.core.id"
           value="_PRxEMPSTEeSVK4unvxRPgw"/>
@@ -483,7 +483,7 @@
       containerid="804b7e6d8cf418c6392972e2c59e0d1dfe10db9d16386d7b127f27dd8f45e925"
       image="busybox"
       command="sleep,9999">
-    <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <kind href="http://occiware.org/occi/docker#//@kinds[term='container']"/>
     <attributes
         name="occi.core.id"
         value="804b7e6d8cf418c6392972e2c59e0d1dfe10db9d16386d7b127f27dd8f45e925"/>
@@ -507,7 +507,7 @@
       containerid="8a5df8c0763805152617623f9bc64632d4a7fa7db4855e2b39a4824d7545f1ac"
       image="busybox"
       command="sleep,9999">
-    <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <kind href="http://occiware.org/occi/docker#//@kinds[term='container']"/>
     <attributes
         name="occi.core.id"
         value="8a5df8c0763805152617623f9bc64632d4a7fa7db4855e2b39a4824d7545f1ac"/>
@@ -527,7 +527,7 @@
         id="_O7RPwPSTEeSVK4unvxRPgw"
         target="//@resources.14">
       <kind
-          href="http://occiware.org/docker#//@kinds[term='link']"/>
+          href="http://occiware.org/occi/docker#//@kinds[term='link']"/>
       <attributes
           name="occi.core.id"
           value="_O7RPwPSTEeSVK4unvxRPgw"/>
@@ -536,7 +536,7 @@
         id="_O7RPwfSTEeSVK4unvxRPgw"
         target="//@resources.13">
       <kind
-          href="http://occiware.org/docker#//@kinds[term='link']"/>
+          href="http://occiware.org/occi/docker#//@kinds[term='link']"/>
       <attributes
           name="occi.core.id"
           value="_O7RPwfSTEeSVK4unvxRPgw"/>
@@ -545,7 +545,7 @@
         id="_O7RPwvSTEeSVK4unvxRPgw"
         target="//@resources.15">
       <kind
-          href="http://occiware.org/docker#//@kinds[term='link']"/>
+          href="http://occiware.org/occi/docker#//@kinds[term='link']"/>
       <attributes
           name="occi.core.id"
           value="_O7RPwvSTEeSVK4unvxRPgw"/>
@@ -558,7 +558,7 @@
       containerid="9075adc2ff334c34c07682610eadd75aaa9c27d6e7b39302a5ef5b672782aebf"
       image="busybox"
       command="sleep,9999">
-    <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <kind href="http://occiware.org/occi/docker#//@kinds[term='container']"/>
     <attributes
         name="occi.core.id"
         value="9075adc2ff334c34c07682610eadd75aaa9c27d6e7b39302a5ef5b672782aebf"/>
@@ -578,7 +578,7 @@
         id="_PClYsPSTEeSVK4unvxRPgw"
         target="//@resources.14">
       <kind
-          href="http://occiware.org/docker#//@kinds[term='link']"/>
+          href="http://occiware.org/occi/docker#//@kinds[term='link']"/>
       <attributes
           name="occi.core.id"
           value="_PClYsPSTEeSVK4unvxRPgw"/>
@@ -591,7 +591,7 @@
       containerid="34d55585e9e2923d0cd1e12173a66784d74a144a1412ca8f1f2823e8d4dbd9ce"
       image="busybox"
       command="sleep,9999">
-    <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <kind href="http://occiware.org/occi/docker#//@kinds[term='container']"/>
     <attributes
         name="occi.core.id"
         value="34d55585e9e2923d0cd1e12173a66784d74a144a1412ca8f1f2823e8d4dbd9ce"/>
@@ -611,7 +611,7 @@
         id="_PJ-aIPSTEeSVK4unvxRPgw"
         target="//@resources.16">
       <kind
-          href="http://occiware.org/docker#//@kinds[term='link']"/>
+          href="http://occiware.org/occi/docker#//@kinds[term='link']"/>
       <attributes
           name="occi.core.id"
           value="_PJ-aIPSTEeSVK4unvxRPgw"/>
@@ -624,7 +624,7 @@
       containerid="d9055f2c49a6321239459f8b50b99e1ed8568e5d4757f88d1f91aff96d35f2c6"
       image="busybox"
       command="sleep,9999">
-    <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <kind href="http://occiware.org/occi/docker#//@kinds[term='container']"/>
     <attributes
         name="occi.core.id"
         value="d9055f2c49a6321239459f8b50b99e1ed8568e5d4757f88d1f91aff96d35f2c6"/>
@@ -648,7 +648,7 @@
       containerid="8f54046d221e0a468935e603d738bb0d384acc02d6e217e17471d28b59efaa65"
       image="busybox"
       command="sleep,9999">
-    <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <kind href="http://occiware.org/occi/docker#//@kinds[term='container']"/>
     <attributes
         name="occi.core.id"
         value="8f54046d221e0a468935e603d738bb0d384acc02d6e217e17471d28b59efaa65"/>
@@ -669,7 +669,7 @@
       xsi:type="docker:Machine_VirtualBox"
       id="_UaFFAPSXEeSVK4unvxRPgw"
       name="home-automation">
-    <kind href="http://occiware.org/docker#//@kinds[term='machine_VirtualBox']"/>
+    <kind href="http://occiware.org/occi/docker#//@kinds[term='machine_VirtualBox']"/>
     <attributes
         name="occi.core.id"
         value="_UaFFAPSXEeSVK4unvxRPgw"/>
@@ -680,7 +680,7 @@
         id="_rCjRQPSYEeSVK4unvxRPgw"
         target="//@resources.18">
       <kind
-          href="http://occiware.org/docker#//@kinds[term='contains']"/>
+          href="http://occiware.org/occi/docker#//@kinds[term='contains']"/>
       <attributes
           name="occi.core.id"
           value="_rCjRQPSYEeSVK4unvxRPgw"/>
@@ -689,7 +689,7 @@
         id="_3h6U8fSYEeSVK4unvxRPgw"
         target="//@resources.19">
       <kind
-          href="http://occiware.org/docker#//@kinds[term='contains']"/>
+          href="http://occiware.org/occi/docker#//@kinds[term='contains']"/>
       <attributes
           name="occi.core.id"
           value="_3h6U8fSYEeSVK4unvxRPgw"/>
@@ -698,7 +698,7 @@
         id="_D27J0PSZEeSVK4unvxRPgw"
         target="//@resources.20">
       <kind
-          href="http://occiware.org/docker#//@kinds[term='contains']"/>
+          href="http://occiware.org/occi/docker#//@kinds[term='contains']"/>
       <attributes
           name="occi.core.id"
           value="_D27J0PSZEeSVK4unvxRPgw"/>
@@ -707,7 +707,7 @@
         id="_JA57YfSZEeSVK4unvxRPgw"
         target="//@resources.21">
       <kind
-          href="http://occiware.org/docker#//@kinds[term='contains']"/>
+          href="http://occiware.org/occi/docker#//@kinds[term='contains']"/>
       <attributes
           name="occi.core.id"
           value="_JA57YfSZEeSVK4unvxRPgw"/>
@@ -716,7 +716,7 @@
         id="_VekV8fSZEeSVK4unvxRPgw"
         target="//@resources.22">
       <kind
-          href="http://occiware.org/docker#//@kinds[term='contains']"/>
+          href="http://occiware.org/occi/docker#//@kinds[term='contains']"/>
       <attributes
           name="occi.core.id"
           value="_VekV8fSZEeSVK4unvxRPgw"/>
@@ -728,7 +728,7 @@
       name="sqlite"
       image="busybox"
       command="sleep,9999">
-    <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <kind href="http://occiware.org/occi/docker#//@kinds[term='container']"/>
     <attributes
         name="occi.core.id"
         value="_rCiqMPSYEeSVK4unvxRPgw"/>
@@ -749,7 +749,7 @@
       image="busybox"
       command="sleep,9999"
       cap_drop="">
-    <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <kind href="http://occiware.org/occi/docker#//@kinds[term='container']"/>
     <attributes
         name="occi.core.id"
         value="_3h6U8PSYEeSVK4unvxRPgw"/>
@@ -769,7 +769,7 @@
         id="_ODRCAPSZEeSVK4unvxRPgw"
         target="//@resources.18">
       <kind
-          href="http://occiware.org/docker#//@kinds[term='link']"/>
+          href="http://occiware.org/occi/docker#//@kinds[term='link']"/>
       <attributes
           name="occi.core.id"
           value="_ODRCAPSZEeSVK4unvxRPgw"/>
@@ -778,7 +778,7 @@
         id="_RivZkPSZEeSVK4unvxRPgw"
         target="//@resources.20">
       <kind
-          href="http://occiware.org/docker#//@kinds[term='link']"/>
+          href="http://occiware.org/occi/docker#//@kinds[term='link']"/>
       <attributes
           name="occi.core.id"
           value="_RivZkPSZEeSVK4unvxRPgw"/>
@@ -790,7 +790,7 @@
       name="mosquitto"
       image="busybox"
       command="sleep,9999">
-    <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <kind href="http://occiware.org/occi/docker#//@kinds[term='container']"/>
     <attributes
         name="occi.core.id"
         value="_D26iwPSZEeSVK4unvxRPgw"/>
@@ -807,7 +807,7 @@
         id="_aSmFoPSZEeSVK4unvxRPgw"
         target="//@resources.22">
       <kind
-          href="http://occiware.org/docker#//@kinds[term='link']"/>
+          href="http://occiware.org/occi/docker#//@kinds[term='link']"/>
       <attributes
           name="occi.core.id"
           value="_aSmFoPSZEeSVK4unvxRPgw"/>
@@ -819,7 +819,7 @@
       name="frontend"
       image="busybox"
       command="sleep,9999">
-    <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <kind href="http://occiware.org/occi/docker#//@kinds[term='container']"/>
     <attributes
         name="occi.core.id"
         value="_JA57YPSZEeSVK4unvxRPgw"/>
@@ -836,7 +836,7 @@
         id="_O-qTQPSZEeSVK4unvxRPgw"
         target="//@resources.19">
       <kind
-          href="http://occiware.org/docker#//@kinds[term='link']"/>
+          href="http://occiware.org/occi/docker#//@kinds[term='link']"/>
       <attributes
           name="occi.core.id"
           value="_O-qTQPSZEeSVK4unvxRPgw"/>
@@ -849,7 +849,7 @@
       image="training/webapp"
       command="python,app.py"
       ports="5000:5000">
-    <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <kind href="http://occiware.org/occi/docker#//@kinds[term='container']"/>
     <attributes
         name="occi.core.id"
         value="_VekV8PSZEeSVK4unvxRPgw"/>
@@ -873,7 +873,7 @@
       memory="1024.0"
       name="Storm-topology"
       boot2docker_url="">
-    <kind href="http://occiware.org/docker#//@kinds[term='machine_VirtualBox']"/>
+    <kind href="http://occiware.org/occi/docker#//@kinds[term='machine_VirtualBox']"/>
     <attributes
         name="occi.core.id"
         value="_cSgScPSaEeSVK4unvxRPgw"/>
@@ -893,7 +893,7 @@
         id="_dgxcYfSaEeSVK4unvxRPgw"
         target="//@resources.24">
       <kind
-          href="http://occiware.org/docker#//@kinds[term='contains']"/>
+          href="http://occiware.org/occi/docker#//@kinds[term='contains']"/>
       <attributes
           name="occi.core.id"
           value="_dgxcYfSaEeSVK4unvxRPgw"/>
@@ -902,7 +902,7 @@
         id="_dpKjY_SaEeSVK4unvxRPgw"
         target="//@resources.25">
       <kind
-          href="http://occiware.org/docker#//@kinds[term='contains']"/>
+          href="http://occiware.org/occi/docker#//@kinds[term='contains']"/>
       <attributes
           name="occi.core.id"
           value="_dpKjY_SaEeSVK4unvxRPgw"/>
@@ -911,7 +911,7 @@
         id="_dxW2E_SaEeSVK4unvxRPgw"
         target="//@resources.26">
       <kind
-          href="http://occiware.org/docker#//@kinds[term='contains']"/>
+          href="http://occiware.org/occi/docker#//@kinds[term='contains']"/>
       <attributes
           name="occi.core.id"
           value="_dxW2E_SaEeSVK4unvxRPgw"/>
@@ -920,7 +920,7 @@
         id="_d5dpMvSaEeSVK4unvxRPgw"
         target="//@resources.27">
       <kind
-          href="http://occiware.org/docker#//@kinds[term='contains']"/>
+          href="http://occiware.org/occi/docker#//@kinds[term='contains']"/>
       <attributes
           name="occi.core.id"
           value="_d5dpMvSaEeSVK4unvxRPgw"/>
@@ -929,7 +929,7 @@
         id="_eBZdMvSaEeSVK4unvxRPgw"
         target="//@resources.28">
       <kind
-          href="http://occiware.org/docker#//@kinds[term='contains']"/>
+          href="http://occiware.org/occi/docker#//@kinds[term='contains']"/>
       <attributes
           name="occi.core.id"
           value="_eBZdMvSaEeSVK4unvxRPgw"/>
@@ -938,7 +938,7 @@
         id="_eJtEovSaEeSVK4unvxRPgw"
         target="//@resources.29">
       <kind
-          href="http://occiware.org/docker#//@kinds[term='contains']"/>
+          href="http://occiware.org/occi/docker#//@kinds[term='contains']"/>
       <attributes
           name="occi.core.id"
           value="_eJtEovSaEeSVK4unvxRPgw"/>
@@ -947,7 +947,7 @@
         id="_eSKdEfSaEeSVK4unvxRPgw"
         target="//@resources.30">
       <kind
-          href="http://occiware.org/docker#//@kinds[term='contains']"/>
+          href="http://occiware.org/occi/docker#//@kinds[term='contains']"/>
       <attributes
           name="occi.core.id"
           value="_eSKdEfSaEeSVK4unvxRPgw"/>
@@ -956,7 +956,7 @@
         id="_eZ-8UfSaEeSVK4unvxRPgw"
         target="//@resources.31">
       <kind
-          href="http://occiware.org/docker#//@kinds[term='contains']"/>
+          href="http://occiware.org/occi/docker#//@kinds[term='contains']"/>
       <attributes
           name="occi.core.id"
           value="_eZ-8UfSaEeSVK4unvxRPgw"/>
@@ -969,7 +969,7 @@
       containerid=""
       image="busybox"
       command="sleep,9999">
-    <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <kind href="http://occiware.org/occi/docker#//@kinds[term='container']"/>
     <attributes
         name="occi.core.id"
         value="cb1b87be9ab675185e761077fb769d62bb55219d2bf174dd14796985881b646a"/>
@@ -989,7 +989,7 @@
         id="_dpKjYPSaEeSVK4unvxRPgw"
         target="//@resources.28">
       <kind
-          href="http://occiware.org/docker#//@kinds[term='link']"/>
+          href="http://occiware.org/occi/docker#//@kinds[term='link']"/>
       <attributes
           name="occi.core.id"
           value="_dpKjYPSaEeSVK4unvxRPgw"/>
@@ -998,7 +998,7 @@
         id="_dpKjYfSaEeSVK4unvxRPgw"
         target="//@resources.27">
       <kind
-          href="http://occiware.org/docker#//@kinds[term='link']"/>
+          href="http://occiware.org/occi/docker#//@kinds[term='link']"/>
       <attributes
           name="occi.core.id"
           value="_dpKjYfSaEeSVK4unvxRPgw"/>
@@ -1007,7 +1007,7 @@
         id="_dpKjYvSaEeSVK4unvxRPgw"
         target="//@resources.26">
       <kind
-          href="http://occiware.org/docker#//@kinds[term='link']"/>
+          href="http://occiware.org/occi/docker#//@kinds[term='link']"/>
       <attributes
           name="occi.core.id"
           value="_dpKjYvSaEeSVK4unvxRPgw"/>
@@ -1020,7 +1020,7 @@
       containerid="1c247f645643ba4b57f9918b60328518fd446c7d09b456ca08d15133e07b0d26"
       image="busybox"
       command="sleep,9999">
-    <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <kind href="http://occiware.org/occi/docker#//@kinds[term='container']"/>
     <attributes
         name="occi.core.id"
         value="1c247f645643ba4b57f9918b60328518fd446c7d09b456ca08d15133e07b0d26"/>
@@ -1040,7 +1040,7 @@
         id="_dxW2EPSaEeSVK4unvxRPgw"
         target="//@resources.28">
       <kind
-          href="http://occiware.org/docker#//@kinds[term='link']"/>
+          href="http://occiware.org/occi/docker#//@kinds[term='link']"/>
       <attributes
           name="occi.core.id"
           value="_dxW2EPSaEeSVK4unvxRPgw"/>
@@ -1049,7 +1049,7 @@
         id="_dxW2EfSaEeSVK4unvxRPgw"
         target="//@resources.27">
       <kind
-          href="http://occiware.org/docker#//@kinds[term='link']"/>
+          href="http://occiware.org/occi/docker#//@kinds[term='link']"/>
       <attributes
           name="occi.core.id"
           value="_dxW2EfSaEeSVK4unvxRPgw"/>
@@ -1058,7 +1058,7 @@
         id="_dxW2EvSaEeSVK4unvxRPgw"
         target="//@resources.26">
       <kind
-          href="http://occiware.org/docker#//@kinds[term='link']"/>
+          href="http://occiware.org/occi/docker#//@kinds[term='link']"/>
       <attributes
           name="occi.core.id"
           value="_dxW2EvSaEeSVK4unvxRPgw"/>
@@ -1071,7 +1071,7 @@
       containerid="a57d52c7246c76bd2feb5c86b898fe588de663b74f6c88a70bf4f5833604d713"
       image="busybox"
       command="sleep,9999">
-    <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <kind href="http://occiware.org/occi/docker#//@kinds[term='container']"/>
     <attributes
         name="occi.core.id"
         value="a57d52c7246c76bd2feb5c86b898fe588de663b74f6c88a70bf4f5833604d713"/>
@@ -1091,7 +1091,7 @@
         id="_d5dpMPSaEeSVK4unvxRPgw"
         target="//@resources.30">
       <kind
-          href="http://occiware.org/docker#//@kinds[term='link']"/>
+          href="http://occiware.org/occi/docker#//@kinds[term='link']"/>
       <attributes
           name="occi.core.id"
           value="_d5dpMPSaEeSVK4unvxRPgw"/>
@@ -1100,7 +1100,7 @@
         id="_d5dpMfSaEeSVK4unvxRPgw"
         target="//@resources.29">
       <kind
-          href="http://occiware.org/docker#//@kinds[term='link']"/>
+          href="http://occiware.org/occi/docker#//@kinds[term='link']"/>
       <attributes
           name="occi.core.id"
           value="_d5dpMfSaEeSVK4unvxRPgw"/>
@@ -1113,7 +1113,7 @@
       containerid="2b22b5fbcc28d21c1882743cd0291c6274ea4772446417d9400cfa64aa90f161"
       image="busybox"
       command="sleep,9999">
-    <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <kind href="http://occiware.org/occi/docker#//@kinds[term='container']"/>
     <attributes
         name="occi.core.id"
         value="2b22b5fbcc28d21c1882743cd0291c6274ea4772446417d9400cfa64aa90f161"/>
@@ -1133,7 +1133,7 @@
         id="_eBZdMPSaEeSVK4unvxRPgw"
         target="//@resources.30">
       <kind
-          href="http://occiware.org/docker#//@kinds[term='link']"/>
+          href="http://occiware.org/occi/docker#//@kinds[term='link']"/>
       <attributes
           name="occi.core.id"
           value="_eBZdMPSaEeSVK4unvxRPgw"/>
@@ -1142,7 +1142,7 @@
         id="_eBZdMfSaEeSVK4unvxRPgw"
         target="//@resources.29">
       <kind
-          href="http://occiware.org/docker#//@kinds[term='link']"/>
+          href="http://occiware.org/occi/docker#//@kinds[term='link']"/>
       <attributes
           name="occi.core.id"
           value="_eBZdMfSaEeSVK4unvxRPgw"/>
@@ -1155,7 +1155,7 @@
       containerid="6bad9e39d72cb02ba12694d180c16ab710a68baf4f24cf43679095b7dc5ac853"
       image="busybox"
       command="sleep,9999">
-    <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <kind href="http://occiware.org/occi/docker#//@kinds[term='container']"/>
     <attributes
         name="occi.core.id"
         value="6bad9e39d72cb02ba12694d180c16ab710a68baf4f24cf43679095b7dc5ac853"/>
@@ -1175,7 +1175,7 @@
         id="_eJtEoPSaEeSVK4unvxRPgw"
         target="//@resources.30">
       <kind
-          href="http://occiware.org/docker#//@kinds[term='link']"/>
+          href="http://occiware.org/occi/docker#//@kinds[term='link']"/>
       <attributes
           name="occi.core.id"
           value="_eJtEoPSaEeSVK4unvxRPgw"/>
@@ -1184,7 +1184,7 @@
         id="_eJtEofSaEeSVK4unvxRPgw"
         target="//@resources.29">
       <kind
-          href="http://occiware.org/docker#//@kinds[term='link']"/>
+          href="http://occiware.org/occi/docker#//@kinds[term='link']"/>
       <attributes
           name="occi.core.id"
           value="_eJtEofSaEeSVK4unvxRPgw"/>
@@ -1197,7 +1197,7 @@
       containerid="640c4bcfe34ba0fd303408df0e4379e04eb066d1648a1278b4fdb00ecc6dbccf"
       image="busybox"
       command="sleep,9999">
-    <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <kind href="http://occiware.org/occi/docker#//@kinds[term='container']"/>
     <attributes
         name="occi.core.id"
         value="640c4bcfe34ba0fd303408df0e4379e04eb066d1648a1278b4fdb00ecc6dbccf"/>
@@ -1217,7 +1217,7 @@
         id="_eSKdEPSaEeSVK4unvxRPgw"
         target="//@resources.31">
       <kind
-          href="http://occiware.org/docker#//@kinds[term='link']"/>
+          href="http://occiware.org/occi/docker#//@kinds[term='link']"/>
       <attributes
           name="occi.core.id"
           value="_eSKdEPSaEeSVK4unvxRPgw"/>
@@ -1230,7 +1230,7 @@
       containerid="f8991567fe37f15ed936706933d920ab19b94f8ce9a30bf92c6f705cc9555319"
       image="busybox"
       command="sleep,9999">
-    <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <kind href="http://occiware.org/occi/docker#//@kinds[term='container']"/>
     <attributes
         name="occi.core.id"
         value="f8991567fe37f15ed936706933d920ab19b94f8ce9a30bf92c6f705cc9555319"/>
@@ -1250,7 +1250,7 @@
         id="_eZ-8UPSaEeSVK4unvxRPgw"
         target="//@resources.31">
       <kind
-          href="http://occiware.org/docker#//@kinds[term='link']"/>
+          href="http://occiware.org/occi/docker#//@kinds[term='link']"/>
       <attributes
           name="occi.core.id"
           value="_eZ-8UPSaEeSVK4unvxRPgw"/>
@@ -1263,7 +1263,7 @@
       containerid="06f777e9d6f41827055131ce6163fb128e926c888d1a77bcf8570d837a7fa4f5"
       image="busybox"
       command="sleep,9999">
-    <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <kind href="http://occiware.org/occi/docker#//@kinds[term='container']"/>
     <attributes
         name="occi.core.id"
         value="06f777e9d6f41827055131ce6163fb128e926c888d1a77bcf8570d837a7fa4f5"/>
@@ -1285,7 +1285,7 @@
       id="3580412e-b037-4140-9805-6f4ba9ed6c7c"
       name=""
       pid="">
-    <kind href="http://occiware.org/docker#//@kinds[term='container']"/>
+    <kind href="http://occiware.org/occi/docker#//@kinds[term='container']"/>
     <attributes
         name="occi.core.id"
         value="3580412e-b037-4140-9805-6f4ba9ed6c7c"/>

@@ -3,7 +3,7 @@
     xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:docker="http://occiware.org/docker"
+    xmlns:docker="http://occiware.org/occi/docker"
     xmlns:occi="http://schemas.ogf.org/occi">
   <resources
       xsi:type="docker:Machine_VirtualBox"

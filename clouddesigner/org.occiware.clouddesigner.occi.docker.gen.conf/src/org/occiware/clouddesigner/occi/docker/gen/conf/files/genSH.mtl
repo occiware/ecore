@@ -1,5 +1,5 @@
 [comment encoding = UTF-8 /]
-[module genSH('http://occiware.org/docker/ecore', 'http://schemas.ogf.org/occi/infrastructure/ecore', 'http://schemas.ogf.org/occi/core/ecore')]
+[module genSH('http://occiware.org/occi/docker/ecore', 'http://schemas.ogf.org/occi/infrastructure/ecore', 'http://schemas.ogf.org/occi/core/ecore')]
 
 [template public generateSH(configuration : Configuration)]
 [file ('docker/' + configurationFileName(configuration) + '.sh', false, 'UTF-8')]

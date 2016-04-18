@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:mtl="http://www.eclipse.org/acceleo/mtl/3.0" xmlns:ocl.ecore="http://www.eclipse.org/ocl/1.1.0/Ecore">
-  <mtl:Module name="generate" nsURI="org::occiware::clouddesigner::occi::docker::gen::conf::common::generate" startHeaderPosition="29" endHeaderPosition="258">
+  <mtl:Module name="generate" nsURI="org::occiware::clouddesigner::occi::docker::gen::conf::common::generate" startHeaderPosition="29" endHeaderPosition="263">
     <input>
-      <takesTypesFrom href="http://occiware.org/docker/ecore#/"/>
+      <takesTypesFrom href="http://occiware.org/occi/docker/ecore#/"/>
     </input>
     <input>
       <takesTypesFrom href="http://schemas.ogf.org/occi/infrastructure/ecore#/"/>
@@ -115,17 +115,17 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="docker_Container_Class">
       <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
-        <references href="http://occiware.org/docker/ecore#//Container"/>
+        <references href="http://occiware.org/occi/docker/ecore#//Container"/>
       </eAnnotations>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="docker_Machine_Class">
       <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
-        <references href="http://occiware.org/docker/ecore#//Machine"/>
+        <references href="http://occiware.org/occi/docker/ecore#//Machine"/>
       </eAnnotations>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="docker_Machine_VirtualBox_Class">
       <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
-        <references href="http://occiware.org/docker/ecore#//Machine_VirtualBox"/>
+        <references href="http://occiware.org/occi/docker/ecore#//Machine_VirtualBox"/>
       </eAnnotations>
     </eClassifiers>
   </ecore:EPackage>
@@ -152,38 +152,38 @@
   </ocl.ecore:Variable>
   <ecore:EAnnotation source="positions">
     <eAnnotations source="positions.0" references="/0/generateElement">
-      <details key="start" value="340"/>
-      <details key="end" value="497"/>
+      <details key="start" value="345"/>
+      <details key="end" value="502"/>
       <details key="line" value="5"/>
     </eAnnotations>
     <eAnnotations source="positions.1" references="/0/generateElement/%">
-      <details key="start" value="424"/>
-      <details key="end" value="454"/>
+      <details key="start" value="429"/>
+      <details key="end" value="459"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.2" references="/0/generateElement/%/configuration">
-      <details key="start" value="440"/>
-      <details key="end" value="453"/>
+      <details key="start" value="445"/>
+      <details key="end" value="458"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.3" references="/0/generateElement/%.1">
-      <details key="start" value="456"/>
-      <details key="end" value="457"/>
+      <details key="start" value="461"/>
+      <details key="end" value="462"/>
       <details key="line" value="8"/>
     </eAnnotations>
     <eAnnotations source="positions.4" references="/0/generateElement/%.2">
-      <details key="start" value="458"/>
-      <details key="end" value="483"/>
+      <details key="start" value="463"/>
+      <details key="end" value="488"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.5" references="/0/generateElement/%.2/configuration">
-      <details key="start" value="469"/>
-      <details key="end" value="482"/>
+      <details key="start" value="474"/>
+      <details key="end" value="487"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.6" references="/0/generateElement/configuration">
-      <details key="start" value="373"/>
-      <details key="end" value="402"/>
+      <details key="start" value="378"/>
+      <details key="end" value="407"/>
       <details key="line" value="5"/>
     </eAnnotations>
   </ecore:EAnnotation>

@@ -19,7 +19,7 @@ Contributors:
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <!-- @generated Docker -->
       <factory
-            uri="http://occiware.org/docker/ecore"
+            uri="http://occiware.org/occi/docker/ecore"
             class="org.occiware.clouddesigner.occi.docker.provider.DockerItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
