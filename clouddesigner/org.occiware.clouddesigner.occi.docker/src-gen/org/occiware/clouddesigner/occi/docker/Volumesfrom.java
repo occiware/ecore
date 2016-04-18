@@ -1,10 +1,15 @@
 /**
+ * Copyright (c) 2015-2016 Inria
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 	
+ * Contributors:
+ * -Fawaz Paraiso <fawaz.paraiso@inria.fr>
+ * - Philippe Merle <philippe.merle@inria.fr>
  */
 package org.occiware.clouddesigner.occi.docker;
-
-import java.util.Map;
-
-import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.occiware.clouddesigner.occi.Link;
 
@@ -22,8 +27,6 @@ import org.occiware.clouddesigner.occi.Link;
  *
  * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getVolumesfrom()
  * @model annotation="OCCIE2Ecore title='VolumsFrom'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='VolumesFromSourceAsContainer VolumesFromTargetAsContainer VolumesFromCanOnlyConnectColocalizedContainers'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot VolumesFromSourceAsContainer='source.oclIsKindOf(Container)' VolumesFromTargetAsContainer='target.oclIsKindOf(Container)' VolumesFromCanOnlyConnectColocalizedContainers='\n\t\t\tContains.allInstances()->select(contains | contains.target = self.source).source = \n\t\t\tContains.allInstances()->select(contains | contains.target = self.target).source'"
  * @generated
  */
 public interface Volumesfrom extends Link {

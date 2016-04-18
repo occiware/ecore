@@ -1,4 +1,13 @@
 /**
+ * Copyright (c) 2015-2016 Obeo, Inria
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 	
+ * Contributors:
+ * - William Piers <william.piers@obeo.fr>
+ * - Philippe Merle <philippe.merle@inria.fr>
  */
 package org.occiware.clouddesigner.occi.infrastructure;
 
@@ -6,8 +15,8 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
-import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
+
 import org.occiware.clouddesigner.occi.OCCIPackage;
 
 /**
@@ -17,15 +26,12 @@ import org.occiware.clouddesigner.occi.OCCIPackage;
  * <ul>
  *   <li>each class,</li>
  *   <li>each feature of each class,</li>
- *   <li>each operation of each class,</li>
  *   <li>each enum,</li>
  *   <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
  * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructureFactory
  * @model kind="package"
- *        annotation="http://www.eclipse.org/OCL/Import OCCI='../../org.occiware.clouddesigner.occi/model/OCCI.ecore#/'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore invocationDelegates='http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot' settingDelegates='http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot' validationDelegates='http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot'"
  * @generated
  */
 public interface InfrastructurePackage extends EPackage {
@@ -43,7 +49,7 @@ public interface InfrastructurePackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://schemas.ogf.org/occi/infrastructure";
+	String eNS_URI = "http://schemas.ogf.org/occi/infrastructure/ecore";
 
 	/**
 	 * The package namespace name.
@@ -1145,7 +1151,6 @@ public interface InfrastructurePackage extends EPackage {
 	 * <ul>
 	 *   <li>each class,</li>
 	 *   <li>each feature of each class,</li>
-	 *   <li>each operation of each class,</li>
 	 *   <li>each enum,</li>
 	 *   <li>and each data type</li>
 	 * </ul>

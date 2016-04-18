@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:mtl="http://www.eclipse.org/acceleo/mtl/3.0" xmlns:ocl.ecore="http://www.eclipse.org/ocl/1.1.0/Ecore">
-  <mtl:Module name="generate" nsURI="org::occiware::clouddesigner::occi::docker::gen::conf::common::generate" startHeaderPosition="29" endHeaderPosition="235">
+  <mtl:Module name="generate" nsURI="org::occiware::clouddesigner::occi::docker::gen::conf::common::generate" startHeaderPosition="29" endHeaderPosition="258">
     <input>
-      <takesTypesFrom href="http://occiware.org/docker#/"/>
+      <takesTypesFrom href="http://occiware.org/docker/ecore#/"/>
     </input>
     <input>
-      <takesTypesFrom href="http://schemas.ogf.org/occi/infrastructure#/"/>
+      <takesTypesFrom href="http://schemas.ogf.org/occi/infrastructure/ecore#/"/>
     </input>
     <input>
-      <takesTypesFrom href="http://schemas.ogf.org/occi#/"/>
+      <takesTypesFrom href="http://schemas.ogf.org/occi/core/ecore#/"/>
     </input>
     <imports href="platform:/resource/org.occiware.clouddesigner.occi.docker.gen.conf/bin/org/occiware/clouddesigner/occi/docker/gen/conf/files/genCompose.emtl#/0"/>
     <imports href="platform:/resource/org.occiware.clouddesigner.occi.docker.gen.conf/bin/org/occiware/clouddesigner/occi/docker/gen/conf/files/genSH.emtl#/0"/>
@@ -17,7 +17,7 @@
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <definition href="platform:/resource/org.occiware.clouddesigner.occi.docker.gen.conf/bin/org/occiware/clouddesigner/occi/docker/gen/conf/files/genCompose.emtl#/0/generateCompose"/>
         <argument xsi:type="ocl.ecore:VariableExp" name="configuration" referredVariable="/0/generateElement/configuration">
-          <eType xsi:type="ecore:EClass" href="http://schemas.ogf.org/occi#//Configuration"/>
+          <eType xsi:type="ecore:EClass" href="http://schemas.ogf.org/occi/core/ecore#//Configuration"/>
         </argument>
       </body>
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
@@ -25,11 +25,11 @@
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <definition href="platform:/resource/org.occiware.clouddesigner.occi.docker.gen.conf/bin/org/occiware/clouddesigner/occi/docker/gen/conf/files/genSH.emtl#/0/generateSH"/>
         <argument xsi:type="ocl.ecore:VariableExp" name="configuration" referredVariable="/0/generateElement/configuration">
-          <eType xsi:type="ecore:EClass" href="http://schemas.ogf.org/occi#//Configuration"/>
+          <eType xsi:type="ecore:EClass" href="http://schemas.ogf.org/occi/core/ecore#//Configuration"/>
         </argument>
       </body>
       <parameter name="configuration">
-        <eType xsi:type="ecore:EClass" href="http://schemas.ogf.org/occi#//Configuration"/>
+        <eType xsi:type="ecore:EClass" href="http://schemas.ogf.org/occi/core/ecore#//Configuration"/>
       </parameter>
     </ownedModuleElement>
   </mtl:Module>
@@ -60,7 +60,7 @@
         <eAnnotations source="MTL" references="/0/generateElement"/>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="configuration">
-          <eType xsi:type="ecore:EClass" href="http://schemas.ogf.org/occi#//Configuration"/>
+          <eType xsi:type="ecore:EClass" href="http://schemas.ogf.org/occi/core/ecore#//Configuration"/>
         </eParameters>
       </eOperations>
       <eOperations name="generateCompose">
@@ -72,7 +72,7 @@
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="configuration">
-          <eType xsi:type="ecore:EClass" href="http://schemas.ogf.org/occi#//Configuration"/>
+          <eType xsi:type="ecore:EClass" href="http://schemas.ogf.org/occi/core/ecore#//Configuration"/>
         </eParameters>
       </eOperations>
       <eOperations name="generateSH">
@@ -84,7 +84,7 @@
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="configuration">
-          <eType xsi:type="ecore:EClass" href="http://schemas.ogf.org/occi#//Configuration"/>
+          <eType xsi:type="ecore:EClass" href="http://schemas.ogf.org/occi/core/ecore#//Configuration"/>
         </eParameters>
       </eOperations>
     </eClassifiers>
@@ -110,22 +110,22 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="occi_Configuration_Class">
       <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
-        <references href="http://schemas.ogf.org/occi#//Configuration"/>
+        <references href="http://schemas.ogf.org/occi/core/ecore#//Configuration"/>
       </eAnnotations>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="docker_Container_Class">
       <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
-        <references href="http://occiware.org/docker#//Container"/>
+        <references href="http://occiware.org/docker/ecore#//Container"/>
       </eAnnotations>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="docker_Machine_Class">
       <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
-        <references href="http://occiware.org/docker#//Machine"/>
+        <references href="http://occiware.org/docker/ecore#//Machine"/>
       </eAnnotations>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="docker_Machine_VirtualBox_Class">
       <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
-        <references href="http://occiware.org/docker#//Machine_VirtualBox"/>
+        <references href="http://occiware.org/docker/ecore#//Machine_VirtualBox"/>
       </eAnnotations>
     </eClassifiers>
   </ecore:EPackage>
@@ -133,57 +133,57 @@
     <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://schemas.ogf.org/occi#//Configuration"/>
+    <eType xsi:type="ecore:EClass" href="http://schemas.ogf.org/occi/core/ecore#//Configuration"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
     <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://schemas.ogf.org/occi#//Configuration"/>
+    <eType xsi:type="ecore:EClass" href="http://schemas.ogf.org/occi/core/ecore#//Configuration"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://schemas.ogf.org/occi#//Configuration"/>
+    <eType xsi:type="ecore:EClass" href="http://schemas.ogf.org/occi/core/ecore#//Configuration"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://schemas.ogf.org/occi#//Configuration"/>
+    <eType xsi:type="ecore:EClass" href="http://schemas.ogf.org/occi/core/ecore#//Configuration"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
     <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
   </ocl.ecore:Variable>
   <ecore:EAnnotation source="positions">
     <eAnnotations source="positions.0" references="/0/generateElement">
-      <details key="start" value="317"/>
-      <details key="end" value="474"/>
+      <details key="start" value="340"/>
+      <details key="end" value="497"/>
       <details key="line" value="5"/>
     </eAnnotations>
     <eAnnotations source="positions.1" references="/0/generateElement/%">
-      <details key="start" value="401"/>
-      <details key="end" value="431"/>
+      <details key="start" value="424"/>
+      <details key="end" value="454"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.2" references="/0/generateElement/%/configuration">
-      <details key="start" value="417"/>
-      <details key="end" value="430"/>
+      <details key="start" value="440"/>
+      <details key="end" value="453"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.3" references="/0/generateElement/%.1">
-      <details key="start" value="433"/>
-      <details key="end" value="434"/>
+      <details key="start" value="456"/>
+      <details key="end" value="457"/>
       <details key="line" value="8"/>
     </eAnnotations>
     <eAnnotations source="positions.4" references="/0/generateElement/%.2">
-      <details key="start" value="435"/>
-      <details key="end" value="460"/>
+      <details key="start" value="458"/>
+      <details key="end" value="483"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.5" references="/0/generateElement/%.2/configuration">
-      <details key="start" value="446"/>
-      <details key="end" value="459"/>
+      <details key="start" value="469"/>
+      <details key="end" value="482"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.6" references="/0/generateElement/configuration">
-      <details key="start" value="350"/>
-      <details key="end" value="379"/>
+      <details key="start" value="373"/>
+      <details key="end" value="402"/>
       <details key="line" value="5"/>
     </eAnnotations>
   </ecore:EAnnotation>

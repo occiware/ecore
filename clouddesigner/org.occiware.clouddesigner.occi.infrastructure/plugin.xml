@@ -2,6 +2,16 @@
 <?eclipse version="3.0"?>
 
 <!--
+Copyright (c) 2015-2016 Obeo, Inria
+ 
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License v1.0
+which accompanies this distribution, and is available at
+http://www.eclipse.org/legal/epl-v10.html
+
+Contributors:
+- William Piers <william.piers@obeo.fr>
+- Philippe Merle <philippe.merle@inria.fr>
 -->
 
 <plugin>
@@ -9,16 +19,27 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated Infrastructure -->
       <package
-            uri="http://schemas.ogf.org/occi/infrastructure"
+            uri="http://schemas.ogf.org/occi/infrastructure/ecore"
             class="org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage"
             genModel="model/Infrastructure.genmodel"/>
    </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <parser
+            type="infrastructure"
+            class="org.occiware.clouddesigner.occi.util.OCCIResourceFactoryImpl"/>
+   </extension>
+   
    <extension
          point="org.occiware.clouddesigner.occi.occie">
       <occie
             file="model/Infrastructure.occie"
             scheme="http://schemas.ogf.org/occi/infrastructure#">
       </occie>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.uri_mapping" >
+      <mapping source="http://schemas.ogf.org/occi/infrastructure" target="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie"/>
    </extension>
 
 </plugin>

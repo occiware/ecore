@@ -8,4 +8,9 @@
             scheme="http://proactive.ow2.org#">
       </occie>
    </extension>
+
+   <extension point="org.eclipse.emf.ecore.uri_mapping" >
+      <mapping source="http://proactive.ow2.org" target="platform:/plugin/org.occiware.clouddesigner.occi.pca/model/ProActive-Cloud-Automation.occie"/>
+   </extension>
+
 </plugin>

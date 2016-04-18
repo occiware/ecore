@@ -1,10 +1,16 @@
 /**
+ * Copyright (c) 2015-2016 Inria
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 	
+ * Contributors:
+ * -Fawaz Paraiso <fawaz.paraiso@inria.fr>
+ * - Philippe Merle <philippe.merle@inria.fr>
  */
 package org.occiware.clouddesigner.occi.docker;
 
-import java.util.Map;
-
-import org.eclipse.emf.common.util.DiagnosticChain;
 
 /**
  * <!-- begin-user-doc -->
@@ -20,8 +26,6 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  *
  * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getLink()
  * @model annotation="OCCIE2Ecore title='Link between containers'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='LinkSourceAsContainer LinkTargetAsContainer LinkCanOnlyConnectColocalizedContainers'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot LinkSourceAsContainer='source.oclIsKindOf(Container)' LinkTargetAsContainer='target.oclIsKindOf(Container)' LinkCanOnlyConnectColocalizedContainers='\n\t\t\tContains.allInstances()->select(contains | contains.target = self.source).source = \n\t\t\tContains.allInstances()->select(contains | contains.target = self.target).source'"
  * @generated
  */
 public interface Link extends org.occiware.clouddesigner.occi.Link {

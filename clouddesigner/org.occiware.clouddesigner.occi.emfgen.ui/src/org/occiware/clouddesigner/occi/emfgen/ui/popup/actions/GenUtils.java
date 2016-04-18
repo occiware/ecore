@@ -1,3 +1,14 @@
+/*******************************************************************************
+ * Copyright (c) 2015-2016 Obeo, Inria
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ * 	   William Piers <william.piers@obeo.fr>
+ *     Philippe Merle <philippe.merle@inria.fr>
+ *******************************************************************************/
 package org.occiware.clouddesigner.occi.emfgen.ui.popup.actions;
 
 import java.io.BufferedReader;
@@ -65,21 +76,37 @@ public class GenUtils {
 			Collection<GenPackage> usedGenPackages) throws IOException {
 		GenModel genModel = GenModelFactory.eINSTANCE.createGenModel();
 		genModel.setComplianceLevel(GenJDKLevel.JDK70_LITERAL);
+		genModel.setCopyrightText(
+				"Copyright (c) 2015-2016 Obeo, Inria\n" +
+				"All rights reserved. This program and the accompanying materials\n" +
+				"are made available under the terms of the Eclipse Public License v1.0\n" +
+				"which accompanies this distribution, and is available at\n" +
+				"http://www.eclipse.org/legal/epl-v10.html\n" +
+				"	\n" +
+				"Contributors:\n" +
+				"- William Piers <william.piers@obeo.fr>\n" +
+				"- Philippe Merle <philippe.merle@inria.fr>"
+		);
 		String modelPluginId = new Path(ecoreLocation).removeLastSegments(2).lastSegment().toString();
 		String editPluginId = modelPluginId + ".edit";
+		String editorPluginId = modelPluginId + ".editor";
+		String testsPluginId = modelPluginId + ".tests";
 		genModel.setModelDirectory('/' + modelPluginId + "/src-gen");
 		genModel.setEditDirectory('/' + editPluginId + "/src-gen");
+		genModel.setEditorDirectory('/' + editorPluginId + "/src-gen");
+		genModel.setTestsDirectory('/' + testsPluginId + "/src");
 		genModel.getForeignModel().add(new Path(ecoreLocation).lastSegment());
 		genModel.setModelName(ConverterUtils.toU1Case(rootPackage.getName()));
 		genModel.setModelPluginID(modelPluginId);
-		genModel.setEditorPluginID(editPluginId);
+		genModel.setEditPluginID(editPluginId);
+		genModel.setEditorPluginID(editorPluginId);
+		genModel.setTestsPluginID(testsPluginId);
 		genModel.setRootExtendsInterface("org.eclipse.emf.ecore.EObject");
 		genModel.getUsedGenPackages().addAll(usedGenPackages);
 		genModel.initialize(Collections.singleton(rootPackage));
 		GenPackage genPackage = genModel.getGenPackages().get(0);
 		genPackage.setPrefix(ConverterUtils.toU1Case(rootPackage.getNsPrefix()));
 		genPackage.setBasePackage(basePackage);
-
 		URI genModelURI = URI
 				.createFileURI(new Path(ecoreLocation).removeFileExtension().addFileExtension("genmodel").toString());
 		final XMIResourceImpl genModelResource = new XMIResourceImpl(genModelURI);

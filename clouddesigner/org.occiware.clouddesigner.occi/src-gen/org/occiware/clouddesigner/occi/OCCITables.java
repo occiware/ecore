@@ -75,24 +75,24 @@ public class OCCITables
 	 *	Constants used by auto-generated code.
 	 */
     public static final /*@NonNull*/ /*@NonInvalid*/ RootPackageId PACKid_$metamodel$ = IdManager.getRootPackageId("$metamodel$");
-    public static final /*@NonNull*/ /*@NonInvalid*/ NsURIPackageId PACKid_http_c_s_s_schemas_ogf_org_s_occi = IdManager.getNsURIPackageId("http://schemas.ogf.org/occi", null, OCCIPackage.eINSTANCE);
+    public static final /*@NonNull*/ /*@NonInvalid*/ NsURIPackageId PACKid_http_c_s_s_schemas_ogf_org_s_occi_s_core_s_ecore = IdManager.getNsURIPackageId("http://schemas.ogf.org/occi/core/ecore", null, OCCIPackage.eINSTANCE);
     public static final /*@NonNull*/ /*@NonInvalid*/ NsURIPackageId PACKid_http_c_s_s_www_eclipse_org_s_emf_s_2002_s_Ecore = IdManager.getNsURIPackageId("http://www.eclipse.org/emf/2002/Ecore", null, EcorePackage.eINSTANCE);
     public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId BAG_PRIMid_String = TypeId.BAG.getSpecializedId(TypeId.STRING);
-    public static final /*@NonNull*/ /*@NonInvalid*/ ClassId CLSSid_Action = OCCITables.PACKid_http_c_s_s_schemas_ogf_org_s_occi.getClassId("Action", 0);
-    public static final /*@NonNull*/ /*@NonInvalid*/ ClassId CLSSid_Attribute = OCCITables.PACKid_http_c_s_s_schemas_ogf_org_s_occi.getClassId("Attribute", 0);
-    public static final /*@NonNull*/ /*@NonInvalid*/ ClassId CLSSid_AttributeState = OCCITables.PACKid_http_c_s_s_schemas_ogf_org_s_occi.getClassId("AttributeState", 0);
-    public static final /*@NonNull*/ /*@NonInvalid*/ ClassId CLSSid_Category = OCCITables.PACKid_http_c_s_s_schemas_ogf_org_s_occi.getClassId("Category", 0);
+    public static final /*@NonNull*/ /*@NonInvalid*/ ClassId CLSSid_Action = OCCITables.PACKid_http_c_s_s_schemas_ogf_org_s_occi_s_core_s_ecore.getClassId("Action", 0);
+    public static final /*@NonNull*/ /*@NonInvalid*/ ClassId CLSSid_Attribute = OCCITables.PACKid_http_c_s_s_schemas_ogf_org_s_occi_s_core_s_ecore.getClassId("Attribute", 0);
+    public static final /*@NonNull*/ /*@NonInvalid*/ ClassId CLSSid_AttributeState = OCCITables.PACKid_http_c_s_s_schemas_ogf_org_s_occi_s_core_s_ecore.getClassId("AttributeState", 0);
+    public static final /*@NonNull*/ /*@NonInvalid*/ ClassId CLSSid_Category = OCCITables.PACKid_http_c_s_s_schemas_ogf_org_s_occi_s_core_s_ecore.getClassId("Category", 0);
     public static final /*@NonNull*/ /*@NonInvalid*/ ClassId CLSSid_Class = OCCITables.PACKid_$metamodel$.getClassId("Class", 0);
-    public static final /*@NonNull*/ /*@NonInvalid*/ ClassId CLSSid_Configuration = OCCITables.PACKid_http_c_s_s_schemas_ogf_org_s_occi.getClassId("Configuration", 0);
+    public static final /*@NonNull*/ /*@NonInvalid*/ ClassId CLSSid_Configuration = OCCITables.PACKid_http_c_s_s_schemas_ogf_org_s_occi_s_core_s_ecore.getClassId("Configuration", 0);
     public static final /*@NonNull*/ /*@NonInvalid*/ ClassId CLSSid_EDataType = OCCITables.PACKid_http_c_s_s_www_eclipse_org_s_emf_s_2002_s_Ecore.getClassId("EDataType", 0);
-    public static final /*@NonNull*/ /*@NonInvalid*/ ClassId CLSSid_Entity = OCCITables.PACKid_http_c_s_s_schemas_ogf_org_s_occi.getClassId("Entity", 0);
-    public static final /*@NonNull*/ /*@NonInvalid*/ ClassId CLSSid_Extension = OCCITables.PACKid_http_c_s_s_schemas_ogf_org_s_occi.getClassId("Extension", 0);
-    public static final /*@NonNull*/ /*@NonInvalid*/ ClassId CLSSid_Kind = OCCITables.PACKid_http_c_s_s_schemas_ogf_org_s_occi.getClassId("Kind", 0);
-    public static final /*@NonNull*/ /*@NonInvalid*/ ClassId CLSSid_Link = OCCITables.PACKid_http_c_s_s_schemas_ogf_org_s_occi.getClassId("Link", 0);
-    public static final /*@NonNull*/ /*@NonInvalid*/ ClassId CLSSid_Mixin = OCCITables.PACKid_http_c_s_s_schemas_ogf_org_s_occi.getClassId("Mixin", 0);
+    public static final /*@NonNull*/ /*@NonInvalid*/ ClassId CLSSid_Entity = OCCITables.PACKid_http_c_s_s_schemas_ogf_org_s_occi_s_core_s_ecore.getClassId("Entity", 0);
+    public static final /*@NonNull*/ /*@NonInvalid*/ ClassId CLSSid_Extension = OCCITables.PACKid_http_c_s_s_schemas_ogf_org_s_occi_s_core_s_ecore.getClassId("Extension", 0);
+    public static final /*@NonNull*/ /*@NonInvalid*/ ClassId CLSSid_Kind = OCCITables.PACKid_http_c_s_s_schemas_ogf_org_s_occi_s_core_s_ecore.getClassId("Kind", 0);
+    public static final /*@NonNull*/ /*@NonInvalid*/ ClassId CLSSid_Link = OCCITables.PACKid_http_c_s_s_schemas_ogf_org_s_occi_s_core_s_ecore.getClassId("Link", 0);
+    public static final /*@NonNull*/ /*@NonInvalid*/ ClassId CLSSid_Mixin = OCCITables.PACKid_http_c_s_s_schemas_ogf_org_s_occi_s_core_s_ecore.getClassId("Mixin", 0);
     public static final /*@NonNull*/ /*@NonInvalid*/ ClassId CLSSid_OclElement = OCCITables.PACKid_$metamodel$.getClassId("OclElement", 0);
-    public static final /*@NonNull*/ /*@NonInvalid*/ ClassId CLSSid_Resource = OCCITables.PACKid_http_c_s_s_schemas_ogf_org_s_occi.getClassId("Resource", 0);
-    public static final /*@NonNull*/ /*@NonInvalid*/ DataTypeId DATAid_URI = OCCITables.PACKid_http_c_s_s_schemas_ogf_org_s_occi.getDataTypeId("URI", 0);
+    public static final /*@NonNull*/ /*@NonInvalid*/ ClassId CLSSid_Resource = OCCITables.PACKid_http_c_s_s_schemas_ogf_org_s_occi_s_core_s_ecore.getClassId("Resource", 0);
+    public static final /*@NonNull*/ /*@NonInvalid*/ DataTypeId DATAid_URI = OCCITables.PACKid_http_c_s_s_schemas_ogf_org_s_occi_s_core_s_ecore.getDataTypeId("URI", 0);
     public static final /*@NonNull*/ /*@NonInvalid*/ IntegerValue INT_0 = ValueUtil.integerValueOf("0");
     public static final /*@NonNull*/ /*@NonInvalid*/ IntegerValue INT_1 = ValueUtil.integerValueOf("1");
     public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId SEQ_PRIMid_String = TypeId.SEQUENCE.getSpecializedId(TypeId.STRING);
@@ -145,7 +145,6 @@ public class OCCITables
     public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_Attribute = TypeId.ORDERED_SET.getSpecializedId(OCCITables.CLSSid_Attribute);
     public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_AttributeState = TypeId.ORDERED_SET.getSpecializedId(OCCITables.CLSSid_AttributeState);
     public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_EDataType = TypeId.ORDERED_SET.getSpecializedId(OCCITables.CLSSid_EDataType);
-    public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_Entity = TypeId.ORDERED_SET.getSpecializedId(OCCITables.CLSSid_Entity);
     public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_Extension = TypeId.ORDERED_SET.getSpecializedId(OCCITables.CLSSid_Extension);
     public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_Kind = TypeId.ORDERED_SET.getSpecializedId(OCCITables.CLSSid_Kind);
     public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_Link = TypeId.ORDERED_SET.getSpecializedId(OCCITables.CLSSid_Link);

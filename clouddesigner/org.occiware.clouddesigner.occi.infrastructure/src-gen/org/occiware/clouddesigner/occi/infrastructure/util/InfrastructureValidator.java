@@ -1,14 +1,27 @@
 /**
+ * Copyright (c) 2015-2016 Obeo, Inria
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 	
+ * Contributors:
+ * - William Piers <william.piers@obeo.fr>
+ * - Philippe Merle <philippe.merle@inria.fr>
  */
 package org.occiware.clouddesigner.occi.infrastructure.util;
 
 import java.util.Map;
-import org.eclipse.emf.common.util.Diagnostic;
+
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.ResourceLocator;
+
 import org.eclipse.emf.ecore.EPackage;
+
 import org.eclipse.emf.ecore.util.EObjectValidator;
+
 import org.occiware.clouddesigner.occi.infrastructure.*;
+
 import org.occiware.clouddesigner.occi.util.OCCIValidator;
 
 /**
@@ -257,37 +270,7 @@ public class InfrastructureValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateSuspendMethod(SuspendMethod suspendMethod, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		boolean result = validateSuspendMethod_dummy(suspendMethod, diagnostics, context);
-		return result;
-	}
-
-	/**
-	 * The cached validation expression for the dummy constraint of '<em>Suspend Method</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected static final String SUSPEND_METHOD__DUMMY__EEXPRESSION = "true";
-
-	/**
-	 * Validates the dummy constraint of '<em>Suspend Method</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateSuspendMethod_dummy(SuspendMethod suspendMethod, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return
-			validate
-				(InfrastructurePackage.Literals.SUSPEND_METHOD,
-				 suspendMethod,
-				 diagnostics,
-				 context,
-				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
-				 "dummy",
-				 SUSPEND_METHOD__DUMMY__EEXPRESSION,
-				 Diagnostic.ERROR,
-				 DIAGNOSTIC_SOURCE,
-				 0);
+		return true;
 	}
 
 	/**

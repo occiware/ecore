@@ -1,0 +1,407 @@
+Generated at Tue Apr 12 15:52:33 CEST 2016 from http://schemas.ogf.org/occi/infrastructure by org.occiware.clouddesigner.occi.gen.doc
+
+h1. OCCI Extension: infrastructure
+
+| *Name* | infrastructure |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure# |
+
+h1. Imports
+
+| *Name* | *Scheme* |
+| <a href="core.textile">core</a> | http://schemas.ogf.org/occi/core# |
+
+h1. Kinds
+
+h2. Kind network
+
+| *Term* | network |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure# |
+| *Title* | Network Resource |
+| *Parent* | <a href="core.textile#kind-resource">http://schemas.ogf.org/occi/core#resource</a> |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.network.vlan | <a href="infrastructure.textile#datatype-integer4095">Integer4095</a> | false | true |  | 802.1q VLAN Identifier (e.g. 343) |
+| occi.network.label | <a href="infrastructure.textile#datatype-token">Token</a> | false | true |  | Tag based VLANs (e.g. external-dmz) |
+| occi.network.state | <a href="infrastructure.textile#enum-networkstatus">NetworkStatus</a> | true | false | inactive | Current state of the instance |
+
+h3. Actions
+
+h4. Action up
+
+| *Term* | up |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure/network/action# |
+| *Title* |  |
+
+
+h4. Action down
+
+| *Term* | down |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure/network/action# |
+| *Title* |  |
+
+
+
+
+h2. Kind compute
+
+| *Term* | compute |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure# |
+| *Title* | Compute Resource |
+| *Parent* | <a href="core.textile#kind-resource">http://schemas.ogf.org/occi/core#resource</a> |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.compute.architecture | <a href="infrastructure.textile#enum-architecture">Architecture</a> | false | true |  | CPU Architecture of the instance |
+| occi.compute.cores | <a href="infrastructure.textile#datatype-positiveinteger">PositiveInteger</a> | false | true |  | Number of CPU cores assigned to the instance |
+| occi.compute.hostname | <a href="core.textile#datatype-string">String</a> | false | true |  | Fully Qualified DNS hostname for the instance |
+| occi.compute.speed | <a href="infrastructure.textile#datatype-ghz">GHz</a> | false | true |  | CPU Clock frequency (speed) in gigahertz |
+| occi.compute.memory | <a href="infrastructure.textile#datatype-gib">GiB</a> | false | true |  | Maximum RAM in gigabytes allocated to the instance |
+| occi.compute.state | <a href="infrastructure.textile#enum-computestatus">ComputeStatus</a> | true | false | inactive | Current state of the instance |
+
+h3. Actions
+
+h4. Action start
+
+| *Term* | start |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure/compute/action# |
+| *Title* | Start the system |
+
+
+h4. Action stop
+
+| *Term* | stop |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure/compute/action# |
+| *Title* | Stop the system (graceful, acpioff or poweroff) |
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| method | <a href="infrastructure.textile#enum-stopmethod">StopMethod</a> | true | false |  |  |
+
+h4. Action restart
+
+| *Term* | restart |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure/compute/action# |
+| *Title* | Restart the system (graceful, warm or cold) |
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| method | <a href="infrastructure.textile#enum-restartmethod">RestartMethod</a> | true | false |  |  |
+
+h4. Action suspend
+
+| *Term* | suspend |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure/compute/action# |
+| *Title* | Suspend the system (hibernate or in RAM) |
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| method | <a href="infrastructure.textile#enum-suspendmethod">SuspendMethod</a> | true | false |  |  |
+
+
+
+h2. Kind storage
+
+| *Term* | storage |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure# |
+| *Title* | Storage Resource |
+| *Parent* | <a href="core.textile#kind-resource">http://schemas.ogf.org/occi/core#resource</a> |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.storage.size | <a href="infrastructure.textile#datatype-gib">GiB</a> | true | true |  | Storage size in gigabytes of the instance |
+| occi.storage.state | <a href="infrastructure.textile#enum-storagestatus">StorageStatus</a> | true | false |  | Current status of the instance |
+
+h3. Actions
+
+h4. Action online
+
+| *Term* | online |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure/storage/action# |
+| *Title* | Set storage online |
+
+
+h4. Action offline
+
+| *Term* | offline |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure/storage/action# |
+| *Title* | Set storage offline |
+
+
+h4. Action backup
+
+| *Term* | backup |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure/storage/action# |
+| *Title* | Set storage as backup |
+
+
+h4. Action snapshot
+
+| *Term* | snapshot |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure/storage/action# |
+| *Title* | Take storage snapshot |
+
+
+h4. Action resize
+
+| *Term* | resize |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure/storage/action# |
+| *Title* | Resize storage |
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| size | <a href="infrastructure.textile#datatype-gib">GiB</a> | true | false |  |  |
+
+
+
+h2. Kind storagelink
+
+| *Term* | storagelink |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure# |
+| *Title* | StorageLink Link |
+| *Parent* | <a href="core.textile#kind-link">http://schemas.ogf.org/occi/core#link</a> |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.storagelink.deviceid | <a href="core.textile#datatype-string">String</a> | true | true |  | Device identifier as defined by the OCCI service provider |
+| occi.storagelink.mountpoint | <a href="core.textile#datatype-string">String</a> | false | true |  | Point to where the storage is mounted in the guest OS |
+| occi.storagelink.state | <a href="infrastructure.textile#enum-storagelinkstatus">StorageLinkStatus</a> | true | false |  | Current status of the instance |
+
+h3. Actions
+
+
+
+h2. Kind networkinterface
+
+| *Term* | networkinterface |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure# |
+| *Title* | NetworkInterface Link |
+| *Parent* | <a href="core.textile#kind-link">http://schemas.ogf.org/occi/core#link</a> |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.networkinterface.interface | <a href="core.textile#datatype-string">String</a> | true | false |  | Identifier that relates the link to the link's device interface |
+| occi.networkinterface.mac | <a href="core.textile#datatype-string">String</a> | true | true |  | MAC address associated with the link's device interface |
+| occi.networkinterface.state | <a href="infrastructure.textile#enum-networkinterfacestatus">NetworkInterfaceStatus</a> | true | false |  | Current status of the instance |
+
+h3. Actions
+
+
+
+
+
+h1. Mixins
+
+h2. Mixin ipnetwork
+
+| *Term* | ipnetwork |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure/network# |
+| *Title* | IP Networking Mixin |
+
+h3. Depends
+
+
+h3. Applies
+
+* <a href="infrastructure.textile#kind-network">http://schemas.ogf.org/occi/infrastructure#network</a>
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.network.address | <a href="infrastructure.textile#datatype-ipaddressrange">IpAddressRange</a> | false | true |  | Internet Protocol (IP) network address (e.g. 192.168.0.1/24, fc00::/7) |
+| occi.network.gateway | <a href="infrastructure.textile#datatype-ipaddress">IpAddress</a> | false | true |  | Internet Protocol (IP) network address (e.g. 192.168.0.1, fc00::) |
+| occi.network.allocation | <a href="infrastructure.textile#enum-allocation">Allocation</a> | false | true |  | Address allocation mechanism: dynamic e.g. uses the dynamic host configuration protocol, static e.g. uses user supplied static network configurations |
+
+h3. Actions
+
+
+
+h2. Mixin ipnetworkinterface
+
+| *Term* | ipnetworkinterface |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure/networkinterface# |
+| *Title* | IP NetworkInterface Mixin |
+
+h3. Depends
+
+
+h3. Applies
+
+* <a href="infrastructure.textile#kind-networkinterface">http://schemas.ogf.org/occi/infrastructure#networkinterface</a>
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.networkinterface.address | <a href="infrastructure.textile#datatype-ipaddress">IpAddress</a> | true | true |  | Internet Protocol (IP) network address (e.g. 192.168.0.1/24, fc00::/7) of the link |
+| occi.networkinterface.gateway | <a href="infrastructure.textile#datatype-ipaddress">IpAddress</a> | false | true |  | Internet Protocol (IP) network address (e.g. 192.168.0.1/24, fc00::/7) |
+| occi.networkinterface.allocation | <a href="infrastructure.textile#enum-allocation">Allocation</a> | true | true |  | Address mechanism: dynamic e.g. uses the dynamic host configuration protocol, static e.g. uses user supplied static network configurations |
+
+h3. Actions
+
+
+
+h2. Mixin os_tpl
+
+| *Term* | os_tpl |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure# |
+| *Title* | OS Template |
+
+h3. Depends
+
+
+h3. Applies
+
+* <a href="infrastructure.textile#kind-compute">http://schemas.ogf.org/occi/infrastructure#compute</a>
+
+h3. Attributes
+
+
+h3. Actions
+
+
+
+h2. Mixin resource_tpl
+
+| *Term* | resource_tpl |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure# |
+| *Title* | Resource template |
+
+h3. Depends
+
+
+h3. Applies
+
+* <a href="core.textile#kind-resource">http://schemas.ogf.org/occi/core#resource</a>
+
+h3. Attributes
+
+
+h3. Actions
+
+
+
+
+
+h1. Types
+
+h2. Enum SuspendMethod
+
+Literals:
+* hibernate  
+* suspend  
+
+h2. Datatype Integer4095
+
+h3. Type int
+
+h3. Annotations
+
+* minInclusive = 0
+* maxInclusive = 4095
+
+h2. Datatype Token
+
+h3. Type java.lang.String
+
+h3. Annotations
+
+
+h2. Enum NetworkStatus
+
+Literals:
+* active  
+* inactive  
+
+h2. Enum ComputeStatus
+
+Literals:
+* active  
+* inactive  
+* suspended  
+
+h2. Enum NetworkInterfaceStatus
+
+Literals:
+* active  
+* inactive  
+
+h2. Enum Architecture
+
+Literals:
+* x86  
+* x64  
+
+h2. Enum StopMethod
+
+Literals:
+* graceful  
+* acpioff  
+* poweroff  
+
+h2. Enum RestartMethod
+
+Literals:
+* graceful  
+* warm  
+* cold  
+
+h2. Datatype IpAddress
+
+h3. Type java.lang.String
+
+h3. Annotations
+
+
+h2. Enum Allocation
+
+Literals:
+* dynamic  
+* static  
+
+h2. Enum StorageStatus
+
+Literals:
+* online  
+* offline  
+* backup  
+* snapshot  
+* resize  
+* degraded  
+
+h2. Enum StorageLinkStatus
+
+Literals:
+* active  
+* inactive  
+
+h2. Datatype PositiveInteger
+
+h3. Type int
+
+h3. Annotations
+
+
+h2. Datatype GHz
+
+h3. Type float
+
+h3. Annotations
+
+
+h2. Datatype GiB
+
+h3. Type float
+
+h3. Annotations
+
+
+h2. Datatype IpAddressRange
+
+h3. Type java.lang.String
+
+h3. Annotations
+
+
+
+

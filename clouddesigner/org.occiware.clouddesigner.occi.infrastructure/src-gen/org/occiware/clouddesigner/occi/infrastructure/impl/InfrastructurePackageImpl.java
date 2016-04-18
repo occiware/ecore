@@ -1,4 +1,13 @@
 /**
+ * Copyright (c) 2015-2016 Obeo, Inria
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 	
+ * Contributors:
+ * - William Piers <william.piers@obeo.fr>
+ * - Philippe Merle <philippe.merle@inria.fr>
  */
 package org.occiware.clouddesigner.occi.infrastructure.impl;
 
@@ -9,8 +18,11 @@ import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EValidator;
+
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+
 import org.occiware.clouddesigner.occi.OCCIPackage;
+
 import org.occiware.clouddesigner.occi.infrastructure.Allocation;
 import org.occiware.clouddesigner.occi.infrastructure.Architecture;
 import org.occiware.clouddesigner.occi.infrastructure.Compute;
@@ -28,6 +40,7 @@ import org.occiware.clouddesigner.occi.infrastructure.StorageLinkStatus;
 import org.occiware.clouddesigner.occi.infrastructure.StorageStatus;
 import org.occiware.clouddesigner.occi.infrastructure.Storagelink;
 import org.occiware.clouddesigner.occi.infrastructure.SuspendMethod;
+
 import org.occiware.clouddesigner.occi.infrastructure.util.InfrastructureValidator;
 
 /**
@@ -844,72 +857,10 @@ public class InfrastructurePackageImpl extends EPackageImpl implements Infrastru
 		createResource(eNS_URI);
 
 		// Create annotations
-		// http://www.eclipse.org/OCL/Import
-		createImportAnnotations();
-		// http://www.eclipse.org/emf/2002/Ecore
-		createEcoreAnnotations();
-		// http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot
-		createPivotAnnotations();
 		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
 		createExtendedMetaDataAnnotations();
 		// OCCIE2Ecore
 		createOCCIE2EcoreAnnotations();
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://www.eclipse.org/OCL/Import</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createImportAnnotations() {
-		String source = "http://www.eclipse.org/OCL/Import";	
-		addAnnotation
-		  (this, 
-		   source, 
-		   new String[] {
-			 "OCCI", "../../org.occiware.clouddesigner.occi/model/OCCI.ecore#/"
-		   });
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createEcoreAnnotations() {
-		String source = "http://www.eclipse.org/emf/2002/Ecore";	
-		addAnnotation
-		  (this, 
-		   source, 
-		   new String[] {
-			 "invocationDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
-			 "settingDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
-			 "validationDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"
-		   });	
-		addAnnotation
-		  (suspendMethodEEnum, 
-		   source, 
-		   new String[] {
-			 "constraints", "dummy"
-		   });
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createPivotAnnotations() {
-		String source = "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot";	
-		addAnnotation
-		  (suspendMethodEEnum, 
-		   source, 
-		   new String[] {
-			 "dummy", "true"
-		   });
 	}
 
 	/**

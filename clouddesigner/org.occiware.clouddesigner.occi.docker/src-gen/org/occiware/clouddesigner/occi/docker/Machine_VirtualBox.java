@@ -1,10 +1,16 @@
 /**
+ * Copyright (c) 2015-2016 Inria
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 	
+ * Contributors:
+ * -Fawaz Paraiso <fawaz.paraiso@inria.fr>
+ * - Philippe Merle <philippe.merle@inria.fr>
  */
 package org.occiware.clouddesigner.occi.docker;
 
-import java.util.Map;
-
-import org.eclipse.emf.common.util.DiagnosticChain;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,8 +27,6 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  *
  * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VirtualBox()
  * @model annotation="OCCIE2Ecore title='Machine on VirtualBox'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='ContainersUsedTooMemory'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot ContainersUsedTooMemory='Tuple {\n\tmessage : String = \'Containers consume \' + (links->select(oclIsKindOf(docker::Contains)).target.oclAsType(Container).memory->sum()).toString() + \' when memory is equals to \' + memory.toString(),\n\tstatus : Boolean = \n\t\t\t(links->select(oclIsKindOf(docker::Contains)).target.oclAsType(Container).memory->sum()) <= memory\n}.status'"
  * @generated
  */
 public interface Machine_VirtualBox extends Machine {

@@ -1,0 +1,263 @@
+Generated at Tue Apr 12 15:52:33 CEST 2016 from platform:/resource/org.occiware.clouddesigner.occi.hypervisor/model/Hypervisor.occie by org.occiware.clouddesigner.occi.gen.doc
+
+h1. OCCI Extension: hypervisor
+
+| *Name* | hypervisor |
+| *Scheme* | http://occiware.org/hypervisor# |
+
+h1. Imports
+
+| *Name* | *Scheme* |
+| <a href="core.textile">core</a> | http://schemas.ogf.org/occi/core# |
+| <a href="infrastructure.textile">infrastructure</a> | http://schemas.ogf.org/occi/infrastructure# |
+
+h1. Kinds
+
+h2. Kind machine
+
+| *Term* | machine |
+| *Scheme* | http://occiware.org/hypervisor# |
+| *Title* | Machine resource |
+| *Parent* | <a href="infrastructure.textile#kind-compute">http://schemas.ogf.org/occi/infrastructure#compute</a> |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| name | <a href="core.textile#datatype-string">String</a> | false | false |  | Hypervisor name. |
+| boot | <a href="core.textile#datatype-string">String</a> | false | false |  | The machine boot device. |
+| uuid | <a href="core.textile#datatype-string">String</a> | false | false |  | The machine unique ID. |
+| offset | <a href="core.textile#datatype-string">String</a> | false | false | localtime | This will be set if the guest XML contains a request for a clock synced to localtime. |
+| os_type | <a href="core.textile#datatype-string">String</a> | true | false |  |  |
+
+h3. Actions
+
+
+
+h2. Kind contains
+
+| *Term* | contains |
+| *Scheme* | http://occiware.org/hypervisor# |
+| *Title* |  |
+| *Parent* | <a href="core.textile#kind-link">http://schemas.ogf.org/occi/core#link</a> |
+
+h3. Attributes
+
+
+h3. Actions
+
+
+
+h2. Kind disk
+
+| *Term* | disk |
+| *Scheme* | http://occiware.org/hypervisor# |
+| *Title* | Disk resource |
+| *Parent* | <a href="infrastructure.textile#kind-storage">http://schemas.ogf.org/occi/infrastructure#storage</a> |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| name | <a href="core.textile#datatype-string">String</a> | false | false | Disk | The default name of the resource |
+| type | <a href="core.textile#datatype-string">String</a> | true | false |  | The kind of disk. |
+| device | <a href="core.textile#datatype-string">String</a> | true | false |  | Specify the disk device's. |
+| source | <a href="core.textile#datatype-string">String</a> | true | false |  |  |
+| readonly | <a href="core.textile#datatype-boolean">Boolean</a> | false | false | false |  |
+| target_dev | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+| target_bus | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+
+h3. Actions
+
+
+
+h2. Kind interface
+
+| *Term* | interface |
+| *Scheme* | http://occiware.org/hypervisor# |
+| *Title* | Interface resource |
+| *Parent* | <a href="infrastructure.textile#kind-network">http://schemas.ogf.org/occi/infrastructure#network</a> |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| name | <a href="core.textile#datatype-string">String</a> | false | false | interface | The interface resource |
+| type | <a href="core.textile#datatype-string">String</a> | true | false |  | The interface type |
+| model | <a href="core.textile#datatype-string">String</a> | false | false |  | The interface model |
+| mac_addresss | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+| route | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+
+h3. Actions
+
+
+
+h2. Kind machine_VirtualBox
+
+| *Term* | machine_VirtualBox |
+| *Scheme* | http://occiware.org/hypervisor# |
+| *Title* | Machine on VirtualBox |
+| *Parent* | <a href="hypervisor.textile#kind-machine">http://occiware.org/hypervisor#machine</a> |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| type | <a href="core.textile#datatype-string">String</a> | true | false | hvm | This type is specific to Libvirt. |
+| features | <a href="hypervisor.textile#enum-features">FEATURES</a> | false | false | acpi | The flag specify the Advanced Configuration and Power Interface(ACPI), the Physical Address Extension (PAE) and the Advanced Programmable Interrupt Controller (APIC). |
+| on_poweroff | <a href="core.textile#datatype-string">String</a> | false | false |  | Action to do when the machine is poweroff. |
+| on_reboot | <a href="core.textile#datatype-string">String</a> | false | false |  | Action to do when the machine is rebooting. |
+| on_crash | <a href="core.textile#datatype-string">String</a> | false | false |  | Action to do when the machine crached. |
+| maximum_memory | <a href="core.textile#datatype-number">Number</a> | true | false | 256000 | This sets the maximum memory for the guest at boot time in KB. |
+| current_memory | <a href="core.textile#datatype-number">Number</a> | false | false |  | This sets the lower memory for the guest at boot time in KB. |
+| vcpu | <a href="core.textile#datatype-number">Number</a> | false | false | 1 | The number of virtual CPUs to create. |
+
+h3. Actions
+
+
+
+h2. Kind bridge
+
+| *Term* | bridge |
+| *Scheme* | http://occiware.org/hypervisor# |
+| *Title* | Bridge interface |
+| *Parent* | <a href="hypervisor.textile#kind-interface">http://occiware.org/hypervisor#interface</a> |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| source_bridge | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+
+h3. Actions
+
+
+
+h2. Kind user
+
+| *Term* | user |
+| *Scheme* | http://occiware.org/hypervisor# |
+| *Title* | User interface |
+| *Parent* | <a href="hypervisor.textile#kind-interface">http://occiware.org/hypervisor#interface</a> |
+
+h3. Attributes
+
+
+h3. Actions
+
+
+
+h2. Kind parallel
+
+| *Term* | parallel |
+| *Scheme* | http://occiware.org/hypervisor# |
+| *Title* | Parallel resource |
+| *Parent* | <a href="core.textile#kind-resource">http://schemas.ogf.org/occi/core#resource</a> |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| name | <a href="core.textile#datatype-string">String</a> | false | false | parallel | The parallel resource name |
+| source | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+| target | <a href="core.textile#datatype-string">String</a> | true | false |  |  |
+
+h3. Actions
+
+
+
+h2. Kind serial
+
+| *Term* | serial |
+| *Scheme* | http://occiware.org/hypervisor# |
+| *Title* | Serial resource |
+| *Parent* | <a href="core.textile#kind-resource">http://schemas.ogf.org/occi/core#resource</a> |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| name | <a href="core.textile#datatype-string">String</a> | false | false | serial |  |
+| source | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+| target | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+
+h3. Actions
+
+
+
+h2. Kind direct
+
+| *Term* | direct |
+| *Scheme* | http://occiware.org/hypervisor# |
+| *Title* | Direct Interface |
+| *Parent* | <a href="hypervisor.textile#kind-interface">http://occiware.org/hypervisor#interface</a> |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| source_dev | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+| source_mode | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+
+h3. Actions
+
+
+
+h2. Kind ethernet
+
+| *Term* | ethernet |
+| *Scheme* | http://occiware.org/hypervisor# |
+| *Title* | Ethernet resource |
+| *Parent* | <a href="core.textile#kind-resource">http://schemas.ogf.org/occi/core#resource</a> |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| target_dev | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+| script_path | <a href="core.textile#datatype-string">String</a> | false | false |  |  |
+
+h3. Actions
+
+
+
+h2. Kind filesystem
+
+| *Term* | filesystem |
+| *Scheme* | http://occiware.org/hypervisor# |
+| *Title* | Filesystem resource |
+| *Parent* | <a href="core.textile#kind-resource">http://schemas.ogf.org/occi/core#resource</a> |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| name | <a href="core.textile#datatype-string">String</a> | false | false | filesystem |  |
+| source | <a href="core.textile#datatype-string">String</a> | true | false |  |  |
+| target | <a href="core.textile#datatype-string">String</a> | true | false |  |  |
+
+h3. Actions
+
+
+
+
+
+h1. Mixins
+
+
+
+h1. Types
+
+h2. Enum CLOCK
+
+Literals:
+* offset  
+
+h2. Enum FEATURES
+
+Literals:
+* acpi  
+* pae  
+* apic  
+
+h2. Enum OS
+
+Literals:
+* type  
+* boot  
+* kernel  
+* ramdisk  
+* cmdline  
+
+
+

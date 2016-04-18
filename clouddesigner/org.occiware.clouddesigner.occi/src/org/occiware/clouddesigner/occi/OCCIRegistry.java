@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo, Inria
+ * Copyright (c) 2015-2016 Obeo, Inria
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,6 +19,8 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtension;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.resource.URIConverter;
 
 public final class OCCIRegistry {
 
@@ -68,7 +70,7 @@ public final class OCCIRegistry {
 				for (int j = 0; j < configElements.length; j++) {
 					String scheme = configElements[j].getAttribute("scheme"); //$NON-NLS-1$
 					String uri = "platform:/plugin/" + extensions[i].getContributor().getName() + "/" + configElements[j].getAttribute("file"); //$NON-NLS-1$
-					registry.put(scheme, uri);
+					registerExtension(scheme, uri);
 				}
 			}
 		}
@@ -87,10 +89,14 @@ public final class OCCIRegistry {
 	 */
 	public void registerExtension(String scheme, String uri) {
 		registry.put(scheme, uri);
+
+		// Add a mapping from the extension scheme to its file URI.
+		String tmp = scheme.substring(0, scheme.length()-1);
+		URIConverter.URI_MAP.put(URI.createURI(tmp), URI.createURI(uri));
 	}
 
 	/**
-	 * Retrieves the {@link Extension} associated to the given scheme if
+	 * Retrieves the {@link Extension} URI associated to the given scheme if
 	 * existing.
 	 * 
 	 * @param scheme
@@ -98,6 +104,19 @@ public final class OCCIRegistry {
 	 * @return the {@link Extension} URI
 	 */
 	public String getExtensionURI(String scheme) {
+		String tmp = registry.get(scheme);
+		return tmp == null ? null : scheme.substring(0,scheme.length()-1);
+	}
+
+	/**
+	 * Retrieves the {@link Extension} file associated to a given scheme if
+	 * existing.
+	 * 
+	 * @param scheme
+	 *            the extension scheme
+	 * @return the {@link Extension} file URI
+	 */
+	public String getFileURI(String scheme) {
 		return registry.get(scheme);
 	}
 

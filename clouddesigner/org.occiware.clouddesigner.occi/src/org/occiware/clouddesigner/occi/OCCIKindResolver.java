@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo, Inria
+ * Copyright (c) 2015-16 Obeo, Inria
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,31 +19,13 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 
-import org.occiware.clouddesigner.occi.util.OCCIResourceSet;
+import org.occiware.clouddesigner.occi.util.Occi2Ecore;
+import org.occiware.clouddesigner.occi.util.OcciHelper;
 
 public class OCCIKindResolver
 {
-	/**
-	 * OCCI Core scheme.
-	 */
-	public static final String OCCI_CORE_SCHEME = "http://schemas.ogf.org/occi/core#";
-
-	/**
-	 * OCCI Core entity term.
-	 */
-	public static final String OCCI_CORE_ENTITY_TERM = "entity";
-
-	/**
-	 * OCCI Core resource term.
-	 */
-	public static final String OCCI_CORE_RESOURCE_TERM = "resource";
-
-	/**
-	 * OCCI Core link term.
-	 */
-	public static final String OCCI_CORE_LINK_TERM = "link";
-	
 	/**
 	 * Store mapping from EMF namespace to OCCI Extension.
 	 */
@@ -65,7 +47,7 @@ public class OCCIKindResolver
 		 EClass entityEClass = entity.eClass();
 
 		 Extension extension = null;
-		 String kindTermToSearch = OCCIUtils.convertEclassName2EntityTerm(entityEClass.getName());
+		 String kindTermToSearch = Occi2Ecore.convertEcoreClassName2OcciCategoryTerm(entityEClass.getName());
 
 		 // Search the kind associated to the entity's eClass.
 		 Kind entityKind = eclass2kind.get(entityEClass);
@@ -77,7 +59,7 @@ public class OCCIKindResolver
 			 // If extension not found then
 			 if (extension == null) {
 				 // Search URI of the extension into the OCCI extension registry.
-				 String scheme = metamodelURI + '#';
+				 String scheme = Occi2Ecore.convertEcoreNamespace2OcciScheme(metamodelURI);
 				 String extensionURI = OCCIRegistry.getInstance().getExtensionURI(scheme);
 				 // If extension URI not found then
 				 if(extensionURI == null) {
@@ -85,13 +67,13 @@ public class OCCIKindResolver
 					 // TODO: perhaps compute extensionURI of the ePackage of the entity's eClass.
 
 					 // Use OCCI Core resource, link or entity kind instances.
-					 extensionURI = OCCIRegistry.getInstance().getExtensionURI(OCCI_CORE_SCHEME);
+					 extensionURI = OCCIRegistry.getInstance().getExtensionURI(OcciCoreConstants.OCCI_CORE_SCHEME);
 					 if(entity instanceof org.occiware.clouddesigner.occi.Resource) {
-						 kindTermToSearch = OCCI_CORE_RESOURCE_TERM;
+						 kindTermToSearch = OcciCoreConstants.OCCI_CORE_RESOURCE_TERM;
 					 } else if(entity instanceof Link) {
-						 kindTermToSearch = OCCI_CORE_LINK_TERM;						 
+						 kindTermToSearch = OcciCoreConstants.OCCI_CORE_LINK_TERM;						 
 					 } else {
-						 kindTermToSearch = OCCI_CORE_ENTITY_TERM;
+						 kindTermToSearch = OcciCoreConstants.OCCI_CORE_ENTITY_TERM;
 						 throw new Error("Should never happens! entity=" + entity);
 					 }
 				 }
@@ -108,7 +90,7 @@ public class OCCIKindResolver
 					 resourceSet = entityResource.getResourceSet();
 				 } else {
 					 // Create a new resource set.
-					 resourceSet = new OCCIResourceSet();
+					 resourceSet = new ResourceSetImpl();
 				 }
 				 // Load the extension.
 				 Resource extensionResource = resourceSet.getResource(URI.createURI(extensionURI), true);
@@ -122,7 +104,7 @@ public class OCCIKindResolver
 			 assert(extension != null);
 
 			 // Search the entity's kind into the found extension.
-			 entityKind = OCCIUtils.getKindByTerm(extension, kindTermToSearch);
+			 entityKind = OcciHelper.getKindByTerm(extension, kindTermToSearch);
 			 if(entityKind != null) {
 				 // Map the entity's eClass to the found kind for optimizing next searches.
 				 eclass2kind.put(entityEClass, entityKind);
@@ -130,7 +112,7 @@ public class OCCIKindResolver
 		 }
 
 		 // Update the configuration of the entity.
-		 Configuration owningConfiguration = OCCIUtils.getConfiguration(entity);
+		 Configuration owningConfiguration = OcciHelper.getConfiguration(entity);
 		 if(extension != null && owningConfiguration != null) {
 			 EList<Extension> useList = owningConfiguration.getUse();
 			 if (!useList.contains(extension)) {

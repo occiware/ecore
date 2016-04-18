@@ -219,6 +219,13 @@ litigation.
          unpack="false"/>
 
    <plugin
+         id="org.occiware.clouddesigner.occi.editor"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
          id="org.occiware.clouddesigner.occi.gen.alloy"
          download-size="0"
          install-size="0"
@@ -232,6 +239,20 @@ litigation.
          version="0.0.0"
          unpack="false"/>
 
+    <plugin
+         id="org.occiware.clouddesigner.occi.gen.connector"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.occiware.clouddesigner.occi.gen.connector.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+ 
    <plugin
          id="org.occiware.clouddesigner.occi.gen.curl"
          download-size="0"
@@ -282,6 +303,13 @@ litigation.
          unpack="false"/>
 
    <plugin
+         id="org.occiware.clouddesigner.occi.infrastructure.connector.dummy"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
          id="org.occiware.clouddesigner.occi.infrastructure.edit"
          download-size="0"
          install-size="0"
@@ -289,7 +317,35 @@ litigation.
          unpack="false"/>
 
    <plugin
+         id="org.occiware.clouddesigner.occi.infrastructure.editor"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
          id="org.occiware.clouddesigner.occi.platform"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.occiware.clouddesigner.occi.platform.connector.dummy"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.occiware.clouddesigner.occi.platform.edit"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.occiware.clouddesigner.occi.platform.editor"
          download-size="0"
          install-size="0"
          version="0.0.0"

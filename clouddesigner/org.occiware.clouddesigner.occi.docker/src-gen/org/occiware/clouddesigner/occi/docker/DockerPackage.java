@@ -1,11 +1,19 @@
 /**
+ * Copyright (c) 2015-2016 Inria
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 	
+ * Contributors:
+ * -Fawaz Paraiso <fawaz.paraiso@inria.fr>
+ * - Philippe Merle <philippe.merle@inria.fr>
  */
 package org.occiware.clouddesigner.occi.docker;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
-import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 
 import org.occiware.clouddesigner.occi.OCCIPackage;
@@ -19,15 +27,12 @@ import org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage;
  * <ul>
  *   <li>each class,</li>
  *   <li>each feature of each class,</li>
- *   <li>each operation of each class,</li>
  *   <li>each enum,</li>
  *   <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
  * @see org.occiware.clouddesigner.occi.docker.DockerFactory
  * @model kind="package"
- *        annotation="http://www.eclipse.org/OCL/Import OCCI='platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#/' infrastructure='platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.ecore#/'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore invocationDelegates='http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot' settingDelegates='http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot' validationDelegates='http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot'"
  * @generated
  */
 public interface DockerPackage extends EPackage {
@@ -45,7 +50,7 @@ public interface DockerPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://occiware.org/docker";
+	String eNS_URI = "http://occiware.org/docker/ecore";
 
 	/**
 	 * The package namespace name.
@@ -4848,7 +4853,6 @@ public interface DockerPackage extends EPackage {
 	 * <ul>
 	 *   <li>each class,</li>
 	 *   <li>each feature of each class,</li>
-	 *   <li>each operation of each class,</li>
 	 *   <li>each enum,</li>
 	 *   <li>and each data type</li>
 	 * </ul>

@@ -241,7 +241,7 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		                    /*@NonNull*/ /*@Caught*/ Object CAUGHT_isEmpty;
 		                    try {
 		                        if (_1 == null) {
-		                            throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Category::attributes\'");
+		                            throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Category::attributes\'");
 		                        }
 		                        final /*@NonNull*/ /*@Thrown*/ List<Attribute> attributes = _1.getAttributes();
 		                        final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_attributes = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Attribute, attributes);
@@ -254,7 +254,7 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		                    /*@NonNull*/ /*@Caught*/ Object CAUGHT_isEmpty_0;
 		                    try {
 		                        if (_1 == null) {
-		                            throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Mixin::actions\'");
+		                            throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Mixin::actions\'");
 		                        }
 		                        final /*@NonNull*/ /*@Thrown*/ List<Action> actions = _1.getActions();
 		                        final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_actions = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Action, actions);
@@ -273,7 +273,7 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		                /*@NonNull*/ /*@Caught*/ Object CAUGHT_isEmpty_1;
 		                try {
 		                    if (_1 == null) {
-		                        throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Mixin::depends\'");
+		                        throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Mixin::depends\'");
 		                    }
 		                    final /*@NonNull*/ /*@Thrown*/ List<Mixin> depends = _1.getDepends();
 		                    final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_depends = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Mixin, depends);
@@ -368,7 +368,7 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		             * links
 		             */
 		            if (_1 == null) {
-		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Resource::links\'");
+		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Resource::links\'");
 		            }
 		            final /*@NonNull*/ /*@Thrown*/ List<Link> links = _1.getLinks();
 		            final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_links = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Link, links);
@@ -390,7 +390,7 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		             * target
 		             */
 		            if (_1_0 == null) {
-		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Link::target\'");
+		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Link::target\'");
 		            }
 		            final /*@NonNull*/ /*@Thrown*/ Resource target = _1_0.getTarget();
 		            //
@@ -487,7 +487,7 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		             * kind
 		             */
 		            if (_1 == null) {
-		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Entity::kind\'");
+		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Entity::kind\'");
 		            }
 		            final /*@NonNull*/ /*@Thrown*/ Kind kind = _1.getKind();
 		            //
@@ -582,7 +582,7 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		             * links
 		             */
 		            if (_1 == null) {
-		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Resource::links\'");
+		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Resource::links\'");
 		            }
 		            final /*@NonNull*/ /*@Thrown*/ List<Link> links = _1.getLinks();
 		            final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_links = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Link, links);
@@ -604,7 +604,7 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		             * mixins
 		             */
 		            if (_1_0 == null) {
-		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Entity::mixins\'");
+		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Entity::mixins\'");
 		            }
 		            final /*@NonNull*/ /*@Thrown*/ List<Mixin> mixins = _1_0.getMixins();
 		            final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_mixins = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Mixin, mixins);
@@ -741,7 +741,7 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		             * mixins
 		             */
 		            if (_1 == null) {
-		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Entity::mixins\'");
+		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Entity::mixins\'");
 		            }
 		            final /*@NonNull*/ /*@Thrown*/ List<Mixin> mixins = _1.getMixins();
 		            final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_mixins = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Mixin, mixins);
@@ -874,7 +874,7 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		             * links
 		             */
 		            if (_1 == null) {
-		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Resource::links\'");
+		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Resource::links\'");
 		            }
 		            final /*@NonNull*/ /*@Thrown*/ List<Link> links = _1.getLinks();
 		            final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_links = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Link, links);
@@ -896,7 +896,7 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		             * kind
 		             */
 		            if (_1_0 == null) {
-		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Entity::kind\'");
+		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Entity::kind\'");
 		            }
 		            final /*@NonNull*/ /*@Thrown*/ Kind kind = _1_0.getKind();
 		            //

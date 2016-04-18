@@ -45,11 +45,13 @@ import org.eclipse.ocl.pivot.internal.utilities.PivotUtilInternal;
 import org.eclipse.ocl.pivot.library.AbstractBinaryOperation;
 import org.eclipse.ocl.pivot.library.LibraryIteration;
 
+import org.eclipse.ocl.pivot.library.classifier.ClassifierAllInstancesOperation;
 import org.eclipse.ocl.pivot.library.classifier.ClassifierOclContainerOperation;
 
 import org.eclipse.ocl.pivot.library.collection.CollectionExcludesAllOperation;
 import org.eclipse.ocl.pivot.library.collection.CollectionExcludesOperation;
 
+import org.eclipse.ocl.pivot.library.collection.CollectionIncludesOperation;
 import org.eclipse.ocl.pivot.library.numeric.NumericMinusOperation;
 
 import org.eclipse.ocl.pivot.library.oclany.OclAnyOclAsTypeOperation;
@@ -129,16 +131,6 @@ public class MixinImpl extends CategoryImpl implements Mixin {
 	protected EList<Kind> applies;
 
 	/**
-	 * The cached value of the '{@link #getEntities() <em>Entities</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEntities()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Entity> entities;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -199,10 +191,36 @@ public class MixinImpl extends CategoryImpl implements Mixin {
 	 * @generated
 	 */
 	public EList<Entity> getEntities() {
-		if (entities == null) {
-			entities = new EObjectResolvingEList<Entity>(Entity.class, this, OCCIPackage.MIXIN__ENTITIES);
+		/**
+		 * Entity.allInstances()->select(mixins->includes(self))
+		 */
+		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
+		final /*@NonNull*/ /*@NonInvalid*/ IdResolver idResolver = evaluator.getIdResolver();
+		final /*@NonNull*/ /*@NonInvalid*/ org.eclipse.ocl.pivot.Class TYP_occi_c_c_Entity_0 = idResolver.getClass(OCCITables.CLSSid_Entity, null);
+		final /*@NonNull*/ /*@NonInvalid*/ SetValue allInstances = ClassUtil.nonNullState(ClassifierAllInstancesOperation.INSTANCE.evaluate(evaluator, OCCITables.SET_CLSSid_Entity, TYP_occi_c_c_Entity_0));
+		/*@NonNull*/ /*@Thrown*/ SetValue.Accumulator accumulator = ValueUtil.createSetAccumulatorValue(OCCITables.SET_CLSSid_Entity);
+		/*@NonNull*/ Iterator<?> ITERATOR__1 = allInstances.iterator();
+		/*@NonNull*/ /*@Thrown*/ SetValue select;
+		while (true) {
+		    if (!ITERATOR__1.hasNext()) {
+		        select = accumulator;
+		        break;
+		    }
+		    /*@NonNull*/ /*@NonInvalid*/ Entity _1 = (Entity)ITERATOR__1.next();
+		    /**
+		     * mixins->includes(self)
+		     */
+		    final /*@NonNull*/ /*@Thrown*/ List<Mixin> mixins = _1.getMixins();
+		    final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_mixins = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Mixin, mixins);
+		    final /*@Thrown*/ boolean includes = ClassUtil.nonNullState(CollectionIncludesOperation.INSTANCE.evaluate(BOXED_mixins, this).booleanValue());
+		    //
+		    if (includes == ValueUtil.TRUE_VALUE) {
+		        accumulator.add(_1);
+		    }
 		}
-		return entities;
+		final List<Entity> UNBOXED_select = select.asEcoreObjects(idResolver, org.occiware.clouddesigner.occi.Entity.class);
+		assert UNBOXED_select != null;
+		return (EList<Entity>)UNBOXED_select;
 	}
 
 	/**
@@ -250,7 +268,7 @@ public class MixinImpl extends CategoryImpl implements Mixin {
 		             * term
 		             */
 		            if (_1 == null) {
-		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Category::term\'");
+		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Category::term\'");
 		            }
 		            final /*@NonNull*/ /*@Thrown*/ String term = _1.getTerm();
 		            //
@@ -322,7 +340,7 @@ public class MixinImpl extends CategoryImpl implements Mixin {
 		            public /*@Nullable*/ Object evaluate(final /*@NonNull*/ Evaluator evaluator, final /*@NonNull*/ TypeId typeId, final /*@Nullable*/ Object BOXED_depends, final /*@Nullable*/ /*@NonInvalid*/ Object _1) {
 		                final /*@Nullable*/ /*@NonInvalid*/ Mixin symbol_0 = (Mixin)_1;
 		                if (symbol_0 == null) {
-		                    throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Mixin::depends\'");
+		                    throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Mixin::depends\'");
 		                }
 		                final /*@NonNull*/ /*@Thrown*/ List<Mixin> depends_0 = symbol_0.getDepends();
 		                final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_depends_0 = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Mixin, depends_0);
@@ -462,7 +480,7 @@ public class MixinImpl extends CategoryImpl implements Mixin {
 		             * name
 		             */
 		            if (_1 == null) {
-		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Attribute::name\'");
+		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Attribute::name\'");
 		            }
 		            final /*@NonNull*/ /*@Thrown*/ String name = _1.getName();
 		            //
@@ -484,7 +502,7 @@ public class MixinImpl extends CategoryImpl implements Mixin {
 		            public /*@Nullable*/ Object evaluate(final /*@NonNull*/ Evaluator evaluator, final /*@NonNull*/ TypeId typeId, final /*@Nullable*/ Object BOXED_depends, final /*@Nullable*/ /*@NonInvalid*/ Object _1_0) {
 		                final /*@Nullable*/ /*@NonInvalid*/ Mixin symbol_0 = (Mixin)_1_0;
 		                if (symbol_0 == null) {
-		                    throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Mixin::depends\'");
+		                    throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Mixin::depends\'");
 		                }
 		                final /*@NonNull*/ /*@Thrown*/ List<Mixin> depends_0 = symbol_0.getDepends();
 		                final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_depends_0 = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Mixin, depends_0);
@@ -506,7 +524,7 @@ public class MixinImpl extends CategoryImpl implements Mixin {
 		             * attributes
 		             */
 		            if (_1_1 == null) {
-		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Category::attributes\'");
+		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Category::attributes\'");
 		            }
 		            final /*@NonNull*/ /*@Thrown*/ List<Attribute> attributes_0 = _1_1.getAttributes();
 		            final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_attributes_0 = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Attribute, attributes_0);
@@ -528,7 +546,7 @@ public class MixinImpl extends CategoryImpl implements Mixin {
 		             * name
 		             */
 		            if (_1_2 == null) {
-		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi\'::Attribute::name\'");
+		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Attribute::name\'");
 		            }
 		            final /*@NonNull*/ /*@Thrown*/ String name_0 = _1_2.getName();
 		            //
@@ -641,7 +659,7 @@ public class MixinImpl extends CategoryImpl implements Mixin {
 			case OCCIPackage.MIXIN__APPLIES:
 				return applies != null && !applies.isEmpty();
 			case OCCIPackage.MIXIN__ENTITIES:
-				return entities != null && !entities.isEmpty();
+				return !getEntities().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

@@ -1,4 +1,13 @@
 /**
+ * Copyright (c) 2015-2016 Obeo, Inria
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 	
+ * Contributors:
+ * - William Piers <william.piers@obeo.fr>
+ * - Philippe Merle <philippe.merle@inria.fr>
  */
 package org.occiware.clouddesigner.occi.infrastructure;
 
@@ -14,8 +23,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * and utility methods for working with them.
  * <!-- end-user-doc -->
  * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getSuspendMethod()
- * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='dummy'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot dummy='true'"
+ * @model
  * @generated
  */
 public enum SuspendMethod implements Enumerator {

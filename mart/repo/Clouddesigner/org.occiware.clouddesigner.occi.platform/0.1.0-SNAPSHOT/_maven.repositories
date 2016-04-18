@@ -1,0 +1,6 @@
+#NOTE: This is an internal implementation file, its format can be changed without prior notice.
+#Sun Apr 17 23:59:30 CEST 2016
+org.occiware.clouddesigner.occi.platform-0.1.0-SNAPSHOT-p2metadata.xml>=
+org.occiware.clouddesigner.occi.platform-0.1.0-SNAPSHOT.jar>=
+org.occiware.clouddesigner.occi.platform-0.1.0-SNAPSHOT-p2artifacts.xml>=
+org.occiware.clouddesigner.occi.platform-0.1.0-SNAPSHOT.pom>=

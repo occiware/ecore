@@ -33,7 +33,7 @@ import org.eclipse.emf.ecore.EReference;
  * <!-- end-user-doc -->
  * @see org.occiware.clouddesigner.occi.OCCIFactory
  * @model kind="package"
- *        annotation="http://www.eclipse.org/OCL/Import ecore='http://www.eclipse.org/emf/2002/Ecore#/'"
+ *        annotation="http://www.eclipse.org/OCL/Import ecore='http://www.eclipse.org/emf/2002/Ecore'"
  * @generated
  */
 public interface OCCIPackage extends EPackage {
@@ -51,7 +51,7 @@ public interface OCCIPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://schemas.ogf.org/occi";
+	String eNS_URI = "http://schemas.ogf.org/occi/core/ecore";
 
 	/**
 	 * The package namespace name.

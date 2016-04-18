@@ -1,5 +1,5 @@
 [comment encoding = UTF-8 /]
-[module generate('http://www.eclipse.org/emf/2002/Ecore','http://schemas.ogf.org/occi')]
+[module generate('http://www.eclipse.org/emf/2002/Ecore','http://schemas.ogf.org/occi/core/ecore')]
 
 [template public main(configuration : Configuration)]
 [comment @main/]

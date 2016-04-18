@@ -26,6 +26,7 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
@@ -41,12 +42,11 @@ import org.occiware.clouddesigner.occi.Link;
 import org.occiware.clouddesigner.occi.Mixin;
 import org.occiware.clouddesigner.occi.OCCIFactory;
 import org.occiware.clouddesigner.occi.OCCIRegistry;
-import org.occiware.clouddesigner.occi.OCCIUtils;
 import org.occiware.clouddesigner.occi.Resource;
 import org.occiware.clouddesigner.occi.design.dialog.LoadExtensionDialog;
 import org.occiware.clouddesigner.occi.simulation.cloudsim.handlers.BrigeConfigSimulation;
 import org.occiware.clouddesigner.occi.simulation.cloudsim.handlers.Parser.Entity;
-import org.occiware.clouddesigner.occi.util.OCCIResourceSet;
+import org.occiware.clouddesigner.occi.util.OcciHelper;
 import org.occiware.clouddesigner.occi.simulation.cloudsim.handlers.Simulation;
 
 
@@ -76,19 +76,28 @@ public class DesignServices {
 	public void tagApplication(Resource resource) {
 		tagResource(resource, "cloudlet");
 	}
+	
+	public void addPackage(Resource resource){
+		//add core to use package
+		Configuration configuration = OcciHelper.getConfiguration(resource);
+		Extension extension = OcciHelper.loadExtension(resource.getKind().getScheme());
+		for(Extension ex: configuration.getUse()){
+			if(!ex.getScheme().equals(extension.getScheme()))
+				OcciHelper.getConfiguration(resource).getUse().add(OcciHelper.loadExtension(resource.getKind().getScheme()));
+		}
+	}
 
 	public void tagResource(Resource resource, String term) {
-		String extensionURI = OCCIRegistry.getInstance().getExtensionURI(scheme);
-		Session session = SessionManager.INSTANCE.getSession(resource);
-		final org.eclipse.emf.ecore.resource.Resource extensionResource = resource.eResource().getResourceSet()
-				.getResource(URI.createURI(extensionURI, true), true);
-		final Extension extension = (Extension) extensionResource.getContents().get(0);
-		//ResourceSet resourceSet = session.getSessionResource().getResourceSet();
-
-		if (!extensionResource.getContents().isEmpty() && (extensionResource.getContents().get(0) instanceof Extension)
-				&& !extension.getImport().contains(extensionResource.getContents().get(0))) {
-			extension.getImport().add((Extension) extensionResource.getContents().get(0));
+		//add core to use package
+		addPackage(resource);
+		//if resource is tagged 
+		if(tagedBefore(resource)){
+			JOptionPane.showMessageDialog(null, "This resource is tagged");
+			return;
 		}
+
+		final Extension extension = OcciHelper.loadExtension(scheme);
+		
 		for (Mixin mixin : extension.getMixins()) {			
 			if(mixin.getTerm().contains(term)){
 				resource.getMixins().add(mixin);
@@ -125,6 +134,15 @@ public class DesignServices {
 		}
 
 
+	}
+
+	public boolean tagedBefore(Resource resource){
+		for(Mixin mixin : resource.getMixins()){
+			if(mixin.getTerm().equals("datacenter") || mixin.getTerm().equals("host") ||
+					mixin.getTerm().equals("VM") || mixin.getTerm().equals("cloudlet"))
+				return true;
+		}
+		return false;
 	}
 
 	public Shell getShell() {
@@ -182,15 +200,14 @@ public class DesignServices {
 		Session session = SessionManager.INSTANCE.getSession(configuration);
 		LoadExtensionDialog dialog = new LoadExtensionDialog(shell, session.getTransactionalEditingDomain());
 		dialog.open();
-		
-		org.occiware.clouddesigner.occi.Extension extension = searchExtension(configuration, scheme);
-		System.out.println(extension);
+				
+		org.occiware.clouddesigner.occi.Extension extension = OcciHelper.loadExtension(scheme);
 		configuration.getUse().add(extension);
-		
+
 		URI uri_ = dialog.getURIs().get(0);
-		Configuration conf = loadConfiguration(uri_.toString());
+		Configuration conf = OcciHelper.loadConfiguration(uri_.toString());
 		org.occiware.clouddesigner.occi.OCCIFactory factory = org.occiware.clouddesigner.occi.OCCIFactory.eINSTANCE;
-	
+
 		List<org.occiware.clouddesigner.occi.Resource> targetConfigurationResources = configuration.getResources();	
 		Map<String, org.occiware.clouddesigner.occi.Resource> targetResources = new HashMap<String,org.occiware.clouddesigner.occi.Resource>();
 		for(Resource resource : conf.getResources()) {
@@ -202,8 +219,6 @@ public class DesignServices {
 
 		for(Resource resource : conf.getResources()) {
 			Resource targetResource = targetResources.get(resource.getId());
-			System.out.println(">>> "+targetResource.getKind());
-			System.out.println("<<< "+resource.getKind());
 			for(Link sourceLink: resource.getLinks()){
 				org.occiware.clouddesigner.occi.Link targetLink = factory.createLink();
 				targetLink.setSource(targetResource);
@@ -218,19 +233,6 @@ public class DesignServices {
 				}
 			}
 		}
-	}
-
-
-	public static Configuration loadConfiguration(String configurationURI)
-	{
-		return (Configuration)loadOCCI(configurationURI);
-	}
-
-	private static Object loadOCCI(String uri)
-	{
-		ResourceSet resourceSet = new OCCIResourceSet();
-		org.eclipse.emf.ecore.resource.Resource resource = resourceSet.getResource(URI.createURI(uri), true);
-		return resource.getContents().get(0);
 	}
 
 	private static void copyEntity(Configuration configuration, Link source, Link target)
@@ -288,7 +290,7 @@ public class DesignServices {
 
 	private static org.occiware.clouddesigner.occi.Kind searchKind(org.occiware.clouddesigner.occi.Configuration configuration, Kind kind)
 	{
-		org.occiware.clouddesigner.occi.Extension extension = searchExtension(configuration, kind.getScheme().toString());
+		org.occiware.clouddesigner.occi.Extension extension = OcciHelper.loadExtension(kind.getScheme().toString());
 		String term = kind.getTerm();
 		for(org.occiware.clouddesigner.occi.Kind k : extension.getKinds()) {
 			if(term.equals(k.getTerm())) {
@@ -309,7 +311,8 @@ public class DesignServices {
 			}
 		}
 		if(extension == null) {
-			extension = searchExtension(configuration, mixin.getScheme().toString());
+			extension = OcciHelper.loadExtension(mixin.getScheme().toString());
+			configuration.getUse().add(extension);
 		}
 
 		String term = mixin.getTerm();
@@ -325,43 +328,12 @@ public class DesignServices {
 		return result;
 	}
 
-	private static org.occiware.clouddesigner.occi.Extension searchExtension(org.occiware.clouddesigner.occi.Configuration configuration, String scheme)
+	/*private static org.occiware.clouddesigner.occi.Extension searchExtension(org.occiware.clouddesigner.occi.Configuration configuration, String scheme)
 	{
-		for(org.occiware.clouddesigner.occi.Extension extension : configuration.getUse()) {
-			if(scheme.equals(extension.getScheme())) {
-				return extension;
-			}
-		}
-		org.occiware.clouddesigner.occi.Extension extension = null;
-		String extensionURI = org.occiware.clouddesigner.occi.OCCIRegistry.getInstance().getExtensionURI(scheme);
-		if(extensionURI != null) {
-			// Load the OCCI extension.
-			URI uri = URI.createURI(extensionURI);
-			org.eclipse.emf.ecore.resource.Resource resource = null;
-			Session session = SessionManager.INSTANCE.getSession(configuration);
-			if(session != null) {
-				session.addSemanticResource(uri, new NullProgressMonitor());
-				resource = session.getTransactionalEditingDomain().getResourceSet().getResource(uri, true);
-			} else {
-				resource = configuration.eResource();
-				if(resource != null) {
-					resource = resource.getResourceSet().getResource(uri, true);
-				} else {
-					resource = new OCCIResourceSet().getResource(uri, true);
-				}
-			}
-			extension = (org.occiware.clouddesigner.occi.Extension)resource.getContents().get(0);
-		} else {
-			extension = org.occiware.clouddesigner.occi.OCCIFactory.eINSTANCE.createExtension();
-			extension.setName(scheme.substring(scheme.lastIndexOf("/") + 1, scheme.length()-2));
-			extension.setScheme(scheme);
-			if(configuration.eResource() != null) {
-				configuration.eResource().getContents().add(extension);
-			}
-		}
+		Extension extension = OcciHelper.loadExtension(scheme);
 		configuration.getUse().add(extension);
 		return extension;
-	}
+	}*/
 
 	private static String schemeWithoutSharp(String scheme) {
 		return scheme.substring(0, scheme.length()-2);

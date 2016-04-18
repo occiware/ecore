@@ -22,13 +22,41 @@
 
   <dependencies>
     <dependency>
-      <!-- OCCI Core Model implementation. -->
+      <!-- OCCI Core metamodel. -->
       <groupId>Clouddesigner</groupId>
       <artifactId>org.occiware.clouddesigner.occi</artifactId>
       <version>0.1.0-SNAPSHOT</version>
       <scope>compile</scope>
     </dependency>
-    <!-- Requires Eclipse Modeling Framework. -->
+    <dependency>
+      <!-- OCCI Infrastructure Extension metamodel. -->
+      <groupId>Clouddesigner</groupId>
+      <artifactId>org.occiware.clouddesigner.occi.infrastructure</artifactId>
+      <version>0.1.0-SNAPSHOT</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <!-- OCCI Infrastructure Extension dummy connector. -->
+      <groupId>Clouddesigner</groupId>
+      <artifactId>org.occiware.clouddesigner.occi.infrastructure.connector.dummy</artifactId>
+      <version>0.1.0-SNAPSHOT</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <!-- OCCI Platform Extension metamodel. -->
+      <groupId>Clouddesigner</groupId>
+      <artifactId>org.occiware.clouddesigner.occi.platform</artifactId>
+      <version>0.1.0-SNAPSHOT</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <!-- OCCI Platform Extension dummy connector. -->
+      <groupId>Clouddesigner</groupId>
+      <artifactId>org.occiware.clouddesigner.occi.platform.connector.dummy</artifactId>
+      <version>0.1.0-SNAPSHOT</version>
+      <scope>runtime</scope>
+    </dependency>
+     <!-- Requires Eclipse Modeling Framework. -->
      <dependency>
 	  <groupId>org.eclipse.emf</groupId>
       <artifactId>org.eclipse.emf.ecore</artifactId>

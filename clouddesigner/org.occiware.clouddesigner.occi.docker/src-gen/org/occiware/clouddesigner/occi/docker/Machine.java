@@ -1,10 +1,15 @@
 /**
+ * Copyright (c) 2015-2016 Inria
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 	
+ * Contributors:
+ * -Fawaz Paraiso <fawaz.paraiso@inria.fr>
+ * - Philippe Merle <philippe.merle@inria.fr>
  */
 package org.occiware.clouddesigner.occi.docker;
-
-import java.util.Map;
-
-import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.occiware.clouddesigner.occi.infrastructure.Compute;
 
@@ -22,8 +27,6 @@ import org.occiware.clouddesigner.occi.infrastructure.Compute;
  *
  * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine()
  * @model annotation="OCCIE2Ecore title='Machine Resource'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='MachineNameUnique'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot MachineNameUnique='Machine.allInstances()->isUnique(name)'"
  * @generated
  */
 public interface Machine extends Compute {

@@ -12,6 +12,10 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry combineaccessrules="false" kind="src" path="/org.occiware.clouddesigner.occi"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/org.occiware.clouddesigner.occi.infrastructure"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/org.occiware.clouddesigner.occi.infrastructure.connector.dummy"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/org.occiware.clouddesigner.occi.platform"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/org.occiware.clouddesigner.occi.platform.connector.dummy"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="src" output="target/test-classes" path="src/test/java">
 		<attributes>

@@ -134,7 +134,7 @@ public class InitExtensionModel extends WorkspaceModifyOperation {
 
 						/* load the occi-core.xmi extension. */
 						final Resource occiCoreResource = session.getSessionResource().getResourceSet().getResource(
-								URI.createPlatformPluginURI("org.occiware.clouddesigner.occi/model/Core.occie", true),
+								URI.createURI("http://schemas.ogf.org/occi/core", true),
 								true);
 						final Extension occiCoreExtension = (Extension) occiCoreResource.getContents().get(0);
 						/* import the OCCI Core extension. */

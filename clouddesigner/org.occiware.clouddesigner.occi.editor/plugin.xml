@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ Copyright (c) 2015-2016 Obeo, Inria
+  
+ All rights reserved. This program and the accompanying materials
+ are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+ 
+ Contributors:
+ - William Piers <william.piers@obeo.fr>
+ - Philippe Merle <philippe.merle@inria.fr>
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated OCCI -->
+      <category
+        id = "org.occiware.clouddesigner"
+	    name="Cloud Designer"/>
+      <wizard
+            id="org.occiware.clouddesigner.occi.presentation.OCCIModelWizardID"
+            name="%_UI_OCCIModelWizard_label"
+            class="org.occiware.clouddesigner.occi.presentation.OCCIModelWizard"
+            category="org.occiware.clouddesigner"
+            icon="icons/full/obj16/OCCIModelFile.gif">
+         <description>%_UI_OCCIModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated NO OCCI -->
+      <editor
+            id="org.occiware.clouddesigner.occi.presentation.OCCIEditorID"
+            name="%_UI_OCCIEditor_label"
+            icon="icons/full/obj16/OCCIModelFile.gif"
+            extensions="%_UI_OCCIEditorFilenameExtensions"
+            class="org.occiware.clouddesigner.occi.presentation.OCCIEditor"
+            contributorClass="org.occiware.clouddesigner.occi.presentation.OCCIActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

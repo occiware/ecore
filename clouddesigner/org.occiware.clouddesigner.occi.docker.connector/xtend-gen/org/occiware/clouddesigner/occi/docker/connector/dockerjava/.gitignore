@@ -1,3 +1,4 @@
 /.gitignore
 /.DockerContainerManager.java._trace
 /.DockerContainerManager.xtendbin
+/DockerContainerManager.java

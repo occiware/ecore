@@ -50,7 +50,7 @@ public interface Attribute extends EObject {
 	 * @see #setName(String)
 	 * @see org.occiware.clouddesigner.occi.OCCIPackage#getAttribute_Name()
 	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi!Attribute!name'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/core/ecore!Attribute!name'"
 	 * @generated
 	 */
 	String getName();
@@ -77,7 +77,7 @@ public interface Attribute extends EObject {
 	 * @see #setMutable(boolean)
 	 * @see org.occiware.clouddesigner.occi.OCCIPackage#getAttribute_Mutable()
 	 * @model dataType="org.occiware.clouddesigner.occi.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi!Attribute!mutable'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/core/ecore!Attribute!mutable'"
 	 * @generated
 	 */
 	boolean isMutable();
@@ -104,7 +104,7 @@ public interface Attribute extends EObject {
 	 * @see #setRequired(boolean)
 	 * @see org.occiware.clouddesigner.occi.OCCIPackage#getAttribute_Required()
 	 * @model dataType="org.occiware.clouddesigner.occi.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi!Attribute!required'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/core/ecore!Attribute!required'"
 	 * @generated
 	 */
 	boolean isRequired();
@@ -131,7 +131,7 @@ public interface Attribute extends EObject {
 	 * @see #setDefault(String)
 	 * @see org.occiware.clouddesigner.occi.OCCIPackage#getAttribute_Default()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi!Attribute!default'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/core/ecore!Attribute!default'"
 	 * @generated
 	 */
 	String getDefault();
@@ -158,7 +158,7 @@ public interface Attribute extends EObject {
 	 * @see #setDescription(String)
 	 * @see org.occiware.clouddesigner.occi.OCCIPackage#getAttribute_Description()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi!Attribute!description'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/core/ecore!Attribute!description'"
 	 * @generated
 	 */
 	String getDescription();
@@ -184,7 +184,7 @@ public interface Attribute extends EObject {
 	 * @return the value of the '<em>Type</em>' reference.
 	 * @see #setType(EDataType)
 	 * @see org.occiware.clouddesigner.occi.OCCIPackage#getAttribute_Type()
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi!Attribute!type'"
+	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/core/ecore!Attribute!type'"
 	 * @generated
 	 */
 	EDataType getType();
@@ -212,7 +212,7 @@ public interface Attribute extends EObject {
 	 * @see #setMultiple_values(boolean)
 	 * @see org.occiware.clouddesigner.occi.OCCIPackage#getAttribute_Multiple_values()
 	 * @model default="false" dataType="org.occiware.clouddesigner.occi.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi!Attribute!multiple_values'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/core/ecore!Attribute!multiple_values'"
 	 * @generated
 	 */
 	boolean isMultiple_values();
