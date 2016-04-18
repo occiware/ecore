@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.occiware.clouddesigner.occi.simulation.design.services;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -60,6 +61,7 @@ public class DesignServices {
 	};
 
 	String scheme = "http://occiware.org/simulation#";
+	String core = "http://schemas.ogf.org/occi/core#";
 
 	public void tagDatacenter(Resource resource) {
 		tagResource(resource, "datacenter");
@@ -76,15 +78,33 @@ public class DesignServices {
 	public void tagApplication(Resource resource) {
 		tagResource(resource, "cloudlet");
 	}
-	
+
 	public void addPackage(Resource resource){
 		//add core to use package
 		Configuration configuration = OcciHelper.getConfiguration(resource);
 		Extension extension = OcciHelper.loadExtension(resource.getKind().getScheme());
-		for(Extension ex: configuration.getUse()){
-			if(!ex.getScheme().equals(extension.getScheme()))
-				OcciHelper.getConfiguration(resource).getUse().add(OcciHelper.loadExtension(resource.getKind().getScheme()));
+		List<Extension> extensions = configuration.getUse();
+		if(extensions.size() == 0){
+			configuration.getUse().add(OcciHelper.loadExtension(scheme));
+			configuration.getUse().add(OcciHelper.loadExtension(core));
+		}else {
+			if(!schemeExists(configuration, extension.getScheme())){
+				configuration.getUse().add(OcciHelper.loadExtension(resource.getKind().getScheme()));
+			}
 		}
+
+	}
+
+	public static boolean schemeExists(Configuration configuration, String scheme){
+
+		Extension extension = OcciHelper.loadExtension(scheme);
+		ArrayList<String> schemas = new ArrayList<String>();
+
+		for(Extension ex: configuration.getUse()){
+			schemas.add(ex.getScheme());
+		}
+		return schemas.contains(extension.getScheme());
+
 	}
 
 	public void tagResource(Resource resource, String term) {
@@ -97,7 +117,7 @@ public class DesignServices {
 		}
 
 		final Extension extension = OcciHelper.loadExtension(scheme);
-		
+
 		for (Mixin mixin : extension.getMixins()) {			
 			if(mixin.getTerm().contains(term)){
 				resource.getMixins().add(mixin);
@@ -200,9 +220,11 @@ public class DesignServices {
 		Session session = SessionManager.INSTANCE.getSession(configuration);
 		LoadExtensionDialog dialog = new LoadExtensionDialog(shell, session.getTransactionalEditingDomain());
 		dialog.open();
-				
-		org.occiware.clouddesigner.occi.Extension extension = OcciHelper.loadExtension(scheme);
-		configuration.getUse().add(extension);
+
+		if(!schemeExists(configuration, scheme)){
+			org.occiware.clouddesigner.occi.Extension extension = OcciHelper.loadExtension(scheme);
+			configuration.getUse().add(extension);
+		}
 
 		URI uri_ = dialog.getURIs().get(0);
 		Configuration conf = OcciHelper.loadConfiguration(uri_.toString());
@@ -291,6 +313,9 @@ public class DesignServices {
 	private static org.occiware.clouddesigner.occi.Kind searchKind(org.occiware.clouddesigner.occi.Configuration configuration, Kind kind)
 	{
 		org.occiware.clouddesigner.occi.Extension extension = OcciHelper.loadExtension(kind.getScheme().toString());
+		if(!schemeExists(configuration, kind.getScheme().toString())){
+			configuration.getUse().add(extension);
+		}
 		String term = kind.getTerm();
 		for(org.occiware.clouddesigner.occi.Kind k : extension.getKinds()) {
 			if(term.equals(k.getTerm())) {
@@ -311,8 +336,11 @@ public class DesignServices {
 			}
 		}
 		if(extension == null) {
-			extension = OcciHelper.loadExtension(mixin.getScheme().toString());
-			configuration.getUse().add(extension);
+			if(!schemeExists(configuration, mixin.getScheme().toString()) ){
+				extension = OcciHelper.loadExtension(mixin.getScheme().toString());
+				configuration.getUse().add(extension);
+			}
+
 		}
 
 		String term = mixin.getTerm();
