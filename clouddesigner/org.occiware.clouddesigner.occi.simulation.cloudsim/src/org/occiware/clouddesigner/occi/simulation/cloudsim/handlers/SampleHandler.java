@@ -44,8 +44,8 @@ public class SampleHandler extends AbstractHandler {
 		//extract attributes from configuration
 		BrigeConfigSimulation bridge = new BrigeConfigSimulation(config); 
 		Map<Entity, Set<Entity>> entities= bridge.ExtaractEntities();
-		
-		if(bridge.checkEntities()){
+		String msg = bridge.checkEntities();
+		if(msg == null){
 			System.out.println("Configuration contains correct informations");
 			Simulation simulation = new Simulation(entities);
 			simulation.runExtension();

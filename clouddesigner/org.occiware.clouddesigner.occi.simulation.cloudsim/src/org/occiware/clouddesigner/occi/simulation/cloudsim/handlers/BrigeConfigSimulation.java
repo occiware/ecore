@@ -25,9 +25,12 @@ public class BrigeConfigSimulation extends Parser {
 		return entities;
 	}
 
-	public boolean checkEntities(){
+	public String checkEntities(){
 		boolean linked_dc=true, linked_host=true, linked_vm=true;
-
+		String msg = "";
+		if(entities.size() ==0){
+			return "--No host in datacenter \n --No VM in host \n --No cloudlet in VM\n";
+		}
 		for(Entity obj: entities.keySet()){
 			if(isDC(obj)){
 				Dc_Config dc = (Dc_Config) obj;
@@ -47,16 +50,22 @@ public class BrigeConfigSimulation extends Parser {
 				}
 			}
 		}
-		if(!linked_dc)
+		if(!linked_dc){
 			System.err.println("No host in datacenter");
-		if(!linked_host)
+			msg+="--No host in datacenter\n";
+		}
+		if(!linked_host){
 			System.err.println("No VM in host");
-		if(!linked_vm)
+			msg+="--No VM in host\n";
+		}
+		if(!linked_vm){
 			System.err.println("No cloudlet in VM");
+			msg+="--No cloudlet in VM\n";
+		}
 		if(!linked_dc || !linked_host || !linked_vm)
-			return false;
+			return msg;
 
-		return true;
+		return null;
 	}
 	
 	
