@@ -39,6 +39,7 @@ public class DockerServices {
   public void start(final EObject eo) {
     try {
       IRunnableWithProgress runnable = new IRunnableWithProgress() {
+        @Override
         public void run(final IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
           if ((eo instanceof Machine)) {
             Machine machine = ((Machine) eo);
@@ -67,6 +68,7 @@ public class DockerServices {
   public void importModel(final Configuration conf) {
     try {
       IRunnableWithProgress runnable = new IRunnableWithProgress() {
+        @Override
         public void run(final IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
           final ExecutableDockerModel main = new ExecutableDockerModel(conf);
           main.importModel();
@@ -86,6 +88,7 @@ public class DockerServices {
   public void synchronize(final EObject eo) {
     try {
       IRunnableWithProgress runnable = new IRunnableWithProgress() {
+        @Override
         public void run(final IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
           if ((eo instanceof Machine)) {
             Machine machine = ((Machine) eo);
@@ -108,6 +111,7 @@ public class DockerServices {
   public void startAll(final EObject eo) {
     try {
       IRunnableWithProgress runnable = new IRunnableWithProgress() {
+        @Override
         public void run(final IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
           if ((eo instanceof Machine)) {
             Machine machine = ((Machine) eo);
@@ -131,6 +135,7 @@ public class DockerServices {
     try {
       long startTime = System.currentTimeMillis();
       IRunnableWithProgress runnable = new IRunnableWithProgress() {
+        @Override
         public void run(final IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
           if ((eo instanceof Machine)) {
             Machine machine = ((Machine) eo);
@@ -162,6 +167,7 @@ public class DockerServices {
   public void restart(final EObject eo) {
     try {
       IRunnableWithProgress runnable = new IRunnableWithProgress() {
+        @Override
         public void run(final IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
           if ((eo instanceof Machine)) {
             Machine machine = ((Machine) eo);
