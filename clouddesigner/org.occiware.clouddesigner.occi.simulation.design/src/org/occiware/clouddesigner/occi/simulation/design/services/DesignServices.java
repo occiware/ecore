@@ -137,7 +137,9 @@ public class DesignServices {
 		BrigeConfigSimulation bridge = new BrigeConfigSimulation(config); 
 		Map<Entity, Set<Entity>> entities= bridge.ExtaractEntities();
 		Shell shell = this.getShell();
-		if(bridge.checkEntities()){
+		String msg = bridge.checkEntities();
+		System.out.println("msg: "+msg);
+		if(msg==null){
 			System.out.println("Configuration contains correct informations");
 			Simulation simulation = new Simulation(entities);
 			simulation.runExtension();
@@ -146,11 +148,11 @@ public class DesignServices {
 					"Simulation Result",
 					JOptionPane.INFORMATION_MESSAGE);
 			return;
-			//MessageDialog.openInformation(shell, "Simulation Result", simulation.getResult());
 
 		}else{
 			System.err.println("Thanks to verify your linked resources in configuration");
-			MessageDialog.openInformation(shell, "Info", "Thanks to verify your linked resources in configuration");
+			MessageDialog.openInformation(shell, "Info", "Thanks to verify your linked resources in configuration \n"
+					+ msg);
 		}
 
 
@@ -356,12 +358,6 @@ public class DesignServices {
 		return result;
 	}
 
-	/*private static org.occiware.clouddesigner.occi.Extension searchExtension(org.occiware.clouddesigner.occi.Configuration configuration, String scheme)
-	{
-		Extension extension = OcciHelper.loadExtension(scheme);
-		configuration.getUse().add(extension);
-		return extension;
-	}*/
 
 	private static String schemeWithoutSharp(String scheme) {
 		return scheme.substring(0, scheme.length()-2);

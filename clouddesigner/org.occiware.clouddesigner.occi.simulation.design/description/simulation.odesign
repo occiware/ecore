@@ -112,7 +112,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Contains" edgeMappings="//@ownedViewpoints[name='Simulation%20Configuration']/@ownedRepresentations[name='Simulation%20Configuration']/@defaultLayer/@edgeMappings[name='ResourceToResource']">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Contains" edgeMappings="//@ownedViewpoints[name='Simulation%20Configuration']/@ownedRepresentations[name='Simulation%20Configuration']/@defaultLayer/@edgeMappings[name='ResourceToResource']" iconPath="/org.occiware.clouddesigner.occi.simulation.design/images/contains.jpg">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
