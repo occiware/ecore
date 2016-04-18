@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="ASCII"?>
-<occi:Configuration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:occi="http://schemas.ogf.org/occi">
+<occi:Configuration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cloud="http://occiware.org/cloud" xmlns:occi="http://schemas.ogf.org/occi">
   <use href="file:/Users/spirals/git/ecore/clouddesigner/org.occiware.clouddesigner.occi.cloud/model/Cloud.occie#/"/>
-  <use href="platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie#/"/>
+  <use href="../../plugin/org.occiware.clouddesigner.occi/model/Core.occie#/"/>
+  <resources xsi:type="cloud:Machine_OpenStack" id="bc24014b-3953-4a17-8844-856073515a29" name="jcloud" provider="openstack-nova" tenant="OCCIWARE" username="fparaiso" password="qWqr76Xx" endpoint="http://ow2-04.xsalto.net:5000/v2.0" flavor_id="RegionOne/2" security_group="jclouds-graphical" network_id="63b7887b-2a8c-4c9f-85e2-a9a7eb5a3f85" floating_ip_pool="public" keypair="fparaiso-key">
+    <kind href="../../plugin/org.occiware.clouddesigner.occi/model/Core.occie#//@kinds[term='resource']"/>
+  </resources>
 </occi:Configuration>
