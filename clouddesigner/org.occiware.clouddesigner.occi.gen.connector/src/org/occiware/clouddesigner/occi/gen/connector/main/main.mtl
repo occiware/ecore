@@ -1,0 +1,151 @@
+[comment encoding = UTF-8 /]
+[module main('http://www.eclipse.org/emf/2002/Ecore','http://schemas.ogf.org/occi/core/ecore')]
+
+[template public main(extension : Extension)]
+[comment @main /]
+[generateConnectorFactory(extension)/]
+[for (kind : Kind | extension.kinds)]
+[generateConnectorClass(kind, extension)/]
+[/for]
+[/template]
+
+[template public generateConnectorFactory(extension : Extension)]
+[file (getTargetPath().concat('ConnectorFactory.java'), false, 'UTF-8')]
+/**
+ * Copyright (c) 2016 Inria
+ *  
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ * - Philippe Merle <philippe.merle@inria.fr>
+ *
+ * Generated at [getNow()/] from [getFilePath(extension)/] by org.occiware.clouddesigner.occi.gen.connector
+ */
+package [getTargetPackage()/];
+
+/**
+ * Connector EFactory for OCCI extension named [extension.name/] with scheme [extension.scheme/].
+ */
+public class ConnectorFactory extends [getJavaPackage(extension)/].impl.[toU1Case(getEPackageName(extension))/]FactoryImpl
+{
+[for (kind : Kind | extension.kinds)]
+[generateCreateKindMethod(kind, extension)/]
+[/for]
+}
+[/file]
+[/template]
+
+[template public generateCreateKindMethod(kind : Kind, extension : Extension)]
+	/**
+	 * EFactory method for OCCI kind [kind.scheme/][kind.term/].
+	 */
+	@Override
+[let kindClassName : String = toU1Case(kind.term)]
+	public [getJavaPackage(extension)/].[kindClassName/] create[kindClassName/]() {
+		return new [kindClassName/]Connector();
+	}
+[/let]
+[/template]
+
+[template public generateConnectorClass(kind : Kind, extension : Extension)]
+[file (getTargetPath().concat(toU1Case(kind.term)).concat('Connector.java'), false, 'UTF-8')]
+/**
+ * Copyright (c) 2016 Inria
+ *  
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ * - Philippe Merle <philippe.merle@inria.fr>
+ *
+ * Generated at [getNow()/] from [getFilePath(extension)/] by org.occiware.clouddesigner.occi.gen.connector
+ */
+package [getTargetPackage()/];
+
+/**
+ * Connector implementation for OCCI kind [kind.scheme/][kind.term/].
+ */
+[let kindClassName : String = toU1Case(kind.term)]
+public class [kindClassName/]Connector extends [getJavaPackage(extension)/].impl.[kindClassName/]Impl
+{
+	/**
+	 * Constructs a [kind.term/] connector.
+	 */
+	[kindClassName/]Connector()
+	{
+		System.err.println("DEBUG constructor " + this);
+	}
+
+[for (action : Action | kind.actions)]
+[generateActionMethod(action, kind)/]
+[/for]
+}	
+[/let]
+[/file]
+[/template]
+
+[template public generateActionMethod(action : Action, kind : Kind)]
+	/**
+	 * OCCI action [action.scheme/][action.term/].
+	 */
+	@Override
+	public void [action.term/]([for (parameter : Attribute | action.attributes) separator(', ')]final [getJavaTypeName(parameter)/] [parameter.name/][/for])
+	{
+		System.err.println("DEBUG [action.term/] on " + this);
+[for (parameter : Attribute | action.attributes)]
+		System.err.println("  - [parameter.name/]=" + [parameter.name/]);
+[/for]
+
+		// TODO: Implement how to [action.term/] this [kind.term/].
+	}
+
+[/template]
+
+[query public toU1Case(string : String) : String = string.substring(1,1).toUpperCase() + string.substring(2) /]
+
+[query public getNow() : String
+	= invoke(
+	'org.occiware.clouddesigner.occi.gen.connector.services.GenUtils', 
+	'getNow()', 
+	Sequence{})/]
+
+[query public getFilePath(extension : Extension) : String
+	= invoke(
+	'org.occiware.clouddesigner.occi.gen.connector.services.GenUtils', 
+	'getFilePath(org.occiware.clouddesigner.occi.Extension)', 
+	Sequence{extension})/]
+
+[query public getTargetPath() : String
+	= invoke(
+	'org.occiware.clouddesigner.occi.gen.connector.services.GenUtils', 
+	'getTargetPath()', 
+	Sequence{})/]
+
+[query public getTargetPackage() : String
+	= invoke(
+	'org.occiware.clouddesigner.occi.gen.connector.services.GenUtils', 
+	'getTargetPackage()', 
+	Sequence{})/]
+
+[query public getJavaPackage(extension : Extension) : String
+	= invoke(
+	'org.occiware.clouddesigner.occi.gen.connector.services.GenUtils', 
+	'getJavaPackage(org.occiware.clouddesigner.occi.Extension)', 
+	Sequence{extension})/]
+
+[query public getEPackageName(extension : Extension) : String
+	= invoke(
+	'org.occiware.clouddesigner.occi.gen.connector.services.GenUtils', 
+	'getEPackageName(org.occiware.clouddesigner.occi.Extension)', 
+	Sequence{extension})/]
+
+[query public getJavaTypeName(attribute : Attribute) : String
+	= invoke(
+	'org.occiware.clouddesigner.occi.gen.connector.services.GenUtils', 
+	'getJavaTypeName(org.occiware.clouddesigner.occi.Attribute)', 
+	Sequence{attribute})/]

@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?artifactRepository version='1.1.0'?>
+<artifacts size='1'>
+  <artifact classifier='osgi.bundle' id='org.occiware.clouddesigner.occi.infrastructure' version='0.1.0.201604172158'>
+    <properties size='5'>
+      <property name='artifact.size' value='64310'/>
+      <property name='download.size' value='64310'/>
+      <property name='maven-groupId' value='Clouddesigner'/>
+      <property name='maven-artifactId' value='org.occiware.clouddesigner.occi.infrastructure'/>
+      <property name='maven-version' value='0.1.0-SNAPSHOT'/>
+    </properties>
+  </artifact>
+</artifacts>

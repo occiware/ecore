@@ -27,26 +27,6 @@ import org.occiware.clouddesigner.occi.util.OcciHelper;
 public class OCCIKindResolver
 {
 	/**
-	 * OCCI Core scheme.
-	 */
-	public static final String OCCI_CORE_SCHEME = "http://schemas.ogf.org/occi/core#";
-
-	/**
-	 * OCCI Core entity term.
-	 */
-	public static final String OCCI_CORE_ENTITY_TERM = "entity";
-
-	/**
-	 * OCCI Core resource term.
-	 */
-	public static final String OCCI_CORE_RESOURCE_TERM = "resource";
-
-	/**
-	 * OCCI Core link term.
-	 */
-	public static final String OCCI_CORE_LINK_TERM = "link";
-	
-	/**
 	 * Store mapping from EMF namespace to OCCI Extension.
 	 */
 	private static Map<String, Extension> namespace2extension = new HashMap<String, Extension>();
@@ -87,13 +67,13 @@ public class OCCIKindResolver
 					 // TODO: perhaps compute extensionURI of the ePackage of the entity's eClass.
 
 					 // Use OCCI Core resource, link or entity kind instances.
-					 extensionURI = OCCIRegistry.getInstance().getExtensionURI(OCCI_CORE_SCHEME);
+					 extensionURI = OCCIRegistry.getInstance().getExtensionURI(OcciCoreConstants.OCCI_CORE_SCHEME);
 					 if(entity instanceof org.occiware.clouddesigner.occi.Resource) {
-						 kindTermToSearch = OCCI_CORE_RESOURCE_TERM;
+						 kindTermToSearch = OcciCoreConstants.OCCI_CORE_RESOURCE_TERM;
 					 } else if(entity instanceof Link) {
-						 kindTermToSearch = OCCI_CORE_LINK_TERM;						 
+						 kindTermToSearch = OcciCoreConstants.OCCI_CORE_LINK_TERM;						 
 					 } else {
-						 kindTermToSearch = OCCI_CORE_ENTITY_TERM;
+						 kindTermToSearch = OcciCoreConstants.OCCI_CORE_ENTITY_TERM;
 						 throw new Error("Should never happens! entity=" + entity);
 					 }
 				 }

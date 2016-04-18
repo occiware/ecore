@@ -28,7 +28,6 @@ import org.occiware.clouddesigner.occi.design.Messages;
 public final class WizardUtils {
 
 	public static final String MODELING_PERSPECTIVE_ID = "org.eclipse.sirius.ui.tools.perspective.modeling";
-	public static final String OCCI_CORE_EXTENSION_SCHEME = "http://schemas.ogf.org/occi/core#";
 
 	public static String[] getRefExtensionSchemes(CheckboxTableViewer refExtensionViewer) {
 		return Arrays.copyOf(refExtensionViewer.getCheckedElements(), refExtensionViewer.getCheckedElements().length,

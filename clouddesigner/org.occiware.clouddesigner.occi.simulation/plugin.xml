@@ -21,5 +21,7 @@
             type="simulation"
             class="org.occiware.clouddesigner.occi.util.OCCIResourceFactoryImpl"/>
    </extension>
-
+	<extension point="org.eclipse.emf.ecore.uri_mapping" >
+      <mapping source="http://occiware.org/simulation" target="platform:/plugin/org.occiware.clouddesigner.occi.simulation/model/Simulation.occie"/>
+   </extension>
 </plugin>

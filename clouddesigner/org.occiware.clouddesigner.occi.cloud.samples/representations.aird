@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cloud="http://occiware.org/cloud" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:occi="http://schemas.ogf.org/occi" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_BsGu8JLEEeWuhuMUxy4yJA" selectedViews="_UPG6oJLFEeWkTMzx_firUg" version="10.0.0.201505222000">
+  <semanticResources>first-cloud-configuration.occic</semanticResources>
+  <semanticResources>platform:/plugin/org.occiware.clouddesigner.occi/model/Core.occie</semanticResources>
+  <semanticResources>platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie</semanticResources>
+  <semanticResources>platform:/resource/org.occiware.clouddesigner.occi/model/OCCI.ecore</semanticResources>
+=======
 <viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description" xmi:id="_BsGu8JLEEeWuhuMUxy4yJA" selectedViews="_UPG6oJLFEeWkTMzx_firUg" version="10.0.0.201505222000">
   <semanticResources>first-cloud-configuration.occic</semanticResources>
+>>>>>>> 6317aa2a58edc66604a304a7433c962f4ebd60bb
   <semanticResources>platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore</semanticResources>
   <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_PjL-EJLFEeWkTMzx_firUg">
     <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_Pjxz8JLFEeWkTMzx_firUg" name="first-cloud-configuration">
@@ -26,9 +34,29 @@
       </ownedAnnotationEntries>
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_v-rZBJLFEeWkTMzx_firUg" source="GMF_DIAGRAMS">
         <data xmi:type="notation:Diagram" xmi:id="_v-rZBZLFEeWkTMzx_firUg" type="Sirius" element="_v-rZAJLFEeWkTMzx_firUg" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_1UHasPpiEeWDBIvyWfgmZQ" type="2002" element="_1TOC0PpiEeWDBIvyWfgmZQ">
+            <children xmi:type="notation:Node" xmi:id="_1UOvcPpiEeWDBIvyWfgmZQ" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_1UPWgPpiEeWDBIvyWfgmZQ" type="7001">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_1UPWgfpiEeWDBIvyWfgmZQ"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_1UPWgvpiEeWDBIvyWfgmZQ"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_1UHasfpiEeWDBIvyWfgmZQ" fontName=".SF NS Text" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1UHasvpiEeWDBIvyWfgmZQ" x="296" y="108"/>
+          </children>
           <styles xmi:type="notation:DiagramStyle" xmi:id="_v-rZBpLFEeWkTMzx_firUg"/>
         </data>
       </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_1TOC0PpiEeWDBIvyWfgmZQ" name="jcloud">
+        <target xmi:type="cloud:Machine_OpenStack" href="first-cloud-configuration.occic#//@resources.0"/>
+        <semanticElements xmi:type="cloud:Machine_OpenStack" href="first-cloud-configuration.occic#//@resources.0"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_1T5YQPpiEeWDBIvyWfgmZQ" foregroundColor="246,139,139">
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.cloud.design/description/Cloud.odesign#//@ownedViewpoints[name='Cloud']/@ownedRepresentations[name='Cloud%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@conditionnalStyles.2/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.cloud.design/description/Cloud.odesign#//@ownedViewpoints[name='Cloud']/@ownedRepresentations[name='Cloud%20configuration']/@defaultLayer/@containerMappings[name='Machine']"/>
+      </ownedDiagramElements>
       <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.cloud.design/description/Cloud.odesign#//@ownedViewpoints[name='Cloud']/@ownedRepresentations[name='Cloud%20configuration']"/>
       <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_v-rZA5LFEeWkTMzx_firUg"/>
       <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.occiware.clouddesigner.occi.cloud.design/description/Cloud.odesign#//@ownedViewpoints[name='Cloud']/@ownedRepresentations[name='Cloud%20configuration']/@defaultLayer"/>
