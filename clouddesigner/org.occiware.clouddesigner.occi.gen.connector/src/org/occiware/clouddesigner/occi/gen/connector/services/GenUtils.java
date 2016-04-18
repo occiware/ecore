@@ -39,25 +39,6 @@ public class GenUtils
 		return extension.eResource().getURI().toString();
 	}
 
-	// FIXME !!!
-	public static String projectName;
-
-	/**
-	 * Get the target path where connector code is generated.
-	 */
-	public String getTargetPath()
-	{
-		return projectName.replaceAll("\\.", "/") + '/';
-	}
-
-	/**
-	 * Get the target Java package containing the connector code.
-	 */
-	public String getTargetPackage()
-	{
-		return projectName;
-	}
-
 	/**
 	 * Get the Java package associated to an extension.
 	 */

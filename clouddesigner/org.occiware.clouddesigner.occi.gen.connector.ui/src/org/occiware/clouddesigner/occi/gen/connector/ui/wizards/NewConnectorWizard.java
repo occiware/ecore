@@ -196,8 +196,11 @@ public class NewConnectorWizard extends BasicNewProjectResourceWizard {
 		String extensionFile = OCCIRegistry.getInstance().getFileURI(extensionScheme);
 
 		// This connector project will require the bundle containing the OCCI extension.
-		String tmp = extensionFile.substring("platform:/plugin/".length()); // FIXME when the extension is not in a plugin.
+		// Warning extensionFile must be a platform URI (plugin or resource).
+		String tmp = extensionFile.substring("platform:/".length()); 
+		tmp = tmp.substring(tmp.indexOf('/')+1);
 		String requireBundle = tmp.substring(0, tmp.indexOf('/'));
+		// FIXME we suppose that the project name is equals to the bundle name. 
 		 
 		// Generate META-INF/MANIFEST.MF
 		IFile manifest = PDEProject.getManifest(connectorProject);
@@ -263,12 +266,14 @@ public class NewConnectorWizard extends BasicNewProjectResourceWizard {
 		try {
 			URI modelURI = URI.createURI(extensionFile, true);
 
-// FIXME William : how to pass a parameter to an Acceleo generator.
-			org.occiware.clouddesigner.occi.gen.connector.services.GenUtils.projectName = connectorProjectName;
-
 			// Generate Java code for the connector.
 			IContainer target = connectorProject.getFolder("src");
-			GenerateAll generator = new GenerateAll(modelURI, target, getArguments());
+			// Compute the arguments of the generator.
+			ArrayList<String> arguments = new ArrayList<String>();
+			// The full name of the package to generate.
+			arguments.add(connectorProjectName);
+			// Call the generator.
+			GenerateAll generator = new GenerateAll(modelURI, target, arguments);
 			generator.doGenerate(monitor);
 		} catch (IOException e) {
 			IStatus status = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage(), e);
@@ -290,15 +295,5 @@ public class NewConnectorWizard extends BasicNewProjectResourceWizard {
 		newProjectPage.setTitle(Messages.NewConnectorWizard_PageTitle);
 		newProjectPage.setDescription(Messages.NewConnectorWizard_PageDescription);
 		addPage(newProjectPage);
-	}
-
-	/**
-	 * Computes the arguments of the generator.
-	 * 
-	 * @return the arguments
-	 * @generated
-	 */
-	protected List<? extends Object> getArguments() {
-		return new ArrayList<String>();
 	}
 }
