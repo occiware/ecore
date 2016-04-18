@@ -5,7 +5,7 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated Simulation -->
       <package
-            uri="http://occiware.org/simulation"
+            uri="http://occiware.org/simulation/ecore"
             class="org.occiware.clouddesigner.occi.simulation.SimulationPackage"
             genModel="model/Simulation.genmodel"/>
    </extension>
