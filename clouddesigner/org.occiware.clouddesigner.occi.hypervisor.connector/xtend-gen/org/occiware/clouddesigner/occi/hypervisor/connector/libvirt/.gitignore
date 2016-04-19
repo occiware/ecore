@@ -1,1 +1,7 @@
-/.gitignore
+/.HypervisorConnector.xtendbin
+/.ComputeStateMachine.java._trace
+/.ExecutableHypervisorFactory.java._trace
+/.ExecutableHypervisorModel.java._trace
+/.ExecutableJcloudsModel.java._trace
+/.ExecutableMachine_VirtualBox.java._trace
+/.ExecutableMachine.java._trace
