@@ -8,10 +8,4 @@
 /.JcloudsSoftLayer.java._trace
 /.JcloudsGogrid.java._trace
 /.JcloudsHpHelion.java._trace
-/JcloudsCloudSigma.java
-/JcloudsAmazonEC2.java
-/JcloudsGCE.java
-/JcloudsGogrid.java
-/JcloudsHpHelion.java
-/JcloudsRackSpace.java
-/JcloudsSoftLayer.java
+/OpenStackTest.java
