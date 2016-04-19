@@ -19,7 +19,7 @@ Contributors:
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <!-- @generated Cloud -->
       <factory
-            uri="http://occiware.org/cloud/ecore"
+            uri="http://occiware.org/occi/cloud/ecore"
             class="org.occiware.clouddesigner.occi.cloud.provider.CloudItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider

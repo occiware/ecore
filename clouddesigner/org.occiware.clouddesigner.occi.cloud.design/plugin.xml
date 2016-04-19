@@ -3,7 +3,7 @@
 <plugin>
    <extension point="org.eclipse.emf.ecore.factory_override">
       <factory class="org.occiware.clouddesigner.occi.cloud.connector.ExecutableCloudFactory"
-            uri="http://occiware.org/cloud">
+            uri="http://occiware.org/occi/cloud/ecore">
       </factory>
    </extension>
   <extension point="org.eclipse.sirius.componentization">

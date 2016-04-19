@@ -47,7 +47,7 @@ public interface CloudPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://occiware.org/cloud/ecore";
+	String eNS_URI = "http://occiware.org/occi/cloud/ecore";
 
 	/**
 	 * The package namespace name.

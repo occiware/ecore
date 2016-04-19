@@ -3,7 +3,7 @@ Generated at Tue Apr 12 17:31:06 CEST 2016 from platform:/resource/org.occiware.
 h1. OCCI Extension: cloud
 
 | *Name* | cloud |
-| *Scheme* | http://occiware.org/cloud# |
+| *Scheme* | http://occiware.org/occi/cloud/ecore# |
 
 h1. Imports
 
@@ -16,7 +16,7 @@ h1. Kinds
 h2. Kind machine
 
 | *Term* | machine |
-| *Scheme* | http://occiware.org/cloud# |
+| *Scheme* | http://occiware.org/occi/cloud/ecore# |
 | *Title* | Machine Resource |
 | *Parent* | <a href="infrastructure.textile#kind-compute">http://schemas.ogf.org/occi/infrastructure#compute</a> |
 
@@ -32,9 +32,9 @@ h3. Actions
 h2. Kind machine_CloudSigma
 
 | *Term* | machine_CloudSigma |
-| *Scheme* | http://occiware.org/cloud# |
+| *Scheme* | http://occiware.org/occi/cloud/ecore# |
 | *Title* | Machine on CloudSigma |
-| *Parent* | <a href="cloud.textile#kind-machine">http://occiware.org/cloud#machine</a> |
+| *Parent* | <a href="cloud.textile#kind-machine">http://occiware.org/occi/cloud/ecore#machine</a> |
 
 h3. Attributes
 
@@ -50,9 +50,9 @@ h3. Actions
 h2. Kind machine_Amazon_EC2
 
 | *Term* | machine_Amazon_EC2 |
-| *Scheme* | http://occiware.org/cloud# |
+| *Scheme* | http://occiware.org/occi/cloud/ecore# |
 | *Title* | Machine on Amazon EC2 |
-| *Parent* | <a href="cloud.textile#kind-machine">http://occiware.org/cloud#machine</a> |
+| *Parent* | <a href="cloud.textile#kind-machine">http://occiware.org/occi/cloud/ecore#machine</a> |
 
 h3. Attributes
 
@@ -72,9 +72,9 @@ h3. Actions
 h2. Kind machine_Gogrid
 
 | *Term* | machine_Gogrid |
-| *Scheme* | http://occiware.org/cloud# |
+| *Scheme* | http://occiware.org/occi/cloud/ecore# |
 | *Title* | Machine on Gogrid |
-| *Parent* | <a href="cloud.textile#kind-machine">http://occiware.org/cloud#machine</a> |
+| *Parent* | <a href="cloud.textile#kind-machine">http://occiware.org/occi/cloud/ecore#machine</a> |
 
 h3. Attributes
 
@@ -91,9 +91,9 @@ h3. Actions
 h2. Kind machine_Hp_Helion
 
 | *Term* | machine_Hp_Helion |
-| *Scheme* | http://occiware.org/cloud# |
+| *Scheme* | http://occiware.org/occi/cloud/ecore# |
 | *Title* | Machine on HP Helion |
-| *Parent* | <a href="cloud.textile#kind-machine">http://occiware.org/cloud#machine</a> |
+| *Parent* | <a href="cloud.textile#kind-machine">http://occiware.org/occi/cloud/ecore#machine</a> |
 
 h3. Attributes
 
@@ -116,9 +116,9 @@ h3. Actions
 h2. Kind machine_GCE
 
 | *Term* | machine_GCE |
-| *Scheme* | http://occiware.org/cloud# |
+| *Scheme* | http://occiware.org/occi/cloud/ecore# |
 | *Title* | MAchine on Goolge Compute ENgine |
-| *Parent* | <a href="cloud.textile#kind-machine">http://occiware.org/cloud#machine</a> |
+| *Parent* | <a href="cloud.textile#kind-machine">http://occiware.org/occi/cloud/ecore#machine</a> |
 
 h3. Attributes
 
@@ -139,9 +139,9 @@ h3. Actions
 h2. Kind machine_RackSpace
 
 | *Term* | machine_RackSpace |
-| *Scheme* | http://occiware.org/cloud# |
+| *Scheme* | http://occiware.org/occi/cloud/ecore# |
 | *Title* | Machine on RackSpace |
-| *Parent* | <a href="cloud.textile#kind-machine">http://occiware.org/cloud#machine</a> |
+| *Parent* | <a href="cloud.textile#kind-machine">http://occiware.org/occi/cloud/ecore#machine</a> |
 
 h3. Attributes
 
@@ -159,9 +159,9 @@ h3. Actions
 h2. Kind machine_ProfitBricks
 
 | *Term* | machine_ProfitBricks |
-| *Scheme* | http://occiware.org/cloud# |
+| *Scheme* | http://occiware.org/occi/cloud/ecore# |
 | *Title* | Machine on ProfitBricks |
-| *Parent* | <a href="cloud.textile#kind-machine">http://occiware.org/cloud#machine</a> |
+| *Parent* | <a href="cloud.textile#kind-machine">http://occiware.org/occi/cloud/ecore#machine</a> |
 
 h3. Attributes
 
@@ -180,9 +180,9 @@ h3. Actions
 h2. Kind machine_OpenStack
 
 | *Term* | machine_OpenStack |
-| *Scheme* | http://occiware.org/cloud# |
+| *Scheme* | http://occiware.org/occi/cloud/ecore# |
 | *Title* | Machine on OpenStack |
-| *Parent* | <a href="cloud.textile#kind-machine">http://occiware.org/cloud#machine</a> |
+| *Parent* | <a href="cloud.textile#kind-machine">http://occiware.org/occi/cloud/ecore#machine</a> |
 
 h3. Attributes
 
@@ -210,9 +210,9 @@ h3. Actions
 h2. Kind machine_SoftLayer
 
 | *Term* | machine_SoftLayer |
-| *Scheme* | http://occiware.org/cloud# |
+| *Scheme* | http://occiware.org/occi/cloud/ecore# |
 | *Title* | Machine on SoftLayer |
-| *Parent* | <a href="cloud.textile#kind-machine">http://occiware.org/cloud#machine</a> |
+| *Parent* | <a href="cloud.textile#kind-machine">http://occiware.org/occi/cloud/ecore#machine</a> |
 
 h3. Attributes
 

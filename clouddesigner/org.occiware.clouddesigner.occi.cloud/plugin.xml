@@ -18,7 +18,7 @@ Contributors:
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated Cloud -->
       <package
-            uri="http://occiware.org/cloud/ecore"
+            uri="http://occiware.org/occi/cloud/ecore"
             class="org.occiware.clouddesigner.occi.cloud.CloudPackage"
             genModel="model/Cloud.genmodel"/>
    </extension>
@@ -31,10 +31,10 @@ Contributors:
          point="org.occiware.clouddesigner.occi.occie">
       <occie
             file="model/Cloud.occie"
-            scheme="http://occiware.org/cloud#">
+            scheme="http://occiware.org/occi/cloud/ecore#">
       </occie>
    </extension>
    <extension point="org.eclipse.emf.ecore.uri_mapping" >
-      <mapping source="http://occiware.org/cloud" target="platform:/plugin/org.occiware.clouddesigner.occi.cloud/model/Cloud.occie"/>
+      <mapping source="http://occiware.org/occi/cloud/ecore" target="platform:/plugin/org.occiware.clouddesigner.occi.cloud/model/Cloud.occie"/>
    </extension>
 </plugin>
