@@ -41,8 +41,10 @@ public class GenUtils
 
 	/**
 	 * Get the Java package associated to an extension.
+	 * 
 	 */
-	public String getJavaPackage(Extension extension)
+	// TODO: Not used currently
+	private String getJavaPackage(Extension extension)
 	{
 		// Get the EPackage associated to this Extension.
 		EPackage ePackage = getEPackage(extension);
@@ -54,18 +56,9 @@ public class GenUtils
 	}
 
 	/**
-	 * Get the name of the EPackage associated to an extension.
-	 */
-	public String getEPackageName(Extension extension)
-	{
-		EPackage ePackage = getEPackage(extension);
-		return ePackage.getName();		
-	}
-
-	/**
 	 * Get the EPackage associated to an extension.
 	 */
-	public EPackage getEPackage(Extension extension)
+	private EPackage getEPackage(Extension extension)
 	{
 		String occiExtensionScheme = extension.getScheme();
 		String ecoreNamespace = Occi2Ecore.convertOcciScheme2EcoreNamespace(occiExtensionScheme);

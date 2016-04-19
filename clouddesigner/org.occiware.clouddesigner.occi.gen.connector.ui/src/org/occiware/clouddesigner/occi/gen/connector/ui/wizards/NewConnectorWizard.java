@@ -272,6 +272,8 @@ public class NewConnectorWizard extends BasicNewProjectResourceWizard {
 			ArrayList<String> arguments = new ArrayList<String>();
 			// The full name of the package to generate.
 			arguments.add(connectorProjectName);
+			// The full name of the package to extend.
+			arguments.add(requireBundle);
 			// Call the generator.
 			GenerateAll generator = new GenerateAll(modelURI, target, arguments);
 			generator.doGenerate(monitor);
