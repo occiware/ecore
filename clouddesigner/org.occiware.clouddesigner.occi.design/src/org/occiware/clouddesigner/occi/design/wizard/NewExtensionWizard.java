@@ -56,11 +56,10 @@ import com.google.common.base.Strings;
 /**
  * The wizard to create a new Extension designer project.
  *
- * @author Stephane Thibaudeau
- *         <a href="mailto:stephane.thibaudeau@obeo.fr">stephane
- *         .thibaudeau@obeo.fr</a>
- * @author Melanie Bats
- *         <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
+ * @author William Piers
+ *         <a href="mailto:william.piers@obeo.fr">william.piers@obeo.fr</a>
+ * @author Philippe Merle
+ *         <a href="mailto:philippe.merle@inria.fr">philippe.merle@inria.fr</a>
  */
 public class NewExtensionWizard extends BasicNewProjectResourceWizard {
 
@@ -281,15 +280,37 @@ public class NewExtensionWizard extends BasicNewProjectResourceWizard {
 
 	private void configureOCCIEExtension(IProgressMonitor monitor) throws CoreException {
 		IFile manifest = PDEProject.getManifest(project);
-		String manifestContent = "Manifest-Version: 1.0\n" + "Bundle-ManifestVersion: 2\n" + "Bundle-Name: "
-				+ project.getName() + "\n" + "Bundle-SymbolicName: " + project.getName() + ";singleton:=true\n"
-				+ "Bundle-Version: 1.0.0.qualifier\n" + "Require-Bundle: org.occiware.clouddesigner.occi\n";
+		String manifestContent =
+				"Manifest-Version: 1.0\n" +
+				"Bundle-ManifestVersion: 2\n" +
+				"Bundle-Name: " + project.getName() + "\n" +
+				"Bundle-SymbolicName: " + project.getName() + ";singleton:=true\n" +
+				"Bundle-Version: 1.0.0.qualifier\n" +
+				"Bundle-ClassPath: .\n" +
+				"Bundle-Vendor: OCCIware\n" +
+//				"Bundle-Localization: plugin\n" + // FIXME: require to generate plugin.properties
+				"Bundle-RequiredExecutionEnvironment: JavaSE-1.7\n" +
+				"Bundle-ActivationPolicy: lazy\n" +
+				"Require-Bundle: org.eclipse.emf.ecore;visibility:=reexport,\n" +
+				" org.occiware.clouddesigner.occi;visibility:=reexport,\n" +
+				" org.occiware.clouddesigner.occi.emfgen.ui\n";
 		manifest.setContents(new ByteArrayInputStream(manifestContent.getBytes()), true, false, monitor);
 
 		IFile pluginXML = PDEProject.getPluginXml(project);
 		String pluginContent =
 				"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
 				"<?eclipse version=\"3.0\"?>\n" +
+				"<!--\n" +
+				" Copyright (c) 2015-2016 Obeo, Inria\n" +
+				" All rights reserved. This program and the accompanying materials\n" +
+				" are made available under the terms of the Eclipse Public License v1.0\n" +
+				" which accompanies this distribution, and is available at\n" +
+				" http://www.eclipse.org/legal/epl-v10.html\n" +
+				"\n" +
+				" Contributors:\n" +
+				" - William Piers <william.piers@obeo.fr>\n" +
+				" - Philippe Merle <philippe.merle@inria.fr>\n" +
+				"-->\n" +
 				"<plugin>\n" +
 				"  <extension point=\"org.occiware.clouddesigner.occi.occie\">\n" +
 				"    <occie file=\"model/" + extensionName + ".occie\" scheme=\"" + extensionScheme + "\">\n" +
@@ -299,11 +320,53 @@ public class NewExtensionWizard extends BasicNewProjectResourceWizard {
 				"  <extension point=\"org.eclipse.emf.ecore.uri_mapping\">\n" +
 				"    <mapping source=\"" + extensionScheme.substring(0,extensionScheme.length()-1) + "\" target=\"platform:/plugin/" + project.getName() + "/model/" + extensionName + ".occie\"/>\n" +
 				"  </extension>\n" +
+				"\n" +
+				"  <extension point=\"org.eclipse.emf.ecore.extension_parser\">\n" +
+				"    <parser type=\"" + extensionName + "\" class=\"org.occiware.clouddesigner.occi.util.OCCIResourceFactoryImpl\"/>\n" +
+				"  </extension>\n" +
+				"\n" +
+				"  <extension point=\"org.eclipse.ui.popupMenus\">\n" +
+				"    <objectContribution\n" +
+				"        id=\"" +  newProjectPage.getProjectName() + ".contribution\"\n" +
+				"        nameFilter=\"*." + extensionName +"\"\n" +
+				"        objectClass=\"org.eclipse.core.resources.IFile\">\n" +
+				"      <menu\n" +
+				"          id=\"org.occiware.clouddesigner.menu\"\n" +
+				"          label=\"Cloud Designer\"\n" +
+				"          path=\"additionsCloudDesigner\">\n" +
+				"        <separator name=\"group\"/>\n" +
+				"      </menu>\n" +
+				"      <action\n" +
+				"          class=\"org.occiware.clouddesigner.occi.emfgen.ui.popup.actions.Ecore2OCCIAction\"\n" +
+				"          enablesFor=\"1\"\n" +
+			 	"          id=\"" +  newProjectPage.getProjectName() + ".ecore2occi\"\n" +
+			 	"          label=\"Convert to standard OCCI Configuration File\"\n" +
+			 	"          menubarPath=\"org.occiware.clouddesigner.menu/group\">\n" +
+				"      </action>\n" +
+				"    </objectContribution>\n" +
+				"   </extension>\n" +
 				"</plugin>\n";
 		pluginXML.create(new ByteArrayInputStream(pluginContent.getBytes()), true, monitor);
 
 		IFile build = PDEProject.getBuildProperties(project);
-		String buildContent = "bin.includes = META-INF/,plugin.xml";
+		String buildContent = 
+				"# Copyright (c) 2015-2016 Obeo, Inria\n" +
+				"# All rights reserved. This program and the accompanying materials\n" +
+				"# are made available under the terms of the Eclipse Public License v1.0\n" +
+				"# which accompanies this distribution, and is available at\n" +
+				"# http://www.eclipse.org/legal/epl-v10.html\n" +
+				"#\n" +
+				"# Contributors:\n" +
+				"# - William Piers <william.piers@obeo.fr>\n" +
+				"# - Philippe Merle <philippe.merle@inria.fr>\n" +
+				"\n" +
+				"source.. = src-gen/\n" +
+				"jars.compile.order = .\n" +
+				"output.. = bin/\n" +
+				"bin.includes = .,\\\n" +
+				"				model/,\\\n" +
+				"				META-INF/,\\\n" +
+				"				plugin.xml\n";
 		build.setContents(new ByteArrayInputStream(buildContent.getBytes()), true, false, monitor);
 	}
 
