@@ -4,9 +4,6 @@ Bundle-SymbolicName: org.occiware.clouddesigner.occi.hypervisor.connector;single
 Bundle-Version: 0.1.0.qualifier
 Bundle-Name: org.occiware.clouddesigner.occi.hypervisor.connector
 Bundle-ClassPath: .,
- lib/slf4j-api-1.7.12.jar,
- lib/log4j-1.2.17.jar,
- lib/slf4j-log4j12-1.7.12.jar,
  lib/jna-4.1.0.jar,
  lib/libvirt-0.1-jar-with-dependencies.jar,
  lib/jaxb-api-2.2.jar,
@@ -27,16 +24,12 @@ Require-Bundle: org.eclipse.xtend.lib,
  org.occiware.clouddesigner.occi.infrastructure;visibility:=reexport,
  org.occiware.clouddesigner.occi;visibility:=reexport,
  org.eclipse.emf.compare;bundle-version="3.1.1",
- org.occiware.clouddesigner.occi.hypervisor;bundle-version="0.1.0";visibility:=reexport
+ org.occiware.clouddesigner.occi.hypervisor;bundle-version="0.1.0";visibility:=reexport,
+ org.slf4j.api;bundle-version="1.7.2"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.libvirt,
  org.libvirt.event,
  org.libvirt.jna,
  org.occiware.clouddesigner.occi.hypervisor.connector.libvirt,
  org.occiware.clouddesigner.occi.hypervisor.connector.generated,
- org.occiware.clouddesigner.occi.hypervisor.connector.libvirt.util,
- org.slf4j,
- org.slf4j.helpers,
- org.slf4j.impl,
- org.slf4j.spi
-
+ org.occiware.clouddesigner.occi.hypervisor.connector.libvirt.util

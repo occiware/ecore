@@ -89,6 +89,7 @@
 		<!-- Releng -->
 		<module>../org.occiware.clouddesigner.occi.feature</module>
 		<module>../org.occiware.clouddesigner.occi.docker.feature</module>
+		<module>../org.occiware.clouddesigner.occi.cloud.feature</module>
 		<module>../org.occiware.clouddesigner.occi.hypervisor.feature</module>
 		<module>../org.occiware.clouddesigner.repository</module>
 		<module>../org.occiware.clouddesigner.dependencies</module>

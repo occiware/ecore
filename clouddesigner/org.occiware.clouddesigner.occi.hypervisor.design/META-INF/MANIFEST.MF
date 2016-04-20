@@ -3,10 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: org.occiware.clouddesigner.occi.hypervisor.design
 Bundle-SymbolicName: org.occiware.clouddesigner.occi.hypervisor.design;singleton:=true
 Bundle-Version: 0.1.0.qualifier
-Bundle-ClassPath: .,
- lib/log4j-1.2.17.jar,
- lib/slf4j-api-1.7.12.jar,
- lib/slf4j-log4j12-1.7.12.jar
+Bundle-ClassPath: .
 Bundle-Activator: org.occiware.clouddesigner.occi.hypervisor.design.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
@@ -22,6 +19,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.compare;bundle-version="3.1.1",
  org.occiware.clouddesigner.occi.hypervisor.connector;bundle-version="0.1.0",
  org.occiware.clouddesigner.occi.design;bundle-version="0.1.0",
- org.occiware.clouddesigner.occi.emfgen.ui;bundle-version="0.1.0"
+ org.occiware.clouddesigner.occi.emfgen.ui;bundle-version="0.1.0",
+ org.slf4j.api;bundle-version="1.7.2"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
