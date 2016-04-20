@@ -145,6 +145,17 @@ public class NewConnectorWizard extends BasicNewProjectResourceWizard {
 
 	private void createConnectorJavaProject(String connectorProjectName, String extensionScheme, IProgressMonitor monitor) throws CoreException
 	{
+		// Get the file containing the OCCI extension.
+		String extensionFile = OCCIRegistry.getInstance().getFileURI(extensionScheme);
+
+		// This connector project will require the bundle containing the OCCI extension.
+		// Warning extensionFile must be a platform URI (plugin or resource).
+		String tmp = extensionFile.substring("platform:/".length()); 
+		tmp = tmp.substring(tmp.indexOf('/')+1);
+		String requireBundle = tmp.substring(0, tmp.indexOf('/'));
+		// FIXME we suppose that the project name is equals to the bundle name. 
+		IProject requireProject = ResourcesPlugin.getWorkspace().getRoot().getProject(requireBundle);
+
 		// See https://sdqweb.ipd.kit.edu/wiki/JDT_Tutorial:_Creating_Eclipse_Java_Projects_Programmatically
 
 		// Create an Eclipse project.
@@ -168,7 +179,7 @@ public class NewConnectorWizard extends BasicNewProjectResourceWizard {
 		javaProject.setOutputLocation(binFolder.getFullPath(), null);
 
 		// (2) Define the class path entries.
-		IClasspathEntry[] entries = new IClasspathEntry[2];
+		IClasspathEntry[] entries = new IClasspathEntry[ (requireProject.exists()) ? 3 : 2];
 
 		// Add JRE System Library.
 		entries[0] = JavaRuntime.getDefaultJREContainerEntry();
@@ -181,6 +192,11 @@ public class NewConnectorWizard extends BasicNewProjectResourceWizard {
 		IPackageFragmentRoot root = javaProject.getPackageFragmentRoot(sourceFolder);
 		entries[1] = JavaCore.newSourceEntry(root.getPath());
 
+        // Add the extension project.
+		if(requireProject.exists()) {
+			entries[2] = JavaCore.newSourceEntry(requireProject.getFullPath());
+		}
+
 		// (5) Set the Java build path.
 		javaProject.setRawClasspath(entries, null);
 
@@ -192,16 +208,6 @@ public class NewConnectorWizard extends BasicNewProjectResourceWizard {
 			e1.printStackTrace();
 		}
 
-		// Get the file containing the OCCI extension.
-		String extensionFile = OCCIRegistry.getInstance().getFileURI(extensionScheme);
-
-		// This connector project will require the bundle containing the OCCI extension.
-		// Warning extensionFile must be a platform URI (plugin or resource).
-		String tmp = extensionFile.substring("platform:/".length()); 
-		tmp = tmp.substring(tmp.indexOf('/')+1);
-		String requireBundle = tmp.substring(0, tmp.indexOf('/'));
-		// FIXME we suppose that the project name is equals to the bundle name. 
-		 
 		// Generate META-INF/MANIFEST.MF
 		IFile manifest = PDEProject.getManifest(connectorProject);
 		String manifestContent =
@@ -215,7 +221,9 @@ public class NewConnectorWizard extends BasicNewProjectResourceWizard {
 //			"Bundle-Localization: plugin\n" + // FIXME generate plugin.properties
 			"Bundle-RequiredExecutionEnvironment: JavaSE-1.7\n" +
 			"Bundle-ActivationPolicy: lazy\n" +
-			"Require-Bundle: " + requireBundle + "\n" +
+			"Require-Bundle: org.slf4j.api,\n" +
+			" org.occiware.clouddesigner.occi,\n" +
+			" " + requireBundle + "\n" +
 			"Export-Package: " + connectorProjectName + "\n";
 		manifest.setContents(new ByteArrayInputStream(manifestContent.getBytes()), true, false, monitor);
 

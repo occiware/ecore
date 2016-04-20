@@ -67,6 +67,9 @@ public class ConnectorFactory extends [extendedPackageName/].impl.[toU1Case(exte
  */
 package [targetPackageName/];
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Connector implementation for OCCI kind [kind.scheme/][kind.term/].
  */
@@ -74,11 +77,16 @@ package [targetPackageName/];
 public class [kindClassName/]Connector extends [extendedPackageName/].impl.[kindClassName/]Impl
 {
 	/**
+	 * Initialize the logger.
+	 */
+	private static Logger LOGGER = LoggerFactory.getLogger([kindClassName/]Connector.class);
+
+	/**
 	 * Constructs a [kind.term/] connector.
 	 */
 	[kindClassName/]Connector()
 	{
-		System.err.println("DEBUG constructor " + this);
+		LOGGER.debug("Constructor called on " + this);
 	}
 
 [for (action : Action | kind.actions)]
@@ -96,10 +104,7 @@ public class [kindClassName/]Connector extends [extendedPackageName/].impl.[kind
 	@Override
 	public void [action.term/]([for (parameter : Attribute | action.attributes) separator(', ')]final [getJavaTypeName(parameter)/] [parameter.name/][/for])
 	{
-		System.err.println("DEBUG [action.term/] on " + this);
-[for (parameter : Attribute | action.attributes)]
-		System.err.println("  - [parameter.name/]=" + [parameter.name/]);
-[/for]
+		LOGGER.debug("Action [action.term/]("[for (parameter : Attribute | action.attributes)] + "[parameter.name/]=" + [parameter.name/][/for] + ") called on " + this);
 
 		// TODO: Implement how to [action.term/] this [kind.term/].
 	}
