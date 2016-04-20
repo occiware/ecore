@@ -1,5 +1,5 @@
 [comment encoding = UTF-8 /]
-[module generate('http://www.eclipse.org/emf/2002/Ecore', 'http://schemas.ogf.org/occi')]
+[module generate('http://www.eclipse.org/emf/2002/Ecore', 'http://schemas.ogf.org/occi/core/ecore')]
 
 [template public generateElement(ePackage : EPackage)]
 [comment @main/]
@@ -7,12 +7,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="[ePackage.name/]" version="10.0.0.201505222000">
   <ownedViewpoints name="[ePackage.name.toUpperFirst()/]Configuration" label="[ePackage.name.toUpperFirst()/] Configuration">
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="[ePackage.name.toUpperFirst()/]Configuration Diagram" domainClass="[ePackage.name.toUpperFirst()/]Configuration">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="[ePackage.name.toUpperFirst()/]Configuration Diagram" domainClass="Configuration">
+      <metamodel href="http://schemas.ogf.org/occi/core/ecore#/"/>
+      <metamodel href="[ePackage.nsURI/]#/"/>
       <defaultLayer name="Default">
 [for (resource : EClass | ePackage.getResources())]
         <containerMappings name="[resource.name/]" 
 			semanticCandidatesExpression="feature:resources" 
-			domainClass="[ePackage.name/].[resource.name/]">
+			domainClass="[resource.name/]">
           <style xsi:type="style:FlatContainerStyleDescription" labelExpression="feature:id" labelAlignment="LEFT" roundedCorner="true">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[ '[' /]name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[ '[' /]name='black']"/>
@@ -29,13 +31,25 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="[ePackage.name/].[resource.name/]" referenceName="resources">
-                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:addKind"/>
-              </firstModelOperations>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="[resource.name/]" referenceName="resources"/>
             </initialOperation>
           </ownedTools>
 [/for]
         </toolSections>
+[for (resource : EClass | ePackage.getResources())]
+        <toolSections name="Tools">
+          <ownedTools xsi:type="tool_1:PopupMenu" name="Execute an action on [resource.name/]" precondition="['['/]self.oclIsKindOf([resource.name/])/[']'/]">
+[for (action : EOperation | resource.eAllOperations)]
+            <menuItemDescription xsi:type="tool_1:OperationAction" name="[action.name.toUpperFirst()/]">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="['['/]self.oclAsType([resource.name/]).[action.name/]()/[']'/]"/>
+              </initialOperation>
+            </menuItemDescription>
+[/for]
+          </ownedTools>
+        </toolSections>
+[/for]
       </defaultLayer>
     </ownedRepresentations>
     <ownedJavaExtensions qualifiedClassName="org.occiware.clouddesigner.occi.design.services.DesignServices"/>
