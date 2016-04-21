@@ -73,19 +73,18 @@ public class GenUtils {
 		in = new BufferedReader(new InputStreamReader(pluginXml.getContents()));
 		while ((inputLine = in.readLine()) != null) {
 			if (inputLine.startsWith("</plugin>")) {
-				buffer.append("  <extension point=\"org.eclipse.ui.newWizards\">\n");
-				buffer.append("    <category\n");
-				buffer.append("        id=\"org.occiware.clouddesigner\"\n");
-				buffer.append("        name=\"Cloud Designer\">\n");
-				buffer.append("    </category>\n");
-				buffer.append("    <wizard\n");
-				buffer.append("        category=\"org.occiware.clouddesigner\"\n");
-				buffer.append("        class=\"").append(projectName).append(".wizard.NewConfigurationWizard\"\n");
-				buffer.append("        icon=\"images/Configuration.gif\"\n");
-				buffer.append("        id=\"").append(projectName).append(".wizard.NewConfigurationWizard\"\n");
-				buffer.append("        name=\"").append(modelName).append(" Configuration File\">\n");
-				buffer.append("    </wizard>\n");
-				buffer.append("  </extension>\n");
+				buffer.append("   <!-- Popup menu for creating a ").append(modelName).append(" configuration file. -->\n");
+				buffer.append("   <extension point=\"org.eclipse.ui.newWizards\">\n");
+				buffer.append("      <category\n");
+				buffer.append("            id=\"org.occiware.clouddesigner.category.ID\"\n");
+				buffer.append("            name=\"Cloud Designer\"/>\n");
+				buffer.append("      <wizard\n");
+				buffer.append("            category=\"org.occiware.clouddesigner.category.ID\"\n");
+				buffer.append("            class=\"").append(projectName).append(".wizard.NewConfigurationWizard\"\n");
+				buffer.append("            icon=\"platform:/plugin/org.occiware.clouddesigner.occi.edit/icons/full/obj16/Configuration.gif\"\n");				
+				buffer.append("            id=\"").append(projectName).append(".wizard.NewConfigurationWizard\"\n");
+				buffer.append("            name=\"").append(modelName).append(" Configuration File\"/>\n");
+				buffer.append("   </extension>\n");
 			}
 			buffer.append(inputLine + "\n");
 		}
