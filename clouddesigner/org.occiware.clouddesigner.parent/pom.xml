@@ -114,11 +114,6 @@
 			<url>http://download.eclipse.org/releases/mars</url>
 		</repository>
 		<repository>
-			<id>k3</id>
-			<layout>p2</layout>
-			<url>http://www.kermeta.org/k3/update</url>
-		</repository>
-		<repository>
 			<id>mvnrepository</id>
 			<url>http://repo1.maven.org/maven2</url>
 			<snapshots>
