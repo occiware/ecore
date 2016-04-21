@@ -10,12 +10,12 @@
     <input>
       <takesTypesFrom href="http://schemas.ogf.org/occi/core/ecore#/"/>
     </input>
-    <imports href="platform:/resource/org.occiware.clouddesigner.occi.docker.gen.conf/bin/org/occiware/clouddesigner/occi/docker/gen/conf/files/genCompose.emtl#/0"/>
+    <imports href="../files/genCompose.emtl#/0"/>
     <imports href="platform:/resource/org.occiware.clouddesigner.occi.docker.gen.conf/bin/org/occiware/clouddesigner/occi/docker/gen/conf/files/genSH.emtl#/0"/>
     <ownedModuleElement xsi:type="mtl:Template" name="generateElement" visibility="Public" main="true">
       <body xsi:type="mtl:TemplateInvocation">
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <definition href="platform:/resource/org.occiware.clouddesigner.occi.docker.gen.conf/bin/org/occiware/clouddesigner/occi/docker/gen/conf/files/genCompose.emtl#/0/generateCompose"/>
+        <definition href="../files/genCompose.emtl#/0/generateCompose"/>
         <argument xsi:type="ocl.ecore:VariableExp" name="configuration" referredVariable="/0/generateElement/configuration">
           <eType xsi:type="ecore:EClass" href="http://schemas.ogf.org/occi/core/ecore#//Configuration"/>
         </argument>
@@ -68,7 +68,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="platform:/resource/org.occiware.clouddesigner.occi.docker.gen.conf/bin/org/occiware/clouddesigner/occi/docker/gen/conf/files/genCompose.emtl#/0/generateCompose"/>
+          <references href="../files/genCompose.emtl#/0/generateCompose"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="configuration">
