@@ -18,13 +18,13 @@
    <extension point="org.eclipse.ui.newWizards">
       <!-- @generated Cloud -->
       <category
-        id = "org.occiware.clouddesigner"
-	    name="Cloud Designer"/>
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
       <wizard
             id="org.occiware.clouddesigner.occi.cloud.presentation.CloudModelWizardID"
             name="%_UI_CloudModelWizard_label"
             class="org.occiware.clouddesigner.occi.cloud.presentation.CloudModelWizard"
-            category="org.occiware.clouddesigner"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
             icon="icons/full/obj16/CloudModelFile.gif">
          <description>%_UI_CloudModelWizard_description</description>
          <selection class="org.eclipse.core.resources.IResource"/>

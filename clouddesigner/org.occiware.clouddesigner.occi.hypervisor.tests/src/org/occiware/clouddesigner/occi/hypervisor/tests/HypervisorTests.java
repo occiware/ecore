@@ -41,12 +41,17 @@ public class HypervisorTests extends TestSuite {
 	public static Test suite() {
 		TestSuite suite = new HypervisorTests("hypervisor Tests");
 		suite.addTestSuite(MachineTest.class);
+		suite.addTestSuite(ContainsTest.class);
 		suite.addTestSuite(DiskTest.class);
 		suite.addTestSuite(InterfaceTest.class);
 		suite.addTestSuite(Machine_VirtualBoxTest.class);
 		suite.addTestSuite(BridgeTest.class);
 		suite.addTestSuite(UserTest.class);
+		suite.addTestSuite(ParallelTest.class);
+		suite.addTestSuite(SerialTest.class);
 		suite.addTestSuite(DirectTest.class);
+		suite.addTestSuite(EthernetTest.class);
+		suite.addTestSuite(FilesystemTest.class);
 		return suite;
 	}
 

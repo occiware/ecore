@@ -6,7 +6,8 @@
     modelName="Cloud" testsDirectory="/org.occiware.clouddesigner.occi.cloud.tests/src"
     complianceLevel="7.0" copyrightFields="false" editPluginID="org.occiware.clouddesigner.occi.cloud.edit"
     editorPluginID="org.occiware.clouddesigner.occi.cloud.editor" testsPluginID="org.occiware.clouddesigner.occi.cloud.tests"
-    usedGenPackages="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.genmodel#//infrastructure platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.genmodel#//occi">
+    usedGenPackages="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.genmodel#//infrastructure platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.genmodel#//occi"
+    operationReflection="true">
   <foreignModel>Cloud.ecore</foreignModel>
   <genPackages prefix="Cloud" basePackage="org.occiware.clouddesigner.occi" disposableProviderFactory="true"
       ecorePackage="Cloud.ecore#/">

@@ -18,13 +18,13 @@
    <extension point="org.eclipse.ui.newWizards">
       <!-- @generated Docker -->
       <category
-        id = "org.occiware.clouddesigner"
-	    name="Cloud Designer"/>
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
       <wizard
             id="org.occiware.clouddesigner.occi.docker.presentation.DockerModelWizardID"
             name="%_UI_DockerModelWizard_label"
             class="org.occiware.clouddesigner.occi.docker.presentation.DockerModelWizard"
-            category="org.occiware.clouddesigner"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
             icon="icons/full/obj16/DockerModelFile.gif">
          <description>%_UI_DockerModelWizard_description</description>
          <selection class="org.eclipse.core.resources.IResource"/>

@@ -11,8 +11,10 @@
  */
 package org.occiware.clouddesigner.occi.docker.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -2141,6 +2143,36 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 				return read_only != READ_ONLY_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case DockerPackage.CONTAINER___CREATE:
+				create();
+				return null;
+			case DockerPackage.CONTAINER___STOP:
+				stop();
+				return null;
+			case DockerPackage.CONTAINER___RUN:
+				run();
+				return null;
+			case DockerPackage.CONTAINER___PAUSE:
+				pause();
+				return null;
+			case DockerPackage.CONTAINER___UNPAUSE:
+				unpause();
+				return null;
+			case DockerPackage.CONTAINER___KILL__STRING:
+				kill((String)arguments.get(0));
+				return null;
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

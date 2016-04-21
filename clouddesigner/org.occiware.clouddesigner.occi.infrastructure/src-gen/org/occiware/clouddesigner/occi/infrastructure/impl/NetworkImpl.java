@@ -11,8 +11,10 @@
  */
 package org.occiware.clouddesigner.occi.infrastructure.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -279,6 +281,24 @@ public class NetworkImpl extends ResourceImpl implements Network {
 				return state != STATE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case InfrastructurePackage.NETWORK___UP:
+				up();
+				return null;
+			case InfrastructurePackage.NETWORK___DOWN:
+				down();
+				return null;
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

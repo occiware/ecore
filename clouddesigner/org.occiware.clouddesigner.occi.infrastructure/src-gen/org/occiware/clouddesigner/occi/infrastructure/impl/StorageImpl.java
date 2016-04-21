@@ -11,8 +11,10 @@
  */
 package org.occiware.clouddesigner.occi.infrastructure.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -260,6 +262,33 @@ public class StorageImpl extends ResourceImpl implements Storage {
 				return state != STATE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case InfrastructurePackage.STORAGE___ONLINE:
+				online();
+				return null;
+			case InfrastructurePackage.STORAGE___OFFLINE:
+				offline();
+				return null;
+			case InfrastructurePackage.STORAGE___BACKUP:
+				backup();
+				return null;
+			case InfrastructurePackage.STORAGE___SNAPSHOT:
+				snapshot();
+				return null;
+			case InfrastructurePackage.STORAGE___RESIZE__FLOAT:
+				resize((Float)arguments.get(0));
+				return null;
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

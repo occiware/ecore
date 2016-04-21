@@ -87,6 +87,15 @@ public interface PlatformPackage extends EPackage {
 	int APPLICATION__ID = OCCIPackage.RESOURCE__ID;
 
 	/**
+	 * The feature id for the '<em><b>Title</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPLICATION__TITLE = OCCIPackage.RESOURCE__TITLE;
+
+	/**
 	 * The feature id for the '<em><b>Kind</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -112,6 +121,15 @@ public interface PlatformPackage extends EPackage {
 	 * @ordered
 	 */
 	int APPLICATION__ATTRIBUTES = OCCIPackage.RESOURCE__ATTRIBUTES;
+
+	/**
+	 * The feature id for the '<em><b>Summary</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPLICATION__SUMMARY = OCCIPackage.RESOURCE__SUMMARY;
 
 	/**
 	 * The feature id for the '<em><b>Links</b></em>' containment reference list.
@@ -196,6 +214,15 @@ public interface PlatformPackage extends EPackage {
 	int COMPONENT__ID = OCCIPackage.RESOURCE__ID;
 
 	/**
+	 * The feature id for the '<em><b>Title</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT__TITLE = OCCIPackage.RESOURCE__TITLE;
+
+	/**
 	 * The feature id for the '<em><b>Kind</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -221,6 +248,15 @@ public interface PlatformPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMPONENT__ATTRIBUTES = OCCIPackage.RESOURCE__ATTRIBUTES;
+
+	/**
+	 * The feature id for the '<em><b>Summary</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT__SUMMARY = OCCIPackage.RESOURCE__SUMMARY;
 
 	/**
 	 * The feature id for the '<em><b>Links</b></em>' containment reference list.
@@ -276,6 +312,15 @@ public interface PlatformPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMPONENTLINK__ID = OCCIPackage.LINK__ID;
+
+	/**
+	 * The feature id for the '<em><b>Title</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENTLINK__TITLE = OCCIPackage.LINK__TITLE;
 
 	/**
 	 * The feature id for the '<em><b>Kind</b></em>' reference.

@@ -596,6 +596,69 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getContainer__Create() {
+		return containerEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getContainer__Start() {
+		return containerEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getContainer__Stop() {
+		return containerEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getContainer__Run() {
+		return containerEClass.getEOperations().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getContainer__Pause() {
+		return containerEClass.getEOperations().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getContainer__Unpause() {
+		return containerEClass.getEOperations().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getContainer__Kill__String() {
+		return containerEClass.getEOperations().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getLink() {
 		return linkEClass;
 	}
@@ -1639,6 +1702,13 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		createEAttribute(containerEClass, CONTAINER__CPUSET);
 		createEAttribute(containerEClass, CONTAINER__PUBLISH_ALL);
 		createEAttribute(containerEClass, CONTAINER__READ_ONLY);
+		createEOperation(containerEClass, CONTAINER___CREATE);
+		createEOperation(containerEClass, CONTAINER___START);
+		createEOperation(containerEClass, CONTAINER___STOP);
+		createEOperation(containerEClass, CONTAINER___RUN);
+		createEOperation(containerEClass, CONTAINER___PAUSE);
+		createEOperation(containerEClass, CONTAINER___UNPAUSE);
+		createEOperation(containerEClass, CONTAINER___KILL__STRING);
 
 		linkEClass = createEClass(LINK);
 		createEAttribute(linkEClass, LINK__ALIAS);
@@ -1818,7 +1888,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		machine_VMware_vCloud_AirEClass.getESuperTypes().add(this.getMachine());
 		machine_VMware_vSphereEClass.getESuperTypes().add(this.getMachine());
 
-		// Initialize classes and features; add operations and parameters
+		// Initialize classes, features, and operations; add parameters
 		initEClass(containerEClass, org.occiware.clouddesigner.occi.docker.Container.class, "Container", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getContainer_Name(), theOCCIPackage.getString(), "name", null, 1, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_Containerid(), theOCCIPackage.getString(), "containerid", null, 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1859,19 +1929,19 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		initEAttribute(getContainer_Publish_all(), theOCCIPackage.getBoolean(), "publish_all", "false", 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_Read_only(), theOCCIPackage.getBoolean(), "read_only", "false", 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		addEOperation(containerEClass, null, "create", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getContainer__Create(), null, "create", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(containerEClass, null, "start", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getContainer__Start(), null, "start", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(containerEClass, null, "stop", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getContainer__Stop(), null, "stop", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(containerEClass, null, "run", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getContainer__Run(), null, "run", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(containerEClass, null, "pause", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getContainer__Pause(), null, "pause", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(containerEClass, null, "unpause", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getContainer__Unpause(), null, "unpause", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		EOperation op = addEOperation(containerEClass, null, "kill", 0, 1, IS_UNIQUE, IS_ORDERED);
+		EOperation op = initEOperation(getContainer__Kill__String(), null, "kill", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theOCCIPackage.getString(), "signal", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(linkEClass, Link.class, "Link", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -2026,49 +2096,49 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 			 "title", "Container Resource"
 		   });	
 		addAnnotation
-		  (containerEClass.getEOperations().get(0), 
+		  (getContainer__Create(), 
 		   source, 
 		   new String[] {
 			 "title", null
 		   });	
 		addAnnotation
-		  (containerEClass.getEOperations().get(1), 
+		  (getContainer__Start(), 
 		   source, 
 		   new String[] {
 			 "title", null
 		   });	
 		addAnnotation
-		  (containerEClass.getEOperations().get(2), 
+		  (getContainer__Stop(), 
 		   source, 
 		   new String[] {
 			 "title", null
 		   });	
 		addAnnotation
-		  (containerEClass.getEOperations().get(3), 
+		  (getContainer__Run(), 
 		   source, 
 		   new String[] {
 			 "title", null
 		   });	
 		addAnnotation
-		  (containerEClass.getEOperations().get(4), 
+		  (getContainer__Pause(), 
 		   source, 
 		   new String[] {
 			 "title", null
 		   });	
 		addAnnotation
-		  (containerEClass.getEOperations().get(5), 
+		  (getContainer__Unpause(), 
 		   source, 
 		   new String[] {
 			 "title", ""
 		   });	
 		addAnnotation
-		  (containerEClass.getEOperations().get(6), 
+		  (getContainer__Kill__String(), 
 		   source, 
 		   new String[] {
 			 "title", null
 		   });	
 		addAnnotation
-		  ((containerEClass.getEOperations().get(6)).getEParameters().get(0), 
+		  ((getContainer__Kill__String()).getEParameters().get(0), 
 		   source, 
 		   new String[] {
 			 "description", null

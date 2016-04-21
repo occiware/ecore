@@ -41,6 +41,9 @@ public class DockerTests extends TestSuite {
 	public static Test suite() {
 		TestSuite suite = new DockerTests("docker Tests");
 		suite.addTestSuite(ContainerTest.class);
+		suite.addTestSuite(LinkTest.class);
+		suite.addTestSuite(VolumesfromTest.class);
+		suite.addTestSuite(ContainsTest.class);
 		suite.addTestSuite(MachineTest.class);
 		suite.addTestSuite(Machine_Amazon_EC2Test.class);
 		suite.addTestSuite(Machine_Digital_OceanTest.class);

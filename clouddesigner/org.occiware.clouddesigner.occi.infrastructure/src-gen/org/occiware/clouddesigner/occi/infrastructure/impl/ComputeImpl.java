@@ -11,8 +11,10 @@
  */
 package org.occiware.clouddesigner.occi.infrastructure.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -461,6 +463,30 @@ public class ComputeImpl extends ResourceImpl implements Compute {
 				return state != STATE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case InfrastructurePackage.COMPUTE___START:
+				start();
+				return null;
+			case InfrastructurePackage.COMPUTE___STOP__STOPMETHOD:
+				stop((StopMethod)arguments.get(0));
+				return null;
+			case InfrastructurePackage.COMPUTE___RESTART__RESTARTMETHOD:
+				restart((RestartMethod)arguments.get(0));
+				return null;
+			case InfrastructurePackage.COMPUTE___SUSPEND__SUSPENDMETHOD:
+				suspend((SuspendMethod)arguments.get(0));
+				return null;
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 
 import org.occiware.clouddesigner.occi.OCCIPackage;
@@ -87,6 +88,15 @@ public interface InfrastructurePackage extends EPackage {
 	int NETWORK__ID = OCCIPackage.RESOURCE__ID;
 
 	/**
+	 * The feature id for the '<em><b>Title</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK__TITLE = OCCIPackage.RESOURCE__TITLE;
+
+	/**
 	 * The feature id for the '<em><b>Kind</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -112,6 +122,15 @@ public interface InfrastructurePackage extends EPackage {
 	 * @ordered
 	 */
 	int NETWORK__ATTRIBUTES = OCCIPackage.RESOURCE__ATTRIBUTES;
+
+	/**
+	 * The feature id for the '<em><b>Summary</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK__SUMMARY = OCCIPackage.RESOURCE__SUMMARY;
 
 	/**
 	 * The feature id for the '<em><b>Links</b></em>' containment reference list.
@@ -159,6 +178,69 @@ public interface InfrastructurePackage extends EPackage {
 	int NETWORK_FEATURE_COUNT = OCCIPackage.RESOURCE_FEATURE_COUNT + 3;
 
 	/**
+	 * The operation id for the '<em>Occi Create</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK___OCCI_CREATE = OCCIPackage.RESOURCE___OCCI_CREATE;
+
+	/**
+	 * The operation id for the '<em>Occi Retrieve</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK___OCCI_RETRIEVE = OCCIPackage.RESOURCE___OCCI_RETRIEVE;
+
+	/**
+	 * The operation id for the '<em>Occi Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK___OCCI_UPDATE = OCCIPackage.RESOURCE___OCCI_UPDATE;
+
+	/**
+	 * The operation id for the '<em>Occi Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK___OCCI_DELETE = OCCIPackage.RESOURCE___OCCI_DELETE;
+
+	/**
+	 * The operation id for the '<em>Up</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK___UP = OCCIPackage.RESOURCE_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Down</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK___DOWN = OCCIPackage.RESOURCE_OPERATION_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Network</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK_OPERATION_COUNT = OCCIPackage.RESOURCE_OPERATION_COUNT + 2;
+
+	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.infrastructure.impl.ComputeImpl <em>Compute</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -176,6 +258,15 @@ public interface InfrastructurePackage extends EPackage {
 	 * @ordered
 	 */
 	int COMPUTE__ID = OCCIPackage.RESOURCE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Title</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPUTE__TITLE = OCCIPackage.RESOURCE__TITLE;
 
 	/**
 	 * The feature id for the '<em><b>Kind</b></em>' reference.
@@ -203,6 +294,15 @@ public interface InfrastructurePackage extends EPackage {
 	 * @ordered
 	 */
 	int COMPUTE__ATTRIBUTES = OCCIPackage.RESOURCE__ATTRIBUTES;
+
+	/**
+	 * The feature id for the '<em><b>Summary</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPUTE__SUMMARY = OCCIPackage.RESOURCE__SUMMARY;
 
 	/**
 	 * The feature id for the '<em><b>Links</b></em>' containment reference list.
@@ -277,6 +377,87 @@ public interface InfrastructurePackage extends EPackage {
 	int COMPUTE_FEATURE_COUNT = OCCIPackage.RESOURCE_FEATURE_COUNT + 6;
 
 	/**
+	 * The operation id for the '<em>Occi Create</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPUTE___OCCI_CREATE = OCCIPackage.RESOURCE___OCCI_CREATE;
+
+	/**
+	 * The operation id for the '<em>Occi Retrieve</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPUTE___OCCI_RETRIEVE = OCCIPackage.RESOURCE___OCCI_RETRIEVE;
+
+	/**
+	 * The operation id for the '<em>Occi Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPUTE___OCCI_UPDATE = OCCIPackage.RESOURCE___OCCI_UPDATE;
+
+	/**
+	 * The operation id for the '<em>Occi Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPUTE___OCCI_DELETE = OCCIPackage.RESOURCE___OCCI_DELETE;
+
+	/**
+	 * The operation id for the '<em>Start</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPUTE___START = OCCIPackage.RESOURCE_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Stop</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPUTE___STOP__STOPMETHOD = OCCIPackage.RESOURCE_OPERATION_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Restart</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPUTE___RESTART__RESTARTMETHOD = OCCIPackage.RESOURCE_OPERATION_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Suspend</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPUTE___SUSPEND__SUSPENDMETHOD = OCCIPackage.RESOURCE_OPERATION_COUNT + 3;
+
+	/**
+	 * The number of operations of the '<em>Compute</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPUTE_OPERATION_COUNT = OCCIPackage.RESOURCE_OPERATION_COUNT + 4;
+
+	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.infrastructure.impl.StorageImpl <em>Storage</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -294,6 +475,15 @@ public interface InfrastructurePackage extends EPackage {
 	 * @ordered
 	 */
 	int STORAGE__ID = OCCIPackage.RESOURCE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Title</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORAGE__TITLE = OCCIPackage.RESOURCE__TITLE;
 
 	/**
 	 * The feature id for the '<em><b>Kind</b></em>' reference.
@@ -321,6 +511,15 @@ public interface InfrastructurePackage extends EPackage {
 	 * @ordered
 	 */
 	int STORAGE__ATTRIBUTES = OCCIPackage.RESOURCE__ATTRIBUTES;
+
+	/**
+	 * The feature id for the '<em><b>Summary</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORAGE__SUMMARY = OCCIPackage.RESOURCE__SUMMARY;
 
 	/**
 	 * The feature id for the '<em><b>Links</b></em>' containment reference list.
@@ -359,6 +558,96 @@ public interface InfrastructurePackage extends EPackage {
 	int STORAGE_FEATURE_COUNT = OCCIPackage.RESOURCE_FEATURE_COUNT + 2;
 
 	/**
+	 * The operation id for the '<em>Occi Create</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORAGE___OCCI_CREATE = OCCIPackage.RESOURCE___OCCI_CREATE;
+
+	/**
+	 * The operation id for the '<em>Occi Retrieve</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORAGE___OCCI_RETRIEVE = OCCIPackage.RESOURCE___OCCI_RETRIEVE;
+
+	/**
+	 * The operation id for the '<em>Occi Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORAGE___OCCI_UPDATE = OCCIPackage.RESOURCE___OCCI_UPDATE;
+
+	/**
+	 * The operation id for the '<em>Occi Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORAGE___OCCI_DELETE = OCCIPackage.RESOURCE___OCCI_DELETE;
+
+	/**
+	 * The operation id for the '<em>Online</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORAGE___ONLINE = OCCIPackage.RESOURCE_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Offline</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORAGE___OFFLINE = OCCIPackage.RESOURCE_OPERATION_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Backup</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORAGE___BACKUP = OCCIPackage.RESOURCE_OPERATION_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Snapshot</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORAGE___SNAPSHOT = OCCIPackage.RESOURCE_OPERATION_COUNT + 3;
+
+	/**
+	 * The operation id for the '<em>Resize</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORAGE___RESIZE__FLOAT = OCCIPackage.RESOURCE_OPERATION_COUNT + 4;
+
+	/**
+	 * The number of operations of the '<em>Storage</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORAGE_OPERATION_COUNT = OCCIPackage.RESOURCE_OPERATION_COUNT + 5;
+
+	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.infrastructure.impl.StoragelinkImpl <em>Storagelink</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -376,6 +665,15 @@ public interface InfrastructurePackage extends EPackage {
 	 * @ordered
 	 */
 	int STORAGELINK__ID = OCCIPackage.LINK__ID;
+
+	/**
+	 * The feature id for the '<em><b>Title</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORAGELINK__TITLE = OCCIPackage.LINK__TITLE;
 
 	/**
 	 * The feature id for the '<em><b>Kind</b></em>' reference.
@@ -459,6 +757,51 @@ public interface InfrastructurePackage extends EPackage {
 	int STORAGELINK_FEATURE_COUNT = OCCIPackage.LINK_FEATURE_COUNT + 3;
 
 	/**
+	 * The operation id for the '<em>Occi Create</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORAGELINK___OCCI_CREATE = OCCIPackage.LINK___OCCI_CREATE;
+
+	/**
+	 * The operation id for the '<em>Occi Retrieve</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORAGELINK___OCCI_RETRIEVE = OCCIPackage.LINK___OCCI_RETRIEVE;
+
+	/**
+	 * The operation id for the '<em>Occi Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORAGELINK___OCCI_UPDATE = OCCIPackage.LINK___OCCI_UPDATE;
+
+	/**
+	 * The operation id for the '<em>Occi Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORAGELINK___OCCI_DELETE = OCCIPackage.LINK___OCCI_DELETE;
+
+	/**
+	 * The number of operations of the '<em>Storagelink</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORAGELINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.infrastructure.impl.NetworkinterfaceImpl <em>Networkinterface</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -476,6 +819,15 @@ public interface InfrastructurePackage extends EPackage {
 	 * @ordered
 	 */
 	int NETWORKINTERFACE__ID = OCCIPackage.LINK__ID;
+
+	/**
+	 * The feature id for the '<em><b>Title</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORKINTERFACE__TITLE = OCCIPackage.LINK__TITLE;
 
 	/**
 	 * The feature id for the '<em><b>Kind</b></em>' reference.
@@ -557,6 +909,51 @@ public interface InfrastructurePackage extends EPackage {
 	 * @ordered
 	 */
 	int NETWORKINTERFACE_FEATURE_COUNT = OCCIPackage.LINK_FEATURE_COUNT + 3;
+
+	/**
+	 * The operation id for the '<em>Occi Create</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORKINTERFACE___OCCI_CREATE = OCCIPackage.LINK___OCCI_CREATE;
+
+	/**
+	 * The operation id for the '<em>Occi Retrieve</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORKINTERFACE___OCCI_RETRIEVE = OCCIPackage.LINK___OCCI_RETRIEVE;
+
+	/**
+	 * The operation id for the '<em>Occi Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORKINTERFACE___OCCI_UPDATE = OCCIPackage.LINK___OCCI_UPDATE;
+
+	/**
+	 * The operation id for the '<em>Occi Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORKINTERFACE___OCCI_DELETE = OCCIPackage.LINK___OCCI_DELETE;
+
+	/**
+	 * The number of operations of the '<em>Networkinterface</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORKINTERFACE_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.infrastructure.SuspendMethod <em>Suspend Method</em>}' enum.
@@ -769,6 +1166,26 @@ public interface InfrastructurePackage extends EPackage {
 	EAttribute getNetwork_State();
 
 	/**
+	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.infrastructure.Network#up() <em>Up</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Up</em>' operation.
+	 * @see org.occiware.clouddesigner.occi.infrastructure.Network#up()
+	 * @generated
+	 */
+	EOperation getNetwork__Up();
+
+	/**
+	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.infrastructure.Network#down() <em>Down</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Down</em>' operation.
+	 * @see org.occiware.clouddesigner.occi.infrastructure.Network#down()
+	 * @generated
+	 */
+	EOperation getNetwork__Down();
+
+	/**
 	 * Returns the meta object for class '{@link org.occiware.clouddesigner.occi.infrastructure.Compute <em>Compute</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -845,6 +1262,46 @@ public interface InfrastructurePackage extends EPackage {
 	EAttribute getCompute_State();
 
 	/**
+	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.infrastructure.Compute#start() <em>Start</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Start</em>' operation.
+	 * @see org.occiware.clouddesigner.occi.infrastructure.Compute#start()
+	 * @generated
+	 */
+	EOperation getCompute__Start();
+
+	/**
+	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.infrastructure.Compute#stop(org.occiware.clouddesigner.occi.infrastructure.StopMethod) <em>Stop</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Stop</em>' operation.
+	 * @see org.occiware.clouddesigner.occi.infrastructure.Compute#stop(org.occiware.clouddesigner.occi.infrastructure.StopMethod)
+	 * @generated
+	 */
+	EOperation getCompute__Stop__StopMethod();
+
+	/**
+	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.infrastructure.Compute#restart(org.occiware.clouddesigner.occi.infrastructure.RestartMethod) <em>Restart</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Restart</em>' operation.
+	 * @see org.occiware.clouddesigner.occi.infrastructure.Compute#restart(org.occiware.clouddesigner.occi.infrastructure.RestartMethod)
+	 * @generated
+	 */
+	EOperation getCompute__Restart__RestartMethod();
+
+	/**
+	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.infrastructure.Compute#suspend(org.occiware.clouddesigner.occi.infrastructure.SuspendMethod) <em>Suspend</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Suspend</em>' operation.
+	 * @see org.occiware.clouddesigner.occi.infrastructure.Compute#suspend(org.occiware.clouddesigner.occi.infrastructure.SuspendMethod)
+	 * @generated
+	 */
+	EOperation getCompute__Suspend__SuspendMethod();
+
+	/**
 	 * Returns the meta object for class '{@link org.occiware.clouddesigner.occi.infrastructure.Storage <em>Storage</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -875,6 +1332,56 @@ public interface InfrastructurePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getStorage_State();
+
+	/**
+	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.infrastructure.Storage#online() <em>Online</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Online</em>' operation.
+	 * @see org.occiware.clouddesigner.occi.infrastructure.Storage#online()
+	 * @generated
+	 */
+	EOperation getStorage__Online();
+
+	/**
+	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.infrastructure.Storage#offline() <em>Offline</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Offline</em>' operation.
+	 * @see org.occiware.clouddesigner.occi.infrastructure.Storage#offline()
+	 * @generated
+	 */
+	EOperation getStorage__Offline();
+
+	/**
+	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.infrastructure.Storage#backup() <em>Backup</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Backup</em>' operation.
+	 * @see org.occiware.clouddesigner.occi.infrastructure.Storage#backup()
+	 * @generated
+	 */
+	EOperation getStorage__Backup();
+
+	/**
+	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.infrastructure.Storage#snapshot() <em>Snapshot</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Snapshot</em>' operation.
+	 * @see org.occiware.clouddesigner.occi.infrastructure.Storage#snapshot()
+	 * @generated
+	 */
+	EOperation getStorage__Snapshot();
+
+	/**
+	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.infrastructure.Storage#resize(float) <em>Resize</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Resize</em>' operation.
+	 * @see org.occiware.clouddesigner.occi.infrastructure.Storage#resize(float)
+	 * @generated
+	 */
+	EOperation getStorage__Resize__float();
 
 	/**
 	 * Returns the meta object for class '{@link org.occiware.clouddesigner.occi.infrastructure.Storagelink <em>Storagelink</em>}'.
@@ -1193,6 +1700,22 @@ public interface InfrastructurePackage extends EPackage {
 		EAttribute NETWORK__STATE = eINSTANCE.getNetwork_State();
 
 		/**
+		 * The meta object literal for the '<em><b>Up</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation NETWORK___UP = eINSTANCE.getNetwork__Up();
+
+		/**
+		 * The meta object literal for the '<em><b>Down</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation NETWORK___DOWN = eINSTANCE.getNetwork__Down();
+
+		/**
 		 * The meta object literal for the '{@link org.occiware.clouddesigner.occi.infrastructure.impl.ComputeImpl <em>Compute</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1251,6 +1774,38 @@ public interface InfrastructurePackage extends EPackage {
 		EAttribute COMPUTE__STATE = eINSTANCE.getCompute_State();
 
 		/**
+		 * The meta object literal for the '<em><b>Start</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation COMPUTE___START = eINSTANCE.getCompute__Start();
+
+		/**
+		 * The meta object literal for the '<em><b>Stop</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation COMPUTE___STOP__STOPMETHOD = eINSTANCE.getCompute__Stop__StopMethod();
+
+		/**
+		 * The meta object literal for the '<em><b>Restart</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation COMPUTE___RESTART__RESTARTMETHOD = eINSTANCE.getCompute__Restart__RestartMethod();
+
+		/**
+		 * The meta object literal for the '<em><b>Suspend</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation COMPUTE___SUSPEND__SUSPENDMETHOD = eINSTANCE.getCompute__Suspend__SuspendMethod();
+
+		/**
 		 * The meta object literal for the '{@link org.occiware.clouddesigner.occi.infrastructure.impl.StorageImpl <em>Storage</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1275,6 +1830,46 @@ public interface InfrastructurePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute STORAGE__STATE = eINSTANCE.getStorage_State();
+
+		/**
+		 * The meta object literal for the '<em><b>Online</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation STORAGE___ONLINE = eINSTANCE.getStorage__Online();
+
+		/**
+		 * The meta object literal for the '<em><b>Offline</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation STORAGE___OFFLINE = eINSTANCE.getStorage__Offline();
+
+		/**
+		 * The meta object literal for the '<em><b>Backup</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation STORAGE___BACKUP = eINSTANCE.getStorage__Backup();
+
+		/**
+		 * The meta object literal for the '<em><b>Snapshot</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation STORAGE___SNAPSHOT = eINSTANCE.getStorage__Snapshot();
+
+		/**
+		 * The meta object literal for the '<em><b>Resize</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation STORAGE___RESIZE__FLOAT = eINSTANCE.getStorage__Resize__float();
 
 		/**
 		 * The meta object literal for the '{@link org.occiware.clouddesigner.occi.infrastructure.impl.StoragelinkImpl <em>Storagelink</em>}' class.

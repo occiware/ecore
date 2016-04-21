@@ -1,12 +1,13 @@
-<?xml version="1.0" encoding="ASCII"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2015-2016 Inria&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html&#xA;&#x9;&#xA;Contributors:&#xA;-Fawaz Paraiso &lt;fawaz.paraiso@inria.fr>&#xA;- Philippe Merle &lt;philippe.merle@inria.fr>"
     modelDirectory="/org.occiware.clouddesigner.occi.docker/src-gen" editDirectory="/org.occiware.clouddesigner.occi.docker.edit/src-gen"
     editorDirectory="/org.occiware.clouddesigner.occi.docker.editor/src-gen" modelPluginID="org.occiware.clouddesigner.occi.docker"
     modelName="Docker" testsDirectory="/org.occiware.clouddesigner.occi.docker.tests/src"
-    complianceLevel="7.0" copyrightFields="false" editPluginID="org.occiware.clouddesigner.occi.docker.edit"
-    editorPluginID="org.occiware.clouddesigner.occi.docker.editor" testsPluginID="org.occiware.clouddesigner.occi.docker.tests"
-    usedGenPackages="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.genmodel#//infrastructure platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.genmodel#//occi">
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0" copyrightFields="false"
+    editPluginID="org.occiware.clouddesigner.occi.docker.edit" editorPluginID="org.occiware.clouddesigner.occi.docker.editor"
+    testsPluginID="org.occiware.clouddesigner.occi.docker.tests" usedGenPackages="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.genmodel#//infrastructure platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.genmodel#//occi"
+    operationReflection="true">
   <foreignModel>Docker.ecore</foreignModel>
   <genPackages prefix="Docker" basePackage="org.occiware.clouddesigner.occi" disposableProviderFactory="true"
       ecorePackage="Docker.ecore#/">

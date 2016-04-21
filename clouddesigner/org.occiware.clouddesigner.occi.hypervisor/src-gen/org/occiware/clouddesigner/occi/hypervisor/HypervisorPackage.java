@@ -88,6 +88,15 @@ public interface HypervisorPackage extends EPackage {
 	int MACHINE__ID = InfrastructurePackage.COMPUTE__ID;
 
 	/**
+	 * The feature id for the '<em><b>Title</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE__TITLE = InfrastructurePackage.COMPUTE__TITLE;
+
+	/**
 	 * The feature id for the '<em><b>Kind</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -113,6 +122,15 @@ public interface HypervisorPackage extends EPackage {
 	 * @ordered
 	 */
 	int MACHINE__ATTRIBUTES = InfrastructurePackage.COMPUTE__ATTRIBUTES;
+
+	/**
+	 * The feature id for the '<em><b>Summary</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE__SUMMARY = InfrastructurePackage.COMPUTE__SUMMARY;
 
 	/**
 	 * The feature id for the '<em><b>Links</b></em>' containment reference list.
@@ -251,6 +269,15 @@ public interface HypervisorPackage extends EPackage {
 	int CONTAINS__ID = OCCIPackage.LINK__ID;
 
 	/**
+	 * The feature id for the '<em><b>Title</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTAINS__TITLE = OCCIPackage.LINK__TITLE;
+
+	/**
 	 * The feature id for the '<em><b>Kind</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -324,6 +351,15 @@ public interface HypervisorPackage extends EPackage {
 	int DISK__ID = InfrastructurePackage.STORAGE__ID;
 
 	/**
+	 * The feature id for the '<em><b>Title</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISK__TITLE = InfrastructurePackage.STORAGE__TITLE;
+
+	/**
 	 * The feature id for the '<em><b>Kind</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -349,6 +385,15 @@ public interface HypervisorPackage extends EPackage {
 	 * @ordered
 	 */
 	int DISK__ATTRIBUTES = InfrastructurePackage.STORAGE__ATTRIBUTES;
+
+	/**
+	 * The feature id for the '<em><b>Summary</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISK__SUMMARY = InfrastructurePackage.STORAGE__SUMMARY;
 
 	/**
 	 * The feature id for the '<em><b>Links</b></em>' containment reference list.
@@ -469,6 +514,15 @@ public interface HypervisorPackage extends EPackage {
 	int INTERFACE__ID = InfrastructurePackage.NETWORK__ID;
 
 	/**
+	 * The feature id for the '<em><b>Title</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERFACE__TITLE = InfrastructurePackage.NETWORK__TITLE;
+
+	/**
 	 * The feature id for the '<em><b>Kind</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -494,6 +548,15 @@ public interface HypervisorPackage extends EPackage {
 	 * @ordered
 	 */
 	int INTERFACE__ATTRIBUTES = InfrastructurePackage.NETWORK__ATTRIBUTES;
+
+	/**
+	 * The feature id for the '<em><b>Summary</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERFACE__SUMMARY = InfrastructurePackage.NETWORK__SUMMARY;
 
 	/**
 	 * The feature id for the '<em><b>Links</b></em>' containment reference list.
@@ -605,6 +668,15 @@ public interface HypervisorPackage extends EPackage {
 	int MACHINE_VIRTUAL_BOX__ID = MACHINE__ID;
 
 	/**
+	 * The feature id for the '<em><b>Title</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VIRTUAL_BOX__TITLE = MACHINE__TITLE;
+
+	/**
 	 * The feature id for the '<em><b>Kind</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -630,6 +702,15 @@ public interface HypervisorPackage extends EPackage {
 	 * @ordered
 	 */
 	int MACHINE_VIRTUAL_BOX__ATTRIBUTES = MACHINE__ATTRIBUTES;
+
+	/**
+	 * The feature id for the '<em><b>Summary</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VIRTUAL_BOX__SUMMARY = MACHINE__SUMMARY;
 
 	/**
 	 * The feature id for the '<em><b>Links</b></em>' containment reference list.
@@ -840,6 +921,15 @@ public interface HypervisorPackage extends EPackage {
 	int BRIDGE__ID = INTERFACE__ID;
 
 	/**
+	 * The feature id for the '<em><b>Title</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BRIDGE__TITLE = INTERFACE__TITLE;
+
+	/**
 	 * The feature id for the '<em><b>Kind</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -865,6 +955,15 @@ public interface HypervisorPackage extends EPackage {
 	 * @ordered
 	 */
 	int BRIDGE__ATTRIBUTES = INTERFACE__ATTRIBUTES;
+
+	/**
+	 * The feature id for the '<em><b>Summary</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BRIDGE__SUMMARY = INTERFACE__SUMMARY;
 
 	/**
 	 * The feature id for the '<em><b>Links</b></em>' containment reference list.
@@ -985,6 +1084,15 @@ public interface HypervisorPackage extends EPackage {
 	int USER__ID = INTERFACE__ID;
 
 	/**
+	 * The feature id for the '<em><b>Title</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USER__TITLE = INTERFACE__TITLE;
+
+	/**
 	 * The feature id for the '<em><b>Kind</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1010,6 +1118,15 @@ public interface HypervisorPackage extends EPackage {
 	 * @ordered
 	 */
 	int USER__ATTRIBUTES = INTERFACE__ATTRIBUTES;
+
+	/**
+	 * The feature id for the '<em><b>Summary</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USER__SUMMARY = INTERFACE__SUMMARY;
 
 	/**
 	 * The feature id for the '<em><b>Links</b></em>' containment reference list.
@@ -1121,6 +1238,15 @@ public interface HypervisorPackage extends EPackage {
 	int PARALLEL__ID = OCCIPackage.RESOURCE__ID;
 
 	/**
+	 * The feature id for the '<em><b>Title</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARALLEL__TITLE = OCCIPackage.RESOURCE__TITLE;
+
+	/**
 	 * The feature id for the '<em><b>Kind</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1146,6 +1272,15 @@ public interface HypervisorPackage extends EPackage {
 	 * @ordered
 	 */
 	int PARALLEL__ATTRIBUTES = OCCIPackage.RESOURCE__ATTRIBUTES;
+
+	/**
+	 * The feature id for the '<em><b>Summary</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARALLEL__SUMMARY = OCCIPackage.RESOURCE__SUMMARY;
 
 	/**
 	 * The feature id for the '<em><b>Links</b></em>' containment reference list.
@@ -1212,6 +1347,15 @@ public interface HypervisorPackage extends EPackage {
 	int SERIAL__ID = OCCIPackage.RESOURCE__ID;
 
 	/**
+	 * The feature id for the '<em><b>Title</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERIAL__TITLE = OCCIPackage.RESOURCE__TITLE;
+
+	/**
 	 * The feature id for the '<em><b>Kind</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1237,6 +1381,15 @@ public interface HypervisorPackage extends EPackage {
 	 * @ordered
 	 */
 	int SERIAL__ATTRIBUTES = OCCIPackage.RESOURCE__ATTRIBUTES;
+
+	/**
+	 * The feature id for the '<em><b>Summary</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERIAL__SUMMARY = OCCIPackage.RESOURCE__SUMMARY;
 
 	/**
 	 * The feature id for the '<em><b>Links</b></em>' containment reference list.
@@ -1303,6 +1456,15 @@ public interface HypervisorPackage extends EPackage {
 	int DIRECT__ID = INTERFACE__ID;
 
 	/**
+	 * The feature id for the '<em><b>Title</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIRECT__TITLE = INTERFACE__TITLE;
+
+	/**
 	 * The feature id for the '<em><b>Kind</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1328,6 +1490,15 @@ public interface HypervisorPackage extends EPackage {
 	 * @ordered
 	 */
 	int DIRECT__ATTRIBUTES = INTERFACE__ATTRIBUTES;
+
+	/**
+	 * The feature id for the '<em><b>Summary</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIRECT__SUMMARY = INTERFACE__SUMMARY;
 
 	/**
 	 * The feature id for the '<em><b>Links</b></em>' containment reference list.
@@ -1457,6 +1628,15 @@ public interface HypervisorPackage extends EPackage {
 	int ETHERNET__ID = OCCIPackage.RESOURCE__ID;
 
 	/**
+	 * The feature id for the '<em><b>Title</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ETHERNET__TITLE = OCCIPackage.RESOURCE__TITLE;
+
+	/**
 	 * The feature id for the '<em><b>Kind</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1482,6 +1662,15 @@ public interface HypervisorPackage extends EPackage {
 	 * @ordered
 	 */
 	int ETHERNET__ATTRIBUTES = OCCIPackage.RESOURCE__ATTRIBUTES;
+
+	/**
+	 * The feature id for the '<em><b>Summary</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ETHERNET__SUMMARY = OCCIPackage.RESOURCE__SUMMARY;
 
 	/**
 	 * The feature id for the '<em><b>Links</b></em>' containment reference list.
@@ -1539,6 +1728,15 @@ public interface HypervisorPackage extends EPackage {
 	int FILESYSTEM__ID = OCCIPackage.RESOURCE__ID;
 
 	/**
+	 * The feature id for the '<em><b>Title</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FILESYSTEM__TITLE = OCCIPackage.RESOURCE__TITLE;
+
+	/**
 	 * The feature id for the '<em><b>Kind</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1564,6 +1762,15 @@ public interface HypervisorPackage extends EPackage {
 	 * @ordered
 	 */
 	int FILESYSTEM__ATTRIBUTES = OCCIPackage.RESOURCE__ATTRIBUTES;
+
+	/**
+	 * The feature id for the '<em><b>Summary</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FILESYSTEM__SUMMARY = OCCIPackage.RESOURCE__SUMMARY;
 
 	/**
 	 * The feature id for the '<em><b>Links</b></em>' containment reference list.
