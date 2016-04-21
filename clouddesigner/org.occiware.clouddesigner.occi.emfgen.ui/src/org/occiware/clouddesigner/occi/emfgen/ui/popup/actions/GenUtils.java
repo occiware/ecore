@@ -165,6 +165,8 @@ public class GenUtils {
 		genModel.setEditorPluginID(editorPluginId);
 		genModel.setTestsPluginID(testsPluginId);
 		genModel.setRootExtendsInterface("org.eclipse.emf.ecore.EObject");
+		// Activate code generation for Ecore reflective and dynamic invocation of OCCI actions.
+		genModel.setOperationReflection(true);
 		genModel.getUsedGenPackages().addAll(usedGenPackages);
 		genModel.initialize(Collections.singleton(rootPackage));
 		GenPackage genPackage = genModel.getGenPackages().get(0);
