@@ -20,6 +20,7 @@ Require-Bundle: org.eclipse.ui,
  org.occiware.clouddesigner.occi.cloud.connector;bundle-version="0.1.0";visibility:=reexport,
  org.occiware.clouddesigner.occi.cloud.edit;bundle-version="0.1.0",
  org.occiware.clouddesigner.occi.design;bundle-version="0.1.0",
+ org.occiware.clouddesigner.occi.emfgen.ui;bundle-version="0.1.0",
  org.slf4j.api;bundle-version="1.7.2"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
