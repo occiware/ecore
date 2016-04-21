@@ -35,7 +35,8 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelectionCallback;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
-import org.eclipse.xtext.ui.XtextProjectHelper;
+//FIXME: don' build on Travis CI!
+// import org.eclipse.xtext.ui.XtextProjectHelper;
 import org.occiware.clouddesigner.occi.design.Activator;
 import org.occiware.clouddesigner.occi.design.Messages;
 
@@ -146,6 +147,8 @@ public final class WizardUtils {
 	public static void addXTextNature(final IProject project, final IProgressMonitor progressMonitor) throws CoreException
 	{
 		// add XText nature
-		addNature(project, XtextProjectHelper.NATURE_ID, progressMonitor);
+// FIXME: don' build on Travis CI!
+//		addNature(project, XtextProjectHelper.NATURE_ID, progressMonitor);
+		addNature(project, "org.eclipse.xtext.ui.shared.xtextNature", progressMonitor);
 	}
 }
