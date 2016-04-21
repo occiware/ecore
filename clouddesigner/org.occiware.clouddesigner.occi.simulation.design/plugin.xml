@@ -1,30 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.0"?>
+<!--
+Copyright (c) 2016 ???
+ 
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License v1.0
+which accompanies this distribution, and is available at
+http://www.eclipse.org/legal/epl-v10.html
+
+Contributors:
+- ???
+-->
 <plugin>
-  <extension point="org.eclipse.sirius.componentization">
-    <component class="org.occiware.clouddesigner.occi.simulation.design.Activator"
-               id="org.occiware.clouddesigner.occi.simulation.design"
-	       name="simulation">
-    </component>
-  </extension>
-  <extension point="org.eclipse.ui.newWizards">
-    <category
-        id = "org.occiware.clouddesigner"
-	    name="Cloud Designer">
-    </category>
-    <wizard
-            category="org.occiware.clouddesigner"
+
+   <!-- Register Sirius viewpoint. -->
+   <extension point="org.eclipse.sirius.componentization">
+      <component
+            class="org.occiware.clouddesigner.occi.simulation.design.Activator"
+            id="org.occiware.clouddesigner.occi.simulation.design"
+	        name="simulation"/>
+   </extension>
+
+   <!-- New wizard for creating a Simulation configuration file. -->
+   <extension point="org.eclipse.ui.newWizards">
+      <category
+            id = "org.occiware.clouddesigner.category.ID"
+	        name="Cloud Designer"/>
+      <wizard
+            category="org.occiware.clouddesigner.category.ID"
             class="org.occiware.clouddesigner.occi.simulation.design.wizard.NewConfigurationWizard"
-            icon="images/Configuration.gif"
+            icon="platform:/plugin/org.occiware.clouddesigner.occi.edit/icons/full/obj16/Configuration.gif"
             id="org.occiware.clouddesigner.occi.simulation.design.wizard.NewConfigurationWizard"
             name="Simulation Configuration File">
-     </wizard>
-     </extension>
-  <extension
-        point="org.eclipse.emf.ecore.factory_override">
-     <factory
-           class="org.occiware.clouddesigner.occi.simulation.cloudsim.handlers.Parser"
-           uri="http://occiware.org/simulation">
-     </factory>
-  </extension>
+      </wizard>
+   </extension>
+
+   <!-- Simulation with CloudSim. -->
+   <extension point="org.eclipse.emf.ecore.factory_override">
+      <factory
+            uri="http://occiware.org/simulation"
+            class="org.occiware.clouddesigner.occi.simulation.cloudsim.handlers.Parser"/>
+   </extension>
+
 </plugin>

@@ -13,20 +13,20 @@ Contributors:
 - Philippe Merle <philippe.merle@inria.fr>
 -->
 <plugin>
-   <extension
-         point="org.eclipse.ui.popupMenus">
+
+   <!-- Popup menu for generating EMF Tooling. -->
+   <extension point="org.eclipse.ui.popupMenus">
       <objectContribution
             id="org.occiware.clouddesigner.occi2ecore.contribution1"
             nameFilter="*.occie"
             objectClass="org.eclipse.core.resources.IFile">
-          <menu
-                id="org.occiware.clouddesigner.menu"
-                label="Cloud Designer"
-                path="additionsCloudDesigner">
-             <separator
-                   name="group">
-             </separator>
-             </menu>
+         <menu
+               id="org.occiware.clouddesigner.menu"
+               label="Cloud Designer"
+               path="additionsCloudDesigner">
+            <separator
+                  name="group"/>
+         </menu>
          <action
                class="org.occiware.clouddesigner.occi.emfgen.ui.popup.actions.ConvertAction"
                enablesFor="1"
@@ -36,20 +36,20 @@ Contributors:
          </action>
       </objectContribution>
    </extension>
-   <extension
-         point="org.eclipse.ui.popupMenus">
+
+   <!-- Popup menu for generating Sirius Designer. -->
+   <extension point="org.eclipse.ui.popupMenus">
       <objectContribution
             id="org.occiware.clouddesigner.occi2ecore.contribution2"
             nameFilter="*.ecore"
             objectClass="org.eclipse.core.resources.IFile">
-          <menu
-                id="org.occiware.clouddesigner.menu"
-                label="Cloud Designer"
-                path="additionsCloudDesigner">
-             <separator
-                   name="group">
-             </separator>
-             </menu>
+         <menu
+               id="org.occiware.clouddesigner.menu"
+               label="Cloud Designer"
+               path="additionsCloudDesigner">
+            <separator
+                  name="group"/>
+         </menu>
          <action
                class="org.occiware.clouddesigner.occi.emfgen.ui.popup.actions.GenerateDesignAction"
                enablesFor="1"
@@ -59,4 +59,5 @@ Contributors:
          </action>
       </objectContribution>
    </extension>
+
 </plugin>

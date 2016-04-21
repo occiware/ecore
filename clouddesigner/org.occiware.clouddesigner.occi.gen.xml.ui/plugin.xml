@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
+<!--
+  Copyright (c) 2015-2016 Inria
+
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+  - Philippe Merle <philippe.merle@inria.fr>
+-->
 <plugin>
+
+   <!-- Popup menu for generating erocci extension files. -->
    <extension point="org.eclipse.ui.popupMenus">
       <objectContribution
             adaptable="true"
@@ -8,7 +21,7 @@
             nameFilter="*.occie"
             id="org.occiware.clouddesigner.occi.gen.xml.ui.popupMenus.contribution.IFile">
          <menu id="org.occiware.clouddesigner.menu" label="Cloud Designer" path="additionsCloudDesigner">
-               <separator name="group"/>
+            <separator name="group"/>
          </menu>
          <action
                class="org.occiware.clouddesigner.occi.gen.xml.ui.popupMenus.AcceleoGenerateXmlAction"
@@ -19,4 +32,5 @@
                menubarPath="org.occiware.clouddesigner.menu/group"/>
       </objectContribution>
    </extension>
+
 </plugin>

@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.0"?>
-
-
 <!--
 Copyright (c) 2015-2016 Inria
  
@@ -13,25 +11,28 @@ http://www.eclipse.org/legal/epl-v10.html
 Contributors:
 - Philippe Merle <philippe.merle@inria.fr>
 -->
-
 <plugin>
-  <extension point="org.eclipse.sirius.componentization">
-    <component class="org.occiware.clouddesigner.occi.connector.jocci.Activator"
-               id="org.occiware.clouddesigner.occi.connector.jocci"
-	           name="jocci">
-    </component>
-  </extension>
-  <extension point="org.eclipse.ui.newWizards">
-    <category
-        id = "org.occiware.clouddesigner"
-	    name="Cloud Designer">
-    </category>
-    <wizard
-            category="org.occiware.clouddesigner"
+
+   <!-- Register Sirius viewpoint. -->
+   <extension point="org.eclipse.sirius.componentization">
+      <component
+            class="org.occiware.clouddesigner.occi.connector.jocci.Activator"
+            id="org.occiware.clouddesigner.occi.connector.jocci"
+	        name="jocci"/>
+   </extension>
+
+   <!-- New wizard for creating an OCCI Configuration file. -->
+   <extension point="org.eclipse.ui.newWizards">
+      <category
+            id="org.occiware.clouddesigner.category.ID"
+	        name="Cloud Designer"/>
+      <wizard
+            category="org.occiware.clouddesigner.category.ID"
             class="org.occiware.clouddesigner.occi.connector.jocci.wizards.NewConfigurationWizard"
-            icon="platform:/plugin/org.occiware.clouddesigner.occi.design/images/Configuration.gif"
+            icon="platform:/plugin/org.occiware.clouddesigner.occi.edit/icons/full/obj16/Configuration.gif"
             id="org.occiware.clouddesigner.occi.connector.jocci.wizard.NewConfigurationWizard"
             name="OCCI Configuration File with jOCCI connector">
-     </wizard>
+      </wizard>
    </extension>
+
  </plugin>

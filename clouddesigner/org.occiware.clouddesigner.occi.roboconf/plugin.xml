@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.0"?>
-
 <!--
 Copyright (c) 2015-2016 Inria
  
@@ -12,12 +11,14 @@ http://www.eclipse.org/legal/epl-v10.html
 Contributors:
 - Philippe Merle <philippe.merle@inria.fr>
 -->
-
 <plugin>
+
+   <!-- Define URI mapping. -->
    <extension point="org.occiware.clouddesigner.occi.occie">
       <occie file="model/Roboconf.occie" scheme="http://www.occiware.org/roboconf#"/>
    </extension>
   
+   <!-- Register the Roboconf extension. -->
    <extension point="org.eclipse.emf.ecore.uri_mapping" >
       <mapping source="http://www.occiware.org/roboconf" target="platform:/plugin/org.occiware.clouddesigner.occi.roboconf/model/Roboconf.occie"/>
    </extension>

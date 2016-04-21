@@ -12,8 +12,12 @@
   - Philippe Merle <philippe.merle@inria.fr>
 -->
 <plugin>
-  <extension point="org.eclipse.emf.ecore.factory_override">
-    <factory class="org.occiware.clouddesigner.occi.infrastructure.connector.dummy.ConnectorFactory"
-             uri="http://schemas.ogf.org/occi/infrastructure/ecore"/>
-  </extension>
+
+   <!-- Register factory for the Infrastructure dummy connector. -->
+   <extension point="org.eclipse.emf.ecore.factory_override">
+      <factory
+            uri="http://schemas.ogf.org/occi/infrastructure/ecore"
+            class="org.occiware.clouddesigner.occi.infrastructure.connector.dummy.ConnectorFactory"/>
+   </extension>
+
 </plugin>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.0"?>
-
 <!--
 Copyright (c) 2015-2016 Obeo, Inria
  
@@ -13,9 +12,9 @@ Contributors:
 - William Piers <william.piers@obeo.fr>
 - Philippe Merle <philippe.merle@inria.fr>
 -->
-
 <plugin>
 
+   <!-- Register factories for the EMF Edit framework. -->
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <!-- @generated Infrastructure -->
       <factory

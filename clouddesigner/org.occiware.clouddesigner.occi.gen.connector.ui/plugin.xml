@@ -11,22 +11,24 @@
   Contributors:
   - Philippe Merle <philippe.merle@inria.fr>
 -->
-
 <plugin>
+
+   <!-- New wizard for create a Java-based Connector project. -->
    <extension point="org.eclipse.ui.newWizards">
       <category
-        id = "org.occiware.clouddesigner"
-	    name="Cloud Designer">
+            id = "org.occiware.clouddesigner.category.ID"
+	        name="Cloud Designer">
       </category>
       <wizard
             class="org.occiware.clouddesigner.occi.gen.connector.ui.wizards.NewConnectorWizard"
             icon="icons/ConnectorProject.gif"
             id="org.occiware.clouddesigner.occi.gen.connector.ui.wizards.NewConnectorWizard"
             name="Java Connector Project"
-            category="org.occiware.clouddesigner"
+            category="org.occiware.clouddesigner.category.ID"
             project="true">
          <description>Create a new Java project to implement a connector for an OCCI Extension.</description>
          <selection class="org.eclipse.core.resources.IResource"/>
       </wizard>
    </extension>
+
  </plugin>

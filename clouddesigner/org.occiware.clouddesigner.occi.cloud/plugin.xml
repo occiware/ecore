@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.0"?>
-
 <!--
 Copyright (c) 2015-2016 Inria
  
@@ -13,8 +12,9 @@ Contributors:
 - Fawaz Paraiso <fawaz.paraiso@inria.fr>
 - Philippe Merle <philippe.merle@inria.fr>
 -->
-
 <plugin>
+
+    <!-- Register Cloud Extension metamodel. -->
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated Cloud -->
       <package
@@ -22,19 +22,24 @@ Contributors:
             class="org.occiware.clouddesigner.occi.cloud.CloudPackage"
             genModel="model/Cloud.genmodel"/>
    </extension>
+
+   <!-- Register the parser for .cloud files. -->
    <extension point="org.eclipse.emf.ecore.extension_parser">
       <parser
             type="cloud"
             class="org.occiware.clouddesigner.occi.util.OCCIResourceFactoryImpl"/>
    </extension>
-   <extension
-         point="org.occiware.clouddesigner.occi.occie">
-      <occie
-            file="model/Cloud.occie"
-            scheme="http://occiware.org/occi/cloud/ecore#">
-      </occie>
+
+   <!-- Register the Cloud Extension. -->
+   <extension point="org.occiware.clouddesigner.occi.occie">
+      <occie scheme="http://occiware.org/occi/cloud/ecore#" file="model/Cloud.occie"/>
    </extension>
+
+   <!-- Define URI mapping. -->
    <extension point="org.eclipse.emf.ecore.uri_mapping" >
-      <mapping source="http://occiware.org/occi/cloud/ecore" target="platform:/plugin/org.occiware.clouddesigner.occi.cloud/model/Cloud.occie"/>
+      <mapping
+            source="http://occiware.org/occi/cloud/ecore"
+            target="platform:/plugin/org.occiware.clouddesigner.occi.cloud/model/Cloud.occie"/>
    </extension>
+
 </plugin>

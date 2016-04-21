@@ -1,44 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.0"?>
+<!--
+Copyright (c) 2015-2016 Inria
+ 
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License v1.0
+which accompanies this distribution, and is available at
+http://www.eclipse.org/legal/epl-v10.html
+
+Contributors:
+- Fawaz Paraiso <fawaz.paraiso@inria.fr>
+- Philippe Merle <philippe.merle@inria.fr>
+-->
 <plugin>
-  <extension point="org.eclipse.sirius.componentization">
-    <component class="org.occiware.clouddesigner.occi.docker.design.Activator"
-               id="org.occiware.clouddesigner.occi.docker.design"
-	       name="docker">
-    </component>
-  </extension>
-    <extension point="org.eclipse.ui.newWizards">
+
+   <!-- Register Sirius viewpoint. -->
+   <extension point="org.eclipse.sirius.componentization">
+      <component
+            class="org.occiware.clouddesigner.occi.docker.design.Activator"
+            id="org.occiware.clouddesigner.occi.docker.design"
+	        name="docker"/>
+   </extension>
+ 
+   <!-- New wizard for creating a Docker configuration file. -->
+   <extension point="org.eclipse.ui.newWizards">
       <category
-        id = "org.occiware.clouddesigner"
-	    name="Cloud Designer">
+            id="org.occiware.clouddesigner.category.ID"
+            name="Cloud Designer">
       </category>
-     <wizard
-            category="org.occiware.clouddesigner"
+      <wizard
+            category="org.occiware.clouddesigner.category.ID"
             class="org.occiware.clouddesigner.occi.docker.design.wizard.NewConfigurationWizard"
-            icon="images/Configuration.gif"
+            icon="platform:/plugin/org.occiware.clouddesigner.occi.edit/icons/full/obj16/Configuration.gif"
             id="org.occiware.clouddesigner.occi.docker.design.wizard.NewConfigurationWizard"
             name="Docker Configuration File">
       </wizard>
+
    </extension>
-      <extension
-         point="org.eclipse.ui.popupMenus">
+ 
+   <!-- Popup menu for converting to an OCCI Configuration file. -->
+   <extension point="org.eclipse.ui.popupMenus">
       <objectContribution
             id="org.occiware.clouddesigner.occi.docker.design.contribution"
             nameFilter="*.docker"
             objectClass="org.eclipse.core.resources.IFile">
-          <menu
-                id="org.occiware.clouddesigner.menu"
-                label="Cloud Designer"
-                path="additionsCloudDesigner">
-             <separator
-                   name="group">
-             </separator>
-             </menu>
+         <menu
+               id="org.occiware.clouddesigner.menu"
+               label="Cloud Designer"
+               path="additionsCloudDesigner">
+            <separator
+                  name="group"/>
+         </menu>
          <action
                class="org.occiware.clouddesigner.occi.emfgen.ui.popup.actions.Ecore2OCCIAction"
                enablesFor="1"
                id="org.occiware.clouddesigner.occi.docker.ecore2occi"
-               label="Convert to standard OCCI Configuration File"
+               label="Convert to an OCCI Configuration file"
                menubarPath="org.occiware.clouddesigner.menu/group">
          </action>
       </objectContribution>
