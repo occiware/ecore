@@ -344,9 +344,6 @@ public class Main extends AbstractAcceleoGenerator {
         if (!isInWorkspace(org.eclipse.emf.ecore.EcorePackage.class)) {
             resourceSet.getPackageRegistry().put(org.eclipse.emf.ecore.EcorePackage.eINSTANCE.getNsURI(), org.eclipse.emf.ecore.EcorePackage.eINSTANCE);
         }
-        if (!isInWorkspace(org.occiware.clouddesigner.occi.OCCIPackage.class)) {
-            resourceSet.getPackageRegistry().put(org.occiware.clouddesigner.occi.OCCIPackage.eINSTANCE.getNsURI(), org.occiware.clouddesigner.occi.OCCIPackage.eINSTANCE);
-        }
         
         /*
          * If you want to change the content of this method, do NOT forget to change the "@generated"

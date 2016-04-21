@@ -27,7 +27,9 @@
 package [targetPackageName/];
 
 /**
- * Connector EFactory for OCCI extension named [extension.name/] with scheme [extension.scheme/].
+ * Connector EFactory for the OCCI extension:
+ * - name: [extension.name/]
+ * - scheme: [extension.scheme/]
  */
 public class ConnectorFactory extends [extendedPackageName/].impl.[toU1Case(extension.name)/]FactoryImpl
 {
@@ -40,7 +42,10 @@ public class ConnectorFactory extends [extendedPackageName/].impl.[toU1Case(exte
 
 [template public generateCreateKindMethod(kind : Kind, extension : Extension, extendedPackageName : String)]
 	/**
-	 * EFactory method for OCCI kind [kind.scheme/][kind.term/].
+	 * EFactory method for OCCI kind:
+	 * - scheme: [kind.scheme/]
+	 * - term: [kind.term/]
+	 * - title: [kind.title/]
 	 */
 	@Override
 [let kindClassName : String = toU1Case(kind.term)]
@@ -71,7 +76,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Connector implementation for OCCI kind [kind.scheme/][kind.term/].
+ * Connector implementation for the OCCI kind:
+ * - scheme: [kind.scheme/]
+ * - term: [kind.term/]
+ * - title: [kind.title/]
  */
 [let kindClassName : String = toU1Case(kind.term)]
 public class [kindClassName/]Connector extends [extendedPackageName/].impl.[kindClassName/]Impl
@@ -89,6 +97,58 @@ public class [kindClassName/]Connector extends [extendedPackageName/].impl.[kind
 		LOGGER.debug("Constructor called on " + this);
 	}
 
+	//
+	// OCCI CRUD callback operations.
+	//
+
+	/**
+	 * Called when this [kindClassName/] instance is completely created.
+	 */
+	@Override
+	public void occiCreate()
+	{
+		LOGGER.debug("occiCreate() called on " + this);
+
+		// TODO: Implement this callback or remove this method.
+	}
+
+	/**
+	 * Called when this [kindClassName/] instance must be retrieved.
+	 */
+	@Override
+	public void occiRetrieve()
+	{
+		LOGGER.debug("occiRetrieve() called on " + this);
+
+		// TODO: Implement this callback or remove this method.
+	}
+
+	/**
+	 * Called when this [kindClassName/] instance is completely updated.
+	 */
+	@Override
+	public void occiUpdate()
+	{
+		LOGGER.debug("occiUpdate() called on " + this);
+
+		// TODO: Implement this callback or remove this method.
+	}
+
+	/**
+	 * Called when this [kindClassName/] instance will be deleted.
+	 */
+	@Override
+	public void occiDelete()
+	{
+		LOGGER.debug("occiDelete() called on " + this);
+
+		// TODO: Implement this callback or remove this method.
+	}
+
+	//
+	// [kindClassName/] actions.
+	//
+
 [for (action : Action | kind.actions)]
 [generateActionMethod(action, kind, extendedPackageName)/]
 [/for]
@@ -99,12 +159,15 @@ public class [kindClassName/]Connector extends [extendedPackageName/].impl.[kind
 
 [template public generateActionMethod(action : Action, kind : Kind, extendedPackageName : String)]
 	/**
-	 * OCCI action [action.scheme/][action.term/].
+	 * Implement OCCI action:
+     * - scheme: [action.scheme/]
+     * - term: [action.term/]
+     * - title: [action.title/]
 	 */
 	@Override
 	public void [action.term/]([for (parameter : Attribute | action.attributes) separator(', ')]final [getJavaTypeName(parameter)/] [parameter.name/][/for])
 	{
-		LOGGER.debug("Action [action.term/]("[for (parameter : Attribute | action.attributes)] + "[parameter.name/]=" + [parameter.name/][/for] + ") called on " + this);
+		LOGGER.debug("Action [action.term/]([if (action.attributes->size() > 0)]"[for (parameter : Attribute | action.attributes)] + "[parameter.name/]=" + [parameter.name/][/for] + "[/if]) called on " + this);
 
 		// TODO: Implement how to [action.term/] this [kind.term/].
 	}
