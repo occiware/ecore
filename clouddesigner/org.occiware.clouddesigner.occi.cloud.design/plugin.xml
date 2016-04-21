@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.0"?>
 <plugin>
-   <extension point="org.eclipse.emf.ecore.factory_override">
-      <factory class="org.occiware.clouddesigner.occi.cloud.connector.ExecutableCloudFactory"
-            uri="http://occiware.org/occi/cloud/ecore">
-      </factory>
-   </extension>
   <extension point="org.eclipse.sirius.componentization">
     <component class="org.occiware.clouddesigner.occi.cloud.design.Activator"
                id="org.occiware.clouddesigner.occi.cloud.design"
@@ -21,8 +16,30 @@
             category="org.occiware.clouddesigner"
             class="org.occiware.clouddesigner.occi.cloud.design.wizard.NewConfigurationWizard"
             icon="images/Configuration.gif"
-            id="org.occiware.clouddesigner.occi.cloud.design.wizard.NewConfigurationWizard"
+            id="org.occiware.clouddesigner.occi.hypervisor.ecore2occi"
             name="Cloud Configuration File">
       </wizard>
    </extension>
+    <extension
+          point="org.eclipse.ui.popupMenus">
+       <objectContribution
+             id="org.occiware.clouddesigner.occi.cloud.design.contribution1"
+             objectClass="org.eclipse.core.resources.IFile">
+          <menu
+                id="org.occiware.clouddesigner.occi.cloud.design.menu"
+                label="Cloud Designer"
+                path="additionsCloudDesigner">
+             <separator
+                   name="group">
+             </separator>
+          </menu>
+          <action
+                class="org.occiware.clouddesigner.occi.cloud.design.popup.actions.NewAction"
+                enablesFor="1"
+                id="org.occiware.clouddesigner.occi.cloud.design.newAction"
+                label="Convert to standard OCCI Configuration File"
+                menubarPath="org.occiware.clouddesigner.menu/group">
+          </action>
+       </objectContribution>
+    </extension>
 </plugin>
