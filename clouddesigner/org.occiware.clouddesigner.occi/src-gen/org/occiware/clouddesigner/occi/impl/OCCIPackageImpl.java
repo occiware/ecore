@@ -568,8 +568,8 @@ public class OCCIPackageImpl extends EPackageImpl implements OCCIPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getEntity_Kind() {
-		return (EReference)entityEClass.getEStructuralFeatures().get(1);
+	public EAttribute getEntity_Title() {
+		return (EAttribute)entityEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -577,7 +577,7 @@ public class OCCIPackageImpl extends EPackageImpl implements OCCIPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getEntity_Mixins() {
+	public EReference getEntity_Kind() {
 		return (EReference)entityEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -586,7 +586,7 @@ public class OCCIPackageImpl extends EPackageImpl implements OCCIPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getEntity_Attributes() {
+	public EReference getEntity_Mixins() {
 		return (EReference)entityEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -595,7 +595,16 @@ public class OCCIPackageImpl extends EPackageImpl implements OCCIPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getEntity__AttributesNameUnique__DiagnosticChain_Map() {
+	public EReference getEntity_Attributes() {
+		return (EReference)entityEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getEntity__OcciCreate() {
 		return entityEClass.getEOperations().get(0);
 	}
 
@@ -604,7 +613,7 @@ public class OCCIPackageImpl extends EPackageImpl implements OCCIPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getEntity__KindCompatibleWithOneAppliesOfEachMixin__DiagnosticChain_Map() {
+	public EOperation getEntity__OcciRetrieve() {
 		return entityEClass.getEOperations().get(1);
 	}
 
@@ -613,8 +622,44 @@ public class OCCIPackageImpl extends EPackageImpl implements OCCIPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getEntity__IdUnique__DiagnosticChain_Map() {
+	public EOperation getEntity__OcciUpdate() {
 		return entityEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getEntity__OcciDelete() {
+		return entityEClass.getEOperations().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getEntity__AttributesNameUnique__DiagnosticChain_Map() {
+		return entityEClass.getEOperations().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getEntity__KindCompatibleWithOneAppliesOfEachMixin__DiagnosticChain_Map() {
+		return entityEClass.getEOperations().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getEntity__IdUnique__DiagnosticChain_Map() {
+		return entityEClass.getEOperations().get(6);
 	}
 
 	/**
@@ -658,8 +703,17 @@ public class OCCIPackageImpl extends EPackageImpl implements OCCIPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getResource_Summary() {
+		return (EAttribute)resourceEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getResource_Links() {
-		return (EReference)resourceEClass.getEStructuralFeatures().get(0);
+		return (EReference)resourceEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1030,9 +1084,14 @@ public class OCCIPackageImpl extends EPackageImpl implements OCCIPackage {
 
 		entityEClass = createEClass(ENTITY);
 		createEAttribute(entityEClass, ENTITY__ID);
+		createEAttribute(entityEClass, ENTITY__TITLE);
 		createEReference(entityEClass, ENTITY__KIND);
 		createEReference(entityEClass, ENTITY__MIXINS);
 		createEReference(entityEClass, ENTITY__ATTRIBUTES);
+		createEOperation(entityEClass, ENTITY___OCCI_CREATE);
+		createEOperation(entityEClass, ENTITY___OCCI_RETRIEVE);
+		createEOperation(entityEClass, ENTITY___OCCI_UPDATE);
+		createEOperation(entityEClass, ENTITY___OCCI_DELETE);
 		createEOperation(entityEClass, ENTITY___ATTRIBUTES_NAME_UNIQUE__DIAGNOSTICCHAIN_MAP);
 		createEOperation(entityEClass, ENTITY___KIND_COMPATIBLE_WITH_ONE_APPLIES_OF_EACH_MIXIN__DIAGNOSTICCHAIN_MAP);
 		createEOperation(entityEClass, ENTITY___ID_UNIQUE__DIAGNOSTICCHAIN_MAP);
@@ -1042,6 +1101,7 @@ public class OCCIPackageImpl extends EPackageImpl implements OCCIPackage {
 		createEAttribute(attributeStateEClass, ATTRIBUTE_STATE__VALUE);
 
 		resourceEClass = createEClass(RESOURCE);
+		createEAttribute(resourceEClass, RESOURCE__SUMMARY);
 		createEReference(resourceEClass, RESOURCE__LINKS);
 		createEOperation(resourceEClass, RESOURCE___RESOURCE_KIND_IS_IN_PARENT__DIAGNOSTICCHAIN_MAP);
 
@@ -1265,9 +1325,18 @@ public class OCCIPackageImpl extends EPackageImpl implements OCCIPackage {
 
 		initEClass(entityEClass, Entity.class, "Entity", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getEntity_Id(), this.getURI(), "id", null, 1, 1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEntity_Title(), this.getString(), "title", null, 0, 1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEntity_Kind(), this.getKind(), null, "kind", null, 1, 1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEntity_Mixins(), this.getMixin(), null, "mixins", null, 0, -1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEntity_Attributes(), this.getAttributeState(), null, "attributes", null, 0, -1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEOperation(getEntity__OcciCreate(), null, "occiCreate", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getEntity__OcciRetrieve(), null, "occiRetrieve", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getEntity__OcciUpdate(), null, "occiUpdate", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getEntity__OcciDelete(), null, "occiDelete", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = initEOperation(getEntity__AttributesNameUnique__DiagnosticChain_Map(), ecorePackage.getEBoolean(), "AttributesNameUnique", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -1301,6 +1370,7 @@ public class OCCIPackageImpl extends EPackageImpl implements OCCIPackage {
 		initEAttribute(getAttributeState_Value(), this.getString(), "value", null, 1, 1, AttributeState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(resourceEClass, Resource.class, "Resource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getResource_Summary(), this.getString(), "summary", null, 0, 1, Resource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getResource_Links(), this.getLink(), this.getLink_Source(), "links", null, 0, -1, Resource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		op = initEOperation(getResource__ResourceKindIsInParent__DiagnosticChain_Map(), ecorePackage.getEBoolean(), "ResourceKindIsInParent", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -1485,7 +1555,7 @@ public class OCCIPackageImpl extends EPackageImpl implements OCCIPackage {
 		  (this, 
 		   source, 
 		   new String[] {
-			 "ecore", "http://www.eclipse.org/emf/2002/Ecore"
+			 "ecore", "http://www.eclipse.org/emf/2002/Ecore#/"
 		   });
 	}
 

@@ -33,7 +33,7 @@ import org.eclipse.emf.ecore.EReference;
  * <!-- end-user-doc -->
  * @see org.occiware.clouddesigner.occi.OCCIFactory
  * @model kind="package"
- *        annotation="http://www.eclipse.org/OCL/Import ecore='http://www.eclipse.org/emf/2002/Ecore'"
+ *        annotation="http://www.eclipse.org/OCL/Import ecore='http://www.eclipse.org/emf/2002/Ecore#/'"
  * @generated
  */
 public interface OCCIPackage extends EPackage {
@@ -697,13 +697,22 @@ public interface OCCIPackage extends EPackage {
 	int ENTITY__ID = 0;
 
 	/**
+	 * The feature id for the '<em><b>Title</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY__TITLE = 1;
+
+	/**
 	 * The feature id for the '<em><b>Kind</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENTITY__KIND = 1;
+	int ENTITY__KIND = 2;
 
 	/**
 	 * The feature id for the '<em><b>Mixins</b></em>' reference list.
@@ -712,7 +721,7 @@ public interface OCCIPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENTITY__MIXINS = 2;
+	int ENTITY__MIXINS = 3;
 
 	/**
 	 * The feature id for the '<em><b>Attributes</b></em>' containment reference list.
@@ -721,7 +730,7 @@ public interface OCCIPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENTITY__ATTRIBUTES = 3;
+	int ENTITY__ATTRIBUTES = 4;
 
 	/**
 	 * The number of structural features of the '<em>Entity</em>' class.
@@ -730,7 +739,43 @@ public interface OCCIPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENTITY_FEATURE_COUNT = 4;
+	int ENTITY_FEATURE_COUNT = 5;
+
+	/**
+	 * The operation id for the '<em>Occi Create</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY___OCCI_CREATE = 0;
+
+	/**
+	 * The operation id for the '<em>Occi Retrieve</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY___OCCI_RETRIEVE = 1;
+
+	/**
+	 * The operation id for the '<em>Occi Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY___OCCI_UPDATE = 2;
+
+	/**
+	 * The operation id for the '<em>Occi Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY___OCCI_DELETE = 3;
 
 	/**
 	 * The operation id for the '<em>Attributes Name Unique</em>' operation.
@@ -739,7 +784,7 @@ public interface OCCIPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENTITY___ATTRIBUTES_NAME_UNIQUE__DIAGNOSTICCHAIN_MAP = 0;
+	int ENTITY___ATTRIBUTES_NAME_UNIQUE__DIAGNOSTICCHAIN_MAP = 4;
 
 	/**
 	 * The operation id for the '<em>Kind Compatible With One Applies Of Each Mixin</em>' operation.
@@ -748,7 +793,7 @@ public interface OCCIPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENTITY___KIND_COMPATIBLE_WITH_ONE_APPLIES_OF_EACH_MIXIN__DIAGNOSTICCHAIN_MAP = 1;
+	int ENTITY___KIND_COMPATIBLE_WITH_ONE_APPLIES_OF_EACH_MIXIN__DIAGNOSTICCHAIN_MAP = 5;
 
 	/**
 	 * The operation id for the '<em>Id Unique</em>' operation.
@@ -757,7 +802,7 @@ public interface OCCIPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENTITY___ID_UNIQUE__DIAGNOSTICCHAIN_MAP = 2;
+	int ENTITY___ID_UNIQUE__DIAGNOSTICCHAIN_MAP = 6;
 
 	/**
 	 * The number of operations of the '<em>Entity</em>' class.
@@ -766,7 +811,7 @@ public interface OCCIPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENTITY_OPERATION_COUNT = 3;
+	int ENTITY_OPERATION_COUNT = 7;
 
 	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.impl.AttributeStateImpl <em>Attribute State</em>}' class.
@@ -834,6 +879,15 @@ public interface OCCIPackage extends EPackage {
 	int RESOURCE__ID = ENTITY__ID;
 
 	/**
+	 * The feature id for the '<em><b>Title</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE__TITLE = ENTITY__TITLE;
+
+	/**
 	 * The feature id for the '<em><b>Kind</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -861,13 +915,22 @@ public interface OCCIPackage extends EPackage {
 	int RESOURCE__ATTRIBUTES = ENTITY__ATTRIBUTES;
 
 	/**
+	 * The feature id for the '<em><b>Summary</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE__SUMMARY = ENTITY_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>Links</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE__LINKS = ENTITY_FEATURE_COUNT + 0;
+	int RESOURCE__LINKS = ENTITY_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Resource</em>' class.
@@ -876,7 +939,43 @@ public interface OCCIPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_FEATURE_COUNT = ENTITY_FEATURE_COUNT + 1;
+	int RESOURCE_FEATURE_COUNT = ENTITY_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Occi Create</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE___OCCI_CREATE = ENTITY___OCCI_CREATE;
+
+	/**
+	 * The operation id for the '<em>Occi Retrieve</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE___OCCI_RETRIEVE = ENTITY___OCCI_RETRIEVE;
+
+	/**
+	 * The operation id for the '<em>Occi Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE___OCCI_UPDATE = ENTITY___OCCI_UPDATE;
+
+	/**
+	 * The operation id for the '<em>Occi Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE___OCCI_DELETE = ENTITY___OCCI_DELETE;
 
 	/**
 	 * The operation id for the '<em>Attributes Name Unique</em>' operation.
@@ -943,6 +1042,15 @@ public interface OCCIPackage extends EPackage {
 	int LINK__ID = ENTITY__ID;
 
 	/**
+	 * The feature id for the '<em><b>Title</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINK__TITLE = ENTITY__TITLE;
+
+	/**
 	 * The feature id for the '<em><b>Kind</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -995,6 +1103,42 @@ public interface OCCIPackage extends EPackage {
 	 * @ordered
 	 */
 	int LINK_FEATURE_COUNT = ENTITY_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Occi Create</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINK___OCCI_CREATE = ENTITY___OCCI_CREATE;
+
+	/**
+	 * The operation id for the '<em>Occi Retrieve</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINK___OCCI_RETRIEVE = ENTITY___OCCI_RETRIEVE;
+
+	/**
+	 * The operation id for the '<em>Occi Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINK___OCCI_UPDATE = ENTITY___OCCI_UPDATE;
+
+	/**
+	 * The operation id for the '<em>Occi Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINK___OCCI_DELETE = ENTITY___OCCI_DELETE;
 
 	/**
 	 * The operation id for the '<em>Attributes Name Unique</em>' operation.
@@ -1734,6 +1878,17 @@ public interface OCCIPackage extends EPackage {
 	EAttribute getEntity_Id();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.Entity#getTitle <em>Title</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Title</em>'.
+	 * @see org.occiware.clouddesigner.occi.Entity#getTitle()
+	 * @see #getEntity()
+	 * @generated
+	 */
+	EAttribute getEntity_Title();
+
+	/**
 	 * Returns the meta object for the reference '{@link org.occiware.clouddesigner.occi.Entity#getKind <em>Kind</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1765,6 +1920,46 @@ public interface OCCIPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getEntity_Attributes();
+
+	/**
+	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.Entity#occiCreate() <em>Occi Create</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Occi Create</em>' operation.
+	 * @see org.occiware.clouddesigner.occi.Entity#occiCreate()
+	 * @generated
+	 */
+	EOperation getEntity__OcciCreate();
+
+	/**
+	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.Entity#occiRetrieve() <em>Occi Retrieve</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Occi Retrieve</em>' operation.
+	 * @see org.occiware.clouddesigner.occi.Entity#occiRetrieve()
+	 * @generated
+	 */
+	EOperation getEntity__OcciRetrieve();
+
+	/**
+	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.Entity#occiUpdate() <em>Occi Update</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Occi Update</em>' operation.
+	 * @see org.occiware.clouddesigner.occi.Entity#occiUpdate()
+	 * @generated
+	 */
+	EOperation getEntity__OcciUpdate();
+
+	/**
+	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.Entity#occiDelete() <em>Occi Delete</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Occi Delete</em>' operation.
+	 * @see org.occiware.clouddesigner.occi.Entity#occiDelete()
+	 * @generated
+	 */
+	EOperation getEntity__OcciDelete();
 
 	/**
 	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.Entity#AttributesNameUnique(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Attributes Name Unique</em>}' operation.
@@ -1837,6 +2032,17 @@ public interface OCCIPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getResource();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.Resource#getSummary <em>Summary</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Summary</em>'.
+	 * @see org.occiware.clouddesigner.occi.Resource#getSummary()
+	 * @see #getResource()
+	 * @generated
+	 */
+	EAttribute getResource_Summary();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link org.occiware.clouddesigner.occi.Resource#getLinks <em>Links</em>}'.
@@ -2532,6 +2738,14 @@ public interface OCCIPackage extends EPackage {
 		EAttribute ENTITY__ID = eINSTANCE.getEntity_Id();
 
 		/**
+		 * The meta object literal for the '<em><b>Title</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ENTITY__TITLE = eINSTANCE.getEntity_Title();
+
+		/**
 		 * The meta object literal for the '<em><b>Kind</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2554,6 +2768,38 @@ public interface OCCIPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ENTITY__ATTRIBUTES = eINSTANCE.getEntity_Attributes();
+
+		/**
+		 * The meta object literal for the '<em><b>Occi Create</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ENTITY___OCCI_CREATE = eINSTANCE.getEntity__OcciCreate();
+
+		/**
+		 * The meta object literal for the '<em><b>Occi Retrieve</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ENTITY___OCCI_RETRIEVE = eINSTANCE.getEntity__OcciRetrieve();
+
+		/**
+		 * The meta object literal for the '<em><b>Occi Update</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ENTITY___OCCI_UPDATE = eINSTANCE.getEntity__OcciUpdate();
+
+		/**
+		 * The meta object literal for the '<em><b>Occi Delete</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ENTITY___OCCI_DELETE = eINSTANCE.getEntity__OcciDelete();
 
 		/**
 		 * The meta object literal for the '<em><b>Attributes Name Unique</b></em>' operation.
@@ -2614,6 +2860,14 @@ public interface OCCIPackage extends EPackage {
 		 * @generated
 		 */
 		EClass RESOURCE = eINSTANCE.getResource();
+
+		/**
+		 * The meta object literal for the '<em><b>Summary</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute RESOURCE__SUMMARY = eINSTANCE.getResource_Summary();
 
 		/**
 		 * The meta object literal for the '<em><b>Links</b></em>' containment reference list feature.

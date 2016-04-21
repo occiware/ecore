@@ -69,6 +69,8 @@ import org.occiware.clouddesigner.occi.OCCIKindResolver;
 import org.occiware.clouddesigner.occi.impl.AttributeStateImpl;
 import org.occiware.clouddesigner.occi.util.Occi2Ecore;
 import org.occiware.clouddesigner.occi.util.OcciHelper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <!-- begin-user-doc -->
@@ -79,6 +81,7 @@ import org.occiware.clouddesigner.occi.util.OcciHelper;
  * </p>
  * <ul>
  *   <li>{@link org.occiware.clouddesigner.occi.impl.EntityImpl#getId <em>Id</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.impl.EntityImpl#getTitle <em>Title</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.impl.EntityImpl#getKind <em>Kind</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.impl.EntityImpl#getMixins <em>Mixins</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.impl.EntityImpl#getAttributes <em>Attributes</em>}</li>
@@ -87,6 +90,11 @@ import org.occiware.clouddesigner.occi.util.OcciHelper;
  * @generated
  */
 public abstract class EntityImpl extends MinimalEObjectImpl.Container implements Entity {
+	/**
+	 * Initialize the logger.
+	 */
+	private static Logger LOGGER = LoggerFactory.getLogger(EntityImpl.class);
+
 	/**
 	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -106,6 +114,26 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 	 * @ordered
 	 */
 	protected String id = ID_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTitle() <em>Title</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTitle()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TITLE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTitle() <em>Title</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTitle()
+	 * @generated
+	 * @ordered
+	 */
+	protected String title = TITLE_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getKind() <em>Kind</em>}' reference.
@@ -152,8 +180,7 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 				// Try to resolve it automatically.
 				kind = OCCIKindResolver.resolveKind(this);
 			} catch(Exception exc) {
-				// TODO: This should never happens :-(
-				exc.printStackTrace(System.err);
+				LOGGER.warn("SHOULD NEVER HAPPEN!", exc);
 			}
 		}
 	}
@@ -187,6 +214,27 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 		id = newId;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, OCCIPackage.ENTITY__ID, oldId, id));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTitle() {
+		return title;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTitle(String newTitle) {
+		String oldTitle = title;
+		title = newTitle;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, OCCIPackage.ENTITY__TITLE, oldTitle, title));
 	}
 
 	/**
@@ -319,6 +367,42 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 		}
 
 		return attributes;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void occiCreate() {
+		LOGGER.debug("occiCreate() called on " + this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void occiRetrieve() {
+		LOGGER.debug("occiRetrieve() called on " + this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void occiUpdate() {
+		LOGGER.debug("occiUpdate() called on " + this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void occiDelete() {
+		LOGGER.debug("occiDelete() called on " + this);
 	}
 
 	/**
@@ -665,6 +749,8 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 		switch (featureID) {
 			case OCCIPackage.ENTITY__ID:
 				return getId();
+			case OCCIPackage.ENTITY__TITLE:
+				return getTitle();
 			case OCCIPackage.ENTITY__KIND:
 				if (resolve) return getKind();
 				return basicGetKind();
@@ -687,6 +773,9 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 		switch (featureID) {
 			case OCCIPackage.ENTITY__ID:
 				setId((String)newValue);
+				return;
+			case OCCIPackage.ENTITY__TITLE:
+				setTitle((String)newValue);
 				return;
 			case OCCIPackage.ENTITY__KIND:
 				setKind((Kind)newValue);
@@ -714,6 +803,9 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 			case OCCIPackage.ENTITY__ID:
 				setId(ID_EDEFAULT);
 				return;
+			case OCCIPackage.ENTITY__TITLE:
+				setTitle(TITLE_EDEFAULT);
+				return;
 			case OCCIPackage.ENTITY__KIND:
 				setKind((Kind)null);
 				return;
@@ -737,6 +829,8 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 		switch (featureID) {
 			case OCCIPackage.ENTITY__ID:
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
+			case OCCIPackage.ENTITY__TITLE:
+				return TITLE_EDEFAULT == null ? title != null : !TITLE_EDEFAULT.equals(title);
 			case OCCIPackage.ENTITY__KIND:
 				return kind != null;
 			case OCCIPackage.ENTITY__MIXINS:
@@ -756,6 +850,18 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 	@SuppressWarnings("unchecked")
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
+			case OCCIPackage.ENTITY___OCCI_CREATE:
+				occiCreate();
+				return null;
+			case OCCIPackage.ENTITY___OCCI_RETRIEVE:
+				occiRetrieve();
+				return null;
+			case OCCIPackage.ENTITY___OCCI_UPDATE:
+				occiUpdate();
+				return null;
+			case OCCIPackage.ENTITY___OCCI_DELETE:
+				occiDelete();
+				return null;
 			case OCCIPackage.ENTITY___ATTRIBUTES_NAME_UNIQUE__DIAGNOSTICCHAIN_MAP:
 				return AttributesNameUnique((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
 			case OCCIPackage.ENTITY___KIND_COMPATIBLE_WITH_ONE_APPLIES_OF_EACH_MIXIN__DIAGNOSTICCHAIN_MAP:
@@ -778,6 +884,8 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (id: ");
 		result.append(id);
+		result.append(", title: ");
+		result.append(title);
 		result.append(')');
 		return result.toString();
 	}

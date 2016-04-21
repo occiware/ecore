@@ -18,6 +18,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
@@ -26,6 +27,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -76,12 +78,31 @@ import org.occiware.clouddesigner.occi.Resource;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.occiware.clouddesigner.occi.impl.ResourceImpl#getSummary <em>Summary</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.impl.ResourceImpl#getLinks <em>Links</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class ResourceImpl extends EntityImpl implements Resource {
+	/**
+	 * The default value of the '{@link #getSummary() <em>Summary</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSummary()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String SUMMARY_EDEFAULT = null;
+	/**
+	 * The cached value of the '{@link #getSummary() <em>Summary</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSummary()
+	 * @generated
+	 * @ordered
+	 */
+	protected String summary = SUMMARY_EDEFAULT;
 	/**
 	 * The cached value of the '{@link #getLinks() <em>Links</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -109,6 +130,27 @@ public class ResourceImpl extends EntityImpl implements Resource {
 	@Override
 	protected EClass eStaticClass() {
 		return OCCIPackage.Literals.RESOURCE;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getSummary() {
+		return summary;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSummary(String newSummary) {
+		String oldSummary = summary;
+		summary = newSummary;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, OCCIPackage.RESOURCE__SUMMARY, oldSummary, summary));
 	}
 
 	/**
@@ -300,6 +342,8 @@ public class ResourceImpl extends EntityImpl implements Resource {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case OCCIPackage.RESOURCE__SUMMARY:
+				return getSummary();
 			case OCCIPackage.RESOURCE__LINKS:
 				return getLinks();
 		}
@@ -315,6 +359,9 @@ public class ResourceImpl extends EntityImpl implements Resource {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case OCCIPackage.RESOURCE__SUMMARY:
+				setSummary((String)newValue);
+				return;
 			case OCCIPackage.RESOURCE__LINKS:
 				getLinks().clear();
 				getLinks().addAll((Collection<? extends Link>)newValue);
@@ -331,6 +378,9 @@ public class ResourceImpl extends EntityImpl implements Resource {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case OCCIPackage.RESOURCE__SUMMARY:
+				setSummary(SUMMARY_EDEFAULT);
+				return;
 			case OCCIPackage.RESOURCE__LINKS:
 				getLinks().clear();
 				return;
@@ -346,6 +396,8 @@ public class ResourceImpl extends EntityImpl implements Resource {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case OCCIPackage.RESOURCE__SUMMARY:
+				return SUMMARY_EDEFAULT == null ? summary != null : !SUMMARY_EDEFAULT.equals(summary);
 			case OCCIPackage.RESOURCE__LINKS:
 				return links != null && !links.isEmpty();
 		}
@@ -365,6 +417,22 @@ public class ResourceImpl extends EntityImpl implements Resource {
 				return ResourceKindIsInParent((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
 		}
 		return super.eInvoke(operationID, arguments);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (summary: ");
+		result.append(summary);
+		result.append(')');
+		return result.toString();
 	}
 
 } //ResourceImpl

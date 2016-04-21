@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link org.occiware.clouddesigner.occi.Entity#getId <em>Id</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.Entity#getTitle <em>Title</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.Entity#getKind <em>Kind</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.Entity#getMixins <em>Mixins</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.Entity#getAttributes <em>Attributes</em>}</li>
@@ -66,6 +67,33 @@ public interface Entity extends EObject {
 	 * @generated
 	 */
 	void setId(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Title</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Title</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Title</em>' attribute.
+	 * @see #setTitle(String)
+	 * @see org.occiware.clouddesigner.occi.OCCIPackage#getEntity_Title()
+	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/core/ecore!Entity!title'"
+	 * @generated
+	 */
+	String getTitle();
+
+	/**
+	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.Entity#getTitle <em>Title</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Title</em>' attribute.
+	 * @see #getTitle()
+	 * @generated
+	 */
+	void setTitle(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Kind</b></em>' reference.
@@ -126,6 +154,38 @@ public interface Entity extends EObject {
 	 * @generated
 	 */
 	EList<AttributeState> getAttributes();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/core/ecore!Entity!occiCreate()'"
+	 * @generated
+	 */
+	void occiCreate();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/core/ecore!Entity!occiRetrieve()'"
+	 * @generated
+	 */
+	void occiRetrieve();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/core/ecore!Entity!occiUpdate()'"
+	 * @generated
+	 */
+	void occiUpdate();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/core/ecore!Entity!occiDelete()'"
+	 * @generated
+	 */
+	void occiDelete();
 
 	/**
 	 * <!-- begin-user-doc -->

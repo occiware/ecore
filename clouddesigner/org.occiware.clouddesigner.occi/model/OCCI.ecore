@@ -2,7 +2,7 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="occi" nsURI="http://schemas.ogf.org/occi/core/ecore" nsPrefix="occi">
   <eAnnotations source="http://www.eclipse.org/OCL/Import">
-    <details key="ecore" value="http://www.eclipse.org/emf/2002/Ecore"/>
+    <details key="ecore" value="http://www.eclipse.org/emf/2002/Ecore#/"/>
   </eAnnotations>
   <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
     <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
@@ -98,7 +98,12 @@
       <details key="AttributesNameUnique" value="attributes->isUnique(name)"/>
       <details key="KindCompatibleWithOneAppliesOfEachMixin" value="mixins->forAll(m | m.applies->notEmpty() implies m.applies->exists(k | kind->closure(parent)->includes(k)))"/>
     </eAnnotations>
+    <eOperations name="occiCreate"/>
+    <eOperations name="occiRetrieve"/>
+    <eOperations name="occiUpdate"/>
+    <eOperations name="occiDelete"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="#//URI"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="#//String"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="kind" lowerBound="1" eType="#//Kind"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="mixins" upperBound="-1"
         eType="#//Mixin"/>
@@ -116,6 +121,7 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
       <details key="ResourceKindIsInParent" value="kind->closure(parent)->exists(k | k.term = 'resource' and k.scheme = 'http://schemas.ogf.org/occi/core#')"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="summary" eType="#//String"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="links" upperBound="-1"
         eType="#//Link" containment="true" eOpposite="#//Link/source"/>
   </eClassifiers>

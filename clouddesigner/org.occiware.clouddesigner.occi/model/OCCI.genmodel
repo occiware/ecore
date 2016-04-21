@@ -45,15 +45,21 @@
     </genClasses>
     <genClasses image="false" ecoreClass="OCCI.ecore#//Entity">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OCCI.ecore#//Entity/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OCCI.ecore#//Entity/title"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference OCCI.ecore#//Entity/kind"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference OCCI.ecore#//Entity/mixins"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OCCI.ecore#//Entity/attributes"/>
+      <genOperations ecoreOperation="OCCI.ecore#//Entity/occiCreate"/>
+      <genOperations ecoreOperation="OCCI.ecore#//Entity/occiRetrieve"/>
+      <genOperations ecoreOperation="OCCI.ecore#//Entity/occiUpdate"/>
+      <genOperations ecoreOperation="OCCI.ecore#//Entity/occiDelete"/>
     </genClasses>
     <genClasses ecoreClass="OCCI.ecore#//AttributeState">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OCCI.ecore#//AttributeState/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OCCI.ecore#//AttributeState/value"/>
     </genClasses>
     <genClasses ecoreClass="OCCI.ecore#//Resource">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OCCI.ecore#//Resource/summary"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OCCI.ecore#//Resource/links"/>
     </genClasses>
     <genClasses ecoreClass="OCCI.ecore#//Link">
