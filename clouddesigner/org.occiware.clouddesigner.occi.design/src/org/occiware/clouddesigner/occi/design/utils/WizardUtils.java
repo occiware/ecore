@@ -1,9 +1,22 @@
+/*******************************************************************************
+ * Copyright (c) 2015-2016 Obeo, Inria
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ * - William Piers <william.piers@obeo.fr>
+ * - Philippe Merle <philippe.merle@inria.fr>
+ *******************************************************************************/
 package org.occiware.clouddesigner.occi.design.utils;
 
 import java.util.Arrays;
 import java.util.Collection;
 
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IProjectDescription;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -22,6 +35,7 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelectionCallback;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.xtext.ui.XtextProjectHelper;
 import org.occiware.clouddesigner.occi.design.Activator;
 import org.occiware.clouddesigner.occi.design.Messages;
 
@@ -116,5 +130,22 @@ public final class WizardUtils {
 			}
 		}
 		return null;
+	}
+
+	public static void addNature(final IProject project, String nature, final IProgressMonitor progressMonitor) throws CoreException
+	{
+		IProjectDescription description = project.getDescription();
+		String[] natures = description.getNatureIds();
+		String[] newNatures = new String[natures.length + 1];
+		System.arraycopy(natures, 0, newNatures, 0, natures.length);
+		newNatures[natures.length] = nature;
+		description.setNatureIds(newNatures);
+		project.setDescription(description, progressMonitor);
+	}
+
+	public static void addXTextNature(final IProject project, final IProgressMonitor progressMonitor) throws CoreException
+	{
+		// add XText nature
+		addNature(project, XtextProjectHelper.NATURE_ID, progressMonitor);
 	}
 }
