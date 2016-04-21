@@ -21,6 +21,20 @@
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[ '[' /]name='white']"/>
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[ '[' /]name='light_gray']"/>
           </style> 
+[let stateAttribute : EAttribute = resource.eAllAttributes->any(attribute : EAttribute | attribute.name.endsWith('state') and attribute.eAttributeType.oclIsTypeOf(EEnum))]
+[if (not stateAttribute.oclIsUndefined())]
+[for (eLiteral : EEnumLiteral | stateAttribute.eAttributeType.oclAsType(EEnum).eLiterals)]
+          <conditionnalStyles predicateExpression="['['/][stateAttribute.name/].toString().equalsIgnoreCase('[eLiteral.literal/]')/[']'/]">
+            <style xsi:type="style:FlatContainerStyleDescription"labelExpression="feature:id" labelAlignment="LEFT" roundedCorner="true">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries['['/]name='black'[']'/]"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries['['/]name='black'[']'/]"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries['['/]name='white'[']'/]"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries['['/]name='[getColor(eLiteral)/]'[']'/]"/>
+            </style>
+          </conditionnalStyles>
+[/for]
+[/if]
+[/let]
         </containerMappings>
 [/for]
         <toolSections name="[ePackage.name.toUpperFirst()/]Configuration">
@@ -36,20 +50,48 @@
           </ownedTools>
 [/for]
         </toolSections>
-[for (resource : EClass | ePackage.getResources())]
         <toolSections name="Tools">
-          <ownedTools xsi:type="tool_1:PopupMenu" name="Execute an action on [resource.name/]" precondition="['['/]self.oclIsKindOf([resource.name/])/[']'/]">
+[for (resource : EClass | ePackage.getResources())]
+          <ownedTools xsi:type="tool_1:PopupMenu" name="[resource.name/]Actions" label="[resource.name/] actions" precondition="['['/]self.oclIsKindOf([resource.name/])/[']'/]">
 [for (action : EOperation | resource.eAllOperations)]
+[if (action.eContainingClass.name <> 'Entity')]
             <menuItemDescription xsi:type="tool_1:OperationAction" name="[action.name.toUpperFirst()/]">
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="['['/]self.oclAsType([resource.name/]).[action.name/]()/[']'/]"/>
               </initialOperation>
             </menuItemDescription>
+[/if]
 [/for]
           </ownedTools>
-        </toolSections>
+          <ownedTools xsi:type="tool_1:PopupMenu" name="CRUD operations" precondition="['['/]self.oclIsKindOf(Entity)/[']'/]">
+            <menuItemDescription xsi:type="tool_1:OperationAction" name="Create">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="['['/]self.oclAsType(Entity).occiCreate()/[']'/]"/>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool_1:OperationAction" name="Retrieve">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="['['/]self.oclAsType(Entity).occiRetrieve()/[']'/]"/>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool_1:OperationAction" name="Update">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="['['/]self.oclAsType(Entity).occiUpdate()/[']'/]"/>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool_1:OperationAction" name="Delete">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="['['/]self.oclAsType(Entity).occiDelete()/[']'/]"/>
+              </initialOperation>
+            </menuItemDescription>
+          </ownedTools>
 [/for]
+        </toolSections>
       </defaultLayer>
     </ownedRepresentations>
     <ownedJavaExtensions qualifiedClassName="org.occiware.clouddesigner.occi.design.services.DesignServices"/>
@@ -59,3 +101,9 @@
 [/template]
 
 [query public getResources(ePackage : EPackage) : Collection(EClass) = ePackage.eClassifiers->filter(EClass)->select(ec|not ec.eAllSuperTypes->any(name='Resource').oclIsUndefined()) /]
+
+[query public getColor(eEnumLiteral : EEnumLiteral) : String
+	= invoke(
+	'org.occiware.clouddesigner.occi.emfgen.design.services.GenUtils', 
+	'getColor(org.eclipse.emf.ecore.EEnumLiteral)', 
+	Sequence{eEnumLiteral})/]
