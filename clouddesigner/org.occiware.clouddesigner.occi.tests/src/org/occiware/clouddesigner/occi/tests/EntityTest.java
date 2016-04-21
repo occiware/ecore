@@ -23,6 +23,10 @@ import org.occiware.clouddesigner.occi.Entity;
  * <p>
  * The following operations are tested:
  * <ul>
+ *   <li>{@link org.occiware.clouddesigner.occi.Entity#occiCreate() <em>Occi Create</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.Entity#occiRetrieve() <em>Occi Retrieve</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.Entity#occiUpdate() <em>Occi Update</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.Entity#occiDelete() <em>Occi Delete</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.Entity#AttributesNameUnique(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Attributes Name Unique</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.Entity#KindCompatibleWithOneAppliesOfEachMixin(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Kind Compatible With One Applies Of Each Mixin</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.Entity#IdUnique(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Id Unique</em>}</li>
@@ -68,6 +72,58 @@ public abstract class EntityTest extends TestCase {
 	 */
 	protected Entity getFixture() {
 		return fixture;
+	}
+
+	/**
+	 * Tests the '{@link org.occiware.clouddesigner.occi.Entity#occiCreate() <em>Occi Create</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.occiware.clouddesigner.occi.Entity#occiCreate()
+	 * @generated
+	 */
+	public void testOcciCreate() {
+		// TODO: implement this operation test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link org.occiware.clouddesigner.occi.Entity#occiRetrieve() <em>Occi Retrieve</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.occiware.clouddesigner.occi.Entity#occiRetrieve()
+	 * @generated
+	 */
+	public void testOcciRetrieve() {
+		// TODO: implement this operation test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link org.occiware.clouddesigner.occi.Entity#occiUpdate() <em>Occi Update</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.occiware.clouddesigner.occi.Entity#occiUpdate()
+	 * @generated
+	 */
+	public void testOcciUpdate() {
+		// TODO: implement this operation test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link org.occiware.clouddesigner.occi.Entity#occiDelete() <em>Occi Delete</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.occiware.clouddesigner.occi.Entity#occiDelete()
+	 * @generated
+	 */
+	public void testOcciDelete() {
+		// TODO: implement this operation test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
 	}
 
 	/**

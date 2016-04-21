@@ -67,6 +67,7 @@ public class EntityItemProvider extends ItemProviderAdapter implements IEditingD
 			super.getPropertyDescriptors(object);
 
 			addIdPropertyDescriptor(object);
+			addTitlePropertyDescriptor(object);
 			addKindPropertyDescriptor(object);
 			addMixinsPropertyDescriptor(object);
 		}
@@ -87,6 +88,28 @@ public class EntityItemProvider extends ItemProviderAdapter implements IEditingD
 				 getString("_UI_Entity_id_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Entity_id_feature", "_UI_Entity_type"),
 				 OCCIPackage.Literals.ENTITY__ID,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Title feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTitlePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Entity_title_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Entity_title_feature", "_UI_Entity_type"),
+				 OCCIPackage.Literals.ENTITY__TITLE,
 				 true,
 				 false,
 				 false,
@@ -247,6 +270,7 @@ public class EntityItemProvider extends ItemProviderAdapter implements IEditingD
 
 		switch (notification.getFeatureID(Entity.class)) {
 			case OCCIPackage.ENTITY__ID:
+			case OCCIPackage.ENTITY__TITLE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case OCCIPackage.ENTITY__ATTRIBUTES:
