@@ -219,6 +219,9 @@ public class NewExtensionWizard extends BasicNewProjectResourceWizard {
 										Messages.NewExtensionWizard_ModelCreationError, e));
 							}
 
+							// Register this new OCCI extension.
+							OCCIRegistry.getInstance().registerExtension(extensionScheme, init.getSemanticModelURI().toString());
+
 							// Get the newly created file
 							final IResource newModelFile = project.findMember("/model/" //$NON-NLS-1$
 									+ extensionName.toLowerCase() + "." + NewExtensionWizard.EXTENSION_FILEEXT);
@@ -316,38 +319,42 @@ public class NewExtensionWizard extends BasicNewProjectResourceWizard {
 				" - Philippe Merle <philippe.merle@inria.fr>\n" +
 				"-->\n" +
 				"<plugin>\n" +
-				"  <extension point=\"org.occiware.clouddesigner.occi.occie\">\n" +
-				"    <occie file=\"model/" + extensionName + ".occie\" scheme=\"" + extensionScheme + "\">\n" +
-				"    </occie>\n" +
-				"  </extension>\n" +
 				"\n" +
-				"  <extension point=\"org.eclipse.emf.ecore.uri_mapping\">\n" +
-				"    <mapping source=\"" + extensionScheme.substring(0,extensionScheme.length()-1) + "\" target=\"platform:/plugin/" + project.getName() + "/model/" + extensionName + ".occie\"/>\n" +
-				"  </extension>\n" +
+				"   <!-- Register the " + extensionName + " extension. -->\n" +
+				"   <extension point=\"org.occiware.clouddesigner.occi.occie\">\n" +
+				"      <occie scheme=\"" + extensionScheme + "\" file=\"model/" + extensionName + ".occie\"/>\n" +
+				"   </extension>\n" +
 				"\n" +
-				"  <extension point=\"org.eclipse.emf.ecore.extension_parser\">\n" +
-				"    <parser type=\"" + extensionName + "\" class=\"org.occiware.clouddesigner.occi.util.OCCIResourceFactoryImpl\"/>\n" +
-				"  </extension>\n" +
+				"   <!-- Define URI mapping. -->\n" +
+				"   <extension point=\"org.eclipse.emf.ecore.uri_mapping\">\n" +
+				"      <mapping source=\"" + extensionScheme.substring(0,extensionScheme.length()-1) + "\" target=\"platform:/plugin/" + project.getName() + "/model/" + extensionName + ".occie\"/>\n" +
+				"   </extension>\n" +
 				"\n" +
-				"  <extension point=\"org.eclipse.ui.popupMenus\">\n" +
-				"    <objectContribution\n" +
-				"        id=\"" +  newProjectPage.getProjectName() + ".contribution\"\n" +
-				"        nameFilter=\"*." + extensionName +"\"\n" +
-				"        objectClass=\"org.eclipse.core.resources.IFile\">\n" +
-				"      <menu\n" +
-				"          id=\"org.occiware.clouddesigner.menu\"\n" +
-				"          label=\"Cloud Designer\"\n" +
-				"          path=\"additionsCloudDesigner\">\n" +
-				"        <separator name=\"group\"/>\n" +
-				"      </menu>\n" +
-				"      <action\n" +
-				"          class=\"org.occiware.clouddesigner.occi.emfgen.ui.popup.actions.Ecore2OCCIAction\"\n" +
-				"          enablesFor=\"1\"\n" +
-			 	"          id=\"" +  newProjectPage.getProjectName() + ".ecore2occi\"\n" +
-			 	"          label=\"Convert to standard OCCI Configuration File\"\n" +
-			 	"          menubarPath=\"org.occiware.clouddesigner.menu/group\">\n" +
-				"      </action>\n" +
-				"    </objectContribution>\n" +
+				"   <!-- Register the parser for ." + extensionName + " files. -->\n" +
+				"   <extension point=\"org.eclipse.emf.ecore.extension_parser\">\n" +
+				"      <parser type=\"" + extensionName + "\" class=\"org.occiware.clouddesigner.occi.util.OCCIResourceFactoryImpl\"/>\n" +
+				"   </extension>\n" +
+				"\n" +
+				"   <!-- Popup menu for converting to an OCCI Configuration file. -->\n" +
+				"   <extension point=\"org.eclipse.ui.popupMenus\">\n" +
+				"      <objectContribution\n" +
+				"            id=\"" +  newProjectPage.getProjectName() + ".contribution\"\n" +
+				"            nameFilter=\"*." + extensionName +"\"\n" +
+				"            objectClass=\"org.eclipse.core.resources.IFile\">\n" +
+				"         <menu\n" +
+				"               id=\"org.occiware.clouddesigner.menu\"\n" +
+				"               label=\"Cloud Designer\"\n" +
+				"               path=\"additionsCloudDesigner\">\n" +
+				"            <separator name=\"group\"/>\n" +
+				"         </menu>\n" +
+				"         <action\n" +
+				"               class=\"org.occiware.clouddesigner.occi.emfgen.ui.popup.actions.Ecore2OCCIAction\"\n" +
+				"               enablesFor=\"1\"\n" +
+			 	"               id=\"" +  newProjectPage.getProjectName() + ".ecore2occi\"\n" +
+			 	"               label=\"Convert to an OCCI Configuration File\"\n" +
+			 	"               menubarPath=\"org.occiware.clouddesigner.menu/group\">\n" +
+				"         </action>\n" +
+				"      </objectContribution>\n" +
 				"   </extension>\n" +
 				"</plugin>\n";
 		pluginXML.create(new ByteArrayInputStream(pluginContent.getBytes()), true, monitor);
