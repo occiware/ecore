@@ -6,7 +6,7 @@
          <meta.schema plugin="org.occiware.clouddesigner.occi.registry" id="occie" name="org.occiware.clouddesigner.occi.registry.occie"/>
       </appinfo>
       <documentation>
-         [Enter description of this extension point.]
+         This extension point allows plugins to register an OCCI extension into the OCCI extension registry.
       </documentation>
    </annotation>
 
@@ -48,18 +48,23 @@
    </element>
 
    <element name="occie">
+      <annotation>
+         <documentation>
+            Register an OCCI extension.
+         </documentation>
+      </annotation>
       <complexType>
          <attribute name="scheme" type="string" use="required">
             <annotation>
                <documentation>
-                  
+                  The OCCI scheme of the OCCI extension to register.
                </documentation>
             </annotation>
          </attribute>
          <attribute name="file" type="string" use="required">
             <annotation>
                <documentation>
-                  
+                  The path of the .occie file containing the OCCI extension.
                </documentation>
                <appinfo>
                   <meta.attribute kind="resource"/>
@@ -83,7 +88,9 @@
          <meta.section type="examples"/>
       </appinfo>
       <documentation>
-         [Enter extension point usage example here.]
+            &lt;extension point=&quot;org.occiware.clouddesigner.occi.occie&quot;&gt;
+      &lt;occie scheme=&quot;http://schemas.ogf.org/occi/core#&quot; file=&quot;model/Core.occie&quot;/&gt;
+   &lt;/extension&gt;
       </documentation>
    </annotation>
 
