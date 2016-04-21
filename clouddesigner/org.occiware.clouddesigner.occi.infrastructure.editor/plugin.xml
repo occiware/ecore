@@ -16,15 +16,15 @@
 <plugin>
 
    <extension point="org.eclipse.ui.newWizards">
-      <!-- @generated Infrastructure -->
+      <!-- @generated Infrastructure NOT -->
       <category
-            id="org.eclipse.emf.ecore.Wizard.category.ID"
-            name="%_UI_Wizard_category"/>
+			id="org.occiware.clouddesigner.category.ID"
+			name="Cloud Designer"/>
       <wizard
             id="org.occiware.clouddesigner.occi.infrastructure.presentation.InfrastructureModelWizardID"
             name="%_UI_InfrastructureModelWizard_label"
             class="org.occiware.clouddesigner.occi.infrastructure.presentation.InfrastructureModelWizard"
-            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            category="org.occiware.clouddesigner.category.ID"
             icon="icons/full/obj16/InfrastructureModelFile.gif">
          <description>%_UI_InfrastructureModelWizard_description</description>
          <selection class="org.eclipse.core.resources.IResource"/>

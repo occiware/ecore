@@ -17,15 +17,15 @@
 <plugin>
 
    <extension point="org.eclipse.ui.newWizards">
-      <!-- @generated OCCI -->
+      <!-- @generated OCCI NOT -->
       <category
-            id="org.eclipse.emf.ecore.Wizard.category.ID"
-            name="%_UI_Wizard_category"/>
+			id="org.occiware.clouddesigner.category.ID"
+			name="Cloud Designer"/>
       <wizard
             id="org.occiware.clouddesigner.occi.presentation.OCCIModelWizardID"
             name="%_UI_OCCIModelWizard_label"
             class="org.occiware.clouddesigner.occi.presentation.OCCIModelWizard"
-            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            category="org.occiware.clouddesigner.category.ID"
             icon="icons/full/obj16/OCCIModelFile.gif">
          <description>%_UI_OCCIModelWizard_description</description>
          <selection class="org.eclipse.core.resources.IResource"/>

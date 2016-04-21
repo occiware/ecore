@@ -16,15 +16,15 @@
 <plugin>
 
    <extension point="org.eclipse.ui.newWizards">
-      <!-- @generated Docker -->
+      <!-- @generated Docker NOT -->
       <category
-            id="org.eclipse.emf.ecore.Wizard.category.ID"
-            name="%_UI_Wizard_category"/>
+			id="org.occiware.clouddesigner.category.ID"
+			name="Cloud Designer"/>
       <wizard
             id="org.occiware.clouddesigner.occi.docker.presentation.DockerModelWizardID"
             name="%_UI_DockerModelWizard_label"
             class="org.occiware.clouddesigner.occi.docker.presentation.DockerModelWizard"
-            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            category="org.occiware.clouddesigner.category.ID"
             icon="icons/full/obj16/DockerModelFile.gif">
          <description>%_UI_DockerModelWizard_description</description>
          <selection class="org.eclipse.core.resources.IResource"/>
