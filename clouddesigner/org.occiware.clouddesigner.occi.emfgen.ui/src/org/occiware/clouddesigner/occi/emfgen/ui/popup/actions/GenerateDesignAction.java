@@ -15,6 +15,7 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.BasicMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
@@ -34,6 +35,7 @@ import org.eclipse.ui.WorkbenchException;
 import org.occiware.clouddesigner.occi.OCCIFactory;
 import org.occiware.clouddesigner.occi.design.utils.WizardUtils;
 import org.occiware.clouddesigner.occi.emfgen.ConverterUtils;
+import org.occiware.clouddesigner.occi.util.Occi2Ecore;
 
 public class GenerateDesignAction implements IObjectActionDelegate {
 
@@ -95,16 +97,29 @@ public class GenerateDesignAction implements IObjectActionDelegate {
 
 	private IProject generateDesignProject(String ecoreLocation, String designName, String designProjectName,
 			final IProgressMonitor monitor) throws CoreException, IOException {
+
+		// Load the ecore file.
+		
+		URI ecoreURI = URI.createFileURI(ecoreLocation);
+		// Create a new resource set.
+		 ResourceSet resourceSet = new ResourceSetImpl();
+		// Load the OCCI resource.
+		org.eclipse.emf.ecore.resource.Resource resource = resourceSet.getResource(ecoreURI, true);
+		// Return the first element.
+		EPackage ePackage = (EPackage)resource.getContents().get(0);
+				 
+		String extensionScheme = Occi2Ecore.convertEcoreNamespace2OcciScheme(ePackage.getNsURI());
+
 		/*
 		 * Create design project
 		 */
-		IProject project = GenUtils.genDesignProject(designProjectName, designName, new ProgressMonitorDialog(shell));
+		IProject project = GenUtils.genDesignProject(designProjectName, designName, extensionScheme, new ProgressMonitorDialog(shell));
 
 		/*
 		 * Create design model
 		 */
 		org.occiware.clouddesigner.occi.emfgen.design.main.Generate generator = new org.occiware.clouddesigner.occi.emfgen.design.main.Generate(
-				URI.createFileURI(ecoreLocation), project.getFolder("description").getLocation().toFile(),
+				ecoreURI, project.getFolder("description").getLocation().toFile(),
 				new ArrayList<String>());
 		generator.doGenerate(BasicMonitor.toMonitor(monitor));
 		project.refreshLocal(IResource.DEPTH_INFINITE, monitor);

@@ -42,7 +42,7 @@ import org.occiware.clouddesigner.occi.emfgen.ConverterUtils;
 
 public class GenUtils {
 
-	public static IProject genDesignProject(String projectName, String modelFileName, ProgressMonitorDialog dialog)
+	public static IProject genDesignProject(String projectName, String modelFileName, String extensionScheme, ProgressMonitorDialog dialog)
 			throws CoreException, IOException {
 		final IPath projectLocationPath = ResourcesPlugin.getWorkspace().getRoot().getLocation();
 		IProject project = ViewpointSpecificationProject.createNewViewpointSpecificationProject(
@@ -118,7 +118,7 @@ public class GenUtils {
 		buffer.append("\tpublic NewConfigurationWizard()\n");
 		buffer.append("\t{\n");
 		String tmp = modelName.substring(0,1).toUpperCase() + modelName.substring(1);
-		buffer.append("\t\tsuper(\"viewpoint:/").append(projectName).append("/").append(tmp).append("Configuration\", \"").append(modelName).append("\", \"").append(tmp).append("Configuration Diagram\");\n");
+		buffer.append("\t\tsuper(\"").append(extensionScheme).append("\", \"viewpoint:/").append(projectName).append("/").append(tmp).append("Configuration\", \"").append(modelName).append("\", \"").append(tmp).append("Configuration Diagram\");\n");
 		buffer.append("\t}\n");
 		buffer.append("}\n");
 		IFolder folder = project.getFolder("src/" + projectName.replaceAll("\\.",  "/") + "/wizard");
