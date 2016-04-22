@@ -35,6 +35,9 @@ import org.eclipse.emf.ecore.resource.Resource.Factory.Registry;
 import org.occiware.clouddesigner.occi.OCCIRegistry;
 import org.occiware.clouddesigner.occi.util.OCCIResourceFactoryImpl;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * This class provides OCCIware Models@Run.time (MART).
  *
@@ -43,13 +46,18 @@ import org.occiware.clouddesigner.occi.util.OCCIResourceFactoryImpl;
 public class MART
 {
 	/**
+	 * Initialize the logger.
+	 */
+	private static Logger LOGGER = LoggerFactory.getLogger(MART.class);
+
+	/**
 	 * This method must be called before any usage of MART
 	 * because MART is running outside of an Eclipse IDE and
 	 * various EMF and OCCI initializations are required.
 	 */
 	public static void initMART()
 	{
-		System.out.println("OCCIware MART initializing...");
+		LOGGER.info("OCCIware MART initializing...");
 
 		// Get the current classloader.
 		final ClassLoader classLoader = MART.class.getClassLoader();
@@ -69,10 +77,10 @@ public class MART
 			final DocumentBuilder builder = factory.newDocumentBuilder();
 
         	// Iterate over all plugin.xml files found into the classpath.
-			System.out.println("  Scanning all plugin.xml found in the classpath...");
+			LOGGER.info("  Scanning all plugin.xml found in the classpath...");
 			Enumeration<URL> pluginResources = classLoader.getResources("plugin.xml");
 			for(URL url : java.util.Collections.list(pluginResources)) {
-//				System.out.println("  * " + url.toExternalForm() + "...");
+				LOGGER.debug("  * " + url.toExternalForm() + "...");
 				// Parse each plugin.xml file.
 				final Document document = builder.parse(url.toURI().toString());
 				final Element root = document.getDocumentElement();
@@ -103,29 +111,24 @@ public class MART
 											String className = childElement.getAttribute("class");
 											// Do not dealt with Eclipse packages.
 											if(!className.startsWith("org.eclipse.")) {
-												try {
-													// Load the class.
-													Class<?> ePackageClass = classLoader.loadClass(className);
-													// Force initialization of the Ecore package.
-													Field eInstanceField = ePackageClass.getField("eINSTANCE");
-													Object eInstance = eInstanceField.get(null);
-													eInstance.toString();
-													System.out.println("    - EMF package " + className + " at " + uri + " registered.");
-												} catch (ClassNotFoundException e) {
-													// TODO Auto-generated catch block
-													e.printStackTrace();
-												} catch (NoSuchFieldException e) {
-													// TODO Auto-generated catch block
-													e.printStackTrace();
-												} catch (SecurityException e) {
-													// TODO Auto-generated catch block
-													e.printStackTrace();
-												} catch (IllegalArgumentException e) {
-													// TODO Auto-generated catch block
-													e.printStackTrace();
-												} catch (IllegalAccessException e) {
-													// TODO Auto-generated catch block
-													e.printStackTrace();
+												// Load the class.
+												Class<?> ePackageClass = loadClass(className);
+												if(ePackageClass != null) {
+													try {
+														// Force initialization of the Ecore package.
+														Field eInstanceField = ePackageClass.getField("eINSTANCE");
+														Object eInstance = eInstanceField.get(null);
+														eInstance.toString();
+														LOGGER.info("    - EMF package " + className + " at " + uri + " registered.");
+													} catch (NoSuchFieldException e) {
+														LOGGER.error("Class " + className + " has no eINSTANCE field!",e);
+													} catch (SecurityException e) {
+														LOGGER.error("Security exception!", e);
+													} catch (IllegalArgumentException e) {
+														LOGGER.error("Illegal argument exception!", e);
+													} catch (IllegalAccessException e) {
+														LOGGER.error("Illegal access exception!", e);
+													}
 												}
 											}
 										}
@@ -148,25 +151,12 @@ public class MART
 											String className = childElement.getAttribute("class");
 											// Do not dealt with Eclipse packages.
 											if(!className.startsWith("org.eclipse.")) {
-
-												try {
-													// Load the factory class.
-													Class<?> factoryClass = classLoader.loadClass(className);
-													// Instantiate the factory class.
-													EFactory eFactory = (EFactory)factoryClass.newInstance();
+												// Instantiate the factory class.
+												EFactory eFactory = (EFactory)newInstance(className);
+												if(eFactory != null) {
 													// Register the factory.
 													ecoreFactoryOverrideMap.put(uri, eFactory);
-												} catch (ClassNotFoundException e) {
-													// TODO Auto-generated catch block
-													e.printStackTrace();
-												} catch (InstantiationException e) {
-													// TODO Auto-generated catch block
-													e.printStackTrace();
-												} catch (IllegalAccessException e) {
-													// TODO Auto-generated catch block
-													e.printStackTrace();
 												}
-
 											}
 										}
 									}
@@ -188,25 +178,13 @@ public class MART
 											String className = childElement.getAttribute("class");
 											// Do not dealt with Eclipse packages.
 											if(!className.startsWith("org.eclipse.")) {
-												try {
-													// Load the class.
-													Class<?> extensionParserClass = classLoader.loadClass(className);
-													// Instantiate the class.
-													Object extensionParser = extensionParserClass.newInstance();
+												// Instantiate the class.
+												Object extensionParser = newInstance(className);
+												if(extensionParser != null) {
 													// Register the extension parser.
 													ecoreExtensionToFactoryMap.put(type, extensionParser);
-													System.out.println("    - Ecore factory " + className + " for file extension ." + type + " registered.");
-												} catch (ClassNotFoundException e) {
-													// TODO Auto-generated catch block
-													e.printStackTrace();
-												} catch (InstantiationException e) {
-													// TODO Auto-generated catch block
-													e.printStackTrace();
-												} catch (IllegalAccessException e) {
-													// TODO Auto-generated catch block
-													e.printStackTrace();
+													LOGGER.info("    - Ecore factory " + className + " for file extension ." + type + " registered.");
 												}
-
 											}
 										}
 									}
@@ -228,7 +206,7 @@ public class MART
 											String scheme = childElement.getAttribute("scheme");
 											// Register the OCCI extension
 											occiRegistry.registerExtension(scheme, getResourceFromClasspath("/" + file));
-											System.out.println("    - OCCI extension " + scheme + " contained in " + file + " registered.");
+											LOGGER.info("    - OCCI extension " + scheme + " contained in " + file + " registered.");
 										}
 									}
 								}
@@ -237,18 +215,14 @@ public class MART
 				    }
 				}
 			}
-		} catch (ParserConfigurationException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+		} catch (ParserConfigurationException e) {
+			LOGGER.error("Parser configuration exception!", e);
 		} catch (SAXException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LOGGER.error("SAX exception!", e);
 		} catch (URISyntaxException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LOGGER.error("URI syntax exception!", e);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LOGGER.error("IO exception!", e);
 		}
 
 		// Iterate over all Ecore factory overrides
@@ -257,11 +231,15 @@ public class MART
 			EFactory eFactory = entry.getValue();
 			// Search the Ecore package.
 			EPackage epackage = EPackage.Registry.INSTANCE.getEPackage(uri);
-			epackage.setEFactoryInstance(eFactory);
-			System.out.println("    - Ecore factory " + eFactory.getClass().getName() + " for package " + uri + " registered.");
+			if(epackage == null) {
+				LOGGER.error("EPackage " + " uri unknown!");
+			} else {
+				epackage.setEFactoryInstance(eFactory);
+				LOGGER.info("    - Ecore factory " + eFactory.getClass().getName() + " for package " + uri + " registered.");
+			}
 		}
 
-		System.out.println("OCCIware MART initialized.");
+		LOGGER.info("OCCIware MART initialized.");
 	}
 
 	/**
@@ -281,20 +259,53 @@ public class MART
 	{
         // Getting the runtime reference from system.
 		java.lang.Runtime runtime = java.lang.Runtime.getRuntime();
-		System.out.println("Java Runtime available processor = " + runtime.availableProcessors());
-		System.out.println("Java Runtime max memory   = " + runtime.maxMemory());
-		System.out.println("Java Runtime total memory = " + runtime.totalMemory());
-		System.out.println("Java Runtime free memory  = " + runtime.freeMemory());
+		LOGGER.info("Java Runtime available processor = " + runtime.availableProcessors());
+		LOGGER.info("Java Runtime max memory   = " + runtime.maxMemory());
+		LOGGER.info("Java Runtime total memory = " + runtime.totalMemory());
+		LOGGER.info("Java Runtime free memory  = " + runtime.freeMemory());
 
         int mb = 1024*1024;
-        System.out.println("##### Heap utilization statistics [MB] #####");
+        LOGGER.info("##### Heap utilization statistics [MB] #####");
         // Print used memory
-        System.out.println("Used Memory:" + (runtime.totalMemory() - runtime.freeMemory()) / mb);
+        LOGGER.info("Used Memory:" + (runtime.totalMemory() - runtime.freeMemory()) / mb);
         // Print free memory
-        System.out.println("Free Memory:" + runtime.freeMemory() / mb);
+        LOGGER.info("Free Memory:" + runtime.freeMemory() / mb);
         // Print total available memory
-        System.out.println("Total Memory:" + runtime.totalMemory() / mb);
+        LOGGER.info("Total Memory:" + runtime.totalMemory() / mb);
         // Print Maximum available memory
-        System.out.println("Max Memory:" + runtime.maxMemory() / mb);
+        LOGGER.info("Max Memory:" + runtime.maxMemory() / mb);
+	}
+
+	/**
+	 * Load a class.
+	 */
+	private static Class<?> loadClass(final String className)
+	{
+		try {
+			LOGGER.debug("Loading class " + className + "...");
+			return MART.class.getClassLoader().loadClass(className);
+		} catch (ClassNotFoundException e) {
+			LOGGER.error("Class " + className + " not found!",e);
+		}
+		return null;
+	}
+
+	/**
+	 * Instantiate a class.
+	 */
+	private static Object newInstance(final String className)
+	{
+		Class<?> clazz = loadClass(className);
+		if(clazz != null) {
+			try {
+				LOGGER.debug("Instantiating class " + className + "...");
+				return clazz.newInstance();
+			} catch (InstantiationException e) {
+				LOGGER.error("Instantiation exception!", e);
+			} catch (IllegalAccessException e) {
+				LOGGER.error("Illegal access exception!", e);
+			}
+		}
+		return null;
 	}
 }
