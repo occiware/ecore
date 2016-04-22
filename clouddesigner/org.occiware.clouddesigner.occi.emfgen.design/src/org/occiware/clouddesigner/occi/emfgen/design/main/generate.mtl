@@ -14,18 +14,29 @@
 [for (resource : EClass | ePackage.getResources())]
         <containerMappings name="[resource.name/]" 
 			semanticCandidatesExpression="feature:resources" 
-			domainClass="[resource.name/]">
-          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="feature:id" labelAlignment="LEFT" roundedCorner="true">
+			domainClass="[resource.name/]"
+            childrenPresentation="List">
+[for (attribute : EAttribute | resource.eAllAttributes)]
+          <subNodeMappings name="[attribute.name.toUpperFirst()/]" semanticCandidatesExpression="['['/]self/[']'/]" domainClass="[resource.name/]">
+            <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="['['/]'[attribute.name/] = ' + self.[attribute.name/].toString()/[']'/]" labelAlignment="LEFT" hideLabelByDefault="true" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries['['/]name='black'[']'/]"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries['['/]name='black'[']'/]"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries['['/]name='white'[']'/]"/>
+            </style>
+          </subNodeMappings>
+[/for]
+[let stateAttribute : EAttribute = resource.eAllAttributes->any(attribute : EAttribute | attribute.name.endsWith('state') and attribute.eAttributeType.oclIsTypeOf(EEnum))]
+[if (stateAttribute.oclIsUndefined())]
+          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="[resource.name/]" labelAlignment="LEFT" roundedCorner="true">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[ '[' /]name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[ '[' /]name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[ '[' /]name='white']"/>
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[ '[' /]name='light_gray']"/>
           </style> 
-[let stateAttribute : EAttribute = resource.eAllAttributes->any(attribute : EAttribute | attribute.name.endsWith('state') and attribute.eAttributeType.oclIsTypeOf(EEnum))]
-[if (not stateAttribute.oclIsUndefined())]
+[else]
 [for (eLiteral : EEnumLiteral | stateAttribute.eAttributeType.oclAsType(EEnum).eLiterals)]
           <conditionnalStyles predicateExpression="['['/][stateAttribute.name/].toString().equalsIgnoreCase('[eLiteral.literal/]')/[']'/]">
-            <style xsi:type="style:FlatContainerStyleDescription" labelExpression="feature:id" labelAlignment="LEFT" roundedCorner="true">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" labelExpression="[resource.name/]" roundedCorner="true">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries['['/]name='black'[']'/]"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries['['/]name='black'[']'/]"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries['['/]name='white'[']'/]"/>
