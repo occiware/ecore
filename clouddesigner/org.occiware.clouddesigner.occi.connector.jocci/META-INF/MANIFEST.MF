@@ -8,12 +8,10 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .,
  lib/bcprov-jdk16-1.46.jar,
- lib/commons-logging-1.2.jar,
  lib/httpclient-4.5.1.jar,
  lib/httpcore-4.4.4.jar,
  lib/jocci-api-0.2.3-SNAPSHOT.jar,
- lib/jocci-core-0.2.3-SNAPSHOT.jar,
- lib/slf4j-api-1.7.12.jar
+ lib/jocci-core-0.2.3-SNAPSHOT.jar
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,
@@ -32,5 +30,6 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.edit.ui,
  org.occiware.clouddesigner.occi.edit,
  org.eclipse.pde.ui,
- org.occiware.clouddesigner.occi.design;bundle-version="0.1.0"
+ org.occiware.clouddesigner.occi.design;bundle-version="0.1.0",
+ org.slf4j.api;bundle-version="1.7.2"
 Export-Package: org.occiware.clouddesigner.occi.connector.jocci.services

@@ -4,12 +4,10 @@ Bundle-Name: Preference
 Bundle-SymbolicName: org.occiware.clouddesigner.occi.docker.preference;singleton:=true
 Bundle-Version: 0.1.0.qualifier
 Bundle-Activator: org.occiware.clouddesigner.occi.docker.preference.Activator
-Bundle-ClassPath: .,
- lib/log4j-1.2.17.jar,
- lib/slf4j-api-1.7.12.jar,
- lib/slf4j-log4j12-1.7.12.jar
+Bundle-ClassPath: .
 Require-Bundle: org.eclipse.ui,
- org.eclipse.core.runtime
+ org.eclipse.core.runtime,
+ org.slf4j.api;bundle-version="1.7.2"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Export-Package: org.occiware.clouddesigner.occi.docker.preference,
