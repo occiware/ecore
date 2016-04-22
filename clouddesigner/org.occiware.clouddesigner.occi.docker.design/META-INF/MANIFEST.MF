@@ -3,8 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: org.occiware.clouddesigner.occi.docker.design
 Bundle-SymbolicName: org.occiware.clouddesigner.occi.docker.design;singleton:=true
 Bundle-Version: 0.1.0.qualifier
-Bundle-ClassPath: .,
- lib/docker-java-3.0.0-SNAPSHOT-jar-with-dependencies.jar
+Bundle-ClassPath: .
 Bundle-Activator: org.occiware.clouddesigner.occi.docker.design.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
