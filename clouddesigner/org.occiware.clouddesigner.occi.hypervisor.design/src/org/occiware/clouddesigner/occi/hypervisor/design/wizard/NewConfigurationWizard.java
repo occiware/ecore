@@ -10,7 +10,7 @@ import org.occiware.clouddesigner.occi.design.utils.NewDiagramWizard;
 public class NewConfigurationWizard extends NewDiagramWizard {
 
 	public NewConfigurationWizard() {
-		super("viewpoint:/org.occiware.clouddesigner.occi.hypervisor.design/Hypervisor", "hypervisor", "Hypervisor configuration");
+		super("http://occiware.org/hypervisor#", "viewpoint:/org.occiware.clouddesigner.occi.hypervisor.design/Hypervisor", "hypervisor", "Hypervisor configuration");
 	}
 
 }

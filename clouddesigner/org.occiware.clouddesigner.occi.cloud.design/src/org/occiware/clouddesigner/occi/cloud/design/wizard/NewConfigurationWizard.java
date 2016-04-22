@@ -19,7 +19,7 @@ import org.occiware.clouddesigner.occi.design.utils.NewDiagramWizard;
 public class NewConfigurationWizard extends NewDiagramWizard{
 
 	public NewConfigurationWizard() {
-		super("viewpoint:/org.occiware.clouddesigner.occi.cloud.design/Cloud", "cloud", "Cloud configuration");
+		super("http://occiware.org/occi/cloud/ecore#", "viewpoint:/org.occiware.clouddesigner.occi.cloud.design/Cloud", "cloud", "Cloud configuration");
 	}
 
 }

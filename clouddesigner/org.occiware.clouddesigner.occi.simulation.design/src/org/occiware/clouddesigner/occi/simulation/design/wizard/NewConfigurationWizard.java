@@ -5,6 +5,6 @@ import org.occiware.clouddesigner.occi.design.utils.NewDiagramWizard;
 public class NewConfigurationWizard extends NewDiagramWizard {
 
 	public NewConfigurationWizard() {
-		super("viewpoint:/org.occiware.clouddesigner.occi.simulation.design/Simulation Configuration", "occic", "Simulation Configuration");
+		super("http://occiware.org/simulation#", "viewpoint:/org.occiware.clouddesigner.occi.simulation.design/Simulation Configuration", "occic", "Simulation Configuration");
 	}
 }

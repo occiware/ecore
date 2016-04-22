@@ -10,7 +10,7 @@ import org.occiware.clouddesigner.occi.design.utils.NewDiagramWizard;
 public class NewConfigurationWizard extends NewDiagramWizard {
 
 	public NewConfigurationWizard() {
-		super("viewpoint:/org.occiware.clouddesigner.occi.docker.design/Docker", "docker", "Docker configuration");
+		super("http://occiware.org/occi/docker#", "viewpoint:/org.occiware.clouddesigner.occi.docker.design/Docker", "docker", "Docker configuration");
 	}
 
 }
