@@ -20,7 +20,9 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.occiware.clouddesigner.occi.AttributeState;
+import org.occiware.clouddesigner.occi.Entity;
 import org.occiware.clouddesigner.occi.OCCIPackage;
+import org.occiware.clouddesigner.occi.util.OcciHelper;
 
 /**
  * <!-- begin-user-doc -->
@@ -129,13 +131,18 @@ public class AttributeStateImpl extends MinimalEObjectImpl.Container implements 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public void setValue(String newValue) {
 		String oldValue = value;
 		value = newValue;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, OCCIPackage.ATTRIBUTE_STATE__VALUE, oldValue, value));
+
+		// Propagate to the associated Ecore attribute.
+//		if(eContainer() != null) {
+//			OcciHelper.setAttribute((Entity)eContainer(), name, value);
+//		}
 	}
 
 	/**
