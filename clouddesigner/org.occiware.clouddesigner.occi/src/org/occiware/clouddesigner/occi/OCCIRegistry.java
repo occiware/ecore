@@ -21,8 +21,15 @@ import org.eclipse.core.runtime.IExtension;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.URIConverter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-public final class OCCIRegistry {
+public final class OCCIRegistry
+{
+	/**
+	 * Initialize the logger.
+	 */
+	private static Logger LOGGER = LoggerFactory.getLogger(OCCIRegistry.class);
 
 	/**
 	 * The occie extension point.
@@ -75,7 +82,7 @@ public final class OCCIRegistry {
 			}
 		}
 	  } catch(NoClassDefFoundError ncdfe) {
-		  System.out.println("Running out of an Eclipse Platform...");
+		  LOGGER.info("  Running out of an Eclipse Platform...");
 	  }
 	}
 
