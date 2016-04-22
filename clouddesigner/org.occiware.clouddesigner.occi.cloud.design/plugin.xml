@@ -41,7 +41,7 @@ Contributors:
    <!-- Popup menu for converting to an OCCI Configuration file. -->
    <extension point="org.eclipse.ui.popupMenus">
       <objectContribution
-            id="org.occiware.clouddesigner.occi.cloud.design.contribution1"
+            id="org.occiware.clouddesigner.occi.cloud.design.contribution"
             nameFilter="*.cloud"
             objectClass="org.eclipse.core.resources.IFile">
          <menu
