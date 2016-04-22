@@ -13,6 +13,8 @@ package org.occiware.mart;
 
 import java.lang.reflect.InvocationTargetException;
 
+import org.eclipse.emf.ecore.EObject;
+
 import org.occiware.clouddesigner.occi.AttributeState;
 import org.occiware.clouddesigner.occi.Configuration;
 import org.occiware.clouddesigner.occi.Extension;
@@ -66,7 +68,7 @@ public class Main
 		System.out.println("Loading model/infrastructure.occic...");
 		Configuration conf1 = OcciHelper.loadConfiguration("model/infrastructure.occic");
 		OcciPrinter.print(System.out, conf1);
-		if(OcciHelper.validate(conf1)) {
+		if(validate(conf1)) {
 			System.out.println("Youpi model/infrastructure.occic was validated by EMF and OCL Validation.");
 		}
 		System.out.println();
@@ -74,7 +76,7 @@ public class Main
 		System.out.println("Created an OCCI configuration programmatically...");
 		Configuration conf2 = createConfiguration();
 		OcciPrinter.print(System.out, conf2);
-		if(OcciHelper.validate(conf2)) {
+		if(validate(conf2)) {
 			System.out.println("Youpi configuration created programmatically was validated by EMF and OCL Validation.");
 		}
 		System.out.println();
@@ -82,7 +84,7 @@ public class Main
 		System.out.println("Created an OCCI Infrastructure configuration programmatically...");
 		Configuration configurationInfrastructure = createInfrastructureConfiguration();
 		OcciPrinter.print(System.out, configurationInfrastructure);
-		if(OcciHelper.validate(configurationInfrastructure)) {
+		if(validate(configurationInfrastructure)) {
 			System.out.println("Youpi OCCI Infrastructure configuration created programmatically was validated by EMF and OCL Validation.");
 		}
 
@@ -150,7 +152,7 @@ public class Main
 		System.out.println("Loading " + extensionURI +"...");
 		Extension extension = OcciHelper.loadExtension(extensionURI);
 		OcciPrinter.print(System.out, extension);
-		if(OcciHelper.validate(extension)) {
+		if(validate(extension)) {
 			System.out.println("Youpi " + extensionURI + " was validated by EMF and OCL Validation.");
 		}
 		System.out.println();
@@ -275,5 +277,12 @@ public class Main
 			compute.getLinks().add(networkinterface);
 		}
 		return configuration;
+	}
+
+	public static boolean validate(EObject eObject)
+	{
+		 if(!Boolean.getBoolean("validation")) { return true; }
+		 // Does the validation when the Java system property 'validation' is set to 'true'.
+		 return OcciHelper.validate(eObject);
 	}
 }
