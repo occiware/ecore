@@ -37,7 +37,11 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
 import org.eclipse.ui.part.ISetSelectionTarget;
+import org.occiware.clouddesigner.occi.Configuration;
+import org.occiware.clouddesigner.occi.Extension;
 import org.occiware.clouddesigner.occi.OCCIFactory;
+import org.occiware.clouddesigner.occi.OCCIRegistry;
+import org.occiware.clouddesigner.occi.OcciCoreConstants;
 import org.occiware.clouddesigner.occi.design.Activator;
 import org.occiware.clouddesigner.occi.design.Messages;
 
@@ -53,6 +57,8 @@ public class NewDiagramWizard extends Wizard implements INewWizard {
 	protected String viewpointURI;
 	protected String fileExt;
 	protected String diagramName;
+
+	protected String extensionScheme;
 
 	/**
 	 * Remember the selection during initialization for populating the default
@@ -74,6 +80,11 @@ public class NewDiagramWizard extends Wizard implements INewWizard {
 		this.diagramName = diagramName;
 	}
 
+	public NewDiagramWizard(String extensionScheme, String viewpointURI, String fileExt, String diagramName) {
+		this(viewpointURI, fileExt, diagramName);
+		this.extensionScheme = extensionScheme;
+	}
+
 	/**
 	 * This just records the information.
 	 */
@@ -88,7 +99,23 @@ public class NewDiagramWizard extends Wizard implements INewWizard {
 	 * Create a new model.
 	 */
 	protected void createInitialModel(Resource resource) {
-		resource.getContents().add(OCCIFactory.eINSTANCE.createConfiguration());
+		Configuration configuration = OCCIFactory.eINSTANCE.createConfiguration();
+		
+		final Extension coreExtension = (Extension)
+				getResourceSet().getResource(
+						URI.createURI(OcciCoreConstants.OCCI_CORE_SCHEME, true), true)
+				.getContents().get(0);
+		configuration.getUse().add(coreExtension);
+
+		if(extensionScheme != null) {
+			final Extension extension = (Extension)
+					getResourceSet().getResource(
+						URI.createURI(extensionScheme, true), true)
+					.getContents().get(0);
+			configuration.getUse().add(extension);
+		}
+
+		resource.getContents().add(configuration);
 	}
 
 	protected WizardNewFileCreationPage createNewFilePage() {
