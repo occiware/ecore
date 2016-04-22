@@ -1,3 +1,14 @@
+/*******************************************************************************
+ * Copyright (c) 2015-2016 Obeo, Inria
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ * 	   William Piers <william.piers@obeo.fr>
+ *     Philippe Merle <philippe.merle@inria.fr>
+ *******************************************************************************/
 package org.occiware.clouddesigner.occi.emfgen;
 
 import java.util.HashMap;
@@ -17,6 +28,7 @@ import org.occiware.clouddesigner.occi.Link;
 import org.occiware.clouddesigner.occi.OCCIFactory;
 import org.occiware.clouddesigner.occi.OCCIRegistry;
 import org.occiware.clouddesigner.occi.Resource;
+import org.occiware.clouddesigner.occi.util.Occi2Ecore;
 
 public class Ecore2OCCI {
 
@@ -27,13 +39,13 @@ public class Ecore2OCCI {
 	public Configuration convertConfig(Configuration sourceConfig) {
 		Configuration targetConfig = OCCIFactory.eINSTANCE.createConfiguration();
 		// create all resources
-		for (org.occiware.clouddesigner.occi.Resource sourceResource : sourceConfig.getResources()) {
-			org.occiware.clouddesigner.occi.Resource targetResource = convertResource(sourceResource);
+		for (Resource sourceResource : sourceConfig.getResources()) {
+			Resource targetResource = convertResource(sourceResource);
 			targetConfig.getResources().add(targetResource);
 		}
 
 		// create & resolve links
-		for (org.occiware.clouddesigner.occi.Resource sourceResource : sourceConfig.getResources()) {
+		for (Resource sourceResource : sourceConfig.getResources()) {
 			Resource targetResource = mappedResources.get(sourceResource);
 			for (Link sourceLink : sourceResource.getLinks()) {
 				targetResource.getLinks().add(convertLink(sourceLink));
@@ -44,10 +56,12 @@ public class Ecore2OCCI {
 		return targetConfig;
 	}
 
-	private org.occiware.clouddesigner.occi.Resource convertResource(
-			org.occiware.clouddesigner.occi.Resource sourceResource) {
-		org.occiware.clouddesigner.occi.Resource targetResource = OCCIFactory.eINSTANCE.createResource();
+	private Resource convertResource(Resource sourceResource) {
+		Resource targetResource = OCCIFactory.eINSTANCE.createResource();
 		targetResource.setId(sourceResource.getId());
+		targetResource.setTitle(sourceResource.getTitle());
+		targetResource.setSummary(sourceResource.getSummary());
+
 		Kind kind = getKind(sourceResource);
 		targetResource.setKind(kind);
 
@@ -74,6 +88,7 @@ public class Ecore2OCCI {
 	private Link convertLink(Link sourceLink) {
 		Link targetLink = OCCIFactory.eINSTANCE.createLink();
 		targetLink.setId(sourceLink.getId());
+		targetLink.setTitle(sourceLink.getTitle());
 		Kind kind = getKind(sourceLink);
 		targetLink.setKind(kind);
 		targetLink.setSource(mappedResources.get(sourceLink.getSource()));
@@ -99,7 +114,7 @@ public class Ecore2OCCI {
 
 	private Kind getKind(EObject element) {
 		String term = element.eClass().getName();
-		String scheme = element.eClass().getEPackage().getNsURI() + '#';
+		String scheme = Occi2Ecore.convertEcoreNamespace2OcciScheme(element.eClass().getEPackage().getNsURI());
 		String extensionURI = OCCIRegistry.getInstance().getExtensionURI(scheme);
 		final org.eclipse.emf.ecore.resource.Resource extensionResource = element.eResource().getResourceSet()
 				.getResource(URI.createURI(extensionURI, true), true);
