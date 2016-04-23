@@ -75,6 +75,11 @@ package [targetPackageName/];
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+[let stateAttribute : Attribute = kind.attributes->any(attribute : Attribute | attribute.name.endsWith('state') and attribute.type.oclIsTypeOf(EEnum))]
+[if (not stateAttribute.oclIsUndefined())]
+import [extendedPackageName/].[stateAttribute.type.name/];
+[/if]
+
 /**
  * Connector implementation for the OCCI kind:
  * - scheme: [kind.scheme/]
@@ -150,14 +155,15 @@ public class [kindClassName/]Connector extends [extendedPackageName/].impl.[kind
 	//
 
 [for (action : Action | kind.actions)]
-[generateActionMethod(action, kind, extendedPackageName)/]
+[generateActionMethod(action, kind, extendedPackageName, stateAttribute)/]
 [/for]
 }	
+[/let]
 [/let]
 [/file]
 [/template]
 
-[template public generateActionMethod(action : Action, kind : Kind, extendedPackageName : String)]
+[template public generateActionMethod(action : Action, kind : Kind, extendedPackageName : String, stateAttribute : Attribute)]
 	/**
 	 * Implement OCCI action:
      * - scheme: [action.scheme/]
@@ -169,7 +175,26 @@ public class [kindClassName/]Connector extends [extendedPackageName/].impl.[kind
 	{
 		LOGGER.debug("Action [action.term/]([if (action.attributes->size() > 0)]"[for (parameter : Attribute | action.attributes)] + "[parameter.name/]=" + [parameter.name/][/for] + "[/if]) called on " + this);
 
+[if (stateAttribute.oclIsUndefined())]
 		// TODO: Implement how to [action.term/] this [kind.term/].
+[else]
+		// [kind.term.toUpperFirst()/] State Machine.
+		switch(getState().getValue()) {
+[for (eEnumLiteral : EEnumLiteral | stateAttribute.type.oclAsType(EEnum).eLiterals)]
+
+		case [stateAttribute.type.name/].[eEnumLiteral.name.toUpperCase()/]_VALUE:
+			LOGGER.debug("Fire transition(state=[eEnumLiteral.name/], action=\"[action.term/]\")...");
+
+			// TODO Implement transition(state=[eEnumLiteral.name/], action="[action.term/]")
+
+			break;
+[/for]
+
+		default:
+			break;
+		}
+
+[/if]
 	}
 
 [/template]
