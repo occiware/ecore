@@ -106,6 +106,8 @@ public class Importer
 				org.occiware.clouddesigner.occi.Resource targetResource = targetResources.get(entities2uri.get(sourceResource));
 				// Copy the source resource to the target resource.
 				copyEntity(configuration, sourceResource, targetResource);
+				// Copy the summary.
+				targetResource.setSummary(sourceResource.getSummary());
 				// Copy all resource's links.
 				for(cz.cesnet.cloud.occi.core.Link sourceLink : sourceResource.getLinks()) {
 					// Create the target link.
@@ -159,6 +161,8 @@ public class Importer
 	public static final Set<String> attributesToOmit = new HashSet<String>();
 	static {
 		attributesToOmit.add("occi.core.id");
+		attributesToOmit.add("occi.core.title");
+		attributesToOmit.add("occi.core.summary");
 		attributesToOmit.add("occi.core.source");
 		attributesToOmit.add("occi.core.target");
 	};
@@ -167,6 +171,8 @@ public class Importer
 	{
 		// Set the target entity's id.
 		target.setId(source.getId());
+		// Set the target entity's title.
+		target.setTitle(source.getTitle());
 		// Set the target entity's kind.
 		String sourceKindIdentifier = source.getKind().getIdentifier();
 		org.occiware.clouddesigner.occi.Kind targetKind = searchKind(configuration, source.getKind());
