@@ -90,6 +90,7 @@ import org.occiware.clouddesigner.occi.OCCITables;
  * <ul>
  *   <li>{@link org.occiware.clouddesigner.occi.impl.ExtensionImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.impl.ExtensionImpl#getScheme <em>Scheme</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.impl.ExtensionImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.impl.ExtensionImpl#getImport <em>Import</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.impl.ExtensionImpl#getKinds <em>Kinds</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.impl.ExtensionImpl#getMixins <em>Mixins</em>}</li>
@@ -138,6 +139,26 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 	 * @ordered
 	 */
 	protected String scheme = SCHEME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDescription()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String DESCRIPTION_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getDescription() <em>Description</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDescription()
+	 * @generated
+	 * @ordered
+	 */
+	protected String description = DESCRIPTION_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getImport() <em>Import</em>}' reference list.
@@ -238,6 +259,27 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		scheme = newScheme;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, OCCIPackage.EXTENSION__SCHEME, oldScheme, scheme));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getDescription() {
+		return description;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDescription(String newDescription) {
+		String oldDescription = description;
+		description = newDescription;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, OCCIPackage.EXTENSION__DESCRIPTION, oldDescription, description));
 	}
 
 	/**
@@ -1111,6 +1153,8 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 				return getName();
 			case OCCIPackage.EXTENSION__SCHEME:
 				return getScheme();
+			case OCCIPackage.EXTENSION__DESCRIPTION:
+				return getDescription();
 			case OCCIPackage.EXTENSION__IMPORT:
 				return getImport();
 			case OCCIPackage.EXTENSION__KINDS:
@@ -1137,6 +1181,9 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 				return;
 			case OCCIPackage.EXTENSION__SCHEME:
 				setScheme((String)newValue);
+				return;
+			case OCCIPackage.EXTENSION__DESCRIPTION:
+				setDescription((String)newValue);
 				return;
 			case OCCIPackage.EXTENSION__IMPORT:
 				getImport().clear();
@@ -1172,6 +1219,9 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 			case OCCIPackage.EXTENSION__SCHEME:
 				setScheme(SCHEME_EDEFAULT);
 				return;
+			case OCCIPackage.EXTENSION__DESCRIPTION:
+				setDescription(DESCRIPTION_EDEFAULT);
+				return;
 			case OCCIPackage.EXTENSION__IMPORT:
 				getImport().clear();
 				return;
@@ -1200,6 +1250,8 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case OCCIPackage.EXTENSION__SCHEME:
 				return SCHEME_EDEFAULT == null ? scheme != null : !SCHEME_EDEFAULT.equals(scheme);
+			case OCCIPackage.EXTENSION__DESCRIPTION:
+				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
 			case OCCIPackage.EXTENSION__IMPORT:
 				return import_ != null && !import_.isEmpty();
 			case OCCIPackage.EXTENSION__KINDS:
@@ -1253,6 +1305,8 @@ public class ExtensionImpl extends MinimalEObjectImpl.Container implements Exten
 		result.append(name);
 		result.append(", scheme: ");
 		result.append(scheme);
+		result.append(", description: ");
+		result.append(description);
 		result.append(')');
 		return result.toString();
 	}

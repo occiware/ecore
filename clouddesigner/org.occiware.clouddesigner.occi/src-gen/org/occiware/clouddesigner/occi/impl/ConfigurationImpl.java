@@ -19,6 +19,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
@@ -27,6 +28,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
@@ -85,6 +87,8 @@ import org.occiware.clouddesigner.occi.Resource;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.occiware.clouddesigner.occi.impl.ConfigurationImpl#getDescription <em>Description</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.impl.ConfigurationImpl#getLocation <em>Location</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.impl.ConfigurationImpl#getUse <em>Use</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.impl.ConfigurationImpl#getResources <em>Resources</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.impl.ConfigurationImpl#getMixins <em>Mixins</em>}</li>
@@ -93,6 +97,46 @@ import org.occiware.clouddesigner.occi.Resource;
  * @generated
  */
 public class ConfigurationImpl extends MinimalEObjectImpl.Container implements Configuration {
+	/**
+	 * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDescription()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String DESCRIPTION_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getDescription() <em>Description</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDescription()
+	 * @generated
+	 * @ordered
+	 */
+	protected String description = DESCRIPTION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getLocation() <em>Location</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLocation()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String LOCATION_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getLocation() <em>Location</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLocation()
+	 * @generated
+	 * @ordered
+	 */
+	protected String location = LOCATION_EDEFAULT;
+
 	/**
 	 * The cached value of the '{@link #getUse() <em>Use</em>}' reference list.
 	 * <!-- begin-user-doc -->
@@ -140,6 +184,48 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 	@Override
 	protected EClass eStaticClass() {
 		return OCCIPackage.Literals.CONFIGURATION;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getDescription() {
+		return description;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDescription(String newDescription) {
+		String oldDescription = description;
+		description = newDescription;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, OCCIPackage.CONFIGURATION__DESCRIPTION, oldDescription, description));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getLocation() {
+		return location;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setLocation(String newLocation) {
+		String oldLocation = location;
+		location = newLocation;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, OCCIPackage.CONFIGURATION__LOCATION, oldLocation, location));
 	}
 
 	/**
@@ -961,6 +1047,10 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case OCCIPackage.CONFIGURATION__DESCRIPTION:
+				return getDescription();
+			case OCCIPackage.CONFIGURATION__LOCATION:
+				return getLocation();
 			case OCCIPackage.CONFIGURATION__USE:
 				return getUse();
 			case OCCIPackage.CONFIGURATION__RESOURCES:
@@ -980,6 +1070,12 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case OCCIPackage.CONFIGURATION__DESCRIPTION:
+				setDescription((String)newValue);
+				return;
+			case OCCIPackage.CONFIGURATION__LOCATION:
+				setLocation((String)newValue);
+				return;
 			case OCCIPackage.CONFIGURATION__USE:
 				getUse().clear();
 				getUse().addAll((Collection<? extends Extension>)newValue);
@@ -1004,6 +1100,12 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case OCCIPackage.CONFIGURATION__DESCRIPTION:
+				setDescription(DESCRIPTION_EDEFAULT);
+				return;
+			case OCCIPackage.CONFIGURATION__LOCATION:
+				setLocation(LOCATION_EDEFAULT);
+				return;
 			case OCCIPackage.CONFIGURATION__USE:
 				getUse().clear();
 				return;
@@ -1025,6 +1127,10 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case OCCIPackage.CONFIGURATION__DESCRIPTION:
+				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
+			case OCCIPackage.CONFIGURATION__LOCATION:
+				return LOCATION_EDEFAULT == null ? location != null : !LOCATION_EDEFAULT.equals(location);
 			case OCCIPackage.CONFIGURATION__USE:
 				return use != null && !use.isEmpty();
 			case OCCIPackage.CONFIGURATION__RESOURCES:
@@ -1058,6 +1164,24 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 				return AllResourcesLinksKindsInUse((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
 		}
 		return super.eInvoke(operationID, arguments);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (description: ");
+		result.append(description);
+		result.append(", location: ");
+		result.append(location);
+		result.append(')');
+		return result.toString();
 	}
 
 } //ConfigurationImpl

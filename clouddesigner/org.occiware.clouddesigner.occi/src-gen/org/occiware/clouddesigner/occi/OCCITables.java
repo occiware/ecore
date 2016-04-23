@@ -386,6 +386,15 @@ public class OCCITables
 		public static final /*@NonNull*/ ExecutorOperation _Boolean__toString = new ExecutorOperation("toString", Parameters._, Types._Boolean,
 			8, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.oclany.OclAnyToStringOperation.INSTANCE);
 
+		public static final /*@NonNull*/ ExecutorOperation _Entity__occiCreate = new ExecutorOperation("occiCreate", Parameters._, Types._Entity,
+			0, TemplateParameters.EMPTY_LIST, null);
+		public static final /*@NonNull*/ ExecutorOperation _Entity__occiDelete = new ExecutorOperation("occiDelete", Parameters._, Types._Entity,
+			1, TemplateParameters.EMPTY_LIST, null);
+		public static final /*@NonNull*/ ExecutorOperation _Entity__occiRetrieve = new ExecutorOperation("occiRetrieve", Parameters._, Types._Entity,
+			2, TemplateParameters.EMPTY_LIST, null);
+		public static final /*@NonNull*/ ExecutorOperation _Entity__occiUpdate = new ExecutorOperation("occiUpdate", Parameters._, Types._Entity,
+			3, TemplateParameters.EMPTY_LIST, null);
+
 		public static final /*@NonNull*/ ExecutorOperation _String___add_ = new ExecutorOperation("+", Parameters._String, Types._String,
 			0, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringConcatOperation.INSTANCE);
 		public static final /*@NonNull*/ ExecutorOperation _String___lt_ = new ExecutorOperation("<", Parameters._OclSelf, Types._String,
@@ -503,25 +512,29 @@ public class OCCITables
 		public static final /*@NonNull*/ ExecutorProperty _Category__term = new EcoreExecutorProperty(OCCIPackage.Literals.CATEGORY__TERM, Types._Category, 2);
 		public static final /*@NonNull*/ ExecutorProperty _Category__title = new EcoreExecutorProperty(OCCIPackage.Literals.CATEGORY__TITLE, Types._Category, 3);
 
-		public static final /*@NonNull*/ ExecutorProperty _Configuration__mixins = new EcoreExecutorProperty(OCCIPackage.Literals.CONFIGURATION__MIXINS, Types._Configuration, 0);
-		public static final /*@NonNull*/ ExecutorProperty _Configuration__resources = new EcoreExecutorProperty(OCCIPackage.Literals.CONFIGURATION__RESOURCES, Types._Configuration, 1);
-		public static final /*@NonNull*/ ExecutorProperty _Configuration__use = new EcoreExecutorProperty(OCCIPackage.Literals.CONFIGURATION__USE, Types._Configuration, 2);
+		public static final /*@NonNull*/ ExecutorProperty _Configuration__description = new EcoreExecutorProperty(OCCIPackage.Literals.CONFIGURATION__DESCRIPTION, Types._Configuration, 0);
+		public static final /*@NonNull*/ ExecutorProperty _Configuration__location = new EcoreExecutorProperty(OCCIPackage.Literals.CONFIGURATION__LOCATION, Types._Configuration, 1);
+		public static final /*@NonNull*/ ExecutorProperty _Configuration__mixins = new EcoreExecutorProperty(OCCIPackage.Literals.CONFIGURATION__MIXINS, Types._Configuration, 2);
+		public static final /*@NonNull*/ ExecutorProperty _Configuration__resources = new EcoreExecutorProperty(OCCIPackage.Literals.CONFIGURATION__RESOURCES, Types._Configuration, 3);
+		public static final /*@NonNull*/ ExecutorProperty _Configuration__use = new EcoreExecutorProperty(OCCIPackage.Literals.CONFIGURATION__USE, Types._Configuration, 4);
 
 		public static final /*@NonNull*/ ExecutorProperty _Entity__attributes = new EcoreExecutorProperty(OCCIPackage.Literals.ENTITY__ATTRIBUTES, Types._Entity, 0);
 		public static final /*@NonNull*/ ExecutorProperty _Entity__id = new EcoreExecutorProperty(OCCIPackage.Literals.ENTITY__ID, Types._Entity, 1);
 		public static final /*@NonNull*/ ExecutorProperty _Entity__kind = new EcoreExecutorProperty(OCCIPackage.Literals.ENTITY__KIND, Types._Entity, 2);
 		public static final /*@NonNull*/ ExecutorProperty _Entity__mixins = new EcoreExecutorProperty(OCCIPackage.Literals.ENTITY__MIXINS, Types._Entity, 3);
-		public static final /*@NonNull*/ ExecutorProperty _Entity__Kind__entities = new ExecutorPropertyWithImplementation("Kind", Types._Entity, 4, new EcoreLibraryOppositeProperty(OCCIPackage.Literals.KIND__ENTITIES));
-		public static final /*@NonNull*/ ExecutorProperty _Entity__Mixin__entities = new ExecutorPropertyWithImplementation("Mixin", Types._Entity, 5, new EcoreLibraryOppositeProperty(OCCIPackage.Literals.MIXIN__ENTITIES));
+		public static final /*@NonNull*/ ExecutorProperty _Entity__title = new EcoreExecutorProperty(OCCIPackage.Literals.ENTITY__TITLE, Types._Entity, 4);
+		public static final /*@NonNull*/ ExecutorProperty _Entity__Kind__entities = new ExecutorPropertyWithImplementation("Kind", Types._Entity, 5, new EcoreLibraryOppositeProperty(OCCIPackage.Literals.KIND__ENTITIES));
+		public static final /*@NonNull*/ ExecutorProperty _Entity__Mixin__entities = new ExecutorPropertyWithImplementation("Mixin", Types._Entity, 6, new EcoreLibraryOppositeProperty(OCCIPackage.Literals.MIXIN__ENTITIES));
 
-		public static final /*@NonNull*/ ExecutorProperty _Extension__import = new EcoreExecutorProperty(OCCIPackage.Literals.EXTENSION__IMPORT, Types._Extension, 0);
-		public static final /*@NonNull*/ ExecutorProperty _Extension__kinds = new EcoreExecutorProperty(OCCIPackage.Literals.EXTENSION__KINDS, Types._Extension, 1);
-		public static final /*@NonNull*/ ExecutorProperty _Extension__mixins = new EcoreExecutorProperty(OCCIPackage.Literals.EXTENSION__MIXINS, Types._Extension, 2);
-		public static final /*@NonNull*/ ExecutorProperty _Extension__name = new EcoreExecutorProperty(OCCIPackage.Literals.EXTENSION__NAME, Types._Extension, 3);
-		public static final /*@NonNull*/ ExecutorProperty _Extension__scheme = new EcoreExecutorProperty(OCCIPackage.Literals.EXTENSION__SCHEME, Types._Extension, 4);
-		public static final /*@NonNull*/ ExecutorProperty _Extension__types = new EcoreExecutorProperty(OCCIPackage.Literals.EXTENSION__TYPES, Types._Extension, 5);
-		public static final /*@NonNull*/ ExecutorProperty _Extension__Configuration__use = new ExecutorPropertyWithImplementation("Configuration", Types._Extension, 6, new EcoreLibraryOppositeProperty(OCCIPackage.Literals.CONFIGURATION__USE));
-		public static final /*@NonNull*/ ExecutorProperty _Extension__Extension__import = new ExecutorPropertyWithImplementation("Extension", Types._Extension, 7, new EcoreLibraryOppositeProperty(OCCIPackage.Literals.EXTENSION__IMPORT));
+		public static final /*@NonNull*/ ExecutorProperty _Extension__description = new EcoreExecutorProperty(OCCIPackage.Literals.EXTENSION__DESCRIPTION, Types._Extension, 0);
+		public static final /*@NonNull*/ ExecutorProperty _Extension__import = new EcoreExecutorProperty(OCCIPackage.Literals.EXTENSION__IMPORT, Types._Extension, 1);
+		public static final /*@NonNull*/ ExecutorProperty _Extension__kinds = new EcoreExecutorProperty(OCCIPackage.Literals.EXTENSION__KINDS, Types._Extension, 2);
+		public static final /*@NonNull*/ ExecutorProperty _Extension__mixins = new EcoreExecutorProperty(OCCIPackage.Literals.EXTENSION__MIXINS, Types._Extension, 3);
+		public static final /*@NonNull*/ ExecutorProperty _Extension__name = new EcoreExecutorProperty(OCCIPackage.Literals.EXTENSION__NAME, Types._Extension, 4);
+		public static final /*@NonNull*/ ExecutorProperty _Extension__scheme = new EcoreExecutorProperty(OCCIPackage.Literals.EXTENSION__SCHEME, Types._Extension, 5);
+		public static final /*@NonNull*/ ExecutorProperty _Extension__types = new EcoreExecutorProperty(OCCIPackage.Literals.EXTENSION__TYPES, Types._Extension, 6);
+		public static final /*@NonNull*/ ExecutorProperty _Extension__Configuration__use = new ExecutorPropertyWithImplementation("Configuration", Types._Extension, 7, new EcoreLibraryOppositeProperty(OCCIPackage.Literals.CONFIGURATION__USE));
+		public static final /*@NonNull*/ ExecutorProperty _Extension__Extension__import = new ExecutorPropertyWithImplementation("Extension", Types._Extension, 8, new EcoreLibraryOppositeProperty(OCCIPackage.Literals.EXTENSION__IMPORT));
 
 		public static final /*@NonNull*/ ExecutorProperty _Kind__actions = new EcoreExecutorProperty(OCCIPackage.Literals.KIND__ACTIONS, Types._Kind, 0);
 		public static final /*@NonNull*/ ExecutorProperty _Kind__entities = new EcoreExecutorProperty(OCCIPackage.Literals.KIND__ENTITIES, Types._Kind, 1);
@@ -544,8 +557,9 @@ public class OCCITables
 		public static final /*@NonNull*/ ExecutorProperty _Mixin__Mixin__depends = new ExecutorPropertyWithImplementation("Mixin", Types._Mixin, 7, new EcoreLibraryOppositeProperty(OCCIPackage.Literals.MIXIN__DEPENDS));
 
 		public static final /*@NonNull*/ ExecutorProperty _Resource__links = new EcoreExecutorProperty(OCCIPackage.Literals.RESOURCE__LINKS, Types._Resource, 0);
-		public static final /*@NonNull*/ ExecutorProperty _Resource__Configuration__resources = new ExecutorPropertyWithImplementation("Configuration", Types._Resource, 1, new EcoreLibraryOppositeProperty(OCCIPackage.Literals.CONFIGURATION__RESOURCES));
-		public static final /*@NonNull*/ ExecutorProperty _Resource__Link__target = new ExecutorPropertyWithImplementation("Link", Types._Resource, 2, new EcoreLibraryOppositeProperty(OCCIPackage.Literals.LINK__TARGET));
+		public static final /*@NonNull*/ ExecutorProperty _Resource__summary = new EcoreExecutorProperty(OCCIPackage.Literals.RESOURCE__SUMMARY, Types._Resource, 1);
+		public static final /*@NonNull*/ ExecutorProperty _Resource__Configuration__resources = new ExecutorPropertyWithImplementation("Configuration", Types._Resource, 2, new EcoreLibraryOppositeProperty(OCCIPackage.Literals.CONFIGURATION__RESOURCES));
+		public static final /*@NonNull*/ ExecutorProperty _Resource__Link__target = new ExecutorPropertyWithImplementation("Link", Types._Resource, 3, new EcoreLibraryOppositeProperty(OCCIPackage.Literals.LINK__TARGET));
 		static {
 			Init.initEnd();
 		}
@@ -879,7 +893,12 @@ public class OCCITables
 			OCLstdlibTables.Operations._OclElement__oclContents /* oclContents() */
 		};
 
-		private static final /*@NonNull*/ ExecutorOperation[] _Entity__Entity = {};
+		private static final /*@NonNull*/ ExecutorOperation[] _Entity__Entity = {
+			OCCITables.Operations._Entity__occiCreate /* occiCreate() */,
+			OCCITables.Operations._Entity__occiDelete /* occiDelete() */,
+			OCCITables.Operations._Entity__occiRetrieve /* occiRetrieve() */,
+			OCCITables.Operations._Entity__occiUpdate /* occiUpdate() */
+		};
 		private static final /*@NonNull*/ ExecutorOperation[] _Entity__OclAny = {
 			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
@@ -950,7 +969,12 @@ public class OCCITables
 		};
 
 		private static final /*@NonNull*/ ExecutorOperation[] _Link__Link = {};
-		private static final /*@NonNull*/ ExecutorOperation[] _Link__Entity = {};
+		private static final /*@NonNull*/ ExecutorOperation[] _Link__Entity = {
+			OCCITables.Operations._Entity__occiCreate /* occiCreate() */,
+			OCCITables.Operations._Entity__occiDelete /* occiDelete() */,
+			OCCITables.Operations._Entity__occiRetrieve /* occiRetrieve() */,
+			OCCITables.Operations._Entity__occiUpdate /* occiUpdate() */
+		};
 		private static final /*@NonNull*/ ExecutorOperation[] _Link__OclAny = {
 			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
@@ -1056,7 +1080,12 @@ public class OCCITables
 		};
 
 		private static final /*@NonNull*/ ExecutorOperation[] _Resource__Resource = {};
-		private static final /*@NonNull*/ ExecutorOperation[] _Resource__Entity = {};
+		private static final /*@NonNull*/ ExecutorOperation[] _Resource__Entity = {
+			OCCITables.Operations._Entity__occiCreate /* occiCreate() */,
+			OCCITables.Operations._Entity__occiDelete /* occiDelete() */,
+			OCCITables.Operations._Entity__occiRetrieve /* occiRetrieve() */,
+			OCCITables.Operations._Entity__occiUpdate /* occiUpdate() */
+		};
 		private static final /*@NonNull*/ ExecutorOperation[] _Resource__OclAny = {
 			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
@@ -1356,6 +1385,8 @@ public class OCCITables
 		};
 
 		private static final /*@NonNull*/ ExecutorProperty[] _Configuration = {
+			OCCITables.Properties._Configuration__description,
+			OCCITables.Properties._Configuration__location,
 			OCCITables.Properties._Configuration__mixins,
 			OCCITables.Properties._Configuration__resources,
 			OCCITables.Properties._Configuration__use
@@ -1366,11 +1397,13 @@ public class OCCITables
 			OCCITables.Properties._Entity__id,
 			OCCITables.Properties._Entity__kind,
 			OCCITables.Properties._Entity__mixins,
+			OCCITables.Properties._Entity__title,
 			OCCITables.Properties._Entity__Kind__entities,
 			OCCITables.Properties._Entity__Mixin__entities
 		};
 
 		private static final /*@NonNull*/ ExecutorProperty[] _Extension = {
+			OCCITables.Properties._Extension__description,
 			OCCITables.Properties._Extension__import,
 			OCCITables.Properties._Extension__kinds,
 			OCCITables.Properties._Extension__mixins,
@@ -1402,6 +1435,7 @@ public class OCCITables
 			OCCITables.Properties._Entity__mixins,
 			OCCITables.Properties._Link__source,
 			OCCITables.Properties._Link__target,
+			OCCITables.Properties._Entity__title,
 			OCCITables.Properties._Entity__Kind__entities,
 			OCCITables.Properties._Entity__Mixin__entities
 		};
@@ -1429,6 +1463,8 @@ public class OCCITables
 			OCCITables.Properties._Entity__kind,
 			OCCITables.Properties._Resource__links,
 			OCCITables.Properties._Entity__mixins,
+			OCCITables.Properties._Resource__summary,
+			OCCITables.Properties._Entity__title,
 			OCCITables.Properties._Resource__Configuration__resources,
 			OCCITables.Properties._Entity__Kind__entities,
 			OCCITables.Properties._Resource__Link__target,

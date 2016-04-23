@@ -31,6 +31,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.occiware.clouddesigner.occi.Extension#getName <em>Name</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.Extension#getScheme <em>Scheme</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.Extension#getDescription <em>Description</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.Extension#getImport <em>Import</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.Extension#getKinds <em>Kinds</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.Extension#getMixins <em>Mixins</em>}</li>
@@ -95,6 +96,33 @@ public interface Extension extends EObject {
 	 * @generated
 	 */
 	void setScheme(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Description</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Description</em>' attribute.
+	 * @see #setDescription(String)
+	 * @see org.occiware.clouddesigner.occi.OCCIPackage#getExtension_Description()
+	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/core/ecore!Extension!description'"
+	 * @generated
+	 */
+	String getDescription();
+
+	/**
+	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.Extension#getDescription <em>Description</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Description</em>' attribute.
+	 * @see #getDescription()
+	 * @generated
+	 */
+	void setDescription(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Import</b></em>' reference list.

@@ -20,9 +20,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.occiware.clouddesigner.occi.AttributeState;
-import org.occiware.clouddesigner.occi.Entity;
 import org.occiware.clouddesigner.occi.OCCIPackage;
-import org.occiware.clouddesigner.occi.util.OcciHelper;
 
 /**
  * <!-- begin-user-doc -->

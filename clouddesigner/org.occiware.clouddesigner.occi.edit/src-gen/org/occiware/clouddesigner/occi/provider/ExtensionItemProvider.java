@@ -65,6 +65,7 @@ public class ExtensionItemProvider
 
 			addNamePropertyDescriptor(object);
 			addSchemePropertyDescriptor(object);
+			addDescriptionPropertyDescriptor(object);
 			addImportPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
@@ -106,6 +107,28 @@ public class ExtensionItemProvider
 				 getString("_UI_Extension_scheme_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Extension_scheme_feature", "_UI_Extension_type"),
 				 OCCIPackage.Literals.EXTENSION__SCHEME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Description feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDescriptionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Extension_description_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Extension_description_feature", "_UI_Extension_type"),
+				 OCCIPackage.Literals.EXTENSION__DESCRIPTION,
 				 true,
 				 false,
 				 false,
@@ -208,6 +231,7 @@ public class ExtensionItemProvider
 		switch (notification.getFeatureID(Extension.class)) {
 			case OCCIPackage.EXTENSION__NAME:
 			case OCCIPackage.EXTENSION__SCHEME:
+			case OCCIPackage.EXTENSION__DESCRIPTION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case OCCIPackage.EXTENSION__KINDS:

@@ -20,6 +20,7 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
@@ -62,9 +63,55 @@ public class ConfigurationItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addDescriptionPropertyDescriptor(object);
+			addLocationPropertyDescriptor(object);
 			addUsePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Description feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDescriptionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Configuration_description_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Configuration_description_feature", "_UI_Configuration_type"),
+				 OCCIPackage.Literals.CONFIGURATION__DESCRIPTION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Location feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addLocationPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Configuration_location_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Configuration_location_feature", "_UI_Configuration_type"),
+				 OCCIPackage.Literals.CONFIGURATION__LOCATION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -139,7 +186,10 @@ public class ConfigurationItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_Configuration_type");
+		String label = ((Configuration)object).getDescription();
+		return label == null || label.length() == 0 ?
+			getString("_UI_Configuration_type") :
+			getString("_UI_Configuration_type") + " " + label;
 	}
 	
 
@@ -155,6 +205,10 @@ public class ConfigurationItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Configuration.class)) {
+			case OCCIPackage.CONFIGURATION__DESCRIPTION:
+			case OCCIPackage.CONFIGURATION__LOCATION:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
 			case OCCIPackage.CONFIGURATION__RESOURCES:
 			case OCCIPackage.CONFIGURATION__MIXINS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));

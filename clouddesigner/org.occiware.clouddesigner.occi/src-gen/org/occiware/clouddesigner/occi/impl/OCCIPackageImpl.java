@@ -793,8 +793,8 @@ public class OCCIPackageImpl extends EPackageImpl implements OCCIPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getExtension_Import() {
-		return (EReference)extensionEClass.getEStructuralFeatures().get(2);
+	public EAttribute getExtension_Description() {
+		return (EAttribute)extensionEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -802,7 +802,7 @@ public class OCCIPackageImpl extends EPackageImpl implements OCCIPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getExtension_Kinds() {
+	public EReference getExtension_Import() {
 		return (EReference)extensionEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -811,7 +811,7 @@ public class OCCIPackageImpl extends EPackageImpl implements OCCIPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getExtension_Mixins() {
+	public EReference getExtension_Kinds() {
 		return (EReference)extensionEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -820,8 +820,17 @@ public class OCCIPackageImpl extends EPackageImpl implements OCCIPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getExtension_Types() {
+	public EReference getExtension_Mixins() {
 		return (EReference)extensionEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getExtension_Types() {
+		return (EReference)extensionEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -901,8 +910,26 @@ public class OCCIPackageImpl extends EPackageImpl implements OCCIPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getConfiguration_Description() {
+		return (EAttribute)configurationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getConfiguration_Location() {
+		return (EAttribute)configurationEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getConfiguration_Use() {
-		return (EReference)configurationEClass.getEStructuralFeatures().get(0);
+		return (EReference)configurationEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -911,7 +938,7 @@ public class OCCIPackageImpl extends EPackageImpl implements OCCIPackage {
 	 * @generated
 	 */
 	public EReference getConfiguration_Resources() {
-		return (EReference)configurationEClass.getEStructuralFeatures().get(1);
+		return (EReference)configurationEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -920,7 +947,7 @@ public class OCCIPackageImpl extends EPackageImpl implements OCCIPackage {
 	 * @generated
 	 */
 	public EReference getConfiguration_Mixins() {
-		return (EReference)configurationEClass.getEStructuralFeatures().get(2);
+		return (EReference)configurationEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -1113,6 +1140,7 @@ public class OCCIPackageImpl extends EPackageImpl implements OCCIPackage {
 		extensionEClass = createEClass(EXTENSION);
 		createEAttribute(extensionEClass, EXTENSION__NAME);
 		createEAttribute(extensionEClass, EXTENSION__SCHEME);
+		createEAttribute(extensionEClass, EXTENSION__DESCRIPTION);
 		createEReference(extensionEClass, EXTENSION__IMPORT);
 		createEReference(extensionEClass, EXTENSION__KINDS);
 		createEReference(extensionEClass, EXTENSION__MIXINS);
@@ -1126,6 +1154,8 @@ public class OCCIPackageImpl extends EPackageImpl implements OCCIPackage {
 		createEOperation(extensionEClass, EXTENSION___MIXIN_DEPENDS_LOCAL_OR_IMPORTED__DIAGNOSTICCHAIN_MAP);
 
 		configurationEClass = createEClass(CONFIGURATION);
+		createEAttribute(configurationEClass, CONFIGURATION__DESCRIPTION);
+		createEAttribute(configurationEClass, CONFIGURATION__LOCATION);
 		createEReference(configurationEClass, CONFIGURATION__USE);
 		createEReference(configurationEClass, CONFIGURATION__RESOURCES);
 		createEReference(configurationEClass, CONFIGURATION__MIXINS);
@@ -1398,6 +1428,7 @@ public class OCCIPackageImpl extends EPackageImpl implements OCCIPackage {
 		initEClass(extensionEClass, Extension.class, "Extension", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getExtension_Name(), this.getString(), "name", null, 1, 1, Extension.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getExtension_Scheme(), this.getString(), "scheme", null, 1, 1, Extension.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getExtension_Description(), this.getString(), "description", null, 0, 1, Extension.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getExtension_Import(), this.getExtension(), null, "import", null, 0, -1, Extension.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getExtension_Kinds(), this.getKind(), null, "kinds", null, 0, -1, Extension.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		getExtension_Kinds().getEKeys().add(this.getCategory_Term());
@@ -1469,6 +1500,8 @@ public class OCCIPackageImpl extends EPackageImpl implements OCCIPackage {
 		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(configurationEClass, Configuration.class, "Configuration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getConfiguration_Description(), this.getString(), "description", null, 0, 1, Configuration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getConfiguration_Location(), this.getString(), "location", null, 0, 1, Configuration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getConfiguration_Use(), this.getExtension(), null, "use", null, 0, -1, Configuration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getConfiguration_Resources(), this.getResource(), null, "resources", null, 0, -1, Configuration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getConfiguration_Mixins(), this.getMixin(), null, "mixins", null, 0, -1, Configuration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1555,7 +1588,7 @@ public class OCCIPackageImpl extends EPackageImpl implements OCCIPackage {
 		  (this, 
 		   source, 
 		   new String[] {
-			 "ecore", "http://www.eclipse.org/emf/2002/Ecore#/"
+			 "ecore", "http://www.eclipse.org/emf/2002/Ecore"
 		   });
 	}
 

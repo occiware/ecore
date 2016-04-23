@@ -33,7 +33,7 @@ import org.eclipse.emf.ecore.EReference;
  * <!-- end-user-doc -->
  * @see org.occiware.clouddesigner.occi.OCCIFactory
  * @model kind="package"
- *        annotation="http://www.eclipse.org/OCL/Import ecore='http://www.eclipse.org/emf/2002/Ecore#/'"
+ *        annotation="http://www.eclipse.org/OCL/Import ecore='http://www.eclipse.org/emf/2002/Ecore'"
  * @generated
  */
 public interface OCCIPackage extends EPackage {
@@ -1214,13 +1214,22 @@ public interface OCCIPackage extends EPackage {
 	int EXTENSION__SCHEME = 1;
 
 	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION__DESCRIPTION = 2;
+
+	/**
 	 * The feature id for the '<em><b>Import</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXTENSION__IMPORT = 2;
+	int EXTENSION__IMPORT = 3;
 
 	/**
 	 * The feature id for the '<em><b>Kinds</b></em>' containment reference list.
@@ -1229,7 +1238,7 @@ public interface OCCIPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXTENSION__KINDS = 3;
+	int EXTENSION__KINDS = 4;
 
 	/**
 	 * The feature id for the '<em><b>Mixins</b></em>' containment reference list.
@@ -1238,7 +1247,7 @@ public interface OCCIPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXTENSION__MIXINS = 4;
+	int EXTENSION__MIXINS = 5;
 
 	/**
 	 * The feature id for the '<em><b>Types</b></em>' containment reference list.
@@ -1247,7 +1256,7 @@ public interface OCCIPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXTENSION__TYPES = 5;
+	int EXTENSION__TYPES = 6;
 
 	/**
 	 * The number of structural features of the '<em>Extension</em>' class.
@@ -1256,7 +1265,7 @@ public interface OCCIPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXTENSION_FEATURE_COUNT = 6;
+	int EXTENSION_FEATURE_COUNT = 7;
 
 	/**
 	 * The operation id for the '<em>Kinds Scheme Valid</em>' operation.
@@ -1341,13 +1350,31 @@ public interface OCCIPackage extends EPackage {
 	int CONFIGURATION = 10;
 
 	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONFIGURATION__DESCRIPTION = 0;
+
+	/**
+	 * The feature id for the '<em><b>Location</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONFIGURATION__LOCATION = 1;
+
+	/**
 	 * The feature id for the '<em><b>Use</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONFIGURATION__USE = 0;
+	int CONFIGURATION__USE = 2;
 
 	/**
 	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
@@ -1356,7 +1383,7 @@ public interface OCCIPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONFIGURATION__RESOURCES = 1;
+	int CONFIGURATION__RESOURCES = 3;
 
 	/**
 	 * The feature id for the '<em><b>Mixins</b></em>' containment reference list.
@@ -1365,7 +1392,7 @@ public interface OCCIPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONFIGURATION__MIXINS = 2;
+	int CONFIGURATION__MIXINS = 4;
 
 	/**
 	 * The number of structural features of the '<em>Configuration</em>' class.
@@ -1374,7 +1401,7 @@ public interface OCCIPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONFIGURATION_FEATURE_COUNT = 3;
+	int CONFIGURATION_FEATURE_COUNT = 5;
 
 	/**
 	 * The operation id for the '<em>All Mixins Are Tags</em>' operation.
@@ -2140,6 +2167,17 @@ public interface OCCIPackage extends EPackage {
 	EAttribute getExtension_Scheme();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.Extension#getDescription <em>Description</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Description</em>'.
+	 * @see org.occiware.clouddesigner.occi.Extension#getDescription()
+	 * @see #getExtension()
+	 * @generated
+	 */
+	EAttribute getExtension_Description();
+
+	/**
 	 * Returns the meta object for the reference list '{@link org.occiware.clouddesigner.occi.Extension#getImport <em>Import</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2262,6 +2300,28 @@ public interface OCCIPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getConfiguration();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.Configuration#getDescription <em>Description</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Description</em>'.
+	 * @see org.occiware.clouddesigner.occi.Configuration#getDescription()
+	 * @see #getConfiguration()
+	 * @generated
+	 */
+	EAttribute getConfiguration_Description();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.Configuration#getLocation <em>Location</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Location</em>'.
+	 * @see org.occiware.clouddesigner.occi.Configuration#getLocation()
+	 * @see #getConfiguration()
+	 * @generated
+	 */
+	EAttribute getConfiguration_Location();
 
 	/**
 	 * Returns the meta object for the reference list '{@link org.occiware.clouddesigner.occi.Configuration#getUse <em>Use</em>}'.
@@ -2946,6 +3006,14 @@ public interface OCCIPackage extends EPackage {
 		EAttribute EXTENSION__SCHEME = eINSTANCE.getExtension_Scheme();
 
 		/**
+		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EXTENSION__DESCRIPTION = eINSTANCE.getExtension_Description();
+
+		/**
 		 * The meta object literal for the '<em><b>Import</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3042,6 +3110,22 @@ public interface OCCIPackage extends EPackage {
 		 * @generated
 		 */
 		EClass CONFIGURATION = eINSTANCE.getConfiguration();
+
+		/**
+		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONFIGURATION__DESCRIPTION = eINSTANCE.getConfiguration_Description();
+
+		/**
+		 * The meta object literal for the '<em><b>Location</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONFIGURATION__LOCATION = eINSTANCE.getConfiguration_Location();
 
 		/**
 		 * The meta object literal for the '<em><b>Use</b></em>' reference list feature.
