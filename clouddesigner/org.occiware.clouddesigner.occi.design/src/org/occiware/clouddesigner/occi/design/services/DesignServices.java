@@ -11,6 +11,10 @@
  *******************************************************************************/
 package org.occiware.clouddesigner.occi.design.services;
 
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
+
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 // import org.eclipse.emf.ecore.EClassifier;
@@ -26,13 +30,17 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.occiware.clouddesigner.occi.Action;
 import org.occiware.clouddesigner.occi.Attribute;
+import org.occiware.clouddesigner.occi.AttributeState;
 import org.occiware.clouddesigner.occi.Category;
 import org.occiware.clouddesigner.occi.Entity;
 import org.occiware.clouddesigner.occi.Extension;
 import org.occiware.clouddesigner.occi.Kind;
 import org.occiware.clouddesigner.occi.Link;
 import org.occiware.clouddesigner.occi.Mixin;
+import org.occiware.clouddesigner.occi.OCCIFactory;
+import org.occiware.clouddesigner.occi.OcciCoreConstants;
 import org.occiware.clouddesigner.occi.design.dialog.LoadExtensionDialog;
+import org.occiware.clouddesigner.occi.util.OcciHelper;
 
 public class DesignServices {
 
@@ -121,14 +129,14 @@ public class DesignServices {
 	 * Set the initial kind of a Resource.
 	 */
 	public void setResourceKind(org.occiware.clouddesigner.occi.Resource resource) {
-		setEntityKind(resource, "resource");
+		setEntityKind(resource, OcciCoreConstants.OCCI_CORE_RESOURCE_TERM);
 	}
 
 	/**
 	 * Set the initial kind of a Link.
 	 */
 	public void setLinkKind(Link link) {
-		setEntityKind(link, "link");
+		setEntityKind(link, OcciCoreConstants.OCCI_CORE_LINK_TERM);
 	}
 
 	/**
@@ -150,7 +158,38 @@ public class DesignServices {
 	{
 		Session session = SessionManager.INSTANCE.getSession(eobject);
 		Resource resource = session.getSessionResource().getResourceSet().getResource(
-					URI.createPlatformPluginURI("org.occiware.clouddesigner.occi/model/Core.occie", true), true);
+					URI.createURI(OcciCoreConstants.OCCI_CORE_SCHEME, true), true);
 		return (Extension) resource.getContents().get(0);
+	}
+
+	/**
+	 * Add all attributes not already present.
+	 */
+	public void addAllAttributes(Entity entity)
+	{
+		// Compute already present attribute names.
+		List<AttributeState> attributeStates = entity.getAttributes();
+		HashSet<String> attributeNames = new HashSet<String>();
+		// Iterate over all attribute state instances.
+		for(AttributeState attributeState : attributeStates) {
+			attributeNames.add(attributeState.getName());
+		}
+
+		// Iterate over all attributes.
+		for(Attribute attribute : OcciHelper.getAllAttributes(entity)) {
+			String attributeName = attribute.getName();
+			if(!attributeNames.contains(attributeName)) {
+				// If not already present create it.
+				AttributeState attributeState = OCCIFactory.eINSTANCE.createAttributeState();
+				attributeState.setName(attributeName);
+				String attributeDefault = attribute.getDefault();
+				if(attributeDefault != null) {
+					// if default set then set value.
+					attributeState.setValue(attributeDefault);
+				}
+				// Add it to attribute states of this entity.
+				attributeStates.add(attributeState);
+			}
+		}
 	}
 }
