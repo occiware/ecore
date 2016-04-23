@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="OCCIware" version="10.1.0.201507271600">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="OCCIware" version="10.1.3.201511131800">
   <ownedViewpoints name="OCCI Configuration - jOCCI connector" modelFileExtension="occic">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="OCCI Configuration - jOCCI connector" domainClass="occi.Configuration">
       <metamodel href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#/"/>
@@ -59,6 +59,7 @@
         </toolSections>
         <toolSections name="Attribute">
           <reusedTools xsi:type="tool_1:NodeCreationDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Attribute']"/>
+          <reusedTools xsi:type="tool:ToolDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='AddAllAttributes']"/>
         </toolSections>
         <toolSections name="CRUD">
           <ownedTools xsi:type="tool:ToolDescription" name="Create" precondition="[oclIsKindOf(Entity)/]">
