@@ -33,9 +33,11 @@ import org.eclipse.swt.widgets.Shell;
 
 import org.occiware.clouddesigner.occi.Action;
 import org.occiware.clouddesigner.occi.Configuration;
+import org.occiware.clouddesigner.occi.Entity;
 import org.occiware.clouddesigner.occi.connector.jocci.Activator;
 import org.occiware.clouddesigner.occi.connector.jocci.dialogs.OcciActionDialog;
 import org.occiware.clouddesigner.occi.connector.jocci.dialogs.OcciServerDialog;
+import org.occiware.clouddesigner.occi.util.OcciHelper;
 
 public class DesignServices {
 
@@ -83,6 +85,26 @@ public class DesignServices {
 	}
 
 	/**
+	 * Get the jOCCI client.
+	 * It is created the first time.
+	 * @param entity
+	 * @return the jOCCI client.
+	 */
+	private Client getJocciClient(Entity entity)
+	{
+		if(jocciClient == null) {
+			try {
+				// Create a jOCCI client.
+				jocciClient = Importer.newJocciClient(OcciHelper.getConfiguration(entity).getLocation());
+			} catch(CommunicationException ce) {
+				reportException(ce);
+				jocciClient = null;
+			}
+		}
+		return jocciClient;
+	}
+
+	/**
 	 * Get the identifier for a given category.
 	 * @param category the given category.
 	 * @return its identifier, aka scheme + term.
@@ -107,7 +129,7 @@ public class DesignServices {
 	 * @param entity the given entity.
 	 * @return its location inside the OCCI server.
 	 */
-	private String getLocation(org.occiware.clouddesigner.occi.Entity entity)
+	private String getLocation(Entity entity)
 	{
 		org.occiware.clouddesigner.occi.Kind entityKind = entity.getKind();
 		cz.cesnet.cloud.occi.core.Kind jocciKind = jocciClient.getModel().findKind(createURI(entityKind));
@@ -259,10 +281,10 @@ public class DesignServices {
 	 * Create an OCCI entity.
 	 * @param entity the entity to create.
 	 */
-	public void createEntity(org.occiware.clouddesigner.occi.Entity entity)
+	public void createEntity(Entity entity)
 	{
 		// Get the jOCCI client to interact with an OCCI server.
-		Client jocciClient = getJocciClient();
+		Client jocciClient = getJocciClient(entity);
 		if(jocciClient == null) {
 			return;
 		}
@@ -293,9 +315,9 @@ public class DesignServices {
 	 * Retrieve an OCCI entity.
 	 * @param entity the entity to retrieve.
 	 */
-	public void retrieveEntity(org.occiware.clouddesigner.occi.Entity entity)
+	public void retrieveEntity(Entity entity)
 	{
-		Client jocciClient = getJocciClient();
+		Client jocciClient = getJocciClient(entity);
 		if(jocciClient == null) {
 			return;
 		}
@@ -318,9 +340,9 @@ public class DesignServices {
 	 * Update an OCCI entity.
 	 * @param entity the entity to update.
 	 */
-	public void updateEntity(org.occiware.clouddesigner.occi.Entity entity)
+	public void updateEntity(Entity entity)
 	{
-		Client jocciClient = getJocciClient();
+		Client jocciClient = getJocciClient(entity);
 		if(jocciClient == null) {
 			return;
 		}
@@ -355,9 +377,9 @@ public class DesignServices {
 	 * Execute an OCCI action on an OCCI entity.
 	 * @param entity the entity on which an OCCI action will be executed.
 	 */
-	public void executeAction(org.occiware.clouddesigner.occi.Entity entity)
+	public void executeAction(Entity entity)
 	{
-		Client jocciClient = getJocciClient();
+		Client jocciClient = getJocciClient(entity);
 		if(jocciClient == null) {
 			return;
 		}
@@ -433,9 +455,9 @@ public class DesignServices {
 	 * Delete an OCCI entity.
 	 * @param entity the entity to delete.
 	 */
-	public void deleteEntity(org.occiware.clouddesigner.occi.Entity entity)
+	public void deleteEntity(Entity entity)
 	{
-		Client jocciClient = getJocciClient();
+		Client jocciClient = getJocciClient(entity);
 		if(jocciClient == null) {
 			return;
 		}

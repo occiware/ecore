@@ -33,6 +33,8 @@ import org.occiware.clouddesigner.occi.connector.jocci.services.Importer;
 import org.occiware.clouddesigner.occi.design.utils.NewDiagramWizard;
 import org.occiware.clouddesigner.occi.design.utils.NewFilePage;
 
+import com.google.common.base.Strings;
+
 /**
  * This is a simple wizard for creating a new model file.
  */
@@ -54,6 +56,7 @@ public class NewConfigurationWizard extends NewDiagramWizard {
 		resource.getContents().add(rootObject);
 		try {
 			Importer.importFromOcciServer(rootObject, occiServerUrl);
+			rootObject.setLocation(occiServerUrl);
 		} catch (Throwable throwable) {
 			Shell shell = Display.getCurrent().getActiveShell();
 			Status status = new Status(IStatus.ERROR, Activator.PLUGIN_ID, 0, null, throwable);
@@ -81,8 +84,15 @@ public class NewConfigurationWizard extends NewDiagramWizard {
 				txtOcciServerUrl.addModifyListener(new ModifyListener() {
 					public void modifyText(ModifyEvent e) {
 						occiServerUrl = txtOcciServerUrl.getText();
+						setPageComplete(validatePage());
 					}
 				});
+			}
+
+			@Override
+			protected boolean validatePage() {
+				// TODO add error messages
+				return super.validatePage() && !Strings.isNullOrEmpty(occiServerUrl);
 			}
 		};
 	}
