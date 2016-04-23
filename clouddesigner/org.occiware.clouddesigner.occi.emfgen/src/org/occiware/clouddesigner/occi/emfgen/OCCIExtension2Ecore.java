@@ -267,7 +267,7 @@ public class OCCIExtension2Ecore {
 		// Create an Ecore parameter.
 		EParameter eParam = EcoreFactory.eINSTANCE.createEParameter();
 		// Set the name of the Ecore parameter.
-		eParam.setName(ConverterUtils.formatName(attribute.getName()));
+		eParam.setName(Occi2Ecore.convertOcciAttributeName2EcoreAttributeName(attribute.getName()));
 		// Set the type of the Ecore parameter.
 		eParam.setEType(getMappedType(attribute.getType()));
 		// If the OCCI attribute is required then the Ecore parameter is also
@@ -290,7 +290,7 @@ public class OCCIExtension2Ecore {
 		// Create an Ecore attribute.
 		EAttribute eAttr = EcoreFactory.eINSTANCE.createEAttribute();
 		// Set the name of the Ecore attribute.
-		eAttr.setName(ConverterUtils.formatName(attribute.getName()));
+		eAttr.setName(Occi2Ecore.convertOcciAttributeName2EcoreAttributeName(attribute.getName()));
 		// Set the type of the Ecore attribute.
 		eAttr.setEType(getMappedType(attribute.getType()));
 		// Set the default value of the Ecore attribute.
