@@ -263,10 +263,14 @@ public class NewConnectorWizard extends BasicNewProjectResourceWizard {
 			"  - Philippe Merle <philippe.merle@inria.fr>\n" +
 			"-->\n" +
 			"<plugin>\n" +
-			"  <extension point=\"org.eclipse.emf.ecore.factory_override\">\n" +
-			"    <factory class=\"" + connectorProjectName + ".ConnectorFactory\"\n" +
-			"             uri=\"" + Occi2Ecore.convertOcciScheme2EcoreNamespace(extensionScheme) + "\"/>\n" +
-			"  </extension>\n" +
+			"\n" +
+			"   <!-- Register the factory of this connector. -->\n" +
+			"   <extension point=\"org.eclipse.emf.ecore.factory_override\">\n" +
+			"      <factory\n" +
+			"            uri=\"" + Occi2Ecore.convertOcciScheme2EcoreNamespace(extensionScheme) + "\"\n" +
+			"            class=\"" + connectorProjectName + ".ConnectorFactory\"/>\n" +
+			"   </extension>\n" +
+			"\n" +
 			"</plugin>\n";
 		pluginXML.create(new ByteArrayInputStream(pluginContent.getBytes()), true, monitor);
 
