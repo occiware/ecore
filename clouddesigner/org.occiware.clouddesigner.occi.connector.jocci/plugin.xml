@@ -30,7 +30,7 @@ Contributors:
             category="org.occiware.clouddesigner.category.ID"
             class="org.occiware.clouddesigner.occi.connector.jocci.wizards.NewConfigurationWizard"
             icon="platform:/plugin/org.occiware.clouddesigner.occi.edit/icons/full/obj16/Configuration.gif"
-            id="org.occiware.clouddesigner.occi.connector.jocci.wizard.NewConfigurationWizard"
+            id="org.occiware.clouddesigner.occi.connector.jocci.wizards.NewConfigurationWizard"
             name="OCCI Configuration File with jOCCI connector">
       </wizard>
    </extension>
