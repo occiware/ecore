@@ -377,7 +377,8 @@ public class NewExtensionWizard extends BasicNewProjectResourceWizard {
 				"bin.includes = .,\\\n" +
 				"				model/,\\\n" +
 				"				META-INF/,\\\n" +
-				"				plugin.xml\n";
+				"				plugin.xml,\\\n" +
+				"				plugin.properties\n";
 		build.setContents(new ByteArrayInputStream(buildContent.getBytes()), true, false, monitor);
 	}
 
