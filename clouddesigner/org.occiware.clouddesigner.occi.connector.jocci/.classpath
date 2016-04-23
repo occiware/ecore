@@ -9,5 +9,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/org.occiware.clouddesigner.occi"/>
 	<classpathentry kind="lib" path="lib/jocci-api-0.2.3-SNAPSHOT.jar"/>
 	<classpathentry kind="lib" path="lib/jocci-core-0.2.3-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="lib/commons-logging-1.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
