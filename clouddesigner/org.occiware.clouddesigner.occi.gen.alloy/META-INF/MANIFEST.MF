@@ -5,6 +5,7 @@ Bundle-SymbolicName: org.occiware.clouddesigner.occi.gen.alloy
 Bundle-Version: 0.1.0.qualifier
 Bundle-Activator: org.occiware.clouddesigner.occi.gen.alloy.Activator
 Bundle-Vendor: OCCIware Project
+Bundle-ClassPath: .
 Require-Bundle: org.eclipse.core.runtime, 
  org.eclipse.emf.ecore,
  org.eclipse.emf.ecore.xmi,

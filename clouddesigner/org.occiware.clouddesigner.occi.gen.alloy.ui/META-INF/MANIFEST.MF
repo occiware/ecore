@@ -5,6 +5,7 @@ Bundle-SymbolicName: org.occiware.clouddesigner.occi.gen.alloy.ui;singleton:=tru
 Bundle-Version: 0.1.0.qualifier
 Bundle-Activator: org.occiware.clouddesigner.occi.gen.alloy.ui.Activator
 Bundle-Vendor: OCCIware Project
+Bundle-ClassPath: .
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.core.resources, 
@@ -15,6 +16,6 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.ocl.ecore,
  org.eclipse.acceleo.model,
  org.eclipse.acceleo.engine
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Eclipse-LazyStart: true
