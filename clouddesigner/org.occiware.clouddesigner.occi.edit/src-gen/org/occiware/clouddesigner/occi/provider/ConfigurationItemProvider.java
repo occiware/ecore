@@ -85,7 +85,7 @@ public class ConfigurationItemProvider
 				 getString("_UI_PropertyDescriptor_description", "_UI_Configuration_description_feature", "_UI_Configuration_type"),
 				 OCCIPackage.Literals.CONFIGURATION__DESCRIPTION,
 				 true,
-				 false,
+				 true,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
@@ -186,7 +186,7 @@ public class ConfigurationItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Configuration)object).getDescription();
+		String label = crop(((Configuration)object).getDescription());
 		return label == null || label.length() == 0 ?
 			getString("_UI_Configuration_type") :
 			getString("_UI_Configuration_type") + " " + label;

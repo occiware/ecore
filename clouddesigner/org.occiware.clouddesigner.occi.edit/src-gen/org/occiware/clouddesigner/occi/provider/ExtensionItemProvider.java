@@ -12,7 +12,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -130,7 +129,7 @@ public class ExtensionItemProvider
 				 getString("_UI_PropertyDescriptor_description", "_UI_Extension_description_feature", "_UI_Extension_type"),
 				 OCCIPackage.Literals.EXTENSION__DESCRIPTION,
 				 true,
-				 false,
+				 true,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
@@ -263,6 +262,7 @@ public class ExtensionItemProvider
 			(createChildParameter
 				(OCCIPackage.Literals.EXTENSION__MIXINS,
 				 OCCIFactory.eINSTANCE.createMixin()));
+
 	}
 
 	/**

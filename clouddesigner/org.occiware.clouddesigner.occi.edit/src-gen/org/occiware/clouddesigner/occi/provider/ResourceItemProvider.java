@@ -68,7 +68,7 @@ public class ResourceItemProvider extends EntityItemProvider {
 				 getString("_UI_PropertyDescriptor_description", "_UI_Resource_summary_feature", "_UI_Resource_type"),
 				 OCCIPackage.Literals.RESOURCE__SUMMARY,
 				 true,
-				 false,
+				 true,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
