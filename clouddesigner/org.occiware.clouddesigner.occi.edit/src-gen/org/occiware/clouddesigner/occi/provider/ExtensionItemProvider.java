@@ -247,7 +247,7 @@ public class ExtensionItemProvider
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NO
 	 */
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
@@ -263,6 +263,16 @@ public class ExtensionItemProvider
 				(OCCIPackage.Literals.EXTENSION__MIXINS,
 				 OCCIFactory.eINSTANCE.createMixin()));
 
+        newChildDescriptors.add
+        (createChildParameter
+            (OCCIPackage.Literals.EXTENSION__TYPES,
+             org.eclipse.emf.ecore.EcoreFactory.eINSTANCE.createEDataType()));
+
+        newChildDescriptors.add
+        (createChildParameter
+            (OCCIPackage.Literals.EXTENSION__TYPES,
+            org.eclipse.emf.ecore.EcoreFactory.eINSTANCE.createEEnum()));
+ 
 	}
 
 	/**
