@@ -12,12 +12,15 @@
       <metamodel href="[ePackage.nsURI/]#/"/>
       <defaultLayer name="Default">
 [for (resource : EClass | ePackage.getResources())]
-        <containerMappings name="[resource.name/]" 
+        <containerMappings name="[resource.name/]"
+            labelDirectEdit="//@ownedViewpoints['['/]name='[ePackage.name.toUpperFirst()/]Configuration'[']'/]/@ownedRepresentations['['/]name='[ePackage.name.toUpperFirst()/]Configuration%20Diagram'[']'/]/@defaultLayer/@toolSections.1/@ownedTools['['/]name='EditEntityTitle'[']'/]"
 			semanticCandidatesExpression="feature:resources" 
 			domainClass="[resource.name/]"
             childrenPresentation="List">
 [for (attribute : EAttribute | resource.eAllAttributes)]
-          <subNodeMappings name="[attribute.name.toUpperFirst()/]" semanticCandidatesExpression="['['/]self/[']'/]" domainClass="[resource.name/]">
+          <subNodeMappings name="[attribute.name.toUpperFirst()/]"
+                labelDirectEdit="//@ownedViewpoints['['/]name='[ePackage.name.toUpperFirst()/]Configuration'[']'/]/@ownedRepresentations['['/]name='[ePackage.name.toUpperFirst()/]Configuration%20Diagram'[']'/]/@defaultLayer/@toolSections.1/@ownedTools['['/]name='Edit[resource.name/][attribute.name.toUpperFirst()/]'[']'/]"
+                semanticCandidatesExpression="['['/]self/[']'/]" domainClass="[resource.name/]">
             <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="['['/]'[attribute.name/] = ' + self.[attribute.name/].toString()/[']'/]" labelAlignment="LEFT" hideLabelByDefault="true" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries['['/]name='black'[']'/]"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries['['/]name='black'[']'/]"/>
@@ -27,7 +30,7 @@
 [/for]
 [let stateAttribute : EAttribute = resource.eAllAttributes->any(attribute : EAttribute | attribute.name.endsWith('state') and attribute.eAttributeType.oclIsTypeOf(EEnum))]
 [if (stateAttribute.oclIsUndefined())]
-          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="[resource.name/]" labelAlignment="LEFT" roundedCorner="true">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" labelExpression="['['/]self.title + ': [resource.name/]'/[']'/]" roundedCorner="true">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[ '[' /]name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[ '[' /]name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[ '[' /]name='white']"/>
@@ -36,7 +39,7 @@
 [else]
 [for (eLiteral : EEnumLiteral | stateAttribute.eAttributeType.oclAsType(EEnum).eLiterals)]
           <conditionnalStyles predicateExpression="['['/][stateAttribute.name/].toString().equalsIgnoreCase('[eLiteral.literal/]')/[']'/]">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" labelExpression="[resource.name/]" roundedCorner="true">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" labelExpression="['['/]self.title + ': [resource.name/]'/[']'/]" roundedCorner="true">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries['['/]name='black'[']'/]"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries['['/]name='black'[']'/]"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries['['/]name='white'[']'/]"/>
@@ -56,13 +59,29 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="[resource.name/]" referenceName="resources"/>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="[resource.name/]" referenceName="resources">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="title" valueExpression="['['/]'[resource.name.toLowerFirst()/]' + container.oclAsType(Configuration).resources->size().toString()/[']'/]"/>
+              </firstModelOperations>
             </initialOperation>
           </ownedTools>
 [/for]
         </toolSections>
         <toolSections name="Tools">
+          <ownedTools xsi:type="tool:DirectEditLabel" name="EditEntityTitle" inputLabelExpression="feature:title">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="title" valueExpression="var:arg0"/>
+            </initialOperation>
+          </ownedTools>
 [for (resource : EClass | ePackage.getResources())]
+[for (attribute : EAttribute | resource.eAllAttributes)]
+          <ownedTools xsi:type="tool:DirectEditLabel" name="Edit[resource.name/][attribute.name.toUpperFirst()/]" inputLabelExpression="feature:[attribute.name/]">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="[attribute.name/]" valueExpression="var:arg0"/>
+            </initialOperation>
+          </ownedTools>
+[/for]
           <ownedTools xsi:type="tool_1:PopupMenu" name="[resource.name/]Actions" label="[resource.name/] actions" precondition="['['/]self.oclIsKindOf([resource.name/])/[']'/]">
 [for (action : EOperation | resource.eAllOperations)]
 [if (action.eContainingClass.name <> 'Entity')]
