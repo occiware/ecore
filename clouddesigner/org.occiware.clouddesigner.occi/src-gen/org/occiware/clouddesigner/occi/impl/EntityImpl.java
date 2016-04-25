@@ -360,7 +360,7 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 							attributes.add(attributeState);
 						} catch (Exception e) {
 							// FIXME: Don't understand why an exception is thrown!!!
-							LOGGER.warn("Exception when add attribute state " + attributeName + ": " + e.getMessage() + "!!!");
+							LOGGER.warn("Exception when add attribute state '" + attributeName + "': " + e.getMessage() + "!!!");
 						}
 					}
 					// Get the Ecore attribute value.
@@ -372,7 +372,7 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 							attributeState.setValue(valueAsString);
 						} catch (Exception e) {
 							// FIXME: Don't understand why an exception is thrown!!!
-							LOGGER.warn("Exception when set attribute state " + attributeName + ": " + e.getMessage() + "!!!");
+							LOGGER.warn("Exception when set attribute state '" + attributeName + "': " + e.getMessage() + "!!!");
 						}
 					}
 				}

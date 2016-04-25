@@ -153,7 +153,7 @@ public class AttributeStateImpl extends MinimalEObjectImpl.Container implements 
 				OcciHelper.setAttribute((Entity)eContainer(), name, value);
 			} catch (Exception e) {
 				// FIXME: Don't understand why an exception is thrown!!!
-				LOGGER.warn("Exception when set the value of the attribute state " + name + ": " + e.getMessage() + "!!!");
+				LOGGER.warn("Exception when set the value of the attribute state '" + name + "': " + e.getMessage() + "!!!");
 			}
 		}
 	}
