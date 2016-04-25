@@ -67,7 +67,7 @@ public class Ecore2OCCI {
 
 		Set<EAttribute> setAttributes = new HashSet<EAttribute>();
 		for (Attribute attribute : ConverterUtils.getAllAttributes(kind)) {
-			String convertedAttributeName = ConverterUtils.formatName(attribute.getName());
+			String convertedAttributeName = Occi2Ecore.convertOcciAttributeName2EcoreAttributeName(attribute.getName());
 			EAttribute eAttribute = (EAttribute) sourceResource.eClass().getEStructuralFeature(convertedAttributeName);
 			// an attr cannot be set twice
 			if (eAttribute != null && !setAttributes.contains(eAttribute)) {
@@ -95,7 +95,7 @@ public class Ecore2OCCI {
 		targetLink.setTarget(mappedResources.get(sourceLink.getTarget()));
 		Set<EAttribute> setAttributes = new HashSet<EAttribute>();
 		for (Attribute attribute : ConverterUtils.getAllAttributes(kind)) {
-			String convertedAttributeName = ConverterUtils.formatName(attribute.getName());
+			String convertedAttributeName = Occi2Ecore.convertOcciAttributeName2EcoreAttributeName(attribute.getName());
 			EAttribute eAttribute = (EAttribute) sourceLink.eClass().getEStructuralFeature(convertedAttributeName);
 			// an attr cannot be set twice
 			if (eAttribute != null && !setAttributes.contains(eAttribute)) {
