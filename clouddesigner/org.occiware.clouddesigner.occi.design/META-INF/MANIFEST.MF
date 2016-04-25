@@ -18,7 +18,6 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.transaction,
  org.eclipse.emf.edit.ui,
  org.eclipse.pde.ui,
- org.eclipse.xtext.ui,
  com.google.guava;bundle-version="15.0.0",
  org.occiware.clouddesigner.occi,
  org.occiware.clouddesigner.occi.edit

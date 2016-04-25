@@ -33,7 +33,6 @@ Contributors:
       <import feature="org.eclipse.acceleo" version="3.6.0.201506080954"/>
       <import feature="org.eclipse.xtend.sdk" version="2.8.3.v201506010551"/>
       <import feature="org.eclipse.xtext.sdk" version="2.8.3.v201506010551"/>
-      <import feature="org.eclipse.xtext.ui" version="2.8.3.v201506010551"/>
       <import feature="org.eclipse.emf.sdk" version="2.11.0.v20150601-0402"/>
       <import feature="org.eclipse.epp.package.java.feature" version="4.5.0.20150621-1200"/>
       <import feature="org.eclipse.emf.ecoretools.sdk" version="3.0.0.201505261431"/>
