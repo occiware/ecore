@@ -79,7 +79,9 @@
 
   <!-- Mixin: IP Networking Mixin -->
   <occi:mixin term="ipnetwork" scheme="http://schemas.ogf.org/occi/infrastructure/network#" title="IP Networking Mixin">
+<!-- Commented as jOCCI throws an error!
     <occi:applies term="network" scheme="http://schemas.ogf.org/occi/infrastructure#"/>
+-->
     <occi:attribute name="occi.network.address" use="optional" type="xs:string" title="Internet Protocol (IP) network address (e.g. 192.168.0.1/24, fc00::/7)"/>
     <occi:attribute name="occi.network.gateway" use="optional" type="xs:string" title="Internet Protocol (IP) network address (e.g. 192.168.0.1, fc00::)"/>
     <occi:attribute name="occi.network.allocation" use="optional" type="xs:string" title="Address allocation mechanism: dynamic e.g. uses the dynamic host configuration protocol, static e.g. uses user supplied static network configurations"/>
@@ -87,7 +89,9 @@
 
   <!-- Mixin: IP NetworkInterface Mixin -->
   <occi:mixin term="ipnetworkinterface" scheme="http://schemas.ogf.org/occi/infrastructure/networkinterface#" title="IP NetworkInterface Mixin">
+<!-- Commented as jOCCI throws an error!
     <occi:applies term="networkinterface" scheme="http://schemas.ogf.org/occi/infrastructure#"/>
+-->
     <occi:attribute name="occi.networkinterface.address" use="required" type="xs:string" title="Internet Protocol (IP) network address (e.g. 192.168.0.1/24, fc00::/7) of the link"/>
     <occi:attribute name="occi.networkinterface.gateway" use="optional" type="xs:string" title="Internet Protocol (IP) network address (e.g. 192.168.0.1/24, fc00::/7)"/>
     <occi:attribute name="occi.networkinterface.allocation" use="required" type="xs:string" title="Address mechanism: dynamic e.g. uses the dynamic host configuration protocol, static e.g. uses user supplied static network configurations"/>
@@ -95,7 +99,9 @@
 
   <!-- Mixin: OS Template -->
   <occi:mixin term="os_tpl" scheme="http://schemas.ogf.org/occi/infrastructure#" title="OS Template">
+<!-- Commented as jOCCI throws an error!
     <occi:applies term="compute" scheme="http://schemas.ogf.org/occi/infrastructure#"/>
+-->
   </occi:mixin>
 
   <!-- Mixin: Resource template -->
