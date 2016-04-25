@@ -62,7 +62,7 @@ import org.occiware.clouddesigner.occi.AttributeState;
 import org.occiware.clouddesigner.occi.Entity;
 import org.occiware.clouddesigner.occi.Kind;
 import org.occiware.clouddesigner.occi.Mixin;
-import org.occiware.clouddesigner.occi.OCCIFactory;
+//import org.occiware.clouddesigner.occi.OCCIFactory;
 import org.occiware.clouddesigner.occi.OCCIPackage;
 import org.occiware.clouddesigner.occi.OCCITables;
 import org.occiware.clouddesigner.occi.OCCIKindResolver;
@@ -320,23 +320,26 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 			attributes.remove(attributeState);
 		}
 		
+//
+// Since attribute occi.core.id was added to entity kind, following code is not necessary.
+//
+
 		// Add a default attribute occi.core.id (mandatory ref. GFD.185 section 3.1 p6).
 		// only if occi.core.id does not exist.
-		boolean occiCoreIdExist = false;
-		for (AttributeState attributeState : attributes) {
-			if (attributeState.getName().equals("occi.core.id")) {
-				occiCoreIdExist = true;
-				break;
-			}
-		}
-		if (!occiCoreIdExist) {
-			AttributeState attrState = OCCIFactory.eINSTANCE.createAttributeState();
-			attrState.setName("occi.core.id");
-			attrState.setValue(getId());
-			attributes.add(attrState);
-		}
-		
-		
+//		boolean occiCoreIdExist = false;
+//		for (AttributeState attributeState : attributes) {
+//			if (attributeState.getName().equals("occi.core.id")) {
+//				occiCoreIdExist = true;
+//				break;
+//			}
+//		}
+//		if (!occiCoreIdExist) {
+//			AttributeState attrState = OCCIFactory.eINSTANCE.createAttributeState();
+//			attrState.setName("occi.core.id");
+//			attrState.setValue(getId());
+//			attributes.add(attrState);
+//		}
+
 		// Iterate over all OCCI attributes of this entity.
 		for(Attribute attribute : OcciHelper.getAllAttributes(this)) {
 			final String attributeName = attribute.getName();
@@ -352,15 +355,25 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 					// If not found then create it.
 					if(attributeState == null) {
 						attributeState = new AttributeStateImpl();
-						attributeState.setName(attributeName);;
-						attributes.add(attributeState);
+						attributeState.setName(attributeName);
+						try {
+							attributes.add(attributeState);
+						} catch (Exception e) {
+							// FIXME: Don't understand why an exception is thrown!!!
+							LOGGER.warn("Exception when add attribute state " + attributeName + ": " + e.getMessage() + "!!!");
+						}
 					}
 					// Get the Ecore attribute value.
 					final String valueAsString = eGet(featureId, true, true).toString();
 					// If this value has changed then
 					if(!valueAsString.equals(attributeState.getValue())) {
 						// Set the attribute set value.
-						attributeState.setValue(valueAsString);
+						try {
+							attributeState.setValue(valueAsString);
+						} catch (Exception e) {
+							// FIXME: Don't understand why an exception is thrown!!!
+							LOGGER.warn("Exception when set attribute state " + attributeName + ": " + e.getMessage() + "!!!");
+						}
 					}
 				}
 			}

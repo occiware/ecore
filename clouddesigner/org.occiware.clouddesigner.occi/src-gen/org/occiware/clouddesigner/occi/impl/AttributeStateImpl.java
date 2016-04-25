@@ -20,7 +20,12 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.occiware.clouddesigner.occi.AttributeState;
+import org.occiware.clouddesigner.occi.Entity;
 import org.occiware.clouddesigner.occi.OCCIPackage;
+import org.occiware.clouddesigner.occi.util.OcciHelper;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <!-- begin-user-doc -->
@@ -37,6 +42,11 @@ import org.occiware.clouddesigner.occi.OCCIPackage;
  * @generated
  */
 public class AttributeStateImpl extends MinimalEObjectImpl.Container implements AttributeState {
+	/**
+	 * Initialize the logger.
+	 */
+	private static Logger LOGGER = LoggerFactory.getLogger(EntityImpl.class);
+
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -138,9 +148,14 @@ public class AttributeStateImpl extends MinimalEObjectImpl.Container implements 
 			eNotify(new ENotificationImpl(this, Notification.SET, OCCIPackage.ATTRIBUTE_STATE__VALUE, oldValue, value));
 
 		// Propagate to the associated Ecore attribute.
-//		if(eContainer() != null) {
-//			OcciHelper.setAttribute((Entity)eContainer(), name, value);
-//		}
+		if(eContainer() != null) {
+			try {
+				OcciHelper.setAttribute((Entity)eContainer(), name, value);
+			} catch (Exception e) {
+				// FIXME: Don't understand why an exception is thrown!!!
+				LOGGER.warn("Exception when set the value of the attribute state " + name + ": " + e.getMessage() + "!!!");
+			}
+		}
 	}
 
 	/**
