@@ -107,28 +107,52 @@ public class DesignServices {
 
 	}
 
-	public void tagResource(Resource resource, String term) {
-		//add core to use package
-		addPackage(resource);
-		//if resource is tagged 
-		if(tagedBefore(resource)){
-			JOptionPane.showMessageDialog(null, "This resource is tagged");
-			return;
-		}
-
+	public boolean isCompute(Resource resource){
+		String scheme = resource.getKind().getScheme();
+		String term = resource.getKind().getTerm();
 		final Extension extension = OcciHelper.loadExtension(scheme);
-
-		for (Mixin mixin : extension.getMixins()) {			
-			if(mixin.getTerm().contains(term)){
-				resource.getMixins().add(mixin);
-				for(Attribute att: mixin.getAttributes()){
-					AttributeState as = OCCIFactory.eINSTANCE.createAttributeState();
-					as.setName(att.getName());
-					as.setValue(att.getDefault());
-					resource.getAttributes().add(as);
+		for(Kind kind: extension.getKinds()){
+			if(kind.getTerm().equals(term)){
+				Kind d = kind.getParent();
+				while(d!=null && !d.getTerm().equals("compute")){
+					d = d.getParent();
 				}
+				if(d !=null && d.getTerm().equals("compute"))
+					return true;
 			}
 		}
+		return false;
+	}
+	
+	public void tagResource(Resource resource, String term) {
+		if(resource.getKind().getTerm().equals("resource") || isCompute(resource)){
+			//add core to use package
+			addPackage(resource);
+			//if resource is tagged 
+			if(tagedBefore(resource)){
+				JOptionPane.showMessageDialog(null, "This resource is tagged");
+				return;
+			}
+
+			final Extension extension = OcciHelper.loadExtension(scheme);
+
+			for (Mixin mixin : extension.getMixins()) {			
+				if(mixin.getTerm().contains(term)){
+					resource.getMixins().add(mixin);
+					for(Attribute att: mixin.getAttributes()){
+						AttributeState as = OCCIFactory.eINSTANCE.createAttributeState();
+						as.setName(att.getName());
+						as.setValue(att.getDefault());
+						resource.getAttributes().add(as);
+					}
+				}
+			}
+		}else{
+			System.out.println("This resource is not a compute");
+			Shell shell = this.getShell();
+			MessageDialog.openInformation(shell, "Info", "This resource is not a compute");
+		}
+
 	}
 
 	public void start(Configuration config) {
@@ -220,7 +244,8 @@ public class DesignServices {
 	public void importConfiguration(Configuration configuration) {
 		Shell shell = Display.getCurrent().getActiveShell();
 		Session session = SessionManager.INSTANCE.getSession(configuration);
-		LoadExtensionDialog dialog = new LoadExtensionDialog(shell, session.getTransactionalEditingDomain());
+		//LoadExtensionDialog dialog = new LoadExtensionDialog(shell, session.getTransactionalEditingDomain());
+		LoadConfigurationDialog dialog = new LoadConfigurationDialog(shell, session.getTransactionalEditingDomain());
 		dialog.open();
 
 		if(!schemeExists(configuration, scheme)){
@@ -235,6 +260,13 @@ public class DesignServices {
 		List<org.occiware.clouddesigner.occi.Resource> targetConfigurationResources = configuration.getResources();	
 		Map<String, org.occiware.clouddesigner.occi.Resource> targetResources = new HashMap<String,org.occiware.clouddesigner.occi.Resource>();
 		for(Resource resource : conf.getResources()) {
+
+			if(!schemeExists(configuration, resource.getKind().getScheme())){
+				org.occiware.clouddesigner.occi.Extension extension = OcciHelper.loadExtension(resource.getKind().getScheme());
+				configuration.getUse().add(extension);
+			}
+
+
 			Resource targetResource = factory.createResource();
 			targetConfigurationResources.add(targetResource);
 			copyEntity(configuration, resource,targetResource);
