@@ -107,8 +107,14 @@ public class GenerateDesignAction implements IObjectActionDelegate {
 		org.eclipse.emf.ecore.resource.Resource resource = resourceSet.getResource(ecoreURI, true);
 		// Return the first element.
 		EPackage ePackage = (EPackage)resource.getContents().get(0);
-				 
+
 		String extensionScheme = Occi2Ecore.convertEcoreNamespace2OcciScheme(ePackage.getNsURI());
+
+		// To avoid an error when trying to open the generated .odesign file,
+		// register the ePackage if it is unknown.
+		if(EPackage.Registry.INSTANCE.getEPackage(ePackage.getNsURI()) == null) {
+			EPackage.Registry.INSTANCE.put(ePackage.getNsURI(), ePackage);
+		}
 
 		/*
 		 * Create design project
