@@ -1,1 +1,6 @@
-/.gitignore
+/.DockerMachineManager.java._trace
+/.DockerMachineManager.xtendbin
+/.DockerObserver.java._trace
+/.DockerObserver.xtendbin
+/.Provider.java._trace
+/.Provider.xtendbin
