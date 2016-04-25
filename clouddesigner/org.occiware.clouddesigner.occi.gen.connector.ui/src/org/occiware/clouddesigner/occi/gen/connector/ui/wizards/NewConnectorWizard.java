@@ -40,9 +40,13 @@ import org.eclipse.jface.layout.TableColumnLayout;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.CheckboxTableViewer;
+import org.eclipse.jface.viewers.ISelectionChangedListener;
+import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.pde.internal.core.project.PDEProject;
 import org.eclipse.pde.internal.ui.wizards.tools.ConvertProjectToPluginOperation;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -99,6 +103,13 @@ public class NewConnectorWizard extends BasicNewProjectResourceWizard {
 
 			refExtensionViewer.setContentProvider(ArrayContentProvider.getInstance());
 
+			refExtensionViewer.addSelectionChangedListener(new ISelectionChangedListener() {
+				@Override
+				public void selectionChanged(SelectionChangedEvent event) {
+					setPageComplete(validatePage());
+				}
+			});
+
 			Collection<String> registeredExtensions = new ArrayList<String>(
 					OCCIRegistry.getInstance().getRegisteredExtensions());
 			// removed the OCCI core extension as it is added by default.
@@ -109,7 +120,7 @@ public class NewConnectorWizard extends BasicNewProjectResourceWizard {
 		@Override
 		protected boolean validatePage() {
 			// TODO add error messages
-			return super.validatePage(); // FIXME && refExtensionViewer.getCheckedElements().length == 1;
+			return super.validatePage() && refExtensionViewer.getCheckedElements().length == 1;
 		}
 	}
 

@@ -19,7 +19,8 @@ Require-Bundle: org.occiware.clouddesigner.occi,
  org.eclipse.acceleo.engine,
  org.eclipse.pde.ui,
  org.eclipse.jdt.core,
- org.eclipse.jdt.launching
+ org.eclipse.jdt.launching,
+ org.eclipse.jface
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Eclipse-LazyStart: true
