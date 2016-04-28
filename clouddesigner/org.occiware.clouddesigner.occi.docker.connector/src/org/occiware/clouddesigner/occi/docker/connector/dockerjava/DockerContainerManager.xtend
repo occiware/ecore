@@ -510,11 +510,15 @@ class DockerContainerManager {
 		var DockerClientConfig config = null
 		val lconfig = new DockerConfig
 		var dockerProperties = lconfig.loadConfig
-		if (DockerUtil.getOS.equals("osx")) {
+		// Set Docker host port
+		port = ":2376"
+		/*
+		if (DockerUtil.getOS.equals("osx") || DockerUtil.getOS.equals("win")) {
 			port = ":2376"
 		} else if (DockerUtil.getOS.equals("uni")) {
 			port = ":2375"
 		}
+		*/
 		val url = new URL(ENDPOINT)
 		val URI uri = new URI(url.getProtocol(), url.getHost(), url.getPath(), url.getQuery(), null)
 		val dockerUri = uri.toString + port

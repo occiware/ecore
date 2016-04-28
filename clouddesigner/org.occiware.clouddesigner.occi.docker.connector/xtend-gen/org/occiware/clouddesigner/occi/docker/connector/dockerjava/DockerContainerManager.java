@@ -799,17 +799,7 @@ public class DockerContainerManager {
       DockerClientConfig config = null;
       final DockerConfig lconfig = new DockerConfig();
       Properties dockerProperties = lconfig.loadConfig();
-      String _oS = DockerUtil.getOS();
-      boolean _equals = _oS.equals("osx");
-      if (_equals) {
-        port = ":2376";
-      } else {
-        String _oS_1 = DockerUtil.getOS();
-        boolean _equals_1 = _oS_1.equals("uni");
-        if (_equals_1) {
-          port = ":2375";
-        }
-      }
+      port = ":2376";
       final URL url = new URL(ENDPOINT);
       String _protocol = url.getProtocol();
       String _host = url.getHost();
