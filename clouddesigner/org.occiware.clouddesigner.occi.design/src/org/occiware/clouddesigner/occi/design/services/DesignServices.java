@@ -58,6 +58,28 @@ public class DesignServices {
 	}
 
 	/**
+	 * Computes the label of an Attribute.
+	 */
+	public String render(Attribute attribute) {
+		StringBuilder sb = new StringBuilder();
+		sb.append(attribute.getName());
+		EDataType type = attribute.getType();
+		if(type != null) {
+			sb.append(": ");
+			sb.append(type.getName());
+			if(attribute.isMultiple_values()) {
+				sb.append("[]");
+			}
+		}
+		String defaultValue = attribute.getDefault();
+		if(defaultValue != null) {
+			sb.append('=');
+			sb.append(defaultValue);
+		}
+		return sb.toString();
+	}
+
+	/**
 	 * Computes the label of an Action.
 	 */
 	public String render(Action action) {
