@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ASCII"?>
+<occi:Configuration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:occi="http://schemas.ogf.org/occi/core/ecore">
+  <use href="http://schemas.ogf.org/occi/infrastructure#/"/>
+  <use href="http://schemas.ogf.org/occi/monitoring#/"/>
+  <resources id="9cff8253-8f97-4122-8856-5dce9965852a" title="compute1" summary="This is a monitored compute">
+    <kind href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='compute']"/>
+    <attributes name="occi.core.id" value="9cff8253-8f97-4122-8856-5dce9965852a"/>
+    <attributes name="occi.core.title" value="compute1"/>
+    <attributes name="occi.core.summary" value="This is a monitored compute"/>
+    <attributes name="occi.compute.architecture" value="x86"/>
+    <attributes name="occi.compute.cores" value="1"/>
+    <attributes name="occi.compute.hostname" value="compute1.occiware.org"/>
+    <attributes name="occi.compute.speed" value="10"/>
+    <attributes name="occi.compute.memory" value="10"/>
+    <attributes name="occi.compute.state" value="active"/>
+  </resources>
+  <resources id="9049956d-0095-4580-ae13-ba6b7db58c69" title="sensor" summary="This is a monitoring sensor">
+    <kind href="http://schemas.ogf.org/occi/monitoring#//@kinds[term='sensor']"/>
+    <mixins href="../model/monitoring.occie#//@mixins[term='aggregator']"/>
+    <mixins href="../model/monitoring.occie#//@mixins[term='publisher']"/>
+    <attributes name="occi.core.id" value="9049956d-0095-4580-ae13-ba6b7db58c69"/>
+    <attributes name="occi.core.title" value="sensor"/>
+    <attributes name="occi.core.summary" value="This is a monitoring sensor"/>
+    <attributes name="occi.sensor.period" value="10"/>
+    <links id="6d0c289b-6f10-4336-8061-13984fde4302" title="collector" target="//@resources.0">
+      <kind href="http://schemas.ogf.org/occi/monitoring#//@kinds[term='collector']"/>
+      <mixins href="http://schemas.ogf.org/occi/monitoring#//@mixins[term='metric']"/>
+      <attributes name="occi.core.id" value="6d0c289b-6f10-4336-8061-13984fde4302"/>
+      <attributes name="occi.core.title" value="collector"/>
+      <attributes name="occi.collector.period" value="5"/>
+    </links>
+  </resources>
+</occi:Configuration>
