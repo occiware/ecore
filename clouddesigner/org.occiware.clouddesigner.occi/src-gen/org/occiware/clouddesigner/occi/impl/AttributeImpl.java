@@ -72,7 +72,7 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean MUTABLE_EDEFAULT = false;
+	protected static final boolean MUTABLE_EDEFAULT = true;
 
 	/**
 	 * The cached value of the '{@link #isMutable() <em>Mutable</em>}' attribute.

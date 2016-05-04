@@ -27,7 +27,8 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Attribute">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="#//String"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mutable" eType="#//Boolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mutable" eType="#//Boolean"
+        defaultValueLiteral="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="required" eType="#//Boolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="default" eType="#//String"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="#//String"/>

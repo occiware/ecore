@@ -67,6 +67,7 @@ public interface Attribute extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Mutable</b></em>' attribute.
+	 * The default value is <code>"true"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Mutable</em>' attribute isn't clear,
@@ -76,7 +77,7 @@ public interface Attribute extends EObject {
 	 * @return the value of the '<em>Mutable</em>' attribute.
 	 * @see #setMutable(boolean)
 	 * @see org.occiware.clouddesigner.occi.OCCIPackage#getAttribute_Mutable()
-	 * @model dataType="org.occiware.clouddesigner.occi.Boolean"
+	 * @model default="true" dataType="org.occiware.clouddesigner.occi.Boolean"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://schemas.ogf.org/occi/core/ecore!Attribute!mutable'"
 	 * @generated
 	 */
