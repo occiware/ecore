@@ -9,12 +9,12 @@
 
 [template public generateExtension(extension : Extension)]
 [file ('textile/'+extension.name+'.textile', false, 'UTF-8')]
-Generated at [getNow()/] from [getFilePath(extension)/] by org.occiware.clouddesigner.occi.gen.doc
 
 h1. OCCI Extension: [extension.name/]
 
 | *Name* | [extension.name/] |
 | *Scheme* | [extension.scheme/] |
+| *Description* | [extension.description/] |
 
 h1. Imports
 
@@ -35,6 +35,7 @@ h1. Types
 
 [extension.types.generateType()/]
 
+Generated at [getNow()/] from [getFilePath(extension)/] by org.occiware.clouddesigner.occi.gen.doc
 [/file]
 [/template]
 
