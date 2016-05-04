@@ -1416,13 +1416,13 @@
                 <styles xmi:type="notation:FontStyle" xmi:id="_Fkzr8RISEeaJVvVtIzCtDA" fontName=".SF NS Text" fontHeight="10"/>
                 <layoutConstraint xmi:type="notation:Location" xmi:id="_Fkzr8hISEeaJVvVtIzCtDA"/>
               </children>
-              <children xmi:type="notation:Node" xmi:id="_ZyftQBISEeaJVvVtIzCtDA" type="3010" element="_ZyS48BISEeaJVvVtIzCtDA">
-                <styles xmi:type="notation:FontStyle" xmi:id="_ZyftQRISEeaJVvVtIzCtDA" fontName=".SF NS Text" fontHeight="10" italic="true"/>
-                <layoutConstraint xmi:type="notation:Location" xmi:id="_ZyftQhISEeaJVvVtIzCtDA"/>
+              <children xmi:type="notation:Node" xmi:id="_PBLXYBIgEead-p9i7eZ1Pw" type="3010" element="_PA_KIBIgEead-p9i7eZ1Pw">
+                <styles xmi:type="notation:FontStyle" xmi:id="_PBLXYRIgEead-p9i7eZ1Pw" fontName=".SF NS Text" fontHeight="10" italic="true"/>
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_PBLXYhIgEead-p9i7eZ1Pw"/>
               </children>
-              <children xmi:type="notation:Node" xmi:id="_ZyftQxISEeaJVvVtIzCtDA" type="3010" element="_ZyXxcBISEeaJVvVtIzCtDA">
-                <styles xmi:type="notation:FontStyle" xmi:id="_ZyftRBISEeaJVvVtIzCtDA" fontName=".SF NS Text" fontHeight="10" italic="true"/>
-                <layoutConstraint xmi:type="notation:Location" xmi:id="_ZyftRRISEeaJVvVtIzCtDA"/>
+              <children xmi:type="notation:Node" xmi:id="_PBL-cBIgEead-p9i7eZ1Pw" type="3010" element="_PBCNcRIgEead-p9i7eZ1Pw">
+                <styles xmi:type="notation:FontStyle" xmi:id="_PBL-cRIgEead-p9i7eZ1Pw" fontName=".SF NS Text" fontHeight="10" italic="true"/>
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_PBL-chIgEead-p9i7eZ1Pw"/>
               </children>
               <styles xmi:type="notation:SortingStyle" xmi:id="_D2OqQhISEeaJVvVtIzCtDA"/>
               <styles xmi:type="notation:FilteringStyle" xmi:id="_D2OqQxISEeaJVvVtIzCtDA"/>
@@ -1637,19 +1637,19 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subNodeMappings[name='Kind']"/>
         </ownedElements>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_ZyS48BISEeaJVvVtIzCtDA" name="http://schemas.ogf.org/occi/monitoring#aggregator">
-          <target xmi:type="occi:Mixin" href="model/monitoring.occie#//@mixins[term='aggregator']"/>
-          <semanticElements xmi:type="occi:Mixin" href="model/monitoring.occie#//@mixins[term='aggregator']"/>
-          <ownedStyle xmi:type="diagram:Square" xmi:id="_ZyXKYBISEeaJVvVtIzCtDA" labelSize="10" showIcon="false" labelAlignment="LEFT">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_PA_KIBIgEead-p9i7eZ1Pw" name="http://schemas.ogf.org/occi/monitoring#aggregator">
+          <target xmi:type="occi:Mixin" href="http://schemas.ogf.org/occi/monitoring#//@mixins[term='aggregator']"/>
+          <semanticElements xmi:type="occi:Mixin" href="http://schemas.ogf.org/occi/monitoring#//@mixins[term='aggregator']"/>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_PBCNcBIgEead-p9i7eZ1Pw" labelSize="10" showIcon="false" labelAlignment="LEFT">
             <labelFormat>italic</labelFormat>
             <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subNodeMappings[name='Mixin']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subNodeMappings[name='Mixin']"/>
         </ownedElements>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_ZyXxcBISEeaJVvVtIzCtDA" name="http://schemas.ogf.org/occi/monitoring#publisher">
-          <target xmi:type="occi:Mixin" href="model/monitoring.occie#//@mixins[term='publisher']"/>
-          <semanticElements xmi:type="occi:Mixin" href="model/monitoring.occie#//@mixins[term='publisher']"/>
-          <ownedStyle xmi:type="diagram:Square" xmi:id="_ZyXxcRISEeaJVvVtIzCtDA" labelSize="10" showIcon="false" labelAlignment="LEFT">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_PBCNcRIgEead-p9i7eZ1Pw" name="http://schemas.ogf.org/occi/monitoring#publisher">
+          <target xmi:type="occi:Mixin" href="http://schemas.ogf.org/occi/monitoring#//@mixins[term='publisher']"/>
+          <semanticElements xmi:type="occi:Mixin" href="http://schemas.ogf.org/occi/monitoring#//@mixins[term='publisher']"/>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_PBC0gBIgEead-p9i7eZ1Pw" labelSize="10" showIcon="false" labelAlignment="LEFT">
             <labelFormat>italic</labelFormat>
             <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subNodeMappings[name='Mixin']/@style"/>
           </ownedStyle>
