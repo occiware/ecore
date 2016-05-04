@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="ASCII"?>
 <occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="core" scheme="http://schemas.ogf.org/occi/core#">
   <kinds term="entity" scheme="http://schemas.ogf.org/occi/core#" title="Entity type">
-    <attributes name="occi.core.id" required="true" description="The unique identity of the instance." type="//@types.0"/>
-    <attributes name="occi.core.title" mutable="true" description="The display name of the instance." type="//@types.0"/>
+    <attributes name="occi.core.id" mutable="false" required="true" description="The unique identity of the instance." type="//@types.0"/>
+    <attributes name="occi.core.title" description="The display name of the instance." type="//@types.0"/>
   </kinds>
   <kinds term="resource" scheme="http://schemas.ogf.org/occi/core#" title="Resource" parent="//@kinds[term='entity']">
-    <attributes name="occi.core.summary" mutable="true" description="A summarising description of the Resource instance." type="//@types.0"/>
+    <attributes name="occi.core.summary" description="A summarising description of the Resource instance." type="//@types.0"/>
   </kinds>
   <kinds term="link" scheme="http://schemas.ogf.org/occi/core#" title="Link" parent="//@kinds[term='entity']"/>
   <types name="String" instanceClassName="java.lang.String"/>
