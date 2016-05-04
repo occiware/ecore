@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ASCII"?>
+<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="occiware_monitoring" scheme="http:://schemas.occiware.org/occi/monitoring#" description="This extension contains OCCIware-specific monitoring mixins.">
+  <import href="http://schemas.ogf.org/occi/core#/"/>
+  <import href="http://schemas.ogf.org/occi/monitoring#/"/>
+  <mixins term="cpupercent" scheme="http:://schemas.occiware.org/occi/monitoring#" title="CPU Percent Metric Monitoring Mixin">
+    <depends href="http://schemas.ogf.org/occi/monitoring#//@mixins[term='metric']"/>
+  </mixins>
+  <mixins term="average" scheme="http:://schemas.occiware.org/occi/monitoring#" title="Average Aggregator Monitoring Mixin">
+    <depends href="http://schemas.ogf.org/occi/monitoring#//@mixins[term='aggregator']"/>
+  </mixins>
+  <mixins term="emailalarm" scheme="http:://schemas.occiware.org/occi/monitoring#" title="Email Alarm Publisher Monitoring Mixin">
+    <attributes name="email.address" required="true" description="Email address where to send an alert">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="email.threshold" required="true" description="Threshold when to send an email alert">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <depends href="http://schemas.ogf.org/occi/monitoring#//@mixins[term='publisher']"/>
+  </mixins>
+</occi:Extension>

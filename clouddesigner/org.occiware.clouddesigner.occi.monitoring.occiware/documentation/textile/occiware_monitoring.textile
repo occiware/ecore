@@ -1,0 +1,89 @@
+
+h1. OCCI Extension: occiware_monitoring
+
+| *Name* | occiware_monitoring |
+| *Scheme* | http:://schemas.occiware.org/occi/monitoring# |
+| *Description* | This extension contains OCCIware-specific monitoring mixins. |
+
+h1. Imports
+
+| *Name* | *Scheme* |
+| <a href="core.textile">core</a> | http://schemas.ogf.org/occi/core# |
+| <a href="monitoring.textile">monitoring</a> | http://schemas.ogf.org/occi/monitoring# |
+
+h1. Kinds
+
+
+
+h1. Mixins
+
+h2. Mixin cpupercent
+
+| *Term* | cpupercent |
+| *Scheme* | http:://schemas.occiware.org/occi/monitoring# |
+| *Title* | CPU Percent Metric Monitoring Mixin |
+
+h3. Depends
+
+* <a href="monitoring.textile#mixin-metric">http://schemas.ogf.org/occi/monitoring#metric</a>
+
+h3. Applies
+
+
+h3. Attributes
+
+
+h3. Actions
+
+
+
+h2. Mixin average
+
+| *Term* | average |
+| *Scheme* | http:://schemas.occiware.org/occi/monitoring# |
+| *Title* | Average Aggregator Monitoring Mixin |
+
+h3. Depends
+
+* <a href="monitoring.textile#mixin-aggregator">http://schemas.ogf.org/occi/monitoring#aggregator</a>
+
+h3. Applies
+
+
+h3. Attributes
+
+
+h3. Actions
+
+
+
+h2. Mixin emailalarm
+
+| *Term* | emailalarm |
+| *Scheme* | http:://schemas.occiware.org/occi/monitoring# |
+| *Title* | Email Alarm Publisher Monitoring Mixin |
+
+h3. Depends
+
+* <a href="monitoring.textile#mixin-publisher">http://schemas.ogf.org/occi/monitoring#publisher</a>
+
+h3. Applies
+
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| email.address | <a href="core.textile#datatype-string">String</a> | true | true |  | Email address where to send an alert |
+| email.threshold | <a href="core.textile#datatype-number">Number</a> | true | true |  | Threshold when to send an email alert |
+
+h3. Actions
+
+
+
+
+
+h1. Types
+
+
+
+Generated at Wed May 04 20:18:32 CEST 2016 from platform:/resource/org.occiware.clouddesigner.occi.monitoring.occiware/model/occiware_monitoring.occie by org.occiware.clouddesigner.occi.gen.doc

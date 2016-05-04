@@ -1,0 +1,140 @@
+
+h1. OCCI Extension: monitoring
+
+| *Name* | monitoring |
+| *Scheme* | http://schemas.ogf.org/occi/monitoring# |
+| *Description* | OCCI Monitoring Extension allows the user to create a monitoring infrastructure for a cloud provision. |
+
+h1. Imports
+
+| *Name* | *Scheme* |
+| <a href="core.textile">core</a> | http://schemas.ogf.org/occi/core# |
+
+h1. Kinds
+
+h2. Kind sensor
+
+| *Term* | sensor |
+| *Scheme* | http://schemas.ogf.org/occi/monitoring# |
+| *Title* | Sensor Resource |
+| *Parent* | <a href="core.textile#kind-resource">http://schemas.ogf.org/occi/core#resource</a> |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.sensor.timebase | <a href="monitoring.textile#datatype-datetime">DateTime</a> | false | true |  | Base time reference (ISO8601) |
+| occi.sensor.timestart | <a href="monitoring.textile#datatype-second">Second</a> | false | true |  | Start time offset (seconds) |
+| occi.sensor.timestop | <a href="monitoring.textile#datatype-second">Second</a> | false | true |  | Stop time offset (seconds) |
+| occi.sensor.period | <a href="monitoring.textile#datatype-second">Second</a> | true | true |  | Time between two following measurements (seconds) |
+| occi.sensor.granularity | <a href="monitoring.textile#datatype-second">Second</a> | false | true |  | Granularity of time measument (seconds) |
+| occi.sensor.accuracy | <a href="monitoring.textile#datatype-second">Second</a> | false | true |  | Accuracy of time measument (seconds) |
+
+h3. Actions
+
+
+
+h2. Kind collector
+
+| *Term* | collector |
+| *Scheme* | http://schemas.ogf.org/occi/monitoring# |
+| *Title* | Collector Link |
+| *Parent* | <a href="core.textile#kind-link">http://schemas.ogf.org/occi/core#link</a> |
+
+h3. Attributes
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.collector.period | <a href="monitoring.textile#datatype-second">Second</a> | true | true |  | Time between two following measurements (seconds) |
+| occi.sensor.accuracy | <a href="monitoring.textile#datatype-second">Second</a> | false | true |  | Accuracy of time measument (seconds) |
+| occi.sensor.granularity | <a href="monitoring.textile#datatype-second">Second</a> | false | true |  | Granularity of time measument (seconds) |
+
+h3. Actions
+
+
+
+
+
+h1. Mixins
+
+h2. Mixin metric
+
+| *Term* | metric |
+| *Scheme* | http://schemas.ogf.org/occi/monitoring# |
+| *Title* | Metric Mixin |
+
+h3. Depends
+
+
+h3. Applies
+
+* <a href="monitoring.textile#kind-collector">http://schemas.ogf.org/occi/monitoring#collector</a>
+
+h3. Attributes
+
+
+h3. Actions
+
+
+
+h2. Mixin aggregator
+
+| *Term* | aggregator |
+| *Scheme* | http://schemas.ogf.org/occi/monitoring# |
+| *Title* | Aggregator Mixin |
+
+h3. Depends
+
+
+h3. Applies
+
+* <a href="monitoring.textile#kind-sensor">http://schemas.ogf.org/occi/monitoring#sensor</a>
+
+h3. Attributes
+
+
+h3. Actions
+
+
+
+h2. Mixin publisher
+
+| *Term* | publisher |
+| *Scheme* | http://schemas.ogf.org/occi/monitoring# |
+| *Title* | Published Mixin |
+
+h3. Depends
+
+
+h3. Applies
+
+* <a href="monitoring.textile#kind-sensor">http://schemas.ogf.org/occi/monitoring#sensor</a>
+
+h3. Attributes
+
+
+h3. Actions
+
+
+
+
+
+h1. Types
+
+h2. Datatype Second
+
+h3. Type int
+
+h3. Annotations
+
+* minInclusive = 0
+
+h2. Datatype DateTime
+
+h3. Type java.lang.String
+
+h3. Annotations
+
+* pattern = ^(\d{4}((-)?(0[1-9]|1[0-2])((-)?(0[1-9]|[1-2][0-9]|3[0-1])(T(24:00(:00(\.[0]+)?)?|(([0-1][0-9]|2[0-3])(:)[0-5][0-9])((:)[0-5][0-9](\.[\d]+)?)?)((\+|-)(14:00|(0[0-9]|1[0-3])(:)[0-5][0-9])|Z))?)?)?)$
+
+
+
+Generated at Wed May 04 19:52:17 CEST 2016 from http://schemas.ogf.org/occi/monitoring by org.occiware.clouddesigner.occi.gen.doc
