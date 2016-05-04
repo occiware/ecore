@@ -1,0 +1,1343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_c3jUQA3hEeagpZHKwkXfDw" selectedViews="_eYysUBH5Eea4FsvEXtqaxQ" version="10.1.0.201509162000">
+  <semanticResources>model/monitoring.occie</semanticResources>
+  <semanticResources>http://schemas.ogf.org/occi/core</semanticResources>
+  <semanticResources>platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign</semanticResources>
+  <semanticResources>environment:/viewpoint</semanticResources>
+  <semanticResources>platform:/resource/org.occiware.clouddesigner.occi/model/OCCI.ecore</semanticResources>
+  <semanticResources>http://www.eclipse.org/emf/2002/Ecore</semanticResources>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_dA-9EA3hEeagpZHKwkXfDw">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_dKZXwA3hEeagpZHKwkXfDw" name="monitoring">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_dKZXwQ3hEeagpZHKwkXfDw" source="DANNOTATION_CUSTOMIZATION_KEY">
+        <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_dKZXwg3hEeagpZHKwkXfDw"/>
+      </ownedAnnotationEntries>
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_dK01kA3hEeagpZHKwkXfDw" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_dK1coA3hEeagpZHKwkXfDw" type="Sirius" element="_dKZXwA3hEeagpZHKwkXfDw" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_dLEtMA3hEeagpZHKwkXfDw" type="2002" element="_dKZXww3hEeagpZHKwkXfDw">
+            <children xmi:type="notation:Node" xmi:id="_dLZdUA3hEeagpZHKwkXfDw" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_dLbSgA3hEeagpZHKwkXfDw" type="7001">
+              <children xmi:type="notation:Node" xmi:id="_dLiAMA3hEeagpZHKwkXfDw" type="3009" element="_dKZXxQ3hEeagpZHKwkXfDw">
+                <children xmi:type="notation:Node" xmi:id="_dLiAMw3hEeagpZHKwkXfDw" type="5004"/>
+                <children xmi:type="notation:Node" xmi:id="_dLinQA3hEeagpZHKwkXfDw" type="7003">
+                  <children xmi:type="notation:Node" xmi:id="_dLlqkA3hEeagpZHKwkXfDw" type="3010" element="_dKZXxw3hEeagpZHKwkXfDw">
+                    <styles xmi:type="notation:FontStyle" xmi:id="_dLlqkQ3hEeagpZHKwkXfDw" fontName=".SF NS Text" fontHeight="10"/>
+                    <layoutConstraint xmi:type="notation:Location" xmi:id="_dLmRoA3hEeagpZHKwkXfDw"/>
+                  </children>
+                  <children xmi:type="notation:Node" xmi:id="_dLmRoQ3hEeagpZHKwkXfDw" type="3010" element="_dKZXyQ3hEeagpZHKwkXfDw">
+                    <styles xmi:type="notation:FontStyle" xmi:id="_dLm4sA3hEeagpZHKwkXfDw" fontName=".SF NS Text" fontHeight="10"/>
+                    <layoutConstraint xmi:type="notation:Location" xmi:id="_dLm4sQ3hEeagpZHKwkXfDw"/>
+                  </children>
+                  <styles xmi:type="notation:SortingStyle" xmi:id="_dLinQQ3hEeagpZHKwkXfDw"/>
+                  <styles xmi:type="notation:FilteringStyle" xmi:id="_dLinQg3hEeagpZHKwkXfDw"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_dLiAMQ3hEeagpZHKwkXfDw" fontName=".SF NS Text" fontHeight="12" bold="true"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dLiAMg3hEeagpZHKwkXfDw" x="213" y="113"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_dLinQw3hEeagpZHKwkXfDw" type="3009" element="_dKZXyw3hEeagpZHKwkXfDw">
+                <children xmi:type="notation:Node" xmi:id="_dLjOUA3hEeagpZHKwkXfDw" type="5004"/>
+                <children xmi:type="notation:Node" xmi:id="_dLjOUQ3hEeagpZHKwkXfDw" type="7003">
+                  <children xmi:type="notation:Node" xmi:id="_dLm4sg3hEeagpZHKwkXfDw" type="3010" element="_dKZXzQ3hEeagpZHKwkXfDw">
+                    <styles xmi:type="notation:FontStyle" xmi:id="_dLm4sw3hEeagpZHKwkXfDw" fontName=".SF NS Text" fontHeight="10"/>
+                    <layoutConstraint xmi:type="notation:Location" xmi:id="_dLm4tA3hEeagpZHKwkXfDw"/>
+                  </children>
+                  <styles xmi:type="notation:SortingStyle" xmi:id="_dLjOUg3hEeagpZHKwkXfDw"/>
+                  <styles xmi:type="notation:FilteringStyle" xmi:id="_dLjOUw3hEeagpZHKwkXfDw"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_dLinRA3hEeagpZHKwkXfDw" fontName=".SF NS Text" fontHeight="12" bold="true"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dLinRQ3hEeagpZHKwkXfDw" x="107" y="202"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_dLjOVA3hEeagpZHKwkXfDw" type="3009" element="_dKZXzw3hEeagpZHKwkXfDw">
+                <children xmi:type="notation:Node" xmi:id="_dLj1YA3hEeagpZHKwkXfDw" type="5004"/>
+                <children xmi:type="notation:Node" xmi:id="_dLj1YQ3hEeagpZHKwkXfDw" type="7003">
+                  <styles xmi:type="notation:SortingStyle" xmi:id="_dLj1Yg3hEeagpZHKwkXfDw"/>
+                  <styles xmi:type="notation:FilteringStyle" xmi:id="_dLj1Yw3hEeagpZHKwkXfDw"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_dLjOVQ3hEeagpZHKwkXfDw" fontName=".SF NS Text" fontHeight="12" bold="true"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dLjOVg3hEeagpZHKwkXfDw" x="288" y="205" width="150"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_dLj1ZA3hEeagpZHKwkXfDw" type="3009" element="_dKZX0Q3hEeagpZHKwkXfDw">
+                <children xmi:type="notation:Node" xmi:id="_dLj1Zw3hEeagpZHKwkXfDw" type="5004"/>
+                <children xmi:type="notation:Node" xmi:id="_dLj1aA3hEeagpZHKwkXfDw" type="7003">
+                  <children xmi:type="notation:Node" xmi:id="_dLnfwA3hEeagpZHKwkXfDw" type="3010" element="_dKZX0w3hEeagpZHKwkXfDw">
+                    <styles xmi:type="notation:FontStyle" xmi:id="_dLnfwQ3hEeagpZHKwkXfDw" fontName=".SF NS Text" fontHeight="10" italic="true"/>
+                    <layoutConstraint xmi:type="notation:Location" xmi:id="_dLnfwg3hEeagpZHKwkXfDw"/>
+                  </children>
+                  <styles xmi:type="notation:SortingStyle" xmi:id="_dLj1aQ3hEeagpZHKwkXfDw"/>
+                  <styles xmi:type="notation:FilteringStyle" xmi:id="_dLj1ag3hEeagpZHKwkXfDw"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_dLj1ZQ3hEeagpZHKwkXfDw" fontName=".SF NS Text" fontHeight="10"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dLj1Zg3hEeagpZHKwkXfDw" x="31" y="30"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_dLkccA3hEeagpZHKwkXfDw" type="3009" element="_dKZ-0A3hEeagpZHKwkXfDw">
+                <children xmi:type="notation:Node" xmi:id="_dLkccw3hEeagpZHKwkXfDw" type="5004"/>
+                <children xmi:type="notation:Node" xmi:id="_dLkcdA3hEeagpZHKwkXfDw" type="7003">
+                  <children xmi:type="notation:Node" xmi:id="_dLnfww3hEeagpZHKwkXfDw" type="3010" element="_dKZ-0g3hEeagpZHKwkXfDw">
+                    <styles xmi:type="notation:FontStyle" xmi:id="_dLnfxA3hEeagpZHKwkXfDw" fontName=".SF NS Text" fontHeight="10" italic="true"/>
+                    <layoutConstraint xmi:type="notation:Location" xmi:id="_dLnfxQ3hEeagpZHKwkXfDw"/>
+                  </children>
+                  <styles xmi:type="notation:SortingStyle" xmi:id="_dLkcdQ3hEeagpZHKwkXfDw"/>
+                  <styles xmi:type="notation:FilteringStyle" xmi:id="_dLkcdg3hEeagpZHKwkXfDw"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_dLkccQ3hEeagpZHKwkXfDw" fontName=".SF NS Text" fontHeight="10"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dLkccg3hEeagpZHKwkXfDw" x="199" y="30"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_dLlDgA3hEeagpZHKwkXfDw" type="3009" element="_dKZ-1A3hEeagpZHKwkXfDw">
+                <children xmi:type="notation:Node" xmi:id="_dLlDgw3hEeagpZHKwkXfDw" type="5004"/>
+                <children xmi:type="notation:Node" xmi:id="_dLlDhA3hEeagpZHKwkXfDw" type="7003">
+                  <children xmi:type="notation:Node" xmi:id="_dLoG0A3hEeagpZHKwkXfDw" type="3010" element="_dKZ-1g3hEeagpZHKwkXfDw">
+                    <styles xmi:type="notation:FontStyle" xmi:id="_dLoG0Q3hEeagpZHKwkXfDw" fontName=".SF NS Text" fontHeight="10" italic="true"/>
+                    <layoutConstraint xmi:type="notation:Location" xmi:id="_dLoG0g3hEeagpZHKwkXfDw"/>
+                  </children>
+                  <styles xmi:type="notation:SortingStyle" xmi:id="_dLlDhQ3hEeagpZHKwkXfDw"/>
+                  <styles xmi:type="notation:FilteringStyle" xmi:id="_dLlDhg3hEeagpZHKwkXfDw"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_dLlDgQ3hEeagpZHKwkXfDw" fontName=".SF NS Text" fontHeight="10"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dLlDgg3hEeagpZHKwkXfDw" x="399" y="30"/>
+              </children>
+              <styles xmi:type="notation:SortingStyle" xmi:id="_dLbSgQ3hEeagpZHKwkXfDw"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_dLbSgg3hEeagpZHKwkXfDw"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_dLEtMQ3hEeagpZHKwkXfDw" fontName=".SF NS Text" fontHeight="12" bold="true"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dLEtMg3hEeagpZHKwkXfDw" x="168" y="36" height="271"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_nCVtQA3hEeagpZHKwkXfDw" type="2003" element="_nBjDEA3hEeagpZHKwkXfDw">
+            <children xmi:type="notation:Node" xmi:id="_nCVtQw3hEeagpZHKwkXfDw" type="5007"/>
+            <children xmi:type="notation:Node" xmi:id="_nCWUUA3hEeagpZHKwkXfDw" type="7004">
+              <children xmi:type="notation:Node" xmi:id="_0eALsA3iEeagpZHKwkXfDw" type="3010" element="_0dhqkA3iEeagpZHKwkXfDw">
+                <styles xmi:type="notation:FontStyle" xmi:id="_0eALsQ3iEeagpZHKwkXfDw" fontName=".SF NS Text" fontHeight="10"/>
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_0eALsg3iEeagpZHKwkXfDw"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_1FBvcA3iEeagpZHKwkXfDw" type="3010" element="_1E3-cA3iEeagpZHKwkXfDw">
+                <styles xmi:type="notation:FontStyle" xmi:id="_1FBvcQ3iEeagpZHKwkXfDw" fontName=".SF NS Text" fontHeight="10"/>
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_1FBvcg3iEeagpZHKwkXfDw"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_1lv24A3iEeagpZHKwkXfDw" type="3010" element="_1lmF4A3iEeagpZHKwkXfDw">
+                <styles xmi:type="notation:FontStyle" xmi:id="_1lv24Q3iEeagpZHKwkXfDw" fontName=".SF NS Text" fontHeight="10"/>
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_1lv24g3iEeagpZHKwkXfDw"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_2MGFMA3iEeagpZHKwkXfDw" type="3010" element="_2L7GEA3iEeagpZHKwkXfDw">
+                <styles xmi:type="notation:FontStyle" xmi:id="_2MGFMQ3iEeagpZHKwkXfDw" fontName=".SF NS Text" fontHeight="10"/>
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_2MGFMg3iEeagpZHKwkXfDw"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_27T7oA3iEeagpZHKwkXfDw" type="3010" element="_27IVcA3iEeagpZHKwkXfDw">
+                <styles xmi:type="notation:FontStyle" xmi:id="_27T7oQ3iEeagpZHKwkXfDw" fontName=".SF NS Text" fontHeight="10"/>
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_27T7og3iEeagpZHKwkXfDw"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_3oULkA3iEeagpZHKwkXfDw" type="3010" element="_3oJzgA3iEeagpZHKwkXfDw">
+                <styles xmi:type="notation:FontStyle" xmi:id="_3oULkQ3iEeagpZHKwkXfDw" fontName=".SF NS Text" fontHeight="10"/>
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_3oULkg3iEeagpZHKwkXfDw"/>
+              </children>
+              <styles xmi:type="notation:SortingStyle" xmi:id="_nCWUUQ3hEeagpZHKwkXfDw"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_nCWUUg3hEeagpZHKwkXfDw"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_nCVtQQ3hEeagpZHKwkXfDw" fontName=".SF NS Text" fontHeight="12" bold="true"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nCVtQg3hEeagpZHKwkXfDw" x="236" y="344" width="191"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_o0_WoA3hEeagpZHKwkXfDw" type="2003" element="_o0zwcA3hEeagpZHKwkXfDw">
+            <children xmi:type="notation:Node" xmi:id="_o0_Wow3hEeagpZHKwkXfDw" type="5007"/>
+            <children xmi:type="notation:Node" xmi:id="_o0_9sA3hEeagpZHKwkXfDw" type="7004">
+              <children xmi:type="notation:Node" xmi:id="_XVqcMA3lEeagpZHKwkXfDw" type="3010" element="_XVnY4A3lEeagpZHKwkXfDw">
+                <styles xmi:type="notation:FontStyle" xmi:id="_XVqcMQ3lEeagpZHKwkXfDw" fontName=".SF NS Text" fontHeight="10"/>
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_XVqcMg3lEeagpZHKwkXfDw"/>
+              </children>
+              <styles xmi:type="notation:SortingStyle" xmi:id="_o0_9sQ3hEeagpZHKwkXfDw"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_o0_9sg3hEeagpZHKwkXfDw"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_o0_WoQ3hEeagpZHKwkXfDw" fontName=".SF NS Text" fontHeight="12" bold="true"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_o0_Wog3hEeagpZHKwkXfDw" x="476" y="344" width="139"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_CmCS0A3iEeagpZHKwkXfDw" type="2003" element="_CloqMA3iEeagpZHKwkXfDw">
+            <children xmi:type="notation:Node" xmi:id="_CmC54A3iEeagpZHKwkXfDw" type="5007"/>
+            <children xmi:type="notation:Node" xmi:id="_CmC54Q3iEeagpZHKwkXfDw" type="7004">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_CmC54g3iEeagpZHKwkXfDw"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_CmC54w3iEeagpZHKwkXfDw"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_CmCS0Q3iEeagpZHKwkXfDw" fontName=".SF NS Text" fontHeight="12" bold="true"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CmCS0g3iEeagpZHKwkXfDw" x="484" y="436" width="107"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_S1ot8A3iEeagpZHKwkXfDw" type="2003" element="_S1eV4A3iEeagpZHKwkXfDw">
+            <children xmi:type="notation:Node" xmi:id="_S1pVAA3iEeagpZHKwkXfDw" type="5007"/>
+            <children xmi:type="notation:Node" xmi:id="_S1pVAQ3iEeagpZHKwkXfDw" type="7004">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_S1pVAg3iEeagpZHKwkXfDw"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_S1pVAw3iEeagpZHKwkXfDw"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_S1ot8Q3iEeagpZHKwkXfDw" fontName=".SF NS Text" fontHeight="12" bold="true"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_S1ot8g3iEeagpZHKwkXfDw" x="216" y="508"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_bfCMsA3iEeagpZHKwkXfDw" type="2003" element="_be6Q4A3iEeagpZHKwkXfDw">
+            <children xmi:type="notation:Node" xmi:id="_bfCzwA3iEeagpZHKwkXfDw" type="5007"/>
+            <children xmi:type="notation:Node" xmi:id="_bfCzwQ3iEeagpZHKwkXfDw" type="7004">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_bfCzwg3iEeagpZHKwkXfDw"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_bfCzww3iEeagpZHKwkXfDw"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_bfCMsQ3iEeagpZHKwkXfDw" fontName=".SF NS Text" fontHeight="12" bold="true"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bfCMsg3iEeagpZHKwkXfDw" x="320" y="508" width="107"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_AvGUcA3kEeagpZHKwkXfDw" type="2003" element="_AuqPkA3kEeagpZHKwkXfDw">
+            <children xmi:type="notation:Node" xmi:id="_AvGUcw3kEeagpZHKwkXfDw" type="5007"/>
+            <children xmi:type="notation:Node" xmi:id="_AvGUdA3kEeagpZHKwkXfDw" type="7004">
+              <children xmi:type="notation:Node" xmi:id="_AvGUdw3kEeagpZHKwkXfDw" type="3010" element="_AvEfQA3kEeagpZHKwkXfDw">
+                <styles xmi:type="notation:FontStyle" xmi:id="_AvGUeA3kEeagpZHKwkXfDw" fontName=".SF NS Text" fontHeight="10" italic="true"/>
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_AvGUeQ3kEeagpZHKwkXfDw"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_IjSCcA3kEeagpZHKwkXfDw" type="3010" element="_IjMi4A3kEeagpZHKwkXfDw">
+                <styles xmi:type="notation:FontStyle" xmi:id="_IjSCcQ3kEeagpZHKwkXfDw" fontName=".SF NS Text" fontHeight="10"/>
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_IjSCcg3kEeagpZHKwkXfDw"/>
+              </children>
+              <styles xmi:type="notation:SortingStyle" xmi:id="_AvGUdQ3kEeagpZHKwkXfDw"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_AvGUdg3kEeagpZHKwkXfDw"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_AvGUcQ3kEeagpZHKwkXfDw" fontName=".SF NS Text" fontHeight="10"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_AvGUcg3kEeagpZHKwkXfDw" x="56" y="392" width="140" height="67"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_dK1coQ3hEeagpZHKwkXfDw"/>
+          <edges xmi:type="notation:Edge" xmi:id="_dL6asA3hEeagpZHKwkXfDw" type="4001" element="_dKZ-2A3hEeagpZHKwkXfDw" source="_dLinQw3hEeagpZHKwkXfDw" target="_dLiAMA3hEeagpZHKwkXfDw">
+            <children xmi:type="notation:Node" xmi:id="_dL7o0A3hEeagpZHKwkXfDw" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dL7o0Q3hEeagpZHKwkXfDw" x="-7" y="7"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_dL9eAA3hEeagpZHKwkXfDw" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dL9eAQ3hEeagpZHKwkXfDw" x="4" y="-9"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_dL9eAg3hEeagpZHKwkXfDw" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dL9eAw3hEeagpZHKwkXfDw" x="6" y="-10"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_dL6asQ3hEeagpZHKwkXfDw"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_dL6asg3hEeagpZHKwkXfDw" fontName=".SF NS Text" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_dL6asw3hEeagpZHKwkXfDw" points="[0, 0, -93, 29]$[93, -29, 0, 0]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_dMLgcA3hEeagpZHKwkXfDw" id="(0.5,0.0)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_dMLgcQ3hEeagpZHKwkXfDw" id="(0.5,1.0)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_dMMHgA3hEeagpZHKwkXfDw" type="4001" element="_dKZ-2w3hEeagpZHKwkXfDw" source="_dLjOVA3hEeagpZHKwkXfDw" target="_dLiAMA3hEeagpZHKwkXfDw">
+            <children xmi:type="notation:Node" xmi:id="_dMMHhA3hEeagpZHKwkXfDw" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dMMHhQ3hEeagpZHKwkXfDw" x="5" y="9"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_dMMHhg3hEeagpZHKwkXfDw" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dMMHhw3hEeagpZHKwkXfDw" x="-3" y="-7"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_dMMHiA3hEeagpZHKwkXfDw" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dMMHiQ3hEeagpZHKwkXfDw" x="-5" y="-8"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_dMMHgQ3hEeagpZHKwkXfDw"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_dMMHgg3hEeagpZHKwkXfDw" fontName=".SF NS Text" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_dMMHgw3hEeagpZHKwkXfDw" points="[0, 0, 54, 32]$[-54, -32, 0, 0]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_dMMukA3hEeagpZHKwkXfDw" id="(0.2972972972972973,0.0)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_dMMukQ3hEeagpZHKwkXfDw" id="(0.5,1.0)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_s0bnsA3hEeagpZHKwkXfDw" type="4001" element="_sz9GkA3hEeagpZHKwkXfDw" source="_nCVtQA3hEeagpZHKwkXfDw" target="_dLinQw3hEeagpZHKwkXfDw">
+            <children xmi:type="notation:Node" xmi:id="_s0bntA3hEeagpZHKwkXfDw" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_s0bntQ3hEeagpZHKwkXfDw" x="-14" y="-28"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_s0bntg3hEeagpZHKwkXfDw" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_s0bntw3hEeagpZHKwkXfDw" x="4" y="-15"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_s0bnuA3hEeagpZHKwkXfDw" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_s0bnuQ3hEeagpZHKwkXfDw" x="4" y="-18"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_s0bnsQ3hEeagpZHKwkXfDw"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_s0bnsg3hEeagpZHKwkXfDw" fontName=".SF NS Text" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_s0bnsw3hEeagpZHKwkXfDw" points="[0, 0, -6, 56]$[6, -56, 0, 0]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_s0cOwA3hEeagpZHKwkXfDw" id="(0.5291005291005291,0.0)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_s0cOwQ3hEeagpZHKwkXfDw" id="(0.3974358974358974,1.0)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_tm8CsA3hEeagpZHKwkXfDw" type="4001" element="_tmxqoA3hEeagpZHKwkXfDw" source="_o0_WoA3hEeagpZHKwkXfDw" target="_dLjOVA3hEeagpZHKwkXfDw">
+            <children xmi:type="notation:Node" xmi:id="_tm8pwA3hEeagpZHKwkXfDw" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tm8pwQ3hEeagpZHKwkXfDw" x="19" y="-15"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_tm8pwg3hEeagpZHKwkXfDw" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tm8pww3hEeagpZHKwkXfDw" x="7" y="3"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_tm8pxA3hEeagpZHKwkXfDw" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tm8pxQ3hEeagpZHKwkXfDw" x="9" y="2"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_tm8CsQ3hEeagpZHKwkXfDw"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_tm8Csg3hEeagpZHKwkXfDw" fontName=".SF NS Text" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_tm8Csw3hEeagpZHKwkXfDw" points="[-1, -2, 7, 59]$[-8, -61, 0, 0]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tm8pxg3hEeagpZHKwkXfDw" id="(0.4892086330935252,0.075)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tm8pxw3hEeagpZHKwkXfDw" id="(0.5,1.0)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_Gnk1oA3iEeagpZHKwkXfDw" type="4001" element="_GnL0EA3iEeagpZHKwkXfDw" source="_CmCS0A3iEeagpZHKwkXfDw" target="_o0_WoA3hEeagpZHKwkXfDw">
+            <children xmi:type="notation:Node" xmi:id="_Gnk1pA3iEeagpZHKwkXfDw" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Gnk1pQ3iEeagpZHKwkXfDw" x="4"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_Gnk1pg3iEeagpZHKwkXfDw" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Gnk1pw3iEeagpZHKwkXfDw" x="25" y="-4"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_Gnk1qA3iEeagpZHKwkXfDw" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Gnk1qQ3iEeagpZHKwkXfDw" x="29" y="-4"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_Gnk1oQ3iEeagpZHKwkXfDw"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_Gnk1og3iEeagpZHKwkXfDw" fontName=".SF NS Text" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Gnk1ow3iEeagpZHKwkXfDw" points="[-4, 0, 0, 57]$[-4, -54, 0, 3]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Gnk1qg3iEeagpZHKwkXfDw" id="(0.5046728971962616,0.0)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Gnk1qw3iEeagpZHKwkXfDw" id="(0.41007194244604317,0.925)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_ZIGxkA3iEeagpZHKwkXfDw" type="4001" element="_ZH-OsA3iEeagpZHKwkXfDw" source="_S1ot8A3iEeagpZHKwkXfDw" target="_nCVtQA3hEeagpZHKwkXfDw">
+            <children xmi:type="notation:Node" xmi:id="_ZIGxlA3iEeagpZHKwkXfDw" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ZIGxlQ3iEeagpZHKwkXfDw" x="6" y="-8"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_ZIGxlg3iEeagpZHKwkXfDw" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ZIGxlw3iEeagpZHKwkXfDw" x="-6" y="8"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_ZIGxmA3iEeagpZHKwkXfDw" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ZIGxmQ3iEeagpZHKwkXfDw" x="-6" y="8"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_ZIGxkQ3iEeagpZHKwkXfDw"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_ZIGxkg3iEeagpZHKwkXfDw" fontName=".SF NS Text" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_ZIGxkw3iEeagpZHKwkXfDw" points="[0, 0, -57, 40]$[57, -40, 0, 0]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_ZIHYoA3iEeagpZHKwkXfDw" id="(0.5072463768115942,0.0)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_ZIHYoQ3iEeagpZHKwkXfDw" id="(0.38095238095238093,1.0)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_h4dz8A3iEeagpZHKwkXfDw" type="4001" element="_h4V4IA3iEeagpZHKwkXfDw" source="_bfCMsA3iEeagpZHKwkXfDw" target="_nCVtQA3hEeagpZHKwkXfDw">
+            <children xmi:type="notation:Node" xmi:id="_h4dz9A3iEeagpZHKwkXfDw" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_h4dz9Q3iEeagpZHKwkXfDw" x="7" y="7"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_h4dz9g3iEeagpZHKwkXfDw" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_h4dz9w3iEeagpZHKwkXfDw" x="-7" y="-7"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_h4dz-A3iEeagpZHKwkXfDw" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_h4dz-Q3iEeagpZHKwkXfDw" x="-7" y="-7"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_h4dz8Q3iEeagpZHKwkXfDw"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_h4dz8g3iEeagpZHKwkXfDw" fontName=".SF NS Text" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_h4dz8w3iEeagpZHKwkXfDw" points="[0, 0, 40, 40]$[-40, -40, 0, 0]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_h4dz-g3iEeagpZHKwkXfDw" id="(0.41904761904761906,0.0)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_h4dz-w3iEeagpZHKwkXfDw" id="(0.4656084656084656,1.0)"/>
+          </edges>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_dKZXww3hEeagpZHKwkXfDw" name="core">
+        <target xmi:type="occi:Extension" href="http://schemas.ogf.org/occi/core#/"/>
+        <semanticElements xmi:type="occi:Extension" href="http://schemas.ogf.org/occi/core#/"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_dKZXxA3hEeagpZHKwkXfDw" labelSize="12" borderSize="1" borderSizeComputationExpression="1" foregroundColor="214,214,214">
+          <labelFormat>bold</labelFormat>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='ImportContainer']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='ImportContainer']"/>
+        <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_dKZXxQ3hEeagpZHKwkXfDw" name="entity" incomingEdges="_dKZ-2A3hEeagpZHKwkXfDw _dKZ-2w3hEeagpZHKwkXfDw">
+          <target xmi:type="occi:Kind" href="http://schemas.ogf.org/occi/core#//@kinds[term='entity']"/>
+          <semanticElements xmi:type="occi:Kind" href="http://schemas.ogf.org/occi/core#//@kinds[term='entity']"/>
+          <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+          <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+          <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_dKZXxg3hEeagpZHKwkXfDw" labelSize="12" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="0,47,0" backgroundStyle="GradientTopToBottom" backgroundColor="187,242,196" foregroundColor="255,255,255">
+            <labelFormat>bold</labelFormat>
+            <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']"/>
+          <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_dKZXxw3hEeagpZHKwkXfDw" name="occi.core.id: String">
+            <target xmi:type="occi:Attribute" href="http://schemas.ogf.org/occi/core#//@kinds[term='entity']/@attributes.0"/>
+            <semanticElements xmi:type="occi:Attribute" href="http://schemas.ogf.org/occi/core#//@kinds[term='entity']/@attributes.0"/>
+            <ownedStyle xmi:type="diagram:Square" xmi:id="_dKZXyA3hEeagpZHKwkXfDw" labelSize="10" labelAlignment="LEFT" labelPosition="node">
+              <description xmi:type="style:SquareDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@conditionnalStyles.2/@style"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
+          </ownedElements>
+          <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_dKZXyQ3hEeagpZHKwkXfDw" name="occi.core.title: String">
+            <target xmi:type="occi:Attribute" href="http://schemas.ogf.org/occi/core#//@kinds[term='entity']/@attributes.1"/>
+            <semanticElements xmi:type="occi:Attribute" href="http://schemas.ogf.org/occi/core#//@kinds[term='entity']/@attributes.1"/>
+            <ownedStyle xmi:type="diagram:Square" xmi:id="_dKZXyg3hEeagpZHKwkXfDw" labelSize="10" labelAlignment="LEFT" labelPosition="node">
+              <description xmi:type="style:SquareDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@conditionnalStyles.2/@style"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
+          </ownedElements>
+        </ownedDiagramElements>
+        <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_dKZXyw3hEeagpZHKwkXfDw" name="resource" outgoingEdges="_dKZ-2A3hEeagpZHKwkXfDw" incomingEdges="_sz9GkA3hEeagpZHKwkXfDw">
+          <target xmi:type="occi:Kind" href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+          <semanticElements xmi:type="occi:Kind" href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+          <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+          <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+          <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_dKZXzA3hEeagpZHKwkXfDw" labelSize="12" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="0,47,0" backgroundStyle="GradientTopToBottom" backgroundColor="187,242,196" foregroundColor="255,255,255">
+            <labelFormat>bold</labelFormat>
+            <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']"/>
+          <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_dKZXzQ3hEeagpZHKwkXfDw" name="occi.core.summary: String">
+            <target xmi:type="occi:Attribute" href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']/@attributes.0"/>
+            <semanticElements xmi:type="occi:Attribute" href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']/@attributes.0"/>
+            <ownedStyle xmi:type="diagram:Square" xmi:id="_dKZXzg3hEeagpZHKwkXfDw" labelSize="10" labelAlignment="LEFT" labelPosition="node">
+              <description xmi:type="style:SquareDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@conditionnalStyles.2/@style"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
+          </ownedElements>
+        </ownedDiagramElements>
+        <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_dKZXzw3hEeagpZHKwkXfDw" name="link" outgoingEdges="_dKZ-2w3hEeagpZHKwkXfDw" incomingEdges="_tmxqoA3hEeagpZHKwkXfDw">
+          <target xmi:type="occi:Kind" href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+          <semanticElements xmi:type="occi:Kind" href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+          <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+          <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+          <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_dKZX0A3hEeagpZHKwkXfDw" labelSize="12" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="0,47,0" backgroundStyle="GradientTopToBottom" backgroundColor="187,242,196" foregroundColor="255,255,255">
+            <labelFormat>bold</labelFormat>
+            <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']"/>
+        </ownedDiagramElements>
+        <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_dKZX0Q3hEeagpZHKwkXfDw" name="String" width="14" height="5">
+          <target xmi:type="ecore:EDataType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+          <semanticElements xmi:type="ecore:EDataType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_dKZX0g3hEeagpZHKwkXfDw" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="Liquid" foregroundColor="255,255,255">
+            <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']"/>
+          <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_dKZX0w3hEeagpZHKwkXfDw" name="java.lang.String">
+            <target xmi:type="ecore:EDataType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+            <semanticElements xmi:type="ecore:EDataType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+            <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_dKZX1A3hEeagpZHKwkXfDw" labelSize="10" showIcon="false">
+              <labelFormat>italic</labelFormat>
+              <description xmi:type="style:BundledImageDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']/@subNodeMappings[name='EC_DataType_InstanceClassName']/@style"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']/@subNodeMappings[name='EC_DataType_InstanceClassName']"/>
+          </ownedElements>
+        </ownedDiagramElements>
+        <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_dKZ-0A3hEeagpZHKwkXfDw" name="Boolean" width="14" height="5">
+          <target xmi:type="ecore:EDataType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+          <semanticElements xmi:type="ecore:EDataType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_dKZ-0Q3hEeagpZHKwkXfDw" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="Liquid" foregroundColor="255,255,255">
+            <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']"/>
+          <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_dKZ-0g3hEeagpZHKwkXfDw" name="boolean">
+            <target xmi:type="ecore:EDataType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+            <semanticElements xmi:type="ecore:EDataType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+            <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_dKZ-0w3hEeagpZHKwkXfDw" labelSize="10" showIcon="false">
+              <labelFormat>italic</labelFormat>
+              <description xmi:type="style:BundledImageDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']/@subNodeMappings[name='EC_DataType_InstanceClassName']/@style"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']/@subNodeMappings[name='EC_DataType_InstanceClassName']"/>
+          </ownedElements>
+        </ownedDiagramElements>
+        <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_dKZ-1A3hEeagpZHKwkXfDw" name="Number" width="14" height="5">
+          <target xmi:type="ecore:EDataType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+          <semanticElements xmi:type="ecore:EDataType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_dKZ-1Q3hEeagpZHKwkXfDw" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="Liquid" foregroundColor="255,255,255">
+            <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']"/>
+          <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_dKZ-1g3hEeagpZHKwkXfDw" name="int">
+            <target xmi:type="ecore:EDataType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+            <semanticElements xmi:type="ecore:EDataType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+            <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_dKZ-1w3hEeagpZHKwkXfDw" labelSize="10" showIcon="false">
+              <labelFormat>italic</labelFormat>
+              <description xmi:type="style:BundledImageDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']/@subNodeMappings[name='EC_DataType_InstanceClassName']/@style"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']/@subNodeMappings[name='EC_DataType_InstanceClassName']"/>
+          </ownedElements>
+        </ownedDiagramElements>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_dKZ-2A3hEeagpZHKwkXfDw" sourceNode="_dKZXyw3hEeagpZHKwkXfDw" targetNode="_dKZXxQ3hEeagpZHKwkXfDw">
+        <target xmi:type="occi:Kind" href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_dKZ-2Q3hEeagpZHKwkXfDw" targetArrow="InputClosedArrow" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']/@style"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_dKZ-2g3hEeagpZHKwkXfDw"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_dKZ-2w3hEeagpZHKwkXfDw" sourceNode="_dKZXzw3hEeagpZHKwkXfDw" targetNode="_dKZXxQ3hEeagpZHKwkXfDw">
+        <target xmi:type="occi:Kind" href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_dKZ-3A3hEeagpZHKwkXfDw" targetArrow="InputClosedArrow" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']/@style"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_dKZ-3Q3hEeagpZHKwkXfDw"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_nBjDEA3hEeagpZHKwkXfDw" name="sensor" outgoingEdges="_sz9GkA3hEeagpZHKwkXfDw" incomingEdges="_ZH-OsA3iEeagpZHKwkXfDw _h4V4IA3iEeagpZHKwkXfDw">
+        <target xmi:type="occi:Kind" href="model/monitoring.occie#//@kinds[term='sensor']"/>
+        <semanticElements xmi:type="occi:Kind" href="model/monitoring.occie#//@kinds[term='sensor']"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_nBjDEQ3hEeagpZHKwkXfDw" labelSize="12" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="0,47,0" backgroundStyle="GradientTopToBottom" backgroundColor="187,242,196" foregroundColor="255,255,255">
+          <labelFormat>bold</labelFormat>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']"/>
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_0dhqkA3iEeagpZHKwkXfDw" name="occi.sensor.timebase: String">
+          <target xmi:type="occi:Attribute" href="model/monitoring.occie#//@kinds[term='sensor']/@attributes.0"/>
+          <semanticElements xmi:type="occi:Attribute" href="model/monitoring.occie#//@kinds[term='sensor']/@attributes.0"/>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_RNYhQA3jEeagpZHKwkXfDw" labelSize="10" labelAlignment="LEFT" labelPosition="node">
+            <description xmi:type="style:SquareDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@conditionnalStyles.2/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
+        </ownedElements>
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_1E3-cA3iEeagpZHKwkXfDw" name="occi.sensor.timestart: Second">
+          <target xmi:type="occi:Attribute" href="model/monitoring.occie#//@kinds[term='sensor']/@attributes.1"/>
+          <semanticElements xmi:type="occi:Attribute" href="model/monitoring.occie#//@kinds[term='sensor']/@attributes.1"/>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_mdlvgA3jEeagpZHKwkXfDw" labelSize="10" labelAlignment="LEFT" labelPosition="node">
+            <description xmi:type="style:SquareDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@conditionnalStyles.2/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
+        </ownedElements>
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_1lmF4A3iEeagpZHKwkXfDw" name="occi.sensor.timestop: Second">
+          <target xmi:type="occi:Attribute" href="model/monitoring.occie#//@kinds[term='sensor']/@attributes.2"/>
+          <semanticElements xmi:type="occi:Attribute" href="model/monitoring.occie#//@kinds[term='sensor']/@attributes.2"/>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_0svV0A3jEeagpZHKwkXfDw" labelSize="10" labelAlignment="LEFT" labelPosition="node">
+            <description xmi:type="style:SquareDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@conditionnalStyles.2/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
+        </ownedElements>
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_2L7GEA3iEeagpZHKwkXfDw" name="occi.sensor.period: Second">
+          <target xmi:type="occi:Attribute" href="model/monitoring.occie#//@kinds[term='sensor']/@attributes.3"/>
+          <semanticElements xmi:type="occi:Attribute" href="model/monitoring.occie#//@kinds[term='sensor']/@attributes.3"/>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_rWTVcA3kEeagpZHKwkXfDw" labelSize="10" labelAlignment="LEFT" labelPosition="node">
+            <description xmi:type="style:SquareDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@conditionnalStyles.2/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
+        </ownedElements>
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_27IVcA3iEeagpZHKwkXfDw" name="occi.sensor.granularity: Second">
+          <target xmi:type="occi:Attribute" href="model/monitoring.occie#//@kinds[term='sensor']/@attributes.4"/>
+          <semanticElements xmi:type="occi:Attribute" href="model/monitoring.occie#//@kinds[term='sensor']/@attributes.4"/>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_EhyGcA3lEeagpZHKwkXfDw" labelSize="10" labelAlignment="LEFT" labelPosition="node">
+            <description xmi:type="style:SquareDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@conditionnalStyles.2/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
+        </ownedElements>
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_3oJzgA3iEeagpZHKwkXfDw" name="occi.sensor.accuracy: Second">
+          <target xmi:type="occi:Attribute" href="model/monitoring.occie#//@kinds[term='sensor']/@attributes.5"/>
+          <semanticElements xmi:type="occi:Attribute" href="model/monitoring.occie#//@kinds[term='sensor']/@attributes.5"/>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_RW1GQA3lEeagpZHKwkXfDw" labelSize="10" labelAlignment="LEFT" labelPosition="node">
+            <description xmi:type="style:SquareDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@conditionnalStyles.2/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
+        </ownedElements>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_o0zwcA3hEeagpZHKwkXfDw" name="collector" outgoingEdges="_tmxqoA3hEeagpZHKwkXfDw" incomingEdges="_GnL0EA3iEeagpZHKwkXfDw">
+        <target xmi:type="occi:Kind" href="model/monitoring.occie#//@kinds[term='collector']"/>
+        <semanticElements xmi:type="occi:Kind" href="model/monitoring.occie#//@kinds[term='collector']"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_o0zwcQ3hEeagpZHKwkXfDw" labelSize="12" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="0,47,0" backgroundStyle="GradientTopToBottom" backgroundColor="187,242,196" foregroundColor="255,255,255">
+          <labelFormat>bold</labelFormat>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']"/>
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_XVnY4A3lEeagpZHKwkXfDw" name="occi.collector.period: Second">
+          <target xmi:type="occi:Attribute" href="model/monitoring.occie#//@kinds[term='collector']/@attributes.0"/>
+          <semanticElements xmi:type="occi:Attribute" href="model/monitoring.occie#//@kinds[term='collector']/@attributes.0"/>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_XVn_8A3lEeagpZHKwkXfDw" labelSize="10" labelAlignment="LEFT" labelPosition="node">
+            <description xmi:type="style:SquareDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@conditionnalStyles.2/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
+        </ownedElements>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_sz9GkA3hEeagpZHKwkXfDw" sourceNode="_nBjDEA3hEeagpZHKwkXfDw" targetNode="_dKZXyw3hEeagpZHKwkXfDw">
+        <target xmi:type="occi:Kind" href="model/monitoring.occie#//@kinds[term='sensor']"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_sz9GkQ3hEeagpZHKwkXfDw" targetArrow="InputClosedArrow" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']/@style"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_sz9Gkg3hEeagpZHKwkXfDw"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_tmxqoA3hEeagpZHKwkXfDw" sourceNode="_o0zwcA3hEeagpZHKwkXfDw" targetNode="_dKZXzw3hEeagpZHKwkXfDw">
+        <target xmi:type="occi:Kind" href="model/monitoring.occie#//@kinds[term='collector']"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_tmxqoQ3hEeagpZHKwkXfDw" targetArrow="InputClosedArrow" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']/@style"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_tmxqog3hEeagpZHKwkXfDw"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_CloqMA3iEeagpZHKwkXfDw" name="metric" outgoingEdges="_GnL0EA3iEeagpZHKwkXfDw">
+        <target xmi:type="occi:Mixin" href="model/monitoring.occie#//@mixins[term='metric']"/>
+        <semanticElements xmi:type="occi:Mixin" href="model/monitoring.occie#//@mixins[term='metric']"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_ClpRQA3iEeagpZHKwkXfDw" labelSize="12" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="0,37,74" backgroundStyle="GradientTopToBottom" backgroundColor="187,221,255" foregroundColor="255,255,255">
+          <labelFormat>bold</labelFormat>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_GnL0EA3iEeagpZHKwkXfDw" sourceNode="_CloqMA3iEeagpZHKwkXfDw" targetNode="_o0zwcA3hEeagpZHKwkXfDw">
+        <target xmi:type="occi:Mixin" href="model/monitoring.occie#//@mixins[term='metric']"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_GnL0EQ3iEeagpZHKwkXfDw" lineStyle="dash" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='AppliesEdge']/@style"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_GnL0Eg3iEeagpZHKwkXfDw"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='AppliesEdge']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_S1eV4A3iEeagpZHKwkXfDw" name="aggregator" outgoingEdges="_ZH-OsA3iEeagpZHKwkXfDw">
+        <target xmi:type="occi:Mixin" href="model/monitoring.occie#//@mixins[term='aggregator']"/>
+        <semanticElements xmi:type="occi:Mixin" href="model/monitoring.occie#//@mixins[term='aggregator']"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_S1e88A3iEeagpZHKwkXfDw" labelSize="12" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="0,37,74" backgroundStyle="GradientTopToBottom" backgroundColor="187,221,255" foregroundColor="255,255,255">
+          <labelFormat>bold</labelFormat>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_ZH-OsA3iEeagpZHKwkXfDw" sourceNode="_S1eV4A3iEeagpZHKwkXfDw" targetNode="_nBjDEA3hEeagpZHKwkXfDw">
+        <target xmi:type="occi:Mixin" href="model/monitoring.occie#//@mixins[term='aggregator']"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_ZH-OsQ3iEeagpZHKwkXfDw" lineStyle="dash" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='AppliesEdge']/@style"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_ZH-Osg3iEeagpZHKwkXfDw"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='AppliesEdge']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_be6Q4A3iEeagpZHKwkXfDw" name="publisher" outgoingEdges="_h4V4IA3iEeagpZHKwkXfDw">
+        <target xmi:type="occi:Mixin" href="model/monitoring.occie#//@mixins[term='publisher']"/>
+        <semanticElements xmi:type="occi:Mixin" href="model/monitoring.occie#//@mixins[term='publisher']"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_be6Q4Q3iEeagpZHKwkXfDw" labelSize="12" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="0,37,74" backgroundStyle="GradientTopToBottom" backgroundColor="187,221,255" foregroundColor="255,255,255">
+          <labelFormat>bold</labelFormat>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_h4V4IA3iEeagpZHKwkXfDw" sourceNode="_be6Q4A3iEeagpZHKwkXfDw" targetNode="_nBjDEA3hEeagpZHKwkXfDw">
+        <target xmi:type="occi:Mixin" href="model/monitoring.occie#//@mixins[term='publisher']"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_h4V4IQ3iEeagpZHKwkXfDw" lineStyle="dash" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='AppliesEdge']/@style"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_h4V4Ig3iEeagpZHKwkXfDw"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='AppliesEdge']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_AuqPkA3kEeagpZHKwkXfDw" name="Second" width="14" height="5">
+        <target xmi:type="ecore:EDataType" href="model/monitoring.occie#//@types.0"/>
+        <semanticElements xmi:type="ecore:EDataType" href="model/monitoring.occie#//@types.0"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_AuqPkQ3kEeagpZHKwkXfDw" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="Liquid" foregroundColor="255,255,255">
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']"/>
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_AvEfQA3kEeagpZHKwkXfDw" name="int">
+          <target xmi:type="ecore:EDataType" href="model/monitoring.occie#//@types.0"/>
+          <semanticElements xmi:type="ecore:EDataType" href="model/monitoring.occie#//@types.0"/>
+          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_AvEfQQ3kEeagpZHKwkXfDw" labelSize="10" showIcon="false">
+            <labelFormat>italic</labelFormat>
+            <description xmi:type="style:BundledImageDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']/@subNodeMappings[name='EC_DataType_InstanceClassName']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']/@subNodeMappings[name='EC_DataType_InstanceClassName']"/>
+        </ownedElements>
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_IjMi4A3kEeagpZHKwkXfDw" name="minInclusive=0">
+          <target xmi:type="ecore:EStringToStringMapEntry" href="model/monitoring.occie#//@types.0/%http:%2F%2F%2Forg%2Feclipse%2Femf%2Fecore%2Futil%2FExtendedMetaData%/@details.0"/>
+          <semanticElements xmi:type="ecore:EStringToStringMapEntry" href="model/monitoring.occie#//@types.0/%http:%2F%2F%2Forg%2Feclipse%2Femf%2Fecore%2Futil%2FExtendedMetaData%/@details.0"/>
+          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_IjQNQA3kEeagpZHKwkXfDw" labelSize="10" labelAlignment="LEFT">
+            <description xmi:type="style:BundledImageDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']/@subNodeMappings[name='EC_DataType%20EStringToStringMapEntry']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']/@subNodeMappings[name='EC_DataType%20EStringToStringMapEntry']"/>
+        </ownedElements>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:DiagramDescription" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_dKZ-3g3hEeagpZHKwkXfDw"/>
+      <activatedLayers xmi:type="description_1:Layer" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer"/>
+      <target xmi:type="occi:Extension" href="model/monitoring.occie#/"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/resource/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']"/>
+  </ownedViews>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_eYysUBH5Eea4FsvEXtqaxQ">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_ha0S4BH5Eea4FsvEXtqaxQ" name="OCCI Monitoring Extension diagram">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_ha0S4RH5Eea4FsvEXtqaxQ" source="DANNOTATION_CUSTOMIZATION_KEY">
+        <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_ha0S4hH5Eea4FsvEXtqaxQ"/>
+      </ownedAnnotationEntries>
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_hbGmwBH5Eea4FsvEXtqaxQ" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_hbGmwRH5Eea4FsvEXtqaxQ" type="Sirius" element="_ha0S4BH5Eea4FsvEXtqaxQ" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_hbRl4BH5Eea4FsvEXtqaxQ" type="2002" element="_ha0S4xH5Eea4FsvEXtqaxQ">
+            <children xmi:type="notation:Node" xmi:id="_hbhdgBH5Eea4FsvEXtqaxQ" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_hbiEkBH5Eea4FsvEXtqaxQ" type="7001">
+              <children xmi:type="notation:Node" xmi:id="_hbr1kBH5Eea4FsvEXtqaxQ" type="3009" element="_ha0S5RH5Eea4FsvEXtqaxQ">
+                <children xmi:type="notation:Node" xmi:id="_hbscoBH5Eea4FsvEXtqaxQ" type="5004"/>
+                <children xmi:type="notation:Node" xmi:id="_hbtDsBH5Eea4FsvEXtqaxQ" type="7003">
+                  <children xmi:type="notation:Node" xmi:id="_hbwuEBH5Eea4FsvEXtqaxQ" type="3010" element="_ha0S5xH5Eea4FsvEXtqaxQ">
+                    <styles xmi:type="notation:FontStyle" xmi:id="_hbwuERH5Eea4FsvEXtqaxQ" fontName=".SF NS Text" fontHeight="10" italic="true"/>
+                    <layoutConstraint xmi:type="notation:Location" xmi:id="_hbwuEhH5Eea4FsvEXtqaxQ"/>
+                  </children>
+                  <children xmi:type="notation:Node" xmi:id="_hbxVIBH5Eea4FsvEXtqaxQ" type="3010" element="_ha0S6RH5Eea4FsvEXtqaxQ">
+                    <styles xmi:type="notation:FontStyle" xmi:id="_hbxVIRH5Eea4FsvEXtqaxQ" fontName=".SF NS Text" fontHeight="10"/>
+                    <layoutConstraint xmi:type="notation:Location" xmi:id="_hbxVIhH5Eea4FsvEXtqaxQ"/>
+                  </children>
+                  <styles xmi:type="notation:SortingStyle" xmi:id="_hbtDsRH5Eea4FsvEXtqaxQ"/>
+                  <styles xmi:type="notation:FilteringStyle" xmi:id="_hbtDshH5Eea4FsvEXtqaxQ"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_hbr1kRH5Eea4FsvEXtqaxQ" fontName=".SF NS Text" fontHeight="12" bold="true"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hbr1khH5Eea4FsvEXtqaxQ" x="127" y="34"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_hbtqwBH5Eea4FsvEXtqaxQ" type="3009" element="_ha0S6xH5Eea4FsvEXtqaxQ">
+                <children xmi:type="notation:Node" xmi:id="_hbtqwxH5Eea4FsvEXtqaxQ" type="5004"/>
+                <children xmi:type="notation:Node" xmi:id="_hbtqxBH5Eea4FsvEXtqaxQ" type="7003">
+                  <children xmi:type="notation:Node" xmi:id="_hbxVIxH5Eea4FsvEXtqaxQ" type="3010" element="_ha0S7RH5Eea4FsvEXtqaxQ">
+                    <styles xmi:type="notation:FontStyle" xmi:id="_hbxVJBH5Eea4FsvEXtqaxQ" fontName=".SF NS Text" fontHeight="10"/>
+                    <layoutConstraint xmi:type="notation:Location" xmi:id="_hbxVJRH5Eea4FsvEXtqaxQ"/>
+                  </children>
+                  <styles xmi:type="notation:SortingStyle" xmi:id="_hbtqxRH5Eea4FsvEXtqaxQ"/>
+                  <styles xmi:type="notation:FilteringStyle" xmi:id="_hbtqxhH5Eea4FsvEXtqaxQ"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_hbtqwRH5Eea4FsvEXtqaxQ" fontName=".SF NS Text" fontHeight="12" bold="true"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hbtqwhH5Eea4FsvEXtqaxQ" x="7" y="138"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_hbuR0BH5Eea4FsvEXtqaxQ" type="3009" element="_ha0S7xH5Eea4FsvEXtqaxQ">
+                <children xmi:type="notation:Node" xmi:id="_hbuR0xH5Eea4FsvEXtqaxQ" type="5004"/>
+                <children xmi:type="notation:Node" xmi:id="_hbuR1BH5Eea4FsvEXtqaxQ" type="7003">
+                  <styles xmi:type="notation:SortingStyle" xmi:id="_hbuR1RH5Eea4FsvEXtqaxQ"/>
+                  <styles xmi:type="notation:FilteringStyle" xmi:id="_hbuR1hH5Eea4FsvEXtqaxQ"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_hbuR0RH5Eea4FsvEXtqaxQ" fontName=".SF NS Text" fontHeight="12" bold="true"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hbuR0hH5Eea4FsvEXtqaxQ" x="227" y="141" width="144" height="36"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_hbu44BH5Eea4FsvEXtqaxQ" type="3009" element="_ha0S8RH5Eea4FsvEXtqaxQ">
+                <children xmi:type="notation:Node" xmi:id="_hbu44xH5Eea4FsvEXtqaxQ" type="5004"/>
+                <children xmi:type="notation:Node" xmi:id="_hbu45BH5Eea4FsvEXtqaxQ" type="7003">
+                  <children xmi:type="notation:Node" xmi:id="_hbx8MBH5Eea4FsvEXtqaxQ" type="3010" element="_ha0S8xH5Eea4FsvEXtqaxQ">
+                    <styles xmi:type="notation:FontStyle" xmi:id="_hbx8MRH5Eea4FsvEXtqaxQ" fontName=".SF NS Text" fontHeight="10" italic="true"/>
+                    <layoutConstraint xmi:type="notation:Location" xmi:id="_hbx8MhH5Eea4FsvEXtqaxQ"/>
+                  </children>
+                  <styles xmi:type="notation:SortingStyle" xmi:id="_hbu45RH5Eea4FsvEXtqaxQ"/>
+                  <styles xmi:type="notation:FilteringStyle" xmi:id="_hbu45hH5Eea4FsvEXtqaxQ"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_hbu44RH5Eea4FsvEXtqaxQ" fontName=".SF NS Text" fontHeight="10"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hbu44hH5Eea4FsvEXtqaxQ" x="391" y="26"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_hbvf8BH5Eea4FsvEXtqaxQ" type="3009" element="_ha0S9RH5Eea4FsvEXtqaxQ">
+                <children xmi:type="notation:Node" xmi:id="_hbvf8xH5Eea4FsvEXtqaxQ" type="5004"/>
+                <children xmi:type="notation:Node" xmi:id="_hbvf9BH5Eea4FsvEXtqaxQ" type="7003">
+                  <children xmi:type="notation:Node" xmi:id="_hbx8MxH5Eea4FsvEXtqaxQ" type="3010" element="_ha0S9xH5Eea4FsvEXtqaxQ">
+                    <styles xmi:type="notation:FontStyle" xmi:id="_hbx8NBH5Eea4FsvEXtqaxQ" fontName=".SF NS Text" fontHeight="10" italic="true"/>
+                    <layoutConstraint xmi:type="notation:Location" xmi:id="_hbx8NRH5Eea4FsvEXtqaxQ"/>
+                  </children>
+                  <styles xmi:type="notation:SortingStyle" xmi:id="_hbvf9RH5Eea4FsvEXtqaxQ"/>
+                  <styles xmi:type="notation:FilteringStyle" xmi:id="_hbvf9hH5Eea4FsvEXtqaxQ"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_hbvf8RH5Eea4FsvEXtqaxQ" fontName=".SF NS Text" fontHeight="10"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hbvf8hH5Eea4FsvEXtqaxQ" x="391" y="78"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_hbwHABH5Eea4FsvEXtqaxQ" type="3009" element="_ha0S-RH5Eea4FsvEXtqaxQ">
+                <children xmi:type="notation:Node" xmi:id="_hbwHAxH5Eea4FsvEXtqaxQ" type="5004"/>
+                <children xmi:type="notation:Node" xmi:id="_hbwHBBH5Eea4FsvEXtqaxQ" type="7003">
+                  <children xmi:type="notation:Node" xmi:id="_hbyjQBH5Eea4FsvEXtqaxQ" type="3010" element="_ha0S-xH5Eea4FsvEXtqaxQ">
+                    <styles xmi:type="notation:FontStyle" xmi:id="_hbyjQRH5Eea4FsvEXtqaxQ" fontName=".SF NS Text" fontHeight="10" italic="true"/>
+                    <layoutConstraint xmi:type="notation:Location" xmi:id="_hbyjQhH5Eea4FsvEXtqaxQ"/>
+                  </children>
+                  <styles xmi:type="notation:SortingStyle" xmi:id="_hbwHBRH5Eea4FsvEXtqaxQ"/>
+                  <styles xmi:type="notation:FilteringStyle" xmi:id="_hbwHBhH5Eea4FsvEXtqaxQ"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_hbwHARH5Eea4FsvEXtqaxQ" fontName=".SF NS Text" fontHeight="10"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hbwHAhH5Eea4FsvEXtqaxQ" x="391" y="134"/>
+              </children>
+              <styles xmi:type="notation:SortingStyle" xmi:id="_hbiEkRH5Eea4FsvEXtqaxQ"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_hbiEkhH5Eea4FsvEXtqaxQ"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_hbRl4RH5Eea4FsvEXtqaxQ" fontName=".SF NS Text" fontHeight="12" bold="true"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hbRl4hH5Eea4FsvEXtqaxQ" x="300" width="555" height="211"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_hbm9EBH5Eea4FsvEXtqaxQ" type="2003" element="_ha0S_RH5Eea4FsvEXtqaxQ">
+            <children xmi:type="notation:Node" xmi:id="_hbm9ExH5Eea4FsvEXtqaxQ" type="5007"/>
+            <children xmi:type="notation:Node" xmi:id="_hbnkIBH5Eea4FsvEXtqaxQ" type="7004">
+              <children xmi:type="notation:Node" xmi:id="_hbyjQxH5Eea4FsvEXtqaxQ" type="3010" element="_ha0S_xH5Eea4FsvEXtqaxQ">
+                <styles xmi:type="notation:FontStyle" xmi:id="_hbyjRBH5Eea4FsvEXtqaxQ" fontName=".SF NS Text" fontHeight="10"/>
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_hbyjRRH5Eea4FsvEXtqaxQ"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_hbyjRhH5Eea4FsvEXtqaxQ" type="3010" element="_ha0TARH5Eea4FsvEXtqaxQ">
+                <styles xmi:type="notation:FontStyle" xmi:id="_hbyjRxH5Eea4FsvEXtqaxQ" fontName=".SF NS Text" fontHeight="10"/>
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_hbyjSBH5Eea4FsvEXtqaxQ"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_hbzKUBH5Eea4FsvEXtqaxQ" type="3010" element="_ha0TAxH5Eea4FsvEXtqaxQ">
+                <styles xmi:type="notation:FontStyle" xmi:id="_hbzKURH5Eea4FsvEXtqaxQ" fontName=".SF NS Text" fontHeight="10"/>
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_hbzKUhH5Eea4FsvEXtqaxQ"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_hbzKUxH5Eea4FsvEXtqaxQ" type="3010" element="_ha0TBRH5Eea4FsvEXtqaxQ">
+                <styles xmi:type="notation:FontStyle" xmi:id="_hbzKVBH5Eea4FsvEXtqaxQ" fontName=".SF NS Text" fontHeight="10" bold="true"/>
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_hbzKVRH5Eea4FsvEXtqaxQ"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_hbzKVhH5Eea4FsvEXtqaxQ" type="3010" element="_ha0TBxH5Eea4FsvEXtqaxQ">
+                <styles xmi:type="notation:FontStyle" xmi:id="_hbzKVxH5Eea4FsvEXtqaxQ" fontName=".SF NS Text" fontHeight="10"/>
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_hbzKWBH5Eea4FsvEXtqaxQ"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_hbzKWRH5Eea4FsvEXtqaxQ" type="3010" element="_ha0TCRH5Eea4FsvEXtqaxQ">
+                <styles xmi:type="notation:FontStyle" xmi:id="_hbzKWhH5Eea4FsvEXtqaxQ" fontName=".SF NS Text" fontHeight="10"/>
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_hbzKWxH5Eea4FsvEXtqaxQ"/>
+              </children>
+              <styles xmi:type="notation:SortingStyle" xmi:id="_hbnkIRH5Eea4FsvEXtqaxQ"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_hbnkIhH5Eea4FsvEXtqaxQ"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_hbm9ERH5Eea4FsvEXtqaxQ" fontName=".SF NS Text" fontHeight="12" bold="true"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hbm9EhH5Eea4FsvEXtqaxQ" x="296" y="240"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_hbnkIxH5Eea4FsvEXtqaxQ" type="2003" element="_ha0TCxH5Eea4FsvEXtqaxQ">
+            <children xmi:type="notation:Node" xmi:id="_hboLMBH5Eea4FsvEXtqaxQ" type="5007"/>
+            <children xmi:type="notation:Node" xmi:id="_hboLMRH5Eea4FsvEXtqaxQ" type="7004">
+              <children xmi:type="notation:Node" xmi:id="_hbzxYBH5Eea4FsvEXtqaxQ" type="3010" element="_ha0TDRH5Eea4FsvEXtqaxQ">
+                <styles xmi:type="notation:FontStyle" xmi:id="_hbzxYRH5Eea4FsvEXtqaxQ" fontName=".SF NS Text" fontHeight="10" bold="true"/>
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_hbzxYhH5Eea4FsvEXtqaxQ"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_hbzxYxH5Eea4FsvEXtqaxQ" type="3010" element="_ha0TDxH5Eea4FsvEXtqaxQ">
+                <styles xmi:type="notation:FontStyle" xmi:id="_hbzxZBH5Eea4FsvEXtqaxQ" fontName=".SF NS Text" fontHeight="10"/>
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_hbzxZRH5Eea4FsvEXtqaxQ"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_hb0YcBH5Eea4FsvEXtqaxQ" type="3010" element="_ha0TERH5Eea4FsvEXtqaxQ">
+                <styles xmi:type="notation:FontStyle" xmi:id="_hb0YcRH5Eea4FsvEXtqaxQ" fontName=".SF NS Text" fontHeight="10"/>
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_hb0YchH5Eea4FsvEXtqaxQ"/>
+              </children>
+              <styles xmi:type="notation:SortingStyle" xmi:id="_hboLMhH5Eea4FsvEXtqaxQ"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_hboLMxH5Eea4FsvEXtqaxQ"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_hbnkJBH5Eea4FsvEXtqaxQ" fontName=".SF NS Text" fontHeight="12" bold="true"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hbnkJRH5Eea4FsvEXtqaxQ" x="524" y="240"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_hboyQBH5Eea4FsvEXtqaxQ" type="2003" element="_ha0TExH5Eea4FsvEXtqaxQ">
+            <children xmi:type="notation:Node" xmi:id="_hboyQxH5Eea4FsvEXtqaxQ" type="5007"/>
+            <children xmi:type="notation:Node" xmi:id="_hboyRBH5Eea4FsvEXtqaxQ" type="7004">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_hboyRRH5Eea4FsvEXtqaxQ"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_hboyRhH5Eea4FsvEXtqaxQ"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_hboyQRH5Eea4FsvEXtqaxQ" fontName=".SF NS Text" fontHeight="12" bold="true"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hboyQhH5Eea4FsvEXtqaxQ" x="584" y="396" width="69"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_hboyRxH5Eea4FsvEXtqaxQ" type="2003" element="_ha0TFRH5Eea4FsvEXtqaxQ">
+            <children xmi:type="notation:Node" xmi:id="_hbpZUBH5Eea4FsvEXtqaxQ" type="5007"/>
+            <children xmi:type="notation:Node" xmi:id="_hbpZURH5Eea4FsvEXtqaxQ" type="7004">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_hbpZUhH5Eea4FsvEXtqaxQ"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_hbpZUxH5Eea4FsvEXtqaxQ"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_hboySBH5Eea4FsvEXtqaxQ" fontName=".SF NS Text" fontHeight="12" bold="true"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hboySRH5Eea4FsvEXtqaxQ" x="396" y="396" width="99"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_hbpZVBH5Eea4FsvEXtqaxQ" type="2003" element="_ha0TFxH5Eea4FsvEXtqaxQ">
+            <children xmi:type="notation:Node" xmi:id="_hbqAYBH5Eea4FsvEXtqaxQ" type="5007"/>
+            <children xmi:type="notation:Node" xmi:id="_hbqAYRH5Eea4FsvEXtqaxQ" type="7004">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_hbqAYhH5Eea4FsvEXtqaxQ"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_hbqAYxH5Eea4FsvEXtqaxQ"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_hbpZVRH5Eea4FsvEXtqaxQ" fontName=".SF NS Text" fontHeight="12" bold="true"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hbpZVhH5Eea4FsvEXtqaxQ" x="300" y="396" width="83"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_hbqAZBH5Eea4FsvEXtqaxQ" type="2003" element="_ha0TGRH5Eea4FsvEXtqaxQ">
+            <children xmi:type="notation:Node" xmi:id="_hbqncBH5Eea4FsvEXtqaxQ" type="5007"/>
+            <children xmi:type="notation:Node" xmi:id="_hbqncRH5Eea4FsvEXtqaxQ" type="7004">
+              <children xmi:type="notation:Node" xmi:id="_hb0_gBH5Eea4FsvEXtqaxQ" type="3010" element="_ha0TGxH5Eea4FsvEXtqaxQ">
+                <styles xmi:type="notation:FontStyle" xmi:id="_hb0_gRH5Eea4FsvEXtqaxQ" fontName=".SF NS Text" fontHeight="10" italic="true"/>
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_hb0_ghH5Eea4FsvEXtqaxQ"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_hb0_gxH5Eea4FsvEXtqaxQ" type="3010" element="_ha0THRH5Eea4FsvEXtqaxQ">
+                <styles xmi:type="notation:FontStyle" xmi:id="_hb0_hBH5Eea4FsvEXtqaxQ" fontName=".SF NS Text" fontHeight="10"/>
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_hb0_hRH5Eea4FsvEXtqaxQ"/>
+              </children>
+              <styles xmi:type="notation:SortingStyle" xmi:id="_hbqnchH5Eea4FsvEXtqaxQ"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_hbqncxH5Eea4FsvEXtqaxQ"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_hbqAZRH5Eea4FsvEXtqaxQ" fontName=".SF NS Text" fontHeight="10"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hbqAZhH5Eea4FsvEXtqaxQ" x="712" y="363" width="107"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_KJYXQBH6Eea4FsvEXtqaxQ" type="2003" element="_KIrzsBH6Eea4FsvEXtqaxQ">
+            <children xmi:type="notation:Node" xmi:id="_KJY-UBH6Eea4FsvEXtqaxQ" type="5007"/>
+            <children xmi:type="notation:Node" xmi:id="_KJY-URH6Eea4FsvEXtqaxQ" type="7004">
+              <children xmi:type="notation:Node" xmi:id="_KJZlYBH6Eea4FsvEXtqaxQ" type="3010" element="_KJUs4BH6Eea4FsvEXtqaxQ">
+                <styles xmi:type="notation:FontStyle" xmi:id="_KJZlYRH6Eea4FsvEXtqaxQ" fontName=".SF NS Text" fontHeight="10" italic="true"/>
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_KJZlYhH6Eea4FsvEXtqaxQ"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_eWuOwBIEEea4FsvEXtqaxQ" type="3010" element="_eWrLcBIEEea4FsvEXtqaxQ">
+                <styles xmi:type="notation:FontStyle" xmi:id="_eWuOwRIEEea4FsvEXtqaxQ" fontName=".SF NS Text" fontHeight="10"/>
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_eWuOwhIEEea4FsvEXtqaxQ"/>
+              </children>
+              <styles xmi:type="notation:SortingStyle" xmi:id="_KJY-UhH6Eea4FsvEXtqaxQ"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_KJY-UxH6Eea4FsvEXtqaxQ"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_KJYXQRH6Eea4FsvEXtqaxQ" fontName=".SF NS Text" fontHeight="10"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_KJYXQhH6Eea4FsvEXtqaxQ" x="712" y="240" width="211" height="119"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_hbGmwhH5Eea4FsvEXtqaxQ"/>
+          <edges xmi:type="notation:Edge" xmi:id="_hcAlsBH5Eea4FsvEXtqaxQ" type="4001" element="_ha0THxH5Eea4FsvEXtqaxQ" source="_hbtqwBH5Eea4FsvEXtqaxQ" target="_hbr1kBH5Eea4FsvEXtqaxQ">
+            <children xmi:type="notation:Node" xmi:id="_hcBz0BH5Eea4FsvEXtqaxQ" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hcBz0RH5Eea4FsvEXtqaxQ" x="-5" y="7"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_hcDB8BH5Eea4FsvEXtqaxQ" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hcDB8RH5Eea4FsvEXtqaxQ" x="3" y="-11"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_hcDpABH5Eea4FsvEXtqaxQ" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hcDpARH5Eea4FsvEXtqaxQ" x="1" y="-10"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_hcAlsRH5Eea4FsvEXtqaxQ"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_hcAlshH5Eea4FsvEXtqaxQ" fontName=".SF NS Text" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_hcAlsxH5Eea4FsvEXtqaxQ" points="[0, 0, -107, 44]$[107, -44, 0, 0]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_hcNaABH5Eea4FsvEXtqaxQ" id="(0.5,0.0)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_hcNaARH5Eea4FsvEXtqaxQ" id="(0.5,1.0)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_hcOBEBH5Eea4FsvEXtqaxQ" type="4001" element="_ha0TIhH5Eea4FsvEXtqaxQ" source="_hbuR0BH5Eea4FsvEXtqaxQ" target="_hbr1kBH5Eea4FsvEXtqaxQ">
+            <children xmi:type="notation:Node" xmi:id="_hcOBFBH5Eea4FsvEXtqaxQ" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hcOBFRH5Eea4FsvEXtqaxQ" x="8" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_hcOBFhH5Eea4FsvEXtqaxQ" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hcOBFxH5Eea4FsvEXtqaxQ" x="-4" y="-7"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_hcOBGBH5Eea4FsvEXtqaxQ" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hcOBGRH5Eea4FsvEXtqaxQ" x="-3" y="-7"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_hcOBERH5Eea4FsvEXtqaxQ"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_hcOBEhH5Eea4FsvEXtqaxQ" fontName=".SF NS Text" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_hcOBExH5Eea4FsvEXtqaxQ" points="[0, 0, 80, 47]$[-80, -47, 0, 0]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_hcOBGhH5Eea4FsvEXtqaxQ" id="(0.31733256682954875,0.0)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_hcOoIBH5Eea4FsvEXtqaxQ" id="(0.5,1.0)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_hcOoIRH5Eea4FsvEXtqaxQ" type="4001" element="_ha0TJRH5Eea4FsvEXtqaxQ" source="_hbm9EBH5Eea4FsvEXtqaxQ" target="_hbtqwBH5Eea4FsvEXtqaxQ">
+            <children xmi:type="notation:Node" xmi:id="_hcOoJRH5Eea4FsvEXtqaxQ" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hcOoJhH5Eea4FsvEXtqaxQ" x="7" y="-2"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_hcOoJxH5Eea4FsvEXtqaxQ" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hcOoKBH5Eea4FsvEXtqaxQ" x="-5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_hcOoKRH5Eea4FsvEXtqaxQ" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hcOoKhH5Eea4FsvEXtqaxQ" x="-3" y="-3"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_hcOoIhH5Eea4FsvEXtqaxQ"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_hcOoIxH5Eea4FsvEXtqaxQ" fontName=".SF NS Text" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_hcOoJBH5Eea4FsvEXtqaxQ" points="[2, -62, -2, 74]$[4, -114, 0, 22]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_hcOoKxH5Eea4FsvEXtqaxQ" id="(0.5,0.5)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_hcOoLBH5Eea4FsvEXtqaxQ" id="(0.5,0.5)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_hcOoLRH5Eea4FsvEXtqaxQ" type="4001" element="_ha0TKBH5Eea4FsvEXtqaxQ" source="_hbnkIxH5Eea4FsvEXtqaxQ" target="_hbuR0BH5Eea4FsvEXtqaxQ">
+            <children xmi:type="notation:Node" xmi:id="_hcPPMBH5Eea4FsvEXtqaxQ" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hcPPMRH5Eea4FsvEXtqaxQ" x="7" y="3"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_hcPPMhH5Eea4FsvEXtqaxQ" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hcPPMxH5Eea4FsvEXtqaxQ" x="-7" y="-3"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_hcPPNBH5Eea4FsvEXtqaxQ" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hcPPNRH5Eea4FsvEXtqaxQ" x="-16" y="-2"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_hcOoLhH5Eea4FsvEXtqaxQ"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_hcOoLxH5Eea4FsvEXtqaxQ" fontName=".SF NS Text" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_hcOoMBH5Eea4FsvEXtqaxQ" points="[-1, -38, 0, 59]$[-1, -93, 0, 4]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_hcPPNhH5Eea4FsvEXtqaxQ" id="(0.5,0.5)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_hcPPNxH5Eea4FsvEXtqaxQ" id="(0.5763888888888888,0.9)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_hcPPOBH5Eea4FsvEXtqaxQ" type="4001" element="_ha0TKxH5Eea4FsvEXtqaxQ" source="_hboyQBH5Eea4FsvEXtqaxQ" target="_hbnkIxH5Eea4FsvEXtqaxQ">
+            <children xmi:type="notation:Node" xmi:id="_hcP2QBH5Eea4FsvEXtqaxQ" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hcP2QRH5Eea4FsvEXtqaxQ" x="-2" y="-9"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_hcP2QhH5Eea4FsvEXtqaxQ" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hcP2QxH5Eea4FsvEXtqaxQ" x="7"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_hcP2RBH5Eea4FsvEXtqaxQ" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hcP2RRH5Eea4FsvEXtqaxQ" x="6" y="-2"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_hcPPORH5Eea4FsvEXtqaxQ"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_hcPPOhH5Eea4FsvEXtqaxQ" fontName=".SF NS Text" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_hcPPOxH5Eea4FsvEXtqaxQ" points="[0, 0, -9, 80]$[9, -80, 0, 0]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_hcP2RhH5Eea4FsvEXtqaxQ" id="(0.31343283582089554,0.0)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_hcP2RxH5Eea4FsvEXtqaxQ" id="(0.4972677595628416,1.0)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_hcP2SBH5Eea4FsvEXtqaxQ" type="4001" element="_ha0TLhH5Eea4FsvEXtqaxQ" source="_hboyRxH5Eea4FsvEXtqaxQ" target="_hbm9EBH5Eea4FsvEXtqaxQ">
+            <children xmi:type="notation:Node" xmi:id="_hcP2TBH5Eea4FsvEXtqaxQ" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hcP2TRH5Eea4FsvEXtqaxQ" x="4" y="-7"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_hcQdUBH5Eea4FsvEXtqaxQ" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hcQdURH5Eea4FsvEXtqaxQ" x="10" y="7"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_hcQdUhH5Eea4FsvEXtqaxQ" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hcQdUxH5Eea4FsvEXtqaxQ" x="6" y="8"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_hcP2SRH5Eea4FsvEXtqaxQ"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_hcP2ShH5Eea4FsvEXtqaxQ" fontName=".SF NS Text" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_hcP2SxH5Eea4FsvEXtqaxQ" points="[0, 0, 18, 35]$[-16, -32, 2, 3]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_hcQdVBH5Eea4FsvEXtqaxQ" id="(0.36082474226804123,0.0)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_hcQdVRH5Eea4FsvEXtqaxQ" id="(0.6502732240437158,0.9761904761904762)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_hcQdVhH5Eea4FsvEXtqaxQ" type="4001" element="_ha0TMRH5Eea4FsvEXtqaxQ" source="_hbpZVBH5Eea4FsvEXtqaxQ" target="_hbm9EBH5Eea4FsvEXtqaxQ">
+            <children xmi:type="notation:Node" xmi:id="_hcQdWhH5Eea4FsvEXtqaxQ" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hcQdWxH5Eea4FsvEXtqaxQ" x="5" y="-9"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_hcQdXBH5Eea4FsvEXtqaxQ" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hcQdXRH5Eea4FsvEXtqaxQ" x="-1" y="-2"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_hcREYBH5Eea4FsvEXtqaxQ" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hcREYRH5Eea4FsvEXtqaxQ" x="-3" y="-4"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_hcQdVxH5Eea4FsvEXtqaxQ"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_hcQdWBH5Eea4FsvEXtqaxQ" fontName=".SF NS Text" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_hcQdWRH5Eea4FsvEXtqaxQ" points="[0, 0, -16, 35]$[15, -32, -1, 3]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_hcREYhH5Eea4FsvEXtqaxQ" id="(0.5180722891566265,0.0)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_hcREYxH5Eea4FsvEXtqaxQ" id="(0.33879781420765026,0.9761904761904762)"/>
+          </edges>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_ha0S4xH5Eea4FsvEXtqaxQ" name="core">
+        <target xmi:type="occi:Extension" href="http://schemas.ogf.org/occi/core#/"/>
+        <semanticElements xmi:type="occi:Extension" href="http://schemas.ogf.org/occi/core#/"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_ha0S5BH5Eea4FsvEXtqaxQ" labelSize="12" borderSize="1" borderSizeComputationExpression="1" foregroundColor="214,214,214">
+          <labelFormat>bold</labelFormat>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='ImportContainer']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='ImportContainer']"/>
+        <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_ha0S5RH5Eea4FsvEXtqaxQ" name="entity" incomingEdges="_ha0THxH5Eea4FsvEXtqaxQ _ha0TIhH5Eea4FsvEXtqaxQ">
+          <target xmi:type="occi:Kind" href="http://schemas.ogf.org/occi/core#//@kinds[term='entity']"/>
+          <semanticElements xmi:type="occi:Kind" href="http://schemas.ogf.org/occi/core#//@kinds[term='entity']"/>
+          <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+          <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+          <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_ha0S5hH5Eea4FsvEXtqaxQ" labelSize="12" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="0,47,0" backgroundStyle="GradientTopToBottom" backgroundColor="187,242,196" foregroundColor="255,255,255">
+            <labelFormat>bold</labelFormat>
+            <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']"/>
+          <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_ha0S5xH5Eea4FsvEXtqaxQ" name="occi.core.id: String">
+            <target xmi:type="occi:Attribute" href="http://schemas.ogf.org/occi/core#//@kinds[term='entity']/@attributes.0"/>
+            <semanticElements xmi:type="occi:Attribute" href="http://schemas.ogf.org/occi/core#//@kinds[term='entity']/@attributes.0"/>
+            <ownedStyle xmi:type="diagram:Square" xmi:id="_iDwrwBIFEeahDM-V8a514g" labelSize="10" labelAlignment="LEFT" labelPosition="node">
+              <labelFormat>italic</labelFormat>
+              <labelFormat>bold</labelFormat>
+              <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@conditionnalStyles.1/@style"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
+          </ownedElements>
+          <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_ha0S6RH5Eea4FsvEXtqaxQ" name="occi.core.title: String">
+            <target xmi:type="occi:Attribute" href="http://schemas.ogf.org/occi/core#//@kinds[term='entity']/@attributes.1"/>
+            <semanticElements xmi:type="occi:Attribute" href="http://schemas.ogf.org/occi/core#//@kinds[term='entity']/@attributes.1"/>
+            <ownedStyle xmi:type="diagram:Square" xmi:id="_ha0S6hH5Eea4FsvEXtqaxQ" labelSize="10" labelAlignment="LEFT" labelPosition="node">
+              <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@conditionnalStyles.2/@style"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
+          </ownedElements>
+        </ownedDiagramElements>
+        <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_ha0S6xH5Eea4FsvEXtqaxQ" name="resource" outgoingEdges="_ha0THxH5Eea4FsvEXtqaxQ" incomingEdges="_ha0TJRH5Eea4FsvEXtqaxQ">
+          <target xmi:type="occi:Kind" href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+          <semanticElements xmi:type="occi:Kind" href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+          <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+          <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+          <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_ha0S7BH5Eea4FsvEXtqaxQ" labelSize="12" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="0,47,0" backgroundStyle="GradientTopToBottom" backgroundColor="187,242,196" foregroundColor="255,255,255">
+            <labelFormat>bold</labelFormat>
+            <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']"/>
+          <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_ha0S7RH5Eea4FsvEXtqaxQ" name="occi.core.summary: String">
+            <target xmi:type="occi:Attribute" href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']/@attributes.0"/>
+            <semanticElements xmi:type="occi:Attribute" href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']/@attributes.0"/>
+            <ownedStyle xmi:type="diagram:Square" xmi:id="_ha0S7hH5Eea4FsvEXtqaxQ" labelSize="10" labelAlignment="LEFT" labelPosition="node">
+              <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@conditionnalStyles.2/@style"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
+          </ownedElements>
+        </ownedDiagramElements>
+        <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_ha0S7xH5Eea4FsvEXtqaxQ" name="link" outgoingEdges="_ha0TIhH5Eea4FsvEXtqaxQ" incomingEdges="_ha0TKBH5Eea4FsvEXtqaxQ">
+          <target xmi:type="occi:Kind" href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+          <semanticElements xmi:type="occi:Kind" href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+          <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+          <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+          <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_ha0S8BH5Eea4FsvEXtqaxQ" labelSize="12" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="0,47,0" backgroundStyle="GradientTopToBottom" backgroundColor="187,242,196" foregroundColor="255,255,255">
+            <labelFormat>bold</labelFormat>
+            <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']"/>
+        </ownedDiagramElements>
+        <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_ha0S8RH5Eea4FsvEXtqaxQ" name="String" width="14" height="5">
+          <target xmi:type="ecore:EDataType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+          <semanticElements xmi:type="ecore:EDataType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+          <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+          <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+          <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_ha0S8hH5Eea4FsvEXtqaxQ" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="Liquid" foregroundColor="255,255,255">
+            <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']"/>
+          <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_ha0S8xH5Eea4FsvEXtqaxQ" name="java.lang.String">
+            <target xmi:type="ecore:EDataType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+            <semanticElements xmi:type="ecore:EDataType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+            <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_ha0S9BH5Eea4FsvEXtqaxQ" labelSize="10" showIcon="false">
+              <labelFormat>italic</labelFormat>
+              <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']/@subNodeMappings[name='EC_DataType_InstanceClassName']/@style"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']/@subNodeMappings[name='EC_DataType_InstanceClassName']"/>
+          </ownedElements>
+        </ownedDiagramElements>
+        <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_ha0S9RH5Eea4FsvEXtqaxQ" name="Boolean" width="14" height="5">
+          <target xmi:type="ecore:EDataType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+          <semanticElements xmi:type="ecore:EDataType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+          <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+          <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+          <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_ha0S9hH5Eea4FsvEXtqaxQ" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="Liquid" foregroundColor="255,255,255">
+            <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']"/>
+          <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_ha0S9xH5Eea4FsvEXtqaxQ" name="boolean">
+            <target xmi:type="ecore:EDataType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+            <semanticElements xmi:type="ecore:EDataType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+            <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_ha0S-BH5Eea4FsvEXtqaxQ" labelSize="10" showIcon="false">
+              <labelFormat>italic</labelFormat>
+              <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']/@subNodeMappings[name='EC_DataType_InstanceClassName']/@style"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']/@subNodeMappings[name='EC_DataType_InstanceClassName']"/>
+          </ownedElements>
+        </ownedDiagramElements>
+        <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_ha0S-RH5Eea4FsvEXtqaxQ" name="Number" width="14" height="5">
+          <target xmi:type="ecore:EDataType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+          <semanticElements xmi:type="ecore:EDataType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+          <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+          <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+          <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_ha0S-hH5Eea4FsvEXtqaxQ" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="Liquid" foregroundColor="255,255,255">
+            <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']"/>
+          <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_ha0S-xH5Eea4FsvEXtqaxQ" name="int">
+            <target xmi:type="ecore:EDataType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+            <semanticElements xmi:type="ecore:EDataType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+            <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_ha0S_BH5Eea4FsvEXtqaxQ" labelSize="10" showIcon="false">
+              <labelFormat>italic</labelFormat>
+              <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']/@subNodeMappings[name='EC_DataType_InstanceClassName']/@style"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']/@subNodeMappings[name='EC_DataType_InstanceClassName']"/>
+          </ownedElements>
+        </ownedDiagramElements>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_ha0S_RH5Eea4FsvEXtqaxQ" name="sensor" outgoingEdges="_ha0TJRH5Eea4FsvEXtqaxQ" incomingEdges="_ha0TLhH5Eea4FsvEXtqaxQ _ha0TMRH5Eea4FsvEXtqaxQ">
+        <target xmi:type="occi:Kind" href="model/monitoring.occie#//@kinds[term='sensor']"/>
+        <semanticElements xmi:type="occi:Kind" href="model/monitoring.occie#//@kinds[term='sensor']"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_ha0S_hH5Eea4FsvEXtqaxQ" labelSize="12" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="0,47,0" backgroundStyle="GradientTopToBottom" backgroundColor="187,242,196" foregroundColor="255,255,255">
+          <labelFormat>bold</labelFormat>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']"/>
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_ha0S_xH5Eea4FsvEXtqaxQ" name="occi.sensor.timebase: DateTime">
+          <target xmi:type="occi:Attribute" href="model/monitoring.occie#//@kinds[term='sensor']/@attributes.0"/>
+          <semanticElements xmi:type="occi:Attribute" href="model/monitoring.occie#//@kinds[term='sensor']/@attributes.0"/>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_ha0TABH5Eea4FsvEXtqaxQ" labelSize="10" labelAlignment="LEFT" labelPosition="node">
+            <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@conditionnalStyles.2/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
+        </ownedElements>
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_ha0TARH5Eea4FsvEXtqaxQ" name="occi.sensor.timestart: Second">
+          <target xmi:type="occi:Attribute" href="model/monitoring.occie#//@kinds[term='sensor']/@attributes.1"/>
+          <semanticElements xmi:type="occi:Attribute" href="model/monitoring.occie#//@kinds[term='sensor']/@attributes.1"/>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_ha0TAhH5Eea4FsvEXtqaxQ" labelSize="10" labelAlignment="LEFT" labelPosition="node">
+            <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@conditionnalStyles.2/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
+        </ownedElements>
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_ha0TAxH5Eea4FsvEXtqaxQ" name="occi.sensor.timestop: Second">
+          <target xmi:type="occi:Attribute" href="model/monitoring.occie#//@kinds[term='sensor']/@attributes.2"/>
+          <semanticElements xmi:type="occi:Attribute" href="model/monitoring.occie#//@kinds[term='sensor']/@attributes.2"/>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_ha0TBBH5Eea4FsvEXtqaxQ" labelSize="10" labelAlignment="LEFT" labelPosition="node">
+            <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@conditionnalStyles.2/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
+        </ownedElements>
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_ha0TBRH5Eea4FsvEXtqaxQ" name="occi.sensor.period: Second">
+          <target xmi:type="occi:Attribute" href="model/monitoring.occie#//@kinds[term='sensor']/@attributes.3"/>
+          <semanticElements xmi:type="occi:Attribute" href="model/monitoring.occie#//@kinds[term='sensor']/@attributes.3"/>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_ha0TBhH5Eea4FsvEXtqaxQ" labelSize="10" labelAlignment="LEFT" labelPosition="node">
+            <labelFormat>bold</labelFormat>
+            <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@conditionnalStyles.3/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
+        </ownedElements>
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_ha0TBxH5Eea4FsvEXtqaxQ" name="occi.sensor.granularity: Second">
+          <target xmi:type="occi:Attribute" href="model/monitoring.occie#//@kinds[term='sensor']/@attributes.4"/>
+          <semanticElements xmi:type="occi:Attribute" href="model/monitoring.occie#//@kinds[term='sensor']/@attributes.4"/>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_ha0TCBH5Eea4FsvEXtqaxQ" labelSize="10" labelAlignment="LEFT" labelPosition="node">
+            <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@conditionnalStyles.2/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
+        </ownedElements>
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_ha0TCRH5Eea4FsvEXtqaxQ" name="occi.sensor.accuracy: Second">
+          <target xmi:type="occi:Attribute" href="model/monitoring.occie#//@kinds[term='sensor']/@attributes.5"/>
+          <semanticElements xmi:type="occi:Attribute" href="model/monitoring.occie#//@kinds[term='sensor']/@attributes.5"/>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_ha0TChH5Eea4FsvEXtqaxQ" labelSize="10" labelAlignment="LEFT" labelPosition="node">
+            <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@conditionnalStyles.2/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
+        </ownedElements>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_ha0TCxH5Eea4FsvEXtqaxQ" name="collector" outgoingEdges="_ha0TKBH5Eea4FsvEXtqaxQ" incomingEdges="_ha0TKxH5Eea4FsvEXtqaxQ">
+        <target xmi:type="occi:Kind" href="model/monitoring.occie#//@kinds[term='collector']"/>
+        <semanticElements xmi:type="occi:Kind" href="model/monitoring.occie#//@kinds[term='collector']"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_ha0TDBH5Eea4FsvEXtqaxQ" labelSize="12" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="0,47,0" backgroundStyle="GradientTopToBottom" backgroundColor="187,242,196" foregroundColor="255,255,255">
+          <labelFormat>bold</labelFormat>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']"/>
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_ha0TDRH5Eea4FsvEXtqaxQ" name="occi.collector.period: Second">
+          <target xmi:type="occi:Attribute" href="model/monitoring.occie#//@kinds[term='collector']/@attributes.0"/>
+          <semanticElements xmi:type="occi:Attribute" href="model/monitoring.occie#//@kinds[term='collector']/@attributes.0"/>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_ha0TDhH5Eea4FsvEXtqaxQ" labelSize="10" labelAlignment="LEFT" labelPosition="node">
+            <labelFormat>bold</labelFormat>
+            <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@conditionnalStyles.3/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
+        </ownedElements>
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_ha0TDxH5Eea4FsvEXtqaxQ" name="occi.sensor.accuracy: Second">
+          <target xmi:type="occi:Attribute" href="model/monitoring.occie#//@kinds[term='collector']/@attributes.1"/>
+          <semanticElements xmi:type="occi:Attribute" href="model/monitoring.occie#//@kinds[term='collector']/@attributes.1"/>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_ha0TEBH5Eea4FsvEXtqaxQ" labelSize="10" labelAlignment="LEFT" labelPosition="node">
+            <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@conditionnalStyles.2/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
+        </ownedElements>
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_ha0TERH5Eea4FsvEXtqaxQ" name="occi.sensor.granularity: Second">
+          <target xmi:type="occi:Attribute" href="model/monitoring.occie#//@kinds[term='collector']/@attributes.2"/>
+          <semanticElements xmi:type="occi:Attribute" href="model/monitoring.occie#//@kinds[term='collector']/@attributes.2"/>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_ha0TEhH5Eea4FsvEXtqaxQ" labelSize="10" labelAlignment="LEFT" labelPosition="node">
+            <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@conditionnalStyles.2/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
+        </ownedElements>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_ha0TExH5Eea4FsvEXtqaxQ" name="metric" outgoingEdges="_ha0TKxH5Eea4FsvEXtqaxQ">
+        <target xmi:type="occi:Mixin" href="model/monitoring.occie#//@mixins[term='metric']"/>
+        <semanticElements xmi:type="occi:Mixin" href="model/monitoring.occie#//@mixins[term='metric']"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_ha0TFBH5Eea4FsvEXtqaxQ" labelSize="12" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="0,37,74" backgroundStyle="GradientTopToBottom" backgroundColor="187,221,255" foregroundColor="255,255,255">
+          <labelFormat>bold</labelFormat>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_ha0TFRH5Eea4FsvEXtqaxQ" name="aggregator" outgoingEdges="_ha0TLhH5Eea4FsvEXtqaxQ">
+        <target xmi:type="occi:Mixin" href="model/monitoring.occie#//@mixins[term='aggregator']"/>
+        <semanticElements xmi:type="occi:Mixin" href="model/monitoring.occie#//@mixins[term='aggregator']"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_ha0TFhH5Eea4FsvEXtqaxQ" labelSize="12" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="0,37,74" backgroundStyle="GradientTopToBottom" backgroundColor="187,221,255" foregroundColor="255,255,255">
+          <labelFormat>bold</labelFormat>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_ha0TFxH5Eea4FsvEXtqaxQ" name="publisher" outgoingEdges="_ha0TMRH5Eea4FsvEXtqaxQ">
+        <target xmi:type="occi:Mixin" href="model/monitoring.occie#//@mixins[term='publisher']"/>
+        <semanticElements xmi:type="occi:Mixin" href="model/monitoring.occie#//@mixins[term='publisher']"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_ha0TGBH5Eea4FsvEXtqaxQ" labelSize="12" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="0,37,74" backgroundStyle="GradientTopToBottom" backgroundColor="187,221,255" foregroundColor="255,255,255">
+          <labelFormat>bold</labelFormat>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_ha0TGRH5Eea4FsvEXtqaxQ" name="Second" width="14" height="5">
+        <target xmi:type="ecore:EDataType" href="model/monitoring.occie#//@types.0"/>
+        <semanticElements xmi:type="ecore:EDataType" href="model/monitoring.occie#//@types.0"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_ha0TGhH5Eea4FsvEXtqaxQ" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="Liquid" foregroundColor="255,255,255">
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']"/>
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_ha0TGxH5Eea4FsvEXtqaxQ" name="int">
+          <target xmi:type="ecore:EDataType" href="model/monitoring.occie#//@types.0"/>
+          <semanticElements xmi:type="ecore:EDataType" href="model/monitoring.occie#//@types.0"/>
+          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_ha0THBH5Eea4FsvEXtqaxQ" labelSize="10" showIcon="false">
+            <labelFormat>italic</labelFormat>
+            <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']/@subNodeMappings[name='EC_DataType_InstanceClassName']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']/@subNodeMappings[name='EC_DataType_InstanceClassName']"/>
+        </ownedElements>
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_ha0THRH5Eea4FsvEXtqaxQ" name="minInclusive=0">
+          <target xmi:type="ecore:EStringToStringMapEntry" href="model/monitoring.occie#//@types.0/%http:%2F%2F%2Forg%2Feclipse%2Femf%2Fecore%2Futil%2FExtendedMetaData%/@details.0"/>
+          <semanticElements xmi:type="ecore:EStringToStringMapEntry" href="model/monitoring.occie#//@types.0/%http:%2F%2F%2Forg%2Feclipse%2Femf%2Fecore%2Futil%2FExtendedMetaData%/@details.0"/>
+          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_ha0THhH5Eea4FsvEXtqaxQ" labelSize="10" labelAlignment="LEFT">
+            <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']/@subNodeMappings[name='EC_DataType%20EStringToStringMapEntry']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']/@subNodeMappings[name='EC_DataType%20EStringToStringMapEntry']"/>
+        </ownedElements>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_ha0THxH5Eea4FsvEXtqaxQ" sourceNode="_ha0S6xH5Eea4FsvEXtqaxQ" targetNode="_ha0S5RH5Eea4FsvEXtqaxQ">
+        <target xmi:type="occi:Kind" href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_ha0TIBH5Eea4FsvEXtqaxQ" targetArrow="InputClosedArrow" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']/@style"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_ha0TIRH5Eea4FsvEXtqaxQ"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_ha0TIhH5Eea4FsvEXtqaxQ" sourceNode="_ha0S7xH5Eea4FsvEXtqaxQ" targetNode="_ha0S5RH5Eea4FsvEXtqaxQ">
+        <target xmi:type="occi:Kind" href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_ha0TIxH5Eea4FsvEXtqaxQ" targetArrow="InputClosedArrow" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']/@style"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_ha0TJBH5Eea4FsvEXtqaxQ"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_ha0TJRH5Eea4FsvEXtqaxQ" sourceNode="_ha0S_RH5Eea4FsvEXtqaxQ" targetNode="_ha0S6xH5Eea4FsvEXtqaxQ">
+        <target xmi:type="occi:Kind" href="model/monitoring.occie#//@kinds[term='sensor']"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_ha0TJhH5Eea4FsvEXtqaxQ" targetArrow="InputClosedArrow" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']/@style"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_ha0TJxH5Eea4FsvEXtqaxQ"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_ha0TKBH5Eea4FsvEXtqaxQ" sourceNode="_ha0TCxH5Eea4FsvEXtqaxQ" targetNode="_ha0S7xH5Eea4FsvEXtqaxQ">
+        <target xmi:type="occi:Kind" href="model/monitoring.occie#//@kinds[term='collector']"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_ha0TKRH5Eea4FsvEXtqaxQ" targetArrow="InputClosedArrow" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']/@style"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_ha0TKhH5Eea4FsvEXtqaxQ"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_ha0TKxH5Eea4FsvEXtqaxQ" sourceNode="_ha0TExH5Eea4FsvEXtqaxQ" targetNode="_ha0TCxH5Eea4FsvEXtqaxQ">
+        <target xmi:type="occi:Mixin" href="model/monitoring.occie#//@mixins[term='metric']"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_ha0TLBH5Eea4FsvEXtqaxQ" lineStyle="dash" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='AppliesEdge']/@style"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_ha0TLRH5Eea4FsvEXtqaxQ"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='AppliesEdge']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_ha0TLhH5Eea4FsvEXtqaxQ" sourceNode="_ha0TFRH5Eea4FsvEXtqaxQ" targetNode="_ha0S_RH5Eea4FsvEXtqaxQ">
+        <target xmi:type="occi:Mixin" href="model/monitoring.occie#//@mixins[term='aggregator']"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_ha0TLxH5Eea4FsvEXtqaxQ" lineStyle="dash" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='AppliesEdge']/@style"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_ha0TMBH5Eea4FsvEXtqaxQ"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='AppliesEdge']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_ha0TMRH5Eea4FsvEXtqaxQ" sourceNode="_ha0TFxH5Eea4FsvEXtqaxQ" targetNode="_ha0S_RH5Eea4FsvEXtqaxQ">
+        <target xmi:type="occi:Mixin" href="model/monitoring.occie#//@mixins[term='publisher']"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_ha0TMhH5Eea4FsvEXtqaxQ" lineStyle="dash" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='AppliesEdge']/@style"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_ha0TMxH5Eea4FsvEXtqaxQ"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='AppliesEdge']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_KIrzsBH6Eea4FsvEXtqaxQ" name="DateTime" width="14" height="5">
+        <target xmi:type="ecore:EDataType" href="model/monitoring.occie#//@types.1"/>
+        <semanticElements xmi:type="ecore:EDataType" href="model/monitoring.occie#//@types.1"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_KIrzsRH6Eea4FsvEXtqaxQ" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="Liquid" foregroundColor="255,255,255">
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']"/>
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_KJUs4BH6Eea4FsvEXtqaxQ" name="java.lang.String">
+          <target xmi:type="ecore:EDataType" href="model/monitoring.occie#//@types.1"/>
+          <semanticElements xmi:type="ecore:EDataType" href="model/monitoring.occie#//@types.1"/>
+          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_KJUs4RH6Eea4FsvEXtqaxQ" labelSize="10" showIcon="false">
+            <labelFormat>italic</labelFormat>
+            <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']/@subNodeMappings[name='EC_DataType_InstanceClassName']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']/@subNodeMappings[name='EC_DataType_InstanceClassName']"/>
+        </ownedElements>
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_eWrLcBIEEea4FsvEXtqaxQ" name="pattern=^(\d{4}((-)?(0[1-9]|1[0-2])((-)?(0[1-9]|[1-2][0-9]|3[0-1])(T(24:00(:00(\.[0]+)?)?|(([0-1][0-9]|2[0-3])(:)[0-5][0-9])((:)[0-5][0-9](\.[\d]+)?)?)((\+|-)(14:00|(0[0-9]|1[0-3])(:)[0-5][0-9])|Z))?)?)?)$">
+          <target xmi:type="ecore:EStringToStringMapEntry" href="model/monitoring.occie#//@types.1/%http:%2F%2F%2Forg%2Feclipse%2Femf%2Fecore%2Futil%2FExtendedMetaData%/@details.0"/>
+          <semanticElements xmi:type="ecore:EStringToStringMapEntry" href="model/monitoring.occie#//@types.1/%http:%2F%2F%2Forg%2Feclipse%2Femf%2Fecore%2Futil%2FExtendedMetaData%/@details.0"/>
+          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_eWrLcRIEEea4FsvEXtqaxQ" labelSize="10" labelAlignment="LEFT">
+            <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']/@subNodeMappings[name='EC_DataType%20EStringToStringMapEntry']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']/@subNodeMappings[name='EC_DataType%20EStringToStringMapEntry']"/>
+        </ownedElements>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_ha0TNBH5Eea4FsvEXtqaxQ"/>
+      <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer"/>
+      <target xmi:type="occi:Extension" href="model/monitoring.occie#/"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

@@ -36,13 +36,15 @@
 		<module>../org.occiware.clouddesigner.occi.infrastructure.editor</module>
 		<module>../org.occiware.clouddesigner.occi.infrastructure.tests</module>
 
-
 		<!-- OCCI Platform -->
 		<module>../org.occiware.clouddesigner.occi.platform</module>
 		<module>../org.occiware.clouddesigner.occi.platform.connector.dummy</module>
 		<module>../org.occiware.clouddesigner.occi.platform.edit</module>
 		<module>../org.occiware.clouddesigner.occi.platform.editor</module>
 		<module>../org.occiware.clouddesigner.occi.platform.tests</module>
+
+		<!-- OCCI Monitoring -->
+		<module>../org.occiware.clouddesigner.occi.monitoring</module>
 
 		<!-- ProActive Cloud Automation -->
 		<module>../org.occiware.clouddesigner.occi.pca</module>

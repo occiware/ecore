@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ASCII"?>
+<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="monitoring" scheme="http://schemas.ogf.org/occi/monitoring#" description="OCCI Monitoring Extension allows the user to create a monitoring infrastructure for a cloud provision.">
+  <import href="http://schemas.ogf.org/occi/core#/"/>
+  <kinds term="sensor" scheme="http://schemas.ogf.org/occi/monitoring#" title="Sensor Resource">
+    <attributes name="occi.sensor.timebase" description="Base time reference (ISO8601)" type="//@types.1"/>
+    <attributes name="occi.sensor.timestart" description="Start time offset (seconds)" type="//@types.0"/>
+    <attributes name="occi.sensor.timestop" description="Stop time offset (seconds)" type="//@types.0"/>
+    <attributes name="occi.sensor.period" required="true" description="Time between two following measurements (seconds)" type="//@types.0"/>
+    <attributes name="occi.sensor.granularity" description="Granularity of time measument (seconds)" type="//@types.0"/>
+    <attributes name="occi.sensor.accuracy" description="Accuracy of time measument (seconds)" type="//@types.0"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds term="collector" scheme="http://schemas.ogf.org/occi/monitoring#" title="Collector Link">
+    <attributes name="occi.collector.period" required="true" description="Time between two following measurements (seconds)" type="//@types.0"/>
+    <attributes name="occi.sensor.accuracy" description="Accuracy of time measument (seconds)" type="//@types.0"/>
+    <attributes name="occi.sensor.granularity" description="Granularity of time measument (seconds)" type="//@types.0"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <mixins term="metric" scheme="http://schemas.ogf.org/occi/monitoring#" title="Metric Mixin" applies="//@kinds[term='collector']"/>
+  <mixins term="aggregator" scheme="http://schemas.ogf.org/occi/monitoring#" title="Aggregator Mixin" applies="//@kinds[term='sensor']"/>
+  <mixins term="publisher" scheme="http://schemas.ogf.org/occi/monitoring#" title="Published Mixin" applies="//@kinds[term='sensor']"/>
+  <types name="Second" instanceClassName="int">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="minInclusive" value="0"/>
+    </eAnnotations>
+  </types>
+  <types name="DateTime" instanceClassName="java.lang.String">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="pattern" value="^(\d{4}((-)?(0[1-9]|1[0-2])((-)?(0[1-9]|[1-2][0-9]|3[0-1])(T(24:00(:00(\.[0]+)?)?|(([0-1][0-9]|2[0-3])(:)[0-5][0-9])((:)[0-5][0-9](\.[\d]+)?)?)((\+|-)(14:00|(0[0-9]|1[0-3])(:)[0-5][0-9])|Z))?)?)?)$"/>
+    </eAnnotations>
+  </types>
+</occi:Extension>

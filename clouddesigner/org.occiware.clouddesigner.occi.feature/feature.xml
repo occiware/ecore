@@ -352,6 +352,13 @@ litigation.
          unpack="false"/>
 
    <plugin
+         id="org.occiware.clouddesigner.occi.monitoring"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
          id="org.occiware.clouddesigner.occi.pca"
          download-size="0"
          install-size="0"
