@@ -75,10 +75,9 @@ package [targetPackageName/];
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-[let stateAttribute : Attribute = kind.attributes->any(attribute : Attribute | attribute.name.endsWith('state') and attribute.type.oclIsTypeOf(EEnum))]
-[if (not stateAttribute.oclIsUndefined())]
+[let stateAttribute : Attribute = getStateAttribute(kind)]
 import [extendedPackageName/].[stateAttribute.type.name/];
-[/if]
+[/let]
 
 /**
  * Connector implementation for the OCCI kind:
@@ -155,15 +154,14 @@ public class [kindClassName/]Connector extends [extendedPackageName/].impl.[kind
 	//
 
 [for (action : Action | kind.actions)]
-[generateActionMethod(action, kind, extendedPackageName, stateAttribute)/]
+[generateActionMethod(action, kind, extendedPackageName)/]
 [/for]
 }	
-[/let]
 [/let]
 [/file]
 [/template]
 
-[template public generateActionMethod(action : Action, kind : Kind, extendedPackageName : String, stateAttribute : Attribute)]
+[template public generateActionMethod(action : Action, kind : Kind, extendedPackageName : String)]
 	/**
 	 * Implement OCCI action:
      * - scheme: [action.scheme/]
@@ -175,9 +173,10 @@ public class [kindClassName/]Connector extends [extendedPackageName/].impl.[kind
 	{
 		LOGGER.debug("Action [action.term/]([if (action.attributes->size() > 0)]"[for (parameter : Attribute | action.attributes)] + "[parameter.name/]=" + [parameter.name/][/for] + "[/if]) called on " + this);
 
-[if (stateAttribute.oclIsUndefined())]
+[if (getStateAttribute(kind).oclIsUndefined())]
 		// TODO: Implement how to [action.term/] this [kind.term/].
 [else]
+[let stateAttribute : Attribute = getStateAttribute(kind)]
 		// [kind.term.toUpperFirst()/] State Machine.
 		switch(getState().getValue()) {
 [for (eEnumLiteral : EEnumLiteral | stateAttribute.type.oclAsType(EEnum).eLiterals)]
@@ -193,11 +192,13 @@ public class [kindClassName/]Connector extends [extendedPackageName/].impl.[kind
 		default:
 			break;
 		}
-
+[/let]
 [/if]
 	}
 
 [/template]
+
+[query public getStateAttribute(kind : Kind) : Attribute = kind.attributes->any(attribute : Attribute | attribute.name.endsWith('state') and attribute.type.oclIsTypeOf(EEnum)) /]
 
 [query public toU1Case(string : String) : String = string.substring(1,1).toUpperCase() + string.substring(2) /]
 
