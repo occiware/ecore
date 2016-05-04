@@ -737,47 +737,7 @@
               <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/emf/2002/Ecore#//EClass/eAllOperations"/>
             </iterSet>
           </body>
-          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="          &lt;/ownedTools>&#xA;          &lt;ownedTools xsi:type=&quot;tool_1:PopupMenu&quot; name=&quot;CRUD operations&quot; precondition=&quot;"/>
-          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
-            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-          </body>
-          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="self.oclIsKindOf(Entity)/"/>
-          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="]">
-            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-          </body>
-          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot;>&#xA;            &lt;menuItemDescription xsi:type=&quot;tool_1:OperationAction&quot; name=&quot;Create&quot;>&#xA;              &lt;view name=&quot;views&quot;/>&#xA;              &lt;initialOperation>&#xA;                &lt;firstModelOperations xsi:type=&quot;tool_1:ChangeContext&quot; browseExpression=&quot;"/>
-          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
-            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-          </body>
-          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="self.oclAsType(Entity).occiCreate()/"/>
-          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="]">
-            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-          </body>
-          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot;/>&#xA;              &lt;/initialOperation>&#xA;            &lt;/menuItemDescription>&#xA;            &lt;menuItemDescription xsi:type=&quot;tool_1:OperationAction&quot; name=&quot;Retrieve&quot;>&#xA;              &lt;view name=&quot;views&quot;/>&#xA;              &lt;initialOperation>&#xA;                &lt;firstModelOperations xsi:type=&quot;tool_1:ChangeContext&quot; browseExpression=&quot;"/>
-          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
-            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-          </body>
-          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="self.oclAsType(Entity).occiRetrieve()/"/>
-          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="]">
-            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-          </body>
-          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot;/>&#xA;              &lt;/initialOperation>&#xA;            &lt;/menuItemDescription>&#xA;            &lt;menuItemDescription xsi:type=&quot;tool_1:OperationAction&quot; name=&quot;Update&quot;>&#xA;              &lt;view name=&quot;views&quot;/>&#xA;              &lt;initialOperation>&#xA;                &lt;firstModelOperations xsi:type=&quot;tool_1:ChangeContext&quot; browseExpression=&quot;"/>
-          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
-            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-          </body>
-          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="self.oclAsType(Entity).occiUpdate()/"/>
-          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="]">
-            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-          </body>
-          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot;/>&#xA;              &lt;/initialOperation>&#xA;            &lt;/menuItemDescription>&#xA;            &lt;menuItemDescription xsi:type=&quot;tool_1:OperationAction&quot; name=&quot;Delete&quot;>&#xA;              &lt;view name=&quot;views&quot;/>&#xA;              &lt;initialOperation>&#xA;                &lt;firstModelOperations xsi:type=&quot;tool_1:ChangeContext&quot; browseExpression=&quot;"/>
-          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
-            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-          </body>
-          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="self.oclAsType(Entity).occiDelete()/"/>
-          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="]">
-            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-          </body>
-          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot;/>&#xA;              &lt;/initialOperation>&#xA;            &lt;/menuItemDescription>&#xA;          &lt;/ownedTools>&#xA;"/>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="          &lt;/ownedTools>&#xA;"/>
           <loopVariable name="resource">
             <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
           </loopVariable>
@@ -787,7 +747,47 @@
             </argument>
           </iterSet>
         </body>
-        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="        &lt;/toolSections>&#xA;      &lt;/defaultLayer>&#xA;    &lt;/ownedRepresentations>&#xA;    &lt;ownedJavaExtensions qualifiedClassName=&quot;org.occiware.clouddesigner.occi.design.services.DesignServices&quot;/>&#xA;  &lt;/ownedViewpoints>&#xA;&lt;/description:Group>&#xA;"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="          &lt;ownedTools xsi:type=&quot;tool_1:PopupMenu&quot; name=&quot;CRUD operations&quot; precondition=&quot;"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="self.oclIsKindOf(Entity)/"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="]">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot;>&#xA;            &lt;menuItemDescription xsi:type=&quot;tool_1:OperationAction&quot; name=&quot;Create&quot;>&#xA;              &lt;view name=&quot;views&quot;/>&#xA;              &lt;initialOperation>&#xA;                &lt;firstModelOperations xsi:type=&quot;tool_1:ChangeContext&quot; browseExpression=&quot;"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="self.oclAsType(Entity).occiCreate()/"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="]">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot;/>&#xA;              &lt;/initialOperation>&#xA;            &lt;/menuItemDescription>&#xA;            &lt;menuItemDescription xsi:type=&quot;tool_1:OperationAction&quot; name=&quot;Retrieve&quot;>&#xA;              &lt;view name=&quot;views&quot;/>&#xA;              &lt;initialOperation>&#xA;                &lt;firstModelOperations xsi:type=&quot;tool_1:ChangeContext&quot; browseExpression=&quot;"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="self.oclAsType(Entity).occiRetrieve()/"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="]">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot;/>&#xA;              &lt;/initialOperation>&#xA;            &lt;/menuItemDescription>&#xA;            &lt;menuItemDescription xsi:type=&quot;tool_1:OperationAction&quot; name=&quot;Update&quot;>&#xA;              &lt;view name=&quot;views&quot;/>&#xA;              &lt;initialOperation>&#xA;                &lt;firstModelOperations xsi:type=&quot;tool_1:ChangeContext&quot; browseExpression=&quot;"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="self.oclAsType(Entity).occiUpdate()/"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="]">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot;/>&#xA;              &lt;/initialOperation>&#xA;            &lt;/menuItemDescription>&#xA;            &lt;menuItemDescription xsi:type=&quot;tool_1:OperationAction&quot; name=&quot;Delete&quot;>&#xA;              &lt;view name=&quot;views&quot;/>&#xA;              &lt;initialOperation>&#xA;                &lt;firstModelOperations xsi:type=&quot;tool_1:ChangeContext&quot; browseExpression=&quot;"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="self.oclAsType(Entity).occiDelete()/"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="]">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot;/>&#xA;              &lt;/initialOperation>&#xA;            &lt;/menuItemDescription>&#xA;          &lt;/ownedTools>&#xA;        &lt;/toolSections>&#xA;      &lt;/defaultLayer>&#xA;    &lt;/ownedRepresentations>&#xA;&lt;!--&#xA;    &lt;ownedJavaExtensions qualifiedClassName=&quot;org.occiware.clouddesigner.occi.design.services.DesignServices&quot;/>&#xA;-->&#xA;  &lt;/ownedViewpoints>&#xA;&lt;/description:Group>&#xA;"/>
         <fileUrl xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
           <source xsi:type="ocl.ecore:PropertyCallExp">
@@ -1427,40 +1427,40 @@
     <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
-  </ocl.ecore:Variable>
-  <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
-  </ocl.ecore:Variable>
-  <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
-  </ocl.ecore:Variable>
-  <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
-  </ocl.ecore:Variable>
-  <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
-  </ocl.ecore:Variable>
-  <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
-  </ocl.ecore:Variable>
-  <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
-  </ocl.ecore:Variable>
-  <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
-  </ocl.ecore:Variable>
-  <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
-  </ocl.ecore:Variable>
-  <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
-  </ocl.ecore:Variable>
-  <ocl.ecore:Variable name="self">
     <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EPackage"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="i">
     <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EPackage"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EPackage"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EPackage"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EPackage"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EPackage"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EPackage"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EPackage"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EPackage"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EPackage"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EPackage"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
     <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
@@ -1486,12 +1486,12 @@
   <ecore:EAnnotation source="positions">
     <eAnnotations source="positions.0" references="/0/generateElement">
       <details key="start" value="131"/>
-      <details key="end" value="9737"/>
+      <details key="end" value="9746"/>
       <details key="line" value="4"/>
     </eAnnotations>
     <eAnnotations source="positions.1" references="/0/generateElement/%">
       <details key="start" value="203"/>
-      <details key="end" value="9725"/>
+      <details key="end" value="9734"/>
       <details key="line" value="6"/>
     </eAnnotations>
     <eAnnotations source="positions.2" references="/0/generateElement/%/%">
@@ -2701,7 +2701,7 @@
     </eAnnotations>
     <eAnnotations source="positions.243" references="/0/generateElement/%/%.17">
       <details key="start" value="6658"/>
-      <details key="end" value="9490"/>
+      <details key="end" value="7899"/>
       <details key="line" value="76"/>
     </eAnnotations>
     <eAnnotations source="positions.244" references="/0/generateElement/%/%.17/%">
@@ -2986,150 +2986,150 @@
     </eAnnotations>
     <eAnnotations source="positions.300" references="/0/generateElement/%/%.17/%.13">
       <details key="start" value="7869"/>
-      <details key="end" value="7980"/>
+      <details key="end" value="7893"/>
       <details key="line" value="96"/>
     </eAnnotations>
-    <eAnnotations source="positions.301" references="/0/generateElement/%/%.17/%.14">
-      <details key="start" value="7981"/>
-      <details key="end" value="7984"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.302" references="/0/generateElement/%/%.17/%.15">
-      <details key="start" value="7986"/>
-      <details key="end" value="8011"/>
-      <details key="line" value="97"/>
-    </eAnnotations>
-    <eAnnotations source="positions.303" references="/0/generateElement/%/%.17/%.16">
-      <details key="start" value="8012"/>
-      <details key="end" value="8015"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.304" references="/0/generateElement/%/%.17/%.17">
-      <details key="start" value="8017"/>
-      <details key="end" value="8258"/>
-      <details key="line" value="97"/>
-    </eAnnotations>
-    <eAnnotations source="positions.305" references="/0/generateElement/%/%.17/%.18">
-      <details key="start" value="8259"/>
-      <details key="end" value="8262"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.306" references="/0/generateElement/%/%.17/%.19">
-      <details key="start" value="8264"/>
-      <details key="end" value="8300"/>
-      <details key="line" value="101"/>
-    </eAnnotations>
-    <eAnnotations source="positions.307" references="/0/generateElement/%/%.17/%.20">
-      <details key="start" value="8301"/>
-      <details key="end" value="8304"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.308" references="/0/generateElement/%/%.17/%.21">
-      <details key="start" value="8306"/>
-      <details key="end" value="8619"/>
-      <details key="line" value="101"/>
-    </eAnnotations>
-    <eAnnotations source="positions.309" references="/0/generateElement/%/%.17/%.22">
-      <details key="start" value="8620"/>
-      <details key="end" value="8623"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.310" references="/0/generateElement/%/%.17/%.23">
-      <details key="start" value="8625"/>
-      <details key="end" value="8663"/>
-      <details key="line" value="107"/>
-    </eAnnotations>
-    <eAnnotations source="positions.311" references="/0/generateElement/%/%.17/%.24">
-      <details key="start" value="8664"/>
-      <details key="end" value="8667"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.312" references="/0/generateElement/%/%.17/%.25">
-      <details key="start" value="8669"/>
-      <details key="end" value="8980"/>
-      <details key="line" value="107"/>
-    </eAnnotations>
-    <eAnnotations source="positions.313" references="/0/generateElement/%/%.17/%.26">
-      <details key="start" value="8981"/>
-      <details key="end" value="8984"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.314" references="/0/generateElement/%/%.17/%.27">
-      <details key="start" value="8986"/>
-      <details key="end" value="9022"/>
-      <details key="line" value="113"/>
-    </eAnnotations>
-    <eAnnotations source="positions.315" references="/0/generateElement/%/%.17/%.28">
-      <details key="start" value="9023"/>
-      <details key="end" value="9026"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.316" references="/0/generateElement/%/%.17/%.29">
-      <details key="start" value="9028"/>
-      <details key="end" value="9339"/>
-      <details key="line" value="113"/>
-    </eAnnotations>
-    <eAnnotations source="positions.317" references="/0/generateElement/%/%.17/%.30">
-      <details key="start" value="9340"/>
-      <details key="end" value="9343"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.318" references="/0/generateElement/%/%.17/%.31">
-      <details key="start" value="9345"/>
-      <details key="end" value="9381"/>
-      <details key="line" value="119"/>
-    </eAnnotations>
-    <eAnnotations source="positions.319" references="/0/generateElement/%/%.17/%.32">
-      <details key="start" value="9382"/>
-      <details key="end" value="9385"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.320" references="/0/generateElement/%/%.17/%.33">
-      <details key="start" value="9387"/>
-      <details key="end" value="9484"/>
-      <details key="line" value="119"/>
-    </eAnnotations>
-    <eAnnotations source="positions.321" references="/0/generateElement/%/%.17/resource">
+    <eAnnotations source="positions.301" references="/0/generateElement/%/%.17/resource">
       <details key="start" value="6664"/>
       <details key="end" value="6681"/>
       <details key="line" value="76"/>
     </eAnnotations>
-    <eAnnotations source="positions.322" references="/0/generateElement/%/%.17/%.34">
+    <eAnnotations source="positions.302" references="/0/generateElement/%/%.17/%.14">
       <details key="start" value="6684"/>
       <details key="end" value="6707"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.323" references="/0/generateElement/%/%.17/%.34/ePackage">
+    <eAnnotations source="positions.303" references="/0/generateElement/%/%.17/%.14/ePackage">
       <details key="start" value="6684"/>
       <details key="end" value="6692"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.324" references="/0/generateElement/%/%.18">
-      <details key="start" value="9491"/>
-      <details key="end" value="9718"/>
-      <details key="line" value="124"/>
+    <eAnnotations source="positions.304" references="/0/generateElement/%/%.18">
+      <details key="start" value="7900"/>
+      <details key="end" value="7987"/>
+      <details key="line" value="98"/>
     </eAnnotations>
-    <eAnnotations source="positions.325" references="/0/generateElement/%/%.19">
+    <eAnnotations source="positions.305" references="/0/generateElement/%/%.19">
+      <details key="start" value="7988"/>
+      <details key="end" value="7991"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.306" references="/0/generateElement/%/%.20">
+      <details key="start" value="7993"/>
+      <details key="end" value="8018"/>
+      <details key="line" value="98"/>
+    </eAnnotations>
+    <eAnnotations source="positions.307" references="/0/generateElement/%/%.21">
+      <details key="start" value="8019"/>
+      <details key="end" value="8022"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.308" references="/0/generateElement/%/%.22">
+      <details key="start" value="8024"/>
+      <details key="end" value="8265"/>
+      <details key="line" value="98"/>
+    </eAnnotations>
+    <eAnnotations source="positions.309" references="/0/generateElement/%/%.23">
+      <details key="start" value="8266"/>
+      <details key="end" value="8269"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.310" references="/0/generateElement/%/%.24">
+      <details key="start" value="8271"/>
+      <details key="end" value="8307"/>
+      <details key="line" value="102"/>
+    </eAnnotations>
+    <eAnnotations source="positions.311" references="/0/generateElement/%/%.25">
+      <details key="start" value="8308"/>
+      <details key="end" value="8311"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.312" references="/0/generateElement/%/%.26">
+      <details key="start" value="8313"/>
+      <details key="end" value="8626"/>
+      <details key="line" value="102"/>
+    </eAnnotations>
+    <eAnnotations source="positions.313" references="/0/generateElement/%/%.27">
+      <details key="start" value="8627"/>
+      <details key="end" value="8630"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.314" references="/0/generateElement/%/%.28">
+      <details key="start" value="8632"/>
+      <details key="end" value="8670"/>
+      <details key="line" value="108"/>
+    </eAnnotations>
+    <eAnnotations source="positions.315" references="/0/generateElement/%/%.29">
+      <details key="start" value="8671"/>
+      <details key="end" value="8674"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.316" references="/0/generateElement/%/%.30">
+      <details key="start" value="8676"/>
+      <details key="end" value="8987"/>
+      <details key="line" value="108"/>
+    </eAnnotations>
+    <eAnnotations source="positions.317" references="/0/generateElement/%/%.31">
+      <details key="start" value="8988"/>
+      <details key="end" value="8991"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.318" references="/0/generateElement/%/%.32">
+      <details key="start" value="8993"/>
+      <details key="end" value="9029"/>
+      <details key="line" value="114"/>
+    </eAnnotations>
+    <eAnnotations source="positions.319" references="/0/generateElement/%/%.33">
+      <details key="start" value="9030"/>
+      <details key="end" value="9033"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.320" references="/0/generateElement/%/%.34">
+      <details key="start" value="9035"/>
+      <details key="end" value="9346"/>
+      <details key="line" value="114"/>
+    </eAnnotations>
+    <eAnnotations source="positions.321" references="/0/generateElement/%/%.35">
+      <details key="start" value="9347"/>
+      <details key="end" value="9350"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.322" references="/0/generateElement/%/%.36">
+      <details key="start" value="9352"/>
+      <details key="end" value="9388"/>
+      <details key="line" value="120"/>
+    </eAnnotations>
+    <eAnnotations source="positions.323" references="/0/generateElement/%/%.37">
+      <details key="start" value="9389"/>
+      <details key="end" value="9392"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.324" references="/0/generateElement/%/%.38">
+      <details key="start" value="9394"/>
+      <details key="end" value="9727"/>
+      <details key="line" value="120"/>
+    </eAnnotations>
+    <eAnnotations source="positions.325" references="/0/generateElement/%/%.39">
       <details key="start" value="210"/>
       <details key="end" value="236"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.326" references="/0/generateElement/%/%.19/%">
+    <eAnnotations source="positions.326" references="/0/generateElement/%/%.39/%">
       <details key="start" value="210"/>
       <details key="end" value="223"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.327" references="/0/generateElement/%/%.19/%/ePackage">
+    <eAnnotations source="positions.327" references="/0/generateElement/%/%.39/%/ePackage">
       <details key="start" value="210"/>
       <details key="end" value="218"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.328" references="/0/generateElement/%/%.19/%.1">
+    <eAnnotations source="positions.328" references="/0/generateElement/%/%.39/%.1">
       <details key="start" value="226"/>
       <details key="end" value="236"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.329" references="/0/generateElement/%/%.20">
+    <eAnnotations source="positions.329" references="/0/generateElement/%/%.40">
       <details key="start" value="245"/>
       <details key="end" value="252"/>
       <details key="line" value="0"/>
@@ -3140,73 +3140,73 @@
       <details key="line" value="4"/>
     </eAnnotations>
     <eAnnotations source="positions.331" references="/0/getResources">
-      <details key="start" value="9739"/>
-      <details key="end" value="9923"/>
-      <details key="line" value="133"/>
+      <details key="start" value="9748"/>
+      <details key="end" value="9932"/>
+      <details key="line" value="135"/>
     </eAnnotations>
     <eAnnotations source="positions.332" references="/0/getResources/ePackage">
-      <details key="start" value="9766"/>
-      <details key="end" value="9785"/>
-      <details key="line" value="133"/>
+      <details key="start" value="9775"/>
+      <details key="end" value="9794"/>
+      <details key="line" value="135"/>
     </eAnnotations>
     <eAnnotations source="positions.333" references="/0/getResources/select">
-      <details key="start" value="9810"/>
-      <details key="end" value="9920"/>
+      <details key="start" value="9819"/>
+      <details key="end" value="9929"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.334" references="/0/getResources/select/%">
-      <details key="start" value="9810"/>
-      <details key="end" value="9847"/>
+      <details key="start" value="9819"/>
+      <details key="end" value="9856"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.335" references="/0/getResources/select/%/%">
-      <details key="start" value="9810"/>
-      <details key="end" value="9831"/>
+      <details key="start" value="9819"/>
+      <details key="end" value="9840"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.336" references="/0/getResources/select/%/%/ePackage">
-      <details key="start" value="9810"/>
-      <details key="end" value="9818"/>
+      <details key="start" value="9819"/>
+      <details key="end" value="9827"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.337" references="/0/getResources/select/%/%.1">
-      <details key="start" value="9840"/>
-      <details key="end" value="9846"/>
+      <details key="start" value="9849"/>
+      <details key="end" value="9855"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.338" references="/0/getResources/select/%.1">
-      <details key="start" value="9859"/>
-      <details key="end" value="9919"/>
+      <details key="start" value="9868"/>
+      <details key="end" value="9928"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.339" references="/0/getResources/select/%.1/%">
-      <details key="start" value="9863"/>
-      <details key="end" value="9919"/>
+      <details key="start" value="9872"/>
+      <details key="end" value="9928"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.340" references="/0/getResources/select/%.1/%/any">
-      <details key="start" value="9863"/>
-      <details key="end" value="9902"/>
+      <details key="start" value="9872"/>
+      <details key="end" value="9911"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.341" references="/0/getResources/select/%.1/%/any/%">
-      <details key="start" value="9863"/>
-      <details key="end" value="9880"/>
+      <details key="start" value="9872"/>
+      <details key="end" value="9889"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.342" references="/0/getResources/select/%.1/%/any/%/ec">
-      <details key="start" value="9863"/>
-      <details key="end" value="9865"/>
+      <details key="start" value="9872"/>
+      <details key="end" value="9874"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.343" references="/0/getResources/select/%.1/%/any/%.1">
-      <details key="start" value="9886"/>
-      <details key="end" value="9901"/>
+      <details key="start" value="9895"/>
+      <details key="end" value="9910"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.344" references="/0/getResources/select/%.1/%/any/%.1/%">
-      <details key="start" value="9886"/>
-      <details key="end" value="9890"/>
+      <details key="start" value="9895"/>
+      <details key="end" value="9899"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.345" references="/0/getResources/select/%.1/%/any/%.1/%/temp1">
@@ -3215,8 +3215,8 @@
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.346" references="/0/getResources/select/%.1/%/any/%.1/%.1">
-      <details key="start" value="9891"/>
-      <details key="end" value="9901"/>
+      <details key="start" value="9900"/>
+      <details key="end" value="9910"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.347" references="/0/getResources/select/%.1/%/any/temp1">
@@ -3225,23 +3225,23 @@
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.348" references="/0/getResources/select/ec">
-      <details key="start" value="9856"/>
-      <details key="end" value="9858"/>
+      <details key="start" value="9865"/>
+      <details key="end" value="9867"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.349" references="/0/getColor">
-      <details key="start" value="9925"/>
-      <details key="end" value="10142"/>
-      <details key="line" value="135"/>
+      <details key="start" value="9934"/>
+      <details key="end" value="10151"/>
+      <details key="line" value="137"/>
     </eAnnotations>
     <eAnnotations source="positions.350" references="/0/getColor/eEnumLiteral">
-      <details key="start" value="9948"/>
-      <details key="end" value="9975"/>
-      <details key="line" value="135"/>
+      <details key="start" value="9957"/>
+      <details key="end" value="9984"/>
+      <details key="line" value="137"/>
     </eAnnotations>
     <eAnnotations source="positions.351" references="/0/getColor/%">
-      <details key="start" value="9989"/>
-      <details key="end" value="10140"/>
+      <details key="start" value="9998"/>
+      <details key="end" value="10149"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.352" references="/0/getColor/%/self">
@@ -3250,23 +3250,23 @@
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.353" references="/0/getColor/%/%">
-      <details key="start" value="9998"/>
-      <details key="end" value="10063"/>
+      <details key="start" value="10007"/>
+      <details key="end" value="10072"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.354" references="/0/getColor/%/%.1">
-      <details key="start" value="10067"/>
-      <details key="end" value="10113"/>
+      <details key="start" value="10076"/>
+      <details key="end" value="10122"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.355" references="/0/getColor/%/%.2">
-      <details key="start" value="10117"/>
-      <details key="end" value="10139"/>
+      <details key="start" value="10126"/>
+      <details key="end" value="10148"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.356" references="/0/getColor/%/%.2/%/eEnumLiteral">
-      <details key="start" value="10126"/>
-      <details key="end" value="10138"/>
+      <details key="start" value="10135"/>
+      <details key="end" value="10147"/>
       <details key="line" value="0"/>
     </eAnnotations>
   </ecore:EAnnotation>

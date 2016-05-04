@@ -94,6 +94,7 @@
 [/if]
 [/for]
           </ownedTools>
+[/for]
           <ownedTools xsi:type="tool_1:PopupMenu" name="CRUD operations" precondition="['['/]self.oclIsKindOf(Entity)/[']'/]">
             <menuItemDescription xsi:type="tool_1:OperationAction" name="Create">
               <view name="views"/>
@@ -120,11 +121,12 @@
               </initialOperation>
             </menuItemDescription>
           </ownedTools>
-[/for]
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
+<!--
     <ownedJavaExtensions qualifiedClassName="org.occiware.clouddesigner.occi.design.services.DesignServices"/>
+-->
   </ownedViewpoints>
 </description:Group>
 [/file]
