@@ -18,7 +18,12 @@ package org.occiware.clouddesigner.occi;
 public interface OcciCoreConstants
 {
 	/**
-	 * OCCI core scheme .
+	 * OCCI core URI.
+	 */
+	public static final String OCCI_CORE_URI = "http://schemas.ogf.org/occi/core";
+
+	/**
+	 * OCCI core scheme.
 	 */
 	public static final String OCCI_CORE_SCHEME = "http://schemas.ogf.org/occi/core#";
 

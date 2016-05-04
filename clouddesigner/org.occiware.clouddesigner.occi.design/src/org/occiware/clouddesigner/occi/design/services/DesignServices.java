@@ -158,7 +158,7 @@ public class DesignServices {
 	{
 		Session session = SessionManager.INSTANCE.getSession(eobject);
 		Resource resource = session.getSessionResource().getResourceSet().getResource(
-					URI.createURI(OcciCoreConstants.OCCI_CORE_SCHEME, true), true);
+					URI.createURI(OcciCoreConstants.OCCI_CORE_URI, true), true);
 		return (Extension) resource.getContents().get(0);
 	}
 
