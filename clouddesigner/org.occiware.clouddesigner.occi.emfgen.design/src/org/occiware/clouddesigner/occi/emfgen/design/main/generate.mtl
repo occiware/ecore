@@ -11,56 +11,79 @@
       <metamodel href="http://schemas.ogf.org/occi/core/ecore#/"/>
       <metamodel href="[ePackage.nsURI/]#/"/>
       <defaultLayer name="Default">
-[for (resource : EClass | ePackage.getResources())]
-        <containerMappings name="[resource.name/]"
+[for (resourceClass : EClass | ePackage.getAllResourceClasses())]
+        <edgeMappings name="[resourceClass.name/]LinksEdge" sourceMapping="//@ownedViewpoints['['/]name='[ePackage.name.toUpperFirst()/]Configuration'[']'/]/@ownedRepresentations['['/]name='[ePackage.name.toUpperFirst()/]Configuration%20Diagram'[']'/]/@defaultLayer/@containerMappings['['/]name='[resourceClass.name/]Container']" targetMapping="[for (link : EClass | ePackage.getAllLinkClasses()) separator(' ')]//@ownedViewpoints['['/]name='[ePackage.name.toUpperFirst()/]Configuration'[']'/]/@ownedRepresentations['['/]name='[ePackage.name.toUpperFirst()/]Configuration%20Diagram'[']'/]/@defaultLayer/@containerMappings['['/]name='[link.name/]Container'[']'/][/for]" targetFinderExpression="feature:links">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries['['/]name='gray'[']'/]"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries['['/]name='black'[']'/]"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+[/for]
+[for (linkClass : EClass | ePackage.getAllLinkClasses())]
+        <edgeMappings name="[linkClass.name/]TargetEdge" sourceMapping="//@ownedViewpoints['['/]name='[ePackage.name.toUpperFirst()/]Configuration'[']'/]/@ownedRepresentations['['/]name='[ePackage.name.toUpperFirst()/]Configuration%20Diagram'[']'/]/@defaultLayer/@containerMappings['['/]name='[linkClass.name/]Container'[']'/]" targetMapping="[for (resource : EClass | ePackage.getAllResourceClasses()) separator(' ')]//@ownedViewpoints['['/]name='[ePackage.name.toUpperFirst()/]Configuration'[']'/]/@ownedRepresentations['['/]name='[ePackage.name.toUpperFirst()/]Configuration%20Diagram'[']'/]/@defaultLayer/@containerMappings['['/]name='[resource.name/]Container'][/for]" targetFinderExpression="feature:target">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries['['/]name='gray'[']'/]"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries['['/]name='black'[']'/]"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="[linkClass.name/]Edge" sourceMapping="[for (resource : EClass | ePackage.getAllResourceClasses()) separator(' ')]//@ownedViewpoints['['/]name='[ePackage.name.toUpperFirst()/]Configuration'[']'/]/@ownedRepresentations['['/]name='[ePackage.name.toUpperFirst()/]Configuration%20Diagram'[']'/]/@defaultLayer/@containerMappings['['/]name='[resource.name/]Container'][/for]" targetMapping="[for (resource : EClass | ePackage.getAllResourceClasses()) separator(' ')]//@ownedViewpoints['['/]name='[ePackage.name.toUpperFirst()/]Configuration'[']'/]/@ownedRepresentations['['/]name='[ePackage.name.toUpperFirst()/]Configuration%20Diagram'[']'/]/@defaultLayer/@containerMappings['['/]name='[resource.name/]Container'][/for]" domainClass="[linkClass.name/]" useDomainElement="true">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries['['/]name='gray'[']'/]"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries['['/]name='black'[']'/]"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+[/for]
+[for (resourceClass : EClass | ePackage.getAllResourceClasses())]
+        <containerMappings name="[resourceClass.name/]Container"
             labelDirectEdit="//@ownedViewpoints['['/]name='[ePackage.name.toUpperFirst()/]Configuration'[']'/]/@ownedRepresentations['['/]name='[ePackage.name.toUpperFirst()/]Configuration%20Diagram'[']'/]/@defaultLayer/@toolSections.1/@ownedTools['['/]name='EditEntityTitle'[']'/]"
 			semanticCandidatesExpression="feature:resources" 
-			domainClass="[resource.name/]"
+			domainClass="[resourceClass.name/]"
             childrenPresentation="List">
-[for (attribute : EAttribute | resource.eAllAttributes)]
-          <subNodeMappings name="[attribute.name.toUpperFirst()/]"
-                labelDirectEdit="//@ownedViewpoints['['/]name='[ePackage.name.toUpperFirst()/]Configuration'[']'/]/@ownedRepresentations['['/]name='[ePackage.name.toUpperFirst()/]Configuration%20Diagram'[']'/]/@defaultLayer/@toolSections.1/@ownedTools['['/]name='Edit[resource.name/][attribute.name.toUpperFirst()/]'[']'/]"
-                semanticCandidatesExpression="['['/]self/[']'/]" domainClass="[resource.name/]">
-            <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="['['/]'[attribute.name/] = ' + self.[attribute.name/].toString()/[']'/]" labelAlignment="LEFT" hideLabelByDefault="true" resizeKind="NSEW">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries['['/]name='black'[']'/]"/>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries['['/]name='black'[']'/]"/>
-              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries['['/]name='white'[']'/]"/>
-            </style>
-          </subNodeMappings>
-[/for]
-[let stateAttribute : EAttribute = resource.eAllAttributes->any(attribute : EAttribute | attribute.name.endsWith('state') and attribute.eAttributeType.oclIsTypeOf(EEnum))]
-[if (stateAttribute.oclIsUndefined())]
-          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" labelExpression="['['/]self.title + ': [resource.name/]'/[']'/]" roundedCorner="true">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[ '[' /]name='black']"/>
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[ '[' /]name='black']"/>
-            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[ '[' /]name='white']"/>
-            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[ '[' /]name='light_gray']"/>
-          </style> 
-[else]
-[for (eLiteral : EEnumLiteral | stateAttribute.eAttributeType.oclAsType(EEnum).eLiterals)]
-          <conditionnalStyles predicateExpression="['['/][stateAttribute.name/].toString().equalsIgnoreCase('[eLiteral.literal/]')/[']'/]">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" labelExpression="['['/]self.title + ': [resource.name/]'/[']'/]" roundedCorner="true">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries['['/]name='black'[']'/]"/>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries['['/]name='black'[']'/]"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries['['/]name='white'[']'/]"/>
-              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries['['/]name='[getColor(eLiteral)/]'[']'/]"/>
-            </style>
-          </conditionnalStyles>
-[/for]
-[/if]
-[/let]
+[generate(ePackage, resourceClass)/]
         </containerMappings>
 [/for]
-        <toolSections name="[ePackage.name.toUpperFirst()/]Configuration">
-[for (resource : EClass | ePackage.getResources())]
+[for (linkClass : EClass | ePackage.getAllLinkClasses())]
+        <containerMappings name="[linkClass.name/]Container"
+            labelDirectEdit="//@ownedViewpoints['['/]name='[ePackage.name.toUpperFirst()/]Configuration'[']'/]/@ownedRepresentations['['/]name='[ePackage.name.toUpperFirst()/]Configuration%20Diagram'[']'/]/@defaultLayer/@toolSections.1/@ownedTools['['/]name='EditEntityTitle'[']'/]"
+			semanticCandidatesExpression="['['/]resources.links->filter([linkClass.name/])/[']'/]" 
+			domainClass="[linkClass.name/]"
+            childrenPresentation="List">
+[generate(ePackage, linkClass)/]
+        </containerMappings>
+[/for]
+        <toolSections name="[ePackage.name.toUpperFirst()/]">
+[for (resourceClass : EClass | ePackage.getAllResourceClasses())]
           <ownedTools xsi:type="tool:ContainerCreationDescription" 
-			name="Create [resource.name/]"
-			containerMappings="//@ownedViewpoints[ '[' /]name='[ePackage.name.toUpperFirst()/]Configuration'[ ']' /]/@ownedRepresentations[ '[' /]name='[ePackage.name.toUpperFirst()/]Configuration%20Diagram'[ ']' /]/@defaultLayer/@containerMappings[ '[' /]name='[resource.name/]'[ ']' /]"> 
+			name="Create [resourceClass.name/]"
+			containerMappings="//@ownedViewpoints['['/]name='[ePackage.name.toUpperFirst()/]Configuration'[']'/]/@ownedRepresentations['['/]name='[ePackage.name.toUpperFirst()/]Configuration%20Diagram'[']'/]/@defaultLayer/@containerMappings['['/]name='[resourceClass.name/]Container'[']'/]"> 
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="[resource.name/]" referenceName="resources">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="title" valueExpression="['['/]'[resource.name.toLowerFirst()/]' + container.oclAsType(Configuration).resources->size().toString()/[']'/]"/>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="[resourceClass.name/]" referenceName="resources">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="title" valueExpression="['['/]'[resourceClass.name.toLowerFirst()/]' + container.oclAsType(Configuration).resources->size().toString()/[']'/]"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+[/for]
+[for (linkClass : EClass | ePackage.getAllLinkClasses())]
+          <ownedTools xsi:type="tool:EdgeCreationDescription"
+			name="Create [linkClass.name/]"
+			edgeMappings="//@ownedViewpoints['['/]name='[ePackage.name.toUpperFirst()/]Configuration'[']'/]/@ownedRepresentations['['/]name='[ePackage.name.toUpperFirst()/]Configuration%20Diagram'[']'/]/@defaultLayer/@edgeMappings['['/]name='[linkClass.name/]Edge'[']'/]"> 
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="[linkClass.name/]" referenceName="links" variableName="link">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="var:target"/>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -73,27 +96,42 @@
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="title" valueExpression="var:arg0"/>
             </initialOperation>
           </ownedTools>
-[for (resource : EClass | ePackage.getResources())]
-[for (attribute : EAttribute | resource.eAllAttributes)]
-          <ownedTools xsi:type="tool:DirectEditLabel" name="Edit[resource.name/][attribute.name.toUpperFirst()/]" inputLabelExpression="feature:[attribute.name/]">
+[for (eClass : EClass | ePackage.getAllClasses())]
+[for (attribute : EAttribute | eClass.eAllAttributes)]
+          <ownedTools xsi:type="tool:DirectEditLabel" name="Edit[eClass.name/][attribute.name.toUpperFirst()/]" inputLabelExpression="feature:[attribute.name/]">
             <mask mask="{0}"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="[attribute.name/]" valueExpression="var:arg0"/>
             </initialOperation>
           </ownedTools>
 [/for]
-          <ownedTools xsi:type="tool_1:PopupMenu" name="[resource.name/]Actions" label="[resource.name/] actions" precondition="['['/]self.oclIsKindOf([resource.name/])/[']'/]">
-[for (action : EOperation | resource.eAllOperations)]
-[if (action.eContainingClass.name <> 'Entity')]
-            <menuItemDescription xsi:type="tool_1:OperationAction" name="[action.name.toUpperFirst()/]">
+[for (action : EOperation | eClass.eAllOperations->select(eContainingClass.name <> 'Entity'))]
+[if (action.eParameters->isEmpty())]
+          <ownedTools xsi:type="tool_1:OperationAction" name="[eClass.name/][action.name.toUpperFirst()/]Action" label="[action.name.toUpperFirst()/]" precondition="['['/]self.oclIsKindOf([eClass.name/])/[']'/]">
+            <view name="views"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="['['/]self.oclAsType([eClass.name/]).[action.name/]()/[']'/]"/>
+            </initialOperation>
+          </ownedTools>
+[else]
+[if (action.eParameters->size() = 1)]
+[if (not getFirstParameterEnumType(action).oclIsUndefined())]
+[let enumType : EEnum = getFirstParameterEnumType(action)]
+          <ownedTools xsi:type="tool_1:PopupMenu" name="[eClass.name/][action.name.toUpperFirst()/]Action" label="[action.name.toUpperFirst()/]" precondition="['['/]self.oclIsKindOf([eClass.name/])/[']'/]">
+[for (literal : EEnumLiteral | enumType.eLiterals)]
+            <menuItemDescription xsi:type="tool_1:OperationAction" name="[enumType.name/][literal.name.toUpperFirst()/]" label="[literal.name.toUpperFirst()/]">
               <view name="views"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="['['/]self.oclAsType([resource.name/]).[action.name/]()/[']'/]"/>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="['['/]self.oclAsType([eClass.name/]).[action.name/]([enumType.name/]::[literal.name/])/[']'/]"/>
               </initialOperation>
             </menuItemDescription>
-[/if]
 [/for]
           </ownedTools>
+[/let]
+[/if]
+[/if]
+[/if]
+[/for]
 [/for]
           <ownedTools xsi:type="tool_1:PopupMenu" name="CRUD operations" precondition="['['/]self.oclIsKindOf(Entity)/[']'/]">
             <menuItemDescription xsi:type="tool_1:OperationAction" name="Create">
@@ -132,10 +170,52 @@
 [/file]
 [/template]
 
-[query public getResources(ePackage : EPackage) : Collection(EClass) = ePackage.eClassifiers->filter(EClass)->select(ec|not ec.eAllSuperTypes->any(name='Resource').oclIsUndefined()) /]
+[template public generate(ePackage : EPackage, eClass : EClass)]
+[for (attribute : EAttribute | eClass.eAllAttributes)]
+          <subNodeMappings name="[eClass.name/][attribute.name.toUpperFirst()/]"
+                labelDirectEdit="//@ownedViewpoints['['/]name='[ePackage.name.toUpperFirst()/]Configuration'[']'/]/@ownedRepresentations['['/]name='[ePackage.name.toUpperFirst()/]Configuration%20Diagram'[']'/]/@defaultLayer/@toolSections.1/@ownedTools['['/]name='Edit[eClass.name/][attribute.name.toUpperFirst()/]'[']'/]"
+                semanticCandidatesExpression="['['/]self/[']'/]" domainClass="[eClass.name/]">
+            <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="['['/]'[attribute.name/] = ' + self.[attribute.name/].toString()/[']'/]" labelAlignment="LEFT" hideLabelByDefault="true" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries['['/]name='black'[']'/]"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries['['/]name='black'[']'/]"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries['['/]name='white'[']'/]"/>
+            </style>
+          </subNodeMappings>
+[/for]
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" labelExpression="['['/]self.title + ': [eClass.name/]'/[']'/]" roundedCorner="true">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries['['/]name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries['['/]name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries['['/]name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries['['/]name='light_gray']"/>
+          </style> 
+[if (not getStateAttribute(eClass).oclIsUndefined())]
+[let stateAttribute : EAttribute = getStateAttribute(eClass)]
+[for (eLiteral : EEnumLiteral | stateAttribute.eAttributeType.oclAsType(EEnum).eLiterals)]
+          <conditionnalStyles predicateExpression="['['/][stateAttribute.name/] = [eLiteral.eEnum.name/]::[eLiteral.literal/]/[']'/]">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" labelExpression="['['/]self.title + ': [eClass.name/]'/[']'/]" roundedCorner="true">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries['['/]name='black'[']'/]"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries['['/]name='black'[']'/]"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries['['/]name='white'[']'/]"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries['['/]name='[getColor(eLiteral)/]'[']'/]"/>
+            </style>
+          </conditionnalStyles>
+[/for]
+[/let]
+[/if]
+[/template]
+
+[query public getAllClasses(ePackage : EPackage) : Collection(EClass) = ePackage.eClassifiers->filter(EClass)/]
+
+[query public getAllResourceClasses(ePackage : EPackage) : Collection(EClass) = ePackage.getAllClasses()->select(ec|not ec.eAllSuperTypes->any(name='Resource').oclIsUndefined()) /]
+
+[query public getAllLinkClasses(ePackage : EPackage) : Collection(EClass) = ePackage.getAllClasses()->select(ec|not ec.eAllSuperTypes->any(name='Link').oclIsUndefined()) /]
+
+[query public getStateAttribute(eClass : EClass) : EAttribute = eClass.eAllAttributes->any(attribute : EAttribute | attribute.name.endsWith('state') and attribute.eAttributeType.oclIsTypeOf(EEnum)) /]
 
 [query public getColor(eEnumLiteral : EEnumLiteral) : String
 	= invoke(
 	'org.occiware.clouddesigner.occi.emfgen.design.services.GenUtils', 
 	'getColor(org.eclipse.emf.ecore.EEnumLiteral)', 
 	Sequence{eEnumLiteral})/]
+
+[query public getFirstParameterEnumType(eOperation : EOperation) : EEnum = eOperation.eParameters->at(1).eType.oclAsType(EEnum)/]
