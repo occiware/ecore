@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="platform" scheme="http://schemas.ogf.org/occi/platform#">
+<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="platform" scheme="http://schemas.ogf.org/occi/platform#" description="OCCI Platform Extension, version 1.2.">
   <import href="http://schemas.ogf.org/occi/core#/"/>
   <kinds term="application" scheme="http://schemas.ogf.org/occi/platform#" title="Application">
     <attributes name="occi.app.name" mutable="true" description="Name of the application.">
@@ -43,7 +43,7 @@
   <types name="URI" instanceClassName="java.net.URI"/>
   <types xsi:type="ecore:EEnum" name="Status">
     <eLiterals name="active"/>
-    <eLiterals name="inactive"/>
-    <eLiterals name="error"/>
+    <eLiterals name="inactive" value="1"/>
+    <eLiterals name="error" value="2"/>
   </types>
 </occi:Extension>

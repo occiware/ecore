@@ -45,7 +45,7 @@ public enum Status implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	INACTIVE(0, "inactive", "inactive"),
+	INACTIVE(1, "inactive", "inactive"),
 
 	/**
 	 * The '<em><b>Error</b></em>' literal object.
@@ -55,7 +55,7 @@ public enum Status implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	ERROR(0, "error", "error");
+	ERROR(2, "error", "error");
 
 	/**
 	 * The '<em><b>Active</b></em>' literal value.
@@ -85,7 +85,7 @@ public enum Status implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int INACTIVE_VALUE = 0;
+	public static final int INACTIVE_VALUE = 1;
 
 	/**
 	 * The '<em><b>Error</b></em>' literal value.
@@ -100,7 +100,7 @@ public enum Status implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int ERROR_VALUE = 0;
+	public static final int ERROR_VALUE = 2;
 
 	/**
 	 * An array of all the '<em><b>Status</b></em>' enumerators.
@@ -170,6 +170,8 @@ public enum Status implements Enumerator {
 	public static Status get(int value) {
 		switch (value) {
 			case ACTIVE_VALUE: return ACTIVE;
+			case INACTIVE_VALUE: return INACTIVE;
+			case ERROR_VALUE: return ERROR;
 		}
 		return null;
 	}
