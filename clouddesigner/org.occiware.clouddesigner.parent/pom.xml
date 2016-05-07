@@ -39,6 +39,7 @@
 		<!-- OCCI Platform -->
 		<module>../org.occiware.clouddesigner.occi.platform</module>
 		<module>../org.occiware.clouddesigner.occi.platform.connector.dummy</module>
+		<module>../org.occiware.clouddesigner.occi.platform.design</module>
 		<module>../org.occiware.clouddesigner.occi.platform.edit</module>
 		<module>../org.occiware.clouddesigner.occi.platform.editor</module>
 		<module>../org.occiware.clouddesigner.occi.platform.tests</module>
