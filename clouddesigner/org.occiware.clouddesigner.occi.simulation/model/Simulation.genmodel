@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ASCII"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2015-2016 Obeo, Inria&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html&#xA;&#x9;&#xA;Contributors:&#xA;- William Piers &lt;william.piers@obeo.fr>&#xA;- Philippe Merle &lt;philippe.merle@inria.fr>" modelDirectory="/org.occiware.clouddesigner.occi.simulation/src-gen" editDirectory="/org.occiware.clouddesigner.occi.simulation.edit/src-gen" editorDirectory="/org.occiware.clouddesigner.occi.simulation.editor/src-gen" modelPluginID="org.occiware.clouddesigner.occi.simulation" modelName="Simulation" testsDirectory="/org.occiware.clouddesigner.occi.simulation.tests/src" complianceLevel="7.0" copyrightFields="false" editPluginID="org.occiware.clouddesigner.occi.simulation.edit" editorPluginID="org.occiware.clouddesigner.occi.simulation.editor" testsPluginID="org.occiware.clouddesigner.occi.simulation.tests" operationReflection="true">
+  <foreignModel>Simulation.ecore</foreignModel>
+  <genPackages prefix="Simulation" basePackage="org.occiware.clouddesigner.occi" disposableProviderFactory="true">
+    <ecorePackage href="Simulation.ecore#/"/>
+    <genDataTypes>
+      <ecoreDataType href="Simulation.ecore#//floatType"/>
+    </genDataTypes>
+    <genDataTypes>
+      <ecoreDataType href="Simulation.ecore#//UtilizationModel"/>
+    </genDataTypes>
+    <genDataTypes>
+      <ecoreDataType href="Simulation.ecore#//doubleType"/>
+    </genDataTypes>
+    <genDataTypes>
+      <ecoreDataType href="Simulation.ecore#//RamProvisioner"/>
+    </genDataTypes>
+    <genDataTypes>
+      <ecoreDataType href="Simulation.ecore#//BwProvisioner"/>
+    </genDataTypes>
+    <genDataTypes>
+      <ecoreDataType href="Simulation.ecore#//CloudletScheduler"/>
+    </genDataTypes>
+    <genDataTypes>
+      <ecoreDataType href="Simulation.ecore#//VmScheduler"/>
+    </genDataTypes>
+    <genDataTypes>
+      <ecoreDataType href="Simulation.ecore#//MB"/>
+    </genDataTypes>
+    <genDataTypes>
+      <ecoreDataType href="Simulation.ecore#//PeProvisioner"/>
+    </genDataTypes>
+    <genClasses>
+      <ecoreClass href="Simulation.ecore#//SimulationResource"/>
+    </genClasses>
+  </genPackages>
+  <usedGenPackages href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.genmodel#//infrastructure"/>
+  <usedGenPackages href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.genmodel#//occi"/>
+</genmodel:GenModel>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="simulation" version="10.1.3.201511131800">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="Simulation" version="10.1.3.201511131800">
   <ownedViewpoints name="Simulation Configuration" modelFileExtension="occic">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Simulation Configuration" domainClass="occi.Configuration" enablePopupBars="true">
       <defaultLayer name="Default">
-        <edgeMappings name="LinkEdge" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Simulation%20Configuration']/@ownedRepresentations[name='Simulation%20Configuration']/@defaultLayer/@containerMappings[name='ResourceContainer']" targetMapping="//@ownedViewpoints[name='Simulation%20Configuration']/@ownedRepresentations[name='Simulation%20Configuration']/@defaultLayer/@containerMappings[name='LinkContainer']" targetFinderExpression="feature:links">
+        <edgeMappings name="LinkEdge" sourceMapping="//@ownedViewpoints[name='Simulation%20Configuration']/@ownedRepresentations[name='Simulation%20Configuration']/@defaultLayer/@containerMappings[name='ResourceContainer']" targetMapping="//@ownedViewpoints[name='Simulation%20Configuration']/@ownedRepresentations[name='Simulation%20Configuration']/@defaultLayer/@containerMappings[name='LinkContainer']" targetFinderExpression="feature:links">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -11,7 +11,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="TargetEdge" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Simulation%20Configuration']/@ownedRepresentations[name='Simulation%20Configuration']/@defaultLayer/@containerMappings[name='LinkContainer']" targetMapping="//@ownedViewpoints[name='Simulation%20Configuration']/@ownedRepresentations[name='Simulation%20Configuration']/@defaultLayer/@containerMappings[name='ResourceContainer']" targetFinderExpression="feature:target">
+        <edgeMappings name="TargetEdge" sourceMapping="//@ownedViewpoints[name='Simulation%20Configuration']/@ownedRepresentations[name='Simulation%20Configuration']/@defaultLayer/@containerMappings[name='LinkContainer']" targetMapping="//@ownedViewpoints[name='Simulation%20Configuration']/@ownedRepresentations[name='Simulation%20Configuration']/@defaultLayer/@containerMappings[name='ResourceContainer']" targetFinderExpression="feature:target">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -43,7 +43,7 @@
             </style>
           </subNodeMappings>
           <subNodeMappings name="AttributeState" labelDirectEdit="//@ownedViewpoints[name='Simulation%20Configuration']/@ownedRepresentations[name='Simulation%20Configuration']/@defaultLayer/@toolSections.1/@ownedTools[name='EditDefault']" semanticCandidatesExpression="feature:attributes" domainClass="occi.AttributeState">
-            <style xsi:type="style:SquareDescription" labelExpression="[name+'= '+value/]" labelAlignment="LEFT" resizeKind="NSEW">
+            <style xsi:type="style:SquareDescription" labelExpression="[name+'= '+value/]" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -72,7 +72,7 @@
             </style>
           </subNodeMappings>
           <subNodeMappings name="AttributeState" semanticCandidatesExpression="feature:attributes" domainClass="occi.AttributeState">
-            <style xsi:type="style:SquareDescription" labelExpression="[name+'= '+value/]" labelAlignment="LEFT" resizeKind="NSEW">
+            <style xsi:type="style:SquareDescription" labelExpression="[name+'= '+value/]" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -112,7 +112,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Contains" edgeMappings="//@ownedViewpoints[name='Simulation%20Configuration']/@ownedRepresentations[name='Simulation%20Configuration']/@defaultLayer/@edgeMappings[name='ResourceToResource']" iconPath="/org.occiware.clouddesigner.occi.simulation.design/images/contains.jpg">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Contains" edgeMappings="//@ownedViewpoints[name='Simulation%20Configuration']/@ownedRepresentations[name='Simulation%20Configuration']/@defaultLayer/@edgeMappings[name='ResourceToResource']">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -171,7 +171,7 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+              <firstModelOperations xsi:type="tool:ChangeContext">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="occi.AttributeState" referenceName="attributes"/>
               </firstModelOperations>
             </initialOperation>
@@ -180,5 +180,6 @@
       </defaultLayer>
     </ownedRepresentations>
     <ownedJavaExtensions qualifiedClassName="org.occiware.clouddesigner.occi.simulation.design.services.DesignServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.occiware.clouddesigner.occi.simulation.connector.services.DesignServices"/>
   </ownedViewpoints>
 </description:Group>
