@@ -47,6 +47,11 @@
 		<!-- OCCI Monitoring -->
 		<module>../org.occiware.clouddesigner.occi.monitoring</module>
 		<module>../org.occiware.clouddesigner.occi.monitoring.occiware</module>
+		<module>../org.occiware.clouddesigner.occi.monitoring.connector.dummy</module>
+		<module>../org.occiware.clouddesigner.occi.monitoring.design</module>
+		<module>../org.occiware.clouddesigner.occi.monitoring.edit</module>
+		<module>../org.occiware.clouddesigner.occi.monitoring.editor</module>
+		<module>../org.occiware.clouddesigner.occi.monitoring.tests</module>
 
 		<!-- ProActive Cloud Automation -->
 		<module>../org.occiware.clouddesigner.occi.pca</module>
