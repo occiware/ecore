@@ -28,6 +28,8 @@ import java.util.Set;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.jclouds.ContextBuilder;
+import org.jclouds.apis.ApiMetadata;
+import org.jclouds.apis.Apis;
 import org.jclouds.compute.ComputeService;
 import org.jclouds.compute.ComputeServiceContext;
 import org.jclouds.compute.domain.ComputeMetadata;
@@ -46,6 +48,9 @@ import org.jclouds.openstack.nova.v2_0.extensions.VolumeApi;
 import org.jclouds.openstack.nova.v2_0.features.ServerApi;
 import org.jclouds.openstack.nova.v2_0.options.CreateServerOptions;
 import org.jclouds.openstack.nova.v2_0.options.CreateVolumeOptions;
+import org.jclouds.providers.ProviderMetadata;
+import org.jclouds.providers.Providers;
+import org.jclouds.sshj.config.SshjSshClientModule;
 import org.occiware.clouddesigner.occi.cloud.Machine_OpenStack;
 import org.occiware.clouddesigner.occi.cloud.connector.cloudproviders.IaaSHandler;
 import org.slf4j.Logger;
@@ -74,18 +79,42 @@ public class JcloudsOpenStack extends IaaSHandler implements Closeable {
    * Initialize the context
    */
   public ComputeServiceContext createContext() {
-    final Iterable<Module> modules = ImmutableSet.<Module>of();
+    SshjSshClientModule _sshjSshClientModule = new SshjSshClientModule();
+    SLF4JLoggingModule _sLF4JLoggingModule = new SLF4JLoggingModule();
+    final Iterable<Module> modules = ImmutableSet.<Module>of(_sshjSshClientModule, _sLF4JLoggingModule);
+    Iterable<ProviderMetadata> p = Providers.all();
+    String _string = p.toString();
+    JcloudsOpenStack.LOGGER.info(_string);
+    Iterable<ApiMetadata> apis = Apis.all();
+    String _string_1 = apis.toString();
+    JcloudsOpenStack.LOGGER.info(_string_1);
     String _provider = this.machine.getProvider();
-    ContextBuilder _newBuilder = ContextBuilder.newBuilder(_provider);
-    String _identity = this.identity();
-    String _password = this.machine.getPassword();
-    ContextBuilder _credentials = _newBuilder.credentials(_identity, _password);
-    String _endpoint = this.machine.getEndpoint();
-    ContextBuilder _endpoint_1 = _credentials.endpoint(_endpoint);
-    ContextBuilder _modules = _endpoint_1.modules(modules);
-    ComputeServiceContext context = _modules.<ComputeServiceContext>buildView(
-      ComputeServiceContext.class);
-    JcloudsOpenStack.LOGGER.info("The context is created Successfully ..");
+    JcloudsOpenStack.LOGGER.info(_provider);
+    String _string_2 = ComputeServiceContext.class.toString();
+    JcloudsOpenStack.LOGGER.info(_string_2);
+    ComputeServiceContext context = null;
+    try {
+      String _provider_1 = this.machine.getProvider();
+      ContextBuilder _newBuilder = ContextBuilder.newBuilder(_provider_1);
+      String _identity = this.identity();
+      String _password = this.machine.getPassword();
+      ContextBuilder _credentials = _newBuilder.credentials(_identity, _password);
+      String _endpoint = this.machine.getEndpoint();
+      ContextBuilder _endpoint_1 = _credentials.endpoint(_endpoint);
+      ContextBuilder _modules = _endpoint_1.modules(modules);
+      ComputeServiceContext _buildView = _modules.<ComputeServiceContext>buildView(
+        ComputeServiceContext.class);
+      context = _buildView;
+      JcloudsOpenStack.LOGGER.info("The context is created Successfully ..");
+    } catch (final Throwable _t) {
+      if (_t instanceof Exception) {
+        final Exception e = (Exception)_t;
+        String _message = e.getMessage();
+        JcloudsOpenStack.LOGGER.error(_message);
+      } else {
+        throw Exceptions.sneakyThrow(_t);
+      }
+    }
     return context;
   }
   

@@ -44,6 +44,8 @@ import org.jclouds.openstack.nova.v2_0.options.CreateVolumeOptions
 import org.jclouds.openstack.nova.v2_0.domain.VolumeAttachment
 import org.jclouds.apis.Apis
 import org.jclouds.providers.Providers
+import org.jclouds.sshj.config.SshjSshClientModule
+import org.jclouds.logging.config.NullLoggingModule
 
 class JcloudsOpenStack extends IaaSHandler implements Closeable {
 
@@ -53,7 +55,7 @@ class JcloudsOpenStack extends IaaSHandler implements Closeable {
 	private var Machine_OpenStack machine;
 
 	private var ComputeServiceContext context;
-	
+
 	private var NovaApi novaApi;
 
 	new() {
@@ -68,17 +70,27 @@ class JcloudsOpenStack extends IaaSHandler implements Closeable {
 	 * Initialize the context
 	 */
 	def createContext() {
-		val Iterable<Module> modules = ImmutableSet.<Module>of()
+		val Iterable<Module> modules = ImmutableSet.<Module>of(new SshjSshClientModule(), new SLF4JLoggingModule())
+		// TO DELETE
 		//var provider = Apis.withId(this.machine.provider)
-		//var p = Providers.all()
-		//LOGGER.info(p.toString)
-		//var apis = Apis.all()
-		//LOGGER.info(apis.toString)
-		var ComputeServiceContext context = ContextBuilder.newBuilder(this.machine.provider).credentials(this.identity,
-			this.machine.password).endpoint(this.machine.endpoint).modules(modules).buildView(
-			typeof(ComputeServiceContext))
-		LOGGER.info("The context is created Successfully ..")
+		//LOGGER.info(provider.toString)
+		var p = Providers.all()
+		LOGGER.info(p.toString)
+		var apis = Apis.all()
+		LOGGER.info(apis.toString)
+		LOGGER.info(this.machine.provider)
+		LOGGER.info(typeof(ComputeServiceContext).toString)
 
+		var ComputeServiceContext context = null
+		try {
+			context = ContextBuilder.newBuilder(this.machine.provider).credentials(this.identity,
+				this.machine.password).endpoint(this.machine.endpoint).modules(modules).buildView(
+				typeof(ComputeServiceContext))
+			LOGGER.info("The context is created Successfully ..")
+
+		} catch (Exception e) {
+			LOGGER.error(e.message)
+		}
 		return context
 
 	}
@@ -140,11 +152,11 @@ class JcloudsOpenStack extends IaaSHandler implements Closeable {
 	}
 
 	def String launchMachine() {
-		LOGGER.info("Launching machine: "+ this.machine.name)
+		LOGGER.info("Launching machine: " + this.machine.name)
 		var Iterable<Module> modules = ImmutableSet.<Module>of(new SLF4JLoggingModule());
 
-		novaApi = ContextBuilder.newBuilder(this.machine.provider).endpoint(this.machine.endpoint).
-			credentials(this.identity, this.machine.password).modules(modules).buildApi(typeof(NovaApi))
+		novaApi = ContextBuilder.newBuilder(this.machine.provider).endpoint(this.machine.endpoint).credentials(
+			this.identity, this.machine.password).modules(modules).buildApi(typeof(NovaApi))
 
 		var location = getOneElement(listLocations)
 
@@ -186,14 +198,14 @@ class JcloudsOpenStack extends IaaSHandler implements Closeable {
 						this.machine.flavor_id, options)
 				}
 			} else {
-				//TODO
+				// TODO
 			}
 			val String machineId = server.getId();
 			novaApi.close();
 
 			// Update the machine 
 			this.machine.id = machineId
-			LOGGER.info("Machine id: "+ this.machine.id)
+			LOGGER.info("Machine id: " + this.machine.id)
 			return machineId
 
 		} catch (IOException e) {
@@ -205,7 +217,7 @@ class JcloudsOpenStack extends IaaSHandler implements Closeable {
 	}
 
 	def String createMachines() {
-		LOGGER.info("Creating machine: "+ this.machine.name)
+		LOGGER.info("Creating machine: " + this.machine.name)
 		var Iterable<Module> modules = ImmutableSet.<Module>of(new SLF4JLoggingModule());
 		var NovaApi novaApi = ContextBuilder.newBuilder(this.machine.provider).endpoint(this.machine.endpoint).
 			credentials(identity, this.machine.password).modules(modules).buildApi(typeof(NovaApi))
@@ -235,7 +247,6 @@ class JcloudsOpenStack extends IaaSHandler implements Closeable {
 		return null
 
 	}
-	
 
 	/**
 	 * List all images available on OpenStack
