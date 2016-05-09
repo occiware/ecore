@@ -9,8 +9,9 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.ecore.xmi,
  org.occiware.clouddesigner.occi,
  org.eclipse.emf.common,
- org.occiware.clouddesigner.occi.hypervisor,
- org.occiware.clouddesigner.occi.simulation;bundle-version="1.0.0"
+ org.occiware.clouddesigner.occi.hypervisor
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
-Export-Package: org.occiware.clouddesigner.occi.simulation.cloudsim.handlers
+Export-Package: org.occiware.clouddesigner.occi.simulation.cloudsim,
+ org.occiware.clouddesigner.occi.simulation.cloudsim.handlers,
+ org.occiware.clouddesigner.occi.simulation.cloudsim.provisioners
