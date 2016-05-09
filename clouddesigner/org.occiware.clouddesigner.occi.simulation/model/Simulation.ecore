@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="simulation" nsURI="http://occiware.org/simulation/ecore" nsPrefix="simulation">
+  <eClassifiers xsi:type="ecore:EDataType" name="floatType" instanceClassName="java.lang.Float"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="UtilizationModel" instanceClassName="org.occiware.clouddesigner.occi.simulation.cloudsim.UtilizationModel"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="doubleType" instanceClassName="java.lang.Double"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="RamProvisioner" instanceClassName="org.occiware.clouddesigner.occi.simulation.cloudsim.provisioners.RamProvisioner"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="BwProvisioner" instanceClassName="org.occiware.clouddesigner.occi.simulation.cloudsim.provisioners.BwProvisioner"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="CloudletScheduler" instanceClassName="org.occiware.clouddesigner.occi.simulation.cloudsim.CloudletScheduler"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="VmScheduler" instanceClassName="org.occiware.clouddesigner.occi.simulation.cloudsim.VmScheduler"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="MB" instanceClassName="float"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="PeProvisioner" instanceClassName="org.occiware.clouddesigner.occi.simulation.cloudsim.provisioners.PeProvisioner"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SimulationResource" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Resource">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title" value=""/>
+    </eAnnotations>
+  </eClassifiers>
+</ecore:EPackage>
