@@ -16,13 +16,13 @@
    <extension point="org.eclipse.ui.newWizards">
       <!-- @generated monitoring NOT -->
       <category
-            id="org.eclipse.emf.ecore.Wizard.category.ID"
+			id="org.occiware.clouddesigner.category.ID"
 			name="Cloud Designer"/>
       <wizard
             id="org.occiware.clouddesigner.occi.monitoring.presentation.MonitoringModelWizardID"
             name="%_UI_MonitoringModelWizard_label"
             class="org.occiware.clouddesigner.occi.monitoring.presentation.MonitoringModelWizard"
-            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            category="org.occiware.clouddesigner.category.ID"
             icon="icons/full/obj16/MonitoringModelFile.gif">
          <description>%_UI_MonitoringModelWizard_description</description>
          <selection class="org.eclipse.core.resources.IResource"/>
