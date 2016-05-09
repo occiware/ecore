@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xmi:id="_KsEKINCqEeWtHd6i-rQeGA" version="10.1.0.201509162000">
-  <semanticResources>description/simulation.odesign~</semanticResources>
-  <semanticResources>environment:/viewpoint</semanticResources>
-  <semanticResources>platform:/resource/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.ecore</semanticResources>
-  <semanticResources>platform:/resource/org.occiware.clouddesigner.occi/model/OCCI.ecore</semanticResources>
-  <semanticResources>platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore</semanticResources>
-</viewpoint:DAnalysis>
