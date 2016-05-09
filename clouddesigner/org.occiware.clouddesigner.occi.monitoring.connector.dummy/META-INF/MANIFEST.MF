@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.occiware.clouddesigner.occi.monitoring.connector.dummy
+Bundle-SymbolicName: org.occiware.clouddesigner.occi.monitoring.connector.dummy;singleton:=true
+Bundle-Version: 0.1.0.qualifier
+Bundle-ClassPath: .
+Bundle-Vendor: OCCIware
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.slf4j.api,
+ org.occiware.clouddesigner.occi,
+ org.occiware.clouddesigner.occi.monitoring
+Export-Package: org.occiware.clouddesigner.occi.monitoring.connector.dummy

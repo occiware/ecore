@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<!--
+ Copyright (c) 2016 Inria
+ All rights reserved. This program and the accompanying materials
+ are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+ 	
+ Contributors:
+ - Philippe Merle <philippe.merle@inria.fr>
+-->
+<plugin>
+
+   <!-- New wizard for creating OCCI Monitoring models. -->
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated monitoring NOT -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+			name="Cloud Designer"/>
+      <wizard
+            id="org.occiware.clouddesigner.occi.monitoring.presentation.MonitoringModelWizardID"
+            name="%_UI_MonitoringModelWizard_label"
+            class="org.occiware.clouddesigner.occi.monitoring.presentation.MonitoringModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/MonitoringModelFile.gif">
+         <description>%_UI_MonitoringModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+    <!-- OCCI Monitoring Model Editor. -->
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated monitoring -->
+      <editor
+            id="org.occiware.clouddesigner.occi.monitoring.presentation.MonitoringEditorID"
+            name="%_UI_MonitoringEditor_label"
+            icon="icons/full/obj16/MonitoringModelFile.gif"
+            extensions="monitoring"
+            class="org.occiware.clouddesigner.occi.monitoring.presentation.MonitoringEditor"
+            contributorClass="org.occiware.clouddesigner.occi.monitoring.presentation.MonitoringActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

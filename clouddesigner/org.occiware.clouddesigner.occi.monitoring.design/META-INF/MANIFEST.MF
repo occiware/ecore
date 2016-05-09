@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.occiware.clouddesigner.occi.monitoring.design
+Bundle-SymbolicName: org.occiware.clouddesigner.occi.monitoring.design;singleton:=true
+Bundle-Version: 0.1.0.qualifier
+Bundle-Activator: org.occiware.clouddesigner.occi.monitoring.design.Activator
+Require-Bundle: org.eclipse.ui,
+ org.occiware.clouddesigner.occi,
+ org.occiware.clouddesigner.occi.design,
+ org.eclipse.core.runtime,
+ org.eclipse.core.resources,
+ org.eclipse.sirius,
+ org.eclipse.sirius.common.acceleo.aql
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7

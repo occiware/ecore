@@ -1,12 +1,17 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: org.occiware.clouddesigner.occi.monitoring
+Bundle-Name: %pluginName
 Bundle-SymbolicName: org.occiware.clouddesigner.occi.monitoring;singleton:=true
 Bundle-Version: 0.1.0.qualifier
 Bundle-ClassPath: .
-Bundle-Vendor: OCCIware
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: org.occiware.clouddesigner.occi.monitoring,
+ org.occiware.clouddesigner.occi.monitoring.impl,
+ org.occiware.clouddesigner.occi.monitoring.util
 Bundle-ActivationPolicy: lazy
-Require-Bundle: org.eclipse.emf.ecore;visibility:=reexport,
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.emf.ecore;visibility:=reexport,
  org.occiware.clouddesigner.occi;visibility:=reexport,
  org.occiware.clouddesigner.occi.emfgen.ui

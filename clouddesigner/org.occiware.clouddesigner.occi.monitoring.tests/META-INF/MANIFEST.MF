@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.occiware.clouddesigner.occi.monitoring.tests;singleton:=true
+Bundle-Version: 0.1.0.qualifier
+Bundle-ClassPath: .
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: org.occiware.clouddesigner.occi.monitoring.tests
+Require-Bundle: org.eclipse.core.runtime,
+ org.occiware.clouddesigner.occi.monitoring;visibility:=reexport,
+ org.occiware.clouddesigner.occi;visibility:=reexport,
+ org.eclipse.emf.ecore.xmi;visibility:=reexport,
+ org.junit;visibility:=reexport
+Bundle-ActivationPolicy: lazy

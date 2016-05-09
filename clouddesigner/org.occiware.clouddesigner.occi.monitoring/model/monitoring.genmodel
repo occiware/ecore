@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2016 Inria&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html&#xA;&#x9;&#xA;Contributors:&#xA;- Philippe Merle &lt;philippe.merle@inria.fr>"
+    modelDirectory="/org.occiware.clouddesigner.occi.monitoring/src-gen" editDirectory="/org.occiware.clouddesigner.occi.monitoring.edit/src-gen"
+    editorDirectory="/org.occiware.clouddesigner.occi.monitoring.editor/src-gen" modelPluginID="org.occiware.clouddesigner.occi.monitoring"
+    modelName="Monitoring" testsDirectory="/org.occiware.clouddesigner.occi.monitoring.tests/src"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0" copyrightFields="false"
+    editPluginID="org.occiware.clouddesigner.occi.monitoring.edit" editorPluginID="org.occiware.clouddesigner.occi.monitoring.editor"
+    testsPluginID="org.occiware.clouddesigner.occi.monitoring.tests" usedGenPackages="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.genmodel#//occi"
+    operationReflection="true">
+  <foreignModel>monitoring.ecore</foreignModel>
+  <genPackages prefix="Monitoring" basePackage="org.occiware.clouddesigner.occi" disposableProviderFactory="true"
+      ecorePackage="monitoring.ecore#/">
+    <genDataTypes ecoreDataType="monitoring.ecore#//Second"/>
+    <genDataTypes ecoreDataType="monitoring.ecore#//DateTime"/>
+    <genClasses ecoreClass="monitoring.ecore#//Sensor">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute monitoring.ecore#//Sensor/timebase"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute monitoring.ecore#//Sensor/timestart"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute monitoring.ecore#//Sensor/timestop"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute monitoring.ecore#//Sensor/period"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute monitoring.ecore#//Sensor/granularity"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute monitoring.ecore#//Sensor/accuracy"/>
+    </genClasses>
+    <genClasses ecoreClass="monitoring.ecore#//Collector">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute monitoring.ecore#//Collector/period"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute monitoring.ecore#//Collector/accuracy"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute monitoring.ecore#//Collector/granularity"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="monitoring" nsURI="http://schemas.ogf.org/occi/monitoring/ecore"
+    nsPrefix="monitoring">
+  <eClassifiers xsi:type="ecore:EDataType" name="Second" instanceClassName="int">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="minInclusive" value="0"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="DateTime" instanceClassName="java.lang.String">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="pattern" value="^(\d{4}((-)?(0[1-9]|1[0-2])((-)?(0[1-9]|[1-2][0-9]|3[0-1])(T(24:00(:00(\.[0]+)?)?|(([0-1][0-9]|2[0-3])(:)[0-5][0-9])((:)[0-5][0-9](\.[\d]+)?)?)((\+|-)(14:00|(0[0-9]|1[0-3])(:)[0-5][0-9])|Z))?)?)?)$"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Sensor" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Resource">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title" value="Sensor Resource"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="timebase" eType="#//DateTime">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Base time reference (ISO8601)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="timestart" eType="#//Second">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Start time offset (seconds)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="timestop" eType="#//Second">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Stop time offset (seconds)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="period" lowerBound="1"
+        eType="#//Second">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Time between two following measurements (seconds)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="granularity" eType="#//Second">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Granularity of time measument (seconds)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="accuracy" eType="#//Second">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Accuracy of time measument (seconds)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Collector" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Link">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title" value="Collector Link"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="period" lowerBound="1"
+        eType="#//Second">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Time between two following measurements (seconds)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="accuracy" eType="#//Second">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Accuracy of time measument (seconds)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="granularity" eType="#//Second">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Granularity of time measument (seconds)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+</ecore:EPackage>
