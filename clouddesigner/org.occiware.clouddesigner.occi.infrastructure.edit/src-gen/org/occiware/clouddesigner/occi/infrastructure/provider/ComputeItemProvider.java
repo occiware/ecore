@@ -64,9 +64,11 @@ public class ComputeItemProvider extends ResourceItemProvider {
 			addArchitecturePropertyDescriptor(object);
 			addCoresPropertyDescriptor(object);
 			addHostnamePropertyDescriptor(object);
+			addSharePropertyDescriptor(object);
 			addSpeedPropertyDescriptor(object);
 			addMemoryPropertyDescriptor(object);
 			addStatePropertyDescriptor(object);
+			addMessagePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -138,6 +140,28 @@ public class ComputeItemProvider extends ResourceItemProvider {
 	}
 
 	/**
+	 * This adds a property descriptor for the Share feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSharePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Compute_share_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Compute_share_feature", "_UI_Compute_type"),
+				 InfrastructurePackage.Literals.COMPUTE__SHARE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Speed feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -204,6 +228,28 @@ public class ComputeItemProvider extends ResourceItemProvider {
 	}
 
 	/**
+	 * This adds a property descriptor for the Message feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addMessagePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Compute_message_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Compute_message_feature", "_UI_Compute_type"),
+				 InfrastructurePackage.Literals.COMPUTE__MESSAGE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns Compute.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -244,9 +290,11 @@ public class ComputeItemProvider extends ResourceItemProvider {
 			case InfrastructurePackage.COMPUTE__ARCHITECTURE:
 			case InfrastructurePackage.COMPUTE__CORES:
 			case InfrastructurePackage.COMPUTE__HOSTNAME:
+			case InfrastructurePackage.COMPUTE__SHARE:
 			case InfrastructurePackage.COMPUTE__SPEED:
 			case InfrastructurePackage.COMPUTE__MEMORY:
 			case InfrastructurePackage.COMPUTE__STATE:
+			case InfrastructurePackage.COMPUTE__MESSAGE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

@@ -36,6 +36,7 @@ import org.occiware.clouddesigner.occi.infrastructure.NetworkStatus;
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.impl.NetworkImpl#getVlan <em>Vlan</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.impl.NetworkImpl#getLabel <em>Label</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.impl.NetworkImpl#getState <em>State</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.impl.NetworkImpl#getMessage <em>Message</em>}</li>
  * </ul>
  *
  * @generated
@@ -100,6 +101,26 @@ public class NetworkImpl extends ResourceImpl implements Network {
 	 * @ordered
 	 */
 	protected NetworkStatus state = STATE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getMessage() <em>Message</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMessage()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String MESSAGE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getMessage() <em>Message</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMessage()
+	 * @generated
+	 * @ordered
+	 */
+	protected String message = MESSAGE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -188,6 +209,27 @@ public class NetworkImpl extends ResourceImpl implements Network {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getMessage() {
+		return message;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMessage(String newMessage) {
+		String oldMessage = message;
+		message = newMessage;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, InfrastructurePackage.NETWORK__MESSAGE, oldMessage, message));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void up() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -219,6 +261,8 @@ public class NetworkImpl extends ResourceImpl implements Network {
 				return getLabel();
 			case InfrastructurePackage.NETWORK__STATE:
 				return getState();
+			case InfrastructurePackage.NETWORK__MESSAGE:
+				return getMessage();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -239,6 +283,9 @@ public class NetworkImpl extends ResourceImpl implements Network {
 				return;
 			case InfrastructurePackage.NETWORK__STATE:
 				setState((NetworkStatus)newValue);
+				return;
+			case InfrastructurePackage.NETWORK__MESSAGE:
+				setMessage((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -261,6 +308,9 @@ public class NetworkImpl extends ResourceImpl implements Network {
 			case InfrastructurePackage.NETWORK__STATE:
 				setState(STATE_EDEFAULT);
 				return;
+			case InfrastructurePackage.NETWORK__MESSAGE:
+				setMessage(MESSAGE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -279,6 +329,8 @@ public class NetworkImpl extends ResourceImpl implements Network {
 				return LABEL_EDEFAULT == null ? label != null : !LABEL_EDEFAULT.equals(label);
 			case InfrastructurePackage.NETWORK__STATE:
 				return state != STATE_EDEFAULT;
+			case InfrastructurePackage.NETWORK__MESSAGE:
+				return MESSAGE_EDEFAULT == null ? message != null : !MESSAGE_EDEFAULT.equals(message);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -317,6 +369,8 @@ public class NetworkImpl extends ResourceImpl implements Network {
 		result.append(label);
 		result.append(", state: ");
 		result.append(state);
+		result.append(", message: ");
+		result.append(message);
 		result.append(')');
 		return result.toString();
 	}

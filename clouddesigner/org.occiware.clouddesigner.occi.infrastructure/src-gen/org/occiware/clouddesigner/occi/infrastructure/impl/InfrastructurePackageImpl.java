@@ -34,6 +34,7 @@ import org.occiware.clouddesigner.occi.infrastructure.NetworkInterfaceStatus;
 import org.occiware.clouddesigner.occi.infrastructure.NetworkStatus;
 import org.occiware.clouddesigner.occi.infrastructure.Networkinterface;
 import org.occiware.clouddesigner.occi.infrastructure.RestartMethod;
+import org.occiware.clouddesigner.occi.infrastructure.SaveMethod;
 import org.occiware.clouddesigner.occi.infrastructure.StopMethod;
 import org.occiware.clouddesigner.occi.infrastructure.Storage;
 import org.occiware.clouddesigner.occi.infrastructure.StorageLinkStatus;
@@ -160,7 +161,14 @@ public class InfrastructurePackageImpl extends EPackageImpl implements Infrastru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EDataType integer4095EDataType = null;
+	private EEnum saveMethodEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType vlanEDataType = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -181,7 +189,7 @@ public class InfrastructurePackageImpl extends EPackageImpl implements Infrastru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EDataType positiveIntegerEDataType = null;
+	private EDataType coreEDataType = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -203,6 +211,20 @@ public class InfrastructurePackageImpl extends EPackageImpl implements Infrastru
 	 * @generated
 	 */
 	private EDataType ipAddressRangeEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType macEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType shareEDataType = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -318,6 +340,15 @@ public class InfrastructurePackageImpl extends EPackageImpl implements Infrastru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getNetwork_Message() {
+		return (EAttribute)networkEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EOperation getNetwork__Up() {
 		return networkEClass.getEOperations().get(0);
 	}
@@ -372,7 +403,7 @@ public class InfrastructurePackageImpl extends EPackageImpl implements Infrastru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getCompute_Speed() {
+	public EAttribute getCompute_Share() {
 		return (EAttribute)computeEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -381,7 +412,7 @@ public class InfrastructurePackageImpl extends EPackageImpl implements Infrastru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getCompute_Memory() {
+	public EAttribute getCompute_Speed() {
 		return (EAttribute)computeEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -390,8 +421,26 @@ public class InfrastructurePackageImpl extends EPackageImpl implements Infrastru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getCompute_State() {
+	public EAttribute getCompute_Memory() {
 		return (EAttribute)computeEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCompute_State() {
+		return (EAttribute)computeEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCompute_Message() {
+		return (EAttribute)computeEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -435,6 +484,15 @@ public class InfrastructurePackageImpl extends EPackageImpl implements Infrastru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getCompute__Save__SaveMethod_String() {
+		return computeEClass.getEOperations().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getStorage() {
 		return storageEClass;
 	}
@@ -462,6 +520,15 @@ public class InfrastructurePackageImpl extends EPackageImpl implements Infrastru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getStorage_Message() {
+		return (EAttribute)storageEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EOperation getStorage__Online() {
 		return storageEClass.getEOperations().get(0);
 	}
@@ -473,33 +540,6 @@ public class InfrastructurePackageImpl extends EPackageImpl implements Infrastru
 	 */
 	public EOperation getStorage__Offline() {
 		return storageEClass.getEOperations().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getStorage__Backup() {
-		return storageEClass.getEOperations().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getStorage__Snapshot() {
-		return storageEClass.getEOperations().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getStorage__Resize__float() {
-		return storageEClass.getEOperations().get(4);
 	}
 
 	/**
@@ -543,6 +583,15 @@ public class InfrastructurePackageImpl extends EPackageImpl implements Infrastru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getStoragelink_Message() {
+		return (EAttribute)storagelinkEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getNetworkinterface() {
 		return networkinterfaceEClass;
 	}
@@ -572,6 +621,15 @@ public class InfrastructurePackageImpl extends EPackageImpl implements Infrastru
 	 */
 	public EAttribute getNetworkinterface_State() {
 		return (EAttribute)networkinterfaceEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getNetworkinterface_Message() {
+		return (EAttribute)networkinterfaceEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -669,8 +727,17 @@ public class InfrastructurePackageImpl extends EPackageImpl implements Infrastru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EDataType getInteger4095() {
-		return integer4095EDataType;
+	public EEnum getSaveMethod() {
+		return saveMethodEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getVlan() {
+		return vlanEDataType;
 	}
 
 	/**
@@ -696,8 +763,8 @@ public class InfrastructurePackageImpl extends EPackageImpl implements Infrastru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EDataType getPositiveInteger() {
-		return positiveIntegerEDataType;
+	public EDataType getCore() {
+		return coreEDataType;
 	}
 
 	/**
@@ -732,6 +799,24 @@ public class InfrastructurePackageImpl extends EPackageImpl implements Infrastru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EDataType getMac() {
+		return macEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getShare() {
+		return shareEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public InfrastructureFactory getInfrastructureFactory() {
 		return (InfrastructureFactory)getEFactoryInstance();
 	}
@@ -759,6 +844,7 @@ public class InfrastructurePackageImpl extends EPackageImpl implements Infrastru
 		createEAttribute(networkEClass, NETWORK__VLAN);
 		createEAttribute(networkEClass, NETWORK__LABEL);
 		createEAttribute(networkEClass, NETWORK__STATE);
+		createEAttribute(networkEClass, NETWORK__MESSAGE);
 		createEOperation(networkEClass, NETWORK___UP);
 		createEOperation(networkEClass, NETWORK___DOWN);
 
@@ -766,32 +852,35 @@ public class InfrastructurePackageImpl extends EPackageImpl implements Infrastru
 		createEAttribute(computeEClass, COMPUTE__ARCHITECTURE);
 		createEAttribute(computeEClass, COMPUTE__CORES);
 		createEAttribute(computeEClass, COMPUTE__HOSTNAME);
+		createEAttribute(computeEClass, COMPUTE__SHARE);
 		createEAttribute(computeEClass, COMPUTE__SPEED);
 		createEAttribute(computeEClass, COMPUTE__MEMORY);
 		createEAttribute(computeEClass, COMPUTE__STATE);
+		createEAttribute(computeEClass, COMPUTE__MESSAGE);
 		createEOperation(computeEClass, COMPUTE___START);
 		createEOperation(computeEClass, COMPUTE___STOP__STOPMETHOD);
 		createEOperation(computeEClass, COMPUTE___RESTART__RESTARTMETHOD);
 		createEOperation(computeEClass, COMPUTE___SUSPEND__SUSPENDMETHOD);
+		createEOperation(computeEClass, COMPUTE___SAVE__SAVEMETHOD_STRING);
 
 		storageEClass = createEClass(STORAGE);
 		createEAttribute(storageEClass, STORAGE__SIZE);
 		createEAttribute(storageEClass, STORAGE__STATE);
+		createEAttribute(storageEClass, STORAGE__MESSAGE);
 		createEOperation(storageEClass, STORAGE___ONLINE);
 		createEOperation(storageEClass, STORAGE___OFFLINE);
-		createEOperation(storageEClass, STORAGE___BACKUP);
-		createEOperation(storageEClass, STORAGE___SNAPSHOT);
-		createEOperation(storageEClass, STORAGE___RESIZE__FLOAT);
 
 		storagelinkEClass = createEClass(STORAGELINK);
 		createEAttribute(storagelinkEClass, STORAGELINK__DEVICEID);
 		createEAttribute(storagelinkEClass, STORAGELINK__MOUNTPOINT);
 		createEAttribute(storagelinkEClass, STORAGELINK__STATE);
+		createEAttribute(storagelinkEClass, STORAGELINK__MESSAGE);
 
 		networkinterfaceEClass = createEClass(NETWORKINTERFACE);
 		createEAttribute(networkinterfaceEClass, NETWORKINTERFACE__INTERFACE);
 		createEAttribute(networkinterfaceEClass, NETWORKINTERFACE__MAC);
 		createEAttribute(networkinterfaceEClass, NETWORKINTERFACE__STATE);
+		createEAttribute(networkinterfaceEClass, NETWORKINTERFACE__MESSAGE);
 
 		// Create enums
 		suspendMethodEEnum = createEEnum(SUSPEND_METHOD);
@@ -804,15 +893,18 @@ public class InfrastructurePackageImpl extends EPackageImpl implements Infrastru
 		allocationEEnum = createEEnum(ALLOCATION);
 		storageStatusEEnum = createEEnum(STORAGE_STATUS);
 		storageLinkStatusEEnum = createEEnum(STORAGE_LINK_STATUS);
+		saveMethodEEnum = createEEnum(SAVE_METHOD);
 
 		// Create data types
-		integer4095EDataType = createEDataType(INTEGER4095);
+		vlanEDataType = createEDataType(VLAN);
 		tokenEDataType = createEDataType(TOKEN);
 		ipAddressEDataType = createEDataType(IP_ADDRESS);
-		positiveIntegerEDataType = createEDataType(POSITIVE_INTEGER);
+		coreEDataType = createEDataType(CORE);
 		gHzEDataType = createEDataType(GHZ);
 		giBEDataType = createEDataType(GI_B);
 		ipAddressRangeEDataType = createEDataType(IP_ADDRESS_RANGE);
+		macEDataType = createEDataType(MAC);
+		shareEDataType = createEDataType(SHARE);
 	}
 
 	/**
@@ -854,9 +946,10 @@ public class InfrastructurePackageImpl extends EPackageImpl implements Infrastru
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(networkEClass, Network.class, "Network", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getNetwork_Vlan(), this.getInteger4095(), "vlan", null, 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNetwork_Vlan(), this.getVlan(), "vlan", null, 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getNetwork_Label(), this.getToken(), "label", null, 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getNetwork_State(), this.getNetworkStatus(), "state", "inactive", 1, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNetwork_Message(), theOCCIPackage.getString(), "message", null, 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getNetwork__Up(), null, "up", 0, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -864,11 +957,13 @@ public class InfrastructurePackageImpl extends EPackageImpl implements Infrastru
 
 		initEClass(computeEClass, Compute.class, "Compute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCompute_Architecture(), this.getArchitecture(), "architecture", null, 0, 1, Compute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCompute_Cores(), this.getPositiveInteger(), "cores", null, 0, 1, Compute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCompute_Cores(), this.getCore(), "cores", null, 0, 1, Compute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCompute_Hostname(), theOCCIPackage.getString(), "hostname", null, 0, 1, Compute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCompute_Share(), this.getShare(), "share", null, 0, 1, Compute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCompute_Speed(), this.getGHz(), "speed", null, 0, 1, Compute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCompute_Memory(), this.getGiB(), "memory", null, 0, 1, Compute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCompute_State(), this.getComputeStatus(), "state", "inactive", 1, 1, Compute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCompute_Message(), theOCCIPackage.getString(), "message", null, 0, 1, Compute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getCompute__Start(), null, "start", 0, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -881,30 +976,30 @@ public class InfrastructurePackageImpl extends EPackageImpl implements Infrastru
 		op = initEOperation(getCompute__Suspend__SuspendMethod(), null, "suspend", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getSuspendMethod(), "method", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = initEOperation(getCompute__Save__SaveMethod_String(), null, "save", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getSaveMethod(), "method", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(storageEClass, Storage.class, "Storage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getStorage_Size(), this.getGiB(), "size", null, 1, 1, Storage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getStorage_State(), this.getStorageStatus(), "state", null, 1, 1, Storage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStorage_Message(), theOCCIPackage.getString(), "message", null, 0, 1, Storage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getStorage__Online(), null, "online", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEOperation(getStorage__Offline(), null, "offline", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEOperation(getStorage__Backup(), null, "backup", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		initEOperation(getStorage__Snapshot(), null, "snapshot", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = initEOperation(getStorage__Resize__float(), null, "resize", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getGiB(), "size", 1, 1, IS_UNIQUE, IS_ORDERED);
-
 		initEClass(storagelinkEClass, Storagelink.class, "Storagelink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getStoragelink_Deviceid(), theOCCIPackage.getString(), "deviceid", null, 1, 1, Storagelink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getStoragelink_Mountpoint(), theOCCIPackage.getString(), "mountpoint", null, 0, 1, Storagelink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getStoragelink_State(), this.getStorageLinkStatus(), "state", null, 1, 1, Storagelink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStoragelink_Message(), theOCCIPackage.getString(), "message", null, 0, 1, Storagelink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(networkinterfaceEClass, Networkinterface.class, "Networkinterface", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getNetworkinterface_Interface(), theOCCIPackage.getString(), "interface", null, 1, 1, Networkinterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getNetworkinterface_Mac(), theOCCIPackage.getString(), "mac", null, 1, 1, Networkinterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNetworkinterface_Mac(), this.getMac(), "mac", null, 1, 1, Networkinterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getNetworkinterface_State(), this.getNetworkInterfaceStatus(), "state", null, 1, 1, Networkinterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNetworkinterface_Message(), theOCCIPackage.getString(), "message", null, 0, 1, Networkinterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(suspendMethodEEnum, SuspendMethod.class, "SuspendMethod");
@@ -914,15 +1009,18 @@ public class InfrastructurePackageImpl extends EPackageImpl implements Infrastru
 		initEEnum(networkStatusEEnum, NetworkStatus.class, "NetworkStatus");
 		addEEnumLiteral(networkStatusEEnum, NetworkStatus.ACTIVE);
 		addEEnumLiteral(networkStatusEEnum, NetworkStatus.INACTIVE);
+		addEEnumLiteral(networkStatusEEnum, NetworkStatus.ERROR);
 
 		initEEnum(computeStatusEEnum, ComputeStatus.class, "ComputeStatus");
 		addEEnumLiteral(computeStatusEEnum, ComputeStatus.ACTIVE);
 		addEEnumLiteral(computeStatusEEnum, ComputeStatus.INACTIVE);
 		addEEnumLiteral(computeStatusEEnum, ComputeStatus.SUSPENDED);
+		addEEnumLiteral(computeStatusEEnum, ComputeStatus.ERROR);
 
 		initEEnum(networkInterfaceStatusEEnum, NetworkInterfaceStatus.class, "NetworkInterfaceStatus");
 		addEEnumLiteral(networkInterfaceStatusEEnum, NetworkInterfaceStatus.ACTIVE);
 		addEEnumLiteral(networkInterfaceStatusEEnum, NetworkInterfaceStatus.INACTIVE);
+		addEEnumLiteral(networkInterfaceStatusEEnum, NetworkInterfaceStatus.ERROR);
 
 		initEEnum(architectureEEnum, Architecture.class, "Architecture");
 		addEEnumLiteral(architectureEEnum, Architecture.X86);
@@ -945,23 +1043,27 @@ public class InfrastructurePackageImpl extends EPackageImpl implements Infrastru
 		initEEnum(storageStatusEEnum, StorageStatus.class, "StorageStatus");
 		addEEnumLiteral(storageStatusEEnum, StorageStatus.ONLINE);
 		addEEnumLiteral(storageStatusEEnum, StorageStatus.OFFLINE);
-		addEEnumLiteral(storageStatusEEnum, StorageStatus.BACKUP);
-		addEEnumLiteral(storageStatusEEnum, StorageStatus.SNAPSHOT);
-		addEEnumLiteral(storageStatusEEnum, StorageStatus.RESIZE);
-		addEEnumLiteral(storageStatusEEnum, StorageStatus.DEGRADED);
+		addEEnumLiteral(storageStatusEEnum, StorageStatus.ERROR);
 
 		initEEnum(storageLinkStatusEEnum, StorageLinkStatus.class, "StorageLinkStatus");
 		addEEnumLiteral(storageLinkStatusEEnum, StorageLinkStatus.ACTIVE);
 		addEEnumLiteral(storageLinkStatusEEnum, StorageLinkStatus.INACTIVE);
+		addEEnumLiteral(storageLinkStatusEEnum, StorageLinkStatus.ERROR);
+
+		initEEnum(saveMethodEEnum, SaveMethod.class, "SaveMethod");
+		addEEnumLiteral(saveMethodEEnum, SaveMethod.HOT);
+		addEEnumLiteral(saveMethodEEnum, SaveMethod.DEFERRED);
 
 		// Initialize data types
-		initEDataType(integer4095EDataType, int.class, "Integer4095", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(vlanEDataType, int.class, "Vlan", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(tokenEDataType, String.class, "Token", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(ipAddressEDataType, String.class, "IpAddress", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(positiveIntegerEDataType, int.class, "PositiveInteger", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(coreEDataType, int.class, "Core", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(gHzEDataType, float.class, "GHz", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(giBEDataType, float.class, "GiB", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(ipAddressRangeEDataType, String.class, "IpAddressRange", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(macEDataType, String.class, "Mac", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(shareEDataType, int.class, "Share", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -982,11 +1084,35 @@ public class InfrastructurePackageImpl extends EPackageImpl implements Infrastru
 	protected void createExtendedMetaDataAnnotations() {
 		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";	
 		addAnnotation
-		  (integer4095EDataType, 
+		  (vlanEDataType, 
 		   source, 
 		   new String[] {
 			 "minInclusive", "0",
 			 "maxInclusive", "4095"
+		   });	
+		addAnnotation
+		  (coreEDataType, 
+		   source, 
+		   new String[] {
+			 "minExclusive", "0"
+		   });	
+		addAnnotation
+		  (gHzEDataType, 
+		   source, 
+		   new String[] {
+			 "minExclusive", "0"
+		   });	
+		addAnnotation
+		  (giBEDataType, 
+		   source, 
+		   new String[] {
+			 "minExclusive", "0"
+		   });	
+		addAnnotation
+		  (shareEDataType, 
+		   source, 
+		   new String[] {
+			 "minInclusive", "0"
 		   });
 	}
 
@@ -1020,19 +1146,25 @@ public class InfrastructurePackageImpl extends EPackageImpl implements Infrastru
 		  (getNetwork_Vlan(), 
 		   source, 
 		   new String[] {
-			 "description", "802.1q VLAN Identifier (e.g. 343)"
+			 "description", "802.1q VLAN Identifier (e.g., 343)"
 		   });	
 		addAnnotation
 		  (getNetwork_Label(), 
 		   source, 
 		   new String[] {
-			 "description", "Tag based VLANs (e.g. external-dmz)"
+			 "description", "Tag based VLANs (e.g., external-dmz)"
 		   });	
 		addAnnotation
 		  (getNetwork_State(), 
 		   source, 
 		   new String[] {
 			 "description", "Current state of the instance"
+		   });	
+		addAnnotation
+		  (getNetwork_Message(), 
+		   source, 
+		   new String[] {
+			 "description", "Human-readable explanation of the current instance state"
 		   });	
 		addAnnotation
 		  (computeEClass, 
@@ -1083,6 +1215,24 @@ public class InfrastructurePackageImpl extends EPackageImpl implements Infrastru
 			 "description", null
 		   });	
 		addAnnotation
+		  (getCompute__Save__SaveMethod_String(), 
+		   source, 
+		   new String[] {
+			 "title", "Save the system (hot, deferred)"
+		   });	
+		addAnnotation
+		  ((getCompute__Save__SaveMethod_String()).getEParameters().get(0), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  ((getCompute__Save__SaveMethod_String()).getEParameters().get(1), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
 		  (getCompute_Architecture(), 
 		   source, 
 		   new String[] {
@@ -1099,6 +1249,12 @@ public class InfrastructurePackageImpl extends EPackageImpl implements Infrastru
 		   source, 
 		   new String[] {
 			 "description", "Fully Qualified DNS hostname for the instance"
+		   });	
+		addAnnotation
+		  (getCompute_Share(), 
+		   source, 
+		   new String[] {
+			 "description", "Relative number of CPU shares for the instance"
 		   });	
 		addAnnotation
 		  (getCompute_Speed(), 
@@ -1119,6 +1275,12 @@ public class InfrastructurePackageImpl extends EPackageImpl implements Infrastru
 			 "description", "Current state of the instance"
 		   });	
 		addAnnotation
+		  (getCompute_Message(), 
+		   source, 
+		   new String[] {
+			 "description", "Human-readable explanation of the current instance state"
+		   });	
+		addAnnotation
 		  (storageEClass, 
 		   source, 
 		   new String[] {
@@ -1137,40 +1299,22 @@ public class InfrastructurePackageImpl extends EPackageImpl implements Infrastru
 			 "title", "Set storage offline"
 		   });	
 		addAnnotation
-		  (getStorage__Backup(), 
-		   source, 
-		   new String[] {
-			 "title", "Set storage as backup"
-		   });	
-		addAnnotation
-		  (getStorage__Snapshot(), 
-		   source, 
-		   new String[] {
-			 "title", "Take storage snapshot"
-		   });	
-		addAnnotation
-		  (getStorage__Resize__float(), 
-		   source, 
-		   new String[] {
-			 "title", "Resize storage"
-		   });	
-		addAnnotation
-		  ((getStorage__Resize__float()).getEParameters().get(0), 
-		   source, 
-		   new String[] {
-			 "description", null
-		   });	
-		addAnnotation
 		  (getStorage_Size(), 
 		   source, 
 		   new String[] {
-			 "description", "Storage size in gigabytes of the instance"
+			 "description", "Storage size of the instance in gigabytes"
 		   });	
 		addAnnotation
 		  (getStorage_State(), 
 		   source, 
 		   new String[] {
 			 "description", "Current status of the instance"
+		   });	
+		addAnnotation
+		  (getStorage_Message(), 
+		   source, 
+		   new String[] {
+			 "description", "Human-readable explanation of the current instance state"
 		   });	
 		addAnnotation
 		  (storagelinkEClass, 
@@ -1197,6 +1341,12 @@ public class InfrastructurePackageImpl extends EPackageImpl implements Infrastru
 			 "description", "Current status of the instance"
 		   });	
 		addAnnotation
+		  (getStoragelink_Message(), 
+		   source, 
+		   new String[] {
+			 "description", "Human-readable explanation of the current instance state"
+		   });	
+		addAnnotation
 		  (networkinterfaceEClass, 
 		   source, 
 		   new String[] {
@@ -1219,6 +1369,12 @@ public class InfrastructurePackageImpl extends EPackageImpl implements Infrastru
 		   source, 
 		   new String[] {
 			 "description", "Current status of the instance"
+		   });	
+		addAnnotation
+		  (getNetworkinterface_Message(), 
+		   source, 
+		   new String[] {
+			 "description", "Human-readable explanation of the current instance state"
 		   });
 	}
 

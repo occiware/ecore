@@ -24,6 +24,7 @@ import org.occiware.clouddesigner.occi.Resource;
  * <ul>
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.Storage#getSize <em>Size</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.Storage#getState <em>State</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.Storage#getMessage <em>Message</em>}</li>
  * </ul>
  *
  * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getStorage()
@@ -43,7 +44,7 @@ public interface Storage extends Resource {
 	 * @see #setSize(float)
 	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getStorage_Size()
 	 * @model dataType="org.occiware.clouddesigner.occi.infrastructure.GiB" required="true"
-	 *        annotation="OCCIE2Ecore description='Storage size in gigabytes of the instance'"
+	 *        annotation="OCCIE2Ecore description='Storage size of the instance in gigabytes'"
 	 * @generated
 	 */
 	float getSize();
@@ -89,6 +90,33 @@ public interface Storage extends Resource {
 	void setState(StorageStatus value);
 
 	/**
+	 * Returns the value of the '<em><b>Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Message</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Message</em>' attribute.
+	 * @see #setMessage(String)
+	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getStorage_Message()
+	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='Human-readable explanation of the current instance state'"
+	 * @generated
+	 */
+	String getMessage();
+
+	/**
+	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.infrastructure.Storage#getMessage <em>Message</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Message</em>' attribute.
+	 * @see #getMessage()
+	 * @generated
+	 */
+	void setMessage(String value);
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model annotation="OCCIE2Ecore title='Set storage online'"
@@ -103,31 +131,5 @@ public interface Storage extends Resource {
 	 * @generated
 	 */
 	void offline();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model annotation="OCCIE2Ecore title='Set storage as backup'"
-	 * @generated
-	 */
-	void backup();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model annotation="OCCIE2Ecore title='Take storage snapshot'"
-	 * @generated
-	 */
-	void snapshot();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model sizeDataType="org.occiware.clouddesigner.occi.infrastructure.GiB" sizeRequired="true"
-	 *        sizeAnnotation="OCCIE2Ecore description='null'"
-	 *        annotation="OCCIE2Ecore title='Resize storage'"
-	 * @generated
-	 */
-	void resize(float size);
 
 } // Storage

@@ -169,13 +169,22 @@ public interface InfrastructurePackage extends EPackage {
 	int NETWORK__STATE = OCCIPackage.RESOURCE_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK__MESSAGE = OCCIPackage.RESOURCE_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Network</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NETWORK_FEATURE_COUNT = OCCIPackage.RESOURCE_FEATURE_COUNT + 3;
+	int NETWORK_FEATURE_COUNT = OCCIPackage.RESOURCE_FEATURE_COUNT + 4;
 
 	/**
 	 * The operation id for the '<em>Occi Create</em>' operation.
@@ -341,13 +350,22 @@ public interface InfrastructurePackage extends EPackage {
 	int COMPUTE__HOSTNAME = OCCIPackage.RESOURCE_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Share</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPUTE__SHARE = OCCIPackage.RESOURCE_FEATURE_COUNT + 3;
+
+	/**
 	 * The feature id for the '<em><b>Speed</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPUTE__SPEED = OCCIPackage.RESOURCE_FEATURE_COUNT + 3;
+	int COMPUTE__SPEED = OCCIPackage.RESOURCE_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Memory</b></em>' attribute.
@@ -356,7 +374,7 @@ public interface InfrastructurePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPUTE__MEMORY = OCCIPackage.RESOURCE_FEATURE_COUNT + 4;
+	int COMPUTE__MEMORY = OCCIPackage.RESOURCE_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>State</b></em>' attribute.
@@ -365,7 +383,16 @@ public interface InfrastructurePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPUTE__STATE = OCCIPackage.RESOURCE_FEATURE_COUNT + 5;
+	int COMPUTE__STATE = OCCIPackage.RESOURCE_FEATURE_COUNT + 6;
+
+	/**
+	 * The feature id for the '<em><b>Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPUTE__MESSAGE = OCCIPackage.RESOURCE_FEATURE_COUNT + 7;
 
 	/**
 	 * The number of structural features of the '<em>Compute</em>' class.
@@ -374,7 +401,7 @@ public interface InfrastructurePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPUTE_FEATURE_COUNT = OCCIPackage.RESOURCE_FEATURE_COUNT + 6;
+	int COMPUTE_FEATURE_COUNT = OCCIPackage.RESOURCE_FEATURE_COUNT + 8;
 
 	/**
 	 * The operation id for the '<em>Occi Create</em>' operation.
@@ -449,13 +476,22 @@ public interface InfrastructurePackage extends EPackage {
 	int COMPUTE___SUSPEND__SUSPENDMETHOD = OCCIPackage.RESOURCE_OPERATION_COUNT + 3;
 
 	/**
+	 * The operation id for the '<em>Save</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPUTE___SAVE__SAVEMETHOD_STRING = OCCIPackage.RESOURCE_OPERATION_COUNT + 4;
+
+	/**
 	 * The number of operations of the '<em>Compute</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPUTE_OPERATION_COUNT = OCCIPackage.RESOURCE_OPERATION_COUNT + 4;
+	int COMPUTE_OPERATION_COUNT = OCCIPackage.RESOURCE_OPERATION_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.infrastructure.impl.StorageImpl <em>Storage</em>}' class.
@@ -549,13 +585,22 @@ public interface InfrastructurePackage extends EPackage {
 	int STORAGE__STATE = OCCIPackage.RESOURCE_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORAGE__MESSAGE = OCCIPackage.RESOURCE_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Storage</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STORAGE_FEATURE_COUNT = OCCIPackage.RESOURCE_FEATURE_COUNT + 2;
+	int STORAGE_FEATURE_COUNT = OCCIPackage.RESOURCE_FEATURE_COUNT + 3;
 
 	/**
 	 * The operation id for the '<em>Occi Create</em>' operation.
@@ -612,40 +657,13 @@ public interface InfrastructurePackage extends EPackage {
 	int STORAGE___OFFLINE = OCCIPackage.RESOURCE_OPERATION_COUNT + 1;
 
 	/**
-	 * The operation id for the '<em>Backup</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STORAGE___BACKUP = OCCIPackage.RESOURCE_OPERATION_COUNT + 2;
-
-	/**
-	 * The operation id for the '<em>Snapshot</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STORAGE___SNAPSHOT = OCCIPackage.RESOURCE_OPERATION_COUNT + 3;
-
-	/**
-	 * The operation id for the '<em>Resize</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STORAGE___RESIZE__FLOAT = OCCIPackage.RESOURCE_OPERATION_COUNT + 4;
-
-	/**
 	 * The number of operations of the '<em>Storage</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STORAGE_OPERATION_COUNT = OCCIPackage.RESOURCE_OPERATION_COUNT + 5;
+	int STORAGE_OPERATION_COUNT = OCCIPackage.RESOURCE_OPERATION_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.infrastructure.impl.StoragelinkImpl <em>Storagelink</em>}' class.
@@ -748,13 +766,22 @@ public interface InfrastructurePackage extends EPackage {
 	int STORAGELINK__STATE = OCCIPackage.LINK_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORAGELINK__MESSAGE = OCCIPackage.LINK_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Storagelink</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STORAGELINK_FEATURE_COUNT = OCCIPackage.LINK_FEATURE_COUNT + 3;
+	int STORAGELINK_FEATURE_COUNT = OCCIPackage.LINK_FEATURE_COUNT + 4;
 
 	/**
 	 * The operation id for the '<em>Occi Create</em>' operation.
@@ -902,13 +929,22 @@ public interface InfrastructurePackage extends EPackage {
 	int NETWORKINTERFACE__STATE = OCCIPackage.LINK_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORKINTERFACE__MESSAGE = OCCIPackage.LINK_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Networkinterface</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NETWORKINTERFACE_FEATURE_COUNT = OCCIPackage.LINK_FEATURE_COUNT + 3;
+	int NETWORKINTERFACE_FEATURE_COUNT = OCCIPackage.LINK_FEATURE_COUNT + 4;
 
 	/**
 	 * The operation id for the '<em>Occi Create</em>' operation.
@@ -1056,13 +1092,23 @@ public interface InfrastructurePackage extends EPackage {
 	int STORAGE_LINK_STATUS = 14;
 
 	/**
-	 * The meta object id for the '<em>Integer4095</em>' data type.
+	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.infrastructure.SaveMethod <em>Save Method</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.occiware.clouddesigner.occi.infrastructure.impl.InfrastructurePackageImpl#getInteger4095()
+	 * @see org.occiware.clouddesigner.occi.infrastructure.SaveMethod
+	 * @see org.occiware.clouddesigner.occi.infrastructure.impl.InfrastructurePackageImpl#getSaveMethod()
 	 * @generated
 	 */
-	int INTEGER4095 = 15;
+	int SAVE_METHOD = 15;
+
+	/**
+	 * The meta object id for the '<em>Vlan</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.occiware.clouddesigner.occi.infrastructure.impl.InfrastructurePackageImpl#getVlan()
+	 * @generated
+	 */
+	int VLAN = 16;
 
 	/**
 	 * The meta object id for the '<em>Token</em>' data type.
@@ -1072,7 +1118,7 @@ public interface InfrastructurePackage extends EPackage {
 	 * @see org.occiware.clouddesigner.occi.infrastructure.impl.InfrastructurePackageImpl#getToken()
 	 * @generated
 	 */
-	int TOKEN = 16;
+	int TOKEN = 17;
 
 	/**
 	 * The meta object id for the '<em>Ip Address</em>' data type.
@@ -1082,16 +1128,16 @@ public interface InfrastructurePackage extends EPackage {
 	 * @see org.occiware.clouddesigner.occi.infrastructure.impl.InfrastructurePackageImpl#getIpAddress()
 	 * @generated
 	 */
-	int IP_ADDRESS = 17;
+	int IP_ADDRESS = 18;
 
 	/**
-	 * The meta object id for the '<em>Positive Integer</em>' data type.
+	 * The meta object id for the '<em>Core</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.occiware.clouddesigner.occi.infrastructure.impl.InfrastructurePackageImpl#getPositiveInteger()
+	 * @see org.occiware.clouddesigner.occi.infrastructure.impl.InfrastructurePackageImpl#getCore()
 	 * @generated
 	 */
-	int POSITIVE_INTEGER = 18;
+	int CORE = 19;
 
 	/**
 	 * The meta object id for the '<em>GHz</em>' data type.
@@ -1100,7 +1146,7 @@ public interface InfrastructurePackage extends EPackage {
 	 * @see org.occiware.clouddesigner.occi.infrastructure.impl.InfrastructurePackageImpl#getGHz()
 	 * @generated
 	 */
-	int GHZ = 19;
+	int GHZ = 20;
 
 	/**
 	 * The meta object id for the '<em>Gi B</em>' data type.
@@ -1109,7 +1155,7 @@ public interface InfrastructurePackage extends EPackage {
 	 * @see org.occiware.clouddesigner.occi.infrastructure.impl.InfrastructurePackageImpl#getGiB()
 	 * @generated
 	 */
-	int GI_B = 20;
+	int GI_B = 21;
 
 	/**
 	 * The meta object id for the '<em>Ip Address Range</em>' data type.
@@ -1119,7 +1165,27 @@ public interface InfrastructurePackage extends EPackage {
 	 * @see org.occiware.clouddesigner.occi.infrastructure.impl.InfrastructurePackageImpl#getIpAddressRange()
 	 * @generated
 	 */
-	int IP_ADDRESS_RANGE = 21;
+	int IP_ADDRESS_RANGE = 22;
+
+
+	/**
+	 * The meta object id for the '<em>Mac</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.lang.String
+	 * @see org.occiware.clouddesigner.occi.infrastructure.impl.InfrastructurePackageImpl#getMac()
+	 * @generated
+	 */
+	int MAC = 23;
+
+	/**
+	 * The meta object id for the '<em>Share</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.occiware.clouddesigner.occi.infrastructure.impl.InfrastructurePackageImpl#getShare()
+	 * @generated
+	 */
+	int SHARE = 24;
 
 
 	/**
@@ -1164,6 +1230,17 @@ public interface InfrastructurePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getNetwork_State();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.infrastructure.Network#getMessage <em>Message</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Message</em>'.
+	 * @see org.occiware.clouddesigner.occi.infrastructure.Network#getMessage()
+	 * @see #getNetwork()
+	 * @generated
+	 */
+	EAttribute getNetwork_Message();
 
 	/**
 	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.infrastructure.Network#up() <em>Up</em>}' operation.
@@ -1229,6 +1306,17 @@ public interface InfrastructurePackage extends EPackage {
 	EAttribute getCompute_Hostname();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.infrastructure.Compute#getShare <em>Share</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Share</em>'.
+	 * @see org.occiware.clouddesigner.occi.infrastructure.Compute#getShare()
+	 * @see #getCompute()
+	 * @generated
+	 */
+	EAttribute getCompute_Share();
+
+	/**
 	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.infrastructure.Compute#getSpeed <em>Speed</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1260,6 +1348,17 @@ public interface InfrastructurePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getCompute_State();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.infrastructure.Compute#getMessage <em>Message</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Message</em>'.
+	 * @see org.occiware.clouddesigner.occi.infrastructure.Compute#getMessage()
+	 * @see #getCompute()
+	 * @generated
+	 */
+	EAttribute getCompute_Message();
 
 	/**
 	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.infrastructure.Compute#start() <em>Start</em>}' operation.
@@ -1302,6 +1401,16 @@ public interface InfrastructurePackage extends EPackage {
 	EOperation getCompute__Suspend__SuspendMethod();
 
 	/**
+	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.infrastructure.Compute#save(org.occiware.clouddesigner.occi.infrastructure.SaveMethod, java.lang.String) <em>Save</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Save</em>' operation.
+	 * @see org.occiware.clouddesigner.occi.infrastructure.Compute#save(org.occiware.clouddesigner.occi.infrastructure.SaveMethod, java.lang.String)
+	 * @generated
+	 */
+	EOperation getCompute__Save__SaveMethod_String();
+
+	/**
 	 * Returns the meta object for class '{@link org.occiware.clouddesigner.occi.infrastructure.Storage <em>Storage</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1334,6 +1443,17 @@ public interface InfrastructurePackage extends EPackage {
 	EAttribute getStorage_State();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.infrastructure.Storage#getMessage <em>Message</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Message</em>'.
+	 * @see org.occiware.clouddesigner.occi.infrastructure.Storage#getMessage()
+	 * @see #getStorage()
+	 * @generated
+	 */
+	EAttribute getStorage_Message();
+
+	/**
 	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.infrastructure.Storage#online() <em>Online</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1352,36 +1472,6 @@ public interface InfrastructurePackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getStorage__Offline();
-
-	/**
-	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.infrastructure.Storage#backup() <em>Backup</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Backup</em>' operation.
-	 * @see org.occiware.clouddesigner.occi.infrastructure.Storage#backup()
-	 * @generated
-	 */
-	EOperation getStorage__Backup();
-
-	/**
-	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.infrastructure.Storage#snapshot() <em>Snapshot</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Snapshot</em>' operation.
-	 * @see org.occiware.clouddesigner.occi.infrastructure.Storage#snapshot()
-	 * @generated
-	 */
-	EOperation getStorage__Snapshot();
-
-	/**
-	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.infrastructure.Storage#resize(float) <em>Resize</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Resize</em>' operation.
-	 * @see org.occiware.clouddesigner.occi.infrastructure.Storage#resize(float)
-	 * @generated
-	 */
-	EOperation getStorage__Resize__float();
 
 	/**
 	 * Returns the meta object for class '{@link org.occiware.clouddesigner.occi.infrastructure.Storagelink <em>Storagelink</em>}'.
@@ -1427,6 +1517,17 @@ public interface InfrastructurePackage extends EPackage {
 	EAttribute getStoragelink_State();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.infrastructure.Storagelink#getMessage <em>Message</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Message</em>'.
+	 * @see org.occiware.clouddesigner.occi.infrastructure.Storagelink#getMessage()
+	 * @see #getStoragelink()
+	 * @generated
+	 */
+	EAttribute getStoragelink_Message();
+
+	/**
 	 * Returns the meta object for class '{@link org.occiware.clouddesigner.occi.infrastructure.Networkinterface <em>Networkinterface</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1468,6 +1569,17 @@ public interface InfrastructurePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getNetworkinterface_State();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.infrastructure.Networkinterface#getMessage <em>Message</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Message</em>'.
+	 * @see org.occiware.clouddesigner.occi.infrastructure.Networkinterface#getMessage()
+	 * @see #getNetworkinterface()
+	 * @generated
+	 */
+	EAttribute getNetworkinterface_Message();
 
 	/**
 	 * Returns the meta object for enum '{@link org.occiware.clouddesigner.occi.infrastructure.SuspendMethod <em>Suspend Method</em>}'.
@@ -1570,15 +1682,25 @@ public interface InfrastructurePackage extends EPackage {
 	EEnum getStorageLinkStatus();
 
 	/**
-	 * Returns the meta object for data type '<em>Integer4095</em>'.
+	 * Returns the meta object for enum '{@link org.occiware.clouddesigner.occi.infrastructure.SaveMethod <em>Save Method</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for data type '<em>Integer4095</em>'.
+	 * @return the meta object for enum '<em>Save Method</em>'.
+	 * @see org.occiware.clouddesigner.occi.infrastructure.SaveMethod
+	 * @generated
+	 */
+	EEnum getSaveMethod();
+
+	/**
+	 * Returns the meta object for data type '<em>Vlan</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Vlan</em>'.
 	 * @model instanceClass="int"
 	 *        extendedMetaData="minInclusive='0' maxInclusive='4095'"
 	 * @generated
 	 */
-	EDataType getInteger4095();
+	EDataType getVlan();
 
 	/**
 	 * Returns the meta object for data type '{@link java.lang.String <em>Token</em>}'.
@@ -1603,14 +1725,15 @@ public interface InfrastructurePackage extends EPackage {
 	EDataType getIpAddress();
 
 	/**
-	 * Returns the meta object for data type '<em>Positive Integer</em>'.
+	 * Returns the meta object for data type '<em>Core</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for data type '<em>Positive Integer</em>'.
+	 * @return the meta object for data type '<em>Core</em>'.
 	 * @model instanceClass="int"
+	 *        extendedMetaData="minExclusive='0'"
 	 * @generated
 	 */
-	EDataType getPositiveInteger();
+	EDataType getCore();
 
 	/**
 	 * Returns the meta object for data type '<em>GHz</em>'.
@@ -1618,6 +1741,7 @@ public interface InfrastructurePackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @return the meta object for data type '<em>GHz</em>'.
 	 * @model instanceClass="float"
+	 *        extendedMetaData="minExclusive='0'"
 	 * @generated
 	 */
 	EDataType getGHz();
@@ -1628,6 +1752,7 @@ public interface InfrastructurePackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @return the meta object for data type '<em>Gi B</em>'.
 	 * @model instanceClass="float"
+	 *        extendedMetaData="minExclusive='0'"
 	 * @generated
 	 */
 	EDataType getGiB();
@@ -1642,6 +1767,28 @@ public interface InfrastructurePackage extends EPackage {
 	 * @generated
 	 */
 	EDataType getIpAddressRange();
+
+	/**
+	 * Returns the meta object for data type '{@link java.lang.String <em>Mac</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Mac</em>'.
+	 * @see java.lang.String
+	 * @model instanceClass="java.lang.String"
+	 * @generated
+	 */
+	EDataType getMac();
+
+	/**
+	 * Returns the meta object for data type '<em>Share</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Share</em>'.
+	 * @model instanceClass="int"
+	 *        extendedMetaData="minInclusive='0'"
+	 * @generated
+	 */
+	EDataType getShare();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1700,6 +1847,14 @@ public interface InfrastructurePackage extends EPackage {
 		EAttribute NETWORK__STATE = eINSTANCE.getNetwork_State();
 
 		/**
+		 * The meta object literal for the '<em><b>Message</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NETWORK__MESSAGE = eINSTANCE.getNetwork_Message();
+
+		/**
 		 * The meta object literal for the '<em><b>Up</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1750,6 +1905,14 @@ public interface InfrastructurePackage extends EPackage {
 		EAttribute COMPUTE__HOSTNAME = eINSTANCE.getCompute_Hostname();
 
 		/**
+		 * The meta object literal for the '<em><b>Share</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute COMPUTE__SHARE = eINSTANCE.getCompute_Share();
+
+		/**
 		 * The meta object literal for the '<em><b>Speed</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1772,6 +1935,14 @@ public interface InfrastructurePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute COMPUTE__STATE = eINSTANCE.getCompute_State();
+
+		/**
+		 * The meta object literal for the '<em><b>Message</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute COMPUTE__MESSAGE = eINSTANCE.getCompute_Message();
 
 		/**
 		 * The meta object literal for the '<em><b>Start</b></em>' operation.
@@ -1806,6 +1977,14 @@ public interface InfrastructurePackage extends EPackage {
 		EOperation COMPUTE___SUSPEND__SUSPENDMETHOD = eINSTANCE.getCompute__Suspend__SuspendMethod();
 
 		/**
+		 * The meta object literal for the '<em><b>Save</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation COMPUTE___SAVE__SAVEMETHOD_STRING = eINSTANCE.getCompute__Save__SaveMethod_String();
+
+		/**
 		 * The meta object literal for the '{@link org.occiware.clouddesigner.occi.infrastructure.impl.StorageImpl <em>Storage</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1832,6 +2011,14 @@ public interface InfrastructurePackage extends EPackage {
 		EAttribute STORAGE__STATE = eINSTANCE.getStorage_State();
 
 		/**
+		 * The meta object literal for the '<em><b>Message</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STORAGE__MESSAGE = eINSTANCE.getStorage_Message();
+
+		/**
 		 * The meta object literal for the '<em><b>Online</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1846,30 +2033,6 @@ public interface InfrastructurePackage extends EPackage {
 		 * @generated
 		 */
 		EOperation STORAGE___OFFLINE = eINSTANCE.getStorage__Offline();
-
-		/**
-		 * The meta object literal for the '<em><b>Backup</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation STORAGE___BACKUP = eINSTANCE.getStorage__Backup();
-
-		/**
-		 * The meta object literal for the '<em><b>Snapshot</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation STORAGE___SNAPSHOT = eINSTANCE.getStorage__Snapshot();
-
-		/**
-		 * The meta object literal for the '<em><b>Resize</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation STORAGE___RESIZE__FLOAT = eINSTANCE.getStorage__Resize__float();
 
 		/**
 		 * The meta object literal for the '{@link org.occiware.clouddesigner.occi.infrastructure.impl.StoragelinkImpl <em>Storagelink</em>}' class.
@@ -1906,6 +2069,14 @@ public interface InfrastructurePackage extends EPackage {
 		EAttribute STORAGELINK__STATE = eINSTANCE.getStoragelink_State();
 
 		/**
+		 * The meta object literal for the '<em><b>Message</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STORAGELINK__MESSAGE = eINSTANCE.getStoragelink_Message();
+
+		/**
 		 * The meta object literal for the '{@link org.occiware.clouddesigner.occi.infrastructure.impl.NetworkinterfaceImpl <em>Networkinterface</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1938,6 +2109,14 @@ public interface InfrastructurePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute NETWORKINTERFACE__STATE = eINSTANCE.getNetworkinterface_State();
+
+		/**
+		 * The meta object literal for the '<em><b>Message</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NETWORKINTERFACE__MESSAGE = eINSTANCE.getNetworkinterface_Message();
 
 		/**
 		 * The meta object literal for the '{@link org.occiware.clouddesigner.occi.infrastructure.SuspendMethod <em>Suspend Method</em>}' enum.
@@ -2040,13 +2219,23 @@ public interface InfrastructurePackage extends EPackage {
 		EEnum STORAGE_LINK_STATUS = eINSTANCE.getStorageLinkStatus();
 
 		/**
-		 * The meta object literal for the '<em>Integer4095</em>' data type.
+		 * The meta object literal for the '{@link org.occiware.clouddesigner.occi.infrastructure.SaveMethod <em>Save Method</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.occiware.clouddesigner.occi.infrastructure.impl.InfrastructurePackageImpl#getInteger4095()
+		 * @see org.occiware.clouddesigner.occi.infrastructure.SaveMethod
+		 * @see org.occiware.clouddesigner.occi.infrastructure.impl.InfrastructurePackageImpl#getSaveMethod()
 		 * @generated
 		 */
-		EDataType INTEGER4095 = eINSTANCE.getInteger4095();
+		EEnum SAVE_METHOD = eINSTANCE.getSaveMethod();
+
+		/**
+		 * The meta object literal for the '<em>Vlan</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.occiware.clouddesigner.occi.infrastructure.impl.InfrastructurePackageImpl#getVlan()
+		 * @generated
+		 */
+		EDataType VLAN = eINSTANCE.getVlan();
 
 		/**
 		 * The meta object literal for the '<em>Token</em>' data type.
@@ -2069,13 +2258,13 @@ public interface InfrastructurePackage extends EPackage {
 		EDataType IP_ADDRESS = eINSTANCE.getIpAddress();
 
 		/**
-		 * The meta object literal for the '<em>Positive Integer</em>' data type.
+		 * The meta object literal for the '<em>Core</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.occiware.clouddesigner.occi.infrastructure.impl.InfrastructurePackageImpl#getPositiveInteger()
+		 * @see org.occiware.clouddesigner.occi.infrastructure.impl.InfrastructurePackageImpl#getCore()
 		 * @generated
 		 */
-		EDataType POSITIVE_INTEGER = eINSTANCE.getPositiveInteger();
+		EDataType CORE = eINSTANCE.getCore();
 
 		/**
 		 * The meta object literal for the '<em>GHz</em>' data type.
@@ -2104,6 +2293,25 @@ public interface InfrastructurePackage extends EPackage {
 		 * @generated
 		 */
 		EDataType IP_ADDRESS_RANGE = eINSTANCE.getIpAddressRange();
+
+		/**
+		 * The meta object literal for the '<em>Mac</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.lang.String
+		 * @see org.occiware.clouddesigner.occi.infrastructure.impl.InfrastructurePackageImpl#getMac()
+		 * @generated
+		 */
+		EDataType MAC = eINSTANCE.getMac();
+
+		/**
+		 * The meta object literal for the '<em>Share</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.occiware.clouddesigner.occi.infrastructure.impl.InfrastructurePackageImpl#getShare()
+		 * @generated
+		 */
+		EDataType SHARE = eINSTANCE.getShare();
 
 	}
 

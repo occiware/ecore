@@ -19,119 +19,95 @@ import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the literals of the enumeration '<em><b>Network Interface Status</b></em>',
+ * A representation of the literals of the enumeration '<em><b>Save Method</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getNetworkInterfaceStatus()
+ * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getSaveMethod()
  * @model
  * @generated
  */
-public enum NetworkInterfaceStatus implements Enumerator {
+public enum SaveMethod implements Enumerator {
 	/**
-	 * The '<em><b>Active</b></em>' literal object.
+	 * The '<em><b>Hot</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #ACTIVE_VALUE
+	 * @see #HOT_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	ACTIVE(0, "active", "active"),
+	HOT(0, "hot", "hot"),
 
 	/**
-	 * The '<em><b>Inactive</b></em>' literal object.
+	 * The '<em><b>Deferred</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #INACTIVE_VALUE
+	 * @see #DEFERRED_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	INACTIVE(1, "inactive", "inactive"), /**
-	 * The '<em><b>Error</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #ERROR_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	ERROR(2, "error", "error");
+	DEFERRED(1, "deferred", "deferred");
 
 	/**
-	 * The '<em><b>Active</b></em>' literal value.
+	 * The '<em><b>Hot</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Active</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>Hot</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #ACTIVE
-	 * @model name="active"
+	 * @see #HOT
+	 * @model name="hot"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int ACTIVE_VALUE = 0;
+	public static final int HOT_VALUE = 0;
 
 	/**
-	 * The '<em><b>Inactive</b></em>' literal value.
+	 * The '<em><b>Deferred</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Inactive</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>Deferred</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #INACTIVE
-	 * @model name="inactive"
+	 * @see #DEFERRED
+	 * @model name="deferred"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int INACTIVE_VALUE = 1;
+	public static final int DEFERRED_VALUE = 1;
 
 	/**
-	 * The '<em><b>Error</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Error</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @see #ERROR
-	 * @model name="error"
-	 * @generated
-	 * @ordered
-	 */
-	public static final int ERROR_VALUE = 2;
-
-	/**
-	 * An array of all the '<em><b>Network Interface Status</b></em>' enumerators.
+	 * An array of all the '<em><b>Save Method</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final NetworkInterfaceStatus[] VALUES_ARRAY =
-		new NetworkInterfaceStatus[] {
-			ACTIVE,
-			INACTIVE,
-			ERROR,
+	private static final SaveMethod[] VALUES_ARRAY =
+		new SaveMethod[] {
+			HOT,
+			DEFERRED,
 		};
 
 	/**
-	 * A public read-only list of all the '<em><b>Network Interface Status</b></em>' enumerators.
+	 * A public read-only list of all the '<em><b>Save Method</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<NetworkInterfaceStatus> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<SaveMethod> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Network Interface Status</b></em>' literal with the specified literal value.
+	 * Returns the '<em><b>Save Method</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param literal the literal.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static NetworkInterfaceStatus get(String literal) {
+	public static SaveMethod get(String literal) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			NetworkInterfaceStatus result = VALUES_ARRAY[i];
+			SaveMethod result = VALUES_ARRAY[i];
 			if (result.toString().equals(literal)) {
 				return result;
 			}
@@ -140,16 +116,16 @@ public enum NetworkInterfaceStatus implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Network Interface Status</b></em>' literal with the specified name.
+	 * Returns the '<em><b>Save Method</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name the name.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static NetworkInterfaceStatus getByName(String name) {
+	public static SaveMethod getByName(String name) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			NetworkInterfaceStatus result = VALUES_ARRAY[i];
+			SaveMethod result = VALUES_ARRAY[i];
 			if (result.getName().equals(name)) {
 				return result;
 			}
@@ -158,18 +134,17 @@ public enum NetworkInterfaceStatus implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Network Interface Status</b></em>' literal with the specified integer value.
+	 * Returns the '<em><b>Save Method</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the integer value.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static NetworkInterfaceStatus get(int value) {
+	public static SaveMethod get(int value) {
 		switch (value) {
-			case ACTIVE_VALUE: return ACTIVE;
-			case INACTIVE_VALUE: return INACTIVE;
-			case ERROR_VALUE: return ERROR;
+			case HOT_VALUE: return HOT;
+			case DEFERRED_VALUE: return DEFERRED;
 		}
 		return null;
 	}
@@ -201,7 +176,7 @@ public enum NetworkInterfaceStatus implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private NetworkInterfaceStatus(int value, String name, String literal) {
+	private SaveMethod(int value, String name, String literal) {
 		this.value = value;
 		this.name = name;
 		this.literal = literal;
@@ -245,4 +220,4 @@ public enum NetworkInterfaceStatus implements Enumerator {
 		return literal;
 	}
 	
-} //NetworkInterfaceStatus
+} //SaveMethod

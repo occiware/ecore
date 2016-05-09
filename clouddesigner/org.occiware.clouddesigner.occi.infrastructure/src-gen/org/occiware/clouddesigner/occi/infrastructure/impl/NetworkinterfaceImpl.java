@@ -34,6 +34,7 @@ import org.occiware.clouddesigner.occi.infrastructure.Networkinterface;
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.impl.NetworkinterfaceImpl#getInterface <em>Interface</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.impl.NetworkinterfaceImpl#getMac <em>Mac</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.impl.NetworkinterfaceImpl#getState <em>State</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.impl.NetworkinterfaceImpl#getMessage <em>Message</em>}</li>
  * </ul>
  *
  * @generated
@@ -98,6 +99,26 @@ public class NetworkinterfaceImpl extends LinkImpl implements Networkinterface {
 	 * @ordered
 	 */
 	protected NetworkInterfaceStatus state = STATE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getMessage() <em>Message</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMessage()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String MESSAGE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getMessage() <em>Message</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMessage()
+	 * @generated
+	 * @ordered
+	 */
+	protected String message = MESSAGE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -186,6 +207,27 @@ public class NetworkinterfaceImpl extends LinkImpl implements Networkinterface {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getMessage() {
+		return message;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMessage(String newMessage) {
+		String oldMessage = message;
+		message = newMessage;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, InfrastructurePackage.NETWORKINTERFACE__MESSAGE, oldMessage, message));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -195,6 +237,8 @@ public class NetworkinterfaceImpl extends LinkImpl implements Networkinterface {
 				return getMac();
 			case InfrastructurePackage.NETWORKINTERFACE__STATE:
 				return getState();
+			case InfrastructurePackage.NETWORKINTERFACE__MESSAGE:
+				return getMessage();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -215,6 +259,9 @@ public class NetworkinterfaceImpl extends LinkImpl implements Networkinterface {
 				return;
 			case InfrastructurePackage.NETWORKINTERFACE__STATE:
 				setState((NetworkInterfaceStatus)newValue);
+				return;
+			case InfrastructurePackage.NETWORKINTERFACE__MESSAGE:
+				setMessage((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -237,6 +284,9 @@ public class NetworkinterfaceImpl extends LinkImpl implements Networkinterface {
 			case InfrastructurePackage.NETWORKINTERFACE__STATE:
 				setState(STATE_EDEFAULT);
 				return;
+			case InfrastructurePackage.NETWORKINTERFACE__MESSAGE:
+				setMessage(MESSAGE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -255,6 +305,8 @@ public class NetworkinterfaceImpl extends LinkImpl implements Networkinterface {
 				return MAC_EDEFAULT == null ? mac != null : !MAC_EDEFAULT.equals(mac);
 			case InfrastructurePackage.NETWORKINTERFACE__STATE:
 				return state != STATE_EDEFAULT;
+			case InfrastructurePackage.NETWORKINTERFACE__MESSAGE:
+				return MESSAGE_EDEFAULT == null ? message != null : !MESSAGE_EDEFAULT.equals(message);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -275,6 +327,8 @@ public class NetworkinterfaceImpl extends LinkImpl implements Networkinterface {
 		result.append(mac);
 		result.append(", state: ");
 		result.append(state);
+		result.append(", message: ");
+		result.append(message);
 		result.append(')');
 		return result.toString();
 	}

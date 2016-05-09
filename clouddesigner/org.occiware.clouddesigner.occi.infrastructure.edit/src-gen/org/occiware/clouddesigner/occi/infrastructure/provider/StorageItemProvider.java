@@ -63,6 +63,7 @@ public class StorageItemProvider extends ResourceItemProvider {
 
 			addSizePropertyDescriptor(object);
 			addStatePropertyDescriptor(object);
+			addMessagePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -112,6 +113,28 @@ public class StorageItemProvider extends ResourceItemProvider {
 	}
 
 	/**
+	 * This adds a property descriptor for the Message feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addMessagePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Storage_message_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Storage_message_feature", "_UI_Storage_type"),
+				 InfrastructurePackage.Literals.STORAGE__MESSAGE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns Storage.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -151,6 +174,7 @@ public class StorageItemProvider extends ResourceItemProvider {
 		switch (notification.getFeatureID(Storage.class)) {
 			case InfrastructurePackage.STORAGE__SIZE:
 			case InfrastructurePackage.STORAGE__STATE:
+			case InfrastructurePackage.STORAGE__MESSAGE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

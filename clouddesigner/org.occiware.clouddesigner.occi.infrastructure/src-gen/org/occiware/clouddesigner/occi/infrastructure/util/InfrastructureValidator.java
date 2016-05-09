@@ -135,20 +135,26 @@ public class InfrastructureValidator extends EObjectValidator {
 				return validateStorageStatus((StorageStatus)value, diagnostics, context);
 			case InfrastructurePackage.STORAGE_LINK_STATUS:
 				return validateStorageLinkStatus((StorageLinkStatus)value, diagnostics, context);
-			case InfrastructurePackage.INTEGER4095:
-				return validateInteger4095((Integer)value, diagnostics, context);
+			case InfrastructurePackage.SAVE_METHOD:
+				return validateSaveMethod((SaveMethod)value, diagnostics, context);
+			case InfrastructurePackage.VLAN:
+				return validateVlan((Integer)value, diagnostics, context);
 			case InfrastructurePackage.TOKEN:
 				return validateToken((String)value, diagnostics, context);
 			case InfrastructurePackage.IP_ADDRESS:
 				return validateIpAddress((String)value, diagnostics, context);
-			case InfrastructurePackage.POSITIVE_INTEGER:
-				return validatePositiveInteger((Integer)value, diagnostics, context);
+			case InfrastructurePackage.CORE:
+				return validateCore((Integer)value, diagnostics, context);
 			case InfrastructurePackage.GHZ:
 				return validateGHz((Float)value, diagnostics, context);
 			case InfrastructurePackage.GI_B:
 				return validateGiB((Float)value, diagnostics, context);
 			case InfrastructurePackage.IP_ADDRESS_RANGE:
 				return validateIpAddressRange((String)value, diagnostics, context);
+			case InfrastructurePackage.MAC:
+				return validateMac((String)value, diagnostics, context);
+			case InfrastructurePackage.SHARE:
+				return validateShare((Integer)value, diagnostics, context);
 			default:
 				return true;
 		}
@@ -359,9 +365,18 @@ public class InfrastructureValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateInteger4095(int integer4095, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		boolean result = validateInteger4095_Min(integer4095, diagnostics, context);
-		if (result || diagnostics != null) result &= validateInteger4095_Max(integer4095, diagnostics, context);
+	public boolean validateSaveMethod(SaveMethod saveMethod, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateVlan(int vlan, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		boolean result = validateVlan_Min(vlan, diagnostics, context);
+		if (result || diagnostics != null) result &= validateVlan_Max(vlan, diagnostics, context);
 		return result;
 	}
 
@@ -369,20 +384,20 @@ public class InfrastructureValidator extends EObjectValidator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-	 * @see #validateInteger4095_Min
+	 * @see #validateVlan_Min
 	 */
-	public static final int INTEGER4095__MIN__VALUE = 0;
+	public static final int VLAN__MIN__VALUE = 0;
 
 	/**
-	 * Validates the Min constraint of '<em>Integer4095</em>'.
+	 * Validates the Min constraint of '<em>Vlan</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateInteger4095_Min(int integer4095, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		boolean result = integer4095 >= INTEGER4095__MIN__VALUE;
+	public boolean validateVlan_Min(int vlan, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		boolean result = vlan >= VLAN__MIN__VALUE;
 		if (!result && diagnostics != null)
-			reportMinViolation(InfrastructurePackage.Literals.INTEGER4095, integer4095, INTEGER4095__MIN__VALUE, true, diagnostics, context);
+			reportMinViolation(InfrastructurePackage.Literals.VLAN, vlan, VLAN__MIN__VALUE, true, diagnostics, context);
 		return result;
 	}
 
@@ -390,20 +405,20 @@ public class InfrastructureValidator extends EObjectValidator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-	 * @see #validateInteger4095_Max
+	 * @see #validateVlan_Max
 	 */
-	public static final int INTEGER4095__MAX__VALUE = 4095;
+	public static final int VLAN__MAX__VALUE = 4095;
 
 	/**
-	 * Validates the Max constraint of '<em>Integer4095</em>'.
+	 * Validates the Max constraint of '<em>Vlan</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateInteger4095_Max(int integer4095, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		boolean result = integer4095 <= INTEGER4095__MAX__VALUE;
+	public boolean validateVlan_Max(int vlan, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		boolean result = vlan <= VLAN__MAX__VALUE;
 		if (!result && diagnostics != null)
-			reportMaxViolation(InfrastructurePackage.Literals.INTEGER4095, integer4095, INTEGER4095__MAX__VALUE, true, diagnostics, context);
+			reportMaxViolation(InfrastructurePackage.Literals.VLAN, vlan, VLAN__MAX__VALUE, true, diagnostics, context);
 		return result;
 	}
 
@@ -430,8 +445,30 @@ public class InfrastructureValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePositiveInteger(int positiveInteger, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return true;
+	public boolean validateCore(int core, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		boolean result = validateCore_Min(core, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @see #validateCore_Min
+	 */
+	public static final int CORE__MIN__VALUE = 0;
+
+	/**
+	 * Validates the Min constraint of '<em>Core</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateCore_Min(int core, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		boolean result = core > CORE__MIN__VALUE;
+		if (!result && diagnostics != null)
+			reportMinViolation(InfrastructurePackage.Literals.CORE, core, CORE__MIN__VALUE, false, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -440,7 +477,29 @@ public class InfrastructureValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateGHz(float gHz, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return true;
+		boolean result = validateGHz_Min(gHz, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @see #validateGHz_Min
+	 */
+	public static final float GHZ__MIN__VALUE = 0.0F;
+
+	/**
+	 * Validates the Min constraint of '<em>GHz</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateGHz_Min(float gHz, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		boolean result = gHz > GHZ__MIN__VALUE;
+		if (!result && diagnostics != null)
+			reportMinViolation(InfrastructurePackage.Literals.GHZ, gHz, GHZ__MIN__VALUE, false, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -449,7 +508,29 @@ public class InfrastructureValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateGiB(float giB, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return true;
+		boolean result = validateGiB_Min(giB, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @see #validateGiB_Min
+	 */
+	public static final float GI_B__MIN__VALUE = 0.0F;
+
+	/**
+	 * Validates the Min constraint of '<em>Gi B</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateGiB_Min(float giB, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		boolean result = giB > GI_B__MIN__VALUE;
+		if (!result && diagnostics != null)
+			reportMinViolation(InfrastructurePackage.Literals.GI_B, giB, GI_B__MIN__VALUE, false, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -459,6 +540,46 @@ public class InfrastructureValidator extends EObjectValidator {
 	 */
 	public boolean validateIpAddressRange(String ipAddressRange, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateMac(String mac, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateShare(int share, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		boolean result = validateShare_Min(share, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @see #validateShare_Min
+	 */
+	public static final int SHARE__MIN__VALUE = 0;
+
+	/**
+	 * Validates the Min constraint of '<em>Share</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateShare_Min(int share, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		boolean result = share >= SHARE__MIN__VALUE;
+		if (!result && diagnostics != null)
+			reportMinViolation(InfrastructurePackage.Literals.SHARE, share, SHARE__MIN__VALUE, true, diagnostics, context);
+		return result;
 	}
 
 	/**

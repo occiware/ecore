@@ -45,7 +45,15 @@ public enum StorageLinkStatus implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	INACTIVE(1, "inactive", "inactive");
+	INACTIVE(1, "inactive", "inactive"), /**
+	 * The '<em><b>Error</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #ERROR_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	ERROR(2, "error", "error");
 
 	/**
 	 * The '<em><b>Active</b></em>' literal value.
@@ -78,6 +86,21 @@ public enum StorageLinkStatus implements Enumerator {
 	public static final int INACTIVE_VALUE = 1;
 
 	/**
+	 * The '<em><b>Error</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>Error</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #ERROR
+	 * @model name="error"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ERROR_VALUE = 2;
+
+	/**
 	 * An array of all the '<em><b>Storage Link Status</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -87,6 +110,7 @@ public enum StorageLinkStatus implements Enumerator {
 		new StorageLinkStatus[] {
 			ACTIVE,
 			INACTIVE,
+			ERROR,
 		};
 
 	/**
@@ -145,6 +169,7 @@ public enum StorageLinkStatus implements Enumerator {
 		switch (value) {
 			case ACTIVE_VALUE: return ACTIVE;
 			case INACTIVE_VALUE: return INACTIVE;
+			case ERROR_VALUE: return ERROR;
 		}
 		return null;
 	}

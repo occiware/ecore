@@ -64,6 +64,7 @@ public class NetworkItemProvider extends ResourceItemProvider {
 			addVlanPropertyDescriptor(object);
 			addLabelPropertyDescriptor(object);
 			addStatePropertyDescriptor(object);
+			addMessagePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -135,6 +136,28 @@ public class NetworkItemProvider extends ResourceItemProvider {
 	}
 
 	/**
+	 * This adds a property descriptor for the Message feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addMessagePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Network_message_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Network_message_feature", "_UI_Network_type"),
+				 InfrastructurePackage.Literals.NETWORK__MESSAGE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns Network.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -175,6 +198,7 @@ public class NetworkItemProvider extends ResourceItemProvider {
 			case InfrastructurePackage.NETWORK__VLAN:
 			case InfrastructurePackage.NETWORK__LABEL:
 			case InfrastructurePackage.NETWORK__STATE:
+			case InfrastructurePackage.NETWORK__MESSAGE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

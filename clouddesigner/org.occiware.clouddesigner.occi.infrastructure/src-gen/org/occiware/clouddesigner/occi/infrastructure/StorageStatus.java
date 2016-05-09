@@ -48,44 +48,14 @@ public enum StorageStatus implements Enumerator {
 	OFFLINE(1, "offline", "offline"),
 
 	/**
-	 * The '<em><b>Backup</b></em>' literal object.
+	 * The '<em><b>Error</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #BACKUP_VALUE
+	 * @see #ERROR_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	BACKUP(2, "backup", "backup"),
-
-	/**
-	 * The '<em><b>Snapshot</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #SNAPSHOT_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	SNAPSHOT(3, "snapshot", "snapshot"),
-
-	/**
-	 * The '<em><b>Resize</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #RESIZE_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	RESIZE(4, "resize", "resize"),
-
-	/**
-	 * The '<em><b>Degraded</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #DEGRADED_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	DEGRADED(5, "degraded", "degraded");
+	ERROR(2, "error", "error");
 
 	/**
 	 * The '<em><b>Online</b></em>' literal value.
@@ -118,64 +88,19 @@ public enum StorageStatus implements Enumerator {
 	public static final int OFFLINE_VALUE = 1;
 
 	/**
-	 * The '<em><b>Backup</b></em>' literal value.
+	 * The '<em><b>Error</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Backup</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>Error</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #BACKUP
-	 * @model name="backup"
+	 * @see #ERROR
+	 * @model name="error"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int BACKUP_VALUE = 2;
-
-	/**
-	 * The '<em><b>Snapshot</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Snapshot</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @see #SNAPSHOT
-	 * @model name="snapshot"
-	 * @generated
-	 * @ordered
-	 */
-	public static final int SNAPSHOT_VALUE = 3;
-
-	/**
-	 * The '<em><b>Resize</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Resize</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @see #RESIZE
-	 * @model name="resize"
-	 * @generated
-	 * @ordered
-	 */
-	public static final int RESIZE_VALUE = 4;
-
-	/**
-	 * The '<em><b>Degraded</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Degraded</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @see #DEGRADED
-	 * @model name="degraded"
-	 * @generated
-	 * @ordered
-	 */
-	public static final int DEGRADED_VALUE = 5;
+	public static final int ERROR_VALUE = 2;
 
 	/**
 	 * An array of all the '<em><b>Storage Status</b></em>' enumerators.
@@ -187,10 +112,7 @@ public enum StorageStatus implements Enumerator {
 		new StorageStatus[] {
 			ONLINE,
 			OFFLINE,
-			BACKUP,
-			SNAPSHOT,
-			RESIZE,
-			DEGRADED,
+			ERROR,
 		};
 
 	/**
@@ -249,10 +171,7 @@ public enum StorageStatus implements Enumerator {
 		switch (value) {
 			case ONLINE_VALUE: return ONLINE;
 			case OFFLINE_VALUE: return OFFLINE;
-			case BACKUP_VALUE: return BACKUP;
-			case SNAPSHOT_VALUE: return SNAPSHOT;
-			case RESIZE_VALUE: return RESIZE;
-			case DEGRADED_VALUE: return DEGRADED;
+			case ERROR_VALUE: return ERROR;
 		}
 		return null;
 	}

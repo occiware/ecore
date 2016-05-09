@@ -29,6 +29,7 @@ import org.occiware.clouddesigner.occi.infrastructure.InfrastructureFactory;
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.Compute#stop(org.occiware.clouddesigner.occi.infrastructure.StopMethod) <em>Stop</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.Compute#restart(org.occiware.clouddesigner.occi.infrastructure.RestartMethod) <em>Restart</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.Compute#suspend(org.occiware.clouddesigner.occi.infrastructure.SuspendMethod) <em>Suspend</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.Compute#save(org.occiware.clouddesigner.occi.infrastructure.SaveMethod, java.lang.String) <em>Save</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -151,6 +152,19 @@ public class ComputeTest extends TestCase {
 	 * @generated
 	 */
 	public void testSuspend__SuspendMethod() {
+		// TODO: implement this operation test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link org.occiware.clouddesigner.occi.infrastructure.Compute#save(org.occiware.clouddesigner.occi.infrastructure.SaveMethod, java.lang.String) <em>Save</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.occiware.clouddesigner.occi.infrastructure.Compute#save(org.occiware.clouddesigner.occi.infrastructure.SaveMethod, java.lang.String)
+	 * @generated
+	 */
+	public void testSave__SaveMethod_String() {
 		// TODO: implement this operation test method
 		// Ensure that you remove @generated or mark it @generated NOT
 		fail();

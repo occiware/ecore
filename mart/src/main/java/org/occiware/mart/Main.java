@@ -122,16 +122,18 @@ public class Main
 					Storage storage = (Storage)resource;
 					storage.online();
 					storage.offline();
-					storage.backup();
-					storage.snapshot();
-					storage.resize(100);
+// Following actions were removed from OCCI Infrastructure 1.2
+//					storage.backup();
+//					storage.snapshot();
+//					storage.resize(100);
 					System.out.println(storage);
 					// Dynamic OCCI invocation.
 					OcciHelper.executeAction(resource, "online");
 					OcciHelper.executeAction(resource, "offline");
-					OcciHelper.executeAction(resource, "backup");
-					OcciHelper.executeAction(resource, "snapshot");
-					OcciHelper.executeAction(resource, "resize", "100");
+// Following actions were removed from OCCI Infrastructure 1.2
+//					OcciHelper.executeAction(resource, "backup");
+//					OcciHelper.executeAction(resource, "snapshot");
+//					OcciHelper.executeAction(resource, "resize", "100");
 					System.out.println(resource);
 				}
 			}

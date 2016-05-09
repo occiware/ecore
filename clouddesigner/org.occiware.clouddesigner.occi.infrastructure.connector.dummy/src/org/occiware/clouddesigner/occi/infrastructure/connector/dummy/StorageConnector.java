@@ -9,88 +9,170 @@
  * Contributors:
  * - Philippe Merle <philippe.merle@inria.fr>
  *
- * Generated at Sun Apr 17 01:09:07 CEST 2016 from platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie by org.occiware.clouddesigner.occi.gen.connector
+ * Generated at Tue May 10 00:06:30 CEST 2016 from platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie by org.occiware.clouddesigner.occi.gen.connector
  */
 package org.occiware.clouddesigner.occi.infrastructure.connector.dummy;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import org.occiware.clouddesigner.occi.infrastructure.StorageStatus;
 
 /**
- * Connector implementation for OCCI kind http://schemas.ogf.org/occi/infrastructure#storage.
+ * Connector implementation for the OCCI kind:
+ * - scheme: http://schemas.ogf.org/occi/infrastructure#
+ * - term: storage
+ * - title: Storage Resource
  */
 public class StorageConnector extends org.occiware.clouddesigner.occi.infrastructure.impl.StorageImpl
 {
+	/**
+	 * Initialize the logger.
+	 */
+	private static Logger LOGGER = LoggerFactory.getLogger(StorageConnector.class);
+
 	/**
 	 * Constructs a storage connector.
 	 */
 	StorageConnector()
 	{
-		System.err.println("DEBUG constructor " + this);
+		LOGGER.debug("Constructor called on " + this);
+	}
+
+	//
+	// OCCI CRUD callback operations.
+	//
+
+	/**
+	 * Called when this Storage instance is completely created.
+	 */
+	@Override
+	public void occiCreate()
+	{
+		LOGGER.debug("occiCreate() called on " + this);
+
+		// TODO: Implement this callback or remove this method.
 	}
 
 	/**
-	 * OCCI action http://schemas.ogf.org/occi/infrastructure/storage/action#online.
+	 * Called when this Storage instance must be retrieved.
+	 */
+	@Override
+	public void occiRetrieve()
+	{
+		LOGGER.debug("occiRetrieve() called on " + this);
+
+		// TODO: Implement this callback or remove this method.
+	}
+
+	/**
+	 * Called when this Storage instance is completely updated.
+	 */
+	@Override
+	public void occiUpdate()
+	{
+		LOGGER.debug("occiUpdate() called on " + this);
+
+		// TODO: Implement this callback or remove this method.
+	}
+
+	/**
+	 * Called when this Storage instance will be deleted.
+	 */
+	@Override
+	public void occiDelete()
+	{
+		LOGGER.debug("occiDelete() called on " + this);
+
+		// TODO: Implement this callback or remove this method.
+	}
+
+	//
+	// Storage actions.
+	//
+
+	/**
+	 * Implement OCCI action:
+     * - scheme: http://schemas.ogf.org/occi/infrastructure/storage/action#
+     * - term: online
+     * - title: Set storage online
 	 */
 	@Override
 	public void online()
 	{
-		System.err.println("DEBUG online on " + this);
+		LOGGER.debug("Action online() called on " + this);
 
-		// Dummy online implementation.
+		// Storage State Machine.
+		switch(getState().getValue()) {
 
-		setState(StorageStatus.ONLINE);
+		case StorageStatus.ONLINE_VALUE:
+			LOGGER.debug("Fire transition(state=online, action=\"online\")...");
+
+			// Nothing to do.
+
+			break;
+
+		case StorageStatus.OFFLINE_VALUE:
+			LOGGER.debug("Fire transition(state=offline, action=\"online\")...");
+
+			// TODO Implement transition(state=offline, action="online")
+
+			setState(StorageStatus.ONLINE);
+			break;
+
+		case StorageStatus.ERROR_VALUE:
+			LOGGER.debug("Fire transition(state=error, action=\"online\")...");
+
+			// TODO Implement transition(state=error, action="online")
+
+			setState(StorageStatus.ONLINE);
+			break;
+
+		default:
+			break;
+		}
 	}
 
 	/**
-	 * OCCI action http://schemas.ogf.org/occi/infrastructure/storage/action#offline.
+	 * Implement OCCI action:
+     * - scheme: http://schemas.ogf.org/occi/infrastructure/storage/action#
+     * - term: offline
+     * - title: Set storage offline
 	 */
 	@Override
 	public void offline()
 	{
-		System.err.println("DEBUG offline on " + this);
+		LOGGER.debug("Action offline() called on " + this);
 
-		// Dummy offline implementation.
+		// Storage State Machine.
+		switch(getState().getValue()) {
 
-		setState(StorageStatus.OFFLINE);
+		case StorageStatus.ONLINE_VALUE:
+			LOGGER.debug("Fire transition(state=online, action=\"offline\")...");
+
+			// TODO Implement transition(state=online, action="offline")
+
+			setState(StorageStatus.OFFLINE);
+			break;
+
+		case StorageStatus.OFFLINE_VALUE:
+			LOGGER.debug("Fire transition(state=offline, action=\"offline\")...");
+
+			// Nothing to do.
+
+			break;
+
+		case StorageStatus.ERROR_VALUE:
+			LOGGER.debug("Fire transition(state=error, action=\"offline\")...");
+
+			// TODO Implement transition(state=error, action="offline")
+
+			setState(StorageStatus.OFFLINE);
+			break;
+
+		default:
+			break;
+		}
 	}
 
-	/**
-	 * OCCI action http://schemas.ogf.org/occi/infrastructure/storage/action#backup.
-	 */
-	@Override
-	public void backup()
-	{
-		System.err.println("DEBUG backup on " + this);
-
-		// Dummy backup implementation.
-
-		setState(StorageStatus.BACKUP);
-	}
-
-	/**
-	 * OCCI action http://schemas.ogf.org/occi/infrastructure/storage/action#snapshot.
-	 */
-	@Override
-	public void snapshot()
-	{
-		System.err.println("DEBUG snapshot on " + this);
-
-		// Dummy snapshot implementation.
-
-		setState(StorageStatus.SNAPSHOT);
-	}
-
-	/**
-	 * OCCI action http://schemas.ogf.org/occi/infrastructure/storage/action#resize.
-	 */
-	@Override
-	public void resize(final float size)
-	{
-		System.err.println("DEBUG resize on " + this);
-		System.err.println("  - size=" + size);
-
-		// Dummy resize implementation.
-
-		setSize(size);
-	}
 }	

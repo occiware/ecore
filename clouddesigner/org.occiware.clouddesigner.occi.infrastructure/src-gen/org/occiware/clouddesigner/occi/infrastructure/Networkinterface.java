@@ -25,6 +25,7 @@ import org.occiware.clouddesigner.occi.Link;
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.Networkinterface#getInterface <em>Interface</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.Networkinterface#getMac <em>Mac</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.Networkinterface#getState <em>State</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.Networkinterface#getMessage <em>Message</em>}</li>
  * </ul>
  *
  * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getNetworkinterface()
@@ -70,7 +71,7 @@ public interface Networkinterface extends Link {
 	 * @return the value of the '<em>Mac</em>' attribute.
 	 * @see #setMac(String)
 	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getNetworkinterface_Mac()
-	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
+	 * @model dataType="org.occiware.clouddesigner.occi.infrastructure.Mac" required="true"
 	 *        annotation="OCCIE2Ecore description='MAC address associated with the link\'s device interface'"
 	 * @generated
 	 */
@@ -115,5 +116,32 @@ public interface Networkinterface extends Link {
 	 * @generated
 	 */
 	void setState(NetworkInterfaceStatus value);
+
+	/**
+	 * Returns the value of the '<em><b>Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Message</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Message</em>' attribute.
+	 * @see #setMessage(String)
+	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getNetworkinterface_Message()
+	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='Human-readable explanation of the current instance state'"
+	 * @generated
+	 */
+	String getMessage();
+
+	/**
+	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.infrastructure.Networkinterface#getMessage <em>Message</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Message</em>' attribute.
+	 * @see #getMessage()
+	 * @generated
+	 */
+	void setMessage(String value);
 
 } // Networkinterface

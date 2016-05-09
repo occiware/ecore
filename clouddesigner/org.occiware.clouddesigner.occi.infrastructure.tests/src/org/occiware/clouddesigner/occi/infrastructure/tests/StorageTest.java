@@ -27,9 +27,6 @@ import org.occiware.clouddesigner.occi.infrastructure.Storage;
  * <ul>
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.Storage#online() <em>Online</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.Storage#offline() <em>Offline</em>}</li>
- *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.Storage#backup() <em>Backup</em>}</li>
- *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.Storage#snapshot() <em>Snapshot</em>}</li>
- *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.Storage#resize(float) <em>Resize</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -126,45 +123,6 @@ public class StorageTest extends TestCase {
 	 * @generated
 	 */
 	public void testOffline() {
-		// TODO: implement this operation test method
-		// Ensure that you remove @generated or mark it @generated NOT
-		fail();
-	}
-
-	/**
-	 * Tests the '{@link org.occiware.clouddesigner.occi.infrastructure.Storage#backup() <em>Backup</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.occiware.clouddesigner.occi.infrastructure.Storage#backup()
-	 * @generated
-	 */
-	public void testBackup() {
-		// TODO: implement this operation test method
-		// Ensure that you remove @generated or mark it @generated NOT
-		fail();
-	}
-
-	/**
-	 * Tests the '{@link org.occiware.clouddesigner.occi.infrastructure.Storage#snapshot() <em>Snapshot</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.occiware.clouddesigner.occi.infrastructure.Storage#snapshot()
-	 * @generated
-	 */
-	public void testSnapshot() {
-		// TODO: implement this operation test method
-		// Ensure that you remove @generated or mark it @generated NOT
-		fail();
-	}
-
-	/**
-	 * Tests the '{@link org.occiware.clouddesigner.occi.infrastructure.Storage#resize(float) <em>Resize</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.occiware.clouddesigner.occi.infrastructure.Storage#resize(float)
-	 * @generated
-	 */
-	public void testResize__float() {
 		// TODO: implement this operation test method
 		// Ensure that you remove @generated or mark it @generated NOT
 		fail();

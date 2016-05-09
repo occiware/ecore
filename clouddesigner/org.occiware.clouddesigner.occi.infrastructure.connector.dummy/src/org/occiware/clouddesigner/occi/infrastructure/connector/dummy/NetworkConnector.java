@@ -9,48 +9,170 @@
  * Contributors:
  * - Philippe Merle <philippe.merle@inria.fr>
  *
- * Generated at Sun Apr 17 01:09:07 CEST 2016 from platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie by org.occiware.clouddesigner.occi.gen.connector
+ * Generated at Tue May 10 00:06:30 CEST 2016 from platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie by org.occiware.clouddesigner.occi.gen.connector
  */
 package org.occiware.clouddesigner.occi.infrastructure.connector.dummy;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import org.occiware.clouddesigner.occi.infrastructure.NetworkStatus;
 
 /**
- * Connector implementation for OCCI kind http://schemas.ogf.org/occi/infrastructure#network.
+ * Connector implementation for the OCCI kind:
+ * - scheme: http://schemas.ogf.org/occi/infrastructure#
+ * - term: network
+ * - title: Network Resource
  */
 public class NetworkConnector extends org.occiware.clouddesigner.occi.infrastructure.impl.NetworkImpl
 {
+	/**
+	 * Initialize the logger.
+	 */
+	private static Logger LOGGER = LoggerFactory.getLogger(NetworkConnector.class);
+
 	/**
 	 * Constructs a network connector.
 	 */
 	NetworkConnector()
 	{
-		System.err.println("DEBUG constructor " + this);
+		LOGGER.debug("Constructor called on " + this);
+	}
+
+	//
+	// OCCI CRUD callback operations.
+	//
+
+	/**
+	 * Called when this Network instance is completely created.
+	 */
+	@Override
+	public void occiCreate()
+	{
+		LOGGER.debug("occiCreate() called on " + this);
+
+		// TODO: Implement this callback or remove this method.
 	}
 
 	/**
-	 * OCCI action http://schemas.ogf.org/occi/infrastructure/network/action#up.
+	 * Called when this Network instance must be retrieved.
+	 */
+	@Override
+	public void occiRetrieve()
+	{
+		LOGGER.debug("occiRetrieve() called on " + this);
+
+		// TODO: Implement this callback or remove this method.
+	}
+
+	/**
+	 * Called when this Network instance is completely updated.
+	 */
+	@Override
+	public void occiUpdate()
+	{
+		LOGGER.debug("occiUpdate() called on " + this);
+
+		// TODO: Implement this callback or remove this method.
+	}
+
+	/**
+	 * Called when this Network instance will be deleted.
+	 */
+	@Override
+	public void occiDelete()
+	{
+		LOGGER.debug("occiDelete() called on " + this);
+
+		// TODO: Implement this callback or remove this method.
+	}
+
+	//
+	// Network actions.
+	//
+
+	/**
+	 * Implement OCCI action:
+     * - scheme: http://schemas.ogf.org/occi/infrastructure/network/action#
+     * - term: up
+     * - title: 
 	 */
 	@Override
 	public void up()
 	{
-		System.err.println("DEBUG up on " + this);
+		LOGGER.debug("Action up() called on " + this);
 
-		// Dummy up implementation.
+		// Network State Machine.
+		switch(getState().getValue()) {
 
-		setState(NetworkStatus.ACTIVE);
+		case NetworkStatus.ACTIVE_VALUE:
+			LOGGER.debug("Fire transition(state=active, action=\"up\")...");
+
+			// Nothing to do.
+
+			break;
+
+		case NetworkStatus.INACTIVE_VALUE:
+			LOGGER.debug("Fire transition(state=inactive, action=\"up\")...");
+
+			// TODO Implement transition(state=inactive, action="up")
+
+			setState(NetworkStatus.ACTIVE);
+			break;
+
+		case NetworkStatus.ERROR_VALUE:
+			LOGGER.debug("Fire transition(state=error, action=\"up\")...");
+
+			// TODO Implement transition(state=error, action="up")
+
+			setState(NetworkStatus.ACTIVE);
+			break;
+
+		default:
+			break;
+		}
 	}
 
 	/**
-	 * OCCI action http://schemas.ogf.org/occi/infrastructure/network/action#down.
+	 * Implement OCCI action:
+     * - scheme: http://schemas.ogf.org/occi/infrastructure/network/action#
+     * - term: down
+     * - title: 
 	 */
 	@Override
 	public void down()
 	{
-		System.err.println("DEBUG down on " + this);
+		LOGGER.debug("Action down() called on " + this);
 
-		// Dummy down implementation.
+		// Network State Machine.
+		switch(getState().getValue()) {
 
-		setState(NetworkStatus.INACTIVE);
+		case NetworkStatus.ACTIVE_VALUE:
+			LOGGER.debug("Fire transition(state=active, action=\"down\")...");
+
+			// TODO Implement transition(state=active, action="down")
+
+			setState(NetworkStatus.INACTIVE);
+			break;
+
+		case NetworkStatus.INACTIVE_VALUE:
+			LOGGER.debug("Fire transition(state=inactive, action=\"down\")...");
+
+			// Nothing to do.
+
+			break;
+
+		case NetworkStatus.ERROR_VALUE:
+			LOGGER.debug("Fire transition(state=error, action=\"down\")...");
+
+			// TODO Implement transition(state=error, action="down")
+
+			setState(NetworkStatus.INACTIVE);
+			break;
+
+		default:
+			break;
+		}
 	}
+
 }	

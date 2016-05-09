@@ -25,6 +25,7 @@ import org.occiware.clouddesigner.occi.Link;
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.Storagelink#getDeviceid <em>Deviceid</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.Storagelink#getMountpoint <em>Mountpoint</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.Storagelink#getState <em>State</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.Storagelink#getMessage <em>Message</em>}</li>
  * </ul>
  *
  * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getStoragelink()
@@ -115,5 +116,32 @@ public interface Storagelink extends Link {
 	 * @generated
 	 */
 	void setState(StorageLinkStatus value);
+
+	/**
+	 * Returns the value of the '<em><b>Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Message</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Message</em>' attribute.
+	 * @see #setMessage(String)
+	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getStoragelink_Message()
+	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='Human-readable explanation of the current instance state'"
+	 * @generated
+	 */
+	String getMessage();
+
+	/**
+	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.infrastructure.Storagelink#getMessage <em>Message</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Message</em>' attribute.
+	 * @see #getMessage()
+	 * @generated
+	 */
+	void setMessage(String value);
 
 } // Storagelink

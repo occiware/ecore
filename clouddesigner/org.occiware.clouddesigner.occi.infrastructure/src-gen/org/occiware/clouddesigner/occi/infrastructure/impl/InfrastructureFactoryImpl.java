@@ -104,20 +104,26 @@ public class InfrastructureFactoryImpl extends EFactoryImpl implements Infrastru
 				return createStorageStatusFromString(eDataType, initialValue);
 			case InfrastructurePackage.STORAGE_LINK_STATUS:
 				return createStorageLinkStatusFromString(eDataType, initialValue);
-			case InfrastructurePackage.INTEGER4095:
-				return createInteger4095FromString(eDataType, initialValue);
+			case InfrastructurePackage.SAVE_METHOD:
+				return createSaveMethodFromString(eDataType, initialValue);
+			case InfrastructurePackage.VLAN:
+				return createVlanFromString(eDataType, initialValue);
 			case InfrastructurePackage.TOKEN:
 				return createTokenFromString(eDataType, initialValue);
 			case InfrastructurePackage.IP_ADDRESS:
 				return createIpAddressFromString(eDataType, initialValue);
-			case InfrastructurePackage.POSITIVE_INTEGER:
-				return createPositiveIntegerFromString(eDataType, initialValue);
+			case InfrastructurePackage.CORE:
+				return createCoreFromString(eDataType, initialValue);
 			case InfrastructurePackage.GHZ:
 				return createGHzFromString(eDataType, initialValue);
 			case InfrastructurePackage.GI_B:
 				return createGiBFromString(eDataType, initialValue);
 			case InfrastructurePackage.IP_ADDRESS_RANGE:
 				return createIpAddressRangeFromString(eDataType, initialValue);
+			case InfrastructurePackage.MAC:
+				return createMacFromString(eDataType, initialValue);
+			case InfrastructurePackage.SHARE:
+				return createShareFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -151,20 +157,26 @@ public class InfrastructureFactoryImpl extends EFactoryImpl implements Infrastru
 				return convertStorageStatusToString(eDataType, instanceValue);
 			case InfrastructurePackage.STORAGE_LINK_STATUS:
 				return convertStorageLinkStatusToString(eDataType, instanceValue);
-			case InfrastructurePackage.INTEGER4095:
-				return convertInteger4095ToString(eDataType, instanceValue);
+			case InfrastructurePackage.SAVE_METHOD:
+				return convertSaveMethodToString(eDataType, instanceValue);
+			case InfrastructurePackage.VLAN:
+				return convertVlanToString(eDataType, instanceValue);
 			case InfrastructurePackage.TOKEN:
 				return convertTokenToString(eDataType, instanceValue);
 			case InfrastructurePackage.IP_ADDRESS:
 				return convertIpAddressToString(eDataType, instanceValue);
-			case InfrastructurePackage.POSITIVE_INTEGER:
-				return convertPositiveIntegerToString(eDataType, instanceValue);
+			case InfrastructurePackage.CORE:
+				return convertCoreToString(eDataType, instanceValue);
 			case InfrastructurePackage.GHZ:
 				return convertGHzToString(eDataType, instanceValue);
 			case InfrastructurePackage.GI_B:
 				return convertGiBToString(eDataType, instanceValue);
 			case InfrastructurePackage.IP_ADDRESS_RANGE:
 				return convertIpAddressRangeToString(eDataType, instanceValue);
+			case InfrastructurePackage.MAC:
+				return convertMacToString(eDataType, instanceValue);
+			case InfrastructurePackage.SHARE:
+				return convertShareToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -425,7 +437,27 @@ public class InfrastructureFactoryImpl extends EFactoryImpl implements Infrastru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Integer createInteger4095FromString(EDataType eDataType, String initialValue) {
+	public SaveMethod createSaveMethodFromString(EDataType eDataType, String initialValue) {
+		SaveMethod result = SaveMethod.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertSaveMethodToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Integer createVlanFromString(EDataType eDataType, String initialValue) {
 		return (Integer)super.createFromString(eDataType, initialValue);
 	}
 
@@ -434,7 +466,7 @@ public class InfrastructureFactoryImpl extends EFactoryImpl implements Infrastru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertInteger4095ToString(EDataType eDataType, Object instanceValue) {
+	public String convertVlanToString(EDataType eDataType, Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
 	}
 
@@ -479,7 +511,7 @@ public class InfrastructureFactoryImpl extends EFactoryImpl implements Infrastru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Integer createPositiveIntegerFromString(EDataType eDataType, String initialValue) {
+	public Integer createCoreFromString(EDataType eDataType, String initialValue) {
 		return (Integer)super.createFromString(eDataType, initialValue);
 	}
 
@@ -488,7 +520,7 @@ public class InfrastructureFactoryImpl extends EFactoryImpl implements Infrastru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertPositiveIntegerToString(EDataType eDataType, Object instanceValue) {
+	public String convertCoreToString(EDataType eDataType, Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
 	}
 
@@ -543,6 +575,42 @@ public class InfrastructureFactoryImpl extends EFactoryImpl implements Infrastru
 	 * @generated
 	 */
 	public String convertIpAddressRangeToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String createMacFromString(EDataType eDataType, String initialValue) {
+		return (String)super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertMacToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Integer createShareFromString(EDataType eDataType, String initialValue) {
+		return (Integer)super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertShareToString(EDataType eDataType, Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
 	}
 

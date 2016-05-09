@@ -13,7 +13,7 @@
 -->
 <plugin>
 
-   <!-- Register factory for the Infrastructure dummy connector. -->
+   <!-- Register the factory of this connector. -->
    <extension point="org.eclipse.emf.ecore.factory_override">
       <factory
             uri="http://schemas.ogf.org/occi/infrastructure/ecore"

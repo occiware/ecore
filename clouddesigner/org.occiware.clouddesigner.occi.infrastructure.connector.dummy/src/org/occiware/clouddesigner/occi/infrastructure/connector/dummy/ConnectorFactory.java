@@ -9,17 +9,22 @@
  * Contributors:
  * - Philippe Merle <philippe.merle@inria.fr>
  *
- * Generated at Sun Apr 17 01:09:07 CEST 2016 from platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie by org.occiware.clouddesigner.occi.gen.connector
+ * Generated at Tue May 10 00:06:30 CEST 2016 from platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie by org.occiware.clouddesigner.occi.gen.connector
  */
 package org.occiware.clouddesigner.occi.infrastructure.connector.dummy;
 
 /**
- * Connector EFactory for OCCI extension named infrastructure with scheme http://schemas.ogf.org/occi/infrastructure#.
+ * Connector EFactory for the OCCI extension:
+ * - name: infrastructure
+ * - scheme: http://schemas.ogf.org/occi/infrastructure#
  */
 public class ConnectorFactory extends org.occiware.clouddesigner.occi.infrastructure.impl.InfrastructureFactoryImpl
 {
 	/**
-	 * EFactory method for OCCI kind http://schemas.ogf.org/occi/infrastructure#network.
+	 * EFactory method for OCCI kind:
+	 * - scheme: http://schemas.ogf.org/occi/infrastructure#
+	 * - term: network
+	 * - title: Network Resource
 	 */
 	@Override
 	public org.occiware.clouddesigner.occi.infrastructure.Network createNetwork() {
@@ -27,7 +32,10 @@ public class ConnectorFactory extends org.occiware.clouddesigner.occi.infrastruc
 	}
 
 	/**
-	 * EFactory method for OCCI kind http://schemas.ogf.org/occi/infrastructure#compute.
+	 * EFactory method for OCCI kind:
+	 * - scheme: http://schemas.ogf.org/occi/infrastructure#
+	 * - term: compute
+	 * - title: Compute Resource
 	 */
 	@Override
 	public org.occiware.clouddesigner.occi.infrastructure.Compute createCompute() {
@@ -35,7 +43,10 @@ public class ConnectorFactory extends org.occiware.clouddesigner.occi.infrastruc
 	}
 
 	/**
-	 * EFactory method for OCCI kind http://schemas.ogf.org/occi/infrastructure#storage.
+	 * EFactory method for OCCI kind:
+	 * - scheme: http://schemas.ogf.org/occi/infrastructure#
+	 * - term: storage
+	 * - title: Storage Resource
 	 */
 	@Override
 	public org.occiware.clouddesigner.occi.infrastructure.Storage createStorage() {
@@ -43,7 +54,10 @@ public class ConnectorFactory extends org.occiware.clouddesigner.occi.infrastruc
 	}
 
 	/**
-	 * EFactory method for OCCI kind http://schemas.ogf.org/occi/infrastructure#storagelink.
+	 * EFactory method for OCCI kind:
+	 * - scheme: http://schemas.ogf.org/occi/infrastructure#
+	 * - term: storagelink
+	 * - title: StorageLink Link
 	 */
 	@Override
 	public org.occiware.clouddesigner.occi.infrastructure.Storagelink createStoragelink() {
@@ -51,10 +65,14 @@ public class ConnectorFactory extends org.occiware.clouddesigner.occi.infrastruc
 	}
 
 	/**
-	 * EFactory method for OCCI kind http://schemas.ogf.org/occi/infrastructure#networkinterface.
+	 * EFactory method for OCCI kind:
+	 * - scheme: http://schemas.ogf.org/occi/infrastructure#
+	 * - term: networkinterface
+	 * - title: NetworkInterface Link
 	 */
 	@Override
 	public org.occiware.clouddesigner.occi.infrastructure.Networkinterface createNetworkinterface() {
 		return new NetworkinterfaceConnector();
 	}
+
 }

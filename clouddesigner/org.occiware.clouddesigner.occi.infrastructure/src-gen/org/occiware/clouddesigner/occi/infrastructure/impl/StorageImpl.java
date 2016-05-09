@@ -35,6 +35,7 @@ import org.occiware.clouddesigner.occi.infrastructure.StorageStatus;
  * <ul>
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.impl.StorageImpl#getSize <em>Size</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.impl.StorageImpl#getState <em>State</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.impl.StorageImpl#getMessage <em>Message</em>}</li>
  * </ul>
  *
  * @generated
@@ -79,6 +80,26 @@ public class StorageImpl extends ResourceImpl implements Storage {
 	 * @ordered
 	 */
 	protected StorageStatus state = STATE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getMessage() <em>Message</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMessage()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String MESSAGE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getMessage() <em>Message</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMessage()
+	 * @generated
+	 * @ordered
+	 */
+	protected String message = MESSAGE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -146,6 +167,27 @@ public class StorageImpl extends ResourceImpl implements Storage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getMessage() {
+		return message;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMessage(String newMessage) {
+		String oldMessage = message;
+		message = newMessage;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, InfrastructurePackage.STORAGE__MESSAGE, oldMessage, message));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void online() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -168,39 +210,6 @@ public class StorageImpl extends ResourceImpl implements Storage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void backup() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void snapshot() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void resize(float size) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -208,6 +217,8 @@ public class StorageImpl extends ResourceImpl implements Storage {
 				return getSize();
 			case InfrastructurePackage.STORAGE__STATE:
 				return getState();
+			case InfrastructurePackage.STORAGE__MESSAGE:
+				return getMessage();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -225,6 +236,9 @@ public class StorageImpl extends ResourceImpl implements Storage {
 				return;
 			case InfrastructurePackage.STORAGE__STATE:
 				setState((StorageStatus)newValue);
+				return;
+			case InfrastructurePackage.STORAGE__MESSAGE:
+				setMessage((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -244,6 +258,9 @@ public class StorageImpl extends ResourceImpl implements Storage {
 			case InfrastructurePackage.STORAGE__STATE:
 				setState(STATE_EDEFAULT);
 				return;
+			case InfrastructurePackage.STORAGE__MESSAGE:
+				setMessage(MESSAGE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -260,6 +277,8 @@ public class StorageImpl extends ResourceImpl implements Storage {
 				return size != SIZE_EDEFAULT;
 			case InfrastructurePackage.STORAGE__STATE:
 				return state != STATE_EDEFAULT;
+			case InfrastructurePackage.STORAGE__MESSAGE:
+				return MESSAGE_EDEFAULT == null ? message != null : !MESSAGE_EDEFAULT.equals(message);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -277,15 +296,6 @@ public class StorageImpl extends ResourceImpl implements Storage {
 				return null;
 			case InfrastructurePackage.STORAGE___OFFLINE:
 				offline();
-				return null;
-			case InfrastructurePackage.STORAGE___BACKUP:
-				backup();
-				return null;
-			case InfrastructurePackage.STORAGE___SNAPSHOT:
-				snapshot();
-				return null;
-			case InfrastructurePackage.STORAGE___RESIZE__FLOAT:
-				resize((Float)arguments.get(0));
 				return null;
 		}
 		return super.eInvoke(operationID, arguments);
@@ -305,6 +315,8 @@ public class StorageImpl extends ResourceImpl implements Storage {
 		result.append(size);
 		result.append(", state: ");
 		result.append(state);
+		result.append(", message: ");
+		result.append(message);
 		result.append(')');
 		return result.toString();
 	}

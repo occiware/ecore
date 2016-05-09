@@ -25,6 +25,7 @@ import org.occiware.clouddesigner.occi.Resource;
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.Network#getVlan <em>Vlan</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.Network#getLabel <em>Label</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.Network#getState <em>State</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.Network#getMessage <em>Message</em>}</li>
  * </ul>
  *
  * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getNetwork()
@@ -43,8 +44,8 @@ public interface Network extends Resource {
 	 * @return the value of the '<em>Vlan</em>' attribute.
 	 * @see #setVlan(int)
 	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getNetwork_Vlan()
-	 * @model dataType="org.occiware.clouddesigner.occi.infrastructure.Integer4095"
-	 *        annotation="OCCIE2Ecore description='802.1q VLAN Identifier (e.g. 343)'"
+	 * @model dataType="org.occiware.clouddesigner.occi.infrastructure.Vlan"
+	 *        annotation="OCCIE2Ecore description='802.1q VLAN Identifier (e.g., 343)'"
 	 * @generated
 	 */
 	int getVlan();
@@ -71,7 +72,7 @@ public interface Network extends Resource {
 	 * @see #setLabel(String)
 	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getNetwork_Label()
 	 * @model dataType="org.occiware.clouddesigner.occi.infrastructure.Token"
-	 *        annotation="OCCIE2Ecore description='Tag based VLANs (e.g. external-dmz)'"
+	 *        annotation="OCCIE2Ecore description='Tag based VLANs (e.g., external-dmz)'"
 	 * @generated
 	 */
 	String getLabel();
@@ -116,6 +117,33 @@ public interface Network extends Resource {
 	 * @generated
 	 */
 	void setState(NetworkStatus value);
+
+	/**
+	 * Returns the value of the '<em><b>Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Message</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Message</em>' attribute.
+	 * @see #setMessage(String)
+	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getNetwork_Message()
+	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='Human-readable explanation of the current instance state'"
+	 * @generated
+	 */
+	String getMessage();
+
+	/**
+	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.infrastructure.Network#getMessage <em>Message</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Message</em>' attribute.
+	 * @see #getMessage()
+	 * @generated
+	 */
+	void setMessage(String value);
 
 	/**
 	 * <!-- begin-user-doc -->

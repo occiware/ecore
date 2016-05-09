@@ -61,6 +61,7 @@ public class StoragelinkItemProvider extends LinkItemProvider {
 			addDeviceidPropertyDescriptor(object);
 			addMountpointPropertyDescriptor(object);
 			addStatePropertyDescriptor(object);
+			addMessagePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -132,6 +133,28 @@ public class StoragelinkItemProvider extends LinkItemProvider {
 	}
 
 	/**
+	 * This adds a property descriptor for the Message feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addMessagePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Storagelink_message_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Storagelink_message_feature", "_UI_Storagelink_type"),
+				 InfrastructurePackage.Literals.STORAGELINK__MESSAGE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns Storagelink.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -172,6 +195,7 @@ public class StoragelinkItemProvider extends LinkItemProvider {
 			case InfrastructurePackage.STORAGELINK__DEVICEID:
 			case InfrastructurePackage.STORAGELINK__MOUNTPOINT:
 			case InfrastructurePackage.STORAGELINK__STATE:
+			case InfrastructurePackage.STORAGELINK__MESSAGE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

@@ -9,77 +9,334 @@
  * Contributors:
  * - Philippe Merle <philippe.merle@inria.fr>
  *
- * Generated at Sun Apr 17 01:09:07 CEST 2016 from platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie by org.occiware.clouddesigner.occi.gen.connector
+ * Generated at Tue May 10 00:06:30 CEST 2016 from platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.occie by org.occiware.clouddesigner.occi.gen.connector
  */
 package org.occiware.clouddesigner.occi.infrastructure.connector.dummy;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import org.occiware.clouddesigner.occi.infrastructure.ComputeStatus;
 
 /**
- * Connector implementation for OCCI kind http://schemas.ogf.org/occi/infrastructure#compute.
+ * Connector implementation for the OCCI kind:
+ * - scheme: http://schemas.ogf.org/occi/infrastructure#
+ * - term: compute
+ * - title: Compute Resource
  */
 public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastructure.impl.ComputeImpl
 {
+	/**
+	 * Initialize the logger.
+	 */
+	private static Logger LOGGER = LoggerFactory.getLogger(ComputeConnector.class);
+
 	/**
 	 * Constructs a compute connector.
 	 */
 	ComputeConnector()
 	{
-		System.err.println("DEBUG constructor " + this);
+		LOGGER.debug("Constructor called on " + this);
+	}
+
+	//
+	// OCCI CRUD callback operations.
+	//
+
+	/**
+	 * Called when this Compute instance is completely created.
+	 */
+	@Override
+	public void occiCreate()
+	{
+		LOGGER.debug("occiCreate() called on " + this);
+
+		// TODO: Implement this callback or remove this method.
 	}
 
 	/**
-	 * OCCI action http://schemas.ogf.org/occi/infrastructure/compute/action#start.
+	 * Called when this Compute instance must be retrieved.
+	 */
+	@Override
+	public void occiRetrieve()
+	{
+		LOGGER.debug("occiRetrieve() called on " + this);
+
+		// TODO: Implement this callback or remove this method.
+	}
+
+	/**
+	 * Called when this Compute instance is completely updated.
+	 */
+	@Override
+	public void occiUpdate()
+	{
+		LOGGER.debug("occiUpdate() called on " + this);
+
+		// TODO: Implement this callback or remove this method.
+	}
+
+	/**
+	 * Called when this Compute instance will be deleted.
+	 */
+	@Override
+	public void occiDelete()
+	{
+		LOGGER.debug("occiDelete() called on " + this);
+
+		// TODO: Implement this callback or remove this method.
+	}
+
+	//
+	// Compute actions.
+	//
+
+	/**
+	 * Implement OCCI action:
+     * - scheme: http://schemas.ogf.org/occi/infrastructure/compute/action#
+     * - term: start
+     * - title: Start the system
 	 */
 	@Override
 	public void start()
 	{
-		System.err.println("DEBUG start on " + this);
+		LOGGER.debug("Action start() called on " + this);
 
-		// Dummy start implementation.
+		// Compute State Machine.
+		switch(getState().getValue()) {
 
-		setState(ComputeStatus.ACTIVE);
+		case ComputeStatus.ACTIVE_VALUE:
+			LOGGER.debug("Fire transition(state=active, action=\"start\")...");
+
+			// Nothing to do.
+
+			break;
+
+		case ComputeStatus.INACTIVE_VALUE:
+			LOGGER.debug("Fire transition(state=inactive, action=\"start\")...");
+
+			// TODO Implement transition(state=inactive, action="start")
+
+			setState(ComputeStatus.ACTIVE);
+			break;
+
+		case ComputeStatus.SUSPENDED_VALUE:
+			LOGGER.debug("Fire transition(state=suspended, action=\"start\")...");
+
+			// TODO Implement transition(state=suspended, action="start")
+
+			setState(ComputeStatus.ACTIVE);
+			break;
+
+		case ComputeStatus.ERROR_VALUE:
+			LOGGER.debug("Fire transition(state=error, action=\"start\")...");
+
+			// TODO Implement transition(state=error, action="start")
+
+			setState(ComputeStatus.ACTIVE);
+			break;
+
+		default:
+			break;
+		}
 	}
 
 	/**
-	 * OCCI action http://schemas.ogf.org/occi/infrastructure/compute/action#stop.
+	 * Implement OCCI action:
+     * - scheme: http://schemas.ogf.org/occi/infrastructure/compute/action#
+     * - term: stop
+     * - title: Stop the system (graceful, acpioff or poweroff)
 	 */
 	@Override
 	public void stop(final org.occiware.clouddesigner.occi.infrastructure.StopMethod method)
 	{
-		System.err.println("DEBUG stop on " + this);
-		System.err.println("  - method=" + method);
+		LOGGER.debug("Action stop(" + "method=" + method + ") called on " + this);
 
-		// Dummy stop implementation.
+		// Compute State Machine.
+		switch(getState().getValue()) {
 
-		setState(ComputeStatus.INACTIVE);
+		case ComputeStatus.ACTIVE_VALUE:
+			LOGGER.debug("Fire transition(state=active, action=\"stop\")...");
+
+			// TODO Implement transition(state=active, action="stop")
+
+			setState(ComputeStatus.INACTIVE);
+			break;
+
+		case ComputeStatus.INACTIVE_VALUE:
+			LOGGER.debug("Fire transition(state=inactive, action=\"stop\")...");
+
+			// Nothing to do.
+
+			break;
+
+		case ComputeStatus.SUSPENDED_VALUE:
+			LOGGER.debug("Fire transition(state=suspended, action=\"stop\")...");
+
+			// TODO Implement transition(state=suspended, action="stop")
+
+			setState(ComputeStatus.INACTIVE);
+			break;
+
+		case ComputeStatus.ERROR_VALUE:
+			LOGGER.debug("Fire transition(state=error, action=\"stop\")...");
+
+			// TODO Implement transition(state=error, action="stop")
+
+			setState(ComputeStatus.INACTIVE);
+			break;
+
+		default:
+			break;
+		}
 	}
 
 	/**
-	 * OCCI action http://schemas.ogf.org/occi/infrastructure/compute/action#restart.
+	 * Implement OCCI action:
+     * - scheme: http://schemas.ogf.org/occi/infrastructure/compute/action#
+     * - term: restart
+     * - title: Restart the system (graceful, warm or cold)
 	 */
 	@Override
 	public void restart(final org.occiware.clouddesigner.occi.infrastructure.RestartMethod method)
 	{
-		System.err.println("DEBUG restart on " + this);
-		System.err.println("  - method=" + method);
+		LOGGER.debug("Action restart(" + "method=" + method + ") called on " + this);
 
-		// Dummy restart implementation.
+		// Compute State Machine.
+		switch(getState().getValue()) {
 
-		setState(ComputeStatus.ACTIVE);
+		case ComputeStatus.ACTIVE_VALUE:
+			LOGGER.debug("Fire transition(state=active, action=\"restart\")...");
+
+			// TODO Implement transition(state=active, action="restart")
+
+			setState(ComputeStatus.ACTIVE);
+			break;
+
+		case ComputeStatus.INACTIVE_VALUE:
+			LOGGER.debug("Fire transition(state=inactive, action=\"restart\")...");
+
+			// TODO Implement transition(state=inactive, action="restart")
+
+			setState(ComputeStatus.ACTIVE);
+			break;
+
+		case ComputeStatus.SUSPENDED_VALUE:
+			LOGGER.debug("Fire transition(state=suspended, action=\"restart\")...");
+
+			// TODO Implement transition(state=suspended, action="restart")
+
+			setState(ComputeStatus.ACTIVE);
+			break;
+
+		case ComputeStatus.ERROR_VALUE:
+			LOGGER.debug("Fire transition(state=error, action=\"restart\")...");
+
+			// TODO Implement transition(state=error, action="restart")
+
+			setState(ComputeStatus.ACTIVE);
+			break;
+
+		default:
+			break;
+		}
 	}
 
 	/**
-	 * OCCI action http://schemas.ogf.org/occi/infrastructure/compute/action#suspend.
+	 * Implement OCCI action:
+     * - scheme: http://schemas.ogf.org/occi/infrastructure/compute/action#
+     * - term: suspend
+     * - title: Suspend the system (hibernate or in RAM)
 	 */
 	@Override
 	public void suspend(final org.occiware.clouddesigner.occi.infrastructure.SuspendMethod method)
 	{
-		System.err.println("DEBUG suspend on " + this);
-		System.err.println("  - method=" + method);
+		LOGGER.debug("Action suspend(" + "method=" + method + ") called on " + this);
 
-		// Dummy suspend implementation.
+		// Compute State Machine.
+		switch(getState().getValue()) {
 
-		setState(ComputeStatus.SUSPENDED);
+		case ComputeStatus.ACTIVE_VALUE:
+			LOGGER.debug("Fire transition(state=active, action=\"suspend\")...");
+
+			// TODO Implement transition(state=active, action="suspend")
+
+			setState(ComputeStatus.SUSPENDED);
+			break;
+
+		case ComputeStatus.INACTIVE_VALUE:
+			LOGGER.debug("Fire transition(state=inactive, action=\"suspend\")...");
+
+			// TODO Implement transition(state=inactive, action="suspend")
+
+			setState(ComputeStatus.SUSPENDED);
+			break;
+
+		case ComputeStatus.SUSPENDED_VALUE:
+			LOGGER.debug("Fire transition(state=suspended, action=\"suspend\")...");
+
+			// Nothing to do.
+
+			break;
+
+		case ComputeStatus.ERROR_VALUE:
+			LOGGER.debug("Fire transition(state=error, action=\"suspend\")...");
+
+			// TODO Implement transition(state=error, action="suspend")
+
+			setState(ComputeStatus.SUSPENDED);
+			break;
+
+		default:
+			break;
+		}
 	}
+
+	/**
+	 * Implement OCCI action:
+     * - scheme: http://schemas.ogf.org/occi/infrastructure/compute/action#
+     * - term: save
+     * - title: Save the system (hot, deferred)
+	 */
+	@Override
+	public void save(final org.occiware.clouddesigner.occi.infrastructure.SaveMethod method, final java.lang.String name)
+	{
+		LOGGER.debug("Action save(" + "method=" + method + "name=" + name + ") called on " + this);
+
+		// Compute State Machine.
+		switch(getState().getValue()) {
+
+		case ComputeStatus.ACTIVE_VALUE:
+			LOGGER.debug("Fire transition(state=active, action=\"save\")...");
+
+			// TODO Implement transition(state=active, action="save")
+
+			break;
+
+		case ComputeStatus.INACTIVE_VALUE:
+			LOGGER.debug("Fire transition(state=inactive, action=\"save\")...");
+
+			// TODO Implement transition(state=inactive, action="save")
+
+			break;
+
+		case ComputeStatus.SUSPENDED_VALUE:
+			LOGGER.debug("Fire transition(state=suspended, action=\"save\")...");
+
+			// TODO Implement transition(state=suspended, action="save")
+
+			break;
+
+		case ComputeStatus.ERROR_VALUE:
+			LOGGER.debug("Fire transition(state=error, action=\"save\")...");
+
+			// TODO Implement transition(state=error, action="save")
+
+			break;
+
+		default:
+			break;
+		}
+	}
+
 }	

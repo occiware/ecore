@@ -26,6 +26,7 @@ import org.occiware.clouddesigner.occi.infrastructure.Compute;
 import org.occiware.clouddesigner.occi.infrastructure.ComputeStatus;
 import org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage;
 import org.occiware.clouddesigner.occi.infrastructure.RestartMethod;
+import org.occiware.clouddesigner.occi.infrastructure.SaveMethod;
 import org.occiware.clouddesigner.occi.infrastructure.StopMethod;
 import org.occiware.clouddesigner.occi.infrastructure.SuspendMethod;
 
@@ -40,9 +41,11 @@ import org.occiware.clouddesigner.occi.infrastructure.SuspendMethod;
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.impl.ComputeImpl#getArchitecture <em>Architecture</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.impl.ComputeImpl#getCores <em>Cores</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.impl.ComputeImpl#getHostname <em>Hostname</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.impl.ComputeImpl#getShare <em>Share</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.impl.ComputeImpl#getSpeed <em>Speed</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.impl.ComputeImpl#getMemory <em>Memory</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.impl.ComputeImpl#getState <em>State</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.impl.ComputeImpl#getMessage <em>Message</em>}</li>
  * </ul>
  *
  * @generated
@@ -109,6 +112,26 @@ public class ComputeImpl extends ResourceImpl implements Compute {
 	protected String hostname = HOSTNAME_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getShare() <em>Share</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getShare()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int SHARE_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getShare() <em>Share</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getShare()
+	 * @generated
+	 * @ordered
+	 */
+	protected int share = SHARE_EDEFAULT;
+
+	/**
 	 * The default value of the '{@link #getSpeed() <em>Speed</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -167,6 +190,26 @@ public class ComputeImpl extends ResourceImpl implements Compute {
 	 * @ordered
 	 */
 	protected ComputeStatus state = STATE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getMessage() <em>Message</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMessage()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String MESSAGE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getMessage() <em>Message</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMessage()
+	 * @generated
+	 * @ordered
+	 */
+	protected String message = MESSAGE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -255,6 +298,27 @@ public class ComputeImpl extends ResourceImpl implements Compute {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public int getShare() {
+		return share;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setShare(int newShare) {
+		int oldShare = share;
+		share = newShare;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, InfrastructurePackage.COMPUTE__SHARE, oldShare, share));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public float getSpeed() {
 		return speed;
 	}
@@ -318,6 +382,27 @@ public class ComputeImpl extends ResourceImpl implements Compute {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getMessage() {
+		return message;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMessage(String newMessage) {
+		String oldMessage = message;
+		message = newMessage;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, InfrastructurePackage.COMPUTE__MESSAGE, oldMessage, message));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void start() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -362,6 +447,17 @@ public class ComputeImpl extends ResourceImpl implements Compute {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public void save(SaveMethod method, String name) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -371,12 +467,16 @@ public class ComputeImpl extends ResourceImpl implements Compute {
 				return getCores();
 			case InfrastructurePackage.COMPUTE__HOSTNAME:
 				return getHostname();
+			case InfrastructurePackage.COMPUTE__SHARE:
+				return getShare();
 			case InfrastructurePackage.COMPUTE__SPEED:
 				return getSpeed();
 			case InfrastructurePackage.COMPUTE__MEMORY:
 				return getMemory();
 			case InfrastructurePackage.COMPUTE__STATE:
 				return getState();
+			case InfrastructurePackage.COMPUTE__MESSAGE:
+				return getMessage();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -398,6 +498,9 @@ public class ComputeImpl extends ResourceImpl implements Compute {
 			case InfrastructurePackage.COMPUTE__HOSTNAME:
 				setHostname((String)newValue);
 				return;
+			case InfrastructurePackage.COMPUTE__SHARE:
+				setShare((Integer)newValue);
+				return;
 			case InfrastructurePackage.COMPUTE__SPEED:
 				setSpeed((Float)newValue);
 				return;
@@ -406,6 +509,9 @@ public class ComputeImpl extends ResourceImpl implements Compute {
 				return;
 			case InfrastructurePackage.COMPUTE__STATE:
 				setState((ComputeStatus)newValue);
+				return;
+			case InfrastructurePackage.COMPUTE__MESSAGE:
+				setMessage((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -428,6 +534,9 @@ public class ComputeImpl extends ResourceImpl implements Compute {
 			case InfrastructurePackage.COMPUTE__HOSTNAME:
 				setHostname(HOSTNAME_EDEFAULT);
 				return;
+			case InfrastructurePackage.COMPUTE__SHARE:
+				setShare(SHARE_EDEFAULT);
+				return;
 			case InfrastructurePackage.COMPUTE__SPEED:
 				setSpeed(SPEED_EDEFAULT);
 				return;
@@ -436,6 +545,9 @@ public class ComputeImpl extends ResourceImpl implements Compute {
 				return;
 			case InfrastructurePackage.COMPUTE__STATE:
 				setState(STATE_EDEFAULT);
+				return;
+			case InfrastructurePackage.COMPUTE__MESSAGE:
+				setMessage(MESSAGE_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -455,12 +567,16 @@ public class ComputeImpl extends ResourceImpl implements Compute {
 				return cores != CORES_EDEFAULT;
 			case InfrastructurePackage.COMPUTE__HOSTNAME:
 				return HOSTNAME_EDEFAULT == null ? hostname != null : !HOSTNAME_EDEFAULT.equals(hostname);
+			case InfrastructurePackage.COMPUTE__SHARE:
+				return share != SHARE_EDEFAULT;
 			case InfrastructurePackage.COMPUTE__SPEED:
 				return speed != SPEED_EDEFAULT;
 			case InfrastructurePackage.COMPUTE__MEMORY:
 				return memory != MEMORY_EDEFAULT;
 			case InfrastructurePackage.COMPUTE__STATE:
 				return state != STATE_EDEFAULT;
+			case InfrastructurePackage.COMPUTE__MESSAGE:
+				return MESSAGE_EDEFAULT == null ? message != null : !MESSAGE_EDEFAULT.equals(message);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -485,6 +601,9 @@ public class ComputeImpl extends ResourceImpl implements Compute {
 			case InfrastructurePackage.COMPUTE___SUSPEND__SUSPENDMETHOD:
 				suspend((SuspendMethod)arguments.get(0));
 				return null;
+			case InfrastructurePackage.COMPUTE___SAVE__SAVEMETHOD_STRING:
+				save((SaveMethod)arguments.get(0), (String)arguments.get(1));
+				return null;
 		}
 		return super.eInvoke(operationID, arguments);
 	}
@@ -505,12 +624,16 @@ public class ComputeImpl extends ResourceImpl implements Compute {
 		result.append(cores);
 		result.append(", hostname: ");
 		result.append(hostname);
+		result.append(", share: ");
+		result.append(share);
 		result.append(", speed: ");
 		result.append(speed);
 		result.append(", memory: ");
 		result.append(memory);
 		result.append(", state: ");
 		result.append(state);
+		result.append(", message: ");
+		result.append(message);
 		result.append(')');
 		return result.toString();
 	}

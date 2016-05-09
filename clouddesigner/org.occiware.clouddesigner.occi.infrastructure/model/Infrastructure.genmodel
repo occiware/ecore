@@ -19,15 +19,18 @@
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="Infrastructure.ecore#//NetworkStatus">
       <genEnumLiterals ecoreEnumLiteral="Infrastructure.ecore#//NetworkStatus/active"/>
       <genEnumLiterals ecoreEnumLiteral="Infrastructure.ecore#//NetworkStatus/inactive"/>
+      <genEnumLiterals ecoreEnumLiteral="Infrastructure.ecore#//NetworkStatus/error"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="Infrastructure.ecore#//ComputeStatus">
       <genEnumLiterals ecoreEnumLiteral="Infrastructure.ecore#//ComputeStatus/active"/>
       <genEnumLiterals ecoreEnumLiteral="Infrastructure.ecore#//ComputeStatus/inactive"/>
       <genEnumLiterals ecoreEnumLiteral="Infrastructure.ecore#//ComputeStatus/suspended"/>
+      <genEnumLiterals ecoreEnumLiteral="Infrastructure.ecore#//ComputeStatus/error"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="Infrastructure.ecore#//NetworkInterfaceStatus">
       <genEnumLiterals ecoreEnumLiteral="Infrastructure.ecore#//NetworkInterfaceStatus/active"/>
       <genEnumLiterals ecoreEnumLiteral="Infrastructure.ecore#//NetworkInterfaceStatus/inactive"/>
+      <genEnumLiterals ecoreEnumLiteral="Infrastructure.ecore#//NetworkInterfaceStatus/error"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="Infrastructure.ecore#//Architecture">
       <genEnumLiterals ecoreEnumLiteral="Infrastructure.ecore#//Architecture/x86"/>
@@ -50,26 +53,31 @@
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="Infrastructure.ecore#//StorageStatus">
       <genEnumLiterals ecoreEnumLiteral="Infrastructure.ecore#//StorageStatus/online"/>
       <genEnumLiterals ecoreEnumLiteral="Infrastructure.ecore#//StorageStatus/offline"/>
-      <genEnumLiterals ecoreEnumLiteral="Infrastructure.ecore#//StorageStatus/backup"/>
-      <genEnumLiterals ecoreEnumLiteral="Infrastructure.ecore#//StorageStatus/snapshot"/>
-      <genEnumLiterals ecoreEnumLiteral="Infrastructure.ecore#//StorageStatus/resize"/>
-      <genEnumLiterals ecoreEnumLiteral="Infrastructure.ecore#//StorageStatus/degraded"/>
+      <genEnumLiterals ecoreEnumLiteral="Infrastructure.ecore#//StorageStatus/error"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="Infrastructure.ecore#//StorageLinkStatus">
       <genEnumLiterals ecoreEnumLiteral="Infrastructure.ecore#//StorageLinkStatus/active"/>
       <genEnumLiterals ecoreEnumLiteral="Infrastructure.ecore#//StorageLinkStatus/inactive"/>
+      <genEnumLiterals ecoreEnumLiteral="Infrastructure.ecore#//StorageLinkStatus/error"/>
     </genEnums>
-    <genDataTypes ecoreDataType="Infrastructure.ecore#//Integer4095"/>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Infrastructure.ecore#//SaveMethod">
+      <genEnumLiterals ecoreEnumLiteral="Infrastructure.ecore#//SaveMethod/hot"/>
+      <genEnumLiterals ecoreEnumLiteral="Infrastructure.ecore#//SaveMethod/deferred"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="Infrastructure.ecore#//Vlan"/>
     <genDataTypes ecoreDataType="Infrastructure.ecore#//Token"/>
     <genDataTypes ecoreDataType="Infrastructure.ecore#//IpAddress"/>
-    <genDataTypes ecoreDataType="Infrastructure.ecore#//PositiveInteger"/>
+    <genDataTypes ecoreDataType="Infrastructure.ecore#//Core"/>
     <genDataTypes ecoreDataType="Infrastructure.ecore#//GHz"/>
     <genDataTypes ecoreDataType="Infrastructure.ecore#//GiB"/>
     <genDataTypes ecoreDataType="Infrastructure.ecore#//IpAddressRange"/>
+    <genDataTypes ecoreDataType="Infrastructure.ecore#//Mac"/>
+    <genDataTypes ecoreDataType="Infrastructure.ecore#//Share"/>
     <genClasses ecoreClass="Infrastructure.ecore#//Network">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Infrastructure.ecore#//Network/vlan"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Infrastructure.ecore#//Network/label"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Infrastructure.ecore#//Network/state"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Infrastructure.ecore#//Network/message"/>
       <genOperations ecoreOperation="Infrastructure.ecore#//Network/up"/>
       <genOperations ecoreOperation="Infrastructure.ecore#//Network/down"/>
     </genClasses>
@@ -77,9 +85,11 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Infrastructure.ecore#//Compute/architecture"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Infrastructure.ecore#//Compute/cores"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Infrastructure.ecore#//Compute/hostname"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Infrastructure.ecore#//Compute/share"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Infrastructure.ecore#//Compute/speed"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Infrastructure.ecore#//Compute/memory"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Infrastructure.ecore#//Compute/state"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Infrastructure.ecore#//Compute/message"/>
       <genOperations ecoreOperation="Infrastructure.ecore#//Compute/start"/>
       <genOperations ecoreOperation="Infrastructure.ecore#//Compute/stop">
         <genParameters ecoreParameter="Infrastructure.ecore#//Compute/stop/method"/>
@@ -90,27 +100,29 @@
       <genOperations ecoreOperation="Infrastructure.ecore#//Compute/suspend">
         <genParameters ecoreParameter="Infrastructure.ecore#//Compute/suspend/method"/>
       </genOperations>
+      <genOperations ecoreOperation="Infrastructure.ecore#//Compute/save">
+        <genParameters ecoreParameter="Infrastructure.ecore#//Compute/save/method"/>
+        <genParameters ecoreParameter="Infrastructure.ecore#//Compute/save/name"/>
+      </genOperations>
     </genClasses>
     <genClasses ecoreClass="Infrastructure.ecore#//Storage">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Infrastructure.ecore#//Storage/size"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Infrastructure.ecore#//Storage/state"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Infrastructure.ecore#//Storage/message"/>
       <genOperations ecoreOperation="Infrastructure.ecore#//Storage/online"/>
       <genOperations ecoreOperation="Infrastructure.ecore#//Storage/offline"/>
-      <genOperations ecoreOperation="Infrastructure.ecore#//Storage/backup"/>
-      <genOperations ecoreOperation="Infrastructure.ecore#//Storage/snapshot"/>
-      <genOperations ecoreOperation="Infrastructure.ecore#//Storage/resize">
-        <genParameters ecoreParameter="Infrastructure.ecore#//Storage/resize/size"/>
-      </genOperations>
     </genClasses>
     <genClasses ecoreClass="Infrastructure.ecore#//Storagelink">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Infrastructure.ecore#//Storagelink/deviceid"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Infrastructure.ecore#//Storagelink/mountpoint"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Infrastructure.ecore#//Storagelink/state"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Infrastructure.ecore#//Storagelink/message"/>
     </genClasses>
     <genClasses ecoreClass="Infrastructure.ecore#//Networkinterface">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Infrastructure.ecore#//Networkinterface/interface"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Infrastructure.ecore#//Networkinterface/mac"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Infrastructure.ecore#//Networkinterface/state"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Infrastructure.ecore#//Networkinterface/message"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

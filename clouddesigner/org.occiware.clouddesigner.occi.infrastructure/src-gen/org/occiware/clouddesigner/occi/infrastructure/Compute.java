@@ -25,9 +25,11 @@ import org.occiware.clouddesigner.occi.Resource;
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.Compute#getArchitecture <em>Architecture</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.Compute#getCores <em>Cores</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.Compute#getHostname <em>Hostname</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.Compute#getShare <em>Share</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.Compute#getSpeed <em>Speed</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.Compute#getMemory <em>Memory</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.Compute#getState <em>State</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.infrastructure.Compute#getMessage <em>Message</em>}</li>
  * </ul>
  *
  * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getCompute()
@@ -75,7 +77,7 @@ public interface Compute extends Resource {
 	 * @return the value of the '<em>Cores</em>' attribute.
 	 * @see #setCores(int)
 	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getCompute_Cores()
-	 * @model dataType="org.occiware.clouddesigner.occi.infrastructure.PositiveInteger"
+	 * @model dataType="org.occiware.clouddesigner.occi.infrastructure.Core"
 	 *        annotation="OCCIE2Ecore description='Number of CPU cores assigned to the instance'"
 	 * @generated
 	 */
@@ -117,6 +119,33 @@ public interface Compute extends Resource {
 	 * @generated
 	 */
 	void setHostname(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Share</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Share</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Share</em>' attribute.
+	 * @see #setShare(int)
+	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getCompute_Share()
+	 * @model dataType="org.occiware.clouddesigner.occi.infrastructure.Share"
+	 *        annotation="OCCIE2Ecore description='Relative number of CPU shares for the instance'"
+	 * @generated
+	 */
+	int getShare();
+
+	/**
+	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.infrastructure.Compute#getShare <em>Share</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Share</em>' attribute.
+	 * @see #getShare()
+	 * @generated
+	 */
+	void setShare(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Speed</b></em>' attribute.
@@ -204,6 +233,33 @@ public interface Compute extends Resource {
 	void setState(ComputeStatus value);
 
 	/**
+	 * Returns the value of the '<em><b>Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Message</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Message</em>' attribute.
+	 * @see #setMessage(String)
+	 * @see org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage#getCompute_Message()
+	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='Human-readable explanation of the current instance state'"
+	 * @generated
+	 */
+	String getMessage();
+
+	/**
+	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.infrastructure.Compute#getMessage <em>Message</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Message</em>' attribute.
+	 * @see #getMessage()
+	 * @generated
+	 */
+	void setMessage(String value);
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model annotation="OCCIE2Ecore title='Start the system'"
@@ -240,5 +296,16 @@ public interface Compute extends Resource {
 	 * @generated
 	 */
 	void suspend(SuspendMethod method);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model methodRequired="true"
+	 *        methodAnnotation="OCCIE2Ecore description='null'" nameDataType="org.occiware.clouddesigner.occi.String" nameRequired="true"
+	 *        nameAnnotation="OCCIE2Ecore description='null'"
+	 *        annotation="OCCIE2Ecore title='Save the system (hot, deferred)'"
+	 * @generated
+	 */
+	void save(SaveMethod method, String name);
 
 } // Compute

@@ -55,7 +55,15 @@ public enum ComputeStatus implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	SUSPENDED(2, "suspended", "suspended");
+	SUSPENDED(2, "suspended", "suspended"), /**
+	 * The '<em><b>Error</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #ERROR_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	ERROR(3, "error", "error");
 
 	/**
 	 * The '<em><b>Active</b></em>' literal value.
@@ -103,6 +111,21 @@ public enum ComputeStatus implements Enumerator {
 	public static final int SUSPENDED_VALUE = 2;
 
 	/**
+	 * The '<em><b>Error</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>Error</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #ERROR
+	 * @model name="error"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ERROR_VALUE = 3;
+
+	/**
 	 * An array of all the '<em><b>Compute Status</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -113,6 +136,7 @@ public enum ComputeStatus implements Enumerator {
 			ACTIVE,
 			INACTIVE,
 			SUSPENDED,
+			ERROR,
 		};
 
 	/**
@@ -172,6 +196,7 @@ public enum ComputeStatus implements Enumerator {
 			case ACTIVE_VALUE: return ACTIVE;
 			case INACTIVE_VALUE: return INACTIVE;
 			case SUSPENDED_VALUE: return SUSPENDED;
+			case ERROR_VALUE: return ERROR;
 		}
 		return null;
 	}
