@@ -237,7 +237,7 @@ public class MART
 			// Search the Ecore package.
 			EPackage epackage = EPackage.Registry.INSTANCE.getEPackage(uri);
 			if(epackage == null) {
-				LOGGER.error("EPackage " + " uri unknown!");
+				LOGGER.error("EPackage " + uri + " unknown!");
 			} else {
 				epackage.setEFactoryInstance(eFactory);
 				LOGGER.info("    - Ecore factory " + eFactory.getClass().getName() + " for package " + uri + " registered.");
