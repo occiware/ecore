@@ -3,8 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: org.occiware.clouddesigner.occi.cloud.design
 Bundle-SymbolicName: org.occiware.clouddesigner.occi.cloud.design;singleton:=true
 Bundle-Version: 0.1.0.qualifier
-Bundle-ClassPath: .,
- lib/guava-17.0.jar
+Bundle-ClassPath: .
 Bundle-Activator: org.occiware.clouddesigner.occi.cloud.design.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
