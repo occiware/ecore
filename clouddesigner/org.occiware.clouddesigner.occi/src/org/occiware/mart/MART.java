@@ -204,9 +204,14 @@ public class MART
 											//
 											String file = childElement.getAttribute("file");
 											String scheme = childElement.getAttribute("scheme");
-											// Register the OCCI extension
-											occiRegistry.registerExtension(scheme, getResourceFromClasspath("/" + file));
-											LOGGER.info("    - OCCI extension " + scheme + " contained in " + file + " registered.");
+											String resourceUri = getResourceFromClasspath("/" + file);
+											if(resourceUri != null) {
+												// Register the OCCI extension
+												occiRegistry.registerExtension(scheme, getResourceFromClasspath("/" + file));
+												LOGGER.info("    - OCCI extension " + scheme + " contained in " + file + " registered.");
+											} else {
+												LOGGER.warn("    - OCCI extension file " + file + " not found!");
+											}
 										}
 									}
 								}
@@ -249,7 +254,8 @@ public class MART
 	 */
 	public static String getResourceFromClasspath(String path)
 	{
-		return MART.class.getResource(path).toExternalForm();
+		java.net.URL resourceUrl = MART.class.getResource(path);
+		return (resourceUrl != null) ? resourceUrl.toExternalForm() : null;
 	}
 
 	/**
