@@ -27,6 +27,7 @@
 [for (m: Mixin | e.mixins)]
 [mixin(m)/]
 [/for]
+
 </occi:extension>
 [/file]
 [/template]
