@@ -954,8 +954,8 @@
         </data>
       </ownedAnnotationEntries>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_PB-HYACiEeakKJwtJ0EeRg" name="Category" tooltipText="" outgoingEdges="_PDl4AACiEeakKJwtJ0EeRg" incomingEdges="_PEB84ACiEeakKJwtJ0EeRg _PEDLAACiEeakKJwtJ0EeRg _PEDyEQCiEeakKJwtJ0EeRg" width="12" height="10">
-        <target xmi:type="ecore:EClass" href="model/OCCI.ecore#//Category"/>
-        <semanticElements xmi:type="ecore:EClass" href="model/OCCI.ecore#//Category"/>
+        <target xmi:type="ecore:EClass" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Category"/>
+        <semanticElements xmi:type="ecore:EClass" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Category"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -965,24 +965,24 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_PDE6oACiEeakKJwtJ0EeRg" name="term : String" tooltipText="">
-          <target xmi:type="ecore:EAttribute" href="model/OCCI.ecore#//Category/term"/>
-          <semanticElements xmi:type="ecore:EAttribute" href="model/OCCI.ecore#//Category/term"/>
+          <target xmi:type="ecore:EAttribute" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Category/term"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Category/term"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_PDH98ACiEeakKJwtJ0EeRg" labelAlignment="LEFT" description="_PDGv0ACiEeakKJwtJ0EeRg">
             <labelFormat>bold</labelFormat>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_PDIlAACiEeakKJwtJ0EeRg" name="scheme : String" tooltipText="">
-          <target xmi:type="ecore:EAttribute" href="model/OCCI.ecore#//Category/scheme"/>
-          <semanticElements xmi:type="ecore:EAttribute" href="model/OCCI.ecore#//Category/scheme"/>
+          <target xmi:type="ecore:EAttribute" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Category/scheme"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Category/scheme"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_PDJMEACiEeakKJwtJ0EeRg" labelAlignment="LEFT" description="_PDGv0ACiEeakKJwtJ0EeRg">
             <labelFormat>bold</labelFormat>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_PDJMEQCiEeakKJwtJ0EeRg" name="title : String" tooltipText="">
-          <target xmi:type="ecore:EAttribute" href="model/OCCI.ecore#//Category/title"/>
-          <semanticElements xmi:type="ecore:EAttribute" href="model/OCCI.ecore#//Category/title"/>
+          <target xmi:type="ecore:EAttribute" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Category/title"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Category/title"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_PDJzIACiEeakKJwtJ0EeRg" labelAlignment="LEFT">
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
           </ownedStyle>
@@ -990,8 +990,8 @@
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_PCbaYACiEeakKJwtJ0EeRg" name="Attribute" tooltipText="" incomingEdges="_PDl4AACiEeakKJwtJ0EeRg" width="12" height="10">
-        <target xmi:type="ecore:EClass" href="model/OCCI.ecore#//Attribute"/>
-        <semanticElements xmi:type="ecore:EClass" href="model/OCCI.ecore#//Attribute"/>
+        <target xmi:type="ecore:EClass" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Attribute"/>
+        <semanticElements xmi:type="ecore:EClass" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Attribute"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1000,48 +1000,48 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_PDKaMACiEeakKJwtJ0EeRg" name="name : String" tooltipText="">
-          <target xmi:type="ecore:EAttribute" href="model/OCCI.ecore#//Attribute/name"/>
-          <semanticElements xmi:type="ecore:EAttribute" href="model/OCCI.ecore#//Attribute/name"/>
+          <target xmi:type="ecore:EAttribute" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Attribute/name"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Attribute/name"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_PDLoUACiEeakKJwtJ0EeRg" labelAlignment="LEFT" description="_PDGv0ACiEeakKJwtJ0EeRg">
             <labelFormat>bold</labelFormat>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_PDMPYACiEeakKJwtJ0EeRg" name="mutable : Boolean = true" tooltipText="">
-          <target xmi:type="ecore:EAttribute" href="model/OCCI.ecore#//Attribute/mutable"/>
-          <semanticElements xmi:type="ecore:EAttribute" href="model/OCCI.ecore#//Attribute/mutable"/>
+          <target xmi:type="ecore:EAttribute" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Attribute/mutable"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Attribute/mutable"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_PDMPYQCiEeakKJwtJ0EeRg" labelAlignment="LEFT">
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_PDM2cACiEeakKJwtJ0EeRg" name="required : Boolean = false" tooltipText="">
-          <target xmi:type="ecore:EAttribute" href="model/OCCI.ecore#//Attribute/required"/>
-          <semanticElements xmi:type="ecore:EAttribute" href="model/OCCI.ecore#//Attribute/required"/>
+          <target xmi:type="ecore:EAttribute" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Attribute/required"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Attribute/required"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_PDNdgACiEeakKJwtJ0EeRg" labelAlignment="LEFT">
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_PDNdgQCiEeakKJwtJ0EeRg" name="default : String" tooltipText="">
-          <target xmi:type="ecore:EAttribute" href="model/OCCI.ecore#//Attribute/default"/>
-          <semanticElements xmi:type="ecore:EAttribute" href="model/OCCI.ecore#//Attribute/default"/>
+          <target xmi:type="ecore:EAttribute" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Attribute/default"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Attribute/default"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_PDOEkACiEeakKJwtJ0EeRg" labelAlignment="LEFT">
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_PDOEkQCiEeakKJwtJ0EeRg" name="description : String" tooltipText="">
-          <target xmi:type="ecore:EAttribute" href="model/OCCI.ecore#//Attribute/description"/>
-          <semanticElements xmi:type="ecore:EAttribute" href="model/OCCI.ecore#//Attribute/description"/>
+          <target xmi:type="ecore:EAttribute" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Attribute/description"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Attribute/description"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_PDOroACiEeakKJwtJ0EeRg" labelAlignment="LEFT">
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_PDPSsACiEeakKJwtJ0EeRg" name="multiple_values : Boolean = false" tooltipText="">
-          <target xmi:type="ecore:EAttribute" href="model/OCCI.ecore#//Attribute/multiple_values"/>
-          <semanticElements xmi:type="ecore:EAttribute" href="model/OCCI.ecore#//Attribute/multiple_values"/>
+          <target xmi:type="ecore:EAttribute" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Attribute/multiple_values"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Attribute/multiple_values"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_PDP5wACiEeakKJwtJ0EeRg" labelAlignment="LEFT">
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
           </ownedStyle>
@@ -1049,8 +1049,8 @@
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_PCedsACiEeakKJwtJ0EeRg" name="Kind" tooltipText="" outgoingEdges="_PDpiYACiEeakKJwtJ0EeRg _PDqwgACiEeakKJwtJ0EeRg _PDslsACiEeakKJwtJ0EeRg _PEB84ACiEeakKJwtJ0EeRg" incomingEdges="_PDpiYACiEeakKJwtJ0EeRg _PDyFQACiEeakKJwtJ0EeRg _PD1voACiEeakKJwtJ0EeRg _PD72QACiEeakKJwtJ0EeRg" width="12" height="10">
-        <target xmi:type="ecore:EClass" href="model/OCCI.ecore#//Kind"/>
-        <semanticElements xmi:type="ecore:EClass" href="model/OCCI.ecore#//Kind"/>
+        <target xmi:type="ecore:EClass" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Kind"/>
+        <semanticElements xmi:type="ecore:EClass" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Kind"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1060,8 +1060,8 @@
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_PCfr0ACiEeakKJwtJ0EeRg" name="Action" tooltipText="" outgoingEdges="_PEDLAACiEeakKJwtJ0EeRg" incomingEdges="_PDqwgACiEeakKJwtJ0EeRg _PDvB8ACiEeakKJwtJ0EeRg" width="12" height="10">
-        <target xmi:type="ecore:EClass" href="model/OCCI.ecore#//Action"/>
-        <semanticElements xmi:type="ecore:EClass" href="model/OCCI.ecore#//Action"/>
+        <target xmi:type="ecore:EClass" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Action"/>
+        <semanticElements xmi:type="ecore:EClass" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Action"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1071,8 +1071,8 @@
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_PChhAACiEeakKJwtJ0EeRg" name="Mixin" tooltipText="" outgoingEdges="_PDvB8ACiEeakKJwtJ0EeRg _PDwQEACiEeakKJwtJ0EeRg _PDyFQACiEeakKJwtJ0EeRg _PDz6cACiEeakKJwtJ0EeRg _PEDyEQCiEeakKJwtJ0EeRg" incomingEdges="_PDwQEACiEeakKJwtJ0EeRg _PD29wACiEeakKJwtJ0EeRg _PD9EYACiEeakKJwtJ0EeRg _PEAHsACiEeakKJwtJ0EeRg" width="12" height="10">
-        <target xmi:type="ecore:EClass" href="model/OCCI.ecore#//Mixin"/>
-        <semanticElements xmi:type="ecore:EClass" href="model/OCCI.ecore#//Mixin"/>
+        <target xmi:type="ecore:EClass" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Mixin"/>
+        <semanticElements xmi:type="ecore:EClass" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Mixin"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1082,8 +1082,8 @@
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_PCivIACiEeakKJwtJ0EeRg" name="Entity" tooltipText="" outgoingEdges="_PD1voACiEeakKJwtJ0EeRg _PD29wACiEeakKJwtJ0EeRg _PD4L4ACiEeakKJwtJ0EeRg" incomingEdges="_PDslsACiEeakKJwtJ0EeRg _PDz6cACiEeakKJwtJ0EeRg _PEEZIwCiEeakKJwtJ0EeRg _PEFnQACiEeakKJwtJ0EeRg" width="12" height="10">
-        <target xmi:type="ecore:EClass" href="model/OCCI.ecore#//Entity"/>
-        <semanticElements xmi:type="ecore:EClass" href="model/OCCI.ecore#//Entity"/>
+        <target xmi:type="ecore:EClass" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Entity"/>
+        <semanticElements xmi:type="ecore:EClass" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Entity"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1093,48 +1093,48 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_PDRH4ACiEeakKJwtJ0EeRg" name="id : URI" tooltipText="">
-          <target xmi:type="ecore:EAttribute" href="model/OCCI.ecore#//Entity/id"/>
-          <semanticElements xmi:type="ecore:EAttribute" href="model/OCCI.ecore#//Entity/id"/>
+          <target xmi:type="ecore:EAttribute" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Entity/id"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Entity/id"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_PDRu8ACiEeakKJwtJ0EeRg" labelAlignment="LEFT" description="_PDGv0ACiEeakKJwtJ0EeRg">
             <labelFormat>bold</labelFormat>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_qsQqEBHuEealraGBwvhEmw" name="title : String" tooltipText="">
-          <target xmi:type="ecore:EAttribute" href="model/OCCI.ecore#//Entity/title"/>
-          <semanticElements xmi:type="ecore:EAttribute" href="model/OCCI.ecore#//Entity/title"/>
+          <target xmi:type="ecore:EAttribute" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Entity/title"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Entity/title"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_qsRRIBHuEealraGBwvhEmw" labelAlignment="LEFT">
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_qsR4MBHuEealraGBwvhEmw" name="occiCreate()" tooltipText="occiCreate()">
-          <target xmi:type="ecore:EOperation" href="model/OCCI.ecore#//Entity/occiCreate"/>
-          <semanticElements xmi:type="ecore:EOperation" href="model/OCCI.ecore#//Entity/occiCreate"/>
+          <target xmi:type="ecore:EOperation" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Entity/occiCreate"/>
+          <semanticElements xmi:type="ecore:EOperation" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Entity/occiCreate"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_qsTGUBHuEealraGBwvhEmw" labelAlignment="LEFT">
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_qsTtYBHuEealraGBwvhEmw" name="occiRetrieve()" tooltipText="occiRetrieve()">
-          <target xmi:type="ecore:EOperation" href="model/OCCI.ecore#//Entity/occiRetrieve"/>
-          <semanticElements xmi:type="ecore:EOperation" href="model/OCCI.ecore#//Entity/occiRetrieve"/>
+          <target xmi:type="ecore:EOperation" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Entity/occiRetrieve"/>
+          <semanticElements xmi:type="ecore:EOperation" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Entity/occiRetrieve"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_qsTtYRHuEealraGBwvhEmw" labelAlignment="LEFT">
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_qsTtYhHuEealraGBwvhEmw" name="occiUpdate()" tooltipText="occiUpdate()">
-          <target xmi:type="ecore:EOperation" href="model/OCCI.ecore#//Entity/occiUpdate"/>
-          <semanticElements xmi:type="ecore:EOperation" href="model/OCCI.ecore#//Entity/occiUpdate"/>
+          <target xmi:type="ecore:EOperation" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Entity/occiUpdate"/>
+          <semanticElements xmi:type="ecore:EOperation" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Entity/occiUpdate"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_qsUUcBHuEealraGBwvhEmw" labelAlignment="LEFT">
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_qsUUcRHuEealraGBwvhEmw" name="occiDelete()" tooltipText="occiDelete()">
-          <target xmi:type="ecore:EOperation" href="model/OCCI.ecore#//Entity/occiDelete"/>
-          <semanticElements xmi:type="ecore:EOperation" href="model/OCCI.ecore#//Entity/occiDelete"/>
+          <target xmi:type="ecore:EOperation" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Entity/occiDelete"/>
+          <semanticElements xmi:type="ecore:EOperation" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Entity/occiDelete"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_qsUUchHuEealraGBwvhEmw" labelAlignment="LEFT">
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']/@style"/>
           </ownedStyle>
@@ -1142,8 +1142,8 @@
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_PCj9QACiEeakKJwtJ0EeRg" name="AttributeState" tooltipText="" incomingEdges="_PD4L4ACiEeakKJwtJ0EeRg" width="12" height="10">
-        <target xmi:type="ecore:EClass" href="model/OCCI.ecore#//AttributeState"/>
-        <semanticElements xmi:type="ecore:EClass" href="model/OCCI.ecore#//AttributeState"/>
+        <target xmi:type="ecore:EClass" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//AttributeState"/>
+        <semanticElements xmi:type="ecore:EClass" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//AttributeState"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1152,16 +1152,16 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_PDSWAACiEeakKJwtJ0EeRg" name="name : String" tooltipText="">
-          <target xmi:type="ecore:EAttribute" href="model/OCCI.ecore#//AttributeState/name"/>
-          <semanticElements xmi:type="ecore:EAttribute" href="model/OCCI.ecore#//AttributeState/name"/>
+          <target xmi:type="ecore:EAttribute" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//AttributeState/name"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//AttributeState/name"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_PDS9EACiEeakKJwtJ0EeRg" labelAlignment="LEFT" description="_PDGv0ACiEeakKJwtJ0EeRg">
             <labelFormat>bold</labelFormat>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_PDTkIACiEeakKJwtJ0EeRg" name="value : String" tooltipText="">
-          <target xmi:type="ecore:EAttribute" href="model/OCCI.ecore#//AttributeState/value"/>
-          <semanticElements xmi:type="ecore:EAttribute" href="model/OCCI.ecore#//AttributeState/value"/>
+          <target xmi:type="ecore:EAttribute" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//AttributeState/value"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//AttributeState/value"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_PDULMACiEeakKJwtJ0EeRg" labelAlignment="LEFT" description="_PDGv0ACiEeakKJwtJ0EeRg">
             <labelFormat>bold</labelFormat>
           </ownedStyle>
@@ -1169,8 +1169,8 @@
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_PClycACiEeakKJwtJ0EeRg" name="Resource" tooltipText="" outgoingEdges="_PEEZIwCiEeakKJwtJ0EeRg _PEG1YACiEeakKJwtJ0EeRg" incomingEdges="_PD6BEACiEeakKJwtJ0EeRg _PD-5kACiEeakKJwtJ0EeRg" width="12" height="10">
-        <target xmi:type="ecore:EClass" href="model/OCCI.ecore#//Resource"/>
-        <semanticElements xmi:type="ecore:EClass" href="model/OCCI.ecore#//Resource"/>
+        <target xmi:type="ecore:EClass" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Resource"/>
+        <semanticElements xmi:type="ecore:EClass" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Resource"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1179,8 +1179,8 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_qsVikBHuEealraGBwvhEmw" name="summary : String" tooltipText="">
-          <target xmi:type="ecore:EAttribute" href="model/OCCI.ecore#//Resource/summary"/>
-          <semanticElements xmi:type="ecore:EAttribute" href="model/OCCI.ecore#//Resource/summary"/>
+          <target xmi:type="ecore:EAttribute" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Resource/summary"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Resource/summary"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_qsWJoBHuEealraGBwvhEmw" labelAlignment="LEFT">
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
           </ownedStyle>
@@ -1188,8 +1188,8 @@
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_PCnAkACiEeakKJwtJ0EeRg" name="Link" tooltipText="" outgoingEdges="_PD6BEACiEeakKJwtJ0EeRg _PEFnQACiEeakKJwtJ0EeRg" incomingEdges="_PEG1YACiEeakKJwtJ0EeRg" width="12" height="10">
-        <target xmi:type="ecore:EClass" href="model/OCCI.ecore#//Link"/>
-        <semanticElements xmi:type="ecore:EClass" href="model/OCCI.ecore#//Link"/>
+        <target xmi:type="ecore:EClass" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Link"/>
+        <semanticElements xmi:type="ecore:EClass" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Link"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1199,8 +1199,8 @@
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_PCoOsACiEeakKJwtJ0EeRg" name="Extension" tooltipText="" outgoingEdges="_PD7PMACiEeakKJwtJ0EeRg _PD72QACiEeakKJwtJ0EeRg _PD9EYACiEeakKJwtJ0EeRg" incomingEdges="_PD7PMACiEeakKJwtJ0EeRg _PD9rcwCiEeakKJwtJ0EeRg" width="12" height="10">
-        <target xmi:type="ecore:EClass" href="model/OCCI.ecore#//Extension"/>
-        <semanticElements xmi:type="ecore:EClass" href="model/OCCI.ecore#//Extension"/>
+        <target xmi:type="ecore:EClass" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Extension"/>
+        <semanticElements xmi:type="ecore:EClass" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Extension"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1209,24 +1209,24 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_PDVZUACiEeakKJwtJ0EeRg" name="name : String" tooltipText="">
-          <target xmi:type="ecore:EAttribute" href="model/OCCI.ecore#//Extension/name"/>
-          <semanticElements xmi:type="ecore:EAttribute" href="model/OCCI.ecore#//Extension/name"/>
+          <target xmi:type="ecore:EAttribute" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Extension/name"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Extension/name"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_PDWAYACiEeakKJwtJ0EeRg" labelAlignment="LEFT" description="_PDGv0ACiEeakKJwtJ0EeRg">
             <labelFormat>bold</labelFormat>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_PDWAYQCiEeakKJwtJ0EeRg" name="scheme : String" tooltipText="">
-          <target xmi:type="ecore:EAttribute" href="model/OCCI.ecore#//Extension/scheme"/>
-          <semanticElements xmi:type="ecore:EAttribute" href="model/OCCI.ecore#//Extension/scheme"/>
+          <target xmi:type="ecore:EAttribute" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Extension/scheme"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Extension/scheme"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_PDWncACiEeakKJwtJ0EeRg" labelAlignment="LEFT" description="_PDGv0ACiEeakKJwtJ0EeRg">
             <labelFormat>bold</labelFormat>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_qsXXwBHuEealraGBwvhEmw" name="description : String" tooltipText="">
-          <target xmi:type="ecore:EAttribute" href="model/OCCI.ecore#//Extension/description"/>
-          <semanticElements xmi:type="ecore:EAttribute" href="model/OCCI.ecore#//Extension/description"/>
+          <target xmi:type="ecore:EAttribute" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Extension/description"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Extension/description"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_qsXXwRHuEealraGBwvhEmw" labelAlignment="LEFT">
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
           </ownedStyle>
@@ -1234,8 +1234,8 @@
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_PCqD4ACiEeakKJwtJ0EeRg" name="Configuration" tooltipText="" outgoingEdges="_PD9rcwCiEeakKJwtJ0EeRg _PD-5kACiEeakKJwtJ0EeRg _PEAHsACiEeakKJwtJ0EeRg" width="12" height="10">
-        <target xmi:type="ecore:EClass" href="model/OCCI.ecore#//Configuration"/>
-        <semanticElements xmi:type="ecore:EClass" href="model/OCCI.ecore#//Configuration"/>
+        <target xmi:type="ecore:EClass" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Configuration"/>
+        <semanticElements xmi:type="ecore:EClass" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Configuration"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1244,16 +1244,16 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_qsX-0BHuEealraGBwvhEmw" name="description : String" tooltipText="">
-          <target xmi:type="ecore:EAttribute" href="model/OCCI.ecore#//Configuration/description"/>
-          <semanticElements xmi:type="ecore:EAttribute" href="model/OCCI.ecore#//Configuration/description"/>
+          <target xmi:type="ecore:EAttribute" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Configuration/description"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Configuration/description"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_qsX-0RHuEealraGBwvhEmw" labelAlignment="LEFT">
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_qsX-0hHuEealraGBwvhEmw" name="location : String" tooltipText="">
-          <target xmi:type="ecore:EAttribute" href="model/OCCI.ecore#//Configuration/location"/>
-          <semanticElements xmi:type="ecore:EAttribute" href="model/OCCI.ecore#//Configuration/location"/>
+          <target xmi:type="ecore:EAttribute" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Configuration/location"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Configuration/location"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_qsYl4BHuEealraGBwvhEmw" labelAlignment="LEFT">
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
           </ownedStyle>
@@ -1261,8 +1261,8 @@
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_PCrSAACiEeakKJwtJ0EeRg" name="URI" tooltipText="" width="14" height="5">
-        <target xmi:type="ecore:EDataType" href="model/OCCI.ecore#//URI"/>
-        <semanticElements xmi:type="ecore:EDataType" href="model/OCCI.ecore#//URI"/>
+        <target xmi:type="ecore:EDataType" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//URI"/>
+        <semanticElements xmi:type="ecore:EDataType" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//URI"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1271,8 +1271,8 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EDataType']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_PDaR0ACiEeakKJwtJ0EeRg" name="java.lang.String" tooltipText="">
-          <target xmi:type="ecore:EDataType" href="model/OCCI.ecore#//URI"/>
-          <semanticElements xmi:type="ecore:EDataType" href="model/OCCI.ecore#//URI"/>
+          <target xmi:type="ecore:EDataType" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//URI"/>
+          <semanticElements xmi:type="ecore:EDataType" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//URI"/>
           <decorations xmi:type="viewpoint:Decoration" xmi:id="_PDfKUACiEeakKJwtJ0EeRg">
             <description xmi:type="description:SemanticBasedDecoration" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@decorationDescriptionsSet/@decorationDescriptions[name='External']"/>
           </decorations>
@@ -1284,8 +1284,8 @@
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_PCsgIACiEeakKJwtJ0EeRg" name="String" tooltipText="" width="14" height="5">
-        <target xmi:type="ecore:EDataType" href="model/OCCI.ecore#//String"/>
-        <semanticElements xmi:type="ecore:EDataType" href="model/OCCI.ecore#//String"/>
+        <target xmi:type="ecore:EDataType" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+        <semanticElements xmi:type="ecore:EDataType" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1294,8 +1294,8 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EDataType']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_PDbf8ACiEeakKJwtJ0EeRg" name="java.lang.String" tooltipText="">
-          <target xmi:type="ecore:EDataType" href="model/OCCI.ecore#//String"/>
-          <semanticElements xmi:type="ecore:EDataType" href="model/OCCI.ecore#//String"/>
+          <target xmi:type="ecore:EDataType" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
+          <semanticElements xmi:type="ecore:EDataType" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"/>
           <decorations xmi:type="viewpoint:Decoration" xmi:id="_PDfKUQCiEeakKJwtJ0EeRg">
             <description xmi:type="description:SemanticBasedDecoration" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@decorationDescriptionsSet/@decorationDescriptions[name='External']"/>
           </decorations>
@@ -1307,8 +1307,8 @@
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_PCtHMACiEeakKJwtJ0EeRg" name="Number" tooltipText="" width="14" height="5">
-        <target xmi:type="ecore:EDataType" href="model/OCCI.ecore#//Number"/>
-        <semanticElements xmi:type="ecore:EDataType" href="model/OCCI.ecore#//Number"/>
+        <target xmi:type="ecore:EDataType" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number"/>
+        <semanticElements xmi:type="ecore:EDataType" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1317,8 +1317,8 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EDataType']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_PDcHAACiEeakKJwtJ0EeRg" name="int" tooltipText="">
-          <target xmi:type="ecore:EDataType" href="model/OCCI.ecore#//Number"/>
-          <semanticElements xmi:type="ecore:EDataType" href="model/OCCI.ecore#//Number"/>
+          <target xmi:type="ecore:EDataType" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number"/>
+          <semanticElements xmi:type="ecore:EDataType" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number"/>
           <decorations xmi:type="viewpoint:Decoration" xmi:id="_PDfKUgCiEeakKJwtJ0EeRg">
             <description xmi:type="description:SemanticBasedDecoration" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@decorationDescriptionsSet/@decorationDescriptions[name='External']"/>
           </decorations>
@@ -1330,8 +1330,8 @@
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_PCu8YACiEeakKJwtJ0EeRg" name="Boolean" tooltipText="" width="14" height="5">
-        <target xmi:type="ecore:EDataType" href="model/OCCI.ecore#//Boolean"/>
-        <semanticElements xmi:type="ecore:EDataType" href="model/OCCI.ecore#//Boolean"/>
+        <target xmi:type="ecore:EDataType" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean"/>
+        <semanticElements xmi:type="ecore:EDataType" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1340,8 +1340,8 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EDataType']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_PDdVIACiEeakKJwtJ0EeRg" name="boolean" tooltipText="">
-          <target xmi:type="ecore:EDataType" href="model/OCCI.ecore#//Boolean"/>
-          <semanticElements xmi:type="ecore:EDataType" href="model/OCCI.ecore#//Boolean"/>
+          <target xmi:type="ecore:EDataType" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean"/>
+          <semanticElements xmi:type="ecore:EDataType" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean"/>
           <decorations xmi:type="viewpoint:Decoration" xmi:id="_PDfKUwCiEeakKJwtJ0EeRg">
             <description xmi:type="description:SemanticBasedDecoration" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@decorationDescriptionsSet/@decorationDescriptions[name='External']"/>
           </decorations>
@@ -1353,8 +1353,8 @@
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_PDl4AACiEeakKJwtJ0EeRg" name="[0..*] attributes" sourceNode="_PB-HYACiEeakKJwtJ0EeRg" targetNode="_PCbaYACiEeakKJwtJ0EeRg">
-        <target xmi:type="ecore:EReference" href="model/OCCI.ecore#//Category/attributes"/>
-        <semanticElements xmi:type="ecore:EReference" href="model/OCCI.ecore#//Category/attributes"/>
+        <target xmi:type="ecore:EReference" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Category/attributes"/>
+        <semanticElements xmi:type="ecore:EReference" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Category/attributes"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_PDoUQACiEeakKJwtJ0EeRg" description="_PDnGIACiEeakKJwtJ0EeRg" sourceArrow="FillDiamond" routingStyle="manhattan" strokeColor="0,0,0">
           <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_PDoUQQCiEeakKJwtJ0EeRg" showIcon="false">
             <customFeatures>labelSize</customFeatures>
@@ -1366,8 +1366,8 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_PDpiYACiEeakKJwtJ0EeRg" name="[0..1] parent" sourceNode="_PCedsACiEeakKJwtJ0EeRg" targetNode="_PCedsACiEeakKJwtJ0EeRg">
-        <target xmi:type="ecore:EReference" href="model/OCCI.ecore#//Kind/parent"/>
-        <semanticElements xmi:type="ecore:EReference" href="model/OCCI.ecore#//Kind/parent"/>
+        <target xmi:type="ecore:EReference" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Kind/parent"/>
+        <semanticElements xmi:type="ecore:EReference" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Kind/parent"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_PDqJcACiEeakKJwtJ0EeRg" routingStyle="manhattan" strokeColor="0,0,0">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']/@style"/>
           <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_PDqJcQCiEeakKJwtJ0EeRg" showIcon="false">
@@ -1380,8 +1380,8 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_PDqwgACiEeakKJwtJ0EeRg" name="[0..*] actions" sourceNode="_PCedsACiEeakKJwtJ0EeRg" targetNode="_PCfr0ACiEeakKJwtJ0EeRg">
-        <target xmi:type="ecore:EReference" href="model/OCCI.ecore#//Kind/actions"/>
-        <semanticElements xmi:type="ecore:EReference" href="model/OCCI.ecore#//Kind/actions"/>
+        <target xmi:type="ecore:EReference" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Kind/actions"/>
+        <semanticElements xmi:type="ecore:EReference" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Kind/actions"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_PDr-oACiEeakKJwtJ0EeRg" description="_PDnGIACiEeakKJwtJ0EeRg" sourceArrow="FillDiamond" routingStyle="manhattan" strokeColor="0,0,0">
           <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_PDr-oQCiEeakKJwtJ0EeRg" showIcon="false">
             <customFeatures>labelSize</customFeatures>
@@ -1393,8 +1393,8 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_PDslsACiEeakKJwtJ0EeRg" name="[0..*] /entities" sourceNode="_PCedsACiEeakKJwtJ0EeRg" targetNode="_PCivIACiEeakKJwtJ0EeRg">
-        <target xmi:type="ecore:EReference" href="model/OCCI.ecore#//Kind/entities"/>
-        <semanticElements xmi:type="ecore:EReference" href="model/OCCI.ecore#//Kind/entities"/>
+        <target xmi:type="ecore:EReference" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Kind/entities"/>
+        <semanticElements xmi:type="ecore:EReference" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Kind/entities"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_PDtz0wCiEeakKJwtJ0EeRg" description="_PDtz0ACiEeakKJwtJ0EeRg" routingStyle="manhattan" strokeColor="114,159,207">
           <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_PDtz1ACiEeakKJwtJ0EeRg" showIcon="false" labelColor="39,76,114">
             <customFeatures>labelSize</customFeatures>
@@ -1406,8 +1406,8 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_PDvB8ACiEeakKJwtJ0EeRg" name="[0..*] actions" sourceNode="_PChhAACiEeakKJwtJ0EeRg" targetNode="_PCfr0ACiEeakKJwtJ0EeRg">
-        <target xmi:type="ecore:EReference" href="model/OCCI.ecore#//Mixin/actions"/>
-        <semanticElements xmi:type="ecore:EReference" href="model/OCCI.ecore#//Mixin/actions"/>
+        <target xmi:type="ecore:EReference" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Mixin/actions"/>
+        <semanticElements xmi:type="ecore:EReference" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Mixin/actions"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_PDvpAACiEeakKJwtJ0EeRg" description="_PDnGIACiEeakKJwtJ0EeRg" sourceArrow="FillDiamond" routingStyle="manhattan" strokeColor="0,0,0">
           <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_PDvpAQCiEeakKJwtJ0EeRg" showIcon="false">
             <customFeatures>labelSize</customFeatures>
@@ -1419,8 +1419,8 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_PDwQEACiEeakKJwtJ0EeRg" name="[0..*] depends" sourceNode="_PChhAACiEeakKJwtJ0EeRg" targetNode="_PChhAACiEeakKJwtJ0EeRg">
-        <target xmi:type="ecore:EReference" href="model/OCCI.ecore#//Mixin/depends"/>
-        <semanticElements xmi:type="ecore:EReference" href="model/OCCI.ecore#//Mixin/depends"/>
+        <target xmi:type="ecore:EReference" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Mixin/depends"/>
+        <semanticElements xmi:type="ecore:EReference" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Mixin/depends"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_PDxeMACiEeakKJwtJ0EeRg" routingStyle="manhattan" strokeColor="0,0,0">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']/@style"/>
           <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_PDxeMQCiEeakKJwtJ0EeRg" showIcon="false">
@@ -1433,8 +1433,8 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_PDyFQACiEeakKJwtJ0EeRg" name="[0..*] applies" sourceNode="_PChhAACiEeakKJwtJ0EeRg" targetNode="_PCedsACiEeakKJwtJ0EeRg">
-        <target xmi:type="ecore:EReference" href="model/OCCI.ecore#//Mixin/applies"/>
-        <semanticElements xmi:type="ecore:EReference" href="model/OCCI.ecore#//Mixin/applies"/>
+        <target xmi:type="ecore:EReference" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Mixin/applies"/>
+        <semanticElements xmi:type="ecore:EReference" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Mixin/applies"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_PDysUACiEeakKJwtJ0EeRg" routingStyle="manhattan" strokeColor="0,0,0">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']/@style"/>
           <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_PDysUQCiEeakKJwtJ0EeRg" showIcon="false">
@@ -1447,8 +1447,8 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_PDz6cACiEeakKJwtJ0EeRg" name="[0..*] /entities" sourceNode="_PChhAACiEeakKJwtJ0EeRg" targetNode="_PCivIACiEeakKJwtJ0EeRg">
-        <target xmi:type="ecore:EReference" href="model/OCCI.ecore#//Mixin/entities"/>
-        <semanticElements xmi:type="ecore:EReference" href="model/OCCI.ecore#//Mixin/entities"/>
+        <target xmi:type="ecore:EReference" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Mixin/entities"/>
+        <semanticElements xmi:type="ecore:EReference" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Mixin/entities"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_PD0hgACiEeakKJwtJ0EeRg" description="_PDtz0ACiEeakKJwtJ0EeRg" routingStyle="manhattan" strokeColor="114,159,207">
           <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_PD0hgQCiEeakKJwtJ0EeRg" showIcon="false" labelColor="39,76,114">
             <customFeatures>labelSize</customFeatures>
@@ -1460,8 +1460,8 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_PD1voACiEeakKJwtJ0EeRg" name="[1..1] kind" sourceNode="_PCivIACiEeakKJwtJ0EeRg" targetNode="_PCedsACiEeakKJwtJ0EeRg">
-        <target xmi:type="ecore:EReference" href="model/OCCI.ecore#//Entity/kind"/>
-        <semanticElements xmi:type="ecore:EReference" href="model/OCCI.ecore#//Entity/kind"/>
+        <target xmi:type="ecore:EReference" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Entity/kind"/>
+        <semanticElements xmi:type="ecore:EReference" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Entity/kind"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_PD2WswCiEeakKJwtJ0EeRg" description="_PD2WsACiEeakKJwtJ0EeRg" routingStyle="manhattan" strokeColor="0,0,0">
           <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_PD2WtACiEeakKJwtJ0EeRg" showIcon="false">
             <customFeatures>labelSize</customFeatures>
@@ -1474,8 +1474,8 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_PD29wACiEeakKJwtJ0EeRg" name="[0..*] mixins" sourceNode="_PCivIACiEeakKJwtJ0EeRg" targetNode="_PChhAACiEeakKJwtJ0EeRg">
-        <target xmi:type="ecore:EReference" href="model/OCCI.ecore#//Entity/mixins"/>
-        <semanticElements xmi:type="ecore:EReference" href="model/OCCI.ecore#//Entity/mixins"/>
+        <target xmi:type="ecore:EReference" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Entity/mixins"/>
+        <semanticElements xmi:type="ecore:EReference" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Entity/mixins"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_PD3k0ACiEeakKJwtJ0EeRg" routingStyle="manhattan" strokeColor="0,0,0">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']/@style"/>
           <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_PD3k0QCiEeakKJwtJ0EeRg" showIcon="false">
@@ -1488,8 +1488,8 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_PD4L4ACiEeakKJwtJ0EeRg" name="[0..*] attributes" sourceNode="_PCivIACiEeakKJwtJ0EeRg" targetNode="_PCj9QACiEeakKJwtJ0EeRg">
-        <target xmi:type="ecore:EReference" href="model/OCCI.ecore#//Entity/attributes"/>
-        <semanticElements xmi:type="ecore:EReference" href="model/OCCI.ecore#//Entity/attributes"/>
+        <target xmi:type="ecore:EReference" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Entity/attributes"/>
+        <semanticElements xmi:type="ecore:EReference" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Entity/attributes"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_PD5aAACiEeakKJwtJ0EeRg" description="_PDnGIACiEeakKJwtJ0EeRg" sourceArrow="FillDiamond" routingStyle="manhattan" strokeColor="0,0,0">
           <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_PD5aAQCiEeakKJwtJ0EeRg" showIcon="false">
             <customFeatures>labelSize</customFeatures>
@@ -1501,8 +1501,8 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_PD6BEACiEeakKJwtJ0EeRg" name="[1..1] target" sourceNode="_PCnAkACiEeakKJwtJ0EeRg" targetNode="_PClycACiEeakKJwtJ0EeRg">
-        <target xmi:type="ecore:EReference" href="model/OCCI.ecore#//Link/target"/>
-        <semanticElements xmi:type="ecore:EReference" href="model/OCCI.ecore#//Link/target"/>
+        <target xmi:type="ecore:EReference" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Link/target"/>
+        <semanticElements xmi:type="ecore:EReference" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Link/target"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_PD6oIACiEeakKJwtJ0EeRg" description="_PD2WsACiEeakKJwtJ0EeRg" routingStyle="manhattan" strokeColor="0,0,0">
           <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_PD6oIQCiEeakKJwtJ0EeRg" showIcon="false">
             <customFeatures>labelSize</customFeatures>
@@ -1515,8 +1515,8 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_PD7PMACiEeakKJwtJ0EeRg" name="[0..*] import" sourceNode="_PCoOsACiEeakKJwtJ0EeRg" targetNode="_PCoOsACiEeakKJwtJ0EeRg">
-        <target xmi:type="ecore:EReference" href="model/OCCI.ecore#//Extension/import"/>
-        <semanticElements xmi:type="ecore:EReference" href="model/OCCI.ecore#//Extension/import"/>
+        <target xmi:type="ecore:EReference" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Extension/import"/>
+        <semanticElements xmi:type="ecore:EReference" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Extension/import"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_PD7PMQCiEeakKJwtJ0EeRg" routingStyle="manhattan" strokeColor="0,0,0">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']/@style"/>
           <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_PD7PMgCiEeakKJwtJ0EeRg" showIcon="false">
@@ -1529,8 +1529,8 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_PD72QACiEeakKJwtJ0EeRg" name="[0..*] kinds" sourceNode="_PCoOsACiEeakKJwtJ0EeRg" targetNode="_PCedsACiEeakKJwtJ0EeRg" endLabel="term">
-        <target xmi:type="ecore:EReference" href="model/OCCI.ecore#//Extension/kinds"/>
-        <semanticElements xmi:type="ecore:EReference" href="model/OCCI.ecore#//Extension/kinds"/>
+        <target xmi:type="ecore:EReference" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Extension/kinds"/>
+        <semanticElements xmi:type="ecore:EReference" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Extension/kinds"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_PD8dUACiEeakKJwtJ0EeRg" description="_PDnGIACiEeakKJwtJ0EeRg" sourceArrow="FillDiamond" routingStyle="manhattan" strokeColor="0,0,0">
           <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_PD8dUQCiEeakKJwtJ0EeRg" showIcon="false">
             <customFeatures>labelSize</customFeatures>
@@ -1542,8 +1542,8 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_PD9EYACiEeakKJwtJ0EeRg" name="[0..*] mixins" sourceNode="_PCoOsACiEeakKJwtJ0EeRg" targetNode="_PChhAACiEeakKJwtJ0EeRg" endLabel="term">
-        <target xmi:type="ecore:EReference" href="model/OCCI.ecore#//Extension/mixins"/>
-        <semanticElements xmi:type="ecore:EReference" href="model/OCCI.ecore#//Extension/mixins"/>
+        <target xmi:type="ecore:EReference" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Extension/mixins"/>
+        <semanticElements xmi:type="ecore:EReference" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Extension/mixins"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_PD9rcACiEeakKJwtJ0EeRg" description="_PDnGIACiEeakKJwtJ0EeRg" sourceArrow="FillDiamond" routingStyle="manhattan" strokeColor="0,0,0">
           <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_PD9rcQCiEeakKJwtJ0EeRg" showIcon="false">
             <customFeatures>labelSize</customFeatures>
@@ -1555,8 +1555,8 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_PD9rcwCiEeakKJwtJ0EeRg" name="[0..*] use" sourceNode="_PCqD4ACiEeakKJwtJ0EeRg" targetNode="_PCoOsACiEeakKJwtJ0EeRg">
-        <target xmi:type="ecore:EReference" href="model/OCCI.ecore#//Configuration/use"/>
-        <semanticElements xmi:type="ecore:EReference" href="model/OCCI.ecore#//Configuration/use"/>
+        <target xmi:type="ecore:EReference" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Configuration/use"/>
+        <semanticElements xmi:type="ecore:EReference" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Configuration/use"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_PD-SgACiEeakKJwtJ0EeRg" routingStyle="manhattan" strokeColor="0,0,0">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']/@style"/>
           <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_PD-SgQCiEeakKJwtJ0EeRg" showIcon="false">
@@ -1569,8 +1569,8 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_PD-5kACiEeakKJwtJ0EeRg" name="[0..*] resources" sourceNode="_PCqD4ACiEeakKJwtJ0EeRg" targetNode="_PClycACiEeakKJwtJ0EeRg">
-        <target xmi:type="ecore:EReference" href="model/OCCI.ecore#//Configuration/resources"/>
-        <semanticElements xmi:type="ecore:EReference" href="model/OCCI.ecore#//Configuration/resources"/>
+        <target xmi:type="ecore:EReference" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Configuration/resources"/>
+        <semanticElements xmi:type="ecore:EReference" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Configuration/resources"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_PD_goACiEeakKJwtJ0EeRg" description="_PDnGIACiEeakKJwtJ0EeRg" sourceArrow="FillDiamond" routingStyle="manhattan" strokeColor="0,0,0">
           <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_PD_goQCiEeakKJwtJ0EeRg" showIcon="false">
             <customFeatures>labelSize</customFeatures>
@@ -1582,8 +1582,8 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_PEAHsACiEeakKJwtJ0EeRg" name="[0..*] mixins" sourceNode="_PCqD4ACiEeakKJwtJ0EeRg" targetNode="_PChhAACiEeakKJwtJ0EeRg">
-        <target xmi:type="ecore:EReference" href="model/OCCI.ecore#//Configuration/mixins"/>
-        <semanticElements xmi:type="ecore:EReference" href="model/OCCI.ecore#//Configuration/mixins"/>
+        <target xmi:type="ecore:EReference" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Configuration/mixins"/>
+        <semanticElements xmi:type="ecore:EReference" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Configuration/mixins"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_PEAuwACiEeakKJwtJ0EeRg" description="_PDnGIACiEeakKJwtJ0EeRg" sourceArrow="FillDiamond" routingStyle="manhattan" strokeColor="0,0,0">
           <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_PEAuwQCiEeakKJwtJ0EeRg" showIcon="false">
             <customFeatures>labelSize</customFeatures>
@@ -1595,8 +1595,8 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_PEB84ACiEeakKJwtJ0EeRg" sourceNode="_PCedsACiEeakKJwtJ0EeRg" targetNode="_PB-HYACiEeakKJwtJ0EeRg">
-        <target xmi:type="ecore:EClass" href="model/OCCI.ecore#//Kind"/>
-        <semanticElements xmi:type="ecore:EGenericType" href="model/OCCI.ecore#//Kind/@eGenericSuperTypes.0"/>
+        <target xmi:type="ecore:EClass" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Kind"/>
+        <semanticElements xmi:type="ecore:EGenericType" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Kind/@eGenericSuperTypes.0"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_PECj8ACiEeakKJwtJ0EeRg" targetArrow="InputClosedArrow" routingStyle="tree">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC%20ESupertypes']/@style"/>
           <beginLabelStyle xmi:type="diagram:BeginLabelStyle" xmi:id="_PECj8QCiEeakKJwtJ0EeRg" showIcon="false">
@@ -1607,8 +1607,8 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC%20ESupertypes']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_PEDLAACiEeakKJwtJ0EeRg" sourceNode="_PCfr0ACiEeakKJwtJ0EeRg" targetNode="_PB-HYACiEeakKJwtJ0EeRg">
-        <target xmi:type="ecore:EClass" href="model/OCCI.ecore#//Action"/>
-        <semanticElements xmi:type="ecore:EGenericType" href="model/OCCI.ecore#//Action/@eGenericSuperTypes.0"/>
+        <target xmi:type="ecore:EClass" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Action"/>
+        <semanticElements xmi:type="ecore:EGenericType" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Action/@eGenericSuperTypes.0"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_PEDLAQCiEeakKJwtJ0EeRg" targetArrow="InputClosedArrow" routingStyle="tree">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC%20ESupertypes']/@style"/>
           <beginLabelStyle xmi:type="diagram:BeginLabelStyle" xmi:id="_PEDLAgCiEeakKJwtJ0EeRg" showIcon="false">
@@ -1619,8 +1619,8 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC%20ESupertypes']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_PEDyEQCiEeakKJwtJ0EeRg" sourceNode="_PChhAACiEeakKJwtJ0EeRg" targetNode="_PB-HYACiEeakKJwtJ0EeRg">
-        <target xmi:type="ecore:EClass" href="model/OCCI.ecore#//Mixin"/>
-        <semanticElements xmi:type="ecore:EGenericType" href="model/OCCI.ecore#//Mixin/@eGenericSuperTypes.0"/>
+        <target xmi:type="ecore:EClass" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Mixin"/>
+        <semanticElements xmi:type="ecore:EGenericType" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Mixin/@eGenericSuperTypes.0"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_PEEZIACiEeakKJwtJ0EeRg" targetArrow="InputClosedArrow" routingStyle="tree">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC%20ESupertypes']/@style"/>
           <beginLabelStyle xmi:type="diagram:BeginLabelStyle" xmi:id="_PEEZIQCiEeakKJwtJ0EeRg" showIcon="false">
@@ -1631,8 +1631,8 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC%20ESupertypes']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_PEEZIwCiEeakKJwtJ0EeRg" sourceNode="_PClycACiEeakKJwtJ0EeRg" targetNode="_PCivIACiEeakKJwtJ0EeRg">
-        <target xmi:type="ecore:EClass" href="model/OCCI.ecore#//Resource"/>
-        <semanticElements xmi:type="ecore:EGenericType" href="model/OCCI.ecore#//Resource/@eGenericSuperTypes.0"/>
+        <target xmi:type="ecore:EClass" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Resource"/>
+        <semanticElements xmi:type="ecore:EGenericType" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Resource/@eGenericSuperTypes.0"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_PEFAMACiEeakKJwtJ0EeRg" targetArrow="InputClosedArrow" routingStyle="tree">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC%20ESupertypes']/@style"/>
           <beginLabelStyle xmi:type="diagram:BeginLabelStyle" xmi:id="_PEFAMQCiEeakKJwtJ0EeRg" showIcon="false">
@@ -1643,8 +1643,8 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC%20ESupertypes']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_PEFnQACiEeakKJwtJ0EeRg" sourceNode="_PCnAkACiEeakKJwtJ0EeRg" targetNode="_PCivIACiEeakKJwtJ0EeRg">
-        <target xmi:type="ecore:EClass" href="model/OCCI.ecore#//Link"/>
-        <semanticElements xmi:type="ecore:EGenericType" href="model/OCCI.ecore#//Link/@eGenericSuperTypes.0"/>
+        <target xmi:type="ecore:EClass" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Link"/>
+        <semanticElements xmi:type="ecore:EGenericType" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Link/@eGenericSuperTypes.0"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_PEFnQQCiEeakKJwtJ0EeRg" targetArrow="InputClosedArrow" routingStyle="tree">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC%20ESupertypes']/@style"/>
           <beginLabelStyle xmi:type="diagram:BeginLabelStyle" xmi:id="_PEFnQgCiEeakKJwtJ0EeRg" showIcon="false">
@@ -1655,9 +1655,9 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC%20ESupertypes']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_PEG1YACiEeakKJwtJ0EeRg" sourceNode="_PClycACiEeakKJwtJ0EeRg" targetNode="_PCnAkACiEeakKJwtJ0EeRg" beginLabel="[1..1] source" endLabel="[0..*] links">
-        <target xmi:type="ecore:EReference" href="model/OCCI.ecore#//Resource/links"/>
-        <semanticElements xmi:type="ecore:EReference" href="model/OCCI.ecore#//Resource/links"/>
-        <semanticElements xmi:type="ecore:EReference" href="model/OCCI.ecore#//Link/source"/>
+        <target xmi:type="ecore:EReference" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Resource/links"/>
+        <semanticElements xmi:type="ecore:EReference" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Resource/links"/>
+        <semanticElements xmi:type="ecore:EReference" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Link/source"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_PEHccwCiEeakKJwtJ0EeRg" description="_PEHccACiEeakKJwtJ0EeRg" sourceArrow="FillDiamond" routingStyle="manhattan" strokeColor="0,0,0">
           <beginLabelStyle xmi:type="diagram:BeginLabelStyle" xmi:id="_PEHcdACiEeakKJwtJ0EeRg" showIcon="false"/>
           <endLabelStyle xmi:type="diagram:EndLabelStyle" xmi:id="_PEHcdQCiEeakKJwtJ0EeRg" showIcon="false"/>
@@ -1669,7 +1669,7 @@
       <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer"/>
       <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@additionalLayers[name='Package']"/>
       <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@additionalLayers[name='Validation']"/>
-      <target xmi:type="ecore:EPackage" href="model/OCCI.ecore#/"/>
+      <target xmi:type="ecore:EPackage" href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#/"/>
     </ownedRepresentations>
     <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
   </ownedViews>
@@ -1683,13 +1683,13 @@
           <children xmi:type="notation:Node" xmi:id="_iJ7KsBHwEeaYMN_zIiLZ8w" type="2003" element="_iJ2SMxHwEeaYMN_zIiLZ8w">
             <children xmi:type="notation:Node" xmi:id="_iJ9m8BHwEeaYMN_zIiLZ8w" type="5007"/>
             <children xmi:type="notation:Node" xmi:id="_iJ-OABHwEeaYMN_zIiLZ8w" type="7004">
-              <children xmi:type="notation:Node" xmi:id="_iKB4YBHwEeaYMN_zIiLZ8w" type="3010" element="_iJ2SNRHwEeaYMN_zIiLZ8w">
-                <styles xmi:type="notation:FontStyle" xmi:id="_iKB4YRHwEeaYMN_zIiLZ8w" fontName=".SF NS Text" fontHeight="10" bold="true"/>
-                <layoutConstraint xmi:type="notation:Location" xmi:id="_iKB4YhHwEeaYMN_zIiLZ8w"/>
+              <children xmi:type="notation:Node" xmi:id="_IQvzABiPEea9L80CvMEnxw" type="3010" element="_IQR48BiPEea9L80CvMEnxw">
+                <styles xmi:type="notation:FontStyle" xmi:id="_IQvzARiPEea9L80CvMEnxw" fontName=".SF NS Text" fontHeight="10" bold="true" italic="true"/>
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_IQvzAhiPEea9L80CvMEnxw"/>
               </children>
-              <children xmi:type="notation:Node" xmi:id="_iKB4YxHwEeaYMN_zIiLZ8w" type="3010" element="_iJ2SNxHwEeaYMN_zIiLZ8w">
-                <styles xmi:type="notation:FontStyle" xmi:id="_iKB4ZBHwEeaYMN_zIiLZ8w" fontName=".SF NS Text" fontHeight="10"/>
-                <layoutConstraint xmi:type="notation:Location" xmi:id="_iKB4ZRHwEeaYMN_zIiLZ8w"/>
+              <children xmi:type="notation:Node" xmi:id="_IQxoMBiPEea9L80CvMEnxw" type="3010" element="_IQhJgBiPEea9L80CvMEnxw">
+                <styles xmi:type="notation:FontStyle" xmi:id="_IQxoMRiPEea9L80CvMEnxw" fontName=".SF NS Text" fontHeight="10"/>
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_IQxoMhiPEea9L80CvMEnxw"/>
               </children>
               <styles xmi:type="notation:SortingStyle" xmi:id="_iJ-OARHwEeaYMN_zIiLZ8w"/>
               <styles xmi:type="notation:FilteringStyle" xmi:id="_iJ-OAhHwEeaYMN_zIiLZ8w"/>
@@ -1700,9 +1700,9 @@
           <children xmi:type="notation:Node" xmi:id="_iJ-1EBHwEeaYMN_zIiLZ8w" type="2003" element="_iJ2SORHwEeaYMN_zIiLZ8w">
             <children xmi:type="notation:Node" xmi:id="_iJ_cIBHwEeaYMN_zIiLZ8w" type="5007"/>
             <children xmi:type="notation:Node" xmi:id="_iJ_cIRHwEeaYMN_zIiLZ8w" type="7004">
-              <children xmi:type="notation:Node" xmi:id="_iKB4ZhHwEeaYMN_zIiLZ8w" type="3010" element="_iJ2SOxHwEeaYMN_zIiLZ8w">
-                <styles xmi:type="notation:FontStyle" xmi:id="_iKB4ZxHwEeaYMN_zIiLZ8w" fontName=".SF NS Text" fontHeight="10"/>
-                <layoutConstraint xmi:type="notation:Location" xmi:id="_iKB4aBHwEeaYMN_zIiLZ8w"/>
+              <children xmi:type="notation:Node" xmi:id="_IQxoMxiPEea9L80CvMEnxw" type="3010" element="_IQn3MRiPEea9L80CvMEnxw">
+                <styles xmi:type="notation:FontStyle" xmi:id="_IQxoNBiPEea9L80CvMEnxw" fontName=".SF NS Text" fontHeight="10"/>
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_IQxoNRiPEea9L80CvMEnxw"/>
               </children>
               <styles xmi:type="notation:SortingStyle" xmi:id="_iJ_cIhHwEeaYMN_zIiLZ8w"/>
               <styles xmi:type="notation:FilteringStyle" xmi:id="_iJ_cIxHwEeaYMN_zIiLZ8w"/>
@@ -1804,22 +1804,23 @@
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']"/>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_iJ2SNRHwEeaYMN_zIiLZ8w" name="occi.core.id: String">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_IQR48BiPEea9L80CvMEnxw" name="occi.core.id: String">
           <target xmi:type="occi:Attribute" href="model/Core.occie#//@kinds[term='entity']/@attributes.0"/>
           <semanticElements xmi:type="occi:Attribute" href="model/Core.occie#//@kinds[term='entity']/@attributes.0"/>
-          <ownedStyle xmi:type="diagram:Square" xmi:id="_iJ2SNhHwEeaYMN_zIiLZ8w" labelSize="10" labelAlignment="LEFT" labelPosition="node">
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_IQgicBiPEea9L80CvMEnxw" labelSize="10" labelAlignment="LEFT" labelPosition="node">
+            <labelFormat>italic</labelFormat>
             <labelFormat>bold</labelFormat>
-            <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@conditionnalStyles.6/@style"/>
+            <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']/@conditionnalStyles.1/@style"/>
           </ownedStyle>
-          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']"/>
         </ownedElements>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_iJ2SNxHwEeaYMN_zIiLZ8w" name="occi.core.title: String">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_IQhJgBiPEea9L80CvMEnxw" name="occi.core.title: String">
           <target xmi:type="occi:Attribute" href="model/Core.occie#//@kinds[term='entity']/@attributes.1"/>
           <semanticElements xmi:type="occi:Attribute" href="model/Core.occie#//@kinds[term='entity']/@attributes.1"/>
-          <ownedStyle xmi:type="diagram:Square" xmi:id="_iJ2SOBHwEeaYMN_zIiLZ8w" labelSize="10" labelAlignment="LEFT" labelPosition="node">
-            <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@conditionnalStyles.2/@style"/>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_IQn3MBiPEea9L80CvMEnxw" labelSize="10" labelAlignment="LEFT" labelPosition="node">
+            <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']/@conditionnalStyles.2/@style"/>
           </ownedStyle>
-          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']"/>
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_iJ2SORHwEeaYMN_zIiLZ8w" name="resource" outgoingEdges="_iJ2SSxHwEeaYMN_zIiLZ8w">
@@ -1833,13 +1834,13 @@
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']"/>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_iJ2SOxHwEeaYMN_zIiLZ8w" name="occi.core.summary: String">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_IQn3MRiPEea9L80CvMEnxw" name="occi.core.summary: String">
           <target xmi:type="occi:Attribute" href="model/Core.occie#//@kinds[term='resource']/@attributes.0"/>
           <semanticElements xmi:type="occi:Attribute" href="model/Core.occie#//@kinds[term='resource']/@attributes.0"/>
-          <ownedStyle xmi:type="diagram:Square" xmi:id="_iJ2SPBHwEeaYMN_zIiLZ8w" labelSize="10" labelAlignment="LEFT" labelPosition="node">
-            <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']/@conditionnalStyles.2/@style"/>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_IQoeQBiPEea9L80CvMEnxw" labelSize="10" labelAlignment="LEFT" labelPosition="node">
+            <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']/@conditionnalStyles.2/@style"/>
           </ownedStyle>
-          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='Attribute']"/>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']"/>
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_iJ2SPRHwEeaYMN_zIiLZ8w" name="link" outgoingEdges="_iJ2SThHwEeaYMN_zIiLZ8w">

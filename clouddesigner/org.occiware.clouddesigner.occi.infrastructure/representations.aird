@@ -8,7 +8,7 @@
   <semanticResources>model/Infrastructure.occie</semanticResources>
   <semanticResources>model/Infrastructure.genmodel</semanticResources>
   <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_hwm80KUFEeWC9bP0_HAAaw">
-    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_hxkmIKUFEeWC9bP0_HAAaw" name="infrastructure">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_hxkmIKUFEeWC9bP0_HAAaw" name="OCCI Infrastructure Extension diagram">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_hxkmIaUFEeWC9bP0_HAAaw" source="DANNOTATION_CUSTOMIZATION_KEY">
         <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_hxkmIqUFEeWC9bP0_HAAaw"/>
       </ownedAnnotationEntries>
@@ -1076,8 +1076,8 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_3Ll3sKUFEeWC9bP0_HAAaw" name="network" outgoingEdges="_3MgdsKUFEeWC9bP0_HAAaw" incomingEdges="_3MhEw6UFEeWC9bP0_HAAaw">
-        <target xmi:type="occi:Kind" href="model/infrastructure.occie#//@kinds[term='network']"/>
-        <semanticElements xmi:type="occi:Kind" href="model/infrastructure.occie#//@kinds[term='network']"/>
+        <target xmi:type="occi:Kind" href="model/Infrastructure.occie#//@kinds[term='network']"/>
+        <semanticElements xmi:type="occi:Kind" href="model/Infrastructure.occie#//@kinds[term='network']"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1087,24 +1087,24 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_Dnd5wBYpEea5btIwrep4tA" name="occi.network.vlan: Vlan">
-          <target xmi:type="occi:Attribute" href="model/infrastructure.occie#//@kinds[term='network']/@attributes.0"/>
-          <semanticElements xmi:type="occi:Attribute" href="model/infrastructure.occie#//@kinds[term='network']/@attributes.0"/>
+          <target xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@kinds[term='network']/@attributes.0"/>
+          <semanticElements xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@kinds[term='network']/@attributes.0"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_Dneg0BYpEea5btIwrep4tA" labelSize="10" labelAlignment="LEFT" labelPosition="node">
             <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']/@conditionnalStyles.2/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_Dneg0RYpEea5btIwrep4tA" name="occi.network.label: Token">
-          <target xmi:type="occi:Attribute" href="model/infrastructure.occie#//@kinds[term='network']/@attributes.1"/>
-          <semanticElements xmi:type="occi:Attribute" href="model/infrastructure.occie#//@kinds[term='network']/@attributes.1"/>
+          <target xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@kinds[term='network']/@attributes.1"/>
+          <semanticElements xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@kinds[term='network']/@attributes.1"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_DnfH4BYpEea5btIwrep4tA" labelSize="10" labelAlignment="LEFT" labelPosition="node">
             <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']/@conditionnalStyles.2/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_DnfH4RYpEea5btIwrep4tA" name="occi.network.state: NetworkStatus=inactive">
-          <target xmi:type="occi:Attribute" href="model/infrastructure.occie#//@kinds[term='network']/@attributes.2"/>
-          <semanticElements xmi:type="occi:Attribute" href="model/infrastructure.occie#//@kinds[term='network']/@attributes.2"/>
+          <target xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@kinds[term='network']/@attributes.2"/>
+          <semanticElements xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@kinds[term='network']/@attributes.2"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_exIOsBYpEea5btIwrep4tA" labelSize="10" labelAlignment="LEFT" labelPosition="node">
             <labelFormat>italic</labelFormat>
             <labelFormat>bold</labelFormat>
@@ -1113,25 +1113,24 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_DnkncBYpEea5btIwrep4tA" name="occi.network.state.message: String">
-          <target xmi:type="occi:Attribute" href="model/infrastructure.occie#//@kinds[term='network']/@attributes.3"/>
-          <semanticElements xmi:type="occi:Attribute" href="model/infrastructure.occie#//@kinds[term='network']/@attributes.3"/>
-          <ownedStyle xmi:type="diagram:Square" xmi:id="_BvQ80BY7Eea_SpLA5wEimw" labelSize="10" labelAlignment="LEFT" labelPosition="node">
-            <labelFormat>italic</labelFormat>
-            <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']/@conditionnalStyles.0/@style"/>
+          <target xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@kinds[term='network']/@attributes.3"/>
+          <semanticElements xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@kinds[term='network']/@attributes.3"/>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_jmY10BiMEeaybr9P2JNyAA" labelSize="10" labelAlignment="LEFT" labelPosition="node">
+            <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']/@conditionnalStyles.2/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_DnlOgRYpEea5btIwrep4tA" name="up()">
-          <target xmi:type="occi:Action" href="model/infrastructure.occie#//@kinds[term='network']/@actions.0"/>
-          <semanticElements xmi:type="occi:Action" href="model/infrastructure.occie#//@kinds[term='network']/@actions.0"/>
+          <target xmi:type="occi:Action" href="model/Infrastructure.occie#//@kinds[term='network']/@actions.0"/>
+          <semanticElements xmi:type="occi:Action" href="model/Infrastructure.occie#//@kinds[term='network']/@actions.0"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_Dnl1kBYpEea5btIwrep4tA" labelSize="10" labelAlignment="LEFT" labelPosition="node">
             <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAction']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAction']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_Dnl1kRYpEea5btIwrep4tA" name="down()">
-          <target xmi:type="occi:Action" href="model/infrastructure.occie#//@kinds[term='network']/@actions.1"/>
-          <semanticElements xmi:type="occi:Action" href="model/infrastructure.occie#//@kinds[term='network']/@actions.1"/>
+          <target xmi:type="occi:Action" href="model/Infrastructure.occie#//@kinds[term='network']/@actions.1"/>
+          <semanticElements xmi:type="occi:Action" href="model/Infrastructure.occie#//@kinds[term='network']/@actions.1"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_Dnl1khYpEea5btIwrep4tA" labelSize="10" labelAlignment="LEFT" labelPosition="node">
             <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAction']/@style"/>
           </ownedStyle>
@@ -1139,8 +1138,8 @@
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_3LmewKUFEeWC9bP0_HAAaw" name="compute" outgoingEdges="_3Mgds6UFEeWC9bP0_HAAaw" incomingEdges="_3Mhr0qUFEeWC9bP0_HAAaw _dl3mcKUgEeWC9bP0_HAAaw _bYvLEKUhEeWC9bP0_HAAaw">
-        <target xmi:type="occi:Kind" href="model/infrastructure.occie#//@kinds[term='compute']"/>
-        <semanticElements xmi:type="occi:Kind" href="model/infrastructure.occie#//@kinds[term='compute']"/>
+        <target xmi:type="occi:Kind" href="model/Infrastructure.occie#//@kinds[term='compute']"/>
+        <semanticElements xmi:type="occi:Kind" href="model/Infrastructure.occie#//@kinds[term='compute']"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1150,56 +1149,56 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_DnmcoBYpEea5btIwrep4tA" name="occi.compute.architecture: Architecture">
-          <target xmi:type="occi:Attribute" href="model/infrastructure.occie#//@kinds[term='compute']/@attributes.0"/>
-          <semanticElements xmi:type="occi:Attribute" href="model/infrastructure.occie#//@kinds[term='compute']/@attributes.0"/>
+          <target xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@kinds[term='compute']/@attributes.0"/>
+          <semanticElements xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@kinds[term='compute']/@attributes.0"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_DnnDsBYpEea5btIwrep4tA" labelSize="10" labelAlignment="LEFT" labelPosition="node">
             <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']/@conditionnalStyles.2/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_DnnqwBYpEea5btIwrep4tA" name="occi.compute.cores: Core">
-          <target xmi:type="occi:Attribute" href="model/infrastructure.occie#//@kinds[term='compute']/@attributes.1"/>
-          <semanticElements xmi:type="occi:Attribute" href="model/infrastructure.occie#//@kinds[term='compute']/@attributes.1"/>
+          <target xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@kinds[term='compute']/@attributes.1"/>
+          <semanticElements xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@kinds[term='compute']/@attributes.1"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_DnoR0BYpEea5btIwrep4tA" labelSize="10" labelAlignment="LEFT" labelPosition="node">
             <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']/@conditionnalStyles.2/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_DnoR0RYpEea5btIwrep4tA" name="occi.compute.hostname: String">
-          <target xmi:type="occi:Attribute" href="model/infrastructure.occie#//@kinds[term='compute']/@attributes.2"/>
-          <semanticElements xmi:type="occi:Attribute" href="model/infrastructure.occie#//@kinds[term='compute']/@attributes.2"/>
+          <target xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@kinds[term='compute']/@attributes.2"/>
+          <semanticElements xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@kinds[term='compute']/@attributes.2"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_Dno44BYpEea5btIwrep4tA" labelSize="10" labelAlignment="LEFT" labelPosition="node">
             <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']/@conditionnalStyles.2/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_Dno44RYpEea5btIwrep4tA" name="occi.compute.share: Share">
-          <target xmi:type="occi:Attribute" href="model/infrastructure.occie#//@kinds[term='compute']/@attributes.3"/>
-          <semanticElements xmi:type="occi:Attribute" href="model/infrastructure.occie#//@kinds[term='compute']/@attributes.3"/>
+          <target xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@kinds[term='compute']/@attributes.3"/>
+          <semanticElements xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@kinds[term='compute']/@attributes.3"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_Dnpf8BYpEea5btIwrep4tA" labelSize="10" labelAlignment="LEFT" labelPosition="node">
             <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']/@conditionnalStyles.2/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_Dnpf8RYpEea5btIwrep4tA" name="occi.compute.speed: GHz">
-          <target xmi:type="occi:Attribute" href="model/infrastructure.occie#//@kinds[term='compute']/@attributes.4"/>
-          <semanticElements xmi:type="occi:Attribute" href="model/infrastructure.occie#//@kinds[term='compute']/@attributes.4"/>
+          <target xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@kinds[term='compute']/@attributes.4"/>
+          <semanticElements xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@kinds[term='compute']/@attributes.4"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_DnqHABYpEea5btIwrep4tA" labelSize="10" labelAlignment="LEFT" labelPosition="node">
             <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']/@conditionnalStyles.2/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_DnquEBYpEea5btIwrep4tA" name="occi.compute.memory: GiB">
-          <target xmi:type="occi:Attribute" href="model/infrastructure.occie#//@kinds[term='compute']/@attributes.5"/>
-          <semanticElements xmi:type="occi:Attribute" href="model/infrastructure.occie#//@kinds[term='compute']/@attributes.5"/>
+          <target xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@kinds[term='compute']/@attributes.5"/>
+          <semanticElements xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@kinds[term='compute']/@attributes.5"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_DnquERYpEea5btIwrep4tA" labelSize="10" labelAlignment="LEFT" labelPosition="node">
             <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']/@conditionnalStyles.2/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_DnrVIBYpEea5btIwrep4tA" name="occi.compute.state: ComputeStatus=inactive">
-          <target xmi:type="occi:Attribute" href="model/infrastructure.occie#//@kinds[term='compute']/@attributes.6"/>
-          <semanticElements xmi:type="occi:Attribute" href="model/infrastructure.occie#//@kinds[term='compute']/@attributes.6"/>
+          <target xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@kinds[term='compute']/@attributes.6"/>
+          <semanticElements xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@kinds[term='compute']/@attributes.6"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_gGsTcBYpEea5btIwrep4tA" labelSize="10" labelAlignment="LEFT" labelPosition="node">
             <labelFormat>italic</labelFormat>
             <labelFormat>bold</labelFormat>
@@ -1208,49 +1207,48 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_Dnr8MRYpEea5btIwrep4tA" name="occi.compute.state.message: String">
-          <target xmi:type="occi:Attribute" href="model/infrastructure.occie#//@kinds[term='compute']/@attributes.7"/>
-          <semanticElements xmi:type="occi:Attribute" href="model/infrastructure.occie#//@kinds[term='compute']/@attributes.7"/>
-          <ownedStyle xmi:type="diagram:Square" xmi:id="_1U-mYBY6Eea_SpLA5wEimw" labelSize="10" labelAlignment="LEFT" labelPosition="node">
-            <labelFormat>italic</labelFormat>
-            <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']/@conditionnalStyles.0/@style"/>
+          <target xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@kinds[term='compute']/@attributes.7"/>
+          <semanticElements xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@kinds[term='compute']/@attributes.7"/>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_jmcgMBiMEeaybr9P2JNyAA" labelSize="10" labelAlignment="LEFT" labelPosition="node">
+            <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']/@conditionnalStyles.2/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_DntKUBYpEea5btIwrep4tA" name="start()">
-          <target xmi:type="occi:Action" href="model/infrastructure.occie#//@kinds[term='compute']/@actions.0"/>
-          <semanticElements xmi:type="occi:Action" href="model/infrastructure.occie#//@kinds[term='compute']/@actions.0"/>
+          <target xmi:type="occi:Action" href="model/Infrastructure.occie#//@kinds[term='compute']/@actions.0"/>
+          <semanticElements xmi:type="occi:Action" href="model/Infrastructure.occie#//@kinds[term='compute']/@actions.0"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_DntKURYpEea5btIwrep4tA" labelSize="10" labelAlignment="LEFT" labelPosition="node">
             <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAction']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAction']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_DntKUhYpEea5btIwrep4tA" name="stop(method : StopMethod)">
-          <target xmi:type="occi:Action" href="model/infrastructure.occie#//@kinds[term='compute']/@actions.1"/>
-          <semanticElements xmi:type="occi:Action" href="model/infrastructure.occie#//@kinds[term='compute']/@actions.1"/>
+          <target xmi:type="occi:Action" href="model/Infrastructure.occie#//@kinds[term='compute']/@actions.1"/>
+          <semanticElements xmi:type="occi:Action" href="model/Infrastructure.occie#//@kinds[term='compute']/@actions.1"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_DntKUxYpEea5btIwrep4tA" labelSize="10" labelAlignment="LEFT" labelPosition="node">
             <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAction']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAction']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_DntKVBYpEea5btIwrep4tA" name="restart(method : RestartMethod)">
-          <target xmi:type="occi:Action" href="model/infrastructure.occie#//@kinds[term='compute']/@actions.2"/>
-          <semanticElements xmi:type="occi:Action" href="model/infrastructure.occie#//@kinds[term='compute']/@actions.2"/>
+          <target xmi:type="occi:Action" href="model/Infrastructure.occie#//@kinds[term='compute']/@actions.2"/>
+          <semanticElements xmi:type="occi:Action" href="model/Infrastructure.occie#//@kinds[term='compute']/@actions.2"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_DntKVRYpEea5btIwrep4tA" labelSize="10" labelAlignment="LEFT" labelPosition="node">
             <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAction']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAction']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_DntxYBYpEea5btIwrep4tA" name="suspend(method : SuspendMethod)">
-          <target xmi:type="occi:Action" href="model/infrastructure.occie#//@kinds[term='compute']/@actions.3"/>
-          <semanticElements xmi:type="occi:Action" href="model/infrastructure.occie#//@kinds[term='compute']/@actions.3"/>
+          <target xmi:type="occi:Action" href="model/Infrastructure.occie#//@kinds[term='compute']/@actions.3"/>
+          <semanticElements xmi:type="occi:Action" href="model/Infrastructure.occie#//@kinds[term='compute']/@actions.3"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_DntxYRYpEea5btIwrep4tA" labelSize="10" labelAlignment="LEFT" labelPosition="node">
             <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAction']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAction']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_DntxYhYpEea5btIwrep4tA" name="save(method : SaveMethod, name : String)">
-          <target xmi:type="occi:Action" href="model/infrastructure.occie#//@kinds[term='compute']/@actions.4"/>
-          <semanticElements xmi:type="occi:Action" href="model/infrastructure.occie#//@kinds[term='compute']/@actions.4"/>
+          <target xmi:type="occi:Action" href="model/Infrastructure.occie#//@kinds[term='compute']/@actions.4"/>
+          <semanticElements xmi:type="occi:Action" href="model/Infrastructure.occie#//@kinds[term='compute']/@actions.4"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_DntxYxYpEea5btIwrep4tA" labelSize="10" labelAlignment="LEFT" labelPosition="node">
             <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAction']/@style"/>
           </ownedStyle>
@@ -1258,8 +1256,8 @@
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_3LnF0KUFEeWC9bP0_HAAaw" name="storage" outgoingEdges="_3MgdtqUFEeWC9bP0_HAAaw">
-        <target xmi:type="occi:Kind" href="model/infrastructure.occie#//@kinds[term='storage']"/>
-        <semanticElements xmi:type="occi:Kind" href="model/infrastructure.occie#//@kinds[term='storage']"/>
+        <target xmi:type="occi:Kind" href="model/Infrastructure.occie#//@kinds[term='storage']"/>
+        <semanticElements xmi:type="occi:Kind" href="model/Infrastructure.occie#//@kinds[term='storage']"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1269,8 +1267,8 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_DnuYcBYpEea5btIwrep4tA" name="occi.storage.size: GiB">
-          <target xmi:type="occi:Attribute" href="model/infrastructure.occie#//@kinds[term='storage']/@attributes.0"/>
-          <semanticElements xmi:type="occi:Attribute" href="model/infrastructure.occie#//@kinds[term='storage']/@attributes.0"/>
+          <target xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@kinds[term='storage']/@attributes.0"/>
+          <semanticElements xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@kinds[term='storage']/@attributes.0"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_Dnu_gBYpEea5btIwrep4tA" labelSize="10" labelAlignment="LEFT" labelPosition="node">
             <labelFormat>bold</labelFormat>
             <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']/@conditionnalStyles.3/@style"/>
@@ -1278,8 +1276,8 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_Dnu_gRYpEea5btIwrep4tA" name="occi.storage.state: StorageStatus">
-          <target xmi:type="occi:Attribute" href="model/infrastructure.occie#//@kinds[term='storage']/@attributes.1"/>
-          <semanticElements xmi:type="occi:Attribute" href="model/infrastructure.occie#//@kinds[term='storage']/@attributes.1"/>
+          <target xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@kinds[term='storage']/@attributes.1"/>
+          <semanticElements xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@kinds[term='storage']/@attributes.1"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_hiKL4BYpEea5btIwrep4tA" labelSize="10" labelAlignment="LEFT" labelPosition="node">
             <labelFormat>italic</labelFormat>
             <labelFormat>bold</labelFormat>
@@ -1288,25 +1286,24 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_DnwNoBYpEea5btIwrep4tA" name="occi.storage.state.message: String">
-          <target xmi:type="occi:Attribute" href="model/infrastructure.occie#//@kinds[term='storage']/@attributes.2"/>
-          <semanticElements xmi:type="occi:Attribute" href="model/infrastructure.occie#//@kinds[term='storage']/@attributes.2"/>
-          <ownedStyle xmi:type="diagram:Square" xmi:id="_ONlesBY7Eea_SpLA5wEimw" labelSize="10" labelAlignment="LEFT" labelPosition="node">
-            <labelFormat>italic</labelFormat>
-            <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']/@conditionnalStyles.0/@style"/>
+          <target xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@kinds[term='storage']/@attributes.2"/>
+          <semanticElements xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@kinds[term='storage']/@attributes.2"/>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_jme8cBiMEeaybr9P2JNyAA" labelSize="10" labelAlignment="LEFT" labelPosition="node">
+            <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']/@conditionnalStyles.2/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_Dnw0sRYpEea5btIwrep4tA" name="online()">
-          <target xmi:type="occi:Action" href="model/infrastructure.occie#//@kinds[term='storage']/@actions.0"/>
-          <semanticElements xmi:type="occi:Action" href="model/infrastructure.occie#//@kinds[term='storage']/@actions.0"/>
+          <target xmi:type="occi:Action" href="model/Infrastructure.occie#//@kinds[term='storage']/@actions.0"/>
+          <semanticElements xmi:type="occi:Action" href="model/Infrastructure.occie#//@kinds[term='storage']/@actions.0"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_Dnw0shYpEea5btIwrep4tA" labelSize="10" labelAlignment="LEFT" labelPosition="node">
             <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAction']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAction']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_DnxbwBYpEea5btIwrep4tA" name="offline()">
-          <target xmi:type="occi:Action" href="model/infrastructure.occie#//@kinds[term='storage']/@actions.1"/>
-          <semanticElements xmi:type="occi:Action" href="model/infrastructure.occie#//@kinds[term='storage']/@actions.1"/>
+          <target xmi:type="occi:Action" href="model/Infrastructure.occie#//@kinds[term='storage']/@actions.1"/>
+          <semanticElements xmi:type="occi:Action" href="model/Infrastructure.occie#//@kinds[term='storage']/@actions.1"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_DnxbwRYpEea5btIwrep4tA" labelSize="10" labelAlignment="LEFT" labelPosition="node">
             <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAction']/@style"/>
           </ownedStyle>
@@ -1314,8 +1311,8 @@
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_3LnF0qUFEeWC9bP0_HAAaw" name="storagelink" outgoingEdges="_3MgduaUFEeWC9bP0_HAAaw">
-        <target xmi:type="occi:Kind" href="model/infrastructure.occie#//@kinds[term='storagelink']"/>
-        <semanticElements xmi:type="occi:Kind" href="model/infrastructure.occie#//@kinds[term='storagelink']"/>
+        <target xmi:type="occi:Kind" href="model/Infrastructure.occie#//@kinds[term='storagelink']"/>
+        <semanticElements xmi:type="occi:Kind" href="model/Infrastructure.occie#//@kinds[term='storagelink']"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1325,8 +1322,8 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_DnxbwhYpEea5btIwrep4tA" name="occi.storagelink.deviceid: String">
-          <target xmi:type="occi:Attribute" href="model/infrastructure.occie#//@kinds[term='storagelink']/@attributes.0"/>
-          <semanticElements xmi:type="occi:Attribute" href="model/infrastructure.occie#//@kinds[term='storagelink']/@attributes.0"/>
+          <target xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@kinds[term='storagelink']/@attributes.0"/>
+          <semanticElements xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@kinds[term='storagelink']/@attributes.0"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_Dnyp4BYpEea5btIwrep4tA" labelSize="10" labelAlignment="LEFT" labelPosition="node">
             <labelFormat>bold</labelFormat>
             <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']/@conditionnalStyles.3/@style"/>
@@ -1334,16 +1331,16 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_Dnyp4RYpEea5btIwrep4tA" name="occi.storagelink.mountpoint: String">
-          <target xmi:type="occi:Attribute" href="model/infrastructure.occie#//@kinds[term='storagelink']/@attributes.1"/>
-          <semanticElements xmi:type="occi:Attribute" href="model/infrastructure.occie#//@kinds[term='storagelink']/@attributes.1"/>
+          <target xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@kinds[term='storagelink']/@attributes.1"/>
+          <semanticElements xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@kinds[term='storagelink']/@attributes.1"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_Dnz4ABYpEea5btIwrep4tA" labelSize="10" labelAlignment="LEFT" labelPosition="node">
             <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']/@conditionnalStyles.2/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_Dnz4ARYpEea5btIwrep4tA" name="occi.storagelink.state: StorageLinkStatus">
-          <target xmi:type="occi:Attribute" href="model/infrastructure.occie#//@kinds[term='storagelink']/@attributes.2"/>
-          <semanticElements xmi:type="occi:Attribute" href="model/infrastructure.occie#//@kinds[term='storagelink']/@attributes.2"/>
+          <target xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@kinds[term='storagelink']/@attributes.2"/>
+          <semanticElements xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@kinds[term='storagelink']/@attributes.2"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_izOyMBYpEea5btIwrep4tA" labelSize="10" labelAlignment="LEFT" labelPosition="node">
             <labelFormat>italic</labelFormat>
             <labelFormat>bold</labelFormat>
@@ -1352,18 +1349,17 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_Dn1GIRYpEea5btIwrep4tA" name="occi.storagelink.state.message: String">
-          <target xmi:type="occi:Attribute" href="model/infrastructure.occie#//@kinds[term='storagelink']/@attributes.3"/>
-          <semanticElements xmi:type="occi:Attribute" href="model/infrastructure.occie#//@kinds[term='storagelink']/@attributes.3"/>
-          <ownedStyle xmi:type="diagram:Square" xmi:id="_n40GwBY7Eea_SpLA5wEimw" labelSize="10" labelAlignment="LEFT" labelPosition="node">
-            <labelFormat>italic</labelFormat>
-            <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']/@conditionnalStyles.0/@style"/>
+          <target xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@kinds[term='storagelink']/@attributes.3"/>
+          <semanticElements xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@kinds[term='storagelink']/@attributes.3"/>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_jmhYsBiMEeaybr9P2JNyAA" labelSize="10" labelAlignment="LEFT" labelPosition="node">
+            <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']/@conditionnalStyles.2/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']"/>
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_3LnF1KUFEeWC9bP0_HAAaw" name="networkinterface" outgoingEdges="_3MhEwKUFEeWC9bP0_HAAaw" incomingEdges="_3MhExqUFEeWC9bP0_HAAaw">
-        <target xmi:type="occi:Kind" href="model/infrastructure.occie#//@kinds[term='networkinterface']"/>
-        <semanticElements xmi:type="occi:Kind" href="model/infrastructure.occie#//@kinds[term='networkinterface']"/>
+        <target xmi:type="occi:Kind" href="model/Infrastructure.occie#//@kinds[term='networkinterface']"/>
+        <semanticElements xmi:type="occi:Kind" href="model/Infrastructure.occie#//@kinds[term='networkinterface']"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1373,18 +1369,17 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_Dn2UQBYpEea5btIwrep4tA" name="occi.networkinterface.interface: String">
-          <target xmi:type="occi:Attribute" href="model/infrastructure.occie#//@kinds[term='networkinterface']/@attributes.0"/>
-          <semanticElements xmi:type="occi:Attribute" href="model/infrastructure.occie#//@kinds[term='networkinterface']/@attributes.0"/>
-          <ownedStyle xmi:type="diagram:Square" xmi:id="_U7cd0BY7Eea_SpLA5wEimw" labelSize="10" labelAlignment="LEFT" labelPosition="node">
-            <labelFormat>italic</labelFormat>
+          <target xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@kinds[term='networkinterface']/@attributes.0"/>
+          <semanticElements xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@kinds[term='networkinterface']/@attributes.0"/>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_jmh_wBiMEeaybr9P2JNyAA" labelSize="10" labelAlignment="LEFT" labelPosition="node">
             <labelFormat>bold</labelFormat>
-            <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']/@conditionnalStyles.1/@style"/>
+            <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']/@conditionnalStyles.3/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_Dn27URYpEea5btIwrep4tA" name="occi.networkinterface.mac: Mac">
-          <target xmi:type="occi:Attribute" href="model/infrastructure.occie#//@kinds[term='networkinterface']/@attributes.1"/>
-          <semanticElements xmi:type="occi:Attribute" href="model/infrastructure.occie#//@kinds[term='networkinterface']/@attributes.1"/>
+          <target xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@kinds[term='networkinterface']/@attributes.1"/>
+          <semanticElements xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@kinds[term='networkinterface']/@attributes.1"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_Dn3iYBYpEea5btIwrep4tA" labelSize="10" labelAlignment="LEFT" labelPosition="node">
             <labelFormat>bold</labelFormat>
             <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']/@conditionnalStyles.3/@style"/>
@@ -1392,8 +1387,8 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_Dn3iYRYpEea5btIwrep4tA" name="occi.networkinterface.state: NetworkInterfaceStatus">
-          <target xmi:type="occi:Attribute" href="model/infrastructure.occie#//@kinds[term='networkinterface']/@attributes.2"/>
-          <semanticElements xmi:type="occi:Attribute" href="model/infrastructure.occie#//@kinds[term='networkinterface']/@attributes.2"/>
+          <target xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@kinds[term='networkinterface']/@attributes.2"/>
+          <semanticElements xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@kinds[term='networkinterface']/@attributes.2"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_k0jJsBYpEea5btIwrep4tA" labelSize="10" labelAlignment="LEFT" labelPosition="node">
             <labelFormat>italic</labelFormat>
             <labelFormat>bold</labelFormat>
@@ -1402,18 +1397,17 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_Dn4wgRYpEea5btIwrep4tA" name="occi.networkinterface.state.message: String">
-          <target xmi:type="occi:Attribute" href="model/infrastructure.occie#//@kinds[term='networkinterface']/@attributes.3"/>
-          <semanticElements xmi:type="occi:Attribute" href="model/infrastructure.occie#//@kinds[term='networkinterface']/@attributes.3"/>
-          <ownedStyle xmi:type="diagram:Square" xmi:id="_Yu6vcBY7Eea_SpLA5wEimw" labelSize="10" labelAlignment="LEFT" labelPosition="node">
-            <labelFormat>italic</labelFormat>
-            <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']/@conditionnalStyles.0/@style"/>
+          <target xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@kinds[term='networkinterface']/@attributes.3"/>
+          <semanticElements xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@kinds[term='networkinterface']/@attributes.3"/>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_jmjN4BiMEeaybr9P2JNyAA" labelSize="10" labelAlignment="LEFT" labelPosition="node">
+            <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']/@conditionnalStyles.2/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']"/>
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_3L-SMaUFEeWC9bP0_HAAaw" name="ipnetwork" outgoingEdges="_3MhEw6UFEeWC9bP0_HAAaw">
-        <target xmi:type="occi:Mixin" href="model/infrastructure.occie#//@mixins[term='ipnetwork']"/>
-        <semanticElements xmi:type="occi:Mixin" href="model/infrastructure.occie#//@mixins[term='ipnetwork']"/>
+        <target xmi:type="occi:Mixin" href="model/Infrastructure.occie#//@mixins[term='ipnetwork']"/>
+        <semanticElements xmi:type="occi:Mixin" href="model/Infrastructure.occie#//@mixins[term='ipnetwork']"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1423,24 +1417,24 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_Dn6lsBYpEea5btIwrep4tA" name="occi.network.address: IpAddressRange">
-          <target xmi:type="occi:Attribute" href="model/infrastructure.occie#//@mixins[term='ipnetwork']/@attributes.0"/>
-          <semanticElements xmi:type="occi:Attribute" href="model/infrastructure.occie#//@mixins[term='ipnetwork']/@attributes.0"/>
+          <target xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@mixins[term='ipnetwork']/@attributes.0"/>
+          <semanticElements xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@mixins[term='ipnetwork']/@attributes.0"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_DoHaABYpEea5btIwrep4tA" labelSize="10" labelAlignment="LEFT" labelPosition="node">
             <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='MixinAttribute']/@conditionnalStyles.2/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='MixinAttribute']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_DoHaARYpEea5btIwrep4tA" name="occi.network.gateway: IpAddress">
-          <target xmi:type="occi:Attribute" href="model/infrastructure.occie#//@mixins[term='ipnetwork']/@attributes.1"/>
-          <semanticElements xmi:type="occi:Attribute" href="model/infrastructure.occie#//@mixins[term='ipnetwork']/@attributes.1"/>
+          <target xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@mixins[term='ipnetwork']/@attributes.1"/>
+          <semanticElements xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@mixins[term='ipnetwork']/@attributes.1"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_DoIBEBYpEea5btIwrep4tA" labelSize="10" labelAlignment="LEFT" labelPosition="node">
             <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='MixinAttribute']/@conditionnalStyles.2/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='MixinAttribute']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_DoIoIBYpEea5btIwrep4tA" name="occi.network.allocation: Allocation">
-          <target xmi:type="occi:Attribute" href="model/infrastructure.occie#//@mixins[term='ipnetwork']/@attributes.2"/>
-          <semanticElements xmi:type="occi:Attribute" href="model/infrastructure.occie#//@mixins[term='ipnetwork']/@attributes.2"/>
+          <target xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@mixins[term='ipnetwork']/@attributes.2"/>
+          <semanticElements xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@mixins[term='ipnetwork']/@attributes.2"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_DoIoIRYpEea5btIwrep4tA" labelSize="10" labelAlignment="LEFT" labelPosition="node">
             <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='MixinAttribute']/@conditionnalStyles.2/@style"/>
           </ownedStyle>
@@ -1448,8 +1442,8 @@
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_3L-5QaUFEeWC9bP0_HAAaw" name="ipnetworkinterface" outgoingEdges="_3MhExqUFEeWC9bP0_HAAaw">
-        <target xmi:type="occi:Mixin" href="model/infrastructure.occie#//@mixins[term='ipnetworkinterface']"/>
-        <semanticElements xmi:type="occi:Mixin" href="model/infrastructure.occie#//@mixins[term='ipnetworkinterface']"/>
+        <target xmi:type="occi:Mixin" href="model/Infrastructure.occie#//@mixins[term='ipnetworkinterface']"/>
+        <semanticElements xmi:type="occi:Mixin" href="model/Infrastructure.occie#//@mixins[term='ipnetworkinterface']"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1459,8 +1453,8 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_DoJPMBYpEea5btIwrep4tA" name="occi.networkinterface.address: IpAddress">
-          <target xmi:type="occi:Attribute" href="model/infrastructure.occie#//@mixins[term='ipnetworkinterface']/@attributes.0"/>
-          <semanticElements xmi:type="occi:Attribute" href="model/infrastructure.occie#//@mixins[term='ipnetworkinterface']/@attributes.0"/>
+          <target xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@mixins[term='ipnetworkinterface']/@attributes.0"/>
+          <semanticElements xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@mixins[term='ipnetworkinterface']/@attributes.0"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_DoNgoBYpEea5btIwrep4tA" labelSize="10" labelAlignment="LEFT" labelPosition="node">
             <labelFormat>bold</labelFormat>
             <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='MixinAttribute']/@conditionnalStyles.3/@style"/>
@@ -1468,16 +1462,16 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='MixinAttribute']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_DoNgoRYpEea5btIwrep4tA" name="occi.networkinterface.gateway: IpAddress">
-          <target xmi:type="occi:Attribute" href="model/infrastructure.occie#//@mixins[term='ipnetworkinterface']/@attributes.1"/>
-          <semanticElements xmi:type="occi:Attribute" href="model/infrastructure.occie#//@mixins[term='ipnetworkinterface']/@attributes.1"/>
+          <target xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@mixins[term='ipnetworkinterface']/@attributes.1"/>
+          <semanticElements xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@mixins[term='ipnetworkinterface']/@attributes.1"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_DoOHsBYpEea5btIwrep4tA" labelSize="10" labelAlignment="LEFT" labelPosition="node">
             <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='MixinAttribute']/@conditionnalStyles.2/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='MixinAttribute']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_DoOHsRYpEea5btIwrep4tA" name="occi.networkinterface.allocation: Allocation">
-          <target xmi:type="occi:Attribute" href="model/infrastructure.occie#//@mixins[term='ipnetworkinterface']/@attributes.2"/>
-          <semanticElements xmi:type="occi:Attribute" href="model/infrastructure.occie#//@mixins[term='ipnetworkinterface']/@attributes.2"/>
+          <target xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@mixins[term='ipnetworkinterface']/@attributes.2"/>
+          <semanticElements xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@mixins[term='ipnetworkinterface']/@attributes.2"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_DoPV0BYpEea5btIwrep4tA" labelSize="10" labelAlignment="LEFT" labelPosition="node">
             <labelFormat>bold</labelFormat>
             <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='MixinAttribute']/@conditionnalStyles.3/@style"/>
@@ -1486,8 +1480,8 @@
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_3L-5Q6UFEeWC9bP0_HAAaw" name="os_tpl" outgoingEdges="_3Mhr0qUFEeWC9bP0_HAAaw">
-        <target xmi:type="occi:Mixin" href="model/infrastructure.occie#//@mixins[term='os_tpl']"/>
-        <semanticElements xmi:type="occi:Mixin" href="model/infrastructure.occie#//@mixins[term='os_tpl']"/>
+        <target xmi:type="occi:Mixin" href="model/Infrastructure.occie#//@mixins[term='os_tpl']"/>
+        <semanticElements xmi:type="occi:Mixin" href="model/Infrastructure.occie#//@mixins[term='os_tpl']"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1498,8 +1492,8 @@
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_3L_gUKUFEeWC9bP0_HAAaw" name="resource_tpl" outgoingEdges="_3Mhr1aUFEeWC9bP0_HAAaw">
-        <target xmi:type="occi:Mixin" href="model/infrastructure.occie#//@mixins[term='resource_tpl']"/>
-        <semanticElements xmi:type="occi:Mixin" href="model/infrastructure.occie#//@mixins[term='resource_tpl']"/>
+        <target xmi:type="occi:Mixin" href="model/Infrastructure.occie#//@mixins[term='resource_tpl']"/>
+        <semanticElements xmi:type="occi:Mixin" href="model/Infrastructure.occie#//@mixins[term='resource_tpl']"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1510,8 +1504,8 @@
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_3MP_AaUFEeWC9bP0_HAAaw" name="Vlan" width="14" height="5">
-        <target xmi:type="ecore:EDataType" href="model/infrastructure.occie#//@types.1"/>
-        <semanticElements xmi:type="ecore:EDataType" href="model/infrastructure.occie#//@types.1"/>
+        <target xmi:type="ecore:EDataType" href="model/Infrastructure.occie#//@types.1"/>
+        <semanticElements xmi:type="ecore:EDataType" href="model/Infrastructure.occie#//@types.1"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1520,8 +1514,8 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_3MRNJqUFEeWC9bP0_HAAaw" name="int">
-          <target xmi:type="ecore:EDataType" href="model/infrastructure.occie#//@types.1"/>
-          <semanticElements xmi:type="ecore:EDataType" href="model/infrastructure.occie#//@types.1"/>
+          <target xmi:type="ecore:EDataType" href="model/Infrastructure.occie#//@types.1"/>
+          <semanticElements xmi:type="ecore:EDataType" href="model/Infrastructure.occie#//@types.1"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_3MR0MKUFEeWC9bP0_HAAaw" labelSize="10" showIcon="false">
             <labelFormat>italic</labelFormat>
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']/@subNodeMappings[name='EC_DataType_InstanceClassName']/@style"/>
@@ -1529,16 +1523,16 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']/@subNodeMappings[name='EC_DataType_InstanceClassName']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_3MSbQKUFEeWC9bP0_HAAaw" name="minInclusive=0">
-          <target xmi:type="ecore:EStringToStringMapEntry" href="model/infrastructure.occie#//@types.1/%http:%2F%2F%2Forg%2Feclipse%2Femf%2Fecore%2Futil%2FExtendedMetaData%/@details.0"/>
-          <semanticElements xmi:type="ecore:EStringToStringMapEntry" href="model/infrastructure.occie#//@types.1/%http:%2F%2F%2Forg%2Feclipse%2Femf%2Fecore%2Futil%2FExtendedMetaData%/@details.0"/>
+          <target xmi:type="ecore:EStringToStringMapEntry" href="model/Infrastructure.occie#//@types.1/%http:%2F%2F%2Forg%2Feclipse%2Femf%2Fecore%2Futil%2FExtendedMetaData%/@details.0"/>
+          <semanticElements xmi:type="ecore:EStringToStringMapEntry" href="model/Infrastructure.occie#//@types.1/%http:%2F%2F%2Forg%2Feclipse%2Femf%2Fecore%2Futil%2FExtendedMetaData%/@details.0"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_3MWFoKUFEeWC9bP0_HAAaw" labelSize="10" labelAlignment="LEFT">
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']/@subNodeMappings[name='EC_DataType%20EStringToStringMapEntry']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']/@subNodeMappings[name='EC_DataType%20EStringToStringMapEntry']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_3MWFoaUFEeWC9bP0_HAAaw" name="maxInclusive=4095">
-          <target xmi:type="ecore:EStringToStringMapEntry" href="model/infrastructure.occie#//@types.1/%http:%2F%2F%2Forg%2Feclipse%2Femf%2Fecore%2Futil%2FExtendedMetaData%/@details.1"/>
-          <semanticElements xmi:type="ecore:EStringToStringMapEntry" href="model/infrastructure.occie#//@types.1/%http:%2F%2F%2Forg%2Feclipse%2Femf%2Fecore%2Futil%2FExtendedMetaData%/@details.1"/>
+          <target xmi:type="ecore:EStringToStringMapEntry" href="model/Infrastructure.occie#//@types.1/%http:%2F%2F%2Forg%2Feclipse%2Femf%2Fecore%2Futil%2FExtendedMetaData%/@details.1"/>
+          <semanticElements xmi:type="ecore:EStringToStringMapEntry" href="model/Infrastructure.occie#//@types.1/%http:%2F%2F%2Forg%2Feclipse%2Femf%2Fecore%2Futil%2FExtendedMetaData%/@details.1"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_3MWssKUFEeWC9bP0_HAAaw" labelSize="10" labelAlignment="LEFT">
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']/@subNodeMappings[name='EC_DataType%20EStringToStringMapEntry']/@style"/>
           </ownedStyle>
@@ -1546,8 +1540,8 @@
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_3MQmEKUFEeWC9bP0_HAAaw" name="Token" width="14" height="5">
-        <target xmi:type="ecore:EDataType" href="model/infrastructure.occie#//@types.2"/>
-        <semanticElements xmi:type="ecore:EDataType" href="model/infrastructure.occie#//@types.2"/>
+        <target xmi:type="ecore:EDataType" href="model/Infrastructure.occie#//@types.2"/>
+        <semanticElements xmi:type="ecore:EDataType" href="model/Infrastructure.occie#//@types.2"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1556,8 +1550,8 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_3MWssaUFEeWC9bP0_HAAaw" name="java.lang.String">
-          <target xmi:type="ecore:EDataType" href="model/infrastructure.occie#//@types.2"/>
-          <semanticElements xmi:type="ecore:EDataType" href="model/infrastructure.occie#//@types.2"/>
+          <target xmi:type="ecore:EDataType" href="model/Infrastructure.occie#//@types.2"/>
+          <semanticElements xmi:type="ecore:EDataType" href="model/Infrastructure.occie#//@types.2"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_3MWssqUFEeWC9bP0_HAAaw" labelSize="10" showIcon="false">
             <labelFormat>italic</labelFormat>
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']/@subNodeMappings[name='EC_DataType_InstanceClassName']/@style"/>
@@ -1566,8 +1560,8 @@
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_3MQmEqUFEeWC9bP0_HAAaw" name="IpAddress" width="14" height="5">
-        <target xmi:type="ecore:EDataType" href="model/infrastructure.occie#//@types.9"/>
-        <semanticElements xmi:type="ecore:EDataType" href="model/infrastructure.occie#//@types.9"/>
+        <target xmi:type="ecore:EDataType" href="model/Infrastructure.occie#//@types.9"/>
+        <semanticElements xmi:type="ecore:EDataType" href="model/Infrastructure.occie#//@types.9"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1576,8 +1570,8 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_3MXTwKUFEeWC9bP0_HAAaw" name="java.lang.String">
-          <target xmi:type="ecore:EDataType" href="model/infrastructure.occie#//@types.9"/>
-          <semanticElements xmi:type="ecore:EDataType" href="model/infrastructure.occie#//@types.9"/>
+          <target xmi:type="ecore:EDataType" href="model/Infrastructure.occie#//@types.9"/>
+          <semanticElements xmi:type="ecore:EDataType" href="model/Infrastructure.occie#//@types.9"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_3MXTwaUFEeWC9bP0_HAAaw" labelSize="10" showIcon="false">
             <labelFormat>italic</labelFormat>
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']/@subNodeMappings[name='EC_DataType_InstanceClassName']/@style"/>
@@ -1586,8 +1580,8 @@
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_3MQmFKUFEeWC9bP0_HAAaw" name="Core" width="14" height="5">
-        <target xmi:type="ecore:EDataType" href="model/infrastructure.occie#//@types.13"/>
-        <semanticElements xmi:type="ecore:EDataType" href="model/infrastructure.occie#//@types.13"/>
+        <target xmi:type="ecore:EDataType" href="model/Infrastructure.occie#//@types.13"/>
+        <semanticElements xmi:type="ecore:EDataType" href="model/Infrastructure.occie#//@types.13"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1596,8 +1590,8 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_3MX60KUFEeWC9bP0_HAAaw" name="int">
-          <target xmi:type="ecore:EDataType" href="model/infrastructure.occie#//@types.13"/>
-          <semanticElements xmi:type="ecore:EDataType" href="model/infrastructure.occie#//@types.13"/>
+          <target xmi:type="ecore:EDataType" href="model/Infrastructure.occie#//@types.13"/>
+          <semanticElements xmi:type="ecore:EDataType" href="model/Infrastructure.occie#//@types.13"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_3MX60aUFEeWC9bP0_HAAaw" labelSize="10" showIcon="false">
             <labelFormat>italic</labelFormat>
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']/@subNodeMappings[name='EC_DataType_InstanceClassName']/@style"/>
@@ -1605,8 +1599,8 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']/@subNodeMappings[name='EC_DataType_InstanceClassName']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_NKKm0KUREeWC9bP0_HAAaw" name="minExclusive=0">
-          <target xmi:type="ecore:EStringToStringMapEntry" href="model/infrastructure.occie#//@types.13/%http:%2F%2F%2Forg%2Feclipse%2Femf%2Fecore%2Futil%2FExtendedMetaData%/@details.0"/>
-          <semanticElements xmi:type="ecore:EStringToStringMapEntry" href="model/infrastructure.occie#//@types.13/%http:%2F%2F%2Forg%2Feclipse%2Femf%2Fecore%2Futil%2FExtendedMetaData%/@details.0"/>
+          <target xmi:type="ecore:EStringToStringMapEntry" href="model/Infrastructure.occie#//@types.13/%http:%2F%2F%2Forg%2Feclipse%2Femf%2Fecore%2Futil%2FExtendedMetaData%/@details.0"/>
+          <semanticElements xmi:type="ecore:EStringToStringMapEntry" href="model/Infrastructure.occie#//@types.13/%http:%2F%2F%2Forg%2Feclipse%2Femf%2Fecore%2Futil%2FExtendedMetaData%/@details.0"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_NKLN4KUREeWC9bP0_HAAaw" labelSize="10" labelAlignment="LEFT">
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']/@subNodeMappings[name='EC_DataType%20EStringToStringMapEntry']/@style"/>
           </ownedStyle>
@@ -1614,8 +1608,8 @@
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_3MRNIKUFEeWC9bP0_HAAaw" name="GHz" width="14" height="5">
-        <target xmi:type="ecore:EDataType" href="model/infrastructure.occie#//@types.14"/>
-        <semanticElements xmi:type="ecore:EDataType" href="model/infrastructure.occie#//@types.14"/>
+        <target xmi:type="ecore:EDataType" href="model/Infrastructure.occie#//@types.14"/>
+        <semanticElements xmi:type="ecore:EDataType" href="model/Infrastructure.occie#//@types.14"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1624,8 +1618,8 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_3MX60qUFEeWC9bP0_HAAaw" name="float">
-          <target xmi:type="ecore:EDataType" href="model/infrastructure.occie#//@types.14"/>
-          <semanticElements xmi:type="ecore:EDataType" href="model/infrastructure.occie#//@types.14"/>
+          <target xmi:type="ecore:EDataType" href="model/Infrastructure.occie#//@types.14"/>
+          <semanticElements xmi:type="ecore:EDataType" href="model/Infrastructure.occie#//@types.14"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_3MX606UFEeWC9bP0_HAAaw" labelSize="10" showIcon="false">
             <labelFormat>italic</labelFormat>
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']/@subNodeMappings[name='EC_DataType_InstanceClassName']/@style"/>
@@ -1633,8 +1627,8 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']/@subNodeMappings[name='EC_DataType_InstanceClassName']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_Vk4wYKUREeWC9bP0_HAAaw" name="minExclusive=0">
-          <target xmi:type="ecore:EStringToStringMapEntry" href="model/infrastructure.occie#//@types.14/%http:%2F%2F%2Forg%2Feclipse%2Femf%2Fecore%2Futil%2FExtendedMetaData%/@details.0"/>
-          <semanticElements xmi:type="ecore:EStringToStringMapEntry" href="model/infrastructure.occie#//@types.14/%http:%2F%2F%2Forg%2Feclipse%2Femf%2Fecore%2Futil%2FExtendedMetaData%/@details.0"/>
+          <target xmi:type="ecore:EStringToStringMapEntry" href="model/Infrastructure.occie#//@types.14/%http:%2F%2F%2Forg%2Feclipse%2Femf%2Fecore%2Futil%2FExtendedMetaData%/@details.0"/>
+          <semanticElements xmi:type="ecore:EStringToStringMapEntry" href="model/Infrastructure.occie#//@types.14/%http:%2F%2F%2Forg%2Feclipse%2Femf%2Fecore%2Futil%2FExtendedMetaData%/@details.0"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_Vk4wYaUREeWC9bP0_HAAaw" labelSize="10" labelAlignment="LEFT">
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']/@subNodeMappings[name='EC_DataType%20EStringToStringMapEntry']/@style"/>
           </ownedStyle>
@@ -1642,8 +1636,8 @@
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_3MRNIqUFEeWC9bP0_HAAaw" name="GiB" width="14" height="5">
-        <target xmi:type="ecore:EDataType" href="model/infrastructure.occie#//@types.15"/>
-        <semanticElements xmi:type="ecore:EDataType" href="model/infrastructure.occie#//@types.15"/>
+        <target xmi:type="ecore:EDataType" href="model/Infrastructure.occie#//@types.15"/>
+        <semanticElements xmi:type="ecore:EDataType" href="model/Infrastructure.occie#//@types.15"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1652,8 +1646,8 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_3MYh4KUFEeWC9bP0_HAAaw" name="float">
-          <target xmi:type="ecore:EDataType" href="model/infrastructure.occie#//@types.15"/>
-          <semanticElements xmi:type="ecore:EDataType" href="model/infrastructure.occie#//@types.15"/>
+          <target xmi:type="ecore:EDataType" href="model/Infrastructure.occie#//@types.15"/>
+          <semanticElements xmi:type="ecore:EDataType" href="model/Infrastructure.occie#//@types.15"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_3MYh4aUFEeWC9bP0_HAAaw" labelSize="10" showIcon="false">
             <labelFormat>italic</labelFormat>
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']/@subNodeMappings[name='EC_DataType_InstanceClassName']/@style"/>
@@ -1661,8 +1655,8 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']/@subNodeMappings[name='EC_DataType_InstanceClassName']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_UA0VkKUREeWC9bP0_HAAaw" name="minExclusive=0">
-          <target xmi:type="ecore:EStringToStringMapEntry" href="model/infrastructure.occie#//@types.15/%http:%2F%2F%2Forg%2Feclipse%2Femf%2Fecore%2Futil%2FExtendedMetaData%/@details.0"/>
-          <semanticElements xmi:type="ecore:EStringToStringMapEntry" href="model/infrastructure.occie#//@types.15/%http:%2F%2F%2Forg%2Feclipse%2Femf%2Fecore%2Futil%2FExtendedMetaData%/@details.0"/>
+          <target xmi:type="ecore:EStringToStringMapEntry" href="model/Infrastructure.occie#//@types.15/%http:%2F%2F%2Forg%2Feclipse%2Femf%2Fecore%2Futil%2FExtendedMetaData%/@details.0"/>
+          <semanticElements xmi:type="ecore:EStringToStringMapEntry" href="model/Infrastructure.occie#//@types.15/%http:%2F%2F%2Forg%2Feclipse%2Femf%2Fecore%2Futil%2FExtendedMetaData%/@details.0"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_UA08oKUREeWC9bP0_HAAaw" labelSize="10" labelAlignment="LEFT">
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']/@subNodeMappings[name='EC_DataType%20EStringToStringMapEntry']/@style"/>
           </ownedStyle>
@@ -1670,8 +1664,8 @@
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_3MRNJKUFEeWC9bP0_HAAaw" name="IpAddressRange" width="14" height="5">
-        <target xmi:type="ecore:EDataType" href="model/infrastructure.occie#//@types.16"/>
-        <semanticElements xmi:type="ecore:EDataType" href="model/infrastructure.occie#//@types.16"/>
+        <target xmi:type="ecore:EDataType" href="model/Infrastructure.occie#//@types.16"/>
+        <semanticElements xmi:type="ecore:EDataType" href="model/Infrastructure.occie#//@types.16"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1680,8 +1674,8 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_3MZI8KUFEeWC9bP0_HAAaw" name="java.lang.String">
-          <target xmi:type="ecore:EDataType" href="model/infrastructure.occie#//@types.16"/>
-          <semanticElements xmi:type="ecore:EDataType" href="model/infrastructure.occie#//@types.16"/>
+          <target xmi:type="ecore:EDataType" href="model/Infrastructure.occie#//@types.16"/>
+          <semanticElements xmi:type="ecore:EDataType" href="model/Infrastructure.occie#//@types.16"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_3MZI8aUFEeWC9bP0_HAAaw" labelSize="10" showIcon="false">
             <labelFormat>italic</labelFormat>
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']/@subNodeMappings[name='EC_DataType_InstanceClassName']/@style"/>
@@ -1690,8 +1684,8 @@
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_3MZI8qUFEeWC9bP0_HAAaw" name="SuspendMethod">
-        <target xmi:type="ecore:EEnum" href="model/infrastructure.occie#//@types.0"/>
-        <semanticElements xmi:type="ecore:EEnum" href="model/infrastructure.occie#//@types.0"/>
+        <target xmi:type="ecore:EEnum" href="model/Infrastructure.occie#//@types.0"/>
+        <semanticElements xmi:type="ecore:EEnum" href="model/Infrastructure.occie#//@types.0"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1700,16 +1694,16 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_3Ma-IqUFEeWC9bP0_HAAaw" name="hibernate">
-          <target xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.0/hibernate"/>
-          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.0/hibernate"/>
+          <target xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.0/hibernate"/>
+          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.0/hibernate"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_3Ma-I6UFEeWC9bP0_HAAaw" labelSize="10" labelAlignment="LEFT">
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_3Ma-JKUFEeWC9bP0_HAAaw" name="suspend">
-          <target xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.0/suspend"/>
-          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.0/suspend"/>
+          <target xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.0/suspend"/>
+          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.0/suspend"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_3Ma-JaUFEeWC9bP0_HAAaw" labelSize="10" labelAlignment="LEFT">
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']/@style"/>
           </ownedStyle>
@@ -1717,8 +1711,8 @@
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_3MZwAaUFEeWC9bP0_HAAaw" name="NetworkStatus">
-        <target xmi:type="ecore:EEnum" href="model/infrastructure.occie#//@types.3"/>
-        <semanticElements xmi:type="ecore:EEnum" href="model/infrastructure.occie#//@types.3"/>
+        <target xmi:type="ecore:EEnum" href="model/Infrastructure.occie#//@types.3"/>
+        <semanticElements xmi:type="ecore:EEnum" href="model/Infrastructure.occie#//@types.3"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1727,24 +1721,24 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_3MblMKUFEeWC9bP0_HAAaw" name="active">
-          <target xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.3/active"/>
-          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.3/active"/>
+          <target xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.3/active"/>
+          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.3/active"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_3MblMaUFEeWC9bP0_HAAaw" labelSize="10" labelAlignment="LEFT">
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_3MblMqUFEeWC9bP0_HAAaw" name="inactive">
-          <target xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.3/inactive"/>
-          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.3/inactive"/>
+          <target xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.3/inactive"/>
+          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.3/inactive"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_3MblM6UFEeWC9bP0_HAAaw" labelSize="10" labelAlignment="LEFT">
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_agGMgKUZEeWC9bP0_HAAaw" name="error">
-          <target xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.3/error"/>
-          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.3/error"/>
+          <target xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.3/error"/>
+          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.3/error"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_agGMgaUZEeWC9bP0_HAAaw" labelSize="10" labelAlignment="LEFT">
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']/@style"/>
           </ownedStyle>
@@ -1752,8 +1746,8 @@
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_3MZwA6UFEeWC9bP0_HAAaw" name="ComputeStatus">
-        <target xmi:type="ecore:EEnum" href="model/infrastructure.occie#//@types.4"/>
-        <semanticElements xmi:type="ecore:EEnum" href="model/infrastructure.occie#//@types.4"/>
+        <target xmi:type="ecore:EEnum" href="model/Infrastructure.occie#//@types.4"/>
+        <semanticElements xmi:type="ecore:EEnum" href="model/Infrastructure.occie#//@types.4"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1762,32 +1756,32 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_3MblNKUFEeWC9bP0_HAAaw" name="active">
-          <target xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.4/active"/>
-          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.4/active"/>
+          <target xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.4/active"/>
+          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.4/active"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_3MblNaUFEeWC9bP0_HAAaw" labelSize="10" labelAlignment="LEFT">
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_3MblNqUFEeWC9bP0_HAAaw" name="inactive">
-          <target xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.4/inactive"/>
-          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.4/inactive"/>
+          <target xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.4/inactive"/>
+          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.4/inactive"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_3MblN6UFEeWC9bP0_HAAaw" labelSize="10" labelAlignment="LEFT">
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_3McMQKUFEeWC9bP0_HAAaw" name="suspended">
-          <target xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.4/suspended"/>
-          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.4/suspended"/>
+          <target xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.4/suspended"/>
+          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.4/suspended"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_3McMQaUFEeWC9bP0_HAAaw" labelSize="10" labelAlignment="LEFT">
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_0w1cwKUWEeWC9bP0_HAAaw" name="error">
-          <target xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.4/error"/>
-          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.4/error"/>
+          <target xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.4/error"/>
+          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.4/error"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_0w1cwaUWEeWC9bP0_HAAaw" labelSize="10" labelAlignment="LEFT">
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']/@style"/>
           </ownedStyle>
@@ -1795,8 +1789,8 @@
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_3MZwBaUFEeWC9bP0_HAAaw" name="NetworkInterfaceStatus">
-        <target xmi:type="ecore:EEnum" href="model/infrastructure.occie#//@types.5"/>
-        <semanticElements xmi:type="ecore:EEnum" href="model/infrastructure.occie#//@types.5"/>
+        <target xmi:type="ecore:EEnum" href="model/Infrastructure.occie#//@types.5"/>
+        <semanticElements xmi:type="ecore:EEnum" href="model/Infrastructure.occie#//@types.5"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1805,24 +1799,24 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_3McMQqUFEeWC9bP0_HAAaw" name="active">
-          <target xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.5/active"/>
-          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.5/active"/>
+          <target xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.5/active"/>
+          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.5/active"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_3McMQ6UFEeWC9bP0_HAAaw" labelSize="10" labelAlignment="LEFT">
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_3McMRKUFEeWC9bP0_HAAaw" name="inactive">
-          <target xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.5/inactive"/>
-          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.5/inactive"/>
+          <target xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.5/inactive"/>
+          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.5/inactive"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_3McMRaUFEeWC9bP0_HAAaw" labelSize="10" labelAlignment="LEFT">
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_T0XiEKUeEeWC9bP0_HAAaw" name="error">
-          <target xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.5/error"/>
-          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.5/error"/>
+          <target xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.5/error"/>
+          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.5/error"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_T0XiEaUeEeWC9bP0_HAAaw" labelSize="10" labelAlignment="LEFT">
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']/@style"/>
           </ownedStyle>
@@ -1830,8 +1824,8 @@
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_3MaXEKUFEeWC9bP0_HAAaw" name="Architecture">
-        <target xmi:type="ecore:EEnum" href="model/infrastructure.occie#//@types.6"/>
-        <semanticElements xmi:type="ecore:EEnum" href="model/infrastructure.occie#//@types.6"/>
+        <target xmi:type="ecore:EEnum" href="model/Infrastructure.occie#//@types.6"/>
+        <semanticElements xmi:type="ecore:EEnum" href="model/Infrastructure.occie#//@types.6"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1840,16 +1834,16 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_3MczUKUFEeWC9bP0_HAAaw" name="x86">
-          <target xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.6/x86"/>
-          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.6/x86"/>
+          <target xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.6/x86"/>
+          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.6/x86"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_3MczUaUFEeWC9bP0_HAAaw" labelSize="10" labelAlignment="LEFT">
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_3MczUqUFEeWC9bP0_HAAaw" name="x64">
-          <target xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.6/x64"/>
-          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.6/x64"/>
+          <target xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.6/x64"/>
+          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.6/x64"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_3MczU6UFEeWC9bP0_HAAaw" labelSize="10" labelAlignment="LEFT">
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']/@style"/>
           </ownedStyle>
@@ -1857,8 +1851,8 @@
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_3MaXEqUFEeWC9bP0_HAAaw" name="StopMethod">
-        <target xmi:type="ecore:EEnum" href="model/infrastructure.occie#//@types.7"/>
-        <semanticElements xmi:type="ecore:EEnum" href="model/infrastructure.occie#//@types.7"/>
+        <target xmi:type="ecore:EEnum" href="model/Infrastructure.occie#//@types.7"/>
+        <semanticElements xmi:type="ecore:EEnum" href="model/Infrastructure.occie#//@types.7"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1867,24 +1861,24 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_3MczVKUFEeWC9bP0_HAAaw" name="graceful">
-          <target xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.7/graceful"/>
-          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.7/graceful"/>
+          <target xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.7/graceful"/>
+          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.7/graceful"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_3MczVaUFEeWC9bP0_HAAaw" labelSize="10" labelAlignment="LEFT">
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_3MczVqUFEeWC9bP0_HAAaw" name="acpioff">
-          <target xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.7/acpioff"/>
-          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.7/acpioff"/>
+          <target xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.7/acpioff"/>
+          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.7/acpioff"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_3MdaYKUFEeWC9bP0_HAAaw" labelSize="10" labelAlignment="LEFT">
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_3MdaYaUFEeWC9bP0_HAAaw" name="poweroff">
-          <target xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.7/poweroff"/>
-          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.7/poweroff"/>
+          <target xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.7/poweroff"/>
+          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.7/poweroff"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_3MdaYqUFEeWC9bP0_HAAaw" labelSize="10" labelAlignment="LEFT">
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']/@style"/>
           </ownedStyle>
@@ -1892,8 +1886,8 @@
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_3MaXFKUFEeWC9bP0_HAAaw" name="RestartMethod">
-        <target xmi:type="ecore:EEnum" href="model/infrastructure.occie#//@types.8"/>
-        <semanticElements xmi:type="ecore:EEnum" href="model/infrastructure.occie#//@types.8"/>
+        <target xmi:type="ecore:EEnum" href="model/Infrastructure.occie#//@types.8"/>
+        <semanticElements xmi:type="ecore:EEnum" href="model/Infrastructure.occie#//@types.8"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1902,24 +1896,24 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_3MdaY6UFEeWC9bP0_HAAaw" name="graceful">
-          <target xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.8/graceful"/>
-          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.8/graceful"/>
+          <target xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.8/graceful"/>
+          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.8/graceful"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_3MdaZKUFEeWC9bP0_HAAaw" labelSize="10" labelAlignment="LEFT">
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_3MdaZaUFEeWC9bP0_HAAaw" name="warm">
-          <target xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.8/warm"/>
-          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.8/warm"/>
+          <target xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.8/warm"/>
+          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.8/warm"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_3MdaZqUFEeWC9bP0_HAAaw" labelSize="10" labelAlignment="LEFT">
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_3MeBcKUFEeWC9bP0_HAAaw" name="cold">
-          <target xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.8/cold"/>
-          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.8/cold"/>
+          <target xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.8/cold"/>
+          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.8/cold"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_3MeBcaUFEeWC9bP0_HAAaw" labelSize="10" labelAlignment="LEFT">
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']/@style"/>
           </ownedStyle>
@@ -1927,8 +1921,8 @@
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_3MaXFqUFEeWC9bP0_HAAaw" name="Allocation">
-        <target xmi:type="ecore:EEnum" href="model/infrastructure.occie#//@types.10"/>
-        <semanticElements xmi:type="ecore:EEnum" href="model/infrastructure.occie#//@types.10"/>
+        <target xmi:type="ecore:EEnum" href="model/Infrastructure.occie#//@types.10"/>
+        <semanticElements xmi:type="ecore:EEnum" href="model/Infrastructure.occie#//@types.10"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1937,16 +1931,16 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_3MeBcqUFEeWC9bP0_HAAaw" name="dynamic">
-          <target xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.10/dynamic"/>
-          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.10/dynamic"/>
+          <target xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.10/dynamic"/>
+          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.10/dynamic"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_3MeBc6UFEeWC9bP0_HAAaw" labelSize="10" labelAlignment="LEFT">
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_3MeBdKUFEeWC9bP0_HAAaw" name="static">
-          <target xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.10/static"/>
-          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.10/static"/>
+          <target xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.10/static"/>
+          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.10/static"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_3MeBdaUFEeWC9bP0_HAAaw" labelSize="10" labelAlignment="LEFT">
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']/@style"/>
           </ownedStyle>
@@ -1954,8 +1948,8 @@
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_3MaXGKUFEeWC9bP0_HAAaw" name="StorageStatus">
-        <target xmi:type="ecore:EEnum" href="model/infrastructure.occie#//@types.11"/>
-        <semanticElements xmi:type="ecore:EEnum" href="model/infrastructure.occie#//@types.11"/>
+        <target xmi:type="ecore:EEnum" href="model/Infrastructure.occie#//@types.11"/>
+        <semanticElements xmi:type="ecore:EEnum" href="model/Infrastructure.occie#//@types.11"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1964,24 +1958,24 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_3MeogKUFEeWC9bP0_HAAaw" name="online">
-          <target xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.11/online"/>
-          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.11/online"/>
+          <target xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.11/online"/>
+          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.11/online"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_3MeogaUFEeWC9bP0_HAAaw" labelSize="10" labelAlignment="LEFT">
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_3MeogqUFEeWC9bP0_HAAaw" name="offline">
-          <target xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.11/offline"/>
-          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.11/offline"/>
+          <target xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.11/offline"/>
+          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.11/offline"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_3Meog6UFEeWC9bP0_HAAaw" labelSize="10" labelAlignment="LEFT">
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_3MfPkqUFEeWC9bP0_HAAaw" name="error">
-          <target xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.11/error"/>
-          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.11/error"/>
+          <target xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.11/error"/>
+          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.11/error"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_3MfPk6UFEeWC9bP0_HAAaw" labelSize="10" labelAlignment="LEFT">
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']/@style"/>
           </ownedStyle>
@@ -1989,8 +1983,8 @@
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_3Ma-IKUFEeWC9bP0_HAAaw" name="StorageLinkStatus">
-        <target xmi:type="ecore:EEnum" href="model/infrastructure.occie#//@types.12"/>
-        <semanticElements xmi:type="ecore:EEnum" href="model/infrastructure.occie#//@types.12"/>
+        <target xmi:type="ecore:EEnum" href="model/Infrastructure.occie#//@types.12"/>
+        <semanticElements xmi:type="ecore:EEnum" href="model/Infrastructure.occie#//@types.12"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1999,24 +1993,24 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_3Mf2oKUFEeWC9bP0_HAAaw" name="active">
-          <target xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.12/active"/>
-          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.12/active"/>
+          <target xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.12/active"/>
+          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.12/active"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_3Mf2oaUFEeWC9bP0_HAAaw" labelSize="10" labelAlignment="LEFT">
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_3Mf2oqUFEeWC9bP0_HAAaw" name="inactive">
-          <target xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.12/inactive"/>
-          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.12/inactive"/>
+          <target xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.12/inactive"/>
+          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.12/inactive"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_3Mf2o6UFEeWC9bP0_HAAaw" labelSize="10" labelAlignment="LEFT">
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_Xs0k4KUfEeWC9bP0_HAAaw" name="error">
-          <target xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.12/error"/>
-          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.12/error"/>
+          <target xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.12/error"/>
+          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.12/error"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_Xs0k4aUfEeWC9bP0_HAAaw" labelSize="10" labelAlignment="LEFT">
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']/@style"/>
           </ownedStyle>
@@ -2024,7 +2018,7 @@
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_3MgdsKUFEeWC9bP0_HAAaw" sourceNode="_3Ll3sKUFEeWC9bP0_HAAaw" targetNode="_hxkmKaUFEeWC9bP0_HAAaw">
-        <target xmi:type="occi:Kind" href="model/infrastructure.occie#//@kinds[term='network']"/>
+        <target xmi:type="occi:Kind" href="model/Infrastructure.occie#//@kinds[term='network']"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_3MgdsaUFEeWC9bP0_HAAaw" targetArrow="InputClosedArrow" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']/@style"/>
           <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_3MgdsqUFEeWC9bP0_HAAaw"/>
@@ -2032,7 +2026,7 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_3Mgds6UFEeWC9bP0_HAAaw" sourceNode="_3LmewKUFEeWC9bP0_HAAaw" targetNode="_hxkmKaUFEeWC9bP0_HAAaw">
-        <target xmi:type="occi:Kind" href="model/infrastructure.occie#//@kinds[term='compute']"/>
+        <target xmi:type="occi:Kind" href="model/Infrastructure.occie#//@kinds[term='compute']"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_3MgdtKUFEeWC9bP0_HAAaw" targetArrow="InputClosedArrow" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']/@style"/>
           <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_3MgdtaUFEeWC9bP0_HAAaw"/>
@@ -2040,7 +2034,7 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_3MgdtqUFEeWC9bP0_HAAaw" sourceNode="_3LnF0KUFEeWC9bP0_HAAaw" targetNode="_hxkmKaUFEeWC9bP0_HAAaw">
-        <target xmi:type="occi:Kind" href="model/infrastructure.occie#//@kinds[term='storage']"/>
+        <target xmi:type="occi:Kind" href="model/Infrastructure.occie#//@kinds[term='storage']"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_3Mgdt6UFEeWC9bP0_HAAaw" targetArrow="InputClosedArrow" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']/@style"/>
           <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_3MgduKUFEeWC9bP0_HAAaw"/>
@@ -2048,7 +2042,7 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_3MgduaUFEeWC9bP0_HAAaw" sourceNode="_3LnF0qUFEeWC9bP0_HAAaw" targetNode="_hxkmLaUFEeWC9bP0_HAAaw">
-        <target xmi:type="occi:Kind" href="model/infrastructure.occie#//@kinds[term='storagelink']"/>
+        <target xmi:type="occi:Kind" href="model/Infrastructure.occie#//@kinds[term='storagelink']"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_3MgduqUFEeWC9bP0_HAAaw" targetArrow="InputClosedArrow" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']/@style"/>
           <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_3Mgdu6UFEeWC9bP0_HAAaw"/>
@@ -2056,7 +2050,7 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_3MhEwKUFEeWC9bP0_HAAaw" sourceNode="_3LnF1KUFEeWC9bP0_HAAaw" targetNode="_hxkmLaUFEeWC9bP0_HAAaw">
-        <target xmi:type="occi:Kind" href="model/infrastructure.occie#//@kinds[term='networkinterface']"/>
+        <target xmi:type="occi:Kind" href="model/Infrastructure.occie#//@kinds[term='networkinterface']"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_3MhEwaUFEeWC9bP0_HAAaw" targetArrow="InputClosedArrow" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']/@style"/>
           <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_3MhEwqUFEeWC9bP0_HAAaw"/>
@@ -2064,7 +2058,7 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='ParentEdge']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_3MhEw6UFEeWC9bP0_HAAaw" sourceNode="_3L-SMaUFEeWC9bP0_HAAaw" targetNode="_3Ll3sKUFEeWC9bP0_HAAaw">
-        <target xmi:type="occi:Mixin" href="model/infrastructure.occie#//@mixins[term='ipnetwork']"/>
+        <target xmi:type="occi:Mixin" href="model/Infrastructure.occie#//@mixins[term='ipnetwork']"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_3MhExKUFEeWC9bP0_HAAaw" lineStyle="dash" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='AppliesEdge']/@style"/>
           <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_3MhExaUFEeWC9bP0_HAAaw"/>
@@ -2072,7 +2066,7 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='AppliesEdge']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_3MhExqUFEeWC9bP0_HAAaw" sourceNode="_3L-5QaUFEeWC9bP0_HAAaw" targetNode="_3LnF1KUFEeWC9bP0_HAAaw">
-        <target xmi:type="occi:Mixin" href="model/infrastructure.occie#//@mixins[term='ipnetworkinterface']"/>
+        <target xmi:type="occi:Mixin" href="model/Infrastructure.occie#//@mixins[term='ipnetworkinterface']"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_3Mhr0KUFEeWC9bP0_HAAaw" lineStyle="dash" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='AppliesEdge']/@style"/>
           <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_3Mhr0aUFEeWC9bP0_HAAaw"/>
@@ -2080,7 +2074,7 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='AppliesEdge']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_3Mhr0qUFEeWC9bP0_HAAaw" sourceNode="_3L-5Q6UFEeWC9bP0_HAAaw" targetNode="_3LmewKUFEeWC9bP0_HAAaw">
-        <target xmi:type="occi:Mixin" href="model/infrastructure.occie#//@mixins[term='os_tpl']"/>
+        <target xmi:type="occi:Mixin" href="model/Infrastructure.occie#//@mixins[term='os_tpl']"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_3Mhr06UFEeWC9bP0_HAAaw" lineStyle="dash" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='AppliesEdge']/@style"/>
           <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_3Mhr1KUFEeWC9bP0_HAAaw"/>
@@ -2088,7 +2082,7 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='AppliesEdge']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_3Mhr1aUFEeWC9bP0_HAAaw" sourceNode="_3L_gUKUFEeWC9bP0_HAAaw" targetNode="_hxkmKaUFEeWC9bP0_HAAaw">
-        <target xmi:type="occi:Mixin" href="model/infrastructure.occie#//@mixins[term='resource_tpl']"/>
+        <target xmi:type="occi:Mixin" href="model/Infrastructure.occie#//@mixins[term='resource_tpl']"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_3Mhr1qUFEeWC9bP0_HAAaw" lineStyle="dash" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='AppliesEdge']/@style"/>
           <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_3Mhr16UFEeWC9bP0_HAAaw"/>
@@ -2096,8 +2090,8 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='AppliesEdge']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_-3E0UKUTEeWC9bP0_HAAaw" name="Mac" width="14" height="5">
-        <target xmi:type="ecore:EDataType" href="model/infrastructure.occie#//@types.17"/>
-        <semanticElements xmi:type="ecore:EDataType" href="model/infrastructure.occie#//@types.17"/>
+        <target xmi:type="ecore:EDataType" href="model/Infrastructure.occie#//@types.17"/>
+        <semanticElements xmi:type="ecore:EDataType" href="model/Infrastructure.occie#//@types.17"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -2106,8 +2100,8 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_-3FbYaUTEeWC9bP0_HAAaw" name="java.lang.String">
-          <target xmi:type="ecore:EDataType" href="model/infrastructure.occie#//@types.17"/>
-          <semanticElements xmi:type="ecore:EDataType" href="model/infrastructure.occie#//@types.17"/>
+          <target xmi:type="ecore:EDataType" href="model/Infrastructure.occie#//@types.17"/>
+          <semanticElements xmi:type="ecore:EDataType" href="model/Infrastructure.occie#//@types.17"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_-3FbYqUTEeWC9bP0_HAAaw" labelSize="10" showIcon="false">
             <labelFormat>italic</labelFormat>
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']/@subNodeMappings[name='EC_DataType_InstanceClassName']/@style"/>
@@ -2116,8 +2110,8 @@
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_B1YGkKUWEeWC9bP0_HAAaw" name="Share" width="14" height="5">
-        <target xmi:type="ecore:EDataType" href="model/infrastructure.occie#//@types.18"/>
-        <semanticElements xmi:type="ecore:EDataType" href="model/infrastructure.occie#//@types.18"/>
+        <target xmi:type="ecore:EDataType" href="model/Infrastructure.occie#//@types.18"/>
+        <semanticElements xmi:type="ecore:EDataType" href="model/Infrastructure.occie#//@types.18"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -2126,8 +2120,8 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_B19VYKUWEeWC9bP0_HAAaw" name="int">
-          <target xmi:type="ecore:EDataType" href="model/infrastructure.occie#//@types.18"/>
-          <semanticElements xmi:type="ecore:EDataType" href="model/infrastructure.occie#//@types.18"/>
+          <target xmi:type="ecore:EDataType" href="model/Infrastructure.occie#//@types.18"/>
+          <semanticElements xmi:type="ecore:EDataType" href="model/Infrastructure.occie#//@types.18"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_B19VYaUWEeWC9bP0_HAAaw" labelSize="10" showIcon="false">
             <labelFormat>italic</labelFormat>
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']/@subNodeMappings[name='EC_DataType_InstanceClassName']/@style"/>
@@ -2135,8 +2129,8 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']/@subNodeMappings[name='EC_DataType_InstanceClassName']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_OegKQKUWEeWC9bP0_HAAaw" name="minInclusive=0">
-          <target xmi:type="ecore:EStringToStringMapEntry" href="model/infrastructure.occie#//@types.18/%http:%2F%2F%2Forg%2Feclipse%2Femf%2Fecore%2Futil%2FExtendedMetaData%/@details.0"/>
-          <semanticElements xmi:type="ecore:EStringToStringMapEntry" href="model/infrastructure.occie#//@types.18/%http:%2F%2F%2Forg%2Feclipse%2Femf%2Fecore%2Futil%2FExtendedMetaData%/@details.0"/>
+          <target xmi:type="ecore:EStringToStringMapEntry" href="model/Infrastructure.occie#//@types.18/%http:%2F%2F%2Forg%2Feclipse%2Femf%2Fecore%2Futil%2FExtendedMetaData%/@details.0"/>
+          <semanticElements xmi:type="ecore:EStringToStringMapEntry" href="model/Infrastructure.occie#//@types.18/%http:%2F%2F%2Forg%2Feclipse%2Femf%2Fecore%2Futil%2FExtendedMetaData%/@details.0"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_OegKQaUWEeWC9bP0_HAAaw" labelSize="10" labelAlignment="LEFT">
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']/@subNodeMappings[name='EC_DataType%20EStringToStringMapEntry']/@style"/>
           </ownedStyle>
@@ -2144,8 +2138,8 @@
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_19vfUKUXEeWC9bP0_HAAaw" name="SaveMethod">
-        <target xmi:type="ecore:EEnum" href="model/infrastructure.occie#//@types.19"/>
-        <semanticElements xmi:type="ecore:EEnum" href="model/infrastructure.occie#//@types.19"/>
+        <target xmi:type="ecore:EEnum" href="model/Infrastructure.occie#//@types.19"/>
+        <semanticElements xmi:type="ecore:EEnum" href="model/Infrastructure.occie#//@types.19"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -2154,16 +2148,16 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_2pfyEKUXEeWC9bP0_HAAaw" name="hot">
-          <target xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.19/hot"/>
-          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.19/hot"/>
+          <target xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.19/hot"/>
+          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.19/hot"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_2pfyEaUXEeWC9bP0_HAAaw" labelSize="10" labelAlignment="LEFT">
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_3I9VQKUXEeWC9bP0_HAAaw" name="deferred">
-          <target xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.19/deferred"/>
-          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/infrastructure.occie#//@types.19/deferred"/>
+          <target xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.19/deferred"/>
+          <semanticElements xmi:type="ecore:EEnumLiteral" href="model/Infrastructure.occie#//@types.19/deferred"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_3I9VQaUXEeWC9bP0_HAAaw" labelSize="10" labelAlignment="LEFT">
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']/@style"/>
           </ownedStyle>
@@ -2171,8 +2165,8 @@
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_dlz8EKUgEeWC9bP0_HAAaw" name="ssh_key" outgoingEdges="_dl3mcKUgEeWC9bP0_HAAaw">
-        <target xmi:type="occi:Mixin" href="model/infrastructure.occie#//@mixins[term='ssh_key']"/>
-        <semanticElements xmi:type="occi:Mixin" href="model/infrastructure.occie#//@mixins[term='ssh_key']"/>
+        <target xmi:type="occi:Mixin" href="model/Infrastructure.occie#//@mixins[term='ssh_key']"/>
+        <semanticElements xmi:type="occi:Mixin" href="model/Infrastructure.occie#//@mixins[term='ssh_key']"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -2182,8 +2176,8 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_DoPV0RYpEea5btIwrep4tA" name="occi.credentials.ssh.publickey: String">
-          <target xmi:type="occi:Attribute" href="model/infrastructure.occie#//@mixins[term='ssh_key']/@attributes.0"/>
-          <semanticElements xmi:type="occi:Attribute" href="model/infrastructure.occie#//@mixins[term='ssh_key']/@attributes.0"/>
+          <target xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@mixins[term='ssh_key']/@attributes.0"/>
+          <semanticElements xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@mixins[term='ssh_key']/@attributes.0"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_DoQj8BYpEea5btIwrep4tA" labelSize="10" labelAlignment="LEFT" labelPosition="node">
             <labelFormat>bold</labelFormat>
             <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='MixinAttribute']/@conditionnalStyles.3/@style"/>
@@ -2192,7 +2186,7 @@
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_dl3mcKUgEeWC9bP0_HAAaw" sourceNode="_dlz8EKUgEeWC9bP0_HAAaw" targetNode="_3LmewKUFEeWC9bP0_HAAaw">
-        <target xmi:type="occi:Mixin" href="model/infrastructure.occie#//@mixins[term='ssh_key']"/>
+        <target xmi:type="occi:Mixin" href="model/Infrastructure.occie#//@mixins[term='ssh_key']"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_dl3mcaUgEeWC9bP0_HAAaw" lineStyle="dash" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='AppliesEdge']/@style"/>
           <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_dl3mcqUgEeWC9bP0_HAAaw"/>
@@ -2200,8 +2194,8 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='AppliesEdge']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_Y7wyUKUhEeWC9bP0_HAAaw" name="user_data" outgoingEdges="_bYvLEKUhEeWC9bP0_HAAaw">
-        <target xmi:type="occi:Mixin" href="model/infrastructure.occie#//@mixins[term='user_data']"/>
-        <semanticElements xmi:type="occi:Mixin" href="model/infrastructure.occie#//@mixins[term='user_data']"/>
+        <target xmi:type="occi:Mixin" href="model/Infrastructure.occie#//@mixins[term='user_data']"/>
+        <semanticElements xmi:type="occi:Mixin" href="model/Infrastructure.occie#//@mixins[term='user_data']"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -2211,8 +2205,8 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_DoQj8RYpEea5btIwrep4tA" name="occi.compute.userdata: String">
-          <target xmi:type="occi:Attribute" href="model/infrastructure.occie#//@mixins[term='user_data']/@attributes.0"/>
-          <semanticElements xmi:type="occi:Attribute" href="model/infrastructure.occie#//@mixins[term='user_data']/@attributes.0"/>
+          <target xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@mixins[term='user_data']/@attributes.0"/>
+          <semanticElements xmi:type="occi:Attribute" href="model/Infrastructure.occie#//@mixins[term='user_data']/@attributes.0"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_DoRLABYpEea5btIwrep4tA" labelSize="10" labelAlignment="LEFT" labelPosition="node">
             <labelFormat>bold</labelFormat>
             <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='MixinAttribute']/@conditionnalStyles.3/@style"/>
@@ -2221,7 +2215,7 @@
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_bYvLEKUhEeWC9bP0_HAAaw" sourceNode="_Y7wyUKUhEeWC9bP0_HAAaw" targetNode="_3LmewKUFEeWC9bP0_HAAaw">
-        <target xmi:type="occi:Mixin" href="model/infrastructure.occie#//@mixins[term='user_data']"/>
+        <target xmi:type="occi:Mixin" href="model/Infrastructure.occie#//@mixins[term='user_data']"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_bYvLEaUhEeWC9bP0_HAAaw" lineStyle="dash" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@edgeMappings[name='AppliesEdge']/@style"/>
           <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_bYvLEqUhEeWC9bP0_HAAaw"/>
@@ -2231,7 +2225,7 @@
       <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']"/>
       <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_hxkmQaUFEeWC9bP0_HAAaw"/>
       <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer"/>
-      <target xmi:type="occi:Extension" href="model/infrastructure.occie#/"/>
+      <target xmi:type="occi:Extension" href="model/Infrastructure.occie#/"/>
     </ownedRepresentations>
     <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']"/>
   </ownedViews>
