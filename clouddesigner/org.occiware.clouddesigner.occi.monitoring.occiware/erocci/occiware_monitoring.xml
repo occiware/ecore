@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated at Fri May 13 01:12:28 CEST 2016 from platform:/resource/org.occiware.clouddesigner.occi.monitoring.occiware/model/occiware_monitoring.occie by org.occiware.clouddesigner.occi.gen.xml -->
+<occi:extension xmlns:occi="http://schemas.ogf.org/occi"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://schemas.ogf.org/occi occi.xsd"
+    name="occiware_monitoring"
+    scheme="http:://schemas.occiware.org/occi/monitoring#"
+    version="1"
+    status="stable">
+
+  <!-- Mixin: CPU Percent Metric Monitoring Mixin -->
+  <occi:mixin term="cpupercent" scheme="http:://schemas.occiware.org/occi/monitoring#" title="CPU Percent Metric Monitoring Mixin">
+    <occi:depends term="metric" scheme="http://schemas.ogf.org/occi/monitoring#"/>
+  </occi:mixin>
+
+  <!-- Mixin: Average Aggregator Monitoring Mixin -->
+  <occi:mixin term="average" scheme="http:://schemas.occiware.org/occi/monitoring#" title="Average Aggregator Monitoring Mixin">
+    <occi:depends term="aggregator" scheme="http://schemas.ogf.org/occi/monitoring#"/>
+  </occi:mixin>
+
+  <!-- Mixin: Email Alarm Publisher Monitoring Mixin -->
+  <occi:mixin term="emailalarm" scheme="http:://schemas.occiware.org/occi/monitoring#" title="Email Alarm Publisher Monitoring Mixin">
+    <occi:depends term="publisher" scheme="http://schemas.ogf.org/occi/monitoring#"/>
+    <occi:attribute name="email.address" use="required" type="xs:string" title="Email address where to send an alert"/>
+    <occi:attribute name="email.threshold" use="required" type="xs:integer" title="Threshold when to send an email alert"/>
+  </occi:mixin>
+
+</occi:extension>
