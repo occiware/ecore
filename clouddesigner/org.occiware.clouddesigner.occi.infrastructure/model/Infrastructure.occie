@@ -5,7 +5,7 @@
     <attributes name="occi.network.vlan" description="802.1q VLAN Identifier (e.g., 343)" type="//@types.1"/>
     <attributes name="occi.network.label" description="Tag based VLANs (e.g., external-dmz)" type="//@types.2"/>
     <attributes name="occi.network.state" mutable="false" required="true" default="inactive" description="Current state of the instance" type="//@types.3"/>
-    <attributes name="occi.network.state.message" description="Human-readable explanation of the current instance state">
+    <attributes name="occi.network.state.message" mutable="false" description="Human-readable explanation of the current instance state">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
@@ -22,7 +22,7 @@
     <attributes name="occi.compute.speed" description="CPU Clock frequency (speed) in gigahertz" type="//@types.14"/>
     <attributes name="occi.compute.memory" description="Maximum RAM in gigabytes allocated to the instance" type="//@types.15"/>
     <attributes name="occi.compute.state" mutable="false" required="true" default="inactive" description="Current state of the instance" type="//@types.4"/>
-    <attributes name="occi.compute.state.message" description="Human-readable explanation of the current instance state">
+    <attributes name="occi.compute.state.message" mutable="false" description="Human-readable explanation of the current instance state">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
@@ -46,7 +46,7 @@
   <kinds term="storage" scheme="http://schemas.ogf.org/occi/infrastructure#" title="Storage Resource">
     <attributes name="occi.storage.size" required="true" description="Storage size of the instance in gigabytes" type="//@types.15"/>
     <attributes name="occi.storage.state" mutable="false" required="true" description="Current status of the instance" type="//@types.11"/>
-    <attributes name="occi.storage.state.message" description="Human-readable explanation of the current instance state">
+    <attributes name="occi.storage.state.message" mutable="false" description="Human-readable explanation of the current instance state">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
@@ -61,18 +61,18 @@
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
     <attributes name="occi.storagelink.state" mutable="false" required="true" description="Current status of the instance" type="//@types.12"/>
-    <attributes name="occi.storagelink.state.message" description="Human-readable explanation of the current instance state">
+    <attributes name="occi.storagelink.state.message" mutable="false" description="Human-readable explanation of the current instance state">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds term="networkinterface" scheme="http://schemas.ogf.org/occi/infrastructure#" title="NetworkInterface Link">
-    <attributes name="occi.networkinterface.interface" required="true" description="Identifier that relates the link to the link's device interface">
+    <attributes name="occi.networkinterface.interface" mutable="false" required="true" description="Identifier that relates the link to the link's device interface">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
     <attributes name="occi.networkinterface.mac" required="true" description="MAC address associated with the link's device interface" type="//@types.17"/>
     <attributes name="occi.networkinterface.state" mutable="false" required="true" description="Current status of the instance" type="//@types.5"/>
-    <attributes name="occi.networkinterface.state.message" description="Human-readable explanation of the current instance state">
+    <attributes name="occi.networkinterface.state.message" mutable="false" description="Human-readable explanation of the current instance state">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
@@ -97,7 +97,7 @@
     </attributes>
   </mixins>
   <mixins term="user_data" scheme="http://schemas.ogf.org/occi/infrastructure/compute#" title="Contextualization Mixin" applies="//@kinds[term='compute']">
-    <attributes name="occi.compute.userdata" required="true" description="Contextualization data (e.g., script, executable) that the client supplies once and only once. It cannot be updated">
+    <attributes name="occi.compute.userdata" mutable="false" required="true" description="Contextualization data (e.g., script, executable) that the client supplies once and only once. It cannot be updated">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
   </mixins>
