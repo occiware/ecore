@@ -1868,7 +1868,7 @@
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_iJ2SQRHwEeaYMN_zIiLZ8w" name="java.lang.String">
           <target xmi:type="ecore:EDataType" href="model/Core.occie#//@types.0"/>
           <semanticElements xmi:type="ecore:EDataType" href="model/Core.occie#//@types.0"/>
-          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_iJ2SQhHwEeaYMN_zIiLZ8w" labelSize="10" showIcon="false">
+          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_iJ2SQhHwEeaYMN_zIiLZ8w" labelSize="10" showIcon="false" labelPosition="node">
             <labelFormat>italic</labelFormat>
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']/@subNodeMappings[name='EC_DataType_InstanceClassName']/@style"/>
           </ownedStyle>
@@ -1888,7 +1888,7 @@
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_iJ2SRRHwEeaYMN_zIiLZ8w" name="boolean">
           <target xmi:type="ecore:EDataType" href="model/Core.occie#//@types.1"/>
           <semanticElements xmi:type="ecore:EDataType" href="model/Core.occie#//@types.1"/>
-          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_iJ2SRhHwEeaYMN_zIiLZ8w" labelSize="10" showIcon="false">
+          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_iJ2SRhHwEeaYMN_zIiLZ8w" labelSize="10" showIcon="false" labelPosition="node">
             <labelFormat>italic</labelFormat>
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']/@subNodeMappings[name='EC_DataType_InstanceClassName']/@style"/>
           </ownedStyle>
@@ -1908,7 +1908,7 @@
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_iJ2SSRHwEeaYMN_zIiLZ8w" name="int">
           <target xmi:type="ecore:EDataType" href="model/Core.occie#//@types.2"/>
           <semanticElements xmi:type="ecore:EDataType" href="model/Core.occie#//@types.2"/>
-          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_iJ2SShHwEeaYMN_zIiLZ8w" labelSize="10" showIcon="false">
+          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_iJ2SShHwEeaYMN_zIiLZ8w" labelSize="10" showIcon="false" labelPosition="node">
             <labelFormat>italic</labelFormat>
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='EC%20EDataType']/@subNodeMappings[name='EC_DataType_InstanceClassName']/@style"/>
           </ownedStyle>

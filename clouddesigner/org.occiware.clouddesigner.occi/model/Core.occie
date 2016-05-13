@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="core" scheme="http://schemas.ogf.org/occi/core#">
+<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="core" scheme="http://schemas.ogf.org/occi/core#" description="OCCI Core Model">
   <kinds term="entity" scheme="http://schemas.ogf.org/occi/core#" title="Entity type">
     <attributes name="occi.core.id" mutable="false" required="true" description="The unique identity of the instance." type="//@types.0"/>
     <attributes name="occi.core.title" description="The display name of the instance." type="//@types.0"/>
@@ -8,7 +8,19 @@
     <attributes name="occi.core.summary" description="A summarising description of the Resource instance." type="//@types.0"/>
   </kinds>
   <kinds term="link" scheme="http://schemas.ogf.org/occi/core#" title="Link" parent="//@kinds[term='entity']"/>
-  <types name="String" instanceClassName="java.lang.String"/>
-  <types name="Boolean" instanceClassName="boolean"/>
-  <types name="Number" instanceClassName="int"/>
+  <types name="String" instanceClassName="java.lang.String">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Data type for strings"/>
+    </eAnnotations>
+  </types>
+  <types name="Boolean" instanceClassName="boolean">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Data type for booleans"/>
+    </eAnnotations>
+  </types>
+  <types name="Number" instanceClassName="int">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Data type for numbers"/>
+    </eAnnotations>
+  </types>
 </occi:Extension>
