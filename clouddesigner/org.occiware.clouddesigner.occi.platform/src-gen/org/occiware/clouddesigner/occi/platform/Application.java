@@ -47,7 +47,7 @@ public interface Application extends Resource {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see org.occiware.clouddesigner.occi.platform.PlatformPackage#getApplication_Name()
-	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
 	 *        annotation="OCCIE2Ecore description='Name of the application.'"
 	 * @generated
 	 */
@@ -74,7 +74,7 @@ public interface Application extends Resource {
 	 * @return the value of the '<em>Context</em>' attribute.
 	 * @see #setContext(URL)
 	 * @see org.occiware.clouddesigner.occi.platform.PlatformPackage#getApplication_Context()
-	 * @model dataType="org.occiware.clouddesigner.occi.platform.URL"
+	 * @model dataType="org.occiware.clouddesigner.occi.platform.URL" required="true"
 	 *        annotation="OCCIE2Ecore description='URL for contextualizing the app.'"
 	 * @generated
 	 */
@@ -101,7 +101,7 @@ public interface Application extends Resource {
 	 * @return the value of the '<em>Url</em>' attribute.
 	 * @see #setUrl(URL)
 	 * @see org.occiware.clouddesigner.occi.platform.PlatformPackage#getApplication_Url()
-	 * @model dataType="org.occiware.clouddesigner.occi.platform.URL"
+	 * @model dataType="org.occiware.clouddesigner.occi.platform.URL" required="true"
 	 *        annotation="OCCIE2Ecore description='DNS entry.'"
 	 * @generated
 	 */
@@ -130,7 +130,8 @@ public interface Application extends Resource {
 	 * @see org.occiware.clouddesigner.occi.platform.Status
 	 * @see #setState(Status)
 	 * @see org.occiware.clouddesigner.occi.platform.PlatformPackage#getApplication_State()
-	 * @model annotation="OCCIE2Ecore description='State of the application.'"
+	 * @model required="true"
+	 *        annotation="OCCIE2Ecore description='State of the application.'"
 	 * @generated
 	 */
 	Status getState();

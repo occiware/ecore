@@ -23,22 +23,23 @@
         <details key="title" value="Stop the application."/>
       </eAnnotations>
     </eOperations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
       <eAnnotations source="OCCIE2Ecore">
         <details key="description" value="Name of the application."/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="context" eType="#//URL">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="context" lowerBound="1"
+        eType="#//URL">
       <eAnnotations source="OCCIE2Ecore">
         <details key="description" value="URL for contextualizing the app."/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="url" eType="#//URL">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="url" lowerBound="1" eType="#//URL">
       <eAnnotations source="OCCIE2Ecore">
         <details key="description" value="DNS entry."/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="state" eType="#//Status">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="state" lowerBound="1" eType="#//Status">
       <eAnnotations source="OCCIE2Ecore">
         <details key="description" value="State of the application."/>
       </eAnnotations>
@@ -63,7 +64,7 @@
         <details key="title" value="Stop the application."/>
       </eAnnotations>
     </eOperations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="state" eType="#//Status">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="state" lowerBound="1" eType="#//Status">
       <eAnnotations source="OCCIE2Ecore">
         <details key="description" value="State of the component."/>
       </eAnnotations>

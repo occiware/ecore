@@ -201,6 +201,24 @@ public class PlatformPackageImpl extends EPackageImpl implements PlatformPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getApplication__Start() {
+		return applicationEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getApplication__Stop() {
+		return applicationEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getComponent() {
 		return componentEClass;
 	}
@@ -221,6 +239,24 @@ public class PlatformPackageImpl extends EPackageImpl implements PlatformPackage
 	 */
 	public EAttribute getComponent_Message() {
 		return (EAttribute)componentEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getComponent__Start() {
+		return componentEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getComponent__Stop() {
+		return componentEClass.getEOperations().get(1);
 	}
 
 	/**
@@ -293,10 +329,14 @@ public class PlatformPackageImpl extends EPackageImpl implements PlatformPackage
 		createEAttribute(applicationEClass, APPLICATION__URL);
 		createEAttribute(applicationEClass, APPLICATION__STATE);
 		createEAttribute(applicationEClass, APPLICATION__MESSAGE);
+		createEOperation(applicationEClass, APPLICATION___START);
+		createEOperation(applicationEClass, APPLICATION___STOP);
 
 		componentEClass = createEClass(COMPONENT);
 		createEAttribute(componentEClass, COMPONENT__STATE);
 		createEAttribute(componentEClass, COMPONENT__MESSAGE);
+		createEOperation(componentEClass, COMPONENT___START);
+		createEOperation(componentEClass, COMPONENT___STOP);
 
 		componentlinkEClass = createEClass(COMPONENTLINK);
 
@@ -343,25 +383,25 @@ public class PlatformPackageImpl extends EPackageImpl implements PlatformPackage
 		componentEClass.getESuperTypes().add(theOCCIPackage.getResource());
 		componentlinkEClass.getESuperTypes().add(theOCCIPackage.getLink());
 
-		// Initialize classes and features; add operations and parameters
+		// Initialize classes, features, and operations; add parameters
 		initEClass(applicationEClass, Application.class, "Application", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getApplication_Name(), theOCCIPackage.getString(), "name", null, 0, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getApplication_Context(), this.getURL(), "context", null, 0, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getApplication_Url(), this.getURL(), "url", null, 0, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getApplication_State(), this.getStatus(), "state", null, 0, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getApplication_Name(), theOCCIPackage.getString(), "name", null, 1, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getApplication_Context(), this.getURL(), "context", null, 1, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getApplication_Url(), this.getURL(), "url", null, 1, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getApplication_State(), this.getStatus(), "state", null, 1, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getApplication_Message(), theOCCIPackage.getString(), "message", null, 0, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		addEOperation(applicationEClass, null, "start", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getApplication__Start(), null, "start", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(applicationEClass, null, "stop", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getApplication__Stop(), null, "stop", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(componentEClass, Component.class, "Component", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getComponent_State(), this.getStatus(), "state", null, 0, 1, Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getComponent_State(), this.getStatus(), "state", null, 1, 1, Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getComponent_Message(), theOCCIPackage.getString(), "message", null, 0, 1, Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		addEOperation(componentEClass, null, "start", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getComponent__Start(), null, "start", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(componentEClass, null, "stop", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getComponent__Stop(), null, "stop", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(componentlinkEClass, Componentlink.class, "Componentlink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -398,13 +438,13 @@ public class PlatformPackageImpl extends EPackageImpl implements PlatformPackage
 			 "title", "Application"
 		   });	
 		addAnnotation
-		  (applicationEClass.getEOperations().get(0), 
+		  (getApplication__Start(), 
 		   source, 
 		   new String[] {
 			 "title", "Start the application."
 		   });	
 		addAnnotation
-		  (applicationEClass.getEOperations().get(1), 
+		  (getApplication__Stop(), 
 		   source, 
 		   new String[] {
 			 "title", "Stop the application."
@@ -446,13 +486,13 @@ public class PlatformPackageImpl extends EPackageImpl implements PlatformPackage
 			 "title", "Component"
 		   });	
 		addAnnotation
-		  (componentEClass.getEOperations().get(0), 
+		  (getComponent__Start(), 
 		   source, 
 		   new String[] {
 			 "title", "Start the application."
 		   });	
 		addAnnotation
-		  (componentEClass.getEOperations().get(1), 
+		  (getComponent__Stop(), 
 		   source, 
 		   new String[] {
 			 "title", "Stop the application."

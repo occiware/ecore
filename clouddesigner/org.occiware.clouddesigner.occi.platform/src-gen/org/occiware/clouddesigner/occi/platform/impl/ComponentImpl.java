@@ -237,6 +237,24 @@ public class ComponentImpl extends ResourceImpl implements Component {
 	 * @generated
 	 */
 	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case PlatformPackage.COMPONENT___START:
+				start();
+				return null;
+			case PlatformPackage.COMPONENT___STOP:
+				stop();
+				return null;
+		}
+		return super.eInvoke(operationID, arguments);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

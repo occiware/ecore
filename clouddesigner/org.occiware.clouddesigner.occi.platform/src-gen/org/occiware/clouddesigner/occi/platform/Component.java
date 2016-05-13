@@ -44,7 +44,8 @@ public interface Component extends Resource {
 	 * @see org.occiware.clouddesigner.occi.platform.Status
 	 * @see #setState(Status)
 	 * @see org.occiware.clouddesigner.occi.platform.PlatformPackage#getComponent_State()
-	 * @model annotation="OCCIE2Ecore description='State of the component.'"
+	 * @model required="true"
+	 *        annotation="OCCIE2Ecore description='State of the component.'"
 	 * @generated
 	 */
 	Status getState();

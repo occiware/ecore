@@ -395,6 +395,24 @@ public class ApplicationImpl extends ResourceImpl implements Application {
 	 * @generated
 	 */
 	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case PlatformPackage.APPLICATION___START:
+				start();
+				return null;
+			case PlatformPackage.APPLICATION___STOP:
+				stop();
+				return null;
+		}
+		return super.eInvoke(operationID, arguments);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

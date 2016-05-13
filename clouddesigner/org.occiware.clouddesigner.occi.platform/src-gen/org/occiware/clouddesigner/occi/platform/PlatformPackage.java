@@ -196,6 +196,69 @@ public interface PlatformPackage extends EPackage {
 	int APPLICATION_FEATURE_COUNT = OCCIPackage.RESOURCE_FEATURE_COUNT + 5;
 
 	/**
+	 * The operation id for the '<em>Occi Create</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPLICATION___OCCI_CREATE = OCCIPackage.RESOURCE___OCCI_CREATE;
+
+	/**
+	 * The operation id for the '<em>Occi Retrieve</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPLICATION___OCCI_RETRIEVE = OCCIPackage.RESOURCE___OCCI_RETRIEVE;
+
+	/**
+	 * The operation id for the '<em>Occi Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPLICATION___OCCI_UPDATE = OCCIPackage.RESOURCE___OCCI_UPDATE;
+
+	/**
+	 * The operation id for the '<em>Occi Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPLICATION___OCCI_DELETE = OCCIPackage.RESOURCE___OCCI_DELETE;
+
+	/**
+	 * The operation id for the '<em>Start</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPLICATION___START = OCCIPackage.RESOURCE_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Stop</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPLICATION___STOP = OCCIPackage.RESOURCE_OPERATION_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Application</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPLICATION_OPERATION_COUNT = OCCIPackage.RESOURCE_OPERATION_COUNT + 2;
+
+	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.platform.impl.ComponentImpl <em>Component</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -296,6 +359,69 @@ public interface PlatformPackage extends EPackage {
 	int COMPONENT_FEATURE_COUNT = OCCIPackage.RESOURCE_FEATURE_COUNT + 2;
 
 	/**
+	 * The operation id for the '<em>Occi Create</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT___OCCI_CREATE = OCCIPackage.RESOURCE___OCCI_CREATE;
+
+	/**
+	 * The operation id for the '<em>Occi Retrieve</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT___OCCI_RETRIEVE = OCCIPackage.RESOURCE___OCCI_RETRIEVE;
+
+	/**
+	 * The operation id for the '<em>Occi Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT___OCCI_UPDATE = OCCIPackage.RESOURCE___OCCI_UPDATE;
+
+	/**
+	 * The operation id for the '<em>Occi Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT___OCCI_DELETE = OCCIPackage.RESOURCE___OCCI_DELETE;
+
+	/**
+	 * The operation id for the '<em>Start</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT___START = OCCIPackage.RESOURCE_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Stop</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT___STOP = OCCIPackage.RESOURCE_OPERATION_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Component</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_OPERATION_COUNT = OCCIPackage.RESOURCE_OPERATION_COUNT + 2;
+
+	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.platform.impl.ComponentlinkImpl <em>Componentlink</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -376,6 +502,51 @@ public interface PlatformPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMPONENTLINK_FEATURE_COUNT = OCCIPackage.LINK_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Occi Create</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENTLINK___OCCI_CREATE = OCCIPackage.LINK___OCCI_CREATE;
+
+	/**
+	 * The operation id for the '<em>Occi Retrieve</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENTLINK___OCCI_RETRIEVE = OCCIPackage.LINK___OCCI_RETRIEVE;
+
+	/**
+	 * The operation id for the '<em>Occi Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENTLINK___OCCI_UPDATE = OCCIPackage.LINK___OCCI_UPDATE;
+
+	/**
+	 * The operation id for the '<em>Occi Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENTLINK___OCCI_DELETE = OCCIPackage.LINK___OCCI_DELETE;
+
+	/**
+	 * The number of operations of the '<em>Componentlink</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENTLINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.platform.Status <em>Status</em>}' enum.
@@ -474,6 +645,26 @@ public interface PlatformPackage extends EPackage {
 	EAttribute getApplication_Message();
 
 	/**
+	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.platform.Application#start() <em>Start</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Start</em>' operation.
+	 * @see org.occiware.clouddesigner.occi.platform.Application#start()
+	 * @generated
+	 */
+	EOperation getApplication__Start();
+
+	/**
+	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.platform.Application#stop() <em>Stop</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Stop</em>' operation.
+	 * @see org.occiware.clouddesigner.occi.platform.Application#stop()
+	 * @generated
+	 */
+	EOperation getApplication__Stop();
+
+	/**
 	 * Returns the meta object for class '{@link org.occiware.clouddesigner.occi.platform.Component <em>Component</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -504,6 +695,26 @@ public interface PlatformPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getComponent_Message();
+
+	/**
+	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.platform.Component#start() <em>Start</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Start</em>' operation.
+	 * @see org.occiware.clouddesigner.occi.platform.Component#start()
+	 * @generated
+	 */
+	EOperation getComponent__Start();
+
+	/**
+	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.platform.Component#stop() <em>Stop</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Stop</em>' operation.
+	 * @see org.occiware.clouddesigner.occi.platform.Component#stop()
+	 * @generated
+	 */
+	EOperation getComponent__Stop();
 
 	/**
 	 * Returns the meta object for class '{@link org.occiware.clouddesigner.occi.platform.Componentlink <em>Componentlink</em>}'.
@@ -620,6 +831,22 @@ public interface PlatformPackage extends EPackage {
 		EAttribute APPLICATION__MESSAGE = eINSTANCE.getApplication_Message();
 
 		/**
+		 * The meta object literal for the '<em><b>Start</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation APPLICATION___START = eINSTANCE.getApplication__Start();
+
+		/**
+		 * The meta object literal for the '<em><b>Stop</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation APPLICATION___STOP = eINSTANCE.getApplication__Stop();
+
+		/**
 		 * The meta object literal for the '{@link org.occiware.clouddesigner.occi.platform.impl.ComponentImpl <em>Component</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -644,6 +871,22 @@ public interface PlatformPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute COMPONENT__MESSAGE = eINSTANCE.getComponent_Message();
+
+		/**
+		 * The meta object literal for the '<em><b>Start</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation COMPONENT___START = eINSTANCE.getComponent__Start();
+
+		/**
+		 * The meta object literal for the '<em><b>Stop</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation COMPONENT___STOP = eINSTANCE.getComponent__Stop();
 
 		/**
 		 * The meta object literal for the '{@link org.occiware.clouddesigner.occi.platform.impl.ComponentlinkImpl <em>Componentlink</em>}' class.
