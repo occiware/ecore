@@ -9,133 +9,119 @@
 
 [template public generateExtension(extension : Extension)]
 [file ('textile/'+extension.name+'.textile', false, 'UTF-8')]
-
-h1. OCCI Extension: [extension.name/]
+h1. [extension.description/]
 
 | *Name* | [extension.name/] |
 | *Scheme* | [extension.scheme/] |
-| *Description* | [extension.description/] |
+[if extension.import->size() <> 0]
 
-h1. Imports
-
+Imported OCCI Extensions:
 | *Name* | *Scheme* |
 [for (imported : Extension | extension.import)]
 | <a href="[imported.name/].textile">[imported.name/]</a> | [imported.scheme/] |
 [/for]
+[/if]
+[if (extension.kinds->size() <> 0)]
 
 h1. Kinds
-
 [extension.kinds.generateKind()/]
+[/if]
+[if (extension.mixins->size() <> 0)]
 
 h1. Mixins
-
 [extension.mixins.generateMixin()/]
+[/if]
+[if (extension.types->size() <> 0)]
 
 h1. Types
-
 [extension.types.generateType()/]
-
+[/if]
 Generated at [getNow()/] from [getFilePath(extension)/] by org.occiware.clouddesigner.occi.gen.doc
 [/file]
 [/template]
 
 [template public generateKind (kind : Kind) ]
+
 h2. Kind [kind.term/]
 
 | *Term* | [kind.term/] |
 | *Scheme* | [kind.scheme/] |
 | *Title* | [kind.title/] |
-| *Parent* | [if kind.parent <> null][kind.parent.generateAnchor ('kind')/][/if] |
-
+| *Parent* | [if kind.parent <> null][kind.parent.generateAnchor('kind')/][/if] |
+[if kind.attributes->size() <> 0]
 [kind.generateAttributes()/]
-[generateActions(kind.actions)/]
-
+[/if]
+[if kind.actions->size() <> 0]
+[generateActions(kind, kind.actions)/]
+[/if]
 [/template]
 
 [template public generateMixin (mixin : Mixin) ]
+
 h2. Mixin [mixin.term/]
 
 | *Term* | [mixin.term/] |
 | *Scheme* | [mixin.scheme/] |
 | *Title* | [mixin.title/] |
-
-h3. Depends
-
+[if mixin.depends->size() <> 0]
+Depends on:
 [for (md : Mixin | mixin.depends)]
 * [md.generateAnchor ('mixin')/]
 [/for]
-
-h3. Applies
-
+[/if]
+[if mixin.applies->size() <> 0]
+Applies to:
 [for (ad : Kind | mixin.applies)]
 * [ad.generateAnchor ('kind')/]
 [/for]
-
+[/if]
+[if mixin.attributes->size() <> 0]
 [mixin.generateAttributes()/]
-[generateActions(mixin.actions)/]
-
+[/if]
+[if mixin.actions->size() <> 0]
+[generateActions(mixin, mixin.actions)/]
+[/if]
 [/template]
 
 [template public generateAttributes (category : Category) ]
-h3. Attributes
 
-[if category.attributes->size() <> 0]
+Attributes of [category.term/] are:
 | *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
 [for (attribute : Attribute | category.attributes)]
-[attribute.generateAttribute()/]
-[/for]
-[/if]
-[/template]
-
-[template public generateAttribute (attribute : Attribute) ]
 | [attribute.name/] | [if attribute.type <> null][attribute.type.generateAnchor()/][/if] | [attribute.required/] | [attribute.mutable/] | [attribute.default/] | [attribute.description/] |
+[/for]
 [/template]
 
-[template public generateActions (actions : Set(Action)) ]
-h3. Actions
-
+[template public generateActions (category : Category, actions : Set(Action)) ]
+Actions of [category.term/] are:
+| *Term* | *Scheme* | *Attributes* | *Title* |
 [for (action : Action | actions)]
-h4. Action [action.term/]
-
-| *Term* | [action.term/] |
-| *Scheme* | [action.scheme/] |
-| *Title* | [action.title/] |
-
-[if action.attributes->size() <> 0]
-| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
-[for (attribute : Attribute | action.attributes)]
-[attribute.generateAttribute()/]
+| [action.term/] | [action.scheme/] | [if action.attributes->size() <> 0][for (attribute : Attribute | action.attributes) separator(', ')][attribute.name/][if attribute.type <> null]=[attribute.type.generateAnchor()/][/if][/for][/if] | [action.title/] |
 [/for]
-[/if]
-
-[/for]
-
 [/template]
 
 [template public generateType (type : EDataType) ]
+
 h2. Datatype [type.name/]
 
-h3. Type [type.instanceClassName/]
+[type.eAnnotations->select(source = 'http://www.eclipse.org/emf/2002/GenModel').details.value/].
 
-h3. Annotations
-
-[for (annotation : EAnnotation | type.eAnnotations)]
+Base type: [type.instanceClassName/]
+[for (annotation : EAnnotation | type.eAnnotations->select(source = 'http:///org/eclipse/emf/ecore/util/ExtendedMetaData'))]
 [for (detail : EStringToStringMapEntry | annotation.details)]
 * [detail.key/] = [detail.value/]
 [/for]
 [/for]
-
-
 [/template]
 
 [template public generateType (type : EEnum) ]
+
 h2. Enum [type.name/]
 
-Literals:
+[type.eAnnotations->select(source = 'http://www.eclipse.org/emf/2002/GenModel').details.value/]:
 [for (literal : EEnumLiteral | type.eLiterals)]
 * [literal.name/]  
 [/for]
-
 [/template]
 
 [template public generateAnchor (category : Category, prefix : String) post (trim())]
