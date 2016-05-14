@@ -142,15 +142,15 @@
         </containerMappings>
         <containerMappings name="EC EDataType" preconditionExpression="service:isEDataType" labelDirectEdit="//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='EditName']" semanticCandidatesExpression="feature:types" domainClass="ecore.EDataType" childrenPresentation="List">
           <subNodeMappings name="EC_DataType_InstanceClassName" semanticCandidatesExpression="var:self" domainClass="ecore.EDataType">
-            <style xsi:type="style:BundledImageDescription" labelSize="10" showIcon="false" labelExpression="feature:instanceClassName" sizeComputationExpression="1">
+            <style xsi:type="style:BundledImageDescription" labelSize="10" showIcon="false" labelExpression="feature:instanceClassName" sizeComputationExpression="1" labelPosition="node">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelFormat>italic</labelFormat>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </subNodeMappings>
-          <subNodeMappings name="EC_DataType EStringToStringMapEntry" semanticCandidatesExpression="[eAnnotations.details/]" domainClass="ecore.EStringToStringMapEntry">
-            <style xsi:type="style:BundledImageDescription" labelSize="10" labelExpression="[key+'='+value/]" labelAlignment="LEFT" resizeKind="NSEW">
+          <subNodeMappings name="EC_DataType EStringToStringMapEntry" semanticCandidatesExpression="[eAnnotations->select(source = 'http:///org/eclipse/emf/ecore/util/ExtendedMetaData').details/]" domainClass="ecore.EStringToStringMapEntry">
+            <style xsi:type="style:BundledImageDescription" labelSize="10" labelExpression="[key+'='+value/]" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
