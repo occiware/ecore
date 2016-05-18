@@ -11,7 +11,6 @@
  *******************************************************************************/
 package org.occiware.clouddesigner.occi.design.services;
 
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 
@@ -60,7 +59,7 @@ public class DesignServices {
 	/**
 	 * Computes the label of an Attribute.
 	 */
-	public String render(Attribute attribute) {
+	public String renderAttribute(Attribute attribute) {
 		StringBuilder sb = new StringBuilder();
 		sb.append(attribute.getName());
 		EDataType type = attribute.getType();
@@ -82,7 +81,7 @@ public class DesignServices {
 	/**
 	 * Computes the label of an Action.
 	 */
-	public String render(Action action) {
+	public String renderAction(Action action) {
 		StringBuilder sb = new StringBuilder();
 		sb.append(action.getTerm());
 		sb.append('(');

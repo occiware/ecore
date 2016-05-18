@@ -46,8 +46,13 @@
         </containerMappings>
         <containerMappings name="KindContainer" labelDirectEdit="//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='EditTerm']" semanticCandidatesExpression="feature:kinds" synchronizationLock="true" domainClass="occi.Kind" childrenPresentation="List">
           <subNodeMappings name="KindAttribute" labelDirectEdit="//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='EditName']" semanticCandidatesExpression="feature:attributes" domainClass="occi.Attribute">
+            <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="service:renderAttribute" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
             <conditionnalStyles predicateExpression="[not mutable and not required/]">
-              <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="service:render" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+              <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="service:renderAttribute" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelFormat>italic</labelFormat>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -55,7 +60,7 @@
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="[not mutable and required/]">
-              <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="service:render" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+              <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="service:renderAttribute" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelFormat>bold</labelFormat>
                 <labelFormat>italic</labelFormat>
@@ -64,14 +69,14 @@
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="[mutable and not required/]">
-              <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="service:render" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+              <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="service:renderAttribute" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="[mutable and required/]">
-              <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="service:render" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+              <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="service:renderAttribute" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelFormat>bold</labelFormat>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -80,7 +85,7 @@
             </conditionnalStyles>
           </subNodeMappings>
           <subNodeMappings name="KindAction" labelDirectEdit="//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='EditTerm']" semanticCandidatesExpression="feature:actions" domainClass="occi.Action">
-            <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="service:render" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+            <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="service:renderAction" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -94,8 +99,13 @@
         </containerMappings>
         <containerMappings name="MixinContainer" labelDirectEdit="//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='EditTerm']" semanticCandidatesExpression="feature:mixins" synchronizationLock="true" domainClass="occi.Mixin" childrenPresentation="List">
           <subNodeMappings name="MixinAttribute" labelDirectEdit="//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='EditName']" semanticCandidatesExpression="feature:attributes" domainClass="occi.Attribute">
+            <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="service:renderAttribute" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
             <conditionnalStyles predicateExpression="[not mutable and not required/]">
-              <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="service:render" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+              <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="service:renderAttribute" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelFormat>italic</labelFormat>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -103,7 +113,7 @@
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="[not mutable and required/]">
-              <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="service:render" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+              <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="service:renderAttribute" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelFormat>bold</labelFormat>
                 <labelFormat>italic</labelFormat>
@@ -112,14 +122,14 @@
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="[mutable and not required/]">
-              <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="service:render" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+              <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="service:renderAttribute" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="[mutable and required/]">
-              <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="service:render" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+              <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="service:renderAttribute" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelFormat>bold</labelFormat>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -128,7 +138,7 @@
             </conditionnalStyles>
           </subNodeMappings>
           <subNodeMappings name="MixinAction" semanticCandidatesExpression="feature:actions" domainClass="occi.Action">
-            <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="service:render" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+            <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="service:renderAction" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
