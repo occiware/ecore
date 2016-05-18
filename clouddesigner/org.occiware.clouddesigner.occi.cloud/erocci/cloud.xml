@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated at Tue May 17 16:20:16 CEST 2016 from  by org.occiware.clouddesigner.occi.gen.xml -->
+<occi:extension xmlns:occi="http://schemas.ogf.org/occi"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://schemas.ogf.org/occi occi.xsd"
+    name="cloud"
+    scheme="http://occiware.org/occi/cloud/ecore#"
+    version="1"
+    status="stable">
+
+  <!-- Kind: Machine Resource -->
+  <occi:kind term="machine" scheme="http://occiware.org/occi/cloud#" title="Machine Resource">
+    <occi:parent term="compute" scheme="http://schemas.ogf.org/occi/infrastructure#"/>
+    <occi:attribute name="name" use="required" type="xs:string" title=""/>
+  </occi:kind>
+
+  <!-- Kind: Machine on CloudSigma -->
+  <occi:kind term="machine_CloudSigma" scheme="http://occiware.org/occi/cloud#" title="Machine on CloudSigma">
+    <occi:parent term="machine" scheme="http://occiware.org/occi/cloud#"/>
+    <occi:attribute name="provider" use="required" type="xs:string" title=""/>
+    <occi:attribute name="email" use="required" type="xs:string" title=""/>
+    <occi:attribute name="password" use="required" type="xs:string" title=""/>
+  </occi:kind>
+
+  <!-- Kind: Machine on Amazon EC2 -->
+  <occi:kind term="machine_Amazon_EC2" scheme="http://occiware.org/occi/cloud#" title="Machine on Amazon EC2">
+    <occi:parent term="machine" scheme="http://occiware.org/occi/cloud#"/>
+    <occi:attribute name="provider" use="required" type="xs:string" title=""/>
+    <occi:attribute name="access_key" use="required" type="xs:string" title=""/>
+    <occi:attribute name="secret_key" use="required" type="xs:string" title=""/>
+    <occi:attribute name="region" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="image" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="security_group" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="key_pair" use="optional" type="xs:string" title=""/>
+  </occi:kind>
+
+  <!-- Kind: Machine on Gogrid -->
+  <occi:kind term="machine_Gogrid" scheme="http://occiware.org/occi/cloud#" title="Machine on Gogrid">
+    <occi:parent term="machine" scheme="http://occiware.org/occi/cloud#"/>
+    <occi:attribute name="provider" use="required" type="xs:string" title=""/>
+    <occi:attribute name="key" use="required" type="xs:string" title=""/>
+    <occi:attribute name="shared_secret" use="required" type="xs:string" title=""/>
+    <occi:attribute name="image_id" use="optional" type="xs:string" title=""/>
+  </occi:kind>
+
+  <!-- Kind: Machine on HP Helion -->
+  <occi:kind term="machine_Hp_Helion" scheme="http://occiware.org/occi/cloud#" title="Machine on HP Helion">
+    <occi:parent term="machine" scheme="http://occiware.org/occi/cloud#"/>
+    <occi:attribute name="provider" use="required" type="xs:string" title=""/>
+    <occi:attribute name="tenant" use="required" type="xs:string" title=""/>
+    <occi:attribute name="access_key" use="required" type="xs:string" title=""/>
+    <occi:attribute name="secret_key" use="required" type="xs:string" title=""/>
+    <occi:attribute name="image" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="zone" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="flavor_id" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="key_pair" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="security_group" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="floating_ip" use="optional" type="xs:string" title=""/>
+  </occi:kind>
+
+  <!-- Kind: MAchine on Goolge Compute ENgine -->
+  <occi:kind term="machine_GCE" scheme="http://occiware.org/occi/cloud#" title="MAchine on Goolge Compute ENgine">
+    <occi:parent term="machine" scheme="http://occiware.org/occi/cloud#"/>
+    <occi:attribute name="zone" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="region" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="machine_type" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="machine_url" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="firewall_tag" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="startup_script" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="json_file" use="required" type="xs:string" title=""/>
+    <occi:attribute name="provider" use="required" type="xs:string" title=""/>
+  </occi:kind>
+
+  <!-- Kind: Machine on RackSpace -->
+  <occi:kind term="machine_RackSpace" scheme="http://occiware.org/occi/cloud#" title="Machine on RackSpace">
+    <occi:parent term="machine" scheme="http://occiware.org/occi/cloud#"/>
+    <occi:attribute name="provider" use="required" type="xs:string" title=""/>
+    <occi:attribute name="username" use="required" type="xs:string" title=""/>
+    <occi:attribute name="api_key" use="required" type="xs:string" title=""/>
+    <occi:attribute name="region" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="image" use="optional" type="xs:string" title=""/>
+  </occi:kind>
+
+  <!-- Kind: Machine on ProfitBricks -->
+  <occi:kind term="machine_ProfitBricks" scheme="http://occiware.org/occi/cloud#" title="Machine on ProfitBricks">
+    <occi:parent term="machine" scheme="http://occiware.org/occi/cloud#"/>
+    <occi:attribute name="provider" use="required" type="xs:string" title=""/>
+    <occi:attribute name="username" use="required" type="xs:string" title=""/>
+    <occi:attribute name="api_key" use="required" type="xs:string" title=""/>
+    <occi:attribute name="email" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="password" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="location" use="optional" type="xs:string" title=""/>
+  </occi:kind>
+
+  <!-- Kind: Machine on OpenStack -->
+  <occi:kind term="machine_OpenStack" scheme="http://occiware.org/occi/cloud#" title="Machine on OpenStack">
+    <occi:parent term="machine" scheme="http://occiware.org/occi/cloud#"/>
+    <occi:attribute name="provider" use="required" type="xs:string" title=""/>
+    <occi:attribute name="tenant" use="required" type="xs:string" title=""/>
+    <occi:attribute name="username" use="required" type="xs:string" title=""/>
+    <occi:attribute name="password" use="required" type="xs:string" title=""/>
+    <occi:attribute name="endpoint" use="required" type="xs:string" title=""/>
+    <occi:attribute name="image_id" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="flavor_name" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="flavor_id" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="security_group" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="network_name" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="network_id" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="floating_ip_pool" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="image_name" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="keypair" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="region" use="optional" type="xs:string" title=""/>
+  </occi:kind>
+
+  <!-- Kind: Machine on SoftLayer -->
+  <occi:kind term="machine_SoftLayer" scheme="http://occiware.org/occi/cloud#" title="Machine on SoftLayer">
+    <occi:parent term="machine" scheme="http://occiware.org/occi/cloud#"/>
+    <occi:attribute name="provider" use="required" type="xs:string" title=""/>
+    <occi:attribute name="username" use="required" type="xs:string" title=""/>
+    <occi:attribute name="api_key" use="required" type="xs:string" title=""/>
+    <occi:attribute name="location_id" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="image_id" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="domain_name" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="disk_type" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="tenant" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="endpoint" use="optional" type="xs:string" title=""/>
+  </occi:kind>
+
+</occi:extension>
