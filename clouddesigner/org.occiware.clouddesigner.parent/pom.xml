@@ -56,7 +56,10 @@
 
 		<!-- ProActive Cloud Automation -->
 		<module>../org.occiware.clouddesigner.occi.pca</module>
-		
+
+		<!-- Cloud Connector Dependencies -->
+		<module>../org.occiware.clouddesigner.occi.cloud.connector.dependencies</module>
+
 		<!-- Cloud -->
 		<module>../org.occiware.clouddesigner.occi.cloud</module>
 		<module>../org.occiware.clouddesigner.occi.cloud.edit</module>
