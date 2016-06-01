@@ -31,6 +31,8 @@ public class VmSchedulerTimeShared extends VmScheduler {
 	/** The mips map requested. */
 	private Map<String, List<Double>> mipsMapRequested;
 
+	private Map<Integer, ArrayList<Double>> peConsumed;
+
 	/** The pes in use. */
 	private int pesInUse;
 
@@ -41,6 +43,7 @@ public class VmSchedulerTimeShared extends VmScheduler {
 	 */
 	public VmSchedulerTimeShared(List<? extends Pe> pelist) {
 		super(pelist);
+		peConsumed = new HashMap<Integer, ArrayList<Double>>();
 		setMipsMapRequested(new HashMap<String, List<Double>>());
 	}
 
@@ -50,9 +53,12 @@ public class VmSchedulerTimeShared extends VmScheduler {
 	 */
 	@Override
 	public boolean allocatePesForVm(Vm vm, List<Double> mipsShareRequested) {
+		peConsumed.put(vm.getId(), (ArrayList<Double>) mipsShareRequested);
+
 		/**
 		 * TODO: add the same to RAM and BW provisioners
 		 */
+
 		if (vm.isInMigration()) {
 			if (!getVmsMigratingIn().contains(vm.getUid()) && !getVmsMigratingOut().contains(vm.getUid())) {
 				getVmsMigratingOut().add(vm.getUid());
@@ -241,6 +247,9 @@ public class VmSchedulerTimeShared extends VmScheduler {
 	 */
 	protected void setMipsMapRequested(Map<String, List<Double>> mipsMapRequested) {
 		this.mipsMapRequested = mipsMapRequested;
+	}
+	public Map<Integer, ArrayList<Double>> getMipsConsumed(){
+		return peConsumed;
 	}
 
 }

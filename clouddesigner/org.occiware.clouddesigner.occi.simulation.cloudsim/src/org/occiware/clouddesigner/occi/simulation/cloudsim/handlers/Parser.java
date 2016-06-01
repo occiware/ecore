@@ -34,58 +34,41 @@ public class Parser {
 		Map<Entity, Set<Entity>> entities = new HashMap<Entity, Set<Entity>>();
 
 		for(Resource resource : configuration.getResources()) {
-			Kind resourceKind = resource.getKind();
-			if(resourceKind.getScheme().contains("simulation")){
-				if(resourceKind.getTerm().contains("datacenter")){ //datacenterKind
-					Dc_Config dc = DcFromResource(resource);
-					entities.put(dc,new HashSet<Entity>());
-					System.out.println(dc);
-				}else if(resourceKind.getTerm().contains("host")){//hostKind
-					Host_Config host = HostFromResource(resource);
-					entities.put(host, new HashSet<Entity>());
-					System.out.println(host);
-				}else if(resourceKind.getTerm().contains("VM")){//VMKind
-					VM_Config vm = VMFromResource(resource);
-					entities.put(vm, new HashSet<Entity>());
-					System.out.println(vm);
-				}else if(resourceKind.getTerm().contains("cloudlet")){ //cloudletKind
-					Cloudlet_Config cloudlet = CloudletFromResource(resource);
-					entities.put(cloudlet, new HashSet<Entity>());
-					System.out.println(cloudlet);
-				}else{ 
+			for(Mixin mixin : resource.getMixins()) {
+				if(mixin.getScheme().contains("simulation")){
+					if(mixin.getTerm().contains("datacenter")){
+						Dc_Config dc = DcFromResource(resource);
+						entities.put(dc, new HashSet<Entity>());
+						System.out.println(dc);
+					}else if(mixin.getTerm().contains("host")){
+						Host_Config host = HostFromResource(resource);
+						entities.put(host, new HashSet<Entity>());
+						System.out.println(host);
+					}else if (mixin.getTerm().contains("VM")){
+						VM_Config vm = VMFromResource(resource);
+						entities.put(vm, new HashSet<Entity>());
+						System.out.println(vm);
+					}else if (mixin.getTerm().contains("cloudlet")){
+						Cloudlet_Config cloudlet = CloudletFromResource(resource);
+						entities.put(cloudlet, new HashSet<Entity>());
+						System.out.println(cloudlet);
+					}else if(mixin.getTerm().contains("HarddriveStorage")){ 
+						HarddriveStorage_Config hardDrive = HarddriveFromResource(resource);
+						entities.put(hardDrive, new HashSet<Entity>());
+						System.out.println(hardDrive);
 
-				}
-			}else{//Otherwise, the resources are tagued
-				for(Mixin mixin : resource.getMixins()) {
-					if(mixin.getScheme().contains("simulation")){
-						if(mixin.getTerm().contains("datacenter")){
-							Dc_Config dc = DcFromResource(resource);
-							entities.put(dc, new HashSet<Entity>());
-							System.out.println(dc);
-						}else if(mixin.getTerm().contains("host")){
-							Host_Config host = HostFromResource(resource);
-							entities.put(host, new HashSet<Entity>());
-							System.out.println(host);
-						}else if (mixin.getTerm().contains("VM")){
-							VM_Config vm = VMFromResource(resource);
-							entities.put(vm, new HashSet<Entity>());
-							System.out.println(vm);
-						}else if (mixin.getTerm().contains("cloudlet")){
-							Cloudlet_Config cloudlet = CloudletFromResource(resource);
-							entities.put(cloudlet, new HashSet<Entity>());
-							System.out.println(cloudlet);
-						}
 					}
 				}
-
 			}
 		}
-		
+				
 		//Link entities
 		for(Entity ent: entities.keySet()){
 			for(Entity link: entities.keySet()){
 				if(ent.getLinkedResourceId().contains(link.getId())){
 					if(isDC(ent) && isHost(link))
+						entities.get(ent).add(link);
+					else if (isDC(ent) && isHardDrive(link))
 						entities.get(ent).add(link);
 					else if (isHost(ent) && isVM(link))
 						entities.get(ent).add(link);
@@ -93,7 +76,7 @@ public class Parser {
 						entities.get(ent).add(link);
 				}
 			}
-			
+
 		}
 		return entities;
 	}
@@ -102,6 +85,15 @@ public class Parser {
 	/****************  Fill the attributes of each entity **************************/
 	/*********************************************************************************/
 	/*********************************************************************************/
+	private HarddriveStorage_Config HarddriveFromResource(Resource resource){
+		String id = resource.getId();
+		int size = 1000;
+		List<String> idTarget = new ArrayList<String>();
+		for(AttributeState as : resource.getAttributes()) {
+			if(as.getName().equals("size")) size = Integer.parseInt(as.getValue());
+		}
+		return new HarddriveStorage_Config(id, size, idTarget);
+	}
 
 	private Cloudlet_Config CloudletFromResource(Resource resource){
 		String id = resource.getId(); //ressourceId
@@ -143,7 +135,7 @@ public class Parser {
 			else if (as.getName().contains("memory")) ram = 1000*Integer.parseInt(as.getValue());//GB
 			else if (as.getName().equals("ram")) ram = Integer.parseInt(as.getValue());
 			else if (as.getName().equals("bw")) bw = Long.parseLong(as.getValue());
-			else if (as.getName().equals("storage")) size = Long.parseLong(as.getValue());
+			else if (as.getName().equals("size")) size = Long.parseLong(as.getValue());
 			else if (as.getName().equals("vmm")) vmm = as.getValue();
 			else if (as.getName().equals("cloudletScheduler")) cloudletScheduler = as.getValue();
 		}
@@ -200,7 +192,6 @@ public class Parser {
 
 		return new Host_Config(id, idTarget, id_host, mips, core, ramProvisioner,
 				bwProvisioner, vmScheduler, peProvisioner, storage, ram, bw);
-
 	}
 
 
@@ -225,27 +216,49 @@ public class Parser {
 
 		//host linked to datacenter
 		for(Link link : resource.getLinks()) {
-			if(link.getTarget().getKind().getTerm().contains("host")){
-				idTarget.add(link.getTarget().getId());
-			}else{
-				for(Mixin m: link.getTarget().getMixins()){
-					if(m.getTerm().contains("host")){
-						idTarget.add(link.getTarget().getId());
-					}
-				}	
-			}
+			for(Mixin m: link.getTarget().getMixins()){
+				if(m.getTerm().contains("host") || m.getTerm().contains("HarddriveStorage")){
+					idTarget.add(link.getTarget().getId());
+				}
+			}	
 		}
-
 		//create datacenter
 		return new Dc_Config(id, idTarget, name, architecture, os, vmm, timeZone, costPerSec, costPerMem, 
 				costPerStorage, costPerBw, schedulingInterval);
-
 	}
 
 	/*********************************************************************************/
 	/******************************  PRIVATE CLASSES *********************************/
 	/*********************************************************************************/
 	/*********************************************************************************/
+	protected class HarddriveStorage_Config implements Entity{
+		double size; 
+		String id;
+		List<String> idTarget;
+
+		public HarddriveStorage_Config(String id, double size, List<String> idTarget){
+			this.id = id;
+			this.size = size;
+			this.idTarget = idTarget;
+		}
+
+		@Override
+		public String getId() {
+			return id;
+		}
+
+		@Override
+		public String toString() {
+			return "HarddriveStorage [size=" + size + ", id=" + id + "]";
+		}
+
+		@Override
+		public List<String> getLinkedResourceId() {
+			return idTarget;
+		}
+
+	}
+
 	protected class Cloudlet_Config implements Entity{
 		String id; //ressourceId
 		List<String> idTarget;
@@ -347,7 +360,7 @@ public class Parser {
 			this.bw = bw;
 			this.ram = ram;
 		}
-		
+
 		@Override
 		public String toString() {
 			return "Host_Config [id=" + id + ", idTarget=" + idTarget + ", id_host=" + id_host + ", mips=" + mips
@@ -389,7 +402,7 @@ public class Parser {
 			this.costPerBw = costPerBw;
 			this.time_zone = time_zone;	
 		}
-		
+
 		@Override
 		public String toString() {
 			return "Dc_Config [id=" + id + ", targetId=" + targetId + ", vmm=" + vmm + ", os=" + os + ", name=" + name
@@ -408,13 +421,13 @@ public class Parser {
 			return targetId;
 		}
 	}
-	
+
 	public interface Entity{
 		public String getId();
 		public List<String> getLinkedResourceId();
 		public String toString();
 	}
-	
+
 	/*************** PRIVATE METHOD *****************/
 	public boolean isDC(Object obj){
 		if(obj instanceof Dc_Config){
@@ -443,5 +456,12 @@ public class Parser {
 		}
 		return false;
 	}
+	public boolean isHardDrive(Object obj){
+		if(obj instanceof HarddriveStorage_Config){
+			return true;
+		}
+		return false;
+	}
+
 
 }

@@ -25,7 +25,8 @@ public class RamProvisionerSimple extends RamProvisioner {
 
 	/** The RAM table. */
 	private Map<String, Integer> ramTable;
-
+	
+	private Map<Integer, Integer> ramConsumed;
 	/**
 	 * Instantiates a new ram provisioner simple.
 	 * 
@@ -33,6 +34,7 @@ public class RamProvisionerSimple extends RamProvisioner {
 	 */
 	public RamProvisionerSimple(Integer availableRam) {
 		super(availableRam);
+		ramConsumed = new HashMap<Integer, Integer>();
 		setRamTable(new HashMap<String, Integer>());
 	}
 
@@ -42,6 +44,7 @@ public class RamProvisionerSimple extends RamProvisioner {
 	 */
 	@Override
 	public boolean allocateRamForVm(Vm vm, int ram) {
+		ramConsumed.put(vm.getId(), ram);
 		int maxRam = vm.getRam();
 
 		if (ram >= maxRam) {
@@ -128,6 +131,10 @@ public class RamProvisionerSimple extends RamProvisioner {
 	 */
 	protected void setRamTable(Map<String, Integer> ramTable) {
 		this.ramTable = ramTable;
+	}
+	
+	public Map<Integer, Integer> getramConsumed(){
+		return ramConsumed;
 	}
 
 }

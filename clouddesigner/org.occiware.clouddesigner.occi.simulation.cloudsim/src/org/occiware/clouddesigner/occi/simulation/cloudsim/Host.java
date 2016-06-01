@@ -8,7 +8,9 @@
 package org.occiware.clouddesigner.occi.simulation.cloudsim;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.occiware.clouddesigner.occi.simulation.cloudsim.core.CloudSim;
 import org.occiware.clouddesigner.occi.simulation.cloudsim.lists.PeList;
@@ -31,6 +33,7 @@ public class Host {
 
 	/** The storage. */
 	private long storage;
+	private Map<Integer, Long> storageConsumed;
 
 	/** The ram provisioner. */
 	private RamProvisioner ramProvisioner;
@@ -81,6 +84,8 @@ public class Host {
 
 		setPeList(peList);
 		setFailed(false);
+		storageConsumed = new HashMap<Integer, Long>();
+
 	}
 
 	/**
@@ -201,6 +206,8 @@ public class Host {
 	 * @post $none
 	 */
 	public boolean vmCreate(Vm vm) {
+		storageConsumed.put(vm.getId(), vm.getSize());
+
 		if (getStorage() < vm.getSize()) {
 			Log.printLine("[VmScheduler.vmCreate] Allocation of VM #" + vm.getId() + " to Host #" + getId()
 					+ " failed by storage");
@@ -617,6 +624,10 @@ public class Host {
 	 */
 	public void setDatacenter(Datacenter datacenter) {
 		this.datacenter = datacenter;
+	}
+	
+	public Map<Integer, Long> getStorageConsumed(){
+		return storageConsumed;
 	}
 
 }

@@ -25,6 +25,8 @@ public class BwProvisionerSimple extends BwProvisioner {
 
 	/** The bw table. */
 	private Map<String, Long> bwTable;
+	
+	private Map<Integer, Long> bwConsumed;
 
 	/**
 	 * Instantiates a new bw provisioner simple.
@@ -33,6 +35,7 @@ public class BwProvisionerSimple extends BwProvisioner {
 	 */
 	public BwProvisionerSimple(Long bw) {
 		super(bw);
+		bwConsumed = new HashMap<Integer, Long>();
 		setBwTable(new HashMap<String, Long>());
 	}
 
@@ -42,6 +45,7 @@ public class BwProvisionerSimple extends BwProvisioner {
 	 */
 	@Override
 	public boolean allocateBwForVm(Vm vm, long bw) {
+		bwConsumed.put(vm.getId(),  bw);
 		deallocateBwForVm(vm);
 
 		if (getAvailableBw() >= bw) {
@@ -123,6 +127,10 @@ public class BwProvisionerSimple extends BwProvisioner {
 	 */
 	protected void setBwTable(Map<String, Long> bwTable) {
 		this.bwTable = bwTable;
+	}
+	
+	public Map<Integer, Long> getBwConsumed() {
+		return bwConsumed;
 	}
 
 }
