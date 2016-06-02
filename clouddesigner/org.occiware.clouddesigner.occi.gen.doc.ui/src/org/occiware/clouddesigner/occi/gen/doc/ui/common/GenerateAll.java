@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2008, 2012 Obeo.
+/**
+ * Copyright (c) 2015-2016 Inria
+ *  
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
- *     Obeo - initial API and implementation
- *******************************************************************************/
+ * - Philippe Merle <philippe.merle@inria.fr>
+ */
 package org.occiware.clouddesigner.occi.gen.doc.ui.common;
 
 import java.io.IOException;
@@ -24,7 +25,6 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.BasicMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.osgi.framework.Bundle;
-
 
 /**
  * Main entry point of the 'Doc' generation module.
@@ -92,8 +92,6 @@ public class GenerateAll {
 		String generationID = org.eclipse.acceleo.engine.utils.AcceleoLaunchingUtil.computeUIProjectID("org.occiware.clouddesigner.occi.gen.doc", "org.occiware.clouddesigner.occi.gen.doc.main.Generate", modelURI.toString(), targetFolder.getFullPath().toString(), new ArrayList<String>());
 		gen0.setGenerationID(generationID);
 		gen0.doGenerate(BasicMonitor.toMonitor(monitor));
-			
-		
 	}
 	
 	/**

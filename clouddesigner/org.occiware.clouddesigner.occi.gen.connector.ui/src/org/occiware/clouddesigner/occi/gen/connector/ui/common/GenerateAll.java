@@ -92,8 +92,6 @@ public class GenerateAll {
 		String generationID = org.eclipse.acceleo.engine.utils.AcceleoLaunchingUtil.computeUIProjectID("org.occiware.clouddesigner.occi.gen.connector", "org.occiware.clouddesigner.occi.gen.connector.main.Main", modelURI.toString(), targetFolder.getFullPath().toString(), new ArrayList<String>());
 		gen0.setGenerationID(generationID);
 		gen0.doGenerate(BasicMonitor.toMonitor(monitor));
-			
-		
 	}
 	
 	/**
