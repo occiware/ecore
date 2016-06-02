@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2008, 2012 Obeo.
+/**
+ * Copyright (c) 2015-2016 Inria
+ *  
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
- *     Obeo - initial API and implementation
- *******************************************************************************/
+ * - Philippe Merle <philippe.merle@inria.fr>
+ */
 package org.occiware.clouddesigner.occi.gen.xml.ui;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
@@ -34,7 +35,8 @@ public class Activator extends AbstractUIPlugin {
 	public Activator() {
 	}
 
-	/**{@inheritDoc}
+	/**
+	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.core.runtime.Plugin#start(org.osgi.framework.BundleContext)
 	 * @generated
@@ -44,7 +46,8 @@ public class Activator extends AbstractUIPlugin {
 		plugin = this;
 	}
 
-	/**{@inheritDoc}
+	/**
+	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.core.runtime.Plugin#stop(org.osgi.framework.BundleContext)
 	 * @generated

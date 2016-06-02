@@ -35,7 +35,8 @@ public class Activator extends AbstractUIPlugin {
 	public Activator() {
 	}
 
-	/**{@inheritDoc}
+	/**
+	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.core.runtime.Plugin#start(org.osgi.framework.BundleContext)
 	 * @generated
@@ -45,7 +46,8 @@ public class Activator extends AbstractUIPlugin {
 		plugin = this;
 	}
 
-	/**{@inheritDoc}
+	/**
+	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.core.runtime.Plugin#stop(org.osgi.framework.BundleContext)
 	 * @generated
