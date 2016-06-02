@@ -1,0 +1,21 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: OCCI URI Dataset Generator UI
+Bundle-SymbolicName: org.occiware.clouddesigner.occi.gen.uris.ui;singleton:=true
+Bundle-Version: 0.1.0.qualifier
+Bundle-Activator: org.occiware.clouddesigner.occi.gen.uris.ui.Activator
+Bundle-Vendor: OCCIware
+Require-Bundle: org.occiware.clouddesigner.occi,
+ org.occiware.clouddesigner.occi.gen.uris,
+ org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.core.resources,
+ org.eclipse.emf.ecore,
+ org.eclipse.emf.ecore.xmi,
+ org.eclipse.ocl,
+ org.eclipse.ocl.ecore,
+ org.eclipse.acceleo.model,
+ org.eclipse.acceleo.engine
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Eclipse-LazyStart: true
