@@ -35,7 +35,7 @@ import org.occiware.clouddesigner.occi.gen.xml.ui.Activator;
 import org.occiware.clouddesigner.occi.gen.xml.ui.common.GenerateAll;
 
 /**
- * Xml code generation.
+ * erocci XML generation.
  */
 public class AcceleoGenerateXmlAction extends ActionDelegate implements IActionDelegate {
 	
