@@ -1,12 +1,12 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2012 Obeo.
+ * Copyright (c) 2015-2016 Inria
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
- *     Obeo - initial API and implementation
+ *     Philippe Merle <philippe.merle@inria.fr>
  *******************************************************************************/
 package org.occiware.clouddesigner.occi.gen.doc.ui.popupMenus;
 
@@ -44,7 +44,8 @@ public class AcceleoGenerateDocAction extends ActionDelegate implements IActionD
 	 */
 	protected List<IFile> files;
 
-	/**{@inheritDoc}
+	/**
+	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.ui.actions.ActionDelegate#selectionChanged(org.eclipse.jface.action.IAction, org.eclipse.jface.viewers.ISelection)
 	 * @generated
@@ -56,7 +57,8 @@ public class AcceleoGenerateDocAction extends ActionDelegate implements IActionD
 		}
 	}
 
-	/**{@inheritDoc}
+	/**
+	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.ui.actions.ActionDelegate#run(org.eclipse.jface.action.IAction)
 	 * @generated
@@ -71,7 +73,7 @@ public class AcceleoGenerateDocAction extends ActionDelegate implements IActionD
 							IFile model = (IFile)filesIt.next();
 							URI modelURI = URI.createPlatformResourceURI(model.getFullPath().toString(), true);
 							try {
-								IContainer target = model.getProject().getFolder("src-gen");
+								IContainer target = model.getProject().getFolder("documentation");
 								GenerateAll generator = new GenerateAll(modelURI, target, getArguments());
 								generator.doGenerate(monitor);
 							} catch (IOException e) {
