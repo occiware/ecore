@@ -276,9 +276,15 @@ public class DockerContainerManager {
       String _name_1 = container.getName();
       create.withName(_name_1);
     }
-    String _net = container.getNet();
-    boolean _notEquals_7 = (!Objects.equal(_net, null));
+    String _hostname_1 = container.getHostname();
+    boolean _notEquals_7 = (!Objects.equal(_hostname_1, null));
     if (_notEquals_7) {
+      String _hostname_2 = container.getHostname();
+      create.withHostName(_hostname_2);
+    }
+    String _net = container.getNet();
+    boolean _notEquals_8 = (!Objects.equal(_net, null));
+    if (_notEquals_8) {
       String _net_1 = container.getNet();
       create.withNetworkMode(_net_1);
     }
@@ -298,14 +304,14 @@ public class DockerContainerManager {
       create.withStdInOnce(Boolean.valueOf(_isStdin_open_1));
     }
     String _user = container.getUser();
-    boolean _notEquals_8 = (!Objects.equal(_user, null));
-    if (_notEquals_8) {
+    boolean _notEquals_9 = (!Objects.equal(_user, null));
+    if (_notEquals_9) {
       String _user_1 = container.getUser();
       create.withUser(_user_1);
     }
     String _volumes = container.getVolumes();
-    boolean _notEquals_9 = (!Objects.equal(_volumes, null));
-    if (_notEquals_9) {
+    boolean _notEquals_10 = (!Objects.equal(_volumes, null));
+    if (_notEquals_10) {
       String _volumes_1 = container.getVolumes();
       Volume _volume = new Volume(_volumes_1);
       create.withVolumes(_volume);
@@ -325,8 +331,8 @@ public class DockerContainerManager {
       create.withMemory(_valueOf_1);
     }
     String _lxc_conf = container.getLxc_conf();
-    boolean _notEquals_10 = (!Objects.equal(_lxc_conf, null));
-    if (_notEquals_10) {
+    boolean _notEquals_11 = (!Objects.equal(_lxc_conf, null));
+    if (_notEquals_11) {
       final LxcConf lxcCon = new LxcConf("key", "value");
       create.withLxcConf(lxcCon);
     }
@@ -439,9 +445,15 @@ public class DockerContainerManager {
       String _name_1 = container.getName();
       create.withName(_name_1);
     }
-    String _net = container.getNet();
-    boolean _notEquals_8 = (!Objects.equal(_net, null));
+    String _hostname_1 = container.getHostname();
+    boolean _notEquals_8 = (!Objects.equal(_hostname_1, null));
     if (_notEquals_8) {
+      String _hostname_2 = container.getHostname();
+      create.withName(_hostname_2);
+    }
+    String _net = container.getNet();
+    boolean _notEquals_9 = (!Objects.equal(_net, null));
+    if (_notEquals_9) {
       String _net_1 = container.getNet();
       create.withNetworkMode(_net_1);
     }
@@ -461,14 +473,14 @@ public class DockerContainerManager {
       create.withStdInOnce(Boolean.valueOf(_isStdin_open_1));
     }
     String _user = container.getUser();
-    boolean _notEquals_9 = (!Objects.equal(_user, null));
-    if (_notEquals_9) {
+    boolean _notEquals_10 = (!Objects.equal(_user, null));
+    if (_notEquals_10) {
       String _user_1 = container.getUser();
       create.withUser(_user_1);
     }
     String _volumes = container.getVolumes();
-    boolean _notEquals_10 = (!Objects.equal(_volumes, null));
-    if (_notEquals_10) {
+    boolean _notEquals_11 = (!Objects.equal(_volumes, null));
+    if (_notEquals_11) {
       String _volumes_1 = container.getVolumes();
       Volume _volume = new Volume(_volumes_1);
       create.withVolumes(_volume);
@@ -488,8 +500,8 @@ public class DockerContainerManager {
       create.withMemorySwap(_valueOf_1);
     }
     String _lxc_conf = container.getLxc_conf();
-    boolean _notEquals_11 = (!Objects.equal(_lxc_conf, null));
-    if (_notEquals_11) {
+    boolean _notEquals_12 = (!Objects.equal(_lxc_conf, null));
+    if (_notEquals_12) {
       final LxcConf lxcCon = new LxcConf("key", "value");
       create.withLxcConf(lxcCon);
     }

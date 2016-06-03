@@ -197,6 +197,9 @@ class DockerContainerManager {
 		if (container.name != null) {
 			create.withName(container.name)
 		}
+		if (container.hostname != null) {
+			create.withHostName(container.hostname)
+		}
 		if (container.net != null) {
 			create.withNetworkMode(container.net)
 		}
@@ -293,6 +296,9 @@ class DockerContainerManager {
 		}
 		if (container.name != null) {
 			create.withName(container.name)
+		}
+		if (container.hostname != null) {
+			create.withName(container.hostname)
 		}
 		if (container.net != null) {
 			create.withNetworkMode(container.net)
