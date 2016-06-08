@@ -6,6 +6,7 @@ This API allows for the creation and management of resources related with the re
 | *Scheme* | http://schemas.ogf.org/occi/sla# |
 
 Imported OCCI Extensions:
+
 | *Name* | *Scheme* |
 | <a href="core.textile">core</a> | http://schemas.ogf.org/occi/core# |
 
@@ -19,6 +20,7 @@ h2. Kind agreement
 | *Parent* | <a href="core.textile#kind-resource">http://schemas.ogf.org/occi/core#resource</a> |
 
 Attributes of agreement are:
+
 | *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
 | occi.agreement.state | <a href="ServiceLevelAgreements.textile#enum-agreementstatus">AgreementStatus</a> | true | false |  | Current state of the instance |
 | occi.agreement.agreedAt | <a href="ServiceLevelAgreements.textile#datatype-datetime">DateTime</a> | false | false |  | The point in time when the agreement was made |
@@ -26,6 +28,7 @@ Attributes of agreement are:
 | occi.agreement.effectiveUntil | <a href="ServiceLevelAgreements.textile#datatype-datetime">DateTime</a> | false | true |  | The point in time when the agreement’s effectiveness ends |
 
 Actions of agreement are:
+
 | *Term* | *Scheme* | *Attributes* | *Title* |
 | accept | http://schemas.ogf.org/occi/sla/agreement/action# |  |  |
 | reject | http://schemas.ogf.org/occi/sla/agreement/action# |  |  |
@@ -92,4 +95,4 @@ Enumeration of AgreementTerm status:
 * Fulfilled  
 * Violated  
 
-Generated at Wed Jun 08 22:43:43 CEST 2016 from http://schemas.ogf.org/occi/sla by org.occiware.clouddesigner.occi.gen.doc
+Generated at Thu Jun 09 00:20:09 CEST 2016 from http://schemas.ogf.org/occi/sla by org.occiware.clouddesigner.occi.gen.doc

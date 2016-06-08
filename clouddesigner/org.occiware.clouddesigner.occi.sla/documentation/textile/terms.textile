@@ -4,6 +4,7 @@ h1. Examples of AgreementTerm defined in the OCCI SLA specification
 | *Scheme* | http://someprovider.com/terms# |
 
 Imported OCCI Extensions:
+
 | *Name* | *Scheme* |
 | <a href="core.textile">core</a> | http://schemas.ogf.org/occi/core# |
 | <a href="ServiceLevelAgreements.textile">ServiceLevelAgreements</a> | http://schemas.ogf.org/occi/sla# |
@@ -19,6 +20,7 @@ Depends on:
 * <a href="ServiceLevelAgreements.textile#mixin-agreement_term">http://schemas.ogf.org/occi/sla#agreement_term</a>
 
 Attributes of availability are:
+
 | *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
 | availability.term.type | <a href="ServiceLevelAgreements.textile#enum-agreementtermtype">AgreementTermType</a> | true | false |  | The type of the term that is being defined |
 | availability.term.state | <a href="ServiceLevelAgreements.textile#enum-agreementtermstatus">AgreementTermStatus</a> | true | false |  | The state of fulfillment of the specific term |
@@ -36,6 +38,7 @@ Depends on:
 * <a href="ServiceLevelAgreements.textile#mixin-agreement_term">http://schemas.ogf.org/occi/sla#agreement_term</a>
 
 Attributes of compute_service are:
+
 | *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
 | compute_service.term.type | <a href="ServiceLevelAgreements.textile#enum-agreementtermtype">AgreementTermType</a> | true | false |  | The type of the term that is being defined |
 | compute_service.term.state | <a href="ServiceLevelAgreements.textile#enum-agreementtermstatus">AgreementTermStatus</a> | true | false |  | The state of fulfillment of the specific term |
@@ -56,6 +59,7 @@ Depends on:
 * <a href="ServiceLevelAgreements.textile#mixin-agreement_term">http://schemas.ogf.org/occi/sla#agreement_term</a>
 
 Attributes of service_performance are:
+
 | *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
 | service_performance.term.type | <a href="ServiceLevelAgreements.textile#enum-agreementtermtype">AgreementTermType</a> | true | false |  | The type of the term that is being defined |
 | service_performance.term.state | <a href="ServiceLevelAgreements.textile#enum-agreementtermstatus">AgreementTermStatus</a> | true | false |  | The state of fulfillment of the specific term |
@@ -74,6 +78,7 @@ Depends on:
 * <a href="ServiceLevelAgreements.textile#mixin-agreement_term">http://schemas.ogf.org/occi/sla#agreement_term</a>
 
 Attributes of service_capacity are:
+
 | *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
 | service_capacity.term.type | <a href="ServiceLevelAgreements.textile#enum-agreementtermtype">AgreementTermType</a> | true | false |  | The type of the term that is being defined |
 | service_capacity.term.state | <a href="ServiceLevelAgreements.textile#enum-agreementtermstatus">AgreementTermStatus</a> | true | false |  | The state of fulfillment of the specific term |
@@ -82,4 +87,4 @@ Attributes of service_capacity are:
 | service_capacity.throughput | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
 
 
-Generated at Wed Jun 08 22:43:43 CEST 2016 from platform:/resource/org.occiware.clouddesigner.occi.sla/examples/terms.occie by org.occiware.clouddesigner.occi.gen.doc
+Generated at Thu Jun 09 00:20:09 CEST 2016 from platform:/resource/org.occiware.clouddesigner.occi.sla/examples/terms.occie by org.occiware.clouddesigner.occi.gen.doc

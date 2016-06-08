@@ -16,6 +16,7 @@ h1. [extension.description/]
 [if extension.import->size() <> 0]
 
 Imported OCCI Extensions:
+
 | *Name* | *Scheme* |
 [for (imported : Extension | extension.import)]
 | <a href="[imported.name/].textile">[imported.name/]</a> | [imported.scheme/] |
@@ -86,6 +87,7 @@ Applies to:
 [template public generateAttributes (category : Category) ]
 
 Attributes of [category.term/] are:
+
 | *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
 [for (attribute : Attribute | category.attributes)]
 | [attribute.name/] | [if attribute.type <> null][attribute.type.generateAnchor()/][/if] | [attribute.required/] | [attribute.mutable/] | [attribute.default/] | [attribute.description/] |
@@ -94,6 +96,7 @@ Attributes of [category.term/] are:
 
 [template public generateActions (category : Category, actions : Set(Action)) ]
 Actions of [category.term/] are:
+
 | *Term* | *Scheme* | *Attributes* | *Title* |
 [for (action : Action | actions)]
 | [action.term/] | [action.scheme/] | [if action.attributes->size() <> 0][for (attribute : Attribute | action.attributes) separator(', ')][attribute.name/][if attribute.type <> null]=[attribute.type.generateAnchor()/][/if][/for][/if] | [action.title/] |
