@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ASCII"?>
+<occi:Configuration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:occi="http://schemas.ogf.org/occi/core/ecore">
+  <use href="http://schemas.ogf.org/occi/sla#/"/>
+  <use href="templates.occie#/"/>
+  <use href="terms.occie#/"/>
+  <resources id="585342d4-8139-4e97-b107-6eadbc2144ce" title="DemoSLA1" summary="Figure 6 of the OCCI SLA specification">
+    <kind href="../model/ServiceLevelAgreements.occie#//@kinds[term='agreement']"/>
+    <mixins href="templates.occie#//@mixins[term='silver']"/>
+    <mixins href="terms.occie#//@mixins[term='availability']"/>
+    <mixins href="terms.occie#//@mixins[term='compute_service']"/>
+    <mixins href="terms.occie#//@mixins[term='service_performance']"/>
+    <mixins href="terms.occie#//@mixins[term='service_capacity']"/>
+    <attributes name="occi.core.id" value="585342d4-8139-4e97-b107-6eadbc2144ce"/>
+    <attributes name="occi.core.title" value="DemoSLA1"/>
+    <attributes name="occi.core.summary" value="Figure 6 of the OCCI SLA specification"/>
+    <attributes name="occi.agreement.state" value="accepted"/>
+    <attributes name="occi.agreement.agreedAt" value="2015-02-05T02:05:17+00:00"/>
+    <attributes name="occi.agreement.effectiveFrom" value="2015-02-05T02:05:17+00:00"/>
+    <attributes name="occi.agreement.effectiveUntil" value="2015-02-05T02:05:17+00:00"/>
+    <attributes name="com.someprovider.incountries" value="EMEA"/>  
+    <attributes name="availability.term.type" value="SLO-TERM"/>
+    <attributes name="availability.term.state" value="fulfilled"/>
+    <attributes name="availability.term.desc" value="service availability term"/>
+    <attributes name="availability.uptime" value="0.998"/>
+    <attributes name="availability.term.remedy" value="0.10"/>
+    <attributes name="compute_service.term.type" value="SERVICE-TERM"/>
+    <attributes name="compute_service.term.state" value="fulfilled"/>
+    <attributes name="compute_service.term.desc" value="compute service definition"/>
+    <attributes name="compute_service.cores" value="4"/>
+    <attributes name="compute_service.memory" value="16G"/>
+    <attributes name="compute_service.cpu.type" value="IntelXeon"/>
+    <attributes name="compute_service.cpu.freq" value="2.5GHz"/>
+    <attributes name="service_performance.term.type" value="SLO-TERM"/>
+    <attributes name="service_performance.term.state" value="violated"/>
+    <attributes name="service_performance.term.desc" value="service performance level"/>
+    <attributes name="service_performance.responseTime.mean" value="120ms"/>
+    <attributes name="service_performance.responseTime.overthreshold" value="100ms"/>
+    <attributes name="service_performance.term.remedy" value="0.05"/>
+    <attributes name="service_capacity.term.type" value="SLO-TERM"/>
+    <attributes name="service_capacity.term.state" value="fulfilled"/>
+    <attributes name="service_capacity.term.desc" value="service capacity level"/>
+    <attributes name="service_capacity.throughput" value="1000Mbps"/>
+    <attributes name="service_capacity.term.remedy" value="0.05"/>
+  </resources>
+</occi:Configuration>
