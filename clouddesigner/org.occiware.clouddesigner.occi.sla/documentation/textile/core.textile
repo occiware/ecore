@@ -13,6 +13,7 @@ h2. Kind entity
 | *Parent* |  |
 
 Attributes of entity are:
+
 | *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
 | occi.core.id | <a href="core.textile#datatype-string">String</a> | true | false |  | The unique identity of the instance. |
 | occi.core.title | <a href="core.textile#datatype-string">String</a> | false | true |  | The display name of the instance. |
@@ -26,6 +27,7 @@ h2. Kind resource
 | *Parent* | <a href="core.textile#kind-entity">http://schemas.ogf.org/occi/core#entity</a> |
 
 Attributes of resource are:
+
 | *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
 | occi.core.summary | <a href="core.textile#datatype-string">String</a> | false | true |  | A summarising description of the Resource instance. |
 
