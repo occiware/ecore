@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="ASCII"?>
+<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="runtime" scheme="http://occiware.org/occi/runtime#">
+  <import href="http://schemas.ogf.org/occi/core#/"/>
+  <kinds term="Runtime" scheme="http://occiware.org/occi/runtime#">
+    <attributes name="name" required="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="version">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="occi_version" required="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="location">
+      <type href="../../../plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//URI"/>
+    </attributes>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds term="Backend" scheme="http://occiware.org/occi/runtime#">
+    <attributes name="name" required="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="version">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="location">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds term="ModelChecker" scheme="http://occiware.org/occi/runtime#">
+    <attributes name="name" required="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="version">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="location">
+      <type href="../../../plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//URI"/>
+    </attributes>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds term="ConstraintsSet" scheme="http://occiware.org/occi/runtime#">
+    <attributes name="ocl" required="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds term="AccessControl" scheme="http://occiware.org/occi/runtime#">
+    <attributes name="priority" required="true" default="0">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="policy" required="true" default="allow" type="//@types.1"/>
+    <attributes name="action" default="create" type="//@types.0"/>
+    <attributes name="owner">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds term="ConstraintsSetLink" scheme="http://occiware.org/occi/runtime#">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds term="Categories" scheme="http://occiware.org/occi/runtime#">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds term="Mountpoint" scheme="http://occiware.org/occi/runtime#">
+    <attributes name="path">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <mixins term="HTTPBackend" scheme="http://occiware.org/occi/runtime#">
+    <attributes name="protocol" default="http" type="//@types.2"/>
+    <attributes name="server" default="localhost">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="port" required="true" default="0">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+  </mixins>
+  <mixins term="DbusBackend" scheme="http://occiware.org/occi/runtime#">
+    <attributes name="service" required="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+  </mixins>
+  <mixins term="CustomBackend" scheme="http://occiware.org/occi/runtime#">
+    <attributes name="apidoc" required="true">
+      <type href="../../../plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//URI"/>
+    </attributes>
+  </mixins>
+  <mixins term="DBusModelChecker" scheme="http://occiware.org/occi/runtime#"/>
+  <mixins term="AutoIDCapability" scheme="http://occiware.org/occi/runtime#"/>
+  <mixins term="FilteringCapability" scheme="http://occiware.org/occi/runtime#"/>
+  <mixins term="PaginationCapability" scheme="http://occiware.org/occi/runtime#"/>
+  <mixins term="ActionCapability" scheme="http://occiware.org/occi/runtime#"/>
+  <types xsi:type="ecore:EEnum" name="ACLAction">
+    <eLiterals name="create"/>
+    <eLiterals name="read" value="1"/>
+    <eLiterals name="update" value="2"/>
+    <eLiterals name="delete" value="3"/>
+  </types>
+  <types xsi:type="ecore:EEnum" name="ACLPolicy">
+    <eLiterals name="allow"/>
+    <eLiterals name="deny" value="1"/>
+  </types>
+  <types xsi:type="ecore:EEnum" name="HTTPBackendType">
+    <eLiterals name="http"/>
+    <eLiterals name="https" value="1"/>
+    <eLiterals name="http2" value="2"/>
+  </types>
+</occi:Extension>
