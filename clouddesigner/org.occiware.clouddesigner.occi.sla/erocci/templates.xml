@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated at Wed Jun 08 22:43:20 CEST 2016 from platform:/resource/org.occiware.clouddesigner.occi.sla/examples/templates.occie by org.occiware.clouddesigner.occi.gen.xml -->
+<occi:extension xmlns:occi="http://schemas.ogf.org/occi"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://schemas.ogf.org/occi occi.xsd"
+    name="templates"
+    scheme="http://someprovider.com/templates#"
+    version="1"
+    status="stable">
+
+  <!-- Mixin:  -->
+  <occi:mixin term="gold" scheme="http://someprovider.com/templates#" title="">
+    <occi:depends term="agreement_tpl" scheme="http://schemas.ogf.org/occi/sla#"/>
+    <occi:attribute name="someprovider.occi.incountries" use="optional" type="xs:string" title=""/>
+  </occi:mixin>
+
+  <!-- Mixin:  -->
+  <occi:mixin term="silver" scheme="http://someprovider.com/templates#" title="">
+    <occi:depends term="agreement_tpl" scheme="http://schemas.ogf.org/occi/sla#"/>
+    <occi:attribute name="com.someprovider.incountries" use="optional" type="xs:string" title=""/>
+  </occi:mixin>
+
+</occi:extension>

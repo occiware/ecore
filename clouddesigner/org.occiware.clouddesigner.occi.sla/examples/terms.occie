@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="ASCII"?>
+<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="terms" scheme="http://someprovider.com/terms#" description="Examples of AgreementTerm defined in the OCCI SLA specification">
+  <import href="http://schemas.ogf.org/occi/core#/"/>
+  <import href="http://schemas.ogf.org/occi/sla#/"/>
+  <mixins term="availability" scheme="http://someprovider.com/terms#">
+    <attributes name="availability.term.type" mutable="false" required="true" description="The type of the term that is being defined">
+      <type href="http://schemas.ogf.org/occi/sla#//@types.2"/>
+    </attributes>
+    <attributes name="availability.term.state" mutable="false" required="true" description="The state of fulfillment of the specific term">
+      <type href="http://schemas.ogf.org/occi/sla#//@types.3"/>
+    </attributes>
+    <attributes name="availability.term.desc" mutable="false" description="The description of the agreement term defined with this mixin">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="availability.term.remedy" mutable="false" description="The remedy value (e.g., price penalty) or action (e.g., command) when an SLO term is being violated">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="availability.uptime">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <depends href="http://schemas.ogf.org/occi/sla#//@mixins[term='agreement_term']"/>
+  </mixins>
+  <mixins term="compute_service" scheme="http://someprovider.com/terms#">
+    <attributes name="compute_service.term.type" mutable="false" required="true" description="The type of the term that is being defined">
+      <type href="http://schemas.ogf.org/occi/sla#//@types.2"/>
+    </attributes>
+    <attributes name="compute_service.term.state" mutable="false" required="true" description="The state of fulfillment of the specific term">
+      <type href="http://schemas.ogf.org/occi/sla#//@types.3"/>
+    </attributes>
+    <attributes name="compute_service.term.desc" mutable="false" description="The description of the agreement term defined with this mixin">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="compute_service.term.remedy" mutable="false" description="The remedy value (e.g., price penalty) or action (e.g., command) when an SLO term is being violated">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="compute_service.memory">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="compute_service.cores">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="compute_service.cpu.type">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="compute_service.cpu.freq">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <depends href="http://schemas.ogf.org/occi/sla#//@mixins[term='agreement_term']"/>
+  </mixins>
+  <mixins term="service_performance" scheme="http://someprovider.com/terms#">
+    <attributes name="service_performance.term.type" mutable="false" required="true" description="The type of the term that is being defined">
+      <type href="http://schemas.ogf.org/occi/sla#//@types.2"/>
+    </attributes>
+    <attributes name="service_performance.term.state" mutable="false" required="true" description="The state of fulfillment of the specific term">
+      <type href="http://schemas.ogf.org/occi/sla#//@types.3"/>
+    </attributes>
+    <attributes name="service_performance.term.desc" mutable="false" description="The description of the agreement term defined with this mixin">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="service_performance.term.remedy" mutable="false" description="The remedy value (e.g., price penalty) or action (e.g., command) when an SLO term is being violated">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="service_performance.responseTime.mean">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="compute_service.responseTime.overthreshold">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <depends href="http://schemas.ogf.org/occi/sla#//@mixins[term='agreement_term']"/>
+  </mixins>
+  <mixins term="service_capacity" scheme="http://someprovider.com/terms#">
+    <attributes name="service_capacity.term.type" mutable="false" required="true" description="The type of the term that is being defined">
+      <type href="http://schemas.ogf.org/occi/sla#//@types.2"/>
+    </attributes>
+    <attributes name="service_capacity.term.state" mutable="false" required="true" description="The state of fulfillment of the specific term">
+      <type href="http://schemas.ogf.org/occi/sla#//@types.3"/>
+    </attributes>
+    <attributes name="service_capacity.term.desc" mutable="false" description="The description of the agreement term defined with this mixin">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="service_capacity.term.remedy" mutable="false" description="The remedy value (e.g., price penalty) or action (e.g., command) when an SLO term is being violated">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="service_capacity.throughput">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <depends href="http://schemas.ogf.org/occi/sla#//@mixins[term='agreement_term']"/>
+  </mixins>
+</occi:Extension>

@@ -1,0 +1,39 @@
+h1. Examples of AgreementTemplate defined in the OCCI SLA specification
+
+| *Name* | templates |
+| *Scheme* | http://someprovider.com/templates# |
+
+Imported OCCI Extensions:
+| *Name* | *Scheme* |
+| <a href="core.textile">core</a> | http://schemas.ogf.org/occi/core# |
+| <a href="ServiceLevelAgreements.textile">ServiceLevelAgreements</a> | http://schemas.ogf.org/occi/sla# |
+
+h1. Mixins
+
+h2. Mixin gold
+
+| *Term* | gold |
+| *Scheme* | http://someprovider.com/templates# |
+| *Title* |  |
+Depends on:
+* <a href="ServiceLevelAgreements.textile#mixin-agreement_tpl">http://schemas.ogf.org/occi/sla#agreement_tpl</a>
+
+Attributes of gold are:
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| someprovider.occi.incountries | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+
+
+h2. Mixin silver
+
+| *Term* | silver |
+| *Scheme* | http://someprovider.com/templates# |
+| *Title* |  |
+Depends on:
+* <a href="ServiceLevelAgreements.textile#mixin-agreement_tpl">http://schemas.ogf.org/occi/sla#agreement_tpl</a>
+
+Attributes of silver are:
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| com.someprovider.incountries | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+
+
+Generated at Wed Jun 08 22:43:28 CEST 2016 from platform:/resource/org.occiware.clouddesigner.occi.sla/examples/templates.occie by org.occiware.clouddesigner.occi.gen.doc

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ASCII"?>
+<occi:Configuration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:occi="http://schemas.ogf.org/occi/core/ecore">
+  <use href="http://schemas.ogf.org/occi/sla#/"/>
+  <use href="terms.occie#/"/>
+  <resources id="585342d4-8139-4e97-b107-6eadbc2144ce" title="DemoSLA1">
+    <kind href="http://schemas.ogf.org/occi/sla#//@kinds[term='agreement']"/>
+    <mixins href="terms.occie#//@mixins[term='availability']"/>
+    <mixins href="terms.occie#//@mixins[term='compute_service']"/>
+    <attributes name="occi.core.id" value="585342d4-8139-4e97-b107-6eadbc2144ce"/>
+    <attributes name="occi.core.title" value="DemoSLA1"/>
+    <attributes name="occi.core.summary"/>
+    <attributes name="occi.agreement.state" value="pending"/>
+    <attributes name="occi.agreement.agreedAt"/>
+    <attributes name="occi.agreement.effectiveFrom" value="2015-02-05T02:05:17+00:00"/>
+    <attributes name="occi.agreement.effectiveUntil" value="2015-02-05T02:05:17+00:00"/>
+    <attributes name="availability.term.type" value="SLO"/>
+    <attributes name="availability.term.state" value="undefined"/>
+    <attributes name="availability.term.desc" value="Availability term"/>
+    <attributes name="availability.term.uptime" value="0.998"/>
+    <attributes name="availability.term.remedy" value="0.05"/>
+    <attributes name="compute_service.term.type" value="SERVICE"/>
+    <attributes name="compute_service.term.state" value="undefined"/>
+    <attributes name="compute_service.term.desc" value="Service definition term"/>
+    <attributes name="compute_service.memory" value="16G"/>
+    <attributes name="compute_service.cores" value="4"/>
+    <attributes name="compute_service.term.remedy" value="''"/>
+  </resources>
+</occi:Configuration>

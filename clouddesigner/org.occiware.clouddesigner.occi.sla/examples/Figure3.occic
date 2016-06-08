@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ASCII"?>
+<occi:Configuration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:occi="http://schemas.ogf.org/occi/core/ecore">
+  <use href="http://schemas.ogf.org/occi/sla#/"/>
+  <use href="templates.occie#/"/>
+  <resources id="585342d4-8139-4e97-b107-6eadbc2144ce" title="DemoSLA1">
+    <kind href="http://schemas.ogf.org/occi/sla#//@kinds[term='agreement']"/>
+    <mixins href="templates.occie#//@mixins[term='gold']"/>
+    <attributes name="occi.core.id" value="585342d4-8139-4e97-b107-6eadbc2144ce"/>
+    <attributes name="occi.core.title" value="DemoSLA1"/>
+    <attributes name="occi.core.summary"/>
+    <attributes name="occi.agreement.state" value="pending"/>
+    <attributes name="occi.agreement.agreedAt"/>
+    <attributes name="occi.agreement.effectiveFrom"/>
+    <attributes name="occi.agreement.effectiveUntil"/>
+    <attributes name="someprovider.occi.incountries" value="EMEA"/>
+  </resources>
+</occi:Configuration>

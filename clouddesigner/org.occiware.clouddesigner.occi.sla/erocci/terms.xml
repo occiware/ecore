@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated at Wed Jun 08 22:43:36 CEST 2016 from platform:/resource/org.occiware.clouddesigner.occi.sla/examples/terms.occie by org.occiware.clouddesigner.occi.gen.xml -->
+<occi:extension xmlns:occi="http://schemas.ogf.org/occi"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://schemas.ogf.org/occi occi.xsd"
+    name="terms"
+    scheme="http://someprovider.com/terms#"
+    version="1"
+    status="stable">
+
+  <!-- Mixin:  -->
+  <occi:mixin term="availability" scheme="http://someprovider.com/terms#" title="">
+    <occi:depends term="agreement_term" scheme="http://schemas.ogf.org/occi/sla#"/>
+    <occi:attribute name="availability.term.type" immutable="true" use="required" type="xs:string" title="The type of the term that is being defined"/>
+    <occi:attribute name="availability.term.state" immutable="true" use="required" type="xs:string" title="The state of fulfillment of the specific term"/>
+    <occi:attribute name="availability.term.desc" immutable="true" use="optional" type="xs:string" title="The description of the agreement term defined with this mixin"/>
+    <occi:attribute name="availability.term.remedy" immutable="true" use="optional" type="xs:string" title="The remedy value (e.g., price penalty) or action (e.g., command) when an SLO term is being violated"/>
+    <occi:attribute name="availability.uptime" use="optional" type="xs:string" title=""/>
+  </occi:mixin>
+
+  <!-- Mixin:  -->
+  <occi:mixin term="compute_service" scheme="http://someprovider.com/terms#" title="">
+    <occi:depends term="agreement_term" scheme="http://schemas.ogf.org/occi/sla#"/>
+    <occi:attribute name="compute_service.term.type" immutable="true" use="required" type="xs:string" title="The type of the term that is being defined"/>
+    <occi:attribute name="compute_service.term.state" immutable="true" use="required" type="xs:string" title="The state of fulfillment of the specific term"/>
+    <occi:attribute name="compute_service.term.desc" immutable="true" use="optional" type="xs:string" title="The description of the agreement term defined with this mixin"/>
+    <occi:attribute name="compute_service.term.remedy" immutable="true" use="optional" type="xs:string" title="The remedy value (e.g., price penalty) or action (e.g., command) when an SLO term is being violated"/>
+    <occi:attribute name="compute_service.memory" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="compute_service.cores" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="compute_service.cpu.type" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="compute_service.cpu.freq" use="optional" type="xs:string" title=""/>
+  </occi:mixin>
+
+  <!-- Mixin:  -->
+  <occi:mixin term="service_performance" scheme="http://someprovider.com/terms#" title="">
+    <occi:depends term="agreement_term" scheme="http://schemas.ogf.org/occi/sla#"/>
+    <occi:attribute name="service_performance.term.type" immutable="true" use="required" type="xs:string" title="The type of the term that is being defined"/>
+    <occi:attribute name="service_performance.term.state" immutable="true" use="required" type="xs:string" title="The state of fulfillment of the specific term"/>
+    <occi:attribute name="service_performance.term.desc" immutable="true" use="optional" type="xs:string" title="The description of the agreement term defined with this mixin"/>
+    <occi:attribute name="service_performance.term.remedy" immutable="true" use="optional" type="xs:string" title="The remedy value (e.g., price penalty) or action (e.g., command) when an SLO term is being violated"/>
+    <occi:attribute name="service_performance.responseTime.mean" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="compute_service.responseTime.overthreshold" use="optional" type="xs:string" title=""/>
+  </occi:mixin>
+
+  <!-- Mixin:  -->
+  <occi:mixin term="service_capacity" scheme="http://someprovider.com/terms#" title="">
+    <occi:depends term="agreement_term" scheme="http://schemas.ogf.org/occi/sla#"/>
+    <occi:attribute name="service_capacity.term.type" immutable="true" use="required" type="xs:string" title="The type of the term that is being defined"/>
+    <occi:attribute name="service_capacity.term.state" immutable="true" use="required" type="xs:string" title="The state of fulfillment of the specific term"/>
+    <occi:attribute name="service_capacity.term.desc" immutable="true" use="optional" type="xs:string" title="The description of the agreement term defined with this mixin"/>
+    <occi:attribute name="service_capacity.term.remedy" immutable="true" use="optional" type="xs:string" title="The remedy value (e.g., price penalty) or action (e.g., command) when an SLO term is being violated"/>
+    <occi:attribute name="service_capacity.throughput" use="optional" type="xs:string" title=""/>
+  </occi:mixin>
+
+</occi:extension>

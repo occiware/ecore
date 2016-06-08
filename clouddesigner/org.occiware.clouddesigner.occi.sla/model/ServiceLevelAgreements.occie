@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ASCII"?>
+<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="ServiceLevelAgreements" scheme="http://schemas.ogf.org/occi/sla#" description="OCCI Service Level Agreements API allows for the creation and management of resources related with the realization of agreements between an OCCI-enabled cloud service provider and potential consumers of the provider&#x2019;s resources.">
+  <import href="http://schemas.ogf.org/occi/core#/"/>
+  <kinds term="agreement" scheme="http://schemas.ogf.org/occi/sla#" title="A Service Level Agreement">
+    <attributes name="occi.agreement.state" mutable="false" required="true" description="Current state of the instance" type="//@types.1"/>
+    <attributes name="occi.agreement.agreedAt" mutable="false" description="The point in time when the agreement was made" type="//@types.0"/>
+    <attributes name="occi.agreement.effectiveFrom" description="The point in time when the agreement&#x2019;s effectiveness begins" type="//@types.0"/>
+    <attributes name="occi.agreement.effectiveUntil" description="The point in time when the agreement&#x2019;s effectiveness ends" type="//@types.0"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+    <actions term="accept" scheme="http://schemas.ogf.org/occi/sla/agreement/action#"/>
+    <actions term="reject" scheme="http://schemas.ogf.org/occi/sla/agreement/action#"/>
+    <actions term="suspend" scheme="http://schemas.ogf.org/occi/sla/agreement/action#"/>
+    <actions term="resume" scheme="http://schemas.ogf.org/occi/sla/agreement/action#"/>
+    <actions term="terminate" scheme="http://schemas.ogf.org/occi/sla/agreement/action#"/>
+  </kinds>
+  <kinds term="agreement_link" scheme="http://schemas.ogf.org/occi/sla#" title="Link between a SLA and its associated resource">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <mixins term="agreement_tpl" scheme="http://schemas.ogf.org/occi/sla#" title="Mixin defining a SLA template collection" applies="//@kinds[term='agreement']"/>
+  <mixins term="agreement_term" scheme="http://schemas.ogf.org/occi/sla#" title="Mixin defining a Term collection for an agreement" applies="//@kinds[term='agreement']"/>
+  <types name="DateTime" instanceClassName="java.lang.String">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="pattern" value="^(\d{4}((-)?(0[1-9]|1[0-2])((-)?(0[1-9]|[1-2][0-9]|3[0-1])(T(24:00(:00(\.[0]+)?)?|(([0-1][0-9]|2[0-3])(:)[0-5][0-9])((:)[0-5][0-9](\.[\d]+)?)?)((\+|-)(14:00|(0[0-9]|1[0-3])(:)[0-5][0-9])|Z))?)?)?)$"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Data type for ISO8601 date time"/>
+    </eAnnotations>
+  </types>
+  <types xsi:type="ecore:EEnum" name="AgreementStatus">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Enumeration of Agreement status"/>
+    </eAnnotations>
+    <eLiterals name="Pending"/>
+    <eLiterals name="Accepted" value="1" literal="Accepted"/>
+    <eLiterals name="Rejected" value="2"/>
+    <eLiterals name="Suspended" value="3"/>
+    <eLiterals name="Terminated" value="4"/>
+  </types>
+  <types xsi:type="ecore:EEnum" name="AgreementTermType">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Enumeration of AgreementTerm types"/>
+    </eAnnotations>
+    <eLiterals name="SERVICE" literal="SERVICE"/>
+    <eLiterals name="SLO" value="1" literal="SLO"/>
+  </types>
+  <types xsi:type="ecore:EEnum" name="AgreementTermStatus">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Enumeration of AgreementTerm status"/>
+    </eAnnotations>
+    <eLiterals name="Undefined" literal="Undefined"/>
+    <eLiterals name="Fulfilled" value="1" literal="Fulfilled"/>
+    <eLiterals name="Violated" value="2" literal="Violated"/>
+  </types>
+</occi:Extension>

@@ -40,7 +40,7 @@
 [/template]
 
 [template public generateURI(uri : String, verb : String, extension : Extension)]
-[uri/],[verb/],[extension.name.toUpperFirst()/],[extension.name.toUpperFirst()/].occie
+OCCI,[extension.name.toUpperFirst()/],[uri/],[verb/],[extension.name.toUpperFirst()/].occie
 [/template]
 
 [query public getCollectionPath(category : Category) : String = '{provider_specific_path}/' + category.term + '/' /]

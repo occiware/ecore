@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated at Wed Jun 08 22:43:36 CEST 2016 from http://schemas.ogf.org/occi/sla by org.occiware.clouddesigner.occi.gen.xml -->
+<occi:extension xmlns:occi="http://schemas.ogf.org/occi"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://schemas.ogf.org/occi occi.xsd"
+    name="ServiceLevelAgreements"
+    scheme="http://schemas.ogf.org/occi/sla#"
+    version="1"
+    status="stable">
+
+  <!-- Kind: A Service Level Agreement -->
+  <occi:kind term="agreement" scheme="http://schemas.ogf.org/occi/sla#" title="A Service Level Agreement">
+    <occi:parent term="resource" scheme="http://schemas.ogf.org/occi/core#"/>
+    <occi:attribute name="occi.agreement.state" immutable="true" use="required" type="xs:string" title="Current state of the instance"/>
+    <occi:attribute name="occi.agreement.agreedAt" immutable="true" use="optional" type="xs:string" title="The point in time when the agreement was made"/>
+    <occi:attribute name="occi.agreement.effectiveFrom" use="optional" type="xs:string" title="The point in time when the agreement&#8217;s effectiveness begins"/>
+    <occi:attribute name="occi.agreement.effectiveUntil" use="optional" type="xs:string" title="The point in time when the agreement&#8217;s effectiveness ends"/>
+    <occi:action term="accept" scheme="http://schemas.ogf.org/occi/sla/agreement/action#" title="">
+    </occi:action>
+    <occi:action term="reject" scheme="http://schemas.ogf.org/occi/sla/agreement/action#" title="">
+    </occi:action>
+    <occi:action term="suspend" scheme="http://schemas.ogf.org/occi/sla/agreement/action#" title="">
+    </occi:action>
+    <occi:action term="resume" scheme="http://schemas.ogf.org/occi/sla/agreement/action#" title="">
+    </occi:action>
+    <occi:action term="terminate" scheme="http://schemas.ogf.org/occi/sla/agreement/action#" title="">
+    </occi:action>
+  </occi:kind>
+
+  <!-- Kind: Link between a SLA and its associated resource -->
+  <occi:kind term="agreement_link" scheme="http://schemas.ogf.org/occi/sla#" title="Link between a SLA and its associated resource">
+    <occi:parent term="link" scheme="http://schemas.ogf.org/occi/core#"/>
+  </occi:kind>
+
+  <!-- Mixin: Mixin defining a SLA template collection -->
+  <occi:mixin term="agreement_tpl" scheme="http://schemas.ogf.org/occi/sla#" title="Mixin defining a SLA template collection">
+    <occi:applies term="agreement" scheme="http://schemas.ogf.org/occi/sla#"/>
+  </occi:mixin>
+
+  <!-- Mixin: Mixin defining a Term collection for an agreement -->
+  <occi:mixin term="agreement_term" scheme="http://schemas.ogf.org/occi/sla#" title="Mixin defining a Term collection for an agreement">
+    <occi:applies term="agreement" scheme="http://schemas.ogf.org/occi/sla#"/>
+  </occi:mixin>
+
+</occi:extension>
