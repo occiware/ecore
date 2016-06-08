@@ -373,7 +373,6 @@ public class DockerContainerManager {
       String _command_2 = container.getCommand();
       boolean _equals_1 = Objects.equal(_command_2, null);
       if (_equals_1) {
-        create.withCmd("sleep", "9999");
       }
     }
     int _cpu_shares = container.getCpu_shares();
@@ -748,31 +747,24 @@ public class DockerContainerManager {
       DockerContainerManager.LOGGER.info(("Use default image: " + containerImage));
     }
     String output = null;
-    String _name_3 = machine.getName();
-    boolean _machineContainsImage = this.machineContainsImage(_name_3, containerImage);
-    boolean _not_2 = (!_machineContainsImage);
-    if (_not_2) {
-      DockerContainerManager.LOGGER.info(("Downloading image: ->" + containerImage));
-      String _name_4 = machine.getName();
-      this.addImageToMachine(_name_4, containerImage);
-      try {
-        PullImageCmd _pullImageCmd = DockerContainerManager.dockerClient.pullImageCmd(containerImage);
-        PullImageCmd _withTag = _pullImageCmd.withTag("latest");
-        PullImageResultCallback _pullImageResultCallback = new PullImageResultCallback();
-        PullImageResultCallback _exec = _withTag.<PullImageResultCallback>exec(_pullImageResultCallback);
-        _exec.awaitSuccess();
-      } catch (final Throwable _t) {
-        if (_t instanceof Exception) {
-          final Exception e = (Exception)_t;
-          String _message = e.getMessage();
-          DockerContainerManager.LOGGER.error(_message);
-        } else {
-          throw Exceptions.sneakyThrow(_t);
-        }
+    DockerContainerManager.LOGGER.info(("Downloading image: ->" + containerImage));
+    try {
+      PullImageCmd _pullImageCmd = DockerContainerManager.dockerClient.pullImageCmd(containerImage);
+      PullImageCmd _withTag = _pullImageCmd.withTag("latest");
+      PullImageResultCallback _pullImageResultCallback = new PullImageResultCallback();
+      PullImageResultCallback _exec = _withTag.<PullImageResultCallback>exec(_pullImageResultCallback);
+      _exec.awaitSuccess();
+    } catch (final Throwable _t) {
+      if (_t instanceof Exception) {
+        final Exception e = (Exception)_t;
+        String _message = e.getMessage();
+        DockerContainerManager.LOGGER.error(_message);
+      } else {
+        throw Exceptions.sneakyThrow(_t);
       }
-      DockerContainerManager.LOGGER.info(output);
-      DockerContainerManager.LOGGER.info("Download is finished");
     }
+    DockerContainerManager.LOGGER.info(output);
+    DockerContainerManager.LOGGER.info("Download is finished");
     return DockerContainerManager.dockerClient;
   }
   

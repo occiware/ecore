@@ -464,7 +464,8 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
       if (_notEquals) {
         EList<Link> _links = c.getLinks();
         int _size = _links.size();
-        boolean _greaterThan = (_size > 0);
+        boolean _greaterThan = (_size > 
+          0);
         if (_greaterThan) {
           link = true;
           return link;

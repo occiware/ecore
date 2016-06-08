@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  * 	- Fawaz PARAISO 
  *******************************************************************************/
@@ -63,32 +63,31 @@ class DockerContainerManager {
 
 	// Initialize logger for DockerContainerManager.
 	private static Logger LOGGER = LoggerFactory.getLogger(typeof(DockerContainerManager))
-	
+
 	private PreferenceValues properties = new PreferenceValues
-	
-	
+
 	private StatsCallback stats = null
-	
+
 	private Boolean setStats = false
 
 	new() {
 	}
 
 	new(Machine machine) {
-		dockerClient = setConfig(machine.name, properties)		
+		dockerClient = setConfig(machine.name, properties)
 	}
 
 	new(String machineName) {
-		dockerClient = setConfig(machineName, properties)		
+		dockerClient = setConfig(machineName, properties)
 	}
-	
+
 	new(Machine machine, EventCallBack event, StatsCallback stats) {
 		dockerClient = setConfig(machine.name, properties)
 
 		// listened to Events
 		dockerClient.eventsCmd().exec(event)
 		this.stats = stats
-		
+
 	}
 
 	def createContainer(Machine machine, Container container) {
@@ -99,17 +98,17 @@ class DockerContainerManager {
 		} else if (!currentMachine.equalsIgnoreCase(machine.name)) {
 			dockerClient = setConfig(machine.name, properties)
 		}
-				
+
 		var Map<DockerClient, CreateContainerResponse> result = new LinkedHashMap<DockerClient, CreateContainerResponse>
 		val create = containerFactory(container, dockerClient)
 
 		// Run Execution
 		val CreateContainerResponse rcontainer = create.exec
-		
+
 		// Set container ID
 		container.containerid = rcontainer.id
-		LOGGER.info("Set the ContainerID : "+ container.containerid)
-		
+		LOGGER.info("Set the ContainerID : " + container.containerid)
+
 		result.put(dockerClient, rcontainer)
 		return result
 	}
@@ -130,9 +129,8 @@ class DockerContainerManager {
 
 		// Set container ID
 		container.containerid = rcontainer.id
-		LOGGER.info("Set the ContainerID : "+ container.containerid)
+		LOGGER.info("Set the ContainerID : " + container.containerid)
 
-		
 		result.put(dockerClient, rcontainer)
 		return result
 	}
@@ -178,18 +176,18 @@ class DockerContainerManager {
 		if (container.environment != null) {
 			create.withEnv(container.environment)
 		}
-		LOGGER.info("Container ports = "+ container.ports)
+		LOGGER.info("Container ports = " + container.ports)
 		if (StringUtils.isNotBlank(container.ports)) {
 			val String[] l_r_ports = container.ports.split(":")
 			var ExposedPort tcp = ExposedPort.tcp(Integer.parseInt(l_r_ports.get(0)))
 			val Ports portBindings = new Ports
 			// Exposed port l_r_ports.get(0)
 			// Binding port l_r_ports.get(1)
-			if(l_r_ports.size == 2 ){
-				if(StringUtils.isNotBlank(l_r_ports.get(1))){
+			if (l_r_ports.size == 2) {
+				if (StringUtils.isNotBlank(l_r_ports.get(1))) {
 					portBindings.bind(tcp, Ports.Binding(Integer.parseInt(l_r_ports.get(1))))
-				}else{
-					portBindings.bind(tcp, Ports.Binding(32768)) //TODO Create dynamique port number
+				} else {
+					portBindings.bind(tcp, Ports.Binding(32768)) // TODO Create dynamique port number
 				}
 			}
 			create.withPortBindings(portBindings)
@@ -226,7 +224,7 @@ class DockerContainerManager {
 		}
 		if (container.lxc_conf != null) {
 
-			//TODO lxc_conf should be String array..
+			// TODO lxc_conf should be String array..
 			val LxcConf lxcCon = new LxcConf("key", "value")
 			create.withLxcConf(lxcCon)
 		}
@@ -234,18 +232,18 @@ class DockerContainerManager {
 			create.withCpusetCpus(String.valueOf(container.cores))
 		}
 
-		//		if (container.links.size > 0) {
+		// if (container.links.size > 0) {
 		//
-		//			//TODO Link container.links.get(0)
-		//			for (Link link : container.links) {
-		//				var linkerContainer = link.target as Container
-		//				val com.github.dockerjava.api.model.Link dockeClientlink = new com.github.dockerjava.api.model.Link(
-		//					linkerContainer.name, container.name + "To" + linkerContainer.name)
-		//				create.withLinks(dockeClientlink)
-		//			}
+		// //TODO Link container.links.get(0)
+		// for (Link link : container.links) {
+		// var linkerContainer = link.target as Container
+		// val com.github.dockerjava.api.model.Link dockeClientlink = new com.github.dockerjava.api.model.Link(
+		// linkerContainer.name, container.name + "To" + linkerContainer.name)
+		// create.withLinks(dockeClientlink)
+		// }
 		//
-		//		//			container.links.forEach[elt|elt.source as Container]
-		//		}
+		// //			container.links.forEach[elt|elt.source as Container]
+		// }
 		// Verify that image is presnet on the machine
 		return create
 	}
@@ -262,7 +260,7 @@ class DockerContainerManager {
 			val String[] cmd = StringUtils.deleteWhitespace(container.command).split(",")
 			create.withCmd(cmd)
 		} else if (container.command == null) {
-			create.withCmd("sleep", "9999")
+			//create.withCmd("sleep", "9999")
 		}
 		if (container.cpu_shares > 0) {
 			create.withCpuShares(container.cpu_shares)
@@ -326,7 +324,7 @@ class DockerContainerManager {
 		}
 		if (container.lxc_conf != null) {
 
-			//TODO lxc_conf should be String array..
+			// TODO lxc_conf should be String array..
 			val LxcConf lxcCon = new LxcConf("key", "value")
 			create.withLxcConf(lxcCon)
 		}
@@ -384,10 +382,10 @@ class DockerContainerManager {
 			dockerClient = setConfig(machine.name, properties)
 		}
 
-		//Start the container
+		// Start the container
 		dockerClient.startContainerCmd(container.containerid).exec
 
-		// listened to Events
+	// listened to Events
 //		dockerClient.statsCmd(container.containerid).exec(this.stats)
 	}
 
@@ -396,15 +394,14 @@ class DockerContainerManager {
 		// Set dockerClient
 		if (dockerClient == null) {
 			dockerClient = setConfig(machine.name, properties)
-		}else if (!currentMachine.equalsIgnoreCase(machine.name)) {
+		} else if (!currentMachine.equalsIgnoreCase(machine.name)) {
 			dockerClient = setConfig(machine.name, properties)
 		}
-		//Start the container
+		// Start the container
 		dockerClient.startContainerCmd(containerId).exec
 
-		// listened to the stats Events
+	// listened to the stats Events
 //		dockerClient.statsCmd(containerId).exec(this.stats)
-		
 	}
 
 	def stopContainer(Machine machine, Container container) {
@@ -427,7 +424,7 @@ class DockerContainerManager {
 		} else if (!currentMachine.equalsIgnoreCase(machine.name)) {
 			dockerClient = setConfig(machine.name, properties)
 		}
-		//Stop the container 
+		// Stop the container 
 		dockerClient.stopContainerCmd(containerId).exec
 	}
 
@@ -469,21 +466,46 @@ class DockerContainerManager {
 			LOGGER.info("Use default image: " + containerImage)
 		}
 		var String output = null
-		if (!machineContainsImage(machine.name, containerImage)) {
-			LOGGER.info("Downloading image: ->" + containerImage)
-			addImageToMachine(machine.name, containerImage)
-
-			// Download a pre-built image
-			try {
-				dockerClient.pullImageCmd(containerImage).withTag("latest").exec(new PullImageResultCallback()).awaitSuccess()
-				//output = DockerUtil.asString(resp)
-			} catch (Exception e) {
-				LOGGER.error(e.message)
-			}
-			LOGGER.info(output)
-			LOGGER.info("Download is finished")
+		LOGGER.info("Downloading image: ->" + containerImage)
+		// Download a pre-built image
+		try {
+			dockerClient.pullImageCmd(containerImage).withTag("latest").exec(new PullImageResultCallback()).
+				awaitSuccess()
+		// output = DockerUtil.asString(resp)
+		} catch (Exception e) {
+			LOGGER.error(e.message)
 		}
+		LOGGER.info(output)
+		LOGGER.info("Download is finished")
+		/*
+		 * 
+		 * if (!machineContainsImage(machine.name, containerImage)) {
+		 * 	LOGGER.info("Downloading image: ->" + containerImage)
+		 * 	addImageToMachine(machine.name, containerImage)
 
+		 * 	// Download a pre-built image
+		 * 	try {
+		 * 		dockerClient.pullImageCmd(containerImage).withTag("latest").exec(new PullImageResultCallback()).awaitSuccess()
+		 * 		//output = DockerUtil.asString(resp)
+		 * 	} catch (Exception e) {
+		 * 		LOGGER.error(e.message)
+		 * 	}
+		 * 	LOGGER.info(output)
+		 * 	LOGGER.info("Download is finished")
+		 * }else{
+		 * 	LOGGER.info("Downloading image: ->" + containerImage)
+		 * 	// Download a pre-built image
+		 * 	try {
+		 * 		dockerClient.pullImageCmd(containerImage).withTag("latest").exec(new PullImageResultCallback()).awaitSuccess()
+		 * 		//output = DockerUtil.asString(resp)
+		 * 	} catch (Exception e) {
+		 * 		LOGGER.error(e.message)
+		 * 	}
+		 * 	LOGGER.info(output)
+		 * 	LOGGER.info("Download is finished")
+		 * 	
+		 * }
+		 */
 		return dockerClient
 
 	}
@@ -519,31 +541,32 @@ class DockerContainerManager {
 		// Set Docker host port
 		port = ":2376"
 		/*
-		if (DockerUtil.getOS.equals("osx") || DockerUtil.getOS.equals("win")) {
-			port = ":2376"
-		} else if (DockerUtil.getOS.equals("uni")) {
-			port = ":2375"
-		}
-		*/
+		 * if (DockerUtil.getOS.equals("osx") || DockerUtil.getOS.equals("win")) {
+		 * 	port = ":2376"
+		 * } else if (DockerUtil.getOS.equals("uni")) {
+		 * 	port = ":2375"
+		 * }
+		 */
 		val url = new URL(ENDPOINT)
 		val URI uri = new URI(url.getProtocol(), url.getHost(), url.getPath(), url.getQuery(), null)
 		val dockerUri = uri.toString + port
 		LOGGER.info("Connection inside machine: " + machine + " with uri: " + dockerUri.toString)
 		try {
 			if (properties.version != null) {
-			config = DockerClientConfig.createDefaultConfigBuilder.withVersion(properties.version.trim).withUri(dockerUri).withUsername(properties.username.trim).withPassword(properties.password.trim).withEmail(properties.email.trim).withServerAddress(properties.url.trim).
-			withDockerCertPath(certPath).build()
-			
-		}
+				config = DockerClientConfig.createDefaultConfigBuilder.withVersion(properties.version.trim).withUri(
+					dockerUri).withUsername(properties.username.trim).withPassword(properties.password.trim).withEmail(
+					properties.email.trim).withServerAddress(properties.url.trim).withDockerCertPath(certPath).build()
+
+			}
 		} catch (Exception exception) {
 			LOGGER.error("Loading docker-java properties files ...")
-				config = DockerClientConfig.createDefaultConfigBuilder.withVersion(
+			config = DockerClientConfig.createDefaultConfigBuilder.withVersion(
 				dockerProperties.get("docker.version").toString).withUri(dockerUri).withUsername(
 				dockerProperties.get("docker.username").toString).withPassword(
 				dockerProperties.get("docker.password").toString).withEmail(
 				dockerProperties.get("docker.email").toString).withServerAddress(
 				dockerProperties.get("docker.url").toString).withDockerCertPath(certPath).build()
-		}		
+		}
 		val DockerClient dockerClient = DockerClientBuilder.getInstance(config).build()
 
 		// Set the current machine
