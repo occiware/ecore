@@ -10,7 +10,7 @@
     <attributes name="occi.core.title" value="DemoSLA1"/>
     <attributes name="occi.core.summary"/>
     <attributes name="occi.agreement.state" value="pending"/>
-    <attributes name="occi.agreement.agreedAt"/>
+    <attributes name="occi.agreement.agreedAt" value=""/>
     <attributes name="occi.agreement.effectiveFrom" value="2015-02-05T02:05:17+00:00"/>
     <attributes name="occi.agreement.effectiveUntil" value="2015-02-05T02:05:17+00:00"/>
     <attributes name="availability.term.type" value="SLO"/>

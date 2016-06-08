@@ -9,9 +9,9 @@
     <attributes name="occi.core.title" value="DemoSLA1"/>
     <attributes name="occi.core.summary"/>
     <attributes name="occi.agreement.state" value="pending"/>
-    <attributes name="occi.agreement.agreedAt"/>
-    <attributes name="occi.agreement.effectiveFrom"/>
-    <attributes name="occi.agreement.effectiveUntil"/>
+    <attributes name="occi.agreement.agreedAt" value=""/>
+    <attributes name="occi.agreement.effectiveFrom" value=""/>
+    <attributes name="occi.agreement.effectiveUntil" value=""/>
     <attributes name="someprovider.occi.incountries" value="EMEA"/>
   </resources>
 </occi:Configuration>
