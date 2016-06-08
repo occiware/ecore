@@ -96,7 +96,7 @@ class ExecutableDockerFactory extends DockerFactoryImpl {
 
 	// Initialize logger for ExecutableDockerFactory.
 	private static Logger LOGGER = LoggerFactory.getLogger(typeof(ExecutableDockerFactory))
-	
+
 	/**
 	 * Initialize the ExecutableDockerFactory singleton.
 	 */
@@ -584,7 +584,7 @@ class EventCallBack extends EventsResultCallback {
 									modifyResourceSet(contains.target, event.getStatus(), event.id)
 									LOGGER.info("Apply destroy notification to model")
 								}
-								
+
 							} else {
 								if (event.getStatus().equalsIgnoreCase("create") &&
 									!containerIsInsideMachine(machine, event.id)) {
@@ -840,14 +840,17 @@ class ExecutableContainer extends ContainerImpl {
 			if (eo instanceof Machine) {
 				val machine = eo as Machine
 				for (Link l : machine.links) {
-					val contains = l as Contains
-					if (contains.target instanceof org.occiware.clouddesigner.occi.docker.Container) {
-						if ((l.target as ExecutableContainer).id == this.id) {
+					if (l instanceof Contains) {
+						val contains = l as Contains
+						if (contains.target instanceof org.occiware.clouddesigner.occi.docker.Container) {
+							if ((l.target as ExecutableContainer).id == this.id) {
 
-							// Update the cache
-							listCurrentMachine.put(this.id, machine)
-							return machine
+								// Update the cache
+								listCurrentMachine.put(this.id, machine)
+								return machine
+							}
 						}
+
 					}
 
 				}
@@ -886,7 +889,6 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 	protected DockerContainerManager dockerContainerManager = new DockerContainerManager
 	// Get docker-machine command
 	private var String dockerMachineCmd = DockerUtil.dockerMachineCmd
-	
 
 	/**
 	 * Construct a Docker machine manager for a given Docker machine.
@@ -920,9 +922,9 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 		// Check requirements parameters
 		checkNotNull(compute.name, "Machine name is null")
 		checkNotNull(driverName, "Driver name is null")
-		
+
 		// build docker-machine command
-		var String dockerMachineCMD = String.format("%s -D create --driver ", this.dockerMachineCmd) 
+		var String dockerMachineCMD = String.format("%s -D create --driver ", this.dockerMachineCmd)
 
 		// Create the machine command
 		command.append(dockerMachineCMD).append(getDriverName)
@@ -1252,7 +1254,8 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 		var boolean link = false
 		for (org.occiware.clouddesigner.occi.docker.Container c : containers) {
 			if (c != null) {
-				if (c.links.size > 0) {
+				if (c.links.size >
+					0) {
 					link = true
 					return link
 				}
@@ -1272,7 +1275,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 				val container = contains.target as org.occiware.clouddesigner.occi.docker.Container
 				for (Link cl : container.links) {
 					if (cl.target instanceof org.occiware.clouddesigner.occi.docker.Container) {
-						graph.addDependency(container,(cl.target as org.occiware.clouddesigner.occi.docker.Container))
+						graph.addDependency(container, (cl.target as org.occiware.clouddesigner.occi.docker.Container))
 						this.containerDependency.put(container.name,
 							(cl.target as org.occiware.clouddesigner.occi.docker.Container).name)
 					}
