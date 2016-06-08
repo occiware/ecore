@@ -1,0 +1,200 @@
+h1. 
+
+| *Name* | Runtime |
+| *Scheme* | http://occiware.org/occi/runtime# |
+
+Imported OCCI Extensions:
+| *Name* | *Scheme* |
+| <a href="core.textile">core</a> | http://schemas.ogf.org/occi/core# |
+
+h1. Kinds
+
+h2. Kind Runtime
+
+| *Term* | Runtime |
+| *Scheme* | http://occiware.org/occi/runtime# |
+| *Title* |  |
+| *Parent* | <a href="core.textile#kind-resource">http://schemas.ogf.org/occi/core#resource</a> |
+
+Attributes of Runtime are:
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| name | <a href="core.textile#datatype-string">String</a> | true | true |  |  |
+| version | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| occi_version | <a href="core.textile#datatype-string">String</a> | true | true |  |  |
+| location | URI | false | true |  |  |
+
+
+h2. Kind Backend
+
+| *Term* | Backend |
+| *Scheme* | http://occiware.org/occi/runtime# |
+| *Title* |  |
+| *Parent* | <a href="core.textile#kind-resource">http://schemas.ogf.org/occi/core#resource</a> |
+
+Attributes of Backend are:
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| name | <a href="core.textile#datatype-string">String</a> | true | true |  |  |
+| version | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| location | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+
+
+h2. Kind ModelChecker
+
+| *Term* | ModelChecker |
+| *Scheme* | http://occiware.org/occi/runtime# |
+| *Title* |  |
+| *Parent* | <a href="core.textile#kind-resource">http://schemas.ogf.org/occi/core#resource</a> |
+
+Attributes of ModelChecker are:
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| name | <a href="core.textile#datatype-string">String</a> | true | true |  |  |
+| version | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| location | URI | false | true |  |  |
+
+
+h2. Kind ConstraintsSet
+
+| *Term* | ConstraintsSet |
+| *Scheme* | http://occiware.org/occi/runtime# |
+| *Title* |  |
+| *Parent* | <a href="core.textile#kind-resource">http://schemas.ogf.org/occi/core#resource</a> |
+
+Attributes of ConstraintsSet are:
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| ocl | <a href="core.textile#datatype-string">String</a> | true | true |  |  |
+
+
+h2. Kind AccessControl
+
+| *Term* | AccessControl |
+| *Scheme* | http://occiware.org/occi/runtime# |
+| *Title* |  |
+| *Parent* | <a href="core.textile#kind-link">http://schemas.ogf.org/occi/core#link</a> |
+
+Attributes of AccessControl are:
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| priority | <a href="core.textile#datatype-number">Number</a> | true | true | 0 |  |
+| policy | <a href="Runtime.textile#enum-aclpolicy">ACLPolicy</a> | true | true | allow |  |
+| action | <a href="Runtime.textile#enum-aclaction">ACLAction</a> | false | true | create |  |
+| owner | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+
+
+h2. Kind ConstraintsSetLink
+
+| *Term* | ConstraintsSetLink |
+| *Scheme* | http://occiware.org/occi/runtime# |
+| *Title* |  |
+| *Parent* | <a href="core.textile#kind-link">http://schemas.ogf.org/occi/core#link</a> |
+
+h2. Kind Categories
+
+| *Term* | Categories |
+| *Scheme* | http://occiware.org/occi/runtime# |
+| *Title* |  |
+| *Parent* | <a href="core.textile#kind-link">http://schemas.ogf.org/occi/core#link</a> |
+
+h2. Kind Mountpoint
+
+| *Term* | Mountpoint |
+| *Scheme* | http://occiware.org/occi/runtime# |
+| *Title* |  |
+| *Parent* | <a href="core.textile#kind-link">http://schemas.ogf.org/occi/core#link</a> |
+
+Attributes of Mountpoint are:
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| path | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+
+
+
+h1. Mixins
+
+h2. Mixin HTTPBackend
+
+| *Term* | HTTPBackend |
+| *Scheme* | http://occiware.org/occi/runtime# |
+| *Title* |  |
+
+Attributes of HTTPBackend are:
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| protocol | <a href="Runtime.textile#enum-httpbackendtype">HTTPBackendType</a> | false | true | http |  |
+| server | <a href="core.textile#datatype-string">String</a> | false | true | localhost |  |
+| port | <a href="core.textile#datatype-number">Number</a> | true | true | 0 |  |
+
+
+h2. Mixin DbusBackend
+
+| *Term* | DbusBackend |
+| *Scheme* | http://occiware.org/occi/runtime# |
+| *Title* |  |
+
+Attributes of DbusBackend are:
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| service | <a href="core.textile#datatype-string">String</a> | true | true |  |  |
+
+
+h2. Mixin CustomBackend
+
+| *Term* | CustomBackend |
+| *Scheme* | http://occiware.org/occi/runtime# |
+| *Title* |  |
+
+Attributes of CustomBackend are:
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| apidoc | URI | true | true |  |  |
+
+
+h2. Mixin DBusModelChecker
+
+| *Term* | DBusModelChecker |
+| *Scheme* | http://occiware.org/occi/runtime# |
+| *Title* |  |
+
+h2. Mixin AutoIDCapability
+
+| *Term* | AutoIDCapability |
+| *Scheme* | http://occiware.org/occi/runtime# |
+| *Title* |  |
+
+h2. Mixin FilteringCapability
+
+| *Term* | FilteringCapability |
+| *Scheme* | http://occiware.org/occi/runtime# |
+| *Title* |  |
+
+h2. Mixin PaginationCapability
+
+| *Term* | PaginationCapability |
+| *Scheme* | http://occiware.org/occi/runtime# |
+| *Title* |  |
+
+h2. Mixin ActionCapability
+
+| *Term* | ActionCapability |
+| *Scheme* | http://occiware.org/occi/runtime# |
+| *Title* |  |
+
+
+h1. Types
+
+h2. Enum ACLAction
+
+:
+* create  
+* read  
+* update  
+* delete  
+
+h2. Enum ACLPolicy
+
+:
+* allow  
+* deny  
+
+h2. Enum HTTPBackendType
+
+:
+* http  
+* https  
+* http2  
+
+Generated at Tue Jun 07 23:33:32 CEST 2016 from platform:/resource/org.occiware.clouddesigner.occi.runtime/model/runtime.occie by org.occiware.clouddesigner.occi.gen.doc

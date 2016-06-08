@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated at Tue Jun 07 23:33:26 CEST 2016 from platform:/resource/org.occiware.clouddesigner.occi.runtime/model/runtime.occie by org.occiware.clouddesigner.occi.gen.xml -->
+<occi:extension xmlns:occi="http://schemas.ogf.org/occi"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://schemas.ogf.org/occi occi.xsd"
+    name="Runtime"
+    scheme="http://occiware.org/occi/runtime#"
+    version="1"
+    status="stable">
+
+  <!-- Kind:  -->
+  <occi:kind term="Runtime" scheme="http://occiware.org/occi/runtime#" title="">
+    <occi:parent term="resource" scheme="http://schemas.ogf.org/occi/core#"/>
+    <occi:attribute name="name" use="required" type="xs:string" title=""/>
+    <occi:attribute name="version" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="occi_version" use="required" type="xs:string" title=""/>
+    <occi:attribute name="location" use="optional" type="xs:string" title=""/>
+  </occi:kind>
+
+  <!-- Kind:  -->
+  <occi:kind term="Backend" scheme="http://occiware.org/occi/runtime#" title="">
+    <occi:parent term="resource" scheme="http://schemas.ogf.org/occi/core#"/>
+    <occi:attribute name="name" use="required" type="xs:string" title=""/>
+    <occi:attribute name="version" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="location" use="optional" type="xs:string" title=""/>
+  </occi:kind>
+
+  <!-- Kind:  -->
+  <occi:kind term="ModelChecker" scheme="http://occiware.org/occi/runtime#" title="">
+    <occi:parent term="resource" scheme="http://schemas.ogf.org/occi/core#"/>
+    <occi:attribute name="name" use="required" type="xs:string" title=""/>
+    <occi:attribute name="version" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="location" use="optional" type="xs:string" title=""/>
+  </occi:kind>
+
+  <!-- Kind:  -->
+  <occi:kind term="ConstraintsSet" scheme="http://occiware.org/occi/runtime#" title="">
+    <occi:parent term="resource" scheme="http://schemas.ogf.org/occi/core#"/>
+    <occi:attribute name="ocl" use="required" type="xs:string" title=""/>
+  </occi:kind>
+
+  <!-- Kind:  -->
+  <occi:kind term="AccessControl" scheme="http://occiware.org/occi/runtime#" title="">
+    <occi:parent term="link" scheme="http://schemas.ogf.org/occi/core#"/>
+    <occi:attribute name="priority" use="required" default="0" type="xs:integer" title=""/>
+    <occi:attribute name="policy" use="required" default="allow" type="xs:string" title=""/>
+    <occi:attribute name="action" use="optional" default="create" type="xs:string" title=""/>
+    <occi:attribute name="owner" use="optional" type="xs:string" title=""/>
+  </occi:kind>
+
+  <!-- Kind:  -->
+  <occi:kind term="ConstraintsSetLink" scheme="http://occiware.org/occi/runtime#" title="">
+    <occi:parent term="link" scheme="http://schemas.ogf.org/occi/core#"/>
+  </occi:kind>
+
+  <!-- Kind:  -->
+  <occi:kind term="Categories" scheme="http://occiware.org/occi/runtime#" title="">
+    <occi:parent term="link" scheme="http://schemas.ogf.org/occi/core#"/>
+  </occi:kind>
+
+  <!-- Kind:  -->
+  <occi:kind term="Mountpoint" scheme="http://occiware.org/occi/runtime#" title="">
+    <occi:parent term="link" scheme="http://schemas.ogf.org/occi/core#"/>
+    <occi:attribute name="path" use="optional" type="xs:string" title=""/>
+  </occi:kind>
+
+  <!-- Mixin:  -->
+  <occi:mixin term="HTTPBackend" scheme="http://occiware.org/occi/runtime#" title="">
+    <occi:attribute name="protocol" use="optional" default="http" type="xs:string" title=""/>
+    <occi:attribute name="server" use="optional" default="localhost" type="xs:string" title=""/>
+    <occi:attribute name="port" use="required" default="0" type="xs:integer" title=""/>
+  </occi:mixin>
+
+  <!-- Mixin:  -->
+  <occi:mixin term="DbusBackend" scheme="http://occiware.org/occi/runtime#" title="">
+    <occi:attribute name="service" use="required" type="xs:string" title=""/>
+  </occi:mixin>
+
+  <!-- Mixin:  -->
+  <occi:mixin term="CustomBackend" scheme="http://occiware.org/occi/runtime#" title="">
+    <occi:attribute name="apidoc" use="required" type="xs:string" title=""/>
+  </occi:mixin>
+
+  <!-- Mixin:  -->
+  <occi:mixin term="DBusModelChecker" scheme="http://occiware.org/occi/runtime#" title="">
+  </occi:mixin>
+
+  <!-- Mixin:  -->
+  <occi:mixin term="AutoIDCapability" scheme="http://occiware.org/occi/runtime#" title="">
+  </occi:mixin>
+
+  <!-- Mixin:  -->
+  <occi:mixin term="FilteringCapability" scheme="http://occiware.org/occi/runtime#" title="">
+  </occi:mixin>
+
+  <!-- Mixin:  -->
+  <occi:mixin term="PaginationCapability" scheme="http://occiware.org/occi/runtime#" title="">
+  </occi:mixin>
+
+  <!-- Mixin:  -->
+  <occi:mixin term="ActionCapability" scheme="http://occiware.org/occi/runtime#" title="">
+  </occi:mixin>
+
+</occi:extension>
