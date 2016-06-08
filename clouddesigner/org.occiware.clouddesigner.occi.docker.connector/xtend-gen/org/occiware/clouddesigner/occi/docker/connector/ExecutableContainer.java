@@ -232,11 +232,11 @@ public class ExecutableContainer extends ContainerImpl {
         final Machine machine = ((Machine) eo);
         EList<org.occiware.clouddesigner.occi.Link> _links = machine.getLinks();
         for (final org.occiware.clouddesigner.occi.Link l : _links) {
-          {
+          if ((l instanceof Contains)) {
             final Contains contains = ((Contains) l);
             Resource _target = contains.getTarget();
             if ((_target instanceof org.occiware.clouddesigner.occi.docker.Container)) {
-              Resource _target_1 = l.getTarget();
+              Resource _target_1 = ((Contains)l).getTarget();
               boolean _equals = Objects.equal(((ExecutableContainer) _target_1).id, this.id);
               if (_equals) {
                 ExecutableContainer.listCurrentMachine.put(this.id, machine);
