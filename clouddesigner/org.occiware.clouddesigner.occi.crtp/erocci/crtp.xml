@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated at Thu Jun 09 15:52:07 CEST 2016 from platform:/resource/org.occiware.clouddesigner.occi.crtp/model/crtp.occie by org.occiware.clouddesigner.occi.gen.xml -->
+<occi:extension xmlns:occi="http://schemas.ogf.org/occi"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://schemas.ogf.org/occi occi.xsd"
+    name="crtp"
+    scheme="http://schemas.ogf.org/occi/infrastructure/compute/template/1.1#"
+    version="1"
+    status="stable">
+
+  <!-- Mixin: A small Compute instance -->
+  <occi:mixin term="small" scheme="http://schemas.ogf.org/occi/infrastructure/compute/template/1.1#" title="A small Compute instance">
+    <occi:depends term="resource_tpl" scheme="http://schemas.ogf.org/occi/infrastructure#"/>
+    <occi:applies term="compute" scheme="http://schemas.ogf.org/occi/infrastructure#"/>
+    <occi:attribute name="occi.compute.cores" use="optional" default="1" type="" title="Number of CPU cores assigned to the instance"/>
+    <occi:attribute name="occi.compute.memory" use="optional" default="1.0" type="" title="Maximum RAM in gigabytes allocated to the instance"/>
+    <occi:attribute name="occi.compute.ephemeral_storage.size" immutable="true" use="required" default="10.0" type="xs:float" title="Ephemeral storage provisioned for the associated Compute instance"/>
+  </occi:mixin>
+
+  <!-- Mixin: A medium Compute instance -->
+  <occi:mixin term="medium" scheme="http://schemas.ogf.org/occi/infrastructure/compute/template/1.1#" title="A medium Compute instance">
+    <occi:depends term="resource_tpl" scheme="http://schemas.ogf.org/occi/infrastructure#"/>
+    <occi:applies term="compute" scheme="http://schemas.ogf.org/occi/infrastructure#"/>
+    <occi:attribute name="occi.compute.cores" use="optional" default="2" type="" title="Number of CPU cores assigned to the instance"/>
+    <occi:attribute name="occi.compute.memory" use="optional" default="2.0" type="" title="Maximum RAM in gigabytes allocated to the instance"/>
+    <occi:attribute name="occi.compute.ephemeral_storage.size" immutable="true" use="required" default="20.0" type="xs:float" title="Ephemeral storage provisioned for the associated Compute instance"/>
+  </occi:mixin>
+
+  <!-- Mixin: A large Compute instance -->
+  <occi:mixin term="large" scheme="http://schemas.ogf.org/occi/infrastructure/compute/template/1.1#" title="A large Compute instance">
+    <occi:depends term="resource_tpl" scheme="http://schemas.ogf.org/occi/infrastructure#"/>
+    <occi:applies term="compute" scheme="http://schemas.ogf.org/occi/infrastructure#"/>
+    <occi:attribute name="occi.compute.cores" use="optional" default="4" type="" title="Number of CPU cores assigned to the instance"/>
+    <occi:attribute name="occi.compute.memory" use="optional" default="4.0" type="" title="Maximum RAM in gigabytes allocated to the instance"/>
+    <occi:attribute name="occi.compute.ephemeral_storage.size" immutable="true" use="required" default="40.0" type="xs:float" title="Ephemeral storage provisioned for the associated Compute instance"/>
+  </occi:mixin>
+
+  <!-- Mixin: A small Compute instance for memory-intensive applications -->
+  <occi:mixin term="mem_small" scheme="http://schemas.ogf.org/occi/infrastructure/compute/template/1.1#" title="A small Compute instance for memory-intensive applications">
+    <occi:depends term="resource_tpl" scheme="http://schemas.ogf.org/occi/infrastructure#"/>
+    <occi:applies term="compute" scheme="http://schemas.ogf.org/occi/infrastructure#"/>
+    <occi:attribute name="occi.compute.cores" use="optional" default="1" type="" title="Number of CPU cores assigned to the instance"/>
+    <occi:attribute name="occi.compute.memory" use="optional" default="4.0" type="" title="Maximum RAM in gigabytes allocated to the instance"/>
+    <occi:attribute name="occi.compute.ephemeral_storage.size" immutable="true" use="required" default="10.0" type="xs:float" title="Ephemeral storage provisioned for the associated Compute instance"/>
+  </occi:mixin>
+
+  <!-- Mixin: A medium Compute instance for memory-intensive applications -->
+  <occi:mixin term="mem_medium" scheme="http://schemas.ogf.org/occi/infrastructure/compute/template/1.1#" title="A medium Compute instance for memory-intensive applications">
+    <occi:depends term="resource_tpl" scheme="http://schemas.ogf.org/occi/infrastructure#"/>
+    <occi:applies term="compute" scheme="http://schemas.ogf.org/occi/infrastructure#"/>
+    <occi:attribute name="occi.compute.cores" use="optional" default="2" type="" title="Number of CPU cores assigned to the instance"/>
+    <occi:attribute name="occi.compute.memory" use="optional" default="8.0" type="" title="Maximum RAM in gigabytes allocated to the instance"/>
+    <occi:attribute name="occi.compute.ephemeral_storage.size" immutable="true" use="required" default="20.0" type="xs:float" title="Ephemeral storage provisioned for the associated Compute instance"/>
+  </occi:mixin>
+
+  <!-- Mixin: A large Compute instance for memory-intensive applications -->
+  <occi:mixin term="mem_large" scheme="http://schemas.ogf.org/occi/infrastructure/compute/template/1.1#" title="A large Compute instance for memory-intensive applications">
+    <occi:depends term="resource_tpl" scheme="http://schemas.ogf.org/occi/infrastructure#"/>
+    <occi:applies term="compute" scheme="http://schemas.ogf.org/occi/infrastructure#"/>
+    <occi:attribute name="occi.compute.cores" use="optional" default="4" type="" title="Number of CPU cores assigned to the instance"/>
+    <occi:attribute name="occi.compute.memory" use="optional" default="16.0" type="" title="Maximum RAM in gigabytes allocated to the instance"/>
+    <occi:attribute name="occi.compute.ephemeral_storage.size" immutable="true" use="required" default="40.0" type="xs:float" title="Ephemeral storage provisioned for the associated Compute instance"/>
+  </occi:mixin>
+
+</occi:extension>
