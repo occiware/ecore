@@ -13,10 +13,13 @@ The full Textile documentation of this OCCI extension is available [here](docume
 Following figures are the modeling of examples given in the [OCCI SLA 1.2 specification](https://redmine.ogf.org/attachments/224/slas.pdf).
 
 ![Figure 3](documentation/images/Figure 3.jpg "Figure 3")
+Figure 3.
 
 ![Figure 5](documentation/images/Figure 5.jpg "Figure 4")
+Figure 5.
 
-![Figure 6](documentation/images/Figure 6.jpg "Figure 3")
+![Figure 6](documentation/images/Figure 6.jpg "Figure 6")
+Figure 6.
 
 ![AgreementTemplate mixins diagram](documentation/images/AgreementTemplate Mixins diagram.jpg "AgreementTemplate mixins diagram")
 
