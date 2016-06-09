@@ -3,8 +3,9 @@
   <use href="http://schemas.ogf.org/occi/sla#/"/>
   <use href="templates.occie#/"/>
   <use href="terms.occie#/"/>
+  <use href="http://schemas.ogf.org/occi/infrastructure#/"/>
   <resources id="585342d4-8139-4e97-b107-6eadbc2144ce" title="DemoSLA1" summary="Figure 6 of the OCCI SLA specification">
-    <kind href="../model/ServiceLevelAgreements.occie#//@kinds[term='agreement']"/>
+    <kind href="http://schemas.ogf.org/occi/sla#//@kinds[term='agreement']"/>
     <mixins href="templates.occie#//@mixins[term='silver']"/>
     <mixins href="terms.occie#//@mixins[term='availability']"/>
     <mixins href="terms.occie#//@mixins[term='compute_service']"/>
@@ -17,7 +18,7 @@
     <attributes name="occi.agreement.agreedAt" value="2015-02-05T02:05:17+00:00"/>
     <attributes name="occi.agreement.effectiveFrom" value="2015-02-05T02:05:17+00:00"/>
     <attributes name="occi.agreement.effectiveUntil" value="2015-02-05T02:05:17+00:00"/>
-    <attributes name="com.someprovider.incountries" value="EMEA"/>  
+    <attributes name="com.someprovider.incountries" value="EMEA"/>
     <attributes name="availability.term.type" value="SLO-TERM"/>
     <attributes name="availability.term.state" value="fulfilled"/>
     <attributes name="availability.term.desc" value="service availability term"/>
@@ -41,5 +42,15 @@
     <attributes name="service_capacity.term.desc" value="service capacity level"/>
     <attributes name="service_capacity.throughput" value="1000Mbps"/>
     <attributes name="service_capacity.term.remedy" value="0.05"/>
+    <links id="c819e7e9-be72-44e7-8529-98790308cf9c" title="Demo1SLALink" target="//@resources.1">
+      <kind href="http://schemas.ogf.org/occi/sla#//@kinds[term='agreement_link']"/>
+      <attributes name="occi.core.id" value="c819e7e9-be72-44e7-8529-98790308cf9c"/>
+      <attributes name="occi.core.title" value="Demo1SLALink"/>
+    </links>
+  </resources>
+  <resources id="17ff4666-64f8-4dcf-9017-d449b8b709fa" title="Compute">
+    <kind href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='compute']"/>
+    <attributes name="occi.core.id" value="17ff4666-64f8-4dcf-9017-d449b8b709fa"/>
+    <attributes name="occi.core.title" value="Compute"/>
   </resources>
 </occi:Configuration>
