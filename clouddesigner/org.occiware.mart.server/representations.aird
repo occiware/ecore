@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description" xmi:id="_aZnYUAwXEeaZdPH8ww1BMg" selectedViews="_agHo8AwXEeaZdPH8ww1BMg" version="10.1.0.201509162000">
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_agHo8AwXEeaZdPH8ww1BMg">
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.occiware.clouddesigner.occi.connector.jocci/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration%20-%20jOCCI%20connector']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>
