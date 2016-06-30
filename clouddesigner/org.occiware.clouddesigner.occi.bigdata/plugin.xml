@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<!--
+ Copyright (c) 2015-2016 Obeo, Inria
+ All rights reserved. This program and the accompanying materials
+ are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+ Contributors:
+ - William Piers <william.piers@obeo.fr>
+ - Philippe Merle <philippe.merle@inria.fr>
+-->
+<plugin>
+
+   <!-- Register the bigdata extension. -->
+   <extension point="org.occiware.clouddesigner.occi.occie">
+      <occie scheme="http://occiware.org/occi/bigdata#" file="model/bigdata.occie"/>
+   </extension>
+
+   <!-- Define URI mapping. -->
+   <extension point="org.eclipse.emf.ecore.uri_mapping">
+      <mapping source="http://occiware.org/occi/bigdata" target="platform:/plugin/org.occiware.clouddesigner.occi.bigdata/model/bigdata.occie"/>
+   </extension>
+
+   <!-- Register the parser for .bigdata files. -->
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <parser type="bigdata" class="org.occiware.clouddesigner.occi.util.OCCIResourceFactoryImpl"/>
+   </extension>
+
+   <!-- Popup menu for converting to an OCCI Configuration file. -->
+   <extension point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            id="org.occiware.clouddesigner.occi.bigdata.contribution"
+            nameFilter="*.bigdata"
+            objectClass="org.eclipse.core.resources.IFile">
+         <menu
+               id="org.occiware.clouddesigner.menu"
+               label="Cloud Designer"
+               path="additionsCloudDesigner">
+            <separator name="group"/>
+         </menu>
+         <action
+               class="org.occiware.clouddesigner.occi.emfgen.ui.popup.actions.Ecore2OCCIAction"
+               enablesFor="1"
+               id="org.occiware.clouddesigner.occi.bigdata.ecore2occi"
+               label="Convert to an OCCI Configuration File"
+               menubarPath="org.occiware.clouddesigner.menu/group">
+         </action>
+      </objectContribution>
+   </extension>
+</plugin>
