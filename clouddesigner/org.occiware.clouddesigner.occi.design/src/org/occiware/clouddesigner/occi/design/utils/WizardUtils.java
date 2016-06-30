@@ -39,6 +39,7 @@ import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 // import org.eclipse.xtext.ui.XtextProjectHelper;
 import org.occiware.clouddesigner.occi.design.Activator;
 import org.occiware.clouddesigner.occi.design.Messages;
+import org.eclipse.ui.IEditorPart;
 
 public final class WizardUtils {
 
@@ -91,7 +92,8 @@ public final class WizardUtils {
 				protected void doExecute() {
 					DRepresentation representation = DialectManager.INSTANCE.createRepresentation(diagramInstanceName, rootObject,
 							representationDescription, session, monitor);
-					DialectUIManager.INSTANCE.openEditor(session, representation, monitor);
+					IEditorPart part = DialectUIManager.INSTANCE.openEditor(session, representation, monitor);
+					part.doSave( monitor ); // #44: sometimes, Sirius editors are marked as dirty on the first opening
 				}
 			};
 			try {
