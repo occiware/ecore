@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="ASCII"?>
-<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="bigdata" scheme="http://occiware.org/occi/bigdata#">
-  <import href="http://schemas.ogf.org/occi/core#/"/>
-</occi:Extension>
