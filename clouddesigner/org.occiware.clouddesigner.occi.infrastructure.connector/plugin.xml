@@ -14,10 +14,10 @@ Contributors:
 -->
 <plugin>
 
-   <!-- Register factory for the Cloud connector. -->
+   <!-- Register factory for the Compute connector. -->
    <extension point="org.eclipse.emf.ecore.factory_override">
       <factory
-            uri="http://occiware.org/occi/infrastructure/ecore"
+            uri="http://schemas.ogf.org/occi/infrastructure/ecore"
             class="org.occiware.clouddesigner.occi.infrastructure.connector.ConnectorFactory"/>
    </extension>
 
