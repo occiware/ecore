@@ -14,7 +14,7 @@ Contributors:
 -->
 <plugin>
 
-   <!-- Register factory for the Compute connector. -->
+   <!-- Register factory for the Infrastructure connector. -->
    <extension point="org.eclipse.emf.ecore.factory_override">
       <factory
             uri="http://schemas.ogf.org/occi/infrastructure/ecore"

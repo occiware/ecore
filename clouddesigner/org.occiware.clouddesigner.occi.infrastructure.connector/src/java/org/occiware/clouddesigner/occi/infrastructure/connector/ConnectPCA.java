@@ -29,28 +29,32 @@ public class ConnectPCA {
 
     /**
      * Send a request to pca service with a header containing the session id and sending content
-     * @param content is which is send to the cloud automation service
+     * @param input which is send to the cloud automation service
      * @return the information about gathered from cloud automation service
      */
-    public JSONObject postRequest(JSONObject content) {
+    public JSONObject postRequest(JSONObject input) {
 
-        final String url = getProperty("server.endpoint");
+        final String url = getProperty("server.endpoint")+"/compute/";
+        System.out.println("get property ok");
         JSONObject result;
         try {
+
             CloseableHttpClient httpClient = HttpClientBuilder.create().build();
-            HttpPost postRequest = new HttpPost(url+"/compute/");
-            StringEntity input = new StringEntity(content.toJSONString());
-            input.setContentType("application/json");
-            postRequest.setEntity(input);
-
+            HttpPost postRequest = new HttpPost(url);
+            StringEntity entity = new StringEntity(input.toJSONString());
+            entity.setContentType("application/json");
+            postRequest.setEntity(entity);
+            System.out.println("input:"+input);
+            System.out.println("content : "+input.toString());
             HttpResponse response = httpClient.execute(postRequest);
-
+            System.out.println("envoie de requete ok"+response.toString());
             String serverOutput = readHttpResponse(response);
             httpClient.close();
+            System.out.println("lecture reponse ok");
             result = (JSONObject) new JSONParser().parse(serverOutput);
         } catch (Exception ex) {
-            LOGGER.debug("Exception : "+ex.getMessage());
-            return content;
+            System.out.println("exception "+ex.getMessage());
+            return null;
         }
         return result;
     }
@@ -93,8 +97,8 @@ public class ConnectPCA {
      */
     private String readHttpResponse(HttpResponse response) throws IOException {
         StringBuffer serverOutput = new StringBuffer();
-        if (response.getStatusLine().getStatusCode() != 200) {
-
+        System.out.println("response "+response.toString());
+        if (response.getStatusLine().getStatusCode() != 201) {
             throw new RuntimeException("Send Request Failed : HTTP error code : "
                     + response.getStatusLine().getStatusCode());
         }

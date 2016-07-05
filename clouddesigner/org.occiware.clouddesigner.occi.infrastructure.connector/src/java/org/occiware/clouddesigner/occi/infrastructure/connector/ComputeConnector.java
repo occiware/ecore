@@ -13,6 +13,7 @@
  */
 package org.occiware.clouddesigner.occi.infrastructure.connector;
 
+import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -50,15 +51,26 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 	public void occiCreate()
 	{
 		LOGGER.debug("occiCreate() called on " + this);
-        System.out.println("############marche~~~~~~~~~~~~");
+        System.out.println("############abc~~~~~~~~~~~~");
 		// TODO: Implement this callback or remove this method.
-        /*JSONObject json = new JSONObject();
-		json.put("architecture",this.getArchitecture());
-        json.put("cores",this.getCores());
-        json.put("memory",this.getMemory());
-        json.put("title",this.getTitle());
-		JSONObject result = new ConnectPCA().postRequest(json);
-		LOGGER.debug("post result :"+result.toString());*/
+
+		Integer i = new Integer(5);
+		Integer j = new Integer(7);
+		int k = i+j;
+		System.out.println("result"+k);
+        try {
+            System.out.println("create json");
+            JSONObject json = new JSONObject();
+            System.out.println("json created");
+            json.put("architecture", this.getArchitecture().toString().toUpperCase());
+            json.put("cores", this.getCores());
+            json.put("memory",this.getMemory());
+            json.put("title", this.getTitle());
+            System.out.println("creation json ok");
+            JSONObject result = new ConnectPCA().postRequest(json);
+        }catch (Exception e){
+            System.out.println(e.getClass().getName() + " : "+e.getMessage());
+        }
 
 	}
 
