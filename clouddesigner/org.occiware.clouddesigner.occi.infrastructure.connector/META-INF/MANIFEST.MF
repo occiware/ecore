@@ -5,8 +5,14 @@ Bundle-SymbolicName: org.occiware.clouddesigner.occi.infrastructure.connector;si
 Bundle-Version: 0.1.0.qualifier
 Bundle-ClassPath: .,
  lib/org.occiware.clouddesigner.occi.infrastructure.connector.dependencies-0.0.1-SNAPSHOT-jar-with-dependencies.jar,
- lib/json-simple-1.1.1.jar
+ lib/json-simple-1.1.1.jar,
+ lib/httpcore-4.4.5.jar,
+ lib/httpclient-4.5.2.jar
 Export-Package: org.json.simple.JSONObject,
+ org.apache.http.impl.client,
+ org.apache.http.entity,
+ org.apache.http.client,
+ org.apache.http,
  org.occiware.clouddesigner.occi.infrastructure.connector
 Require-Bundle: org.eclipse.xtend.lib,
  org.eclipse.emf.common,
