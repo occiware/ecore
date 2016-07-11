@@ -76,6 +76,9 @@
 		<module>../org.occiware.clouddesigner.occi.hypervisor.connector</module>
 		<module>../org.occiware.clouddesigner.occi.hypervisor.design</module>
 
+		<!-- Docker Connector Dependencies -->
+		<module>../org.occiware.clouddesigner.occi.docker.connector.dependencies</module>
+
 		<!-- Docker -->
 		<module>../org.occiware.clouddesigner.occi.docker</module>
 		<module>../org.occiware.clouddesigner.occi.docker.edit</module>
