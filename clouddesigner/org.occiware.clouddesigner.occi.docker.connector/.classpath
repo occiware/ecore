@@ -6,7 +6,53 @@
 	<classpathentry excluding="resources/" kind="src" path="src"/>
 	<classpathentry kind="src" path="src/resources"/>
 	<classpathentry exported="true" kind="lib" path="lib/jackson-all-1.7.9.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/docker-java-3.0.0-SNAPSHOT-jar-with-dependencies.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/jsch-0.1.52.jar"/>
+	<classpathentry kind="lib" path="lib/aopalliance-repackaged-2.3.0-b05.jar"/>
+	<classpathentry kind="lib" path="lib/bcpkix-jdk15on-1.51.jar"/>
+	<classpathentry kind="lib" path="lib/bcprov-jdk15on-1.51.jar"/>
+	<classpathentry kind="lib" path="lib/commons-codec-1.8.jar"/>
+	<classpathentry kind="lib" path="lib/commons-compress-1.5.jar"/>
+	<classpathentry kind="lib" path="lib/commons-io-2.3.jar"/>
+	<classpathentry kind="lib" path="lib/commons-lang-2.6.jar"/>
+	<classpathentry kind="lib" path="lib/commons-logging-1.1.3.jar"/>
+	<classpathentry kind="lib" path="lib/docker-java-3.0.0.jar" sourcepath="/Users/spirals/.m2/repository/com/github/docker-java/docker-java/3.0.0/docker-java-3.0.0-sources.jar"/>
+	<classpathentry kind="lib" path="lib/guava-18.0.jar"/>
+	<classpathentry kind="lib" path="lib/hk2-api-2.3.0-b05.jar"/>
+	<classpathentry kind="lib" path="lib/hk2-locator-2.3.0-b05.jar"/>
+	<classpathentry kind="lib" path="lib/hk2-utils-2.3.0-b05.jar"/>
+	<classpathentry kind="lib" path="lib/httpclient-4.3.1.jar"/>
+	<classpathentry kind="lib" path="lib/httpcore-4.3.jar"/>
+	<classpathentry kind="lib" path="lib/jackson-annotations-2.6.0.jar"/>
+	<classpathentry kind="lib" path="lib/jackson-core-2.6.4.jar"/>
+	<classpathentry kind="lib" path="lib/jackson-core-asl-1.7.9.jar"/>
+	<classpathentry kind="lib" path="lib/jackson-databind-2.6.4.jar"/>
+	<classpathentry kind="lib" path="lib/jackson-jaxrs-1.7.9.jar"/>
+	<classpathentry kind="lib" path="lib/jackson-jaxrs-base-2.6.4.jar"/>
+	<classpathentry kind="lib" path="lib/jackson-jaxrs-json-provider-2.6.4.jar"/>
+	<classpathentry kind="lib" path="lib/jackson-mapper-asl-1.7.9.jar"/>
+	<classpathentry kind="lib" path="lib/jackson-module-jaxb-annotations-2.6.4.jar"/>
+	<classpathentry kind="lib" path="lib/javassist-3.18.1-GA.jar"/>
+	<classpathentry kind="lib" path="lib/javax.annotation-api-1.2.jar"/>
+	<classpathentry kind="lib" path="lib/javax.inject-2.3.0-b05.jar"/>
+	<classpathentry kind="lib" path="lib/javax.ws.rs-api-2.0.jar"/>
+	<classpathentry kind="lib" path="lib/jcl-over-slf4j-1.7.12.jar"/>
+	<classpathentry kind="lib" path="lib/jersey-apache-connector-2.11.jar"/>
+	<classpathentry kind="lib" path="lib/jersey-client-2.11.jar"/>
+	<classpathentry kind="lib" path="lib/jersey-common-2.11.jar"/>
+	<classpathentry kind="lib" path="lib/jersey-guava-2.11.jar"/>
+	<classpathentry kind="lib" path="lib/netty-buffer-4.1.0.CR3.jar"/>
+	<classpathentry kind="lib" path="lib/netty-codec-4.1.0.CR3.jar"/>
+	<classpathentry kind="lib" path="lib/netty-codec-http-4.1.0.CR3.jar"/>
+	<classpathentry kind="lib" path="lib/netty-codec-socks-4.1.0.CR3.jar"/>
+	<classpathentry kind="lib" path="lib/netty-common-4.1.0.CR3.jar"/>
+	<classpathentry kind="lib" path="lib/netty-handler-4.1.0.CR3.jar"/>
+	<classpathentry kind="lib" path="lib/netty-handler-proxy-4.1.0.CR3.jar"/>
+	<classpathentry kind="lib" path="lib/netty-resolver-4.1.0.CR3.jar"/>
+	<classpathentry kind="lib" path="lib/netty-transport-4.1.0.CR3.jar"/>
+	<classpathentry kind="lib" path="lib/netty-transport-native-epoll-4.1.0.CR3-linux-x86_64.jar"/>
+	<classpathentry kind="lib" path="lib/osgi-resource-locator-1.0.1.jar"/>
+	<classpathentry kind="lib" path="lib/slf4j-api-1.7.5.jar"/>
+	<classpathentry kind="lib" path="lib/unix-socket-factory-2015-01-27T15-02-14.jar"/>
+	<classpathentry kind="lib" path="lib/xz-1.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
