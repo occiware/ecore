@@ -20,7 +20,7 @@
 
    <!-- Define URI mapping. -->
    <extension point="org.eclipse.emf.ecore.uri_mapping">
-      <mapping source="http://occiware.org/occi/bigdata" target="platform:/plugin/org.occiware.clouddesigner.occi.bigdata/model/bigdata.occie"/>
+      <mapping source="http://occiware.org/occi/bigdata" target="platform:/plugin/bigdata/model/bigdata.occie"/>
    </extension>
 
    <!-- Register the parser for .bigdata files. -->
@@ -31,7 +31,7 @@
    <!-- Popup menu for converting to an OCCI Configuration file. -->
    <extension point="org.eclipse.ui.popupMenus">
       <objectContribution
-            id="org.occiware.clouddesigner.occi.bigdata.contribution"
+            id="bigdata.contribution"
             nameFilter="*.bigdata"
             objectClass="org.eclipse.core.resources.IFile">
          <menu
@@ -43,7 +43,7 @@
          <action
                class="org.occiware.clouddesigner.occi.emfgen.ui.popup.actions.Ecore2OCCIAction"
                enablesFor="1"
-               id="org.occiware.clouddesigner.occi.bigdata.ecore2occi"
+               id="bigdata.ecore2occi"
                label="Convert to an OCCI Configuration File"
                menubarPath="org.occiware.clouddesigner.menu/group">
          </action>
