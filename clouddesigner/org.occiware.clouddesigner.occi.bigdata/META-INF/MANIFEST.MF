@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: org.occiware.clouddesigner.occi.bigdata
-Bundle-SymbolicName: org.occiware.clouddesigner.occi.bigdata;singleton:=true
+Bundle-Name: bigdata
+Bundle-SymbolicName: bigdata;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: OCCIware

@@ -1,4 +1,34 @@
 <?xml version="1.0" encoding="ASCII"?>
-<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="bigdata" scheme="http://occiware.org/occi/bigdata#">
+<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="bigdata" scheme="http://occiware.org/occi/bigdata#">
   <import href="http://schemas.ogf.org/occi/core#/"/>
+  <import href="http://schemas.ogf.org/occi/platform#/"/>
+  <kinds term="node" scheme="http://occiware.org/occi/bigdata#">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds term="master" scheme="http://occiware.org/occi/bigdata#" parent="//@kinds[term='node']"/>
+  <kinds term="worker" scheme="http://occiware.org/occi/bigdata#" parent="//@kinds[term='node']"/>
+  <kinds term="job" scheme="http://occiware.org/occi/bigdata#">
+    <attributes name="priority" default="normal" type="//@types.0"/>
+    <parent href="http://schemas.ogf.org/occi/platform#//@kinds[term='application']"/>
+  </kinds>
+  <kinds term="deploy" scheme="http://occiware.org/occi/bigdata#">
+    <attributes name="nodeUsage" mutable="false" required="true">
+      <type href="../../../plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number"/>
+    </attributes>
+    <parent href="http://schemas.ogf.org/occi/platform#//@kinds[term='componentlink']"/>
+  </kinds>
+  <kinds term="cluster" scheme="http://occiware.org/occi/bigdata#">
+    <attributes name="fileSystem" required="true" default="HDFS" type="//@types.1"/>
+    <parent href="http://schemas.ogf.org/occi/platform#//@kinds[term='component']"/>
+  </kinds>
+  <types xsi:type="ecore:EEnum" name="Priority">
+    <eLiterals name="veryHigh"/>
+    <eLiterals name="high" value="1"/>
+    <eLiterals name="normal" value="2"/>
+    <eLiterals name="low" value="3"/>
+    <eLiterals name="veryLow" value="4"/>
+  </types>
+  <types xsi:type="ecore:EEnum" name="FileSystem">
+    <eLiterals name="HDFS"/>
+  </types>
 </occi:Extension>
