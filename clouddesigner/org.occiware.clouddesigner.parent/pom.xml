@@ -32,6 +32,7 @@
 		<!-- OCCI Infrastructure -->
 		<module>../org.occiware.clouddesigner.occi.infrastructure</module>
 		<module>../org.occiware.clouddesigner.occi.infrastructure.connector.dummy</module>
+		<module>../org.occiware.clouddesigner.occi.infrastructure.connector.vmware</module>
 		<module>../org.occiware.clouddesigner.occi.infrastructure.design</module>
 		<module>../org.occiware.clouddesigner.occi.infrastructure.edit</module>
 		<module>../org.occiware.clouddesigner.occi.infrastructure.editor</module>
