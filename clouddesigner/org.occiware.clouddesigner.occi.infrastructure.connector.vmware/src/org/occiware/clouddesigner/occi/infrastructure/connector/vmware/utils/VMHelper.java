@@ -63,11 +63,17 @@ public class VMHelper {
 	 * The virtual machine is currently powered on.
 	 */
 	public static final String POWER_ON = "poweredOn";
+	
+	public static final int POWER_ON_INT = 1;
+	public static final int POWER_OFF_INT = 0;
+	
 	/**
 	 * The virtual machine is currently suspended.
 	 */
 	public static final String SUSPENDED = "suspended";
+	public static final int SUSPENDED_INT = 2;
 
+	
 	public static final String VIRTUAL_MACHINE = "VirtualMachine";
 	
 	/**

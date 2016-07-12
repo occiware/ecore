@@ -54,7 +54,7 @@ public class HostHelper {
 	 * @return
 	 */
 	public static List<HostSystem> findAllHostSystem(final Folder folder) {
-		List<HostSystem> hostSystems = new ArrayList<>();
+		List<HostSystem> hostSystems = new ArrayList<HostSystem>();
 
 		try {
 			HostSystem hostSystem;
@@ -80,7 +80,7 @@ public class HostHelper {
 	 * @return
 	 */
 	public static List<HostSystem> findAllHostSystemOnCluster(final ClusterComputeResource cluster) {
-		List<HostSystem> hostSystems = new ArrayList<>();
+		List<HostSystem> hostSystems = new ArrayList<HostSystem>();
 		HostSystem[] hosts = cluster.getHosts();
 		hostSystems = Arrays.asList(hosts);
 		return hostSystems;

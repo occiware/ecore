@@ -264,7 +264,7 @@ public class NetworkConnector extends org.occiware.clouddesigner.occi.infrastruc
      * @return a list of connected computes.
      */
     public List<ComputeConnector> getComputes() {
-    	List<ComputeConnector> computes = new ArrayList<>();
+    	List<ComputeConnector> computes = new ArrayList<ComputeConnector>();
     	
     	// Configuration config = OCCIHelper
     	

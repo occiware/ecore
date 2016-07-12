@@ -113,7 +113,32 @@ public class StorageConnector extends org.occiware.clouddesigner.occi.infrastruc
 
 		try {
 			loadDatastoreAndDatacenter();
-		} catch (DatacenterNotFoundException | DatastoreNotFoundException ex) {
+		} catch (DatacenterNotFoundException ex) {
+			// Allocate the datacenter and datastore when necessary.
+			if (datastore == null) {
+				datastore = allocator.allocateDatastore();
+				if (datastore != null) {
+					this.setDatastoreName(datastore.getName());
+				}
+			}
+
+			if (datastore != null && datacenter == null && vmName == null) {
+				datacenter = DatacenterHelper.findDatacenterFromDatastore(rootFolder, datastore.getName());
+				this.setDatacenterName(datacenter.getName());
+				this.setDatastoreName(datastore.getName());
+			}
+
+			if (datastore == null) {
+				LOGGER.error("Cant locate a datastore for this storage disk.");
+				VCenterClient.disconnect();
+				return;
+			}
+			if (datacenter == null) {
+				LOGGER.error("Cant locate a datacenter for this storage disk.");
+				VCenterClient.disconnect();
+				return;
+			}
+		} catch (DatastoreNotFoundException ex) {
 			// Allocate the datacenter and datastore when necessary.
 			if (datastore == null) {
 				datastore = allocator.allocateDatastore();
@@ -186,21 +211,37 @@ public class StorageConnector extends org.occiware.clouddesigner.occi.infrastruc
 		}
 		try {
 			loadDatastoreAndDatacenter();
-		} catch (DatacenterNotFoundException | DatastoreNotFoundException ex) {
+		} catch (DatacenterNotFoundException ex) { 
 			if (datastore == null) {
 				LOGGER.error("Cant locate a datastore for this storage disk.");
 				this.setState(StorageStatus.ERROR);
 				this.setMessage("Cant locate a datastore for this storage disk.");
 				VCenterClient.disconnect();
 				return;
-			} 
+			}
 			if (datacenter == null) {
 				LOGGER.error("Cant locate a datacenter for this storage disk.");
 				this.setState(StorageStatus.ERROR);
 				this.setMessage("Cant locate a datacenter for this storage disk.");
 				VCenterClient.disconnect();
 				return;
-			} 
+			}
+		} catch (DatastoreNotFoundException ex) {
+			
+			if (datastore == null) {
+				LOGGER.error("Cant locate a datastore for this storage disk.");
+				this.setState(StorageStatus.ERROR);
+				this.setMessage("Cant locate a datastore for this storage disk.");
+				VCenterClient.disconnect();
+				return;
+			}
+			if (datacenter == null) {
+				LOGGER.error("Cant locate a datacenter for this storage disk.");
+				this.setState(StorageStatus.ERROR);
+				this.setMessage("Cant locate a datacenter for this storage disk.");
+				VCenterClient.disconnect();
+				return;
+			}
 		}
 
 		// Check if the volume name has changed, if this is the case, the
@@ -267,7 +308,18 @@ public class StorageConnector extends org.occiware.clouddesigner.occi.infrastruc
 
 		try {
 			loadDatastoreAndDatacenter();
-		} catch (DatacenterNotFoundException | DatastoreNotFoundException ex) {
+		} catch (DatacenterNotFoundException ex) {
+			if (datastore == null) {
+				LOGGER.error("Cant locate a datastore for this storage disk.");
+				VCenterClient.disconnect();
+				return;
+			}
+			if (datacenter == null) {
+				LOGGER.error("Cant locate a datacenter for this storage disk.");
+				VCenterClient.disconnect();
+				return;
+			}
+		} catch (DatastoreNotFoundException ex) {
 			if (datastore == null) {
 				LOGGER.error("Cant locate a datastore for this storage disk.");
 				VCenterClient.disconnect();
@@ -334,7 +386,18 @@ public class StorageConnector extends org.occiware.clouddesigner.occi.infrastruc
 		}
 		try {
 			loadDatastoreAndDatacenter();
-		} catch (DatacenterNotFoundException | DatastoreNotFoundException ex) {
+		} catch (DatacenterNotFoundException ex) {
+			if (datastore == null) {
+				LOGGER.error("Cant locate a datastore for this storage disk.");
+				VCenterClient.disconnect();
+				return;
+			}
+			if (datacenter == null) {
+				LOGGER.error("Cant locate a datacenter for this storage disk.");
+				VCenterClient.disconnect();
+				return;
+			}
+		} catch (DatastoreNotFoundException ex) {
 			if (datastore == null) {
 				LOGGER.error("Cant locate a datastore for this storage disk.");
 				VCenterClient.disconnect();
@@ -378,7 +441,18 @@ public class StorageConnector extends org.occiware.clouddesigner.occi.infrastruc
 		String volumeName = this.getTitle();
 		try {
 			loadDatastoreAndDatacenter();
-		} catch (DatacenterNotFoundException | DatastoreNotFoundException ex) {
+		} catch (DatacenterNotFoundException ex) {
+			if (datastore == null) {
+				LOGGER.error("Cant locate a datastore for this storage disk.");
+				VCenterClient.disconnect();
+				return;
+			}
+			if (datacenter == null) {
+				LOGGER.error("Cant locate a datacenter for this storage disk.");
+				VCenterClient.disconnect();
+				return;
+			}
+		} catch (DatastoreNotFoundException ex) {
 			if (datastore == null) {
 				LOGGER.error("Cant locate a datastore for this storage disk.");
 				VCenterClient.disconnect();
@@ -445,7 +519,10 @@ public class StorageConnector extends org.occiware.clouddesigner.occi.infrastruc
 			default:
 				break;
 			}
-		} catch (AttachDiskException | DetachDiskException ex) {
+		} catch (AttachDiskException ex) {
+			this.setMessage(ex.getMessage());
+			this.setState(StorageStatus.ERROR);
+		} catch (DetachDiskException ex) {
 			this.setMessage(ex.getMessage());
 			this.setState(StorageStatus.ERROR);
 		}
@@ -469,7 +546,18 @@ public class StorageConnector extends org.occiware.clouddesigner.occi.infrastruc
 
 		try {
 			loadDatastoreAndDatacenter();
-		} catch (DatacenterNotFoundException | DatastoreNotFoundException ex) {
+		} catch (DatacenterNotFoundException ex)  {
+			if (datastore == null) {
+				LOGGER.error("Cant locate a datastore for this storage disk.");
+				VCenterClient.disconnect();
+				return;
+			}
+			if (datacenter == null) {
+				LOGGER.error("Cant locate a datacenter for this storage disk.");
+				VCenterClient.disconnect();
+				return;
+			}
+		} catch (DatastoreNotFoundException ex) {
 			if (datastore == null) {
 				LOGGER.error("Cant locate a datastore for this storage disk.");
 				VCenterClient.disconnect();
@@ -715,7 +803,7 @@ public class StorageConnector extends org.occiware.clouddesigner.occi.infrastruc
 					"Cannot retrieve datacenter, cause: datacenter not found for the datastore: "
 							+ datastore.getName());
 		} else {
-			
+
 			this.setDatacenterName(datacenter.getName());
 
 		}

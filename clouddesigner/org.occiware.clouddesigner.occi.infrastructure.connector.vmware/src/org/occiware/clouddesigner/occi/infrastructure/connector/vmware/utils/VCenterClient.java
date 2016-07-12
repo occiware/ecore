@@ -12,6 +12,7 @@
  */
 package org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -50,9 +51,10 @@ public class VCenterClient {
 	public static void init() throws IOException {
 		if (url == null) {
 			Properties prop = new Properties();
-
+			
 			// String credentialFile = "/resources/credential.properties";
-			String homePath = System.getProperty("user.home") + FileSystems.getDefault().getSeparator();
+			// String homePath = System.getProperty("user.home") + FileSystems.getDefault().getSeparator();
+			String homePath = System.getProperty("user.home") + File.separator;
 			InputStream in = new FileInputStream(homePath + "vmware-credential.properties");
 
 			prop.load(in);

@@ -171,18 +171,29 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		// For now, we set manually attributes for datacenterName, datastoreName
 		// and clusterName.
 		for (AttributeState attrState : this.getAttributes()) {
-
-			switch (attrState.getName()) {
-			case "occi.compute.vmware.datacentername":
+			
+			String attrName = attrState.getName();
+			if (attrName.equals("occi.compute.vmware.datacentername")) {
 				this.setDatacenterName(attrState.getName());
-				break;
-			case "occi.compute.vmware.clustername":
-				this.setClusterName(attrState.getName());
-				break;
-			case "occi.compute.vmware.hostsystemname":
-				this.setHostSystemName(attrState.getName());
-				break;
 			}
+			if (attrName.equals("occi.compute.vmware.clustername")) {
+				this.setClusterName(attrState.getName());
+			}
+			if (attrName.equals("occi.compute.vmware.hostsystemname")) {
+				this.setHostSystemName(attrState.getName());
+			}
+			
+//			switch (attrState.getName()) {
+//			case "occi.compute.vmware.datacentername":
+//				this.setDatacenterName(attrState.getName());
+//				break;
+//			case "occi.compute.vmware.clustername":
+//				this.setClusterName(attrState.getName());
+//				break;
+//			case "occi.compute.vmware.hostsystemname":
+//				this.setHostSystemName(attrState.getName());
+//				break;
+//			}
 		}
 
 		// Datacenter part. first objects of the tree.
@@ -426,70 +437,81 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 				vmSpec.setCpuHotAddEnabled(true);
 				// vmSpec.setCpuHotRemoveEnabled(true);
 				vmSpec.setMemoryHotAddEnabled(true);
-// TODO : Check why it is not working network allocation clone customize....
-				
-//				// Rebuild the networks allocation.
-//				String networkName = null;
-//				List<VirtualDeviceConfigSpec> nicSpecs = new LinkedList<>();
-//				// Load each network interfaces and their network and nic names,
-//				// add to device change.
-//				if (!netInterfaceConn.isEmpty()) {
-//
-//					// Get the network name.
-//					for (NetworkinterfaceConnector netInt : netInterfaceConn) {
-//						NetworkConnector networkConn = (NetworkConnector) netInt.getTarget();
-//						if (networkConn != null) {
-//							networkName = ((NetworkConnector) netInt.getTarget()).getLabel();
-//						}
-//						if (networkConn == null || networkName == null || networkName.trim().isEmpty()) {
-//
-//							Network network = allocator.allocateNetwork();
-//							if (network == null) {
-//								LOGGER.error(
-//										"No virtual networks is available for this virtual machine, please setup a new network in vcenter.");
-//								VCenterClient.disconnect();
-//								return;
-//							}
-//							networkName = network.getName();
-//						} else {
-//							// Check if this network exist.
-//							if (!NetworkHelper.isHostNetworkExist(networkName, host)) {
-//								// We create the vSwitch and port group.
-//								String vSwitchName = networkConn.getTitle();
-//								String macAddress = null;
-//								// TODO : ipAddress CIDR and subnetmask
-//								// association with vswitch ??? No informations
-//								// about that. Searching....
-//								String dhcp = networkConn.getAttributeValueByOcciKey("occi.network.allocation");
-//								boolean dhcpMode = true;
-//								if (dhcp != null) {
-//									if (dhcp.equals("static")) {
-//										dhcpMode = false;
-//									}
-//								}
-//								// TODO : To replace when a solution is found
-//								// for cidr addresses with network.
-//								dhcpMode = true;
-//								NetworkHelper.createVSwitch(vSwitchName, networkName, 8, networkConn.getVlan(), host,
-//										macAddress, null, null, dhcpMode);
-//							}
-//						}
-//
-//						VirtualDeviceConfigSpec deviceConf = NetworkHelper.createNicSpec(networkName, netInt.getTitle(),
-//								"generated", netInt.getAttributeValueByOcciKey("occi.networkinterface.address"));
-//						nicSpecs.add(deviceConf);
-//						VirtualDeviceConfigSpec[] vDevices = new VirtualDeviceConfigSpec[nicSpecs.size()];
-//						
-//						int i = 0;
-//						for (VirtualDeviceConfigSpec nicSpec : nicSpecs) {
-//							vDevices[i] = nicSpec;
-//							i++;
-//						}
-//						 
-//						// Add networks specs to device change.
-//						vmSpec.setDeviceChange(vDevices);
-//					}
-// 				}
+				// TODO : Check why it is not working network allocation clone
+				// customize....
+
+				// // Rebuild the networks allocation.
+				// String networkName = null;
+				// List<VirtualDeviceConfigSpec> nicSpecs = new LinkedList<>();
+				// // Load each network interfaces and their network and nic
+				// names,
+				// // add to device change.
+				// if (!netInterfaceConn.isEmpty()) {
+				//
+				// // Get the network name.
+				// for (NetworkinterfaceConnector netInt : netInterfaceConn) {
+				// NetworkConnector networkConn = (NetworkConnector)
+				// netInt.getTarget();
+				// if (networkConn != null) {
+				// networkName = ((NetworkConnector)
+				// netInt.getTarget()).getLabel();
+				// }
+				// if (networkConn == null || networkName == null ||
+				// networkName.trim().isEmpty()) {
+				//
+				// Network network = allocator.allocateNetwork();
+				// if (network == null) {
+				// LOGGER.error(
+				// "No virtual networks is available for this virtual machine,
+				// please setup a new network in vcenter.");
+				// VCenterClient.disconnect();
+				// return;
+				// }
+				// networkName = network.getName();
+				// } else {
+				// // Check if this network exist.
+				// if (!NetworkHelper.isHostNetworkExist(networkName, host)) {
+				// // We create the vSwitch and port group.
+				// String vSwitchName = networkConn.getTitle();
+				// String macAddress = null;
+				// // TODO : ipAddress CIDR and subnetmask
+				// // association with vswitch ??? No informations
+				// // about that. Searching....
+				// String dhcp =
+				// networkConn.getAttributeValueByOcciKey("occi.network.allocation");
+				// boolean dhcpMode = true;
+				// if (dhcp != null) {
+				// if (dhcp.equals("static")) {
+				// dhcpMode = false;
+				// }
+				// }
+				// // TODO : To replace when a solution is found
+				// // for cidr addresses with network.
+				// dhcpMode = true;
+				// NetworkHelper.createVSwitch(vSwitchName, networkName, 8,
+				// networkConn.getVlan(), host,
+				// macAddress, null, null, dhcpMode);
+				// }
+				// }
+				//
+				// VirtualDeviceConfigSpec deviceConf =
+				// NetworkHelper.createNicSpec(networkName, netInt.getTitle(),
+				// "generated",
+				// netInt.getAttributeValueByOcciKey("occi.networkinterface.address"));
+				// nicSpecs.add(deviceConf);
+				// VirtualDeviceConfigSpec[] vDevices = new
+				// VirtualDeviceConfigSpec[nicSpecs.size()];
+				//
+				// int i = 0;
+				// for (VirtualDeviceConfigSpec nicSpec : nicSpecs) {
+				// vDevices[i] = nicSpec;
+				// i++;
+				// }
+				//
+				// // Add networks specs to device change.
+				// vmSpec.setDeviceChange(vDevices);
+				// }
+				// }
 
 				// Create vm file info for vmx file.
 				VirtualMachineFileInfo vmfi = new VirtualMachineFileInfo();
@@ -512,7 +534,15 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 							"VM couldn't be created ! vm name: " + vmName + " from template: " + vmTemplate.getName());
 				}
 
-			} catch (RemoteException | InterruptedException ex) {
+			} catch (RemoteException ex) {
+				LOGGER.error("VM was not created or has errors, please check your vcenter and your configuration");
+				LOGGER.error("Message: " + ex.getMessage());
+				if (ex.getMessage() == null) {
+					ex.printStackTrace();
+				}
+				VCenterClient.disconnect();
+				return;
+			} catch (InterruptedException ex) {
 				LOGGER.error("VM was not created or has errors, please check your vcenter and your configuration");
 				LOGGER.error("Message: " + ex.getMessage());
 				if (ex.getMessage() == null) {
@@ -679,7 +709,12 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 
 				// Create vm terminated
 
-			} catch (RemoteException | InterruptedException ex) {
+			} catch (RemoteException ex) {
+				LOGGER.error("Cannot create the virtual machine : " + ex.getMessage());
+				ex.printStackTrace();
+				VCenterClient.disconnect();
+				return;
+			} catch (InterruptedException ex) {
 				LOGGER.error("Cannot create the virtual machine : " + ex.getMessage());
 				ex.printStackTrace();
 				VCenterClient.disconnect();
@@ -845,105 +880,112 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 			this.setHostname(hostname);
 		}
 
-		// The following part is for discovery resources feature on Configuration object. This will be implemented in near future.
-		
+		// The following part is for discovery resources feature on
+		// Configuration object. This will be implemented in near future.
+
 		// Get the related entity and update or create them if not declared on
 		// designer.
 
 		// Storage part.
-//		List<StoragelinkConnector> storageLinks = this.getLinkedStorages();
-//		// Get the storages from vm and check if there are designed, if yes,
-//		// update entity, if not designed, entity for storage are created and
-//		// updated..
-//		Map<String, VirtualDisk> disks = VolumeHelper.getVirtualDiskForVM(vm);
-//
-//		for (Map.Entry<String, VirtualDisk> entry : disks.entrySet()) {
-//			// format: [datastoreName] filename.vmdk
-//			String diskName = entry.getKey();
-//			String tmp = diskName.replace(".vmdk", "");
-//			String tampon[] = tmp.split("]");
-//			String datastoreStorage = tampon[0].substring(1);
-//
-//			tampon = tampon[1].split("/");
-//			diskName = tampon[tampon.length - 1];
-//
-//			VirtualDisk disk = entry.getValue();
-//			storageLinks = this.getLinkedStorages();
-//			// Check if the disk is on designer..
-//			StorageConnector storageConnector = getStorageConnectorInLinks(diskName, storageLinks);
-//			StoragelinkConnector storageLinkConnector;
-//			if (storageLinks.isEmpty() || storageConnector == null) {
-//				// Create the resource entity and the link.
-//				LOGGER.info("Creating a new StorageConnector...");
-//				storageConnector = createStorageConnector(diskName);
-//				storageConnector.setDatastoreName(datastoreStorage);
-//				// Create the link
-//				storageLinkConnector = createStorageLinkConnector(storageConnector);
-//
-//			} else {
-//
-//				// Get the corresponding link.
-//				storageLinkConnector = getStorageLink(diskName, storageLinks);
-//				storageConnector.setDatastoreName(datastoreStorage);
-//				// storageConnector.setSummary(datastoreStorage);
-//
-//				// If the link doesnt exit create it.
-//				if (storageLinkConnector == null) {
-//					storageLinkConnector = createStorageLinkConnector(storageConnector);
-//				}
-//
-//			}
-//
-//			if (storageLinkConnector != null) {
-//				// Retrieve link value this will update the storageConnector
-//				// object before (in target).
-//				storageLinkConnector.setVmName(vmName);
-//				storageLinkConnector.occiRetrieve();
-//
-//			}
-//
-//		} // end for each entry disk.
-//
-//		// if (this.getState().equals(ComputeStatus.ACTIVE)) {
-//		// Networks (switch, port group and nic) part.
-//		List<NetworkinterfaceConnector> networkLinks = this.getNetworkInterfaces();
-//		// Must disconnect here, the number of vcenter max query may be achieve
-//		// and the risk is to fail query.
-//		VCenterClient.disconnect();
-//		VCenterClient.checkConnection();
-//		List<VirtualEthernetCard> vEths = NetworkHelper.getNetworkAdaptersForVM(vmName);
-//
-//		for (VirtualEthernetCard vEth : vEths) {
-//			String networkName = vEth.getDeviceInfo().getSummary();
-//			String nicName = vEth.getDeviceInfo().getLabel();
-//			LOGGER.info("Network name: " + networkName);
-//			LOGGER.info("network Adapter name: " + nicName);
-//			networkLinks = this.getNetworkInterfaces();
-//			// Check if the virtual switch (+ port group) is on designer.
-//			// Note
-//			// that it use one port group for one switch.
-//			NetworkConnector networkConn = getNetworkConnectorInLinks(networkName, networkLinks);
-//			NetworkinterfaceConnector netIntConn;
-//
-//			if (networkLinks.isEmpty() || networkConn == null) {
-//				// Create the ressource entity and the linked interface
-//				// adapter.
-//				networkConn = createNetworkConnector(networkName);
-//
-//				// Create the link
-//				netIntConn = createNetworkInterfaceConnector(nicName, networkConn);
-//			} else {
-//				// Get the corresponding link.
-//				netIntConn = getNetworkInterface(nicName, networkLinks);
-//				if (netIntConn == null) {
-//					netIntConn = createNetworkInterfaceConnector(nicName, networkConn);
-//				}
-//			}
-//			if (netIntConn != null) {
-//				netIntConn.occiRetrieve();
-//			}
-//
-//		} // End for each virtual network devices.
+		// List<StoragelinkConnector> storageLinks = this.getLinkedStorages();
+		// // Get the storages from vm and check if there are designed, if yes,
+		// // update entity, if not designed, entity for storage are created and
+		// // updated..
+		// Map<String, VirtualDisk> disks =
+		// VolumeHelper.getVirtualDiskForVM(vm);
+		//
+		// for (Map.Entry<String, VirtualDisk> entry : disks.entrySet()) {
+		// // format: [datastoreName] filename.vmdk
+		// String diskName = entry.getKey();
+		// String tmp = diskName.replace(".vmdk", "");
+		// String tampon[] = tmp.split("]");
+		// String datastoreStorage = tampon[0].substring(1);
+		//
+		// tampon = tampon[1].split("/");
+		// diskName = tampon[tampon.length - 1];
+		//
+		// VirtualDisk disk = entry.getValue();
+		// storageLinks = this.getLinkedStorages();
+		// // Check if the disk is on designer..
+		// StorageConnector storageConnector =
+		// getStorageConnectorInLinks(diskName, storageLinks);
+		// StoragelinkConnector storageLinkConnector;
+		// if (storageLinks.isEmpty() || storageConnector == null) {
+		// // Create the resource entity and the link.
+		// LOGGER.info("Creating a new StorageConnector...");
+		// storageConnector = createStorageConnector(diskName);
+		// storageConnector.setDatastoreName(datastoreStorage);
+		// // Create the link
+		// storageLinkConnector = createStorageLinkConnector(storageConnector);
+		//
+		// } else {
+		//
+		// // Get the corresponding link.
+		// storageLinkConnector = getStorageLink(diskName, storageLinks);
+		// storageConnector.setDatastoreName(datastoreStorage);
+		// // storageConnector.setSummary(datastoreStorage);
+		//
+		// // If the link doesnt exit create it.
+		// if (storageLinkConnector == null) {
+		// storageLinkConnector = createStorageLinkConnector(storageConnector);
+		// }
+		//
+		// }
+		//
+		// if (storageLinkConnector != null) {
+		// // Retrieve link value this will update the storageConnector
+		// // object before (in target).
+		// storageLinkConnector.setVmName(vmName);
+		// storageLinkConnector.occiRetrieve();
+		//
+		// }
+		//
+		// } // end for each entry disk.
+		//
+		// // if (this.getState().equals(ComputeStatus.ACTIVE)) {
+		// // Networks (switch, port group and nic) part.
+		// List<NetworkinterfaceConnector> networkLinks =
+		// this.getNetworkInterfaces();
+		// // Must disconnect here, the number of vcenter max query may be
+		// achieve
+		// // and the risk is to fail query.
+		// VCenterClient.disconnect();
+		// VCenterClient.checkConnection();
+		// List<VirtualEthernetCard> vEths =
+		// NetworkHelper.getNetworkAdaptersForVM(vmName);
+		//
+		// for (VirtualEthernetCard vEth : vEths) {
+		// String networkName = vEth.getDeviceInfo().getSummary();
+		// String nicName = vEth.getDeviceInfo().getLabel();
+		// LOGGER.info("Network name: " + networkName);
+		// LOGGER.info("network Adapter name: " + nicName);
+		// networkLinks = this.getNetworkInterfaces();
+		// // Check if the virtual switch (+ port group) is on designer.
+		// // Note
+		// // that it use one port group for one switch.
+		// NetworkConnector networkConn =
+		// getNetworkConnectorInLinks(networkName, networkLinks);
+		// NetworkinterfaceConnector netIntConn;
+		//
+		// if (networkLinks.isEmpty() || networkConn == null) {
+		// // Create the ressource entity and the linked interface
+		// // adapter.
+		// networkConn = createNetworkConnector(networkName);
+		//
+		// // Create the link
+		// netIntConn = createNetworkInterfaceConnector(nicName, networkConn);
+		// } else {
+		// // Get the corresponding link.
+		// netIntConn = getNetworkInterface(nicName, networkLinks);
+		// if (netIntConn == null) {
+		// netIntConn = createNetworkInterfaceConnector(nicName, networkConn);
+		// }
+		// }
+		// if (netIntConn != null) {
+		// netIntConn.occiRetrieve();
+		// }
+		//
+		// } // End for each virtual network devices.
 		// }
 		// In the end we disconnect.
 		VCenterClient.disconnect();
@@ -1434,7 +1476,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 	private List<StoragelinkConnector> getOtherStorageLink() {
 
 		List<StoragelinkConnector> storageLinks = getLinkedStorages();
-		List<StoragelinkConnector> stOthers = new ArrayList<>();
+		List<StoragelinkConnector> stOthers = new ArrayList<StoragelinkConnector>();
 		StoragelinkConnector stMain = getMainStorageLink();
 		StoragelinkConnector stOther = null;
 		for (StoragelinkConnector link : storageLinks) {
@@ -1459,24 +1501,35 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 	 */
 	private ComputeStatus defineStatus(final String vmwarePowerState) {
 		ComputeStatus status = this.getState();
-		switch (vmwarePowerState) {
-		case VMHelper.POWER_ON:
-			status = ComputeStatus.ACTIVE;
-			LOGGER.info("vm status is active.");
+		int power = 0;
+		if (vmwarePowerState != null) {
+			if (vmwarePowerState.equals(VMHelper.POWER_OFF)) {
+				power = VMHelper.POWER_OFF_INT;
+			} else if (vmwarePowerState.equals(VMHelper.POWER_ON)) {
+				power = VMHelper.POWER_ON_INT;
+			} else if (vmwarePowerState.equals(VMHelper.SUSPENDED)) {
+				power = VMHelper.SUSPENDED_INT;
+			}
 
-			break;
-		case VMHelper.POWER_OFF:
-			status = ComputeStatus.INACTIVE;
-			LOGGER.info("vm status is inactive");
-			break;
-		case VMHelper.SUSPENDED:
-			status = ComputeStatus.SUSPENDED;
-			LOGGER.info("vm status is suspended.");
+			switch (power) {
+			case VMHelper.POWER_ON_INT:
+				status = ComputeStatus.ACTIVE;
+				LOGGER.info("vm status is active.");
 
-			break;
-		default:
-			status = ComputeStatus.ERROR;
-			LOGGER.info("vm status error.");
+				break;
+			case VMHelper.POWER_OFF_INT:
+				status = ComputeStatus.INACTIVE;
+				LOGGER.info("vm status is inactive");
+				break;
+			case VMHelper.SUSPENDED_INT:
+				status = ComputeStatus.SUSPENDED;
+				LOGGER.info("vm status is suspended.");
+
+				break;
+			default:
+				status = ComputeStatus.ERROR;
+				LOGGER.info("vm status error.");
+			}
 		}
 
 		return status;
@@ -1489,7 +1542,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 	 * @return a list of storagelink or empty if none.
 	 */
 	private List<StoragelinkConnector> getLinkedStorages() {
-		List<StoragelinkConnector> storages = new ArrayList<>();
+		List<StoragelinkConnector> storages = new ArrayList<StoragelinkConnector>();
 
 		List<Link> links = this.getLinks();
 		for (Link link : links) {
@@ -1508,7 +1561,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 	 * @return a list of interfaces or empty if none.
 	 */
 	private List<NetworkinterfaceConnector> getNetworkInterfaces() {
-		List<NetworkinterfaceConnector> interfaces = new ArrayList<>();
+		List<NetworkinterfaceConnector> interfaces = new ArrayList<NetworkinterfaceConnector>();
 
 		List<Link> links = this.getLinks();
 		for (Link link : links) {

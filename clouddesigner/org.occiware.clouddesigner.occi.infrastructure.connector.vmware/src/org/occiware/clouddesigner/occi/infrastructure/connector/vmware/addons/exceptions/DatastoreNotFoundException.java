@@ -35,10 +35,10 @@ public class DatastoreNotFoundException extends Exception {
 		
 	}
 
-	public DatastoreNotFoundException(String message, Throwable cause, boolean enableSuppression,
-			boolean writableStackTrace) {
-		super(message, cause, enableSuppression, writableStackTrace);
-		
-	}
+//	public DatastoreNotFoundException(String message, Throwable cause, boolean enableSuppression,
+//			boolean writableStackTrace) {
+//		super(message, cause, enableSuppression, writableStackTrace);
+//		
+//	}
 
 }

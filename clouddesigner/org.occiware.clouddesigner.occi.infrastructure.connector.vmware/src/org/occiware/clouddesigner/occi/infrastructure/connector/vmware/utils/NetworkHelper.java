@@ -86,7 +86,7 @@ public class NetworkHelper {
 	 */
 	public static List<VirtualEthernetCard> findNetDeviceForHostNetName(final String hostNetworkName,
 			VirtualMachine vm) {
-		List<VirtualEthernetCard> vEths = new ArrayList<>();
+		List<VirtualEthernetCard> vEths = new ArrayList<VirtualEthernetCard>();
 		VirtualMachineConfigInfo config = vm.getConfig();
 		VirtualHardware hw = config.getHardware();
 		VirtualDevice[] devices = hw.getDevice();
@@ -153,7 +153,7 @@ public class NetworkHelper {
 	 * @return 
 	 */
 	public static List<VirtualEthernetCard> getNetworkAdaptersForVM(String vmName) {
-		List<VirtualEthernetCard> vEths = new ArrayList<>();
+		List<VirtualEthernetCard> vEths = new ArrayList<VirtualEthernetCard>();
 		if (vmName == null) {
 			return vEths;
 		}
@@ -477,7 +477,12 @@ public class NetworkHelper {
 			task = vm.reconfigVM_Task(vmConfigSpec);
 			task.waitForTask();
 
-		} catch (RemoteException | InterruptedException e) {
+		} catch (RemoteException e) {
+			LOGGER.error("Error while " + status + " a network adapter : " + name + " --< from vm : " + vm.getName(),
+					e);
+			LOGGER.error("Message: " + e.getMessage());
+			return result;
+		} catch (InterruptedException e) {
 			LOGGER.error("Error while " + status + " a network adapter : " + name + " --< from vm : " + vm.getName(),
 					e);
 			LOGGER.error("Message: " + e.getMessage());
