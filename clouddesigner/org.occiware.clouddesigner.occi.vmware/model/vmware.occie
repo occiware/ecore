@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="ASCII"?>
+<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="vmware" scheme="http://occiware.org/occi/vmware#" description="VMware IAAS, to manage infrastructure resources with occi specifications.">
+  <import href="http://schemas.ogf.org/occi/core#/"/>
+  <import href="http://schemas.ogf.org/occi/infrastructure#/"/>
+  <kinds term="datastore" scheme="http://occiware.org/occi/vmware#" title="Datastores are logical containers, analogous to file systems, that hide specifics of each storage device and provide a uniform model for storing virtual machine files. Datastores can also be used for storing ISO images, virtual machine templates, and floppy images.">
+    <attributes name="occi.vmware.datastore.name">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds term="cluster" scheme="http://occiware.org/occi/vmware#" title="Represents a cluster of HostSystem objects as a unified compute resource for virtual machines.">
+    <attributes name="occi.vmware.cluster.name">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds term="datacenter" scheme="http://occiware.org/occi/vmware#" title="The interface to the common container object for hosts and virtual machines. Every host and virtual machine must be under a distinct datacenter in the inventory, and datacenters may not be nested under other datacenters.">
+    <attributes name="occi.vmware.datacenter.name">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds term="hostsystem" scheme="http://occiware.org/occi/vmware#">
+    <attributes name="occi.vmware.hostsystem.name">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <parent href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='compute']"/>
+  </kinds>
+  <kinds term="virtualmachine" scheme="http://occiware.org/occi/vmware#" title="Virtual machine compute on a host system">
+    <attributes name="occi.vmware.virtualmachine.name" description="The qualified name of the virtual machine">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="occi.vmware.virtualmachine.id" type="//@types.0"/>
+    <attributes name="occi.vmware.virtualmachine.istemplate" default="false" description="If true, this virtual machine is set as a template machine and may be used as an image">
+      <type href="../../../plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean"/>
+    </attributes>
+    <parent href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='compute']"/>
+    <actions term="clone" scheme="http://occiware.org/occi/vmware/virtualmachine/action#" title="Clone a virtual machine"/>
+  </kinds>
+  <kinds term="folderlink" scheme="http://occiware.org/occi/vmware#" title="a link hierarchy folder between datacenter and cluster or between datacenter and virtual machines (vmFolder) or between datacenter and hostsystems">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds term="resourcepoollink" scheme="http://occiware.org/occi/vmware#" title="a link between cluster (or host) and virtual machine with resource pool definition">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds term="clusterlink" scheme="http://occiware.org/occi/vmware#" title="Link between cluster and hostsystem" parent="//@kinds[term='folderlink']"/>
+  <kinds term="resourcepool" scheme="http://occiware.org/occi/vmware#" title="A resource pool linked between a compute host (or a cluster) and a virtual machine">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds term="datacenterlink" scheme="http://occiware.org/occi/vmware#" title="" parent="//@kinds[term='folderlink']"/>
+  <kinds term="hostsystemlink" scheme="http://occiware.org/occi/vmware#" title="a link between a hostsystem and a virtual machine" parent="//@kinds[term='folderlink']"/>
+  <kinds term="datastorelink" scheme="http://occiware.org/occi/vmware#" title="a link between a datacenter and a datastore" parent="//@kinds[term='folderlink']"/>
+  <kinds term="virtualdisk" scheme="http://occiware.org/occi/vmware#">
+    <parent href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='storage']"/>
+  </kinds>
+  <kinds term="vswitch" scheme="http://occiware.org/occi/vmware#">
+    <parent href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='network']"/>
+  </kinds>
+  <kinds term="portgroup" scheme="http://occiware.org/occi/vmware#" title="Link between hostsystem and virtual switch related to network">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds term="networkadapter" scheme="http://occiware.org/occi/vmware#" title="a network adapter for a virtual machine">
+    <parent href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='networkinterface']"/>
+  </kinds>
+  <kinds term="virtualdisknetwork" scheme="http://occiware.org/occi/vmware#" title="a storage disk network for usage with a network vswitch and portgroup, vswitch and portgroup may be multiples" parent="//@kinds[term='virtualdisk']"/>
+  <kinds term="virtualdisknetworklink" scheme="http://occiware.org/occi/vmware#" title="a link between a virtualdisknetwork and a vswitch">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds term="hostnetworkadapter" scheme="http://occiware.org/occi/vmware#">
+    <parent href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='networkinterface']"/>
+  </kinds>
+  <mixins term="linux" scheme="http://occiware.org/occi/vmware#" applies="//@kinds[term='virtualmachine']">
+    <depends href="http://schemas.ogf.org/occi/infrastructure#//@mixins[term='os_tpl']"/>
+  </mixins>
+  <mixins term="windows" scheme="http://occiware.org/occi/vmware#" applies="//@kinds[term='virtualmachine'] //@kinds[term='hostsystem']">
+    <depends href="http://schemas.ogf.org/occi/infrastructure#//@mixins[term='os_tpl']"/>
+  </mixins>
+  <mixins term="macosx" scheme="http://occiware.org/occi/vmware#" applies="//@kinds[term='virtualmachine'] //@kinds[term='hostsystem']">
+    <depends href="http://schemas.ogf.org/occi/infrastructure#//@mixins[term='os_tpl']"/>
+  </mixins>
+  <types name="LongNumber" instanceClassName="long">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A long number"/>
+    </eAnnotations>
+  </types>
+</occi:Extension>
