@@ -85,8 +85,6 @@ class DockerMachineManager {
 	def static urlCmd(Runtime runtime, String machineName) {
 		val String command = cf.createUrlCommand(machineName)
 		val temp = ProcessManager.getOutputCommand(command, runtime)
-		// change https to tcp for the new version of docker-java
-		//val temp = ProcessManager.getOutputCommand(command, runtime).replace("tcp", "https")
 		return temp
 	}
 	

@@ -45,7 +45,7 @@ public class ExecutableMachine_VirtualBox extends Machine_VirtualBoxImpl {
       } else {
         if ((ExecutableMachine_VirtualBox.this.memory == 0.0F)) {
           StringBuilder _append_2 = sb.append(" --virtualbox-memory ");
-          _append_2.append(1024.0);
+          _append_2.append(1024);
         }
       }
       if ((ExecutableMachine_VirtualBox.this.cores > 0)) {

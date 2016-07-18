@@ -90,8 +90,7 @@ public class DockerMachineManager {
   
   public static String urlCmd(final Runtime runtime, final String machineName) {
     final String command = DockerMachineManager.cf.createUrlCommand(machineName);
-    String _outputCommand = ProcessManager.getOutputCommand(command, runtime);
-    final String temp = _outputCommand.replace("tcp", "https");
+    final String temp = ProcessManager.getOutputCommand(command, runtime);
     return temp;
   }
   

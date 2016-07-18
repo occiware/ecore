@@ -81,7 +81,8 @@ public class ExecutableMachine_VMware_vSphere extends Machine_VMware_vSphereImpl
       }
       if ((ExecutableMachine_VMware_vSphere.this.memory > 0)) {
         StringBuilder _append_9 = sb.append(" --vmwarevsphere-memory-size ");
-        _append_9.append(ExecutableMachine_VMware_vSphere.this.memory);
+        int _intValue = Float.valueOf(ExecutableMachine_VMware_vSphere.this.memory).intValue();
+        _append_9.append(_intValue);
       }
       if ((ExecutableMachine_VMware_vSphere.this.disk_size > 0)) {
         StringBuilder _append_10 = sb.append(" --vmwarevsphere-disk-size ");
