@@ -33,10 +33,10 @@ public class DatacenterNotFoundException extends Exception {
 		
 	}
 
-	public DatacenterNotFoundException(String message, Throwable cause, boolean enableSuppression,
-			boolean writableStackTrace) {
-		super(message, cause, enableSuppression, writableStackTrace);
-		
-	}
+//	public DatacenterNotFoundException(String message, Throwable cause, boolean enableSuppression,
+//			boolean writableStackTrace) {
+//		super(message, cause, enableSuppression, writableStackTrace);
+//		
+//	}
 
 }

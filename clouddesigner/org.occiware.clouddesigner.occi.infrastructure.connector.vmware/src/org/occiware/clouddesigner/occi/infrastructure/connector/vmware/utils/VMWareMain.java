@@ -33,7 +33,10 @@ public class VMWareMain {
 		try {		
 			VCenterClient.connect();
 			VCenterClient.disconnect();
-		} catch (RemoteException | MalformedURLException ex) {
+		} catch (RemoteException ex) {
+			System.out.println("Not connected, message: " + ex.getMessage());
+			exit();
+		} catch (MalformedURLException ex) {
 			System.out.println("Not connected, message: " + ex.getMessage());
 			exit();
 		}

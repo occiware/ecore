@@ -31,9 +31,9 @@ public class DiskNotFoundException extends Exception {
 		super(message, cause);
 	}
 
-	public DiskNotFoundException(String message, Throwable cause, boolean enableSuppression,
-			boolean writableStackTrace) {
-		super(message, cause, enableSuppression, writableStackTrace);
-	}
+//	public DiskNotFoundException(String message, Throwable cause, boolean enableSuppression,
+//			boolean writableStackTrace) {
+//		super(message, cause, enableSuppression, writableStackTrace);
+//	}
 
 }

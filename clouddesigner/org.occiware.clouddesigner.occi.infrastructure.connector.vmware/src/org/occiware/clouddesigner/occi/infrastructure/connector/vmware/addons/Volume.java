@@ -266,7 +266,10 @@ public class Volume {
 		try {
 			ds = loadDatastore();
 			dc = loadDatacenter();
-		} catch (DatacenterNotFoundException | DatastoreNotFoundException ex) {
+		} catch (DatacenterNotFoundException ex) {
+			LOGGER.error(ex.getMessage());
+			return;
+		} catch (DatastoreNotFoundException ex) {
 			LOGGER.error(ex.getMessage());
 			return;
 		}
@@ -321,7 +324,10 @@ public class Volume {
 				LOGGER.info("The disk : " + volumeName + " has been created (empty volume).");
 			}
 
-		} catch (RemoteException | InterruptedException ex) {
+		} catch (RemoteException ex) {
+			LOGGER.error("Error while creating an empty detached disk : " + volumeName, ex);
+			return;
+		} catch (InterruptedException ex) {
 			LOGGER.error("Error while creating an empty detached disk : " + volumeName, ex);
 			return;
 		}
@@ -437,7 +443,10 @@ public class Volume {
 			task = vm.reconfigVM_Task(configSpec);
 			task.waitForTask();
 
-		} catch (RemoteException | InterruptedException e) {
+		} catch (RemoteException e) {
+			LOGGER.error("Error while creating an attached disk : " + volumeName + " --< to vm : " + vm.getName(), e);
+			return;
+		} catch (InterruptedException e) {
 			LOGGER.error("Error while creating an attached disk : " + volumeName + " --< to vm : " + vm.getName(), e);
 			return;
 		}
@@ -485,7 +494,10 @@ public class Volume {
 		try {
 			ds = loadDatastore();
 			dc = loadDatacenter();
-		} catch (DatacenterNotFoundException | DatastoreNotFoundException ex) {
+		} catch (DatacenterNotFoundException ex) {
+			LOGGER.error(ex.getMessage());
+			return result;
+		} catch (DatastoreNotFoundException ex) {
 			LOGGER.error(ex.getMessage());
 			return result;
 		}
@@ -513,7 +525,10 @@ public class Volume {
 			task = fileManager.deleteDatastoreFile_Task(fullPath, dc);
 			task.waitForTask();
 
-		} catch (RemoteException | InterruptedException e) {
+		} catch (RemoteException e) {
+			LOGGER.error("Error while destroying a disk : " + volumeName, e);
+			return result;
+		} catch (InterruptedException e) {
 			LOGGER.error("Error while destroying a disk : " + volumeName, e);
 			return result;
 		}
@@ -545,7 +560,10 @@ public class Volume {
 					mainVolume = false;
 				}
 			}
-		} catch (RemoteException | InterruptedException e) {
+		} catch (RemoteException e) {
+			LOGGER.error("Error while destroying a disk : " + volumeName, e);
+			return result;
+		} catch (InterruptedException e) {
 			LOGGER.error("Error while destroying a disk : " + volumeName, e);
 			return result;
 		}
@@ -645,7 +663,11 @@ public class Volume {
 					attached = true;
 					exist = true;
 				}
-			} catch (RemoteException | InterruptedException e) {
+			} catch (RemoteException e) {
+				LOGGER.error("Error while attaching a disk : " + volumeName + " on virtual machine: " + vmName, e);
+				throw new AttachDiskException(
+						"Error while attaching a disk : " + volumeName + " on virtual machine: " + vmName, e);
+			} catch (InterruptedException e) {
 				LOGGER.error("Error while attaching a disk : " + volumeName + " on virtual machine: " + vmName, e);
 				throw new AttachDiskException(
 						"Error while attaching a disk : " + volumeName + " on virtual machine: " + vmName, e);
@@ -705,7 +727,12 @@ public class Volume {
 				LOGGER.info("The disk " + volumeName + " has been detached.");
 				result = true;
 			}
-		} catch (RemoteException | InterruptedException e) {
+		} catch (RemoteException e) { 
+			
+			LOGGER.error("Error while detaching a disk : " + volumeName + " from virtual machine: " + vmName, e);
+			throw new DetachDiskException(
+					"Error while detaching a disk : " + volumeName + " from virtual machine: " + vmName, e);
+		} catch (InterruptedException e) {
 			LOGGER.error("Error while detaching a disk : " + volumeName + " from virtual machine: " + vmName, e);
 			throw new DetachDiskException(
 					"Error while detaching a disk : " + volumeName + " from virtual machine: " + vmName, e);
@@ -744,7 +771,10 @@ public class Volume {
 		try {
 			ds = loadDatastore();
 			dc = loadDatacenter();
-		} catch (DatacenterNotFoundException | DatastoreNotFoundException ex) {
+		} catch (DatacenterNotFoundException ex) {
+			LOGGER.error(ex.getMessage());
+			return result;
+		} catch (DatastoreNotFoundException ex) {
 			LOGGER.error(ex.getMessage());
 			return result;
 		}
@@ -770,7 +800,10 @@ public class Volume {
 				task = vdiskManager.extendVirtualDisk_Task(fullPath, dc, sizeKB);
 				task.waitForTask();
 
-			} catch (RemoteException | InterruptedException e) {
+			} catch (RemoteException e) {
+				LOGGER.error("Error while resizing a disk : " + volumeName, e);
+				return result;
+			} catch (InterruptedException e) {
 				LOGGER.error("Error while resizing a disk : " + volumeName, e);
 				return result;
 			}
@@ -810,7 +843,10 @@ public class Volume {
 					task = vm.reconfigVM_Task(vmcs);
 					task.waitForTask();
 
-				} catch (RemoteException | InterruptedException e) {
+				} catch (RemoteException e) { 
+					LOGGER.error("Error while resizing a disk : " + volumeName, e);
+					return result;
+				} catch (InterruptedException e) {
 					LOGGER.error("Error while resizing a disk : " + volumeName, e);
 					return result;
 				}
@@ -858,7 +894,10 @@ public class Volume {
 		try {
 			ds = loadDatastore();
 			dc = loadDatacenter();
-		} catch (DatacenterNotFoundException | DatastoreNotFoundException ex) {
+		} catch (DatacenterNotFoundException e) {
+			LOGGER.error(e.getMessage());
+			return result;
+		} catch (DatastoreNotFoundException ex) { 
 			LOGGER.error(ex.getMessage());
 			return result;
 		}
@@ -887,7 +926,10 @@ public class Volume {
 			VirtualDiskManager vdiskManager = VCenterClient.getServiceInstance().getVirtualDiskManager();
 			task = vdiskManager.moveVirtualDisk_Task(fullPath, dc, newPath, dc, true);
 			task.waitForTask();
-		} catch (RemoteException | InterruptedException ex) {
+		} catch (RemoteException  ex) {
+			LOGGER.error("Error while renaming a disk : " + volumeName + " to: " + newVolumeName, ex);
+			return result;
+		} catch (InterruptedException ex) {
 			LOGGER.error("Error while renaming a disk : " + volumeName + " to: " + newVolumeName, ex);
 			return result;
 		}
@@ -1038,7 +1080,11 @@ public class Volume {
 				}
 			}
 
-		} catch (RemoteException | InterruptedException ex) {
+		} catch (RemoteException ex) { 
+			
+			LOGGER.error("Cannot find the volume : " + volumeName + " --< message: " + ex.getMessage());
+			ex.printStackTrace();
+		} catch (InterruptedException ex) {
 			LOGGER.error("Cannot find the volume : " + volumeName + " --< message: " + ex.getMessage());
 			ex.printStackTrace();
 		}

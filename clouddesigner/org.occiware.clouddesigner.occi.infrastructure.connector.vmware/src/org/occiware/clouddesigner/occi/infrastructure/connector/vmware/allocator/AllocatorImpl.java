@@ -55,7 +55,6 @@ public class AllocatorImpl implements Allocator {
 	/**
 	 * Allocate the first datacenter found in tree.
 	 */
-	@Override
 	public Datacenter allocateDatacenter() {
 		// Find the first datacenter
 		dc = DatacenterHelper.findFirstDatacenter(rootFolder);
@@ -73,7 +72,6 @@ public class AllocatorImpl implements Allocator {
 	/**
 	 * Allocate a cluster, if none found, return null value.
 	 */
-	@Override
 	public ClusterComputeResource allocateCluster() {
 		cluster = null;
 		
@@ -86,7 +84,6 @@ public class AllocatorImpl implements Allocator {
 	/**
 	 * Allocate an hostSystem. Take the first.
 	 */
-	@Override
 	public HostSystem allocateHostSystem() {
 		host = null;
 		if (cluster == null) {
@@ -100,7 +97,6 @@ public class AllocatorImpl implements Allocator {
 	/**
 	 * Allocate a datastore.
 	 */
-	@Override
 	public Datastore allocateDatastore() {
 		try {
 			ManagedEntity[] entities = new InventoryNavigator(rootFolder).searchManagedEntities("Datastore");
@@ -142,7 +138,6 @@ public class AllocatorImpl implements Allocator {
 	}
 	
 
-	@Override
 	public ResourcePool allocateResourcePool() {
 		// TODO Auto-generated method stub
 		return null;
@@ -196,13 +191,11 @@ public class AllocatorImpl implements Allocator {
 		this.memoryHostMini = memoryHostMini;
 	}
 
-	@Override
 	public HostSystem getHost() {
 		
 		return host;
 	}
 
-	@Override
 	public void setHost(HostSystem host) {
 		this.host = host;
 	}

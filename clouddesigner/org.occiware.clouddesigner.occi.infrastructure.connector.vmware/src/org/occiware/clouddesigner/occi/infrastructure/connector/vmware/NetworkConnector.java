@@ -118,9 +118,7 @@ public class NetworkConnector extends org.occiware.clouddesigner.occi.infrastruc
 		}
 		List<Mixin> mixins;
 		ServiceInstance si = VCenterClient.getServiceInstance();
-		Folder rootFolder = si.getRootFolder();
-		
-		
+		Folder rootFolder = si.getRootFolder();	
 		
 		VCenterClient.disconnect();
 
@@ -258,33 +256,6 @@ public class NetworkConnector extends org.occiware.clouddesigner.occi.infrastruc
     	
     	return attr;
     }
-    
-    /**
-     * Get the connected computes to this network vswitch.
-     * @return a list of connected computes.
-     */
-    public List<ComputeConnector> getComputes() {
-    	List<ComputeConnector> computes = new ArrayList<>();
-    	
-    	// Configuration config = OCCIHelper
-    	
-    	
-    	
-    	return computes;
-    }
-    
-//    /**
-//     * Get the connected network adapter interfaces with this network.
-//     * @return a list of network adapter connector.
-//     */
-//    public List<NetworkinterfaceConnector> getNetworkInterfaces() {
-//    	List<NetworkinterfaceConnector> networkInts = new ArrayList<>();
-//    	
-//    	
-//    	
-//    	
-//    	return networkInts;
-//    }
     
     
 }

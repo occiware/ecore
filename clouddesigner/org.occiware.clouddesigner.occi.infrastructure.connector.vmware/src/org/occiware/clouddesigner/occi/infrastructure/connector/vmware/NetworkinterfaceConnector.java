@@ -172,10 +172,18 @@ public class NetworkinterfaceConnector
 			task = vm.reconfigVM_Task(vmConfigSpec);
 			task.waitForTask();
 
-		} catch (RemoteException | InterruptedException e) {
+		} catch (RemoteException ex) {
+			LOGGER.error("Error while creating a network adapter : " + networkAdapterName + " --< to vm : " + vmName,
+					ex);
+			LOGGER.error("Message: " + ex.getMessage());
+			VCenterClient.disconnect();
+			return;
+			
+		} catch (InterruptedException e) {
 			LOGGER.error("Error while creating a network adapter : " + networkAdapterName + " --< to vm : " + vmName,
 					e);
 			LOGGER.error("Message: " + e.getMessage());
+			VCenterClient.disconnect();
 			return;
 		}
 
@@ -531,11 +539,18 @@ public class NetworkinterfaceConnector
 				task = vm.reconfigVM_Task(vmConfigSpec);
 				task.waitForTask();
 
-			} catch (RemoteException | InterruptedException e) {
+			} catch (RemoteException e) {
 				LOGGER.error(
 						"Error while updating a network adapter : " + networkAdapterName + " --< from vm : " + vmName,
 						e);
 				LOGGER.error("Message: " + e.getMessage());
+				VCenterClient.disconnect();
+				return;
+			} catch (InterruptedException ex) {
+				LOGGER.error(
+						"Error while updating a network adapter : " + networkAdapterName + " --< from vm : " + vmName,
+						ex);
+				LOGGER.error("Message: " + ex.getMessage());
 				VCenterClient.disconnect();
 				return;
 			}
@@ -628,10 +643,17 @@ public class NetworkinterfaceConnector
 			task = vm.reconfigVM_Task(vmConfigSpec);
 			task.waitForTask();
 
-		} catch (RemoteException | InterruptedException e) {
+		} catch (RemoteException ex) {
+			LOGGER.error("Error while deleting a network adapter : " + networkAdapterName + " --< from vm : " + vmName,
+					ex);
+			LOGGER.error("Message: " + ex.getMessage());
+			VCenterClient.disconnect();
+			return;
+		} catch (InterruptedException e) {
 			LOGGER.error("Error while deleting a network adapter : " + networkAdapterName + " --< from vm : " + vmName,
 					e);
 			LOGGER.error("Message: " + e.getMessage());
+			VCenterClient.disconnect();
 			return;
 		}
 

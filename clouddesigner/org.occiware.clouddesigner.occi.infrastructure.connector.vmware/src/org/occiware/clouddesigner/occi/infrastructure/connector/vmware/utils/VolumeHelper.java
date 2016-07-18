@@ -310,7 +310,7 @@ public class VolumeHelper {
 	 */
 	public static Map<String, VirtualDisk> getVirtualDiskForVM(VirtualMachine vm) {
 
-		Map<String, VirtualDisk> mapDisks = new HashMap<>();
+		Map<String, VirtualDisk> mapDisks = new HashMap<String, VirtualDisk>();
 		if (vm == null) {
 			return mapDisks;
 		}
