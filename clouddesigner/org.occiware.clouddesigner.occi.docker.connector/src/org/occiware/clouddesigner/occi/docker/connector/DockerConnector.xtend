@@ -647,6 +647,7 @@ class EventCallBack extends EventsResultCallback {
 /**
  * This class notifies stats events to the connector.
  */
+
 class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statistics> {
 	// Initialize logger for StatsCallback.
 	private static Logger LOGGER = LoggerFactory.getLogger(typeof(StatsCallback))
@@ -671,6 +672,7 @@ class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statistics> {
 	}
 
 }
+
 
 /**
  * This class implements an executable Docker container.
@@ -706,6 +708,7 @@ class ExecutableContainer extends ContainerImpl {
 				try {
 					if (dockerContainerManager == null) {
 						dockerContainerManager = new DockerContainerManager(machine, eventCallback, statsCallback)
+//						dockerContainerManager = new DockerContainerManager(machine, eventCallback)
 					}
 					dockerContainerManager.startContainer(machine, this.compute.name)
 				} catch (Exception e) {
@@ -726,6 +729,7 @@ class ExecutableContainer extends ContainerImpl {
 					try {
 						if (dockerContainerManager == null) {
 							dockerContainerManager = new DockerContainerManager(machine, eventCallback, statsCallback)
+//							dockerContainerManager = new DockerContainerManager(machine, eventCallback)
 						}
 						dockerContainerManager.stopContainer(machine, this.compute.name)
 					} catch (Exception e) {
@@ -775,6 +779,7 @@ class ExecutableContainer extends ContainerImpl {
 		var Map<DockerClient, CreateContainerResponse> result = new HashMap<DockerClient, CreateContainerResponse>
 		if (dockerContainerManager == null) {
 			dockerContainerManager = new DockerContainerManager(machine, eventCallback, statsCallback)
+//			dockerContainerManager = new DockerContainerManager(machine, eventCallback)
 		}
 
 		// Download image
@@ -787,6 +792,7 @@ class ExecutableContainer extends ContainerImpl {
 	def void createContainer(Machine machine) {
 		if (dockerContainerManager == null) {
 			dockerContainerManager = new DockerContainerManager(machine, eventCallback, statsCallback)
+//			dockerContainerManager = new DockerContainerManager(machine, eventCallback)
 		}
 
 		// Download image
@@ -799,6 +805,7 @@ class ExecutableContainer extends ContainerImpl {
 	def void removeContainer(Machine machine) {
 		if (dockerContainerManager == null) {
 			dockerContainerManager = new DockerContainerManager(machine, eventCallback, statsCallback)
+//			dockerContainerManager = new DockerContainerManager(machine, eventCallback)
 		}
 		dockerContainerManager.removeContainer(machine.name, this.name)
 	}
@@ -928,14 +935,8 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 
 		// Create the machine command
 		command.append(dockerMachineCMD).append(getDriverName)
-
-		if (getDriverName.equalsIgnoreCase("virtualbox") || getDriverName.equalsIgnoreCase("vmwarefusion")) {
-			command.append(' ').append(compute.name)
-			appendDriverParameters(command)
-		} else {
-			appendDriverParameters(command)
-			command.append(' ').append(compute.name)
-		}
+		appendDriverParameters(command)
+		command.append(' ').append(compute.name)
 
 		LOGGER.info("CMD : #{}", command.toString)
 
@@ -971,14 +972,8 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 		// Create the machine command
 		var String dockerMachineCMD = String.format("%s -D create --driver ", this.dockerMachineCmd)
 		command.append(dockerMachineCMD).append(getDriverName)
-		if (getDriverName.equalsIgnoreCase("virtualbox") || getDriverName.equalsIgnoreCase("vmwarefusion")) {
-			command.append(' ').append(compute.name)
-			appendDriverParameters(command)
-		} else {
-			appendDriverParameters(command)
-			command.append(' ').append(compute.name)
-		}
-
+		appendDriverParameters(command)
+		command.append(' ').append(compute.name)
 		// Get the active machine
 		val activeHosts = DockerUtil.getActiveHosts
 
@@ -1772,15 +1767,13 @@ class ExecutableMachine_OpenStack extends Machine_OpenStackImpl {
 				sb.append(" --openstack-net-id ").append(net_id)
 			}
 			if (StringUtils.isNotBlank(sec_groups)) {
-
-				// TODO list of secure group.
 				sb.append(" --openstack-sec-groups ").append(sec_groups)
 			} else {
 				sb.append(" --openstack-sec-groups ").append("default")
 			}
 
 			// Should be fixed in the model.
-			sb.append(" --openstack-ssh-user ").append("ubuntu")
+			sb.append(" --openstack-ssh-user ").append("occiware")
 		}
 	}
 
@@ -1877,7 +1870,7 @@ class ExecutableMachine_VirtualBox extends Machine_VirtualBoxImpl {
 			if (memory > 0.0F) {
 				sb.append(" --virtualbox-memory ").append(memory)
 			} else if (memory == 0.0F) {
-				sb.append(" --virtualbox-memory ").append(1024.0)
+				sb.append(" --virtualbox-memory ").append(1024)
 			}
 			if (cores > 0) {
 				sb.append(" --virtualbox-cpu-count ").append(cores) // TODO verify is the default value is set
@@ -2070,7 +2063,7 @@ class ExecutableMachine_VMware_vSphere extends Machine_VMware_vSphereImpl {
 				sb.append(" --vmwarevsphere-pool ").append(pool)
 			}
 			if (memory > 0) {
-				sb.append(" --vmwarevsphere-memory-size ").append(memory)
+				sb.append(" --vmwarevsphere-memory-size ").append(memory.intValue)
 			}
 			if (disk_size > 0) {
 				sb.append(" --vmwarevsphere-disk-size ").append(disk_size)

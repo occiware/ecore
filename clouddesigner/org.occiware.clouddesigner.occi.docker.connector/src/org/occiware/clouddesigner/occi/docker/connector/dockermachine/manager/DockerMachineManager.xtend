@@ -84,7 +84,7 @@ class DockerMachineManager {
 
 	def static urlCmd(Runtime runtime, String machineName) {
 		val String command = cf.createUrlCommand(machineName)
-		val temp = ProcessManager.getOutputCommand(command, runtime).replace("tcp", "https")
+		val temp = ProcessManager.getOutputCommand(command, runtime)
 		return temp
 	}
 	

@@ -93,44 +93,27 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
     StringBuilder _append = command.append(dockerMachineCMD);
     String _driverName_1 = this.getDriverName();
     _append.append(_driverName_1);
-    boolean _or = false;
-    String _driverName_2 = this.getDriverName();
-    boolean _equalsIgnoreCase = _driverName_2.equalsIgnoreCase("virtualbox");
-    if (_equalsIgnoreCase) {
-      _or = true;
-    } else {
-      String _driverName_3 = this.getDriverName();
-      boolean _equalsIgnoreCase_1 = _driverName_3.equalsIgnoreCase("vmwarefusion");
-      _or = _equalsIgnoreCase_1;
-    }
-    if (_or) {
-      StringBuilder _append_1 = command.append(" ");
-      String _name_1 = this.compute.getName();
-      _append_1.append(_name_1);
-      this.appendDriverParameters(command);
-    } else {
-      this.appendDriverParameters(command);
-      StringBuilder _append_2 = command.append(" ");
-      String _name_2 = this.compute.getName();
-      _append_2.append(_name_2);
-    }
+    this.appendDriverParameters(command);
+    StringBuilder _append_1 = command.append(" ");
+    String _name_1 = this.compute.getName();
+    _append_1.append(_name_1);
     String _string = command.toString();
     MachineManager.LOGGER.info("CMD : #{}", _string);
     final Map<String, String> activeHosts = DockerUtil.getActiveHosts();
     final Map<String, String> hosts = DockerUtil.getHosts();
-    String _name_3 = this.compute.getName();
-    boolean _containsKey = hosts.containsKey(_name_3);
+    String _name_2 = this.compute.getName();
+    boolean _containsKey = hosts.containsKey(_name_2);
     boolean _not = (!_containsKey);
     if (_not) {
       String _string_1 = command.toString();
       ProcessManager.runCommand(_string_1, runtime, true);
     } else {
-      String _name_4 = this.compute.getName();
-      boolean _containsKey_1 = activeHosts.containsKey(_name_4);
+      String _name_3 = this.compute.getName();
+      boolean _containsKey_1 = activeHosts.containsKey(_name_3);
       boolean _not_1 = (!_containsKey_1);
       if (_not_1) {
-        String _name_5 = this.compute.getName();
-        DockerMachineManager.startCmd(runtime, _name_5);
+        String _name_4 = this.compute.getName();
+        DockerMachineManager.startCmd(runtime, _name_4);
       }
     }
   }
@@ -147,31 +130,14 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
     StringBuilder _append = command.append(dockerMachineCMD);
     String _driverName_1 = this.getDriverName();
     _append.append(_driverName_1);
-    boolean _or = false;
-    String _driverName_2 = this.getDriverName();
-    boolean _equalsIgnoreCase = _driverName_2.equalsIgnoreCase("virtualbox");
-    if (_equalsIgnoreCase) {
-      _or = true;
-    } else {
-      String _driverName_3 = this.getDriverName();
-      boolean _equalsIgnoreCase_1 = _driverName_3.equalsIgnoreCase("vmwarefusion");
-      _or = _equalsIgnoreCase_1;
-    }
-    if (_or) {
-      StringBuilder _append_1 = command.append(" ");
-      String _name_1 = this.compute.getName();
-      _append_1.append(_name_1);
-      this.appendDriverParameters(command);
-    } else {
-      this.appendDriverParameters(command);
-      StringBuilder _append_2 = command.append(" ");
-      String _name_2 = this.compute.getName();
-      _append_2.append(_name_2);
-    }
+    this.appendDriverParameters(command);
+    StringBuilder _append_1 = command.append(" ");
+    String _name_1 = this.compute.getName();
+    _append_1.append(_name_1);
     final Map<String, String> activeHosts = DockerUtil.getActiveHosts();
     final Map<String, String> hosts = DockerUtil.getHosts();
-    String _name_3 = this.compute.getName();
-    boolean _containsKey = hosts.containsKey(_name_3);
+    String _name_2 = this.compute.getName();
+    boolean _containsKey = hosts.containsKey(_name_2);
     boolean _not = (!_containsKey);
     if (_not) {
       String _string = command.toString();
@@ -192,8 +158,8 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
               if ((_target instanceof Container)) {
                 Resource _target_1 = contains.getTarget();
                 final ExecutableContainer con = ((ExecutableContainer) _target_1);
-                String _name_4 = con.getName();
-                boolean _containerIsDeployed = this.containerIsDeployed(_name_4, this.machine);
+                String _name_3 = con.getName();
+                boolean _containerIsDeployed = this.containerIsDeployed(_name_3, this.machine);
                 boolean _not_2 = (!_containerIsDeployed);
                 if (_not_2) {
                   con.createContainer(this.machine);
@@ -210,8 +176,8 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
           for (final Container c : _deploymentOrder) {
             {
               final ExecutableContainer con = ((ExecutableContainer) c);
-              String _name_4 = con.getName();
-              boolean _containerIsDeployed = this.containerIsDeployed(_name_4, this.compute);
+              String _name_3 = con.getName();
+              boolean _containerIsDeployed = this.containerIsDeployed(_name_3, this.compute);
               boolean _not_2 = (!_containerIsDeployed);
               if (_not_2) {
                 con.createContainer(this.machine, dependencies);
@@ -224,12 +190,12 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
         }
       }
     } else {
-      String _name_4 = this.compute.getName();
-      boolean _containsKey_1 = activeHosts.containsKey(_name_4);
+      String _name_3 = this.compute.getName();
+      boolean _containsKey_1 = activeHosts.containsKey(_name_3);
       boolean _not_2 = (!_containsKey_1);
       if (_not_2) {
-        String _name_5 = this.compute.getName();
-        DockerMachineManager.startCmd(runtime, _name_5);
+        String _name_4 = this.compute.getName();
+        DockerMachineManager.startCmd(runtime, _name_4);
         this.compute.setState(ComputeStatus.ACTIVE);
         EList<Link> _links_2 = this.compute.getLinks();
         int _size_1 = _links_2.size();
@@ -246,19 +212,19 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
                 if ((_target instanceof Container)) {
                   Resource _target_1 = contains.getTarget();
                   final ExecutableContainer con = ((ExecutableContainer) _target_1);
-                  String _name_6 = con.getName();
-                  boolean _containerIsDeployed = this.containerIsDeployed(_name_6, this.machine);
+                  String _name_5 = con.getName();
+                  boolean _containerIsDeployed = this.containerIsDeployed(_name_5, this.machine);
                   boolean _not_4 = (!_containerIsDeployed);
                   if (_not_4) {
-                    String _name_7 = con.getName();
-                    String _plus = ("Creating the container: " + _name_7);
+                    String _name_6 = con.getName();
+                    String _plus = ("Creating the container: " + _name_6);
                     MachineManager.LOGGER.info(_plus);
                     con.createContainer(this.machine);
                     MachineManager.LOGGER.info("The container is created");
                     con.start();
                   } else {
-                    String _name_8 = con.getName();
-                    String _plus_1 = ("Trying to start container: " + _name_8);
+                    String _name_7 = con.getName();
+                    String _plus_1 = ("Trying to start container: " + _name_7);
                     MachineManager.LOGGER.info(_plus_1);
                     con.start();
                     MachineManager.LOGGER.info("Started ...");
@@ -271,15 +237,15 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
             for (final Container c_1 : _deploymentOrder_1) {
               {
                 final ExecutableContainer con = ((ExecutableContainer) c_1);
-                String _name_6 = con.getName();
-                boolean _containerIsDeployed = this.containerIsDeployed(_name_6, this.compute);
+                String _name_5 = con.getName();
+                boolean _containerIsDeployed = this.containerIsDeployed(_name_5, this.compute);
                 boolean _not_4 = (!_containerIsDeployed);
                 if (_not_4) {
                   con.createContainer(this.machine, this.containerDependency);
                   con.start();
                 } else {
-                  String _name_7 = con.getName();
-                  String _plus = ("Trying to start container: " + _name_7);
+                  String _name_6 = con.getName();
+                  String _plus = ("Trying to start container: " + _name_6);
                   MachineManager.LOGGER.info(_plus);
                   con.start();
                   MachineManager.LOGGER.info("Started ... ");
@@ -304,15 +270,15 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
                 if ((_target instanceof Container)) {
                   Resource _target_1 = contains.getTarget();
                   final ExecutableContainer con = ((ExecutableContainer) _target_1);
-                  String _name_6 = con.getName();
-                  boolean _containerIsDeployed = this.containerIsDeployed(_name_6, this.machine);
+                  String _name_5 = con.getName();
+                  boolean _containerIsDeployed = this.containerIsDeployed(_name_5, this.machine);
                   boolean _not_5 = (!_containerIsDeployed);
                   if (_not_5) {
                     con.createContainer(this.machine);
                     con.start();
                   } else {
-                    String _name_7 = con.getName();
-                    String _plus = ("Trying to start container: " + _name_7);
+                    String _name_6 = con.getName();
+                    String _plus = ("Trying to start container: " + _name_6);
                     MachineManager.LOGGER.info(_plus);
                     con.start();
                     MachineManager.LOGGER.info("Started ...");
@@ -325,19 +291,19 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
             for (final Container c_2 : _deploymentOrder_2) {
               {
                 final ExecutableContainer con = ((ExecutableContainer) c_2);
-                String _name_6 = con.getName();
-                boolean _containerIsDeployed = this.containerIsDeployed(_name_6, this.compute);
+                String _name_5 = con.getName();
+                boolean _containerIsDeployed = this.containerIsDeployed(_name_5, this.compute);
                 boolean _not_5 = (!_containerIsDeployed);
                 if (_not_5) {
                   con.createContainer(this.machine, this.containerDependency);
-                  String _name_7 = con.getName();
-                  String _plus = ("Trying to start container: " + _name_7);
+                  String _name_6 = con.getName();
+                  String _plus = ("Trying to start container: " + _name_6);
                   MachineManager.LOGGER.info(_plus);
                   con.start();
                   MachineManager.LOGGER.info("Started ... ");
                 } else {
-                  String _name_8 = con.getName();
-                  String _plus_1 = ("Trying to start container: " + _name_8);
+                  String _name_7 = con.getName();
+                  String _plus_1 = ("Trying to start container: " + _name_7);
                   MachineManager.LOGGER.info(_plus_1);
                   MachineManager.LOGGER.info("Started ... ");
                   con.start();

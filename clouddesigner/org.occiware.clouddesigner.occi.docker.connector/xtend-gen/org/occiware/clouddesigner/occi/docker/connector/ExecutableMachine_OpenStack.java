@@ -110,7 +110,7 @@ public class ExecutableMachine_OpenStack extends Machine_OpenStackImpl {
         _append_11.append("default");
       }
       StringBuilder _append_12 = sb.append(" --openstack-ssh-user ");
-      _append_12.append("ubuntu");
+      _append_12.append("occiware");
     }
   };
   
