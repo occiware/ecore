@@ -88,6 +88,7 @@ public class AllocatorImpl implements Allocator {
 		host = null;
 		if (cluster == null) {
 			LOGGER.warn("No cluster defined to allocate a host.");
+			
 		} else {
 			host = HostHelper.findFirstHostSystem(cluster);
 		}

@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.addons.exceptions.VirtualSwitchNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,6 +28,7 @@ import com.vmware.vim25.HostPortGroup;
 import com.vmware.vim25.HostPortGroupSpec;
 import com.vmware.vim25.HostVirtualNicSpec;
 import com.vmware.vim25.HostVirtualSwitch;
+import com.vmware.vim25.HostVirtualSwitchConfig;
 import com.vmware.vim25.HostVirtualSwitchSpec;
 import com.vmware.vim25.MethodFault;
 import com.vmware.vim25.TaskInfo;
@@ -50,6 +52,8 @@ import com.vmware.vim25.VirtualVmxnet3;
 import com.vmware.vim25.mo.Folder;
 import com.vmware.vim25.mo.HostNetworkSystem;
 import com.vmware.vim25.mo.HostSystem;
+import com.vmware.vim25.mo.InventoryNavigator;
+import com.vmware.vim25.mo.ManagedEntity;
 import com.vmware.vim25.mo.Network;
 import com.vmware.vim25.mo.Task;
 import com.vmware.vim25.mo.VirtualMachine;
@@ -70,7 +74,12 @@ public class NetworkHelper {
 	public static final String HOST_SNMP_SYSTEM = "HostSnmpSystem";
 	public static final String HOST_SERVICE_SYSTEM = "HostServiceSystem";
 	public static final String HOST_VMOTION_SYSTEM = "HostVMotionSystem";
+	public static final String DISTRIBUTED_VSWITCH = "DistributedVirtualSwitch";
+	public static final String STANDARD_VSWITCH = "HostVirtualSwitch";
 	// "generated", "manual", "assigned"
+	/**
+	 * Warning: these are for mac address.
+	 */
 	public static final String MODE_NETWORK_ADDRESS_GENERATED = "generated";
 	public static final String MODE_NETWORK_ADDRESS_MANUAL = "manual";
 	public static final String MODE_NETWORK_ADDRESS_ASSIGNED = "assigned";
@@ -161,7 +170,7 @@ public class NetworkHelper {
 		VirtualEthernetCard vEth;
 		
 		Folder rootFolder = VCenterClient.getServiceInstance().getRootFolder();
-		VirtualMachineConfigInfo vmConfig;
+
 		VirtualMachine vm = VMHelper.findVMForName(rootFolder, vmName);
 		
 		VirtualDevice[] vdevices = vm.getConfig().getHardware().getDevice();
@@ -394,10 +403,45 @@ public class NetworkHelper {
 		return portGroupResult;
 	}
 	
-	
-	public static HostVirtualSwitch findVSwitch(HostSystem host, String vSwitchName) {
+	/**
+	 * Find a standard vswitch by name on a host system.
+	 * @param host
+	 * @param vSwitchName
+	 * @return
+	 * @throws VirtualSwitchNotFoundException
+	 */
+	public static HostVirtualSwitch findVSwitch(HostSystem host, String vSwitchName) throws VirtualSwitchNotFoundException {
 		HostVirtualSwitch vSwitch = null;
-		// host.getHostNetworkSystem().getConsoleIpRouteConfig().
+		try {
+			
+			if (vSwitchName == null) {
+				throw new VirtualSwitchNotFoundException("No virtual switch name defined, cant find the vswitch.");
+			}
+			
+			if (host == null) {
+				throw new VirtualSwitchNotFoundException("No host defined, cant find the standard virtual switch : " + vSwitchName);
+			}
+			
+			HostVirtualSwitch[] vswitchs = host.getHostNetworkSystem().getNetworkInfo().getVswitch();	
+			if (vswitchs == null) {
+				throw new VirtualSwitchNotFoundException("The virtual switch : " + vSwitchName + " has not been found on host : " + host.getName());
+			}
+			for (HostVirtualSwitch standardSwitch : vswitchs) {
+				
+				if (standardSwitch.getName().equals(vSwitchName)) {
+					vSwitch = standardSwitch;
+					break;
+				}
+			}
+			if (vSwitch == null) {
+				throw new VirtualSwitchNotFoundException("The virtual switch : " + vSwitchName + " has not been found on host : " + host.getName());
+			}
+
+		} catch (RemoteException ex) {
+			LOGGER.error("Cant find standard virtual switch");
+			LOGGER.error("Message: " + ex.getMessage());
+			ex.printStackTrace();
+		}
 		
 		return vSwitch;
 	}

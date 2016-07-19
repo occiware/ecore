@@ -22,8 +22,10 @@ import org.slf4j.LoggerFactory;
 import com.vmware.vim25.ClusterConfigSpecEx;
 import com.vmware.vim25.mo.ClusterComputeResource;
 import com.vmware.vim25.mo.Datacenter;
+import com.vmware.vim25.mo.Folder;
 import com.vmware.vim25.mo.InventoryNavigator;
 import com.vmware.vim25.mo.ManagedEntity;
+import com.vmware.vim25.mo.ServiceInstance;
 
 public class ClusterHelper {
 	private static Logger LOGGER = LoggerFactory.getLogger(ClusterHelper.class);
@@ -55,8 +57,16 @@ public class ClusterHelper {
 	public static ClusterComputeResource findFirstCluster(final Datacenter dc) {
 		ClusterComputeResource cluster = null;
 		try {
-			// Search for the first cluster found and assign it.
-			ManagedEntity[] clusters = new InventoryNavigator(dc).searchManagedEntities("ClusterComputeResource");
+			ServiceInstance si = VCenterClient.getServiceInstance();
+			Folder rootFolder = si.getRootFolder();	
+			ManagedEntity[] clusters = null;
+			if (dc != null) {
+				// Search for the first cluster found and assign it.
+				clusters = new InventoryNavigator(dc).searchManagedEntities("ClusterComputeResource");
+			
+			} else {
+				clusters = new InventoryNavigator(rootFolder).searchManagedEntities("ClusterComputeResource");
+			}
 			if (clusters != null && clusters.length > 0) {
 				// Get the first.
 				cluster = (ClusterComputeResource) clusters[0];

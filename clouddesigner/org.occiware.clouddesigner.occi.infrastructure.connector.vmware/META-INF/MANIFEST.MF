@@ -16,7 +16,12 @@ Bundle-Vendor: OCCIWARE
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.slf4j.api,
+ org.eclipse.pde.ui,
+ org.eclipse.emf.edit.ui,
+ org.occiware.clouddesigner.occi.design;bundle-version="0.1.0",
  org.occiware.clouddesigner.occi,
- org.occiware.clouddesigner.occi.infrastructure
+ org.occiware.clouddesigner.occi.infrastructure,
+ org.eclipse.emf.transaction;bundle-version="1.9.0"
 Export-Package: org.occiware.clouddesigner.occi.infrastructure.connector.vmware,
  org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils
+Import-Package: org.eclipse.core.runtime
