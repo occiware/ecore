@@ -13,6 +13,8 @@
 package org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.thread;
 
 import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.transaction.RecordingCommand;
@@ -35,104 +37,98 @@ import org.slf4j.LoggerFactory;
  */
 public class EntityUtils {
 	private static Logger LOGGER = LoggerFactory.getLogger(EntityUtils.class);
+
 	private static final String DELETE_ATTR = "delete";
 	private static final String ADD_ATTR = "add";
 	private static final String UPDATE_ATTR = "update";
 
+
 	/**
-	 * Update an attribute value within a transaction.
-	 * 
+	 * Create, update or delete some attributes on model Entity.
+	 *  
 	 * @param entity
-	 * @param attrName
-	 * @param attrValue
+	 * @param attrsToCreate 
+	 * @param attrsToUpdate
+	 * @param attrsToDelete
 	 */
-	public static void updateAttribute(Entity entity, final String attrName, final String attrValue) {
-		// Update the attribute.
-
-		AttributeState attr = getAttributeStateObject(entity, attrName);
-
-		executeTransaction(entity, UPDATE_ATTR, attr, attrName, attrValue);
-
+	public static void updateAttributes(final Entity entity, final Map<String, String> attrsToCreate,
+			final Map<String, String> attrsToUpdate, final List<String> attrsToDelete) {
+		
+		if (!UIDialog.isStandAlone()) {
+			// Cloud designer usage.
+			TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(entity.eResource().getResourceSet());
+			Command cmd = new RecordingCommand(domain) {
+				@Override
+				protected void doExecute() {
+					executeOperations(entity, attrsToCreate, attrsToUpdate, attrsToDelete);
+				}
+			};
+			try {
+				TransactionalCommandStack transactionCmd = (TransactionalCommandStack) domain.getCommandStack();
+				transactionCmd.execute(cmd, null); // default options
+			} catch (RollbackException rbe) {
+				LOGGER.error(rbe.getStatus().toString());
+			} catch (InterruptedException ex) {
+				LOGGER.error(ex.getMessage());
+			}
+		} else {
+			// Standalone connector usage.
+			executeOperations(entity, attrsToCreate, attrsToUpdate, attrsToDelete);
+		}
+		
+	}
+	
+	
+	private static void executeOperations(Entity entity, Map<String, String> attrsToCreate,
+			Map<String, String> attrsToUpdate, List<String> attrsToDelete) {
+		String attrName;
+		String attrValue;
+		for (Map.Entry<String, String> attr : attrsToCreate.entrySet()) {
+			attrName = attr.getKey();
+			attrValue = attr.getValue();
+			AttributeState attrState = createAttribute(attrName, attrValue);
+			executeOperation(entity, ADD_ATTR, attrState, null, null);
+		}
+		for (Map.Entry<String, String> attr : attrsToUpdate.entrySet()) {
+			attrName = attr.getKey();
+			attrValue = attr.getValue();
+			AttributeState attrState = getAttributeStateObject(entity, attrName);
+			executeOperation(entity, ADD_ATTR, attrState, attrName, attrValue);
+		}
+		
+		for (String name : attrsToDelete) {
+			AttributeState attrState = getAttributeStateObject(entity, name);
+			executeOperation(entity, ADD_ATTR, attrState, name, null);
+		}
+		
+		
 	}
 
-	/**
-	 * Create an attribute within a transaction.
-	 * 
-	 * @param entity
-	 * @param attrName
-	 * @param attrValue
-	 */
-	public static void createAttribute(Entity entity, final String attrName, final String attrValue) {
-		AttributeState attr = createAttribute(attrName, attrValue);
+	private static void executeOperation(final Entity entity, final String operation, final AttributeState attr,
+			final String attrName, final String attrValue) {
+		switch (operation) {
+		case UPDATE_ATTR:
 
-		executeTransaction(entity, ADD_ATTR, attr, attrName, attrValue);
+			if (attr != null) {
+				attr.setValue(attrValue);
+			}
+			break;
 
-	}
+		case DELETE_ATTR:
 
-	/**
-	 * Remove an attribute from entity within a transaction.
-	 * 
-	 * @param entity
-	 * @param attrName
-	 */
-	public static void removeAttribute(Entity entity, String attrName) {
-		AttributeState attr = getAttributeStateObject(entity, attrName);
-		executeTransaction(entity, DELETE_ATTR, attr, attrName, null);
-
-	}
-
-	/**
-	 * Execute a transaction emf command for the operation.
-	 * 
-	 * @param entity
-	 *            {@link Entity}
-	 * @param operation
-	 * @param attr
-	 *            {@link AttributeState}
-	 * @param attrName
-	 * @param attrValue
-	 */
-	private static void executeTransaction(final Entity entity, final String operation, final AttributeState attr, final String attrName,
-			final String attrValue) {
-		TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(entity.eResource().getResourceSet());
-		Command cmd = new RecordingCommand(domain) {
-			@Override
-			protected void doExecute() {
-				switch (operation) {
-				case UPDATE_ATTR:
-
-					if (attr != null) {
-						attr.setValue(attrValue);
-					}
-					break;
-
-				case DELETE_ATTR:
-
-					Iterator<AttributeState> it = entity.getAttributes().iterator();
-					while (it.hasNext()) {
-						if (it.equals(attr)) {
-							it.remove();
-							break;
-						}
-					}
-					break;
-
-				case ADD_ATTR:
-					entity.getAttributes().add(attr);
+			Iterator<AttributeState> it = entity.getAttributes().iterator();
+			while (it.hasNext()) {
+				if (it.equals(attr)) {
+					it.remove();
 					break;
 				}
-
 			}
-		};
-		try {
-			TransactionalCommandStack transactionCmd = (TransactionalCommandStack) domain.getCommandStack();
-			transactionCmd.execute(cmd, null); // default options
-		} catch (RollbackException rbe) {
-			LOGGER.error(rbe.getStatus().toString());
-		} catch (InterruptedException ex) {
-			LOGGER.error(ex.getMessage());
-		}
+			break;
 
+		case ADD_ATTR:
+			entity.getAttributes().add(attr);
+			break;
+		}
 	}
 
 	/**
@@ -172,5 +168,9 @@ public class EntityUtils {
 
 		return attr;
 	}
+
+	
+
+	
 
 }
