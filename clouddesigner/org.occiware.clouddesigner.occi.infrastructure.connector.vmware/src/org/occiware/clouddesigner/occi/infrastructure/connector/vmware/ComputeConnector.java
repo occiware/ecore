@@ -16,9 +16,8 @@ package org.occiware.clouddesigner.occi.infrastructure.connector.vmware;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
+
 
 import org.eclipse.emf.common.util.EList;
 import org.occiware.clouddesigner.occi.AttributeState;
@@ -28,7 +27,6 @@ import org.occiware.clouddesigner.occi.Extension;
 import org.occiware.clouddesigner.occi.Kind;
 import org.occiware.clouddesigner.occi.Link;
 import org.occiware.clouddesigner.occi.Mixin;
-import org.occiware.clouddesigner.occi.OCCIFactory;
 import org.occiware.clouddesigner.occi.Resource;
 import org.occiware.clouddesigner.occi.infrastructure.Architecture;
 import org.occiware.clouddesigner.occi.infrastructure.ComputeStatus;
@@ -40,7 +38,6 @@ import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.Hos
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.NetworkHelper;
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.VCenterClient;
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.VMHelper;
-import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.VolumeHelper;
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.thread.EntityUtils;
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.thread.UIDialog;
 import org.occiware.clouddesigner.occi.util.OcciHelper;

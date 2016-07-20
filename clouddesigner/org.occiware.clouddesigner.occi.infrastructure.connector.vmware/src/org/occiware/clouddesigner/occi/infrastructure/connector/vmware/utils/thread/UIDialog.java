@@ -51,7 +51,7 @@ public class UIDialog {
 	 * 
 	 * @param runnable
 	 */
-	public static void executeActionThread(Runnable runnable) {
+	public static void executeActionThread(final Runnable runnable) {
 
 		try {
 

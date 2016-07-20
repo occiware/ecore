@@ -46,7 +46,7 @@ public class EntityUtils {
 	 * @param attrName
 	 * @param attrValue
 	 */
-	public static void updateAttribute(Entity entity, String attrName, String attrValue) {
+	public static void updateAttribute(Entity entity, final String attrName, final String attrValue) {
 		// Update the attribute.
 
 		AttributeState attr = getAttributeStateObject(entity, attrName);
@@ -62,7 +62,7 @@ public class EntityUtils {
 	 * @param attrName
 	 * @param attrValue
 	 */
-	public static void createAttribute(Entity entity, String attrName, String attrValue) {
+	public static void createAttribute(Entity entity, final String attrName, final String attrValue) {
 		AttributeState attr = createAttribute(attrName, attrValue);
 
 		executeTransaction(entity, ADD_ATTR, attr, attrName, attrValue);
@@ -92,8 +92,8 @@ public class EntityUtils {
 	 * @param attrName
 	 * @param attrValue
 	 */
-	private static void executeTransaction(Entity entity, String operation, AttributeState attr, String attrName,
-			String attrValue) {
+	private static void executeTransaction(final Entity entity, final String operation, final AttributeState attr, final String attrName,
+			final String attrValue) {
 		TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(entity.eResource().getResourceSet());
 		Command cmd = new RecordingCommand(domain) {
 			@Override
