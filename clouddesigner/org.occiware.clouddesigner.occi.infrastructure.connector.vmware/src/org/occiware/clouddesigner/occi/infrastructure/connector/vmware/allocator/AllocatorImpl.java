@@ -140,8 +140,15 @@ public class AllocatorImpl implements Allocator {
 	
 
 	public ResourcePool allocateResourcePool() {
-		// TODO Auto-generated method stub
-		return null;
+		ResourcePool rp = null;
+		try { 
+			rp = (ResourcePool) new InventoryNavigator(dc).searchManagedEntities("ResourcePool")[0];
+		} catch (RemoteException ex) {
+			LOGGER.error("Error while searching a resource pool to allocate from the datacenter:  " + dc.getName());
+			LOGGER.error("Message: " + ex.getMessage());
+			ex.printStackTrace();
+		}
+		return rp;
 	}
 
 	public Folder getRootFolder() {

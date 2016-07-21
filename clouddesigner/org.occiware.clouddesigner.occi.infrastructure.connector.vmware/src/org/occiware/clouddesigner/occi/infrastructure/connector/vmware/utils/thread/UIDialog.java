@@ -51,22 +51,34 @@ public class UIDialog {
 	 * 
 	 * @param runnable
 	 */
-	public static void executeActionThread(final Runnable runnable) {
+	public static void executeActionThread(final IRunnableWithProgress runnable, final String actionName) {
 
 		try {
 
 			if (standaloneMode) {
-				Thread thread = new Thread(runnable);
-				thread.start();
-
+				Runnable runnableStand = new Runnable() {
+					
+					@Override
+					public void run() {
+						try {
+							runnable.run(null);
+						} catch (Exception ex) {
+							LOGGER.error("Error while executing action: " + actionName, ex.getCause());
+							ex.printStackTrace();
+						}
+					}
+				};
+				Thread actionThread = new Thread(runnableStand);
+				actionThread.start();
+				
 			} else {
 				IRunnableWithProgress runnableWithProgress = new IRunnableWithProgress() {
 
 					@Override
 					public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
 						if (!monitor.isCanceled()) {
-							monitor.beginTask("operation in progress...", 0);
-							runnable.run();
+							monitor.beginTask("Operation in progress : " + actionName, 0);
+							runnable.run(monitor);
 							monitor.done();
 						} else {
 							return;
@@ -74,11 +86,12 @@ public class UIDialog {
 					}
 				};
 				Shell shell = getCurrentShell();
-				
+
 				ProgressMonitorDialog dialog = new ProgressMonitorDialog(shell);
-				dialog.setOpenOnRun(true);
 				
-				dialog.run(false, true, runnableWithProgress);
+				dialog.setOpenOnRun(true);
+
+				dialog.run(true, true, runnableWithProgress);
 
 			}
 
@@ -100,13 +113,18 @@ public class UIDialog {
 			Shell shell = getCurrentShell();
 			result = MessageDialog.openConfirm(shell, "Confirm", "Please confirm the action");
 		} else {
-			result = true; // no confirmation in standalone mode.
+			result = false; // no confirmation in standalone mode.
 		}
 		return result;
 	}
 
+	public static boolean isStandAlone() {
+		return standaloneMode;
+	}
+
 	/**
 	 * Get the current shell of the current display.
+	 * 
 	 * @return
 	 */
 	private static Shell getCurrentShell() {
