@@ -83,8 +83,6 @@ public class DockerContainerManager {
   
   private StatsCallback stats = null;
   
-  private Boolean setStats = Boolean.valueOf(false);
-  
   public DockerContainerManager() {
   }
   
@@ -99,16 +97,12 @@ public class DockerContainerManager {
     DockerContainerManager.dockerClient = _setConfig;
   }
   
-  public DockerContainerManager(final Machine machine, final EventCallBack event, final StatsCallback stats) {
+  public DockerContainerManager(final Machine machine, final EventCallBack event) {
     String _name = machine.getName();
     DockerClient _setConfig = this.setConfig(_name, this.properties);
     DockerContainerManager.dockerClient = _setConfig;
     EventsCmd _eventsCmd = DockerContainerManager.dockerClient.eventsCmd();
     _eventsCmd.<EventCallBack>exec(event);
-    String _name_1 = machine.getName();
-    StatsCmd _statsCmd = DockerContainerManager.dockerClient.statsCmd(_name_1);
-    _statsCmd.<StatsCallback>exec(stats);
-    this.stats = stats;
   }
   
   public Map<DockerClient, CreateContainerResponse> createContainer(final Machine machine, final Container container) {
@@ -133,8 +127,7 @@ public class DockerContainerManager {
     String _id = rcontainer.getId();
     container.setContainerid(_id);
     String _containerid = container.getContainerid();
-    String _plus = ("Set the ContainerID : " + _containerid);
-    DockerContainerManager.LOGGER.info(_plus);
+    DockerContainerManager.LOGGER.info("Created container: {}", _containerid);
     result.put(DockerContainerManager.dockerClient, rcontainer);
     return result;
   }
@@ -161,8 +154,7 @@ public class DockerContainerManager {
     String _id = rcontainer.getId();
     container.setContainerid(_id);
     String _containerid = container.getContainerid();
-    String _plus = ("Set the ContainerID : " + _containerid);
-    DockerContainerManager.LOGGER.info(_plus);
+    DockerContainerManager.LOGGER.info("Created container: {}", _containerid);
     result.put(DockerContainerManager.dockerClient, rcontainer);
     return result;
   }
@@ -609,9 +601,15 @@ public class DockerContainerManager {
       String _containerid = container.getContainerid();
       StartContainerCmd _startContainerCmd = DockerContainerManager.dockerClient.startContainerCmd(_containerid);
       _startContainerCmd.exec();
+      DockerContainerManager.LOGGER.info("Starting metrics collection");
+      String _name_2 = machine.getName();
+      DockerClient _setConfig_1 = this.setConfig(_name_2, this.properties);
+      DockerContainerManager.dockerClient = _setConfig_1;
       String _containerid_1 = container.getContainerid();
       StatsCmd _statsCmd = DockerContainerManager.dockerClient.statsCmd(_containerid_1);
-      _xblockexpression = _statsCmd.<StatsCallback>exec(this.stats);
+      String _containerid_2 = container.getContainerid();
+      StatsCallback _statsCallback = new StatsCallback(_containerid_2);
+      _xblockexpression = _statsCmd.<StatsCallback>exec(_statsCallback);
     }
     return _xblockexpression;
   }
@@ -636,8 +634,13 @@ public class DockerContainerManager {
       }
       StartContainerCmd _startContainerCmd = DockerContainerManager.dockerClient.startContainerCmd(containerId);
       _startContainerCmd.exec();
+      DockerContainerManager.LOGGER.info("Starting metrics collection");
+      String _name_3 = machine.getName();
+      DockerClient _setConfig_2 = this.setConfig(_name_3, this.properties);
+      DockerContainerManager.dockerClient = _setConfig_2;
       StatsCmd _statsCmd = DockerContainerManager.dockerClient.statsCmd(containerId);
-      _xblockexpression = _statsCmd.<StatsCallback>exec(this.stats);
+      StatsCallback _statsCallback = new StatsCallback(containerId);
+      _xblockexpression = _statsCmd.<StatsCallback>exec(_statsCallback);
     }
     return _xblockexpression;
   }
@@ -845,7 +848,8 @@ public class DockerContainerManager {
         String _trim_4 = _url.trim();
         DockerClientConfig.DockerClientConfigBuilder _withRegistryUrl = _withRegistryEmail.withRegistryUrl(_trim_4);
         DockerClientConfig.DockerClientConfigBuilder _withDockerCertPath = _withRegistryUrl.withDockerCertPath(certPath);
-        DockerClientConfig.DockerClientConfigBuilder _withDockerConfig = _withDockerCertPath.withDockerConfig("/Users/spirals/.docker");
+        DockerClientConfig.DockerClientConfigBuilder _withDockerConfig = _withDockerCertPath.withDockerConfig(
+          "/Users/spirals/.docker");
         DockerClientConfig _build = _withDockerConfig.build();
         config = _build;
       }
@@ -872,7 +876,8 @@ public class DockerContainerManager {
         String _string_5 = _get_4.toString();
         DockerClientConfig.DockerClientConfigBuilder _withRegistryUrl_1 = _withRegistryEmail_1.withRegistryUrl(_string_5);
         DockerClientConfig.DockerClientConfigBuilder _withDockerCertPath_1 = _withRegistryUrl_1.withDockerCertPath(certPath);
-        DockerClientConfig.DockerClientConfigBuilder _withDockerConfig_1 = _withDockerCertPath_1.withDockerConfig("/Users/spirals/.docker");
+        DockerClientConfig.DockerClientConfigBuilder _withDockerConfig_1 = _withDockerCertPath_1.withDockerConfig(
+          "/Users/spirals/.docker");
         DockerClientConfig _build_1 = _withDockerConfig_1.build();
         config = _build_1;
       } else {

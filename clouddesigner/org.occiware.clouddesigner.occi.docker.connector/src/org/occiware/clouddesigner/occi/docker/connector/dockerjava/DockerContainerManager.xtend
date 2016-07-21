@@ -66,29 +66,23 @@ class DockerContainerManager {
 
 	private StatsCallback stats = null
 
-	private Boolean setStats = false
-
 	new() {
 	}
 
 	new(Machine machine) {
 		dockerClient = setConfig(machine.name, properties)
+
 	}
 
 	new(String machineName) {
 		dockerClient = setConfig(machineName, properties)
 	}
 
-	new(Machine machine, EventCallBack event, StatsCallback stats) {
+	new(Machine machine, EventCallBack event) {
 		dockerClient = setConfig(machine.name, properties)
 
 		// listened to Events
 		dockerClient.eventsCmd().exec(event)
-
-		// Collect statistic
-		dockerClient.statsCmd(machine.name).exec(stats)
-		this.stats = stats
-
 	}
 
 	def createContainer(Machine machine, Container container) {
@@ -108,7 +102,7 @@ class DockerContainerManager {
 
 		// Set container ID
 		container.containerid = rcontainer.id
-		LOGGER.info("Set the ContainerID : " + container.containerid)
+		LOGGER.info("Created container: {}", container.containerid)
 
 		result.put(dockerClient, rcontainer)
 		return result
@@ -130,7 +124,7 @@ class DockerContainerManager {
 
 		// Set container ID
 		container.containerid = rcontainer.id
-		LOGGER.info("Set the ContainerID : " + container.containerid)
+		LOGGER.info("Created container: {}", container.containerid)
 
 		result.put(dockerClient, rcontainer)
 		return result
@@ -373,8 +367,14 @@ class DockerContainerManager {
 		// Start the container
 		dockerClient.startContainerCmd(container.containerid).exec
 
-		// listened to Events
-//		dockerClient.statsCmd(container.containerid).exec(this.stats)
+		// Collect monitoring data
+		LOGGER.info("Starting metrics collection");
+		
+		// load new docker client to Fix blocking Thread problem.
+		dockerClient = setConfig(machine.name, properties)
+		
+		dockerClient.statsCmd(container.containerid).exec(new StatsCallback(container.containerid))
+
 	}
 
 	def startContainer(Machine machine, String containerId) {
@@ -388,8 +388,11 @@ class DockerContainerManager {
 		// Start the container
 		dockerClient.startContainerCmd(containerId).exec
 
-		// listened to the stats Events
-//		dockerClient.statsCmd(containerId).exec(this.stats)
+		// Collect monitoring data
+		LOGGER.info("Starting metrics collection");
+		// load new docker client to Fix blocking Thread problem.
+		dockerClient = setConfig(machine.name, properties)
+		dockerClient.statsCmd(containerId).exec(new StatsCallback(containerId))
 	}
 
 	def stopContainer(Machine machine, Container container) {
@@ -534,20 +537,22 @@ class DockerContainerManager {
 		LOGGER.info("Connection inside machine: " + machine + " with uri: " + dockerHost.toString)
 		try {
 			if (properties.version != null) {
-				config = DockerClientConfig.createDefaultConfigBuilder.withApiVersion(properties.version.trim).withDockerHost(
-					dockerHost).withDockerTlsVerify(true).withRegistryUsername(properties.username.trim).withRegistryPassword(properties.password.trim).withRegistryEmail(
-					properties.email.trim).withRegistryUrl(properties.url.trim).withDockerCertPath(certPath).withDockerConfig("/Users/spirals/.docker").build()
+				config = DockerClientConfig.createDefaultConfigBuilder.withApiVersion(properties.version.trim).
+					withDockerHost(dockerHost).withDockerTlsVerify(true).withRegistryUsername(properties.username.trim).
+					withRegistryPassword(properties.password.trim).withRegistryEmail(properties.email.trim).
+					withRegistryUrl(properties.url.trim).withDockerCertPath(certPath).withDockerConfig(
+						"/Users/spirals/.docker").build()
 
 			}
 		} catch (Exception exception) {
 			LOGGER.error("Loading docker-java properties files ...")
 			config = DockerClientConfig.createDefaultConfigBuilder.withApiVersion(
-				dockerProperties.get("docker.version").toString).withDockerHost(dockerHost).withDockerTlsVerify(true).withRegistryUsername(
-				dockerProperties.get("docker.username").toString).withRegistryPassword(
-				dockerProperties.get("docker.password").toString).withRegistryEmail(
-				dockerProperties.get("docker.email").toString).withRegistryUrl(
-				dockerProperties.get("docker.url").toString).withDockerCertPath(certPath).
-				withDockerConfig("/Users/spirals/.docker").build()
+				dockerProperties.get("docker.version").toString).withDockerHost(dockerHost).withDockerTlsVerify(true).
+				withRegistryUsername(dockerProperties.get("docker.username").toString).withRegistryPassword(
+					dockerProperties.get("docker.password").toString).withRegistryEmail(
+					dockerProperties.get("docker.email").toString).withRegistryUrl(
+					dockerProperties.get("docker.url").toString).withDockerCertPath(certPath).withDockerConfig(
+					"/Users/spirals/.docker").build()
 		}
 		val DockerClient dockerClient = DockerClientBuilder.getInstance(config).build()
 
