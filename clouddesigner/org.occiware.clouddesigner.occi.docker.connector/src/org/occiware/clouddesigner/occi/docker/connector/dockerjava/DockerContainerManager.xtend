@@ -535,13 +535,14 @@ class DockerContainerManager {
 		LOGGER.info("ENDPOINT : " + ENDPOINT)
 		val dockerHost = ENDPOINT.trim
 		LOGGER.info("Connection inside machine: " + machine + " with uri: " + dockerHost.toString)
+		var dockerHome = System.getProperty("user.home") + File.separator + ".docker"
 		try {
 			if (properties.version != null) {
 				config = DockerClientConfig.createDefaultConfigBuilder.withApiVersion(properties.version.trim).
 					withDockerHost(dockerHost).withDockerTlsVerify(true).withRegistryUsername(properties.username.trim).
 					withRegistryPassword(properties.password.trim).withRegistryEmail(properties.email.trim).
 					withRegistryUrl(properties.url.trim).withDockerCertPath(certPath).withDockerConfig(
-						"/Users/spirals/.docker").build()
+						dockerHome).build()
 
 			}
 		} catch (Exception exception) {
@@ -552,11 +553,11 @@ class DockerContainerManager {
 					dockerProperties.get("docker.password").toString).withRegistryEmail(
 					dockerProperties.get("docker.email").toString).withRegistryUrl(
 					dockerProperties.get("docker.url").toString).withDockerCertPath(certPath).withDockerConfig(
-					"/Users/spirals/.docker").build()
+					dockerHome).build()
 		}
 		val DockerClient dockerClient = DockerClientBuilder.getInstance(config).build()
 
-		// Set the current machine
+		// Set the new machine as the current
 		currentMachine = machine
 		return dockerClient
 	}

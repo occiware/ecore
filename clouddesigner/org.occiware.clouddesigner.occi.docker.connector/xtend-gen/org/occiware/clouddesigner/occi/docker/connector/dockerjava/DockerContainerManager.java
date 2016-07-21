@@ -825,6 +825,9 @@ public class DockerContainerManager {
     String _string = dockerHost.toString();
     String _plus = ((("Connection inside machine: " + machine) + " with uri: ") + _string);
     DockerContainerManager.LOGGER.info(_plus);
+    String _property = System.getProperty("user.home");
+    String _plus_1 = (_property + File.separator);
+    String dockerHome = (_plus_1 + ".docker");
     try {
       String _version = properties.getVersion();
       boolean _notEquals = (!Objects.equal(_version, null));
@@ -848,8 +851,7 @@ public class DockerContainerManager {
         String _trim_4 = _url.trim();
         DockerClientConfig.DockerClientConfigBuilder _withRegistryUrl = _withRegistryEmail.withRegistryUrl(_trim_4);
         DockerClientConfig.DockerClientConfigBuilder _withDockerCertPath = _withRegistryUrl.withDockerCertPath(certPath);
-        DockerClientConfig.DockerClientConfigBuilder _withDockerConfig = _withDockerCertPath.withDockerConfig(
-          "/Users/spirals/.docker");
+        DockerClientConfig.DockerClientConfigBuilder _withDockerConfig = _withDockerCertPath.withDockerConfig(dockerHome);
         DockerClientConfig _build = _withDockerConfig.build();
         config = _build;
       }
@@ -876,8 +878,7 @@ public class DockerContainerManager {
         String _string_5 = _get_4.toString();
         DockerClientConfig.DockerClientConfigBuilder _withRegistryUrl_1 = _withRegistryEmail_1.withRegistryUrl(_string_5);
         DockerClientConfig.DockerClientConfigBuilder _withDockerCertPath_1 = _withRegistryUrl_1.withDockerCertPath(certPath);
-        DockerClientConfig.DockerClientConfigBuilder _withDockerConfig_1 = _withDockerCertPath_1.withDockerConfig(
-          "/Users/spirals/.docker");
+        DockerClientConfig.DockerClientConfigBuilder _withDockerConfig_1 = _withDockerCertPath_1.withDockerConfig(dockerHome);
         DockerClientConfig _build_1 = _withDockerConfig_1.build();
         config = _build_1;
       } else {
