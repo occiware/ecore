@@ -14,11 +14,9 @@ package org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils;
 
 import java.rmi.RemoteException;
 
-import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.ComputeConnector;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.vmware.vim25.Description;
 import com.vmware.vim25.InvalidProperty;
 import com.vmware.vim25.RuntimeFault;
 import com.vmware.vim25.VirtualDeviceConfigSpec;
@@ -26,15 +24,12 @@ import com.vmware.vim25.VirtualDeviceConfigSpecFileOperation;
 import com.vmware.vim25.VirtualDeviceConfigSpecOperation;
 import com.vmware.vim25.VirtualDisk;
 import com.vmware.vim25.VirtualDiskFlatVer2BackingInfo;
-import com.vmware.vim25.VirtualEthernetCard;
-import com.vmware.vim25.VirtualEthernetCardNetworkBackingInfo;
 import com.vmware.vim25.VirtualHardware;
 import com.vmware.vim25.VirtualLsiLogicController;
 import com.vmware.vim25.VirtualMachineConfigSpec;
 import com.vmware.vim25.VirtualMachinePowerState;
 import com.vmware.vim25.VirtualMachineQuickStats;
 import com.vmware.vim25.VirtualMachineToolsStatus;
-import com.vmware.vim25.VirtualPCNet32;
 import com.vmware.vim25.VirtualSCSISharing;
 import com.vmware.vim25.mo.Folder;
 import com.vmware.vim25.mo.HostSystem;
@@ -63,19 +58,18 @@ public class VMHelper {
 	 * The virtual machine is currently powered on.
 	 */
 	public static final String POWER_ON = "poweredOn";
-	
+
 	public static final int POWER_ON_INT = 1;
 	public static final int POWER_OFF_INT = 0;
-	
+
 	/**
 	 * The virtual machine is currently suspended.
 	 */
 	public static final String SUSPENDED = "suspended";
 	public static final int SUSPENDED_INT = 2;
 
-	
 	public static final String VIRTUAL_MACHINE = "VirtualMachine";
-	
+
 	/**
 	 * Search for a VirtualMachine on tree folder for a name.
 	 * 
@@ -87,8 +81,7 @@ public class VMHelper {
 		VirtualMachine vm = null;
 
 		try {
-			vm = (VirtualMachine) new InventoryNavigator(folder).searchManagedEntity(VIRTUAL_MACHINE,
-					name);
+			vm = (VirtualMachine) new InventoryNavigator(folder).searchManagedEntity(VIRTUAL_MACHINE, name);
 
 		} catch (RemoteException ex) {
 			LOGGER.error("Error while searching a virtual machine : " + name + " --> " + ex.getMessage());
@@ -169,8 +162,6 @@ public class VMHelper {
 
 		return diskSpec;
 	}
-
-	
 
 	/**
 	 * Set or unset the hotReconfig option. (to reconfig a vm cpu and memory,
@@ -353,8 +344,7 @@ public class VMHelper {
 		}
 		return nbCore;
 	}
-	
-	
+
 	public static Integer getNumCPU(final VirtualMachine vm) {
 		Integer nbCpu = 0;
 		if (vm != null) {
@@ -481,7 +471,7 @@ public class VMHelper {
 	 */
 	public static String getGuestHostname(final VirtualMachine vm) {
 		String hostname = null;
-		if (vm != null && isToolsInstalled(vm) && isToolsRunning(vm) ) {
+		if (vm != null && isToolsInstalled(vm) && isToolsRunning(vm)) {
 			hostname = vm.getGuest().getHostName();
 		}
 		return hostname;
@@ -818,31 +808,18 @@ public class VMHelper {
 	 * 
 	 * @param vm
 	 */
-	public static void powerOn(VirtualMachine vm) {
+	public static boolean powerOn(VirtualMachine vm) throws RemoteException, InterruptedException {
 		Task task = null;
 		boolean retVal = false;
 		String vmName = vm.getName();
-		try {
-			task = vm.powerOnVM_Task(null);
 
-			if (task != null) {
-				try {
-					retVal = task.waitForTask().equals(Task.SUCCESS);
-					if (retVal) {
-						LOGGER.info("VM " + vmName + " switched On");
-					} else {
-						LOGGER.info("VM " + vmName + " cannot be switched on");
-					}
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			} else {
-				LOGGER.warn("Cannot start Virtual Machine : " + vmName);
-			}
-		} catch (RemoteException ex) {
-			LOGGER.error("Error while starting a virtual machine : " + vmName);
-			ex.printStackTrace();
+		task = vm.powerOnVM_Task(null);
+		if (task != null) {
+			retVal = task.waitForTask().equals(Task.SUCCESS);
+		} else {
+			LOGGER.warn("Cannot start Virtual Machine : " + vmName);
 		}
+		return retVal;
 
 	}
 
@@ -852,21 +829,19 @@ public class VMHelper {
 	 * 
 	 * @param vm
 	 */
-	public static void graceFulPowerOff(VirtualMachine vm) {
+	public static boolean graceFulPowerOff(VirtualMachine vm) throws RemoteException, InterruptedException {
 		String vmName = vm.getName();
-		try {
-			if (isToolsInstalled(vm) && isToolsRunning(vm)) {
-				vm.shutdownGuest();
-				LOGGER.info("OS of the VM " + vmName + " will be stopped");
-
-			} else {
-				LOGGER.info("OS of the VM " + vmName + " cannot be stopped, do you have installed the vmware tools ?");
-				powerOff(vm);
-			}
-		} catch (RemoteException ex) {
-			LOGGER.error("Error while stopping the virtual machine " + vmName + " message:" + ex.getMessage());
-			ex.printStackTrace();
+		boolean result = false;
+		if (isToolsInstalled(vm) && isToolsRunning(vm)) {
+			vm.shutdownGuest();
+			result = true;
+			LOGGER.info("OS of the VM " + vmName + " will be stopped");
+		} else {
+			LOGGER.info("OS of the VM " + vmName + " cannot be stopped, do you have installed the vmware tools ?");
+			result = powerOff(vm);
+			
 		}
+		return result;
 	}
 
 	/**
@@ -874,31 +849,19 @@ public class VMHelper {
 	 * 
 	 * @param vm
 	 */
-	public static void powerOff(VirtualMachine vm) {
+	public static boolean powerOff(VirtualMachine vm) throws RemoteException, InterruptedException {
 		Task task = null;
 		boolean retVal = false;
 		String vmName = vm.getName();
-		try {
+		
 			task = vm.powerOffVM_Task();
 
 			if (task != null) {
-				try {
 					retVal = task.waitForTask().equals(Task.SUCCESS);
-					if (retVal) {
-						LOGGER.info("VM " + vmName + " switched Off");
-					} else {
-						LOGGER.info("VM " + vmName + " cannot be switched off");
-					}
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
 			} else {
 				LOGGER.warn("Cannot stop Virtual Machine : " + vmName);
 			}
-		} catch (RemoteException ex) {
-			LOGGER.error("Error while stopping a virtual machine : " + vmName);
-			ex.printStackTrace();
-		}
+		return retVal;
 	}
 
 	/**
@@ -906,19 +869,16 @@ public class VMHelper {
 	 * 
 	 * @param vm
 	 */
-	public static void rebootGuest(VirtualMachine vm) {
+	public static boolean rebootGuest(VirtualMachine vm) throws RemoteException {
+		boolean result = false;
 		if (isToolsInstalled(vm) && isToolsRunning(vm)) {
-			try {
-				vm.rebootGuest();
-
-			} catch (RemoteException ex) {
-				LOGGER.error("Error while rebooting the virtual machine " + vm.getName());
-				ex.printStackTrace();
-			}
+			vm.rebootGuest();
+			result = true;
 		} else {
 			LOGGER.error("There is no vmware tools installed and/or running, cant reboot the guest system.");
 			LOGGER.warn("please install vmware tools to use this operation.");
 		}
+		return result;
 	}
 
 	/**
@@ -926,11 +886,11 @@ public class VMHelper {
 	 * 
 	 * @param vm
 	 */
-	public static void suspendVM(VirtualMachine vm) {
+	public static boolean suspendVM(VirtualMachine vm) throws RemoteException, InterruptedException {
 		Task task = null;
 		boolean retVal = false;
 		String vmName = vm.getName();
-		try {
+		
 			task = vm.suspendVM_Task();
 
 			if (task != null) {
@@ -947,10 +907,8 @@ public class VMHelper {
 			} else {
 				LOGGER.warn("Cannot suspend Virtual Machine : " + vmName);
 			}
-		} catch (RemoteException ex) {
-			LOGGER.error("Error while suspending a virtual machine : " + vmName);
-			ex.printStackTrace();
-		}
+			return retVal;
+		
 	}
 
 	/**
@@ -958,19 +916,17 @@ public class VMHelper {
 	 * 
 	 * @param vm
 	 */
-	public static void hibernateVM(VirtualMachine vm) {
+	public static boolean hibernateVM(VirtualMachine vm) throws RemoteException, InterruptedException {
+		boolean result = false;
 		if (isToolsInstalled(vm) && isToolsRunning(vm)) {
-			try {
-				vm.standbyGuest();
-
-			} catch (RemoteException ex) {
-				LOGGER.error("Error while standing by the virtual machine " + vm.getName());
-				ex.printStackTrace();
-			}
+			vm.standbyGuest();
+			result = true;
 		} else {
 			LOGGER.error("There is no vmware tools installed and/or running, cant standby the guest system.");
 			LOGGER.warn("please install vmware tools to use this operation.");
 		}
+		return result;
+		
 	}
 
 	/**
@@ -1037,7 +993,7 @@ public class VMHelper {
 	 * @param vmOldName
 	 * @param vmNewName
 	 */
-	public static void renameVM(VirtualMachine vm, final String vmNewName) {
+	public static void renameVM(VirtualMachine vm, final String vmNewName) throws RemoteException {
 		Task taskRename = null;
 		String vmName = vm.getName();
 		boolean result;
@@ -1045,27 +1001,21 @@ public class VMHelper {
 
 		// Launch delete task.
 		LOGGER.info("renaming vm : " + vmName + " to : " + vmNewName);
-		try {
-			taskRename = vm.rename_Task(vmNewName);
-			if (taskRename != null) {
-				try {
-					result = taskRename.waitForTask().equals(Task.SUCCESS);
-					if (result) {
-						LOGGER.info("The virtual machine :  " + vmName + " has been renamed to " + vmNewName);
-					} else {
-						LOGGER.warn("The virtual machine : " + vmName + " cannot be renamed.");
-					}
-				} catch (InterruptedException ex) {
-					ex.printStackTrace();
+		taskRename = vm.rename_Task(vmNewName);
+		if (taskRename != null) {
+			try {
+				result = taskRename.waitForTask().equals(Task.SUCCESS);
+				if (result) {
+					LOGGER.info("The virtual machine :  " + vmName + " has been renamed to " + vmNewName);
+				} else {
+					LOGGER.warn("The virtual machine : " + vmName + " cannot be renamed.");
 				}
-			} else {
-				LOGGER.warn("The virtual machine has not been renamed, cant launch the rename task !");
+			} catch (InterruptedException ex) {
+				ex.printStackTrace();
 			}
-		} catch (RemoteException ex) {
-			LOGGER.error("Error while trying to rename a virtual machine.");
-			ex.printStackTrace();
+		} else {
+			LOGGER.warn("The virtual machine has not been renamed, cant launch the rename task !");
 		}
-
 	}
 
 	/**
@@ -1073,18 +1023,14 @@ public class VMHelper {
 	 * 
 	 * @param vm
 	 */
-	public static void markAsTemplate(VirtualMachine vm) {
+	public static boolean markAsTemplate(VirtualMachine vm) throws RemoteException {
+		boolean result = false;
 		if (vm.getConfig().isTemplate()) {
-			LOGGER.warn("This virtual machine is already a vm template");
-			return;
+			return result;
 		}
-		try {
-			vm.markAsTemplate();
-		} catch (RemoteException ex) {
-			LOGGER.error("Error while marking the virtual machine as a template: " + vm.getName());
-			ex.printStackTrace();
-		}
-
+		vm.markAsTemplate();
+		result = true;
+		return result;
 	}
 
 	/**
@@ -1094,17 +1040,17 @@ public class VMHelper {
 	 * @param host
 	 * @param pool
 	 */
-	public static void markAsVirtualMachine(VirtualMachine vmTemplate, HostSystem host, ResourcePool pool) {
+	public static boolean markAsVirtualMachine(VirtualMachine vmTemplate, HostSystem host, ResourcePool pool)
+			throws RemoteException {
+		boolean result = false;
 		if (!vmTemplate.getConfig().isTemplate()) {
-			LOGGER.warn("This virtual machine is not a template.");
-			return;
+			return result;
 		}
-		try {
-			vmTemplate.markAsVirtualMachine(pool, host);
-		} catch (RemoteException ex) {
-			LOGGER.error("Error while marking a template as a virtual machine : " + vmTemplate.getName());
-			ex.printStackTrace();
-		}
+		vmTemplate.markAsVirtualMachine(pool, host);
+		result = true;
+		return result;
 	}
-
+	
+	
+		
 }

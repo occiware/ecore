@@ -22,6 +22,7 @@ import org.eclipse.swt.widgets.Shell;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.apache.log4j.Level;
 import org.eclipse.core.runtime.IProgressMonitor;
 
 /**
@@ -117,7 +118,72 @@ public class UIDialog {
 		}
 		return result;
 	}
-
+	
+	/**
+	 * Show a dialog dispatch by level message (information, error and warn).
+	 * @param title
+	 * @param message
+	 * @param level {@link Level}
+	 */
+	public static void showUserMessage(final String title, final String message, final Level level) {
+		switch (level.toInt()) {
+		case Level.INFO_INT:
+			showInformationDialog(title, message);
+			break;
+			
+		case Level.ERROR_INT:
+			showErrorDialog(title, message);
+			break;
+		case Level.WARN_INT:
+			showWarningDialog(title, message);
+			break;
+		default:
+			showInformationDialog(title, message);
+			break;
+		}
+	}
+	
+	
+	/**
+	 * Show an information dialog.
+	 * @param title
+	 * @param message
+	 */
+	public static void showInformationDialog(final String title, final String message) {
+		if (!standaloneMode) {
+			Shell shell = getCurrentShell();
+			MessageDialog.openInformation(shell, title, message);
+		}
+	}
+	
+	/**
+	 * Show a warning dialog.
+	 * @param message
+	 */
+	public static void showWarningDialog(final String title, final String message) {
+		if (!standaloneMode) {
+			Shell shell = getCurrentShell();
+			MessageDialog.openWarning(shell, title, message);
+		}
+	}
+	
+	/**
+	 * Show a basic error dialog.
+	 * @param title
+	 * @param message
+	 */
+	public static void showErrorDialog(final String title, final String message) {
+		// TODO : Add stacktrace in a custom error dialog.
+		if (!standaloneMode) {
+			Shell shell = getCurrentShell();
+			MessageDialog.openError(shell, title, message);
+		}
+	}
+	
+	/**
+	 * Is this connector is used as a standalone library (true) or used in Cloud designer (false).
+	 * @return
+	 */
 	public static boolean isStandAlone() {
 		return standaloneMode;
 	}

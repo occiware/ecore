@@ -909,7 +909,13 @@ public class Volume {
 			if (vm != null) {
 				if (!vm.getRuntime().getPowerState().equals(VirtualMachinePowerState.poweredOff)) {
 					// Power off before.
-					VMHelper.powerOff(vm);
+					try {
+						VMHelper.powerOff(vm);
+					} catch (RemoteException | InterruptedException ex) {
+						LOGGER.error("Cant power off the virtual machine : " + vm.getName() + " to rename a virtual disk.");
+						return result;
+					}
+					
 				}
 			}
 			if (vdisk == null) {

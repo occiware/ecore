@@ -21,14 +21,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.Level;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.occiware.clouddesigner.occi.AttributeState;
 import org.occiware.clouddesigner.occi.Link;
+import org.occiware.clouddesigner.occi.Resource;
 import org.occiware.clouddesigner.occi.infrastructure.Architecture;
 import org.occiware.clouddesigner.occi.infrastructure.ComputeStatus;
-import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.allocator.Allocator;
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.allocator.AllocatorImpl;
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.ClusterHelper;
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.DatacenterHelper;
@@ -95,7 +96,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 	private static final String ATTR_VCPU_NUMBER = "vcpu";
 	private static final String ATTR_VM_GUEST_STATE = "gueststate";
 	private static final String ATTR_MARKED_AS_TEMPLATE = "markedastemplate";
-	
+
 	/**
 	 * Define VMWare specifications for this compute.
 	 */
@@ -122,7 +123,12 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 	private String hostname = null;
 	private String vmGuestState = null;
 	private String markedAsTemplate = null;
-	
+	private boolean vmExist = false;
+	// Message to end users management.
+	private String titleMessage = "";
+	private String globalMessage = "";
+	private Level levelMessage = null;
+
 	/**
 	 * Constructs a compute connector.
 	 */
@@ -130,7 +136,8 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		LOGGER.debug("Constructor called on " + this);
 
 	}
-	// TODO : Progress monitor on all action method, and add all progress on network, storage, links object.
+	// TODO : Progress monitor on all action method, and add all progress on
+	// network, storage, links object.
 
 	//
 	// OCCI CRUD callback operations.
@@ -141,19 +148,30 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 	 */
 	@Override
 	public void occiCreate() {
-
+		titleMessage = "Create a virtual machine : " + getTitle();
 		IRunnableWithProgress runnableWithProgress = new IRunnableWithProgress() {
-			
+
 			@Override
 			public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
-				SubMonitor subMonitor = SubMonitor.convert(monitor, 100);
-				
-				// consume..
-				subMonitor.worked(10);
-				
+				SubMonitor subMonitor = null;
+				boolean toMonitor = false;
+				if (monitor != null) {
+					toMonitor = true;
+				}
+
+				if (toMonitor) {
+					subMonitor = SubMonitor.convert(monitor, 100);
+					// consume..
+					subMonitor.worked(10);
+
+				}
+
 				LOGGER.debug("occiCreate() called on " + this);
 				if (!VCenterClient.checkConnection()) {
 					// Must return true if connection is established.
+					globalMessage = "No connection to Vcenter has been established.";
+					levelMessage = Level.WARN;
+					LOGGER.warn(globalMessage);
 					return;
 				}
 				ServiceInstance si = VCenterClient.getServiceInstance();
@@ -166,7 +184,9 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 				ClusterComputeResource cluster = null;
 
 				if (vmName == null) {
-					LOGGER.error("Cant create a new virtual machine, the vm name is not set. ");
+					globalMessage = "Cant create a new virtual machine, the vm name is not set (check title attribute). ";
+					levelMessage = Level.ERROR;
+					LOGGER.error(globalMessage);
 					VCenterClient.disconnect();
 					return;
 				}
@@ -176,10 +196,9 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 				// value but no other things to create.....
 
 				if (VMHelper.isVMExistForName(rootFolder, vmName)) {
-
-					LOGGER.warn("VM : " + vmName + " already exist. Cant create.");
-					occiRetrieve(); // Retrieve values and disconnect from
-									// vcenter.
+					globalMessage = "VM : " + vmName + " already exist. Cant create.";
+					levelMessage = Level.ERROR;
+					LOGGER.warn(globalMessage);
 					return;
 				}
 
@@ -221,8 +240,9 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 					}
 
 				}
-				subMonitor.worked(30);
-				
+				if (toMonitor) {
+					subMonitor.worked(30);
+				}
 				// Datacenter part. first objects of the tree.
 				Datacenter datacenter = DatacenterHelper.findDatacenterForName(rootFolder, getDatacenterName());
 				if (datacenter == null) {
@@ -231,7 +251,9 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 					// default datacenter will be created.
 					datacenter = allocator.allocateDatacenter();
 					if (datacenter == null) {
-						LOGGER.error("Cant allocate a datacenter, cause : no available datacenter to allocate.");
+						globalMessage = "Cant allocate a datacenter, cause : no available datacenter to allocate.";
+						levelMessage = Level.ERROR;
+						LOGGER.error(globalMessage);
 						VCenterClient.disconnect();
 						return;
 					}
@@ -241,27 +263,6 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 
 				setDatacenterName(datacenter.getName());
 
-				// Defines if vm is already setup in vcenter, if this is the
-				// case we
-				// retrieve its values.
-				// try {
-				// toCreate =
-				// !VMHelper.isVMExistForName(datacenter.getVmFolder(),
-				// vmName);
-				// } catch (RemoteException ex) {
-				// LOGGER.error("cant query to check if the virtual machine
-				// exist, msg:
-				// " + ex.getMessage());
-				// VCenterClient.disconnect();
-				// return;
-				// }
-				// if (toCreate) {
-
-				// Cluster part (not mandatory), we could create a VM (host
-				// before)
-				// on datacenter
-				// directly.
-
 				cluster = ClusterHelper.findClusterForName(datacenter, getClusterName());
 				if (cluster == null) {
 					// Assign a cluster that already exist, if none found, no
@@ -269,8 +270,10 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 					cluster = allocator.allocateCluster();
 				}
 				if (cluster == null) {
-					LOGGER.error(
-							"cant allocate a cluster --< No cluster available on datacenter : " + datacenter.getName());
+					globalMessage = "cant allocate a cluster --< No cluster available on datacenter : "
+							+ datacenter.getName();
+					levelMessage = Level.ERROR;
+					LOGGER.error(globalMessage);
 					VCenterClient.disconnect();
 					return;
 				} else {
@@ -280,17 +283,21 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 				try {
 					host = HostHelper.findHostSystemForName(datacenter.getHostFolder(), getHostSystemName());
 				} catch (RemoteException ex) {
-					LOGGER.error("Error while searching host folder.");
-					LOGGER.error("Message: " + ex.getMessage());
+					globalMessage = "Error while searching host folder. \n ";
+					globalMessage += "Message: " + ex.getMessage();
+					levelMessage = Level.ERROR;
+					LOGGER.error(globalMessage);
+					VCenterClient.disconnect();
 					return;
 				}
 				if (host == null) {
 					if (getHostSystemName() == null) {
 						host = allocator.allocateHostSystem();
 						if (host == null) {
-							LOGGER.error(
-									"cant allocate automaticly an hostsystem, cause: there's no available host on the datacenter: "
-											+ datacenter.getName());
+							globalMessage = "cant allocate automatically an hostsystem, cause: there's no available host on the datacenter: "
+									+ datacenter.getName();
+							levelMessage = Level.ERROR;
+							LOGGER.error(globalMessage);
 							VCenterClient.disconnect();
 							return;
 						} else {
@@ -298,8 +305,10 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 						}
 					} else {
 						// Error on allocating the hostsystem.
-						LOGGER.error("cant allocate the hostSystem: " + getHostSystemName()
-								+ " --< cause: this doesnt exist on the datacenter: " + datacenter.getName());
+						globalMessage = "cant allocate the hostSystem: " + getHostSystemName()
+								+ " --< cause: this doesnt exist on the datacenter: " + datacenter.getName();
+						levelMessage = Level.ERROR;
+						LOGGER.error(globalMessage);
 						VCenterClient.disconnect();
 						return;
 					}
@@ -312,8 +321,10 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 					try {
 						vmTemplate = VMHelper.findVMForName(datacenter.getVmFolder(), vmTemplateName);
 					} catch (RemoteException ex) {
-						LOGGER.error("Error while searching the vm template folder.");
-						LOGGER.error("Message: " + ex.getMessage());
+						globalMessage = "Error while searching the vm template folder. \n ";
+						globalMessage += "Message: " + ex.getMessage();
+						levelMessage = Level.ERROR;
+						LOGGER.error(globalMessage);
 						return;
 					}
 				}
@@ -340,7 +351,9 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 				// Get Main disk, if template mode, the main disk is already
 				// defined by the template.
 				if (stMain == null && vmTemplate == null) {
-					LOGGER.error("No main disk storage defined on / or on c:");
+					globalMessage = "No main disk storage defined on / or on c:";
+					levelMessage = Level.ERROR;
+					LOGGER.error(globalMessage);
 					VCenterClient.disconnect();
 					return;
 				}
@@ -360,8 +373,10 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 					// Allocate a datastore automaticly.
 					datastore = allocator.allocateDatastore();
 					if (datastore == null) {
-						LOGGER.error("cant allocate a datastore on datacenter: " + datacenter.getName()
-								+ " --> there's no available datastore on the datacenter.");
+						globalMessage = "cant allocate a datastore on datacenter: " + datacenter.getName()
+								+ " --> there's no available datastore on the datacenter.";
+						levelMessage = Level.ERROR;
+						LOGGER.error(globalMessage);
 						VCenterClient.disconnect();
 						return;
 					}
@@ -373,8 +388,9 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 				// Get the first adapter (eth0 or name Network adapter 1 or
 				// Adaptateur réseau 1).
 				NetworkConnector firstConnector = getFirstAdapterNetwork(netInterfaceConn);
-				subMonitor.worked(50);
-				
+				if (toMonitor) {
+					subMonitor.worked(50);
+				}
 				// Creation part.
 				if (vmTemplate != null) {
 					// We clone the vm.
@@ -398,36 +414,47 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 						LOGGER.info("Creating the Virtual Machine >> " + getTitle() + " << from template: "
 								+ vmTemplate.getName());
 
-						// TODO : guest hostname (lvl OS), when set, create a
-						// customizationSpec.setDomain(hostname) for the
-						// corresponding operating system. It is not implemented
-						// for
-						// now.
-						// On linux or windows ?
-						boolean onWindows = false;
-						boolean onLinux = false;
-						if (guestOsId != null) {
-							if (guestOsId.toLowerCase().contains("linux") || guestOsId.contains("ubuntu")
-									|| guestOsId.contains("debian") || guestOsId.contains("fedora")
-									|| guestOsId.contains("redhat")) {
-								onLinux = true;
-							}
-							if (guestOsId.toLowerCase().contains("windows") || guestOsId.contains("win")) {
-								onWindows = true;
-							}
-						}
-						CustomizationSpec customSpec = new CustomizationSpec();
-
-						String ipAddress = firstConnector.getAttributeValueByOcciKey("occi.networkinterface.address");
-						String gateway = firstConnector.getAttributeValueByOcciKey("occi.networkinterface.gateway");
-
-						if (onLinux) {
-							customSpec = createLinuxCustomization(ipAddress, gateway);
-						}
-						if (onWindows) {
-							// customSpec = createWindowsCustomization();
-						}
-						cloneSpec.setCustomization(customSpec);
+						
+//						// TODO : guest hostname (lvl OS), when set, create a
+//						// customizationSpec.setDomain(hostname) for the
+//						// corresponding operating system. It is not implemented
+//						// for
+//						// now.
+//						// On linux or windows ?
+//						boolean onWindows = false;
+//						boolean onLinux = false;
+//						if (guestOsId != null) {
+//							if (guestOsId.toLowerCase().contains("linux") || guestOsId.contains("ubuntu")
+//									|| guestOsId.contains("debian") || guestOsId.contains("fedora")
+//									|| guestOsId.contains("redhat")) {
+//								onLinux = true;
+//							}
+//							if (guestOsId.toLowerCase().contains("windows") || guestOsId.contains("win")) {
+//								onWindows = true;
+//							}
+//							if (guestOsId.toLowerCase().contains("other")) {
+//								// default on linux.
+//								onLinux = true;
+//							}
+//						}
+//						
+//						// Customize 
+//						
+//						CustomizationSpec customSpec = new CustomizationSpec();
+//						String ipAddress = null;
+//						String gateway = null;
+//						if (firstConnector != null) {
+//							ipAddress = firstConnector.getAttributeValueByOcciKey("occi.networkinterface.address");
+//							gateway = firstConnector.getAttributeValueByOcciKey("occi.networkinterface.gateway");
+//						}
+//
+//						if (onLinux) {
+//							customSpec = createLinuxCustomization(ipAddress, gateway, host);
+//						}
+//						if (onWindows) {
+//							// customSpec = createWindowsCustomization();
+//						}
+//						cloneSpec.setCustomization(customSpec);
 
 						vmSpec = new VirtualMachineConfigSpec();
 						vmSpec.setName(vmName);
@@ -439,7 +466,9 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 						Long memSizeMB = memSizeGBLng * 1024;
 
 						if (memSizeGBLng == 0L || getCores() == 0) {
-							LOGGER.error("You must set the memory size (in GB) and the number of cores.");
+							globalMessage = "You must set the memory size (in GB) and the number of cores.";
+							levelMessage = Level.ERROR;
+							LOGGER.error(globalMessage);
 							VCenterClient.disconnect();
 							return;
 						}
@@ -552,29 +581,28 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 						com.vmware.vim25.mo.Task taskVm = vmTemplate.cloneVM_Task(vmFolder, vmName, cloneSpec);
 
 						String result = taskVm.waitForTask();
-						subMonitor.worked(80);
-						
+						if (toMonitor) {
+							subMonitor.worked(80);
+						}
 						if (result == com.vmware.vim25.mo.Task.SUCCESS) {
-							LOGGER.info("Virtual Machine successfully created from template : " + vmTemplate.getName());
+							globalMessage = "Virtual Machine successfully created from template : "
+									+ vmTemplate.getName();
+							levelMessage = Level.INFO;
+							LOGGER.info(globalMessage);
 
 						} else {
-							LOGGER.error("VM couldn't be created ! vm name: " + vmName + " from template: "
-									+ vmTemplate.getName());
+							globalMessage = "VM couldn't be created ! vm name: " + vmName + " from template: "
+									+ vmTemplate.getName();
+							levelMessage = Level.ERROR;
+							LOGGER.error(globalMessage);
 						}
 
-					} catch (RemoteException ex) {
-						LOGGER.error(
-								"VM was not created or has errors, please check your vcenter and your configuration");
-						LOGGER.error("Message: " + ex.getMessage());
-						if (ex.getMessage() == null) {
-							ex.printStackTrace();
-						}
-						VCenterClient.disconnect();
-						return;
-					} catch (InterruptedException ex) {
-						LOGGER.error(
-								"VM was not created or has errors, please check your vcenter and your configuration");
-						LOGGER.error("Message: " + ex.getMessage());
+					} catch (RemoteException | InterruptedException ex) {
+
+						globalMessage = "VM was not created or has errors, please check your vcenter and your configuration \n "
+								+ "Message: " + ex.getMessage();
+						levelMessage = Level.ERROR;
+						LOGGER.error(globalMessage);
 						if (ex.getMessage() == null) {
 							ex.printStackTrace();
 						}
@@ -617,7 +645,9 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 						Float diskSize = mainStorage.getSize();
 						Long diskSizeGB = diskSize.longValue();
 						if (diskSizeGB == 0L) {
-							LOGGER.error("The main disk size must be > 0 in GigaBytes");
+							globalMessage = "The main disk size must be > 0 in GigaBytes";
+							levelMessage = Level.ERROR;
+							LOGGER.error(globalMessage);
 							VCenterClient.disconnect();
 							return;
 						}
@@ -643,8 +673,9 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 							}
 							Network network = allocator.allocateNetwork();
 							if (network == null) {
-								LOGGER.error(
-										"No virtual networks is available for this virtual machine, please setup a new network in vcenter.");
+								globalMessage = "No virtual networks is available for this virtual machine, please setup a new network in vcenter.";
+								levelMessage = Level.ERROR;
+								LOGGER.error(globalMessage);
 								VCenterClient.disconnect();
 								return;
 							}
@@ -709,7 +740,9 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 						Long memSizeMB = memSizeGBLng * 1024;
 
 						if (memSizeGBLng == 0L || getCores() == 0) {
-							LOGGER.error("You must set the memory size (in GB) and the number of cores.");
+							globalMessage = "You must set the memory size (in GB) and the number of cores.";
+							levelMessage = Level.ERROR;
+							LOGGER.error(globalMessage);
 							VCenterClient.disconnect();
 							return;
 						}
@@ -742,26 +775,27 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 						// TODO : Monitoring task object in other thread. See :
 						// http://benohead.com/vi-java-api-monitoring-task-completion/
 						String result = taskVm.waitForTask();
-						subMonitor.worked(80);
-						
+						if (toMonitor) {
+							subMonitor.worked(80);
+						}
 						if (result == com.vmware.vim25.mo.Task.SUCCESS) {
-							LOGGER.info("Virtual Machine successfully created !");
-							// Find the values of this vm and update this
-							// compute resource model.
-							// occiRetrieve();
+							globalMessage = "Virtual Machine successfully created !";
+							levelMessage = Level.INFO;
+							LOGGER.info(globalMessage);
+							vmExist = true;
+
 						} else {
-							LOGGER.info("VM couldn't be created, result: " + result);
+							globalMessage = "VM couldn't be created, result: " + result;
+							levelMessage = Level.ERROR;
+							LOGGER.error(globalMessage);
 						}
 
 						// Create vm terminated
 
-					} catch (RemoteException ex) {
-						LOGGER.error("Cannot create the virtual machine : " + ex.getMessage());
-						ex.printStackTrace();
-						VCenterClient.disconnect();
-						return;
-					} catch (InterruptedException ex) {
-						LOGGER.error("Cannot create the virtual machine : " + ex.getMessage());
+					} catch (RemoteException | InterruptedException ex) {
+						globalMessage = "Cannot create the virtual machine : " + ex.getMessage();
+						levelMessage = Level.ERROR;
+						LOGGER.error(globalMessage);
 						ex.printStackTrace();
 						VCenterClient.disconnect();
 						return;
@@ -769,30 +803,28 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 
 				} // endif vmTemplate exist.
 
-				// if (vmFolder != null) {
-				// vm = VMHelper.findVMForName(vmFolder, vmName);
-				// if (vm != null) {
-				// VMHelper.mountGuestVmTools((Folder) vm.getParent(),
-				// this.getTitle());
-				// // assign hot config enabled (default).
-				// VMHelper.hotReconfigEnable((Folder) vm.getParent(),
-				// this.getTitle(), true);
-				// }
-				// }
-
 				// } // Endif toCreate.
-				subMonitor.worked(100);
-				
+				if (toMonitor) {
+					subMonitor.worked(100);
+				}
 				// In all case invoke a disconnect from vcenter.
 				VCenterClient.disconnect();
 
-				
 			}
 		};
-		
-		
-		UIDialog.executeActionThread(runnableWithProgress, "Create virtual machine " + getTitle());
-		occiRetrieve();
+
+		UIDialog.executeActionThread(runnableWithProgress, titleMessage);
+
+		if (globalMessage != null && !globalMessage.isEmpty()) {
+			UIDialog.showUserMessage(titleMessage, globalMessage, levelMessage);
+		}
+		// retrieve resource informations when no errors has been launched.
+		if (levelMessage != null && !Level.ERROR.equals(levelMessage)) {
+			occiRetrieve();
+		}
+		globalMessage = "";
+		levelMessage = null;
+
 	}
 
 	/**
@@ -800,15 +832,31 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 	 */
 	@Override
 	public void occiRetrieve() {
-
+		titleMessage = "Retrieve a virtual machine : " + getTitle();
 		IRunnableWithProgress runnableWithProgress = new IRunnableWithProgress() {
 
 			@Override
 			public void run(IProgressMonitor monitor) {
+				
+				SubMonitor subMonitor = null;
+				boolean toMonitor = false;
+				if (monitor != null) {
+					toMonitor = true;
+				}
+
+				if (toMonitor) {
+					subMonitor = SubMonitor.convert(monitor, 100);
+					// consume..
+					subMonitor.worked(10);
+				}
+				
 				LOGGER.debug("occiRetrieve() called on " + this);
 				if (!VCenterClient.checkConnection()) {
 					// Must return true if connection is established.
-					LOGGER.warn("No connection to Vcenter has been established.");
+					globalMessage = "No connection to Vcenter has been established.";
+					levelMessage = Level.WARN;
+					LOGGER.warn(globalMessage);
+					vmExist = false;
 					return;
 				}
 				// Retrieve all informations about this compute.
@@ -833,28 +881,42 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 							vmName = vmOldName;
 						} else {
 							// no vm exist with this name.
-							LOGGER.warn("This virtual machine doesnt exist anymore.");
+							globalMessage = "This virtual machine doesnt exist anymore.";
+							levelMessage = Level.WARN;
+							LOGGER.warn(globalMessage);
 							VCenterClient.disconnect();
+							vmExist = false;
 							return;
 						}
 					} else {
 						// no vm exist with this name.
-						LOGGER.warn("This virtual machine doesnt exist anymore.");
+						globalMessage = "This virtual machine doesnt exist anymore.";
+						levelMessage = Level.WARN;
+						LOGGER.warn(globalMessage);
 						VCenterClient.disconnect();
+						vmExist = false;
 						return;
 					}
 				}
+				if (toMonitor) {
+					subMonitor.worked(30);
+				}
 				HostSystem host = VMHelper.findHostSystemForVM(rootFolder, vmName);
 				if (host == null) {
-					LOGGER.error("No host found for this vm : " + vmName);
+					globalMessage = "No host found for this vm : " + vmName;
+					levelMessage = Level.ERROR;
+					LOGGER.error(globalMessage);
 					VCenterClient.disconnect();
+					vmExist = false;
 					return;
 				} else {
 					if (hostSystemName == null || !hostSystemName.equals(host.getName())) {
 						setHostSystemName(host.getName());
 					}
 				}
-
+				if (toMonitor) {
+					subMonitor.worked(40);
+				}
 				Datacenter dc = null;
 				ClusterComputeResource cluster = null;
 				Datastore ds = null;
@@ -867,30 +929,17 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 
 					if (mEntity instanceof Datacenter) {
 						dc = (Datacenter) mEntity;
-						// LOGGER.info("Datacenter : " + mEntity.getName() + "
-						// << " +
-						// dc.getName());
 					}
-					// if (mEntity instanceof Folder) {
-					// folder = (Folder)mEntity;
-					// // LOGGER.info("Folder: " + mEntity.getName() + " << " +
-					// folder.getName());
-					// }
 					if (mEntity instanceof ClusterComputeResource) {
 						cluster = (ClusterComputeResource) mEntity;
-						// LOGGER.info("Cluster: " + mEntity.getName() + " << "
-						// +
-						// cluster.getName());
 					}
 					if (mEntity instanceof Datastore) {
 						ds = (Datastore) mEntity;
-						// LOGGER.info("Cluster: " + mEntity.getName() + " << "
-						// +
-						// datastore.getName());
 					}
-
-					// folder = (Folder)folder.getParent();
 					mEntity = mEntity.getParent();
+				}
+				if (toMonitor) {
+					subMonitor.worked(50);
 				}
 				if (dc == null) {
 					LOGGER.warn("No datacenter found for this virtual machine: " + vm.getName());
@@ -920,9 +969,13 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 						}
 
 					} catch (RemoteException ex) {
-						LOGGER.error("Error while searching all datastores for this virtual machine: " + vm.getName());
-						LOGGER.error("Message: " + ex.getMessage());
+						globalMessage = "Error while searching all datastores for this virtual machine: " + vm.getName()
+								+ " \n ";
+						globalMessage += "Message: " + ex.getMessage();
+						levelMessage = Level.ERROR;
+						LOGGER.error(globalMessage);
 						VCenterClient.disconnect();
+						vmExist = false;
 						return;
 					}
 
@@ -931,7 +984,9 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 						setDatastoreName(ds.getName());
 					}
 				}
-
+				if (toMonitor) {
+					subMonitor.worked(60);
+				}
 				// Load the compute information from vCenter.
 				numCores = VMHelper.getCoreNumber(vm);
 
@@ -942,30 +997,49 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 				vmState = VMHelper.getPowerState(vm);
 				hostname = VMHelper.getGuestHostname(vm);
 				vmGuestState = VMHelper.getGuestState(vm);
-				
+				if (toMonitor) {
+					subMonitor.worked(70);
+				}
 				// Determine if this vm is marked as template also an image..
 				if (vm.getConfig().isTemplate()) {
 					markedAsTemplate = "true";
 				} else {
 					markedAsTemplate = "false";
 				}
-				
+				vmExist = true;
+				if (toMonitor) {
+					subMonitor.worked(80);
+				}
 				if (UIDialog.isStandAlone()) {
 					updateAttributesOnCompute();
 				}
-				
+				globalMessage = "The virtual machine informations has been retrieved and are updated.";
+				levelMessage = Level.INFO;
 				// In the end we disconnect.
 				VCenterClient.disconnect();
-
+				if (toMonitor) {
+					subMonitor.worked(100);
+				}
 			}
 		};
 
-		UIDialog.executeActionThread(runnableWithProgress, "Retrieve virtual machine " + getTitle() + " informations...");
-		
+		UIDialog.executeActionThread(runnableWithProgress,
+				"Retrieve virtual machine " + getTitle() + " informations...");
+		if (!vmExist) {
+			vmState = VMHelper.POWER_OFF;
+		}
 		if (!UIDialog.isStandAlone()) {
-			// Update attributes in the end when operation are totally terminated.
+			// Update attributes in the end when operation are totally
+			// terminated.
 			updateAttributesOnCompute();
 		}
+
+		if (globalMessage != null && !globalMessage.isEmpty()) {
+			UIDialog.showUserMessage(titleMessage, globalMessage, levelMessage);
+		}
+		globalMessage = "";
+		levelMessage = null;
+		
 	}
 
 	/**
@@ -973,28 +1047,53 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 	 */
 	@Override
 	public void occiUpdate() {
+		titleMessage = "Update a virtual machine : " + getTitle();
+
 		IRunnableWithProgress runnableWithProgress = new IRunnableWithProgress() {
-			
+
 			@Override
 			public void run(IProgressMonitor monitor) {
+				SubMonitor subMonitor = null;
+				boolean toMonitor = false;
+				if (monitor != null) {
+					toMonitor = true;
+				}
+
+				if (toMonitor) {
+					subMonitor = SubMonitor.convert(monitor, 100);
+					// consume..
+					subMonitor.worked(10);
+
+				}
 				LOGGER.debug("occiUpdate() called on " + this);
 				if (!VCenterClient.checkConnection()) {
 					// Must return true if connection is established.
+					globalMessage = "No connection to Vcenter has been established.";
+					levelMessage = Level.WARN;
+					LOGGER.warn(globalMessage);
 					return;
 				}
 				// Load the vm information.
 				String vmName = getTitle();
-
-				if (vmName == null) {
-					LOGGER.error("The title must be set, as it is used as the VM name (unique).");
+				if (toMonitor) {
+					subMonitor.worked(20);
+				}
+				if (vmName == null || vmName.isEmpty()) {
+					globalMessage = "The title must be set, as it is used as the VM name.";
+					levelMessage = Level.ERROR;
+					LOGGER.error(globalMessage);
 					VCenterClient.disconnect();
 					return;
 				}
 				if (vmOldName == null) {
 					vmOldName = vmName;
 				}
+				
 
 				VirtualMachine vm = VMHelper.loadVirtualMachine(vmName);
+				if (toMonitor) {
+					subMonitor.worked(30);
+				}
 				if (vm == null) {
 					// The title may has been changed.
 					if (!vmOldName.equals(vmName)) {
@@ -1003,8 +1102,23 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 						vm = VMHelper.loadVirtualMachine(vmOldName);
 						if (vm != null) {
 							LOGGER.info("The virtual machine name has been changed to a new one, updating...");
-							VMHelper.renameVM(vm, vmName);
-							vm = VMHelper.loadVirtualMachine(vmName);
+							try {
+								VMHelper.renameVM(vm, vmName);
+								vm = VMHelper.loadVirtualMachine(vmName);
+								if (toMonitor) {
+									subMonitor.worked(40);
+								}
+								globalMessage = "The virtual machine : " + vmOldName + " has been renamed to : "
+										+ vmName;
+								levelMessage = Level.INFO;
+								LOGGER.info(globalMessage);
+							} catch (RemoteException ex) {
+								globalMessage = "Error while trying to rename a virtual machine, message: "
+										+ ex.getMessage();
+								levelMessage = Level.ERROR;
+								LOGGER.error(globalMessage);
+								ex.printStackTrace();
+							}
 							vmOldName = vmName;
 						} else {
 							VCenterClient.disconnect();
@@ -1019,19 +1133,55 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 					assignVCpuToVMSpec();
 					VMHelper.reconfigureVm(vm, vcpus, getMemory());
 				} catch (RemoteException ex) {
-					LOGGER.error("Error while updating the virtual machine configuration : " + vmName + " message: "
-							+ ex.getMessage());
+					globalMessage = "Error while updating the virtual machine configuration : " + vmName
+							+ " \n message: " + ex.getMessage();
+					levelMessage = Level.ERROR;
+					LOGGER.error(globalMessage);
 					ex.printStackTrace();
+				}
+				if (toMonitor) {
+					subMonitor.worked(50);
+				}
+				// Reading template attribute for detecting if it may be updated
+				// or not.
+				markedAsTemplate = getAttributeValueByOcciKey(ATTR_MARKED_AS_TEMPLATE);
+				if (markedAsTemplate == null) {
+					if (vm.getConfig().isTemplate()) {
+						markedAsTemplate = "true";
+					} else {
+						markedAsTemplate = "false";
+					}
+				}
+				if (toMonitor) {
+					subMonitor.worked(60);
 				}
 				// Check if transform vm to vmTemplate.
 				if (!vm.getConfig().isTemplate() && "true".equals(markedAsTemplate)) {
 					// Mark the vm as a template.
-					VMHelper.markAsTemplate(vm);
+					try {
+
+						if (VMHelper.markAsTemplate(vm)) {
+							globalMessage += "The virtual machine " + vmName + " has been marked as template.";
+							levelMessage = Level.INFO;
+							LOGGER.info(globalMessage);
+						} else {
+							globalMessage += "The virtual machine " + vmName + " is already marked as a template.";
+							levelMessage = Level.WARN;
+							LOGGER.info(globalMessage);
+						}
+					} catch (RemoteException ex) {
+						globalMessage = "Error while marking the virtual machine as a template: " + vm.getName();
+						levelMessage = Level.ERROR;
+						LOGGER.error(globalMessage);
+						ex.printStackTrace();
+					}
 				}
-				
+				if (toMonitor) {
+					subMonitor.worked(70);
+				}
 				// Check if transform template to VM.
 				if (vm.getConfig().isTemplate() && "false".equals(markedAsTemplate)) {
-					
+
 					ServiceInstance si = VCenterClient.getServiceInstance();
 					Folder rootFolder = si.getRootFolder();
 					AllocatorImpl allocator = new AllocatorImpl(rootFolder);
@@ -1040,17 +1190,45 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 					ClusterComputeResource cluster = allocator.allocateCluster();
 					HostSystem host = allocator.allocateHostSystem();
 					ResourcePool pool = allocator.allocateResourcePool();
-					VMHelper.markAsVirtualMachine(vm, host, pool);
+					try {
+						if (VMHelper.markAsVirtualMachine(vm, host, pool)) {
+							globalMessage += "The template machine " + vmName
+									+ " has been marked as a virtual machine.";
+							levelMessage = Level.INFO;
+							LOGGER.info(globalMessage);
+						} else {
+							globalMessage += "The template machine " + vmName
+									+ " is not a template but a virtual machine.";
+							levelMessage = Level.WARN;
+							LOGGER.warn(globalMessage);
+						}
+
+					} catch (RemoteException ex) {
+						globalMessage = "Error while marking the machine template as a virtual machine : "
+								+ vm.getName();
+						levelMessage = Level.ERROR;
+						LOGGER.error(globalMessage);
+						ex.printStackTrace();
+					}
 				}
-				
+				if (toMonitor) {
+					subMonitor.worked(100);
+				}
 				// In the end we disconnect.
 				VCenterClient.disconnect();
-				
+
 			}
 		};
 		UIDialog.executeActionThread(runnableWithProgress, "Update virtual machine " + getTitle());
+
+		if (globalMessage != null && !globalMessage.isEmpty()) {
+			UIDialog.showUserMessage(titleMessage, globalMessage, levelMessage);
+		}
+		globalMessage = "";
+		levelMessage = null;
+
 		occiRetrieve();
-		
+
 	}
 
 	/**
@@ -1058,24 +1236,43 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 	 */
 	@Override
 	public void occiDelete() {
-		
+		titleMessage = "Delete a virtual machine : " + getTitle();
 		IRunnableWithProgress runnableWithProgress = new IRunnableWithProgress() {
 
 			@Override
 			public void run(IProgressMonitor monitor) {
 				LOGGER.debug("occiDelete() called on " + this);
+				SubMonitor subMonitor = null;
+				boolean toMonitor = false;
+				if (monitor != null) {
+					toMonitor = true;
+				}
 
+				if (toMonitor) {
+					subMonitor = SubMonitor.convert(monitor, 100);
+					// consume..
+					subMonitor.worked(10);
+
+				}
 				if (!VCenterClient.checkConnection()) {
 					// Must return true if connection is established.
+					globalMessage = "No connection to Vcenter has been established.";
+					levelMessage = Level.WARN;
+					LOGGER.warn(globalMessage);
 					return;
 				}
 				String vmName = getTitle();
 				if (vmName == null) {
-					LOGGER.error("The title must be set, as it is used as the VM name (unique).");
+					globalMessage = "The title must be set, as it is used as the VM name.";
+					levelMessage = Level.ERROR;
+					LOGGER.error(globalMessage);
 					VCenterClient.disconnect();
 					return;
 				}
 				VirtualMachine vm = VMHelper.loadVirtualMachine(vmName);
+				if (toMonitor) {
+					subMonitor.worked(40);
+				}
 				if (vm == null) {
 					// Check if an old name exist.
 					if (vmOldName != null && !vmOldName.equals(vmName)) {
@@ -1090,18 +1287,46 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 					}
 
 				}
+				
+				// Check if vm state is inactive, if vm is started, powered it off.
+				vmState = VMHelper.getPowerState(vm);
+				if (vmState.equals(VMHelper.POWER_ON)) {
+					try {
+						boolean result = VMHelper.powerOff(vm);
+						if (!result) {
+							throw new RemoteException("");
+						}
+					} catch (RemoteException | InterruptedException ex) {				
+						globalMessage = "Cant power off a virtual machine : " + vm.getName() + " \n ";
+						globalMessage += "Cant delete a virtual machine, it must be stopped before.";
+						
+						levelMessage = Level.ERROR;
+						LOGGER.error(globalMessage);
+						VCenterClient.disconnect();
+						return;
+					}
+				}
 				VMHelper.destroyVM(vm);
-				
-				
+				if (toMonitor) {
+					subMonitor.worked(100);
+				}
 				// In the end we disconnect.
 				VCenterClient.disconnect();
-				
+				globalMessage = "The virtual machine " + vmName + " has been fully removed from vcenter.";
+				levelMessage = Level.INFO;
+				LOGGER.info(globalMessage);
 			}
 		};
 
 		if (UIDialog.showConfirmDialog()) {
 			UIDialog.executeActionThread(runnableWithProgress, "Destroy virtual machine " + getTitle());
 		}
+		if (globalMessage != null && !globalMessage.isEmpty()) {
+			UIDialog.showUserMessage(titleMessage, globalMessage, levelMessage);
+		}
+		globalMessage = "";
+		levelMessage = null;
+
 		occiRetrieve();
 
 	}
@@ -1117,46 +1342,112 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 	 */
 	@Override
 	public void start() {
-		
+		titleMessage = "Power on a virtual machine : " + getTitle();
 		IRunnableWithProgress runnableWithProgress = new IRunnableWithProgress() {
-			
+
 			@Override
 			public void run(IProgressMonitor monitor) {
+				SubMonitor subMonitor = null;
+				boolean toMonitor = false;
+				if (monitor != null) {
+					toMonitor = true;
+				}
+
+				if (toMonitor) {
+					subMonitor = SubMonitor.convert(monitor, 100);
+					// consume..
+					subMonitor.worked(10);
+
+				}
 				LOGGER.debug("Action start() called on " + this);
 				if (!VCenterClient.checkConnection()) {
 					// Must return true if connection is established.
+					globalMessage = "No connection to Vcenter has been established.";
+					levelMessage = Level.WARN;
+					LOGGER.warn(globalMessage);
 					return;
 				}
-
+				if (toMonitor) {
+					subMonitor.worked(30);
+				}
 				String vmName = getTitle();
 				if (vmName == null) {
-					LOGGER.error("The title must be set, as it is used as the VM name (unique).");
+					globalMessage = "The title must be set, as it is used as the VM name.";
+					levelMessage = Level.ERROR;
+					LOGGER.error(globalMessage);
 					VCenterClient.disconnect();
 					return;
 				}
 				VirtualMachine vm = VMHelper.loadVirtualMachine(vmName);
 				if (vm == null) {
+					globalMessage = "This virtual machine doesnt exist anymore.";
+					levelMessage = Level.WARN;
+					LOGGER.warn(globalMessage);
 					VCenterClient.disconnect();
 					return;
 				}
 				vmState = VMHelper.getPowerState(vm);
-
+				if (toMonitor) {
+					subMonitor.worked(40);
+				}
 				if (vmState.equals(VMHelper.POWER_ON)) {
-					LOGGER.info("The virtual machine " + vmName + " is already started.");
+					globalMessage = "The virtual machine " + vmName + " is already started.";
+					levelMessage = Level.INFO;
+					LOGGER.info(globalMessage);
+					
 				} else {
 					// in the other case we start the compute.
-					VMHelper.powerOn(vm);
+					try {
+						if (VMHelper.powerOn(vm)) {
+							globalMessage = "VM " + vmName + " switched On";
+							levelMessage = Level.INFO;
+							LOGGER.info(globalMessage);
+						} else {
+							globalMessage = "VM " + vmName + " cannot be switched on";
+							levelMessage = Level.WARN;
+							LOGGER.warn(globalMessage);
+						}
+
+					} catch (RemoteException | InterruptedException ex) {
+						globalMessage = "Error while starting a virtual machine : " + vmName;
+						levelMessage = Level.ERROR;
+						LOGGER.error(globalMessage);
+						ex.printStackTrace();
+					}
 				}
-				
+				if (toMonitor) {
+					subMonitor.worked(80);
+				}
+				// Is vmware tools is installed ? if not mount the vmware guest
+				// tools disk for installation.
+				if (!VMHelper.isToolsInstalled(vm)) {
+					if (vm != null) {
+						VMHelper.mountGuestVmTools((Folder) vm.getParent(), getTitle());
+						// assign hot config enabled (default).
+						// VMHelper.hotReconfigEnable((Folder)
+						// vm.getParent(),
+						// getTitle(), true);
+					}
+
+				}
 				// In the end we disconnect.
 				VCenterClient.disconnect();
-				
+				if (toMonitor) {
+					subMonitor.worked(100);
+				}
 			}
 		};
-		
+
 		UIDialog.executeActionThread(runnableWithProgress, "Start virtual machine " + getTitle());
+
+		if (globalMessage != null && !globalMessage.isEmpty()) {
+			UIDialog.showUserMessage(titleMessage, globalMessage, levelMessage);
+		}
+		globalMessage = "";
+		levelMessage = null;
+
 		occiRetrieve();
-		
+
 	}
 
 	/**
@@ -1166,59 +1457,121 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 	 */
 	@Override
 	public void stop(final org.occiware.clouddesigner.occi.infrastructure.StopMethod method) {
-		
+		titleMessage = "Power off a virtual machine : " + getTitle();
 		IRunnableWithProgress runnableWithProgress = new IRunnableWithProgress() {
-			
+
 			@Override
 			public void run(IProgressMonitor monitor) {
 				LOGGER.debug("Action stop(" + "method=" + method + ") called on " + this);
-				if (!VCenterClient.checkConnection()) {
-					// Must return true if connection is established.
-					return;
+				
+				SubMonitor subMonitor = null;
+				boolean toMonitor = false;
+				if (monitor != null) {
+					toMonitor = true;
 				}
 
+				if (toMonitor) {
+					subMonitor = SubMonitor.convert(monitor, 100);
+					// consume..
+					subMonitor.worked(10);
+
+				}
+				
+				if (!VCenterClient.checkConnection()) {
+					// Must return true if connection is established.
+					globalMessage = "No connection to Vcenter has been established.";
+					levelMessage = Level.WARN;
+					LOGGER.warn(globalMessage);
+					return;
+				}
+				if (toMonitor) {
+					subMonitor.worked(20);
+				}
 				String vmName = getTitle();
 				if (vmName == null) {
-					LOGGER.error("The title must be set, as it is used as the VM name (unique).");
+					globalMessage = "The title must be set, as it is used as the VM name.";
+					levelMessage = Level.WARN;
+					LOGGER.error(globalMessage);
 					VCenterClient.disconnect();
 					return;
 				}
 				VirtualMachine vm = VMHelper.loadVirtualMachine(vmName);
 				if (vm == null) {
+					globalMessage = "This virtual machine doesnt exist anymore.";
+					levelMessage = Level.WARN;
+					LOGGER.warn(globalMessage);
 					VCenterClient.disconnect();
 					return;
 				}
+				if (toMonitor) {
+					subMonitor.worked(40);
+				}
 				vmState = VMHelper.getPowerState(vm);
 				if (vmState.equals(VMHelper.POWER_OFF)) {
-					LOGGER.info("The virtual machine " + vmName + " is already stopped.");
+					globalMessage = "This virtual machine " + vmName + " is already stopped.";
+					levelMessage = Level.WARN;
+					LOGGER.info(globalMessage);
+					if (toMonitor) {
+						subMonitor.worked(70);
+					}
 				} else {
 					// in the other case we start the compute.
 					// if (graceful) shutdown guest os and poweroff.
 					// if acpioff ??
 					// if poweroff direct poweroff.
-					switch (method) {
-					case GRACEFUL:
-						VMHelper.graceFulPowerOff(vm);
-						break;
-					case POWEROFF:
-						VMHelper.powerOff(vm);
-						break;
-					case ACPIOFF:
-						VMHelper.powerOff(vm);
-						break;
+					try {
+						boolean result = false;
+						switch (method) {
+						case GRACEFUL:
+							result = VMHelper.graceFulPowerOff(vm);
+							break;
+						case POWEROFF:
+							result = VMHelper.powerOff(vm);
+							break;
+						case ACPIOFF:
+							result = VMHelper.powerOff(vm);
+							break;
+						}
+						if (toMonitor) {
+							subMonitor.worked(70);
+						}
+						if (result) {
+							globalMessage = "VM " + vmName + " switched Off";
+							levelMessage = Level.INFO;
+							LOGGER.info(globalMessage);
+
+						} else {
+							globalMessage = "VM " + vmName + " cannot be switched off";
+							levelMessage = Level.INFO;
+							LOGGER.warn(globalMessage);
+						}
+						
+					} catch (RemoteException | InterruptedException ex) {
+						globalMessage = "Error while stopping a virtual machine : " + vmName;
+						levelMessage = Level.ERROR;
+						LOGGER.error(globalMessage);
+						ex.printStackTrace();
 					}
 				}
 
 				// In the end we disconnect.
 				VCenterClient.disconnect();
-				
+				if (toMonitor) {
+					subMonitor.worked(100);
+				}
 			}
 		};
-		
+
 		UIDialog.executeActionThread(runnableWithProgress, "Stop virtual machine " + getTitle());
+		if (globalMessage != null && !globalMessage.isEmpty()) {
+			UIDialog.showUserMessage(titleMessage, globalMessage, levelMessage);
+		}
+		globalMessage = "";
+		levelMessage = null;
+
 		// Retrieve and update attributes.
 		occiRetrieve();
-		
+
 	}
 
 	/**
@@ -1228,82 +1581,152 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 	 */
 	@Override
 	public void restart(final org.occiware.clouddesigner.occi.infrastructure.RestartMethod method) {
+		titleMessage = "Reboot a virtual machine : " + getTitle();
+
 		IRunnableWithProgress runnableWithProgress = new IRunnableWithProgress() {
-			
+
 			@Override
 			public void run(IProgressMonitor monitor) {
 				
+				SubMonitor subMonitor = null;
+				boolean toMonitor = false;
+				if (monitor != null) {
+					toMonitor = true;
+				}
+
+				if (toMonitor) {
+					subMonitor = SubMonitor.convert(monitor, 100);
+					// consume..
+					subMonitor.worked(10);
+
+				}
 				LOGGER.debug("Action restart(" + "method=" + method + ") called on " + this);
 				if (!VCenterClient.checkConnection()) {
 					// Must return true if connection is established.
+					globalMessage = "No connection to Vcenter has been established.";
+					levelMessage = Level.WARN;
+					LOGGER.warn(globalMessage);
 					return;
 				}
-
+				if (toMonitor) {
+					subMonitor.worked(20);
+				}
 				String vmName = getTitle();
 				if (vmName == null) {
-					LOGGER.error("The title must be set, as it is used as the VM name (unique).");
+					globalMessage = "The title must be set, as it is used as the VM name.";
+					levelMessage = Level.WARN;
+					LOGGER.error(globalMessage);
 					VCenterClient.disconnect();
 					return;
 				}
 				VirtualMachine vm = VMHelper.loadVirtualMachine(vmName);
+				if (toMonitor) {
+					subMonitor.worked(30);
+				}
 				if (vm == null) {
+					globalMessage = "This virtual machine doesnt exist anymore.";
+					levelMessage = Level.WARN;
+					LOGGER.warn(globalMessage);
 					VCenterClient.disconnect();
 					return;
 				}
-				String vmPowerState = VMHelper.getPowerState(vm);
-
-				if (vmPowerState.equals(VMHelper.POWER_OFF)) {
-					// Direct starting the vm.
-					VMHelper.powerOn(vm);
-
-				} else {
-					// in the other case we restart the compute.
-					// if (graceful) shutdown guest os and poweron.
-					// if cold hard reboot.
-					// if warm soft reboot.
-					switch (method) {
-					case GRACEFUL:
-						if (vmPowerState.equals(VMHelper.SUSPENDED)) {
-							VMHelper.powerOn(vm);
-							// this.setState(ComputeStatus.ACTIVE);
-						}
-						VMHelper.graceFulPowerOff(vm);
-						// this.setState(ComputeStatus.INACTIVE);
-						VMHelper.powerOn(vm);
-						// TODO : TaskInfo controller to check the updated status.
-						// this.setState(ComputeStatus.ACTIVE);
-
-						break;
-					case COLD:
-						if (vmPowerState.equals(VMHelper.SUSPENDED)) {
-							VMHelper.powerOn(vm);
-							// this.setState(ComputeStatus.ACTIVE);
-						}
-						VMHelper.powerOff(vm);
-						// this.setState(ComputeStatus.INACTIVE);
-						VMHelper.powerOn(vm);
-						// this.setState(ComputeStatus.ACTIVE);
-
-						break;
-					case WARM:
-						if (vmPowerState.equals(VMHelper.SUSPENDED)) {
-							VMHelper.powerOn(vm);
-							// this.setState(ComputeStatus.ACTIVE);
-						}
-						VMHelper.rebootGuest(vm);
-						break;
-					}
+				if (toMonitor) {
+					subMonitor.worked(40);
 				}
-				
+				String vmPowerState = VMHelper.getPowerState(vm);
+				boolean result = false;
+				try {
+					if (vmPowerState.equals(VMHelper.POWER_OFF)) {
+						// Direct starting the vm.
+						result = VMHelper.powerOn(vm);
 
+					} else {
+						// in the other case we restart the compute.
+						// if (graceful) shutdown guest os and poweron.
+						// if cold hard reboot.
+						// if warm soft reboot.
+						switch (method) {
+						case GRACEFUL:
+							if (vmPowerState.equals(VMHelper.SUSPENDED)) {
+								if (toMonitor) {
+									subMonitor.worked(50);
+								}
+								VMHelper.powerOn(vm);
+							}
+							if (toMonitor) {
+								subMonitor.worked(60);
+							}
+							VMHelper.graceFulPowerOff(vm);
+							if (toMonitor) {
+								subMonitor.worked(70);
+							}
+							result = VMHelper.powerOn(vm);
+							break;
+						case COLD:
+							if (vmPowerState.equals(VMHelper.SUSPENDED)) {
+								if (toMonitor) {
+									subMonitor.worked(50);
+								}
+								VMHelper.powerOn(vm);
+							}
+							if (toMonitor) {
+								subMonitor.worked(60);
+							}
+							VMHelper.powerOff(vm);
+							if (toMonitor) {
+								subMonitor.worked(70);
+							}
+							result = VMHelper.powerOn(vm);
+							break;
+						case WARM:
+							if (vmPowerState.equals(VMHelper.SUSPENDED)) {
+								if (toMonitor) {
+									subMonitor.worked(50);
+								}
+								VMHelper.powerOn(vm);
+							}
+							if (toMonitor) {
+								subMonitor.worked(60);
+							}
+							result = VMHelper.rebootGuest(vm);
+							if (toMonitor) {
+								subMonitor.worked(70);
+							}
+							break;
+						}
+					}
+
+				} catch (RemoteException | InterruptedException ex) {
+					globalMessage = "Error while rebooting the virtual machine " + vm.getName();
+					levelMessage = Level.ERROR;
+					LOGGER.warn(globalMessage);
+					ex.printStackTrace();
+				}
 				// In the end we disconnect.
 				VCenterClient.disconnect();
+				if (toMonitor) {
+					subMonitor.worked(100);
+				}
+				if (result) {
+					globalMessage = "Restart virtual machine has succeed.";
+					levelMessage = Level.INFO;
+					LOGGER.info(globalMessage);
+				} else {
+					globalMessage = "Restart virtual machine has failed.";
+					levelMessage = Level.WARN;
+					LOGGER.warn(globalMessage);
+				}
 				
 			}
 		};
-		
-		
+
 		UIDialog.executeActionThread(runnableWithProgress, "Restart virtual machine " + getTitle());
+		if (globalMessage != null && !globalMessage.isEmpty()) {
+			UIDialog.showUserMessage(titleMessage, globalMessage, levelMessage);
+		}
+		globalMessage = "";
+		levelMessage = null;
+
 		occiRetrieve();
 	}
 
@@ -1314,15 +1737,34 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 	 */
 	@Override
 	public void suspend(final org.occiware.clouddesigner.occi.infrastructure.SuspendMethod method) {
-		
+
+		titleMessage = "Suspend a virtual machine : " + getTitle();
 		IRunnableWithProgress runnableWithProgress = new IRunnableWithProgress() {
-			
+
 			@Override
 			public void run(IProgressMonitor monitor) {
+				SubMonitor subMonitor = null;
+				boolean toMonitor = false;
+				if (monitor != null) {
+					toMonitor = true;
+				}
+
+				if (toMonitor) {
+					subMonitor = SubMonitor.convert(monitor, 100);
+					// consume..
+					subMonitor.worked(10);
+
+				}
 				LOGGER.debug("Action suspend(" + "method=" + method + ") called on " + this);
 				if (!VCenterClient.checkConnection()) {
 					// Must return true if connection is established.
+					globalMessage = "No connection to Vcenter has been established.";
+					levelMessage = Level.WARN;
+					LOGGER.warn(globalMessage);
 					return;
+				}
+				if (toMonitor) {
+					subMonitor.worked(20);
 				}
 				String vmName = getTitle();
 				if (vmName == null) {
@@ -1332,38 +1774,80 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 				}
 				VirtualMachine vm = VMHelper.loadVirtualMachine(vmName);
 				if (vm == null) {
+					globalMessage = "This virtual machine doesnt exist anymore.";
+					levelMessage = Level.WARN;
+					LOGGER.warn(globalMessage);
 					VCenterClient.disconnect();
 					return;
 				}
+				if (toMonitor) {
+					subMonitor.worked(30);
+				}
 				String vmPowerState = VMHelper.getPowerState(vm);
+				try {
+					boolean result = false;
+					if (vmPowerState.equals(VMHelper.SUSPENDED)) {
+						// already suspended.
+						LOGGER.info("The virtual machine " + vmName + " is already suspended.");
 
-				if (vmPowerState.equals(VMHelper.SUSPENDED)) {
-					// already suspended.
-					LOGGER.info("The virtual machine " + vmName + " is already suspended.");
-
-				} else {
-					// in the other case we restart the compute.
-					// if hibernate .
-					// if acpioff ??
-					// if poweroff direct poweroff.
-					switch (method) {
-					case HIBERNATE:
-						VMHelper.hibernateVM(vm);
-						break;
-					case SUSPEND:
-						VMHelper.suspendVM(vm);
-						break;
+					} else {
+						// in the other case we restart the compute.
+						// if hibernate .
+						// if acpioff ??
+						// if poweroff direct poweroff.
+						switch (method) {
+						case HIBERNATE:
+							if (toMonitor) {
+								subMonitor.worked(50);
+							}
+							result = VMHelper.hibernateVM(vm);
+							if (toMonitor) {
+								subMonitor.worked(70);
+							}
+							break;
+						case SUSPEND:
+							if (toMonitor) {
+								subMonitor.worked(50);
+							}
+							result = VMHelper.suspendVM(vm);
+							if (toMonitor) {
+								subMonitor.worked(70);
+							}
+							break;
+						}
 					}
+
+					if (result) {
+						globalMessage = "Suspend virtual machine has succeed.";
+						levelMessage = Level.INFO;
+						LOGGER.info(globalMessage);
+					} else {
+						globalMessage = "Suspend virtual machine has failed.";
+						levelMessage = Level.WARN;
+						LOGGER.warn(globalMessage);
+					}
+				} catch (RemoteException | InterruptedException ex) {
+					globalMessage = "Error while suspending a virtual machine : " + vmName;
+					levelMessage = Level.WARN;
+					LOGGER.error(globalMessage);
+					ex.printStackTrace();
 				}
 
-				
 				// In the end we disconnect.
 				VCenterClient.disconnect();
-				
+				if (toMonitor) {
+					subMonitor.worked(100);
+				}
 			}
 		};
-		
+
 		UIDialog.executeActionThread(runnableWithProgress, "Suspend virtual machine " + getTitle());
+		if (globalMessage != null && !globalMessage.isEmpty()) {
+			UIDialog.showUserMessage(titleMessage, globalMessage, levelMessage);
+		}
+		globalMessage = "";
+		levelMessage = null;
+
 		occiRetrieve();
 	}
 
@@ -1375,14 +1859,31 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 	@Override
 	public void save(final org.occiware.clouddesigner.occi.infrastructure.SaveMethod method,
 			final java.lang.String name) {
-		
+
+		titleMessage = "Save a virtual machine : " + getTitle();
 		IRunnableWithProgress runnableWithProgress = new IRunnableWithProgress() {
-			
+
 			@Override
 			public void run(IProgressMonitor monitor) {
+				SubMonitor subMonitor = null;
+				boolean toMonitor = false;
+				if (monitor != null) {
+					toMonitor = true;
+				}
+
+				if (toMonitor) {
+					subMonitor = SubMonitor.convert(monitor, 100);
+					// consume..
+					subMonitor.worked(10);
+
+				}
+				
 				LOGGER.debug("Action save(" + "method=" + method + "name=" + name + ") called on " + this);
 				if (!VCenterClient.checkConnection()) {
 					// Must return true if connection is established.
+					globalMessage = "No connection to Vcenter has been established.";
+					levelMessage = Level.WARN;
+					LOGGER.warn(globalMessage);
 					return;
 				}
 				String vmName = getTitle();
@@ -1392,22 +1893,57 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 					return;
 				}
 				VirtualMachine vm = VMHelper.loadVirtualMachine(vmName);
+				if (toMonitor) {
+					subMonitor.worked(20);
+				}
 				if (vm == null) {
+					globalMessage = "This virtual machine doesnt exist anymore.";
+					levelMessage = Level.WARN;
+					LOGGER.warn(globalMessage);
 					VCenterClient.disconnect();
 					return;
 				}
+				try {
+					if (VMHelper.markAsTemplate(vm)) {
+						globalMessage = "The virtual machine " + vmName + " has been marked as template.";
+						levelMessage = Level.INFO;
+						LOGGER.info(globalMessage);
+					} else {
+						globalMessage = "The virtual machine " + vmName + " is already marked as a template.";
+						levelMessage = Level.WARN;
+						LOGGER.info(globalMessage);
+					}
 
-				VMHelper.markAsTemplate(vm);
-				markedAsTemplate = "true";
+					markedAsTemplate = "true";
+
+				} catch (RemoteException ex) {
+					globalMessage = "Error while marking the virtual machine as a template: " + vm.getName();
+					levelMessage = Level.ERROR;
+					LOGGER.error(globalMessage);
+					ex.printStackTrace();
+				}
+				if (toMonitor) {
+					subMonitor.worked(80);
+				}
 				vm = VMHelper.loadVirtualMachine(vmName);
 				// In the end we disconnect.
 				VCenterClient.disconnect();
+				
+				if (toMonitor) {
+					subMonitor.worked(100);
+				}
 			}
 		};
-		
+
 		UIDialog.executeActionThread(runnableWithProgress, "Mark virtual machine " + getTitle() + " as template");
+		if (globalMessage != null && !globalMessage.isEmpty()) {
+			UIDialog.showUserMessage(titleMessage, globalMessage, levelMessage);
+		}
+		globalMessage = "";
+		levelMessage = null;
+
 		occiRetrieve();
-		
+
 	}
 
 	/**
@@ -1667,186 +2203,6 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 
 	}
 
-	// Examples of customization spec.
-	public CustomizationSpec createLinuxCustomization(final String ipAddress, final String gateway) {
-
-		// Create customization specs/linux specific options
-		CustomizationSpec customSpec = new CustomizationSpec();
-
-		CustomizationLinuxOptions linuxOptions = new CustomizationLinuxOptions();
-		customSpec.setOptions(linuxOptions);
-		CustomizationLinuxPrep linuxPrep = new CustomizationLinuxPrep();
-		// linuxPrep.setDomain(domain); // TODO : Domain name ?
-		// linuxPrep.setHwClockUTC(true);
-		// linuxPrep.setTimeZone("Europe/London"); // TODO : TimeZone...
-
-		CustomizationFixedName fixedName = new CustomizationFixedName();
-		fixedName.setName(getHostname());
-		linuxPrep.setHostName(fixedName);
-
-		CustomizationFixedIp fixedIp = new CustomizationFixedIp();
-		CustomizationDhcpIpGenerator dhcpGenerator = new CustomizationDhcpIpGenerator();
-		boolean dynamicNetworkAllocation = false;
-		if (ipAddress != null && !ipAddress.isEmpty()) {
-			fixedIp.setIpAddress(ipAddress);
-		} else {
-			// Dynamic allocation, dhcp mode.
-			dynamicNetworkAllocation = true;
-		}
-
-		// TODO : Dns global ip settings.
-		// CustomizationGlobalIPSettings globalIPSettings = new
-		// CustomizationGlobalIPSettings();
-		// globalIPSettings.setDnsServerList(new String[]{"8.8.8.8",
-		// "8.8.4.4"});
-		// globalIPSettings.setDnsSuffixList(new
-		// String[]{"search.com","my.search.com"});
-		// customSpec.setGlobalIPSettings(globalIPSettings);
-
-		CustomizationIPSettings customizationIPSettings = new CustomizationIPSettings();
-		if (dynamicNetworkAllocation) {
-			customizationIPSettings.setIp(dhcpGenerator);
-		} else {
-			customizationIPSettings.setIp(fixedIp);
-		}
-		if (gateway != null && !gateway.isEmpty()) {
-			customizationIPSettings.setGateway(new String[] { gateway });
-		} else {
-			// Set a default gateway.
-			customizationIPSettings.setGateway(new String[] { "192.168.1.1" });
-		}
-
-		// TODO : submask network :
-		// customizationIPSettings.setSubnetMask("255.255.0.0");
-		CustomizationAdapterMapping adapterMapping = new CustomizationAdapterMapping();
-		adapterMapping.setAdapter(customizationIPSettings);
-
-		// TODO : create a method createSpecFromConnector in networkinterface,
-		// networkconnector, storageconnector and storagelinkconnector.
-		// and get the spec from other connectors.
-		CustomizationAdapterMapping[] adapterMappings = new CustomizationAdapterMapping[] { adapterMapping };
-		customSpec.setNicSettingMap(adapterMappings);
-
-		// CustomizationLinuxOptions linuxOptions = new
-		// CustomizationLinuxOptions();
-		// customSpec.setOptions(linuxOptions);
-		//
-		// CustomizationLinuxPrep linuxPrep = new CustomizationLinuxPrep();
-		// linuxPrep.setDomain("example.domain.com");
-		// linuxPrep.setHwClockUTC(true);
-		// linuxPrep.setTimeZone("Europe/London");
-		//
-		// CustomizationFixedName fixedName = new CustomizationFixedName();
-		// fixedName.setName("cloned-machine-hostname");
-		// linuxPrep.setHostName(fixedName);
-		// customSpec.setIdentity(linuxPrep);
-		//
-		// //Network related settings
-		// CustomizationGlobalIPSettings globalIPSettings = new
-		// CustomizationGlobalIPSettings();
-		// globalIPSettings.setDnsServerList(new String[]{"8.8.8.8",
-		// "8.8.4.4"});
-		// globalIPSettings.setDnsSuffixList(new
-		// String[]{"search.com","my.search.com"});
-		// customSpec.setGlobalIPSettings(globalIPSettings);
-		//
-		// CustomizationFixedIp fixedIp = new CustomizationFixedIp();
-		// fixedIp.setIpAddress("192.168.10.1");
-		//
-		// CustomizationIPSettings customizationIPSettings = new
-		// CustomizationIPSettings();
-		// customizationIPSettings.setIp(fixedIp);
-		// customizationIPSettings.setGateway(new String[]{"192.168.1.1"});
-		// customizationIPSettings.setSubnetMask("255.255.0.0");
-		//
-		// CustomizationAdapterMapping adapterMapping = new
-		// CustomizationAdapterMapping();
-		// adapterMapping.setAdapter(customizationIPSettings);
-		//
-		// CustomizationAdapterMapping[] adapterMappings = new
-		// CustomizationAdapterMapping[]{adapterMapping};
-		// customSpec.setNicSettingMap(adapterMappings);
-
-		return customSpec;
-	}
-
-	public static CustomizationSpec createWindowsCustomization() {
-		// Windows needs valid product key in order to create fully working
-		// clone. Otherwise you will get error message
-		// when machine is cloned
-		String productID = "XXXXX-XXXXX-XXXXXX-XXXXX";
-
-		VirtualMachineCloneSpec cloneSpec = new VirtualMachineCloneSpec();
-
-		// Set location of clone to be the same as template (Datastore)
-		cloneSpec.setLocation(new VirtualMachineRelocateSpec());
-
-		// Clone is not powered on, not a template.
-		cloneSpec.setPowerOn(false);
-		cloneSpec.setTemplate(false);
-
-		// Create customization specs/win specific options
-		// Windows are using SYSPREP for these kind of stuff
-		CustomizationSpec customSpec = new CustomizationSpec();
-		CustomizationWinOptions winOptions = new CustomizationWinOptions();
-
-		winOptions.setChangeSID(true);
-		// We don't want our preconfigured users to be deleted
-		winOptions.setDeleteAccounts(false);
-
-		customSpec.setOptions(winOptions);
-		CustomizationSysprep sprep = new CustomizationSysprep();
-
-		CustomizationGuiUnattended guiUnattended = new CustomizationGuiUnattended();
-		guiUnattended.setAutoLogon(false);
-		guiUnattended.setAutoLogonCount(0);
-		guiUnattended.setTimeZone(4);
-		sprep.setGuiUnattended(guiUnattended);
-
-		CustomizationIdentification custIdent = new CustomizationIdentification();
-		custIdent.setJoinWorkgroup("WORKGROUP");
-		sprep.setIdentification(custIdent);
-
-		CustomizationUserData custUserData = new CustomizationUserData();
-		CustomizationFixedName fixedName = new CustomizationFixedName();
-		fixedName.setName("windows-clone");
-
-		// set from cloned machine
-		custUserData.setProductId(productID); // REQUIRED FOR Windows
-		custUserData.setComputerName(fixedName);
-		custUserData.setFullName("windows-clone.example.com");
-		custUserData.setOrgName("example.com");
-
-		sprep.setUserData(custUserData);
-		customSpec.setIdentity(sprep);
-
-		// Network related settings
-		CustomizationGlobalIPSettings globalIPSettings = new CustomizationGlobalIPSettings();
-		globalIPSettings.setDnsServerList(new String[] { "8.8.8.8", "8.8.4.4" });
-		globalIPSettings.setDnsSuffixList(new String[] { "example.com" });
-
-		customSpec.setGlobalIPSettings(globalIPSettings);
-		CustomizationFixedIp fixedIp = new CustomizationFixedIp();
-		fixedIp.setIpAddress("192.168.10.2");
-
-		CustomizationIPSettings customizationIPSettings = new CustomizationIPSettings();
-		customizationIPSettings.setIp(fixedIp);
-		customizationIPSettings.setGateway(new String[] { "192.168.1.1" });
-		customizationIPSettings.setSubnetMask("255.255.0.0");
-
-		// Disabling netBIOS
-		customizationIPSettings.setNetBIOS(CustomizationNetBIOSMode.disableNetBIOS);
-		customizationIPSettings.setDnsDomain("example.com");
-
-		CustomizationAdapterMapping adapterMapping = new CustomizationAdapterMapping();
-		adapterMapping.setAdapter(customizationIPSettings);
-
-		CustomizationAdapterMapping[] adapterMappings = new CustomizationAdapterMapping[] { adapterMapping };
-		customSpec.setNicSettingMap(adapterMappings);
-
-		return customSpec;
-	}
-
 	/**
 	 * Get the first network where possible. (ex: eth0)
 	 * 
@@ -1858,19 +2214,36 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		NetworkConnector netConn = null;
 
 		for (NetworkinterfaceConnector netInt : netInterfaceConn) {
-			if (netInt.getInterface().equals("eth0")) {
-				netConn = (NetworkConnector) netInt.getTarget();
-				break;
-			}
-			if (netInt.getTitle() != null) {
-				if (netInt.getTitle().contains("Adaptateur réseau 1")
-						|| netInt.getTitle().contains("Network adapter 1")) {
+			String netSysInterface = netInt.getInterface();
+			String netIntName = netInt.getTitle();
+			if (netSysInterface != null) {
+				if (netInt.getInterface().equals("eth0")) {
 					netConn = (NetworkConnector) netInt.getTarget();
 					break;
+				}
+				if (netIntName != null) {
+					if (netIntName.contains("Adaptateur réseau 1") || netIntName.contains("Network adapter 1")) {
+						Resource res = netInt.getTarget();
+						if (res != null && res instanceof NetworkConnector) {
+							netConn = (NetworkConnector) res;
+							break;
+						}
+					}
 				}
 			}
 
 		}
+		if (netConn == null) {
+			// Get only the first adapter found on list.
+			for (NetworkinterfaceConnector netInt : netInterfaceConn) {
+				Resource res = netInt.getTarget();
+				if (res != null && res instanceof NetworkConnector) {
+					netConn = (NetworkConnector) res;
+					break;
+				}
+			}
+		}
+
 		return netConn;
 	}
 
@@ -1941,7 +2314,6 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 				attrsToCreate.put(ATTR_DATACENTER_NAME, datacenterName);
 			} else {
 				// update
-
 				attrsToUpdate.put(ATTR_DATACENTER_NAME, datacenterName);
 			}
 		}
@@ -1995,32 +2367,39 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		if (markedAsTemplate == null) {
 			markedAsTemplate = "false";
 		}
-		
+
 		if (this.getAttributeStateObject(ATTR_MARKED_AS_TEMPLATE) == null) {
 			attrsToCreate.put(ATTR_MARKED_AS_TEMPLATE, markedAsTemplate);
 		} else {
 			attrsToUpdate.put(ATTR_MARKED_AS_TEMPLATE, markedAsTemplate);
 		}
-		
+
 		// Update the attributes via a transaction if in cloud designer (or a
 		// simple update)..
 		EntityUtils.updateAttributes(this, attrsToCreate, attrsToUpdate, attrsToDelete);
 
-		if (architecture.equals("x64")) {
-			setArchitecture(Architecture.X64);
-		} else {
-			setArchitecture(Architecture.X86);
+		if (architecture != null) {
+			if (architecture.equals("x64")) {
+				setArchitecture(Architecture.X64);
+			} else {
+				setArchitecture(Architecture.X86);
+			}
 		}
-		setCores(numCores);
-		setMemory(memoryGB);
-		setSpeed(speed);
-		setState(defineStatus(vmState));
+		if (numCores != null) {
+			setCores(numCores);
+		}
+		if (memoryGB != null) {
+			setMemory(memoryGB);
+		}
+		if (speed != null) {
+			setSpeed(speed);
+		}
+		if (vmState != null) {
+			setState(defineStatus(vmState));
+		}
 		if (hostname != null) {
 			setHostname(hostname);
 		}
-		
-		
-		
 	}
 
 }
