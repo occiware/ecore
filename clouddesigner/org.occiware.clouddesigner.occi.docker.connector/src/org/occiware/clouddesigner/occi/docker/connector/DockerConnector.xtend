@@ -23,6 +23,7 @@ import java.util.ArrayList
 import java.util.Collections
 import java.util.HashMap
 import java.util.Iterator
+import java.util.LinkedList
 import java.util.List
 import java.util.Map
 import org.apache.commons.lang.StringUtils
@@ -84,7 +85,6 @@ import org.slf4j.LoggerFactory
 
 import static com.google.common.base.Preconditions.checkNotNull
 import static org.occiware.clouddesigner.occi.docker.connector.ExecutableContainer.*
-import org.occiware.clouddesigner.occi.docker.Container
 
 /**
  * This class overrides the generated EMF factory of the Docker package.
@@ -540,7 +540,7 @@ class EventCallBack extends EventsResultCallback {
 				}
 				if (state.equalsIgnoreCase("destroy")) {
 					val instanceMH = new ModelHandler
-					var container = (resource as Container)
+					var container = (resource as org.occiware.clouddesigner.occi.docker.Container)
 					var machine = (resource as ExecutableContainer).currentMachine
 					instanceMH.removeContainerFromMachine(container, machine)
 					if (machine.eContainer instanceof Configuration) {
@@ -645,34 +645,53 @@ class EventCallBack extends EventsResultCallback {
 }
 
 /**
- * This class notifies stats events to the connector.
+ * This class notifies monitoring events from the connector.
  */
 
 class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statistics> {
+
 	// Initialize logger for StatsCallback.
 	private static Logger LOGGER = LoggerFactory.getLogger(typeof(StatsCallback))
 
+	var private List<Statistics> statisticsList = new LinkedList
+
 	var private Boolean gotStats = false;
 
-	var ExecutableContainer container
-
-	new(ExecutableContainer container) {
-		this.container = container
+	var String containerId
+	
+	var containersMap = newLinkedHashMap
+	
+	new(String containerId) {
+		this.containerId = containerId
 	}
 
 	override def void onNext(Statistics stats) {
-		LOGGER.info("Received stats #{} ", stats);
+		LOGGER.info("Received stats #{} :: {} :: {}",statisticsList.size(), this.containerId, stats)
+		
+		statisticsList.add(stats)
+
 		if (stats != null) {
 			gotStats = true;
 		}
+		
 	}
 
 	def Boolean gotStats() {
 		return gotStats;
 	}
 
-}
+	def String getContainerId(){
+		return this.containerId
+	}
 
+	def List<Statistics> getStatisticsList() {
+		return this.statisticsList
+	}
+	
+	def Boolean compateTo(Statistics stats1, Statistics stats2){
+		return stats1.toString.equals(stats2.toString)
+	}
+}
 
 /**
  * This class implements an executable Docker container.
@@ -691,7 +710,7 @@ class ExecutableContainer extends ContainerImpl {
 	var eventCallback = new EventCallBack(this)
 
 	// Listener of the stats
-	var statsCallback = new StatsCallback(this)
+//	var statsCallback = new StatsCallback(this)
 
 	/**
 	 * Docker containers have a state machine.
@@ -707,8 +726,7 @@ class ExecutableContainer extends ContainerImpl {
 			if (machine.state.toString.equalsIgnoreCase("active")) {
 				try {
 					if (dockerContainerManager == null) {
-						dockerContainerManager = new DockerContainerManager(machine, eventCallback, statsCallback)
-//						dockerContainerManager = new DockerContainerManager(machine, eventCallback)
+						dockerContainerManager = new DockerContainerManager(machine, eventCallback)
 					}
 					dockerContainerManager.startContainer(machine, this.compute.name)
 				} catch (Exception e) {
@@ -728,8 +746,7 @@ class ExecutableContainer extends ContainerImpl {
 				if (this.compute.state.toString.equalsIgnoreCase("active")) {
 					try {
 						if (dockerContainerManager == null) {
-							dockerContainerManager = new DockerContainerManager(machine, eventCallback, statsCallback)
-//							dockerContainerManager = new DockerContainerManager(machine, eventCallback)
+							dockerContainerManager = new DockerContainerManager(machine, eventCallback)
 						}
 						dockerContainerManager.stopContainer(machine, this.compute.name)
 					} catch (Exception e) {
@@ -778,8 +795,7 @@ class ExecutableContainer extends ContainerImpl {
 		// Set dockerClient
 		var Map<DockerClient, CreateContainerResponse> result = new HashMap<DockerClient, CreateContainerResponse>
 		if (dockerContainerManager == null) {
-			dockerContainerManager = new DockerContainerManager(machine, eventCallback, statsCallback)
-//			dockerContainerManager = new DockerContainerManager(machine, eventCallback)
+			dockerContainerManager = new DockerContainerManager(machine, eventCallback)
 		}
 
 		// Download image
@@ -791,8 +807,7 @@ class ExecutableContainer extends ContainerImpl {
 
 	def void createContainer(Machine machine) {
 		if (dockerContainerManager == null) {
-			dockerContainerManager = new DockerContainerManager(machine, eventCallback, statsCallback)
-//			dockerContainerManager = new DockerContainerManager(machine, eventCallback)
+			dockerContainerManager = new DockerContainerManager(machine, eventCallback)
 		}
 
 		// Download image
@@ -804,8 +819,7 @@ class ExecutableContainer extends ContainerImpl {
 
 	def void removeContainer(Machine machine) {
 		if (dockerContainerManager == null) {
-			dockerContainerManager = new DockerContainerManager(machine, eventCallback, statsCallback)
-//			dockerContainerManager = new DockerContainerManager(machine, eventCallback)
+			dockerContainerManager = new DockerContainerManager(machine, eventCallback)
 		}
 		dockerContainerManager.removeContainer(machine.name, this.name)
 	}
@@ -1004,7 +1018,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 
 								// Start container
 								con.start
-							} else { // The conatiner exists
+							} else { // The container exists, then just starts it
 							// Start container
 								con.start
 							}
