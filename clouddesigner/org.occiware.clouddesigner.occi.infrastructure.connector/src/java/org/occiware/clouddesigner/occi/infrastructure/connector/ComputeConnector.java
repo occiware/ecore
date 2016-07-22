@@ -14,6 +14,7 @@
 package org.occiware.clouddesigner.occi.infrastructure.connector;
 
 import org.json.simple.JSONObject;
+import org.occiware.clouddesigner.occi.infrastructure.Architecture;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,7 +28,17 @@ import org.occiware.clouddesigner.occi.infrastructure.ComputeStatus;
  */
 public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastructure.impl.ComputeImpl
 {
-	/**
+
+    private static final String ID = "id";
+    private static final String TITLE = "title";
+    private static final String SUMMARY = "summary";
+    private static final String ARCHITECTURE = "architecture";
+    private static final String CORES = "cores";
+    private static final String MEMORY = "memory";
+    private static final String HOSTNAME = "hostname";
+    private static final String STATE = "state";
+
+    /**
 	 * Initialize the logger.
 	 */
 	private static Logger LOGGER = LoggerFactory.getLogger(ComputeConnector.class);
@@ -51,23 +62,17 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 	public void occiCreate()
 	{
 		LOGGER.debug("occiCreate() called on " + this);
-        System.out.println("############abc~~~~~~~~~~~~");
-		// TODO: Implement this callback or remove this method.
 
-		Integer i = new Integer(5);
-		Integer j = new Integer(7);
-		int k = i+j;
-		System.out.println("result"+k);
         try {
-            System.out.println("create json");
+
             JSONObject json = new JSONObject();
-            System.out.println("json created");
-            json.put("architecture", this.getArchitecture().toString().toUpperCase());
-            json.put("cores", this.getCores());
-            json.put("memory",this.getMemory());
-            json.put("title", this.getTitle());
-            System.out.println("creation json ok");
-            JSONObject result = new ConnectPCA().postRequest(json);
+            json.put(ARCHITECTURE, this.getArchitecture().toString().toUpperCase());
+            json.put(CORES, this.getCores());
+            json.put(MEMORY,this.getMemory());
+            json.put(TITLE, this.getTitle());
+			json.put(SUMMARY, this.getSummary());
+            JSONObject response = new ConnectPCA().postRequest(json);
+            getCloudAutomationInfo(response);
         }catch (Exception e){
             System.out.println(e.getClass().getName() + " : "+e.getMessage());
         }
@@ -346,4 +351,39 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		}
 	}
 
+    private void getCloudAutomationInfo(JSONObject response){
+        this.id = (String) response.get(ID);
+        this.title = (String) response.get(TITLE);
+        this.summary  = (String) response.get(SUMMARY);
+        this.cores = (Integer) response.get(CORES);
+        this.memory = (Float) response.get(MEMORY);
+        this.hostname = (String) response.get(HOSTNAME);
+        setArchitecture((String) response.get(ARCHITECTURE));
+        setStateStatus((String) response.get(STATE));
+
+    }
+
+    private void setArchitecture(String s){
+        if("X86".equalsIgnoreCase(s)) {
+            this.architecture = Architecture.X86;
+        }
+        else if("X64".equalsIgnoreCase(s)) {
+            this.architecture = Architecture.X86;
+        }
+    }
+
+    public void setStateStatus(String stateStatus){
+        if("ACTIVE".equalsIgnoreCase(stateStatus)){
+            this.state = ComputeStatus.ACTIVE;
+        }
+        else if("SUSPENDED".equalsIgnoreCase(stateStatus)){
+            this.state = ComputeStatus.SUSPENDED;
+        }
+        else if("INACTIVE".equalsIgnoreCase(stateStatus)){
+            this.state = ComputeStatus.INACTIVE;
+        }
+        else if("ERROR".equalsIgnoreCase(stateStatus)){
+            this.state = ComputeStatus.ERROR;
+        }
+    }
 }	
