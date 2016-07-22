@@ -12,24 +12,21 @@
  */
 package org.occiware.clouddesigner.occi.infrastructure.connector.vmware.addons.exceptions;
 
-public class VirtualSwitchNotFoundException extends Exception {
+public class RenameDiskException extends Exception {
 
-	private static final long serialVersionUID = -1227449195598379089L;
-
-	public VirtualSwitchNotFoundException() {
-		
+	public RenameDiskException() {
 	}
 
-	public VirtualSwitchNotFoundException(String message, Throwable cause) {
-		super(message, cause);
-	}
-
-	public VirtualSwitchNotFoundException(String message) {
+	public RenameDiskException(String message) {
 		super(message);
 	}
 
-	public VirtualSwitchNotFoundException(Throwable cause) {
+	public RenameDiskException(Throwable cause) {
 		super(cause);
+	}
+
+	public RenameDiskException(String message, Throwable cause) {
+		super(message, cause);
 	}
 
 }

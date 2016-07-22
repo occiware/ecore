@@ -14,11 +14,16 @@
  */
 package org.occiware.clouddesigner.occi.infrastructure.connector.vmware;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.emf.common.util.EList;
+import org.apache.log4j.Level;
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.SubMonitor;
+import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.occiware.clouddesigner.occi.AttributeState;
 import org.occiware.clouddesigner.occi.Configuration;
 import org.occiware.clouddesigner.occi.Link;
@@ -26,16 +31,23 @@ import org.occiware.clouddesigner.occi.OCCIFactory;
 import org.occiware.clouddesigner.occi.Resource;
 import org.occiware.clouddesigner.occi.infrastructure.StorageStatus;
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.addons.exceptions.AttachDiskException;
+import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.addons.exceptions.CreateDiskException;
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.addons.exceptions.DatacenterNotFoundException;
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.addons.exceptions.DatastoreNotFoundException;
+import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.addons.exceptions.DeleteDiskException;
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.addons.exceptions.DetachDiskException;
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.addons.exceptions.DiskNotFoundException;
+import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.addons.exceptions.LoadVolumeException;
+import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.addons.exceptions.RenameDiskException;
+import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.addons.exceptions.ResizeDiskException;
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.allocator.AllocatorImpl;
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.DatacenterHelper;
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.DatastoreHelper;
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.VCenterClient;
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.VMHelper;
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.VolumeHelper;
+import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.thread.EntityUtils;
+import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.thread.UIDialog;
 import org.occiware.clouddesigner.occi.util.OcciHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -65,9 +77,22 @@ public class StorageConnector extends org.occiware.clouddesigner.occi.infrastruc
 	private Datastore datastore = null;
 	private Datacenter datacenter = null;
 	private String vmName = null;
+	private String volumeName = null;
 
 	private String oldDiskName = null;
 	private Float oldDiskSize = null;
+
+	// Message to end users management.
+	private String titleMessage = "";
+	private String globalMessage = "";
+	private Level levelMessage = null;
+
+	/**
+	 * Attributes key for object that are not manage by infrastructure extension
+	 * default.
+	 */
+	private static final String ATTR_DATACENTER_NAME = "datacentername";
+	private static final String ATTR_DATASTORE_NAME = "datastorename";
 
 	/**
 	 * Constructs a storage connector.
@@ -85,111 +110,154 @@ public class StorageConnector extends org.occiware.clouddesigner.occi.infrastruc
 	 */
 	@Override
 	public void occiCreate() {
+		titleMessage = "Create a virtual disk : " + getTitle();
+		IRunnableWithProgress runnableWithProgress = new IRunnableWithProgress() {
 
-		LOGGER.debug("occiCreate() called on " + this);
-		if (!VCenterClient.checkConnection()) {
-			// Must return true if connection is established.
-			return;
-		}
-		ServiceInstance si = VCenterClient.getServiceInstance();
-		Folder rootFolder = si.getRootFolder();
-
-		AllocatorImpl allocator = new AllocatorImpl(rootFolder);
-
-		List<ComputeConnector> computes = getLinkedComputes();
-
-		if (computes.isEmpty()) {
-			LOGGER.warn("the volume is not linked to a compute.");
-		} else {
-			// Search for a datastore name on attribute.
-			this.setDatastoreName(this.getDatastoreName());
-		}
-
-		Float size = this.getSize();
-		String volumeName = this.getTitle();
-
-		oldDiskSize = size;
-		oldDiskName = volumeName;
-
-		try {
-			loadDatastoreAndDatacenter();
-		} catch (DatacenterNotFoundException ex) {
-			// Allocate the datacenter and datastore when necessary.
-			if (datastore == null) {
-				datastore = allocator.allocateDatastore();
-				if (datastore != null) {
-					this.setDatastoreName(datastore.getName());
+			@Override
+			public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+				LOGGER.debug("occiCreate() called on " + this);
+				if (!VCenterClient.checkConnection()) {
+					// Must return true if connection is established.
+					globalMessage = "No connection to Vcenter has been established.";
+					levelMessage = Level.WARN;
+					LOGGER.warn(globalMessage);
+					return;
 				}
-			}
-
-			if (datastore != null && datacenter == null && vmName == null) {
-				datacenter = DatacenterHelper.findDatacenterFromDatastore(rootFolder, datastore.getName());
-				this.setDatacenterName(datacenter.getName());
-				this.setDatastoreName(datastore.getName());
-			}
-
-			if (datastore == null) {
-				LOGGER.error("Cant locate a datastore for this storage disk.");
-				VCenterClient.disconnect();
-				return;
-			}
-			if (datacenter == null) {
-				LOGGER.error("Cant locate a datacenter for this storage disk.");
-				VCenterClient.disconnect();
-				return;
-			}
-		} catch (DatastoreNotFoundException ex) {
-			// Allocate the datacenter and datastore when necessary.
-			if (datastore == null) {
-				datastore = allocator.allocateDatastore();
-				if (datastore != null) {
-					this.setDatastoreName(datastore.getName());
+				SubMonitor subMonitor = null;
+				boolean toMonitor = false;
+				if (monitor != null) {
+					toMonitor = true;
 				}
-			}
+				if (toMonitor) {
+					subMonitor = SubMonitor.convert(monitor, 100);
+					subMonitor.worked(10);
+				}
+				ServiceInstance si = VCenterClient.getServiceInstance();
+				Folder rootFolder = si.getRootFolder();
 
-			if (datastore != null && datacenter == null && vmName == null) {
-				datacenter = DatacenterHelper.findDatacenterFromDatastore(rootFolder, datastore.getName());
-				this.setDatacenterName(datacenter.getName());
-				this.setDatastoreName(datastore.getName());
-			}
+				AllocatorImpl allocator = new AllocatorImpl(rootFolder);
 
-			if (datastore == null) {
-				LOGGER.error("Cant locate a datastore for this storage disk.");
+				List<ComputeConnector> computes = getLinkedComputes();
+
+				if (computes.isEmpty()) {
+					LOGGER.warn("the volume is not linked to a compute.");
+				} else {
+					// Search for a datastore name on attribute.
+					setDatastoreName(getDatastoreName());
+				}
+				if (monitor != null) {
+					subMonitor.worked(20);
+				}
+				Float size = getSize();
+				volumeName = getTitle();
+
+				oldDiskSize = size;
+				oldDiskName = volumeName;
+
+				try {
+					loadDatastoreAndDatacenter();
+				} catch (DatacenterNotFoundException | DatastoreNotFoundException ex) {
+					// Allocate the datacenter and datastore when necessary.
+					if (datastore == null) {
+						datastore = allocator.allocateDatastore();
+						if (datastore != null) {
+							setDatastoreName(datastore.getName());
+						}
+					}
+					if (datastore != null && datacenter == null && vmName == null) {
+						datacenter = DatacenterHelper.findDatacenterFromDatastore(rootFolder, datastore.getName());
+						setDatacenterName(datacenter.getName());
+						setDatastoreName(datastore.getName());
+					}
+					if (datastore == null) {
+						globalMessage = ex.getMessage();
+						levelMessage = Level.ERROR;
+						LOGGER.error(globalMessage);
+						VCenterClient.disconnect();
+						return;
+					}
+					if (datacenter == null) {
+						globalMessage = ex.getMessage();
+						levelMessage = Level.ERROR;
+						LOGGER.error(globalMessage);
+						VCenterClient.disconnect();
+						return;
+					}
+				}
+				
+				if (monitor != null) {
+					subMonitor.worked(40);
+				}
+				// Load the volume information. If the volume doesn't exist, the
+				// volume object will have default value.
+
+				try {
+					VolumeHelper.loadVolumeInformation(datastoreName, volumeName, datacenterName, vmName);
+					if (monitor != null) {
+						subMonitor.worked(60);
+					}
+				} catch (LoadVolumeException ex) {
+				}
+				// Check if the volume already exist in the vcenter.
+				if (VolumeHelper.isExistVolumeForName(datastoreName, volumeName, datacenterName, vmName)) {
+					// The volume already exist.
+					globalMessage = "Virtual disk : " + volumeName + " already exist in datacenter.";
+					levelMessage = Level.WARN;
+					LOGGER.warn(globalMessage);
+					VCenterClient.disconnect();
+					return;
+				}
+				if (monitor != null) {
+					subMonitor.worked(70);
+				}
+				// set the attributes on volume object.
+				if (getSize() == 0.0f) {
+					globalMessage = "The disk size is not setted, please set this attributes in GB float value.";
+					levelMessage = Level.ERROR;
+					LOGGER.error(globalMessage);
+					VCenterClient.disconnect();
+					return;
+				}
+				VolumeHelper.setSize(volumeName, getSize());
+				// Create a new disk with or with or without vm information.
+				try {
+					if (monitor != null) {
+						subMonitor.worked(80);
+					}
+					VolumeHelper.createVolume(datacenterName, datastoreName, volumeName, getSize());
+					if (monitor != null) {
+						subMonitor.worked(100);
+					}
+					if (vmName == null) {
+						globalMessage = "The virtual disk : " + volumeName + " is created ";
+					} else {
+						globalMessage = "The virtual disk : " + volumeName + " is created and attached to virtual machine : " + vmName;
+					}
+					levelMessage = Level.INFO;
+					LOGGER.info(globalMessage);
+					
+				} catch (LoadVolumeException | CreateDiskException ex) {
+					globalMessage = ex.getMessage();
+					levelMessage = Level.ERROR;
+					LOGGER.error(globalMessage);
+				}
+
+				// In all case invoke a disconnect from vcenter.
 				VCenterClient.disconnect();
-				return;
 			}
-			if (datacenter == null) {
-				LOGGER.error("Cant locate a datacenter for this storage disk.");
-				VCenterClient.disconnect();
-				return;
-			}
+		};
+
+		UIDialog.executeActionThread(runnableWithProgress, titleMessage);
+
+		if (globalMessage != null && !globalMessage.isEmpty()) {
+			UIDialog.showUserMessage(titleMessage, globalMessage, levelMessage);
 		}
-
-		// Load the volume information. If the volume doesnt exist, the volume
-		// object will be null.
-		VolumeHelper.loadVolumeInformation(datastoreName, volumeName, datacenterName, vmName);
-
-		// Check if the volume already exist in the vcenter.
-		if (VolumeHelper.isExistVolumeForName(datastoreName, volumeName, datacenterName, vmName)) {
-			// The volume already exist.
-			LOGGER.warn("Volume : " + volumeName + " already exist in datacenter.");
-			VCenterClient.disconnect();
-			return;
+		// retrieve resource informations when no errors has been launched.
+		if (levelMessage != null && !Level.ERROR.equals(levelMessage)) {
+			occiRetrieve();
 		}
-		// set the attributes on volume object.
-		if (this.getSize() == 0.0f) {
-			LOGGER.warn("The disk size is not setted, please set this attributes in GB float value.");
-			VCenterClient.disconnect();
-			return;
-		}
-		VolumeHelper.setSize(volumeName, this.getSize());
-
-		// Create a new disk with or with or without vm information.
-		VolumeHelper.createVolume(datacenterName, datastoreName, volumeName, this.getSize());
-
-		occiRetrieve();
-		// In all case invoke a disconnect from vcenter.
-		VCenterClient.disconnect();
+		globalMessage = "";
+		levelMessage = null;
 	}
 
 	/**
@@ -197,100 +265,123 @@ public class StorageConnector extends org.occiware.clouddesigner.occi.infrastruc
 	 */
 	@Override
 	public void occiRetrieve() {
-		LOGGER.debug("occiRetrieve() called on " + this);
-		if (!VCenterClient.checkConnection()) {
-			// Must return true if connection is established.
-			return;
-		}
-		String volumeName = this.getTitle();
-		if (oldDiskName == null) {
-			oldDiskName = volumeName;
-		}
-		if (oldDiskSize == null) {
-			oldDiskSize = this.getSize();
-		}
-		try {
-			loadDatastoreAndDatacenter();
-		} catch (DatacenterNotFoundException ex) { 
-			if (datastore == null) {
-				LOGGER.error("Cant locate a datastore for this storage disk.");
-				this.setState(StorageStatus.ERROR);
-				this.setMessage("Cant locate a datastore for this storage disk.");
-				VCenterClient.disconnect();
-				return;
-			}
-			if (datacenter == null) {
-				LOGGER.error("Cant locate a datacenter for this storage disk.");
-				this.setState(StorageStatus.ERROR);
-				this.setMessage("Cant locate a datacenter for this storage disk.");
-				VCenterClient.disconnect();
-				return;
-			}
-		} catch (DatastoreNotFoundException ex) {
-			
-			if (datastore == null) {
-				LOGGER.error("Cant locate a datastore for this storage disk.");
-				this.setState(StorageStatus.ERROR);
-				this.setMessage("Cant locate a datastore for this storage disk.");
-				VCenterClient.disconnect();
-				return;
-			}
-			if (datacenter == null) {
-				LOGGER.error("Cant locate a datacenter for this storage disk.");
-				this.setState(StorageStatus.ERROR);
-				this.setMessage("Cant locate a datacenter for this storage disk.");
-				VCenterClient.disconnect();
-				return;
-			}
-		}
 
-		// Check if the volume name has changed, if this is the case, the
-		// loadinfo method may not work.
-		if (!oldDiskName.equals(volumeName)) {
-			// Volume name has changed.
-			if (VolumeHelper.isExistVolumeForName(datastoreName, volumeName, datacenterName, vmName)) {
-				// All ok.
-				oldDiskName = volumeName;
-				LOGGER.info("The disk " + oldDiskName + " name has changed to : " + volumeName);
+		titleMessage = "Retrieve a virtual disk : " + getTitle();
 
-			} else if (VolumeHelper.isExistVolumeForName(datastoreName, oldDiskName, datacenterName, vmName)) {
-				volumeName = oldDiskName;
-				this.setTitle(oldDiskName);
-			}
-		} else {
-			// Load the volume object.
-			VolumeHelper.loadVolumeInformation(datastoreName, volumeName, datacenterName, vmName);
-		}
+		IRunnableWithProgress runnableWithProgress = new IRunnableWithProgress() {
 
-		// Update disk information on screen.
-		try {
-			this.setMessage(null);
-
-			if (!VolumeHelper.isExistVolumeForName(datastoreName, volumeName, datacenterName, vmName)) {
-				LOGGER.error("Cant find the disk on vcenter, there's no disk with the name : " + volumeName);
-				this.setState(StorageStatus.ERROR);
-				this.setMessage("Cant find the disk on vcenter, there's no disk with the name : " + volumeName);
-				return;
-			}
-			size = VolumeHelper.getSize(volumeName);
-			if (size == 0.0f) {
-				this.setState(StorageStatus.ERROR);
-			} else {
-				if (VolumeHelper.isAttached(volumeName)) {
-					this.setState(StorageStatus.ONLINE);
-				} else {
-					this.setState(StorageStatus.OFFLINE);
+			@Override
+			public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+				LOGGER.debug("occiRetrieve() called on " + this);
+				if (!VCenterClient.checkConnection()) {
+					// Must return true if connection is established.
+					globalMessage = "No connection to Vcenter has been established.";
+					levelMessage = Level.WARN;
+					LOGGER.warn(globalMessage);
+					return;
 				}
-				assignDeviceIdStorageToStorageLink(volumeName);
+				SubMonitor subMonitor = null;
+				boolean toMonitor = false;
+				if (monitor != null) {
+					toMonitor = true;
+				}
 
+				if (toMonitor) {
+					subMonitor = SubMonitor.convert(monitor, 100);
+					// consume..
+					subMonitor.worked(10);
+
+				}
+				volumeName = getTitle();
+				if (oldDiskName == null) {
+					oldDiskName = volumeName;
+				}
+				if (oldDiskSize == null) {
+					oldDiskSize = getSize();
+				}
+				try {
+					loadDatastoreAndDatacenter();
+				} catch (DatacenterNotFoundException | DatastoreNotFoundException ex) {
+					if (datastore == null) {
+						globalMessage = "Cant locate a datastore for this storage disk.";
+						levelMessage = Level.ERROR;
+						LOGGER.error(globalMessage);
+						return;
+					}
+					if (datacenter == null) {
+						globalMessage = "Cant locate a datacenter for this storage disk.";
+						levelMessage = Level.ERROR;
+						LOGGER.error(globalMessage);
+						return;
+					}
+				}
+				if (monitor != null) {
+					subMonitor.worked(20);
+				}
+				
+				// Check if disk name has changed.
+				if (!oldDiskName.equals(volumeName)) {
+					// Volume name has changed.
+					if (VolumeHelper.isExistVolumeForName(datastoreName, volumeName, datacenterName, vmName)) {
+						// All ok.
+						oldDiskName = volumeName;
+						LOGGER.info("The disk " + oldDiskName + " name has changed to : " + volumeName);
+
+					} else if (VolumeHelper.isExistVolumeForName(datastoreName, oldDiskName, datacenterName, vmName)) {
+						volumeName = oldDiskName;
+					}
+				} else {
+					// Load the volume object.
+					try {
+						VolumeHelper.loadVolumeInformation(datastoreName, volumeName, datacenterName, vmName);
+					} catch (LoadVolumeException ex) {
+						globalMessage = ex.getMessage();
+						levelMessage = Level.ERROR;
+						LOGGER.error(globalMessage);
+						return;
+					}
+				}
+				if (monitor != null) {
+					subMonitor.worked(40);
+				}
+				// Update disk information on screen.
+				try {
+					if (!VolumeHelper.isExistVolumeForName(datastoreName, volumeName, datacenterName, vmName)) {
+						globalMessage = "Cant find the disk on vcenter, there's no disk with the name : " + volumeName;
+						levelMessage = Level.ERROR;
+						LOGGER.error(globalMessage);
+						return;
+					}
+					size = VolumeHelper.getSize(volumeName);
+					
+				} catch (DiskNotFoundException ex) {
+					globalMessage = ex.getMessage();
+					levelMessage = Level.ERROR;
+					LOGGER.error(globalMessage);
+				}
+				if (monitor != null) {
+					subMonitor.worked(100);
+				}
+				if (UIDialog.isStandAlone()) {
+					updateAttributesOnStorage();
+				}
 			}
-		} catch (DiskNotFoundException ex) {
-			LOGGER.error(ex.getMessage());
-			this.setState(StorageStatus.ERROR);
-			this.setMessage(ex.getMessage());
+		};
+
+		UIDialog.executeActionThread(runnableWithProgress, titleMessage);
+
+		if (globalMessage != null && !globalMessage.isEmpty()) {
+			UIDialog.showUserMessage(titleMessage, globalMessage, levelMessage);
+		}
+
+		if (!UIDialog.isStandAlone()) {
+			updateAttributesOnStorage();
 		}
 		// In all case invoke a disconnect from vcenter.
 		VCenterClient.disconnect();
+
+		globalMessage = "";
+		levelMessage = null;
 	}
 
 	/**
@@ -298,75 +389,114 @@ public class StorageConnector extends org.occiware.clouddesigner.occi.infrastruc
 	 */
 	@Override
 	public void occiUpdate() {
-		LOGGER.debug("occiUpdate() called on " + this);
-		if (!VCenterClient.checkConnection()) {
-			// Must return true if connection is established.
-			return;
-		}
+		titleMessage = "Update a virtual disk : " + getTitle();
 
-		String volumeName = this.getTitle();
+		IRunnableWithProgress runnableWithProgress = new IRunnableWithProgress() {
 
-		try {
-			loadDatastoreAndDatacenter();
-		} catch (DatacenterNotFoundException ex) {
-			if (datastore == null) {
-				LOGGER.error("Cant locate a datastore for this storage disk.");
-				VCenterClient.disconnect();
-				return;
-			}
-			if (datacenter == null) {
-				LOGGER.error("Cant locate a datacenter for this storage disk.");
-				VCenterClient.disconnect();
-				return;
-			}
-		} catch (DatastoreNotFoundException ex) {
-			if (datastore == null) {
-				LOGGER.error("Cant locate a datastore for this storage disk.");
-				VCenterClient.disconnect();
-				return;
-			}
-			if (datacenter == null) {
-				LOGGER.error("Cant locate a datacenter for this storage disk.");
-				VCenterClient.disconnect();
-				return;
-			}
-		}
-
-		if (oldDiskName == null) {
-			oldDiskName = volumeName;
-		}
-		if (oldDiskSize == null) {
-			oldDiskSize = this.getSize();
-		}
-
-		// Resizing.
-		if (oldDiskSize != size) {
-			VolumeHelper.setSize(volumeName, size);
-			try {
-				VolumeHelper.resizeDisk(volumeName, size);
-			} catch (DiskNotFoundException ex) {
-				this.setMessage(ex.getMessage());
-			}
-		}
-
-		// Renaming. (include vmdk file rename).
-		if (!oldDiskName.equals(volumeName)) {
-			// Try to rename the disk (and the vmdk file).
-			try {
-				boolean result = VolumeHelper.renameDisk(oldDiskName, volumeName);
-				if (result) {
-					oldDiskName = volumeName;
-					occiRetrieve();
+			@Override
+			public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+				LOGGER.debug("occiUpdate() called on " + this);
+				if (!VCenterClient.checkConnection()) {
+					// Must return true if connection is established.
+					globalMessage = "No connection to Vcenter has been established.";
+					levelMessage = Level.WARN;
+					LOGGER.warn(globalMessage);
+					return;
+				}
+				SubMonitor subMonitor = null;
+				boolean toMonitor = false;
+				if (monitor != null) {
+					toMonitor = true;
 				}
 
-			} catch (DiskNotFoundException ex) {
-				this.setMessage(ex.getMessage());
+				if (toMonitor) {
+					subMonitor = SubMonitor.convert(monitor, 100);
+					// consume..
+					subMonitor.worked(10);
+
+				}
+				volumeName = getTitle();
+
+				try {
+					loadDatastoreAndDatacenter();
+				} catch (DatacenterNotFoundException | DatastoreNotFoundException ex) {
+					if (datastore == null) {
+						globalMessage = "Cant locate a datastore for this storage disk.";
+						levelMessage = Level.ERROR;
+						LOGGER.error(globalMessage);
+						VCenterClient.disconnect();
+						return;
+					}
+					if (datacenter == null) {
+						globalMessage = "Cant locate a datacenter for this storage disk.";
+						levelMessage = Level.ERROR;
+						LOGGER.error(globalMessage);
+						VCenterClient.disconnect();
+						return;
+					}
+				} 
+				
+				if (monitor != null) {
+					subMonitor.worked(40);
+				}
+				if (oldDiskName == null) {
+					oldDiskName = volumeName;
+				}
+				if (oldDiskSize == null) {
+					oldDiskSize = getSize();
+				}
+
+				// Resizing.
+				if (oldDiskSize != size) {
+					VolumeHelper.setSize(volumeName, size);
+					try {
+						VolumeHelper.resizeDisk(volumeName, size);
+						globalMessage = "Resize disk operation success";
+						levelMessage = Level.INFO;
+						LOGGER.error(globalMessage);
+					} catch (DiskNotFoundException | ResizeDiskException ex) {
+						globalMessage = ex.getMessage();
+						levelMessage = Level.ERROR;
+						LOGGER.error(globalMessage);
+					}
+				}
+				if (monitor != null) {
+					subMonitor.worked(60);
+				}
+				// Renaming. (include vmdk file rename).
+				if (!oldDiskName.equals(volumeName)) {
+					// Try to rename the disk (and the vmdk file).
+					try {
+						VolumeHelper.renameDisk(oldDiskName, volumeName);
+						oldDiskName = volumeName;
+						globalMessage += " \n rename disk operation success";
+						levelMessage = Level.INFO;
+						LOGGER.error(globalMessage);
+					} catch (DiskNotFoundException | RenameDiskException ex) {
+						globalMessage = ex.getMessage();
+						levelMessage = Level.ERROR;
+						LOGGER.error(globalMessage);
+					}
+				}
+				if (monitor != null) {
+					subMonitor.worked(100);
+				}
+				// In all case invoke a disconnect from vcenter.
+				VCenterClient.disconnect();
 			}
+		};
 
+		UIDialog.executeActionThread(runnableWithProgress, titleMessage);
+
+		if (globalMessage != null && !globalMessage.isEmpty()) {
+			UIDialog.showUserMessage(titleMessage, globalMessage, levelMessage);
 		}
-
-		// In all case invoke a disconnect from vcenter.
-		VCenterClient.disconnect();
+		// retrieve resource informations when no errors has been launched.
+		if (levelMessage != null && !Level.ERROR.equals(levelMessage)) {
+			occiRetrieve();
+		}
+		globalMessage = "";
+		levelMessage = null;
 
 	}
 
@@ -375,51 +505,90 @@ public class StorageConnector extends org.occiware.clouddesigner.occi.infrastruc
 	 */
 	@Override
 	public void occiDelete() {
-		LOGGER.debug("occiDelete() called on " + this);
-		if (!VCenterClient.checkConnection()) {
-			// Must return true if connection is established.
-			return;
-		}
-		String volumeName = this.getTitle();
-		if (oldDiskName == null) {
-			oldDiskName = volumeName;
-		}
-		try {
-			loadDatastoreAndDatacenter();
-		} catch (DatacenterNotFoundException ex) {
-			if (datastore == null) {
-				LOGGER.error("Cant locate a datastore for this storage disk.");
+		titleMessage = "Delete a virtual disk : " + getTitle();
+
+		IRunnableWithProgress runnableWithProgress = new IRunnableWithProgress() {
+
+			@Override
+			public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+				LOGGER.debug("occiDelete() called on " + this);
+				if (!VCenterClient.checkConnection()) {
+					// Must return true if connection is established.
+					globalMessage = "No connection to Vcenter has been established.";
+					levelMessage = Level.WARN;
+					LOGGER.warn(globalMessage);
+					return;
+				}
+				SubMonitor subMonitor = null;
+				boolean toMonitor = false;
+				if (monitor != null) {
+					toMonitor = true;
+				}
+
+				if (toMonitor) {
+					subMonitor = SubMonitor.convert(monitor, 100);
+					// consume..
+					subMonitor.worked(10);
+
+				}
+				volumeName = getTitle();
+				if (oldDiskName == null) {
+					oldDiskName = volumeName;
+				}
+				if (monitor != null) {
+					subMonitor.worked(20);
+				}
+				try {
+					loadDatastoreAndDatacenter();
+				} catch (DatacenterNotFoundException | DatastoreNotFoundException ex) {
+					if (datastore == null) {
+						globalMessage = "Cant locate a datastore for this storage disk.";
+						levelMessage = Level.ERROR;
+						LOGGER.error(globalMessage);
+						VCenterClient.disconnect();
+						return;
+					}
+					if (datacenter == null) {
+						globalMessage = "Cant locate a datacenter for this storage disk.";
+						levelMessage = Level.ERROR;
+						LOGGER.error(globalMessage);
+						VCenterClient.disconnect();
+						return;
+					}
+				}
+				if (monitor != null) {
+					subMonitor.worked(60);
+				}
+				try {
+					VolumeHelper.destroyDisk(volumeName, datacenterName, datastoreName, vmName);
+					globalMessage = "Delete disk operation success";
+					levelMessage = Level.INFO;
+					LOGGER.error(globalMessage);
+				} catch (DetachDiskException | LoadVolumeException | DeleteDiskException ex) {
+					globalMessage = ex.getMessage();
+					levelMessage = Level.ERROR;
+					LOGGER.error(globalMessage);
+				}
+				if (monitor != null) {
+					subMonitor.worked(100);
+				}
+				// In all case invoke a disconnect from vcenter.
 				VCenterClient.disconnect();
-				return;
 			}
-			if (datacenter == null) {
-				LOGGER.error("Cant locate a datacenter for this storage disk.");
-				VCenterClient.disconnect();
-				return;
-			}
-		} catch (DatastoreNotFoundException ex) {
-			if (datastore == null) {
-				LOGGER.error("Cant locate a datastore for this storage disk.");
-				VCenterClient.disconnect();
-				return;
-			}
-			if (datacenter == null) {
-				LOGGER.error("Cant locate a datacenter for this storage disk.");
-				VCenterClient.disconnect();
-				return;
-			}
-		}
-		try {
-			VolumeHelper.destroyDisk(volumeName, datacenterName, datastoreName, vmName);
-			this.setState(StorageStatus.OFFLINE);
-			this.setMessage("The disk " + volumeName + " has been deleted.");
-		} catch (DetachDiskException ex) {
-			this.setMessage(ex.getMessage());
-			this.setState(StorageStatus.ERROR);
+		};
+
+		UIDialog.executeActionThread(runnableWithProgress, titleMessage);
+
+		if (globalMessage != null && !globalMessage.isEmpty()) {
+			UIDialog.showUserMessage(titleMessage, globalMessage, levelMessage);
 		}
 
-		// In all case invoke a disconnect from vcenter.
-		VCenterClient.disconnect();
+		// retrieve resource informations when no errors has been launched.
+		if (levelMessage != null && !Level.ERROR.equals(levelMessage)) {
+			occiRetrieve();
+		}
+		globalMessage = "";
+		levelMessage = null;
 	}
 
 	//
@@ -433,101 +602,121 @@ public class StorageConnector extends org.occiware.clouddesigner.occi.infrastruc
 	 */
 	@Override
 	public void online() {
-		LOGGER.debug("Action online() called on " + this);
-		if (!VCenterClient.checkConnection()) {
-			// Must return true if connection is established.
-			return;
-		}
-		String volumeName = this.getTitle();
-		try {
-			loadDatastoreAndDatacenter();
-		} catch (DatacenterNotFoundException ex) {
-			if (datastore == null) {
-				LOGGER.error("Cant locate a datastore for this storage disk.");
-				VCenterClient.disconnect();
-				return;
-			}
-			if (datacenter == null) {
-				LOGGER.error("Cant locate a datacenter for this storage disk.");
-				VCenterClient.disconnect();
-				return;
-			}
-		} catch (DatastoreNotFoundException ex) {
-			if (datastore == null) {
-				LOGGER.error("Cant locate a datastore for this storage disk.");
-				VCenterClient.disconnect();
-				return;
-			}
-			if (datacenter == null) {
-				LOGGER.error("Cant locate a datacenter for this storage disk.");
-				VCenterClient.disconnect();
-				return;
-			}
-		}
-		try {
-			// Storage State Machine.
-			switch (getState().getValue()) {
+		titleMessage = "Virtual disk : " + getTitle() + " , action: online";
 
-			case StorageStatus.ONLINE_VALUE:
-				LOGGER.debug("Fire transition(state=online, action=\"online\")...");
-				this.setState(StorageStatus.OFFLINE);
-				VolumeHelper.detachDisk(volumeName);
-				VolumeHelper.attachDisk(volumeName, vmName);
-				try {
-					if (VolumeHelper.isAttached(volumeName)) {
-						this.setState(StorageStatus.ONLINE);
-					}
-				} catch (DiskNotFoundException e) {
-					LOGGER.error(e.getMessage());
-					this.setMessage(e.getMessage());
-					this.setState(StorageStatus.ERROR);
+		IRunnableWithProgress runnableWithProgress = new IRunnableWithProgress() {
+
+			@Override
+			public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+				LOGGER.debug("Action online() called on " + this);
+				if (!VCenterClient.checkConnection()) {
+					// Must return true if connection is established.
+					globalMessage = "No connection to Vcenter has been established.";
+					levelMessage = Level.WARN;
+					LOGGER.warn(globalMessage);
+					return;
 				}
-				break;
-
-			case StorageStatus.OFFLINE_VALUE:
-				LOGGER.debug("Fire transition(state=offline, action=\"online\")...");
-				VolumeHelper.attachDisk(volumeName, vmName);
-				try {
-					if (VolumeHelper.isAttached(volumeName)) {
-						this.setState(StorageStatus.ONLINE);
-					}
-				} catch (DiskNotFoundException e) {
-					LOGGER.error(e.getMessage());
-					this.setMessage(e.getMessage());
-					this.setState(StorageStatus.ERROR);
+				SubMonitor subMonitor = null;
+				boolean toMonitor = false;
+				if (monitor != null) {
+					toMonitor = true;
 				}
 
-				break;
+				if (toMonitor) {
+					subMonitor = SubMonitor.convert(monitor, 100);
+					// consume..
+					subMonitor.worked(10);
 
-			case StorageStatus.ERROR_VALUE:
-				LOGGER.debug("Fire transition(state=error, action=\"online\")...");
-				this.setState(StorageStatus.OFFLINE);
-				VolumeHelper.detachDisk(volumeName);
-				VolumeHelper.attachDisk(volumeName, vmName);
-				try {
-					if (VolumeHelper.isAttached(volumeName)) {
-						this.setState(StorageStatus.ONLINE);
-					}
-				} catch (DiskNotFoundException e) {
-					LOGGER.error(e.getMessage());
-					this.setMessage(e.getMessage());
-					this.setState(StorageStatus.ERROR);
 				}
+				volumeName = getTitle();
+				try {
+					loadDatastoreAndDatacenter();
+				} catch (DatacenterNotFoundException | DatastoreNotFoundException ex) {
+					if (datastore == null) {
+						globalMessage = "Cant locate a datastore for this storage disk.";
+						levelMessage = Level.ERROR;
+						LOGGER.error(globalMessage);
+						VCenterClient.disconnect();
+						return;
+					}
+					if (datacenter == null) {
+						globalMessage = "Cant locate a datacenter for this storage disk.";
+						levelMessage = Level.ERROR;
+						LOGGER.error(globalMessage);
+						VCenterClient.disconnect();
+						return;
+					}
+				} 
+				if (monitor != null) {
+					subMonitor.worked(40);
+				}
+				try {
+					// Storage State Machine.
+					switch (getState().getValue()) {
 
-				break;
+					case StorageStatus.ONLINE_VALUE:
+						LOGGER.debug("Fire transition(state=online, action=\"online\")...");
+						
+						VolumeHelper.detachDisk(volumeName);
+						if (monitor != null) {
+							subMonitor.worked(60);
+						}
+						VolumeHelper.attachDisk(volumeName, vmName);
+						globalMessage = "attach disk operation success";
+						levelMessage = Level.INFO;
+						LOGGER.error(globalMessage);
+						break;
 
-			default:
-				break;
+					case StorageStatus.OFFLINE_VALUE:
+						LOGGER.debug("Fire transition(state=offline, action=\"online\")...");
+						VolumeHelper.attachDisk(volumeName, vmName);
+						globalMessage = "attach disk operation success";
+						levelMessage = Level.INFO;
+						LOGGER.error(globalMessage);
+						break;
+
+					case StorageStatus.ERROR_VALUE:
+						LOGGER.debug("Fire transition(state=error, action=\"online\")...");
+						VolumeHelper.detachDisk(volumeName);
+						if (monitor != null) {
+							subMonitor.worked(60);
+						}
+						VolumeHelper.attachDisk(volumeName, vmName);
+						globalMessage = "attach disk operation success";
+						levelMessage = Level.INFO;
+						LOGGER.error(globalMessage);
+						break;
+
+					default:
+						globalMessage = "Unknown disk state";
+						levelMessage = Level.ERROR;
+						LOGGER.error(globalMessage);
+						break;
+					}
+					if (monitor != null) {
+						subMonitor.worked(100);
+					}
+				} catch (AttachDiskException | DetachDiskException ex) {
+					globalMessage = ex.getMessage();
+					levelMessage = Level.ERROR;
+					LOGGER.error(globalMessage);
+				}
+				// In all case invoke a disconnect from vcenter.
+				VCenterClient.disconnect();
 			}
-		} catch (AttachDiskException ex) {
-			this.setMessage(ex.getMessage());
-			this.setState(StorageStatus.ERROR);
-		} catch (DetachDiskException ex) {
-			this.setMessage(ex.getMessage());
-			this.setState(StorageStatus.ERROR);
+		};
+
+		UIDialog.executeActionThread(runnableWithProgress, titleMessage);
+
+		if (globalMessage != null && !globalMessage.isEmpty()) {
+			UIDialog.showUserMessage(titleMessage, globalMessage, levelMessage);
 		}
-		// In all case invoke a disconnect from vcenter.
-		VCenterClient.disconnect();
+		// retrieve resource informations when no errors has been launched.
+		if (levelMessage != null && !Level.ERROR.equals(levelMessage)) {
+			occiRetrieve();
+		}
+		globalMessage = "";
+		levelMessage = null;
 	}
 
 	/**
@@ -537,115 +726,110 @@ public class StorageConnector extends org.occiware.clouddesigner.occi.infrastruc
 	 */
 	@Override
 	public void offline() {
-		LOGGER.debug("Action offline() called on " + this);
-		String volumeName = this.getTitle();
-		if (!VCenterClient.checkConnection()) {
-			// Must return true if connection is established.
-			return;
-		}
+		titleMessage = "Virtual disk : " + getTitle() + " , action: offline";
 
-		try {
-			loadDatastoreAndDatacenter();
-		} catch (DatacenterNotFoundException ex)  {
-			if (datastore == null) {
-				LOGGER.error("Cant locate a datastore for this storage disk.");
-				VCenterClient.disconnect();
-				return;
-			}
-			if (datacenter == null) {
-				LOGGER.error("Cant locate a datacenter for this storage disk.");
-				VCenterClient.disconnect();
-				return;
-			}
-		} catch (DatastoreNotFoundException ex) {
-			if (datastore == null) {
-				LOGGER.error("Cant locate a datastore for this storage disk.");
-				VCenterClient.disconnect();
-				return;
-			}
-			if (datacenter == null) {
-				LOGGER.error("Cant locate a datacenter for this storage disk.");
-				VCenterClient.disconnect();
-				return;
-			}
-		}
-		try {
-			// Storage State Machine.
-			switch (getState().getValue()) {
+		IRunnableWithProgress runnableWithProgress = new IRunnableWithProgress() {
 
-			case StorageStatus.ONLINE_VALUE:
-				LOGGER.debug("Fire transition(state=online, action=\"offline\")...");
-
-				VolumeHelper.detachDisk(volumeName);
-				try {
-					if (!VolumeHelper.isAttached(volumeName)) {
-						this.setState(StorageStatus.OFFLINE);
-					}
-				} catch (DiskNotFoundException e) {
-					LOGGER.error(e.getMessage());
-					this.setMessage(e.getMessage());
-					this.setState(StorageStatus.ERROR);
+			@Override
+			public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+				LOGGER.debug("Action offline() called on " + this);
+				volumeName = getTitle();
+				if (!VCenterClient.checkConnection()) {
+					// Must return true if connection is established.
+					globalMessage = "No connection to Vcenter has been established.";
+					levelMessage = Level.WARN;
+					LOGGER.warn(globalMessage);
+					return;
 				}
 
-				break;
-
-			case StorageStatus.OFFLINE_VALUE:
-				LOGGER.debug("Fire transition(state=offline, action=\"offline\")...");
-				VolumeHelper.detachDisk(volumeName);
-				try {
-					if (VolumeHelper.isAttached(volumeName)) {
-						this.setState(StorageStatus.ONLINE);
-					} else {
-						this.setState(StorageStatus.OFFLINE);
-					}
-				} catch (DiskNotFoundException e) {
-					LOGGER.error(e.getMessage());
-					this.setMessage(e.getMessage());
-					this.setState(StorageStatus.ERROR);
+				SubMonitor subMonitor = null;
+				boolean toMonitor = false;
+				if (monitor != null) {
+					toMonitor = true;
 				}
 
-				break;
-
-			case StorageStatus.ERROR_VALUE:
-				LOGGER.debug("Fire transition(state=error, action=\"offline\")...");
-				VolumeHelper.detachDisk(volumeName);
-				try {
-					if (VolumeHelper.isAttached(volumeName)) {
-						this.setState(StorageStatus.ONLINE);
-					} else {
-						this.setState(StorageStatus.OFFLINE);
-					}
-				} catch (DiskNotFoundException e) {
-					LOGGER.error(e.getMessage());
-					this.setMessage(e.getMessage());
-					this.setState(StorageStatus.ERROR);
+				if (toMonitor) {
+					subMonitor = SubMonitor.convert(monitor, 100);
+					subMonitor.worked(10);
 				}
-
-				break;
-
-			default:
-				break;
+				try {
+					loadDatastoreAndDatacenter();
+				} catch (DatacenterNotFoundException | DatastoreNotFoundException ex) {
+					if (datastore == null) {
+						globalMessage = "Cant locate a datastore for this storage disk.";
+						levelMessage = Level.ERROR;
+						LOGGER.error(globalMessage);
+						VCenterClient.disconnect();
+						return;
+					}
+					if (datacenter == null) {
+						globalMessage = "Cant locate a datacenter for this storage disk.";
+						levelMessage = Level.ERROR;
+						LOGGER.error(globalMessage);
+						VCenterClient.disconnect();
+						return;
+					}
+				}
+				if (monitor != null) {
+					subMonitor.worked(40);
+				}
+				try {
+					switch (getState().getValue()) {
+					
+					case StorageStatus.ONLINE_VALUE:
+						LOGGER.debug("Fire transition(state=online, action=\"offline\")...");
+						VolumeHelper.detachDisk(volumeName);
+						globalMessage = "detach disk operation success";
+						levelMessage = Level.INFO;
+						LOGGER.error(globalMessage);
+						break;
+					case StorageStatus.OFFLINE_VALUE:
+						LOGGER.debug("Fire transition(state=offline, action=\"offline\")...");
+						VolumeHelper.detachDisk(volumeName);
+						globalMessage = "detach disk operation success";
+						levelMessage = Level.INFO;
+						LOGGER.error(globalMessage);
+						break;
+					case StorageStatus.ERROR_VALUE:
+						LOGGER.debug("Fire transition(state=error, action=\"offline\")...");
+						VolumeHelper.detachDisk(volumeName);
+						globalMessage = "detach disk operation success";
+						levelMessage = Level.INFO;
+						LOGGER.error(globalMessage);
+						break;
+						
+					default:
+						globalMessage = "Unknown disk state";
+						levelMessage = Level.ERROR;
+						LOGGER.error(globalMessage);
+						break;
+					}
+					
+					
+				} catch (DetachDiskException ex) {
+					globalMessage = ex.getMessage();
+					levelMessage = Level.ERROR;
+					LOGGER.error(globalMessage);
+				}
+				if (monitor != null) {
+					subMonitor.worked(100);
+				}
+				// In all case invoke a disconnect from vcenter.
+				VCenterClient.disconnect();
 			}
-		} catch (DetachDiskException ex) {
-			this.setMessage(ex.getMessage());
-			this.setState(StorageStatus.ERROR);
-		}
-		// In all case invoke a disconnect from vcenter.
-		VCenterClient.disconnect();
-	}
+		};
 
-	/**
-	 * Assign uuid to deviceId on all storageLinkConnector.
-	 */
-	public void assignDeviceIdStorageToStorageLink(final String volumeName) {
-		EList<Link> links = this.getLinks();
-		for (Link link : links) {
-			if (link instanceof StoragelinkConnector) {
-				StoragelinkConnector linkst = (StoragelinkConnector) link;
-				linkst.setDeviceid(VolumeHelper.getDiskUUID(volumeName));
-			}
-		}
+		UIDialog.executeActionThread(runnableWithProgress, titleMessage);
 
+		if (globalMessage != null && !globalMessage.isEmpty()) {
+			UIDialog.showUserMessage(titleMessage, globalMessage, levelMessage);
+		}
+		// retrieve resource informations when no errors has been launched.
+		if (levelMessage != null && !Level.ERROR.equals(levelMessage)) {
+			occiRetrieve();
+		}
+		globalMessage = "";
+		levelMessage = null;
 	}
 
 	// Getters and setters and private methods.
@@ -657,7 +841,7 @@ public class StorageConnector extends org.occiware.clouddesigner.occi.infrastruc
 	 */
 	public String getDatacenterName() {
 		if (datacenterName == null) {
-			datacenterName = getAttributeValueByOcciKey("occi.storage.vmware.datacenter");
+			datacenterName = getAttributeValueByOcciKey(ATTR_DATACENTER_NAME);
 		}
 		return datacenterName;
 	}
@@ -669,13 +853,6 @@ public class StorageConnector extends org.occiware.clouddesigner.occi.infrastruc
 	 */
 	public void setDatacenterName(String datacenterName) {
 		this.datacenterName = datacenterName;
-		if (getAttributeValueByOcciKey("occi.storage.vmware.datacenter") == null) {
-			AttributeState attr = this.createAttribute("occi.storage.vmware.datacenter", datacenterName);
-			this.getAttributes().add(attr);
-		} else {
-			AttributeState attr = this.getAttributeStateObject("occi.storage.vmware.datacenter");
-			attr.setValue(datacenterName);
-		}
 	}
 
 	/**
@@ -685,7 +862,7 @@ public class StorageConnector extends org.occiware.clouddesigner.occi.infrastruc
 	 */
 	public String getDatastoreName() {
 		if (datastoreName == null) {
-			datastoreName = getAttributeValueByOcciKey("occi.storage.vmware.datastore");
+			datastoreName = getAttributeValueByOcciKey(ATTR_DATASTORE_NAME);
 		}
 
 		return datastoreName;
@@ -698,14 +875,6 @@ public class StorageConnector extends org.occiware.clouddesigner.occi.infrastruc
 	 */
 	public void setDatastoreName(String datastoreName) {
 		this.datastoreName = datastoreName;
-		if (getAttributeValueByOcciKey("occi.storage.vmware.datastore") == null) {
-			AttributeState attr = this.createAttribute("occi.storage.vmware.datastore", datastoreName);
-			this.getAttributes().add(attr);
-		} else {
-			AttributeState attr = this.getAttributeStateObject("occi.storage.vmware.datastore");
-			attr.setValue(datastoreName);
-		}
-
 	}
 
 	/**
@@ -814,82 +983,6 @@ public class StorageConnector extends org.occiware.clouddesigner.occi.infrastruc
 			}
 		}
 
-		//
-		//
-		//
-		// if (computes.isEmpty()) {
-		// LOGGER.warn("No storage link found, the volume " + this.getTitle() +
-		// " is not linked to a compute.");
-		// } else {
-		// // Search for a datastore name on links.
-		// if (datastoreName == null) {
-		// this.setDatastoreName(this.findDatastoreNameOnAttribute());
-		// }
-		// // Take the first compute.
-		// for (ComputeConnector compute : computes) {
-		// if (compute.getTitle() != null) {
-		// vmName = compute.getTitle();
-		// if (datacenterName == null) {
-		// datacenterName = compute.getDatacenterName();
-		//
-		// if (datastoreName == null) {
-		// datastoreName = compute.getDatastoreName();
-		// }
-		//
-		// }
-		// break;
-		// }
-		// }
-		// // Search for a datastore name on links.
-		// if (datastoreName == null) {
-		// this.setDatastoreName(this.findDatastoreNameOnAttribute());
-		// }
-		// }
-		//
-		// if (datastoreName != null) {
-		// // Load datastore object.
-		// datastore = DatastoreHelper.findDatastoreForName(rootFolder,
-		// datastoreName);
-		// // Search the datacenter with revert list of datastores.
-		// datacenter = DatacenterHelper.findDatacenterFromDatastore(rootFolder,
-		// datastoreName);
-		//
-		// if (datacenter == null) {
-		// throw new DatacenterNotFoundException(
-		// "Cannot retrieve datacenter, cause: datacenter not found for the
-		// datastore: "
-		// + datastore.getName());
-		// }
-		//
-		// if (datastore == null) {
-		// throw new DatastoreNotFoundException(
-		// "Cant locate a datastore, cause: datastore is referenced but not
-		// found on vcenter, name of the datastore: "
-		// + datastoreName);
-		// }
-		//
-		// } else {
-		// // Datastore is null, we must assign a datacenter and a
-		// // datastore to continue.
-		// // if at least one is not found.
-		// if (datastore == null || datacenter == null) {
-		// if (datacenter == null) {
-		// throw new DatacenterNotFoundException("Cant locate a datacenter,
-		// cause : no available datacenter.");
-		// }
-		// if (datastore == null) {
-		// throw new DatastoreNotFoundException("Cant locate a datastore, cause:
-		// no available datastore.");
-		// }
-		// }
-		// }
-		// if (datacenter != null) {
-		// this.setDatacenterName(datacenter.getName());
-		// }
-		// if (datastore != null) {
-		// this.setDatastoreName(datastore.getName());
-		// }
-
 	}
 
 	/**
@@ -961,6 +1054,52 @@ public class StorageConnector extends org.occiware.clouddesigner.occi.infrastruc
 
 	public void setVmName(String vmName) {
 		this.vmName = vmName;
+	}
+
+	public void updateAttributesOnStorage() {
+		Map<String, String> attrsToCreate = new HashMap<>();
+		Map<String, String> attrsToUpdate = new HashMap<>();
+		List<String> attrsToDelete = new ArrayList<>();
+
+		if (datacenterName != null) {
+			if (this.getAttributeValueByOcciKey(ATTR_DATACENTER_NAME) == null) {
+				attrsToCreate.put(ATTR_DATACENTER_NAME, datacenterName);
+			} else {
+				// update
+				attrsToUpdate.put(ATTR_DATACENTER_NAME, datacenterName);
+			}
+		}
+		if (datastoreName != null) {
+			// ATTR_DATASTORE_NAME
+			if (this.getAttributeValueByOcciKey(ATTR_DATASTORE_NAME) == null) {
+				attrsToCreate.put(ATTR_DATASTORE_NAME, datastoreName);
+			} else {
+				attrsToUpdate.put(ATTR_DATASTORE_NAME, datastoreName);
+			}
+		}
+		// Update the attributes via a transaction (or not if standalone).
+		EntityUtils.updateAttributes(this, attrsToCreate, attrsToUpdate, attrsToDelete);
+
+		if (volumeName != null && !volumeName.equals(getTitle())) {
+			setTitle(volumeName);
+		}
+
+		if (size == 0.0f) {
+			setState(StorageStatus.ERROR);
+			setMessage("Volume size is required");
+		} else {
+			try {
+				if (VolumeHelper.isAttached(volumeName)) {
+					setState(StorageStatus.ONLINE);
+				} else {
+					setState(StorageStatus.OFFLINE);
+				}
+			} catch (DiskNotFoundException ex) {
+				setState(StorageStatus.ERROR);
+				setMessage(ex.getMessage());
+			}
+		}
+
 	}
 
 }

@@ -136,8 +136,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		LOGGER.debug("Constructor called on " + this);
 
 	}
-	// TODO : Progress monitor on all action method, and add all progress on
-	// network, storage, links object.
+	
 
 	//
 	// OCCI CRUD callback operations.
@@ -2374,8 +2373,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 			attrsToUpdate.put(ATTR_MARKED_AS_TEMPLATE, markedAsTemplate);
 		}
 
-		// Update the attributes via a transaction if in cloud designer (or a
-		// simple update)..
+		// Update the attributes via a transaction (or not if standalone).
 		EntityUtils.updateAttributes(this, attrsToCreate, attrsToUpdate, attrsToDelete);
 
 		if (architecture != null) {

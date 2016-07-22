@@ -12,24 +12,24 @@
  */
 package org.occiware.clouddesigner.occi.infrastructure.connector.vmware.addons.exceptions;
 
-public class VirtualSwitchNotFoundException extends Exception {
+public class ResizeDiskException extends Exception {
 
-	private static final long serialVersionUID = -1227449195598379089L;
+	private static final long serialVersionUID = 731797186338114639L;
 
-	public VirtualSwitchNotFoundException() {
-		
+	public ResizeDiskException() {
+		// TODO Auto-generated constructor stub
 	}
 
-	public VirtualSwitchNotFoundException(String message, Throwable cause) {
+	public ResizeDiskException(String message, Throwable cause) {
 		super(message, cause);
 	}
 
-	public VirtualSwitchNotFoundException(String message) {
+	public ResizeDiskException(String message) {
 		super(message);
 	}
 
-	public VirtualSwitchNotFoundException(Throwable cause) {
+	public ResizeDiskException(Throwable cause) {
 		super(cause);
 	}
-
+	
 }

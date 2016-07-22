@@ -12,13 +12,19 @@
  */
 package org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils;
 
+import java.rmi.RemoteException;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.addons.Volume;
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.addons.exceptions.AttachDiskException;
+import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.addons.exceptions.CreateDiskException;
+import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.addons.exceptions.DeleteDiskException;
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.addons.exceptions.DetachDiskException;
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.addons.exceptions.DiskNotFoundException;
+import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.addons.exceptions.LoadVolumeException;
+import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.addons.exceptions.RenameDiskException;
+import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.addons.exceptions.ResizeDiskException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -42,12 +48,12 @@ public class VolumeHelper {
 	 * @param dcName
 	 * @param vmName
 	 *            (may be null if volume is not attached.)
+	 * @throws LoadVolumeException 
 	 */
-	public static void loadVolumeInformation(String dsName, String volumeName, String dcName, String vmName) {
+	public static void loadVolumeInformation(String dsName, String volumeName, String dcName, String vmName) throws LoadVolumeException {
 		// Load a volume.
 		volume = new Volume(volumeName, dsName, dcName, vmName);
 		volume.loadVolume();
-
 	}
 
 	/**
@@ -59,12 +65,16 @@ public class VolumeHelper {
 	 * @param vmName
 	 *            (may be null if volume is not attached).
 	 * @return true if volume exist, else false.
+	 * @throws LoadVolumeException 
 	 */
 	public static boolean isExistVolumeForName(String dsName, String volumeName, String dcName, String vmName) {
 		// Search the volume on datastore.
 		if (!checkVolume(volumeName)) {
 			// Load the volume.
-			loadVolumeInformation(dsName, volumeName, dcName, vmName);
+			try {
+				loadVolumeInformation(dsName, volumeName, dcName, vmName);
+			} catch (LoadVolumeException ex) {
+			}
 		}
 
 		return volume.isExist();
@@ -80,9 +90,11 @@ public class VolumeHelper {
 	 *            (Datastore name)
 	 * @param volumeName
 	 * @param volumeSize
+	 * @throws LoadVolumeException 
+	 * @throws CreateDiskException 
 	 */
 	public static void createVolume(final String dcName, final String dsName, final String volumeName,
-			final Float volumeSize) {
+			final Float volumeSize) throws LoadVolumeException, CreateDiskException {
 		// build a new disk.
 		if (!checkVolume(volumeName)) {
 			loadVolumeInformation(dsName, volumeName, dcName, null);
@@ -97,7 +109,7 @@ public class VolumeHelper {
 			volume.createEmptyVolume();
 		}
 	}
-
+	
 	// Delegate methods.
 	/**
 	 * Set the disk size on volume object.
@@ -156,17 +168,17 @@ public class VolumeHelper {
 	 * @param ds
 	 * @param volumeName
 	 * @param vmName
+	 * @throws ResizeDiskException 
 	 */
-	public static boolean resizeDisk(final String volumeName, Float newSize) throws DiskNotFoundException {
-		boolean result = false;
+	public static void resizeDisk(final String volumeName, Float newSize) throws DiskNotFoundException, ResizeDiskException {
+		
 		if (checkVolume(volumeName)) {
-			result = volume.resize(newSize);
-
+			volume.resize(newSize);
+			
 		} else {
 			LOGGER.warn("No disk information loaded, cant resize the disk.");
 			throw new DiskNotFoundException("No disk information loaded, cant resize the disk.");
 		}
-		return result;
 
 	}
 
@@ -175,8 +187,9 @@ public class VolumeHelper {
 	 * 
 	 * @param volumeName
 	 * @return
+	 * @throws RemoteException 
 	 */
-	public static String getDiskUUID(String volumeName) {
+	public static String getDiskUUID(String volumeName) throws RemoteException {
 		String uuid = "unknown";
 		if (checkVolume(volumeName)) {
 			uuid = volume.getUUID();
@@ -192,18 +205,17 @@ public class VolumeHelper {
 	 * @param newVolumeName
 	 * @return true if operation succeed
 	 * @throws DiskNotFoundException
+	 * @throws RenameDiskException 
 	 */
-	public static boolean renameDisk(final String oldVolumeName, final String newVolumeName)
-			throws DiskNotFoundException {
-		boolean result = false;
+	public static void renameDisk(final String oldVolumeName, final String newVolumeName)
+			throws DiskNotFoundException, RenameDiskException {
 		if (checkVolume(oldVolumeName)) {
-			result = volume.renameDisk(newVolumeName);
+			volume.renameDisk(newVolumeName);
 
 		} else {
 			LOGGER.warn("No disk information loaded, cant rename the disk: " + oldVolumeName);
 			throw new DiskNotFoundException("No disk information loaded, cant rename the disk : " + oldVolumeName);
 		}
-		return result;
 	}
 
 	/**
@@ -215,31 +227,27 @@ public class VolumeHelper {
 	 * @param dsName
 	 * @param vmName
 	 * @throws DetachDiskException
+	 * @throws DeleteDiskException 
+	 * @throws LoadVolumeException 
 	 */
-	public static boolean destroyDisk(final String volumeName, final String dcName, final String dsName,
-			final String vmName) throws DetachDiskException {
-		boolean result = false;
+	public static void destroyDisk(final String volumeName, final String dcName, final String dsName,
+			final String vmName) throws DetachDiskException, DeleteDiskException, LoadVolumeException {
+		
 		if (checkVolume(volumeName)) {
 			// The volume is loaded
 			// Destroy the vmdk.
 			if (volume.isAttached()) {
 				// Detach the disk before the deletion.
-				result = detachDisk(volumeName);
-				if (!result) {
-					LOGGER.warn(
-							"The disk is attached and cannot be detached ! Please, check your system after deletion.");
-				}
-				result = false;
+				detachDisk(volumeName);
 			}
-			result = volume.destroyVolume();
+			volume.destroyVolume();
 
 		} else {
 			if (isExistVolumeForName(dsName, volumeName, dcName, vmName)) {
 				// disk is reloaded successfully, destroy the vmdk.
-				result = volume.destroyVolume();
+				volume.destroyVolume();
 			}
 		}
-		return result;
 	}
 
 	/**
@@ -248,14 +256,12 @@ public class VolumeHelper {
 	 * @param volumeName
 	 * @throws DetachDiskException
 	 */
-	public static boolean detachDisk(final String volumeName) throws DetachDiskException {
-		boolean result = false;
+	public static void detachDisk(final String volumeName) throws DetachDiskException {
 		if (checkVolume(volumeName)) {
 			if (volume.isAttached()) {
-				result = volume.detachVolume();
+				volume.detachVolume();
 			}
 		}
-		return result;
 	}
 
 	/**
@@ -266,26 +272,19 @@ public class VolumeHelper {
 	 * @throws AttachDiskException
 	 * @throws DetachDiskException
 	 */
-	public static boolean attachDisk(final String volumeName, final String vmName)
+	public static void attachDisk(final String volumeName, final String vmName)
 			throws AttachDiskException, DetachDiskException {
-		boolean result = false;
+		
 		if (checkVolume(volumeName)) {
 			if (volume.isAttached()) {
-				result = detachDisk(volumeName);
-				if (!result && volume.isAttached()) {
+				detachDisk(volumeName);
+				if (volume.isAttached()) {
 					LOGGER.warn("Cant detach the disk, please check your configuration and logs.");
 				}
-				result = false;
 			}
-
-			result = volume.attachVolume();
-
-			if (!result) {
-				LOGGER.warn("Cant attach the disk: " + volumeName + " to: " + vmName);
-			}
-
+			volume.attachVolume();
 		}
-		return result;
+		
 	}
 
 	/**

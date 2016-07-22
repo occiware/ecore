@@ -16,6 +16,7 @@ package org.occiware.clouddesigner.occi.infrastructure.connector.vmware;
 
 import java.util.List;
 
+import org.apache.log4j.Level;
 import org.occiware.clouddesigner.occi.AttributeState;
 import org.occiware.clouddesigner.occi.OCCIFactory;
 import org.occiware.clouddesigner.occi.Resource;
@@ -23,11 +24,14 @@ import org.occiware.clouddesigner.occi.infrastructure.ComputeStatus;
 import org.occiware.clouddesigner.occi.infrastructure.StorageLinkStatus;
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.DatastoreHelper;
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.VCenterClient;
+import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.VMHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.vmware.vim25.GuestDiskInfo;
 import com.vmware.vim25.mo.Datastore;
 import com.vmware.vim25.mo.Folder;
+import com.vmware.vim25.mo.VirtualMachine;
 
 /**
  * Connector implementation for the OCCI kind: - scheme:
@@ -43,6 +47,11 @@ public class StoragelinkConnector extends org.occiware.clouddesigner.occi.infras
 	public static String DATASTORE = "Datastore";
 
 	private String vmName;
+
+	// Message to end users management.
+	private String titleMessage = "";
+	private String globalMessage = "";
+	private Level levelMessage = null;
 
 	/**
 	 * Constructs a storagelink connector.
@@ -90,7 +99,8 @@ public class StoragelinkConnector extends org.occiware.clouddesigner.occi.infras
 			datastoreName = conn.getDatastoreName();
 		}
 		if (datastoreName == null) {
-			LOGGER.error("The datastore name is null, please set the attribute occi.storage.vmware.datastore on Storage entity. Cant retrieve datastore.");
+			LOGGER.error(
+					"The datastore name is null, please set the attribute occi.storage.vmware.datastore on Storage entity. Cant retrieve datastore.");
 			this.setState(StorageLinkStatus.ERROR);
 			VCenterClient.disconnect();
 			return;
@@ -124,14 +134,14 @@ public class StoragelinkConnector extends org.occiware.clouddesigner.occi.infras
 		}
 
 		// Refresh the storage part.
-//		if (target != null && target instanceof StorageConnector) {
-//			StorageConnector storage = (StorageConnector) target;
-//			if (vmName != null) {
-//				storage.setVmName(vmName);
-//			}
-//			storage.occiRetrieve();
-//
-//		} // if no target, no more retrieve.
+		// if (target != null && target instanceof StorageConnector) {
+		// StorageConnector storage = (StorageConnector) target;
+		// if (vmName != null) {
+		// storage.setVmName(vmName);
+		// }
+		// storage.occiRetrieve();
+		//
+		// } // if no target, no more retrieve.
 
 		VCenterClient.disconnect();
 
@@ -232,4 +242,24 @@ public class StoragelinkConnector extends org.occiware.clouddesigner.occi.infras
 		this.vmName = vmName;
 	}
 
+	/**
+	 * Assign logical disk information to deviceId to be done in StorageLink.
+	 */
+	public void assignDeviceIdStorageToStorageLink(final String volumeName) {
+//     TODO : Assign logical disk like /dev/sda (or /dev/hda), c , may be find with guestoperating objects or ssh command.		
+	}
+	
+	private void assignStorageDiskPath() {
+		VirtualMachine vm = null;
+		if (vmName != null) {
+			// Load the vm information.
+			vm = VMHelper.loadVirtualMachine(vmName);
+			if (vm != null && VMHelper.isToolsInstalled(vm) && VMHelper.isToolsRunning(vm)) {
+				// TODO : via GuestInfo.getDiskPath() (give c: or /) , for mounted point. and search the good virtual disk info.
+			}
+		}
+		
+		
+	}
+	
 }

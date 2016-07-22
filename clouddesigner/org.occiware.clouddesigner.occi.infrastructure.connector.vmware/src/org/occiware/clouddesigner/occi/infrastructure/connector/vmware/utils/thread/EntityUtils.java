@@ -93,12 +93,12 @@ public class EntityUtils {
 			attrName = attr.getKey();
 			attrValue = attr.getValue();
 			AttributeState attrState = getAttributeStateObject(entity, attrName);
-			executeOperation(entity, ADD_ATTR, attrState, attrName, attrValue);
+			executeOperation(entity, UPDATE_ATTR, attrState, attrName, attrValue);
 		}
 		
 		for (String name : attrsToDelete) {
 			AttributeState attrState = getAttributeStateObject(entity, name);
-			executeOperation(entity, ADD_ATTR, attrState, name, null);
+			executeOperation(entity, DELETE_ATTR, attrState, name, null);
 		}
 		
 		

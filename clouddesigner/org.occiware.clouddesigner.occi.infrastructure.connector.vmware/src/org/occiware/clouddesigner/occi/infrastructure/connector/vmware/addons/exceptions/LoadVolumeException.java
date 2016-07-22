@@ -12,24 +12,22 @@
  */
 package org.occiware.clouddesigner.occi.infrastructure.connector.vmware.addons.exceptions;
 
-public class VirtualSwitchNotFoundException extends Exception {
+public class LoadVolumeException extends Exception {
 
-	private static final long serialVersionUID = -1227449195598379089L;
+	private static final long serialVersionUID = 3135108817208088488L;
 
-	public VirtualSwitchNotFoundException() {
-		
+	public LoadVolumeException() {
 	}
 
-	public VirtualSwitchNotFoundException(String message, Throwable cause) {
-		super(message, cause);
-	}
-
-	public VirtualSwitchNotFoundException(String message) {
+	public LoadVolumeException(String message) {
 		super(message);
 	}
 
-	public VirtualSwitchNotFoundException(Throwable cause) {
+	public LoadVolumeException(Throwable cause) {
 		super(cause);
 	}
 
+	public LoadVolumeException(String message, Throwable cause) {
+		super(message, cause);
+	}
 }
