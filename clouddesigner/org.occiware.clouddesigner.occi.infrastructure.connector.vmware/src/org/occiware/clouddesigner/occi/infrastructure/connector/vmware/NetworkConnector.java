@@ -37,11 +37,18 @@ import com.vmware.vim25.mo.Task;
 import com.vmware.vim25.mo.VirtualMachine;
 import com.vmware.vim25.mox.VirtualMachineDeviceManager;
 
+import java.lang.reflect.InvocationTargetException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import org.apache.commons.net.util.SubnetUtils;
+import org.apache.log4j.Level;
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.xtext.xtext.ecoreInference.EClassifierInfo.EClassInfo.FindResult;
 import org.occiware.clouddesigner.occi.Attribute;
 import org.occiware.clouddesigner.occi.AttributeState;
@@ -50,6 +57,7 @@ import org.occiware.clouddesigner.occi.Link;
 import org.occiware.clouddesigner.occi.Mixin;
 import org.occiware.clouddesigner.occi.OCCIFactory;
 import org.occiware.clouddesigner.occi.Resource;
+import org.occiware.clouddesigner.occi.infrastructure.Architecture;
 import org.occiware.clouddesigner.occi.infrastructure.NetworkInterfaceStatus;
 import org.occiware.clouddesigner.occi.infrastructure.NetworkStatus;
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.addons.exceptions.DatacenterNotFoundException;
@@ -63,6 +71,8 @@ import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.Hos
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.NetworkHelper;
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.VCenterClient;
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.VMHelper;
+import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.thread.EntityUtils;
+import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.thread.UIDialog;
 import org.occiware.clouddesigner.occi.util.OcciHelper;
 
 /**
@@ -76,10 +86,19 @@ public class NetworkConnector extends org.occiware.clouddesigner.occi.infrastruc
 	 */
 	private static Logger LOGGER = LoggerFactory.getLogger(NetworkConnector.class);
 
-	private static final String OCCI_ATTRIBUTE_HOSTSYSTEM_NAME = "occi.network.vmware.hostsystemname";
-	private static final String OCCI_ATTRIBUTE_VSWITCH_NBPORT = "occi.network.vmware.nbport";
+	private static final String ATTR_HOSTSYSTEM_NAME = "hostsystemname";
+	private static final String ATTR_DATACENTER_NAME = "datacentername";
+	private static final String ATTR_DATASTORE_NAME = "datastorename";
+	private static final String ATTR_CLUSTER_NAME = "clustername";
 	
+	private static final String ATTR_VSWITCH_NBPORT = "nbport";
 	
+	// Message to end users management.
+	private String titleMessage = "";
+	private String globalMessage = "";
+	private Level levelMessage = null;
+	
+	private String nbPortStr = null;
 	
 	/**
 	 * Represent the physical compute which be used for this standard switch.
@@ -102,96 +121,130 @@ public class NetworkConnector extends org.occiware.clouddesigner.occi.infrastruc
 	 */
 	@Override
 	public void occiCreate() {
-
-		LOGGER.debug("occiCreate() called on " + this);
-		if (!VCenterClient.checkConnection()) {
-			// Must return true if connection is established.
-			return;
-		}
-		ServiceInstance si = VCenterClient.getServiceInstance();
-		Folder rootFolder = si.getRootFolder();
-
-		String vSwitchName = this.getTitle();
-		String networkName = this.getLabel();
-
-		if (vSwitchName == null) {
-			// No name ==> no vswitch.
-			LOGGER.warn("The vswitch name is not setted, please check your configuration (attribute title).");
-			VCenterClient.disconnect();
-			return;
-		}
-		Allocator allocator = new AllocatorImpl(rootFolder);
-
-		// Create a new vSwitch and add his network name.
-
-		// 1 : Check if this vSwitch exist.
-
-		// Get the attribute value for occi.network.vmware.hostsystemname.
-		hostSystemName = this.getAttributeValueByOcciKey(OCCI_ATTRIBUTE_HOSTSYSTEM_NAME);
-		if (hostSystemName == null) {
-			// Get the host system if set on computes link via network adapters
-			// and set it.
-			findAndSetHostSystemNameFromLinkedVMs();
-		}
-		if (hostSystemName == null) {
-			// Auto allocation.
-			LOGGER.info("Auto allocating a host system");
-			allocator.allocateDatacenter();
-			allocator.allocateCluster();
-			allocator.allocateHostSystem();
-		}
-
-		if (hostSystemName == null) {
-			LOGGER.error(
-					"Cant create the vswitch and port group, no host system defined, please set the attribute occi.network.vmware.hostsystemname");
-			VCenterClient.disconnect();
-			return;
-		}
-		// Load the hostsystem object.
+		titleMessage = "Create a vswitch : " + getTitle();
 		
-		HostSystem host = HostHelper.findHostSystemForName(rootFolder, this.getHostSystemName());
-		if (host == null) {
-			LOGGER.error("The host system : " + hostSystemName + " doesnt exist on vCenter with your ids.");
-			VCenterClient.disconnect();
-			return;
-		}
-		HostVirtualSwitch hostVswitch = null;
-		try {
-			hostVswitch = NetworkHelper.findVSwitch(host, vSwitchName);
-		} catch (VirtualSwitchNotFoundException ex) {
-			// no op.
-		}
-		if (hostVswitch == null) {
-			String nbPortStr = this.getAttributeValueByOcciKey(OCCI_ATTRIBUTE_VSWITCH_NBPORT);
-			if (nbPortStr == null || nbPortStr.isEmpty()) {
-				nbPortStr = "8";
-			}
-			int nbPort = 8;
-			try {
-				nbPort = Integer.valueOf(nbPortStr);
-			} catch (NumberFormatException ex) {
-				LOGGER.error("bad value for " + OCCI_ATTRIBUTE_VSWITCH_NBPORT);
-				LOGGER.error("Cant create the vswitch.");
-				VCenterClient.disconnect();
-				return;
-			}
+		IRunnableWithProgress runnableWithProgress = new IRunnableWithProgress() {
 			
-			// Create the vswitch.
-			// NetworkHelper.createVSwitch(vSwitchName, networkName, nbPort, this.getVlan(), host, macAddress, ipAddress, subnetMask, dhcpMode)
-		} else {
-			LOGGER.warn("Cant create the vswitch : " + vSwitchName + " for the host : " + hostSystemName + " , cause it already exist.");
-			VCenterClient.disconnect();
-			return;
-		}
+			@Override
+			public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+				LOGGER.debug("occiCreate() called on " + this);
+				if (!VCenterClient.checkConnection()) {
+					// Must return true if connection is established.
+					return;
+				}
+				ServiceInstance si = VCenterClient.getServiceInstance();
+				Folder rootFolder = si.getRootFolder();
+
+				String vSwitchName = getTitle();
+				String networkName = getLabel();
+
+				if (vSwitchName == null) {
+					// No name ==> no vswitch.
+					globalMessage = "The vswitch name is not setted, please check your configuration (attribute title).";
+					levelMessage = Level.INFO;
+					LOGGER.warn(globalMessage);
+					VCenterClient.disconnect();
+					return;
+				}
+				Allocator allocator = new AllocatorImpl(rootFolder);
+
+				// Create a new vSwitch and add his network name.
+
+				// 1 : Check if this vSwitch exist.
+
+				// Get the attribute value for occi.network.vmware.hostsystemname.
+				hostSystemName = getAttributeValueByOcciKey(ATTR_HOSTSYSTEM_NAME);
+				if (hostSystemName == null) {
+					// Get the host system if set on computes link via network adapters
+					// and set it.
+					findAndSetHostSystemNameFromLinkedVMs();
+				}
+				if (hostSystemName == null) {
+					// Auto allocation.
+					LOGGER.info("Auto allocating a host system");
+					allocator.allocateDatacenter();
+					allocator.allocateCluster();
+					allocator.allocateHostSystem();
+				}
+
+				if (hostSystemName == null) {
+					LOGGER.error(
+							"Cant create the vswitch and port group, no host system defined, please set the attribute occi.network.vmware.hostsystemname");
+					VCenterClient.disconnect();
+					return;
+				}
+				// Load the hostsystem object.
+				
+				HostSystem host = HostHelper.findHostSystemForName(rootFolder, getHostSystemName());
+				if (host == null) {
+					LOGGER.error("The host system : " + hostSystemName + " doesnt exist on vCenter with your ids.");
+					VCenterClient.disconnect();
+					return;
+				}
+				HostVirtualSwitch hostVswitch = null;
+				try {
+					hostVswitch = NetworkHelper.findVSwitch(host, vSwitchName);
+				} catch (VirtualSwitchNotFoundException ex) {
+					// no op.
+				}
+				if (hostVswitch == null) {
+					nbPortStr = getAttributeValueByOcciKey(ATTR_VSWITCH_NBPORT);
+					if (nbPortStr == null || nbPortStr.isEmpty()) {
+						nbPortStr = "8";
+					}
+					int nbPort = 8;
+					try {
+						nbPort = Integer.valueOf(nbPortStr);
+					} catch (NumberFormatException ex) {
+						LOGGER.error("bad value for " + ATTR_VSWITCH_NBPORT);
+						LOGGER.error("Cant create the vswitch.");
+						VCenterClient.disconnect();
+						return;
+					}
+					
+					// Get the ip Addresses in cidr notation.
+					SubnetUtils subnetUtil = new SubnetUtils(getAttributeValueByOcciKey("occi.network.address"));
+					String netmask = subnetUtil.getInfo().getNetmask();
+					String ipAddress = subnetUtil.getInfo().getAddress();
+					// String networkAddress = subnetUtil.getInfo().getNetworkAddress();
+					String vmKernelIpAddress;
+					boolean dhcpMode = (getAttributeValueByOcciKey("occi.network.allocation") != null && getAttributeValueByOcciKey("occi.network.allocation").equals("dynamic"));
+					
+					// Create the vswitch (without set macAddress, null value)..
+					try {
+						NetworkHelper.createVSwitch(vSwitchName, networkName, nbPort, getVlan(), host, null, ipAddress, netmask, dhcpMode);
+					} catch (RemoteException ex) {
+						// TODO : Message global.
+					}
+				} else {
+					LOGGER.warn("Cant create the vswitch : " + vSwitchName + " for the host : " + hostSystemName + " , cause it already exist.");
+					VCenterClient.disconnect();
+					return;
+				}
+				
+				// 2 : check if created.
+				try {
+					hostVswitch = NetworkHelper.findVSwitch(host, vSwitchName);
+				} catch (VirtualSwitchNotFoundException ex) {
+					LOGGER.warn("The vswitch is not created, please check your configuration.");
+				}
+				
+				VCenterClient.disconnect();
+				
+			}
+		};
 		
-		// 2 : check if created.
-		try {
-			hostVswitch = NetworkHelper.findVSwitch(host, vSwitchName);
-		} catch (VirtualSwitchNotFoundException ex) {
-			LOGGER.warn("The vswitch is not created, please check your configuration.");
+		UIDialog.executeActionThread(runnableWithProgress, titleMessage);
+
+		if (globalMessage != null && !globalMessage.isEmpty()) {
+			UIDialog.showUserMessage(titleMessage, globalMessage, levelMessage);
 		}
-		VCenterClient.disconnect();
-		
+		// retrieve resource informations when no errors has been launched.
+		if (levelMessage != null && !Level.ERROR.equals(levelMessage)) {
+			occiRetrieve();
+		}
+		globalMessage = "";
+		levelMessage = null;
 	}
 
 	/**
@@ -200,7 +253,7 @@ public class NetworkConnector extends org.occiware.clouddesigner.occi.infrastruc
 	 * @return
 	 */
 	private void findAndSetHostSystemNameFromLinkedVMs() {
-		String hostSysName;
+		
 		Configuration conf = OcciHelper.getConfiguration(this);
 
 		List<Resource> resources = conf.getResources();
@@ -252,17 +305,40 @@ public class NetworkConnector extends org.occiware.clouddesigner.occi.infrastruc
 	 */
 	@Override
 	public void occiRetrieve() {
-		LOGGER.debug("occiRetrieve() called on " + this);
-		if (!VCenterClient.checkConnection()) {
-			// Must return true if connection is established.
-			return;
+		titleMessage = "Retrieve a vswitch : " + getTitle();
+IRunnableWithProgress runnableWithProgress = new IRunnableWithProgress() {
+			
+			@Override
+			public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+				LOGGER.debug("occiRetrieve() called on " + this);
+				if (!VCenterClient.checkConnection()) {
+					// Must return true if connection is established.
+					globalMessage = "No connection to Vcenter has been established.";
+					levelMessage = Level.WARN;
+					LOGGER.warn(globalMessage);
+					return;
+				}
+				List<Mixin> mixins;
+				ServiceInstance si = VCenterClient.getServiceInstance();
+				Folder rootFolder = si.getRootFolder();
+
+				VCenterClient.disconnect();
+			}
+		};
+		
+		UIDialog.executeActionThread(runnableWithProgress,
+				"Retrieve virtual machine " + getTitle() + " informations...");
+		
+		if (!UIDialog.isStandAlone()) {
+			// Update attributes in the end when operation are terminated.
+			updateAttributesOnNetwork();
 		}
-		List<Mixin> mixins;
-		ServiceInstance si = VCenterClient.getServiceInstance();
-		Folder rootFolder = si.getRootFolder();
 
-		VCenterClient.disconnect();
-
+		if (globalMessage != null && !globalMessage.isEmpty()) {
+			UIDialog.showUserMessage(titleMessage, globalMessage, levelMessage);
+		}
+		globalMessage = "";
+		levelMessage = null;
 	}
 
 	/**
@@ -270,6 +346,7 @@ public class NetworkConnector extends org.occiware.clouddesigner.occi.infrastruc
 	 */
 	@Override
 	public void occiUpdate() {
+		titleMessage = "Update a vswitch : " + getTitle();
 		LOGGER.debug("occiUpdate() called on " + this);
 
 		if (!VCenterClient.checkConnection()) {
@@ -287,6 +364,7 @@ public class NetworkConnector extends org.occiware.clouddesigner.occi.infrastruc
 	 */
 	@Override
 	public void occiDelete() {
+		titleMessage = "Delete a vswitch: " + getTitle();
 		LOGGER.debug("occiDelete() called on " + this);
 
 		if (!VCenterClient.checkConnection()) {
@@ -311,6 +389,7 @@ public class NetworkConnector extends org.occiware.clouddesigner.occi.infrastruc
 	 */
 	@Override
 	public void up() {
+		titleMessage = "Enable a vswitch : " + getTitle();
 		LOGGER.debug("Action up() called on " + this);
 
 		if (!VCenterClient.checkConnection()) {
@@ -330,6 +409,7 @@ public class NetworkConnector extends org.occiware.clouddesigner.occi.infrastruc
 	 */
 	@Override
 	public void down() {
+		titleMessage = "Disable a vwitch : " + getTitle();
 		LOGGER.debug("Action down() called on " + this);
 		if (!VCenterClient.checkConnection()) {
 			// Must return true if connection is established.
@@ -410,14 +490,67 @@ public class NetworkConnector extends org.occiware.clouddesigner.occi.infrastruc
 
 	public void setHostSystemName(String hostSystemName) {
 		this.hostSystemName = hostSystemName;
-		if (this.getAttributeValueByOcciKey(OCCI_ATTRIBUTE_HOSTSYSTEM_NAME) == null) {
-			AttributeState attr = createAttribute(OCCI_ATTRIBUTE_HOSTSYSTEM_NAME, hostSystemName);
-			this.getAttributes().add(attr);
-		} else {
-			// Update the attribute.
-			AttributeState attr = getAttributeStateObject(OCCI_ATTRIBUTE_HOSTSYSTEM_NAME);
-			attr.setValue(hostSystemName);
-		}
+		
 	}
 
+	/**
+	 * Update this object attributes.
+	 */
+	public void updateAttributesOnNetwork() {
+		
+		Map<String, String> attrsToCreate = new HashMap<>();
+		Map<String, String> attrsToUpdate = new HashMap<>();
+		List<String> attrsToDelete = new ArrayList<>();
+
+//		// ATTR_DATACENTER_NAME
+//		if (datacenterName != null) {
+//			if (this.getAttributeValueByOcciKey(ATTR_DATACENTER_NAME) == null) {
+//				attrsToCreate.put(ATTR_DATACENTER_NAME, datacenterName);
+//			} else {
+//				// update
+//				attrsToUpdate.put(ATTR_DATACENTER_NAME, datacenterName);
+//			}
+//		}
+//		if (datastoreName != null) {
+//			// ATTR_DATASTORE_NAME
+//			if (this.getAttributeValueByOcciKey(ATTR_DATASTORE_NAME) == null) {
+//				attrsToCreate.put(ATTR_DATASTORE_NAME, datastoreName);
+//			} else {
+//				attrsToUpdate.put(ATTR_DATASTORE_NAME, datastoreName);
+//			}
+//		}
+//
+//		// ATTR_CLUSTER_NAME
+//		if (clusterName != null) {
+//			if (this.getAttributeValueByOcciKey(ATTR_CLUSTER_NAME) == null) {
+//				attrsToCreate.put(ATTR_CLUSTER_NAME, clusterName);
+//			} else {
+//				attrsToUpdate.put(ATTR_CLUSTER_NAME, clusterName);
+//			}
+//		}
+		// ATTR_HOSTSYSTEM_NAME
+		if (hostSystemName != null) {
+			if (this.getAttributeValueByOcciKey(ATTR_HOSTSYSTEM_NAME) == null) {
+				attrsToCreate.put(ATTR_HOSTSYSTEM_NAME, hostSystemName);
+			} else {
+				attrsToUpdate.put(ATTR_HOSTSYSTEM_NAME, hostSystemName);
+			}
+		}
+
+		// ATTR_IMAGE_NAME
+		if (nbPortStr != null) {
+			if (this.getAttributeValueByOcciKey(ATTR_VSWITCH_NBPORT) == null) {
+				attrsToCreate.put(ATTR_VSWITCH_NBPORT, nbPortStr);
+			}
+		}
+		
+		// Update the attributes via a transaction (or not if standalone).
+		EntityUtils.updateAttributes(this, attrsToCreate, attrsToUpdate, attrsToDelete);
+
+		
+		
+		
+		
+	}
+	
 }

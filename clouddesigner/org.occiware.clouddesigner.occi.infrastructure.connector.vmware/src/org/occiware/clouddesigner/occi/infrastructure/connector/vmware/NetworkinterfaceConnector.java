@@ -18,10 +18,7 @@ import java.rmi.RemoteException;
 import java.util.List;
 
 import org.occiware.clouddesigner.occi.AttributeState;
-import org.occiware.clouddesigner.occi.Link;
-import org.occiware.clouddesigner.occi.Mixin;
 import org.occiware.clouddesigner.occi.OCCIFactory;
-import org.occiware.clouddesigner.occi.Resource;
 import org.occiware.clouddesigner.occi.infrastructure.NetworkInterfaceStatus;
 import org.occiware.clouddesigner.occi.infrastructure.NetworkStatus;
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.allocator.Allocator;
@@ -34,9 +31,7 @@ import org.slf4j.LoggerFactory;
 
 import com.vmware.vim25.Description;
 import com.vmware.vim25.GuestNicInfo;
-import com.vmware.vim25.GuestStackInfo;
 import com.vmware.vim25.HostPortGroup;
-import com.vmware.vim25.HostVirtualSwitch;
 import com.vmware.vim25.MethodFault;
 import com.vmware.vim25.TaskInfo;
 import com.vmware.vim25.TaskInfoState;

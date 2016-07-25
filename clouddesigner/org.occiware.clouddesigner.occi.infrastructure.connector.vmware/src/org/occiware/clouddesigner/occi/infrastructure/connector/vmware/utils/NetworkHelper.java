@@ -30,7 +30,9 @@ import com.vmware.vim25.HostVirtualNicSpec;
 import com.vmware.vim25.HostVirtualSwitch;
 import com.vmware.vim25.HostVirtualSwitchConfig;
 import com.vmware.vim25.HostVirtualSwitchSpec;
+import com.vmware.vim25.InvalidProperty;
 import com.vmware.vim25.MethodFault;
+import com.vmware.vim25.RuntimeFault;
 import com.vmware.vim25.TaskInfo;
 import com.vmware.vim25.TaskInfoState;
 import com.vmware.vim25.VirtualDevice;
@@ -152,27 +154,28 @@ public class NetworkHelper {
 				}
 			}
 		}
-		
+
 		return result;
 	}
-	
+
 	/**
 	 * Get all virtual ethernet card object for a VM.
+	 * 
 	 * @param vm
-	 * @return 
+	 * @return
 	 */
 	public static List<VirtualEthernetCard> getNetworkAdaptersForVM(String vmName) {
 		List<VirtualEthernetCard> vEths = new ArrayList<VirtualEthernetCard>();
 		if (vmName == null) {
 			return vEths;
 		}
-		
+
 		VirtualEthernetCard vEth;
-		
+
 		Folder rootFolder = VCenterClient.getServiceInstance().getRootFolder();
 
 		VirtualMachine vm = VMHelper.findVMForName(rootFolder, vmName);
-		
+
 		VirtualDevice[] vdevices = vm.getConfig().getHardware().getDevice();
 		for (VirtualDevice device : vdevices) {
 			if (device instanceof VirtualEthernetCard) {
@@ -182,7 +185,6 @@ public class NetworkHelper {
 		}
 		return vEths;
 	}
-	
 
 	/**
 	 * Return the type of virtual device. (E1000, PCnet32, vmxnet etc.)
@@ -270,10 +272,9 @@ public class NetworkHelper {
 	 */
 	public static VirtualDeviceConfigSpec createNicSpec(String netName, String nicName, String mode, String ipAddress) {
 		// TODO : Set ipAddress manually. via HostVirtualNicSpec see vijava
-				// sample AddVirtualNic..it is for vswitch not the nic for virtual machine.
-		
-		
-		
+		// sample AddVirtualNic..it is for vswitch not the nic for virtual
+		// machine.
+
 		VirtualDeviceConfigSpec nicSpec = new VirtualDeviceConfigSpec();
 		nicSpec.setOperation(VirtualDeviceConfigSpecOperation.add);
 		// TODO : Choose adapter type. E1000, pcnet etc.
@@ -286,7 +287,7 @@ public class NetworkHelper {
 		if (mode.equals(MODE_NETWORK_ADDRESS_MANUAL)) {
 			// TODO : Customize macAdress, manual configuration mode.
 		}
-		
+
 		nic.setAddressType(mode);
 		nic.setBacking(nicBacking);
 		nic.setKey(0);
@@ -307,77 +308,86 @@ public class NetworkHelper {
 		return nicSpec;
 	}
 
-	
 	/**
 	 * Create a new VSwitch and create a port group attached.
-	 * @param vSwitchName, the vSwitch name.
-	 * @param portGroupName, this is here the network name.
-	 * @param nbSwitchPort (default to 8 if nb port = 0).
-	 * @param vlanId : the VLAN id to associate
-	 * @param host : the host real machine
-	 * @param macAddress : if null, mac address is set automatically
-	 * @param ipAddress IP Address to VMKernel.
+	 * 
+	 * @param vSwitchName,
+	 *            the vSwitch name.
+	 * @param portGroupName,
+	 *            this is here the network name.
+	 * @param nbSwitchPort
+	 *            (default to 8 if nb port = 0).
+	 * @param vlanId
+	 *            : the VLAN id to associate
+	 * @param host
+	 *            : the host real machine
+	 * @param macAddress
+	 *            : if null, mac address is set automatically
+	 * @param ipAddress
+	 *            IP Address to VMKernel.
 	 * @param subnetMask
-	 * @param dhcpMode : true dhcp mode, false manual ip addressing mode.
+	 * @param dhcpMode
+	 *            : true dhcp mode, false manual ip addressing mode.
 	 * @return
+	 * @throws RemoteException
+	 * @throws RuntimeFault
+	 * @throws InvalidProperty
 	 */
-	public static HostNetworkSystem createVSwitch(String vSwitchName, String portGroupName, int nbSwitchPort, int vlanId, HostSystem host,String macAddress, String ipAddress, String subnetMask, boolean dhcpMode) {
-		try {
-			
-			HostNetworkSystem hns = host.getHostNetworkSystem();
-			// add a virtual switch
-		    HostVirtualSwitchSpec spec = new HostVirtualSwitchSpec();
-		    if (nbSwitchPort == 0) {
-		    	nbSwitchPort = 8;
-		    }
-		    spec.setNumPorts(nbSwitchPort);
-		    hns.addVirtualSwitch(vSwitchName, spec);
-		    
-		    // add a port group
-		    HostPortGroupSpec hpgs = new HostPortGroupSpec();
-		    hpgs.setName(portGroupName);
-		    hpgs.setVlanId(vlanId); // 0 ==> not associated with a VLAN
-		    hpgs.setVswitchName(vSwitchName);
-		    hpgs.setPolicy(new HostNetworkPolicy());
-		    hns.addPortGroup(hpgs);
-		    
-		    // add a virtual NIC to VMKernel
-		    HostVirtualNicSpec hvns = new HostVirtualNicSpec();
-		    // If a mac address is set. 
-		    if (macAddress != null) {
-		    	hvns.setMac(macAddress);
-		    }
-		    HostIpConfig hic = new HostIpConfig();
-		    
-		    hic.setDhcp(dhcpMode);
-		    if (!dhcpMode) {
-		    	if (ipAddress != null) {
-		    		hic.setIpAddress(ipAddress);	
-		    	} 
-		    	if (subnetMask != null) {
-		    		hic.setSubnetMask(subnetMask);
-		    	}
-		    }
-		    
-		    hvns.setIp(hic);
-		    
-		    String result = hns.addVirtualNic("VMKernel", hvns);
-		    
-		    LOGGER.error(result);
-		
-		
-			return hns;
-		} catch (RemoteException ex) {
-			LOGGER.error("Cant create vswitch : " + ex.getMessage());
-			return null;
+	public static HostNetworkSystem createVSwitch(String vSwitchName, String portGroupName, int nbSwitchPort,
+			int vlanId, HostSystem host, String macAddress, String ipAddress, String subnetMask, boolean dhcpMode)
+			throws InvalidProperty, RuntimeFault, RemoteException {
+
+		HostNetworkSystem hns = host.getHostNetworkSystem();
+		// add a virtual switch
+		HostVirtualSwitchSpec spec = new HostVirtualSwitchSpec();
+		if (nbSwitchPort == 0) {
+			nbSwitchPort = 8;
 		}
-		
+		spec.setNumPorts(nbSwitchPort);
+		hns.addVirtualSwitch(vSwitchName, spec);
+
+		// add a port group
+		HostPortGroupSpec hpgs = new HostPortGroupSpec();
+		hpgs.setName(portGroupName);
+		hpgs.setVlanId(vlanId); // 0 ==> not associated with a VLAN
+		hpgs.setVswitchName(vSwitchName);
+		hpgs.setPolicy(new HostNetworkPolicy());
+		hns.addPortGroup(hpgs);
+
+		// add a virtual NIC to VMKernel
+		HostVirtualNicSpec hvns = new HostVirtualNicSpec();
+		// If a mac address is set.
+		if (macAddress != null) {
+			hvns.setMac(macAddress);
+		}
+		HostIpConfig hic = new HostIpConfig();
+
+		hic.setDhcp(dhcpMode);
+		if (!dhcpMode) {
+			if (ipAddress != null) {
+				hic.setIpAddress(ipAddress);
+			}
+			if (subnetMask != null) {
+				hic.setSubnetMask(subnetMask);
+			}
+		}
+
+		hvns.setIp(hic);
+
+		String result = hns.addVirtualNic("VMKernel", hvns);
+
+		LOGGER.info(result);
+
+		return hns;
+
 	}
-	
+
 	/**
 	 * Retrieve a hostPortGroup object to get vswitch info and port group info.
+	 * 
 	 * @param host
-	 * @param networkName (portGroupName)
+	 * @param networkName
+	 *            (portGroupName)
 	 * @return a {@link HostPortGroup} if none found, null value is returned.
 	 */
 	public static HostPortGroup findPortGroup(HostSystem host, String networkName) {
@@ -388,12 +398,12 @@ public class NetworkHelper {
 				LOGGER.error("No port group on host: " + host.getName());
 				return portGroupResult;
 			}
-			for (HostPortGroup portGroup: portGroups) {
+			for (HostPortGroup portGroup : portGroups) {
 				if (portGroup.getSpec().getName().equals(networkName)) {
 					portGroupResult = portGroup;
 					break;
 				}
- 				
+
 			}
 		} catch (RemoteException ex) {
 			LOGGER.error("Cant find hostPortGroup: " + networkName + "  on host: " + host.getName());
@@ -402,39 +412,44 @@ public class NetworkHelper {
 		}
 		return portGroupResult;
 	}
-	
+
 	/**
 	 * Find a standard vswitch by name on a host system.
+	 * 
 	 * @param host
 	 * @param vSwitchName
 	 * @return
 	 * @throws VirtualSwitchNotFoundException
 	 */
-	public static HostVirtualSwitch findVSwitch(HostSystem host, String vSwitchName) throws VirtualSwitchNotFoundException {
+	public static HostVirtualSwitch findVSwitch(HostSystem host, String vSwitchName)
+			throws VirtualSwitchNotFoundException {
 		HostVirtualSwitch vSwitch = null;
 		try {
-			
+
 			if (vSwitchName == null) {
 				throw new VirtualSwitchNotFoundException("No virtual switch name defined, cant find the vswitch.");
 			}
-			
+
 			if (host == null) {
-				throw new VirtualSwitchNotFoundException("No host defined, cant find the standard virtual switch : " + vSwitchName);
+				throw new VirtualSwitchNotFoundException(
+						"No host defined, cant find the standard virtual switch : " + vSwitchName);
 			}
-			
-			HostVirtualSwitch[] vswitchs = host.getHostNetworkSystem().getNetworkInfo().getVswitch();	
+
+			HostVirtualSwitch[] vswitchs = host.getHostNetworkSystem().getNetworkInfo().getVswitch();
 			if (vswitchs == null) {
-				throw new VirtualSwitchNotFoundException("The virtual switch : " + vSwitchName + " has not been found on host : " + host.getName());
+				throw new VirtualSwitchNotFoundException(
+						"The virtual switch : " + vSwitchName + " has not been found on host : " + host.getName());
 			}
 			for (HostVirtualSwitch standardSwitch : vswitchs) {
-				
+
 				if (standardSwitch.getName().equals(vSwitchName)) {
 					vSwitch = standardSwitch;
 					break;
 				}
 			}
 			if (vSwitch == null) {
-				throw new VirtualSwitchNotFoundException("The virtual switch : " + vSwitchName + " has not been found on host : " + host.getName());
+				throw new VirtualSwitchNotFoundException(
+						"The virtual switch : " + vSwitchName + " has not been found on host : " + host.getName());
 			}
 
 		} catch (RemoteException ex) {
@@ -442,13 +457,13 @@ public class NetworkHelper {
 			LOGGER.error("Message: " + ex.getMessage());
 			ex.printStackTrace();
 		}
-		
+
 		return vSwitch;
 	}
-	
-	
+
 	/**
 	 * Action up on network adapter on vm.
+	 * 
 	 * @param vm
 	 * @param vEth
 	 * @return
@@ -463,12 +478,13 @@ public class NetworkHelper {
 
 		// Launch the task.
 		result = launchUpDownTask(vm, vEth, true);
-		
+
 		return result;
 	}
 
 	/**
 	 * Action down on network adapter on vm.
+	 * 
 	 * @param vm
 	 * @param vEth
 	 * @return
@@ -488,6 +504,7 @@ public class NetworkHelper {
 
 	/**
 	 * The the task for disconnection or connection.
+	 * 
 	 * @param vm
 	 * @param vEth
 	 * @param from

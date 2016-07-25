@@ -12,4 +12,5 @@
   <artifactId>org.occiware.clouddesigner.occi.infrastructure.connector.vmware</artifactId>
   <version>0.1.0-SNAPSHOT</version>
   <packaging>eclipse-plugin</packaging>
+  
 </project>

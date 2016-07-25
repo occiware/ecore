@@ -2302,6 +2302,9 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		this.vcpus = vcpus;
 	}
 
+	/**
+	 * Update this object attributes.
+	 */
 	public void updateAttributesOnCompute() {
 		Map<String, String> attrsToCreate = new HashMap<>();
 		Map<String, String> attrsToUpdate = new HashMap<>();
