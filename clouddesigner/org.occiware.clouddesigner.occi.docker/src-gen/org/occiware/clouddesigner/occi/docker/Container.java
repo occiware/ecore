@@ -60,6 +60,9 @@ import org.occiware.clouddesigner.occi.infrastructure.Compute;
  *   <li>{@link org.occiware.clouddesigner.occi.docker.Container#getCpuset <em>Cpuset</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.docker.Container#isPublish_all <em>Publish all</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.docker.Container#isRead_only <em>Read only</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.Container#isMonitored <em>Monitored</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.Container#getCpu_used <em>Cpu used</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.Container#getMemory_used <em>Memory used</em>}</li>
  * </ul>
  *
  * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer()
@@ -1098,6 +1101,88 @@ public interface Container extends Compute {
 	 * @generated
 	 */
 	void setRead_only(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Monitored</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Monitored</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Monitored</em>' attribute.
+	 * @see #setMonitored(boolean)
+	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Monitored()
+	 * @model default="false" dataType="org.occiware.clouddesigner.occi.Boolean"
+	 *        annotation="OCCIE2Ecore description='This attribut allow us to monitor the container'"
+	 * @generated
+	 */
+	boolean isMonitored();
+
+	/**
+	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.docker.Container#isMonitored <em>Monitored</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Monitored</em>' attribute.
+	 * @see #isMonitored()
+	 * @generated
+	 */
+	void setMonitored(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Cpu used</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Cpu used</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Cpu used</em>' attribute.
+	 * @see #setCpu_used(String)
+	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Cpu_used()
+	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='CPU consumed by the conatiner'"
+	 * @generated
+	 */
+	String getCpu_used();
+
+	/**
+	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.docker.Container#getCpu_used <em>Cpu used</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Cpu used</em>' attribute.
+	 * @see #getCpu_used()
+	 * @generated
+	 */
+	void setCpu_used(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Memory used</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Memory used</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Memory used</em>' attribute.
+	 * @see #setMemory_used(String)
+	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Memory_used()
+	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='Memory consumed by the container'"
+	 * @generated
+	 */
+	String getMemory_used();
+
+	/**
+	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.docker.Container#getMemory_used <em>Memory used</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Memory used</em>' attribute.
+	 * @see #getMemory_used()
+	 * @generated
+	 */
+	void setMemory_used(String value);
 
 	/**
 	 * <!-- begin-user-doc -->
