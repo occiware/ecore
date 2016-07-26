@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="vmware" scheme="http://occiware.org/occi/vmware#" description="VMware IAAS, to manage infrastructure resources with occi specifications.">
+<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="vmware" scheme="http://occiware.org/occi/vmware#" description="VMware IAAS, to manage infrastructure resources with occi specifications.">
   <import href="http://schemas.ogf.org/occi/core#/"/>
   <import href="http://schemas.ogf.org/occi/infrastructure#/"/>
   <kinds term="datastore" scheme="http://occiware.org/occi/vmware#" title="Datastores are logical containers, analogous to file systems, that hide specifics of each storage device and provide a uniform model for storing virtual machine files. Datastores can also be used for storing ISO images, virtual machine templates, and floppy images.">
@@ -26,25 +26,78 @@
     </attributes>
     <parent href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='compute']"/>
   </kinds>
-  <kinds term="virtualmachine" scheme="http://occiware.org/occi/vmware#" title="Virtual machine compute on a host system">
-    <attributes name="occi.vmware.virtualmachine.name" description="The qualified name of the virtual machine">
+  <kinds term="vm" scheme="http://occiware.org/occi/vmware#" title="Virtual machine compute on a host system">
+    <attributes name="name" description="The qualified name of the virtual machine">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="occi.vmware.virtualmachine.id" type="//@types.0"/>
-    <attributes name="occi.vmware.virtualmachine.istemplate" default="false" description="If true, this virtual machine is set as a template machine and may be used as an image">
+    <attributes name="instanceuuid" default="" description="Unique identifier on vmware">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="template" default="false" description="If true, this virtual machine is set as a template machine and may be used as an image">
       <type href="../../../plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean"/>
+    </attributes>
+    <attributes name="vcpus" required="true" default="1" description="Number of virtual cpus">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="corespersocket" default="1" description="Number of cores per socket">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="vmfilefolder" description="Folder where the vm configuration file is set on the datastore">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="gueststate" default="" description="if vmware tools is installed this value show the state of the operating system">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="vmwaretoolsinstalled" default="false" description="Is vmware tools installed on this virtual machine">
+      <type href="../../../plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean"/>
+    </attributes>
+    <attributes name="vmwaretoolsrunning" default="false" description="is vmware tools running on this virtual machine">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="changetrackingenabled" description="Indicates whether changed block tracking for this VM's disks is active">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="alternateguestname" description="Used as display name for the operating system if guestId is other or other-64.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="guestfullname" description="This is the full name of the guest operating system for the virtual machine. For example: Windows 2000 Professional.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="changeversion" description="The changeVersion is a unique identifier for a given version of the configuration. Each change to the configuration updates this value. This is typically implemented as an ever increasing count or a time-stamp. However, a client should always treat this as an opaque string. ">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="lastmodified" default="" type="//@types.6"/>
+    <attributes name="cpuhotaddenabled" default="true" description="Whether virtual processors can be added while this virtual machine is running.&#xA;Since vSphere API 4.0">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="cpuhotremoveenabled" default="true" description="Whether virtual processors can be removed while this virtual machine is running.&#xA;Since vSphere API 4.0">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
     </attributes>
     <parent href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='compute']"/>
     <actions term="clone" scheme="http://occiware.org/occi/vmware/virtualmachine/action#" title="Clone a virtual machine"/>
+    <actions term="mountvmwaretools" scheme="http://occiware.org/occi/vmware/virtualmachine/action#" title="Mount vmware tools iso"/>
+    <actions term="markastemplate" scheme="http://occiware.org/occi/vmware/virtualmachine/action#" title="Mark this virtual machine as a template image"/>
+    <actions term="markasvirtualmachine" scheme="http://occiware.org/occi/vmware/virtualmachine/action#" title="Mark this template image as a virtual machine"/>
+    <actions term="register" scheme="http://occiware.org/occi/vmware/virtualmachine/action#" title="Register this virtual machine on vcenter"/>
+    <actions term="unregister" scheme="http://occiware.org/occi/vmware/virtualmachine/action#" title="Unregister this virtual machine from vcenter"/>
   </kinds>
   <kinds term="folderlink" scheme="http://occiware.org/occi/vmware#" title="a link hierarchy folder between datacenter and cluster or between datacenter and virtual machines (vmFolder) or between datacenter and hostsystems">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
-  <kinds term="resourcepoollink" scheme="http://occiware.org/occi/vmware#" title="a link between cluster (or host) and virtual machine with resource pool definition">
+  <kinds term="resourcepoollink" scheme="http://occiware.org/occi/vmware#" title="a link between cluster (or host) and virtual machine with resource pool definition, this link may link other resource pools between them to define child dependencies">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds term="clusterlink" scheme="http://occiware.org/occi/vmware#" title="Link between cluster and hostsystem" parent="//@kinds[term='folderlink']"/>
-  <kinds term="resourcepool" scheme="http://occiware.org/occi/vmware#" title="A resource pool linked between a compute host (or a cluster) and a virtual machine">
+  <kinds term="resourcepool" scheme="http://occiware.org/occi/vmware#" title="A resource pool linked between a compute host (or a cluster) and a virtual machine, usage attributes part are for runtime information only">
+    <attributes name="name">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="expandablereservation" description="In a resource pool with an expandable reservation, the reservation on a resource pool can grow beyond the specified value, if the parent resource pool has unreserved resources. A non-expandable reservation is called a fixed reservation. This property is ignored for virtual machines. ">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="limit" default="" description="The utilization of a virtual machine/resource pool will not exceed this limit, even if there are available resources. This is typically used to ensure a consistent performance of virtual machines / resource pools independent of available resources. If set to -1, then there is no fixed limit on resource usage (only bounded by available resources and shares). Units are MB for memory, MHz for CPU. " type="//@types.0"/>
+    <attributes name="reservation" description="Amount of resource that is guaranteed available to the virtual machine or resource pool. Reserved resources are not wasted if they are not used. If the utilization is less than the reservation, the resources can be utilized by other running virtual machines. Units are MB for memory, MHz for CPU." type="//@types.0"/>
+    <attributes name="state" default="unknown" description="unknown: The status is unknown. &#xA;undercommitted: resource pool is in a good state. &#xA;inconsistent: One or more nodes in the tree has children whose reservations are greater than the node is configured to support. For example, i) a resource pool with a fixed reservation has a running virtual machine with a reservation that is higher than the reservation on resource pool itself., or ii) the child reservations are greater than the limit.&#xA;In this state, the DRS algorithm is disabled until the resource pool tree's configuration has been brought back into a consistent state. We also restrict the resources that such invalid nodes request from their parents to the configured reservation/limit, in an attempt to isolate the problem to a small subtree. For the rest of the tree, we determine whether the cluster is undercommitted or overcommitted according to the existing rules and perform admission control accordingly.&#xA;&#xA;Note that since all changes to the resource settings are validated on the VirtualCenter server, the system cannot be brought into this state by simply manipulating a cluster resource pool tree through VirtualCenter. It can only happen if a virtual machine gets powered on directly on a host that is part of a DRS cluster.&#xA;overcommitted: In this state, the tree is consistent internally, but the root resource pool does not have the capacity at to meet the reservation of its children. We can only go from GREEN -> YELLOW if we lose resources at the root. For example, hosts becomes unavailable or is put into maintenance mode. Note that we will always have enough capacity at the root to run all currently powered on VMs. However, we may not be able to satisfy all resource pool reservations in the tree. In this state, the reservation configured for a resource pool is no longer guaranteed, but the limits are still enforced. This provides additional flexibility for bringing the tree back into a consistent state, without risking bringing the tree into a RED state. In more detail:&#xA;Resource Pool The root is considered to have unlimited capacity. You can reserve resources without any check except the requirement that the tree remains consistent. This means that nodes whose parents are all configured with expandable reservations and no limit will have unlimited available resources. However, if there is an ancestor with a fixed reservation or an expandable reservation with a limit somewhere, then the node will be limited by the reservation/limit of the ancestor.&#xA;Virtual Machine Virtual machines are limited by ancestors with a fixed reservation and the capacity at the root. &#xA;yellow: The entity might have a problem." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds term="datacenterlink" scheme="http://occiware.org/occi/vmware#" title="" parent="//@kinds[term='folderlink']"/>
@@ -52,8 +105,15 @@
   <kinds term="datastorelink" scheme="http://occiware.org/occi/vmware#" title="a link between a datacenter and a datastore" parent="//@kinds[term='folderlink']"/>
   <kinds term="virtualdisk" scheme="http://occiware.org/occi/vmware#">
     <parent href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='storage']"/>
+    <actions term="snapshot" scheme="http://occiware.org/occi/vmware/virtualdisk/action#"/>
   </kinds>
   <kinds term="vswitch" scheme="http://occiware.org/occi/vmware#">
+    <attributes name="name" required="true" default="" description="Standard virtual switch name">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="nbport" default="" description="Number of port">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='network']"/>
   </kinds>
   <kinds term="portgroup" scheme="http://occiware.org/occi/vmware#" title="Link between hostsystem and virtual switch related to network">
@@ -61,6 +121,8 @@
   </kinds>
   <kinds term="networkadapter" scheme="http://occiware.org/occi/vmware#" title="a network adapter for a virtual machine">
     <parent href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='networkinterface']"/>
+    <actions term="connect" scheme="http://occiware.org/occi/vmware/networkadapter/action#" title="Connect virtual machine to vswitch"/>
+    <actions term="disconnect" scheme="http://occiware.org/occi/vmware/networkadapter/action#" title="Disconnect virtual machine and vswitch"/>
   </kinds>
   <kinds term="virtualdisknetwork" scheme="http://occiware.org/occi/vmware#" title="a storage disk network for usage with a network vswitch and portgroup, vswitch and portgroup may be multiples" parent="//@kinds[term='virtualdisk']"/>
   <kinds term="virtualdisknetworklink" scheme="http://occiware.org/occi/vmware#" title="a link between a virtualdisknetwork and a vswitch">
@@ -68,19 +130,221 @@
   </kinds>
   <kinds term="hostnetworkadapter" scheme="http://occiware.org/occi/vmware#">
     <parent href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='networkinterface']"/>
+    <actions term="connect" scheme="http://occiware.org/occi/vmware/hostnetworkadapter/action#"/>
+    <actions term="disconnect" scheme="http://occiware.org/occi/vmware/hostnetworkadapter/action#"/>
   </kinds>
-  <mixins term="linux" scheme="http://occiware.org/occi/vmware#" applies="//@kinds[term='virtualmachine']">
+  <kinds term="dvswitch" scheme="http://occiware.org/occi/vmware#" parent="//@kinds[term='vswitch']"/>
+  <kinds term="snapshot" scheme="http://occiware.org/occi/vmware#">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+    <actions term="restore" scheme="http://occiware.org/occi/vmware/snapshot/action#"/>
+  </kinds>
+  <kinds term="snapshotlink" scheme="http://occiware.org/occi/vmware#">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds term="resourcepoolquickstats" scheme="http://occiware.org/occi/vmware#" title="This data object is used only for data read values from vmware vcenter only,it is linked by ResourcePool link from a resource pool">
+    <attributes name="resourcepoolname" description="Name of the linked resourcepool">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="balloonedmemory" description="The size of the balloon driver in a virtual machine, in MB. The host will inflate the balloon driver to reclaim physical memory from a virtual machine. This is a sign that there is memory pressure on the host. " type="//@types.0"/>
+    <attributes name="compressedmemory" description="The amount of compressed memory currently consumed by VM, in KB." type="//@types.0"/>
+    <attributes name="consumedoverheadmemory" description="The amount of overhead memory, in MB, currently being consumed to run a VM. This value is limited by the overhead memory reservation for a VM, stored in overheadMemory. " type="//@types.0"/>
+    <attributes name="distributedcpuentitlement" description="This is the amount of memory, in MB, that this VM is entitled to, as calculated by DRS. Valid only for a VM managed by DRS" type="//@types.0"/>
+    <attributes name="guestmemoryusage" description="Guest memory utilization statistics, in MB. This is also known as active guest memory. The number can be between 0 and the configured memory size of a virtual machine. " type="//@types.0"/>
+    <attributes name="hostmemoryusage" description="Host memory utilization statistics, in MB. This is also known as consummed host memory. This is between 0 and the configured resource limit. Valid while a virtual machine is running. This includes the overhead memory of a virtual machine. " type="//@types.0"/>
+    <attributes name="overallcpuusage" description="Basic CPU performance statistics, in MHz. " type="//@types.0"/>
+    <attributes name="overallcpudemand" description="Basic CPU performance statistics, in MHz. " type="//@types.0"/>
+    <attributes name="overheadmemory" default="" description="The amount of memory resource (in MB) that will be used by a virtual machine above its guest memory requirements. This value is set if and only if a virtual machine is registered on a host that supports memory resource allocation features. For powered off VMs, this is the minimum overhead required to power on the VM on the registered host. For powered on VMs, this is the current overhead reservation, a value which is almost always larger than the minimum overhead, and which grows with time.&#xA;See QueryMemoryOverheadEx" type="//@types.0"/>
+    <attributes name="privatememory" description="The portion of memory, in MB, that is granted to a virtual machine from non-shared host memory." type="//@types.0"/>
+    <attributes name="sharedmemory" description="The portion of memory, in MB, that is granted to a virtual machine from host memory that is shared between VMs. " type="//@types.0"/>
+    <attributes name="staticcpuentitlement" description="The static CPU resource entitlement for a virtual machine. This value is calculated based on this virtual machine's resource reservations, shares and limit, and doesn't take into account current usage. This is the worst case CPU allocation for this virtual machine, that is, the amount of CPU resource this virtual machine would receive if all virtual machines running in the cluster went to maximum consumption. Units are MHz. ">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="staticmemoryentitlement" description="The static memory resource entitlement for a virtual machine. This value is calculated based on this virtual machine's resource reservations, shares and limit, and doesn't take into account current usage. This is the worst case memory allocation for this virtual machine, that is, the amount of memory this virtual machine would receive if all virtual machines running in the cluster went to maximum consumption. Units are MB. ">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="swappedmemory" description="The portion of memory, in MB, that is granted to a virtual machine from the host's swap space. This is a sign that there is memory pressure on the host. " type="//@types.0"/>
+    <attributes name="configuredmemorymb" default="" description="Total configured memory of all virtual machines in the resource pool, in MB&#xA;See ResourcePoolSummary">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds term="resourcepoolallocations" scheme="http://occiware.org/occi/vmware#" title="This data object is used only for data read values from vmware vcenter only,it is linked by ResourcePool link from a resource pool">
+    <attributes name="resourcepoolname">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="memreservationused" description="Total amount of resources that have been used to satisfy the reservation requirements of all descendants of this resource pool (includes both resource pools and virtual machines). " type="//@types.0"/>
+    <attributes name="cpureservationusedforvm" default="" description="Total amount of resources that have been used to satisfy the reservation requirements of running virtual machines in this resource pool or any of its child resource pools. " type="//@types.0"/>
+    <attributes name="memunereservedforpool" type="//@types.0"/>
+    <attributes name="cpuunreservedforvm" description="Total amount of resources available to satisfy a reservation for a child virtual machine. In general, this should be the same as unreservedForPool. However, in the overcommitted case, this is limited by the remaining available resources at the root node" type="//@types.0"/>
+    <attributes name="memunreservedforvm" description="Total amount of resources available to satisfy a reservation for a child virtual machine. In general, this should be the same as unreservedForPool. However, in the overcommitted case, this is limited by the remaining available resources at the root node" type="//@types.0"/>
+    <attributes name="memreservationusedforvm" default="" description="Total amount of resources that have been used to satisfy the reservation requirements of running virtual machines in this resource pool or any of its child resource pools. " type="//@types.0"/>
+    <attributes name="cpumaxusage" description="Current upper-bound on usage. The upper-bound is based on the limit configured on this resource pool, as well as limits configured on any parent resource pool" type="//@types.0"/>
+    <attributes name="cpureservationused" description="Total amount of resources that have been used to satisfy the reservation requirements of all descendants of this resource pool (includes both resource pools and virtual machines). " type="//@types.0"/>
+    <attributes name="memoverallusage" type="//@types.0"/>
+    <attributes name="cpuunereservedforpool" type="//@types.0"/>
+    <attributes name="memmaxusage" description="Current upper-bound on usage. The upper-bound is based on the limit configured on this resource pool, as well as limits configured on any parent resource pool" type="//@types.0"/>
+    <attributes name="cpuoverallusage" type="//@types.0"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <mixins term="linux" scheme="http://occiware.org/occi/vmware#">
+    <attributes name="guestid">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="datastoreisopath">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <depends href="http://schemas.ogf.org/occi/infrastructure#//@mixins[term='os_tpl']"/>
   </mixins>
-  <mixins term="windows" scheme="http://occiware.org/occi/vmware#" applies="//@kinds[term='virtualmachine'] //@kinds[term='hostsystem']">
+  <mixins term="windows" scheme="http://occiware.org/occi/vmware#">
+    <attributes name="guestid">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="datastoreisopath">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <depends href="http://schemas.ogf.org/occi/infrastructure#//@mixins[term='os_tpl']"/>
   </mixins>
-  <mixins term="macosx" scheme="http://occiware.org/occi/vmware#" applies="//@kinds[term='virtualmachine'] //@kinds[term='hostsystem']">
+  <mixins term="macosx" scheme="http://occiware.org/occi/vmware#">
+    <attributes name="guestid">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="datastoreisopath">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <depends href="http://schemas.ogf.org/occi/infrastructure#//@mixins[term='os_tpl']"/>
+  </mixins>
+  <mixins term="small" scheme="http://occiware.org/occi/vmware#" title="">
+    <depends href="http://schemas.ogf.org/occi/infrastructure#//@mixins[term='resource_tpl']"/>
+  </mixins>
+  <mixins term="medium" scheme="http://occiware.org/occi/vmware#">
+    <depends href="http://schemas.ogf.org/occi/infrastructure#//@mixins[term='resource_tpl']"/>
+  </mixins>
+  <mixins term="large" scheme="http://occiware.org/occi/vmware#">
+    <depends href="http://schemas.ogf.org/occi/infrastructure#//@mixins[term='resource_tpl']"/>
+  </mixins>
+  <mixins term="xlarge" scheme="http://occiware.org/occi/vmware#">
+    <depends href="http://schemas.ogf.org/occi/infrastructure#//@mixins[term='resource_tpl']"/>
+  </mixins>
+  <mixins term="ssh_authentication" scheme="http://occiware.org/occi/vmware#">
+    <attributes name="login">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="password">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="address" required="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="port" required="true" default="22">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <depends href="http://schemas.ogf.org/occi/infrastructure#//@mixins[term='ssh_key']"/>
+  </mixins>
+  <mixins term="bootoptions" scheme="http://occiware.org/occi/vmware#" applies="//@kinds[term='vm']">
+    <attributes name="bootdelay" default="" description="Delay in milliseconds before starting the boot sequence. The boot delay specifies a time interval between virtual machine power on or restart and the beginning of the boot sequence" type="//@types.0"/>
+    <attributes name="bootdeviceorder" default="" description="Boot order. Listed devices are used for booting. After list is exhausted, default BIOS boot device algorithm is used for booting. Note that order of the entries in the list is important: device listed first is used for boot first, if that one fails second entry is used, and so on. Platform may have some internal limit on the number of devices it supports. If bootable device is not reached before platform's limit is hit, boot will fail. At least single entry is supported by all products supporting boot order settings." type="//@types.3" multiple_values="true"/>
+    <attributes name="bootretrydelay" type="//@types.0"/>
+    <attributes name="bootretryenabled" description="If set to true, a virtual machine that fails to boot will try again after the bootRetryDelay time period has expired. When false, the virtual machine waits indefinitely for you to initiate boot retry.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="enterbiossetup" description="If set to true, the virtual machine automatically enters BIOS setup the next time it boots. The virtual machine resets this flag to false so that subsequent boots proceed normally.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="deviceKeys" description="device key value for bootdevice, must be set in the same order as the bootdevice array." multiple_values="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+  </mixins>
+  <mixins term="cpuaffinity" scheme="http://occiware.org/occi/vmware#" applies="//@kinds[term='vm']">
+    <attributes name="affinityset" description="List of nodes (processors for CPU, NUMA nodes for memory) that may be used by the virtual machine. If the array is empty when modifying the affinity setting, then any existing affinity is removed. " multiple_values="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+  </mixins>
+  <mixins term="shares" scheme="http://occiware.org/occi/vmware#" applies="//@kinds[term='resourcepool']">
+    <attributes name="level" description="custom: If you specify custom for the level property, when there is resource contention the Server uses the shares value to determine resource allocation. &#xA;high: For CPU: Shares = 2000 * nmumber of virtual CPUs&#xA;For Memory: Shares = 20 * virtual machine memory size in megabytes&#xA;For Disk: Shares = 2000&#xA;For Network: Shares = networkResourcePoolHighShareValue &#xA;low: For CPU: Shares = 500 * number of virtual CPUs&#xA;For Memory: Shares = 5 * virtual machine memory size in megabytes&#xA;For Disk: Shares = 500&#xA;For Network: Shares = 0.25 * networkResourcePoolHighShareValue &#xA;normal: For CPU: Shares = 1000 * number of virtual CPUs&#xA;For Memory: Shares = 10 * virtual machine memory size in megabytes&#xA;For Disk: Shares = 1000&#xA;For Network: Shares = 0.5 * networkResourcePoolHighShareValue " type="//@types.1"/>
+    <attributes name="shares" description="The number of shares allocated. Used to determine resource allocation in case of resource contention. This value is only set if level is set to custom. If level is not set to custom, this value is ignored. Therefore, only shares with custom values can be compared.&#xA;There is no unit for this value. It is a relative measure based on the settings for other resource pools. ">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="type" required="true" default="" description="Resource allocation type to define" type="//@types.4"/>
+  </mixins>
+  <mixins term="dvsfeaturecapability" scheme="http://occiware.org/occi/vmware#" depends="//@mixins[term='shares']">
+    <attributes name="networkresourcemanagementsupported" description="Flag to indicate whether network I/O control is supported on the vSphere Distributed Switch. Network I/O control is supported in vSphere Distributed Switch Version 4.1 or later. ">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="networkresourcepoolhighsharevalue" description="This is the value for high in shares. This implicitly defines the legal range of share values to be between 1 and this. This also defines values for other level types, such as normal being one half of this value and low being one fourth of this value. This feature is supported in vSphere Distributed Switch Version 4.1 or later. ">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="qossupported" description="Flag to indicate whether Qos Tag(802.1p priority tag)is supported on the vSphere Distributed Switch. Qos Tag is supported in vSphere Distributed Switch Version 5.0 or later.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="userdefinednetworkresourcepoolssupported" description="Flag to indicate whether the switch supports creating user defined resource pools. This feature is supported in vSphere Distributed Switch Version 5.0 or later. ">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="nicteamingpolicy" default="" description="The available teaming modes for the vSphere Distributed Switch. The value can be one or more of DistributedVirtualSwitchNicTeamingPolicyMode. &#xA;failover_explicit: Use explicit failover order &#xA;loadbalance_ip: Routing based on IP hash &#xA;loadbalance_loadbased: Routing based by dynamically balancing traffic through the NICs in a team. This is the recommended teaming policy when the network I/O control feature is enabled for the vNetwork Distributed Switch. &#xA;loadbalance_srcid: Route based on the source of the port ID &#xA;loadbalance_srcmac: Route based on source MAC hash  " type="//@types.2" multiple_values="true"/>
+    <attributes name="vmdirectpathgen2supported" description="Flag to indicate whether VMDirectPath Gen 2 is supported on the vSphere Distributed Switch. VMDirectPath Gen 2 is supported in vSphere Distributed Switch Version 4.1 or later.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+  </mixins>
+  <mixins term="consolepreference" scheme="http://occiware.org/occi/vmware#" applies="//@kinds[term='vm']">
+    <attributes name="closeonpowerofforsuspend" description="Close the console application when the virtual machine is powered off or suspended. ">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="enterfullscreenonpoweron" description="Enter full screen mode when this virtual machine is powered on. ">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="poweronwhenopened" description="Power on the virtual machine when it is opened in the console. ">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+  </mixins>
+  <mixins term="defaultpoweroptions" scheme="http://occiware.org/occi/vmware#" title="holds the configured defaults for the power operations on a virtual machine. The properties indicated whether to do a &quot;soft&quot; or guest initiated operation, or a &quot;hard&quot; operation." applies="//@kinds[term='vm']">
+    <attributes name="defaultpowerofftype" default="" description="Default operation for power off: soft or hard " type="//@types.7"/>
+    <attributes name="defaultresettype" description="Default operation for reset: soft or hard " type="//@types.7"/>
+    <attributes name="defaultsuspendtype" description="Default operation for suspend: soft or hard " type="//@types.7"/>
+    <attributes name="powerofftype" description="Describes the default power off type for this virtual machine. The possible values are specified by the PowerOpType.&#xA;hard - Perform power off by using the PowerOff method.&#xA;soft - Perform power off by using the ShutdownGuest method.&#xA;preset - The preset value is specified in the defaultPowerOffType section.&#xA;This setting is advisory and clients can choose to ignore it. " type="//@types.7"/>
+    <attributes name="resettype" default="" description="Describes the default reset type for this virtual machine. The possible values are specified by the PowerOpType.&#xA;hard - Perform reset by using the Reset method.&#xA;soft - Perform reset by using the RebootGuest method.&#xA;preset - The preset value is specified in the defaultResetType section.&#xA;This setting is advisory and clients can choose to ignore it. " type="//@types.7"/>
+    <attributes name="standbyaction" description="Behavior of virtual machine when it receives the S1 ACPI call. ">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="suspendtype" description="Describes the default suspend type for this virtual machine. The possible values are specified by the PowerOpType.&#xA;hard - Perform suspend by using the Suspend method.&#xA;soft - Perform suspend by using the StandbyGuest method.&#xA;preset - The preset value is specified in the defaultSuspendType section.&#xA;This setting is advisory and clients can choose to ignore it. " type="//@types.7"/>
   </mixins>
   <types name="LongNumber" instanceClassName="long">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="A long number"/>
     </eAnnotations>
+  </types>
+  <types xsi:type="ecore:EEnum" name="SharesLevel">
+    <eLiterals name="custom"/>
+    <eLiterals name="high" value="1"/>
+    <eLiterals name="low" value="2"/>
+    <eLiterals name="normal" value="3"/>
+  </types>
+  <types xsi:type="ecore:EEnum" name="Dvsnicteamingpolicy">
+    <eLiterals name="failoverexplicit"/>
+    <eLiterals name="loadbalanceip" value="1"/>
+    <eLiterals name="loadbalanceloadbased" value="2"/>
+    <eLiterals name="loadbalancesrcid" value="3"/>
+    <eLiterals name="loadbalancesrcmac" value="4"/>
+  </types>
+  <types xsi:type="ecore:EEnum" name="Bootdevice">
+    <eLiterals name="cdrom"/>
+    <eLiterals name="harddisk" value="1"/>
+    <eLiterals name="network" value="2"/>
+    <eLiterals name="floppy" value="3"/>
+  </types>
+  <types xsi:type="ecore:EEnum" name="ResourceAllocationType">
+    <eLiterals name="cpu"/>
+    <eLiterals name="memory" value="1"/>
+    <eLiterals name="network" value="2"/>
+  </types>
+  <types xsi:type="ecore:EEnum" name="ResourcePoolState">
+    <eLiterals name="undercommitted"/>
+    <eLiterals name="unknown" value="1"/>
+    <eLiterals name="inconsistent" value="2"/>
+    <eLiterals name="overcommitted" value="3"/>
+  </types>
+  <types name="Datetype" instanceClassName="java.util.Date"/>
+  <types xsi:type="ecore:EEnum" name="PowerOffType">
+    <eLiterals name="soft"/>
+    <eLiterals name="hard" value="1"/>
+    <eLiterals name="preset" value="2"/>
   </types>
 </occi:Extension>
