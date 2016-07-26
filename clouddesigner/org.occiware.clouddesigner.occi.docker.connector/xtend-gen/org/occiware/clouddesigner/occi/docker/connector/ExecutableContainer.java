@@ -74,14 +74,12 @@ public class ExecutableContainer extends ContainerImpl {
             DockerContainerManager _dockerContainerManager = new DockerContainerManager(machine, ExecutableContainer.this.eventCallback);
             ExecutableContainer.dockerContainerManager = _dockerContainerManager;
           }
-          String _name = this.compute.getName();
-          ExecutableContainer.dockerContainerManager.startContainer(machine, _name);
+          ExecutableContainer.dockerContainerManager.startContainer(machine, this.compute);
         } catch (final Throwable _t) {
           if (_t instanceof Exception) {
             final Exception e = (Exception)_t;
             ExecutableContainer.this.createContainer(machine);
-            String _name_1 = this.compute.getName();
-            ExecutableContainer.dockerContainerManager.startContainer(machine, _name_1);
+            ExecutableContainer.dockerContainerManager.startContainer(machine, this.compute);
           } else {
             throw Exceptions.sneakyThrow(_t);
           }

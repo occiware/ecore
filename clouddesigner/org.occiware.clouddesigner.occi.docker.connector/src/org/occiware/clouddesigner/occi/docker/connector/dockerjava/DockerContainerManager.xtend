@@ -366,15 +366,17 @@ class DockerContainerManager {
 
 		// Start the container
 		dockerClient.startContainerCmd(container.containerid).exec
-
+		
+		if(container.monitored){ // Allow the monitoring of a Container
 		// Collect monitoring data
 		LOGGER.info("Starting metrics collection");
 		
 		// load new docker client to Fix blocking Thread problem.
 		dockerClient = setConfig(machine.name, properties)
 		
-		dockerClient.statsCmd(container.containerid).exec(new StatsCallback(container.containerid))
-
+		dockerClient.statsCmd(container.containerid).exec(new StatsCallback(container))			
+			
+		}
 	}
 
 	def startContainer(Machine machine, String containerId) {

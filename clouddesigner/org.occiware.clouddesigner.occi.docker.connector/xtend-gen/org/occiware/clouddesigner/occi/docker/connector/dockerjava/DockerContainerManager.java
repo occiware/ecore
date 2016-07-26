@@ -601,15 +601,23 @@ public class DockerContainerManager {
       String _containerid = container.getContainerid();
       StartContainerCmd _startContainerCmd = DockerContainerManager.dockerClient.startContainerCmd(_containerid);
       _startContainerCmd.exec();
-      DockerContainerManager.LOGGER.info("Starting metrics collection");
-      String _name_2 = machine.getName();
-      DockerClient _setConfig_1 = this.setConfig(_name_2, this.properties);
-      DockerContainerManager.dockerClient = _setConfig_1;
-      String _containerid_1 = container.getContainerid();
-      StatsCmd _statsCmd = DockerContainerManager.dockerClient.statsCmd(_containerid_1);
-      String _containerid_2 = container.getContainerid();
-      StatsCallback _statsCallback = new StatsCallback(_containerid_2);
-      _xblockexpression = _statsCmd.<StatsCallback>exec(_statsCallback);
+      StatsCallback _xifexpression = null;
+      boolean _isMonitored = container.isMonitored();
+      if (_isMonitored) {
+        StatsCallback _xblockexpression_1 = null;
+        {
+          DockerContainerManager.LOGGER.info("Starting metrics collection");
+          String _name_2 = machine.getName();
+          DockerClient _setConfig_1 = this.setConfig(_name_2, this.properties);
+          DockerContainerManager.dockerClient = _setConfig_1;
+          String _containerid_1 = container.getContainerid();
+          StatsCmd _statsCmd = DockerContainerManager.dockerClient.statsCmd(_containerid_1);
+          StatsCallback _statsCallback = new StatsCallback(container);
+          _xblockexpression_1 = _statsCmd.<StatsCallback>exec(_statsCallback);
+        }
+        _xifexpression = _xblockexpression_1;
+      }
+      _xblockexpression = _xifexpression;
     }
     return _xblockexpression;
   }

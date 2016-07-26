@@ -85,6 +85,10 @@ import org.slf4j.LoggerFactory
 
 import static com.google.common.base.Preconditions.checkNotNull
 import static org.occiware.clouddesigner.occi.docker.connector.ExecutableContainer.*
+import org.occiware.clouddesigner.occi.docker.Container
+import org.codehaus.jackson.map.ObjectMapper
+import org.codehaus.jackson.JsonNode
+import java.util.LinkedHashMap
 
 /**
  * This class overrides the generated EMF factory of the Docker package.
@@ -659,23 +663,59 @@ class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statistics> {
 
 	var String containerId
 	
+	var private Container container
+	
 	var containersMap = newLinkedHashMap
 	
 	new(String containerId) {
 		this.containerId = containerId
 	}
 
+	new(Container container) {
+		this.container = container
+	}
+
 	override def void onNext(Statistics stats) {
-		LOGGER.info("Received stats #{} :: {} :: {}",statisticsList.size(), this.containerId, stats)
+		LOGGER.info("Received stats #{} :: {} :: {}",statisticsList.size(), this.container.containerid, stats)
 		
 		statisticsList.add(stats)
-
+		
+		// Update the monitoring metrics
+		modifyResourceSet(this.container, stats)
+		
 		if (stats != null) {
 			gotStats = true;
 		}
 		
 	}
 
+	def void modifyResourceSet(Resource resource, Statistics stats){
+		// Creating an editing domain
+		var TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(resource.eResource.resourceSet)
+		
+		Thread.sleep(30*1000) // Pause for 1000 ms
+		var Command cmd = new RecordingCommand(domain) {
+			override protected void doExecute() {
+				// these modifications require a write transaction in this editing domain
+				var Integer memory = stats.memoryStats.get("usage") as Integer
+				var Map<String, Object> cpu = stats.cpuStats
+				var LinkedHashMap tmpcpu = cpu.get("cpu_usage") as LinkedHashMap
+				var cpu_used = tmpcpu.get("total_usage")
+				//.get("cpu_usage")
+				
+				LOGGER.info("Received CPU <=====> {}", cpu_used)
+				(resource as ExecutableContainer).memory_used = String.valueOf(memory)
+				(resource as ExecutableContainer).cpu_used  = String.valueOf(cpu_used)
+			}
+		};
+
+		try {
+			(domain.getCommandStack() as TransactionalCommandStack).execute(cmd, null); // default options
+		} catch (RollbackException rbe) {
+			LOGGER.error(rbe.getStatus().toString)
+		}		
+	}
+	
 	def Boolean gotStats() {
 		return gotStats;
 	}
@@ -691,7 +731,7 @@ class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statistics> {
 	def Boolean compateTo(Statistics stats1, Statistics stats2){
 		return stats1.toString.equals(stats2.toString)
 	}
-}
+}	
 
 /**
  * This class implements an executable Docker container.
@@ -728,10 +768,10 @@ class ExecutableContainer extends ContainerImpl {
 					if (dockerContainerManager == null) {
 						dockerContainerManager = new DockerContainerManager(machine, eventCallback)
 					}
-					dockerContainerManager.startContainer(machine, this.compute.name)
+					dockerContainerManager.startContainer(machine, this.compute)
 				} catch (Exception e) {
 					createContainer(machine)
-					dockerContainerManager.startContainer(machine, this.compute.name)
+					dockerContainerManager.startContainer(machine, this.compute)
 				}
 			}
 		}
