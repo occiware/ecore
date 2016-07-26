@@ -1,12 +1,12 @@
 /**
- * Copyright (c) 2015-2016 Inria
+ * Copyright (c) 2015-2016 Obeo, Inria
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  * 	
  * Contributors:
- * -Fawaz Paraiso <fawaz.paraiso@inria.fr>
+ * - William Piers <william.piers@obeo.fr>
  * - Philippe Merle <philippe.merle@inria.fr>
  */
 package org.occiware.clouddesigner.occi.docker.provider;
@@ -99,6 +99,9 @@ public class ContainerItemProvider extends ComputeItemProvider {
 			addCpusetPropertyDescriptor(object);
 			addPublish_allPropertyDescriptor(object);
 			addRead_onlyPropertyDescriptor(object);
+			addMonitoredPropertyDescriptor(object);
+			addCpu_usedPropertyDescriptor(object);
+			addMemory_usedPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -940,6 +943,72 @@ public class ContainerItemProvider extends ComputeItemProvider {
 	}
 
 	/**
+	 * This adds a property descriptor for the Monitored feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addMonitoredPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Container_monitored_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Container_monitored_feature", "_UI_Container_type"),
+				 DockerPackage.Literals.CONTAINER__MONITORED,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Cpu used feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addCpu_usedPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Container_cpu_used_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Container_cpu_used_feature", "_UI_Container_type"),
+				 DockerPackage.Literals.CONTAINER__CPU_USED,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Memory used feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addMemory_usedPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Container_memory_used_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Container_memory_used_feature", "_UI_Container_type"),
+				 DockerPackage.Literals.CONTAINER__MEMORY_USED,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns Container.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1015,6 +1084,9 @@ public class ContainerItemProvider extends ComputeItemProvider {
 			case DockerPackage.CONTAINER__CPUSET:
 			case DockerPackage.CONTAINER__PUBLISH_ALL:
 			case DockerPackage.CONTAINER__READ_ONLY:
+			case DockerPackage.CONTAINER__MONITORED:
+			case DockerPackage.CONTAINER__CPU_USED:
+			case DockerPackage.CONTAINER__MEMORY_USED:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
