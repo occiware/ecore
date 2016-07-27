@@ -2,29 +2,96 @@
 <occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="vmware" scheme="http://occiware.org/occi/vmware#" description="VMware IAAS, to manage infrastructure resources with occi specifications.">
   <import href="http://schemas.ogf.org/occi/core#/"/>
   <import href="http://schemas.ogf.org/occi/infrastructure#/"/>
-  <kinds term="datastore" scheme="http://occiware.org/occi/vmware#" title="Datastores are logical containers, analogous to file systems, that hide specifics of each storage device and provide a uniform model for storing virtual machine files. Datastores can also be used for storing ISO images, virtual machine templates, and floppy images.">
-    <attributes name="name" required="true">
-      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
-    </attributes>
-    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
-  </kinds>
-  <kinds term="cluster" scheme="http://occiware.org/occi/vmware#" title="Represents a cluster of HostSystem objects as a unified compute resource for virtual machines.">
-    <attributes name="name" required="true">
-      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
-    </attributes>
-    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
-  </kinds>
-  <kinds term="datacenter" scheme="http://occiware.org/occi/vmware#" title="The interface to the common container object for hosts and virtual machines. Every host and virtual machine must be under a distinct datacenter in the inventory, and datacenters may not be nested under other datacenters.">
-    <attributes name="name" required="true">
-      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
-    </attributes>
-    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  <kinds term="datastore" scheme="http://occiware.org/occi/vmware#" title="Datastores are logical containers, analogous to file systems, that hide specifics of each storage device and provide a uniform model for storing virtual machine files. Datastores can also be used for storing ISO images, virtual machine templates, and floppy images." parent="//@kinds[term='folder']"/>
+  <kinds term="cluster" scheme="http://occiware.org/occi/vmware#" title="Represents a cluster of HostSystem objects as a unified compute resource for virtual machines." parent="//@kinds[term='folder']"/>
+  <kinds term="datacenter" scheme="http://occiware.org/occi/vmware#" title="The interface to the common container object for hosts and virtual machines. Every host and virtual machine must be under a distinct datacenter in the inventory, and datacenters may not be nested under other datacenters." parent="//@kinds[term='folder']">
+    <actions term="poweronmultivm" scheme="http://occiware.org/occi/vmware/datacenter/action#"/>
   </kinds>
   <kinds term="hostsystem" scheme="http://occiware.org/occi/vmware#">
     <attributes name="name">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
+    <attributes name="clustersupported" mutable="false" description="Whether or not the host supports clustering capabilities such as HA or DRS and therefore can be added to a cluster. If false, the host must be added as a standalone host.&#xA;See HostConnectInfo">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="indascluster" mutable="false" default="" description="If the host is already being managed by a vCenter Server, this property reports true if the host is also part of a vSphere HA enabled cluster. If this is the case, remove or disconnect the host from this cluster before adding it to another vCenter Server.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="serverip" mutable="false" description="The IP address of the VirtualCenter already managing this host, if any.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="vimaccountnamerequired" mutable="false" description="Whether or not the host requires a vimAccountName and password to be set in the ConnectSpec. This is normally only required for VMware Server hosts. ">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="agentvmdatastorename" mutable="false" default="" description="Datastore used to deploy Agent VMs on for this host.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="agentvmnetworkname" mutable="false" description="Management network for Agent VMs.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="port" description="The port number. ">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="faulttoleranceenabled" description="The flag to indicate whether or not Fault Tolerance logging is enabled on this host.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="hostfeatureversionkeys" mutable="false" multiple_values="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="hostfeatureversionvalues" mutable="false" multiple_values="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="sslthumbprint" mutable="false" description="The SSL thumbprint of the host, if known.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="vmotionenabled" description="The flag to indicate whether or not VMotion is enabled on this host. ">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="currentevcmodekey" mutable="false" description="The Enhanced VMotion Compatibility mode that is currently in effect for this host. If the host is in a cluster where EVC is active, this will match the cluster's EVC mode; otherwise this will be unset.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="customvalues" mutable="false" description="The customized field values. " multiple_values="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="cpumodel" mutable="false" description="The CPU model. ">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="model" mutable="false" description="The system model identification. ">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="cpus" mutable="false" description="Number of physical CPU packages on the host. Physical CPU packages are chips that contain one or more processors. Processors contained by a package are also known as CPU cores. For example, one dual-core package is comprised of one chip that contains two CPU cores. " type="//@types.14"/>
+    <attributes name="cputhreads" mutable="false" description="Number of physical CPU threads on the host" type="//@types.14"/>
+    <attributes name="hbas" mutable="false" description="The number of host bus adapters (HBAs). ">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="nics" mutable="false">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="otheridentifiertype" mutable="false" description="Other identification information. This information may be vendor specific." multiple_values="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="otheridentifiervalues" mutable="false" description="Other identification information. This information may be vendor specific." multiple_values="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="biosuuid" mutable="false" description="The hardware BIOS identification">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="vendor" mutable="false" default="" description="The hardware vendor identification">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="managementserverip" mutable="false" default="" description="IP address of the VirtualCenter server managing this host, if any.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="maxevckey" mutable="false" description="The most capable Enhanced VMotion Compatibility mode supported by the host hardware and software; unset if this host cannot participate in any EVC mode.&#xA;See supportedEVCMode">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="overallstatus" type="//@types.19"/>
     <parent href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='compute']"/>
+    <actions term="disconnectHost" scheme="http://occiware.org/occi/vmware/hostsystem/action#" title="Disconnects from a host and instructs the server to stop sending heartbeats."/>
+    <actions term="enterlockdownmode" scheme="http://occiware.org/occi/vmware/hostsystem/action#" title="Modifies the permissions on the host, so that it will only be accessible through local console or an authorized centralized management application. Any user defined permissions found on the host are lost.Access via a VI client connected to the host is blocked. Access though other services running on the host is also blocked.If the operation is successful, adminDisabled will be set to true. This API is not supported on the host, If invoked directly on a host, a NotSupported fault will be thrown."/>
+    <actions term="entermaintenancemode" scheme="http://occiware.org/occi/vmware/hostsystem/action#" title="Puts the host in maintenance mode. While this task is running and when the host is in maintenance mode, no virtual machines can be powered on and no provisioning operations can be performed on the host. Once the call completes, it is safe to turn off a host without disrupting any virtual machines"/>
+    <actions term="exitlockdownmode" scheme="http://occiware.org/occi/vmware/hostsystem/action#" title="Restores Administrator permission for the local administrative account for the host that was removed by prior call to EnterLockdownMode. If the operation is successful, adminDisabled will be set to false. This API is not supported on the host. If invoked directly on a host, a NotSupported fault will be thrown."/>
+    <actions term="exitmaintenancemode" scheme="http://occiware.org/occi/vmware/hostsystem/action#" title="Takes the host out of maintenance mode. This blocks if any concurrent running maintenance-only host configurations operations are being performed. For example, if VMFS volumes are being upgraded."/>
   </kinds>
   <kinds term="vm" scheme="http://occiware.org/occi/vmware#" title="Virtual machine compute on a host system">
     <attributes name="name" default="" description="Display name of the virtual machine. Any % (percent) character used in this name parameter must be escaped, unless it is used to start an escape sequence.&#xA;Clients may also escape any other characters in this name parameter. &#xA;Snapshots of virtual machines that have spaces in their names and are associated with ESX 2.x servers are not supported. Therefore, if you want the option to take snapshots of this virtual machine and you are associating it with an ESX 2.x server, do not use spaces in the name.&#xA;Reconfigure privilege: VirtualMachine.Config.Rename">
@@ -110,6 +177,10 @@
     <attributes name="annotation" description="User-provided description of the virtual machine. Because this property is optional in the virtual machine configuration, it is necessary to pass an explicit empty string in a ConfigSpec object to remove an annotation that is already present in the VirtualMachineConfigInfo for a virtual machine.&#xA;Reconfigure privilege: VirtualMachine.Config.Rename ">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
+    <attributes name="vmwarepowerstate" mutable="false">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="overallstatus" type="//@types.19"/>
     <parent href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='compute']"/>
     <actions term="clone" scheme="http://occiware.org/occi/vmware/vm/action#" title="Clone a virtual machine"/>
     <actions term="mountvmwaretoolsdisk" scheme="http://occiware.org/occi/vmware/vm/action#" title="Mount vmware tools iso"/>
@@ -266,6 +337,70 @@
   <kinds term="vmcapabilitylink" scheme="http://occiware.org/occi/vmware#" title="Link between a virtual machine and its capabilities">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
+  <kinds term="sharesconfig" scheme="http://occiware.org/occi/vmware#">
+    <attributes name="type" required="true" default="" description="Resource allocation type to define (cpu, memory or network)" type="//@types.4"/>
+    <attributes name="name">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds term="shareslink" scheme="http://occiware.org/occi/vmware#" title="Link between resource pool and a shares config" parent="//@kinds[term='resourcepoollink']"/>
+  <kinds term="folder" scheme="http://occiware.org/occi/vmware#">
+    <attributes name="name" required="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds term="hostfolder" scheme="http://occiware.org/occi/vmware#" parent="//@kinds[term='folder']"/>
+  <kinds term="hostcapability" scheme="http://occiware.org/occi/vmware#" title="Describe capabilities of a hostsystem compute, read only attributes">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds term="hostserviceticket" scheme="http://occiware.org/occi/vmware#">
+    <attributes name="name" mutable="false" description="The name of the host providing the service for which the ticket applies. If omitted, then the client uses the host name for the server that issued the ticket. ">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="port" mutable="false" description="Access to some services is made possible by connecting to a port on a server. If the service for which a ticket is issued is available on a particular port, that port number is specified with this property. If omitted, except in the case of connecting to CIM interfaces, the port number for the service that issued the ticket is used. In the case of connecting to a CIM interface the standard well known port for the particular service will be used for the connection. ">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="service" mutable="false" description="The name of the service to which to connect. ">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="serviceversion" mutable="false" description="A dot-separated string identifying the service protocol version. For example, 1.0 is used for NFC hosted by vpxa on ESX 2.5, and 1.1 is used for NFC hosted by hostd on ESX 3.0. ">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="sessionid" mutable="false" description="An identifying string for the session created for the ticketed connection. This is used by the host service to identify the operations permitted within the session. ">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="sslthumbprint" mutable="false" description="The expected thumbprint of the SSL cert of the host to which we are connecting.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+    <actions term="acquirecimservicesticket" scheme="http://occiware.org/occi/vmware/hostsystem/action#" title="Creates and returns a one-time credential used to establish a remote connection to a CIM interface. The port to connect to is the standard well known port for the service."/>
+  </kinds>
+  <kinds term="aboutinfo" scheme="http://occiware.org/occi/vmware#" title="This global data object (readonly) type describes system information including the name, type, version, and build number.See HostConfigInfo, HostConfigSummary, ServiceContent">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds term="aboutinfolink" scheme="http://occiware.org/occi/vmware#" title="link between a resource that present service contents about info and aboutinfo data object">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds term="capability" scheme="http://occiware.org/occi/vmware#" title="Global data object to determine if the global service instance support or not a feature, see ServiceInstance">
+    <attributes name="multihostsupported" mutable="false" description="Indicates whether or not the service instance supports multiple hosts. ">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="provisioningsupported" mutable="false" description="Indicates whether or not the service instance supports provisioning. For example, the CloneVM operation">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="usershellaccesssupported" mutable="false" description="Flag indicating whether host user accounts should have the option to be granted shell access">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="evcmodevendor" description="All supported Enhanced VMotion Compatibility modes. CPU hardware vendor required for this mode. ">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="evcmodevendortier" description="All supported Enhanced VMotion Compatibility modes.Index for ordering the set of modes that apply to a given CPU vendor. Use this property to compare vendor tier values from two modes. Do not use this property to determine the presence or absence of specific features. ">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
   <mixins term="linux" scheme="http://occiware.org/occi/vmware#">
     <attributes name="guestid" type="//@types.17"/>
     <attributes name="datastoreisopath">
@@ -333,12 +468,11 @@
       <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
     </attributes>
   </mixins>
-  <mixins term="shares" scheme="http://occiware.org/occi/vmware#" applies="//@kinds[term='resourcepool']">
+  <mixins term="shares" scheme="http://occiware.org/occi/vmware#" applies="//@kinds[term='sharesconfig']">
     <attributes name="level" description="custom: If you specify custom for the level property, when there is resource contention the Server uses the shares value to determine resource allocation. &#xA;high: For CPU: Shares = 2000 * nmumber of virtual CPUs&#xA;For Memory: Shares = 20 * virtual machine memory size in megabytes&#xA;For Disk: Shares = 2000&#xA;For Network: Shares = networkResourcePoolHighShareValue &#xA;low: For CPU: Shares = 500 * number of virtual CPUs&#xA;For Memory: Shares = 5 * virtual machine memory size in megabytes&#xA;For Disk: Shares = 500&#xA;For Network: Shares = 0.25 * networkResourcePoolHighShareValue &#xA;normal: For CPU: Shares = 1000 * number of virtual CPUs&#xA;For Memory: Shares = 10 * virtual machine memory size in megabytes&#xA;For Disk: Shares = 1000&#xA;For Network: Shares = 0.5 * networkResourcePoolHighShareValue " type="//@types.1"/>
     <attributes name="shares" description="The number of shares allocated. Used to determine resource allocation in case of resource contention. This value is only set if level is set to custom. If level is not set to custom, this value is ignored. Therefore, only shares with custom values can be compared.&#xA;There is no unit for this value. It is a relative measure based on the settings for other resource pools. ">
       <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
     </attributes>
-    <attributes name="type" required="true" default="" description="Resource allocation type to define (cpu, memory or network)" type="//@types.4"/>
   </mixins>
   <mixins term="dvsfeaturecapability" scheme="http://occiware.org/occi/vmware#" depends="//@mixins[term='shares']">
     <attributes name="networkresourcemanagementsupported" description="Flag to indicate whether network I/O control is supported on the vSphere Distributed Switch. Network I/O control is supported in vSphere Distributed Switch Version 4.1 or later. ">
@@ -733,5 +867,11 @@
   <types xsi:type="ecore:EEnum" name="ToolsUpgradePolicy">
     <eLiterals name="manual"/>
     <eLiterals name="upgradeAtPowerCycle" value="1"/>
+  </types>
+  <types xsi:type="ecore:EEnum" name="OverallStatus">
+    <eLiterals name="gray"/>
+    <eLiterals name="green" value="1"/>
+    <eLiterals name="red" value="2"/>
+    <eLiterals name="yellow" value="3"/>
   </types>
 </occi:Extension>
