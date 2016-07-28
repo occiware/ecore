@@ -51,6 +51,7 @@ import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.Docke
 import org.occiware.clouddesigner.occi.docker.preference.preferences.PreferenceValues
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import com.github.dockerjava.api.model.RestartPolicy
 
 class DockerContainerManager {
 	private static DockerClient dockerClient = null
@@ -199,9 +200,6 @@ class DockerContainerManager {
 		if (container.publish_all) {
 			create.withPublishAllPorts(container.publish_all)
 		}
-		if (container.tty) {
-			create.withTty(container.tty)
-		}
 		if (container.stdin_open) {
 			create.withStdInOnce(container.stdin_open)
 		}
@@ -222,10 +220,53 @@ class DockerContainerManager {
 			// TODO lxc_conf should be String array..
 			val LxcConf lxcCon = new LxcConf("key", "value")
 			create.withLxcConf(lxcCon)
+		}		
+		if(container.domainname !=null){
+			create.withDomainName(container.domainname)
 		}
-		if (container.cores > 0) {
-			create.withCpusetCpus(String.valueOf(container.cores))
+
+		if(container.dns_search != null){
+			var String[] dnsSearch = container.dns_search.split(",")
+			create.withDnsSearch(dnsSearch)
 		}
+
+		if(container.entrypoint != null){
+			var String[] entrypoint = container.entrypoint.split(",")
+			create.withEntrypoint(entrypoint)
+		}
+
+		if(container.net != null){
+			create.withNetworkMode(container.net)
+		}
+
+		if(container.pid != null){
+			create.withPidMode(container.pid)
+		}
+		
+		if(container.privileged){
+			create.withPrivileged(container.privileged)
+		}		
+
+		if(container.publish_all){
+			create.withPublishAllPorts(container.publish_all)
+		}		
+
+		if(container.read_only){
+			create.withReadonlyRootfs(container.read_only)
+		}		
+
+		if(container.tty){
+			create.withTty(container.tty)
+		}		
+
+		if(container.restart != null){
+			create.withRestartPolicy(RestartPolicy.parse(container.restart))
+		}		
+
+		if(container.working_dir != null){
+			create.withWorkingDir(container.working_dir)
+			create.cpusetCpus
+		}		
 
 		return create
 	}
@@ -310,10 +351,6 @@ class DockerContainerManager {
 			val LxcConf lxcCon = new LxcConf("key", "value")
 			create.withLxcConf(lxcCon)
 		}
-		if (container.cores > 0) {
-			create.withCpusetCpus(String.valueOf(container.cores))
-		}
-
 		if (containerDependency.containsKey(container.name)) {
 			val List<String> depdupeContainers = new ArrayList<String>(
 				new LinkedHashSet<String>(containerDependency.get(container.name)))

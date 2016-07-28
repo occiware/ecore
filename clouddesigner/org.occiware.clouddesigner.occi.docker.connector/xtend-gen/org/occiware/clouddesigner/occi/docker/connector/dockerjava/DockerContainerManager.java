@@ -27,6 +27,7 @@ import com.github.dockerjava.api.model.ExposedPort;
 import com.github.dockerjava.api.model.Link;
 import com.github.dockerjava.api.model.LxcConf;
 import com.github.dockerjava.api.model.Ports;
+import com.github.dockerjava.api.model.RestartPolicy;
 import com.github.dockerjava.api.model.Volume;
 import com.github.dockerjava.core.DockerClientBuilder;
 import com.github.dockerjava.core.DockerClientConfig;
@@ -290,11 +291,6 @@ public class DockerContainerManager {
       boolean _isPublish_all_1 = container.isPublish_all();
       create.withPublishAllPorts(Boolean.valueOf(_isPublish_all_1));
     }
-    boolean _isTty = container.isTty();
-    if (_isTty) {
-      boolean _isTty_1 = container.isTty();
-      create.withTty(Boolean.valueOf(_isTty_1));
-    }
     boolean _isStdin_open = container.isStdin_open();
     if (_isStdin_open) {
       boolean _isStdin_open_1 = container.isStdin_open();
@@ -333,12 +329,71 @@ public class DockerContainerManager {
       final LxcConf lxcCon = new LxcConf("key", "value");
       create.withLxcConf(lxcCon);
     }
-    int _cores = container.getCores();
-    boolean _greaterThan_3 = (_cores > 0);
-    if (_greaterThan_3) {
-      int _cores_1 = container.getCores();
-      String _valueOf_2 = String.valueOf(_cores_1);
-      create.withCpusetCpus(_valueOf_2);
+    String _domainname = container.getDomainname();
+    boolean _notEquals_12 = (!Objects.equal(_domainname, null));
+    if (_notEquals_12) {
+      String _domainname_1 = container.getDomainname();
+      create.withDomainName(_domainname_1);
+    }
+    String _dns_search = container.getDns_search();
+    boolean _notEquals_13 = (!Objects.equal(_dns_search, null));
+    if (_notEquals_13) {
+      String _dns_search_1 = container.getDns_search();
+      String[] dnsSearch = _dns_search_1.split(",");
+      create.withDnsSearch(dnsSearch);
+    }
+    String _entrypoint = container.getEntrypoint();
+    boolean _notEquals_14 = (!Objects.equal(_entrypoint, null));
+    if (_notEquals_14) {
+      String _entrypoint_1 = container.getEntrypoint();
+      String[] entrypoint = _entrypoint_1.split(",");
+      create.withEntrypoint(entrypoint);
+    }
+    String _net_2 = container.getNet();
+    boolean _notEquals_15 = (!Objects.equal(_net_2, null));
+    if (_notEquals_15) {
+      String _net_3 = container.getNet();
+      create.withNetworkMode(_net_3);
+    }
+    String _pid = container.getPid();
+    boolean _notEquals_16 = (!Objects.equal(_pid, null));
+    if (_notEquals_16) {
+      String _pid_1 = container.getPid();
+      create.withPidMode(_pid_1);
+    }
+    boolean _isPrivileged_2 = container.isPrivileged();
+    if (_isPrivileged_2) {
+      boolean _isPrivileged_3 = container.isPrivileged();
+      create.withPrivileged(Boolean.valueOf(_isPrivileged_3));
+    }
+    boolean _isPublish_all_2 = container.isPublish_all();
+    if (_isPublish_all_2) {
+      boolean _isPublish_all_3 = container.isPublish_all();
+      create.withPublishAllPorts(Boolean.valueOf(_isPublish_all_3));
+    }
+    boolean _isRead_only = container.isRead_only();
+    if (_isRead_only) {
+      boolean _isRead_only_1 = container.isRead_only();
+      create.withReadonlyRootfs(Boolean.valueOf(_isRead_only_1));
+    }
+    boolean _isTty = container.isTty();
+    if (_isTty) {
+      boolean _isTty_1 = container.isTty();
+      create.withTty(Boolean.valueOf(_isTty_1));
+    }
+    String _restart = container.getRestart();
+    boolean _notEquals_17 = (!Objects.equal(_restart, null));
+    if (_notEquals_17) {
+      String _restart_1 = container.getRestart();
+      RestartPolicy _parse = RestartPolicy.parse(_restart_1);
+      create.withRestartPolicy(_parse);
+    }
+    String _working_dir = container.getWorking_dir();
+    boolean _notEquals_18 = (!Objects.equal(_working_dir, null));
+    if (_notEquals_18) {
+      String _working_dir_1 = container.getWorking_dir();
+      create.withWorkingDir(_working_dir_1);
+      create.getCpusetCpus();
     }
     return create;
   }
@@ -505,13 +560,6 @@ public class DockerContainerManager {
       final LxcConf lxcCon = new LxcConf("key", "value");
       create.withLxcConf(lxcCon);
     }
-    int _cores = container.getCores();
-    boolean _greaterThan_3 = (_cores > 0);
-    if (_greaterThan_3) {
-      int _cores_1 = container.getCores();
-      String _valueOf_2 = String.valueOf(_cores_1);
-      create.withCpusetCpus(_valueOf_2);
-    }
     String _name_2 = container.getName();
     boolean _containsKey = containerDependency.containsKey(_name_2);
     if (_containsKey) {
@@ -532,8 +580,8 @@ public class DockerContainerManager {
         }
       }
       int _size_2 = depdupeContainers.size();
-      boolean _greaterThan_4 = (_size_2 > 1);
-      if (_greaterThan_4) {
+      boolean _greaterThan_3 = (_size_2 > 1);
+      if (_greaterThan_3) {
         create.withLinks(dockeClientlinks);
       } else {
         int _size_3 = depdupeContainers.size();
