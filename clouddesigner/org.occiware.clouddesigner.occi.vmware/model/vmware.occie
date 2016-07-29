@@ -5,7 +5,7 @@
   <kinds term="datastore" scheme="http://occiware.org/occi/vmware#" title="Datastores are logical containers, analogous to file systems, that hide specifics of each storage device and provide a uniform model for storing virtual machine files. Datastores can also be used for storing ISO images, virtual machine templates, and floppy images." parent="//@kinds[term='folder']"/>
   <kinds term="cluster" scheme="http://occiware.org/occi/vmware#" title="Represents a cluster of HostSystem objects as a unified compute resource for virtual machines." parent="//@kinds[term='folder']"/>
   <kinds term="datacenter" scheme="http://occiware.org/occi/vmware#" title="The interface to the common container object for hosts and virtual machines. Every host and virtual machine must be under a distinct datacenter in the inventory, and datacenters may not be nested under other datacenters." parent="//@kinds[term='folder']">
-    <actions term="poweronmultivm" scheme="http://occiware.org/occi/vmware/datacenter/action#"/>
+    <actions term="powerOnMultiVMs" scheme="http://occiware.org/occi/vmware/datacenter/action#"/>
   </kinds>
   <kinds term="hostsystem" scheme="http://occiware.org/occi/vmware#">
     <attributes name="name">
@@ -90,7 +90,7 @@
     <attributes name="name" default="" description="Display name of the virtual machine. Any % (percent) character used in this name parameter must be escaped, unless it is used to start an escape sequence.&#xA;Clients may also escape any other characters in this name parameter. &#xA;Snapshots of virtual machines that have spaces in their names and are associated with ESX 2.x servers are not supported. Therefore, if you want the option to take snapshots of this virtual machine and you are associating it with an ESX 2.x server, do not use spaces in the name.&#xA;Reconfigure privilege: VirtualMachine.Config.Rename">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="instanceuuid" mutable="false" default="" description="VirtualCenter-specific 128-bit UUID of a virtual machine, represented as a hexademical string. This identifier is used by VirtualCenter to uniquely identify all virtual machine instances, including those that may share the same SMBIOS UUID.">
+    <attributes name="instanceUUID" mutable="false" default="" description="VirtualCenter-specific 128-bit UUID of a virtual machine, represented as a hexademical string. This identifier is used by VirtualCenter to uniquely identify all virtual machine instances, including those that may share the same SMBIOS UUID.">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
     <attributes name="template" default="false" description="If true, this virtual machine is set as a template machine and may be used as an image">
@@ -99,69 +99,69 @@
     <attributes name="vcpus" required="true" default="1" description="Number of virtual cpus&#xA;Reconfigure privilege: VirtualMachine.Config.CpuCount ">
       <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
     </attributes>
-    <attributes name="corespersocket" default="1" description="Number of cores per socket">
+    <attributes name="coresPerSocket" default="1" description="Number of cores per socket">
       <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
     </attributes>
-    <attributes name="vmfilefolder" description="Folder where the vm configuration file is set on the datastore">
+    <attributes name="vmFileFolder" description="Folder where the vm configuration file is set on the datastore">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="gueststate" mutable="false" default="" description="if vmware tools is installed this value show the state of the operating system">
+    <attributes name="guestState" mutable="false" default="" description="if vmware tools is installed this value show the state of the operating system">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="vmwaretoolsinstalled" default="false" description="Is vmware tools installed on this virtual machine">
+    <attributes name="vmwareToolsInstalled" default="false" description="Is vmware tools installed on this virtual machine">
       <type href="../../../plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean"/>
     </attributes>
-    <attributes name="vmwaretoolsrunning" default="false" description="is vmware tools running on this virtual machine">
+    <attributes name="vmwareToolsRunning" default="false" description="is vmware tools running on this virtual machine">
       <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
     </attributes>
-    <attributes name="changetrackingenabled" description="Indicates whether changed block tracking for this VM's disks is active">
+    <attributes name="changeTrackingEnabled" description="Indicates whether changed block tracking for this VM's disks is active">
       <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
     </attributes>
-    <attributes name="guestfullname" mutable="false" description="This is the full name of the guest operating system for the virtual machine. For example: Windows 2000 Professional.">
+    <attributes name="guestFullName" mutable="false" description="This is the full name of the guest operating system for the virtual machine. For example: Windows 2000 Professional.">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="changeversion" description="The changeVersion is a unique identifier for a given version of the configuration. Each change to the configuration updates this value. This is typically implemented as an ever increasing count or a time-stamp. However, a client should always treat this as an opaque string. ">
+    <attributes name="changeVersion" description="The changeVersion is a unique identifier for a given version of the configuration. Each change to the configuration updates this value. This is typically implemented as an ever increasing count or a time-stamp. However, a client should always treat this as an opaque string. ">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="lastmodified" mutable="false" default="" type="//@types.6"/>
-    <attributes name="cpuhotaddenabled" default="true" description="Whether virtual processors can be added while this virtual machine is running.&#xA;Since vSphere API 4.0">
+    <attributes name="lastModified" mutable="false" default="" type="//@types.6"/>
+    <attributes name="cpuhotAddEnabled" default="true" description="Whether virtual processors can be added while this virtual machine is running.&#xA;Since vSphere API 4.0">
       <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
     </attributes>
-    <attributes name="cpuhotremoveenabled" default="true" description="Whether virtual processors can be removed while this virtual machine is running.&#xA;Since vSphere API 4.0">
+    <attributes name="cpuHotRemoveEnabled" default="true" description="Whether virtual processors can be removed while this virtual machine is running.&#xA;Since vSphere API 4.0">
       <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
     </attributes>
-    <attributes name="virtualich7mpresent" mutable="false" description="Does this virtual machine have Virtual Intel I/O Controller Hub 7">
+    <attributes name="virtualICH7mpresent" mutable="false" description="Does this virtual machine have Virtual Intel I/O Controller Hub 7">
       <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
     </attributes>
-    <attributes name="virtualsmcpresent" mutable="false" description="Does this virtual machine have System Management Controller">
+    <attributes name="virtualSMCPresent" mutable="false" description="Does this virtual machine have System Management Controller">
       <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
     </attributes>
-    <attributes name="hotplugmemoryincrementsize" mutable="false" description="Memory, in MB that can be added to a running virtual machine must be in increments of this value and needs be a multiple of this value. This value is determined by the virtual machine and is specified only if memoryHotAddEnabled has been set to true." type="//@types.0"/>
-    <attributes name="hotplugmemorylimit" mutable="false" description="The maximum amount of memory, in MB, than can be added to a running virtual machine. This value is determined by the virtual machine and is specified only if memoryHotAddEnabled is set to true." type="//@types.0"/>
-    <attributes name="initialmemoryreservation" description="Memory overhead required for virtual machine to be powered on (in bytes).&#xA;See VirtualMachineConfigInfoOverheadInfo" type="//@types.0"/>
-    <attributes name="initialswapreservation" default="" description="Disk space required for virtual machine to be powered on (in bytes). This space is used by virtualization infrastructure to swap out virtual machine process memory. Location of the file is specified by sched.swap.vmxSwapDir virtual machinge advanced config option or in case it is not specified - current virtual machine home directory is being used.&#xA;See VirtualMachineConfigInfoOverheadInfo" type="//@types.0"/>
-    <attributes name="locationid" mutable="false" description="Hash incorporating the virtual machine's config file location and the UUID of the host assigned to run the virtual machine. ">
+    <attributes name="hotPlugMemoryiIcrementSize" mutable="false" description="Memory, in MB that can be added to a running virtual machine must be in increments of this value and needs be a multiple of this value. This value is determined by the virtual machine and is specified only if memoryHotAddEnabled has been set to true." type="//@types.0"/>
+    <attributes name="hotPlugMemoryLimit" mutable="false" description="The maximum amount of memory, in MB, than can be added to a running virtual machine. This value is determined by the virtual machine and is specified only if memoryHotAddEnabled is set to true." type="//@types.0"/>
+    <attributes name="initialMemoryReservation" description="Memory overhead required for virtual machine to be powered on (in bytes).&#xA;See VirtualMachineConfigInfoOverheadInfo" type="//@types.0"/>
+    <attributes name="initialSwapReservation" default="" description="Disk space required for virtual machine to be powered on (in bytes). This space is used by virtualization infrastructure to swap out virtual machine process memory. Location of the file is specified by sched.swap.vmxSwapDir virtual machinge advanced config option or in case it is not specified - current virtual machine home directory is being used.&#xA;See VirtualMachineConfigInfoOverheadInfo" type="//@types.0"/>
+    <attributes name="locationId" mutable="false" description="Hash incorporating the virtual machine's config file location and the UUID of the host assigned to run the virtual machine. ">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="managedbyextensionkey" default="" description="Specifies that this VM is managed by a VC Extension. See the managedBy property in the ConfigSpec for more details&#xA;Key of the extension managing the entity.">
+    <attributes name="managedByExtensionKey" default="" description="Specifies that this VM is managed by a VC Extension. See the managedBy property in the ConfigSpec for more details&#xA;Key of the extension managing the entity.">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="managedbytype" description="Specifies that this VM is managed by a VC Extension. See the managedBy property in the ConfigSpec for more details&#xA;Managed entity type, as defined by the extension managing the entity. An extension can manage different types of entities - different kinds of virtual machines, vApps, etc. - and this property is used to find the corresponding managedEntityInfo entry from the extension. ">
+    <attributes name="managedByType" description="Specifies that this VM is managed by a VC Extension. See the managedBy property in the ConfigSpec for more details&#xA;Managed entity type, as defined by the extension managing the entity. An extension can manage different types of entities - different kinds of virtual machines, vApps, etc. - and this property is used to find the corresponding managedEntityInfo entry from the extension. ">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="maxmksconnections" description="Indicates the maximum number of active remote display connections that the virtual machine will support.">
+    <attributes name="maxMKSConnections" description="Indicates the maximum number of active remote display connections that the virtual machine will support.">
       <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
     </attributes>
-    <attributes name="memoryhotaddenabled" description="Whether memory can be added while this virtual machine is running.">
+    <attributes name="memoryHotAddEnabled" description="Whether memory can be added while this virtual machine is running.">
       <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
     </attributes>
-    <attributes name="memoryreservationlockedtomax" description="If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size; increases in memory size will be rejected when a corresponding reservation increase is not possible.">
+    <attributes name="memoryReservationLockedToMax" description="If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size; increases in memory size will be rejected when a corresponding reservation increase is not possible.">
       <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
     </attributes>
-    <attributes name="swapplacement" default="" description="Virtual machine swapfile placement policy. This will be unset if the virtual machine's swapPlacementSupported capability is false. If swapPlacementSupported is true, the default policy is &quot;inherit&quot;&#xA;Available choices for virtual machine swapfile placement policy. This is the set of legal values for the virtual machine configuration's swapPlacement property. All values except for &quot;inherit&quot; and &quot;vmConfigured&quot; are also valid values for a compute resource configuration's vmSwapPlacement property&#xA;hostLocal: Store the swapfile in the datastore specified by the localSwapDatastore property of the virtual machine's host, if that property is set and indicates a datastore with sufficient free space. Otherwise store the swapfile in the same directory as the virtual machine.&#xA;Note: This setting may degrade VMotion performance. &#xA;inherit: Honor the virtual machine swapfile placement policy of the compute resource that contains this virtual machine.&#xA;vmDirectory: Store the swapfile in the same directory as the virtual machine. ">
+    <attributes name="swapPlacement" default="" description="Virtual machine swapfile placement policy. This will be unset if the virtual machine's swapPlacementSupported capability is false. If swapPlacementSupported is true, the default policy is &quot;inherit&quot;&#xA;Available choices for virtual machine swapfile placement policy. This is the set of legal values for the virtual machine configuration's swapPlacement property. All values except for &quot;inherit&quot; and &quot;vmConfigured&quot; are also valid values for a compute resource configuration's vmSwapPlacement property&#xA;hostLocal: Store the swapfile in the datastore specified by the localSwapDatastore property of the virtual machine's host, if that property is set and indicates a datastore with sufficient free space. Otherwise store the swapfile in the same directory as the virtual machine.&#xA;Note: This setting may degrade VMotion performance. &#xA;inherit: Honor the virtual machine swapfile placement policy of the compute resource that contains this virtual machine.&#xA;vmDirectory: Store the swapfile in the same directory as the virtual machine. ">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="vassertsenabled" description="Indicates whether user-configured virtual asserts will be triggered during virtual machine replay.">
+    <attributes name="vAssertsEnabled" description="Indicates whether user-configured virtual asserts will be triggered during virtual machine replay.">
       <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
     </attributes>
     <attributes name="version" default="" description="The version string for this virtual machine. This is used only while creating a new virtual machine, and can be updated by invoking UpgradeVM_Task for this virtual machine. ">
@@ -170,18 +170,18 @@
     <attributes name="annotation" description="User-provided description of the virtual machine. Because this property is optional in the virtual machine configuration, it is necessary to pass an explicit empty string in a ConfigSpec object to remove an annotation that is already present in the VirtualMachineConfigInfo for a virtual machine.&#xA;Reconfigure privilege: VirtualMachine.Config.Rename ">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="vmwarepowerstate" mutable="false">
+    <attributes name="vmwarePowerState" mutable="false">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="overallstatus" type="//@types.19"/>
+    <attributes name="overallStatus" type="//@types.19"/>
     <parent href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='compute']"/>
     <actions term="clone" scheme="http://occiware.org/occi/vmware/vm/action#" title="Clone a virtual machine"/>
-    <actions term="mountvmwaretoolsdisk" scheme="http://occiware.org/occi/vmware/vm/action#" title="Mount vmware tools iso"/>
-    <actions term="markastemplate" scheme="http://occiware.org/occi/vmware/vm/action#" title="Mark this virtual machine as a template image"/>
-    <actions term="markasvirtualmachine" scheme="http://occiware.org/occi/vmware/vm/action#" title="Mark this template image as a virtual machine"/>
+    <actions term="mountVmwareToolsdisk" scheme="http://occiware.org/occi/vmware/vm/action#" title="Mount vmware tools iso"/>
+    <actions term="markAsTemplate" scheme="http://occiware.org/occi/vmware/vm/action#" title="Mark this virtual machine as a template image"/>
+    <actions term="markAsVirtualMachine" scheme="http://occiware.org/occi/vmware/vm/action#" title="Mark this template image as a virtual machine"/>
     <actions term="register" scheme="http://occiware.org/occi/vmware/vm/action#" title="Register this virtual machine on vcenter"/>
     <actions term="unregister" scheme="http://occiware.org/occi/vmware/vm/action#" title="Unregister this virtual machine from vcenter"/>
-    <actions term="resetlocationid" scheme="http://occiware.org/occi/vmware/vm/action#" title="128-bit hash based on the virtual machine's configuration file location and the UUID of the host assigned to run the virtual machine.Normally, this property is not set by a client, allowing the Virtual Infrastructure environment to assign a location ID when the virtual machine is created. However, if the virtual machine's configuration file has been manually moved, it may be desirable to clear this property, setting it to an empty string, so the property is regenerated.Reconfigure privilege: VirtualMachine.Config.Settings"/>
+    <actions term="resetLocationId" scheme="http://occiware.org/occi/vmware/vm/action#" title="128-bit hash based on the virtual machine's configuration file location and the UUID of the host assigned to run the virtual machine.Normally, this property is not set by a client, allowing the Virtual Infrastructure environment to assign a location ID when the virtual machine is created. However, if the virtual machine's configuration file has been manually moved, it may be desirable to clear this property, setting it to an empty string, so the property is regenerated.Reconfigure privilege: VirtualMachine.Config.Settings"/>
     <actions term="defragmentAllDisks" scheme="http://occiware.org/occi/vmware/vm/action#"/>
   </kinds>
   <kinds term="folderlink" scheme="http://occiware.org/occi/vmware#" title="a link hierarchy folder between datacenter and cluster or between datacenter and virtual machines (vmFolder) or between datacenter and hostsystems">
@@ -309,6 +309,15 @@
     <attributes name="protocol" description="The port protocol" type="//@types.24"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
+  <kinds term="hoststorage" scheme="http://occiware.org/occi/vmware#" title="Represente a physical storage on a hostsystem, see HostStorageSystem, linked to a hostsystem via a hoststoragelink">
+    <attributes name="hostVolumeName" mutable="false" description="Name of the file system volume. ">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <parent href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='storage']"/>
+  </kinds>
+  <kinds term="hoststoragelink" scheme="http://occiware.org/occi/vmware#" title="hoststorage as it is view by the host os">
+    <parent href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='storagelink']"/>
+  </kinds>
   <mixins term="linux" scheme="http://occiware.org/occi/vmware#">
     <attributes name="guestid" type="//@types.17"/>
     <attributes name="datastoreisopath">
@@ -372,7 +381,7 @@
     </attributes>
   </mixins>
   <mixins term="cpuaffinity" scheme="http://occiware.org/occi/vmware#" applies="//@kinds[term='vm']">
-    <attributes name="affinityset" description="List of nodes (processors for CPU, NUMA nodes for memory) that may be used by the virtual machine. If the array is empty when modifying the affinity setting, then any existing affinity is removed. " multiple_values="true">
+    <attributes name="affinitySet" description="List of nodes (processors for CPU, NUMA nodes for memory) that may be used by the virtual machine. If the array is empty when modifying the affinity setting, then any existing affinity is removed. " multiple_values="true">
       <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
     </attributes>
   </mixins>
@@ -740,7 +749,7 @@
     <attributes name="distributedcpuentitlement" mutable="false" description="This is the amount of memory, in MB, that this VM is entitled to, as calculated by DRS. Valid only for a VM managed by DRS" type="//@types.0"/>
     <attributes name="hostmemoryusage" mutable="false" description="Host memory utilization statistics, in MB. This is also known as consummed host memory. This is between 0 and the configured resource limit. Valid while a virtual machine is running. This includes the overhead memory of a virtual machine. " type="//@types.0"/>
   </mixins>
-  <mixins term="hosthardwaresummary" scheme="http://occiware.org/occi/vmware#" applies="//@kinds[term='hostsystem']">
+  <mixins term="hosthardwareinfo" scheme="http://occiware.org/occi/vmware#" applies="//@kinds[term='hostsystem']">
     <attributes name="otherIdentifierType" mutable="false" description="Other identification information. This information may be vendor specific." multiple_values="true">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -767,6 +776,10 @@
     <attributes name="biosUUID" mutable="false" description="The hardware BIOS identification">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
+    <attributes name="biosVersion" mutable="false" description="The current BIOS version of the physical chassis">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="biosReleaseDate" mutable="false" description="The release date for the BIOS" type="//@types.6"/>
   </mixins>
   <mixins term="hostaboutinfo" scheme="http://occiware.org/occi/vmware#" applies="//@kinds[term='hostsystem']">
     <attributes name="apiType" mutable="false" description="Indicates whether or not the service instance represents a standalone host. If the service instance represents a standalone host, then the physical inventory for that service instance is fixed to that single host. VirtualCenter server provides additional features over single hosts. For example, VirtualCenter offers multi-host management.&#xA;Examples of values are:&#xA;&quot;VirtualCenter&quot; - For a VirtualCenter instance.&#xA;&quot;HostAgent&quot; - For host agent on an ESX Server or VMware Server host.">
@@ -905,10 +918,18 @@
       <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
     </attributes>
   </mixins>
-  <mixins term="hostconsolereservationinfo" scheme="http://occiware.org/occi/vmware#" title="This mixin describes the amount of memory that is being reserved by the service console. Memory reserved for use by the service console is a hard reservation that cannot be changed except across hardware restarts" depends="//@mixins[term='hostconfig']">
+  <mixins term="hostmemoryreservation" scheme="http://occiware.org/occi/vmware#" title="This mixin describes the amount of memory that is being reserved by the service console. Memory reserved for use by the service console is a hard reservation that cannot be changed except across hardware restarts" depends="//@mixins[term='hostconfig']">
     <attributes name="serviceConsoleReserved" mutable="false" description="The amount of memory that is currently reserved for the service console. " type="//@types.0"/>
     <attributes name="serviceConsoleReservedCfg" description="The amount of memory that should be reserved for the service console on the next boot. " type="//@types.0"/>
     <attributes name="unreserved" mutable="false" description="The amount of memory that is not reserved for use by the service console" type="//@types.0"/>
+    <attributes name="allocationPolicy" description="Policy for allocating additional memory for virtual machines.&#xA;See AllocationPolicy">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="virtualMachineMax" mutable="false" description="The maximum amount of memory reserved for all running virtual machines, in bytes." type="//@types.0"/>
+    <attributes name="virtualMachineMin" mutable="false" description="The minimum amount of memory reserved for all running virtual machines, in bytes" type="//@types.0"/>
+    <attributes name="virtualMachineReserved" description="The amount of memory reserved for all running virtual machines, in bytes. " type="//@types.0"/>
+    <actions term="reconfigureServiceConsoleReservation" scheme="http://occiware.org/occi/vmware/hostmemoryreservation/action#" title="Sets the configured service console memory reservation. This change affects only the serviceConsoleReservedCfg property. The configuration change propagates to the other properties after the next boot."/>
+    <actions term="reconfigureVirtualMachineReservation" scheme="http://occiware.org/occi/vmware/hostmemoryreservation/action#" title="Updates the virtual machine reservation information."/>
   </mixins>
   <mixins term="hostdatastorecapability" scheme="http://occiware.org/occi/vmware#" depends="//@mixins[term='hostconfig']">
     <attributes name="localDatastoreSupported" mutable="false" description="Indicates whether local datastores are supported.">
@@ -941,29 +962,6 @@
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
   </mixins>
-  <mixins term="hostfilesystemvolumeinfo" scheme="http://occiware.org/occi/vmware#" title="Host Volume filesystem informations" depends="//@mixins[term='hostconfig']">
-    <attributes name="volumeTypeList" mutable="false" default="" description="The list of supported file system volume types. " multiple_values="true">
-      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
-    </attributes>
-  </mixins>
-  <mixins term="hostsystemvolumemounted" scheme="http://occiware.org/occi/vmware#" title="Volumes mounted on host" depends="//@mixins[term='hostfilesystemvolumeinfo']">
-    <attributes name="accessible" mutable="false" description="Flag that indicates if the datastore is currently accessible from the host.&#xA;For the case of standalone host agent, this property has the same value as Datastore.Summary.accessible and hence the latter can be used equivalently if this one is not set. VirtualCenter Server will always make sure it is set correctly." multiple_values="true">
-      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
-    </attributes>
-    <attributes name="accessMode" mutable="false" description="Access mode to the underlying file system this host has." multiple_values="true">
-      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
-    </attributes>
-    <attributes name="hostMountPath" mutable="false" description="Local file path where file system volume is mounted, if applicable. This path identifies the file system volume from the point of view of the host. " multiple_values="true">
-      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
-    </attributes>
-    <attributes name="hostVolumeCapacity" mutable="false" description="he capacity of the file system volume, in bytes. " type="//@types.0" multiple_values="true"/>
-    <attributes name="hostVolumeName" mutable="false" description="Name of the file system volume. " multiple_values="true">
-      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
-    </attributes>
-    <attributes name="hostVolumeType" mutable="false" description="Type of file system volume.The following values are defined:&#xA;vmfs: VMware File System (ESX Server only). If this is set, the type of the file system volume is VMFS.&#xA;nfs: Network file system (Linux only and ESX Server only). If this is set, the type of the file system volume is NetworkFileSystem.&#xA;cifs: Common Internet file system (Windows only). If this is set, the type of the file system volume is CIFS." multiple_values="true">
-      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
-    </attributes>
-  </mixins>
   <mixins term="hostflaginfo" scheme="http://occiware.org/occi/vmware#" depends="//@mixins[term='hostconfig']">
     <attributes name="backgroundSnapshotsEnabled" description="Flag to specify whether background snapshots are enabled. ">
       <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
@@ -973,14 +971,151 @@
     <attributes name="hyperThreadActive" mutable="false" description="The flag to indicate whether or not the CPU scheduler is currently treating hyperthreads as schedulable resources. Setting this property involves a successful invocation of either the enableHyperThreading() method (true) or the disableHyperthreading() method (false). The property is set once the system is rebooted. ">
       <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
     </attributes>
-    <attributes name="hyperThreadAvailable" mutable="false">
+    <attributes name="hyperThreadAvailable" mutable="false" description="The flag to indicate whether or not hyperthreading optimization is available on the system. This property is set by VMware prior to installation. ">
       <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
     </attributes>
-    <attributes name="hyperThreadConfig" mutable="false">
+    <attributes name="hyperThreadConfig" mutable="false" description="The flag to indicate whether or not the CPU scheduler should treat hyperthreads as schedulable resources the next time the CPU scheduler starts.&#xA;This property is set to &quot;true&quot; by successfully invoking the enableHyperThreading() method.&#xA;This property is set to &quot;false&quot; by successfully invoking the disableHyperthreading() method. ">
       <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
     </attributes>
     <actions term="enableHyperThreading" scheme="http://occiware.org/occi/vmware/hosthyperthreadscheduler/action#" title=""/>
     <actions term="disableHyperThreading" scheme="http://occiware.org/occi/vmware/hosthyperthreadscheduler/action#"/>
+  </mixins>
+  <mixins term="hostsystemvolumemounted" scheme="http://occiware.org/occi/vmware#" title="Volumes mounted on host" depends="//@mixins[term='hostfilesystemvolumeinfo']">
+    <attributes name="accessible" mutable="false" description="Flag that indicates if the datastore is currently accessible from the host.&#xA;For the case of standalone host agent, this property has the same value as Datastore.Summary.accessible and hence the latter can be used equivalently if this one is not set. VirtualCenter Server will always make sure it is set correctly.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="accessMode" mutable="false" description="Access mode to the underlying file system this host has.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="hostVolumeType" mutable="false" description="Type of file system volume.The following values are defined:&#xA;vmfs: VMware File System (ESX Server only). If this is set, the type of the file system volume is VMFS.&#xA;nfs: Network file system (Linux only and ESX Server only). If this is set, the type of the file system volume is NetworkFileSystem.&#xA;cifs: Common Internet file system (Windows only). If this is set, the type of the file system volume is CIFS.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+  </mixins>
+  <mixins term="hostfilesystemvolumeinfo" scheme="http://occiware.org/occi/vmware#" title="Host Volume filesystem informations" applies="//@kinds[term='hoststoragelink']">
+    <attributes name="volumeTypeList" mutable="false" default="" description="The list of supported file system volume types. " multiple_values="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+  </mixins>
+  <mixins term="hostpcidevices" scheme="http://occiware.org/occi/vmware#" depends="//@mixins[term='hosthardwareinfo']">
+    <attributes name="pciBus" mutable="false" description="The bus ID of this PCI" type="//@types.25" multiple_values="true"/>
+    <attributes name="pciClassId" mutable="false" default="" description="The class of this PCI" type="//@types.14" multiple_values="true"/>
+    <attributes name="pciDeviceId" mutable="false" description="The device ID of this PCI" type="//@types.14" multiple_values="true"/>
+    <attributes name="pciDeviceName" mutable="false" description="The device name of this PCI" multiple_values="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="pciFunction" mutable="false" description="The function ID of this PCI" type="//@types.25" multiple_values="true"/>
+    <attributes name="pciId" mutable="false" description="The name ID of this PCI, composed of &quot;bus:slot.function&quot;" multiple_values="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="pciSlot" mutable="false" description="The slot ID of this PCI" type="//@types.25" multiple_values="true"/>
+    <attributes name="pciSubDeviceId" mutable="false" description="The subdevice ID of this PCI" type="//@types.14" multiple_values="true"/>
+    <attributes name="pciSubVendorId" mutable="false" description="The subvendor ID of this PCI" type="//@types.14" multiple_values="true"/>
+    <attributes name="pciVendorId" mutable="false" default="" description="The vendor ID of this PCI." type="//@types.14" multiple_values="true"/>
+    <attributes name="pciVendorName" mutable="false" description="The vendor name of this PCI" multiple_values="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+  </mixins>
+  <mixins term="clusteractionhistory" scheme="http://occiware.org/occi/vmware#" title="" applies="//@kinds[term='cluster']">
+    <attributes name="actionType" mutable="false" description="The action that was executed recently" multiple_values="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="actionTime" mutable="false" description="The time when the action was executed." type="//@types.6" multiple_values="true"/>
+  </mixins>
+  <mixins term="clusterdrsrecommandations" scheme="http://occiware.org/occi/vmware#" title="list of recommended actions for the cluster. It is possible that the current set of recommendations may be empty, either due to not having any running dynamic recommendation generation module, or since there may be no recommended actions at this time" applies="//@kinds[term='cluster']"/>
+  <mixins term="clusterresourcesinfo" scheme="http://occiware.org/occi/vmware#" title="Summary resources informations (aggregate from hosts)" applies="//@kinds[term='cluster']">
+    <attributes name="effectiveCpu" mutable="false" description="Effective CPU resources (in MHz) available to run virtual machines. &#xA;This is the aggregated effective resource level from all running hosts. &#xA;Hosts that are in maintenance mode or are unresponsive are not counted. &#xA;Resources used by the VMware Service Console are not included in the aggregate. &#xA;This value represents the amount of resources available for the root resource pool for running virtual machines. ">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="effectiveMemory" mutable="false" description="Effective memory resources (in MB) available to run virtual machines. This is the aggregated effective resource level from all running hosts. Hosts that are in maintenance mode or are unresponsive are not counted. Resources used by the VMware Service Console are not included in the aggregate. This value represents the amount of resources available for the root resource pool for running virtual machines. " type="//@types.0"/>
+    <attributes name="numCpuCores" mutable="false" description="Number of physical CPU cores. Physical CPU cores are the processors contained by a CPU package. " type="//@types.14"/>
+    <attributes name="numCpuThreads" mutable="false" description="Aggregated number of CPU threads. " type="//@types.14"/>
+    <attributes name="numEffectiveHosts" mutable="false" description="Total number of effective hosts.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="numHosts" mutable="false" description="Total number of hosts. ">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="overallStatus" mutable="false" description="Overall alarm status. " type="//@types.19"/>
+    <attributes name="totalCpu" mutable="false" description="Aggregated CPU resources of all hosts, in MHz.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="totalMemory" mutable="false" description="Aggregated memory resources of all hosts, in bytes." type="//@types.0"/>
+  </mixins>
+  <mixins term="clusterdasconfig" scheme="http://occiware.org/occi/vmware#" title="Cluster-wide configuration of the VMware HA service. " applies="//@kinds[term='cluster']">
+    <attributes name="admissionControlEnabled" description="Flag to indicate whether or not strict admission control is enabled. With strict admission control, a virtual machine cannot power on if doing so would violate the configured failoverLevel.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="HAEnabled" description="Flag to indicate whether or not VMware HA is enabled. ">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="failoverlevel" description="Configured failover level. This is the number of physical host failures that can be tolerated without impacting the ability to satisfy the minimums for all running virtual machines. Acceptable values range from one to four">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="dasOptionKeys" description="The name of the option using dot notation to reflect the option's position in a hierarchy. For example, you might have an option called &quot;Ethernet&quot; and another option that is a child of that called &quot;Connection&quot;. In this case, the key for the latter could be defined as &quot;Ethernet.Connection&quot; " multiple_values="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="dasOptionValues" description="The value of the option. The Any data object type enables you to define any value for the option. Typically, however, the value of an option is of type String or Integer. " multiple_values="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+  </mixins>
+  <mixins term="clusterdefaultdasvmconfig" scheme="http://occiware.org/occi/vmware#" title="Cluster-wide defaults for per-VM VMware HA settings. In the case where no settings are specified for a specific VM in ClusterDasVmConfigInfo then the values here will be used as the defaults." depends="//@mixins[term='clusterdasconfig']">
+    <attributes name="isolationResponse" type="//@types.27"/>
+    <attributes name="restartPriority" type="//@types.26"/>
+  </mixins>
+  <mixins term="dasvmsettings" scheme="http://occiware.org/occi/vmware#" title="VMware HA configuration for a single virtual machine, all fields are defined as optional. In case of a reconfiguration, fields left unset are not changed" applies="//@kinds[term='vm']">
+    <attributes name="isolationResponse" type="//@types.27"/>
+    <attributes name="restartPriority" type="//@types.26"/>
+  </mixins>
+  <mixins term="clusterhostdpmconfig" scheme="http://occiware.org/occi/vmware#" title="Cluster-wide configuration of the VMware DPM service" applies="//@kinds[term='cluster']">
+    <attributes name="defaultDPMBehavior" description="Specifies the default VMware DPM behavior for hosts. This default behavior can be overridden on a per host basis using the ClusterDpmHostConfigInfo object. " type="//@types.29"/>
+    <attributes name="dpmEnabled" description="Flag indicating whether or not the service is enabled. This service can not be enabled, unless DRS is enabled as well">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="dpmOptionKeys" description="The name of the option using dot notation to reflect the option's position in a hierarchy. For example, you might have an option called &quot;Ethernet&quot; and another option that is a child of that called &quot;Connection&quot;. In this case, the key for the latter could be defined as &quot;Ethernet.Connection&quot; " multiple_values="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="dpmOptionValues" description="The value of the option. The Any data object type enables you to define any value for the option. Typically, however, the value of an option is of type String or Integer. " multiple_values="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+  </mixins>
+  <mixins term="clusterdrsconfig" scheme="http://occiware.org/occi/vmware#" title="Cluster-wide configuration of the VMware DRS service. " applies="//@kinds[term='cluster']">
+    <attributes name="defaultVmDRSBehavior" description="Specifies the default VMware DRS behavior for virtual machines. This default behavior can be overridden on a per virtual machine basis using the ClusterDrsVmConfigInfo object. " type="//@types.28"/>
+    <attributes name="drsEnabled" description="Flag indicating whether or not the service is enabled. ">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="drsOptionValues" description="The value of the option. The Any data object type enables you to define any value for the option. Typically, however, the value of an option is of type String or Integer. " multiple_values="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="drsOptionKeys" description="The name of the option using dot notation to reflect the option's position in a hierarchy. For example, you might have an option called &quot;Ethernet&quot; and another option that is a child of that called &quot;Connection&quot;. In this case, the key for the latter could be defined as &quot;Ethernet.Connection&quot; " multiple_values="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="vmotionRate" description="The minimum rating a VMotion is required to have before it should be executed automatically, if the DRS is set to behave in fullyAutomated manner. Ratings vary between 1 and 5. This setting is relevant only if DRS is fullyAutomated. ">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+  </mixins>
+  <mixins term="hostdpmconfig" scheme="http://occiware.org/occi/vmware#" title="DPM configuration for a single host. This makes it possible to override the default behavior for an individual host." applies="//@kinds[term='hostsystem']">
+    <attributes name="dpmEnabled" description="Flag to indicate whether or not VirtualCenter is allowed to perform any power related operations or recommendations for this host. If this flag is false, the host is effectively excluded from DPM service.&#xA;If no individual DPM specification exists for a host, this property defaults to true.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="dpmBehavior" description="Specifies the particular DPM behavior for this host.&#xA;See ClusterDpmConfigInfo" type="//@types.29"/>
+  </mixins>
+  <mixins term="drsVmConfig" scheme="http://occiware.org/occi/vmware#" title="DRS configuration for a single virtual machine. This makes it possible to override the default behavior for an individual virtual machine" applies="//@kinds[term='vm']">
+    <attributes name="drsEnabled" description="Flag to indicate whether or not VirtualCenter is allowed to perform any DRS migration or initial placement recommendations for this virtual machine. If this flag is false, the virtual machine is effectively excluded from DRS.&#xA;If no individual DRS specification exists for a virtual machine, this property defaults to true. ">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="drsBehavior" description="Specifies the particular DRS behavior for this virtual machine.&#xA;See ClusterDrsConfigInfo" type="//@types.28"/>
+  </mixins>
+  <mixins term="clusterrule" scheme="http://occiware.org/occi/vmware#" applies="//@kinds[term='cluster']">
+    <attributes name="status" description="Flag to indicate whether or not the rule is currently satisfied." type="//@types.19" multiple_values="true"/>
+    <attributes name="key" mutable="false" description="Unique ID for rules. When adding a new rule, a key should not be provided. That will be assigned by the server." multiple_values="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="enabled" description="Flag to indicate whether or not the rule is enabled. " multiple_values="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="name" description="Name of the rule. " multiple_values="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
   </mixins>
   <types name="LongNumber" instanceClassName="long">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -1052,7 +1187,7 @@
     <eLiterals name="off" value="1"/>
     <eLiterals name="on" value="2"/>
   </types>
-  <types name="ShortNumber" instanceClassName="java.lang.Short"/>
+  <types name="ShortNumber" instanceClassName="short"/>
   <types xsi:type="ecore:EEnum" name="NpivWwnType">
     <eLiterals name="external"/>
     <eLiterals name="host" value="1"/>
@@ -1227,5 +1362,27 @@
   <types xsi:type="ecore:EEnum" name="HostFirewallRuleProtocol">
     <eLiterals name="tcp"/>
     <eLiterals name="udp" value="1"/>
+  </types>
+  <types name="ByteType" instanceClassName="byte"/>
+  <types xsi:type="ecore:EEnum" name="ClusterDASVmSettingsRestartPriority">
+    <eLiterals name="cluster-RestartPriority"/>
+    <eLiterals name="disabled" value="1"/>
+    <eLiterals name="high" value="2"/>
+    <eLiterals name="low" value="3"/>
+    <eLiterals name="medium" value="4"/>
+  </types>
+  <types xsi:type="ecore:EEnum" name="ClusterDASVmSettingsIsolationResponse">
+    <eLiterals name="clusterIsolationResponse"/>
+    <eLiterals name="none" value="1"/>
+    <eLiterals name="powerOff" value="2"/>
+  </types>
+  <types xsi:type="ecore:EEnum" name="DrsBehavior">
+    <eLiterals name="fullyAutomated"/>
+    <eLiterals name="manual" value="1"/>
+    <eLiterals name="partiallyAutomated" value="2"/>
+  </types>
+  <types xsi:type="ecore:EEnum" name="DpmBehavior">
+    <eLiterals name="automated"/>
+    <eLiterals name="manual" value="1"/>
   </types>
 </occi:Extension>
