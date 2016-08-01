@@ -14,6 +14,7 @@
   </kinds>
   <kinds term="datacenter" scheme="http://occiware.org/occi/vmware#" title="The interface to the common container object for hosts and virtual machines. Every host and virtual machine must be under a distinct datacenter in the inventory, and datacenters may not be nested under other datacenters." parent="//@kinds[term='folder']">
     <actions term="powerOnMultiVMs" scheme="http://occiware.org/occi/vmware/datacenter/action#"/>
+    <actions term="discoverAll" scheme="http://occiware.org/occi/vmware/datacenter/action#" title="This action create or synchronize all the infrastructure elements detected on VMware in Cloud designer diagram, but does nothing on VMware. This make take some times to synchronize if there is a lot of elements"/>
   </kinds>
   <kinds term="hostsystem" scheme="http://occiware.org/occi/vmware#">
     <attributes name="name">
@@ -143,6 +144,7 @@
     <actions term="register" scheme="http://occiware.org/occi/vmware/vm/action#" title="Register this virtual machine on vcenter"/>
     <actions term="unregister" scheme="http://occiware.org/occi/vmware/vm/action#" title="Unregister this virtual machine from vcenter"/>
     <actions term="defragmentAllDisks" scheme="http://occiware.org/occi/vmware/vm/action#" title="Defragment all virtual disk on this virtual machine"/>
+    <actions term="resetLocationId" scheme="http://occiware.org/occi/vmware/vm/action#" title="128-bit hash based on the virtual machine's configuration file location and the UUID of the host assigned to run the virtual machine.Normally, this property is not set by a client, allowing the Virtual Infrastructure environment to assign a location ID when the virtual machine is created. However, if the virtual machine's configuration file has been manually moved, it may be desirable to clear this property, setting it to an empty string, so the property is regenerated.Reconfigure privilege: VirtualMachine.Config.Settings"/>
   </kinds>
   <kinds term="folderlink" scheme="http://occiware.org/occi/vmware#" title="a link hierarchy folder between datacenter and cluster or between datacenter and virtual machines (vmFolder) or between datacenter and hostsystems">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
@@ -166,39 +168,54 @@
   <kinds term="datacenterlink" scheme="http://occiware.org/occi/vmware#" title="" parent="//@kinds[term='folderlink']"/>
   <kinds term="hostsystemlink" scheme="http://occiware.org/occi/vmware#" title="a link between a hostsystem and a virtual machine" parent="//@kinds[term='folderlink']"/>
   <kinds term="datastorelink" scheme="http://occiware.org/occi/vmware#" title="a link between a datacenter and a datastore">
-    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds term="virtualdisk" scheme="http://occiware.org/occi/vmware#">
     <parent href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='storage']"/>
     <actions term="snapshot" scheme="http://occiware.org/occi/vmware/virtualdisk/action#"/>
   </kinds>
-  <kinds term="vswitch" scheme="http://occiware.org/occi/vmware#">
-    <attributes name="name" required="true" default="" description="Standard virtual switch name">
+  <kinds term="vswitch" scheme="http://occiware.org/occi/vmware#" title="a virtual switch for linking virtual network adapter to a hostsystem network">
+    <attributes name="name" required="true" default="" description="Standard virtual switch name, note that the name must be unique on current host">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="nbport" required="true" default="8" description="Number of port">
+    <attributes name="nbport" required="true" default="8" description="The number of ports that this virtual switch is configured to use. Changing this setting does not take effect until the next reboot. The maximum value is 1024, although other constraints, such as memory limits, may establish a lower effective limit">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="beaconInterval" description="Determines how often, in seconds, a beacon should be sent. See HostVirtualSwitchBeaconConfig and nicfailurecriteria.checkBeacon, for use with bond bridge">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="mtu" description="The maximum transmission unit (MTU) of the virtual switch in bytes">
       <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
     </attributes>
     <parent href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='network']"/>
   </kinds>
-  <kinds term="portgroup" scheme="http://occiware.org/occi/vmware#" title="Link between hostsystem and virtual switch related to network">
-    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  <kinds term="portgroup" scheme="http://occiware.org/occi/vmware#" title="A port group aggregates multiple ports under a common configuration and provides a stable anchor point for virtual machines connecting to the labeled networks. It is identified by a label, which must be unique to the current host. The optional VLAN ID restricts port group traffic to a logical Ethernet segment within the network">
+    <attributes name="name" required="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="vlanId" required="true" default="0" description="The VLAN ID for ports using this port group. Possible values:&#xA;A value of 0 specifies that you do not want the port group associated with a VLAN.&#xA;A value from 1 to 4094 specifies a VLAN ID for the port group.&#xA;A value of 4095 specifies that the port group should use trunk mode, which allows the guest operating system to manage its own VLAN tags">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="key" description="The linkable identifier">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <kinds term="vmnetworkadapter" scheme="http://occiware.org/occi/vmware#" title="a network adapter for a virtual machine">
+  <kinds term="vmnetworkadapter" scheme="http://occiware.org/occi/vmware#" title="a network adapter for a virtual machine (virtual nic)">
     <parent href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='networkinterface']"/>
-    <actions term="connect" scheme="http://occiware.org/occi/vmware/networkadapter/action#" title="Connect virtual machine to vswitch"/>
-    <actions term="disconnect" scheme="http://occiware.org/occi/vmware/networkadapter/action#" title="Disconnect virtual machine and vswitch"/>
+    <actions term="connectAdaptater" scheme="http://occiware.org/occi/vmware/vmnetworkadapter/action#" title="Connect virtual machine to vswitch"/>
+    <actions term="disconnectAdaptater" scheme="http://occiware.org/occi/vmware/vmnetworkadapter/action#" title="Disconnect virtual machine and vswitch"/>
   </kinds>
   <kinds term="virtualdisknetwork" scheme="http://occiware.org/occi/vmware#" title="a storage disk network for usage with a network vswitch and portgroup, vswitch and portgroup may be multiples" parent="//@kinds[term='virtualdisk']"/>
   <kinds term="virtualdisknetworklink" scheme="http://occiware.org/occi/vmware#" title="a link between a virtualdisknetwork and a vswitch">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
-  <kinds term="hostnetworkadapter" scheme="http://occiware.org/occi/vmware#">
+  <kinds term="hostnetworkadapter" scheme="http://occiware.org/occi/vmware#" title="Physical Network adaptater on a hostsystem.">
     <parent href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='networkinterface']"/>
     <actions term="connect" scheme="http://occiware.org/occi/vmware/hostnetworkadapter/action#"/>
     <actions term="disconnect" scheme="http://occiware.org/occi/vmware/hostnetworkadapter/action#"/>
   </kinds>
-  <kinds term="dvswitch" scheme="http://occiware.org/occi/vmware#" parent="//@kinds[term='vswitch']"/>
+  <kinds term="dvswitch" scheme="http://occiware.org/occi/vmware#" title="Distributed virtual switch" parent="//@kinds[term='vswitch']"/>
   <kinds term="snapshot" scheme="http://occiware.org/occi/vmware#">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
     <actions term="restore" scheme="http://occiware.org/occi/vmware/snapshot/action#"/>
@@ -223,10 +240,10 @@
     <attributes name="userShellAccessSupported" mutable="false" description="Flag indicating whether host user accounts should have the option to be granted shell access">
       <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
     </attributes>
-    <attributes name="EVCModeVendor" description="All supported Enhanced VMotion Compatibility modes. CPU hardware vendor required for this mode. ">
+    <attributes name="EVCModeVendor" mutable="false" description="All supported Enhanced VMotion Compatibility modes. CPU hardware vendor required for this mode. ">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="EVCModeVendorTier" description="All supported Enhanced VMotion Compatibility modes.Index for ordering the set of modes that apply to a given CPU vendor. Use this property to compare vendor tier values from two modes. Do not use this property to determine the presence or absence of specific features. ">
+    <attributes name="EVCModeVendorTier" mutable="false" description="All supported Enhanced VMotion Compatibility modes.Index for ordering the set of modes that apply to a given CPU vendor. Use this property to compare vendor tier values from two modes. Do not use this property to determine the presence or absence of specific features. ">
       <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
     </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
@@ -257,8 +274,8 @@
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
-    <actions term="disableRuleset" scheme="http://occiware.org/occi/vmware/hostfirewallsystem/action#" title="Blocks the firewall ports belonging to the specified ruleset. If the ruleset has a managed service with a policy of 'auto' and all other rulesets used by the service are blocked, stops the service."/>
-    <actions term="enableRuleset" scheme="http://occiware.org/occi/vmware/hostfirewallsystem/action#" title="Opens the firewall ports belonging to the specified ruleset. If the ruleset has a managed service with a policy of 'auto' that is not running, starts the service."/>
+    <actions term="disableRuleset" scheme="http://occiware.org/occi/vmware/hostfirewallruleset/action#" title="Blocks the firewall ports belonging to the specified ruleset. If the ruleset has a managed service with a policy of 'auto' and all other rulesets used by the service are blocked, stops the service."/>
+    <actions term="enableRuleset" scheme="http://occiware.org/occi/vmware/hostfirewallruleset/action#" title="Opens the firewall ports belonging to the specified ruleset. If the ruleset has a managed service with a policy of 'auto' that is not running, starts the service."/>
   </kinds>
   <kinds term="hostfirewallrule" scheme="http://occiware.org/occi/vmware#" title="A rule link between hostfirewallsystem and a hostfirewallruleset">
     <attributes name="direction" description="The port direction." type="//@types.23"/>
@@ -281,6 +298,12 @@
     <parent href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='storagelink']"/>
   </kinds>
   <kinds term="vmfolder" scheme="http://occiware.org/occi/vmware#" parent="//@kinds[term='folder']"/>
+  <kinds term="serviceconsolenic" scheme="http://occiware.org/occi/vmware#">
+    <parent href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='networkinterface']"/>
+  </kinds>
+  <kinds term="portgrouplink" scheme="http://occiware.org/occi/vmware#" title="link between portgroup and vswitch">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
   <mixins term="linux" scheme="http://occiware.org/occi/vmware#">
     <attributes name="guestid" type="//@types.17"/>
     <attributes name="datastoreisopath">
@@ -629,7 +652,7 @@
     <attributes name="sslThumbPrint" mutable="false" description="The expected thumbprint of the SSL cert of the host to which we are connecting.">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <actions term="acquirecimservicesticket" scheme="http://occiware.org/occi/vmware/hostsystem/action#" title="Creates and returns a one-time credential used to establish a remote connection to a CIM interface. The port to connect to is the standard well known port for the service."/>
+    <actions term="acquirecimservicesticket" scheme="http://occiware.org/occi/vmware/hostserviceticket/action#" title="Creates and returns a one-time credential used to establish a remote connection to a CIM interface. The port to connect to is the standard well known port for the service."/>
   </mixins>
   <mixins term="sharesconfig" scheme="http://occiware.org/occi/vmware#" applies="//@kinds[term='resourcepool']">
     <attributes name="type" required="true" default="" description="Resource allocation type to define (cpu, memory or network)" type="//@types.4"/>
@@ -1253,7 +1276,107 @@
     <attributes name="virtualSMCPresent" mutable="false" description="Does this virtual machine have System Management Controller">
       <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
     </attributes>
-    <actions term="resetLocationId" scheme="http://occiware.org/occi/vmware/vm/action#" title="128-bit hash based on the virtual machine's configuration file location and the UUID of the host assigned to run the virtual machine.Normally, this property is not set by a client, allowing the Virtual Infrastructure environment to assign a location ID when the virtual machine is created. However, if the virtual machine's configuration file has been manually moved, it may be desirable to clear this property, setting it to an empty string, so the property is regenerated.Reconfigure privilege: VirtualMachine.Config.Settings"/>
+  </mixins>
+  <mixins term="networkpolicy" scheme="http://occiware.org/occi/vmware#" title="Policies on the port group take precedence over the ones specified on the virtual switch. " applies="//@kinds[term='portgroup'] //@kinds[term='vswitch']"/>
+  <mixins term="nicfailurecriteria" scheme="http://occiware.org/occi/vmware#" title="describes the network adapter failover detection algorithm for a network adapter team. The bridge must be BondBridge for this property to be valid" depends="//@mixins[term='nicteamingpolicy']">
+    <attributes name="checkBeacon" description="The flag to indicate whether or not to enable this property to enable beacon probing as a method to validate the link status of a physical network adapter.&#xA;checkBeacon can be enabled only if the VirtualSwitch has been configured to use the beacon. Attempting to set checkBeacon on a PortGroup or VirtualSwitch that does not have beacon probing configured for the applicable VirtualSwitch results in an error.&#xA;See beacon&#xA;See HostVirtualSwitchBeaconConfig">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="checkDuplex" description="The flag to indicate whether or not to use the link duplex reported by the driver as link selection criteria.&#xA;If checkDuplex is true, then fullDuplex is the configured duplex mode. The link is considered bad if the link duplex reported by driver is not the same as fullDuplex.&#xA;&#xA;If checkDuplex is false, then fullDuplex is unused, and link duplexity is not used as a detection method.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="checkErrorPercent" description="The flag to indicate whether or not to use link error percentage to detect failure.&#xA;If checkErrorPercent is true, then percentage is the configured error percentage that is tolerated. The link is considered bad if error rate exceeds percentage.&#xA;&#xA;If checkErrorPercent is false, percentage is unused, and error percentage is not used as a detection method. ">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="checkSpeed" default="" description="To use link speed as the criteria, checkSpeed must be one of the following values:&#xA;exact: Use exact speed to detect link failure. speed is the configured exact speed in megabits per second.&#xA;minimum: Use minimum speed to detect failure. speed is the configured minimum speed in megabits per second.&#xA;empty string: Do not use link speed to detect failure. speed is unused in this case.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="fullDuplex" description="See checkDuplex">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="percentage" description="See checkErrorPercent">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="speed" description="See checkSpeed">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+  </mixins>
+  <mixins term="nicorderpolicy" scheme="http://occiware.org/occi/vmware#" title="describes network adapter ordering policy for a network adapter team. A physical network adapter can be in the active list, the standby list, or neither. It cannot be in both lists. For a virtual switch, the NicOrderPolicy property is never null when retrieved from the server. When creating a new virtual switch or updating an existing virtual switch, the NicOrderPolicy can be null, in which case the default NicOrderPolicy from the server will be used. For a portgroup, a null NicOrderPolicy property means the portgroup inherits the policy from its parent. Otherwise, the NicOrderPolicy property defined in the portgroup takes precedence. In all cases where the NicOrderPolicy property is set, an empty activeNic array means there are no active Ethernet adapters in the team. An empty standbyNic array means there are no standby Ethernet adapters.The bridge must be BondBridge for this property to be valid." depends="//@mixins[term='nicteamingpolicy']">
+    <attributes name="activeNic" description="List of active network adapters used for load balancing" multiple_values="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="standbyNic" default="" description="Standby network adapters used for failover" multiple_values="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+  </mixins>
+  <mixins term="nicteamingpolicy" scheme="http://occiware.org/occi/vmware#" depends="//@mixins[term='networkpolicy']">
+    <attributes name="policy" default="" description="Network adapter teaming policy includes failover and load balancing, It can be one of the following:&#xA;loadbalance_ip: route based on ip hash.&#xA;loadbalance_srcmac: route based on source MAC hash.&#xA;loadbalance_srcid: route based on the source of the port ID.&#xA;failover_explicit: use explicity failover order.&#xA;&#xA;See nicTeamingPolicy" type="//@types.31"/>
+    <attributes name="reversePolicy" description="The flag to indicate whether or not the teaming policy is applied to inbound frames as well. For example, if the policy is explicit failover, a broadcast request goes through uplink1 and comes back through uplink2. Then if the reverse policy is set, the frame is dropped when it is received from uplink2. This reverse policy is useful to prevent the virtual machine from getting reflections.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="notifySwitches" description="Flag to specify whether or not to notify the physical switch if a link fails. If this property is true, ESX Server will respond to the failure by sending a RARP packet from a different physical adapter, causing the switch to update its cache">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="rollingOrder" description="The flag to indicate whether or not to use a rolling policy when restoring links. For example, assume the explicit link order is (vmnic9, vmnic0), therefore vmnic9 goes down, vmnic0 comes up. However, when vmnic9 comes backup, if rollingOrder is set to be true, vmnic0 continues to be used, otherwise, vmnic9 is restored as specified in the explicitly order. ">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+  </mixins>
+  <mixins term="offloadpolicy" scheme="http://occiware.org/occi/vmware#" title="Offload capabilities are used to optimize virtual machine network performance. When a virtual machine is transmitting on a network, some operations can be offloaded to either the host or the physical hardware. This policy indicates what networking related operations should be offloaded.All virtual machines using this PortGroup are subject to this policy. There is no setting for an individual virtual machine to determine if an operation should be offloaded." depends="//@mixins[term='networkpolicy']">
+    <attributes name="csumOffload" description="Optional) The flag to indicate whether or not checksum offloading is supported">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="tcpSegmentation" description="Optional) The flag to indicate whether or not TCP segmentation offloading (TSO) is supported.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="zeroCopyXmit" description="(Optional) The flag to indicate whether or not zero copy transmits are supported.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+  </mixins>
+  <mixins term="networksecuritypolicy" scheme="http://occiware.org/occi/vmware#" title="The security policy governing ports on this virtual switch." depends="//@mixins[term='networkpolicy']">
+    <attributes name="allowPromiscuous" description="The flag to indicate whether or not all traffic is seen on the port. ">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="forgedTransmits" description="The flag to indicate whether or not the virtual network adapter should be allowed to send network traffic with a different MAC address than that of the virtual network adapter. ">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="macChanges" description="The flag to indicate whether or not the Media Access Control (MAC) address can be changed">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+  </mixins>
+  <mixins term="trafficshapingpolicy" scheme="http://occiware.org/occi/vmware#" title="describes traffic shaping policy" depends="//@mixins[term='networkpolicy']">
+    <attributes name="averageBandwidth" description="The average bandwidth in bits per second if shaping is enabled on the port" type="//@types.0"/>
+    <attributes name="burstSize" description="The maximum burst size allowed in bytes if shaping is enabled on the port" type="//@types.0"/>
+    <attributes name="enabled" description="The flag to indicate whether or not traffic shaper is enabled on the port">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="peakBandwidth" description="The peak bandwidth during bursts in bits per second if traffic shaping is enabled on the port" type="//@types.0"/>
+  </mixins>
+  <mixins term="portgroupports" scheme="http://occiware.org/occi/vmware#" title="A Port data object type is a runtime representation of network connectivity between a network service or virtual machine and a virtual switch. This is different from a port group in that the port group represents the configuration aspects of the network connection. The Port object provides runtime statistics." applies="//@kinds[term='portgroup']">
+    <attributes name="portkeys" mutable="false" description="The linkable identifiers" multiple_values="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="portmacs" mutable="false" description="The Media Access Control (MAC) address of network service of the virtual machine connected on this port&#xA;Separated by semicolon." multiple_values="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="connecteeType" mutable="false" description="The type of component connected on this port. Must be one of the values of :&#xA;host: The VMkernel is connected to this port group&#xA;systemManagement: A system management entity (service console) is connected to this port group.&#xA;unknown: This port group serves an entity of unspecified kind.&#xA;virtualMachine: A virtual machine is connected to this port group." type="//@types.32" multiple_values="true"/>
+  </mixins>
+  <mixins term="micro" scheme="http://occiware.org/occi/vmware#">
+    <depends href="http://schemas.ogf.org/occi/infrastructure#//@mixins[term='resource_tpl']"/>
+  </mixins>
+  <mixins term="vswitchautobridge" scheme="http://occiware.org/occi/vmware#" title="describes a bridge that automatically selects a particular physical network adapter on the host according to some predetermined policy. Used primarily to support mobility scenarios" applies="//@kinds[term='vswitch']">
+    <attributes name="excludeNicDeviceKeys" description="List of physical network adapters that have been excluded from participating in the AutoBridge">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+  </mixins>
+  <mixins term="vswitchsimplebridge" scheme="http://occiware.org/occi/vmware#" title="A bridge that is statically bound to a single physical network adapter" applies="//@kinds[term='vswitch']">
+    <attributes name="nicDeviceKey" default="" description="The key of the physical network adapter to be bridged">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+  </mixins>
+  <mixins term="vswitchbondbridge" scheme="http://occiware.org/occi/vmware#" applies="//@kinds[term='vswitch']">
+    <attributes name="nicDeviceKeys" description="The list of keys of the physical network adapters to be bridged.  The keys may be for example : vmnic0 or vmnic1 etc.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
   </mixins>
   <types name="LongNumber" instanceClassName="long">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -1503,7 +1626,7 @@
   </types>
   <types name="ByteType" instanceClassName="byte"/>
   <types xsi:type="ecore:EEnum" name="ClusterDASVmSettingsRestartPriority">
-    <eLiterals name="cluster-RestartPriority"/>
+    <eLiterals name="clusterRestartPriority" literal="clusterRestartPriority"/>
     <eLiterals name="disabled" value="1"/>
     <eLiterals name="high" value="2"/>
     <eLiterals name="low" value="3"/>
@@ -1526,5 +1649,17 @@
   <types xsi:type="ecore:EEnum" name="DatastoreHostMountMode">
     <eLiterals name="readOnly"/>
     <eLiterals name="readWrite" value="1"/>
+  </types>
+  <types xsi:type="ecore:EEnum" name="NicPolicyTeamingValue">
+    <eLiterals name="loadbalance_ip"/>
+    <eLiterals name="loadbalance_srcmac" value="1"/>
+    <eLiterals name="loadbalance_srcid" value="2"/>
+    <eLiterals name="failover_explicit" value="3"/>
+  </types>
+  <types xsi:type="ecore:EEnum" name="PortGroupConnecteeType">
+    <eLiterals name="host"/>
+    <eLiterals name="systemManagement" value="1"/>
+    <eLiterals name="unknown" value="2"/>
+    <eLiterals name="virtualMachine" value="3"/>
   </types>
 </occi:Extension>
