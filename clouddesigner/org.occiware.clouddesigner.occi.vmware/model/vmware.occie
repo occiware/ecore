@@ -187,6 +187,7 @@
     <attributes name="mtu" description="The maximum transmission unit (MTU) of the virtual switch in bytes">
       <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
     </attributes>
+    <attributes name="changeOperation" description="This property indicates the change operation to apply on this configuration&#xA;add: Indicates the addition of a network entity to the configuration.&#xA;edit: Indicates changes on the network entity. The entity must exist or a NotFound error will be thrown&#xA;remove: Indicates the removal of a network entity from the configuration" type="//@types.33"/>
     <parent href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='network']"/>
   </kinds>
   <kinds term="portgroup" scheme="http://occiware.org/occi/vmware#" title="A port group aggregates multiple ports under a common configuration and provides a stable anchor point for virtual machines connecting to the labeled networks. It is identified by a label, which must be unique to the current host. The optional VLAN ID restricts port group traffic to a logical Ethernet segment within the network">
@@ -201,10 +202,10 @@
     </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <kinds term="vmnetworkadapter" scheme="http://occiware.org/occi/vmware#" title="a network adapter for a virtual machine (virtual nic)">
+  <kinds term="virtualnetworkadapter" scheme="http://occiware.org/occi/vmware#" title="a network adapter for a virtual machine (virtual nic), describes a virtual network adapter representing an adapter that connects to a virtual switch. A VirtualNic differs from a PhysicalNic in that the latter corresponds to a physical device that is connected to the physical network. The former is a virtual device that is connected to a virtual switch. A VirtualNic accesses the external network through a virtual switch that is bridged through a PhysicalNic to a physical network">
     <parent href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='networkinterface']"/>
-    <actions term="connectAdaptater" scheme="http://occiware.org/occi/vmware/vmnetworkadapter/action#" title="Connect virtual machine to vswitch"/>
-    <actions term="disconnectAdaptater" scheme="http://occiware.org/occi/vmware/vmnetworkadapter/action#" title="Disconnect virtual machine and vswitch"/>
+    <actions term="connectAdaptater" scheme="http://occiware.org/occi/vmware/virtualnetworkadapter/action#" title="Connect virtual machine to vswitch"/>
+    <actions term="disconnectAdaptater" scheme="http://occiware.org/occi/vmware/virtualnetworkadapter/action#" title="Disconnect virtual machine and vswitch"/>
   </kinds>
   <kinds term="virtualdisknetwork" scheme="http://occiware.org/occi/vmware#" title="a storage disk network for usage with a network vswitch and portgroup, vswitch and portgroup may be multiples" parent="//@kinds[term='virtualdisk']"/>
   <kinds term="virtualdisknetworklink" scheme="http://occiware.org/occi/vmware#" title="a link between a virtualdisknetwork and a vswitch">
@@ -302,6 +303,44 @@
     <parent href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='networkinterface']"/>
   </kinds>
   <kinds term="portgrouplink" scheme="http://occiware.org/occi/vmware#" title="link between portgroup and vswitch">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds term="hostnatrule" scheme="http://occiware.org/occi/vmware#" title="Ruleset for nat service linked to virtual switch via hostnatportforwardlink, this may be multiple for a vswitch">
+    <attributes name="activeFtp" required="true" description="The flag to indicate whether or not non-passive mode FTP connections should be allowed">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="allowAnyOui" required="true" description="The flag to indicate whether or not the NAT Service allows media access control traffic from any Organizational Unique Identifier (OUI)? By default, it does not allow traffic that originated from the host to avoid packet loops.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="configPort" required="true" description="The flag to indicate whether or not the NAT Service should open a configuration port.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="natKey" required="true" description="The instance ID of the NAT service">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="natChangeOperation" description="Indicates the change operation to apply on this configuration specification" type="//@types.33"/>
+    <attributes name="ipGatewayAddress" required="true" description="The IP address that the NAT Service should use on the virtual network.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="udpTimeOut" required="true" description="The time alloted for UDP packets">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds term="hostnatportforwardlink" scheme="http://occiware.org/occi/vmware#" title="Define the port forward to hostnatrule, it may be multiple links to a single hostnatrule, this define the port forwarding specifications to allow network connections to be initiated from outside the firewall. ">
+    <attributes name="guestIpAddress" description="The IP address for the guest. Network traffic from the host is forwarded to this IP address">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="guestPort" description="The port number for the guest. Network traffic from the host is forwarded to this port. ">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="hostPort" description="The port number on the host. Network traffic sent to the host on this TCP/UDP port is forwarded to the guest at the specified IP address and port.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="name" description="The user-defined name to identify the service being forwarded. No white spaces are allowed in the string">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="type" description="Either &quot;tcp&quot; or &quot;udp&quot;." type="//@types.24"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <mixins term="linux" scheme="http://occiware.org/occi/vmware#">
@@ -848,7 +887,7 @@
       <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
     </attributes>
   </mixins>
-  <mixins term="hostnetworkcapability" scheme="http://occiware.org/occi/vmware#" title="Capability vector indicating the available network product features." depends="//@mixins[term='hostconfig']">
+  <mixins term="hostnetworkcapability" scheme="http://occiware.org/occi/vmware#" title="Capability vector indicating the available network product features." depends="//@mixins[term='hostnetworkconfig']">
     <attributes name="canSetPhysicalNicLinkSpeed" mutable="false" description="The flag to indicate whether or not a physical network adapter's link speed and duplex settings can be changed through this API. For a hosted product, the host uses its physical network adapters for network connectivity. Configuration of link speed is done through regular host operations. In ESX Server, the configuration can be changed through this API">
       <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
     </attributes>
@@ -953,7 +992,7 @@
       <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
     </attributes>
   </mixins>
-  <mixins term="hosthyperthreadscheduler" scheme="http://occiware.org/occi/vmware#" title="provides an interface through which you can gather and configure the host CPU scheduler policies that affect the performance of running virtual machines" depends="//@mixins[term='hostconfig']">
+  <mixins term="hosthyperthreadscheduler" scheme="http://occiware.org/occi/vmware#" title="provides an interface through which you can gather and configure the host CPU scheduler policies that affect the performance of running virtual machines" depends="//@mixins[term='hosthardwareinfo']">
     <attributes name="hyperThreadActive" mutable="false" description="The flag to indicate whether or not the CPU scheduler is currently treating hyperthreads as schedulable resources. Setting this property involves a successful invocation of either the enableHyperThreading() method (true) or the disableHyperthreading() method (false). The property is set once the system is rebooted. ">
       <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
     </attributes>
@@ -1378,6 +1417,80 @@
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
   </mixins>
+  <mixins term="hostdnsconfig" scheme="http://occiware.org/occi/vmware#" title="Client-side DNS configuration for the host. The DNS configuration is global to the entire host. This is set only if DNS can be configured for the host. " depends="//@mixins[term='hostnetworkconfig']">
+    <attributes name="dnsAddress" description="The IP addresses of the DNS servers, placed in order of preference.&#xA;Note: When DHCP is not enabled, the property can be set explicitly. When DHCP is enabled, the property reflects the current DNS configuration, but cannot be set." multiple_values="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="dnsDhcp" required="true" default="false" description="The flag to indicate whether or not DHCP (dynamic host control protocol) is used to determine DNS configuration automatically.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="dnsDomainName" description="The domain name portion of the DNS name. For example, &quot;vmware.com&quot;.&#xA;Note: When DHCP is not enabled, the property can be set explicitly. When DHCP is enabled, the property reflects the current DNS configuration, but cannot be set. ">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="dnsHostname" description="The host name portion of DNS name. For example, &quot;esx01&quot;.&#xA;Note: When DHCP is not enabled, the property can be set explicitly. When DHCP is enabled, the property reflects the current DNS configuration, but cannot be set.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="searchDomain" description="The domain in which to search for hosts, placed in order of preference.&#xA;Note: When DHCP is not enabled, the property can be set explicitly. When DHCP is enabled, the property reflects the current DNS configuration, but cannot be set." multiple_values="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="virtualNicDevice" description="If DHCP is enabled, the DHCP DNS of the service console network adapter will override the system DNS. This field is ignored if DHCP is disabled by the dhcp property.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+  </mixins>
+  <mixins term="hostnetworkconfig" scheme="http://occiware.org/occi/vmware#" applies="//@kinds[term='hostsystem']"/>
+  <mixins term="hostiprouteconfig" scheme="http://occiware.org/occi/vmware#" title="The IP route configuration for the host. The IP route configuration is global to the entire host. This property is set only if IP routing can be configured for the host. All IP addresses, subnet addresses, and netmasks are specified using IPv4 dot notation. For example, 192.168.0.1" depends="//@mixins[term='hostnetworkconfig']">
+    <attributes name="defaultGateway" description="The default gateway address">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="gatewayDevice" description="The gateway device. This applies to service console gateway only, it is ignored otherwise">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+  </mixins>
+  <mixins term="hostconsoleiprouteconfig" scheme="http://occiware.org/occi/vmware#" title="IP route configuration for the service console. The IP route configuration is global to the entire host. This property is set only if IP routing can be configured for the service console" depends="//@mixins[term='hostnetworkconfig']">
+    <attributes name="consoleDefaultGateway" description="The default gateway address">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="consoleGatewayDevice" description="The gateway device. This applies to service console gateway only, it is ignored otherwise">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+  </mixins>
+  <mixins term="hostnatservicenameconfig" scheme="http://occiware.org/occi/vmware#" title="The configuration of naming services. These parameters are specific to Windows system" applies="//@kinds[term='hostnatrule']">
+    <attributes name="dnsAutoDetect" required="true" description="The flag to indicate whether or not the DNS server should be automatically detected or specified explicitly">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="dnsNameServer" description="The list of DNS servers" multiple_values="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="dnsPolicy" required="true" description="The policy to use when multiple DNS addresses are available on the host">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="dnsRetries" required="true" description="The number of retries before giving up on a DNS request from a virtual network">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="dnsTimeOut" required="true" description="The time (in seconds) before retrying a DNS request to an external network">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="nbdsTimeOut" required="true" description="The time (in seconds) alloted for queries to the NetBIOS Datagram Server (NBDS)">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="nbnsRetries" required="true" description="Number of retries for each query to the NBNS. ">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="nbnsTimeOut" required="true" description="The time (in seconds) alloted for queries to the NBNS">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+  </mixins>
+  <mixins term="hostnetoffloadcapabilities" scheme="http://occiware.org/occi/vmware#" title="Offload capabilities are used to optimize virtual machine network performance. When a virtual machine is transmitting on a network, some operations can be offloaded either to the host or to physical hardware. This data object type defines the set of offload capabilities that may be available on a host.This is used both to publish the list of offload capabilities and to contain offload capability policy settings. The network policy logic is built on a two-level inheritance scheme which requires that all settings be optional. As a result, all properties on the NetOffloadCapabilities object must be optional." depends="//@mixins[term='hostnetworkconfig']">
+    <attributes name="csumOffload" description="(Optional) The flag to indicate whether or not checksum offloading is supported.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="tcpSegmentation" description="(Optional) The flag to indicate whether or not TCP segmentation offloading (TSO) is supported.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="zeroCopyXmit" description="(Optional) The flag to indicate whether or not zero copy transmits are supported.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+  </mixins>
   <types name="LongNumber" instanceClassName="long">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="A long number"/>
@@ -1620,7 +1733,7 @@
     <eLiterals name="inbound"/>
     <eLiterals name="outbound" value="1"/>
   </types>
-  <types xsi:type="ecore:EEnum" name="HostFirewallRuleProtocol">
+  <types xsi:type="ecore:EEnum" name="HostNetworkProtocol">
     <eLiterals name="tcp"/>
     <eLiterals name="udp" value="1"/>
   </types>
@@ -1661,5 +1774,10 @@
     <eLiterals name="systemManagement" value="1"/>
     <eLiterals name="unknown" value="2"/>
     <eLiterals name="virtualMachine" value="3"/>
+  </types>
+  <types xsi:type="ecore:EEnum" name="NetworkChangeOperation">
+    <eLiterals name="add"/>
+    <eLiterals name="edit" value="1"/>
+    <eLiterals name="remove" value="2"/>
   </types>
 </occi:Extension>
