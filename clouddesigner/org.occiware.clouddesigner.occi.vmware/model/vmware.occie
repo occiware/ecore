@@ -175,9 +175,13 @@
   <kinds term="datastorelink" scheme="http://occiware.org/occi/vmware#" title="a link between a datacenter and a datastore">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
-  <kinds term="virtualdisk" scheme="http://occiware.org/occi/vmware#">
+  <kinds term="virtualdisk" scheme="http://occiware.org/occi/vmware#" title="A virtual disk">
+    <attributes name="volumeName" required="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='storage']"/>
-    <actions term="snapshot" scheme="http://occiware.org/occi/vmware/virtualdisk/action#"/>
+    <actions term="zeroFill" scheme="http://occiware.org/occi/vmware/virtualdisk/action#" title="Overwrite all blocks of the virtual disk with zeros. All data will be lost.&#xA;The datacenter parameter may be omitted if a URL is used to name the disk.&#xA;&#xA;Requires Datastore.FileManagement privilege on the datastore where the virtual disk resides."/>
+    <actions term="shrink" scheme="http://occiware.org/occi/vmware/virtualdisk/action#" title="Shrink a sparse virtual disk.&#xA;The datacenter parameter may be omitted if a URL is used to name the disk.&#xA;&#xA;The optional parameter copy specifies whether to shrink the disk in copy-shrink mode or in-place mode. In copy-shrink mode, additional space is required, but will result in a shrunk disk that is also defragmented. In-place shrink does not require additional space, but will increase fragmentation. The default behavior is to perform copy-shrink if the parameter is not specified.&#xA;&#xA;Requires Datastore.FileManagement privilege on the datastore where the virtual disk resides."/>
   </kinds>
   <kinds term="vswitch" scheme="http://occiware.org/occi/vmware#" title="a virtual switch for linking virtual network adapter to a hostsystem network">
     <attributes name="name" required="true" default="" description="Standard virtual switch name, note that the name must be unique on current host">
@@ -229,7 +233,7 @@
   </kinds>
   <kinds term="virtualdisknetwork" scheme="http://occiware.org/occi/vmware#" title="a storage disk network for usage with a network vswitch and portgroup, vswitch and portgroup may be multiples" parent="//@kinds[term='virtualdisk']"/>
   <kinds term="virtualdisknetworklink" scheme="http://occiware.org/occi/vmware#" title="a link between a virtualdisknetwork and a vswitch">
-    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+    <parent href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='storagelink']"/>
   </kinds>
   <kinds term="hostnetworkadapter" scheme="http://occiware.org/occi/vmware#" title="Physical Network adaptater on a hostsystem, describes the physical network adapter as seen by the primary operating system">
     <attributes name="name" required="true" description="The device name of the physical network adapter">
@@ -380,6 +384,15 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds term="distributedportgroup" scheme="http://occiware.org/occi/vmware#" parent="//@kinds[term='portgroup']"/>
+  <kinds term="virtualcdrom" scheme="http://occiware.org/occi/vmware#" title="A virtual cdrom disk" parent="//@kinds[term='virtualdisk']">
+    <attributes name="isoFilename" required="true" description="The filename of the ISO.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+  </kinds>
+  <kinds term="virtualfloppy" scheme="http://occiware.org/occi/vmware#" title="A virtual floppy disk" parent="//@kinds[term='virtualdisk']"/>
+  <kinds term="virtualdisklink" scheme="http://occiware.org/occi/vmware#">
+    <parent href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='storagelink']"/>
+  </kinds>
   <mixins term="linux" scheme="http://occiware.org/occi/vmware#">
     <attributes name="guestid" type="//@types.17"/>
     <attributes name="datastoreisopath">
@@ -1755,6 +1768,29 @@
     </attributes>
   </mixins>
   <mixins term="datastorehostvvolvolumeconfig" scheme="http://occiware.org/occi/vmware#" depends="//@mixins[term='datastoreconfig']"/>
+  <mixins term="virtualdiskgeometry" scheme="http://occiware.org/occi/vmware#" title="geometry information for the virtual disk, see HostDiskDimensionsChs and QueryVirtualDiskGeometry" applies="//@kinds[term='virtualdisk'] //@kinds[term='hoststorage']">
+    <attributes name="cylinder" mutable="false" description="The number of cylinders">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="head" mutable="false" description="The number of heads per cylinders">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="sector" mutable="false" description="The number of sectors per head">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+  </mixins>
+  <mixins term="virtualdeviceconnectinfo" scheme="http://occiware.org/occi/vmware#" applies="//@kinds[term='virtualdisklink'] //@kinds[term='virtualnetworkadapter']">
+    <attributes name="allowGuestControl">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="connected">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="startConnected">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="connectionStatus" type="//@types.44"/>
+  </mixins>
   <types name="LongNumber" instanceClassName="long">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="A long number"/>
@@ -2096,5 +2132,11 @@
   <types xsi:type="ecore:EEnum" name="HostNasVolumeSecurityType">
     <eLiterals name="AUTH_SYS"/>
     <eLiterals name="SEC_KRB5" value="1"/>
+  </types>
+  <types xsi:type="ecore:EEnum" name="VirtualDeviceConnectStatus">
+    <eLiterals name="ok"/>
+    <eLiterals name="recoverableError" value="1"/>
+    <eLiterals name="unrecoverrableError" value="2"/>
+    <eLiterals name="untried" value="3"/>
   </types>
 </occi:Extension>
