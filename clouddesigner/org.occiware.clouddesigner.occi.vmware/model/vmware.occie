@@ -391,6 +391,9 @@
   </kinds>
   <kinds term="virtualfloppy" scheme="http://occiware.org/occi/vmware#" title="A virtual floppy disk" parent="//@kinds[term='virtualdisk']"/>
   <kinds term="virtualdisklink" scheme="http://occiware.org/occi/vmware#">
+    <attributes name="vmdkFilePathOnDatastore" mutable="false" description="Represents the vmdk file path.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='storagelink']"/>
   </kinds>
   <mixins term="linux" scheme="http://occiware.org/occi/vmware#">
@@ -639,86 +642,6 @@
     <attributes name="toolsUpgradePolicy" default="" description="Tools upgrade policy setting for the virtual machine.&#xA;manual: No auto-upgrades for tools will be performed for this virtual machine. Users must manually invoke the UpgradeTools operation to update the tools.&#xA;upgradeAtPowerCycle: When the virtual machine is power-cycled, the system checks for a newer version of tools when the VM comes back up. If it is available, a tools upgrade is automatically performed on the virtual machine and it is rebooted if necessary." type="//@types.18"/>
     <attributes name="toolsVersion" mutable="false" description="Version of VMware Tools installed on the guest operating system. ">
       <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
-    </attributes>
-  </mixins>
-  <mixins term="hostcapability" scheme="http://occiware.org/occi/vmware#" applies="//@kinds[term='hostsystem']">
-    <attributes name="backgroundSnapshotsSupported" mutable="false" description="Flag indicating whether background snapshots are supported on this host.">
-      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
-    </attributes>
-    <attributes name="cpuMemoryResourceConfigurationSupported" mutable="false" default="" description="Flag indicating whether cpu and memory resource configuration is supported. If this is set to false, UpdateConfig, UpdateChildResourceConfiguration cannot be used for changing the cpu/memory resource configurations.">
-      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
-    </attributes>
-    <attributes name="datastorePrincipalSupported" mutable="false" description="Flag indicating whether datastore principal user is supported on the host. ">
-      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
-    </attributes>
-    <attributes name="highGuestMemSupported" mutable="false" description="Is high guest memory supported. ">
-      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
-    </attributes>
-    <attributes name="iscsiSupported" mutable="false" description="Is access to iSCSI devices supported.">
-      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
-    </attributes>
-    <attributes name="localSwapDatastoreSupported" mutable="false" description="Flag indicating whether the host supports selecting a datastore that that may be used to store virtual machine swapfiles.">
-      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
-    </attributes>
-    <attributes name="maintenanceModeSupported" mutable="false" description="Is maintenance mode supported ">
-      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
-    </attributes>
-    <attributes name="maxRunningVMs" mutable="false" description="The maximum number of virtual machines that can be running simultaneously on this host. If this capability is not set, the number of virtual machines running simultaneously is unlimited.">
-      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
-    </attributes>
-    <attributes name="maxSupportedVcpus" mutable="false" description="The maximum number of virtual CPUs supported per virtual machine. If this capability is not set, the number is unlimited. ">
-      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
-    </attributes>
-    <attributes name="maxSupportedVMs" mutable="false" description="The maximum number of virtual machines that can exist on this host. If this capability is not set, the number of virtual machines is unlimited. ">
-      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
-    </attributes>
-    <attributes name="nfsSupported" mutable="false" description="Is access to NFS devices supported. ">
-      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
-    </attributes>
-    <attributes name="nicTeamingSupported" mutable="false" description="Is NIC teaming supported. ">
-      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
-    </attributes>
-    <attributes name="perVmSwapFiles" mutable="false" description="Flag indicating whether virtual machine execution on this host involves a swapfile for each virtual machine. If true, the swapfile placement for a powered-on virtual machine is advertised in its FileLayout by the swapFile property.">
-      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
-    </attributes>
-    <attributes name="preAssignedPCIUnitNumbersSupported" mutable="false" description="Flag to indicate whether the server returns unit numbers in a pre-assigned range for devices on the PCI bus. When the server supports this flag, the device unit number namespace is partitioned by device type. Different types of devices will sit in a specific range of unit numbers that may not correspond to physical slots in the pci bus but present a relative ordering of the devices with respect to other devices of the same type. Note that this does not mean that the user can set the relative ordering between device types, but only allows stable orderings between devices of the same type. The unit number will now clearly represent an ordering between devices of the same type. unitNumber This property is only available for devices on the pci controller.">
-      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
-    </attributes>
-    <attributes name="rebootSupported" mutable="false" description="Flag indicating whether rebooting the host is supported. ">
-      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
-    </attributes>
-    <attributes name="recursiveResourcePoolsSupported" mutable="false">
-      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
-    </attributes>
-    <attributes name="restrictedSnapshotRelocateSupported" mutable="false" description="Indicates whether this host supports relocation of virtual machines with snapshots. Must be true on the source and destination hosts for the relocation to work. Even if this is true, the following conditions must hold: 1) All the the vm's files are in one directory prior to the relocate. 2) All of the vm's files will be in one directory after the relocate. 3) The source and destination hosts are the same product version.">
-      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
-    </attributes>
-    <attributes name="sanSupported" mutable="false" description="Flag indicating whether access to SAN devices is supported. ">
-      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
-    </attributes>
-    <attributes name="scaledScreenshotSupported" mutable="false" description="Indicates whether scaling is supported for screenshots retrieved over https. If true, screenshot retrieval supports the additional optional parameters 'width' and 'height'. After cropping, the returned image will be scaled to these dimensions. If only one of these parameters is specified, default behavior is to return an image roughly proportional to the source image.">
-      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
-    </attributes>
-    <attributes name="screenshotSupported" mutable="false" description="Indicates whether the screenshot retrival over https is supported for this host's virtual machines. If true, a screenshot can be retrieved at the HTTPS relative path /screen?id=&lt;managed object ID of virtual machine or snapshot>. If any of the optional parameters 'top', 'left', 'bottom', and 'right' is specified, the returned image will be cropped from the rectangle with upper left corner (left, top) and bottom right corner (right - 1, bottom - 1). These values default to the top, left, bottom and right edges of the image. The client must use an authenticated session with privilege VirtualMachine.Interact.ConsoleInteract on the requested virtual machine or, in the case of a snapshot, the virtual machine associated with that snapshot.">
-      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
-    </attributes>
-    <attributes name="shutdownSupported" mutable="false" description="Flag indicating whether the host can be powered off ">
-      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
-    </attributes>
-    <attributes name="standbySupported" mutable="false" description="Flag indicating whether you can put the host in a power down state, from which it can be powered up automatically.">
-      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
-    </attributes>
-    <attributes name="suspendedRelocateSupported" mutable="false" description="Indicates whether this host supports relocation of suspended virtual machines. Must be true on the source and destination hosts for the relocation to work. ">
-      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
-    </attributes>
-    <attributes name="unsharedSwapVMotionSupported" mutable="false" description="Flag indicating whether the host supports participating in a VMotion where the virtual machine swapfile is not visible to the destination.">
-      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
-    </attributes>
-    <attributes name="vlanTaggingSupported" mutable="false" description="Is VLAN Tagging supported.">
-      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
-    </attributes>
-    <attributes name="vmotionSupported" mutable="false" description="Flag indicating whether you can perform VMotion. ">
-      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
     </attributes>
   </mixins>
   <mixins term="hostserviceticket" scheme="http://occiware.org/occi/vmware#" applies="//@kinds[term='hostsystem']">
@@ -1791,6 +1714,251 @@
     </attributes>
     <attributes name="connectionStatus" type="//@types.44"/>
   </mixins>
+  <mixins term="hoststoragecapability" scheme="http://occiware.org/occi/vmware#" applies="//@kinds[term='hostsystem']">
+    <attributes name="datastorePrincipalSupported" mutable="false" description="Flag indicating whether datastore principal user is supported on the host. ">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="localSwapDatastoreSupported" mutable="false" description="Flag indicating whether the host supports selecting a datastore that that may be used to store virtual machine swapfiles.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="nfsSupported" mutable="false" description="Is access to NFS devices supported. ">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="sanSupported" mutable="false" description="Flag indicating whether access to SAN devices is supported. ">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="deltaDiskBackingsSupported" mutable="false" description="Flag indicating whether explicitly creating arbirary configurations of delta disk backings is supported.&#xA;A delta disk backing is a way to preserve a virtual disk backing at some point in time. A delta disk backing is a file backing which in turn points to the original virtual disk backing (the parent). After a delta disk backing is added, all writes go to the delta disk backing. All reads first try the delta disk backing and then try the parent backing if needed.&#xA;&#xA;If this property is false, then delta disk backings can only be implicitly created through using snapshot operations and two virtual machines cannot safely share a parent disk backing.&#xA;&#xA;If this property is true, then delta disk backings can be explicitly created and managed, and two virtual machines may safely share a parent disk backing.&#xA;&#xA;In the context above, &quot;safely&quot; means that performing operations on one of the virtual machines will not affect the operation of the other virtual machine.&#xA;&#xA;&#xA;See parent&#xA;See parent&#xA;See parent&#xA;See parent&#xA;See parent&#xA;See PromoteDisks_Task&#xA;See diskMoveType&#xA;See diskMoveType&#xA;Since vSphere API 4.0">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="eightPlusHostVmfsSharedAccessSupported" mutable="false" description="Indicates whether the host is capable of accessing a VMFS disk when there are eight or more hosts accessing the disk already.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="markAsSsdSupported" mutable="false" description="Indicates whether mark disk as SSD or Non-SSD is supported on the host.&#xA;See MarkAsSsd_Task&#xA;See MarkAsNonSsd_Task&#xA;Since vSphere API 6.0">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="markAsLocalSupported" mutable="false" description="Indicates whether mark disk as local or remote is supported on the host.&#xA;See MarkAsLocal_Task&#xA;See MarkAsNonLocal_Task&#xA;Since vSphere API 6.0">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="nfs41Supported" mutable="false" description="Whether this host support NFS41 file system.&#xA;Since vSphere API 6.0">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="storageIORMSupported" mutable="false" description="Indicates whether the host supports storage I/O resource management.&#xA;Since vSphere API 4.1">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="storagePolicySupported" mutable="false" description="Indicates that host supports Object-based Storage System and Storage-Profile based disk provisioning.&#xA;Since vSphere API 5.5">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="supportedVmfsMajorVersion" mutable="false" description="List of VMFS major versions supported by the host.&#xA;Since vSphere API 5.0" multiple_values="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="turnDiskLocatorLedSupported" mutable="false" description="Indicates whether turning on/off local disk LED is supported on the host.&#xA;See TurnDiskLocatorLedOn_Task&#xA;See TurnDiskLocatorLedOff_Task&#xA;Since vSphere API 6.0">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="virtualVolumeDatastoreSupported" mutable="false" description="Indicates whether this host supports VirtualVolume based Datastore.&#xA;Since vSphere API 6.0">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="vmfsDatastoreMountCapable" mutable="false" default="" description="Indicates whether the host is capable of mounting/unmounting VMFS datastores.&#xA;Since vSphere API 5.0">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="vsanSupported" description="Indicates whether the host supports VSAN functionality.&#xA;See HostVsanSystem&#xA;Since vSphere API 5.5">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+  </mixins>
+  <mixins term="hostnetworkcapabilityextent" scheme="http://occiware.org/occi/vmware#" applies="//@kinds[term='hostsystem']">
+    <attributes name="nicTeamingSupported" mutable="false" description="Is NIC teaming supported. ">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="vlanTaggingSupported" mutable="false" description="Is VLAN Tagging supported.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="firewallIpRulesSupported" mutable="false">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="hbrNicSelectionSupported" mutable="false" description="Indicates whether a dedicated nic can be selected for vSphere Replication LWD traffic, i.e., from the primary host to the VR server.&#xA;Since vSphere API 5.1">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="multipleNetworkStackInstanceSupported" mutable="false" description="Indicates whether the host supports Multiple Instance TCP/IP stack&#xA;Since vSphere API 5.5">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="provisioningNicSelectionSupported" mutable="false" description="Indicates whether a dedicated nic can be selected for vSphere Provisioning NFC traffic.&#xA;Since vSphere API 6.0">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="vmDirectPathGen2UnsupportedReason" mutable="false" description="If vmDirectPathGen2Supported is false, this array will be populated with reasons for the lack of support (chosen from VmDirectPathGen2UnsupportedReason). If there is a reason for the lack of support that cannot be described by the available constants, vmDirectPathGen2UnsupportedReasonExtended will be populated with an additional explanation provided by the platform.&#xA;Note that this list of reasons is not guaranteed to be exhaustive.&#xA;&#xA;If the reason &quot;hostNptIncompatibleProduct&quot; is provided, then that will be the only provided reason, as the host software is incapable of providing additional information.&#xA;&#xA;Since vSphere API 4.1" multiple_values="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="vmDirectPathGen2Supported" mutable="false" description="Indicates whether the host supports network passthrough using VMDirectPath Gen 2. Note that this is a general capability for the host and is independent of support by a given physical NIC. If false, the reason(s) for lack of support will be provided in vmDirectPathGen2UnsupportedReason and/or in vmDirectPathGen2UnsupportedReasonExtended.&#xA;See vmDirectPathGen2Supported&#xA;Since vSphere API 4.1">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="vmDirectPathGen2UnsupportedReasonExtended" mutable="false" description="If vmDirectPathGen2Supported is false, this property may contain an explanation provided by the platform, beyond the reasons (if any) enumerated in vmDirectPathGen2UnsupportedReason.&#xA;Since vSphere API 4.1">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="vrNfcNicSelectionSupported" mutable="false" default="">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+  </mixins>
+  <mixins term="hostvmotioncapability" scheme="http://occiware.org/occi/vmware#" applies="//@kinds[term='hostsystem']">
+    <attributes name="unsharedSwapVMotionSupported" mutable="false" description="Flag indicating whether the host supports participating in a VMotion where the virtual machine swapfile is not visible to the destination.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="vmotionSupported" mutable="false" description="Flag indicating whether you can perform VMotion. ">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="maxNumDisksSVMotion" mutable="false" description="Maximum number of migrating disks allowed of a migrating VM during SVMotion. If this capability is not set, then the maximum is considered to be 64.&#xA;Since vSphere API 6.0">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="storageVMotionSupported" description="Indicates whether the storage of a powered-on virtual machine may be relocated.&#xA;Since vSphere API 4.0">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="vmotionWithStorageVMotionSupported" mutable="false" description="Indicates whether the storage of a powered-on virtual machine may be relocated while simultaneously changing the execution host of the virtual machine.&#xA;Since vSphere API 4.0">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="vmotionAcrossNetworkSupported" mutable="false" description="Indicates whether the network of a powered-on virtual machine can be changed while simultaneously changing the execution host of the virtual machine.&#xA;Since vSphere API 5.5">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+  </mixins>
+  <mixins term="hostsnapshotcapability" scheme="http://occiware.org/occi/vmware#" applies="//@kinds[term='hostsystem']">
+    <attributes name="backgroundSnapshotsSupported" mutable="false" description="Flag indicating whether background snapshots are supported on this host.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="restrictedSnapshotRelocateSupported" mutable="false" description="Indicates whether this host supports relocation of virtual machines with snapshots. Must be true on the source and destination hosts for the relocation to work. Even if this is true, the following conditions must hold: 1) All the the vm's files are in one directory prior to the relocate. 2) All of the vm's files will be in one directory after the relocate. 3) The source and destination hosts are the same product version.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="cloneFromSnapshotSupported" mutable="false" description="Indicates whether or not cloning a virtual machine from a snapshot point is allowed.&#xA;This property must be true on the host where the virtual machine is currently residing. This property need not be true on the destination host for the clone.&#xA;See snapshot&#xA;Since vSphere API 4.0">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="snapshotRelayoutSupported" mutable="false" description="Indicates whether this host supports unrestricted relocation of virtual machines with snapshots. Only needs to be true on the destination host for the unrestricted relocation to work. The full snapshot relocation does not restrict the layout of snapshot files or disks of the virtual machine, nor its power state. If the virtual machine is powered on, a storage vmotion will be performed to relocate its snapshots and disks.&#xA;Since vSphere API 5.0">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+  </mixins>
+  <mixins term="hostcapabilityhardware" scheme="http://occiware.org/occi/vmware#" applies="//@kinds[term='hostsystem']">
+    <attributes name="cpuMemoryResourceConfigurationSupported" mutable="false" default="" description="Flag indicating whether cpu and memory resource configuration is supported. If this is set to false, UpdateConfig, UpdateChildResourceConfiguration cannot be used for changing the cpu/memory resource configurations.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="iscsiSupported" mutable="false" description="Is access to iSCSI devices supported.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="maintenanceModeSupported" mutable="false" description="Is maintenance mode supported ">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="preAssignedPCIUnitNumbersSupported" mutable="false" description="Flag to indicate whether the server returns unit numbers in a pre-assigned range for devices on the PCI bus. When the server supports this flag, the device unit number namespace is partitioned by device type. Different types of devices will sit in a specific range of unit numbers that may not correspond to physical slots in the pci bus but present a relative ordering of the devices with respect to other devices of the same type. Note that this does not mean that the user can set the relative ordering between device types, but only allows stable orderings between devices of the same type. The unit number will now clearly represent an ordering between devices of the same type. unitNumber This property is only available for devices on the pci controller.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="nestedHVSupported" mutable="false" description="Indicates whether the host supports nested hardware-assisted virtualization.&#xA;Since vSphere API 5.1">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="scheduledHardwareUpgradeSupported" mutable="false" default="" description="Indicates whether the host supports scheduled hardware upgrades.&#xA;See scheduledHardwareUpgradeInfo&#xA;Since vSphere API 5.1">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="smartCardAuthenticationSupported" mutable="false" description="Indicates whether this host supports local two-factor user authentication using smart cards.&#xA;See EnableSmartCardAuthentication&#xA;Since vSphere API 6.0">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="tpmSupported" mutable="false" description="Flag indicating whether this host supports the integrity measurement using a TPM device.&#xA;Since vSphere API 4.0">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="vFlashSupported" mutable="false" description="Indicates whether the host supports vFlash.&#xA;Since vSphere API 5.5">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="vStorageCapable" description="Indicates whether the host supports vStorage Hardware acceleration.&#xA;Since vSphere API 4.1">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+  </mixins>
+  <mixins term="hostsystemcapability" scheme="http://occiware.org/occi/vmware#" applies="//@kinds[term='hostsystem']">
+    <attributes name="highGuestMemSupported" mutable="false" description="Is high guest memory supported. ">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="rebootSupported" mutable="false" description="Flag indicating whether rebooting the host is supported. ">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="scaledScreenshotSupported" mutable="false" description="Indicates whether scaling is supported for screenshots retrieved over https. If true, screenshot retrieval supports the additional optional parameters 'width' and 'height'. After cropping, the returned image will be scaled to these dimensions. If only one of these parameters is specified, default behavior is to return an image roughly proportional to the source image.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="shutdownSupported" mutable="false" description="Flag indicating whether the host can be powered off ">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="screenshotSupported" mutable="false" description="Indicates whether the screenshot retrival over https is supported for this host's virtual machines. If true, a screenshot can be retrieved at the HTTPS relative path /screen?id=&lt;managed object ID of virtual machine or snapshot>. If any of the optional parameters 'top', 'left', 'bottom', and 'right' is specified, the returned image will be cropped from the rectangle with upper left corner (left, top) and bottom right corner (right - 1, bottom - 1). These values default to the top, left, bottom and right edges of the image. The client must use an authenticated session with privilege VirtualMachine.Interact.ConsoleInteract on the requested virtual machine or, in the case of a snapshot, the virtual machine associated with that snapshot.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="standbySupported" mutable="false" description="Flag indicating whether you can put the host in a power down state, from which it can be powered up automatically.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="accel3dSupported" mutable="false" description="Indicates if 3D hardware acceleration for virtual machines is supported.&#xA;Since vSphere API 5.1">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+  </mixins>
+  <mixins term="hostvmcapability" scheme="http://occiware.org/occi/vmware#" applies="//@kinds[term='hostsystem']">
+    <attributes name="maxRunningVMs" mutable="false" description="The maximum number of virtual machines that can be running simultaneously on this host. If this capability is not set, the number of virtual machines running simultaneously is unlimited.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="maxSupportedVcpus" mutable="false" description="The maximum number of virtual CPUs supported per virtual machine. If this capability is not set, the number is unlimited. ">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="maxSupportedVMs" mutable="false" description="The maximum number of virtual machines that can exist on this host. If this capability is not set, the number of virtual machines is unlimited. ">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="perVmSwapFiles" mutable="false" description="Flag indicating whether virtual machine execution on this host involves a swapfile for each virtual machine. If true, the swapfile placement for a powered-on virtual machine is advertised in its FileLayout by the swapFile property.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="suspendedRelocateSupported" mutable="false" description="Indicates whether this host supports relocation of suspended virtual machines. Must be true on the source and destination hosts for the relocation to work. ">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="interVMCommunicationThroughVMCISupported" mutable="false" description="Indicates whether the host supports VMCI for communication between virtual machines.&#xA;Since vSphere API 5.1">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="latencySensitivitySupported" mutable="false" description="Indicates whether the host supports latency sensitivity for the virtual machines.&#xA;Since vSphere API 5.1">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="maxHostRunningVms" mutable="false" description="The maximum number of virtual machines that can be run on the host. An unset value indicates that the value could not be obtained. In contrast to maxRunningVMs, this value is the minimum of (i) the maximum number supported by the hardware and (ii) the maximum number permitted by the host license.&#xA;Since vSphere API 5.0">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="maxHostSupportedVcpus" mutable="false" default="" description="The maximum number of virtual CPUs that can be run on the host. An unset value indicates that the value could not be obtained. In contrast to maxSupportedVcpus, this value is the minimum of (i) the maximum number supported by the hardware and (ii) the maximum number permitted by the host license.&#xA;Since vSphere API 5.0">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="maxRegisteredVMs" mutable="false" description="The maximum number of registered virtual machines supported by the host. If this limit is exceeded, the management agent will be at risk of running out of system resources. configIssue will be posted on HostSystem in this case.&#xA;If this capability is not set, the number is unknown.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="maxVcpusPerFtVm" mutable="false" description="The maximum number of vCPUs allowed for a fault-tolerant virtual machine.&#xA;Since vSphere API 6.0">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="perVMNetworkTrafficShapingSupported" mutable="false" description="Indicates whether network traffic shaping on a per virtual machine basis is supported.&#xA;Since vSphere API 4.0">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="reliableMemoryAware" mutable="false" description="Indicates that this host uses a reliable memory aware allocation policy.&#xA;Since vSphere API 5.5">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="virtualExecUsageSupported" mutable="false" description="Indicates whether the host supports configuring hardware virtualization (HV) support for virtual machines.&#xA;Since vSphere API 4.0">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="vPMCSupported" mutable="false" description="Indicates whether the host supports virtual CPU performance counters.&#xA;Since vSphere API 5.1">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+  </mixins>
+  <mixins term="hostothercapability" scheme="http://occiware.org/occi/vmware#" applies="//@kinds[term='hostsystem']">
+    <attributes name="loginBySSLThumbprintSupported" mutable="false" description="Flag indicating whether this host supports SSL thumbprint authentication&#xA;Since vSphere API 4.0">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="ipmiSupported" mutable="false" description="Flag indicating whether the host supports IPMI (Intelligent Platform Management Interface). XXX - Make ipmiSupported optional until there is a compatible hostagent.&#xA;Since vSphere API 4.0">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="featureCapabilitiesSupported" mutable="false" description="Indicated whether the host supports feature capabilities for EVC mode.&#xA;Since vSphere API 5.1">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="recursiveResourcePoolsSupported" mutable="false">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="hostAccessManagerSupported" mutable="false" description="Whether this host supports HostAccessManager for controlling direct access to the host and for better lockdown mode management.&#xA;Since vSphere API 6.0">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="servicePackageInfoSupported" mutable="false" description="Indicates whether this host supports package information in service configuration.&#xA;Since vSphere API 5.0">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="messageBusProxySupported" mutable="false" description="Indicates whether the message bus proxy is supported&#xA;Since vSphere API 6.0">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="smpFtCompatibilityIssues" mutable="false" default="" description="For a host which doesn't support smp fault tolerance, indicates all the reasons for the incompatibility. HostCapabilityFtUnsupportedReason lists the set of possible values" type="//@types.45" multiple_values="true"/>
+    <attributes name="smpFtSupported" mutable="false" description="Indicates whether this host supports smp fault tolerance&#xA;Since vSphere API 6.0">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+  </mixins>
   <types name="LongNumber" instanceClassName="long">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="A long number"/>
@@ -2138,5 +2306,16 @@
     <eLiterals name="recoverableError" value="1"/>
     <eLiterals name="unrecoverrableError" value="2"/>
     <eLiterals name="untried" value="3"/>
+  </types>
+  <types xsi:type="ecore:EEnum" name="HostCapabilityFtUnsupportedReason">
+    <eLiterals name="cpuHvDisabled"/>
+    <eLiterals name="cpuHvUnsupported" value="1"/>
+    <eLiterals name="cpuHwmmuUnsupported" value="2"/>
+    <eLiterals name="ftNotLicensed" value="3"/>
+    <eLiterals name="haAgentIssue" value="4"/>
+    <eLiterals name="missingFTLoggingNic" value="5"/>
+    <eLiterals name="missingVMotionNic" value="6"/>
+    <eLiterals name="unsupportedProduct" value="7"/>
+    <eLiterals name="vMotionNotLicensed" value="8"/>
   </types>
 </occi:Extension>
