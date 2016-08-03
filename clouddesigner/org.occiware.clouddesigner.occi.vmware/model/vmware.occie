@@ -7,6 +7,7 @@
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+    <actions term="enterMaintenanceMode" scheme="http://occiware.org/occi/vmware/datastore/action#"/>
   </kinds>
   <kinds term="cluster" scheme="http://occiware.org/occi/vmware#" title="Represents a cluster of HostSystem objects as a unified compute resource for virtual machines." parent="//@kinds[term='folder']">
     <actions term="addAllHostSystem" scheme="http://occiware.org/occi/vmware/cluster/action#" title="Add all hostsystem linked to this cluster and not already added on this cluster, if hostsystem are not connectable, the host will not be added"/>
@@ -268,7 +269,7 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds term="hostfolder" scheme="http://occiware.org/occi/vmware#" parent="//@kinds[term='folder']"/>
-  <kinds term="capability" scheme="http://occiware.org/occi/vmware#" title="Global data object to determine if the global service instance support or not a feature, see ServiceInstance">
+  <kinds term="vcentercapability" scheme="http://occiware.org/occi/vmware#" title="Global data object to determine if the global service instance support or not a feature, see ServiceInstance">
     <attributes name="multiHostSupported" mutable="false" description="Indicates whether or not the service instance supports multiple hosts. ">
       <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
     </attributes>
@@ -1260,6 +1261,18 @@
     <attributes name="rawDiskMappingsSupported" mutable="false" description="Indicates whether or not raw disk mappings can be created on this datastore">
       <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
     </attributes>
+    <attributes name="nativeSnapshotSupported" mutable="false" description="Indicates whether the datastore supports native snapshot feature which is based on Copy-On-Write.&#xA;Since vSphere API 5.1">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="seSparseSupported" mutable="false" description="Indicates whether the datastore supports the Flex-SE(SeSparse) feature.&#xA;Since vSphere API 5.5">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="storageIORMSupported" mutable="false" default="" description="Indicates whether the datastore supports Storage I/O Resource Management.&#xA;Since vSphere API 4.1">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="topLevelDirectoryCreateSupported" mutable="false" description="Indicates whether the datastore supports traditional top-level directory creation.&#xA;See DatastoreNamespaceManager&#xA;Since vSphere API 5.5">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
   </mixins>
   <mixins term="datastorehostmountinfo" scheme="http://occiware.org/occi/vmware#" title="Host-specifics datastore informations" applies="//@kinds[term='datastore']">
     <attributes name="accessibles" mutable="false" description="Flag that indicates if the datastore is currently accessible from the host.&#xA;For the case of standalone host agent, this property has the same value as Datastore.Summary.accessible and hence the latter can be used equivalently if this one is not set. VirtualCenter Server will always make sure it is set correctly" multiple_values="true">
@@ -1274,6 +1287,18 @@
     <attributes name="hostsystemNames" mutable="false" description="The name of the host associated with this datastore" multiple_values="true">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
+    <attributes name="inaccessibleReasons" mutable="false" description="This optional property for inaccessible reason is reported only if a datastore becomes inaccessible as reported by accessible and DatastoreSummary.accessible. The values for inaccessible reason are defined in the enum InaccessibleReason This helps to determine host specific reason for datastore inaccessibility. If the datastore becomes accessible following an inaccessible condition, the property inaccessibleReason will be unset.&#xA;Since vSphere API 5.1" multiple_values="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="mounted" mutable="false" description="The mount state of this mount point. For a discovered volume, which is mounted, this is true. When this value is unset, the default value is true.&#xA;Since vSphere API 5.0" multiple_values="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="paths" mutable="false" description="Local file path where file system volume is mounted, if applicable. This path identifies the file system volume from the point of view of the host. " multiple_values="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="hostnames" mutable="false" multiple_values="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
   </mixins>
   <mixins term="datastoreinfo" scheme="http://occiware.org/occi/vmware#" applies="//@kinds[term='datastore']">
     <attributes name="maxFileSize" mutable="false" description="The maximum size of a file that can reside on this file system volume" type="//@types.0"/>
@@ -1283,20 +1308,25 @@
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
     <attributes name="freespace" mutable="false" description="Available space of this datastore, in bytes. The server periodically updates this value. It can be explicitly refreshed with the Refresh operation. This property is guaranteed to be valid only if accessible is true." type="//@types.0"/>
-    <attributes name="accessible" mutable="false" description="The connectivity status of this datastore. If this is set to false, meaning the datastore is not accessible, this datastore's capacity and freespace properties cannot be validated. Furthermore, if this property is set to false, the url properties in this summary and in DatastoreInfo should not be used">
+    <attributes name="accessible" mutable="false" description="The connectivity status of this datastore. If this is set to false, meaning the datastore is not accessible, this datastore's capacity and freespace properties cannot be validated. &#xA;Furthermore, if this property is set to false, some of the properties in this summary and in DatastoreInfo should not be used. Refer to the documentation for the property of your interest. &#xA;For datastores accessed from multiple hosts, vCenter Server reports accessible as an aggregated value of the properties reported in MountInfo. &#xA;For instance, if a datastore is accessible through a subset of hosts, then the value of accessible will be reported as true by vCenter Server. And the reason for a datastore being inaccessible from a host will be reported in inaccessibleReason ">
       <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
     </attributes>
     <attributes name="capacity" mutable="false" description="Maximum capacity of this datastore, in bytes. This value is updated periodically by the server. It can be explicitly refreshed with the Refresh operation. This property is guaranteed to be valid only if accessible is true" type="//@types.0"/>
     <attributes name="multipleHostAccess" mutable="false" description="More than one host in the datacenter has been configured with access to the datastore. This is only provided by VirtualCenter">
       <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
     </attributes>
-    <attributes name="type" mutable="false" description="Type of file system volume, such as VMFS or NFS.&#xA;The following values are defined:&#xA;vmfs: VMware File System (ESX Server only). If this is set, the type of the file system volume is VMFS.&#xA;nfs: Network file system (Linux only and ESX Server only). If this is set, the type of the file system volume is NetworkFileSystem.&#xA;cifs: Common Internet file system (Windows only). If this is set, the type of the file system volume is CIFS.">
+    <attributes name="type" mutable="false" default="" description="Type of file system volume, such as VMFS or NFS.&#xA;The following values are defined:&#xA;VMFS: VMware File System (ESX Server only). If this is set, the type of the file system volume is VMFS.&#xA;NFS: Network file system v3 linux &amp; esx servers only. If this is set, the type of the file system volume is NFS v3&#xA;NFS41: Network file system v4.1 linux &amp; esx servers only. If this is set, the type of the file system volume is NFS v4.1 or later.(Since vSphere API 6.0)&#xA;CIFS: Common Internet File System. If this is set, the type of the file system volume is Common Internet File System. &#xA;VFFS: vFlash File System (ESX Server only). If this is set, the type of the file system volume is VFFS. (Since vSphere API 6.0)&#xA;vsan: VSAN File System (ESX Server only).(Since vSphere API 6.0)&#xA;OTHER: Used if the file system is not one of the specified file systems. Used mostly for reporting purposes. The other types are described by the otherType property. &#xA;VVOL: vvol File System (ESX Server only).(Since vSphere API 6.0)" type="//@types.41"/>
+    <attributes name="volumeName" mutable="false" description="Name of the file system volume">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="maintenanceMode" mutable="false" type="//@types.42"/>
+    <attributes name="uncommitted" mutable="false" description="Total additional storage space, in bytes, potentially used by all virtual machines on this datastore. The server periodically updates this value. It can be explicitly refreshed with the RefreshDatastoreStorageInfo operation. This property is valid only if accessible is true.">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
   </mixins>
-  <mixins term="datastorehostnasvolumeconfig" scheme="http://occiware.org/occi/vmware#" title="To create NAS (using cifs or default nfs) datastore on a hostsystem via HostDatastoreSystem object and HostNasVolumeSpec" applies="//@kinds[term='datastore']">
+  <mixins term="datastorehostnasvolumeconfig" scheme="http://occiware.org/occi/vmware#" title="To create NAS (using cifs or default nfs) datastore on a hostsystem via HostDatastoreSystem object and HostNasVolumeSpec" depends="//@mixins[term='datastoreconfig']">
     <attributes name="accessMode" description="Access mode for the mount point.&#xA;Mounting in read-write mode would be successful irregardless on how the mount point is exported or access permissions. For example, mounting a volume that is exported as read-only as readWrite will succeed. Hence, that a readWrite mount succeeds should not be taken as an indication that all files on a mount is writable.&#xA;&#xA;If a file system is mounted readOnly, the system cannot create or modify any files on the file system. This is mostly useful for storing ISO images and templates, since a virtual machine cannot be powered on from a readOnly volume.&#xA;&#xA;The access mode of a mounted NFS volume can be obtained at accessModes via datastorehostmountinfo mixin." type="//@types.30"/>
-    <attributes name="localPath" description="The localPath refers to the name of the NAS datastore to be created using this specification.&#xA;In the case of ESX Server, the datastore name is a component in the file system path at which the NAS volume can be found. For example, if localPath is set to &quot;nas_volume&quot; the created NAS datastore will be named &quot;nas_volume&quot; and it can be accessed via the file system path &quot;/vmfs/volumes/nas_volume&quot;.&#xA;&#xA;In the case of VMware Server, the localPath will also be used as the datastore name, but the datastore name may not necessarily be reflected in the file system path where the NAS volume may be accessed">
+    <attributes name="localPath" required="true" description="The localPath refers to the name of the NAS datastore to be created using this specification.&#xA;In the case of ESX Server, the datastore name is a component in the file system path at which the NAS volume can be found. For example, if localPath is set to &quot;nas_volume&quot; the created NAS datastore will be named &quot;nas_volume&quot; and it can be accessed via the file system path &quot;/vmfs/volumes/nas_volume&quot;.&#xA;&#xA;In the case of VMware Server, the localPath will also be used as the datastore name, but the datastore name may not necessarily be reflected in the file system path where the NAS volume may be accessed">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
     <attributes name="userName" description="If type is CIFS, the user name to use when connecting to the CIFS server. If type is NFS, this field will be ignored">
@@ -1305,15 +1335,19 @@
     <attributes name="password" default="" description="If type is CIFS, the password to use when connecting to the CIFS server. If type is NFS, this field will be ignored.">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="remoteHost" description="The host that runs the NFS server.">
+    <attributes name="remoteHost" required="true" description="The host that runs the NFS v3 or CIFS server. For NFS v4.1 and beyond use remoteHostNames defined later. The field remotehost may be deprecated in future for NFS, so clients should plan to use the property remoteHostNames to send in the host name(s) for both NFS v3 and v4.1 ">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="remotePath" description="The remote path of the NFS mount point. ">
+    <attributes name="remotePath" required="true" description="The remote path of the NFS mount point. ">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="volumeType" description="The type of the the NAS volume (CIFS / NFS). If not specified, defaults to nfs.">
+    <attributes name="volumeType" required="true" default="NFS" description="Specifies the type of the the NAS volume. Supported types are CIFS, NFS, NFS41 If not specified, defaults to NFS">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
+    <attributes name="remoteHostnames" description="Hostnames or IP addresses of remote NFS server. In case of NFS v4.1 this may have multiple entries. For NFS v3 the input should be same in both remoteHost and remoteHostNames.&#xA;Since vSphere API 6.0" multiple_values="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="securityType" mutable="false" description="Provided during mount indicating what security type, if any, to use See HostNasVolumeSecurityType&#xA;Since vSphere API 6.0&#xA;AUTH_SYS: Authentication based on traditional UNIX identifiers (UID and GID). Server trusts the IDs sent by the client for each request and uses them to perform access control. Current implementation only supports AUTH_SYS with root user. &#xA;SEC_KRB5: Ensures RPC header authentication using Kerberos session keys. When this option is enabled, the client uses the information specified in UserInfo to establish shared keys with the server using Kerberos. These shared keys are used to generate and verify message authentication codes for RPC header of NFS requests and responses, respectively. This method does not secure NFS file data " type="//@types.43"/>
   </mixins>
   <mixins term="datastoreuserprincipalauth" scheme="http://occiware.org/occi/vmware#" title="Use for configuration user and password for this datastore, be warn that changing the user and password operation must be performed while in maintenance mode and requires host reboot" applies="//@kinds[term='datastore']">
     <attributes name="userName" description="Datastore principal user name">
@@ -1324,19 +1358,29 @@
     </attributes>
     <actions term="changeDatastoreUserPassword" scheme="http://occiware.org/occi/vmware/datastoreuserprincipalauth/action#" title="All virtual machine-related file I/O is performed under this user. Configuring datastore principal user will result in all virtual machine files (configuration, disk, and so on) being checked for proper access. If necessary, ownership and permissions are modified. Note that in some environments, file ownership and permissions modification may not be possible. For example, virtual machine files stored on NFS cannot be modified for ownership and permissions if root squashing is enabled. Ownership and permissions for these files must be manually changed by a system administrator. In general, if server process does not have rights to change ownership and file permissions of virtual machine files, they must be modified manually. If a virtual machine files are not read/writeable by this user, virtual machine related operations such as power on/off, configuration, and so on will fail. This operation must be performed while in maintenance mode and requires host reboot. See ConfigureDatastorePrincipal method on HostDatastoreSystem object"/>
   </mixins>
-  <mixins term="datastorehostvmfsvolumeconfig" scheme="http://occiware.org/occi/vmware#" title="To create VMFS datastore on a hostsystem via HostDatastoreSystem object and VmfsDatastoreCreateSpec use queries method for partitionning options and extent capabilities" applies="//@kinds[term='datastore']">
+  <mixins term="datastorehostvmfsvolumeconfig" scheme="http://occiware.org/occi/vmware#" title="To create VMFS datastore on a hostsystem via HostDatastoreSystem object and VmfsDatastoreCreateSpec use queries method for partitionning options and extent capabilities" depends="//@mixins[term='datastoreconfig']">
     <attributes name="diskUUID" mutable="false" description="The UUID of the SCSI disk on which the VMFS datastore is located">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="blockSize" description="The block size of VMFS in megabytes (MB). Determines the maximum file size. If this optional property is not set, the maximum file size defaults to the maximum file size for the platform.&#xA;In VMFS2, the valid block sizes in units of megabytes are: 1, 2, 4, 8, 16, 32, 64, 128, 256. In VMFS3, the only valid block size is 1MB">
+    <attributes name="blockSizeMb" default="1" description="The block size of VMFS in megabytes (MB). Determines the maximum file size. If this optional property is not set, the maximum file size defaults to the maximum file size for the platform.&#xA;In VMFS2, the valid block sizes 1MB, 2MB, 4MB, 8MB, 16MB, 32MB, 64MB, 128MB, and 256MB. In VMFS3, the valid block sizes are 1MB, 2MB, 4MB, and 8MB. In VMFS5, the only valid block size is 1MB.">
       <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
     </attributes>
-    <attributes name="volumeName" description="Volume name of VMFS">
+    <attributes name="vmfsVolumeName" description="Volume name of VMFS">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
+    <attributes name="vmfsMajorVersion" default="" description="Major version number of VMFS. This can be changed if the VMFS is upgraded, but this is an irreversible change. ">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="extentDiskName" description="The SCSI disk device on which a VMware File System (VMFS) extent resides.&#xA;See HostScsiDisk&#xA;See canonicalName">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="extentPartition" description="The partition number of the partition on the ScsiDisk.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
     <actions term="extendVMFS" scheme="http://occiware.org/occi/vmware/datastorehostvmfsvolumeconfig/action#" title="Extends an existing VMFS datastore."/>
+    <actions term="formatVMFS" scheme="http://occiware.org/occi/vmware/datastorehostvmfsvolumeconfig/action#" title="Formats a new VMFS on a disk partition, use carefully"/>
   </mixins>
-  <mixins term="datastorehostlocalvolumeconfig" scheme="http://occiware.org/occi/vmware#" title="To create a local datastore on a hostsystem" applies="//@kinds[term='datastore']">
+  <mixins term="datastorehostlocalvolumeconfig" scheme="http://occiware.org/occi/vmware#" title="To create a local datastore on a hostsystem" depends="//@mixins[term='datastoreconfig']">
     <attributes name="filepathdir" description="The file path for a directory in which the virtual machine data will be stored">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -1692,6 +1736,25 @@
     </attributes>
     <attributes name="defaultVmMonitoring" default="" description="Indicates the type of virtual machine monitoring. Specify a string value corresponding to one of the following ClusterDasConfigInfoVmMonitoringState values:&#xA;vmMonitoringDisabled (the default value)&#xA;vmMonitoringOnly&#xA;vmAndAppMonitoring&#xA;The individual VMware Tools setting for virtual machine monitoring depends on the HA Virtual Machine Health Monitoring Service level that is defined for the cluster (ClusterDasConfigInfo.vmMonitoring). The following list indicates the supported VMware Tools vmMonitoring values according to the cluster configuration.&#xA;&#xA;If the cluster configuration specifies vmMonitoringDisabled, the Service is disabled and the HA Service ignores the VMware Tools monitoring setting.&#xA;If the cluster configuration specifies vmMonitoringOnly, the Service supports vmMonitoringOnly or vmMonitoringDisabled only.&#xA;If the cluster configuration specifies vmAndAppMonitoring, you can use any of the ClusterDasConfigInfoVmMonitoringState values.&#xA;The clusterSettings value has no effect on the constraint imposed by the HA Virtual Machine Health Monitoring Service level that is defined for the cluster (ClusterDasConfigInfo.vmMonitoring).&#xA;&#xA;Application monitoring events are generated regardless of the currently configured type of virtual machine monitoring. You can use these events even if monitoring is being disabled or set to vmMonitoringOnly." type="//@types.39"/>
   </mixins>
+  <mixins term="datastoreconfig" scheme="http://occiware.org/occi/vmware#" title="Detailed information about a datastore" applies="//@kinds[term='datastore']">
+    <attributes name="containerId" description="The unique container ID of the datastore, if applicable.&#xA;It must be set for datastore creation with vvol filesystem.&#xA;Since vSphere API 5.5">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="maxFileSize" mutable="false" description="The maximum size of a file that can reside on this file system volume. ">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="maxMemoryFileSize" mutable="false" description="The maximum size of a snapshot or a swap file that can reside on this file system volume.&#xA;Since vSphere API 6.0">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="maxVirtualDiskCapacity" mutable="false" description="The maximum capacity of a virtual disk which can be created on this volume.&#xA;Since vSphere API 5.5">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="timestamp" mutable="false" default="" description="Time when the free-space and capacity values in DatastoreInfo and DatastoreSummary were updated.&#xA;Since vSphere API 4.0" type="//@types.6"/>
+    <attributes name="datastoreUrl" mutable="false">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+  </mixins>
+  <mixins term="datastorehostvvolvolumeconfig" scheme="http://occiware.org/occi/vmware#" depends="//@mixins[term='datastoreconfig']"/>
   <types name="LongNumber" instanceClassName="long">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="A long number"/>
@@ -2014,5 +2077,24 @@
   <types xsi:type="ecore:EEnum" name="ClusterDasConfigInfoServiceState">
     <eLiterals name="enabled"/>
     <eLiterals name="disabled" value="1"/>
+  </types>
+  <types xsi:type="ecore:EEnum" name="HostFileSystemVolumeFileType">
+    <eLiterals name="CIFS"/>
+    <eLiterals name="NFS" value="1"/>
+    <eLiterals name="NFS41" value="2"/>
+    <eLiterals name="OTHER" value="3"/>
+    <eLiterals name="VFFS" value="4"/>
+    <eLiterals name="VMFS" value="5"/>
+    <eLiterals name="vsan" value="6"/>
+    <eLiterals name="VVOL" value="7"/>
+  </types>
+  <types xsi:type="ecore:EEnum" name="DatastoreMaintenanceModeState">
+    <eLiterals name="enteringMaintenance"/>
+    <eLiterals name="inMaintenance" value="1"/>
+    <eLiterals name="normal" value="2"/>
+  </types>
+  <types xsi:type="ecore:EEnum" name="HostNasVolumeSecurityType">
+    <eLiterals name="AUTH_SYS"/>
+    <eLiterals name="SEC_KRB5" value="1"/>
   </types>
 </occi:Extension>
