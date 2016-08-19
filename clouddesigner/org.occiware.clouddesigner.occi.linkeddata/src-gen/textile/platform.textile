@@ -1,0 +1,128 @@
+h1. OCCI Platform Extension, version 1.2.
+
+| *Name* | platform |
+| *Scheme* | http://schemas.ogf.org/occi/platform# |
+
+Imported OCCI Extensions:
+| *Name* | *Scheme* |
+| <a href="core.textile">core</a> | http://schemas.ogf.org/occi/core# |
+
+h1. Kinds
+
+h2. Kind application
+
+| *Term* | application |
+| *Scheme* | http://schemas.ogf.org/occi/platform# |
+| *Title* | Application |
+| *Parent* | <a href="core.textile#kind-resource">http://schemas.ogf.org/occi/core#resource</a> |
+
+Attributes of application are:
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.app.name | <a href="core.textile#datatype-string">String</a> | true | true |  | Name of the application. |
+| occi.app.context | <a href="platform.textile#datatype-url">URL</a> | true | false |  | URL for contextualizing the app. |
+| occi.app.url | <a href="platform.textile#datatype-url">URL</a> | true | false |  | DNS entry. |
+| occi.app.state | <a href="platform.textile#enum-status">Status</a> | true | false |  | State of the application. |
+| occi.app.state.message | <a href="core.textile#datatype-string">String</a> | false | false |  | Human-readable explanation of the current instance state. |
+
+Actions of application are:
+| *Term* | *Scheme* | *Attributes* | *Title* |
+| start | http://schemas.ogf.org/occi/platform/application/action# |  | Start the application. |
+| stop | http://schemas.ogf.org/occi/platform/application/action# |  | Stop the application. |
+
+
+h2. Kind component
+
+| *Term* | component |
+| *Scheme* | http://schemas.ogf.org/occi/platform# |
+| *Title* | Component |
+| *Parent* | <a href="core.textile#kind-resource">http://schemas.ogf.org/occi/core#resource</a> |
+
+Attributes of component are:
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.component.state | <a href="platform.textile#enum-status">Status</a> | true | false |  | State of the component. |
+| occi.component.state.message | <a href="core.textile#datatype-string">String</a> | false | false |  | Human-readable explanation of the current instance state. |
+
+Actions of component are:
+| *Term* | *Scheme* | *Attributes* | *Title* |
+| start | http://schemas.ogf.org/occi/platform/component/action# |  | Start the application. |
+| stop | http://schemas.ogf.org/occi/platform/component/action# |  | Stop the application. |
+
+
+h2. Kind componentlink
+
+| *Term* | componentlink |
+| *Scheme* | http://schemas.ogf.org/occi/platform# |
+| *Title* | ComponentLink |
+| *Parent* | <a href="core.textile#kind-link">http://schemas.ogf.org/occi/core#link</a> |
+
+
+h1. Mixins
+
+h2. Mixin app_tpl
+
+| *Term* | app_tpl |
+| *Scheme* | http://schemas.ogf.org/occi/platform# |
+| *Title* | Application Template |
+Applies to:
+* <a href="platform.textile#kind-application">http://schemas.ogf.org/occi/platform#application</a>
+
+h2. Mixin res_tpl
+
+| *Term* | res_tpl |
+| *Scheme* | http://schemas.ogf.org/occi/platform# |
+| *Title* | Resource Template |
+Applies to:
+* <a href="platform.textile#kind-application">http://schemas.ogf.org/occi/platform#application</a>
+* <a href="platform.textile#kind-component">http://schemas.ogf.org/occi/platform#component</a>
+
+h2. Mixin database
+
+| *Term* | database |
+| *Scheme* | http://schemas.ogf.org/occi/platform# |
+| *Title* | Database Mixin |
+Applies to:
+* <a href="platform.textile#kind-component">http://schemas.ogf.org/occi/platform#component</a>
+
+Attributes of database are:
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.database.version | <a href="core.textile#datatype-string">String</a> | true | false |  | Version of the database. |
+
+
+h2. Mixin databaselink
+
+| *Term* | databaselink |
+| *Scheme* | http://schemas.ogf.org/occi/platform# |
+| *Title* | Database Link |
+Applies to:
+* <a href="platform.textile#kind-componentlink">http://schemas.ogf.org/occi/platform#componentlink</a>
+
+Attributes of databaselink are:
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.database.uri | <a href="platform.textile#datatype-uri">URI</a> | true | false |  | Connection URI for the database. |
+| occi.database.username | <a href="platform.textile#datatype-uri">URI</a> | false | false |  | Username. |
+| occi.database.token | <a href="platform.textile#datatype-uri">URI</a> | false | false |  | Token. |
+
+
+
+h1. Types
+
+h2. Datatype URL
+
+.
+
+Base type: java.net.URL
+
+h2. Datatype URI
+
+.
+
+Base type: java.net.URI
+
+h2. Enum Status
+
+:
+* active  
+* inactive  
+* error  
+
+Generated at Fri Jun 03 18:33:26 CEST 2016 from http://schemas.ogf.org/occi/platform by org.occiware.clouddesigner.occi.gen.doc

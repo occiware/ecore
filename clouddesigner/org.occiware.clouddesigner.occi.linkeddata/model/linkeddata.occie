@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ASCII"?>
+<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="linkeddata" scheme="http://occiware.org/linkeddata#">
+  <import href="http://schemas.ogf.org/occi/core#/"/>
+  <import href="http://schemas.ogf.org/occi/infrastructure#/"/>
+  <import href="http://schemas.ogf.org/occi/platform#/"/>
+  <kinds term="ldproject" scheme="http://occiware.org/linkeddata#" title="LDProject">
+    <attributes name="occi.ld.project.name" required="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="occi.ld.project.published" default="false">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="occi.ld.project.robust" default="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+    <actions term="publish" scheme="http://occiware.org/linkeddata/ldproject/action#"/>
+    <actions term="unpublish" scheme="http://occiware.org/linkeddata/ldproject/action#"/>
+    <actions term="update" scheme="http://occiware.org/linkeddata/ldproject/action#"/>
+  </kinds>
+  <kinds term="lddatabaselink" scheme="http://occiware.org/linkeddata#" title="LDDatabaseLink">
+    <attributes name="occi.ld.dblink.database" required="true" default="datacore">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="occi.ld.dblink.port" default="27017">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds term="ldprojectlink" scheme="http://occiware.org/linkeddata#">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+</occi:Extension>

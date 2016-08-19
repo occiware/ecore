@@ -95,6 +95,14 @@
 		<!-- Docker generators -->
 		<module>../org.occiware.clouddesigner.occi.docker.gen.conf</module>
 		<module>../org.occiware.clouddesigner.occi.docker.gen.conf.ui</module>
+
+		<!-- Linked Data -->
+		<module>../org.occiware.clouddesigner.occi.linkeddata</module>
+		<module>../org.occiware.clouddesigner.occi.linkeddata.edit</module>
+		<module>../org.occiware.clouddesigner.occi.linkeddata.editor</module>
+		<module>../org.occiware.clouddesigner.occi.linkeddata.tests</module>
+		<module>../org.occiware.clouddesigner.occi.linkeddata.connector</module>
+		<module>../org.occiware.clouddesigner.occi.linkeddata.design</module>
 		
 		<!-- OCCI Xtext -->
 		<module>../org.occiware.clouddesigner.occi.xtext</module>
