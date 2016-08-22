@@ -96,6 +96,9 @@
 		<module>../org.occiware.clouddesigner.occi.docker.gen.conf</module>
 		<module>../org.occiware.clouddesigner.occi.docker.gen.conf.ui</module>
 
+		<!-- Linked Data Connector Dependencies -->
+		<module>../org.occiware.clouddesigner.occi.linkeddata.connector.dependencies</module>
+
 		<!-- Linked Data -->
 		<module>../org.occiware.clouddesigner.occi.linkeddata</module>
 		<module>../org.occiware.clouddesigner.occi.linkeddata.edit</module>
