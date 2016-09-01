@@ -23,6 +23,7 @@ import java.util.ArrayList
 import java.util.Collections
 import java.util.HashMap
 import java.util.Iterator
+import java.util.LinkedHashMap
 import java.util.LinkedList
 import java.util.List
 import java.util.Map
@@ -85,10 +86,6 @@ import org.slf4j.LoggerFactory
 
 import static com.google.common.base.Preconditions.checkNotNull
 import static org.occiware.clouddesigner.occi.docker.connector.ExecutableContainer.*
-import org.occiware.clouddesigner.occi.docker.Container
-import org.codehaus.jackson.map.ObjectMapper
-import org.codehaus.jackson.JsonNode
-import java.util.LinkedHashMap
 
 /**
  * This class overrides the generated EMF factory of the Docker package.
@@ -663,7 +660,7 @@ class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statistics> {
 
 	var String containerId
 	
-	var private Container container
+	var private org.occiware.clouddesigner.occi.docker.Container container
 	
 	var containersMap = newLinkedHashMap
 	
@@ -671,7 +668,7 @@ class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statistics> {
 		this.containerId = containerId
 	}
 
-	new(Container container) {
+	new(org.occiware.clouddesigner.occi.docker.Container container) {
 		this.container = container
 	}
 
