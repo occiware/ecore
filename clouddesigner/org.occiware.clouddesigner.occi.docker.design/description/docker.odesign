@@ -29,7 +29,7 @@
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
             <conditionnalStyles predicateExpression="[state.toString().equalsIgnoreCase('active')/]">
-              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" tooltipExpression="['[CPU]: ' + self.cpu_used + ', [Memory]: ' + self.memory_used/]" sizeComputationExpression="5" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.occiware.clouddesigner.occi.docker.design/images/mcol-closed-box_green.svg">
+              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" tooltipExpression="['[CPU]: ' + self.cpu_used + ' nanoseconds'+ ', [Memory]: ' + self.memory_used + ' Ko'/]" sizeComputationExpression="5" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.occiware.clouddesigner.occi.docker.design/images/mcol-closed-box_green.svg">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
