@@ -48,6 +48,12 @@ public class DockerMachineManager {
     return result;
   }
   
+  public static boolean regenerateCert(final Runtime runtime, final String machineName) {
+    final String command = DockerMachineManager.cf.createCertCommand(machineName);
+    final boolean temp = ProcessManager.runCommand(command, runtime, true);
+    return temp;
+  }
+  
   public static String inspectHostCmd(final Runtime runtime, final String machine) {
     final String command = DockerMachineManager.cf.createInfoCommand(machine);
     return ProcessManager.getOutputCommand(command, runtime);

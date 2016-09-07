@@ -196,6 +196,8 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
       if (_not_2) {
         String _name_4 = this.compute.getName();
         DockerMachineManager.startCmd(runtime, _name_4);
+        String _name_5 = this.compute.getName();
+        DockerMachineManager.regenerateCert(runtime, _name_5);
         this.compute.setState(ComputeStatus.ACTIVE);
         EList<Link> _links_2 = this.compute.getLinks();
         int _size_1 = _links_2.size();
@@ -212,19 +214,19 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
                 if ((_target instanceof Container)) {
                   Resource _target_1 = contains.getTarget();
                   final ExecutableContainer con = ((ExecutableContainer) _target_1);
-                  String _name_5 = con.getName();
-                  boolean _containerIsDeployed = this.containerIsDeployed(_name_5, this.machine);
+                  String _name_6 = con.getName();
+                  boolean _containerIsDeployed = this.containerIsDeployed(_name_6, this.machine);
                   boolean _not_4 = (!_containerIsDeployed);
                   if (_not_4) {
-                    String _name_6 = con.getName();
-                    String _plus = ("Creating the container: " + _name_6);
+                    String _name_7 = con.getName();
+                    String _plus = ("Creating the container: " + _name_7);
                     MachineManager.LOGGER.info(_plus);
                     con.createContainer(this.machine);
                     MachineManager.LOGGER.info("The container is created");
                     con.start();
                   } else {
-                    String _name_7 = con.getName();
-                    String _plus_1 = ("Trying to start container: " + _name_7);
+                    String _name_8 = con.getName();
+                    String _plus_1 = ("Trying to start container: " + _name_8);
                     MachineManager.LOGGER.info(_plus_1);
                     con.start();
                     MachineManager.LOGGER.info("Started ...");
@@ -237,15 +239,15 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
             for (final Container c_1 : _deploymentOrder_1) {
               {
                 final ExecutableContainer con = ((ExecutableContainer) c_1);
-                String _name_5 = con.getName();
-                boolean _containerIsDeployed = this.containerIsDeployed(_name_5, this.compute);
+                String _name_6 = con.getName();
+                boolean _containerIsDeployed = this.containerIsDeployed(_name_6, this.compute);
                 boolean _not_4 = (!_containerIsDeployed);
                 if (_not_4) {
                   con.createContainer(this.machine, this.containerDependency);
                   con.start();
                 } else {
-                  String _name_6 = con.getName();
-                  String _plus = ("Trying to start container: " + _name_6);
+                  String _name_7 = con.getName();
+                  String _plus = ("Trying to start container: " + _name_7);
                   MachineManager.LOGGER.info(_plus);
                   con.start();
                   MachineManager.LOGGER.info("Started ... ");
@@ -270,15 +272,15 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
                 if ((_target instanceof Container)) {
                   Resource _target_1 = contains.getTarget();
                   final ExecutableContainer con = ((ExecutableContainer) _target_1);
-                  String _name_5 = con.getName();
-                  boolean _containerIsDeployed = this.containerIsDeployed(_name_5, this.machine);
+                  String _name_6 = con.getName();
+                  boolean _containerIsDeployed = this.containerIsDeployed(_name_6, this.machine);
                   boolean _not_5 = (!_containerIsDeployed);
                   if (_not_5) {
                     con.createContainer(this.machine);
                     con.start();
                   } else {
-                    String _name_6 = con.getName();
-                    String _plus = ("Trying to start container: " + _name_6);
+                    String _name_7 = con.getName();
+                    String _plus = ("Trying to start container: " + _name_7);
                     MachineManager.LOGGER.info(_plus);
                     con.start();
                     MachineManager.LOGGER.info("Started ...");
@@ -291,19 +293,19 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
             for (final Container c_2 : _deploymentOrder_2) {
               {
                 final ExecutableContainer con = ((ExecutableContainer) c_2);
-                String _name_5 = con.getName();
-                boolean _containerIsDeployed = this.containerIsDeployed(_name_5, this.compute);
+                String _name_6 = con.getName();
+                boolean _containerIsDeployed = this.containerIsDeployed(_name_6, this.compute);
                 boolean _not_5 = (!_containerIsDeployed);
                 if (_not_5) {
                   con.createContainer(this.machine, this.containerDependency);
-                  String _name_6 = con.getName();
-                  String _plus = ("Trying to start container: " + _name_6);
+                  String _name_7 = con.getName();
+                  String _plus = ("Trying to start container: " + _name_7);
                   MachineManager.LOGGER.info(_plus);
                   con.start();
                   MachineManager.LOGGER.info("Started ... ");
                 } else {
-                  String _name_7 = con.getName();
-                  String _plus_1 = ("Trying to start container: " + _name_7);
+                  String _name_8 = con.getName();
+                  String _plus_1 = ("Trying to start container: " + _name_8);
                   MachineManager.LOGGER.info(_plus_1);
                   MachineManager.LOGGER.info("Started ... ");
                   con.start();

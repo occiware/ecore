@@ -1085,7 +1085,10 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 
 				// Start the machine
 				DockerMachineManager.startCmd(runtime, compute.name)
-
+				
+				// Regenerate Cert when IP addresses change
+				DockerMachineManager.regenerateCert(runtime, compute.name)
+				
 				// Set state
 				compute.state = ComputeStatus.ACTIVE
 

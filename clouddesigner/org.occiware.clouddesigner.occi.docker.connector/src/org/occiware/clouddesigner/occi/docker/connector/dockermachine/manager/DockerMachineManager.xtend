@@ -42,6 +42,12 @@ class DockerMachineManager {
 		return result
 	}
 
+	def static boolean regenerateCert(Runtime runtime, String machineName){
+		val String command = cf.createCertCommand(machineName)
+		val temp = ProcessManager.runCommand(command, runtime, true)
+		return temp
+	}
+
 	def static String inspectHostCmd(Runtime runtime, String machine) {
 		val String command = cf.createInfoCommand(machine)
 		return ProcessManager.getOutputCommand(command, runtime)
