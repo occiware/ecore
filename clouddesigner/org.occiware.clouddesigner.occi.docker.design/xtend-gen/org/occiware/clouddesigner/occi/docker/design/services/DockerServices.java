@@ -11,9 +11,11 @@
  */
 package org.occiware.clouddesigner.occi.docker.design.services;
 
+import com.google.common.base.Objects;
 import java.lang.reflect.InvocationTargetException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.swt.widgets.Display;
@@ -38,25 +40,45 @@ public class DockerServices {
    */
   public void start(final EObject eo) {
     try {
-      IRunnableWithProgress runnable = new IRunnableWithProgress() {
-        @Override
-        public void run(final IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
-          if ((eo instanceof Machine)) {
-            Machine machine = ((Machine) eo);
-            final ExecutableDockerModel main = new ExecutableDockerModel(machine);
-            main.start();
-          } else {
-            if ((eo instanceof Container)) {
-              Container container = ((Container) eo);
-              final ExecutableDockerModel main_1 = new ExecutableDockerModel(container);
-              main_1.container.start();
-            }
-          }
+      final int kind = this.eobjectKind(eo);
+      if ((kind == 0)) {
+        Machine machine = ((Machine) eo);
+        boolean _or = false;
+        String _name = machine.getName();
+        boolean _equals = Objects.equal(_name, null);
+        if (_equals) {
+          _or = true;
+        } else {
+          String _name_1 = machine.getName();
+          String _trim = _name_1.trim();
+          boolean _equals_1 = Objects.equal(_trim, "");
+          _or = _equals_1;
         }
-      };
-      Shell _shell = this.getShell();
-      ProgressMonitorDialog dialog = new ProgressMonitorDialog(_shell);
-      dialog.run(false, true, runnable);
+        if (_or) {
+          Shell _shell = this.getShell();
+          MessageDialog.openInformation(_shell, "Warning", "Machine name is required!");
+        } else {
+          IRunnableWithProgress runnable = new IRunnableWithProgress() {
+            @Override
+            public void run(final IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+              if ((kind == 0)) {
+                Machine machine = ((Machine) eo);
+                final ExecutableDockerModel main = new ExecutableDockerModel(machine);
+                main.start();
+              } else {
+                if ((kind == 1)) {
+                  Container container = ((Container) eo);
+                  final ExecutableDockerModel main_1 = new ExecutableDockerModel(container);
+                  main_1.container.start();
+                }
+              }
+            }
+          };
+          Shell _shell_1 = this.getShell();
+          ProgressMonitorDialog dialog = new ProgressMonitorDialog(_shell_1);
+          dialog.run(false, true, runnable);
+        }
+      }
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -110,19 +132,39 @@ public class DockerServices {
    */
   public void startAll(final EObject eo) {
     try {
-      IRunnableWithProgress runnable = new IRunnableWithProgress() {
-        @Override
-        public void run(final IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
-          if ((eo instanceof Machine)) {
-            Machine machine = ((Machine) eo);
-            final ExecutableDockerModel main = new ExecutableDockerModel(machine);
-            main.startAll();
-          }
+      final int kind = this.eobjectKind(eo);
+      if ((kind == 0)) {
+        Machine machine = ((Machine) eo);
+        boolean _or = false;
+        String _name = machine.getName();
+        boolean _equals = Objects.equal(_name, null);
+        if (_equals) {
+          _or = true;
+        } else {
+          String _name_1 = machine.getName();
+          String _trim = _name_1.trim();
+          boolean _equals_1 = Objects.equal(_trim, "");
+          _or = _equals_1;
         }
-      };
-      Shell _shell = this.getShell();
-      ProgressMonitorDialog dialog = new ProgressMonitorDialog(_shell);
-      dialog.run(false, true, runnable);
+        if (_or) {
+          Shell _shell = this.getShell();
+          MessageDialog.openInformation(_shell, "Warning", "Machine name is required!");
+        } else {
+          IRunnableWithProgress runnable = new IRunnableWithProgress() {
+            @Override
+            public void run(final IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+              if ((eo instanceof Machine)) {
+                Machine machine = ((Machine) eo);
+                final ExecutableDockerModel main = new ExecutableDockerModel(machine);
+                main.startAll();
+              }
+            }
+          };
+          Shell _shell_1 = this.getShell();
+          ProgressMonitorDialog dialog = new ProgressMonitorDialog(_shell_1);
+          dialog.run(false, true, runnable);
+        }
+      }
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -193,5 +235,20 @@ public class DockerServices {
   public Shell getShell() {
     Display _current = Display.getCurrent();
     return _current.getActiveShell();
+  }
+  
+  /**
+   * Classify the EObject according to its kind (Machine/Container)
+   */
+  public int eobjectKind(final EObject eo) {
+    int kind = 2;
+    if ((eo instanceof Machine)) {
+      kind = 0;
+    } else {
+      if ((eo instanceof Container)) {
+        kind = 1;
+      }
+    }
+    return kind;
   }
 }
