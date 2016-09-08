@@ -25,6 +25,7 @@ import org.occiware.clouddesigner.occi.docker.connector.dockerjava.cgroup.CPUMan
 import org.occiware.clouddesigner.occi.docker.connector.dockerjava.cgroup.MemoryManager;
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerMachineManager;
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerUtil;
+import org.occiware.clouddesigner.occi.infrastructure.ComputeStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -47,14 +48,23 @@ public class DockerObserver {
           DockerObserver.LOGGER.info("The Container has Changed");
           Object _notifier = notification.getNotifier();
           Machine newMachine = ((Machine) _notifier);
+          boolean _and = false;
           String _name = cpMachine.getName();
           String _name_1 = newMachine.getName();
           boolean _equals = _name.equals(_name_1);
           boolean _not = (!_equals);
-          if (_not) {
+          if (!_not) {
+            _and = false;
+          } else {
+            ComputeStatus _state = newMachine.getState();
+            String _string = _state.toString();
+            boolean _equalsIgnoreCase = _string.equalsIgnoreCase("active");
+            _and = _equalsIgnoreCase;
+          }
+          if (_and) {
             Object _oldValue = notification.getOldValue();
-            String _string = _oldValue.toString();
-            machine.setName(_string);
+            String _string_1 = _oldValue.toString();
+            machine.setName(_string_1);
             throw new UnsupportedOperationException();
           }
           Object _oldValue_1 = notification.getOldValue();
