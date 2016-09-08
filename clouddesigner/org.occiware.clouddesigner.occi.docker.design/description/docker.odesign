@@ -23,7 +23,15 @@
           </style>
         </edgeMappings>
         <containerMappings name="Machine" preconditionExpression="[self.eInverse()->filter(docker::Contains)->select(target=self) -> isEmpty()/]" labelDirectEdit="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit']" semanticCandidatesExpression="feature:resources" domainClass="Machine">
-          <subNodeMappings name="Container" labelDirectEdit="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit']" semanticCandidatesExpression="[links->filter(docker::Contains).target/]" domainClass="Container">
+          <subNodeMappings name="Container" deletionDescription="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@toolSections.1/@ownedTools[name='unsetContainer']" labelDirectEdit="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit']" semanticCandidatesExpression="[links->filter(docker::Contains).target/]" doubleClickDescription="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@toolSections.0/@ownedTools[name='containerDoubleClick']" domainClass="Container">
+            <borderedNodeMappings name="DetailContainer" preconditionExpression="[state.toString().equalsIgnoreCase('active') and self.monitored/]" labelDirectEdit="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit']" semanticCandidatesExpression="var:self" domainClass="Container">
+              <style xsi:type="style:SquareDescription" labelSize="12" labelExpression="[self.cpu_used/]" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelFormat>bold</labelFormat>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+              </style>
+            </borderedNodeMappings>
             <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="5" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.occiware.clouddesigner.occi.docker.design/images/mcol-closed-box.svg">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -128,6 +136,13 @@
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:restart"/>
               </initialOperation>
             </menuItemDescription>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DoubleClickDescription" name="containerDoubleClick" mappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:Navigation"/>
+            </initialOperation>
           </ownedTools>
         </toolSections>
         <toolSections name="Configuration">
@@ -243,6 +258,16 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machine_Digital_Ocean" referenceName="resources"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="unsetContainer">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:RemoveElement"/>
+              </firstModelOperations>
             </initialOperation>
           </ownedTools>
         </toolSections>
