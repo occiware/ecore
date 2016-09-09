@@ -107,6 +107,13 @@
 		<module>../org.occiware.clouddesigner.occi.linkeddata.connector</module>
 		<module>../org.occiware.clouddesigner.occi.linkeddata.design</module>
 		
+        <!-- VMware -->
+        <module>../org.occiware.clouddesigner.occi.vmware</module>
+        <module>../org.occiware.clouddesigner.occi.vmware.edit</module>
+        <module>../org.occiware.clouddesigner.occi.vmware.editor</module>
+        <module>../org.occiware.clouddesigner.occi.vmware.tests</module>
+        <module>../org.occiware.clouddesigner.occi.vmware.design</module>
+        
 		<!-- OCCI Xtext -->
 		<module>../org.occiware.clouddesigner.occi.xtext</module>
 		<!--<module>../org.occiware.clouddesigner.occi.xtext.tests</module>-->

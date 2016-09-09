@@ -49,4 +49,12 @@
          </action>
       </objectContribution>
    </extension>
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated vmware -->
+      <package
+            uri="http://occiware.org/occi/vmware/ecore"
+            class="org.occiware.clouddesigner.occi.vmware.VmwarePackage"
+            genModel="model/vmware.genmodel"/>
+   </extension>
+
 </plugin>

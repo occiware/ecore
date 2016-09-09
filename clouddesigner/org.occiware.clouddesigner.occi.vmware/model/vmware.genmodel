@@ -1,0 +1,1449 @@
+<?xml version="1.0" encoding="ASCII"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2015-2016 Obeo, Inria&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html&#xA;&#x9;&#xA;Contributors:&#xA;- William Piers &lt;william.piers@obeo.fr>&#xA;- Philippe Merle &lt;philippe.merle@inria.fr>" modelDirectory="/org.occiware.clouddesigner.occi.vmware/src-gen" editDirectory="/org.occiware.clouddesigner.occi.vmware.edit/src-gen" editorDirectory="/org.occiware.clouddesigner.occi.vmware.editor/src-gen" modelPluginID="org.occiware.clouddesigner.occi.vmware" modelName="Vmware" testsDirectory="/org.occiware.clouddesigner.occi.vmware.tests/src" complianceLevel="7.0" copyrightFields="false" editPluginID="org.occiware.clouddesigner.occi.vmware.edit" editorPluginID="org.occiware.clouddesigner.occi.vmware.editor" testsPluginID="org.occiware.clouddesigner.occi.vmware.tests" operationReflection="true">
+  <foreignModel>vmware.ecore</foreignModel>
+  <genPackages prefix="Vmware" basePackage="org.occiware.clouddesigner.occi" disposableProviderFactory="true" loadInitialization="true" literalsInterface="false">
+    <ecorePackage href="vmware.ecore#/"/>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="vmware.ecore#//SharesLevel"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//SharesLevel/custom"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//SharesLevel/high"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//SharesLevel/low"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//SharesLevel/normal"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="vmware.ecore#//DvsNicTeamingPolicy"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//DvsNicTeamingPolicy/failoverexplicit"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//DvsNicTeamingPolicy/loadbalanceip"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//DvsNicTeamingPolicy/loadbalanceloadbased"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//DvsNicTeamingPolicy/loadbalancesrcid"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//DvsNicTeamingPolicy/loadbalancesrcmac"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="vmware.ecore#//Bootdevice"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//Bootdevice/cdrom"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//Bootdevice/harddisk"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//Bootdevice/network"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//Bootdevice/floppy"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="vmware.ecore#//ResourceAllocationType"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//ResourceAllocationType/cpu"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//ResourceAllocationType/memory"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//ResourceAllocationType/network"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="vmware.ecore#//ResourcePoolState"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//ResourcePoolState/undercommitted"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//ResourcePoolState/unknown"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//ResourcePoolState/inconsistent"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//ResourcePoolState/overcommitted"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="vmware.ecore#//PowerOffType"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//PowerOffType/soft"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//PowerOffType/hard"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//PowerOffType/preset"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="vmware.ecore#//GuestFirmwareType"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestFirmwareType/bios"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestFirmwareType/efi"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="vmware.ecore#//VmHtSharing"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//VmHtSharing/any"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//VmHtSharing/internal"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//VmHtSharing/none"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="vmware.ecore#//VmMonitorType"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//VmMonitorType/debug"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//VmMonitorType/release"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//VmMonitorType/stats"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="vmware.ecore#//VmPowerOffBehavior"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//VmPowerOffBehavior/powerOff"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//VmPowerOffBehavior/prompt"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//VmPowerOffBehavior/revert"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="vmware.ecore#//VmExecUsage"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//VmExecUsage/hvAuto"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//VmExecUsage/hvOff"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//VmExecUsage/hvOn"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="vmware.ecore#//VmMMUusage"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//VmMMUusage/automatic"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//VmMMUusage/off"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//VmMMUusage/on"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="vmware.ecore#//NpivWwnType"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//NpivWwnType/external"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//NpivWwnType/host"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//NpivWwnType/vc"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="vmware.ecore#//VmSwapPlacementType"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//VmSwapPlacementType/hostlocal"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//VmSwapPlacementType/inherit"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//VmSwapPlacementType/vmDirectory"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="vmware.ecore#//GuestOsIdentifiers"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/dosGuest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/win31Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/win95Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/win98Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/winMeGuest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/winNTGuest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/win2000ProGuest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/win2000ServGuest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/win2000AdvServGuest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/winXPHomeGuest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/winXPProGuest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/winXPPro64Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/winNetWebGuest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/winNetStandardGuest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/winNetEnterpriseGuest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/winNetDatacenterGuest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/winNetBusinessGuest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/winNetStandard64Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/winNetEnterprise64Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/winLonghornGuest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/winLonghorn64Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/winNetDatacenter64Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/winVistaGuest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/winVista64Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/windows7Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/windows7_64Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/windows7Server64Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/windows8Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/windows8_64Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/windows8Server64Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/windows9Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/windows9_64Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/windows9Server64Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/windowsHyperVGuest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/freebsdGuest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/freebsd64Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/redhatGuest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/rhel2Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/rhel3Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/rhel3_64Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/rhel4Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/rhel4_64Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/rhel5Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/rhel5_64Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/rhel6Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/rhel6_64Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/rhel7Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/rhel7_64Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/centosGuest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/centos64Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/oracleLinuxGuest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/oracleLinux64Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/suseGuest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/suse64Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/slesGuest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/sles64Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/sles10Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/sles10_64Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/sles11Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/sles11_64Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/sles12Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/sles12_64Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/nld9Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/oesGuest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/sjdsGuest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/mandrakeGuest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/mandrivaGuest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/mandriva64Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/turboLinuxGuest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/turboLinux64Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/ubuntuGuest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/ubuntu64Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/debian4Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/debian4_64Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/debian5Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/debian5_64Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/debian6Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/debian6_64Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/debian7Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/debian7_64Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/debian8Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/debian8_64Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/asianux3Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/asianux3_64Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/asianux4Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/asianux4_64Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/asianux5_64Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/opensuseGuest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/opensuse64Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/fedoraGuest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/fedora64Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/coreos64Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/other24xLinuxGuest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/other26xLinuxGuest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/otherLinuxGuest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/other3xLinuxGuest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/genericLinuxGuest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/other24xLinux64Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/other26xLinux64Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/other3xLinux64Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/otherLinux64Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/solaris6Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/solaris7Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/solaris8Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/solaris9Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/solaris10Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/solaris10_64Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/solaris11_64Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/os2Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/eComStationGuest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/eComStation2Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/netware4Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/netware5Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/netware6Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/openServer5Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/openServer6Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/unixWare7Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/darwinGuest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/darwin64Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/darwin10Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/darwin10_64Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/darwin11Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/darwin11_64Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/darwin12_64Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/darwin13_64Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/darwin14_64Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/vmkernelGuest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/vmkernel5Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/vmkernel6Guest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/otherGuest"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//GuestOsIdentifiers/otherGuest64"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="vmware.ecore#//ToolsUpgradePolicy"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//ToolsUpgradePolicy/manual"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//ToolsUpgradePolicy/upgradeAtPowerCycle"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="vmware.ecore#//OverallStatus"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//OverallStatus/gray"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//OverallStatus/green"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//OverallStatus/red"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//OverallStatus/yellow"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="vmware.ecore#//HostConnectionState"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//HostConnectionState/connected"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//HostConnectionState/disconnected"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//HostConnectionState/notResponding"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="vmware.ecore#//DiagnosticPartitionType"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//DiagnosticPartitionType/multiHost"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//DiagnosticPartitionType/singleHost"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="vmware.ecore#//AutoStartWaitHeartbeatSetting"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//AutoStartWaitHeartbeatSetting/yes"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//AutoStartWaitHeartbeatSetting/no"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//AutoStartWaitHeartbeatSetting/systemdefault"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="vmware.ecore#//HostFirewallRuleDirection"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//HostFirewallRuleDirection/inbound"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//HostFirewallRuleDirection/outbound"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="vmware.ecore#//HostNetworkProtocol"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//HostNetworkProtocol/tcp"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//HostNetworkProtocol/udp"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="vmware.ecore#//ClusterDASVmSettingsRestartPriority"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//ClusterDASVmSettingsRestartPriority/clusterRestartPriority"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//ClusterDASVmSettingsRestartPriority/disabled"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//ClusterDASVmSettingsRestartPriority/high"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//ClusterDASVmSettingsRestartPriority/low"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//ClusterDASVmSettingsRestartPriority/medium"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="vmware.ecore#//ClusterDASVmSettingsIsolationResponse"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//ClusterDASVmSettingsIsolationResponse/clusterIsolationResponse"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//ClusterDASVmSettingsIsolationResponse/none"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//ClusterDASVmSettingsIsolationResponse/powerOff"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="vmware.ecore#//DrsBehavior"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//DrsBehavior/fullyAutomated"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//DrsBehavior/manual"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//DrsBehavior/partiallyAutomated"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="vmware.ecore#//DpmBehavior"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//DpmBehavior/automated"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//DpmBehavior/manual"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="vmware.ecore#//DatastoreHostMountMode"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//DatastoreHostMountMode/readOnly"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//DatastoreHostMountMode/readWrite"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="vmware.ecore#//NicPolicyTeamingValue"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//NicPolicyTeamingValue/loadbalance_ip"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//NicPolicyTeamingValue/loadbalance_srcmac"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//NicPolicyTeamingValue/loadbalance_srcid"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//NicPolicyTeamingValue/failover_explicit"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="vmware.ecore#//PortGroupConnecteeType"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//PortGroupConnecteeType/host"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//PortGroupConnecteeType/systemManagement"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//PortGroupConnecteeType/unknown"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//PortGroupConnecteeType/virtualMachine"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="vmware.ecore#//NetworkChangeOperation"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//NetworkChangeOperation/add"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//NetworkChangeOperation/edit"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//NetworkChangeOperation/remove"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="vmware.ecore#//NetworkBootProtocolType"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//NetworkBootProtocolType/ipv4"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//NetworkBootProtocolType/ipv6"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="vmware.ecore#//VmForkConfigInfoChildType"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//VmForkConfigInfoChildType/none"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//VmForkConfigInfoChildType/nonpersistent"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//VmForkConfigInfoChildType/persistent"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="vmware.ecore#//VmFaultToleranceType"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//VmFaultToleranceType/checkpointing"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//VmFaultToleranceType/recordReplay"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//VmFaultToleranceType/unset"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="vmware.ecore#//LatencySensitivityLevel"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//LatencySensitivityLevel/normal"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//LatencySensitivityLevel/low"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//LatencySensitivityLevel/medium"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//LatencySensitivityLevel/high"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="vmware.ecore#//ClusterDasConfigInfoHBDatastoreCandidate"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//ClusterDasConfigInfoHBDatastoreCandidate/allFeasibleDsWithUserPreference"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//ClusterDasConfigInfoHBDatastoreCandidate/allFeasibleDs"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//ClusterDasConfigInfoHBDatastoreCandidate/userSelectedDs"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="vmware.ecore#//ClusterDasConfigInfoVmMonitoringState"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//ClusterDasConfigInfoVmMonitoringState/vmAndAppMonitoring"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//ClusterDasConfigInfoVmMonitoringState/vmMonitoringDisabled"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//ClusterDasConfigInfoVmMonitoringState/vmMonitoringOnly"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="vmware.ecore#//ClusterDasConfigInfoServiceState"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//ClusterDasConfigInfoServiceState/enabled"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//ClusterDasConfigInfoServiceState/disabled"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="vmware.ecore#//HostFileSystemVolumeFileType"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//HostFileSystemVolumeFileType/CIFS"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//HostFileSystemVolumeFileType/NFS"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//HostFileSystemVolumeFileType/NFS41"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//HostFileSystemVolumeFileType/OTHER"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//HostFileSystemVolumeFileType/VFFS"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//HostFileSystemVolumeFileType/VMFS"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//HostFileSystemVolumeFileType/vsan"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//HostFileSystemVolumeFileType/VVOL"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="vmware.ecore#//DatastoreMaintenanceModeState"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//DatastoreMaintenanceModeState/enteringMaintenance"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//DatastoreMaintenanceModeState/inMaintenance"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//DatastoreMaintenanceModeState/normal"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="vmware.ecore#//HostNasVolumeSecurityType"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//HostNasVolumeSecurityType/AUTH_SYS"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//HostNasVolumeSecurityType/SEC_KRB5"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="vmware.ecore#//VirtualDeviceConnectStatus"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//VirtualDeviceConnectStatus/ok"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//VirtualDeviceConnectStatus/recoverableError"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//VirtualDeviceConnectStatus/unrecoverrableError"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//VirtualDeviceConnectStatus/untried"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="vmware.ecore#//HostCapabilityFtUnsupportedReason"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//HostCapabilityFtUnsupportedReason/cpuHvDisabled"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//HostCapabilityFtUnsupportedReason/cpuHvUnsupported"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//HostCapabilityFtUnsupportedReason/cpuHwmmuUnsupported"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//HostCapabilityFtUnsupportedReason/ftNotLicensed"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//HostCapabilityFtUnsupportedReason/haAgentIssue"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//HostCapabilityFtUnsupportedReason/missingFTLoggingNic"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//HostCapabilityFtUnsupportedReason/missingVMotionNic"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//HostCapabilityFtUnsupportedReason/unsupportedProduct"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="vmware.ecore#//HostCapabilityFtUnsupportedReason/vMotionNotLicensed"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genDataTypes>
+      <ecoreDataType href="vmware.ecore#//LongNumber"/>
+    </genDataTypes>
+    <genDataTypes>
+      <ecoreDataType href="vmware.ecore#//Datetype"/>
+    </genDataTypes>
+    <genDataTypes>
+      <ecoreDataType href="vmware.ecore#//ShortNumber"/>
+    </genDataTypes>
+    <genDataTypes>
+      <ecoreDataType href="vmware.ecore#//ByteType"/>
+    </genDataTypes>
+    <genClasses>
+      <ecoreClass href="vmware.ecore#//Datastore"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Datastore/name"/>
+      </genFeatures>
+      <genOperations>
+        <ecoreOperation href="vmware.ecore#//Datastore/enterMaintenanceMode"/>
+      </genOperations>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="vmware.ecore#//Cluster"/>
+      <genOperations>
+        <ecoreOperation href="vmware.ecore#//Cluster/addAllHostSystem"/>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="vmware.ecore#//Cluster/applyRecommendation"/>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="vmware.ecore#//Cluster/enterMaintenanceMode"/>
+      </genOperations>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="vmware.ecore#//Datacenter"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Datacenter/defaultHardwareVersionKey"/>
+      </genFeatures>
+      <genOperations>
+        <ecoreOperation href="vmware.ecore#//Datacenter/powerOnMultiVMs"/>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="vmware.ecore#//Datacenter/discoverAll"/>
+      </genOperations>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="vmware.ecore#//Hostsystem"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Hostsystem/name"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Hostsystem/clusterSupported"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Hostsystem/inDasCluster"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Hostsystem/serverip"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Hostsystem/vimAccountNameRequired"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Hostsystem/agentVmDatastoreName"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Hostsystem/agentVmNetworkName"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Hostsystem/port"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Hostsystem/faultToleranceEnabled"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Hostsystem/hostFeatureVersionKeys"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Hostsystem/hostFeatureVersionValues"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Hostsystem/vmotionEnabled"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Hostsystem/currentEVCModeKey"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Hostsystem/customValues"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Hostsystem/managementServerip"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Hostsystem/maxEVCKey"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Hostsystem/overallStatus"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Hostsystem/distributedCPUFairness"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Hostsystem/distributedMemoryFairness"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Hostsystem/overallCPUUsage"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Hostsystem/overallMemoryUsage"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Hostsystem/rebootRequired"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Hostsystem/bootTime"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Hostsystem/connectionState"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Hostsystem/inMaintenanceMode"/>
+      </genFeatures>
+      <genOperations>
+        <ecoreOperation href="vmware.ecore#//Hostsystem/disconnectHost"/>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="vmware.ecore#//Hostsystem/enterlLockDownMode"/>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="vmware.ecore#//Hostsystem/enterMaintenanceMode"/>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="vmware.ecore#//Hostsystem/exitLockDownMode"/>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="vmware.ecore#//Hostsystem/exitMaintenanceMode"/>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="vmware.ecore#//Hostsystem/reconfigureHostForDAS"/>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="vmware.ecore#//Hostsystem/reconnectHost"/>
+      </genOperations>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="vmware.ecore#//Vm"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Vm/name"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Vm/instanceUUID"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Vm/template"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Vm/vcpus"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Vm/coresPerSocket"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Vm/guestState"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Vm/vmwareToolsInstalled"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Vm/vmwareToolsRunning"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Vm/guestFullName"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Vm/cpuhotAddEnabled"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Vm/cpuHotRemoveEnabled"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Vm/annotation"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Vm/vmwarePowerState"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Vm/overallStatus"/>
+      </genFeatures>
+      <genOperations>
+        <ecoreOperation href="vmware.ecore#//Vm/cloneVM"/>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="vmware.ecore#//Vm/mountVmwareToolsdisk"/>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="vmware.ecore#//Vm/markAsTemplate"/>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="vmware.ecore#//Vm/markAsVirtualMachine"/>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="vmware.ecore#//Vm/registerVM"/>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="vmware.ecore#//Vm/unregisterVM"/>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="vmware.ecore#//Vm/defragmentAllDisks"/>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="vmware.ecore#//Vm/resetLocationId"/>
+      </genOperations>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="vmware.ecore#//Folderlink"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="vmware.ecore#//Resourcepoollink"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="vmware.ecore#//Clusterlink"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="vmware.ecore#//Resourcepool"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Resourcepool/name"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Resourcepool/expandablereservation"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Resourcepool/limit"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Resourcepool/reservation"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Resourcepool/state"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="vmware.ecore#//Datacenterlink"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="vmware.ecore#//Hostsystemlink"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="vmware.ecore#//Datastorelink"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="vmware.ecore#//Virtualdisk"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Virtualdisk/volumeName"/>
+      </genFeatures>
+      <genOperations>
+        <ecoreOperation href="vmware.ecore#//Virtualdisk/zeroFill"/>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="vmware.ecore#//Virtualdisk/shrink"/>
+      </genOperations>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="vmware.ecore#//Vswitch"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Vswitch/name"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Vswitch/nbport"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Vswitch/beaconInterval"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Vswitch/mtu"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Vswitch/changeOperation"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="vmware.ecore#//Portgroup"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Portgroup/name"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Portgroup/vlanId"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Portgroup/key"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="vmware.ecore#//Virtualnetworkadapter"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Virtualnetworkadapter/name"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Virtualnetworkadapter/key"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Virtualnetworkadapter/subnetMask"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Virtualnetworkadapter/port"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Virtualnetworkadapter/deviceDriver"/>
+      </genFeatures>
+      <genOperations>
+        <ecoreOperation href="vmware.ecore#//Virtualnetworkadapter/connectAdaptater"/>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="vmware.ecore#//Virtualnetworkadapter/disconnectAdaptater"/>
+      </genOperations>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="vmware.ecore#//Virtualdisknetwork"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="vmware.ecore#//Virtualdisknetworklink"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="vmware.ecore#//Hostnetworkadapter"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Hostnetworkadapter/name"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Hostnetworkadapter/driver"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Hostnetworkadapter/key"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Hostnetworkadapter/pci"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Hostnetworkadapter/subnetMask"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Hostnetworkadapter/wakeOnLanSupported"/>
+      </genFeatures>
+      <genOperations>
+        <ecoreOperation href="vmware.ecore#//Hostnetworkadapter/connect"/>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="vmware.ecore#//Hostnetworkadapter/disconnect"/>
+      </genOperations>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="vmware.ecore#//Dvswitch"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="vmware.ecore#//Snapshot"/>
+      <genOperations>
+        <ecoreOperation href="vmware.ecore#//Snapshot/restore"/>
+      </genOperations>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="vmware.ecore#//Snapshotlink"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="vmware.ecore#//Folder"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Folder/name"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="vmware.ecore#//Hostfolder"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="vmware.ecore#//Vcentercapability"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Vcentercapability/multiHostSupported"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Vcentercapability/provisioningSupported"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Vcentercapability/userShellAccessSupported"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Vcentercapability/EVCModeVendor"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Vcentercapability/EVCModeVendorTier"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="vmware.ecore#//Hostfirewallsystem"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Hostfirewallsystem/defaultIncomingBlocked"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Hostfirewallsystem/defaultOutgoingBlocked"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="vmware.ecore#//Hostfirewallruleset"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Hostfirewallruleset/enabled"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Hostfirewallruleset/key"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Hostfirewallruleset/label"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Hostfirewallruleset/required"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Hostfirewallruleset/service"/>
+      </genFeatures>
+      <genOperations>
+        <ecoreOperation href="vmware.ecore#//Hostfirewallruleset/disableRuleset"/>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="vmware.ecore#//Hostfirewallruleset/enableRuleset"/>
+      </genOperations>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="vmware.ecore#//Hostfirewallrule"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Hostfirewallrule/direction"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Hostfirewallrule/port"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Hostfirewallrule/endPort"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Hostfirewallrule/protocol"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="vmware.ecore#//Hoststorage"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Hoststorage/hostVolumeName"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="vmware.ecore#//Hoststoragelink"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="vmware.ecore#//Vmfolder"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="vmware.ecore#//Serviceconsolenic"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="vmware.ecore#//Portgrouplink"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="vmware.ecore#//Hostnatrule"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Hostnatrule/activeFtp"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Hostnatrule/allowAnyOui"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Hostnatrule/configPort"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Hostnatrule/natKey"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Hostnatrule/natChangeOperation"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Hostnatrule/ipGatewayAddress"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Hostnatrule/udpTimeOut"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="vmware.ecore#//Hostnatportforwardlink"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Hostnatportforwardlink/guestIpAddress"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Hostnatportforwardlink/guestPort"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Hostnatportforwardlink/hostPort"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Hostnatportforwardlink/name"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Hostnatportforwardlink/type"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="vmware.ecore#//Distributedportgroup"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="vmware.ecore#//Virtualcdrom"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Virtualcdrom/isoFilename"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="vmware.ecore#//Virtualfloppy"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="vmware.ecore#//Virtualdisklink"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Virtualdisklink/vmdkFilePathOnDatastore"/>
+      </genFeatures>
+    </genClasses>
+  </genPackages>
+  <usedGenPackages href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.genmodel#//infrastructure"/>
+  <usedGenPackages href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.genmodel#//occi"/>
+</genmodel:GenModel>

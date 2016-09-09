@@ -108,7 +108,7 @@
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
     <attributes name="template" default="false" description="If true, this virtual machine is set as a template machine and may be used as an image">
-      <type href="../../../plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean"/>
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
     </attributes>
     <attributes name="vcpus" required="true" default="1" description="Number of virtual cpus&#xA;Reconfigure privilege: VirtualMachine.Config.CpuCount ">
       <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
@@ -120,7 +120,7 @@
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
     <attributes name="vmwareToolsInstalled" default="false" description="Is vmware tools installed on this virtual machine">
-      <type href="../../../plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean"/>
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
     </attributes>
     <attributes name="vmwareToolsRunning" default="false" description="is vmware tools running on this virtual machine">
       <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
@@ -142,12 +142,12 @@
     </attributes>
     <attributes name="overallStatus" type="//@types.19"/>
     <parent href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='compute']"/>
-    <actions term="clone" scheme="http://occiware.org/occi/vmware/vm/action#" title="Clone a virtual machine"/>
+    <actions term="cloneVM" scheme="http://occiware.org/occi/vmware/vm/action#" title="Clone a virtual machine"/>
     <actions term="mountVmwareToolsdisk" scheme="http://occiware.org/occi/vmware/vm/action#" title="Mount vmware tools iso"/>
     <actions term="markAsTemplate" scheme="http://occiware.org/occi/vmware/vm/action#" title="Mark this virtual machine as a template image"/>
     <actions term="markAsVirtualMachine" scheme="http://occiware.org/occi/vmware/vm/action#" title="Mark this template image as a virtual machine"/>
-    <actions term="register" scheme="http://occiware.org/occi/vmware/vm/action#" title="Register this virtual machine on vcenter"/>
-    <actions term="unregister" scheme="http://occiware.org/occi/vmware/vm/action#" title="Unregister this virtual machine from vcenter"/>
+    <actions term="registerVM" scheme="http://occiware.org/occi/vmware/vm/action#" title="Register this virtual machine on vcenter"/>
+    <actions term="unregisterVM" scheme="http://occiware.org/occi/vmware/vm/action#" title="Unregister this virtual machine from vcenter"/>
     <actions term="defragmentAllDisks" scheme="http://occiware.org/occi/vmware/vm/action#" title="Defragment all virtual disk on this virtual machine"/>
     <actions term="resetLocationId" scheme="http://occiware.org/occi/vmware/vm/action#" title="128-bit hash based on the virtual machine's configuration file location and the UUID of the host assigned to run the virtual machine.Normally, this property is not set by a client, allowing the Virtual Infrastructure environment to assign a location ID when the virtual machine is created. However, if the virtual machine's configuration file has been manually moved, it may be desirable to clear this property, setting it to an empty string, so the property is regenerated.Reconfigure privilege: VirtualMachine.Config.Settings"/>
   </kinds>
