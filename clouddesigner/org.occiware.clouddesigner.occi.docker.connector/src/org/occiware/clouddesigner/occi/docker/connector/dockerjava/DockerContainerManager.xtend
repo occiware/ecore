@@ -65,8 +65,6 @@ class DockerContainerManager {
 
 	private PreferenceValues properties = new PreferenceValues
 
-	private StatsCallback stats = null
-
 	new() {
 	}
 
