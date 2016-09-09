@@ -38,29 +38,39 @@ class DockerServices {
 	def void start(EObject eo) {
 		val kind = eobjectKind(eo)
 
-		if (kind == 0) {
+		if (kind == 0) { // This is a machine
 			var machine = eo as Machine
-			if (machine.name == null || machine.name.trim() == "") {
+			if (machine.name == null || machine.name.trim() == "") { // TODO improve the validation
 				MessageDialog.openInformation(shell, "Warning", "Machine name is required!")
 			} else {
 				var runnable = new IRunnableWithProgress() {
 					override run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
-						if (kind == 0) {
-							var machine = eo as Machine
-							val main = new ExecutableDockerModel(machine)
-							main.start
-
-						} else if (kind == 1) {
-							var container = eo as Container
-							val main = new ExecutableDockerModel(container)
-							main.container.start
-						}
+						var machine = eo as Machine
+						val main = new ExecutableDockerModel(machine)
+						main.start
 					}
 				}
 				var dialog = new ProgressMonitorDialog(getShell())
 				dialog.run(false, true, runnable)
 
 			}
+		} else if (kind == 1) { // This is a container
+			var container = eo as Container
+			if (container.name == null || container.name.trim() == "") { // TODO improve the validation
+				MessageDialog.openInformation(shell, "Warning", "Container name is required!")
+			} else {
+				var runnable = new IRunnableWithProgress() {
+					override run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+						var container = eo as Container
+						val main = new ExecutableDockerModel(container)
+						main.container.start
+					}
+				}
+				var dialog = new ProgressMonitorDialog(getShell())
+				dialog.run(false, true, runnable)
+
+			}
+
 		}
 
 	}
@@ -104,16 +114,14 @@ class DockerServices {
 		if (kind == 0) {
 			var machine = eo as Machine
 			// TODO the validation should be specific to the machine
-			if (machine.name == null || machine.name.trim() == "") {
+			if (machine.name == null || machine.name.trim() == "") { // TODO improve the validation
 				MessageDialog.openInformation(shell, "Warning", "Machine name is required!")
 			} else {
 				var runnable = new IRunnableWithProgress() {
 					override run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
-						if (eo instanceof Machine) {
-							var machine = eo as Machine
-							val main = new ExecutableDockerModel(machine)
-							main.startAll
-						}
+						var machine = eo as Machine
+						val main = new ExecutableDockerModel(machine)
+						main.startAll
 					}
 				}
 				var dialog = new ProgressMonitorDialog(getShell())
@@ -126,47 +134,86 @@ class DockerServices {
 	 * Popup menu stop action.
 	 */
 	def void stop(EObject eo) {
-		var long startTime = System.currentTimeMillis();
-		var runnable = new IRunnableWithProgress() {
-			override run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
-				if (eo instanceof Machine) {
-					var machine = eo as Machine
-					val main = new ExecutableDockerModel(machine)
-					main.stop
-				} else if (eo instanceof Container) {
-					var container = eo as Container
-					val main = new ExecutableDockerModel(container)
-					main.container.stop(StopMethod.GRACEFUL)
+		val kind = eobjectKind(eo)
+
+		if (kind == 0) { // This is a machine
+			var machine = eo as Machine
+			if (machine.name == null || machine.name.trim() == "") { // TODO improve the validation
+				MessageDialog.openInformation(shell, "Warning", "Machine name is required!")
+			} else {
+				var runnable = new IRunnableWithProgress() {
+					override run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+						var machine = eo as Machine
+						val main = new ExecutableDockerModel(machine)
+						main.stop
+					}
 				}
+				var dialog = new ProgressMonitorDialog(getShell())
+				dialog.run(false, true, runnable)
+
 			}
+		} else if (kind == 1) { // This is a container
+			var container = eo as Container
+			if (container.name == null || container.name.trim() == "") { // TODO improve the validation
+				MessageDialog.openInformation(shell, "Warning", "Container name is required!")
+			} else {
+				var runnable = new IRunnableWithProgress() {
+					override run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+						var container = eo as Container
+						val main = new ExecutableDockerModel(container)
+						main.container.stop(StopMethod.GRACEFUL)
+					}
+				}
+				var dialog = new ProgressMonitorDialog(getShell())
+				dialog.run(false, true, runnable)
+
+			}
+
 		}
-		var long stopTime = System.currentTimeMillis();
-		var diff = stopTime - startTime
-		println("Stopped time = " + diff)
-		var dialog = new ProgressMonitorDialog(getShell())
-		dialog.run(false, true, runnable)
+
 	}
 
 	/**
 	 * Popup menu restart action.
 	 */
 	def void restart(EObject eo) {
-		var runnable = new IRunnableWithProgress() {
-			override run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
-				if (eo instanceof Machine) {
-					var machine = eo as Machine
-					val main = new ExecutableDockerModel(machine)
-					main.restart
 
-				} else if (eo instanceof Container) {
-					var container = eo as Container
-					val main = new ExecutableDockerModel(container)
-					main.container.restart(RestartMethod.GRACEFUL)
+		val kind = eobjectKind(eo)
+
+		if (kind == 0) { // This is a machine
+			var machine = eo as Machine
+			if (machine.name == null || machine.name.trim() == "") { // TODO improve the validation
+				MessageDialog.openInformation(shell, "Warning", "Machine name is required!")
+			} else {
+				var runnable = new IRunnableWithProgress() {
+					override run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+						var machine = eo as Machine
+						val main = new ExecutableDockerModel(machine)
+						main.restart
+					}
 				}
+				var dialog = new ProgressMonitorDialog(getShell())
+				dialog.run(false, true, runnable)
+
 			}
+		} else if (kind == 1) { // This is a container
+			var container = eo as Container
+			if (container.name == null || container.name.trim() == "") { // TODO improve the validation
+				MessageDialog.openInformation(shell, "Warning", "Container name is required!")
+			} else {
+				var runnable = new IRunnableWithProgress() {
+					override run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+						var container = eo as Container
+						val main = new ExecutableDockerModel(container)
+						main.container.restart(RestartMethod.GRACEFUL)
+					}
+				}
+				var dialog = new ProgressMonitorDialog(getShell())
+				dialog.run(false, true, runnable)
+
+			}
+
 		}
-		var dialog = new ProgressMonitorDialog(getShell())
-		dialog.run(false, true, runnable)
 	}
 
 	def Shell getShell() {
