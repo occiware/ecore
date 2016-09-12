@@ -69,6 +69,10 @@ class CommandFactory {
 		return command
 	}
 
+	def createLsCommand() {
+		val String command = String.format("%s ls", this.dockerMachineCmd)
+		return command
+	}
 	
 	def createRemoveStagingCommand(String machineName) {
 		val String command = String.format("%s rm %s staging", this.dockerMachineCmd, machineName)
