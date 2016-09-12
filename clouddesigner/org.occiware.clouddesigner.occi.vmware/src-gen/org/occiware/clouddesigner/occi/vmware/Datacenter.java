@@ -11,6 +11,8 @@
  */
 package org.occiware.clouddesigner.occi.vmware;
 
+import org.occiware.clouddesigner.occi.Resource;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -22,13 +24,14 @@ package org.occiware.clouddesigner.occi.vmware;
  * </p>
  * <ul>
  *   <li>{@link org.occiware.clouddesigner.occi.vmware.Datacenter#getDefaultHardwareVersionKey <em>Default Hardware Version Key</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.vmware.Datacenter#getName <em>Name</em>}</li>
  * </ul>
  *
  * @see org.occiware.clouddesigner.occi.vmware.VmwarePackage#getDatacenter()
  * @model annotation="OCCIE2Ecore title='The interface to the common container object for hosts and virtual machines. Every host and virtual machine must be under a distinct datacenter in the inventory, and datacenters may not be nested under other datacenters.'"
  * @generated
  */
-public interface Datacenter extends Folder {
+public interface Datacenter extends Resource {
 	/**
 	 * Returns the value of the '<em><b>Default Hardware Version Key</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -55,6 +58,33 @@ public interface Datacenter extends Folder {
 	 * @generated
 	 */
 	void setDefaultHardwareVersionKey(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Name</em>' attribute.
+	 * @see #setName(String)
+	 * @see org.occiware.clouddesigner.occi.vmware.VmwarePackage#getDatacenter_Name()
+	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
+	 *        annotation="OCCIE2Ecore description='null'"
+	 * @generated
+	 */
+	String getName();
+
+	/**
+	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.vmware.Datacenter#getName <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Name</em>' attribute.
+	 * @see #getName()
+	 * @generated
+	 */
+	void setName(String value);
 
 	/**
 	 * <!-- begin-user-doc -->

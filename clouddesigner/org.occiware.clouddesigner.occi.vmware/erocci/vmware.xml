@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated at Fri Sep 09 11:14:11 CEST 2016 from platform:/resource/org.occiware.clouddesigner.occi.vmware/model/vmware.occie by org.occiware.clouddesigner.occi.gen.xml -->
+<!-- Generated at Fri Sep 09 14:20:12 CEST 2016 from platform:/resource/org.occiware.clouddesigner.occi.vmware/model/vmware.occie by org.occiware.clouddesigner.occi.gen.xml -->
 <occi:extension xmlns:occi="http://schemas.ogf.org/occi"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -19,7 +19,8 @@
 
   <!-- Kind: Represents a cluster of HostSystem objects as a unified compute resource for virtual machines. -->
   <occi:kind term="cluster" scheme="http://occiware.org/occi/vmware#" title="Represents a cluster of HostSystem objects as a unified compute resource for virtual machines.">
-    <occi:parent term="folder" scheme="http://occiware.org/occi/vmware#"/>
+    <occi:parent term="resource" scheme="http://schemas.ogf.org/occi/core#"/>
+    <occi:attribute name="name" use="required" type="xs:string" title=""/>
     <occi:action term="addAllHostSystem" scheme="http://occiware.org/occi/vmware/cluster/action#" title="Add all hostsystem linked to this cluster and not already added on this cluster, if hostsystem are not connectable, the host will not be added">
     </occi:action>
     <occi:action term="applyRecommendation" scheme="http://occiware.org/occi/vmware/cluster/action#" title="">
@@ -30,8 +31,9 @@
 
   <!-- Kind: The interface to the common container object for hosts and virtual machines. Every host and virtual machine must be under a distinct datacenter in the inventory, and datacenters may not be nested under other datacenters. -->
   <occi:kind term="datacenter" scheme="http://occiware.org/occi/vmware#" title="The interface to the common container object for hosts and virtual machines. Every host and virtual machine must be under a distinct datacenter in the inventory, and datacenters may not be nested under other datacenters.">
-    <occi:parent term="folder" scheme="http://occiware.org/occi/vmware#"/>
+    <occi:parent term="resource" scheme="http://schemas.ogf.org/occi/core#"/>
     <occi:attribute name="defaultHardwareVersionKey" use="optional" type="xs:string" title="Key for Default Hardware Version to be used on this datacenter in the format of key. Setting this field affects defaultConfigOption returned by environmentBrowser of all its children with this field unset. See ReconfigureDatacenter_Task"/>
+    <occi:attribute name="name" use="required" type="xs:string" title=""/>
     <occi:action term="powerOnMultiVMs" scheme="http://occiware.org/occi/vmware/datacenter/action#" title="">
     </occi:action>
     <occi:action term="discoverAll" scheme="http://occiware.org/occi/vmware/datacenter/action#" title="This action create or synchronize all the infrastructure elements detected on VMware in Cloud designer diagram, but does nothing on VMware. This make take some times to synchronize if there is a lot of elements">
@@ -140,7 +142,7 @@
 
   <!-- Kind: Link between cluster and hostsystem -->
   <occi:kind term="clusterlink" scheme="http://occiware.org/occi/vmware#" title="Link between cluster and hostsystem">
-    <occi:parent term="folderlink" scheme="http://occiware.org/occi/vmware#"/>
+    <occi:parent term="link" scheme="http://schemas.ogf.org/occi/core#"/>
   </occi:kind>
 
   <!-- Kind: A resource pool linked between a compute host (or a cluster) and a virtual machine, usage attributes part are for runtime information only -->
@@ -164,12 +166,12 @@
 
   <!-- Kind:  -->
   <occi:kind term="datacenterlink" scheme="http://occiware.org/occi/vmware#" title="">
-    <occi:parent term="folderlink" scheme="http://occiware.org/occi/vmware#"/>
+    <occi:parent term="link" scheme="http://schemas.ogf.org/occi/core#"/>
   </occi:kind>
 
   <!-- Kind: a link between a hostsystem and a virtual machine -->
   <occi:kind term="hostsystemlink" scheme="http://occiware.org/occi/vmware#" title="a link between a hostsystem and a virtual machine">
-    <occi:parent term="folderlink" scheme="http://occiware.org/occi/vmware#"/>
+    <occi:parent term="link" scheme="http://schemas.ogf.org/occi/core#"/>
   </occi:kind>
 
   <!-- Kind: a link between a datacenter and a datastore -->
@@ -236,7 +238,8 @@ Requires Datastore.FileManagement privilege on the datastore where the virtual d
 
   <!-- Kind: a storage disk network for usage with a network vswitch and portgroup, vswitch and portgroup may be multiples -->
   <occi:kind term="virtualdisknetwork" scheme="http://occiware.org/occi/vmware#" title="a storage disk network for usage with a network vswitch and portgroup, vswitch and portgroup may be multiples">
-    <occi:parent term="virtualdisk" scheme="http://occiware.org/occi/vmware#"/>
+    <occi:parent term="storage" scheme="http://schemas.ogf.org/occi/infrastructure#"/>
+    <occi:attribute name="volumeName" use="required" type="xs:string" title=""/>
   </occi:kind>
 
   <!-- Kind: a link between a virtualdisknetwork and a vswitch -->
@@ -285,7 +288,8 @@ Requires Datastore.FileManagement privilege on the datastore where the virtual d
 
   <!-- Kind:  -->
   <occi:kind term="hostfolder" scheme="http://occiware.org/occi/vmware#" title="">
-    <occi:parent term="folder" scheme="http://occiware.org/occi/vmware#"/>
+    <occi:parent term="resource" scheme="http://schemas.ogf.org/occi/core#"/>
+    <occi:attribute name="name" use="required" type="xs:string" title=""/>
   </occi:kind>
 
   <!-- Kind: Global data object to determine if the global service instance support or not a feature, see ServiceInstance -->
@@ -341,7 +345,8 @@ Requires Datastore.FileManagement privilege on the datastore where the virtual d
 
   <!-- Kind:  -->
   <occi:kind term="vmfolder" scheme="http://occiware.org/occi/vmware#" title="">
-    <occi:parent term="folder" scheme="http://occiware.org/occi/vmware#"/>
+    <occi:parent term="resource" scheme="http://schemas.ogf.org/occi/core#"/>
+    <occi:attribute name="name" use="required" type="xs:string" title=""/>
   </occi:kind>
 
   <!-- Kind: Virtual network adapters configured for use by the Service Console -->
@@ -383,13 +388,15 @@ Requires Datastore.FileManagement privilege on the datastore where the virtual d
 
   <!-- Kind: A virtual cdrom disk -->
   <occi:kind term="virtualcdrom" scheme="http://occiware.org/occi/vmware#" title="A virtual cdrom disk">
-    <occi:parent term="virtualdisk" scheme="http://occiware.org/occi/vmware#"/>
+    <occi:parent term="storage" scheme="http://schemas.ogf.org/occi/infrastructure#"/>
     <occi:attribute name="isoFilename" use="required" type="xs:string" title="The filename of the ISO."/>
+    <occi:attribute name="volumeName" use="required" type="xs:string" title=""/>
   </occi:kind>
 
   <!-- Kind: A virtual floppy disk -->
   <occi:kind term="virtualfloppy" scheme="http://occiware.org/occi/vmware#" title="A virtual floppy disk">
-    <occi:parent term="virtualdisk" scheme="http://occiware.org/occi/vmware#"/>
+    <occi:parent term="storage" scheme="http://schemas.ogf.org/occi/infrastructure#"/>
+    <occi:attribute name="volumeName" use="required" type="xs:string" title=""/>
   </occi:kind>
 
   <!-- Kind:  -->

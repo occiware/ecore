@@ -229,6 +229,7 @@ public class NetworkinterfaceConnector
 
 		if (vm == null) {
 			LOGGER.warn("The linked virtual machine doesnt exist on Vcenter, no network to retrieve.");
+			setState(NetworkInterfaceStatus.INACTIVE);
 			// No vm adapter found so.
 			VCenterClient.disconnect();
 			return;
@@ -259,12 +260,14 @@ public class NetworkinterfaceConnector
 			vEths = NetworkHelper.findNetDeviceForHostNetName(networkName, vm);
 			if (vEths.isEmpty()) {
 				LOGGER.warn("No network adapter found for this host network: " + networkName);
+				setState(NetworkInterfaceStatus.INACTIVE);
 				VCenterClient.disconnect();
 				return;
 			}
 
 		} else {
 			LOGGER.warn("The host network name is not found on vcenter, no network to retrieve.");
+			setState(NetworkInterfaceStatus.INACTIVE);
 			VCenterClient.disconnect();
 			return;
 		}
@@ -417,53 +420,7 @@ public class NetworkinterfaceConnector
 
 		}
 
-		// TODO : move networkpart in network connector via occiRetrieve. 
-		
-		if (vEthDevice != null && netConn != null) {
 
-			// Get the attached vswitch for device.
-			HostSystem host = VMHelper.findHostSystemForVM(rootFolder, vmName);
-			if (host == null) {
-				LOGGER.error("No host found for this vm : " + vmName);
-				VCenterClient.disconnect();
-				return;
-			}
-			HostPortGroup portGroup = NetworkHelper.findPortGroup(host, networkName);
-			if (portGroup == null) {
-				LOGGER.error("No portGroup found cant retrieve vswitch informations.");
-				VCenterClient.disconnect();
-			}
-
-			String vSwitchName = portGroup.getSpec().getVswitchName();
-			int vlanId = portGroup.getSpec().getVlanId();
-
-			netConn.setTitle(vSwitchName);
-			netConn.setVlan(vlanId);
-			netConn.setLabel(networkName);
-
-			// Set the network state.
-			if (vEthDevice.getConnectable().connected && netConn != null) {
-				netConn.setState(NetworkStatus.ACTIVE);
-			} else {
-				if (netConn != null) {
-					// TODO : How to check that vswitch / port group is active ?
-					
-					
-					netConn.setState(NetworkStatus.INACTIVE);
-				}
-			}
-		}
-		if (vEthDevice == null) {
-			if (netConn != null) {
-				netConn.setLabel(networkName);
-			}
-			this.setState(NetworkInterfaceStatus.INACTIVE);
-
-			LOGGER.warn("No ethernet device found. Cant retrieve informations about network.");
-			VCenterClient.disconnect();
-			return;
-		}
-		
 		VCenterClient.disconnect();
 
 	}
@@ -486,6 +443,7 @@ public class NetworkinterfaceConnector
 
 		if (vm == null) {
 			LOGGER.warn("The linked virtual machine doesnt exist on Vcenter, no network to retrieve.");
+			setState(NetworkInterfaceStatus.INACTIVE);
 			// No vm adapter found so.
 			VCenterClient.disconnect();
 			return;
@@ -513,6 +471,7 @@ public class NetworkinterfaceConnector
 				LOGGER.warn("no virtual device for this name: " + oldNetworkAdapterName
 						+ " , cant update the network device: " + oldNetworkAdapterName + " on vm: " + vmName);
 				oldNetworkAdapterName = null;
+				setState(NetworkInterfaceStatus.INACTIVE);
 				VCenterClient.disconnect();
 				return;
 			}

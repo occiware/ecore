@@ -11,16 +11,51 @@
  */
 package org.occiware.clouddesigner.occi.vmware;
 
+import org.occiware.clouddesigner.occi.Resource;
+
 
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Vmfolder</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <p>
+ * The following features are supported:
+ * </p>
+ * <ul>
+ *   <li>{@link org.occiware.clouddesigner.occi.vmware.Vmfolder#getName <em>Name</em>}</li>
+ * </ul>
  *
  * @see org.occiware.clouddesigner.occi.vmware.VmwarePackage#getVmfolder()
  * @model annotation="OCCIE2Ecore title='null'"
  * @generated
  */
-public interface Vmfolder extends Folder {
+public interface Vmfolder extends Resource {
+
+	/**
+	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Name</em>' attribute.
+	 * @see #setName(String)
+	 * @see org.occiware.clouddesigner.occi.vmware.VmwarePackage#getVmfolder_Name()
+	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
+	 *        annotation="OCCIE2Ecore description='null'"
+	 * @generated
+	 */
+	String getName();
+
+	/**
+	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.vmware.Vmfolder#getName <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Name</em>' attribute.
+	 * @see #getName()
+	 * @generated
+	 */
+	void setName(String value);
 } // Vmfolder

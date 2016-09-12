@@ -11,6 +11,8 @@
  */
 package org.occiware.clouddesigner.occi.vmware.tests;
 
+import junit.framework.TestCase;
+
 import junit.textui.TestRunner;
 
 import org.occiware.clouddesigner.occi.vmware.Datacenter;
@@ -29,7 +31,15 @@ import org.occiware.clouddesigner.occi.vmware.VmwareFactory;
  * </p>
  * @generated
  */
-public class DatacenterTest extends FolderTest {
+public class DatacenterTest extends TestCase {
+
+	/**
+	 * The fixture for this Datacenter test case.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected Datacenter fixture = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -51,14 +61,23 @@ public class DatacenterTest extends FolderTest {
 	}
 
 	/**
+	 * Sets the fixture for this Datacenter test case.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void setFixture(Datacenter fixture) {
+		this.fixture = fixture;
+	}
+
+	/**
 	 * Returns the fixture for this Datacenter test case.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	protected Datacenter getFixture() {
-		return (Datacenter)fixture;
+		return fixture;
 	}
 
 	/**

@@ -11,6 +11,8 @@
  */
 package org.occiware.clouddesigner.occi.vmware.tests;
 
+import junit.framework.TestCase;
+
 import junit.textui.TestRunner;
 
 import org.occiware.clouddesigner.occi.vmware.Cluster;
@@ -30,7 +32,15 @@ import org.occiware.clouddesigner.occi.vmware.VmwareFactory;
  * </p>
  * @generated
  */
-public class ClusterTest extends FolderTest {
+public class ClusterTest extends TestCase {
+
+	/**
+	 * The fixture for this Cluster test case.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected Cluster fixture = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -52,14 +62,23 @@ public class ClusterTest extends FolderTest {
 	}
 
 	/**
+	 * Sets the fixture for this Cluster test case.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void setFixture(Cluster fixture) {
+		this.fixture = fixture;
+	}
+
+	/**
 	 * Returns the fixture for this Cluster test case.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	protected Cluster getFixture() {
-		return (Cluster)fixture;
+		return fixture;
 	}
 
 	/**

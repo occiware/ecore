@@ -11,6 +11,8 @@
  */
 package org.occiware.clouddesigner.occi.vmware.tests;
 
+import junit.framework.TestCase;
+
 import junit.textui.TestRunner;
 
 import org.occiware.clouddesigner.occi.vmware.Hostsystemlink;
@@ -22,7 +24,15 @@ import org.occiware.clouddesigner.occi.vmware.VmwareFactory;
  * <!-- end-user-doc -->
  * @generated
  */
-public class HostsystemlinkTest extends FolderlinkTest {
+public class HostsystemlinkTest extends TestCase {
+
+	/**
+	 * The fixture for this Hostsystemlink test case.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected Hostsystemlink fixture = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -44,14 +54,23 @@ public class HostsystemlinkTest extends FolderlinkTest {
 	}
 
 	/**
+	 * Sets the fixture for this Hostsystemlink test case.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void setFixture(Hostsystemlink fixture) {
+		this.fixture = fixture;
+	}
+
+	/**
 	 * Returns the fixture for this Hostsystemlink test case.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	protected Hostsystemlink getFixture() {
-		return (Hostsystemlink)fixture;
+		return fixture;
 	}
 
 	/**

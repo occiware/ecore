@@ -11,6 +11,8 @@
  */
 package org.occiware.clouddesigner.occi.vmware;
 
+import org.occiware.clouddesigner.occi.infrastructure.Storage;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -22,13 +24,14 @@ package org.occiware.clouddesigner.occi.vmware;
  * </p>
  * <ul>
  *   <li>{@link org.occiware.clouddesigner.occi.vmware.Virtualcdrom#getIsoFilename <em>Iso Filename</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.vmware.Virtualcdrom#getVolumeName <em>Volume Name</em>}</li>
  * </ul>
  *
  * @see org.occiware.clouddesigner.occi.vmware.VmwarePackage#getVirtualcdrom()
  * @model annotation="OCCIE2Ecore title='A virtual cdrom disk'"
  * @generated
  */
-public interface Virtualcdrom extends Virtualdisk {
+public interface Virtualcdrom extends Storage {
 	/**
 	 * Returns the value of the '<em><b>Iso Filename</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -55,5 +58,32 @@ public interface Virtualcdrom extends Virtualdisk {
 	 * @generated
 	 */
 	void setIsoFilename(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Volume Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Volume Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Volume Name</em>' attribute.
+	 * @see #setVolumeName(String)
+	 * @see org.occiware.clouddesigner.occi.vmware.VmwarePackage#getVirtualcdrom_VolumeName()
+	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
+	 *        annotation="OCCIE2Ecore description='null'"
+	 * @generated
+	 */
+	String getVolumeName();
+
+	/**
+	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.vmware.Virtualcdrom#getVolumeName <em>Volume Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Volume Name</em>' attribute.
+	 * @see #getVolumeName()
+	 * @generated
+	 */
+	void setVolumeName(String value);
 
 } // Virtualcdrom

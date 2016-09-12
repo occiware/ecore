@@ -11,6 +11,8 @@
  */
 package org.occiware.clouddesigner.occi.vmware.tests;
 
+import junit.framework.TestCase;
+
 import junit.textui.TestRunner;
 
 import org.occiware.clouddesigner.occi.vmware.Clusterlink;
@@ -22,7 +24,15 @@ import org.occiware.clouddesigner.occi.vmware.VmwareFactory;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ClusterlinkTest extends FolderlinkTest {
+public class ClusterlinkTest extends TestCase {
+
+	/**
+	 * The fixture for this Clusterlink test case.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected Clusterlink fixture = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -44,14 +54,23 @@ public class ClusterlinkTest extends FolderlinkTest {
 	}
 
 	/**
+	 * Sets the fixture for this Clusterlink test case.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void setFixture(Clusterlink fixture) {
+		this.fixture = fixture;
+	}
+
+	/**
 	 * Returns the fixture for this Clusterlink test case.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	protected Clusterlink getFixture() {
-		return (Clusterlink)fixture;
+		return fixture;
 	}
 
 	/**

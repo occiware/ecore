@@ -11,6 +11,8 @@
  */
 package org.occiware.clouddesigner.occi.vmware.tests;
 
+import junit.framework.TestCase;
+
 import junit.textui.TestRunner;
 
 import org.occiware.clouddesigner.occi.vmware.Vmfolder;
@@ -22,7 +24,15 @@ import org.occiware.clouddesigner.occi.vmware.VmwareFactory;
  * <!-- end-user-doc -->
  * @generated
  */
-public class VmfolderTest extends FolderTest {
+public class VmfolderTest extends TestCase {
+
+	/**
+	 * The fixture for this Vmfolder test case.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected Vmfolder fixture = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -44,14 +54,23 @@ public class VmfolderTest extends FolderTest {
 	}
 
 	/**
+	 * Sets the fixture for this Vmfolder test case.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void setFixture(Vmfolder fixture) {
+		this.fixture = fixture;
+	}
+
+	/**
 	 * Returns the fixture for this Vmfolder test case.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	protected Vmfolder getFixture() {
-		return (Vmfolder)fixture;
+		return fixture;
 	}
 
 	/**

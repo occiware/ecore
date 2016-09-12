@@ -834,6 +834,15 @@ public class VmwarePackageImpl extends EPackageImpl implements VmwarePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getCluster_Name() {
+        return (EAttribute)getCluster().getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EOperation getCluster__AddAllHostSystem() {
         return getCluster().getEOperations().get(0);
 	}
@@ -875,6 +884,15 @@ public class VmwarePackageImpl extends EPackageImpl implements VmwarePackage {
 	 */
 	public EAttribute getDatacenter_DefaultHardwareVersionKey() {
         return (EAttribute)getDatacenter().getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDatacenter_Name() {
+        return (EAttribute)getDatacenter().getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1761,6 +1779,15 @@ public class VmwarePackageImpl extends EPackageImpl implements VmwarePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getVirtualdisknetwork_VolumeName() {
+        return (EAttribute)getVirtualdisknetwork().getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getVirtualdisknetworklink() {
 		if (virtualdisknetworklinkEClass == null) {
 			virtualdisknetworklinkEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(VmwarePackage.eNS_URI).getEClassifiers().get(63);
@@ -1928,6 +1955,15 @@ public class VmwarePackageImpl extends EPackageImpl implements VmwarePackage {
 			hostfolderEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(VmwarePackage.eNS_URI).getEClassifiers().get(69);
 		}
 		return hostfolderEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getHostfolder_Name() {
+        return (EAttribute)getHostfolder().getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -2190,6 +2226,15 @@ public class VmwarePackageImpl extends EPackageImpl implements VmwarePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getVmfolder_Name() {
+        return (EAttribute)getVmfolder().getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getServiceconsolenic() {
 		if (serviceconsolenicEClass == null) {
 			serviceconsolenicEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(VmwarePackage.eNS_URI).getEClassifiers().get(77);
@@ -2379,11 +2424,29 @@ public class VmwarePackageImpl extends EPackageImpl implements VmwarePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getVirtualcdrom_VolumeName() {
+        return (EAttribute)getVirtualcdrom().getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getVirtualfloppy() {
 		if (virtualfloppyEClass == null) {
 			virtualfloppyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(VmwarePackage.eNS_URI).getEClassifiers().get(83);
 		}
 		return virtualfloppyEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getVirtualfloppy_VolumeName() {
+        return (EAttribute)getVirtualfloppy().getEStructuralFeatures().get(0);
 	}
 
 	/**

@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.occiware.clouddesigner.occi.impl.ResourceImpl;
 import org.occiware.clouddesigner.occi.vmware.Datacenter;
 import org.occiware.clouddesigner.occi.vmware.VmwarePackage;
 
@@ -33,11 +34,12 @@ import org.occiware.clouddesigner.occi.vmware.VmwarePackage;
  * </p>
  * <ul>
  *   <li>{@link org.occiware.clouddesigner.occi.vmware.impl.DatacenterImpl#getDefaultHardwareVersionKey <em>Default Hardware Version Key</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.vmware.impl.DatacenterImpl#getName <em>Name</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class DatacenterImpl extends FolderImpl implements Datacenter {
+public class DatacenterImpl extends ResourceImpl implements Datacenter {
 	/**
 	 * The default value of the '{@link #getDefaultHardwareVersionKey() <em>Default Hardware Version Key</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -57,6 +59,26 @@ public class DatacenterImpl extends FolderImpl implements Datacenter {
 	 * @ordered
 	 */
 	protected String defaultHardwareVersionKey = DEFAULT_HARDWARE_VERSION_KEY_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -103,6 +125,27 @@ public class DatacenterImpl extends FolderImpl implements Datacenter {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, VmwarePackage.DATACENTER__NAME, oldName, name));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void powerOnMultiVMs() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -130,6 +173,8 @@ public class DatacenterImpl extends FolderImpl implements Datacenter {
 		switch (featureID) {
 			case VmwarePackage.DATACENTER__DEFAULT_HARDWARE_VERSION_KEY:
 				return getDefaultHardwareVersionKey();
+			case VmwarePackage.DATACENTER__NAME:
+				return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -144,6 +189,9 @@ public class DatacenterImpl extends FolderImpl implements Datacenter {
 		switch (featureID) {
 			case VmwarePackage.DATACENTER__DEFAULT_HARDWARE_VERSION_KEY:
 				setDefaultHardwareVersionKey((String)newValue);
+				return;
+			case VmwarePackage.DATACENTER__NAME:
+				setName((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -160,6 +208,9 @@ public class DatacenterImpl extends FolderImpl implements Datacenter {
 			case VmwarePackage.DATACENTER__DEFAULT_HARDWARE_VERSION_KEY:
 				setDefaultHardwareVersionKey(DEFAULT_HARDWARE_VERSION_KEY_EDEFAULT);
 				return;
+			case VmwarePackage.DATACENTER__NAME:
+				setName(NAME_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -174,6 +225,8 @@ public class DatacenterImpl extends FolderImpl implements Datacenter {
 		switch (featureID) {
 			case VmwarePackage.DATACENTER__DEFAULT_HARDWARE_VERSION_KEY:
 				return DEFAULT_HARDWARE_VERSION_KEY_EDEFAULT == null ? defaultHardwareVersionKey != null : !DEFAULT_HARDWARE_VERSION_KEY_EDEFAULT.equals(defaultHardwareVersionKey);
+			case VmwarePackage.DATACENTER__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -208,6 +261,8 @@ public class DatacenterImpl extends FolderImpl implements Datacenter {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (defaultHardwareVersionKey: ");
 		result.append(defaultHardwareVersionKey);
+		result.append(", name: ");
+		result.append(name);
 		result.append(')');
 		return result.toString();
 	}

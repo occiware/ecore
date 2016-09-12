@@ -11,6 +11,8 @@
  */
 package org.occiware.clouddesigner.occi.vmware.tests;
 
+import junit.framework.TestCase;
+
 import junit.textui.TestRunner;
 
 import org.occiware.clouddesigner.occi.vmware.Virtualcdrom;
@@ -22,7 +24,15 @@ import org.occiware.clouddesigner.occi.vmware.VmwareFactory;
  * <!-- end-user-doc -->
  * @generated
  */
-public class VirtualcdromTest extends VirtualdiskTest {
+public class VirtualcdromTest extends TestCase {
+
+	/**
+	 * The fixture for this Virtualcdrom test case.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected Virtualcdrom fixture = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -44,14 +54,23 @@ public class VirtualcdromTest extends VirtualdiskTest {
 	}
 
 	/**
+	 * Sets the fixture for this Virtualcdrom test case.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void setFixture(Virtualcdrom fixture) {
+		this.fixture = fixture;
+	}
+
+	/**
 	 * Returns the fixture for this Virtualcdrom test case.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	protected Virtualcdrom getFixture() {
-		return (Virtualcdrom)fixture;
+		return fixture;
 	}
 
 	/**

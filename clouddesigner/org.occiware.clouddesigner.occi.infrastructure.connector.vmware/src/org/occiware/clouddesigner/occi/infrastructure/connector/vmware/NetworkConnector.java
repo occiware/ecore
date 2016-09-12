@@ -20,6 +20,7 @@ import org.slf4j.LoggerFactory;
 import com.vmware.vim25.Description;
 import com.vmware.vim25.GuestNicInfo;
 import com.vmware.vim25.HostPortGroup;
+import com.vmware.vim25.HostPortGroupPort;
 import com.vmware.vim25.HostVirtualSwitch;
 import com.vmware.vim25.MethodFault;
 import com.vmware.vim25.TaskInfo;
@@ -99,6 +100,9 @@ public class NetworkConnector extends org.occiware.clouddesigner.occi.infrastruc
 	private Level levelMessage = null;
 	
 	private String nbPortStr = null;
+	private String vSwitchName = null;
+	private String portGroupName = null;
+	private int vlanId = 0;
 	
 	/**
 	 * Represent the physical compute which be used for this standard switch.
@@ -306,7 +310,7 @@ public class NetworkConnector extends org.occiware.clouddesigner.occi.infrastruc
 	@Override
 	public void occiRetrieve() {
 		titleMessage = "Retrieve a vswitch : " + getTitle();
-IRunnableWithProgress runnableWithProgress = new IRunnableWithProgress() {
+		IRunnableWithProgress runnableWithProgress = new IRunnableWithProgress() {
 			
 			@Override
 			public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
@@ -321,8 +325,53 @@ IRunnableWithProgress runnableWithProgress = new IRunnableWithProgress() {
 				List<Mixin> mixins;
 				ServiceInstance si = VCenterClient.getServiceInstance();
 				Folder rootFolder = si.getRootFolder();
-
-				VCenterClient.disconnect();
+				// Search a host that contain this portgroup.
+				String networkLabelName = getLabel();
+				if (networkLabelName == null || networkLabelName.isEmpty()) {
+					globalMessage = "No label for this network, please set the attribute label.";
+					levelMessage = Level.ERROR;
+					LOGGER.error(globalMessage);
+					return;
+				}
+				
+				HostSystem host = HostHelper.findHostForPortGroup(rootFolder, networkLabelName);
+				if (host == null) {
+					globalMessage = "No host found for this port group : " + networkLabelName;
+					levelMessage = Level.ERROR;
+					LOGGER.error(globalMessage);
+					return;
+				}
+				HostPortGroup portGroup = NetworkHelper.findPortGroup(host, networkLabelName);
+				if (portGroup == null) {
+					globalMessage = "No portGroup found cant retrieve vswitch informations.";
+					levelMessage = Level.ERROR;
+					LOGGER.error(globalMessage);
+					return;
+				}
+				
+				
+				// Find now the network.
+				vSwitchName = portGroup.getSpec().getVswitchName();
+				vlanId = portGroup.getSpec().getVlanId();
+				portGroupName = networkLabelName;
+				hostSystemName = host.getName();
+				try {
+					HostVirtualSwitch hostVswitch = NetworkHelper.findVSwitch(host, vSwitchName);
+					nbPortStr = "" + hostVswitch.getNumPorts();
+				} catch (VirtualSwitchNotFoundException ex) {
+					globalMessage = "The vswitch : " + vSwitchName + " is not found, please check your configuration.";
+					levelMessage = Level.WARN;
+					LOGGER.warn(globalMessage);
+					return;
+				}
+				
+				
+				// TODO : How to check that vswitch / port group is active ?
+				// Set the network state.
+				if (UIDialog.isStandAlone()) {
+					updateAttributesOnNetwork();
+				}
+				
 			}
 		};
 		
@@ -339,6 +388,7 @@ IRunnableWithProgress runnableWithProgress = new IRunnableWithProgress() {
 		}
 		globalMessage = "";
 		levelMessage = null;
+		VCenterClient.disconnect();
 	}
 
 	/**
@@ -541,8 +591,21 @@ IRunnableWithProgress runnableWithProgress = new IRunnableWithProgress() {
 		if (nbPortStr != null) {
 			if (this.getAttributeValueByOcciKey(ATTR_VSWITCH_NBPORT) == null) {
 				attrsToCreate.put(ATTR_VSWITCH_NBPORT, nbPortStr);
+			} else {
+				attrsToUpdate.put(ATTR_VSWITCH_NBPORT, nbPortStr);
 			}
 		}
+		
+		if (vSwitchName != null && !vSwitchName.isEmpty()) {
+			this.setTitle(vSwitchName);
+			this.setState(NetworkStatus.ACTIVE);
+		}
+		
+		this.setVlan(vlanId);
+		if (portGroupName != null && !portGroupName.isEmpty()) {
+			this.setLabel(portGroupName);
+		}
+		
 		
 		// Update the attributes via a transaction (or not if standalone).
 		EntityUtils.updateAttributes(this, attrsToCreate, attrsToUpdate, attrsToDelete);

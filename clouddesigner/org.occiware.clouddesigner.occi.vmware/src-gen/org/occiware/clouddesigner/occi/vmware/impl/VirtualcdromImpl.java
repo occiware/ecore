@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.occiware.clouddesigner.occi.infrastructure.impl.StorageImpl;
 import org.occiware.clouddesigner.occi.vmware.Virtualcdrom;
 import org.occiware.clouddesigner.occi.vmware.VmwarePackage;
 
@@ -29,11 +30,12 @@ import org.occiware.clouddesigner.occi.vmware.VmwarePackage;
  * </p>
  * <ul>
  *   <li>{@link org.occiware.clouddesigner.occi.vmware.impl.VirtualcdromImpl#getIsoFilename <em>Iso Filename</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.vmware.impl.VirtualcdromImpl#getVolumeName <em>Volume Name</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class VirtualcdromImpl extends VirtualdiskImpl implements Virtualcdrom {
+public class VirtualcdromImpl extends StorageImpl implements Virtualcdrom {
 	/**
 	 * The default value of the '{@link #getIsoFilename() <em>Iso Filename</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -53,6 +55,26 @@ public class VirtualcdromImpl extends VirtualdiskImpl implements Virtualcdrom {
 	 * @ordered
 	 */
 	protected String isoFilename = ISO_FILENAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getVolumeName() <em>Volume Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVolumeName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String VOLUME_NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getVolumeName() <em>Volume Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVolumeName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String volumeName = VOLUME_NAME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -99,11 +121,34 @@ public class VirtualcdromImpl extends VirtualdiskImpl implements Virtualcdrom {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getVolumeName() {
+		return volumeName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setVolumeName(String newVolumeName) {
+		String oldVolumeName = volumeName;
+		volumeName = newVolumeName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, VmwarePackage.VIRTUALCDROM__VOLUME_NAME, oldVolumeName, volumeName));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case VmwarePackage.VIRTUALCDROM__ISO_FILENAME:
 				return getIsoFilename();
+			case VmwarePackage.VIRTUALCDROM__VOLUME_NAME:
+				return getVolumeName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -118,6 +163,9 @@ public class VirtualcdromImpl extends VirtualdiskImpl implements Virtualcdrom {
 		switch (featureID) {
 			case VmwarePackage.VIRTUALCDROM__ISO_FILENAME:
 				setIsoFilename((String)newValue);
+				return;
+			case VmwarePackage.VIRTUALCDROM__VOLUME_NAME:
+				setVolumeName((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -134,6 +182,9 @@ public class VirtualcdromImpl extends VirtualdiskImpl implements Virtualcdrom {
 			case VmwarePackage.VIRTUALCDROM__ISO_FILENAME:
 				setIsoFilename(ISO_FILENAME_EDEFAULT);
 				return;
+			case VmwarePackage.VIRTUALCDROM__VOLUME_NAME:
+				setVolumeName(VOLUME_NAME_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -148,6 +199,8 @@ public class VirtualcdromImpl extends VirtualdiskImpl implements Virtualcdrom {
 		switch (featureID) {
 			case VmwarePackage.VIRTUALCDROM__ISO_FILENAME:
 				return ISO_FILENAME_EDEFAULT == null ? isoFilename != null : !ISO_FILENAME_EDEFAULT.equals(isoFilename);
+			case VmwarePackage.VIRTUALCDROM__VOLUME_NAME:
+				return VOLUME_NAME_EDEFAULT == null ? volumeName != null : !VOLUME_NAME_EDEFAULT.equals(volumeName);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -164,6 +217,8 @@ public class VirtualcdromImpl extends VirtualdiskImpl implements Virtualcdrom {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (isoFilename: ");
 		result.append(isoFilename);
+		result.append(", volumeName: ");
+		result.append(volumeName);
 		result.append(')');
 		return result.toString();
 	}

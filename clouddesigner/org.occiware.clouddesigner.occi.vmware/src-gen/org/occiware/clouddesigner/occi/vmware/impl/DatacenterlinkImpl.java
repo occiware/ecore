@@ -13,6 +13,7 @@ package org.occiware.clouddesigner.occi.vmware.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.occiware.clouddesigner.occi.impl.LinkImpl;
 import org.occiware.clouddesigner.occi.vmware.Datacenterlink;
 import org.occiware.clouddesigner.occi.vmware.VmwarePackage;
 
@@ -23,7 +24,7 @@ import org.occiware.clouddesigner.occi.vmware.VmwarePackage;
  *
  * @generated
  */
-public class DatacenterlinkImpl extends FolderlinkImpl implements Datacenterlink {
+public class DatacenterlinkImpl extends LinkImpl implements Datacenterlink {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

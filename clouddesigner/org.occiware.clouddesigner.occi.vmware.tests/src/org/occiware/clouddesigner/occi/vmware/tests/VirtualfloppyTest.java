@@ -11,6 +11,8 @@
  */
 package org.occiware.clouddesigner.occi.vmware.tests;
 
+import junit.framework.TestCase;
+
 import junit.textui.TestRunner;
 
 import org.occiware.clouddesigner.occi.vmware.Virtualfloppy;
@@ -22,7 +24,15 @@ import org.occiware.clouddesigner.occi.vmware.VmwareFactory;
  * <!-- end-user-doc -->
  * @generated
  */
-public class VirtualfloppyTest extends VirtualdiskTest {
+public class VirtualfloppyTest extends TestCase {
+
+	/**
+	 * The fixture for this Virtualfloppy test case.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected Virtualfloppy fixture = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -44,14 +54,23 @@ public class VirtualfloppyTest extends VirtualdiskTest {
 	}
 
 	/**
+	 * Sets the fixture for this Virtualfloppy test case.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void setFixture(Virtualfloppy fixture) {
+		this.fixture = fixture;
+	}
+
+	/**
 	 * Returns the fixture for this Virtualfloppy test case.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	protected Virtualfloppy getFixture() {
-		return (Virtualfloppy)fixture;
+		return fixture;
 	}
 
 	/**

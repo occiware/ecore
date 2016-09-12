@@ -11,6 +11,8 @@
  */
 package org.occiware.clouddesigner.occi.vmware;
 
+import org.occiware.clouddesigner.occi.Link;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -22,5 +24,5 @@ package org.occiware.clouddesigner.occi.vmware;
  * @model annotation="OCCIE2Ecore title='Link between cluster and hostsystem'"
  * @generated
  */
-public interface Clusterlink extends Folderlink {
+public interface Clusterlink extends Link {
 } // Clusterlink

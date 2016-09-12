@@ -14,9 +14,13 @@
  */
 package org.occiware.clouddesigner.occi.infrastructure.connector.vmware;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 import org.apache.log4j.Level;
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.SubMonitor;
+import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.occiware.clouddesigner.occi.AttributeState;
 import org.occiware.clouddesigner.occi.OCCIFactory;
 import org.occiware.clouddesigner.occi.Resource;
@@ -25,6 +29,7 @@ import org.occiware.clouddesigner.occi.infrastructure.StorageLinkStatus;
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.DatastoreHelper;
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.VCenterClient;
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.VMHelper;
+import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.thread.UIDialog;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -37,6 +42,7 @@ import com.vmware.vim25.mo.VirtualMachine;
  * Connector implementation for the OCCI kind: - scheme:
  * http://schemas.ogf.org/occi/infrastructure# - term: storagelink - title:
  * StorageLink Link
+ * This class intend to manage the storage on system level.
  */
 public class StoragelinkConnector extends org.occiware.clouddesigner.occi.infrastructure.impl.StoragelinkImpl {
 	/**
@@ -47,12 +53,14 @@ public class StoragelinkConnector extends org.occiware.clouddesigner.occi.infras
 	public static String DATASTORE = "Datastore";
 
 	private String vmName;
-
+	private StorageLinkStatus tmpStatus = this.getState();
+	private String mountPath = mountpoint;
+	
 	// Message to end users management.
 	private String titleMessage = "";
 	private String globalMessage = "";
 	private Level levelMessage = null;
-
+	
 	/**
 	 * Constructs a storagelink connector.
 	 */
@@ -80,71 +88,126 @@ public class StoragelinkConnector extends org.occiware.clouddesigner.occi.infras
 	@Override
 	public void occiRetrieve() {
 		LOGGER.debug("occiRetrieve() called on " + this);
-		if (!VCenterClient.checkConnection()) {
-			// Must return true if connection is established.
-			return;
-		}
-		Folder rootFolder = VCenterClient.getServiceInstance().getRootFolder();
-		// Find a datastore.
-		Resource target = this.getTarget();
-		if (target == null) {
-			LOGGER.error("No target storage link for this storagelink.");
+		titleMessage = "Retrieve a system volume : " + getTitle();
+		
+		IRunnableWithProgress runnableWithProgress = new IRunnableWithProgress() {
 
-			VCenterClient.disconnect();
-			return;
-		}
-		String datastoreName = null;
-		if (target instanceof StorageConnector) {
-			StorageConnector conn = (StorageConnector) target;
-			datastoreName = conn.getDatastoreName();
-		}
-		if (datastoreName == null) {
-			LOGGER.error(
-					"The datastore name is null, please set the attribute occi.storage.vmware.datastore on Storage entity. Cant retrieve datastore.");
-			this.setState(StorageLinkStatus.ERROR);
-			VCenterClient.disconnect();
-			return;
-		}
-		Datastore datastore = DatastoreHelper.findDatastoreForName(rootFolder, datastoreName);
+			@Override
+			public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+				globalMessage = "";
+				levelMessage = null;
+				
+				if (!VCenterClient.checkConnection()) {
+					// Must return true if connection is established.
+					globalMessage = "No connection to Vcenter has been established.";
+					levelMessage = Level.WARN;
+					LOGGER.warn(globalMessage);
+					return;
+				}
+				SubMonitor subMonitor = null;
+				boolean toMonitor = false;
+				if (monitor != null) {
+					toMonitor = true;
+				}
+				if (toMonitor) {
+					subMonitor = SubMonitor.convert(monitor, 100);
+					// consume..
+					subMonitor.worked(10);
 
-		if (datastore == null) {
-			LOGGER.error("The datastore " + datastoreName + " doesnt exist. Check your configuration.");
-			this.setState(StorageLinkStatus.INACTIVE);
-			VCenterClient.disconnect();
-			return;
-		}
+				}
+				
+				Folder rootFolder = VCenterClient.getServiceInstance().getRootFolder();
+				// Find a datastore.
+				Resource target = getTarget();
+				if (target == null) {
+					globalMessage = "No target storage link for this storage link";
+					levelMessage = Level.ERROR;
+					LOGGER.error("No target storage link for this storage link.");
+					tmpStatus = StorageLinkStatus.ERROR;
+					return;
+				}
+				String datastoreName = null;
+				if (target instanceof StorageConnector) {
+					StorageConnector conn = (StorageConnector) target;
+					datastoreName = conn.getDatastoreName();
+				}
+				if (monitor != null) {
+					subMonitor.worked(20);
+				}
+				
+				if (datastoreName == null) {
+					globalMessage = "The datastore name is not setted, please set the attribute " + StorageConnector.ATTR_DATASTORE_NAME + " on Storage entity. \n Cant retrieve datastore.";
+					levelMessage = Level.ERROR;
+					LOGGER.error(globalMessage);
+					tmpStatus = StorageLinkStatus.ERROR;
+					return;
+				}
+				Datastore datastore = DatastoreHelper.findDatastoreForName(rootFolder, datastoreName);
 
-		// Load the vm and get his represented ComputeConnector if any.
-		// Research vm information if vm exist, get the compute source.
-		Resource computeRes = this.getSource();
+				if (datastore == null) {
+					globalMessage = "The datastore " + datastoreName + " doesnt exist. Check your configuration.";
+					levelMessage = Level.ERROR;
+					LOGGER.error(globalMessage);
+					tmpStatus = StorageLinkStatus.ERROR;
+					return;
+				}
 
-		if (computeRes != null && computeRes instanceof ComputeConnector) {
-			ComputeConnector computeConn = (ComputeConnector) this.getSource();
-			vmName = computeConn.getTitle();
-			// TODO : Check if the disk is effectively mounted.
-			// Set state.
-			if (computeConn.getState().equals(ComputeStatus.ACTIVE)) {
-				this.setState(StorageLinkStatus.ACTIVE);
-			} else {
-				this.setState(StorageLinkStatus.INACTIVE);
+				// Load the vm and get his represented ComputeConnector if any.
+				// Research vm information if vm exist, get the compute source.
+				Resource computeRes = getSource();
+
+				if (computeRes != null && computeRes instanceof ComputeConnector) {
+					ComputeConnector computeConn = (ComputeConnector) getSource();
+					vmName = computeConn.getTitle();
+					// TODO : Check if the disk is effectively mounted.
+					// Set state.
+					if (computeConn.getState().equals(ComputeStatus.ACTIVE)) {
+						tmpStatus = StorageLinkStatus.ACTIVE;
+					} else {
+						tmpStatus = StorageLinkStatus.INACTIVE;
+					}
+
+				} else {
+					tmpStatus = StorageLinkStatus.INACTIVE;
+				}
+				if (monitor != null) {
+					subMonitor.worked(50);
+				}
+				
+				retrieveStorageDiskPath();
+				if (monitor != null) {
+					subMonitor.worked(70);
+				}
+				// Refresh the storage part.
+				// if (target != null && target instanceof StorageConnector) {
+				// StorageConnector storage = (StorageConnector) target;
+				// if (vmName != null) {
+				// storage.setVmName(vmName);
+				// }
+				// storage.retrieve();
+				//
+				// } // if no target, no more retrieve.
+				
+				if (UIDialog.isStandAlone()) {
+					updateAttributesOnSystemStorage();
+				}
+				if (monitor != null) {
+					subMonitor.worked(100);
+				}
 			}
+		};
+		UIDialog.executeActionThread(runnableWithProgress, titleMessage);
 
-		} else {
-			this.setState(StorageLinkStatus.INACTIVE);
+		if (globalMessage != null && !globalMessage.isEmpty()) {
+			UIDialog.showUserMessage(titleMessage, globalMessage, levelMessage);
 		}
 
-		// Refresh the storage part.
-		// if (target != null && target instanceof StorageConnector) {
-		// StorageConnector storage = (StorageConnector) target;
-		// if (vmName != null) {
-		// storage.setVmName(vmName);
-		// }
-		// storage.occiRetrieve();
-		//
-		// } // if no target, no more retrieve.
-
+		if (!UIDialog.isStandAlone()) {
+			updateAttributesOnSystemStorage();
+		}
+		
+		// In all case invoke a disconnect from vcenter.
 		VCenterClient.disconnect();
-
 	}
 
 	/**
@@ -246,20 +309,49 @@ public class StoragelinkConnector extends org.occiware.clouddesigner.occi.infras
 	 * Assign logical disk information to deviceId to be done in StorageLink.
 	 */
 	public void assignDeviceIdStorageToStorageLink(final String volumeName) {
-//     TODO : Assign logical disk like /dev/sda (or /dev/hda), c , may be find with guestoperating objects or ssh command.		
-	}
-	
-	private void assignStorageDiskPath() {
 		VirtualMachine vm = null;
 		if (vmName != null) {
 			// Load the vm information.
 			vm = VMHelper.loadVirtualMachine(vmName);
 			if (vm != null && VMHelper.isToolsInstalled(vm) && VMHelper.isToolsRunning(vm)) {
-				// TODO : via GuestInfo.getDiskPath() (give c: or /) , for mounted point. and search the good virtual disk info.
+				// ??? no information via tools. Maybe via an agent or a ssh connection !
 			}
 		}
 		
+//     TODO : Assign logical disk like /dev/sda (or /dev/hda), c: , ssh command ? 		
+	}
+	
+	/**
+	 * Retrieve the mount path of a disk.
+	 */
+	private void retrieveStorageDiskPath() {
+		VirtualMachine vm = null;
+		if (vmName != null) {
+			// Load the vm information.
+			vm = VMHelper.loadVirtualMachine(vmName);
+			if (vm != null && VMHelper.isToolsInstalled(vm) && VMHelper.isToolsRunning(vm)) {
+				GuestDiskInfo[] guestDskInfos = vm.getGuest().getDisk();
+				for (GuestDiskInfo guestDisk : guestDskInfos) {
+					mountPath = guestDisk.getDiskPath();
+					break;
+				}
+				// TODO : Search a better solution, no id defined to link between the system disk AND the virtualDisks.
+			}
+		}	
+	}
+	
+	/**
+	 * Update the attributes...
+	 */
+	public void updateAttributesOnSystemStorage() {
+		if (tmpStatus != null) {
+			setState(tmpStatus);
+		}
+		if (mountPath != null) {
+			setMountpoint(mountPath);
+		}
 		
 	}
+	
 	
 }

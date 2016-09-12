@@ -96,7 +96,8 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 	private static final String ATTR_VCPU_NUMBER = "vcpu";
 	private static final String ATTR_VM_GUEST_STATE = "gueststate";
 	private static final String ATTR_MARKED_AS_TEMPLATE = "markedastemplate";
-
+	private static final String ATTR_VM_GUEST_OS_ID = "guestosid";
+	
 	/**
 	 * Define VMWare specifications for this compute.
 	 */
@@ -122,6 +123,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 	private String vmState = null;
 	private String hostname = null;
 	private String vmGuestState = null;
+	private String guestOsId = null;
 	private String markedAsTemplate = null;
 	private boolean vmExist = false;
 	// Message to end users management.
@@ -213,9 +215,13 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 
 				// Template or not ?
 				vmTemplateName = getAttributeValueByOcciKey(ATTR_IMAGE_NAME);
-				boolean hasTemplate = vmTemplateName != null;
+				boolean hasTemplate = (vmTemplateName != null && !vmTemplateName.trim().isEmpty());
 
-				String guestOsId = null;
+				guestOsId = getAttributeValueByOcciKey(ATTR_VM_GUEST_OS_ID);
+				if (guestOsId != null && guestOsId.trim().isEmpty()) {
+					guestOsId = null;
+				}
+				
 
 				// For now, we set manually attributes for datacenterName,
 				// datastoreName
@@ -224,7 +230,9 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 
 					String attrName = attrState.getName();
 					String attrValue = attrState.getValue();
-
+					if (attrValue != null && attrValue.trim().isEmpty()) {
+						attrValue = null;
+					}
 					if (attrName.equals(ATTR_DATACENTER_NAME)) {
 						setDatacenterName(attrValue);
 					}
@@ -259,7 +267,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 				} else {
 					allocator.setDc(datacenter);
 				}
-
+				
 				setDatacenterName(datacenter.getName());
 
 				cluster = ClusterHelper.findClusterForName(datacenter, getClusterName());
@@ -299,9 +307,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 							LOGGER.error(globalMessage);
 							VCenterClient.disconnect();
 							return;
-						} else {
-							setHostSystemName(host.getName());
-						}
+						} 
 					} else {
 						// Error on allocating the hostsystem.
 						globalMessage = "cant allocate the hostSystem: " + getHostSystemName()
@@ -314,7 +320,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 				}
 				setHostSystemName(host.getName());
 
-				// Image part.
+				// Image part, we load the vmtemplate object.
 				VirtualMachine vmTemplate = null;
 				if (hasTemplate) {
 					try {
@@ -327,16 +333,55 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 						return;
 					}
 				}
-
-				if (vmTemplate == null) {
-					LOGGER.warn("No virtual machine template found, guest os is unknown, " + vmTemplateName);
+				
+				// Define guestOsId.
+				if (hasTemplate && vmTemplate == null) {
+					LOGGER.warn("No virtual machine template found for template: " + vmTemplateName);
+					globalMessage = "The template " + vmTemplateName + " doesnt exist ! \n ";
+					globalMessage += "Please define an existing template.";
+					levelMessage = Level.ERROR;
+					LOGGER.error(globalMessage);
+					return;
+				}
+				
+				
+				if (!hasTemplate && guestOsId == null) {
+					LOGGER.warn("Guest OS Id is unknown, assign other 32 bits guest os by default.");
 					// No VM template found, retrograde to guestOSId.
 					// Get the corresponding value from api :
 					guestOsId = VirtualMachineGuestOsIdentifier.otherGuest.toString();
-				} else {
+				} 
+				if (hasTemplate) {	
+					// Get the guestOsId from template (not the attribute of this compute).
 					if (vmTemplate.getConfig().isTemplate()) {
+						LOGGER.info("Template : " + vmTemplateName + " is used for building the virtual machine.");
 						guestOsId = vmTemplate.getConfig().getGuestId();
+					} else {
+						LOGGER.warn("The virtual machine : " + vmTemplateName + " is not a template vm.");
+						globalMessage = "The virtual machine : " + vmTemplateName + " is not a template vm. \n";
+						globalMessage += "Please mark as a template this virtual machine or use another one. And retry after.";
+						levelMessage = Level.ERROR;
+						LOGGER.error(globalMessage);
+						return;
 					}
+				}
+				
+				// Check if guestOsId string is found on VirtualMachineGuestOsIdentifier.
+				if (VirtualMachineGuestOsIdentifier.valueOf(guestOsId) == null) {
+					LOGGER.error("Guest OS Id : " + guestOsId + " not found !");
+					globalMessage = "Valid values are : \n";
+					int i = 0;
+					for (VirtualMachineGuestOsIdentifier guestVal : VirtualMachineGuestOsIdentifier.values()) {
+						globalMessage += guestVal.name() + ";";
+						i++;
+						if (i == 10) {
+							globalMessage += "\n";
+							i = 0;
+						}
+					}
+					levelMessage = Level.ERROR;
+					LOGGER.error(globalMessage);
+					return;
 				}
 
 				// Get the devices storage.
@@ -350,7 +395,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 				// Get Main disk, if template mode, the main disk is already
 				// defined by the template.
 				if (stMain == null && vmTemplate == null) {
-					globalMessage = "No main disk storage defined on / or on c:";
+					globalMessage = "No main disk storage defined on / or on c: or the storage title may end by _1";
 					levelMessage = Level.ERROR;
 					LOGGER.error(globalMessage);
 					VCenterClient.disconnect();
@@ -381,7 +426,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 					}
 				}
 				setDatastoreName(datastore.getName());
-
+				
 				Folder vmFolder;
 
 				// Get the first adapter (eth0 or name Network adapter 1 or
@@ -457,8 +502,12 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 
 						vmSpec = new VirtualMachineConfigSpec();
 						vmSpec.setName(vmName);
-						vmSpec.setAnnotation("VirtualMachine Annotation");
-
+						
+						if (summary != null && !summary.trim().isEmpty()) {
+							vmSpec.setAnnotation(summary);
+						} else {
+							vmSpec.setAnnotation("Virtual Machine Annotation");
+						}
 						Float memSizeGB = getMemory();
 
 						Long memSizeGBLng = memSizeGB.longValue();
@@ -653,7 +702,13 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 
 						Long diskSizeKB = diskSizeGB * 1024 * 1024;
 						VirtualDeviceConfigSpec scsiSpec = VMHelper.createScsiSpec(cKey);
-						VirtualDeviceConfigSpec diskSpec = VMHelper.createDiskSpec(getDatastoreName(), cKey, diskSizeKB,
+						// Define the datastore if there is one referenced on StorageConnector.
+						String storageDatastoreName = mainStorage.getDatastoreName();
+						if (mainStorage.getDatastoreName() == null) {
+							// Set the main storage datastore on the same of this vm.
+							storageDatastoreName = getDatastoreName();
+						}
+						VirtualDeviceConfigSpec diskSpec = VMHelper.createDiskSpec(storageDatastoreName, cKey, diskSizeKB,
 								diskMode);
 
 						// Network part : VM Network.
@@ -718,21 +773,16 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 						VirtualDeviceConfigSpec nicSpec = NetworkHelper.createNicSpec(networkName, nicName,
 								NetworkHelper.MODE_NETWORK_ADDRESS_GENERATED, null);
 
-						// if no guest os Id and no template, assume that is an
-						// empty vm
-						// with otherGuest term.
-						if (guestOsId == null) {
-							// No guest os defined nor template on creation.
-							// Setting default to : otherGuest.
-							guestOsId = VirtualMachineGuestOsIdentifier.otherGuest.toString();
-						}
-
 						// Define the vmSpec configuration object.
 						vmSpec = new VirtualMachineConfigSpec();
 
 						vmSpec.setName(vmName);
-						vmSpec.setAnnotation("VirtualMachine Annotation");
-
+						if (summary != null && !summary.trim().isEmpty()) {
+							vmSpec.setAnnotation(summary);
+						} else {
+							vmSpec.setAnnotation("Virtual Machine Annotation");
+						}
+						
 						Float memSizeGB = getMemory();
 
 						Long memSizeGBLng = memSizeGB.longValue();
@@ -996,6 +1046,8 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 				vmState = VMHelper.getPowerState(vm);
 				hostname = VMHelper.getGuestHostname(vm);
 				vmGuestState = VMHelper.getGuestState(vm);
+				guestOsId = vm.getConfig().getGuestId();
+				summary = vm.getConfig().getAnnotation();
 				if (toMonitor) {
 					subMonitor.worked(70);
 				}
@@ -1129,8 +1181,11 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 
 				// Update config.
 				try {
+					if (summary != null && !summary.trim().isEmpty()) {
+						vmSpec.setAnnotation(summary);
+					}
 					assignVCpuToVMSpec();
-					VMHelper.reconfigureVm(vm, vcpus, getMemory());
+					VMHelper.reconfigureVm(vm, vcpus, getMemory(), summary);
 				} catch (RemoteException ex) {
 					globalMessage = "Error while updating the virtual machine configuration : " + vmName
 							+ " \n message: " + ex.getMessage();
@@ -1961,7 +2016,6 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 	 */
 	public void setDatacenterName(String datacenterName) {
 		this.datacenterName = datacenterName;
-
 	}
 
 	/**
@@ -2022,13 +2076,25 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		StoragelinkConnector mainStorageLink = null;
 
 		int storageLinkSize = storageLinks.size();
-
+		StorageConnector storageConnector;
 		// Detect where's the main disk.
 		for (StoragelinkConnector stLink : storageLinks) {
-			if (storageLinkSize == 1 || (stLink.getMountpoint() != null && (stLink.getMountpoint().equals("/")
-					|| stLink.getMountpoint().startsWith("C:") || stLink.getMountpoint().startsWith("c:")))) {
+			if (storageLinkSize == 1) {
 				mainStorageLink = stLink;
 				break;
+			} else if ((stLink.getMountpoint() != null && (stLink.getMountpoint().equals("/")
+					|| stLink.getMountpoint().startsWith("C:") || stLink.getMountpoint().startsWith("c:")))){
+				mainStorageLink = stLink;
+				break;
+			} else {
+				// Detect if the storage name finished by _1. ex: serverstorage_1.
+				if (stLink.getTarget() != null && stLink.getTarget() instanceof StorageConnector) {
+					storageConnector = (StorageConnector) stLink.getTarget();
+					if (storageConnector.getTitle().endsWith("_1")) {
+						mainStorageLink = stLink;
+						break;
+					}
+				}
 			}
 		}
 
@@ -2366,6 +2432,15 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 				attrsToUpdate.put(ATTR_VM_GUEST_STATE, vmGuestState);
 			}
 		}
+		// ATTR_VM_GUEST_OS_ID
+		if (guestOsId != null) {
+			if (this.getAttributeValueByOcciKey(ATTR_VM_GUEST_OS_ID) == null) {
+				attrsToCreate.put(ATTR_VM_GUEST_OS_ID, guestOsId);
+			} else {
+				attrsToUpdate.put(ATTR_VM_GUEST_OS_ID, guestOsId);
+			}
+		}
+		
 		if (markedAsTemplate == null) {
 			markedAsTemplate = "false";
 		}

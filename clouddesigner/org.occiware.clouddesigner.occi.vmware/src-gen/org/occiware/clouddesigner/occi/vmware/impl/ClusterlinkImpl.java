@@ -13,6 +13,7 @@ package org.occiware.clouddesigner.occi.vmware.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.occiware.clouddesigner.occi.impl.LinkImpl;
 import org.occiware.clouddesigner.occi.vmware.Clusterlink;
 import org.occiware.clouddesigner.occi.vmware.VmwarePackage;
 
@@ -23,7 +24,7 @@ import org.occiware.clouddesigner.occi.vmware.VmwarePackage;
  *
  * @generated
  */
-public class ClusterlinkImpl extends FolderlinkImpl implements Clusterlink {
+public class ClusterlinkImpl extends LinkImpl implements Clusterlink {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

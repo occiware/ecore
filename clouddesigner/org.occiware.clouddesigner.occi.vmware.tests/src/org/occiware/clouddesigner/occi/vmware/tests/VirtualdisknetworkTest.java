@@ -11,6 +11,8 @@
  */
 package org.occiware.clouddesigner.occi.vmware.tests;
 
+import junit.framework.TestCase;
+
 import junit.textui.TestRunner;
 
 import org.occiware.clouddesigner.occi.vmware.Virtualdisknetwork;
@@ -22,7 +24,15 @@ import org.occiware.clouddesigner.occi.vmware.VmwareFactory;
  * <!-- end-user-doc -->
  * @generated
  */
-public class VirtualdisknetworkTest extends VirtualdiskTest {
+public class VirtualdisknetworkTest extends TestCase {
+
+	/**
+	 * The fixture for this Virtualdisknetwork test case.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected Virtualdisknetwork fixture = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -44,14 +54,23 @@ public class VirtualdisknetworkTest extends VirtualdiskTest {
 	}
 
 	/**
+	 * Sets the fixture for this Virtualdisknetwork test case.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void setFixture(Virtualdisknetwork fixture) {
+		this.fixture = fixture;
+	}
+
+	/**
 	 * Returns the fixture for this Virtualdisknetwork test case.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	protected Virtualdisknetwork getFixture() {
-		return (Virtualdisknetwork)fixture;
+		return fixture;
 	}
 
 	/**

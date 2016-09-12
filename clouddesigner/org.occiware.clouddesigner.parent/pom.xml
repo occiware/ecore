@@ -112,6 +112,7 @@
         <module>../org.occiware.clouddesigner.occi.vmware.edit</module>
         <module>../org.occiware.clouddesigner.occi.vmware.editor</module>
         <module>../org.occiware.clouddesigner.occi.vmware.tests</module>
+        <module>../org.occiware.clouddesigner.occi.vmware.connector</module>
         <module>../org.occiware.clouddesigner.occi.vmware.design</module>
         
 		<!-- OCCI Xtext -->

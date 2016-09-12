@@ -9,15 +9,23 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
     <actions term="enterMaintenanceMode" scheme="http://occiware.org/occi/vmware/datastore/action#"/>
   </kinds>
-  <kinds term="cluster" scheme="http://occiware.org/occi/vmware#" title="Represents a cluster of HostSystem objects as a unified compute resource for virtual machines." parent="//@kinds[term='folder']">
+  <kinds term="cluster" scheme="http://occiware.org/occi/vmware#" title="Represents a cluster of HostSystem objects as a unified compute resource for virtual machines.">
+    <attributes name="name" required="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
     <actions term="addAllHostSystem" scheme="http://occiware.org/occi/vmware/cluster/action#" title="Add all hostsystem linked to this cluster and not already added on this cluster, if hostsystem are not connectable, the host will not be added"/>
     <actions term="applyRecommendation" scheme="http://occiware.org/occi/vmware/cluster/action#"/>
     <actions term="enterMaintenanceMode" scheme="http://occiware.org/occi/vmware/cluster/action#"/>
   </kinds>
-  <kinds term="datacenter" scheme="http://occiware.org/occi/vmware#" title="The interface to the common container object for hosts and virtual machines. Every host and virtual machine must be under a distinct datacenter in the inventory, and datacenters may not be nested under other datacenters." parent="//@kinds[term='folder']">
+  <kinds term="datacenter" scheme="http://occiware.org/occi/vmware#" title="The interface to the common container object for hosts and virtual machines. Every host and virtual machine must be under a distinct datacenter in the inventory, and datacenters may not be nested under other datacenters.">
     <attributes name="defaultHardwareVersionKey" description="Key for Default Hardware Version to be used on this datacenter in the format of key. Setting this field affects defaultConfigOption returned by environmentBrowser of all its children with this field unset. See ReconfigureDatacenter_Task">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
+    <attributes name="name" required="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
     <actions term="powerOnMultiVMs" scheme="http://occiware.org/occi/vmware/datacenter/action#"/>
     <actions term="discoverAll" scheme="http://occiware.org/occi/vmware/datacenter/action#" title="This action create or synchronize all the infrastructure elements detected on VMware in Cloud designer diagram, but does nothing on VMware. This make take some times to synchronize if there is a lot of elements"/>
   </kinds>
@@ -157,7 +165,9 @@
   <kinds term="resourcepoollink" scheme="http://occiware.org/occi/vmware#" title="a link between cluster (or host) and virtual machine with resource pool definition, this link may link other resource pools between them to define child dependencies, it may be used too for resourcepoolquickstats informations">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
-  <kinds term="clusterlink" scheme="http://occiware.org/occi/vmware#" title="Link between cluster and hostsystem" parent="//@kinds[term='folderlink']"/>
+  <kinds term="clusterlink" scheme="http://occiware.org/occi/vmware#" title="Link between cluster and hostsystem">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
   <kinds term="resourcepool" scheme="http://occiware.org/occi/vmware#" title="A resource pool linked between a compute host (or a cluster) and a virtual machine, usage attributes part are for runtime information only">
     <attributes name="name">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
@@ -170,8 +180,12 @@
     <attributes name="state" default="unknown" description="unknown: The status is unknown. &#xA;undercommitted: resource pool is in a good state. &#xA;inconsistent: One or more nodes in the tree has children whose reservations are greater than the node is configured to support. For example, i) a resource pool with a fixed reservation has a running virtual machine with a reservation that is higher than the reservation on resource pool itself., or ii) the child reservations are greater than the limit.&#xA;In this state, the DRS algorithm is disabled until the resource pool tree's configuration has been brought back into a consistent state. We also restrict the resources that such invalid nodes request from their parents to the configured reservation/limit, in an attempt to isolate the problem to a small subtree. For the rest of the tree, we determine whether the cluster is undercommitted or overcommitted according to the existing rules and perform admission control accordingly.&#xA;&#xA;Note that since all changes to the resource settings are validated on the VirtualCenter server, the system cannot be brought into this state by simply manipulating a cluster resource pool tree through VirtualCenter. It can only happen if a virtual machine gets powered on directly on a host that is part of a DRS cluster.&#xA;overcommitted: In this state, the tree is consistent internally, but the root resource pool does not have the capacity at to meet the reservation of its children. We can only go from GREEN -> YELLOW if we lose resources at the root. For example, hosts becomes unavailable or is put into maintenance mode. Note that we will always have enough capacity at the root to run all currently powered on VMs. However, we may not be able to satisfy all resource pool reservations in the tree. In this state, the reservation configured for a resource pool is no longer guaranteed, but the limits are still enforced. This provides additional flexibility for bringing the tree back into a consistent state, without risking bringing the tree into a RED state. In more detail:&#xA;Resource Pool The root is considered to have unlimited capacity. You can reserve resources without any check except the requirement that the tree remains consistent. This means that nodes whose parents are all configured with expandable reservations and no limit will have unlimited available resources. However, if there is an ancestor with a fixed reservation or an expandable reservation with a limit somewhere, then the node will be limited by the reservation/limit of the ancestor.&#xA;Virtual Machine Virtual machines are limited by ancestors with a fixed reservation and the capacity at the root. &#xA;yellow: The entity might have a problem." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <kinds term="datacenterlink" scheme="http://occiware.org/occi/vmware#" title="" parent="//@kinds[term='folderlink']"/>
-  <kinds term="hostsystemlink" scheme="http://occiware.org/occi/vmware#" title="a link between a hostsystem and a virtual machine" parent="//@kinds[term='folderlink']"/>
+  <kinds term="datacenterlink" scheme="http://occiware.org/occi/vmware#" title="">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds term="hostsystemlink" scheme="http://occiware.org/occi/vmware#" title="a link between a hostsystem and a virtual machine">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
   <kinds term="datastorelink" scheme="http://occiware.org/occi/vmware#" title="a link between a datacenter and a datastore">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
@@ -231,7 +245,12 @@
     <actions term="connectAdaptater" scheme="http://occiware.org/occi/vmware/virtualnetworkadapter/action#" title="Connect virtual machine to vswitch"/>
     <actions term="disconnectAdaptater" scheme="http://occiware.org/occi/vmware/virtualnetworkadapter/action#" title="Disconnect virtual machine and vswitch"/>
   </kinds>
-  <kinds term="virtualdisknetwork" scheme="http://occiware.org/occi/vmware#" title="a storage disk network for usage with a network vswitch and portgroup, vswitch and portgroup may be multiples" parent="//@kinds[term='virtualdisk']"/>
+  <kinds term="virtualdisknetwork" scheme="http://occiware.org/occi/vmware#" title="a storage disk network for usage with a network vswitch and portgroup, vswitch and portgroup may be multiples">
+    <attributes name="volumeName" required="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <parent href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='storage']"/>
+  </kinds>
   <kinds term="virtualdisknetworklink" scheme="http://occiware.org/occi/vmware#" title="a link between a virtualdisknetwork and a vswitch">
     <parent href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='storagelink']"/>
   </kinds>
@@ -272,7 +291,12 @@
     </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <kinds term="hostfolder" scheme="http://occiware.org/occi/vmware#" parent="//@kinds[term='folder']"/>
+  <kinds term="hostfolder" scheme="http://occiware.org/occi/vmware#">
+    <attributes name="name" required="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
   <kinds term="vcentercapability" scheme="http://occiware.org/occi/vmware#" title="Global data object to determine if the global service instance support or not a feature, see ServiceInstance">
     <attributes name="multiHostSupported" mutable="false" description="Indicates whether or not the service instance supports multiple hosts. ">
       <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
@@ -340,7 +364,12 @@
   <kinds term="hoststoragelink" scheme="http://occiware.org/occi/vmware#" title="hoststorage as it is view by the host os">
     <parent href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='storagelink']"/>
   </kinds>
-  <kinds term="vmfolder" scheme="http://occiware.org/occi/vmware#" parent="//@kinds[term='folder']"/>
+  <kinds term="vmfolder" scheme="http://occiware.org/occi/vmware#">
+    <attributes name="name" required="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
   <kinds term="serviceconsolenic" scheme="http://occiware.org/occi/vmware#" title="Virtual network adapters configured for use by the Service Console" parent="//@kinds[term='virtualnetworkadapter']"/>
   <kinds term="portgrouplink" scheme="http://occiware.org/occi/vmware#" title="link between portgroup and vswitch">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
@@ -384,12 +413,21 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds term="distributedportgroup" scheme="http://occiware.org/occi/vmware#" parent="//@kinds[term='portgroup']"/>
-  <kinds term="virtualcdrom" scheme="http://occiware.org/occi/vmware#" title="A virtual cdrom disk" parent="//@kinds[term='virtualdisk']">
+  <kinds term="virtualcdrom" scheme="http://occiware.org/occi/vmware#" title="A virtual cdrom disk">
     <attributes name="isoFilename" required="true" description="The filename of the ISO.">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
+    <attributes name="volumeName" required="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <parent href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='storage']"/>
   </kinds>
-  <kinds term="virtualfloppy" scheme="http://occiware.org/occi/vmware#" title="A virtual floppy disk" parent="//@kinds[term='virtualdisk']"/>
+  <kinds term="virtualfloppy" scheme="http://occiware.org/occi/vmware#" title="A virtual floppy disk">
+    <attributes name="volumeName" required="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <parent href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='storage']"/>
+  </kinds>
   <kinds term="virtualdisklink" scheme="http://occiware.org/occi/vmware#">
     <attributes name="vmdkFilePathOnDatastore" mutable="false" description="Represents the vmdk file path.">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>

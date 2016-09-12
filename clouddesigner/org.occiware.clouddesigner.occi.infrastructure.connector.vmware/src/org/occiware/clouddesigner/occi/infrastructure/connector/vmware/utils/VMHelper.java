@@ -594,16 +594,20 @@ public class VMHelper {
 	 *            (optional may be null)
 	 * @param vRamSizeGB
 	 *            (optional may be null) in GigaBytes
+	 * @param summary 
+	 * 		annotation on vm.
 	 * @return
 	 * @throws InvalidProperty
 	 * @throws RuntimeFault
 	 * @throws RemoteException
 	 */
-	public static void reconfigureVm(final VirtualMachine vm, final Integer vnumCPU, final Float vRamSizeGB)
+	public static void reconfigureVm(final VirtualMachine vm, final Integer vnumCPU, final Float vRamSizeGB, String summary)
 			throws RemoteException {
 
 		VirtualMachineConfigSpec changeSpecHot = new VirtualMachineConfigSpec();
 		VirtualMachineConfigSpec changeSpecCold = new VirtualMachineConfigSpec();
+		changeSpecHot.setAnnotation(summary);
+		changeSpecCold.setAnnotation(summary);
 		String lastPowerState = getPowerState(vm);
 		if (vm == null) {
 			LOGGER.warn("The virtual machine object doesnt exist for hot reconfiguration");

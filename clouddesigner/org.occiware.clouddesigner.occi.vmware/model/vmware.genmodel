@@ -953,6 +953,9 @@
     </genClasses>
     <genClasses>
       <ecoreClass href="vmware.ecore#//Cluster"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Cluster/name"/>
+      </genFeatures>
       <genOperations>
         <ecoreOperation href="vmware.ecore#//Cluster/addAllHostSystem"/>
       </genOperations>
@@ -967,6 +970,9 @@
       <ecoreClass href="vmware.ecore#//Datacenter"/>
       <genFeatures createChild="false">
         <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Datacenter/defaultHardwareVersionKey"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Datacenter/name"/>
       </genFeatures>
       <genOperations>
         <ecoreOperation href="vmware.ecore#//Datacenter/powerOnMultiVMs"/>
@@ -1247,6 +1253,9 @@
     </genClasses>
     <genClasses>
       <ecoreClass href="vmware.ecore#//Virtualdisknetwork"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Virtualdisknetwork/volumeName"/>
+      </genFeatures>
     </genClasses>
     <genClasses>
       <ecoreClass href="vmware.ecore#//Virtualdisknetworklink"/>
@@ -1298,6 +1307,9 @@
     </genClasses>
     <genClasses>
       <ecoreClass href="vmware.ecore#//Hostfolder"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Hostfolder/name"/>
+      </genFeatures>
     </genClasses>
     <genClasses>
       <ecoreClass href="vmware.ecore#//Vcentercapability"/>
@@ -1376,6 +1388,9 @@
     </genClasses>
     <genClasses>
       <ecoreClass href="vmware.ecore#//Vmfolder"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Vmfolder/name"/>
+      </genFeatures>
     </genClasses>
     <genClasses>
       <ecoreClass href="vmware.ecore#//Serviceconsolenic"/>
@@ -1433,9 +1448,15 @@
       <genFeatures createChild="false">
         <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Virtualcdrom/isoFilename"/>
       </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Virtualcdrom/volumeName"/>
+      </genFeatures>
     </genClasses>
     <genClasses>
       <ecoreClass href="vmware.ecore#//Virtualfloppy"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="vmware.ecore#//Virtualfloppy/volumeName"/>
+      </genFeatures>
     </genClasses>
     <genClasses>
       <ecoreClass href="vmware.ecore#//Virtualdisklink"/>

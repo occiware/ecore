@@ -34,7 +34,13 @@ h2. Kind cluster
 | *Term* | cluster |
 | *Scheme* | http://occiware.org/occi/vmware# |
 | *Title* | Represents a cluster of HostSystem objects as a unified compute resource for virtual machines. |
-| *Parent* | <a href="vmware.textile#kind-folder">http://occiware.org/occi/vmware#folder</a> |
+| *Parent* | <a href="core.textile#kind-resource">http://schemas.ogf.org/occi/core#resource</a> |
+
+Attributes of cluster are:
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| name | <a href="core.textile#datatype-string">String</a> | true | true |  |  |
+
 Actions of cluster are:
 
 | *Term* | *Scheme* | *Attributes* | *Title* |
@@ -48,12 +54,13 @@ h2. Kind datacenter
 | *Term* | datacenter |
 | *Scheme* | http://occiware.org/occi/vmware# |
 | *Title* | The interface to the common container object for hosts and virtual machines. Every host and virtual machine must be under a distinct datacenter in the inventory, and datacenters may not be nested under other datacenters. |
-| *Parent* | <a href="vmware.textile#kind-folder">http://occiware.org/occi/vmware#folder</a> |
+| *Parent* | <a href="core.textile#kind-resource">http://schemas.ogf.org/occi/core#resource</a> |
 
 Attributes of datacenter are:
 
 | *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
 | defaultHardwareVersionKey | <a href="core.textile#datatype-string">String</a> | false | true |  | Key for Default Hardware Version to be used on this datacenter in the format of key. Setting this field affects defaultConfigOption returned by environmentBrowser of all its children with this field unset. See ReconfigureDatacenter_Task |
+| name | <a href="core.textile#datatype-string">String</a> | true | true |  |  |
 
 Actions of datacenter are:
 
@@ -178,7 +185,7 @@ h2. Kind clusterlink
 | *Term* | clusterlink |
 | *Scheme* | http://occiware.org/occi/vmware# |
 | *Title* | Link between cluster and hostsystem |
-| *Parent* | <a href="vmware.textile#kind-folderlink">http://occiware.org/occi/vmware#folderlink</a> |
+| *Parent* | <a href="core.textile#kind-link">http://schemas.ogf.org/occi/core#link</a> |
 
 h2. Kind resourcepool
 
@@ -211,14 +218,14 @@ h2. Kind datacenterlink
 | *Term* | datacenterlink |
 | *Scheme* | http://occiware.org/occi/vmware# |
 | *Title* |  |
-| *Parent* | <a href="vmware.textile#kind-folderlink">http://occiware.org/occi/vmware#folderlink</a> |
+| *Parent* | <a href="core.textile#kind-link">http://schemas.ogf.org/occi/core#link</a> |
 
 h2. Kind hostsystemlink
 
 | *Term* | hostsystemlink |
 | *Scheme* | http://occiware.org/occi/vmware# |
 | *Title* | a link between a hostsystem and a virtual machine |
-| *Parent* | <a href="vmware.textile#kind-folderlink">http://occiware.org/occi/vmware#folderlink</a> |
+| *Parent* | <a href="core.textile#kind-link">http://schemas.ogf.org/occi/core#link</a> |
 
 h2. Kind datastorelink
 
@@ -321,7 +328,13 @@ h2. Kind virtualdisknetwork
 | *Term* | virtualdisknetwork |
 | *Scheme* | http://occiware.org/occi/vmware# |
 | *Title* | a storage disk network for usage with a network vswitch and portgroup, vswitch and portgroup may be multiples |
-| *Parent* | <a href="vmware.textile#kind-virtualdisk">http://occiware.org/occi/vmware#virtualdisk</a> |
+| *Parent* | <a href="infrastructure.textile#kind-storage">http://schemas.ogf.org/occi/infrastructure#storage</a> |
+
+Attributes of virtualdisknetwork are:
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| volumeName | <a href="core.textile#datatype-string">String</a> | true | true |  |  |
+
 
 h2. Kind virtualdisknetworklink
 
@@ -399,7 +412,13 @@ h2. Kind hostfolder
 | *Term* | hostfolder |
 | *Scheme* | http://occiware.org/occi/vmware# |
 | *Title* |  |
-| *Parent* | <a href="vmware.textile#kind-folder">http://occiware.org/occi/vmware#folder</a> |
+| *Parent* | <a href="core.textile#kind-resource">http://schemas.ogf.org/occi/core#resource</a> |
+
+Attributes of hostfolder are:
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| name | <a href="core.textile#datatype-string">String</a> | true | true |  |  |
+
 
 h2. Kind vcentercapability
 
@@ -496,7 +515,13 @@ h2. Kind vmfolder
 | *Term* | vmfolder |
 | *Scheme* | http://occiware.org/occi/vmware# |
 | *Title* |  |
-| *Parent* | <a href="vmware.textile#kind-folder">http://occiware.org/occi/vmware#folder</a> |
+| *Parent* | <a href="core.textile#kind-resource">http://schemas.ogf.org/occi/core#resource</a> |
+
+Attributes of vmfolder are:
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| name | <a href="core.textile#datatype-string">String</a> | true | true |  |  |
+
 
 h2. Kind serviceconsolenic
 
@@ -560,12 +585,13 @@ h2. Kind virtualcdrom
 | *Term* | virtualcdrom |
 | *Scheme* | http://occiware.org/occi/vmware# |
 | *Title* | A virtual cdrom disk |
-| *Parent* | <a href="vmware.textile#kind-virtualdisk">http://occiware.org/occi/vmware#virtualdisk</a> |
+| *Parent* | <a href="infrastructure.textile#kind-storage">http://schemas.ogf.org/occi/infrastructure#storage</a> |
 
 Attributes of virtualcdrom are:
 
 | *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
 | isoFilename | <a href="core.textile#datatype-string">String</a> | true | true |  | The filename of the ISO. |
+| volumeName | <a href="core.textile#datatype-string">String</a> | true | true |  |  |
 
 
 h2. Kind virtualfloppy
@@ -573,7 +599,13 @@ h2. Kind virtualfloppy
 | *Term* | virtualfloppy |
 | *Scheme* | http://occiware.org/occi/vmware# |
 | *Title* | A virtual floppy disk |
-| *Parent* | <a href="vmware.textile#kind-virtualdisk">http://occiware.org/occi/vmware#virtualdisk</a> |
+| *Parent* | <a href="infrastructure.textile#kind-storage">http://schemas.ogf.org/occi/infrastructure#storage</a> |
+
+Attributes of virtualfloppy are:
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| volumeName | <a href="core.textile#datatype-string">String</a> | true | true |  |  |
+
 
 h2. Kind virtualdisklink
 
@@ -3385,4 +3417,4 @@ h2. Enum HostCapabilityFtUnsupportedReason
 * unsupportedProduct  
 * vMotionNotLicensed  
 
-Generated at Fri Sep 09 11:14:17 CEST 2016 from platform:/resource/org.occiware.clouddesigner.occi.vmware/model/vmware.occie by org.occiware.clouddesigner.occi.gen.doc
+Generated at Fri Sep 09 14:20:17 CEST 2016 from platform:/resource/org.occiware.clouddesigner.occi.vmware/model/vmware.occie by org.occiware.clouddesigner.occi.gen.doc

@@ -106,7 +106,6 @@ public class HostHelper {
 		return host;
 	}
 
-	
 	/**
 	 * Find the first Host network.
 	 */
@@ -126,7 +125,40 @@ public class HostHelper {
 		}
 		return network;
 	}
-	
-	
+
+	/**
+	 * Find a hostsystem for a port group name.
+	 * 
+	 * @param portGroupName
+	 * @return a hostsystem.
+	 */
+	public static HostSystem findHostForPortGroup(final Folder rootFolder, final String portGroupName) {
+		HostSystem host = null;
+		List<HostSystem> hosts = findAllHostSystem(rootFolder);
+		if (hosts.isEmpty()) {
+			return null; // TODO : Launch an notfound exception.
+		}
+		try {
+			for (HostSystem sys : hosts) {
+				Network[] networks = sys.getNetworks();
+				if (networks != null && networks.length > 0) {
+					for (Network net : networks) {
+						if (net.getName().equals(portGroupName)) {
+							LOGGER.info("Host found : " + sys.getName());
+							host = sys;
+							break;
+						}
+					}
+					if (host != null) {
+						break;
+					}
+				}
+			}
+		} catch (RemoteException ex) {
+			LOGGER.error("Exception RemoteException thrown, cant retrieve a host for a port group.");
+			return null;
+		}
+		return host;
+	}
 
 }

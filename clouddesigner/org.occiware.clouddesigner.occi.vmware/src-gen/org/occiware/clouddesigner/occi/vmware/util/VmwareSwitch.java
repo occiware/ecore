@@ -96,7 +96,6 @@ public class VmwareSwitch<T> extends Switch<T> {
 			case VmwarePackage.CLUSTER: {
 				Cluster cluster = (Cluster)theEObject;
 				T result = caseCluster(cluster);
-				if (result == null) result = caseFolder(cluster);
 				if (result == null) result = caseResource(cluster);
 				if (result == null) result = caseEntity(cluster);
 				if (result == null) result = defaultCase(theEObject);
@@ -105,7 +104,6 @@ public class VmwareSwitch<T> extends Switch<T> {
 			case VmwarePackage.DATACENTER: {
 				Datacenter datacenter = (Datacenter)theEObject;
 				T result = caseDatacenter(datacenter);
-				if (result == null) result = caseFolder(datacenter);
 				if (result == null) result = caseResource(datacenter);
 				if (result == null) result = caseEntity(datacenter);
 				if (result == null) result = defaultCase(theEObject);
@@ -148,7 +146,6 @@ public class VmwareSwitch<T> extends Switch<T> {
 			case VmwarePackage.CLUSTERLINK: {
 				Clusterlink clusterlink = (Clusterlink)theEObject;
 				T result = caseClusterlink(clusterlink);
-				if (result == null) result = caseFolderlink(clusterlink);
 				if (result == null) result = caseLink(clusterlink);
 				if (result == null) result = caseEntity(clusterlink);
 				if (result == null) result = defaultCase(theEObject);
@@ -165,7 +162,6 @@ public class VmwareSwitch<T> extends Switch<T> {
 			case VmwarePackage.DATACENTERLINK: {
 				Datacenterlink datacenterlink = (Datacenterlink)theEObject;
 				T result = caseDatacenterlink(datacenterlink);
-				if (result == null) result = caseFolderlink(datacenterlink);
 				if (result == null) result = caseLink(datacenterlink);
 				if (result == null) result = caseEntity(datacenterlink);
 				if (result == null) result = defaultCase(theEObject);
@@ -174,7 +170,6 @@ public class VmwareSwitch<T> extends Switch<T> {
 			case VmwarePackage.HOSTSYSTEMLINK: {
 				Hostsystemlink hostsystemlink = (Hostsystemlink)theEObject;
 				T result = caseHostsystemlink(hostsystemlink);
-				if (result == null) result = caseFolderlink(hostsystemlink);
 				if (result == null) result = caseLink(hostsystemlink);
 				if (result == null) result = caseEntity(hostsystemlink);
 				if (result == null) result = defaultCase(theEObject);
@@ -226,7 +221,6 @@ public class VmwareSwitch<T> extends Switch<T> {
 			case VmwarePackage.VIRTUALDISKNETWORK: {
 				Virtualdisknetwork virtualdisknetwork = (Virtualdisknetwork)theEObject;
 				T result = caseVirtualdisknetwork(virtualdisknetwork);
-				if (result == null) result = caseVirtualdisk(virtualdisknetwork);
 				if (result == null) result = caseStorage(virtualdisknetwork);
 				if (result == null) result = caseResource(virtualdisknetwork);
 				if (result == null) result = caseEntity(virtualdisknetwork);
@@ -288,7 +282,6 @@ public class VmwareSwitch<T> extends Switch<T> {
 			case VmwarePackage.HOSTFOLDER: {
 				Hostfolder hostfolder = (Hostfolder)theEObject;
 				T result = caseHostfolder(hostfolder);
-				if (result == null) result = caseFolder(hostfolder);
 				if (result == null) result = caseResource(hostfolder);
 				if (result == null) result = caseEntity(hostfolder);
 				if (result == null) result = defaultCase(theEObject);
@@ -347,7 +340,6 @@ public class VmwareSwitch<T> extends Switch<T> {
 			case VmwarePackage.VMFOLDER: {
 				Vmfolder vmfolder = (Vmfolder)theEObject;
 				T result = caseVmfolder(vmfolder);
-				if (result == null) result = caseFolder(vmfolder);
 				if (result == null) result = caseResource(vmfolder);
 				if (result == null) result = caseEntity(vmfolder);
 				if (result == null) result = defaultCase(theEObject);
@@ -399,7 +391,6 @@ public class VmwareSwitch<T> extends Switch<T> {
 			case VmwarePackage.VIRTUALCDROM: {
 				Virtualcdrom virtualcdrom = (Virtualcdrom)theEObject;
 				T result = caseVirtualcdrom(virtualcdrom);
-				if (result == null) result = caseVirtualdisk(virtualcdrom);
 				if (result == null) result = caseStorage(virtualcdrom);
 				if (result == null) result = caseResource(virtualcdrom);
 				if (result == null) result = caseEntity(virtualcdrom);
@@ -409,7 +400,6 @@ public class VmwareSwitch<T> extends Switch<T> {
 			case VmwarePackage.VIRTUALFLOPPY: {
 				Virtualfloppy virtualfloppy = (Virtualfloppy)theEObject;
 				T result = caseVirtualfloppy(virtualfloppy);
-				if (result == null) result = caseVirtualdisk(virtualfloppy);
 				if (result == null) result = caseStorage(virtualfloppy);
 				if (result == null) result = caseResource(virtualfloppy);
 				if (result == null) result = caseEntity(virtualfloppy);

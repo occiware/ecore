@@ -227,132 +227,6 @@ public interface VmwarePackage extends EPackage {
 	int FOLDER = 22;
 
 	/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FOLDER__ID = OCCIPackage.RESOURCE__ID;
-
-	/**
-	 * The feature id for the '<em><b>Title</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FOLDER__TITLE = OCCIPackage.RESOURCE__TITLE;
-
-	/**
-	 * The feature id for the '<em><b>Kind</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FOLDER__KIND = OCCIPackage.RESOURCE__KIND;
-
-	/**
-	 * The feature id for the '<em><b>Mixins</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FOLDER__MIXINS = OCCIPackage.RESOURCE__MIXINS;
-
-	/**
-	 * The feature id for the '<em><b>Attributes</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FOLDER__ATTRIBUTES = OCCIPackage.RESOURCE__ATTRIBUTES;
-
-	/**
-	 * The feature id for the '<em><b>Summary</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FOLDER__SUMMARY = OCCIPackage.RESOURCE__SUMMARY;
-
-	/**
-	 * The feature id for the '<em><b>Links</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FOLDER__LINKS = OCCIPackage.RESOURCE__LINKS;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FOLDER__NAME = OCCIPackage.RESOURCE_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Folder</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FOLDER_FEATURE_COUNT = OCCIPackage.RESOURCE_FEATURE_COUNT + 1;
-
-	/**
-	 * The operation id for the '<em>Occi Create</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FOLDER___OCCI_CREATE = OCCIPackage.RESOURCE___OCCI_CREATE;
-
-	/**
-	 * The operation id for the '<em>Occi Retrieve</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FOLDER___OCCI_RETRIEVE = OCCIPackage.RESOURCE___OCCI_RETRIEVE;
-
-	/**
-	 * The operation id for the '<em>Occi Update</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FOLDER___OCCI_UPDATE = OCCIPackage.RESOURCE___OCCI_UPDATE;
-
-	/**
-	 * The operation id for the '<em>Occi Delete</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FOLDER___OCCI_DELETE = OCCIPackage.RESOURCE___OCCI_DELETE;
-
-	/**
-	 * The number of operations of the '<em>Folder</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FOLDER_OPERATION_COUNT = OCCIPackage.RESOURCE_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.vmware.impl.ClusterImpl <em>Cluster</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -369,7 +243,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLUSTER__ID = FOLDER__ID;
+	int CLUSTER__ID = OCCIPackage.RESOURCE__ID;
 
 	/**
 	 * The feature id for the '<em><b>Title</b></em>' attribute.
@@ -378,7 +252,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLUSTER__TITLE = FOLDER__TITLE;
+	int CLUSTER__TITLE = OCCIPackage.RESOURCE__TITLE;
 
 	/**
 	 * The feature id for the '<em><b>Kind</b></em>' reference.
@@ -387,7 +261,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLUSTER__KIND = FOLDER__KIND;
+	int CLUSTER__KIND = OCCIPackage.RESOURCE__KIND;
 
 	/**
 	 * The feature id for the '<em><b>Mixins</b></em>' reference list.
@@ -396,7 +270,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLUSTER__MIXINS = FOLDER__MIXINS;
+	int CLUSTER__MIXINS = OCCIPackage.RESOURCE__MIXINS;
 
 	/**
 	 * The feature id for the '<em><b>Attributes</b></em>' containment reference list.
@@ -405,7 +279,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLUSTER__ATTRIBUTES = FOLDER__ATTRIBUTES;
+	int CLUSTER__ATTRIBUTES = OCCIPackage.RESOURCE__ATTRIBUTES;
 
 	/**
 	 * The feature id for the '<em><b>Summary</b></em>' attribute.
@@ -414,7 +288,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLUSTER__SUMMARY = FOLDER__SUMMARY;
+	int CLUSTER__SUMMARY = OCCIPackage.RESOURCE__SUMMARY;
 
 	/**
 	 * The feature id for the '<em><b>Links</b></em>' containment reference list.
@@ -423,7 +297,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLUSTER__LINKS = FOLDER__LINKS;
+	int CLUSTER__LINKS = OCCIPackage.RESOURCE__LINKS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -432,7 +306,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLUSTER__NAME = FOLDER__NAME;
+	int CLUSTER__NAME = OCCIPackage.RESOURCE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Cluster</em>' class.
@@ -441,7 +315,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLUSTER_FEATURE_COUNT = FOLDER_FEATURE_COUNT + 0;
+	int CLUSTER_FEATURE_COUNT = OCCIPackage.RESOURCE_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Occi Create</em>' operation.
@@ -450,7 +324,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLUSTER___OCCI_CREATE = FOLDER___OCCI_CREATE;
+	int CLUSTER___OCCI_CREATE = OCCIPackage.RESOURCE___OCCI_CREATE;
 
 	/**
 	 * The operation id for the '<em>Occi Retrieve</em>' operation.
@@ -459,7 +333,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLUSTER___OCCI_RETRIEVE = FOLDER___OCCI_RETRIEVE;
+	int CLUSTER___OCCI_RETRIEVE = OCCIPackage.RESOURCE___OCCI_RETRIEVE;
 
 	/**
 	 * The operation id for the '<em>Occi Update</em>' operation.
@@ -468,7 +342,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLUSTER___OCCI_UPDATE = FOLDER___OCCI_UPDATE;
+	int CLUSTER___OCCI_UPDATE = OCCIPackage.RESOURCE___OCCI_UPDATE;
 
 	/**
 	 * The operation id for the '<em>Occi Delete</em>' operation.
@@ -477,7 +351,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLUSTER___OCCI_DELETE = FOLDER___OCCI_DELETE;
+	int CLUSTER___OCCI_DELETE = OCCIPackage.RESOURCE___OCCI_DELETE;
 
 	/**
 	 * The operation id for the '<em>Add All Host System</em>' operation.
@@ -486,7 +360,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLUSTER___ADD_ALL_HOST_SYSTEM = FOLDER_OPERATION_COUNT + 0;
+	int CLUSTER___ADD_ALL_HOST_SYSTEM = OCCIPackage.RESOURCE_OPERATION_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Apply Recommendation</em>' operation.
@@ -495,7 +369,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLUSTER___APPLY_RECOMMENDATION = FOLDER_OPERATION_COUNT + 1;
+	int CLUSTER___APPLY_RECOMMENDATION = OCCIPackage.RESOURCE_OPERATION_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Enter Maintenance Mode</em>' operation.
@@ -504,7 +378,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLUSTER___ENTER_MAINTENANCE_MODE = FOLDER_OPERATION_COUNT + 2;
+	int CLUSTER___ENTER_MAINTENANCE_MODE = OCCIPackage.RESOURCE_OPERATION_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Cluster</em>' class.
@@ -513,7 +387,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLUSTER_OPERATION_COUNT = FOLDER_OPERATION_COUNT + 3;
+	int CLUSTER_OPERATION_COUNT = OCCIPackage.RESOURCE_OPERATION_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.vmware.impl.DatacenterImpl <em>Datacenter</em>}' class.
@@ -532,7 +406,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATACENTER__ID = FOLDER__ID;
+	int DATACENTER__ID = OCCIPackage.RESOURCE__ID;
 
 	/**
 	 * The feature id for the '<em><b>Title</b></em>' attribute.
@@ -541,7 +415,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATACENTER__TITLE = FOLDER__TITLE;
+	int DATACENTER__TITLE = OCCIPackage.RESOURCE__TITLE;
 
 	/**
 	 * The feature id for the '<em><b>Kind</b></em>' reference.
@@ -550,7 +424,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATACENTER__KIND = FOLDER__KIND;
+	int DATACENTER__KIND = OCCIPackage.RESOURCE__KIND;
 
 	/**
 	 * The feature id for the '<em><b>Mixins</b></em>' reference list.
@@ -559,7 +433,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATACENTER__MIXINS = FOLDER__MIXINS;
+	int DATACENTER__MIXINS = OCCIPackage.RESOURCE__MIXINS;
 
 	/**
 	 * The feature id for the '<em><b>Attributes</b></em>' containment reference list.
@@ -568,7 +442,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATACENTER__ATTRIBUTES = FOLDER__ATTRIBUTES;
+	int DATACENTER__ATTRIBUTES = OCCIPackage.RESOURCE__ATTRIBUTES;
 
 	/**
 	 * The feature id for the '<em><b>Summary</b></em>' attribute.
@@ -577,7 +451,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATACENTER__SUMMARY = FOLDER__SUMMARY;
+	int DATACENTER__SUMMARY = OCCIPackage.RESOURCE__SUMMARY;
 
 	/**
 	 * The feature id for the '<em><b>Links</b></em>' containment reference list.
@@ -586,16 +460,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATACENTER__LINKS = FOLDER__LINKS;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATACENTER__NAME = FOLDER__NAME;
+	int DATACENTER__LINKS = OCCIPackage.RESOURCE__LINKS;
 
 	/**
 	 * The feature id for the '<em><b>Default Hardware Version Key</b></em>' attribute.
@@ -604,7 +469,16 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATACENTER__DEFAULT_HARDWARE_VERSION_KEY = FOLDER_FEATURE_COUNT + 0;
+	int DATACENTER__DEFAULT_HARDWARE_VERSION_KEY = OCCIPackage.RESOURCE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATACENTER__NAME = OCCIPackage.RESOURCE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Datacenter</em>' class.
@@ -613,7 +487,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATACENTER_FEATURE_COUNT = FOLDER_FEATURE_COUNT + 1;
+	int DATACENTER_FEATURE_COUNT = OCCIPackage.RESOURCE_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Occi Create</em>' operation.
@@ -622,7 +496,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATACENTER___OCCI_CREATE = FOLDER___OCCI_CREATE;
+	int DATACENTER___OCCI_CREATE = OCCIPackage.RESOURCE___OCCI_CREATE;
 
 	/**
 	 * The operation id for the '<em>Occi Retrieve</em>' operation.
@@ -631,7 +505,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATACENTER___OCCI_RETRIEVE = FOLDER___OCCI_RETRIEVE;
+	int DATACENTER___OCCI_RETRIEVE = OCCIPackage.RESOURCE___OCCI_RETRIEVE;
 
 	/**
 	 * The operation id for the '<em>Occi Update</em>' operation.
@@ -640,7 +514,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATACENTER___OCCI_UPDATE = FOLDER___OCCI_UPDATE;
+	int DATACENTER___OCCI_UPDATE = OCCIPackage.RESOURCE___OCCI_UPDATE;
 
 	/**
 	 * The operation id for the '<em>Occi Delete</em>' operation.
@@ -649,7 +523,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATACENTER___OCCI_DELETE = FOLDER___OCCI_DELETE;
+	int DATACENTER___OCCI_DELETE = OCCIPackage.RESOURCE___OCCI_DELETE;
 
 	/**
 	 * The operation id for the '<em>Power On Multi VMs</em>' operation.
@@ -658,7 +532,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATACENTER___POWER_ON_MULTI_VMS = FOLDER_OPERATION_COUNT + 0;
+	int DATACENTER___POWER_ON_MULTI_VMS = OCCIPackage.RESOURCE_OPERATION_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Discover All</em>' operation.
@@ -667,7 +541,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATACENTER___DISCOVER_ALL = FOLDER_OPERATION_COUNT + 1;
+	int DATACENTER___DISCOVER_ALL = OCCIPackage.RESOURCE_OPERATION_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Datacenter</em>' class.
@@ -676,7 +550,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATACENTER_OPERATION_COUNT = FOLDER_OPERATION_COUNT + 2;
+	int DATACENTER_OPERATION_COUNT = OCCIPackage.RESOURCE_OPERATION_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.vmware.impl.HostsystemImpl <em>Hostsystem</em>}' class.
@@ -1923,7 +1797,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLUSTERLINK__ID = FOLDERLINK__ID;
+	int CLUSTERLINK__ID = OCCIPackage.LINK__ID;
 
 	/**
 	 * The feature id for the '<em><b>Title</b></em>' attribute.
@@ -1932,7 +1806,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLUSTERLINK__TITLE = FOLDERLINK__TITLE;
+	int CLUSTERLINK__TITLE = OCCIPackage.LINK__TITLE;
 
 	/**
 	 * The feature id for the '<em><b>Kind</b></em>' reference.
@@ -1941,7 +1815,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLUSTERLINK__KIND = FOLDERLINK__KIND;
+	int CLUSTERLINK__KIND = OCCIPackage.LINK__KIND;
 
 	/**
 	 * The feature id for the '<em><b>Mixins</b></em>' reference list.
@@ -1950,7 +1824,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLUSTERLINK__MIXINS = FOLDERLINK__MIXINS;
+	int CLUSTERLINK__MIXINS = OCCIPackage.LINK__MIXINS;
 
 	/**
 	 * The feature id for the '<em><b>Attributes</b></em>' containment reference list.
@@ -1959,7 +1833,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLUSTERLINK__ATTRIBUTES = FOLDERLINK__ATTRIBUTES;
+	int CLUSTERLINK__ATTRIBUTES = OCCIPackage.LINK__ATTRIBUTES;
 
 	/**
 	 * The feature id for the '<em><b>Source</b></em>' container reference.
@@ -1968,7 +1842,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLUSTERLINK__SOURCE = FOLDERLINK__SOURCE;
+	int CLUSTERLINK__SOURCE = OCCIPackage.LINK__SOURCE;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
@@ -1977,7 +1851,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLUSTERLINK__TARGET = FOLDERLINK__TARGET;
+	int CLUSTERLINK__TARGET = OCCIPackage.LINK__TARGET;
 
 	/**
 	 * The number of structural features of the '<em>Clusterlink</em>' class.
@@ -1986,7 +1860,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLUSTERLINK_FEATURE_COUNT = FOLDERLINK_FEATURE_COUNT + 0;
+	int CLUSTERLINK_FEATURE_COUNT = OCCIPackage.LINK_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Occi Create</em>' operation.
@@ -1995,7 +1869,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLUSTERLINK___OCCI_CREATE = FOLDERLINK___OCCI_CREATE;
+	int CLUSTERLINK___OCCI_CREATE = OCCIPackage.LINK___OCCI_CREATE;
 
 	/**
 	 * The operation id for the '<em>Occi Retrieve</em>' operation.
@@ -2004,7 +1878,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLUSTERLINK___OCCI_RETRIEVE = FOLDERLINK___OCCI_RETRIEVE;
+	int CLUSTERLINK___OCCI_RETRIEVE = OCCIPackage.LINK___OCCI_RETRIEVE;
 
 	/**
 	 * The operation id for the '<em>Occi Update</em>' operation.
@@ -2013,7 +1887,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLUSTERLINK___OCCI_UPDATE = FOLDERLINK___OCCI_UPDATE;
+	int CLUSTERLINK___OCCI_UPDATE = OCCIPackage.LINK___OCCI_UPDATE;
 
 	/**
 	 * The operation id for the '<em>Occi Delete</em>' operation.
@@ -2022,7 +1896,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLUSTERLINK___OCCI_DELETE = FOLDERLINK___OCCI_DELETE;
+	int CLUSTERLINK___OCCI_DELETE = OCCIPackage.LINK___OCCI_DELETE;
 
 	/**
 	 * The number of operations of the '<em>Clusterlink</em>' class.
@@ -2031,7 +1905,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLUSTERLINK_OPERATION_COUNT = FOLDERLINK_OPERATION_COUNT + 0;
+	int CLUSTERLINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.vmware.impl.ResourcepoolImpl <em>Resourcepool</em>}' class.
@@ -2222,7 +2096,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATACENTERLINK__ID = FOLDERLINK__ID;
+	int DATACENTERLINK__ID = OCCIPackage.LINK__ID;
 
 	/**
 	 * The feature id for the '<em><b>Title</b></em>' attribute.
@@ -2231,7 +2105,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATACENTERLINK__TITLE = FOLDERLINK__TITLE;
+	int DATACENTERLINK__TITLE = OCCIPackage.LINK__TITLE;
 
 	/**
 	 * The feature id for the '<em><b>Kind</b></em>' reference.
@@ -2240,7 +2114,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATACENTERLINK__KIND = FOLDERLINK__KIND;
+	int DATACENTERLINK__KIND = OCCIPackage.LINK__KIND;
 
 	/**
 	 * The feature id for the '<em><b>Mixins</b></em>' reference list.
@@ -2249,7 +2123,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATACENTERLINK__MIXINS = FOLDERLINK__MIXINS;
+	int DATACENTERLINK__MIXINS = OCCIPackage.LINK__MIXINS;
 
 	/**
 	 * The feature id for the '<em><b>Attributes</b></em>' containment reference list.
@@ -2258,7 +2132,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATACENTERLINK__ATTRIBUTES = FOLDERLINK__ATTRIBUTES;
+	int DATACENTERLINK__ATTRIBUTES = OCCIPackage.LINK__ATTRIBUTES;
 
 	/**
 	 * The feature id for the '<em><b>Source</b></em>' container reference.
@@ -2267,7 +2141,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATACENTERLINK__SOURCE = FOLDERLINK__SOURCE;
+	int DATACENTERLINK__SOURCE = OCCIPackage.LINK__SOURCE;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
@@ -2276,7 +2150,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATACENTERLINK__TARGET = FOLDERLINK__TARGET;
+	int DATACENTERLINK__TARGET = OCCIPackage.LINK__TARGET;
 
 	/**
 	 * The number of structural features of the '<em>Datacenterlink</em>' class.
@@ -2285,7 +2159,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATACENTERLINK_FEATURE_COUNT = FOLDERLINK_FEATURE_COUNT + 0;
+	int DATACENTERLINK_FEATURE_COUNT = OCCIPackage.LINK_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Occi Create</em>' operation.
@@ -2294,7 +2168,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATACENTERLINK___OCCI_CREATE = FOLDERLINK___OCCI_CREATE;
+	int DATACENTERLINK___OCCI_CREATE = OCCIPackage.LINK___OCCI_CREATE;
 
 	/**
 	 * The operation id for the '<em>Occi Retrieve</em>' operation.
@@ -2303,7 +2177,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATACENTERLINK___OCCI_RETRIEVE = FOLDERLINK___OCCI_RETRIEVE;
+	int DATACENTERLINK___OCCI_RETRIEVE = OCCIPackage.LINK___OCCI_RETRIEVE;
 
 	/**
 	 * The operation id for the '<em>Occi Update</em>' operation.
@@ -2312,7 +2186,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATACENTERLINK___OCCI_UPDATE = FOLDERLINK___OCCI_UPDATE;
+	int DATACENTERLINK___OCCI_UPDATE = OCCIPackage.LINK___OCCI_UPDATE;
 
 	/**
 	 * The operation id for the '<em>Occi Delete</em>' operation.
@@ -2321,7 +2195,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATACENTERLINK___OCCI_DELETE = FOLDERLINK___OCCI_DELETE;
+	int DATACENTERLINK___OCCI_DELETE = OCCIPackage.LINK___OCCI_DELETE;
 
 	/**
 	 * The number of operations of the '<em>Datacenterlink</em>' class.
@@ -2330,7 +2204,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATACENTERLINK_OPERATION_COUNT = FOLDERLINK_OPERATION_COUNT + 0;
+	int DATACENTERLINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.vmware.impl.HostsystemlinkImpl <em>Hostsystemlink</em>}' class.
@@ -2349,7 +2223,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HOSTSYSTEMLINK__ID = FOLDERLINK__ID;
+	int HOSTSYSTEMLINK__ID = OCCIPackage.LINK__ID;
 
 	/**
 	 * The feature id for the '<em><b>Title</b></em>' attribute.
@@ -2358,7 +2232,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HOSTSYSTEMLINK__TITLE = FOLDERLINK__TITLE;
+	int HOSTSYSTEMLINK__TITLE = OCCIPackage.LINK__TITLE;
 
 	/**
 	 * The feature id for the '<em><b>Kind</b></em>' reference.
@@ -2367,7 +2241,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HOSTSYSTEMLINK__KIND = FOLDERLINK__KIND;
+	int HOSTSYSTEMLINK__KIND = OCCIPackage.LINK__KIND;
 
 	/**
 	 * The feature id for the '<em><b>Mixins</b></em>' reference list.
@@ -2376,7 +2250,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HOSTSYSTEMLINK__MIXINS = FOLDERLINK__MIXINS;
+	int HOSTSYSTEMLINK__MIXINS = OCCIPackage.LINK__MIXINS;
 
 	/**
 	 * The feature id for the '<em><b>Attributes</b></em>' containment reference list.
@@ -2385,7 +2259,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HOSTSYSTEMLINK__ATTRIBUTES = FOLDERLINK__ATTRIBUTES;
+	int HOSTSYSTEMLINK__ATTRIBUTES = OCCIPackage.LINK__ATTRIBUTES;
 
 	/**
 	 * The feature id for the '<em><b>Source</b></em>' container reference.
@@ -2394,7 +2268,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HOSTSYSTEMLINK__SOURCE = FOLDERLINK__SOURCE;
+	int HOSTSYSTEMLINK__SOURCE = OCCIPackage.LINK__SOURCE;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
@@ -2403,7 +2277,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HOSTSYSTEMLINK__TARGET = FOLDERLINK__TARGET;
+	int HOSTSYSTEMLINK__TARGET = OCCIPackage.LINK__TARGET;
 
 	/**
 	 * The number of structural features of the '<em>Hostsystemlink</em>' class.
@@ -2412,7 +2286,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HOSTSYSTEMLINK_FEATURE_COUNT = FOLDERLINK_FEATURE_COUNT + 0;
+	int HOSTSYSTEMLINK_FEATURE_COUNT = OCCIPackage.LINK_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Occi Create</em>' operation.
@@ -2421,7 +2295,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HOSTSYSTEMLINK___OCCI_CREATE = FOLDERLINK___OCCI_CREATE;
+	int HOSTSYSTEMLINK___OCCI_CREATE = OCCIPackage.LINK___OCCI_CREATE;
 
 	/**
 	 * The operation id for the '<em>Occi Retrieve</em>' operation.
@@ -2430,7 +2304,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HOSTSYSTEMLINK___OCCI_RETRIEVE = FOLDERLINK___OCCI_RETRIEVE;
+	int HOSTSYSTEMLINK___OCCI_RETRIEVE = OCCIPackage.LINK___OCCI_RETRIEVE;
 
 	/**
 	 * The operation id for the '<em>Occi Update</em>' operation.
@@ -2439,7 +2313,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HOSTSYSTEMLINK___OCCI_UPDATE = FOLDERLINK___OCCI_UPDATE;
+	int HOSTSYSTEMLINK___OCCI_UPDATE = OCCIPackage.LINK___OCCI_UPDATE;
 
 	/**
 	 * The operation id for the '<em>Occi Delete</em>' operation.
@@ -2448,7 +2322,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HOSTSYSTEMLINK___OCCI_DELETE = FOLDERLINK___OCCI_DELETE;
+	int HOSTSYSTEMLINK___OCCI_DELETE = OCCIPackage.LINK___OCCI_DELETE;
 
 	/**
 	 * The number of operations of the '<em>Hostsystemlink</em>' class.
@@ -2457,7 +2331,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HOSTSYSTEMLINK_OPERATION_COUNT = FOLDERLINK_OPERATION_COUNT + 0;
+	int HOSTSYSTEMLINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.vmware.impl.DatastorelinkImpl <em>Datastorelink</em>}' class.
@@ -3408,7 +3282,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUALDISKNETWORK__ID = VIRTUALDISK__ID;
+	int VIRTUALDISKNETWORK__ID = InfrastructurePackage.STORAGE__ID;
 
 	/**
 	 * The feature id for the '<em><b>Title</b></em>' attribute.
@@ -3417,7 +3291,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUALDISKNETWORK__TITLE = VIRTUALDISK__TITLE;
+	int VIRTUALDISKNETWORK__TITLE = InfrastructurePackage.STORAGE__TITLE;
 
 	/**
 	 * The feature id for the '<em><b>Kind</b></em>' reference.
@@ -3426,7 +3300,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUALDISKNETWORK__KIND = VIRTUALDISK__KIND;
+	int VIRTUALDISKNETWORK__KIND = InfrastructurePackage.STORAGE__KIND;
 
 	/**
 	 * The feature id for the '<em><b>Mixins</b></em>' reference list.
@@ -3435,7 +3309,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUALDISKNETWORK__MIXINS = VIRTUALDISK__MIXINS;
+	int VIRTUALDISKNETWORK__MIXINS = InfrastructurePackage.STORAGE__MIXINS;
 
 	/**
 	 * The feature id for the '<em><b>Attributes</b></em>' containment reference list.
@@ -3444,7 +3318,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUALDISKNETWORK__ATTRIBUTES = VIRTUALDISK__ATTRIBUTES;
+	int VIRTUALDISKNETWORK__ATTRIBUTES = InfrastructurePackage.STORAGE__ATTRIBUTES;
 
 	/**
 	 * The feature id for the '<em><b>Summary</b></em>' attribute.
@@ -3453,7 +3327,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUALDISKNETWORK__SUMMARY = VIRTUALDISK__SUMMARY;
+	int VIRTUALDISKNETWORK__SUMMARY = InfrastructurePackage.STORAGE__SUMMARY;
 
 	/**
 	 * The feature id for the '<em><b>Links</b></em>' containment reference list.
@@ -3462,7 +3336,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUALDISKNETWORK__LINKS = VIRTUALDISK__LINKS;
+	int VIRTUALDISKNETWORK__LINKS = InfrastructurePackage.STORAGE__LINKS;
 
 	/**
 	 * The feature id for the '<em><b>Size</b></em>' attribute.
@@ -3471,7 +3345,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUALDISKNETWORK__SIZE = VIRTUALDISK__SIZE;
+	int VIRTUALDISKNETWORK__SIZE = InfrastructurePackage.STORAGE__SIZE;
 
 	/**
 	 * The feature id for the '<em><b>State</b></em>' attribute.
@@ -3480,7 +3354,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUALDISKNETWORK__STATE = VIRTUALDISK__STATE;
+	int VIRTUALDISKNETWORK__STATE = InfrastructurePackage.STORAGE__STATE;
 
 	/**
 	 * The feature id for the '<em><b>Message</b></em>' attribute.
@@ -3489,7 +3363,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUALDISKNETWORK__MESSAGE = VIRTUALDISK__MESSAGE;
+	int VIRTUALDISKNETWORK__MESSAGE = InfrastructurePackage.STORAGE__MESSAGE;
 
 	/**
 	 * The feature id for the '<em><b>Volume Name</b></em>' attribute.
@@ -3498,7 +3372,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUALDISKNETWORK__VOLUME_NAME = VIRTUALDISK__VOLUME_NAME;
+	int VIRTUALDISKNETWORK__VOLUME_NAME = InfrastructurePackage.STORAGE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Virtualdisknetwork</em>' class.
@@ -3507,7 +3381,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUALDISKNETWORK_FEATURE_COUNT = VIRTUALDISK_FEATURE_COUNT + 0;
+	int VIRTUALDISKNETWORK_FEATURE_COUNT = InfrastructurePackage.STORAGE_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Occi Create</em>' operation.
@@ -3516,7 +3390,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUALDISKNETWORK___OCCI_CREATE = VIRTUALDISK___OCCI_CREATE;
+	int VIRTUALDISKNETWORK___OCCI_CREATE = InfrastructurePackage.STORAGE___OCCI_CREATE;
 
 	/**
 	 * The operation id for the '<em>Occi Retrieve</em>' operation.
@@ -3525,7 +3399,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUALDISKNETWORK___OCCI_RETRIEVE = VIRTUALDISK___OCCI_RETRIEVE;
+	int VIRTUALDISKNETWORK___OCCI_RETRIEVE = InfrastructurePackage.STORAGE___OCCI_RETRIEVE;
 
 	/**
 	 * The operation id for the '<em>Occi Update</em>' operation.
@@ -3534,7 +3408,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUALDISKNETWORK___OCCI_UPDATE = VIRTUALDISK___OCCI_UPDATE;
+	int VIRTUALDISKNETWORK___OCCI_UPDATE = InfrastructurePackage.STORAGE___OCCI_UPDATE;
 
 	/**
 	 * The operation id for the '<em>Occi Delete</em>' operation.
@@ -3543,7 +3417,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUALDISKNETWORK___OCCI_DELETE = VIRTUALDISK___OCCI_DELETE;
+	int VIRTUALDISKNETWORK___OCCI_DELETE = InfrastructurePackage.STORAGE___OCCI_DELETE;
 
 	/**
 	 * The operation id for the '<em>Online</em>' operation.
@@ -3552,7 +3426,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUALDISKNETWORK___ONLINE = VIRTUALDISK___ONLINE;
+	int VIRTUALDISKNETWORK___ONLINE = InfrastructurePackage.STORAGE___ONLINE;
 
 	/**
 	 * The operation id for the '<em>Offline</em>' operation.
@@ -3561,25 +3435,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUALDISKNETWORK___OFFLINE = VIRTUALDISK___OFFLINE;
-
-	/**
-	 * The operation id for the '<em>Zero Fill</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VIRTUALDISKNETWORK___ZERO_FILL = VIRTUALDISK___ZERO_FILL;
-
-	/**
-	 * The operation id for the '<em>Shrink</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VIRTUALDISKNETWORK___SHRINK = VIRTUALDISK___SHRINK;
+	int VIRTUALDISKNETWORK___OFFLINE = InfrastructurePackage.STORAGE___OFFLINE;
 
 	/**
 	 * The number of operations of the '<em>Virtualdisknetwork</em>' class.
@@ -3588,7 +3444,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUALDISKNETWORK_OPERATION_COUNT = VIRTUALDISK_OPERATION_COUNT + 0;
+	int VIRTUALDISKNETWORK_OPERATION_COUNT = InfrastructurePackage.STORAGE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.vmware.impl.VirtualdisknetworklinkImpl <em>Virtualdisknetworklink</em>}' class.
@@ -4478,6 +4334,132 @@ public interface VmwarePackage extends EPackage {
 	int SNAPSHOTLINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FOLDER__ID = OCCIPackage.RESOURCE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Title</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FOLDER__TITLE = OCCIPackage.RESOURCE__TITLE;
+
+	/**
+	 * The feature id for the '<em><b>Kind</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FOLDER__KIND = OCCIPackage.RESOURCE__KIND;
+
+	/**
+	 * The feature id for the '<em><b>Mixins</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FOLDER__MIXINS = OCCIPackage.RESOURCE__MIXINS;
+
+	/**
+	 * The feature id for the '<em><b>Attributes</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FOLDER__ATTRIBUTES = OCCIPackage.RESOURCE__ATTRIBUTES;
+
+	/**
+	 * The feature id for the '<em><b>Summary</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FOLDER__SUMMARY = OCCIPackage.RESOURCE__SUMMARY;
+
+	/**
+	 * The feature id for the '<em><b>Links</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FOLDER__LINKS = OCCIPackage.RESOURCE__LINKS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FOLDER__NAME = OCCIPackage.RESOURCE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Folder</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FOLDER_FEATURE_COUNT = OCCIPackage.RESOURCE_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Occi Create</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FOLDER___OCCI_CREATE = OCCIPackage.RESOURCE___OCCI_CREATE;
+
+	/**
+	 * The operation id for the '<em>Occi Retrieve</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FOLDER___OCCI_RETRIEVE = OCCIPackage.RESOURCE___OCCI_RETRIEVE;
+
+	/**
+	 * The operation id for the '<em>Occi Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FOLDER___OCCI_UPDATE = OCCIPackage.RESOURCE___OCCI_UPDATE;
+
+	/**
+	 * The operation id for the '<em>Occi Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FOLDER___OCCI_DELETE = OCCIPackage.RESOURCE___OCCI_DELETE;
+
+	/**
+	 * The number of operations of the '<em>Folder</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FOLDER_OPERATION_COUNT = OCCIPackage.RESOURCE_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.vmware.impl.HostfolderImpl <em>Hostfolder</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4494,7 +4476,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HOSTFOLDER__ID = FOLDER__ID;
+	int HOSTFOLDER__ID = OCCIPackage.RESOURCE__ID;
 
 	/**
 	 * The feature id for the '<em><b>Title</b></em>' attribute.
@@ -4503,7 +4485,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HOSTFOLDER__TITLE = FOLDER__TITLE;
+	int HOSTFOLDER__TITLE = OCCIPackage.RESOURCE__TITLE;
 
 	/**
 	 * The feature id for the '<em><b>Kind</b></em>' reference.
@@ -4512,7 +4494,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HOSTFOLDER__KIND = FOLDER__KIND;
+	int HOSTFOLDER__KIND = OCCIPackage.RESOURCE__KIND;
 
 	/**
 	 * The feature id for the '<em><b>Mixins</b></em>' reference list.
@@ -4521,7 +4503,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HOSTFOLDER__MIXINS = FOLDER__MIXINS;
+	int HOSTFOLDER__MIXINS = OCCIPackage.RESOURCE__MIXINS;
 
 	/**
 	 * The feature id for the '<em><b>Attributes</b></em>' containment reference list.
@@ -4530,7 +4512,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HOSTFOLDER__ATTRIBUTES = FOLDER__ATTRIBUTES;
+	int HOSTFOLDER__ATTRIBUTES = OCCIPackage.RESOURCE__ATTRIBUTES;
 
 	/**
 	 * The feature id for the '<em><b>Summary</b></em>' attribute.
@@ -4539,7 +4521,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HOSTFOLDER__SUMMARY = FOLDER__SUMMARY;
+	int HOSTFOLDER__SUMMARY = OCCIPackage.RESOURCE__SUMMARY;
 
 	/**
 	 * The feature id for the '<em><b>Links</b></em>' containment reference list.
@@ -4548,7 +4530,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HOSTFOLDER__LINKS = FOLDER__LINKS;
+	int HOSTFOLDER__LINKS = OCCIPackage.RESOURCE__LINKS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -4557,7 +4539,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HOSTFOLDER__NAME = FOLDER__NAME;
+	int HOSTFOLDER__NAME = OCCIPackage.RESOURCE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Hostfolder</em>' class.
@@ -4566,7 +4548,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HOSTFOLDER_FEATURE_COUNT = FOLDER_FEATURE_COUNT + 0;
+	int HOSTFOLDER_FEATURE_COUNT = OCCIPackage.RESOURCE_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Occi Create</em>' operation.
@@ -4575,7 +4557,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HOSTFOLDER___OCCI_CREATE = FOLDER___OCCI_CREATE;
+	int HOSTFOLDER___OCCI_CREATE = OCCIPackage.RESOURCE___OCCI_CREATE;
 
 	/**
 	 * The operation id for the '<em>Occi Retrieve</em>' operation.
@@ -4584,7 +4566,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HOSTFOLDER___OCCI_RETRIEVE = FOLDER___OCCI_RETRIEVE;
+	int HOSTFOLDER___OCCI_RETRIEVE = OCCIPackage.RESOURCE___OCCI_RETRIEVE;
 
 	/**
 	 * The operation id for the '<em>Occi Update</em>' operation.
@@ -4593,7 +4575,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HOSTFOLDER___OCCI_UPDATE = FOLDER___OCCI_UPDATE;
+	int HOSTFOLDER___OCCI_UPDATE = OCCIPackage.RESOURCE___OCCI_UPDATE;
 
 	/**
 	 * The operation id for the '<em>Occi Delete</em>' operation.
@@ -4602,7 +4584,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HOSTFOLDER___OCCI_DELETE = FOLDER___OCCI_DELETE;
+	int HOSTFOLDER___OCCI_DELETE = OCCIPackage.RESOURCE___OCCI_DELETE;
 
 	/**
 	 * The number of operations of the '<em>Hostfolder</em>' class.
@@ -4611,7 +4593,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HOSTFOLDER_OPERATION_COUNT = FOLDER_OPERATION_COUNT + 0;
+	int HOSTFOLDER_OPERATION_COUNT = OCCIPackage.RESOURCE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.vmware.impl.VcentercapabilityImpl <em>Vcentercapability</em>}' class.
@@ -5644,7 +5626,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VMFOLDER__ID = FOLDER__ID;
+	int VMFOLDER__ID = OCCIPackage.RESOURCE__ID;
 
 	/**
 	 * The feature id for the '<em><b>Title</b></em>' attribute.
@@ -5653,7 +5635,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VMFOLDER__TITLE = FOLDER__TITLE;
+	int VMFOLDER__TITLE = OCCIPackage.RESOURCE__TITLE;
 
 	/**
 	 * The feature id for the '<em><b>Kind</b></em>' reference.
@@ -5662,7 +5644,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VMFOLDER__KIND = FOLDER__KIND;
+	int VMFOLDER__KIND = OCCIPackage.RESOURCE__KIND;
 
 	/**
 	 * The feature id for the '<em><b>Mixins</b></em>' reference list.
@@ -5671,7 +5653,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VMFOLDER__MIXINS = FOLDER__MIXINS;
+	int VMFOLDER__MIXINS = OCCIPackage.RESOURCE__MIXINS;
 
 	/**
 	 * The feature id for the '<em><b>Attributes</b></em>' containment reference list.
@@ -5680,7 +5662,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VMFOLDER__ATTRIBUTES = FOLDER__ATTRIBUTES;
+	int VMFOLDER__ATTRIBUTES = OCCIPackage.RESOURCE__ATTRIBUTES;
 
 	/**
 	 * The feature id for the '<em><b>Summary</b></em>' attribute.
@@ -5689,7 +5671,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VMFOLDER__SUMMARY = FOLDER__SUMMARY;
+	int VMFOLDER__SUMMARY = OCCIPackage.RESOURCE__SUMMARY;
 
 	/**
 	 * The feature id for the '<em><b>Links</b></em>' containment reference list.
@@ -5698,7 +5680,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VMFOLDER__LINKS = FOLDER__LINKS;
+	int VMFOLDER__LINKS = OCCIPackage.RESOURCE__LINKS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -5707,7 +5689,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VMFOLDER__NAME = FOLDER__NAME;
+	int VMFOLDER__NAME = OCCIPackage.RESOURCE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Vmfolder</em>' class.
@@ -5716,7 +5698,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VMFOLDER_FEATURE_COUNT = FOLDER_FEATURE_COUNT + 0;
+	int VMFOLDER_FEATURE_COUNT = OCCIPackage.RESOURCE_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Occi Create</em>' operation.
@@ -5725,7 +5707,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VMFOLDER___OCCI_CREATE = FOLDER___OCCI_CREATE;
+	int VMFOLDER___OCCI_CREATE = OCCIPackage.RESOURCE___OCCI_CREATE;
 
 	/**
 	 * The operation id for the '<em>Occi Retrieve</em>' operation.
@@ -5734,7 +5716,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VMFOLDER___OCCI_RETRIEVE = FOLDER___OCCI_RETRIEVE;
+	int VMFOLDER___OCCI_RETRIEVE = OCCIPackage.RESOURCE___OCCI_RETRIEVE;
 
 	/**
 	 * The operation id for the '<em>Occi Update</em>' operation.
@@ -5743,7 +5725,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VMFOLDER___OCCI_UPDATE = FOLDER___OCCI_UPDATE;
+	int VMFOLDER___OCCI_UPDATE = OCCIPackage.RESOURCE___OCCI_UPDATE;
 
 	/**
 	 * The operation id for the '<em>Occi Delete</em>' operation.
@@ -5752,7 +5734,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VMFOLDER___OCCI_DELETE = FOLDER___OCCI_DELETE;
+	int VMFOLDER___OCCI_DELETE = OCCIPackage.RESOURCE___OCCI_DELETE;
 
 	/**
 	 * The number of operations of the '<em>Vmfolder</em>' class.
@@ -5761,7 +5743,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VMFOLDER_OPERATION_COUNT = FOLDER_OPERATION_COUNT + 0;
+	int VMFOLDER_OPERATION_COUNT = OCCIPackage.RESOURCE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.vmware.impl.ServiceconsolenicImpl <em>Serviceconsolenic</em>}' class.
@@ -6649,7 +6631,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUALCDROM__ID = VIRTUALDISK__ID;
+	int VIRTUALCDROM__ID = InfrastructurePackage.STORAGE__ID;
 
 	/**
 	 * The feature id for the '<em><b>Title</b></em>' attribute.
@@ -6658,7 +6640,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUALCDROM__TITLE = VIRTUALDISK__TITLE;
+	int VIRTUALCDROM__TITLE = InfrastructurePackage.STORAGE__TITLE;
 
 	/**
 	 * The feature id for the '<em><b>Kind</b></em>' reference.
@@ -6667,7 +6649,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUALCDROM__KIND = VIRTUALDISK__KIND;
+	int VIRTUALCDROM__KIND = InfrastructurePackage.STORAGE__KIND;
 
 	/**
 	 * The feature id for the '<em><b>Mixins</b></em>' reference list.
@@ -6676,7 +6658,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUALCDROM__MIXINS = VIRTUALDISK__MIXINS;
+	int VIRTUALCDROM__MIXINS = InfrastructurePackage.STORAGE__MIXINS;
 
 	/**
 	 * The feature id for the '<em><b>Attributes</b></em>' containment reference list.
@@ -6685,7 +6667,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUALCDROM__ATTRIBUTES = VIRTUALDISK__ATTRIBUTES;
+	int VIRTUALCDROM__ATTRIBUTES = InfrastructurePackage.STORAGE__ATTRIBUTES;
 
 	/**
 	 * The feature id for the '<em><b>Summary</b></em>' attribute.
@@ -6694,7 +6676,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUALCDROM__SUMMARY = VIRTUALDISK__SUMMARY;
+	int VIRTUALCDROM__SUMMARY = InfrastructurePackage.STORAGE__SUMMARY;
 
 	/**
 	 * The feature id for the '<em><b>Links</b></em>' containment reference list.
@@ -6703,7 +6685,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUALCDROM__LINKS = VIRTUALDISK__LINKS;
+	int VIRTUALCDROM__LINKS = InfrastructurePackage.STORAGE__LINKS;
 
 	/**
 	 * The feature id for the '<em><b>Size</b></em>' attribute.
@@ -6712,7 +6694,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUALCDROM__SIZE = VIRTUALDISK__SIZE;
+	int VIRTUALCDROM__SIZE = InfrastructurePackage.STORAGE__SIZE;
 
 	/**
 	 * The feature id for the '<em><b>State</b></em>' attribute.
@@ -6721,7 +6703,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUALCDROM__STATE = VIRTUALDISK__STATE;
+	int VIRTUALCDROM__STATE = InfrastructurePackage.STORAGE__STATE;
 
 	/**
 	 * The feature id for the '<em><b>Message</b></em>' attribute.
@@ -6730,16 +6712,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUALCDROM__MESSAGE = VIRTUALDISK__MESSAGE;
-
-	/**
-	 * The feature id for the '<em><b>Volume Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VIRTUALCDROM__VOLUME_NAME = VIRTUALDISK__VOLUME_NAME;
+	int VIRTUALCDROM__MESSAGE = InfrastructurePackage.STORAGE__MESSAGE;
 
 	/**
 	 * The feature id for the '<em><b>Iso Filename</b></em>' attribute.
@@ -6748,7 +6721,16 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUALCDROM__ISO_FILENAME = VIRTUALDISK_FEATURE_COUNT + 0;
+	int VIRTUALCDROM__ISO_FILENAME = InfrastructurePackage.STORAGE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Volume Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIRTUALCDROM__VOLUME_NAME = InfrastructurePackage.STORAGE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Virtualcdrom</em>' class.
@@ -6757,7 +6739,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUALCDROM_FEATURE_COUNT = VIRTUALDISK_FEATURE_COUNT + 1;
+	int VIRTUALCDROM_FEATURE_COUNT = InfrastructurePackage.STORAGE_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Occi Create</em>' operation.
@@ -6766,7 +6748,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUALCDROM___OCCI_CREATE = VIRTUALDISK___OCCI_CREATE;
+	int VIRTUALCDROM___OCCI_CREATE = InfrastructurePackage.STORAGE___OCCI_CREATE;
 
 	/**
 	 * The operation id for the '<em>Occi Retrieve</em>' operation.
@@ -6775,7 +6757,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUALCDROM___OCCI_RETRIEVE = VIRTUALDISK___OCCI_RETRIEVE;
+	int VIRTUALCDROM___OCCI_RETRIEVE = InfrastructurePackage.STORAGE___OCCI_RETRIEVE;
 
 	/**
 	 * The operation id for the '<em>Occi Update</em>' operation.
@@ -6784,7 +6766,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUALCDROM___OCCI_UPDATE = VIRTUALDISK___OCCI_UPDATE;
+	int VIRTUALCDROM___OCCI_UPDATE = InfrastructurePackage.STORAGE___OCCI_UPDATE;
 
 	/**
 	 * The operation id for the '<em>Occi Delete</em>' operation.
@@ -6793,7 +6775,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUALCDROM___OCCI_DELETE = VIRTUALDISK___OCCI_DELETE;
+	int VIRTUALCDROM___OCCI_DELETE = InfrastructurePackage.STORAGE___OCCI_DELETE;
 
 	/**
 	 * The operation id for the '<em>Online</em>' operation.
@@ -6802,7 +6784,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUALCDROM___ONLINE = VIRTUALDISK___ONLINE;
+	int VIRTUALCDROM___ONLINE = InfrastructurePackage.STORAGE___ONLINE;
 
 	/**
 	 * The operation id for the '<em>Offline</em>' operation.
@@ -6811,25 +6793,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUALCDROM___OFFLINE = VIRTUALDISK___OFFLINE;
-
-	/**
-	 * The operation id for the '<em>Zero Fill</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VIRTUALCDROM___ZERO_FILL = VIRTUALDISK___ZERO_FILL;
-
-	/**
-	 * The operation id for the '<em>Shrink</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VIRTUALCDROM___SHRINK = VIRTUALDISK___SHRINK;
+	int VIRTUALCDROM___OFFLINE = InfrastructurePackage.STORAGE___OFFLINE;
 
 	/**
 	 * The number of operations of the '<em>Virtualcdrom</em>' class.
@@ -6838,7 +6802,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUALCDROM_OPERATION_COUNT = VIRTUALDISK_OPERATION_COUNT + 0;
+	int VIRTUALCDROM_OPERATION_COUNT = InfrastructurePackage.STORAGE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.vmware.impl.VirtualfloppyImpl <em>Virtualfloppy</em>}' class.
@@ -6857,7 +6821,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUALFLOPPY__ID = VIRTUALDISK__ID;
+	int VIRTUALFLOPPY__ID = InfrastructurePackage.STORAGE__ID;
 
 	/**
 	 * The feature id for the '<em><b>Title</b></em>' attribute.
@@ -6866,7 +6830,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUALFLOPPY__TITLE = VIRTUALDISK__TITLE;
+	int VIRTUALFLOPPY__TITLE = InfrastructurePackage.STORAGE__TITLE;
 
 	/**
 	 * The feature id for the '<em><b>Kind</b></em>' reference.
@@ -6875,7 +6839,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUALFLOPPY__KIND = VIRTUALDISK__KIND;
+	int VIRTUALFLOPPY__KIND = InfrastructurePackage.STORAGE__KIND;
 
 	/**
 	 * The feature id for the '<em><b>Mixins</b></em>' reference list.
@@ -6884,7 +6848,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUALFLOPPY__MIXINS = VIRTUALDISK__MIXINS;
+	int VIRTUALFLOPPY__MIXINS = InfrastructurePackage.STORAGE__MIXINS;
 
 	/**
 	 * The feature id for the '<em><b>Attributes</b></em>' containment reference list.
@@ -6893,7 +6857,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUALFLOPPY__ATTRIBUTES = VIRTUALDISK__ATTRIBUTES;
+	int VIRTUALFLOPPY__ATTRIBUTES = InfrastructurePackage.STORAGE__ATTRIBUTES;
 
 	/**
 	 * The feature id for the '<em><b>Summary</b></em>' attribute.
@@ -6902,7 +6866,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUALFLOPPY__SUMMARY = VIRTUALDISK__SUMMARY;
+	int VIRTUALFLOPPY__SUMMARY = InfrastructurePackage.STORAGE__SUMMARY;
 
 	/**
 	 * The feature id for the '<em><b>Links</b></em>' containment reference list.
@@ -6911,7 +6875,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUALFLOPPY__LINKS = VIRTUALDISK__LINKS;
+	int VIRTUALFLOPPY__LINKS = InfrastructurePackage.STORAGE__LINKS;
 
 	/**
 	 * The feature id for the '<em><b>Size</b></em>' attribute.
@@ -6920,7 +6884,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUALFLOPPY__SIZE = VIRTUALDISK__SIZE;
+	int VIRTUALFLOPPY__SIZE = InfrastructurePackage.STORAGE__SIZE;
 
 	/**
 	 * The feature id for the '<em><b>State</b></em>' attribute.
@@ -6929,7 +6893,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUALFLOPPY__STATE = VIRTUALDISK__STATE;
+	int VIRTUALFLOPPY__STATE = InfrastructurePackage.STORAGE__STATE;
 
 	/**
 	 * The feature id for the '<em><b>Message</b></em>' attribute.
@@ -6938,7 +6902,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUALFLOPPY__MESSAGE = VIRTUALDISK__MESSAGE;
+	int VIRTUALFLOPPY__MESSAGE = InfrastructurePackage.STORAGE__MESSAGE;
 
 	/**
 	 * The feature id for the '<em><b>Volume Name</b></em>' attribute.
@@ -6947,7 +6911,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUALFLOPPY__VOLUME_NAME = VIRTUALDISK__VOLUME_NAME;
+	int VIRTUALFLOPPY__VOLUME_NAME = InfrastructurePackage.STORAGE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Virtualfloppy</em>' class.
@@ -6956,7 +6920,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUALFLOPPY_FEATURE_COUNT = VIRTUALDISK_FEATURE_COUNT + 0;
+	int VIRTUALFLOPPY_FEATURE_COUNT = InfrastructurePackage.STORAGE_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Occi Create</em>' operation.
@@ -6965,7 +6929,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUALFLOPPY___OCCI_CREATE = VIRTUALDISK___OCCI_CREATE;
+	int VIRTUALFLOPPY___OCCI_CREATE = InfrastructurePackage.STORAGE___OCCI_CREATE;
 
 	/**
 	 * The operation id for the '<em>Occi Retrieve</em>' operation.
@@ -6974,7 +6938,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUALFLOPPY___OCCI_RETRIEVE = VIRTUALDISK___OCCI_RETRIEVE;
+	int VIRTUALFLOPPY___OCCI_RETRIEVE = InfrastructurePackage.STORAGE___OCCI_RETRIEVE;
 
 	/**
 	 * The operation id for the '<em>Occi Update</em>' operation.
@@ -6983,7 +6947,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUALFLOPPY___OCCI_UPDATE = VIRTUALDISK___OCCI_UPDATE;
+	int VIRTUALFLOPPY___OCCI_UPDATE = InfrastructurePackage.STORAGE___OCCI_UPDATE;
 
 	/**
 	 * The operation id for the '<em>Occi Delete</em>' operation.
@@ -6992,7 +6956,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUALFLOPPY___OCCI_DELETE = VIRTUALDISK___OCCI_DELETE;
+	int VIRTUALFLOPPY___OCCI_DELETE = InfrastructurePackage.STORAGE___OCCI_DELETE;
 
 	/**
 	 * The operation id for the '<em>Online</em>' operation.
@@ -7001,7 +6965,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUALFLOPPY___ONLINE = VIRTUALDISK___ONLINE;
+	int VIRTUALFLOPPY___ONLINE = InfrastructurePackage.STORAGE___ONLINE;
 
 	/**
 	 * The operation id for the '<em>Offline</em>' operation.
@@ -7010,25 +6974,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUALFLOPPY___OFFLINE = VIRTUALDISK___OFFLINE;
-
-	/**
-	 * The operation id for the '<em>Zero Fill</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VIRTUALFLOPPY___ZERO_FILL = VIRTUALDISK___ZERO_FILL;
-
-	/**
-	 * The operation id for the '<em>Shrink</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VIRTUALFLOPPY___SHRINK = VIRTUALDISK___SHRINK;
+	int VIRTUALFLOPPY___OFFLINE = InfrastructurePackage.STORAGE___OFFLINE;
 
 	/**
 	 * The number of operations of the '<em>Virtualfloppy</em>' class.
@@ -7037,7 +6983,7 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIRTUALFLOPPY_OPERATION_COUNT = VIRTUALDISK_OPERATION_COUNT + 0;
+	int VIRTUALFLOPPY_OPERATION_COUNT = InfrastructurePackage.STORAGE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.vmware.impl.VirtualdisklinkImpl <em>Virtualdisklink</em>}' class.
@@ -7711,6 +7657,17 @@ public interface VmwarePackage extends EPackage {
 	EClass getCluster();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.vmware.Cluster#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.occiware.clouddesigner.occi.vmware.Cluster#getName()
+	 * @see #getCluster()
+	 * @generated
+	 */
+	EAttribute getCluster_Name();
+
+	/**
 	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.vmware.Cluster#addAllHostSystem() <em>Add All Host System</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7760,6 +7717,17 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getDatacenter_DefaultHardwareVersionKey();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.vmware.Datacenter#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.occiware.clouddesigner.occi.vmware.Datacenter#getName()
+	 * @see #getDatacenter()
+	 * @generated
+	 */
+	EAttribute getDatacenter_Name();
 
 	/**
 	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.vmware.Datacenter#powerOnMultiVMs() <em>Power On Multi VMs</em>}' operation.
@@ -8750,6 +8718,17 @@ public interface VmwarePackage extends EPackage {
 	EClass getVirtualdisknetwork();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.vmware.Virtualdisknetwork#getVolumeName <em>Volume Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Volume Name</em>'.
+	 * @see org.occiware.clouddesigner.occi.vmware.Virtualdisknetwork#getVolumeName()
+	 * @see #getVirtualdisknetwork()
+	 * @generated
+	 */
+	EAttribute getVirtualdisknetwork_VolumeName();
+
+	/**
 	 * Returns the meta object for class '{@link org.occiware.clouddesigner.occi.vmware.Virtualdisknetworklink <em>Virtualdisknetworklink</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8925,6 +8904,17 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getHostfolder();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.vmware.Hostfolder#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.occiware.clouddesigner.occi.vmware.Hostfolder#getName()
+	 * @see #getHostfolder()
+	 * @generated
+	 */
+	EAttribute getHostfolder_Name();
 
 	/**
 	 * Returns the meta object for class '{@link org.occiware.clouddesigner.occi.vmware.Vcentercapability <em>Vcentercapability</em>}'.
@@ -9204,6 +9194,17 @@ public interface VmwarePackage extends EPackage {
 	EClass getVmfolder();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.vmware.Vmfolder#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.occiware.clouddesigner.occi.vmware.Vmfolder#getName()
+	 * @see #getVmfolder()
+	 * @generated
+	 */
+	EAttribute getVmfolder_Name();
+
+	/**
 	 * Returns the meta object for class '{@link org.occiware.clouddesigner.occi.vmware.Serviceconsolenic <em>Serviceconsolenic</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9407,6 +9408,17 @@ public interface VmwarePackage extends EPackage {
 	EAttribute getVirtualcdrom_IsoFilename();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.vmware.Virtualcdrom#getVolumeName <em>Volume Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Volume Name</em>'.
+	 * @see org.occiware.clouddesigner.occi.vmware.Virtualcdrom#getVolumeName()
+	 * @see #getVirtualcdrom()
+	 * @generated
+	 */
+	EAttribute getVirtualcdrom_VolumeName();
+
+	/**
 	 * Returns the meta object for class '{@link org.occiware.clouddesigner.occi.vmware.Virtualfloppy <em>Virtualfloppy</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9415,6 +9427,17 @@ public interface VmwarePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getVirtualfloppy();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.vmware.Virtualfloppy#getVolumeName <em>Volume Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Volume Name</em>'.
+	 * @see org.occiware.clouddesigner.occi.vmware.Virtualfloppy#getVolumeName()
+	 * @see #getVirtualfloppy()
+	 * @generated
+	 */
+	EAttribute getVirtualfloppy_VolumeName();
 
 	/**
 	 * Returns the meta object for class '{@link org.occiware.clouddesigner.occi.vmware.Virtualdisklink <em>Virtualdisklink</em>}'.

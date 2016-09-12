@@ -1,4 +1,4 @@
-// Generated at Fri Sep 09 11:14:21 CEST 2016 from platform:/resource/org.occiware.clouddesigner.occi.vmware/model/vmware.occie by org.occiware.clouddesigner.occi.gen.alloy
+// Generated at Fri Sep 09 14:20:23 CEST 2016 from platform:/resource/org.occiware.clouddesigner.occi.vmware/model/vmware.occie by org.occiware.clouddesigner.occi.gen.alloy
 
 // ======================================================================
 //
@@ -53,7 +53,7 @@ pred isoDatastore[d1, d2: Datastore]
 pred isoCluster[c1, c2: Cluster]
 {
     // Comment following lines when this is not the expected behaviour.
-    isoCluster[c1, c2] // same folder
+    isoCluster[c1, c2] // same resource
 }
 
 
@@ -88,7 +88,7 @@ pred isoCluster[c1, c2: Cluster]
 pred isoDatacenter[d1, d2: Datacenter]
 {
     // Comment following lines when this is not the expected behaviour.
-    isoDatacenter[d1, d2] // same folder
+    isoDatacenter[d1, d2] // same resource
 }
 
 
@@ -275,7 +275,7 @@ pred isoResourcepoollink[r1, r2: Resourcepoollink]
 pred isoClusterlink[c1, c2: Clusterlink]
 {
     // Comment following lines when this is not the expected behaviour.
-    isoClusterlink[c1, c2] // same folderlink
+    isoClusterlink[c1, c2] // same link
 }
 
 
@@ -309,7 +309,7 @@ pred isoResourcepool[r1, r2: Resourcepool]
 pred isoDatacenterlink[d1, d2: Datacenterlink]
 {
     // Comment following lines when this is not the expected behaviour.
-    isoDatacenterlink[d1, d2] // same folderlink
+    isoDatacenterlink[d1, d2] // same link
 }
 
 
@@ -326,7 +326,7 @@ pred isoDatacenterlink[d1, d2: Datacenterlink]
 pred isoHostsystemlink[h1, h2: Hostsystemlink]
 {
     // Comment following lines when this is not the expected behaviour.
-    isoHostsystemlink[h1, h2] // same folderlink
+    isoHostsystemlink[h1, h2] // same link
 }
 
 
@@ -452,7 +452,7 @@ pred isoVirtualnetworkadapter[v1, v2: Virtualnetworkadapter]
 pred isoVirtualdisknetwork[v1, v2: Virtualdisknetwork]
 {
     // Comment following lines when this is not the expected behaviour.
-    isoVirtualdisknetwork[v1, v2] // same virtualdisk
+    isoVirtualdisknetwork[v1, v2] // same storage
 }
 
 
@@ -589,7 +589,7 @@ pred isoFolder[f1, f2: Folder]
 pred isoHostfolder[h1, h2: Hostfolder]
 {
     // Comment following lines when this is not the expected behaviour.
-    isoHostfolder[h1, h2] // same folder
+    isoHostfolder[h1, h2] // same resource
 }
 
 
@@ -720,7 +720,7 @@ pred isoHoststoragelink[h1, h2: Hoststoragelink]
 pred isoVmfolder[v1, v2: Vmfolder]
 {
     // Comment following lines when this is not the expected behaviour.
-    isoVmfolder[v1, v2] // same folder
+    isoVmfolder[v1, v2] // same resource
 }
 
 
@@ -822,7 +822,7 @@ pred isoDistributedportgroup[d1, d2: Distributedportgroup]
 pred isoVirtualcdrom[v1, v2: Virtualcdrom]
 {
     // Comment following lines when this is not the expected behaviour.
-    isoVirtualcdrom[v1, v2] // same virtualdisk
+    isoVirtualcdrom[v1, v2] // same storage
 }
 
 
@@ -839,7 +839,7 @@ pred isoVirtualcdrom[v1, v2: Virtualcdrom]
 pred isoVirtualfloppy[v1, v2: Virtualfloppy]
 {
     // Comment following lines when this is not the expected behaviour.
-    isoVirtualfloppy[v1, v2] // same virtualdisk
+    isoVirtualfloppy[v1, v2] // same storage
 }
 
 

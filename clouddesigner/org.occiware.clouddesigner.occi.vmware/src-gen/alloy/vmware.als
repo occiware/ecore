@@ -1,4 +1,4 @@
-// Generated at Fri Sep 09 11:14:21 CEST 2016 from platform:/resource/org.occiware.clouddesigner.occi.vmware/model/vmware.occie by org.occiware.clouddesigner.occi.gen.alloy
+// Generated at Fri Sep 09 14:20:23 CEST 2016 from platform:/resource/org.occiware.clouddesigner.occi.vmware/model/vmware.occie by org.occiware.clouddesigner.occi.gen.alloy
 
 // ======================================================================
 //
@@ -95,10 +95,23 @@ one sig cluster extends Kind {} {
     term = "cluster"
     scheme = "http://occiware.org/occi/vmware#"
     title = "Represents a cluster of HostSystem objects as a unified compute resource for virtual machines."
-    parent = folder
-    no attributes
+    parent = core/resource
+    attributes = cluster_name
     actions = cluster_addAllHostSystem + cluster_applyRecommendation + cluster_enterMaintenanceMode
     entities in Cluster
+}
+
+//
+// OCCI attribute 'name'
+//
+one sig cluster_name extends Attribute {} {
+    name = "name"
+    type = core/String_DataType
+    mutable = True
+    required = True
+    no default
+    no description
+    multiple_values = False
 }
 
 //
@@ -138,7 +151,8 @@ one sig cluster_enterMaintenanceMode extends Action {} {
 // Signature for Cluster
 // ======================================================================
 
-sig Cluster extends Folder {
+sig Cluster extends core/Resource {
+    name : one String,
 } {
     hasKind[cluster]
 }
@@ -153,8 +167,8 @@ one sig datacenter extends Kind {} {
     term = "datacenter"
     scheme = "http://occiware.org/occi/vmware#"
     title = "The interface to the common container object for hosts and virtual machines. Every host and virtual machine must be under a distinct datacenter in the inventory, and datacenters may not be nested under other datacenters."
-    parent = folder
-    attributes = datacenter_defaultHardwareVersionKey
+    parent = core/resource
+    attributes = datacenter_defaultHardwareVersionKey + datacenter_name
     actions = datacenter_powerOnMultiVMs + datacenter_discoverAll
     entities in Datacenter
 }
@@ -169,6 +183,19 @@ one sig datacenter_defaultHardwareVersionKey extends Attribute {} {
     required = False
     no default
     description = "Key for Default Hardware Version to be used on this datacenter in the format of key. Setting this field affects defaultConfigOption returned by environmentBrowser of all its children with this field unset. See ReconfigureDatacenter_Task"
+    multiple_values = False
+}
+
+//
+// OCCI attribute 'name'
+//
+one sig datacenter_name extends Attribute {} {
+    name = "name"
+    type = core/String_DataType
+    mutable = True
+    required = True
+    no default
+    no description
     multiple_values = False
 }
 
@@ -198,8 +225,9 @@ one sig datacenter_discoverAll extends Action {} {
 // Signature for Datacenter
 // ======================================================================
 
-sig Datacenter extends Folder {
+sig Datacenter extends core/Resource {
     defaultHardwareVersionKey : lone String,
+    name : one String,
 } {
     hasKind[datacenter]
 }
@@ -1036,7 +1064,7 @@ one sig clusterlink extends Kind {} {
     term = "clusterlink"
     scheme = "http://occiware.org/occi/vmware#"
     title = "Link between cluster and hostsystem"
-    parent = folderlink
+    parent = core/link
     no attributes
     no actions
     entities in Clusterlink
@@ -1046,7 +1074,7 @@ one sig clusterlink extends Kind {} {
 // Signature for Clusterlink
 // ======================================================================
 
-sig Clusterlink extends Folderlink {
+sig Clusterlink extends core/Link {
 } {
     hasKind[clusterlink]
 }
@@ -1165,7 +1193,7 @@ one sig datacenterlink extends Kind {} {
     term = "datacenterlink"
     scheme = "http://occiware.org/occi/vmware#"
     no title
-    parent = folderlink
+    parent = core/link
     no attributes
     no actions
     entities in Datacenterlink
@@ -1175,7 +1203,7 @@ one sig datacenterlink extends Kind {} {
 // Signature for Datacenterlink
 // ======================================================================
 
-sig Datacenterlink extends Folderlink {
+sig Datacenterlink extends core/Link {
 } {
     hasKind[datacenterlink]
 }
@@ -1190,7 +1218,7 @@ one sig hostsystemlink extends Kind {} {
     term = "hostsystemlink"
     scheme = "http://occiware.org/occi/vmware#"
     title = "a link between a hostsystem and a virtual machine"
-    parent = folderlink
+    parent = core/link
     no attributes
     no actions
     entities in Hostsystemlink
@@ -1200,7 +1228,7 @@ one sig hostsystemlink extends Kind {} {
 // Signature for Hostsystemlink
 // ======================================================================
 
-sig Hostsystemlink extends Folderlink {
+sig Hostsystemlink extends core/Link {
 } {
     hasKind[hostsystemlink]
 }
@@ -1595,17 +1623,31 @@ one sig virtualdisknetwork extends Kind {} {
     term = "virtualdisknetwork"
     scheme = "http://occiware.org/occi/vmware#"
     title = "a storage disk network for usage with a network vswitch and portgroup, vswitch and portgroup may be multiples"
-    parent = virtualdisk
-    no attributes
+    parent = infrastructure/storage
+    attributes = virtualdisknetwork_volumeName
     no actions
     entities in Virtualdisknetwork
+}
+
+//
+// OCCI attribute 'volumeName'
+//
+one sig virtualdisknetwork_volumeName extends Attribute {} {
+    name = "volumeName"
+    type = core/String_DataType
+    mutable = True
+    required = True
+    no default
+    no description
+    multiple_values = False
 }
 
 // ======================================================================
 // Signature for Virtualdisknetwork
 // ======================================================================
 
-sig Virtualdisknetwork extends Virtualdisk {
+sig Virtualdisknetwork extends infrastructure/Storage {
+    volumeName : one String,
 } {
     hasKind[virtualdisknetwork]
 }
@@ -1902,17 +1944,31 @@ one sig hostfolder extends Kind {} {
     term = "hostfolder"
     scheme = "http://occiware.org/occi/vmware#"
     no title
-    parent = folder
-    no attributes
+    parent = core/resource
+    attributes = hostfolder_name
     no actions
     entities in Hostfolder
+}
+
+//
+// OCCI attribute 'name'
+//
+one sig hostfolder_name extends Attribute {} {
+    name = "name"
+    type = core/String_DataType
+    mutable = True
+    required = True
+    no default
+    no description
+    multiple_values = False
 }
 
 // ======================================================================
 // Signature for Hostfolder
 // ======================================================================
 
-sig Hostfolder extends Folder {
+sig Hostfolder extends core/Resource {
+    name : one String,
 } {
     hasKind[hostfolder]
 }
@@ -2337,17 +2393,31 @@ one sig vmfolder extends Kind {} {
     term = "vmfolder"
     scheme = "http://occiware.org/occi/vmware#"
     no title
-    parent = folder
-    no attributes
+    parent = core/resource
+    attributes = vmfolder_name
     no actions
     entities in Vmfolder
+}
+
+//
+// OCCI attribute 'name'
+//
+one sig vmfolder_name extends Attribute {} {
+    name = "name"
+    type = core/String_DataType
+    mutable = True
+    required = True
+    no default
+    no description
+    multiple_values = False
 }
 
 // ======================================================================
 // Signature for Vmfolder
 // ======================================================================
 
-sig Vmfolder extends Folder {
+sig Vmfolder extends core/Resource {
+    name : one String,
 } {
     hasKind[vmfolder]
 }
@@ -2655,8 +2725,8 @@ one sig virtualcdrom extends Kind {} {
     term = "virtualcdrom"
     scheme = "http://occiware.org/occi/vmware#"
     title = "A virtual cdrom disk"
-    parent = virtualdisk
-    attributes = virtualcdrom_isoFilename
+    parent = infrastructure/storage
+    attributes = virtualcdrom_isoFilename + virtualcdrom_volumeName
     no actions
     entities in Virtualcdrom
 }
@@ -2674,12 +2744,26 @@ one sig virtualcdrom_isoFilename extends Attribute {} {
     multiple_values = False
 }
 
+//
+// OCCI attribute 'volumeName'
+//
+one sig virtualcdrom_volumeName extends Attribute {} {
+    name = "volumeName"
+    type = core/String_DataType
+    mutable = True
+    required = True
+    no default
+    no description
+    multiple_values = False
+}
+
 // ======================================================================
 // Signature for Virtualcdrom
 // ======================================================================
 
-sig Virtualcdrom extends Virtualdisk {
+sig Virtualcdrom extends infrastructure/Storage {
     isoFilename : one String,
+    volumeName : one String,
 } {
     hasKind[virtualcdrom]
 }
@@ -2694,17 +2778,31 @@ one sig virtualfloppy extends Kind {} {
     term = "virtualfloppy"
     scheme = "http://occiware.org/occi/vmware#"
     title = "A virtual floppy disk"
-    parent = virtualdisk
-    no attributes
+    parent = infrastructure/storage
+    attributes = virtualfloppy_volumeName
     no actions
     entities in Virtualfloppy
+}
+
+//
+// OCCI attribute 'volumeName'
+//
+one sig virtualfloppy_volumeName extends Attribute {} {
+    name = "volumeName"
+    type = core/String_DataType
+    mutable = True
+    required = True
+    no default
+    no description
+    multiple_values = False
 }
 
 // ======================================================================
 // Signature for Virtualfloppy
 // ======================================================================
 
-sig Virtualfloppy extends Virtualdisk {
+sig Virtualfloppy extends infrastructure/Storage {
+    volumeName : one String,
 } {
     hasKind[virtualfloppy]
 }

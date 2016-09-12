@@ -371,7 +371,7 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Cluster" eSuperTypes="#//Folder">
+  <eClassifiers xsi:type="ecore:EClass" name="Cluster" eSuperTypes="http://schemas.ogf.org/occi/core/ecore#//Resource">
     <eAnnotations source="OCCIE2Ecore">
       <details key="title" value="Represents a cluster of HostSystem objects as a unified compute resource for virtual machines."/>
     </eAnnotations>
@@ -390,8 +390,13 @@
         <details key="title"/>
       </eAnnotations>
     </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://schemas.ogf.org/occi/core/ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Datacenter" eSuperTypes="#//Folder">
+  <eClassifiers xsi:type="ecore:EClass" name="Datacenter" eSuperTypes="http://schemas.ogf.org/occi/core/ecore#//Resource">
     <eAnnotations source="OCCIE2Ecore">
       <details key="title" value="The interface to the common container object for hosts and virtual machines. Every host and virtual machine must be under a distinct datacenter in the inventory, and datacenters may not be nested under other datacenters."/>
     </eAnnotations>
@@ -409,6 +414,11 @@
         eType="ecore:EDataType http://schemas.ogf.org/occi/core/ecore#//String">
       <eAnnotations source="OCCIE2Ecore">
         <details key="description" value="Key for Default Hardware Version to be used on this datacenter in the format of key. Setting this field affects defaultConfigOption returned by environmentBrowser of all its children with this field unset. See ReconfigureDatacenter_Task"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://schemas.ogf.org/occi/core/ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
@@ -715,7 +725,7 @@
       <details key="title" value="a link between cluster (or host) and virtual machine with resource pool definition, this link may link other resource pools between them to define child dependencies, it may be used too for resourcepoolquickstats informations"/>
     </eAnnotations>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Clusterlink" eSuperTypes="#//Folderlink">
+  <eClassifiers xsi:type="ecore:EClass" name="Clusterlink" eSuperTypes="http://schemas.ogf.org/occi/core/ecore#//Link">
     <eAnnotations source="OCCIE2Ecore">
       <details key="title" value="Link between cluster and hostsystem"/>
     </eAnnotations>
@@ -752,12 +762,12 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Datacenterlink" eSuperTypes="#//Folderlink">
+  <eClassifiers xsi:type="ecore:EClass" name="Datacenterlink" eSuperTypes="http://schemas.ogf.org/occi/core/ecore#//Link">
     <eAnnotations source="OCCIE2Ecore">
       <details key="title" value=""/>
     </eAnnotations>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Hostsystemlink" eSuperTypes="#//Folderlink">
+  <eClassifiers xsi:type="ecore:EClass" name="Hostsystemlink" eSuperTypes="http://schemas.ogf.org/occi/core/ecore#//Link">
     <eAnnotations source="OCCIE2Ecore">
       <details key="title" value="a link between a hostsystem and a virtual machine"/>
     </eAnnotations>
@@ -880,10 +890,16 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Virtualdisknetwork" eSuperTypes="#//Virtualdisk">
+  <eClassifiers xsi:type="ecore:EClass" name="Virtualdisknetwork" eSuperTypes="http://schemas.ogf.org/occi/infrastructure/ecore#//Storage">
     <eAnnotations source="OCCIE2Ecore">
       <details key="title" value="a storage disk network for usage with a network vswitch and portgroup, vswitch and portgroup may be multiples"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="volumeName" lowerBound="1"
+        eType="ecore:EDataType http://schemas.ogf.org/occi/core/ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Virtualdisknetworklink" eSuperTypes="http://schemas.ogf.org/occi/infrastructure/ecore#//Storagelink">
     <eAnnotations source="OCCIE2Ecore">
@@ -966,10 +982,15 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Hostfolder" eSuperTypes="#//Folder">
+  <eClassifiers xsi:type="ecore:EClass" name="Hostfolder" eSuperTypes="http://schemas.ogf.org/occi/core/ecore#//Resource">
     <eAnnotations source="OCCIE2Ecore">
       <details key="title"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://schemas.ogf.org/occi/core/ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Vcentercapability" eSuperTypes="http://schemas.ogf.org/occi/core/ecore#//Resource">
     <eAnnotations source="OCCIE2Ecore">
@@ -1100,10 +1121,15 @@
       <details key="title" value="hoststorage as it is view by the host os"/>
     </eAnnotations>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Vmfolder" eSuperTypes="#//Folder">
+  <eClassifiers xsi:type="ecore:EClass" name="Vmfolder" eSuperTypes="http://schemas.ogf.org/occi/core/ecore#//Resource">
     <eAnnotations source="OCCIE2Ecore">
       <details key="title"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://schemas.ogf.org/occi/core/ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Serviceconsolenic" eSuperTypes="#//Virtualnetworkadapter">
     <eAnnotations source="OCCIE2Ecore">
@@ -1196,7 +1222,7 @@
       <details key="title"/>
     </eAnnotations>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Virtualcdrom" eSuperTypes="#//Virtualdisk">
+  <eClassifiers xsi:type="ecore:EClass" name="Virtualcdrom" eSuperTypes="http://schemas.ogf.org/occi/infrastructure/ecore#//Storage">
     <eAnnotations source="OCCIE2Ecore">
       <details key="title" value="A virtual cdrom disk"/>
     </eAnnotations>
@@ -1206,11 +1232,23 @@
         <details key="description" value="The filename of the ISO."/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="volumeName" lowerBound="1"
+        eType="ecore:EDataType http://schemas.ogf.org/occi/core/ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Virtualfloppy" eSuperTypes="#//Virtualdisk">
+  <eClassifiers xsi:type="ecore:EClass" name="Virtualfloppy" eSuperTypes="http://schemas.ogf.org/occi/infrastructure/ecore#//Storage">
     <eAnnotations source="OCCIE2Ecore">
       <details key="title" value="A virtual floppy disk"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="volumeName" lowerBound="1"
+        eType="ecore:EDataType http://schemas.ogf.org/occi/core/ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Virtualdisklink" eSuperTypes="http://schemas.ogf.org/occi/infrastructure/ecore#//Storagelink">
     <eAnnotations source="OCCIE2Ecore">

@@ -11,16 +11,51 @@
  */
 package org.occiware.clouddesigner.occi.vmware;
 
+import org.occiware.clouddesigner.occi.infrastructure.Storage;
+
 
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Virtualdisknetwork</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <p>
+ * The following features are supported:
+ * </p>
+ * <ul>
+ *   <li>{@link org.occiware.clouddesigner.occi.vmware.Virtualdisknetwork#getVolumeName <em>Volume Name</em>}</li>
+ * </ul>
  *
  * @see org.occiware.clouddesigner.occi.vmware.VmwarePackage#getVirtualdisknetwork()
  * @model annotation="OCCIE2Ecore title='a storage disk network for usage with a network vswitch and portgroup, vswitch and portgroup may be multiples'"
  * @generated
  */
-public interface Virtualdisknetwork extends Virtualdisk {
+public interface Virtualdisknetwork extends Storage {
+
+	/**
+	 * Returns the value of the '<em><b>Volume Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Volume Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Volume Name</em>' attribute.
+	 * @see #setVolumeName(String)
+	 * @see org.occiware.clouddesigner.occi.vmware.VmwarePackage#getVirtualdisknetwork_VolumeName()
+	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
+	 *        annotation="OCCIE2Ecore description='null'"
+	 * @generated
+	 */
+	String getVolumeName();
+
+	/**
+	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.vmware.Virtualdisknetwork#getVolumeName <em>Volume Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Volume Name</em>' attribute.
+	 * @see #getVolumeName()
+	 * @generated
+	 */
+	void setVolumeName(String value);
 } // Virtualdisknetwork

@@ -91,8 +91,8 @@ public class StorageConnector extends org.occiware.clouddesigner.occi.infrastruc
 	 * Attributes key for object that are not manage by infrastructure extension
 	 * default.
 	 */
-	private static final String ATTR_DATACENTER_NAME = "datacentername";
-	private static final String ATTR_DATASTORE_NAME = "datastorename";
+	public static final String ATTR_DATACENTER_NAME = "datacentername";
+	public static final String ATTR_DATASTORE_NAME = "datastorename";
 
 	/**
 	 * Constructs a storage connector.

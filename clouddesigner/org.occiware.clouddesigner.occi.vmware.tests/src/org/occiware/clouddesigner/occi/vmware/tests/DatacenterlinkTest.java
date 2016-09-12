@@ -11,6 +11,8 @@
  */
 package org.occiware.clouddesigner.occi.vmware.tests;
 
+import junit.framework.TestCase;
+
 import junit.textui.TestRunner;
 
 import org.occiware.clouddesigner.occi.vmware.Datacenterlink;
@@ -22,7 +24,15 @@ import org.occiware.clouddesigner.occi.vmware.VmwareFactory;
  * <!-- end-user-doc -->
  * @generated
  */
-public class DatacenterlinkTest extends FolderlinkTest {
+public class DatacenterlinkTest extends TestCase {
+
+	/**
+	 * The fixture for this Datacenterlink test case.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected Datacenterlink fixture = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -44,14 +54,23 @@ public class DatacenterlinkTest extends FolderlinkTest {
 	}
 
 	/**
+	 * Sets the fixture for this Datacenterlink test case.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void setFixture(Datacenterlink fixture) {
+		this.fixture = fixture;
+	}
+
+	/**
 	 * Returns the fixture for this Datacenterlink test case.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	protected Datacenterlink getFixture() {
-		return (Datacenterlink)fixture;
+		return fixture;
 	}
 
 	/**
