@@ -33,11 +33,14 @@ class DockerUtil {
 	protected static String OS = System.getProperty("os.name").toLowerCase()
 	// Initialize logger for Graph.
 	private static Logger LOGGER = LoggerFactory.getLogger(typeof(DockerUtil))
+	
+	private static String DOCKER_MACHINE = "/usr/local/bin/docker-machine"
 
 	def static getDockerMachineCmd() {
 		var String command = "docker-machine"
 		if (getOS().equalsIgnoreCase("osx")) {
-			command = "/usr/local/bin/docker-machine"
+			command = DOCKER_MACHINE
+			LOGGER.info("OS is MAC OSX")
 		}
 		return command
 	}

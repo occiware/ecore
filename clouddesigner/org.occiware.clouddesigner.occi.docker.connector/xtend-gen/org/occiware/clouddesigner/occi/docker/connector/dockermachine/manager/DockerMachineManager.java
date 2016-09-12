@@ -39,7 +39,8 @@ public class DockerMachineManager {
     String _oS = DockerUtil.getOS();
     boolean _equalsIgnoreCase = _oS.equalsIgnoreCase("osx");
     if (_equalsIgnoreCase) {
-      boolean _runCommand = ProcessManager.runCommand("/usr/local/bin/docker-machine ls", runtime, true);
+      final String command = DockerMachineManager.cf.createLsCommand();
+      boolean _runCommand = ProcessManager.runCommand(command, runtime, true);
       result = _runCommand;
     } else {
       boolean _runCommand_1 = ProcessManager.runCommand("docker-machine ls", runtime, true);

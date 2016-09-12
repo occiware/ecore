@@ -70,6 +70,11 @@ public class CommandFactory {
     return command;
   }
   
+  public String createLsCommand() {
+    final String command = String.format("%s ls", this.dockerMachineCmd);
+    return command;
+  }
+  
   public String createRemoveStagingCommand(final String machineName) {
     final String command = String.format("%s rm %s staging", this.dockerMachineCmd, machineName);
     return command;

@@ -40,12 +40,15 @@ public class DockerUtil {
   
   private static Logger LOGGER = LoggerFactory.getLogger(DockerUtil.class);
   
+  private static String DOCKER_MACHINE = "/usr/local/bin/docker-machine";
+  
   public static String getDockerMachineCmd() {
     String command = "docker-machine";
     String _oS = DockerUtil.getOS();
     boolean _equalsIgnoreCase = _oS.equalsIgnoreCase("osx");
     if (_equalsIgnoreCase) {
-      command = "/usr/local/bin/docker-machine";
+      command = DockerUtil.DOCKER_MACHINE;
+      DockerUtil.LOGGER.info("OS is MAC OSX");
     }
     return command;
   }

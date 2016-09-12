@@ -35,7 +35,8 @@ class DockerMachineManager {
 	def static boolean listMachinesCmd(Runtime runtime) {
 		var boolean result = false 
 		if (DockerUtil.getOS.equalsIgnoreCase("osx")){
-			result = ProcessManager.runCommand("/usr/local/bin/docker-machine ls", runtime, true)
+			val String command = cf.createLsCommand()
+			result = ProcessManager.runCommand(command, runtime, true)
 		}else{
 			result = ProcessManager.runCommand("docker-machine ls", runtime, true)
 		}
