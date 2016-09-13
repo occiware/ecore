@@ -121,10 +121,10 @@
       <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
     </attributes>
     <attributes name="cpu_used" description="CPU consumed by the conatiner">
-      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
     </attributes>
     <attributes name="memory_used" description="Memory consumed by the container">
-      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
     </attributes>
     <parent href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='compute']"/>
     <actions term="create" scheme="http://occiware.org/occi/docker/container/action#"/>
