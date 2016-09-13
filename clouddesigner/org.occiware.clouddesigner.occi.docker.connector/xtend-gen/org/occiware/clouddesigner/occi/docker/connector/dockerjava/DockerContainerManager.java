@@ -262,7 +262,8 @@ public class DockerContainerManager {
           portBindings.bind(tcp, _bindPort_1);
         }
       }
-      create.withPortBindings(portBindings);
+      CreateContainerCmd _withExposedPorts = create.withExposedPorts(tcp);
+      _withExposedPorts.withPortBindings(portBindings);
     }
     String _name = container.getName();
     boolean _notEquals_6 = (!Objects.equal(_name, null));

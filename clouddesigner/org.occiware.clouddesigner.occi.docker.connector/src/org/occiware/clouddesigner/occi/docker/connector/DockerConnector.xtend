@@ -690,19 +690,19 @@ class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statistics> {
 		// Creating an editing domain
 		var TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(resource.eResource.resourceSet)
 		
-		Thread.sleep(30*1000) // Pause for 1000 ms
+		Thread.sleep(2000) // Pause for 2000 ms
 		var Command cmd = new RecordingCommand(domain) {
 			override protected void doExecute() {
 				// these modifications require a write transaction in this editing domain
-				var Integer memory = stats.memoryStats.get("usage") as Integer
+				var Integer mem_used = stats.memoryStats.get("usage") as Integer
 				var Map<String, Object> cpu = stats.cpuStats
 				var LinkedHashMap tmpcpu = cpu.get("cpu_usage") as LinkedHashMap
 				var cpu_used = tmpcpu.get("total_usage")
 				//.get("cpu_usage")
 				
 				LOGGER.info("Received CPU <=====> {}", cpu_used)
-				(resource as ExecutableContainer).memory_used = String.valueOf(memory)
-				(resource as ExecutableContainer).cpu_used  = String.valueOf(cpu_used)
+				(resource as ExecutableContainer).memory_used = Integer.parseInt(mem_used.toString) 
+				(resource as ExecutableContainer).cpu_used  = Integer.parseInt(cpu_used.toString) 
 			}
 		};
 

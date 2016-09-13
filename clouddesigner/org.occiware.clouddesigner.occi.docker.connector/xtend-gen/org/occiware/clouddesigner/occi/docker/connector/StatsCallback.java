@@ -78,22 +78,24 @@ public class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statist
       org.eclipse.emf.ecore.resource.Resource _eResource = resource.eResource();
       ResourceSet _resourceSet = _eResource.getResourceSet();
       TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(_resourceSet);
-      Thread.sleep((30 * 1000));
+      Thread.sleep(2000);
       Command cmd = new RecordingCommand(domain) {
         @Override
         protected void doExecute() {
           Map<String, Object> _memoryStats = stats.getMemoryStats();
           Object _get = _memoryStats.get("usage");
-          Integer memory = ((Integer) _get);
+          Integer mem_used = ((Integer) _get);
           Map<String, Object> cpu = stats.getCpuStats();
           Object _get_1 = cpu.get("cpu_usage");
           LinkedHashMap tmpcpu = ((LinkedHashMap) _get_1);
           Object cpu_used = tmpcpu.get("total_usage");
           StatsCallback.LOGGER.info("Received CPU <=====> {}", cpu_used);
-          String _valueOf = String.valueOf(memory);
-          ((ExecutableContainer) resource).setMemory_used(_valueOf);
-          String _valueOf_1 = String.valueOf(cpu_used);
-          ((ExecutableContainer) resource).setCpu_used(_valueOf_1);
+          String _string = mem_used.toString();
+          int _parseInt = Integer.parseInt(_string);
+          ((ExecutableContainer) resource).setMemory_used(_parseInt);
+          String _string_1 = cpu_used.toString();
+          int _parseInt_1 = Integer.parseInt(_string_1);
+          ((ExecutableContainer) resource).setCpu_used(_parseInt_1);
         }
       };
       try {

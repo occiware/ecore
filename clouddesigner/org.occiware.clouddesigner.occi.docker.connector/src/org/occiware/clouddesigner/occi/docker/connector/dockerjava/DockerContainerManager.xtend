@@ -52,6 +52,7 @@ import org.occiware.clouddesigner.occi.docker.preference.preferences.PreferenceV
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import com.github.dockerjava.api.model.RestartPolicy
+import com.github.dockerjava.api.model.Ports.Binding
 
 class DockerContainerManager {
 	private static DockerClient dockerClient = null
@@ -175,16 +176,16 @@ class DockerContainerManager {
 			val String[] l_r_ports = container.ports.split(":")
 			var ExposedPort tcp = ExposedPort.tcp(Integer.parseInt(l_r_ports.get(0)))
 			val Ports portBindings = new Ports
-			// Exposed port l_r_ports.get(0)
-			// Binding port l_r_ports.get(1)
+			// Exposed port is set with l_r_ports.get(0)
+			// Binding port is set with l_r_ports.get(1)
 			if (l_r_ports.size == 2) {
 				if (StringUtils.isNotBlank(l_r_ports.get(1))) {
-					portBindings.bind(tcp, Ports.Binding.bindPort(Integer.parseInt(l_r_ports.get(1))))
+					portBindings.bind(tcp, Binding.bindPort(Integer.parseInt(l_r_ports.get(1))))
 				} else {
-					portBindings.bind(tcp, Ports.Binding.bindPort(32768)) // TODO Create dynamique port number
+					portBindings.bind(tcp, Binding.bindPort(32768)) // TODO Create dynamic port number
 				}
 			}
-			create.withPortBindings(portBindings)
+			create.withExposedPorts(tcp).withPortBindings(portBindings)
 		}
 		if (container.name != null) {
 			create.withName(container.name.trim)
