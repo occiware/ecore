@@ -1139,13 +1139,13 @@ public interface Container extends Compute {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Cpu used</em>' attribute.
-	 * @see #setCpu_used(String)
+	 * @see #setCpu_used(int)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Cpu_used()
-	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 * @model dataType="org.occiware.clouddesigner.occi.Number"
 	 *        annotation="OCCIE2Ecore description='CPU consumed by the conatiner'"
 	 * @generated
 	 */
-	String getCpu_used();
+	int getCpu_used();
 
 	/**
 	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.docker.Container#getCpu_used <em>Cpu used</em>}' attribute.
@@ -1155,7 +1155,7 @@ public interface Container extends Compute {
 	 * @see #getCpu_used()
 	 * @generated
 	 */
-	void setCpu_used(String value);
+	void setCpu_used(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Memory used</b></em>' attribute.
@@ -1166,13 +1166,13 @@ public interface Container extends Compute {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Memory used</em>' attribute.
-	 * @see #setMemory_used(String)
+	 * @see #setMemory_used(int)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Memory_used()
-	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 * @model dataType="org.occiware.clouddesigner.occi.Number"
 	 *        annotation="OCCIE2Ecore description='Memory consumed by the container'"
 	 * @generated
 	 */
-	String getMemory_used();
+	int getMemory_used();
 
 	/**
 	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.docker.Container#getMemory_used <em>Memory used</em>}' attribute.
@@ -1182,7 +1182,7 @@ public interface Container extends Compute {
 	 * @see #getMemory_used()
 	 * @generated
 	 */
-	void setMemory_used(String value);
+	void setMemory_used(int value);
 
 	/**
 	 * <!-- begin-user-doc -->

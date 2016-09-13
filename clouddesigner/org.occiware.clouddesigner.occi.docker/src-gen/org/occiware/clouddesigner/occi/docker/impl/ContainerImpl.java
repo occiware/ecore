@@ -865,7 +865,7 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String CPU_USED_EDEFAULT = null;
+	protected static final int CPU_USED_EDEFAULT = 0;
 
 	/**
 	 * The cached value of the '{@link #getCpu_used() <em>Cpu used</em>}' attribute.
@@ -875,7 +875,7 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 	 * @generated
 	 * @ordered
 	 */
-	protected String cpu_used = CPU_USED_EDEFAULT;
+	protected int cpu_used = CPU_USED_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getMemory_used() <em>Memory used</em>}' attribute.
@@ -885,7 +885,7 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String MEMORY_USED_EDEFAULT = null;
+	protected static final int MEMORY_USED_EDEFAULT = 0;
 
 	/**
 	 * The cached value of the '{@link #getMemory_used() <em>Memory used</em>}' attribute.
@@ -895,7 +895,7 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 	 * @generated
 	 * @ordered
 	 */
-	protected String memory_used = MEMORY_USED_EDEFAULT;
+	protected int memory_used = MEMORY_USED_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1740,7 +1740,7 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getCpu_used() {
+	public int getCpu_used() {
 		return cpu_used;
 	}
 
@@ -1749,8 +1749,8 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setCpu_used(String newCpu_used) {
-		String oldCpu_used = cpu_used;
+	public void setCpu_used(int newCpu_used) {
+		int oldCpu_used = cpu_used;
 		cpu_used = newCpu_used;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__CPU_USED, oldCpu_used, cpu_used));
@@ -1761,7 +1761,7 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getMemory_used() {
+	public int getMemory_used() {
 		return memory_used;
 	}
 
@@ -1770,8 +1770,8 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setMemory_used(String newMemory_used) {
-		String oldMemory_used = memory_used;
+	public void setMemory_used(int newMemory_used) {
+		int oldMemory_used = memory_used;
 		memory_used = newMemory_used;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__MEMORY_USED, oldMemory_used, memory_used));
@@ -2063,10 +2063,10 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 				setMonitored((Boolean)newValue);
 				return;
 			case DockerPackage.CONTAINER__CPU_USED:
-				setCpu_used((String)newValue);
+				setCpu_used((Integer)newValue);
 				return;
 			case DockerPackage.CONTAINER__MEMORY_USED:
-				setMemory_used((String)newValue);
+				setMemory_used((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -2294,9 +2294,9 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 			case DockerPackage.CONTAINER__MONITORED:
 				return monitored != MONITORED_EDEFAULT;
 			case DockerPackage.CONTAINER__CPU_USED:
-				return CPU_USED_EDEFAULT == null ? cpu_used != null : !CPU_USED_EDEFAULT.equals(cpu_used);
+				return cpu_used != CPU_USED_EDEFAULT;
 			case DockerPackage.CONTAINER__MEMORY_USED:
-				return MEMORY_USED_EDEFAULT == null ? memory_used != null : !MEMORY_USED_EDEFAULT.equals(memory_used);
+				return memory_used != MEMORY_USED_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
