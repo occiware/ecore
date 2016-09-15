@@ -1181,6 +1181,10 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 
 				// Update config.
 				try {
+					
+					if (vmSpec == null) {
+						vmSpec = new VirtualMachineConfigSpec();
+					}
 					if (summary != null && !summary.trim().isEmpty()) {
 						vmSpec.setAnnotation(summary);
 					}
