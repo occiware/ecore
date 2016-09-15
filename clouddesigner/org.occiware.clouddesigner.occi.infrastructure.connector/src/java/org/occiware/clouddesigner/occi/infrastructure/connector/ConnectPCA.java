@@ -62,13 +62,11 @@ public class ConnectPCA {
     public JSONObject postRequest(JSONObject input) {
 
         final String url = getProperty("server.endpoint")+"/compute/";
-        System.out.println("get property ok");
         JSONObject result = new JSONObject();
         try {
             CloseableHttpClient httpClient = HttpClientBuilder.create().build();
             HttpPost postRequest = new HttpPost(url);
             StringEntity entity = new StringEntity(input.toJSONString());
-            System.out.println(input.toJSONString());
             entity.setContentType("application/json");
             postRequest.setEntity(entity);
             HttpResponse response = httpClient.execute(postRequest);
@@ -130,7 +128,6 @@ public class ConnectPCA {
      */
     private String readHttpResponse(HttpResponse response) throws IOException {
         StringBuffer serverOutput = new StringBuffer();
-        System.out.println("response "+response.toString());
         if (response.getStatusLine().getStatusCode() != 201) {
             throw new RuntimeException("Send Request Failed : HTTP error code : "
                     + response.getStatusLine().getStatusCode());

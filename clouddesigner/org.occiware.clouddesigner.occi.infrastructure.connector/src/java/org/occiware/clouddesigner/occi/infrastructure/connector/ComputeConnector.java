@@ -71,11 +71,10 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
             json.put(MEMORY,this.getMemory());
             json.put(TITLE, this.getTitle());
 			json.put(SUMMARY, this.getSummary());
-			System.out.println("json : "+ json.toJSONString());
             JSONObject response = new ConnectPCA().postRequest(json);
-            //getCloudAutomationInfo(response);
+			//getCloudAutomationInfo(response);
         }catch (Exception e){
-            System.out.println(e.getClass().getName() + " : "+e.getMessage());
+            LOGGER.debug(e.getClass().getName() + " : "+e.getMessage());
         }
 
 	}
@@ -91,7 +90,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 			JSONObject response = new ConnectPCA().getRequest(this.id);
 			getCloudAutomationInfo(response);
 		}catch (Exception e){
-			System.out.println(e.getClass().getName() + " : "+e.getMessage());
+			LOGGER.debug(e.getClass().getName() + " : "+e.getMessage());
 		}
 
 	}
