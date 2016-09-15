@@ -126,6 +126,33 @@
     <attributes name="memory_used" description="Memory consumed by the container">
       <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
     </attributes>
+    <attributes name="cpu_percent" default="0" description="The percentage of CPU used.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="memory_percent" description="The percentage of Memory used.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="disk_used" description="The disk used.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="disk_percent" description="The percentage of disk used.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="bandwidth_used" description="The bandwidth used by the container.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="bandwidth_percent" description="The percentage of bandwith used.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="monitoring_interval" default="1" description="The time interval in which the metrics are retrieved from container. This value is in millisecondes.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="cpu_max_value" default="" description="The CPU max value espression used by the Gauge.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="memory_max_value" description="The memory max value expression used by the gauge.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='compute']"/>
     <actions term="create" scheme="http://occiware.org/occi/docker/container/action#"/>
     <actions term="start" scheme="http://occiware.org/occi/docker/container/action#"/>

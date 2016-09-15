@@ -72,6 +72,15 @@ import org.occiware.clouddesigner.occi.infrastructure.impl.ComputeImpl;
  *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.ContainerImpl#isMonitored <em>Monitored</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.ContainerImpl#getCpu_used <em>Cpu used</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.ContainerImpl#getMemory_used <em>Memory used</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.ContainerImpl#getCpu_percent <em>Cpu percent</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.ContainerImpl#getMemory_percent <em>Memory percent</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.ContainerImpl#getDisk_used <em>Disk used</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.ContainerImpl#getDisk_percent <em>Disk percent</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.ContainerImpl#getBandwidth_used <em>Bandwidth used</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.ContainerImpl#getBandwidth_percent <em>Bandwidth percent</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.ContainerImpl#getMonitoring_interval <em>Monitoring interval</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.ContainerImpl#getCpu_max_value <em>Cpu max value</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.ContainerImpl#getMemory_max_value <em>Memory max value</em>}</li>
  * </ul>
  *
  * @generated
@@ -896,6 +905,186 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 	 * @ordered
 	 */
 	protected int memory_used = MEMORY_USED_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getCpu_percent() <em>Cpu percent</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCpu_percent()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String CPU_PERCENT_EDEFAULT = "0";
+
+	/**
+	 * The cached value of the '{@link #getCpu_percent() <em>Cpu percent</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCpu_percent()
+	 * @generated
+	 * @ordered
+	 */
+	protected String cpu_percent = CPU_PERCENT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getMemory_percent() <em>Memory percent</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMemory_percent()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String MEMORY_PERCENT_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getMemory_percent() <em>Memory percent</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMemory_percent()
+	 * @generated
+	 * @ordered
+	 */
+	protected String memory_percent = MEMORY_PERCENT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getDisk_used() <em>Disk used</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDisk_used()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int DISK_USED_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getDisk_used() <em>Disk used</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDisk_used()
+	 * @generated
+	 * @ordered
+	 */
+	protected int disk_used = DISK_USED_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getDisk_percent() <em>Disk percent</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDisk_percent()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String DISK_PERCENT_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getDisk_percent() <em>Disk percent</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDisk_percent()
+	 * @generated
+	 * @ordered
+	 */
+	protected String disk_percent = DISK_PERCENT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getBandwidth_used() <em>Bandwidth used</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBandwidth_used()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int BANDWIDTH_USED_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getBandwidth_used() <em>Bandwidth used</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBandwidth_used()
+	 * @generated
+	 * @ordered
+	 */
+	protected int bandwidth_used = BANDWIDTH_USED_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getBandwidth_percent() <em>Bandwidth percent</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBandwidth_percent()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String BANDWIDTH_PERCENT_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getBandwidth_percent() <em>Bandwidth percent</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBandwidth_percent()
+	 * @generated
+	 * @ordered
+	 */
+	protected String bandwidth_percent = BANDWIDTH_PERCENT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getMonitoring_interval() <em>Monitoring interval</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMonitoring_interval()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int MONITORING_INTERVAL_EDEFAULT = 1;
+
+	/**
+	 * The cached value of the '{@link #getMonitoring_interval() <em>Monitoring interval</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMonitoring_interval()
+	 * @generated
+	 * @ordered
+	 */
+	protected int monitoring_interval = MONITORING_INTERVAL_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getCpu_max_value() <em>Cpu max value</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCpu_max_value()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int CPU_MAX_VALUE_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getCpu_max_value() <em>Cpu max value</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCpu_max_value()
+	 * @generated
+	 * @ordered
+	 */
+	protected int cpu_max_value = CPU_MAX_VALUE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getMemory_max_value() <em>Memory max value</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMemory_max_value()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int MEMORY_MAX_VALUE_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getMemory_max_value() <em>Memory max value</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMemory_max_value()
+	 * @generated
+	 * @ordered
+	 */
+	protected int memory_max_value = MEMORY_MAX_VALUE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1782,6 +1971,195 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getCpu_percent() {
+		return cpu_percent;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCpu_percent(String newCpu_percent) {
+		String oldCpu_percent = cpu_percent;
+		cpu_percent = newCpu_percent;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__CPU_PERCENT, oldCpu_percent, cpu_percent));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getMemory_percent() {
+		return memory_percent;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMemory_percent(String newMemory_percent) {
+		String oldMemory_percent = memory_percent;
+		memory_percent = newMemory_percent;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__MEMORY_PERCENT, oldMemory_percent, memory_percent));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getDisk_used() {
+		return disk_used;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDisk_used(int newDisk_used) {
+		int oldDisk_used = disk_used;
+		disk_used = newDisk_used;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__DISK_USED, oldDisk_used, disk_used));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getDisk_percent() {
+		return disk_percent;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDisk_percent(String newDisk_percent) {
+		String oldDisk_percent = disk_percent;
+		disk_percent = newDisk_percent;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__DISK_PERCENT, oldDisk_percent, disk_percent));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getBandwidth_used() {
+		return bandwidth_used;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setBandwidth_used(int newBandwidth_used) {
+		int oldBandwidth_used = bandwidth_used;
+		bandwidth_used = newBandwidth_used;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__BANDWIDTH_USED, oldBandwidth_used, bandwidth_used));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getBandwidth_percent() {
+		return bandwidth_percent;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setBandwidth_percent(String newBandwidth_percent) {
+		String oldBandwidth_percent = bandwidth_percent;
+		bandwidth_percent = newBandwidth_percent;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__BANDWIDTH_PERCENT, oldBandwidth_percent, bandwidth_percent));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getMonitoring_interval() {
+		return monitoring_interval;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMonitoring_interval(int newMonitoring_interval) {
+		int oldMonitoring_interval = monitoring_interval;
+		monitoring_interval = newMonitoring_interval;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__MONITORING_INTERVAL, oldMonitoring_interval, monitoring_interval));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getCpu_max_value() {
+		return cpu_max_value;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCpu_max_value(int newCpu_max_value) {
+		int oldCpu_max_value = cpu_max_value;
+		cpu_max_value = newCpu_max_value;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__CPU_MAX_VALUE, oldCpu_max_value, cpu_max_value));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getMemory_max_value() {
+		return memory_max_value;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMemory_max_value(int newMemory_max_value) {
+		int oldMemory_max_value = memory_max_value;
+		memory_max_value = newMemory_max_value;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__MEMORY_MAX_VALUE, oldMemory_max_value, memory_max_value));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void create() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -1933,6 +2311,24 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 				return getCpu_used();
 			case DockerPackage.CONTAINER__MEMORY_USED:
 				return getMemory_used();
+			case DockerPackage.CONTAINER__CPU_PERCENT:
+				return getCpu_percent();
+			case DockerPackage.CONTAINER__MEMORY_PERCENT:
+				return getMemory_percent();
+			case DockerPackage.CONTAINER__DISK_USED:
+				return getDisk_used();
+			case DockerPackage.CONTAINER__DISK_PERCENT:
+				return getDisk_percent();
+			case DockerPackage.CONTAINER__BANDWIDTH_USED:
+				return getBandwidth_used();
+			case DockerPackage.CONTAINER__BANDWIDTH_PERCENT:
+				return getBandwidth_percent();
+			case DockerPackage.CONTAINER__MONITORING_INTERVAL:
+				return getMonitoring_interval();
+			case DockerPackage.CONTAINER__CPU_MAX_VALUE:
+				return getCpu_max_value();
+			case DockerPackage.CONTAINER__MEMORY_MAX_VALUE:
+				return getMemory_max_value();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -2067,6 +2463,33 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 				return;
 			case DockerPackage.CONTAINER__MEMORY_USED:
 				setMemory_used((Integer)newValue);
+				return;
+			case DockerPackage.CONTAINER__CPU_PERCENT:
+				setCpu_percent((String)newValue);
+				return;
+			case DockerPackage.CONTAINER__MEMORY_PERCENT:
+				setMemory_percent((String)newValue);
+				return;
+			case DockerPackage.CONTAINER__DISK_USED:
+				setDisk_used((Integer)newValue);
+				return;
+			case DockerPackage.CONTAINER__DISK_PERCENT:
+				setDisk_percent((String)newValue);
+				return;
+			case DockerPackage.CONTAINER__BANDWIDTH_USED:
+				setBandwidth_used((Integer)newValue);
+				return;
+			case DockerPackage.CONTAINER__BANDWIDTH_PERCENT:
+				setBandwidth_percent((String)newValue);
+				return;
+			case DockerPackage.CONTAINER__MONITORING_INTERVAL:
+				setMonitoring_interval((Integer)newValue);
+				return;
+			case DockerPackage.CONTAINER__CPU_MAX_VALUE:
+				setCpu_max_value((Integer)newValue);
+				return;
+			case DockerPackage.CONTAINER__MEMORY_MAX_VALUE:
+				setMemory_max_value((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -2203,6 +2626,33 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 			case DockerPackage.CONTAINER__MEMORY_USED:
 				setMemory_used(MEMORY_USED_EDEFAULT);
 				return;
+			case DockerPackage.CONTAINER__CPU_PERCENT:
+				setCpu_percent(CPU_PERCENT_EDEFAULT);
+				return;
+			case DockerPackage.CONTAINER__MEMORY_PERCENT:
+				setMemory_percent(MEMORY_PERCENT_EDEFAULT);
+				return;
+			case DockerPackage.CONTAINER__DISK_USED:
+				setDisk_used(DISK_USED_EDEFAULT);
+				return;
+			case DockerPackage.CONTAINER__DISK_PERCENT:
+				setDisk_percent(DISK_PERCENT_EDEFAULT);
+				return;
+			case DockerPackage.CONTAINER__BANDWIDTH_USED:
+				setBandwidth_used(BANDWIDTH_USED_EDEFAULT);
+				return;
+			case DockerPackage.CONTAINER__BANDWIDTH_PERCENT:
+				setBandwidth_percent(BANDWIDTH_PERCENT_EDEFAULT);
+				return;
+			case DockerPackage.CONTAINER__MONITORING_INTERVAL:
+				setMonitoring_interval(MONITORING_INTERVAL_EDEFAULT);
+				return;
+			case DockerPackage.CONTAINER__CPU_MAX_VALUE:
+				setCpu_max_value(CPU_MAX_VALUE_EDEFAULT);
+				return;
+			case DockerPackage.CONTAINER__MEMORY_MAX_VALUE:
+				setMemory_max_value(MEMORY_MAX_VALUE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -2297,6 +2747,24 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 				return cpu_used != CPU_USED_EDEFAULT;
 			case DockerPackage.CONTAINER__MEMORY_USED:
 				return memory_used != MEMORY_USED_EDEFAULT;
+			case DockerPackage.CONTAINER__CPU_PERCENT:
+				return CPU_PERCENT_EDEFAULT == null ? cpu_percent != null : !CPU_PERCENT_EDEFAULT.equals(cpu_percent);
+			case DockerPackage.CONTAINER__MEMORY_PERCENT:
+				return MEMORY_PERCENT_EDEFAULT == null ? memory_percent != null : !MEMORY_PERCENT_EDEFAULT.equals(memory_percent);
+			case DockerPackage.CONTAINER__DISK_USED:
+				return disk_used != DISK_USED_EDEFAULT;
+			case DockerPackage.CONTAINER__DISK_PERCENT:
+				return DISK_PERCENT_EDEFAULT == null ? disk_percent != null : !DISK_PERCENT_EDEFAULT.equals(disk_percent);
+			case DockerPackage.CONTAINER__BANDWIDTH_USED:
+				return bandwidth_used != BANDWIDTH_USED_EDEFAULT;
+			case DockerPackage.CONTAINER__BANDWIDTH_PERCENT:
+				return BANDWIDTH_PERCENT_EDEFAULT == null ? bandwidth_percent != null : !BANDWIDTH_PERCENT_EDEFAULT.equals(bandwidth_percent);
+			case DockerPackage.CONTAINER__MONITORING_INTERVAL:
+				return monitoring_interval != MONITORING_INTERVAL_EDEFAULT;
+			case DockerPackage.CONTAINER__CPU_MAX_VALUE:
+				return cpu_max_value != CPU_MAX_VALUE_EDEFAULT;
+			case DockerPackage.CONTAINER__MEMORY_MAX_VALUE:
+				return memory_max_value != MEMORY_MAX_VALUE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -2423,6 +2891,24 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 		result.append(cpu_used);
 		result.append(", memory_used: ");
 		result.append(memory_used);
+		result.append(", cpu_percent: ");
+		result.append(cpu_percent);
+		result.append(", memory_percent: ");
+		result.append(memory_percent);
+		result.append(", disk_used: ");
+		result.append(disk_used);
+		result.append(", disk_percent: ");
+		result.append(disk_percent);
+		result.append(", bandwidth_used: ");
+		result.append(bandwidth_used);
+		result.append(", bandwidth_percent: ");
+		result.append(bandwidth_percent);
+		result.append(", monitoring_interval: ");
+		result.append(monitoring_interval);
+		result.append(", cpu_max_value: ");
+		result.append(cpu_max_value);
+		result.append(", memory_max_value: ");
+		result.append(memory_max_value);
 		result.append(')');
 		return result.toString();
 	}

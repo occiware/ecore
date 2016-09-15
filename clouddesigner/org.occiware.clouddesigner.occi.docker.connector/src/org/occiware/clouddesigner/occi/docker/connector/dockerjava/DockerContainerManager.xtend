@@ -492,7 +492,7 @@ class DockerContainerManager {
 		var containerImage = image
 		if (!StringUtils.isNotBlank(containerImage)) {
 			containerImage = "busybox"
-			LOGGER.info("Use default image: " + containerImage)
+			LOGGER.info("Use the default Docker Image: {}", containerImage)
 		}
 		var String output = null
 		LOGGER.info("Downloading image: ->" + containerImage)

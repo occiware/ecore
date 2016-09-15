@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.0"?>
-<!--
-Copyright (c) 2015-2016 Inria
- 
-All rights reserved. This program and the accompanying materials
-are made available under the terms of the Eclipse Public License v1.0
-which accompanies this distribution, and is available at
-http://www.eclipse.org/legal/epl-v10.html
 
-Contributors:
-- Fawaz Paraiso <fawaz.paraiso@inria.fr>
-- Philippe Merle <philippe.merle@inria.fr>
+<!--
+ Copyright (c) 2015-2016 Obeo, Inria
+ All rights reserved. This program and the accompanying materials
+ are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+ 	
+ Contributors:
+ - William Piers <william.piers@obeo.fr>
+ - Philippe Merle <philippe.merle@inria.fr>
+ - Fawaz Paraïso <fawaz.paraiso@inria.fr>
 -->
+
 <plugin>
 
-   <!-- Register factories for the EMF Edit framework. -->
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <!-- @generated Docker -->
       <factory

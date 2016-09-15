@@ -816,7 +816,7 @@ public class DockerContainerManager {
     boolean _not_1 = (!_isNotBlank);
     if (_not_1) {
       containerImage = "busybox";
-      DockerContainerManager.LOGGER.info(("Use default image: " + containerImage));
+      DockerContainerManager.LOGGER.info("Use the default Docker Image: {}", containerImage);
     }
     String output = null;
     DockerContainerManager.LOGGER.info(("Downloading image: ->" + containerImage));
