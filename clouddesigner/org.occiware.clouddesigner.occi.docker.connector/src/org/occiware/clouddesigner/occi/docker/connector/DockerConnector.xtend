@@ -86,6 +86,8 @@ import org.slf4j.LoggerFactory
 
 import static com.google.common.base.Preconditions.checkNotNull
 import static org.occiware.clouddesigner.occi.docker.connector.ExecutableContainer.*
+import java.util.Queue
+import java.text.DecimalFormat
 
 /**
  * This class overrides the generated EMF factory of the Docker package.
@@ -656,13 +658,14 @@ class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statistics> {
 
 	var private List<Statistics> statisticsList = new LinkedList
 
-	var private Boolean gotStats = false;
-
 	var String containerId
 	
 	var private org.occiware.clouddesigner.occi.docker.Container container
 	
-	var containersMap = newLinkedHashMap
+	var private LimitedQueue<Float> cpuTotalUsageQueue = new LimitedQueue<Float>(2)
+		
+	var private LimitedQueue<Float> cpuSystemUsageQueue = new LimitedQueue<Float>(2)
+	
 	
 	new(String containerId) {
 		this.containerId = containerId
@@ -673,36 +676,71 @@ class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statistics> {
 	}
 
 	override def void onNext(Statistics stats) {
-		LOGGER.info("Received stats #{} :: {} :: {}",statisticsList.size(), this.container.containerid, stats)
+		LOGGER.info("Received stats #{} :: {} :: {}", statisticsList.size(), this.container.containerid, stats)
+		
+		// Interval in which the metrics are retrieved
+		
+		Thread.sleep((this.container as ExecutableContainer).monitoring_interval) // Pause for x ms
 		
 		statisticsList.add(stats)
+		// Calculate the percentage of CPU used
+		var Map<String, Object> cpu = stats.cpuStats
+		var LinkedHashMap tmpcpu = cpu.get("cpu_usage") as LinkedHashMap
+		var cpu_used = tmpcpu.get("total_usage")
+		var percpu_usage = tmpcpu.get("percpu_usage")
+		var system_cpu_usage = cpu.get("system_cpu_usage")
+		var percpu_usage_size = percpu_usage as List
+		var Integer mem_used = stats.memoryStats.get("usage") as Integer
+
+		// Update the Queue
+		cpuTotalUsageQueue.add(Float.valueOf(cpu_used.toString))
+		cpuSystemUsageQueue.add(Float.valueOf(system_cpu_usage.toString))
 		
-		// Update the monitoring metrics
-		modifyResourceSet(this.container, stats)
-		
-		if (stats != null) {
-			gotStats = true;
+		if(cpuTotalUsageQueue.size == 2 && cpuSystemUsageQueue.size == 2){
+			// Calculate the percentage
+			var percent = calculateCPUPercent(cpuTotalUsageQueue, cpuSystemUsageQueue, percpu_usage_size.size)
+			// Update the monitoring metrics
+			modifyResourceSet(this.container, mem_used.toString, cpu_used.toString, percent)
 		}
-		
 	}
 
-	def void modifyResourceSet(Resource resource, Statistics stats){
+	def void modifyResourceSet(Resource resource, String mem_used, String cpu_used, Float percent) {
 		// Creating an editing domain
 		var TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(resource.eResource.resourceSet)
-		
-		Thread.sleep(2000) // Pause for 2000 ms
+
+		//Thread.sleep(1) // Pause for 1 ms
 		var Command cmd = new RecordingCommand(domain) {
 			override protected void doExecute() {
 				// these modifications require a write transaction in this editing domain
-				var Integer mem_used = stats.memoryStats.get("usage") as Integer
-				var Map<String, Object> cpu = stats.cpuStats
-				var LinkedHashMap tmpcpu = cpu.get("cpu_usage") as LinkedHashMap
-				var cpu_used = tmpcpu.get("total_usage")
-				//.get("cpu_usage")
-				
-				LOGGER.info("Received CPU <=====> {}", cpu_used)
-				(resource as ExecutableContainer).memory_used = Integer.parseInt(mem_used.toString) 
-				(resource as ExecutableContainer).cpu_used  = Integer.parseInt(cpu_used.toString) 
+				var DecimalFormat df = new DecimalFormat("#0.##")
+				var int cpu_max = 0
+				var Float cpu_us = 0.0F
+				try {
+					// Modify the resource only if it is in active state
+					if ((resource as ExecutableContainer).state == ComputeStatus.ACTIVE) {
+						(resource as ExecutableContainer).memory_used = Integer.parseInt(mem_used.toString)
+						cpu_us = (Long.valueOf(cpu_used.toString)).floatValue / 1000000F
+						
+						// To avoid NumberFormatException, the maximum value of Integer is 2^31-1 = 2147483647
+						if(cpu_us.intValue > Integer.MAX_VALUE){
+							cpu_us = cpu_us / 100000000F
+						}
+
+						cpu_max = getMaxValue(Long.parseLong(cpu_us.intValue.toString), percent)
+
+						if(cpu_max.intValue > Integer.MAX_VALUE){
+							cpu_max = cpu_max / 100000000
+							cpu_us = cpu_us / 100000000F
+						}
+						(resource as ExecutableContainer).cpu_used = cpu_us.intValue
+						LOGGER.info("CPU USED <=====> {}", cpu_us.intValue)
+						(resource as ExecutableContainer).cpu_max_value = Integer.valueOf(cpu_max)
+						LOGGER.info("CPU MAX VALUE <=====> {}", Integer.valueOf(cpu_max))
+						(resource as ExecutableContainer).cpu_percent = df.format(percent)
+					}
+				} catch (NumberFormatException e) {
+					LOGGER.error(e.message)
+				}
 			}
 		};
 
@@ -710,7 +748,7 @@ class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statistics> {
 			(domain.getCommandStack() as TransactionalCommandStack).execute(cmd, null); // default options
 		} catch (RollbackException rbe) {
 			LOGGER.error(rbe.getStatus().toString)
-		}		
+		}
 	}
 	
 	def Boolean gotStats() {
@@ -728,7 +766,47 @@ class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statistics> {
 	def Boolean compateTo(Statistics stats1, Statistics stats2){
 		return stats1.toString.equals(stats2.toString)
 	}
+	
+	def Float calculateCPUPercent(LimitedQueue<Float> cpuTotalUsageQueue, LimitedQueue<Float> cpuSystemUsageQueue, int percpu_usage_size){
+		//Inspired from https://github.com/docker/docker/blob/0d445685b8d628a938790e50517f3fb949b300e0/api/client/stats.go#L199
+		var Float cpuPercent = 0.0F
+		// calculate the change for the cpu usage of the container in between readings
+		var cpuDelta = Float.valueOf(cpuTotalUsageQueue.get(1).toString) - Float.valueOf(cpuTotalUsageQueue.get(0).toString)
+		// calculate the change for the entire system between readings
+		var systemDelta = Float.valueOf(cpuSystemUsageQueue.get(1).toString) - Float.valueOf(cpuSystemUsageQueue.get(0).toString)
+		
+		if (systemDelta > 0.0 && cpuDelta > 0.0){
+			cpuPercent = (cpuDelta / systemDelta)*percpu_usage_size*100.0F
+		}
+		return cpuPercent
+	}
+	
+	def int getMaxValue(Long cpu_used, Float percent){
+		var value = (100F*cpu_used.floatValue) / percent
+		var maxValue = value.intValue
+		return maxValue
+	}
 }	
+
+/**
+ * This class implements Queue with size 2
+ */
+
+class LimitedQueue<E> extends LinkedList<E> {
+	var private int limit
+
+	new (int limit){
+		this.limit = limit
+	}
+	
+	override  def boolean add(E o) {
+		super.add(o)
+		while (size() > limit) {
+			super.remove()
+		}
+		return true
+	}
+}
 
 /**
  * This class implements an executable Docker container.
