@@ -102,6 +102,15 @@ public class ContainerItemProvider extends ComputeItemProvider {
 			addMonitoredPropertyDescriptor(object);
 			addCpu_usedPropertyDescriptor(object);
 			addMemory_usedPropertyDescriptor(object);
+			addCpu_percentPropertyDescriptor(object);
+			addMemory_percentPropertyDescriptor(object);
+			addDisk_usedPropertyDescriptor(object);
+			addDisk_percentPropertyDescriptor(object);
+			addBandwidth_usedPropertyDescriptor(object);
+			addBandwidth_percentPropertyDescriptor(object);
+			addMonitoring_intervalPropertyDescriptor(object);
+			addCpu_max_valuePropertyDescriptor(object);
+			addMemory_max_valuePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -1009,6 +1018,204 @@ public class ContainerItemProvider extends ComputeItemProvider {
 	}
 
 	/**
+	 * This adds a property descriptor for the Cpu percent feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addCpu_percentPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Container_cpu_percent_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Container_cpu_percent_feature", "_UI_Container_type"),
+				 DockerPackage.Literals.CONTAINER__CPU_PERCENT,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Memory percent feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addMemory_percentPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Container_memory_percent_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Container_memory_percent_feature", "_UI_Container_type"),
+				 DockerPackage.Literals.CONTAINER__MEMORY_PERCENT,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Disk used feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDisk_usedPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Container_disk_used_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Container_disk_used_feature", "_UI_Container_type"),
+				 DockerPackage.Literals.CONTAINER__DISK_USED,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Disk percent feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDisk_percentPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Container_disk_percent_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Container_disk_percent_feature", "_UI_Container_type"),
+				 DockerPackage.Literals.CONTAINER__DISK_PERCENT,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Bandwidth used feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addBandwidth_usedPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Container_bandwidth_used_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Container_bandwidth_used_feature", "_UI_Container_type"),
+				 DockerPackage.Literals.CONTAINER__BANDWIDTH_USED,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Bandwidth percent feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addBandwidth_percentPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Container_bandwidth_percent_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Container_bandwidth_percent_feature", "_UI_Container_type"),
+				 DockerPackage.Literals.CONTAINER__BANDWIDTH_PERCENT,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Monitoring interval feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addMonitoring_intervalPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Container_monitoring_interval_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Container_monitoring_interval_feature", "_UI_Container_type"),
+				 DockerPackage.Literals.CONTAINER__MONITORING_INTERVAL,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Cpu max value feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addCpu_max_valuePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Container_cpu_max_value_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Container_cpu_max_value_feature", "_UI_Container_type"),
+				 DockerPackage.Literals.CONTAINER__CPU_MAX_VALUE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Memory max value feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addMemory_max_valuePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Container_memory_max_value_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Container_memory_max_value_feature", "_UI_Container_type"),
+				 DockerPackage.Literals.CONTAINER__MEMORY_MAX_VALUE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns Container.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1087,6 +1294,15 @@ public class ContainerItemProvider extends ComputeItemProvider {
 			case DockerPackage.CONTAINER__MONITORED:
 			case DockerPackage.CONTAINER__CPU_USED:
 			case DockerPackage.CONTAINER__MEMORY_USED:
+			case DockerPackage.CONTAINER__CPU_PERCENT:
+			case DockerPackage.CONTAINER__MEMORY_PERCENT:
+			case DockerPackage.CONTAINER__DISK_USED:
+			case DockerPackage.CONTAINER__DISK_PERCENT:
+			case DockerPackage.CONTAINER__BANDWIDTH_USED:
+			case DockerPackage.CONTAINER__BANDWIDTH_PERCENT:
+			case DockerPackage.CONTAINER__MONITORING_INTERVAL:
+			case DockerPackage.CONTAINER__CPU_MAX_VALUE:
+			case DockerPackage.CONTAINER__MEMORY_MAX_VALUE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
