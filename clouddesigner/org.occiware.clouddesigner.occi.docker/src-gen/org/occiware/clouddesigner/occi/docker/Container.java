@@ -63,6 +63,15 @@ import org.occiware.clouddesigner.occi.infrastructure.Compute;
  *   <li>{@link org.occiware.clouddesigner.occi.docker.Container#isMonitored <em>Monitored</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.docker.Container#getCpu_used <em>Cpu used</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.docker.Container#getMemory_used <em>Memory used</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.Container#getCpu_percent <em>Cpu percent</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.Container#getMemory_percent <em>Memory percent</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.Container#getDisk_used <em>Disk used</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.Container#getDisk_percent <em>Disk percent</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.Container#getBandwidth_used <em>Bandwidth used</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.Container#getBandwidth_percent <em>Bandwidth percent</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.Container#getMonitoring_interval <em>Monitoring interval</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.Container#getCpu_max_value <em>Cpu max value</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.Container#getMemory_max_value <em>Memory max value</em>}</li>
  * </ul>
  *
  * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer()
@@ -1183,6 +1192,251 @@ public interface Container extends Compute {
 	 * @generated
 	 */
 	void setMemory_used(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Cpu percent</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Cpu percent</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Cpu percent</em>' attribute.
+	 * @see #setCpu_percent(String)
+	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Cpu_percent()
+	 * @model default="0" dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='The percentage of CPU used.'"
+	 * @generated
+	 */
+	String getCpu_percent();
+
+	/**
+	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.docker.Container#getCpu_percent <em>Cpu percent</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Cpu percent</em>' attribute.
+	 * @see #getCpu_percent()
+	 * @generated
+	 */
+	void setCpu_percent(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Memory percent</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Memory percent</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Memory percent</em>' attribute.
+	 * @see #setMemory_percent(String)
+	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Memory_percent()
+	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='The percentage of Memory used.'"
+	 * @generated
+	 */
+	String getMemory_percent();
+
+	/**
+	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.docker.Container#getMemory_percent <em>Memory percent</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Memory percent</em>' attribute.
+	 * @see #getMemory_percent()
+	 * @generated
+	 */
+	void setMemory_percent(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Disk used</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Disk used</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Disk used</em>' attribute.
+	 * @see #setDisk_used(int)
+	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Disk_used()
+	 * @model dataType="org.occiware.clouddesigner.occi.Number"
+	 *        annotation="OCCIE2Ecore description='The disk used.'"
+	 * @generated
+	 */
+	int getDisk_used();
+
+	/**
+	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.docker.Container#getDisk_used <em>Disk used</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Disk used</em>' attribute.
+	 * @see #getDisk_used()
+	 * @generated
+	 */
+	void setDisk_used(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Disk percent</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Disk percent</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Disk percent</em>' attribute.
+	 * @see #setDisk_percent(String)
+	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Disk_percent()
+	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='The percentage of disk used.'"
+	 * @generated
+	 */
+	String getDisk_percent();
+
+	/**
+	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.docker.Container#getDisk_percent <em>Disk percent</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Disk percent</em>' attribute.
+	 * @see #getDisk_percent()
+	 * @generated
+	 */
+	void setDisk_percent(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Bandwidth used</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Bandwidth used</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Bandwidth used</em>' attribute.
+	 * @see #setBandwidth_used(int)
+	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Bandwidth_used()
+	 * @model dataType="org.occiware.clouddesigner.occi.Number"
+	 *        annotation="OCCIE2Ecore description='The bandwidth used by the container.'"
+	 * @generated
+	 */
+	int getBandwidth_used();
+
+	/**
+	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.docker.Container#getBandwidth_used <em>Bandwidth used</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Bandwidth used</em>' attribute.
+	 * @see #getBandwidth_used()
+	 * @generated
+	 */
+	void setBandwidth_used(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Bandwidth percent</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Bandwidth percent</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Bandwidth percent</em>' attribute.
+	 * @see #setBandwidth_percent(String)
+	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Bandwidth_percent()
+	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='The percentage of bandwith used.'"
+	 * @generated
+	 */
+	String getBandwidth_percent();
+
+	/**
+	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.docker.Container#getBandwidth_percent <em>Bandwidth percent</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Bandwidth percent</em>' attribute.
+	 * @see #getBandwidth_percent()
+	 * @generated
+	 */
+	void setBandwidth_percent(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Monitoring interval</b></em>' attribute.
+	 * The default value is <code>"1"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Monitoring interval</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Monitoring interval</em>' attribute.
+	 * @see #setMonitoring_interval(int)
+	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Monitoring_interval()
+	 * @model default="1" dataType="org.occiware.clouddesigner.occi.Number"
+	 *        annotation="OCCIE2Ecore description='The time interval in which the metrics are retrieved from container. This value is in millisecondes.'"
+	 * @generated
+	 */
+	int getMonitoring_interval();
+
+	/**
+	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.docker.Container#getMonitoring_interval <em>Monitoring interval</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Monitoring interval</em>' attribute.
+	 * @see #getMonitoring_interval()
+	 * @generated
+	 */
+	void setMonitoring_interval(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Cpu max value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Cpu max value</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Cpu max value</em>' attribute.
+	 * @see #setCpu_max_value(int)
+	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Cpu_max_value()
+	 * @model dataType="org.occiware.clouddesigner.occi.Number"
+	 *        annotation="OCCIE2Ecore description='The CPU max value espression used by the Gauge.'"
+	 * @generated
+	 */
+	int getCpu_max_value();
+
+	/**
+	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.docker.Container#getCpu_max_value <em>Cpu max value</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Cpu max value</em>' attribute.
+	 * @see #getCpu_max_value()
+	 * @generated
+	 */
+	void setCpu_max_value(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Memory max value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Memory max value</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Memory max value</em>' attribute.
+	 * @see #setMemory_max_value(int)
+	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Memory_max_value()
+	 * @model dataType="org.occiware.clouddesigner.occi.Number"
+	 *        annotation="OCCIE2Ecore description='The memory max value expression used by the gauge.'"
+	 * @generated
+	 */
+	int getMemory_max_value();
+
+	/**
+	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.docker.Container#getMemory_max_value <em>Memory max value</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Memory max value</em>' attribute.
+	 * @see #getMemory_max_value()
+	 * @generated
+	 */
+	void setMemory_max_value(int value);
 
 	/**
 	 * <!-- begin-user-doc -->

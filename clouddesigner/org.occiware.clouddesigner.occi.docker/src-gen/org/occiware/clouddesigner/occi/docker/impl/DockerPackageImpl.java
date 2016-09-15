@@ -623,6 +623,87 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getContainer_Cpu_percent() {
+		return (EAttribute)containerEClass.getEStructuralFeatures().get(41);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getContainer_Memory_percent() {
+		return (EAttribute)containerEClass.getEStructuralFeatures().get(42);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getContainer_Disk_used() {
+		return (EAttribute)containerEClass.getEStructuralFeatures().get(43);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getContainer_Disk_percent() {
+		return (EAttribute)containerEClass.getEStructuralFeatures().get(44);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getContainer_Bandwidth_used() {
+		return (EAttribute)containerEClass.getEStructuralFeatures().get(45);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getContainer_Bandwidth_percent() {
+		return (EAttribute)containerEClass.getEStructuralFeatures().get(46);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getContainer_Monitoring_interval() {
+		return (EAttribute)containerEClass.getEStructuralFeatures().get(47);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getContainer_Cpu_max_value() {
+		return (EAttribute)containerEClass.getEStructuralFeatures().get(48);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getContainer_Memory_max_value() {
+		return (EAttribute)containerEClass.getEStructuralFeatures().get(49);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EOperation getContainer__Create() {
 		return containerEClass.getEOperations().get(0);
 	}
@@ -1732,6 +1813,15 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		createEAttribute(containerEClass, CONTAINER__MONITORED);
 		createEAttribute(containerEClass, CONTAINER__CPU_USED);
 		createEAttribute(containerEClass, CONTAINER__MEMORY_USED);
+		createEAttribute(containerEClass, CONTAINER__CPU_PERCENT);
+		createEAttribute(containerEClass, CONTAINER__MEMORY_PERCENT);
+		createEAttribute(containerEClass, CONTAINER__DISK_USED);
+		createEAttribute(containerEClass, CONTAINER__DISK_PERCENT);
+		createEAttribute(containerEClass, CONTAINER__BANDWIDTH_USED);
+		createEAttribute(containerEClass, CONTAINER__BANDWIDTH_PERCENT);
+		createEAttribute(containerEClass, CONTAINER__MONITORING_INTERVAL);
+		createEAttribute(containerEClass, CONTAINER__CPU_MAX_VALUE);
+		createEAttribute(containerEClass, CONTAINER__MEMORY_MAX_VALUE);
 		createEOperation(containerEClass, CONTAINER___CREATE);
 		createEOperation(containerEClass, CONTAINER___START);
 		createEOperation(containerEClass, CONTAINER___STOP);
@@ -1961,6 +2051,15 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		initEAttribute(getContainer_Monitored(), theOCCIPackage.getBoolean(), "monitored", "false", 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_Cpu_used(), theOCCIPackage.getNumber(), "cpu_used", null, 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_Memory_used(), theOCCIPackage.getNumber(), "memory_used", null, 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getContainer_Cpu_percent(), theOCCIPackage.getString(), "cpu_percent", "0", 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getContainer_Memory_percent(), theOCCIPackage.getString(), "memory_percent", null, 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getContainer_Disk_used(), theOCCIPackage.getNumber(), "disk_used", null, 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getContainer_Disk_percent(), theOCCIPackage.getString(), "disk_percent", null, 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getContainer_Bandwidth_used(), theOCCIPackage.getNumber(), "bandwidth_used", null, 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getContainer_Bandwidth_percent(), theOCCIPackage.getString(), "bandwidth_percent", null, 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getContainer_Monitoring_interval(), theOCCIPackage.getNumber(), "monitoring_interval", "1", 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getContainer_Cpu_max_value(), theOCCIPackage.getNumber(), "cpu_max_value", null, 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getContainer_Memory_max_value(), theOCCIPackage.getNumber(), "memory_max_value", null, 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getContainer__Create(), null, "create", 0, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -2421,6 +2520,60 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		   source, 
 		   new String[] {
 			 "description", "Memory consumed by the container"
+		   });	
+		addAnnotation
+		  (getContainer_Cpu_percent(), 
+		   source, 
+		   new String[] {
+			 "description", "The percentage of CPU used."
+		   });	
+		addAnnotation
+		  (getContainer_Memory_percent(), 
+		   source, 
+		   new String[] {
+			 "description", "The percentage of Memory used."
+		   });	
+		addAnnotation
+		  (getContainer_Disk_used(), 
+		   source, 
+		   new String[] {
+			 "description", "The disk used."
+		   });	
+		addAnnotation
+		  (getContainer_Disk_percent(), 
+		   source, 
+		   new String[] {
+			 "description", "The percentage of disk used."
+		   });	
+		addAnnotation
+		  (getContainer_Bandwidth_used(), 
+		   source, 
+		   new String[] {
+			 "description", "The bandwidth used by the container."
+		   });	
+		addAnnotation
+		  (getContainer_Bandwidth_percent(), 
+		   source, 
+		   new String[] {
+			 "description", "The percentage of bandwith used."
+		   });	
+		addAnnotation
+		  (getContainer_Monitoring_interval(), 
+		   source, 
+		   new String[] {
+			 "description", "The time interval in which the metrics are retrieved from container. This value is in millisecondes."
+		   });	
+		addAnnotation
+		  (getContainer_Cpu_max_value(), 
+		   source, 
+		   new String[] {
+			 "description", "The CPU max value espression used by the Gauge."
+		   });	
+		addAnnotation
+		  (getContainer_Memory_max_value(), 
+		   source, 
+		   new String[] {
+			 "description", "The memory max value expression used by the gauge."
 		   });	
 		addAnnotation
 		  (linkEClass, 

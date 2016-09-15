@@ -584,13 +584,94 @@ public interface DockerPackage extends EPackage {
 	int CONTAINER__MEMORY_USED = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 40;
 
 	/**
+	 * The feature id for the '<em><b>Cpu percent</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTAINER__CPU_PERCENT = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 41;
+
+	/**
+	 * The feature id for the '<em><b>Memory percent</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTAINER__MEMORY_PERCENT = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 42;
+
+	/**
+	 * The feature id for the '<em><b>Disk used</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTAINER__DISK_USED = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 43;
+
+	/**
+	 * The feature id for the '<em><b>Disk percent</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTAINER__DISK_PERCENT = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 44;
+
+	/**
+	 * The feature id for the '<em><b>Bandwidth used</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTAINER__BANDWIDTH_USED = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 45;
+
+	/**
+	 * The feature id for the '<em><b>Bandwidth percent</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTAINER__BANDWIDTH_PERCENT = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 46;
+
+	/**
+	 * The feature id for the '<em><b>Monitoring interval</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTAINER__MONITORING_INTERVAL = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 47;
+
+	/**
+	 * The feature id for the '<em><b>Cpu max value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTAINER__CPU_MAX_VALUE = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 48;
+
+	/**
+	 * The feature id for the '<em><b>Memory max value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTAINER__MEMORY_MAX_VALUE = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 49;
+
+	/**
 	 * The number of structural features of the '<em>Container</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTAINER_FEATURE_COUNT = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 41;
+	int CONTAINER_FEATURE_COUNT = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 50;
 
 	/**
 	 * The operation id for the '<em>Occi Create</em>' operation.
@@ -5698,6 +5779,105 @@ public interface DockerPackage extends EPackage {
 	EAttribute getContainer_Memory_used();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Container#getCpu_percent <em>Cpu percent</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Cpu percent</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Container#getCpu_percent()
+	 * @see #getContainer()
+	 * @generated
+	 */
+	EAttribute getContainer_Cpu_percent();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Container#getMemory_percent <em>Memory percent</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Memory percent</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Container#getMemory_percent()
+	 * @see #getContainer()
+	 * @generated
+	 */
+	EAttribute getContainer_Memory_percent();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Container#getDisk_used <em>Disk used</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Disk used</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Container#getDisk_used()
+	 * @see #getContainer()
+	 * @generated
+	 */
+	EAttribute getContainer_Disk_used();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Container#getDisk_percent <em>Disk percent</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Disk percent</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Container#getDisk_percent()
+	 * @see #getContainer()
+	 * @generated
+	 */
+	EAttribute getContainer_Disk_percent();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Container#getBandwidth_used <em>Bandwidth used</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Bandwidth used</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Container#getBandwidth_used()
+	 * @see #getContainer()
+	 * @generated
+	 */
+	EAttribute getContainer_Bandwidth_used();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Container#getBandwidth_percent <em>Bandwidth percent</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Bandwidth percent</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Container#getBandwidth_percent()
+	 * @see #getContainer()
+	 * @generated
+	 */
+	EAttribute getContainer_Bandwidth_percent();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Container#getMonitoring_interval <em>Monitoring interval</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Monitoring interval</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Container#getMonitoring_interval()
+	 * @see #getContainer()
+	 * @generated
+	 */
+	EAttribute getContainer_Monitoring_interval();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Container#getCpu_max_value <em>Cpu max value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Cpu max value</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Container#getCpu_max_value()
+	 * @see #getContainer()
+	 * @generated
+	 */
+	EAttribute getContainer_Cpu_max_value();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Container#getMemory_max_value <em>Memory max value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Memory max value</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Container#getMemory_max_value()
+	 * @see #getContainer()
+	 * @generated
+	 */
+	EAttribute getContainer_Memory_max_value();
+
+	/**
 	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.docker.Container#create() <em>Create</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7308,6 +7488,78 @@ public interface DockerPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CONTAINER__MEMORY_USED = eINSTANCE.getContainer_Memory_used();
+
+		/**
+		 * The meta object literal for the '<em><b>Cpu percent</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONTAINER__CPU_PERCENT = eINSTANCE.getContainer_Cpu_percent();
+
+		/**
+		 * The meta object literal for the '<em><b>Memory percent</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONTAINER__MEMORY_PERCENT = eINSTANCE.getContainer_Memory_percent();
+
+		/**
+		 * The meta object literal for the '<em><b>Disk used</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONTAINER__DISK_USED = eINSTANCE.getContainer_Disk_used();
+
+		/**
+		 * The meta object literal for the '<em><b>Disk percent</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONTAINER__DISK_PERCENT = eINSTANCE.getContainer_Disk_percent();
+
+		/**
+		 * The meta object literal for the '<em><b>Bandwidth used</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONTAINER__BANDWIDTH_USED = eINSTANCE.getContainer_Bandwidth_used();
+
+		/**
+		 * The meta object literal for the '<em><b>Bandwidth percent</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONTAINER__BANDWIDTH_PERCENT = eINSTANCE.getContainer_Bandwidth_percent();
+
+		/**
+		 * The meta object literal for the '<em><b>Monitoring interval</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONTAINER__MONITORING_INTERVAL = eINSTANCE.getContainer_Monitoring_interval();
+
+		/**
+		 * The meta object literal for the '<em><b>Cpu max value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONTAINER__CPU_MAX_VALUE = eINSTANCE.getContainer_Cpu_max_value();
+
+		/**
+		 * The meta object literal for the '<em><b>Memory max value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONTAINER__MEMORY_MAX_VALUE = eINSTANCE.getContainer_Memory_max_value();
 
 		/**
 		 * The meta object literal for the '<em><b>Create</b></em>' operation.
