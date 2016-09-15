@@ -23,6 +23,8 @@ import java.util.ArrayList
 import java.util.Collections
 import java.util.HashMap
 import java.util.Iterator
+import java.util.LinkedHashMap
+import java.util.LinkedList
 import java.util.List
 import java.util.Map
 import org.apache.commons.lang.StringUtils
@@ -84,7 +86,6 @@ import org.slf4j.LoggerFactory
 
 import static com.google.common.base.Preconditions.checkNotNull
 import static org.occiware.clouddesigner.occi.docker.connector.ExecutableContainer.*
-import org.occiware.clouddesigner.occi.docker.Container
 
 /**
  * This class overrides the generated EMF factory of the Docker package.
@@ -540,7 +541,7 @@ class EventCallBack extends EventsResultCallback {
 				}
 				if (state.equalsIgnoreCase("destroy")) {
 					val instanceMH = new ModelHandler
-					var container = (resource as Container)
+					var container = (resource as org.occiware.clouddesigner.occi.docker.Container)
 					var machine = (resource as ExecutableContainer).currentMachine
 					instanceMH.removeContainerFromMachine(container, machine)
 					if (machine.eContainer instanceof Configuration) {
@@ -645,32 +646,89 @@ class EventCallBack extends EventsResultCallback {
 }
 
 /**
- * This class notifies stats events to the connector.
+ * This class notifies monitoring events from the connector.
  */
+
 class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statistics> {
+
 	// Initialize logger for StatsCallback.
 	private static Logger LOGGER = LoggerFactory.getLogger(typeof(StatsCallback))
 
+	var private List<Statistics> statisticsList = new LinkedList
+
 	var private Boolean gotStats = false;
 
-	var ExecutableContainer container
+	var String containerId
+	
+	var private org.occiware.clouddesigner.occi.docker.Container container
+	
+	var containersMap = newLinkedHashMap
+	
+	new(String containerId) {
+		this.containerId = containerId
+	}
 
-	new(ExecutableContainer container) {
+	new(org.occiware.clouddesigner.occi.docker.Container container) {
 		this.container = container
 	}
 
 	override def void onNext(Statistics stats) {
-		LOGGER.info("Received stats #{} ", stats);
+		LOGGER.info("Received stats #{} :: {} :: {}",statisticsList.size(), this.container.containerid, stats)
+		
+		statisticsList.add(stats)
+		
+		// Update the monitoring metrics
+		modifyResourceSet(this.container, stats)
+		
 		if (stats != null) {
 			gotStats = true;
 		}
+		
 	}
 
+	def void modifyResourceSet(Resource resource, Statistics stats){
+		// Creating an editing domain
+		var TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(resource.eResource.resourceSet)
+		
+		Thread.sleep(2000) // Pause for 2000 ms
+		var Command cmd = new RecordingCommand(domain) {
+			override protected void doExecute() {
+				// these modifications require a write transaction in this editing domain
+				var Integer mem_used = stats.memoryStats.get("usage") as Integer
+				var Map<String, Object> cpu = stats.cpuStats
+				var LinkedHashMap tmpcpu = cpu.get("cpu_usage") as LinkedHashMap
+				var cpu_used = tmpcpu.get("total_usage")
+				//.get("cpu_usage")
+				
+				LOGGER.info("Received CPU <=====> {}", cpu_used)
+				(resource as ExecutableContainer).memory_used = Integer.parseInt(mem_used.toString) 
+				(resource as ExecutableContainer).cpu_used  = Integer.parseInt(cpu_used.toString) 
+			}
+		};
+
+		try {
+			(domain.getCommandStack() as TransactionalCommandStack).execute(cmd, null); // default options
+		} catch (RollbackException rbe) {
+			LOGGER.error(rbe.getStatus().toString)
+		}		
+	}
+	
 	def Boolean gotStats() {
 		return gotStats;
 	}
 
-}
+	def String getContainerId(){
+		return this.containerId
+	}
+
+	def List<Statistics> getStatisticsList() {
+		return this.statisticsList
+	}
+	
+	def Boolean compateTo(Statistics stats1, Statistics stats2){
+		return stats1.toString.equals(stats2.toString)
+	}
+}	
 
 /**
  * This class implements an executable Docker container.
@@ -689,7 +747,7 @@ class ExecutableContainer extends ContainerImpl {
 	var eventCallback = new EventCallBack(this)
 
 	// Listener of the stats
-	var statsCallback = new StatsCallback(this)
+//	var statsCallback = new StatsCallback(this)
 
 	/**
 	 * Docker containers have a state machine.
@@ -705,12 +763,12 @@ class ExecutableContainer extends ContainerImpl {
 			if (machine.state.toString.equalsIgnoreCase("active")) {
 				try {
 					if (dockerContainerManager == null) {
-						dockerContainerManager = new DockerContainerManager(machine, eventCallback, statsCallback)
+						dockerContainerManager = new DockerContainerManager(machine, eventCallback)
 					}
-					dockerContainerManager.startContainer(machine, this.compute.name)
+					dockerContainerManager.startContainer(machine, this.compute)
 				} catch (Exception e) {
 					createContainer(machine)
-					dockerContainerManager.startContainer(machine, this.compute.name)
+					dockerContainerManager.startContainer(machine, this.compute)
 				}
 			}
 		}
@@ -725,7 +783,7 @@ class ExecutableContainer extends ContainerImpl {
 				if (this.compute.state.toString.equalsIgnoreCase("active")) {
 					try {
 						if (dockerContainerManager == null) {
-							dockerContainerManager = new DockerContainerManager(machine, eventCallback, statsCallback)
+							dockerContainerManager = new DockerContainerManager(machine, eventCallback)
 						}
 						dockerContainerManager.stopContainer(machine, this.compute.name)
 					} catch (Exception e) {
@@ -774,7 +832,7 @@ class ExecutableContainer extends ContainerImpl {
 		// Set dockerClient
 		var Map<DockerClient, CreateContainerResponse> result = new HashMap<DockerClient, CreateContainerResponse>
 		if (dockerContainerManager == null) {
-			dockerContainerManager = new DockerContainerManager(machine, eventCallback, statsCallback)
+			dockerContainerManager = new DockerContainerManager(machine, eventCallback)
 		}
 
 		// Download image
@@ -786,7 +844,7 @@ class ExecutableContainer extends ContainerImpl {
 
 	def void createContainer(Machine machine) {
 		if (dockerContainerManager == null) {
-			dockerContainerManager = new DockerContainerManager(machine, eventCallback, statsCallback)
+			dockerContainerManager = new DockerContainerManager(machine, eventCallback)
 		}
 
 		// Download image
@@ -798,7 +856,7 @@ class ExecutableContainer extends ContainerImpl {
 
 	def void removeContainer(Machine machine) {
 		if (dockerContainerManager == null) {
-			dockerContainerManager = new DockerContainerManager(machine, eventCallback, statsCallback)
+			dockerContainerManager = new DockerContainerManager(machine, eventCallback)
 		}
 		dockerContainerManager.removeContainer(machine.name, this.name)
 	}
@@ -928,14 +986,8 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 
 		// Create the machine command
 		command.append(dockerMachineCMD).append(getDriverName)
-
-		if (getDriverName.equalsIgnoreCase("virtualbox") || getDriverName.equalsIgnoreCase("vmwarefusion")) {
-			command.append(' ').append(compute.name)
-			appendDriverParameters(command)
-		} else {
-			appendDriverParameters(command)
-			command.append(' ').append(compute.name)
-		}
+		appendDriverParameters(command)
+		command.append(' ').append(compute.name)
 
 		LOGGER.info("CMD : #{}", command.toString)
 
@@ -971,14 +1023,8 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 		// Create the machine command
 		var String dockerMachineCMD = String.format("%s -D create --driver ", this.dockerMachineCmd)
 		command.append(dockerMachineCMD).append(getDriverName)
-		if (getDriverName.equalsIgnoreCase("virtualbox") || getDriverName.equalsIgnoreCase("vmwarefusion")) {
-			command.append(' ').append(compute.name)
-			appendDriverParameters(command)
-		} else {
-			appendDriverParameters(command)
-			command.append(' ').append(compute.name)
-		}
-
+		appendDriverParameters(command)
+		command.append(' ').append(compute.name)
 		// Get the active machine
 		val activeHosts = DockerUtil.getActiveHosts
 
@@ -1009,7 +1055,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 
 								// Start container
 								con.start
-							} else { // The conatiner exists
+							} else { // The container exists, then just starts it
 							// Start container
 								con.start
 							}
@@ -1039,7 +1085,10 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 
 				// Start the machine
 				DockerMachineManager.startCmd(runtime, compute.name)
-
+				
+				// Regenerate Cert when IP addresses change
+				DockerMachineManager.regenerateCert(runtime, compute.name)
+				
 				// Set state
 				compute.state = ComputeStatus.ACTIVE
 
@@ -1772,15 +1821,13 @@ class ExecutableMachine_OpenStack extends Machine_OpenStackImpl {
 				sb.append(" --openstack-net-id ").append(net_id)
 			}
 			if (StringUtils.isNotBlank(sec_groups)) {
-
-				// TODO list of secure group.
 				sb.append(" --openstack-sec-groups ").append(sec_groups)
 			} else {
 				sb.append(" --openstack-sec-groups ").append("default")
 			}
 
 			// Should be fixed in the model.
-			sb.append(" --openstack-ssh-user ").append("ubuntu")
+			sb.append(" --openstack-ssh-user ").append("occiware")
 		}
 	}
 
@@ -1877,7 +1924,7 @@ class ExecutableMachine_VirtualBox extends Machine_VirtualBoxImpl {
 			if (memory > 0.0F) {
 				sb.append(" --virtualbox-memory ").append(memory)
 			} else if (memory == 0.0F) {
-				sb.append(" --virtualbox-memory ").append(1024.0)
+				sb.append(" --virtualbox-memory ").append(1024)
 			}
 			if (cores > 0) {
 				sb.append(" --virtualbox-cpu-count ").append(cores) // TODO verify is the default value is set
@@ -2070,7 +2117,7 @@ class ExecutableMachine_VMware_vSphere extends Machine_VMware_vSphereImpl {
 				sb.append(" --vmwarevsphere-pool ").append(pool)
 			}
 			if (memory > 0) {
-				sb.append(" --vmwarevsphere-memory-size ").append(memory)
+				sb.append(" --vmwarevsphere-memory-size ").append(memory.intValue)
 			}
 			if (disk_size > 0) {
 				sb.append(" --vmwarevsphere-disk-size ").append(disk_size)

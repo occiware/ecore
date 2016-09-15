@@ -69,6 +69,9 @@ import org.occiware.clouddesigner.occi.infrastructure.impl.ComputeImpl;
  *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.ContainerImpl#getCpuset <em>Cpuset</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.ContainerImpl#isPublish_all <em>Publish all</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.ContainerImpl#isRead_only <em>Read only</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.ContainerImpl#isMonitored <em>Monitored</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.ContainerImpl#getCpu_used <em>Cpu used</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.ContainerImpl#getMemory_used <em>Memory used</em>}</li>
  * </ul>
  *
  * @generated
@@ -833,6 +836,66 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 	 * @ordered
 	 */
 	protected boolean read_only = READ_ONLY_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isMonitored() <em>Monitored</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isMonitored()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean MONITORED_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isMonitored() <em>Monitored</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isMonitored()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean monitored = MONITORED_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getCpu_used() <em>Cpu used</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCpu_used()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int CPU_USED_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getCpu_used() <em>Cpu used</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCpu_used()
+	 * @generated
+	 * @ordered
+	 */
+	protected int cpu_used = CPU_USED_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getMemory_used() <em>Memory used</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMemory_used()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int MEMORY_USED_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getMemory_used() <em>Memory used</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMemory_used()
+	 * @generated
+	 * @ordered
+	 */
+	protected int memory_used = MEMORY_USED_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1656,6 +1719,69 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isMonitored() {
+		return monitored;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMonitored(boolean newMonitored) {
+		boolean oldMonitored = monitored;
+		monitored = newMonitored;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__MONITORED, oldMonitored, monitored));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getCpu_used() {
+		return cpu_used;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCpu_used(int newCpu_used) {
+		int oldCpu_used = cpu_used;
+		cpu_used = newCpu_used;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__CPU_USED, oldCpu_used, cpu_used));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getMemory_used() {
+		return memory_used;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMemory_used(int newMemory_used) {
+		int oldMemory_used = memory_used;
+		memory_used = newMemory_used;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__MEMORY_USED, oldMemory_used, memory_used));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void create() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -1801,6 +1927,12 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 				return isPublish_all();
 			case DockerPackage.CONTAINER__READ_ONLY:
 				return isRead_only();
+			case DockerPackage.CONTAINER__MONITORED:
+				return isMonitored();
+			case DockerPackage.CONTAINER__CPU_USED:
+				return getCpu_used();
+			case DockerPackage.CONTAINER__MEMORY_USED:
+				return getMemory_used();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1926,6 +2058,15 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 				return;
 			case DockerPackage.CONTAINER__READ_ONLY:
 				setRead_only((Boolean)newValue);
+				return;
+			case DockerPackage.CONTAINER__MONITORED:
+				setMonitored((Boolean)newValue);
+				return;
+			case DockerPackage.CONTAINER__CPU_USED:
+				setCpu_used((Integer)newValue);
+				return;
+			case DockerPackage.CONTAINER__MEMORY_USED:
+				setMemory_used((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -2053,6 +2194,15 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 			case DockerPackage.CONTAINER__READ_ONLY:
 				setRead_only(READ_ONLY_EDEFAULT);
 				return;
+			case DockerPackage.CONTAINER__MONITORED:
+				setMonitored(MONITORED_EDEFAULT);
+				return;
+			case DockerPackage.CONTAINER__CPU_USED:
+				setCpu_used(CPU_USED_EDEFAULT);
+				return;
+			case DockerPackage.CONTAINER__MEMORY_USED:
+				setMemory_used(MEMORY_USED_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -2141,6 +2291,12 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 				return publish_all != PUBLISH_ALL_EDEFAULT;
 			case DockerPackage.CONTAINER__READ_ONLY:
 				return read_only != READ_ONLY_EDEFAULT;
+			case DockerPackage.CONTAINER__MONITORED:
+				return monitored != MONITORED_EDEFAULT;
+			case DockerPackage.CONTAINER__CPU_USED:
+				return cpu_used != CPU_USED_EDEFAULT;
+			case DockerPackage.CONTAINER__MEMORY_USED:
+				return memory_used != MEMORY_USED_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -2261,6 +2417,12 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 		result.append(publish_all);
 		result.append(", read_only: ");
 		result.append(read_only);
+		result.append(", monitored: ");
+		result.append(monitored);
+		result.append(", cpu_used: ");
+		result.append(cpu_used);
+		result.append(", memory_used: ");
+		result.append(memory_used);
 		result.append(')');
 		return result.toString();
 	}

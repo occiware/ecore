@@ -39,13 +39,20 @@ public class DockerMachineManager {
     String _oS = DockerUtil.getOS();
     boolean _equalsIgnoreCase = _oS.equalsIgnoreCase("osx");
     if (_equalsIgnoreCase) {
-      boolean _runCommand = ProcessManager.runCommand("/usr/local/bin/docker-machine ls", runtime, true);
+      final String command = DockerMachineManager.cf.createLsCommand();
+      boolean _runCommand = ProcessManager.runCommand(command, runtime, true);
       result = _runCommand;
     } else {
       boolean _runCommand_1 = ProcessManager.runCommand("docker-machine ls", runtime, true);
       result = _runCommand_1;
     }
     return result;
+  }
+  
+  public static boolean regenerateCert(final Runtime runtime, final String machineName) {
+    final String command = DockerMachineManager.cf.createCertCommand(machineName);
+    final boolean temp = ProcessManager.runCommand(command, runtime, true);
+    return temp;
   }
   
   public static String inspectHostCmd(final Runtime runtime, final String machine) {
@@ -90,8 +97,7 @@ public class DockerMachineManager {
   
   public static String urlCmd(final Runtime runtime, final String machineName) {
     final String command = DockerMachineManager.cf.createUrlCommand(machineName);
-    String _outputCommand = ProcessManager.getOutputCommand(command, runtime);
-    final String temp = _outputCommand.replace("tcp", "https");
+    final String temp = ProcessManager.getOutputCommand(command, runtime);
     return temp;
   }
   

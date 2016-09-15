@@ -28,7 +28,6 @@ import org.occiware.clouddesigner.occi.docker.Link;
 import org.occiware.clouddesigner.occi.docker.Machine;
 import org.occiware.clouddesigner.occi.docker.connector.ComputeStateMachine;
 import org.occiware.clouddesigner.occi.docker.connector.EventCallBack;
-import org.occiware.clouddesigner.occi.docker.connector.StatsCallback;
 import org.occiware.clouddesigner.occi.docker.connector.dockerjava.DockerContainerManager;
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerObserver;
 import org.occiware.clouddesigner.occi.docker.impl.ContainerImpl;
@@ -54,8 +53,6 @@ public class ExecutableContainer extends ContainerImpl {
   
   private EventCallBack eventCallback = new EventCallBack(this);
   
-  private StatsCallback statsCallback = new StatsCallback(this);
-  
   /**
    * Docker containers have a state machine.
    */
@@ -74,17 +71,15 @@ public class ExecutableContainer extends ContainerImpl {
         try {
           boolean _equals = Objects.equal(ExecutableContainer.dockerContainerManager, null);
           if (_equals) {
-            DockerContainerManager _dockerContainerManager = new DockerContainerManager(machine, ExecutableContainer.this.eventCallback, ExecutableContainer.this.statsCallback);
+            DockerContainerManager _dockerContainerManager = new DockerContainerManager(machine, ExecutableContainer.this.eventCallback);
             ExecutableContainer.dockerContainerManager = _dockerContainerManager;
           }
-          String _name = this.compute.getName();
-          ExecutableContainer.dockerContainerManager.startContainer(machine, _name);
+          ExecutableContainer.dockerContainerManager.startContainer(machine, this.compute);
         } catch (final Throwable _t) {
           if (_t instanceof Exception) {
             final Exception e = (Exception)_t;
             ExecutableContainer.this.createContainer(machine);
-            String _name_1 = this.compute.getName();
-            ExecutableContainer.dockerContainerManager.startContainer(machine, _name_1);
+            ExecutableContainer.dockerContainerManager.startContainer(machine, this.compute);
           } else {
             throw Exceptions.sneakyThrow(_t);
           }
@@ -110,7 +105,7 @@ public class ExecutableContainer extends ContainerImpl {
           try {
             boolean _equals = Objects.equal(ExecutableContainer.dockerContainerManager, null);
             if (_equals) {
-              DockerContainerManager _dockerContainerManager = new DockerContainerManager(machine, ExecutableContainer.this.eventCallback, ExecutableContainer.this.statsCallback);
+              DockerContainerManager _dockerContainerManager = new DockerContainerManager(machine, ExecutableContainer.this.eventCallback);
               ExecutableContainer.dockerContainerManager = _dockerContainerManager;
             }
             String _name = this.compute.getName();
@@ -173,7 +168,7 @@ public class ExecutableContainer extends ContainerImpl {
     Map<DockerClient, CreateContainerResponse> result = new HashMap<DockerClient, CreateContainerResponse>();
     boolean _equals = Objects.equal(ExecutableContainer.dockerContainerManager, null);
     if (_equals) {
-      DockerContainerManager _dockerContainerManager = new DockerContainerManager(machine, this.eventCallback, this.statsCallback);
+      DockerContainerManager _dockerContainerManager = new DockerContainerManager(machine, this.eventCallback);
       ExecutableContainer.dockerContainerManager = _dockerContainerManager;
     }
     ExecutableContainer.dockerContainerManager.pullImage(machine, this.image);
@@ -187,7 +182,7 @@ public class ExecutableContainer extends ContainerImpl {
   public void createContainer(final Machine machine) {
     boolean _equals = Objects.equal(ExecutableContainer.dockerContainerManager, null);
     if (_equals) {
-      DockerContainerManager _dockerContainerManager = new DockerContainerManager(machine, this.eventCallback, this.statsCallback);
+      DockerContainerManager _dockerContainerManager = new DockerContainerManager(machine, this.eventCallback);
       ExecutableContainer.dockerContainerManager = _dockerContainerManager;
     }
     ExecutableContainer.dockerContainerManager.pullImage(machine, this.image);
@@ -197,7 +192,7 @@ public class ExecutableContainer extends ContainerImpl {
   public void removeContainer(final Machine machine) {
     boolean _equals = Objects.equal(ExecutableContainer.dockerContainerManager, null);
     if (_equals) {
-      DockerContainerManager _dockerContainerManager = new DockerContainerManager(machine, this.eventCallback, this.statsCallback);
+      DockerContainerManager _dockerContainerManager = new DockerContainerManager(machine, this.eventCallback);
       ExecutableContainer.dockerContainerManager = _dockerContainerManager;
     }
     String _name = machine.getName();

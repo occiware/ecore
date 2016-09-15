@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated at Tue Jul 05 11:09:10 CEST 2016 from platform:/resource/org.occiware.clouddesigner.occi.linkeddata/model/linkeddata.occie by org.occiware.clouddesigner.occi.gen.xml -->
+<occi:extension xmlns:occi="http://schemas.ogf.org/occi"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://schemas.ogf.org/occi occi.xsd"
+    name="linkeddata"
+    scheme="http://occiware.org/linkeddata#"
+    version="1"
+    status="stable">
+
+  <!-- Kind: LDProject -->
+  <occi:kind term="ldproject" scheme="http://occiware.org/linkeddata#" title="LDProject">
+    <occi:parent term="resource" scheme="http://schemas.ogf.org/occi/core#"/>
+    <occi:attribute name="occi.ld.project.name" use="required" type="xs:string" title=""/>
+    <occi:attribute name="occi.ld.project.published" use="optional" default="false" type="xs:boolean" title=""/>
+    <occi:attribute name="occi.ld.project.robust" use="optional" default="true" type="xs:boolean" title=""/>
+    <occi:action term="publish" scheme="http://occiware.org/linkeddata/ldproject/action#" title="">
+    </occi:action>
+    <occi:action term="unpublish" scheme="http://occiware.org/linkeddata/ldproject/action#" title="">
+    </occi:action>
+    <occi:action term="update" scheme="http://occiware.org/linkeddata/ldproject/action#" title="">
+    </occi:action>
+  </occi:kind>
+
+  <!-- Kind: LDDatabaseLink -->
+  <occi:kind term="lddatabaselink" scheme="http://occiware.org/linkeddata#" title="LDDatabaseLink">
+    <occi:parent term="link" scheme="http://schemas.ogf.org/occi/core#"/>
+    <occi:attribute name="occi.ld.dblink.database" use="required" default="datacore" type="xs:string" title=""/>
+    <occi:attribute name="occi.ld.dblink.port" use="optional" default="27017" type="xs:integer" title=""/>
+  </occi:kind>
+
+  <!-- Kind:  -->
+  <occi:kind term="ldprojectlink" scheme="http://occiware.org/linkeddata#" title="">
+    <occi:parent term="link" scheme="http://schemas.ogf.org/occi/core#"/>
+  </occi:kind>
+
+</occi:extension>

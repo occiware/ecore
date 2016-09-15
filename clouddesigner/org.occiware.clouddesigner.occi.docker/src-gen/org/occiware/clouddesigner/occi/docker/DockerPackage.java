@@ -170,6 +170,15 @@ public interface DockerPackage extends EPackage {
 	int CONTAINER__HOSTNAME = InfrastructurePackage.COMPUTE__HOSTNAME;
 
 	/**
+	 * The feature id for the '<em><b>Share</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTAINER__SHARE = InfrastructurePackage.COMPUTE__SHARE;
+
+	/**
 	 * The feature id for the '<em><b>Speed</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -195,6 +204,15 @@ public interface DockerPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONTAINER__STATE = InfrastructurePackage.COMPUTE__STATE;
+
+	/**
+	 * The feature id for the '<em><b>Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTAINER__MESSAGE = InfrastructurePackage.COMPUTE__MESSAGE;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -539,13 +557,40 @@ public interface DockerPackage extends EPackage {
 	int CONTAINER__READ_ONLY = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 37;
 
 	/**
+	 * The feature id for the '<em><b>Monitored</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTAINER__MONITORED = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 38;
+
+	/**
+	 * The feature id for the '<em><b>Cpu used</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTAINER__CPU_USED = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 39;
+
+	/**
+	 * The feature id for the '<em><b>Memory used</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTAINER__MEMORY_USED = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 40;
+
+	/**
 	 * The number of structural features of the '<em>Container</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTAINER_FEATURE_COUNT = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 38;
+	int CONTAINER_FEATURE_COUNT = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 41;
 
 	/**
 	 * The operation id for the '<em>Occi Create</em>' operation.
@@ -609,6 +654,15 @@ public interface DockerPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONTAINER___SUSPEND__SUSPENDMETHOD = InfrastructurePackage.COMPUTE___SUSPEND__SUSPENDMETHOD;
+
+	/**
+	 * The operation id for the '<em>Save</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTAINER___SAVE__SAVEMETHOD_STRING = InfrastructurePackage.COMPUTE___SAVE__SAVEMETHOD_STRING;
 
 	/**
 	 * The operation id for the '<em>Create</em>' operation.
@@ -1182,6 +1236,15 @@ public interface DockerPackage extends EPackage {
 	int MACHINE__HOSTNAME = InfrastructurePackage.COMPUTE__HOSTNAME;
 
 	/**
+	 * The feature id for the '<em><b>Share</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE__SHARE = InfrastructurePackage.COMPUTE__SHARE;
+
+	/**
 	 * The feature id for the '<em><b>Speed</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1207,6 +1270,15 @@ public interface DockerPackage extends EPackage {
 	 * @ordered
 	 */
 	int MACHINE__STATE = InfrastructurePackage.COMPUTE__STATE;
+
+	/**
+	 * The feature id for the '<em><b>Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE__MESSAGE = InfrastructurePackage.COMPUTE__MESSAGE;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1297,6 +1369,15 @@ public interface DockerPackage extends EPackage {
 	 * @ordered
 	 */
 	int MACHINE___SUSPEND__SUSPENDMETHOD = InfrastructurePackage.COMPUTE___SUSPEND__SUSPENDMETHOD;
+
+	/**
+	 * The operation id for the '<em>Save</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE___SAVE__SAVEMETHOD_STRING = InfrastructurePackage.COMPUTE___SAVE__SAVEMETHOD_STRING;
 
 	/**
 	 * The number of operations of the '<em>Machine</em>' class.
@@ -1408,6 +1489,15 @@ public interface DockerPackage extends EPackage {
 	int MACHINE_AMAZON_EC2__HOSTNAME = MACHINE__HOSTNAME;
 
 	/**
+	 * The feature id for the '<em><b>Share</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_AMAZON_EC2__SHARE = MACHINE__SHARE;
+
+	/**
 	 * The feature id for the '<em><b>Speed</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1433,6 +1523,15 @@ public interface DockerPackage extends EPackage {
 	 * @ordered
 	 */
 	int MACHINE_AMAZON_EC2__STATE = MACHINE__STATE;
+
+	/**
+	 * The feature id for the '<em><b>Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_AMAZON_EC2__MESSAGE = MACHINE__MESSAGE;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1624,6 +1723,15 @@ public interface DockerPackage extends EPackage {
 	int MACHINE_AMAZON_EC2___SUSPEND__SUSPENDMETHOD = MACHINE___SUSPEND__SUSPENDMETHOD;
 
 	/**
+	 * The operation id for the '<em>Save</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_AMAZON_EC2___SAVE__SAVEMETHOD_STRING = MACHINE___SAVE__SAVEMETHOD_STRING;
+
+	/**
 	 * The number of operations of the '<em>Machine Amazon EC2</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1733,6 +1841,15 @@ public interface DockerPackage extends EPackage {
 	int MACHINE_DIGITAL_OCEAN__HOSTNAME = MACHINE__HOSTNAME;
 
 	/**
+	 * The feature id for the '<em><b>Share</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_DIGITAL_OCEAN__SHARE = MACHINE__SHARE;
+
+	/**
 	 * The feature id for the '<em><b>Speed</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1758,6 +1875,15 @@ public interface DockerPackage extends EPackage {
 	 * @ordered
 	 */
 	int MACHINE_DIGITAL_OCEAN__STATE = MACHINE__STATE;
+
+	/**
+	 * The feature id for the '<em><b>Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_DIGITAL_OCEAN__MESSAGE = MACHINE__MESSAGE;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1886,6 +2012,15 @@ public interface DockerPackage extends EPackage {
 	int MACHINE_DIGITAL_OCEAN___SUSPEND__SUSPENDMETHOD = MACHINE___SUSPEND__SUSPENDMETHOD;
 
 	/**
+	 * The operation id for the '<em>Save</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_DIGITAL_OCEAN___SAVE__SAVEMETHOD_STRING = MACHINE___SAVE__SAVEMETHOD_STRING;
+
+	/**
 	 * The number of operations of the '<em>Machine Digital Ocean</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1995,6 +2130,15 @@ public interface DockerPackage extends EPackage {
 	int MACHINE_GOOGLE_COMPUTE_ENGINE__HOSTNAME = MACHINE__HOSTNAME;
 
 	/**
+	 * The feature id for the '<em><b>Share</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GOOGLE_COMPUTE_ENGINE__SHARE = MACHINE__SHARE;
+
+	/**
 	 * The feature id for the '<em><b>Speed</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2020,6 +2164,15 @@ public interface DockerPackage extends EPackage {
 	 * @ordered
 	 */
 	int MACHINE_GOOGLE_COMPUTE_ENGINE__STATE = MACHINE__STATE;
+
+	/**
+	 * The feature id for the '<em><b>Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GOOGLE_COMPUTE_ENGINE__MESSAGE = MACHINE__MESSAGE;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2157,6 +2310,15 @@ public interface DockerPackage extends EPackage {
 	int MACHINE_GOOGLE_COMPUTE_ENGINE___SUSPEND__SUSPENDMETHOD = MACHINE___SUSPEND__SUSPENDMETHOD;
 
 	/**
+	 * The operation id for the '<em>Save</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GOOGLE_COMPUTE_ENGINE___SAVE__SAVEMETHOD_STRING = MACHINE___SAVE__SAVEMETHOD_STRING;
+
+	/**
 	 * The number of operations of the '<em>Machine Google Compute Engine</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2266,6 +2428,15 @@ public interface DockerPackage extends EPackage {
 	int MACHINE_IBM_SOFT_LAYER__HOSTNAME = MACHINE__HOSTNAME;
 
 	/**
+	 * The feature id for the '<em><b>Share</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_IBM_SOFT_LAYER__SHARE = MACHINE__SHARE;
+
+	/**
 	 * The feature id for the '<em><b>Speed</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2291,6 +2462,15 @@ public interface DockerPackage extends EPackage {
 	 * @ordered
 	 */
 	int MACHINE_IBM_SOFT_LAYER__STATE = MACHINE__STATE;
+
+	/**
+	 * The feature id for the '<em><b>Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_IBM_SOFT_LAYER__MESSAGE = MACHINE__MESSAGE;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2482,6 +2662,15 @@ public interface DockerPackage extends EPackage {
 	int MACHINE_IBM_SOFT_LAYER___SUSPEND__SUSPENDMETHOD = MACHINE___SUSPEND__SUSPENDMETHOD;
 
 	/**
+	 * The operation id for the '<em>Save</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_IBM_SOFT_LAYER___SAVE__SAVEMETHOD_STRING = MACHINE___SAVE__SAVEMETHOD_STRING;
+
+	/**
 	 * The number of operations of the '<em>Machine IBM Soft Layer</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2591,6 +2780,15 @@ public interface DockerPackage extends EPackage {
 	int MACHINE_MICROSOFT_AZURE__HOSTNAME = MACHINE__HOSTNAME;
 
 	/**
+	 * The feature id for the '<em><b>Share</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_MICROSOFT_AZURE__SHARE = MACHINE__SHARE;
+
+	/**
 	 * The feature id for the '<em><b>Speed</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2616,6 +2814,15 @@ public interface DockerPackage extends EPackage {
 	 * @ordered
 	 */
 	int MACHINE_MICROSOFT_AZURE__STATE = MACHINE__STATE;
+
+	/**
+	 * The feature id for the '<em><b>Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_MICROSOFT_AZURE__MESSAGE = MACHINE__MESSAGE;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2724,6 +2931,15 @@ public interface DockerPackage extends EPackage {
 	 * @ordered
 	 */
 	int MACHINE_MICROSOFT_AZURE___SUSPEND__SUSPENDMETHOD = MACHINE___SUSPEND__SUSPENDMETHOD;
+
+	/**
+	 * The operation id for the '<em>Save</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_MICROSOFT_AZURE___SAVE__SAVEMETHOD_STRING = MACHINE___SAVE__SAVEMETHOD_STRING;
 
 	/**
 	 * The number of operations of the '<em>Machine Microsoft Azure</em>' class.
@@ -2835,6 +3051,15 @@ public interface DockerPackage extends EPackage {
 	int MACHINE_MICROSOFT_HYPER_V__HOSTNAME = MACHINE__HOSTNAME;
 
 	/**
+	 * The feature id for the '<em><b>Share</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_MICROSOFT_HYPER_V__SHARE = MACHINE__SHARE;
+
+	/**
 	 * The feature id for the '<em><b>Speed</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2860,6 +3085,15 @@ public interface DockerPackage extends EPackage {
 	 * @ordered
 	 */
 	int MACHINE_MICROSOFT_HYPER_V__STATE = MACHINE__STATE;
+
+	/**
+	 * The feature id for the '<em><b>Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_MICROSOFT_HYPER_V__MESSAGE = MACHINE__MESSAGE;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2988,6 +3222,15 @@ public interface DockerPackage extends EPackage {
 	int MACHINE_MICROSOFT_HYPER_V___SUSPEND__SUSPENDMETHOD = MACHINE___SUSPEND__SUSPENDMETHOD;
 
 	/**
+	 * The operation id for the '<em>Save</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_MICROSOFT_HYPER_V___SAVE__SAVEMETHOD_STRING = MACHINE___SAVE__SAVEMETHOD_STRING;
+
+	/**
 	 * The number of operations of the '<em>Machine Microsoft Hyper V</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3097,6 +3340,15 @@ public interface DockerPackage extends EPackage {
 	int MACHINE_OPEN_STACK__HOSTNAME = MACHINE__HOSTNAME;
 
 	/**
+	 * The feature id for the '<em><b>Share</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_OPEN_STACK__SHARE = MACHINE__SHARE;
+
+	/**
 	 * The feature id for the '<em><b>Speed</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3122,6 +3374,15 @@ public interface DockerPackage extends EPackage {
 	 * @ordered
 	 */
 	int MACHINE_OPEN_STACK__STATE = MACHINE__STATE;
+
+	/**
+	 * The feature id for the '<em><b>Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_OPEN_STACK__MESSAGE = MACHINE__MESSAGE;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3322,6 +3583,15 @@ public interface DockerPackage extends EPackage {
 	int MACHINE_OPEN_STACK___SUSPEND__SUSPENDMETHOD = MACHINE___SUSPEND__SUSPENDMETHOD;
 
 	/**
+	 * The operation id for the '<em>Save</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_OPEN_STACK___SAVE__SAVEMETHOD_STRING = MACHINE___SAVE__SAVEMETHOD_STRING;
+
+	/**
 	 * The number of operations of the '<em>Machine Open Stack</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3431,6 +3701,15 @@ public interface DockerPackage extends EPackage {
 	int MACHINE_RACKSPACE__HOSTNAME = MACHINE__HOSTNAME;
 
 	/**
+	 * The feature id for the '<em><b>Share</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_RACKSPACE__SHARE = MACHINE__SHARE;
+
+	/**
 	 * The feature id for the '<em><b>Speed</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3456,6 +3735,15 @@ public interface DockerPackage extends EPackage {
 	 * @ordered
 	 */
 	int MACHINE_RACKSPACE__STATE = MACHINE__STATE;
+
+	/**
+	 * The feature id for the '<em><b>Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_RACKSPACE__MESSAGE = MACHINE__MESSAGE;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3620,6 +3908,15 @@ public interface DockerPackage extends EPackage {
 	int MACHINE_RACKSPACE___SUSPEND__SUSPENDMETHOD = MACHINE___SUSPEND__SUSPENDMETHOD;
 
 	/**
+	 * The operation id for the '<em>Save</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_RACKSPACE___SAVE__SAVEMETHOD_STRING = MACHINE___SAVE__SAVEMETHOD_STRING;
+
+	/**
 	 * The number of operations of the '<em>Machine Rackspace</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3729,6 +4026,15 @@ public interface DockerPackage extends EPackage {
 	int MACHINE_VIRTUAL_BOX__HOSTNAME = MACHINE__HOSTNAME;
 
 	/**
+	 * The feature id for the '<em><b>Share</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VIRTUAL_BOX__SHARE = MACHINE__SHARE;
+
+	/**
 	 * The feature id for the '<em><b>Speed</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3754,6 +4060,15 @@ public interface DockerPackage extends EPackage {
 	 * @ordered
 	 */
 	int MACHINE_VIRTUAL_BOX__STATE = MACHINE__STATE;
+
+	/**
+	 * The feature id for the '<em><b>Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VIRTUAL_BOX__MESSAGE = MACHINE__MESSAGE;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3862,6 +4177,15 @@ public interface DockerPackage extends EPackage {
 	 * @ordered
 	 */
 	int MACHINE_VIRTUAL_BOX___SUSPEND__SUSPENDMETHOD = MACHINE___SUSPEND__SUSPENDMETHOD;
+
+	/**
+	 * The operation id for the '<em>Save</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VIRTUAL_BOX___SAVE__SAVEMETHOD_STRING = MACHINE___SAVE__SAVEMETHOD_STRING;
 
 	/**
 	 * The number of operations of the '<em>Machine Virtual Box</em>' class.
@@ -3973,6 +4297,15 @@ public interface DockerPackage extends EPackage {
 	int MACHINE_VMWARE_FUSION__HOSTNAME = MACHINE__HOSTNAME;
 
 	/**
+	 * The feature id for the '<em><b>Share</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_FUSION__SHARE = MACHINE__SHARE;
+
+	/**
 	 * The feature id for the '<em><b>Speed</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3998,6 +4331,15 @@ public interface DockerPackage extends EPackage {
 	 * @ordered
 	 */
 	int MACHINE_VMWARE_FUSION__STATE = MACHINE__STATE;
+
+	/**
+	 * The feature id for the '<em><b>Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_FUSION__MESSAGE = MACHINE__MESSAGE;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -4117,6 +4459,15 @@ public interface DockerPackage extends EPackage {
 	int MACHINE_VMWARE_FUSION___SUSPEND__SUSPENDMETHOD = MACHINE___SUSPEND__SUSPENDMETHOD;
 
 	/**
+	 * The operation id for the '<em>Save</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_FUSION___SAVE__SAVEMETHOD_STRING = MACHINE___SAVE__SAVEMETHOD_STRING;
+
+	/**
 	 * The number of operations of the '<em>Machine VMware Fusion</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4226,6 +4577,15 @@ public interface DockerPackage extends EPackage {
 	int MACHINE_VMWARE_VCLOUD_AIR__HOSTNAME = MACHINE__HOSTNAME;
 
 	/**
+	 * The feature id for the '<em><b>Share</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_VCLOUD_AIR__SHARE = MACHINE__SHARE;
+
+	/**
 	 * The feature id for the '<em><b>Speed</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4251,6 +4611,15 @@ public interface DockerPackage extends EPackage {
 	 * @ordered
 	 */
 	int MACHINE_VMWARE_VCLOUD_AIR__STATE = MACHINE__STATE;
+
+	/**
+	 * The feature id for the '<em><b>Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_VCLOUD_AIR__MESSAGE = MACHINE__MESSAGE;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -4478,6 +4847,15 @@ public interface DockerPackage extends EPackage {
 	int MACHINE_VMWARE_VCLOUD_AIR___SUSPEND__SUSPENDMETHOD = MACHINE___SUSPEND__SUSPENDMETHOD;
 
 	/**
+	 * The operation id for the '<em>Save</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_VCLOUD_AIR___SAVE__SAVEMETHOD_STRING = MACHINE___SAVE__SAVEMETHOD_STRING;
+
+	/**
 	 * The number of operations of the '<em>Machine VMware vCloud Air</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4587,6 +4965,15 @@ public interface DockerPackage extends EPackage {
 	int MACHINE_VMWARE_VSPHERE__HOSTNAME = MACHINE__HOSTNAME;
 
 	/**
+	 * The feature id for the '<em><b>Share</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_VSPHERE__SHARE = MACHINE__SHARE;
+
+	/**
 	 * The feature id for the '<em><b>Speed</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4612,6 +4999,15 @@ public interface DockerPackage extends EPackage {
 	 * @ordered
 	 */
 	int MACHINE_VMWARE_VSPHERE__STATE = MACHINE__STATE;
+
+	/**
+	 * The feature id for the '<em><b>Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_VSPHERE__MESSAGE = MACHINE__MESSAGE;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -4810,6 +5206,15 @@ public interface DockerPackage extends EPackage {
 	 * @ordered
 	 */
 	int MACHINE_VMWARE_VSPHERE___SUSPEND__SUSPENDMETHOD = MACHINE___SUSPEND__SUSPENDMETHOD;
+
+	/**
+	 * The operation id for the '<em>Save</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_VSPHERE___SAVE__SAVEMETHOD_STRING = MACHINE___SAVE__SAVEMETHOD_STRING;
 
 	/**
 	 * The number of operations of the '<em>Machine VMware vSphere</em>' class.
@@ -5258,6 +5663,39 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getContainer_Read_only();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Container#isMonitored <em>Monitored</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Monitored</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Container#isMonitored()
+	 * @see #getContainer()
+	 * @generated
+	 */
+	EAttribute getContainer_Monitored();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Container#getCpu_used <em>Cpu used</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Cpu used</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Container#getCpu_used()
+	 * @see #getContainer()
+	 * @generated
+	 */
+	EAttribute getContainer_Cpu_used();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Container#getMemory_used <em>Memory used</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Memory used</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Container#getMemory_used()
+	 * @see #getContainer()
+	 * @generated
+	 */
+	EAttribute getContainer_Memory_used();
 
 	/**
 	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.docker.Container#create() <em>Create</em>}' operation.
@@ -6846,6 +7284,30 @@ public interface DockerPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CONTAINER__READ_ONLY = eINSTANCE.getContainer_Read_only();
+
+		/**
+		 * The meta object literal for the '<em><b>Monitored</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONTAINER__MONITORED = eINSTANCE.getContainer_Monitored();
+
+		/**
+		 * The meta object literal for the '<em><b>Cpu used</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONTAINER__CPU_USED = eINSTANCE.getContainer_Cpu_used();
+
+		/**
+		 * The meta object literal for the '<em><b>Memory used</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONTAINER__MEMORY_USED = eINSTANCE.getContainer_Memory_used();
 
 		/**
 		 * The meta object literal for the '<em><b>Create</b></em>' operation.

@@ -36,6 +36,9 @@
 		<module>../org.occiware.clouddesigner.occi.infrastructure</module>
 		<module>../org.occiware.clouddesigner.occi.infrastructure.connector</module>
 		<module>../org.occiware.clouddesigner.occi.infrastructure.connector.dependencies</module>
+
+		<module>../org.occiware.clouddesigner.occi.infrastructure.connector.vmware</module>
+
 		<module>../org.occiware.clouddesigner.occi.infrastructure.design</module>
 		<module>../org.occiware.clouddesigner.occi.infrastructure.edit</module>
 		<module>../org.occiware.clouddesigner.occi.infrastructure.editor</module>
@@ -95,7 +98,26 @@
 		<!-- Docker generators -->
 		<module>../org.occiware.clouddesigner.occi.docker.gen.conf</module>
 		<module>../org.occiware.clouddesigner.occi.docker.gen.conf.ui</module>
+
+		<!-- Linked Data Connector Dependencies -->
+		<module>../org.occiware.clouddesigner.occi.linkeddata.connector.dependencies</module>
+
+		<!-- Linked Data -->
+		<module>../org.occiware.clouddesigner.occi.linkeddata</module>
+		<module>../org.occiware.clouddesigner.occi.linkeddata.edit</module>
+		<module>../org.occiware.clouddesigner.occi.linkeddata.editor</module>
+		<module>../org.occiware.clouddesigner.occi.linkeddata.tests</module>
+		<module>../org.occiware.clouddesigner.occi.linkeddata.connector</module>
+		<module>../org.occiware.clouddesigner.occi.linkeddata.design</module>
 		
+        <!-- VMware -->
+        <module>../org.occiware.clouddesigner.occi.vmware</module>
+        <module>../org.occiware.clouddesigner.occi.vmware.edit</module>
+        <module>../org.occiware.clouddesigner.occi.vmware.editor</module>
+        <module>../org.occiware.clouddesigner.occi.vmware.tests</module>
+        <module>../org.occiware.clouddesigner.occi.vmware.connector</module>
+        <module>../org.occiware.clouddesigner.occi.vmware.design</module>
+        
 		<!-- OCCI Xtext -->
 		<module>../org.occiware.clouddesigner.occi.xtext</module>
 		<!--<module>../org.occiware.clouddesigner.occi.xtext.tests</module>-->

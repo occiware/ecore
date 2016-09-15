@@ -46,7 +46,7 @@ class DockerObserver {
 					var newMachine = notification.notifier as Machine
 
 					// Name Changes
-					if (!cpMachine.name.equals(newMachine.name)) {
+					if (!cpMachine.name.equals(newMachine.name) && newMachine.state.toString.equalsIgnoreCase('active')) {
 						machine.name = notification.oldValue.toString
 
 						// Throw an exception

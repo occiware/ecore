@@ -35,11 +35,18 @@ class DockerMachineManager {
 	def static boolean listMachinesCmd(Runtime runtime) {
 		var boolean result = false 
 		if (DockerUtil.getOS.equalsIgnoreCase("osx")){
-			result = ProcessManager.runCommand("/usr/local/bin/docker-machine ls", runtime, true)
+			val String command = cf.createLsCommand()
+			result = ProcessManager.runCommand(command, runtime, true)
 		}else{
 			result = ProcessManager.runCommand("docker-machine ls", runtime, true)
 		}
 		return result
+	}
+
+	def static boolean regenerateCert(Runtime runtime, String machineName){
+		val String command = cf.createCertCommand(machineName)
+		val temp = ProcessManager.runCommand(command, runtime, true)
+		return temp
 	}
 
 	def static String inspectHostCmd(Runtime runtime, String machine) {
@@ -84,7 +91,7 @@ class DockerMachineManager {
 
 	def static urlCmd(Runtime runtime, String machineName) {
 		val String command = cf.createUrlCommand(machineName)
-		val temp = ProcessManager.getOutputCommand(command, runtime).replace("tcp", "https")
+		val temp = ProcessManager.getOutputCommand(command, runtime)
 		return temp
 	}
 	

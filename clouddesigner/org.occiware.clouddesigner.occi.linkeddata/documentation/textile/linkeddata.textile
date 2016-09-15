@@ -1,0 +1,58 @@
+h1. 
+
+| *Name* | linkeddata |
+| *Scheme* | http://occiware.org/linkeddata# |
+
+Imported OCCI Extensions:
+
+| *Name* | *Scheme* |
+| <a href="core.textile">core</a> | http://schemas.ogf.org/occi/core# |
+| <a href="infrastructure.textile">infrastructure</a> | http://schemas.ogf.org/occi/infrastructure# |
+| <a href="platform.textile">platform</a> | http://schemas.ogf.org/occi/platform# |
+
+h1. Kinds
+
+h2. Kind ldproject
+
+| *Term* | ldproject |
+| *Scheme* | http://occiware.org/linkeddata# |
+| *Title* | LDProject |
+| *Parent* | <a href="core.textile#kind-resource">http://schemas.ogf.org/occi/core#resource</a> |
+
+Attributes of ldproject are:
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.ld.project.name | <a href="core.textile#datatype-string">String</a> | true | true |  |  |
+| occi.ld.project.published | <a href="core.textile#datatype-boolean">Boolean</a> | false | true | false |  |
+| occi.ld.project.robust | <a href="core.textile#datatype-boolean">Boolean</a> | false | true | true |  |
+
+Actions of ldproject are:
+
+| *Term* | *Scheme* | *Attributes* | *Title* |
+| publish | http://occiware.org/linkeddata/ldproject/action# |  |  |
+| unpublish | http://occiware.org/linkeddata/ldproject/action# |  |  |
+| update | http://occiware.org/linkeddata/ldproject/action# |  |  |
+
+
+h2. Kind lddatabaselink
+
+| *Term* | lddatabaselink |
+| *Scheme* | http://occiware.org/linkeddata# |
+| *Title* | LDDatabaseLink |
+| *Parent* | <a href="core.textile#kind-link">http://schemas.ogf.org/occi/core#link</a> |
+
+Attributes of lddatabaselink are:
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.ld.dblink.database | <a href="core.textile#datatype-string">String</a> | true | true | datacore |  |
+| occi.ld.dblink.port | <a href="core.textile#datatype-number">Number</a> | false | true | 27017 |  |
+
+
+h2. Kind ldprojectlink
+
+| *Term* | ldprojectlink |
+| *Scheme* | http://occiware.org/linkeddata# |
+| *Title* |  |
+| *Parent* | <a href="core.textile#kind-link">http://schemas.ogf.org/occi/core#link</a> |
+
+Generated at Thu Jun 09 10:28:00 CEST 2016 from platform:/resource/org.occiware.clouddesigner.occi.linkeddata/model/linkeddata.occie by org.occiware.clouddesigner.occi.gen.doc

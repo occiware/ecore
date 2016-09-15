@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:p="http://www.springframework.org/schema/p"
+      xmlns:context="http://www.springframework.org/schema/context"
+      xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+      xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+      xmlns:jaxrsc="http://cxf.apache.org/jaxrs-client"
+      xmlns:cxf="http://cxf.apache.org/core"
+      xmlns:http-conf="http://cxf.apache.org/transports/http/configuration"
+      xmlns:http-sec="http://cxf.apache.org/configuration/security"
+      xmlns:httpj="http://cxf.apache.org/transports/http-jetty/configuration"
+		xmlns:security="http://www.springframework.org/schema/security"
+		xmlns:oauth="http://www.springframework.org/schema/security/oauth2"
+      xsi:schemaLocation=
+      "http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+      http://www.springframework.org/schema/context
+      http://www.springframework.org/schema/context/spring-context-3.2.xsd
+      http://www.springframework.org/schema/data/mongo
+      http://www.springframework.org/schema/data/mongo/spring-mongo-1.5.xsd
+      http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd
+      http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd
+      http://cxf.apache.org/jaxrs-client http://cxf.apache.org/schemas/jaxrs-client.xsd
+      http://cxf.apache.org/transports/http/configuration http://cxf.apache.org/schemas/configuration/http-conf.xsd
+      http://cxf.apache.org/configuration/security http://cxf.apache.org/schemas/configuration/security.xsd
+      http://cxf.apache.org/transports/http-jetty/configuration http://cxf.apache.org/schemas/configuration/http-jetty.xsd
+      http://www.springframework.org/schema/security
+      http://www.springframework.org/schema/security/spring-security.xsd
+      http://www.springframework.org/schema/security/oauth2
+      http://www.springframework.org/schema/security/spring-security-oauth2-1.0.xsd">
+
+   <!-- overriding some properties (BEFORE import to take precedence over imported properties) -->
+   <context:property-placeholder location="classpath:oasis-datacore-rest-client-custom.properties"
+      order="-2" ignore-unresolvable="true"/><!-- so defaults to importing PropertyPlaceholder/*Resolver -->
+   
+   <!-- because when started as an eclipse plugin, is not instanciated because -common jar is not scanned -->
+   <bean name="DCRequestContextProviderFactory" class="org.oasis.datacore.common.context.DCRequestContextProviderFactory"/>
+   
+   <import resource="classpath:oasis-datacore-rest-client-context.xml" />
+   
+   
+   <!-- CLIENT OVERRIDES -->
+   <http-conf:conduit name="*.http-conduit">
+      <!-- ONLY IN DEV to solve IOException: HTTPS hostname wrong:  should be <data.ozwillo-dev.eu> -->
+      <http-conf:tlsClientParameters disableCNCheck="true" />
+   </http-conf:conduit>
+   
+</beans>

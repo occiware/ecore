@@ -1,0 +1,333 @@
+h1. 
+
+| *Name* | infrastructure |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure# |
+
+Imported OCCI Extensions:
+
+| *Name* | *Scheme* |
+| <a href="core.textile">core</a> | http://schemas.ogf.org/occi/core# |
+
+h1. Kinds
+
+h2. Kind network
+
+| *Term* | network |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure# |
+| *Title* | Network Resource |
+| *Parent* | <a href="core.textile#kind-resource">http://schemas.ogf.org/occi/core#resource</a> |
+
+Attributes of network are:
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.network.vlan | <a href="infrastructure.textile#datatype-vlan">Vlan</a> | false | true |  | 802.1q VLAN Identifier (e.g., 343) |
+| occi.network.label | <a href="infrastructure.textile#datatype-token">Token</a> | false | true |  | Tag based VLANs (e.g., external-dmz) |
+| occi.network.state | <a href="infrastructure.textile#enum-networkstatus">NetworkStatus</a> | true | false | inactive | Current state of the instance |
+| occi.network.state.message | <a href="core.textile#datatype-string">String</a> | false | false |  | Human-readable explanation of the current instance state |
+
+Actions of network are:
+
+| *Term* | *Scheme* | *Attributes* | *Title* |
+| up | http://schemas.ogf.org/occi/infrastructure/network/action# |  |  |
+| down | http://schemas.ogf.org/occi/infrastructure/network/action# |  |  |
+
+
+h2. Kind compute
+
+| *Term* | compute |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure# |
+| *Title* | Compute Resource |
+| *Parent* | <a href="core.textile#kind-resource">http://schemas.ogf.org/occi/core#resource</a> |
+
+Attributes of compute are:
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.compute.architecture | <a href="infrastructure.textile#enum-architecture">Architecture</a> | false | true |  | CPU Architecture of the instance |
+| occi.compute.cores | <a href="infrastructure.textile#datatype-core">Core</a> | false | true |  | Number of CPU cores assigned to the instance |
+| occi.compute.hostname | <a href="core.textile#datatype-string">String</a> | false | true |  | Fully Qualified DNS hostname for the instance |
+| occi.compute.share | <a href="infrastructure.textile#datatype-share">Share</a> | false | true |  | Relative number of CPU shares for the instance |
+| occi.compute.speed | <a href="infrastructure.textile#datatype-ghz">GHz</a> | false | true |  | CPU Clock frequency (speed) in gigahertz |
+| occi.compute.memory | <a href="infrastructure.textile#datatype-gib">GiB</a> | false | true |  | Maximum RAM in gigabytes allocated to the instance |
+| occi.compute.state | <a href="infrastructure.textile#enum-computestatus">ComputeStatus</a> | true | false | inactive | Current state of the instance |
+| occi.compute.state.message | <a href="core.textile#datatype-string">String</a> | false | false |  | Human-readable explanation of the current instance state |
+
+Actions of compute are:
+
+| *Term* | *Scheme* | *Attributes* | *Title* |
+| start | http://schemas.ogf.org/occi/infrastructure/compute/action# |  | Start the system |
+| stop | http://schemas.ogf.org/occi/infrastructure/compute/action# | method=<a href="infrastructure.textile#enum-stopmethod">StopMethod</a> | Stop the system (graceful, acpioff or poweroff) |
+| restart | http://schemas.ogf.org/occi/infrastructure/compute/action# | method=<a href="infrastructure.textile#enum-restartmethod">RestartMethod</a> | Restart the system (graceful, warm or cold) |
+| suspend | http://schemas.ogf.org/occi/infrastructure/compute/action# | method=<a href="infrastructure.textile#enum-suspendmethod">SuspendMethod</a> | Suspend the system (hibernate or in RAM) |
+| save | http://schemas.ogf.org/occi/infrastructure/compute/action# | method=<a href="infrastructure.textile#enum-savemethod">SaveMethod</a>, name=<a href="core.textile#datatype-string">String</a> | Save the system (hot, deferred) |
+
+
+h2. Kind storage
+
+| *Term* | storage |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure# |
+| *Title* | Storage Resource |
+| *Parent* | <a href="core.textile#kind-resource">http://schemas.ogf.org/occi/core#resource</a> |
+
+Attributes of storage are:
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.storage.size | <a href="infrastructure.textile#datatype-gib">GiB</a> | true | true |  | Storage size of the instance in gigabytes |
+| occi.storage.state | <a href="infrastructure.textile#enum-storagestatus">StorageStatus</a> | true | false |  | Current status of the instance |
+| occi.storage.state.message | <a href="core.textile#datatype-string">String</a> | false | false |  | Human-readable explanation of the current instance state |
+
+Actions of storage are:
+
+| *Term* | *Scheme* | *Attributes* | *Title* |
+| online | http://schemas.ogf.org/occi/infrastructure/storage/action# |  | Set storage online |
+| offline | http://schemas.ogf.org/occi/infrastructure/storage/action# |  | Set storage offline |
+
+
+h2. Kind storagelink
+
+| *Term* | storagelink |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure# |
+| *Title* | StorageLink Link |
+| *Parent* | <a href="core.textile#kind-link">http://schemas.ogf.org/occi/core#link</a> |
+
+Attributes of storagelink are:
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.storagelink.deviceid | <a href="core.textile#datatype-string">String</a> | true | true |  | Device identifier as defined by the OCCI service provider |
+| occi.storagelink.mountpoint | <a href="core.textile#datatype-string">String</a> | false | true |  | Point to where the storage is mounted in the guest OS |
+| occi.storagelink.state | <a href="infrastructure.textile#enum-storagelinkstatus">StorageLinkStatus</a> | true | false |  | Current status of the instance |
+| occi.storagelink.state.message | <a href="core.textile#datatype-string">String</a> | false | false |  | Human-readable explanation of the current instance state |
+
+
+h2. Kind networkinterface
+
+| *Term* | networkinterface |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure# |
+| *Title* | NetworkInterface Link |
+| *Parent* | <a href="core.textile#kind-link">http://schemas.ogf.org/occi/core#link</a> |
+
+Attributes of networkinterface are:
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.networkinterface.interface | <a href="core.textile#datatype-string">String</a> | true | false |  | Identifier that relates the link to the link's device interface |
+| occi.networkinterface.mac | <a href="infrastructure.textile#datatype-mac">Mac</a> | true | true |  | MAC address associated with the link's device interface |
+| occi.networkinterface.state | <a href="infrastructure.textile#enum-networkinterfacestatus">NetworkInterfaceStatus</a> | true | false |  | Current status of the instance |
+| occi.networkinterface.state.message | <a href="core.textile#datatype-string">String</a> | false | false |  | Human-readable explanation of the current instance state |
+
+
+
+h1. Mixins
+
+h2. Mixin ipnetwork
+
+| *Term* | ipnetwork |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure/network# |
+| *Title* | An IP Networking Mixin |
+Applies to:
+* <a href="infrastructure.textile#kind-network">http://schemas.ogf.org/occi/infrastructure#network</a>
+
+Attributes of ipnetwork are:
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.network.address | <a href="infrastructure.textile#datatype-ipaddressrange">IpAddressRange</a> | false | true |  | Internet Protocol (IP) network address (e.g., 192.168.0.1/24, fc00::/7) |
+| occi.network.gateway | <a href="infrastructure.textile#datatype-ipaddress">IpAddress</a> | false | true |  | Internet Protocol (IP) network address (e.g., 192.168.0.1, fc00::) |
+| occi.network.allocation | <a href="infrastructure.textile#enum-allocation">Allocation</a> | false | true |  | Address allocation mechanism: dynamic e.g., uses the dynamic host configuration protocol, static e.g., uses user supplied static network configurations |
+
+
+h2. Mixin ipnetworkinterface
+
+| *Term* | ipnetworkinterface |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure/networkinterface# |
+| *Title* | IP NetworkInterface Mixin |
+Applies to:
+* <a href="infrastructure.textile#kind-networkinterface">http://schemas.ogf.org/occi/infrastructure#networkinterface</a>
+
+Attributes of ipnetworkinterface are:
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.networkinterface.address | <a href="infrastructure.textile#datatype-ipaddress">IpAddress</a> | true | true |  | Internet Protocol (IP) network address (e.g., 192.168.0.1/24, fc00::/7) of the link |
+| occi.networkinterface.gateway | <a href="infrastructure.textile#datatype-ipaddress">IpAddress</a> | false | true |  | Internet Protocol (IP) network address (e.g., 192.168.0.1/24, fc00::/7) |
+| occi.networkinterface.allocation | <a href="infrastructure.textile#enum-allocation">Allocation</a> | true | true |  | Address mechanism: dynamic e.g., uses the dynamic host configuration protocol, static e.g., uses user supplied static network configurations |
+
+
+h2. Mixin os_tpl
+
+| *Term* | os_tpl |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure# |
+| *Title* | OS Template |
+Applies to:
+* <a href="infrastructure.textile#kind-compute">http://schemas.ogf.org/occi/infrastructure#compute</a>
+
+h2. Mixin resource_tpl
+
+| *Term* | resource_tpl |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure# |
+| *Title* | Resource template |
+Applies to:
+* <a href="core.textile#kind-resource">http://schemas.ogf.org/occi/core#resource</a>
+
+h2. Mixin ssh_key
+
+| *Term* | ssh_key |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure/credentials# |
+| *Title* | Credentials Mixin |
+Applies to:
+* <a href="infrastructure.textile#kind-compute">http://schemas.ogf.org/occi/infrastructure#compute</a>
+
+Attributes of ssh_key are:
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.credentials.ssh.publickey | <a href="core.textile#datatype-string">String</a> | true | true |  | The contents of the public key file to be injected into the Compute Resource |
+
+
+h2. Mixin user_data
+
+| *Term* | user_data |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure/compute# |
+| *Title* | Contextualization Mixin |
+Applies to:
+* <a href="infrastructure.textile#kind-compute">http://schemas.ogf.org/occi/infrastructure#compute</a>
+
+Attributes of user_data are:
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.compute.userdata | <a href="core.textile#datatype-string">String</a> | true | false |  | Contextualization data (e.g., script, executable) that the client supplies once and only once. It cannot be updated |
+
+
+
+h1. Types
+
+h2. Enum SuspendMethod
+
+:
+* hibernate  
+* suspend  
+
+h2. Datatype Vlan
+
+.
+
+Base type: int
+* minInclusive = 0
+* maxInclusive = 4095
+
+h2. Datatype Token
+
+.
+
+Base type: java.lang.String
+
+h2. Enum NetworkStatus
+
+:
+* active  
+* inactive  
+* error  
+
+h2. Enum ComputeStatus
+
+:
+* active  
+* inactive  
+* suspended  
+* error  
+
+h2. Enum NetworkInterfaceStatus
+
+:
+* active  
+* inactive  
+* error  
+
+h2. Enum Architecture
+
+:
+* x86  
+* x64  
+
+h2. Enum StopMethod
+
+:
+* graceful  
+* acpioff  
+* poweroff  
+
+h2. Enum RestartMethod
+
+:
+* graceful  
+* warm  
+* cold  
+
+h2. Datatype IpAddress
+
+.
+
+Base type: java.lang.String
+
+h2. Enum Allocation
+
+:
+* dynamic  
+* static  
+
+h2. Enum StorageStatus
+
+:
+* online  
+* offline  
+* error  
+
+h2. Enum StorageLinkStatus
+
+:
+* active  
+* inactive  
+* error  
+
+h2. Datatype Core
+
+.
+
+Base type: int
+* minExclusive = 0
+
+h2. Datatype GHz
+
+.
+
+Base type: float
+* minExclusive = 0
+
+h2. Datatype GiB
+
+.
+
+Base type: float
+* minExclusive = 0
+
+h2. Datatype IpAddressRange
+
+.
+
+Base type: java.lang.String
+
+h2. Datatype Mac
+
+.
+
+Base type: java.lang.String
+
+h2. Datatype Share
+
+.
+
+Base type: int
+* minInclusive = 0
+
+h2. Enum SaveMethod
+
+:
+* hot  
+* deferred  
+
+Generated at Fri Sep 09 14:20:17 CEST 2016 from http://schemas.ogf.org/occi/infrastructure by org.occiware.clouddesigner.occi.gen.doc

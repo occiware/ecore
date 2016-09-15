@@ -1,0 +1,1270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="vmware" nsURI="http://occiware.org/occi/vmware/ecore" nsPrefix="vmware">
+  <eClassifiers xsi:type="ecore:EDataType" name="LongNumber" instanceClassName="long">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A long number"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="SharesLevel">
+    <eLiterals name="custom"/>
+    <eLiterals name="high" value="1"/>
+    <eLiterals name="low" value="2"/>
+    <eLiterals name="normal" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="DvsNicTeamingPolicy">
+    <eLiterals name="failoverexplicit"/>
+    <eLiterals name="loadbalanceip" value="1"/>
+    <eLiterals name="loadbalanceloadbased" value="2"/>
+    <eLiterals name="loadbalancesrcid" value="3"/>
+    <eLiterals name="loadbalancesrcmac" value="4"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Bootdevice">
+    <eLiterals name="cdrom"/>
+    <eLiterals name="harddisk" value="1"/>
+    <eLiterals name="network" value="2"/>
+    <eLiterals name="floppy" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ResourceAllocationType">
+    <eLiterals name="cpu"/>
+    <eLiterals name="memory" value="1"/>
+    <eLiterals name="network" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ResourcePoolState">
+    <eLiterals name="undercommitted"/>
+    <eLiterals name="unknown" value="1"/>
+    <eLiterals name="inconsistent" value="2"/>
+    <eLiterals name="overcommitted" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="Datetype" instanceClassName="java.util.Date"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="PowerOffType">
+    <eLiterals name="soft"/>
+    <eLiterals name="hard" value="1"/>
+    <eLiterals name="preset" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="GuestFirmwareType">
+    <eLiterals name="bios"/>
+    <eLiterals name="efi" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="VmHtSharing">
+    <eLiterals name="any"/>
+    <eLiterals name="internal" value="1"/>
+    <eLiterals name="none" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="VmMonitorType">
+    <eLiterals name="debug"/>
+    <eLiterals name="release" value="1"/>
+    <eLiterals name="stats" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="VmPowerOffBehavior">
+    <eLiterals name="powerOff"/>
+    <eLiterals name="prompt" value="1"/>
+    <eLiterals name="revert" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="VmExecUsage">
+    <eLiterals name="hvAuto"/>
+    <eLiterals name="hvOff" value="1"/>
+    <eLiterals name="hvOn" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="VmMMUusage">
+    <eLiterals name="automatic"/>
+    <eLiterals name="off" value="1"/>
+    <eLiterals name="on" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="ShortNumber" instanceClassName="short"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="NpivWwnType">
+    <eLiterals name="external"/>
+    <eLiterals name="host" value="1"/>
+    <eLiterals name="vc" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="VmSwapPlacementType">
+    <eLiterals name="hostlocal"/>
+    <eLiterals name="inherit" value="1"/>
+    <eLiterals name="vmDirectory" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="GuestOsIdentifiers">
+    <eLiterals name="dosGuest"/>
+    <eLiterals name="win31Guest" value="1"/>
+    <eLiterals name="win95Guest" value="2"/>
+    <eLiterals name="win98Guest" value="3"/>
+    <eLiterals name="winMeGuest" value="4"/>
+    <eLiterals name="winNTGuest" value="5"/>
+    <eLiterals name="win2000ProGuest" value="6"/>
+    <eLiterals name="win2000ServGuest" value="7"/>
+    <eLiterals name="win2000AdvServGuest" value="8"/>
+    <eLiterals name="winXPHomeGuest" value="9"/>
+    <eLiterals name="winXPProGuest" value="10"/>
+    <eLiterals name="winXPPro64Guest" value="11"/>
+    <eLiterals name="winNetWebGuest" value="12"/>
+    <eLiterals name="winNetStandardGuest" value="13"/>
+    <eLiterals name="winNetEnterpriseGuest" value="14"/>
+    <eLiterals name="winNetDatacenterGuest" value="15"/>
+    <eLiterals name="winNetBusinessGuest" value="16"/>
+    <eLiterals name="winNetStandard64Guest" value="17"/>
+    <eLiterals name="winNetEnterprise64Guest" value="18"/>
+    <eLiterals name="winLonghornGuest" value="19"/>
+    <eLiterals name="winLonghorn64Guest" value="20"/>
+    <eLiterals name="winNetDatacenter64Guest" value="21"/>
+    <eLiterals name="winVistaGuest" value="22"/>
+    <eLiterals name="winVista64Guest" value="23"/>
+    <eLiterals name="windows7Guest" value="24"/>
+    <eLiterals name="windows7_64Guest" value="25"/>
+    <eLiterals name="windows7Server64Guest" value="26"/>
+    <eLiterals name="windows8Guest" value="27"/>
+    <eLiterals name="windows8_64Guest" value="28"/>
+    <eLiterals name="windows8Server64Guest" value="29"/>
+    <eLiterals name="windows9Guest" value="30"/>
+    <eLiterals name="windows9_64Guest" value="31"/>
+    <eLiterals name="windows9Server64Guest" value="32"/>
+    <eLiterals name="windowsHyperVGuest" value="33"/>
+    <eLiterals name="freebsdGuest" value="34"/>
+    <eLiterals name="freebsd64Guest" value="35"/>
+    <eLiterals name="redhatGuest" value="36"/>
+    <eLiterals name="rhel2Guest" value="37"/>
+    <eLiterals name="rhel3Guest" value="38"/>
+    <eLiterals name="rhel3_64Guest" value="39"/>
+    <eLiterals name="rhel4Guest" value="40"/>
+    <eLiterals name="rhel4_64Guest" value="41"/>
+    <eLiterals name="rhel5Guest" value="42"/>
+    <eLiterals name="rhel5_64Guest" value="43"/>
+    <eLiterals name="rhel6Guest" value="44"/>
+    <eLiterals name="rhel6_64Guest" value="45"/>
+    <eLiterals name="rhel7Guest" value="46"/>
+    <eLiterals name="rhel7_64Guest" value="47"/>
+    <eLiterals name="centosGuest" value="48"/>
+    <eLiterals name="centos64Guest" value="49"/>
+    <eLiterals name="oracleLinuxGuest" value="50"/>
+    <eLiterals name="oracleLinux64Guest" value="51"/>
+    <eLiterals name="suseGuest" value="52"/>
+    <eLiterals name="suse64Guest" value="53"/>
+    <eLiterals name="slesGuest" value="54"/>
+    <eLiterals name="sles64Guest" value="55"/>
+    <eLiterals name="sles10Guest" value="56"/>
+    <eLiterals name="sles10_64Guest" value="57"/>
+    <eLiterals name="sles11Guest" value="58"/>
+    <eLiterals name="sles11_64Guest" value="59"/>
+    <eLiterals name="sles12Guest" value="60"/>
+    <eLiterals name="sles12_64Guest" value="61"/>
+    <eLiterals name="nld9Guest" value="62"/>
+    <eLiterals name="oesGuest" value="63"/>
+    <eLiterals name="sjdsGuest" value="64"/>
+    <eLiterals name="mandrakeGuest" value="65"/>
+    <eLiterals name="mandrivaGuest" value="66"/>
+    <eLiterals name="mandriva64Guest" value="67"/>
+    <eLiterals name="turboLinuxGuest" value="68"/>
+    <eLiterals name="turboLinux64Guest" value="69"/>
+    <eLiterals name="ubuntuGuest" value="70"/>
+    <eLiterals name="ubuntu64Guest" value="71"/>
+    <eLiterals name="debian4Guest" value="72"/>
+    <eLiterals name="debian4_64Guest" value="73"/>
+    <eLiterals name="debian5Guest" value="74"/>
+    <eLiterals name="debian5_64Guest" value="75"/>
+    <eLiterals name="debian6Guest" value="76"/>
+    <eLiterals name="debian6_64Guest" value="77"/>
+    <eLiterals name="debian7Guest" value="78"/>
+    <eLiterals name="debian7_64Guest" value="79"/>
+    <eLiterals name="debian8Guest" value="80"/>
+    <eLiterals name="debian8_64Guest" value="81"/>
+    <eLiterals name="asianux3Guest" value="82"/>
+    <eLiterals name="asianux3_64Guest" value="83"/>
+    <eLiterals name="asianux4Guest" value="84"/>
+    <eLiterals name="asianux4_64Guest" value="85"/>
+    <eLiterals name="asianux5_64Guest" value="86"/>
+    <eLiterals name="opensuseGuest" value="87"/>
+    <eLiterals name="opensuse64Guest" value="88"/>
+    <eLiterals name="fedoraGuest" value="89"/>
+    <eLiterals name="fedora64Guest" value="90"/>
+    <eLiterals name="coreos64Guest" value="91"/>
+    <eLiterals name="other24xLinuxGuest" value="92"/>
+    <eLiterals name="other26xLinuxGuest" value="93"/>
+    <eLiterals name="otherLinuxGuest" value="94"/>
+    <eLiterals name="other3xLinuxGuest" value="95"/>
+    <eLiterals name="genericLinuxGuest" value="96"/>
+    <eLiterals name="other24xLinux64Guest" value="97"/>
+    <eLiterals name="other26xLinux64Guest" value="98"/>
+    <eLiterals name="other3xLinux64Guest" value="99"/>
+    <eLiterals name="otherLinux64Guest" value="100"/>
+    <eLiterals name="solaris6Guest" value="101"/>
+    <eLiterals name="solaris7Guest" value="102"/>
+    <eLiterals name="solaris8Guest" value="103"/>
+    <eLiterals name="solaris9Guest" value="104"/>
+    <eLiterals name="solaris10Guest" value="105"/>
+    <eLiterals name="solaris10_64Guest" value="106"/>
+    <eLiterals name="solaris11_64Guest" value="107"/>
+    <eLiterals name="os2Guest" value="108"/>
+    <eLiterals name="eComStationGuest" value="109"/>
+    <eLiterals name="eComStation2Guest" value="110"/>
+    <eLiterals name="netware4Guest" value="111"/>
+    <eLiterals name="netware5Guest" value="112"/>
+    <eLiterals name="netware6Guest" value="113"/>
+    <eLiterals name="openServer5Guest" value="114"/>
+    <eLiterals name="openServer6Guest" value="115"/>
+    <eLiterals name="unixWare7Guest" value="116"/>
+    <eLiterals name="darwinGuest" value="117"/>
+    <eLiterals name="darwin64Guest" value="118"/>
+    <eLiterals name="darwin10Guest" value="119"/>
+    <eLiterals name="darwin10_64Guest" value="120"/>
+    <eLiterals name="darwin11Guest" value="121"/>
+    <eLiterals name="darwin11_64Guest" value="122"/>
+    <eLiterals name="darwin12_64Guest" value="123"/>
+    <eLiterals name="darwin13_64Guest" value="124"/>
+    <eLiterals name="darwin14_64Guest" value="125"/>
+    <eLiterals name="vmkernelGuest" value="126"/>
+    <eLiterals name="vmkernel5Guest" value="127"/>
+    <eLiterals name="vmkernel6Guest" value="128"/>
+    <eLiterals name="otherGuest" value="129"/>
+    <eLiterals name="otherGuest64" value="130"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ToolsUpgradePolicy">
+    <eLiterals name="manual"/>
+    <eLiterals name="upgradeAtPowerCycle" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="OverallStatus">
+    <eLiterals name="gray"/>
+    <eLiterals name="green" value="1"/>
+    <eLiterals name="red" value="2"/>
+    <eLiterals name="yellow" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="HostConnectionState">
+    <eLiterals name="connected"/>
+    <eLiterals name="disconnected" value="1"/>
+    <eLiterals name="notResponding" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="DiagnosticPartitionType">
+    <eLiterals name="multiHost"/>
+    <eLiterals name="singleHost" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="AutoStartWaitHeartbeatSetting">
+    <eLiterals name="yes"/>
+    <eLiterals name="no" value="1"/>
+    <eLiterals name="systemdefault" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="HostFirewallRuleDirection">
+    <eLiterals name="inbound"/>
+    <eLiterals name="outbound" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="HostNetworkProtocol">
+    <eLiterals name="tcp"/>
+    <eLiterals name="udp" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="ByteType" instanceClassName="byte"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="ClusterDASVmSettingsRestartPriority">
+    <eLiterals name="clusterRestartPriority" literal="clusterRestartPriority"/>
+    <eLiterals name="disabled" value="1"/>
+    <eLiterals name="high" value="2"/>
+    <eLiterals name="low" value="3"/>
+    <eLiterals name="medium" value="4"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ClusterDASVmSettingsIsolationResponse">
+    <eLiterals name="clusterIsolationResponse"/>
+    <eLiterals name="none" value="1"/>
+    <eLiterals name="powerOff" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="DrsBehavior">
+    <eLiterals name="fullyAutomated"/>
+    <eLiterals name="manual" value="1"/>
+    <eLiterals name="partiallyAutomated" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="DpmBehavior">
+    <eLiterals name="automated"/>
+    <eLiterals name="manual" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="DatastoreHostMountMode">
+    <eLiterals name="readOnly"/>
+    <eLiterals name="readWrite" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="NicPolicyTeamingValue">
+    <eLiterals name="loadbalance_ip"/>
+    <eLiterals name="loadbalance_srcmac" value="1"/>
+    <eLiterals name="loadbalance_srcid" value="2"/>
+    <eLiterals name="failover_explicit" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="PortGroupConnecteeType">
+    <eLiterals name="host"/>
+    <eLiterals name="systemManagement" value="1"/>
+    <eLiterals name="unknown" value="2"/>
+    <eLiterals name="virtualMachine" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="NetworkChangeOperation">
+    <eLiterals name="add"/>
+    <eLiterals name="edit" value="1"/>
+    <eLiterals name="remove" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="NetworkBootProtocolType">
+    <eLiterals name="ipv4"/>
+    <eLiterals name="ipv6" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="VmForkConfigInfoChildType">
+    <eLiterals name="none"/>
+    <eLiterals name="nonpersistent" value="1"/>
+    <eLiterals name="persistent" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="VmFaultToleranceType">
+    <eLiterals name="checkpointing"/>
+    <eLiterals name="recordReplay" value="1"/>
+    <eLiterals name="unset" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="LatencySensitivityLevel">
+    <eLiterals name="normal"/>
+    <eLiterals name="low" value="1"/>
+    <eLiterals name="medium" value="2"/>
+    <eLiterals name="high" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ClusterDasConfigInfoHBDatastoreCandidate">
+    <eLiterals name="allFeasibleDsWithUserPreference" value="1"/>
+    <eLiterals name="allFeasibleDs" value="2"/>
+    <eLiterals name="userSelectedDs" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ClusterDasConfigInfoVmMonitoringState">
+    <eLiterals name="vmAndAppMonitoring"/>
+    <eLiterals name="vmMonitoringDisabled" value="1"/>
+    <eLiterals name="vmMonitoringOnly" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ClusterDasConfigInfoServiceState">
+    <eLiterals name="enabled"/>
+    <eLiterals name="disabled" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="HostFileSystemVolumeFileType">
+    <eLiterals name="CIFS"/>
+    <eLiterals name="NFS" value="1"/>
+    <eLiterals name="NFS41" value="2"/>
+    <eLiterals name="OTHER" value="3"/>
+    <eLiterals name="VFFS" value="4"/>
+    <eLiterals name="VMFS" value="5"/>
+    <eLiterals name="vsan" value="6"/>
+    <eLiterals name="VVOL" value="7"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="DatastoreMaintenanceModeState">
+    <eLiterals name="enteringMaintenance"/>
+    <eLiterals name="inMaintenance" value="1"/>
+    <eLiterals name="normal" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="HostNasVolumeSecurityType">
+    <eLiterals name="AUTH_SYS"/>
+    <eLiterals name="SEC_KRB5" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="VirtualDeviceConnectStatus">
+    <eLiterals name="ok"/>
+    <eLiterals name="recoverableError" value="1"/>
+    <eLiterals name="unrecoverrableError" value="2"/>
+    <eLiterals name="untried" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="HostCapabilityFtUnsupportedReason">
+    <eLiterals name="cpuHvDisabled"/>
+    <eLiterals name="cpuHvUnsupported" value="1"/>
+    <eLiterals name="cpuHwmmuUnsupported" value="2"/>
+    <eLiterals name="ftNotLicensed" value="3"/>
+    <eLiterals name="haAgentIssue" value="4"/>
+    <eLiterals name="missingFTLoggingNic" value="5"/>
+    <eLiterals name="missingVMotionNic" value="6"/>
+    <eLiterals name="unsupportedProduct" value="7"/>
+    <eLiterals name="vMotionNotLicensed" value="8"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Datastore" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Resource">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title" value="Datastores are logical containers, analogous to file systems, that hide specifics of each storage device and provide a uniform model for storing virtual machine files. Datastores can also be used for storing ISO images, virtual machine templates, and floppy images."/>
+    </eAnnotations>
+    <eOperations name="enterMaintenanceMode">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="title"/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Name of the datastore, if changed and occiUpdate call, rename datastore must be called."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Cluster" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Resource">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title" value="Represents a cluster of HostSystem objects as a unified compute resource for virtual machines."/>
+    </eAnnotations>
+    <eOperations name="addAllHostSystem">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="title" value="Add all hostsystem linked to this cluster and not already added on this cluster, if hostsystem are not connectable, the host will not be added"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="applyRecommendation">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="title"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="enterMaintenanceMode">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="title"/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Datacenter" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Resource">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title" value="The interface to the common container object for hosts and virtual machines. Every host and virtual machine must be under a distinct datacenter in the inventory, and datacenters may not be nested under other datacenters."/>
+    </eAnnotations>
+    <eOperations name="powerOnMultiVMs">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="title"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="discoverAll">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="title" value="This action create or synchronize all the infrastructure elements detected on VMware in Cloud designer diagram, but does nothing on VMware. This make take some times to synchronize if there is a lot of elements"/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="defaultHardwareVersionKey"
+        eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Key for Default Hardware Version to be used on this datacenter in the format of key. Setting this field affects defaultConfigOption returned by environmentBrowser of all its children with this field unset. See ReconfigureDatacenter_Task"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Hostsystem" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.ecore#//Compute">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title"/>
+    </eAnnotations>
+    <eOperations name="disconnectHost">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="title" value="Disconnects from a host and instructs the server to stop sending heartbeats."/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="enterlLockDownMode">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="title" value="Modifies the permissions on the host, so that it will only be accessible through local console or an authorized centralized management application. Any user defined permissions found on the host are lost.Access via a VI client connected to the host is blocked. Access though other services running on the host is also blocked.If the operation is successful, adminDisabled will be set to true. This API is not supported on the host, If invoked directly on a host, a NotSupported fault will be thrown."/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="enterMaintenanceMode">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="title" value="Puts the host in maintenance mode. While this task is running and when the host is in maintenance mode, no virtual machines can be powered on and no provisioning operations can be performed on the host. Once the call completes, it is safe to turn off a host without disrupting any virtual machines"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="exitLockDownMode">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="title" value="Restores Administrator permission for the local administrative account for the host that was removed by prior call to EnterLockdownMode. If the operation is successful, adminDisabled will be set to false. This API is not supported on the host. If invoked directly on a host, a NotSupported fault will be thrown."/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="exitMaintenanceMode">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="title" value="Takes the host out of maintenance mode. This blocks if any concurrent running maintenance-only host configurations operations are being performed. For example, if VMFS volumes are being upgraded."/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="reconfigureHostForDAS">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="title" value="reconfigures the host for the VMware High Availability (HA) cluster. If the host is part of an HA cluster, this operation reconfigures the host for HA. For example, this operation may be used if a host is added to an HA-enabled cluster and the automatic HA configuration system task fails. Automatic HA configuration may fail for a variety of rea- sons. For example, the host may be configured incorrectly"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="reconnectHost">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="title" value="reconnects to a host. This method is supported only in VirtualCenter"/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="clusterSupported" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Whether or not the host supports clustering capabilities such as HA or DRS and therefore can be added to a cluster. If false, the host must be added as a standalone host.&#xA;See HostConnectInfo"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="inDasCluster" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="If the host is already being managed by a vCenter Server, this property reports true if the host is also part of a vSphere HA enabled cluster. If this is the case, remove or disconnect the host from this cluster before adding it to another vCenter Server."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="serverip" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The IP address of the VirtualCenter already managing this host, if any."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="vimAccountNameRequired"
+        eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Whether or not the host requires a vimAccountName and password to be set in the ConnectSpec. This is normally only required for VMware Server hosts. "/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="agentVmDatastoreName" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Datastore used to deploy Agent VMs on for this host."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="agentVmNetworkName" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Management network for Agent VMs."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="port" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The port number. "/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="faultToleranceEnabled"
+        eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The flag to indicate whether or not Fault Tolerance logging is enabled on this host."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hostFeatureVersionKeys"
+        eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hostFeatureVersionValues"
+        eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="vmotionEnabled" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The flag to indicate whether or not VMotion is enabled on this host. "/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="currentEVCModeKey" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The Enhanced VMotion Compatibility mode that is currently in effect for this host. If the host is in a cluster where EVC is active, this will match the cluster's EVC mode; otherwise this will be unset."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="customValues" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The customized field values. "/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="managementServerip" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="IP address of the VirtualCenter server managing this host, if any."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxEVCKey" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The most capable Enhanced VMotion Compatibility mode supported by the host hardware and software; unset if this host cannot participate in any EVC mode.&#xA;See supportedEVCMode"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="overallStatus" eType="#//OverallStatus">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="distributedCPUFairness"
+        eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The fairness of distributed CPU resource allocation on the host. "/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="distributedMemoryFairness"
+        eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The fairness of distributed memory resource allocation on the host. "/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="overallCPUUsage" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Aggregated CPU usage across all cores on the host in MHz. This is only available if the host is connected. "/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="overallMemoryUsage" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Physical memory usage on the host in MB. This is only available if the host is connected. "/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rebootRequired" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Indicates whether or not the host requires a reboot due to a configuration change."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="bootTime" eType="#//Datetype">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The time when the host was booted. "/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="connectionState" eType="#//HostConnectionState">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The host connection state. See the decription in the enums for the ConnectionState data object type. "/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="inMaintenanceMode" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The flag to indicate whether or not the host is in maintenance mode. This flag is set when the host has entered the maintenance mode. It is not set during the entering phase of maintenance mode.&#xA;See EnterMaintenanceMode_Task&#xA;See ExitMaintenanceMode_Task"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Vm" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.ecore#//Compute">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title" value="Virtual machine compute on a host system"/>
+    </eAnnotations>
+    <eOperations name="cloneVM">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="title" value="Clone a virtual machine"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="mountVmwareToolsdisk">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="title" value="Mount vmware tools iso"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="markAsTemplate">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="title" value="Mark this virtual machine as a template image"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="markAsVirtualMachine">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="title" value="Mark this template image as a virtual machine"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="registerVM">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="title" value="Register this virtual machine on vcenter"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="unregisterVM">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="title" value="Unregister this virtual machine from vcenter"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="defragmentAllDisks">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="title" value="Defragment all virtual disk on this virtual machine"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="resetLocationId">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="title" value="128-bit hash based on the virtual machine's configuration file location and the UUID of the host assigned to run the virtual machine.Normally, this property is not set by a client, allowing the Virtual Infrastructure environment to assign a location ID when the virtual machine is created. However, if the virtual machine's configuration file has been manually moved, it may be desirable to clear this property, setting it to an empty string, so the property is regenerated.Reconfigure privilege: VirtualMachine.Config.Settings"/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Display name of the virtual machine. Any % (percent) character used in this name parameter must be escaped, unless it is used to start an escape sequence.&#xA;Clients may also escape any other characters in this name parameter. &#xA;Snapshots of virtual machines that have spaces in their names and are associated with ESX 2.x servers are not supported. Therefore, if you want the option to take snapshots of this virtual machine and you are associating it with an ESX 2.x server, do not use spaces in the name.&#xA;Reconfigure privilege: VirtualMachine.Config.Rename"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceUUID" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="VirtualCenter-specific 128-bit UUID of a virtual machine, represented as a hexademical string. This identifier is used by VirtualCenter to uniquely identify all virtual machine instances, including those that may share the same SMBIOS UUID."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="template" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean"
+        defaultValueLiteral="false">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="If true, this virtual machine is set as a template machine and may be used as an image"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="vcpus" lowerBound="1" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number"
+        defaultValueLiteral="1">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Number of virtual cpus&#xA;Reconfigure privilege: VirtualMachine.Config.CpuCount "/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="coresPerSocket" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number"
+        defaultValueLiteral="1">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Number of cores per socket"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="guestState" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="if vmware tools is installed this value show the state of the operating system"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="vmwareToolsInstalled" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean"
+        defaultValueLiteral="false">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Is vmware tools installed on this virtual machine"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="vmwareToolsRunning" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean"
+        defaultValueLiteral="false">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="is vmware tools running on this virtual machine"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="guestFullName" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="This is the full name of the guest operating system for the virtual machine. For example: Windows 2000 Professional."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cpuhotAddEnabled" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean"
+        defaultValueLiteral="true">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Whether virtual processors can be added while this virtual machine is running.&#xA;Since vSphere API 4.0"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cpuHotRemoveEnabled" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean"
+        defaultValueLiteral="true">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Whether virtual processors can be removed while this virtual machine is running.&#xA;Since vSphere API 4.0"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="annotation" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="User-provided description of the virtual machine. Because this property is optional in the virtual machine configuration, it is necessary to pass an explicit empty string in a ConfigSpec object to remove an annotation that is already present in the VirtualMachineConfigInfo for a virtual machine.&#xA;Reconfigure privilege: VirtualMachine.Config.Rename "/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="vmwarePowerState" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="overallStatus" eType="#//OverallStatus">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Folderlink" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Link">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title" value="a link hierarchy folder between datacenter and cluster or between datacenter and virtual machines (vmFolder) or between datacenter and hostsystems"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Resourcepoollink" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Link">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title" value="a link between cluster (or host) and virtual machine with resource pool definition, this link may link other resource pools between them to define child dependencies, it may be used too for resourcepoolquickstats informations"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Clusterlink" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Link">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title" value="Link between cluster and hostsystem"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Resourcepool" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Resource">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title" value="A resource pool linked between a compute host (or a cluster) and a virtual machine, usage attributes part are for runtime information only"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="expandablereservation"
+        eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="In a resource pool with an expandable reservation, the reservation on a resource pool can grow beyond the specified value, if the parent resource pool has unreserved resources. A non-expandable reservation is called a fixed reservation. This property is ignored for virtual machines. "/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="limit" eType="#//LongNumber">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The utilization of a virtual machine/resource pool will not exceed this limit, even if there are available resources. This is typically used to ensure a consistent performance of virtual machines / resource pools independent of available resources. If set to -1, then there is no fixed limit on resource usage (only bounded by available resources and shares). Units are MB for memory, MHz for CPU. "/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="reservation" eType="#//LongNumber">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Amount of resource that is guaranteed available to the virtual machine or resource pool. Reserved resources are not wasted if they are not used. If the utilization is less than the reservation, the resources can be utilized by other running virtual machines. Units are MB for memory, MHz for CPU."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="state" eType="#//ResourcePoolState"
+        defaultValueLiteral="unknown">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="unknown: The status is unknown. &#xA;undercommitted: resource pool is in a good state. &#xA;inconsistent: One or more nodes in the tree has children whose reservations are greater than the node is configured to support. For example, i) a resource pool with a fixed reservation has a running virtual machine with a reservation that is higher than the reservation on resource pool itself., or ii) the child reservations are greater than the limit.&#xA;In this state, the DRS algorithm is disabled until the resource pool tree's configuration has been brought back into a consistent state. We also restrict the resources that such invalid nodes request from their parents to the configured reservation/limit, in an attempt to isolate the problem to a small subtree. For the rest of the tree, we determine whether the cluster is undercommitted or overcommitted according to the existing rules and perform admission control accordingly.&#xA;&#xA;Note that since all changes to the resource settings are validated on the VirtualCenter server, the system cannot be brought into this state by simply manipulating a cluster resource pool tree through VirtualCenter. It can only happen if a virtual machine gets powered on directly on a host that is part of a DRS cluster.&#xA;overcommitted: In this state, the tree is consistent internally, but the root resource pool does not have the capacity at to meet the reservation of its children. We can only go from GREEN -> YELLOW if we lose resources at the root. For example, hosts becomes unavailable or is put into maintenance mode. Note that we will always have enough capacity at the root to run all currently powered on VMs. However, we may not be able to satisfy all resource pool reservations in the tree. In this state, the reservation configured for a resource pool is no longer guaranteed, but the limits are still enforced. This provides additional flexibility for bringing the tree back into a consistent state, without risking bringing the tree into a RED state. In more detail:&#xA;Resource Pool The root is considered to have unlimited capacity. You can reserve resources without any check except the requirement that the tree remains consistent. This means that nodes whose parents are all configured with expandable reservations and no limit will have unlimited available resources. However, if there is an ancestor with a fixed reservation or an expandable reservation with a limit somewhere, then the node will be limited by the reservation/limit of the ancestor.&#xA;Virtual Machine Virtual machines are limited by ancestors with a fixed reservation and the capacity at the root. &#xA;yellow: The entity might have a problem."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Datacenterlink" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Link">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title" value=""/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Hostsystemlink" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Link">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title" value="a link between a hostsystem and a virtual machine"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Datastorelink" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Link">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title" value="a link between a datacenter and a datastore"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Virtualdisk" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.ecore#//Storage">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title" value="A virtual disk"/>
+    </eAnnotations>
+    <eOperations name="zeroFill">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="title" value="Overwrite all blocks of the virtual disk with zeros. All data will be lost.&#xA;The datacenter parameter may be omitted if a URL is used to name the disk.&#xA;&#xA;Requires Datastore.FileManagement privilege on the datastore where the virtual disk resides."/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="shrink">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="title" value="Shrink a sparse virtual disk.&#xA;The datacenter parameter may be omitted if a URL is used to name the disk.&#xA;&#xA;The optional parameter copy specifies whether to shrink the disk in copy-shrink mode or in-place mode. In copy-shrink mode, additional space is required, but will result in a shrunk disk that is also defragmented. In-place shrink does not require additional space, but will increase fragmentation. The default behavior is to perform copy-shrink if the parameter is not specified.&#xA;&#xA;Requires Datastore.FileManagement privilege on the datastore where the virtual disk resides."/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="volumeName" lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Vswitch" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.ecore#//Network">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title" value="a virtual switch for linking virtual network adapter to a hostsystem network"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Standard virtual switch name, note that the name must be unique on current host"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nbport" lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number"
+        defaultValueLiteral="8">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The number of ports that this virtual switch is configured to use. Changing this setting does not take effect until the next reboot. The maximum value is 1024, although other constraints, such as memory limits, may establish a lower effective limit"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="beaconInterval" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Determines how often, in seconds, a beacon should be sent. See HostVirtualSwitchBeaconConfig and nicfailurecriteria.checkBeacon, for use with bond bridge"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mtu" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The maximum transmission unit (MTU) of the virtual switch in bytes"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="changeOperation" eType="#//NetworkChangeOperation">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="This property indicates the change operation to apply on this configuration&#xA;add: Indicates the addition of a network entity to the configuration.&#xA;edit: Indicates changes on the network entity. The entity must exist or a NotFound error will be thrown&#xA;remove: Indicates the removal of a network entity from the configuration"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Portgroup" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Resource">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title" value="A port group aggregates multiple ports under a common configuration and provides a stable anchor point for virtual machines connecting to the labeled networks. It is identified by a label, which must be unique to the current host. The optional VLAN ID restricts port group traffic to a logical Ethernet segment within the network"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="vlanId" lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number"
+        defaultValueLiteral="0">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The VLAN ID for ports using this port group. Possible values:&#xA;A value of 0 specifies that you do not want the port group associated with a VLAN.&#xA;A value from 1 to 4094 specifies a VLAN ID for the port group.&#xA;A value of 4095 specifies that the port group should use trunk mode, which allows the guest operating system to manage its own VLAN tags"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The linkable identifier"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Virtualnetworkadapter" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.ecore#//Networkinterface">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title" value="a network adapter for a virtual machine (virtual nic), describes a virtual network adapter representing an adapter that connects to a virtual switch. A VirtualNic differs from a PhysicalNic in that the latter corresponds to a physical device that is connected to the physical network. The former is a virtual device that is connected to a virtual switch. A VirtualNic accesses the external network through a virtual switch that is bridged through a PhysicalNic to a physical network"/>
+    </eAnnotations>
+    <eOperations name="connectAdaptater">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="title" value="Connect virtual machine to vswitch"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="disconnectAdaptater">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="title" value="Disconnect virtual machine and vswitch"/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Device name"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" lowerBound="1" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The linkable identifier. "/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="subnetMask" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The subnet mask.&#xA;Note: When DHCP is not enabled, this property can be set explicitly. When DHCP is enabled, this property reflects the current IP configuration and cannot be set. "/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="port" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The port on the port group that the virtual network adapter is using when it is enabled. "/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="deviceDriver" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="like vmxnet etc."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Virtualdisknetwork" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.ecore#//Storage">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title" value="a storage disk network for usage with a network vswitch and portgroup, vswitch and portgroup may be multiples"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="volumeName" lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Virtualdisknetworklink" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.ecore#//Storagelink">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title" value="a link between a virtualdisknetwork and a vswitch"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Hostnetworkadapter" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.ecore#//Networkinterface">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title" value="Physical Network adaptater on a hostsystem, describes the physical network adapter as seen by the primary operating system"/>
+    </eAnnotations>
+    <eOperations name="connect">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="title"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="disconnect">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="title"/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The device name of the physical network adapter"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="driver" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The name of the driver"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The linkable identifier"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pci" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Device hash of the PCI device corresponding to this physical network adapter."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="subnetMask" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The subnet mask.&#xA;Note: When DHCP is not enabled, this property can be set explicitly. When DHCP is enabled, this property reflects the current IP configuration and cannot be set. "/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="wakeOnLanSupported" lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Flag indicating whether the NIC is wake-on-LAN capable"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Dvswitch" eSuperTypes="#//Vswitch">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title" value="Distributed virtual switch"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Snapshot" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Resource">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title"/>
+    </eAnnotations>
+    <eOperations name="restore">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="title"/>
+      </eAnnotations>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Snapshotlink" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Link">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Folder" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Resource">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Hostfolder" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Resource">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Vcentercapability" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Resource">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title" value="Global data object to determine if the global service instance support or not a feature, see ServiceInstance"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="multiHostSupported" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Indicates whether or not the service instance supports multiple hosts. "/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="provisioningSupported"
+        eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Indicates whether or not the service instance supports provisioning. For example, the CloneVM operation"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="userShellAccessSupported"
+        eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Flag indicating whether host user accounts should have the option to be granted shell access"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="EVCModeVendor" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="All supported Enhanced VMotion Compatibility modes. CPU hardware vendor required for this mode. "/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="EVCModeVendorTier" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="All supported Enhanced VMotion Compatibility modes.Index for ordering the set of modes that apply to a given CPU vendor. Use this property to compare vendor tier values from two modes. Do not use this property to determine the presence or absence of specific features. "/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Hostfirewallsystem" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Resource">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title" value="A host can have only have one firewall, this described a firewall for a host and a set of rules"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="defaultIncomingBlocked"
+        eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Flag indicating whether incoming traffic should be blocked by default."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="defaultOutgoingBlocked"
+        eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Flag indicating whether outgoing traffic should be blocked by default. "/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Hostfirewallruleset" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Resource">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title"/>
+    </eAnnotations>
+    <eOperations name="disableRuleset">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="title" value="Blocks the firewall ports belonging to the specified ruleset. If the ruleset has a managed service with a policy of 'auto' and all other rulesets used by the service are blocked, stops the service."/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="enableRuleset">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="title" value="Opens the firewall ports belonging to the specified ruleset. If the ruleset has a managed service with a policy of 'auto' that is not running, starts the service."/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="enabled" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Flag indicating whether the ruleset is enabled. If the ruleset is enabled, all ports specified in the ruleset are opened by the firewall. "/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Brief identifier for the ruleset. "/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Display label for the ruleset. "/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="required" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Flag indicating whether the ruleset is required and cannot be disabled. "/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="service" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Managed service (if any) that uses this ruleset. Must be one of the services listed in HostService. "/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Hostfirewallrule" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Link">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title" value="A rule link between hostfirewallsystem and a hostfirewallruleset"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="direction" eType="#//HostFirewallRuleDirection">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The port direction."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="port" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The port number"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="endPort" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="For a port range, the ending port number. "/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="protocol" eType="#//HostNetworkProtocol">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The port protocol"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Hoststorage" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.ecore#//Storage">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title" value="Represente a physical storage on a hostsystem, see HostStorageSystem, linked to a hostsystem via a hoststoragelink"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hostVolumeName" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Name of the file system volume. "/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Hoststoragelink" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.ecore#//Storagelink">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title" value="hoststorage as it is view by the host os"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Vmfolder" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Resource">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Serviceconsolenic" eSuperTypes="#//Virtualnetworkadapter">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title" value="Virtual network adapters configured for use by the Service Console"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Portgrouplink" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Link">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title" value="link between portgroup and vswitch"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Hostnatrule" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Resource">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title" value="Ruleset for nat service linked to virtual switch via hostnatportforwardlink, this may be multiple for a vswitch"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="activeFtp" lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The flag to indicate whether or not non-passive mode FTP connections should be allowed"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="allowAnyOui" lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The flag to indicate whether or not the NAT Service allows media access control traffic from any Organizational Unique Identifier (OUI)? By default, it does not allow traffic that originated from the host to avoid packet loops."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="configPort" lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The flag to indicate whether or not the NAT Service should open a configuration port."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="natKey" lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The instance ID of the NAT service"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="natChangeOperation" eType="#//NetworkChangeOperation">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Indicates the change operation to apply on this configuration specification"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ipGatewayAddress" lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The IP address that the NAT Service should use on the virtual network."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="udpTimeOut" lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The time alloted for UDP packets"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Hostnatportforwardlink" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Link">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title" value="Define the port forward to hostnatrule, it may be multiple links to a single hostnatrule, this define the port forwarding specifications to allow network connections to be initiated from outside the firewall. "/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="guestIpAddress" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The IP address for the guest. Network traffic from the host is forwarded to this IP address"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="guestPort" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The port number for the guest. Network traffic from the host is forwarded to this port. "/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hostPort" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The port number on the host. Network traffic sent to the host on this TCP/UDP port is forwarded to the guest at the specified IP address and port."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The user-defined name to identify the service being forwarded. No white spaces are allowed in the string"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//HostNetworkProtocol">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Either &quot;tcp&quot; or &quot;udp&quot;."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Distributedportgroup" eSuperTypes="#//Portgroup">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Virtualcdrom" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.ecore#//Storage">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title" value="A virtual cdrom disk"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isoFilename" lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The filename of the ISO."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="volumeName" lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Virtualfloppy" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.ecore#//Storage">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title" value="A virtual floppy disk"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="volumeName" lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Virtualdisklink" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.ecore#//Storagelink">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="vmdkFilePathOnDatastore"
+        eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Represents the vmdk file path."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+</ecore:EPackage>
