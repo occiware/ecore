@@ -1,12 +1,14 @@
 package org.occiware.clouddesigner.occi.infrastructure.connector;
 
 import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,6 +29,31 @@ public class ConnectPCA {
      */
     private static Logger LOGGER = LoggerFactory.getLogger(ComputeConnector.class);
 
+
+    /**
+     * Get the deployed instances from Cloud Automation Model
+     *
+     * @return a json object containing the request results
+     */
+    public JSONObject getRequest(String id)  {
+        final String url = getProperty("server.endpoint")+"/compute/"+id;
+        JSONObject result = new JSONObject();
+        try {
+            CloseableHttpClient httpClient = HttpClientBuilder.create().build();
+            HttpGet getRequest = new HttpGet(url);
+
+            HttpResponse response = httpClient.execute(getRequest);
+            String serverOutput = readHttpResponse(response);
+            httpClient.close();
+            result = (JSONObject) new JSONParser().parse(serverOutput);
+        }catch (IOException e){
+            raiseException(e);
+        }catch (ParseException e){
+            raiseException(e);
+        }
+        return result;
+    }
+
     /**
      * Send a request to pca service with a header containing the session id and sending content
      * @param input which is send to the cloud automation service
@@ -36,28 +63,34 @@ public class ConnectPCA {
 
         final String url = getProperty("server.endpoint")+"/compute/";
         System.out.println("get property ok");
-        JSONObject result;
+        JSONObject result = new JSONObject();
         try {
-
             CloseableHttpClient httpClient = HttpClientBuilder.create().build();
             HttpPost postRequest = new HttpPost(url);
             StringEntity entity = new StringEntity(input.toJSONString());
+            System.out.println(input.toJSONString());
             entity.setContentType("application/json");
             postRequest.setEntity(entity);
-            System.out.println("input:"+input);
-            System.out.println("content : "+input.toString());
             HttpResponse response = httpClient.execute(postRequest);
-            System.out.println("envoie de requete ok"+response.toString());
             String serverOutput = readHttpResponse(response);
             httpClient.close();
-            System.out.println("lecture reponse ok");
             result = (JSONObject) new JSONParser().parse(serverOutput);
-        } catch (Exception ex) {
-            System.out.println("exception "+ex.getMessage());
-            return null;
+        } catch (IOException e){
+            raiseException(e);
+        } catch (ParseException e){
+            raiseException(e);
         }
         return result;
     }
+
+    private JSONObject raiseException(Exception e){
+        JSONObject jsonException = new JSONObject();
+        jsonException.put("exception",e.getMessage());
+        LOGGER.debug("exception: "+e.getClass()+", "+e.getMessage());
+        return jsonException;
+    }
+
+
 
     /**
      * Get the property from the configuration file config.properties

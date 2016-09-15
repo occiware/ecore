@@ -71,8 +71,9 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
             json.put(MEMORY,this.getMemory());
             json.put(TITLE, this.getTitle());
 			json.put(SUMMARY, this.getSummary());
+			System.out.println("json : "+ json.toJSONString());
             JSONObject response = new ConnectPCA().postRequest(json);
-            getCloudAutomationInfo(response);
+            //getCloudAutomationInfo(response);
         }catch (Exception e){
             System.out.println(e.getClass().getName() + " : "+e.getMessage());
         }
@@ -86,8 +87,13 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 	public void occiRetrieve()
 	{
 		LOGGER.debug("occiRetrieve() called on " + this);
+		try{
+			JSONObject response = new ConnectPCA().getRequest(this.id);
+			getCloudAutomationInfo(response);
+		}catch (Exception e){
+			System.out.println(e.getClass().getName() + " : "+e.getMessage());
+		}
 
-		// TODO: Implement this callback or remove this method.
 	}
 
 	/**
@@ -352,15 +358,14 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 	}
 
     private void getCloudAutomationInfo(JSONObject response){
-        this.id = (String) response.get(ID);
-        this.title = (String) response.get(TITLE);
-        this.summary  = (String) response.get(SUMMARY);
-        this.cores = (Integer) response.get(CORES);
-        this.memory = (Float) response.get(MEMORY);
-        this.hostname = (String) response.get(HOSTNAME);
-        setArchitecture((String) response.get(ARCHITECTURE));
-        setStateStatus((String) response.get(STATE));
-
+        this.id = (String) response.getOrDefault(ID,this.id);
+        this.title = (String) response.getOrDefault(TITLE,this.title);
+        this.summary  = (String) response.getOrDefault(SUMMARY,this.title);
+        this.cores = (Integer) response.getOrDefault(CORES,this.cores);
+        this.memory = (Float) response.getOrDefault(MEMORY,this.memory);
+        this.hostname = (String) response.getOrDefault(HOSTNAME,this.hostname);
+        setArchitecture((String) response.getOrDefault(ARCHITECTURE,this.architecture.getName()));
+        setStateStatus((String) response.getOrDefault(STATE,this.state.getName()));
     }
 
     private void setArchitecture(String s){
