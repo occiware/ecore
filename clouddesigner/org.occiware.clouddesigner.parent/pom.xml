@@ -13,7 +13,7 @@
 		<module>../org.occiware.clouddesigner.occi.editor</module>
 		<module>../org.occiware.clouddesigner.occi.tests</module>
 		<module>../org.occiware.clouddesigner.occi.design</module>
-
+		
 		<!-- OCCI generators -->
 		<module>../org.occiware.clouddesigner.occi.gen.alloy</module>
 		<module>../org.occiware.clouddesigner.occi.gen.alloy.ui</module>
@@ -29,6 +29,9 @@
 		<!-- OCCI connectors -->
 		<module>../org.occiware.clouddesigner.occi.connector.jocci</module>
 
+		<!-- OCCI BigData -->
+		<module>../org.occiware.clouddesigner.occi.bigdata</module>
+		
 		<!-- OCCI Infrastructure -->
 		<module>../org.occiware.clouddesigner.occi.infrastructure</module>
 		<module>../org.occiware.clouddesigner.occi.infrastructure.connector</module>
@@ -76,6 +79,9 @@
 		<module>../org.occiware.clouddesigner.occi.hypervisor.tests</module>
 		<module>../org.occiware.clouddesigner.occi.hypervisor.connector</module>
 		<module>../org.occiware.clouddesigner.occi.hypervisor.design</module>
+
+		<!-- Docker Connector Dependencies -->
+		<module>../org.occiware.clouddesigner.occi.docker.connector.dependencies</module>
 
 		<!-- Docker -->
 		<module>../org.occiware.clouddesigner.occi.docker</module>

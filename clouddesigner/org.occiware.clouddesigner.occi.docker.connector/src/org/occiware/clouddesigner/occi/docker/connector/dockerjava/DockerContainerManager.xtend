@@ -185,9 +185,9 @@ class DockerContainerManager {
 			// Binding port l_r_ports.get(1)
 			if (l_r_ports.size == 2) {
 				if (StringUtils.isNotBlank(l_r_ports.get(1))) {
-					portBindings.bind(tcp, Ports.Binding(Integer.parseInt(l_r_ports.get(1))))
+					portBindings.bind(tcp, Ports.Binding.bindPort(Integer.parseInt(l_r_ports.get(1))))
 				} else {
-					portBindings.bind(tcp, Ports.Binding(32768)) // TODO Create dynamique port number
+					portBindings.bind(tcp, Ports.Binding.bindPort(32768)) // TODO Create dynamique port number
 				}
 			}
 			create.withPortBindings(portBindings)
@@ -285,10 +285,10 @@ class DockerContainerManager {
 			var ExposedPort port = ExposedPort.tcp(Integer.parseInt(ports.get(0)))
 			val Ports portBindings = new Ports
 			if (ports.size == 2) {
-				portBindings.bind(port, Ports.Binding(Integer.parseInt(ports.get(1))))
+				portBindings.bind(port, Ports.Binding.bindPort(Integer.parseInt(ports.get(1))))
 
 			} else if (ports.size == 1) {
-				portBindings.bind(port, Ports.Binding(Integer.parseInt(ports.get(0))))
+				portBindings.bind(port, Ports.Binding.bindPort(Integer.parseInt(ports.get(0))))
 			}
 			create.withPortBindings(portBindings)
 		}
@@ -549,22 +549,22 @@ class DockerContainerManager {
 		 */
 		val url = new URL(ENDPOINT)
 		val URI uri = new URI(url.getProtocol(), url.getHost(), url.getPath(), url.getQuery(), null)
-		val dockerUri = uri.toString + port
-		LOGGER.info("Connection inside machine: " + machine + " with uri: " + dockerUri.toString)
+		val dockerHost = uri.toString + port
+		LOGGER.info("Connection inside machine: " + machine + " with uri: " + dockerHost.toString)
 		try {
 			if (properties.version != null) {
-				config = DockerClientConfig.createDefaultConfigBuilder.withVersion(properties.version.trim).withUri(
-					dockerUri).withUsername(properties.username.trim).withPassword(properties.password.trim).withEmail(
-					properties.email.trim).withServerAddress(properties.url.trim).withDockerCertPath(certPath).build()
+				config = DockerClientConfig.createDefaultConfigBuilder.withApiVersion(properties.version.trim).withDockerHost(
+					dockerHost).withRegistryUsername(properties.username.trim).withRegistryPassword(properties.password.trim).withRegistryEmail(
+					properties.email.trim).withRegistryUrl(properties.url.trim).withDockerCertPath(certPath).build()
 
 			}
 		} catch (Exception exception) {
 			LOGGER.error("Loading docker-java properties files ...")
-			config = DockerClientConfig.createDefaultConfigBuilder.withVersion(
-				dockerProperties.get("docker.version").toString).withUri(dockerUri).withUsername(
-				dockerProperties.get("docker.username").toString).withPassword(
-				dockerProperties.get("docker.password").toString).withEmail(
-				dockerProperties.get("docker.email").toString).withServerAddress(
+			config = DockerClientConfig.createDefaultConfigBuilder.withApiVersion(
+				dockerProperties.get("docker.version").toString).withDockerHost(dockerHost).withRegistryUsername(
+				dockerProperties.get("docker.username").toString).withRegistryPassword(
+				dockerProperties.get("docker.password").toString).withRegistryEmail(
+				dockerProperties.get("docker.email").toString).withRegistryUrl(
 				dockerProperties.get("docker.url").toString).withDockerCertPath(certPath).build()
 		}
 		val DockerClient dockerClient = DockerClientBuilder.getInstance(config).build()

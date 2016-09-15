@@ -261,11 +261,11 @@ public class DockerContainerManager {
         if (_isNotBlank_1) {
           String _get_2 = l_r_ports[1];
           int _parseInt_1 = Integer.parseInt(_get_2);
-          Ports.Binding _Binding = Ports.Binding(Integer.valueOf(_parseInt_1));
-          portBindings.bind(tcp, _Binding);
+          Ports.Binding _bindPort = Ports.Binding.bindPort(_parseInt_1);
+          portBindings.bind(tcp, _bindPort);
         } else {
-          Ports.Binding _Binding_1 = Ports.Binding(Integer.valueOf(32768));
-          portBindings.bind(tcp, _Binding_1);
+          Ports.Binding _bindPort_1 = Ports.Binding.bindPort(32768);
+          portBindings.bind(tcp, _bindPort_1);
         }
       }
       create.withPortBindings(portBindings);
@@ -424,16 +424,16 @@ public class DockerContainerManager {
       if (_equals_2) {
         String _get_1 = ports[1];
         int _parseInt_1 = Integer.parseInt(_get_1);
-        Ports.Binding _Binding = Ports.Binding(Integer.valueOf(_parseInt_1));
-        portBindings.bind(port, _Binding);
+        Ports.Binding _bindPort = Ports.Binding.bindPort(_parseInt_1);
+        portBindings.bind(port, _bindPort);
       } else {
         int _size_1 = ((List<String>)Conversions.doWrapArray(ports)).size();
         boolean _equals_3 = (_size_1 == 1);
         if (_equals_3) {
           String _get_2 = ports[0];
           int _parseInt_2 = Integer.parseInt(_get_2);
-          Ports.Binding _Binding_1 = Ports.Binding(Integer.valueOf(_parseInt_2));
-          portBindings.bind(port, _Binding_1);
+          Ports.Binding _bindPort_1 = Ports.Binding.bindPort(_parseInt_2);
+          portBindings.bind(port, _bindPort_1);
         }
       }
       create.withPortBindings(portBindings);
@@ -811,8 +811,8 @@ public class DockerContainerManager {
       String _query = url.getQuery();
       final URI uri = new URI(_protocol, _host, _path, _query, null);
       String _string = uri.toString();
-      final String dockerUri = (_string + port);
-      String _string_1 = dockerUri.toString();
+      final String dockerHost = (_string + port);
+      String _string_1 = dockerHost.toString();
       String _plus = ((("Connection inside machine: " + machine) + " with uri: ") + _string_1);
       DockerContainerManager.LOGGER.info(_plus);
       try {
@@ -822,21 +822,21 @@ public class DockerContainerManager {
           DockerClientConfig.DockerClientConfigBuilder _createDefaultConfigBuilder = DockerClientConfig.createDefaultConfigBuilder();
           String _version_1 = properties.getVersion();
           String _trim = _version_1.trim();
-          DockerClientConfig.DockerClientConfigBuilder _withVersion = _createDefaultConfigBuilder.withVersion(_trim);
-          DockerClientConfig.DockerClientConfigBuilder _withUri = _withVersion.withUri(dockerUri);
+          DockerClientConfig.DockerClientConfigBuilder _withApiVersion = _createDefaultConfigBuilder.withApiVersion(_trim);
+          DockerClientConfig.DockerClientConfigBuilder _withDockerHost = _withApiVersion.withDockerHost(dockerHost);
           String _username = properties.getUsername();
           String _trim_1 = _username.trim();
-          DockerClientConfig.DockerClientConfigBuilder _withUsername = _withUri.withUsername(_trim_1);
+          DockerClientConfig.DockerClientConfigBuilder _withRegistryUsername = _withDockerHost.withRegistryUsername(_trim_1);
           String _password = properties.getPassword();
           String _trim_2 = _password.trim();
-          DockerClientConfig.DockerClientConfigBuilder _withPassword = _withUsername.withPassword(_trim_2);
+          DockerClientConfig.DockerClientConfigBuilder _withRegistryPassword = _withRegistryUsername.withRegistryPassword(_trim_2);
           String _email = properties.getEmail();
           String _trim_3 = _email.trim();
-          DockerClientConfig.DockerClientConfigBuilder _withEmail = _withPassword.withEmail(_trim_3);
+          DockerClientConfig.DockerClientConfigBuilder _withRegistryEmail = _withRegistryPassword.withRegistryEmail(_trim_3);
           String _url = properties.getUrl();
           String _trim_4 = _url.trim();
-          DockerClientConfig.DockerClientConfigBuilder _withServerAddress = _withEmail.withServerAddress(_trim_4);
-          DockerClientConfig.DockerClientConfigBuilder _withDockerCertPath = _withServerAddress.withDockerCertPath(certPath);
+          DockerClientConfig.DockerClientConfigBuilder _withRegistryUrl = _withRegistryEmail.withRegistryUrl(_trim_4);
+          DockerClientConfig.DockerClientConfigBuilder _withDockerCertPath = _withRegistryUrl.withDockerCertPath(certPath);
           DockerClientConfig _build = _withDockerCertPath.build();
           config = _build;
         }
@@ -847,21 +847,21 @@ public class DockerContainerManager {
           DockerClientConfig.DockerClientConfigBuilder _createDefaultConfigBuilder_1 = DockerClientConfig.createDefaultConfigBuilder();
           Object _get = dockerProperties.get("docker.version");
           String _string_2 = _get.toString();
-          DockerClientConfig.DockerClientConfigBuilder _withVersion_1 = _createDefaultConfigBuilder_1.withVersion(_string_2);
-          DockerClientConfig.DockerClientConfigBuilder _withUri_1 = _withVersion_1.withUri(dockerUri);
+          DockerClientConfig.DockerClientConfigBuilder _withApiVersion_1 = _createDefaultConfigBuilder_1.withApiVersion(_string_2);
+          DockerClientConfig.DockerClientConfigBuilder _withDockerHost_1 = _withApiVersion_1.withDockerHost(dockerHost);
           Object _get_1 = dockerProperties.get("docker.username");
           String _string_3 = _get_1.toString();
-          DockerClientConfig.DockerClientConfigBuilder _withUsername_1 = _withUri_1.withUsername(_string_3);
+          DockerClientConfig.DockerClientConfigBuilder _withRegistryUsername_1 = _withDockerHost_1.withRegistryUsername(_string_3);
           Object _get_2 = dockerProperties.get("docker.password");
           String _string_4 = _get_2.toString();
-          DockerClientConfig.DockerClientConfigBuilder _withPassword_1 = _withUsername_1.withPassword(_string_4);
+          DockerClientConfig.DockerClientConfigBuilder _withRegistryPassword_1 = _withRegistryUsername_1.withRegistryPassword(_string_4);
           Object _get_3 = dockerProperties.get("docker.email");
           String _string_5 = _get_3.toString();
-          DockerClientConfig.DockerClientConfigBuilder _withEmail_1 = _withPassword_1.withEmail(_string_5);
+          DockerClientConfig.DockerClientConfigBuilder _withRegistryEmail_1 = _withRegistryPassword_1.withRegistryEmail(_string_5);
           Object _get_4 = dockerProperties.get("docker.url");
           String _string_6 = _get_4.toString();
-          DockerClientConfig.DockerClientConfigBuilder _withServerAddress_1 = _withEmail_1.withServerAddress(_string_6);
-          DockerClientConfig.DockerClientConfigBuilder _withDockerCertPath_1 = _withServerAddress_1.withDockerCertPath(certPath);
+          DockerClientConfig.DockerClientConfigBuilder _withRegistryUrl_1 = _withRegistryEmail_1.withRegistryUrl(_string_6);
+          DockerClientConfig.DockerClientConfigBuilder _withDockerCertPath_1 = _withRegistryUrl_1.withDockerCertPath(certPath);
           DockerClientConfig _build_1 = _withDockerCertPath_1.build();
           config = _build_1;
         } else {
