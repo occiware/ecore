@@ -19,7 +19,8 @@ import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
-
+import org.eclipse.ui.PlatformUI;
+import org.osgi.framework.Bundle;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.apache.log4j.Level;
@@ -39,40 +40,32 @@ public class UIDialog {
 	private static final boolean standaloneMode;
 
 	static {
-		if (org.eclipse.swt.widgets.Display.getCurrent() == null) {
-			standaloneMode = true;
-		} else {
+		// Check headless environnement (from console or from ui)
+		if (PlatformUI.isWorkbenchRunning()) {
+			LOGGER.debug("UI mode.");
 			standaloneMode = false;
+		} else {
+			LOGGER.debug("Headless mode.");
+			standaloneMode = true;
 		}
+		
+		
+//		if (org.eclipse.swt.widgets.Display.getCurrent() == null) {
+//			standaloneMode = true;
+//		} else {
+//			standaloneMode = false;
+//		}
 	}
 
 	/**
 	 * Encapsulate in a thread the runnable with dialog progress if in cloud
-	 * designer mode or in standalone a simple thread.
+	 * designer mode
 	 * 
 	 * @param runnable
 	 */
 	public static void executeActionThread(final IRunnableWithProgress runnable, final String actionName) {
 
 		try {
-
-			if (standaloneMode) {
-				Runnable runnableStand = new Runnable() {
-					
-					@Override
-					public void run() {
-						try {
-							runnable.run(null);
-						} catch (Exception ex) {
-							LOGGER.error("Error while executing action: " + actionName, ex.getCause());
-							ex.printStackTrace();
-						}
-					}
-				};
-				Thread actionThread = new Thread(runnableStand);
-				actionThread.start();
-				
-			} else {
 				IRunnableWithProgress runnableWithProgress = new IRunnableWithProgress() {
 
 					@Override
@@ -94,13 +87,23 @@ public class UIDialog {
 
 				dialog.run(true, true, runnableWithProgress);
 
-			}
 
 		} catch (IllegalStateException | InvocationTargetException | InterruptedException ex) {
 			LOGGER.error("Error while executing an action task : " + ex.getMessage());
 			ex.printStackTrace();
 		}
 
+	}
+	
+	/**
+	 * Encapsulate the operation in a thread.
+	 * @param runnable
+	 * @param titleMessage
+	 */
+	public static void executeActionThread(final Runnable runnable, String titleMessage) {
+		
+		Thread actionThread = new Thread(runnable);
+		actionThread.start();
 	}
 
 	/**
@@ -196,5 +199,7 @@ public class UIDialog {
 	private static Shell getCurrentShell() {
 		return Display.getCurrent().getActiveShell();
 	}
+
+	
 
 }

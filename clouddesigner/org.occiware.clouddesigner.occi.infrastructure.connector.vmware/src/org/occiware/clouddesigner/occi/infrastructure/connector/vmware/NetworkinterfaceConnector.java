@@ -14,9 +14,14 @@
  */
 package org.occiware.clouddesigner.occi.infrastructure.connector.vmware;
 
+import java.lang.reflect.InvocationTargetException;
 import java.rmi.RemoteException;
 import java.util.List;
 
+import org.apache.log4j.Level;
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.SubMonitor;
+import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.occiware.clouddesigner.occi.AttributeState;
 import org.occiware.clouddesigner.occi.OCCIFactory;
 import org.occiware.clouddesigner.occi.infrastructure.NetworkInterfaceStatus;
@@ -26,6 +31,7 @@ import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.allocator
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.NetworkHelper;
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.VCenterClient;
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.VMHelper;
+import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.thread.UIDialog;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -69,6 +75,14 @@ public class NetworkinterfaceConnector
 
 	private String oldNetworkAdapterName = null;
 
+	// Message to end users management.
+	private String titleMessage = "";
+	private String globalMessage = "";
+	private Level levelMessage = null;
+
+	private boolean nicExist = false;
+	private boolean created = false;
+
 	/**
 	 * Constructs a networkinterface connector.
 	 */
@@ -87,127 +101,40 @@ public class NetworkinterfaceConnector
 	public void occiCreate() {
 		LOGGER.debug("occiCreate() called on " + this);
 
-		boolean nicExist = false;
-		boolean created = false;
-		LOGGER.debug("occiCreate() called on " + this);
-		if (!VCenterClient.checkConnection()) {
-			// Must return true if connection is established.
-			return;
-		}
+		if (UIDialog.isStandAlone()) {
+			// Launching thread with business code.
+			LOGGER.debug("Console mode.");
+			Runnable runnable = new Runnable() {
+				@Override
+				public void run() {
+					createNetworkNIC(null);
+				}
+			};
+			UIDialog.executeActionThread(runnable, titleMessage);
 
-		// 1 - Get vm connector link, if no vm ==> no create, vmName is set with
-		// this method.
-		VirtualMachine vm = getVirtualMachineFromLinks();
-		if (vm == null) {
-			LOGGER.warn("No virtual machine is linked on the network.");
-			VCenterClient.disconnect();
-			return;
-		}
-
-		// 2 - Check if this network adapter already exist.
-		networkAdapterName = this.getTitle();
-
-		if (networkAdapterName != null && networkAdapterName.isEmpty()) {
-			networkAdapterName = null;
-		}
-		if (networkAdapterName == null) {
-			LOGGER.warn("No network adapter name setted. Cant create the network.");
-			VCenterClient.disconnect();
-			return;
-		}
-		if (oldNetworkAdapterName == null) {
-			oldNetworkAdapterName = networkAdapterName;
-		}
-
-		// 3 - if exist, network is not created.
-		nicExist = NetworkHelper.isNICExist(networkAdapterName, vm);
-		if (nicExist) {
-			LOGGER.warn("This network adapter: " + networkAdapterName + " already exist for the virtual machine: "
-					+ vmName);
-			VCenterClient.disconnect();
-			return;
-		}
-		Folder rootFolder = VCenterClient.getServiceInstance().getRootFolder();
-		HostSystem host = VMHelper.findHostSystemForVM(rootFolder, vmName);
-
-		// Get the linked Network interface connector.
-		NetworkConnector netConn = getLinkedNetwork();
-		if (networkName == null && netConn != null) {
-			networkName = netConn.getLabel();
 		} else {
+			// Launching IRunnableWithProgress UI thread with business code.
+			LOGGER.debug("UI mode.");
+			IRunnableWithProgress runnableWithProgress = new IRunnableWithProgress() {
 
-			Allocator allocator = new AllocatorImpl(rootFolder);
-			allocator.setHost(host);
-
-			Network net = allocator.allocateNetwork();
-
-			networkName = net.getName();
-		}
-
-		// 4 - if not exist, check attributes and create the network.
-		// Check the hostNetworkName...
-		if (networkName == null || !NetworkHelper.isHostNetworkExist(networkName, host)) {
-			LOGGER.error("Host network name doesnt exist");
-			VCenterClient.disconnect();
-			return;
-		}
-
-		// TODO : Manual configuration network mode (mac address).
-		// TODO : Customization with ipAddress and other cool things...
-		VirtualDeviceConfigSpec nicSpec = NetworkHelper.createNicSpec(networkName, networkAdapterName,
-				NetworkHelper.MODE_NETWORK_ADDRESS_GENERATED, null);
-		VirtualMachineConfigSpec vmConfigSpec = new VirtualMachineConfigSpec();
-		VirtualDeviceConfigSpec[] nicSpecArray = { nicSpec };
-		vmConfigSpec.setDeviceChange(nicSpecArray);
-
-		// Launch the reconfig task.
-
-		Task task;
-		try {
-			task = vm.reconfigVM_Task(vmConfigSpec);
-			task.waitForTask();
-
-		} catch (RemoteException ex) {
-			LOGGER.error("Error while creating a network adapter : " + networkAdapterName + " --< to vm : " + vmName,
-					ex);
-			LOGGER.error("Message: " + ex.getMessage());
-			VCenterClient.disconnect();
-			return;
-			
-		} catch (InterruptedException e) {
-			LOGGER.error("Error while creating a network adapter : " + networkAdapterName + " --< to vm : " + vmName,
-					e);
-			LOGGER.error("Message: " + e.getMessage());
-			VCenterClient.disconnect();
-			return;
-		}
-
-		TaskInfo taskInfo;
-		try {
-			taskInfo = task.getTaskInfo();
-			if (taskInfo.getState() != TaskInfoState.success) {
-				MethodFault fault = taskInfo.getError().getFault();
-				LOGGER.error(
-						"Error while creating a network adapter : " + networkAdapterName + " --< to vm : " + vmName,
-						fault.detail);
-				LOGGER.error("Fault message: " + fault.getMessage() + fault.getClass().getName());
-			} else {
-				created = true;
+				@Override
+				public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+					createNetworkNIC(monitor);
+				}
+			};
+			UIDialog.executeActionThread(runnableWithProgress, titleMessage);
+			if (globalMessage != null && !globalMessage.isEmpty()) {
+				UIDialog.showUserMessage(titleMessage, globalMessage, levelMessage);
 			}
-		} catch (RemoteException e) {
-			LOGGER.error("Error while creating an network adapter : " + networkAdapterName + " --< to vm : " + vmName,
-					e);
-			LOGGER.error("Message : " + e.getMessage());
+			// retrieve resource informations when no errors has been launched.
+			if ((levelMessage != null && !Level.ERROR.equals(levelMessage)) || levelMessage == null) {
+				occiRetrieve();
+			}
 		}
 
-		// 5 - Reload network information, and update accordingly the object
-		// (via occiRetrieve() method.)
-		if (created) {
-			LOGGER.info("Network : " + networkAdapterName + " has been created.");
-			occiRetrieve();
-		}
+		globalMessage = "";
+		levelMessage = null;
 
-		VCenterClient.disconnect();
 	}
 
 	/**
@@ -217,211 +144,39 @@ public class NetworkinterfaceConnector
 	public void occiRetrieve() {
 		LOGGER.debug("occiRetrieve() called on " + this);
 
-		if (!VCenterClient.checkConnection()) {
-			// Must return true if connection is established.
-			return;
-		}
-		ServiceInstance si = VCenterClient.getServiceInstance();
-		Folder rootFolder = si.getRootFolder();
-		// Load virtual machine if any.
-		// Note: vmName is set with this method.
-		VirtualMachine vm = getVirtualMachineFromLinks();
-
-		if (vm == null) {
-			LOGGER.warn("The linked virtual machine doesnt exist on Vcenter, no network to retrieve.");
-			setState(NetworkInterfaceStatus.INACTIVE);
-			// No vm adapter found so.
-			VCenterClient.disconnect();
-			return;
-		}
-
-		// Get the linked Network connector target.
-		NetworkConnector netConn = getLinkedNetwork();
-
-		networkAdapterName = this.getTitle();
-
-		if (networkAdapterName != null && networkAdapterName.isEmpty()) {
-			networkAdapterName = null;
-		}
-		if (networkName != null && networkName.isEmpty()) {
-			networkName = null;
-		}
-		if (oldNetworkAdapterName == null) {
-			oldNetworkAdapterName = networkAdapterName;
-		}
-		// Search the appropriate adapter if vm exist on vcenter.
-		getVMHostNetworkName(vm, netConn);
-		List<VirtualEthernetCard> vEths = null;
-		VirtualEthernetCard vEthDevice = null;
-		if (networkName != null) {
-			// Search after network adapter name for the backing name :
-			// hostNetworkName.
-			// List of all virtual ethernet card on the vm.
-			vEths = NetworkHelper.findNetDeviceForHostNetName(networkName, vm);
-			if (vEths.isEmpty()) {
-				LOGGER.warn("No network adapter found for this host network: " + networkName);
-				setState(NetworkInterfaceStatus.INACTIVE);
-				VCenterClient.disconnect();
-				return;
-			}
+		if (UIDialog.isStandAlone()) {
+			// Launching thread with business code.
+			LOGGER.debug("Console mode.");
+			Runnable runnable = new Runnable() {
+				@Override
+				public void run() {
+					retrieveNetworkNIC(null);
+				}
+			};
+			UIDialog.executeActionThread(runnable, titleMessage);
 
 		} else {
-			LOGGER.warn("The host network name is not found on vcenter, no network to retrieve.");
-			setState(NetworkInterfaceStatus.INACTIVE);
-			VCenterClient.disconnect();
-			return;
-		}
-		String externalId = null;
-		for (VirtualEthernetCard vEth : vEths) {
-			externalId = vEth.getExternalId();
-			if (networkAdapterName == null) {
-				LOGGER.info("The network adapter is not set (title attribute), searching info on vcenter...");
-				if (externalId != null) {
-					networkAdapterName = externalId;
-				} else {
-					// Find the first on the list.
-					networkAdapterName = vEth.getDeviceInfo().getLabel();
+			// Launching IRunnableWithProgress UI thread with business code.
+			LOGGER.debug("UI mode.");
+			IRunnableWithProgress runnableWithProgress = new IRunnableWithProgress() {
+
+				@Override
+				public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+					retrieveNetworkNIC(monitor);
 				}
-				vEthDevice = vEth;
-				break;
-			} else {
-				if (vEth.getDeviceInfo().getLabel().equals(networkAdapterName)) {
-					vEthDevice = vEth;
-					break;
-				} else if (externalId != null) {
-					if (externalId.equals(networkAdapterName)) {
-						vEthDevice = vEth;
-					}
-				}
-
-			}
-		}
-
-		// Set the informations...
-		this.setTitle(networkAdapterName);
-		String[] ipAddressesLocal;
-		String ipAddressPlainLocal = "";
-		String macAddress = null;
-		boolean dhcpMode = false;
-		Boolean wakeOnLan = true;
-		// String dnsName;
-
-		if (VMHelper.isToolsInstalled(vm) && VMHelper.isToolsRunning(vm) && vEthDevice != null) {
-			// Get guest information.
-			GuestNicInfo[] guestNicInf = vm.getGuest().getNet();
-			int i;
-			int key = vEthDevice.getKey();
-			if (guestNicInf != null) {
-				for (GuestNicInfo nicInfo : guestNicInf) {
-					ipAddressesLocal = nicInfo.getIpAddress();
-					// TODO : How to get dhcp mode of a network adapter system ? (without null value)
-					// dhcpMode = nicInfo.getIpConfig().getDhcp().getIpv4().isEnable();
-					// nicInfo.getIpConfig().ipAddress[0].state; 
-					// TODO : State of the network adapter ??? (otherwise connected / disconnected)
-					// TODO : How to obtain gateway address ? the gateway
-					
-					macAddress = nicInfo.getMacAddress();
-					
-					
-					int deviceConfigId = nicInfo.getDeviceConfigId();
-					LOGGER.info("Network : " + nicInfo.getNetwork());
-					LOGGER.info("Device Config Id : " + deviceConfigId);
-					if (deviceConfigId == key) {
-						// i = 0;
-						for (String ipAddress : ipAddressesLocal) {
-							ipAddressPlainLocal = ipAddress;
-							break;
-							// i++;
-							//
-							// if (i == ipAddressesLocal.length) {
-							// ipAddressPlainLocal += ipAddress;
-							// } else {
-							// ipAddressPlainLocal += ipAddress + ";";
-							// }
-							//
-						}
-						break;
-					}
-				}
+			};
+			UIDialog.executeActionThread(runnableWithProgress, titleMessage);
+			if (globalMessage != null && !globalMessage.isEmpty()) {
+				UIDialog.showUserMessage(titleMessage, globalMessage, levelMessage);
 			}
 
-		}
-		if (ipAddressPlainLocal.isEmpty()) {
-			this.setMessage("No ip address setup.");
-		} else {
-			this.setMessage("ip address setup: " + ipAddressPlainLocal);
-			
-			AttributeState attr = this.getAttributeStateObject("occi.networkinterface.address");
-			if (attr != null) {
-				// set the new value for this attribute.
-				attr.setValue(ipAddressPlainLocal);
-				// Create the attribute and set his value.
-				// attr = createAttribute("occi.networkinterface.address", ipAddressPlainLocal);
-				// this.getAttributes().add(attr);
-			// } else {
-				
-				
-			}
-
-		}
-		// Mac address.
-		if (macAddress != null) {
-			AttributeState attr = this.getAttributeStateObject("occi.networkinterface.mac");
-			if (attr != null) {
-				// Create the attribute and set his value.
-				// attr = createAttribute("occi.networkinterface.mac", macAddress);
-				// this.getAttributes().add(attr);
-			// } else {
-				attr.setValue(macAddress);
-			}
-		}
-
-		// TODO : Gateway value, how to get this value ? not found on guest object.
-		
-		
-		// allocation value (dynamic or static).
-//		String allocation;
-//		if (dhcpMode) {
-//			allocation = "dynamic";
-//		} else {
-//			allocation = "static";
-//		}
-		// Set the allocation.
-//		AttributeState attrib = this.getAttributeStateObject("occi.networkinterface.allocation");
-//		if (attrib == null) {
-//			// Create the attribute and set his value.
-//
-//			attrib = createAttribute("occi.networkinterface.allocation", allocation);
-//			this.getAttributes().add(attrib);
-//		} else {
-//			attrib.setValue(allocation);
-//		}
-
-		// May be null if the device is not started...
-
-		if (vEthDevice != null && vEthDevice.getConnectable() != null) {
-			if (vEthDevice.getConnectable().connected) {
-				this.setState(NetworkInterfaceStatus.ACTIVE);
-			} else {
-				this.setState(NetworkInterfaceStatus.INACTIVE);
-			}
-			
-			// Wake on lan value
-//			wakeOnLan = vEthDevice.getWakeOnLanEnabled();
-//			String wakeOnLanStr = wakeOnLan.toString();
-//			AttributeState attr = this.getAttributeStateObject("occi.networkinterface.wakeonlan");
-//			if (attr == null) {
-//				// Create the attribute and set his value.
-//				attr = createAttribute("occi.networkinterface.wakeonlan", wakeOnLanStr);
-//				this.getAttributes().add(attr);
-//			} else {
-//				attr.setValue(wakeOnLanStr);
-//			}
+			// TODO : Check si besoin d'une méthode de mise à jour des attributs
+			// updateAttributesOnNetworkNIC();
 
 		}
 
-
-		VCenterClient.disconnect();
+		globalMessage = "";
+		levelMessage = null;
 
 	}
 
@@ -432,107 +187,40 @@ public class NetworkinterfaceConnector
 	public void occiUpdate() {
 		LOGGER.debug("occiUpdate() called on " + this);
 
-		if (!VCenterClient.checkConnection()) {
-			// Must return true if connection is established.
-			return;
-		}
-		// TODO : Change ipAddress, change Mac address, dhcp active/inactive
-		// etc.
-		// Note: vmName is set with this method.
-		VirtualMachine vm = getVirtualMachineFromLinks();
-
-		if (vm == null) {
-			LOGGER.warn("The linked virtual machine doesnt exist on Vcenter, no network to retrieve.");
-			setState(NetworkInterfaceStatus.INACTIVE);
-			// No vm adapter found so.
-			VCenterClient.disconnect();
-			return;
-		}
-
-		// Get the linked Network connector.
-		NetworkConnector netConn = getLinkedNetwork();
-
-		networkAdapterName = this.getTitle();
-
-		if (networkAdapterName != null && networkAdapterName.isEmpty()) {
-			networkAdapterName = null;
-		}
-		if (networkName != null && networkName.isEmpty()) {
-			networkName = null;
-		}
-		if (oldNetworkAdapterName == null) {
-			oldNetworkAdapterName = networkAdapterName;
-		}
-		if (oldNetworkAdapterName != null && networkAdapterName != null
-				&& !oldNetworkAdapterName.equals(networkAdapterName)) {
-			// Change the label name of the adapter.
-			VirtualEthernetCard vEthDevice = NetworkHelper.findVirtualEthernetCardForVM(oldNetworkAdapterName, vm);
-			if (vEthDevice == null) {
-				LOGGER.warn("no virtual device for this name: " + oldNetworkAdapterName
-						+ " , cant update the network device: " + oldNetworkAdapterName + " on vm: " + vmName);
-				oldNetworkAdapterName = null;
-				setState(NetworkInterfaceStatus.INACTIVE);
-				VCenterClient.disconnect();
-				return;
-			}
-			vEthDevice.setExternalId(networkAdapterName);
-			Description desc = vEthDevice.getDeviceInfo();
-			desc.setLabel(networkAdapterName);
-			vEthDevice.setDeviceInfo(desc);
-
-			VirtualMachineConfigSpec vmConfigSpec = new VirtualMachineConfigSpec();
-			VirtualDeviceConfigSpec nicSpec = new VirtualDeviceConfigSpec();
-			nicSpec.setOperation(VirtualDeviceConfigSpecOperation.edit);
-			nicSpec.setDevice(vEthDevice);
-			VirtualDeviceConfigSpec[] nicSpecArray = { nicSpec };
-			vmConfigSpec.setDeviceChange(nicSpecArray);
-			// Launch the reconfig task.
-			// Launch the task.
-			Task task;
-			try {
-				task = vm.reconfigVM_Task(vmConfigSpec);
-				task.waitForTask();
-
-			} catch (RemoteException e) {
-				LOGGER.error(
-						"Error while updating a network adapter : " + networkAdapterName + " --< from vm : " + vmName,
-						e);
-				LOGGER.error("Message: " + e.getMessage());
-				VCenterClient.disconnect();
-				return;
-			} catch (InterruptedException ex) {
-				LOGGER.error(
-						"Error while updating a network adapter : " + networkAdapterName + " --< from vm : " + vmName,
-						ex);
-				LOGGER.error("Message: " + ex.getMessage());
-				VCenterClient.disconnect();
-				return;
-			}
-
-			TaskInfo taskInfo;
-			try {
-				taskInfo = task.getTaskInfo();
-				if (taskInfo.getState() != TaskInfoState.success) {
-					MethodFault fault = taskInfo.getError().getFault();
-					LOGGER.error(
-							"Error while updating a network adapter : " + networkAdapterName + " --< on vm : " + vmName,
-							fault.detail);
-					LOGGER.error("Fault message: " + fault.getMessage() + fault.getClass().getName());
-				} else {
-					LOGGER.info("The network : " + networkAdapterName + " is updated on virtual machine : " + vmName);
+		if (UIDialog.isStandAlone()) {
+			// Launching thread with business code.
+			LOGGER.debug("Console mode.");
+			Runnable runnable = new Runnable() {
+				@Override
+				public void run() {
+					updateNetworkNIC(null);
 				}
-			} catch (RemoteException e) {
-				LOGGER.error(
-						"Error while updating an network adapter : " + networkAdapterName + " --< to vm : " + vmName,
-						e);
-				LOGGER.error("Message : " + e.getMessage());
-			}
+			};
+			UIDialog.executeActionThread(runnable, titleMessage);
 
 		} else {
-			LOGGER.warn("No value change, cant update.");
+			// Launching IRunnableWithProgress UI thread with business code.
+			LOGGER.debug("UI mode.");
+			IRunnableWithProgress runnableWithProgress = new IRunnableWithProgress() {
+
+				@Override
+				public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+					updateNetworkNIC(monitor);
+				}
+			};
+			UIDialog.executeActionThread(runnableWithProgress, titleMessage);
+			if (globalMessage != null && !globalMessage.isEmpty()) {
+				UIDialog.showUserMessage(titleMessage, globalMessage, levelMessage);
+			}
+			// retrieve resource informations when no errors has been launched.
+			if ((levelMessage != null && !Level.ERROR.equals(levelMessage)) || levelMessage == null) {
+				occiRetrieve();
+			}
 		}
 
-		VCenterClient.disconnect();
+		globalMessage = "";
+		levelMessage = null;
+
 	}
 
 	/**
@@ -541,94 +229,43 @@ public class NetworkinterfaceConnector
 	@Override
 	public void occiDelete() {
 		LOGGER.debug("occiDelete() called on " + this);
-		if (!VCenterClient.checkConnection()) {
-			// Must return true if connection is established.
-			return;
-		}
 
-		// Load the virtual machine.
-		VirtualMachine vm = getVirtualMachineFromLinks();
-		if (vm == null) {
-			LOGGER.warn("No virtual machine is linked on the network.");
-			VCenterClient.disconnect();
-			return;
-		}
+		if (UIDialog.isStandAlone()) {
+			// Launching thread with business code.
+			LOGGER.debug("Console mode.");
+			Runnable runnable = new Runnable() {
+				@Override
+				public void run() {
+					deleteNetworkNIC(null);
+				}
+			};
+			UIDialog.executeActionThread(runnable, titleMessage);
 
-		// Check if the network nic device exist.
-		networkAdapterName = this.getTitle();
+		} else {
+			// Launching IRunnableWithProgress UI thread with business code.
+			LOGGER.debug("UI mode.");
+			IRunnableWithProgress runnableWithProgress = new IRunnableWithProgress() {
 
-		if (networkAdapterName != null && networkAdapterName.isEmpty()) {
-			networkAdapterName = null;
-		}
-		if (networkAdapterName == null) {
-			LOGGER.warn("No network adapter name setted. Cant delete the network.");
-			VCenterClient.disconnect();
-			return;
-		}
-
-		boolean nicExist = NetworkHelper.isNICExist(networkAdapterName, vm);
-		if (!nicExist) {
-			LOGGER.warn(
-					"This network adapter: " + networkAdapterName + " doesnt exist for the virtual machine: " + vmName);
-			VCenterClient.disconnect();
-			return;
-		}
-
-		// Remove this device.
-		// Load the eth device.
-		VirtualEthernetCard vEth = NetworkHelper.findVirtualEthernetCardForVM(networkAdapterName, vm);
-		if (vEth == null) {
-			LOGGER.error("Cant retrieve virtual ethernet card: " + networkAdapterName
-					+ " for deletion on virtual machine : " + vmName);
-			VCenterClient.disconnect();
-			return;
-		}
-
-		VirtualMachineConfigSpec vmConfigSpec = new VirtualMachineConfigSpec();
-		VirtualDeviceConfigSpec nicSpec = new VirtualDeviceConfigSpec();
-		nicSpec.setOperation(VirtualDeviceConfigSpecOperation.remove);
-		nicSpec.setDevice(vEth);
-		VirtualDeviceConfigSpec[] nicSpecArray = { nicSpec };
-		vmConfigSpec.setDeviceChange(nicSpecArray);
-
-		// Launch the task.
-		Task task;
-		try {
-			task = vm.reconfigVM_Task(vmConfigSpec);
-			task.waitForTask();
-
-		} catch (RemoteException ex) {
-			LOGGER.error("Error while deleting a network adapter : " + networkAdapterName + " --< from vm : " + vmName,
-					ex);
-			LOGGER.error("Message: " + ex.getMessage());
-			VCenterClient.disconnect();
-			return;
-		} catch (InterruptedException e) {
-			LOGGER.error("Error while deleting a network adapter : " + networkAdapterName + " --< from vm : " + vmName,
-					e);
-			LOGGER.error("Message: " + e.getMessage());
-			VCenterClient.disconnect();
-			return;
-		}
-
-		TaskInfo taskInfo;
-		try {
-			taskInfo = task.getTaskInfo();
-			if (taskInfo.getState() != TaskInfoState.success) {
-				MethodFault fault = taskInfo.getError().getFault();
-				LOGGER.error(
-						"Error while deleting a network adapter : " + networkAdapterName + " --< from vm : " + vmName,
-						fault.detail);
-				LOGGER.error("Fault message: " + fault.getMessage() + fault.getClass().getName());
-			} else {
-				LOGGER.info("The network : " + networkAdapterName + " is removed from virtual machine : " + vmName);
+				@Override
+				public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+					deleteNetworkNIC(monitor);
+				}
+			};
+			if (UIDialog.showConfirmDialog()) {
+				UIDialog.executeActionThread(runnableWithProgress, titleMessage);
 			}
-		} catch (RemoteException e) {
-			LOGGER.error("Error while deleting an network adapter : " + networkAdapterName + " --< to vm : " + vmName,
-					e);
-			LOGGER.error("Message : " + e.getMessage());
+			
+			if (globalMessage != null && !globalMessage.isEmpty()) {
+				UIDialog.showUserMessage(titleMessage, globalMessage, levelMessage);
+			}
+			// retrieve resource informations when no errors has been launched.
+			if ((levelMessage != null && !Level.ERROR.equals(levelMessage)) || levelMessage == null) {
+				occiRetrieve();
+			}
 		}
-		VCenterClient.disconnect();
+
+		globalMessage = "";
+		levelMessage = null;
 
 	}
 
@@ -640,107 +277,40 @@ public class NetworkinterfaceConnector
 	 */
 	public void up() {
 		LOGGER.debug("Action up() called on " + this);
-
-		if (!VCenterClient.checkConnection()) {
-			// Must return true if connection is established.
-			return;
-		}
-
-		// Load the virtual machine.
-		VirtualMachine vm = getVirtualMachineFromLinks();
-		if (vm == null) {
-			LOGGER.warn("No virtual machine is linked on the network.");
-			VCenterClient.disconnect();
-			return;
-		}
-
-		networkAdapterName = this.getTitle();
-
-		if (networkAdapterName != null && networkAdapterName.isEmpty()) {
-			networkAdapterName = null;
-		}
-		if (networkAdapterName == null) {
-			LOGGER.warn("No network adapter name setted. Cant load the network information.");
-			VCenterClient.disconnect();
-			return;
-		}
-
-		// Load the virtual ethernet card object from vm.
-		VirtualEthernetCard vEth = NetworkHelper.findVirtualEthernetCardForVM(networkAdapterName, vm);
-		if (vEth == null) {
-			LOGGER.error("Cant retrieve virtual ethernet card: " + networkAdapterName
-					+ " for action up, on virtual machine : " + vmName);
-			VCenterClient.disconnect();
-			return;
-		}
-		// Load the connect info.
-		VirtualDeviceConnectInfo connectInfo = vEth.getConnectable();
-		if (connectInfo == null) {
-			LOGGER.error("No connection information is found for this network : " + networkAdapterName);
-			VCenterClient.disconnect();
-			return;
-		}
-		boolean result = false;
-
-		NetworkConnector netConn = getLinkedNetwork();
-		// Network State Machine.
-		switch (getState().getValue()) {
-
-		case NetworkInterfaceStatus.ACTIVE_VALUE:
-			LOGGER.debug("Fire transition(state=active, action=\"up\")...");
-			if (connectInfo.isConnected()) {
-				// Disconnect and reconnect.
-				result = NetworkHelper.down(vm, vEth);
-				if (result) {
-					this.setState(NetworkInterfaceStatus.INACTIVE);
-					result = NetworkHelper.up(vm, vEth);
+		if (UIDialog.isStandAlone()) {
+			// Launching thread with business code.
+			LOGGER.debug("Console mode.");
+			Runnable runnable = new Runnable() {
+				@Override
+				public void run() {
+					upNetworkNIC(null);
 				}
-			} else {
-				result = NetworkHelper.up(vm, vEth);
-			}
-			break;
+			};
+			UIDialog.executeActionThread(runnable, titleMessage);
 
-		case NetworkInterfaceStatus.INACTIVE_VALUE:
-			LOGGER.debug("Fire transition(state=inactive, action=\"up\")...");
-			if (!connectInfo.isConnected()) {
-				result = NetworkHelper.up(vm, vEth);
-			}
-			break;
-
-		case NetworkInterfaceStatus.ERROR_VALUE:
-			LOGGER.debug("Fire transition(state=error, action=\"up\")...");
-			if (!connectInfo.isConnected()) {
-				result = NetworkHelper.up(vm, vEth);
-			}
-			break;
-
-		default:
-			if (!connectInfo.isConnected()) {
-				result = NetworkHelper.up(vm, vEth);
-			}
-			break;
-		}
-
-		if (result) {
-			LOGGER.info("The network adapter : " + networkAdapterName + " is connected.");
-			this.setState(NetworkInterfaceStatus.ACTIVE);
-			if (netConn != null) {
-				netConn.setState(NetworkStatus.ACTIVE);
-			}
 		} else {
-			if (connectInfo.isConnected()) {
-				LOGGER.info("The network adapter: " + networkAdapterName + " was already connected.");
-				this.setState(NetworkInterfaceStatus.ACTIVE);
-				if (netConn != null) {
-					netConn.setState(NetworkStatus.ACTIVE);
+			// Launching IRunnableWithProgress UI thread with business code.
+			LOGGER.debug("UI mode.");
+			IRunnableWithProgress runnableWithProgress = new IRunnableWithProgress() {
+
+				@Override
+				public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+					upNetworkNIC(monitor);
 				}
-			} else {
-				LOGGER.warn("The network adapter is not connected, check your configuration.");
-				this.setState(NetworkInterfaceStatus.INACTIVE);
+			};
+			UIDialog.executeActionThread(runnableWithProgress, titleMessage);
+			if (globalMessage != null && !globalMessage.isEmpty()) {
+				UIDialog.showUserMessage(titleMessage, globalMessage, levelMessage);
+			}
+			// retrieve resource informations when no errors has been launched.
+			if ((levelMessage != null && !Level.ERROR.equals(levelMessage)) || levelMessage == null) {
+				occiRetrieve();
 			}
 		}
 
-		VCenterClient.disconnect();
+		globalMessage = "";
+		levelMessage = null;
+
 	}
 
 	/**
@@ -750,63 +320,40 @@ public class NetworkinterfaceConnector
 	 */
 	public void down() {
 		LOGGER.debug("Action down() called on " + this);
-		if (!VCenterClient.checkConnection()) {
-			// Must return true if connection is established.
-			return;
-		}
-
-		// Load the virtual machine.
-		VirtualMachine vm = getVirtualMachineFromLinks();
-		if (vm == null) {
-			LOGGER.warn("No virtual machine is linked on the network.");
-			VCenterClient.disconnect();
-			return;
-		}
-
-		networkAdapterName = this.getTitle();
-
-		if (networkAdapterName != null && networkAdapterName.isEmpty()) {
-			networkAdapterName = null;
-		}
-		if (networkAdapterName == null) {
-			LOGGER.warn("No network adapter name setted. Cant load the network information.");
-			VCenterClient.disconnect();
-			return;
-		}
-
-		// Load the virtual ethernet card object from vm.
-		VirtualEthernetCard vEth = NetworkHelper.findVirtualEthernetCardForVM(networkAdapterName, vm);
-		if (vEth == null) {
-			LOGGER.error("Cant retrieve virtual ethernet card: " + networkAdapterName
-					+ " for action up, on virtual machine : " + vmName);
-			VCenterClient.disconnect();
-			return;
-		}
-		// Load the connect info.
-		VirtualDeviceConnectInfo connectInfo = vEth.getConnectable();
-		if (connectInfo == null) {
-			LOGGER.error("No connection information is found for this network : " + networkAdapterName);
-			VCenterClient.disconnect();
-			return;
-		}
-		boolean result = false;
-
-		NetworkConnector netConn = getLinkedNetwork();
-		// Network State Machine.
-		if (connectInfo.isConnected()) {
-			result = NetworkHelper.down(vm, vEth);
-			if (!result) {
-				this.setState(NetworkInterfaceStatus.ACTIVE);
-				if (netConn != null) {
-					netConn.setState(NetworkStatus.ACTIVE);
+		if (UIDialog.isStandAlone()) {
+			// Launching thread with business code.
+			LOGGER.debug("Console mode.");
+			Runnable runnable = new Runnable() {
+				@Override
+				public void run() {
+					downNetworkNIC(null);
 				}
+			};
+			UIDialog.executeActionThread(runnable, titleMessage);
+
+		} else {
+			// Launching IRunnableWithProgress UI thread with business code.
+			LOGGER.debug("UI mode.");
+			IRunnableWithProgress runnableWithProgress = new IRunnableWithProgress() {
+
+				@Override
+				public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+					downNetworkNIC(monitor);
+				}
+			};
+			UIDialog.executeActionThread(runnableWithProgress, titleMessage);
+			if (globalMessage != null && !globalMessage.isEmpty()) {
+				UIDialog.showUserMessage(titleMessage, globalMessage, levelMessage);
+			}
+			// retrieve resource informations when no errors has been launched.
+			if ((levelMessage != null && !Level.ERROR.equals(levelMessage)) || levelMessage == null) {
+				occiRetrieve();
 			}
 		}
-		if (result) {
-			this.setState(NetworkInterfaceStatus.INACTIVE);
-		}
 
-		VCenterClient.disconnect();
+		globalMessage = "";
+		levelMessage = null;
+
 	}
 
 	/**
@@ -984,6 +531,936 @@ public class NetworkinterfaceConnector
 
 	public void setNetworkName(String hostNetworkName) {
 		this.networkName = hostNetworkName;
+	}
+
+	/**
+	 * Business code on creating a network interface adapter (nic).
+	 * 
+	 * @param monitor
+	 */
+	public void createNetworkNIC(IProgressMonitor monitor) {
+
+		if (!VCenterClient.checkConnection()) {
+			// Must return true if connection is established.
+			globalMessage = "No connection to Vcenter has been established.";
+			levelMessage = Level.ERROR;
+			LOGGER.error(globalMessage);
+			return;
+		}
+		SubMonitor subMonitor = null;
+		boolean toMonitor = false;
+		if (monitor != null) {
+			toMonitor = true;
+		}
+		if (toMonitor) {
+			subMonitor = SubMonitor.convert(monitor, 100);
+			subMonitor.worked(10);
+		}
+		// 1 - Get vm connector link, if no vm ==> no create, vmName is set with
+		// this method.
+		VirtualMachine vm = getVirtualMachineFromLinks();
+		if (vm == null) {
+			globalMessage = "No virtual machine is linked on the network.";
+			levelMessage = Level.ERROR;
+			LOGGER.error(globalMessage);
+			VCenterClient.disconnect();
+			return;
+		}
+		if (monitor != null) {
+			subMonitor.worked(20);
+		}
+		// 2 - Check if this network adapter already exist.
+		networkAdapterName = this.getTitle();
+
+		if (networkAdapterName != null && networkAdapterName.isEmpty()) {
+			networkAdapterName = null;
+		}
+		if (networkAdapterName == null) {
+			globalMessage = "No network adapter name setted. Cant create the network.";
+			levelMessage = Level.ERROR;
+			LOGGER.error(globalMessage);
+			VCenterClient.disconnect();
+			return;
+		}
+		if (oldNetworkAdapterName == null) {
+			oldNetworkAdapterName = networkAdapterName;
+		}
+
+		// 3 - if exist, network is not created.
+		nicExist = NetworkHelper.isNICExist(networkAdapterName, vm);
+		if (nicExist) {
+			globalMessage = "This network adapter: " + networkAdapterName + " already exist for the virtual machine: "
+					+ vmName;
+			levelMessage = Level.WARN;
+			LOGGER.warn(globalMessage);
+			VCenterClient.disconnect();
+			return;
+		}
+		if (monitor != null) {
+			subMonitor.worked(30);
+		}
+		Folder rootFolder = VCenterClient.getServiceInstance().getRootFolder();
+		HostSystem host = VMHelper.findHostSystemForVM(rootFolder, vmName);
+
+		// Get the linked Network interface connector.
+		NetworkConnector netConn = getLinkedNetwork();
+		if (networkName == null && netConn != null) {
+			networkName = netConn.getLabel();
+		} else {
+
+			Allocator allocator = new AllocatorImpl(rootFolder);
+			allocator.setHost(host);
+
+			Network net = allocator.allocateNetwork();
+
+			networkName = net.getName();
+		}
+
+		// 4 - if not exist, check attributes and create the network.
+		// Check the hostNetworkName...
+		if (networkName == null || !NetworkHelper.isHostNetworkExist(networkName, host)) {
+			LOGGER.error("Host network name doesnt exist");
+			if (networkName != null) {
+				globalMessage = "No virtual switch to connect on : " + networkName;
+			} else {
+				globalMessage = "No virtual switch to connect from this network adapter.";
+			}
+			levelMessage = Level.ERROR;
+			LOGGER.error(globalMessage);
+			VCenterClient.disconnect();
+			return;
+		}
+		if (monitor != null) {
+			subMonitor.worked(40);
+		}
+		// TODO : Manual configuration network mode (mac address).
+		// TODO : Customization with ipAddress and other cool things...
+		VirtualDeviceConfigSpec nicSpec = NetworkHelper.createNicSpec(networkName, networkAdapterName,
+				NetworkHelper.MODE_NETWORK_ADDRESS_GENERATED, null);
+		VirtualMachineConfigSpec vmConfigSpec = new VirtualMachineConfigSpec();
+		VirtualDeviceConfigSpec[] nicSpecArray = { nicSpec };
+		vmConfigSpec.setDeviceChange(nicSpecArray);
+
+		// Launch the reconfig task.
+		if (monitor != null) {
+			subMonitor.worked(60);
+		}
+		Task task;
+		try {
+			task = vm.reconfigVM_Task(vmConfigSpec);
+			task.waitForTask();
+
+		} catch (RemoteException ex) {
+			globalMessage = "Error while creating a network adapter : " + networkAdapterName + " --< to vm : " + vmName
+					+ " , \n error message: " + ex.getMessage();
+			levelMessage = Level.ERROR;
+			LOGGER.error(globalMessage, ex);
+			VCenterClient.disconnect();
+			return;
+
+		} catch (InterruptedException e) {
+			globalMessage = "Error while creating a network adapter : " + networkAdapterName + " --< to vm : " + vmName
+					+ " , \n error message: " + e.getMessage();
+			levelMessage = Level.ERROR;
+			LOGGER.error(globalMessage, e);
+			VCenterClient.disconnect();
+			return;
+		}
+
+		TaskInfo taskInfo;
+		try {
+			taskInfo = task.getTaskInfo();
+			if (taskInfo.getState() != TaskInfoState.success) {
+				MethodFault fault = taskInfo.getError().getFault();
+				globalMessage = "Error while creating a network adapter : " + networkAdapterName + " --< to vm : "
+						+ vmName + " , \n error message: " + fault.detail + " \n " + fault.getMessage();
+				levelMessage = Level.ERROR;
+				LOGGER.error(globalMessage, fault);
+
+			} else {
+				created = true;
+			}
+		} catch (RemoteException e) {
+			globalMessage = "Error while creating a network adapter : " + networkAdapterName + " --< to vm : " + vmName
+					+ " , \n error message: " + e.getMessage();
+			levelMessage = Level.ERROR;
+			LOGGER.error(globalMessage, e);
+		}
+		if (monitor != null) {
+			subMonitor.worked(100);
+		}
+		// 5 - Reload network information, and update accordingly the object
+		// (via occiRetrieve() method.)
+		if (created) {
+			LOGGER.info("Network adapter : " + networkAdapterName + " has been created.");
+		} else {
+			LOGGER.warn("Network adapter : " + networkAdapterName + " could'nt created, cause : \n " + globalMessage);
+		}
+
+		VCenterClient.disconnect();
+	}
+
+	/**
+	 * Business code for retrieving a network adapter.
+	 * 
+	 * @param monitor
+	 */
+	public void retrieveNetworkNIC(IProgressMonitor monitor) {
+
+		if (!VCenterClient.checkConnection()) {
+			// Must return true if connection is established.
+			globalMessage = "No connection to Vcenter has been established.";
+			levelMessage = Level.ERROR;
+			LOGGER.error(globalMessage);
+			return;
+		}
+		SubMonitor subMonitor = null;
+		boolean toMonitor = false;
+		if (monitor != null) {
+			toMonitor = true;
+		}
+
+		if (toMonitor) {
+			subMonitor = SubMonitor.convert(monitor, 100);
+			// consume..
+			subMonitor.worked(10);
+
+		}
+		ServiceInstance si = VCenterClient.getServiceInstance();
+		Folder rootFolder = si.getRootFolder();
+		// Load virtual machine if any.
+		// Note: vmName is set with this method.
+		VirtualMachine vm = getVirtualMachineFromLinks();
+
+		if (vm == null) {
+
+			globalMessage = "The linked virtual machine doesnt exist on Vcenter, no network to retrieve.";
+			levelMessage = Level.ERROR;
+			LOGGER.error(globalMessage);
+			setState(NetworkInterfaceStatus.INACTIVE);
+			// No vm adapter found so.
+			VCenterClient.disconnect();
+			return;
+		}
+
+		if (toMonitor) {
+			subMonitor.worked(20);
+		}
+		// Get the linked Network connector target.
+		NetworkConnector netConn = getLinkedNetwork();
+
+		networkAdapterName = this.getTitle();
+
+		if (networkAdapterName != null && networkAdapterName.isEmpty()) {
+			networkAdapterName = null;
+		}
+		if (networkName != null && networkName.isEmpty()) {
+			networkName = null;
+		}
+		if (oldNetworkAdapterName == null) {
+			oldNetworkAdapterName = networkAdapterName;
+		}
+		// Search the appropriate adapter if vm exist on vcenter.
+		getVMHostNetworkName(vm, netConn);
+		List<VirtualEthernetCard> vEths = null;
+		VirtualEthernetCard vEthDevice = null;
+		if (networkName != null) {
+			// Search after network adapter name for the backing name :
+			// hostNetworkName.
+			// List of all virtual ethernet card on the vm.
+			vEths = NetworkHelper.findNetDeviceForHostNetName(networkName, vm);
+			if (vEths.isEmpty()) {
+				globalMessage = "No network adapter found for this host network: " + networkName;
+				levelMessage = Level.ERROR;
+				LOGGER.error(globalMessage);
+				setState(NetworkInterfaceStatus.INACTIVE);
+				VCenterClient.disconnect();
+				return;
+			}
+
+		} else {
+			globalMessage = "The vswitch port group name is not found on vcenter, no network to retrieve.";
+			levelMessage = Level.ERROR;
+			LOGGER.error(globalMessage);
+			setState(NetworkInterfaceStatus.INACTIVE);
+			VCenterClient.disconnect();
+			return;
+		}
+		String externalId = null;
+		for (VirtualEthernetCard vEth : vEths) {
+			externalId = vEth.getExternalId();
+			if (networkAdapterName == null) {
+
+				LOGGER.info("The network adapter is not set (title attribute), searching info on vcenter...");
+				if (externalId != null) {
+					networkAdapterName = externalId;
+				} else {
+					// Find the first on the list.
+					networkAdapterName = vEth.getDeviceInfo().getLabel();
+				}
+				vEthDevice = vEth;
+				break;
+			} else {
+				if (vEth.getDeviceInfo().getLabel().equals(networkAdapterName)) {
+					vEthDevice = vEth;
+					break;
+				} else if (externalId != null) {
+					if (externalId.equals(networkAdapterName)) {
+						vEthDevice = vEth;
+					}
+				}
+
+			}
+		}
+		if (toMonitor) {
+			subMonitor.worked(40);
+		}
+		// Set the informations...
+		this.setTitle(networkAdapterName);
+		String[] ipAddressesLocal;
+		String ipAddressPlainLocal = "";
+		String macAddress = null;
+		boolean dhcpMode = false;
+		Boolean wakeOnLan = true;
+		// String dnsName;
+
+		if (VMHelper.isToolsInstalled(vm) && VMHelper.isToolsRunning(vm) && vEthDevice != null) {
+			// Get guest information.
+			GuestNicInfo[] guestNicInf = vm.getGuest().getNet();
+			int i;
+			int key = vEthDevice.getKey();
+			if (guestNicInf != null) {
+				for (GuestNicInfo nicInfo : guestNicInf) {
+					ipAddressesLocal = nicInfo.getIpAddress();
+					// TODO : How to get dhcp mode of a network adapter system ?
+					// (without null value)
+					// dhcpMode =
+					// nicInfo.getIpConfig().getDhcp().getIpv4().isEnable();
+					// nicInfo.getIpConfig().ipAddress[0].state;
+					// TODO : State of the network adapter ??? (otherwise
+					// connected / disconnected)
+					// TODO : How to obtain gateway address ? the gateway
+
+					macAddress = nicInfo.getMacAddress();
+
+					int deviceConfigId = nicInfo.getDeviceConfigId();
+					LOGGER.info("Network : " + nicInfo.getNetwork());
+					LOGGER.info("Device Config Id : " + deviceConfigId);
+					if (deviceConfigId == key) {
+						// i = 0;
+						for (String ipAddress : ipAddressesLocal) {
+							ipAddressPlainLocal = ipAddress;
+							break;
+							// i++;
+							//
+							// if (i == ipAddressesLocal.length) {
+							// ipAddressPlainLocal += ipAddress;
+							// } else {
+							// ipAddressPlainLocal += ipAddress + ";";
+							// }
+							//
+						}
+						break;
+					}
+				}
+			}
+
+		}
+		if (toMonitor) {
+			subMonitor.worked(60);
+		}
+		if (ipAddressPlainLocal.isEmpty()) {
+			this.setMessage("No ip address setup.");
+		} else {
+			this.setMessage("ip address setup: " + ipAddressPlainLocal);
+
+			AttributeState attr = this.getAttributeStateObject("occi.networkinterface.address");
+			if (attr != null) {
+				// set the new value for this attribute.
+				attr.setValue(ipAddressPlainLocal);
+				// Create the attribute and set his value.
+				// attr = createAttribute("occi.networkinterface.address",
+				// ipAddressPlainLocal);
+				// this.getAttributes().add(attr);
+				// } else {
+
+			}
+
+		}
+		// Mac address.
+		if (macAddress != null) {
+			AttributeState attr = this.getAttributeStateObject("occi.networkinterface.mac");
+			if (attr != null) {
+				// Create the attribute and set his value.
+				// attr = createAttribute("occi.networkinterface.mac",
+				// macAddress);
+				// this.getAttributes().add(attr);
+				// } else {
+				attr.setValue(macAddress);
+			}
+		}
+		if (toMonitor) {
+			subMonitor.worked(70);
+		}
+		// TODO : Gateway value, how to get this value ? not found on guest
+		// object.
+
+		// allocation value (dynamic or static).
+		// String allocation;
+		// if (dhcpMode) {
+		// allocation = "dynamic";
+		// } else {
+		// allocation = "static";
+		// }
+		// Set the allocation.
+		// AttributeState attrib =
+		// this.getAttributeStateObject("occi.networkinterface.allocation");
+		// if (attrib == null) {
+		// // Create the attribute and set his value.
+		//
+		// attrib = createAttribute("occi.networkinterface.allocation",
+		// allocation);
+		// this.getAttributes().add(attrib);
+		// } else {
+		// attrib.setValue(allocation);
+		// }
+
+		// May be null if the device is not started...
+
+		if (vEthDevice != null && vEthDevice.getConnectable() != null) {
+			if (vEthDevice.getConnectable().connected) {
+				this.setState(NetworkInterfaceStatus.ACTIVE);
+			} else {
+				this.setState(NetworkInterfaceStatus.INACTIVE);
+			}
+
+			// Wake on lan value
+			// wakeOnLan = vEthDevice.getWakeOnLanEnabled();
+			// String wakeOnLanStr = wakeOnLan.toString();
+			// AttributeState attr =
+			// this.getAttributeStateObject("occi.networkinterface.wakeonlan");
+			// if (attr == null) {
+			// // Create the attribute and set his value.
+			// attr = createAttribute("occi.networkinterface.wakeonlan",
+			// wakeOnLanStr);
+			// this.getAttributes().add(attr);
+			// } else {
+			// attr.setValue(wakeOnLanStr);
+			// }
+
+		}
+		if (toMonitor) {
+			subMonitor.worked(100);
+		}
+		VCenterClient.disconnect();
+
+	}
+
+	/**
+	 * Business code for updating a network adapter.
+	 * 
+	 * @param monitor
+	 */
+	public void updateNetworkNIC(IProgressMonitor monitor) {
+
+		if (!VCenterClient.checkConnection()) {
+			// Must return true if connection is established.
+			globalMessage = "No connection to Vcenter has been established.";
+			levelMessage = Level.ERROR;
+			LOGGER.error(globalMessage);
+			return;
+		}
+		SubMonitor subMonitor = null;
+		boolean toMonitor = false;
+		if (monitor != null) {
+			toMonitor = true;
+		}
+
+		if (toMonitor) {
+			subMonitor = SubMonitor.convert(monitor, 100);
+			// consume..
+			subMonitor.worked(10);
+
+		}
+		// TODO : Change ipAddress, change Mac address, dhcp active/inactive
+		// etc.
+		// Note: vmName is set with this method.
+		VirtualMachine vm = getVirtualMachineFromLinks();
+
+		if (vm == null) {
+
+			globalMessage = "The linked virtual machine doesnt exist on Vcenter, no network to retrieve.";
+			levelMessage = Level.ERROR;
+			LOGGER.error(globalMessage);
+			setState(NetworkInterfaceStatus.INACTIVE);
+			// No vm adapter found so.
+			VCenterClient.disconnect();
+			return;
+		}
+		if (toMonitor) {
+			subMonitor.worked(20);
+		}
+		// Get the linked Network connector.
+		NetworkConnector netConn = getLinkedNetwork();
+
+		networkAdapterName = this.getTitle();
+
+		if (networkAdapterName != null && networkAdapterName.isEmpty()) {
+			networkAdapterName = null;
+		}
+		if (networkName != null && networkName.isEmpty()) {
+			networkName = null;
+		}
+		if (oldNetworkAdapterName == null) {
+			oldNetworkAdapterName = networkAdapterName;
+		}
+		if (oldNetworkAdapterName != null && networkAdapterName != null
+				&& !oldNetworkAdapterName.equals(networkAdapterName)) {
+			// Change the label name of the adapter.
+			VirtualEthernetCard vEthDevice = NetworkHelper.findVirtualEthernetCardForVM(oldNetworkAdapterName, vm);
+			if (vEthDevice == null) {
+				globalMessage = "no virtual device for this name: " + oldNetworkAdapterName
+						+ " , cant update the network device: " + oldNetworkAdapterName + " on vm: " + vmName;
+				levelMessage = Level.ERROR;
+				LOGGER.error(globalMessage);
+				oldNetworkAdapterName = null;
+				setState(NetworkInterfaceStatus.INACTIVE);
+				VCenterClient.disconnect();
+				return;
+			}
+			if (toMonitor) {
+				subMonitor.worked(40);
+			}
+			vEthDevice.setExternalId(networkAdapterName);
+			Description desc = vEthDevice.getDeviceInfo();
+			desc.setLabel(networkAdapterName);
+			vEthDevice.setDeviceInfo(desc);
+
+			VirtualMachineConfigSpec vmConfigSpec = new VirtualMachineConfigSpec();
+			VirtualDeviceConfigSpec nicSpec = new VirtualDeviceConfigSpec();
+			nicSpec.setOperation(VirtualDeviceConfigSpecOperation.edit);
+			nicSpec.setDevice(vEthDevice);
+			VirtualDeviceConfigSpec[] nicSpecArray = { nicSpec };
+			vmConfigSpec.setDeviceChange(nicSpecArray);
+			// Launch the reconfig task.
+			// Launch the task.
+			Task task;
+			try {
+				task = vm.reconfigVM_Task(vmConfigSpec);
+				task.waitForTask();
+
+			} catch (RemoteException e) {
+				globalMessage = "Error while updating a network adapter : " + networkAdapterName + " --< from vm : "
+						+ vmName + " \n " + " Message: " + e.getMessage();
+				levelMessage = Level.ERROR;
+				LOGGER.error(globalMessage);
+				VCenterClient.disconnect();
+				return;
+			} catch (InterruptedException ex) {
+				globalMessage = "Error while updating a network adapter : " + networkAdapterName + " --< from vm : "
+						+ vmName + " \n " + " Message: " + ex.getMessage();
+				levelMessage = Level.ERROR;
+				LOGGER.error(globalMessage);
+				VCenterClient.disconnect();
+				return;
+			}
+
+			TaskInfo taskInfo;
+			try {
+				taskInfo = task.getTaskInfo();
+				if (taskInfo.getState() != TaskInfoState.success) {
+					MethodFault fault = taskInfo.getError().getFault();
+					globalMessage = "Error while updating a network adapter : " + networkAdapterName + " --< from vm : "
+							+ vmName + " \n " + " detail: " + fault.detail + " \n Message: " + fault.getMessage();
+					levelMessage = Level.ERROR;
+					LOGGER.error(globalMessage);
+					LOGGER.error("Fault message: " + fault.getMessage() + fault.getClass().getName());
+				} else {
+					LOGGER.info("The network : " + networkAdapterName + " is updated on virtual machine : " + vmName);
+				}
+			} catch (RemoteException e) {
+				globalMessage = "Error while updating a network adapter : " + networkAdapterName + " --< from vm : "
+						+ vmName + " \n " + " Message: " + e.getMessage();
+				levelMessage = Level.ERROR;
+				LOGGER.error(globalMessage);
+			}
+
+		} else {
+			LOGGER.warn("No value changed, cant update.");
+		}
+		if (toMonitor) {
+			subMonitor.worked(100);
+		}
+		VCenterClient.disconnect();
+	}
+
+	/**
+	 * Business code for deleting a network nic.
+	 * 
+	 * @param monitor
+	 */
+	public void deleteNetworkNIC(IProgressMonitor monitor) {
+		if (!VCenterClient.checkConnection()) {
+			// Must return true if connection is established.
+			globalMessage = "No connection to Vcenter has been established.";
+			levelMessage = Level.ERROR;
+			LOGGER.error(globalMessage);
+			return;
+		}
+		SubMonitor subMonitor = null;
+		boolean toMonitor = false;
+		if (monitor != null) {
+			toMonitor = true;
+		}
+
+		if (toMonitor) {
+			subMonitor = SubMonitor.convert(monitor, 100);
+			// consume..
+			subMonitor.worked(10);
+
+		}
+		// Load the virtual machine.
+		VirtualMachine vm = getVirtualMachineFromLinks();
+		if (vm == null) {
+			globalMessage = "No virtual machine is linked on the network adapter.";
+			levelMessage = Level.ERROR;
+			LOGGER.error(globalMessage);
+			VCenterClient.disconnect();
+			return;
+		}
+
+		// Check if the network nic device exist.
+		networkAdapterName = this.getTitle();
+
+		if (networkAdapterName != null && networkAdapterName.isEmpty()) {
+			networkAdapterName = null;
+		}
+		if (networkAdapterName == null) {
+			globalMessage = "No network adapter name setted. Cant delete the network adapter.";
+			levelMessage = Level.ERROR;
+			LOGGER.error(globalMessage);
+			VCenterClient.disconnect();
+			return;
+		}
+
+		boolean nicExist = NetworkHelper.isNICExist(networkAdapterName, vm);
+		if (!nicExist) {
+			globalMessage = "This network adapter: " + networkAdapterName + " doesnt exist for the virtual machine: "
+					+ vmName;
+			levelMessage = Level.ERROR;
+			LOGGER.error(globalMessage);
+			VCenterClient.disconnect();
+			return;
+		}
+		if (toMonitor) {
+			subMonitor.worked(20);
+		}
+		// Remove this device.
+		// Load the eth device.
+		VirtualEthernetCard vEth = NetworkHelper.findVirtualEthernetCardForVM(networkAdapterName, vm);
+		if (vEth == null) {
+			globalMessage = "Cant retrieve virtual ethernet card: " + networkAdapterName
+					+ " for deletion on virtual machine : " + vmName;
+			levelMessage = Level.ERROR;
+			LOGGER.error(globalMessage);
+			VCenterClient.disconnect();
+			return;
+		}
+		if (toMonitor) {
+			subMonitor.worked(40);
+		}
+		VirtualMachineConfigSpec vmConfigSpec = new VirtualMachineConfigSpec();
+		VirtualDeviceConfigSpec nicSpec = new VirtualDeviceConfigSpec();
+		nicSpec.setOperation(VirtualDeviceConfigSpecOperation.remove);
+		nicSpec.setDevice(vEth);
+		VirtualDeviceConfigSpec[] nicSpecArray = { nicSpec };
+		vmConfigSpec.setDeviceChange(nicSpecArray);
+
+		if (toMonitor) {
+			subMonitor.worked(60);
+		}
+		// Launch the task.
+		Task task;
+		try {
+			task = vm.reconfigVM_Task(vmConfigSpec);
+			task.waitForTask();
+
+		} catch (RemoteException ex) {
+			globalMessage = "Error while deleting a network adapter : " + networkAdapterName + " --< from vm : "
+					+ vmName + " \n " + ex.getMessage();
+			levelMessage = Level.ERROR;
+			LOGGER.error(globalMessage, ex);
+			VCenterClient.disconnect();
+			return;
+		} catch (InterruptedException e) {
+			globalMessage = "Error while deleting a network adapter : " + networkAdapterName + " --< from vm : "
+					+ vmName + " \n " + e.getMessage();
+			levelMessage = Level.ERROR;
+			LOGGER.error(globalMessage, e);
+			VCenterClient.disconnect();
+			return;
+		}
+		if (toMonitor) {
+			subMonitor.worked(80);
+		}
+		TaskInfo taskInfo;
+		try {
+			taskInfo = task.getTaskInfo();
+			if (taskInfo.getState() != TaskInfoState.success) {
+				MethodFault fault = taskInfo.getError().getFault();
+				globalMessage = "Error while deleting a network adapter : " + networkAdapterName + " --< from vm : "
+						+ vmName + " \n " + "detail: " + fault.detail + " \n Message: " + fault.getMessage();
+				levelMessage = Level.ERROR;
+				LOGGER.error(globalMessage, fault);
+				LOGGER.error("Fault message: " + fault.getMessage() + fault.getClass().getName());
+			} else {
+				LOGGER.info("The network : " + networkAdapterName + " is removed from virtual machine : " + vmName);
+			}
+		} catch (RemoteException e) {
+			globalMessage = "Error while deleting a network adapter : " + networkAdapterName + " --< from vm : "
+					+ vmName + " \n " + e.getMessage();
+			levelMessage = Level.ERROR;
+			LOGGER.error(globalMessage, e);
+		}
+		if (toMonitor) {
+			subMonitor.worked(100);
+		}
+		VCenterClient.disconnect();
+	}
+
+	/**
+	 * Business code for action up.
+	 * 
+	 * @param monitor
+	 */
+	public void upNetworkNIC(IProgressMonitor monitor) {
+		if (!VCenterClient.checkConnection()) {
+			// Must return true if connection is established.
+			globalMessage = "No connection to Vcenter has been established.";
+			levelMessage = Level.ERROR;
+			LOGGER.error(globalMessage);
+			return;
+		}
+		SubMonitor subMonitor = null;
+		boolean toMonitor = false;
+		if (monitor != null) {
+			toMonitor = true;
+		}
+
+		if (toMonitor) {
+			subMonitor = SubMonitor.convert(monitor, 100);
+			// consume..
+			subMonitor.worked(10);
+		}
+
+		// Load the virtual machine.
+		VirtualMachine vm = getVirtualMachineFromLinks();
+		if (vm == null) {
+			globalMessage = "No virtual machine is linked on the network.";
+			levelMessage = Level.ERROR;
+			LOGGER.error(globalMessage);
+			VCenterClient.disconnect();
+			return;
+		}
+
+		networkAdapterName = this.getTitle();
+
+		if (networkAdapterName != null && networkAdapterName.isEmpty()) {
+			networkAdapterName = null;
+		}
+		if (networkAdapterName == null) {
+			globalMessage = "No network adapter name setted. Cant load the network adapter information.";
+			levelMessage = Level.ERROR;
+			LOGGER.error(globalMessage);
+			VCenterClient.disconnect();
+			return;
+		}
+
+		// Load the virtual ethernet card object from vm.
+		VirtualEthernetCard vEth = NetworkHelper.findVirtualEthernetCardForVM(networkAdapterName, vm);
+		if (vEth == null) {
+			globalMessage = "Cant retrieve virtual ethernet card: " + networkAdapterName
+					+ " for action up, on virtual machine : " + vmName;
+			levelMessage = Level.ERROR;
+			LOGGER.error(globalMessage);
+			VCenterClient.disconnect();
+			return;
+		}
+		if (toMonitor) {
+			subMonitor.worked(20);
+		}
+		// Load the connect info.
+		VirtualDeviceConnectInfo connectInfo = vEth.getConnectable();
+		if (connectInfo == null) {
+			globalMessage = "No connection information is found for this network adapter : " + networkAdapterName;
+			levelMessage = Level.ERROR;
+			LOGGER.error(globalMessage);
+			VCenterClient.disconnect();
+			return;
+		}
+		boolean result = false;
+
+		NetworkConnector netConn = getLinkedNetwork();
+		if (toMonitor) {
+			subMonitor.worked(40);
+		}
+		// Network State Machine.
+		switch (getState().getValue()) {
+
+		case NetworkInterfaceStatus.ACTIVE_VALUE:
+			LOGGER.debug("Fire transition(state=active, action=\"up\")...");
+			if (connectInfo.isConnected()) {
+				// Disconnect and reconnect.
+				result = NetworkHelper.down(vm, vEth);
+				if (result) {
+					this.setState(NetworkInterfaceStatus.INACTIVE);
+					result = NetworkHelper.up(vm, vEth);
+				}
+			} else {
+				result = NetworkHelper.up(vm, vEth);
+			}
+			break;
+
+		case NetworkInterfaceStatus.INACTIVE_VALUE:
+			LOGGER.debug("Fire transition(state=inactive, action=\"up\")...");
+			if (!connectInfo.isConnected()) {
+				result = NetworkHelper.up(vm, vEth);
+			}
+			break;
+
+		case NetworkInterfaceStatus.ERROR_VALUE:
+			LOGGER.debug("Fire transition(state=error, action=\"up\")...");
+			if (!connectInfo.isConnected()) {
+				result = NetworkHelper.up(vm, vEth);
+			}
+			break;
+
+		default:
+			if (!connectInfo.isConnected()) {
+				result = NetworkHelper.up(vm, vEth);
+			}
+			break;
+		}
+
+		if (result) {
+			LOGGER.info("The network adapter : " + networkAdapterName + " is connected.");
+			this.setState(NetworkInterfaceStatus.ACTIVE);
+			if (netConn != null) {
+				netConn.setState(NetworkStatus.ACTIVE);
+			}
+		} else {
+			if (connectInfo.isConnected()) {
+				LOGGER.info("The network adapter: " + networkAdapterName + " was already connected.");
+				this.setState(NetworkInterfaceStatus.ACTIVE);
+				if (netConn != null) {
+					netConn.setState(NetworkStatus.ACTIVE);
+				}
+			} else {
+				globalMessage = "The network adapter is not connected, check your configuration.";
+				levelMessage = Level.WARN;
+				LOGGER.warn(globalMessage);
+				this.setState(NetworkInterfaceStatus.INACTIVE);
+			}
+		}
+		if (toMonitor) {
+			subMonitor.worked(100);
+		}
+		VCenterClient.disconnect();
+
+	}
+
+	/**
+	 * Business code for action down.
+	 * 
+	 * @param monitor
+	 */
+	public void downNetworkNIC(IProgressMonitor monitor) {
+		if (!VCenterClient.checkConnection()) {
+			// Must return true if connection is established.
+			globalMessage = "No connection to Vcenter has been established.";
+			levelMessage = Level.ERROR;
+			LOGGER.error(globalMessage);
+			return;
+		}
+		SubMonitor subMonitor = null;
+		boolean toMonitor = false;
+		if (monitor != null) {
+			toMonitor = true;
+		}
+
+		if (toMonitor) {
+			subMonitor = SubMonitor.convert(monitor, 100);
+			// consume..
+			subMonitor.worked(10);
+		}
+
+		// Load the virtual machine.
+		VirtualMachine vm = getVirtualMachineFromLinks();
+		if (vm == null) {
+			globalMessage = "No virtual machine is linked on the network adapter.";
+			levelMessage = Level.ERROR;
+			LOGGER.error(globalMessage);
+			VCenterClient.disconnect();
+			return;
+		}
+
+		networkAdapterName = this.getTitle();
+
+		if (networkAdapterName != null && networkAdapterName.isEmpty()) {
+			networkAdapterName = null;
+		}
+		if (networkAdapterName == null) {
+			globalMessage = "No network adapter name setted. Cant load the network information.";
+			levelMessage = Level.ERROR;
+			LOGGER.error(globalMessage);
+			VCenterClient.disconnect();
+			return;
+		}
+
+		// Load the virtual ethernet card object from vm.
+		VirtualEthernetCard vEth = NetworkHelper.findVirtualEthernetCardForVM(networkAdapterName, vm);
+		if (vEth == null) {
+			globalMessage = "Cant retrieve virtual ethernet card: " + networkAdapterName
+					+ " for action down, on virtual machine : " + vmName;
+			levelMessage = Level.ERROR;
+			LOGGER.error(globalMessage);
+			VCenterClient.disconnect();
+			return;
+		}
+		if (toMonitor) {
+			subMonitor.worked(20);
+		}
+		// Load the connect info.
+		VirtualDeviceConnectInfo connectInfo = vEth.getConnectable();
+		if (connectInfo == null) {
+			globalMessage = "No connection information is found for this network : " + networkAdapterName;
+			levelMessage = Level.ERROR;
+			LOGGER.error(globalMessage);
+			VCenterClient.disconnect();
+			return;
+		}
+		boolean result = false;
+		if (toMonitor) {
+			subMonitor.worked(40);
+		}
+		NetworkConnector netConn = getLinkedNetwork();
+		// Network State Machine.
+		if (connectInfo.isConnected()) {
+			result = NetworkHelper.down(vm, vEth);
+			if (!result) {
+				this.setState(NetworkInterfaceStatus.ACTIVE);
+				if (netConn != null) {
+					netConn.setState(NetworkStatus.ACTIVE);
+				}
+			}
+		}
+		if (result) {
+			this.setState(NetworkInterfaceStatus.INACTIVE);
+		}
+		if (toMonitor) {
+			subMonitor.worked(100);
+		}
+		VCenterClient.disconnect();
 	}
 
 }

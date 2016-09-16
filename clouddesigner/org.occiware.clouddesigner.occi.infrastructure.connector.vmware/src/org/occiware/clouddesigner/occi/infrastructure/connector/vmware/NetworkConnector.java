@@ -401,14 +401,14 @@ public class NetworkConnector extends org.occiware.clouddesigner.occi.infrastruc
 		titleMessage = "Update a vswitch : " + getTitle();
 		LOGGER.debug("occiUpdate() called on " + this);
 
-		if (!VCenterClient.checkConnection()) {
-			// Must return true if connection is established.
-			return;
-		}
-
-		// TODO : Update network name, update vlan id, update ipAddress etc.
-
-		VCenterClient.disconnect();
+//		if (!VCenterClient.checkConnection()) {
+//			// Must return true if connection is established.
+//			return;
+//		}
+//
+//		
+//
+//		VCenterClient.disconnect();
 	}
 
 	/**
@@ -419,15 +419,15 @@ public class NetworkConnector extends org.occiware.clouddesigner.occi.infrastruc
 		titleMessage = "Delete a vswitch: " + getTitle();
 		LOGGER.debug("occiDelete() called on " + this);
 
-		if (!VCenterClient.checkConnection()) {
-			// Must return true if connection is established.
-			return;
-		}
-
-		// TODO : Remove vSwitch network and detach his linked adapters device
-		// from network.
-
-		VCenterClient.disconnect();
+//		if (!VCenterClient.checkConnection()) {
+//			// Must return true if connection is established.
+//			return;
+//		}
+//
+//		// TODO : Remove vSwitch network and detach his linked adapters device
+//		// from network.
+//
+//		VCenterClient.disconnect();
 	}
 
 	//
@@ -444,14 +444,14 @@ public class NetworkConnector extends org.occiware.clouddesigner.occi.infrastruc
 		titleMessage = "Enable a vswitch : " + getTitle();
 		LOGGER.debug("Action up() called on " + this);
 
-		if (!VCenterClient.checkConnection()) {
-			// Must return true if connection is established.
-			return;
-		}
-
-		// Activate vswitch.
-
-		VCenterClient.disconnect();
+//		if (!VCenterClient.checkConnection()) {
+//			// Must return true if connection is established.
+//			return;
+//		}
+//
+//		// Activate vswitch.
+//
+//		VCenterClient.disconnect();
 	}
 
 	/**
@@ -463,14 +463,14 @@ public class NetworkConnector extends org.occiware.clouddesigner.occi.infrastruc
 	public void down() {
 		titleMessage = "Disable a vwitch : " + getTitle();
 		LOGGER.debug("Action down() called on " + this);
-		if (!VCenterClient.checkConnection()) {
-			// Must return true if connection is established.
-			return;
-		}
-
-		// TODO : Disconnect all network interfaces.
-
-		VCenterClient.disconnect();
+//		if (!VCenterClient.checkConnection()) {
+//			// Must return true if connection is established.
+//			return;
+//		}
+//
+//		// TODO : Disconnect all network interfaces.
+//
+//		VCenterClient.disconnect();
 	}
 
 	/**
@@ -612,10 +612,6 @@ public class NetworkConnector extends org.occiware.clouddesigner.occi.infrastruc
 		// Update the attributes via a transaction (or not if standalone).
 		EntityUtils.updateAttributes(this, attrsToCreate, attrsToUpdate, attrsToDelete);
 
-		
-		
-		
-		
 	}
 	
 }
