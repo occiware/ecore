@@ -53,6 +53,7 @@ import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import com.github.dockerjava.api.model.RestartPolicy
 import com.github.dockerjava.api.model.Ports.Binding
+import java.util.Properties
 
 class DockerContainerManager {
 	private static DockerClient dockerClient = null
@@ -604,34 +605,26 @@ class DockerContainerManager {
 		var Session session = null
 		val File test = new File("test")
 		val host = "192.168.99.100"
+		val user = "docker"
+		val int port = 22
+		val privatekey = "/Users/spirals/.docker/machine/machines/ghost/id_rsa"
 
 		try {
 			val JSch jsc = new JSch
-			jsc.setKnownHosts("test")
-			jsc.addIdentity("/Users/spirals/.docker/machine/machines/bingo/id_rsa")
-			val user = "docker"
-			session = jsc.getSession(user, host, 22)
+			jsc.setKnownHosts("/dev/null")
+			jsc.addIdentity(privatekey)
+			jsc.knownHosts = "/dev/null"
+ 			var Properties config = new Properties();
+        	config.put("StrictHostKeyChecking", "no")			
+			session = jsc.getSession(user, host, port)
+			session.config = config
 			session.connect()
+			println("Connection successfully ...")
 
 		} catch (JSchException e) {
 			LOGGER.info(e.toString)
-			addHost(session.getHostKey().getKey(), host, "test")
-		}
-
-		try {
-			val JSch jsc = new JSch
-			jsc.setKnownHosts("test")
-			jsc.addIdentity("/Users/spirals/.docker/machine/machines/bingo/id_rsa")
-			val user = "docker"
-			session = jsc.getSession(user, host, 22)
-			session.connect()
-
-			val Channel channel = session.openChannel("shell")
-			channel.setInputStream(System.in)
-			channel.setOutputStream(System.out)
-			channel.connect()
-		} catch (JSchException e) {
-			LOGGER.info(e.toString)
+			e.printStackTrace
+//			addHost(session.getHostKey().getKey(), host, "test")
 		}
 	}
 
@@ -646,26 +639,29 @@ class DockerContainerManager {
 			test.createNewFile
 		}
 
-		try {
-			val JSch jsc = new JSch
-			jsc.setKnownHosts(test.absolutePath)
-			jsc.addIdentity(privateKey)
-			session = jsc.getSession(user, host, 22)
-			session.connect()
-
-		} catch (JSchException e) {
-			LOGGER.info(e.toString)
-			addHost(session.getHostKey().getKey(), host, tempDir + "/hosts")
-		}
 
 		try {
 			val JSch jsc = new JSch
-			jsc.setKnownHosts(test.absolutePath)
+
+			jsc.knownHosts = "/dev/null"
+ 			var Properties config = new Properties();
+        	config.put("StrictHostKeyChecking", "no")			
+
+			jsc.setKnownHosts("/dev/null")
 			jsc.addIdentity(privateKey)
+			LOGGER.info("Identity added ..")
+
 			val exCommand = "sudo sh -c " + "\"" + command + "\""
 			LOGGER.info(exCommand)
+
 			session = jsc.getSession(user, host, 22)
+			LOGGER.info("Session created ..")
+			session.setConfig(config)
+			LOGGER.info("Session config ..") 
+
 			session.connect()
+			LOGGER.info("Session connected ..")
+
 			val Channel channel = session.openChannel("exec")
 			(channel as ChannelExec).setCommand(exCommand)
 			(channel as ChannelExec).setErrStream(System.err)
@@ -718,5 +714,4 @@ class DockerContainerManager {
 			return tempDir
 		}
 	}
-
 }

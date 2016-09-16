@@ -691,7 +691,11 @@ class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statistics> {
 		var system_cpu_usage = cpu.get("system_cpu_usage")
 		var percpu_usage_size = percpu_usage as List
 		var Integer mem_used = stats.memoryStats.get("usage") as Integer
-
+		var Integer mem_limit = stats.memoryStats.get("limit") as Integer
+		var Integer network_r = stats.network.get("rx_bytes") as Integer
+		var Integer network_t = stats.network.get("tx_bytes") as Integer
+		var Integer bandwitdh = network_r + network_t 
+		
 		// Update the Queue
 		cpuTotalUsageQueue.add(Float.valueOf(cpu_used.toString))
 		cpuSystemUsageQueue.add(Float.valueOf(system_cpu_usage.toString))
@@ -700,25 +704,28 @@ class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statistics> {
 			// Calculate the percentage
 			var percent = calculateCPUPercent(cpuTotalUsageQueue, cpuSystemUsageQueue, percpu_usage_size.size)
 			// Update the monitoring metrics
-			modifyResourceSet(this.container, mem_used.toString, cpu_used.toString, percent)
+			modifyResourceSet(this.container, cpu_used.toString, percent, mem_used, mem_limit, bandwitdh)
 		}
 	}
 
-	def void modifyResourceSet(Resource resource, String mem_used, String cpu_used, Float percent) {
+	def void modifyResourceSet(Resource resource, String cpu_used, Float percent, Integer mem_used, Integer mem_limit, Integer bandwitdh) {
 		// Creating an editing domain
 		var TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(resource.eResource.resourceSet)
 
-		//Thread.sleep(1) // Pause for 1 ms
 		var Command cmd = new RecordingCommand(domain) {
 			override protected void doExecute() {
 				// these modifications require a write transaction in this editing domain
 				var DecimalFormat df = new DecimalFormat("#0.##")
 				var int cpu_max = 0
 				var Float cpu_us = 0.0F
+				var Float mem_percent = Integer.parseInt(mem_used.toString).floatValue / Integer.parseInt(mem_limit.toString).floatValue
 				try {
 					// Modify the resource only if it is in active state
 					if ((resource as ExecutableContainer).state == ComputeStatus.ACTIVE) {
 						(resource as ExecutableContainer).memory_used = Integer.parseInt(mem_used.toString)
+						(resource as ExecutableContainer).memory_max_value = Integer.parseInt(mem_limit.toString)
+						(resource as ExecutableContainer).memory_percent = df.format(mem_percent)
+						(resource as ExecutableContainer).bandwidth_used = bandwitdh
 						cpu_us = (Long.valueOf(cpu_used.toString)).floatValue / 1000000F
 						
 						// To avoid NumberFormatException, the maximum value of Integer is 2^31-1 = 2147483647
@@ -749,10 +756,6 @@ class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statistics> {
 		} catch (RollbackException rbe) {
 			LOGGER.error(rbe.getStatus().toString)
 		}
-	}
-	
-	def Boolean gotStats() {
-		return gotStats;
 	}
 
 	def String getContainerId(){

@@ -81,6 +81,16 @@ public class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statist
       Map<String, Object> _memoryStats = stats.getMemoryStats();
       Object _get_1 = _memoryStats.get("usage");
       Integer mem_used = ((Integer) _get_1);
+      Map<String, Object> _memoryStats_1 = stats.getMemoryStats();
+      Object _get_2 = _memoryStats_1.get("limit");
+      Integer mem_limit = ((Integer) _get_2);
+      Map<String, Object> _network = stats.getNetwork();
+      Object _get_3 = _network.get("rx_bytes");
+      Integer network_r = ((Integer) _get_3);
+      Map<String, Object> _network_1 = stats.getNetwork();
+      Object _get_4 = _network_1.get("tx_bytes");
+      Integer network_t = ((Integer) _get_4);
+      Integer bandwitdh = Integer.valueOf(((network_r).intValue() + (network_t).intValue()));
       String _string = cpu_used.toString();
       Float _valueOf = Float.valueOf(_string);
       this.cpuTotalUsageQueue.add(_valueOf);
@@ -100,16 +110,15 @@ public class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statist
       if (_and) {
         int _size_3 = percpu_usage_size.size();
         Float percent = this.calculateCPUPercent(this.cpuTotalUsageQueue, this.cpuSystemUsageQueue, _size_3);
-        String _string_2 = mem_used.toString();
-        String _string_3 = cpu_used.toString();
-        this.modifyResourceSet(this.container, _string_2, _string_3, percent);
+        String _string_2 = cpu_used.toString();
+        this.modifyResourceSet(this.container, _string_2, percent, mem_used, mem_limit, bandwitdh);
       }
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }
   
-  public void modifyResourceSet(final Resource resource, final String mem_used, final String cpu_used, final Float percent) {
+  public void modifyResourceSet(final Resource resource, final String cpu_used, final Float percent, final Integer mem_used, final Integer mem_limit, final Integer bandwitdh) {
     try {
       org.eclipse.emf.ecore.resource.Resource _eResource = resource.eResource();
       ResourceSet _resourceSet = _eResource.getResourceSet();
@@ -120,17 +129,30 @@ public class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statist
           DecimalFormat df = new DecimalFormat("#0.##");
           int cpu_max = 0;
           Float cpu_us = Float.valueOf(0.0F);
+          String _string = mem_used.toString();
+          int _parseInt = Integer.parseInt(_string);
+          float _floatValue = Integer.valueOf(_parseInt).floatValue();
+          String _string_1 = mem_limit.toString();
+          int _parseInt_1 = Integer.parseInt(_string_1);
+          float _floatValue_1 = Integer.valueOf(_parseInt_1).floatValue();
+          Float mem_percent = Float.valueOf((_floatValue / _floatValue_1));
           try {
             ComputeStatus _state = ((ExecutableContainer) resource).getState();
             boolean _equals = Objects.equal(_state, ComputeStatus.ACTIVE);
             if (_equals) {
-              String _string = mem_used.toString();
-              int _parseInt = Integer.parseInt(_string);
-              ((ExecutableContainer) resource).setMemory_used(_parseInt);
-              String _string_1 = cpu_used.toString();
-              Long _valueOf = Long.valueOf(_string_1);
-              float _floatValue = _valueOf.floatValue();
-              float _divide = (_floatValue / 1000000F);
+              String _string_2 = mem_used.toString();
+              int _parseInt_2 = Integer.parseInt(_string_2);
+              ((ExecutableContainer) resource).setMemory_used(_parseInt_2);
+              String _string_3 = mem_limit.toString();
+              int _parseInt_3 = Integer.parseInt(_string_3);
+              ((ExecutableContainer) resource).setMemory_max_value(_parseInt_3);
+              String _format = df.format(mem_percent);
+              ((ExecutableContainer) resource).setMemory_percent(_format);
+              ((ExecutableContainer) resource).setBandwidth_used((bandwitdh).intValue());
+              String _string_4 = cpu_used.toString();
+              Long _valueOf = Long.valueOf(_string_4);
+              float _floatValue_2 = _valueOf.floatValue();
+              float _divide = (_floatValue_2 / 1000000F);
               cpu_us = Float.valueOf(_divide);
               int _intValue = cpu_us.intValue();
               boolean _greaterThan = (_intValue > Integer.MAX_VALUE);
@@ -138,8 +160,8 @@ public class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statist
                 cpu_us = Float.valueOf(((cpu_us).floatValue() / 100000000F));
               }
               int _intValue_1 = cpu_us.intValue();
-              String _string_2 = Integer.valueOf(_intValue_1).toString();
-              long _parseLong = Long.parseLong(_string_2);
+              String _string_5 = Integer.valueOf(_intValue_1).toString();
+              long _parseLong = Long.parseLong(_string_5);
               int _maxValue = StatsCallback.this.getMaxValue(Long.valueOf(_parseLong), percent);
               cpu_max = _maxValue;
               int _intValue_2 = Integer.valueOf(cpu_max).intValue();
@@ -156,8 +178,8 @@ public class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statist
               ((ExecutableContainer) resource).setCpu_max_value((_valueOf_1).intValue());
               Integer _valueOf_2 = Integer.valueOf(cpu_max);
               StatsCallback.LOGGER.info("CPU MAX VALUE <=====> {}", _valueOf_2);
-              String _format = df.format(percent);
-              ((ExecutableContainer) resource).setCpu_percent(_format);
+              String _format_1 = df.format(percent);
+              ((ExecutableContainer) resource).setCpu_percent(_format_1);
             }
           } catch (final Throwable _t) {
             if (_t instanceof NumberFormatException) {
@@ -186,10 +208,6 @@ public class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statist
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
-  }
-  
-  public Boolean gotStats() {
-    return this.gotStats();
   }
   
   public String getContainerId() {

@@ -37,7 +37,6 @@ import com.google.common.base.Objects;
 import com.google.common.collect.Multimap;
 import com.jcraft.jsch.Channel;
 import com.jcraft.jsch.ChannelExec;
-import com.jcraft.jsch.HostKey;
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.Session;
@@ -59,6 +58,7 @@ import java.util.Set;
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.occiware.clouddesigner.occi.docker.Container;
 import org.occiware.clouddesigner.occi.docker.Machine;
 import org.occiware.clouddesigner.occi.docker.connector.EventCallBack;
@@ -950,45 +950,29 @@ public class DockerContainerManager {
     Session session = null;
     final File test = new File("test");
     final String host = "192.168.99.100";
+    final String user = "docker";
+    final int port = 22;
+    final String privatekey = "/Users/spirals/.docker/machine/machines/ghost/id_rsa";
     try {
       final JSch jsc = new JSch();
-      jsc.setKnownHosts("test");
-      jsc.addIdentity("/Users/spirals/.docker/machine/machines/bingo/id_rsa");
-      final String user = "docker";
-      Session _session = jsc.getSession(user, host, 22);
+      jsc.setKnownHosts("/dev/null");
+      jsc.addIdentity(privatekey);
+      jsc.setKnownHosts("/dev/null");
+      Properties config = new Properties();
+      config.put("StrictHostKeyChecking", "no");
+      Session _session = jsc.getSession(user, host, port);
       session = _session;
+      session.setConfig(config);
       session.connect();
+      InputOutput.<String>println("Connection successfully ...");
     } catch (final Throwable _t) {
       if (_t instanceof JSchException) {
         final JSchException e = (JSchException)_t;
         String _string = e.toString();
         DockerContainerManager.LOGGER.info(_string);
-        HostKey _hostKey = session.getHostKey();
-        String _key = _hostKey.getKey();
-        this.addHost(_key, host, "test");
+        e.printStackTrace();
       } else {
         throw Exceptions.sneakyThrow(_t);
-      }
-    }
-    try {
-      final JSch jsc_1 = new JSch();
-      jsc_1.setKnownHosts("test");
-      jsc_1.addIdentity("/Users/spirals/.docker/machine/machines/bingo/id_rsa");
-      final String user_1 = "docker";
-      Session _session_1 = jsc_1.getSession(user_1, host, 22);
-      session = _session_1;
-      session.connect();
-      final Channel channel = session.openChannel("shell");
-      channel.setInputStream(System.in);
-      channel.setOutputStream(System.out);
-      channel.connect();
-    } catch (final Throwable _t_1) {
-      if (_t_1 instanceof JSchException) {
-        final JSchException e_1 = (JSchException)_t_1;
-        String _string_1 = e_1.toString();
-        DockerContainerManager.LOGGER.info(_string_1);
-      } else {
-        throw Exceptions.sneakyThrow(_t_1);
       }
     }
   }
@@ -1007,46 +991,32 @@ public class DockerContainerManager {
       }
       try {
         final JSch jsc = new JSch();
-        String _absolutePath = test.getAbsolutePath();
-        jsc.setKnownHosts(_absolutePath);
+        jsc.setKnownHosts("/dev/null");
+        Properties config = new Properties();
+        config.put("StrictHostKeyChecking", "no");
+        jsc.setKnownHosts("/dev/null");
         jsc.addIdentity(privateKey);
+        DockerContainerManager.LOGGER.info("Identity added ..");
+        final String exCommand = ((("sudo sh -c " + "\"") + command) + "\"");
+        DockerContainerManager.LOGGER.info(exCommand);
         Session _session = jsc.getSession(user, host, 22);
         session = _session;
+        DockerContainerManager.LOGGER.info("Session created ..");
+        session.setConfig(config);
+        DockerContainerManager.LOGGER.info("Session config ..");
         session.connect();
+        DockerContainerManager.LOGGER.info("Session connected ..");
+        final Channel channel = session.openChannel("exec");
+        ((ChannelExec) channel).setCommand(exCommand);
+        ((ChannelExec) channel).setErrStream(System.err);
+        channel.connect();
       } catch (final Throwable _t) {
         if (_t instanceof JSchException) {
           final JSchException e = (JSchException)_t;
           String _string = e.toString();
           DockerContainerManager.LOGGER.info(_string);
-          HostKey _hostKey = session.getHostKey();
-          String _key = _hostKey.getKey();
-          String _plus_1 = (tempDir + "/hosts");
-          this.addHost(_key, host, _plus_1);
         } else {
           throw Exceptions.sneakyThrow(_t);
-        }
-      }
-      try {
-        final JSch jsc_1 = new JSch();
-        String _absolutePath_1 = test.getAbsolutePath();
-        jsc_1.setKnownHosts(_absolutePath_1);
-        jsc_1.addIdentity(privateKey);
-        final String exCommand = ((("sudo sh -c " + "\"") + command) + "\"");
-        DockerContainerManager.LOGGER.info(exCommand);
-        Session _session_1 = jsc_1.getSession(user, host, 22);
-        session = _session_1;
-        session.connect();
-        final Channel channel = session.openChannel("exec");
-        ((ChannelExec) channel).setCommand(exCommand);
-        ((ChannelExec) channel).setErrStream(System.err);
-        channel.connect();
-      } catch (final Throwable _t_1) {
-        if (_t_1 instanceof JSchException) {
-          final JSchException e_1 = (JSchException)_t_1;
-          String _string_1 = e_1.toString();
-          DockerContainerManager.LOGGER.info(_string_1);
-        } else {
-          throw Exceptions.sneakyThrow(_t_1);
         }
       }
       session.disconnect();
