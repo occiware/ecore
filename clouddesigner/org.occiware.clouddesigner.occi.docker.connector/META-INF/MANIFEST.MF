@@ -6,7 +6,7 @@ Bundle-Name: org.occiware.clouddesigner.occi.docker.connector
 Bundle-ClassPath: .,
  lib/commons-csv-1.1.jar,
  lib/jackson-all-1.7.9.jar,
- lib/jsch-0.1.52.jar,
+ lib/jsch-0.1.53.jar,
  lib/aopalliance-repackaged-2.3.0-b05.jar,
  lib/bcpkix-jdk15on-1.51.jar,
  lib/bcprov-jdk15on-1.51.jar,
