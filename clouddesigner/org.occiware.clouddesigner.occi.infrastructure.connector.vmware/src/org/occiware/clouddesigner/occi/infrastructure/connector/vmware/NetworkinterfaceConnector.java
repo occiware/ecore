@@ -251,7 +251,10 @@ public class NetworkinterfaceConnector
 					deleteNetworkNIC(monitor);
 				}
 			};
-			UIDialog.executeActionThread(runnableWithProgress, titleMessage);
+			if (UIDialog.showConfirmDialog()) {
+				UIDialog.executeActionThread(runnableWithProgress, titleMessage);
+			}
+			
 			if (globalMessage != null && !globalMessage.isEmpty()) {
 				UIDialog.showUserMessage(titleMessage, globalMessage, levelMessage);
 			}
