@@ -25,12 +25,20 @@
         <containerMappings name="Machine" preconditionExpression="[self.eInverse()->filter(docker::Contains)->select(target=self) -> isEmpty()/]" labelDirectEdit="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit']" semanticCandidatesExpression="feature:resources" domainClass="Machine">
           <subNodeMappings name="Container" deletionDescription="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@toolSections.1/@ownedTools[name='unsetContainer']" labelDirectEdit="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit']" semanticCandidatesExpression="[links->filter(docker::Contains).target/]" doubleClickDescription="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@toolSections.0/@ownedTools[name='containerDoubleClick']" domainClass="Container">
             <borderedNodeMappings name="DetailContainer" preconditionExpression="[state.toString().equalsIgnoreCase('active') and self.monitored/]" labelDirectEdit="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit']" semanticCandidatesExpression="var:self" domainClass="Container">
-              <style xsi:type="style:GaugeCompositeStyleDescription" showIcon="false" labelExpression="[self.cpu_percent + ' %'/]" sizeComputationExpression="4" labelPosition="node" resizeKind="NSEW" alignment="HORIZONTAL">
+              <style xsi:type="style:GaugeCompositeStyleDescription" labelSize="6" showIcon="false" labelExpression="" sizeComputationExpression="2" labelPosition="node" resizeKind="NSEW" alignment="HORIZONTAL">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelFormat>bold</labelFormat>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <sections maxValueExpression="[self.cpu_max_value/]" valueExpression="[self.cpu_used/]" label="CPU">
+                <sections maxValueExpression="[self.cpu_max_value/]" valueExpression="[self.cpu_used/]">
                   <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
+                  <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+                </sections>
+                <sections maxValueExpression="[self.memory_max_value/]" valueExpression="[self.memory_used/]">
+                  <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
+                  <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+                </sections>
+                <sections maxValueExpression="1000000000" valueExpression="[self.bandwidth_used/]">
+                  <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
                   <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
                 </sections>
               </style>
@@ -40,7 +48,7 @@
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
             <conditionnalStyles predicateExpression="[state.toString().equalsIgnoreCase('active')/]">
-              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" tooltipExpression="['[CPU]: ' + self.cpu_percent + ' %'+ ', [Memory]: ' + self.memory_used + ' Ko'/]" sizeComputationExpression="5" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.occiware.clouddesigner.occi.docker.design/images/mcol-closed-box_green.svg">
+              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" tooltipExpression="['[CPU]: ' + self.cpu_percent + ' %'+ ', [Memory]: ' + self.memory_percent + ' %'/]" sizeComputationExpression="5" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.occiware.clouddesigner.occi.docker.design/images/mcol-closed-box_green.svg">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
@@ -81,7 +89,7 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="[state.toString().equalsIgnoreCase('inactive')/]">
-            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
