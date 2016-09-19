@@ -86,7 +86,9 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 	private static final String ATTR_MARKED_AS_TEMPLATE = "markedastemplate";
 	private static final String ATTR_VM_GUEST_OS_ID = "guestosid";
 	private static final String ATTR_VM_EPHEMERAL_DISK_SIZE_GB = "occi.compute.ephemeral_storage.size"; 
-
+	private static final String VMWARE_MIXIN_FOLDERS_TERM = "vmwarefolders";
+	private static final String VMWARE_MIXIN_VM_ADDON_TERM = "vmaddon";
+	
 	/**
 	 * Managed object reference id. Unique reference for virtual machine.
 	 */
@@ -937,7 +939,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 			mixinTerm = mixin.getTerm();
 			// This mixin contains attributes for datacenter, datastore, cluster
 			// and others goodies on folders.
-			if (mixinTerm.equals("vmwarefolders")) {
+			if (mixinTerm.equals(VMWARE_MIXIN_FOLDERS_TERM)) {
 				result = true;
 				break;
 			}
@@ -956,7 +958,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		List<Mixin> mixins = this.getMixins();
 		for (Mixin mixin : mixins) {
 			mixinTerm = mixin.getTerm();
-			if (mixinTerm.equals("vmaddon")) {
+			if (mixinTerm.equals(VMWARE_MIXIN_VM_ADDON_TERM)) {
 				result = true;
 				break;
 			}

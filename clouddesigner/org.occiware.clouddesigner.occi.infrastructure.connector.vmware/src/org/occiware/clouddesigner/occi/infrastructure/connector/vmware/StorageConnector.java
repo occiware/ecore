@@ -27,6 +27,7 @@ import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.occiware.clouddesigner.occi.AttributeState;
 import org.occiware.clouddesigner.occi.Configuration;
 import org.occiware.clouddesigner.occi.Link;
+import org.occiware.clouddesigner.occi.Mixin;
 import org.occiware.clouddesigner.occi.OCCIFactory;
 import org.occiware.clouddesigner.occi.Resource;
 import org.occiware.clouddesigner.occi.infrastructure.StorageStatus;
@@ -93,6 +94,8 @@ public class StorageConnector extends org.occiware.clouddesigner.occi.infrastruc
 	 */
 	public static final String ATTR_DATACENTER_NAME = "datacentername";
 	public static final String ATTR_DATASTORE_NAME = "datastorename";
+	private static final String VMWARE_MIXIN_FOLDERS_TERM = "vmwarefolders";
+	
 
 	/**
 	 * Managed object reference id. Unique reference for virtual machine.
@@ -460,6 +463,28 @@ public class StorageConnector extends org.occiware.clouddesigner.occi.infrastruc
 		}
 		return computes;
 	}
+	
+	/**
+	 * Check if this compute has mixin vmware folder addon.
+	 * 
+	 * @return
+	 */
+	public boolean hasMixinVMwareFolders() {
+		boolean result = false;
+		String mixinTerm = null;
+		List<Mixin> mixins = this.getMixins();
+		for (Mixin mixin : mixins) {
+			mixinTerm = mixin.getTerm();
+			// This mixin contains attributes for datacenter, datastore, cluster
+			// and others goodies on folders.
+			if (mixinTerm.equals(VMWARE_MIXIN_FOLDERS_TERM)) {
+				result = true;
+				break;
+			}
+		}
+		return result;
+	}
+	
 
 	/**
 	 * Load from referenced objects, the datacenter information and datastore.
@@ -472,6 +497,18 @@ public class StorageConnector extends org.occiware.clouddesigner.occi.infrastruc
 
 		List<ComputeConnector> computes = getLinkedComputes();
 		
+		boolean hasMixinVmwareFolders = hasMixinVMwareFolders();
+		if (hasMixinVmwareFolders) {
+			String datacenterTmp = getAttributeValueByOcciKey(ATTR_DATACENTER_NAME);
+			String datastoreTmp = getAttributeValueByOcciKey(ATTR_DATASTORE_NAME);
+			// get and set datastorename and datacentername.
+			if (datacenterTmp != null && !datacenterTmp.trim().isEmpty()) {
+				datacenterName = datacenterTmp;
+			}
+			if (datastoreTmp != null && !datastoreTmp.trim().isEmpty()) {
+				datastoreName = datastoreTmp;
+			}
+		}
 		
 		// Load the datastore.
 		if (datastoreName != null) {
@@ -517,9 +554,14 @@ public class StorageConnector extends org.occiware.clouddesigner.occi.infrastruc
 			}
 
 		}
-
+		if (datacenterName != null) {
+			datacenter = DatacenterHelper.findDatacenterForName(rootFolder, datacenterName);
+		} 
+		if (datacenter == null) {
+			// Another solution is to get datacenter object from datastore.
+			datacenter = DatacenterHelper.findDatacenterFromDatastore(rootFolder, datastoreName);
+		}
 		
-		datacenter = DatacenterHelper.findDatacenterFromDatastore(rootFolder, datastoreName);
 		
 		if (datacenter == null && datastoreName != null) {
 			
@@ -621,8 +663,8 @@ public class StorageConnector extends org.occiware.clouddesigner.occi.infrastruc
 		Map<String, String> attrsToCreate = new HashMap<>();
 		Map<String, String> attrsToUpdate = new HashMap<>();
 		List<String> attrsToDelete = new ArrayList<>();
-
-		if (datacenterName != null) {
+		boolean hasMixinVMwareFolders = hasMixinVMwareFolders();
+		if (datacenterName != null && hasMixinVMwareFolders) {
 			if (this.getAttributeValueByOcciKey(ATTR_DATACENTER_NAME) == null) {
 				attrsToCreate.put(ATTR_DATACENTER_NAME, datacenterName);
 			} else {
@@ -630,7 +672,7 @@ public class StorageConnector extends org.occiware.clouddesigner.occi.infrastruc
 				attrsToUpdate.put(ATTR_DATACENTER_NAME, datacenterName);
 			}
 		}
-		if (datastoreName != null) {
+		if (datastoreName != null && hasMixinVMwareFolders) {
 			// ATTR_DATASTORE_NAME
 			if (this.getAttributeValueByOcciKey(ATTR_DATASTORE_NAME) == null) {
 				attrsToCreate.put(ATTR_DATASTORE_NAME, datastoreName);

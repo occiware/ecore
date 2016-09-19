@@ -93,6 +93,8 @@ public class NetworkConnector extends org.occiware.clouddesigner.occi.infrastruc
 	private static final String ATTR_CLUSTER_NAME = "clustername";
 	
 	private static final String ATTR_VSWITCH_NBPORT = "nbport";
+	private static final String VMWARE_MIXIN_FOLDERS_TERM = "vmwarefolders";
+	private static final String VMWARE_MIXIN_VSWITCH_INFOS_TERM = "vswitchinfos";
 	
 	// Message to end users management.
 	private String titleMessage = "";
@@ -329,7 +331,7 @@ public class NetworkConnector extends org.occiware.clouddesigner.occi.infrastruc
 					LOGGER.warn(globalMessage);
 					return;
 				}
-				List<Mixin> mixins;
+				
 				ServiceInstance si = VCenterClient.getServiceInstance();
 				Folder rootFolder = si.getRootFolder();
 				// Search a host that contain this portgroup.
@@ -551,6 +553,46 @@ public class NetworkConnector extends org.occiware.clouddesigner.occi.infrastruc
 	}
 
 	/**
+	 * Check if this compute has mixin vmware folder addon.
+	 * 
+	 * @return
+	 */
+	public boolean hasMixinVMwareFolders() {
+		boolean result = false;
+		String mixinTerm = null;
+		List<Mixin> mixins = this.getMixins();
+		for (Mixin mixin : mixins) {
+			mixinTerm = mixin.getTerm();
+			// This mixin contains attributes for datacenter, datastore, cluster
+			// and others goodies on folders.
+			if (mixinTerm.equals(VMWARE_MIXIN_FOLDERS_TERM)) {
+				result = true;
+				break;
+			}
+		}
+		return result;
+	}
+	/**
+	 * Has vswitch infos folders.
+	 * @return
+	 */
+	public boolean hasMixinVSwitchInfos() {
+		boolean result = false;
+		String mixinTerm = null;
+		List<Mixin> mixins = this.getMixins();
+		for (Mixin mixin : mixins) {
+			mixinTerm = mixin.getTerm();
+			// This mixin contains attributes for datacenter, datastore, cluster
+			// and others goodies on folders.
+			if (mixinTerm.equals(VMWARE_MIXIN_VSWITCH_INFOS_TERM)) {
+				result = true;
+				break;
+			}
+		}
+		return result;
+	}
+	
+	/**
 	 * Update this object attributes.
 	 */
 	public void updateAttributesOnNetwork() {
@@ -585,8 +627,10 @@ public class NetworkConnector extends org.occiware.clouddesigner.occi.infrastruc
 //				attrsToUpdate.put(ATTR_CLUSTER_NAME, clusterName);
 //			}
 //		}
+		boolean hasMixinVMwareFolders = hasMixinVMwareFolders();
+		boolean hasMixinVswitchInfos = hasMixinVSwitchInfos();
 		// ATTR_HOSTSYSTEM_NAME
-		if (hostSystemName != null) {
+		if (hostSystemName != null && hasMixinVMwareFolders) {
 			if (this.getAttributeValueByOcciKey(ATTR_HOSTSYSTEM_NAME) == null) {
 				attrsToCreate.put(ATTR_HOSTSYSTEM_NAME, hostSystemName);
 			} else {
@@ -594,8 +638,10 @@ public class NetworkConnector extends org.occiware.clouddesigner.occi.infrastruc
 			}
 		}
 
-		// ATTR_IMAGE_NAME
-		if (nbPortStr != null) {
+		
+		// ATTR_VSWITCH_NBPORT.
+		// TODO : Add attribute on extension vmwarecrtp#.
+		if (nbPortStr != null && hasMixinVswitchInfos) {
 			if (this.getAttributeValueByOcciKey(ATTR_VSWITCH_NBPORT) == null) {
 				attrsToCreate.put(ATTR_VSWITCH_NBPORT, nbPortStr);
 			} else {
