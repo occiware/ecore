@@ -1,4 +1,4 @@
-h1. OCCI Infrastructure Extension 1.2
+h1. 
 
 | *Name* | infrastructure |
 | *Scheme* | http://schemas.ogf.org/occi/infrastructure# |
@@ -20,7 +20,7 @@ h2. Kind network
 Attributes of network are:
 
 | *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
-| occi.network.vlan | <a href="infrastructure.textile#datatype-vlanid">VlanId</a> | false | true |  | 802.1q VLAN Identifier (e.g., 343) |
+| occi.network.vlan | <a href="infrastructure.textile#datatype-vlan">Vlan</a> | false | true |  | 802.1q VLAN Identifier (e.g., 343) |
 | occi.network.label | <a href="infrastructure.textile#datatype-token">Token</a> | false | true |  | Tag based VLANs (e.g., external-dmz) |
 | occi.network.state | <a href="infrastructure.textile#enum-networkstatus">NetworkStatus</a> | true | false | inactive | Current state of the instance |
 | occi.network.state.message | <a href="core.textile#datatype-string">String</a> | false | false |  | Human-readable explanation of the current instance state |
@@ -44,7 +44,7 @@ Attributes of compute are:
 | *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
 | occi.compute.architecture | <a href="infrastructure.textile#enum-architecture">Architecture</a> | false | true |  | CPU Architecture of the instance |
 | occi.compute.cores | <a href="infrastructure.textile#datatype-core">Core</a> | false | true |  | Number of CPU cores assigned to the instance |
-| occi.compute.hostname | <a href="infrastructure.textile#datatype-hostname">HostName</a> | false | true |  | Fully Qualified DNS hostname for the instance |
+| occi.compute.hostname | <a href="core.textile#datatype-string">String</a> | false | true |  | Fully Qualified DNS hostname for the instance |
 | occi.compute.share | <a href="infrastructure.textile#datatype-share">Share</a> | false | true |  | Relative number of CPU shares for the instance |
 | occi.compute.speed | <a href="infrastructure.textile#datatype-ghz">GHz</a> | false | true |  | CPU Clock frequency (speed) in gigahertz |
 | occi.compute.memory | <a href="infrastructure.textile#datatype-gib">GiB</a> | false | true |  | Maximum RAM in gigabytes allocated to the instance |
@@ -109,7 +109,7 @@ Attributes of networkinterface are:
 
 | *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
 | occi.networkinterface.interface | <a href="core.textile#datatype-string">String</a> | true | false |  | Identifier that relates the link to the link's device interface |
-| occi.networkinterface.mac | <a href="infrastructure.textile#datatype-macaddress">MacAddress</a> | true | true |  | MAC address associated with the link's device interface |
+| occi.networkinterface.mac | <a href="infrastructure.textile#datatype-mac">Mac</a> | true | true |  | MAC address associated with the link's device interface |
 | occi.networkinterface.state | <a href="infrastructure.textile#enum-networkinterfacestatus">NetworkInterfaceStatus</a> | true | false |  | Current status of the instance |
 | occi.networkinterface.state.message | <a href="core.textile#datatype-string">String</a> | false | false |  | Human-readable explanation of the current instance state |
 
@@ -198,13 +198,13 @@ h1. Types
 
 h2. Enum SuspendMethod
 
-Enumeration of suspend methods:
+:
 * hibernate  
 * suspend  
 
-h2. Datatype VlanId
+h2. Datatype Vlan
 
-Data type for 802.1q VLAN identifiers.
+.
 
 Base type: int
 * minInclusive = 0
@@ -212,21 +212,20 @@ Base type: int
 
 h2. Datatype Token
 
-Data type for tag based VLANs (e.g., external-dmz).
+.
 
 Base type: java.lang.String
-* pattern = [a-fA-F][0-9a-fA-F-]*[0-9a-fA-F]
 
 h2. Enum NetworkStatus
 
-Enumeration of Network status:
+:
 * active  
 * inactive  
 * error  
 
 h2. Enum ComputeStatus
 
-Enumeration of Compute status:
+:
 * active  
 * inactive  
 * suspended  
@@ -234,111 +233,101 @@ Enumeration of Compute status:
 
 h2. Enum NetworkInterfaceStatus
 
-Enumeration of NetworkInterface status:
+:
 * active  
 * inactive  
 * error  
 
 h2. Enum Architecture
 
-Enumeration of CPU architectures:
+:
 * x86  
 * x64  
 
 h2. Enum StopMethod
 
-Enumeration of stop methods:
+:
 * graceful  
 * acpioff  
 * poweroff  
 
 h2. Enum RestartMethod
 
-Enumeration of restart methods:
+:
 * graceful  
 * warm  
 * cold  
 
 h2. Datatype IpAddress
 
-Data type for Internet Protocol (IP) network addresses (e.g., 192.168.0.1, fc00::).
+.
 
 Base type: java.lang.String
-* pattern = ([0-9A-Fa-f]{1,4}:){7}[0-9A-Fa-f]{1,4}|(\d{1,3}\.){3}\d{1,3}
 
 h2. Enum Allocation
 
-Address allocation mechanism: dynamic uses the dynamic host configuration protocol, static uses user supplied static network configurations:
+:
 * dynamic  
 * static  
 
 h2. Enum StorageStatus
 
-Enumeration of Storage status:
+:
 * online  
 * offline  
 * error  
 
 h2. Enum StorageLinkStatus
 
-Enumeration of StorageLink status:
+:
 * active  
 * inactive  
 * error  
 
 h2. Datatype Core
 
-Data type for numbers of cores.
+.
 
 Base type: int
 * minExclusive = 0
 
 h2. Datatype GHz
 
-Data type for gigahertz.
+.
 
 Base type: float
 * minExclusive = 0
 
 h2. Datatype GiB
 
-Data type for gigabytes.
+.
 
 Base type: float
 * minExclusive = 0
 
 h2. Datatype IpAddressRange
 
-Data type for Internet Protocol (IP) network addresses (e.g., 192.168.0.1/24, fc00::/7).
+.
 
 Base type: java.lang.String
-* pattern = (([0-9A-Fa-f]{1,4}:){7}[0-9A-Fa-f]{1,4}|(\d{1,3}\.){3}\d{1,3})\/(\d{1}|[0-2]{1}\d{1}|3[0-2])
 
-h2. Datatype MacAddress
+h2. Datatype Mac
 
-Data type for MAC addresses.
+.
 
 Base type: java.lang.String
-* pattern = ^([0-9a-fA-F]{2}[:-]){5}([0-9a-fA-F]{2})$
 
 h2. Datatype Share
 
-Data type for relative numbers of CPU shares.
+.
 
 Base type: int
 * minInclusive = 0
 
 h2. Enum SaveMethod
 
-Enumeration of save methods:
+:
 * hot  
 * deferred  
 
-h2. Datatype HostName
-
-Data type for host names.
-
-Base type: java.lang.String
-* pattern = ^([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,6}$
-
-Generated at Thu Jun 09 15:51:54 CEST 2016 from http://schemas.ogf.org/occi/infrastructure by org.occiware.clouddesigner.occi.gen.doc
+Generated at Mon Sep 19 14:29:56 CEST 2016 from http://schemas.ogf.org/occi/infrastructure by org.occiware.clouddesigner.occi.gen.doc

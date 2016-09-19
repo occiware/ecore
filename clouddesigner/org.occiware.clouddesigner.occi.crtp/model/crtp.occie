@@ -3,8 +3,12 @@
   <import href="http://schemas.ogf.org/occi/core#/"/>
   <import href="http://schemas.ogf.org/occi/infrastructure#/"/>
   <mixins term="small" scheme="http://schemas.ogf.org/occi/infrastructure/compute/template/1.1#" title="A small Compute instance">
-    <attributes name="occi.compute.cores" default="1" description="Number of CPU cores assigned to the instance"/>
-    <attributes name="occi.compute.memory" default="1.0" description="Maximum RAM in gigabytes allocated to the instance"/>
+    <attributes name="occi.compute.cores" default="1" description="Number of CPU cores assigned to the instance">
+      <type href="http://schemas.ogf.org/occi/infrastructure#//@types.13"/>
+    </attributes>
+    <attributes name="occi.compute.memory" default="1.0" description="Maximum RAM in gigabytes allocated to the instance">
+      <type href="http://schemas.ogf.org/occi/infrastructure#//@types.15"/>
+    </attributes>
     <attributes name="occi.compute.ephemeral_storage.size" mutable="false" required="true" default="10.0" description="Ephemeral storage provisioned for the associated Compute instance">
       <type href="http://schemas.ogf.org/occi/infrastructure#//@types.15"/>
     </attributes>
@@ -12,8 +16,12 @@
     <applies href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='compute']"/>
   </mixins>
   <mixins term="medium" scheme="http://schemas.ogf.org/occi/infrastructure/compute/template/1.1#" title="A medium Compute instance">
-    <attributes name="occi.compute.cores" default="2" description="Number of CPU cores assigned to the instance"/>
-    <attributes name="occi.compute.memory" default="2.0" description="Maximum RAM in gigabytes allocated to the instance"/>
+    <attributes name="occi.compute.cores" default="2" description="Number of CPU cores assigned to the instance">
+      <type href="http://schemas.ogf.org/occi/infrastructure#//@types.13"/>
+    </attributes>
+    <attributes name="occi.compute.memory" default="2.0" description="Maximum RAM in gigabytes allocated to the instance">
+      <type href="http://schemas.ogf.org/occi/infrastructure#//@types.15"/>
+    </attributes>
     <attributes name="occi.compute.ephemeral_storage.size" mutable="false" required="true" default="20.0" description="Ephemeral storage provisioned for the associated Compute instance">
       <type href="http://schemas.ogf.org/occi/infrastructure#//@types.15"/>
     </attributes>
@@ -21,8 +29,12 @@
     <applies href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='compute']"/>
   </mixins>
   <mixins term="large" scheme="http://schemas.ogf.org/occi/infrastructure/compute/template/1.1#" title="A large Compute instance">
-    <attributes name="occi.compute.cores" default="4" description="Number of CPU cores assigned to the instance"/>
-    <attributes name="occi.compute.memory" default="4.0" description="Maximum RAM in gigabytes allocated to the instance"/>
+    <attributes name="occi.compute.cores" default="4" description="Number of CPU cores assigned to the instance">
+      <type href="http://schemas.ogf.org/occi/infrastructure#//@types.13"/>
+    </attributes>
+    <attributes name="occi.compute.memory" default="4.0" description="Maximum RAM in gigabytes allocated to the instance">
+      <type href="http://schemas.ogf.org/occi/infrastructure#//@types.15"/>
+    </attributes>
     <attributes name="occi.compute.ephemeral_storage.size" mutable="false" required="true" default="40.0" description="Ephemeral storage provisioned for the associated Compute instance">
       <type href="http://schemas.ogf.org/occi/infrastructure#//@types.15"/>
     </attributes>
@@ -30,8 +42,12 @@
     <applies href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='compute']"/>
   </mixins>
   <mixins term="mem_small" scheme="http://schemas.ogf.org/occi/infrastructure/compute/template/1.1#" title="A small Compute instance for memory-intensive applications">
-    <attributes name="occi.compute.cores" default="1" description="Number of CPU cores assigned to the instance"/>
-    <attributes name="occi.compute.memory" default="4.0" description="Maximum RAM in gigabytes allocated to the instance"/>
+    <attributes name="occi.compute.cores" default="1" description="Number of CPU cores assigned to the instance">
+      <type href="http://schemas.ogf.org/occi/infrastructure#//@types.13"/>
+    </attributes>
+    <attributes name="occi.compute.memory" default="4.0" description="Maximum RAM in gigabytes allocated to the instance">
+      <type href="http://schemas.ogf.org/occi/infrastructure#//@types.15"/>
+    </attributes>
     <attributes name="occi.compute.ephemeral_storage.size" mutable="false" required="true" default="10.0" description="Ephemeral storage provisioned for the associated Compute instance">
       <type href="http://schemas.ogf.org/occi/infrastructure#//@types.15"/>
     </attributes>
@@ -39,8 +55,12 @@
     <applies href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='compute']"/>
   </mixins>
   <mixins term="mem_medium" scheme="http://schemas.ogf.org/occi/infrastructure/compute/template/1.1#" title="A medium Compute instance for memory-intensive applications">
-    <attributes name="occi.compute.cores" default="2" description="Number of CPU cores assigned to the instance"/>
-    <attributes name="occi.compute.memory" default="8.0" description="Maximum RAM in gigabytes allocated to the instance"/>
+    <attributes name="occi.compute.cores" default="2" description="Number of CPU cores assigned to the instance">
+      <type href="http://schemas.ogf.org/occi/infrastructure#//@types.13"/>
+    </attributes>
+    <attributes name="occi.compute.memory" default="8.0" description="Maximum RAM in gigabytes allocated to the instance">
+      <type href="http://schemas.ogf.org/occi/infrastructure#//@types.15"/>
+    </attributes>
     <attributes name="occi.compute.ephemeral_storage.size" mutable="false" required="true" default="20.0" description="Ephemeral storage provisioned for the associated Compute instance">
       <type href="http://schemas.ogf.org/occi/infrastructure#//@types.15"/>
     </attributes>
@@ -48,8 +68,12 @@
     <applies href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='compute']"/>
   </mixins>
   <mixins term="mem_large" scheme="http://schemas.ogf.org/occi/infrastructure/compute/template/1.1#" title="A large Compute instance for memory-intensive applications">
-    <attributes name="occi.compute.cores" default="4" description="Number of CPU cores assigned to the instance"/>
-    <attributes name="occi.compute.memory" default="16.0" description="Maximum RAM in gigabytes allocated to the instance"/>
+    <attributes name="occi.compute.cores" default="4" description="Number of CPU cores assigned to the instance">
+      <type href="http://schemas.ogf.org/occi/infrastructure#//@types.13"/>
+    </attributes>
+    <attributes name="occi.compute.memory" default="16.0" description="Maximum RAM in gigabytes allocated to the instance">
+      <type href="http://schemas.ogf.org/occi/infrastructure#//@types.15"/>
+    </attributes>
     <attributes name="occi.compute.ephemeral_storage.size" mutable="false" required="true" default="40.0" description="Ephemeral storage provisioned for the associated Compute instance">
       <type href="http://schemas.ogf.org/occi/infrastructure#//@types.15"/>
     </attributes>

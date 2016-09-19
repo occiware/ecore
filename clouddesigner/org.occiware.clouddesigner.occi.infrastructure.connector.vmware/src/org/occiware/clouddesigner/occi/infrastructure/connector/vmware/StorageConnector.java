@@ -665,7 +665,7 @@ public class StorageConnector extends org.occiware.clouddesigner.occi.infrastruc
 		List<String> attrsToDelete = new ArrayList<>();
 		boolean hasMixinVMwareFolders = hasMixinVMwareFolders();
 		if (datacenterName != null && hasMixinVMwareFolders) {
-			if (this.getAttributeValueByOcciKey(ATTR_DATACENTER_NAME) == null) {
+			if (this.getAttributeStateObject(ATTR_DATACENTER_NAME) == null) {
 				attrsToCreate.put(ATTR_DATACENTER_NAME, datacenterName);
 			} else {
 				// update
@@ -674,7 +674,7 @@ public class StorageConnector extends org.occiware.clouddesigner.occi.infrastruc
 		}
 		if (datastoreName != null && hasMixinVMwareFolders) {
 			// ATTR_DATASTORE_NAME
-			if (this.getAttributeValueByOcciKey(ATTR_DATASTORE_NAME) == null) {
+			if (this.getAttributeStateObject(ATTR_DATASTORE_NAME) == null) {
 				attrsToCreate.put(ATTR_DATASTORE_NAME, datastoreName);
 			} else {
 				attrsToUpdate.put(ATTR_DATASTORE_NAME, datastoreName);

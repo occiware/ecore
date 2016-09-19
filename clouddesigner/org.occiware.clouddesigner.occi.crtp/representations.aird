@@ -3,6 +3,13 @@
   <semanticResources>model/crtp.occie</semanticResources>
   <semanticResources>http://schemas.ogf.org/occi/core</semanticResources>
   <semanticResources>http://schemas.ogf.org/occi/infrastructure</semanticResources>
+  <semanticResources>platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.genmodel</semanticResources>
+  <semanticResources>platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.genmodel</semanticResources>
+  <semanticResources>platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.ecore</semanticResources>
+  <semanticResources>platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore</semanticResources>
+  <semanticResources>http://www.eclipse.org/emf/2002/Ecore</semanticResources>
+  <semanticResources>model/crtp.ecore</semanticResources>
+  <semanticResources>model/crtp.genmodel</semanticResources>
   <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_1sc30C3LEeacmclIlJVqBg">
     <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_1vT-kC3LEeacmclIlJVqBg" name="OCCI Compute Resource Templates Profile diagram">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_1vT-kS3LEeacmclIlJVqBg" source="DANNOTATION_CUSTOMIZATION_KEY">

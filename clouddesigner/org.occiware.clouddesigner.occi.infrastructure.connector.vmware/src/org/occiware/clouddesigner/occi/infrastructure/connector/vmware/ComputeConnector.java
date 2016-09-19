@@ -1003,7 +1003,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 
 		// ATTR_DATACENTER_NAME
 		if (datacenterName != null && hasMixinFoldersData) {
-			if (this.getAttributeValueByOcciKey(ATTR_DATACENTER_NAME) == null) {
+			if (this.getAttributeStateObject(ATTR_DATACENTER_NAME) == null) {
 				attrsToCreate.put(ATTR_DATACENTER_NAME, datacenterName);
 			} else {
 				// update
@@ -1012,7 +1012,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		}
 		if (datastoreName != null && hasMixinFoldersData) {
 			// ATTR_DATASTORE_NAME
-			if (this.getAttributeValueByOcciKey(ATTR_DATASTORE_NAME) == null) {
+			if (this.getAttributeStateObject(ATTR_DATASTORE_NAME) == null) {
 				attrsToCreate.put(ATTR_DATASTORE_NAME, datastoreName);
 			} else {
 				attrsToUpdate.put(ATTR_DATASTORE_NAME, datastoreName);
@@ -1021,7 +1021,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 
 		// ATTR_CLUSTER_NAME
 		if (clusterName != null && hasMixinFoldersData) {
-			if (this.getAttributeValueByOcciKey(ATTR_CLUSTER_NAME) == null) {
+			if (this.getAttributeStateObject(ATTR_CLUSTER_NAME) == null) {
 				attrsToCreate.put(ATTR_CLUSTER_NAME, clusterName);
 			} else {
 				attrsToUpdate.put(ATTR_CLUSTER_NAME, clusterName);
@@ -1029,7 +1029,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		}
 		// ATTR_HOSTSYSTEM_NAME
 		if (hostSystemName != null && hasMixinFoldersData) {
-			if (this.getAttributeValueByOcciKey(ATTR_HOSTSYSTEM_NAME) == null) {
+			if (this.getAttributeStateObject(ATTR_HOSTSYSTEM_NAME) == null) {
 				attrsToCreate.put(ATTR_HOSTSYSTEM_NAME, hostSystemName);
 			} else {
 				attrsToUpdate.put(ATTR_HOSTSYSTEM_NAME, hostSystemName);
@@ -1038,20 +1038,20 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 
 		// ATTR_IMAGE_NAME
 		if (vmTemplateName != null && hasMixinVMwareComputeAddOn) {
-			if (this.getAttributeValueByOcciKey(ATTR_IMAGE_NAME) == null) {
+			if (this.getAttributeStateObject(ATTR_IMAGE_NAME) == null) {
 				attrsToCreate.put(ATTR_IMAGE_NAME, vmTemplateName);
 			}
 		}
 
 		// ATTR_VCPU_NUMBER
 		if (vcpus != 0 && hasMixinVMwareComputeAddOn) {
-			if (this.getAttributeValueByOcciKey(ATTR_VCPU_NUMBER) == null) {
+			if (this.getAttributeStateObject(ATTR_VCPU_NUMBER) == null) {
 				attrsToCreate.put(ATTR_VCPU_NUMBER, vcpus.toString());
 			}
 		}
 		// ATTR_VM_GUEST_STATE
 		if (vmGuestState != null && hasMixinVMwareComputeAddOn) {
-			if (this.getAttributeValueByOcciKey(ATTR_VM_GUEST_STATE) == null) {
+			if (this.getAttributeStateObject(ATTR_VM_GUEST_STATE) == null) {
 				attrsToCreate.put(ATTR_VM_GUEST_STATE, vmGuestState);
 			} else {
 				attrsToUpdate.put(ATTR_VM_GUEST_STATE, vmGuestState);
@@ -1059,7 +1059,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		}
 		// ATTR_VM_GUEST_OS_ID
 		if (guestOsId != null && hasMixinVMwareComputeAddOn) {
-			if (this.getAttributeValueByOcciKey(ATTR_VM_GUEST_OS_ID) == null) {
+			if (this.getAttributeStateObject(ATTR_VM_GUEST_OS_ID) == null) {
 				attrsToCreate.put(ATTR_VM_GUEST_OS_ID, guestOsId);
 			} else {
 				attrsToUpdate.put(ATTR_VM_GUEST_OS_ID, guestOsId);

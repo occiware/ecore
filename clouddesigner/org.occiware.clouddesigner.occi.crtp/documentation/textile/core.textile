@@ -60,4 +60,4 @@ Data type for numbers.
 
 Base type: int
 
-Generated at Thu Jun 09 15:51:54 CEST 2016 from http://schemas.ogf.org/occi/core by org.occiware.clouddesigner.occi.gen.doc
+Generated at Mon Sep 19 14:29:56 CEST 2016 from http://schemas.ogf.org/occi/core by org.occiware.clouddesigner.occi.gen.doc

@@ -631,7 +631,7 @@ public class NetworkConnector extends org.occiware.clouddesigner.occi.infrastruc
 		boolean hasMixinVswitchInfos = hasMixinVSwitchInfos();
 		// ATTR_HOSTSYSTEM_NAME
 		if (hostSystemName != null && hasMixinVMwareFolders) {
-			if (this.getAttributeValueByOcciKey(ATTR_HOSTSYSTEM_NAME) == null) {
+			if (this.getAttributeStateObject(ATTR_HOSTSYSTEM_NAME) == null) {
 				attrsToCreate.put(ATTR_HOSTSYSTEM_NAME, hostSystemName);
 			} else {
 				attrsToUpdate.put(ATTR_HOSTSYSTEM_NAME, hostSystemName);
@@ -642,7 +642,7 @@ public class NetworkConnector extends org.occiware.clouddesigner.occi.infrastruc
 		// ATTR_VSWITCH_NBPORT.
 		// TODO : Add attribute on extension vmwarecrtp#.
 		if (nbPortStr != null && hasMixinVswitchInfos) {
-			if (this.getAttributeValueByOcciKey(ATTR_VSWITCH_NBPORT) == null) {
+			if (this.getAttributeStateObject(ATTR_VSWITCH_NBPORT) == null) {
 				attrsToCreate.put(ATTR_VSWITCH_NBPORT, nbPortStr);
 			} else {
 				attrsToUpdate.put(ATTR_VSWITCH_NBPORT, nbPortStr);

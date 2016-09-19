@@ -109,6 +109,13 @@
 		<module>../org.occiware.clouddesigner.occi.linkeddata.connector</module>
 		<module>../org.occiware.clouddesigner.occi.linkeddata.design</module>
 		
+		<!-- CRTP : OCCI Compute Resource Template -->
+		<module>../org.occiware.clouddesigner.occi.crtp</module>
+		<module>../org.occiware.clouddesigner.occi.crtp.edit</module>
+<!-- 		<module>../org.occiware.clouddesigner.occi.crtp.editor</module> -->
+<!-- 		<module>../org.occiware.clouddesigner.occi.crtp.design</module> -->
+		
+		
         <!-- VMware -->
         <module>../org.occiware.clouddesigner.occi.vmware</module>
         <module>../org.occiware.clouddesigner.occi.vmware.edit</module>
@@ -116,6 +123,8 @@
         <module>../org.occiware.clouddesigner.occi.vmware.tests</module>
         <module>../org.occiware.clouddesigner.occi.vmware.connector</module>
         <module>../org.occiware.clouddesigner.occi.vmware.design</module>
+        <module>../org.occiware.clouddesigner.occi.vmware.crtp</module>
+        <module>../org.occiware.clouddesigner.occi.vmware.crtp.edit</module>
         
 		<!-- OCCI Xtext -->
 		<module>../org.occiware.clouddesigner.occi.xtext</module>

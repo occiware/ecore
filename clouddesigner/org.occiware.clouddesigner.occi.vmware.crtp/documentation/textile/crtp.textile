@@ -1,0 +1,122 @@
+h1. This profile specification describes a well-defined number of instances of the OCCI compute resource type defined in the Open Cloud Computing Interface (OCCI) family of specifications.
+
+| *Name* | crtp |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure/compute/template/1.1# |
+
+Imported OCCI Extensions:
+
+| *Name* | *Scheme* |
+| <a href="core.textile">core</a> | http://schemas.ogf.org/occi/core# |
+| <a href="infrastructure.textile">infrastructure</a> | http://schemas.ogf.org/occi/infrastructure# |
+
+h1. Mixins
+
+h2. Mixin small
+
+| *Term* | small |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure/compute/template/1.1# |
+| *Title* | A small Compute instance |
+Depends on:
+* <a href="infrastructure.textile#mixin-resource_tpl">http://schemas.ogf.org/occi/infrastructure#resource_tpl</a>
+Applies to:
+* <a href="infrastructure.textile#kind-compute">http://schemas.ogf.org/occi/infrastructure#compute</a>
+
+Attributes of small are:
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.compute.cores | <a href="infrastructure.textile#datatype-core">Core</a> | false | true | 1 | Number of CPU cores assigned to the instance |
+| occi.compute.memory | <a href="infrastructure.textile#datatype-gib">GiB</a> | false | true | 1.0 | Maximum RAM in gigabytes allocated to the instance |
+| occi.compute.ephemeral_storage.size | <a href="infrastructure.textile#datatype-gib">GiB</a> | true | false | 10.0 | Ephemeral storage provisioned for the associated Compute instance |
+
+
+h2. Mixin medium
+
+| *Term* | medium |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure/compute/template/1.1# |
+| *Title* | A medium Compute instance |
+Depends on:
+* <a href="infrastructure.textile#mixin-resource_tpl">http://schemas.ogf.org/occi/infrastructure#resource_tpl</a>
+Applies to:
+* <a href="infrastructure.textile#kind-compute">http://schemas.ogf.org/occi/infrastructure#compute</a>
+
+Attributes of medium are:
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.compute.cores | <a href="infrastructure.textile#datatype-core">Core</a> | false | true | 2 | Number of CPU cores assigned to the instance |
+| occi.compute.memory | <a href="infrastructure.textile#datatype-gib">GiB</a> | false | true | 2.0 | Maximum RAM in gigabytes allocated to the instance |
+| occi.compute.ephemeral_storage.size | <a href="infrastructure.textile#datatype-gib">GiB</a> | true | false | 20.0 | Ephemeral storage provisioned for the associated Compute instance |
+
+
+h2. Mixin large
+
+| *Term* | large |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure/compute/template/1.1# |
+| *Title* | A large Compute instance |
+Depends on:
+* <a href="infrastructure.textile#mixin-resource_tpl">http://schemas.ogf.org/occi/infrastructure#resource_tpl</a>
+Applies to:
+* <a href="infrastructure.textile#kind-compute">http://schemas.ogf.org/occi/infrastructure#compute</a>
+
+Attributes of large are:
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.compute.cores | <a href="infrastructure.textile#datatype-core">Core</a> | false | true | 4 | Number of CPU cores assigned to the instance |
+| occi.compute.memory | <a href="infrastructure.textile#datatype-gib">GiB</a> | false | true | 4.0 | Maximum RAM in gigabytes allocated to the instance |
+| occi.compute.ephemeral_storage.size | <a href="infrastructure.textile#datatype-gib">GiB</a> | true | false | 40.0 | Ephemeral storage provisioned for the associated Compute instance |
+
+
+h2. Mixin mem_small
+
+| *Term* | mem_small |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure/compute/template/1.1# |
+| *Title* | A small Compute instance for memory-intensive applications |
+Depends on:
+* <a href="infrastructure.textile#mixin-resource_tpl">http://schemas.ogf.org/occi/infrastructure#resource_tpl</a>
+Applies to:
+* <a href="infrastructure.textile#kind-compute">http://schemas.ogf.org/occi/infrastructure#compute</a>
+
+Attributes of mem_small are:
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.compute.cores | <a href="infrastructure.textile#datatype-core">Core</a> | false | true | 1 | Number of CPU cores assigned to the instance |
+| occi.compute.memory | <a href="infrastructure.textile#datatype-gib">GiB</a> | false | true | 4.0 | Maximum RAM in gigabytes allocated to the instance |
+| occi.compute.ephemeral_storage.size | <a href="infrastructure.textile#datatype-gib">GiB</a> | true | false | 10.0 | Ephemeral storage provisioned for the associated Compute instance |
+
+
+h2. Mixin mem_medium
+
+| *Term* | mem_medium |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure/compute/template/1.1# |
+| *Title* | A medium Compute instance for memory-intensive applications |
+Depends on:
+* <a href="infrastructure.textile#mixin-resource_tpl">http://schemas.ogf.org/occi/infrastructure#resource_tpl</a>
+Applies to:
+* <a href="infrastructure.textile#kind-compute">http://schemas.ogf.org/occi/infrastructure#compute</a>
+
+Attributes of mem_medium are:
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.compute.cores | <a href="infrastructure.textile#datatype-core">Core</a> | false | true | 2 | Number of CPU cores assigned to the instance |
+| occi.compute.memory | <a href="infrastructure.textile#datatype-gib">GiB</a> | false | true | 8.0 | Maximum RAM in gigabytes allocated to the instance |
+| occi.compute.ephemeral_storage.size | <a href="infrastructure.textile#datatype-gib">GiB</a> | true | false | 20.0 | Ephemeral storage provisioned for the associated Compute instance |
+
+
+h2. Mixin mem_large
+
+| *Term* | mem_large |
+| *Scheme* | http://schemas.ogf.org/occi/infrastructure/compute/template/1.1# |
+| *Title* | A large Compute instance for memory-intensive applications |
+Depends on:
+* <a href="infrastructure.textile#mixin-resource_tpl">http://schemas.ogf.org/occi/infrastructure#resource_tpl</a>
+Applies to:
+* <a href="infrastructure.textile#kind-compute">http://schemas.ogf.org/occi/infrastructure#compute</a>
+
+Attributes of mem_large are:
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.compute.cores | <a href="infrastructure.textile#datatype-core">Core</a> | false | true | 4 | Number of CPU cores assigned to the instance |
+| occi.compute.memory | <a href="infrastructure.textile#datatype-gib">GiB</a> | false | true | 16.0 | Maximum RAM in gigabytes allocated to the instance |
+| occi.compute.ephemeral_storage.size | <a href="infrastructure.textile#datatype-gib">GiB</a> | true | false | 40.0 | Ephemeral storage provisioned for the associated Compute instance |
+
+
+Generated at Mon Sep 19 14:34:36 CEST 2016 from http://schemas.ogf.org/occi/infrastructure/compute/template/1.1 by org.occiware.clouddesigner.occi.gen.doc
