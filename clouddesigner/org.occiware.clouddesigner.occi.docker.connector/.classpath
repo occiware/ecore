@@ -6,7 +6,6 @@
 	<classpathentry excluding="resources/" kind="src" path="src"/>
 	<classpathentry kind="src" path="src/resources"/>
 	<classpathentry exported="true" kind="lib" path="lib/jackson-all-1.7.9.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/jsch-0.1.52.jar"/>
 	<classpathentry kind="lib" path="lib/aopalliance-repackaged-2.3.0-b05.jar"/>
 	<classpathentry kind="lib" path="lib/bcpkix-jdk15on-1.51.jar"/>
 	<classpathentry kind="lib" path="lib/bcprov-jdk15on-1.51.jar"/>
@@ -54,5 +53,6 @@
 	<classpathentry kind="lib" path="lib/slf4j-api-1.7.5.jar"/>
 	<classpathentry kind="lib" path="lib/unix-socket-factory-2015-01-27T15-02-14.jar"/>
 	<classpathentry kind="lib" path="lib/xz-1.2.jar"/>
+	<classpathentry kind="lib" path="lib/jsch-0.1.53.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
