@@ -105,6 +105,11 @@ public class NetworkConnector extends org.occiware.clouddesigner.occi.infrastruc
 	private int vlanId = 0;
 	
 	/**
+	 * Managed object reference id. Unique reference for virtual machine.
+	 */
+	private String morId;
+	
+	/**
 	 * Represent the physical compute which be used for this standard switch.
 	 */
 	private String hostSystemName = null;

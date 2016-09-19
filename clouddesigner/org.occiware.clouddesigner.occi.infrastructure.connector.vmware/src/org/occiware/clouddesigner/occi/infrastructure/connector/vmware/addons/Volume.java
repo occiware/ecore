@@ -291,10 +291,10 @@ public class Volume {
 
 		// Check if this volume already exist in the datastore.
 		if (fullPath == null) {
-			// The volume doesnt exist, we create it in a temporary directory.
+			// The volume doesnt exist, we create it in a directory that is the name of the volume (without extension vmdk).
 			try {
-				mkdir(dc, ds, "/tmp");
-				fullPath = "[" + dsName + "] " + "tmp" + "/" + volumeName + ".vmdk";
+				mkdir(dc, ds, "/" + volumeName);
+				fullPath = "[" + dsName + "] " + volumeName + "/" + volumeName + ".vmdk";
 			} catch (IOException ex) {
 				throw new CreateDiskException("Error IO : " + ex.getMessage(), ex.getCause());
 			}
@@ -313,7 +313,7 @@ public class Volume {
 			FileBackedVirtualDiskSpec fbvspec = new FileBackedVirtualDiskSpec();
 			fbvspec.setAdapterType(VirtualDiskAdapterType.lsiLogic.name());
 			fbvspec.setCapacityKb(size.longValue() * (1024 * 1024));
-			fbvspec.setDiskType(VirtualDiskType.thin.name());
+			fbvspec.setDiskType(VirtualDiskType.preallocated.name());
 			Task task = diskManager.createVirtualDisk_Task(fullPath, dc, fbvspec);
 			task.waitForTask();
 			TaskInfo taskInfo;

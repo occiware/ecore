@@ -19,6 +19,7 @@ import org.slf4j.LoggerFactory;
 
 import com.vmware.vim25.InvalidProperty;
 import com.vmware.vim25.RuntimeFault;
+import com.vmware.vim25.VirtualDevice;
 import com.vmware.vim25.VirtualDeviceConfigSpec;
 import com.vmware.vim25.VirtualDeviceConfigSpecFileOperation;
 import com.vmware.vim25.VirtualDeviceConfigSpecOperation;
@@ -91,6 +92,37 @@ public class VMHelper {
 	}
 
 	/**
+	 * Find a virtual machine for a managed object reference id.
+	 * 
+	 * @param folder
+	 *            (rootFolder etc.)
+	 * @param morId
+	 * @return a VirtualMachine object, null, if none.
+	 */
+	public static VirtualMachine findVMForMorId(final Folder folder, final String morId) {
+
+		VirtualMachine vm = null;
+
+		try {
+			ManagedEntity[] entities = new InventoryNavigator(folder).searchManagedEntities("VirtualMachine");
+			if (entities != null && entities.length > 0) {
+				for (ManagedEntity entity : entities) {
+					if (entity.getMOR().getVal().equals(morId)) {
+						vm = (VirtualMachine) entity;
+						break;
+					}
+				}
+			}
+
+		} catch (RemoteException ex) {
+			LOGGER.error("Error while searching a virtual machine by managed entity id : " + morId + " --> "
+					+ ex.getMessage());
+		}
+
+		return vm;
+	}
+
+	/**
 	 * Search a VM for name and folder.
 	 * 
 	 * @param folder
@@ -125,6 +157,33 @@ public class VMHelper {
 		scsiCtrl.setSharedBus(VirtualSCSISharing.noSharing);
 		scsiSpec.setDevice(scsiCtrl);
 		return scsiSpec;
+	}
+
+	/**
+	 * For use only if you want to create a vm with an existing disk (vmdk
+	 * file).
+	 * 
+	 * @param filename
+	 * @param cKey
+	 * @param diskMode
+	 * @return
+	 */
+	public static VirtualDeviceConfigSpec createExistingDiskSpec(String filename, int cKey, String diskMode) {
+		VirtualDeviceConfigSpec diskSpec = new VirtualDeviceConfigSpec();
+		diskSpec.setOperation(VirtualDeviceConfigSpecOperation.add);
+		// Do not set diskspec.fileoperation !!!!
+		VirtualDisk vd = new VirtualDisk();
+		// Value is ignored but necessary for the process.
+		vd.setCapacityInKB(-1);
+		vd.setKey(0);
+		vd.setUnitNumber(1);
+		vd.setControllerKey(cKey);
+		VirtualDiskFlatVer2BackingInfo dskFileBacking = new VirtualDiskFlatVer2BackingInfo();
+		dskFileBacking.setFileName(filename);
+		dskFileBacking.setDiskMode(diskMode);
+		vd.setBacking(dskFileBacking);
+		diskSpec.setDevice(vd);
+		return diskSpec;
 	}
 
 	/**
@@ -389,6 +448,37 @@ public class VMHelper {
 	}
 
 	/**
+	 * Get the overall disk size in GB for ephemeral disk (system disk).
+	 * 
+	 * @param vm
+	 * @return 0 if none, size in GB.
+	 */
+	public static Float getEphemalDiskSize(final VirtualMachine vm) {
+		Float diskSizeGB = 0.0f;
+		if (vm != null) {
+			VirtualDevice devices[] = vm.getConfig().getHardware().getDevice();
+			int unitNumber;
+			if (devices != null && devices.length > 0) {
+				for (VirtualDevice device : devices) {
+					if (device instanceof VirtualDisk) {
+						VirtualDisk disk = (VirtualDisk) device;
+						unitNumber = disk.getUnitNumber();
+						if (unitNumber == 0) {
+							// This is the main disk storage !
+							// Get the value of its size.
+							Long dskSizeKB = disk.getCapacityInKB();
+							diskSizeGB = dskSizeKB.floatValue() / (1024 * 1024);
+							break;
+						}
+					}
+				}
+			}
+		}
+
+		return diskSizeGB;
+	}
+
+	/**
 	 * Get the architecture (occi format) x86 (32 bits) or x64 (64 bits).
 	 * 
 	 * @param vm
@@ -594,15 +684,15 @@ public class VMHelper {
 	 *            (optional may be null)
 	 * @param vRamSizeGB
 	 *            (optional may be null) in GigaBytes
-	 * @param summary 
-	 * 		annotation on vm.
+	 * @param summary
+	 *            annotation on vm.
 	 * @return
 	 * @throws InvalidProperty
 	 * @throws RuntimeFault
 	 * @throws RemoteException
 	 */
-	public static void reconfigureVm(final VirtualMachine vm, final Integer vnumCPU, final Float vRamSizeGB, String summary)
-			throws RemoteException {
+	public static void reconfigureVm(final VirtualMachine vm, final Integer vnumCPU, final Float vRamSizeGB,
+			String summary) throws RemoteException {
 
 		VirtualMachineConfigSpec changeSpecHot = new VirtualMachineConfigSpec();
 		VirtualMachineConfigSpec changeSpecCold = new VirtualMachineConfigSpec();
@@ -843,7 +933,7 @@ public class VMHelper {
 		} else {
 			LOGGER.info("OS of the VM " + vmName + " cannot be stopped, do you have installed the vmware tools ?");
 			result = powerOff(vm);
-			
+
 		}
 		return result;
 	}
@@ -857,14 +947,14 @@ public class VMHelper {
 		Task task = null;
 		boolean retVal = false;
 		String vmName = vm.getName();
-		
-			task = vm.powerOffVM_Task();
 
-			if (task != null) {
-					retVal = task.waitForTask().equals(Task.SUCCESS);
-			} else {
-				LOGGER.warn("Cannot stop Virtual Machine : " + vmName);
-			}
+		task = vm.powerOffVM_Task();
+
+		if (task != null) {
+			retVal = task.waitForTask().equals(Task.SUCCESS);
+		} else {
+			LOGGER.warn("Cannot stop Virtual Machine : " + vmName);
+		}
 		return retVal;
 	}
 
@@ -894,25 +984,25 @@ public class VMHelper {
 		Task task = null;
 		boolean retVal = false;
 		String vmName = vm.getName();
-		
-			task = vm.suspendVM_Task();
 
-			if (task != null) {
-				try {
-					retVal = task.waitForTask().equals(Task.SUCCESS);
-					if (retVal) {
-						LOGGER.info("VM " + vmName + " suspended");
-					} else {
-						LOGGER.info("VM " + vmName + " cannot be suspended");
-					}
-				} catch (InterruptedException e) {
-					e.printStackTrace();
+		task = vm.suspendVM_Task();
+
+		if (task != null) {
+			try {
+				retVal = task.waitForTask().equals(Task.SUCCESS);
+				if (retVal) {
+					LOGGER.info("VM " + vmName + " suspended");
+				} else {
+					LOGGER.info("VM " + vmName + " cannot be suspended");
 				}
-			} else {
-				LOGGER.warn("Cannot suspend Virtual Machine : " + vmName);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
 			}
-			return retVal;
-		
+		} else {
+			LOGGER.warn("Cannot suspend Virtual Machine : " + vmName);
+		}
+		return retVal;
+
 	}
 
 	/**
@@ -930,7 +1020,7 @@ public class VMHelper {
 			LOGGER.warn("please install vmware tools to use this operation.");
 		}
 		return result;
-		
+
 	}
 
 	/**
@@ -1054,7 +1144,5 @@ public class VMHelper {
 		result = true;
 		return result;
 	}
-	
-	
-		
+
 }

@@ -26,7 +26,9 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.occiware.clouddesigner.occi.AttributeState;
+import org.occiware.clouddesigner.occi.Configuration;
 import org.occiware.clouddesigner.occi.Link;
+import org.occiware.clouddesigner.occi.Mixin;
 import org.occiware.clouddesigner.occi.Resource;
 import org.occiware.clouddesigner.occi.infrastructure.Architecture;
 import org.occiware.clouddesigner.occi.infrastructure.ComputeStatus;
@@ -40,24 +42,10 @@ import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.VCe
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.VMHelper;
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.thread.EntityUtils;
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.thread.UIDialog;
+import org.occiware.clouddesigner.occi.util.OcciHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.vmware.vim25.CustomizationAdapterMapping;
-import com.vmware.vim25.CustomizationDhcpIpGenerator;
-import com.vmware.vim25.CustomizationFixedIp;
-import com.vmware.vim25.CustomizationFixedName;
-import com.vmware.vim25.CustomizationGlobalIPSettings;
-import com.vmware.vim25.CustomizationGuiUnattended;
-import com.vmware.vim25.CustomizationIPSettings;
-import com.vmware.vim25.CustomizationIdentification;
-import com.vmware.vim25.CustomizationLinuxOptions;
-import com.vmware.vim25.CustomizationLinuxPrep;
-import com.vmware.vim25.CustomizationNetBIOSMode;
-import com.vmware.vim25.CustomizationSpec;
-import com.vmware.vim25.CustomizationSysprep;
-import com.vmware.vim25.CustomizationUserData;
-import com.vmware.vim25.CustomizationWinOptions;
 import com.vmware.vim25.VirtualDeviceConfigSpec;
 import com.vmware.vim25.VirtualMachineCloneSpec;
 import com.vmware.vim25.VirtualMachineConfigSpec;
@@ -97,6 +85,12 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 	private static final String ATTR_VM_GUEST_STATE = "gueststate";
 	private static final String ATTR_MARKED_AS_TEMPLATE = "markedastemplate";
 	private static final String ATTR_VM_GUEST_OS_ID = "guestosid";
+	private static final String ATTR_VM_EPHEMERAL_DISK_SIZE_GB = "occi.compute.ephemeral_storage.size"; 
+
+	/**
+	 * Managed object reference id. Unique reference for virtual machine.
+	 */
+	private String morId;
 
 	/**
 	 * Define VMWare specifications for this compute.
@@ -126,6 +120,8 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 	private String guestOsId = null;
 	private String markedAsTemplate = null;
 	private boolean vmExist = false;
+	// default to 15GB
+	private Float ephemeralDiskSizeGB = 15.0f;
 	// Message to end users management.
 	private String titleMessage = "";
 	private String globalMessage = "";
@@ -381,7 +377,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 	public void stop(final org.occiware.clouddesigner.occi.infrastructure.StopMethod method) {
 		titleMessage = "Power off a virtual machine : " + getTitle();
 		LOGGER.debug("Action stop(" + "method=" + method + ") called on " + this);
-		
+
 		if (UIDialog.isStandAlone()) {
 			// Launching thread with business code.
 			Runnable runnable = new Runnable() {
@@ -410,7 +406,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 				occiRetrieve();
 			}
 		}
-				
+
 		globalMessage = "";
 		levelMessage = null;
 
@@ -425,7 +421,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 	public void restart(final org.occiware.clouddesigner.occi.infrastructure.RestartMethod method) {
 		titleMessage = "Reboot a virtual machine : " + getTitle();
 		LOGGER.debug("Action restart(" + "method=" + method + ") called on " + this);
-		
+
 		if (UIDialog.isStandAlone()) {
 			// Launching thread with business code.
 			Runnable runnable = new Runnable() {
@@ -454,7 +450,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 				occiRetrieve();
 			}
 		}
-		
+
 		globalMessage = "";
 		levelMessage = null;
 
@@ -470,7 +466,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 
 		titleMessage = "Suspend a virtual machine : " + getTitle();
 		LOGGER.debug("Action suspend(" + "method=" + method + ") called on " + this);
-		
+
 		if (UIDialog.isStandAlone()) {
 			// Launching thread with business code.
 			Runnable runnable = new Runnable() {
@@ -499,10 +495,10 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 				occiRetrieve();
 			}
 		}
-		
+
 		globalMessage = "";
 		levelMessage = null;
-		
+
 	}
 
 	/**
@@ -516,7 +512,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 
 		titleMessage = "Save a virtual machine : " + getTitle();
 		LOGGER.debug("Action save(" + "method=" + method + "name=" + name + ") called on " + this);
-		
+
 		if (UIDialog.isStandAlone()) {
 			// Launching thread with business code.
 			Runnable runnable = new Runnable() {
@@ -545,7 +541,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 				occiRetrieve();
 			}
 		}
-		
+
 		globalMessage = "";
 		levelMessage = null;
 
@@ -615,69 +611,74 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 
 	}
 
-	/**
-	 * Get Main storage link (link on main disk).
-	 * 
-	 * @return if a main storage is present return the main storagelink, if none
-	 *         null value is returned.
-	 */
-	private StoragelinkConnector getMainStorageLink() {
+	// /**
+	// * Get Main storage link (link on main disk).
+	// *
+	// * @return if a main storage is present return the main storagelink, if
+	// none
+	// * null value is returned.
+	// */
+	// private StoragelinkConnector getMainStorageLink() {
+	//
+	// List<StoragelinkConnector> storageLinks = getLinkedStorages();
+	// StoragelinkConnector mainStorageLink = null;
+	//
+	// int storageLinkSize = storageLinks.size();
+	// StorageConnector storageConnector;
+	// // Detect where's the main disk.
+	// for (StoragelinkConnector stLink : storageLinks) {
+	// if (storageLinkSize == 1) {
+	// mainStorageLink = stLink;
+	// break;
+	// } else if ((stLink.getMountpoint() != null &&
+	// (stLink.getMountpoint().equals("/")
+	// || stLink.getMountpoint().startsWith("C:") ||
+	// stLink.getMountpoint().startsWith("c:")))) {
+	// mainStorageLink = stLink;
+	// break;
+	// } else {
+	// // Detect if the storage name finished by _1. ex:
+	// // serverstorage_1.
+	// if (stLink.getTarget() != null && stLink.getTarget() instanceof
+	// StorageConnector) {
+	// storageConnector = (StorageConnector) stLink.getTarget();
+	// if (storageConnector.getTitle().endsWith("_1")) {
+	// mainStorageLink = stLink;
+	// break;
+	// }
+	// }
+	// }
+	// }
+	//
+	// return mainStorageLink;
+	// }
 
-		List<StoragelinkConnector> storageLinks = getLinkedStorages();
-		StoragelinkConnector mainStorageLink = null;
-
-		int storageLinkSize = storageLinks.size();
-		StorageConnector storageConnector;
-		// Detect where's the main disk.
-		for (StoragelinkConnector stLink : storageLinks) {
-			if (storageLinkSize == 1) {
-				mainStorageLink = stLink;
-				break;
-			} else if ((stLink.getMountpoint() != null && (stLink.getMountpoint().equals("/")
-					|| stLink.getMountpoint().startsWith("C:") || stLink.getMountpoint().startsWith("c:")))) {
-				mainStorageLink = stLink;
-				break;
-			} else {
-				// Detect if the storage name finished by _1. ex:
-				// serverstorage_1.
-				if (stLink.getTarget() != null && stLink.getTarget() instanceof StorageConnector) {
-					storageConnector = (StorageConnector) stLink.getTarget();
-					if (storageConnector.getTitle().endsWith("_1")) {
-						mainStorageLink = stLink;
-						break;
-					}
-				}
-			}
-		}
-
-		return mainStorageLink;
-	}
-
-	/**
-	 * Get the other storageLinks, if none empty list is returned.
-	 * 
-	 * @return a list of storageLinkConnector if other storagelink found (not
-	 *         the main storageLink).
-	 */
-	private List<StoragelinkConnector> getOtherStorageLink() {
-
-		List<StoragelinkConnector> storageLinks = getLinkedStorages();
-		List<StoragelinkConnector> stOthers = new ArrayList<StoragelinkConnector>();
-		StoragelinkConnector stMain = getMainStorageLink();
-		StoragelinkConnector stOther = null;
-		for (StoragelinkConnector link : storageLinks) {
-			if (stMain != null) {
-				stOther = (StoragelinkConnector) link;
-				if (!stOther.equals(stMain)) {
-					stOthers.add(stOther);
-				}
-			} else {
-				// St main is null, return all the storagelinks.
-				stOthers.add(link);
-			}
-		}
-		return storageLinks;
-	}
+	// /**
+	// * Get the other storageLinks, if none empty list is returned.
+	// *
+	// * @return a list of storageLinkConnector if other storagelink found (not
+	// * the main storageLink).
+	// */
+	// private List<StoragelinkConnector> getOtherStorageLink() {
+	//
+	// List<StoragelinkConnector> storageLinks = getLinkedStorages();
+	// List<StoragelinkConnector> stOthers = new
+	// ArrayList<StoragelinkConnector>();
+	// StoragelinkConnector stMain = getMainStorageLink();
+	// StoragelinkConnector stOther = null;
+	// for (StoragelinkConnector link : storageLinks) {
+	// if (stMain != null) {
+	// stOther = (StoragelinkConnector) link;
+	// if (!stOther.equals(stMain)) {
+	// stOthers.add(stOther);
+	// }
+	// } else {
+	// // St main is null, return all the storagelinks.
+	// stOthers.add(link);
+	// }
+	// }
+	// return storageLinks;
+	// }
 
 	/**
 	 * Define the corresponding status from VMWare power state.
@@ -800,6 +801,9 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 				vcpus = 1;
 			}
 		}
+		if (vcpus == 0) {
+			vcpus = this.getCores();
+		}
 
 		if (nbCore < 2) {
 			if (vcpus == 0) {
@@ -921,6 +925,67 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 	}
 
 	/**
+	 * Check if this compute has mixin vmware folder addon.
+	 * 
+	 * @return
+	 */
+	public boolean hasMixinVMwareFolders() {
+		boolean result = false;
+		String mixinTerm = null;
+		List<Mixin> mixins = this.getMixins();
+		for (Mixin mixin : mixins) {
+			mixinTerm = mixin.getTerm();
+			// This mixin contains attributes for datacenter, datastore, cluster
+			// and others goodies on folders.
+			if (mixinTerm.equals("vmwarefolders")) {
+				result = true;
+				break;
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * Check if this compute has mixin vmware compute addon.
+	 * 
+	 * @return
+	 */
+	public boolean hasMixinVMwareComputeAddOn() {
+		boolean result = false;
+		String mixinTerm = null;
+		List<Mixin> mixins = this.getMixins();
+		for (Mixin mixin : mixins) {
+			mixinTerm = mixin.getTerm();
+			if (mixinTerm.equals("vmaddon")) {
+				result = true;
+				break;
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * Check if this compute has mixin vmware ephemral addon.
+	 * 
+	 * @return
+	 */
+	public boolean hasMixinEphemeral() {
+		boolean result = false;
+		String mixinTerm = null;
+		List<Mixin> mixins = this.getMixins();
+		for (Mixin mixin : mixins) {
+			mixinTerm = mixin.getTerm();
+			// Linked to crtp extension of infrastructure extension.
+			if (mixinTerm.equals("small") || mixinTerm.equals("medium") || mixinTerm.equals("large")
+					|| mixinTerm.startsWith("mem_")) {
+				result = true;
+				break;
+			}
+		}
+		return result;
+	}
+
+	/**
 	 * Update this object attributes.
 	 */
 	public void updateAttributesOnCompute() {
@@ -928,8 +993,14 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		Map<String, String> attrsToUpdate = new HashMap<>();
 		List<String> attrsToDelete = new ArrayList<>();
 
+		boolean hasMixinFoldersData = hasMixinVMwareFolders();
+		boolean hasMixinVMwareComputeAddOn = hasMixinVMwareComputeAddOn();
+		// For disk ephemeral storage mandatory here to create a vm with a fixed
+		// system storage, elsewhere the ephemeral will be 15.0GB.
+		boolean hasMixinEphemeral = hasMixinEphemeral();
+
 		// ATTR_DATACENTER_NAME
-		if (datacenterName != null) {
+		if (datacenterName != null && hasMixinFoldersData) {
 			if (this.getAttributeValueByOcciKey(ATTR_DATACENTER_NAME) == null) {
 				attrsToCreate.put(ATTR_DATACENTER_NAME, datacenterName);
 			} else {
@@ -937,7 +1008,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 				attrsToUpdate.put(ATTR_DATACENTER_NAME, datacenterName);
 			}
 		}
-		if (datastoreName != null) {
+		if (datastoreName != null && hasMixinFoldersData) {
 			// ATTR_DATASTORE_NAME
 			if (this.getAttributeValueByOcciKey(ATTR_DATASTORE_NAME) == null) {
 				attrsToCreate.put(ATTR_DATASTORE_NAME, datastoreName);
@@ -947,7 +1018,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		}
 
 		// ATTR_CLUSTER_NAME
-		if (clusterName != null) {
+		if (clusterName != null && hasMixinFoldersData) {
 			if (this.getAttributeValueByOcciKey(ATTR_CLUSTER_NAME) == null) {
 				attrsToCreate.put(ATTR_CLUSTER_NAME, clusterName);
 			} else {
@@ -955,7 +1026,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 			}
 		}
 		// ATTR_HOSTSYSTEM_NAME
-		if (hostSystemName != null) {
+		if (hostSystemName != null && hasMixinFoldersData) {
 			if (this.getAttributeValueByOcciKey(ATTR_HOSTSYSTEM_NAME) == null) {
 				attrsToCreate.put(ATTR_HOSTSYSTEM_NAME, hostSystemName);
 			} else {
@@ -964,20 +1035,20 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		}
 
 		// ATTR_IMAGE_NAME
-		if (vmTemplateName != null) {
+		if (vmTemplateName != null && hasMixinVMwareComputeAddOn) {
 			if (this.getAttributeValueByOcciKey(ATTR_IMAGE_NAME) == null) {
 				attrsToCreate.put(ATTR_IMAGE_NAME, vmTemplateName);
 			}
 		}
 
 		// ATTR_VCPU_NUMBER
-		if (vcpus != 0) {
+		if (vcpus != 0 && hasMixinVMwareComputeAddOn) {
 			if (this.getAttributeValueByOcciKey(ATTR_VCPU_NUMBER) == null) {
 				attrsToCreate.put(ATTR_VCPU_NUMBER, vcpus.toString());
 			}
 		}
 		// ATTR_VM_GUEST_STATE
-		if (vmGuestState != null) {
+		if (vmGuestState != null && hasMixinVMwareComputeAddOn) {
 			if (this.getAttributeValueByOcciKey(ATTR_VM_GUEST_STATE) == null) {
 				attrsToCreate.put(ATTR_VM_GUEST_STATE, vmGuestState);
 			} else {
@@ -985,7 +1056,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 			}
 		}
 		// ATTR_VM_GUEST_OS_ID
-		if (guestOsId != null) {
+		if (guestOsId != null && hasMixinVMwareComputeAddOn) {
 			if (this.getAttributeValueByOcciKey(ATTR_VM_GUEST_OS_ID) == null) {
 				attrsToCreate.put(ATTR_VM_GUEST_OS_ID, guestOsId);
 			} else {
@@ -996,11 +1067,20 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		if (markedAsTemplate == null) {
 			markedAsTemplate = "false";
 		}
+		if (hasMixinVMwareComputeAddOn) {
+			if (this.getAttributeStateObject(ATTR_MARKED_AS_TEMPLATE) == null) {
+				attrsToCreate.put(ATTR_MARKED_AS_TEMPLATE, markedAsTemplate);
+			} else {
+				attrsToUpdate.put(ATTR_MARKED_AS_TEMPLATE, markedAsTemplate);
+			}
+		}
 
-		if (this.getAttributeStateObject(ATTR_MARKED_AS_TEMPLATE) == null) {
-			attrsToCreate.put(ATTR_MARKED_AS_TEMPLATE, markedAsTemplate);
-		} else {
-			attrsToUpdate.put(ATTR_MARKED_AS_TEMPLATE, markedAsTemplate);
+		if (hasMixinEphemeral) {
+			if (this.getAttributeStateObject(ATTR_VM_EPHEMERAL_DISK_SIZE_GB) == null) {
+				attrsToCreate.put(ATTR_VM_EPHEMERAL_DISK_SIZE_GB, "" + ephemeralDiskSizeGB);
+			} else {
+				attrsToCreate.put(ATTR_VM_EPHEMERAL_DISK_SIZE_GB, "" + ephemeralDiskSizeGB);
+			}
 		}
 
 		// Update the attributes via a transaction (or not if standalone).
@@ -1028,6 +1108,27 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		if (hostname != null) {
 			setHostname(hostname);
 		}
+	}
+
+	/**
+	 * Get the storages resources without links and those have their title
+	 * equals to this compute title. Used only when no storage linked and
+	 * there's no main disk found when creating a new virtual machine.
+	 * 
+	 * @return
+	 */
+	public List<StorageConnector> getStorageNotLinked() {
+		List<StorageConnector> stConnectors = new ArrayList<>();
+		Configuration config = OcciHelper.getConfiguration(this);
+		List<Resource> resources = config.getResources();
+
+		for (Resource res : resources) {
+			if (res instanceof StorageConnector && res.getLinks().isEmpty()
+					&& res.getTitle().contains(this.getTitle())) {
+				stConnectors.add((StorageConnector) res);
+			}
+		}
+		return stConnectors;
 	}
 
 	/**
@@ -1269,23 +1370,8 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		// corresponding datastore.
 
 		Datastore datastore = null;
-		StoragelinkConnector stMain = getMainStorageLink();
-		List<StoragelinkConnector> stOtherLinks = getOtherStorageLink();
-
-		// Get Main disk, if template mode, the main disk is already
-		// defined by the template.
-		if (stMain == null && vmTemplate == null) {
-			globalMessage = "No main disk storage defined on / or on c: or the storage title may end by _1";
-			levelMessage = Level.ERROR;
-			LOGGER.error(globalMessage);
-			VCenterClient.disconnect();
-			return;
-		}
-
-		StorageConnector mainStorage = null;
-		if (vmTemplate == null && stMain != null && stMain.getTarget() instanceof StorageConnector) {
-			mainStorage = (StorageConnector) stMain.getTarget();
-		}
+		// StoragelinkConnector stMain = getMainStorageLink();
+		List<StoragelinkConnector> stLinks = getLinkedStorages(); // For additionnal disks.
 
 		// Get the datastore vmware object.
 		if (datastoreName != null) {
@@ -1306,7 +1392,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 			}
 		}
 		setDatastoreName(datastore.getName());
-
+		// For V2, folder is on an attribute with vmware light extension.
 		Folder vmFolder;
 
 		// Get the first adapter (eth0 or name Network adapter 1 or
@@ -1552,30 +1638,25 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 
 				String diskMode = null;
 				// Get the disk mode.
-				// disk mode: persistent|independent_persistent,
-				// independent_nonpersistent
-				// for (AttributeState attrState :
-				// mainStorage.getAttributes()) {
-				// if
-				// (attrState.getName().equalsIgnoreCase("occi.storage.vmware.diskmode"))
-				// {
-				// diskMode = attrState.getValue();
-				// break;
-				// }
-				// }
-				// if (diskMode == null) {
 				// mode: persistent|independent_persistent,
 				// independent_nonpersistent
 				LOGGER.warn("Default diskmode setted to persistent");
 				diskMode = "persistent";
-				// Add the attribute to model main storage.
-				// EntityUtils.createAttribute(mainStorage,
-				// "occi.storage.vmware.diskmode", "persistent");
+				
+				// "occi.compute.ephemeral.diskmode", "persistent");
 				// }
 
 				// Disk size in kiloBytes.
-				Float diskSize = mainStorage.getSize();
-				Long diskSizeGB = diskSize.longValue();
+				// Set the ephemeral disk size, if the add one crtp mixin is set.
+				if (hasMixinEphemeral()) {
+					// read the ephemeral size attribute before creating.
+					Float ephemeralTmp = Float.valueOf(getAttributeValueByOcciKey(ATTR_VM_EPHEMERAL_DISK_SIZE_GB));
+					if (ephemeralTmp != null && ephemeralTmp > 0) {
+						ephemeralDiskSizeGB = ephemeralTmp;
+					}
+				}
+				
+				Long diskSizeGB = ephemeralDiskSizeGB.longValue();
 				if (diskSizeGB == 0L) {
 					globalMessage = "The main disk size must be > 0 in GigaBytes";
 					levelMessage = Level.ERROR;
@@ -1588,11 +1669,8 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 				VirtualDeviceConfigSpec scsiSpec = VMHelper.createScsiSpec(cKey);
 				// Define the datastore if there is one referenced on
 				// StorageConnector.
-				String storageDatastoreName = mainStorage.getDatastoreName();
-				if (mainStorage.getDatastoreName() == null) {
-					// Set the main storage datastore on the same of this vm.
-					storageDatastoreName = getDatastoreName();
-				}
+				String storageDatastoreName =  getDatastoreName();
+				
 				VirtualDeviceConfigSpec diskSpec = VMHelper.createDiskSpec(storageDatastoreName, cKey, diskSizeKB,
 						diskMode);
 
@@ -1641,7 +1719,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 					nicName = firstConnector.getTitle();
 				} else {
 					// Default virtual network name.
-					nicName = "virtual network";
+					nicName = "Adaptateur réseau 1";
 				}
 
 				// TODO : Check VMWare tools, if no vmware tools, the
@@ -1700,7 +1778,8 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 
 				ResourcePool rp = (ResourcePool) new InventoryNavigator(datacenter)
 						.searchManagedEntities("ResourcePool")[0];
-
+				
+				// TODO : V2 custom folder path.
 				vmFolder = datacenter.getVmFolder();
 
 				// Create effectively the vm on folder.
@@ -1791,6 +1870,25 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 					setTitle(vmOldName);
 					vmName = vmOldName;
 				} else {
+					// Find vm by morId
+					if (morId != null) {
+						vm = VMHelper.findVMForMorId(rootFolder, morId);
+					}
+					if (vm == null) {
+						// no vm exist with this name.
+						globalMessage = "This virtual machine doesnt exist anymore.";
+						levelMessage = Level.WARN;
+						LOGGER.warn(globalMessage);
+						VCenterClient.disconnect();
+						vmExist = false;
+						return;
+					}
+				}
+			} else {
+				if (morId != null) {
+					vm = VMHelper.findVMForMorId(rootFolder, morId);
+				}
+				if (vm == null) {
 					// no vm exist with this name.
 					globalMessage = "This virtual machine doesnt exist anymore.";
 					levelMessage = Level.WARN;
@@ -1799,16 +1897,11 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 					vmExist = false;
 					return;
 				}
-			} else {
-				// no vm exist with this name.
-				globalMessage = "This virtual machine doesnt exist anymore.";
-				levelMessage = Level.WARN;
-				LOGGER.warn(globalMessage);
-				VCenterClient.disconnect();
-				vmExist = false;
-				return;
+
 			}
 		}
+		morId = vm.getMOR().getVal();
+		vmName = vm.getName();
 		if (toMonitor) {
 			subMonitor.worked(30);
 		}
@@ -1900,7 +1993,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		}
 		// Load the compute information from vCenter.
 		numCores = VMHelper.getCoreNumber(vm);
-
+		vcpus = VMHelper.getNumCPU(vm);
 		memoryGB = VMHelper.getMemoryGB(vm);
 		architecture = VMHelper.getArchitecture(vm);
 		speed = VMHelper.getCPUSpeed(vm);
@@ -1910,6 +2003,8 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		vmGuestState = VMHelper.getGuestState(vm);
 		guestOsId = vm.getConfig().getGuestId();
 		summary = vm.getConfig().getAnnotation();
+		ephemeralDiskSizeGB = VMHelper.getEphemalDiskSize(vm);
+
 		if (toMonitor) {
 			subMonitor.worked(70);
 		}
@@ -2290,13 +2385,15 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 			subMonitor.worked(100);
 		}
 	}
-	
+
 	/**
 	 * Business code for stopping a compute.
+	 * 
 	 * @param monitor
 	 * @param method
 	 */
-	public void stopCompute(IProgressMonitor monitor, org.occiware.clouddesigner.occi.infrastructure.StopMethod method) {
+	public void stopCompute(IProgressMonitor monitor,
+			org.occiware.clouddesigner.occi.infrastructure.StopMethod method) {
 		SubMonitor subMonitor = null;
 		boolean toMonitor = false;
 		if (monitor != null) {
@@ -2396,10 +2493,12 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 
 	/**
 	 * Business code for restarting a compute.
+	 * 
 	 * @param monitor
 	 * @param method
 	 */
-	public void restartCompute(IProgressMonitor monitor, final org.occiware.clouddesigner.occi.infrastructure.RestartMethod method) {
+	public void restartCompute(IProgressMonitor monitor,
+			final org.occiware.clouddesigner.occi.infrastructure.RestartMethod method) {
 		SubMonitor subMonitor = null;
 		boolean toMonitor = false;
 		if (monitor != null) {
@@ -2412,7 +2511,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 			subMonitor.worked(10);
 
 		}
-		
+
 		if (!VCenterClient.checkConnection()) {
 			// Must return true if connection is established.
 			globalMessage = "No connection to Vcenter has been established.";
@@ -2529,14 +2628,15 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 			LOGGER.warn(globalMessage);
 		}
 	}
-	
-	
+
 	/**
 	 * Business code for suspend a compute.
+	 * 
 	 * @param monitor
 	 * @param method
 	 */
-	public void suspendCompute(IProgressMonitor monitor, final org.occiware.clouddesigner.occi.infrastructure.SuspendMethod method) {
+	public void suspendCompute(IProgressMonitor monitor,
+			final org.occiware.clouddesigner.occi.infrastructure.SuspendMethod method) {
 		SubMonitor subMonitor = null;
 		boolean toMonitor = false;
 		if (monitor != null) {
@@ -2549,7 +2649,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 			subMonitor.worked(10);
 
 		}
-		
+
 		if (!VCenterClient.checkConnection()) {
 			// Must return true if connection is established.
 			globalMessage = "No connection to Vcenter has been established.";
@@ -2633,14 +2733,16 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 			subMonitor.worked(100);
 		}
 	}
-	
+
 	/**
 	 * Save a compute.
+	 * 
 	 * @param monitor
 	 * @param method
 	 * @param name
 	 */
-	public void saveCompute(IProgressMonitor monitor, final org.occiware.clouddesigner.occi.infrastructure.SaveMethod method, final String name) {
+	public void saveCompute(IProgressMonitor monitor,
+			final org.occiware.clouddesigner.occi.infrastructure.SaveMethod method, final String name) {
 		SubMonitor subMonitor = null;
 		boolean toMonitor = false;
 		if (monitor != null) {
@@ -2654,7 +2756,6 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 
 		}
 
-		
 		if (!VCenterClient.checkConnection()) {
 			// Must return true if connection is established.
 			globalMessage = "No connection to Vcenter has been established.";
@@ -2709,5 +2810,5 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 			subMonitor.worked(100);
 		}
 	}
-	
+
 }

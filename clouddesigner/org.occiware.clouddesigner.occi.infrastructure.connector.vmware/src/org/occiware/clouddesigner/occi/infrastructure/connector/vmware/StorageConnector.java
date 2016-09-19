@@ -95,6 +95,11 @@ public class StorageConnector extends org.occiware.clouddesigner.occi.infrastruc
 	public static final String ATTR_DATASTORE_NAME = "datastorename";
 
 	/**
+	 * Managed object reference id. Unique reference for virtual machine.
+	 */
+	private String morId;
+	
+	/**
 	 * Constructs a storage connector.
 	 */
 	StorageConnector() {
@@ -466,6 +471,8 @@ public class StorageConnector extends org.occiware.clouddesigner.occi.infrastruc
 		// Search for linked computes.
 
 		List<ComputeConnector> computes = getLinkedComputes();
+		
+		
 		// Load the datastore.
 		if (datastoreName != null) {
 			datastore = DatastoreHelper.findDatastoreForName(rootFolder, datastoreName);
@@ -511,11 +518,20 @@ public class StorageConnector extends org.occiware.clouddesigner.occi.infrastruc
 
 		}
 
+		
 		datacenter = DatacenterHelper.findDatacenterFromDatastore(rootFolder, datastoreName);
-		if (datacenter == null) {
+		
+		if (datacenter == null && datastoreName != null) {
+			
+			
 			throw new DatacenterNotFoundException(
 					"Cannot retrieve datacenter, cause: datacenter not found for the datastore: "
 							+ datastore.getName());
+		
+		} else if (datacenter == null && datastoreName == null) {
+			
+			throw new DatacenterNotFoundException("Cannot retrieve datacenter, cause: no datastore defined for this virtual disk : " + this.getTitle());
+		
 		} else {
 
 			this.setDatacenterName(datacenter.getName());
@@ -697,6 +713,7 @@ public class StorageConnector extends org.occiware.clouddesigner.occi.infrastruc
 			if (datastore == null) {
 				datastore = allocator.allocateDatastore();
 				if (datastore != null) {
+					LOGGER.info("Assigning datastore: " + datastore.getName());
 					setDatastoreName(datastore.getName());
 				}
 			}

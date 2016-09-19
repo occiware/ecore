@@ -32,13 +32,15 @@ import com.vmware.vim25.VirtualDevice;
 import com.vmware.vim25.VirtualDeviceBackingInfo;
 import com.vmware.vim25.VirtualDeviceFileBackingInfo;
 import com.vmware.vim25.VirtualDisk;
+import com.vmware.vim25.mo.ServiceInstance;
+import com.vmware.vim25.mo.VirtualDiskManager;
 import com.vmware.vim25.mo.VirtualMachine;
 
 public class VolumeHelper {
 
 	private static Logger LOGGER = LoggerFactory.getLogger(VolumeHelper.class);
 
-	private static Volume volume = null;
+	public static Volume volume = null;
 
 	/**
 	 * Load or refresh volume information from vcenter.
@@ -325,7 +327,7 @@ public class VolumeHelper {
 			} else if (device instanceof VirtualDisk) {
 				VirtualDisk disk = (VirtualDisk) device;
 				VirtualDeviceBackingInfo vdbi = device.getBacking();
-
+				
 				if (vdbi instanceof VirtualDeviceFileBackingInfo) {
 					diskName = ((VirtualDeviceFileBackingInfo) vdbi).getFileName();
 					// Add to map.
@@ -333,7 +335,7 @@ public class VolumeHelper {
 				}
 			}
 		}
-
+		
 		return mapDisks;
 	}
 

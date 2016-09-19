@@ -84,6 +84,11 @@ public class NetworkinterfaceConnector
 	private boolean created = false;
 
 	/**
+	 * Managed object reference id. Unique reference for virtual machine.
+	 */
+	private String morId;
+	
+	/**
 	 * Constructs a networkinterface connector.
 	 */
 	NetworkinterfaceConnector() {
