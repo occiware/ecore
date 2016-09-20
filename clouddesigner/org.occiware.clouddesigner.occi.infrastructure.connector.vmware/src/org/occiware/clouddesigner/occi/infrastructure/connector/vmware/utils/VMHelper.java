@@ -14,6 +14,7 @@ package org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils;
 
 import java.rmi.RemoteException;
 
+import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.addons.exceptions.MountVMWareToolsDiskException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -301,13 +302,15 @@ public class VMHelper {
 	 * 
 	 * @param folder
 	 * @param name
+	 * @throws MountVMWareToolsDiskException 
 	 */
-	public static void mountGuestVmTools(final Folder folder, final String name) {
+	public static void mountGuestVmTools(final Folder folder, final String name) throws MountVMWareToolsDiskException {
 		VirtualMachine vm = VMHelper.findVMForName(folder, name);
 		try {
 			vm.mountToolsInstaller();
 		} catch (RemoteException ex) {
 			LOGGER.info("Unable to mount VMWare tools installer !");
+			throw new MountVMWareToolsDiskException("Unable to mount VMWare tools installer !", ex.getCause());
 		}
 
 	}

@@ -32,6 +32,7 @@ import org.occiware.clouddesigner.occi.Mixin;
 import org.occiware.clouddesigner.occi.Resource;
 import org.occiware.clouddesigner.occi.infrastructure.Architecture;
 import org.occiware.clouddesigner.occi.infrastructure.ComputeStatus;
+import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.addons.exceptions.MountVMWareToolsDiskException;
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.allocator.AllocatorImpl;
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.ClusterHelper;
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.DatacenterHelper;
@@ -129,6 +130,9 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 	private String globalMessage = "";
 	private Level levelMessage = null;
 
+	private boolean toCreateOnStartOperation = false;
+	
+	
 	/**
 	 * Constructs a compute connector.
 	 */
@@ -1186,6 +1190,8 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 			LOGGER.warn(globalMessage);
 			return;
 		}
+		
+		
 
 		// Get the list of linked network adapters, by this we get the
 		// network
@@ -1196,7 +1202,31 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 
 		// Same for storage we get the storage links.
 		List<StoragelinkConnector> storageLinks = getLinkedStorages();
-
+		
+		// Check if we create the virtual machine on start operation.
+		if (!toCreateOnStartOperation) {
+			// check if we have no networkinterface connected, if this is the case we check if a network is in the configuration space.
+			if (netInterfaceConn.isEmpty()) {
+				// Check if network is on configuration object.
+				Configuration config = OcciHelper.getConfiguration(this);
+				if (config != null) {
+					List<Resource> resources = config.getResources();
+					for (Resource resource : resources) {
+						if (resource instanceof NetworkConnector) {
+							
+							toCreateOnStartOperation = true;
+							globalMessage = "Network detected on this configuration, for creating this vm, you must use start operation, no network adapter found for this vm.";
+							levelMessage = Level.WARN; 
+							LOGGER.warn(globalMessage);
+							return;
+						}
+					}
+				}
+			}
+		} else {
+			toCreateOnStartOperation = false;
+		}
+		
 		// Template or not ?
 		vmTemplateName = getAttributeValueByOcciKey(ATTR_IMAGE_NAME);
 		boolean hasTemplate = (vmTemplateName != null && !vmTemplateName.trim().isEmpty());
@@ -1327,10 +1357,17 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		}
 
 		if (!hasTemplate && guestOsId == null) {
-			LOGGER.warn("Guest OS Id is unknown, assign other 32 bits guest os by default.");
-			// No VM template found, retrograde to guestOSId.
-			// Get the corresponding value from api :
-			guestOsId = VirtualMachineGuestOsIdentifier.otherGuest.toString();
+			// Get the architecture to define the good default guestos.
+			if (this.getArchitecture().equals("x86")) {
+				LOGGER.warn("Guest OS Id is unknown, assign other 32 bits guest os by default.");
+				// No VM template found, retrograde to guestOSId.
+				// Get the corresponding value from api :
+				guestOsId = VirtualMachineGuestOsIdentifier.otherGuest.toString();
+			} else {
+				LOGGER.warn("Guest OS Id is unknown, assign other 64 bits guest os by default.");
+				guestOsId = VirtualMachineGuestOsIdentifier.otherGuest64.toString();
+			}
+			
 		}
 		if (hasTemplate) {
 			// Get the guestOsId from template (not the attribute of this
@@ -2310,6 +2347,13 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 			subMonitor.worked(10);
 
 		}
+		
+		if (toCreateOnStartOperation) {
+			LOGGER.info("Creating the virtual machine and start after.");
+			this.createCompute(monitor);
+			subMonitor.worked(10);
+		}
+		
 		LOGGER.debug("Action start() called on " + this);
 		if (!VCenterClient.checkConnection()) {
 			// Must return true if connection is established.
@@ -2373,7 +2417,13 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		// tools disk for installation.
 		if (!VMHelper.isToolsInstalled(vm)) {
 			if (vm != null) {
-				VMHelper.mountGuestVmTools((Folder) vm.getParent(), getTitle());
+				try {
+					VMHelper.mountGuestVmTools((Folder) vm.getParent(), getTitle());
+				} catch (MountVMWareToolsDiskException ex) {
+					globalMessage = ex.getMessage() + " on virtual machine : " + vmName;
+					levelMessage = Level.WARN;
+					LOGGER.warn(globalMessage);
+				}
 				// assign hot config enabled (default).
 				// VMHelper.hotReconfigEnable((Folder)
 				// vm.getParent(),
