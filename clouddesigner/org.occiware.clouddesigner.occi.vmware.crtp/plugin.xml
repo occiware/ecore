@@ -12,29 +12,52 @@
  - Philippe Merle <philippe.merle@inria.fr>
 -->
 <plugin>
-   <extension
-         point="org.eclipse.emf.ecore.generated_package">
-      <package
-            class="org.occiware.clouddesigner.occi.vmware.crtp.EPackage1"
-            uri="org.occiware.clouddesigner.occi.vmware.crtp.package1">
-      </package>
+
+	<!-- Register the crtp extension. -->
+   <extension point="org.occiware.clouddesigner.occi.occie">
+      <occie scheme="http://occiware.org/occi/vmwarecrtp#" file="model/vmwarecrtp.occie"/>
    </extension>
-
-   <!-- Register the vmwarecrtp extension. -->
-
+   
    <!-- Define URI mapping. -->
-
+   <extension point="org.eclipse.emf.ecore.uri_mapping">
+      <mapping source="http://occiware.org/occi/vmwarecrtp" target="platform:/plugin/org.occiware.clouddesigner.occi.vmware.crtp/model/vmwarecrtp.occie"/>
+   </extension>
+   
    <!-- Register the parser for .vmwarecrtp files. -->
-
-   <!-- Popup menu for converting to an OCCI Configuration file. -->
    <extension point="org.eclipse.emf.ecore.extension_parser">
       <parser type="vmwarecrtp" class="org.occiware.clouddesigner.occi.util.OCCIResourceFactoryImpl"/>
    </extension>
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated vmwarecrtp -->
+   
+   <!-- Popup menu for converting to an OCCI Configuration file. -->
+   <extension point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            id="org.occiware.clouddesigner.occi.vmwarecrtp.contribution"
+            nameFilter="*.vmwarecrtp"
+            objectClass="org.eclipse.core.resources.IFile">
+         <menu
+               id="org.occiware.clouddesigner.menu"
+               label="Cloud Designer"
+               path="additionsCloudDesigner">
+            <separator name="group"/>
+         </menu>
+         <action
+               class="org.occiware.clouddesigner.occi.emfgen.ui.popup.actions.Ecore2OCCIAction"
+               enablesFor="1"
+               id="org.occiware.clouddesigner.occi.vmwarecrtp.ecore2occi"
+               label="Convert to an OCCI Configuration File"
+               menubarPath="org.occiware.clouddesigner.menu/group">
+         </action>
+      </objectContribution>
+   </extension>
+   
+   <extension
+         point="org.eclipse.emf.ecore.generated_package">
       <package
-            uri="http://occiware.org/occi/vmwarecrtp/ecore"
-            class="vmwarecrtp.VmwarecrtpPackage"/>
+            class="vmwarecrtp.VmwarecrtpPackage"
+            uri="http://occiware.org/occi/vmwarecrtp/ecore">
+      </package>
    </extension>
 
+
 </plugin>
+
