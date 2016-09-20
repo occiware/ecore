@@ -971,7 +971,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 	}
 
 	/**
-	 * Check if this compute has mixin vmware ephemral addon.
+	 * Check if this compute has mixin vmware ephemral addon (crtp).
 	 * 
 	 * @return
 	 */
@@ -1044,6 +1044,8 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		if (vmTemplateName != null && hasMixinVMwareComputeAddOn) {
 			if (this.getAttributeStateObject(ATTR_IMAGE_NAME) == null) {
 				attrsToCreate.put(ATTR_IMAGE_NAME, vmTemplateName);
+			} else {
+				attrsToUpdate.put(ATTR_IMAGE_NAME, vmTemplateName);
 			}
 		}
 
@@ -1051,6 +1053,8 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		if (vcpus != 0 && hasMixinVMwareComputeAddOn) {
 			if (this.getAttributeStateObject(ATTR_VCPU_NUMBER) == null) {
 				attrsToCreate.put(ATTR_VCPU_NUMBER, vcpus.toString());
+			} else {
+				attrsToUpdate.put(ATTR_VCPU_NUMBER, vcpus.toString());
 			}
 		}
 		// ATTR_VM_GUEST_STATE

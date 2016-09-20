@@ -16,13 +16,17 @@ package org.occiware.clouddesigner.occi.infrastructure.connector.vmware;
 
 import java.lang.reflect.InvocationTargetException;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.log4j.Level;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.occiware.clouddesigner.occi.AttributeState;
+import org.occiware.clouddesigner.occi.Mixin;
 import org.occiware.clouddesigner.occi.OCCIFactory;
 import org.occiware.clouddesigner.occi.infrastructure.NetworkInterfaceStatus;
 import org.occiware.clouddesigner.occi.infrastructure.NetworkStatus;
@@ -31,6 +35,7 @@ import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.allocator
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.NetworkHelper;
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.VCenterClient;
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.VMHelper;
+import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.thread.EntityUtils;
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.thread.UIDialog;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -65,6 +70,8 @@ public class NetworkinterfaceConnector
 	 */
 	private static Logger LOGGER = LoggerFactory.getLogger(NetworkinterfaceConnector.class);
 
+	private static final String ATTR_NETWORK_INTERFACE_IP_ADDRESS = "occi.networkinterface.address"; 
+	
 	private String vmName = null;
 	private String networkAdapterName = null;
 
@@ -82,7 +89,14 @@ public class NetworkinterfaceConnector
 
 	private boolean nicExist = false;
 	private boolean created = false;
-
+	
+	private String ipAddressPlainLocal = null;
+	private boolean dhcpMode = false;
+	private boolean wakeOnLan = true;
+	private String macAddress = null;
+	private String allocation = null;
+	private NetworkInterfaceStatus adapterState = NetworkInterfaceStatus.INACTIVE;
+	
 	/**
 	 * Managed object reference id. Unique reference for virtual machine.
 	 */
@@ -105,7 +119,7 @@ public class NetworkinterfaceConnector
 	@Override
 	public void occiCreate() {
 		LOGGER.debug("occiCreate() called on " + this);
-
+		titleMessage = "Create network adapter : " + this.getTitle();
 		if (UIDialog.isStandAlone()) {
 			// Launching thread with business code.
 			LOGGER.debug("Console mode.");
@@ -175,8 +189,7 @@ public class NetworkinterfaceConnector
 				UIDialog.showUserMessage(titleMessage, globalMessage, levelMessage);
 			}
 
-			// TODO : Check si besoin d'une méthode de mise à jour des attributs
-			// updateAttributesOnNetworkNIC();
+			updateNetworkInterfaceAttributes();
 
 		}
 
@@ -191,7 +204,7 @@ public class NetworkinterfaceConnector
 	@Override
 	public void occiUpdate() {
 		LOGGER.debug("occiUpdate() called on " + this);
-
+		titleMessage = "Update network adapter : " + this.getTitle();
 		if (UIDialog.isStandAlone()) {
 			// Launching thread with business code.
 			LOGGER.debug("Console mode.");
@@ -234,7 +247,7 @@ public class NetworkinterfaceConnector
 	@Override
 	public void occiDelete() {
 		LOGGER.debug("occiDelete() called on " + this);
-
+		titleMessage = "Delete a network adapter : " + this.getTitle();
 		if (UIDialog.isStandAlone()) {
 			// Launching thread with business code.
 			LOGGER.debug("Console mode.");
@@ -282,6 +295,7 @@ public class NetworkinterfaceConnector
 	 */
 	public void up() {
 		LOGGER.debug("Action up() called on " + this);
+		titleMessage = "Down for this network adapter : " + this.getTitle();
 		if (UIDialog.isStandAlone()) {
 			// Launching thread with business code.
 			LOGGER.debug("Console mode.");
@@ -325,6 +339,7 @@ public class NetworkinterfaceConnector
 	 */
 	public void down() {
 		LOGGER.debug("Action down() called on " + this);
+		titleMessage = "Down for this network adapter : " + this.getTitle();
 		if (UIDialog.isStandAlone()) {
 			// Launching thread with business code.
 			LOGGER.debug("Console mode.");
@@ -742,7 +757,7 @@ public class NetworkinterfaceConnector
 			globalMessage = "The linked virtual machine doesnt exist on Vcenter, no network to retrieve.";
 			levelMessage = Level.ERROR;
 			LOGGER.error(globalMessage);
-			setState(NetworkInterfaceStatus.INACTIVE);
+			adapterState = NetworkInterfaceStatus.INACTIVE;
 			// No vm adapter found so.
 			VCenterClient.disconnect();
 			return;
@@ -778,7 +793,7 @@ public class NetworkinterfaceConnector
 				globalMessage = "No network adapter found for this host network: " + networkName;
 				levelMessage = Level.ERROR;
 				LOGGER.error(globalMessage);
-				setState(NetworkInterfaceStatus.INACTIVE);
+				adapterState = NetworkInterfaceStatus.INACTIVE;
 				VCenterClient.disconnect();
 				return;
 			}
@@ -787,7 +802,7 @@ public class NetworkinterfaceConnector
 			globalMessage = "The vswitch port group name is not found on vcenter, no network to retrieve.";
 			levelMessage = Level.ERROR;
 			LOGGER.error(globalMessage);
-			setState(NetworkInterfaceStatus.INACTIVE);
+			adapterState = NetworkInterfaceStatus.INACTIVE;
 			VCenterClient.disconnect();
 			return;
 		}
@@ -821,14 +836,8 @@ public class NetworkinterfaceConnector
 			subMonitor.worked(40);
 		}
 		// Set the informations...
-		this.setTitle(networkAdapterName);
 		String[] ipAddressesLocal;
-		String ipAddressPlainLocal = "";
-		String macAddress = null;
-		boolean dhcpMode = false;
-		Boolean wakeOnLan = true;
-		// String dnsName;
-
+		
 		if (VMHelper.isToolsInstalled(vm) && VMHelper.isToolsRunning(vm) && vEthDevice != null) {
 			// Get guest information.
 			GuestNicInfo[] guestNicInf = vm.getGuest().getNet();
@@ -871,92 +880,55 @@ public class NetworkinterfaceConnector
 			}
 
 		}
-		if (toMonitor) {
-			subMonitor.worked(60);
-		}
-		if (ipAddressPlainLocal.isEmpty()) {
-			this.setMessage("No ip address setup.");
-		} else {
-			this.setMessage("ip address setup: " + ipAddressPlainLocal);
-
-			AttributeState attr = this.getAttributeStateObject("occi.networkinterface.address");
-			if (attr != null) {
-				// set the new value for this attribute.
-				attr.setValue(ipAddressPlainLocal);
-				// Create the attribute and set his value.
-				// attr = createAttribute("occi.networkinterface.address",
-				// ipAddressPlainLocal);
-				// this.getAttributes().add(attr);
-				// } else {
-
-			}
-
-		}
-		// Mac address.
-		if (macAddress != null) {
-			AttributeState attr = this.getAttributeStateObject("occi.networkinterface.mac");
-			if (attr != null) {
-				// Create the attribute and set his value.
-				// attr = createAttribute("occi.networkinterface.mac",
-				// macAddress);
-				// this.getAttributes().add(attr);
-				// } else {
-				attr.setValue(macAddress);
-			}
-		}
-		if (toMonitor) {
-			subMonitor.worked(70);
-		}
+		
 		// TODO : Gateway value, how to get this value ? not found on guest
-		// object.
+				// object.
+				
+				// TODO : allocation value (dynamic or static).
+				
+			
+				// if (dhcpMode) {
+				// allocation = "dynamic";
+				// } else {
+				// allocation = "static";
+				// }
+				// Set the allocation.
+				// AttributeState attrib =
+				// this.getAttributeStateObject("occi.networkinterface.allocation");
+				// if (attrib == null) {
+				// // Create the attribute and set his value.
+				//
+				// attrib = createAttribute("occi.networkinterface.allocation",
+				// allocation);
+				// this.getAttributes().add(attrib);
+				// } else {
+				// attrib.setValue(allocation);
+				// }
 
-		// allocation value (dynamic or static).
-		// String allocation;
-		// if (dhcpMode) {
-		// allocation = "dynamic";
-		// } else {
-		// allocation = "static";
-		// }
-		// Set the allocation.
-		// AttributeState attrib =
-		// this.getAttributeStateObject("occi.networkinterface.allocation");
-		// if (attrib == null) {
-		// // Create the attribute and set his value.
-		//
-		// attrib = createAttribute("occi.networkinterface.allocation",
-		// allocation);
-		// this.getAttributes().add(attrib);
-		// } else {
-		// attrib.setValue(allocation);
-		// }
-
-		// May be null if the device is not started...
+				// May be null if the device is not started...
 
 		if (vEthDevice != null && vEthDevice.getConnectable() != null) {
 			if (vEthDevice.getConnectable().connected) {
-				this.setState(NetworkInterfaceStatus.ACTIVE);
+				adapterState = NetworkInterfaceStatus.ACTIVE;
+				
 			} else {
-				this.setState(NetworkInterfaceStatus.INACTIVE);
+				adapterState = NetworkInterfaceStatus.INACTIVE;
 			}
 
-			// Wake on lan value
+			// TODO : Wake on lan value
 			// wakeOnLan = vEthDevice.getWakeOnLanEnabled();
-			// String wakeOnLanStr = wakeOnLan.toString();
-			// AttributeState attr =
-			// this.getAttributeStateObject("occi.networkinterface.wakeonlan");
-			// if (attr == null) {
-			// // Create the attribute and set his value.
-			// attr = createAttribute("occi.networkinterface.wakeonlan",
-			// wakeOnLanStr);
-			// this.getAttributes().add(attr);
-			// } else {
-			// attr.setValue(wakeOnLanStr);
-			// }
-
 		}
+		
 		if (toMonitor) {
 			subMonitor.worked(100);
 		}
+		
+		if (UIDialog.isStandAlone()) {
+			updateNetworkInterfaceAttributes();
+		}
+		globalMessage = "The network adapter informations has been retrieved and are updated.";
+		levelMessage = Level.INFO;
+		
 		VCenterClient.disconnect();
 
 	}
@@ -997,7 +969,7 @@ public class NetworkinterfaceConnector
 			globalMessage = "The linked virtual machine doesnt exist on Vcenter, no network to retrieve.";
 			levelMessage = Level.ERROR;
 			LOGGER.error(globalMessage);
-			setState(NetworkInterfaceStatus.INACTIVE);
+			adapterState = NetworkInterfaceStatus.INACTIVE;
 			// No vm adapter found so.
 			VCenterClient.disconnect();
 			return;
@@ -1029,7 +1001,7 @@ public class NetworkinterfaceConnector
 				levelMessage = Level.ERROR;
 				LOGGER.error(globalMessage);
 				oldNetworkAdapterName = null;
-				setState(NetworkInterfaceStatus.INACTIVE);
+				adapterState = NetworkInterfaceStatus.INACTIVE;
 				VCenterClient.disconnect();
 				return;
 			}
@@ -1318,7 +1290,7 @@ public class NetworkinterfaceConnector
 				// Disconnect and reconnect.
 				result = NetworkHelper.down(vm, vEth);
 				if (result) {
-					this.setState(NetworkInterfaceStatus.INACTIVE);
+					adapterState = NetworkInterfaceStatus.INACTIVE;
 					result = NetworkHelper.up(vm, vEth);
 				}
 			} else {
@@ -1349,22 +1321,22 @@ public class NetworkinterfaceConnector
 
 		if (result) {
 			LOGGER.info("The network adapter : " + networkAdapterName + " is connected.");
-			this.setState(NetworkInterfaceStatus.ACTIVE);
-			if (netConn != null) {
-				netConn.setState(NetworkStatus.ACTIVE);
-			}
+			adapterState = NetworkInterfaceStatus.ACTIVE;
+//			if (netConn != null) {
+//				netConn.setState(NetworkStatus.ACTIVE);
+//			}
 		} else {
 			if (connectInfo.isConnected()) {
 				LOGGER.info("The network adapter: " + networkAdapterName + " was already connected.");
-				this.setState(NetworkInterfaceStatus.ACTIVE);
-				if (netConn != null) {
-					netConn.setState(NetworkStatus.ACTIVE);
-				}
+				adapterState = NetworkInterfaceStatus.ACTIVE;
+//				if (netConn != null) {
+//					netConn.setState(NetworkStatus.ACTIVE);
+//				}
 			} else {
 				globalMessage = "The network adapter is not connected, check your configuration.";
 				levelMessage = Level.WARN;
 				LOGGER.warn(globalMessage);
-				this.setState(NetworkInterfaceStatus.INACTIVE);
+				adapterState = NetworkInterfaceStatus.INACTIVE;
 			}
 		}
 		if (toMonitor) {
@@ -1453,19 +1425,90 @@ public class NetworkinterfaceConnector
 		if (connectInfo.isConnected()) {
 			result = NetworkHelper.down(vm, vEth);
 			if (!result) {
-				this.setState(NetworkInterfaceStatus.ACTIVE);
-				if (netConn != null) {
-					netConn.setState(NetworkStatus.ACTIVE);
-				}
+				adapterState = NetworkInterfaceStatus.ACTIVE;
+				
+//				if (netConn != null) {
+//					netConn.setState(NetworkStatus.ACTIVE);
+//				}
 			}
 		}
 		if (result) {
-			this.setState(NetworkInterfaceStatus.INACTIVE);
+			adapterState = NetworkInterfaceStatus.INACTIVE;
 		}
 		if (toMonitor) {
 			subMonitor.worked(100);
 		}
 		VCenterClient.disconnect();
+	}
+	
+	/**
+	 * Check if this network adapter has mixin ipNetworkInterface.
+	 * 
+	 * @return
+	 */
+	public boolean hasMixinIpNetworkInterface() {
+		boolean result = false;
+		String mixinTerm = null;
+		List<Mixin> mixins = this.getMixins();
+		for (Mixin mixin : mixins) {
+			mixinTerm = mixin.getTerm();
+			// Linked to crtp extension of infrastructure extension.
+			if (mixinTerm.equals("ipnetworkinterface")) {
+				result = true;
+				break;
+			}
+		}
+		return result;
+	}
+	
+	
+	
+	public void updateNetworkInterfaceAttributes() {
+		Map<String, String> attrsToCreate = new HashMap<>();
+		Map<String, String> attrsToUpdate = new HashMap<>();
+		List<String> attrsToDelete = new ArrayList<>();
+		
+		boolean hasMixinIpNetworkInterface = hasMixinIpNetworkInterface();
+		
+		// TODO : wakeon lan : add attr to extension vmwarecrtp and update this code...
+		
+		// String wakeOnLanStr = wakeOnLan.toString();
+		// AttributeState attr =
+		// this.getAttributeStateObject("occi.networkinterface.wakeonlan");
+		// if (attr == null) {
+		// // Create the attribute and set his value.
+		// attr = createAttribute("occi.networkinterface.wakeonlan",
+		// wakeOnLanStr);
+		// this.getAttributes().add(attr);
+		// } else {
+		// attr.setValue(wakeOnLanStr);
+		// }
+		
+		if (ipAddressPlainLocal != null && !ipAddressPlainLocal.isEmpty() && hasMixinIpNetworkInterface) {
+			
+			if (this.getAttributeStateObject(ATTR_NETWORK_INTERFACE_IP_ADDRESS) == null) {
+				attrsToCreate.put(ATTR_NETWORK_INTERFACE_IP_ADDRESS, ipAddressPlainLocal);
+			} else {
+				attrsToUpdate.put(ATTR_NETWORK_INTERFACE_IP_ADDRESS, ipAddressPlainLocal);
+			}
+		} else if (!hasMixinIpNetworkInterface && ipAddressPlainLocal != null && !ipAddressPlainLocal.isEmpty()) {
+			this.setMessage("ip address setup: " + ipAddressPlainLocal);
+			
+		} else {
+			this.setMessage("No ip address setup.");
+			
+		}
+		
+		// Update the attributes via a transaction (or not if standalone).
+		EntityUtils.updateAttributes(this, attrsToCreate, attrsToUpdate, attrsToDelete);
+		
+		this.setTitle(networkAdapterName);
+		this.setState(adapterState);
+		// Mac address.
+		if (macAddress != null && !macAddress.isEmpty()) {
+			this.setMac(macAddress);
+		}
+		
 	}
 
 }
