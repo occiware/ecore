@@ -129,19 +129,7 @@ public class ModelHandler {
             String _plus_2 = (_plus_1 + ") ");
             ModelHandler.LOGGER.info(_plus_2);
           }
-          boolean _and = false;
-          EList<EAttribute> _eAttributes = eClass.getEAttributes();
-          boolean _isEmpty = _eAttributes.isEmpty();
-          boolean _not = (!_isEmpty);
-          if (!_not) {
-            _and = false;
-          } else {
-            EList<EReference> _eReferences = eClass.getEReferences();
-            boolean _isEmpty_1 = _eReferences.isEmpty();
-            boolean _not_1 = (!_isEmpty_1);
-            _and = _not_1;
-          }
-          if (_and) {
+          if (((!eClass.getEAttributes().isEmpty()) && (!eClass.getEReferences().isEmpty()))) {
             ModelHandler.LOGGER.info(" References: ");
           }
           final EList<EReference> eReferences = eClass.getEReferences();
@@ -162,9 +150,9 @@ public class ModelHandler {
             ModelHandler.LOGGER.info(_plus_9);
           }
           EList<EOperation> _eOperations = eClass.getEOperations();
-          boolean _isEmpty_2 = _eOperations.isEmpty();
-          boolean _not_2 = (!_isEmpty_2);
-          if (_not_2) {
+          boolean _isEmpty = _eOperations.isEmpty();
+          boolean _not = (!_isEmpty);
+          if (_not) {
             ModelHandler.LOGGER.info(" Operations: ");
             EList<EOperation> _eOperations_1 = eClass.getEOperations();
             for (final EOperation eOperation : _eOperations_1) {
@@ -535,35 +523,16 @@ public class ModelHandler {
       URI _createURI = URI.createURI("");
       Resource resource = resourceSet.createResource(_createURI);
       resource.load(input, options);
-      boolean _or = false;
-      EList<Resource.Diagnostic> _errors = resource.getErrors();
-      boolean _isEmpty = _errors.isEmpty();
-      boolean _not = (!_isEmpty);
-      if (_not) {
-        _or = true;
-      } else {
-        EList<Resource.Diagnostic> _warnings = resource.getWarnings();
-        boolean _isEmpty_1 = _warnings.isEmpty();
-        boolean _not_1 = (!_isEmpty_1);
-        _or = _not_1;
-      }
-      if (_or) {
-        EList<Resource.Diagnostic> _errors_1 = resource.getErrors();
-        String _plus = ("Unable to load the EObject. Errors:" + _errors_1);
+      if (((!resource.getErrors().isEmpty()) || (!resource.getWarnings().isEmpty()))) {
+        EList<Resource.Diagnostic> _errors = resource.getErrors();
+        String _plus = ("Unable to load the EObject. Errors:" + _errors);
         String _plus_1 = (_plus + "Warnings:");
-        EList<Resource.Diagnostic> _warnings_1 = resource.getWarnings();
-        String _plus_2 = (_plus_1 + _warnings_1);
+        EList<Resource.Diagnostic> _warnings = resource.getWarnings();
+        String _plus_2 = (_plus_1 + _warnings);
         throw new IllegalArgumentException(_plus_2);
       }
       EList<EObject> result = resource.getContents();
-      boolean _and = false;
-      boolean _notEquals = (!Objects.equal(result, null));
-      if (!_notEquals) {
-        _and = false;
-      } else {
-        _and = unsetID;
-      }
-      if (_and) {
+      if (((!Objects.equal(result, null)) && unsetID)) {
         Map<EObject, Boolean> preventCycles = new IdentityHashMap<EObject, Boolean>();
         ArrayList<EObject> rootList = new ArrayList<EObject>();
         for (final EObject eObj : result) {
@@ -573,8 +542,8 @@ public class ModelHandler {
           {
             EClass _eClass = eobj.eClass();
             EAttribute _eIDAttribute = _eClass.getEIDAttribute();
-            boolean _notEquals_1 = (!Objects.equal(_eIDAttribute, null));
-            if (_notEquals_1) {
+            boolean _notEquals = (!Objects.equal(_eIDAttribute, null));
+            if (_notEquals) {
               EClass _eClass_1 = eobj.eClass();
               EAttribute _eIDAttribute_1 = _eClass_1.getEIDAttribute();
               eobj.eSet(_eIDAttribute_1, null);
@@ -585,8 +554,8 @@ public class ModelHandler {
                 EObject dependentEObject = iterator.next();
                 EClass _eClass_2 = dependentEObject.eClass();
                 EAttribute _eIDAttribute_2 = _eClass_2.getEIDAttribute();
-                boolean _notEquals_2 = (!Objects.equal(_eIDAttribute_2, null));
-                if (_notEquals_2) {
+                boolean _notEquals_1 = (!Objects.equal(_eIDAttribute_2, null));
+                if (_notEquals_1) {
                   EClass _eClass_3 = dependentEObject.eClass();
                   EAttribute _eIDAttribute_3 = _eClass_3.getEIDAttribute();
                   dependentEObject.eSet(_eIDAttribute_3, null);

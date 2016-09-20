@@ -49,9 +49,22 @@ public class CgroupManager {
   
   public static void SetValue(final String host, final String privateKey, final String containerId, final String subsystem, final String file, final String value) {
     final String FilePath = (((((CgroupManager.cGroupPath + subsystem) + "/docker/") + containerId) + "/") + file);
-    final String command = ((("echo \'" + value) + "\' > ") + FilePath);
+    String _cpuSetGenerator = CgroupManager.cpuSetGenerator(value);
+    String _plus = ("echo \'" + _cpuSetGenerator);
+    String _plus_1 = (_plus + "\' > ");
+    final String command = (_plus_1 + FilePath);
     InputOutput.<String>println(("EXECUTE COMMAND: " + command));
     final DockerContainerManager dockerContainerManager = new DockerContainerManager();
     dockerContainerManager.connect(host, privateKey, command);
+  }
+  
+  public static String cpuSetGenerator(final String nbCores) {
+    Integer _valueOf = Integer.valueOf(nbCores);
+    boolean _greaterThan = ((_valueOf).intValue() > 1);
+    if (_greaterThan) {
+      String cpuSet = String.format("0-%s", nbCores);
+      return cpuSet;
+    }
+    return "0";
   }
 }

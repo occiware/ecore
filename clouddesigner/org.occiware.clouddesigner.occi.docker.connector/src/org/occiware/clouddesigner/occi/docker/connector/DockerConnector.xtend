@@ -88,6 +88,7 @@ import static com.google.common.base.Preconditions.checkNotNull
 import static org.occiware.clouddesigner.occi.docker.connector.ExecutableContainer.*
 import java.util.Queue
 import java.text.DecimalFormat
+import org.occiware.clouddesigner.occi.docker.connector.dockerjava.cgroup.CPUManager
 
 /**
  * This class overrides the generated EMF factory of the Docker package.
@@ -709,6 +710,7 @@ class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statistics> {
 	}
 
 	def void modifyResourceSet(Resource resource, String cpu_used, Float percent, Integer mem_used, Integer mem_limit, Integer bandwitdh) {
+		val cont = this.container
 		// Creating an editing domain
 		var TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(resource.eResource.resourceSet)
 
@@ -744,6 +746,20 @@ class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statistics> {
 						(resource as ExecutableContainer).cpu_max_value = Integer.valueOf(cpu_max)
 						LOGGER.info("CPU MAX VALUE <=====> {}", Integer.valueOf(cpu_max))
 						(resource as ExecutableContainer).cpu_percent = df.format(percent)
+//						LOGGER.info("CPU PERCENTAGE <=====> {}", percent)
+						
+						// Elasticity Model here
+						if(percent > 90.0F){
+							LOGGER.info("CPU PERCENTAGE INSIDE <=====> {}", percent)
+							LOGGER.info("Container ID <=====> {}", cont.containerid)
+							val privateKey = DockerUtil.getEnv(getMachineFromContainer.name) + "/" + "id_rsa"
+							var machine = (resource as ExecutableContainer).currentMachine
+							val host = DockerMachineManager.ipCmd(Runtime.getRuntime, machine.name)
+							val cpuManager = new CPUManager
+							// Update CPU value
+							cpuManager.setCPUValue(host, privateKey, containerId, '7')
+							(resource as ExecutableContainer).cores = 7
+						}
 					}
 				} catch (NumberFormatException e) {
 					LOGGER.error(e.message)
@@ -756,6 +772,29 @@ class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statistics> {
 		} catch (RollbackException rbe) {
 			LOGGER.error(rbe.getStatus().toString)
 		}
+	}
+
+	def getMachineFromContainer(){
+		// get the current machine
+		for (EObject eo : this.container.eContents) {
+			if (eo instanceof Machine) {
+				val machine = eo as Machine
+				for (Link l : machine.links) {
+					if (l instanceof Contains) {
+						val contains = l as Contains
+						if (contains.target instanceof org.occiware.clouddesigner.occi.docker.Container) {
+							if ((l.target as ExecutableContainer).id == this.container.containerid) {
+								// Update the cache
+								listCurrentMachine.put(this.container.containerid, machine)
+								return machine
+							}
+						}
+
+					}
+
+				}
+			}
+		}		
 	}
 
 	def String getContainerId(){

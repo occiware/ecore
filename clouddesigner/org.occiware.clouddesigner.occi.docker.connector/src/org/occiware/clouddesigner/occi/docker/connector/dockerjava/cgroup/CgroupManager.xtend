@@ -15,7 +15,7 @@ import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.Docke
 
 class CgroupManager {
 
-	// For more information go: https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Resource_Management_Guide/index.html 
+	// For more information go to: https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Resource_Management_Guide/index.html 
 	static final String cGroupPath = "/sys/fs/cgroup/"
 
 	//List of Subsystems
@@ -43,10 +43,20 @@ class CgroupManager {
 	def static void SetValue(String host, String privateKey, String containerId, String subsystem, String file,
 		String value) {
 		val String FilePath = cGroupPath + subsystem + "/docker/" + containerId + "/" + file
-		val String command = "echo '" + value + "' > " + FilePath
+		val String command = "echo '" + cpuSetGenerator(value) + "' > " + FilePath
 		println("EXECUTE COMMAND: "+ command)
 		val dockerContainerManager = new DockerContainerManager
 		dockerContainerManager.connect(host, privateKey, command)
+	}
+
+	def static String cpuSetGenerator(String nbCores) {
+		if (Integer.valueOf(nbCores) > 1) {
+			var String cpuSet = String.format("0-%s", nbCores)
+			return cpuSet
+		}
+
+		return '0'
+
 	}
 }
 

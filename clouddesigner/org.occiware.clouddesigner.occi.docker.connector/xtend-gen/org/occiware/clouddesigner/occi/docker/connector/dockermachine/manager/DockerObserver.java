@@ -11,21 +11,33 @@
 package org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager;
 
 import java.util.List;
-import org.apache.commons.lang.StringUtils;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.emf.transaction.RollbackException;
+import org.eclipse.emf.transaction.TransactionalCommandStack;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.transaction.util.TransactionUtil;
+import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.occiware.clouddesigner.occi.Configuration;
+import org.occiware.clouddesigner.occi.Resource;
 import org.occiware.clouddesigner.occi.docker.Container;
 import org.occiware.clouddesigner.occi.docker.Machine;
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableContainer;
+import org.occiware.clouddesigner.occi.docker.connector.ModelHandler;
 import org.occiware.clouddesigner.occi.docker.connector.dockerjava.DockerContainerManager;
 import org.occiware.clouddesigner.occi.docker.connector.dockerjava.cgroup.CPUManager;
 import org.occiware.clouddesigner.occi.docker.connector.dockerjava.cgroup.MemoryManager;
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerMachineManager;
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerUtil;
-import org.occiware.clouddesigner.occi.infrastructure.ComputeStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -45,33 +57,32 @@ public class DockerObserver {
       new EContentAdapter() {
         @Override
         public void notifyChanged(final Notification notification) {
-          DockerObserver.LOGGER.info("The Container has Changed");
+          Container deletedElement = null;
           Object _notifier = notification.getNotifier();
-          Machine newMachine = ((Machine) _notifier);
-          boolean _and = false;
-          String _name = cpMachine.getName();
-          String _name_1 = newMachine.getName();
-          boolean _equals = _name.equals(_name_1);
-          boolean _not = (!_equals);
-          if (!_not) {
-            _and = false;
-          } else {
-            ComputeStatus _state = newMachine.getState();
-            String _string = _state.toString();
-            boolean _equalsIgnoreCase = _string.equalsIgnoreCase("active");
-            _and = _equalsIgnoreCase;
+          if ((_notifier instanceof Machine)) {
+            Object _notifier_1 = notification.getNotifier();
+            Machine newMachine = ((Machine) _notifier_1);
+            if (((!cpMachine.getName().equals(newMachine.getName())) && newMachine.getState().toString().equalsIgnoreCase("active"))) {
+              Object _oldValue = notification.getOldValue();
+              String _string = _oldValue.toString();
+              machine.setName(_string);
+              throw new UnsupportedOperationException();
+            }
           }
-          if (_and) {
-            Object _oldValue = notification.getOldValue();
-            String _string_1 = _oldValue.toString();
-            machine.setName(_string_1);
-            throw new UnsupportedOperationException();
+          if (((notification.getEventType() == Notification.SET) && (notification.getOldValue() instanceof Container))) {
+            Object _oldValue_1 = notification.getOldValue();
+            deletedElement = ((Container) _oldValue_1);
+            String _containerid = deletedElement.getContainerid();
+            DockerObserver.LOGGER.info("Model element ID: {}", _containerid);
+            DockerContainerManager dockerManager = new DockerContainerManager(machine);
+            String _containerid_1 = deletedElement.getContainerid();
+            dockerManager.removeContainer(machine, _containerid_1);
           }
-          Object _oldValue_1 = notification.getOldValue();
-          String _plus = ("Ancienne Valeur : " + _oldValue_1);
+          Object _oldValue_2 = notification.getOldValue();
+          String _plus = ("Old value : " + _oldValue_2);
           DockerObserver.LOGGER.info(_plus);
           Object _newValue = notification.getNewValue();
-          String _plus_1 = ("Nouvelle Valeur : " + _newValue);
+          String _plus_1 = ("New value : " + _newValue);
           DockerObserver.LOGGER.info(_plus_1);
         }
       });
@@ -88,83 +99,99 @@ public class DockerObserver {
     Runtime _runtime = Runtime.getRuntime();
     String _name_1 = machine.getName();
     final String host = DockerMachineManager.ipCmd(_runtime, _name_1);
+    this.listener(machine);
     EList<Adapter> _eAdapters = container.eAdapters();
     _eAdapters.add(
       new EContentAdapter() {
         @Override
         public void notifyChanged(final Notification notification) {
           DockerObserver.LOGGER.info("The Container has Changed");
+          Container deletedElement = null;
+          DockerObserver.LOGGER.info("The machine model has Changed");
+          if (((notification.getEventType() == Notification.REMOVE) && 
+            (notification.getNotifier() instanceof Container))) {
+            Object _oldValue = notification.getOldValue();
+            deletedElement = ((Container) _oldValue);
+            String _containerid = deletedElement.getContainerid();
+            DockerObserver.LOGGER.info("Model element ID: {}", _containerid);
+            DockerContainerManager dockerManager = new DockerContainerManager(machine);
+            String _containerid_1 = deletedElement.getContainerid();
+            dockerManager.removeContainer(machine, _containerid_1);
+          }
           Container newContainer = null;
           Object _notifier = notification.getNotifier();
           if ((_notifier instanceof Container)) {
             Object _notifier_1 = notification.getNotifier();
             newContainer = ((Container) _notifier_1);
+            if ((DockerObserver.cpContainer.getContainerid().equals(newContainer.getContainerid()) && 
+              DockerObserver.cpContainer.getState().toString().equalsIgnoreCase("active"))) {
+              String _name = DockerObserver.cpContainer.getName();
+              DockerObserver.LOGGER.info("Old name : {}", _name);
+              String _name_1 = newContainer.getName();
+              DockerObserver.LOGGER.info("New name : {}", _name_1);
+              String _name_2 = DockerObserver.cpContainer.getName();
+              String _name_3 = newContainer.getName();
+              boolean _equals = _name_2.equals(_name_3);
+              boolean _not = (!_equals);
+              if (_not) {
+                DockerContainerManager dockerManager_1 = new DockerContainerManager(machine);
+                String _name_4 = newContainer.getName();
+                boolean _containerNameExists = DockerObserver.this.containerNameExists(dockerManager_1, _name_4, machine);
+                boolean _not_1 = (!_containerNameExists);
+                if (_not_1) {
+                  String _containerid_2 = newContainer.getContainerid();
+                  String _name_5 = newContainer.getName();
+                  dockerManager_1.renameContainer(machine, _containerid_2, _name_5);
+                }
+              }
+              int _cores = DockerObserver.cpContainer.getCores();
+              int _cores_1 = newContainer.getCores();
+              boolean _equals_1 = Integer.valueOf(_cores).equals(Integer.valueOf(_cores_1));
+              boolean _not_2 = (!_equals_1);
+              if (_not_2) {
+                final CPUManager cpuManager = new CPUManager();
+                int _cores_2 = container.getCores();
+                DockerObserver.cpContainer.setCores(_cores_2);
+                String _containerid_3 = newContainer.getContainerid();
+                int _cores_3 = newContainer.getCores();
+                String _valueOf = String.valueOf(_cores_3);
+                cpuManager.setCPUValue(host, privateKey, _containerid_3, _valueOf);
+              }
+              float _speed = DockerObserver.cpContainer.getSpeed();
+              float _speed_1 = newContainer.getSpeed();
+              boolean _equals_2 = Float.valueOf(_speed).equals(Float.valueOf(_speed_1));
+              boolean _not_3 = (!_equals_2);
+              if (_not_3) {
+                final CPUManager cpuManager_1 = new CPUManager();
+                int _cores_4 = container.getCores();
+                DockerObserver.cpContainer.setCores(_cores_4);
+                String _containerid_4 = newContainer.getContainerid();
+                float _speed_2 = newContainer.getSpeed();
+                int _round = Math.round(_speed_2);
+                String _valueOf_1 = String.valueOf(_round);
+                cpuManager_1.setFreqValue(host, privateKey, _containerid_4, _valueOf_1);
+              }
+              float _memory = DockerObserver.cpContainer.getMemory();
+              float _memory_1 = newContainer.getMemory();
+              boolean _equals_3 = Float.valueOf(_memory).equals(Float.valueOf(_memory_1));
+              boolean _not_4 = (!_equals_3);
+              if (_not_4) {
+                final MemoryManager memoryManager = new MemoryManager();
+                float _memory_2 = container.getMemory();
+                DockerObserver.cpContainer.setMemory(_memory_2);
+                String _containerid_5 = newContainer.getContainerid();
+                float _memory_3 = newContainer.getMemory();
+                String _valueOf_2 = String.valueOf(_memory_3);
+                memoryManager.setMemValue(host, privateKey, _containerid_5, _valueOf_2);
+              }
+            }
           }
-          String containerId = null;
-          Object _oldValue = notification.getOldValue();
-          String _plus = ("Ancienne Valeur : " + _oldValue);
+          Object _oldValue_1 = notification.getOldValue();
+          String _plus = ("Old value : " + _oldValue_1);
           DockerObserver.LOGGER.info(_plus);
           Object _newValue = notification.getNewValue();
-          String _plus_1 = ("Nouvelle Valeur : " + _newValue);
+          String _plus_1 = ("New value : " + _newValue);
           DockerObserver.LOGGER.info(_plus_1);
-          int _cores = DockerObserver.cpContainer.getCores();
-          int _cores_1 = newContainer.getCores();
-          boolean _equals = Integer.valueOf(_cores).equals(Integer.valueOf(_cores_1));
-          boolean _not = (!_equals);
-          if (_not) {
-            boolean _isNotBlank = StringUtils.isNotBlank(containerId);
-            boolean _not_1 = (!_isNotBlank);
-            if (_not_1) {
-              String _name = newContainer.getName();
-              String _containerId = DockerObserver.this.getContainerId(_name, machine);
-              containerId = _containerId;
-            }
-            final CPUManager cpuManager = new CPUManager();
-            int _cores_2 = container.getCores();
-            DockerObserver.cpContainer.setCores(_cores_2);
-            int _cores_3 = newContainer.getCores();
-            String _valueOf = String.valueOf(_cores_3);
-            cpuManager.setCPUValue(host, privateKey, containerId, _valueOf);
-          }
-          float _speed = DockerObserver.cpContainer.getSpeed();
-          float _speed_1 = newContainer.getSpeed();
-          boolean _equals_1 = Float.valueOf(_speed).equals(Float.valueOf(_speed_1));
-          boolean _not_2 = (!_equals_1);
-          if (_not_2) {
-            boolean _isNotBlank_1 = StringUtils.isNotBlank(containerId);
-            boolean _not_3 = (!_isNotBlank_1);
-            if (_not_3) {
-              String _name_1 = newContainer.getName();
-              String _containerId_1 = DockerObserver.this.getContainerId(_name_1, machine);
-              containerId = _containerId_1;
-            }
-            final CPUManager cpuManager_1 = new CPUManager();
-            int _cores_4 = container.getCores();
-            DockerObserver.cpContainer.setCores(_cores_4);
-            float _speed_2 = newContainer.getSpeed();
-            int _round = Math.round(_speed_2);
-            String _valueOf_1 = String.valueOf(_round);
-            cpuManager_1.setFreqValue(host, privateKey, containerId, _valueOf_1);
-          }
-          float _memory = DockerObserver.cpContainer.getMemory();
-          float _memory_1 = newContainer.getMemory();
-          boolean _equals_2 = Float.valueOf(_memory).equals(Float.valueOf(_memory_1));
-          boolean _not_4 = (!_equals_2);
-          if (_not_4) {
-            boolean _isNotBlank_2 = StringUtils.isNotBlank(containerId);
-            boolean _not_5 = (!_isNotBlank_2);
-            if (_not_5) {
-              String _name_2 = newContainer.getName();
-              String _containerId_2 = DockerObserver.this.getContainerId(_name_2, machine);
-              containerId = _containerId_2;
-            }
-            final MemoryManager memoryManager = new MemoryManager();
-            float _memory_2 = container.getMemory();
-            DockerObserver.cpContainer.setMemory(_memory_2);
-            float _memory_3 = newContainer.getMemory();
-            String _valueOf_2 = String.valueOf(_memory_3);
-            memoryManager.setMemValue(host, privateKey, containerId, _valueOf_2);
-          }
         }
       });
     return container;
@@ -197,5 +224,72 @@ public class DockerObserver {
       }
     }
     return null;
+  }
+  
+  public void removeContainerFromModel(final Resource resource, final Machine machine) {
+    try {
+      org.eclipse.emf.ecore.resource.Resource _eResource = resource.eResource();
+      ResourceSet _resourceSet = _eResource.getResourceSet();
+      TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(_resourceSet);
+      Command cmd = new RecordingCommand(domain) {
+        @Override
+        protected void doExecute() {
+          final ModelHandler instanceMH = new ModelHandler();
+          Container container = ((Container) resource);
+          instanceMH.removeContainerFromMachine(container, machine);
+          EObject _eContainer = machine.eContainer();
+          if ((_eContainer instanceof Configuration)) {
+            EObject _eContainer_1 = machine.eContainer();
+            EList<Resource> _resources = ((Configuration) _eContainer_1).getResources();
+            _resources.remove(((ExecutableContainer) container));
+            String _name = container.getName();
+            DockerObserver.LOGGER.info("Remove the container - {}", _name);
+          }
+        }
+      };
+      try {
+        CommandStack _commandStack = domain.getCommandStack();
+        ((TransactionalCommandStack) _commandStack).execute(cmd, null);
+      } catch (final Throwable _t) {
+        if (_t instanceof RollbackException) {
+          final RollbackException rbe = (RollbackException)_t;
+          IStatus _status = rbe.getStatus();
+          String _string = _status.toString();
+          DockerObserver.LOGGER.error(_string);
+        } else {
+          throw Exceptions.sneakyThrow(_t);
+        }
+      }
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  public boolean containerNameExists(final DockerContainerManager dockerContainerManager, final String containerName, final Machine machine) {
+    String _name = machine.getName();
+    final List<com.github.dockerjava.api.model.Container> listContainers = dockerContainerManager.listContainer(_name);
+    for (final com.github.dockerjava.api.model.Container c : listContainers) {
+      {
+        String contName = null;
+        String[] _names = c.getNames();
+        final String name = _names[0];
+        final String linkName = "LinkTo";
+        final int index = name.indexOf(linkName);
+        if ((index == (-1))) {
+          String _replaceAll = name.replaceAll("/", "");
+          contName = _replaceAll;
+        } else {
+          int _length = linkName.length();
+          int _plus = (index + _length);
+          String _substring = name.substring(_plus);
+          contName = _substring;
+        }
+        boolean _equalsIgnoreCase = contName.equalsIgnoreCase(containerName);
+        if (_equalsIgnoreCase) {
+          return true;
+        }
+      }
+    }
+    return false;
   }
 }

@@ -469,6 +469,22 @@ class DockerContainerManager {
 		dockerClient.waitContainerCmd(container.id).exec(new WaitContainerResultCallback()).awaitStatusCode()
 	}
 
+	def renameContainer(Machine machine, String containerId, String newName) {
+
+		// Set dockerClient
+		if (dockerClient == null) {
+			dockerClient = setConfig(machine.name, properties)
+		} else if (!currentMachine.equalsIgnoreCase(machine.name)) {
+			dockerClient = setConfig(machine.name, properties)
+		}
+		// Rename the container 
+		dockerClient.renameContainerCmd(containerId).withName(newName).exec
+	}
+
+	def removeContainer(Machine machine, String containerId) {
+		removeContainer(machine.name, containerId)
+	}
+
 	def List<com.github.dockerjava.api.model.Container> listContainer(String machineName) {
 
 		// Set dockerClient

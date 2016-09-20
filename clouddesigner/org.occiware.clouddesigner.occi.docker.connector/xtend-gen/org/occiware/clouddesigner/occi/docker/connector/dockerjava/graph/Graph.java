@@ -113,19 +113,9 @@ public class Graph<T extends Object> {
     for (final T key : keys) {
       {
         GraphNode<T> node = this.nodes.get(key);
-        boolean _and = false;
-        List<GraphNode<T>> _comingInNodes = node.getComingInNodes();
-        boolean _equals = Objects.equal(_comingInNodes, null);
-        if (!_equals) {
-          _and = false;
-        } else {
-          List<GraphNode<T>> _comingInNodes_1 = node.getComingInNodes();
-          boolean _equals_1 = Objects.equal(_comingInNodes_1, null);
-          _and = _equals_1;
-        }
-        if (_and) {
-          boolean _equals_2 = Objects.equal(orphanNodes, null);
-          if (_equals_2) {
+        if ((Objects.equal(node.getComingInNodes(), null) && Objects.equal(node.getComingInNodes(), null))) {
+          boolean _equals = Objects.equal(orphanNodes, null);
+          if (_equals) {
             ArrayList<GraphNode<T>> _arrayList = new ArrayList<GraphNode<T>>();
             orphanNodes = _arrayList;
           }

@@ -169,22 +169,12 @@ public class EventCallBack extends EventsResultCallback {
                     EventCallBack.LOGGER.info("Apply destroy notification to model");
                   }
                 } else {
-                  boolean _and = false;
-                  String _status_6 = event.getStatus();
-                  boolean _equalsIgnoreCase_3 = _status_6.equalsIgnoreCase("create");
-                  if (!_equalsIgnoreCase_3) {
-                    _and = false;
-                  } else {
-                    String _id_4 = event.getId();
-                    boolean _containerIsInsideMachine = this.containerIsInsideMachine(machine, _id_4);
-                    boolean _not = (!_containerIsInsideMachine);
-                    _and = _not;
-                  }
-                  if (_and) {
+                  if ((event.getStatus().equalsIgnoreCase("create") && 
+                    (!this.containerIsInsideMachine(machine, event.getId())))) {
                     Resource _target_5 = contains.getTarget();
-                    String _status_7 = event.getStatus();
-                    String _id_5 = event.getId();
-                    this.modifyResourceSet(_target_5, _status_7, _id_5);
+                    String _status_6 = event.getStatus();
+                    String _id_4 = event.getId();
+                    this.modifyResourceSet(_target_5, _status_6, _id_4);
                     EventCallBack.LOGGER.info("Apply create notification to model");
                   }
                 }

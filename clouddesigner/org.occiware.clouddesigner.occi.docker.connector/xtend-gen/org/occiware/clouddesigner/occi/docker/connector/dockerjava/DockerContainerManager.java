@@ -19,6 +19,7 @@ import com.github.dockerjava.api.command.InspectContainerResponse;
 import com.github.dockerjava.api.command.ListContainersCmd;
 import com.github.dockerjava.api.command.PullImageCmd;
 import com.github.dockerjava.api.command.RemoveContainerCmd;
+import com.github.dockerjava.api.command.RenameContainerCmd;
 import com.github.dockerjava.api.command.StartContainerCmd;
 import com.github.dockerjava.api.command.StatsCmd;
 import com.github.dockerjava.api.command.StopContainerCmd;
@@ -774,6 +775,36 @@ public class DockerContainerManager {
       _xblockexpression = _exec.awaitStatusCode();
     }
     return _xblockexpression;
+  }
+  
+  public Void renameContainer(final Machine machine, final String containerId, final String newName) {
+    Void _xblockexpression = null;
+    {
+      boolean _equals = Objects.equal(DockerContainerManager.dockerClient, null);
+      if (_equals) {
+        String _name = machine.getName();
+        DockerClient _setConfig = this.setConfig(_name, this.properties);
+        DockerContainerManager.dockerClient = _setConfig;
+      } else {
+        String _name_1 = machine.getName();
+        boolean _equalsIgnoreCase = DockerContainerManager.currentMachine.equalsIgnoreCase(_name_1);
+        boolean _not = (!_equalsIgnoreCase);
+        if (_not) {
+          String _name_2 = machine.getName();
+          DockerClient _setConfig_1 = this.setConfig(_name_2, this.properties);
+          DockerContainerManager.dockerClient = _setConfig_1;
+        }
+      }
+      RenameContainerCmd _renameContainerCmd = DockerContainerManager.dockerClient.renameContainerCmd(containerId);
+      RenameContainerCmd _withName = _renameContainerCmd.withName(newName);
+      _xblockexpression = _withName.exec();
+    }
+    return _xblockexpression;
+  }
+  
+  public void removeContainer(final Machine machine, final String containerId) {
+    String _name = machine.getName();
+    this.removeContainer(_name, containerId);
   }
   
   public List<com.github.dockerjava.api.model.Container> listContainer(final String machineName) {

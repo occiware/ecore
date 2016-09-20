@@ -22,6 +22,8 @@ import java.util.Map;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandStack;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.RollbackException;
@@ -29,10 +31,16 @@ import org.eclipse.emf.transaction.TransactionalCommandStack;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.occiware.clouddesigner.occi.Link;
 import org.occiware.clouddesigner.occi.Resource;
 import org.occiware.clouddesigner.occi.docker.Container;
+import org.occiware.clouddesigner.occi.docker.Contains;
+import org.occiware.clouddesigner.occi.docker.Machine;
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableContainer;
 import org.occiware.clouddesigner.occi.docker.connector.LimitedQueue;
+import org.occiware.clouddesigner.occi.docker.connector.dockerjava.cgroup.CPUManager;
+import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerMachineManager;
+import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerUtil;
 import org.occiware.clouddesigner.occi.infrastructure.ComputeStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -97,19 +105,9 @@ public class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statist
       String _string_1 = system_cpu_usage.toString();
       Float _valueOf_1 = Float.valueOf(_string_1);
       this.cpuSystemUsageQueue.add(_valueOf_1);
-      boolean _and = false;
-      int _size_1 = this.cpuTotalUsageQueue.size();
-      boolean _equals = (_size_1 == 2);
-      if (!_equals) {
-        _and = false;
-      } else {
-        int _size_2 = this.cpuSystemUsageQueue.size();
-        boolean _equals_1 = (_size_2 == 2);
-        _and = _equals_1;
-      }
-      if (_and) {
-        int _size_3 = percpu_usage_size.size();
-        Float percent = this.calculateCPUPercent(this.cpuTotalUsageQueue, this.cpuSystemUsageQueue, _size_3);
+      if (((this.cpuTotalUsageQueue.size() == 2) && (this.cpuSystemUsageQueue.size() == 2))) {
+        int _size_1 = percpu_usage_size.size();
+        Float percent = this.calculateCPUPercent(this.cpuTotalUsageQueue, this.cpuSystemUsageQueue, _size_1);
         String _string_2 = cpu_used.toString();
         this.modifyResourceSet(this.container, _string_2, percent, mem_used, mem_limit, bandwitdh);
       }
@@ -120,6 +118,7 @@ public class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statist
   
   public void modifyResourceSet(final Resource resource, final String cpu_used, final Float percent, final Integer mem_used, final Integer mem_limit, final Integer bandwitdh) {
     try {
+      final Container cont = this.container;
       org.eclipse.emf.ecore.resource.Resource _eResource = resource.eResource();
       ResourceSet _resourceSet = _eResource.getResourceSet();
       TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(_resourceSet);
@@ -180,6 +179,23 @@ public class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statist
               StatsCallback.LOGGER.info("CPU MAX VALUE <=====> {}", _valueOf_2);
               String _format_1 = df.format(percent);
               ((ExecutableContainer) resource).setCpu_percent(_format_1);
+              if (((percent).floatValue() > 90.0F)) {
+                StatsCallback.LOGGER.info("CPU PERCENTAGE INSIDE <=====> {}", percent);
+                String _containerid = cont.getContainerid();
+                StatsCallback.LOGGER.info("Container ID <=====> {}", _containerid);
+                Machine _machineFromContainer = StatsCallback.this.getMachineFromContainer();
+                String _name = _machineFromContainer.getName();
+                String _env = DockerUtil.getEnv(_name);
+                String _plus = (_env + "/");
+                final String privateKey = (_plus + "id_rsa");
+                Machine machine = ((ExecutableContainer) resource).getCurrentMachine();
+                Runtime _runtime = Runtime.getRuntime();
+                String _name_1 = machine.getName();
+                final String host = DockerMachineManager.ipCmd(_runtime, _name_1);
+                final CPUManager cpuManager = new CPUManager();
+                cpuManager.setCPUValue(host, privateKey, StatsCallback.this.containerId, "7");
+                ((ExecutableContainer) resource).setCores(7);
+              }
             }
           } catch (final Throwable _t) {
             if (_t instanceof NumberFormatException) {
@@ -208,6 +224,34 @@ public class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statist
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
+  }
+  
+  public Machine getMachineFromContainer() {
+    EList<EObject> _eContents = this.container.eContents();
+    for (final EObject eo : _eContents) {
+      if ((eo instanceof Machine)) {
+        final Machine machine = ((Machine) eo);
+        EList<Link> _links = machine.getLinks();
+        for (final Link l : _links) {
+          if ((l instanceof Contains)) {
+            final Contains contains = ((Contains) l);
+            Resource _target = contains.getTarget();
+            if ((_target instanceof Container)) {
+              Resource _target_1 = ((Contains)l).getTarget();
+              String _id = ((ExecutableContainer) _target_1).getId();
+              String _containerid = this.container.getContainerid();
+              boolean _equals = Objects.equal(_id, _containerid);
+              if (_equals) {
+                String _containerid_1 = this.container.getContainerid();
+                ExecutableContainer.listCurrentMachine.put(_containerid_1, machine);
+                return machine;
+              }
+            }
+          }
+        }
+      }
+    }
+    return null;
   }
   
   public String getContainerId() {
