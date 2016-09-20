@@ -55,15 +55,7 @@ public class DockerUtil {
   
   public static JsonNode jsonify(final String jsonString) {
     try {
-      boolean _or = false;
-      boolean _notEquals = (!Objects.equal(jsonString, null));
-      if (_notEquals) {
-        _or = true;
-      } else {
-        boolean _equals = Objects.equal(jsonString, "");
-        _or = _equals;
-      }
-      if (_or) {
+      if (((!Objects.equal(jsonString, null)) || Objects.equal(jsonString, ""))) {
         final ObjectMapper mapper = new ObjectMapper();
         final JsonFactory factory = mapper.getJsonFactory();
         final JsonParser parser = factory.createJsonParser(jsonString);
@@ -91,24 +83,14 @@ public class DockerUtil {
           String _replaceAll = l.replaceAll("\\*", "");
           l = _replaceAll;
           final String[] lsCmd = l.split("\\s+");
-          boolean _and = false;
-          int _length_1 = lsCmd.length;
-          boolean _greaterEqualsThan = (_length_1 >= 3);
-          if (!_greaterEqualsThan) {
-            _and = false;
-          } else {
-            int _length_2 = lsCmd.length;
-            boolean _lessThan = (_length_2 < 5);
-            _and = _lessThan;
-          }
-          if (_and) {
+          if (((lsCmd.length >= 3) && (lsCmd.length < 5))) {
             String _get = lsCmd[0];
             String _get_1 = lsCmd[2];
             hosts.put(_get, _get_1);
           } else {
-            int _length_3 = lsCmd.length;
-            boolean _greaterEqualsThan_1 = (_length_3 >= 5);
-            if (_greaterEqualsThan_1) {
+            int _length_1 = lsCmd.length;
+            boolean _greaterEqualsThan = (_length_1 >= 5);
+            if (_greaterEqualsThan) {
               boolean _contains = ((List<String>)Conversions.doWrapArray(lsCmd)).contains("(master)");
               if (_contains) {
                 String _get_2 = lsCmd[0];
@@ -174,15 +156,7 @@ public class DockerUtil {
     if (_notEquals) {
       String[] st = data.split("\\r?\\n");
       for (final String line : st) {
-        boolean _and = false;
-        boolean _startsWith = line.startsWith("export");
-        if (!_startsWith) {
-          _and = false;
-        } else {
-          boolean _contains = line.contains(charset);
-          _and = _contains;
-        }
-        if (_and) {
+        if ((line.startsWith("export") && line.contains(charset))) {
           final String[] lsCmd = line.split("\\s+");
           hosts.add(lsCmd);
           String currentLine = lsCmd[1];
@@ -264,25 +238,7 @@ public class DockerUtil {
   }
   
   public static boolean isUnix() {
-    boolean _or = false;
-    boolean _or_1 = false;
-    int _indexOf = DockerUtil.OS.indexOf("nix");
-    boolean _greaterEqualsThan = (_indexOf >= 0);
-    if (_greaterEqualsThan) {
-      _or_1 = true;
-    } else {
-      int _indexOf_1 = DockerUtil.OS.indexOf("nux");
-      boolean _greaterEqualsThan_1 = (_indexOf_1 >= 0);
-      _or_1 = _greaterEqualsThan_1;
-    }
-    if (_or_1) {
-      _or = true;
-    } else {
-      int _indexOf_2 = DockerUtil.OS.indexOf("aix");
-      boolean _greaterThan = (_indexOf_2 > 0);
-      _or = _greaterThan;
-    }
-    return _or;
+    return (((DockerUtil.OS.indexOf("nix") >= 0) || (DockerUtil.OS.indexOf("nux") >= 0)) || (DockerUtil.OS.indexOf("aix") > 0));
   }
   
   public static boolean isSolaris() {

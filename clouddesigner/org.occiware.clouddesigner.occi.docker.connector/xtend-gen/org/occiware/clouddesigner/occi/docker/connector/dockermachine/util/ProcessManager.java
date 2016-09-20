@@ -158,22 +158,12 @@ public class ProcessManager {
     StringBuffer result = new StringBuffer();
     String[] env = null;
     try {
-      boolean _or = false;
-      String _oS = DockerUtil.getOS();
-      boolean _equalsIgnoreCase = _oS.equalsIgnoreCase("osx");
-      if (_equalsIgnoreCase) {
-        _or = true;
-      } else {
-        String _oS_1 = DockerUtil.getOS();
-        boolean _equalsIgnoreCase_1 = _oS_1.equalsIgnoreCase("uni");
-        _or = _equalsIgnoreCase_1;
-      }
-      if (_or) {
+      if ((DockerUtil.getOS().equalsIgnoreCase("osx") || DockerUtil.getOS().equalsIgnoreCase("uni"))) {
         env = new String[] { "/bin/bash", "-c", command };
       } else {
-        String _oS_2 = DockerUtil.getOS();
-        boolean _equalsIgnoreCase_2 = _oS_2.equalsIgnoreCase("win");
-        if (_equalsIgnoreCase_2) {
+        String _oS = DockerUtil.getOS();
+        boolean _equalsIgnoreCase = _oS.equalsIgnoreCase("win");
+        if (_equalsIgnoreCase) {
           env = new String[] { "cmd", "/c", command };
         }
       }
