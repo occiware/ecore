@@ -38,9 +38,6 @@ import org.occiware.clouddesigner.occi.docker.Contains;
 import org.occiware.clouddesigner.occi.docker.Machine;
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableContainer;
 import org.occiware.clouddesigner.occi.docker.connector.LimitedQueue;
-import org.occiware.clouddesigner.occi.docker.connector.dockerjava.cgroup.CPUManager;
-import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerMachineManager;
-import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerUtil;
 import org.occiware.clouddesigner.occi.infrastructure.ComputeStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -179,23 +176,7 @@ public class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statist
               StatsCallback.LOGGER.info("CPU MAX VALUE <=====> {}", _valueOf_2);
               String _format_1 = df.format(percent);
               ((ExecutableContainer) resource).setCpu_percent(_format_1);
-              if (((percent).floatValue() > 90.0F)) {
-                StatsCallback.LOGGER.info("CPU PERCENTAGE INSIDE <=====> {}", percent);
-                String _containerid = cont.getContainerid();
-                StatsCallback.LOGGER.info("Container ID <=====> {}", _containerid);
-                Machine _machineFromContainer = StatsCallback.this.getMachineFromContainer();
-                String _name = _machineFromContainer.getName();
-                String _env = DockerUtil.getEnv(_name);
-                String _plus = (_env + "/");
-                final String privateKey = (_plus + "id_rsa");
-                Machine machine = ((ExecutableContainer) resource).getCurrentMachine();
-                Runtime _runtime = Runtime.getRuntime();
-                String _name_1 = machine.getName();
-                final String host = DockerMachineManager.ipCmd(_runtime, _name_1);
-                final CPUManager cpuManager = new CPUManager();
-                cpuManager.setCPUValue(host, privateKey, StatsCallback.this.containerId, "7");
-                ((ExecutableContainer) resource).setCores(7);
-              }
+              StatsCallback.LOGGER.info("CPU PERCENTAGE <=====> {}", percent);
             }
           } catch (final Throwable _t) {
             if (_t instanceof NumberFormatException) {

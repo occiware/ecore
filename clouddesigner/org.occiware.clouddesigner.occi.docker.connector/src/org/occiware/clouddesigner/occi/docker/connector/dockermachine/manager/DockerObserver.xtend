@@ -65,7 +65,9 @@ class DockerObserver {
 						LOGGER.info("Model element ID: {}", deletedElement.containerid)
 						// Remove the container from the machine
 						var DockerContainerManager dockerManager = new DockerContainerManager(machine)
-						dockerManager.removeContainer(machine, deletedElement.containerid)
+						if(containerNameExists(dockerManager, deletedElement.name, machine)){
+							dockerManager.removeContainer(machine, deletedElement.containerid)
+						}
 						// Remove the container from the model
 					}					
 					LOGGER.info("Old value : " + notification.oldValue)
@@ -103,7 +105,6 @@ class DockerObserver {
 						// Remove the container from the machine
 						var DockerContainerManager dockerManager = new DockerContainerManager(machine)
 						dockerManager.removeContainer(machine, deletedElement.containerid)
-						// Remove the container from the model
 					}
 					var Container newContainer = null
 					if (notification.notifier instanceof Container) {
@@ -111,15 +112,16 @@ class DockerObserver {
 						// Name Changes
 						if (cpContainer.containerid.equals(newContainer.containerid) &&
 							cpContainer.state.toString.equalsIgnoreCase('active')) {
-							// Rename an existing container
-							LOGGER.info("Old name : {}", cpContainer.name)
-							LOGGER.info("New name : {}", newContainer.name)
 
 							// The container name changed
 							if (!cpContainer.name.equals(newContainer.name)) {
 								var DockerContainerManager dockerManager = new DockerContainerManager(machine)
 								if(!containerNameExists(dockerManager, newContainer.name, machine)){
 									dockerManager.renameContainer(machine, newContainer.containerid, newContainer.name)
+									// Rename an existing container
+									LOGGER.info("Old name : {}", cpContainer.name)
+								    LOGGER.info("New name : {}", newContainer.name)
+									
 								}
 							}
 
@@ -153,10 +155,9 @@ class DockerObserver {
 									String.valueOf(newContainer.memory))
 							}
 						}
-
+						LOGGER.info("Old value : " + notification.oldValue)
+						LOGGER.info("New value : " + notification.newValue)
 					}
-					LOGGER.info("Old value : " + notification.oldValue)
-					LOGGER.info("New value : " + notification.newValue)
 
 				}
 			}
@@ -187,9 +188,12 @@ class DockerObserver {
 		return null
 	}
 	
-	
 		def boolean containerNameExists(DockerContainerManager dockerContainerManager, String containerName, Machine machine) {
-		val listContainers = dockerContainerManager.listContainer(machine.name)
+			containerNameExists(dockerContainerManager, containerName, machine.name)
+		}
+
+		def boolean containerNameExists(DockerContainerManager dockerContainerManager, String containerName, String machineName) {
+		val listContainers = dockerContainerManager.listContainer(machineName)
 		for (com.github.dockerjava.api.model.Container c : listContainers) {
 			var String contName = null
 			val name = c.names.get(0)

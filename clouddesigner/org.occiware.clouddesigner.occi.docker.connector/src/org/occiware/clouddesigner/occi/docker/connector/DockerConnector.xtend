@@ -746,20 +746,7 @@ class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statistics> {
 						(resource as ExecutableContainer).cpu_max_value = Integer.valueOf(cpu_max)
 						LOGGER.info("CPU MAX VALUE <=====> {}", Integer.valueOf(cpu_max))
 						(resource as ExecutableContainer).cpu_percent = df.format(percent)
-//						LOGGER.info("CPU PERCENTAGE <=====> {}", percent)
-						
-						// Elasticity Model here
-						if(percent > 90.0F){
-							LOGGER.info("CPU PERCENTAGE INSIDE <=====> {}", percent)
-							LOGGER.info("Container ID <=====> {}", cont.containerid)
-							val privateKey = DockerUtil.getEnv(getMachineFromContainer.name) + "/" + "id_rsa"
-							var machine = (resource as ExecutableContainer).currentMachine
-							val host = DockerMachineManager.ipCmd(Runtime.getRuntime, machine.name)
-							val cpuManager = new CPUManager
-							// Update CPU value
-							cpuManager.setCPUValue(host, privateKey, containerId, '7')
-							(resource as ExecutableContainer).cores = 7
-						}
+						LOGGER.info("CPU PERCENTAGE <=====> {}", percent)
 					}
 				} catch (NumberFormatException e) {
 					LOGGER.error(e.message)

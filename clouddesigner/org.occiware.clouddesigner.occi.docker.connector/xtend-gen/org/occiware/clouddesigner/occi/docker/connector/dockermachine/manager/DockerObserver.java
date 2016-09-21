@@ -11,28 +11,14 @@
 package org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager;
 
 import java.util.List;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.emf.common.command.Command;
-import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.transaction.RecordingCommand;
-import org.eclipse.emf.transaction.RollbackException;
-import org.eclipse.emf.transaction.TransactionalCommandStack;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.emf.transaction.util.TransactionUtil;
-import org.eclipse.xtext.xbase.lib.Exceptions;
-import org.occiware.clouddesigner.occi.Configuration;
-import org.occiware.clouddesigner.occi.Resource;
 import org.occiware.clouddesigner.occi.docker.Container;
 import org.occiware.clouddesigner.occi.docker.Machine;
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableContainer;
-import org.occiware.clouddesigner.occi.docker.connector.ModelHandler;
 import org.occiware.clouddesigner.occi.docker.connector.dockerjava.DockerContainerManager;
 import org.occiware.clouddesigner.occi.docker.connector.dockerjava.cgroup.CPUManager;
 import org.occiware.clouddesigner.occi.docker.connector.dockerjava.cgroup.MemoryManager;
@@ -75,8 +61,12 @@ public class DockerObserver {
             String _containerid = deletedElement.getContainerid();
             DockerObserver.LOGGER.info("Model element ID: {}", _containerid);
             DockerContainerManager dockerManager = new DockerContainerManager(machine);
-            String _containerid_1 = deletedElement.getContainerid();
-            dockerManager.removeContainer(machine, _containerid_1);
+            String _name = deletedElement.getName();
+            boolean _containerNameExists = DockerObserver.this.containerNameExists(dockerManager, _name, machine);
+            if (_containerNameExists) {
+              String _containerid_1 = deletedElement.getContainerid();
+              dockerManager.removeContainer(machine, _containerid_1);
+            }
           }
           Object _oldValue_2 = notification.getOldValue();
           String _plus = ("Old value : " + _oldValue_2);
@@ -126,22 +116,22 @@ public class DockerObserver {
             if ((DockerObserver.cpContainer.getContainerid().equals(newContainer.getContainerid()) && 
               DockerObserver.cpContainer.getState().toString().equalsIgnoreCase("active"))) {
               String _name = DockerObserver.cpContainer.getName();
-              DockerObserver.LOGGER.info("Old name : {}", _name);
               String _name_1 = newContainer.getName();
-              DockerObserver.LOGGER.info("New name : {}", _name_1);
-              String _name_2 = DockerObserver.cpContainer.getName();
-              String _name_3 = newContainer.getName();
-              boolean _equals = _name_2.equals(_name_3);
+              boolean _equals = _name.equals(_name_1);
               boolean _not = (!_equals);
               if (_not) {
                 DockerContainerManager dockerManager_1 = new DockerContainerManager(machine);
-                String _name_4 = newContainer.getName();
-                boolean _containerNameExists = DockerObserver.this.containerNameExists(dockerManager_1, _name_4, machine);
+                String _name_2 = newContainer.getName();
+                boolean _containerNameExists = DockerObserver.this.containerNameExists(dockerManager_1, _name_2, machine);
                 boolean _not_1 = (!_containerNameExists);
                 if (_not_1) {
                   String _containerid_2 = newContainer.getContainerid();
+                  String _name_3 = newContainer.getName();
+                  dockerManager_1.renameContainer(machine, _containerid_2, _name_3);
+                  String _name_4 = DockerObserver.cpContainer.getName();
+                  DockerObserver.LOGGER.info("Old name : {}", _name_4);
                   String _name_5 = newContainer.getName();
-                  dockerManager_1.renameContainer(machine, _containerid_2, _name_5);
+                  DockerObserver.LOGGER.info("New name : {}", _name_5);
                 }
               }
               int _cores = DockerObserver.cpContainer.getCores();
@@ -185,13 +175,13 @@ public class DockerObserver {
                 memoryManager.setMemValue(host, privateKey, _containerid_5, _valueOf_2);
               }
             }
+            Object _oldValue_1 = notification.getOldValue();
+            String _plus = ("Old value : " + _oldValue_1);
+            DockerObserver.LOGGER.info(_plus);
+            Object _newValue = notification.getNewValue();
+            String _plus_1 = ("New value : " + _newValue);
+            DockerObserver.LOGGER.info(_plus_1);
           }
-          Object _oldValue_1 = notification.getOldValue();
-          String _plus = ("Old value : " + _oldValue_1);
-          DockerObserver.LOGGER.info(_plus);
-          Object _newValue = notification.getNewValue();
-          String _plus_1 = ("New value : " + _newValue);
-          DockerObserver.LOGGER.info(_plus_1);
         }
       });
     return container;
@@ -226,48 +216,13 @@ public class DockerObserver {
     return null;
   }
   
-  public void removeContainerFromModel(final Resource resource, final Machine machine) {
-    try {
-      org.eclipse.emf.ecore.resource.Resource _eResource = resource.eResource();
-      ResourceSet _resourceSet = _eResource.getResourceSet();
-      TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(_resourceSet);
-      Command cmd = new RecordingCommand(domain) {
-        @Override
-        protected void doExecute() {
-          final ModelHandler instanceMH = new ModelHandler();
-          Container container = ((Container) resource);
-          instanceMH.removeContainerFromMachine(container, machine);
-          EObject _eContainer = machine.eContainer();
-          if ((_eContainer instanceof Configuration)) {
-            EObject _eContainer_1 = machine.eContainer();
-            EList<Resource> _resources = ((Configuration) _eContainer_1).getResources();
-            _resources.remove(((ExecutableContainer) container));
-            String _name = container.getName();
-            DockerObserver.LOGGER.info("Remove the container - {}", _name);
-          }
-        }
-      };
-      try {
-        CommandStack _commandStack = domain.getCommandStack();
-        ((TransactionalCommandStack) _commandStack).execute(cmd, null);
-      } catch (final Throwable _t) {
-        if (_t instanceof RollbackException) {
-          final RollbackException rbe = (RollbackException)_t;
-          IStatus _status = rbe.getStatus();
-          String _string = _status.toString();
-          DockerObserver.LOGGER.error(_string);
-        } else {
-          throw Exceptions.sneakyThrow(_t);
-        }
-      }
-    } catch (Throwable _e) {
-      throw Exceptions.sneakyThrow(_e);
-    }
-  }
-  
   public boolean containerNameExists(final DockerContainerManager dockerContainerManager, final String containerName, final Machine machine) {
     String _name = machine.getName();
-    final List<com.github.dockerjava.api.model.Container> listContainers = dockerContainerManager.listContainer(_name);
+    return this.containerNameExists(dockerContainerManager, containerName, _name);
+  }
+  
+  public boolean containerNameExists(final DockerContainerManager dockerContainerManager, final String containerName, final String machineName) {
+    final List<com.github.dockerjava.api.model.Container> listContainers = dockerContainerManager.listContainer(machineName);
     for (final com.github.dockerjava.api.model.Container c : listContainers) {
       {
         String contName = null;
