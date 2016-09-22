@@ -89,6 +89,7 @@ public class DockerObserver {
     Runtime _runtime = Runtime.getRuntime();
     String _name_1 = machine.getName();
     final String host = DockerMachineManager.ipCmd(_runtime, _name_1);
+    final CPUManager cpuManager = new CPUManager();
     this.listener(machine);
     EList<Adapter> _eAdapters = container.eAdapters();
     _eAdapters.add(
@@ -98,6 +99,7 @@ public class DockerObserver {
           DockerObserver.LOGGER.info("The Container has Changed");
           Container deletedElement = null;
           DockerObserver.LOGGER.info("The machine model has Changed");
+          Container newContainer = null;
           if (((notification.getEventType() == Notification.REMOVE) && 
             (notification.getNotifier() instanceof Container))) {
             Object _oldValue = notification.getOldValue();
@@ -108,11 +110,10 @@ public class DockerObserver {
             String _containerid_1 = deletedElement.getContainerid();
             dockerManager.removeContainer(machine, _containerid_1);
           }
-          Container newContainer = null;
           Object _notifier = notification.getNotifier();
           if ((_notifier instanceof Container)) {
             Object _notifier_1 = notification.getNotifier();
-            newContainer = ((Container) _notifier_1);
+            newContainer = ((ExecutableContainer) _notifier_1);
             if ((DockerObserver.cpContainer.getContainerid().equals(newContainer.getContainerid()) && 
               DockerObserver.cpContainer.getState().toString().equalsIgnoreCase("active"))) {
               String _name = DockerObserver.cpContainer.getName();
@@ -139,7 +140,6 @@ public class DockerObserver {
               boolean _equals_1 = Integer.valueOf(_cores).equals(Integer.valueOf(_cores_1));
               boolean _not_2 = (!_equals_1);
               if (_not_2) {
-                final CPUManager cpuManager = new CPUManager();
                 int _cores_2 = container.getCores();
                 DockerObserver.cpContainer.setCores(_cores_2);
                 String _containerid_3 = newContainer.getContainerid();
@@ -152,14 +152,13 @@ public class DockerObserver {
               boolean _equals_2 = Float.valueOf(_speed).equals(Float.valueOf(_speed_1));
               boolean _not_3 = (!_equals_2);
               if (_not_3) {
-                final CPUManager cpuManager_1 = new CPUManager();
                 int _cores_4 = container.getCores();
                 DockerObserver.cpContainer.setCores(_cores_4);
                 String _containerid_4 = newContainer.getContainerid();
                 float _speed_2 = newContainer.getSpeed();
                 int _round = Math.round(_speed_2);
                 String _valueOf_1 = String.valueOf(_round);
-                cpuManager_1.setFreqValue(host, privateKey, _containerid_4, _valueOf_1);
+                cpuManager.setFreqValue(host, privateKey, _containerid_4, _valueOf_1);
               }
               float _memory = DockerObserver.cpContainer.getMemory();
               float _memory_1 = newContainer.getMemory();
