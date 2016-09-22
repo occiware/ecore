@@ -36,14 +36,14 @@ public class ConnectPCA {
      * @return a json object containing the request results
      */
     public JSONObject getRequest(String id)  {
-        final String url = getProperty("server.endpoint")+"/compute/"+id;
+        final String url = getProperty("server.endpoint")+"compute/"+id.replaceFirst("compute/","");
         JSONObject result = new JSONObject();
         try {
             CloseableHttpClient httpClient = HttpClientBuilder.create().build();
             HttpGet getRequest = new HttpGet(url);
-
             HttpResponse response = httpClient.execute(getRequest);
             String serverOutput = readHttpResponse(response);
+
             httpClient.close();
             result = (JSONObject) new JSONParser().parse(serverOutput);
         }catch (IOException e){
@@ -61,7 +61,7 @@ public class ConnectPCA {
      */
     public JSONObject postRequest(JSONObject input) {
 
-        final String url = getProperty("server.endpoint")+"/compute/";
+        final String url = getProperty("server.endpoint")+"compute/";
         JSONObject result = new JSONObject();
         try {
             CloseableHttpClient httpClient = HttpClientBuilder.create().build();
@@ -81,11 +81,8 @@ public class ConnectPCA {
         return result;
     }
 
-    private JSONObject raiseException(Exception e){
-        JSONObject jsonException = new JSONObject();
-        jsonException.put("exception",e.getMessage());
-        LOGGER.debug("exception: "+e.getClass()+", "+e.getMessage());
-        return jsonException;
+    private void raiseException(Exception e){
+        LOGGER.debug("exception raised in : "+e.getClass()+", "+e.getMessage());
     }
 
 
@@ -128,7 +125,7 @@ public class ConnectPCA {
      */
     private String readHttpResponse(HttpResponse response) throws IOException {
         StringBuffer serverOutput = new StringBuffer();
-        if (response.getStatusLine().getStatusCode() != 201) {
+        if (response.getStatusLine().getStatusCode() != 201 && response.getStatusLine().getStatusCode() != 200) {
             throw new RuntimeException("Send Request Failed : HTTP error code : "
                     + response.getStatusLine().getStatusCode());
         }
