@@ -28,15 +28,16 @@ import org.occiware.clouddesigner.occi.infrastructure.ComputeStatus;
  */
 public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastructure.impl.ComputeImpl
 {
-
     private static final String ID = "id";
-    private static final String TITLE = "title";
-    private static final String SUMMARY = "summary";
-    private static final String ARCHITECTURE = "architecture";
-    private static final String CORES = "cores";
-    private static final String MEMORY = "memory";
-    private static final String HOSTNAME = "hostname";
-    private static final String STATE = "state";
+	private static final String KIND = "kind";
+	private static final String ATTRIBUTES = "attributes";
+	private static final String TITLE = "occi.entity.title";
+    private static final String SUMMARY = "occi.core.summary";
+    private static final String ARCHITECTURE = "occi.compute.architecture";
+    private static final String CORES = "occi.compute.cores";
+    private static final String MEMORY = "occi.compute.memory";
+    private static final String HOSTNAME = "occi.compute.hostname";
+    private static final String STATE = "occi.compute.state";
 
     /**
 	 * Initialize the logger.
@@ -65,14 +66,19 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 
         try {
 
-            JSONObject json = new JSONObject();
-            json.put(ARCHITECTURE, this.getArchitecture().toString().toUpperCase());
-            json.put(CORES, this.getCores());
-            json.put(MEMORY,this.getMemory());
-            json.put(TITLE, this.getTitle());
-			json.put(SUMMARY, this.getSummary());
-            JSONObject response = new ConnectPCA().postRequest(json);
-			//getCloudAutomationInfo(response);
+            JSONObject attributes = new JSONObject();
+            attributes.put(ARCHITECTURE, this.getArchitecture().toString().toUpperCase());
+            attributes.put(CORES, this.getCores());
+            attributes.put(MEMORY,this.getMemory());
+            attributes.put(TITLE, this.getTitle());
+			attributes.put(SUMMARY, this.getSummary());
+
+            JSONObject request = new JSONObject();
+            request.put(ID,this.getId().replaceFirst("compute/",""));
+            request.put(KIND,this.getKind().getTitle());
+            request.put(ATTRIBUTES,attributes);
+            JSONObject response = new ConnectPCA().postRequest(request);
+			getCloudAutomationInfo(response);
         }catch (Exception e){
             LOGGER.debug(e.getClass().getName() + " : "+e.getMessage());
         }
@@ -86,7 +92,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 	public void occiRetrieve()
 	{
 		LOGGER.debug("occiRetrieve() called on " + this);
-		try{
+        try{
 			JSONObject response = new ConnectPCA().getRequest(this.id);
 			getCloudAutomationInfo(response);
 		}catch (Exception e){
@@ -357,14 +363,14 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 	}
 
     private void getCloudAutomationInfo(JSONObject response){
-        this.id = (String) response.getOrDefault(ID,this.id);
-        this.title = (String) response.getOrDefault(TITLE,this.title);
-        this.summary  = (String) response.getOrDefault(SUMMARY,this.title);
-        this.cores = (Integer) response.getOrDefault(CORES,this.cores);
-        this.memory = (Float) response.getOrDefault(MEMORY,this.memory);
-        this.hostname = (String) response.getOrDefault(HOSTNAME,this.hostname);
-        setArchitecture((String) response.getOrDefault(ARCHITECTURE,this.architecture.getName()));
-        setStateStatus((String) response.getOrDefault(STATE,this.state.getName()));
+        JSONObject attributes = (JSONObject) response.get(ATTRIBUTES);
+        this.title = (String) attributes.getOrDefault(TITLE,this.title);
+        this.summary  = (String) attributes.getOrDefault(SUMMARY,this.summary);
+        this.cores = Integer.parseInt( String.valueOf(attributes.getOrDefault(CORES,this.cores)));
+        this.memory = Float.parseFloat( String.valueOf(attributes.getOrDefault(MEMORY,this.memory)));
+        this.hostname = (String) attributes.getOrDefault(HOSTNAME,this.hostname);
+        setArchitecture((String) attributes.getOrDefault(ARCHITECTURE,this.architecture.getName()));
+        setStateStatus((String) attributes.getOrDefault(STATE,this.state.getName()));
     }
 
     private void setArchitecture(String s){
