@@ -6,8 +6,9 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
+ * - Fawaz PARAISO
  * - Philippe MERLE
- * 	- Fawaz PARAISO 
+ * 	 
  *******************************************************************************/
 package org.occiware.clouddesigner.occi.docker.connector
 
@@ -19,6 +20,7 @@ import com.github.dockerjava.core.async.ResultCallbackTemplate
 import com.github.dockerjava.core.command.EventsResultCallback
 import com.google.common.collect.ArrayListMultimap
 import com.google.common.collect.Multimap
+import java.text.DecimalFormat
 import java.util.ArrayList
 import java.util.Collections
 import java.util.HashMap
@@ -86,9 +88,6 @@ import org.slf4j.LoggerFactory
 
 import static com.google.common.base.Preconditions.checkNotNull
 import static org.occiware.clouddesigner.occi.docker.connector.ExecutableContainer.*
-import java.util.Queue
-import java.text.DecimalFormat
-import org.occiware.clouddesigner.occi.docker.connector.dockerjava.cgroup.CPUManager
 
 /**
  * This class overrides the generated EMF factory of the Docker package.
@@ -519,7 +518,7 @@ class EventCallBack extends EventsResultCallback {
 		this.container = container
 	}
 
-	def modifyResourceSet(Resource resource, String state, String containerId) {
+	def void modifyResourceSet(Resource resource, String state, String containerId) {
 		// Creating an editing domain
 		var TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(resource.eResource.resourceSet)
 		var Command cmd = new RecordingCommand(domain) {
@@ -705,12 +704,15 @@ class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statistics> {
 			// Calculate the percentage
 			var percent = calculateCPUPercent(cpuTotalUsageQueue, cpuSystemUsageQueue, percpu_usage_size.size)
 			// Update the monitoring metrics
-			modifyResourceSet(this.container, cpu_used.toString, percent, mem_used, mem_limit, bandwitdh)
+			try {
+				modifyResourceSet(this.container, cpu_used.toString, percent, mem_used, mem_limit, bandwitdh)
+			} catch (NullPointerException e) {
+				LOGGER.error(e.message)
+			}
 		}
 	}
 
 	def void modifyResourceSet(Resource resource, String cpu_used, Float percent, Integer mem_used, Integer mem_limit, Integer bandwitdh) {
-		val cont = this.container
 		// Creating an editing domain
 		var TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(resource.eResource.resourceSet)
 
@@ -722,6 +724,7 @@ class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statistics> {
 				var Float cpu_us = 0.0F
 				var Float mem_percent = Integer.parseInt(mem_used.toString).floatValue / Integer.parseInt(mem_limit.toString).floatValue
 				try {
+					Thread.sleep(100)
 					// Modify the resource only if it is in active state
 					if ((resource as ExecutableContainer).state == ComputeStatus.ACTIVE) {
 						(resource as ExecutableContainer).memory_used = Integer.parseInt(mem_used.toString)
