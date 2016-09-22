@@ -10,21 +10,12 @@
  *******************************************************************************/
 package org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager
 
-import org.eclipse.emf.common.command.Command
 import org.eclipse.emf.common.notify.Notification
 import org.eclipse.emf.ecore.util.EContentAdapter
 import org.eclipse.emf.ecore.util.EcoreUtil
-import org.eclipse.emf.transaction.RecordingCommand
-import org.eclipse.emf.transaction.RollbackException
-import org.eclipse.emf.transaction.TransactionalCommandStack
-import org.eclipse.emf.transaction.TransactionalEditingDomain
-import org.eclipse.emf.transaction.util.TransactionUtil
-import org.occiware.clouddesigner.occi.Configuration
-import org.occiware.clouddesigner.occi.Resource
 import org.occiware.clouddesigner.occi.docker.Container
 import org.occiware.clouddesigner.occi.docker.Machine
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableContainer
-import org.occiware.clouddesigner.occi.docker.connector.ModelHandler
 import org.occiware.clouddesigner.occi.docker.connector.dockerjava.DockerContainerManager
 import org.occiware.clouddesigner.occi.docker.connector.dockerjava.cgroup.CPUManager
 import org.occiware.clouddesigner.occi.docker.connector.dockerjava.cgroup.MemoryManager
@@ -85,6 +76,7 @@ class DockerObserver {
 		cpContainer = EcoreUtil.copy(container) as ExecutableContainer
 		val privateKey = DockerUtil.getEnv(machine.name) + "/" + "id_rsa"
 		val host = DockerMachineManager.ipCmd(Runtime.getRuntime, machine.name)
+		val cpuManager = new CPUManager
 
 		// Add listener to the machine
 		listener(machine)
@@ -97,6 +89,7 @@ class DockerObserver {
 					// ID of the element deleted
 					var Container deletedElement = null
 					LOGGER.info("The machine model has Changed")
+					var Container newContainer = null
 					if (notification.eventType == Notification.REMOVE &&
 						notification.getNotifier() instanceof Container) {
 						deletedElement = notification.getOldValue() as Container
@@ -106,10 +99,13 @@ class DockerObserver {
 						var DockerContainerManager dockerManager = new DockerContainerManager(machine)
 						dockerManager.removeContainer(machine, deletedElement.containerid)
 					}
-					var Container newContainer = null
 					if (notification.notifier instanceof Container) {
-						newContainer = notification.notifier as Container
-						// Name Changes
+						newContainer = notification.notifier as ExecutableContainer
+
+						// Elasticity method
+//						var Elasticity elasticity = new Elasticity(newContainer as ExecutableContainer)
+//						elasticity.action(cpuManager, host, privateKey, newContainer.containerid)
+						// When the container name's Changes
 						if (cpContainer.containerid.equals(newContainer.containerid) &&
 							cpContainer.state.toString.equalsIgnoreCase('active')) {
 
@@ -121,14 +117,11 @@ class DockerObserver {
 									// Rename an existing container
 									LOGGER.info("Old name : {}", cpContainer.name)
 								    LOGGER.info("New name : {}", newContainer.name)
-									
 								}
 							}
-
+							
 							// CPU Changes
 							if (!cpContainer.cores.equals(newContainer.cores)) {
-								val cpuManager = new CPUManager
-
 								// Update CPU value
 								cpContainer.cores = container.cores
 								cpuManager.setCPUValue(host, privateKey, newContainer.containerid,
@@ -137,8 +130,6 @@ class DockerObserver {
 
 							// CPU Frequency Changes
 							if (!cpContainer.speed.equals(newContainer.speed)) {
-								val cpuManager = new CPUManager
-
 								// Update CPU value
 								cpContainer.cores = container.cores
 								cpuManager.setFreqValue(host, privateKey, newContainer.containerid,
@@ -148,13 +139,13 @@ class DockerObserver {
 							// Memory changes
 							if (!cpContainer.memory.equals(newContainer.memory)) {
 								val memoryManager = new MemoryManager
-
 								// Update Memory value
 								cpContainer.memory = container.memory
 								memoryManager.setMemValue(host, privateKey, newContainer.containerid,
 									String.valueOf(newContainer.memory))
 							}
 						}
+						
 						LOGGER.info("Old value : " + notification.oldValue)
 						LOGGER.info("New value : " + notification.newValue)
 					}
@@ -177,7 +168,6 @@ class DockerObserver {
 			if (index == -1) {
 				contName = name.replaceAll("/", "")
 			} else {
-
 				// index = index + linkName.length
 				contName = name.substring(index + linkName.length)
 			}
