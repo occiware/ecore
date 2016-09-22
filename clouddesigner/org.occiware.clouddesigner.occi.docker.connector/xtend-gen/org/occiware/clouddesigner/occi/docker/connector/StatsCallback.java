@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
+ * - Fawaz PARAISO
  * - Philippe MERLE
- * 	- Fawaz PARAISO
  */
 package org.occiware.clouddesigner.occi.docker.connector;
 
@@ -105,8 +105,18 @@ public class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statist
       if (((this.cpuTotalUsageQueue.size() == 2) && (this.cpuSystemUsageQueue.size() == 2))) {
         int _size_1 = percpu_usage_size.size();
         Float percent = this.calculateCPUPercent(this.cpuTotalUsageQueue, this.cpuSystemUsageQueue, _size_1);
-        String _string_2 = cpu_used.toString();
-        this.modifyResourceSet(this.container, _string_2, percent, mem_used, mem_limit, bandwitdh);
+        try {
+          String _string_2 = cpu_used.toString();
+          this.modifyResourceSet(this.container, _string_2, percent, mem_used, mem_limit, bandwitdh);
+        } catch (final Throwable _t) {
+          if (_t instanceof NullPointerException) {
+            final NullPointerException e = (NullPointerException)_t;
+            String _message = e.getMessage();
+            StatsCallback.LOGGER.error(_message);
+          } else {
+            throw Exceptions.sneakyThrow(_t);
+          }
+        }
       }
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
@@ -115,77 +125,81 @@ public class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statist
   
   public void modifyResourceSet(final Resource resource, final String cpu_used, final Float percent, final Integer mem_used, final Integer mem_limit, final Integer bandwitdh) {
     try {
-      final Container cont = this.container;
       org.eclipse.emf.ecore.resource.Resource _eResource = resource.eResource();
       ResourceSet _resourceSet = _eResource.getResourceSet();
       TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(_resourceSet);
       Command cmd = new RecordingCommand(domain) {
         @Override
         protected void doExecute() {
-          DecimalFormat df = new DecimalFormat("#0.##");
-          int cpu_max = 0;
-          Float cpu_us = Float.valueOf(0.0F);
-          String _string = mem_used.toString();
-          int _parseInt = Integer.parseInt(_string);
-          float _floatValue = Integer.valueOf(_parseInt).floatValue();
-          String _string_1 = mem_limit.toString();
-          int _parseInt_1 = Integer.parseInt(_string_1);
-          float _floatValue_1 = Integer.valueOf(_parseInt_1).floatValue();
-          Float mem_percent = Float.valueOf((_floatValue / _floatValue_1));
           try {
-            ComputeStatus _state = ((ExecutableContainer) resource).getState();
-            boolean _equals = Objects.equal(_state, ComputeStatus.ACTIVE);
-            if (_equals) {
-              String _string_2 = mem_used.toString();
-              int _parseInt_2 = Integer.parseInt(_string_2);
-              ((ExecutableContainer) resource).setMemory_used(_parseInt_2);
-              String _string_3 = mem_limit.toString();
-              int _parseInt_3 = Integer.parseInt(_string_3);
-              ((ExecutableContainer) resource).setMemory_max_value(_parseInt_3);
-              String _format = df.format(mem_percent);
-              ((ExecutableContainer) resource).setMemory_percent(_format);
-              ((ExecutableContainer) resource).setBandwidth_used((bandwitdh).intValue());
-              String _string_4 = cpu_used.toString();
-              Long _valueOf = Long.valueOf(_string_4);
-              float _floatValue_2 = _valueOf.floatValue();
-              float _divide = (_floatValue_2 / 1000000F);
-              cpu_us = Float.valueOf(_divide);
-              int _intValue = cpu_us.intValue();
-              boolean _greaterThan = (_intValue > Integer.MAX_VALUE);
-              if (_greaterThan) {
-                cpu_us = Float.valueOf(((cpu_us).floatValue() / 100000000F));
+            DecimalFormat df = new DecimalFormat("#0.##");
+            int cpu_max = 0;
+            Float cpu_us = Float.valueOf(0.0F);
+            String _string = mem_used.toString();
+            int _parseInt = Integer.parseInt(_string);
+            float _floatValue = Integer.valueOf(_parseInt).floatValue();
+            String _string_1 = mem_limit.toString();
+            int _parseInt_1 = Integer.parseInt(_string_1);
+            float _floatValue_1 = Integer.valueOf(_parseInt_1).floatValue();
+            Float mem_percent = Float.valueOf((_floatValue / _floatValue_1));
+            try {
+              Thread.sleep(100);
+              ComputeStatus _state = ((ExecutableContainer) resource).getState();
+              boolean _equals = Objects.equal(_state, ComputeStatus.ACTIVE);
+              if (_equals) {
+                String _string_2 = mem_used.toString();
+                int _parseInt_2 = Integer.parseInt(_string_2);
+                ((ExecutableContainer) resource).setMemory_used(_parseInt_2);
+                String _string_3 = mem_limit.toString();
+                int _parseInt_3 = Integer.parseInt(_string_3);
+                ((ExecutableContainer) resource).setMemory_max_value(_parseInt_3);
+                String _format = df.format(mem_percent);
+                ((ExecutableContainer) resource).setMemory_percent(_format);
+                ((ExecutableContainer) resource).setBandwidth_used((bandwitdh).intValue());
+                String _string_4 = cpu_used.toString();
+                Long _valueOf = Long.valueOf(_string_4);
+                float _floatValue_2 = _valueOf.floatValue();
+                float _divide = (_floatValue_2 / 1000000F);
+                cpu_us = Float.valueOf(_divide);
+                int _intValue = cpu_us.intValue();
+                boolean _greaterThan = (_intValue > Integer.MAX_VALUE);
+                if (_greaterThan) {
+                  cpu_us = Float.valueOf(((cpu_us).floatValue() / 100000000F));
+                }
+                int _intValue_1 = cpu_us.intValue();
+                String _string_5 = Integer.valueOf(_intValue_1).toString();
+                long _parseLong = Long.parseLong(_string_5);
+                int _maxValue = StatsCallback.this.getMaxValue(Long.valueOf(_parseLong), percent);
+                cpu_max = _maxValue;
+                int _intValue_2 = Integer.valueOf(cpu_max).intValue();
+                boolean _greaterThan_1 = (_intValue_2 > Integer.MAX_VALUE);
+                if (_greaterThan_1) {
+                  cpu_max = (cpu_max / 100000000);
+                  cpu_us = Float.valueOf(((cpu_us).floatValue() / 100000000F));
+                }
+                int _intValue_3 = cpu_us.intValue();
+                ((ExecutableContainer) resource).setCpu_used(_intValue_3);
+                int _intValue_4 = cpu_us.intValue();
+                StatsCallback.LOGGER.info("CPU USED <=====> {}", Integer.valueOf(_intValue_4));
+                Integer _valueOf_1 = Integer.valueOf(cpu_max);
+                ((ExecutableContainer) resource).setCpu_max_value((_valueOf_1).intValue());
+                Integer _valueOf_2 = Integer.valueOf(cpu_max);
+                StatsCallback.LOGGER.info("CPU MAX VALUE <=====> {}", _valueOf_2);
+                String _format_1 = df.format(percent);
+                ((ExecutableContainer) resource).setCpu_percent(_format_1);
+                StatsCallback.LOGGER.info("CPU PERCENTAGE <=====> {}", percent);
               }
-              int _intValue_1 = cpu_us.intValue();
-              String _string_5 = Integer.valueOf(_intValue_1).toString();
-              long _parseLong = Long.parseLong(_string_5);
-              int _maxValue = StatsCallback.this.getMaxValue(Long.valueOf(_parseLong), percent);
-              cpu_max = _maxValue;
-              int _intValue_2 = Integer.valueOf(cpu_max).intValue();
-              boolean _greaterThan_1 = (_intValue_2 > Integer.MAX_VALUE);
-              if (_greaterThan_1) {
-                cpu_max = (cpu_max / 100000000);
-                cpu_us = Float.valueOf(((cpu_us).floatValue() / 100000000F));
+            } catch (final Throwable _t) {
+              if (_t instanceof NumberFormatException) {
+                final NumberFormatException e = (NumberFormatException)_t;
+                String _message = e.getMessage();
+                StatsCallback.LOGGER.error(_message);
+              } else {
+                throw Exceptions.sneakyThrow(_t);
               }
-              int _intValue_3 = cpu_us.intValue();
-              ((ExecutableContainer) resource).setCpu_used(_intValue_3);
-              int _intValue_4 = cpu_us.intValue();
-              StatsCallback.LOGGER.info("CPU USED <=====> {}", Integer.valueOf(_intValue_4));
-              Integer _valueOf_1 = Integer.valueOf(cpu_max);
-              ((ExecutableContainer) resource).setCpu_max_value((_valueOf_1).intValue());
-              Integer _valueOf_2 = Integer.valueOf(cpu_max);
-              StatsCallback.LOGGER.info("CPU MAX VALUE <=====> {}", _valueOf_2);
-              String _format_1 = df.format(percent);
-              ((ExecutableContainer) resource).setCpu_percent(_format_1);
-              StatsCallback.LOGGER.info("CPU PERCENTAGE <=====> {}", percent);
             }
-          } catch (final Throwable _t) {
-            if (_t instanceof NumberFormatException) {
-              final NumberFormatException e = (NumberFormatException)_t;
-              String _message = e.getMessage();
-              StatsCallback.LOGGER.error(_message);
-            } else {
-              throw Exceptions.sneakyThrow(_t);
-            }
+          } catch (Throwable _e) {
+            throw Exceptions.sneakyThrow(_e);
           }
         }
       };
