@@ -144,13 +144,16 @@
     <attributes name="bandwidth_percent" description="The percentage of bandwith used.">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="monitoring_interval" default="1" description="The time interval in which the metrics are retrieved from container. This value is in millisecondes.">
+    <attributes name="monitoring_interval" default="1000" description="The time interval in which the metrics are retrieved from container. This value is in milliseconds.">
       <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
     </attributes>
     <attributes name="cpu_max_value" default="" description="The CPU max value espression used by the Gauge.">
       <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
     </attributes>
     <attributes name="memory_max_value" description="The memory max value expression used by the gauge.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="core_max" default="1" description="The maximum number core availbale on the machine. This value is setting dynamically.">
       <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
     </attributes>
     <parent href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='compute']"/>

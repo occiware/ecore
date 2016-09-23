@@ -164,6 +164,9 @@
       <genFeatures createChild="false">
         <ecoreFeature xsi:type="ecore:EAttribute" href="Docker.ecore#//Container/memory_max_value"/>
       </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="Docker.ecore#//Container/core_max"/>
+      </genFeatures>
       <genOperations>
         <ecoreOperation href="Docker.ecore#//Container/create"/>
       </genOperations>

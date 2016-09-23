@@ -294,9 +294,9 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="monitoring_interval" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number"
-        defaultValueLiteral="1">
+        defaultValueLiteral="1000">
       <eAnnotations source="OCCIE2Ecore">
-        <details key="description" value="The time interval in which the metrics are retrieved from container. This value is in millisecondes."/>
+        <details key="description" value="The time interval in which the metrics are retrieved from container. This value is in milliseconds."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cpu_max_value" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number">
@@ -307,6 +307,12 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="memory_max_value" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number">
       <eAnnotations source="OCCIE2Ecore">
         <details key="description" value="The memory max value expression used by the gauge."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="core_max" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number"
+        defaultValueLiteral="1">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The maximum number core availbale on the machine. This value is setting dynamically."/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
