@@ -111,6 +111,7 @@ public class ContainerItemProvider extends ComputeItemProvider {
 			addMonitoring_intervalPropertyDescriptor(object);
 			addCpu_max_valuePropertyDescriptor(object);
 			addMemory_max_valuePropertyDescriptor(object);
+			addCore_maxPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -1216,6 +1217,28 @@ public class ContainerItemProvider extends ComputeItemProvider {
 	}
 
 	/**
+	 * This adds a property descriptor for the Core max feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addCore_maxPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Container_core_max_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Container_core_max_feature", "_UI_Container_type"),
+				 DockerPackage.Literals.CONTAINER__CORE_MAX,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns Container.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1303,6 +1326,7 @@ public class ContainerItemProvider extends ComputeItemProvider {
 			case DockerPackage.CONTAINER__MONITORING_INTERVAL:
 			case DockerPackage.CONTAINER__CPU_MAX_VALUE:
 			case DockerPackage.CONTAINER__MEMORY_MAX_VALUE:
+			case DockerPackage.CONTAINER__CORE_MAX:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
