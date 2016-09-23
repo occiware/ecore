@@ -33,6 +33,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.occiware.clouddesigner.occi.Attribute;
+import org.occiware.clouddesigner.occi.AttributeState;
 import org.occiware.clouddesigner.occi.Configuration;
 import org.occiware.clouddesigner.occi.Entity;
 import org.occiware.clouddesigner.occi.Extension;
@@ -299,8 +300,20 @@ public final class OcciHelper
 		String eAttributeName = Occi2Ecore.convertOcciAttributeName2EcoreAttributeName(attributeName);
 		final EStructuralFeature eStructuralFeature = entity.eClass().getEStructuralFeature(eAttributeName);
 
-		if(eStructuralFeature == null) {
-			throw new IllegalArgumentException("Ecore structural feature '" + eAttributeName + "' not found!");
+		if (eStructuralFeature == null) {
+            // Create the attribute state and update it, if none, create it.
+            AttributeState attrState = getAttributeStateObject(entity, attributeName);
+            if (attrState == null) {
+                // Create the attribute.
+                attrState = createAttributeState(attributeName, attributeValue);
+                entity.getAttributes().add(attrState);
+            } else {
+                // Update the attribute
+                attrState.setValue(attributeName);
+            }
+            
+            return;
+			// throw new IllegalArgumentException("Ecore structural feature '" + eAttributeName + "' not found!");
 		}
 		if(!(eStructuralFeature instanceof EAttribute)) {
 			throw new IllegalArgumentException("Ecore structural feature '" + eAttributeName + "' is not an Ecore attribute!");
@@ -395,5 +408,43 @@ public final class OcciHelper
 		} catch (IllegalArgumentException e) {
 			throw new IllegalArgumentException("Illegal argument exception on method '" + actionName + "'!", e);
 		}
+	}
+	
+	/**
+	 * Create an attribute without add this to the entity object.
+	 * 
+	 * @param name
+	 * @param value
+	 * @return AttributeState object.
+	 */
+	private static AttributeState createAttributeState(final String name, final String value) {
+		AttributeState attr = OCCIFactory.eINSTANCE.createAttributeState();
+		attr.setName(name);
+		attr.setValue(value);
+		return attr;
+	}
+
+	/**
+	 * Get an attribute state object for key parameter.
+	 * 
+	 * @param key
+	 *            ex: occi.core.title.
+	 * @return an AttributeState object, if attribute doesnt exist, null value
+	 *         is returned.
+	 */
+	private static AttributeState getAttributeStateObject(Entity entity, final String key) {
+		AttributeState attr = null;
+		if (key == null) {
+			return attr;
+		}
+		// Load the corresponding attribute state.
+		for (AttributeState attrState : entity.getAttributes()) {
+			if (attrState.getName().equals(key)) {
+				attr = attrState;
+				break;
+			}
+		}
+
+		return attr;
 	}
 }
