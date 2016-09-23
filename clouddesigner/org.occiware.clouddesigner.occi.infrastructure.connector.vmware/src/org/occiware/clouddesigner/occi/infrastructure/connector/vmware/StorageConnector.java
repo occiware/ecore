@@ -48,6 +48,7 @@ import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.VCe
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.VMHelper;
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.VolumeHelper;
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.thread.EntityUtils;
+import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.thread.EntityUtilsHeadless;
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.thread.UIDialog;
 import org.occiware.clouddesigner.occi.util.OcciHelper;
 import org.slf4j.Logger;
@@ -169,13 +170,8 @@ public class StorageConnector extends org.occiware.clouddesigner.occi.infrastruc
 		if (UIDialog.isStandAlone()) {
 			// Launching thread with business code.
 			LOGGER.debug("Console mode.");
-			Runnable runnable = new Runnable() {
-				@Override
-				public void run() {
-					retrieveStorage(null);
-				}
-			};
-			UIDialog.executeActionThread(runnable, titleMessage);
+			retrieveStorage(null);
+			
 
 		} else {
 			// Launching IRunnableWithProgress UI thread with business code.
@@ -680,9 +676,14 @@ public class StorageConnector extends org.occiware.clouddesigner.occi.infrastruc
 				attrsToUpdate.put(ATTR_DATASTORE_NAME, datastoreName);
 			}
 		}
-		// Update the attributes via a transaction (or not if standalone).
-		EntityUtils.updateAttributes(this, attrsToCreate, attrsToUpdate, attrsToDelete);
-
+		if (UIDialog.isStandAlone()) {
+			// Headless environment.
+			EntityUtilsHeadless.updateAttributes(this, attrsToCreate, attrsToUpdate, attrsToDelete);
+			
+		} else {
+			// Gui environment
+			EntityUtils.updateAttributes(this, attrsToCreate, attrsToUpdate, attrsToDelete);
+		}
 		if (volumeName != null && !volumeName.equals(getTitle())) {
 			setTitle(volumeName);
 		}

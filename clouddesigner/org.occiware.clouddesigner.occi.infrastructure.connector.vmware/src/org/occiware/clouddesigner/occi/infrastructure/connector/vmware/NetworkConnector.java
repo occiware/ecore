@@ -73,6 +73,7 @@ import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.Net
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.VCenterClient;
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.VMHelper;
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.thread.EntityUtils;
+import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.thread.EntityUtilsHeadless;
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.thread.UIDialog;
 import org.occiware.clouddesigner.occi.util.OcciHelper;
 
@@ -132,7 +133,7 @@ public class NetworkConnector extends org.occiware.clouddesigner.occi.infrastruc
 	 */
 	@Override
 	public void occiCreate() {
-		titleMessage = "Create a vswitch : " + getTitle();
+		titleMessage = "Reference a vswitch and retrieve it : " + getTitle();
 		
 //		IRunnableWithProgress runnableWithProgress = new IRunnableWithProgress() {
 //			
@@ -319,85 +320,39 @@ public class NetworkConnector extends org.occiware.clouddesigner.occi.infrastruc
 	@Override
 	public void occiRetrieve() {
 		titleMessage = "Retrieve a vswitch : " + getTitle();
-		IRunnableWithProgress runnableWithProgress = new IRunnableWithProgress() {
+		LOGGER.debug("occiRetrieve() called on " + this);
+		if (UIDialog.isStandAlone()) {
+			// Launching thread with business code.
+			LOGGER.debug("Console mode.");
+			// Retrieve a compute without monitoring.
+			retrieveNetwork(null);
 			
-			@Override
-			public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
-				LOGGER.debug("occiRetrieve() called on " + this);
-				if (!VCenterClient.checkConnection()) {
-					// Must return true if connection is established.
-					globalMessage = "No connection to Vcenter has been established.";
-					levelMessage = Level.WARN;
-					LOGGER.warn(globalMessage);
-					return;
-				}
-				
-				ServiceInstance si = VCenterClient.getServiceInstance();
-				Folder rootFolder = si.getRootFolder();
-				// Search a host that contain this portgroup.
-				String networkLabelName = getLabel();
-				if (networkLabelName == null || networkLabelName.isEmpty()) {
-					globalMessage = "No label for this network, please set the attribute label.";
-					levelMessage = Level.ERROR;
-					LOGGER.error(globalMessage);
-					return;
-				}
-				
-				HostSystem host = HostHelper.findHostForPortGroup(rootFolder, networkLabelName);
-				if (host == null) {
-					globalMessage = "No host found for this port group : " + networkLabelName;
-					levelMessage = Level.ERROR;
-					LOGGER.error(globalMessage);
-					return;
-				}
-				HostPortGroup portGroup = NetworkHelper.findPortGroup(host, networkLabelName);
-				if (portGroup == null) {
-					globalMessage = "No portGroup found cant retrieve vswitch informations.";
-					levelMessage = Level.ERROR;
-					LOGGER.error(globalMessage);
-					return;
-				}
-				
-				
-				// Find now the network.
-				vSwitchName = portGroup.getSpec().getVswitchName();
-				vlanId = portGroup.getSpec().getVlanId();
-				portGroupName = networkLabelName;
-				hostSystemName = host.getName();
-				try {
-					HostVirtualSwitch hostVswitch = NetworkHelper.findVSwitch(host, vSwitchName);
-					nbPortStr = "" + hostVswitch.getNumPorts();
-				} catch (VirtualSwitchNotFoundException ex) {
-					globalMessage = "The vswitch : " + vSwitchName + " is not found, please check your configuration.";
-					levelMessage = Level.WARN;
-					LOGGER.warn(globalMessage);
-					return;
-				}
-				
-				
-				// TODO : How to check that vswitch / port group is active ?
-				// Set the network state.
-				if (UIDialog.isStandAlone()) {
-					updateAttributesOnNetwork();
-				}
-				
-			}
-		};
-		
-		UIDialog.executeActionThread(runnableWithProgress,
-				"Retrieve virtual machine " + getTitle() + " informations...");
-		
-		if (!UIDialog.isStandAlone()) {
-			// Update attributes in the end when operation are terminated.
-			updateAttributesOnNetwork();
-		}
+		} else {
+			// Launching IRunnableWithProgress UI thread with business code.
+			LOGGER.debug("UI mode.");
+			IRunnableWithProgress runnableWithProgress = new IRunnableWithProgress() {
 
-		if (globalMessage != null && !globalMessage.isEmpty()) {
-			UIDialog.showUserMessage(titleMessage, globalMessage, levelMessage);
+				@Override
+				public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+					retrieveNetwork(monitor);
+				}
+			};
+			UIDialog.executeActionThread(runnableWithProgress, titleMessage);
+			if (globalMessage != null && !globalMessage.isEmpty()) {
+				UIDialog.showUserMessage(titleMessage, globalMessage, levelMessage);
+			}
+			
+			updateAttributesOnNetwork();
+
 		}
+		
 		globalMessage = "";
 		levelMessage = null;
-		VCenterClient.disconnect();
+			
+		if (VCenterClient.isConnected()) {
+			VCenterClient.disconnect();
+		}
+		
 	}
 
 	/**
@@ -640,7 +595,6 @@ public class NetworkConnector extends org.occiware.clouddesigner.occi.infrastruc
 
 		
 		// ATTR_VSWITCH_NBPORT.
-		// TODO : Add attribute on extension vmwarecrtp#.
 		if (nbPortStr != null && hasMixinVswitchInfos) {
 			if (this.getAttributeStateObject(ATTR_VSWITCH_NBPORT) == null) {
 				attrsToCreate.put(ATTR_VSWITCH_NBPORT, nbPortStr);
@@ -648,7 +602,15 @@ public class NetworkConnector extends org.occiware.clouddesigner.occi.infrastruc
 				attrsToUpdate.put(ATTR_VSWITCH_NBPORT, nbPortStr);
 			}
 		}
-		
+		if (UIDialog.isStandAlone()) {
+			// Headless environment.
+			EntityUtilsHeadless.updateAttributes(this, attrsToCreate, attrsToUpdate, attrsToDelete);
+			
+		} else {
+			// Gui environment
+			EntityUtils.updateAttributes(this, attrsToCreate, attrsToUpdate, attrsToDelete);
+		}
+
 		if (vSwitchName != null && !vSwitchName.isEmpty()) {
 			this.setTitle(vSwitchName);
 			this.setState(NetworkStatus.ACTIVE);
@@ -659,10 +621,69 @@ public class NetworkConnector extends org.occiware.clouddesigner.occi.infrastruc
 			this.setLabel(portGroupName);
 		}
 		
-		
-		// Update the attributes via a transaction (or not if standalone).
-		EntityUtils.updateAttributes(this, attrsToCreate, attrsToUpdate, attrsToDelete);
-
 	}
+	
+	/**
+	 * Retrieve a vswitch from network label (port group) and others infos.
+	 * @param monitor must be null if we are in console mode 
+	 */
+	public void retrieveNetwork(IProgressMonitor monitor) {
+		if (!VCenterClient.checkConnection()) {
+			// Must return true if connection is established.
+			globalMessage = "No connection to Vcenter has been established.";
+			levelMessage = Level.WARN;
+			LOGGER.warn(globalMessage);
+			return;
+		}
+		
+		ServiceInstance si = VCenterClient.getServiceInstance();
+		Folder rootFolder = si.getRootFolder();
+		// Search a host that contain this portgroup.
+		String networkLabelName = getLabel();
+		if (networkLabelName == null || networkLabelName.isEmpty()) {
+			globalMessage = "No label for this network, please set the attribute label.";
+			levelMessage = Level.ERROR;
+			LOGGER.error(globalMessage);
+			return;
+		}
+		
+		HostSystem host = HostHelper.findHostForPortGroup(rootFolder, networkLabelName);
+		if (host == null) {
+			globalMessage = "No host found for this port group : " + networkLabelName;
+			levelMessage = Level.ERROR;
+			LOGGER.error(globalMessage);
+			return;
+		}
+		HostPortGroup portGroup = NetworkHelper.findPortGroup(host, networkLabelName);
+		if (portGroup == null) {
+			globalMessage = "No portGroup found cant retrieve vswitch informations.";
+			levelMessage = Level.ERROR;
+			LOGGER.error(globalMessage);
+			return;
+		}
+		
+		
+		// Find now the network.
+		vSwitchName = portGroup.getSpec().getVswitchName();
+		vlanId = portGroup.getSpec().getVlanId();
+		portGroupName = networkLabelName;
+		hostSystemName = host.getName();
+		try {
+			HostVirtualSwitch hostVswitch = NetworkHelper.findVSwitch(host, vSwitchName);
+			nbPortStr = "" + hostVswitch.getNumPorts();
+		} catch (VirtualSwitchNotFoundException ex) {
+			globalMessage = "The vswitch : " + vSwitchName + " is not found, please check your configuration.";
+			levelMessage = Level.WARN;
+			LOGGER.warn(globalMessage);
+			return;
+		}
+		
+		// TODO : How to check that vswitch / port group is active ?
+		// Set the network state.
+		if (UIDialog.isStandAlone()) {
+			updateAttributesOnNetwork();
+		}
+	}
+	
 	
 }

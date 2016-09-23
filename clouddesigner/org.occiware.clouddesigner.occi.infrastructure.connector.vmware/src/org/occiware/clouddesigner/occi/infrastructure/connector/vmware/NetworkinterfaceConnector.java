@@ -36,6 +36,7 @@ import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.Net
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.VCenterClient;
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.VMHelper;
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.thread.EntityUtils;
+import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.thread.EntityUtilsHeadless;
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.thread.UIDialog;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -166,13 +167,8 @@ public class NetworkinterfaceConnector
 		if (UIDialog.isStandAlone()) {
 			// Launching thread with business code.
 			LOGGER.debug("Console mode.");
-			Runnable runnable = new Runnable() {
-				@Override
-				public void run() {
-					retrieveNetworkNIC(null);
-				}
-			};
-			UIDialog.executeActionThread(runnable, titleMessage);
+			retrieveNetworkNIC(null);
+			
 
 		} else {
 			// Launching IRunnableWithProgress UI thread with business code.
@@ -1498,9 +1494,14 @@ public class NetworkinterfaceConnector
 			this.setMessage("No ip address setup.");
 			
 		}
-		
-		// Update the attributes via a transaction (or not if standalone).
-		EntityUtils.updateAttributes(this, attrsToCreate, attrsToUpdate, attrsToDelete);
+		if (UIDialog.isStandAlone()) {
+			// Headless environment.
+			EntityUtilsHeadless.updateAttributes(this, attrsToCreate, attrsToUpdate, attrsToDelete);
+			
+		} else {
+			// Gui environment
+			EntityUtils.updateAttributes(this, attrsToCreate, attrsToUpdate, attrsToDelete);
+		}
 		
 		this.setTitle(networkAdapterName);
 		this.setState(adapterState);
