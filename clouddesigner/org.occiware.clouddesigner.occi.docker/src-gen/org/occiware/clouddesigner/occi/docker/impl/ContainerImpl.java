@@ -81,6 +81,7 @@ import org.occiware.clouddesigner.occi.infrastructure.impl.ComputeImpl;
  *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.ContainerImpl#getMonitoring_interval <em>Monitoring interval</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.ContainerImpl#getCpu_max_value <em>Cpu max value</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.ContainerImpl#getMemory_max_value <em>Memory max value</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.ContainerImpl#getCore_max <em>Core max</em>}</li>
  * </ul>
  *
  * @generated
@@ -1034,7 +1035,7 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int MONITORING_INTERVAL_EDEFAULT = 1;
+	protected static final int MONITORING_INTERVAL_EDEFAULT = 1000;
 
 	/**
 	 * The cached value of the '{@link #getMonitoring_interval() <em>Monitoring interval</em>}' attribute.
@@ -1085,6 +1086,26 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 	 * @ordered
 	 */
 	protected int memory_max_value = MEMORY_MAX_VALUE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getCore_max() <em>Core max</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCore_max()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int CORE_MAX_EDEFAULT = 1;
+
+	/**
+	 * The cached value of the '{@link #getCore_max() <em>Core max</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCore_max()
+	 * @generated
+	 * @ordered
+	 */
+	protected int core_max = CORE_MAX_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2160,6 +2181,27 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public int getCore_max() {
+		return core_max;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCore_max(int newCore_max) {
+		int oldCore_max = core_max;
+		core_max = newCore_max;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__CORE_MAX, oldCore_max, core_max));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void create() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -2329,6 +2371,8 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 				return getCpu_max_value();
 			case DockerPackage.CONTAINER__MEMORY_MAX_VALUE:
 				return getMemory_max_value();
+			case DockerPackage.CONTAINER__CORE_MAX:
+				return getCore_max();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -2490,6 +2534,9 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 				return;
 			case DockerPackage.CONTAINER__MEMORY_MAX_VALUE:
 				setMemory_max_value((Integer)newValue);
+				return;
+			case DockerPackage.CONTAINER__CORE_MAX:
+				setCore_max((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -2653,6 +2700,9 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 			case DockerPackage.CONTAINER__MEMORY_MAX_VALUE:
 				setMemory_max_value(MEMORY_MAX_VALUE_EDEFAULT);
 				return;
+			case DockerPackage.CONTAINER__CORE_MAX:
+				setCore_max(CORE_MAX_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -2765,6 +2815,8 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 				return cpu_max_value != CPU_MAX_VALUE_EDEFAULT;
 			case DockerPackage.CONTAINER__MEMORY_MAX_VALUE:
 				return memory_max_value != MEMORY_MAX_VALUE_EDEFAULT;
+			case DockerPackage.CONTAINER__CORE_MAX:
+				return core_max != CORE_MAX_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -2909,6 +2961,8 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 		result.append(cpu_max_value);
 		result.append(", memory_max_value: ");
 		result.append(memory_max_value);
+		result.append(", core_max: ");
+		result.append(core_max);
 		result.append(')');
 		return result.toString();
 	}

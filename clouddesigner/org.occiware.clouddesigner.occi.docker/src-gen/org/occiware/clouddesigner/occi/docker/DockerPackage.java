@@ -665,13 +665,22 @@ public interface DockerPackage extends EPackage {
 	int CONTAINER__MEMORY_MAX_VALUE = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 49;
 
 	/**
+	 * The feature id for the '<em><b>Core max</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTAINER__CORE_MAX = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 50;
+
+	/**
 	 * The number of structural features of the '<em>Container</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTAINER_FEATURE_COUNT = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 50;
+	int CONTAINER_FEATURE_COUNT = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 51;
 
 	/**
 	 * The operation id for the '<em>Occi Create</em>' operation.
@@ -5878,6 +5887,17 @@ public interface DockerPackage extends EPackage {
 	EAttribute getContainer_Memory_max_value();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Container#getCore_max <em>Core max</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Core max</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Container#getCore_max()
+	 * @see #getContainer()
+	 * @generated
+	 */
+	EAttribute getContainer_Core_max();
+
+	/**
 	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.docker.Container#create() <em>Create</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7560,6 +7580,14 @@ public interface DockerPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CONTAINER__MEMORY_MAX_VALUE = eINSTANCE.getContainer_Memory_max_value();
+
+		/**
+		 * The meta object literal for the '<em><b>Core max</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONTAINER__CORE_MAX = eINSTANCE.getContainer_Core_max();
 
 		/**
 		 * The meta object literal for the '<em><b>Create</b></em>' operation.

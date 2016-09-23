@@ -704,6 +704,15 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getContainer_Core_max() {
+		return (EAttribute)containerEClass.getEStructuralFeatures().get(50);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EOperation getContainer__Create() {
 		return containerEClass.getEOperations().get(0);
 	}
@@ -1822,6 +1831,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		createEAttribute(containerEClass, CONTAINER__MONITORING_INTERVAL);
 		createEAttribute(containerEClass, CONTAINER__CPU_MAX_VALUE);
 		createEAttribute(containerEClass, CONTAINER__MEMORY_MAX_VALUE);
+		createEAttribute(containerEClass, CONTAINER__CORE_MAX);
 		createEOperation(containerEClass, CONTAINER___CREATE);
 		createEOperation(containerEClass, CONTAINER___START);
 		createEOperation(containerEClass, CONTAINER___STOP);
@@ -2057,9 +2067,10 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		initEAttribute(getContainer_Disk_percent(), theOCCIPackage.getString(), "disk_percent", null, 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_Bandwidth_used(), theOCCIPackage.getNumber(), "bandwidth_used", null, 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_Bandwidth_percent(), theOCCIPackage.getString(), "bandwidth_percent", null, 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getContainer_Monitoring_interval(), theOCCIPackage.getNumber(), "monitoring_interval", "1", 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getContainer_Monitoring_interval(), theOCCIPackage.getNumber(), "monitoring_interval", "1000", 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_Cpu_max_value(), theOCCIPackage.getNumber(), "cpu_max_value", null, 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_Memory_max_value(), theOCCIPackage.getNumber(), "memory_max_value", null, 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getContainer_Core_max(), theOCCIPackage.getNumber(), "core_max", "1", 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getContainer__Create(), null, "create", 0, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -2561,7 +2572,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		  (getContainer_Monitoring_interval(), 
 		   source, 
 		   new String[] {
-			 "description", "The time interval in which the metrics are retrieved from container. This value is in millisecondes."
+			 "description", "The time interval in which the metrics are retrieved from container. This value is in milliseconds."
 		   });	
 		addAnnotation
 		  (getContainer_Cpu_max_value(), 
@@ -2574,6 +2585,12 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		   source, 
 		   new String[] {
 			 "description", "The memory max value expression used by the gauge."
+		   });	
+		addAnnotation
+		  (getContainer_Core_max(), 
+		   source, 
+		   new String[] {
+			 "description", "The maximum number core availbale on the machine. This value is setting dynamically."
 		   });	
 		addAnnotation
 		  (linkEClass, 

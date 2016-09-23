@@ -72,6 +72,7 @@ import org.occiware.clouddesigner.occi.infrastructure.Compute;
  *   <li>{@link org.occiware.clouddesigner.occi.docker.Container#getMonitoring_interval <em>Monitoring interval</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.docker.Container#getCpu_max_value <em>Cpu max value</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.docker.Container#getMemory_max_value <em>Memory max value</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.Container#getCore_max <em>Core max</em>}</li>
  * </ul>
  *
  * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer()
@@ -1358,7 +1359,7 @@ public interface Container extends Compute {
 
 	/**
 	 * Returns the value of the '<em><b>Monitoring interval</b></em>' attribute.
-	 * The default value is <code>"1"</code>.
+	 * The default value is <code>"1000"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Monitoring interval</em>' attribute isn't clear,
@@ -1368,8 +1369,8 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Monitoring interval</em>' attribute.
 	 * @see #setMonitoring_interval(int)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Monitoring_interval()
-	 * @model default="1" dataType="org.occiware.clouddesigner.occi.Number"
-	 *        annotation="OCCIE2Ecore description='The time interval in which the metrics are retrieved from container. This value is in millisecondes.'"
+	 * @model default="1000" dataType="org.occiware.clouddesigner.occi.Number"
+	 *        annotation="OCCIE2Ecore description='The time interval in which the metrics are retrieved from container. This value is in milliseconds.'"
 	 * @generated
 	 */
 	int getMonitoring_interval();
@@ -1437,6 +1438,34 @@ public interface Container extends Compute {
 	 * @generated
 	 */
 	void setMemory_max_value(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Core max</b></em>' attribute.
+	 * The default value is <code>"1"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Core max</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Core max</em>' attribute.
+	 * @see #setCore_max(int)
+	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Core_max()
+	 * @model default="1" dataType="org.occiware.clouddesigner.occi.Number"
+	 *        annotation="OCCIE2Ecore description='The maximum number core availbale on the machine. This value is setting dynamically.'"
+	 * @generated
+	 */
+	int getCore_max();
+
+	/**
+	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.docker.Container#getCore_max <em>Core max</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Core max</em>' attribute.
+	 * @see #getCore_max()
+	 * @generated
+	 */
+	void setCore_max(int value);
 
 	/**
 	 * <!-- begin-user-doc -->
