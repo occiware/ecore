@@ -91,14 +91,7 @@ public class StoragelinkConnector extends org.occiware.clouddesigner.occi.infras
 		if (UIDialog.isStandAlone()) {
 			// Launching thread with business code.
 			LOGGER.debug("Console mode.");
-			Runnable runnable = new Runnable() {
-				@Override
-				public void run() {
-					retrieveStorageSystem(null);
-				}
-			};
-			UIDialog.executeActionThread(runnable, titleMessage);
-
+			retrieveStorageSystem(null);
 		} else {
 			// Launching IRunnableWithProgress UI thread with business code.
 			LOGGER.debug("UI mode.");

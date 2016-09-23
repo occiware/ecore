@@ -11,38 +11,25 @@
  *
  */
 package org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.thread;
-
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-
-import org.eclipse.emf.common.command.Command;
-import org.eclipse.emf.transaction.RecordingCommand;
-import org.eclipse.emf.transaction.RollbackException;
-import org.eclipse.emf.transaction.TransactionalCommandStack;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.occiware.clouddesigner.occi.AttributeState;
 import org.occiware.clouddesigner.occi.Entity;
 import org.occiware.clouddesigner.occi.OCCIFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 /**
- * When in multithreading, the attributes update (or create) need a transaction
- * to be wrote. This class set the attributes within an emf transaction.
- * 
+ * This class is only for headless usage, it's an utility for updating attributes on connector entity.
  * @author Christophe Gourdin
  *
  */
-public class EntityUtils {
-	private static Logger LOGGER = LoggerFactory.getLogger(EntityUtils.class);
-
+public class EntityUtilsHeadless {
+	private static Logger LOGGER = LoggerFactory.getLogger(EntityUtilsHeadless.class);
 	private static final String DELETE_ATTR = "delete";
 	private static final String ADD_ATTR = "add";
 	private static final String UPDATE_ATTR = "update";
-
-
+	
 	/**
 	 * Create, update or delete some attributes on model Entity.
 	 *  
@@ -55,28 +42,14 @@ public class EntityUtils {
 			final Map<String, String> attrsToUpdate, final List<String> attrsToDelete) {
 		
 		if (!UIDialog.isStandAlone()) {
-			LOGGER.info("Updating attributes : UI Mode.");
-			// Cloud designer usage.
-			TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(entity.eResource().getResourceSet());
-			Command cmd = new RecordingCommand(domain) {
-				@Override
-				protected void doExecute() {
-					executeOperations(entity, attrsToCreate, attrsToUpdate, attrsToDelete);
-				}
-			};
-			try {
-				TransactionalCommandStack transactionCmd = (TransactionalCommandStack) domain.getCommandStack();
-				transactionCmd.execute(cmd, null); // default options
-			} catch (RollbackException rbe) {
-				LOGGER.error(rbe.getStatus().toString());
-			} catch (InterruptedException ex) {
-				LOGGER.error(ex.getMessage());
-			}
+			LOGGER.warn("This method must be used in a headless environment ! Check your caller code.");
+			
 		} else {
-			LOGGER.warn("This method (EntityUtils.updateAttributes(....) must be called only on a cloud designer environment (GUI) !");
+			// Standalone connector usage.
+			LOGGER.info("Updating attributes : Headless mode");
+			executeOperations(entity, attrsToCreate, attrsToUpdate, attrsToDelete);
 		}
 	}
-	
 	
 	private static void executeOperations(Entity entity, Map<String, String> attrsToCreate,
 			Map<String, String> attrsToUpdate, List<String> attrsToDelete) {
@@ -107,7 +80,7 @@ public class EntityUtils {
 		
 		
 	}
-
+	
 	private static void executeOperation(final Entity entity, final String operation, final AttributeState attr,
 			final String attrName, final String attrValue) {
 		switch (operation) {
@@ -172,9 +145,5 @@ public class EntityUtils {
 
 		return attr;
 	}
-
 	
-
-	
-
 }

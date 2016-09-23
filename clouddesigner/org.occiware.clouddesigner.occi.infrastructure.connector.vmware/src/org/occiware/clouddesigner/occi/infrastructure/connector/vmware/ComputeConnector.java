@@ -42,6 +42,7 @@ import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.Net
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.VCenterClient;
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.VMHelper;
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.thread.EntityUtils;
+import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.thread.EntityUtilsHeadless;
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.thread.UIDialog;
 import org.occiware.clouddesigner.occi.util.OcciHelper;
 import org.slf4j.Logger;
@@ -200,15 +201,12 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		if (UIDialog.isStandAlone()) {
 			// Launching thread with business code.
 			LOGGER.debug("Console mode.");
-			Runnable runnable = new Runnable() {
-				@Override
-				public void run() {
-					// Retrieve a compute without monitoring.
-					retrieveCompute(null);
-				}
-			};
-			UIDialog.executeActionThread(runnable, titleMessage);
+			
+			// Retrieve a compute without monitoring on the main thread.
+			retrieveCompute(null);
 
+			// UIDialog.executeActionThread(runnable, titleMessage);
+			
 		} else {
 			// Launching IRunnableWithProgress UI thread with business code.
 			LOGGER.debug("UI mode.");
@@ -229,7 +227,9 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 			updateAttributesOnCompute();
 
 		}
-
+		
+		
+		
 		globalMessage = "";
 		levelMessage = null;
 
@@ -1092,9 +1092,18 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 				attrsToCreate.put(ATTR_VM_EPHEMERAL_DISK_SIZE_GB, "" + ephemeralDiskSizeGB);
 			}
 		}
-
-		// Update the attributes via a transaction (or not if standalone).
-		EntityUtils.updateAttributes(this, attrsToCreate, attrsToUpdate, attrsToDelete);
+		
+		// if (!attrsToCreate.isEmpty() || !attrsToUpdate.isEmpty() || !attrsToDelete.isEmpty()) {
+			// Update the attributes via a transaction (or not if standalone).
+			if (UIDialog.isStandAlone()) {
+				// Headless environment.
+				EntityUtilsHeadless.updateAttributes(this, attrsToCreate, attrsToUpdate, attrsToDelete);
+				
+			} else {
+				// Gui environment
+				EntityUtils.updateAttributes(this, attrsToCreate, attrsToUpdate, attrsToDelete);
+			}
+		// }
 
 		if (architecture != null) {
 			if (architecture.equals("x64")) {
@@ -1207,8 +1216,13 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		// Same for storage we get the storage links.
 		List<StoragelinkConnector> storageLinks = getLinkedStorages();
 		
+		// Template or not ?
+		vmTemplateName = getAttributeValueByOcciKey(ATTR_IMAGE_NAME);
+		boolean hasTemplate = (vmTemplateName != null && !vmTemplateName.trim().isEmpty());
+		
 		// Check if we create the virtual machine on start operation.
-		if (!toCreateOnStartOperation) {
+		
+		if (!toCreateOnStartOperation && !hasTemplate) {
 			// check if we have no networkinterface connected, if this is the case we check if a network is in the configuration space.
 			if (netInterfaceConn.isEmpty()) {
 				// Check if network is on configuration object.
@@ -1230,10 +1244,6 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		} else {
 			toCreateOnStartOperation = false;
 		}
-		
-		// Template or not ?
-		vmTemplateName = getAttributeValueByOcciKey(ATTR_IMAGE_NAME);
-		boolean hasTemplate = (vmTemplateName != null && !vmTemplateName.trim().isEmpty());
 
 		guestOsId = getAttributeValueByOcciKey(ATTR_VM_GUEST_OS_ID);
 		if (guestOsId != null && guestOsId.trim().isEmpty()) {
@@ -2061,9 +2071,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		if (toMonitor) {
 			subMonitor.worked(80);
 		}
-		if (UIDialog.isStandAlone()) {
-			updateAttributesOnCompute();
-		}
+		
 		globalMessage = "The virtual machine informations has been retrieved and are updated.";
 		levelMessage = Level.INFO;
 		// In the end we disconnect.
@@ -2071,12 +2079,11 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		if (toMonitor) {
 			subMonitor.worked(100);
 		}
-
+		
 		if (UIDialog.isStandAlone()) {
-			// We update here the attributes to assume that the task is
-			// finished.
 			updateAttributesOnCompute();
 		}
+		
 	}
 
 	/**
