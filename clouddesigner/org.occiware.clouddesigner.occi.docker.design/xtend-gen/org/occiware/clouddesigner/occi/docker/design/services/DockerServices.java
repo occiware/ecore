@@ -42,18 +42,7 @@ public class DockerServices {
       final int kind = this.eobjectKind(eo);
       if ((kind == 0)) {
         Machine machine = ((Machine) eo);
-        boolean _or = false;
-        String _name = machine.getName();
-        boolean _equals = Objects.equal(_name, null);
-        if (_equals) {
-          _or = true;
-        } else {
-          String _name_1 = machine.getName();
-          String _trim = _name_1.trim();
-          boolean _equals_1 = Objects.equal(_trim, "");
-          _or = _equals_1;
-        }
-        if (_or) {
+        if ((Objects.equal(machine.getName(), null) || Objects.equal(machine.getName().trim(), ""))) {
           Shell _shell = this.getShell();
           MessageDialog.openInformation(_shell, "Warning", "Machine name is required!");
         } else {
@@ -72,18 +61,7 @@ public class DockerServices {
       } else {
         if ((kind == 1)) {
           Container container = ((Container) eo);
-          boolean _or_1 = false;
-          String _name_2 = container.getName();
-          boolean _equals_2 = Objects.equal(_name_2, null);
-          if (_equals_2) {
-            _or_1 = true;
-          } else {
-            String _name_3 = container.getName();
-            String _trim_1 = _name_3.trim();
-            boolean _equals_3 = Objects.equal(_trim_1, "");
-            _or_1 = _equals_3;
-          }
-          if (_or_1) {
+          if ((Objects.equal(container.getName(), null) || Objects.equal(container.getName().trim(), ""))) {
             Shell _shell_2 = this.getShell();
             MessageDialog.openInformation(_shell_2, "Warning", "Container name is required!");
           } else {
@@ -157,18 +135,7 @@ public class DockerServices {
       final int kind = this.eobjectKind(eo);
       if ((kind == 0)) {
         Machine machine = ((Machine) eo);
-        boolean _or = false;
-        String _name = machine.getName();
-        boolean _equals = Objects.equal(_name, null);
-        if (_equals) {
-          _or = true;
-        } else {
-          String _name_1 = machine.getName();
-          String _trim = _name_1.trim();
-          boolean _equals_1 = Objects.equal(_trim, "");
-          _or = _equals_1;
-        }
-        if (_or) {
+        if ((Objects.equal(machine.getName(), null) || Objects.equal(machine.getName().trim(), ""))) {
           Shell _shell = this.getShell();
           MessageDialog.openInformation(_shell, "Warning", "Machine name is required!");
         } else {
@@ -198,18 +165,7 @@ public class DockerServices {
       final int kind = this.eobjectKind(eo);
       if ((kind == 0)) {
         Machine machine = ((Machine) eo);
-        boolean _or = false;
-        String _name = machine.getName();
-        boolean _equals = Objects.equal(_name, null);
-        if (_equals) {
-          _or = true;
-        } else {
-          String _name_1 = machine.getName();
-          String _trim = _name_1.trim();
-          boolean _equals_1 = Objects.equal(_trim, "");
-          _or = _equals_1;
-        }
-        if (_or) {
+        if ((Objects.equal(machine.getName(), null) || Objects.equal(machine.getName().trim(), ""))) {
           Shell _shell = this.getShell();
           MessageDialog.openInformation(_shell, "Warning", "Machine name is required!");
         } else {
@@ -228,18 +184,7 @@ public class DockerServices {
       } else {
         if ((kind == 1)) {
           Container container = ((Container) eo);
-          boolean _or_1 = false;
-          String _name_2 = container.getName();
-          boolean _equals_2 = Objects.equal(_name_2, null);
-          if (_equals_2) {
-            _or_1 = true;
-          } else {
-            String _name_3 = container.getName();
-            String _trim_1 = _name_3.trim();
-            boolean _equals_3 = Objects.equal(_trim_1, "");
-            _or_1 = _equals_3;
-          }
-          if (_or_1) {
+          if ((Objects.equal(container.getName(), null) || Objects.equal(container.getName().trim(), ""))) {
             Shell _shell_2 = this.getShell();
             MessageDialog.openInformation(_shell_2, "Warning", "Container name is required!");
           } else {
@@ -270,18 +215,7 @@ public class DockerServices {
       final int kind = this.eobjectKind(eo);
       if ((kind == 0)) {
         Machine machine = ((Machine) eo);
-        boolean _or = false;
-        String _name = machine.getName();
-        boolean _equals = Objects.equal(_name, null);
-        if (_equals) {
-          _or = true;
-        } else {
-          String _name_1 = machine.getName();
-          String _trim = _name_1.trim();
-          boolean _equals_1 = Objects.equal(_trim, "");
-          _or = _equals_1;
-        }
-        if (_or) {
+        if ((Objects.equal(machine.getName(), null) || Objects.equal(machine.getName().trim(), ""))) {
           Shell _shell = this.getShell();
           MessageDialog.openInformation(_shell, "Warning", "Machine name is required!");
         } else {
@@ -300,18 +234,7 @@ public class DockerServices {
       } else {
         if ((kind == 1)) {
           Container container = ((Container) eo);
-          boolean _or_1 = false;
-          String _name_2 = container.getName();
-          boolean _equals_2 = Objects.equal(_name_2, null);
-          if (_equals_2) {
-            _or_1 = true;
-          } else {
-            String _name_3 = container.getName();
-            String _trim_1 = _name_3.trim();
-            boolean _equals_3 = Objects.equal(_trim_1, "");
-            _or_1 = _equals_3;
-          }
-          if (_or_1) {
+          if ((Objects.equal(container.getName(), null) || Objects.equal(container.getName().trim(), ""))) {
             Shell _shell_2 = this.getShell();
             MessageDialog.openInformation(_shell_2, "Warning", "Container name is required!");
           } else {
