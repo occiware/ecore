@@ -48,6 +48,8 @@ import org.occiware.clouddesigner.occi.util.OcciHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.vmware.vim25.TaskInfo;
+import com.vmware.vim25.TaskInfoState;
 import com.vmware.vim25.VirtualDeviceConfigSpec;
 import com.vmware.vim25.VirtualMachineCloneSpec;
 import com.vmware.vim25.VirtualMachineConfigSpec;
@@ -64,6 +66,7 @@ import com.vmware.vim25.mo.ManagedEntity;
 import com.vmware.vim25.mo.Network;
 import com.vmware.vim25.mo.ResourcePool;
 import com.vmware.vim25.mo.ServiceInstance;
+import com.vmware.vim25.mo.Task;
 import com.vmware.vim25.mo.VirtualMachine;
 
 /**
@@ -130,7 +133,10 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 	private String titleMessage = "";
 	private String globalMessage = "";
 	private Level levelMessage = null;
-
+	
+	// Used to monitor the task in console mode. This will be used with message attribute state.
+	private String messageProgress = null;
+	
 	private boolean toCreateOnStartOperation = false;
 	
 	
@@ -1127,6 +1133,9 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		if (hostname != null) {
 			setHostname(hostname);
 		}
+		if (messageProgress != null) {
+			setMessage(messageProgress);
+		}
 	}
 
 	/**
@@ -2057,6 +2066,25 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		if (vm.getConfig() == null) {
 			// The instance may be in clone mode or other task that impact the vm configurartion.
 			LOGGER.warn("VM configuration is not accessible, this may be caused by a task that updating the vm configuration.");
+			// Get the progression task in %.
+			TaskInfo taskInfo = VMHelper.getTaskInfo(vm);
+			if (taskInfo != null) {
+				
+				TaskInfoState taskState = taskInfo.getState();
+				if (taskState != null && taskState.equals(TaskInfoState.success)) {
+					messageProgress = "100%";
+				} else if (taskState != null && taskState.equals(TaskInfoState.queued)) {
+					messageProgress = "0%";
+				} else if (taskState != null && taskState.equals(TaskInfoState.running)) {
+					messageProgress = taskInfo.getProgress() + "%";
+				} else if (taskState != null && taskState.equals(TaskInfoState.error)) {
+					messageProgress = "Error on task " + taskInfo.getName() + " on entity : " + taskInfo.getEntityName();
+					messageProgress += " \n message: " + taskInfo.getError().getLocalizedMessage();
+				}
+			} else {
+				messageProgress = null;
+			}
+			
 		} else {
 			// Load the compute information from vCenter.
 			numCores = VMHelper.getCoreNumber(vm);

@@ -20,6 +20,8 @@ import org.slf4j.LoggerFactory;
 
 import com.vmware.vim25.InvalidProperty;
 import com.vmware.vim25.RuntimeFault;
+import com.vmware.vim25.TaskInfo;
+import com.vmware.vim25.TaskInfoState;
 import com.vmware.vim25.VirtualDevice;
 import com.vmware.vim25.VirtualDeviceConfigSpec;
 import com.vmware.vim25.VirtualDeviceConfigSpecFileOperation;
@@ -302,7 +304,7 @@ public class VMHelper {
 	 * 
 	 * @param folder
 	 * @param name
-	 * @throws MountVMWareToolsDiskException 
+	 * @throws MountVMWareToolsDiskException
 	 */
 	public static void mountGuestVmTools(final Folder folder, final String name) throws MountVMWareToolsDiskException {
 		VirtualMachine vm = VMHelper.findVMForName(folder, name);
@@ -1146,6 +1148,42 @@ public class VMHelper {
 		vmTemplate.markAsVirtualMachine(pool, host);
 		result = true;
 		return result;
+	}
+
+	/**
+	 * Get the TaskInfo object from task in progress on vm.
+	 * 
+	 * @param vm
+	 * @return
+	 */
+	public static TaskInfo getTaskInfo(VirtualMachine vm) {
+		TaskInfo taskInfo = null;
+		// ServiceInstance si = VCenterClient.getServiceInstance();
+		String vmName = vm.getName();
+		try {
+			Task[] tasks = vm.getRecentTasks();
+
+			TaskInfo taskInfTmp;
+			TaskInfoState taskInfoState;
+			if (tasks != null && tasks.length > 0) {
+				for (Task task : tasks) {
+					taskInfTmp = task.getTaskInfo();
+					taskInfoState = taskInfTmp.getState();
+					if (taskInfTmp != null && taskInfoState != null
+							&& (taskInfoState.equals(TaskInfoState.running)
+									|| taskInfoState.equals(TaskInfoState.success)
+									|| taskInfoState.equals(TaskInfoState.queued))) {
+						taskInfo = taskInfTmp;
+						break;
+					}
+
+				}
+			}
+		} catch (RemoteException ex) {
+			LOGGER.error("Cant retrieve informations about tasks for this virtual machine : " + vm.getName());
+		}
+
+		return taskInfo;
 	}
 
 }
