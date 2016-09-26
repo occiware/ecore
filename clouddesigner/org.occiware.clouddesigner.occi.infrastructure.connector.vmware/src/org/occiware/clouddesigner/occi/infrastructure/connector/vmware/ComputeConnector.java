@@ -1732,7 +1732,8 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 
 				// Get the virtual network interface name.
 				String networkName = null;
-
+				// Get The network adapter name.
+				String nicName = null;
 				if (netInterfaceConn == null || netInterfaceConn.isEmpty()) {
 					// Searching an existing network device on host.
 					LOGGER.info("No network defined, searching for a network on host : " + host.getName());
@@ -1761,16 +1762,15 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 					// Get the network name.
 					for (NetworkinterfaceConnector netInt : netInterfaceConn) {
 						networkName = ((NetworkConnector) netInt.getTarget()).getLabel();
+						nicName = netInt.getTitle();
 						// createNetworksSpecs(networkName, netInt);
 						break;
 					}
 				}
-				String nicName;
+				
 
 				// Get the virtual adapter network name.
-				if (firstConnector != null) {
-					nicName = firstConnector.getTitle();
-				} else {
+				if (nicName == null) {
 					// Default virtual network name.
 					nicName = "Adaptateur réseau 1";
 				}
@@ -2362,7 +2362,9 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		if (toCreateOnStartOperation) {
 			LOGGER.info("Creating the virtual machine and start after.");
 			this.createCompute(monitor);
-			subMonitor.worked(10);
+			if (toMonitor) {
+				subMonitor.worked(10);
+			}
 		}
 		
 		LOGGER.debug("Action start() called on " + this);
