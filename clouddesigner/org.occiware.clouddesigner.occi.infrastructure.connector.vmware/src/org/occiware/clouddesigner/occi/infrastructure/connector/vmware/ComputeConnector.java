@@ -2054,29 +2054,34 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		if (toMonitor) {
 			subMonitor.worked(60);
 		}
-		// Load the compute information from vCenter.
-		numCores = VMHelper.getCoreNumber(vm);
-		vcpus = VMHelper.getNumCPU(vm);
-		memoryGB = VMHelper.getMemoryGB(vm);
-		architecture = VMHelper.getArchitecture(vm);
-		speed = VMHelper.getCPUSpeed(vm);
-		// Define the states of this vm.
-		vmState = VMHelper.getPowerState(vm);
-		hostname = VMHelper.getGuestHostname(vm);
-		vmGuestState = VMHelper.getGuestState(vm);
-		guestOsId = vm.getConfig().getGuestId();
-		summary = vm.getConfig().getAnnotation();
-		ephemeralDiskSizeGB = VMHelper.getEphemalDiskSize(vm);
-
-		if (toMonitor) {
-			subMonitor.worked(70);
-		}
-		// Determine if this vm is marked as template also an image..
-		if (vm.getConfig().isTemplate()) {
-			markedAsTemplate = "true";
+		if (vm.getConfig() == null) {
+			// The instance may be in clone mode or other task that impact the vm configurartion.
+			LOGGER.warn("VM configuration is not accessible, this may be caused by a task that updating the vm configuration.");
 		} else {
-			markedAsTemplate = "false";
+			// Load the compute information from vCenter.
+			numCores = VMHelper.getCoreNumber(vm);
+			vcpus = VMHelper.getNumCPU(vm);
+			memoryGB = VMHelper.getMemoryGB(vm);
+			architecture = VMHelper.getArchitecture(vm);
+			speed = VMHelper.getCPUSpeed(vm);
+			// Define the states of this vm.
+			vmState = VMHelper.getPowerState(vm);
+			hostname = VMHelper.getGuestHostname(vm);
+			vmGuestState = VMHelper.getGuestState(vm);
+			guestOsId = vm.getConfig().getGuestId();
+			summary = vm.getConfig().getAnnotation();
+			ephemeralDiskSizeGB = VMHelper.getEphemalDiskSize(vm);
+			// Determine if this vm is marked as template also an image..
+			if (vm.getConfig().isTemplate()) {
+				markedAsTemplate = "true";
+			} else {
+				markedAsTemplate = "false";
+			}
+			if (toMonitor) {
+				subMonitor.worked(70);
+			}
 		}
+		
 		vmExist = true;
 		if (toMonitor) {
 			subMonitor.worked(80);
