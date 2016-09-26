@@ -1651,23 +1651,33 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 				// ref on
 				// designer when vm is created.
 				com.vmware.vim25.mo.Task taskVm = vmTemplate.cloneVM_Task(vmFolder, vmName, cloneSpec);
+				
+				if (!UIDialog.isStandAlone()) {
+					
+					String result = taskVm.waitForTask();
+					if (toMonitor) {
+						subMonitor.worked(80);
+					}
+					if (result == com.vmware.vim25.mo.Task.SUCCESS) {
+						globalMessage = "Virtual Machine successfully created from template : " + vmTemplate.getName();
+						levelMessage = Level.INFO;
+						LOGGER.info(globalMessage);
 
-				String result = taskVm.waitForTask();
-				if (toMonitor) {
-					subMonitor.worked(80);
-				}
-				if (result == com.vmware.vim25.mo.Task.SUCCESS) {
-					globalMessage = "Virtual Machine successfully created from template : " + vmTemplate.getName();
+					} else {
+						globalMessage = "VM couldn't be created ! vm name: " + vmName + " from template: "
+								+ vmTemplate.getName();
+						levelMessage = Level.ERROR;
+						LOGGER.error(globalMessage);
+					}
+				} else {
+					// in headless mode (console), we don't need to wait the task completion.
+					// This is to user to poll the service it's done. This is a long long task, here it made in 13 mins for 20 Go to clone.
+					globalMessage = "The clone task is launched, vm name: " + vmName + " from template: "
+							+ vmTemplate.getName();
 					levelMessage = Level.INFO;
 					LOGGER.info(globalMessage);
-
-				} else {
-					globalMessage = "VM couldn't be created ! vm name: " + vmName + " from template: "
-							+ vmTemplate.getName();
-					levelMessage = Level.ERROR;
-					LOGGER.error(globalMessage);
 				}
-
+				
 			} catch (RemoteException | InterruptedException ex) {
 
 				globalMessage = "VM was not created or has errors, please check your vcenter and your configuration \n "
