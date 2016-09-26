@@ -2063,6 +2063,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		if (toMonitor) {
 			subMonitor.worked(60);
 		}
+		messageProgress = null;
 		if (vm.getConfig() == null) {
 			// The instance may be in clone mode or other task that impact the vm configurartion.
 			LOGGER.warn("VM configuration is not accessible, this may be caused by a task that updating the vm configuration.");
@@ -2082,7 +2083,26 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 					messageProgress += " \n message: " + taskInfo.getError().getLocalizedMessage();
 				}
 			} else {
-				messageProgress = null;
+				if (vmTemplateName != null) {
+					// Check if a clone task is active.
+					taskInfo = VMHelper.getTaskInfo(VMHelper.findVMForName(VCenterClient.getServiceInstance().getRootFolder(), vmTemplateName));
+					if (taskInfo != null) {
+						TaskInfoState taskState = taskInfo.getState();
+						if (taskState != null && taskState.equals(TaskInfoState.success)) {
+							messageProgress = "100%";
+						} else if (taskState != null && taskState.equals(TaskInfoState.queued)) {
+							messageProgress = "0%";
+						} else if (taskState != null && taskState.equals(TaskInfoState.running)) {
+							messageProgress = taskInfo.getProgress() + "%";
+						} else if (taskState != null && taskState.equals(TaskInfoState.error)) {
+							messageProgress = "Error on task " + taskInfo.getName() + " on entity : " + taskInfo.getEntityName();
+							messageProgress += " \n message: " + taskInfo.getError().getLocalizedMessage();
+						}
+					}
+				}
+				
+				
+				
 			}
 			
 		} else {
