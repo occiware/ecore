@@ -48,7 +48,7 @@ public class DockerUtil {
     boolean _equalsIgnoreCase = _oS.equalsIgnoreCase("osx");
     if (_equalsIgnoreCase) {
       command = DockerUtil.DOCKER_MACHINE;
-      DockerUtil.LOGGER.info("OS is MAC OSX");
+      DockerUtil.LOGGER.info("OS=MAC OSX");
     }
     return command;
   }
