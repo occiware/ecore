@@ -31,7 +31,7 @@ import org.slf4j.Logger
 
 class DockerUtil {
 	protected static String OS = System.getProperty("os.name").toLowerCase()
-	// Initialize logger for Graph.
+
 	private static Logger LOGGER = LoggerFactory.getLogger(typeof(DockerUtil))
 	
 	private static String DOCKER_MACHINE = "/usr/local/bin/docker-machine"
