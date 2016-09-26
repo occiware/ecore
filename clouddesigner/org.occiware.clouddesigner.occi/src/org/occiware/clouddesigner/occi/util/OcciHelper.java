@@ -307,10 +307,7 @@ public final class OcciHelper
                 // Create the attribute.
                 attrState = createAttributeState(attributeName, attributeValue);
                 entity.getAttributes().add(attrState);
-            } else {
-                // Update the attribute
-                attrState.setValue(attributeName);
-            }
+            } 
             
             return;
 			// throw new IllegalArgumentException("Ecore structural feature '" + eAttributeName + "' not found!");
