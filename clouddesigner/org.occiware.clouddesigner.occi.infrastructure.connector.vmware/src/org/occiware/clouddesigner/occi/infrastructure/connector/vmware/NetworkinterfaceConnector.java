@@ -122,15 +122,8 @@ public class NetworkinterfaceConnector
 		LOGGER.debug("occiCreate() called on " + this);
 		titleMessage = "Create network adapter : " + this.getTitle();
 		if (UIDialog.isStandAlone()) {
-			// Launching thread with business code.
-			LOGGER.debug("Console mode.");
-			Runnable runnable = new Runnable() {
-				@Override
-				public void run() {
-					createNetworkNIC(null);
-				}
-			};
-			UIDialog.executeActionThread(runnable, titleMessage);
+			// Launch network create method.
+			createNetworkNIC(null);
 
 		} else {
 			// Launching IRunnableWithProgress UI thread with business code.
@@ -202,16 +195,8 @@ public class NetworkinterfaceConnector
 		LOGGER.debug("occiUpdate() called on " + this);
 		titleMessage = "Update network adapter : " + this.getTitle();
 		if (UIDialog.isStandAlone()) {
-			// Launching thread with business code.
-			LOGGER.debug("Console mode.");
-			Runnable runnable = new Runnable() {
-				@Override
-				public void run() {
-					updateNetworkNIC(null);
-				}
-			};
-			UIDialog.executeActionThread(runnable, titleMessage);
-
+			updateNetworkNIC(null);
+			
 		} else {
 			// Launching IRunnableWithProgress UI thread with business code.
 			LOGGER.debug("UI mode.");
@@ -245,16 +230,8 @@ public class NetworkinterfaceConnector
 		LOGGER.debug("occiDelete() called on " + this);
 		titleMessage = "Delete a network adapter : " + this.getTitle();
 		if (UIDialog.isStandAlone()) {
-			// Launching thread with business code.
-			LOGGER.debug("Console mode.");
-			Runnable runnable = new Runnable() {
-				@Override
-				public void run() {
-					deleteNetworkNIC(null);
-				}
-			};
-			UIDialog.executeActionThread(runnable, titleMessage);
-
+			deleteNetworkNIC(null);
+			
 		} else {
 			// Launching IRunnableWithProgress UI thread with business code.
 			LOGGER.debug("UI mode.");
@@ -294,14 +271,7 @@ public class NetworkinterfaceConnector
 		titleMessage = "Down for this network adapter : " + this.getTitle();
 		if (UIDialog.isStandAlone()) {
 			// Launching thread with business code.
-			LOGGER.debug("Console mode.");
-			Runnable runnable = new Runnable() {
-				@Override
-				public void run() {
-					upNetworkNIC(null);
-				}
-			};
-			UIDialog.executeActionThread(runnable, titleMessage);
+			upNetworkNIC(null);
 
 		} else {
 			// Launching IRunnableWithProgress UI thread with business code.
@@ -337,15 +307,7 @@ public class NetworkinterfaceConnector
 		LOGGER.debug("Action down() called on " + this);
 		titleMessage = "Down for this network adapter : " + this.getTitle();
 		if (UIDialog.isStandAlone()) {
-			// Launching thread with business code.
-			LOGGER.debug("Console mode.");
-			Runnable runnable = new Runnable() {
-				@Override
-				public void run() {
-					downNetworkNIC(null);
-				}
-			};
-			UIDialog.executeActionThread(runnable, titleMessage);
+			downNetworkNIC(null);
 
 		} else {
 			// Launching IRunnableWithProgress UI thread with business code.
