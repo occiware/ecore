@@ -935,7 +935,7 @@ public class ContainerImpl extends ComputeImpl implements org.occiware.clouddesi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String MEMORY_PERCENT_EDEFAULT = null;
+	protected static final String MEMORY_PERCENT_EDEFAULT = "0";
 
 	/**
 	 * The cached value of the '{@link #getMemory_percent() <em>Memory percent</em>}' attribute.
