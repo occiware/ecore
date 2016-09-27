@@ -694,9 +694,23 @@ class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statistics> {
 		var percpu_usage_size = percpu_usage as List
 		var Integer mem_used = stats.memoryStats.get("usage") as Integer
 		var Integer mem_limit = stats.memoryStats.get("limit") as Integer
-		var Integer network_r = stats.network.get("rx_bytes") as Integer
-		var Integer network_t = stats.network.get("tx_bytes") as Integer
-		var Integer bandwitdh = network_r + network_t 
+		var Map<String, Object> networks = stats.networks
+		var LinkedHashMap tmpnetworks = networks.get("eth0") as LinkedHashMap
+		var Integer network_r = null
+		var Integer network_t = null
+		var Integer bandwitdh = null
+		try {
+			LOGGER.info("Networks : {}", tmpnetworks)
+			network_r = tmpnetworks.get("rx_bytes") as Integer
+			network_t = tmpnetworks.get("tx_bytes") as Integer
+			bandwitdh = network_r + network_t 
+			
+		} catch (Exception e) {
+			network_r = 0
+			network_t = 0
+			bandwitdh = 0
+			LOGGER.error(e.message)
+		}
 		
 		// Update the Queue
 		cpuTotalUsageQueue.add(Float.valueOf(cpu_used.toString))
