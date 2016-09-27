@@ -123,15 +123,7 @@ public class StorageConnector extends org.occiware.clouddesigner.occi.infrastruc
 		LOGGER.debug("occiCreate() called on " + this);
 		
 		if (UIDialog.isStandAlone()) {
-			// Launching thread with business code.
-			LOGGER.debug("Console mode.");
-			Runnable runnable = new Runnable() {
-				@Override
-				public void run() {
-					createStorage(null);
-				}
-			};
-			UIDialog.executeActionThread(runnable, titleMessage);
+			createStorage(null);
 
 		} else {
 			// Launching IRunnableWithProgress UI thread with business code.
@@ -205,15 +197,7 @@ public class StorageConnector extends org.occiware.clouddesigner.occi.infrastruc
 		LOGGER.debug("occiUpdate() called on " + this);
 		
 		if (UIDialog.isStandAlone()) {
-			// Launching thread with business code.
-			LOGGER.debug("Console mode.");
-			Runnable runnable = new Runnable() {
-				@Override
-				public void run() {
-					updateStorage(null);
-				}
-			};
-			UIDialog.executeActionThread(runnable, titleMessage);
+			updateStorage(null);
 
 		} else {
 			// Launching IRunnableWithProgress UI thread with business code.
@@ -249,14 +233,7 @@ public class StorageConnector extends org.occiware.clouddesigner.occi.infrastruc
 		LOGGER.debug("occiDelete() called on " + this);
 		
 		if (UIDialog.isStandAlone()) {
-			// Launching thread with business code.
-			Runnable runnable = new Runnable() {
-				@Override
-				public void run() {
-					deleteStorage(null);
-				}
-			};
-			UIDialog.executeActionThread(runnable, titleMessage);
+			deleteStorage(null);
 
 		} else {
 			// Launching IRunnableWithProgress UI thread with business code.
@@ -303,14 +280,8 @@ public class StorageConnector extends org.occiware.clouddesigner.occi.infrastruc
 		if (UIDialog.isStandAlone()) {
 			// Launching thread with business code.
 			LOGGER.debug("Console mode.");
-			Runnable runnable = new Runnable() {
-				@Override
-				public void run() {
-					attachStorage(null);
-				}
-			};
-			UIDialog.executeActionThread(runnable, titleMessage);
-
+			attachStorage(null);
+			
 		} else {
 			// Launching IRunnableWithProgress UI thread with business code.
 			LOGGER.debug("UI mode.");
@@ -348,14 +319,8 @@ public class StorageConnector extends org.occiware.clouddesigner.occi.infrastruc
 		if (UIDialog.isStandAlone()) {
 			// Launching thread with business code.
 			LOGGER.debug("Console mode.");
-			Runnable runnable = new Runnable() {
-				@Override
-				public void run() {
-					detachStorage(null);
-				}
-			};
-			UIDialog.executeActionThread(runnable, titleMessage);
-
+			detachStorage(null);
+			
 		} else {
 			// Launching IRunnableWithProgress UI thread with business code.
 			LOGGER.debug("UI mode.");

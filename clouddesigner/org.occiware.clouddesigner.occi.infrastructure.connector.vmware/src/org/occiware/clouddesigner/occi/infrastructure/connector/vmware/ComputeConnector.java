@@ -163,13 +163,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		if (UIDialog.isStandAlone()) {
 			// Launching thread with business code.
 			LOGGER.debug("Console mode.");
-			Runnable runnable = new Runnable() {
-				@Override
-				public void run() {
-					createCompute(null);
-				}
-			};
-			UIDialog.executeActionThread(runnable, titleMessage);
+			createCompute(null);
 
 		} else {
 			// Launching IRunnableWithProgress UI thread with business code.
@@ -251,14 +245,8 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 
 		if (UIDialog.isStandAlone()) {
 			// headless mode.
-			Runnable runnable = new Runnable() {
-				@Override
-				public void run() {
-					updateCompute(null);
-				}
-			};
-			UIDialog.executeActionThread(runnable, titleMessage);
-
+			updateCompute(null);
+			
 		} else {
 
 			IRunnableWithProgress runnableWithProgress = new IRunnableWithProgress() {
@@ -297,13 +285,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 
 		if (UIDialog.isStandAlone()) {
 			// Launching thread with business code.
-			Runnable runnable = new Runnable() {
-				@Override
-				public void run() {
-					deleteCompute(null);
-				}
-			};
-			UIDialog.executeActionThread(runnable, titleMessage);
+			deleteCompute(null);
 
 		} else {
 			// Launching IRunnableWithProgress UI thread with business code.
@@ -347,14 +329,8 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		titleMessage = "Power on a virtual machine : " + getTitle();
 		LOGGER.debug("Action start() called on " + this);
 		if (UIDialog.isStandAlone()) {
-			// Launching thread with business code.
-			Runnable runnable = new Runnable() {
-				@Override
-				public void run() {
-					startCompute(null);
-				}
-			};
-			UIDialog.executeActionThread(runnable, titleMessage);
+			startCompute(null);
+			
 		} else {
 			// Launching IRunnableWithProgress UI thread with business code.
 			IRunnableWithProgress runnableWithProgress = new IRunnableWithProgress() {
@@ -391,14 +367,8 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		LOGGER.debug("Action stop(" + "method=" + method + ") called on " + this);
 
 		if (UIDialog.isStandAlone()) {
-			// Launching thread with business code.
-			Runnable runnable = new Runnable() {
-				@Override
-				public void run() {
-					stopCompute(null, method);
-				}
-			};
-			UIDialog.executeActionThread(runnable, titleMessage);
+			stopCompute(null, method);
+			
 		} else {
 			// Launching IRunnableWithProgress UI thread with business code.
 			IRunnableWithProgress runnableWithProgress = new IRunnableWithProgress() {
@@ -435,14 +405,8 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		LOGGER.debug("Action restart(" + "method=" + method + ") called on " + this);
 
 		if (UIDialog.isStandAlone()) {
-			// Launching thread with business code.
-			Runnable runnable = new Runnable() {
-				@Override
-				public void run() {
-					restartCompute(null, method);
-				}
-			};
-			UIDialog.executeActionThread(runnable, titleMessage);
+			// Headless mode.
+			restartCompute(null, method);
 		} else {
 			// Launching IRunnableWithProgress UI thread with business code.
 			IRunnableWithProgress runnableWithProgress = new IRunnableWithProgress() {
@@ -480,14 +444,9 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		LOGGER.debug("Action suspend(" + "method=" + method + ") called on " + this);
 
 		if (UIDialog.isStandAlone()) {
-			// Launching thread with business code.
-			Runnable runnable = new Runnable() {
-				@Override
-				public void run() {
-					suspendCompute(null, method);
-				}
-			};
-			UIDialog.executeActionThread(runnable, titleMessage);
+			// Headless mode.
+			suspendCompute(null, method);
+			
 		} else {
 			// Launching IRunnableWithProgress UI thread with business code.
 			IRunnableWithProgress runnableWithProgress = new IRunnableWithProgress() {
@@ -526,14 +485,9 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		LOGGER.debug("Action save(" + "method=" + method + "name=" + name + ") called on " + this);
 
 		if (UIDialog.isStandAlone()) {
-			// Launching thread with business code.
-			Runnable runnable = new Runnable() {
-				@Override
-				public void run() {
-					saveCompute(null, method, name);
-				}
-			};
-			UIDialog.executeActionThread(runnable, titleMessage);
+			// Headless mode.
+			saveCompute(null, method, name);
+			
 		} else {
 			// Launching IRunnableWithProgress UI thread with business code.
 			IRunnableWithProgress runnableWithProgress = new IRunnableWithProgress() {
@@ -2195,7 +2149,10 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		if (toMonitor) {
 			subMonitor.worked(30);
 		}
+		
+		// Check the other way with old vm name if set..
 		if (vm == null) {
+			
 			// The title may has been changed.
 			if (!vmOldName.equals(vmName)) {
 				// The title have been changed.
@@ -2219,14 +2176,25 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 						ex.printStackTrace();
 					}
 					vmOldName = vmName;
-				} else {
-					VCenterClient.disconnect();
-					return;
-				}
+				} 
 			}
 
 		}
-
+		
+		
+		// Check first if morId is set if no vm found with the name.
+		if (morId != null && vm == null) {
+			vm = VMHelper.findVMForMorId(VCenterClient.getServiceInstance().getRootFolder(), morId);
+		}
+		
+		if (vm == null) {
+			globalMessage = "Unable to load vm informations : " + vmName + " for morId : " + morId;
+			levelMessage = Level.ERROR;
+			LOGGER.error(globalMessage);
+			VCenterClient.disconnect();
+			return;
+		}
+		
 		// Update config.
 		try {
 
