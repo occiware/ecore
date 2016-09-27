@@ -59,6 +59,8 @@ public class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statist
   
   private LimitedQueue<Float> cpuSystemUsageQueue = new LimitedQueue<Float>(2);
   
+  private Boolean updateMaxCpu = Boolean.valueOf(false);
+  
   public StatsCallback(final String containerId) {
     this.containerId = containerId;
   }
@@ -89,13 +91,31 @@ public class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statist
       Map<String, Object> _memoryStats_1 = stats.getMemoryStats();
       Object _get_2 = _memoryStats_1.get("limit");
       Integer mem_limit = ((Integer) _get_2);
-      Map<String, Object> _network = stats.getNetwork();
-      Object _get_3 = _network.get("rx_bytes");
-      Integer network_r = ((Integer) _get_3);
-      Map<String, Object> _network_1 = stats.getNetwork();
-      Object _get_4 = _network_1.get("tx_bytes");
-      Integer network_t = ((Integer) _get_4);
-      Integer bandwitdh = Integer.valueOf(((network_r).intValue() + (network_t).intValue()));
+      Map<String, Object> networks = stats.getNetworks();
+      Object _get_3 = networks.get("eth0");
+      LinkedHashMap tmpnetworks = ((LinkedHashMap) _get_3);
+      Integer network_r = null;
+      Integer network_t = null;
+      Integer bandwitdh = null;
+      try {
+        StatsCallback.LOGGER.info("Networks : {}", tmpnetworks);
+        Object _get_4 = tmpnetworks.get("rx_bytes");
+        network_r = ((Integer) _get_4);
+        Object _get_5 = tmpnetworks.get("tx_bytes");
+        network_t = ((Integer) _get_5);
+        bandwitdh = Integer.valueOf(((network_r).intValue() + (network_t).intValue()));
+      } catch (final Throwable _t) {
+        if (_t instanceof Exception) {
+          final Exception e = (Exception)_t;
+          network_r = Integer.valueOf(0);
+          network_t = Integer.valueOf(0);
+          bandwitdh = Integer.valueOf(0);
+          String _message = e.getMessage();
+          StatsCallback.LOGGER.error(_message);
+        } else {
+          throw Exceptions.sneakyThrow(_t);
+        }
+      }
       String _string = cpu_used.toString();
       Float _valueOf = Float.valueOf(_string);
       this.cpuTotalUsageQueue.add(_valueOf);
@@ -107,14 +127,15 @@ public class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statist
         Float percent = this.calculateCPUPercent(this.cpuTotalUsageQueue, this.cpuSystemUsageQueue, _size_1);
         try {
           String _string_2 = cpu_used.toString();
-          this.modifyResourceSet(this.container, _string_2, percent, mem_used, mem_limit, bandwitdh);
-        } catch (final Throwable _t) {
-          if (_t instanceof NullPointerException) {
-            final NullPointerException e = (NullPointerException)_t;
-            String _message = e.getMessage();
-            StatsCallback.LOGGER.error(_message);
+          int _size_2 = percpu_usage_size.size();
+          this.modifyResourceSet(this.container, _string_2, percent, mem_used, mem_limit, bandwitdh, Integer.valueOf(_size_2), this.updateMaxCpu);
+        } catch (final Throwable _t_1) {
+          if (_t_1 instanceof NullPointerException) {
+            final NullPointerException e_1 = (NullPointerException)_t_1;
+            String _message_1 = e_1.getMessage();
+            StatsCallback.LOGGER.error(_message_1);
           } else {
-            throw Exceptions.sneakyThrow(_t);
+            throw Exceptions.sneakyThrow(_t_1);
           }
         }
       }
@@ -123,7 +144,7 @@ public class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statist
     }
   }
   
-  public void modifyResourceSet(final Resource resource, final String cpu_used, final Float percent, final Integer mem_used, final Integer mem_limit, final Integer bandwitdh) {
+  public void modifyResourceSet(final Resource resource, final String cpu_used, final Float percent, final Integer mem_used, final Integer mem_limit, final Integer bandwitdh, final Integer cpuMax, final Boolean updateMaxCpu) {
     try {
       org.eclipse.emf.ecore.resource.Resource _eResource = resource.eResource();
       ResourceSet _resourceSet = _eResource.getResourceSet();
@@ -147,17 +168,38 @@ public class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statist
               ComputeStatus _state = ((ExecutableContainer) resource).getState();
               boolean _equals = Objects.equal(_state, ComputeStatus.ACTIVE);
               if (_equals) {
+                int _memory_used = ((ExecutableContainer) resource).getMemory_used();
                 String _string_2 = mem_used.toString();
                 int _parseInt_2 = Integer.parseInt(_string_2);
-                ((ExecutableContainer) resource).setMemory_used(_parseInt_2);
-                String _string_3 = mem_limit.toString();
-                int _parseInt_3 = Integer.parseInt(_string_3);
-                ((ExecutableContainer) resource).setMemory_max_value(_parseInt_3);
+                boolean _notEquals = (_memory_used != _parseInt_2);
+                if (_notEquals) {
+                  String _string_3 = mem_used.toString();
+                  int _parseInt_3 = Integer.parseInt(_string_3);
+                  ((ExecutableContainer) resource).setMemory_used(_parseInt_3);
+                }
+                int _memory_max_value = ((ExecutableContainer) resource).getMemory_max_value();
+                String _string_4 = mem_limit.toString();
+                int _parseInt_4 = Integer.parseInt(_string_4);
+                boolean _notEquals_1 = (_memory_max_value != _parseInt_4);
+                if (_notEquals_1) {
+                  String _string_5 = mem_limit.toString();
+                  int _parseInt_5 = Integer.parseInt(_string_5);
+                  ((ExecutableContainer) resource).setMemory_max_value(_parseInt_5);
+                }
+                String _memory_percent = ((ExecutableContainer) resource).getMemory_percent();
                 String _format = df.format(mem_percent);
-                ((ExecutableContainer) resource).setMemory_percent(_format);
-                ((ExecutableContainer) resource).setBandwidth_used((bandwitdh).intValue());
-                String _string_4 = cpu_used.toString();
-                Long _valueOf = Long.valueOf(_string_4);
+                boolean _notEquals_2 = (!Objects.equal(_memory_percent, _format));
+                if (_notEquals_2) {
+                  String _format_1 = df.format(mem_percent);
+                  ((ExecutableContainer) resource).setMemory_percent(_format_1);
+                }
+                int _bandwidth_used = ((ExecutableContainer) resource).getBandwidth_used();
+                boolean _notEquals_3 = (_bandwidth_used != (bandwitdh).intValue());
+                if (_notEquals_3) {
+                  ((ExecutableContainer) resource).setBandwidth_used((bandwitdh).intValue());
+                }
+                String _string_6 = cpu_used.toString();
+                Long _valueOf = Long.valueOf(_string_6);
                 float _floatValue_2 = _valueOf.floatValue();
                 float _divide = (_floatValue_2 / 1000000F);
                 cpu_us = Float.valueOf(_divide);
@@ -167,8 +209,8 @@ public class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statist
                   cpu_us = Float.valueOf(((cpu_us).floatValue() / 100000000F));
                 }
                 int _intValue_1 = cpu_us.intValue();
-                String _string_5 = Integer.valueOf(_intValue_1).toString();
-                long _parseLong = Long.parseLong(_string_5);
+                String _string_7 = Integer.valueOf(_intValue_1).toString();
+                long _parseLong = Long.parseLong(_string_7);
                 int _maxValue = StatsCallback.this.getMaxValue(Long.valueOf(_parseLong), percent);
                 cpu_max = _maxValue;
                 int _intValue_2 = Integer.valueOf(cpu_max).intValue();
@@ -177,17 +219,36 @@ public class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statist
                   cpu_max = (cpu_max / 100000000);
                   cpu_us = Float.valueOf(((cpu_us).floatValue() / 100000000F));
                 }
+                int _cpu_used = ((ExecutableContainer) resource).getCpu_used();
                 int _intValue_3 = cpu_us.intValue();
-                ((ExecutableContainer) resource).setCpu_used(_intValue_3);
-                int _intValue_4 = cpu_us.intValue();
-                StatsCallback.LOGGER.info("CPU USED <=====> {}", Integer.valueOf(_intValue_4));
+                boolean _notEquals_4 = (_cpu_used != _intValue_3);
+                if (_notEquals_4) {
+                  int _intValue_4 = cpu_us.intValue();
+                  ((ExecutableContainer) resource).setCpu_used(_intValue_4);
+                  int _intValue_5 = cpu_us.intValue();
+                  StatsCallback.LOGGER.info("CPU USED <=====> {}", Integer.valueOf(_intValue_5));
+                }
+                int _cpu_max_value = ((ExecutableContainer) resource).getCpu_max_value();
                 Integer _valueOf_1 = Integer.valueOf(cpu_max);
-                ((ExecutableContainer) resource).setCpu_max_value((_valueOf_1).intValue());
-                Integer _valueOf_2 = Integer.valueOf(cpu_max);
-                StatsCallback.LOGGER.info("CPU MAX VALUE <=====> {}", _valueOf_2);
-                String _format_1 = df.format(percent);
-                ((ExecutableContainer) resource).setCpu_percent(_format_1);
-                StatsCallback.LOGGER.info("CPU PERCENTAGE <=====> {}", percent);
+                boolean _notEquals_5 = (_cpu_max_value != (_valueOf_1).intValue());
+                if (_notEquals_5) {
+                  Integer _valueOf_2 = Integer.valueOf(cpu_max);
+                  ((ExecutableContainer) resource).setCpu_max_value((_valueOf_2).intValue());
+                  Integer _valueOf_3 = Integer.valueOf(cpu_max);
+                  StatsCallback.LOGGER.info("CPU MAX VALUE <=====> {}", _valueOf_3);
+                }
+                String _cpu_percent = ((ExecutableContainer) resource).getCpu_percent();
+                String _format_2 = df.format(percent);
+                boolean _notEquals_6 = (!Objects.equal(_cpu_percent, _format_2));
+                if (_notEquals_6) {
+                  String _format_3 = df.format(percent);
+                  ((ExecutableContainer) resource).setCpu_percent(_format_3);
+                  StatsCallback.LOGGER.info("CPU PERCENTAGE <=====> {}", percent);
+                }
+                if ((!(updateMaxCpu).booleanValue())) {
+                  ((ExecutableContainer) resource).setCore_max((cpuMax).intValue());
+                  StatsCallback.this.updateMaxCpu = Boolean.valueOf(true);
+                }
               }
             } catch (final Throwable _t) {
               if (_t instanceof NumberFormatException) {
