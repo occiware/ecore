@@ -12,6 +12,7 @@ package org.occiware.clouddesigner.occi.docker.connector.dockerjava.cgroup
 
 import org.occiware.clouddesigner.occi.docker.connector.dockerjava.DockerContainerManager
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerUtil
+import org.occiware.clouddesigner.occi.docker.Container
 
 class CgroupManager {
 
@@ -40,17 +41,28 @@ class CgroupManager {
 	public static final String cpu_cfs_period = "cpu.cfs_period_us"
 	public static final String cpu_cfs_quota = "cpu.cfs_quota_us"
 
-	def static void SetValue(String host, String privateKey, String containerId, String subsystem, String file,
+
+
+
+	def static void SetValue(String host, String privateKey, Container container, String subsystem, String file,
 		String value) {
-		val String FilePath = cGroupPath + subsystem + "/docker/" + containerId + "/" + file
-		val String command = "echo '" + cpuSetGenerator(value) + "' > " + FilePath
+		val String FilePath = cGroupPath + subsystem + "/docker/" + container.containerid + "/" + file
+		val String command = "echo '" + cpuSetGenerator(value, container) + "' > " + FilePath
 		println("EXECUTE COMMAND: "+ command)
 		val dockerContainerManager = new DockerContainerManager
 		dockerContainerManager.connect(host, privateKey, command)
 	}
 
-	def static String cpuSetGenerator(String nbCores) {
-		if (Integer.valueOf(nbCores) > 1) {
+//	def static void SetValue(String host, String privateKey, String containerId, String subsystem, String file, String value) {
+//		val String FilePath = cGroupPath + subsystem + "/docker/" + containerId + "/" + file
+//		val String command = "echo '" + cpuSetGenerator(value) + "' > " + FilePath
+//		println("EXECUTE COMMAND: "+ command)
+//		val dockerContainerManager = new DockerContainerManager
+//		dockerContainerManager.connect(host, privateKey, command)
+//	}
+
+	def static String cpuSetGenerator(String nbCores, Container container) {
+		if (Integer.valueOf(nbCores) > 1 && Integer.valueOf(nbCores) <= container.core_max) {
 			var String cpuSet = String.format("0-%s", nbCores)
 			return cpuSet
 		}
@@ -61,36 +73,36 @@ class CgroupManager {
 }
 
 class CPUManager {
-	def void setCPUValue(String host, String privateKey, String containerId, String value) {
+	def void setCPUValue(String host, String privateKey, Container container, String value) {
 
 		//TODO Check not null here
-		CgroupManager.SetValue(host, privateKey, containerId, CgroupManager.cpuset_subsystem, CgroupManager.cpuset_cpus,
+		CgroupManager.SetValue(host, privateKey, container, CgroupManager.cpuset_subsystem, CgroupManager.cpuset_cpus,
 			value)
 	}
 
-	def void setFreqValue(String host, String privateKey, String containerId, String value) {
+	def void setFreqValue(String host, String privateKey, Container container, String value) {
 
 		//TODO Check not null here
 		val int time = Integer.valueOf(value) * 10000
-		CgroupManager.SetValue(host, privateKey, containerId, CgroupManager.cpu_subsystem, CgroupManager.cpu_cfs_period,
+		CgroupManager.SetValue(host, privateKey, container, CgroupManager.cpu_subsystem, CgroupManager.cpu_cfs_period,
 			"1000000")
-		CgroupManager.SetValue(host, privateKey, containerId, CgroupManager.cpu_subsystem, CgroupManager.cpu_cfs_quota,
+		CgroupManager.SetValue(host, privateKey, container, CgroupManager.cpu_subsystem, CgroupManager.cpu_cfs_quota,
 			String.valueOf(time))
 	}
 }
 
 class MemoryManager {
-	def void setMemValue(String host, String privateKey, String containerId, String value) {
+	def void setMemValue(String host, String privateKey, Container container, String value) {
 
 		//TODO Check not null here
-		CgroupManager.SetValue(host, privateKey, containerId, CgroupManager.memory_subsystem,
+		CgroupManager.SetValue(host, privateKey, container, CgroupManager.memory_subsystem,
 			CgroupManager.memory_max_mem, value)
 	}
 
-	def void setSwapValue(String host, String privateKey, String containerId, String value) {
+	def void setSwapValue(String host, String privateKey, Container container, String value) {
 
 		//TODO Check not null here
-		CgroupManager.SetValue(host, privateKey, containerId, CgroupManager.memory_subsystem, CgroupManager.memory_swap,
+		CgroupManager.SetValue(host, privateKey, container, CgroupManager.memory_subsystem, CgroupManager.memory_swap,
 			value)
 	}
 }
@@ -100,27 +112,27 @@ class NetWorkManager {
 
 class BlkioManager {
 
-	def setReadValue(String host, String privateKey, String containerId, String value) {
+	def setReadValue(String host, String privateKey, Container container, String value) {
 		if (DockerUtil.isInteger(value)) {
 			if (value.equals("-1")) {
-				CgroupManager.SetValue(host, privateKey, containerId, CgroupManager.blkio_subsystem,
+				CgroupManager.SetValue(host, privateKey, container, CgroupManager.blkio_subsystem,
 					CgroupManager.blkio_read, "")
 			} else {
 				val newValue = "8:0 " + value
-				CgroupManager.SetValue(host, privateKey, containerId, CgroupManager.blkio_subsystem,
+				CgroupManager.SetValue(host, privateKey, container, CgroupManager.blkio_subsystem,
 					CgroupManager.blkio_read, newValue)
 			}
 		}
 	}
 
-	def setWriteValue(String host, String privateKey, String containerId, String value) {
+	def setWriteValue(String host, String privateKey, Container container, String value) {
 		if (DockerUtil.isInteger(value)) {
 			if (value.equals("-1")) {
-				CgroupManager.SetValue(host, privateKey, containerId, CgroupManager.blkio_subsystem,
+				CgroupManager.SetValue(host, privateKey, container, CgroupManager.blkio_subsystem,
 					CgroupManager.blkio_write, "")
 			} else {
 				val newValue = "8:0 " + value
-				CgroupManager.SetValue(host, privateKey, containerId, CgroupManager.blkio_subsystem,
+				CgroupManager.SetValue(host, privateKey, container, CgroupManager.blkio_subsystem,
 					CgroupManager.blkio_write, newValue)
 			}
 		}
