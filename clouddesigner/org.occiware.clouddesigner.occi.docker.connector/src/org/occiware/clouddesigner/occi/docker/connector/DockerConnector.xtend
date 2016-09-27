@@ -666,6 +666,8 @@ class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statistics> {
 		
 	var private LimitedQueue<Float> cpuSystemUsageQueue = new LimitedQueue<Float>(2)
 	
+	var private Boolean updateMaxCpu = false
+	
 	
 	new(String containerId) {
 		this.containerId = containerId
@@ -705,14 +707,14 @@ class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statistics> {
 			var percent = calculateCPUPercent(cpuTotalUsageQueue, cpuSystemUsageQueue, percpu_usage_size.size)
 			// Update the monitoring metrics
 			try {
-				modifyResourceSet(this.container, cpu_used.toString, percent, mem_used, mem_limit, bandwitdh)
+				modifyResourceSet(this.container, cpu_used.toString, percent, mem_used, mem_limit, bandwitdh, percpu_usage_size.size, updateMaxCpu)
 			} catch (NullPointerException e) {
 				LOGGER.error(e.message)
 			}
 		}
 	}
 
-	def void modifyResourceSet(Resource resource, String cpu_used, Float percent, Integer mem_used, Integer mem_limit, Integer bandwitdh) {
+	def void modifyResourceSet(Resource resource, String cpu_used, Float percent, Integer mem_used, Integer mem_limit, Integer bandwitdh, Integer cpuMax, Boolean updateMaxCpu) {
 		// Creating an editing domain
 		var TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(resource.eResource.resourceSet)
 
@@ -727,10 +729,20 @@ class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statistics> {
 					Thread.sleep(100)
 					// Modify the resource only if it is in active state
 					if ((resource as ExecutableContainer).state == ComputeStatus.ACTIVE) {
-						(resource as ExecutableContainer).memory_used = Integer.parseInt(mem_used.toString)
-						(resource as ExecutableContainer).memory_max_value = Integer.parseInt(mem_limit.toString)
-						(resource as ExecutableContainer).memory_percent = df.format(mem_percent)
-						(resource as ExecutableContainer).bandwidth_used = bandwitdh
+
+						// Update Attributes only if change occurs						
+						if((resource as ExecutableContainer).memory_used != Integer.parseInt(mem_used.toString)){
+							(resource as ExecutableContainer).memory_used = Integer.parseInt(mem_used.toString)
+						}
+						if((resource as ExecutableContainer).memory_max_value != Integer.parseInt(mem_limit.toString)){
+							(resource as ExecutableContainer).memory_max_value = Integer.parseInt(mem_limit.toString)
+						}
+						if((resource as ExecutableContainer).memory_percent != df.format(mem_percent)){
+							(resource as ExecutableContainer).memory_percent = df.format(mem_percent)
+						}
+						if((resource as ExecutableContainer).bandwidth_used != bandwitdh){
+							(resource as ExecutableContainer).bandwidth_used = bandwitdh
+						}
 						cpu_us = (Long.valueOf(cpu_used.toString)).floatValue / 1000000F
 						
 						// To avoid NumberFormatException, the maximum value of Integer is 2^31-1 = 2147483647
@@ -744,12 +756,25 @@ class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statistics> {
 							cpu_max = cpu_max / 100000000
 							cpu_us = cpu_us / 100000000F
 						}
-						(resource as ExecutableContainer).cpu_used = cpu_us.intValue
-						LOGGER.info("CPU USED <=====> {}", cpu_us.intValue)
-						(resource as ExecutableContainer).cpu_max_value = Integer.valueOf(cpu_max)
-						LOGGER.info("CPU MAX VALUE <=====> {}", Integer.valueOf(cpu_max))
-						(resource as ExecutableContainer).cpu_percent = df.format(percent)
-						LOGGER.info("CPU PERCENTAGE <=====> {}", percent)
+						
+						if((resource as ExecutableContainer).cpu_used != cpu_us.intValue){
+							(resource as ExecutableContainer).cpu_used = cpu_us.intValue
+							LOGGER.info("CPU USED <=====> {}", cpu_us.intValue)
+						}
+						if((resource as ExecutableContainer).cpu_max_value != Integer.valueOf(cpu_max)){
+							(resource as ExecutableContainer).cpu_max_value = Integer.valueOf(cpu_max)
+							LOGGER.info("CPU MAX VALUE <=====> {}", Integer.valueOf(cpu_max))
+						}
+						if((resource as ExecutableContainer).cpu_percent != df.format(percent)){
+							(resource as ExecutableContainer).cpu_percent = df.format(percent)
+							LOGGER.info("CPU PERCENTAGE <=====> {}", percent)
+						}
+						
+						// Update the number of cores once
+						if(!updateMaxCpu){
+							(resource as ExecutableContainer).core_max = cpuMax
+							updateMaxCpu = true
+						}
 					}
 				} catch (NumberFormatException e) {
 					LOGGER.error(e.message)
