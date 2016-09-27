@@ -33,7 +33,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.ocl.pivot.StandardLibrary;
 
-import org.eclipse.ocl.pivot.evaluation.Evaluator;
+import org.eclipse.ocl.pivot.evaluation.Executor;
 
 import org.eclipse.ocl.pivot.ids.IdResolver;
 import org.eclipse.ocl.pivot.ids.TypeId;
@@ -50,8 +50,8 @@ import org.eclipse.ocl.pivot.library.classifier.ClassifierOclContainerOperation;
 
 import org.eclipse.ocl.pivot.library.collection.CollectionExcludesAllOperation;
 import org.eclipse.ocl.pivot.library.collection.CollectionExcludesOperation;
-
 import org.eclipse.ocl.pivot.library.collection.CollectionIncludesOperation;
+
 import org.eclipse.ocl.pivot.library.numeric.NumericMinusOperation;
 
 import org.eclipse.ocl.pivot.library.oclany.OclAnyOclAsTypeOperation;
@@ -194,33 +194,32 @@ public class MixinImpl extends CategoryImpl implements Mixin {
 		/**
 		 * Entity.allInstances()->select(mixins->includes(self))
 		 */
-		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
-		final /*@NonNull*/ /*@NonInvalid*/ IdResolver idResolver = evaluator.getIdResolver();
-		final /*@NonNull*/ /*@NonInvalid*/ org.eclipse.ocl.pivot.Class TYP_occi_c_c_Entity_0 = idResolver.getClass(OCCITables.CLSSid_Entity, null);
-		final /*@NonNull*/ /*@NonInvalid*/ SetValue allInstances = ClassUtil.nonNullState(ClassifierAllInstancesOperation.INSTANCE.evaluate(evaluator, OCCITables.SET_CLSSid_Entity, TYP_occi_c_c_Entity_0));
-		/*@NonNull*/ /*@Thrown*/ SetValue.Accumulator accumulator = ValueUtil.createSetAccumulatorValue(OCCITables.SET_CLSSid_Entity);
-		/*@NonNull*/ Iterator<?> ITERATOR__1 = allInstances.iterator();
-		/*@NonNull*/ /*@Thrown*/ SetValue select;
+		final /*@NonInvalid*/ Executor executor = PivotUtilInternal.getExecutor(this);
+		final /*@NonInvalid*/ IdResolver idResolver = executor.getIdResolver();
+		final /*@NonInvalid*/ org.eclipse.ocl.pivot.Class TYP_occi_c_c_Entity_0 = idResolver.getClass(OCCITables.CLSSid_Entity, null);
+		final /*@NonInvalid*/ SetValue allInstances = ClassifierAllInstancesOperation.INSTANCE.evaluate(executor, OCCITables.SET_CLSSid_Entity, TYP_occi_c_c_Entity_0);
+		/*@Thrown*/ SetValue.Accumulator accumulator = ValueUtil.createSetAccumulatorValue(OCCITables.SET_CLSSid_Entity);
+		/*@NonNull*/ Iterator<Object> ITERATOR__1 = allInstances.iterator();
+		/*@Thrown*/ SetValue select;
 		while (true) {
 		    if (!ITERATOR__1.hasNext()) {
 		        select = accumulator;
 		        break;
 		    }
-		    /*@NonNull*/ /*@NonInvalid*/ Entity _1 = (Entity)ITERATOR__1.next();
+		    /*@NonInvalid*/ Entity _1 = (Entity)ITERATOR__1.next();
 		    /**
 		     * mixins->includes(self)
 		     */
-		    final /*@NonNull*/ /*@Thrown*/ List<Mixin> mixins = _1.getMixins();
-		    final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_mixins = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Mixin, mixins);
-		    final /*@Thrown*/ boolean includes = ClassUtil.nonNullState(CollectionIncludesOperation.INSTANCE.evaluate(BOXED_mixins, this).booleanValue());
+		    final /*@Thrown*/ List<Mixin> mixins = _1.getMixins();
+		    final /*@Thrown*/ OrderedSetValue BOXED_mixins = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Mixin, mixins);
+		    final /*@Thrown*/ boolean includes = CollectionIncludesOperation.INSTANCE.evaluate(BOXED_mixins, this).booleanValue();
 		    //
 		    if (includes == ValueUtil.TRUE_VALUE) {
 		        accumulator.add(_1);
 		    }
 		}
-		final List<Entity> UNBOXED_select = select.asEcoreObjects(idResolver, org.occiware.clouddesigner.occi.Entity.class);
-		assert UNBOXED_select != null;
-		return (EList<Entity>)UNBOXED_select;
+		final /*@Thrown*/ List<Entity> ECORE_select = ((IdResolver.IdResolverExtension)idResolver).ecoreValueOfAll(Entity.class, select);
+		return (EList<Entity>)ECORE_select;
 	}
 
 	/**
@@ -242,35 +241,32 @@ public class MixinImpl extends CategoryImpl implements Mixin {
 		 *         'Mixin::ActionTermUnicity'.logDiagnostic(self, null, diagnostics, context, null, severity, status, 0)
 		 *     endif
 		 */
-		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
-		final /*@NonNull*/ /*@NonInvalid*/ IdResolver idResolver = evaluator.getIdResolver();
-		final /*@NonNull*/ /*@NonInvalid*/ IntegerValue severity_0 = ClassUtil.nonNullState(CGStringGetSeverityOperation.INSTANCE.evaluate(evaluator, OCCITables.STR_Mixin_c_c_ActionTermUnicity));
-		final /*@NonInvalid*/ boolean le = ClassUtil.nonNullState(OclComparableLessThanEqualOperation.INSTANCE.evaluate(evaluator, severity_0, OCCITables.INT_0).booleanValue());
+		final /*@NonInvalid*/ Executor executor = PivotUtilInternal.getExecutor(this);
+		final /*@NonInvalid*/ IdResolver idResolver = executor.getIdResolver();
+		final /*@NonInvalid*/ IntegerValue severity_0 = CGStringGetSeverityOperation.INSTANCE.evaluate(executor, OCCITables.STR_Mixin_c_c_ActionTermUnicity);
+		final /*@NonInvalid*/ boolean le = OclComparableLessThanEqualOperation.INSTANCE.evaluate(executor, severity_0, OCCITables.INT_0).booleanValue();
 		/*@NonInvalid*/ boolean symbol_0;
 		if (le) {
 		    symbol_0 = ValueUtil.TRUE_VALUE;
 		}
 		else {
-		    /*@NonNull*/ /*@Caught*/ Object CAUGHT_status;
+		    /*@Caught*/ /*@NonNull*/ Object CAUGHT_status;
 		    try {
-		        final /*@NonNull*/ /*@Thrown*/ List<Action> actions = this.getActions();
-		        final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_actions = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Action, actions);
-		        /*@NonNull*/ /*@Thrown*/ SetValue.Accumulator accumulator = ValueUtil.createSetAccumulatorValue(OCCITables.ORD_CLSSid_Action);
-		        /*@Nullable*/ Iterator<?> ITERATOR__1 = BOXED_actions.iterator();
+		        final /*@Thrown*/ List<Action> actions = this.getActions();
+		        final /*@Thrown*/ OrderedSetValue BOXED_actions = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Action, actions);
+		        /*@Thrown*/ SetValue.Accumulator accumulator = ValueUtil.createSetAccumulatorValue(OCCITables.ORD_CLSSid_Action);
+		        /*@NonNull*/ Iterator<Object> ITERATOR__1 = BOXED_actions.iterator();
 		        /*@Thrown*/ boolean status;
 		        while (true) {
 		            if (!ITERATOR__1.hasNext()) {
 		                status = ValueUtil.TRUE_VALUE;
 		                break;
 		            }
-		            /*@Nullable*/ /*@NonInvalid*/ Action _1 = (Action)ITERATOR__1.next();
+		            /*@NonInvalid*/ Action _1 = (Action)ITERATOR__1.next();
 		            /**
 		             * term
 		             */
-		            if (_1 == null) {
-		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Category::term\'");
-		            }
-		            final /*@NonNull*/ /*@Thrown*/ String term = _1.getTerm();
+		            final /*@Thrown*/ String term = _1.getTerm();
 		            //
 		            if (accumulator.includes(term) == ValueUtil.TRUE_VALUE) {
 		                status = ValueUtil.FALSE_VALUE;			// Abort after second find
@@ -285,7 +281,7 @@ public class MixinImpl extends CategoryImpl implements Mixin {
 		    catch (Exception e) {
 		        CAUGHT_status = ValueUtil.createInvalidValue(e);
 		    }
-		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Mixin_c_c_ActionTermUnicity, this, null, diagnostics, context, null, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
+		    final /*@NonInvalid*/ boolean logDiagnostic = CGStringLogDiagnosticOperation.INSTANCE.evaluate(executor, TypeId.BOOLEAN, OCCITables.STR_Mixin_c_c_ActionTermUnicity, this, null, diagnostics, context, null, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue();
 		    symbol_0 = logDiagnostic;
 		}
 		return Boolean.TRUE == symbol_0;
@@ -312,23 +308,23 @@ public class MixinImpl extends CategoryImpl implements Mixin {
 		 *         'Mixin::NoCyclicInheritance'.logDiagnostic(self, null, diagnostics, context, null, severity, status, 0)
 		 *     endif
 		 */
-		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
-		final /*@NonNull*/ /*@NonInvalid*/ IdResolver idResolver = evaluator.getIdResolver();
-		final /*@NonNull*/ /*@NonInvalid*/ StandardLibrary standardLibrary = idResolver.getStandardLibrary();
-		final /*@NonNull*/ /*@NonInvalid*/ IntegerValue severity_0 = ClassUtil.nonNullState(CGStringGetSeverityOperation.INSTANCE.evaluate(evaluator, OCCITables.STR_Mixin_c_c_NoCyclicInheritance));
-		final /*@NonInvalid*/ boolean le = ClassUtil.nonNullState(OclComparableLessThanEqualOperation.INSTANCE.evaluate(evaluator, severity_0, OCCITables.INT_0).booleanValue());
+		final /*@NonInvalid*/ Executor executor = PivotUtilInternal.getExecutor(this);
+		final /*@NonInvalid*/ IdResolver idResolver = executor.getIdResolver();
+		final /*@NonInvalid*/ StandardLibrary standardLibrary = idResolver.getStandardLibrary();
+		final /*@NonInvalid*/ IntegerValue severity_0 = CGStringGetSeverityOperation.INSTANCE.evaluate(executor, OCCITables.STR_Mixin_c_c_NoCyclicInheritance);
+		final /*@NonInvalid*/ boolean le = OclComparableLessThanEqualOperation.INSTANCE.evaluate(executor, severity_0, OCCITables.INT_0).booleanValue();
 		/*@NonInvalid*/ boolean symbol_1;
 		if (le) {
 		    symbol_1 = ValueUtil.TRUE_VALUE;
 		}
 		else {
-		    /*@NonNull*/ /*@Caught*/ Object CAUGHT_status;
+		    /*@Caught*/ /*@NonNull*/ Object CAUGHT_status;
 		    try {
-		        final /*@NonNull*/ /*@Thrown*/ List<Mixin> depends = this.getDepends();
-		        final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_depends = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Mixin, depends);
-		        final /*@NonNull*/ org.eclipse.ocl.pivot.Class TYPE_closure_0 = evaluator.getStaticTypeOf(BOXED_depends);
-		        final /*@NonNull*/ LibraryIteration IMPL_closure_0 = (LibraryIteration)TYPE_closure_0.lookupImplementation(standardLibrary, OCLstdlibTables.Operations._OrderedSet__closure);
-		        final /*@NonNull*/ Object ACC_closure_0 = IMPL_closure_0.createAccumulatorValue(evaluator, OCCITables.ORD_CLSSid_Mixin, OCCITables.ORD_CLSSid_Mixin);
+		        final /*@Thrown*/ List<Mixin> depends = this.getDepends();
+		        final /*@Thrown*/ OrderedSetValue BOXED_depends = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Mixin, depends);
+		        final org.eclipse.ocl.pivot.Class TYPE_closure_0 = executor.getStaticTypeOf(BOXED_depends);
+		        final LibraryIteration.LibraryIterationExtension IMPL_closure_0 = (LibraryIteration.LibraryIterationExtension)TYPE_closure_0.lookupImplementation(standardLibrary, OCLstdlibTables.Operations._OrderedSet__closure);
+		        final /*@NonNull*/ Object ACC_closure_0 = IMPL_closure_0.createAccumulatorValue(executor, OCCITables.ORD_CLSSid_Mixin, OCCITables.ORD_CLSSid_Mixin);
 		        /**
 		         * Implementation of the iterator body.
 		         */
@@ -337,25 +333,25 @@ public class MixinImpl extends CategoryImpl implements Mixin {
 		             * depends
 		             */
 		            @Override
-		            public /*@Nullable*/ Object evaluate(final /*@NonNull*/ Evaluator evaluator, final /*@NonNull*/ TypeId typeId, final /*@Nullable*/ Object BOXED_depends, final /*@Nullable*/ /*@NonInvalid*/ Object _1) {
-		                final /*@Nullable*/ /*@NonInvalid*/ Mixin symbol_0 = (Mixin)_1;
+		            public /*@Nullable*/ Object evaluate(final /*@NonNull*/ Executor executor, final /*@NonNull*/ TypeId typeId, final /*@Nullable*/ Object BOXED_depends, final /*@NonInvalid*/ Object _1) {
+		                final /*@NonInvalid*/ Mixin symbol_0 = (Mixin)_1;
 		                if (symbol_0 == null) {
 		                    throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Mixin::depends\'");
 		                }
-		                final /*@NonNull*/ /*@Thrown*/ List<Mixin> depends_0 = symbol_0.getDepends();
-		                final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_depends_0 = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Mixin, depends_0);
+		                final /*@Thrown*/ List<Mixin> depends_0 = symbol_0.getDepends();
+		                final /*@Thrown*/ OrderedSetValue BOXED_depends_0 = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Mixin, depends_0);
 		                return BOXED_depends_0;
 		            }
 		        };
-		        final /*@NonNull*/  ExecutorSingleIterationManager MGR_closure_0 = new ExecutorSingleIterationManager(evaluator, OCCITables.ORD_CLSSid_Mixin, BODY_closure_0, BOXED_depends, ACC_closure_0);
-		        final /*@NonNull*/ /*@Thrown*/ OrderedSetValue closure = ClassUtil.nonNullState((OrderedSetValue)IMPL_closure_0.evaluateIteration(MGR_closure_0));
-		        final /*@Thrown*/ boolean status = ClassUtil.nonNullState(CollectionExcludesOperation.INSTANCE.evaluate(closure, this).booleanValue());
+		        final /*@NonNull*/  ExecutorSingleIterationManager MGR_closure_0 = new ExecutorSingleIterationManager(executor, OCCITables.ORD_CLSSid_Mixin, BODY_closure_0, BOXED_depends, ACC_closure_0);
+		        final /*@Thrown*/ OrderedSetValue closure = ClassUtil.nonNullState((OrderedSetValue)IMPL_closure_0.evaluateIteration(MGR_closure_0));
+		        final /*@Thrown*/ boolean status = CollectionExcludesOperation.INSTANCE.evaluate(closure, this).booleanValue();
 		        CAUGHT_status = status;
 		    }
 		    catch (Exception e) {
 		        CAUGHT_status = ValueUtil.createInvalidValue(e);
 		    }
-		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Mixin_c_c_NoCyclicInheritance, this, null, diagnostics, context, null, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
+		    final /*@NonInvalid*/ boolean logDiagnostic = CGStringLogDiagnosticOperation.INSTANCE.evaluate(executor, TypeId.BOOLEAN, OCCITables.STR_Mixin_c_c_NoCyclicInheritance, this, null, diagnostics, context, null, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue();
 		    symbol_1 = logDiagnostic;
 		}
 		return Boolean.TRUE == symbol_1;
@@ -391,29 +387,29 @@ public class MixinImpl extends CategoryImpl implements Mixin {
 		 *         'Mixin::CorrectScheme'.logDiagnostic(self, null, diagnostics, context, null, severity, status, 0)
 		 *     endif
 		 */
-		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
-		final /*@NonNull*/ /*@NonInvalid*/ IdResolver idResolver = evaluator.getIdResolver();
-		final /*@NonNull*/ /*@NonInvalid*/ IntegerValue severity_0 = ClassUtil.nonNullState(CGStringGetSeverityOperation.INSTANCE.evaluate(evaluator, OCCITables.STR_Mixin_c_c_CorrectScheme));
-		final /*@NonInvalid*/ boolean le = ClassUtil.nonNullState(OclComparableLessThanEqualOperation.INSTANCE.evaluate(evaluator, severity_0, OCCITables.INT_0).booleanValue());
+		final /*@NonInvalid*/ Executor executor = PivotUtilInternal.getExecutor(this);
+		final /*@NonInvalid*/ IdResolver idResolver = executor.getIdResolver();
+		final /*@NonInvalid*/ IntegerValue severity_0 = CGStringGetSeverityOperation.INSTANCE.evaluate(executor, OCCITables.STR_Mixin_c_c_CorrectScheme);
+		final /*@NonInvalid*/ boolean le = OclComparableLessThanEqualOperation.INSTANCE.evaluate(executor, severity_0, OCCITables.INT_0).booleanValue();
 		/*@NonInvalid*/ boolean symbol_1;
 		if (le) {
 		    symbol_1 = ValueUtil.TRUE_VALUE;
 		}
 		else {
-		    /*@NonNull*/ /*@Caught*/ Object CAUGHT_symbol_0;
+		    /*@Caught*/ /*@NonNull*/ Object CAUGHT_symbol_0;
 		    try {
-		        final /*@Nullable*/ /*@NonInvalid*/ Object owner = ClassifierOclContainerOperation.INSTANCE.evaluate(evaluator, this);
-		        final /*@NonNull*/ /*@NonInvalid*/ org.eclipse.ocl.pivot.Class TYP_occi_c_c_Extension_0 = idResolver.getClass(OCCITables.CLSSid_Extension, null);
-		        final /*@Thrown*/ boolean oclIsTypeOf = ClassUtil.nonNullState(OclAnyOclIsTypeOfOperation.INSTANCE.evaluate(evaluator, owner, TYP_occi_c_c_Extension_0).booleanValue());
+		        final /*@NonInvalid*/ Object owner = ClassifierOclContainerOperation.INSTANCE.evaluate(executor, this);
+		        final /*@NonInvalid*/ org.eclipse.ocl.pivot.Class TYP_occi_c_c_Extension_0 = idResolver.getClass(OCCITables.CLSSid_Extension, null);
+		        final /*@Thrown*/ boolean oclIsTypeOf = OclAnyOclIsTypeOfOperation.INSTANCE.evaluate(executor, owner, TYP_occi_c_c_Extension_0).booleanValue();
 		        /*@Thrown*/ boolean symbol_0;
 		        if (oclIsTypeOf) {
-		            final /*@NonNull*/ /*@Thrown*/ Extension oclAsType = ClassUtil.nonNullState((Extension)OclAnyOclAsTypeOperation.INSTANCE.evaluate(evaluator, owner, TYP_occi_c_c_Extension_0));
-		            final /*@NonNull*/ /*@Thrown*/ String ownerScheme = oclAsType.getScheme();
-		            final /*@NonNull*/ /*@Thrown*/ IntegerValue size_0 = ClassUtil.nonNullState(StringSizeOperation.INSTANCE.evaluate(ownerScheme));
-		            final /*@NonNull*/ /*@Thrown*/ IntegerValue diff_0 = ClassUtil.nonNullState((IntegerValue)NumericMinusOperation.INSTANCE.evaluate(size_0, OCCITables.INT_1));
-		            final /*@NonNull*/ /*@Thrown*/ String scheme = this.getScheme();
-		            final /*@NonNull*/ /*@Thrown*/ String substring = ClassUtil.nonNullState(StringSubstringOperation.INSTANCE.evaluate(scheme, OCCITables.INT_1, diff_0));
-		            final /*@NonNull*/ /*@Thrown*/ String substring_0 = ClassUtil.nonNullState(StringSubstringOperation.INSTANCE.evaluate(ownerScheme, OCCITables.INT_1, diff_0));
+		            final /*@Thrown*/ Extension oclAsType = ClassUtil.nonNullState((Extension)OclAnyOclAsTypeOperation.INSTANCE.evaluate(executor, owner, TYP_occi_c_c_Extension_0));
+		            final /*@Thrown*/ String ownerScheme = oclAsType.getScheme();
+		            final /*@Thrown*/ IntegerValue size_0 = StringSizeOperation.INSTANCE.evaluate(ownerScheme);
+		            final /*@Thrown*/ IntegerValue diff_0 = (IntegerValue)NumericMinusOperation.INSTANCE.evaluate(size_0, OCCITables.INT_1);
+		            final /*@Thrown*/ String scheme = this.getScheme();
+		            final /*@Thrown*/ String substring = StringSubstringOperation.INSTANCE.evaluate(scheme, OCCITables.INT_1, diff_0);
+		            final /*@Thrown*/ String substring_0 = StringSubstringOperation.INSTANCE.evaluate(ownerScheme, OCCITables.INT_1, diff_0);
 		            final /*@Thrown*/ boolean eq = substring.equals(substring_0);
 		            symbol_0 = eq;
 		        }
@@ -425,7 +421,7 @@ public class MixinImpl extends CategoryImpl implements Mixin {
 		    catch (Exception e) {
 		        CAUGHT_symbol_0 = ValueUtil.createInvalidValue(e);
 		    }
-		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Mixin_c_c_CorrectScheme, this, null, diagnostics, context, null, severity_0, CAUGHT_symbol_0, OCCITables.INT_0).booleanValue());
+		    final /*@NonInvalid*/ boolean logDiagnostic = CGStringLogDiagnosticOperation.INSTANCE.evaluate(executor, TypeId.BOOLEAN, OCCITables.STR_Mixin_c_c_CorrectScheme, this, null, diagnostics, context, null, severity_0, CAUGHT_symbol_0, OCCITables.INT_0).booleanValue();
 		    symbol_1 = logDiagnostic;
 		}
 		return Boolean.TRUE == symbol_1;
@@ -453,44 +449,41 @@ public class MixinImpl extends CategoryImpl implements Mixin {
 		 *         'Mixin::AttributesNameNotAlreadyDefinedInDepends'.logDiagnostic(self, null, diagnostics, context, null, severity, status, 0)
 		 *     endif
 		 */
-		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
-		final /*@NonNull*/ /*@NonInvalid*/ IdResolver idResolver = evaluator.getIdResolver();
-		final /*@NonNull*/ /*@NonInvalid*/ StandardLibrary standardLibrary = idResolver.getStandardLibrary();
-		final /*@NonNull*/ /*@NonInvalid*/ IntegerValue severity_0 = ClassUtil.nonNullState(CGStringGetSeverityOperation.INSTANCE.evaluate(evaluator, OCCITables.STR_Mixin_c_c_AttributesNameNotAlreadyDefinedInDepends));
-		final /*@NonInvalid*/ boolean le = ClassUtil.nonNullState(OclComparableLessThanEqualOperation.INSTANCE.evaluate(evaluator, severity_0, OCCITables.INT_0).booleanValue());
+		final /*@NonInvalid*/ Executor executor = PivotUtilInternal.getExecutor(this);
+		final /*@NonInvalid*/ IdResolver idResolver = executor.getIdResolver();
+		final /*@NonInvalid*/ StandardLibrary standardLibrary = idResolver.getStandardLibrary();
+		final /*@NonInvalid*/ IntegerValue severity_0 = CGStringGetSeverityOperation.INSTANCE.evaluate(executor, OCCITables.STR_Mixin_c_c_AttributesNameNotAlreadyDefinedInDepends);
+		final /*@NonInvalid*/ boolean le = OclComparableLessThanEqualOperation.INSTANCE.evaluate(executor, severity_0, OCCITables.INT_0).booleanValue();
 		/*@NonInvalid*/ boolean symbol_1;
 		if (le) {
 		    symbol_1 = ValueUtil.TRUE_VALUE;
 		}
 		else {
-		    /*@NonNull*/ /*@Caught*/ Object CAUGHT_status;
+		    /*@Caught*/ /*@NonNull*/ Object CAUGHT_status;
 		    try {
-		        final /*@NonNull*/ /*@Thrown*/ List<Attribute> attributes = this.getAttributes();
-		        final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_attributes = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Attribute, attributes);
-		        /*@NonNull*/ /*@Thrown*/ SequenceValue.Accumulator accumulator = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_PRIMid_String);
-		        /*@Nullable*/ Iterator<?> ITERATOR__1 = BOXED_attributes.iterator();
-		        /*@NonNull*/ /*@Thrown*/ SequenceValue collect;
+		        final /*@Thrown*/ List<Attribute> attributes = this.getAttributes();
+		        final /*@Thrown*/ OrderedSetValue BOXED_attributes = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Attribute, attributes);
+		        /*@Thrown*/ SequenceValue.Accumulator accumulator = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_PRIMid_String);
+		        /*@NonNull*/ Iterator<Object> ITERATOR__1 = BOXED_attributes.iterator();
+		        /*@Thrown*/ SequenceValue collect;
 		        while (true) {
 		            if (!ITERATOR__1.hasNext()) {
 		                collect = accumulator;
 		                break;
 		            }
-		            /*@Nullable*/ /*@NonInvalid*/ Attribute _1 = (Attribute)ITERATOR__1.next();
+		            /*@NonInvalid*/ Attribute _1 = (Attribute)ITERATOR__1.next();
 		            /**
 		             * name
 		             */
-		            if (_1 == null) {
-		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Attribute::name\'");
-		            }
-		            final /*@NonNull*/ /*@Thrown*/ String name = _1.getName();
+		            final /*@Thrown*/ String name = _1.getName();
 		            //
 		            accumulator.add(name);
 		        }
-		        final /*@NonNull*/ /*@Thrown*/ List<Mixin> depends = this.getDepends();
-		        final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_depends = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Mixin, depends);
-		        final /*@NonNull*/ org.eclipse.ocl.pivot.Class TYPE_closure_0 = evaluator.getStaticTypeOf(BOXED_depends);
-		        final /*@NonNull*/ LibraryIteration IMPL_closure_0 = (LibraryIteration)TYPE_closure_0.lookupImplementation(standardLibrary, OCLstdlibTables.Operations._OrderedSet__closure);
-		        final /*@NonNull*/ Object ACC_closure_0 = IMPL_closure_0.createAccumulatorValue(evaluator, OCCITables.ORD_CLSSid_Mixin, OCCITables.ORD_CLSSid_Mixin);
+		        final /*@Thrown*/ List<Mixin> depends = this.getDepends();
+		        final /*@Thrown*/ OrderedSetValue BOXED_depends = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Mixin, depends);
+		        final org.eclipse.ocl.pivot.Class TYPE_closure_0 = executor.getStaticTypeOf(BOXED_depends);
+		        final LibraryIteration.LibraryIterationExtension IMPL_closure_0 = (LibraryIteration.LibraryIterationExtension)TYPE_closure_0.lookupImplementation(standardLibrary, OCLstdlibTables.Operations._OrderedSet__closure);
+		        final /*@NonNull*/ Object ACC_closure_0 = IMPL_closure_0.createAccumulatorValue(executor, OCCITables.ORD_CLSSid_Mixin, OCCITables.ORD_CLSSid_Mixin);
 		        /**
 		         * Implementation of the iterator body.
 		         */
@@ -499,66 +492,63 @@ public class MixinImpl extends CategoryImpl implements Mixin {
 		             * depends
 		             */
 		            @Override
-		            public /*@Nullable*/ Object evaluate(final /*@NonNull*/ Evaluator evaluator, final /*@NonNull*/ TypeId typeId, final /*@Nullable*/ Object BOXED_depends, final /*@Nullable*/ /*@NonInvalid*/ Object _1_0) {
-		                final /*@Nullable*/ /*@NonInvalid*/ Mixin symbol_0 = (Mixin)_1_0;
+		            public /*@Nullable*/ Object evaluate(final /*@NonNull*/ Executor executor, final /*@NonNull*/ TypeId typeId, final /*@Nullable*/ Object BOXED_depends, final /*@NonInvalid*/ Object _1_0) {
+		                final /*@NonInvalid*/ Mixin symbol_0 = (Mixin)_1_0;
 		                if (symbol_0 == null) {
 		                    throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Mixin::depends\'");
 		                }
-		                final /*@NonNull*/ /*@Thrown*/ List<Mixin> depends_0 = symbol_0.getDepends();
-		                final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_depends_0 = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Mixin, depends_0);
+		                final /*@Thrown*/ List<Mixin> depends_0 = symbol_0.getDepends();
+		                final /*@Thrown*/ OrderedSetValue BOXED_depends_0 = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Mixin, depends_0);
 		                return BOXED_depends_0;
 		            }
 		        };
-		        final /*@NonNull*/  ExecutorSingleIterationManager MGR_closure_0 = new ExecutorSingleIterationManager(evaluator, OCCITables.ORD_CLSSid_Mixin, BODY_closure_0, BOXED_depends, ACC_closure_0);
-		        final /*@NonNull*/ /*@Thrown*/ OrderedSetValue closure = ClassUtil.nonNullState((OrderedSetValue)IMPL_closure_0.evaluateIteration(MGR_closure_0));
-		        /*@NonNull*/ /*@Thrown*/ SequenceValue.Accumulator accumulator_0 = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_CLSSid_Attribute);
-		        /*@Nullable*/ Iterator<?> ITERATOR__1_1 = closure.iterator();
-		        /*@NonNull*/ /*@Thrown*/ SequenceValue collect_1;
+		        final /*@NonNull*/  ExecutorSingleIterationManager MGR_closure_0 = new ExecutorSingleIterationManager(executor, OCCITables.ORD_CLSSid_Mixin, BODY_closure_0, BOXED_depends, ACC_closure_0);
+		        final /*@Thrown*/ OrderedSetValue closure = ClassUtil.nonNullState((OrderedSetValue)IMPL_closure_0.evaluateIteration(MGR_closure_0));
+		        /*@Thrown*/ SequenceValue.Accumulator accumulator_0 = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_CLSSid_Attribute);
+		        /*@Nullable*/ Iterator<Object> ITERATOR__1_1 = closure.iterator();
+		        /*@Thrown*/ SequenceValue collect_1;
 		        while (true) {
 		            if (!ITERATOR__1_1.hasNext()) {
 		                collect_1 = accumulator_0;
 		                break;
 		            }
-		            /*@Nullable*/ /*@NonInvalid*/ Mixin _1_1 = (Mixin)ITERATOR__1_1.next();
+		            /*@NonInvalid*/ Mixin _1_1 = (Mixin)ITERATOR__1_1.next();
 		            /**
 		             * attributes
 		             */
 		            if (_1_1 == null) {
 		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Category::attributes\'");
 		            }
-		            final /*@NonNull*/ /*@Thrown*/ List<Attribute> attributes_0 = _1_1.getAttributes();
-		            final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_attributes_0 = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Attribute, attributes_0);
+		            final /*@Thrown*/ List<Attribute> attributes_0 = _1_1.getAttributes();
+		            final /*@Thrown*/ OrderedSetValue BOXED_attributes_0 = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Attribute, attributes_0);
 		            //
 		            for (Object value : BOXED_attributes_0.flatten().getElements()) {
 		                accumulator_0.add(value);
 		            }
 		        }
-		        /*@NonNull*/ /*@Thrown*/ SequenceValue.Accumulator accumulator_1 = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_PRIMid_String);
-		        /*@Nullable*/ Iterator<?> ITERATOR__1_2 = collect_1.iterator();
-		        /*@NonNull*/ /*@Thrown*/ SequenceValue collect_0;
+		        /*@Thrown*/ SequenceValue.Accumulator accumulator_1 = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_PRIMid_String);
+		        /*@NonNull*/ Iterator<Object> ITERATOR__1_2 = collect_1.iterator();
+		        /*@Thrown*/ SequenceValue collect_0;
 		        while (true) {
 		            if (!ITERATOR__1_2.hasNext()) {
 		                collect_0 = accumulator_1;
 		                break;
 		            }
-		            /*@Nullable*/ /*@NonInvalid*/ Attribute _1_2 = (Attribute)ITERATOR__1_2.next();
+		            /*@NonInvalid*/ Attribute _1_2 = (Attribute)ITERATOR__1_2.next();
 		            /**
 		             * name
 		             */
-		            if (_1_2 == null) {
-		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Attribute::name\'");
-		            }
-		            final /*@NonNull*/ /*@Thrown*/ String name_0 = _1_2.getName();
+		            final /*@Thrown*/ String name_0 = _1_2.getName();
 		            //
 		            accumulator_1.add(name_0);
 		        }
-		        final /*@Thrown*/ boolean status = ClassUtil.nonNullState(CollectionExcludesAllOperation.INSTANCE.evaluate(collect, collect_0).booleanValue());
+		        final /*@Thrown*/ boolean status = CollectionExcludesAllOperation.INSTANCE.evaluate(collect, collect_0).booleanValue();
 		        CAUGHT_status = status;
 		    }
 		    catch (Exception e) {
 		        CAUGHT_status = ValueUtil.createInvalidValue(e);
 		    }
-		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Mixin_c_c_AttributesNameNotAlreadyDefinedInDepends, this, null, diagnostics, context, null, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
+		    final /*@NonInvalid*/ boolean logDiagnostic = CGStringLogDiagnosticOperation.INSTANCE.evaluate(executor, TypeId.BOOLEAN, OCCITables.STR_Mixin_c_c_AttributesNameNotAlreadyDefinedInDepends, this, null, diagnostics, context, null, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue();
 		    symbol_1 = logDiagnostic;
 		}
 		return Boolean.TRUE == symbol_1;

@@ -33,9 +33,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
-import org.eclipse.ocl.pivot.evaluation.Evaluator;
-
+import org.eclipse.ocl.pivot.evaluation.Executor;
 import org.eclipse.ocl.pivot.ids.IdResolver;
 import org.eclipse.ocl.pivot.ids.TypeId;
 
@@ -50,12 +48,9 @@ import org.eclipse.ocl.pivot.library.string.CGStringLogDiagnosticOperation;
 import org.eclipse.ocl.pivot.library.string.StringConcatOperation;
 import org.eclipse.ocl.pivot.library.string.StringSizeOperation;
 import org.eclipse.ocl.pivot.library.string.StringSubstringOperation;
-
-import org.eclipse.ocl.pivot.utilities.ClassUtil;
 import org.eclipse.ocl.pivot.utilities.ValueUtil;
 
 import org.eclipse.ocl.pivot.values.IntegerValue;
-import org.eclipse.ocl.pivot.values.InvalidValueException;
 import org.eclipse.ocl.pivot.values.OrderedSetValue;
 import org.eclipse.ocl.pivot.values.SetValue;
 
@@ -264,35 +259,32 @@ public abstract class CategoryImpl extends MinimalEObjectImpl.Container implemen
 		 *         'Category::AttributesNameUnique'.logDiagnostic(self, null, diagnostics, context, null, severity, status, 0)
 		 *     endif
 		 */
-		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
-		final /*@NonNull*/ /*@NonInvalid*/ IdResolver idResolver = evaluator.getIdResolver();
-		final /*@NonNull*/ /*@NonInvalid*/ IntegerValue severity_0 = ClassUtil.nonNullState(CGStringGetSeverityOperation.INSTANCE.evaluate(evaluator, OCCITables.STR_Category_c_c_AttributesNameUnique));
-		final /*@NonInvalid*/ boolean le = ClassUtil.nonNullState(OclComparableLessThanEqualOperation.INSTANCE.evaluate(evaluator, severity_0, OCCITables.INT_0).booleanValue());
+		final /*@NonInvalid*/ Executor executor = PivotUtilInternal.getExecutor(this);
+		final /*@NonInvalid*/ IdResolver idResolver = executor.getIdResolver();
+		final /*@NonInvalid*/ IntegerValue severity_0 = CGStringGetSeverityOperation.INSTANCE.evaluate(executor, OCCITables.STR_Category_c_c_AttributesNameUnique);
+		final /*@NonInvalid*/ boolean le = OclComparableLessThanEqualOperation.INSTANCE.evaluate(executor, severity_0, OCCITables.INT_0).booleanValue();
 		/*@NonInvalid*/ boolean symbol_0;
 		if (le) {
 		    symbol_0 = ValueUtil.TRUE_VALUE;
 		}
 		else {
-		    /*@NonNull*/ /*@Caught*/ Object CAUGHT_status;
+		    /*@Caught*/ /*@NonNull*/ Object CAUGHT_status;
 		    try {
-		        final /*@NonNull*/ /*@Thrown*/ List<Attribute> attributes = this.getAttributes();
-		        final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_attributes = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Attribute, attributes);
-		        /*@NonNull*/ /*@Thrown*/ SetValue.Accumulator accumulator = ValueUtil.createSetAccumulatorValue(OCCITables.ORD_CLSSid_Attribute);
-		        /*@Nullable*/ Iterator<?> ITERATOR__1 = BOXED_attributes.iterator();
+		        final /*@Thrown*/ List<Attribute> attributes = this.getAttributes();
+		        final /*@Thrown*/ OrderedSetValue BOXED_attributes = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Attribute, attributes);
+		        /*@Thrown*/ SetValue.Accumulator accumulator = ValueUtil.createSetAccumulatorValue(OCCITables.ORD_CLSSid_Attribute);
+		        /*@NonNull*/ Iterator<Object> ITERATOR__1 = BOXED_attributes.iterator();
 		        /*@Thrown*/ boolean status;
 		        while (true) {
 		            if (!ITERATOR__1.hasNext()) {
 		                status = ValueUtil.TRUE_VALUE;
 		                break;
 		            }
-		            /*@Nullable*/ /*@NonInvalid*/ Attribute _1 = (Attribute)ITERATOR__1.next();
+		            /*@NonInvalid*/ Attribute _1 = (Attribute)ITERATOR__1.next();
 		            /**
 		             * name
 		             */
-		            if (_1 == null) {
-		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Attribute::name\'");
-		            }
-		            final /*@NonNull*/ /*@Thrown*/ String name = _1.getName();
+		            final /*@Thrown*/ String name = _1.getName();
 		            //
 		            if (accumulator.includes(name) == ValueUtil.TRUE_VALUE) {
 		                status = ValueUtil.FALSE_VALUE;			// Abort after second find
@@ -307,7 +299,7 @@ public abstract class CategoryImpl extends MinimalEObjectImpl.Container implemen
 		    catch (Exception e) {
 		        CAUGHT_status = ValueUtil.createInvalidValue(e);
 		    }
-		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Category_c_c_AttributesNameUnique, this, null, diagnostics, context, null, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
+		    final /*@NonInvalid*/ boolean logDiagnostic = CGStringLogDiagnosticOperation.INSTANCE.evaluate(executor, TypeId.BOOLEAN, OCCITables.STR_Category_c_c_AttributesNameUnique, this, null, diagnostics, context, null, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue();
 		    symbol_0 = logDiagnostic;
 		}
 		return Boolean.TRUE == symbol_0;
@@ -334,34 +326,34 @@ public abstract class CategoryImpl extends MinimalEObjectImpl.Container implemen
 		 *         'Category::IdentityUnique'.logDiagnostic(self, null, diagnostics, context, null, severity, status, 0)
 		 *     endif
 		 */
-		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
-		final /*@NonNull*/ /*@NonInvalid*/ IdResolver idResolver = evaluator.getIdResolver();
-		final /*@NonNull*/ /*@NonInvalid*/ IntegerValue severity_0 = ClassUtil.nonNullState(CGStringGetSeverityOperation.INSTANCE.evaluate(evaluator, OCCITables.STR_Category_c_c_IdentityUnique));
-		final /*@NonInvalid*/ boolean le = ClassUtil.nonNullState(OclComparableLessThanEqualOperation.INSTANCE.evaluate(evaluator, severity_0, OCCITables.INT_0).booleanValue());
+		final /*@NonInvalid*/ Executor executor = PivotUtilInternal.getExecutor(this);
+		final /*@NonInvalid*/ IdResolver idResolver = executor.getIdResolver();
+		final /*@NonInvalid*/ IntegerValue severity_0 = CGStringGetSeverityOperation.INSTANCE.evaluate(executor, OCCITables.STR_Category_c_c_IdentityUnique);
+		final /*@NonInvalid*/ boolean le = OclComparableLessThanEqualOperation.INSTANCE.evaluate(executor, severity_0, OCCITables.INT_0).booleanValue();
 		/*@NonInvalid*/ boolean symbol_0;
 		if (le) {
 		    symbol_0 = ValueUtil.TRUE_VALUE;
 		}
 		else {
-		    /*@NonNull*/ /*@Caught*/ Object CAUGHT_status;
+		    /*@Caught*/ /*@NonNull*/ Object CAUGHT_status;
 		    try {
-		        final /*@NonNull*/ /*@NonInvalid*/ org.eclipse.ocl.pivot.Class TYP_occi_c_c_Category = idResolver.getClass(OCCITables.CLSSid_Category, null);
-		        final /*@NonNull*/ /*@NonInvalid*/ SetValue allInstances = ClassUtil.nonNullState(ClassifierAllInstancesOperation.INSTANCE.evaluate(evaluator, OCCITables.SET_CLSSid_Category, TYP_occi_c_c_Category));
-		        /*@NonNull*/ /*@Thrown*/ SetValue.Accumulator accumulator = ValueUtil.createSetAccumulatorValue(OCCITables.SET_CLSSid_Category);
-		        /*@NonNull*/ Iterator<?> ITERATOR__1 = allInstances.iterator();
+		        final /*@NonInvalid*/ org.eclipse.ocl.pivot.Class TYP_occi_c_c_Category = idResolver.getClass(OCCITables.CLSSid_Category, null);
+		        final /*@NonInvalid*/ SetValue allInstances = ClassifierAllInstancesOperation.INSTANCE.evaluate(executor, OCCITables.SET_CLSSid_Category, TYP_occi_c_c_Category);
+		        /*@Thrown*/ SetValue.Accumulator accumulator = ValueUtil.createSetAccumulatorValue(OCCITables.SET_CLSSid_Category);
+		        /*@NonNull*/ Iterator<Object> ITERATOR__1 = allInstances.iterator();
 		        /*@Thrown*/ boolean status;
 		        while (true) {
 		            if (!ITERATOR__1.hasNext()) {
 		                status = ValueUtil.TRUE_VALUE;
 		                break;
 		            }
-		            /*@NonNull*/ /*@NonInvalid*/ Category _1 = (Category)ITERATOR__1.next();
+		            /*@NonInvalid*/ Category _1 = (Category)ITERATOR__1.next();
 		            /**
 		             * scheme + term
 		             */
-		            final /*@NonNull*/ /*@Thrown*/ String scheme = _1.getScheme();
-		            final /*@NonNull*/ /*@Thrown*/ String term = _1.getTerm();
-		            final /*@NonNull*/ /*@Thrown*/ String sum = ClassUtil.nonNullState(StringConcatOperation.INSTANCE.evaluate(scheme, term));
+		            final /*@Thrown*/ String scheme = _1.getScheme();
+		            final /*@Thrown*/ String term = _1.getTerm();
+		            final /*@Thrown*/ String sum = StringConcatOperation.INSTANCE.evaluate(scheme, term);
 		            //
 		            if (accumulator.includes(sum) == ValueUtil.TRUE_VALUE) {
 		                status = ValueUtil.FALSE_VALUE;			// Abort after second find
@@ -376,7 +368,7 @@ public abstract class CategoryImpl extends MinimalEObjectImpl.Container implemen
 		    catch (Exception e) {
 		        CAUGHT_status = ValueUtil.createInvalidValue(e);
 		    }
-		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Category_c_c_IdentityUnique, this, null, diagnostics, context, null, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
+		    final /*@NonInvalid*/ boolean logDiagnostic = CGStringLogDiagnosticOperation.INSTANCE.evaluate(executor, TypeId.BOOLEAN, OCCITables.STR_Category_c_c_IdentityUnique, this, null, diagnostics, context, null, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue();
 		    symbol_0 = logDiagnostic;
 		}
 		return Boolean.TRUE == symbol_0;
@@ -404,26 +396,26 @@ public abstract class CategoryImpl extends MinimalEObjectImpl.Container implemen
 		 *         'Category::SchemeEndsWithSharp'.logDiagnostic(self, null, diagnostics, context, null, severity, status, 0)
 		 *     endif
 		 */
-		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
-		final /*@NonNull*/ /*@NonInvalid*/ IntegerValue severity_0 = ClassUtil.nonNullState(CGStringGetSeverityOperation.INSTANCE.evaluate(evaluator, OCCITables.STR_Category_c_c_SchemeEndsWithSharp));
-		final /*@NonInvalid*/ boolean le = ClassUtil.nonNullState(OclComparableLessThanEqualOperation.INSTANCE.evaluate(evaluator, severity_0, OCCITables.INT_0).booleanValue());
+		final /*@NonInvalid*/ Executor executor = PivotUtilInternal.getExecutor(this);
+		final /*@NonInvalid*/ IntegerValue severity_0 = CGStringGetSeverityOperation.INSTANCE.evaluate(executor, OCCITables.STR_Category_c_c_SchemeEndsWithSharp);
+		final /*@NonInvalid*/ boolean le = OclComparableLessThanEqualOperation.INSTANCE.evaluate(executor, severity_0, OCCITables.INT_0).booleanValue();
 		/*@NonInvalid*/ boolean symbol_0;
 		if (le) {
 		    symbol_0 = ValueUtil.TRUE_VALUE;
 		}
 		else {
-		    /*@NonNull*/ /*@Caught*/ Object CAUGHT_status;
+		    /*@Caught*/ /*@NonNull*/ Object CAUGHT_status;
 		    try {
-		        final /*@NonNull*/ /*@Thrown*/ String scheme = this.getScheme();
-		        final /*@NonNull*/ /*@Thrown*/ IntegerValue size_0 = ClassUtil.nonNullState(StringSizeOperation.INSTANCE.evaluate(scheme));
-		        final /*@NonNull*/ /*@Thrown*/ String substring = ClassUtil.nonNullState(StringSubstringOperation.INSTANCE.evaluate(scheme, size_0, size_0));
+		        final /*@Thrown*/ String scheme = this.getScheme();
+		        final /*@Thrown*/ IntegerValue size_0 = StringSizeOperation.INSTANCE.evaluate(scheme);
+		        final /*@Thrown*/ String substring = StringSubstringOperation.INSTANCE.evaluate(scheme, size_0, size_0);
 		        final /*@Thrown*/ boolean status = substring.equals(OCCITables.STR__35);
 		        CAUGHT_status = status;
 		    }
 		    catch (Exception e) {
 		        CAUGHT_status = ValueUtil.createInvalidValue(e);
 		    }
-		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Category_c_c_SchemeEndsWithSharp, this, null, diagnostics, context, null, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
+		    final /*@NonInvalid*/ boolean logDiagnostic = CGStringLogDiagnosticOperation.INSTANCE.evaluate(executor, TypeId.BOOLEAN, OCCITables.STR_Category_c_c_SchemeEndsWithSharp, this, null, diagnostics, context, null, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue();
 		    symbol_0 = logDiagnostic;
 		}
 		return Boolean.TRUE == symbol_0;

@@ -34,9 +34,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
-import org.eclipse.ocl.pivot.evaluation.Evaluator;
-
+import org.eclipse.ocl.pivot.evaluation.Executor;
 import org.eclipse.ocl.pivot.ids.IdResolver;
 import org.eclipse.ocl.pivot.ids.TypeId;
 
@@ -287,22 +285,22 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		 *         'Configuration::AllMixinsAreTags'.logDiagnostic(self, null, diagnostics, context, null, severity, status, 0)
 		 *     endif
 		 */
-		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
-		final /*@NonNull*/ /*@NonInvalid*/ IdResolver idResolver = evaluator.getIdResolver();
-		final /*@NonNull*/ /*@NonInvalid*/ IntegerValue severity_0 = ClassUtil.nonNullState(CGStringGetSeverityOperation.INSTANCE.evaluate(evaluator, OCCITables.STR_Configuration_c_c_AllMixinsAreTags));
-		final /*@NonInvalid*/ boolean le = ClassUtil.nonNullState(OclComparableLessThanEqualOperation.INSTANCE.evaluate(evaluator, severity_0, OCCITables.INT_0).booleanValue());
+		final /*@NonInvalid*/ Executor executor = PivotUtilInternal.getExecutor(this);
+		final /*@NonInvalid*/ IdResolver idResolver = executor.getIdResolver();
+		final /*@NonInvalid*/ IntegerValue severity_0 = CGStringGetSeverityOperation.INSTANCE.evaluate(executor, OCCITables.STR_Configuration_c_c_AllMixinsAreTags);
+		final /*@NonInvalid*/ boolean le = OclComparableLessThanEqualOperation.INSTANCE.evaluate(executor, severity_0, OCCITables.INT_0).booleanValue();
 		/*@NonInvalid*/ boolean symbol_0;
 		if (le) {
 		    symbol_0 = ValueUtil.TRUE_VALUE;
 		}
 		else {
-		    /*@Nullable*/ /*@Caught*/ Object CAUGHT_status;
+		    /*@Caught*/ /*@Nullable*/ Object CAUGHT_status;
 		    try {
-		        final /*@NonNull*/ /*@Thrown*/ List<Mixin> mixins = this.getMixins();
-		        final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_mixins = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Mixin, mixins);
-		        /*@Nullable*/ /*@Thrown*/ Object accumulator = ValueUtil.TRUE_VALUE;
-		        /*@Nullable*/ Iterator<?> ITERATOR__1 = BOXED_mixins.iterator();
-		        /*@Nullable*/ /*@Thrown*/ Boolean status;
+		        final /*@Thrown*/ List<Mixin> mixins = this.getMixins();
+		        final /*@Thrown*/ OrderedSetValue BOXED_mixins = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Mixin, mixins);
+		        /*@Thrown*/ Object accumulator = ValueUtil.TRUE_VALUE;
+		        /*@NonNull*/ Iterator<Object> ITERATOR__1 = BOXED_mixins.iterator();
+		        /*@Thrown*/ Boolean status;
 		        while (true) {
 		            if (!ITERATOR__1.hasNext()) {
 		                if (accumulator == null) {
@@ -316,60 +314,51 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		                }
 		                break;
 		            }
-		            /*@Nullable*/ /*@NonInvalid*/ Mixin _1 = (Mixin)ITERATOR__1.next();
+		            /*@NonInvalid*/ Mixin _1 = (Mixin)ITERATOR__1.next();
 		            /**
 		             * attributes->isEmpty() and actions->isEmpty() and depends->isEmpty()
 		             */
-		            /*@Nullable*/ /*@Caught*/ Object CAUGHT_and_0;
+		            /*@Caught*/ /*@Nullable*/ Object CAUGHT_and_0;
 		            try {
-		                /*@Nullable*/ /*@Caught*/ Object CAUGHT_and;
+		                /*@Caught*/ /*@Nullable*/ Object CAUGHT_and;
 		                try {
-		                    /*@NonNull*/ /*@Caught*/ Object CAUGHT_isEmpty;
+		                    /*@Caught*/ /*@NonNull*/ Object CAUGHT_isEmpty;
 		                    try {
-		                        if (_1 == null) {
-		                            throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Category::attributes\'");
-		                        }
-		                        final /*@NonNull*/ /*@Thrown*/ List<Attribute> attributes = _1.getAttributes();
-		                        final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_attributes = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Attribute, attributes);
-		                        final /*@Thrown*/ boolean isEmpty = ClassUtil.nonNullState(CollectionIsEmptyOperation.INSTANCE.evaluate(BOXED_attributes).booleanValue());
+		                        final /*@Thrown*/ List<Attribute> attributes = _1.getAttributes();
+		                        final /*@Thrown*/ OrderedSetValue BOXED_attributes = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Attribute, attributes);
+		                        final /*@Thrown*/ boolean isEmpty = CollectionIsEmptyOperation.INSTANCE.evaluate(BOXED_attributes).booleanValue();
 		                        CAUGHT_isEmpty = isEmpty;
 		                    }
 		                    catch (Exception e) {
 		                        CAUGHT_isEmpty = ValueUtil.createInvalidValue(e);
 		                    }
-		                    /*@NonNull*/ /*@Caught*/ Object CAUGHT_isEmpty_0;
+		                    /*@Caught*/ /*@NonNull*/ Object CAUGHT_isEmpty_0;
 		                    try {
-		                        if (_1 == null) {
-		                            throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Mixin::actions\'");
-		                        }
-		                        final /*@NonNull*/ /*@Thrown*/ List<Action> actions = _1.getActions();
-		                        final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_actions = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Action, actions);
-		                        final /*@Thrown*/ boolean isEmpty_0 = ClassUtil.nonNullState(CollectionIsEmptyOperation.INSTANCE.evaluate(BOXED_actions).booleanValue());
+		                        final /*@Thrown*/ List<Action> actions = _1.getActions();
+		                        final /*@Thrown*/ OrderedSetValue BOXED_actions = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Action, actions);
+		                        final /*@Thrown*/ boolean isEmpty_0 = CollectionIsEmptyOperation.INSTANCE.evaluate(BOXED_actions).booleanValue();
 		                        CAUGHT_isEmpty_0 = isEmpty_0;
 		                    }
 		                    catch (Exception e) {
 		                        CAUGHT_isEmpty_0 = ValueUtil.createInvalidValue(e);
 		                    }
-		                    final /*@Nullable*/ /*@Thrown*/ Boolean and = BooleanAndOperation.INSTANCE.evaluate(CAUGHT_isEmpty, CAUGHT_isEmpty_0);
+		                    final /*@Thrown*/ Boolean and = BooleanAndOperation.INSTANCE.evaluate(CAUGHT_isEmpty, CAUGHT_isEmpty_0);
 		                    CAUGHT_and = and;
 		                }
 		                catch (Exception e) {
 		                    CAUGHT_and = ValueUtil.createInvalidValue(e);
 		                }
-		                /*@NonNull*/ /*@Caught*/ Object CAUGHT_isEmpty_1;
+		                /*@Caught*/ /*@NonNull*/ Object CAUGHT_isEmpty_1;
 		                try {
-		                    if (_1 == null) {
-		                        throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Mixin::depends\'");
-		                    }
-		                    final /*@NonNull*/ /*@Thrown*/ List<Mixin> depends = _1.getDepends();
-		                    final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_depends = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Mixin, depends);
-		                    final /*@Thrown*/ boolean isEmpty_1 = ClassUtil.nonNullState(CollectionIsEmptyOperation.INSTANCE.evaluate(BOXED_depends).booleanValue());
+		                    final /*@Thrown*/ List<Mixin> depends = _1.getDepends();
+		                    final /*@Thrown*/ OrderedSetValue BOXED_depends = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Mixin, depends);
+		                    final /*@Thrown*/ boolean isEmpty_1 = CollectionIsEmptyOperation.INSTANCE.evaluate(BOXED_depends).booleanValue();
 		                    CAUGHT_isEmpty_1 = isEmpty_1;
 		                }
 		                catch (Exception e) {
 		                    CAUGHT_isEmpty_1 = ValueUtil.createInvalidValue(e);
 		                }
-		                final /*@Nullable*/ /*@Thrown*/ Boolean and_0 = BooleanAndOperation.INSTANCE.evaluate(CAUGHT_and, CAUGHT_isEmpty_1);
+		                final /*@Thrown*/ Boolean and_0 = BooleanAndOperation.INSTANCE.evaluate(CAUGHT_and, CAUGHT_isEmpty_1);
 		                CAUGHT_and_0 = and_0;
 		            }
 		            catch (Exception e) {
@@ -400,7 +389,7 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		    catch (Exception e) {
 		        CAUGHT_status = ValueUtil.createInvalidValue(e);
 		    }
-		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Configuration_c_c_AllMixinsAreTags, this, null, diagnostics, context, null, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
+		    final /*@NonInvalid*/ boolean logDiagnostic = CGStringLogDiagnosticOperation.INSTANCE.evaluate(executor, TypeId.BOOLEAN, OCCITables.STR_Configuration_c_c_AllMixinsAreTags, this, null, diagnostics, context, null, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue();
 		    symbol_0 = logDiagnostic;
 		}
 		return Boolean.TRUE == symbol_0;
@@ -428,62 +417,56 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		 *         'Configuration::AllResourcesLinksTargetsInConfiguration'.logDiagnostic(self, null, diagnostics, context, null, severity, status, 0)
 		 *     endif
 		 */
-		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
-		final /*@NonNull*/ /*@NonInvalid*/ IdResolver idResolver = evaluator.getIdResolver();
-		final /*@NonNull*/ /*@NonInvalid*/ IntegerValue severity_0 = ClassUtil.nonNullState(CGStringGetSeverityOperation.INSTANCE.evaluate(evaluator, OCCITables.STR_Configuration_c_c_AllResourcesLinksTargetsInConfiguration));
-		final /*@NonInvalid*/ boolean le = ClassUtil.nonNullState(OclComparableLessThanEqualOperation.INSTANCE.evaluate(evaluator, severity_0, OCCITables.INT_0).booleanValue());
+		final /*@NonInvalid*/ Executor executor = PivotUtilInternal.getExecutor(this);
+		final /*@NonInvalid*/ IdResolver idResolver = executor.getIdResolver();
+		final /*@NonInvalid*/ IntegerValue severity_0 = CGStringGetSeverityOperation.INSTANCE.evaluate(executor, OCCITables.STR_Configuration_c_c_AllResourcesLinksTargetsInConfiguration);
+		final /*@NonInvalid*/ boolean le = OclComparableLessThanEqualOperation.INSTANCE.evaluate(executor, severity_0, OCCITables.INT_0).booleanValue();
 		/*@NonInvalid*/ boolean symbol_0;
 		if (le) {
 		    symbol_0 = ValueUtil.TRUE_VALUE;
 		}
 		else {
-		    /*@NonNull*/ /*@Caught*/ Object CAUGHT_status;
+		    /*@Caught*/ /*@NonNull*/ Object CAUGHT_status;
 		    try {
-		        final /*@NonNull*/ /*@Thrown*/ List<Resource> resources = this.getResources();
-		        final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_resources = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Resource, resources);
-		        /*@NonNull*/ /*@Thrown*/ SequenceValue.Accumulator accumulator = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_CLSSid_Link);
-		        /*@Nullable*/ Iterator<?> ITERATOR__1 = BOXED_resources.iterator();
-		        /*@NonNull*/ /*@Thrown*/ SequenceValue collect_0;
+		        final /*@Thrown*/ List<Resource> resources = this.getResources();
+		        final /*@Thrown*/ OrderedSetValue BOXED_resources = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Resource, resources);
+		        /*@Thrown*/ SequenceValue.Accumulator accumulator = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_CLSSid_Link);
+		        /*@NonNull*/ Iterator<Object> ITERATOR__1 = BOXED_resources.iterator();
+		        /*@Thrown*/ SequenceValue collect_0;
 		        while (true) {
 		            if (!ITERATOR__1.hasNext()) {
 		                collect_0 = accumulator;
 		                break;
 		            }
-		            /*@Nullable*/ /*@NonInvalid*/ Resource _1 = (Resource)ITERATOR__1.next();
+		            /*@NonInvalid*/ Resource _1 = (Resource)ITERATOR__1.next();
 		            /**
 		             * links
 		             */
-		            if (_1 == null) {
-		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Resource::links\'");
-		            }
-		            final /*@NonNull*/ /*@Thrown*/ List<Link> links = _1.getLinks();
-		            final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_links = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Link, links);
+		            final /*@Thrown*/ List<Link> links = _1.getLinks();
+		            final /*@Thrown*/ OrderedSetValue BOXED_links = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Link, links);
 		            //
 		            for (Object value : BOXED_links.flatten().getElements()) {
 		                accumulator.add(value);
 		            }
 		        }
-		        /*@NonNull*/ /*@Thrown*/ SequenceValue.Accumulator accumulator_0 = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_CLSSid_Resource);
-		        /*@Nullable*/ Iterator<?> ITERATOR__1_0 = collect_0.iterator();
-		        /*@NonNull*/ /*@Thrown*/ SequenceValue collect;
+		        /*@Thrown*/ SequenceValue.Accumulator accumulator_0 = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_CLSSid_Resource);
+		        /*@NonNull*/ Iterator<Object> ITERATOR__1_0 = collect_0.iterator();
+		        /*@Thrown*/ SequenceValue collect;
 		        while (true) {
 		            if (!ITERATOR__1_0.hasNext()) {
 		                collect = accumulator_0;
 		                break;
 		            }
-		            /*@Nullable*/ /*@NonInvalid*/ Link _1_0 = (Link)ITERATOR__1_0.next();
+		            /*@NonInvalid*/ Link _1_0 = (Link)ITERATOR__1_0.next();
 		            /**
 		             * target
 		             */
-		            if (_1_0 == null) {
-		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Link::target\'");
-		            }
-		            final /*@NonNull*/ /*@Thrown*/ Resource target = _1_0.getTarget();
+		            final /*@Thrown*/ Resource target = _1_0.getTarget();
 		            //
 		            accumulator_0.add(target);
 		        }
-		        /*@Nullable*/ /*@Thrown*/ Object accumulator_1 = ValueUtil.TRUE_VALUE;
-		        /*@NonNull*/ Iterator<?> ITERATOR_r = collect.iterator();
+		        /*@Thrown*/ Object accumulator_1 = ValueUtil.TRUE_VALUE;
+		        /*@NonNull*/ Iterator<Object> ITERATOR_r = collect.iterator();
 		        /*@Thrown*/ boolean status;
 		        while (true) {
 		            if (!ITERATOR_r.hasNext()) {
@@ -495,11 +478,11 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		                }
 		                break;
 		            }
-		            /*@NonNull*/ /*@NonInvalid*/ Resource r = (Resource)ITERATOR_r.next();
+		            /*@NonInvalid*/ Resource r = (Resource)ITERATOR_r.next();
 		            /**
 		             * r.oclContainer() = self
 		             */
-		            final /*@Nullable*/ /*@NonInvalid*/ Object oclContainer = ClassifierOclContainerOperation.INSTANCE.evaluate(evaluator, r);
+		            final /*@NonInvalid*/ Object oclContainer = ClassifierOclContainerOperation.INSTANCE.evaluate(executor, r);
 		            final /*@NonInvalid*/ boolean eq = this.equals(oclContainer);
 		            //
 		            if (eq == ValueUtil.FALSE_VALUE) {					// Normal unsuccessful body evaluation result
@@ -518,7 +501,7 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		    catch (Exception e) {
 		        CAUGHT_status = ValueUtil.createInvalidValue(e);
 		    }
-		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Configuration_c_c_AllResourcesLinksTargetsInConfiguration, this, null, diagnostics, context, null, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
+		    final /*@NonInvalid*/ boolean logDiagnostic = CGStringLogDiagnosticOperation.INSTANCE.evaluate(executor, TypeId.BOOLEAN, OCCITables.STR_Configuration_c_c_AllResourcesLinksTargetsInConfiguration, this, null, diagnostics, context, null, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue();
 		    symbol_0 = logDiagnostic;
 		}
 		return Boolean.TRUE == symbol_0;
@@ -545,53 +528,50 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		 *         'Configuration::AllResourcesKindsInUse'.logDiagnostic(self, null, diagnostics, context, null, severity, status, 0)
 		 *     endif
 		 */
-		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
-		final /*@NonNull*/ /*@NonInvalid*/ IdResolver idResolver = evaluator.getIdResolver();
-		final /*@NonNull*/ /*@NonInvalid*/ IntegerValue severity_0 = ClassUtil.nonNullState(CGStringGetSeverityOperation.INSTANCE.evaluate(evaluator, OCCITables.STR_Configuration_c_c_AllResourcesKindsInUse));
-		final /*@NonInvalid*/ boolean le = ClassUtil.nonNullState(OclComparableLessThanEqualOperation.INSTANCE.evaluate(evaluator, severity_0, OCCITables.INT_0).booleanValue());
+		final /*@NonInvalid*/ Executor executor = PivotUtilInternal.getExecutor(this);
+		final /*@NonInvalid*/ IdResolver idResolver = executor.getIdResolver();
+		final /*@NonInvalid*/ IntegerValue severity_0 = CGStringGetSeverityOperation.INSTANCE.evaluate(executor, OCCITables.STR_Configuration_c_c_AllResourcesKindsInUse);
+		final /*@NonInvalid*/ boolean le = OclComparableLessThanEqualOperation.INSTANCE.evaluate(executor, severity_0, OCCITables.INT_0).booleanValue();
 		/*@NonInvalid*/ boolean symbol_0;
 		if (le) {
 		    symbol_0 = ValueUtil.TRUE_VALUE;
 		}
 		else {
-		    /*@NonNull*/ /*@Caught*/ Object CAUGHT_status;
+		    /*@Caught*/ /*@NonNull*/ Object CAUGHT_status;
 		    try {
-		        final /*@NonNull*/ /*@Thrown*/ List<Extension> use = this.getUse();
-		        final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_use = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Extension, use);
-		        final /*@NonNull*/ /*@Thrown*/ List<Resource> resources = this.getResources();
-		        final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_resources = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Resource, resources);
-		        /*@NonNull*/ /*@Thrown*/ SequenceValue.Accumulator accumulator = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_CLSSid_Kind);
-		        /*@Nullable*/ Iterator<?> ITERATOR__1 = BOXED_resources.iterator();
-		        /*@NonNull*/ /*@Thrown*/ SequenceValue collect_0;
+		        final /*@Thrown*/ List<Extension> use = this.getUse();
+		        final /*@Thrown*/ OrderedSetValue BOXED_use = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Extension, use);
+		        final /*@Thrown*/ List<Resource> resources = this.getResources();
+		        final /*@Thrown*/ OrderedSetValue BOXED_resources = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Resource, resources);
+		        /*@Thrown*/ SequenceValue.Accumulator accumulator = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_CLSSid_Kind);
+		        /*@NonNull*/ Iterator<Object> ITERATOR__1 = BOXED_resources.iterator();
+		        /*@Thrown*/ SequenceValue collect_0;
 		        while (true) {
 		            if (!ITERATOR__1.hasNext()) {
 		                collect_0 = accumulator;
 		                break;
 		            }
-		            /*@Nullable*/ /*@NonInvalid*/ Resource _1 = (Resource)ITERATOR__1.next();
+		            /*@NonInvalid*/ Resource _1 = (Resource)ITERATOR__1.next();
 		            /**
 		             * kind
 		             */
-		            if (_1 == null) {
-		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Entity::kind\'");
-		            }
-		            final /*@NonNull*/ /*@Thrown*/ Kind kind = _1.getKind();
+		            final /*@Thrown*/ Kind kind = _1.getKind();
 		            //
 		            accumulator.add(kind);
 		        }
-		        /*@NonNull*/ /*@Thrown*/ SequenceValue.Accumulator accumulator_0 = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_CLSSid_OclElement);
-		        /*@NonNull*/ Iterator<?> ITERATOR__1_0 = collect_0.iterator();
-		        /*@NonNull*/ /*@Thrown*/ SequenceValue collect;
+		        /*@Thrown*/ SequenceValue.Accumulator accumulator_0 = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_CLSSid_OclElement);
+		        /*@NonNull*/ Iterator<Object> ITERATOR__1_0 = collect_0.iterator();
+		        /*@Thrown*/ SequenceValue collect;
 		        while (true) {
 		            if (!ITERATOR__1_0.hasNext()) {
 		                collect = accumulator_0;
 		                break;
 		            }
-		            /*@NonNull*/ /*@NonInvalid*/ Kind _1_0 = (Kind)ITERATOR__1_0.next();
+		            /*@NonInvalid*/ Kind _1_0 = (Kind)ITERATOR__1_0.next();
 		            /**
 		             * oclContainer()
 		             */
-		            final /*@Nullable*/ /*@NonInvalid*/ Object oclContainer = ClassifierOclContainerOperation.INSTANCE.evaluate(evaluator, _1_0);
+		            final /*@NonInvalid*/ Object oclContainer = ClassifierOclContainerOperation.INSTANCE.evaluate(executor, _1_0);
 		            //
 		            if (oclContainer instanceof CollectionValue) {
 		                for (Object value : ((CollectionValue)oclContainer).flatten().getElements()) {
@@ -602,13 +582,13 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		                accumulator_0.add(oclContainer);
 		            }
 		        }
-		        final /*@Thrown*/ boolean status = ClassUtil.nonNullState(CollectionIncludesAllOperation.INSTANCE.evaluate(BOXED_use, collect).booleanValue());
+		        final /*@Thrown*/ boolean status = CollectionIncludesAllOperation.INSTANCE.evaluate(BOXED_use, collect).booleanValue();
 		        CAUGHT_status = status;
 		    }
 		    catch (Exception e) {
 		        CAUGHT_status = ValueUtil.createInvalidValue(e);
 		    }
-		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Configuration_c_c_AllResourcesKindsInUse, this, null, diagnostics, context, null, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
+		    final /*@NonInvalid*/ boolean logDiagnostic = CGStringLogDiagnosticOperation.INSTANCE.evaluate(executor, TypeId.BOOLEAN, OCCITables.STR_Configuration_c_c_AllResourcesKindsInUse, this, null, diagnostics, context, null, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue();
 		    symbol_0 = logDiagnostic;
 		}
 		return Boolean.TRUE == symbol_0;
@@ -642,65 +622,59 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		 *         'Configuration::AllResourcesLinksMixinsInUse'.logDiagnostic(self, null, diagnostics, context, null, severity, status, 0)
 		 *     endif
 		 */
-		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
-		final /*@NonNull*/ /*@NonInvalid*/ IdResolver idResolver = evaluator.getIdResolver();
-		final /*@NonNull*/ /*@NonInvalid*/ IntegerValue severity_0 = ClassUtil.nonNullState(CGStringGetSeverityOperation.INSTANCE.evaluate(evaluator, OCCITables.STR_Configuration_c_c_AllResourcesLinksMixinsInUse));
-		final /*@NonInvalid*/ boolean le = ClassUtil.nonNullState(OclComparableLessThanEqualOperation.INSTANCE.evaluate(evaluator, severity_0, OCCITables.INT_0).booleanValue());
+		final /*@NonInvalid*/ Executor executor = PivotUtilInternal.getExecutor(this);
+		final /*@NonInvalid*/ IdResolver idResolver = executor.getIdResolver();
+		final /*@NonInvalid*/ IntegerValue severity_0 = CGStringGetSeverityOperation.INSTANCE.evaluate(executor, OCCITables.STR_Configuration_c_c_AllResourcesLinksMixinsInUse);
+		final /*@NonInvalid*/ boolean le = OclComparableLessThanEqualOperation.INSTANCE.evaluate(executor, severity_0, OCCITables.INT_0).booleanValue();
 		/*@NonInvalid*/ boolean symbol_1;
 		if (le) {
 		    symbol_1 = ValueUtil.TRUE_VALUE;
 		}
 		else {
-		    /*@NonNull*/ /*@Caught*/ Object CAUGHT_status;
+		    /*@Caught*/ /*@NonNull*/ Object CAUGHT_status;
 		    try {
-		        final /*@NonNull*/ /*@Thrown*/ List<Resource> resources = this.getResources();
-		        final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_resources = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Resource, resources);
-		        /*@NonNull*/ /*@Thrown*/ SequenceValue.Accumulator accumulator = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_CLSSid_Link);
-		        /*@Nullable*/ Iterator<?> ITERATOR__1 = BOXED_resources.iterator();
-		        /*@NonNull*/ /*@Thrown*/ SequenceValue collect_0;
+		        final /*@Thrown*/ List<Resource> resources = this.getResources();
+		        final /*@Thrown*/ OrderedSetValue BOXED_resources = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Resource, resources);
+		        /*@Thrown*/ SequenceValue.Accumulator accumulator = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_CLSSid_Link);
+		        /*@NonNull*/ Iterator<Object> ITERATOR__1 = BOXED_resources.iterator();
+		        /*@Thrown*/ SequenceValue collect_0;
 		        while (true) {
 		            if (!ITERATOR__1.hasNext()) {
 		                collect_0 = accumulator;
 		                break;
 		            }
-		            /*@Nullable*/ /*@NonInvalid*/ Resource _1 = (Resource)ITERATOR__1.next();
+		            /*@NonInvalid*/ Resource _1 = (Resource)ITERATOR__1.next();
 		            /**
 		             * links
 		             */
-		            if (_1 == null) {
-		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Resource::links\'");
-		            }
-		            final /*@NonNull*/ /*@Thrown*/ List<Link> links = _1.getLinks();
-		            final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_links = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Link, links);
+		            final /*@Thrown*/ List<Link> links = _1.getLinks();
+		            final /*@Thrown*/ OrderedSetValue BOXED_links = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Link, links);
 		            //
 		            for (Object value : BOXED_links.flatten().getElements()) {
 		                accumulator.add(value);
 		            }
 		        }
-		        /*@NonNull*/ /*@Thrown*/ SequenceValue.Accumulator accumulator_0 = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_CLSSid_Mixin);
-		        /*@Nullable*/ Iterator<?> ITERATOR__1_0 = collect_0.iterator();
-		        /*@NonNull*/ /*@Thrown*/ SequenceValue collect;
+		        /*@Thrown*/ SequenceValue.Accumulator accumulator_0 = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_CLSSid_Mixin);
+		        /*@NonNull*/ Iterator<Object> ITERATOR__1_0 = collect_0.iterator();
+		        /*@Thrown*/ SequenceValue collect;
 		        while (true) {
 		            if (!ITERATOR__1_0.hasNext()) {
 		                collect = accumulator_0;
 		                break;
 		            }
-		            /*@Nullable*/ /*@NonInvalid*/ Link _1_0 = (Link)ITERATOR__1_0.next();
+		            /*@NonInvalid*/ Link _1_0 = (Link)ITERATOR__1_0.next();
 		            /**
 		             * mixins
 		             */
-		            if (_1_0 == null) {
-		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Entity::mixins\'");
-		            }
-		            final /*@NonNull*/ /*@Thrown*/ List<Mixin> mixins = _1_0.getMixins();
-		            final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_mixins = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Mixin, mixins);
+		            final /*@Thrown*/ List<Mixin> mixins = _1_0.getMixins();
+		            final /*@Thrown*/ OrderedSetValue BOXED_mixins = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Mixin, mixins);
 		            //
 		            for (Object value : BOXED_mixins.flatten().getElements()) {
 		                accumulator_0.add(value);
 		            }
 		        }
-		        /*@Nullable*/ /*@Thrown*/ Object accumulator_1 = ValueUtil.TRUE_VALUE;
-		        /*@Nullable*/ Iterator<?> ITERATOR_mo = collect.iterator();
+		        /*@Thrown*/ Object accumulator_1 = ValueUtil.TRUE_VALUE;
+		        /*@NonNull*/ Iterator<Object> ITERATOR_mo = collect.iterator();
 		        /*@Thrown*/ boolean status;
 		        while (true) {
 		            if (!ITERATOR_mo.hasNext()) {
@@ -712,7 +686,7 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		                }
 		                break;
 		            }
-		            /*@Nullable*/ /*@NonInvalid*/ Mixin mo = (Mixin)ITERATOR_mo.next();
+		            /*@NonInvalid*/ Mixin mo = (Mixin)ITERATOR_mo.next();
 		            /**
 		             * 
 		             * let mixinOwner : OclElement[?] = mo.oclContainer()
@@ -723,23 +697,23 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		             *   else self.mixins->includes(mo)
 		             *   endif
 		             */
-		            /*@NonNull*/ /*@Caught*/ Object CAUGHT_symbol_0;
+		            /*@Caught*/ /*@NonNull*/ Object CAUGHT_symbol_0;
 		            try {
-		                final /*@Nullable*/ /*@Thrown*/ Object mixinOwner = ClassifierOclContainerOperation.INSTANCE.evaluate(evaluator, mo);
-		                final /*@NonNull*/ /*@NonInvalid*/ org.eclipse.ocl.pivot.Class TYP_occi_c_c_Extension_0 = idResolver.getClass(OCCITables.CLSSid_Extension, null);
-		                final /*@Thrown*/ boolean oclIsTypeOf = ClassUtil.nonNullState(OclAnyOclIsTypeOfOperation.INSTANCE.evaluate(evaluator, mixinOwner, TYP_occi_c_c_Extension_0).booleanValue());
+		                final /*@NonInvalid*/ Object mixinOwner = ClassifierOclContainerOperation.INSTANCE.evaluate(executor, mo);
+		                final /*@NonInvalid*/ org.eclipse.ocl.pivot.Class TYP_occi_c_c_Extension_0 = idResolver.getClass(OCCITables.CLSSid_Extension, null);
+		                final /*@Thrown*/ boolean oclIsTypeOf = OclAnyOclIsTypeOfOperation.INSTANCE.evaluate(executor, mixinOwner, TYP_occi_c_c_Extension_0).booleanValue();
 		                /*@Thrown*/ boolean symbol_0;
 		                if (oclIsTypeOf) {
-		                    final /*@NonNull*/ /*@Thrown*/ List<Extension> use = this.getUse();
-		                    final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_use = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Extension, use);
-		                    final /*@NonNull*/ /*@Thrown*/ Extension oclAsType = ClassUtil.nonNullState((Extension)OclAnyOclAsTypeOperation.INSTANCE.evaluate(evaluator, mixinOwner, TYP_occi_c_c_Extension_0));
-		                    final /*@Thrown*/ boolean includes = ClassUtil.nonNullState(CollectionIncludesOperation.INSTANCE.evaluate(BOXED_use, oclAsType).booleanValue());
+		                    final /*@Thrown*/ List<Extension> use = this.getUse();
+		                    final /*@Thrown*/ OrderedSetValue BOXED_use = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Extension, use);
+		                    final /*@Thrown*/ Extension oclAsType = ClassUtil.nonNullState((Extension)OclAnyOclAsTypeOperation.INSTANCE.evaluate(executor, mixinOwner, TYP_occi_c_c_Extension_0));
+		                    final /*@Thrown*/ boolean includes = CollectionIncludesOperation.INSTANCE.evaluate(BOXED_use, oclAsType).booleanValue();
 		                    symbol_0 = includes;
 		                }
 		                else {
-		                    final /*@NonNull*/ /*@Thrown*/ List<Mixin> mixins_0 = this.getMixins();
-		                    final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_mixins_0 = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Mixin, mixins_0);
-		                    final /*@Thrown*/ boolean includes_0 = ClassUtil.nonNullState(CollectionIncludesOperation.INSTANCE.evaluate(BOXED_mixins_0, mo).booleanValue());
+		                    final /*@Thrown*/ List<Mixin> mixins_0 = this.getMixins();
+		                    final /*@Thrown*/ OrderedSetValue BOXED_mixins_0 = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Mixin, mixins_0);
+		                    final /*@Thrown*/ boolean includes_0 = CollectionIncludesOperation.INSTANCE.evaluate(BOXED_mixins_0, mo).booleanValue();
 		                    symbol_0 = includes_0;
 		                }
 		                CAUGHT_symbol_0 = symbol_0;
@@ -767,7 +741,7 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		    catch (Exception e) {
 		        CAUGHT_status = ValueUtil.createInvalidValue(e);
 		    }
-		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Configuration_c_c_AllResourcesLinksMixinsInUse, this, null, diagnostics, context, null, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
+		    final /*@NonInvalid*/ boolean logDiagnostic = CGStringLogDiagnosticOperation.INSTANCE.evaluate(executor, TypeId.BOOLEAN, OCCITables.STR_Configuration_c_c_AllResourcesLinksMixinsInUse, this, null, diagnostics, context, null, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue();
 		    symbol_1 = logDiagnostic;
 		}
 		return Boolean.TRUE == symbol_1;
@@ -801,43 +775,40 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		 *         'Configuration::AllResourcesMixinsInUse'.logDiagnostic(self, null, diagnostics, context, null, severity, status, 0)
 		 *     endif
 		 */
-		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
-		final /*@NonNull*/ /*@NonInvalid*/ IdResolver idResolver = evaluator.getIdResolver();
-		final /*@NonNull*/ /*@NonInvalid*/ IntegerValue severity_0 = ClassUtil.nonNullState(CGStringGetSeverityOperation.INSTANCE.evaluate(evaluator, OCCITables.STR_Configuration_c_c_AllResourcesMixinsInUse));
-		final /*@NonInvalid*/ boolean le = ClassUtil.nonNullState(OclComparableLessThanEqualOperation.INSTANCE.evaluate(evaluator, severity_0, OCCITables.INT_0).booleanValue());
+		final /*@NonInvalid*/ Executor executor = PivotUtilInternal.getExecutor(this);
+		final /*@NonInvalid*/ IdResolver idResolver = executor.getIdResolver();
+		final /*@NonInvalid*/ IntegerValue severity_0 = CGStringGetSeverityOperation.INSTANCE.evaluate(executor, OCCITables.STR_Configuration_c_c_AllResourcesMixinsInUse);
+		final /*@NonInvalid*/ boolean le = OclComparableLessThanEqualOperation.INSTANCE.evaluate(executor, severity_0, OCCITables.INT_0).booleanValue();
 		/*@NonInvalid*/ boolean symbol_1;
 		if (le) {
 		    symbol_1 = ValueUtil.TRUE_VALUE;
 		}
 		else {
-		    /*@NonNull*/ /*@Caught*/ Object CAUGHT_status;
+		    /*@Caught*/ /*@NonNull*/ Object CAUGHT_status;
 		    try {
-		        final /*@NonNull*/ /*@Thrown*/ List<Resource> resources = this.getResources();
-		        final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_resources = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Resource, resources);
-		        /*@NonNull*/ /*@Thrown*/ SequenceValue.Accumulator accumulator = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_CLSSid_Mixin);
-		        /*@Nullable*/ Iterator<?> ITERATOR__1 = BOXED_resources.iterator();
-		        /*@NonNull*/ /*@Thrown*/ SequenceValue collect;
+		        final /*@Thrown*/ List<Resource> resources = this.getResources();
+		        final /*@Thrown*/ OrderedSetValue BOXED_resources = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Resource, resources);
+		        /*@Thrown*/ SequenceValue.Accumulator accumulator = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_CLSSid_Mixin);
+		        /*@NonNull*/ Iterator<Object> ITERATOR__1 = BOXED_resources.iterator();
+		        /*@Thrown*/ SequenceValue collect;
 		        while (true) {
 		            if (!ITERATOR__1.hasNext()) {
 		                collect = accumulator;
 		                break;
 		            }
-		            /*@Nullable*/ /*@NonInvalid*/ Resource _1 = (Resource)ITERATOR__1.next();
+		            /*@NonInvalid*/ Resource _1 = (Resource)ITERATOR__1.next();
 		            /**
 		             * mixins
 		             */
-		            if (_1 == null) {
-		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Entity::mixins\'");
-		            }
-		            final /*@NonNull*/ /*@Thrown*/ List<Mixin> mixins = _1.getMixins();
-		            final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_mixins = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Mixin, mixins);
+		            final /*@Thrown*/ List<Mixin> mixins = _1.getMixins();
+		            final /*@Thrown*/ OrderedSetValue BOXED_mixins = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Mixin, mixins);
 		            //
 		            for (Object value : BOXED_mixins.flatten().getElements()) {
 		                accumulator.add(value);
 		            }
 		        }
-		        /*@Nullable*/ /*@Thrown*/ Object accumulator_0 = ValueUtil.TRUE_VALUE;
-		        /*@Nullable*/ Iterator<?> ITERATOR_mo = collect.iterator();
+		        /*@Thrown*/ Object accumulator_0 = ValueUtil.TRUE_VALUE;
+		        /*@NonNull*/ Iterator<Object> ITERATOR_mo = collect.iterator();
 		        /*@Thrown*/ boolean status;
 		        while (true) {
 		            if (!ITERATOR_mo.hasNext()) {
@@ -849,7 +820,7 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		                }
 		                break;
 		            }
-		            /*@Nullable*/ /*@NonInvalid*/ Mixin mo = (Mixin)ITERATOR_mo.next();
+		            /*@NonInvalid*/ Mixin mo = (Mixin)ITERATOR_mo.next();
 		            /**
 		             * 
 		             * let mixinOwner : OclElement[?] = mo.oclContainer()
@@ -860,23 +831,23 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		             *   else self.mixins->includes(mo)
 		             *   endif
 		             */
-		            /*@NonNull*/ /*@Caught*/ Object CAUGHT_symbol_0;
+		            /*@Caught*/ /*@NonNull*/ Object CAUGHT_symbol_0;
 		            try {
-		                final /*@Nullable*/ /*@Thrown*/ Object mixinOwner = ClassifierOclContainerOperation.INSTANCE.evaluate(evaluator, mo);
-		                final /*@NonNull*/ /*@NonInvalid*/ org.eclipse.ocl.pivot.Class TYP_occi_c_c_Extension_0 = idResolver.getClass(OCCITables.CLSSid_Extension, null);
-		                final /*@Thrown*/ boolean oclIsTypeOf = ClassUtil.nonNullState(OclAnyOclIsTypeOfOperation.INSTANCE.evaluate(evaluator, mixinOwner, TYP_occi_c_c_Extension_0).booleanValue());
+		                final /*@NonInvalid*/ Object mixinOwner = ClassifierOclContainerOperation.INSTANCE.evaluate(executor, mo);
+		                final /*@NonInvalid*/ org.eclipse.ocl.pivot.Class TYP_occi_c_c_Extension_0 = idResolver.getClass(OCCITables.CLSSid_Extension, null);
+		                final /*@Thrown*/ boolean oclIsTypeOf = OclAnyOclIsTypeOfOperation.INSTANCE.evaluate(executor, mixinOwner, TYP_occi_c_c_Extension_0).booleanValue();
 		                /*@Thrown*/ boolean symbol_0;
 		                if (oclIsTypeOf) {
-		                    final /*@NonNull*/ /*@Thrown*/ List<Extension> use = this.getUse();
-		                    final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_use = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Extension, use);
-		                    final /*@NonNull*/ /*@Thrown*/ Extension oclAsType = ClassUtil.nonNullState((Extension)OclAnyOclAsTypeOperation.INSTANCE.evaluate(evaluator, mixinOwner, TYP_occi_c_c_Extension_0));
-		                    final /*@Thrown*/ boolean includes = ClassUtil.nonNullState(CollectionIncludesOperation.INSTANCE.evaluate(BOXED_use, oclAsType).booleanValue());
+		                    final /*@Thrown*/ List<Extension> use = this.getUse();
+		                    final /*@Thrown*/ OrderedSetValue BOXED_use = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Extension, use);
+		                    final /*@Thrown*/ Extension oclAsType = ClassUtil.nonNullState((Extension)OclAnyOclAsTypeOperation.INSTANCE.evaluate(executor, mixinOwner, TYP_occi_c_c_Extension_0));
+		                    final /*@Thrown*/ boolean includes = CollectionIncludesOperation.INSTANCE.evaluate(BOXED_use, oclAsType).booleanValue();
 		                    symbol_0 = includes;
 		                }
 		                else {
-		                    final /*@NonNull*/ /*@Thrown*/ List<Mixin> mixins_0 = this.getMixins();
-		                    final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_mixins_0 = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Mixin, mixins_0);
-		                    final /*@Thrown*/ boolean includes_0 = ClassUtil.nonNullState(CollectionIncludesOperation.INSTANCE.evaluate(BOXED_mixins_0, mo).booleanValue());
+		                    final /*@Thrown*/ List<Mixin> mixins_0 = this.getMixins();
+		                    final /*@Thrown*/ OrderedSetValue BOXED_mixins_0 = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Mixin, mixins_0);
+		                    final /*@Thrown*/ boolean includes_0 = CollectionIncludesOperation.INSTANCE.evaluate(BOXED_mixins_0, mo).booleanValue();
 		                    symbol_0 = includes_0;
 		                }
 		                CAUGHT_symbol_0 = symbol_0;
@@ -904,7 +875,7 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		    catch (Exception e) {
 		        CAUGHT_status = ValueUtil.createInvalidValue(e);
 		    }
-		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Configuration_c_c_AllResourcesMixinsInUse, this, null, diagnostics, context, null, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
+		    final /*@NonInvalid*/ boolean logDiagnostic = CGStringLogDiagnosticOperation.INSTANCE.evaluate(executor, TypeId.BOOLEAN, OCCITables.STR_Configuration_c_c_AllResourcesMixinsInUse, this, null, diagnostics, context, null, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue();
 		    symbol_1 = logDiagnostic;
 		}
 		return Boolean.TRUE == symbol_1;
@@ -932,75 +903,69 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		 *         'Configuration::AllResourcesLinksKindsInUse'.logDiagnostic(self, null, diagnostics, context, null, severity, status, 0)
 		 *     endif
 		 */
-		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
-		final /*@NonNull*/ /*@NonInvalid*/ IdResolver idResolver = evaluator.getIdResolver();
-		final /*@NonNull*/ /*@NonInvalid*/ IntegerValue severity_0 = ClassUtil.nonNullState(CGStringGetSeverityOperation.INSTANCE.evaluate(evaluator, OCCITables.STR_Configuration_c_c_AllResourcesLinksKindsInUse));
-		final /*@NonInvalid*/ boolean le = ClassUtil.nonNullState(OclComparableLessThanEqualOperation.INSTANCE.evaluate(evaluator, severity_0, OCCITables.INT_0).booleanValue());
+		final /*@NonInvalid*/ Executor executor = PivotUtilInternal.getExecutor(this);
+		final /*@NonInvalid*/ IdResolver idResolver = executor.getIdResolver();
+		final /*@NonInvalid*/ IntegerValue severity_0 = CGStringGetSeverityOperation.INSTANCE.evaluate(executor, OCCITables.STR_Configuration_c_c_AllResourcesLinksKindsInUse);
+		final /*@NonInvalid*/ boolean le = OclComparableLessThanEqualOperation.INSTANCE.evaluate(executor, severity_0, OCCITables.INT_0).booleanValue();
 		/*@NonInvalid*/ boolean symbol_0;
 		if (le) {
 		    symbol_0 = ValueUtil.TRUE_VALUE;
 		}
 		else {
-		    /*@NonNull*/ /*@Caught*/ Object CAUGHT_status;
+		    /*@Caught*/ /*@NonNull*/ Object CAUGHT_status;
 		    try {
-		        final /*@NonNull*/ /*@Thrown*/ List<Extension> use = this.getUse();
-		        final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_use = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Extension, use);
-		        final /*@NonNull*/ /*@Thrown*/ List<Resource> resources = this.getResources();
-		        final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_resources = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Resource, resources);
-		        /*@NonNull*/ /*@Thrown*/ SequenceValue.Accumulator accumulator = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_CLSSid_Link);
-		        /*@Nullable*/ Iterator<?> ITERATOR__1 = BOXED_resources.iterator();
-		        /*@NonNull*/ /*@Thrown*/ SequenceValue collect_1;
+		        final /*@Thrown*/ List<Extension> use = this.getUse();
+		        final /*@Thrown*/ OrderedSetValue BOXED_use = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Extension, use);
+		        final /*@Thrown*/ List<Resource> resources = this.getResources();
+		        final /*@Thrown*/ OrderedSetValue BOXED_resources = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Resource, resources);
+		        /*@Thrown*/ SequenceValue.Accumulator accumulator = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_CLSSid_Link);
+		        /*@NonNull*/ Iterator<Object> ITERATOR__1 = BOXED_resources.iterator();
+		        /*@Thrown*/ SequenceValue collect_1;
 		        while (true) {
 		            if (!ITERATOR__1.hasNext()) {
 		                collect_1 = accumulator;
 		                break;
 		            }
-		            /*@Nullable*/ /*@NonInvalid*/ Resource _1 = (Resource)ITERATOR__1.next();
+		            /*@NonInvalid*/ Resource _1 = (Resource)ITERATOR__1.next();
 		            /**
 		             * links
 		             */
-		            if (_1 == null) {
-		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Resource::links\'");
-		            }
-		            final /*@NonNull*/ /*@Thrown*/ List<Link> links = _1.getLinks();
-		            final /*@NonNull*/ /*@Thrown*/ OrderedSetValue BOXED_links = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Link, links);
+		            final /*@Thrown*/ List<Link> links = _1.getLinks();
+		            final /*@Thrown*/ OrderedSetValue BOXED_links = idResolver.createOrderedSetOfAll(OCCITables.ORD_CLSSid_Link, links);
 		            //
 		            for (Object value : BOXED_links.flatten().getElements()) {
 		                accumulator.add(value);
 		            }
 		        }
-		        /*@NonNull*/ /*@Thrown*/ SequenceValue.Accumulator accumulator_0 = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_CLSSid_Kind);
-		        /*@Nullable*/ Iterator<?> ITERATOR__1_0 = collect_1.iterator();
-		        /*@NonNull*/ /*@Thrown*/ SequenceValue collect_0;
+		        /*@Thrown*/ SequenceValue.Accumulator accumulator_0 = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_CLSSid_Kind);
+		        /*@NonNull*/ Iterator<Object> ITERATOR__1_0 = collect_1.iterator();
+		        /*@Thrown*/ SequenceValue collect_0;
 		        while (true) {
 		            if (!ITERATOR__1_0.hasNext()) {
 		                collect_0 = accumulator_0;
 		                break;
 		            }
-		            /*@Nullable*/ /*@NonInvalid*/ Link _1_0 = (Link)ITERATOR__1_0.next();
+		            /*@NonInvalid*/ Link _1_0 = (Link)ITERATOR__1_0.next();
 		            /**
 		             * kind
 		             */
-		            if (_1_0 == null) {
-		                throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Entity::kind\'");
-		            }
-		            final /*@NonNull*/ /*@Thrown*/ Kind kind = _1_0.getKind();
+		            final /*@Thrown*/ Kind kind = _1_0.getKind();
 		            //
 		            accumulator_0.add(kind);
 		        }
-		        /*@NonNull*/ /*@Thrown*/ SequenceValue.Accumulator accumulator_1 = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_CLSSid_OclElement);
-		        /*@NonNull*/ Iterator<?> ITERATOR__1_1 = collect_0.iterator();
-		        /*@NonNull*/ /*@Thrown*/ SequenceValue collect;
+		        /*@Thrown*/ SequenceValue.Accumulator accumulator_1 = ValueUtil.createSequenceAccumulatorValue(OCCITables.SEQ_CLSSid_OclElement);
+		        /*@NonNull*/ Iterator<Object> ITERATOR__1_1 = collect_0.iterator();
+		        /*@Thrown*/ SequenceValue collect;
 		        while (true) {
 		            if (!ITERATOR__1_1.hasNext()) {
 		                collect = accumulator_1;
 		                break;
 		            }
-		            /*@NonNull*/ /*@NonInvalid*/ Kind _1_1 = (Kind)ITERATOR__1_1.next();
+		            /*@NonInvalid*/ Kind _1_1 = (Kind)ITERATOR__1_1.next();
 		            /**
 		             * oclContainer()
 		             */
-		            final /*@Nullable*/ /*@NonInvalid*/ Object oclContainer = ClassifierOclContainerOperation.INSTANCE.evaluate(evaluator, _1_1);
+		            final /*@NonInvalid*/ Object oclContainer = ClassifierOclContainerOperation.INSTANCE.evaluate(executor, _1_1);
 		            //
 		            if (oclContainer instanceof CollectionValue) {
 		                for (Object value : ((CollectionValue)oclContainer).flatten().getElements()) {
@@ -1011,13 +976,13 @@ public class ConfigurationImpl extends MinimalEObjectImpl.Container implements C
 		                accumulator_1.add(oclContainer);
 		            }
 		        }
-		        final /*@Thrown*/ boolean status = ClassUtil.nonNullState(CollectionIncludesAllOperation.INSTANCE.evaluate(BOXED_use, collect).booleanValue());
+		        final /*@Thrown*/ boolean status = CollectionIncludesAllOperation.INSTANCE.evaluate(BOXED_use, collect).booleanValue();
 		        CAUGHT_status = status;
 		    }
 		    catch (Exception e) {
 		        CAUGHT_status = ValueUtil.createInvalidValue(e);
 		    }
-		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Configuration_c_c_AllResourcesLinksKindsInUse, this, null, diagnostics, context, null, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
+		    final /*@NonInvalid*/ boolean logDiagnostic = CGStringLogDiagnosticOperation.INSTANCE.evaluate(executor, TypeId.BOOLEAN, OCCITables.STR_Configuration_c_c_AllResourcesLinksKindsInUse, this, null, diagnostics, context, null, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue();
 		    symbol_0 = logDiagnostic;
 		}
 		return Boolean.TRUE == symbol_0;

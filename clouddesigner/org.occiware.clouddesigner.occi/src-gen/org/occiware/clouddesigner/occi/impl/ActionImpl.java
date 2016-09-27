@@ -20,9 +20,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-
-import org.eclipse.ocl.pivot.evaluation.Evaluator;
-
+import org.eclipse.ocl.pivot.evaluation.Executor;
 import org.eclipse.ocl.pivot.ids.IdResolver;
 import org.eclipse.ocl.pivot.ids.TypeId;
 
@@ -102,36 +100,36 @@ public class ActionImpl extends CategoryImpl implements Action {
 		 *         'Action::CorrectScheme'.logDiagnostic(self, null, diagnostics, context, null, severity, status, 0)
 		 *     endif
 		 */
-		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
-		final /*@NonNull*/ /*@NonInvalid*/ IdResolver idResolver = evaluator.getIdResolver();
-		final /*@NonNull*/ /*@NonInvalid*/ IntegerValue severity_0 = ClassUtil.nonNullState(CGStringGetSeverityOperation.INSTANCE.evaluate(evaluator, OCCITables.STR_Action_c_c_CorrectScheme));
-		final /*@NonInvalid*/ boolean le = ClassUtil.nonNullState(OclComparableLessThanEqualOperation.INSTANCE.evaluate(evaluator, severity_0, OCCITables.INT_0).booleanValue());
+		final /*@NonInvalid*/ Executor executor = PivotUtilInternal.getExecutor(this);
+		final /*@NonInvalid*/ IdResolver idResolver = executor.getIdResolver();
+		final /*@NonInvalid*/ IntegerValue severity_0 = CGStringGetSeverityOperation.INSTANCE.evaluate(executor, OCCITables.STR_Action_c_c_CorrectScheme);
+		final /*@NonInvalid*/ boolean le = OclComparableLessThanEqualOperation.INSTANCE.evaluate(executor, severity_0, OCCITables.INT_0).booleanValue();
 		/*@NonInvalid*/ boolean symbol_0;
 		if (le) {
 		    symbol_0 = ValueUtil.TRUE_VALUE;
 		}
 		else {
-		    /*@NonNull*/ /*@Caught*/ Object CAUGHT_eq;
+		    /*@Caught*/ /*@NonNull*/ Object CAUGHT_eq;
 		    try {
-		        final /*@NonNull*/ /*@NonInvalid*/ org.eclipse.ocl.pivot.Class TYP_occi_c_c_Category_0 = idResolver.getClass(OCCITables.CLSSid_Category, null);
-		        final /*@Nullable*/ /*@NonInvalid*/ Object oclContainer = ClassifierOclContainerOperation.INSTANCE.evaluate(evaluator, this);
-		        final /*@NonNull*/ /*@Thrown*/ Category category = ClassUtil.nonNullState((Category)OclAnyOclAsTypeOperation.INSTANCE.evaluate(evaluator, oclContainer, TYP_occi_c_c_Category_0));
-		        final /*@NonNull*/ /*@Thrown*/ String scheme_0 = category.getScheme();
-		        final /*@NonNull*/ /*@Thrown*/ String scheme = this.getScheme();
-		        final /*@NonNull*/ /*@Thrown*/ IntegerValue size = ClassUtil.nonNullState(StringSizeOperation.INSTANCE.evaluate(scheme_0));
-		        final /*@NonNull*/ /*@Thrown*/ IntegerValue diff = ClassUtil.nonNullState((IntegerValue)NumericMinusOperation.INSTANCE.evaluate(size, OCCITables.INT_1));
-		        final /*@NonNull*/ /*@Thrown*/ String substring = ClassUtil.nonNullState(StringSubstringOperation.INSTANCE.evaluate(scheme_0, OCCITables.INT_1, diff));
-		        final /*@NonNull*/ /*@Thrown*/ String sum = ClassUtil.nonNullState(StringConcatOperation.INSTANCE.evaluate(substring, OCCITables.STR_quot));
-		        final /*@NonNull*/ /*@Thrown*/ String term = category.getTerm();
-		        final /*@NonNull*/ /*@Thrown*/ String sum_0 = ClassUtil.nonNullState(StringConcatOperation.INSTANCE.evaluate(sum, term));
-		        final /*@NonNull*/ /*@Thrown*/ String sum_1 = ClassUtil.nonNullState(StringConcatOperation.INSTANCE.evaluate(sum_0, OCCITables.STR__s_action_35));
+		        final /*@NonInvalid*/ org.eclipse.ocl.pivot.Class TYP_occi_c_c_Category_0 = idResolver.getClass(OCCITables.CLSSid_Category, null);
+		        final /*@NonInvalid*/ Object oclContainer = ClassifierOclContainerOperation.INSTANCE.evaluate(executor, this);
+		        final /*@Thrown*/ Category category = ClassUtil.nonNullState((Category)OclAnyOclAsTypeOperation.INSTANCE.evaluate(executor, oclContainer, TYP_occi_c_c_Category_0));
+		        final /*@Thrown*/ String scheme_0 = category.getScheme();
+		        final /*@Thrown*/ String scheme = this.getScheme();
+		        final /*@Thrown*/ IntegerValue size = StringSizeOperation.INSTANCE.evaluate(scheme_0);
+		        final /*@Thrown*/ IntegerValue diff = (IntegerValue)NumericMinusOperation.INSTANCE.evaluate(size, OCCITables.INT_1);
+		        final /*@Thrown*/ String substring = StringSubstringOperation.INSTANCE.evaluate(scheme_0, OCCITables.INT_1, diff);
+		        final /*@Thrown*/ String sum = StringConcatOperation.INSTANCE.evaluate(substring, OCCITables.STR_quot);
+		        final /*@Thrown*/ String term = category.getTerm();
+		        final /*@Thrown*/ String sum_0 = StringConcatOperation.INSTANCE.evaluate(sum, term);
+		        final /*@Thrown*/ String sum_1 = StringConcatOperation.INSTANCE.evaluate(sum_0, OCCITables.STR__s_action_35);
 		        final /*@Thrown*/ boolean eq = scheme.equals(sum_1);
 		        CAUGHT_eq = eq;
 		    }
 		    catch (Exception e) {
 		        CAUGHT_eq = ValueUtil.createInvalidValue(e);
 		    }
-		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Action_c_c_CorrectScheme, this, null, diagnostics, context, null, severity_0, CAUGHT_eq, OCCITables.INT_0).booleanValue());
+		    final /*@NonInvalid*/ boolean logDiagnostic = CGStringLogDiagnosticOperation.INSTANCE.evaluate(executor, TypeId.BOOLEAN, OCCITables.STR_Action_c_c_CorrectScheme, this, null, diagnostics, context, null, severity_0, CAUGHT_eq, OCCITables.INT_0).booleanValue();
 		    symbol_0 = logDiagnostic;
 		}
 		return Boolean.TRUE == symbol_0;

@@ -21,16 +21,8 @@
  *******************************************************************************/
 package org.occiware.clouddesigner.occi;
 
-import java.lang.String;
-import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.ocl.pivot.ParameterTypes;
 import org.eclipse.ocl.pivot.TemplateParameters;
-import org.eclipse.ocl.pivot.ids.ClassId;
-import org.eclipse.ocl.pivot.ids.CollectionTypeId;
-import org.eclipse.ocl.pivot.ids.DataTypeId;
-import org.eclipse.ocl.pivot.ids.IdManager;
-import org.eclipse.ocl.pivot.ids.NsURIPackageId;
-import org.eclipse.ocl.pivot.ids.RootPackageId;
 import org.eclipse.ocl.pivot.ids.TypeId;
 import org.eclipse.ocl.pivot.internal.library.ecore.EcoreExecutorPackage;
 import org.eclipse.ocl.pivot.internal.library.ecore.EcoreExecutorProperty;
@@ -41,11 +33,9 @@ import org.eclipse.ocl.pivot.internal.library.executor.ExecutorOperation;
 import org.eclipse.ocl.pivot.internal.library.executor.ExecutorProperty;
 import org.eclipse.ocl.pivot.internal.library.executor.ExecutorPropertyWithImplementation;
 import org.eclipse.ocl.pivot.internal.library.executor.ExecutorStandardLibrary;
+import org.eclipse.ocl.pivot.internal.library.executor.ExecutorType;
 import org.eclipse.ocl.pivot.oclstdlib.OCLstdlibTables;
 import org.eclipse.ocl.pivot.utilities.TypeUtil;
-import org.eclipse.ocl.pivot.utilities.ValueUtil;
-import org.eclipse.ocl.pivot.values.IntegerValue;
-import org.occiware.clouddesigner.occi.OCCIPackage;
 import org.occiware.clouddesigner.occi.OCCITables;
 
 /**
@@ -74,92 +64,92 @@ public class OCCITables
 	/**
 	 *	Constants used by auto-generated code.
 	 */
-    public static final /*@NonNull*/ /*@NonInvalid*/ RootPackageId PACKid_$metamodel$ = IdManager.getRootPackageId("$metamodel$");
-    public static final /*@NonNull*/ /*@NonInvalid*/ NsURIPackageId PACKid_http_c_s_s_schemas_ogf_org_s_occi_s_core_s_ecore = IdManager.getNsURIPackageId("http://schemas.ogf.org/occi/core/ecore", null, OCCIPackage.eINSTANCE);
-    public static final /*@NonNull*/ /*@NonInvalid*/ NsURIPackageId PACKid_http_c_s_s_www_eclipse_org_s_emf_s_2002_s_Ecore = IdManager.getNsURIPackageId("http://www.eclipse.org/emf/2002/Ecore", null, EcorePackage.eINSTANCE);
-    public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId BAG_PRIMid_String = TypeId.BAG.getSpecializedId(TypeId.STRING);
-    public static final /*@NonNull*/ /*@NonInvalid*/ ClassId CLSSid_Action = OCCITables.PACKid_http_c_s_s_schemas_ogf_org_s_occi_s_core_s_ecore.getClassId("Action", 0);
-    public static final /*@NonNull*/ /*@NonInvalid*/ ClassId CLSSid_Attribute = OCCITables.PACKid_http_c_s_s_schemas_ogf_org_s_occi_s_core_s_ecore.getClassId("Attribute", 0);
-    public static final /*@NonNull*/ /*@NonInvalid*/ ClassId CLSSid_AttributeState = OCCITables.PACKid_http_c_s_s_schemas_ogf_org_s_occi_s_core_s_ecore.getClassId("AttributeState", 0);
-    public static final /*@NonNull*/ /*@NonInvalid*/ ClassId CLSSid_Category = OCCITables.PACKid_http_c_s_s_schemas_ogf_org_s_occi_s_core_s_ecore.getClassId("Category", 0);
-    public static final /*@NonNull*/ /*@NonInvalid*/ ClassId CLSSid_Class = OCCITables.PACKid_$metamodel$.getClassId("Class", 0);
-    public static final /*@NonNull*/ /*@NonInvalid*/ ClassId CLSSid_Configuration = OCCITables.PACKid_http_c_s_s_schemas_ogf_org_s_occi_s_core_s_ecore.getClassId("Configuration", 0);
-    public static final /*@NonNull*/ /*@NonInvalid*/ ClassId CLSSid_EDataType = OCCITables.PACKid_http_c_s_s_www_eclipse_org_s_emf_s_2002_s_Ecore.getClassId("EDataType", 0);
-    public static final /*@NonNull*/ /*@NonInvalid*/ ClassId CLSSid_Entity = OCCITables.PACKid_http_c_s_s_schemas_ogf_org_s_occi_s_core_s_ecore.getClassId("Entity", 0);
-    public static final /*@NonNull*/ /*@NonInvalid*/ ClassId CLSSid_Extension = OCCITables.PACKid_http_c_s_s_schemas_ogf_org_s_occi_s_core_s_ecore.getClassId("Extension", 0);
-    public static final /*@NonNull*/ /*@NonInvalid*/ ClassId CLSSid_Kind = OCCITables.PACKid_http_c_s_s_schemas_ogf_org_s_occi_s_core_s_ecore.getClassId("Kind", 0);
-    public static final /*@NonNull*/ /*@NonInvalid*/ ClassId CLSSid_Link = OCCITables.PACKid_http_c_s_s_schemas_ogf_org_s_occi_s_core_s_ecore.getClassId("Link", 0);
-    public static final /*@NonNull*/ /*@NonInvalid*/ ClassId CLSSid_Mixin = OCCITables.PACKid_http_c_s_s_schemas_ogf_org_s_occi_s_core_s_ecore.getClassId("Mixin", 0);
-    public static final /*@NonNull*/ /*@NonInvalid*/ ClassId CLSSid_OclElement = OCCITables.PACKid_$metamodel$.getClassId("OclElement", 0);
-    public static final /*@NonNull*/ /*@NonInvalid*/ ClassId CLSSid_Resource = OCCITables.PACKid_http_c_s_s_schemas_ogf_org_s_occi_s_core_s_ecore.getClassId("Resource", 0);
-    public static final /*@NonNull*/ /*@NonInvalid*/ DataTypeId DATAid_URI = OCCITables.PACKid_http_c_s_s_schemas_ogf_org_s_occi_s_core_s_ecore.getDataTypeId("URI", 0);
-    public static final /*@NonNull*/ /*@NonInvalid*/ IntegerValue INT_0 = ValueUtil.integerValueOf("0");
-    public static final /*@NonNull*/ /*@NonInvalid*/ IntegerValue INT_1 = ValueUtil.integerValueOf("1");
-    public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId SEQ_PRIMid_String = TypeId.SEQUENCE.getSpecializedId(TypeId.STRING);
-    public static final /*@NonNull*/ /*@NonInvalid*/ String STR_Action_c_c_CorrectScheme = "Action::CorrectScheme";
-    public static final /*@NonNull*/ /*@NonInvalid*/ String STR_Category_c_c_AttributesNameUnique = "Category::AttributesNameUnique";
-    public static final /*@NonNull*/ /*@NonInvalid*/ String STR_Category_c_c_IdentityUnique = "Category::IdentityUnique";
-    public static final /*@NonNull*/ /*@NonInvalid*/ String STR_Category_c_c_SchemeEndsWithSharp = "Category::SchemeEndsWithSharp";
-    public static final /*@NonNull*/ /*@NonInvalid*/ String STR_Configuration_c_c_AllMixinsAreTags = "Configuration::AllMixinsAreTags";
-    public static final /*@NonNull*/ /*@NonInvalid*/ String STR_Configuration_c_c_AllResourcesKindsInUse = "Configuration::AllResourcesKindsInUse";
-    public static final /*@NonNull*/ /*@NonInvalid*/ String STR_Configuration_c_c_AllResourcesLinksKindsInUse = "Configuration::AllResourcesLinksKindsInUse";
-    public static final /*@NonNull*/ /*@NonInvalid*/ String STR_Configuration_c_c_AllResourcesLinksMixinsInUse = "Configuration::AllResourcesLinksMixinsInUse";
-    public static final /*@NonNull*/ /*@NonInvalid*/ String STR_Configuration_c_c_AllResourcesLinksTargetsInConfiguration = "Configuration::AllResourcesLinksTargetsInConfiguration";
-    public static final /*@NonNull*/ /*@NonInvalid*/ String STR_Configuration_c_c_AllResourcesMixinsInUse = "Configuration::AllResourcesMixinsInUse";
-    public static final /*@NonNull*/ /*@NonInvalid*/ String STR_Entity_c_c_AttributesNameUnique = "Entity::AttributesNameUnique";
-    public static final /*@NonNull*/ /*@NonInvalid*/ String STR_Entity_c_c_IdUnique = "Entity::IdUnique";
-    public static final /*@NonNull*/ /*@NonInvalid*/ String STR_Entity_c_c_KindCompatibleWithOneAppliesOfEachMixin = "Entity::KindCompatibleWithOneAppliesOfEachMixin";
-    public static final /*@NonNull*/ /*@NonInvalid*/ String STR_Extension_c_c_KindParentLocalOrImported = "Extension::KindParentLocalOrImported";
-    public static final /*@NonNull*/ /*@NonInvalid*/ String STR_Extension_c_c_KindsSchemeValid = "Extension::KindsSchemeValid";
-    public static final /*@NonNull*/ /*@NonInvalid*/ String STR_Extension_c_c_MixinAppliesLocalOrImported = "Extension::MixinAppliesLocalOrImported";
-    public static final /*@NonNull*/ /*@NonInvalid*/ String STR_Extension_c_c_MixinDependsLocalOrImported = "Extension::MixinDependsLocalOrImported";
-    public static final /*@NonNull*/ /*@NonInvalid*/ String STR_Extension_c_c_MixinsSchemeValid = "Extension::MixinsSchemeValid";
-    public static final /*@NonNull*/ /*@NonInvalid*/ String STR_Extension_c_c_SchemeUnique = "Extension::SchemeUnique";
-    public static final /*@NonNull*/ /*@NonInvalid*/ String STR_Extension_c_c_TermUnicity = "Extension::TermUnicity";
-    public static final /*@NonNull*/ /*@NonInvalid*/ String STR_Kind_c_c_ActionTermUnicity = "Kind::ActionTermUnicity";
-    public static final /*@NonNull*/ /*@NonInvalid*/ String STR_Kind_c_c_AttributesNameNotAlreadyDefinedInParent = "Kind::AttributesNameNotAlreadyDefinedInParent";
-    public static final /*@NonNull*/ /*@NonInvalid*/ String STR_Kind_c_c_CorrectScheme = "Kind::CorrectScheme";
-    public static final /*@NonNull*/ /*@NonInvalid*/ String STR_Kind_c_c_EntityKindIsRootParent = "Kind::EntityKindIsRootParent";
-    public static final /*@NonNull*/ /*@NonInvalid*/ String STR_Kind_c_c_NoCyclicInheritance = "Kind::NoCyclicInheritance";
-    public static final /*@NonNull*/ /*@NonInvalid*/ String STR_Link_c_c_LinkKindIsInParent = "Link::LinkKindIsInParent";
-    public static final /*@NonNull*/ /*@NonInvalid*/ String STR_Mixin_c_c_ActionTermUnicity = "Mixin::ActionTermUnicity";
-    public static final /*@NonNull*/ /*@NonInvalid*/ String STR_Mixin_c_c_AttributesNameNotAlreadyDefinedInDepends = "Mixin::AttributesNameNotAlreadyDefinedInDepends";
-    public static final /*@NonNull*/ /*@NonInvalid*/ String STR_Mixin_c_c_CorrectScheme = "Mixin::CorrectScheme";
-    public static final /*@NonNull*/ /*@NonInvalid*/ String STR_Mixin_c_c_NoCyclicInheritance = "Mixin::NoCyclicInheritance";
-    public static final /*@NonNull*/ /*@NonInvalid*/ String STR_Resource_c_c_ResourceKindIsInParent = "Resource::ResourceKindIsInParent";
-    public static final /*@NonNull*/ /*@NonInvalid*/ String STR__35 = "#";
-    public static final /*@NonNull*/ /*@NonInvalid*/ String STR__s_action_35 = "/action#";
-    public static final /*@NonNull*/ /*@NonInvalid*/ String STR_entity = "entity";
-    public static final /*@NonNull*/ /*@NonInvalid*/ String STR_http_c_s_s_schemas_ogf_org_s_occi_s_core_35 = "http://schemas.ogf.org/occi/core#";
-    public static final /*@NonNull*/ /*@NonInvalid*/ String STR_link = "link";
-    public static final /*@NonNull*/ /*@NonInvalid*/ String STR_quot = "/";
-    public static final /*@NonNull*/ /*@NonInvalid*/ String STR_resource = "resource";
-    public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId BAG_CLSSid_Attribute = TypeId.BAG.getSpecializedId(OCCITables.CLSSid_Attribute);
-    public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId BAG_CLSSid_Configuration = TypeId.BAG.getSpecializedId(OCCITables.CLSSid_Configuration);
-    public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId BAG_CLSSid_Entity = TypeId.BAG.getSpecializedId(OCCITables.CLSSid_Entity);
-    public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId BAG_CLSSid_Extension = TypeId.BAG.getSpecializedId(OCCITables.CLSSid_Extension);
-    public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId BAG_CLSSid_Kind = TypeId.BAG.getSpecializedId(OCCITables.CLSSid_Kind);
-    public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId BAG_CLSSid_Link = TypeId.BAG.getSpecializedId(OCCITables.CLSSid_Link);
-    public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId BAG_CLSSid_Mixin = TypeId.BAG.getSpecializedId(OCCITables.CLSSid_Mixin);
-    public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_Action = TypeId.ORDERED_SET.getSpecializedId(OCCITables.CLSSid_Action);
-    public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_Attribute = TypeId.ORDERED_SET.getSpecializedId(OCCITables.CLSSid_Attribute);
-    public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_AttributeState = TypeId.ORDERED_SET.getSpecializedId(OCCITables.CLSSid_AttributeState);
-    public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_EDataType = TypeId.ORDERED_SET.getSpecializedId(OCCITables.CLSSid_EDataType);
-    public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_Extension = TypeId.ORDERED_SET.getSpecializedId(OCCITables.CLSSid_Extension);
-    public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_Kind = TypeId.ORDERED_SET.getSpecializedId(OCCITables.CLSSid_Kind);
-    public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_Link = TypeId.ORDERED_SET.getSpecializedId(OCCITables.CLSSid_Link);
-    public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_Mixin = TypeId.ORDERED_SET.getSpecializedId(OCCITables.CLSSid_Mixin);
-    public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_Resource = TypeId.ORDERED_SET.getSpecializedId(OCCITables.CLSSid_Resource);
-    public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId SEQ_CLSSid_Attribute = TypeId.SEQUENCE.getSpecializedId(OCCITables.CLSSid_Attribute);
-    public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId SEQ_CLSSid_Kind = TypeId.SEQUENCE.getSpecializedId(OCCITables.CLSSid_Kind);
-    public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId SEQ_CLSSid_Link = TypeId.SEQUENCE.getSpecializedId(OCCITables.CLSSid_Link);
-    public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId SEQ_CLSSid_Mixin = TypeId.SEQUENCE.getSpecializedId(OCCITables.CLSSid_Mixin);
-    public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId SEQ_CLSSid_OclElement = TypeId.SEQUENCE.getSpecializedId(OCCITables.CLSSid_OclElement);
-    public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId SEQ_CLSSid_Resource = TypeId.SEQUENCE.getSpecializedId(OCCITables.CLSSid_Resource);
-    public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId SET_CLSSid_Category = TypeId.SET.getSpecializedId(OCCITables.CLSSid_Category);
-    public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId SET_CLSSid_Entity = TypeId.SET.getSpecializedId(OCCITables.CLSSid_Entity);
-    public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId SET_CLSSid_Extension = TypeId.SET.getSpecializedId(OCCITables.CLSSid_Extension);
-    public static final /*@NonNull*/ /*@NonInvalid*/ CollectionTypeId SET_CLSSid_Kind = TypeId.SET.getSpecializedId(OCCITables.CLSSid_Kind);
+    public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.RootPackageId PACKid_$metamodel$ = org.eclipse.ocl.pivot.ids.IdManager.getRootPackageId("$metamodel$");
+    public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.NsURIPackageId PACKid_http_c_s_s_schemas_ogf_org_s_occi_s_core_s_ecore = org.eclipse.ocl.pivot.ids.IdManager.getNsURIPackageId("http://schemas.ogf.org/occi/core/ecore", null, org.occiware.clouddesigner.occi.OCCIPackage.eINSTANCE);
+    public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.NsURIPackageId PACKid_http_c_s_s_www_eclipse_org_s_emf_s_2002_s_Ecore = org.eclipse.ocl.pivot.ids.IdManager.getNsURIPackageId("http://www.eclipse.org/emf/2002/Ecore", null, org.eclipse.emf.ecore.EcorePackage.eINSTANCE);
+    public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId BAG_PRIMid_String = org.eclipse.ocl.pivot.ids.TypeId.BAG.getSpecializedId(org.eclipse.ocl.pivot.ids.TypeId.STRING);
+    public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.ClassId CLSSid_Action = org.occiware.clouddesigner.occi.OCCITables.PACKid_http_c_s_s_schemas_ogf_org_s_occi_s_core_s_ecore.getClassId("Action", 0);
+    public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.ClassId CLSSid_Attribute = org.occiware.clouddesigner.occi.OCCITables.PACKid_http_c_s_s_schemas_ogf_org_s_occi_s_core_s_ecore.getClassId("Attribute", 0);
+    public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.ClassId CLSSid_AttributeState = org.occiware.clouddesigner.occi.OCCITables.PACKid_http_c_s_s_schemas_ogf_org_s_occi_s_core_s_ecore.getClassId("AttributeState", 0);
+    public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.ClassId CLSSid_Category = org.occiware.clouddesigner.occi.OCCITables.PACKid_http_c_s_s_schemas_ogf_org_s_occi_s_core_s_ecore.getClassId("Category", 0);
+    public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.ClassId CLSSid_Class = org.occiware.clouddesigner.occi.OCCITables.PACKid_$metamodel$.getClassId("Class", 0);
+    public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.ClassId CLSSid_Configuration = org.occiware.clouddesigner.occi.OCCITables.PACKid_http_c_s_s_schemas_ogf_org_s_occi_s_core_s_ecore.getClassId("Configuration", 0);
+    public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.ClassId CLSSid_EDataType = org.occiware.clouddesigner.occi.OCCITables.PACKid_http_c_s_s_www_eclipse_org_s_emf_s_2002_s_Ecore.getClassId("EDataType", 0);
+    public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.ClassId CLSSid_Entity = org.occiware.clouddesigner.occi.OCCITables.PACKid_http_c_s_s_schemas_ogf_org_s_occi_s_core_s_ecore.getClassId("Entity", 0);
+    public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.ClassId CLSSid_Extension = org.occiware.clouddesigner.occi.OCCITables.PACKid_http_c_s_s_schemas_ogf_org_s_occi_s_core_s_ecore.getClassId("Extension", 0);
+    public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.ClassId CLSSid_Kind = org.occiware.clouddesigner.occi.OCCITables.PACKid_http_c_s_s_schemas_ogf_org_s_occi_s_core_s_ecore.getClassId("Kind", 0);
+    public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.ClassId CLSSid_Link = org.occiware.clouddesigner.occi.OCCITables.PACKid_http_c_s_s_schemas_ogf_org_s_occi_s_core_s_ecore.getClassId("Link", 0);
+    public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.ClassId CLSSid_Mixin = org.occiware.clouddesigner.occi.OCCITables.PACKid_http_c_s_s_schemas_ogf_org_s_occi_s_core_s_ecore.getClassId("Mixin", 0);
+    public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.ClassId CLSSid_OclElement = org.occiware.clouddesigner.occi.OCCITables.PACKid_$metamodel$.getClassId("OclElement", 0);
+    public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.ClassId CLSSid_Resource = org.occiware.clouddesigner.occi.OCCITables.PACKid_http_c_s_s_schemas_ogf_org_s_occi_s_core_s_ecore.getClassId("Resource", 0);
+    public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.DataTypeId DATAid_URI = org.occiware.clouddesigner.occi.OCCITables.PACKid_http_c_s_s_schemas_ogf_org_s_occi_s_core_s_ecore.getDataTypeId("URI", 0);
+    public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.values.IntegerValue INT_0 = org.eclipse.ocl.pivot.utilities.ValueUtil.integerValueOf("0");
+    public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.values.IntegerValue INT_1 = org.eclipse.ocl.pivot.utilities.ValueUtil.integerValueOf("1");
+    public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId SEQ_PRIMid_String = org.eclipse.ocl.pivot.ids.TypeId.SEQUENCE.getSpecializedId(org.eclipse.ocl.pivot.ids.TypeId.STRING);
+    public static final /*@NonInvalid*/ java.lang.String STR_Action_c_c_CorrectScheme = "Action::CorrectScheme";
+    public static final /*@NonInvalid*/ java.lang.String STR_Category_c_c_AttributesNameUnique = "Category::AttributesNameUnique";
+    public static final /*@NonInvalid*/ java.lang.String STR_Category_c_c_IdentityUnique = "Category::IdentityUnique";
+    public static final /*@NonInvalid*/ java.lang.String STR_Category_c_c_SchemeEndsWithSharp = "Category::SchemeEndsWithSharp";
+    public static final /*@NonInvalid*/ java.lang.String STR_Configuration_c_c_AllMixinsAreTags = "Configuration::AllMixinsAreTags";
+    public static final /*@NonInvalid*/ java.lang.String STR_Configuration_c_c_AllResourcesKindsInUse = "Configuration::AllResourcesKindsInUse";
+    public static final /*@NonInvalid*/ java.lang.String STR_Configuration_c_c_AllResourcesLinksKindsInUse = "Configuration::AllResourcesLinksKindsInUse";
+    public static final /*@NonInvalid*/ java.lang.String STR_Configuration_c_c_AllResourcesLinksMixinsInUse = "Configuration::AllResourcesLinksMixinsInUse";
+    public static final /*@NonInvalid*/ java.lang.String STR_Configuration_c_c_AllResourcesLinksTargetsInConfiguration = "Configuration::AllResourcesLinksTargetsInConfiguration";
+    public static final /*@NonInvalid*/ java.lang.String STR_Configuration_c_c_AllResourcesMixinsInUse = "Configuration::AllResourcesMixinsInUse";
+    public static final /*@NonInvalid*/ java.lang.String STR_Entity_c_c_AttributesNameUnique = "Entity::AttributesNameUnique";
+    public static final /*@NonInvalid*/ java.lang.String STR_Entity_c_c_IdUnique = "Entity::IdUnique";
+    public static final /*@NonInvalid*/ java.lang.String STR_Entity_c_c_KindCompatibleWithOneAppliesOfEachMixin = "Entity::KindCompatibleWithOneAppliesOfEachMixin";
+    public static final /*@NonInvalid*/ java.lang.String STR_Extension_c_c_KindParentLocalOrImported = "Extension::KindParentLocalOrImported";
+    public static final /*@NonInvalid*/ java.lang.String STR_Extension_c_c_KindsSchemeValid = "Extension::KindsSchemeValid";
+    public static final /*@NonInvalid*/ java.lang.String STR_Extension_c_c_MixinAppliesLocalOrImported = "Extension::MixinAppliesLocalOrImported";
+    public static final /*@NonInvalid*/ java.lang.String STR_Extension_c_c_MixinDependsLocalOrImported = "Extension::MixinDependsLocalOrImported";
+    public static final /*@NonInvalid*/ java.lang.String STR_Extension_c_c_MixinsSchemeValid = "Extension::MixinsSchemeValid";
+    public static final /*@NonInvalid*/ java.lang.String STR_Extension_c_c_SchemeUnique = "Extension::SchemeUnique";
+    public static final /*@NonInvalid*/ java.lang.String STR_Extension_c_c_TermUnicity = "Extension::TermUnicity";
+    public static final /*@NonInvalid*/ java.lang.String STR_Kind_c_c_ActionTermUnicity = "Kind::ActionTermUnicity";
+    public static final /*@NonInvalid*/ java.lang.String STR_Kind_c_c_AttributesNameNotAlreadyDefinedInParent = "Kind::AttributesNameNotAlreadyDefinedInParent";
+    public static final /*@NonInvalid*/ java.lang.String STR_Kind_c_c_CorrectScheme = "Kind::CorrectScheme";
+    public static final /*@NonInvalid*/ java.lang.String STR_Kind_c_c_EntityKindIsRootParent = "Kind::EntityKindIsRootParent";
+    public static final /*@NonInvalid*/ java.lang.String STR_Kind_c_c_NoCyclicInheritance = "Kind::NoCyclicInheritance";
+    public static final /*@NonInvalid*/ java.lang.String STR_Link_c_c_LinkKindIsInParent = "Link::LinkKindIsInParent";
+    public static final /*@NonInvalid*/ java.lang.String STR_Mixin_c_c_ActionTermUnicity = "Mixin::ActionTermUnicity";
+    public static final /*@NonInvalid*/ java.lang.String STR_Mixin_c_c_AttributesNameNotAlreadyDefinedInDepends = "Mixin::AttributesNameNotAlreadyDefinedInDepends";
+    public static final /*@NonInvalid*/ java.lang.String STR_Mixin_c_c_CorrectScheme = "Mixin::CorrectScheme";
+    public static final /*@NonInvalid*/ java.lang.String STR_Mixin_c_c_NoCyclicInheritance = "Mixin::NoCyclicInheritance";
+    public static final /*@NonInvalid*/ java.lang.String STR_Resource_c_c_ResourceKindIsInParent = "Resource::ResourceKindIsInParent";
+    public static final /*@NonInvalid*/ java.lang.String STR__35 = "#";
+    public static final /*@NonInvalid*/ java.lang.String STR__s_action_35 = "/action#";
+    public static final /*@NonInvalid*/ java.lang.String STR_entity = "entity";
+    public static final /*@NonInvalid*/ java.lang.String STR_http_c_s_s_schemas_ogf_org_s_occi_s_core_35 = "http://schemas.ogf.org/occi/core#";
+    public static final /*@NonInvalid*/ java.lang.String STR_link = "link";
+    public static final /*@NonInvalid*/ java.lang.String STR_quot = "/";
+    public static final /*@NonInvalid*/ java.lang.String STR_resource = "resource";
+    public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId BAG_CLSSid_Attribute = org.eclipse.ocl.pivot.ids.TypeId.BAG.getSpecializedId(org.occiware.clouddesigner.occi.OCCITables.CLSSid_Attribute);
+    public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId BAG_CLSSid_Configuration = org.eclipse.ocl.pivot.ids.TypeId.BAG.getSpecializedId(org.occiware.clouddesigner.occi.OCCITables.CLSSid_Configuration);
+    public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId BAG_CLSSid_Entity = org.eclipse.ocl.pivot.ids.TypeId.BAG.getSpecializedId(org.occiware.clouddesigner.occi.OCCITables.CLSSid_Entity);
+    public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId BAG_CLSSid_Extension = org.eclipse.ocl.pivot.ids.TypeId.BAG.getSpecializedId(org.occiware.clouddesigner.occi.OCCITables.CLSSid_Extension);
+    public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId BAG_CLSSid_Kind = org.eclipse.ocl.pivot.ids.TypeId.BAG.getSpecializedId(org.occiware.clouddesigner.occi.OCCITables.CLSSid_Kind);
+    public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId BAG_CLSSid_Link = org.eclipse.ocl.pivot.ids.TypeId.BAG.getSpecializedId(org.occiware.clouddesigner.occi.OCCITables.CLSSid_Link);
+    public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId BAG_CLSSid_Mixin = org.eclipse.ocl.pivot.ids.TypeId.BAG.getSpecializedId(org.occiware.clouddesigner.occi.OCCITables.CLSSid_Mixin);
+    public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId ORD_CLSSid_Action = org.eclipse.ocl.pivot.ids.TypeId.ORDERED_SET.getSpecializedId(org.occiware.clouddesigner.occi.OCCITables.CLSSid_Action);
+    public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId ORD_CLSSid_Attribute = org.eclipse.ocl.pivot.ids.TypeId.ORDERED_SET.getSpecializedId(org.occiware.clouddesigner.occi.OCCITables.CLSSid_Attribute);
+    public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId ORD_CLSSid_AttributeState = org.eclipse.ocl.pivot.ids.TypeId.ORDERED_SET.getSpecializedId(org.occiware.clouddesigner.occi.OCCITables.CLSSid_AttributeState);
+    public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId ORD_CLSSid_EDataType = org.eclipse.ocl.pivot.ids.TypeId.ORDERED_SET.getSpecializedId(org.occiware.clouddesigner.occi.OCCITables.CLSSid_EDataType);
+    public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId ORD_CLSSid_Extension = org.eclipse.ocl.pivot.ids.TypeId.ORDERED_SET.getSpecializedId(org.occiware.clouddesigner.occi.OCCITables.CLSSid_Extension);
+    public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId ORD_CLSSid_Kind = org.eclipse.ocl.pivot.ids.TypeId.ORDERED_SET.getSpecializedId(org.occiware.clouddesigner.occi.OCCITables.CLSSid_Kind);
+    public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId ORD_CLSSid_Link = org.eclipse.ocl.pivot.ids.TypeId.ORDERED_SET.getSpecializedId(org.occiware.clouddesigner.occi.OCCITables.CLSSid_Link);
+    public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId ORD_CLSSid_Mixin = org.eclipse.ocl.pivot.ids.TypeId.ORDERED_SET.getSpecializedId(org.occiware.clouddesigner.occi.OCCITables.CLSSid_Mixin);
+    public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId ORD_CLSSid_Resource = org.eclipse.ocl.pivot.ids.TypeId.ORDERED_SET.getSpecializedId(org.occiware.clouddesigner.occi.OCCITables.CLSSid_Resource);
+    public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId SEQ_CLSSid_Attribute = org.eclipse.ocl.pivot.ids.TypeId.SEQUENCE.getSpecializedId(org.occiware.clouddesigner.occi.OCCITables.CLSSid_Attribute);
+    public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId SEQ_CLSSid_Kind = org.eclipse.ocl.pivot.ids.TypeId.SEQUENCE.getSpecializedId(org.occiware.clouddesigner.occi.OCCITables.CLSSid_Kind);
+    public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId SEQ_CLSSid_Link = org.eclipse.ocl.pivot.ids.TypeId.SEQUENCE.getSpecializedId(org.occiware.clouddesigner.occi.OCCITables.CLSSid_Link);
+    public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId SEQ_CLSSid_Mixin = org.eclipse.ocl.pivot.ids.TypeId.SEQUENCE.getSpecializedId(org.occiware.clouddesigner.occi.OCCITables.CLSSid_Mixin);
+    public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId SEQ_CLSSid_OclElement = org.eclipse.ocl.pivot.ids.TypeId.SEQUENCE.getSpecializedId(org.occiware.clouddesigner.occi.OCCITables.CLSSid_OclElement);
+    public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId SEQ_CLSSid_Resource = org.eclipse.ocl.pivot.ids.TypeId.SEQUENCE.getSpecializedId(org.occiware.clouddesigner.occi.OCCITables.CLSSid_Resource);
+    public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId SET_CLSSid_Category = org.eclipse.ocl.pivot.ids.TypeId.SET.getSpecializedId(org.occiware.clouddesigner.occi.OCCITables.CLSSid_Category);
+    public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId SET_CLSSid_Entity = org.eclipse.ocl.pivot.ids.TypeId.SET.getSpecializedId(org.occiware.clouddesigner.occi.OCCITables.CLSSid_Entity);
+    public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId SET_CLSSid_Extension = org.eclipse.ocl.pivot.ids.TypeId.SET.getSpecializedId(org.occiware.clouddesigner.occi.OCCITables.CLSSid_Extension);
+    public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId SET_CLSSid_Kind = org.eclipse.ocl.pivot.ids.TypeId.SET.getSpecializedId(org.occiware.clouddesigner.occi.OCCITables.CLSSid_Kind);
 
 	/**
 	 *	The type parameters for templated types and operations.
@@ -193,9 +183,9 @@ public class OCCITables
 		public static final /*@NonNull*/ EcoreExecutorType _Attribute = new EcoreExecutorType(OCCIPackage.Literals.ATTRIBUTE, PACKAGE, 0);
 		public static final /*@NonNull*/ EcoreExecutorType _AttributeState = new EcoreExecutorType(OCCIPackage.Literals.ATTRIBUTE_STATE, PACKAGE, 0);
 		public static final /*@NonNull*/ EcoreExecutorType _Boolean = new EcoreExecutorType(TypeId.BOOLEAN, PACKAGE, 0);
-		public static final /*@NonNull*/ EcoreExecutorType _Category = new EcoreExecutorType(OCCIPackage.Literals.CATEGORY, PACKAGE, 0);
+		public static final /*@NonNull*/ EcoreExecutorType _Category = new EcoreExecutorType(OCCIPackage.Literals.CATEGORY, PACKAGE, 0 | ExecutorType.ABSTRACT);
 		public static final /*@NonNull*/ EcoreExecutorType _Configuration = new EcoreExecutorType(OCCIPackage.Literals.CONFIGURATION, PACKAGE, 0);
-		public static final /*@NonNull*/ EcoreExecutorType _Entity = new EcoreExecutorType(OCCIPackage.Literals.ENTITY, PACKAGE, 0);
+		public static final /*@NonNull*/ EcoreExecutorType _Entity = new EcoreExecutorType(OCCIPackage.Literals.ENTITY, PACKAGE, 0 | ExecutorType.ABSTRACT);
 		public static final /*@NonNull*/ EcoreExecutorType _Extension = new EcoreExecutorType(OCCIPackage.Literals.EXTENSION, PACKAGE, 0);
 		public static final /*@NonNull*/ EcoreExecutorType _Kind = new EcoreExecutorType(OCCIPackage.Literals.KIND, PACKAGE, 0);
 		public static final /*@NonNull*/ EcoreExecutorType _Link = new EcoreExecutorType(OCCIPackage.Literals.LINK, PACKAGE, 0);
@@ -205,7 +195,7 @@ public class OCCITables
 		public static final /*@NonNull*/ EcoreExecutorType _String = new EcoreExecutorType(TypeId.STRING, PACKAGE, 0);
 		public static final /*@NonNull*/ EcoreExecutorType _URI = new EcoreExecutorType("URI", PACKAGE, 0);
 
-		private static final /*@NonNull*/ EcoreExecutorType[] types = {
+		private static final /*@NonNull*/ EcoreExecutorType /*@NonNull*/ [] types = {
 			_Action,
 			_Attribute,
 			_AttributeState,
@@ -259,7 +249,7 @@ public class OCCITables
 		private static final /*@NonNull*/ ExecutorFragment _AttributeState__OclAny = new ExecutorFragment(Types._AttributeState, OCLstdlibTables.Types._OclAny);
 		private static final /*@NonNull*/ ExecutorFragment _AttributeState__OclElement = new ExecutorFragment(Types._AttributeState, OCLstdlibTables.Types._OclElement);
 
-		private static final /*@NonNull*/ ExecutorFragment _Boolean__Boolean = new ExecutorFragment(Types._Boolean, OCLstdlibTables.Types._Boolean);
+		private static final /*@NonNull*/ ExecutorFragment _Boolean__Boolean = new ExecutorFragment(Types._Boolean, OCCITables.Types._Boolean);
 		private static final /*@NonNull*/ ExecutorFragment _Boolean__OclAny = new ExecutorFragment(Types._Boolean, OCLstdlibTables.Types._OclAny);
 
 		private static final /*@NonNull*/ ExecutorFragment _Category__Category = new ExecutorFragment(Types._Category, OCCITables.Types._Category);
@@ -293,12 +283,8 @@ public class OCCITables
 		private static final /*@NonNull*/ ExecutorFragment _Mixin__OclAny = new ExecutorFragment(Types._Mixin, OCLstdlibTables.Types._OclAny);
 		private static final /*@NonNull*/ ExecutorFragment _Mixin__OclElement = new ExecutorFragment(Types._Mixin, OCLstdlibTables.Types._OclElement);
 
-		private static final /*@NonNull*/ ExecutorFragment _Number__Integer = new ExecutorFragment(Types._Number, OCLstdlibTables.Types._Integer);
 		private static final /*@NonNull*/ ExecutorFragment _Number__Number = new ExecutorFragment(Types._Number, OCCITables.Types._Number);
 		private static final /*@NonNull*/ ExecutorFragment _Number__OclAny = new ExecutorFragment(Types._Number, OCLstdlibTables.Types._OclAny);
-		private static final /*@NonNull*/ ExecutorFragment _Number__OclComparable = new ExecutorFragment(Types._Number, OCLstdlibTables.Types._OclComparable);
-		private static final /*@NonNull*/ ExecutorFragment _Number__OclSummable = new ExecutorFragment(Types._Number, OCLstdlibTables.Types._OclSummable);
-		private static final /*@NonNull*/ ExecutorFragment _Number__Real = new ExecutorFragment(Types._Number, OCLstdlibTables.Types._Real);
 
 		private static final /*@NonNull*/ ExecutorFragment _Resource__Entity = new ExecutorFragment(Types._Resource, OCCITables.Types._Entity);
 		private static final /*@NonNull*/ ExecutorFragment _Resource__OclAny = new ExecutorFragment(Types._Resource, OCLstdlibTables.Types._OclAny);
@@ -309,13 +295,9 @@ public class OCCITables
 		private static final /*@NonNull*/ ExecutorFragment _String__OclComparable = new ExecutorFragment(Types._String, OCLstdlibTables.Types._OclComparable);
 		private static final /*@NonNull*/ ExecutorFragment _String__OclElement = new ExecutorFragment(Types._String, OCLstdlibTables.Types._OclElement);
 		private static final /*@NonNull*/ ExecutorFragment _String__OclSummable = new ExecutorFragment(Types._String, OCLstdlibTables.Types._OclSummable);
-		private static final /*@NonNull*/ ExecutorFragment _String__String = new ExecutorFragment(Types._String, OCLstdlibTables.Types._String);
+		private static final /*@NonNull*/ ExecutorFragment _String__String = new ExecutorFragment(Types._String, OCCITables.Types._String);
 
 		private static final /*@NonNull*/ ExecutorFragment _URI__OclAny = new ExecutorFragment(Types._URI, OCLstdlibTables.Types._OclAny);
-		private static final /*@NonNull*/ ExecutorFragment _URI__OclComparable = new ExecutorFragment(Types._URI, OCLstdlibTables.Types._OclComparable);
-		private static final /*@NonNull*/ ExecutorFragment _URI__OclElement = new ExecutorFragment(Types._URI, OCLstdlibTables.Types._OclElement);
-		private static final /*@NonNull*/ ExecutorFragment _URI__OclSummable = new ExecutorFragment(Types._URI, OCLstdlibTables.Types._OclSummable);
-		private static final /*@NonNull*/ ExecutorFragment _URI__String = new ExecutorFragment(Types._URI, OCLstdlibTables.Types._String);
 		private static final /*@NonNull*/ ExecutorFragment _URI__URI = new ExecutorFragment(Types._URI, OCCITables.Types._URI);
 
 		static {
@@ -337,7 +319,6 @@ public class OCCITables
 			Fragments.init();
 		}
 
-		public static final /*@NonNull*/ ParameterTypes _ = TypeUtil.createParameterTypes();
 		public static final /*@NonNull*/ ParameterTypes _Boolean = TypeUtil.createParameterTypes(OCLstdlibTables.Types._Boolean);
 		public static final /*@NonNull*/ ParameterTypes _Integer = TypeUtil.createParameterTypes(OCLstdlibTables.Types._Integer);
 		public static final /*@NonNull*/ ParameterTypes _Integer___Integer = TypeUtil.createParameterTypes(OCLstdlibTables.Types._Integer, OCLstdlibTables.Types._Integer);
@@ -375,24 +356,24 @@ public class OCCITables
 			2, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.logical.BooleanAndOperation.INSTANCE);
 		public static final /*@NonNull*/ ExecutorOperation _Boolean__implies = new ExecutorOperation("implies", Parameters._Boolean, Types._Boolean,
 			3, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.logical.BooleanImpliesOperation.INSTANCE);
-		public static final /*@NonNull*/ ExecutorOperation _Boolean__not = new ExecutorOperation("not", Parameters._, Types._Boolean,
+		public static final /*@NonNull*/ ExecutorOperation _Boolean__not = new ExecutorOperation("not", TypeUtil.EMPTY_PARAMETER_TYPES, Types._Boolean,
 			4, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.logical.BooleanNotOperation.INSTANCE);
 		public static final /*@NonNull*/ ExecutorOperation _Boolean__or = new ExecutorOperation("or", Parameters._Boolean, Types._Boolean,
 			5, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.logical.BooleanOrOperation.INSTANCE);
 		public static final /*@NonNull*/ ExecutorOperation _Boolean__xor = new ExecutorOperation("xor", Parameters._Boolean, Types._Boolean,
 			6, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.logical.BooleanXorOperation.INSTANCE);
-		public static final /*@NonNull*/ ExecutorOperation _Boolean__allInstances = new ExecutorOperation("allInstances", Parameters._, Types._Boolean,
+		public static final /*@NonNull*/ ExecutorOperation _Boolean__allInstances = new ExecutorOperation("allInstances", TypeUtil.EMPTY_PARAMETER_TYPES, Types._Boolean,
 			7, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.logical.BooleanAllInstancesOperation.INSTANCE);
-		public static final /*@NonNull*/ ExecutorOperation _Boolean__toString = new ExecutorOperation("toString", Parameters._, Types._Boolean,
+		public static final /*@NonNull*/ ExecutorOperation _Boolean__toString = new ExecutorOperation("toString", TypeUtil.EMPTY_PARAMETER_TYPES, Types._Boolean,
 			8, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.oclany.OclAnyToStringOperation.INSTANCE);
 
-		public static final /*@NonNull*/ ExecutorOperation _Entity__occiCreate = new ExecutorOperation("occiCreate", Parameters._, Types._Entity,
+		public static final /*@NonNull*/ ExecutorOperation _Entity__occiCreate = new ExecutorOperation("occiCreate", TypeUtil.EMPTY_PARAMETER_TYPES, Types._Entity,
 			0, TemplateParameters.EMPTY_LIST, null);
-		public static final /*@NonNull*/ ExecutorOperation _Entity__occiDelete = new ExecutorOperation("occiDelete", Parameters._, Types._Entity,
+		public static final /*@NonNull*/ ExecutorOperation _Entity__occiDelete = new ExecutorOperation("occiDelete", TypeUtil.EMPTY_PARAMETER_TYPES, Types._Entity,
 			1, TemplateParameters.EMPTY_LIST, null);
-		public static final /*@NonNull*/ ExecutorOperation _Entity__occiRetrieve = new ExecutorOperation("occiRetrieve", Parameters._, Types._Entity,
+		public static final /*@NonNull*/ ExecutorOperation _Entity__occiRetrieve = new ExecutorOperation("occiRetrieve", TypeUtil.EMPTY_PARAMETER_TYPES, Types._Entity,
 			2, TemplateParameters.EMPTY_LIST, null);
-		public static final /*@NonNull*/ ExecutorOperation _Entity__occiUpdate = new ExecutorOperation("occiUpdate", Parameters._, Types._Entity,
+		public static final /*@NonNull*/ ExecutorOperation _Entity__occiUpdate = new ExecutorOperation("occiUpdate", TypeUtil.EMPTY_PARAMETER_TYPES, Types._Entity,
 			3, TemplateParameters.EMPTY_LIST, null);
 
 		public static final /*@NonNull*/ ExecutorOperation _String___add_ = new ExecutorOperation("+", Parameters._String, Types._String,
@@ -411,7 +392,7 @@ public class OCCITables
 			6, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringGreaterThanEqualOperation.INSTANCE);
 		public static final /*@NonNull*/ ExecutorOperation _String__at = new ExecutorOperation("at", Parameters._Integer, Types._String,
 			7, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringAtOperation.INSTANCE);
-		public static final /*@NonNull*/ ExecutorOperation _String__characters = new ExecutorOperation("characters", Parameters._, Types._String,
+		public static final /*@NonNull*/ ExecutorOperation _String__characters = new ExecutorOperation("characters", TypeUtil.EMPTY_PARAMETER_TYPES, Types._String,
 			8, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringCharactersOperation.INSTANCE);
 		public static final /*@NonNull*/ ExecutorOperation _String__compareTo = new ExecutorOperation("compareTo", Parameters._OclSelf, Types._String,
 			9, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringCompareToOperation.INSTANCE);
@@ -421,7 +402,7 @@ public class OCCITables
 			11, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringEndsWithOperation.INSTANCE);
 		public static final /*@NonNull*/ ExecutorOperation _String__equalsIgnoreCase = new ExecutorOperation("equalsIgnoreCase", Parameters._String, Types._String,
 			12, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringEqualsIgnoreCaseOperation.INSTANCE);
-		public static final /*@NonNull*/ ExecutorOperation _String__getSeverity = new ExecutorOperation("getSeverity", Parameters._, Types._String,
+		public static final /*@NonNull*/ ExecutorOperation _String__getSeverity = new ExecutorOperation("getSeverity", TypeUtil.EMPTY_PARAMETER_TYPES, Types._String,
 			13, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.CGStringGetSeverityOperation.INSTANCE);
 		public static final /*@NonNull*/ ExecutorOperation _String__indexOf = new ExecutorOperation("indexOf", Parameters._String, Types._String,
 			14, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringIndexOfOperation.INSTANCE);
@@ -437,7 +418,7 @@ public class OCCITables
 			19, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringReplaceAllOperation.INSTANCE);
 		public static final /*@NonNull*/ ExecutorOperation _String__replaceFirst = new ExecutorOperation("replaceFirst", Parameters._String___String, Types._String,
 			20, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringReplaceFirstOperation.INSTANCE);
-		public static final /*@NonNull*/ ExecutorOperation _String__size = new ExecutorOperation("size", Parameters._, Types._String,
+		public static final /*@NonNull*/ ExecutorOperation _String__size = new ExecutorOperation("size", TypeUtil.EMPTY_PARAMETER_TYPES, Types._String,
 			21, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringSizeOperation.INSTANCE);
 		public static final /*@NonNull*/ ExecutorOperation _String__startsWith = new ExecutorOperation("startsWith", Parameters._String, Types._String,
 			22, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringStartsWithOperation.INSTANCE);
@@ -447,29 +428,29 @@ public class OCCITables
 			24, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringSubstituteFirstOperation.INSTANCE);
 		public static final /*@NonNull*/ ExecutorOperation _String__substring = new ExecutorOperation("substring", Parameters._Integer___Integer, Types._String,
 			25, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringSubstringOperation.INSTANCE);
-		public static final /*@NonNull*/ ExecutorOperation _String__toBoolean = new ExecutorOperation("toBoolean", Parameters._, Types._String,
+		public static final /*@NonNull*/ ExecutorOperation _String__toBoolean = new ExecutorOperation("toBoolean", TypeUtil.EMPTY_PARAMETER_TYPES, Types._String,
 			26, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringToBooleanOperation.INSTANCE);
-		public static final /*@NonNull*/ ExecutorOperation _String__toInteger = new ExecutorOperation("toInteger", Parameters._, Types._String,
+		public static final /*@NonNull*/ ExecutorOperation _String__toInteger = new ExecutorOperation("toInteger", TypeUtil.EMPTY_PARAMETER_TYPES, Types._String,
 			27, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringToIntegerOperation.INSTANCE);
-		public static final /*@NonNull*/ ExecutorOperation _String__toLower = new ExecutorOperation("toLower", Parameters._, Types._String,
+		public static final /*@NonNull*/ ExecutorOperation _String__toLower = new ExecutorOperation("toLower", TypeUtil.EMPTY_PARAMETER_TYPES, Types._String,
 			28, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringToLowerCaseOperation.INSTANCE);
-		public static final /*@NonNull*/ ExecutorOperation _String__toLowerCase = new ExecutorOperation("toLowerCase", Parameters._, Types._String,
+		public static final /*@NonNull*/ ExecutorOperation _String__toLowerCase = new ExecutorOperation("toLowerCase", TypeUtil.EMPTY_PARAMETER_TYPES, Types._String,
 			29, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringToLowerCaseOperation.INSTANCE);
-		public static final /*@NonNull*/ ExecutorOperation _String__toReal = new ExecutorOperation("toReal", Parameters._, Types._String,
+		public static final /*@NonNull*/ ExecutorOperation _String__toReal = new ExecutorOperation("toReal", TypeUtil.EMPTY_PARAMETER_TYPES, Types._String,
 			30, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringToRealOperation.INSTANCE);
-		public static final /*@NonNull*/ ExecutorOperation _String__toString = new ExecutorOperation("toString", Parameters._, Types._String,
+		public static final /*@NonNull*/ ExecutorOperation _String__toString = new ExecutorOperation("toString", TypeUtil.EMPTY_PARAMETER_TYPES, Types._String,
 			31, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.oclany.OclAnyToStringOperation.INSTANCE);
-		public static final /*@NonNull*/ ExecutorOperation _String__toUpper = new ExecutorOperation("toUpper", Parameters._, Types._String,
+		public static final /*@NonNull*/ ExecutorOperation _String__toUpper = new ExecutorOperation("toUpper", TypeUtil.EMPTY_PARAMETER_TYPES, Types._String,
 			32, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringToUpperCaseOperation.INSTANCE);
-		public static final /*@NonNull*/ ExecutorOperation _String__toUpperCase = new ExecutorOperation("toUpperCase", Parameters._, Types._String,
+		public static final /*@NonNull*/ ExecutorOperation _String__toUpperCase = new ExecutorOperation("toUpperCase", TypeUtil.EMPTY_PARAMETER_TYPES, Types._String,
 			33, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringToUpperCaseOperation.INSTANCE);
-		public static final /*@NonNull*/ ExecutorOperation _String__0_tokenize = new ExecutorOperation("tokenize", Parameters._, Types._String,
+		public static final /*@NonNull*/ ExecutorOperation _String__0_tokenize = new ExecutorOperation("tokenize", TypeUtil.EMPTY_PARAMETER_TYPES, Types._String,
 			34, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringTokenizeOperation.INSTANCE);
 		public static final /*@NonNull*/ ExecutorOperation _String__1_tokenize = new ExecutorOperation("tokenize", Parameters._String, Types._String,
 			35, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringTokenizeOperation.INSTANCE);
 		public static final /*@NonNull*/ ExecutorOperation _String__2_tokenize = new ExecutorOperation("tokenize", Parameters._String___Boolean, Types._String,
 			36, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringTokenizeOperation.INSTANCE);
-		public static final /*@NonNull*/ ExecutorOperation _String__trim = new ExecutorOperation("trim", Parameters._, Types._String,
+		public static final /*@NonNull*/ ExecutorOperation _String__trim = new ExecutorOperation("trim", TypeUtil.EMPTY_PARAMETER_TYPES, Types._String,
 			37, TemplateParameters.EMPTY_LIST, org.eclipse.ocl.pivot.library.string.StringTrimOperation.INSTANCE);
 
 		static {
@@ -579,118 +560,114 @@ public class OCCITables
 			Properties.init();
 		}
 
-		private static final /*@NonNull*/ ExecutorFragment[] _Action =
+		private static final /*@NonNull*/ ExecutorFragment /*@NonNull*/ [] _Action =
 		{
 			Fragments._Action__OclAny /* 0 */,
 			Fragments._Action__OclElement /* 1 */,
 			Fragments._Action__Category /* 2 */,
 			Fragments._Action__Action /* 3 */
 		};
-		private static final /*@NonNull*/ int[] __Action = { 1,1,1,1 };
+		private static final int /*@NonNull*/ [] __Action = { 1,1,1,1 };
 
-		private static final /*@NonNull*/ ExecutorFragment[] _Attribute =
+		private static final /*@NonNull*/ ExecutorFragment /*@NonNull*/ [] _Attribute =
 		{
 			Fragments._Attribute__OclAny /* 0 */,
 			Fragments._Attribute__OclElement /* 1 */,
 			Fragments._Attribute__Attribute /* 2 */
 		};
-		private static final /*@NonNull*/ int[] __Attribute = { 1,1,1 };
+		private static final int /*@NonNull*/ [] __Attribute = { 1,1,1 };
 
-		private static final /*@NonNull*/ ExecutorFragment[] _AttributeState =
+		private static final /*@NonNull*/ ExecutorFragment /*@NonNull*/ [] _AttributeState =
 		{
 			Fragments._AttributeState__OclAny /* 0 */,
 			Fragments._AttributeState__OclElement /* 1 */,
 			Fragments._AttributeState__AttributeState /* 2 */
 		};
-		private static final /*@NonNull*/ int[] __AttributeState = { 1,1,1 };
+		private static final int /*@NonNull*/ [] __AttributeState = { 1,1,1 };
 
-		private static final /*@NonNull*/ ExecutorFragment[] _Boolean =
+		private static final /*@NonNull*/ ExecutorFragment /*@NonNull*/ [] _Boolean =
 		{
 			Fragments._Boolean__OclAny /* 0 */,
 			Fragments._Boolean__Boolean /* 1 */
 		};
-		private static final /*@NonNull*/ int[] __Boolean = { 1,1 };
+		private static final int /*@NonNull*/ [] __Boolean = { 1,1 };
 
-		private static final /*@NonNull*/ ExecutorFragment[] _Category =
+		private static final /*@NonNull*/ ExecutorFragment /*@NonNull*/ [] _Category =
 		{
 			Fragments._Category__OclAny /* 0 */,
 			Fragments._Category__OclElement /* 1 */,
 			Fragments._Category__Category /* 2 */
 		};
-		private static final /*@NonNull*/ int[] __Category = { 1,1,1 };
+		private static final int /*@NonNull*/ [] __Category = { 1,1,1 };
 
-		private static final /*@NonNull*/ ExecutorFragment[] _Configuration =
+		private static final /*@NonNull*/ ExecutorFragment /*@NonNull*/ [] _Configuration =
 		{
 			Fragments._Configuration__OclAny /* 0 */,
 			Fragments._Configuration__OclElement /* 1 */,
 			Fragments._Configuration__Configuration /* 2 */
 		};
-		private static final /*@NonNull*/ int[] __Configuration = { 1,1,1 };
+		private static final int /*@NonNull*/ [] __Configuration = { 1,1,1 };
 
-		private static final /*@NonNull*/ ExecutorFragment[] _Entity =
+		private static final /*@NonNull*/ ExecutorFragment /*@NonNull*/ [] _Entity =
 		{
 			Fragments._Entity__OclAny /* 0 */,
 			Fragments._Entity__OclElement /* 1 */,
 			Fragments._Entity__Entity /* 2 */
 		};
-		private static final /*@NonNull*/ int[] __Entity = { 1,1,1 };
+		private static final int /*@NonNull*/ [] __Entity = { 1,1,1 };
 
-		private static final /*@NonNull*/ ExecutorFragment[] _Extension =
+		private static final /*@NonNull*/ ExecutorFragment /*@NonNull*/ [] _Extension =
 		{
 			Fragments._Extension__OclAny /* 0 */,
 			Fragments._Extension__OclElement /* 1 */,
 			Fragments._Extension__Extension /* 2 */
 		};
-		private static final /*@NonNull*/ int[] __Extension = { 1,1,1 };
+		private static final int /*@NonNull*/ [] __Extension = { 1,1,1 };
 
-		private static final /*@NonNull*/ ExecutorFragment[] _Kind =
+		private static final /*@NonNull*/ ExecutorFragment /*@NonNull*/ [] _Kind =
 		{
 			Fragments._Kind__OclAny /* 0 */,
 			Fragments._Kind__OclElement /* 1 */,
 			Fragments._Kind__Category /* 2 */,
 			Fragments._Kind__Kind /* 3 */
 		};
-		private static final /*@NonNull*/ int[] __Kind = { 1,1,1,1 };
+		private static final int /*@NonNull*/ [] __Kind = { 1,1,1,1 };
 
-		private static final /*@NonNull*/ ExecutorFragment[] _Link =
+		private static final /*@NonNull*/ ExecutorFragment /*@NonNull*/ [] _Link =
 		{
 			Fragments._Link__OclAny /* 0 */,
 			Fragments._Link__OclElement /* 1 */,
 			Fragments._Link__Entity /* 2 */,
 			Fragments._Link__Link /* 3 */
 		};
-		private static final /*@NonNull*/ int[] __Link = { 1,1,1,1 };
+		private static final int /*@NonNull*/ [] __Link = { 1,1,1,1 };
 
-		private static final /*@NonNull*/ ExecutorFragment[] _Mixin =
+		private static final /*@NonNull*/ ExecutorFragment /*@NonNull*/ [] _Mixin =
 		{
 			Fragments._Mixin__OclAny /* 0 */,
 			Fragments._Mixin__OclElement /* 1 */,
 			Fragments._Mixin__Category /* 2 */,
 			Fragments._Mixin__Mixin /* 3 */
 		};
-		private static final /*@NonNull*/ int[] __Mixin = { 1,1,1,1 };
+		private static final int /*@NonNull*/ [] __Mixin = { 1,1,1,1 };
 
-		private static final /*@NonNull*/ ExecutorFragment[] _Number =
+		private static final /*@NonNull*/ ExecutorFragment /*@NonNull*/ [] _Number =
 		{
 			Fragments._Number__OclAny /* 0 */,
-			Fragments._Number__OclComparable /* 1 */,
-			Fragments._Number__OclSummable /* 1 */,
-			Fragments._Number__Real /* 2 */,
-			Fragments._Number__Integer /* 3 */,
-			Fragments._Number__Number /* 4 */
+			Fragments._Number__Number /* 1 */
 		};
-		private static final /*@NonNull*/ int[] __Number = { 1,2,1,1,1 };
+		private static final int /*@NonNull*/ [] __Number = { 1,1 };
 
-		private static final /*@NonNull*/ ExecutorFragment[] _Resource =
+		private static final /*@NonNull*/ ExecutorFragment /*@NonNull*/ [] _Resource =
 		{
 			Fragments._Resource__OclAny /* 0 */,
 			Fragments._Resource__OclElement /* 1 */,
 			Fragments._Resource__Entity /* 2 */,
 			Fragments._Resource__Resource /* 3 */
 		};
-		private static final /*@NonNull*/ int[] __Resource = { 1,1,1,1 };
+		private static final int /*@NonNull*/ [] __Resource = { 1,1,1,1 };
 
-		private static final /*@NonNull*/ ExecutorFragment[] _String =
+		private static final /*@NonNull*/ ExecutorFragment /*@NonNull*/ [] _String =
 		{
 			Fragments._String__OclAny /* 0 */,
 			Fragments._String__OclComparable /* 1 */,
@@ -698,18 +675,14 @@ public class OCCITables
 			Fragments._String__OclSummable /* 1 */,
 			Fragments._String__String /* 2 */
 		};
-		private static final /*@NonNull*/ int[] __String = { 1,3,1 };
+		private static final int /*@NonNull*/ [] __String = { 1,3,1 };
 
-		private static final /*@NonNull*/ ExecutorFragment[] _URI =
+		private static final /*@NonNull*/ ExecutorFragment /*@NonNull*/ [] _URI =
 		{
 			Fragments._URI__OclAny /* 0 */,
-			Fragments._URI__OclComparable /* 1 */,
-			Fragments._URI__OclElement /* 1 */,
-			Fragments._URI__OclSummable /* 1 */,
-			Fragments._URI__String /* 2 */,
-			Fragments._URI__URI /* 3 */
+			Fragments._URI__URI /* 1 */
 		};
-		private static final /*@NonNull*/ int[] __URI = { 1,3,1,1 };
+		private static final int /*@NonNull*/ [] __URI = { 1,1 };
 
 		/**
 		 *	Install the fragment descriptors in the class descriptors.
@@ -749,9 +722,9 @@ public class OCCITables
 			TypeFragments.init();
 		}
 
-		private static final /*@NonNull*/ ExecutorOperation[] _Action__Action = {};
-		private static final /*@NonNull*/ ExecutorOperation[] _Action__Category = {};
-		private static final /*@NonNull*/ ExecutorOperation[] _Action__OclAny = {
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Action__Action = {};
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Action__Category = {};
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Action__OclAny = {
 			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclAsSet /* oclAsSet() */,
@@ -765,16 +738,21 @@ public class OCCITables
 			OCLstdlibTables.Operations._OclAny__0_oclLog /* oclLog() */,
 			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclType /* oclType() */,
+			OCLstdlibTables.Operations._OclAny__oclTypes /* oclTypes() */,
 			OCLstdlibTables.Operations._OclAny__toString /* toString() */
 		};
-		private static final /*@NonNull*/ ExecutorOperation[] _Action__OclElement = {
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Action__OclElement = {
 			OCLstdlibTables.Operations._OclElement__allInstances /* allInstances() */,
+			OCLstdlibTables.Operations._OclElement__oclAsModelType /* oclAsModelType(TT)(TT[?]) */,
 			OCLstdlibTables.Operations._OclElement__oclContainer /* oclContainer() */,
-			OCLstdlibTables.Operations._OclElement__oclContents /* oclContents() */
+			OCLstdlibTables.Operations._OclElement__oclContents /* oclContents() */,
+			OCLstdlibTables.Operations._OclElement__oclIsModelKindOf /* oclIsModelKindOf(OclType[?]) */,
+			OCLstdlibTables.Operations._OclElement__oclModelType /* oclModelType() */,
+			OCLstdlibTables.Operations._OclElement__oclModelTypes /* oclModelTypes() */
 		};
 
-		private static final /*@NonNull*/ ExecutorOperation[] _Attribute__Attribute = {};
-		private static final /*@NonNull*/ ExecutorOperation[] _Attribute__OclAny = {
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Attribute__Attribute = {};
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Attribute__OclAny = {
 			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclAsSet /* oclAsSet() */,
@@ -788,16 +766,21 @@ public class OCCITables
 			OCLstdlibTables.Operations._OclAny__0_oclLog /* oclLog() */,
 			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclType /* oclType() */,
+			OCLstdlibTables.Operations._OclAny__oclTypes /* oclTypes() */,
 			OCLstdlibTables.Operations._OclAny__toString /* toString() */
 		};
-		private static final /*@NonNull*/ ExecutorOperation[] _Attribute__OclElement = {
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Attribute__OclElement = {
 			OCLstdlibTables.Operations._OclElement__allInstances /* allInstances() */,
+			OCLstdlibTables.Operations._OclElement__oclAsModelType /* oclAsModelType(TT)(TT[?]) */,
 			OCLstdlibTables.Operations._OclElement__oclContainer /* oclContainer() */,
-			OCLstdlibTables.Operations._OclElement__oclContents /* oclContents() */
+			OCLstdlibTables.Operations._OclElement__oclContents /* oclContents() */,
+			OCLstdlibTables.Operations._OclElement__oclIsModelKindOf /* oclIsModelKindOf(OclType[?]) */,
+			OCLstdlibTables.Operations._OclElement__oclModelType /* oclModelType() */,
+			OCLstdlibTables.Operations._OclElement__oclModelTypes /* oclModelTypes() */
 		};
 
-		private static final /*@NonNull*/ ExecutorOperation[] _AttributeState__AttributeState = {};
-		private static final /*@NonNull*/ ExecutorOperation[] _AttributeState__OclAny = {
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _AttributeState__AttributeState = {};
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _AttributeState__OclAny = {
 			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclAsSet /* oclAsSet() */,
@@ -811,15 +794,20 @@ public class OCCITables
 			OCLstdlibTables.Operations._OclAny__0_oclLog /* oclLog() */,
 			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclType /* oclType() */,
+			OCLstdlibTables.Operations._OclAny__oclTypes /* oclTypes() */,
 			OCLstdlibTables.Operations._OclAny__toString /* toString() */
 		};
-		private static final /*@NonNull*/ ExecutorOperation[] _AttributeState__OclElement = {
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _AttributeState__OclElement = {
 			OCLstdlibTables.Operations._OclElement__allInstances /* allInstances() */,
+			OCLstdlibTables.Operations._OclElement__oclAsModelType /* oclAsModelType(TT)(TT[?]) */,
 			OCLstdlibTables.Operations._OclElement__oclContainer /* oclContainer() */,
-			OCLstdlibTables.Operations._OclElement__oclContents /* oclContents() */
+			OCLstdlibTables.Operations._OclElement__oclContents /* oclContents() */,
+			OCLstdlibTables.Operations._OclElement__oclIsModelKindOf /* oclIsModelKindOf(OclType[?]) */,
+			OCLstdlibTables.Operations._OclElement__oclModelType /* oclModelType() */,
+			OCLstdlibTables.Operations._OclElement__oclModelTypes /* oclModelTypes() */
 		};
 
-		private static final /*@NonNull*/ ExecutorOperation[] _Boolean__Boolean = {
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Boolean__Boolean = {
 			OCLstdlibTables.Operations._Boolean___lt__gt_ /* _'<>'(OclSelf[?]) */,
 			OCLstdlibTables.Operations._Boolean___eq_ /* _'='(OclSelf[?]) */,
 			OCLstdlibTables.Operations._Boolean__and /* _'and'(Boolean[?]) */,
@@ -830,7 +818,7 @@ public class OCCITables
 			OCLstdlibTables.Operations._Boolean__allInstances /* allInstances() */,
 			OCLstdlibTables.Operations._Boolean__toString /* toString() */
 		};
-		private static final /*@NonNull*/ ExecutorOperation[] _Boolean__OclAny = {
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Boolean__OclAny = {
 			OCLstdlibTables.Operations._Boolean___lt__gt_ /* _'<>'(OclSelf[?]) */,
 			OCLstdlibTables.Operations._Boolean___eq_ /* _'='(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclAsSet /* oclAsSet() */,
@@ -844,11 +832,12 @@ public class OCCITables
 			OCLstdlibTables.Operations._OclAny__0_oclLog /* oclLog() */,
 			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclType /* oclType() */,
+			OCLstdlibTables.Operations._OclAny__oclTypes /* oclTypes() */,
 			OCLstdlibTables.Operations._Boolean__toString /* toString() */
 		};
 
-		private static final /*@NonNull*/ ExecutorOperation[] _Category__Category = {};
-		private static final /*@NonNull*/ ExecutorOperation[] _Category__OclAny = {
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Category__Category = {};
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Category__OclAny = {
 			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclAsSet /* oclAsSet() */,
@@ -862,16 +851,21 @@ public class OCCITables
 			OCLstdlibTables.Operations._OclAny__0_oclLog /* oclLog() */,
 			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclType /* oclType() */,
+			OCLstdlibTables.Operations._OclAny__oclTypes /* oclTypes() */,
 			OCLstdlibTables.Operations._OclAny__toString /* toString() */
 		};
-		private static final /*@NonNull*/ ExecutorOperation[] _Category__OclElement = {
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Category__OclElement = {
 			OCLstdlibTables.Operations._OclElement__allInstances /* allInstances() */,
+			OCLstdlibTables.Operations._OclElement__oclAsModelType /* oclAsModelType(TT)(TT[?]) */,
 			OCLstdlibTables.Operations._OclElement__oclContainer /* oclContainer() */,
-			OCLstdlibTables.Operations._OclElement__oclContents /* oclContents() */
+			OCLstdlibTables.Operations._OclElement__oclContents /* oclContents() */,
+			OCLstdlibTables.Operations._OclElement__oclIsModelKindOf /* oclIsModelKindOf(OclType[?]) */,
+			OCLstdlibTables.Operations._OclElement__oclModelType /* oclModelType() */,
+			OCLstdlibTables.Operations._OclElement__oclModelTypes /* oclModelTypes() */
 		};
 
-		private static final /*@NonNull*/ ExecutorOperation[] _Configuration__Configuration = {};
-		private static final /*@NonNull*/ ExecutorOperation[] _Configuration__OclAny = {
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Configuration__Configuration = {};
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Configuration__OclAny = {
 			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclAsSet /* oclAsSet() */,
@@ -885,21 +879,26 @@ public class OCCITables
 			OCLstdlibTables.Operations._OclAny__0_oclLog /* oclLog() */,
 			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclType /* oclType() */,
+			OCLstdlibTables.Operations._OclAny__oclTypes /* oclTypes() */,
 			OCLstdlibTables.Operations._OclAny__toString /* toString() */
 		};
-		private static final /*@NonNull*/ ExecutorOperation[] _Configuration__OclElement = {
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Configuration__OclElement = {
 			OCLstdlibTables.Operations._OclElement__allInstances /* allInstances() */,
+			OCLstdlibTables.Operations._OclElement__oclAsModelType /* oclAsModelType(TT)(TT[?]) */,
 			OCLstdlibTables.Operations._OclElement__oclContainer /* oclContainer() */,
-			OCLstdlibTables.Operations._OclElement__oclContents /* oclContents() */
+			OCLstdlibTables.Operations._OclElement__oclContents /* oclContents() */,
+			OCLstdlibTables.Operations._OclElement__oclIsModelKindOf /* oclIsModelKindOf(OclType[?]) */,
+			OCLstdlibTables.Operations._OclElement__oclModelType /* oclModelType() */,
+			OCLstdlibTables.Operations._OclElement__oclModelTypes /* oclModelTypes() */
 		};
 
-		private static final /*@NonNull*/ ExecutorOperation[] _Entity__Entity = {
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Entity__Entity = {
 			OCCITables.Operations._Entity__occiCreate /* occiCreate() */,
 			OCCITables.Operations._Entity__occiDelete /* occiDelete() */,
 			OCCITables.Operations._Entity__occiRetrieve /* occiRetrieve() */,
 			OCCITables.Operations._Entity__occiUpdate /* occiUpdate() */
 		};
-		private static final /*@NonNull*/ ExecutorOperation[] _Entity__OclAny = {
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Entity__OclAny = {
 			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclAsSet /* oclAsSet() */,
@@ -913,16 +912,21 @@ public class OCCITables
 			OCLstdlibTables.Operations._OclAny__0_oclLog /* oclLog() */,
 			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclType /* oclType() */,
+			OCLstdlibTables.Operations._OclAny__oclTypes /* oclTypes() */,
 			OCLstdlibTables.Operations._OclAny__toString /* toString() */
 		};
-		private static final /*@NonNull*/ ExecutorOperation[] _Entity__OclElement = {
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Entity__OclElement = {
 			OCLstdlibTables.Operations._OclElement__allInstances /* allInstances() */,
+			OCLstdlibTables.Operations._OclElement__oclAsModelType /* oclAsModelType(TT)(TT[?]) */,
 			OCLstdlibTables.Operations._OclElement__oclContainer /* oclContainer() */,
-			OCLstdlibTables.Operations._OclElement__oclContents /* oclContents() */
+			OCLstdlibTables.Operations._OclElement__oclContents /* oclContents() */,
+			OCLstdlibTables.Operations._OclElement__oclIsModelKindOf /* oclIsModelKindOf(OclType[?]) */,
+			OCLstdlibTables.Operations._OclElement__oclModelType /* oclModelType() */,
+			OCLstdlibTables.Operations._OclElement__oclModelTypes /* oclModelTypes() */
 		};
 
-		private static final /*@NonNull*/ ExecutorOperation[] _Extension__Extension = {};
-		private static final /*@NonNull*/ ExecutorOperation[] _Extension__OclAny = {
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Extension__Extension = {};
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Extension__OclAny = {
 			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclAsSet /* oclAsSet() */,
@@ -936,17 +940,22 @@ public class OCCITables
 			OCLstdlibTables.Operations._OclAny__0_oclLog /* oclLog() */,
 			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclType /* oclType() */,
+			OCLstdlibTables.Operations._OclAny__oclTypes /* oclTypes() */,
 			OCLstdlibTables.Operations._OclAny__toString /* toString() */
 		};
-		private static final /*@NonNull*/ ExecutorOperation[] _Extension__OclElement = {
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Extension__OclElement = {
 			OCLstdlibTables.Operations._OclElement__allInstances /* allInstances() */,
+			OCLstdlibTables.Operations._OclElement__oclAsModelType /* oclAsModelType(TT)(TT[?]) */,
 			OCLstdlibTables.Operations._OclElement__oclContainer /* oclContainer() */,
-			OCLstdlibTables.Operations._OclElement__oclContents /* oclContents() */
+			OCLstdlibTables.Operations._OclElement__oclContents /* oclContents() */,
+			OCLstdlibTables.Operations._OclElement__oclIsModelKindOf /* oclIsModelKindOf(OclType[?]) */,
+			OCLstdlibTables.Operations._OclElement__oclModelType /* oclModelType() */,
+			OCLstdlibTables.Operations._OclElement__oclModelTypes /* oclModelTypes() */
 		};
 
-		private static final /*@NonNull*/ ExecutorOperation[] _Kind__Kind = {};
-		private static final /*@NonNull*/ ExecutorOperation[] _Kind__Category = {};
-		private static final /*@NonNull*/ ExecutorOperation[] _Kind__OclAny = {
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Kind__Kind = {};
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Kind__Category = {};
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Kind__OclAny = {
 			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclAsSet /* oclAsSet() */,
@@ -960,22 +969,27 @@ public class OCCITables
 			OCLstdlibTables.Operations._OclAny__0_oclLog /* oclLog() */,
 			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclType /* oclType() */,
+			OCLstdlibTables.Operations._OclAny__oclTypes /* oclTypes() */,
 			OCLstdlibTables.Operations._OclAny__toString /* toString() */
 		};
-		private static final /*@NonNull*/ ExecutorOperation[] _Kind__OclElement = {
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Kind__OclElement = {
 			OCLstdlibTables.Operations._OclElement__allInstances /* allInstances() */,
+			OCLstdlibTables.Operations._OclElement__oclAsModelType /* oclAsModelType(TT)(TT[?]) */,
 			OCLstdlibTables.Operations._OclElement__oclContainer /* oclContainer() */,
-			OCLstdlibTables.Operations._OclElement__oclContents /* oclContents() */
+			OCLstdlibTables.Operations._OclElement__oclContents /* oclContents() */,
+			OCLstdlibTables.Operations._OclElement__oclIsModelKindOf /* oclIsModelKindOf(OclType[?]) */,
+			OCLstdlibTables.Operations._OclElement__oclModelType /* oclModelType() */,
+			OCLstdlibTables.Operations._OclElement__oclModelTypes /* oclModelTypes() */
 		};
 
-		private static final /*@NonNull*/ ExecutorOperation[] _Link__Link = {};
-		private static final /*@NonNull*/ ExecutorOperation[] _Link__Entity = {
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Link__Link = {};
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Link__Entity = {
 			OCCITables.Operations._Entity__occiCreate /* occiCreate() */,
 			OCCITables.Operations._Entity__occiDelete /* occiDelete() */,
 			OCCITables.Operations._Entity__occiRetrieve /* occiRetrieve() */,
 			OCCITables.Operations._Entity__occiUpdate /* occiUpdate() */
 		};
-		private static final /*@NonNull*/ ExecutorOperation[] _Link__OclAny = {
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Link__OclAny = {
 			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclAsSet /* oclAsSet() */,
@@ -989,17 +1003,22 @@ public class OCCITables
 			OCLstdlibTables.Operations._OclAny__0_oclLog /* oclLog() */,
 			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclType /* oclType() */,
+			OCLstdlibTables.Operations._OclAny__oclTypes /* oclTypes() */,
 			OCLstdlibTables.Operations._OclAny__toString /* toString() */
 		};
-		private static final /*@NonNull*/ ExecutorOperation[] _Link__OclElement = {
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Link__OclElement = {
 			OCLstdlibTables.Operations._OclElement__allInstances /* allInstances() */,
+			OCLstdlibTables.Operations._OclElement__oclAsModelType /* oclAsModelType(TT)(TT[?]) */,
 			OCLstdlibTables.Operations._OclElement__oclContainer /* oclContainer() */,
-			OCLstdlibTables.Operations._OclElement__oclContents /* oclContents() */
+			OCLstdlibTables.Operations._OclElement__oclContents /* oclContents() */,
+			OCLstdlibTables.Operations._OclElement__oclIsModelKindOf /* oclIsModelKindOf(OclType[?]) */,
+			OCLstdlibTables.Operations._OclElement__oclModelType /* oclModelType() */,
+			OCLstdlibTables.Operations._OclElement__oclModelTypes /* oclModelTypes() */
 		};
 
-		private static final /*@NonNull*/ ExecutorOperation[] _Mixin__Mixin = {};
-		private static final /*@NonNull*/ ExecutorOperation[] _Mixin__Category = {};
-		private static final /*@NonNull*/ ExecutorOperation[] _Mixin__OclAny = {
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Mixin__Mixin = {};
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Mixin__Category = {};
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Mixin__OclAny = {
 			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclAsSet /* oclAsSet() */,
@@ -1013,32 +1032,23 @@ public class OCCITables
 			OCLstdlibTables.Operations._OclAny__0_oclLog /* oclLog() */,
 			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclType /* oclType() */,
+			OCLstdlibTables.Operations._OclAny__oclTypes /* oclTypes() */,
 			OCLstdlibTables.Operations._OclAny__toString /* toString() */
 		};
-		private static final /*@NonNull*/ ExecutorOperation[] _Mixin__OclElement = {
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Mixin__OclElement = {
 			OCLstdlibTables.Operations._OclElement__allInstances /* allInstances() */,
+			OCLstdlibTables.Operations._OclElement__oclAsModelType /* oclAsModelType(TT)(TT[?]) */,
 			OCLstdlibTables.Operations._OclElement__oclContainer /* oclContainer() */,
-			OCLstdlibTables.Operations._OclElement__oclContents /* oclContents() */
+			OCLstdlibTables.Operations._OclElement__oclContents /* oclContents() */,
+			OCLstdlibTables.Operations._OclElement__oclIsModelKindOf /* oclIsModelKindOf(OclType[?]) */,
+			OCLstdlibTables.Operations._OclElement__oclModelType /* oclModelType() */,
+			OCLstdlibTables.Operations._OclElement__oclModelTypes /* oclModelTypes() */
 		};
 
-		private static final /*@NonNull*/ ExecutorOperation[] _Number__Number = {};
-		private static final /*@NonNull*/ ExecutorOperation[] _Number__Integer = {
-			OCLstdlibTables.Operations._Integer___mul_ /* _'*'(OclSelf[?]) */,
-			OCLstdlibTables.Operations._Integer___add_ /* _'+'(OclSelf[?]) */,
-			OCLstdlibTables.Operations._Integer___neg_ /* _'-'() */,
-			OCLstdlibTables.Operations._Integer___sub_ /* _'-'(OclSelf[?]) */,
-			OCLstdlibTables.Operations._Integer___div_ /* _'/'(OclSelf[?]) */,
-			OCLstdlibTables.Operations._Integer__abs /* abs() */,
-			OCLstdlibTables.Operations._Integer__div /* div(Integer[?]) */,
-			OCLstdlibTables.Operations._Integer__max /* max(OclSelf[?]) */,
-			OCLstdlibTables.Operations._Integer__min /* min(OclSelf[?]) */,
-			OCLstdlibTables.Operations._Integer__mod /* mod(Integer[?]) */,
-			OCLstdlibTables.Operations._Integer__toString /* toString() */,
-			OCLstdlibTables.Operations._Integer__toUnlimitedNatural /* toUnlimitedNatural() */
-		};
-		private static final /*@NonNull*/ ExecutorOperation[] _Number__OclAny = {
-			OCLstdlibTables.Operations._Real___lt__gt_ /* _'<>'(OclSelf[?]) */,
-			OCLstdlibTables.Operations._Real___eq_ /* _'='(OclSelf[?]) */,
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Number__Number = {};
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Number__OclAny = {
+			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
+			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclAsSet /* oclAsSet() */,
 			OCLstdlibTables.Operations._OclAny__oclAsType /* oclAsType(TT)(TT[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclIsInState /* oclIsInState(OclState[?]) */,
@@ -1050,43 +1060,18 @@ public class OCCITables
 			OCLstdlibTables.Operations._OclAny__0_oclLog /* oclLog() */,
 			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclType /* oclType() */,
-			OCLstdlibTables.Operations._Integer__toString /* toString() */
-		};
-		private static final /*@NonNull*/ ExecutorOperation[] _Number__OclComparable = {
-			OCLstdlibTables.Operations._OclComparable___lt_ /* _'<'(OclSelf[?]) */,
-			OCLstdlibTables.Operations._OclComparable___lt__eq_ /* _'<='(OclSelf[?]) */,
-			OCLstdlibTables.Operations._OclComparable___gt_ /* _'>'(OclSelf[?]) */,
-			OCLstdlibTables.Operations._OclComparable___gt__eq_ /* _'>='(OclSelf[?]) */,
-			OCLstdlibTables.Operations._OclComparable__compareTo /* compareTo(OclSelf[?]) */
-		};
-		private static final /*@NonNull*/ ExecutorOperation[] _Number__OclSummable = {
-			OCLstdlibTables.Operations._OclSummable__sum /* sum(OclSelf[?]) */,
-			OCLstdlibTables.Operations._OclSummable__zero /* zero() */
-		};
-		private static final /*@NonNull*/ ExecutorOperation[] _Number__Real = {
-			OCLstdlibTables.Operations._Integer___mul_ /* _'*'(OclSelf[?]) */,
-			OCLstdlibTables.Operations._Integer___add_ /* _'+'(OclSelf[?]) */,
-			OCLstdlibTables.Operations._Integer___neg_ /* _'-'() */,
-			OCLstdlibTables.Operations._Integer___sub_ /* _'-'(OclSelf[?]) */,
-			OCLstdlibTables.Operations._Integer___div_ /* _'/'(OclSelf[?]) */,
-			OCLstdlibTables.Operations._Real___lt__gt_ /* _'<>'(OclSelf[?]) */,
-			OCLstdlibTables.Operations._Real___eq_ /* _'='(OclSelf[?]) */,
-			OCLstdlibTables.Operations._Integer__abs /* abs() */,
-			OCLstdlibTables.Operations._Real__floor /* floor() */,
-			OCLstdlibTables.Operations._Integer__max /* max(OclSelf[?]) */,
-			OCLstdlibTables.Operations._Integer__min /* min(OclSelf[?]) */,
-			OCLstdlibTables.Operations._Real__round /* round() */,
-			OCLstdlibTables.Operations._Integer__toString /* toString() */
+			OCLstdlibTables.Operations._OclAny__oclTypes /* oclTypes() */,
+			OCLstdlibTables.Operations._OclAny__toString /* toString() */
 		};
 
-		private static final /*@NonNull*/ ExecutorOperation[] _Resource__Resource = {};
-		private static final /*@NonNull*/ ExecutorOperation[] _Resource__Entity = {
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Resource__Resource = {};
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Resource__Entity = {
 			OCCITables.Operations._Entity__occiCreate /* occiCreate() */,
 			OCCITables.Operations._Entity__occiDelete /* occiDelete() */,
 			OCCITables.Operations._Entity__occiRetrieve /* occiRetrieve() */,
 			OCCITables.Operations._Entity__occiUpdate /* occiUpdate() */
 		};
-		private static final /*@NonNull*/ ExecutorOperation[] _Resource__OclAny = {
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Resource__OclAny = {
 			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclAsSet /* oclAsSet() */,
@@ -1100,15 +1085,20 @@ public class OCCITables
 			OCLstdlibTables.Operations._OclAny__0_oclLog /* oclLog() */,
 			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclType /* oclType() */,
+			OCLstdlibTables.Operations._OclAny__oclTypes /* oclTypes() */,
 			OCLstdlibTables.Operations._OclAny__toString /* toString() */
 		};
-		private static final /*@NonNull*/ ExecutorOperation[] _Resource__OclElement = {
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Resource__OclElement = {
 			OCLstdlibTables.Operations._OclElement__allInstances /* allInstances() */,
+			OCLstdlibTables.Operations._OclElement__oclAsModelType /* oclAsModelType(TT)(TT[?]) */,
 			OCLstdlibTables.Operations._OclElement__oclContainer /* oclContainer() */,
-			OCLstdlibTables.Operations._OclElement__oclContents /* oclContents() */
+			OCLstdlibTables.Operations._OclElement__oclContents /* oclContents() */,
+			OCLstdlibTables.Operations._OclElement__oclIsModelKindOf /* oclIsModelKindOf(OclType[?]) */,
+			OCLstdlibTables.Operations._OclElement__oclModelType /* oclModelType() */,
+			OCLstdlibTables.Operations._OclElement__oclModelTypes /* oclModelTypes() */
 		};
 
-		private static final /*@NonNull*/ ExecutorOperation[] _String__String = {
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _String__String = {
 			OCLstdlibTables.Operations._String___add_ /* _'+'(String[?]) */,
 			OCLstdlibTables.Operations._String___lt_ /* _'<'(OclSelf[?]) */,
 			OCLstdlibTables.Operations._String___lt__eq_ /* _'<='(OclSelf[?]) */,
@@ -1122,11 +1112,11 @@ public class OCCITables
 			OCLstdlibTables.Operations._String__concat /* concat(String[?]) */,
 			OCLstdlibTables.Operations._String__endsWith /* endsWith(String[?]) */,
 			OCLstdlibTables.Operations._String__equalsIgnoreCase /* equalsIgnoreCase(String[?]) */,
-// FIXME:			OCLstdlibTables.Operations._String__getSeverity /* getSeverity() */,
+//			OCLstdlibTables.Operations._String__getSeverity /* getSeverity() */,
 			OCLstdlibTables.Operations._String__indexOf /* indexOf(String[?]) */,
 			OCLstdlibTables.Operations._String__lastIndexOf /* lastIndexOf(String[?]) */,
-// FIXME:			OCLstdlibTables.Operations._String__0_logDiagnostic /* logDiagnostic(OclAny[1],OclAny[?],OclAny[?],Integer[1],Boolean[?],Integer[1]) */,
-// FIXME:			OCLstdlibTables.Operations._String__1_logDiagnostic /* logDiagnostic(OclAny[1],OclAny[?],OclAny[?],OclAny[?],String[?],Integer[1],OclAny[?],Integer[1]) */,
+//			OCLstdlibTables.Operations._String__0_logDiagnostic /* logDiagnostic(OclAny[1],OclAny[?],OclAny[?],Integer[1],Boolean[?],Integer[1]) */,
+//			OCLstdlibTables.Operations._String__1_logDiagnostic /* logDiagnostic(OclAny[1],OclAny[?],OclAny[?],OclAny[?],String[?],Integer[1],OclAny[?],Integer[1]) */,
 			OCLstdlibTables.Operations._String__matches /* matches(String[?]) */,
 			OCLstdlibTables.Operations._String__replaceAll /* replaceAll(String[?],String[?]) */,
 			OCLstdlibTables.Operations._String__replaceFirst /* replaceFirst(String[?],String[?]) */,
@@ -1148,7 +1138,7 @@ public class OCCITables
 			OCLstdlibTables.Operations._String__2_tokenize /* tokenize(String[?],Boolean[?]) */,
 			OCLstdlibTables.Operations._String__trim /* trim() */
 		};
-		private static final /*@NonNull*/ ExecutorOperation[] _String__OclAny = {
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _String__OclAny = {
 			OCLstdlibTables.Operations._String___lt__gt_ /* _'<>'(OclSelf[?]) */,
 			OCLstdlibTables.Operations._String___eq_ /* _'='(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclAsSet /* oclAsSet() */,
@@ -1162,29 +1152,34 @@ public class OCCITables
 			OCLstdlibTables.Operations._OclAny__0_oclLog /* oclLog() */,
 			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclType /* oclType() */,
+			OCLstdlibTables.Operations._OclAny__oclTypes /* oclTypes() */,
 			OCLstdlibTables.Operations._String__toString /* toString() */
 		};
-		private static final /*@NonNull*/ ExecutorOperation[] _String__OclComparable = {
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _String__OclComparable = {
 			OCLstdlibTables.Operations._String___lt_ /* _'<'(OclSelf[?]) */,
 			OCLstdlibTables.Operations._String___lt__eq_ /* _'<='(OclSelf[?]) */,
 			OCLstdlibTables.Operations._String___gt_ /* _'>'(OclSelf[?]) */,
 			OCLstdlibTables.Operations._String___gt__eq_ /* _'>='(OclSelf[?]) */,
 			OCLstdlibTables.Operations._String__compareTo /* compareTo(OclSelf[?]) */
 		};
-		private static final /*@NonNull*/ ExecutorOperation[] _String__OclElement = {
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _String__OclElement = {
 			OCLstdlibTables.Operations._OclElement__allInstances /* allInstances() */,
+			OCLstdlibTables.Operations._OclElement__oclAsModelType /* oclAsModelType(TT)(TT[?]) */,
 			OCLstdlibTables.Operations._OclElement__oclContainer /* oclContainer() */,
-			OCLstdlibTables.Operations._OclElement__oclContents /* oclContents() */
+			OCLstdlibTables.Operations._OclElement__oclContents /* oclContents() */,
+			OCLstdlibTables.Operations._OclElement__oclIsModelKindOf /* oclIsModelKindOf(OclType[?]) */,
+			OCLstdlibTables.Operations._OclElement__oclModelType /* oclModelType() */,
+			OCLstdlibTables.Operations._OclElement__oclModelTypes /* oclModelTypes() */
 		};
-		private static final /*@NonNull*/ ExecutorOperation[] _String__OclSummable = {
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _String__OclSummable = {
 			OCLstdlibTables.Operations._OclSummable__sum /* sum(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclSummable__zero /* zero() */
 		};
 
-		private static final /*@NonNull*/ ExecutorOperation[] _URI__URI = {};
-		private static final /*@NonNull*/ ExecutorOperation[] _URI__OclAny = {
-			OCLstdlibTables.Operations._String___lt__gt_ /* _'<>'(OclSelf[?]) */,
-			OCLstdlibTables.Operations._String___eq_ /* _'='(OclSelf[?]) */,
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _URI__URI = {};
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _URI__OclAny = {
+			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
+			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclAsSet /* oclAsSet() */,
 			OCLstdlibTables.Operations._OclAny__oclAsType /* oclAsType(TT)(TT[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclIsInState /* oclIsInState(OclState[?]) */,
@@ -1196,63 +1191,8 @@ public class OCCITables
 			OCLstdlibTables.Operations._OclAny__0_oclLog /* oclLog() */,
 			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclType /* oclType() */,
-			OCLstdlibTables.Operations._String__toString /* toString() */
-		};
-		private static final /*@NonNull*/ ExecutorOperation[] _URI__OclComparable = {
-			OCLstdlibTables.Operations._String___lt_ /* _'<'(OclSelf[?]) */,
-			OCLstdlibTables.Operations._String___lt__eq_ /* _'<='(OclSelf[?]) */,
-			OCLstdlibTables.Operations._String___gt_ /* _'>'(OclSelf[?]) */,
-			OCLstdlibTables.Operations._String___gt__eq_ /* _'>='(OclSelf[?]) */,
-			OCLstdlibTables.Operations._String__compareTo /* compareTo(OclSelf[?]) */
-		};
-		private static final /*@NonNull*/ ExecutorOperation[] _URI__OclElement = {
-			OCLstdlibTables.Operations._OclElement__allInstances /* allInstances() */,
-			OCLstdlibTables.Operations._OclElement__oclContainer /* oclContainer() */,
-			OCLstdlibTables.Operations._OclElement__oclContents /* oclContents() */
-		};
-		private static final /*@NonNull*/ ExecutorOperation[] _URI__OclSummable = {
-			OCLstdlibTables.Operations._OclSummable__sum /* sum(OclSelf[?]) */,
-			OCLstdlibTables.Operations._OclSummable__zero /* zero() */
-		};
-		private static final /*@NonNull*/ ExecutorOperation[] _URI__String = {
-			OCLstdlibTables.Operations._String___add_ /* _'+'(String[?]) */,
-			OCLstdlibTables.Operations._String___lt_ /* _'<'(OclSelf[?]) */,
-			OCLstdlibTables.Operations._String___lt__eq_ /* _'<='(OclSelf[?]) */,
-			OCLstdlibTables.Operations._String___lt__gt_ /* _'<>'(OclSelf[?]) */,
-			OCLstdlibTables.Operations._String___eq_ /* _'='(OclSelf[?]) */,
-			OCLstdlibTables.Operations._String___gt_ /* _'>'(OclSelf[?]) */,
-			OCLstdlibTables.Operations._String___gt__eq_ /* _'>='(OclSelf[?]) */,
-			OCLstdlibTables.Operations._String__at /* at(Integer[?]) */,
-			OCLstdlibTables.Operations._String__characters /* characters() */,
-			OCLstdlibTables.Operations._String__compareTo /* compareTo(OclSelf[?]) */,
-			OCLstdlibTables.Operations._String__concat /* concat(String[?]) */,
-			OCLstdlibTables.Operations._String__endsWith /* endsWith(String[?]) */,
-			OCLstdlibTables.Operations._String__equalsIgnoreCase /* equalsIgnoreCase(String[?]) */,
-// FIXME:			OCLstdlibTables.Operations._String__getSeverity /* getSeverity() */,
-			OCLstdlibTables.Operations._String__indexOf /* indexOf(String[?]) */,
-			OCLstdlibTables.Operations._String__lastIndexOf /* lastIndexOf(String[?]) */,
-// FIXME:			OCLstdlibTables.Operations._String__0_logDiagnostic /* logDiagnostic(OclAny[1],OclAny[?],OclAny[?],Integer[1],Boolean[?],Integer[1]) */,
-// FIXME:			OCLstdlibTables.Operations._String__1_logDiagnostic /* logDiagnostic(OclAny[1],OclAny[?],OclAny[?],OclAny[?],String[?],Integer[1],OclAny[?],Integer[1]) */,
-			OCLstdlibTables.Operations._String__matches /* matches(String[?]) */,
-			OCLstdlibTables.Operations._String__replaceAll /* replaceAll(String[?],String[?]) */,
-			OCLstdlibTables.Operations._String__replaceFirst /* replaceFirst(String[?],String[?]) */,
-			OCLstdlibTables.Operations._String__size /* size() */,
-			OCLstdlibTables.Operations._String__startsWith /* startsWith(String[?]) */,
-			OCLstdlibTables.Operations._String__substituteAll /* substituteAll(String[?],String[?]) */,
-			OCLstdlibTables.Operations._String__substituteFirst /* substituteFirst(String[?],String[?]) */,
-			OCLstdlibTables.Operations._String__substring /* substring(Integer[?],Integer[?]) */,
-			OCLstdlibTables.Operations._String__toBoolean /* toBoolean() */,
-			OCLstdlibTables.Operations._String__toInteger /* toInteger() */,
-			OCLstdlibTables.Operations._String__toLower /* toLower() */,
-			OCLstdlibTables.Operations._String__toLowerCase /* toLowerCase() */,
-			OCLstdlibTables.Operations._String__toReal /* toReal() */,
-			OCLstdlibTables.Operations._String__toString /* toString() */,
-			OCLstdlibTables.Operations._String__toUpper /* toUpper() */,
-			OCLstdlibTables.Operations._String__toUpperCase /* toUpperCase() */,
-			OCLstdlibTables.Operations._String__0_tokenize /* tokenize() */,
-			OCLstdlibTables.Operations._String__1_tokenize /* tokenize(String[?]) */,
-			OCLstdlibTables.Operations._String__2_tokenize /* tokenize(String[?],Boolean[?]) */,
-			OCLstdlibTables.Operations._String__trim /* trim() */
+			OCLstdlibTables.Operations._OclAny__oclTypes /* oclTypes() */,
+			OCLstdlibTables.Operations._OclAny__toString /* toString() */
 		};
 
 		/*
@@ -1306,12 +1246,8 @@ public class OCCITables
 			Fragments._Mixin__OclAny.initOperations(_Mixin__OclAny);
 			Fragments._Mixin__OclElement.initOperations(_Mixin__OclElement);
 
-			Fragments._Number__Integer.initOperations(_Number__Integer);
 			Fragments._Number__Number.initOperations(_Number__Number);
 			Fragments._Number__OclAny.initOperations(_Number__OclAny);
-			Fragments._Number__OclComparable.initOperations(_Number__OclComparable);
-			Fragments._Number__OclSummable.initOperations(_Number__OclSummable);
-			Fragments._Number__Real.initOperations(_Number__Real);
 
 			Fragments._Resource__Entity.initOperations(_Resource__Entity);
 			Fragments._Resource__OclAny.initOperations(_Resource__OclAny);
@@ -1325,10 +1261,6 @@ public class OCCITables
 			Fragments._String__String.initOperations(_String__String);
 
 			Fragments._URI__OclAny.initOperations(_URI__OclAny);
-			Fragments._URI__OclComparable.initOperations(_URI__OclComparable);
-			Fragments._URI__OclElement.initOperations(_URI__OclElement);
-			Fragments._URI__OclSummable.initOperations(_URI__OclSummable);
-			Fragments._URI__String.initOperations(_URI__String);
 			Fragments._URI__URI.initOperations(_URI__URI);
 
 			Init.initEnd();
@@ -1349,7 +1281,7 @@ public class OCCITables
 			FragmentOperations.init();
 		}
 
-		private static final /*@NonNull*/ ExecutorProperty[] _Action = {
+		private static final /*@NonNull*/ ExecutorProperty /*@NonNull*/ [] _Action = {
 			OCCITables.Properties._Category__attributes,
 			OCCITables.Properties._Category__scheme,
 			OCCITables.Properties._Category__term,
@@ -1358,7 +1290,7 @@ public class OCCITables
 			OCCITables.Properties._Action__Mixin__actions
 		};
 
-		private static final /*@NonNull*/ ExecutorProperty[] _Attribute = {
+		private static final /*@NonNull*/ ExecutorProperty /*@NonNull*/ [] _Attribute = {
 			OCCITables.Properties._Attribute__default,
 			OCCITables.Properties._Attribute__description,
 			OCCITables.Properties._Attribute__multiple_values,
@@ -1369,22 +1301,22 @@ public class OCCITables
 			OCCITables.Properties._Attribute__Category__attributes
 		};
 
-		private static final /*@NonNull*/ ExecutorProperty[] _AttributeState = {
+		private static final /*@NonNull*/ ExecutorProperty /*@NonNull*/ [] _AttributeState = {
 			OCCITables.Properties._AttributeState__name,
 			OCCITables.Properties._AttributeState__value,
 			OCCITables.Properties._AttributeState__Entity__attributes
 		};
 
-		private static final /*@NonNull*/ ExecutorProperty[] _Boolean = {};
+		private static final /*@NonNull*/ ExecutorProperty /*@NonNull*/ [] _Boolean = {};
 
-		private static final /*@NonNull*/ ExecutorProperty[] _Category = {
+		private static final /*@NonNull*/ ExecutorProperty /*@NonNull*/ [] _Category = {
 			OCCITables.Properties._Category__attributes,
 			OCCITables.Properties._Category__scheme,
 			OCCITables.Properties._Category__term,
 			OCCITables.Properties._Category__title
 		};
 
-		private static final /*@NonNull*/ ExecutorProperty[] _Configuration = {
+		private static final /*@NonNull*/ ExecutorProperty /*@NonNull*/ [] _Configuration = {
 			OCCITables.Properties._Configuration__description,
 			OCCITables.Properties._Configuration__location,
 			OCCITables.Properties._Configuration__mixins,
@@ -1392,7 +1324,7 @@ public class OCCITables
 			OCCITables.Properties._Configuration__use
 		};
 
-		private static final /*@NonNull*/ ExecutorProperty[] _Entity = {
+		private static final /*@NonNull*/ ExecutorProperty /*@NonNull*/ [] _Entity = {
 			OCCITables.Properties._Entity__attributes,
 			OCCITables.Properties._Entity__id,
 			OCCITables.Properties._Entity__kind,
@@ -1402,7 +1334,7 @@ public class OCCITables
 			OCCITables.Properties._Entity__Mixin__entities
 		};
 
-		private static final /*@NonNull*/ ExecutorProperty[] _Extension = {
+		private static final /*@NonNull*/ ExecutorProperty /*@NonNull*/ [] _Extension = {
 			OCCITables.Properties._Extension__description,
 			OCCITables.Properties._Extension__import,
 			OCCITables.Properties._Extension__kinds,
@@ -1414,7 +1346,7 @@ public class OCCITables
 			OCCITables.Properties._Extension__Extension__import
 		};
 
-		private static final /*@NonNull*/ ExecutorProperty[] _Kind = {
+		private static final /*@NonNull*/ ExecutorProperty /*@NonNull*/ [] _Kind = {
 			OCCITables.Properties._Kind__actions,
 			OCCITables.Properties._Category__attributes,
 			OCCITables.Properties._Kind__entities,
@@ -1428,7 +1360,7 @@ public class OCCITables
 			OCCITables.Properties._Kind__Mixin__applies
 		};
 
-		private static final /*@NonNull*/ ExecutorProperty[] _Link = {
+		private static final /*@NonNull*/ ExecutorProperty /*@NonNull*/ [] _Link = {
 			OCCITables.Properties._Entity__attributes,
 			OCCITables.Properties._Entity__id,
 			OCCITables.Properties._Entity__kind,
@@ -1440,7 +1372,7 @@ public class OCCITables
 			OCCITables.Properties._Entity__Mixin__entities
 		};
 
-		private static final /*@NonNull*/ ExecutorProperty[] _Mixin = {
+		private static final /*@NonNull*/ ExecutorProperty /*@NonNull*/ [] _Mixin = {
 			OCCITables.Properties._Mixin__actions,
 			OCCITables.Properties._Mixin__applies,
 			OCCITables.Properties._Category__attributes,
@@ -1455,9 +1387,9 @@ public class OCCITables
 			OCCITables.Properties._Mixin__Mixin__depends
 		};
 
-		private static final /*@NonNull*/ ExecutorProperty[] _Number = {};
+		private static final /*@NonNull*/ ExecutorProperty /*@NonNull*/ [] _Number = {};
 
-		private static final /*@NonNull*/ ExecutorProperty[] _Resource = {
+		private static final /*@NonNull*/ ExecutorProperty /*@NonNull*/ [] _Resource = {
 			OCCITables.Properties._Entity__attributes,
 			OCCITables.Properties._Entity__id,
 			OCCITables.Properties._Entity__kind,
@@ -1471,9 +1403,9 @@ public class OCCITables
 			OCCITables.Properties._Entity__Mixin__entities
 		};
 
-		private static final /*@NonNull*/ ExecutorProperty[] _String = {};
+		private static final /*@NonNull*/ ExecutorProperty /*@NonNull*/ [] _String = {};
 
-		private static final /*@NonNull*/ ExecutorProperty[] _URI = {};
+		private static final /*@NonNull*/ ExecutorProperty /*@NonNull*/ [] _URI = {};
 
 		/**
 		 *	Install the property descriptors in the fragment descriptors.

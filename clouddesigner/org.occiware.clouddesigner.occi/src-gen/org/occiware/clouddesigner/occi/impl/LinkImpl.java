@@ -32,7 +32,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import org.eclipse.ocl.pivot.StandardLibrary;
 
-import org.eclipse.ocl.pivot.evaluation.Evaluator;
+import org.eclipse.ocl.pivot.evaluation.Executor;
 
 import org.eclipse.ocl.pivot.ids.IdResolver;
 import org.eclipse.ocl.pivot.ids.TypeId;
@@ -213,23 +213,23 @@ public class LinkImpl extends EntityImpl implements Link {
 		 *         'Link::LinkKindIsInParent'.logDiagnostic(self, null, diagnostics, context, null, severity, status, 0)
 		 *     endif
 		 */
-		final /*@NonNull*/ /*@NonInvalid*/ Evaluator evaluator = PivotUtilInternal.getEvaluator(this);
-		final /*@NonNull*/ /*@NonInvalid*/ IdResolver idResolver = evaluator.getIdResolver();
-		final /*@NonNull*/ /*@NonInvalid*/ StandardLibrary standardLibrary = idResolver.getStandardLibrary();
-		final /*@NonNull*/ /*@NonInvalid*/ IntegerValue severity_0 = ClassUtil.nonNullState(CGStringGetSeverityOperation.INSTANCE.evaluate(evaluator, OCCITables.STR_Link_c_c_LinkKindIsInParent));
-		final /*@NonInvalid*/ boolean le = ClassUtil.nonNullState(OclComparableLessThanEqualOperation.INSTANCE.evaluate(evaluator, severity_0, OCCITables.INT_0).booleanValue());
+		final /*@NonInvalid*/ Executor executor = PivotUtilInternal.getExecutor(this);
+		final /*@NonInvalid*/ IdResolver idResolver = executor.getIdResolver();
+		final /*@NonInvalid*/ StandardLibrary standardLibrary = idResolver.getStandardLibrary();
+		final /*@NonInvalid*/ IntegerValue severity_0 = CGStringGetSeverityOperation.INSTANCE.evaluate(executor, OCCITables.STR_Link_c_c_LinkKindIsInParent);
+		final /*@NonInvalid*/ boolean le = OclComparableLessThanEqualOperation.INSTANCE.evaluate(executor, severity_0, OCCITables.INT_0).booleanValue();
 		/*@NonInvalid*/ boolean symbol_1;
 		if (le) {
 		    symbol_1 = ValueUtil.TRUE_VALUE;
 		}
 		else {
-		    /*@Nullable*/ /*@Caught*/ Object CAUGHT_status;
+		    /*@Caught*/ /*@Nullable*/ Object CAUGHT_status;
 		    try {
-		        final /*@NonNull*/ /*@Thrown*/ Kind kind = this.getKind();
-		        final /*@NonNull*/ /*@Thrown*/ SetValue oclAsSet = ClassUtil.nonNullState(OclAnyOclAsSetOperation.INSTANCE.evaluate(evaluator, OCCITables.SET_CLSSid_Kind, kind));
-		        final /*@NonNull*/ org.eclipse.ocl.pivot.Class TYPE_closure_0 = evaluator.getStaticTypeOf(oclAsSet);
-		        final /*@NonNull*/ LibraryIteration IMPL_closure_0 = (LibraryIteration)TYPE_closure_0.lookupImplementation(standardLibrary, OCLstdlibTables.Operations._Set__closure);
-		        final /*@NonNull*/ Object ACC_closure_0 = IMPL_closure_0.createAccumulatorValue(evaluator, OCCITables.SET_CLSSid_Kind, OCCITables.CLSSid_Kind);
+		        final /*@Thrown*/ Kind kind = this.getKind();
+		        final /*@Thrown*/ SetValue oclAsSet = OclAnyOclAsSetOperation.INSTANCE.evaluate(executor, OCCITables.SET_CLSSid_Kind, kind);
+		        final org.eclipse.ocl.pivot.Class TYPE_closure_0 = executor.getStaticTypeOf(oclAsSet);
+		        final LibraryIteration.LibraryIterationExtension IMPL_closure_0 = (LibraryIteration.LibraryIterationExtension)TYPE_closure_0.lookupImplementation(standardLibrary, OCLstdlibTables.Operations._Set__closure);
+		        final /*@NonNull*/ Object ACC_closure_0 = IMPL_closure_0.createAccumulatorValue(executor, OCCITables.SET_CLSSid_Kind, OCCITables.CLSSid_Kind);
 		        /**
 		         * Implementation of the iterator body.
 		         */
@@ -238,20 +238,20 @@ public class LinkImpl extends EntityImpl implements Link {
 		             * parent
 		             */
 		            @Override
-		            public /*@Nullable*/ Object evaluate(final /*@NonNull*/ Evaluator evaluator, final /*@NonNull*/ TypeId typeId, final /*@Nullable*/ Object oclAsSet, final /*@Nullable*/ /*@NonInvalid*/ Object _1) {
-		                final /*@Nullable*/ /*@NonInvalid*/ Kind symbol_0 = (Kind)_1;
+		            public /*@Nullable*/ Object evaluate(final /*@NonNull*/ Executor executor, final /*@NonNull*/ TypeId typeId, final /*@Nullable*/ Object oclAsSet, final /*@NonInvalid*/ Object _1) {
+		                final /*@NonInvalid*/ Kind symbol_0 = (Kind)_1;
 		                if (symbol_0 == null) {
 		                    throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Kind::parent\'");
 		                }
-		                final /*@Nullable*/ /*@Thrown*/ Kind parent = symbol_0.getParent();
+		                final /*@Thrown*/ Kind parent = symbol_0.getParent();
 		                return parent;
 		            }
 		        };
-		        final /*@NonNull*/  ExecutorSingleIterationManager MGR_closure_0 = new ExecutorSingleIterationManager(evaluator, OCCITables.SET_CLSSid_Kind, BODY_closure_0, oclAsSet, ACC_closure_0);
-		        final /*@NonNull*/ /*@Thrown*/ SetValue closure = ClassUtil.nonNullState((SetValue)IMPL_closure_0.evaluateIteration(MGR_closure_0));
-		        /*@Nullable*/ /*@Thrown*/ Object accumulator = ValueUtil.FALSE_VALUE;
-		        /*@Nullable*/ Iterator<?> ITERATOR_k = closure.iterator();
-		        /*@Nullable*/ /*@Thrown*/ Boolean status;
+		        final /*@NonNull*/  ExecutorSingleIterationManager MGR_closure_0 = new ExecutorSingleIterationManager(executor, OCCITables.SET_CLSSid_Kind, BODY_closure_0, oclAsSet, ACC_closure_0);
+		        final /*@Thrown*/ SetValue closure = ClassUtil.nonNullState((SetValue)IMPL_closure_0.evaluateIteration(MGR_closure_0));
+		        /*@Thrown*/ Object accumulator = ValueUtil.FALSE_VALUE;
+		        /*@Nullable*/ Iterator<Object> ITERATOR_k = closure.iterator();
+		        /*@Thrown*/ Boolean status;
 		        while (true) {
 		            if (!ITERATOR_k.hasNext()) {
 		                if (accumulator == null) {
@@ -265,37 +265,37 @@ public class LinkImpl extends EntityImpl implements Link {
 		                }
 		                break;
 		            }
-		            /*@Nullable*/ /*@NonInvalid*/ Kind k = (Kind)ITERATOR_k.next();
+		            /*@NonInvalid*/ Kind k = (Kind)ITERATOR_k.next();
 		            /**
 		             * k.term = 'link' and k.scheme = 'http://schemas.ogf.org/occi/core#'
 		             */
-		            /*@Nullable*/ /*@Caught*/ Object CAUGHT_and;
+		            /*@Caught*/ /*@Nullable*/ Object CAUGHT_and;
 		            try {
-		                /*@NonNull*/ /*@Caught*/ Object CAUGHT_eq;
+		                /*@Caught*/ /*@NonNull*/ Object CAUGHT_eq;
 		                try {
 		                    if (k == null) {
 		                        throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Category::term\'");
 		                    }
-		                    final /*@NonNull*/ /*@Thrown*/ String term = k.getTerm();
+		                    final /*@Thrown*/ String term = k.getTerm();
 		                    final /*@Thrown*/ boolean eq = term.equals(OCCITables.STR_link);
 		                    CAUGHT_eq = eq;
 		                }
 		                catch (Exception e) {
 		                    CAUGHT_eq = ValueUtil.createInvalidValue(e);
 		                }
-		                /*@NonNull*/ /*@Caught*/ Object CAUGHT_eq_0;
+		                /*@Caught*/ /*@NonNull*/ Object CAUGHT_eq_0;
 		                try {
 		                    if (k == null) {
 		                        throw new InvalidValueException("Null source for \'\'http://schemas.ogf.org/occi/core/ecore\'::Category::scheme\'");
 		                    }
-		                    final /*@NonNull*/ /*@Thrown*/ String scheme = k.getScheme();
+		                    final /*@Thrown*/ String scheme = k.getScheme();
 		                    final /*@Thrown*/ boolean eq_0 = scheme.equals(OCCITables.STR_http_c_s_s_schemas_ogf_org_s_occi_s_core_35);
 		                    CAUGHT_eq_0 = eq_0;
 		                }
 		                catch (Exception e) {
 		                    CAUGHT_eq_0 = ValueUtil.createInvalidValue(e);
 		                }
-		                final /*@Nullable*/ /*@Thrown*/ Boolean and = BooleanAndOperation.INSTANCE.evaluate(CAUGHT_eq, CAUGHT_eq_0);
+		                final /*@Thrown*/ Boolean and = BooleanAndOperation.INSTANCE.evaluate(CAUGHT_eq, CAUGHT_eq_0);
 		                CAUGHT_and = and;
 		            }
 		            catch (Exception e) {
@@ -326,7 +326,7 @@ public class LinkImpl extends EntityImpl implements Link {
 		    catch (Exception e) {
 		        CAUGHT_status = ValueUtil.createInvalidValue(e);
 		    }
-		    final /*@NonInvalid*/ boolean logDiagnostic = ClassUtil.nonNullState(CGStringLogDiagnosticOperation.INSTANCE.evaluate(evaluator, TypeId.BOOLEAN, OCCITables.STR_Link_c_c_LinkKindIsInParent, this, null, diagnostics, context, null, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue());
+		    final /*@NonInvalid*/ boolean logDiagnostic = CGStringLogDiagnosticOperation.INSTANCE.evaluate(executor, TypeId.BOOLEAN, OCCITables.STR_Link_c_c_LinkKindIsInParent, this, null, diagnostics, context, null, severity_0, CAUGHT_status, OCCITables.INT_0).booleanValue();
 		    symbol_1 = logDiagnostic;
 		}
 		return Boolean.TRUE == symbol_1;
