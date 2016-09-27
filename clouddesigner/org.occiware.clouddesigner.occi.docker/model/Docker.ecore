@@ -268,7 +268,8 @@
         <details key="description" value="The percentage of CPU used."/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="memory_percent" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="memory_percent" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"
+        defaultValueLiteral="0">
       <eAnnotations source="OCCIE2Ecore">
         <details key="description" value="The percentage of Memory used."/>
       </eAnnotations>

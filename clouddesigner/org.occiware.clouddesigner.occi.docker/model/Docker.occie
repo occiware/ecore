@@ -129,7 +129,7 @@
     <attributes name="cpu_percent" default="0" description="The percentage of CPU used.">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="memory_percent" description="The percentage of Memory used.">
+    <attributes name="memory_percent" default="0" description="The percentage of Memory used.">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
     <attributes name="disk_used" description="The disk used.">
