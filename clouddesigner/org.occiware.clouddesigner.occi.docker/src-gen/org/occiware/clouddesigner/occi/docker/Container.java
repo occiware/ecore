@@ -1224,6 +1224,7 @@ public interface Container extends Compute {
 
 	/**
 	 * Returns the value of the '<em><b>Memory percent</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Memory percent</em>' attribute isn't clear,
@@ -1233,7 +1234,7 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Memory percent</em>' attribute.
 	 * @see #setMemory_percent(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Memory_percent()
-	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 * @model default="0" dataType="org.occiware.clouddesigner.occi.String"
 	 *        annotation="OCCIE2Ecore description='The percentage of Memory used.'"
 	 * @generated
 	 */
