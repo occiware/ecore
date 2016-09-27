@@ -71,7 +71,8 @@ class DockerObserver {
 	}
 
 	def listener(Container container, Machine machine) {
-
+		
+		LOGGER.info("Enable listener on {}", container.containerid)
 		// Make a reference copy
 		cpContainer = EcoreUtil.copy(container) as ExecutableContainer
 		val privateKey = DockerUtil.getEnv(machine.name) + "/" + "id_rsa"
@@ -81,7 +82,7 @@ class DockerObserver {
 		// Add listener to the machine
 		listener(machine)
 
-		// ADD listener to the container
+		// Add listener to the container
 		container.eAdapters.add(
 			new EContentAdapter() {
 				public override notifyChanged(Notification notification) {
@@ -105,6 +106,9 @@ class DockerObserver {
 						// Elasticity method
 //						var Elasticity elasticity = new Elasticity(newContainer as ExecutableContainer)
 //						elasticity.action(cpuManager, host, privateKey, newContainer.containerid)
+						
+						LOGGER.info("Old container ID : {}", cpContainer.containerid)
+						LOGGER.info("New container ID : {}", newContainer.containerid)
 						// When the container name's Changes
 						if (cpContainer.containerid.equals(newContainer.containerid) &&
 							cpContainer.state.toString.equalsIgnoreCase('active')) {
@@ -124,7 +128,7 @@ class DockerObserver {
 							if (!cpContainer.cores.equals(newContainer.cores)) {
 								// Update CPU value
 								cpContainer.cores = container.cores
-								cpuManager.setCPUValue(host, privateKey, newContainer.containerid,
+								cpuManager.setCPUValue(host, privateKey, newContainer,
 									String.valueOf(newContainer.cores))
 							}
 
@@ -132,7 +136,7 @@ class DockerObserver {
 							if (!cpContainer.speed.equals(newContainer.speed)) {
 								// Update CPU value
 								cpContainer.cores = container.cores
-								cpuManager.setFreqValue(host, privateKey, newContainer.containerid,
+								cpuManager.setFreqValue(host, privateKey, newContainer,
 									String.valueOf(Math.round(newContainer.speed)))
 							}
 
@@ -141,7 +145,7 @@ class DockerObserver {
 								val memoryManager = new MemoryManager
 								// Update Memory value
 								cpContainer.memory = container.memory
-								memoryManager.setMemValue(host, privateKey, newContainer.containerid,
+								memoryManager.setMemValue(host, privateKey, newContainer,
 									String.valueOf(newContainer.memory))
 							}
 						}
