@@ -105,7 +105,7 @@ class DockerObserver {
 
 						// Elasticity method
 //						var Elasticity elasticity = new Elasticity(newContainer as ExecutableContainer)
-//						elasticity.action(cpuManager, host, privateKey, newContainer.containerid)
+//						elasticity.action(cpuManager, host, privateKey, newContainer)
 						
 						LOGGER.info("Old container ID : {}", cpContainer.containerid)
 						LOGGER.info("New container ID : {}", newContainer.containerid)

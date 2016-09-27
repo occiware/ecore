@@ -11,6 +11,7 @@
 package org.occiware.clouddesigner.occi.docker.connector.dockerjava.cgroup;
 
 import org.eclipse.xtext.xbase.lib.InputOutput;
+import org.occiware.clouddesigner.occi.docker.Container;
 import org.occiware.clouddesigner.occi.docker.connector.dockerjava.DockerContainerManager;
 
 @SuppressWarnings("all")
@@ -47,21 +48,22 @@ public class CgroupManager {
   
   public final static String cpu_cfs_quota = "cpu.cfs_quota_us";
   
-  public static void SetValue(final String host, final String privateKey, final String containerId, final String subsystem, final String file, final String value) {
-    final String FilePath = (((((CgroupManager.cGroupPath + subsystem) + "/docker/") + containerId) + "/") + file);
-    String _cpuSetGenerator = CgroupManager.cpuSetGenerator(value);
-    String _plus = ("echo \'" + _cpuSetGenerator);
-    String _plus_1 = (_plus + "\' > ");
-    final String command = (_plus_1 + FilePath);
+  public static void SetValue(final String host, final String privateKey, final Container container, final String subsystem, final String file, final String value) {
+    String _containerid = container.getContainerid();
+    String _plus = (((CgroupManager.cGroupPath + subsystem) + "/docker/") + _containerid);
+    String _plus_1 = (_plus + "/");
+    final String FilePath = (_plus_1 + file);
+    String _cpuSetGenerator = CgroupManager.cpuSetGenerator(value, container);
+    String _plus_2 = ("echo \'" + _cpuSetGenerator);
+    String _plus_3 = (_plus_2 + "\' > ");
+    final String command = (_plus_3 + FilePath);
     InputOutput.<String>println(("EXECUTE COMMAND: " + command));
     final DockerContainerManager dockerContainerManager = new DockerContainerManager();
     dockerContainerManager.connect(host, privateKey, command);
   }
   
-  public static String cpuSetGenerator(final String nbCores) {
-    Integer _valueOf = Integer.valueOf(nbCores);
-    boolean _greaterThan = ((_valueOf).intValue() > 1);
-    if (_greaterThan) {
+  public static String cpuSetGenerator(final String nbCores, final Container container) {
+    if ((((Integer.valueOf(nbCores)).intValue() > 1) && ((Integer.valueOf(nbCores)).intValue() <= container.getCore_max()))) {
       String cpuSet = String.format("0-%s", nbCores);
       return cpuSet;
     }

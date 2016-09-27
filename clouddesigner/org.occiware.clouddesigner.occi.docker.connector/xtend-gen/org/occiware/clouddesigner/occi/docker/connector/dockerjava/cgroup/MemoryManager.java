@@ -10,16 +10,17 @@
  */
 package org.occiware.clouddesigner.occi.docker.connector.dockerjava.cgroup;
 
+import org.occiware.clouddesigner.occi.docker.Container;
 import org.occiware.clouddesigner.occi.docker.connector.dockerjava.cgroup.CgroupManager;
 
 @SuppressWarnings("all")
 public class MemoryManager {
-  public void setMemValue(final String host, final String privateKey, final String containerId, final String value) {
-    CgroupManager.SetValue(host, privateKey, containerId, CgroupManager.memory_subsystem, 
+  public void setMemValue(final String host, final String privateKey, final Container container, final String value) {
+    CgroupManager.SetValue(host, privateKey, container, CgroupManager.memory_subsystem, 
       CgroupManager.memory_max_mem, value);
   }
   
-  public void setSwapValue(final String host, final String privateKey, final String containerId, final String value) {
-    CgroupManager.SetValue(host, privateKey, containerId, CgroupManager.memory_subsystem, CgroupManager.memory_swap, value);
+  public void setSwapValue(final String host, final String privateKey, final Container container, final String value) {
+    CgroupManager.SetValue(host, privateKey, container, CgroupManager.memory_subsystem, CgroupManager.memory_swap, value);
   }
 }

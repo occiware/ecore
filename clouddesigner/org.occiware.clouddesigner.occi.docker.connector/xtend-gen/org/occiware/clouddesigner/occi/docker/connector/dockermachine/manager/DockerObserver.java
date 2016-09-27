@@ -80,6 +80,8 @@ public class DockerObserver {
   }
   
   public Container listener(final Container container, final Machine machine) {
+    String _containerid = container.getContainerid();
+    DockerObserver.LOGGER.info("Enable listener on {}", _containerid);
     Container _copy = EcoreUtil.<Container>copy(container);
     DockerObserver.cpContainer = ((ExecutableContainer) _copy);
     String _name = machine.getName();
@@ -114,6 +116,10 @@ public class DockerObserver {
           if ((_notifier instanceof Container)) {
             Object _notifier_1 = notification.getNotifier();
             newContainer = ((ExecutableContainer) _notifier_1);
+            String _containerid_2 = DockerObserver.cpContainer.getContainerid();
+            DockerObserver.LOGGER.info("Old container ID : {}", _containerid_2);
+            String _containerid_3 = newContainer.getContainerid();
+            DockerObserver.LOGGER.info("New container ID : {}", _containerid_3);
             if ((DockerObserver.cpContainer.getContainerid().equals(newContainer.getContainerid()) && 
               DockerObserver.cpContainer.getState().toString().equalsIgnoreCase("active"))) {
               String _name = DockerObserver.cpContainer.getName();
@@ -126,9 +132,9 @@ public class DockerObserver {
                 boolean _containerNameExists = DockerObserver.this.containerNameExists(dockerManager_1, _name_2, machine);
                 boolean _not_1 = (!_containerNameExists);
                 if (_not_1) {
-                  String _containerid_2 = newContainer.getContainerid();
+                  String _containerid_4 = newContainer.getContainerid();
                   String _name_3 = newContainer.getName();
-                  dockerManager_1.renameContainer(machine, _containerid_2, _name_3);
+                  dockerManager_1.renameContainer(machine, _containerid_4, _name_3);
                   String _name_4 = DockerObserver.cpContainer.getName();
                   DockerObserver.LOGGER.info("Old name : {}", _name_4);
                   String _name_5 = newContainer.getName();
@@ -142,10 +148,9 @@ public class DockerObserver {
               if (_not_2) {
                 int _cores_2 = container.getCores();
                 DockerObserver.cpContainer.setCores(_cores_2);
-                String _containerid_3 = newContainer.getContainerid();
                 int _cores_3 = newContainer.getCores();
                 String _valueOf = String.valueOf(_cores_3);
-                cpuManager.setCPUValue(host, privateKey, _containerid_3, _valueOf);
+                cpuManager.setCPUValue(host, privateKey, newContainer, _valueOf);
               }
               float _speed = DockerObserver.cpContainer.getSpeed();
               float _speed_1 = newContainer.getSpeed();
@@ -154,11 +159,10 @@ public class DockerObserver {
               if (_not_3) {
                 int _cores_4 = container.getCores();
                 DockerObserver.cpContainer.setCores(_cores_4);
-                String _containerid_4 = newContainer.getContainerid();
                 float _speed_2 = newContainer.getSpeed();
                 int _round = Math.round(_speed_2);
                 String _valueOf_1 = String.valueOf(_round);
-                cpuManager.setFreqValue(host, privateKey, _containerid_4, _valueOf_1);
+                cpuManager.setFreqValue(host, privateKey, newContainer, _valueOf_1);
               }
               float _memory = DockerObserver.cpContainer.getMemory();
               float _memory_1 = newContainer.getMemory();
@@ -168,10 +172,9 @@ public class DockerObserver {
                 final MemoryManager memoryManager = new MemoryManager();
                 float _memory_2 = container.getMemory();
                 DockerObserver.cpContainer.setMemory(_memory_2);
-                String _containerid_5 = newContainer.getContainerid();
                 float _memory_3 = newContainer.getMemory();
                 String _valueOf_2 = String.valueOf(_memory_3);
-                memoryManager.setMemValue(host, privateKey, _containerid_5, _valueOf_2);
+                memoryManager.setMemValue(host, privateKey, newContainer, _valueOf_2);
               }
             }
             Object _oldValue_1 = notification.getOldValue();
