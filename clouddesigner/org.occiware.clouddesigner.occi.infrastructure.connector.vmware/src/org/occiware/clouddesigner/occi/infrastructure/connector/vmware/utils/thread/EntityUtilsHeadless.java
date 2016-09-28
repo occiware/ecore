@@ -38,7 +38,7 @@ public class EntityUtilsHeadless {
 	 * @param attrsToUpdate
 	 * @param attrsToDelete
 	 */
-	public static void updateAttributes(Entity entity, final Map<String, String> attrsToCreate,
+	public static void updateAttributes(final Entity entity, final Map<String, String> attrsToCreate,
 			final Map<String, String> attrsToUpdate, final List<String> attrsToDelete) {
 		
 		if (!UIDialog.isStandAlone()) {
@@ -51,7 +51,7 @@ public class EntityUtilsHeadless {
 		}
 	}
 	
-	private static void executeOperations(Entity entity, Map<String, String> attrsToCreate,
+	private static void executeOperations(final Entity entity, Map<String, String> attrsToCreate,
 			Map<String, String> attrsToUpdate, List<String> attrsToDelete) {
 		String attrName;
 		String attrValue;

@@ -1049,7 +1049,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 			if (this.getAttributeStateObject(ATTR_VM_EPHEMERAL_DISK_SIZE_GB) == null) {
 				attrsToCreate.put(ATTR_VM_EPHEMERAL_DISK_SIZE_GB, "" + ephemeralDiskSizeGB);
 			} else {
-				attrsToCreate.put(ATTR_VM_EPHEMERAL_DISK_SIZE_GB, "" + ephemeralDiskSizeGB);
+				attrsToUpdate.put(ATTR_VM_EPHEMERAL_DISK_SIZE_GB, "" + ephemeralDiskSizeGB);
 			}
 		}
 		
