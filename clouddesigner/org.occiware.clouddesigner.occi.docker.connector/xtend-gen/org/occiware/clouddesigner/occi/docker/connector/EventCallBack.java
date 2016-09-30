@@ -37,6 +37,7 @@ import org.occiware.clouddesigner.occi.docker.Contains;
 import org.occiware.clouddesigner.occi.docker.Machine;
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableContainer;
 import org.occiware.clouddesigner.occi.docker.connector.ModelHandler;
+import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerObserver;
 import org.occiware.clouddesigner.occi.infrastructure.ComputeStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -75,6 +76,8 @@ public class EventCallBack extends EventsResultCallback {
             final ModelHandler instanceMH = new ModelHandler();
             Machine machine = ((ExecutableContainer) resource).getCurrentMachine();
             Container c = instanceMH.buildContainer(machine, containerId);
+            final DockerObserver observer = new DockerObserver();
+            observer.listener(c, machine);
             instanceMH.linkContainerToMachine(c, machine);
             EObject _eContainer = machine.eContainer();
             if ((_eContainer instanceof Configuration)) {

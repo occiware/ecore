@@ -92,18 +92,28 @@ public class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statist
       Object _get_2 = _memoryStats_1.get("limit");
       Integer mem_limit = ((Integer) _get_2);
       Map<String, Object> networks = stats.getNetworks();
-      Object _get_3 = networks.get("eth0");
-      LinkedHashMap tmpnetworks = ((LinkedHashMap) _get_3);
+      Map<String, Object> network = stats.getNetwork();
       Integer network_r = null;
       Integer network_t = null;
       Integer bandwitdh = null;
       try {
-        StatsCallback.LOGGER.info("Networks : {}", tmpnetworks);
-        Object _get_4 = tmpnetworks.get("rx_bytes");
-        network_r = ((Integer) _get_4);
-        Object _get_5 = tmpnetworks.get("tx_bytes");
-        network_t = ((Integer) _get_5);
-        bandwitdh = Integer.valueOf(((network_r).intValue() + (network_t).intValue()));
+        boolean _notEquals = (!Objects.equal(networks, null));
+        if (_notEquals) {
+          Object _get_3 = networks.get("eth0");
+          LinkedHashMap tmpnetworks = ((LinkedHashMap) _get_3);
+          StatsCallback.LOGGER.info("Networks : {}", tmpnetworks);
+          Object _get_4 = tmpnetworks.get("rx_bytes");
+          network_r = ((Integer) _get_4);
+          Object _get_5 = tmpnetworks.get("tx_bytes");
+          network_t = ((Integer) _get_5);
+          bandwitdh = Integer.valueOf(((network_r).intValue() + (network_t).intValue()));
+        } else {
+          Object _get_6 = network.get("rx_bytes");
+          network_r = ((Integer) _get_6);
+          Object _get_7 = network.get("tx_bytes");
+          network_t = ((Integer) _get_7);
+          bandwitdh = Integer.valueOf(((network_r).intValue() + (network_t).intValue()));
+        }
       } catch (final Throwable _t) {
         if (_t instanceof Exception) {
           final Exception e = (Exception)_t;
@@ -144,7 +154,7 @@ public class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statist
     }
   }
   
-  public void modifyResourceSet(final Resource resource, final String cpu_used, final Float percent, final Integer mem_used, final Integer mem_limit, final Integer bandwitdh, final Integer cpuMax, final Boolean updateMaxCpu) {
+  public synchronized void modifyResourceSet(final Resource resource, final String cpu_used, final Float percent, final Integer mem_used, final Integer mem_limit, final Integer bandwitdh, final Integer cpuMax, final Boolean updateMaxCpu) {
     try {
       org.eclipse.emf.ecore.resource.Resource _eResource = resource.eResource();
       ResourceSet _resourceSet = _eResource.getResourceSet();

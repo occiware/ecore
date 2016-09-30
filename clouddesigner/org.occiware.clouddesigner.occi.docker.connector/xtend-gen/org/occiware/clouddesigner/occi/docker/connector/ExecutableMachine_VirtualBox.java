@@ -11,7 +11,7 @@
  */
 package org.occiware.clouddesigner.occi.docker.connector;
 
-import com.google.common.base.Objects;
+import org.apache.commons.lang.StringUtils;
 import org.occiware.clouddesigner.occi.docker.connector.MachineManager;
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerObserver;
 import org.occiware.clouddesigner.occi.docker.impl.Machine_VirtualBoxImpl;
@@ -41,7 +41,8 @@ public class ExecutableMachine_VirtualBox extends Machine_VirtualBoxImpl {
       }
       if ((ExecutableMachine_VirtualBox.this.memory > 0.0F)) {
         StringBuilder _append_1 = sb.append(" --virtualbox-memory ");
-        _append_1.append(ExecutableMachine_VirtualBox.this.memory);
+        int _intValue = Float.valueOf(ExecutableMachine_VirtualBox.this.memory).intValue();
+        _append_1.append(_intValue);
       } else {
         if ((ExecutableMachine_VirtualBox.this.memory == 0.0F)) {
           StringBuilder _append_2 = sb.append(" --virtualbox-memory ");
@@ -57,8 +58,9 @@ public class ExecutableMachine_VirtualBox extends Machine_VirtualBoxImpl {
           _append_4.append((-1));
         }
       }
-      boolean _notEquals = (!Objects.equal(ExecutableMachine_VirtualBox.this.boot2docker_url, null));
-      if (_notEquals) {
+      boolean _isEmpty = StringUtils.isEmpty(ExecutableMachine_VirtualBox.this.boot2docker_url);
+      boolean _not = (!_isEmpty);
+      if (_not) {
         StringBuilder _append_5 = sb.append(" --virtualbox-boot2docker-url ");
         _append_5.append(ExecutableMachine_VirtualBox.this.boot2docker_url);
       }
