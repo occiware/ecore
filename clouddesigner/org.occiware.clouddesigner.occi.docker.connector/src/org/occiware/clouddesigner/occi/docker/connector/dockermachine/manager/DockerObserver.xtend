@@ -118,9 +118,6 @@ class DockerObserver {
 								var DockerContainerManager dockerManager = new DockerContainerManager(machine)
 								if(!containerNameExists(dockerManager, newContainer.name, machine)){
 									dockerManager.renameContainer(machine, newContainer.containerid, newContainer.name)
-									// Rename an existing container
-									LOGGER.info("Old name : {}", cpContainer.name)
-								    LOGGER.info("New name : {}", newContainer.name)
 								}
 							}
 							
