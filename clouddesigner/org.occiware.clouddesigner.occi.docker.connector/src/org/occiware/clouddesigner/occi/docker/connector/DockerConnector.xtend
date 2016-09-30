@@ -535,6 +535,10 @@ class EventCallBack extends EventsResultCallback {
 					var machine = (resource as ExecutableContainer).currentMachine
 					var org.occiware.clouddesigner.occi.docker.Container c = instanceMH.buildContainer(machine,
 						containerId)
+					// Attach listener to the new container created
+					val observer = new DockerObserver
+					observer.listener(c, machine)
+					
 					instanceMH.linkContainerToMachine(c, machine)
 					if (machine.eContainer instanceof Configuration) {
 						(machine.eContainer as Configuration).resources.add(c as ExecutableContainer)
@@ -695,15 +699,23 @@ class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statistics> {
 		var Integer mem_used = stats.memoryStats.get("usage") as Integer
 		var Integer mem_limit = stats.memoryStats.get("limit") as Integer
 		var Map<String, Object> networks = stats.networks
-		var LinkedHashMap tmpnetworks = networks.get("eth0") as LinkedHashMap
+		var Map<String, Object> network = stats.network
 		var Integer network_r = null
 		var Integer network_t = null
 		var Integer bandwitdh = null
 		try {
-			LOGGER.info("Networks : {}", tmpnetworks)
-			network_r = tmpnetworks.get("rx_bytes") as Integer
-			network_t = tmpnetworks.get("tx_bytes") as Integer
-			bandwitdh = network_r + network_t 
+			if(networks != null){
+				var LinkedHashMap tmpnetworks = networks.get("eth0") as LinkedHashMap
+				LOGGER.info("Networks : {}", tmpnetworks)
+				network_r = tmpnetworks.get("rx_bytes") as Integer
+				network_t = tmpnetworks.get("tx_bytes") as Integer
+				bandwitdh = network_r + network_t 
+								
+			}else{
+				network_r = network.get("rx_bytes") as Integer
+				network_t = network.get("tx_bytes") as Integer
+				bandwitdh = network_r + network_t 
+			}
 			
 		} catch (Exception e) {
 			network_r = 0
@@ -728,7 +740,7 @@ class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statistics> {
 		}
 	}
 
-	def void modifyResourceSet(Resource resource, String cpu_used, Float percent, Integer mem_used, Integer mem_limit, Integer bandwitdh, Integer cpuMax, Boolean updateMaxCpu) {
+	def synchronized void modifyResourceSet(Resource resource, String cpu_used, Float percent, Integer mem_used, Integer mem_limit, Integer bandwitdh, Integer cpuMax, Boolean updateMaxCpu) {
 		// Creating an editing domain
 		var TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(resource.eResource.resourceSet)
 
@@ -2071,7 +2083,7 @@ class ExecutableMachine_VirtualBox extends Machine_VirtualBoxImpl {
 				sb.append(" --virtualbox-disk-size ").append(disk_size)
 			}
 			if (memory > 0.0F) {
-				sb.append(" --virtualbox-memory ").append(memory)
+				sb.append(" --virtualbox-memory ").append(memory.intValue)
 			} else if (memory == 0.0F) {
 				sb.append(" --virtualbox-memory ").append(1024)
 			}
@@ -2080,7 +2092,7 @@ class ExecutableMachine_VirtualBox extends Machine_VirtualBoxImpl {
 			} else if (cores == 0) {
 				sb.append(" --virtualbox-cpu-count ").append(-1)
 			}
-			if (boot2docker_url != null) {
+			if (!StringUtils.isEmpty(boot2docker_url)) {
 				sb.append(" --virtualbox-boot2docker-url ").append(boot2docker_url)
 			}
 		}

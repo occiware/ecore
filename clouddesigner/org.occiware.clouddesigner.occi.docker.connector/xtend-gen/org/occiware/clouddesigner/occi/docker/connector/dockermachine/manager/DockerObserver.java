@@ -135,10 +135,6 @@ public class DockerObserver {
                   String _containerid_4 = newContainer.getContainerid();
                   String _name_3 = newContainer.getName();
                   dockerManager_1.renameContainer(machine, _containerid_4, _name_3);
-                  String _name_4 = DockerObserver.cpContainer.getName();
-                  DockerObserver.LOGGER.info("Old name : {}", _name_4);
-                  String _name_5 = newContainer.getName();
-                  DockerObserver.LOGGER.info("New name : {}", _name_5);
                 }
               }
               int _cores = DockerObserver.cpContainer.getCores();
