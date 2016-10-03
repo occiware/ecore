@@ -20,15 +20,16 @@ import java.util.LinkedList
 import java.io.IOException
 
 class ProcessManager {
-
+	var static private String  OS = DockerUtil.getOS
+	
 	def static String getOutputCommand(String command, Runtime r) {
 
 		var StringBuffer result = new StringBuffer
 		var String[] env = null
 		try {
-			if (DockerUtil.getOS.equalsIgnoreCase("osx") || DockerUtil.getOS.equalsIgnoreCase("uni")) {
+			if (OS.equalsIgnoreCase("osx") || OS.equalsIgnoreCase("uni")) {
 				env = #["/bin/bash", "-c", command]
-			} else if(DockerUtil.getOS.equalsIgnoreCase("win")){
+			} else if(OS.equalsIgnoreCase("win")){
 				env = #["cmd", "/c", command]
 			}
 			val Process process = r.exec(env)
