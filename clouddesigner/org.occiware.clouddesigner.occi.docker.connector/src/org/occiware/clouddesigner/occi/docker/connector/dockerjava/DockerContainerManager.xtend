@@ -603,7 +603,7 @@ class DockerContainerManager {
 		} catch (Exception exception) {
 			LOGGER.error("Loading docker-java properties files ...")
 			config = DockerClientConfig.createDefaultConfigBuilder.withApiVersion(
-				dockerProperties.get("docker.version").toString).withDockerHost(dockerHost).withDockerTlsVerify(true).
+				dockerProperties.get("api.version").toString).withDockerHost(dockerHost).withDockerTlsVerify(true).
 				withRegistryUsername(dockerProperties.get("docker.username").toString).withRegistryPassword(
 					dockerProperties.get("docker.password").toString).withRegistryEmail(
 					dockerProperties.get("docker.email").toString).withRegistryUrl(

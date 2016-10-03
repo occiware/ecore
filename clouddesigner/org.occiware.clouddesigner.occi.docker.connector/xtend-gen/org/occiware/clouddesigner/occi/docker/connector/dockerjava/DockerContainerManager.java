@@ -946,7 +946,7 @@ public class DockerContainerManager {
         final Exception exception = (Exception)_t;
         DockerContainerManager.LOGGER.error("Loading docker-java properties files ...");
         DockerClientConfig.DockerClientConfigBuilder _createDefaultConfigBuilder_1 = DockerClientConfig.createDefaultConfigBuilder();
-        Object _get = dockerProperties.get("docker.version");
+        Object _get = dockerProperties.get("api.version");
         String _string_1 = _get.toString();
         DockerClientConfig.DockerClientConfigBuilder _withApiVersion_1 = _createDefaultConfigBuilder_1.withApiVersion(_string_1);
         DockerClientConfig.DockerClientConfigBuilder _withDockerHost_1 = _withApiVersion_1.withDockerHost(dockerHost);
