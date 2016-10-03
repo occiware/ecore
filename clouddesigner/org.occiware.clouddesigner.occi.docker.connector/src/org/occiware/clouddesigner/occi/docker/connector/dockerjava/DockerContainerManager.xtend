@@ -54,6 +54,7 @@ import org.slf4j.LoggerFactory
 import com.github.dockerjava.api.model.RestartPolicy
 import com.github.dockerjava.api.model.Ports.Binding
 import java.util.Properties
+import com.github.dockerjava.core.DefaultDockerClientConfig
 
 class DockerContainerManager {
 	private static DockerClient dockerClient = null
@@ -593,7 +594,7 @@ class DockerContainerManager {
 		var dockerHome = System.getProperty("user.home") + File.separator + ".docker"
 		try {
 			if (properties.version != null) {
-				config = DockerClientConfig.createDefaultConfigBuilder.withApiVersion(properties.version.trim).
+				config = DefaultDockerClientConfig.createDefaultConfigBuilder.withApiVersion(properties.version.trim).
 					withDockerHost(dockerHost).withDockerTlsVerify(true).withRegistryUsername(properties.username.trim).
 					withRegistryPassword(properties.password.trim).withRegistryEmail(properties.email.trim).
 					withRegistryUrl(properties.url.trim).withDockerCertPath(certPath).withDockerConfig(
@@ -602,7 +603,7 @@ class DockerContainerManager {
 			}
 		} catch (Exception exception) {
 			LOGGER.error("Loading docker-java properties files ...")
-			config = DockerClientConfig.createDefaultConfigBuilder.withApiVersion(
+			config = DefaultDockerClientConfig.createDefaultConfigBuilder.withApiVersion(
 				dockerProperties.get("api.version").toString).withDockerHost(dockerHost).withDockerTlsVerify(true).
 				withRegistryUsername(dockerProperties.get("docker.username").toString).withRegistryPassword(
 					dockerProperties.get("docker.password").toString).withRegistryEmail(
