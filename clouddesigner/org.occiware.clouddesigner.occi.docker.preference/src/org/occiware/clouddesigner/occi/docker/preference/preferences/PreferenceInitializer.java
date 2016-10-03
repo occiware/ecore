@@ -31,7 +31,7 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 		store.setDefault(PreferenceConstants.P_STRING_USERNAME,"occiwareuser");
 		store.setDefault(PreferenceConstants.P_STRING_PASSWORD,"iloveocciware");
 		store.setDefault(PreferenceConstants.P_STRING_EMAIL,"occiwareuser@yopmail.com");
-		store.setDefault(PreferenceConstants.P_STRING_VERSION,"1.22");
+		store.setDefault(PreferenceConstants.P_STRING_VERSION,"1.23");
 		store.setDefault(PreferenceConstants.P_STRING_URL,"https://index.docker.io/v1/");
 		
 	}

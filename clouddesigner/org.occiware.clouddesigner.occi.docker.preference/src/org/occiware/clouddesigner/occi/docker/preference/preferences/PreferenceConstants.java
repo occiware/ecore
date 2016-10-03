@@ -22,7 +22,7 @@ public class PreferenceConstants {
 	
 	public static final String P_STRING_EMAIL = "docker.email";
 
-	public static final String P_STRING_VERSION = "docker.version";
+	public static final String P_STRING_VERSION = "api.version";
 	
 	public static final String P_STRING_URL = "docker.url";
 	

@@ -90,7 +90,7 @@ public class PreferenceValues extends AbstractHandler{
 			setUsername(p.get("docker.username").toString());
 			setPassword(p.get("docker.password").toString());
 			setEmail(p.get("docker.email").toString());
-			setVersion(p.get("docker.version").toString());
+			setVersion(p.get("api.version").toString());
 			setUrl(p.get("docker.url").toString());
 		}
 		
