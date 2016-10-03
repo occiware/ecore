@@ -40,7 +40,7 @@ class DockerUtil {
 		var String command = "docker-machine"
 		if (getOS().equalsIgnoreCase("osx")) {
 			command = DOCKER_MACHINE
-			LOGGER.info("OS=MAC OSX")
+			LOGGER.info("Machine OS={}", getOS())
 		}
 		return command
 	}
