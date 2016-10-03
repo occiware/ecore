@@ -35,6 +35,7 @@ import com.vmware.vim25.VirtualMachinePowerState;
 import com.vmware.vim25.VirtualMachineQuickStats;
 import com.vmware.vim25.VirtualMachineToolsStatus;
 import com.vmware.vim25.VirtualSCSISharing;
+import com.vmware.vim25.mo.Datacenter;
 import com.vmware.vim25.mo.Folder;
 import com.vmware.vim25.mo.HostSystem;
 import com.vmware.vim25.mo.InventoryNavigator;
@@ -1185,5 +1186,140 @@ public class VMHelper {
 
 		return taskInfo;
 	}
+	
+	/**
+	 * From inventory path, load the Folder object and return it, if path doesn't exist, the folder and subfolders are created.
+	 * @param dataCenterVmFolder
+	 * @param inventoryPath  (format: /myfolder/subfolder1/subfolder2/ etc.
+	 * @return
+	 */
+	public static Folder getInventoryFolderFromPath(Folder dataCenterVmFolder, final String inventoryPath) {
+		Folder folder = findOrCreateFolderFromPath(dataCenterVmFolder, inventoryPath);
+		
+		if (folder == null) {
+			LOGGER.error("Folder cannot be created or retrieved.");
+		} else {
+			LOGGER.info("Folder on path : " + inventoryPath + " found !");
+		}
+		return folder;
+	}
+	
+    /**
+     * Find a folder from a path like : /inria/test/experience1/
+     * Note : This method create the missing folders if any on the path.
+     *
+     * @param folderPath
+     * @return A folder if exist, null if none.
+     */
+    public static Folder findOrCreateFolderFromPath(Folder origin, String folderPath) {
+        Folder folder = null;
+        if (folderPath == null || folderPath.trim().isEmpty()) {
+            return folder;
+        }
+        if (origin == null) {
+            return folder;
+        }
+
+        if (folderPath.startsWith("/")) {
+            folderPath = folderPath.substring(1);
+        }
+        if (folderPath.endsWith("/")) {
+            folderPath = folderPath.substring(0, folderPath.length() - 1);
+        }
+
+        String[] foldersName = folderPath.split("/");
+        if (foldersName != null && foldersName.length > 0) {
+            String name = foldersName[0];
+            try {
+
+                if (name == null || name.isEmpty()) {
+                    return null;
+                }
+                // Search the first folder name.
+                Folder myFolder = (Folder) new InventoryNavigator(origin).searchManagedEntity("Folder", name);
+                if (myFolder == null) {
+                    System.out.println("Folder : " + name + " not found !!");
+                    // Create it if name is not empty.
+                    if (!name.isEmpty()) {
+                        myFolder = origin.createFolder(name);
+                    }
+                }
+
+                // Call recursively until the full path is ok.
+                int i = 0;
+                String tmpFolderPath = "";
+                for (String tmpName : foldersName) {
+                    if (i > 0 && tmpName != null && !tmpName.trim().isEmpty()) {
+                        tmpFolderPath += tmpName + "/";
+                    }
+                    i++;
+                }
+                if (!tmpFolderPath.isEmpty()) {
+                    myFolder = findOrCreateFolderFromPath(myFolder, tmpFolderPath);
+                    if (myFolder != null) {
+                        return myFolder;
+                    }
+                } else {
+                    // End of check tree, return here the last value found.
+                    return myFolder;
+                }
+
+            } catch (RemoteException ex) {
+            	LOGGER.error("Cant retrieve informations about folder : " + folderPath);
+            }
+
+        }
+
+        if (folder == null) {
+           LOGGER.warn("Folder on path : " + folderPath + " not found.");
+        }
+
+        return folder;
+    }
+    
+    /**
+     * Find a vm folder path like /INRIA/test/
+     *
+     * @param vm a virtual machine object.
+     * @return a folder path from vmFolder like /INRIA/test/, may return null if
+     * errors.
+     */
+    public static String getVMFolderPath(VirtualMachine vm) {
+        String folderPath = "";
+        if (vm == null) {
+            return null;
+        }
+        
+        // Folder vmFolder = dc.getVmFolder();
+        boolean folderVmFound = false;
+        // Get the parent.
+        ManagedEntity entityParent = vm.getParent();
+        Folder folder;
+        if (entityParent instanceof Folder) {
+            folder = (Folder) entityParent;
+            if (folder.getParent() instanceof Datacenter) {
+                return "/";
+            } else {
+                folderPath = "/" + folder.getName() + "/";
+            }
+        }
+
+        while (!folderVmFound && entityParent != null) {
+
+            entityParent = entityParent.getParent();
+
+            if (entityParent.getParent() instanceof Datacenter) {
+                folderVmFound = true;
+
+            } else if (entityParent instanceof Folder) {
+                folderPath = "/" + entityParent.getName() + folderPath;
+            }
+
+        }
+        
+        LOGGER.debug("VM Folder path:---> " + folderPath);
+       
+        return folderPath;
+    }
 
 }

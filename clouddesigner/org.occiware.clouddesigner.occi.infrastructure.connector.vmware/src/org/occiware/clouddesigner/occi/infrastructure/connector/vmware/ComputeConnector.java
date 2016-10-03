@@ -90,7 +90,14 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 	private static final String ATTR_VM_GUEST_STATE = "gueststate";
 	private static final String ATTR_MARKED_AS_TEMPLATE = "markedastemplate";
 	private static final String ATTR_VM_GUEST_OS_ID = "guestosid";
-	private static final String ATTR_VM_EPHEMERAL_DISK_SIZE_GB = "occi.compute.ephemeral_storage.size"; 
+	private static final String ATTR_VM_EPHEMERAL_DISK_SIZE_GB = "occi.compute.ephemeral_storage.size";
+	/**
+	 * Path on inventory object. Format: /inria/tests/ (with slash on last character or without).
+	 */
+	private static final String ATTR_VM_INVENTORY_PATH = "inventorypath";
+	/**
+	 * Mixin terms addon from vmwarecrtp extension.
+	 */
 	private static final String VMWARE_MIXIN_FOLDERS_TERM = "vmwarefolders";
 	private static final String VMWARE_MIXIN_VM_ADDON_TERM = "vmaddon";
 	
@@ -138,7 +145,10 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 	private String messageProgress = null;
 	
 	private boolean toCreateOnStartOperation = false;
-	
+	/**
+	 * VM Path in inventory objects. format: /inria/tests/
+	 */
+	private String inventoryPath = "";
 	
 	/**
 	 * Constructs a compute connector.
@@ -999,6 +1009,16 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 				attrsToUpdate.put(ATTR_HOSTSYSTEM_NAME, hostSystemName);
 			}
 		}
+		
+		// Inventory path like /INRIA/tests/. This is the location folder where the vm has been created / moved etc.
+		if (inventoryPath != null && !inventoryPath.trim().isEmpty() && hasMixinFoldersData) {
+			if (this.getAttributeStateObject(ATTR_VM_INVENTORY_PATH) == null) {
+				attrsToCreate.put(ATTR_VM_INVENTORY_PATH, inventoryPath);
+			} else {
+				attrsToUpdate.put(ATTR_VM_INVENTORY_PATH, inventoryPath);
+			}
+			
+		}
 
 		// ATTR_IMAGE_NAME
 		if (vmTemplateName != null && hasMixinVMwareComputeAddOn) {
@@ -1052,6 +1072,8 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 				attrsToUpdate.put(ATTR_VM_EPHEMERAL_DISK_SIZE_GB, "" + ephemeralDiskSizeGB);
 			}
 		}
+		
+		
 		
 		// if (!attrsToCreate.isEmpty() || !attrsToUpdate.isEmpty() || !attrsToDelete.isEmpty()) {
 			// Update the attributes via a transaction (or not if standalone).
@@ -1162,7 +1184,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 
 		if (VMHelper.isVMExistForName(rootFolder, vmName)) {
 			globalMessage = "VM : " + vmName + " already exist. Cant create.";
-			levelMessage = Level.ERROR;
+			levelMessage = Level.WARN;
 			LOGGER.warn(globalMessage);
 			return;
 		}
@@ -1409,8 +1431,20 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		}
 		setDatastoreName(datastore.getName());
 		// For V2, folder is on an attribute with vmware light extension.
-		Folder vmFolder;
-
+		Folder vmFolder = null;
+		inventoryPath = getAttributeValueByOcciKey(ATTR_VM_INVENTORY_PATH);
+		if (inventoryPath == null || inventoryPath.trim().isEmpty()) {
+			inventoryPath = "";
+		} 
+		try {
+			vmFolder = VMHelper.getInventoryFolderFromPath((Folder)datacenter.getVmFolder(), inventoryPath);
+		} catch (RemoteException ex) {
+			try {
+				vmFolder = (Folder) datacenter.getVmFolder();
+			} catch (RemoteException ey) { // fail silently.
+			}
+		}
+		
 		// Get the first adapter (eth0 or name Network adapter 1 or
 		// Adaptateur réseau 1).
 		NetworkConnector firstConnector = getFirstAdapterNetwork(netInterfaceConn);
@@ -1421,7 +1455,10 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		if (vmTemplate != null) {
 			// We clone the vm.
 			try {
-				vmFolder = (Folder) datacenter.getVmFolder();
+				if (vmFolder == null) {
+					vmFolder = (Folder) datacenter.getVmFolder();
+				}
+				
 				ResourcePool rp = (ResourcePool) new InventoryNavigator(datacenter)
 						.searchManagedEntities("ResourcePool")[0];
 				VirtualMachineCloneSpec cloneSpec = new VirtualMachineCloneSpec();
@@ -1431,7 +1468,10 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 				vmRelocate.setDatastore(datastore.getMOR());
 				cloneSpec.setLocation(vmRelocate);
 				cloneSpec.setTemplate(false);
-				cloneSpec.setPowerOn(false);
+				// After cloning, default behavior is power on the vm.
+				// TODO : add attribute autostartaftercreate to control power on the vm after creation.
+				// By default, power on the vm.
+				cloneSpec.setPowerOn(true);
 
 				if (vmTemplate.getCurrentSnapShot() != null) {
 					cloneSpec.snapshot = vmTemplate.getCurrentSnapShot().getMOR();
@@ -1514,7 +1554,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 				// calculate the nb
 				// cores per socket.
 				assignVCpuToVMSpec();
-
+				
 				vmSpec.setGuestId(guestOsId);
 				vmSpec.setCpuHotAddEnabled(true);
 				// vmSpec.setCpuHotRemoveEnabled(true);
@@ -1801,13 +1841,15 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 				VirtualMachineFileInfo vmfi = new VirtualMachineFileInfo();
 				vmfi.setVmPathName("[" + datastoreName + "]");
 				vmSpec.setFiles(vmfi);
-
+				
 				ResourcePool rp = (ResourcePool) new InventoryNavigator(datacenter)
 						.searchManagedEntities("ResourcePool")[0];
 				
-				// TODO : V2 custom folder path.
-				vmFolder = datacenter.getVmFolder();
-
+				if (vmFolder == null) {
+					// Back to the main datacenter vm folder.
+					vmFolder = datacenter.getVmFolder();
+				}
+				
 				// Create effectively the vm on folder.
 				com.vmware.vim25.mo.Task taskVm = vmFolder.createVM_Task(vmSpec, rp, host);
 				// TODO : Monitoring task object in other thread. See :
@@ -1821,7 +1863,14 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 					levelMessage = Level.INFO;
 					LOGGER.info(globalMessage);
 					vmExist = true;
-
+					// TODO : add attribute autostartaftercreate to control power on the vm after creation.
+					// By default, power on the vm.
+					VirtualMachine vm = VMHelper.loadVirtualMachine(vmName);
+					boolean poweredOn = VMHelper.powerOn(vm);
+					if (poweredOn) {
+						globalMessage += " \n virtual machine is powered on.";
+					}
+					
 				} else {
 					globalMessage = "VM couldn't be created, result: " + result;
 					levelMessage = Level.ERROR;
@@ -2079,6 +2128,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 			} else {
 				markedAsTemplate = "false";
 			}
+			inventoryPath = VMHelper.getVMFolderPath(vm);
 			if (toMonitor) {
 				subMonitor.worked(70);
 			}
