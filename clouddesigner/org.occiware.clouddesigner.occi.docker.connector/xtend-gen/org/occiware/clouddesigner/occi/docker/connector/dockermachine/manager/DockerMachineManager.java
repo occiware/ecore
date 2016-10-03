@@ -24,6 +24,8 @@ public class DockerMachineManager {
   
   private final static CommandFactory cf = new CommandFactory();
   
+  private static String OS = DockerUtil.getOS();
+  
   public static boolean createHostCmd(final Runtime runtime, final Machine machine) {
     final String command = "";
     DockerMachineManager.LOGGER.info((" Run ::==> " + command));
@@ -36,8 +38,7 @@ public class DockerMachineManager {
   
   public static boolean listMachinesCmd(final Runtime runtime) {
     boolean result = false;
-    String _oS = DockerUtil.getOS();
-    boolean _equalsIgnoreCase = _oS.equalsIgnoreCase("osx");
+    boolean _equalsIgnoreCase = DockerMachineManager.OS.equalsIgnoreCase("osx");
     if (_equalsIgnoreCase) {
       final String command = DockerMachineManager.cf.createLsCommand();
       boolean _runCommand = ProcessManager.runCommand(command, runtime, true);

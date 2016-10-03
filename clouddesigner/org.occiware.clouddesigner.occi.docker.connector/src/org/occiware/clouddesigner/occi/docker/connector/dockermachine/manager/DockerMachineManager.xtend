@@ -22,6 +22,7 @@ class DockerMachineManager {
 	// Initialize logger for CommandFactory.
 	private static Logger LOGGER = LoggerFactory.getLogger(typeof(DockerMachineManager))
 	val private static cf = new CommandFactory
+	var static private String  OS = DockerUtil.getOS
 
 	def static boolean createHostCmd(Runtime runtime, Machine machine) {
 		val String command = ""
@@ -34,7 +35,7 @@ class DockerMachineManager {
 
 	def static boolean listMachinesCmd(Runtime runtime) {
 		var boolean result = false 
-		if (DockerUtil.getOS.equalsIgnoreCase("osx")){
+		if (OS.equalsIgnoreCase("osx")){
 			val String command = cf.createLsCommand()
 			result = ProcessManager.runCommand(command, runtime, true)
 		}else{
