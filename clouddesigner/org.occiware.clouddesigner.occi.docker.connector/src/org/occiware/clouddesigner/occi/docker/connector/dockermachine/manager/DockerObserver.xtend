@@ -53,7 +53,7 @@ class DockerObserver {
 					if (notification.eventType == Notification.SET && notification.getOldValue() instanceof Container) {
 						deletedElement = notification.getOldValue() as Container
 						// Notify the deleted element in the model 
-						LOGGER.info("Model element ID: {}", deletedElement.containerid)
+						LOGGER.info("Deleted model element with ID: {}", deletedElement.containerid)
 						// Remove the container from the machine
 						var DockerContainerManager dockerManager = new DockerContainerManager(machine)
 						if(containerNameExists(dockerManager, deletedElement.name, machine)){
@@ -86,16 +86,14 @@ class DockerObserver {
 		container.eAdapters.add(
 			new EContentAdapter() {
 				public override notifyChanged(Notification notification) {
-					LOGGER.info("The Container has Changed")
 					// ID of the element deleted
 					var Container deletedElement = null
-					LOGGER.info("The machine model has Changed")
 					var Container newContainer = null
 					if (notification.eventType == Notification.REMOVE &&
 						notification.getNotifier() instanceof Container) {
 						deletedElement = notification.getOldValue() as Container
 						// Notify the deleted element in the model 
-						LOGGER.info("Model element ID: {}", deletedElement.containerid)
+						LOGGER.info("Delete model element with ID: {}", deletedElement.containerid)
 						// Remove the container from the machine
 						var DockerContainerManager dockerManager = new DockerContainerManager(machine)
 						dockerManager.removeContainer(machine, deletedElement.containerid)
@@ -107,8 +105,6 @@ class DockerObserver {
 //						var Elasticity elasticity = new Elasticity(newContainer as ExecutableContainer)
 //						elasticity.action(cpuManager, host, privateKey, newContainer)
 						
-						LOGGER.info("Old container ID : {}", cpContainer.containerid)
-						LOGGER.info("New container ID : {}", newContainer.containerid)
 						// When the container name's Changes
 						if (cpContainer.containerid.equals(newContainer.containerid) &&
 							cpContainer.state.toString.equalsIgnoreCase('active')) {
@@ -147,8 +143,8 @@ class DockerObserver {
 							}
 						}
 						
-						LOGGER.info("Old value : " + notification.oldValue)
-						LOGGER.info("New value : " + notification.newValue)
+//						LOGGER.info("Old value : " + notification.oldValue)
+//						LOGGER.info("New value : " + notification.newValue)
 					}
 
 				}
