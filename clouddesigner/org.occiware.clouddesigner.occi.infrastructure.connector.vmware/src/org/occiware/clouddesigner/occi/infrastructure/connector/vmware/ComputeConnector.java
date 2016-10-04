@@ -1469,10 +1469,12 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 				cloneSpec.setLocation(vmRelocate);
 				cloneSpec.setTemplate(false);
 				// After cloning, default behavior is power on the vm.
-				// TODO : add attribute autostartaftercreate to control power on the vm after creation.
-				// By default, power on the vm.
-				cloneSpec.setPowerOn(true);
-
+				if (getState() != null && getState().equals(ComputeStatus.ACTIVE)) {
+					cloneSpec.setPowerOn(true);
+				} else {
+					cloneSpec.setPowerOn(false);
+				}
+				
 				if (vmTemplate.getCurrentSnapShot() != null) {
 					cloneSpec.snapshot = vmTemplate.getCurrentSnapShot().getMOR();
 				}
@@ -1861,15 +1863,16 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 				if (result == com.vmware.vim25.mo.Task.SUCCESS) {
 					globalMessage = "Virtual Machine successfully created !";
 					levelMessage = Level.INFO;
-					LOGGER.info(globalMessage);
 					vmExist = true;
-					// TODO : add attribute autostartaftercreate to control power on the vm after creation.
-					// By default, power on the vm.
-					VirtualMachine vm = VMHelper.loadVirtualMachine(vmName);
-					boolean poweredOn = VMHelper.powerOn(vm);
-					if (poweredOn) {
-						globalMessage += " \n virtual machine is powered on.";
-					}
+					// if state is active on create, power on the instance. 
+					if (getState() != null && getState().equals(ComputeStatus.ACTIVE)) {
+						VirtualMachine vm = VMHelper.loadVirtualMachine(vmName);
+						boolean poweredOn = VMHelper.powerOn(vm);
+						if (poweredOn) {
+							globalMessage += " \n virtual machine is powered on.";
+						}
+					} 
+					LOGGER.info(globalMessage);
 					
 				} else {
 					globalMessage = "VM couldn't be created, result: " + result;
