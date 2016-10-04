@@ -82,6 +82,7 @@ import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.Docke
 import org.occiware.clouddesigner.occi.infrastructure.ComputeStatus
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import java.util.HashSet
 
 class ModelHandler {
 
@@ -546,17 +547,21 @@ class ModelHandler {
 			if (!machineExists) { // ignore the machine if it exists.
 				// Check machine state
 				if (vbox.state.toString.equalsIgnoreCase("active")) {
-
+					
 					// Introspect containers
 					val List<com.github.dockerjava.api.model.Container> containers = instance.listContainer(vbox.name)
 					if (containers != null) {
 						var modelContainers = buildContainer(vbox, containers)
 						for (Container container : modelContainers) {
+							var HashSet<String> existingLinks = new HashSet
 							linkContainerToMachine(container, vbox)
 							val inspectContainer = instance.inspectContainer(vbox, container.id)
-							if (!inspectContainer.hostConfig.links.isEmpty) {
+							if (!inspectContainer.hostConfig.links.isEmpty) { // ignore the link if it is already taken into account
 								for (Link link : inspectContainer.hostConfig.links) {
-									linkContainerToContainer(container, getContainerByName(modelContainers, link.name))
+									if(!existingLinks.contains(link.name)){
+										linkContainerToContainer(container, getContainerByName(modelContainers, link.name))
+										existingLinks.add(link.name)
+									}
 
 								}
 							}
