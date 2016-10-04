@@ -682,7 +682,7 @@ class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statistics> {
 	}
 
 	override def void onNext(Statistics stats) {
-		LOGGER.info("Received stats #{} :: {} :: {}", statisticsList.size(), this.container.containerid, stats)
+		//LOGGER.info("Received stats #{} :: {} :: {}", statisticsList.size(), this.container.containerid, stats)
 		
 		// Interval in which the metrics are retrieved
 		
@@ -706,7 +706,7 @@ class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statistics> {
 		try {
 			if(networks != null){
 				var LinkedHashMap tmpnetworks = networks.get("eth0") as LinkedHashMap
-				LOGGER.info("Networks : {}", tmpnetworks)
+				//LOGGER.info("Networks : {}", tmpnetworks)
 				network_r = tmpnetworks.get("rx_bytes") as Integer
 				network_t = tmpnetworks.get("tx_bytes") as Integer
 				bandwitdh = network_r + network_t 
@@ -785,15 +785,15 @@ class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statistics> {
 						
 						if((resource as ExecutableContainer).cpu_used != cpu_us.intValue){
 							(resource as ExecutableContainer).cpu_used = cpu_us.intValue
-							LOGGER.info("CPU USED <=====> {}", cpu_us.intValue)
+							//LOGGER.info("CPU USED <=====> {}", cpu_us.intValue)
 						}
 						if((resource as ExecutableContainer).cpu_max_value != Integer.valueOf(cpu_max)){
 							(resource as ExecutableContainer).cpu_max_value = Integer.valueOf(cpu_max)
-							LOGGER.info("CPU MAX VALUE <=====> {}", Integer.valueOf(cpu_max))
+							//LOGGER.info("CPU MAX VALUE <=====> {}", Integer.valueOf(cpu_max))
 						}
 						if((resource as ExecutableContainer).cpu_percent != df.format(percent)){
 							(resource as ExecutableContainer).cpu_percent = df.format(percent)
-							LOGGER.info("CPU PERCENTAGE <=====> {}", percent)
+							//LOGGER.info("CPU PERCENTAGE <=====> {}", percent)
 						}
 						
 						// Update the number of cores once
