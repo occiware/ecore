@@ -59,7 +59,7 @@ public class DockerObserver {
             Object _oldValue_1 = notification.getOldValue();
             deletedElement = ((Container) _oldValue_1);
             String _containerid = deletedElement.getContainerid();
-            DockerObserver.LOGGER.info("Model element ID: {}", _containerid);
+            DockerObserver.LOGGER.info("Deleted model element with ID: {}", _containerid);
             DockerContainerManager dockerManager = new DockerContainerManager(machine);
             String _name = deletedElement.getName();
             boolean _containerNameExists = DockerObserver.this.containerNameExists(dockerManager, _name, machine);
@@ -98,16 +98,14 @@ public class DockerObserver {
       new EContentAdapter() {
         @Override
         public void notifyChanged(final Notification notification) {
-          DockerObserver.LOGGER.info("The Container has Changed");
           Container deletedElement = null;
-          DockerObserver.LOGGER.info("The machine model has Changed");
           Container newContainer = null;
           if (((notification.getEventType() == Notification.REMOVE) && 
             (notification.getNotifier() instanceof Container))) {
             Object _oldValue = notification.getOldValue();
             deletedElement = ((Container) _oldValue);
             String _containerid = deletedElement.getContainerid();
-            DockerObserver.LOGGER.info("Model element ID: {}", _containerid);
+            DockerObserver.LOGGER.info("Delete model element with ID: {}", _containerid);
             DockerContainerManager dockerManager = new DockerContainerManager(machine);
             String _containerid_1 = deletedElement.getContainerid();
             dockerManager.removeContainer(machine, _containerid_1);
@@ -116,10 +114,6 @@ public class DockerObserver {
           if ((_notifier instanceof Container)) {
             Object _notifier_1 = notification.getNotifier();
             newContainer = ((ExecutableContainer) _notifier_1);
-            String _containerid_2 = DockerObserver.cpContainer.getContainerid();
-            DockerObserver.LOGGER.info("Old container ID : {}", _containerid_2);
-            String _containerid_3 = newContainer.getContainerid();
-            DockerObserver.LOGGER.info("New container ID : {}", _containerid_3);
             if ((DockerObserver.cpContainer.getContainerid().equals(newContainer.getContainerid()) && 
               DockerObserver.cpContainer.getState().toString().equalsIgnoreCase("active"))) {
               String _name = DockerObserver.cpContainer.getName();
@@ -132,9 +126,9 @@ public class DockerObserver {
                 boolean _containerNameExists = DockerObserver.this.containerNameExists(dockerManager_1, _name_2, machine);
                 boolean _not_1 = (!_containerNameExists);
                 if (_not_1) {
-                  String _containerid_4 = newContainer.getContainerid();
+                  String _containerid_2 = newContainer.getContainerid();
                   String _name_3 = newContainer.getName();
-                  dockerManager_1.renameContainer(machine, _containerid_4, _name_3);
+                  dockerManager_1.renameContainer(machine, _containerid_2, _name_3);
                 }
               }
               int _cores = DockerObserver.cpContainer.getCores();
@@ -173,12 +167,6 @@ public class DockerObserver {
                 memoryManager.setMemValue(host, privateKey, newContainer, _valueOf_2);
               }
             }
-            Object _oldValue_1 = notification.getOldValue();
-            String _plus = ("Old value : " + _oldValue_1);
-            DockerObserver.LOGGER.info(_plus);
-            Object _newValue = notification.getNewValue();
-            String _plus_1 = ("New value : " + _newValue);
-            DockerObserver.LOGGER.info(_plus_1);
           }
         }
       });
