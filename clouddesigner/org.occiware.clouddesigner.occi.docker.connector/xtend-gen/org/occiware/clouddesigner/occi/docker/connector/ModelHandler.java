@@ -32,6 +32,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.IdentityHashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -735,6 +736,7 @@ public class ModelHandler {
             List<org.occiware.clouddesigner.occi.docker.Container> modelContainers = this.buildContainer(vbox, containers);
             for (final org.occiware.clouddesigner.occi.docker.Container container : modelContainers) {
               {
+                HashSet<String> existingLinks = new HashSet<String>();
                 this.linkContainerToMachine(container, vbox);
                 String _id = container.getId();
                 final InspectContainerResponse inspectContainer = instance.inspectContainer(vbox, _id);
@@ -747,8 +749,15 @@ public class ModelHandler {
                   Link[] _links_1 = _hostConfig_1.getLinks();
                   for (final Link link : _links_1) {
                     String _name_1 = link.getName();
-                    org.occiware.clouddesigner.occi.docker.Container _containerByName = this.getContainerByName(modelContainers, _name_1);
-                    this.linkContainerToContainer(container, _containerByName);
+                    boolean _contains = existingLinks.contains(_name_1);
+                    boolean _not_1 = (!_contains);
+                    if (_not_1) {
+                      String _name_2 = link.getName();
+                      org.occiware.clouddesigner.occi.docker.Container _containerByName = this.getContainerByName(modelContainers, _name_2);
+                      this.linkContainerToContainer(container, _containerByName);
+                      String _name_3 = link.getName();
+                      existingLinks.add(_name_3);
+                    }
                   }
                 }
               }

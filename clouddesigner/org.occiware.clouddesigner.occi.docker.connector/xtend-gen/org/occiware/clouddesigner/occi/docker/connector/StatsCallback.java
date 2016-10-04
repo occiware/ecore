@@ -72,9 +72,6 @@ public class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statist
   @Override
   public void onNext(final Statistics stats) {
     try {
-      int _size = this.statisticsList.size();
-      String _containerid = this.container.getContainerid();
-      StatsCallback.LOGGER.info("Received stats #{} :: {} :: {}", Integer.valueOf(_size), _containerid, stats);
       int _monitoring_interval = ((ExecutableContainer) this.container).getMonitoring_interval();
       Thread.sleep(_monitoring_interval);
       this.statisticsList.add(stats);
@@ -101,7 +98,6 @@ public class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statist
         if (_notEquals) {
           Object _get_3 = networks.get("eth0");
           LinkedHashMap tmpnetworks = ((LinkedHashMap) _get_3);
-          StatsCallback.LOGGER.info("Networks : {}", tmpnetworks);
           Object _get_4 = tmpnetworks.get("rx_bytes");
           network_r = ((Integer) _get_4);
           Object _get_5 = tmpnetworks.get("tx_bytes");
@@ -133,12 +129,12 @@ public class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statist
       Float _valueOf_1 = Float.valueOf(_string_1);
       this.cpuSystemUsageQueue.add(_valueOf_1);
       if (((this.cpuTotalUsageQueue.size() == 2) && (this.cpuSystemUsageQueue.size() == 2))) {
-        int _size_1 = percpu_usage_size.size();
-        Float percent = this.calculateCPUPercent(this.cpuTotalUsageQueue, this.cpuSystemUsageQueue, _size_1);
+        int _size = percpu_usage_size.size();
+        Float percent = this.calculateCPUPercent(this.cpuTotalUsageQueue, this.cpuSystemUsageQueue, _size);
         try {
           String _string_2 = cpu_used.toString();
-          int _size_2 = percpu_usage_size.size();
-          this.modifyResourceSet(this.container, _string_2, percent, mem_used, mem_limit, bandwitdh, Integer.valueOf(_size_2), this.updateMaxCpu);
+          int _size_1 = percpu_usage_size.size();
+          this.modifyResourceSet(this.container, _string_2, percent, mem_used, mem_limit, bandwitdh, Integer.valueOf(_size_1), this.updateMaxCpu);
         } catch (final Throwable _t_1) {
           if (_t_1 instanceof NullPointerException) {
             final NullPointerException e_1 = (NullPointerException)_t_1;
@@ -235,8 +231,6 @@ public class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statist
                 if (_notEquals_4) {
                   int _intValue_4 = cpu_us.intValue();
                   ((ExecutableContainer) resource).setCpu_used(_intValue_4);
-                  int _intValue_5 = cpu_us.intValue();
-                  StatsCallback.LOGGER.info("CPU USED <=====> {}", Integer.valueOf(_intValue_5));
                 }
                 int _cpu_max_value = ((ExecutableContainer) resource).getCpu_max_value();
                 Integer _valueOf_1 = Integer.valueOf(cpu_max);
@@ -244,8 +238,6 @@ public class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statist
                 if (_notEquals_5) {
                   Integer _valueOf_2 = Integer.valueOf(cpu_max);
                   ((ExecutableContainer) resource).setCpu_max_value((_valueOf_2).intValue());
-                  Integer _valueOf_3 = Integer.valueOf(cpu_max);
-                  StatsCallback.LOGGER.info("CPU MAX VALUE <=====> {}", _valueOf_3);
                 }
                 String _cpu_percent = ((ExecutableContainer) resource).getCpu_percent();
                 String _format_2 = df.format(percent);
@@ -253,7 +245,6 @@ public class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statist
                 if (_notEquals_6) {
                   String _format_3 = df.format(percent);
                   ((ExecutableContainer) resource).setCpu_percent(_format_3);
-                  StatsCallback.LOGGER.info("CPU PERCENTAGE <=====> {}", percent);
                 }
                 if ((!(updateMaxCpu).booleanValue())) {
                   ((ExecutableContainer) resource).setCore_max((cpuMax).intValue());
