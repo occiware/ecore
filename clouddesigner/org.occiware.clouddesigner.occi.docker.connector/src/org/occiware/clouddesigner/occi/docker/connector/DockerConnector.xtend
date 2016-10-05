@@ -1162,9 +1162,11 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 			ProcessManager.runCommand(command.toString, runtime, true)
 		} else {
 			if (!activeHosts.containsKey(compute.name)) {
-
 				// Start the machine
 				DockerMachineManager.startCmd(runtime, compute.name)
+				// Regenerate Cert when IP addresses change
+				DockerMachineManager.regenerateCert(runtime, compute.name)
+				
 			}
 		}
 	}
