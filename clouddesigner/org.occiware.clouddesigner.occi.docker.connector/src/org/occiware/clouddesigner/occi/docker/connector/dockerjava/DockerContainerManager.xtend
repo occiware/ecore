@@ -146,32 +146,35 @@ class DockerContainerManager {
 
 	def containerFactory(Container container, DockerClient dockerClient) {
 		var CreateContainerCmd create = null
-		if (container.image != null) {
+		if (StringUtils.isNotBlank(container.image)) {
 			create = dockerClient.createContainerCmd(container.image.trim)
-		} else if (container.image == null) {
+		} else{
 			create = dockerClient.createContainerCmd("busybox")
 		}
-		if (container.command != null) {
-			val String[] cmd = StringUtils.deleteWhitespace(container.command).split(",")
+		if (StringUtils.isNotBlank(container.command)) {
+			var String[] cmd = (StringUtils.deleteWhitespace(container.command)).split(",")
 			create.withCmd(cmd)
+		} else {
+			create.withCmd("sleep", "9999")
 		}
 		if (container.cpu_shares > 0) {
 			create.withCpuShares(container.cpu_shares)
 		}
-		if (container.add_host != null) {
-			create.withHostName(container.hostname)
+		if (StringUtils.isNotBlank(container.add_host)) {
+			create.withHostName(StringUtils.deleteWhitespace(container.hostname))
 		}
-		if (container.cpuset != null) {
-			create.withCpusetCpus(container.cpuset)
+		if (StringUtils.isNotBlank(container.cpuset)) {
+			create.withCpusetCpus(StringUtils.deleteWhitespace(container.cpuset))
 		}
 		if (container.privileged) {
 			create.withPrivileged(container.privileged)
 		}
-		if (container.dns != null) {
-			create.withDns(container.dns)
+		if (StringUtils.isNotBlank(container.dns)) {
+			create.withDns(StringUtils.deleteWhitespace(container.dns))
 		}
-		if (container.environment != null) {
-			create.withEnv(container.environment)
+		if (StringUtils.isNotBlank(container.environment)) {
+			var String[] env = StringUtils.deleteWhitespace(container.environment).split(",")
+			create.withEnv(env)
 		}
 		LOGGER.info("Container ports = " + container.ports)
 		if (StringUtils.isNotBlank(container.ports)) {
@@ -189,13 +192,13 @@ class DockerContainerManager {
 			}
 			create.withExposedPorts(tcp).withPortBindings(portBindings)
 		}
-		if (container.name != null) {
-			create.withName(container.name.trim)
+		if (StringUtils.isNotBlank(container.name)) {
+			create.withName(StringUtils.deleteWhitespace(container.name))
 		}
-		if (container.hostname != null) {
-			create.withHostName(container.hostname.trim)
+		if (StringUtils.isNotBlank(container.hostname)) {
+			create.withHostName(StringUtils.deleteWhitespace(container.hostname))
 		}
-		if (container.net != null) {
+		if (StringUtils.isNotBlank(container.net)) {
 			create.withNetworkMode(container.net)
 		}
 		if (container.publish_all) {
@@ -204,10 +207,10 @@ class DockerContainerManager {
 		if (container.stdin_open) {
 			create.withStdInOnce(container.stdin_open)
 		}
-		if (container.user != null) {
+		if (StringUtils.isNotBlank(container.user)) {
 			create.withUser(container.user)
 		}
-		if (container.volumes != null) {
+		if (StringUtils.isNotBlank(container.volumes)) {
 			create.withVolumes(new Volume(container.volumes))
 		}
 		if (container.mem_limit > 0) {
@@ -216,56 +219,45 @@ class DockerContainerManager {
 		if (container.memory_swap > 0) {
 			create.withMemory(Long.valueOf(container.memory_swap))
 		}
-		if (container.lxc_conf != null) {
-
+		if (StringUtils.isNotBlank(container.lxc_conf)) {
 			// TODO lxc_conf should be String array..
 			val LxcConf lxcCon = new LxcConf("key", "value")
 			create.withLxcConf(lxcCon)
 		}		
-		if(container.domainname !=null){
+		if(StringUtils.isNotBlank(container.domainname)){
 			create.withDomainName(container.domainname)
 		}
-
-		if(container.dns_search != null){
+		if(StringUtils.isNotBlank(container.dns_search)){
 			var String[] dnsSearch = container.dns_search.split(",")
 			create.withDnsSearch(dnsSearch)
 		}
-
-		if(container.entrypoint != null){
+		if(StringUtils.isNotBlank(container.entrypoint)){
 			var String[] entrypoint = container.entrypoint.split(",")
 			create.withEntrypoint(entrypoint)
 		}
-
-		if(container.net != null){
-			create.withNetworkMode(container.net)
+		if(StringUtils.isNotBlank(container.net)){
+			create.withNetworkMode(StringUtils.deleteWhitespace(container.net))
 		}
-
-		if(container.pid != null){
-			create.withPidMode(container.pid)
+		if(StringUtils.isNotBlank(container.pid)){
+			create.withPidMode(StringUtils.deleteWhitespace(container.pid))
 		}
-		
 		if(container.privileged){
 			create.withPrivileged(container.privileged)
 		}		
-
 		if(container.publish_all){
 			create.withPublishAllPorts(container.publish_all)
 		}		
-
 		if(container.read_only){
 			create.withReadonlyRootfs(container.read_only)
 		}		
-
 		if(container.tty){
 			create.withTty(container.tty)
 		}		
-
-		if(container.restart != null){
-			create.withRestartPolicy(RestartPolicy.parse(container.restart))
+		if(StringUtils.isNotBlank(container.restart)){
+			create.withRestartPolicy(RestartPolicy.parse(StringUtils.deleteWhitespace(container.restart)))
 		}		
-
-		if(container.working_dir != null){
-			create.withWorkingDir(container.working_dir)
+		if(StringUtils.isNotBlank(container.working_dir)){
+			create.withWorkingDir(StringUtils.deleteWhitespace(container.working_dir))
 			create.cpusetCpus
 		}		
 
@@ -279,32 +271,32 @@ class DockerContainerManager {
 		} else if (container.image == null) {
 			create = dockerClient.createContainerCmd("busybox")
 		}
-		if (container.command != null) {
+		if (StringUtils.isNotBlank(container.command)) {
 			// The command is something like: sleep, 9999
 			val String[] cmd = StringUtils.deleteWhitespace(container.command).split(",")
 			create.withCmd(cmd)
-		} else if (container.command == null) {
+		} else {
 			create.withCmd("sleep", "9999")
 		}
 		if (container.cpu_shares > 0) {
 			create.withCpuShares(container.cpu_shares)
 		}
-		if (container.add_host != null) {
-			create.withHostName(container.hostname)
+		if (StringUtils.isNotBlank(container.add_host)) {
+			create.withHostName(StringUtils.deleteWhitespace(container.hostname))
 		}
-		if (container.cpuset != null) {
-			create.withCpusetCpus(container.cpuset)
+		if (StringUtils.isNotBlank(container.cpuset)) {
+			create.withCpusetCpus(StringUtils.deleteWhitespace(container.cpuset))
 		}
 		if (container.privileged) {
 			create.withPrivileged(container.privileged)
 		}
-		if (container.dns != null) {
-			create.withDns(container.dns)
+		if (!StringUtils.isBlank(container.dns)) {
+			create.withDns(StringUtils.deleteWhitespace(container.dns))
 		}
-		if (container.environment != null) {
-			create.withEnv(container.environment)
+		if (!StringUtils.isBlank(container.environment)) {
+			create.withEnv(StringUtils.deleteWhitespace(container.environment))
 		}
-		if (container.ports != null) {
+		if (!StringUtils.isBlank(container.ports)) {
 			val String[] ports = container.ports.split(":")
 			var ExposedPort port = ExposedPort.tcp(Integer.parseInt(ports.get(0)))
 			val Ports portBindings = new Ports
@@ -316,14 +308,14 @@ class DockerContainerManager {
 			}
 			create.withPortBindings(portBindings)
 		}
-		if (container.name != null) {
-			create.withName(container.name.trim)
+		if (!StringUtils.isBlank(container.name)) {
+			create.withName(StringUtils.deleteWhitespace(container.name))
 		}
-		if (container.hostname != null) {
-			create.withName(container.hostname.trim)
+		if (!StringUtils.isBlank(container.hostname)) {
+			create.withName(StringUtils.deleteWhitespace(container.hostname))
 		}
-		if (container.net != null) {
-			create.withNetworkMode(container.net)
+		if (!StringUtils.isBlank(container.net)) {
+			create.withNetworkMode(StringUtils.deleteWhitespace(container.net))
 		}
 		if (container.publish_all) {
 			create.withPublishAllPorts(container.publish_all)
@@ -334,11 +326,11 @@ class DockerContainerManager {
 		if (container.stdin_open) {
 			create.withStdInOnce(container.stdin_open)
 		}
-		if (container.user != null) {
-			create.withUser(container.user)
+		if (!StringUtils.isBlank(container.user)) {
+			create.withUser(StringUtils.deleteWhitespace(container.user))
 		}
-		if (container.volumes != null) {
-			create.withVolumes(new Volume(container.volumes))
+		if (!StringUtils.isBlank(container.volumes)) {
+			create.withVolumes(new Volume(StringUtils.deleteWhitespace(container.volumes)))
 		}
 		if (container.mem_limit > 0) {
 			create.withMemory(Long.valueOf(container.mem_limit))
@@ -346,8 +338,7 @@ class DockerContainerManager {
 		if (container.memory_swap > 0) {
 			create.withMemorySwap(Long.valueOf(container.memory_swap))
 		}
-		if (container.lxc_conf != null) {
-
+		if (!StringUtils.isBlank(container.lxc_conf)) {
 			// TODO lxc_conf should be String array..
 			val LxcConf lxcCon = new LxcConf("key", "value")
 			create.withLxcConf(lxcCon)

@@ -114,6 +114,8 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
       if (_not_1) {
         String _name_4 = this.compute.getName();
         DockerMachineManager.startCmd(runtime, _name_4);
+        String _name_5 = this.compute.getName();
+        DockerMachineManager.regenerateCert(runtime, _name_5);
       }
     }
   }
