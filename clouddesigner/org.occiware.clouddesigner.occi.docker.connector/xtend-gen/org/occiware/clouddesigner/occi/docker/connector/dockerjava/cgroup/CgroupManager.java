@@ -32,7 +32,7 @@ public class CgroupManager {
   
   public final static String memory_subsystem = "memory";
   
-  public final static String netcls_subsystem = "netcls";
+  public final static String netcls_subsystem = "net_cls";
   
   public final static String blkio_write = "blkio.throttle.write_bps_device";
   
@@ -44,6 +44,8 @@ public class CgroupManager {
   
   public final static String cpuset_cpus = "cpuset.cpus";
   
+  public final static String net_cls_classid = "net_cls.classid";
+  
   public final static String cpu_cfs_period = "cpu.cfs_period_us";
   
   public final static String cpu_cfs_quota = "cpu.cfs_quota_us";
@@ -53,13 +55,54 @@ public class CgroupManager {
     String _plus = (((CgroupManager.cGroupPath + subsystem) + "/docker/") + _containerid);
     String _plus_1 = (_plus + "/");
     final String FilePath = (_plus_1 + file);
-    String _cpuSetGenerator = CgroupManager.cpuSetGenerator(value, container);
-    String _plus_2 = ("echo \'" + _cpuSetGenerator);
-    String _plus_3 = (_plus_2 + "\' > ");
-    final String command = (_plus_3 + FilePath);
-    InputOutput.<String>println(("EXECUTE COMMAND: " + command));
+    String command = "";
     final DockerContainerManager dockerContainerManager = new DockerContainerManager();
-    dockerContainerManager.connect(host, privateKey, command);
+    boolean _equalsIgnoreCase = file.equalsIgnoreCase(CgroupManager.memory_max_mem);
+    if (_equalsIgnoreCase) {
+      float _parseFloat = Float.parseFloat(value);
+      int _intValue = Float.valueOf(_parseFloat).intValue();
+      String _plus_2 = ("echo \'" + Integer.valueOf(_intValue));
+      String _plus_3 = (_plus_2 + "\' > ");
+      String _plus_4 = (_plus_3 + FilePath);
+      command = _plus_4;
+      InputOutput.<String>println(("EXECUTE COMMAND: " + command));
+      dockerContainerManager.connect(host, privateKey, command);
+    } else {
+      boolean _equalsIgnoreCase_1 = file.equalsIgnoreCase(CgroupManager.cpuset_cpus);
+      if (_equalsIgnoreCase_1) {
+        String _cpuSetGenerator = CgroupManager.cpuSetGenerator(value, container);
+        String _plus_5 = ("echo \'" + _cpuSetGenerator);
+        String _plus_6 = (_plus_5 + "\' > ");
+        String _plus_7 = (_plus_6 + FilePath);
+        command = _plus_7;
+        InputOutput.<String>println(("EXECUTE COMMAND: " + command));
+        dockerContainerManager.connect(host, privateKey, command);
+      } else {
+        boolean _equalsIgnoreCase_2 = file.equalsIgnoreCase(CgroupManager.net_cls_classid);
+        if (_equalsIgnoreCase_2) {
+          float _parseFloat_1 = Float.parseFloat(value);
+          int _intValue_1 = Float.valueOf(_parseFloat_1).intValue();
+          String _plus_8 = ("echo \'" + Integer.valueOf(_intValue_1));
+          String _plus_9 = (_plus_8 + "\' > ");
+          String _plus_10 = (_plus_9 + FilePath);
+          command = _plus_10;
+          InputOutput.<String>println(("EXECUTE COMMAND: " + command));
+          dockerContainerManager.connect(host, privateKey, command);
+        } else {
+          boolean _equalsIgnoreCase_3 = file.equalsIgnoreCase(CgroupManager.memory_swap);
+          if (_equalsIgnoreCase_3) {
+            float _parseFloat_2 = Float.parseFloat(value);
+            int _intValue_2 = Float.valueOf(_parseFloat_2).intValue();
+            String _plus_11 = ("echo \'" + Integer.valueOf(_intValue_2));
+            String _plus_12 = (_plus_11 + "\' > ");
+            String _plus_13 = (_plus_12 + FilePath);
+            command = _plus_13;
+            InputOutput.<String>println(("EXECUTE COMMAND: " + command));
+            dockerContainerManager.connect(host, privateKey, command);
+          }
+        }
+      }
+    }
   }
   
   public static String cpuSetGenerator(final String nbCores, final Container container) {
