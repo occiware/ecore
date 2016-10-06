@@ -27,7 +27,7 @@ class CgroupManager {
 	public static final String devices_subsystem = "devices"
 	public static final String freezer_subsystem = "freezer"
 	public static final String memory_subsystem = "memory"
-	public static final String netcls_subsystem = "netcls"
+	public static final String netcls_subsystem = "net_cls"
 
 	//List of Files
 	public static final String blkio_write = "blkio.throttle.write_bps_device"
@@ -37,6 +37,7 @@ class CgroupManager {
 	public static final String memory_swap = "memory.memsw.limit_in_bytes"
 
 	public static final String cpuset_cpus = "cpuset.cpus"
+	public static final String net_cls_classid = "net_cls.classid"
 
 	public static final String cpu_cfs_period = "cpu.cfs_period_us"
 	public static final String cpu_cfs_quota = "cpu.cfs_quota_us"
@@ -47,19 +48,29 @@ class CgroupManager {
 	def static void SetValue(String host, String privateKey, Container container, String subsystem, String file,
 		String value) {
 		val String FilePath = cGroupPath + subsystem + "/docker/" + container.containerid + "/" + file
-		val String command = "echo '" + cpuSetGenerator(value, container) + "' > " + FilePath
-		println("EXECUTE COMMAND: "+ command)
+		var String command = ""
 		val dockerContainerManager = new DockerContainerManager
-		dockerContainerManager.connect(host, privateKey, command)
+		if(file.equalsIgnoreCase(memory_max_mem)){
+			command = "echo '" + Float.parseFloat(value).intValue + "' > " + FilePath
+			println("EXECUTE COMMAND: "+ command)
+			dockerContainerManager.connect(host, privateKey, command)
+		}else if(file.equalsIgnoreCase(cpuset_cpus)){
+			command = "echo '" + cpuSetGenerator(value, container) + "' > " + FilePath
+			println("EXECUTE COMMAND: "+ command)
+			dockerContainerManager.connect(host, privateKey, command)
+		}else if(file.equalsIgnoreCase(net_cls_classid)){
+			command = "echo '" + Float.parseFloat(value).intValue + "' > " + FilePath
+			println("EXECUTE COMMAND: "+ command)
+			dockerContainerManager.connect(host, privateKey, command)
+		}else if(file.equalsIgnoreCase(memory_swap)){
+			command = "echo '" + Float.parseFloat(value).intValue + "' > " + FilePath
+			println("EXECUTE COMMAND: "+ command)
+			dockerContainerManager.connect(host, privateKey, command)
+		}
+		//val String command = "echo '" + cpuSetGenerator(value, container) + "' > " + FilePath
+		//println("EXECUTE COMMAND: "+ command)
+		//dockerContainerManager.connect(host, privateKey, command)
 	}
-
-//	def static void SetValue(String host, String privateKey, String containerId, String subsystem, String file, String value) {
-//		val String FilePath = cGroupPath + subsystem + "/docker/" + containerId + "/" + file
-//		val String command = "echo '" + cpuSetGenerator(value) + "' > " + FilePath
-//		println("EXECUTE COMMAND: "+ command)
-//		val dockerContainerManager = new DockerContainerManager
-//		dockerContainerManager.connect(host, privateKey, command)
-//	}
 
 	def static String cpuSetGenerator(String nbCores, Container container) {
 		if (Integer.valueOf(nbCores) > 1 && Integer.valueOf(nbCores) <= container.core_max) {
@@ -97,6 +108,7 @@ class MemoryManager {
 		//TODO Check not null here
 		CgroupManager.SetValue(host, privateKey, container, CgroupManager.memory_subsystem,
 			CgroupManager.memory_max_mem, value)
+			
 	}
 
 	def void setSwapValue(String host, String privateKey, Container container, String value) {
@@ -108,6 +120,11 @@ class MemoryManager {
 }
 
 class NetWorkManager {
+		def void setNetworkValue(String host, String privateKey, Container container, String value) {
+		CgroupManager.SetValue(host, privateKey, container, CgroupManager.netcls_subsystem,
+			CgroupManager.net_cls_classid, value)
+	}
+	
 }
 
 class BlkioManager {
