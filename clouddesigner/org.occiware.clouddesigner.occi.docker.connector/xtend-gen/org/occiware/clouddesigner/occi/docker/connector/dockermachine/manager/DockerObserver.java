@@ -18,10 +18,12 @@ import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.occiware.clouddesigner.occi.docker.Container;
 import org.occiware.clouddesigner.occi.docker.Machine;
+import org.occiware.clouddesigner.occi.docker.connector.Elasticity;
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableContainer;
 import org.occiware.clouddesigner.occi.docker.connector.dockerjava.DockerContainerManager;
 import org.occiware.clouddesigner.occi.docker.connector.dockerjava.cgroup.CPUManager;
 import org.occiware.clouddesigner.occi.docker.connector.dockerjava.cgroup.MemoryManager;
+import org.occiware.clouddesigner.occi.docker.connector.dockerjava.cgroup.NetWorkManager;
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerMachineManager;
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerUtil;
 import org.slf4j.Logger;
@@ -92,6 +94,7 @@ public class DockerObserver {
     String _name_1 = machine.getName();
     final String host = DockerMachineManager.ipCmd(_runtime, _name_1);
     final CPUManager cpuManager = new CPUManager();
+    final Elasticity elasticity = new Elasticity();
     this.listener(machine);
     EList<Adapter> _eAdapters = container.eAdapters();
     _eAdapters.add(
@@ -114,6 +117,7 @@ public class DockerObserver {
           if ((_notifier instanceof Container)) {
             Object _notifier_1 = notification.getNotifier();
             newContainer = ((ExecutableContainer) _notifier_1);
+            elasticity.action(cpuManager, host, privateKey, ((ExecutableContainer) newContainer));
             if ((DockerObserver.cpContainer.getContainerid().equals(newContainer.getContainerid()) && 
               DockerObserver.cpContainer.getState().toString().equalsIgnoreCase("active"))) {
               String _name = DockerObserver.cpContainer.getName();
@@ -165,6 +169,18 @@ public class DockerObserver {
                 float _memory_3 = newContainer.getMemory();
                 String _valueOf_2 = String.valueOf(_memory_3);
                 memoryManager.setMemValue(host, privateKey, newContainer, _valueOf_2);
+              }
+              int _bandwidth_used = DockerObserver.cpContainer.getBandwidth_used();
+              int _bandwidth_used_1 = newContainer.getBandwidth_used();
+              boolean _equals_4 = Integer.valueOf(_bandwidth_used).equals(Integer.valueOf(_bandwidth_used_1));
+              boolean _not_5 = (!_equals_4);
+              if (_not_5) {
+                final NetWorkManager networkManager = new NetWorkManager();
+                int _bandwidth_used_2 = container.getBandwidth_used();
+                DockerObserver.cpContainer.setBandwidth_used(_bandwidth_used_2);
+                int _bandwidth_used_3 = newContainer.getBandwidth_used();
+                String _valueOf_3 = String.valueOf(_bandwidth_used_3);
+                networkManager.setNetworkValue(host, privateKey, newContainer, _valueOf_3);
               }
             }
           }
