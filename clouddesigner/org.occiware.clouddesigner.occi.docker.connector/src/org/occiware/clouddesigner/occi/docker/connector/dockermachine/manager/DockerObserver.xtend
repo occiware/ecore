@@ -22,6 +22,8 @@ import org.occiware.clouddesigner.occi.docker.connector.dockerjava.cgroup.Memory
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerUtil
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import org.occiware.clouddesigner.occi.docker.connector.dockerjava.cgroup.NetWorkManager
+import org.occiware.clouddesigner.occi.docker.connector.Elasticity
 
 class DockerObserver {
 
@@ -78,6 +80,7 @@ class DockerObserver {
 		val privateKey = DockerUtil.getEnv(machine.name) + "/" + "id_rsa"
 		val host = DockerMachineManager.ipCmd(Runtime.getRuntime, machine.name)
 		val cpuManager = new CPUManager
+		val Elasticity elasticity = new Elasticity()
 
 		// Add listener to the machine
 		listener(machine)
@@ -102,8 +105,7 @@ class DockerObserver {
 						newContainer = notification.notifier as ExecutableContainer
 
 						// Elasticity method
-//						var Elasticity elasticity = new Elasticity(newContainer as ExecutableContainer)
-//						elasticity.action(cpuManager, host, privateKey, newContainer)
+						elasticity.action(cpuManager, host, privateKey, newContainer as ExecutableContainer)
 						
 						// When the container name's Changes
 						if (cpContainer.containerid.equals(newContainer.containerid) &&
@@ -140,7 +142,18 @@ class DockerObserver {
 								cpContainer.memory = container.memory
 								memoryManager.setMemValue(host, privateKey, newContainer,
 									String.valueOf(newContainer.memory))
+//								memoryManager.setSwapValue(host, privateKey, newContainer,
+//									String.valueOf(newContainer.memory))									
 							}
+							// Bandwidth changes
+							if (!cpContainer.bandwidth_used.equals(newContainer.bandwidth_used)) {
+								val networkManager = new NetWorkManager
+								// Update Memory value
+								cpContainer.bandwidth_used = container.bandwidth_used
+								networkManager.setNetworkValue(host, privateKey, newContainer,
+									String.valueOf(newContainer.bandwidth_used))
+							}
+
 						}
 						
 //						LOGGER.info("Old value : " + notification.oldValue)
