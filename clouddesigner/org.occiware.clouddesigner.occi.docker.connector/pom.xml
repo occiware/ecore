@@ -12,4 +12,20 @@
   <artifactId>org.occiware.clouddesigner.occi.docker.connector</artifactId>
   <version>0.1.0-SNAPSHOT</version>
   <packaging>eclipse-plugin</packaging>
+  <dependencies>
+    <dependency>
+      <groupId>Clouddesigner</groupId>
+      <artifactId>
+      org.occiware.clouddesigner.occi.docker
+      </artifactId> <!-- not required at devtime, but else at runtime in connector java.lang.NoClassDefFoundError: org/occiware/clouddesigner/occi/docker/impl/DockerFactoryImpl -->
+      <version>0.1.0-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>Clouddesigner</groupId>
+      <artifactId>
+      org.occiware.clouddesigner.occi.docker.connector.dependencies
+      </artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+  </dependencies>
 </project>

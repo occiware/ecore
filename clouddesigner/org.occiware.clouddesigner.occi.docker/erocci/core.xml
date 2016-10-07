@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated at Fri Oct 07 17:51:53 CEST 2016 from http://schemas.ogf.org/occi/core by org.occiware.clouddesigner.occi.gen.xml -->
+<occi:extension xmlns:occi="http://schemas.ogf.org/occi"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://schemas.ogf.org/occi occi.xsd"
+    name="core"
+    scheme="http://schemas.ogf.org/occi/core#"
+    version="1"
+    status="stable">
+
+  <!-- Kind: Entity type -->
+  <occi:kind term="entity" scheme="http://schemas.ogf.org/occi/core#" title="Entity type">
+    <occi:attribute name="occi.core.id" immutable="true" use="required" type="xs:string" title="The unique identity of the instance."/>
+    <occi:attribute name="occi.core.title" use="optional" type="xs:string" title="The display name of the instance."/>
+  </occi:kind>
+
+  <!-- Kind: Resource -->
+  <occi:kind term="resource" scheme="http://schemas.ogf.org/occi/core#" title="Resource">
+    <occi:parent term="entity" scheme="http://schemas.ogf.org/occi/core#"/>
+    <occi:attribute name="occi.core.summary" use="optional" type="xs:string" title="A summarising description of the Resource instance."/>
+  </occi:kind>
+
+  <!-- Kind: Link -->
+  <occi:kind term="link" scheme="http://schemas.ogf.org/occi/core#" title="Link">
+    <occi:parent term="entity" scheme="http://schemas.ogf.org/occi/core#"/>
+  </occi:kind>
+
+</occi:extension>

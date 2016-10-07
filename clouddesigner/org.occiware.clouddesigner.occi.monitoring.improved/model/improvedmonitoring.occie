@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="ASCII"?>
+<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="ImprovedMonitoring" scheme="http:://schemas.occiware.org/occi/ImprovedMonitoring#">
+  <import href="http://schemas.ogf.org/occi/core#/"/>
+  <import href="http://schemas.ogf.org/occi/monitoring#/"/>
+  <mixins term="Application" scheme="http:://schemas.occiware.org/occi/ImprovedMonitoring#">
+    <depends href="http://schemas.ogf.org/occi/monitoring#//@mixins[term='publisher']"/>
+  </mixins>
+  <mixins term="monoctriteria" scheme="http:://schemas.occiware.org/occi/ImprovedMonitoring#">
+    <attributes name="inputStream" type="//@types.1"/>
+    <attributes name="outputStream" type="//@types.1"/>
+    <depends href="http://schemas.ogf.org/occi/monitoring#//@mixins[term='aggregator']"/>
+  </mixins>
+  <mixins term="multicriteria" scheme="http:://schemas.occiware.org/occi/ImprovedMonitoring#" title="multicriteria">
+    <depends href="http://schemas.ogf.org/occi/monitoring#//@mixins[term='aggregator']"/>
+  </mixins>
+  <mixins term="Humain" scheme="http:://schemas.occiware.org/occi/ImprovedMonitoring#">
+    <depends href="http://schemas.ogf.org/occi/monitoring#//@mixins[term='publisher']"/>
+  </mixins>
+  <mixins term="NetworkBased" scheme="http:://schemas.occiware.org/occi/ImprovedMonitoring#">
+    <depends href="http://schemas.ogf.org/occi/monitoring#//@mixins[term='metric']"/>
+  </mixins>
+  <mixins term="InstanceBased" scheme="http:://schemas.occiware.org/occi/ImprovedMonitoring#">
+    <depends href="http://schemas.ogf.org/occi/monitoring#//@mixins[term='metric']"/>
+  </mixins>
+  <mixins term="EWMA" scheme="http:://schemas.occiware.org/occi/ImprovedMonitoring#" depends="//@mixins[term='monoctriteria']">
+    <attributes name="gain" description="weighting coefficient" type="//@types.1"/>
+  </mixins>
+  <mixins term="CSUM" scheme="http:://schemas.occiware.org/occi/ImprovedMonitoring#" depends="//@mixins[term='monoctriteria']">
+    <attributes name="h_factor" type="//@types.1"/>
+    <attributes name="k_factor" type="//@types.1"/>
+  </mixins>
+  <mixins term="Shewhart" scheme="http:://schemas.occiware.org/occi/ImprovedMonitoring#" depends="//@mixins[term='monoctriteria']">
+    <attributes name="k_factor" type="//@types.1"/>
+  </mixins>
+  <mixins term="Max" scheme="http:://schemas.occiware.org/occi/ImprovedMonitoring#" depends="//@mixins[term='monoctriteria']"/>
+  <mixins term="Min" scheme="http:://schemas.occiware.org/occi/ImprovedMonitoring#" depends="//@mixins[term='monoctriteria']"/>
+  <mixins term="AVG" scheme="http:://schemas.occiware.org/occi/ImprovedMonitoring#" depends="//@mixins[term='monoctriteria']"/>
+  <mixins term="Median" scheme="http:://schemas.occiware.org/occi/ImprovedMonitoring#" depends="//@mixins[term='monoctriteria']"/>
+  <mixins term="OWA" scheme="http:://schemas.occiware.org/occi/ImprovedMonitoring#" depends="//@mixins[term='multicriteria']">
+    <attributes name="w_vector" type="//@types.0"/>
+  </mixins>
+  <mixins term="mail" scheme="http:://schemas.occiware.org/occi/ImprovedMonitoring#" depends="//@mixins[term='Humain']">
+    <attributes name="MailAddress">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+  </mixins>
+  <mixins term="phone" scheme="http:://schemas.occiware.org/occi/ImprovedMonitoring#" depends="//@mixins[term='Humain']">
+    <attributes name="phoneNumber">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="call">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="sms">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+  </mixins>
+  <mixins term="XML" scheme="http:://schemas.occiware.org/occi/ImprovedMonitoring#" depends="//@mixins[term='Application']"/>
+  <mixins term="JSON" scheme="http:://schemas.occiware.org/occi/ImprovedMonitoring#" depends="//@mixins[term='Application']"/>
+  <mixins term="YAML" scheme="http:://schemas.occiware.org/occi/ImprovedMonitoring#" depends="//@mixins[term='Application']"/>
+  <mixins term="Latency" scheme="http:://schemas.occiware.org/occi/ImprovedMonitoring#" depends="//@mixins[term='NetworkBased']"/>
+  <mixins term="Utilization" scheme="http:://schemas.occiware.org/occi/ImprovedMonitoring#" depends="//@mixins[term='NetworkBased']"/>
+  <mixins term="UpTime" scheme="http:://schemas.occiware.org/occi/ImprovedMonitoring#" title="" depends="//@mixins[term='InstanceBased']"/>
+  <mixins term="EnergyConsumption" scheme="http:://schemas.occiware.org/occi/ImprovedMonitoring#" depends="//@mixins[term='InstanceBased']"/>
+  <mixins term="clockSpeed" scheme="http:://schemas.occiware.org/occi/ImprovedMonitoring#" depends="//@mixins[term='InstanceBased']"/>
+  <mixins term="inComingBandwidth" scheme="http:://schemas.occiware.org/occi/ImprovedMonitoring#" depends="//@mixins[term='InstanceBased']"/>
+  <mixins term="outComingBandwidth" scheme="http:://schemas.occiware.org/occi/ImprovedMonitoring#" depends="//@mixins[term='InstanceBased']"/>
+  <mixins term="SystemDownTime" scheme="http:://schemas.occiware.org/occi/ImprovedMonitoring#" depends="//@mixins[term='InstanceBased']"/>
+  <mixins term="DiskSpaceUtilization" scheme="http:://schemas.occiware.org/occi/ImprovedMonitoring#" depends="//@mixins[term='InstanceBased']"/>
+  <mixins term="cpuUtilization" scheme="http:://schemas.occiware.org/occi/ImprovedMonitoring#" depends="//@mixins[term='InstanceBased']"/>
+  <mixins term="inOutOp" scheme="http:://schemas.occiware.org/occi/ImprovedMonitoring#" depends="//@mixins[term='InstanceBased']"/>
+  <mixins term="StorageQueuLength" scheme="http:://schemas.occiware.org/occi/ImprovedMonitoring#" depends="//@mixins[term='InstanceBased']"/>
+  <types name="Vector" instanceClassName="java.util.Vector"/>
+  <types name="Float" instanceClassName="java.lang.Float"/>
+</occi:Extension>
