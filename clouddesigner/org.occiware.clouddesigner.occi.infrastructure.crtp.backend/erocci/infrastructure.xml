@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated at Fri Oct 07 18:11:39 CEST 2016 from http://schemas.ogf.org/occi/infrastructure by org.occiware.clouddesigner.occi.gen.xml -->
+<occi:extension xmlns:occi="http://schemas.ogf.org/occi"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://schemas.ogf.org/occi occi.xsd"
+    name="infrastructure"
+    scheme="http://schemas.ogf.org/occi/infrastructure#"
+    version="1"
+    status="stable">
+
+  <!-- Kind: Network Resource -->
+  <occi:kind term="network" scheme="http://schemas.ogf.org/occi/infrastructure#" title="Network Resource">
+    <occi:parent term="resource" scheme="http://schemas.ogf.org/occi/core#"/>
+    <occi:attribute name="occi.network.vlan" use="optional" type="xs:integer" title="802.1q VLAN Identifier (e.g., 343)"/>
+    <occi:attribute name="occi.network.label" use="optional" type="xs:string" title="Tag based VLANs (e.g., external-dmz)"/>
+    <occi:attribute name="occi.network.state" immutable="true" use="required" default="inactive" type="xs:string" title="Current state of the instance"/>
+    <occi:attribute name="occi.network.state.message" immutable="true" use="optional" type="xs:string" title="Human-readable explanation of the current instance state"/>
+    <occi:action term="up" scheme="http://schemas.ogf.org/occi/infrastructure/network/action#" title="">
+    </occi:action>
+    <occi:action term="down" scheme="http://schemas.ogf.org/occi/infrastructure/network/action#" title="">
+    </occi:action>
+  </occi:kind>
+
+  <!-- Kind: Compute Resource -->
+  <occi:kind term="compute" scheme="http://schemas.ogf.org/occi/infrastructure#" title="Compute Resource">
+    <occi:parent term="resource" scheme="http://schemas.ogf.org/occi/core#"/>
+    <occi:attribute name="occi.compute.architecture" use="optional" type="xs:string" title="CPU Architecture of the instance"/>
+    <occi:attribute name="occi.compute.cores" use="optional" type="xs:integer" title="Number of CPU cores assigned to the instance"/>
+    <occi:attribute name="occi.compute.hostname" use="optional" type="xs:string" title="Fully Qualified DNS hostname for the instance"/>
+    <occi:attribute name="occi.compute.share" use="optional" type="xs:integer" title="Relative number of CPU shares for the instance"/>
+    <occi:attribute name="occi.compute.speed" use="optional" type="xs:float" title="CPU Clock frequency (speed) in gigahertz"/>
+    <occi:attribute name="occi.compute.memory" use="optional" type="xs:float" title="Maximum RAM in gigabytes allocated to the instance"/>
+    <occi:attribute name="occi.compute.state" immutable="true" use="required" default="inactive" type="xs:string" title="Current state of the instance"/>
+    <occi:attribute name="occi.compute.state.message" immutable="true" use="optional" type="xs:string" title="Human-readable explanation of the current instance state"/>
+    <occi:action term="start" scheme="http://schemas.ogf.org/occi/infrastructure/compute/action#" title="Start the system">
+    </occi:action>
+    <occi:action term="stop" scheme="http://schemas.ogf.org/occi/infrastructure/compute/action#" title="Stop the system (graceful, acpioff or poweroff)">
+      <occi:attribute name="method" use="required" type="xs:string" title=""/>
+    </occi:action>
+    <occi:action term="restart" scheme="http://schemas.ogf.org/occi/infrastructure/compute/action#" title="Restart the system (graceful, warm or cold)">
+      <occi:attribute name="method" use="required" type="xs:string" title=""/>
+    </occi:action>
+    <occi:action term="suspend" scheme="http://schemas.ogf.org/occi/infrastructure/compute/action#" title="Suspend the system (hibernate or in RAM)">
+      <occi:attribute name="method" use="required" type="xs:string" title=""/>
+    </occi:action>
+    <occi:action term="save" scheme="http://schemas.ogf.org/occi/infrastructure/compute/action#" title="Save the system (hot, deferred)">
+      <occi:attribute name="method" use="required" type="xs:string" title=""/>
+      <occi:attribute name="name" use="required" type="xs:string" title=""/>
+    </occi:action>
+  </occi:kind>
+
+  <!-- Kind: Storage Resource -->
+  <occi:kind term="storage" scheme="http://schemas.ogf.org/occi/infrastructure#" title="Storage Resource">
+    <occi:parent term="resource" scheme="http://schemas.ogf.org/occi/core#"/>
+    <occi:attribute name="occi.storage.size" use="required" type="xs:float" title="Storage size of the instance in gigabytes"/>
+    <occi:attribute name="occi.storage.state" immutable="true" use="required" type="xs:string" title="Current status of the instance"/>
+    <occi:attribute name="occi.storage.state.message" immutable="true" use="optional" type="xs:string" title="Human-readable explanation of the current instance state"/>
+    <occi:action term="online" scheme="http://schemas.ogf.org/occi/infrastructure/storage/action#" title="Set storage online">
+    </occi:action>
+    <occi:action term="offline" scheme="http://schemas.ogf.org/occi/infrastructure/storage/action#" title="Set storage offline">
+    </occi:action>
+  </occi:kind>
+
+  <!-- Kind: StorageLink Link -->
+  <occi:kind term="storagelink" scheme="http://schemas.ogf.org/occi/infrastructure#" title="StorageLink Link">
+    <occi:parent term="link" scheme="http://schemas.ogf.org/occi/core#"/>
+    <occi:attribute name="occi.storagelink.deviceid" use="required" type="xs:string" title="Device identifier as defined by the OCCI service provider"/>
+    <occi:attribute name="occi.storagelink.mountpoint" use="optional" type="xs:string" title="Point to where the storage is mounted in the guest OS"/>
+    <occi:attribute name="occi.storagelink.state" immutable="true" use="required" type="xs:string" title="Current status of the instance"/>
+    <occi:attribute name="occi.storagelink.state.message" immutable="true" use="optional" type="xs:string" title="Human-readable explanation of the current instance state"/>
+  </occi:kind>
+
+  <!-- Kind: NetworkInterface Link -->
+  <occi:kind term="networkinterface" scheme="http://schemas.ogf.org/occi/infrastructure#" title="NetworkInterface Link">
+    <occi:parent term="link" scheme="http://schemas.ogf.org/occi/core#"/>
+    <occi:attribute name="occi.networkinterface.interface" immutable="true" use="required" type="xs:string" title="Identifier that relates the link to the link&apos;s device interface"/>
+    <occi:attribute name="occi.networkinterface.mac" use="required" type="xs:string" title="MAC address associated with the link&apos;s device interface"/>
+    <occi:attribute name="occi.networkinterface.state" immutable="true" use="required" type="xs:string" title="Current status of the instance"/>
+    <occi:attribute name="occi.networkinterface.state.message" immutable="true" use="optional" type="xs:string" title="Human-readable explanation of the current instance state"/>
+  </occi:kind>
+
+  <!-- Mixin: An IP Networking Mixin -->
+  <occi:mixin term="ipnetwork" scheme="http://schemas.ogf.org/occi/infrastructure/network#" title="An IP Networking Mixin">
+    <occi:applies term="network" scheme="http://schemas.ogf.org/occi/infrastructure#"/>
+    <occi:attribute name="occi.network.address" use="optional" type="xs:string" title="Internet Protocol (IP) network address (e.g., 192.168.0.1/24, fc00::/7)"/>
+    <occi:attribute name="occi.network.gateway" use="optional" type="xs:string" title="Internet Protocol (IP) network address (e.g., 192.168.0.1, fc00::)"/>
+    <occi:attribute name="occi.network.allocation" use="optional" type="xs:string" title="Address allocation mechanism: dynamic e.g., uses the dynamic host configuration protocol, static e.g., uses user supplied static network configurations"/>
+  </occi:mixin>
+
+  <!-- Mixin: IP NetworkInterface Mixin -->
+  <occi:mixin term="ipnetworkinterface" scheme="http://schemas.ogf.org/occi/infrastructure/networkinterface#" title="IP NetworkInterface Mixin">
+    <occi:applies term="networkinterface" scheme="http://schemas.ogf.org/occi/infrastructure#"/>
+    <occi:attribute name="occi.networkinterface.address" use="required" type="xs:string" title="Internet Protocol (IP) network address (e.g., 192.168.0.1/24, fc00::/7) of the link"/>
+    <occi:attribute name="occi.networkinterface.gateway" use="optional" type="xs:string" title="Internet Protocol (IP) network address (e.g., 192.168.0.1/24, fc00::/7)"/>
+    <occi:attribute name="occi.networkinterface.allocation" use="required" type="xs:string" title="Address mechanism: dynamic e.g., uses the dynamic host configuration protocol, static e.g., uses user supplied static network configurations"/>
+  </occi:mixin>
+
+  <!-- Mixin: OS Template -->
+  <occi:mixin term="os_tpl" scheme="http://schemas.ogf.org/occi/infrastructure#" title="OS Template">
+    <occi:applies term="compute" scheme="http://schemas.ogf.org/occi/infrastructure#"/>
+  </occi:mixin>
+
+  <!-- Mixin: Resource template -->
+  <occi:mixin term="resource_tpl" scheme="http://schemas.ogf.org/occi/infrastructure#" title="Resource template">
+<!-- Commented as erocci throws an error!
+    <occi:applies term="resource" scheme="http://schemas.ogf.org/occi/core#"/>
+-->
+  </occi:mixin>
+
+  <!-- Mixin: Credentials Mixin -->
+  <occi:mixin term="ssh_key" scheme="http://schemas.ogf.org/occi/infrastructure/credentials#" title="Credentials Mixin">
+    <occi:applies term="compute" scheme="http://schemas.ogf.org/occi/infrastructure#"/>
+    <occi:attribute name="occi.credentials.ssh.publickey" use="required" type="xs:string" title="The contents of the public key file to be injected into the Compute Resource"/>
+  </occi:mixin>
+
+  <!-- Mixin: Contextualization Mixin -->
+  <occi:mixin term="user_data" scheme="http://schemas.ogf.org/occi/infrastructure/compute#" title="Contextualization Mixin">
+    <occi:applies term="compute" scheme="http://schemas.ogf.org/occi/infrastructure#"/>
+    <occi:attribute name="occi.compute.userdata" immutable="true" use="required" type="xs:string" title="Contextualization data (e.g., script, executable) that the client supplies once and only once. It cannot be updated"/>
+  </occi:mixin>
+
+</occi:extension>

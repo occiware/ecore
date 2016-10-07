@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.occiware.clouddesigner.occi.infrastructure.crtp.backend
+Bundle-SymbolicName: org.occiware.clouddesigner.occi.infrastructure.crtp.backend;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-ClassPath: .
+Bundle-Vendor: OCCIware
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.emf.ecore;visibility:=reexport,
+ org.occiware.clouddesigner.occi;visibility:=reexport,
+ org.occiware.clouddesigner.occi.emfgen.ui
