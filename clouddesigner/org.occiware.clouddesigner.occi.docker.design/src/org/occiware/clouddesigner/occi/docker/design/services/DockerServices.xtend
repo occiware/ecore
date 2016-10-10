@@ -76,7 +76,7 @@ class DockerServices {
 	}
 
 	/**
-	 * Popup menu importModel cation.
+	 * Popup menu importModel action.
 	 */
 	def void importModel(Configuration conf) {
 		var runnable = new IRunnableWithProgress() {

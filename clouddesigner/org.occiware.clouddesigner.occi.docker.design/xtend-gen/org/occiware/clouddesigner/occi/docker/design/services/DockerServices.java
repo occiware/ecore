@@ -85,7 +85,7 @@ public class DockerServices {
   }
   
   /**
-   * Popup menu importModel cation.
+   * Popup menu importModel action.
    */
   public void importModel(final Configuration conf) {
     try {
