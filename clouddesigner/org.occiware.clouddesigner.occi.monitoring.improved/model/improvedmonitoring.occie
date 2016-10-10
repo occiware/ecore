@@ -69,7 +69,7 @@
   <mixins term="DiskSpaceUtilization" scheme="http:://schemas.occiware.org/occi/ImprovedMonitoring#" depends="//@mixins[term='InstanceBased']"/>
   <mixins term="cpuUtilization" scheme="http:://schemas.occiware.org/occi/ImprovedMonitoring#" depends="//@mixins[term='InstanceBased']"/>
   <mixins term="inOutOp" scheme="http:://schemas.occiware.org/occi/ImprovedMonitoring#" depends="//@mixins[term='InstanceBased']"/>
-  <mixins term="StorageQueuLength" scheme="http:://schemas.occiware.org/occi/ImprovedMonitoring#" depends="//@mixins[term='InstanceBased']"/>
+  <mixins term="StorageQueueLength" scheme="http:://schemas.occiware.org/occi/ImprovedMonitoring#" depends="//@mixins[term='InstanceBased']"/>
   <types name="Vector" instanceClassName="java.util.Vector"/>
   <types name="Float" instanceClassName="java.lang.Float"/>
 </occi:Extension>
