@@ -6,9 +6,14 @@ Bundle-Version: 0.1.0.qualifier
 Bundle-ClassPath: .,
  lib/junit-3.8.1.jar
 Bundle-Vendor: OCCIware
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
-Require-Bundle: org.slf4j.api,
- org.occiware.clouddesigner.occi,
- org.occiware.clouddesigner.occi.linkeddata
+Require-Bundle: org.eclipse.emf.common,
+ org.eclipse.emf.ecore;visibility:=reexport,
+ org.eclipse.emf.ecore.xmi,
+ org.occiware.clouddesigner.occi;visibility:=reexport,
+ org.occiware.clouddesigner.occi.infrastructure;visibility:=reexport,
+ org.occiware.clouddesigner.occi.docker;visibility:=reexport,
+ org.occiware.clouddesigner.occi.linkeddata;bundle-version="0.1.0",
+ org.slf4j.api;bundle-version="1.7.2"
 Export-Package: org.occiware.clouddesigner.occi.linkeddata.connector
