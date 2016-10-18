@@ -105,18 +105,18 @@ public class DockerObserver {
           Container newContainer = null;
           if (((notification.getEventType() == Notification.REMOVE) && 
             (notification.getNotifier() instanceof Container))) {
-            Object _oldValue = notification.getOldValue();
-            deletedElement = ((Container) _oldValue);
+            Object _notifier = notification.getNotifier();
+            deletedElement = ((Container) _notifier);
             String _containerid = deletedElement.getContainerid();
             DockerObserver.LOGGER.info("Delete model element with ID: {}", _containerid);
             DockerContainerManager dockerManager = new DockerContainerManager(machine);
             String _containerid_1 = deletedElement.getContainerid();
             dockerManager.removeContainer(machine, _containerid_1);
           }
-          Object _notifier = notification.getNotifier();
-          if ((_notifier instanceof Container)) {
-            Object _notifier_1 = notification.getNotifier();
-            newContainer = ((ExecutableContainer) _notifier_1);
+          Object _notifier_1 = notification.getNotifier();
+          if ((_notifier_1 instanceof Container)) {
+            Object _notifier_2 = notification.getNotifier();
+            newContainer = ((ExecutableContainer) _notifier_2);
             elasticity.action(cpuManager, host, privateKey, ((ExecutableContainer) newContainer));
             if ((DockerObserver.cpContainer.getContainerid().equals(newContainer.getContainerid()) && 
               DockerObserver.cpContainer.getState().toString().equalsIgnoreCase("active"))) {

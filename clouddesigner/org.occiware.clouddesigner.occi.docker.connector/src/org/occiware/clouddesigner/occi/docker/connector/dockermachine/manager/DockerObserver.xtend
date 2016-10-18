@@ -94,7 +94,8 @@ class DockerObserver {
 					var Container newContainer = null
 					if (notification.eventType == Notification.REMOVE &&
 						notification.getNotifier() instanceof Container) {
-						deletedElement = notification.getOldValue() as Container
+							
+						deletedElement = notification.getNotifier() as Container
 						// Notify the deleted element in the model 
 						LOGGER.info("Delete model element with ID: {}", deletedElement.containerid)
 						// Remove the container from the machine
