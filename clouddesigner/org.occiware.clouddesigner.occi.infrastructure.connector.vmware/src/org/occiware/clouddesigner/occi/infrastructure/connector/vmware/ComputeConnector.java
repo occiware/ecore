@@ -100,6 +100,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 	 */
 	private static final String VMWARE_MIXIN_FOLDERS_TERM = "vmwarefolders";
 	private static final String VMWARE_MIXIN_VM_ADDON_TERM = "vmaddon";
+	private static final String VMWARE_MIXIN_VM_IMAGE = "vmimage";
 	
 	/**
 	 * Managed object reference id. Unique reference for virtual machine.
@@ -939,6 +940,25 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		}
 		return result;
 	}
+	
+	/**
+	 * Check if vm image mixins is set.
+	 * @return
+	 */
+	public boolean hasMixinVMImage() {
+		boolean result = false;
+		String mixinTerm = null;
+		List<Mixin> mixins = this.getMixins();
+		for (Mixin mixin : mixins) {
+			mixinTerm = mixin.getTerm();
+			if (mixinTerm.equals(VMWARE_MIXIN_VM_IMAGE)) {
+				result = true;
+				break;
+			}
+		}
+		return result;
+	}
+	
 
 	/**
 	 * Check if this compute has mixin vmware ephemral addon (crtp).
@@ -974,6 +994,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		// For disk ephemeral storage mandatory here to create a vm with a fixed
 		// system storage, elsewhere the ephemeral will be 15.0GB.
 		boolean hasMixinEphemeral = hasMixinEphemeral();
+		boolean hasMixinVMImage = hasMixinVMImage();
 
 		// ATTR_DATACENTER_NAME
 		if (datacenterName != null && hasMixinFoldersData) {
@@ -1021,7 +1042,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		}
 
 		// ATTR_IMAGE_NAME
-		if (vmTemplateName != null && hasMixinVMwareComputeAddOn) {
+		if (vmTemplateName != null && hasMixinVMImage) {
 			if (this.getAttributeStateObject(ATTR_IMAGE_NAME) == null) {
 				attrsToCreate.put(ATTR_IMAGE_NAME, vmTemplateName);
 			} else {

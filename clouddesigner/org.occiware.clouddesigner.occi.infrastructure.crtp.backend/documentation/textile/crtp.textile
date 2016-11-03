@@ -119,4 +119,4 @@ Attributes of mem_large are:
 | occi.compute.ephemeral_storage.size | <a href="infrastructure.textile#datatype-gib">GiB</a> | true | false | 40.0 | Ephemeral storage provisioned for the associated Compute instance |
 
 
-Generated at Fri Oct 07 18:11:46 CEST 2016 from http://schemas.ogf.org/occi/infrastructure/compute/template/1.1 by org.occiware.clouddesigner.occi.gen.doc
+Generated at Thu Nov 03 09:11:37 CET 2016 from http://schemas.ogf.org/occi/infrastructure/compute/template/1.1 by org.occiware.clouddesigner.occi.gen.doc

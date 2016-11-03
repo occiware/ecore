@@ -114,18 +114,10 @@
 		<module>../org.occiware.clouddesigner.occi.crtp.edit</module>
 <!-- 		<module>../org.occiware.clouddesigner.occi.crtp.editor</module> -->
 <!-- 		<module>../org.occiware.clouddesigner.occi.crtp.design</module> -->
+
+		<!-- Multiple backend extension based on infrastructure and CRTP -->
+		<module>../org.occiware.clouddesigner.occi.infrastructure.crtp.backend</module>
 		
-		
-        <!-- VMware -->
-        <module>../org.occiware.clouddesigner.occi.vmware</module>
-        <module>../org.occiware.clouddesigner.occi.vmware.edit</module>
-        <module>../org.occiware.clouddesigner.occi.vmware.editor</module>
-        <module>../org.occiware.clouddesigner.occi.vmware.tests</module>
-        <module>../org.occiware.clouddesigner.occi.vmware.connector</module>
-        <module>../org.occiware.clouddesigner.occi.vmware.design</module>
-        <module>../org.occiware.clouddesigner.occi.vmware.crtp</module>
-        <module>../org.occiware.clouddesigner.occi.vmware.crtp.edit</module>
-        
 		<!-- OCCI Xtext -->
 		<module>../org.occiware.clouddesigner.occi.xtext</module>
 		<!--<module>../org.occiware.clouddesigner.occi.xtext.tests</module>-->
