@@ -10,12 +10,15 @@
  */
 package org.occiware.clouddesigner.occi.docker.connector.dockerjava.cgroup;
 
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.occiware.clouddesigner.occi.docker.Container;
 import org.occiware.clouddesigner.occi.docker.connector.dockerjava.DockerContainerManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @SuppressWarnings("all")
 public class CgroupManager {
+  private static Logger LOGGER = LoggerFactory.getLogger(CgroupManager.class);
+  
   private final static String cGroupPath = "/sys/fs/cgroup/";
   
   public final static String blkio_subsystem = "blkio";
@@ -65,7 +68,7 @@ public class CgroupManager {
       String _plus_3 = (_plus_2 + "\' > ");
       String _plus_4 = (_plus_3 + FilePath);
       command = _plus_4;
-      InputOutput.<String>println(("EXECUTE COMMAND: " + command));
+      CgroupManager.LOGGER.info("EXECUTE COMMAND: {}", command);
       dockerContainerManager.connect(host, privateKey, command);
     } else {
       boolean _equalsIgnoreCase_1 = file.equalsIgnoreCase(CgroupManager.cpuset_cpus);
@@ -75,7 +78,7 @@ public class CgroupManager {
         String _plus_6 = (_plus_5 + "\' > ");
         String _plus_7 = (_plus_6 + FilePath);
         command = _plus_7;
-        InputOutput.<String>println(("EXECUTE COMMAND: " + command));
+        CgroupManager.LOGGER.info("EXECUTE COMMAND: {}", command);
         dockerContainerManager.connect(host, privateKey, command);
       } else {
         boolean _equalsIgnoreCase_2 = file.equalsIgnoreCase(CgroupManager.net_cls_classid);
@@ -86,7 +89,7 @@ public class CgroupManager {
           String _plus_9 = (_plus_8 + "\' > ");
           String _plus_10 = (_plus_9 + FilePath);
           command = _plus_10;
-          InputOutput.<String>println(("EXECUTE COMMAND: " + command));
+          CgroupManager.LOGGER.info("EXECUTE COMMAND: {}", command);
           dockerContainerManager.connect(host, privateKey, command);
         } else {
           boolean _equalsIgnoreCase_3 = file.equalsIgnoreCase(CgroupManager.memory_swap);
@@ -97,7 +100,7 @@ public class CgroupManager {
             String _plus_12 = (_plus_11 + "\' > ");
             String _plus_13 = (_plus_12 + FilePath);
             command = _plus_13;
-            InputOutput.<String>println(("EXECUTE COMMAND: " + command));
+            CgroupManager.LOGGER.info("EXECUTE COMMAND: {}", command);
             dockerContainerManager.connect(host, privateKey, command);
           }
         }
