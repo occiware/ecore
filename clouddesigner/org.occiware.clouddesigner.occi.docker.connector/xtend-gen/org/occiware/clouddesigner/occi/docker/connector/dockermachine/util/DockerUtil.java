@@ -95,7 +95,7 @@ public class DockerUtil {
               boolean _contains = ((List<String>)Conversions.doWrapArray(lsCmd)).contains("(master)");
               if (_contains) {
                 String _get_2 = lsCmd[0];
-                String _get_3 = lsCmd[2];
+                String _get_3 = lsCmd[3];
                 hosts.put(_get_2, _get_3);
               } else {
                 String _get_4 = lsCmd[0];
