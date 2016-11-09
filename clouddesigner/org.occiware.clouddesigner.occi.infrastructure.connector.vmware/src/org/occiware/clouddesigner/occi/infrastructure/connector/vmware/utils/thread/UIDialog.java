@@ -48,13 +48,6 @@ public class UIDialog {
 			LOGGER.debug("Headless mode.");
 			standaloneMode = true;
 		}
-		
-		
-//		if (org.eclipse.swt.widgets.Display.getCurrent() == null) {
-//			standaloneMode = true;
-//		} else {
-//			standaloneMode = false;
-//		}
 	}
 
 	/**

@@ -39,6 +39,7 @@ import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.Dat
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.DatastoreHelper;
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.HostHelper;
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.NetworkHelper;
+import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.UserDataHelper;
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.VCenterClient;
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.VMHelper;
 import org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils.thread.EntityUtils;
@@ -91,16 +92,24 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 	private static final String ATTR_MARKED_AS_TEMPLATE = "markedastemplate";
 	private static final String ATTR_VM_GUEST_OS_ID = "guestosid";
 	private static final String ATTR_VM_EPHEMERAL_DISK_SIZE_GB = "occi.compute.ephemeral_storage.size";
+	private static final String ATTR_USER_DATA = "occi.compute.userdata";
+	private static final String ATTR_USERNAME = "user";
+	private static final String ATTR_PASSWORD = "password";
+	
+	
 	/**
 	 * Path on inventory object. Format: /inria/tests/ (with slash on last character or without).
 	 */
 	private static final String ATTR_VM_INVENTORY_PATH = "inventorypath";
 	/**
-	 * Mixin terms addon from vmwarecrtp extension.
+	 * Mixin terms addon from backend extension.
 	 */
 	private static final String VMWARE_MIXIN_FOLDERS_TERM = "vmwarefolders";
 	private static final String VMWARE_MIXIN_VM_ADDON_TERM = "vmaddon";
 	private static final String VMWARE_MIXIN_VM_IMAGE = "vmimage";
+	private static final String VMWARE_MIXIN_CREDENTIAL = "credential";
+	private static final String MIXIN_USERDATA = "user_data";
+	
 	
 	/**
 	 * Managed object reference id. Unique reference for virtual machine.
@@ -137,6 +146,11 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 	private boolean vmExist = false;
 	// default to 15GB
 	private Float ephemeralDiskSizeGB = 15.0f;
+	
+	private String userData;
+	private String username;
+	private String password;
+	
 	// Message to end users management.
 	private String titleMessage = "";
 	private String globalMessage = "";
@@ -959,6 +973,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		return result;
 	}
 	
+	
 
 	/**
 	 * Check if this compute has mixin vmware ephemral addon (crtp).
@@ -980,6 +995,39 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		}
 		return result;
 	}
+	
+	/**
+	 * Check if this compute has mixin user_data (from infrastructure extension).
+	 * @return true if the mixin is present on associated mixins.
+	 */
+	public boolean hasMixinUserData() {
+		boolean result = false;
+		String mixinTerm = null;
+		List<Mixin> mixins = this.getMixins();
+		for (Mixin mixin : mixins) {
+			mixinTerm = mixin.getTerm();
+			if (mixinTerm.equals(MIXIN_USERDATA)) {
+				result = true;
+				break;
+			}
+		}
+		return result;
+	}
+	
+	public boolean hasMixinCredential() {
+		boolean result = false;
+		String mixinTerm = null;
+		List<Mixin> mixins = this.getMixins();
+		for (Mixin mixin : mixins) {
+			mixinTerm = mixin.getTerm();
+			if (mixinTerm.equals(VMWARE_MIXIN_CREDENTIAL)) {
+				result = true;
+				break;
+			}
+		}
+		return result;
+	}
+	
 
 	/**
 	 * Update this object attributes.
@@ -995,7 +1043,9 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		// system storage, elsewhere the ephemeral will be 15.0GB.
 		boolean hasMixinEphemeral = hasMixinEphemeral();
 		boolean hasMixinVMImage = hasMixinVMImage();
-
+		boolean hasMixinUserData = hasMixinUserData();
+		boolean hasMixinCredential = hasMixinCredential();
+		
 		// ATTR_DATACENTER_NAME
 		if (datacenterName != null && hasMixinFoldersData) {
 			if (this.getAttributeStateObject(ATTR_DATACENTER_NAME) == null) {
@@ -1094,20 +1144,37 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 			}
 		}
 		
-		
-		
-		// if (!attrsToCreate.isEmpty() || !attrsToUpdate.isEmpty() || !attrsToDelete.isEmpty()) {
-			// Update the attributes via a transaction (or not if standalone).
-			if (UIDialog.isStandAlone()) {
-				// Headless environment.
-				EntityUtilsHeadless.updateAttributes(this, attrsToCreate, attrsToUpdate, attrsToDelete);
-				
+		if (hasMixinUserData) {
+			if (this.getAttributeStateObject(ATTR_USER_DATA) == null) {
+				attrsToCreate.put(ATTR_USER_DATA, userData);
 			} else {
-				// Gui environment
-				EntityUtils.updateAttributes(this, attrsToCreate, attrsToUpdate, attrsToDelete);
+				attrsToUpdate.put(ATTR_USER_DATA, userData);
 			}
-		// }
-
+		}
+		
+		if (hasMixinCredential && username != null) {
+			if (this.getAttributeStateObject(ATTR_USERNAME) == null) {
+				attrsToCreate.put(ATTR_USERNAME, username);
+			} else {
+				attrsToUpdate.put(ATTR_USERNAME, username);
+			}
+		}
+		if (hasMixinCredential && password != null) {
+			if (this.getAttributeStateObject(ATTR_PASSWORD) == null) {
+				attrsToCreate.put(ATTR_PASSWORD, password);
+			} else {
+				attrsToUpdate.put(ATTR_PASSWORD, password);
+			}
+		}
+		// Update the attributes via a transaction (or not if standalone).
+		if (UIDialog.isStandAlone()) {
+			// Headless environment.
+			EntityUtilsHeadless.updateAttributes(this, attrsToCreate, attrsToUpdate, attrsToDelete);
+		} else {
+			// Gui environment
+			EntityUtils.updateAttributes(this, attrsToCreate, attrsToUpdate, attrsToDelete);
+		}
+		
 		if (architecture != null) {
 			if (architecture.equals("x64")) {
 				setArchitecture(Architecture.X64);
@@ -1466,6 +1533,10 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 			}
 		}
 		
+		username = getAttributeValueByOcciKey(ATTR_USERNAME);
+		password = getAttributeValueByOcciKey(ATTR_PASSWORD);
+		userData = getAttributeValueByOcciKey(ATTR_USER_DATA);
+		
 		// Get the first adapter (eth0 or name Network adapter 1 or
 		// Adaptateur réseau 1).
 		NetworkConnector firstConnector = getFirstAdapterNetwork(netInterfaceConn);
@@ -1704,6 +1775,9 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 					LOGGER.info(globalMessage);
 				}
 				
+				applyUserData(monitor, vmFolder, vmName);
+				
+				
 			} catch (RemoteException | InterruptedException ex) {
 
 				globalMessage = "VM was not created or has errors, please check your vcenter and your configuration \n "
@@ -1902,7 +1976,8 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 				}
 
 				// Create vm terminated
-
+				
+				
 			} catch (RemoteException | InterruptedException ex) {
 				globalMessage = "Cannot create the virtual machine : " + ex.getMessage();
 				levelMessage = Level.ERROR;
@@ -1918,6 +1993,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		if (toMonitor) {
 			subMonitor.worked(100);
 		}
+		
 		// In all case invoke a disconnect from vcenter.
 		VCenterClient.disconnect();
 	}
@@ -2157,6 +2233,13 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 				subMonitor.worked(70);
 			}
 		}
+		if (hasMixinCredential()) {
+			username = getAttributeValueByOcciKey(ATTR_USERNAME);
+			password = getAttributeValueByOcciKey(ATTR_PASSWORD);
+		}
+		if (hasMixinUserData()) {
+			userData = getAttributeValueByOcciKey(ATTR_USER_DATA);
+		}
 		
 		vmExist = true;
 		if (toMonitor) {
@@ -2356,6 +2439,29 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 				ex.printStackTrace();
 			}
 		}
+		
+		// For testing purpose...TO DELETE After..
+		// There is an os so --< User data part is possible.
+//		if (hasMixinUserData() && hasMixinCredential()) {
+//			UserDataHelper userDataHelper = new UserDataHelper(morId, vmName, null, userData, username, password);
+//			try {
+//				if (toMonitor) {
+//					// Run directly the operation within this eclipse thread.
+//					userDataHelper.run(subMonitor);
+//				} else {
+//					// Create a new thread with simple runnable.
+//					Thread thread = new Thread(userDataHelper);
+//					thread.start(); 
+//				}
+//				
+//			} catch (Exception ex) {
+//				ex.printStackTrace();
+//				LOGGER.error("Exception thrown : " + ex.getClass().getName());
+//				LOGGER.error("Message: "+ ex.getMessage());
+//			}
+//		}
+		
+		
 		if (toMonitor) {
 			subMonitor.worked(100);
 		}
@@ -2981,4 +3087,36 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		}
 	}
 
+	/**
+	 * Apply user data on the instance.
+	 * @param monitor
+	 * @param vmFolder
+	 * @param vmName
+	 */
+	private void applyUserData(IProgressMonitor monitor, Folder vmFolder, String vmName) {
+		// There is an os so --< User data part is possible.
+		if (hasMixinUserData() && hasMixinCredential()) {
+			UserDataHelper userDataHelper = new UserDataHelper(morId, vmName, vmFolder, userData, username, password);
+			try {
+				if (monitor != null) {
+					// Run directly the operation within this eclipse thread.
+					userDataHelper.run(monitor);
+				} else {
+					// Create a new thread with simple runnable.
+					Thread thread = new Thread(userDataHelper);
+					thread.start(); 
+				}
+				
+			} catch (Exception ex) {
+				ex.printStackTrace();
+				LOGGER.error("Exception thrown : " + ex.getClass().getName());
+				LOGGER.error("Message: "+ ex.getMessage());
+			}
+		}
+	}
+	
+	
 }
+
+
+
