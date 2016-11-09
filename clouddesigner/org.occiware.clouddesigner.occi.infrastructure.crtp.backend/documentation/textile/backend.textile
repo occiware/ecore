@@ -132,6 +132,19 @@ Attributes of vmimage are:
 | imagename |  | false | true |  | Name of the template if this compute has a template or will be created with a template. |
 
 
+h2. Mixin credential
+
+| *Term* | credential |
+| *Scheme* | http://occiware.org/occi/infrastructure/crtp/backend# |
+| *Title* |  |
+
+Attributes of credential are:
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| user | <a href="core.textile#datatype-string">String</a> | true | true |  |  |
+| password | <a href="core.textile#datatype-string">String</a> | true | true |  |  |
+
+
 
 h1. Types
 
@@ -270,4 +283,4 @@ h2. Enum GuestOsIdentifiers
 * otherGuest  
 * otherGuest64  
 
-Generated at Thu Nov 03 09:11:37 CET 2016 from platform:/resource/org.occiware.clouddesigner.occi.infrastructure.crtp.backend/model/backend.occie by org.occiware.clouddesigner.occi.gen.doc
+Generated at Wed Nov 09 13:06:54 CET 2016 from platform:/resource/org.occiware.clouddesigner.occi.infrastructure.crtp.backend/model/backend.occie by org.occiware.clouddesigner.occi.gen.doc

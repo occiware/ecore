@@ -1,4 +1,4 @@
-// Generated at Fri Oct 07 18:11:51 CEST 2016 from platform:/resource/org.occiware.clouddesigner.occi.infrastructure.crtp.backend/model/backend.occie by org.occiware.clouddesigner.occi.gen.alloy
+// Generated at Wed Nov 09 13:07:01 CET 2016 from platform:/resource/org.occiware.clouddesigner.occi.infrastructure.crtp.backend/model/backend.occie by org.occiware.clouddesigner.occi.gen.alloy
 
 // ======================================================================
 //
@@ -138,6 +138,23 @@ pred isoVmimage[v1, v2: Vmimage]
 {
     // Comment following lines when this is not the expected behaviour.
     v1.imagename = v2.imagename // same imagename
+}
+
+
+// ======================================================================
+//
+// OCCI mixin 'http://occiware.org/occi/infrastructure/crtp/backend#credential'
+//
+// ======================================================================
+
+//
+// Equivalence predicate between two Credential atoms.
+//
+pred isoCredential[c1, c2: Credential]
+{
+    // Comment following lines when this is not the expected behaviour.
+    c1.user = c2.user // same user
+    c1.password = c2.password // same password
 }
 
 

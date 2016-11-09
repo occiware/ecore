@@ -1,4 +1,4 @@
-// Generated at Fri Oct 07 18:11:51 CEST 2016 from platform:/resource/org.occiware.clouddesigner.occi.infrastructure.crtp.backend/model/backend.occie by org.occiware.clouddesigner.occi.gen.alloy
+// Generated at Wed Nov 09 13:07:01 CET 2016 from platform:/resource/org.occiware.clouddesigner.occi.infrastructure.crtp.backend/model/backend.occie by org.occiware.clouddesigner.occi.gen.alloy
 
 // ======================================================================
 //
@@ -32,7 +32,7 @@ one sig extension extends Extension {} {
     scheme = "http://occiware.org/occi/infrastructure/crtp/backend#"
     import = core/extension + crtp/extension + infrastructure/extension
     no kinds
-    mixins = vmaddon + linux + macosx + vmwarefolders + vswitchinfos + windows + vmimage
+    mixins = vmaddon + linux + macosx + vmwarefolders + vswitchinfos + windows + vmimage + credential
     types = GuestOsIdentifiers_DataType
 }
 
@@ -440,6 +440,58 @@ one sig vmimage_imagename extends Attribute {} {
 
 sig Vmimage in infrastructure/Compute {
     imagename : lone ,
+}
+
+// ======================================================================
+//
+// OCCI mixin 'http://occiware.org/occi/infrastructure/crtp/backend#credential'
+//
+// ======================================================================
+
+one sig credential extends Mixin {} {
+    term = "credential"
+    scheme = "http://occiware.org/occi/infrastructure/crtp/backend#"
+    no title
+    no depends
+    no applies
+    attributes = credential_user + credential_password
+    no actions
+    entities in Credential
+}
+
+//
+// OCCI attribute 'user'
+//
+one sig credential_user extends Attribute {} {
+    name = "user"
+    type = core/String_DataType
+    mutable = True
+    required = True
+    no default
+    no description
+    multiple_values = False
+}
+
+//
+// OCCI attribute 'password'
+//
+one sig credential_password extends Attribute {} {
+    name = "password"
+    type = core/String_DataType
+    mutable = True
+    required = True
+    no default
+    no description
+    multiple_values = False
+}
+
+// ======================================================================
+// Signature for Credential
+// ======================================================================
+
+sig Credential in core/Entity {
+    user : one String,
+    password : one String,
 }
 
 //

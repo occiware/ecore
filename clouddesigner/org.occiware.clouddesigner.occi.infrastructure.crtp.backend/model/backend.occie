@@ -48,6 +48,14 @@
     <attributes name="imagename" description="Name of the template if this compute has a template or will be created with a template."/>
     <applies href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='compute']"/>
   </mixins>
+  <mixins term="credential" scheme="http://occiware.org/occi/infrastructure/crtp/backend#">
+    <attributes name="user" required="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="password" required="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+  </mixins>
   <types xsi:type="ecore:EEnum" name="GuestOsIdentifiers">
     <eLiterals name="dosGuest"/>
     <eLiterals name="win31Guest" value="1"/>
