@@ -13,9 +13,12 @@ import org.slf4j.LoggerFactory;
 
 import com.vmware.vim25.GuestProgramSpec;
 import com.vmware.vim25.NamePasswordAuthentication;
+import com.vmware.vim25.TaskInfo;
+import com.vmware.vim25.TaskInfoState;
 import com.vmware.vim25.mo.Folder;
 import com.vmware.vim25.mo.GuestOperationsManager;
 import com.vmware.vim25.mo.GuestProcessManager;
+import com.vmware.vim25.mo.Task;
 import com.vmware.vim25.mo.VirtualMachine;
 
 /**
@@ -107,7 +110,36 @@ public class UserDataHelper implements Runnable, IRunnableWithProgress {
 					throw new Exception("No vm found on vcenter for setting user datas.");
 				}
 				
-				if (vm != null && VMHelper.isToolsInstalled(vm)) {
+				if (VMHelper.isToolsInstalled(vm)) {
+					// If there is a cloning task and vm is poweroff...
+					TaskInfo taskInf = VMHelper.getTaskInfo(vm);
+					if (taskInf != null) {
+						
+						TaskInfoState state = taskInf.getState();
+						int count = 0;
+						do {
+							Thread.sleep(5000);
+							count++;
+							taskInf = VMHelper.getTaskInfo(vm);
+							state = taskInf.getState();
+							Integer progress = taskInf.getProgress();
+							if (state == TaskInfoState.success) {
+								progress = 100;
+							}
+							else if (progress == null) {
+								progress = 0;
+							}
+							LOGGER.info("instance: " + vm.getName() + "State="+state+"("+progress+"%)");
+							// 12 count per minutes. ==< for 20 min => 240 counts.
+							if (count > 240) {
+								LOGGER.warn("time out to apply user data....");
+								break;
+							}
+						}
+						while (state != TaskInfoState.error && state != TaskInfoState.success);
+						
+					}
+					
 					if (VMHelper.getPowerState(vm).equals(VMHelper.POWER_OFF)) {
 						// Start the virtual machine before processing.
 						VMHelper.powerOn(vm);

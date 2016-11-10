@@ -1181,7 +1181,7 @@ public class VMHelper {
 				}
 			}
 		} catch (RemoteException ex) {
-			LOGGER.error("Cant retrieve informations about tasks for this virtual machine : " + vm.getName());
+			LOGGER.error("Cant retrieve informations about tasks for this virtual machine : " + vmName);
 		}
 
 		return taskInfo;

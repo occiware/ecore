@@ -3096,6 +3096,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 	private void applyUserData(IProgressMonitor monitor, Folder vmFolder, String vmName) {
 		// There is an os so --< User data part is possible.
 		if (hasMixinUserData() && hasMixinCredential()) {
+			LOGGER.info("applying user datas...");
 			UserDataHelper userDataHelper = new UserDataHelper(morId, vmName, vmFolder, userData, username, password);
 			try {
 				if (monitor != null) {
