@@ -1775,8 +1775,6 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 					LOGGER.info(globalMessage);
 				}
 				
-				applyUserData(monitor, vmFolder, vmName);
-				
 				
 			} catch (RemoteException | InterruptedException ex) {
 
@@ -1988,14 +1986,17 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 			}
 
 		} // endif vmTemplate exist.
-
-		// } // Endif toCreate.
-		if (toMonitor) {
-			subMonitor.worked(100);
-		}
 		
 		// In all case invoke a disconnect from vcenter.
 		VCenterClient.disconnect();
+		if (vmTemplate != null) {
+			// applyUserData(monitor, vmFolder, vmName);
+			applyUserData(monitor, vmFolder, vmName);
+		}
+		
+		if (toMonitor) {
+			subMonitor.worked(100);
+		}
 	}
 
 	/**
@@ -3097,7 +3098,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		// There is an os so --< User data part is possible.
 		if (hasMixinUserData() && hasMixinCredential()) {
 			LOGGER.info("applying user datas...");
-			UserDataHelper userDataHelper = new UserDataHelper(morId, vmName, vmFolder, userData, username, password);
+			UserDataHelper userDataHelper = new UserDataHelper(morId, vmName, userData, username, password);
 			try {
 				if (monitor != null) {
 					// Run directly the operation within this eclipse thread.
