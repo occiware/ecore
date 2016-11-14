@@ -29,9 +29,9 @@ import org.occiware.clouddesigner.occi.infrastructure.ComputeStatus;
 public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastructure.impl.ComputeImpl
 {
     private static final String ID = "id";
-	private static final String KIND = "kind";
-	private static final String ATTRIBUTES = "attributes";
-	private static final String TITLE = "occi.entity.title";
+    private static final String KIND = "kind";
+    private static final String ATTRIBUTES = "attributes";
+    private static final String TITLE = "occi.entity.title";
     private static final String SUMMARY = "occi.core.summary";
     private static final String ARCHITECTURE = "occi.compute.architecture";
     private static final String CORES = "occi.compute.cores";
