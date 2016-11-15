@@ -36,7 +36,7 @@ public class ConnectPCA {
      * @return a json object containing the request results
      */
     public JSONObject getRequest(String id)  {
-        final String url = getProperty("server.endpoint")+"occi/compute/"+id.replaceFirst("occi/compute/","");
+        final String url = getProperty("server.endpoint")+"occi/compute/"+id.replaceFirst("compute/","");
         JSONObject result = new JSONObject();
         try {
             CloseableHttpClient httpClient = HttpClientBuilder.create().build();
