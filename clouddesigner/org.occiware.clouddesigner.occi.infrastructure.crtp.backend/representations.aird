@@ -11,8 +11,6 @@
   <semanticResources>platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.ecore</semanticResources>
   <semanticResources>platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore</semanticResources>
   <semanticResources>http://www.eclipse.org/emf/2002/Ecore</semanticResources>
-  <semanticResources>model/backend.ecore</semanticResources>
-  <semanticResources>model/backend.genmodel</semanticResources>
   <ownedViews xmi:type="viewpoint:DView" xmi:id="_2Mic0IykEea0Q4wZ6fjsaQ">
     <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']"/>
     <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_2PS14IykEea0Q4wZ6fjsaQ" name="backend">
@@ -3456,7 +3454,7 @@
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']"/>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_ejBi84ymEea0Q4wZ6fjsaQ" name="vcpu">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_ejBi84ymEea0Q4wZ6fjsaQ" name="vcpu: String">
           <target xmi:type="occi:Attribute" href="model/backend.occie#//@mixins[term='vmaddon']/@attributes.0"/>
           <semanticElements xmi:type="occi:Attribute" href="model/backend.occie#//@mixins[term='vmaddon']/@attributes.0"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_ejCKAIymEea0Q4wZ6fjsaQ" labelSize="10" labelAlignment="LEFT" labelPosition="node">
@@ -3464,7 +3462,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='MixinAttribute']"/>
         </ownedElements>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_ejCKAYymEea0Q4wZ6fjsaQ" name="gueststate">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_ejCKAYymEea0Q4wZ6fjsaQ" name="gueststate: String">
           <target xmi:type="occi:Attribute" href="model/backend.occie#//@mixins[term='vmaddon']/@attributes.1"/>
           <semanticElements xmi:type="occi:Attribute" href="model/backend.occie#//@mixins[term='vmaddon']/@attributes.1"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_ejCKAoymEea0Q4wZ6fjsaQ" labelSize="10" labelAlignment="LEFT" labelPosition="node">
@@ -3472,7 +3470,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='MixinAttribute']"/>
         </ownedElements>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_ejCKA4ymEea0Q4wZ6fjsaQ" name="guestosid">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_ejCKA4ymEea0Q4wZ6fjsaQ" name="guestosid: String">
           <target xmi:type="occi:Attribute" href="model/backend.occie#//@mixins[term='vmaddon']/@attributes.2"/>
           <semanticElements xmi:type="occi:Attribute" href="model/backend.occie#//@mixins[term='vmaddon']/@attributes.2"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_ejCKBIymEea0Q4wZ6fjsaQ" labelSize="10" labelAlignment="LEFT" labelPosition="node">
@@ -3480,7 +3478,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='MixinAttribute']"/>
         </ownedElements>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_9Rp-AIynEea0Q4wZ6fjsaQ" name="markedastemplate">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_9Rp-AIynEea0Q4wZ6fjsaQ" name="markedastemplate: String">
           <target xmi:type="occi:Attribute" href="model/backend.occie#//@mixins[term='vmaddon']/@attributes.3"/>
           <semanticElements xmi:type="occi:Attribute" href="model/backend.occie#//@mixins[term='vmaddon']/@attributes.3"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_9RqlEIynEea0Q4wZ6fjsaQ" labelSize="10" labelAlignment="LEFT" labelPosition="node">
@@ -3509,7 +3507,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='MixinAttribute']"/>
         </ownedElements>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_ejCxEIymEea0Q4wZ6fjsaQ" name="datastoreisopath">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_ejCxEIymEea0Q4wZ6fjsaQ" name="datastoreisopath: String">
           <target xmi:type="occi:Attribute" href="model/backend.occie#//@mixins[term='linux']/@attributes.1"/>
           <semanticElements xmi:type="occi:Attribute" href="model/backend.occie#//@mixins[term='linux']/@attributes.1"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_ejCxEYymEea0Q4wZ6fjsaQ" labelSize="10" labelAlignment="LEFT" labelPosition="node">
@@ -3538,7 +3536,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='MixinAttribute']"/>
         </ownedElements>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_ejCxFIymEea0Q4wZ6fjsaQ" name="datastoreisopath">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_ejCxFIymEea0Q4wZ6fjsaQ" name="datastoreisopath: String">
           <target xmi:type="occi:Attribute" href="model/backend.occie#//@mixins[term='macosx']/@attributes.1"/>
           <semanticElements xmi:type="occi:Attribute" href="model/backend.occie#//@mixins[term='macosx']/@attributes.1"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_ejCxFYymEea0Q4wZ6fjsaQ" labelSize="10" labelAlignment="LEFT" labelPosition="node">
@@ -3558,7 +3556,7 @@
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']"/>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_ejDYIIymEea0Q4wZ6fjsaQ" name="datacentername">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_ejDYIIymEea0Q4wZ6fjsaQ" name="datacentername: String">
           <target xmi:type="occi:Attribute" href="model/backend.occie#//@mixins[term='vmwarefolders']/@attributes.0"/>
           <semanticElements xmi:type="occi:Attribute" href="model/backend.occie#//@mixins[term='vmwarefolders']/@attributes.0"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_ejDYIYymEea0Q4wZ6fjsaQ" labelSize="10" labelAlignment="LEFT" labelPosition="node">
@@ -3566,7 +3564,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='MixinAttribute']"/>
         </ownedElements>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_ejDYIoymEea0Q4wZ6fjsaQ" name="datastorename">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_ejDYIoymEea0Q4wZ6fjsaQ" name="datastorename: String">
           <target xmi:type="occi:Attribute" href="model/backend.occie#//@mixins[term='vmwarefolders']/@attributes.1"/>
           <semanticElements xmi:type="occi:Attribute" href="model/backend.occie#//@mixins[term='vmwarefolders']/@attributes.1"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_ejDYI4ymEea0Q4wZ6fjsaQ" labelSize="10" labelAlignment="LEFT" labelPosition="node">
@@ -3574,7 +3572,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='MixinAttribute']"/>
         </ownedElements>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_ejDYJIymEea0Q4wZ6fjsaQ" name="clustername">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_ejDYJIymEea0Q4wZ6fjsaQ" name="clustername: String">
           <target xmi:type="occi:Attribute" href="model/backend.occie#//@mixins[term='vmwarefolders']/@attributes.2"/>
           <semanticElements xmi:type="occi:Attribute" href="model/backend.occie#//@mixins[term='vmwarefolders']/@attributes.2"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_ejDYJYymEea0Q4wZ6fjsaQ" labelSize="10" labelAlignment="LEFT" labelPosition="node">
@@ -3582,7 +3580,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='MixinAttribute']"/>
         </ownedElements>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_ejDYJoymEea0Q4wZ6fjsaQ" name="hostsystemname">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_ejDYJoymEea0Q4wZ6fjsaQ" name="hostsystemname: String">
           <target xmi:type="occi:Attribute" href="model/backend.occie#//@mixins[term='vmwarefolders']/@attributes.3"/>
           <semanticElements xmi:type="occi:Attribute" href="model/backend.occie#//@mixins[term='vmwarefolders']/@attributes.3"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_ejD_MIymEea0Q4wZ6fjsaQ" labelSize="10" labelAlignment="LEFT" labelPosition="node">
@@ -3590,7 +3588,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='MixinAttribute']"/>
         </ownedElements>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_ejD_MYymEea0Q4wZ6fjsaQ" name="inventorypath">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_ejD_MYymEea0Q4wZ6fjsaQ" name="inventorypath: String">
           <target xmi:type="occi:Attribute" href="model/backend.occie#//@mixins[term='vmwarefolders']/@attributes.4"/>
           <semanticElements xmi:type="occi:Attribute" href="model/backend.occie#//@mixins[term='vmwarefolders']/@attributes.4"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_ejD_MoymEea0Q4wZ6fjsaQ" labelSize="10" labelAlignment="LEFT" labelPosition="node">
@@ -3610,7 +3608,7 @@
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']"/>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_ejD_M4ymEea0Q4wZ6fjsaQ" name="nbport">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_ejD_M4ymEea0Q4wZ6fjsaQ" name="nbport: Number">
           <target xmi:type="occi:Attribute" href="model/backend.occie#//@mixins[term='vswitchinfos']/@attributes.0"/>
           <semanticElements xmi:type="occi:Attribute" href="model/backend.occie#//@mixins[term='vswitchinfos']/@attributes.0"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_ejD_NIymEea0Q4wZ6fjsaQ" labelSize="10" labelAlignment="LEFT" labelPosition="node">
@@ -3640,7 +3638,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@subNodeMappings[name='MixinAttribute']"/>
         </ownedElements>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_ejEmQIymEea0Q4wZ6fjsaQ" name="datastoreisopath">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_ejEmQIymEea0Q4wZ6fjsaQ" name="datastoreisopath: String">
           <target xmi:type="occi:Attribute" href="model/backend.occie#//@mixins[term='windows']/@attributes.1"/>
           <semanticElements xmi:type="occi:Attribute" href="model/backend.occie#//@mixins[term='windows']/@attributes.1"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_ejEmQYymEea0Q4wZ6fjsaQ" labelSize="10" labelAlignment="LEFT" labelPosition="node">
@@ -4783,7 +4781,7 @@
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='MixinContainer']"/>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_mDwekIyoEea0Q4wZ6fjsaQ" name="imagename">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_mDwekIyoEea0Q4wZ6fjsaQ" name="imagename: String">
           <target xmi:type="occi:Attribute" href="model/backend.occie#//@mixins[term='vmimage']/@attributes.0"/>
           <semanticElements xmi:type="occi:Attribute" href="model/backend.occie#//@mixins[term='vmimage']/@attributes.0"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_mDwekYyoEea0Q4wZ6fjsaQ" labelSize="10" labelAlignment="LEFT" labelPosition="node">

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated at Wed Nov 09 13:06:46 CET 2016 from platform:/resource/org.occiware.clouddesigner.occi.infrastructure.crtp.backend/model/backend.occie by org.occiware.clouddesigner.occi.gen.xml -->
+<!-- Generated at Wed Nov 16 14:00:33 CET 2016 from platform:/resource/org.occiware.clouddesigner.occi.infrastructure.crtp.backend/model/backend.occie by org.occiware.clouddesigner.occi.gen.xml -->
 <occi:extension xmlns:occi="http://schemas.ogf.org/occi"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -13,10 +13,10 @@
   <occi:mixin term="vmaddon" scheme="http://occiware.org/occi/infrastructure/crtp/backend#" title="Addon attributes for virtual machine, specific to vmware">
     <occi:depends term="vmimage" scheme="http://occiware.org/occi/infrastructure/crtp/backend#"/>
     <occi:applies term="compute" scheme="http://schemas.ogf.org/occi/infrastructure#"/>
-    <occi:attribute name="vcpu" use="optional" type="" title=""/>
-    <occi:attribute name="gueststate" use="optional" type="" title=""/>
-    <occi:attribute name="guestosid" use="optional" type="" title=""/>
-    <occi:attribute name="markedastemplate" use="optional" type="" title=""/>
+    <occi:attribute name="vcpu" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="gueststate" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="guestosid" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="markedastemplate" use="optional" type="xs:string" title=""/>
   </occi:mixin>
 
   <!-- Mixin: Mixin os_tpl for linux systems -->
@@ -24,7 +24,7 @@
     <occi:depends term="os_tpl" scheme="http://schemas.ogf.org/occi/infrastructure#"/>
     <occi:applies term="compute" scheme="http://schemas.ogf.org/occi/infrastructure#"/>
     <occi:attribute name="guestid" use="required" type="xs:string" title=""/>
-    <occi:attribute name="datastoreisopath" use="optional" type="" title=""/>
+    <occi:attribute name="datastoreisopath" use="optional" type="xs:string" title=""/>
   </occi:mixin>
 
   <!-- Mixin: Mixin os_tpl for mac os x systems -->
@@ -32,7 +32,7 @@
     <occi:depends term="os_tpl" scheme="http://schemas.ogf.org/occi/infrastructure#"/>
     <occi:applies term="compute" scheme="http://schemas.ogf.org/occi/infrastructure#"/>
     <occi:attribute name="guestid" use="required" type="xs:string" title=""/>
-    <occi:attribute name="datastoreisopath" use="optional" type="" title=""/>
+    <occi:attribute name="datastoreisopath" use="optional" type="xs:string" title=""/>
   </occi:mixin>
 
   <!-- Mixin: This mixin add global attributes -->
@@ -42,17 +42,17 @@
     <occi:applies term="networkinterface" scheme="http://schemas.ogf.org/occi/infrastructure#"/>
     <occi:applies term="storage" scheme="http://schemas.ogf.org/occi/infrastructure#"/>
     <occi:applies term="storagelink" scheme="http://schemas.ogf.org/occi/infrastructure#"/>
-    <occi:attribute name="datacentername" use="optional" type="" title=""/>
-    <occi:attribute name="datastorename" use="optional" type="" title=""/>
-    <occi:attribute name="clustername" use="optional" type="" title=""/>
-    <occi:attribute name="hostsystemname" use="optional" type="" title=""/>
-    <occi:attribute name="inventorypath" use="optional" type="" title=""/>
+    <occi:attribute name="datacentername" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="datastorename" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="clustername" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="hostsystemname" use="optional" type="xs:string" title=""/>
+    <occi:attribute name="inventorypath" use="optional" type="xs:string" title=""/>
   </occi:mixin>
 
   <!-- Mixin: Give informations about a vswitch -->
   <occi:mixin term="vswitchinfos" scheme="http://occiware.org/occi/infrastructure/crtp/backend#" title="Give informations about a vswitch">
     <occi:applies term="network" scheme="http://schemas.ogf.org/occi/infrastructure#"/>
-    <occi:attribute name="nbport" immutable="true" use="optional" type="" title="Nb port of the vswitch"/>
+    <occi:attribute name="nbport" immutable="true" use="optional" type="xs:integer" title="Nb port of the vswitch"/>
   </occi:mixin>
 
   <!-- Mixin: Mixin os_tpl for windows system -->
@@ -60,13 +60,13 @@
     <occi:depends term="os_tpl" scheme="http://schemas.ogf.org/occi/infrastructure#"/>
     <occi:applies term="compute" scheme="http://schemas.ogf.org/occi/infrastructure#"/>
     <occi:attribute name="guestid" use="required" type="xs:string" title=""/>
-    <occi:attribute name="datastoreisopath" use="optional" type="" title=""/>
+    <occi:attribute name="datastoreisopath" use="optional" type="xs:string" title=""/>
   </occi:mixin>
 
   <!-- Mixin:  -->
   <occi:mixin term="vmimage" scheme="http://occiware.org/occi/infrastructure/crtp/backend#" title="">
     <occi:applies term="compute" scheme="http://schemas.ogf.org/occi/infrastructure#"/>
-    <occi:attribute name="imagename" use="optional" type="" title="Name of the template if this compute has a template or will be created with a template."/>
+    <occi:attribute name="imagename" use="optional" type="xs:string" title="Name of the template if this compute has a template or will be created with a template."/>
   </occi:mixin>
 
   <!-- Mixin:  -->

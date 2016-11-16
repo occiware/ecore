@@ -4,30 +4,52 @@
   <import href="http://schemas.ogf.org/occi/infrastructure/compute/template/1.1#/"/>
   <import href="http://schemas.ogf.org/occi/infrastructure#/"/>
   <mixins term="vmaddon" scheme="http://occiware.org/occi/infrastructure/crtp/backend#" title="Addon attributes for virtual machine, specific to vmware" depends="//@mixins[term='vmimage']">
-    <attributes name="vcpu"/>
-    <attributes name="gueststate"/>
-    <attributes name="guestosid"/>
-    <attributes name="markedastemplate"/>
+    <attributes name="vcpu">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="gueststate">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="guestosid">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="markedastemplate">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <applies href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='compute']"/>
   </mixins>
   <mixins term="linux" scheme="http://occiware.org/occi/infrastructure/crtp/backend#" title="Mixin os_tpl for linux systems">
     <attributes name="guestid" required="true" type="//@types.0"/>
-    <attributes name="datastoreisopath"/>
+    <attributes name="datastoreisopath">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <depends href="http://schemas.ogf.org/occi/infrastructure#//@mixins[term='os_tpl']"/>
     <applies href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='compute']"/>
   </mixins>
   <mixins term="macosx" scheme="http://occiware.org/occi/infrastructure/crtp/backend#" title="Mixin os_tpl for mac os x systems">
     <attributes name="guestid" required="true" type="//@types.0"/>
-    <attributes name="datastoreisopath"/>
+    <attributes name="datastoreisopath">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <depends href="http://schemas.ogf.org/occi/infrastructure#//@mixins[term='os_tpl']"/>
     <applies href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='compute']"/>
   </mixins>
   <mixins term="vmwarefolders" scheme="http://occiware.org/occi/infrastructure/crtp/backend#" title="This mixin add global attributes">
-    <attributes name="datacentername"/>
-    <attributes name="datastorename"/>
-    <attributes name="clustername"/>
-    <attributes name="hostsystemname"/>
-    <attributes name="inventorypath"/>
+    <attributes name="datacentername">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="datastorename">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="clustername">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="hostsystemname">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="inventorypath">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <applies href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='compute']"/>
     <applies href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='network']"/>
     <applies href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='networkinterface']"/>
@@ -35,17 +57,23 @@
     <applies href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='storagelink']"/>
   </mixins>
   <mixins term="vswitchinfos" scheme="http://occiware.org/occi/infrastructure/crtp/backend#" title="Give informations about a vswitch">
-    <attributes name="nbport" mutable="false" description="Nb port of the vswitch"/>
+    <attributes name="nbport" mutable="false" description="Nb port of the vswitch">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
     <applies href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='network']"/>
   </mixins>
   <mixins term="windows" scheme="http://occiware.org/occi/infrastructure/crtp/backend#" title="Mixin os_tpl for windows system">
     <attributes name="guestid" required="true" type="//@types.0"/>
-    <attributes name="datastoreisopath"/>
+    <attributes name="datastoreisopath">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <depends href="http://schemas.ogf.org/occi/infrastructure#//@mixins[term='os_tpl']"/>
     <applies href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='compute']"/>
   </mixins>
   <mixins term="vmimage" scheme="http://occiware.org/occi/infrastructure/crtp/backend#">
-    <attributes name="imagename" description="Name of the template if this compute has a template or will be created with a template."/>
+    <attributes name="imagename" description="Name of the template if this compute has a template or will be created with a template.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <applies href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='compute']"/>
   </mixins>
   <mixins term="credential" scheme="http://occiware.org/occi/infrastructure/crtp/backend#">
