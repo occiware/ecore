@@ -11,6 +11,8 @@
   <semanticResources>platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.ecore</semanticResources>
   <semanticResources>platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore</semanticResources>
   <semanticResources>http://www.eclipse.org/emf/2002/Ecore</semanticResources>
+  <semanticResources>model/backend.ecore</semanticResources>
+  <semanticResources>model/backend.genmodel</semanticResources>
   <ownedViews xmi:type="viewpoint:DView" xmi:id="_2Mic0IykEea0Q4wZ6fjsaQ">
     <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.occiware.clouddesigner.occi.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']"/>
     <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_2PS14IykEea0Q4wZ6fjsaQ" name="backend">
