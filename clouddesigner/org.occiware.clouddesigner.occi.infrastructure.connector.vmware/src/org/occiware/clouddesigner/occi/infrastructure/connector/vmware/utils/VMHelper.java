@@ -396,18 +396,18 @@ public class VMHelper {
 	}
 
 	/**
-	 * Get the number of cores by cpu of this virtual machine.
+	 * Get the number of virtual sockets.
 	 * 
 	 * @param vm
 	 * @return an Integer that represents the number of cores.
 	 */
-	public static Integer getCoreNumber(final VirtualMachine vm) {
-		Integer nbCore = 0;
+	public static Integer getNumSockets(final VirtualMachine vm) {
+		Integer nbSockets = 0;
 		if (vm != null) {
 			VirtualHardware hw = vm.getConfig().getHardware();
-			nbCore = hw.getNumCPU() / hw.getNumCoresPerSocket();
+			nbSockets = hw.getNumCPU() / hw.getNumCoresPerSocket();
 		}
-		return nbCore;
+		return nbSockets;
 	}
 
 	public static Integer getNumCPU(final VirtualMachine vm) {
@@ -686,7 +686,7 @@ public class VMHelper {
 	 * Change configuration for a VM - Hot or cold.
 	 *
 	 * @param vm
-	 * @param vnumCPU
+	 * @param vCPU
 	 *            (optional may be null)
 	 * @param vRamSizeGB
 	 *            (optional may be null) in GigaBytes
@@ -697,98 +697,124 @@ public class VMHelper {
 	 * @throws RuntimeFault
 	 * @throws RemoteException
 	 */
-	public static void reconfigureVm(final VirtualMachine vm, final Integer vnumCPU, final Float vRamSizeGB,
+	public static void reconfigureVm(final VirtualMachine vm, final Integer vCPU, final Float vRamSizeGB,
 			String summary) throws RemoteException {
 
-		VirtualMachineConfigSpec changeSpecHot = new VirtualMachineConfigSpec();
-		VirtualMachineConfigSpec changeSpecCold = new VirtualMachineConfigSpec();
-		changeSpecHot.setAnnotation(summary);
-		changeSpecCold.setAnnotation(summary);
-		String lastPowerState = getPowerState(vm);
 		if (vm == null) {
-			LOGGER.warn("The virtual machine object doesnt exist for hot reconfiguration");
+			LOGGER.warn("The virtual machine object doesnt exist for hot/cold reconfiguration");
 			return;
 		}
-		boolean setCPU = true;
-		boolean setRAM = true;
+		boolean execReconf = false;
+		VirtualMachineConfigSpec changeSpec = new VirtualMachineConfigSpec();
 		String vmName = vm.getName();
-		Integer nbCpuInit = getNumCPU(vm);
-		Long memoryMB = null;
-		if (vnumCPU != null && vnumCPU > 0) {
-			// Check if we change the number of cpu core.
-			if (vnumCPU == getNumCPU(vm)) {
-				setCPU = false;
-			}
-		} else {
-			setCPU = false;
+		String currentPowerState = getPowerState(vm);
+
+		if (currentPowerState.equals(SUSPENDED)) {
+			LOGGER.warn("Cannot reconfigure virtual machine, the virtual machine is in suspended state.");
+			return;
 		}
+
+		LOGGER.info("Reconfiguration of the virtual machine : " + vmName + " --> state: " + currentPowerState);
+
+		Task task = null;
+		boolean retVal = false;
+
+		Long memoryMB = null;
+
+		if (summary != null) {
+			execReconf = true;
+			changeSpec.setAnnotation(summary);
+		}
+		int oldVCPU = getNumCPU(vm);
+		int currentNbCorePerSocket = getNumCorePerSocket(vm);
+		LOGGER.info("Current number of vcpu : " + oldVCPU);
+		LOGGER.info("NumCoresPerSocket " + currentNbCorePerSocket);
+
+		// CPU part, to add or remove a cpu, the current VCPU must be different
+		// from the value VCPU TO set !
+		if (vCPU != null && vCPU > 0 && vCPU != oldVCPU) {
+
+			int approximateNumVSockets = (int) ((vCPU + currentNbCorePerSocket - 1) / currentNbCorePerSocket);
+			LOGGER.info("Approximate NumVSockets " + approximateNumVSockets);
+
+			// Hot cpu reconfig case.
+			if (currentPowerState.equals(POWER_ON)) {
+
+				if ((vm.getConfig().getCpuHotAddEnabled() && vCPU > oldVCPU)
+						|| (vm.getConfig().getCpuHotRemoveEnabled() && vCPU < oldVCPU)) {
+					changeSpec.setNumCPUs(approximateNumVSockets * currentNbCorePerSocket);
+					LOGGER.info("Hot reconfiguration --> VM : " + vmName + " , changing cpu from " + oldVCPU + " to "
+							+ vCPU.intValue());
+					execReconf = true;
+				}
+
+			}
+
+			// Cold cpu reconfig case.
+			if (currentPowerState.equals(POWER_OFF)) {
+				changeSpec.setNumCPUs(1);
+				changeSpec.setNumCoresPerSocket(1);
+				task = vm.reconfigVM_Task(changeSpec);
+				if (task != null) {
+					try {
+						retVal = task.waitForTask().equals(Task.SUCCESS);
+						if (retVal) {
+							LOGGER.info("Cold reconfiguration --> VM " + vmName + " change cpu from " + oldVCPU
+									+ " to 1, OK");
+							changeSpec.setNumCPUs(vCPU);
+							changeSpec.setCpuHotAddEnabled(true);
+							changeSpec.setCpuHotRemoveEnabled(true);
+							changeSpec.setMemoryHotAddEnabled(true);
+							LOGGER.info("Cold reconfiguration --> VM " + vmName + " change cpu from 1 "
+									+ "to " + vCPU);
+							execReconf = true;
+						} else {
+							LOGGER.info("Cant reconfigure virtual machine.");
+							return;
+						}
+					} catch (InterruptedException ex) {
+						LOGGER.error("Cant reconfigure virtual machine.");
+						return;
+					}
+
+				}
+
+			}
+
+		}
+
 		Float ramInit = getMemoryGB(vm);
 		// Be warned, the ram size is explained in GB not in MB. VMWare explain
 		// the ram in MegaBytes.
-		if (vRamSizeGB != null && vRamSizeGB > 0.0) {
-			if (ramInit.floatValue() == vRamSizeGB.floatValue()) {
-				setRAM = false;
-			}
-		} else {
-			setRAM = false;
-		}
-		if (setCPU) {
-			LOGGER.info("VM " + vmName + " change cpu from " + nbCpuInit.intValue() + " to " + vnumCPU.intValue());
-
-		}
-
-		if (setRAM) {
+		if (vRamSizeGB != null && vRamSizeGB > 0.0 && vRamSizeGB != ramInit) {
 			LOGGER.info("VM " + vmName + " change memory from " + ramInit + " to " + vRamSizeGB);
 			Float memoryMBfl = vRamSizeGB * 1024;
 			memoryMB = memoryMBfl.longValue();
-		}
-		if (!setCPU && !setRAM) {
-			LOGGER.warn("Hot/cold reconfiguration cannot applied, cpu and ram are not set on vm : " + vmName);
-			return;
-		}
-		Task task = null;
-		boolean retVal = false;
-		boolean hotReconfCPU = false;
-		boolean hotReconfRAM = false;
-		int numCores = getNumCPU(vm) / getNumCorePerSocket(vm);
 
-		// Determine if we use hot reconfiguration (preferred) or cold
-		// reconfiguration.
-		if (vm.getConfig().getCpuHotAddEnabled() && setCPU) {
-			// Hot reconfig for cpu ok.
-			hotReconfCPU = true;
-			if (numCores < 2) {
-				changeSpecHot.setNumCPUs(vnumCPU);
-				changeSpecHot.setNumCoresPerSocket(vnumCPU);
+			if (ramInit > vRamSizeGB) {
+				LOGGER.info("VM : " + vmName
+						+ " Cannot reconfigure memory, the reconfiguration memory must be superior to the current virtual machine memory.");
+				return;
+			}
+			if (currentPowerState.equals(POWER_ON)) {
 
-			} else if (numCores >= 2) {
-				changeSpecHot.setNumCPUs(vnumCPU);
-				changeSpecHot.setNumCoresPerSocket(vnumCPU / numCores);
+				if (vm.getConfig().getMemoryHotAddEnabled()) {
+					changeSpec.setMemoryMB(memoryMB);
+					LOGGER.info("VM " + vmName + " change memory from " + ramInit + "GB to " + vRamSizeGB + "GB");
+					execReconf = true;
+				}
 			}
 
-		} else if (setCPU) {
-			changeSpecCold.setNumCPUs(vnumCPU);
-			if (numCores < 2) {
-				changeSpecCold.setNumCoresPerSocket(vnumCPU);
-			} else if (numCores >= 2) {
-				changeSpecCold.setNumCoresPerSocket(vnumCPU / numCores);
+			if (currentPowerState.equals(POWER_OFF)) {
+				changeSpec.setMemoryMB(memoryMB);
+				changeSpec.setMemoryHotAddEnabled(true);
+				execReconf = true;
 			}
-			changeSpecCold.setCpuHotAddEnabled(true);
 		}
 
-		if (vm.getConfig().getMemoryHotAddEnabled() && setRAM) {
-			hotReconfRAM = true;
-			changeSpecHot.setMemoryMB(memoryMB);
-		} else if (setRAM) {
-			changeSpecCold.setMemoryMB(memoryMB);
-			changeSpecCold.setMemoryHotAddEnabled(true);
-		}
-
-		// Case of an hot reconfiguration.
-		if (hotReconfCPU || hotReconfRAM) {
-
-			// Launch hot reconfiguration task.
-			task = vm.reconfigVM_Task(changeSpecHot);
+		// Exec reconf part.
+		if (execReconf) {
+			task = vm.reconfigVM_Task(changeSpec);
 			if (task != null) {
 				try {
 					retVal = task.waitForTask().equals(Task.SUCCESS);
@@ -797,78 +823,13 @@ public class VMHelper {
 					} else {
 						LOGGER.warn("VM " + vmName + " cannot be reconfigured");
 					}
-
 				} catch (InterruptedException ex) {
 					ex.printStackTrace();
+					LOGGER.error(
+							"VM " + vmName + " cannot be reconfigured, the reconfiguration task has been interrupted.");
 				}
 			}
-
 		}
-
-		// Case of cold reconfiguration.
-		if ((!hotReconfCPU && setCPU) || (!hotReconfRAM && setRAM)) {
-			// Launch a cold reconf...
-			task = null;
-			retVal = false;
-			if (getPowerState(vm).equals(POWER_ON) || getPowerState(vm).equals(SUSPENDED)) {
-				// Power off the virtual machine.
-				task = vm.powerOffVM_Task();
-				if (task != null) {
-					try {
-						retVal = task.waitForTask().equals(Task.SUCCESS);
-						if (retVal) {
-							LOGGER.info("VM " + vmName + " switched off");
-						} else {
-							LOGGER.warn("VM " + vmName + " cannot be switched off");
-							return;
-						}
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
-			} else {
-				retVal = true;
-			}
-			if (retVal) {
-				task = vm.reconfigVM_Task(changeSpecCold);
-				if (task != null) {
-					try {
-						retVal = task.waitForTask().equals(Task.SUCCESS);
-						if (retVal) {
-							LOGGER.info("VM " + vmName
-									+ " configuration updated and HotAdd plugin enabled for [CPU and/or Memory]");
-						} else {
-							LOGGER.info("VM " + vmName + " cannot be reconfigured");
-						}
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
-
-			}
-
-			if (lastPowerState.equals(POWER_ON)) {
-				task = vm.powerOnVM_Task(null);
-				if (task != null) {
-					try {
-						retVal = task.waitForTask().equals(Task.SUCCESS);
-						if (retVal) {
-							LOGGER.info("VM " + vmName + " switched On");
-						} else {
-							LOGGER.info("VM " + vmName + " cannot be switched on");
-						}
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				} else {
-					LOGGER.warn("Cannot start Virtual Machine : " + vmName);
-				}
-
-			}
-
-		} // Endif cold reconfiguration case.
-
 	}
 
 	/**
@@ -1186,16 +1147,19 @@ public class VMHelper {
 
 		return taskInfo;
 	}
-	
+
 	/**
-	 * From inventory path, load the Folder object and return it, if path doesn't exist, the folder and subfolders are created.
+	 * From inventory path, load the Folder object and return it, if path
+	 * doesn't exist, the folder and subfolders are created.
+	 * 
 	 * @param dataCenterVmFolder
-	 * @param inventoryPath  (format: /myfolder/subfolder1/subfolder2/ etc.
+	 * @param inventoryPath
+	 *            (format: /myfolder/subfolder1/subfolder2/ etc.
 	 * @return
 	 */
 	public static Folder getInventoryFolderFromPath(Folder dataCenterVmFolder, final String inventoryPath) {
 		Folder folder = findOrCreateFolderFromPath(dataCenterVmFolder, inventoryPath);
-		
+
 		if (folder == null) {
 			LOGGER.error("Folder cannot be created or retrieved.");
 		} else {
@@ -1203,123 +1167,124 @@ public class VMHelper {
 		}
 		return folder;
 	}
-	
-    /**
-     * Find a folder from a path like : /inria/test/experience1/
-     * Note : This method create the missing folders if any on the path.
-     *
-     * @param folderPath
-     * @return A folder if exist, null if none.
-     */
-    public static Folder findOrCreateFolderFromPath(Folder origin, String folderPath) {
-        Folder folder = null;
-        if (folderPath == null || folderPath.trim().isEmpty()) {
-            return folder;
-        }
-        if (origin == null) {
-            return folder;
-        }
 
-        if (folderPath.startsWith("/")) {
-            folderPath = folderPath.substring(1);
-        }
-        if (folderPath.endsWith("/")) {
-            folderPath = folderPath.substring(0, folderPath.length() - 1);
-        }
+	/**
+	 * Find a folder from a path like : /inria/test/experience1/ Note : This
+	 * method create the missing folders if any on the path.
+	 *
+	 * @param folderPath
+	 * @return A folder if exist, null if none.
+	 */
+	public static Folder findOrCreateFolderFromPath(Folder origin, String folderPath) {
+		Folder folder = null;
+		if (folderPath == null || folderPath.trim().isEmpty()) {
+			return folder;
+		}
+		if (origin == null) {
+			return folder;
+		}
 
-        String[] foldersName = folderPath.split("/");
-        if (foldersName != null && foldersName.length > 0) {
-            String name = foldersName[0];
-            try {
+		if (folderPath.startsWith("/")) {
+			folderPath = folderPath.substring(1);
+		}
+		if (folderPath.endsWith("/")) {
+			folderPath = folderPath.substring(0, folderPath.length() - 1);
+		}
 
-                if (name == null || name.isEmpty()) {
-                    return null;
-                }
-                // Search the first folder name.
-                Folder myFolder = (Folder) new InventoryNavigator(origin).searchManagedEntity("Folder", name);
-                if (myFolder == null) {
-                    System.out.println("Folder : " + name + " not found !!");
-                    // Create it if name is not empty.
-                    if (!name.isEmpty()) {
-                        myFolder = origin.createFolder(name);
-                    }
-                }
+		String[] foldersName = folderPath.split("/");
+		if (foldersName != null && foldersName.length > 0) {
+			String name = foldersName[0];
+			try {
 
-                // Call recursively until the full path is ok.
-                int i = 0;
-                String tmpFolderPath = "";
-                for (String tmpName : foldersName) {
-                    if (i > 0 && tmpName != null && !tmpName.trim().isEmpty()) {
-                        tmpFolderPath += tmpName + "/";
-                    }
-                    i++;
-                }
-                if (!tmpFolderPath.isEmpty()) {
-                    myFolder = findOrCreateFolderFromPath(myFolder, tmpFolderPath);
-                    if (myFolder != null) {
-                        return myFolder;
-                    }
-                } else {
-                    // End of check tree, return here the last value found.
-                    return myFolder;
-                }
+				if (name == null || name.isEmpty()) {
+					return null;
+				}
+				// Search the first folder name.
+				Folder myFolder = (Folder) new InventoryNavigator(origin).searchManagedEntity("Folder", name);
+				if (myFolder == null) {
+					System.out.println("Folder : " + name + " not found !!");
+					// Create it if name is not empty.
+					if (!name.isEmpty()) {
+						myFolder = origin.createFolder(name);
+					}
+				}
 
-            } catch (RemoteException ex) {
-            	LOGGER.error("Cant retrieve informations about folder : " + folderPath);
-            }
+				// Call recursively until the full path is ok.
+				int i = 0;
+				String tmpFolderPath = "";
+				for (String tmpName : foldersName) {
+					if (i > 0 && tmpName != null && !tmpName.trim().isEmpty()) {
+						tmpFolderPath += tmpName + "/";
+					}
+					i++;
+				}
+				if (!tmpFolderPath.isEmpty()) {
+					myFolder = findOrCreateFolderFromPath(myFolder, tmpFolderPath);
+					if (myFolder != null) {
+						return myFolder;
+					}
+				} else {
+					// End of check tree, return here the last value found.
+					return myFolder;
+				}
 
-        }
+			} catch (RemoteException ex) {
+				LOGGER.error("Cant retrieve informations about folder : " + folderPath);
+			}
 
-        if (folder == null) {
-           LOGGER.warn("Folder on path : " + folderPath + " not found.");
-        }
+		}
 
-        return folder;
-    }
-    
-    /**
-     * Find a vm folder path like /INRIA/test/
-     *
-     * @param vm a virtual machine object.
-     * @return a folder path from vmFolder like /INRIA/test/, may return null if
-     * errors.
-     */
-    public static String getVMFolderPath(VirtualMachine vm) {
-        String folderPath = "";
-        if (vm == null) {
-            return null;
-        }
-        
-        // Folder vmFolder = dc.getVmFolder();
-        boolean folderVmFound = false;
-        // Get the parent.
-        ManagedEntity entityParent = vm.getParent();
-        Folder folder;
-        if (entityParent instanceof Folder) {
-            folder = (Folder) entityParent;
-            if (folder.getParent() instanceof Datacenter) {
-                return "/";
-            } else {
-                folderPath = "/" + folder.getName() + "/";
-            }
-        }
+		if (folder == null) {
+			LOGGER.warn("Folder on path : " + folderPath + " not found.");
+		}
 
-        while (!folderVmFound && entityParent != null) {
+		return folder;
+	}
 
-            entityParent = entityParent.getParent();
+	/**
+	 * Find a vm folder path like /INRIA/test/
+	 *
+	 * @param vm
+	 *            a virtual machine object.
+	 * @return a folder path from vmFolder like /INRIA/test/, may return null if
+	 *         errors.
+	 */
+	public static String getVMFolderPath(VirtualMachine vm) {
+		String folderPath = "";
+		if (vm == null) {
+			return null;
+		}
 
-            if (entityParent.getParent() instanceof Datacenter) {
-                folderVmFound = true;
+		// Folder vmFolder = dc.getVmFolder();
+		boolean folderVmFound = false;
+		// Get the parent.
+		ManagedEntity entityParent = vm.getParent();
+		Folder folder;
+		if (entityParent instanceof Folder) {
+			folder = (Folder) entityParent;
+			if (folder.getParent() instanceof Datacenter) {
+				return "/";
+			} else {
+				folderPath = "/" + folder.getName() + "/";
+			}
+		}
 
-            } else if (entityParent instanceof Folder) {
-                folderPath = "/" + entityParent.getName() + folderPath;
-            }
+		while (!folderVmFound && entityParent != null) {
 
-        }
-        
-        LOGGER.debug("VM Folder path:---> " + folderPath);
-       
-        return folderPath;
-    }
+			entityParent = entityParent.getParent();
+
+			if (entityParent.getParent() instanceof Datacenter) {
+				folderVmFound = true;
+
+			} else if (entityParent instanceof Folder) {
+				folderPath = "/" + entityParent.getName() + folderPath;
+			}
+
+		}
+
+		LOGGER.debug("VM Folder path:---> " + folderPath);
+
+		return folderPath;
+	}
 
 }

@@ -2211,7 +2211,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 			
 		} else {
 			// Load the compute information from vCenter.
-			numCores = VMHelper.getCoreNumber(vm);
+			numCores = VMHelper.getNumSockets(vm);
 			vcpus = VMHelper.getNumCPU(vm);
 			memoryGB = VMHelper.getMemoryGB(vm);
 			architecture = VMHelper.getArchitecture(vm);
@@ -2363,6 +2363,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 				vmSpec.setAnnotation(summary);
 			}
 			assignVCpuToVMSpec();
+			
 			VMHelper.reconfigureVm(vm, vcpus, getMemory(), summary);
 		} catch (RemoteException ex) {
 			globalMessage = "Error while updating the virtual machine configuration : " + vmName + " \n message: "
