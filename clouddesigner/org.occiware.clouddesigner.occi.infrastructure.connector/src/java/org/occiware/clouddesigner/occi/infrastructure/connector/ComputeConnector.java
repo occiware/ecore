@@ -50,6 +50,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 	ComputeConnector()
 	{
 		LOGGER.debug("Constructor called on " + this);
+		System.out.println("create");
 	}
 
 	//
@@ -63,6 +64,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 	public void occiCreate()
 	{
 		LOGGER.debug("occiCreate() called on " + this);
+		System.out.println("here we are");
 
         try {
 
@@ -74,12 +76,14 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 			attributes.put(SUMMARY, this.getSummary());
 
             JSONObject request = new JSONObject();
-            request.put(ID,this.getId().replaceFirst("compute/",""));
+            request.put(ID,this.getId());
             request.put(KIND,this.getKind().getTitle());
             request.put(ATTRIBUTES,attributes);
             JSONObject response = new ConnectPCA().postRequest(request);
 			getCloudAutomationInfo(response);
+			System.out.println(response.toString());
         }catch (Exception e){
+	    System.out.println(e.getMessage());
             LOGGER.debug(e.getClass().getName() + " : "+e.getMessage());
         }
 
@@ -92,11 +96,12 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 	public void occiRetrieve()
 	{
 		LOGGER.debug("occiRetrieve() called on " + this);
-        try{
-			JSONObject response = new ConnectPCA().getRequest(this.id);
-			getCloudAutomationInfo(response);
+		try{
+		    JSONObject response = new ConnectPCA().getRequest(this.id);
+		    getCloudAutomationInfo(response);
 		}catch (Exception e){
-			LOGGER.debug(e.getClass().getName() + " : "+e.getMessage());
+		    System.out.println(e.getMessage());
+		    LOGGER.debug(e.getClass().getName() + " : "+e.getMessage());
 		}
 
 	}
