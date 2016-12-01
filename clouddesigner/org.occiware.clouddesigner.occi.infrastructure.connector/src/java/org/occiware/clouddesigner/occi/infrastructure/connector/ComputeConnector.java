@@ -64,7 +64,6 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 	public void occiCreate()
 	{
 		LOGGER.debug("occiCreate() called on " + this);
-		System.out.println("here we are");
 
         try {
 
@@ -79,9 +78,9 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
             request.put(ID,this.getId());
             request.put(KIND,this.getKind().getTitle());
             request.put(ATTRIBUTES,attributes);
+			LOGGER.debug("Request sent : " + request.toJSONString());
             JSONObject response = new ConnectPCA().postRequest(request);
 			getCloudAutomationInfo(response);
-			System.out.println(response.toString());
         }catch (Exception e){
 	    System.out.println(e.getMessage());
             LOGGER.debug(e.getClass().getName() + " : "+e.getMessage());
@@ -368,6 +367,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 	}
 
     private void getCloudAutomationInfo(JSONObject response){
+		LOGGER.debug("response : "+response.toJSONString());
         JSONObject attributes = (JSONObject) response.get(ATTRIBUTES);
         this.title = (String) attributes.getOrDefault(TITLE,this.title);
         this.summary  = (String) attributes.getOrDefault(SUMMARY,this.summary);
