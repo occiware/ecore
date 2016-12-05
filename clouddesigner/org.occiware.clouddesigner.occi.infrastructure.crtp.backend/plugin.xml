@@ -53,7 +53,8 @@
       <!-- @generated backend -->
       <package
             uri="http://occiware.org/occi/infrastructure/crtp/backend/ecore"
-            class="org.occiware.clouddesigner.occi.infrastructure.crtp.backend.BackendPackage"/>
+            class="org.occiware.clouddesigner.occi.infrastructure.crtp.backend.BackendPackage"
+            genModel="model/backend.genmodel"/>
    </extension>
 
 </plugin>

@@ -117,6 +117,10 @@
 
 		<!-- Multiple backend extension based on infrastructure and CRTP -->
 		<module>../org.occiware.clouddesigner.occi.infrastructure.crtp.backend</module>
+        <module>../org.occiware.clouddesigner.occi.infrastructure.crtp.backend.edit</module>
+        <module>../org.occiware.clouddesigner.occi.infrastructure.crtp.backend.editor</module>
+        <module>../org.occiware.clouddesigner.occi.infrastructure.crtp.backend.tests</module>
+        <module>../org.occiware.clouddesigner.occi.infrastructure.crtp.backend.design</module>
 		
 		<!-- OCCI Xtext -->
 		<module>../org.occiware.clouddesigner.occi.xtext</module>

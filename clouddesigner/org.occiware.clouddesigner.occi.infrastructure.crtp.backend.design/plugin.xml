@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+  <extension point="org.eclipse.sirius.componentization">
+    <component class="org.occiware.clouddesigner.occi.infrastructure.crtp.backend.design.Activator"
+               id="org.occiware.clouddesigner.occi.infrastructure.crtp.backend.design"
+	       name="backend">
+    </component>
+  </extension>
+   <!-- Popup menu for creating a backend configuration file. -->
+   <extension point="org.eclipse.ui.newWizards">
+      <category
+            id="org.occiware.clouddesigner.category.ID"
+            name="Cloud Designer"/>
+      <wizard
+            category="org.occiware.clouddesigner.category.ID"
+            class="org.occiware.clouddesigner.occi.infrastructure.crtp.backend.design.wizard.NewConfigurationWizard"
+            icon="platform:/plugin/org.occiware.clouddesigner.occi.edit/icons/full/obj16/Configuration.gif"
+            id="org.occiware.clouddesigner.occi.infrastructure.crtp.backend.design.wizard.NewConfigurationWizard"
+            name="backend Configuration File"/>
+   </extension>
+</plugin>
