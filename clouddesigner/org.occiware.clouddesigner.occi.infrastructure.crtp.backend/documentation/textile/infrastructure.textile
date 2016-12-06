@@ -330,4 +330,4 @@ h2. Enum SaveMethod
 * hot  
 * deferred  
 
-Generated at Wed Nov 09 13:06:54 CET 2016 from http://schemas.ogf.org/occi/infrastructure by org.occiware.clouddesigner.occi.gen.doc
+Generated at Tue Dec 06 16:50:58 CET 2016 from http://schemas.ogf.org/occi/infrastructure by org.occiware.clouddesigner.occi.gen.doc
