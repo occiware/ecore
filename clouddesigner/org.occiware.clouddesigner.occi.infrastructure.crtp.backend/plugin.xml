@@ -15,12 +15,12 @@
 
    <!-- Register the backend extension. -->
    <extension point="org.occiware.clouddesigner.occi.occie">
-      <occie scheme="http://occiware.org/occi/infrastructure/crtp#" file="model/backend.occie"/>
+      <occie scheme="http://occiware.org/occi/infrastructure/crtp/backend#" file="model/backend.occie"/>
    </extension>
 
    <!-- Define URI mapping. -->
    <extension point="org.eclipse.emf.ecore.uri_mapping">
-      <mapping source="http://occiware.org/occi/infrastructure/crtp" target="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure.crtp.backend/model/backend.occie"/>
+      <mapping source="http://occiware.org/occi/infrastructure/crtp/backend" target="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure.crtp.backend/model/backend.occie"/>
    </extension>
 
    <!-- Register the parser for .backend files. -->
