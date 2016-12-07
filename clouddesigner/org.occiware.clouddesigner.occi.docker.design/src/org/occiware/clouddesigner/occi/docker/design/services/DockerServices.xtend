@@ -22,6 +22,8 @@ import org.eclipse.swt.widgets.Shell
 import org.occiware.clouddesigner.occi.Configuration
 import org.occiware.clouddesigner.occi.docker.Container
 import org.occiware.clouddesigner.occi.docker.Machine
+import org.occiware.clouddesigner.occi.docker.Network
+import org.occiware.clouddesigner.occi.docker.connector.ExecutableContainer
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableDockerFactory
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableDockerModel
 import org.occiware.clouddesigner.occi.infrastructure.RestartMethod
@@ -216,8 +218,28 @@ class DockerServices {
 		}
 	}
 
+	/**
+	 * Popup menu create action.
+	 */
+	def void create(EObject eo) {
+		if (eo instanceof Network) {
+			// TODO
+		}
+	}
+
+
 	def Shell getShell() {
 		return Display.current.activeShell
+	}
+
+	/**
+	 * Get the current machine
+	 */
+	def getMachine(EObject eo) {
+		val kind = eobjectKind(eo)
+		if (kind == 1) {
+			return (eo as ExecutableContainer).currentMachine
+		}
 	}
 
 	/**
