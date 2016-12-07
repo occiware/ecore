@@ -55,6 +55,9 @@ import com.github.dockerjava.api.model.RestartPolicy
 import com.github.dockerjava.api.model.Ports.Binding
 import java.util.Properties
 import com.github.dockerjava.core.DefaultDockerClientConfig
+import com.github.dockerjava.api.model.Network.Ipam.Config
+import org.occiware.clouddesigner.occi.docker.Network
+import com.github.dockerjava.api.command.CreateNetworkResponse
 
 class DockerContainerManager {
 	private static DockerClient dockerClient = null
@@ -130,6 +133,29 @@ class DockerContainerManager {
 
 		result.put(dockerClient, rcontainer)
 		return result
+	}
+
+	def createNetwork(Machine machine, Network network) {
+		// Set dockerClient
+		if (dockerClient == null) {
+			dockerClient = setConfig(machine.name, properties)
+		} else if (!currentMachine.equalsIgnoreCase(machine.name)) {
+			dockerClient = setConfig(machine.name, properties)
+		}
+		//Config[] ipamConfigs
+		var Config[] ipamConfigs = null
+		
+		var com.github.dockerjava.api.model.Network.Ipam ipam = null
+
+		if (StringUtils.isNotBlank(network.subnet)) {
+			ipamConfigs = newArrayList(new com.github.dockerjava.api.model.Network.Ipam.Config().withSubnet(network.subnet))
+		} else {
+			ipamConfigs = newArrayList(new com.github.dockerjava.api.model.Network.Ipam.Config().withSubnet("10.67.79.0/24"))
+		}
+		ipam = new com.github.dockerjava.api.model.Network().ipam.withConfig(ipamConfigs)
+		// Create an overlay network
+		var CreateNetworkResponse createNetworkResponse = dockerClient.createNetworkCmd().withName(network.name).
+			withIpam(ipam).withDriver("overlay").exec()
 	}
 
 	def void removeContainer(String machineName, String containerId) {
