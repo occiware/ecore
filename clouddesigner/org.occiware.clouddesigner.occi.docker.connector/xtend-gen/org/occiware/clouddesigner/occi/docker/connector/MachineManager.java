@@ -20,6 +20,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
@@ -89,14 +90,115 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
     Preconditions.<String>checkNotNull(_name, "Machine name is null");
     String _driverName = this.getDriverName();
     Preconditions.<String>checkNotNull(_driverName, "Driver name is null");
+    final StringBuilder parameter = new StringBuilder();
+    boolean _isSwarm = this.compute.isSwarm();
+    if (_isSwarm) {
+      parameter.append(" --swarm");
+    }
+    boolean _isSwarm_master = this.compute.isSwarm_master();
+    if (_isSwarm_master) {
+      parameter.append(" --swarm-master");
+    }
+    String _swarm_discovery = this.compute.getSwarm_discovery();
+    boolean _isNotBlank = StringUtils.isNotBlank(_swarm_discovery);
+    if (_isNotBlank) {
+      String _swarm_discovery_1 = this.compute.getSwarm_discovery();
+      String _plus = (" --swarm-discovery=\"" + _swarm_discovery_1);
+      String _plus_1 = (_plus + "\"");
+      parameter.append(_plus_1);
+    }
+    String _swarm_addr = this.compute.getSwarm_addr();
+    boolean _isNotBlank_1 = StringUtils.isNotBlank(_swarm_addr);
+    if (_isNotBlank_1) {
+      String _swarm_addr_1 = this.compute.getSwarm_addr();
+      String _plus_2 = (" --swarm-addr=\"" + _swarm_addr_1);
+      String _plus_3 = (_plus_2 + "\"");
+      parameter.append(_plus_3);
+    }
+    String _swarm_experimental = this.compute.getSwarm_experimental();
+    boolean _isNotBlank_2 = StringUtils.isNotBlank(_swarm_experimental);
+    if (_isNotBlank_2) {
+      String _swarm_experimental_1 = this.compute.getSwarm_experimental();
+      String _plus_4 = (" --swarm-experimental=\"" + _swarm_experimental_1);
+      String _plus_5 = (_plus_4 + "\"");
+      parameter.append(_plus_5);
+    }
+    String _swarm_host = this.compute.getSwarm_host();
+    boolean _isNotBlank_3 = StringUtils.isNotBlank(_swarm_host);
+    if (_isNotBlank_3) {
+      String _swarm_host_1 = this.compute.getSwarm_host();
+      String _plus_6 = (" --swarm-host=\"" + _swarm_host_1);
+      String _plus_7 = (_plus_6 + "\"");
+      parameter.append(_plus_7);
+    }
+    String _swarm_image = this.compute.getSwarm_image();
+    boolean _isNotBlank_4 = StringUtils.isNotBlank(_swarm_image);
+    if (_isNotBlank_4) {
+      String _swarm_image_1 = this.compute.getSwarm_image();
+      String _plus_8 = (" --swarm-image=\"" + _swarm_image_1);
+      String _plus_9 = (_plus_8 + "\"");
+      parameter.append(_plus_9);
+    }
+    String _swarm_opt = this.compute.getSwarm_opt();
+    boolean _isNotBlank_5 = StringUtils.isNotBlank(_swarm_opt);
+    if (_isNotBlank_5) {
+      String _swarm_opt_1 = this.compute.getSwarm_opt();
+      String[] tab_swarm_opt = _swarm_opt_1.split(",");
+      for (final String opt : tab_swarm_opt) {
+        parameter.append(((" --swarm-opt=\"" + opt) + "\""));
+      }
+    }
+    String _engine_env = this.compute.getEngine_env();
+    boolean _isNotBlank_6 = StringUtils.isNotBlank(_engine_env);
+    if (_isNotBlank_6) {
+      String _engine_env_1 = this.compute.getEngine_env();
+      String _plus_10 = (" --engine-env=\"" + _engine_env_1);
+      String _plus_11 = (_plus_10 + "\"");
+      parameter.append(_plus_11);
+    }
+    String _engine_insecure_registry = this.compute.getEngine_insecure_registry();
+    boolean _isNotBlank_7 = StringUtils.isNotBlank(_engine_insecure_registry);
+    if (_isNotBlank_7) {
+      String _engine_insecure_registry_1 = this.compute.getEngine_insecure_registry();
+      String _plus_12 = (" --engine-insecure-registry=\"" + _engine_insecure_registry_1);
+      String _plus_13 = (_plus_12 + "\"");
+      parameter.append(_plus_13);
+    }
+    String _engine_install_url = this.compute.getEngine_install_url();
+    boolean _isNotBlank_8 = StringUtils.isNotBlank(_engine_install_url);
+    if (_isNotBlank_8) {
+      String _engine_install_url_1 = this.compute.getEngine_install_url();
+      String _plus_14 = (" --engine-install-url=\"" + _engine_install_url_1);
+      String _plus_15 = (_plus_14 + "\"");
+      parameter.append(_plus_15);
+    }
+    String _engine_label = this.compute.getEngine_label();
+    boolean _isNotBlank_9 = StringUtils.isNotBlank(_engine_label);
+    if (_isNotBlank_9) {
+      String _engine_label_1 = this.compute.getEngine_label();
+      String _plus_16 = (" --engine-label=\"" + _engine_label_1);
+      String _plus_17 = (_plus_16 + "\"");
+      parameter.append(_plus_17);
+    }
+    String _engine_opt = this.compute.getEngine_opt();
+    boolean _isNotBlank_10 = StringUtils.isNotBlank(_engine_opt);
+    if (_isNotBlank_10) {
+      String _engine_opt_1 = this.compute.getEngine_opt();
+      String[] tab_engine_opt = _engine_opt_1.split(",");
+      for (final String opt_1 : tab_engine_opt) {
+        parameter.append(((" --engine-opt=\"" + opt_1) + "\""));
+      }
+    }
     String dockerMachineCMD = String.format("%s -D create --driver ", this.dockerMachineCmd);
     StringBuilder _append = command.append(dockerMachineCMD);
     String _driverName_1 = this.getDriverName();
     _append.append(_driverName_1);
     this.appendDriverParameters(command);
     StringBuilder _append_1 = command.append(" ");
+    _append_1.append(parameter);
+    StringBuilder _append_2 = command.append(" ");
     String _name_1 = this.compute.getName();
-    _append_1.append(_name_1);
+    _append_2.append(_name_1);
     String _string = command.toString();
     MachineManager.LOGGER.info("CMD : #{}", _string);
     final Map<String, String> activeHosts = DockerUtil.getActiveHosts();
