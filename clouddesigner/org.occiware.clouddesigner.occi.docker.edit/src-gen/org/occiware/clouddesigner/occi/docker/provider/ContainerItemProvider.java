@@ -1352,6 +1352,11 @@ public class ContainerItemProvider extends ComputeItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(OCCIPackage.Literals.RESOURCE__LINKS,
+				 DockerFactory.eINSTANCE.createNetworkLink()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(OCCIPackage.Literals.RESOURCE__LINKS,
 				 DockerFactory.eINSTANCE.createVolumesfrom()));
 
 		newChildDescriptors.add

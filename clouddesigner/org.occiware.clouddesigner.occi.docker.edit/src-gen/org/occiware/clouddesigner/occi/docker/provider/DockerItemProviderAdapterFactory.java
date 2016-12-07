@@ -127,6 +127,29 @@ public class DockerItemProviderAdapterFactory extends DockerAdapterFactory imple
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.occiware.clouddesigner.occi.docker.NetworkLink} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected NetworkLinkItemProvider networkLinkItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.occiware.clouddesigner.occi.docker.NetworkLink}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createNetworkLinkAdapter() {
+		if (networkLinkItemProvider == null) {
+			networkLinkItemProvider = new NetworkLinkItemProvider(this);
+		}
+
+		return networkLinkItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.occiware.clouddesigner.occi.docker.Volumesfrom} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -193,6 +216,29 @@ public class DockerItemProviderAdapterFactory extends DockerAdapterFactory imple
 		}
 
 		return machineItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.occiware.clouddesigner.occi.docker.Network} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected NetworkItemProvider networkItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.occiware.clouddesigner.occi.docker.Network}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createNetworkAdapter() {
+		if (networkItemProvider == null) {
+			networkItemProvider = new NetworkItemProvider(this);
+		}
+
+		return networkItemProvider;
 	}
 
 	/**
@@ -572,9 +618,11 @@ public class DockerItemProviderAdapterFactory extends DockerAdapterFactory imple
 	public void dispose() {
 		if (containerItemProvider != null) containerItemProvider.dispose();
 		if (linkItemProvider != null) linkItemProvider.dispose();
+		if (networkLinkItemProvider != null) networkLinkItemProvider.dispose();
 		if (volumesfromItemProvider != null) volumesfromItemProvider.dispose();
 		if (containsItemProvider != null) containsItemProvider.dispose();
 		if (machineItemProvider != null) machineItemProvider.dispose();
+		if (networkItemProvider != null) networkItemProvider.dispose();
 		if (machine_Amazon_EC2ItemProvider != null) machine_Amazon_EC2ItemProvider.dispose();
 		if (machine_Digital_OceanItemProvider != null) machine_Digital_OceanItemProvider.dispose();
 		if (machine_Google_Compute_EngineItemProvider != null) machine_Google_Compute_EngineItemProvider.dispose();

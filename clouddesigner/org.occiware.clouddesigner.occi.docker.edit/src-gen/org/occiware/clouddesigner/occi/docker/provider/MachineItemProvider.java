@@ -62,6 +62,23 @@ public class MachineItemProvider extends ComputeItemProvider {
 			super.getPropertyDescriptors(object);
 
 			addNamePropertyDescriptor(object);
+			addEngine_install_urlPropertyDescriptor(object);
+			addEngine_optPropertyDescriptor(object);
+			addEngine_insecure_registryPropertyDescriptor(object);
+			addEngine_registry_mirrorPropertyDescriptor(object);
+			addEngine_labelPropertyDescriptor(object);
+			addEngine_storage_driverPropertyDescriptor(object);
+			addEngine_envPropertyDescriptor(object);
+			addSwarmPropertyDescriptor(object);
+			addSwarm_imagePropertyDescriptor(object);
+			addSwarm_masterPropertyDescriptor(object);
+			addSwarm_discoveryPropertyDescriptor(object);
+			addSwarm_strategyPropertyDescriptor(object);
+			addSwarm_optPropertyDescriptor(object);
+			addSwarm_hostPropertyDescriptor(object);
+			addSwarm_addrPropertyDescriptor(object);
+			addSwarm_experimentalPropertyDescriptor(object);
+			addTls_sanPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -80,6 +97,380 @@ public class MachineItemProvider extends ComputeItemProvider {
 				 getString("_UI_Machine_name_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_name_feature", "_UI_Machine_type"),
 				 DockerPackage.Literals.MACHINE__NAME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Engine install url feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addEngine_install_urlPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_engine_install_url_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_engine_install_url_feature", "_UI_Machine_type"),
+				 DockerPackage.Literals.MACHINE__ENGINE_INSTALL_URL,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Engine opt feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addEngine_optPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_engine_opt_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_engine_opt_feature", "_UI_Machine_type"),
+				 DockerPackage.Literals.MACHINE__ENGINE_OPT,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Engine insecure registry feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addEngine_insecure_registryPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_engine_insecure_registry_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_engine_insecure_registry_feature", "_UI_Machine_type"),
+				 DockerPackage.Literals.MACHINE__ENGINE_INSECURE_REGISTRY,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Engine registry mirror feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addEngine_registry_mirrorPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_engine_registry_mirror_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_engine_registry_mirror_feature", "_UI_Machine_type"),
+				 DockerPackage.Literals.MACHINE__ENGINE_REGISTRY_MIRROR,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Engine label feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addEngine_labelPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_engine_label_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_engine_label_feature", "_UI_Machine_type"),
+				 DockerPackage.Literals.MACHINE__ENGINE_LABEL,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Engine storage driver feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addEngine_storage_driverPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_engine_storage_driver_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_engine_storage_driver_feature", "_UI_Machine_type"),
+				 DockerPackage.Literals.MACHINE__ENGINE_STORAGE_DRIVER,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Engine env feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addEngine_envPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_engine_env_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_engine_env_feature", "_UI_Machine_type"),
+				 DockerPackage.Literals.MACHINE__ENGINE_ENV,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Swarm feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSwarmPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_swarm_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_swarm_feature", "_UI_Machine_type"),
+				 DockerPackage.Literals.MACHINE__SWARM,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Swarm image feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSwarm_imagePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_swarm_image_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_swarm_image_feature", "_UI_Machine_type"),
+				 DockerPackage.Literals.MACHINE__SWARM_IMAGE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Swarm master feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSwarm_masterPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_swarm_master_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_swarm_master_feature", "_UI_Machine_type"),
+				 DockerPackage.Literals.MACHINE__SWARM_MASTER,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Swarm discovery feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSwarm_discoveryPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_swarm_discovery_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_swarm_discovery_feature", "_UI_Machine_type"),
+				 DockerPackage.Literals.MACHINE__SWARM_DISCOVERY,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Swarm strategy feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSwarm_strategyPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_swarm_strategy_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_swarm_strategy_feature", "_UI_Machine_type"),
+				 DockerPackage.Literals.MACHINE__SWARM_STRATEGY,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Swarm opt feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSwarm_optPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_swarm_opt_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_swarm_opt_feature", "_UI_Machine_type"),
+				 DockerPackage.Literals.MACHINE__SWARM_OPT,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Swarm host feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSwarm_hostPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_swarm_host_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_swarm_host_feature", "_UI_Machine_type"),
+				 DockerPackage.Literals.MACHINE__SWARM_HOST,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Swarm addr feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSwarm_addrPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_swarm_addr_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_swarm_addr_feature", "_UI_Machine_type"),
+				 DockerPackage.Literals.MACHINE__SWARM_ADDR,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Swarm experimental feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSwarm_experimentalPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_swarm_experimental_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_swarm_experimental_feature", "_UI_Machine_type"),
+				 DockerPackage.Literals.MACHINE__SWARM_EXPERIMENTAL,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Tls san feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTls_sanPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_tls_san_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_tls_san_feature", "_UI_Machine_type"),
+				 DockerPackage.Literals.MACHINE__TLS_SAN,
 				 true,
 				 false,
 				 false,
@@ -127,6 +518,23 @@ public class MachineItemProvider extends ComputeItemProvider {
 
 		switch (notification.getFeatureID(Machine.class)) {
 			case DockerPackage.MACHINE__NAME:
+			case DockerPackage.MACHINE__ENGINE_INSTALL_URL:
+			case DockerPackage.MACHINE__ENGINE_OPT:
+			case DockerPackage.MACHINE__ENGINE_INSECURE_REGISTRY:
+			case DockerPackage.MACHINE__ENGINE_REGISTRY_MIRROR:
+			case DockerPackage.MACHINE__ENGINE_LABEL:
+			case DockerPackage.MACHINE__ENGINE_STORAGE_DRIVER:
+			case DockerPackage.MACHINE__ENGINE_ENV:
+			case DockerPackage.MACHINE__SWARM:
+			case DockerPackage.MACHINE__SWARM_IMAGE:
+			case DockerPackage.MACHINE__SWARM_MASTER:
+			case DockerPackage.MACHINE__SWARM_DISCOVERY:
+			case DockerPackage.MACHINE__SWARM_STRATEGY:
+			case DockerPackage.MACHINE__SWARM_OPT:
+			case DockerPackage.MACHINE__SWARM_HOST:
+			case DockerPackage.MACHINE__SWARM_ADDR:
+			case DockerPackage.MACHINE__SWARM_EXPERIMENTAL:
+			case DockerPackage.MACHINE__TLS_SAN:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
@@ -148,6 +556,11 @@ public class MachineItemProvider extends ComputeItemProvider {
 			(createChildParameter
 				(OCCIPackage.Literals.RESOURCE__LINKS,
 				 DockerFactory.eINSTANCE.createLink()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(OCCIPackage.Literals.RESOURCE__LINKS,
+				 DockerFactory.eINSTANCE.createNetworkLink()));
 
 		newChildDescriptors.add
 			(createChildParameter
