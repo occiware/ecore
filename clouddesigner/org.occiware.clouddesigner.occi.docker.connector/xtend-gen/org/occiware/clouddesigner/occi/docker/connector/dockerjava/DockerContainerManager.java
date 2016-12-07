@@ -13,6 +13,8 @@ package org.occiware.clouddesigner.occi.docker.connector.dockerjava;
 import com.github.dockerjava.api.DockerClient;
 import com.github.dockerjava.api.command.CreateContainerCmd;
 import com.github.dockerjava.api.command.CreateContainerResponse;
+import com.github.dockerjava.api.command.CreateNetworkCmd;
+import com.github.dockerjava.api.command.CreateNetworkResponse;
 import com.github.dockerjava.api.command.EventsCmd;
 import com.github.dockerjava.api.command.InspectContainerCmd;
 import com.github.dockerjava.api.command.InspectContainerResponse;
@@ -58,11 +60,13 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 import org.apache.commons.lang.StringUtils;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.occiware.clouddesigner.occi.docker.Container;
 import org.occiware.clouddesigner.occi.docker.Machine;
+import org.occiware.clouddesigner.occi.docker.Network;
 import org.occiware.clouddesigner.occi.docker.connector.EventCallBack;
 import org.occiware.clouddesigner.occi.docker.connector.StatsCallback;
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerMachineManager;
@@ -158,6 +162,50 @@ public class DockerContainerManager {
     DockerContainerManager.LOGGER.info("Created container: {}", _containerid);
     result.put(DockerContainerManager.dockerClient, rcontainer);
     return result;
+  }
+  
+  public void createNetwork(final Machine machine, final Network network) {
+    boolean _equals = Objects.equal(DockerContainerManager.dockerClient, null);
+    if (_equals) {
+      String _name = machine.getName();
+      DockerClient _setConfig = this.setConfig(_name, this.properties);
+      DockerContainerManager.dockerClient = _setConfig;
+    } else {
+      String _name_1 = machine.getName();
+      boolean _equalsIgnoreCase = DockerContainerManager.currentMachine.equalsIgnoreCase(_name_1);
+      boolean _not = (!_equalsIgnoreCase);
+      if (_not) {
+        String _name_2 = machine.getName();
+        DockerClient _setConfig_1 = this.setConfig(_name_2, this.properties);
+        DockerContainerManager.dockerClient = _setConfig_1;
+      }
+    }
+    com.github.dockerjava.api.model.Network.Ipam.Config[] ipamConfigs = null;
+    com.github.dockerjava.api.model.Network.Ipam ipam = null;
+    String _subnet = network.getSubnet();
+    boolean _isNotBlank = StringUtils.isNotBlank(_subnet);
+    if (_isNotBlank) {
+      com.github.dockerjava.api.model.Network.Ipam.Config _config = new com.github.dockerjava.api.model.Network.Ipam.Config();
+      String _subnet_1 = network.getSubnet();
+      com.github.dockerjava.api.model.Network.Ipam.Config _withSubnet = _config.withSubnet(_subnet_1);
+      ArrayList<com.github.dockerjava.api.model.Network.Ipam.Config> _newArrayList = CollectionLiterals.<com.github.dockerjava.api.model.Network.Ipam.Config>newArrayList(_withSubnet);
+      ipamConfigs = ((com.github.dockerjava.api.model.Network.Ipam.Config[])Conversions.unwrapArray(_newArrayList, com.github.dockerjava.api.model.Network.Ipam.Config.class));
+    } else {
+      com.github.dockerjava.api.model.Network.Ipam.Config _config_1 = new com.github.dockerjava.api.model.Network.Ipam.Config();
+      com.github.dockerjava.api.model.Network.Ipam.Config _withSubnet_1 = _config_1.withSubnet("10.67.79.0/24");
+      ArrayList<com.github.dockerjava.api.model.Network.Ipam.Config> _newArrayList_1 = CollectionLiterals.<com.github.dockerjava.api.model.Network.Ipam.Config>newArrayList(_withSubnet_1);
+      ipamConfigs = ((com.github.dockerjava.api.model.Network.Ipam.Config[])Conversions.unwrapArray(_newArrayList_1, com.github.dockerjava.api.model.Network.Ipam.Config.class));
+    }
+    com.github.dockerjava.api.model.Network _network = new com.github.dockerjava.api.model.Network();
+    com.github.dockerjava.api.model.Network.Ipam _ipam = _network.getIpam();
+    com.github.dockerjava.api.model.Network.Ipam _withConfig = _ipam.withConfig(ipamConfigs);
+    ipam = _withConfig;
+    CreateNetworkCmd _createNetworkCmd = DockerContainerManager.dockerClient.createNetworkCmd();
+    String _name_3 = network.getName();
+    CreateNetworkCmd _withName = _createNetworkCmd.withName(_name_3);
+    CreateNetworkCmd _withIpam = _withName.withIpam(ipam);
+    CreateNetworkCmd _withDriver = _withIpam.withDriver("overlay");
+    CreateNetworkResponse createNetworkResponse = _withDriver.exec();
   }
   
   public void removeContainer(final String machineName, final String containerId) {
