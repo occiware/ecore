@@ -199,6 +199,9 @@
       </genFeatures>
     </genClasses>
     <genClasses>
+      <ecoreClass href="Docker.ecore#//NetworkLink"/>
+    </genClasses>
+    <genClasses>
       <ecoreClass href="Docker.ecore#//Volumesfrom"/>
       <genFeatures createChild="false">
         <ecoreFeature xsi:type="ecore:EAttribute" href="Docker.ecore#//Volumesfrom/mode"/>
@@ -211,6 +214,93 @@
       <ecoreClass href="Docker.ecore#//Machine"/>
       <genFeatures createChild="false">
         <ecoreFeature xsi:type="ecore:EAttribute" href="Docker.ecore#//Machine/name"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="Docker.ecore#//Machine/engine_install_url"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="Docker.ecore#//Machine/engine_opt"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="Docker.ecore#//Machine/engine_insecure_registry"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="Docker.ecore#//Machine/engine_registry_mirror"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="Docker.ecore#//Machine/engine_label"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="Docker.ecore#//Machine/engine_storage_driver"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="Docker.ecore#//Machine/engine_env"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="Docker.ecore#//Machine/swarm"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="Docker.ecore#//Machine/swarm_image"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="Docker.ecore#//Machine/swarm_master"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="Docker.ecore#//Machine/swarm_discovery"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="Docker.ecore#//Machine/swarm_strategy"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="Docker.ecore#//Machine/swarm_opt"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="Docker.ecore#//Machine/swarm_host"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="Docker.ecore#//Machine/swarm_addr"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="Docker.ecore#//Machine/swarm_experimental"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="Docker.ecore#//Machine/tls_san"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="Docker.ecore#//Network"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="Docker.ecore#//Network/name"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="Docker.ecore#//Network/aux_address"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="Docker.ecore#//Network/driver"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="Docker.ecore#//Network/gateway"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="Docker.ecore#//Network/internal"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="Docker.ecore#//Network/ip_range"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="Docker.ecore#//Network/ipam_driver"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="Docker.ecore#//Network/ipam_opt"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="Docker.ecore#//Network/ipv6"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="Docker.ecore#//Network/opt"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="Docker.ecore#//Network/subnet"/>
       </genFeatures>
     </genClasses>
     <genClasses>
