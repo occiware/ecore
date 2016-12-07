@@ -175,6 +175,7 @@
     </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
+  <kinds term="networkLink" scheme="http://occiware.org/occi/docker#" parent="//@kinds[term='link']"/>
   <kinds term="volumesfrom" scheme="http://occiware.org/occi/docker#" title="VolumsFrom">
     <attributes name="mode" default="read_write" description="The mode of this VolumesFrom instance" type="//@types.0"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
@@ -186,7 +187,92 @@
     <attributes name="name" required="true">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
+    <attributes name="engine_install_url" description="Custom URL to use for engine installation [$MACHINE_DOCKER_INSTALL_URL]">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="engine_opt" description="Specify arbitrary flags to include with the created engine in the form flag=value">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="engine_insecure_registry" description="Specify insecure registries to allow with the created engine">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="engine_registry_mirror" description="Specify registry mirrors to use [$ENGINE_REGISTRY_MIRROR]">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="engine_label" description="Specify labels for the created engine">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="engine_storage_driver" description="Specify a storage driver to use with the engine">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="engine_env" description="Specify environment variables to set in the engine">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="swarm" description="Configure Machine with Swarm">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="swarm_image" description="Specify Docker image to use for Swarm [$MACHINE_SWARM_IMAGE]">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="swarm_master" description="Configure Machine to be a Swarm master">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="swarm_discovery" description="Discovery service to use with Swarm">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="swarm_strategy" description="Define a default scheduling strategy for Swarm">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="swarm_opt" description="Define arbitrary flags for swarm">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="swarm_host" description="ip/socket to listen on for Swarm master">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="swarm_addr" description="addr to advertise for Swarm (default: detect and use the machine IP)">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="swarm_experimental" description="Enable Swarm experimental features">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="tls_san" description="Support extra SANs for TLS certs">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='compute']"/>
+  </kinds>
+  <kinds term="network" scheme="http://occiware.org/occi/docker#">
+    <attributes name="name">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="aux_address" description="Auxiliary IPv4 or IPv6 addresses used by Network driver (default map[])">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="driver" default="" description="Driver to manage the Network (default &quot;bridge&quot;)">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="gateway" description="IPv4 or IPv6 Gateway for the master subnet (default [])">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="internal" description="Restrict external access to the network">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="ip_range" description="Allocate container ip from a sub-range (default [])">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="ipam_driver" description="IP Address Management Driver (default &quot;default&quot;)">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="ipam_opt" description="Set IPAM driver specific options (default map[])">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="ipv6" default="" description="Enable IPv6 networking">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="opt" description="Set driver specific options (default map[])"/>
+    <attributes name="subnet" description="Subnet in CIDR format that represents a network segment (default [])">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <parent href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='network']"/>
   </kinds>
   <kinds term="machine_Amazon_EC2" scheme="http://occiware.org/occi/docker#" title="Machine on Amazon EC2" parent="//@kinds[term='machine']">
     <attributes name="access_key" required="true" description="Your access key id for the Amazon Web Services API">

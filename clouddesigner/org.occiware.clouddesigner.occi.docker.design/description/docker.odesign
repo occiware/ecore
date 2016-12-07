@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="docker" version="10.1.3.201511131800">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="docker" version="11.0.0.201601261200">
   <ownedViewpoints name="Docker" label="Docker">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Docker configuration" domainClass="Configuration">
       <metamodel href="../../org.occiware.clouddesigner.occi.docker/model/Docker.ecore#/"/>
@@ -18,6 +18,14 @@
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="NetworkLink" labelDirectEdit="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@toolSections.0/@ownedTools[name='EditLink']" sourceMapping="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']" targetMapping="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Network']" targetFinderExpression="feature:target" sourceFinderExpression="feature:source" domainClass="NetworkLink" useDomainElement="true">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
+            <centerLabelStyleDescription showIcon="false" labelExpression="feature:alias">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
@@ -97,6 +105,13 @@
             </style>
           </conditionnalStyles>
         </containerMappings>
+        <containerMappings name="Network" labelDirectEdit="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit']" semanticCandidatesExpression="feature:resources" domainClass="Network">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelAlignment="LEFT" roundedCorner="true" foregroundColor="//@userColorsPalettes[name='custom_palette']/@entries[name='network_color']">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </containerMappings>
         <toolSections name="Tool">
           <ownedTools xsi:type="tool:DirectEditLabel" name="Edit">
             <mask mask="{0}"/>
@@ -147,6 +162,12 @@
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:restart"/>
               </initialOperation>
             </menuItemDescription>
+            <menuItemDescription xsi:type="tool_1:OperationAction" name="Create" precondition="[oclIsKindOf(Network)/]">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:create"/>
+              </initialOperation>
+            </menuItemDescription>
           </ownedTools>
           <ownedTools xsi:type="tool:DoubleClickDescription" name="containerDoubleClick" mappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']">
             <element name="element"/>
@@ -172,7 +193,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Link" edgeMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Link.gif">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Link" precondition="aql:preSource.getMachine() = preTarget.getMachine()" edgeMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Link.gif">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -192,6 +213,24 @@
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Volumesfrom" referenceName="links">
                 <subModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="var:target"/>
               </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="NetworkLink" edgeMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='NetworkLink']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/NetworkLink.gif">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="NetworkLink" referenceName="links">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="var:target"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Network" containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Network']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Network.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Network" referenceName="resources"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:ContainerCreationDescription" name="Virtual Box" containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Machine_VirtualBox.gif">
@@ -286,4 +325,15 @@
     </ownedRepresentations>
     <ownedJavaExtensions qualifiedClassName="org.occiware.clouddesigner.occi.docker.design.services.DockerServices"/>
   </ownedViewpoints>
+  <userColorsPalettes name="custom_palette">
+    <entries xsi:type="description:InterpolatedColor" name="network_color" colorValueComputationExpression="[eContents()->filter(EClass)->size()/]">
+      <colorSteps associatedValue="0">
+        <associatedColor href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+      </colorSteps>
+      <colorSteps associatedValue="4">
+        <associatedColor href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+      </colorSteps>
+    </entries>
+    <entries xsi:type="description:UserFixedColor" name="custom_light_yellow"/>
+  </userColorsPalettes>
 </description:Group>
