@@ -26,6 +26,7 @@ import org.occiware.clouddesigner.occi.docker.Machine_VMware_Fusion;
 import org.occiware.clouddesigner.occi.docker.Machine_VMware_vCloud_Air;
 import org.occiware.clouddesigner.occi.docker.Machine_VMware_vSphere;
 import org.occiware.clouddesigner.occi.docker.Machine_VirtualBox;
+import org.occiware.clouddesigner.occi.docker.Network;
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableContainer;
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableMachine;
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableMachine_Amazon_EC2;
@@ -40,6 +41,7 @@ import org.occiware.clouddesigner.occi.docker.connector.ExecutableMachine_VMware
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableMachine_VMware_vCloud_Air;
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableMachine_VMware_vSphere;
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableMachine_VirtualBox;
+import org.occiware.clouddesigner.occi.docker.connector.ExecutableNetwork;
 import org.occiware.clouddesigner.occi.docker.impl.DockerFactoryImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -275,6 +277,22 @@ public class ExecutableDockerFactory extends DockerFactoryImpl {
       String _plus = (_name + ":createMachine_VMware_vSphere()");
       ExecutableDockerFactory.LOGGER.info(_plus);
       _xblockexpression = new ExecutableMachine_VMware_vSphere();
+    }
+    return _xblockexpression;
+  }
+  
+  /**
+   * Create an executable Network instance.
+   */
+  @Override
+  public Network createNetwork() {
+    ExecutableNetwork _xblockexpression = null;
+    {
+      Class<? extends ExecutableDockerFactory> _class = this.getClass();
+      String _name = _class.getName();
+      String _plus = (_name + ":createNetwork()");
+      ExecutableDockerFactory.LOGGER.info(_plus);
+      _xblockexpression = new ExecutableNetwork();
     }
     return _xblockexpression;
   }
