@@ -963,6 +963,142 @@ public interface DockerPackage extends EPackage {
 	int LINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.docker.impl.NetworkLinkImpl <em>Network Link</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.occiware.clouddesigner.occi.docker.impl.NetworkLinkImpl
+	 * @see org.occiware.clouddesigner.occi.docker.impl.DockerPackageImpl#getNetworkLink()
+	 * @generated
+	 */
+	int NETWORK_LINK = 2;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK_LINK__ID = LINK__ID;
+
+	/**
+	 * The feature id for the '<em><b>Title</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK_LINK__TITLE = LINK__TITLE;
+
+	/**
+	 * The feature id for the '<em><b>Kind</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK_LINK__KIND = LINK__KIND;
+
+	/**
+	 * The feature id for the '<em><b>Mixins</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK_LINK__MIXINS = LINK__MIXINS;
+
+	/**
+	 * The feature id for the '<em><b>Attributes</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK_LINK__ATTRIBUTES = LINK__ATTRIBUTES;
+
+	/**
+	 * The feature id for the '<em><b>Source</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK_LINK__SOURCE = LINK__SOURCE;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK_LINK__TARGET = LINK__TARGET;
+
+	/**
+	 * The feature id for the '<em><b>Alias</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK_LINK__ALIAS = LINK__ALIAS;
+
+	/**
+	 * The number of structural features of the '<em>Network Link</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK_LINK_FEATURE_COUNT = LINK_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Occi Create</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK_LINK___OCCI_CREATE = LINK___OCCI_CREATE;
+
+	/**
+	 * The operation id for the '<em>Occi Retrieve</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK_LINK___OCCI_RETRIEVE = LINK___OCCI_RETRIEVE;
+
+	/**
+	 * The operation id for the '<em>Occi Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK_LINK___OCCI_UPDATE = LINK___OCCI_UPDATE;
+
+	/**
+	 * The operation id for the '<em>Occi Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK_LINK___OCCI_DELETE = LINK___OCCI_DELETE;
+
+	/**
+	 * The number of operations of the '<em>Network Link</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK_LINK_OPERATION_COUNT = LINK_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.docker.impl.VolumesfromImpl <em>Volumesfrom</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -970,7 +1106,7 @@ public interface DockerPackage extends EPackage {
 	 * @see org.occiware.clouddesigner.occi.docker.impl.DockerPackageImpl#getVolumesfrom()
 	 * @generated
 	 */
-	int VOLUMESFROM = 2;
+	int VOLUMESFROM = 3;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1106,7 +1242,7 @@ public interface DockerPackage extends EPackage {
 	 * @see org.occiware.clouddesigner.occi.docker.impl.DockerPackageImpl#getContains()
 	 * @generated
 	 */
-	int CONTAINS = 3;
+	int CONTAINS = 4;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1233,7 +1369,7 @@ public interface DockerPackage extends EPackage {
 	 * @see org.occiware.clouddesigner.occi.docker.impl.DockerPackageImpl#getMachine()
 	 * @generated
 	 */
-	int MACHINE = 4;
+	int MACHINE = 5;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1380,13 +1516,166 @@ public interface DockerPackage extends EPackage {
 	int MACHINE__NAME = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Engine install url</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE__ENGINE_INSTALL_URL = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Engine opt</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE__ENGINE_OPT = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Engine insecure registry</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE__ENGINE_INSECURE_REGISTRY = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Engine registry mirror</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE__ENGINE_REGISTRY_MIRROR = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Engine label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE__ENGINE_LABEL = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Engine storage driver</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE__ENGINE_STORAGE_DRIVER = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 6;
+
+	/**
+	 * The feature id for the '<em><b>Engine env</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE__ENGINE_ENV = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 7;
+
+	/**
+	 * The feature id for the '<em><b>Swarm</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE__SWARM = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 8;
+
+	/**
+	 * The feature id for the '<em><b>Swarm image</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE__SWARM_IMAGE = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 9;
+
+	/**
+	 * The feature id for the '<em><b>Swarm master</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE__SWARM_MASTER = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 10;
+
+	/**
+	 * The feature id for the '<em><b>Swarm discovery</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE__SWARM_DISCOVERY = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 11;
+
+	/**
+	 * The feature id for the '<em><b>Swarm strategy</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE__SWARM_STRATEGY = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 12;
+
+	/**
+	 * The feature id for the '<em><b>Swarm opt</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE__SWARM_OPT = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 13;
+
+	/**
+	 * The feature id for the '<em><b>Swarm host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE__SWARM_HOST = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 14;
+
+	/**
+	 * The feature id for the '<em><b>Swarm addr</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE__SWARM_ADDR = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 15;
+
+	/**
+	 * The feature id for the '<em><b>Swarm experimental</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE__SWARM_EXPERIMENTAL = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 16;
+
+	/**
+	 * The feature id for the '<em><b>Tls san</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE__TLS_SAN = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 17;
+
+	/**
 	 * The number of structural features of the '<em>Machine</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MACHINE_FEATURE_COUNT = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 1;
+	int MACHINE_FEATURE_COUNT = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 18;
 
 	/**
 	 * The operation id for the '<em>Occi Create</em>' operation.
@@ -1479,6 +1768,286 @@ public interface DockerPackage extends EPackage {
 	int MACHINE_OPERATION_COUNT = InfrastructurePackage.COMPUTE_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.docker.impl.NetworkImpl <em>Network</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.occiware.clouddesigner.occi.docker.impl.NetworkImpl
+	 * @see org.occiware.clouddesigner.occi.docker.impl.DockerPackageImpl#getNetwork()
+	 * @generated
+	 */
+	int NETWORK = 6;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK__ID = InfrastructurePackage.NETWORK__ID;
+
+	/**
+	 * The feature id for the '<em><b>Title</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK__TITLE = InfrastructurePackage.NETWORK__TITLE;
+
+	/**
+	 * The feature id for the '<em><b>Kind</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK__KIND = InfrastructurePackage.NETWORK__KIND;
+
+	/**
+	 * The feature id for the '<em><b>Mixins</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK__MIXINS = InfrastructurePackage.NETWORK__MIXINS;
+
+	/**
+	 * The feature id for the '<em><b>Attributes</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK__ATTRIBUTES = InfrastructurePackage.NETWORK__ATTRIBUTES;
+
+	/**
+	 * The feature id for the '<em><b>Summary</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK__SUMMARY = InfrastructurePackage.NETWORK__SUMMARY;
+
+	/**
+	 * The feature id for the '<em><b>Links</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK__LINKS = InfrastructurePackage.NETWORK__LINKS;
+
+	/**
+	 * The feature id for the '<em><b>Vlan</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK__VLAN = InfrastructurePackage.NETWORK__VLAN;
+
+	/**
+	 * The feature id for the '<em><b>Label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK__LABEL = InfrastructurePackage.NETWORK__LABEL;
+
+	/**
+	 * The feature id for the '<em><b>State</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK__STATE = InfrastructurePackage.NETWORK__STATE;
+
+	/**
+	 * The feature id for the '<em><b>Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK__MESSAGE = InfrastructurePackage.NETWORK__MESSAGE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK__NAME = InfrastructurePackage.NETWORK_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Aux address</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK__AUX_ADDRESS = InfrastructurePackage.NETWORK_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Driver</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK__DRIVER = InfrastructurePackage.NETWORK_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Gateway</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK__GATEWAY = InfrastructurePackage.NETWORK_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Internal</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK__INTERNAL = InfrastructurePackage.NETWORK_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Ip range</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK__IP_RANGE = InfrastructurePackage.NETWORK_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Ipam driver</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK__IPAM_DRIVER = InfrastructurePackage.NETWORK_FEATURE_COUNT + 6;
+
+	/**
+	 * The feature id for the '<em><b>Ipam opt</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK__IPAM_OPT = InfrastructurePackage.NETWORK_FEATURE_COUNT + 7;
+
+	/**
+	 * The feature id for the '<em><b>Ipv6</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK__IPV6 = InfrastructurePackage.NETWORK_FEATURE_COUNT + 8;
+
+	/**
+	 * The feature id for the '<em><b>Opt</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK__OPT = InfrastructurePackage.NETWORK_FEATURE_COUNT + 9;
+
+	/**
+	 * The feature id for the '<em><b>Subnet</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK__SUBNET = InfrastructurePackage.NETWORK_FEATURE_COUNT + 10;
+
+	/**
+	 * The number of structural features of the '<em>Network</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK_FEATURE_COUNT = InfrastructurePackage.NETWORK_FEATURE_COUNT + 11;
+
+	/**
+	 * The operation id for the '<em>Occi Create</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK___OCCI_CREATE = InfrastructurePackage.NETWORK___OCCI_CREATE;
+
+	/**
+	 * The operation id for the '<em>Occi Retrieve</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK___OCCI_RETRIEVE = InfrastructurePackage.NETWORK___OCCI_RETRIEVE;
+
+	/**
+	 * The operation id for the '<em>Occi Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK___OCCI_UPDATE = InfrastructurePackage.NETWORK___OCCI_UPDATE;
+
+	/**
+	 * The operation id for the '<em>Occi Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK___OCCI_DELETE = InfrastructurePackage.NETWORK___OCCI_DELETE;
+
+	/**
+	 * The operation id for the '<em>Up</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK___UP = InfrastructurePackage.NETWORK___UP;
+
+	/**
+	 * The operation id for the '<em>Down</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK___DOWN = InfrastructurePackage.NETWORK___DOWN;
+
+	/**
+	 * The number of operations of the '<em>Network</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK_OPERATION_COUNT = InfrastructurePackage.NETWORK_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.docker.impl.Machine_Amazon_EC2Impl <em>Machine Amazon EC2</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1486,7 +2055,7 @@ public interface DockerPackage extends EPackage {
 	 * @see org.occiware.clouddesigner.occi.docker.impl.DockerPackageImpl#getMachine_Amazon_EC2()
 	 * @generated
 	 */
-	int MACHINE_AMAZON_EC2 = 5;
+	int MACHINE_AMAZON_EC2 = 7;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1631,6 +2200,159 @@ public interface DockerPackage extends EPackage {
 	 * @ordered
 	 */
 	int MACHINE_AMAZON_EC2__NAME = MACHINE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Engine install url</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_AMAZON_EC2__ENGINE_INSTALL_URL = MACHINE__ENGINE_INSTALL_URL;
+
+	/**
+	 * The feature id for the '<em><b>Engine opt</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_AMAZON_EC2__ENGINE_OPT = MACHINE__ENGINE_OPT;
+
+	/**
+	 * The feature id for the '<em><b>Engine insecure registry</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_AMAZON_EC2__ENGINE_INSECURE_REGISTRY = MACHINE__ENGINE_INSECURE_REGISTRY;
+
+	/**
+	 * The feature id for the '<em><b>Engine registry mirror</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_AMAZON_EC2__ENGINE_REGISTRY_MIRROR = MACHINE__ENGINE_REGISTRY_MIRROR;
+
+	/**
+	 * The feature id for the '<em><b>Engine label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_AMAZON_EC2__ENGINE_LABEL = MACHINE__ENGINE_LABEL;
+
+	/**
+	 * The feature id for the '<em><b>Engine storage driver</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_AMAZON_EC2__ENGINE_STORAGE_DRIVER = MACHINE__ENGINE_STORAGE_DRIVER;
+
+	/**
+	 * The feature id for the '<em><b>Engine env</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_AMAZON_EC2__ENGINE_ENV = MACHINE__ENGINE_ENV;
+
+	/**
+	 * The feature id for the '<em><b>Swarm</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_AMAZON_EC2__SWARM = MACHINE__SWARM;
+
+	/**
+	 * The feature id for the '<em><b>Swarm image</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_AMAZON_EC2__SWARM_IMAGE = MACHINE__SWARM_IMAGE;
+
+	/**
+	 * The feature id for the '<em><b>Swarm master</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_AMAZON_EC2__SWARM_MASTER = MACHINE__SWARM_MASTER;
+
+	/**
+	 * The feature id for the '<em><b>Swarm discovery</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_AMAZON_EC2__SWARM_DISCOVERY = MACHINE__SWARM_DISCOVERY;
+
+	/**
+	 * The feature id for the '<em><b>Swarm strategy</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_AMAZON_EC2__SWARM_STRATEGY = MACHINE__SWARM_STRATEGY;
+
+	/**
+	 * The feature id for the '<em><b>Swarm opt</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_AMAZON_EC2__SWARM_OPT = MACHINE__SWARM_OPT;
+
+	/**
+	 * The feature id for the '<em><b>Swarm host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_AMAZON_EC2__SWARM_HOST = MACHINE__SWARM_HOST;
+
+	/**
+	 * The feature id for the '<em><b>Swarm addr</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_AMAZON_EC2__SWARM_ADDR = MACHINE__SWARM_ADDR;
+
+	/**
+	 * The feature id for the '<em><b>Swarm experimental</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_AMAZON_EC2__SWARM_EXPERIMENTAL = MACHINE__SWARM_EXPERIMENTAL;
+
+	/**
+	 * The feature id for the '<em><b>Tls san</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_AMAZON_EC2__TLS_SAN = MACHINE__TLS_SAN;
 
 	/**
 	 * The feature id for the '<em><b>Access key</b></em>' attribute.
@@ -1838,7 +2560,7 @@ public interface DockerPackage extends EPackage {
 	 * @see org.occiware.clouddesigner.occi.docker.impl.DockerPackageImpl#getMachine_Digital_Ocean()
 	 * @generated
 	 */
-	int MACHINE_DIGITAL_OCEAN = 6;
+	int MACHINE_DIGITAL_OCEAN = 8;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1985,6 +2707,159 @@ public interface DockerPackage extends EPackage {
 	int MACHINE_DIGITAL_OCEAN__NAME = MACHINE__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Engine install url</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_DIGITAL_OCEAN__ENGINE_INSTALL_URL = MACHINE__ENGINE_INSTALL_URL;
+
+	/**
+	 * The feature id for the '<em><b>Engine opt</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_DIGITAL_OCEAN__ENGINE_OPT = MACHINE__ENGINE_OPT;
+
+	/**
+	 * The feature id for the '<em><b>Engine insecure registry</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_DIGITAL_OCEAN__ENGINE_INSECURE_REGISTRY = MACHINE__ENGINE_INSECURE_REGISTRY;
+
+	/**
+	 * The feature id for the '<em><b>Engine registry mirror</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_DIGITAL_OCEAN__ENGINE_REGISTRY_MIRROR = MACHINE__ENGINE_REGISTRY_MIRROR;
+
+	/**
+	 * The feature id for the '<em><b>Engine label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_DIGITAL_OCEAN__ENGINE_LABEL = MACHINE__ENGINE_LABEL;
+
+	/**
+	 * The feature id for the '<em><b>Engine storage driver</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_DIGITAL_OCEAN__ENGINE_STORAGE_DRIVER = MACHINE__ENGINE_STORAGE_DRIVER;
+
+	/**
+	 * The feature id for the '<em><b>Engine env</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_DIGITAL_OCEAN__ENGINE_ENV = MACHINE__ENGINE_ENV;
+
+	/**
+	 * The feature id for the '<em><b>Swarm</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_DIGITAL_OCEAN__SWARM = MACHINE__SWARM;
+
+	/**
+	 * The feature id for the '<em><b>Swarm image</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_DIGITAL_OCEAN__SWARM_IMAGE = MACHINE__SWARM_IMAGE;
+
+	/**
+	 * The feature id for the '<em><b>Swarm master</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_DIGITAL_OCEAN__SWARM_MASTER = MACHINE__SWARM_MASTER;
+
+	/**
+	 * The feature id for the '<em><b>Swarm discovery</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_DIGITAL_OCEAN__SWARM_DISCOVERY = MACHINE__SWARM_DISCOVERY;
+
+	/**
+	 * The feature id for the '<em><b>Swarm strategy</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_DIGITAL_OCEAN__SWARM_STRATEGY = MACHINE__SWARM_STRATEGY;
+
+	/**
+	 * The feature id for the '<em><b>Swarm opt</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_DIGITAL_OCEAN__SWARM_OPT = MACHINE__SWARM_OPT;
+
+	/**
+	 * The feature id for the '<em><b>Swarm host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_DIGITAL_OCEAN__SWARM_HOST = MACHINE__SWARM_HOST;
+
+	/**
+	 * The feature id for the '<em><b>Swarm addr</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_DIGITAL_OCEAN__SWARM_ADDR = MACHINE__SWARM_ADDR;
+
+	/**
+	 * The feature id for the '<em><b>Swarm experimental</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_DIGITAL_OCEAN__SWARM_EXPERIMENTAL = MACHINE__SWARM_EXPERIMENTAL;
+
+	/**
+	 * The feature id for the '<em><b>Tls san</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_DIGITAL_OCEAN__TLS_SAN = MACHINE__TLS_SAN;
+
+	/**
 	 * The feature id for the '<em><b>Access token</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2127,7 +3002,7 @@ public interface DockerPackage extends EPackage {
 	 * @see org.occiware.clouddesigner.occi.docker.impl.DockerPackageImpl#getMachine_Google_Compute_Engine()
 	 * @generated
 	 */
-	int MACHINE_GOOGLE_COMPUTE_ENGINE = 7;
+	int MACHINE_GOOGLE_COMPUTE_ENGINE = 9;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2272,6 +3147,159 @@ public interface DockerPackage extends EPackage {
 	 * @ordered
 	 */
 	int MACHINE_GOOGLE_COMPUTE_ENGINE__NAME = MACHINE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Engine install url</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GOOGLE_COMPUTE_ENGINE__ENGINE_INSTALL_URL = MACHINE__ENGINE_INSTALL_URL;
+
+	/**
+	 * The feature id for the '<em><b>Engine opt</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GOOGLE_COMPUTE_ENGINE__ENGINE_OPT = MACHINE__ENGINE_OPT;
+
+	/**
+	 * The feature id for the '<em><b>Engine insecure registry</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GOOGLE_COMPUTE_ENGINE__ENGINE_INSECURE_REGISTRY = MACHINE__ENGINE_INSECURE_REGISTRY;
+
+	/**
+	 * The feature id for the '<em><b>Engine registry mirror</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GOOGLE_COMPUTE_ENGINE__ENGINE_REGISTRY_MIRROR = MACHINE__ENGINE_REGISTRY_MIRROR;
+
+	/**
+	 * The feature id for the '<em><b>Engine label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GOOGLE_COMPUTE_ENGINE__ENGINE_LABEL = MACHINE__ENGINE_LABEL;
+
+	/**
+	 * The feature id for the '<em><b>Engine storage driver</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GOOGLE_COMPUTE_ENGINE__ENGINE_STORAGE_DRIVER = MACHINE__ENGINE_STORAGE_DRIVER;
+
+	/**
+	 * The feature id for the '<em><b>Engine env</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GOOGLE_COMPUTE_ENGINE__ENGINE_ENV = MACHINE__ENGINE_ENV;
+
+	/**
+	 * The feature id for the '<em><b>Swarm</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GOOGLE_COMPUTE_ENGINE__SWARM = MACHINE__SWARM;
+
+	/**
+	 * The feature id for the '<em><b>Swarm image</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GOOGLE_COMPUTE_ENGINE__SWARM_IMAGE = MACHINE__SWARM_IMAGE;
+
+	/**
+	 * The feature id for the '<em><b>Swarm master</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GOOGLE_COMPUTE_ENGINE__SWARM_MASTER = MACHINE__SWARM_MASTER;
+
+	/**
+	 * The feature id for the '<em><b>Swarm discovery</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GOOGLE_COMPUTE_ENGINE__SWARM_DISCOVERY = MACHINE__SWARM_DISCOVERY;
+
+	/**
+	 * The feature id for the '<em><b>Swarm strategy</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GOOGLE_COMPUTE_ENGINE__SWARM_STRATEGY = MACHINE__SWARM_STRATEGY;
+
+	/**
+	 * The feature id for the '<em><b>Swarm opt</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GOOGLE_COMPUTE_ENGINE__SWARM_OPT = MACHINE__SWARM_OPT;
+
+	/**
+	 * The feature id for the '<em><b>Swarm host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GOOGLE_COMPUTE_ENGINE__SWARM_HOST = MACHINE__SWARM_HOST;
+
+	/**
+	 * The feature id for the '<em><b>Swarm addr</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GOOGLE_COMPUTE_ENGINE__SWARM_ADDR = MACHINE__SWARM_ADDR;
+
+	/**
+	 * The feature id for the '<em><b>Swarm experimental</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GOOGLE_COMPUTE_ENGINE__SWARM_EXPERIMENTAL = MACHINE__SWARM_EXPERIMENTAL;
+
+	/**
+	 * The feature id for the '<em><b>Tls san</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GOOGLE_COMPUTE_ENGINE__TLS_SAN = MACHINE__TLS_SAN;
 
 	/**
 	 * The feature id for the '<em><b>Zone</b></em>' attribute.
@@ -2425,7 +3453,7 @@ public interface DockerPackage extends EPackage {
 	 * @see org.occiware.clouddesigner.occi.docker.impl.DockerPackageImpl#getMachine_IBM_SoftLayer()
 	 * @generated
 	 */
-	int MACHINE_IBM_SOFT_LAYER = 8;
+	int MACHINE_IBM_SOFT_LAYER = 10;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2570,6 +3598,159 @@ public interface DockerPackage extends EPackage {
 	 * @ordered
 	 */
 	int MACHINE_IBM_SOFT_LAYER__NAME = MACHINE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Engine install url</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_IBM_SOFT_LAYER__ENGINE_INSTALL_URL = MACHINE__ENGINE_INSTALL_URL;
+
+	/**
+	 * The feature id for the '<em><b>Engine opt</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_IBM_SOFT_LAYER__ENGINE_OPT = MACHINE__ENGINE_OPT;
+
+	/**
+	 * The feature id for the '<em><b>Engine insecure registry</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_IBM_SOFT_LAYER__ENGINE_INSECURE_REGISTRY = MACHINE__ENGINE_INSECURE_REGISTRY;
+
+	/**
+	 * The feature id for the '<em><b>Engine registry mirror</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_IBM_SOFT_LAYER__ENGINE_REGISTRY_MIRROR = MACHINE__ENGINE_REGISTRY_MIRROR;
+
+	/**
+	 * The feature id for the '<em><b>Engine label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_IBM_SOFT_LAYER__ENGINE_LABEL = MACHINE__ENGINE_LABEL;
+
+	/**
+	 * The feature id for the '<em><b>Engine storage driver</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_IBM_SOFT_LAYER__ENGINE_STORAGE_DRIVER = MACHINE__ENGINE_STORAGE_DRIVER;
+
+	/**
+	 * The feature id for the '<em><b>Engine env</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_IBM_SOFT_LAYER__ENGINE_ENV = MACHINE__ENGINE_ENV;
+
+	/**
+	 * The feature id for the '<em><b>Swarm</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_IBM_SOFT_LAYER__SWARM = MACHINE__SWARM;
+
+	/**
+	 * The feature id for the '<em><b>Swarm image</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_IBM_SOFT_LAYER__SWARM_IMAGE = MACHINE__SWARM_IMAGE;
+
+	/**
+	 * The feature id for the '<em><b>Swarm master</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_IBM_SOFT_LAYER__SWARM_MASTER = MACHINE__SWARM_MASTER;
+
+	/**
+	 * The feature id for the '<em><b>Swarm discovery</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_IBM_SOFT_LAYER__SWARM_DISCOVERY = MACHINE__SWARM_DISCOVERY;
+
+	/**
+	 * The feature id for the '<em><b>Swarm strategy</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_IBM_SOFT_LAYER__SWARM_STRATEGY = MACHINE__SWARM_STRATEGY;
+
+	/**
+	 * The feature id for the '<em><b>Swarm opt</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_IBM_SOFT_LAYER__SWARM_OPT = MACHINE__SWARM_OPT;
+
+	/**
+	 * The feature id for the '<em><b>Swarm host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_IBM_SOFT_LAYER__SWARM_HOST = MACHINE__SWARM_HOST;
+
+	/**
+	 * The feature id for the '<em><b>Swarm addr</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_IBM_SOFT_LAYER__SWARM_ADDR = MACHINE__SWARM_ADDR;
+
+	/**
+	 * The feature id for the '<em><b>Swarm experimental</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_IBM_SOFT_LAYER__SWARM_EXPERIMENTAL = MACHINE__SWARM_EXPERIMENTAL;
+
+	/**
+	 * The feature id for the '<em><b>Tls san</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_IBM_SOFT_LAYER__TLS_SAN = MACHINE__TLS_SAN;
 
 	/**
 	 * The feature id for the '<em><b>Api endpoint</b></em>' attribute.
@@ -2777,7 +3958,7 @@ public interface DockerPackage extends EPackage {
 	 * @see org.occiware.clouddesigner.occi.docker.impl.DockerPackageImpl#getMachine_Microsoft_Azure()
 	 * @generated
 	 */
-	int MACHINE_MICROSOFT_AZURE = 9;
+	int MACHINE_MICROSOFT_AZURE = 11;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2924,6 +4105,159 @@ public interface DockerPackage extends EPackage {
 	int MACHINE_MICROSOFT_AZURE__NAME = MACHINE__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Engine install url</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_MICROSOFT_AZURE__ENGINE_INSTALL_URL = MACHINE__ENGINE_INSTALL_URL;
+
+	/**
+	 * The feature id for the '<em><b>Engine opt</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_MICROSOFT_AZURE__ENGINE_OPT = MACHINE__ENGINE_OPT;
+
+	/**
+	 * The feature id for the '<em><b>Engine insecure registry</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_MICROSOFT_AZURE__ENGINE_INSECURE_REGISTRY = MACHINE__ENGINE_INSECURE_REGISTRY;
+
+	/**
+	 * The feature id for the '<em><b>Engine registry mirror</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_MICROSOFT_AZURE__ENGINE_REGISTRY_MIRROR = MACHINE__ENGINE_REGISTRY_MIRROR;
+
+	/**
+	 * The feature id for the '<em><b>Engine label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_MICROSOFT_AZURE__ENGINE_LABEL = MACHINE__ENGINE_LABEL;
+
+	/**
+	 * The feature id for the '<em><b>Engine storage driver</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_MICROSOFT_AZURE__ENGINE_STORAGE_DRIVER = MACHINE__ENGINE_STORAGE_DRIVER;
+
+	/**
+	 * The feature id for the '<em><b>Engine env</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_MICROSOFT_AZURE__ENGINE_ENV = MACHINE__ENGINE_ENV;
+
+	/**
+	 * The feature id for the '<em><b>Swarm</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_MICROSOFT_AZURE__SWARM = MACHINE__SWARM;
+
+	/**
+	 * The feature id for the '<em><b>Swarm image</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_MICROSOFT_AZURE__SWARM_IMAGE = MACHINE__SWARM_IMAGE;
+
+	/**
+	 * The feature id for the '<em><b>Swarm master</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_MICROSOFT_AZURE__SWARM_MASTER = MACHINE__SWARM_MASTER;
+
+	/**
+	 * The feature id for the '<em><b>Swarm discovery</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_MICROSOFT_AZURE__SWARM_DISCOVERY = MACHINE__SWARM_DISCOVERY;
+
+	/**
+	 * The feature id for the '<em><b>Swarm strategy</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_MICROSOFT_AZURE__SWARM_STRATEGY = MACHINE__SWARM_STRATEGY;
+
+	/**
+	 * The feature id for the '<em><b>Swarm opt</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_MICROSOFT_AZURE__SWARM_OPT = MACHINE__SWARM_OPT;
+
+	/**
+	 * The feature id for the '<em><b>Swarm host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_MICROSOFT_AZURE__SWARM_HOST = MACHINE__SWARM_HOST;
+
+	/**
+	 * The feature id for the '<em><b>Swarm addr</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_MICROSOFT_AZURE__SWARM_ADDR = MACHINE__SWARM_ADDR;
+
+	/**
+	 * The feature id for the '<em><b>Swarm experimental</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_MICROSOFT_AZURE__SWARM_EXPERIMENTAL = MACHINE__SWARM_EXPERIMENTAL;
+
+	/**
+	 * The feature id for the '<em><b>Tls san</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_MICROSOFT_AZURE__TLS_SAN = MACHINE__TLS_SAN;
+
+	/**
 	 * The feature id for the '<em><b>Subscription id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3048,7 +4382,7 @@ public interface DockerPackage extends EPackage {
 	 * @see org.occiware.clouddesigner.occi.docker.impl.DockerPackageImpl#getMachine_Microsoft_Hyper_V()
 	 * @generated
 	 */
-	int MACHINE_MICROSOFT_HYPER_V = 10;
+	int MACHINE_MICROSOFT_HYPER_V = 12;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -3195,6 +4529,159 @@ public interface DockerPackage extends EPackage {
 	int MACHINE_MICROSOFT_HYPER_V__NAME = MACHINE__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Engine install url</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_MICROSOFT_HYPER_V__ENGINE_INSTALL_URL = MACHINE__ENGINE_INSTALL_URL;
+
+	/**
+	 * The feature id for the '<em><b>Engine opt</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_MICROSOFT_HYPER_V__ENGINE_OPT = MACHINE__ENGINE_OPT;
+
+	/**
+	 * The feature id for the '<em><b>Engine insecure registry</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_MICROSOFT_HYPER_V__ENGINE_INSECURE_REGISTRY = MACHINE__ENGINE_INSECURE_REGISTRY;
+
+	/**
+	 * The feature id for the '<em><b>Engine registry mirror</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_MICROSOFT_HYPER_V__ENGINE_REGISTRY_MIRROR = MACHINE__ENGINE_REGISTRY_MIRROR;
+
+	/**
+	 * The feature id for the '<em><b>Engine label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_MICROSOFT_HYPER_V__ENGINE_LABEL = MACHINE__ENGINE_LABEL;
+
+	/**
+	 * The feature id for the '<em><b>Engine storage driver</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_MICROSOFT_HYPER_V__ENGINE_STORAGE_DRIVER = MACHINE__ENGINE_STORAGE_DRIVER;
+
+	/**
+	 * The feature id for the '<em><b>Engine env</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_MICROSOFT_HYPER_V__ENGINE_ENV = MACHINE__ENGINE_ENV;
+
+	/**
+	 * The feature id for the '<em><b>Swarm</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_MICROSOFT_HYPER_V__SWARM = MACHINE__SWARM;
+
+	/**
+	 * The feature id for the '<em><b>Swarm image</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_MICROSOFT_HYPER_V__SWARM_IMAGE = MACHINE__SWARM_IMAGE;
+
+	/**
+	 * The feature id for the '<em><b>Swarm master</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_MICROSOFT_HYPER_V__SWARM_MASTER = MACHINE__SWARM_MASTER;
+
+	/**
+	 * The feature id for the '<em><b>Swarm discovery</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_MICROSOFT_HYPER_V__SWARM_DISCOVERY = MACHINE__SWARM_DISCOVERY;
+
+	/**
+	 * The feature id for the '<em><b>Swarm strategy</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_MICROSOFT_HYPER_V__SWARM_STRATEGY = MACHINE__SWARM_STRATEGY;
+
+	/**
+	 * The feature id for the '<em><b>Swarm opt</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_MICROSOFT_HYPER_V__SWARM_OPT = MACHINE__SWARM_OPT;
+
+	/**
+	 * The feature id for the '<em><b>Swarm host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_MICROSOFT_HYPER_V__SWARM_HOST = MACHINE__SWARM_HOST;
+
+	/**
+	 * The feature id for the '<em><b>Swarm addr</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_MICROSOFT_HYPER_V__SWARM_ADDR = MACHINE__SWARM_ADDR;
+
+	/**
+	 * The feature id for the '<em><b>Swarm experimental</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_MICROSOFT_HYPER_V__SWARM_EXPERIMENTAL = MACHINE__SWARM_EXPERIMENTAL;
+
+	/**
+	 * The feature id for the '<em><b>Tls san</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_MICROSOFT_HYPER_V__TLS_SAN = MACHINE__TLS_SAN;
+
+	/**
 	 * The feature id for the '<em><b>Boot2docker location</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3337,7 +4824,7 @@ public interface DockerPackage extends EPackage {
 	 * @see org.occiware.clouddesigner.occi.docker.impl.DockerPackageImpl#getMachine_OpenStack()
 	 * @generated
 	 */
-	int MACHINE_OPEN_STACK = 11;
+	int MACHINE_OPEN_STACK = 13;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -3482,6 +4969,159 @@ public interface DockerPackage extends EPackage {
 	 * @ordered
 	 */
 	int MACHINE_OPEN_STACK__NAME = MACHINE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Engine install url</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_OPEN_STACK__ENGINE_INSTALL_URL = MACHINE__ENGINE_INSTALL_URL;
+
+	/**
+	 * The feature id for the '<em><b>Engine opt</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_OPEN_STACK__ENGINE_OPT = MACHINE__ENGINE_OPT;
+
+	/**
+	 * The feature id for the '<em><b>Engine insecure registry</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_OPEN_STACK__ENGINE_INSECURE_REGISTRY = MACHINE__ENGINE_INSECURE_REGISTRY;
+
+	/**
+	 * The feature id for the '<em><b>Engine registry mirror</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_OPEN_STACK__ENGINE_REGISTRY_MIRROR = MACHINE__ENGINE_REGISTRY_MIRROR;
+
+	/**
+	 * The feature id for the '<em><b>Engine label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_OPEN_STACK__ENGINE_LABEL = MACHINE__ENGINE_LABEL;
+
+	/**
+	 * The feature id for the '<em><b>Engine storage driver</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_OPEN_STACK__ENGINE_STORAGE_DRIVER = MACHINE__ENGINE_STORAGE_DRIVER;
+
+	/**
+	 * The feature id for the '<em><b>Engine env</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_OPEN_STACK__ENGINE_ENV = MACHINE__ENGINE_ENV;
+
+	/**
+	 * The feature id for the '<em><b>Swarm</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_OPEN_STACK__SWARM = MACHINE__SWARM;
+
+	/**
+	 * The feature id for the '<em><b>Swarm image</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_OPEN_STACK__SWARM_IMAGE = MACHINE__SWARM_IMAGE;
+
+	/**
+	 * The feature id for the '<em><b>Swarm master</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_OPEN_STACK__SWARM_MASTER = MACHINE__SWARM_MASTER;
+
+	/**
+	 * The feature id for the '<em><b>Swarm discovery</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_OPEN_STACK__SWARM_DISCOVERY = MACHINE__SWARM_DISCOVERY;
+
+	/**
+	 * The feature id for the '<em><b>Swarm strategy</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_OPEN_STACK__SWARM_STRATEGY = MACHINE__SWARM_STRATEGY;
+
+	/**
+	 * The feature id for the '<em><b>Swarm opt</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_OPEN_STACK__SWARM_OPT = MACHINE__SWARM_OPT;
+
+	/**
+	 * The feature id for the '<em><b>Swarm host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_OPEN_STACK__SWARM_HOST = MACHINE__SWARM_HOST;
+
+	/**
+	 * The feature id for the '<em><b>Swarm addr</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_OPEN_STACK__SWARM_ADDR = MACHINE__SWARM_ADDR;
+
+	/**
+	 * The feature id for the '<em><b>Swarm experimental</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_OPEN_STACK__SWARM_EXPERIMENTAL = MACHINE__SWARM_EXPERIMENTAL;
+
+	/**
+	 * The feature id for the '<em><b>Tls san</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_OPEN_STACK__TLS_SAN = MACHINE__TLS_SAN;
 
 	/**
 	 * The feature id for the '<em><b>Flavor id</b></em>' attribute.
@@ -3698,7 +5338,7 @@ public interface DockerPackage extends EPackage {
 	 * @see org.occiware.clouddesigner.occi.docker.impl.DockerPackageImpl#getMachine_Rackspace()
 	 * @generated
 	 */
-	int MACHINE_RACKSPACE = 12;
+	int MACHINE_RACKSPACE = 14;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -3843,6 +5483,159 @@ public interface DockerPackage extends EPackage {
 	 * @ordered
 	 */
 	int MACHINE_RACKSPACE__NAME = MACHINE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Engine install url</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_RACKSPACE__ENGINE_INSTALL_URL = MACHINE__ENGINE_INSTALL_URL;
+
+	/**
+	 * The feature id for the '<em><b>Engine opt</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_RACKSPACE__ENGINE_OPT = MACHINE__ENGINE_OPT;
+
+	/**
+	 * The feature id for the '<em><b>Engine insecure registry</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_RACKSPACE__ENGINE_INSECURE_REGISTRY = MACHINE__ENGINE_INSECURE_REGISTRY;
+
+	/**
+	 * The feature id for the '<em><b>Engine registry mirror</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_RACKSPACE__ENGINE_REGISTRY_MIRROR = MACHINE__ENGINE_REGISTRY_MIRROR;
+
+	/**
+	 * The feature id for the '<em><b>Engine label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_RACKSPACE__ENGINE_LABEL = MACHINE__ENGINE_LABEL;
+
+	/**
+	 * The feature id for the '<em><b>Engine storage driver</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_RACKSPACE__ENGINE_STORAGE_DRIVER = MACHINE__ENGINE_STORAGE_DRIVER;
+
+	/**
+	 * The feature id for the '<em><b>Engine env</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_RACKSPACE__ENGINE_ENV = MACHINE__ENGINE_ENV;
+
+	/**
+	 * The feature id for the '<em><b>Swarm</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_RACKSPACE__SWARM = MACHINE__SWARM;
+
+	/**
+	 * The feature id for the '<em><b>Swarm image</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_RACKSPACE__SWARM_IMAGE = MACHINE__SWARM_IMAGE;
+
+	/**
+	 * The feature id for the '<em><b>Swarm master</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_RACKSPACE__SWARM_MASTER = MACHINE__SWARM_MASTER;
+
+	/**
+	 * The feature id for the '<em><b>Swarm discovery</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_RACKSPACE__SWARM_DISCOVERY = MACHINE__SWARM_DISCOVERY;
+
+	/**
+	 * The feature id for the '<em><b>Swarm strategy</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_RACKSPACE__SWARM_STRATEGY = MACHINE__SWARM_STRATEGY;
+
+	/**
+	 * The feature id for the '<em><b>Swarm opt</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_RACKSPACE__SWARM_OPT = MACHINE__SWARM_OPT;
+
+	/**
+	 * The feature id for the '<em><b>Swarm host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_RACKSPACE__SWARM_HOST = MACHINE__SWARM_HOST;
+
+	/**
+	 * The feature id for the '<em><b>Swarm addr</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_RACKSPACE__SWARM_ADDR = MACHINE__SWARM_ADDR;
+
+	/**
+	 * The feature id for the '<em><b>Swarm experimental</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_RACKSPACE__SWARM_EXPERIMENTAL = MACHINE__SWARM_EXPERIMENTAL;
+
+	/**
+	 * The feature id for the '<em><b>Tls san</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_RACKSPACE__TLS_SAN = MACHINE__TLS_SAN;
 
 	/**
 	 * The feature id for the '<em><b>Username</b></em>' attribute.
@@ -4023,7 +5816,7 @@ public interface DockerPackage extends EPackage {
 	 * @see org.occiware.clouddesigner.occi.docker.impl.DockerPackageImpl#getMachine_VirtualBox()
 	 * @generated
 	 */
-	int MACHINE_VIRTUAL_BOX = 13;
+	int MACHINE_VIRTUAL_BOX = 15;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -4170,6 +5963,159 @@ public interface DockerPackage extends EPackage {
 	int MACHINE_VIRTUAL_BOX__NAME = MACHINE__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Engine install url</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VIRTUAL_BOX__ENGINE_INSTALL_URL = MACHINE__ENGINE_INSTALL_URL;
+
+	/**
+	 * The feature id for the '<em><b>Engine opt</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VIRTUAL_BOX__ENGINE_OPT = MACHINE__ENGINE_OPT;
+
+	/**
+	 * The feature id for the '<em><b>Engine insecure registry</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VIRTUAL_BOX__ENGINE_INSECURE_REGISTRY = MACHINE__ENGINE_INSECURE_REGISTRY;
+
+	/**
+	 * The feature id for the '<em><b>Engine registry mirror</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VIRTUAL_BOX__ENGINE_REGISTRY_MIRROR = MACHINE__ENGINE_REGISTRY_MIRROR;
+
+	/**
+	 * The feature id for the '<em><b>Engine label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VIRTUAL_BOX__ENGINE_LABEL = MACHINE__ENGINE_LABEL;
+
+	/**
+	 * The feature id for the '<em><b>Engine storage driver</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VIRTUAL_BOX__ENGINE_STORAGE_DRIVER = MACHINE__ENGINE_STORAGE_DRIVER;
+
+	/**
+	 * The feature id for the '<em><b>Engine env</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VIRTUAL_BOX__ENGINE_ENV = MACHINE__ENGINE_ENV;
+
+	/**
+	 * The feature id for the '<em><b>Swarm</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VIRTUAL_BOX__SWARM = MACHINE__SWARM;
+
+	/**
+	 * The feature id for the '<em><b>Swarm image</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VIRTUAL_BOX__SWARM_IMAGE = MACHINE__SWARM_IMAGE;
+
+	/**
+	 * The feature id for the '<em><b>Swarm master</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VIRTUAL_BOX__SWARM_MASTER = MACHINE__SWARM_MASTER;
+
+	/**
+	 * The feature id for the '<em><b>Swarm discovery</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VIRTUAL_BOX__SWARM_DISCOVERY = MACHINE__SWARM_DISCOVERY;
+
+	/**
+	 * The feature id for the '<em><b>Swarm strategy</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VIRTUAL_BOX__SWARM_STRATEGY = MACHINE__SWARM_STRATEGY;
+
+	/**
+	 * The feature id for the '<em><b>Swarm opt</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VIRTUAL_BOX__SWARM_OPT = MACHINE__SWARM_OPT;
+
+	/**
+	 * The feature id for the '<em><b>Swarm host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VIRTUAL_BOX__SWARM_HOST = MACHINE__SWARM_HOST;
+
+	/**
+	 * The feature id for the '<em><b>Swarm addr</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VIRTUAL_BOX__SWARM_ADDR = MACHINE__SWARM_ADDR;
+
+	/**
+	 * The feature id for the '<em><b>Swarm experimental</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VIRTUAL_BOX__SWARM_EXPERIMENTAL = MACHINE__SWARM_EXPERIMENTAL;
+
+	/**
+	 * The feature id for the '<em><b>Tls san</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VIRTUAL_BOX__TLS_SAN = MACHINE__TLS_SAN;
+
+	/**
 	 * The feature id for the '<em><b>Boot2docker url</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4294,7 +6240,7 @@ public interface DockerPackage extends EPackage {
 	 * @see org.occiware.clouddesigner.occi.docker.impl.DockerPackageImpl#getMachine_VMware_Fusion()
 	 * @generated
 	 */
-	int MACHINE_VMWARE_FUSION = 14;
+	int MACHINE_VMWARE_FUSION = 16;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -4441,6 +6387,159 @@ public interface DockerPackage extends EPackage {
 	int MACHINE_VMWARE_FUSION__NAME = MACHINE__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Engine install url</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_FUSION__ENGINE_INSTALL_URL = MACHINE__ENGINE_INSTALL_URL;
+
+	/**
+	 * The feature id for the '<em><b>Engine opt</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_FUSION__ENGINE_OPT = MACHINE__ENGINE_OPT;
+
+	/**
+	 * The feature id for the '<em><b>Engine insecure registry</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_FUSION__ENGINE_INSECURE_REGISTRY = MACHINE__ENGINE_INSECURE_REGISTRY;
+
+	/**
+	 * The feature id for the '<em><b>Engine registry mirror</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_FUSION__ENGINE_REGISTRY_MIRROR = MACHINE__ENGINE_REGISTRY_MIRROR;
+
+	/**
+	 * The feature id for the '<em><b>Engine label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_FUSION__ENGINE_LABEL = MACHINE__ENGINE_LABEL;
+
+	/**
+	 * The feature id for the '<em><b>Engine storage driver</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_FUSION__ENGINE_STORAGE_DRIVER = MACHINE__ENGINE_STORAGE_DRIVER;
+
+	/**
+	 * The feature id for the '<em><b>Engine env</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_FUSION__ENGINE_ENV = MACHINE__ENGINE_ENV;
+
+	/**
+	 * The feature id for the '<em><b>Swarm</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_FUSION__SWARM = MACHINE__SWARM;
+
+	/**
+	 * The feature id for the '<em><b>Swarm image</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_FUSION__SWARM_IMAGE = MACHINE__SWARM_IMAGE;
+
+	/**
+	 * The feature id for the '<em><b>Swarm master</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_FUSION__SWARM_MASTER = MACHINE__SWARM_MASTER;
+
+	/**
+	 * The feature id for the '<em><b>Swarm discovery</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_FUSION__SWARM_DISCOVERY = MACHINE__SWARM_DISCOVERY;
+
+	/**
+	 * The feature id for the '<em><b>Swarm strategy</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_FUSION__SWARM_STRATEGY = MACHINE__SWARM_STRATEGY;
+
+	/**
+	 * The feature id for the '<em><b>Swarm opt</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_FUSION__SWARM_OPT = MACHINE__SWARM_OPT;
+
+	/**
+	 * The feature id for the '<em><b>Swarm host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_FUSION__SWARM_HOST = MACHINE__SWARM_HOST;
+
+	/**
+	 * The feature id for the '<em><b>Swarm addr</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_FUSION__SWARM_ADDR = MACHINE__SWARM_ADDR;
+
+	/**
+	 * The feature id for the '<em><b>Swarm experimental</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_FUSION__SWARM_EXPERIMENTAL = MACHINE__SWARM_EXPERIMENTAL;
+
+	/**
+	 * The feature id for the '<em><b>Tls san</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_FUSION__TLS_SAN = MACHINE__TLS_SAN;
+
+	/**
 	 * The feature id for the '<em><b>Boot2docker url</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4574,7 +6673,7 @@ public interface DockerPackage extends EPackage {
 	 * @see org.occiware.clouddesigner.occi.docker.impl.DockerPackageImpl#getMachine_VMware_vCloud_Air()
 	 * @generated
 	 */
-	int MACHINE_VMWARE_VCLOUD_AIR = 15;
+	int MACHINE_VMWARE_VCLOUD_AIR = 17;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -4719,6 +6818,159 @@ public interface DockerPackage extends EPackage {
 	 * @ordered
 	 */
 	int MACHINE_VMWARE_VCLOUD_AIR__NAME = MACHINE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Engine install url</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_VCLOUD_AIR__ENGINE_INSTALL_URL = MACHINE__ENGINE_INSTALL_URL;
+
+	/**
+	 * The feature id for the '<em><b>Engine opt</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_VCLOUD_AIR__ENGINE_OPT = MACHINE__ENGINE_OPT;
+
+	/**
+	 * The feature id for the '<em><b>Engine insecure registry</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_VCLOUD_AIR__ENGINE_INSECURE_REGISTRY = MACHINE__ENGINE_INSECURE_REGISTRY;
+
+	/**
+	 * The feature id for the '<em><b>Engine registry mirror</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_VCLOUD_AIR__ENGINE_REGISTRY_MIRROR = MACHINE__ENGINE_REGISTRY_MIRROR;
+
+	/**
+	 * The feature id for the '<em><b>Engine label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_VCLOUD_AIR__ENGINE_LABEL = MACHINE__ENGINE_LABEL;
+
+	/**
+	 * The feature id for the '<em><b>Engine storage driver</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_VCLOUD_AIR__ENGINE_STORAGE_DRIVER = MACHINE__ENGINE_STORAGE_DRIVER;
+
+	/**
+	 * The feature id for the '<em><b>Engine env</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_VCLOUD_AIR__ENGINE_ENV = MACHINE__ENGINE_ENV;
+
+	/**
+	 * The feature id for the '<em><b>Swarm</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_VCLOUD_AIR__SWARM = MACHINE__SWARM;
+
+	/**
+	 * The feature id for the '<em><b>Swarm image</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_VCLOUD_AIR__SWARM_IMAGE = MACHINE__SWARM_IMAGE;
+
+	/**
+	 * The feature id for the '<em><b>Swarm master</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_VCLOUD_AIR__SWARM_MASTER = MACHINE__SWARM_MASTER;
+
+	/**
+	 * The feature id for the '<em><b>Swarm discovery</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_VCLOUD_AIR__SWARM_DISCOVERY = MACHINE__SWARM_DISCOVERY;
+
+	/**
+	 * The feature id for the '<em><b>Swarm strategy</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_VCLOUD_AIR__SWARM_STRATEGY = MACHINE__SWARM_STRATEGY;
+
+	/**
+	 * The feature id for the '<em><b>Swarm opt</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_VCLOUD_AIR__SWARM_OPT = MACHINE__SWARM_OPT;
+
+	/**
+	 * The feature id for the '<em><b>Swarm host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_VCLOUD_AIR__SWARM_HOST = MACHINE__SWARM_HOST;
+
+	/**
+	 * The feature id for the '<em><b>Swarm addr</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_VCLOUD_AIR__SWARM_ADDR = MACHINE__SWARM_ADDR;
+
+	/**
+	 * The feature id for the '<em><b>Swarm experimental</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_VCLOUD_AIR__SWARM_EXPERIMENTAL = MACHINE__SWARM_EXPERIMENTAL;
+
+	/**
+	 * The feature id for the '<em><b>Tls san</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_VCLOUD_AIR__TLS_SAN = MACHINE__TLS_SAN;
 
 	/**
 	 * The feature id for the '<em><b>Username</b></em>' attribute.
@@ -4962,7 +7214,7 @@ public interface DockerPackage extends EPackage {
 	 * @see org.occiware.clouddesigner.occi.docker.impl.DockerPackageImpl#getMachine_VMware_vSphere()
 	 * @generated
 	 */
-	int MACHINE_VMWARE_VSPHERE = 16;
+	int MACHINE_VMWARE_VSPHERE = 18;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -5107,6 +7359,159 @@ public interface DockerPackage extends EPackage {
 	 * @ordered
 	 */
 	int MACHINE_VMWARE_VSPHERE__NAME = MACHINE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Engine install url</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_VSPHERE__ENGINE_INSTALL_URL = MACHINE__ENGINE_INSTALL_URL;
+
+	/**
+	 * The feature id for the '<em><b>Engine opt</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_VSPHERE__ENGINE_OPT = MACHINE__ENGINE_OPT;
+
+	/**
+	 * The feature id for the '<em><b>Engine insecure registry</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_VSPHERE__ENGINE_INSECURE_REGISTRY = MACHINE__ENGINE_INSECURE_REGISTRY;
+
+	/**
+	 * The feature id for the '<em><b>Engine registry mirror</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_VSPHERE__ENGINE_REGISTRY_MIRROR = MACHINE__ENGINE_REGISTRY_MIRROR;
+
+	/**
+	 * The feature id for the '<em><b>Engine label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_VSPHERE__ENGINE_LABEL = MACHINE__ENGINE_LABEL;
+
+	/**
+	 * The feature id for the '<em><b>Engine storage driver</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_VSPHERE__ENGINE_STORAGE_DRIVER = MACHINE__ENGINE_STORAGE_DRIVER;
+
+	/**
+	 * The feature id for the '<em><b>Engine env</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_VSPHERE__ENGINE_ENV = MACHINE__ENGINE_ENV;
+
+	/**
+	 * The feature id for the '<em><b>Swarm</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_VSPHERE__SWARM = MACHINE__SWARM;
+
+	/**
+	 * The feature id for the '<em><b>Swarm image</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_VSPHERE__SWARM_IMAGE = MACHINE__SWARM_IMAGE;
+
+	/**
+	 * The feature id for the '<em><b>Swarm master</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_VSPHERE__SWARM_MASTER = MACHINE__SWARM_MASTER;
+
+	/**
+	 * The feature id for the '<em><b>Swarm discovery</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_VSPHERE__SWARM_DISCOVERY = MACHINE__SWARM_DISCOVERY;
+
+	/**
+	 * The feature id for the '<em><b>Swarm strategy</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_VSPHERE__SWARM_STRATEGY = MACHINE__SWARM_STRATEGY;
+
+	/**
+	 * The feature id for the '<em><b>Swarm opt</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_VSPHERE__SWARM_OPT = MACHINE__SWARM_OPT;
+
+	/**
+	 * The feature id for the '<em><b>Swarm host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_VSPHERE__SWARM_HOST = MACHINE__SWARM_HOST;
+
+	/**
+	 * The feature id for the '<em><b>Swarm addr</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_VSPHERE__SWARM_ADDR = MACHINE__SWARM_ADDR;
+
+	/**
+	 * The feature id for the '<em><b>Swarm experimental</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_VSPHERE__SWARM_EXPERIMENTAL = MACHINE__SWARM_EXPERIMENTAL;
+
+	/**
+	 * The feature id for the '<em><b>Tls san</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_VSPHERE__TLS_SAN = MACHINE__TLS_SAN;
 
 	/**
 	 * The feature id for the '<em><b>Username</b></em>' attribute.
@@ -5323,7 +7728,7 @@ public interface DockerPackage extends EPackage {
 	 * @see org.occiware.clouddesigner.occi.docker.impl.DockerPackageImpl#getMode()
 	 * @generated
 	 */
-	int MODE = 17;
+	int MODE = 19;
 
 
 	/**
@@ -5989,6 +8394,16 @@ public interface DockerPackage extends EPackage {
 	EAttribute getLink_Alias();
 
 	/**
+	 * Returns the meta object for class '{@link org.occiware.clouddesigner.occi.docker.NetworkLink <em>Network Link</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Network Link</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.NetworkLink
+	 * @generated
+	 */
+	EClass getNetworkLink();
+
+	/**
 	 * Returns the meta object for class '{@link org.occiware.clouddesigner.occi.docker.Volumesfrom <em>Volumesfrom</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6039,6 +8454,324 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getMachine_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine#getEngine_install_url <em>Engine install url</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Engine install url</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine#getEngine_install_url()
+	 * @see #getMachine()
+	 * @generated
+	 */
+	EAttribute getMachine_Engine_install_url();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine#getEngine_opt <em>Engine opt</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Engine opt</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine#getEngine_opt()
+	 * @see #getMachine()
+	 * @generated
+	 */
+	EAttribute getMachine_Engine_opt();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine#getEngine_insecure_registry <em>Engine insecure registry</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Engine insecure registry</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine#getEngine_insecure_registry()
+	 * @see #getMachine()
+	 * @generated
+	 */
+	EAttribute getMachine_Engine_insecure_registry();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine#getEngine_registry_mirror <em>Engine registry mirror</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Engine registry mirror</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine#getEngine_registry_mirror()
+	 * @see #getMachine()
+	 * @generated
+	 */
+	EAttribute getMachine_Engine_registry_mirror();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine#getEngine_label <em>Engine label</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Engine label</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine#getEngine_label()
+	 * @see #getMachine()
+	 * @generated
+	 */
+	EAttribute getMachine_Engine_label();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine#getEngine_storage_driver <em>Engine storage driver</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Engine storage driver</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine#getEngine_storage_driver()
+	 * @see #getMachine()
+	 * @generated
+	 */
+	EAttribute getMachine_Engine_storage_driver();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine#getEngine_env <em>Engine env</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Engine env</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine#getEngine_env()
+	 * @see #getMachine()
+	 * @generated
+	 */
+	EAttribute getMachine_Engine_env();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine#isSwarm <em>Swarm</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Swarm</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine#isSwarm()
+	 * @see #getMachine()
+	 * @generated
+	 */
+	EAttribute getMachine_Swarm();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine#getSwarm_image <em>Swarm image</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Swarm image</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine#getSwarm_image()
+	 * @see #getMachine()
+	 * @generated
+	 */
+	EAttribute getMachine_Swarm_image();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine#isSwarm_master <em>Swarm master</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Swarm master</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine#isSwarm_master()
+	 * @see #getMachine()
+	 * @generated
+	 */
+	EAttribute getMachine_Swarm_master();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine#getSwarm_discovery <em>Swarm discovery</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Swarm discovery</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine#getSwarm_discovery()
+	 * @see #getMachine()
+	 * @generated
+	 */
+	EAttribute getMachine_Swarm_discovery();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine#getSwarm_strategy <em>Swarm strategy</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Swarm strategy</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine#getSwarm_strategy()
+	 * @see #getMachine()
+	 * @generated
+	 */
+	EAttribute getMachine_Swarm_strategy();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine#getSwarm_opt <em>Swarm opt</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Swarm opt</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine#getSwarm_opt()
+	 * @see #getMachine()
+	 * @generated
+	 */
+	EAttribute getMachine_Swarm_opt();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine#getSwarm_host <em>Swarm host</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Swarm host</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine#getSwarm_host()
+	 * @see #getMachine()
+	 * @generated
+	 */
+	EAttribute getMachine_Swarm_host();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine#getSwarm_addr <em>Swarm addr</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Swarm addr</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine#getSwarm_addr()
+	 * @see #getMachine()
+	 * @generated
+	 */
+	EAttribute getMachine_Swarm_addr();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine#getSwarm_experimental <em>Swarm experimental</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Swarm experimental</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine#getSwarm_experimental()
+	 * @see #getMachine()
+	 * @generated
+	 */
+	EAttribute getMachine_Swarm_experimental();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine#getTls_san <em>Tls san</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Tls san</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine#getTls_san()
+	 * @see #getMachine()
+	 * @generated
+	 */
+	EAttribute getMachine_Tls_san();
+
+	/**
+	 * Returns the meta object for class '{@link org.occiware.clouddesigner.occi.docker.Network <em>Network</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Network</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Network
+	 * @generated
+	 */
+	EClass getNetwork();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Network#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Network#getName()
+	 * @see #getNetwork()
+	 * @generated
+	 */
+	EAttribute getNetwork_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Network#getAux_address <em>Aux address</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Aux address</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Network#getAux_address()
+	 * @see #getNetwork()
+	 * @generated
+	 */
+	EAttribute getNetwork_Aux_address();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Network#getDriver <em>Driver</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Driver</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Network#getDriver()
+	 * @see #getNetwork()
+	 * @generated
+	 */
+	EAttribute getNetwork_Driver();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Network#getGateway <em>Gateway</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Gateway</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Network#getGateway()
+	 * @see #getNetwork()
+	 * @generated
+	 */
+	EAttribute getNetwork_Gateway();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Network#isInternal <em>Internal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Internal</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Network#isInternal()
+	 * @see #getNetwork()
+	 * @generated
+	 */
+	EAttribute getNetwork_Internal();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Network#getIp_range <em>Ip range</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Ip range</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Network#getIp_range()
+	 * @see #getNetwork()
+	 * @generated
+	 */
+	EAttribute getNetwork_Ip_range();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Network#getIpam_driver <em>Ipam driver</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Ipam driver</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Network#getIpam_driver()
+	 * @see #getNetwork()
+	 * @generated
+	 */
+	EAttribute getNetwork_Ipam_driver();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Network#getIpam_opt <em>Ipam opt</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Ipam opt</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Network#getIpam_opt()
+	 * @see #getNetwork()
+	 * @generated
+	 */
+	EAttribute getNetwork_Ipam_opt();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Network#isIpv6 <em>Ipv6</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Ipv6</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Network#isIpv6()
+	 * @see #getNetwork()
+	 * @generated
+	 */
+	EAttribute getNetwork_Ipv6();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Network#getOpt <em>Opt</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Opt</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Network#getOpt()
+	 * @see #getNetwork()
+	 * @generated
+	 */
+	EAttribute getNetwork_Opt();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Network#getSubnet <em>Subnet</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Subnet</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Network#getSubnet()
+	 * @see #getNetwork()
+	 * @generated
+	 */
+	EAttribute getNetwork_Subnet();
 
 	/**
 	 * Returns the meta object for class '{@link org.occiware.clouddesigner.occi.docker.Machine_Amazon_EC2 <em>Machine Amazon EC2</em>}'.
@@ -7664,6 +10397,16 @@ public interface DockerPackage extends EPackage {
 		EAttribute LINK__ALIAS = eINSTANCE.getLink_Alias();
 
 		/**
+		 * The meta object literal for the '{@link org.occiware.clouddesigner.occi.docker.impl.NetworkLinkImpl <em>Network Link</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.occiware.clouddesigner.occi.docker.impl.NetworkLinkImpl
+		 * @see org.occiware.clouddesigner.occi.docker.impl.DockerPackageImpl#getNetworkLink()
+		 * @generated
+		 */
+		EClass NETWORK_LINK = eINSTANCE.getNetworkLink();
+
+		/**
 		 * The meta object literal for the '{@link org.occiware.clouddesigner.occi.docker.impl.VolumesfromImpl <em>Volumesfrom</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -7708,6 +10451,240 @@ public interface DockerPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute MACHINE__NAME = eINSTANCE.getMachine_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Engine install url</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE__ENGINE_INSTALL_URL = eINSTANCE.getMachine_Engine_install_url();
+
+		/**
+		 * The meta object literal for the '<em><b>Engine opt</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE__ENGINE_OPT = eINSTANCE.getMachine_Engine_opt();
+
+		/**
+		 * The meta object literal for the '<em><b>Engine insecure registry</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE__ENGINE_INSECURE_REGISTRY = eINSTANCE.getMachine_Engine_insecure_registry();
+
+		/**
+		 * The meta object literal for the '<em><b>Engine registry mirror</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE__ENGINE_REGISTRY_MIRROR = eINSTANCE.getMachine_Engine_registry_mirror();
+
+		/**
+		 * The meta object literal for the '<em><b>Engine label</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE__ENGINE_LABEL = eINSTANCE.getMachine_Engine_label();
+
+		/**
+		 * The meta object literal for the '<em><b>Engine storage driver</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE__ENGINE_STORAGE_DRIVER = eINSTANCE.getMachine_Engine_storage_driver();
+
+		/**
+		 * The meta object literal for the '<em><b>Engine env</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE__ENGINE_ENV = eINSTANCE.getMachine_Engine_env();
+
+		/**
+		 * The meta object literal for the '<em><b>Swarm</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE__SWARM = eINSTANCE.getMachine_Swarm();
+
+		/**
+		 * The meta object literal for the '<em><b>Swarm image</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE__SWARM_IMAGE = eINSTANCE.getMachine_Swarm_image();
+
+		/**
+		 * The meta object literal for the '<em><b>Swarm master</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE__SWARM_MASTER = eINSTANCE.getMachine_Swarm_master();
+
+		/**
+		 * The meta object literal for the '<em><b>Swarm discovery</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE__SWARM_DISCOVERY = eINSTANCE.getMachine_Swarm_discovery();
+
+		/**
+		 * The meta object literal for the '<em><b>Swarm strategy</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE__SWARM_STRATEGY = eINSTANCE.getMachine_Swarm_strategy();
+
+		/**
+		 * The meta object literal for the '<em><b>Swarm opt</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE__SWARM_OPT = eINSTANCE.getMachine_Swarm_opt();
+
+		/**
+		 * The meta object literal for the '<em><b>Swarm host</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE__SWARM_HOST = eINSTANCE.getMachine_Swarm_host();
+
+		/**
+		 * The meta object literal for the '<em><b>Swarm addr</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE__SWARM_ADDR = eINSTANCE.getMachine_Swarm_addr();
+
+		/**
+		 * The meta object literal for the '<em><b>Swarm experimental</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE__SWARM_EXPERIMENTAL = eINSTANCE.getMachine_Swarm_experimental();
+
+		/**
+		 * The meta object literal for the '<em><b>Tls san</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE__TLS_SAN = eINSTANCE.getMachine_Tls_san();
+
+		/**
+		 * The meta object literal for the '{@link org.occiware.clouddesigner.occi.docker.impl.NetworkImpl <em>Network</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.occiware.clouddesigner.occi.docker.impl.NetworkImpl
+		 * @see org.occiware.clouddesigner.occi.docker.impl.DockerPackageImpl#getNetwork()
+		 * @generated
+		 */
+		EClass NETWORK = eINSTANCE.getNetwork();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NETWORK__NAME = eINSTANCE.getNetwork_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Aux address</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NETWORK__AUX_ADDRESS = eINSTANCE.getNetwork_Aux_address();
+
+		/**
+		 * The meta object literal for the '<em><b>Driver</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NETWORK__DRIVER = eINSTANCE.getNetwork_Driver();
+
+		/**
+		 * The meta object literal for the '<em><b>Gateway</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NETWORK__GATEWAY = eINSTANCE.getNetwork_Gateway();
+
+		/**
+		 * The meta object literal for the '<em><b>Internal</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NETWORK__INTERNAL = eINSTANCE.getNetwork_Internal();
+
+		/**
+		 * The meta object literal for the '<em><b>Ip range</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NETWORK__IP_RANGE = eINSTANCE.getNetwork_Ip_range();
+
+		/**
+		 * The meta object literal for the '<em><b>Ipam driver</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NETWORK__IPAM_DRIVER = eINSTANCE.getNetwork_Ipam_driver();
+
+		/**
+		 * The meta object literal for the '<em><b>Ipam opt</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NETWORK__IPAM_OPT = eINSTANCE.getNetwork_Ipam_opt();
+
+		/**
+		 * The meta object literal for the '<em><b>Ipv6</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NETWORK__IPV6 = eINSTANCE.getNetwork_Ipv6();
+
+		/**
+		 * The meta object literal for the '<em><b>Opt</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NETWORK__OPT = eINSTANCE.getNetwork_Opt();
+
+		/**
+		 * The meta object literal for the '<em><b>Subnet</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NETWORK__SUBNET = eINSTANCE.getNetwork_Subnet();
 
 		/**
 		 * The meta object literal for the '{@link org.occiware.clouddesigner.occi.docker.impl.Machine_Amazon_EC2Impl <em>Machine Amazon EC2</em>}' class.
