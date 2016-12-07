@@ -22,8 +22,6 @@ import java.util.Map;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandStack;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.RollbackException;
@@ -31,11 +29,8 @@ import org.eclipse.emf.transaction.TransactionalCommandStack;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.xtext.xbase.lib.Exceptions;
-import org.occiware.clouddesigner.occi.Link;
 import org.occiware.clouddesigner.occi.Resource;
 import org.occiware.clouddesigner.occi.docker.Container;
-import org.occiware.clouddesigner.occi.docker.Contains;
-import org.occiware.clouddesigner.occi.docker.Machine;
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableContainer;
 import org.occiware.clouddesigner.occi.docker.connector.LimitedQueue;
 import org.occiware.clouddesigner.occi.infrastructure.ComputeStatus;
@@ -281,34 +276,6 @@ public class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statist
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
-  }
-  
-  public Machine getMachineFromContainer() {
-    EList<EObject> _eContents = this.container.eContents();
-    for (final EObject eo : _eContents) {
-      if ((eo instanceof Machine)) {
-        final Machine machine = ((Machine) eo);
-        EList<Link> _links = machine.getLinks();
-        for (final Link l : _links) {
-          if ((l instanceof Contains)) {
-            final Contains contains = ((Contains) l);
-            Resource _target = contains.getTarget();
-            if ((_target instanceof Container)) {
-              Resource _target_1 = ((Contains)l).getTarget();
-              String _id = ((ExecutableContainer) _target_1).getId();
-              String _containerid = this.container.getContainerid();
-              boolean _equals = Objects.equal(_id, _containerid);
-              if (_equals) {
-                String _containerid_1 = this.container.getContainerid();
-                ExecutableContainer.listCurrentMachine.put(_containerid_1, machine);
-                return machine;
-              }
-            }
-          }
-        }
-      }
-    }
-    return null;
   }
   
   public String getContainerId() {
