@@ -41,6 +41,7 @@ import org.eclipse.emf.transaction.util.TransactionUtil
 import org.occiware.clouddesigner.occi.Configuration
 import org.occiware.clouddesigner.occi.Link
 import org.occiware.clouddesigner.occi.Resource
+import org.occiware.clouddesigner.occi.docker.Container
 import org.occiware.clouddesigner.occi.docker.Contains
 import org.occiware.clouddesigner.occi.docker.DockerPackage
 import org.occiware.clouddesigner.occi.docker.Machine
@@ -56,6 +57,8 @@ import org.occiware.clouddesigner.occi.docker.Machine_VMware_Fusion
 import org.occiware.clouddesigner.occi.docker.Machine_VMware_vCloud_Air
 import org.occiware.clouddesigner.occi.docker.Machine_VMware_vSphere
 import org.occiware.clouddesigner.occi.docker.Machine_VirtualBox
+import org.occiware.clouddesigner.occi.docker.Network
+import org.occiware.clouddesigner.occi.docker.NetworkLink
 import org.occiware.clouddesigner.occi.docker.connector.dockerjava.DockerContainerManager
 import org.occiware.clouddesigner.occi.docker.connector.dockerjava.graph.Graph
 import org.occiware.clouddesigner.occi.docker.connector.dockerjava.graph.GraphNode
@@ -78,8 +81,10 @@ import org.occiware.clouddesigner.occi.docker.impl.Machine_VMware_FusionImpl
 import org.occiware.clouddesigner.occi.docker.impl.Machine_VMware_vCloud_AirImpl
 import org.occiware.clouddesigner.occi.docker.impl.Machine_VMware_vSphereImpl
 import org.occiware.clouddesigner.occi.docker.impl.Machine_VirtualBoxImpl
+import org.occiware.clouddesigner.occi.docker.impl.NetworkImpl
 import org.occiware.clouddesigner.occi.infrastructure.Compute
 import org.occiware.clouddesigner.occi.infrastructure.ComputeStatus
+import org.occiware.clouddesigner.occi.infrastructure.NetworkStatus
 import org.occiware.clouddesigner.occi.infrastructure.RestartMethod
 import org.occiware.clouddesigner.occi.infrastructure.StopMethod
 import org.occiware.clouddesigner.occi.infrastructure.SuspendMethod
@@ -88,11 +93,7 @@ import org.slf4j.LoggerFactory
 
 import static com.google.common.base.Preconditions.checkNotNull
 import static org.occiware.clouddesigner.occi.docker.connector.ExecutableContainer.*
-import org.occiware.clouddesigner.occi.docker.impl.NetworkImpl
-import org.occiware.clouddesigner.occi.docker.Network
-import org.occiware.clouddesigner.occi.infrastructure.NetworkStatus
-import org.occiware.clouddesigner.occi.docker.NetworkLink
-import org.occiware.clouddesigner.occi.docker.Container
+import java.util.Set
 
 /**
  * This class overrides the generated EMF factory of the Docker package.
@@ -1209,43 +1210,55 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 		// Check requirements parameters
 		checkNotNull(compute.name, "Machine name is null")
 		checkNotNull(driverName, "Driver name is null")
-		
+
 		val StringBuilder parameter = new StringBuilder
-		
+
 		// Check other parameters
-		if(compute.swarm){
+		if (compute.swarm) {
 			parameter.append(' --swarm')
-		}if(compute.swarm_master){
+		}
+		if (compute.swarm_master) {
 			parameter.append(' --swarm-master')
-		}if(StringUtils.isNotBlank(compute.swarm_discovery)){
+		}
+		if (StringUtils.isNotBlank(compute.swarm_discovery)) {
 			parameter.append(' --swarm-discovery="' + compute.swarm_discovery + '"')
-		}if(StringUtils.isNotBlank(compute.swarm_addr)){
+		}
+		if (StringUtils.isNotBlank(compute.swarm_addr)) {
 			parameter.append(' --swarm-addr="' + compute.swarm_addr + '"')
-		}if(StringUtils.isNotBlank(compute.swarm_experimental)){
-			parameter.append(' --swarm-experimental="' +compute.swarm_experimental + '"')
-		}if(StringUtils.isNotBlank(compute.swarm_host)){
+		}
+		if (StringUtils.isNotBlank(compute.swarm_experimental)) {
+			parameter.append(' --swarm-experimental="' + compute.swarm_experimental + '"')
+		}
+		if (StringUtils.isNotBlank(compute.swarm_host)) {
 			parameter.append(' --swarm-host="' + compute.swarm_host + '"')
-		}if(StringUtils.isNotBlank(compute.swarm_image)){
-			parameter.append(' --swarm-image="' +compute.swarm_image + '"')
-		}if(StringUtils.isNotBlank(compute.swarm_opt)){
+		}
+		if (StringUtils.isNotBlank(compute.swarm_image)) {
+			parameter.append(' --swarm-image="' + compute.swarm_image + '"')
+		}
+		if (StringUtils.isNotBlank(compute.swarm_opt)) {
 			var tab_swarm_opt = compute.swarm_opt.split(',')
-			for(opt : tab_swarm_opt){
+			for (opt : tab_swarm_opt) {
 				parameter.append(' --swarm-opt="' + opt + '"')
 			}
-		}if(StringUtils.isNotBlank(compute.engine_env)){
-			parameter.append(' --engine-env="' +compute.engine_env + '"')
-		}if(StringUtils.isNotBlank(compute.engine_insecure_registry)){
-			parameter.append(' --engine-insecure-registry="' +compute.engine_insecure_registry + '"')
-		}if(StringUtils.isNotBlank(compute.engine_install_url)){
-			parameter.append(' --engine-install-url="' +compute.engine_install_url + '"')
-		}if(StringUtils.isNotBlank(compute.engine_label)){
-			parameter.append(' --engine-label="' +compute.engine_label + '"')
-		}if(StringUtils.isNotBlank(compute.engine_opt)){
+		}
+		if (StringUtils.isNotBlank(compute.engine_env)) {
+			parameter.append(' --engine-env="' + compute.engine_env + '"')
+		}
+		if (StringUtils.isNotBlank(compute.engine_insecure_registry)) {
+			parameter.append(' --engine-insecure-registry="' + compute.engine_insecure_registry + '"')
+		}
+		if (StringUtils.isNotBlank(compute.engine_install_url)) {
+			parameter.append(' --engine-install-url="' + compute.engine_install_url + '"')
+		}
+		if (StringUtils.isNotBlank(compute.engine_label)) {
+			parameter.append(' --engine-label="' + compute.engine_label + '"')
+		}
+		if (StringUtils.isNotBlank(compute.engine_opt)) {
 			var tab_engine_opt = compute.engine_opt.split(',')
-			for(opt : tab_engine_opt){
+			for (opt : tab_engine_opt) {
 				parameter.append(' --engine-opt="' + opt + '"')
 			}
-			
+
 		}
 
 		// build docker-machine command
@@ -1253,6 +1266,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 
 		// Create the machine command
 		command.append(dockerMachineCMD).append(getDriverName)
+		// Add the corresponding command 
 		appendDriverParameters(command)
 		// Add Parameters to command
 		command.append(' ').append(parameter)
@@ -1276,14 +1290,9 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 				DockerMachineManager.regenerateCert(runtime, compute.name)
 			}
 		}
+
 		// Create the network if it exists
-		var cheks = detectNetworkLink
-		if(!cheks.empty){
-			for (Map.Entry<Container, NetworkLink> entry : cheks.entrySet) {
-				dockerContainerManager.createNetwork(this.compute, (entry.value.target as Network))
-			}
-			LOGGER.info("Machine contains NetworkLink = "+ cheks)
-		}		
+		this.createNetwork()
 	}
 
 	override def startAll_execute() {
@@ -1298,10 +1307,63 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 		checkNotNull(compute.name, "Machine name is null")
 		checkNotNull(driverName, "Driver name is null")
 
+		val StringBuilder parameter = new StringBuilder
+
+		// Check other parameters
+		if (compute.swarm) {
+			parameter.append(' --swarm')
+		}
+		if (compute.swarm_master) {
+			parameter.append(' --swarm-master')
+		}
+		if (StringUtils.isNotBlank(compute.swarm_discovery)) {
+			parameter.append(' --swarm-discovery="' + compute.swarm_discovery + '"')
+		}
+		if (StringUtils.isNotBlank(compute.swarm_addr)) {
+			parameter.append(' --swarm-addr="' + compute.swarm_addr + '"')
+		}
+		if (StringUtils.isNotBlank(compute.swarm_experimental)) {
+			parameter.append(' --swarm-experimental="' + compute.swarm_experimental + '"')
+		}
+		if (StringUtils.isNotBlank(compute.swarm_host)) {
+			parameter.append(' --swarm-host="' + compute.swarm_host + '"')
+		}
+		if (StringUtils.isNotBlank(compute.swarm_image)) {
+			parameter.append(' --swarm-image="' + compute.swarm_image + '"')
+		}
+		if (StringUtils.isNotBlank(compute.swarm_opt)) {
+			var tab_swarm_opt = compute.swarm_opt.split(',')
+			for (opt : tab_swarm_opt) {
+				parameter.append(' --swarm-opt="' + opt + '"')
+			}
+		}
+		if (StringUtils.isNotBlank(compute.engine_env)) {
+			parameter.append(' --engine-env="' + compute.engine_env + '"')
+		}
+		if (StringUtils.isNotBlank(compute.engine_insecure_registry)) {
+			parameter.append(' --engine-insecure-registry="' + compute.engine_insecure_registry + '"')
+		}
+		if (StringUtils.isNotBlank(compute.engine_install_url)) {
+			parameter.append(' --engine-install-url="' + compute.engine_install_url + '"')
+		}
+		if (StringUtils.isNotBlank(compute.engine_label)) {
+			parameter.append(' --engine-label="' + compute.engine_label + '"')
+		}
+		if (StringUtils.isNotBlank(compute.engine_opt)) {
+			var tab_engine_opt = compute.engine_opt.split(',')
+			for (opt : tab_engine_opt) {
+				parameter.append(' --engine-opt="' + opt + '"')
+			}
+
+		}
+
 		// Create the machine command
 		var String dockerMachineCMD = String.format("%s -D create --driver ", this.dockerMachineCmd)
 		command.append(dockerMachineCMD).append(getDriverName)
+		// Add the corresponding command
 		appendDriverParameters(command)
+		// Add Parameters to command
+		command.append(' ').append(parameter)
 		command.append(' ').append(compute.name)
 		// Get the active machine
 		val activeHosts = DockerUtil.getActiveHosts
@@ -1314,6 +1376,9 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 
 			// Set state
 			compute.state = ComputeStatus.ACTIVE
+
+			// Create the network if it exists
+			this.createNetwork()
 
 			// Create the Containers belong to this machine.
 			if (compute.links.size > 0) {
@@ -1369,6 +1434,9 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 
 				// Set state
 				compute.state = ComputeStatus.ACTIVE
+
+				// Create the network if it exists
+				this.createNetwork()
 
 				// Create the Containers belong to this machine.
 				if (compute.links.size > 0) {
@@ -1476,6 +1544,19 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 		LOGGER.info("EXECUTE COMMAND: " + command.toString)
 	}
 
+	/**
+	 * Create all networks detected inside the machine
+	 */
+	protected def void createNetwork() {
+		var networks = detectNetworkLink
+		if (!networks.empty) {
+			for (net : networks) {
+				dockerContainerManager.createNetwork(this.compute, (net.target as Network))
+			}
+			LOGGER.info("Network: #{} was/were created inside ---> machine #{}", networks, this.compute.name)
+		}
+	}
+
 	def void synchronize() {
 
 		// Get all hosts in the real environment
@@ -1579,16 +1660,16 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 	/**
 	 * Checks inside the machine model if any container has networkLink
 	 */
-	def detectNetworkLink() {
-		var Map<Container, NetworkLink> c_networkLinks = newLinkedHashMap()
+	def Set<NetworkLink> detectNetworkLink() {
+		var Set<NetworkLink> c_networkLinks = newHashSet()
 		for (Link l : compute.links) {
 			val contains = l as Contains
 			if (contains.target instanceof org.occiware.clouddesigner.occi.docker.Container) {
 				val container = contains.target as org.occiware.clouddesigner.occi.docker.Container
 				for (Link cl : container.links) {
-					//if (cl.target instanceof org.occiware.clouddesigner.occi.docker.Network) {
-					if (cl instanceof org.occiware.clouddesigner.occi.docker.NetworkLink) {
-						c_networkLinks.put(container, (cl as NetworkLink))
+					if (cl instanceof org.occiware.clouddesigner.occi.docker.NetworkLink &&
+						cl.target instanceof Network) {
+						c_networkLinks.add((cl as NetworkLink))
 					}
 				}
 
@@ -1597,6 +1678,9 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 		return c_networkLinks
 	}
 
+	/**
+	 * Checks if there is a link between containers.
+	 */
 	def boolean linkFound() {
 		val List<org.occiware.clouddesigner.occi.docker.Container> containers = this.containers
 		var boolean link = false
@@ -1613,6 +1697,9 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 		return link
 	}
 
+	/**
+	 * Provide the containers deployment order.
+	 */
 	def List<org.occiware.clouddesigner.occi.docker.Container> deploymentOrder() {
 		val List<org.occiware.clouddesigner.occi.docker.Container> containers = newArrayList
 		var Graph<org.occiware.clouddesigner.occi.docker.Container> graph = new Graph<org.occiware.clouddesigner.occi.docker.Container>
@@ -1647,6 +1734,9 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 		return containers
 	}
 
+	/**
+	 * Retrieves all containers inside a given machine.
+	 */
 	def List<org.occiware.clouddesigner.occi.docker.Container> getContainers() {
 		val List<org.occiware.clouddesigner.occi.docker.Container> containers = newArrayList
 		compute.links.forEach[elt|containers.add((elt.target as org.occiware.clouddesigner.occi.docker.Container))]
@@ -1654,6 +1744,9 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 		return containers
 	}
 
+	/**
+	 * Get all containers witch has not a link to another container.
+	 */
 	def List<org.occiware.clouddesigner.occi.docker.Container> leafContainers() {
 		val List<org.occiware.clouddesigner.occi.docker.Container> containers = this.containers
 		val List<org.occiware.clouddesigner.occi.docker.Container> leafContainers = new ArrayList
@@ -1665,6 +1758,9 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 		return leafContainers
 	}
 
+	/**
+	 * Checks if the container is deployed.
+	 */
 	def boolean containerIsDeployed(String containerName, Machine machine) {
 		val listContainers = dockerContainerManager.listContainer(machine.name)
 		for (com.github.dockerjava.api.model.Container c : listContainers) {
@@ -1686,6 +1782,9 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 		return false
 	}
 
+	/**
+	 * Get all containers deployed inside a machine.
+	 */
 	def List<String> containerInReal(String machineName) {
 		var containers = new ArrayList<String>
 		val listContainers = dockerContainerManager.listContainer(machineName)
