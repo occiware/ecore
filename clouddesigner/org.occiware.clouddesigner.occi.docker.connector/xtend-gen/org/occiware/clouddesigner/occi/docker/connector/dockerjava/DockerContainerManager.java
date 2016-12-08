@@ -49,6 +49,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -196,10 +197,27 @@ public class DockerContainerManager {
       ArrayList<com.github.dockerjava.api.model.Network.Ipam.Config> _newArrayList_1 = CollectionLiterals.<com.github.dockerjava.api.model.Network.Ipam.Config>newArrayList(_withSubnet_1);
       ipamConfigs = ((com.github.dockerjava.api.model.Network.Ipam.Config[])Conversions.unwrapArray(_newArrayList_1, com.github.dockerjava.api.model.Network.Ipam.Config.class));
     }
-    com.github.dockerjava.api.model.Network _network = new com.github.dockerjava.api.model.Network();
-    com.github.dockerjava.api.model.Network.Ipam _ipam = _network.getIpam();
-    com.github.dockerjava.api.model.Network.Ipam _withConfig = _ipam.withConfig(ipamConfigs);
-    ipam = _withConfig;
+    try {
+      com.github.dockerjava.api.model.Network _network = new com.github.dockerjava.api.model.Network();
+      com.github.dockerjava.api.model.Network.Ipam _ipam = _network.getIpam();
+      com.github.dockerjava.api.model.Network.Ipam _withConfig = _ipam.withConfig(ipamConfigs);
+      ipam = _withConfig;
+    } catch (final Throwable _t) {
+      if (_t instanceof InvocationTargetException) {
+        final InvocationTargetException exception = (InvocationTargetException)_t;
+        Throwable _cause = exception.getCause();
+        String _message = _cause.getMessage();
+        String _plus = (" InvocationTargetException: " + _message);
+        DockerContainerManager.LOGGER.error(_plus);
+      } else if (_t instanceof Exception) {
+        final Exception e = (Exception)_t;
+        String _message_1 = e.getMessage();
+        String _plus_1 = ("Exception:" + _message_1);
+        DockerContainerManager.LOGGER.error(_plus_1);
+      } else {
+        throw Exceptions.sneakyThrow(_t);
+      }
+    }
     CreateNetworkCmd _createNetworkCmd = DockerContainerManager.dockerClient.createNetworkCmd();
     String _name_3 = network.getName();
     CreateNetworkCmd _withName = _createNetworkCmd.withName(_name_3);
