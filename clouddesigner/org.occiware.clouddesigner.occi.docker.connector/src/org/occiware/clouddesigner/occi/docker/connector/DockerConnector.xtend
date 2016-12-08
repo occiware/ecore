@@ -91,6 +91,8 @@ import static org.occiware.clouddesigner.occi.docker.connector.ExecutableContain
 import org.occiware.clouddesigner.occi.docker.impl.NetworkImpl
 import org.occiware.clouddesigner.occi.docker.Network
 import org.occiware.clouddesigner.occi.infrastructure.NetworkStatus
+import org.occiware.clouddesigner.occi.docker.NetworkLink
+import org.occiware.clouddesigner.occi.docker.Container
 
 /**
  * This class overrides the generated EMF factory of the Docker package.
@@ -1274,6 +1276,14 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 				DockerMachineManager.regenerateCert(runtime, compute.name)
 			}
 		}
+		// Create the network if it exists
+		var cheks = detectNetworkLink
+		if(!cheks.empty){
+			for (Map.Entry<Container, NetworkLink> entry : cheks.entrySet) {
+				dockerContainerManager.createNetwork(this.compute, (entry.value.target as Network))
+			}
+			LOGGER.info("Machine contains NetworkLink = "+ cheks)
+		}		
 	}
 
 	override def startAll_execute() {
@@ -1564,6 +1574,27 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 			}
 		}
 
+	}
+
+	/**
+	 * Checks inside the machine model if any container has networkLink
+	 */
+	def detectNetworkLink() {
+		var Map<Container, NetworkLink> c_networkLinks = newLinkedHashMap()
+		for (Link l : compute.links) {
+			val contains = l as Contains
+			if (contains.target instanceof org.occiware.clouddesigner.occi.docker.Container) {
+				val container = contains.target as org.occiware.clouddesigner.occi.docker.Container
+				for (Link cl : container.links) {
+					//if (cl.target instanceof org.occiware.clouddesigner.occi.docker.Network) {
+					if (cl instanceof org.occiware.clouddesigner.occi.docker.NetworkLink) {
+						c_networkLinks.put(container, (cl as NetworkLink))
+					}
+				}
+
+			}
+		}
+		return c_networkLinks
 	}
 
 	def boolean linkFound() {
