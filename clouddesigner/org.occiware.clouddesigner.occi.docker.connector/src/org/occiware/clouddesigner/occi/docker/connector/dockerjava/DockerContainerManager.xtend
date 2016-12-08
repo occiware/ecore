@@ -58,6 +58,7 @@ import com.github.dockerjava.core.DefaultDockerClientConfig
 import com.github.dockerjava.api.model.Network.Ipam.Config
 import org.occiware.clouddesigner.occi.docker.Network
 import com.github.dockerjava.api.command.CreateNetworkResponse
+import java.lang.reflect.InvocationTargetException
 
 class DockerContainerManager {
 	private static DockerClient dockerClient = null
@@ -142,17 +143,21 @@ class DockerContainerManager {
 		} else if (!currentMachine.equalsIgnoreCase(machine.name)) {
 			dockerClient = setConfig(machine.name, properties)
 		}
-		//Config[] ipamConfigs
 		var Config[] ipamConfigs = null
-		
 		var com.github.dockerjava.api.model.Network.Ipam ipam = null
-
+		
 		if (StringUtils.isNotBlank(network.subnet)) {
 			ipamConfigs = newArrayList(new com.github.dockerjava.api.model.Network.Ipam.Config().withSubnet(network.subnet))
 		} else {
 			ipamConfigs = newArrayList(new com.github.dockerjava.api.model.Network.Ipam.Config().withSubnet("10.67.79.0/24"))
 		}
-		ipam = new com.github.dockerjava.api.model.Network().ipam.withConfig(ipamConfigs)
+		try {
+			ipam = new com.github.dockerjava.api.model.Network().ipam.withConfig(ipamConfigs)
+		} catch (InvocationTargetException exception) {
+			LOGGER.error(" InvocationTargetException: " + exception.cause.message)
+		} catch (Exception e){
+			LOGGER.error("Exception:" + e.message)
+		}
 		// Create an overlay network
 		var CreateNetworkResponse createNetworkResponse = dockerClient.createNetworkCmd().withName(network.name).
 			withIpam(ipam).withDriver("overlay").exec()
