@@ -30,6 +30,8 @@ import org.occiware.clouddesigner.occi.Resource;
 import org.occiware.clouddesigner.occi.docker.Container;
 import org.occiware.clouddesigner.occi.docker.Contains;
 import org.occiware.clouddesigner.occi.docker.Machine;
+import org.occiware.clouddesigner.occi.docker.Network;
+import org.occiware.clouddesigner.occi.docker.NetworkLink;
 import org.occiware.clouddesigner.occi.docker.connector.ComputeStateMachine;
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableContainer;
 import org.occiware.clouddesigner.occi.docker.connector.ModelHandler;
@@ -219,6 +221,18 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
         String _name_5 = this.compute.getName();
         DockerMachineManager.regenerateCert(runtime, _name_5);
       }
+    }
+    Map<Container, NetworkLink> cheks = this.detectNetworkLink();
+    boolean _isEmpty = cheks.isEmpty();
+    boolean _not_2 = (!_isEmpty);
+    if (_not_2) {
+      Set<Map.Entry<Container, NetworkLink>> _entrySet = cheks.entrySet();
+      for (final Map.Entry<Container, NetworkLink> entry : _entrySet) {
+        NetworkLink _value = entry.getValue();
+        Resource _target = _value.getTarget();
+        this.dockerContainerManager.createNetwork(this.compute, ((Network) _target));
+      }
+      MachineManager.LOGGER.info(("Machine contains NetworkLink = " + cheks));
     }
   }
   
@@ -526,6 +540,31 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
         IterableExtensions.<Link>forEach(_links_3, _function);
       }
     }
+  }
+  
+  /**
+   * Checks inside the machine model if any container has networkLink
+   */
+  public Map<Container, NetworkLink> detectNetworkLink() {
+    Map<Container, NetworkLink> c_networkLinks = CollectionLiterals.<Container, NetworkLink>newLinkedHashMap();
+    EList<Link> _links = this.compute.getLinks();
+    for (final Link l : _links) {
+      {
+        final Contains contains = ((Contains) l);
+        Resource _target = contains.getTarget();
+        if ((_target instanceof Container)) {
+          Resource _target_1 = contains.getTarget();
+          final Container container = ((Container) _target_1);
+          EList<Link> _links_1 = container.getLinks();
+          for (final Link cl : _links_1) {
+            if ((cl instanceof NetworkLink)) {
+              c_networkLinks.put(container, ((NetworkLink) cl));
+            }
+          }
+        }
+      }
+    }
+    return c_networkLinks;
   }
   
   public boolean linkFound() {
