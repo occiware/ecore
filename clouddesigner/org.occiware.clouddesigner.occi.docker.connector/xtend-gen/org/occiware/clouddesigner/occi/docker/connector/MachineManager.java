@@ -11,6 +11,7 @@
  */
 package org.occiware.clouddesigner.occi.docker.connector;
 
+import com.github.dockerjava.api.command.CreateNetworkResponse;
 import com.google.common.base.Objects;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ArrayListMultimap;
@@ -93,6 +94,7 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
     String _driverName = this.getDriverName();
     Preconditions.<String>checkNotNull(_driverName, "Driver name is null");
     final StringBuilder parameter = new StringBuilder();
+    Map<Container, Set<NetworkLink>> networks = this.detectNetworkLink();
     boolean _isSwarm = this.compute.isSwarm();
     if (_isSwarm) {
       parameter.append(" --swarm");
@@ -222,7 +224,7 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
         DockerMachineManager.regenerateCert(runtime, _name_5);
       }
     }
-    this.createNetwork();
+    this.createNetwork(networks);
   }
   
   @Override
@@ -234,6 +236,7 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
     String _driverName = this.getDriverName();
     Preconditions.<String>checkNotNull(_driverName, "Driver name is null");
     final StringBuilder parameter = new StringBuilder();
+    Map<Container, Set<NetworkLink>> networks = this.detectNetworkLink();
     boolean _isSwarm = this.compute.isSwarm();
     if (_isSwarm) {
       parameter.append(" --swarm");
@@ -351,7 +354,7 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
       String _string = command.toString();
       ProcessManager.runCommand(_string, runtime, true);
       this.compute.setState(ComputeStatus.ACTIVE);
-      this.createNetwork();
+      this.createNetwork(networks);
       EList<Link> _links = this.compute.getLinks();
       int _size = _links.size();
       boolean _greaterThan = (_size > 0);
@@ -408,7 +411,7 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
         String _name_5 = this.compute.getName();
         DockerMachineManager.regenerateCert(runtime, _name_5);
         this.compute.setState(ComputeStatus.ACTIVE);
-        this.createNetwork();
+        this.createNetwork(networks);
         EList<Link> _links_2 = this.compute.getLinks();
         int _size_1 = _links_2.size();
         boolean _greaterThan_1 = (_size_1 > 0);
@@ -532,19 +535,37 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
   }
   
   /**
-   * Create all networks detected inside the machine
+   * Connect container to all networks overlay.
    */
-  protected void createNetwork() {
-    Set<NetworkLink> networks = this.detectNetworkLink();
+  public void connectToNetwork(final Machine machine, final Map<Container, Set<NetworkLink>> networks) {
+    this.dockerContainerManager.connectToNetwork(this.compute, networks);
+  }
+  
+  /**
+   * Create and update the Id of all networks detected inside the machine
+   */
+  protected void createNetwork(final Map<Container, Set<NetworkLink>> networks) {
     boolean _isEmpty = networks.isEmpty();
     boolean _not = (!_isEmpty);
     if (_not) {
-      for (final NetworkLink net : networks) {
-        Resource _target = net.getTarget();
-        this.dockerContainerManager.createNetwork(this.compute, ((Network) _target));
+      Set<Map.Entry<Container, Set<NetworkLink>>> _entrySet = networks.entrySet();
+      for (final Map.Entry<Container, Set<NetworkLink>> entry : _entrySet) {
+        Set<NetworkLink> _value = entry.getValue();
+        for (final NetworkLink net : _value) {
+          {
+            Resource _target = net.getTarget();
+            CreateNetworkResponse createNetworkResponse = this.dockerContainerManager.createNetwork(this.compute, ((Network) _target));
+            Resource _target_1 = net.getTarget();
+            String _id = createNetworkResponse.getId();
+            ((Network) _target_1).setNetworkId(_id);
+            Resource _target_2 = net.getTarget();
+            String _name = ((Network) _target_2).getName();
+            String _name_1 = this.compute.getName();
+            MachineManager.LOGGER.info("Network name=#{} was created inside ---> machine #{}", _name, _name_1);
+          }
+        }
       }
-      String _name = this.compute.getName();
-      MachineManager.LOGGER.info("Network: #{} was/were created inside ---> machine #{}", networks, _name);
+      this.connectToNetwork(this.compute, networks);
     }
   }
   
@@ -654,7 +675,8 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
   /**
    * Checks inside the machine model if any container has networkLink
    */
-  public Set<NetworkLink> detectNetworkLink() {
+  public Map<Container, Set<NetworkLink>> detectNetworkLink() {
+    Map<Container, Set<NetworkLink>> map_networkLinks = CollectionLiterals.<Container, Set<NetworkLink>>newLinkedHashMap();
     Set<NetworkLink> c_networkLinks = CollectionLiterals.<NetworkLink>newHashSet();
     EList<Link> _links = this.compute.getLinks();
     for (final Link l : _links) {
@@ -671,10 +693,12 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
               c_networkLinks.add(((NetworkLink) cl));
             }
           }
+          Resource _target_2 = contains.getTarget();
+          map_networkLinks.put(((Container) _target_2), c_networkLinks);
         }
       }
     }
-    return c_networkLinks;
+    return map_networkLinks;
   }
   
   /**
