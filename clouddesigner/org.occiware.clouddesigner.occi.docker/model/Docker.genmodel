@@ -270,6 +270,9 @@
     <genClasses>
       <ecoreClass href="Docker.ecore#//Network"/>
       <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="Docker.ecore#//Network/networkId"/>
+      </genFeatures>
+      <genFeatures createChild="false">
         <ecoreFeature xsi:type="ecore:EAttribute" href="Docker.ecore#//Network/name"/>
       </genFeatures>
       <genFeatures createChild="false">

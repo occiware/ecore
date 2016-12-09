@@ -449,6 +449,11 @@
     <eAnnotations source="OCCIE2Ecore">
       <details key="title"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="networkId" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The network ID retreived when the creation is done"/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
       <eAnnotations source="OCCIE2Ecore">
         <details key="description"/>
