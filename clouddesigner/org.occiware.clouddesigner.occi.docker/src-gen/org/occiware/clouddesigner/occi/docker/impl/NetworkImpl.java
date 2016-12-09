@@ -30,6 +30,7 @@ import org.occiware.clouddesigner.occi.impl.LinkImpl;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.NetworkImpl#getNetworkId <em>Network Id</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.NetworkImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.NetworkImpl#getAux_address <em>Aux address</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.NetworkImpl#getDriver <em>Driver</em>}</li>
@@ -46,6 +47,26 @@ import org.occiware.clouddesigner.occi.impl.LinkImpl;
  * @generated
  */
 public class NetworkImpl extends org.occiware.clouddesigner.occi.infrastructure.impl.NetworkImpl implements Network {
+	/**
+	 * The default value of the '{@link #getNetworkId() <em>Network Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNetworkId()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String NETWORK_ID_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getNetworkId() <em>Network Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNetworkId()
+	 * @generated
+	 * @ordered
+	 */
+	protected String networkId = NETWORK_ID_EDEFAULT;
+
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -290,6 +311,27 @@ public class NetworkImpl extends org.occiware.clouddesigner.occi.infrastructure.
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getNetworkId() {
+		return networkId;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setNetworkId(String newNetworkId) {
+		String oldNetworkId = networkId;
+		networkId = newNetworkId;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.NETWORK__NETWORK_ID, oldNetworkId, networkId));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getAux_address() {
 		return aux_address;
 	}
@@ -524,6 +566,8 @@ public class NetworkImpl extends org.occiware.clouddesigner.occi.infrastructure.
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case DockerPackage.NETWORK__NETWORK_ID:
+				return getNetworkId();
 			case DockerPackage.NETWORK__NAME:
 				return getName();
 			case DockerPackage.NETWORK__AUX_ADDRESS:
@@ -558,6 +602,9 @@ public class NetworkImpl extends org.occiware.clouddesigner.occi.infrastructure.
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case DockerPackage.NETWORK__NETWORK_ID:
+				setNetworkId((String)newValue);
+				return;
 			case DockerPackage.NETWORK__NAME:
 				setName((String)newValue);
 				return;
@@ -603,6 +650,9 @@ public class NetworkImpl extends org.occiware.clouddesigner.occi.infrastructure.
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case DockerPackage.NETWORK__NETWORK_ID:
+				setNetworkId(NETWORK_ID_EDEFAULT);
+				return;
 			case DockerPackage.NETWORK__NAME:
 				setName(NAME_EDEFAULT);
 				return;
@@ -648,6 +698,8 @@ public class NetworkImpl extends org.occiware.clouddesigner.occi.infrastructure.
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case DockerPackage.NETWORK__NETWORK_ID:
+				return NETWORK_ID_EDEFAULT == null ? networkId != null : !NETWORK_ID_EDEFAULT.equals(networkId);
 			case DockerPackage.NETWORK__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case DockerPackage.NETWORK__AUX_ADDRESS:
@@ -684,7 +736,9 @@ public class NetworkImpl extends org.occiware.clouddesigner.occi.infrastructure.
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (name: ");
+		result.append(" (networkId: ");
+		result.append(networkId);
+		result.append(", name: ");
 		result.append(name);
 		result.append(", aux_address: ");
 		result.append(aux_address);
