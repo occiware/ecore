@@ -23,6 +23,7 @@ import org.occiware.clouddesigner.occi.Link;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.Network#getNetworkId <em>Network Id</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.docker.Network#getName <em>Name</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.docker.Network#getAux_address <em>Aux address</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.docker.Network#getDriver <em>Driver</em>}</li>
@@ -41,6 +42,33 @@ import org.occiware.clouddesigner.occi.Link;
  * @generated
  */
 public interface Network extends org.occiware.clouddesigner.occi.infrastructure.Network {
+	/**
+	 * Returns the value of the '<em><b>Network Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Network Id</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Network Id</em>' attribute.
+	 * @see #setNetworkId(String)
+	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getNetwork_NetworkId()
+	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='The network ID retreived when the creation is done'"
+	 * @generated
+	 */
+	String getNetworkId();
+
+	/**
+	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.docker.Network#getNetworkId <em>Network Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Network Id</em>' attribute.
+	 * @see #getNetworkId()
+	 * @generated
+	 */
+	void setNetworkId(String value);
+
 	/**
 	 * Returns the value of the '<em><b>Aux address</b></em>' attribute.
 	 * <!-- begin-user-doc -->

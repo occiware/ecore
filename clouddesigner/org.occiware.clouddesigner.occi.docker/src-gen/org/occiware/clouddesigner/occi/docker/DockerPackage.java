@@ -1877,13 +1877,22 @@ public interface DockerPackage extends EPackage {
 	int NETWORK__MESSAGE = InfrastructurePackage.NETWORK__MESSAGE;
 
 	/**
+	 * The feature id for the '<em><b>Network Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK__NETWORK_ID = InfrastructurePackage.NETWORK_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NETWORK__NAME = InfrastructurePackage.NETWORK_FEATURE_COUNT + 0;
+	int NETWORK__NAME = InfrastructurePackage.NETWORK_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Aux address</b></em>' attribute.
@@ -1892,7 +1901,7 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NETWORK__AUX_ADDRESS = InfrastructurePackage.NETWORK_FEATURE_COUNT + 1;
+	int NETWORK__AUX_ADDRESS = InfrastructurePackage.NETWORK_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Driver</b></em>' attribute.
@@ -1901,7 +1910,7 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NETWORK__DRIVER = InfrastructurePackage.NETWORK_FEATURE_COUNT + 2;
+	int NETWORK__DRIVER = InfrastructurePackage.NETWORK_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Gateway</b></em>' attribute.
@@ -1910,7 +1919,7 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NETWORK__GATEWAY = InfrastructurePackage.NETWORK_FEATURE_COUNT + 3;
+	int NETWORK__GATEWAY = InfrastructurePackage.NETWORK_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Internal</b></em>' attribute.
@@ -1919,7 +1928,7 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NETWORK__INTERNAL = InfrastructurePackage.NETWORK_FEATURE_COUNT + 4;
+	int NETWORK__INTERNAL = InfrastructurePackage.NETWORK_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Ip range</b></em>' attribute.
@@ -1928,7 +1937,7 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NETWORK__IP_RANGE = InfrastructurePackage.NETWORK_FEATURE_COUNT + 5;
+	int NETWORK__IP_RANGE = InfrastructurePackage.NETWORK_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Ipam driver</b></em>' attribute.
@@ -1937,7 +1946,7 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NETWORK__IPAM_DRIVER = InfrastructurePackage.NETWORK_FEATURE_COUNT + 6;
+	int NETWORK__IPAM_DRIVER = InfrastructurePackage.NETWORK_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Ipam opt</b></em>' attribute.
@@ -1946,7 +1955,7 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NETWORK__IPAM_OPT = InfrastructurePackage.NETWORK_FEATURE_COUNT + 7;
+	int NETWORK__IPAM_OPT = InfrastructurePackage.NETWORK_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Ipv6</b></em>' attribute.
@@ -1955,7 +1964,7 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NETWORK__IPV6 = InfrastructurePackage.NETWORK_FEATURE_COUNT + 8;
+	int NETWORK__IPV6 = InfrastructurePackage.NETWORK_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>Opt</b></em>' attribute.
@@ -1964,7 +1973,7 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NETWORK__OPT = InfrastructurePackage.NETWORK_FEATURE_COUNT + 9;
+	int NETWORK__OPT = InfrastructurePackage.NETWORK_FEATURE_COUNT + 10;
 
 	/**
 	 * The feature id for the '<em><b>Subnet</b></em>' attribute.
@@ -1973,7 +1982,7 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NETWORK__SUBNET = InfrastructurePackage.NETWORK_FEATURE_COUNT + 10;
+	int NETWORK__SUBNET = InfrastructurePackage.NETWORK_FEATURE_COUNT + 11;
 
 	/**
 	 * The number of structural features of the '<em>Network</em>' class.
@@ -1982,7 +1991,7 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NETWORK_FEATURE_COUNT = InfrastructurePackage.NETWORK_FEATURE_COUNT + 11;
+	int NETWORK_FEATURE_COUNT = InfrastructurePackage.NETWORK_FEATURE_COUNT + 12;
 
 	/**
 	 * The operation id for the '<em>Occi Create</em>' operation.
@@ -8653,6 +8662,17 @@ public interface DockerPackage extends EPackage {
 	EClass getNetwork();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Network#getNetworkId <em>Network Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Network Id</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Network#getNetworkId()
+	 * @see #getNetwork()
+	 * @generated
+	 */
+	EAttribute getNetwork_NetworkId();
+
+	/**
 	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Network#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -10597,6 +10617,14 @@ public interface DockerPackage extends EPackage {
 		 * @generated
 		 */
 		EClass NETWORK = eINSTANCE.getNetwork();
+
+		/**
+		 * The meta object literal for the '<em><b>Network Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NETWORK__NETWORK_ID = eINSTANCE.getNetwork_NetworkId();
 
 		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
