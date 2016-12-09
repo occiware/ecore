@@ -1026,7 +1026,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getNetwork_Name() {
+	public EAttribute getNetwork_NetworkId() {
 		return (EAttribute)networkEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -1035,7 +1035,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getNetwork_Aux_address() {
+	public EAttribute getNetwork_Name() {
 		return (EAttribute)networkEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -1044,7 +1044,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getNetwork_Driver() {
+	public EAttribute getNetwork_Aux_address() {
 		return (EAttribute)networkEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -1053,7 +1053,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getNetwork_Gateway() {
+	public EAttribute getNetwork_Driver() {
 		return (EAttribute)networkEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -1062,7 +1062,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getNetwork_Internal() {
+	public EAttribute getNetwork_Gateway() {
 		return (EAttribute)networkEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -1071,7 +1071,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getNetwork_Ip_range() {
+	public EAttribute getNetwork_Internal() {
 		return (EAttribute)networkEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -1080,7 +1080,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getNetwork_Ipam_driver() {
+	public EAttribute getNetwork_Ip_range() {
 		return (EAttribute)networkEClass.getEStructuralFeatures().get(6);
 	}
 
@@ -1089,7 +1089,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getNetwork_Ipam_opt() {
+	public EAttribute getNetwork_Ipam_driver() {
 		return (EAttribute)networkEClass.getEStructuralFeatures().get(7);
 	}
 
@@ -1098,7 +1098,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getNetwork_Ipv6() {
+	public EAttribute getNetwork_Ipam_opt() {
 		return (EAttribute)networkEClass.getEStructuralFeatures().get(8);
 	}
 
@@ -1107,7 +1107,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getNetwork_Opt() {
+	public EAttribute getNetwork_Ipv6() {
 		return (EAttribute)networkEClass.getEStructuralFeatures().get(9);
 	}
 
@@ -1116,8 +1116,17 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getNetwork_Subnet() {
+	public EAttribute getNetwork_Opt() {
 		return (EAttribute)networkEClass.getEStructuralFeatures().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getNetwork_Subnet() {
+		return (EAttribute)networkEClass.getEStructuralFeatures().get(11);
 	}
 
 	/**
@@ -2157,6 +2166,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		createEAttribute(machineEClass, MACHINE__TLS_SAN);
 
 		networkEClass = createEClass(NETWORK);
+		createEAttribute(networkEClass, NETWORK__NETWORK_ID);
 		createEAttribute(networkEClass, NETWORK__NAME);
 		createEAttribute(networkEClass, NETWORK__AUX_ADDRESS);
 		createEAttribute(networkEClass, NETWORK__DRIVER);
@@ -2438,6 +2448,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		initEAttribute(getMachine_Tls_san(), theOCCIPackage.getString(), "tls_san", null, 0, 1, Machine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(networkEClass, Network.class, "Network", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getNetwork_NetworkId(), theOCCIPackage.getString(), "networkId", null, 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getNetwork_Name(), theOCCIPackage.getString(), "name", null, 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getNetwork_Aux_address(), theOCCIPackage.getString(), "aux_address", null, 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getNetwork_Driver(), theOCCIPackage.getString(), "driver", null, 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3099,6 +3110,12 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		   source, 
 		   new String[] {
 			 "title", null
+		   });	
+		addAnnotation
+		  (getNetwork_NetworkId(), 
+		   source, 
+		   new String[] {
+			 "description", "The network ID retreived when the creation is done"
 		   });	
 		addAnnotation
 		  (getNetwork_Name(), 
