@@ -58,6 +58,7 @@ public class NetworkItemProvider extends org.occiware.clouddesigner.occi.infrast
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addNetworkIdPropertyDescriptor(object);
 			addNamePropertyDescriptor(object);
 			addAux_addressPropertyDescriptor(object);
 			addDriverPropertyDescriptor(object);
@@ -71,6 +72,28 @@ public class NetworkItemProvider extends org.occiware.clouddesigner.occi.infrast
 			addSubnetPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Network Id feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNetworkIdPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Network_networkId_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Network_networkId_feature", "_UI_Network_type"),
+				 DockerPackage.Literals.NETWORK__NETWORK_ID,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -353,6 +376,7 @@ public class NetworkItemProvider extends org.occiware.clouddesigner.occi.infrast
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Network.class)) {
+			case DockerPackage.NETWORK__NETWORK_ID:
 			case DockerPackage.NETWORK__NAME:
 			case DockerPackage.NETWORK__AUX_ADDRESS:
 			case DockerPackage.NETWORK__DRIVER:
