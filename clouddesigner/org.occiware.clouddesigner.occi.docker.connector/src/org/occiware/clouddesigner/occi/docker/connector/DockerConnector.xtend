@@ -94,6 +94,7 @@ import org.slf4j.LoggerFactory
 import static com.google.common.base.Preconditions.checkNotNull
 import static org.occiware.clouddesigner.occi.docker.connector.ExecutableContainer.*
 import java.util.Set
+import com.github.dockerjava.api.command.CreateNetworkResponse
 
 /**
  * This class overrides the generated EMF factory of the Docker package.
@@ -1213,6 +1214,8 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 
 		val StringBuilder parameter = new StringBuilder
 
+		var Map<Container, Set<NetworkLink>> networks = detectNetworkLink
+		
 		// Check other parameters
 		if (compute.swarm) {
 			parameter.append(' --swarm')
@@ -1290,11 +1293,10 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 				DockerMachineManager.regenerateCert(runtime, compute.name)
 			}
 		}
-
-		// Create the network if it exists
-		this.createNetwork()
+		// Create the network overlay
+		this.createNetwork(networks)
 	}
-
+	
 	override def startAll_execute() {
 
 		// Initialize the runtime
@@ -1308,7 +1310,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 		checkNotNull(driverName, "Driver name is null")
 
 		val StringBuilder parameter = new StringBuilder
-
+		var Map<Container, Set<NetworkLink>> networks = detectNetworkLink
 		// Check other parameters
 		if (compute.swarm) {
 			parameter.append(' --swarm')
@@ -1376,9 +1378,9 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 
 			// Set state
 			compute.state = ComputeStatus.ACTIVE
-
+		
 			// Create the network if it exists
-			this.createNetwork()
+			this.createNetwork(networks)
 
 			// Create the Containers belong to this machine.
 			if (compute.links.size > 0) {
@@ -1436,7 +1438,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 				compute.state = ComputeStatus.ACTIVE
 
 				// Create the network if it exists
-				this.createNetwork()
+				this.createNetwork(networks)
 
 				// Create the Containers belong to this machine.
 				if (compute.links.size > 0) {
@@ -1544,16 +1546,34 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 		LOGGER.info("EXECUTE COMMAND: " + command.toString)
 	}
 
+
 	/**
-	 * Create all networks detected inside the machine
+	 * Connect container to all networks overlay.
 	 */
-	protected def void createNetwork() {
-		var networks = detectNetworkLink
+	def void connectToNetwork(Machine machine, Map<Container, Set<NetworkLink>> networks){
+			dockerContainerManager.connectToNetwork(this.compute, networks)
+	}
+
+
+	/**
+	 * Create and update the Id of all networks detected inside the machine
+	 */
+	protected def void createNetwork(Map<Container, Set<NetworkLink>> networks) {
 		if (!networks.empty) {
-			for (net : networks) {
-				dockerContainerManager.createNetwork(this.compute, (net.target as Network))
+			for (Map.Entry<Container, Set<NetworkLink>> entry : networks.entrySet) {
+				for (net : entry.value) {
+					var CreateNetworkResponse createNetworkResponse = dockerContainerManager.createNetwork(this.compute,
+						(net.target as Network))
+					// Update the model networkId
+					(net.target as Network).networkId = createNetworkResponse.id
+					LOGGER.info("Network name=#{} was created inside ---> machine #{}", (net.target as Network).name,
+						this.compute.name)
+				}
+
 			}
-			LOGGER.info("Network: #{} was/were created inside ---> machine #{}", networks, this.compute.name)
+			// Connect all container to network overlay
+			this.connectToNetwork(this.compute, networks)
+
 		}
 	}
 
@@ -1660,7 +1680,8 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 	/**
 	 * Checks inside the machine model if any container has networkLink
 	 */
-	def Set<NetworkLink> detectNetworkLink() {
+	def Map<Container, Set<NetworkLink>> detectNetworkLink() {
+		var Map<Container, Set<NetworkLink>> map_networkLinks = newLinkedHashMap()
 		var Set<NetworkLink> c_networkLinks = newHashSet()
 		for (Link l : compute.links) {
 			val contains = l as Contains
@@ -1672,10 +1693,10 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 						c_networkLinks.add((cl as NetworkLink))
 					}
 				}
-
+				map_networkLinks.put((contains.target as org.occiware.clouddesigner.occi.docker.Container), c_networkLinks)
 			}
 		}
-		return c_networkLinks
+		return map_networkLinks
 	}
 
 	/**
