@@ -241,6 +241,9 @@
     <parent href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='compute']"/>
   </kinds>
   <kinds term="network" scheme="http://occiware.org/occi/docker#">
+    <attributes name="networkId" description="The network ID retreived when the creation is done">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <attributes name="name">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
