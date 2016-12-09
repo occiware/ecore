@@ -59,6 +59,9 @@ import com.github.dockerjava.api.model.Network.Ipam.Config
 import org.occiware.clouddesigner.occi.docker.Network
 import com.github.dockerjava.api.command.CreateNetworkResponse
 import java.lang.reflect.InvocationTargetException
+import com.github.dockerjava.api.command.CreateNetworkCmd
+import org.occiware.clouddesigner.occi.docker.NetworkLink
+import java.util.Set
 
 class DockerContainerManager {
 	private static DockerClient dockerClient = null
@@ -143,14 +146,23 @@ class DockerContainerManager {
 		} else if (!currentMachine.equalsIgnoreCase(machine.name)) {
 			dockerClient = setConfig(machine.name, properties)
 		}
-		var Config[] ipamConfigs = null
+		
+		var List<Config> ipamConfigs = newArrayList()
 		var com.github.dockerjava.api.model.Network.Ipam ipam = null
 		
 		if (StringUtils.isNotBlank(network.subnet)) {
-			ipamConfigs = newArrayList(new com.github.dockerjava.api.model.Network.Ipam.Config().withSubnet(network.subnet))
+			ipamConfigs.add(new com.github.dockerjava.api.model.Network.Ipam.Config().withSubnet(network.subnet))
 		} else {
-			ipamConfigs = newArrayList(new com.github.dockerjava.api.model.Network.Ipam.Config().withSubnet("10.67.79.0/24"))
+			ipamConfigs.add(new com.github.dockerjava.api.model.Network.Ipam.Config().withSubnet("10.67.79.0/24"))
 		}
+
+		if (StringUtils.isNotBlank(network.gateway)) {
+			ipamConfigs.add(new com.github.dockerjava.api.model.Network.Ipam.Config().withGateway(network.gateway))
+		}
+		if (StringUtils.isNotBlank(network.ip_range)) {
+			ipamConfigs.add(new com.github.dockerjava.api.model.Network.Ipam.Config().withIpRange(network.ip_range))
+		}
+
 		try {
 			ipam = new com.github.dockerjava.api.model.Network().ipam.withConfig(ipamConfigs)
 		} catch (InvocationTargetException exception) {
@@ -158,9 +170,34 @@ class DockerContainerManager {
 		} catch (Exception e){
 			LOGGER.error("Exception:" + e.message)
 		}
+		// Initiate the NetworkCommand
+		var CreateNetworkCmd createNetworkCmd = dockerClient.createNetworkCmd().withIpam(ipam)
+		if (StringUtils.isNotBlank(network.name)) {
+			createNetworkCmd = createNetworkCmd.withName(network.name)
+		}		
+		if (StringUtils.isNotBlank(network.driver)) {
+			createNetworkCmd = createNetworkCmd.withDriver(network.driver)
+		}			
+		
 		// Create an overlay network
-		var CreateNetworkResponse createNetworkResponse = dockerClient.createNetworkCmd().withName(network.name).
-			withIpam(ipam).withDriver("overlay").exec()
+		var CreateNetworkResponse createNetworkResponse = createNetworkCmd.exec()
+		return createNetworkResponse
+	}
+
+	def connectToNetwork(Machine machine, Map<Container, Set<NetworkLink>> networks) {
+		// Set dockerClient
+		if (dockerClient == null) {
+			dockerClient = setConfig(machine.name, properties)
+		} else if (!currentMachine.equalsIgnoreCase(machine.name)) {
+			dockerClient = setConfig(machine.name, properties)
+		}
+		for (Map.Entry<Container, Set<NetworkLink>> entry : networks.entrySet) {
+			for(NetworkLink netLink: entry.value){
+				dockerClient.connectToNetworkCmd().withNetworkId((netLink.target as Network).networkId).withContainerId(entry.key.containerid).exec()
+			}
+			
+		}
+
 	}
 
 	def void removeContainer(String machineName, String containerId) {
