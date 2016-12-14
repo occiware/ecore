@@ -1,10 +1,6 @@
 # Using the connector through Mart-Server
 
-Model at Runtime server application, OCCI HTTP Server with OCCIware model support (Configuration / Extension / Runtime Connector).
-
-## Mart Server source code
-
-https://github.com/cgourdin/MartServer
+The infrastructure connector enables to deploy infrastructure resources by redirecting OCCI request from mart-server to OCCI Proactive Cloud Automation
 
 ## User guide
 
@@ -31,5 +27,11 @@ curl -v -X PUT -d '{
 </pre>
 </code>
 
+## Mart Server source code
 
+https://github.com/cgourdin/MartServer
+
+## OCCI Proactive Cloud Automation
+
+https://github.com/ow2-proactive/multi-language-connector
 
