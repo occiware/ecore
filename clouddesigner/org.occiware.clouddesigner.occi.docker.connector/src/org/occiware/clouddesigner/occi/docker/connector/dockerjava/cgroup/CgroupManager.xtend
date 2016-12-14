@@ -13,8 +13,13 @@ package org.occiware.clouddesigner.occi.docker.connector.dockerjava.cgroup
 import org.occiware.clouddesigner.occi.docker.connector.dockerjava.DockerContainerManager
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerUtil
 import org.occiware.clouddesigner.occi.docker.Container
+import org.slf4j.LoggerFactory
+import org.slf4j.Logger
 
 class CgroupManager {
+	
+	// LOG
+	private static Logger LOGGER = LoggerFactory.getLogger(typeof(CgroupManager))
 
 	// For more information go to: https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Resource_Management_Guide/index.html 
 	static final String cGroupPath = "/sys/fs/cgroup/"
@@ -52,19 +57,19 @@ class CgroupManager {
 		val dockerContainerManager = new DockerContainerManager
 		if(file.equalsIgnoreCase(memory_max_mem)){
 			command = "echo '" + Float.parseFloat(value).intValue + "' > " + FilePath
-			println("EXECUTE COMMAND: "+ command)
+			LOGGER.info("EXECUTE COMMAND: {}", command)
 			dockerContainerManager.connect(host, privateKey, command)
 		}else if(file.equalsIgnoreCase(cpuset_cpus)){
 			command = "echo '" + cpuSetGenerator(value, container) + "' > " + FilePath
-			println("EXECUTE COMMAND: "+ command)
+			LOGGER.info("EXECUTE COMMAND: {}", command)
 			dockerContainerManager.connect(host, privateKey, command)
 		}else if(file.equalsIgnoreCase(net_cls_classid)){
 			command = "echo '" + Float.parseFloat(value).intValue + "' > " + FilePath
-			println("EXECUTE COMMAND: "+ command)
+			LOGGER.info("EXECUTE COMMAND: {}", command)
 			dockerContainerManager.connect(host, privateKey, command)
 		}else if(file.equalsIgnoreCase(memory_swap)){
 			command = "echo '" + Float.parseFloat(value).intValue + "' > " + FilePath
-			println("EXECUTE COMMAND: "+ command)
+			LOGGER.info("EXECUTE COMMAND: {}", command)
 			dockerContainerManager.connect(host, privateKey, command)
 		}
 		//val String command = "echo '" + cpuSetGenerator(value, container) + "' > " + FilePath

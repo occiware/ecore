@@ -11,8 +11,11 @@
 package org.occiware.clouddesigner.occi.docker.connector.dockerjava;
 
 import com.github.dockerjava.api.DockerClient;
+import com.github.dockerjava.api.command.ConnectToNetworkCmd;
 import com.github.dockerjava.api.command.CreateContainerCmd;
 import com.github.dockerjava.api.command.CreateContainerResponse;
+import com.github.dockerjava.api.command.CreateNetworkCmd;
+import com.github.dockerjava.api.command.CreateNetworkResponse;
 import com.github.dockerjava.api.command.EventsCmd;
 import com.github.dockerjava.api.command.InspectContainerCmd;
 import com.github.dockerjava.api.command.InspectContainerResponse;
@@ -47,6 +50,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -58,11 +62,15 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 import org.apache.commons.lang.StringUtils;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.InputOutput;
+import org.occiware.clouddesigner.occi.Resource;
 import org.occiware.clouddesigner.occi.docker.Container;
 import org.occiware.clouddesigner.occi.docker.Machine;
+import org.occiware.clouddesigner.occi.docker.Network;
+import org.occiware.clouddesigner.occi.docker.NetworkLink;
 import org.occiware.clouddesigner.occi.docker.connector.EventCallBack;
 import org.occiware.clouddesigner.occi.docker.connector.StatsCallback;
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerMachineManager;
@@ -158,6 +166,125 @@ public class DockerContainerManager {
     DockerContainerManager.LOGGER.info("Created container: {}", _containerid);
     result.put(DockerContainerManager.dockerClient, rcontainer);
     return result;
+  }
+  
+  public CreateNetworkResponse createNetwork(final Machine machine, final Network network) {
+    boolean _equals = Objects.equal(DockerContainerManager.dockerClient, null);
+    if (_equals) {
+      String _name = machine.getName();
+      DockerClient _setConfig = this.setConfig(_name, this.properties);
+      DockerContainerManager.dockerClient = _setConfig;
+    } else {
+      String _name_1 = machine.getName();
+      boolean _equalsIgnoreCase = DockerContainerManager.currentMachine.equalsIgnoreCase(_name_1);
+      boolean _not = (!_equalsIgnoreCase);
+      if (_not) {
+        String _name_2 = machine.getName();
+        DockerClient _setConfig_1 = this.setConfig(_name_2, this.properties);
+        DockerContainerManager.dockerClient = _setConfig_1;
+      }
+    }
+    List<com.github.dockerjava.api.model.Network.Ipam.Config> ipamConfigs = CollectionLiterals.<com.github.dockerjava.api.model.Network.Ipam.Config>newArrayList();
+    com.github.dockerjava.api.model.Network.Ipam ipam = null;
+    String _subnet = network.getSubnet();
+    boolean _isNotBlank = StringUtils.isNotBlank(_subnet);
+    if (_isNotBlank) {
+      com.github.dockerjava.api.model.Network.Ipam.Config _config = new com.github.dockerjava.api.model.Network.Ipam.Config();
+      String _subnet_1 = network.getSubnet();
+      com.github.dockerjava.api.model.Network.Ipam.Config _withSubnet = _config.withSubnet(_subnet_1);
+      ipamConfigs.add(_withSubnet);
+    } else {
+      com.github.dockerjava.api.model.Network.Ipam.Config _config_1 = new com.github.dockerjava.api.model.Network.Ipam.Config();
+      com.github.dockerjava.api.model.Network.Ipam.Config _withSubnet_1 = _config_1.withSubnet("10.67.79.0/24");
+      ipamConfigs.add(_withSubnet_1);
+    }
+    String _gateway = network.getGateway();
+    boolean _isNotBlank_1 = StringUtils.isNotBlank(_gateway);
+    if (_isNotBlank_1) {
+      com.github.dockerjava.api.model.Network.Ipam.Config _config_2 = new com.github.dockerjava.api.model.Network.Ipam.Config();
+      String _gateway_1 = network.getGateway();
+      com.github.dockerjava.api.model.Network.Ipam.Config _withGateway = _config_2.withGateway(_gateway_1);
+      ipamConfigs.add(_withGateway);
+    }
+    String _ip_range = network.getIp_range();
+    boolean _isNotBlank_2 = StringUtils.isNotBlank(_ip_range);
+    if (_isNotBlank_2) {
+      com.github.dockerjava.api.model.Network.Ipam.Config _config_3 = new com.github.dockerjava.api.model.Network.Ipam.Config();
+      String _ip_range_1 = network.getIp_range();
+      com.github.dockerjava.api.model.Network.Ipam.Config _withIpRange = _config_3.withIpRange(_ip_range_1);
+      ipamConfigs.add(_withIpRange);
+    }
+    try {
+      com.github.dockerjava.api.model.Network _network = new com.github.dockerjava.api.model.Network();
+      com.github.dockerjava.api.model.Network.Ipam _ipam = _network.getIpam();
+      com.github.dockerjava.api.model.Network.Ipam _withConfig = _ipam.withConfig(ipamConfigs);
+      ipam = _withConfig;
+    } catch (final Throwable _t) {
+      if (_t instanceof InvocationTargetException) {
+        final InvocationTargetException exception = (InvocationTargetException)_t;
+        Throwable _cause = exception.getCause();
+        String _message = _cause.getMessage();
+        String _plus = (" InvocationTargetException: " + _message);
+        DockerContainerManager.LOGGER.error(_plus);
+      } else if (_t instanceof Exception) {
+        final Exception e = (Exception)_t;
+        String _message_1 = e.getMessage();
+        String _plus_1 = ("Exception:" + _message_1);
+        DockerContainerManager.LOGGER.error(_plus_1);
+      } else {
+        throw Exceptions.sneakyThrow(_t);
+      }
+    }
+    CreateNetworkCmd _createNetworkCmd = DockerContainerManager.dockerClient.createNetworkCmd();
+    CreateNetworkCmd createNetworkCmd = _createNetworkCmd.withIpam(ipam);
+    String _name_3 = network.getName();
+    boolean _isNotBlank_3 = StringUtils.isNotBlank(_name_3);
+    if (_isNotBlank_3) {
+      String _name_4 = network.getName();
+      CreateNetworkCmd _withName = createNetworkCmd.withName(_name_4);
+      createNetworkCmd = _withName;
+    }
+    String _driver = network.getDriver();
+    boolean _isNotBlank_4 = StringUtils.isNotBlank(_driver);
+    if (_isNotBlank_4) {
+      String _driver_1 = network.getDriver();
+      CreateNetworkCmd _withDriver = createNetworkCmd.withDriver(_driver_1);
+      createNetworkCmd = _withDriver;
+    }
+    CreateNetworkResponse createNetworkResponse = createNetworkCmd.exec();
+    return createNetworkResponse;
+  }
+  
+  public void connectToNetwork(final Machine machine, final Map<Container, Set<NetworkLink>> networks) {
+    boolean _equals = Objects.equal(DockerContainerManager.dockerClient, null);
+    if (_equals) {
+      String _name = machine.getName();
+      DockerClient _setConfig = this.setConfig(_name, this.properties);
+      DockerContainerManager.dockerClient = _setConfig;
+    } else {
+      String _name_1 = machine.getName();
+      boolean _equalsIgnoreCase = DockerContainerManager.currentMachine.equalsIgnoreCase(_name_1);
+      boolean _not = (!_equalsIgnoreCase);
+      if (_not) {
+        String _name_2 = machine.getName();
+        DockerClient _setConfig_1 = this.setConfig(_name_2, this.properties);
+        DockerContainerManager.dockerClient = _setConfig_1;
+      }
+    }
+    Set<Map.Entry<Container, Set<NetworkLink>>> _entrySet = networks.entrySet();
+    for (final Map.Entry<Container, Set<NetworkLink>> entry : _entrySet) {
+      Set<NetworkLink> _value = entry.getValue();
+      for (final NetworkLink netLink : _value) {
+        ConnectToNetworkCmd _connectToNetworkCmd = DockerContainerManager.dockerClient.connectToNetworkCmd();
+        Resource _target = netLink.getTarget();
+        String _networkId = ((Network) _target).getNetworkId();
+        ConnectToNetworkCmd _withNetworkId = _connectToNetworkCmd.withNetworkId(_networkId);
+        Container _key = entry.getKey();
+        String _containerid = _key.getContainerid();
+        ConnectToNetworkCmd _withContainerId = _withNetworkId.withContainerId(_containerid);
+        _withContainerId.exec();
+      }
+    }
   }
   
   public void removeContainer(final String machineName, final String containerId) {

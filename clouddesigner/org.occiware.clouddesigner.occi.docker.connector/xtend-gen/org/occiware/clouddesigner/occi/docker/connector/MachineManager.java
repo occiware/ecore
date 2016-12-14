@@ -11,6 +11,7 @@
  */
 package org.occiware.clouddesigner.occi.docker.connector;
 
+import com.github.dockerjava.api.command.CreateNetworkResponse;
 import com.google.common.base.Objects;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ArrayListMultimap;
@@ -20,6 +21,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
@@ -29,6 +31,8 @@ import org.occiware.clouddesigner.occi.Resource;
 import org.occiware.clouddesigner.occi.docker.Container;
 import org.occiware.clouddesigner.occi.docker.Contains;
 import org.occiware.clouddesigner.occi.docker.Machine;
+import org.occiware.clouddesigner.occi.docker.Network;
+import org.occiware.clouddesigner.occi.docker.NetworkLink;
 import org.occiware.clouddesigner.occi.docker.connector.ComputeStateMachine;
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableContainer;
 import org.occiware.clouddesigner.occi.docker.connector.ModelHandler;
@@ -89,14 +93,116 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
     Preconditions.<String>checkNotNull(_name, "Machine name is null");
     String _driverName = this.getDriverName();
     Preconditions.<String>checkNotNull(_driverName, "Driver name is null");
+    final StringBuilder parameter = new StringBuilder();
+    Map<Container, Set<NetworkLink>> networks = this.detectNetworkLink();
+    boolean _isSwarm = this.compute.isSwarm();
+    if (_isSwarm) {
+      parameter.append(" --swarm");
+    }
+    boolean _isSwarm_master = this.compute.isSwarm_master();
+    if (_isSwarm_master) {
+      parameter.append(" --swarm-master");
+    }
+    String _swarm_discovery = this.compute.getSwarm_discovery();
+    boolean _isNotBlank = StringUtils.isNotBlank(_swarm_discovery);
+    if (_isNotBlank) {
+      String _swarm_discovery_1 = this.compute.getSwarm_discovery();
+      String _plus = (" --swarm-discovery=\"" + _swarm_discovery_1);
+      String _plus_1 = (_plus + "\"");
+      parameter.append(_plus_1);
+    }
+    String _swarm_addr = this.compute.getSwarm_addr();
+    boolean _isNotBlank_1 = StringUtils.isNotBlank(_swarm_addr);
+    if (_isNotBlank_1) {
+      String _swarm_addr_1 = this.compute.getSwarm_addr();
+      String _plus_2 = (" --swarm-addr=\"" + _swarm_addr_1);
+      String _plus_3 = (_plus_2 + "\"");
+      parameter.append(_plus_3);
+    }
+    String _swarm_experimental = this.compute.getSwarm_experimental();
+    boolean _isNotBlank_2 = StringUtils.isNotBlank(_swarm_experimental);
+    if (_isNotBlank_2) {
+      String _swarm_experimental_1 = this.compute.getSwarm_experimental();
+      String _plus_4 = (" --swarm-experimental=\"" + _swarm_experimental_1);
+      String _plus_5 = (_plus_4 + "\"");
+      parameter.append(_plus_5);
+    }
+    String _swarm_host = this.compute.getSwarm_host();
+    boolean _isNotBlank_3 = StringUtils.isNotBlank(_swarm_host);
+    if (_isNotBlank_3) {
+      String _swarm_host_1 = this.compute.getSwarm_host();
+      String _plus_6 = (" --swarm-host=\"" + _swarm_host_1);
+      String _plus_7 = (_plus_6 + "\"");
+      parameter.append(_plus_7);
+    }
+    String _swarm_image = this.compute.getSwarm_image();
+    boolean _isNotBlank_4 = StringUtils.isNotBlank(_swarm_image);
+    if (_isNotBlank_4) {
+      String _swarm_image_1 = this.compute.getSwarm_image();
+      String _plus_8 = (" --swarm-image=\"" + _swarm_image_1);
+      String _plus_9 = (_plus_8 + "\"");
+      parameter.append(_plus_9);
+    }
+    String _swarm_opt = this.compute.getSwarm_opt();
+    boolean _isNotBlank_5 = StringUtils.isNotBlank(_swarm_opt);
+    if (_isNotBlank_5) {
+      String _swarm_opt_1 = this.compute.getSwarm_opt();
+      String[] tab_swarm_opt = _swarm_opt_1.split(",");
+      for (final String opt : tab_swarm_opt) {
+        parameter.append(((" --swarm-opt=\"" + opt) + "\""));
+      }
+    }
+    String _engine_env = this.compute.getEngine_env();
+    boolean _isNotBlank_6 = StringUtils.isNotBlank(_engine_env);
+    if (_isNotBlank_6) {
+      String _engine_env_1 = this.compute.getEngine_env();
+      String _plus_10 = (" --engine-env=\"" + _engine_env_1);
+      String _plus_11 = (_plus_10 + "\"");
+      parameter.append(_plus_11);
+    }
+    String _engine_insecure_registry = this.compute.getEngine_insecure_registry();
+    boolean _isNotBlank_7 = StringUtils.isNotBlank(_engine_insecure_registry);
+    if (_isNotBlank_7) {
+      String _engine_insecure_registry_1 = this.compute.getEngine_insecure_registry();
+      String _plus_12 = (" --engine-insecure-registry=\"" + _engine_insecure_registry_1);
+      String _plus_13 = (_plus_12 + "\"");
+      parameter.append(_plus_13);
+    }
+    String _engine_install_url = this.compute.getEngine_install_url();
+    boolean _isNotBlank_8 = StringUtils.isNotBlank(_engine_install_url);
+    if (_isNotBlank_8) {
+      String _engine_install_url_1 = this.compute.getEngine_install_url();
+      String _plus_14 = (" --engine-install-url=\"" + _engine_install_url_1);
+      String _plus_15 = (_plus_14 + "\"");
+      parameter.append(_plus_15);
+    }
+    String _engine_label = this.compute.getEngine_label();
+    boolean _isNotBlank_9 = StringUtils.isNotBlank(_engine_label);
+    if (_isNotBlank_9) {
+      String _engine_label_1 = this.compute.getEngine_label();
+      String _plus_16 = (" --engine-label=\"" + _engine_label_1);
+      String _plus_17 = (_plus_16 + "\"");
+      parameter.append(_plus_17);
+    }
+    String _engine_opt = this.compute.getEngine_opt();
+    boolean _isNotBlank_10 = StringUtils.isNotBlank(_engine_opt);
+    if (_isNotBlank_10) {
+      String _engine_opt_1 = this.compute.getEngine_opt();
+      String[] tab_engine_opt = _engine_opt_1.split(",");
+      for (final String opt_1 : tab_engine_opt) {
+        parameter.append(((" --engine-opt=\"" + opt_1) + "\""));
+      }
+    }
     String dockerMachineCMD = String.format("%s -D create --driver ", this.dockerMachineCmd);
     StringBuilder _append = command.append(dockerMachineCMD);
     String _driverName_1 = this.getDriverName();
     _append.append(_driverName_1);
     this.appendDriverParameters(command);
     StringBuilder _append_1 = command.append(" ");
+    _append_1.append(parameter);
+    StringBuilder _append_2 = command.append(" ");
     String _name_1 = this.compute.getName();
-    _append_1.append(_name_1);
+    _append_2.append(_name_1);
     String _string = command.toString();
     MachineManager.LOGGER.info("CMD : #{}", _string);
     final Map<String, String> activeHosts = DockerUtil.getActiveHosts();
@@ -118,6 +224,7 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
         DockerMachineManager.regenerateCert(runtime, _name_5);
       }
     }
+    this.createNetwork(networks);
   }
   
   @Override
@@ -128,14 +235,116 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
     Preconditions.<String>checkNotNull(_name, "Machine name is null");
     String _driverName = this.getDriverName();
     Preconditions.<String>checkNotNull(_driverName, "Driver name is null");
+    final StringBuilder parameter = new StringBuilder();
+    Map<Container, Set<NetworkLink>> networks = this.detectNetworkLink();
+    boolean _isSwarm = this.compute.isSwarm();
+    if (_isSwarm) {
+      parameter.append(" --swarm");
+    }
+    boolean _isSwarm_master = this.compute.isSwarm_master();
+    if (_isSwarm_master) {
+      parameter.append(" --swarm-master");
+    }
+    String _swarm_discovery = this.compute.getSwarm_discovery();
+    boolean _isNotBlank = StringUtils.isNotBlank(_swarm_discovery);
+    if (_isNotBlank) {
+      String _swarm_discovery_1 = this.compute.getSwarm_discovery();
+      String _plus = (" --swarm-discovery=\"" + _swarm_discovery_1);
+      String _plus_1 = (_plus + "\"");
+      parameter.append(_plus_1);
+    }
+    String _swarm_addr = this.compute.getSwarm_addr();
+    boolean _isNotBlank_1 = StringUtils.isNotBlank(_swarm_addr);
+    if (_isNotBlank_1) {
+      String _swarm_addr_1 = this.compute.getSwarm_addr();
+      String _plus_2 = (" --swarm-addr=\"" + _swarm_addr_1);
+      String _plus_3 = (_plus_2 + "\"");
+      parameter.append(_plus_3);
+    }
+    String _swarm_experimental = this.compute.getSwarm_experimental();
+    boolean _isNotBlank_2 = StringUtils.isNotBlank(_swarm_experimental);
+    if (_isNotBlank_2) {
+      String _swarm_experimental_1 = this.compute.getSwarm_experimental();
+      String _plus_4 = (" --swarm-experimental=\"" + _swarm_experimental_1);
+      String _plus_5 = (_plus_4 + "\"");
+      parameter.append(_plus_5);
+    }
+    String _swarm_host = this.compute.getSwarm_host();
+    boolean _isNotBlank_3 = StringUtils.isNotBlank(_swarm_host);
+    if (_isNotBlank_3) {
+      String _swarm_host_1 = this.compute.getSwarm_host();
+      String _plus_6 = (" --swarm-host=\"" + _swarm_host_1);
+      String _plus_7 = (_plus_6 + "\"");
+      parameter.append(_plus_7);
+    }
+    String _swarm_image = this.compute.getSwarm_image();
+    boolean _isNotBlank_4 = StringUtils.isNotBlank(_swarm_image);
+    if (_isNotBlank_4) {
+      String _swarm_image_1 = this.compute.getSwarm_image();
+      String _plus_8 = (" --swarm-image=\"" + _swarm_image_1);
+      String _plus_9 = (_plus_8 + "\"");
+      parameter.append(_plus_9);
+    }
+    String _swarm_opt = this.compute.getSwarm_opt();
+    boolean _isNotBlank_5 = StringUtils.isNotBlank(_swarm_opt);
+    if (_isNotBlank_5) {
+      String _swarm_opt_1 = this.compute.getSwarm_opt();
+      String[] tab_swarm_opt = _swarm_opt_1.split(",");
+      for (final String opt : tab_swarm_opt) {
+        parameter.append(((" --swarm-opt=\"" + opt) + "\""));
+      }
+    }
+    String _engine_env = this.compute.getEngine_env();
+    boolean _isNotBlank_6 = StringUtils.isNotBlank(_engine_env);
+    if (_isNotBlank_6) {
+      String _engine_env_1 = this.compute.getEngine_env();
+      String _plus_10 = (" --engine-env=\"" + _engine_env_1);
+      String _plus_11 = (_plus_10 + "\"");
+      parameter.append(_plus_11);
+    }
+    String _engine_insecure_registry = this.compute.getEngine_insecure_registry();
+    boolean _isNotBlank_7 = StringUtils.isNotBlank(_engine_insecure_registry);
+    if (_isNotBlank_7) {
+      String _engine_insecure_registry_1 = this.compute.getEngine_insecure_registry();
+      String _plus_12 = (" --engine-insecure-registry=\"" + _engine_insecure_registry_1);
+      String _plus_13 = (_plus_12 + "\"");
+      parameter.append(_plus_13);
+    }
+    String _engine_install_url = this.compute.getEngine_install_url();
+    boolean _isNotBlank_8 = StringUtils.isNotBlank(_engine_install_url);
+    if (_isNotBlank_8) {
+      String _engine_install_url_1 = this.compute.getEngine_install_url();
+      String _plus_14 = (" --engine-install-url=\"" + _engine_install_url_1);
+      String _plus_15 = (_plus_14 + "\"");
+      parameter.append(_plus_15);
+    }
+    String _engine_label = this.compute.getEngine_label();
+    boolean _isNotBlank_9 = StringUtils.isNotBlank(_engine_label);
+    if (_isNotBlank_9) {
+      String _engine_label_1 = this.compute.getEngine_label();
+      String _plus_16 = (" --engine-label=\"" + _engine_label_1);
+      String _plus_17 = (_plus_16 + "\"");
+      parameter.append(_plus_17);
+    }
+    String _engine_opt = this.compute.getEngine_opt();
+    boolean _isNotBlank_10 = StringUtils.isNotBlank(_engine_opt);
+    if (_isNotBlank_10) {
+      String _engine_opt_1 = this.compute.getEngine_opt();
+      String[] tab_engine_opt = _engine_opt_1.split(",");
+      for (final String opt_1 : tab_engine_opt) {
+        parameter.append(((" --engine-opt=\"" + opt_1) + "\""));
+      }
+    }
     String dockerMachineCMD = String.format("%s -D create --driver ", this.dockerMachineCmd);
     StringBuilder _append = command.append(dockerMachineCMD);
     String _driverName_1 = this.getDriverName();
     _append.append(_driverName_1);
     this.appendDriverParameters(command);
     StringBuilder _append_1 = command.append(" ");
+    _append_1.append(parameter);
+    StringBuilder _append_2 = command.append(" ");
     String _name_1 = this.compute.getName();
-    _append_1.append(_name_1);
+    _append_2.append(_name_1);
     final Map<String, String> activeHosts = DockerUtil.getActiveHosts();
     final Map<String, String> hosts = DockerUtil.getHosts();
     String _name_2 = this.compute.getName();
@@ -145,6 +354,7 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
       String _string = command.toString();
       ProcessManager.runCommand(_string, runtime, true);
       this.compute.setState(ComputeStatus.ACTIVE);
+      this.createNetwork(networks);
       EList<Link> _links = this.compute.getLinks();
       int _size = _links.size();
       boolean _greaterThan = (_size > 0);
@@ -201,6 +411,7 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
         String _name_5 = this.compute.getName();
         DockerMachineManager.regenerateCert(runtime, _name_5);
         this.compute.setState(ComputeStatus.ACTIVE);
+        this.createNetwork(networks);
         EList<Link> _links_2 = this.compute.getLinks();
         int _size_1 = _links_2.size();
         boolean _greaterThan_1 = (_size_1 > 0);
@@ -221,15 +432,15 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
                   boolean _not_4 = (!_containerIsDeployed);
                   if (_not_4) {
                     String _name_7 = con.getName();
-                    String _plus = ("Creating the container: " + _name_7);
-                    MachineManager.LOGGER.info(_plus);
+                    String _plus_18 = ("Creating the container: " + _name_7);
+                    MachineManager.LOGGER.info(_plus_18);
                     con.createContainer(this.machine);
                     MachineManager.LOGGER.info("The container is created");
                     con.start();
                   } else {
                     String _name_8 = con.getName();
-                    String _plus_1 = ("Trying to start container: " + _name_8);
-                    MachineManager.LOGGER.info(_plus_1);
+                    String _plus_19 = ("Trying to start container: " + _name_8);
+                    MachineManager.LOGGER.info(_plus_19);
                     con.start();
                     MachineManager.LOGGER.info("Started ...");
                   }
@@ -249,8 +460,8 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
                   con.start();
                 } else {
                   String _name_7 = con.getName();
-                  String _plus = ("Trying to start container: " + _name_7);
-                  MachineManager.LOGGER.info(_plus);
+                  String _plus_18 = ("Trying to start container: " + _name_7);
+                  MachineManager.LOGGER.info(_plus_18);
                   con.start();
                   MachineManager.LOGGER.info("Started ... ");
                 }
@@ -282,8 +493,8 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
                     con.start();
                   } else {
                     String _name_7 = con.getName();
-                    String _plus = ("Trying to start container: " + _name_7);
-                    MachineManager.LOGGER.info(_plus);
+                    String _plus_18 = ("Trying to start container: " + _name_7);
+                    MachineManager.LOGGER.info(_plus_18);
                     con.start();
                     MachineManager.LOGGER.info("Started ...");
                   }
@@ -301,14 +512,14 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
                 if (_not_5) {
                   con.createContainer(this.machine, this.containerDependency);
                   String _name_7 = con.getName();
-                  String _plus = ("Trying to start container: " + _name_7);
-                  MachineManager.LOGGER.info(_plus);
+                  String _plus_18 = ("Trying to start container: " + _name_7);
+                  MachineManager.LOGGER.info(_plus_18);
                   con.start();
                   MachineManager.LOGGER.info("Started ... ");
                 } else {
                   String _name_8 = con.getName();
-                  String _plus_1 = ("Trying to start container: " + _name_8);
-                  MachineManager.LOGGER.info(_plus_1);
+                  String _plus_19 = ("Trying to start container: " + _name_8);
+                  MachineManager.LOGGER.info(_plus_19);
                   MachineManager.LOGGER.info("Started ... ");
                   con.start();
                 }
@@ -319,8 +530,43 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
       }
     }
     String _string_1 = command.toString();
-    String _plus = ("EXECUTE COMMAND: " + _string_1);
-    MachineManager.LOGGER.info(_plus);
+    String _plus_18 = ("EXECUTE COMMAND: " + _string_1);
+    MachineManager.LOGGER.info(_plus_18);
+  }
+  
+  /**
+   * Connect container to all networks overlay.
+   */
+  public void connectToNetwork(final Machine machine, final Map<Container, Set<NetworkLink>> networks) {
+    this.dockerContainerManager.connectToNetwork(this.compute, networks);
+  }
+  
+  /**
+   * Create and update the Id of all networks detected inside the machine
+   */
+  protected void createNetwork(final Map<Container, Set<NetworkLink>> networks) {
+    boolean _isEmpty = networks.isEmpty();
+    boolean _not = (!_isEmpty);
+    if (_not) {
+      Set<Map.Entry<Container, Set<NetworkLink>>> _entrySet = networks.entrySet();
+      for (final Map.Entry<Container, Set<NetworkLink>> entry : _entrySet) {
+        Set<NetworkLink> _value = entry.getValue();
+        for (final NetworkLink net : _value) {
+          {
+            Resource _target = net.getTarget();
+            CreateNetworkResponse createNetworkResponse = this.dockerContainerManager.createNetwork(this.compute, ((Network) _target));
+            Resource _target_1 = net.getTarget();
+            String _id = createNetworkResponse.getId();
+            ((Network) _target_1).setNetworkId(_id);
+            Resource _target_2 = net.getTarget();
+            String _name = ((Network) _target_2).getName();
+            String _name_1 = this.compute.getName();
+            MachineManager.LOGGER.info("Network name=#{} was created inside ---> machine #{}", _name, _name_1);
+          }
+        }
+      }
+      this.connectToNetwork(this.compute, networks);
+    }
   }
   
   public void synchronize() {
@@ -426,6 +672,38 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
     }
   }
   
+  /**
+   * Checks inside the machine model if any container has networkLink
+   */
+  public Map<Container, Set<NetworkLink>> detectNetworkLink() {
+    Map<Container, Set<NetworkLink>> map_networkLinks = CollectionLiterals.<Container, Set<NetworkLink>>newLinkedHashMap();
+    Set<NetworkLink> c_networkLinks = CollectionLiterals.<NetworkLink>newHashSet();
+    EList<Link> _links = this.compute.getLinks();
+    for (final Link l : _links) {
+      {
+        final Contains contains = ((Contains) l);
+        Resource _target = contains.getTarget();
+        if ((_target instanceof Container)) {
+          Resource _target_1 = contains.getTarget();
+          final Container container = ((Container) _target_1);
+          EList<Link> _links_1 = container.getLinks();
+          for (final Link cl : _links_1) {
+            if (((cl instanceof NetworkLink) && 
+              (cl.getTarget() instanceof Network))) {
+              c_networkLinks.add(((NetworkLink) cl));
+            }
+          }
+          Resource _target_2 = contains.getTarget();
+          map_networkLinks.put(((Container) _target_2), c_networkLinks);
+        }
+      }
+    }
+    return map_networkLinks;
+  }
+  
+  /**
+   * Checks if there is a link between containers.
+   */
   public boolean linkFound() {
     final List<Container> containers = this.getContainers();
     boolean link = false;
@@ -445,6 +723,9 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
     return link;
   }
   
+  /**
+   * Provide the containers deployment order.
+   */
   public List<Container> deploymentOrder() {
     final List<Container> containers = CollectionLiterals.<Container>newArrayList();
     Graph<Container> graph = new Graph<Container>();
@@ -497,6 +778,9 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
     return containers;
   }
   
+  /**
+   * Retrieves all containers inside a given machine.
+   */
   public List<Container> getContainers() {
     final List<Container> containers = CollectionLiterals.<Container>newArrayList();
     EList<Link> _links = this.compute.getLinks();
@@ -513,6 +797,9 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
     return containers;
   }
   
+  /**
+   * Get all containers witch has not a link to another container.
+   */
   public List<Container> leafContainers() {
     final List<Container> containers = this.getContainers();
     final List<Container> leafContainers = new ArrayList<Container>();
@@ -527,6 +814,9 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
     return leafContainers;
   }
   
+  /**
+   * Checks if the container is deployed.
+   */
   public boolean containerIsDeployed(final String containerName, final Machine machine) {
     String _name = machine.getName();
     final List<com.github.dockerjava.api.model.Container> listContainers = this.dockerContainerManager.listContainer(_name);
@@ -555,6 +845,9 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
     return false;
   }
   
+  /**
+   * Get all containers deployed inside a machine.
+   */
   public List<String> containerInReal(final String machineName) {
     ArrayList<String> containers = new ArrayList<String>();
     final List<com.github.dockerjava.api.model.Container> listContainers = this.dockerContainerManager.listContainer(machineName);

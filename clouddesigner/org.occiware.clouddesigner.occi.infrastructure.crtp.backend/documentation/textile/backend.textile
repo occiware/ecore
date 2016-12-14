@@ -25,10 +25,10 @@ Applies to:
 Attributes of vmaddon are:
 
 | *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
-| vcpu |  | false | true |  |  |
-| gueststate |  | false | true |  |  |
-| guestosid |  | false | true |  |  |
-| markedastemplate |  | false | true |  |  |
+| vcpu | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| gueststate | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| guestosid | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| markedastemplate | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
 
 
 h2. Mixin linux
@@ -45,7 +45,7 @@ Attributes of linux are:
 
 | *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
 | guestid | <a href="backend.textile#enum-guestosidentifiers">GuestOsIdentifiers</a> | true | true |  |  |
-| datastoreisopath |  | false | true |  |  |
+| datastoreisopath | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
 
 
 h2. Mixin macosx
@@ -62,7 +62,7 @@ Attributes of macosx are:
 
 | *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
 | guestid | <a href="backend.textile#enum-guestosidentifiers">GuestOsIdentifiers</a> | true | true |  |  |
-| datastoreisopath |  | false | true |  |  |
+| datastoreisopath | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
 
 
 h2. Mixin vmwarefolders
@@ -80,11 +80,11 @@ Applies to:
 Attributes of vmwarefolders are:
 
 | *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
-| datacentername |  | false | true |  |  |
-| datastorename |  | false | true |  |  |
-| clustername |  | false | true |  |  |
-| hostsystemname |  | false | true |  |  |
-| inventorypath |  | false | true |  |  |
+| datacentername | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| datastorename | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| clustername | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| hostsystemname | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| inventorypath | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
 
 
 h2. Mixin vswitchinfos
@@ -98,7 +98,7 @@ Applies to:
 Attributes of vswitchinfos are:
 
 | *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
-| nbport |  | false | false |  | Nb port of the vswitch |
+| nbport | <a href="core.textile#datatype-number">Number</a> | false | false |  | Nb port of the vswitch |
 
 
 h2. Mixin windows
@@ -115,7 +115,7 @@ Attributes of windows are:
 
 | *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
 | guestid | <a href="backend.textile#enum-guestosidentifiers">GuestOsIdentifiers</a> | true | true |  |  |
-| datastoreisopath |  | false | true |  |  |
+| datastoreisopath | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
 
 
 h2. Mixin vmimage
@@ -129,7 +129,20 @@ Applies to:
 Attributes of vmimage are:
 
 | *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
-| imagename |  | false | true |  | Name of the template if this compute has a template or will be created with a template. |
+| imagename | <a href="core.textile#datatype-string">String</a> | false | true |  | Name of the template if this compute has a template or will be created with a template. |
+
+
+h2. Mixin credential
+
+| *Term* | credential |
+| *Scheme* | http://occiware.org/occi/infrastructure/crtp/backend# |
+| *Title* |  |
+
+Attributes of credential are:
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| user | <a href="core.textile#datatype-string">String</a> | true | true |  |  |
+| password | <a href="core.textile#datatype-string">String</a> | true | true |  |  |
 
 
 
@@ -270,4 +283,4 @@ h2. Enum GuestOsIdentifiers
 * otherGuest  
 * otherGuest64  
 
-Generated at Thu Nov 03 09:11:37 CET 2016 from platform:/resource/org.occiware.clouddesigner.occi.infrastructure.crtp.backend/model/backend.occie by org.occiware.clouddesigner.occi.gen.doc
+Generated at Tue Dec 06 16:50:58 CET 2016 from platform:/resource/org.occiware.clouddesigner.occi.infrastructure.crtp.backend/model/backend.occie by org.occiware.clouddesigner.occi.gen.doc

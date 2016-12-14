@@ -90,6 +90,10 @@ public class DockerAdapterFactory extends AdapterFactoryImpl {
 				return createLinkAdapter();
 			}
 			@Override
+			public Adapter caseNetworkLink(NetworkLink object) {
+				return createNetworkLinkAdapter();
+			}
+			@Override
 			public Adapter caseVolumesfrom(Volumesfrom object) {
 				return createVolumesfromAdapter();
 			}
@@ -100,6 +104,10 @@ public class DockerAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseMachine(Machine object) {
 				return createMachineAdapter();
+			}
+			@Override
+			public Adapter caseNetwork(Network object) {
+				return createNetworkAdapter();
 			}
 			@Override
 			public Adapter caseMachine_Amazon_EC2(Machine_Amazon_EC2 object) {
@@ -166,6 +174,10 @@ public class DockerAdapterFactory extends AdapterFactoryImpl {
 				return createOCCI_LinkAdapter();
 			}
 			@Override
+			public Adapter caseInfrastructure_Network(org.occiware.clouddesigner.occi.infrastructure.Network object) {
+				return createInfrastructure_NetworkAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -214,6 +226,20 @@ public class DockerAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.occiware.clouddesigner.occi.docker.NetworkLink <em>Network Link</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.occiware.clouddesigner.occi.docker.NetworkLink
+	 * @generated
+	 */
+	public Adapter createNetworkLinkAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.occiware.clouddesigner.occi.docker.Volumesfrom <em>Volumesfrom</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -252,6 +278,20 @@ public class DockerAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createMachineAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.occiware.clouddesigner.occi.docker.Network <em>Network</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.occiware.clouddesigner.occi.docker.Network
+	 * @generated
+	 */
+	public Adapter createNetworkAdapter() {
 		return null;
 	}
 
@@ -476,6 +516,20 @@ public class DockerAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createOCCI_LinkAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.occiware.clouddesigner.occi.infrastructure.Network <em>Network</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.occiware.clouddesigner.occi.infrastructure.Network
+	 * @generated
+	 */
+	public Adapter createInfrastructure_NetworkAdapter() {
 		return null;
 	}
 

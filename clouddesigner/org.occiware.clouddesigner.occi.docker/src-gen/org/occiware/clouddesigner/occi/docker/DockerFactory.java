@@ -49,6 +49,15 @@ public interface DockerFactory extends EFactory {
 	Link createLink();
 
 	/**
+	 * Returns a new object of class '<em>Network Link</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Network Link</em>'.
+	 * @generated
+	 */
+	NetworkLink createNetworkLink();
+
+	/**
 	 * Returns a new object of class '<em>Volumesfrom</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -74,6 +83,15 @@ public interface DockerFactory extends EFactory {
 	 * @generated
 	 */
 	Machine createMachine();
+
+	/**
+	 * Returns a new object of class '<em>Network</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Network</em>'.
+	 * @generated
+	 */
+	Network createNetwork();
 
 	/**
 	 * Returns a new object of class '<em>Machine Amazon EC2</em>'.

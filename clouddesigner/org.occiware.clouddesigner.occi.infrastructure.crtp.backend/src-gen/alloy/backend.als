@@ -1,4 +1,4 @@
-// Generated at Fri Oct 07 18:11:51 CEST 2016 from platform:/resource/org.occiware.clouddesigner.occi.infrastructure.crtp.backend/model/backend.occie by org.occiware.clouddesigner.occi.gen.alloy
+// Generated at Tue Dec 06 16:51:01 CET 2016 from platform:/resource/org.occiware.clouddesigner.occi.infrastructure.crtp.backend/model/backend.occie by org.occiware.clouddesigner.occi.gen.alloy
 
 // ======================================================================
 //
@@ -32,7 +32,7 @@ one sig extension extends Extension {} {
     scheme = "http://occiware.org/occi/infrastructure/crtp/backend#"
     import = core/extension + crtp/extension + infrastructure/extension
     no kinds
-    mixins = vmaddon + linux + macosx + vmwarefolders + vswitchinfos + windows + vmimage
+    mixins = vmaddon + linux + macosx + vmwarefolders + vswitchinfos + windows + vmimage + credential
     types = GuestOsIdentifiers_DataType
 }
 
@@ -58,7 +58,7 @@ one sig vmaddon extends Mixin {} {
 //
 one sig vmaddon_vcpu extends Attribute {} {
     name = "vcpu"
-    no type 
+    type = core/String_DataType
     mutable = True
     required = False
     no default
@@ -71,7 +71,7 @@ one sig vmaddon_vcpu extends Attribute {} {
 //
 one sig vmaddon_gueststate extends Attribute {} {
     name = "gueststate"
-    no type 
+    type = core/String_DataType
     mutable = True
     required = False
     no default
@@ -84,7 +84,7 @@ one sig vmaddon_gueststate extends Attribute {} {
 //
 one sig vmaddon_guestosid extends Attribute {} {
     name = "guestosid"
-    no type 
+    type = core/String_DataType
     mutable = True
     required = False
     no default
@@ -97,7 +97,7 @@ one sig vmaddon_guestosid extends Attribute {} {
 //
 one sig vmaddon_markedastemplate extends Attribute {} {
     name = "markedastemplate"
-    no type 
+    type = core/String_DataType
     mutable = True
     required = False
     no default
@@ -110,10 +110,10 @@ one sig vmaddon_markedastemplate extends Attribute {} {
 // ======================================================================
 
 sig Vmaddon in infrastructure/Compute {
-    vcpu : lone ,
-    gueststate : lone ,
-    guestosid : lone ,
-    markedastemplate : lone ,
+    vcpu : lone String,
+    gueststate : lone String,
+    guestosid : lone String,
+    markedastemplate : lone String,
 }
 
 // ======================================================================
@@ -151,7 +151,7 @@ one sig linux_guestid extends Attribute {} {
 //
 one sig linux_datastoreisopath extends Attribute {} {
     name = "datastoreisopath"
-    no type 
+    type = core/String_DataType
     mutable = True
     required = False
     no default
@@ -165,7 +165,7 @@ one sig linux_datastoreisopath extends Attribute {} {
 
 sig Linux in infrastructure/Compute {
     guestid : one GuestOsIdentifiers,
-    datastoreisopath : lone ,
+    datastoreisopath : lone String,
 }
 
 // ======================================================================
@@ -203,7 +203,7 @@ one sig macosx_guestid extends Attribute {} {
 //
 one sig macosx_datastoreisopath extends Attribute {} {
     name = "datastoreisopath"
-    no type 
+    type = core/String_DataType
     mutable = True
     required = False
     no default
@@ -217,7 +217,7 @@ one sig macosx_datastoreisopath extends Attribute {} {
 
 sig Macosx in infrastructure/Compute {
     guestid : one GuestOsIdentifiers,
-    datastoreisopath : lone ,
+    datastoreisopath : lone String,
 }
 
 // ======================================================================
@@ -242,7 +242,7 @@ one sig vmwarefolders extends Mixin {} {
 //
 one sig vmwarefolders_datacentername extends Attribute {} {
     name = "datacentername"
-    no type 
+    type = core/String_DataType
     mutable = True
     required = False
     no default
@@ -255,7 +255,7 @@ one sig vmwarefolders_datacentername extends Attribute {} {
 //
 one sig vmwarefolders_datastorename extends Attribute {} {
     name = "datastorename"
-    no type 
+    type = core/String_DataType
     mutable = True
     required = False
     no default
@@ -268,7 +268,7 @@ one sig vmwarefolders_datastorename extends Attribute {} {
 //
 one sig vmwarefolders_clustername extends Attribute {} {
     name = "clustername"
-    no type 
+    type = core/String_DataType
     mutable = True
     required = False
     no default
@@ -281,7 +281,7 @@ one sig vmwarefolders_clustername extends Attribute {} {
 //
 one sig vmwarefolders_hostsystemname extends Attribute {} {
     name = "hostsystemname"
-    no type 
+    type = core/String_DataType
     mutable = True
     required = False
     no default
@@ -294,7 +294,7 @@ one sig vmwarefolders_hostsystemname extends Attribute {} {
 //
 one sig vmwarefolders_inventorypath extends Attribute {} {
     name = "inventorypath"
-    no type 
+    type = core/String_DataType
     mutable = True
     required = False
     no default
@@ -307,11 +307,11 @@ one sig vmwarefolders_inventorypath extends Attribute {} {
 // ======================================================================
 
 sig Vmwarefolders in infrastructure/Compute + infrastructure/Network + infrastructure/Networkinterface + infrastructure/Storage + infrastructure/Storagelink {
-    datacentername : lone ,
-    datastorename : lone ,
-    clustername : lone ,
-    hostsystemname : lone ,
-    inventorypath : lone ,
+    datacentername : lone String,
+    datastorename : lone String,
+    clustername : lone String,
+    hostsystemname : lone String,
+    inventorypath : lone String,
 }
 
 // ======================================================================
@@ -336,7 +336,7 @@ one sig vswitchinfos extends Mixin {} {
 //
 one sig vswitchinfos_nbport extends Attribute {} {
     name = "nbport"
-    no type 
+    type = core/Number_DataType
     mutable = False
     required = False
     no default
@@ -349,7 +349,7 @@ one sig vswitchinfos_nbport extends Attribute {} {
 // ======================================================================
 
 sig Vswitchinfos in infrastructure/Network {
-    nbport : lone ,
+    nbport : lone core/Number,
 }
 
 // ======================================================================
@@ -387,7 +387,7 @@ one sig windows_guestid extends Attribute {} {
 //
 one sig windows_datastoreisopath extends Attribute {} {
     name = "datastoreisopath"
-    no type 
+    type = core/String_DataType
     mutable = True
     required = False
     no default
@@ -401,7 +401,7 @@ one sig windows_datastoreisopath extends Attribute {} {
 
 sig Windows in infrastructure/Compute {
     guestid : one GuestOsIdentifiers,
-    datastoreisopath : lone ,
+    datastoreisopath : lone String,
 }
 
 // ======================================================================
@@ -426,7 +426,7 @@ one sig vmimage extends Mixin {} {
 //
 one sig vmimage_imagename extends Attribute {} {
     name = "imagename"
-    no type 
+    type = core/String_DataType
     mutable = True
     required = False
     no default
@@ -439,7 +439,59 @@ one sig vmimage_imagename extends Attribute {} {
 // ======================================================================
 
 sig Vmimage in infrastructure/Compute {
-    imagename : lone ,
+    imagename : lone String,
+}
+
+// ======================================================================
+//
+// OCCI mixin 'http://occiware.org/occi/infrastructure/crtp/backend#credential'
+//
+// ======================================================================
+
+one sig credential extends Mixin {} {
+    term = "credential"
+    scheme = "http://occiware.org/occi/infrastructure/crtp/backend#"
+    no title
+    no depends
+    no applies
+    attributes = credential_user + credential_password
+    no actions
+    entities in Credential
+}
+
+//
+// OCCI attribute 'user'
+//
+one sig credential_user extends Attribute {} {
+    name = "user"
+    type = core/String_DataType
+    mutable = True
+    required = True
+    no default
+    no description
+    multiple_values = False
+}
+
+//
+// OCCI attribute 'password'
+//
+one sig credential_password extends Attribute {} {
+    name = "password"
+    type = core/String_DataType
+    mutable = True
+    required = True
+    no default
+    no description
+    multiple_values = False
+}
+
+// ======================================================================
+// Signature for Credential
+// ======================================================================
+
+sig Credential in core/Entity {
+    user : one String,
+    password : one String,
 }
 
 //

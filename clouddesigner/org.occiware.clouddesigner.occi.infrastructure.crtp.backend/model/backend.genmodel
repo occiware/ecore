@@ -400,7 +400,7 @@
       </genEnumLiterals>
     </genEnums>
   </genPackages>
-  <usedGenPackages href="platform:/resource/org.occiware.clouddesigner.occi.crtp/model/crtp.genmodel#//crtp"/>
+  <usedGenPackages href="platform:/plugin/org.occiware.clouddesigner.occi.crtp/model/crtp.genmodel#//crtp"/>
   <usedGenPackages href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.genmodel#//infrastructure"/>
   <usedGenPackages href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.genmodel#//occi"/>
 </genmodel:GenModel>

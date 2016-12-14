@@ -39,6 +39,8 @@ import org.occiware.clouddesigner.occi.docker.Machine_VMware_vCloud_Air;
 import org.occiware.clouddesigner.occi.docker.Machine_VMware_vSphere;
 import org.occiware.clouddesigner.occi.docker.Machine_VirtualBox;
 import org.occiware.clouddesigner.occi.docker.Mode;
+import org.occiware.clouddesigner.occi.docker.Network;
+import org.occiware.clouddesigner.occi.docker.NetworkLink;
 import org.occiware.clouddesigner.occi.docker.Volumesfrom;
 
 import org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage;
@@ -69,6 +71,13 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass networkLinkEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass volumesfromEClass = null;
 
 	/**
@@ -84,6 +93,13 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * @generated
 	 */
 	private EClass machineEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass networkEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -794,6 +810,15 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getNetworkLink() {
+		return networkLinkEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getVolumesfrom() {
 		return volumesfromEClass;
 	}
@@ -832,6 +857,276 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 */
 	public EAttribute getMachine_Name() {
 		return (EAttribute)machineEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMachine_Engine_install_url() {
+		return (EAttribute)machineEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMachine_Engine_opt() {
+		return (EAttribute)machineEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMachine_Engine_insecure_registry() {
+		return (EAttribute)machineEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMachine_Engine_registry_mirror() {
+		return (EAttribute)machineEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMachine_Engine_label() {
+		return (EAttribute)machineEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMachine_Engine_storage_driver() {
+		return (EAttribute)machineEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMachine_Engine_env() {
+		return (EAttribute)machineEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMachine_Swarm() {
+		return (EAttribute)machineEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMachine_Swarm_image() {
+		return (EAttribute)machineEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMachine_Swarm_master() {
+		return (EAttribute)machineEClass.getEStructuralFeatures().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMachine_Swarm_discovery() {
+		return (EAttribute)machineEClass.getEStructuralFeatures().get(11);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMachine_Swarm_strategy() {
+		return (EAttribute)machineEClass.getEStructuralFeatures().get(12);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMachine_Swarm_opt() {
+		return (EAttribute)machineEClass.getEStructuralFeatures().get(13);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMachine_Swarm_host() {
+		return (EAttribute)machineEClass.getEStructuralFeatures().get(14);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMachine_Swarm_addr() {
+		return (EAttribute)machineEClass.getEStructuralFeatures().get(15);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMachine_Swarm_experimental() {
+		return (EAttribute)machineEClass.getEStructuralFeatures().get(16);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMachine_Tls_san() {
+		return (EAttribute)machineEClass.getEStructuralFeatures().get(17);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getNetwork() {
+		return networkEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getNetwork_NetworkId() {
+		return (EAttribute)networkEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getNetwork_Name() {
+		return (EAttribute)networkEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getNetwork_Aux_address() {
+		return (EAttribute)networkEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getNetwork_Driver() {
+		return (EAttribute)networkEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getNetwork_Gateway() {
+		return (EAttribute)networkEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getNetwork_Internal() {
+		return (EAttribute)networkEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getNetwork_Ip_range() {
+		return (EAttribute)networkEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getNetwork_Ipam_driver() {
+		return (EAttribute)networkEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getNetwork_Ipam_opt() {
+		return (EAttribute)networkEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getNetwork_Ipv6() {
+		return (EAttribute)networkEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getNetwork_Opt() {
+		return (EAttribute)networkEClass.getEStructuralFeatures().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getNetwork_Subnet() {
+		return (EAttribute)networkEClass.getEStructuralFeatures().get(11);
 	}
 
 	/**
@@ -1843,6 +2138,8 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		linkEClass = createEClass(LINK);
 		createEAttribute(linkEClass, LINK__ALIAS);
 
+		networkLinkEClass = createEClass(NETWORK_LINK);
+
 		volumesfromEClass = createEClass(VOLUMESFROM);
 		createEAttribute(volumesfromEClass, VOLUMESFROM__MODE);
 
@@ -1850,6 +2147,37 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 
 		machineEClass = createEClass(MACHINE);
 		createEAttribute(machineEClass, MACHINE__NAME);
+		createEAttribute(machineEClass, MACHINE__ENGINE_INSTALL_URL);
+		createEAttribute(machineEClass, MACHINE__ENGINE_OPT);
+		createEAttribute(machineEClass, MACHINE__ENGINE_INSECURE_REGISTRY);
+		createEAttribute(machineEClass, MACHINE__ENGINE_REGISTRY_MIRROR);
+		createEAttribute(machineEClass, MACHINE__ENGINE_LABEL);
+		createEAttribute(machineEClass, MACHINE__ENGINE_STORAGE_DRIVER);
+		createEAttribute(machineEClass, MACHINE__ENGINE_ENV);
+		createEAttribute(machineEClass, MACHINE__SWARM);
+		createEAttribute(machineEClass, MACHINE__SWARM_IMAGE);
+		createEAttribute(machineEClass, MACHINE__SWARM_MASTER);
+		createEAttribute(machineEClass, MACHINE__SWARM_DISCOVERY);
+		createEAttribute(machineEClass, MACHINE__SWARM_STRATEGY);
+		createEAttribute(machineEClass, MACHINE__SWARM_OPT);
+		createEAttribute(machineEClass, MACHINE__SWARM_HOST);
+		createEAttribute(machineEClass, MACHINE__SWARM_ADDR);
+		createEAttribute(machineEClass, MACHINE__SWARM_EXPERIMENTAL);
+		createEAttribute(machineEClass, MACHINE__TLS_SAN);
+
+		networkEClass = createEClass(NETWORK);
+		createEAttribute(networkEClass, NETWORK__NETWORK_ID);
+		createEAttribute(networkEClass, NETWORK__NAME);
+		createEAttribute(networkEClass, NETWORK__AUX_ADDRESS);
+		createEAttribute(networkEClass, NETWORK__DRIVER);
+		createEAttribute(networkEClass, NETWORK__GATEWAY);
+		createEAttribute(networkEClass, NETWORK__INTERNAL);
+		createEAttribute(networkEClass, NETWORK__IP_RANGE);
+		createEAttribute(networkEClass, NETWORK__IPAM_DRIVER);
+		createEAttribute(networkEClass, NETWORK__IPAM_OPT);
+		createEAttribute(networkEClass, NETWORK__IPV6);
+		createEAttribute(networkEClass, NETWORK__OPT);
+		createEAttribute(networkEClass, NETWORK__SUBNET);
 
 		machine_Amazon_EC2EClass = createEClass(MACHINE_AMAZON_EC2);
 		createEAttribute(machine_Amazon_EC2EClass, MACHINE_AMAZON_EC2__ACCESS_KEY);
@@ -2002,9 +2330,11 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		// Add supertypes to classes
 		containerEClass.getESuperTypes().add(theInfrastructurePackage.getCompute());
 		linkEClass.getESuperTypes().add(theOCCIPackage.getLink());
+		networkLinkEClass.getESuperTypes().add(this.getLink());
 		volumesfromEClass.getESuperTypes().add(theOCCIPackage.getLink());
 		containsEClass.getESuperTypes().add(theOCCIPackage.getLink());
 		machineEClass.getESuperTypes().add(theInfrastructurePackage.getCompute());
+		networkEClass.getESuperTypes().add(theInfrastructurePackage.getNetwork());
 		machine_Amazon_EC2EClass.getESuperTypes().add(this.getMachine());
 		machine_Digital_OceanEClass.getESuperTypes().add(this.getMachine());
 		machine_Google_Compute_EngineEClass.getESuperTypes().add(this.getMachine());
@@ -2090,6 +2420,8 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		initEClass(linkEClass, Link.class, "Link", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getLink_Alias(), theOCCIPackage.getString(), "alias", null, 0, 1, Link.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(networkLinkEClass, NetworkLink.class, "NetworkLink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
 		initEClass(volumesfromEClass, Volumesfrom.class, "Volumesfrom", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getVolumesfrom_Mode(), this.getMode(), "mode", "read_write", 0, 1, Volumesfrom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -2097,6 +2429,37 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 
 		initEClass(machineEClass, Machine.class, "Machine", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMachine_Name(), theOCCIPackage.getString(), "name", null, 1, 1, Machine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_Engine_install_url(), theOCCIPackage.getString(), "engine_install_url", null, 0, 1, Machine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_Engine_opt(), theOCCIPackage.getString(), "engine_opt", null, 0, 1, Machine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_Engine_insecure_registry(), theOCCIPackage.getString(), "engine_insecure_registry", null, 0, 1, Machine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_Engine_registry_mirror(), theOCCIPackage.getString(), "engine_registry_mirror", null, 0, 1, Machine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_Engine_label(), theOCCIPackage.getString(), "engine_label", null, 0, 1, Machine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_Engine_storage_driver(), theOCCIPackage.getString(), "engine_storage_driver", null, 0, 1, Machine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_Engine_env(), theOCCIPackage.getString(), "engine_env", null, 0, 1, Machine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_Swarm(), theOCCIPackage.getBoolean(), "swarm", null, 0, 1, Machine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_Swarm_image(), theOCCIPackage.getString(), "swarm_image", null, 0, 1, Machine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_Swarm_master(), theOCCIPackage.getBoolean(), "swarm_master", null, 0, 1, Machine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_Swarm_discovery(), theOCCIPackage.getString(), "swarm_discovery", null, 0, 1, Machine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_Swarm_strategy(), theOCCIPackage.getString(), "swarm_strategy", null, 0, 1, Machine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_Swarm_opt(), theOCCIPackage.getString(), "swarm_opt", null, 0, 1, Machine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_Swarm_host(), theOCCIPackage.getString(), "swarm_host", null, 0, 1, Machine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_Swarm_addr(), theOCCIPackage.getString(), "swarm_addr", null, 0, 1, Machine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_Swarm_experimental(), theOCCIPackage.getString(), "swarm_experimental", null, 0, 1, Machine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_Tls_san(), theOCCIPackage.getString(), "tls_san", null, 0, 1, Machine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(networkEClass, Network.class, "Network", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getNetwork_NetworkId(), theOCCIPackage.getString(), "networkId", null, 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNetwork_Name(), theOCCIPackage.getString(), "name", null, 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNetwork_Aux_address(), theOCCIPackage.getString(), "aux_address", null, 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNetwork_Driver(), theOCCIPackage.getString(), "driver", null, 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNetwork_Gateway(), theOCCIPackage.getString(), "gateway", null, 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNetwork_Internal(), theOCCIPackage.getBoolean(), "internal", null, 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNetwork_Ip_range(), theOCCIPackage.getString(), "ip_range", null, 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNetwork_Ipam_driver(), theOCCIPackage.getString(), "ipam_driver", null, 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNetwork_Ipam_opt(), theOCCIPackage.getString(), "ipam_opt", null, 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNetwork_Ipv6(), theOCCIPackage.getBoolean(), "ipv6", null, 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNetwork_Opt(), ecorePackage.getEString(), "opt", null, 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNetwork_Subnet(), theOCCIPackage.getString(), "subnet", null, 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(machine_Amazon_EC2EClass, Machine_Amazon_EC2.class, "Machine_Amazon_EC2", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMachine_Amazon_EC2_Access_key(), theOCCIPackage.getString(), "access_key", null, 1, 1, Machine_Amazon_EC2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2605,6 +2968,12 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 			 "description", "The alias of this Link instance"
 		   });	
 		addAnnotation
+		  (networkLinkEClass, 
+		   source, 
+		   new String[] {
+			 "title", null
+		   });	
+		addAnnotation
 		  (volumesfromEClass, 
 		   source, 
 		   new String[] {
@@ -2633,6 +3002,186 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		   source, 
 		   new String[] {
 			 "description", null
+		   });	
+		addAnnotation
+		  (getMachine_Engine_install_url(), 
+		   source, 
+		   new String[] {
+			 "description", "Custom URL to use for engine installation [$MACHINE_DOCKER_INSTALL_URL]"
+		   });	
+		addAnnotation
+		  (getMachine_Engine_opt(), 
+		   source, 
+		   new String[] {
+			 "description", "Specify arbitrary flags to include with the created engine in the form flag=value"
+		   });	
+		addAnnotation
+		  (getMachine_Engine_insecure_registry(), 
+		   source, 
+		   new String[] {
+			 "description", "Specify insecure registries to allow with the created engine"
+		   });	
+		addAnnotation
+		  (getMachine_Engine_registry_mirror(), 
+		   source, 
+		   new String[] {
+			 "description", "Specify registry mirrors to use [$ENGINE_REGISTRY_MIRROR]"
+		   });	
+		addAnnotation
+		  (getMachine_Engine_label(), 
+		   source, 
+		   new String[] {
+			 "description", "Specify labels for the created engine"
+		   });	
+		addAnnotation
+		  (getMachine_Engine_storage_driver(), 
+		   source, 
+		   new String[] {
+			 "description", "Specify a storage driver to use with the engine"
+		   });	
+		addAnnotation
+		  (getMachine_Engine_env(), 
+		   source, 
+		   new String[] {
+			 "description", "Specify environment variables to set in the engine"
+		   });	
+		addAnnotation
+		  (getMachine_Swarm(), 
+		   source, 
+		   new String[] {
+			 "description", "Configure Machine with Swarm"
+		   });	
+		addAnnotation
+		  (getMachine_Swarm_image(), 
+		   source, 
+		   new String[] {
+			 "description", "Specify Docker image to use for Swarm [$MACHINE_SWARM_IMAGE]"
+		   });	
+		addAnnotation
+		  (getMachine_Swarm_master(), 
+		   source, 
+		   new String[] {
+			 "description", "Configure Machine to be a Swarm master"
+		   });	
+		addAnnotation
+		  (getMachine_Swarm_discovery(), 
+		   source, 
+		   new String[] {
+			 "description", "Discovery service to use with Swarm"
+		   });	
+		addAnnotation
+		  (getMachine_Swarm_strategy(), 
+		   source, 
+		   new String[] {
+			 "description", "Define a default scheduling strategy for Swarm"
+		   });	
+		addAnnotation
+		  (getMachine_Swarm_opt(), 
+		   source, 
+		   new String[] {
+			 "description", "Define arbitrary flags for swarm"
+		   });	
+		addAnnotation
+		  (getMachine_Swarm_host(), 
+		   source, 
+		   new String[] {
+			 "description", "ip/socket to listen on for Swarm master"
+		   });	
+		addAnnotation
+		  (getMachine_Swarm_addr(), 
+		   source, 
+		   new String[] {
+			 "description", "addr to advertise for Swarm (default: detect and use the machine IP)"
+		   });	
+		addAnnotation
+		  (getMachine_Swarm_experimental(), 
+		   source, 
+		   new String[] {
+			 "description", "Enable Swarm experimental features"
+		   });	
+		addAnnotation
+		  (getMachine_Tls_san(), 
+		   source, 
+		   new String[] {
+			 "description", "Support extra SANs for TLS certs"
+		   });	
+		addAnnotation
+		  (networkEClass, 
+		   source, 
+		   new String[] {
+			 "title", null
+		   });	
+		addAnnotation
+		  (getNetwork_NetworkId(), 
+		   source, 
+		   new String[] {
+			 "description", "The network ID retreived when the creation is done"
+		   });	
+		addAnnotation
+		  (getNetwork_Name(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getNetwork_Aux_address(), 
+		   source, 
+		   new String[] {
+			 "description", "Auxiliary IPv4 or IPv6 addresses used by Network driver (default map[])"
+		   });	
+		addAnnotation
+		  (getNetwork_Driver(), 
+		   source, 
+		   new String[] {
+			 "description", "Driver to manage the Network (default \"bridge\")"
+		   });	
+		addAnnotation
+		  (getNetwork_Gateway(), 
+		   source, 
+		   new String[] {
+			 "description", "IPv4 or IPv6 Gateway for the master subnet (default [])"
+		   });	
+		addAnnotation
+		  (getNetwork_Internal(), 
+		   source, 
+		   new String[] {
+			 "description", "Restrict external access to the network"
+		   });	
+		addAnnotation
+		  (getNetwork_Ip_range(), 
+		   source, 
+		   new String[] {
+			 "description", "Allocate container ip from a sub-range (default [])"
+		   });	
+		addAnnotation
+		  (getNetwork_Ipam_driver(), 
+		   source, 
+		   new String[] {
+			 "description", "IP Address Management Driver (default \"default\")"
+		   });	
+		addAnnotation
+		  (getNetwork_Ipam_opt(), 
+		   source, 
+		   new String[] {
+			 "description", "Set IPAM driver specific options (default map[])"
+		   });	
+		addAnnotation
+		  (getNetwork_Ipv6(), 
+		   source, 
+		   new String[] {
+			 "description", "Enable IPv6 networking"
+		   });	
+		addAnnotation
+		  (getNetwork_Opt(), 
+		   source, 
+		   new String[] {
+			 "description", "Set driver specific options (default map[])"
+		   });	
+		addAnnotation
+		  (getNetwork_Subnet(), 
+		   source, 
+		   new String[] {
+			 "description", "Subnet in CIDR format that represents a network segment (default [])"
 		   });	
 		addAnnotation
 		  (machine_Amazon_EC2EClass, 

@@ -25,6 +25,8 @@ import org.occiware.clouddesigner.occi.Configuration;
 import org.occiware.clouddesigner.occi.docker.Container;
 import org.occiware.clouddesigner.occi.docker.DockerFactory;
 import org.occiware.clouddesigner.occi.docker.Machine;
+import org.occiware.clouddesigner.occi.docker.Network;
+import org.occiware.clouddesigner.occi.docker.connector.ExecutableContainer;
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableDockerFactory;
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableDockerModel;
 import org.occiware.clouddesigner.occi.infrastructure.RestartMethod;
@@ -257,9 +259,28 @@ public class DockerServices {
     }
   }
   
+  /**
+   * Popup menu create action.
+   */
+  public void create(final EObject eo) {
+    if ((eo instanceof Network)) {
+    }
+  }
+  
   public Shell getShell() {
     Display _current = Display.getCurrent();
     return _current.getActiveShell();
+  }
+  
+  /**
+   * Get the current machine
+   */
+  public Machine getMachine(final EObject eo) {
+    final int kind = this.eobjectKind(eo);
+    if ((kind == 1)) {
+      return ((ExecutableContainer) eo).getCurrentMachine();
+    }
+    return null;
   }
   
   /**

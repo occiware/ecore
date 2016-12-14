@@ -68,9 +68,11 @@ public class DockerFactoryImpl extends EFactoryImpl implements DockerFactory {
 		switch (eClass.getClassifierID()) {
 			case DockerPackage.CONTAINER: return createContainer();
 			case DockerPackage.LINK: return createLink();
+			case DockerPackage.NETWORK_LINK: return createNetworkLink();
 			case DockerPackage.VOLUMESFROM: return createVolumesfrom();
 			case DockerPackage.CONTAINS: return createContains();
 			case DockerPackage.MACHINE: return createMachine();
+			case DockerPackage.NETWORK: return createNetwork();
 			case DockerPackage.MACHINE_AMAZON_EC2: return createMachine_Amazon_EC2();
 			case DockerPackage.MACHINE_DIGITAL_OCEAN: return createMachine_Digital_Ocean();
 			case DockerPackage.MACHINE_GOOGLE_COMPUTE_ENGINE: return createMachine_Google_Compute_Engine();
@@ -143,6 +145,16 @@ public class DockerFactoryImpl extends EFactoryImpl implements DockerFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NetworkLink createNetworkLink() {
+		NetworkLinkImpl networkLink = new NetworkLinkImpl();
+		return networkLink;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Volumesfrom createVolumesfrom() {
 		VolumesfromImpl volumesfrom = new VolumesfromImpl();
 		return volumesfrom;
@@ -166,6 +178,16 @@ public class DockerFactoryImpl extends EFactoryImpl implements DockerFactory {
 	public Machine createMachine() {
 		MachineImpl machine = new MachineImpl();
 		return machine;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Network createNetwork() {
+		NetworkImpl network = new NetworkImpl();
+		return network;
 	}
 
 	/**

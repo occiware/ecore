@@ -41,6 +41,7 @@ import org.eclipse.emf.transaction.util.TransactionUtil
 import org.occiware.clouddesigner.occi.Configuration
 import org.occiware.clouddesigner.occi.Link
 import org.occiware.clouddesigner.occi.Resource
+import org.occiware.clouddesigner.occi.docker.Container
 import org.occiware.clouddesigner.occi.docker.Contains
 import org.occiware.clouddesigner.occi.docker.DockerPackage
 import org.occiware.clouddesigner.occi.docker.Machine
@@ -56,6 +57,8 @@ import org.occiware.clouddesigner.occi.docker.Machine_VMware_Fusion
 import org.occiware.clouddesigner.occi.docker.Machine_VMware_vCloud_Air
 import org.occiware.clouddesigner.occi.docker.Machine_VMware_vSphere
 import org.occiware.clouddesigner.occi.docker.Machine_VirtualBox
+import org.occiware.clouddesigner.occi.docker.Network
+import org.occiware.clouddesigner.occi.docker.NetworkLink
 import org.occiware.clouddesigner.occi.docker.connector.dockerjava.DockerContainerManager
 import org.occiware.clouddesigner.occi.docker.connector.dockerjava.graph.Graph
 import org.occiware.clouddesigner.occi.docker.connector.dockerjava.graph.GraphNode
@@ -78,8 +81,10 @@ import org.occiware.clouddesigner.occi.docker.impl.Machine_VMware_FusionImpl
 import org.occiware.clouddesigner.occi.docker.impl.Machine_VMware_vCloud_AirImpl
 import org.occiware.clouddesigner.occi.docker.impl.Machine_VMware_vSphereImpl
 import org.occiware.clouddesigner.occi.docker.impl.Machine_VirtualBoxImpl
+import org.occiware.clouddesigner.occi.docker.impl.NetworkImpl
 import org.occiware.clouddesigner.occi.infrastructure.Compute
 import org.occiware.clouddesigner.occi.infrastructure.ComputeStatus
+import org.occiware.clouddesigner.occi.infrastructure.NetworkStatus
 import org.occiware.clouddesigner.occi.infrastructure.RestartMethod
 import org.occiware.clouddesigner.occi.infrastructure.StopMethod
 import org.occiware.clouddesigner.occi.infrastructure.SuspendMethod
@@ -88,6 +93,8 @@ import org.slf4j.LoggerFactory
 
 import static com.google.common.base.Preconditions.checkNotNull
 import static org.occiware.clouddesigner.occi.docker.connector.ExecutableContainer.*
+import java.util.Set
+import com.github.dockerjava.api.command.CreateNetworkResponse
 
 /**
  * This class overrides the generated EMF factory of the Docker package.
@@ -222,6 +229,92 @@ class ExecutableDockerFactory extends DockerFactoryImpl {
 		LOGGER.info(this.class.name + ":createMachine_VMware_vSphere()")
 		new ExecutableMachine_VMware_vSphere
 	}
+
+	/**
+	 * Create an executable Network instance.
+	 */
+	override def createNetwork() {
+		LOGGER.info(this.class.name + ":createNetwork()")
+		new ExecutableNetwork
+	}
+
+}
+
+/**
+ * This class implements the state machine of a Network resource.
+ */
+class NetworkStateMachine<T extends Network> {
+
+	// Initialize logger for ComputeStateMachine.
+	private static Logger LOGGER = LoggerFactory.getLogger(typeof(NetworkStateMachine))
+
+	/**
+	 * Reference to the Network resource.
+	 */
+	protected T network
+
+	/**
+	 * Construct a network state machine for a given Network resource.
+	 */
+	new(T n) {
+		network = n
+	}
+
+	/**
+	 * Create OCCI Action.
+	 */
+	def create() {
+		LOGGER.info(this.class.name + ":create() - current state is " + network.state)
+
+		if (network.state == NetworkStatus.INACTIVE) {
+			LOGGER.info(this.class.name + ":create() - move from inactive to active state")
+			create_from_inactive_state()
+			network.state = NetworkStatus.ACTIVE
+		} else if (network.state == NetworkStatus.ACTIVE) {
+			LOGGER.info(this.class.name + ":create() - already active state")
+			create_from_active_state()
+		} else if (network.state == NetworkStatus.ERROR) {
+			LOGGER.info(this.class.name + ":create() - move from error to active state")
+			create_from_error_state()
+			network.state = NetworkStatus.ACTIVE
+		} else {
+			throw new RuntimeException("Must never happen!")
+		}
+		LOGGER.info(this.class.name + ":create() - final state is " + network.state)
+		if(network.state != NetworkStatus.ACTIVE) throw new RuntimeException("Must never happen!")
+	}
+
+	/**
+	 * This method implements the transition from error state for the create action.
+	 * 
+	 * By default, this method calls the error_execute method.
+	 */
+	def create_from_error_state() {
+		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	}
+
+	/**
+	 * This method implements the transition from active state for the create action.
+	 * 
+	 * By default, this method calls the create_execute method.
+	 */
+	def create_from_active_state() {
+		create_execute()
+	}
+
+	/**
+	 * This method implements the transition from inactive state for the create action.
+	 * 
+	 * By default, this method calls the create_execute method.
+	 */
+	def create_from_inactive_state() {
+		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	}
+
+	def create_execute() {
+		LOGGER.info(this.class.name + ":create_execute() - DO NOTHING")
+	}
+
 }
 
 /**
@@ -538,7 +631,7 @@ class EventCallBack extends EventsResultCallback {
 					// Attach listener to the new container created
 					val observer = new DockerObserver
 					observer.listener(c, machine)
-					
+
 					instanceMH.linkContainerToMachine(c, machine)
 					if (machine.eContainer instanceof Configuration) {
 						(machine.eContainer as Configuration).resources.add(c as ExecutableContainer)
@@ -654,7 +747,6 @@ class EventCallBack extends EventsResultCallback {
 /**
  * This class notifies monitoring events from the connector.
  */
-
 class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statistics> {
 
 	// Initialize logger for StatsCallback.
@@ -663,16 +755,15 @@ class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statistics> {
 	var private List<Statistics> statisticsList = new LinkedList
 
 	var String containerId
-	
+
 	var private org.occiware.clouddesigner.occi.docker.Container container
-	
+
 	var private LimitedQueue<Float> cpuTotalUsageQueue = new LimitedQueue<Float>(2)
-		
+
 	var private LimitedQueue<Float> cpuSystemUsageQueue = new LimitedQueue<Float>(2)
-	
+
 	var private Boolean updateMaxCpu = false
-	
-	
+
 	new(String containerId) {
 		this.containerId = containerId
 	}
@@ -682,12 +773,9 @@ class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statistics> {
 	}
 
 	override def void onNext(Statistics stats) {
-		//LOGGER.info("Received stats #{} :: {} :: {}", statisticsList.size(), this.container.containerid, stats)
-		
+		// LOGGER.info("Received stats #{} :: {} :: {}", statisticsList.size(), this.container.containerid, stats)
 		// Interval in which the metrics are retrieved
-		
 		Thread.sleep((this.container as ExecutableContainer).monitoring_interval) // Pause for x ms
-		
 		statisticsList.add(stats)
 		// Calculate the percentage of CPU used
 		var Map<String, Object> cpu = stats.cpuStats
@@ -704,43 +792,45 @@ class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statistics> {
 		var Integer network_t = null
 		var Integer bandwitdh = null
 		try {
-			if(networks != null){
+			if (networks != null) {
 				var LinkedHashMap tmpnetworks = networks.get("eth0") as LinkedHashMap
-				//LOGGER.info("Networks : {}", tmpnetworks)
+				// LOGGER.info("Networks : {}", tmpnetworks)
 				network_r = tmpnetworks.get("rx_bytes") as Integer
 				network_t = tmpnetworks.get("tx_bytes") as Integer
-				bandwitdh = network_r + network_t 
-								
-			}else{
+				bandwitdh = network_r + network_t
+
+			} else {
 				network_r = network.get("rx_bytes") as Integer
 				network_t = network.get("tx_bytes") as Integer
-				bandwitdh = network_r + network_t 
+				bandwitdh = network_r + network_t
 			}
-			
+
 		} catch (Exception e) {
 			network_r = 0
 			network_t = 0
 			bandwitdh = 0
 			LOGGER.error(e.message)
 		}
-		
+
 		// Update the Queue
 		cpuTotalUsageQueue.add(Float.valueOf(cpu_used.toString))
 		cpuSystemUsageQueue.add(Float.valueOf(system_cpu_usage.toString))
-		
-		if(cpuTotalUsageQueue.size == 2 && cpuSystemUsageQueue.size == 2){
+
+		if (cpuTotalUsageQueue.size == 2 && cpuSystemUsageQueue.size == 2) {
 			// Calculate the percentage
 			var percent = calculateCPUPercent(cpuTotalUsageQueue, cpuSystemUsageQueue, percpu_usage_size.size)
 			// Update the monitoring metrics
 			try {
-				modifyResourceSet(this.container, cpu_used.toString, percent, mem_used, mem_limit, bandwitdh, percpu_usage_size.size, updateMaxCpu)
+				modifyResourceSet(this.container, cpu_used.toString, percent, mem_used, mem_limit, bandwitdh,
+					percpu_usage_size.size, updateMaxCpu)
 			} catch (NullPointerException e) {
 				LOGGER.error(e.message)
 			}
 		}
 	}
 
-	def synchronized void modifyResourceSet(Resource resource, String cpu_used, Float percent, Integer mem_used, Integer mem_limit, Integer bandwitdh, Integer cpuMax, Boolean updateMaxCpu) {
+	def synchronized void modifyResourceSet(Resource resource, String cpu_used, Float percent, Integer mem_used,
+		Integer mem_limit, Integer bandwitdh, Integer cpuMax, Boolean updateMaxCpu) {
 		// Creating an editing domain
 		var TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(resource.eResource.resourceSet)
 
@@ -750,54 +840,56 @@ class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statistics> {
 				var DecimalFormat df = new DecimalFormat("#0.##")
 				var int cpu_max = 0
 				var Float cpu_us = 0.0F
-				var Float mem_percent = Integer.parseInt(mem_used.toString).floatValue / Integer.parseInt(mem_limit.toString).floatValue
+				var Float mem_percent = Integer.parseInt(mem_used.toString).floatValue /
+					Integer.parseInt(mem_limit.toString).floatValue
 				try {
 					Thread.sleep(100)
 					// Modify the resource only if it is in active state
 					if ((resource as ExecutableContainer).state == ComputeStatus.ACTIVE) {
 
 						// Update Attributes only if change occurs						
-						if((resource as ExecutableContainer).memory_used != Integer.parseInt(mem_used.toString)){
+						if ((resource as ExecutableContainer).memory_used != Integer.parseInt(mem_used.toString)) {
 							(resource as ExecutableContainer).memory_used = Integer.parseInt(mem_used.toString)
 						}
-						if((resource as ExecutableContainer).memory_max_value != Integer.parseInt(mem_limit.toString)){
+						if ((resource as ExecutableContainer).memory_max_value !=
+							Integer.parseInt(mem_limit.toString)) {
 							(resource as ExecutableContainer).memory_max_value = Integer.parseInt(mem_limit.toString)
 						}
-						if((resource as ExecutableContainer).memory_percent != df.format(mem_percent)){
+						if ((resource as ExecutableContainer).memory_percent != df.format(mem_percent)) {
 							(resource as ExecutableContainer).memory_percent = df.format(mem_percent)
 						}
-						if((resource as ExecutableContainer).bandwidth_used != bandwitdh){
+						if ((resource as ExecutableContainer).bandwidth_used != bandwitdh) {
 							(resource as ExecutableContainer).bandwidth_used = bandwitdh
 						}
 						cpu_us = (Long.valueOf(cpu_used.toString)).floatValue / 1000000F
-						
+
 						// To avoid NumberFormatException, the maximum value of Integer is 2^31-1 = 2147483647
-						if(cpu_us.intValue > Integer.MAX_VALUE){
+						if (cpu_us.intValue > Integer.MAX_VALUE) {
 							cpu_us = cpu_us / 100000000F
 						}
 
 						cpu_max = getMaxValue(Long.parseLong(cpu_us.intValue.toString), percent)
 
-						if(cpu_max.intValue > Integer.MAX_VALUE){
+						if (cpu_max.intValue > Integer.MAX_VALUE) {
 							cpu_max = cpu_max / 100000000
 							cpu_us = cpu_us / 100000000F
 						}
-						
-						if((resource as ExecutableContainer).cpu_used != cpu_us.intValue){
+
+						if ((resource as ExecutableContainer).cpu_used != cpu_us.intValue) {
 							(resource as ExecutableContainer).cpu_used = cpu_us.intValue
-							//LOGGER.info("CPU USED <=====> {}", cpu_us.intValue)
+						// LOGGER.info("CPU USED <=====> {}", cpu_us.intValue)
 						}
-						if((resource as ExecutableContainer).cpu_max_value != Integer.valueOf(cpu_max)){
+						if ((resource as ExecutableContainer).cpu_max_value != Integer.valueOf(cpu_max)) {
 							(resource as ExecutableContainer).cpu_max_value = Integer.valueOf(cpu_max)
-							//LOGGER.info("CPU MAX VALUE <=====> {}", Integer.valueOf(cpu_max))
+						// LOGGER.info("CPU MAX VALUE <=====> {}", Integer.valueOf(cpu_max))
 						}
-						if((resource as ExecutableContainer).cpu_percent != df.format(percent)){
+						if ((resource as ExecutableContainer).cpu_percent != df.format(percent)) {
 							(resource as ExecutableContainer).cpu_percent = df.format(percent)
-							//LOGGER.info("CPU PERCENTAGE <=====> {}", percent)
+						// LOGGER.info("CPU PERCENTAGE <=====> {}", percent)
 						}
-						
+
 						// Update the number of cores once
-						if(!updateMaxCpu){
+						if (!updateMaxCpu) {
 							(resource as ExecutableContainer).core_max = cpuMax
 							updateMaxCpu = true
 						}
@@ -815,74 +907,53 @@ class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statistics> {
 		}
 	}
 
-	def getMachineFromContainer(){
-		// get the current machine
-		for (EObject eo : this.container.eContents) {
-			if (eo instanceof Machine) {
-				val machine = eo as Machine
-				for (Link l : machine.links) {
-					if (l instanceof Contains) {
-						val contains = l as Contains
-						if (contains.target instanceof org.occiware.clouddesigner.occi.docker.Container) {
-							if ((l.target as ExecutableContainer).id == this.container.containerid) {
-								// Update the cache
-								listCurrentMachine.put(this.container.containerid, machine)
-								return machine
-							}
-						}
-
-					}
-
-				}
-			}
-		}		
-	}
-
-	def String getContainerId(){
+	def String getContainerId() {
 		return this.containerId
 	}
 
 	def List<Statistics> getStatisticsList() {
 		return this.statisticsList
 	}
-	
-	def Boolean compateTo(Statistics stats1, Statistics stats2){
+
+	def Boolean compateTo(Statistics stats1, Statistics stats2) {
 		return stats1.toString.equals(stats2.toString)
 	}
-	
-	def Float calculateCPUPercent(LimitedQueue<Float> cpuTotalUsageQueue, LimitedQueue<Float> cpuSystemUsageQueue, int percpu_usage_size){
-		//Inspired from https://github.com/docker/docker/blob/0d445685b8d628a938790e50517f3fb949b300e0/api/client/stats.go#L199
+
+	def Float calculateCPUPercent(LimitedQueue<Float> cpuTotalUsageQueue, LimitedQueue<Float> cpuSystemUsageQueue,
+		int percpu_usage_size) {
+		// Inspired from https://github.com/docker/docker/blob/0d445685b8d628a938790e50517f3fb949b300e0/api/client/stats.go#L199
 		var Float cpuPercent = 0.0F
 		// calculate the change for the cpu usage of the container in between readings
-		var cpuDelta = Float.valueOf(cpuTotalUsageQueue.get(1).toString) - Float.valueOf(cpuTotalUsageQueue.get(0).toString)
+		var cpuDelta = Float.valueOf(cpuTotalUsageQueue.get(1).toString) -
+			Float.valueOf(cpuTotalUsageQueue.get(0).toString)
 		// calculate the change for the entire system between readings
-		var systemDelta = Float.valueOf(cpuSystemUsageQueue.get(1).toString) - Float.valueOf(cpuSystemUsageQueue.get(0).toString)
-		
-		if (systemDelta > 0.0 && cpuDelta > 0.0){
-			cpuPercent = (cpuDelta / systemDelta)*percpu_usage_size*100.0F
+		var systemDelta = Float.valueOf(cpuSystemUsageQueue.get(1).toString) -
+			Float.valueOf(cpuSystemUsageQueue.get(0).toString)
+
+		if (systemDelta > 0.0 && cpuDelta > 0.0) {
+			cpuPercent = (cpuDelta / systemDelta) * percpu_usage_size * 100.0F
 		}
 		return cpuPercent
 	}
-	
-	def int getMaxValue(Long cpu_used, Float percent){
-		var value = (100F*cpu_used.floatValue) / percent
+
+	def int getMaxValue(Long cpu_used, Float percent) {
+		var value = (100F * cpu_used.floatValue) / percent
 		var maxValue = value.intValue
 		return maxValue
 	}
-}	
+}
 
 /**
  * This class implements Queue with size 2
  */
-
 class LimitedQueue<E> extends LinkedList<E> {
 	var private int limit
 
-	new (int limit){
+	new(int limit) {
 		this.limit = limit
 	}
-	
-	override  def boolean add(E o) {
+
+	override def boolean add(E o) {
 		super.add(o)
 		while (size() > limit) {
 			super.remove()
@@ -909,7 +980,6 @@ class ExecutableContainer extends ContainerImpl {
 
 	// Listener of the stats
 //	var statsCallback = new StatsCallback(this)
-
 	/**
 	 * Docker containers have a state machine.
 	 */
@@ -1142,12 +1212,67 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 		checkNotNull(compute.name, "Machine name is null")
 		checkNotNull(driverName, "Driver name is null")
 
+		val StringBuilder parameter = new StringBuilder
+
+		var Map<Container, Set<NetworkLink>> networks = detectNetworkLink
+		
+		// Check other parameters
+		if (compute.swarm) {
+			parameter.append(' --swarm')
+		}
+		if (compute.swarm_master) {
+			parameter.append(' --swarm-master')
+		}
+		if (StringUtils.isNotBlank(compute.swarm_discovery)) {
+			parameter.append(' --swarm-discovery="' + compute.swarm_discovery + '"')
+		}
+		if (StringUtils.isNotBlank(compute.swarm_addr)) {
+			parameter.append(' --swarm-addr="' + compute.swarm_addr + '"')
+		}
+		if (StringUtils.isNotBlank(compute.swarm_experimental)) {
+			parameter.append(' --swarm-experimental="' + compute.swarm_experimental + '"')
+		}
+		if (StringUtils.isNotBlank(compute.swarm_host)) {
+			parameter.append(' --swarm-host="' + compute.swarm_host + '"')
+		}
+		if (StringUtils.isNotBlank(compute.swarm_image)) {
+			parameter.append(' --swarm-image="' + compute.swarm_image + '"')
+		}
+		if (StringUtils.isNotBlank(compute.swarm_opt)) {
+			var tab_swarm_opt = compute.swarm_opt.split(',')
+			for (opt : tab_swarm_opt) {
+				parameter.append(' --swarm-opt="' + opt + '"')
+			}
+		}
+		if (StringUtils.isNotBlank(compute.engine_env)) {
+			parameter.append(' --engine-env="' + compute.engine_env + '"')
+		}
+		if (StringUtils.isNotBlank(compute.engine_insecure_registry)) {
+			parameter.append(' --engine-insecure-registry="' + compute.engine_insecure_registry + '"')
+		}
+		if (StringUtils.isNotBlank(compute.engine_install_url)) {
+			parameter.append(' --engine-install-url="' + compute.engine_install_url + '"')
+		}
+		if (StringUtils.isNotBlank(compute.engine_label)) {
+			parameter.append(' --engine-label="' + compute.engine_label + '"')
+		}
+		if (StringUtils.isNotBlank(compute.engine_opt)) {
+			var tab_engine_opt = compute.engine_opt.split(',')
+			for (opt : tab_engine_opt) {
+				parameter.append(' --engine-opt="' + opt + '"')
+			}
+
+		}
+
 		// build docker-machine command
 		var String dockerMachineCMD = String.format("%s -D create --driver ", this.dockerMachineCmd)
 
 		// Create the machine command
 		command.append(dockerMachineCMD).append(getDriverName)
+		// Add the corresponding command 
 		appendDriverParameters(command)
+		// Add Parameters to command
+		command.append(' ').append(parameter)
 		command.append(' ').append(compute.name)
 
 		LOGGER.info("CMD : #{}", command.toString)
@@ -1166,11 +1291,12 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 				DockerMachineManager.startCmd(runtime, compute.name)
 				// Regenerate Cert when IP addresses change
 				DockerMachineManager.regenerateCert(runtime, compute.name)
-				
 			}
 		}
+		// Create the network overlay
+		this.createNetwork(networks)
 	}
-
+	
 	override def startAll_execute() {
 
 		// Initialize the runtime
@@ -1183,10 +1309,63 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 		checkNotNull(compute.name, "Machine name is null")
 		checkNotNull(driverName, "Driver name is null")
 
+		val StringBuilder parameter = new StringBuilder
+		var Map<Container, Set<NetworkLink>> networks = detectNetworkLink
+		// Check other parameters
+		if (compute.swarm) {
+			parameter.append(' --swarm')
+		}
+		if (compute.swarm_master) {
+			parameter.append(' --swarm-master')
+		}
+		if (StringUtils.isNotBlank(compute.swarm_discovery)) {
+			parameter.append(' --swarm-discovery="' + compute.swarm_discovery + '"')
+		}
+		if (StringUtils.isNotBlank(compute.swarm_addr)) {
+			parameter.append(' --swarm-addr="' + compute.swarm_addr + '"')
+		}
+		if (StringUtils.isNotBlank(compute.swarm_experimental)) {
+			parameter.append(' --swarm-experimental="' + compute.swarm_experimental + '"')
+		}
+		if (StringUtils.isNotBlank(compute.swarm_host)) {
+			parameter.append(' --swarm-host="' + compute.swarm_host + '"')
+		}
+		if (StringUtils.isNotBlank(compute.swarm_image)) {
+			parameter.append(' --swarm-image="' + compute.swarm_image + '"')
+		}
+		if (StringUtils.isNotBlank(compute.swarm_opt)) {
+			var tab_swarm_opt = compute.swarm_opt.split(',')
+			for (opt : tab_swarm_opt) {
+				parameter.append(' --swarm-opt="' + opt + '"')
+			}
+		}
+		if (StringUtils.isNotBlank(compute.engine_env)) {
+			parameter.append(' --engine-env="' + compute.engine_env + '"')
+		}
+		if (StringUtils.isNotBlank(compute.engine_insecure_registry)) {
+			parameter.append(' --engine-insecure-registry="' + compute.engine_insecure_registry + '"')
+		}
+		if (StringUtils.isNotBlank(compute.engine_install_url)) {
+			parameter.append(' --engine-install-url="' + compute.engine_install_url + '"')
+		}
+		if (StringUtils.isNotBlank(compute.engine_label)) {
+			parameter.append(' --engine-label="' + compute.engine_label + '"')
+		}
+		if (StringUtils.isNotBlank(compute.engine_opt)) {
+			var tab_engine_opt = compute.engine_opt.split(',')
+			for (opt : tab_engine_opt) {
+				parameter.append(' --engine-opt="' + opt + '"')
+			}
+
+		}
+
 		// Create the machine command
 		var String dockerMachineCMD = String.format("%s -D create --driver ", this.dockerMachineCmd)
 		command.append(dockerMachineCMD).append(getDriverName)
+		// Add the corresponding command
 		appendDriverParameters(command)
+		// Add Parameters to command
+		command.append(' ').append(parameter)
 		command.append(' ').append(compute.name)
 		// Get the active machine
 		val activeHosts = DockerUtil.getActiveHosts
@@ -1199,6 +1378,9 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 
 			// Set state
 			compute.state = ComputeStatus.ACTIVE
+		
+			// Create the network if it exists
+			this.createNetwork(networks)
 
 			// Create the Containers belong to this machine.
 			if (compute.links.size > 0) {
@@ -1248,12 +1430,15 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 
 				// Start the machine
 				DockerMachineManager.startCmd(runtime, compute.name)
-				
+
 				// Regenerate Cert when IP addresses change
 				DockerMachineManager.regenerateCert(runtime, compute.name)
-				
+
 				// Set state
 				compute.state = ComputeStatus.ACTIVE
+
+				// Create the network if it exists
+				this.createNetwork(networks)
 
 				// Create the Containers belong to this machine.
 				if (compute.links.size > 0) {
@@ -1361,6 +1546,37 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 		LOGGER.info("EXECUTE COMMAND: " + command.toString)
 	}
 
+
+	/**
+	 * Connect container to all networks overlay.
+	 */
+	def void connectToNetwork(Machine machine, Map<Container, Set<NetworkLink>> networks){
+			dockerContainerManager.connectToNetwork(this.compute, networks)
+	}
+
+
+	/**
+	 * Create and update the Id of all networks detected inside the machine
+	 */
+	protected def void createNetwork(Map<Container, Set<NetworkLink>> networks) {
+		if (!networks.empty) {
+			for (Map.Entry<Container, Set<NetworkLink>> entry : networks.entrySet) {
+				for (net : entry.value) {
+					var CreateNetworkResponse createNetworkResponse = dockerContainerManager.createNetwork(this.compute,
+						(net.target as Network))
+					// Update the model networkId
+					(net.target as Network).networkId = createNetworkResponse.id
+					LOGGER.info("Network name=#{} was created inside ---> machine #{}", (net.target as Network).name,
+						this.compute.name)
+				}
+
+			}
+			// Connect all container to network overlay
+			this.connectToNetwork(this.compute, networks)
+
+		}
+	}
+
 	def void synchronize() {
 
 		// Get all hosts in the real environment
@@ -1461,6 +1677,31 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 
 	}
 
+	/**
+	 * Checks inside the machine model if any container has networkLink
+	 */
+	def Map<Container, Set<NetworkLink>> detectNetworkLink() {
+		var Map<Container, Set<NetworkLink>> map_networkLinks = newLinkedHashMap()
+		var Set<NetworkLink> c_networkLinks = newHashSet()
+		for (Link l : compute.links) {
+			val contains = l as Contains
+			if (contains.target instanceof org.occiware.clouddesigner.occi.docker.Container) {
+				val container = contains.target as org.occiware.clouddesigner.occi.docker.Container
+				for (Link cl : container.links) {
+					if (cl instanceof org.occiware.clouddesigner.occi.docker.NetworkLink &&
+						cl.target instanceof Network) {
+						c_networkLinks.add((cl as NetworkLink))
+					}
+				}
+				map_networkLinks.put((contains.target as org.occiware.clouddesigner.occi.docker.Container), c_networkLinks)
+			}
+		}
+		return map_networkLinks
+	}
+
+	/**
+	 * Checks if there is a link between containers.
+	 */
 	def boolean linkFound() {
 		val List<org.occiware.clouddesigner.occi.docker.Container> containers = this.containers
 		var boolean link = false
@@ -1477,6 +1718,9 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 		return link
 	}
 
+	/**
+	 * Provide the containers deployment order.
+	 */
 	def List<org.occiware.clouddesigner.occi.docker.Container> deploymentOrder() {
 		val List<org.occiware.clouddesigner.occi.docker.Container> containers = newArrayList
 		var Graph<org.occiware.clouddesigner.occi.docker.Container> graph = new Graph<org.occiware.clouddesigner.occi.docker.Container>
@@ -1511,6 +1755,9 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 		return containers
 	}
 
+	/**
+	 * Retrieves all containers inside a given machine.
+	 */
 	def List<org.occiware.clouddesigner.occi.docker.Container> getContainers() {
 		val List<org.occiware.clouddesigner.occi.docker.Container> containers = newArrayList
 		compute.links.forEach[elt|containers.add((elt.target as org.occiware.clouddesigner.occi.docker.Container))]
@@ -1518,6 +1765,9 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 		return containers
 	}
 
+	/**
+	 * Get all containers witch has not a link to another container.
+	 */
 	def List<org.occiware.clouddesigner.occi.docker.Container> leafContainers() {
 		val List<org.occiware.clouddesigner.occi.docker.Container> containers = this.containers
 		val List<org.occiware.clouddesigner.occi.docker.Container> leafContainers = new ArrayList
@@ -1529,6 +1779,9 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 		return leafContainers
 	}
 
+	/**
+	 * Checks if the container is deployed.
+	 */
 	def boolean containerIsDeployed(String containerName, Machine machine) {
 		val listContainers = dockerContainerManager.listContainer(machine.name)
 		for (com.github.dockerjava.api.model.Container c : listContainers) {
@@ -1550,6 +1803,9 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 		return false
 	}
 
+	/**
+	 * Get all containers deployed inside a machine.
+	 */
 	def List<String> containerInReal(String machineName) {
 		var containers = new ArrayList<String>
 		val listContainers = dockerContainerManager.listContainer(machineName)
@@ -2303,6 +2559,29 @@ class ExecutableMachine_VMware_vSphere extends Machine_VMware_vSphereImpl {
 	def synchronize() { manager.synchronize }
 }
 
+/**
+ * This class implements executable Network.
+ */
+class ExecutableNetwork extends NetworkImpl {
+
+	// Initialize logger for ExecutableDockerModel.
+	private static Logger LOGGER = LoggerFactory.getLogger(typeof(ExecutableNetwork))
+
+	/**
+	 * Network have a state machine.
+	 */
+	val stateMachine = new NetworkStateMachine<Network>(this) {
+
+		/**
+		 * Start the Docker container.
+		 */
+		override def create_execute() {
+			LOGGER.info("EXECUTING Network create action.")
+		}
+
+	}
+}
+
 class ExecutableDockerModel {
 
 	// Initialize logger for ExecutableDockerModel.
@@ -2322,6 +2601,7 @@ class ExecutableDockerModel {
 	var public Machine_VMware_Fusion machine_VMware_Fusion
 	var public Machine_VMware_vCloud_Air machine_VMware_vCloud_Air
 	var public Machine_VMware_vSphere machine_VMware_vSphere
+	var public Network network
 
 	new() {
 	}
@@ -2361,6 +2641,15 @@ class ExecutableDockerModel {
 
 	new(org.occiware.clouddesigner.occi.docker.Container container) {
 		this.container = container
+	}
+
+	new(Network network) {
+		this.network = network
+	}
+
+	def void create() {
+		// this.network.create()
+		return;
 	}
 
 	def void start() {

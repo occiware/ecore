@@ -34,6 +34,7 @@ import org.occiware.clouddesigner.occi.docker.Machine_VMware_Fusion;
 import org.occiware.clouddesigner.occi.docker.Machine_VMware_vCloud_Air;
 import org.occiware.clouddesigner.occi.docker.Machine_VMware_vSphere;
 import org.occiware.clouddesigner.occi.docker.Machine_VirtualBox;
+import org.occiware.clouddesigner.occi.docker.Network;
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableMachine_Amazon_EC2;
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableMachine_Digital_Ocean;
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableMachine_Google_Compute_Engine;
@@ -86,6 +87,8 @@ public class ExecutableDockerModel {
   public Machine_VMware_vCloud_Air machine_VMware_vCloud_Air;
   
   public Machine_VMware_vSphere machine_VMware_vSphere;
+  
+  public Network network;
   
   public ExecutableDockerModel() {
   }
@@ -147,6 +150,14 @@ public class ExecutableDockerModel {
   
   public ExecutableDockerModel(final Container container) {
     this.container = container;
+  }
+  
+  public ExecutableDockerModel(final Network network) {
+    this.network = network;
+  }
+  
+  public void create() {
+    return;
   }
   
   public void start() {

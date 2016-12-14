@@ -97,6 +97,15 @@ public class DockerSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case DockerPackage.NETWORK_LINK: {
+				NetworkLink networkLink = (NetworkLink)theEObject;
+				T result = caseNetworkLink(networkLink);
+				if (result == null) result = caseLink(networkLink);
+				if (result == null) result = caseOCCI_Link(networkLink);
+				if (result == null) result = caseEntity(networkLink);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case DockerPackage.VOLUMESFROM: {
 				Volumesfrom volumesfrom = (Volumesfrom)theEObject;
 				T result = caseVolumesfrom(volumesfrom);
@@ -119,6 +128,15 @@ public class DockerSwitch<T> extends Switch<T> {
 				if (result == null) result = caseCompute(machine);
 				if (result == null) result = caseResource(machine);
 				if (result == null) result = caseEntity(machine);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DockerPackage.NETWORK: {
+				Network network = (Network)theEObject;
+				T result = caseNetwork(network);
+				if (result == null) result = caseInfrastructure_Network(network);
+				if (result == null) result = caseResource(network);
+				if (result == null) result = caseEntity(network);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -277,6 +295,21 @@ public class DockerSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Network Link</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Network Link</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseNetworkLink(NetworkLink object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Volumesfrom</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -318,6 +351,21 @@ public class DockerSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseMachine(Machine object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Network</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Network</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseNetwork(Network object) {
 		return null;
 	}
 
@@ -558,6 +606,21 @@ public class DockerSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseOCCI_Link(org.occiware.clouddesigner.occi.Link object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Network</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Network</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseInfrastructure_Network(org.occiware.clouddesigner.occi.infrastructure.Network object) {
 		return null;
 	}
 

@@ -117,6 +117,10 @@
 
 		<!-- Multiple backend extension based on infrastructure and CRTP -->
 		<module>../org.occiware.clouddesigner.occi.infrastructure.crtp.backend</module>
+        <module>../org.occiware.clouddesigner.occi.infrastructure.crtp.backend.edit</module>
+        <module>../org.occiware.clouddesigner.occi.infrastructure.crtp.backend.editor</module>
+        <module>../org.occiware.clouddesigner.occi.infrastructure.crtp.backend.tests</module>
+        <module>../org.occiware.clouddesigner.occi.infrastructure.crtp.backend.design</module>
 		
 		<!-- OCCI Xtext -->
 		<module>../org.occiware.clouddesigner.occi.xtext</module>
@@ -133,6 +137,7 @@
 		<module>../org.occiware.clouddesigner.occi.docker.feature</module>
 		<module>../org.occiware.clouddesigner.occi.cloud.feature</module>
 		<module>../org.occiware.clouddesigner.occi.hypervisor.feature</module>
+		<module>../org.occiware.clouddesigner.occi.infrastructure.crtp.backend.feature</module>
 		<module>../org.occiware.clouddesigner.repository</module>
 		<module>../org.occiware.clouddesigner.dependencies</module>
 		<module>../org.occiware.clouddesigner.product</module>
