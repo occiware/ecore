@@ -27,6 +27,7 @@ import com.github.dockerjava.api.command.StartContainerCmd;
 import com.github.dockerjava.api.command.StatsCmd;
 import com.github.dockerjava.api.command.StopContainerCmd;
 import com.github.dockerjava.api.command.WaitContainerCmd;
+import com.github.dockerjava.api.exception.InternalServerErrorException;
 import com.github.dockerjava.api.model.ExposedPort;
 import com.github.dockerjava.api.model.Link;
 import com.github.dockerjava.api.model.LxcConf;
@@ -271,18 +272,33 @@ public class DockerContainerManager {
         DockerContainerManager.dockerClient = _setConfig_1;
       }
     }
-    Set<Map.Entry<Container, Set<NetworkLink>>> _entrySet = networks.entrySet();
-    for (final Map.Entry<Container, Set<NetworkLink>> entry : _entrySet) {
-      Set<NetworkLink> _value = entry.getValue();
-      for (final NetworkLink netLink : _value) {
-        ConnectToNetworkCmd _connectToNetworkCmd = DockerContainerManager.dockerClient.connectToNetworkCmd();
-        Resource _target = netLink.getTarget();
-        String _networkId = ((Network) _target).getNetworkId();
-        ConnectToNetworkCmd _withNetworkId = _connectToNetworkCmd.withNetworkId(_networkId);
-        Container _key = entry.getKey();
-        String _containerid = _key.getContainerid();
-        ConnectToNetworkCmd _withContainerId = _withNetworkId.withContainerId(_containerid);
-        _withContainerId.exec();
+    int _size = networks.size();
+    boolean _greaterThan = (_size > 0);
+    if (_greaterThan) {
+      Set<Map.Entry<Container, Set<NetworkLink>>> _entrySet = networks.entrySet();
+      for (final Map.Entry<Container, Set<NetworkLink>> entry : _entrySet) {
+        Set<NetworkLink> _value = entry.getValue();
+        for (final NetworkLink netLink : _value) {
+          try {
+            ConnectToNetworkCmd _connectToNetworkCmd = DockerContainerManager.dockerClient.connectToNetworkCmd();
+            Resource _target = netLink.getTarget();
+            String _networkId = ((Network) _target).getNetworkId();
+            ConnectToNetworkCmd _withNetworkId = _connectToNetworkCmd.withNetworkId(_networkId);
+            Container _key = entry.getKey();
+            String _containerid = _key.getContainerid();
+            ConnectToNetworkCmd _withContainerId = _withNetworkId.withContainerId(_containerid);
+            _withContainerId.exec();
+          } catch (final Throwable _t) {
+            if (_t instanceof InternalServerErrorException) {
+              final InternalServerErrorException exception = (InternalServerErrorException)_t;
+              String _message = exception.getMessage();
+              String _plus = ("InternalServerErrorException: " + _message);
+              DockerContainerManager.LOGGER.error(_plus);
+            } else {
+              throw Exceptions.sneakyThrow(_t);
+            }
+          }
+        }
       }
     }
   }
