@@ -30,12 +30,17 @@ import org.slf4j.LoggerFactory
 import org.slf4j.Logger
 
 class DockerUtil {
+
 	protected static String OS = System.getProperty("os.name").toLowerCase()
 
 	private static Logger LOGGER = LoggerFactory.getLogger(typeof(DockerUtil))
 	
 	private static String DOCKER_MACHINE = "/usr/local/bin/docker-machine"
 
+	
+	/**
+	 * Run the good docker-machine according to the OS.
+	 */
 	def static getDockerMachineCmd() {
 		var String command = "docker-machine"
 		if (getOS().equalsIgnoreCase("osx")) {
@@ -45,6 +50,9 @@ class DockerUtil {
 		return command
 	}
 
+	/**
+	 * Parse String to Json data.
+	 */
 	def static jsonify(String jsonString) {
 		if (jsonString != null || jsonString == "") {
 			val ObjectMapper mapper = new ObjectMapper
@@ -56,6 +64,9 @@ class DockerUtil {
 		return null
 	}
 
+	/**
+	 * Parse `docker-machine ls` host from the running environment.
+	 */
 	def static getHosts() {
 		val String data = DockerMachineManager.listHostCmd(Runtime.getRuntime)
 		var Map<String, String> hosts = new HashMap
@@ -83,6 +94,9 @@ class DockerUtil {
 		return hosts
 	}
 
+	/**
+	 * Get all existing hosts.
+	 */
 	def static getActiveHost() {
 		val hosts = getHosts
 		for (Map.Entry<String, String> entry : hosts.entrySet) {
@@ -99,6 +113,9 @@ class DockerUtil {
 		}
 	}
 
+	/**
+	 * Get all active hosts.
+	 */
 	def static getActiveHosts() {
 		var Map<String, String> hosts = new HashMap
 		for (Map.Entry<String, String> entry : getHosts.entrySet) {
@@ -109,6 +126,10 @@ class DockerUtil {
 		return hosts
 	}
 
+	
+	/**
+	 * Parse `docker-machine ls` command as table.
+	 */
 	def static getEnv(String machineName) {
 		val String data = DockerMachineManager.getEnvCmd(Runtime.getRuntime, machineName)
 		var List<String[]> hosts = new ArrayList
@@ -130,6 +151,9 @@ class DockerUtil {
 		return null
 	}
 
+	/**
+	 * Delete a model.
+	 */
 	def deleteAllOldModels() {
 		val File myFile = new File("Models")
 		if (myFile.isDirectory()) {
@@ -137,6 +161,9 @@ class DockerUtil {
 		}
 	}
 
+	/**
+	 * Transform InputStream into String.
+	 */
 	def static String asString(InputStream response) {
 
 		val StringWriter logwriter = new StringWriter
@@ -162,6 +189,9 @@ class DockerUtil {
 		}
 	}
 
+	/**
+	 * Parse String in order to detect if it is Integer.
+	 */
 	def static isInteger(String value) {
 		try {
 			Integer.parseInt(value)
@@ -170,7 +200,10 @@ class DockerUtil {
 		}
 		return true
 	}
-
+	
+	/**
+	 * Get the OS.
+	 */
 	def static boolean isWindows() {
 		return (OS.indexOf("win") >= 0)
 	}
