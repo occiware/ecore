@@ -62,6 +62,7 @@ import java.lang.reflect.InvocationTargetException
 import com.github.dockerjava.api.command.CreateNetworkCmd
 import org.occiware.clouddesigner.occi.docker.NetworkLink
 import java.util.Set
+import com.github.dockerjava.api.exception.InternalServerErrorException
 
 class DockerContainerManager {
 	private static DockerClient dockerClient = null
@@ -191,13 +192,17 @@ class DockerContainerManager {
 		} else if (!currentMachine.equalsIgnoreCase(machine.name)) {
 			dockerClient = setConfig(machine.name, properties)
 		}
-		for (Map.Entry<Container, Set<NetworkLink>> entry : networks.entrySet) {
-			for(NetworkLink netLink: entry.value){
-				dockerClient.connectToNetworkCmd().withNetworkId((netLink.target as Network).networkId).withContainerId(entry.key.containerid).exec()
+		if (networks.size > 0) {
+			for (Map.Entry<Container, Set<NetworkLink>> entry : networks.entrySet) {
+				for (NetworkLink netLink : entry.value) {
+					try {
+					dockerClient.connectToNetworkCmd().withNetworkId((netLink.target as Network).networkId).withContainerId(entry.key.containerid).exec()
+					} catch (InternalServerErrorException exception) {
+						LOGGER.error("InternalServerErrorException: " + exception.message)
+					}
+				}
 			}
-			
 		}
-
 	}
 
 	def void removeContainer(String machineName, String containerId) {
