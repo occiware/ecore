@@ -43,6 +43,7 @@ import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.Do
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerUtil;
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.ProcessManager;
 import org.occiware.clouddesigner.occi.infrastructure.ComputeStatus;
+import org.occiware.clouddesigner.occi.infrastructure.NetworkStatus;
 import org.occiware.clouddesigner.occi.infrastructure.RestartMethod;
 import org.occiware.clouddesigner.occi.infrastructure.StopMethod;
 import org.occiware.clouddesigner.occi.infrastructure.SuspendMethod;
@@ -225,6 +226,7 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
       }
     }
     this.createNetwork(networks);
+    this.connectToNetwork(this.compute, networks);
   }
   
   @Override
@@ -529,6 +531,7 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
         }
       }
     }
+    this.connectToNetwork(this.compute, networks);
     String _string_1 = command.toString();
     String _plus_18 = ("EXECUTE COMMAND: " + _string_1);
     MachineManager.LOGGER.info(_plus_18);
@@ -548,24 +551,31 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
     boolean _isEmpty = networks.isEmpty();
     boolean _not = (!_isEmpty);
     if (_not) {
+      Set<String> createdNetworks = CollectionLiterals.<String>newHashSet();
       Set<Map.Entry<Container, Set<NetworkLink>>> _entrySet = networks.entrySet();
       for (final Map.Entry<Container, Set<NetworkLink>> entry : _entrySet) {
         Set<NetworkLink> _value = entry.getValue();
         for (final NetworkLink net : _value) {
           {
             Resource _target = net.getTarget();
-            CreateNetworkResponse createNetworkResponse = this.dockerContainerManager.createNetwork(this.compute, ((Network) _target));
-            Resource _target_1 = net.getTarget();
-            String _id = createNetworkResponse.getId();
-            ((Network) _target_1).setNetworkId(_id);
-            Resource _target_2 = net.getTarget();
-            String _name = ((Network) _target_2).getName();
-            String _name_1 = this.compute.getName();
-            MachineManager.LOGGER.info("Network name=#{} was created inside ---> machine #{}", _name, _name_1);
+            Network tmpNetwork = ((Network) _target);
+            String _name = tmpNetwork.getName();
+            boolean _contains = createdNetworks.contains(_name);
+            boolean _not_1 = (!_contains);
+            if (_not_1) {
+              String _name_1 = tmpNetwork.getName();
+              createdNetworks.add(_name_1);
+              CreateNetworkResponse createNetworkResponse = this.dockerContainerManager.createNetwork(this.compute, tmpNetwork);
+              String _id = createNetworkResponse.getId();
+              tmpNetwork.setNetworkId(_id);
+              String _name_2 = tmpNetwork.getName();
+              String _name_3 = this.compute.getName();
+              MachineManager.LOGGER.info("Network name=#{} was created inside ---> machine #{}", _name_2, _name_3);
+              tmpNetwork.setState(NetworkStatus.ACTIVE);
+            }
           }
         }
       }
-      this.connectToNetwork(this.compute, networks);
     }
   }
   
@@ -889,6 +899,22 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
             Resource _target_1 = contains.getTarget();
             final Container container = ((Container) _target_1);
             container.stop(StopMethod.GRACEFUL);
+          }
+        }
+      }
+      Map<Container, Set<NetworkLink>> networks = this.detectNetworkLink();
+      int _size = networks.size();
+      boolean _greaterThan = (_size > 0);
+      if (_greaterThan) {
+        Set<Map.Entry<Container, Set<NetworkLink>>> _entrySet = networks.entrySet();
+        for (final Map.Entry<Container, Set<NetworkLink>> entry : _entrySet) {
+          Set<NetworkLink> _value = entry.getValue();
+          for (final NetworkLink net : _value) {
+            {
+              Resource _target_2 = net.getTarget();
+              Network tmpNetwork = ((Network) _target_2);
+              tmpNetwork.setState(NetworkStatus.INACTIVE);
+            }
           }
         }
       }
