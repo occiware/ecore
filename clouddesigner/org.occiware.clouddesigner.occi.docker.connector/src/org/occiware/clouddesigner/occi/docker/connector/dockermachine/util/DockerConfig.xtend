@@ -16,7 +16,7 @@ import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
 class DockerConfig {
-	// Initialize logger for CommandFactory.
+	// Initialize logger for DockerConfig.
 	private static Logger LOGGER = LoggerFactory.getLogger(typeof(DockerConfig))	
 	val static String DOCKER_PROPERTIES_PROPERTY = "docker.properties"
 
