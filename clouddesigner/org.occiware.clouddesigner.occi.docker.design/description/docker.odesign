@@ -31,18 +31,23 @@
           </style>
         </edgeMappings>
         <containerMappings name="Machine" preconditionExpression="[self.eInverse()->filter(docker::Contains)->select(target=self) -> isEmpty()/]" labelDirectEdit="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit']" semanticCandidatesExpression="feature:resources" domainClass="Machine">
-          <borderedNodeMappings name="DefineSwarmNode" preconditionExpression="[swarm and not swarm_master/]" labelDirectEdit="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit']" semanticCandidatesExpression="var:self" domainClass="Machine">
-            <style xsi:type="style:DotDescription" showIcon="false" labelExpression="" labelPosition="node" resizeKind="NSEW">
+          <borderedNodeMappings name="DefineSwarmNode" preconditionExpression="[swarm and not swarm_master and state.toString().equalsIgnoreCase('active')/]" labelDirectEdit="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit']" semanticCandidatesExpression="var:self" domainClass="Machine">
+            <style xsi:type="style:DotDescription" showIcon="false" labelExpression="" labelPosition="node">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <forbiddenSides>WEST</forbiddenSides>
+              <forbiddenSides>EAST</forbiddenSides>
+              <forbiddenSides>NORTH</forbiddenSides>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
             </style>
           </borderedNodeMappings>
-          <borderedNodeMappings name="DefineSwarmMaster" preconditionExpression="[swarm and swarm_master/]" labelDirectEdit="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit']" semanticCandidatesExpression="var:self" domainClass="Machine">
-            <style xsi:type="style:DotDescription" showIcon="false" labelExpression="" labelPosition="node" resizeKind="NSEW">
+          <borderedNodeMappings name="DefineSwarmMaster" preconditionExpression="[swarm and swarm_master and state.toString().equalsIgnoreCase('active')/]" labelDirectEdit="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit']" semanticCandidatesExpression="var:self" domainClass="Machine">
+            <style xsi:type="style:DotDescription" showIcon="false" labelExpression="" labelPosition="node" backgroundColor="//@userColorsPalettes[name='custom_palette']/@entries[name='custom_light_yellow']">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+              <forbiddenSides>SOUTH</forbiddenSides>
+              <forbiddenSides>EAST</forbiddenSides>
+              <forbiddenSides>NORTH</forbiddenSides>
             </style>
           </borderedNodeMappings>
           <subNodeMappings name="Container" deletionDescription="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@toolSections.1/@ownedTools[name='unsetContainer']" labelDirectEdit="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit']" semanticCandidatesExpression="[links->filter(docker::Contains).target/]" doubleClickDescription="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@toolSections.0/@ownedTools[name='containerDoubleClick']" domainClass="Container">
