@@ -1295,6 +1295,9 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 		}
 		// Create the network overlay
 		this.createNetwork(networks)
+		// Connect all container to network overlay
+		this.connectToNetwork(this.compute, networks)
+		
 	}
 	
 	override def startAll_execute() {
@@ -1542,7 +1545,10 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 
 			}
 		}
-
+		
+		// Connect all container to network overlay
+		this.connectToNetwork(this.compute, networks)
+		
 		LOGGER.info("EXECUTE COMMAND: " + command.toString)
 	}
 
@@ -1560,20 +1566,23 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 	 */
 	protected def void createNetwork(Map<Container, Set<NetworkLink>> networks) {
 		if (!networks.empty) {
+			var Set<String> createdNetworks = newHashSet()
 			for (Map.Entry<Container, Set<NetworkLink>> entry : networks.entrySet) {
 				for (net : entry.value) {
-					var CreateNetworkResponse createNetworkResponse = dockerContainerManager.createNetwork(this.compute,
-						(net.target as Network))
+					var Network tmpNetwork = net.target as Network
+					if(!createdNetworks.contains(tmpNetwork.name)){
+						createdNetworks.add(tmpNetwork.name)
+					var CreateNetworkResponse createNetworkResponse = dockerContainerManager.createNetwork(this.compute, tmpNetwork)
 					// Update the model networkId
-					(net.target as Network).networkId = createNetworkResponse.id
-					LOGGER.info("Network name=#{} was created inside ---> machine #{}", (net.target as Network).name,
-						this.compute.name)
+					tmpNetwork.networkId = createNetworkResponse.id
+					LOGGER.info("Network name=#{} was created inside ---> machine #{}", tmpNetwork.name, this.compute.name)
+					//TODO change this with Network StateMachine
+					// Change the Network State 
+					tmpNetwork.state = NetworkStatus.ACTIVE
+					}
 				}
 
 			}
-			// Connect all container to network overlay
-			this.connectToNetwork(this.compute, networks)
-
 		}
 	}
 
@@ -1843,7 +1852,16 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 					}
 				}
 			}
-
+			// Stop all the Network
+			var Map<Container, Set<NetworkLink>> networks = detectNetworkLink
+			if (networks.size > 0) {
+				for (Map.Entry<Container, Set<NetworkLink>> entry : networks.entrySet) {
+					for (net : entry.value) {
+						var Network tmpNetwork = net.target as Network
+						tmpNetwork.state = NetworkStatus.INACTIVE
+					}
+				}
+			}
 			// Stop the machine
 			DockerMachineManager.stopCmd(Runtime.getRuntime, compute.name)
 		}
@@ -1851,7 +1869,6 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 		// Execute the docker-machine stop command.
 		LOGGER.info("EXECUTE COMMAND: docker machine stop: " + compute.name)
 
-	// TODO: must be implemented
 	}
 
 	/**
