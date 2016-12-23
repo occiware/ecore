@@ -11,7 +11,6 @@
  */
 package org.occiware.clouddesigner.occi.docker.connector;
 
-import com.github.dockerjava.api.command.CreateNetworkResponse;
 import com.google.common.base.Objects;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ArrayListMultimap;
@@ -565,9 +564,8 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
             if (_not_1) {
               String _name_1 = tmpNetwork.getName();
               createdNetworks.add(_name_1);
-              CreateNetworkResponse createNetworkResponse = this.dockerContainerManager.createNetwork(this.compute, tmpNetwork);
-              String _id = createNetworkResponse.getId();
-              tmpNetwork.setNetworkId(_id);
+              String networkId = this.dockerContainerManager.createNetwork(this.compute, tmpNetwork);
+              tmpNetwork.setNetworkId(networkId);
               String _name_2 = tmpNetwork.getName();
               String _name_3 = this.compute.getName();
               MachineManager.LOGGER.info("Network name=#{} was created inside ---> machine #{}", _name_2, _name_3);
