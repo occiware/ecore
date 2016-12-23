@@ -29,6 +29,7 @@ import java.util.LinkedHashMap
 import java.util.LinkedList
 import java.util.List
 import java.util.Map
+import java.util.Set
 import org.apache.commons.lang.StringUtils
 import org.eclipse.emf.common.command.Command
 import org.eclipse.emf.common.util.EList
@@ -41,7 +42,6 @@ import org.eclipse.emf.transaction.util.TransactionUtil
 import org.occiware.clouddesigner.occi.Configuration
 import org.occiware.clouddesigner.occi.Link
 import org.occiware.clouddesigner.occi.Resource
-import org.occiware.clouddesigner.occi.docker.Container
 import org.occiware.clouddesigner.occi.docker.Contains
 import org.occiware.clouddesigner.occi.docker.DockerPackage
 import org.occiware.clouddesigner.occi.docker.Machine
@@ -93,8 +93,6 @@ import org.slf4j.LoggerFactory
 
 import static com.google.common.base.Preconditions.checkNotNull
 import static org.occiware.clouddesigner.occi.docker.connector.ExecutableContainer.*
-import java.util.Set
-import com.github.dockerjava.api.command.CreateNetworkResponse
 
 /**
  * This class overrides the generated EMF factory of the Docker package.
@@ -1214,7 +1212,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 
 		val StringBuilder parameter = new StringBuilder
 
-		var Map<Container, Set<NetworkLink>> networks = detectNetworkLink
+		var Map<org.occiware.clouddesigner.occi.docker.Container, Set<NetworkLink>> networks = detectNetworkLink
 		
 		// Check other parameters
 		if (compute.swarm) {
@@ -1313,7 +1311,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 		checkNotNull(driverName, "Driver name is null")
 
 		val StringBuilder parameter = new StringBuilder
-		var Map<Container, Set<NetworkLink>> networks = detectNetworkLink
+		var Map<org.occiware.clouddesigner.occi.docker.Container, Set<NetworkLink>> networks = detectNetworkLink
 		// Check other parameters
 		if (compute.swarm) {
 			parameter.append(' --swarm')
@@ -1556,7 +1554,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 	/**
 	 * Connect container to all networks overlay.
 	 */
-	def void connectToNetwork(Machine machine, Map<Container, Set<NetworkLink>> networks){
+	def void connectToNetwork(Machine machine, Map<org.occiware.clouddesigner.occi.docker.Container, Set<NetworkLink>> networks){
 			dockerContainerManager.connectToNetwork(this.compute, networks)
 	}
 
@@ -1564,17 +1562,17 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 	/**
 	 * Create and update the Id of all networks detected inside the machine
 	 */
-	protected def void createNetwork(Map<Container, Set<NetworkLink>> networks) {
+	protected def void createNetwork(Map<org.occiware.clouddesigner.occi.docker.Container, Set<NetworkLink>> networks) {
 		if (!networks.empty) {
 			var Set<String> createdNetworks = newHashSet()
-			for (Map.Entry<Container, Set<NetworkLink>> entry : networks.entrySet) {
+			for (Map.Entry<org.occiware.clouddesigner.occi.docker.Container, Set<NetworkLink>> entry : networks.entrySet) {
 				for (net : entry.value) {
 					var Network tmpNetwork = net.target as Network
 					if(!createdNetworks.contains(tmpNetwork.name)){
 						createdNetworks.add(tmpNetwork.name)
-					var CreateNetworkResponse createNetworkResponse = dockerContainerManager.createNetwork(this.compute, tmpNetwork)
+					var networkId = dockerContainerManager.createNetwork(this.compute, tmpNetwork)
 					// Update the model networkId
-					tmpNetwork.networkId = createNetworkResponse.id
+					tmpNetwork.networkId = networkId
 					LOGGER.info("Network name=#{} was created inside ---> machine #{}", tmpNetwork.name, this.compute.name)
 					//TODO change this with Network StateMachine
 					// Change the Network State 
@@ -1689,15 +1687,15 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 	/**
 	 * Checks inside the machine model if any container has networkLink
 	 */
-	def Map<Container, Set<NetworkLink>> detectNetworkLink() {
-		var Map<Container, Set<NetworkLink>> map_networkLinks = newLinkedHashMap()
+	def Map<org.occiware.clouddesigner.occi.docker.Container, Set<NetworkLink>> detectNetworkLink() {
+		var Map<org.occiware.clouddesigner.occi.docker.Container, Set<NetworkLink>> map_networkLinks = newLinkedHashMap()
 		var Set<NetworkLink> c_networkLinks = newHashSet()
 		for (Link l : compute.links) {
 			val contains = l as Contains
 			if (contains.target instanceof org.occiware.clouddesigner.occi.docker.Container) {
 				val container = contains.target as org.occiware.clouddesigner.occi.docker.Container
 				for (Link cl : container.links) {
-					if (cl instanceof org.occiware.clouddesigner.occi.docker.NetworkLink &&
+					if (cl instanceof NetworkLink &&
 						cl.target instanceof Network) {
 						c_networkLinks.add((cl as NetworkLink))
 					}
@@ -1853,9 +1851,9 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 				}
 			}
 			// Stop all the Network
-			var Map<Container, Set<NetworkLink>> networks = detectNetworkLink
+			var Map<org.occiware.clouddesigner.occi.docker.Container, Set<NetworkLink>> networks = detectNetworkLink
 			if (networks.size > 0) {
-				for (Map.Entry<Container, Set<NetworkLink>> entry : networks.entrySet) {
+				for (Map.Entry<org.occiware.clouddesigner.occi.docker.Container, Set<NetworkLink>> entry : networks.entrySet) {
 					for (net : entry.value) {
 						var Network tmpNetwork = net.target as Network
 						tmpNetwork.state = NetworkStatus.INACTIVE
