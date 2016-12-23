@@ -13,12 +13,19 @@ package org.occiware.clouddesigner.occi.docker.connector.dockerjava
 import com.github.dockerjava.api.DockerClient
 import com.github.dockerjava.api.command.CreateContainerCmd
 import com.github.dockerjava.api.command.CreateContainerResponse
+import com.github.dockerjava.api.command.CreateNetworkCmd
+import com.github.dockerjava.api.command.CreateNetworkResponse
 import com.github.dockerjava.api.command.InspectContainerResponse
+import com.github.dockerjava.api.exception.InternalServerErrorException
 import com.github.dockerjava.api.model.ExposedPort
 import com.github.dockerjava.api.model.Link
 import com.github.dockerjava.api.model.LxcConf
+import com.github.dockerjava.api.model.Network.Ipam.Config
 import com.github.dockerjava.api.model.Ports
+import com.github.dockerjava.api.model.Ports.Binding
+import com.github.dockerjava.api.model.RestartPolicy
 import com.github.dockerjava.api.model.Volume
+import com.github.dockerjava.core.DefaultDockerClientConfig
 import com.github.dockerjava.core.DockerClientBuilder
 import com.github.dockerjava.core.DockerClientConfig
 import com.github.dockerjava.core.command.PullImageResultCallback
@@ -34,15 +41,20 @@ import java.io.File
 import java.io.FileReader
 import java.io.FileWriter
 import java.io.IOException
+import java.lang.reflect.InvocationTargetException
 import java.util.ArrayList
 import java.util.HashMap
 import java.util.LinkedHashMap
 import java.util.LinkedHashSet
 import java.util.List
 import java.util.Map
+import java.util.Properties
+import java.util.Set
 import org.apache.commons.lang.StringUtils
 import org.occiware.clouddesigner.occi.docker.Container
 import org.occiware.clouddesigner.occi.docker.Machine
+import org.occiware.clouddesigner.occi.docker.Network
+import org.occiware.clouddesigner.occi.docker.NetworkLink
 import org.occiware.clouddesigner.occi.docker.connector.EventCallBack
 import org.occiware.clouddesigner.occi.docker.connector.StatsCallback
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerMachineManager
@@ -51,18 +63,6 @@ import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.Docke
 import org.occiware.clouddesigner.occi.docker.preference.preferences.PreferenceValues
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import com.github.dockerjava.api.model.RestartPolicy
-import com.github.dockerjava.api.model.Ports.Binding
-import java.util.Properties
-import com.github.dockerjava.core.DefaultDockerClientConfig
-import com.github.dockerjava.api.model.Network.Ipam.Config
-import org.occiware.clouddesigner.occi.docker.Network
-import com.github.dockerjava.api.command.CreateNetworkResponse
-import java.lang.reflect.InvocationTargetException
-import com.github.dockerjava.api.command.CreateNetworkCmd
-import org.occiware.clouddesigner.occi.docker.NetworkLink
-import java.util.Set
-import com.github.dockerjava.api.exception.InternalServerErrorException
 
 class DockerContainerManager {
 	private static DockerClient dockerClient = null
@@ -147,10 +147,10 @@ class DockerContainerManager {
 		} else if (!currentMachine.equalsIgnoreCase(machine.name)) {
 			dockerClient = setConfig(machine.name, properties)
 		}
-		
+
 		var List<Config> ipamConfigs = newArrayList()
 		var com.github.dockerjava.api.model.Network.Ipam ipam = null
-		
+
 		if (StringUtils.isNotBlank(network.subnet)) {
 			ipamConfigs.add(new com.github.dockerjava.api.model.Network.Ipam.Config().withSubnet(network.subnet))
 		} else {
@@ -168,21 +168,34 @@ class DockerContainerManager {
 			ipam = new com.github.dockerjava.api.model.Network().ipam.withConfig(ipamConfigs)
 		} catch (InvocationTargetException exception) {
 			LOGGER.error(" InvocationTargetException: " + exception.cause.message)
-		} catch (Exception e){
+		} catch (Exception e) {
 			LOGGER.error("Exception:" + e.message)
 		}
 		// Initiate the NetworkCommand
 		var CreateNetworkCmd createNetworkCmd = dockerClient.createNetworkCmd().withIpam(ipam)
 		if (StringUtils.isNotBlank(network.name)) {
 			createNetworkCmd = createNetworkCmd.withName(network.name)
-		}		
+		}
 		if (StringUtils.isNotBlank(network.driver)) {
 			createNetworkCmd = createNetworkCmd.withDriver(network.driver)
-		}			
-		
-		// Create an overlay network
-		var CreateNetworkResponse createNetworkResponse = createNetworkCmd.exec()
-		return createNetworkResponse
+		}
+
+		var CreateNetworkResponse createNetworkResponse = null
+		var com.github.dockerjava.api.model.Network updateNetwork = null
+		try {
+			// Create an overlay network
+			createNetworkResponse = createNetworkCmd.withCheckDuplicate(true).exec()
+		} catch (InternalServerErrorException exception) {
+			LOGGER.error(exception.message)
+			createNetworkResponse = null
+			updateNetwork = dockerClient.inspectNetworkCmd().withNetworkId(network.name).exec()
+			updateNetwork.id
+		}
+		if (createNetworkResponse != null) {
+			return createNetworkResponse.id
+		} else {
+			return updateNetwork.id
+		}
 	}
 
 	def connectToNetwork(Machine machine, Map<Container, Set<NetworkLink>> networks) {
