@@ -19,6 +19,7 @@ import com.github.dockerjava.api.command.CreateNetworkResponse;
 import com.github.dockerjava.api.command.EventsCmd;
 import com.github.dockerjava.api.command.InspectContainerCmd;
 import com.github.dockerjava.api.command.InspectContainerResponse;
+import com.github.dockerjava.api.command.InspectNetworkCmd;
 import com.github.dockerjava.api.command.ListContainersCmd;
 import com.github.dockerjava.api.command.PullImageCmd;
 import com.github.dockerjava.api.command.RemoveContainerCmd;
@@ -169,7 +170,7 @@ public class DockerContainerManager {
     return result;
   }
   
-  public CreateNetworkResponse createNetwork(final Machine machine, final Network network) {
+  public String createNetwork(final Machine machine, final Network network) {
     boolean _equals = Objects.equal(DockerContainerManager.dockerClient, null);
     if (_equals) {
       String _name = machine.getName();
@@ -252,8 +253,34 @@ public class DockerContainerManager {
       CreateNetworkCmd _withDriver = createNetworkCmd.withDriver(_driver_1);
       createNetworkCmd = _withDriver;
     }
-    CreateNetworkResponse createNetworkResponse = createNetworkCmd.exec();
-    return createNetworkResponse;
+    CreateNetworkResponse createNetworkResponse = null;
+    com.github.dockerjava.api.model.Network updateNetwork = null;
+    try {
+      CreateNetworkCmd _withCheckDuplicate = createNetworkCmd.withCheckDuplicate(true);
+      CreateNetworkResponse _exec = _withCheckDuplicate.exec();
+      createNetworkResponse = _exec;
+    } catch (final Throwable _t_1) {
+      if (_t_1 instanceof InternalServerErrorException) {
+        final InternalServerErrorException exception_1 = (InternalServerErrorException)_t_1;
+        String _message_2 = exception_1.getMessage();
+        DockerContainerManager.LOGGER.error(_message_2);
+        createNetworkResponse = null;
+        InspectNetworkCmd _inspectNetworkCmd = DockerContainerManager.dockerClient.inspectNetworkCmd();
+        String _name_5 = network.getName();
+        InspectNetworkCmd _withNetworkId = _inspectNetworkCmd.withNetworkId(_name_5);
+        com.github.dockerjava.api.model.Network _exec_1 = _withNetworkId.exec();
+        updateNetwork = _exec_1;
+        updateNetwork.getId();
+      } else {
+        throw Exceptions.sneakyThrow(_t_1);
+      }
+    }
+    boolean _notEquals = (!Objects.equal(createNetworkResponse, null));
+    if (_notEquals) {
+      return createNetworkResponse.getId();
+    } else {
+      return updateNetwork.getId();
+    }
   }
   
   public void connectToNetwork(final Machine machine, final Map<Container, Set<NetworkLink>> networks) {
