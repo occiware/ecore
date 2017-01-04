@@ -301,6 +301,7 @@ public class UserDataHelper implements Runnable, IRunnableWithProgress {
 		try {
 			// example of user datas: userDatas = "touch /tmp/userdata.txt |
 			// 'toto:1,titi: hello world' > /tmp/userdata.txt"
+			LOGGER.info("Applying user datas please standby...");
 			GuestOperationsManager gom = vClient.getServiceInstance().getGuestOperationsManager();
 			NamePasswordAuthentication npa = new NamePasswordAuthentication();
 			npa.username = username;

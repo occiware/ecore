@@ -1991,7 +1991,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		VCenterClient.disconnect();
 		if (vmTemplate != null) {
 			// applyUserData(monitor, vmFolder, vmName);
-			applyUserData(monitor, vmFolder, vmName);
+			applyUserData(monitor, vmName);
 		}
 		
 		if (toMonitor) {
@@ -2442,27 +2442,17 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 			}
 		}
 		
-		// For testing purpose...TO DELETE After..
-		// There is an os so --< User data part is possible.
-//		if (hasMixinUserData() && hasMixinCredential()) {
-//			UserDataHelper userDataHelper = new UserDataHelper(morId, vmName, null, userData, username, password);
-//			try {
-//				if (toMonitor) {
-//					// Run directly the operation within this eclipse thread.
-//					userDataHelper.run(subMonitor);
-//				} else {
-//					// Create a new thread with simple runnable.
-//					Thread thread = new Thread(userDataHelper);
-//					thread.start(); 
-//				}
-//				
-//			} catch (Exception ex) {
-//				ex.printStackTrace();
-//				LOGGER.error("Exception thrown : " + ex.getClass().getName());
-//				LOGGER.error("Message: "+ ex.getMessage());
-//			}
-//		}
-		
+		if (hasMixinCredential()) {
+			username = getAttributeValueByOcciKey(ATTR_USERNAME);
+			password = getAttributeValueByOcciKey(ATTR_PASSWORD);
+		}
+		if (hasMixinUserData()) {
+			userData = getAttributeValueByOcciKey(ATTR_USER_DATA);
+			LOGGER.info("User data : " + userData);
+		}
+		if (userData != null && !userData.isEmpty()) {
+			applyUserData(monitor, vmName);
+		}
 		
 		if (toMonitor) {
 			subMonitor.worked(100);
@@ -3092,10 +3082,9 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 	/**
 	 * Apply user data on the instance.
 	 * @param monitor
-	 * @param vmFolder
 	 * @param vmName
 	 */
-	private void applyUserData(IProgressMonitor monitor, Folder vmFolder, String vmName) {
+	private void applyUserData(IProgressMonitor monitor, String vmName) {
 		// There is an os so --< User data part is possible.
 		if (hasMixinUserData() && hasMixinCredential()) {
 			LOGGER.info("applying user datas...");
