@@ -25,7 +25,7 @@ class Graph<T> {
 	/*
          * Organize the deployment order of the Nodes
          */
-	private List<GraphNode<T>> deploymentOrder = newArrayList
+	private List<GraphNode<T>> deploymentOrder = new ArrayList
 
 	/*
          * These are basically the nodes of the graph
@@ -42,6 +42,7 @@ class Graph<T> {
          * It holds a list of the already evaluated nodes
          */
 	private List<GraphNode<T>> evaluatedNodes = new ArrayList<GraphNode<T>>
+
 
 	/*
          * The main constructor that has one parameter representing the callback
