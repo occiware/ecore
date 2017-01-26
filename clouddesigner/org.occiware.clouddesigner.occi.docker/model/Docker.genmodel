@@ -268,6 +268,36 @@
       </genFeatures>
     </genClasses>
     <genClasses>
+      <ecoreClass href="Docker.ecore#//Volume"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="Docker.ecore#//Volume/driver"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="Docker.ecore#//Volume/labels"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="Docker.ecore#//Volume/options"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="Docker.ecore#//Volume/source"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="Docker.ecore#//Volume/destination"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="Docker.ecore#//Volume/mode"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="Docker.ecore#//Volume/rw"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="Docker.ecore#//Volume/propagation"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="Docker.ecore#//Volume/name"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
       <ecoreClass href="Docker.ecore#//Network"/>
       <genFeatures createChild="false">
         <ecoreFeature xsi:type="ecore:EAttribute" href="Docker.ecore#//Network/networkId"/>
