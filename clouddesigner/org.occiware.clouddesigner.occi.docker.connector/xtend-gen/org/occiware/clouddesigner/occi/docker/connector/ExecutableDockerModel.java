@@ -511,4 +511,18 @@ public class ExecutableDockerModel {
     }
     return false;
   }
+  
+  public boolean containNetwork(final String networkName) {
+    EList<Resource> _resources = this.configuration.getResources();
+    for (final Resource r : _resources) {
+      if ((r instanceof Network)) {
+        String _name = ((Network) r).getName();
+        boolean _equals = Objects.equal(_name, networkName);
+        if (_equals) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
 }
