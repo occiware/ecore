@@ -85,6 +85,15 @@ public interface DockerFactory extends EFactory {
 	Machine createMachine();
 
 	/**
+	 * Returns a new object of class '<em>Volume</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Volume</em>'.
+	 * @generated
+	 */
+	Volume createVolume();
+
+	/**
 	 * Returns a new object of class '<em>Network</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
