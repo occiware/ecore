@@ -63,6 +63,11 @@ import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.Docke
 import org.occiware.clouddesigner.occi.docker.preference.preferences.PreferenceValues
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import org.occiware.clouddesigner.occi.docker.Contains
+import org.occiware.clouddesigner.occi.docker.Volumesfrom
+import com.github.dockerjava.api.model.VolumesFrom
+import org.occiware.clouddesigner.occi.Resource
+import com.github.dockerjava.api.model.Bind
 
 class DockerContainerManager {
 	private static DockerClient dockerClient = null
@@ -297,7 +302,13 @@ class DockerContainerManager {
 			create.withUser(container.user)
 		}
 		if (StringUtils.isNotBlank(container.volumes)) {
-			create.withVolumes(new Volume(container.volumes))
+			var String[] volumes = StringUtils.deleteWhitespace(container.volumes).split(",")
+			var List<Volume> vs = new ArrayList<Volume>
+			for(v:volumes){
+				 var Volume newVolume = new Volume(v)
+				 vs.add(newVolume)
+			}
+			create.withVolumes(vs)
 		}
 		if (container.mem_limit > 0) {
 			create.withMemory(Long.valueOf(container.mem_limit))
@@ -346,6 +357,43 @@ class DockerContainerManager {
 			create.withWorkingDir(StringUtils.deleteWhitespace(container.working_dir))
 			create.cpusetCpus
 		}		
+		var List<Container> containersWithVolumes = new ArrayList
+		var List<org.occiware.clouddesigner.occi.docker.Volume> volumesInsideHost = new ArrayList
+		for(Resource r: containersWithVolumes(container)){
+			if(r instanceof Container){
+				containersWithVolumes.add(r as Container)
+			}
+			if(r instanceof org.occiware.clouddesigner.occi.docker.Volume){
+				volumesInsideHost.add(r as org.occiware.clouddesigner.occi.docker.Volume)
+			}
+		}
+		//val List<Container> containersWithVolumes = containersWithVolumes(container)
+		if(!containersWithVolumes.nullOrEmpty){
+			var List<VolumesFrom> volumesFrom = new ArrayList
+			for(Container c : containersWithVolumes){
+				volumesFrom.add(new VolumesFrom(c.name))
+				LOGGER.info(c.name)
+			}
+			create.withVolumesFrom(volumesFrom)
+		}
+
+		if(!volumesInsideHost.nullOrEmpty){
+			var List<Bind> volumesBind = new ArrayList
+			var List<Volume> vs = new ArrayList<Volume>
+			for(org.occiware.clouddesigner.occi.docker.Volume v : volumesInsideHost){
+				var Volume newVolume = null
+				if(!StringUtils.isBlank(v.destination)){
+					newVolume = new Volume(v.destination)
+					vs.add(newVolume)
+				}
+				if(!StringUtils.isBlank(v.source)){
+					var newBind = new Bind(v.source, newVolume)
+					volumesBind.add(newBind)
+				}
+			}
+			create.withVolumes(vs)
+			create.withBinds(volumesBind)
+		}
 
 		return create
 	}
@@ -416,7 +464,13 @@ class DockerContainerManager {
 			create.withUser(StringUtils.deleteWhitespace(container.user))
 		}
 		if (!StringUtils.isBlank(container.volumes)) {
-			create.withVolumes(new Volume(StringUtils.deleteWhitespace(container.volumes)))
+			var String[] volumes = StringUtils.deleteWhitespace(container.volumes).split(",")
+			var List<Volume> vs = new ArrayList<Volume>
+			for(v:volumes){
+				 var Volume newVolume = new Volume(v)
+				 vs.add(newVolume)
+			}
+			create.withVolumes(vs)
 		}
 		if (container.mem_limit > 0) {
 			create.withMemory(Long.valueOf(container.mem_limit))
@@ -429,6 +483,7 @@ class DockerContainerManager {
 			val LxcConf lxcCon = new LxcConf("key", "value")
 			create.withLxcConf(lxcCon)
 		}
+		// set container link
 		if (containerDependency.containsKey(container.name)) {
 			val List<String> depdupeContainers = new ArrayList<String>(
 				new LinkedHashSet<String>(containerDependency.get(container.name)))
@@ -444,7 +499,58 @@ class DockerContainerManager {
 				create.withLinks(dockeClientlink)
 			}
 		}
-		return create
+		var List<Container> containersWithVolumes = new ArrayList
+		var List<org.occiware.clouddesigner.occi.docker.Volume> volumesInsideHost = new ArrayList
+		for(Resource r: containersWithVolumes(container)){
+			if(r instanceof Container){
+				containersWithVolumes.add(r as Container)
+			}
+			if(r instanceof org.occiware.clouddesigner.occi.docker.Volume){
+				volumesInsideHost.add(r as org.occiware.clouddesigner.occi.docker.Volume)
+			}
+		}
+		//val List<Container> containersWithVolumes = containersWithVolumes(container)
+		if(!containersWithVolumes.nullOrEmpty){
+			var List<VolumesFrom> volumesFrom = new ArrayList
+			for(Container c : containersWithVolumes){
+				volumesFrom.add(new VolumesFrom(c.name))
+				LOGGER.info(c.name)
+			}
+			create.withVolumesFrom(volumesFrom)
+		}
+
+		if(!volumesInsideHost.nullOrEmpty){
+			var List<Bind> volumesBind = new ArrayList
+			var List<Volume> vs = new ArrayList<Volume>
+			for(org.occiware.clouddesigner.occi.docker.Volume v : volumesInsideHost){
+				var Volume newVolume = null
+				if(!StringUtils.isBlank(v.destination)){
+					newVolume = new Volume(v.destination)
+					vs.add(newVolume)
+				}
+				if(!StringUtils.isBlank(v.source)){
+					var newBind = new Bind(v.source, newVolume)
+					volumesBind.add(newBind)
+				}
+			}
+			create.withVolumes(vs)
+			create.withBinds(volumesBind)
+		}		return create
+	}
+
+
+	def List<Resource> containersWithVolumes(Container c) {
+		var containersFrom = new ArrayList 
+		for (org.occiware.clouddesigner.occi.Link l : c.links) {
+			if(l instanceof Volumesfrom){
+				containersFrom.add(l.target)
+//				if (l.target instanceof org.occiware.clouddesigner.occi.docker.Container) {
+//					val container = l.target as org.occiware.clouddesigner.occi.docker.Container
+//					containersFrom.add(container)
+//				}
+			}
+		}
+		return containersFrom
 	}
 
 	def InspectContainerResponse inspectContainer(Map<DockerClient, CreateContainerResponse> map) {
