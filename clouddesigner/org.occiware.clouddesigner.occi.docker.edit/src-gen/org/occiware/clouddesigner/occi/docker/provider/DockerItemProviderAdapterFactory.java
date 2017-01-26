@@ -219,6 +219,29 @@ public class DockerItemProviderAdapterFactory extends DockerAdapterFactory imple
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.occiware.clouddesigner.occi.docker.Volume} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected VolumeItemProvider volumeItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.occiware.clouddesigner.occi.docker.Volume}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createVolumeAdapter() {
+		if (volumeItemProvider == null) {
+			volumeItemProvider = new VolumeItemProvider(this);
+		}
+
+		return volumeItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.occiware.clouddesigner.occi.docker.Network} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -622,6 +645,7 @@ public class DockerItemProviderAdapterFactory extends DockerAdapterFactory imple
 		if (volumesfromItemProvider != null) volumesfromItemProvider.dispose();
 		if (containsItemProvider != null) containsItemProvider.dispose();
 		if (machineItemProvider != null) machineItemProvider.dispose();
+		if (volumeItemProvider != null) volumeItemProvider.dispose();
 		if (networkItemProvider != null) networkItemProvider.dispose();
 		if (machine_Amazon_EC2ItemProvider != null) machine_Amazon_EC2ItemProvider.dispose();
 		if (machine_Digital_OceanItemProvider != null) machine_Digital_OceanItemProvider.dispose();
