@@ -93,6 +93,8 @@ import org.slf4j.LoggerFactory
 
 import static com.google.common.base.Preconditions.checkNotNull
 import static org.occiware.clouddesigner.occi.docker.connector.ExecutableContainer.*
+import org.occiware.clouddesigner.occi.docker.impl.VolumeImpl
+import org.eclipse.xtext.findReferences.TargetURIs.Key
 
 /**
  * This class overrides the generated EMF factory of the Docker package.
@@ -234,6 +236,14 @@ class ExecutableDockerFactory extends DockerFactoryImpl {
 	override def createNetwork() {
 		LOGGER.info(this.class.name + ":createNetwork()")
 		new ExecutableNetwork
+	}
+
+	/**
+	 * Create an executable Network instance.
+	 */
+	override def createVolume() {
+		LOGGER.info(this.class.name + ":createVolume()")
+		new ExecutableVolume
 	}
 
 }
@@ -1714,8 +1724,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 		var boolean link = false
 		for (org.occiware.clouddesigner.occi.docker.Container c : containers) {
 			if (c != null) {
-				if (c.links.size >
-					0) {
+				if (c.links.size >0) {
 					link = true
 					return link
 				}
@@ -1730,7 +1739,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 	 */
 	def List<org.occiware.clouddesigner.occi.docker.Container> deploymentOrder() {
 		val List<org.occiware.clouddesigner.occi.docker.Container> containers = newArrayList
-		var Graph<org.occiware.clouddesigner.occi.docker.Container> graph = new Graph<org.occiware.clouddesigner.occi.docker.Container>
+		var Graph<org.occiware.clouddesigner.occi.docker.Container> graph = new Graph<org.occiware.clouddesigner.occi.docker.Container>()
 
 		for (Link l : compute.links) {
 			val contains = l as Contains
@@ -1746,12 +1755,18 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 
 			}
 		}
-
-		for (GraphNode<org.occiware.clouddesigner.occi.docker.Container> c : graph.deploymentOrder) {
-			containers.add(c.value)
-			LOGGER.info("--->" + c.value)
+		LOGGER.info("------------------- GRAPH : "+ graph)
+		try {
+		if(graph.deploymentOrder !=null){
+			for (GraphNode<org.occiware.clouddesigner.occi.docker.Container> c : graph.deploymentOrder) {
+				containers.add(c.value)
+				LOGGER.info("--->" + c.value)
+			}
 		}
-
+			
+		} catch (NullPointerException exception) {
+			
+		}		
 		// Add standalone container
 		for (org.occiware.clouddesigner.occi.docker.Container standaloneContainer : this.leafContainers) {
 			if (!containers.contains(standaloneContainer)) {
@@ -1767,13 +1782,18 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 	 */
 	def List<org.occiware.clouddesigner.occi.docker.Container> getContainers() {
 		val List<org.occiware.clouddesigner.occi.docker.Container> containers = newArrayList
-		compute.links.forEach[elt|containers.add((elt.target as org.occiware.clouddesigner.occi.docker.Container))]
+		for(Link link : compute.links){
+			if(link.target instanceof org.occiware.clouddesigner.occi.docker.Container){
+				containers.add(link.target as org.occiware.clouddesigner.occi.docker.Container)
+			}
+		}
+		//compute.links.forEach[elt|containers.add((elt.target as org.occiware.clouddesigner.occi.docker.Container))]
 		containers.removeAll(Collections.singleton(null))
 		return containers
 	}
 
 	/**
-	 * Get all containers witch has not a link to another container.
+	 * Get all containers which has not a link to another container.
 	 */
 	def List<org.occiware.clouddesigner.occi.docker.Container> leafContainers() {
 		val List<org.occiware.clouddesigner.occi.docker.Container> containers = this.containers
@@ -1781,6 +1801,16 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 		for (org.occiware.clouddesigner.occi.docker.Container c : containers) {
 			if (c.links.size == 0) {
 				leafContainers.add(c)
+			}else{
+				var Boolean tagertContainerFound = false
+				for(Link l : c.links){
+					if(l.target instanceof org.occiware.clouddesigner.occi.docker.Container){
+						tagertContainerFound = true
+					}
+				}
+				if(!tagertContainerFound){
+					leafContainers.add(c)
+				}
 			}
 		}
 		return leafContainers
@@ -2597,6 +2627,30 @@ class ExecutableNetwork extends NetworkImpl {
 	}
 }
 
+
+/**
+ * This class implements executable Volume.
+ */
+class ExecutableVolume extends VolumeImpl {
+
+	// Initialize logger for ExecutableDockerModel.
+	private static Logger LOGGER = LoggerFactory.getLogger(typeof(ExecutableVolume))
+
+	/**
+	 * Volume have a state machine.
+	 */
+//	val stateMachine = new NetworkStateMachine<Network>(this) {
+//
+//		/**
+//		 * Start the Docker container.
+//		 */
+//		override def create_execute() {
+//			LOGGER.info("EXECUTING Volume create action.")
+//		}
+//
+//	}
+}
+
 class ExecutableDockerModel {
 
 	// Initialize logger for ExecutableDockerModel.
@@ -2942,6 +2996,17 @@ class ExecutableDockerModel {
 		for (Resource r : this.configuration.resources) {
 			if (r instanceof Machine) {
 				if ((r as Machine).name == machineName) {
+					return true
+				}
+			}
+		}
+		return false
+	}
+
+	def boolean containNetwork(String networkName) {
+		for (Resource r : this.configuration.resources) {
+			if (r instanceof Network) {
+				if ((r as Network).name == networkName) {
 					return true
 				}
 			}
