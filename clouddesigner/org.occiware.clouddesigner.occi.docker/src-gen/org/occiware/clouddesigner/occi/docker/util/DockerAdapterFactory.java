@@ -24,6 +24,7 @@ import org.occiware.clouddesigner.occi.Resource;
 import org.occiware.clouddesigner.occi.docker.*;
 
 import org.occiware.clouddesigner.occi.infrastructure.Compute;
+import org.occiware.clouddesigner.occi.infrastructure.Storage;
 
 /**
  * <!-- begin-user-doc -->
@@ -106,6 +107,10 @@ public class DockerAdapterFactory extends AdapterFactoryImpl {
 				return createMachineAdapter();
 			}
 			@Override
+			public Adapter caseVolume(Volume object) {
+				return createVolumeAdapter();
+			}
+			@Override
 			public Adapter caseNetwork(Network object) {
 				return createNetworkAdapter();
 			}
@@ -172,6 +177,10 @@ public class DockerAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseOCCI_Link(org.occiware.clouddesigner.occi.Link object) {
 				return createOCCI_LinkAdapter();
+			}
+			@Override
+			public Adapter caseStorage(Storage object) {
+				return createStorageAdapter();
 			}
 			@Override
 			public Adapter caseInfrastructure_Network(org.occiware.clouddesigner.occi.infrastructure.Network object) {
@@ -278,6 +287,20 @@ public class DockerAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createMachineAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.occiware.clouddesigner.occi.docker.Volume <em>Volume</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.occiware.clouddesigner.occi.docker.Volume
+	 * @generated
+	 */
+	public Adapter createVolumeAdapter() {
 		return null;
 	}
 
@@ -516,6 +539,20 @@ public class DockerAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createOCCI_LinkAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.occiware.clouddesigner.occi.infrastructure.Storage <em>Storage</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.occiware.clouddesigner.occi.infrastructure.Storage
+	 * @generated
+	 */
+	public Adapter createStorageAdapter() {
 		return null;
 	}
 

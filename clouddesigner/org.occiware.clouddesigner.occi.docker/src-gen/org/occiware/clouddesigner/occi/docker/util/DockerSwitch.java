@@ -22,6 +22,7 @@ import org.occiware.clouddesigner.occi.Resource;
 import org.occiware.clouddesigner.occi.docker.*;
 
 import org.occiware.clouddesigner.occi.infrastructure.Compute;
+import org.occiware.clouddesigner.occi.infrastructure.Storage;
 
 /**
  * <!-- begin-user-doc -->
@@ -128,6 +129,15 @@ public class DockerSwitch<T> extends Switch<T> {
 				if (result == null) result = caseCompute(machine);
 				if (result == null) result = caseResource(machine);
 				if (result == null) result = caseEntity(machine);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DockerPackage.VOLUME: {
+				Volume volume = (Volume)theEObject;
+				T result = caseVolume(volume);
+				if (result == null) result = caseStorage(volume);
+				if (result == null) result = caseResource(volume);
+				if (result == null) result = caseEntity(volume);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -351,6 +361,21 @@ public class DockerSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseMachine(Machine object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Volume</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Volume</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseVolume(Volume object) {
 		return null;
 	}
 
@@ -606,6 +631,21 @@ public class DockerSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseOCCI_Link(org.occiware.clouddesigner.occi.Link object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Storage</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Storage</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseStorage(Storage object) {
 		return null;
 	}
 
