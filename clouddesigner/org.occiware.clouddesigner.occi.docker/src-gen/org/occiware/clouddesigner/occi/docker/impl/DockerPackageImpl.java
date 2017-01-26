@@ -41,6 +41,7 @@ import org.occiware.clouddesigner.occi.docker.Machine_VirtualBox;
 import org.occiware.clouddesigner.occi.docker.Mode;
 import org.occiware.clouddesigner.occi.docker.Network;
 import org.occiware.clouddesigner.occi.docker.NetworkLink;
+import org.occiware.clouddesigner.occi.docker.Volume;
 import org.occiware.clouddesigner.occi.docker.Volumesfrom;
 
 import org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage;
@@ -93,6 +94,13 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * @generated
 	 */
 	private EClass machineEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass volumeEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1010,6 +1018,96 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 */
 	public EAttribute getMachine_Tls_san() {
 		return (EAttribute)machineEClass.getEStructuralFeatures().get(17);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getVolume() {
+		return volumeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getVolume_Driver() {
+		return (EAttribute)volumeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getVolume_Labels() {
+		return (EAttribute)volumeEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getVolume_Options() {
+		return (EAttribute)volumeEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getVolume_Source() {
+		return (EAttribute)volumeEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getVolume_Destination() {
+		return (EAttribute)volumeEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getVolume_Mode() {
+		return (EAttribute)volumeEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getVolume_Rw() {
+		return (EAttribute)volumeEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getVolume_Propagation() {
+		return (EAttribute)volumeEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getVolume_Name() {
+		return (EAttribute)volumeEClass.getEStructuralFeatures().get(8);
 	}
 
 	/**
@@ -2165,6 +2263,17 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		createEAttribute(machineEClass, MACHINE__SWARM_EXPERIMENTAL);
 		createEAttribute(machineEClass, MACHINE__TLS_SAN);
 
+		volumeEClass = createEClass(VOLUME);
+		createEAttribute(volumeEClass, VOLUME__DRIVER);
+		createEAttribute(volumeEClass, VOLUME__LABELS);
+		createEAttribute(volumeEClass, VOLUME__OPTIONS);
+		createEAttribute(volumeEClass, VOLUME__SOURCE);
+		createEAttribute(volumeEClass, VOLUME__DESTINATION);
+		createEAttribute(volumeEClass, VOLUME__MODE);
+		createEAttribute(volumeEClass, VOLUME__RW);
+		createEAttribute(volumeEClass, VOLUME__PROPAGATION);
+		createEAttribute(volumeEClass, VOLUME__NAME);
+
 		networkEClass = createEClass(NETWORK);
 		createEAttribute(networkEClass, NETWORK__NETWORK_ID);
 		createEAttribute(networkEClass, NETWORK__NAME);
@@ -2334,6 +2443,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		volumesfromEClass.getESuperTypes().add(theOCCIPackage.getLink());
 		containsEClass.getESuperTypes().add(theOCCIPackage.getLink());
 		machineEClass.getESuperTypes().add(theInfrastructurePackage.getCompute());
+		volumeEClass.getESuperTypes().add(theInfrastructurePackage.getStorage());
 		networkEClass.getESuperTypes().add(theInfrastructurePackage.getNetwork());
 		machine_Amazon_EC2EClass.getESuperTypes().add(this.getMachine());
 		machine_Digital_OceanEClass.getESuperTypes().add(this.getMachine());
@@ -2447,6 +2557,17 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		initEAttribute(getMachine_Swarm_experimental(), theOCCIPackage.getString(), "swarm_experimental", null, 0, 1, Machine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_Tls_san(), theOCCIPackage.getString(), "tls_san", null, 0, 1, Machine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(volumeEClass, Volume.class, "Volume", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getVolume_Driver(), theOCCIPackage.getString(), "driver", "local", 0, 1, Volume.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getVolume_Labels(), theOCCIPackage.getString(), "labels", null, 0, 1, Volume.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getVolume_Options(), theOCCIPackage.getString(), "options", null, 0, 1, Volume.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getVolume_Source(), theOCCIPackage.getString(), "source", null, 0, 1, Volume.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getVolume_Destination(), theOCCIPackage.getString(), "destination", null, 0, 1, Volume.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getVolume_Mode(), theOCCIPackage.getString(), "mode", null, 0, 1, Volume.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getVolume_Rw(), theOCCIPackage.getString(), "rw", null, 0, 1, Volume.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getVolume_Propagation(), theOCCIPackage.getString(), "propagation", null, 0, 1, Volume.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getVolume_Name(), theOCCIPackage.getString(), "name", null, 0, 1, Volume.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(networkEClass, Network.class, "Network", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getNetwork_NetworkId(), theOCCIPackage.getString(), "networkId", null, 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getNetwork_Name(), theOCCIPackage.getString(), "name", null, 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2458,7 +2579,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		initEAttribute(getNetwork_Ipam_driver(), theOCCIPackage.getString(), "ipam_driver", null, 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getNetwork_Ipam_opt(), theOCCIPackage.getString(), "ipam_opt", null, 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getNetwork_Ipv6(), theOCCIPackage.getBoolean(), "ipv6", null, 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getNetwork_Opt(), ecorePackage.getEString(), "opt", null, 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNetwork_Opt(), theOCCIPackage.getString(), "opt", null, 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getNetwork_Subnet(), theOCCIPackage.getString(), "subnet", null, 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(machine_Amazon_EC2EClass, Machine_Amazon_EC2.class, "Machine_Amazon_EC2", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -3106,10 +3227,70 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 			 "description", "Support extra SANs for TLS certs"
 		   });	
 		addAnnotation
+		  (volumeEClass, 
+		   source, 
+		   new String[] {
+			 "title", "Volume disk"
+		   });	
+		addAnnotation
+		  (getVolume_Driver(), 
+		   source, 
+		   new String[] {
+			 "description", " Specify volume driver name (default \"local\")"
+		   });	
+		addAnnotation
+		  (getVolume_Labels(), 
+		   source, 
+		   new String[] {
+			 "description", "Set metadata for a volume (default [])"
+		   });	
+		addAnnotation
+		  (getVolume_Options(), 
+		   source, 
+		   new String[] {
+			 "description", "Set driver specific options (default map[])"
+		   });	
+		addAnnotation
+		  (getVolume_Source(), 
+		   source, 
+		   new String[] {
+			 "description", "The volume Mountpoint ex. the /host/directory"
+		   });	
+		addAnnotation
+		  (getVolume_Destination(), 
+		   source, 
+		   new String[] {
+			 "description", "The volume name inside the container ex. /container/path"
+		   });	
+		addAnnotation
+		  (getVolume_Mode(), 
+		   source, 
+		   new String[] {
+			 "description", "Specify volume driver name"
+		   });	
+		addAnnotation
+		  (getVolume_Rw(), 
+		   source, 
+		   new String[] {
+			 "description", "The volume Read/Write access"
+		   });	
+		addAnnotation
+		  (getVolume_Propagation(), 
+		   source, 
+		   new String[] {
+			 "description", "The volume propagation"
+		   });	
+		addAnnotation
+		  (getVolume_Name(), 
+		   source, 
+		   new String[] {
+			 "description", "The volume name."
+		   });	
+		addAnnotation
 		  (networkEClass, 
 		   source, 
 		   new String[] {
-			 "title", null
+			 "title", "Network resource"
 		   });	
 		addAnnotation
 		  (getNetwork_NetworkId(), 
@@ -3121,7 +3302,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		  (getNetwork_Name(), 
 		   source, 
 		   new String[] {
-			 "description", null
+			 "description", "The network name"
 		   });	
 		addAnnotation
 		  (getNetwork_Aux_address(), 

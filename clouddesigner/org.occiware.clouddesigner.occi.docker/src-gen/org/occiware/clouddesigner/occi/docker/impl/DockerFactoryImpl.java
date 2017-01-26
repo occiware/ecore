@@ -72,6 +72,7 @@ public class DockerFactoryImpl extends EFactoryImpl implements DockerFactory {
 			case DockerPackage.VOLUMESFROM: return createVolumesfrom();
 			case DockerPackage.CONTAINS: return createContains();
 			case DockerPackage.MACHINE: return createMachine();
+			case DockerPackage.VOLUME: return createVolume();
 			case DockerPackage.NETWORK: return createNetwork();
 			case DockerPackage.MACHINE_AMAZON_EC2: return createMachine_Amazon_EC2();
 			case DockerPackage.MACHINE_DIGITAL_OCEAN: return createMachine_Digital_Ocean();
@@ -178,6 +179,16 @@ public class DockerFactoryImpl extends EFactoryImpl implements DockerFactory {
 	public Machine createMachine() {
 		MachineImpl machine = new MachineImpl();
 		return machine;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Volume createVolume() {
+		VolumeImpl volume = new VolumeImpl();
+		return volume;
 	}
 
 	/**
