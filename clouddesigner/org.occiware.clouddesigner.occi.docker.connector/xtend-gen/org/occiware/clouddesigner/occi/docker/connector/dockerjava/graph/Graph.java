@@ -15,7 +15,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
-import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.occiware.clouddesigner.occi.docker.connector.dockerjava.graph.GraphNode;
 import org.occiware.clouddesigner.occi.docker.connector.dockerjava.graph.NodeValueListener;
 import org.slf4j.Logger;
@@ -28,7 +27,7 @@ public class Graph<T extends Object> {
   /**
    * Organize the deployment order of the Nodes
    */
-  private List<GraphNode<T>> deploymentOrder = CollectionLiterals.<GraphNode<T>>newArrayList();
+  private List<GraphNode<T>> deploymentOrder = new ArrayList<GraphNode<T>>();
   
   /**
    * These are basically the nodes of the graph
