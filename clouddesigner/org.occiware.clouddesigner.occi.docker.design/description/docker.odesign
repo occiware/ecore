@@ -236,97 +236,6 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolGroup" name="Container">
-            <tools xsi:type="tool_1:ToolDescription" name="Container" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/ContainerMenu.gif">
-              <element name="element"/>
-              <elementView name="elementView"/>
-              <initialOperation/>
-            </tools>
-            <tools xsi:type="tool:NodeCreationDescription" name="Container" nodeMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Container.gif">
-              <variable name="container"/>
-              <viewVariable name="containerView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:eContainer">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Container" referenceName="resources" variableName="containerInstance"/>
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Contains" referenceName="links" variableName="containsInstance">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="source" valueExpression="var:container"/>
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="var:containerInstance"/>
-                    </subModelOperations>
-                  </subModelOperations>
-                </firstModelOperations>
-              </initialOperation>
-            </tools>
-            <tools xsi:type="tool:EdgeCreationDescription" name="Link" precondition="aql:preSource.getMachine() = preTarget.getMachine()" edgeMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Link.gif">
-              <sourceVariable name="source"/>
-              <targetVariable name="target"/>
-              <sourceViewVariable name="sourceView"/>
-              <targetViewVariable name="targetView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="docker.Link" referenceName="links">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="var:target"/>
-                </firstModelOperations>
-              </initialOperation>
-            </tools>
-          </ownedTools>
-          <ownedTools xsi:type="tool:ToolGroup" name="Network">
-            <tools xsi:type="tool_1:ToolDescription" name="Network" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/NetworkMenu.gif">
-              <element name="element"/>
-              <elementView name="elementView"/>
-              <initialOperation/>
-            </tools>
-            <tools xsi:type="tool:EdgeCreationDescription" name="NetworkLink" edgeMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='NetworkLink']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/NetworkLink.gif">
-              <sourceVariable name="source"/>
-              <targetVariable name="target"/>
-              <sourceViewVariable name="sourceView"/>
-              <targetViewVariable name="targetView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="NetworkLink" referenceName="links">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="var:target"/>
-                </firstModelOperations>
-              </initialOperation>
-            </tools>
-            <tools xsi:type="tool:ContainerCreationDescription" name="Network" containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Network']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Network.gif">
-              <variable name="container"/>
-              <viewVariable name="containerView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Network" referenceName="resources"/>
-              </initialOperation>
-            </tools>
-          </ownedTools>
-          <ownedTools xsi:type="tool:ToolGroup" name="Volumes">
-            <tools xsi:type="tool_1:ToolDescription" name="Volumes" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Volumeconfiguration.gif">
-              <element name="element"/>
-              <elementView name="elementView"/>
-              <initialOperation/>
-            </tools>
-            <tools xsi:type="tool:NodeCreationDescription" name="Volume" nodeMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Volume']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Volume.gif">
-              <variable name="container"/>
-              <viewVariable name="containerView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:eContainer">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Volume" referenceName="resources" variableName="volumeInstance"/>
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Contains" referenceName="links" variableName="containsInstance">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="source" valueExpression="var:container"/>
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="var:volumeInstance"/>
-                    </subModelOperations>
-                  </subModelOperations>
-                </firstModelOperations>
-              </initialOperation>
-            </tools>
-            <tools xsi:type="tool:EdgeCreationDescription" name="Volumes From" edgeMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Volumesfrom']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Volumesfrom.gif">
-              <sourceVariable name="source"/>
-              <targetVariable name="target"/>
-              <sourceViewVariable name="sourceView"/>
-              <targetViewVariable name="targetView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Volumesfrom" referenceName="links">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="var:target"/>
-                </firstModelOperations>
-              </initialOperation>
-            </tools>
-          </ownedTools>
           <ownedTools xsi:type="tool:ToolGroup" name="Docker Machines">
             <tools xsi:type="tool_1:ToolDescription" name="Docker Machines" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/DockerMachine.gif">
               <element name="element"/>
@@ -408,6 +317,97 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machine_Digital_Ocean" referenceName="resources"/>
+              </initialOperation>
+            </tools>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolGroup" name="Container">
+            <tools xsi:type="tool_1:ToolDescription" name="Container" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/ContainerMenu.gif">
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <initialOperation/>
+            </tools>
+            <tools xsi:type="tool:NodeCreationDescription" name="Container" nodeMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Container.gif">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:eContainer">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Container" referenceName="resources" variableName="containerInstance"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Contains" referenceName="links" variableName="containsInstance">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="source" valueExpression="var:container"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="var:containerInstance"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool:EdgeCreationDescription" name="Link" precondition="aql:preSource.getMachine() = preTarget.getMachine()" edgeMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Link.gif">
+              <sourceVariable name="source"/>
+              <targetVariable name="target"/>
+              <sourceViewVariable name="sourceView"/>
+              <targetViewVariable name="targetView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="docker.Link" referenceName="links">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="var:target"/>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolGroup" name="Network">
+            <tools xsi:type="tool_1:ToolDescription" name="Network" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/NetworkMenu.gif">
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <initialOperation/>
+            </tools>
+            <tools xsi:type="tool:ContainerCreationDescription" name="Network" containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Network']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Network.gif">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Network" referenceName="resources"/>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool:EdgeCreationDescription" name="NetworkLink" edgeMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='NetworkLink']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/NetworkLink.gif">
+              <sourceVariable name="source"/>
+              <targetVariable name="target"/>
+              <sourceViewVariable name="sourceView"/>
+              <targetViewVariable name="targetView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="NetworkLink" referenceName="links">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="var:target"/>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolGroup" name="Volumes">
+            <tools xsi:type="tool_1:ToolDescription" name="Volumes" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Volumeconfiguration.gif">
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <initialOperation/>
+            </tools>
+            <tools xsi:type="tool:NodeCreationDescription" name="Volume" nodeMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Volume']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Volume.gif">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:eContainer">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Volume" referenceName="resources" variableName="volumeInstance"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Contains" referenceName="links" variableName="containsInstance">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="source" valueExpression="var:container"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="var:volumeInstance"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool:EdgeCreationDescription" name="Volumes From" edgeMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Volumesfrom']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Volumesfrom.gif">
+              <sourceVariable name="source"/>
+              <targetVariable name="target"/>
+              <sourceViewVariable name="sourceView"/>
+              <targetViewVariable name="targetView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Volumesfrom" referenceName="links">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="var:target"/>
+                </firstModelOperations>
               </initialOperation>
             </tools>
           </ownedTools>
