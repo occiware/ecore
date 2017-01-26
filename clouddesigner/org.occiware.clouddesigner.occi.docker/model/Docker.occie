@@ -240,11 +240,41 @@
     </attributes>
     <parent href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='compute']"/>
   </kinds>
-  <kinds term="network" scheme="http://occiware.org/occi/docker#">
+  <kinds term="volume" scheme="http://occiware.org/occi/docker#" title="Volume disk">
+    <attributes name="driver" default="local" description=" Specify volume driver name (default &quot;local&quot;)">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="labels" default="" description="Set metadata for a volume (default [])">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="options" default="" description="Set driver specific options (default map[])">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="source" description="The volume Mountpoint ex. the /host/directory">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="destination" description="The volume name inside the container ex. /container/path">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="mode" default="" description="Specify volume driver name">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="rw" description="The volume Read/Write access">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="propagation" description="The volume propagation">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="name" description="The volume name.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <parent href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='storage']"/>
+  </kinds>
+  <kinds term="network" scheme="http://occiware.org/occi/docker#" title="Network resource">
     <attributes name="networkId" description="The network ID retreived when the creation is done">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="name">
+    <attributes name="name" description="The network name">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
     <attributes name="aux_address" description="Auxiliary IPv4 or IPv6 addresses used by Network driver (default map[])">
@@ -271,7 +301,9 @@
     <attributes name="ipv6" default="" description="Enable IPv6 networking">
       <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
     </attributes>
-    <attributes name="opt" description="Set driver specific options (default map[])"/>
+    <attributes name="opt" description="Set driver specific options (default map[])">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <attributes name="subnet" description="Subnet in CIDR format that represents a network segment (default [])">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
