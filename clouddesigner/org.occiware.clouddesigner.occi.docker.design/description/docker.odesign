@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="docker" version="11.0.0.201601261200">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="docker" version="11.1.1.201610211630">
   <ownedViewpoints name="Docker" label="Docker">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Docker configuration" domainClass="Configuration">
       <metamodel href="../../org.occiware.clouddesigner.occi.docker/model/Docker.ecore#/"/>
@@ -14,7 +14,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="Volumesfrom" sourceMapping="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']" targetMapping="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']" targetFinderExpression="feature:target" sourceFinderExpression="feature:source" domainClass="Volumesfrom" useDomainElement="true">
+        <edgeMappings name="Volumesfrom" sourceMapping="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']" targetMapping="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container'] //@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Volume']" targetFinderExpression="feature:target" sourceFinderExpression="feature:source" domainClass="Volumesfrom" useDomainElement="true">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -70,7 +70,7 @@
                 </sections>
               </style>
             </borderedNodeMappings>
-            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="5" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.occiware.clouddesigner.occi.docker.design/images/mcol-closed-box.svg">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.occiware.clouddesigner.occi.docker.design/images/mcol-closed-box.svg">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
@@ -92,6 +92,12 @@
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </conditionnalStyles>
+          </subNodeMappings>
+          <subNodeMappings name="Volume" semanticCandidatesExpression="[links->filter(docker::Contains).target/]" domainClass="Volume">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" workspacePath="/org.occiware.clouddesigner.occi.docker.design/images/Volume.svg">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
           </subNodeMappings>
           <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelAlignment="LEFT" roundedCorner="true">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -230,6 +236,21 @@
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Contains" referenceName="links" variableName="containsInstance">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="source" valueExpression="var:container"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="var:containerInstance"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Volume" nodeMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Volume']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Volume.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:eContainer">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Volume" referenceName="resources" variableName="volumeInstance"/>
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Contains" referenceName="links" variableName="containsInstance">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="source" valueExpression="var:container"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="var:volumeInstance"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
