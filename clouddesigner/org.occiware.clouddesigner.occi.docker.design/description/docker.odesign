@@ -236,7 +236,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolGroup" name="Docker Machines">
+          <ownedTools xsi:type="tool:ToolGroup" name="Docker Machine">
             <tools xsi:type="tool_1:ToolDescription" name="Docker Machines" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/DockerMachine.gif">
               <element name="element"/>
               <elementView name="elementView"/>
@@ -263,7 +263,7 @@
                 <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machine_Microsoft_Azure" referenceName="resources"/>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:ContainerCreationDescription" name="Vmware Fusion" containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Machine_VMware_Fusion.gif">
+            <tools xsi:type="tool:ContainerCreationDescription" name="VMware Fusion" containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Machine_VMware_Fusion.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -277,7 +277,7 @@
                 <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machine_Rackspace" referenceName="resources"/>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:ContainerCreationDescription" name="Vmware vSphere" containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Machine_VMware_vSphere.gif">
+            <tools xsi:type="tool:ContainerCreationDescription" name="VMware vSphere" containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Machine_VMware_vSphere.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -379,7 +379,7 @@
             </tools>
           </ownedTools>
           <ownedTools xsi:type="tool:ToolGroup" name="Volumes">
-            <tools xsi:type="tool_1:ToolDescription" name="Volumes" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Volumeconfiguration.gif">
+            <tools xsi:type="tool_1:ToolDescription" name="Volume" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Volumeconfiguration.gif">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation/>
@@ -399,7 +399,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:EdgeCreationDescription" name="Volumes From" edgeMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Volumesfrom']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Volumesfrom.gif">
+            <tools xsi:type="tool:EdgeCreationDescription" name="Volume From" edgeMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Volumesfrom']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Volumesfrom.gif">
               <sourceVariable name="source"/>
               <targetVariable name="target"/>
               <sourceViewVariable name="sourceView"/>
