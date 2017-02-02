@@ -127,10 +127,15 @@
 		<!--<module>../org.occiware.clouddesigner.occi.xtext.tests</module>-->
 		<module>../org.occiware.clouddesigner.occi.xtext.ui</module>
 
-		<!--  OCCI2Ecore -->
+		<!-- OCCI2Ecore -->
 		<module>../org.occiware.clouddesigner.occi.emfgen</module>
 		<module>../org.occiware.clouddesigner.occi.emfgen.ui</module>
 		<module>../org.occiware.clouddesigner.occi.emfgen.design</module>
+		
+		<!-- Examples -->
+		<module>../org.occiware.clouddesigner.occi.examples</module>
+		<module>../org.occiware.clouddesigner.occi.infrastructure.example</module>
+		<module>../org.occiware.clouddesigner.occi.monitoring.example</module>
 		
 		<!-- Releng -->
 		<module>../org.occiware.clouddesigner.occi.feature</module>

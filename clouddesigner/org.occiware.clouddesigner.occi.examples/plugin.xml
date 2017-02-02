@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <!-- Extension point to register OCCI examples. -->
+   <extension-point
+         id="example"
+         name="org.occiware.clouddesigner.occi.examples.example"
+         schema="schema/example.exsd"/>
+         
+          <!-- The OCCI examples wizard -->
+	<extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            name="Cloud Designer"
+            parentCategory="org.eclipse.ui.Examples"
+            id="org.occiware.clouddesigner.occi.examples.category">
+      </category>
+      
+      <wizard
+            category="org.eclipse.ui.Examples/org.occiware.clouddesigner.occi.examples.category"
+            class="org.occiware.clouddesigner.occi.examples.wizard.ExamplesWizard"
+            hasPages="true"
+            icon="images/ModelingProject.gif"
+            id="org.occiware.clouddesigner.occi.examples.wizard"
+            name="OCCI Examples"
+            project="true">
+         <description>
+            Create a project with a Cloud Designer example.
+         </description>
+      </wizard>
+	</extension>
+</plugin>

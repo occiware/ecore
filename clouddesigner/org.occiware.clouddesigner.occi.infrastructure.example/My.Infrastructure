@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ASCII"?>
+<occi:Configuration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:infrastructure="http://schemas.ogf.org/occi/infrastructure/ecore" xmlns:occi="http://schemas.ogf.org/occi/core/ecore">
+  <use href="http://schemas.ogf.org/occi/core#/"/>
+  <use href="http://schemas.ogf.org/occi/infrastructure#/"/>
+  <resources xsi:type="infrastructure:Network" id="dcef267a-fe90-495b-9fae-917e01283c93" title="network1">
+    <kind href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='network']"/>
+    <attributes name="occi.core.id" value="dcef267a-fe90-495b-9fae-917e01283c93"/>
+    <attributes name="occi.core.title" value="network1"/>
+  </resources>
+  <resources xsi:type="infrastructure:Network" id="4d875bdd-a41a-4bb6-b321-05cf5adb94cd" title="network2">
+    <kind href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='network']"/>
+    <attributes name="occi.core.id" value="4d875bdd-a41a-4bb6-b321-05cf5adb94cd"/>
+    <attributes name="occi.core.title" value="network2"/>
+  </resources>
+  <resources xsi:type="infrastructure:Network" id="7dab117b-a4cc-4738-807b-b5b5f4457ac6" title="network3">
+    <kind href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='network']"/>
+    <attributes name="occi.core.id" value="7dab117b-a4cc-4738-807b-b5b5f4457ac6"/>
+    <attributes name="occi.core.title" value="network3"/>
+  </resources>
+</occi:Configuration>

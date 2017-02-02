@@ -1,0 +1,860 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:monitoring="http://schemas.ogf.org/occi/monitoring/ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
+  <viewpoint:DAnalysis xmi:id="_tEYJ0Ok7EeahhfrRVNQLqw" selectedViews="_Pnb_IOlFEeahhfrRVNQLqw" version="11.1.0.201608251200">
+    <semanticResources>My.monitoring</semanticResources>
+    <semanticResources>http://schemas.ogf.org/occi/core</semanticResources>
+    <semanticResources>http://schemas.ogf.org/occi/monitoring</semanticResources>
+    <ownedViews xmi:type="viewpoint:DView" xmi:id="_uyyzcOk7EeahhfrRVNQLqw">
+      <viewpoint xmi:type="description:Viewpoint" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']"/>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_u0Fz8Ok7EeahhfrRVNQLqw" name="My" representation="_u0I3QOk7EeahhfrRVNQLqw">
+        <description xmi:type="description_1:DiagramDescription" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']"/>
+        <target xmi:type="occi:Configuration" href="My.monitoring#/"/>
+      </ownedRepresentationDescriptors>
+    </ownedViews>
+    <ownedViews xmi:type="viewpoint:DView" xmi:id="_Pnb_IOlFEeahhfrRVNQLqw">
+      <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']"/>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_R6fm4OlFEeahhfrRVNQLqw" name="new MonitoringConfiguration Diagram" representation="_R6fm4elFEeahhfrRVNQLqw">
+        <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']"/>
+        <target xmi:type="occi:Configuration" href="My.monitoring#/"/>
+      </ownedRepresentationDescriptors>
+    </ownedViews>
+  </viewpoint:DAnalysis>
+  <diagram:DSemanticDiagram xmi:id="_u0I3QOk7EeahhfrRVNQLqw" name="My">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_u0I3Qek7EeahhfrRVNQLqw" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_u0I3Quk7EeahhfrRVNQLqw"/>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_u0KscOk7EeahhfrRVNQLqw" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_u0Kscek7EeahhfrRVNQLqw" type="Sirius" element="_u0I3QOk7EeahhfrRVNQLqw" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_veW48Ok7EeahhfrRVNQLqw" type="2003" element="_vct6MOk7EeahhfrRVNQLqw">
+          <children xmi:type="notation:Node" xmi:id="_veW48-k7EeahhfrRVNQLqw" type="5007"/>
+          <children xmi:type="notation:Node" xmi:id="_veW49Ok7EeahhfrRVNQLqw" type="7004">
+            <children xmi:type="notation:Node" xmi:id="_veW49-k7EeahhfrRVNQLqw" type="3010" element="_vdKmIOk7EeahhfrRVNQLqw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_veW4-Ok7EeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_veW4-ek7EeahhfrRVNQLqw"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_veW4-uk7EeahhfrRVNQLqw" type="3010" element="_vdTwEuk7EeahhfrRVNQLqw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_veW4--k7EeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_veW4_Ok7EeahhfrRVNQLqw"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_veW4_ek7EeahhfrRVNQLqw" type="3010" element="_vddhEuk7EeahhfrRVNQLqw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_veW4_uk7EeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_veW4_-k7EeahhfrRVNQLqw"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_vegC4Ok7EeahhfrRVNQLqw" type="3010" element="_vdmrAuk7EeahhfrRVNQLqw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_vegC4ek7EeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_vegC4uk7EeahhfrRVNQLqw"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_vegC4-k7EeahhfrRVNQLqw" type="3010" element="_vdwcAOk7EeahhfrRVNQLqw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_vegC5Ok7EeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_vegC5ek7EeahhfrRVNQLqw"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_vegC5uk7EeahhfrRVNQLqw" type="3010" element="_vdwcA-k7EeahhfrRVNQLqw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_vegC5-k7EeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_vegC6Ok7EeahhfrRVNQLqw"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_vegC6ek7EeahhfrRVNQLqw" type="3010" element="_vd6NAuk7EeahhfrRVNQLqw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_vegC6uk7EeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_vegC6-k7EeahhfrRVNQLqw"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_vegC7Ok7EeahhfrRVNQLqw" type="3010" element="_veDW8uk7EeahhfrRVNQLqw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_vegC7ek7EeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_vegC7uk7EeahhfrRVNQLqw"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_vegC7-k7EeahhfrRVNQLqw" type="3010" element="_veDW9ek7EeahhfrRVNQLqw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_vegC8Ok7EeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_vegC8ek7EeahhfrRVNQLqw"/>
+            </children>
+            <styles xmi:type="notation:SortingStyle" xmi:id="_veW49ek7EeahhfrRVNQLqw"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_veW49uk7EeahhfrRVNQLqw"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_veW48ek7EeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_veW48uk7EeahhfrRVNQLqw" x="195" y="100"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_FwWXgOlAEeahhfrRVNQLqw" type="2003" element="_Fv5rkOlAEeahhfrRVNQLqw">
+          <children xmi:type="notation:Node" xmi:id="_FwWXg-lAEeahhfrRVNQLqw" type="5007"/>
+          <children xmi:type="notation:Node" xmi:id="_FwWXhOlAEeahhfrRVNQLqw" type="7004">
+            <children xmi:type="notation:Node" xmi:id="_FwWXh-lAEeahhfrRVNQLqw" type="3010" element="_FwMmgOlAEeahhfrRVNQLqw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_FwWXiOlAEeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_FwWXielAEeahhfrRVNQLqw"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_FwWXiulAEeahhfrRVNQLqw" type="3010" element="_FwMmg-lAEeahhfrRVNQLqw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_FwWXi-lAEeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_FwWXjOlAEeahhfrRVNQLqw"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_FwWXjelAEeahhfrRVNQLqw" type="3010" element="_FwMmhulAEeahhfrRVNQLqw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_FwWXjulAEeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_FwWXj-lAEeahhfrRVNQLqw"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_FwWXkOlAEeahhfrRVNQLqw" type="3010" element="_FwMmielAEeahhfrRVNQLqw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_FwWXkelAEeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_FwWXkulAEeahhfrRVNQLqw"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_FwWXk-lAEeahhfrRVNQLqw" type="3010" element="_FwMmjOlAEeahhfrRVNQLqw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_FwWXlOlAEeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_FwWXlelAEeahhfrRVNQLqw"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_FwWXlulAEeahhfrRVNQLqw" type="3010" element="_FwMmj-lAEeahhfrRVNQLqw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_FwWXl-lAEeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_FwWXmOlAEeahhfrRVNQLqw"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_FwWXmelAEeahhfrRVNQLqw" type="3010" element="_FwMmkulAEeahhfrRVNQLqw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_FwWXmulAEeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_FwWXm-lAEeahhfrRVNQLqw"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_FwWXnOlAEeahhfrRVNQLqw" type="3010" element="_FwMmlelAEeahhfrRVNQLqw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_FwWXnelAEeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_FwWXnulAEeahhfrRVNQLqw"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_FwWXn-lAEeahhfrRVNQLqw" type="3010" element="_FwMmmOlAEeahhfrRVNQLqw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_FwWXoOlAEeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_FwWXoelAEeahhfrRVNQLqw"/>
+            </children>
+            <styles xmi:type="notation:SortingStyle" xmi:id="_FwWXhelAEeahhfrRVNQLqw"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_FwWXhulAEeahhfrRVNQLqw"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_FwWXgelAEeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_FwWXgulAEeahhfrRVNQLqw" x="835" y="200"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_GMQQeulAEeahhfrRVNQLqw" type="2003" element="_GL8uYOlAEeahhfrRVNQLqw">
+          <children xmi:type="notation:Node" xmi:id="_GMQQfelAEeahhfrRVNQLqw" type="5007"/>
+          <children xmi:type="notation:Node" xmi:id="_GMQQfulAEeahhfrRVNQLqw" type="7004">
+            <children xmi:type="notation:Node" xmi:id="_GMQQgelAEeahhfrRVNQLqw" type="3010" element="_GMGfYOlAEeahhfrRVNQLqw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_GMQQgulAEeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_GMQQg-lAEeahhfrRVNQLqw"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_GMZaUOlAEeahhfrRVNQLqw" type="3010" element="_GMQQYulAEeahhfrRVNQLqw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_GMZaUelAEeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_GMZaUulAEeahhfrRVNQLqw"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_GMZaU-lAEeahhfrRVNQLqw" type="3010" element="_GMQQZelAEeahhfrRVNQLqw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_GMZaVOlAEeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_GMZaVelAEeahhfrRVNQLqw"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_GMZaVulAEeahhfrRVNQLqw" type="3010" element="_GMQQaOlAEeahhfrRVNQLqw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_GMZaV-lAEeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_GMZaWOlAEeahhfrRVNQLqw"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_GMZaWelAEeahhfrRVNQLqw" type="3010" element="_GMQQa-lAEeahhfrRVNQLqw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_GMZaWulAEeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_GMZaW-lAEeahhfrRVNQLqw"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_GMZaXOlAEeahhfrRVNQLqw" type="3010" element="_GMQQbulAEeahhfrRVNQLqw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_GMZaXelAEeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_GMZaXulAEeahhfrRVNQLqw"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_GMZaX-lAEeahhfrRVNQLqw" type="3010" element="_GMQQcelAEeahhfrRVNQLqw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_GMZaYOlAEeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_GMZaYelAEeahhfrRVNQLqw"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_GMZaYulAEeahhfrRVNQLqw" type="3010" element="_GMQQdOlAEeahhfrRVNQLqw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_GMZaY-lAEeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_GMZaZOlAEeahhfrRVNQLqw"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_GMZaZelAEeahhfrRVNQLqw" type="3010" element="_GMQQd-lAEeahhfrRVNQLqw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_GMZaZulAEeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_GMZaZ-lAEeahhfrRVNQLqw"/>
+            </children>
+            <styles xmi:type="notation:SortingStyle" xmi:id="_GMQQf-lAEeahhfrRVNQLqw"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_GMQQgOlAEeahhfrRVNQLqw"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_GMQQe-lAEeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_GMQQfOlAEeahhfrRVNQLqw" x="400" y="435"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_u0Kscuk7EeahhfrRVNQLqw"/>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_vct6MOk7EeahhfrRVNQLqw" name="sensor1: Sensor">
+      <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.0"/>
+      <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.0"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_vct6Mek7EeahhfrRVNQLqw" labelSize="10" borderSize="1" borderSizeComputationExpression="1">
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']"/>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_vdKmIOk7EeahhfrRVNQLqw" name="id = 8c57cee8-d048-4117-8ef0-2a10020d6d55">
+        <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.0"/>
+        <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.0"/>
+        <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_vdTwEek7EeahhfrRVNQLqw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_vdTwEOk7EeahhfrRVNQLqw" labelSize="10" labelAlignment="LEFT" hideLabelByDefault="true" color="255,255,255">
+          <description xmi:type="style:SquareDescription" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorId']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorId']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_vdTwEuk7EeahhfrRVNQLqw" name="title = sensor1">
+        <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.0"/>
+        <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.0"/>
+        <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_vddhEek7EeahhfrRVNQLqw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_vddhEOk7EeahhfrRVNQLqw" labelSize="10" labelAlignment="LEFT" hideLabelByDefault="true" color="255,255,255">
+          <description xmi:type="style:SquareDescription" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorTitle']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorTitle']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_vddhEuk7EeahhfrRVNQLqw" name="summary = null">
+        <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.0"/>
+        <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.0"/>
+        <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_vdmrAek7EeahhfrRVNQLqw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_vdmrAOk7EeahhfrRVNQLqw" labelSize="10" labelAlignment="LEFT" hideLabelByDefault="true" color="255,255,255">
+          <description xmi:type="style:SquareDescription" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorSummary']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorSummary']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_vdmrAuk7EeahhfrRVNQLqw" name="timebase = null">
+        <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.0"/>
+        <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.0"/>
+        <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_vdmrBOk7EeahhfrRVNQLqw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_vdmrA-k7EeahhfrRVNQLqw" labelSize="10" labelAlignment="LEFT" hideLabelByDefault="true" color="255,255,255">
+          <description xmi:type="style:SquareDescription" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorTimebase']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorTimebase']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_vdwcAOk7EeahhfrRVNQLqw" name="timestart = 0">
+        <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.0"/>
+        <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.0"/>
+        <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_vdwcAuk7EeahhfrRVNQLqw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_vdwcAek7EeahhfrRVNQLqw" labelSize="10" labelAlignment="LEFT" hideLabelByDefault="true" color="255,255,255">
+          <description xmi:type="style:SquareDescription" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorTimestart']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorTimestart']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_vdwcA-k7EeahhfrRVNQLqw" name="timestop = 0">
+        <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.0"/>
+        <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.0"/>
+        <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_vd6NAek7EeahhfrRVNQLqw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_vd6NAOk7EeahhfrRVNQLqw" labelSize="10" labelAlignment="LEFT" hideLabelByDefault="true" color="255,255,255">
+          <description xmi:type="style:SquareDescription" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorTimestop']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorTimestop']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_vd6NAuk7EeahhfrRVNQLqw" name="period = 0">
+        <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.0"/>
+        <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.0"/>
+        <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_veDW8ek7EeahhfrRVNQLqw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_veDW8Ok7EeahhfrRVNQLqw" labelSize="10" labelAlignment="LEFT" hideLabelByDefault="true" color="255,255,255">
+          <description xmi:type="style:SquareDescription" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorPeriod']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorPeriod']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_veDW8uk7EeahhfrRVNQLqw" name="granularity = 0">
+        <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.0"/>
+        <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.0"/>
+        <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_veDW9Ok7EeahhfrRVNQLqw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_veDW8-k7EeahhfrRVNQLqw" labelSize="10" labelAlignment="LEFT" hideLabelByDefault="true" color="255,255,255">
+          <description xmi:type="style:SquareDescription" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorGranularity']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorGranularity']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_veDW9ek7EeahhfrRVNQLqw" name="accuracy = 0">
+        <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.0"/>
+        <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.0"/>
+        <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_veNH8ek7EeahhfrRVNQLqw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_veNH8Ok7EeahhfrRVNQLqw" labelSize="10" labelAlignment="LEFT" hideLabelByDefault="true" color="255,255,255">
+          <description xmi:type="style:SquareDescription" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorAccuracy']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorAccuracy']"/>
+      </ownedElements>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_Fv5rkOlAEeahhfrRVNQLqw" name="sensor2: Sensor">
+      <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.1"/>
+      <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.1"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_FwC1gOlAEeahhfrRVNQLqw" labelSize="10" borderSize="1" borderSizeComputationExpression="1">
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']"/>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_FwMmgOlAEeahhfrRVNQLqw" name="id = 8737de6f-1b33-4fb3-9367-86ebacd0e24e">
+        <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.1"/>
+        <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.1"/>
+        <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_FwMmgulAEeahhfrRVNQLqw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_FwMmgelAEeahhfrRVNQLqw" labelSize="10" labelAlignment="LEFT" hideLabelByDefault="true" color="255,255,255">
+          <description xmi:type="style:SquareDescription" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorId']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorId']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_FwMmg-lAEeahhfrRVNQLqw" name="title = sensor2">
+        <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.1"/>
+        <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.1"/>
+        <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_FwMmhelAEeahhfrRVNQLqw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_FwMmhOlAEeahhfrRVNQLqw" labelSize="10" labelAlignment="LEFT" hideLabelByDefault="true" color="255,255,255">
+          <description xmi:type="style:SquareDescription" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorTitle']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorTitle']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_FwMmhulAEeahhfrRVNQLqw" name="summary = null">
+        <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.1"/>
+        <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.1"/>
+        <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_FwMmiOlAEeahhfrRVNQLqw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_FwMmh-lAEeahhfrRVNQLqw" labelSize="10" labelAlignment="LEFT" hideLabelByDefault="true" color="255,255,255">
+          <description xmi:type="style:SquareDescription" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorSummary']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorSummary']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_FwMmielAEeahhfrRVNQLqw" name="timebase = null">
+        <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.1"/>
+        <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.1"/>
+        <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_FwMmi-lAEeahhfrRVNQLqw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_FwMmiulAEeahhfrRVNQLqw" labelSize="10" labelAlignment="LEFT" hideLabelByDefault="true" color="255,255,255">
+          <description xmi:type="style:SquareDescription" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorTimebase']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorTimebase']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_FwMmjOlAEeahhfrRVNQLqw" name="timestart = 0">
+        <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.1"/>
+        <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.1"/>
+        <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_FwMmjulAEeahhfrRVNQLqw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_FwMmjelAEeahhfrRVNQLqw" labelSize="10" labelAlignment="LEFT" hideLabelByDefault="true" color="255,255,255">
+          <description xmi:type="style:SquareDescription" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorTimestart']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorTimestart']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_FwMmj-lAEeahhfrRVNQLqw" name="timestop = 0">
+        <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.1"/>
+        <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.1"/>
+        <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_FwMmkelAEeahhfrRVNQLqw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_FwMmkOlAEeahhfrRVNQLqw" labelSize="10" labelAlignment="LEFT" hideLabelByDefault="true" color="255,255,255">
+          <description xmi:type="style:SquareDescription" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorTimestop']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorTimestop']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_FwMmkulAEeahhfrRVNQLqw" name="period = 0">
+        <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.1"/>
+        <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.1"/>
+        <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_FwMmlOlAEeahhfrRVNQLqw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_FwMmk-lAEeahhfrRVNQLqw" labelSize="10" labelAlignment="LEFT" hideLabelByDefault="true" color="255,255,255">
+          <description xmi:type="style:SquareDescription" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorPeriod']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorPeriod']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_FwMmlelAEeahhfrRVNQLqw" name="granularity = 0">
+        <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.1"/>
+        <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.1"/>
+        <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_FwMml-lAEeahhfrRVNQLqw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_FwMmlulAEeahhfrRVNQLqw" labelSize="10" labelAlignment="LEFT" hideLabelByDefault="true" color="255,255,255">
+          <description xmi:type="style:SquareDescription" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorGranularity']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorGranularity']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_FwMmmOlAEeahhfrRVNQLqw" name="accuracy = 0">
+        <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.1"/>
+        <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.1"/>
+        <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_FwMmmulAEeahhfrRVNQLqw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_FwMmmelAEeahhfrRVNQLqw" labelSize="10" labelAlignment="LEFT" hideLabelByDefault="true" color="255,255,255">
+          <description xmi:type="style:SquareDescription" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorAccuracy']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorAccuracy']"/>
+      </ownedElements>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_GL8uYOlAEeahhfrRVNQLqw" name="sensor3: Sensor">
+      <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.2"/>
+      <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.2"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_GL8uYelAEeahhfrRVNQLqw" labelSize="10" borderSize="1" borderSizeComputationExpression="1">
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']"/>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_GMGfYOlAEeahhfrRVNQLqw" name="id = 8c7a8c91-7cb1-4920-a8d4-2f6b87d43d02">
+        <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.2"/>
+        <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.2"/>
+        <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_GMQQYelAEeahhfrRVNQLqw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_GMQQYOlAEeahhfrRVNQLqw" labelSize="10" labelAlignment="LEFT" hideLabelByDefault="true" color="255,255,255">
+          <description xmi:type="style:SquareDescription" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorId']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorId']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_GMQQYulAEeahhfrRVNQLqw" name="title = sensor3">
+        <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.2"/>
+        <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.2"/>
+        <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_GMQQZOlAEeahhfrRVNQLqw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_GMQQY-lAEeahhfrRVNQLqw" labelSize="10" labelAlignment="LEFT" hideLabelByDefault="true" color="255,255,255">
+          <description xmi:type="style:SquareDescription" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorTitle']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorTitle']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_GMQQZelAEeahhfrRVNQLqw" name="summary = null">
+        <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.2"/>
+        <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.2"/>
+        <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_GMQQZ-lAEeahhfrRVNQLqw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_GMQQZulAEeahhfrRVNQLqw" labelSize="10" labelAlignment="LEFT" hideLabelByDefault="true" color="255,255,255">
+          <description xmi:type="style:SquareDescription" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorSummary']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorSummary']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_GMQQaOlAEeahhfrRVNQLqw" name="timebase = null">
+        <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.2"/>
+        <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.2"/>
+        <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_GMQQaulAEeahhfrRVNQLqw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_GMQQaelAEeahhfrRVNQLqw" labelSize="10" labelAlignment="LEFT" hideLabelByDefault="true" color="255,255,255">
+          <description xmi:type="style:SquareDescription" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorTimebase']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorTimebase']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_GMQQa-lAEeahhfrRVNQLqw" name="timestart = 0">
+        <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.2"/>
+        <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.2"/>
+        <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_GMQQbelAEeahhfrRVNQLqw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_GMQQbOlAEeahhfrRVNQLqw" labelSize="10" labelAlignment="LEFT" hideLabelByDefault="true" color="255,255,255">
+          <description xmi:type="style:SquareDescription" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorTimestart']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorTimestart']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_GMQQbulAEeahhfrRVNQLqw" name="timestop = 0">
+        <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.2"/>
+        <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.2"/>
+        <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_GMQQcOlAEeahhfrRVNQLqw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_GMQQb-lAEeahhfrRVNQLqw" labelSize="10" labelAlignment="LEFT" hideLabelByDefault="true" color="255,255,255">
+          <description xmi:type="style:SquareDescription" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorTimestop']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorTimestop']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_GMQQcelAEeahhfrRVNQLqw" name="period = 0">
+        <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.2"/>
+        <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.2"/>
+        <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_GMQQc-lAEeahhfrRVNQLqw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_GMQQculAEeahhfrRVNQLqw" labelSize="10" labelAlignment="LEFT" hideLabelByDefault="true" color="255,255,255">
+          <description xmi:type="style:SquareDescription" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorPeriod']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorPeriod']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_GMQQdOlAEeahhfrRVNQLqw" name="granularity = 0">
+        <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.2"/>
+        <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.2"/>
+        <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_GMQQdulAEeahhfrRVNQLqw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_GMQQdelAEeahhfrRVNQLqw" labelSize="10" labelAlignment="LEFT" hideLabelByDefault="true" color="255,255,255">
+          <description xmi:type="style:SquareDescription" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorGranularity']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorGranularity']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_GMQQd-lAEeahhfrRVNQLqw" name="accuracy = 0">
+        <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.2"/>
+        <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.2"/>
+        <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_GMQQeelAEeahhfrRVNQLqw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_GMQQeOlAEeahhfrRVNQLqw" labelSize="10" labelAlignment="LEFT" hideLabelByDefault="true" color="255,255,255">
+          <description xmi:type="style:SquareDescription" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorAccuracy']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorAccuracy']"/>
+      </ownedElements>
+    </ownedDiagramElements>
+    <description xmi:type="description_1:DiagramDescription" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_u0I3Q-k7EeahhfrRVNQLqw"/>
+    <activatedLayers xmi:type="description_1:Layer" href="platform:/resource/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer"/>
+    <target xmi:type="occi:Configuration" href="My.monitoring#/"/>
+  </diagram:DSemanticDiagram>
+  <diagram:DSemanticDiagram xmi:id="_R6fm4elFEeahhfrRVNQLqw" name="new MonitoringConfiguration Diagram">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_R6fm4ulFEeahhfrRVNQLqw" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_R6fm4-lFEeahhfrRVNQLqw"/>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_R6fnPOlFEeahhfrRVNQLqw" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_R6fnPelFEeahhfrRVNQLqw" type="Sirius" element="_R6fm4elFEeahhfrRVNQLqw" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_R6ow0OlFEeahhfrRVNQLqw" type="2003" element="_R6fm5OlFEeahhfrRVNQLqw">
+          <children xmi:type="notation:Node" xmi:id="_R6ow0-lFEeahhfrRVNQLqw" type="5007"/>
+          <children xmi:type="notation:Node" xmi:id="_R6ow1OlFEeahhfrRVNQLqw" type="7004">
+            <children xmi:type="notation:Node" xmi:id="_R6ow5elFEeahhfrRVNQLqw" type="3010" element="_R6fm5ulFEeahhfrRVNQLqw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_R6ow5ulFEeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_R6ow5-lFEeahhfrRVNQLqw"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_R6ow6OlFEeahhfrRVNQLqw" type="3010" element="_R6fm6elFEeahhfrRVNQLqw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_R6ow6elFEeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_R6ow6ulFEeahhfrRVNQLqw"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_R6ow6-lFEeahhfrRVNQLqw" type="3010" element="_R6fm7OlFEeahhfrRVNQLqw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_R6ow7OlFEeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_R6ow7elFEeahhfrRVNQLqw"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_R6ow7ulFEeahhfrRVNQLqw" type="3010" element="_R6fm7-lFEeahhfrRVNQLqw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_R6ow7-lFEeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_R6ow8OlFEeahhfrRVNQLqw"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_R6ow8elFEeahhfrRVNQLqw" type="3010" element="_R6fm8ulFEeahhfrRVNQLqw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_R6ow8ulFEeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_R6ow8-lFEeahhfrRVNQLqw"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_R6ow9OlFEeahhfrRVNQLqw" type="3010" element="_R6fm9elFEeahhfrRVNQLqw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_R6ow9elFEeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_R6ow9ulFEeahhfrRVNQLqw"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_R6ow9-lFEeahhfrRVNQLqw" type="3010" element="_R6fm-OlFEeahhfrRVNQLqw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_R6ow-OlFEeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_R6ow-elFEeahhfrRVNQLqw"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_R6ow-ulFEeahhfrRVNQLqw" type="3010" element="_R6fm--lFEeahhfrRVNQLqw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_R6ow--lFEeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_R6ow_OlFEeahhfrRVNQLqw"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_R6ow_elFEeahhfrRVNQLqw" type="3010" element="_R6fm_ulFEeahhfrRVNQLqw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_R6ow_ulFEeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_R6ow_-lFEeahhfrRVNQLqw"/>
+            </children>
+            <styles xmi:type="notation:SortingStyle" xmi:id="_R6ow1elFEeahhfrRVNQLqw"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_R6ow1ulFEeahhfrRVNQLqw"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_R6ow0elFEeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_R6ow0ulFEeahhfrRVNQLqw"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_R6ow1-lFEeahhfrRVNQLqw" type="2003" element="_R6fnAelFEeahhfrRVNQLqw">
+          <children xmi:type="notation:Node" xmi:id="_R6ow2ulFEeahhfrRVNQLqw" type="5007"/>
+          <children xmi:type="notation:Node" xmi:id="_R6ow2-lFEeahhfrRVNQLqw" type="7004">
+            <children xmi:type="notation:Node" xmi:id="_R6oxAOlFEeahhfrRVNQLqw" type="3010" element="_R6fnA-lFEeahhfrRVNQLqw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_R6oxAelFEeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_R6oxAulFEeahhfrRVNQLqw"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_R6oxA-lFEeahhfrRVNQLqw" type="3010" element="_R6fnBulFEeahhfrRVNQLqw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_R6oxBOlFEeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_R6oxBelFEeahhfrRVNQLqw"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_R6oxBulFEeahhfrRVNQLqw" type="3010" element="_R6fnCelFEeahhfrRVNQLqw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_R6oxB-lFEeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_R6oxCOlFEeahhfrRVNQLqw"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_R6oxCelFEeahhfrRVNQLqw" type="3010" element="_R6fnDOlFEeahhfrRVNQLqw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_R6oxCulFEeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_R6oxC-lFEeahhfrRVNQLqw"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_R6oxDOlFEeahhfrRVNQLqw" type="3010" element="_R6fnD-lFEeahhfrRVNQLqw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_R6oxDelFEeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_R6oxDulFEeahhfrRVNQLqw"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_R6oxD-lFEeahhfrRVNQLqw" type="3010" element="_R6fnEulFEeahhfrRVNQLqw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_R6oxEOlFEeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_R6oxEelFEeahhfrRVNQLqw"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_R6oxEulFEeahhfrRVNQLqw" type="3010" element="_R6fnFelFEeahhfrRVNQLqw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_R6oxE-lFEeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_R6oxFOlFEeahhfrRVNQLqw"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_R6oxFelFEeahhfrRVNQLqw" type="3010" element="_R6fnGOlFEeahhfrRVNQLqw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_R6oxFulFEeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_R6oxF-lFEeahhfrRVNQLqw"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_R6oxGOlFEeahhfrRVNQLqw" type="3010" element="_R6fnG-lFEeahhfrRVNQLqw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_R6oxGelFEeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_R6oxGulFEeahhfrRVNQLqw"/>
+            </children>
+            <styles xmi:type="notation:SortingStyle" xmi:id="_R6ow3OlFEeahhfrRVNQLqw"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_R6ow3elFEeahhfrRVNQLqw"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_R6ow2OlFEeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_R6ow2elFEeahhfrRVNQLqw" x="360"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_R6ow3ulFEeahhfrRVNQLqw" type="2003" element="_R6fnHulFEeahhfrRVNQLqw">
+          <children xmi:type="notation:Node" xmi:id="_R6ow4elFEeahhfrRVNQLqw" type="5007"/>
+          <children xmi:type="notation:Node" xmi:id="_R6ow4ulFEeahhfrRVNQLqw" type="7004">
+            <children xmi:type="notation:Node" xmi:id="_R6oxG-lFEeahhfrRVNQLqw" type="3010" element="_R6fnIOlFEeahhfrRVNQLqw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_R6oxHOlFEeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_R6oxHelFEeahhfrRVNQLqw"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_R6oxHulFEeahhfrRVNQLqw" type="3010" element="_R6fnI-lFEeahhfrRVNQLqw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_R6oxH-lFEeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_R6oxIOlFEeahhfrRVNQLqw"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_R6oxIelFEeahhfrRVNQLqw" type="3010" element="_R6fnJulFEeahhfrRVNQLqw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_R6oxIulFEeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_R6oxI-lFEeahhfrRVNQLqw"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_R6oxJOlFEeahhfrRVNQLqw" type="3010" element="_R6fnKelFEeahhfrRVNQLqw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_R6oxJelFEeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_R6oxJulFEeahhfrRVNQLqw"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_R6oxJ-lFEeahhfrRVNQLqw" type="3010" element="_R6fnLOlFEeahhfrRVNQLqw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_R6oxKOlFEeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_R6oxKelFEeahhfrRVNQLqw"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_R6oxKulFEeahhfrRVNQLqw" type="3010" element="_R6fnL-lFEeahhfrRVNQLqw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_R6oxK-lFEeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_R6oxLOlFEeahhfrRVNQLqw"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_R6oxLelFEeahhfrRVNQLqw" type="3010" element="_R6fnMulFEeahhfrRVNQLqw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_R6oxLulFEeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_R6oxL-lFEeahhfrRVNQLqw"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_R6oxMOlFEeahhfrRVNQLqw" type="3010" element="_R6fnNelFEeahhfrRVNQLqw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_R6oxMelFEeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_R6oxMulFEeahhfrRVNQLqw"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_R6yh0OlFEeahhfrRVNQLqw" type="3010" element="_R6fnOOlFEeahhfrRVNQLqw">
+              <styles xmi:type="notation:FontStyle" xmi:id="_R6yh0elFEeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_R6yh0ulFEeahhfrRVNQLqw"/>
+            </children>
+            <styles xmi:type="notation:SortingStyle" xmi:id="_R6ow4-lFEeahhfrRVNQLqw"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_R6ow5OlFEeahhfrRVNQLqw"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_R6ow3-lFEeahhfrRVNQLqw" fontName="Segoe UI" fontHeight="10"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_R6ow4OlFEeahhfrRVNQLqw" x="720"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_R6fnPulFEeahhfrRVNQLqw"/>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_R6fm5OlFEeahhfrRVNQLqw" name="sensor1: Sensor">
+      <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.0"/>
+      <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.0"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_R6fm5elFEeahhfrRVNQLqw" labelSize="10" borderSize="1" borderSizeComputationExpression="1">
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']"/>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_R6fm5ulFEeahhfrRVNQLqw" name="id = 8c57cee8-d048-4117-8ef0-2a10020d6d55">
+        <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.0"/>
+        <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.0"/>
+        <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_R6fm5-lFEeahhfrRVNQLqw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_R6fm6OlFEeahhfrRVNQLqw" labelSize="10" labelAlignment="LEFT" hideLabelByDefault="true" color="255,255,255">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorId']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorId']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_R6fm6elFEeahhfrRVNQLqw" name="title = sensor1">
+        <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.0"/>
+        <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.0"/>
+        <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_R6fm6ulFEeahhfrRVNQLqw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_R6fm6-lFEeahhfrRVNQLqw" labelSize="10" labelAlignment="LEFT" hideLabelByDefault="true" color="255,255,255">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorTitle']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorTitle']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_R6fm7OlFEeahhfrRVNQLqw" name="summary = null">
+        <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.0"/>
+        <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.0"/>
+        <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_R6fm7elFEeahhfrRVNQLqw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_R6fm7ulFEeahhfrRVNQLqw" labelSize="10" labelAlignment="LEFT" hideLabelByDefault="true" color="255,255,255">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorSummary']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorSummary']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_R6fm7-lFEeahhfrRVNQLqw" name="timebase = null">
+        <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.0"/>
+        <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.0"/>
+        <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_R6fm8OlFEeahhfrRVNQLqw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_R6fm8elFEeahhfrRVNQLqw" labelSize="10" labelAlignment="LEFT" hideLabelByDefault="true" color="255,255,255">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorTimebase']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorTimebase']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_R6fm8ulFEeahhfrRVNQLqw" name="timestart = 0">
+        <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.0"/>
+        <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.0"/>
+        <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_R6fm8-lFEeahhfrRVNQLqw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_R6fm9OlFEeahhfrRVNQLqw" labelSize="10" labelAlignment="LEFT" hideLabelByDefault="true" color="255,255,255">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorTimestart']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorTimestart']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_R6fm9elFEeahhfrRVNQLqw" name="timestop = 0">
+        <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.0"/>
+        <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.0"/>
+        <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_R6fm9ulFEeahhfrRVNQLqw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_R6fm9-lFEeahhfrRVNQLqw" labelSize="10" labelAlignment="LEFT" hideLabelByDefault="true" color="255,255,255">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorTimestop']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorTimestop']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_R6fm-OlFEeahhfrRVNQLqw" name="period = 0">
+        <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.0"/>
+        <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.0"/>
+        <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_R6fm-elFEeahhfrRVNQLqw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_R6fm-ulFEeahhfrRVNQLqw" labelSize="10" labelAlignment="LEFT" hideLabelByDefault="true" color="255,255,255">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorPeriod']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorPeriod']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_R6fm--lFEeahhfrRVNQLqw" name="granularity = 0">
+        <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.0"/>
+        <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.0"/>
+        <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_R6fm_OlFEeahhfrRVNQLqw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_R6fm_elFEeahhfrRVNQLqw" labelSize="10" labelAlignment="LEFT" hideLabelByDefault="true" color="255,255,255">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorGranularity']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorGranularity']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_R6fm_ulFEeahhfrRVNQLqw" name="accuracy = 0">
+        <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.0"/>
+        <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.0"/>
+        <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_R6fm_-lFEeahhfrRVNQLqw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_R6fnAOlFEeahhfrRVNQLqw" labelSize="10" labelAlignment="LEFT" hideLabelByDefault="true" color="255,255,255">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorAccuracy']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorAccuracy']"/>
+      </ownedElements>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_R6fnAelFEeahhfrRVNQLqw" name="sensor2: Sensor">
+      <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.1"/>
+      <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.1"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_R6fnAulFEeahhfrRVNQLqw" labelSize="10" borderSize="1" borderSizeComputationExpression="1">
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']"/>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_R6fnA-lFEeahhfrRVNQLqw" name="id = 8737de6f-1b33-4fb3-9367-86ebacd0e24e">
+        <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.1"/>
+        <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.1"/>
+        <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_R6fnBOlFEeahhfrRVNQLqw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_R6fnBelFEeahhfrRVNQLqw" labelSize="10" labelAlignment="LEFT" hideLabelByDefault="true" color="255,255,255">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorId']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorId']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_R6fnBulFEeahhfrRVNQLqw" name="title = sensor2">
+        <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.1"/>
+        <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.1"/>
+        <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_R6fnB-lFEeahhfrRVNQLqw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_R6fnCOlFEeahhfrRVNQLqw" labelSize="10" labelAlignment="LEFT" hideLabelByDefault="true" color="255,255,255">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorTitle']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorTitle']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_R6fnCelFEeahhfrRVNQLqw" name="summary = null">
+        <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.1"/>
+        <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.1"/>
+        <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_R6fnCulFEeahhfrRVNQLqw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_R6fnC-lFEeahhfrRVNQLqw" labelSize="10" labelAlignment="LEFT" hideLabelByDefault="true" color="255,255,255">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorSummary']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorSummary']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_R6fnDOlFEeahhfrRVNQLqw" name="timebase = null">
+        <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.1"/>
+        <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.1"/>
+        <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_R6fnDelFEeahhfrRVNQLqw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_R6fnDulFEeahhfrRVNQLqw" labelSize="10" labelAlignment="LEFT" hideLabelByDefault="true" color="255,255,255">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorTimebase']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorTimebase']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_R6fnD-lFEeahhfrRVNQLqw" name="timestart = 0">
+        <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.1"/>
+        <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.1"/>
+        <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_R6fnEOlFEeahhfrRVNQLqw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_R6fnEelFEeahhfrRVNQLqw" labelSize="10" labelAlignment="LEFT" hideLabelByDefault="true" color="255,255,255">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorTimestart']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorTimestart']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_R6fnEulFEeahhfrRVNQLqw" name="timestop = 0">
+        <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.1"/>
+        <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.1"/>
+        <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_R6fnE-lFEeahhfrRVNQLqw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_R6fnFOlFEeahhfrRVNQLqw" labelSize="10" labelAlignment="LEFT" hideLabelByDefault="true" color="255,255,255">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorTimestop']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorTimestop']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_R6fnFelFEeahhfrRVNQLqw" name="period = 0">
+        <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.1"/>
+        <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.1"/>
+        <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_R6fnFulFEeahhfrRVNQLqw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_R6fnF-lFEeahhfrRVNQLqw" labelSize="10" labelAlignment="LEFT" hideLabelByDefault="true" color="255,255,255">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorPeriod']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorPeriod']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_R6fnGOlFEeahhfrRVNQLqw" name="granularity = 0">
+        <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.1"/>
+        <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.1"/>
+        <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_R6fnGelFEeahhfrRVNQLqw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_R6fnGulFEeahhfrRVNQLqw" labelSize="10" labelAlignment="LEFT" hideLabelByDefault="true" color="255,255,255">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorGranularity']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorGranularity']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_R6fnG-lFEeahhfrRVNQLqw" name="accuracy = 0">
+        <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.1"/>
+        <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.1"/>
+        <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_R6fnHOlFEeahhfrRVNQLqw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_R6fnHelFEeahhfrRVNQLqw" labelSize="10" labelAlignment="LEFT" hideLabelByDefault="true" color="255,255,255">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorAccuracy']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorAccuracy']"/>
+      </ownedElements>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_R6fnHulFEeahhfrRVNQLqw" name="sensor3: Sensor">
+      <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.2"/>
+      <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.2"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_R6fnH-lFEeahhfrRVNQLqw" labelSize="10" borderSize="1" borderSizeComputationExpression="1">
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']"/>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_R6fnIOlFEeahhfrRVNQLqw" name="id = 8c7a8c91-7cb1-4920-a8d4-2f6b87d43d02">
+        <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.2"/>
+        <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.2"/>
+        <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_R6fnIelFEeahhfrRVNQLqw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_R6fnIulFEeahhfrRVNQLqw" labelSize="10" labelAlignment="LEFT" hideLabelByDefault="true" color="255,255,255">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorId']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorId']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_R6fnI-lFEeahhfrRVNQLqw" name="title = sensor3">
+        <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.2"/>
+        <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.2"/>
+        <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_R6fnJOlFEeahhfrRVNQLqw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_R6fnJelFEeahhfrRVNQLqw" labelSize="10" labelAlignment="LEFT" hideLabelByDefault="true" color="255,255,255">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorTitle']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorTitle']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_R6fnJulFEeahhfrRVNQLqw" name="summary = null">
+        <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.2"/>
+        <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.2"/>
+        <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_R6fnJ-lFEeahhfrRVNQLqw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_R6fnKOlFEeahhfrRVNQLqw" labelSize="10" labelAlignment="LEFT" hideLabelByDefault="true" color="255,255,255">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorSummary']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorSummary']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_R6fnKelFEeahhfrRVNQLqw" name="timebase = null">
+        <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.2"/>
+        <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.2"/>
+        <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_R6fnKulFEeahhfrRVNQLqw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_R6fnK-lFEeahhfrRVNQLqw" labelSize="10" labelAlignment="LEFT" hideLabelByDefault="true" color="255,255,255">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorTimebase']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorTimebase']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_R6fnLOlFEeahhfrRVNQLqw" name="timestart = 0">
+        <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.2"/>
+        <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.2"/>
+        <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_R6fnLelFEeahhfrRVNQLqw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_R6fnLulFEeahhfrRVNQLqw" labelSize="10" labelAlignment="LEFT" hideLabelByDefault="true" color="255,255,255">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorTimestart']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorTimestart']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_R6fnL-lFEeahhfrRVNQLqw" name="timestop = 0">
+        <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.2"/>
+        <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.2"/>
+        <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_R6fnMOlFEeahhfrRVNQLqw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_R6fnMelFEeahhfrRVNQLqw" labelSize="10" labelAlignment="LEFT" hideLabelByDefault="true" color="255,255,255">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorTimestop']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorTimestop']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_R6fnMulFEeahhfrRVNQLqw" name="period = 0">
+        <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.2"/>
+        <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.2"/>
+        <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_R6fnM-lFEeahhfrRVNQLqw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_R6fnNOlFEeahhfrRVNQLqw" labelSize="10" labelAlignment="LEFT" hideLabelByDefault="true" color="255,255,255">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorPeriod']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorPeriod']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_R6fnNelFEeahhfrRVNQLqw" name="granularity = 0">
+        <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.2"/>
+        <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.2"/>
+        <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_R6fnNulFEeahhfrRVNQLqw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_R6fnN-lFEeahhfrRVNQLqw" labelSize="10" labelAlignment="LEFT" hideLabelByDefault="true" color="255,255,255">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorGranularity']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorGranularity']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_R6fnOOlFEeahhfrRVNQLqw" name="accuracy = 0">
+        <target xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.2"/>
+        <semanticElements xmi:type="monitoring:Sensor" href="My.monitoring#//@resources.2"/>
+        <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_R6fnOelFEeahhfrRVNQLqw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_R6fnOulFEeahhfrRVNQLqw" labelSize="10" labelAlignment="LEFT" hideLabelByDefault="true" color="255,255,255">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorAccuracy']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorContainer']/@subNodeMappings[name='SensorAccuracy']"/>
+      </ownedElements>
+    </ownedDiagramElements>
+    <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_R6fnO-lFEeahhfrRVNQLqw"/>
+    <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring.design/description/monitoring.odesign#//@ownedViewpoints[name='MonitoringConfiguration']/@ownedRepresentations[name='MonitoringConfiguration%20Diagram']/@defaultLayer"/>
+    <target xmi:type="occi:Configuration" href="My.monitoring#/"/>
+  </diagram:DSemanticDiagram>
+</xmi:XMI>
