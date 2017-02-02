@@ -118,7 +118,7 @@ public class ExamplesWizardPage extends WizardPage {
 				chosenExample = (IExample) ((IStructuredSelection) viewer.getSelection()).getFirstElement();
 				screenshotLabel.setImage(chosenExample.getScreenshot());
 				descriptionLabel.setText(chosenExample.getDescription());
-				setPageComplete(isPageComplete());
+				setPageComplete(chosenExample != null && check(chosenExample));
 			}
 		});
 
@@ -139,13 +139,15 @@ public class ExamplesWizardPage extends WizardPage {
 	 */
 	@Override
 	public boolean isPageComplete() {
-		return super.isPageComplete() && chosenExample != null && isValid(chosenExample);
+		return super.isPageComplete() && chosenExample != null && check(chosenExample);
 	}
 
-	private boolean isValid(IExample chosenExample) {
+	private boolean check(IExample chosenExample) {
 		boolean valid = !ResourcesPlugin.getWorkspace().getRoot().getProject(chosenExample.getProjectName()).exists();
 		if (!valid) {
 			setErrorMessage(Messages.ExamplesWizard_error_already_exists_message + chosenExample.getProjectName());
+		} else {
+			setErrorMessage(null);
 		}
 		return valid;
 	}
