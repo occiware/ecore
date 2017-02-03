@@ -7,14 +7,24 @@
 	<packaging>pom</packaging>
 
 	<modules>
-		<!-- OCCI -->
+		<!-- OCCI Core -->
 		<module>../org.occiware.clouddesigner.occi</module>
 		<module>../org.occiware.clouddesigner.occi.edit</module>
 		<module>../org.occiware.clouddesigner.occi.editor</module>
 		<module>../org.occiware.clouddesigner.occi.tests</module>
 		<module>../org.occiware.clouddesigner.occi.design</module>
-		
-		<!-- OCCI generators -->
+
+		<!-- OCCI Core Xtext -->
+		<module>../org.occiware.clouddesigner.occi.xtext</module>
+		<!-- <module>../org.occiware.clouddesigner.occi.xtext.tests</module> -->
+		<module>../org.occiware.clouddesigner.occi.xtext.ui</module>
+
+		<!-- OCCI2Ecore -->
+		<module>../org.occiware.clouddesigner.occi.emfgen</module>
+		<module>../org.occiware.clouddesigner.occi.emfgen.ui</module>
+		<module>../org.occiware.clouddesigner.occi.emfgen.design</module>
+
+		<!-- OCCI Core generators -->
 		<module>../org.occiware.clouddesigner.occi.gen.alloy</module>
 		<module>../org.occiware.clouddesigner.occi.gen.alloy.ui</module>
  		<module>../org.occiware.clouddesigner.occi.gen.connector</module>
@@ -26,12 +36,9 @@
 		<module>../org.occiware.clouddesigner.occi.gen.xml</module>
 		<module>../org.occiware.clouddesigner.occi.gen.xml.ui</module>
 
-		<!-- OCCI connectors -->
+		<!-- OCCI Core connectors -->
 		<module>../org.occiware.clouddesigner.occi.connector.jocci</module>
 
-		<!-- OCCI BigData -->
-		<module>../org.occiware.clouddesigner.occi.bigdata</module>
-		
 		<!-- OCCI Infrastructure -->
 		<module>../org.occiware.clouddesigner.occi.infrastructure</module>
 		<module>../org.occiware.clouddesigner.occi.infrastructure.connector.dummy</module>
@@ -43,6 +50,12 @@
 		<module>../org.occiware.clouddesigner.occi.infrastructure.editor</module>
 		<module>../org.occiware.clouddesigner.occi.infrastructure.tests</module>
 
+		<!-- OCCI Compute Resource Template Profile (CRTP) -->
+		<module>../org.occiware.clouddesigner.occi.crtp</module>
+		<module>../org.occiware.clouddesigner.occi.crtp.edit</module>
+<!-- 		<module>../org.occiware.clouddesigner.occi.crtp.editor</module> -->
+<!-- 		<module>../org.occiware.clouddesigner.occi.crtp.design</module> -->
+
 		<!-- OCCI Platform -->
 		<module>../org.occiware.clouddesigner.occi.platform</module>
 		<module>../org.occiware.clouddesigner.occi.platform.connector.dummy</module>
@@ -50,6 +63,9 @@
 		<module>../org.occiware.clouddesigner.occi.platform.edit</module>
 		<module>../org.occiware.clouddesigner.occi.platform.editor</module>
 		<module>../org.occiware.clouddesigner.occi.platform.tests</module>
+
+		<!-- OCCI Service Level Agreement (SLA) -->
+		<module>../org.occiware.clouddesigner.occi.sla</module>
 
 		<!-- OCCI Monitoring -->
 		<module>../org.occiware.clouddesigner.occi.monitoring</module>
@@ -60,13 +76,10 @@
 		<module>../org.occiware.clouddesigner.occi.monitoring.editor</module>
 		<module>../org.occiware.clouddesigner.occi.monitoring.tests</module>
 
-		<!-- ProActive Cloud Automation -->
-		<module>../org.occiware.clouddesigner.occi.pca</module>
-
-		<!-- Cloud Connector Dependencies -->
+		<!-- OCCIware Cloud Connector Dependencies -->
 		<module>../org.occiware.clouddesigner.occi.cloud.connector.dependencies</module>
 
-		<!-- Cloud -->
+		<!-- OCCIware Cloud -->
 		<module>../org.occiware.clouddesigner.occi.cloud</module>
 		<module>../org.occiware.clouddesigner.occi.cloud.edit</module>
 		<module>../org.occiware.clouddesigner.occi.cloud.editor</module>
@@ -74,7 +87,7 @@
 		<module>../org.occiware.clouddesigner.occi.cloud.connector</module>
 		<module>../org.occiware.clouddesigner.occi.cloud.design</module>
 
-		<!-- Hypervisor -->
+		<!-- OCCIware Hypervisor -->
 		<module>../org.occiware.clouddesigner.occi.hypervisor</module>
 		<module>../org.occiware.clouddesigner.occi.hypervisor.edit</module>
 		<module>../org.occiware.clouddesigner.occi.hypervisor.editor</module>
@@ -82,10 +95,10 @@
 		<module>../org.occiware.clouddesigner.occi.hypervisor.connector</module>
 		<module>../org.occiware.clouddesigner.occi.hypervisor.design</module>
 
-		<!-- Docker Connector Dependencies -->
+		<!-- OCCIware Docker Connector Dependencies -->
 		<module>../org.occiware.clouddesigner.occi.docker.connector.dependencies</module>
 
-		<!-- Docker -->
+		<!-- OCCIware Docker -->
 		<module>../org.occiware.clouddesigner.occi.docker</module>
 		<module>../org.occiware.clouddesigner.occi.docker.edit</module>
 		<module>../org.occiware.clouddesigner.occi.docker.editor</module>
@@ -94,49 +107,39 @@
 		<module>../org.occiware.clouddesigner.occi.docker.design</module>
 		<module>../org.occiware.clouddesigner.occi.docker.preference</module>
 
-		<!-- Docker generators -->
+		<!-- OCCIware Docker generators -->
 		<module>../org.occiware.clouddesigner.occi.docker.gen.conf</module>
 		<module>../org.occiware.clouddesigner.occi.docker.gen.conf.ui</module>
 
-		<!-- Linked Data Connector Dependencies -->
+		<!-- OCCIware BigData -->
+		<module>../org.occiware.clouddesigner.occi.bigdata</module>
+
+		<!-- ProActive Cloud Automation -->
+		<module>../org.occiware.clouddesigner.occi.pca</module>
+
+		<!-- OCCIware Linked Data Connector Dependencies -->
 		<module>../org.occiware.clouddesigner.occi.linkeddata.connector.dependencies</module>
 
-		<!-- Linked Data -->
+		<!-- OCCIware Linked Data -->
 		<module>../org.occiware.clouddesigner.occi.linkeddata</module>
 		<module>../org.occiware.clouddesigner.occi.linkeddata.edit</module>
 		<module>../org.occiware.clouddesigner.occi.linkeddata.editor</module>
 		<module>../org.occiware.clouddesigner.occi.linkeddata.tests</module>
 		<module>../org.occiware.clouddesigner.occi.linkeddata.connector</module>
 		<module>../org.occiware.clouddesigner.occi.linkeddata.design</module>
-		
-		<!-- CRTP : OCCI Compute Resource Template -->
-		<module>../org.occiware.clouddesigner.occi.crtp</module>
-		<module>../org.occiware.clouddesigner.occi.crtp.edit</module>
-<!-- 		<module>../org.occiware.clouddesigner.occi.crtp.editor</module> -->
-<!-- 		<module>../org.occiware.clouddesigner.occi.crtp.design</module> -->
 
 		<!-- Multiple backend extension based on infrastructure and CRTP -->
 		<module>../org.occiware.clouddesigner.occi.infrastructure.crtp.backend</module>
-        <module>../org.occiware.clouddesigner.occi.infrastructure.crtp.backend.edit</module>
-        <module>../org.occiware.clouddesigner.occi.infrastructure.crtp.backend.editor</module>
-        <module>../org.occiware.clouddesigner.occi.infrastructure.crtp.backend.tests</module>
-        <module>../org.occiware.clouddesigner.occi.infrastructure.crtp.backend.design</module>
-		
-		<!-- OCCI Xtext -->
-		<module>../org.occiware.clouddesigner.occi.xtext</module>
-		<!--<module>../org.occiware.clouddesigner.occi.xtext.tests</module>-->
-		<module>../org.occiware.clouddesigner.occi.xtext.ui</module>
+		<module>../org.occiware.clouddesigner.occi.infrastructure.crtp.backend.edit</module>
+		<module>../org.occiware.clouddesigner.occi.infrastructure.crtp.backend.editor</module>
+ 		<module>../org.occiware.clouddesigner.occi.infrastructure.crtp.backend.tests</module>
+		<module>../org.occiware.clouddesigner.occi.infrastructure.crtp.backend.design</module>
 
-		<!-- OCCI2Ecore -->
-		<module>../org.occiware.clouddesigner.occi.emfgen</module>
-		<module>../org.occiware.clouddesigner.occi.emfgen.ui</module>
-		<module>../org.occiware.clouddesigner.occi.emfgen.design</module>
-		
 		<!-- Examples -->
 		<module>../org.occiware.clouddesigner.occi.examples</module>
 		<module>../org.occiware.clouddesigner.occi.infrastructure.example</module>
 		<module>../org.occiware.clouddesigner.occi.monitoring.example</module>
-		
+
 		<!-- Releng -->
 		<module>../org.occiware.clouddesigner.occi.feature</module>
 		<module>../org.occiware.clouddesigner.occi.docker.feature</module>
