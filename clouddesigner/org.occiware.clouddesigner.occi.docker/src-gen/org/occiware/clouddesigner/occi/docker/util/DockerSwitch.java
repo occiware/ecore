@@ -150,6 +150,16 @@ public class DockerSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case DockerPackage.MACHINE_GENERIC: {
+				Machine_Generic machine_Generic = (Machine_Generic)theEObject;
+				T result = caseMachine_Generic(machine_Generic);
+				if (result == null) result = caseMachine(machine_Generic);
+				if (result == null) result = caseCompute(machine_Generic);
+				if (result == null) result = caseResource(machine_Generic);
+				if (result == null) result = caseEntity(machine_Generic);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case DockerPackage.MACHINE_AMAZON_EC2: {
 				Machine_Amazon_EC2 machine_Amazon_EC2 = (Machine_Amazon_EC2)theEObject;
 				T result = caseMachine_Amazon_EC2(machine_Amazon_EC2);
@@ -391,6 +401,21 @@ public class DockerSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseNetwork(Network object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Machine Generic</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Machine Generic</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMachine_Generic(Machine_Generic object) {
 		return null;
 	}
 

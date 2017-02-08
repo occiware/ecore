@@ -115,6 +115,10 @@ public class DockerAdapterFactory extends AdapterFactoryImpl {
 				return createNetworkAdapter();
 			}
 			@Override
+			public Adapter caseMachine_Generic(Machine_Generic object) {
+				return createMachine_GenericAdapter();
+			}
+			@Override
 			public Adapter caseMachine_Amazon_EC2(Machine_Amazon_EC2 object) {
 				return createMachine_Amazon_EC2Adapter();
 			}
@@ -315,6 +319,20 @@ public class DockerAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createNetworkAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.occiware.clouddesigner.occi.docker.Machine_Generic <em>Machine Generic</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Generic
+	 * @generated
+	 */
+	public Adapter createMachine_GenericAdapter() {
 		return null;
 	}
 
