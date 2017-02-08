@@ -565,8 +565,7 @@
     <eAnnotations source="OCCIE2Ecore">
       <details key="title" value="Create machines using an existing VM/Host with SSH"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="engine_port" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number"
-        defaultValueLiteral="2376">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="engine_port" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number">
       <eAnnotations source="OCCIE2Ecore">
         <details key="description" value="Port to use for Docker Daemon (Note: This flag will not work with boot2docker)."/>
       </eAnnotations>
@@ -582,14 +581,12 @@
         <details key="description" value="Path to the SSH user private key."/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ssh_user" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"
-        defaultValueLiteral="root">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ssh_user" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
       <eAnnotations source="OCCIE2Ecore">
         <details key="description" value="SSH username used to connect."/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ssh_port" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number"
-        defaultValueLiteral="22">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ssh_port" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number">
       <eAnnotations source="OCCIE2Ecore">
         <details key="description" value="Port to use for SSH."/>
       </eAnnotations>
@@ -1395,6 +1392,68 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="vcenter" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
       <eAnnotations source="OCCIE2Ecore">
         <details key="description" value=" IP/hostname for vCenter (or ESXi if connecting directly to a single host)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Machine_Exoscale" eSuperTypes="#//Machine">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title" value="Machine Exoscale"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="url" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"
+        defaultValueLiteral="https://api.exoscale.ch/compute">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Your API endpoint."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="api_key" lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="required Your API key."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="api_secret_key" lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="required Your API secret key."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instance_profile" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"
+        defaultValueLiteral="small">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Instance profile."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="image" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"
+        defaultValueLiteral="ubuntu-16.04">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Image template (e.g. ubuntu-16.04, ubuntu-15.10)."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="security_group" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Security group. It will be created if it doesn’t exist."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="availability_zone" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Exoscale availability zone."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ssh_user" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"
+        defaultValueLiteral="ubuntu">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="SSH username, which must match the default SSH user for the used image."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="userdata" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Path to file containing user data for cloud-init."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="affinity_group" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"
+        defaultValueLiteral="docker-machine">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Affinity group the machine will be started in."/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>

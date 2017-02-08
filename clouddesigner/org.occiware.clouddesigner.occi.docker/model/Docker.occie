@@ -310,7 +310,7 @@
     <parent href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='network']"/>
   </kinds>
   <kinds term="machine_Generic" scheme="http://occiware.org/occi/docker#" title="Create machines using an existing VM/Host with SSH" parent="//@kinds[term='machine']">
-    <attributes name="engine_port" default="2376" description="Port to use for Docker Daemon (Note: This flag will not work with boot2docker).">
+    <attributes name="engine_port" default="" description="Port to use for Docker Daemon (Note: This flag will not work with boot2docker).">
       <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
     </attributes>
     <attributes name="ip_address" required="true" description=" required IP Address of host.">
@@ -319,10 +319,10 @@
     <attributes name="ssh_key" description="Path to the SSH user private key.">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="ssh_user" default="root" description="SSH username used to connect.">
+    <attributes name="ssh_user" default="" description="SSH username used to connect.">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="ssh_port" default="22" description="Port to use for SSH.">
+    <attributes name="ssh_port" default="" description="Port to use for SSH.">
       <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
     </attributes>
   </kinds>
@@ -743,6 +743,38 @@
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
     <attributes name="vcenter" description=" IP/hostname for vCenter (or ESXi if connecting directly to a single host)">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+  </kinds>
+  <kinds term="machine_Exoscale" scheme="http://occiware.org/occi/docker#" title="Machine Exoscale" parent="//@kinds[term='machine']">
+    <attributes name="url" default="https://api.exoscale.ch/compute" description="Your API endpoint.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="api_key" required="true" description="required Your API key.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="api_secret_key" required="true" description="required Your API secret key.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="instance_profile" default="small" description="Instance profile.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="image" default="ubuntu-16.04" description="Image template (e.g. ubuntu-16.04, ubuntu-15.10).">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="security_group" description="Security group. It will be created if it doesn&#x2019;t exist.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="availability_zone" description="Exoscale availability zone.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="ssh_user" default="ubuntu" description="SSH username, which must match the default SSH user for the used image.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="userdata" description="Path to file containing user data for cloud-init.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="affinity_group" default="docker-machine" description="Affinity group the machine will be started in.">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
   </kinds>

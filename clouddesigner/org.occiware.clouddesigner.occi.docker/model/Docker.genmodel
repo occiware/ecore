@@ -786,6 +786,39 @@
         <ecoreFeature xsi:type="ecore:EAttribute" href="Docker.ecore#//Machine_VMware_vSphere/vcenter"/>
       </genFeatures>
     </genClasses>
+    <genClasses>
+      <ecoreClass href="Docker.ecore#//Machine_Exoscale"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="Docker.ecore#//Machine_Exoscale/url"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="Docker.ecore#//Machine_Exoscale/api_key"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="Docker.ecore#//Machine_Exoscale/api_secret_key"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="Docker.ecore#//Machine_Exoscale/instance_profile"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="Docker.ecore#//Machine_Exoscale/image"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="Docker.ecore#//Machine_Exoscale/security_group"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="Docker.ecore#//Machine_Exoscale/availability_zone"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="Docker.ecore#//Machine_Exoscale/ssh_user"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="Docker.ecore#//Machine_Exoscale/userdata"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="Docker.ecore#//Machine_Exoscale/affinity_group"/>
+      </genFeatures>
+    </genClasses>
   </genPackages>
   <usedGenPackages href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.genmodel#//infrastructure"/>
   <usedGenPackages href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.genmodel#//occi"/>
