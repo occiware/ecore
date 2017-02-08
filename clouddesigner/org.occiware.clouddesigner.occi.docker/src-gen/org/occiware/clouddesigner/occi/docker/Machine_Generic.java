@@ -35,7 +35,6 @@ package org.occiware.clouddesigner.occi.docker;
 public interface Machine_Generic extends Machine {
 	/**
 	 * Returns the value of the '<em><b>Engine port</b></em>' attribute.
-	 * The default value is <code>"2376"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Engine port</em>' attribute isn't clear,
@@ -45,7 +44,7 @@ public interface Machine_Generic extends Machine {
 	 * @return the value of the '<em>Engine port</em>' attribute.
 	 * @see #setEngine_port(int)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Generic_Engine_port()
-	 * @model default="2376" dataType="org.occiware.clouddesigner.occi.Number"
+	 * @model dataType="org.occiware.clouddesigner.occi.Number"
 	 *        annotation="OCCIE2Ecore description='Port to use for Docker Daemon (Note: This flag will not work with boot2docker).'"
 	 * @generated
 	 */
@@ -117,7 +116,6 @@ public interface Machine_Generic extends Machine {
 
 	/**
 	 * Returns the value of the '<em><b>Ssh user</b></em>' attribute.
-	 * The default value is <code>"root"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Ssh user</em>' attribute isn't clear,
@@ -127,7 +125,7 @@ public interface Machine_Generic extends Machine {
 	 * @return the value of the '<em>Ssh user</em>' attribute.
 	 * @see #setSsh_user(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Generic_Ssh_user()
-	 * @model default="root" dataType="org.occiware.clouddesigner.occi.String"
+	 * @model dataType="org.occiware.clouddesigner.occi.String"
 	 *        annotation="OCCIE2Ecore description='SSH username used to connect.'"
 	 * @generated
 	 */
@@ -145,7 +143,6 @@ public interface Machine_Generic extends Machine {
 
 	/**
 	 * Returns the value of the '<em><b>Ssh port</b></em>' attribute.
-	 * The default value is <code>"22"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Ssh port</em>' attribute isn't clear,
@@ -155,7 +152,7 @@ public interface Machine_Generic extends Machine {
 	 * @return the value of the '<em>Ssh port</em>' attribute.
 	 * @see #setSsh_port(int)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Generic_Ssh_port()
-	 * @model default="22" dataType="org.occiware.clouddesigner.occi.Number"
+	 * @model dataType="org.occiware.clouddesigner.occi.Number"
 	 *        annotation="OCCIE2Ecore description='Port to use for SSH.'"
 	 * @generated
 	 */

@@ -220,6 +220,15 @@ public interface DockerFactory extends EFactory {
 	Machine_VMware_vSphere createMachine_VMware_vSphere();
 
 	/**
+	 * Returns a new object of class '<em>Machine Exoscale</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Machine Exoscale</em>'.
+	 * @generated
+	 */
+	Machine_Exoscale createMachine_Exoscale();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
