@@ -20,7 +20,7 @@ import org.occiware.clouddesigner.occi.infrastructure.StopMethod;
 import org.occiware.clouddesigner.occi.infrastructure.SuspendMethod;
 
 /**
- * This class implements executable Docker Machine on VirtualBox.
+ * This class implements executable Docker Machine on Virtualbox.
  */
 @SuppressWarnings("all")
 public class ExecutableMachine_VirtualBox extends Machine_VirtualBoxImpl {
