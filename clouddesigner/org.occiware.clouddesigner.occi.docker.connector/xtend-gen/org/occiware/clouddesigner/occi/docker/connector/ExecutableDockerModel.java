@@ -24,6 +24,7 @@ import org.occiware.clouddesigner.occi.docker.Container;
 import org.occiware.clouddesigner.occi.docker.Machine;
 import org.occiware.clouddesigner.occi.docker.Machine_Amazon_EC2;
 import org.occiware.clouddesigner.occi.docker.Machine_Digital_Ocean;
+import org.occiware.clouddesigner.occi.docker.Machine_Generic;
 import org.occiware.clouddesigner.occi.docker.Machine_Google_Compute_Engine;
 import org.occiware.clouddesigner.occi.docker.Machine_IBM_SoftLayer;
 import org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Azure;
@@ -37,6 +38,7 @@ import org.occiware.clouddesigner.occi.docker.Machine_VirtualBox;
 import org.occiware.clouddesigner.occi.docker.Network;
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableMachine_Amazon_EC2;
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableMachine_Digital_Ocean;
+import org.occiware.clouddesigner.occi.docker.connector.ExecutableMachine_Generic;
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableMachine_Google_Compute_Engine;
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableMachine_IBM_SoftLayer;
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableMachine_Microsoft_Azure;
@@ -90,6 +92,8 @@ public class ExecutableDockerModel {
   
   public Network network;
   
+  public Machine_Generic machine_Generic;
+  
   public ExecutableDockerModel() {
   }
   
@@ -130,6 +134,10 @@ public class ExecutableDockerModel {
                         } else {
                           if ((machine instanceof Machine_VMware_vSphere)) {
                             this.machine_VMware_vSphere = ((Machine_VMware_vSphere)machine);
+                          } else {
+                            if ((machine instanceof Machine_Generic)) {
+                              this.machine_Generic = ((Machine_Generic)machine);
+                            }
                           }
                         }
                       }
@@ -221,192 +229,212 @@ public class ExecutableDockerModel {
       this.machine_VMware_vSphere.start();
       return;
     }
+    boolean _notEquals_12 = (!Objects.equal(this.machine_Generic, null));
+    if (_notEquals_12) {
+      this.machine_Generic.start();
+      return;
+    }
   }
   
   public void startAll() {
-    boolean _notEquals = (!Objects.equal(this.machine_VirtualBox, null));
+    boolean _notEquals = (!Objects.equal(this.machine_Generic, null));
     if (_notEquals) {
+      ((ExecutableMachine_Generic) this.machine_Generic).startAll();
+      return;
+    }
+    boolean _notEquals_1 = (!Objects.equal(this.machine_VirtualBox, null));
+    if (_notEquals_1) {
       ((ExecutableMachine_VirtualBox) this.machine_VirtualBox).startAll();
       return;
     }
-    boolean _notEquals_1 = (!Objects.equal(this.machine_Amazon_EC2, null));
-    if (_notEquals_1) {
+    boolean _notEquals_2 = (!Objects.equal(this.machine_Amazon_EC2, null));
+    if (_notEquals_2) {
       ((ExecutableMachine_Amazon_EC2) this.machine_Amazon_EC2).startAll();
       return;
     }
-    boolean _notEquals_2 = (!Objects.equal(this.machine_Digital_Ocean, null));
-    if (_notEquals_2) {
+    boolean _notEquals_3 = (!Objects.equal(this.machine_Digital_Ocean, null));
+    if (_notEquals_3) {
       ((ExecutableMachine_Digital_Ocean) this.machine_Digital_Ocean).startAll();
       return;
     }
-    boolean _notEquals_3 = (!Objects.equal(this.machine_Google_Compute_Engine, null));
-    if (_notEquals_3) {
+    boolean _notEquals_4 = (!Objects.equal(this.machine_Google_Compute_Engine, null));
+    if (_notEquals_4) {
       ((ExecutableMachine_Google_Compute_Engine) this.machine_Google_Compute_Engine).startAll();
       return;
     }
-    boolean _notEquals_4 = (!Objects.equal(this.machine_IBM_SoftLayer, null));
-    if (_notEquals_4) {
+    boolean _notEquals_5 = (!Objects.equal(this.machine_IBM_SoftLayer, null));
+    if (_notEquals_5) {
       ((ExecutableMachine_IBM_SoftLayer) this.machine_IBM_SoftLayer).startAll();
       return;
     }
-    boolean _notEquals_5 = (!Objects.equal(this.machine_Microsoft_Azure, null));
-    if (_notEquals_5) {
+    boolean _notEquals_6 = (!Objects.equal(this.machine_Microsoft_Azure, null));
+    if (_notEquals_6) {
       ((ExecutableMachine_Microsoft_Azure) this.machine_Microsoft_Azure).startAll();
       return;
     }
-    boolean _notEquals_6 = (!Objects.equal(this.machine_Microsoft_Hyper_V, null));
-    if (_notEquals_6) {
+    boolean _notEquals_7 = (!Objects.equal(this.machine_Microsoft_Hyper_V, null));
+    if (_notEquals_7) {
       ((ExecutableMachine_Microsoft_Hyper_V) this.machine_Microsoft_Hyper_V).startAll();
       return;
     }
-    boolean _notEquals_7 = (!Objects.equal(this.machine_OpenStack, null));
-    if (_notEquals_7) {
+    boolean _notEquals_8 = (!Objects.equal(this.machine_OpenStack, null));
+    if (_notEquals_8) {
       ((ExecutableMachine_OpenStack) this.machine_OpenStack).startAll();
       return;
     }
-    boolean _notEquals_8 = (!Objects.equal(this.machine_Rackspace, null));
-    if (_notEquals_8) {
+    boolean _notEquals_9 = (!Objects.equal(this.machine_Rackspace, null));
+    if (_notEquals_9) {
       ((ExecutableMachine_Rackspace) this.machine_Rackspace).startAll();
       return;
     }
-    boolean _notEquals_9 = (!Objects.equal(this.machine_VMware_Fusion, null));
-    if (_notEquals_9) {
+    boolean _notEquals_10 = (!Objects.equal(this.machine_VMware_Fusion, null));
+    if (_notEquals_10) {
       ((ExecutableMachine_VMware_Fusion) this.machine_VMware_Fusion).startAll();
       return;
     }
-    boolean _notEquals_10 = (!Objects.equal(this.machine_VMware_vCloud_Air, null));
-    if (_notEquals_10) {
+    boolean _notEquals_11 = (!Objects.equal(this.machine_VMware_vCloud_Air, null));
+    if (_notEquals_11) {
       ((ExecutableMachine_VMware_vCloud_Air) this.machine_VMware_vCloud_Air).startAll();
       return;
     }
-    boolean _notEquals_11 = (!Objects.equal(this.machine_VMware_vSphere, null));
-    if (_notEquals_11) {
+    boolean _notEquals_12 = (!Objects.equal(this.machine_VMware_vSphere, null));
+    if (_notEquals_12) {
       ((ExecutableMachine_VMware_vSphere) this.machine_VMware_vSphere).startAll();
       return;
     }
   }
   
   public void stop() {
-    boolean _notEquals = (!Objects.equal(this.machine_VirtualBox, null));
+    boolean _notEquals = (!Objects.equal(this.machine_Generic, null));
     if (_notEquals) {
+      ((ExecutableMachine_Generic) this.machine_Generic).stop(StopMethod.GRACEFUL);
+      return;
+    }
+    boolean _notEquals_1 = (!Objects.equal(this.machine_VirtualBox, null));
+    if (_notEquals_1) {
       ((ExecutableMachine_VirtualBox) this.machine_VirtualBox).stop(StopMethod.GRACEFUL);
       return;
     }
-    boolean _notEquals_1 = (!Objects.equal(this.machine_Amazon_EC2, null));
-    if (_notEquals_1) {
+    boolean _notEquals_2 = (!Objects.equal(this.machine_Amazon_EC2, null));
+    if (_notEquals_2) {
       ((ExecutableMachine_Amazon_EC2) this.machine_Amazon_EC2).stop(StopMethod.GRACEFUL);
       return;
     }
-    boolean _notEquals_2 = (!Objects.equal(this.machine_Digital_Ocean, null));
-    if (_notEquals_2) {
+    boolean _notEquals_3 = (!Objects.equal(this.machine_Digital_Ocean, null));
+    if (_notEquals_3) {
       ((ExecutableMachine_Digital_Ocean) this.machine_Digital_Ocean).stop(StopMethod.GRACEFUL);
       return;
     }
-    boolean _notEquals_3 = (!Objects.equal(this.machine_Google_Compute_Engine, null));
-    if (_notEquals_3) {
+    boolean _notEquals_4 = (!Objects.equal(this.machine_Google_Compute_Engine, null));
+    if (_notEquals_4) {
       ((ExecutableMachine_Google_Compute_Engine) this.machine_Google_Compute_Engine).stop(StopMethod.GRACEFUL);
       return;
     }
-    boolean _notEquals_4 = (!Objects.equal(this.machine_IBM_SoftLayer, null));
-    if (_notEquals_4) {
+    boolean _notEquals_5 = (!Objects.equal(this.machine_IBM_SoftLayer, null));
+    if (_notEquals_5) {
       ((ExecutableMachine_IBM_SoftLayer) this.machine_IBM_SoftLayer).stop(StopMethod.GRACEFUL);
       return;
     }
-    boolean _notEquals_5 = (!Objects.equal(this.machine_Microsoft_Azure, null));
-    if (_notEquals_5) {
+    boolean _notEquals_6 = (!Objects.equal(this.machine_Microsoft_Azure, null));
+    if (_notEquals_6) {
       ((ExecutableMachine_Microsoft_Azure) this.machine_Microsoft_Azure).stop(StopMethod.GRACEFUL);
       return;
     }
-    boolean _notEquals_6 = (!Objects.equal(this.machine_Microsoft_Hyper_V, null));
-    if (_notEquals_6) {
+    boolean _notEquals_7 = (!Objects.equal(this.machine_Microsoft_Hyper_V, null));
+    if (_notEquals_7) {
       ((ExecutableMachine_Microsoft_Hyper_V) this.machine_Microsoft_Hyper_V).stop(StopMethod.GRACEFUL);
       return;
     }
-    boolean _notEquals_7 = (!Objects.equal(this.machine_OpenStack, null));
-    if (_notEquals_7) {
+    boolean _notEquals_8 = (!Objects.equal(this.machine_OpenStack, null));
+    if (_notEquals_8) {
       ((ExecutableMachine_OpenStack) this.machine_OpenStack).stop(StopMethod.GRACEFUL);
       return;
     }
-    boolean _notEquals_8 = (!Objects.equal(this.machine_Rackspace, null));
-    if (_notEquals_8) {
+    boolean _notEquals_9 = (!Objects.equal(this.machine_Rackspace, null));
+    if (_notEquals_9) {
       ((ExecutableMachine_Rackspace) this.machine_Rackspace).stop(StopMethod.GRACEFUL);
       return;
     }
-    boolean _notEquals_9 = (!Objects.equal(this.machine_VMware_Fusion, null));
-    if (_notEquals_9) {
+    boolean _notEquals_10 = (!Objects.equal(this.machine_VMware_Fusion, null));
+    if (_notEquals_10) {
       ((ExecutableMachine_VMware_Fusion) this.machine_VMware_Fusion).stop(StopMethod.GRACEFUL);
       return;
     }
-    boolean _notEquals_10 = (!Objects.equal(this.machine_VMware_vCloud_Air, null));
-    if (_notEquals_10) {
+    boolean _notEquals_11 = (!Objects.equal(this.machine_VMware_vCloud_Air, null));
+    if (_notEquals_11) {
       ((ExecutableMachine_VMware_vCloud_Air) this.machine_VMware_vCloud_Air).stop(StopMethod.GRACEFUL);
       return;
     }
-    boolean _notEquals_11 = (!Objects.equal(this.machine_VMware_vSphere, null));
-    if (_notEquals_11) {
+    boolean _notEquals_12 = (!Objects.equal(this.machine_VMware_vSphere, null));
+    if (_notEquals_12) {
       ((ExecutableMachine_VMware_vSphere) this.machine_VMware_vSphere).stop(StopMethod.GRACEFUL);
       return;
     }
   }
   
   public void restart() {
-    boolean _notEquals = (!Objects.equal(this.machine_VirtualBox, null));
+    boolean _notEquals = (!Objects.equal(this.machine_Generic, null));
     if (_notEquals) {
+      this.machine_Generic.restart(RestartMethod.GRACEFUL);
+      return;
+    }
+    boolean _notEquals_1 = (!Objects.equal(this.machine_VirtualBox, null));
+    if (_notEquals_1) {
       this.machine_VirtualBox.restart(RestartMethod.GRACEFUL);
       return;
     }
-    boolean _notEquals_1 = (!Objects.equal(this.machine_Amazon_EC2, null));
-    if (_notEquals_1) {
+    boolean _notEquals_2 = (!Objects.equal(this.machine_Amazon_EC2, null));
+    if (_notEquals_2) {
       this.machine_Amazon_EC2.restart(RestartMethod.GRACEFUL);
       return;
     }
-    boolean _notEquals_2 = (!Objects.equal(this.machine_Digital_Ocean, null));
-    if (_notEquals_2) {
+    boolean _notEquals_3 = (!Objects.equal(this.machine_Digital_Ocean, null));
+    if (_notEquals_3) {
       this.machine_Digital_Ocean.restart(RestartMethod.GRACEFUL);
       return;
     }
-    boolean _notEquals_3 = (!Objects.equal(this.machine_Google_Compute_Engine, null));
-    if (_notEquals_3) {
+    boolean _notEquals_4 = (!Objects.equal(this.machine_Google_Compute_Engine, null));
+    if (_notEquals_4) {
       this.machine_Google_Compute_Engine.restart(RestartMethod.GRACEFUL);
       return;
     }
-    boolean _notEquals_4 = (!Objects.equal(this.machine_IBM_SoftLayer, null));
-    if (_notEquals_4) {
+    boolean _notEquals_5 = (!Objects.equal(this.machine_IBM_SoftLayer, null));
+    if (_notEquals_5) {
       this.machine_IBM_SoftLayer.restart(RestartMethod.GRACEFUL);
       return;
     }
-    boolean _notEquals_5 = (!Objects.equal(this.machine_Microsoft_Azure, null));
-    if (_notEquals_5) {
+    boolean _notEquals_6 = (!Objects.equal(this.machine_Microsoft_Azure, null));
+    if (_notEquals_6) {
       this.machine_Microsoft_Azure.restart(RestartMethod.GRACEFUL);
       return;
     }
-    boolean _notEquals_6 = (!Objects.equal(this.machine_Microsoft_Hyper_V, null));
-    if (_notEquals_6) {
+    boolean _notEquals_7 = (!Objects.equal(this.machine_Microsoft_Hyper_V, null));
+    if (_notEquals_7) {
       this.machine_Microsoft_Hyper_V.restart(RestartMethod.GRACEFUL);
       return;
     }
-    boolean _notEquals_7 = (!Objects.equal(this.machine_OpenStack, null));
-    if (_notEquals_7) {
+    boolean _notEquals_8 = (!Objects.equal(this.machine_OpenStack, null));
+    if (_notEquals_8) {
       this.machine_OpenStack.restart(RestartMethod.GRACEFUL);
       return;
     }
-    boolean _notEquals_8 = (!Objects.equal(this.machine_Rackspace, null));
-    if (_notEquals_8) {
+    boolean _notEquals_9 = (!Objects.equal(this.machine_Rackspace, null));
+    if (_notEquals_9) {
       this.machine_Rackspace.restart(RestartMethod.GRACEFUL);
       return;
     }
-    boolean _notEquals_9 = (!Objects.equal(this.machine_VMware_Fusion, null));
-    if (_notEquals_9) {
+    boolean _notEquals_10 = (!Objects.equal(this.machine_VMware_Fusion, null));
+    if (_notEquals_10) {
       this.machine_VMware_Fusion.restart(RestartMethod.GRACEFUL);
       return;
     }
-    boolean _notEquals_10 = (!Objects.equal(this.machine_VMware_vCloud_Air, null));
-    if (_notEquals_10) {
+    boolean _notEquals_11 = (!Objects.equal(this.machine_VMware_vCloud_Air, null));
+    if (_notEquals_11) {
       this.machine_VMware_vCloud_Air.restart(RestartMethod.GRACEFUL);
       return;
     }
-    boolean _notEquals_11 = (!Objects.equal(this.machine_VMware_vSphere, null));
-    if (_notEquals_11) {
+    boolean _notEquals_12 = (!Objects.equal(this.machine_VMware_vSphere, null));
+    if (_notEquals_12) {
       this.machine_VMware_vSphere.restart(RestartMethod.GRACEFUL);
       return;
     }
@@ -448,6 +476,10 @@ public class ExecutableDockerModel {
                         } else {
                           if ((this.machine instanceof Machine_VMware_vSphere)) {
                             ((ExecutableMachine_VMware_vSphere) this.machine_VMware_vSphere).synchronize();
+                          } else {
+                            if ((this.machine instanceof Machine_Generic)) {
+                              ((ExecutableMachine_Generic) this.machine_Generic).synchronize();
+                            }
                           }
                         }
                       }

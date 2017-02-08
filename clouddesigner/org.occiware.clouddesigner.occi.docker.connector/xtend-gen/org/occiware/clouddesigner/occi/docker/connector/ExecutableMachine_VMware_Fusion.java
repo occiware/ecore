@@ -52,6 +52,10 @@ public class ExecutableMachine_VMware_Fusion extends Machine_VMware_FusionImpl {
         StringBuilder _append_3 = sb.append(" --vmwarefusion-boot2docker-url ");
         _append_3.append(ExecutableMachine_VMware_Fusion.this.boot2docker_url);
       }
+      if (ExecutableMachine_VMware_Fusion.this.no_share) {
+        StringBuilder _append_4 = sb.append(" --vmwarefusion-no-share ");
+        _append_4.append(ExecutableMachine_VMware_Fusion.this.no_share);
+      }
     }
   };
   
