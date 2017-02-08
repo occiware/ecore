@@ -778,6 +778,39 @@
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
   </kinds>
+  <kinds term="machine_Grid5000" scheme="http://occiware.org/occi/docker#" title="Grid5000 cluster" parent="//@kinds[term='machine']">
+    <attributes name="username" required="true" description="Grid5000 account username">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="password" required="true" description="Grid5000 account password">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="site" required="true" description="Site to reserve the resources on">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="walltime" description="Timelife of the machine">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="ssh_private_key" description="Path of your ssh private key">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="ssh_public_key" description="Path of your ssh public key">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="image" description="Name of the image to deploy">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="resource_properties" description="Resource selection with OAR properties (SQL format)">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="use_job_reservation" description="Job ID to use (need to be an already existing job ID)">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="host_to_provision" description="Host to provision (host need to be already deployed)"/>
+  </kinds>
+  <kinds term="cluster" scheme="http://occiware.org/occi/docker#" title="Docker cluster">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
   <types xsi:type="ecore:EEnum" name="Mode">
     <eLiterals name="read_write" literal="read_write"/>
     <eLiterals name="read_only" value="1" literal="read_only"/>
