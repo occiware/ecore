@@ -71,6 +71,7 @@ import org.occiware.clouddesigner.occi.docker.impl.DockerFactoryImpl
 import org.occiware.clouddesigner.occi.docker.impl.MachineImpl
 import org.occiware.clouddesigner.occi.docker.impl.Machine_Amazon_EC2Impl
 import org.occiware.clouddesigner.occi.docker.impl.Machine_Digital_OceanImpl
+import org.occiware.clouddesigner.occi.docker.impl.Machine_GenericImpl
 import org.occiware.clouddesigner.occi.docker.impl.Machine_Google_Compute_EngineImpl
 import org.occiware.clouddesigner.occi.docker.impl.Machine_IBM_SoftLayerImpl
 import org.occiware.clouddesigner.occi.docker.impl.Machine_Microsoft_AzureImpl
@@ -82,6 +83,7 @@ import org.occiware.clouddesigner.occi.docker.impl.Machine_VMware_vCloud_AirImpl
 import org.occiware.clouddesigner.occi.docker.impl.Machine_VMware_vSphereImpl
 import org.occiware.clouddesigner.occi.docker.impl.Machine_VirtualBoxImpl
 import org.occiware.clouddesigner.occi.docker.impl.NetworkImpl
+import org.occiware.clouddesigner.occi.docker.impl.VolumeImpl
 import org.occiware.clouddesigner.occi.infrastructure.Compute
 import org.occiware.clouddesigner.occi.infrastructure.ComputeStatus
 import org.occiware.clouddesigner.occi.infrastructure.NetworkStatus
@@ -93,8 +95,8 @@ import org.slf4j.LoggerFactory
 
 import static com.google.common.base.Preconditions.checkNotNull
 import static org.occiware.clouddesigner.occi.docker.connector.ExecutableContainer.*
-import org.occiware.clouddesigner.occi.docker.impl.VolumeImpl
-import org.eclipse.xtext.findReferences.TargetURIs.Key
+import org.occiware.clouddesigner.occi.docker.Machine_Generic
+import org.occiware.clouddesigner.occi.docker.impl.Machine_ExoscaleImpl
 
 /**
  * This class overrides the generated EMF factory of the Docker package.
@@ -207,6 +209,14 @@ class ExecutableDockerFactory extends DockerFactoryImpl {
 	}
 
 	/**
+	 * Create an executable Machine_Generic instance.
+	 */
+	override def createMachine_Generic() {
+		LOGGER.info(this.class.name + ":createMachine_Generic()")
+		new ExecutableMachine_Generic
+	}
+
+	/**
 	 * Create an executable Machine_VMware_Fusion instance.
 	 */
 	override def createMachine_VMware_Fusion() {
@@ -229,6 +239,15 @@ class ExecutableDockerFactory extends DockerFactoryImpl {
 		LOGGER.info(this.class.name + ":createMachine_VMware_vSphere()")
 		new ExecutableMachine_VMware_vSphere
 	}
+
+	/**
+	 * Create an executable Machine_Exoscale instance.
+	 */
+	override def createMachine_Exoscale() {
+		LOGGER.info(this.class.name + ":createMachine_Exoscale()")
+		new ExecutableMachine_Exoscale
+	}
+
 
 	/**
 	 * Create an executable Network instance.
@@ -787,11 +806,11 @@ class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statistics> {
 		statisticsList.add(stats)
 		// Calculate the percentage of CPU used
 		var Map<String, Object> cpu = stats.cpuStats
-		var LinkedHashMap tmpcpu = cpu.get("cpu_usage") as LinkedHashMap
+		var LinkedHashMap<String, Object> tmpcpu = cpu.get("cpu_usage") as LinkedHashMap<String, Object>
 		var cpu_used = tmpcpu.get("total_usage")
 		var percpu_usage = tmpcpu.get("percpu_usage")
 		var system_cpu_usage = cpu.get("system_cpu_usage")
-		var percpu_usage_size = percpu_usage as List
+		var percpu_usage_size = percpu_usage as List<Object>
 		var Integer mem_used = stats.memoryStats.get("usage") as Integer
 		var Integer mem_limit = stats.memoryStats.get("limit") as Integer
 		var Map<String, Object> networks = stats.networks
@@ -801,7 +820,7 @@ class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statistics> {
 		var Integer bandwitdh = null
 		try {
 			if (networks != null) {
-				var LinkedHashMap tmpnetworks = networks.get("eth0") as LinkedHashMap
+				var LinkedHashMap<String, Object> tmpnetworks = networks.get("eth0") as LinkedHashMap<String, Object>
 				// LOGGER.info("Networks : {}", tmpnetworks)
 				network_r = tmpnetworks.get("rx_bytes") as Integer
 				network_t = tmpnetworks.get("tx_bytes") as Integer
@@ -1919,6 +1938,55 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 }
 
 /**
+ * This class implements executable Docker Machine on Generic.
+ */
+class ExecutableMachine_Generic extends Machine_GenericImpl {
+
+	/**
+	 * The machine manager.
+	 */
+	val manager = new MachineManager(this) {
+		override def getDriverName() {
+			"generic"
+		}
+
+		override def appendDriverParameters(StringBuilder sb) {
+			if (!StringUtils.isEmpty(engine_port.toString)) {
+				sb.append(" --generic-engine-port ").append(engine_port)
+			}
+			if (!StringUtils.isEmpty(ip_address)) {
+				sb.append(" --generic-ip-address ").append(ip_address)
+			}
+			if (!StringUtils.isEmpty(ssh_user)) {
+				sb.append(" --generic-ssh-user ").append(ssh_user)
+			}
+			if (!StringUtils.isEmpty(ssh_port.toString)) {
+				sb.append(" --generic-ssh-user ").append(ssh_port)
+			}
+		}
+	}
+
+	// Delegation to the manager.
+	override def start() {
+		manager.start()
+
+		// Add listener here
+		val observer = new DockerObserver
+		observer.listener(this)
+	}
+
+	def startAll() { manager.startAll }
+
+	override def stop(StopMethod method) { manager.stop(method) }
+
+	override def restart(RestartMethod method) { manager.restart(method) }
+
+	override def suspend(SuspendMethod method) { manager.suspend(method) }
+
+	def synchronize() { manager.synchronize }
+}
+
+/**
  * This class implements executable Docker Machine on Amazon EC2.
  */
 class ExecutableMachine_Amazon_EC2 extends Machine_Amazon_EC2Impl {
@@ -2126,11 +2194,23 @@ class ExecutableMachine_IBM_SoftLayer extends Machine_IBM_SoftLayerImpl {
 			if (StringUtils.isNotBlank(image)) {
 				sb.append(" --softlayer-image ").append(image)
 			}
+			if (StringUtils.isNotBlank(public_vlan_id)) {
+				sb.append(" --softlayer-public-vlan-id ").append(public_vlan_id)
+			}
+			if (StringUtils.isNotBlank(private_vlan_id)) {
+				sb.append(" --softlayer-private-vlan-id ").append(private_vlan_id)
+			}
+			if (StringUtils.isNotBlank(region)) {
+				sb.append(" --softlayer-region ").append(region)
+			}
 			if (private_net_only) {
 				sb.append(" --softlayer-private-net-only ").append(private_net_only)
 			}
 			if (local_disk) {
 				sb.append(" --softlayer-local-disk ").append(local_disk)
+			}
+			if (private_net_only) {
+				sb.append(" --softlayer-private-net-only ").append(private_net_only)
 			}
 
 		// Update the model attributs
@@ -2176,8 +2256,54 @@ class ExecutableMachine_Microsoft_Azure extends Machine_Microsoft_AzureImpl {
 			if (StringUtils.isNotBlank(subscription_cert)) {
 				sb.append(" --azure-subscription-cert ").append(subscription_cert)
 			}
-
-		// Update the model with new attributs
+			if (StringUtils.isNotBlank(environment)) {
+				sb.append(" --azure-environment ").append(environment)
+			}
+			if (StringUtils.isNotBlank(image)) {
+				sb.append(" --azure-image ").append(image)
+			}
+			if (StringUtils.isNotBlank(location)) {
+				sb.append(" --azure-location ").append(location)
+			}
+			if (StringUtils.isNotBlank(resource_group)) {
+				sb.append(" --azure-resource-group ").append(resource_group)
+			}
+			if (StringUtils.isNotBlank(size)) {
+				sb.append(" --azure-size ").append(size)
+			}
+			if (StringUtils.isNotBlank(ssh_user)) {
+				sb.append(" --azure-ssh-user ").append(ssh_user)
+			}
+			if (StringUtils.isNotBlank(vnet)) {
+				sb.append(" --azure-vnet ").append(vnet)
+			}
+			if (StringUtils.isNotBlank(subnet)) {
+				sb.append(" --azure-subnet ").append(subnet)
+			}
+			if (StringUtils.isNotBlank(subnet_prefix)) {
+				sb.append(" --azure-subnet-prefix ").append(subnet_prefix)
+			}
+			if (StringUtils.isNotBlank(availability_set)) {
+				sb.append(" --azure-availability-set ").append(availability_set)
+			}
+			if (StringUtils.isNotBlank(open_port.toString)) {
+				sb.append(" --azure-open-port ").append(open_port)
+			}
+			if (StringUtils.isNotBlank(private_ip_address)) {
+				sb.append(" --azure-private-ip-address ").append(private_ip_address)
+			}
+			if (StringUtils.isNotBlank(use_private_ip)) {
+				sb.append(" --azure-use-private-ip ").append(use_private_ip)
+			}
+			if (StringUtils.isNotBlank(no_public_ip)) {
+				sb.append(" --azure-no-public-ip ").append(no_public_ip)
+			}
+			if (StringUtils.isNotBlank(static_public_ip)) {
+				sb.append(" --azure-static-public-ip ").append(static_public_ip)
+			}
+			if (StringUtils.isNotBlank(docker_port.toString)) {
+				sb.append(" --azure-docker-port ").append(docker_port)
+			}
 		}
 	}
 
@@ -2209,9 +2335,24 @@ class ExecutableMachine_Microsoft_Hyper_V extends Machine_Microsoft_Hyper_VImpl 
 		}
 
 		override def appendDriverParameters(StringBuilder sb) {
-
-			// TODO: must be implemented
-			throw new UnsupportedOperationException
+			if (StringUtils.isNotBlank(virtual_switch)) {
+				sb.append(" --hyperv-virtual-switch ").append(virtual_switch)
+			}
+			if (StringUtils.isNotBlank(disk_size.toString)) {
+				sb.append(" --hyperv-disk-size ").append(disk_size)
+			}
+			if (StringUtils.isNotBlank(memory.toString)) {
+				sb.append(" --hyperv-memory ").append(memory)
+			}
+			if (StringUtils.isNotBlank(cores.toString)) {
+				sb.append(" --hyperv-cpu-count ").append(cores)
+			}
+			if (StringUtils.isNotBlank(static_macaddress)) {
+				sb.append(" --hyperv-static-macaddress ").append(static_macaddress)
+			}
+			if (StringUtils.isNotBlank(vlan_id)) {
+				sb.append(" --hyperv-vlan-id ").append(vlan_id)
+			}
 		}
 	}
 
@@ -2256,25 +2397,31 @@ class ExecutableMachine_OpenStack extends Machine_OpenStackImpl {
 			if (!auth_url.isEmpty) {
 				sb.append(" --openstack-auth-url ").append(auth_url)
 			}
-			if (!flavor_id.isEmpty) {
+			if (StringUtils.isNotBlank(flavor_id)) {
 				sb.append(" --openstack-flavor-id ").append(flavor_id)
 			}
-			if (!image_id.isEmpty) {
+			if (StringUtils.isNotBlank(flavor_name)) {
+				sb.append(" --openstack-flavor-name ").append(flavor_name)
+			}
+			if (StringUtils.isNotBlank(image_id)) {
 				sb.append(" --openstack-image-id ").append(image_id)
 			}
-			if (!tenant_id.isEmpty) {
+			if (StringUtils.isNotBlank(image_name)) {
+				sb.append(" --openstack-image-name ").append(image_name)
+			}
+			if (StringUtils.isNotBlank(tenant_id)) {
 				sb.append(" --openstack-tenant-id ").append(tenant_id)
 			}
-			if (!tenant_name.isEmpty) {
+			if (StringUtils.isNotBlank(tenant_name)) {
 				sb.append(" --openstack-tenant-name ").append(tenant_name)
 			}
-			if (!username.isEmpty) {
+			if (StringUtils.isNotBlank(username)) {
 				sb.append(" --openstack-username ").append(username)
 			}
-			if (!password.isEmpty) {
+			if (StringUtils.isNotBlank(password)) {
 				sb.append(" --openstack-password ").append(password)
 			}
-			if (!floatingip_pool.isEmpty) {
+			if (StringUtils.isNotBlank(floatingip_pool)) {
 				sb.append(" --openstack-floatingip-pool ").append(floatingip_pool)
 			}
 			if (StringUtils.isNotBlank(region)) {
@@ -2284,14 +2431,49 @@ class ExecutableMachine_OpenStack extends Machine_OpenStackImpl {
 
 				sb.append(" --openstack-net-id ").append(net_id)
 			}
+			if (StringUtils.isNotBlank(net_name)) {
+
+				sb.append(" --openstack-net-name ").append(net_name)
+			}
+			if (StringUtils.isNotBlank(domain_id)) {
+
+				sb.append(" --openstack-domain-id ").append(domain_id)
+			}
+			if (StringUtils.isNotBlank(domain_name)) {
+
+				sb.append(" --openstack-domain-name ").append(domain_name)
+			}
+			if (StringUtils.isNotBlank(availability_zone)) {
+				sb.append(" --openstack-availability-zone ").append(availability_zone)
+			}
+			if (active_timeout != 200) {
+				sb.append(" --openstack-availability-zone ").append(active_timeout)
+			}
+			if (StringUtils.isNotBlank(private_key_file)) {
+
+				sb.append(" --openstack-private-key-file ").append(private_key_file)
+			}
+			if (StringUtils.isNotBlank(ssh_port.toString)) {
+
+				sb.append(" --openstack-ssh-port ").append(ssh_port)
+			}
+			if (StringUtils.isNotBlank(ssh_user)) {
+
+				sb.append(" --openstack-ssh-user ").append(ssh_user)
+			}
+			if (insecure) {
+
+				sb.append(" --openstack-insecure ").append(insecure)
+			}
+			if (StringUtils.isNotBlank(endpoint_type)) {
+
+				sb.append(" --openstack-endpoint-type ").append(endpoint_type)
+			}
 			if (StringUtils.isNotBlank(sec_groups)) {
 				sb.append(" --openstack-sec-groups ").append(sec_groups)
 			} else {
 				sb.append(" --openstack-sec-groups ").append("default")
 			}
-
-			// Should be fixed in the model.
-			sb.append(" --openstack-ssh-user ").append("occiware")
 		}
 	}
 
@@ -2349,8 +2531,9 @@ class ExecutableMachine_Rackspace extends Machine_RackspaceImpl {
 			if (StringUtils.isNotBlank(flavor_id)) {
 				sb.append(" --rackspace-flavor-id ").append(flavor_id)
 			}
-
-		// TODO update the model attributs
+			if (!docker_install) {
+				sb.append(" --rackspace-docker-install ").append(docker_install)
+			}
 		}
 	}
 
@@ -2369,7 +2552,77 @@ class ExecutableMachine_Rackspace extends Machine_RackspaceImpl {
 }
 
 /**
- * This class implements executable Docker Machine on VirtualBox.
+ * This class implements executable Docker Machine on Exoscale.
+ */
+class ExecutableMachine_Exoscale extends Machine_ExoscaleImpl {
+
+	/**
+	 * The machine manager.
+	 */
+	val manager = new MachineManager(this) {
+		override def getDriverName() {
+			"exoscale"
+		}
+
+		override def appendDriverParameters(StringBuilder sb) {
+
+			if (!StringUtils.isEmpty(url)) {
+				sb.append(" --exoscale-url ").append(url)
+			}
+			if (!StringUtils.isEmpty(api_key)) {
+				sb.append(" --exoscale-api-key ").append(api_key)
+			}
+			if (!StringUtils.isEmpty(api_secret_key)) {
+				sb.append(" --exoscale-api-secret-key ").append(api_secret_key)
+			}
+			if (!StringUtils.isEmpty(instance_profile)) {
+				sb.append(" --exoscale-instance-profile	").append(instance_profile)
+			}
+			if (!StringUtils.isEmpty(image)) {
+				sb.append(" --exoscale-image ").append(image)
+			}
+			if (!StringUtils.isEmpty(security_group)) {
+				sb.append(" --exoscale-security-group ").append(security_group)
+			}
+			if (!StringUtils.isEmpty(availability_zone)) {
+				sb.append(" --exoscale-availability-zone ").append(availability_zone)
+			}
+			if (!StringUtils.isEmpty(ssh_user)) {
+				sb.append(" --exoscale-ssh-user ").append(ssh_user)
+			}
+			if (!StringUtils.isEmpty(userdata)) {
+				sb.append(" --exoscale-userdata ").append(userdata)
+			}
+			if (!StringUtils.isEmpty(affinity_group)) {
+				sb.append(" --exoscale-affinity-group ").append(affinity_group)
+			}
+
+		}
+	}
+
+	// Delegation to the manager.
+	override def start() {
+		manager.start()
+
+		// Add listener here
+		val observer = new DockerObserver
+		observer.listener(this)
+	}
+
+	def startAll() { manager.startAll }
+
+	override def stop(StopMethod method) { manager.stop(method) }
+
+	override def restart(RestartMethod method) { manager.restart(method) }
+
+	override def suspend(SuspendMethod method) { manager.suspend(method) }
+
+	def synchronize() { manager.synchronize }
+}
+
+
+/**
+ * This class implements executable Docker Machine on Virtualbox.
  */
 class ExecutableMachine_VirtualBox extends Machine_VirtualBoxImpl {
 
@@ -2397,7 +2650,35 @@ class ExecutableMachine_VirtualBox extends Machine_VirtualBoxImpl {
 			}
 			if (!StringUtils.isEmpty(boot2docker_url)) {
 				sb.append(" --virtualbox-boot2docker-url ").append(boot2docker_url)
+			}else{
+				// Use boot2docker v1.11.2
+				sb.append(" --virtualbox-boot2docker-url ").append("https://github.com/boot2docker/boot2docker/releases/download/v1.11.2/boot2docker.iso")
 			}
+			if (host_dns_resolver) {
+				sb.append(" --virtualbox-host-dns-resolver ").append(host_dns_resolver)
+			}
+			if (!StringUtils.isEmpty(import_boot2docker_vm)) {
+				sb.append(" --virtualbox-import-boot2docker-vm ").append(import_boot2docker_vm)
+			}
+			if (host_dns_resolver) {
+				sb.append(" --virtualbox-host-dns-resolver ").append(host_dns_resolver)
+			}
+			if (!StringUtils.isEmpty(hostonly_nictype)) {
+				sb.append(" --virtualbox-hostonly-nictype ").append(hostonly_nictype)
+			}
+			if (no_share) {
+				sb.append(" --virtualbox-no-share ").append(no_share)
+			}
+			if (no_dns_proxy) {
+				sb.append(" --virtualbox-no-dns-proxy ").append(no_dns_proxy)
+			}
+			if (no_vtx_check) {
+				sb.append(" --virtualbox-no-vtx-check ").append(no_vtx_check)
+			}
+			if (!StringUtils.isEmpty(share_folder)) {
+				sb.append(" --virtualbox-share-folder ").append(share_folder)
+			}
+
 		}
 	}
 
@@ -2445,6 +2726,9 @@ class ExecutableMachine_VMware_Fusion extends Machine_VMware_FusionImpl {
 			}
 			if (boot2docker_url != null) {
 				sb.append(" --vmwarefusion-boot2docker-url ").append(boot2docker_url)
+			}
+			if(no_share){
+				sb.append(" --vmwarefusion-no-share ").append(no_share)
 			}
 		}
 	}
@@ -2671,6 +2955,7 @@ class ExecutableDockerModel {
 	var public Machine_VMware_vCloud_Air machine_VMware_vCloud_Air
 	var public Machine_VMware_vSphere machine_VMware_vSphere
 	var public Network network
+	var public Machine_Generic machine_Generic
 
 	new() {
 	}
@@ -2701,7 +2986,9 @@ class ExecutableDockerModel {
 			machine_VMware_vCloud_Air = machine
 		} else if (machine instanceof Machine_VMware_vSphere) {
 			machine_VMware_vSphere = machine
-		}
+		} else if (machine instanceof Machine_Generic) {
+			machine_Generic = machine
+		}		
 	}
 
 	new(Configuration configuration) {
@@ -2774,10 +3061,18 @@ class ExecutableDockerModel {
 			machine_VMware_vSphere.start
 			return;
 		}
+		if (machine_Generic != null) {
+			machine_Generic.start
+			return;
+		}
 
 	}
 
 	def void startAll() {
+		if (machine_Generic != null) {
+			(machine_Generic as ExecutableMachine_Generic).startAll
+			return;
+		}
 		if (machine_VirtualBox != null) {
 			(machine_VirtualBox as ExecutableMachine_VirtualBox).startAll
 			return;
@@ -2834,6 +3129,11 @@ class ExecutableDockerModel {
 	}
 
 	def void stop() {
+		if (machine_Generic != null) {
+			(machine_Generic as ExecutableMachine_Generic).stop(StopMethod.GRACEFUL)
+			return;
+		}
+
 		if (machine_VirtualBox != null) {
 			(machine_VirtualBox as ExecutableMachine_VirtualBox).stop(StopMethod.GRACEFUL)
 			return;
@@ -2890,6 +3190,10 @@ class ExecutableDockerModel {
 	}
 
 	def void restart() {
+		if (machine_Generic != null) {
+			machine_Generic.restart(RestartMethod.GRACEFUL)
+			return;
+		}
 		if (machine_VirtualBox != null) {
 			machine_VirtualBox.restart(RestartMethod.GRACEFUL)
 			return;
@@ -2970,6 +3274,8 @@ class ExecutableDockerModel {
 			(machine_VMware_vCloud_Air as ExecutableMachine_VMware_vCloud_Air).synchronize
 		} else if (machine instanceof Machine_VMware_vSphere) {
 			(machine_VMware_vSphere as ExecutableMachine_VMware_vSphere).synchronize
+		}else if (machine instanceof Machine_Generic) {
+			(machine_Generic as ExecutableMachine_Generic).synchronize
 		}
 	}
 
