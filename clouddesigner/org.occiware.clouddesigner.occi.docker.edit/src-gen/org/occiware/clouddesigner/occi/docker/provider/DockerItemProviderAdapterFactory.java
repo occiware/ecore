@@ -564,6 +564,29 @@ public class DockerItemProviderAdapterFactory extends DockerAdapterFactory imple
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.occiware.clouddesigner.occi.docker.Machine_Exoscale} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected Machine_ExoscaleItemProvider machine_ExoscaleItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.occiware.clouddesigner.occi.docker.Machine_Exoscale}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createMachine_ExoscaleAdapter() {
+		if (machine_ExoscaleItemProvider == null) {
+			machine_ExoscaleItemProvider = new Machine_ExoscaleItemProvider(this);
+		}
+
+		return machine_ExoscaleItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -683,6 +706,7 @@ public class DockerItemProviderAdapterFactory extends DockerAdapterFactory imple
 		if (machine_VMware_FusionItemProvider != null) machine_VMware_FusionItemProvider.dispose();
 		if (machine_VMware_vCloud_AirItemProvider != null) machine_VMware_vCloud_AirItemProvider.dispose();
 		if (machine_VMware_vSphereItemProvider != null) machine_VMware_vSphereItemProvider.dispose();
+		if (machine_ExoscaleItemProvider != null) machine_ExoscaleItemProvider.dispose();
 	}
 
 }
