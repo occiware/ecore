@@ -39,6 +39,8 @@ import org.occiware.clouddesigner.occi.docker.Machine_IBM_SoftLayer;
  *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.Machine_IBM_SoftLayerImpl#isLocal_disk <em>Local disk</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.Machine_IBM_SoftLayerImpl#isPrivate_net_only <em>Private net only</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.Machine_IBM_SoftLayerImpl#getRegion <em>Region</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.Machine_IBM_SoftLayerImpl#getPublic_vlan_id <em>Public vlan id</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.Machine_IBM_SoftLayerImpl#getPrivate_vlan_id <em>Private vlan id</em>}</li>
  * </ul>
  *
  * @generated
@@ -52,7 +54,7 @@ public class Machine_IBM_SoftLayerImpl extends MachineImpl implements Machine_IB
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String API_ENDPOINT_EDEFAULT = null;
+	protected static final String API_ENDPOINT_EDEFAULT = "api.softlayer.com/rest/v3";
 
 	/**
 	 * The cached value of the '{@link #getApi_endpoint() <em>Api endpoint</em>}' attribute.
@@ -172,7 +174,7 @@ public class Machine_IBM_SoftLayerImpl extends MachineImpl implements Machine_IB
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean HOURLY_BILLING_EDEFAULT = true;
+	protected static final boolean HOURLY_BILLING_EDEFAULT = false;
 
 	/**
 	 * The cached value of the '{@link #isHourly_billing() <em>Hourly billing</em>}' attribute.
@@ -192,7 +194,7 @@ public class Machine_IBM_SoftLayerImpl extends MachineImpl implements Machine_IB
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String IMAGE_EDEFAULT = null;
+	protected static final String IMAGE_EDEFAULT = "UBUNTU_LATEST";
 
 	/**
 	 * The cached value of the '{@link #getImage() <em>Image</em>}' attribute.
@@ -263,6 +265,46 @@ public class Machine_IBM_SoftLayerImpl extends MachineImpl implements Machine_IB
 	 * @ordered
 	 */
 	protected String region = REGION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getPublic_vlan_id() <em>Public vlan id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPublic_vlan_id()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String PUBLIC_VLAN_ID_EDEFAULT = "0";
+
+	/**
+	 * The cached value of the '{@link #getPublic_vlan_id() <em>Public vlan id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPublic_vlan_id()
+	 * @generated
+	 * @ordered
+	 */
+	protected String public_vlan_id = PUBLIC_VLAN_ID_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getPrivate_vlan_id() <em>Private vlan id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPrivate_vlan_id()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String PRIVATE_VLAN_ID_EDEFAULT = "0";
+
+	/**
+	 * The cached value of the '{@link #getPrivate_vlan_id() <em>Private vlan id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPrivate_vlan_id()
+	 * @generated
+	 * @ordered
+	 */
+	protected String private_vlan_id = PRIVATE_VLAN_ID_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -519,6 +561,48 @@ public class Machine_IBM_SoftLayerImpl extends MachineImpl implements Machine_IB
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getPublic_vlan_id() {
+		return public_vlan_id;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPublic_vlan_id(String newPublic_vlan_id) {
+		String oldPublic_vlan_id = public_vlan_id;
+		public_vlan_id = newPublic_vlan_id;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.MACHINE_IBM_SOFT_LAYER__PUBLIC_VLAN_ID, oldPublic_vlan_id, public_vlan_id));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getPrivate_vlan_id() {
+		return private_vlan_id;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPrivate_vlan_id(String newPrivate_vlan_id) {
+		String oldPrivate_vlan_id = private_vlan_id;
+		private_vlan_id = newPrivate_vlan_id;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.MACHINE_IBM_SOFT_LAYER__PRIVATE_VLAN_ID, oldPrivate_vlan_id, private_vlan_id));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -544,6 +628,10 @@ public class Machine_IBM_SoftLayerImpl extends MachineImpl implements Machine_IB
 				return isPrivate_net_only();
 			case DockerPackage.MACHINE_IBM_SOFT_LAYER__REGION:
 				return getRegion();
+			case DockerPackage.MACHINE_IBM_SOFT_LAYER__PUBLIC_VLAN_ID:
+				return getPublic_vlan_id();
+			case DockerPackage.MACHINE_IBM_SOFT_LAYER__PRIVATE_VLAN_ID:
+				return getPrivate_vlan_id();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -588,6 +676,12 @@ public class Machine_IBM_SoftLayerImpl extends MachineImpl implements Machine_IB
 				return;
 			case DockerPackage.MACHINE_IBM_SOFT_LAYER__REGION:
 				setRegion((String)newValue);
+				return;
+			case DockerPackage.MACHINE_IBM_SOFT_LAYER__PUBLIC_VLAN_ID:
+				setPublic_vlan_id((String)newValue);
+				return;
+			case DockerPackage.MACHINE_IBM_SOFT_LAYER__PRIVATE_VLAN_ID:
+				setPrivate_vlan_id((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -634,6 +728,12 @@ public class Machine_IBM_SoftLayerImpl extends MachineImpl implements Machine_IB
 			case DockerPackage.MACHINE_IBM_SOFT_LAYER__REGION:
 				setRegion(REGION_EDEFAULT);
 				return;
+			case DockerPackage.MACHINE_IBM_SOFT_LAYER__PUBLIC_VLAN_ID:
+				setPublic_vlan_id(PUBLIC_VLAN_ID_EDEFAULT);
+				return;
+			case DockerPackage.MACHINE_IBM_SOFT_LAYER__PRIVATE_VLAN_ID:
+				setPrivate_vlan_id(PRIVATE_VLAN_ID_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -668,6 +768,10 @@ public class Machine_IBM_SoftLayerImpl extends MachineImpl implements Machine_IB
 				return private_net_only != PRIVATE_NET_ONLY_EDEFAULT;
 			case DockerPackage.MACHINE_IBM_SOFT_LAYER__REGION:
 				return REGION_EDEFAULT == null ? region != null : !REGION_EDEFAULT.equals(region);
+			case DockerPackage.MACHINE_IBM_SOFT_LAYER__PUBLIC_VLAN_ID:
+				return PUBLIC_VLAN_ID_EDEFAULT == null ? public_vlan_id != null : !PUBLIC_VLAN_ID_EDEFAULT.equals(public_vlan_id);
+			case DockerPackage.MACHINE_IBM_SOFT_LAYER__PRIVATE_VLAN_ID:
+				return PRIVATE_VLAN_ID_EDEFAULT == null ? private_vlan_id != null : !PRIVATE_VLAN_ID_EDEFAULT.equals(private_vlan_id);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -704,6 +808,10 @@ public class Machine_IBM_SoftLayerImpl extends MachineImpl implements Machine_IB
 		result.append(private_net_only);
 		result.append(", region: ");
 		result.append(region);
+		result.append(", public_vlan_id: ");
+		result.append(public_vlan_id);
+		result.append(", private_vlan_id: ");
+		result.append(private_vlan_id);
 		result.append(')');
 		return result.toString();
 	}

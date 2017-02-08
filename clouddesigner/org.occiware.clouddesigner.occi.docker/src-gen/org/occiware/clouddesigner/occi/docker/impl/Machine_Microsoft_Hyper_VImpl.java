@@ -28,34 +28,35 @@ import org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Hyper_V;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.Machine_Microsoft_Hyper_VImpl#getBoot2docker_location <em>Boot2docker location</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.Machine_Microsoft_Hyper_VImpl#getVirtual_switch <em>Virtual switch</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.Machine_Microsoft_Hyper_VImpl#getBoot2docker_url <em>Boot2docker url</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.Machine_Microsoft_Hyper_VImpl#getDisk_size <em>Disk size</em>}</li>
- *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.Machine_Microsoft_Hyper_VImpl#getVirtual_switch <em>Virtual switch</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.Machine_Microsoft_Hyper_VImpl#getStatic_macaddress <em>Static macaddress</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.Machine_Microsoft_Hyper_VImpl#getVlan_id <em>Vlan id</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class Machine_Microsoft_Hyper_VImpl extends MachineImpl implements Machine_Microsoft_Hyper_V {
 	/**
-	 * The default value of the '{@link #getBoot2docker_location() <em>Boot2docker location</em>}' attribute.
+	 * The default value of the '{@link #getVirtual_switch() <em>Virtual switch</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getBoot2docker_location()
+	 * @see #getVirtual_switch()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String BOOT2DOCKER_LOCATION_EDEFAULT = null;
+	protected static final String VIRTUAL_SWITCH_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getBoot2docker_location() <em>Boot2docker location</em>}' attribute.
+	 * The cached value of the '{@link #getVirtual_switch() <em>Virtual switch</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getBoot2docker_location()
+	 * @see #getVirtual_switch()
 	 * @generated
 	 * @ordered
 	 */
-	protected String boot2docker_location = BOOT2DOCKER_LOCATION_EDEFAULT;
+	protected String virtual_switch = VIRTUAL_SWITCH_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getBoot2docker_url() <em>Boot2docker url</em>}' attribute.
@@ -98,24 +99,44 @@ public class Machine_Microsoft_Hyper_VImpl extends MachineImpl implements Machin
 	protected int disk_size = DISK_SIZE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getVirtual_switch() <em>Virtual switch</em>}' attribute.
+	 * The default value of the '{@link #getStatic_macaddress() <em>Static macaddress</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getVirtual_switch()
+	 * @see #getStatic_macaddress()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String VIRTUAL_SWITCH_EDEFAULT = null;
+	protected static final String STATIC_MACADDRESS_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getVirtual_switch() <em>Virtual switch</em>}' attribute.
+	 * The cached value of the '{@link #getStatic_macaddress() <em>Static macaddress</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getVirtual_switch()
+	 * @see #getStatic_macaddress()
 	 * @generated
 	 * @ordered
 	 */
-	protected String virtual_switch = VIRTUAL_SWITCH_EDEFAULT;
+	protected String static_macaddress = STATIC_MACADDRESS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getVlan_id() <em>Vlan id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVlan_id()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String VLAN_ID_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getVlan_id() <em>Vlan id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVlan_id()
+	 * @generated
+	 * @ordered
+	 */
+	protected String vlan_id = VLAN_ID_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -134,27 +155,6 @@ public class Machine_Microsoft_Hyper_VImpl extends MachineImpl implements Machin
 	@Override
 	protected EClass eStaticClass() {
 		return DockerPackage.Literals.MACHINE_MICROSOFT_HYPER_V;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getBoot2docker_location() {
-		return boot2docker_location;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setBoot2docker_location(String newBoot2docker_location) {
-		String oldBoot2docker_location = boot2docker_location;
-		boot2docker_location = newBoot2docker_location;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.MACHINE_MICROSOFT_HYPER_V__BOOT2DOCKER_LOCATION, oldBoot2docker_location, boot2docker_location));
 	}
 
 	/**
@@ -204,6 +204,48 @@ public class Machine_Microsoft_Hyper_VImpl extends MachineImpl implements Machin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getStatic_macaddress() {
+		return static_macaddress;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setStatic_macaddress(String newStatic_macaddress) {
+		String oldStatic_macaddress = static_macaddress;
+		static_macaddress = newStatic_macaddress;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.MACHINE_MICROSOFT_HYPER_V__STATIC_MACADDRESS, oldStatic_macaddress, static_macaddress));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getVlan_id() {
+		return vlan_id;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setVlan_id(String newVlan_id) {
+		String oldVlan_id = vlan_id;
+		vlan_id = newVlan_id;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.MACHINE_MICROSOFT_HYPER_V__VLAN_ID, oldVlan_id, vlan_id));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getVirtual_switch() {
 		return virtual_switch;
 	}
@@ -228,14 +270,16 @@ public class Machine_Microsoft_Hyper_VImpl extends MachineImpl implements Machin
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case DockerPackage.MACHINE_MICROSOFT_HYPER_V__BOOT2DOCKER_LOCATION:
-				return getBoot2docker_location();
+			case DockerPackage.MACHINE_MICROSOFT_HYPER_V__VIRTUAL_SWITCH:
+				return getVirtual_switch();
 			case DockerPackage.MACHINE_MICROSOFT_HYPER_V__BOOT2DOCKER_URL:
 				return getBoot2docker_url();
 			case DockerPackage.MACHINE_MICROSOFT_HYPER_V__DISK_SIZE:
 				return getDisk_size();
-			case DockerPackage.MACHINE_MICROSOFT_HYPER_V__VIRTUAL_SWITCH:
-				return getVirtual_switch();
+			case DockerPackage.MACHINE_MICROSOFT_HYPER_V__STATIC_MACADDRESS:
+				return getStatic_macaddress();
+			case DockerPackage.MACHINE_MICROSOFT_HYPER_V__VLAN_ID:
+				return getVlan_id();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -248,8 +292,8 @@ public class Machine_Microsoft_Hyper_VImpl extends MachineImpl implements Machin
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case DockerPackage.MACHINE_MICROSOFT_HYPER_V__BOOT2DOCKER_LOCATION:
-				setBoot2docker_location((String)newValue);
+			case DockerPackage.MACHINE_MICROSOFT_HYPER_V__VIRTUAL_SWITCH:
+				setVirtual_switch((String)newValue);
 				return;
 			case DockerPackage.MACHINE_MICROSOFT_HYPER_V__BOOT2DOCKER_URL:
 				setBoot2docker_url((String)newValue);
@@ -257,8 +301,11 @@ public class Machine_Microsoft_Hyper_VImpl extends MachineImpl implements Machin
 			case DockerPackage.MACHINE_MICROSOFT_HYPER_V__DISK_SIZE:
 				setDisk_size((Integer)newValue);
 				return;
-			case DockerPackage.MACHINE_MICROSOFT_HYPER_V__VIRTUAL_SWITCH:
-				setVirtual_switch((String)newValue);
+			case DockerPackage.MACHINE_MICROSOFT_HYPER_V__STATIC_MACADDRESS:
+				setStatic_macaddress((String)newValue);
+				return;
+			case DockerPackage.MACHINE_MICROSOFT_HYPER_V__VLAN_ID:
+				setVlan_id((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -272,8 +319,8 @@ public class Machine_Microsoft_Hyper_VImpl extends MachineImpl implements Machin
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case DockerPackage.MACHINE_MICROSOFT_HYPER_V__BOOT2DOCKER_LOCATION:
-				setBoot2docker_location(BOOT2DOCKER_LOCATION_EDEFAULT);
+			case DockerPackage.MACHINE_MICROSOFT_HYPER_V__VIRTUAL_SWITCH:
+				setVirtual_switch(VIRTUAL_SWITCH_EDEFAULT);
 				return;
 			case DockerPackage.MACHINE_MICROSOFT_HYPER_V__BOOT2DOCKER_URL:
 				setBoot2docker_url(BOOT2DOCKER_URL_EDEFAULT);
@@ -281,8 +328,11 @@ public class Machine_Microsoft_Hyper_VImpl extends MachineImpl implements Machin
 			case DockerPackage.MACHINE_MICROSOFT_HYPER_V__DISK_SIZE:
 				setDisk_size(DISK_SIZE_EDEFAULT);
 				return;
-			case DockerPackage.MACHINE_MICROSOFT_HYPER_V__VIRTUAL_SWITCH:
-				setVirtual_switch(VIRTUAL_SWITCH_EDEFAULT);
+			case DockerPackage.MACHINE_MICROSOFT_HYPER_V__STATIC_MACADDRESS:
+				setStatic_macaddress(STATIC_MACADDRESS_EDEFAULT);
+				return;
+			case DockerPackage.MACHINE_MICROSOFT_HYPER_V__VLAN_ID:
+				setVlan_id(VLAN_ID_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -296,14 +346,16 @@ public class Machine_Microsoft_Hyper_VImpl extends MachineImpl implements Machin
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case DockerPackage.MACHINE_MICROSOFT_HYPER_V__BOOT2DOCKER_LOCATION:
-				return BOOT2DOCKER_LOCATION_EDEFAULT == null ? boot2docker_location != null : !BOOT2DOCKER_LOCATION_EDEFAULT.equals(boot2docker_location);
+			case DockerPackage.MACHINE_MICROSOFT_HYPER_V__VIRTUAL_SWITCH:
+				return VIRTUAL_SWITCH_EDEFAULT == null ? virtual_switch != null : !VIRTUAL_SWITCH_EDEFAULT.equals(virtual_switch);
 			case DockerPackage.MACHINE_MICROSOFT_HYPER_V__BOOT2DOCKER_URL:
 				return BOOT2DOCKER_URL_EDEFAULT == null ? boot2docker_url != null : !BOOT2DOCKER_URL_EDEFAULT.equals(boot2docker_url);
 			case DockerPackage.MACHINE_MICROSOFT_HYPER_V__DISK_SIZE:
 				return disk_size != DISK_SIZE_EDEFAULT;
-			case DockerPackage.MACHINE_MICROSOFT_HYPER_V__VIRTUAL_SWITCH:
-				return VIRTUAL_SWITCH_EDEFAULT == null ? virtual_switch != null : !VIRTUAL_SWITCH_EDEFAULT.equals(virtual_switch);
+			case DockerPackage.MACHINE_MICROSOFT_HYPER_V__STATIC_MACADDRESS:
+				return STATIC_MACADDRESS_EDEFAULT == null ? static_macaddress != null : !STATIC_MACADDRESS_EDEFAULT.equals(static_macaddress);
+			case DockerPackage.MACHINE_MICROSOFT_HYPER_V__VLAN_ID:
+				return VLAN_ID_EDEFAULT == null ? vlan_id != null : !VLAN_ID_EDEFAULT.equals(vlan_id);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -318,14 +370,16 @@ public class Machine_Microsoft_Hyper_VImpl extends MachineImpl implements Machin
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (boot2docker_location: ");
-		result.append(boot2docker_location);
+		result.append(" (virtual_switch: ");
+		result.append(virtual_switch);
 		result.append(", boot2docker_url: ");
 		result.append(boot2docker_url);
 		result.append(", disk_size: ");
 		result.append(disk_size);
-		result.append(", virtual_switch: ");
-		result.append(virtual_switch);
+		result.append(", static_macaddress: ");
+		result.append(static_macaddress);
+		result.append(", vlan_id: ");
+		result.append(vlan_id);
 		result.append(')');
 		return result.toString();
 	}

@@ -74,6 +74,7 @@ public class DockerFactoryImpl extends EFactoryImpl implements DockerFactory {
 			case DockerPackage.MACHINE: return createMachine();
 			case DockerPackage.VOLUME: return createVolume();
 			case DockerPackage.NETWORK: return createNetwork();
+			case DockerPackage.MACHINE_GENERIC: return createMachine_Generic();
 			case DockerPackage.MACHINE_AMAZON_EC2: return createMachine_Amazon_EC2();
 			case DockerPackage.MACHINE_DIGITAL_OCEAN: return createMachine_Digital_Ocean();
 			case DockerPackage.MACHINE_GOOGLE_COMPUTE_ENGINE: return createMachine_Google_Compute_Engine();
@@ -199,6 +200,16 @@ public class DockerFactoryImpl extends EFactoryImpl implements DockerFactory {
 	public Network createNetwork() {
 		NetworkImpl network = new NetworkImpl();
 		return network;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Machine_Generic createMachine_Generic() {
+		Machine_GenericImpl machine_Generic = new Machine_GenericImpl();
+		return machine_Generic;
 	}
 
 	/**

@@ -31,6 +31,7 @@ import org.occiware.clouddesigner.occi.docker.Machine_VMware_Fusion;
  *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.Machine_VMware_FusionImpl#getBoot2docker_url <em>Boot2docker url</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.Machine_VMware_FusionImpl#getDisk_size <em>Disk size</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.Machine_VMware_FusionImpl#getMemory_size <em>Memory size</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.Machine_VMware_FusionImpl#isNo_share <em>No share</em>}</li>
  * </ul>
  *
  * @generated
@@ -95,6 +96,26 @@ public class Machine_VMware_FusionImpl extends MachineImpl implements Machine_VM
 	 * @ordered
 	 */
 	protected int memory_size = MEMORY_SIZE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isNo_share() <em>No share</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isNo_share()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean NO_SHARE_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isNo_share() <em>No share</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isNo_share()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean no_share = NO_SHARE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -183,6 +204,27 @@ public class Machine_VMware_FusionImpl extends MachineImpl implements Machine_VM
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isNo_share() {
+		return no_share;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setNo_share(boolean newNo_share) {
+		boolean oldNo_share = no_share;
+		no_share = newNo_share;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.MACHINE_VMWARE_FUSION__NO_SHARE, oldNo_share, no_share));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -192,6 +234,8 @@ public class Machine_VMware_FusionImpl extends MachineImpl implements Machine_VM
 				return getDisk_size();
 			case DockerPackage.MACHINE_VMWARE_FUSION__MEMORY_SIZE:
 				return getMemory_size();
+			case DockerPackage.MACHINE_VMWARE_FUSION__NO_SHARE:
+				return isNo_share();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -212,6 +256,9 @@ public class Machine_VMware_FusionImpl extends MachineImpl implements Machine_VM
 				return;
 			case DockerPackage.MACHINE_VMWARE_FUSION__MEMORY_SIZE:
 				setMemory_size((Integer)newValue);
+				return;
+			case DockerPackage.MACHINE_VMWARE_FUSION__NO_SHARE:
+				setNo_share((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -234,6 +281,9 @@ public class Machine_VMware_FusionImpl extends MachineImpl implements Machine_VM
 			case DockerPackage.MACHINE_VMWARE_FUSION__MEMORY_SIZE:
 				setMemory_size(MEMORY_SIZE_EDEFAULT);
 				return;
+			case DockerPackage.MACHINE_VMWARE_FUSION__NO_SHARE:
+				setNo_share(NO_SHARE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -252,6 +302,8 @@ public class Machine_VMware_FusionImpl extends MachineImpl implements Machine_VM
 				return disk_size != DISK_SIZE_EDEFAULT;
 			case DockerPackage.MACHINE_VMWARE_FUSION__MEMORY_SIZE:
 				return memory_size != MEMORY_SIZE_EDEFAULT;
+			case DockerPackage.MACHINE_VMWARE_FUSION__NO_SHARE:
+				return no_share != NO_SHARE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -272,6 +324,8 @@ public class Machine_VMware_FusionImpl extends MachineImpl implements Machine_VM
 		result.append(disk_size);
 		result.append(", memory_size: ");
 		result.append(memory_size);
+		result.append(", no_share: ");
+		result.append(no_share);
 		result.append(')');
 		return result.toString();
 	}
