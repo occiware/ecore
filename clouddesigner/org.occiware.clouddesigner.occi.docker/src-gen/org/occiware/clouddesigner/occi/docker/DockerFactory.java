@@ -103,6 +103,15 @@ public interface DockerFactory extends EFactory {
 	Network createNetwork();
 
 	/**
+	 * Returns a new object of class '<em>Machine Generic</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Machine Generic</em>'.
+	 * @generated
+	 */
+	Machine_Generic createMachine_Generic();
+
+	/**
 	 * Returns a new object of class '<em>Machine Amazon EC2</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
