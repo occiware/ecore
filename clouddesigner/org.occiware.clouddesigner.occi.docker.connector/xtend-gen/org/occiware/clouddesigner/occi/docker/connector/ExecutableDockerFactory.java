@@ -16,6 +16,8 @@ import org.occiware.clouddesigner.occi.docker.DockerPackage;
 import org.occiware.clouddesigner.occi.docker.Machine;
 import org.occiware.clouddesigner.occi.docker.Machine_Amazon_EC2;
 import org.occiware.clouddesigner.occi.docker.Machine_Digital_Ocean;
+import org.occiware.clouddesigner.occi.docker.Machine_Exoscale;
+import org.occiware.clouddesigner.occi.docker.Machine_Generic;
 import org.occiware.clouddesigner.occi.docker.Machine_Google_Compute_Engine;
 import org.occiware.clouddesigner.occi.docker.Machine_IBM_SoftLayer;
 import org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Azure;
@@ -32,6 +34,8 @@ import org.occiware.clouddesigner.occi.docker.connector.ExecutableContainer;
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableMachine;
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableMachine_Amazon_EC2;
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableMachine_Digital_Ocean;
+import org.occiware.clouddesigner.occi.docker.connector.ExecutableMachine_Exoscale;
+import org.occiware.clouddesigner.occi.docker.connector.ExecutableMachine_Generic;
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableMachine_Google_Compute_Engine;
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableMachine_IBM_SoftLayer;
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableMachine_Microsoft_Azure;
@@ -236,6 +240,22 @@ public class ExecutableDockerFactory extends DockerFactoryImpl {
   }
   
   /**
+   * Create an executable Machine_Generic instance.
+   */
+  @Override
+  public Machine_Generic createMachine_Generic() {
+    ExecutableMachine_Generic _xblockexpression = null;
+    {
+      Class<? extends ExecutableDockerFactory> _class = this.getClass();
+      String _name = _class.getName();
+      String _plus = (_name + ":createMachine_Generic()");
+      ExecutableDockerFactory.LOGGER.info(_plus);
+      _xblockexpression = new ExecutableMachine_Generic();
+    }
+    return _xblockexpression;
+  }
+  
+  /**
    * Create an executable Machine_VMware_Fusion instance.
    */
   @Override
@@ -279,6 +299,22 @@ public class ExecutableDockerFactory extends DockerFactoryImpl {
       String _plus = (_name + ":createMachine_VMware_vSphere()");
       ExecutableDockerFactory.LOGGER.info(_plus);
       _xblockexpression = new ExecutableMachine_VMware_vSphere();
+    }
+    return _xblockexpression;
+  }
+  
+  /**
+   * Create an executable Machine_Exoscale instance.
+   */
+  @Override
+  public Machine_Exoscale createMachine_Exoscale() {
+    ExecutableMachine_Exoscale _xblockexpression = null;
+    {
+      Class<? extends ExecutableDockerFactory> _class = this.getClass();
+      String _name = _class.getName();
+      String _plus = (_name + ":createMachine_Exoscale()");
+      ExecutableDockerFactory.LOGGER.info(_plus);
+      _xblockexpression = new ExecutableMachine_Exoscale();
     }
     return _xblockexpression;
   }
