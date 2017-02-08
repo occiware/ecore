@@ -265,6 +265,29 @@ public class DockerItemProviderAdapterFactory extends DockerAdapterFactory imple
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.occiware.clouddesigner.occi.docker.Machine_Generic} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected Machine_GenericItemProvider machine_GenericItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.occiware.clouddesigner.occi.docker.Machine_Generic}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createMachine_GenericAdapter() {
+		if (machine_GenericItemProvider == null) {
+			machine_GenericItemProvider = new Machine_GenericItemProvider(this);
+		}
+
+		return machine_GenericItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.occiware.clouddesigner.occi.docker.Machine_Amazon_EC2} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -647,6 +670,7 @@ public class DockerItemProviderAdapterFactory extends DockerAdapterFactory imple
 		if (machineItemProvider != null) machineItemProvider.dispose();
 		if (volumeItemProvider != null) volumeItemProvider.dispose();
 		if (networkItemProvider != null) networkItemProvider.dispose();
+		if (machine_GenericItemProvider != null) machine_GenericItemProvider.dispose();
 		if (machine_Amazon_EC2ItemProvider != null) machine_Amazon_EC2ItemProvider.dispose();
 		if (machine_Digital_OceanItemProvider != null) machine_Digital_OceanItemProvider.dispose();
 		if (machine_Google_Compute_EngineItemProvider != null) machine_Google_Compute_EngineItemProvider.dispose();

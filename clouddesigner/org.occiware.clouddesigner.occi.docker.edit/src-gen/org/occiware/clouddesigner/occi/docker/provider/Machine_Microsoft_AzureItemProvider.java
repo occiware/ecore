@@ -56,6 +56,22 @@ public class Machine_Microsoft_AzureItemProvider extends MachineItemProvider {
 
 			addSubscription_idPropertyDescriptor(object);
 			addSubscription_certPropertyDescriptor(object);
+			addEnvironmentPropertyDescriptor(object);
+			addLocationPropertyDescriptor(object);
+			addResource_groupPropertyDescriptor(object);
+			addSizePropertyDescriptor(object);
+			addSsh_userPropertyDescriptor(object);
+			addVnetPropertyDescriptor(object);
+			addSubnetPropertyDescriptor(object);
+			addSubnet_prefixPropertyDescriptor(object);
+			addAvailability_setPropertyDescriptor(object);
+			addOpen_portPropertyDescriptor(object);
+			addPrivate_ip_addressPropertyDescriptor(object);
+			addNo_public_ipPropertyDescriptor(object);
+			addStatic_public_ipPropertyDescriptor(object);
+			addDocker_portPropertyDescriptor(object);
+			addUse_private_ipPropertyDescriptor(object);
+			addImagePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -105,6 +121,358 @@ public class Machine_Microsoft_AzureItemProvider extends MachineItemProvider {
 	}
 
 	/**
+	 * This adds a property descriptor for the Environment feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addEnvironmentPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_Microsoft_Azure_environment_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_Microsoft_Azure_environment_feature", "_UI_Machine_Microsoft_Azure_type"),
+				 DockerPackage.Literals.MACHINE_MICROSOFT_AZURE__ENVIRONMENT,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Location feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addLocationPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_Microsoft_Azure_location_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_Microsoft_Azure_location_feature", "_UI_Machine_Microsoft_Azure_type"),
+				 DockerPackage.Literals.MACHINE_MICROSOFT_AZURE__LOCATION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Resource group feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addResource_groupPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_Microsoft_Azure_resource_group_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_Microsoft_Azure_resource_group_feature", "_UI_Machine_Microsoft_Azure_type"),
+				 DockerPackage.Literals.MACHINE_MICROSOFT_AZURE__RESOURCE_GROUP,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Size feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSizePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_Microsoft_Azure_size_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_Microsoft_Azure_size_feature", "_UI_Machine_Microsoft_Azure_type"),
+				 DockerPackage.Literals.MACHINE_MICROSOFT_AZURE__SIZE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Ssh user feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSsh_userPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_Microsoft_Azure_ssh_user_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_Microsoft_Azure_ssh_user_feature", "_UI_Machine_Microsoft_Azure_type"),
+				 DockerPackage.Literals.MACHINE_MICROSOFT_AZURE__SSH_USER,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Vnet feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addVnetPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_Microsoft_Azure_vnet_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_Microsoft_Azure_vnet_feature", "_UI_Machine_Microsoft_Azure_type"),
+				 DockerPackage.Literals.MACHINE_MICROSOFT_AZURE__VNET,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Subnet feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSubnetPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_Microsoft_Azure_subnet_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_Microsoft_Azure_subnet_feature", "_UI_Machine_Microsoft_Azure_type"),
+				 DockerPackage.Literals.MACHINE_MICROSOFT_AZURE__SUBNET,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Subnet prefix feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSubnet_prefixPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_Microsoft_Azure_subnet_prefix_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_Microsoft_Azure_subnet_prefix_feature", "_UI_Machine_Microsoft_Azure_type"),
+				 DockerPackage.Literals.MACHINE_MICROSOFT_AZURE__SUBNET_PREFIX,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Availability set feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addAvailability_setPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_Microsoft_Azure_availability_set_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_Microsoft_Azure_availability_set_feature", "_UI_Machine_Microsoft_Azure_type"),
+				 DockerPackage.Literals.MACHINE_MICROSOFT_AZURE__AVAILABILITY_SET,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Open port feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addOpen_portPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_Microsoft_Azure_open_port_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_Microsoft_Azure_open_port_feature", "_UI_Machine_Microsoft_Azure_type"),
+				 DockerPackage.Literals.MACHINE_MICROSOFT_AZURE__OPEN_PORT,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Private ip address feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addPrivate_ip_addressPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_Microsoft_Azure_private_ip_address_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_Microsoft_Azure_private_ip_address_feature", "_UI_Machine_Microsoft_Azure_type"),
+				 DockerPackage.Literals.MACHINE_MICROSOFT_AZURE__PRIVATE_IP_ADDRESS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the No public ip feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNo_public_ipPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_Microsoft_Azure_no_public_ip_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_Microsoft_Azure_no_public_ip_feature", "_UI_Machine_Microsoft_Azure_type"),
+				 DockerPackage.Literals.MACHINE_MICROSOFT_AZURE__NO_PUBLIC_IP,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Static public ip feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addStatic_public_ipPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_Microsoft_Azure_static_public_ip_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_Microsoft_Azure_static_public_ip_feature", "_UI_Machine_Microsoft_Azure_type"),
+				 DockerPackage.Literals.MACHINE_MICROSOFT_AZURE__STATIC_PUBLIC_IP,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Docker port feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDocker_portPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_Microsoft_Azure_docker_port_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_Microsoft_Azure_docker_port_feature", "_UI_Machine_Microsoft_Azure_type"),
+				 DockerPackage.Literals.MACHINE_MICROSOFT_AZURE__DOCKER_PORT,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Use private ip feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addUse_private_ipPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_Microsoft_Azure_use_private_ip_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_Microsoft_Azure_use_private_ip_feature", "_UI_Machine_Microsoft_Azure_type"),
+				 DockerPackage.Literals.MACHINE_MICROSOFT_AZURE__USE_PRIVATE_IP,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Image feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addImagePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_Microsoft_Azure_image_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_Microsoft_Azure_image_feature", "_UI_Machine_Microsoft_Azure_type"),
+				 DockerPackage.Literals.MACHINE_MICROSOFT_AZURE__IMAGE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns Machine_Microsoft_Azure.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -144,6 +512,22 @@ public class Machine_Microsoft_AzureItemProvider extends MachineItemProvider {
 		switch (notification.getFeatureID(Machine_Microsoft_Azure.class)) {
 			case DockerPackage.MACHINE_MICROSOFT_AZURE__SUBSCRIPTION_ID:
 			case DockerPackage.MACHINE_MICROSOFT_AZURE__SUBSCRIPTION_CERT:
+			case DockerPackage.MACHINE_MICROSOFT_AZURE__ENVIRONMENT:
+			case DockerPackage.MACHINE_MICROSOFT_AZURE__LOCATION:
+			case DockerPackage.MACHINE_MICROSOFT_AZURE__RESOURCE_GROUP:
+			case DockerPackage.MACHINE_MICROSOFT_AZURE__SIZE:
+			case DockerPackage.MACHINE_MICROSOFT_AZURE__SSH_USER:
+			case DockerPackage.MACHINE_MICROSOFT_AZURE__VNET:
+			case DockerPackage.MACHINE_MICROSOFT_AZURE__SUBNET:
+			case DockerPackage.MACHINE_MICROSOFT_AZURE__SUBNET_PREFIX:
+			case DockerPackage.MACHINE_MICROSOFT_AZURE__AVAILABILITY_SET:
+			case DockerPackage.MACHINE_MICROSOFT_AZURE__OPEN_PORT:
+			case DockerPackage.MACHINE_MICROSOFT_AZURE__PRIVATE_IP_ADDRESS:
+			case DockerPackage.MACHINE_MICROSOFT_AZURE__NO_PUBLIC_IP:
+			case DockerPackage.MACHINE_MICROSOFT_AZURE__STATIC_PUBLIC_IP:
+			case DockerPackage.MACHINE_MICROSOFT_AZURE__DOCKER_PORT:
+			case DockerPackage.MACHINE_MICROSOFT_AZURE__USE_PRIVATE_IP:
+			case DockerPackage.MACHINE_MICROSOFT_AZURE__IMAGE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

@@ -62,6 +62,7 @@ public class Machine_RackspaceItemProvider extends MachineItemProvider {
 			addFlavor_idPropertyDescriptor(object);
 			addSsh_userPropertyDescriptor(object);
 			addSsh_portPropertyDescriptor(object);
+			addDocker_installPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -243,6 +244,28 @@ public class Machine_RackspaceItemProvider extends MachineItemProvider {
 	}
 
 	/**
+	 * This adds a property descriptor for the Docker install feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDocker_installPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_Rackspace_docker_install_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_Rackspace_docker_install_feature", "_UI_Machine_Rackspace_type"),
+				 DockerPackage.Literals.MACHINE_RACKSPACE__DOCKER_INSTALL,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns Machine_Rackspace.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -288,6 +311,7 @@ public class Machine_RackspaceItemProvider extends MachineItemProvider {
 			case DockerPackage.MACHINE_RACKSPACE__FLAVOR_ID:
 			case DockerPackage.MACHINE_RACKSPACE__SSH_USER:
 			case DockerPackage.MACHINE_RACKSPACE__SSH_PORT:
+			case DockerPackage.MACHINE_RACKSPACE__DOCKER_INSTALL:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
