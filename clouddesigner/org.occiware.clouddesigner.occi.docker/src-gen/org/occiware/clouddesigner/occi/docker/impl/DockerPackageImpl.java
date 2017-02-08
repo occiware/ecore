@@ -27,6 +27,7 @@ import org.occiware.clouddesigner.occi.docker.Link;
 import org.occiware.clouddesigner.occi.docker.Machine;
 import org.occiware.clouddesigner.occi.docker.Machine_Amazon_EC2;
 import org.occiware.clouddesigner.occi.docker.Machine_Digital_Ocean;
+import org.occiware.clouddesigner.occi.docker.Machine_Exoscale;
 import org.occiware.clouddesigner.occi.docker.Machine_Generic;
 import org.occiware.clouddesigner.occi.docker.Machine_Google_Compute_Engine;
 import org.occiware.clouddesigner.occi.docker.Machine_IBM_SoftLayer;
@@ -198,6 +199,13 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * @generated
 	 */
 	private EClass machine_VMware_vSphereEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass machine_ExoscaleEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2588,6 +2596,105 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getMachine_Exoscale() {
+		return machine_ExoscaleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMachine_Exoscale_Url() {
+		return (EAttribute)machine_ExoscaleEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMachine_Exoscale_Api_key() {
+		return (EAttribute)machine_ExoscaleEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMachine_Exoscale_Api_secret_key() {
+		return (EAttribute)machine_ExoscaleEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMachine_Exoscale_Instance_profile() {
+		return (EAttribute)machine_ExoscaleEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMachine_Exoscale_Image() {
+		return (EAttribute)machine_ExoscaleEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMachine_Exoscale_Security_group() {
+		return (EAttribute)machine_ExoscaleEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMachine_Exoscale_Availability_zone() {
+		return (EAttribute)machine_ExoscaleEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMachine_Exoscale_Ssh_user() {
+		return (EAttribute)machine_ExoscaleEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMachine_Exoscale_Userdata() {
+		return (EAttribute)machine_ExoscaleEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMachine_Exoscale_Affinity_group() {
+		return (EAttribute)machine_ExoscaleEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getMode() {
 		return modeEEnum;
 	}
@@ -2898,6 +3005,18 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		createEAttribute(machine_VMware_vSphereEClass, MACHINE_VMWARE_VSPHERE__POOL);
 		createEAttribute(machine_VMware_vSphereEClass, MACHINE_VMWARE_VSPHERE__VCENTER);
 
+		machine_ExoscaleEClass = createEClass(MACHINE_EXOSCALE);
+		createEAttribute(machine_ExoscaleEClass, MACHINE_EXOSCALE__URL);
+		createEAttribute(machine_ExoscaleEClass, MACHINE_EXOSCALE__API_KEY);
+		createEAttribute(machine_ExoscaleEClass, MACHINE_EXOSCALE__API_SECRET_KEY);
+		createEAttribute(machine_ExoscaleEClass, MACHINE_EXOSCALE__INSTANCE_PROFILE);
+		createEAttribute(machine_ExoscaleEClass, MACHINE_EXOSCALE__IMAGE);
+		createEAttribute(machine_ExoscaleEClass, MACHINE_EXOSCALE__SECURITY_GROUP);
+		createEAttribute(machine_ExoscaleEClass, MACHINE_EXOSCALE__AVAILABILITY_ZONE);
+		createEAttribute(machine_ExoscaleEClass, MACHINE_EXOSCALE__SSH_USER);
+		createEAttribute(machine_ExoscaleEClass, MACHINE_EXOSCALE__USERDATA);
+		createEAttribute(machine_ExoscaleEClass, MACHINE_EXOSCALE__AFFINITY_GROUP);
+
 		// Create enums
 		modeEEnum = createEEnum(MODE);
 	}
@@ -2955,6 +3074,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		machine_VMware_FusionEClass.getESuperTypes().add(this.getMachine());
 		machine_VMware_vCloud_AirEClass.getESuperTypes().add(this.getMachine());
 		machine_VMware_vSphereEClass.getESuperTypes().add(this.getMachine());
+		machine_ExoscaleEClass.getESuperTypes().add(this.getMachine());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(containerEClass, org.occiware.clouddesigner.occi.docker.Container.class, "Container", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -3081,11 +3201,11 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		initEAttribute(getNetwork_Subnet(), theOCCIPackage.getString(), "subnet", null, 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(machine_GenericEClass, Machine_Generic.class, "Machine_Generic", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getMachine_Generic_Engine_port(), theOCCIPackage.getNumber(), "engine_port", "2376", 0, 1, Machine_Generic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_Generic_Engine_port(), theOCCIPackage.getNumber(), "engine_port", null, 0, 1, Machine_Generic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_Generic_Ip_address(), theOCCIPackage.getString(), "ip_address", null, 1, 1, Machine_Generic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_Generic_Ssh_key(), theOCCIPackage.getString(), "ssh_key", null, 0, 1, Machine_Generic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMachine_Generic_Ssh_user(), theOCCIPackage.getString(), "ssh_user", "root", 0, 1, Machine_Generic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMachine_Generic_Ssh_port(), theOCCIPackage.getNumber(), "ssh_port", "22", 0, 1, Machine_Generic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_Generic_Ssh_user(), theOCCIPackage.getString(), "ssh_user", null, 0, 1, Machine_Generic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_Generic_Ssh_port(), theOCCIPackage.getNumber(), "ssh_port", null, 0, 1, Machine_Generic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(machine_Amazon_EC2EClass, Machine_Amazon_EC2.class, "Machine_Amazon_EC2", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMachine_Amazon_EC2_Access_key(), theOCCIPackage.getString(), "access_key", null, 1, 1, Machine_Amazon_EC2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3242,6 +3362,18 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		initEAttribute(getMachine_VMware_vSphere_Network(), theOCCIPackage.getString(), "network", null, 0, 1, Machine_VMware_vSphere.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_VMware_vSphere_Pool(), theOCCIPackage.getString(), "pool", null, 0, 1, Machine_VMware_vSphere.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_VMware_vSphere_Vcenter(), theOCCIPackage.getString(), "vcenter", null, 0, 1, Machine_VMware_vSphere.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(machine_ExoscaleEClass, Machine_Exoscale.class, "Machine_Exoscale", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getMachine_Exoscale_Url(), theOCCIPackage.getString(), "url", "https://api.exoscale.ch/compute", 0, 1, Machine_Exoscale.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_Exoscale_Api_key(), theOCCIPackage.getString(), "api_key", null, 1, 1, Machine_Exoscale.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_Exoscale_Api_secret_key(), theOCCIPackage.getString(), "api_secret_key", null, 1, 1, Machine_Exoscale.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_Exoscale_Instance_profile(), theOCCIPackage.getString(), "instance_profile", "small", 0, 1, Machine_Exoscale.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_Exoscale_Image(), theOCCIPackage.getString(), "image", "ubuntu-16.04", 0, 1, Machine_Exoscale.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_Exoscale_Security_group(), theOCCIPackage.getString(), "security_group", null, 0, 1, Machine_Exoscale.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_Exoscale_Availability_zone(), theOCCIPackage.getString(), "availability_zone", null, 0, 1, Machine_Exoscale.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_Exoscale_Ssh_user(), theOCCIPackage.getString(), "ssh_user", "ubuntu", 0, 1, Machine_Exoscale.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_Exoscale_Userdata(), theOCCIPackage.getString(), "userdata", null, 0, 1, Machine_Exoscale.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_Exoscale_Affinity_group(), theOCCIPackage.getString(), "affinity_group", "docker-machine", 0, 1, Machine_Exoscale.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(modeEEnum, Mode.class, "Mode");
@@ -4811,6 +4943,72 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		   source, 
 		   new String[] {
 			 "description", " IP/hostname for vCenter (or ESXi if connecting directly to a single host)"
+		   });	
+		addAnnotation
+		  (machine_ExoscaleEClass, 
+		   source, 
+		   new String[] {
+			 "title", "Machine Exoscale"
+		   });	
+		addAnnotation
+		  (getMachine_Exoscale_Url(), 
+		   source, 
+		   new String[] {
+			 "description", "Your API endpoint."
+		   });	
+		addAnnotation
+		  (getMachine_Exoscale_Api_key(), 
+		   source, 
+		   new String[] {
+			 "description", "required Your API key."
+		   });	
+		addAnnotation
+		  (getMachine_Exoscale_Api_secret_key(), 
+		   source, 
+		   new String[] {
+			 "description", "required Your API secret key."
+		   });	
+		addAnnotation
+		  (getMachine_Exoscale_Instance_profile(), 
+		   source, 
+		   new String[] {
+			 "description", "Instance profile."
+		   });	
+		addAnnotation
+		  (getMachine_Exoscale_Image(), 
+		   source, 
+		   new String[] {
+			 "description", "Image template (e.g. ubuntu-16.04, ubuntu-15.10)."
+		   });	
+		addAnnotation
+		  (getMachine_Exoscale_Security_group(), 
+		   source, 
+		   new String[] {
+			 "description", "Security group. It will be created if it doesn\u2019t exist."
+		   });	
+		addAnnotation
+		  (getMachine_Exoscale_Availability_zone(), 
+		   source, 
+		   new String[] {
+			 "description", "Exoscale availability zone."
+		   });	
+		addAnnotation
+		  (getMachine_Exoscale_Ssh_user(), 
+		   source, 
+		   new String[] {
+			 "description", "SSH username, which must match the default SSH user for the used image."
+		   });	
+		addAnnotation
+		  (getMachine_Exoscale_Userdata(), 
+		   source, 
+		   new String[] {
+			 "description", "Path to file containing user data for cloud-init."
+		   });	
+		addAnnotation
+		  (getMachine_Exoscale_Affinity_group(), 
+		   source, 
+		   new String[] {
+			 "description", "Affinity group the machine will be started in."
 		   });
 	}
 

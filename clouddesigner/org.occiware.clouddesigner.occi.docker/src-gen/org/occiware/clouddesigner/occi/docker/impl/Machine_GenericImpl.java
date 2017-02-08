@@ -46,7 +46,7 @@ public class Machine_GenericImpl extends MachineImpl implements Machine_Generic 
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int ENGINE_PORT_EDEFAULT = 2376;
+	protected static final int ENGINE_PORT_EDEFAULT = 0;
 
 	/**
 	 * The cached value of the '{@link #getEngine_port() <em>Engine port</em>}' attribute.
@@ -106,7 +106,7 @@ public class Machine_GenericImpl extends MachineImpl implements Machine_Generic 
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String SSH_USER_EDEFAULT = "root";
+	protected static final String SSH_USER_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getSsh_user() <em>Ssh user</em>}' attribute.
@@ -126,7 +126,7 @@ public class Machine_GenericImpl extends MachineImpl implements Machine_Generic 
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int SSH_PORT_EDEFAULT = 22;
+	protected static final int SSH_PORT_EDEFAULT = 0;
 
 	/**
 	 * The cached value of the '{@link #getSsh_port() <em>Ssh port</em>}' attribute.

@@ -280,6 +280,16 @@ public class DockerSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case DockerPackage.MACHINE_EXOSCALE: {
+				Machine_Exoscale machine_Exoscale = (Machine_Exoscale)theEObject;
+				T result = caseMachine_Exoscale(machine_Exoscale);
+				if (result == null) result = caseMachine(machine_Exoscale);
+				if (result == null) result = caseCompute(machine_Exoscale);
+				if (result == null) result = caseResource(machine_Exoscale);
+				if (result == null) result = caseEntity(machine_Exoscale);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -596,6 +606,21 @@ public class DockerSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseMachine_VMware_vSphere(Machine_VMware_vSphere object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Machine Exoscale</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Machine Exoscale</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMachine_Exoscale(Machine_Exoscale object) {
 		return null;
 	}
 

@@ -87,6 +87,7 @@ public class DockerFactoryImpl extends EFactoryImpl implements DockerFactory {
 			case DockerPackage.MACHINE_VMWARE_FUSION: return createMachine_VMware_Fusion();
 			case DockerPackage.MACHINE_VMWARE_VCLOUD_AIR: return createMachine_VMware_vCloud_Air();
 			case DockerPackage.MACHINE_VMWARE_VSPHERE: return createMachine_VMware_vSphere();
+			case DockerPackage.MACHINE_EXOSCALE: return createMachine_Exoscale();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -330,6 +331,16 @@ public class DockerFactoryImpl extends EFactoryImpl implements DockerFactory {
 	public Machine_VMware_vSphere createMachine_VMware_vSphere() {
 		Machine_VMware_vSphereImpl machine_VMware_vSphere = new Machine_VMware_vSphereImpl();
 		return machine_VMware_vSphere;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Machine_Exoscale createMachine_Exoscale() {
+		Machine_ExoscaleImpl machine_Exoscale = new Machine_ExoscaleImpl();
+		return machine_Exoscale;
 	}
 
 	/**

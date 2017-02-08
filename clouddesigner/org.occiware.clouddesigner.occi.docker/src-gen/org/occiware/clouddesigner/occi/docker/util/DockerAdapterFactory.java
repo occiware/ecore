@@ -167,6 +167,10 @@ public class DockerAdapterFactory extends AdapterFactoryImpl {
 				return createMachine_VMware_vSphereAdapter();
 			}
 			@Override
+			public Adapter caseMachine_Exoscale(Machine_Exoscale object) {
+				return createMachine_ExoscaleAdapter();
+			}
+			@Override
 			public Adapter caseEntity(Entity object) {
 				return createEntityAdapter();
 			}
@@ -501,6 +505,20 @@ public class DockerAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createMachine_VMware_vSphereAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.occiware.clouddesigner.occi.docker.Machine_Exoscale <em>Machine Exoscale</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Exoscale
+	 * @generated
+	 */
+	public Adapter createMachine_ExoscaleAdapter() {
 		return null;
 	}
 
