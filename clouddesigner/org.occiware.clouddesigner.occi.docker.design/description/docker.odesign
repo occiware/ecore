@@ -237,10 +237,17 @@
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:ToolGroup" name="Docker Machine">
-            <tools xsi:type="tool_1:ToolDescription" name="Docker Machine" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/DockerMachine.gif">
+            <tools xsi:type="tool_1:ToolDescription" name="Docker Machine" forceRefresh="true" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/DockerMachine.gif">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation/>
+            </tools>
+            <tools xsi:type="tool:ContainerCreationDescription" name="Generic" containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Generic.gif">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machine_Generic" referenceName="resources"/>
+              </initialOperation>
             </tools>
             <tools xsi:type="tool:ContainerCreationDescription" name="Virtual Box" containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Machine_VirtualBox.gif">
               <variable name="container"/>
@@ -317,6 +324,20 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machine_Digital_Ocean" referenceName="resources"/>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool:ContainerCreationDescription" name="Exoscale" containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Machine_Exoscale.gif">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machine_Exoscale" referenceName="resources"/>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool:ContainerCreationDescription" name="VMware vCloud Air" containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Machine_VMware_vCloud_Air.gif">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machine_VMware_vCloud_Air" referenceName="resources"/>
               </initialOperation>
             </tools>
           </ownedTools>
