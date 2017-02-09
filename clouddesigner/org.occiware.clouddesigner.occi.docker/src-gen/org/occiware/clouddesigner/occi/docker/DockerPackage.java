@@ -9317,6 +9317,755 @@ public interface DockerPackage extends EPackage {
 	int MACHINE_EXOSCALE_OPERATION_COUNT = MACHINE_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.docker.impl.ClusterImpl <em>Cluster</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.occiware.clouddesigner.occi.docker.impl.ClusterImpl
+	 * @see org.occiware.clouddesigner.occi.docker.impl.DockerPackageImpl#getCluster()
+	 * @generated
+	 */
+	int CLUSTER = 23;
+
+	/**
+	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.docker.impl.Machine_Grid5000Impl <em>Machine Grid5000</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.occiware.clouddesigner.occi.docker.impl.Machine_Grid5000Impl
+	 * @see org.occiware.clouddesigner.occi.docker.impl.DockerPackageImpl#getMachine_Grid5000()
+	 * @generated
+	 */
+	int MACHINE_GRID5000 = 22;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__ID = MACHINE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Title</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__TITLE = MACHINE__TITLE;
+
+	/**
+	 * The feature id for the '<em><b>Kind</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__KIND = MACHINE__KIND;
+
+	/**
+	 * The feature id for the '<em><b>Mixins</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__MIXINS = MACHINE__MIXINS;
+
+	/**
+	 * The feature id for the '<em><b>Attributes</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__ATTRIBUTES = MACHINE__ATTRIBUTES;
+
+	/**
+	 * The feature id for the '<em><b>Summary</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__SUMMARY = MACHINE__SUMMARY;
+
+	/**
+	 * The feature id for the '<em><b>Links</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__LINKS = MACHINE__LINKS;
+
+	/**
+	 * The feature id for the '<em><b>Architecture</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__ARCHITECTURE = MACHINE__ARCHITECTURE;
+
+	/**
+	 * The feature id for the '<em><b>Cores</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__CORES = MACHINE__CORES;
+
+	/**
+	 * The feature id for the '<em><b>Hostname</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__HOSTNAME = MACHINE__HOSTNAME;
+
+	/**
+	 * The feature id for the '<em><b>Share</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__SHARE = MACHINE__SHARE;
+
+	/**
+	 * The feature id for the '<em><b>Speed</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__SPEED = MACHINE__SPEED;
+
+	/**
+	 * The feature id for the '<em><b>Memory</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__MEMORY = MACHINE__MEMORY;
+
+	/**
+	 * The feature id for the '<em><b>State</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__STATE = MACHINE__STATE;
+
+	/**
+	 * The feature id for the '<em><b>Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__MESSAGE = MACHINE__MESSAGE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__NAME = MACHINE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Engine install url</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__ENGINE_INSTALL_URL = MACHINE__ENGINE_INSTALL_URL;
+
+	/**
+	 * The feature id for the '<em><b>Engine opt</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__ENGINE_OPT = MACHINE__ENGINE_OPT;
+
+	/**
+	 * The feature id for the '<em><b>Engine insecure registry</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__ENGINE_INSECURE_REGISTRY = MACHINE__ENGINE_INSECURE_REGISTRY;
+
+	/**
+	 * The feature id for the '<em><b>Engine registry mirror</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__ENGINE_REGISTRY_MIRROR = MACHINE__ENGINE_REGISTRY_MIRROR;
+
+	/**
+	 * The feature id for the '<em><b>Engine label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__ENGINE_LABEL = MACHINE__ENGINE_LABEL;
+
+	/**
+	 * The feature id for the '<em><b>Engine storage driver</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__ENGINE_STORAGE_DRIVER = MACHINE__ENGINE_STORAGE_DRIVER;
+
+	/**
+	 * The feature id for the '<em><b>Engine env</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__ENGINE_ENV = MACHINE__ENGINE_ENV;
+
+	/**
+	 * The feature id for the '<em><b>Swarm</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__SWARM = MACHINE__SWARM;
+
+	/**
+	 * The feature id for the '<em><b>Swarm image</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__SWARM_IMAGE = MACHINE__SWARM_IMAGE;
+
+	/**
+	 * The feature id for the '<em><b>Swarm master</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__SWARM_MASTER = MACHINE__SWARM_MASTER;
+
+	/**
+	 * The feature id for the '<em><b>Swarm discovery</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__SWARM_DISCOVERY = MACHINE__SWARM_DISCOVERY;
+
+	/**
+	 * The feature id for the '<em><b>Swarm strategy</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__SWARM_STRATEGY = MACHINE__SWARM_STRATEGY;
+
+	/**
+	 * The feature id for the '<em><b>Swarm opt</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__SWARM_OPT = MACHINE__SWARM_OPT;
+
+	/**
+	 * The feature id for the '<em><b>Swarm host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__SWARM_HOST = MACHINE__SWARM_HOST;
+
+	/**
+	 * The feature id for the '<em><b>Swarm addr</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__SWARM_ADDR = MACHINE__SWARM_ADDR;
+
+	/**
+	 * The feature id for the '<em><b>Swarm experimental</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__SWARM_EXPERIMENTAL = MACHINE__SWARM_EXPERIMENTAL;
+
+	/**
+	 * The feature id for the '<em><b>Tls san</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__TLS_SAN = MACHINE__TLS_SAN;
+
+	/**
+	 * The feature id for the '<em><b>Username</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__USERNAME = MACHINE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Password</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__PASSWORD = MACHINE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Site</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__SITE = MACHINE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Walltime</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__WALLTIME = MACHINE_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Ssh private key</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__SSH_PRIVATE_KEY = MACHINE_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Ssh public key</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__SSH_PUBLIC_KEY = MACHINE_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Image</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__IMAGE = MACHINE_FEATURE_COUNT + 6;
+
+	/**
+	 * The feature id for the '<em><b>Resource properties</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__RESOURCE_PROPERTIES = MACHINE_FEATURE_COUNT + 7;
+
+	/**
+	 * The feature id for the '<em><b>Use job reservation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__USE_JOB_RESERVATION = MACHINE_FEATURE_COUNT + 8;
+
+	/**
+	 * The feature id for the '<em><b>Host to provision</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__HOST_TO_PROVISION = MACHINE_FEATURE_COUNT + 9;
+
+	/**
+	 * The number of structural features of the '<em>Machine Grid5000</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000_FEATURE_COUNT = MACHINE_FEATURE_COUNT + 10;
+
+	/**
+	 * The operation id for the '<em>Occi Create</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000___OCCI_CREATE = MACHINE___OCCI_CREATE;
+
+	/**
+	 * The operation id for the '<em>Occi Retrieve</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000___OCCI_RETRIEVE = MACHINE___OCCI_RETRIEVE;
+
+	/**
+	 * The operation id for the '<em>Occi Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000___OCCI_UPDATE = MACHINE___OCCI_UPDATE;
+
+	/**
+	 * The operation id for the '<em>Occi Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000___OCCI_DELETE = MACHINE___OCCI_DELETE;
+
+	/**
+	 * The operation id for the '<em>Start</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000___START = MACHINE___START;
+
+	/**
+	 * The operation id for the '<em>Stop</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000___STOP__STOPMETHOD = MACHINE___STOP__STOPMETHOD;
+
+	/**
+	 * The operation id for the '<em>Restart</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000___RESTART__RESTARTMETHOD = MACHINE___RESTART__RESTARTMETHOD;
+
+	/**
+	 * The operation id for the '<em>Suspend</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000___SUSPEND__SUSPENDMETHOD = MACHINE___SUSPEND__SUSPENDMETHOD;
+
+	/**
+	 * The operation id for the '<em>Save</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000___SAVE__SAVEMETHOD_STRING = MACHINE___SAVE__SAVEMETHOD_STRING;
+
+	/**
+	 * The number of operations of the '<em>Machine Grid5000</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000_OPERATION_COUNT = MACHINE_OPERATION_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER__ID = InfrastructurePackage.COMPUTE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Title</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER__TITLE = InfrastructurePackage.COMPUTE__TITLE;
+
+	/**
+	 * The feature id for the '<em><b>Kind</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER__KIND = InfrastructurePackage.COMPUTE__KIND;
+
+	/**
+	 * The feature id for the '<em><b>Mixins</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER__MIXINS = InfrastructurePackage.COMPUTE__MIXINS;
+
+	/**
+	 * The feature id for the '<em><b>Attributes</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER__ATTRIBUTES = InfrastructurePackage.COMPUTE__ATTRIBUTES;
+
+	/**
+	 * The feature id for the '<em><b>Summary</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER__SUMMARY = InfrastructurePackage.COMPUTE__SUMMARY;
+
+	/**
+	 * The feature id for the '<em><b>Links</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER__LINKS = InfrastructurePackage.COMPUTE__LINKS;
+
+	/**
+	 * The feature id for the '<em><b>Architecture</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER__ARCHITECTURE = InfrastructurePackage.COMPUTE__ARCHITECTURE;
+
+	/**
+	 * The feature id for the '<em><b>Cores</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER__CORES = InfrastructurePackage.COMPUTE__CORES;
+
+	/**
+	 * The feature id for the '<em><b>Hostname</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER__HOSTNAME = InfrastructurePackage.COMPUTE__HOSTNAME;
+
+	/**
+	 * The feature id for the '<em><b>Share</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER__SHARE = InfrastructurePackage.COMPUTE__SHARE;
+
+	/**
+	 * The feature id for the '<em><b>Speed</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER__SPEED = InfrastructurePackage.COMPUTE__SPEED;
+
+	/**
+	 * The feature id for the '<em><b>Memory</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER__MEMORY = InfrastructurePackage.COMPUTE__MEMORY;
+
+	/**
+	 * The feature id for the '<em><b>State</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER__STATE = InfrastructurePackage.COMPUTE__STATE;
+
+	/**
+	 * The feature id for the '<em><b>Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER__MESSAGE = InfrastructurePackage.COMPUTE__MESSAGE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER__NAME = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Cluster</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER_FEATURE_COUNT = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Occi Create</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER___OCCI_CREATE = InfrastructurePackage.COMPUTE___OCCI_CREATE;
+
+	/**
+	 * The operation id for the '<em>Occi Retrieve</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER___OCCI_RETRIEVE = InfrastructurePackage.COMPUTE___OCCI_RETRIEVE;
+
+	/**
+	 * The operation id for the '<em>Occi Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER___OCCI_UPDATE = InfrastructurePackage.COMPUTE___OCCI_UPDATE;
+
+	/**
+	 * The operation id for the '<em>Occi Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER___OCCI_DELETE = InfrastructurePackage.COMPUTE___OCCI_DELETE;
+
+	/**
+	 * The operation id for the '<em>Start</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER___START = InfrastructurePackage.COMPUTE___START;
+
+	/**
+	 * The operation id for the '<em>Stop</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER___STOP__STOPMETHOD = InfrastructurePackage.COMPUTE___STOP__STOPMETHOD;
+
+	/**
+	 * The operation id for the '<em>Restart</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER___RESTART__RESTARTMETHOD = InfrastructurePackage.COMPUTE___RESTART__RESTARTMETHOD;
+
+	/**
+	 * The operation id for the '<em>Suspend</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER___SUSPEND__SUSPENDMETHOD = InfrastructurePackage.COMPUTE___SUSPEND__SUSPENDMETHOD;
+
+	/**
+	 * The operation id for the '<em>Save</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER___SAVE__SAVEMETHOD_STRING = InfrastructurePackage.COMPUTE___SAVE__SAVEMETHOD_STRING;
+
+	/**
+	 * The number of operations of the '<em>Cluster</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER_OPERATION_COUNT = InfrastructurePackage.COMPUTE_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.docker.Mode <em>Mode</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9324,7 +10073,7 @@ public interface DockerPackage extends EPackage {
 	 * @see org.occiware.clouddesigner.occi.docker.impl.DockerPackageImpl#getMode()
 	 * @generated
 	 */
-	int MODE = 22;
+	int MODE = 24;
 
 
 	/**
@@ -12247,6 +12996,147 @@ public interface DockerPackage extends EPackage {
 	EAttribute getMachine_Exoscale_Affinity_group();
 
 	/**
+	 * Returns the meta object for class '{@link org.occiware.clouddesigner.occi.docker.Cluster <em>Cluster</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Cluster</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Cluster
+	 * @generated
+	 */
+	EClass getCluster();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Cluster#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Cluster#getName()
+	 * @see #getCluster()
+	 * @generated
+	 */
+	EAttribute getCluster_Name();
+
+	/**
+	 * Returns the meta object for class '{@link org.occiware.clouddesigner.occi.docker.Machine_Grid5000 <em>Machine Grid5000</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Machine Grid5000</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Grid5000
+	 * @generated
+	 */
+	EClass getMachine_Grid5000();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Grid5000#getUsername <em>Username</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Username</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Grid5000#getUsername()
+	 * @see #getMachine_Grid5000()
+	 * @generated
+	 */
+	EAttribute getMachine_Grid5000_Username();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Grid5000#getPassword <em>Password</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Password</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Grid5000#getPassword()
+	 * @see #getMachine_Grid5000()
+	 * @generated
+	 */
+	EAttribute getMachine_Grid5000_Password();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Grid5000#getSite <em>Site</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Site</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Grid5000#getSite()
+	 * @see #getMachine_Grid5000()
+	 * @generated
+	 */
+	EAttribute getMachine_Grid5000_Site();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Grid5000#getWalltime <em>Walltime</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Walltime</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Grid5000#getWalltime()
+	 * @see #getMachine_Grid5000()
+	 * @generated
+	 */
+	EAttribute getMachine_Grid5000_Walltime();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Grid5000#getSsh_private_key <em>Ssh private key</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Ssh private key</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Grid5000#getSsh_private_key()
+	 * @see #getMachine_Grid5000()
+	 * @generated
+	 */
+	EAttribute getMachine_Grid5000_Ssh_private_key();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Grid5000#getSsh_public_key <em>Ssh public key</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Ssh public key</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Grid5000#getSsh_public_key()
+	 * @see #getMachine_Grid5000()
+	 * @generated
+	 */
+	EAttribute getMachine_Grid5000_Ssh_public_key();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Grid5000#getImage <em>Image</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Image</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Grid5000#getImage()
+	 * @see #getMachine_Grid5000()
+	 * @generated
+	 */
+	EAttribute getMachine_Grid5000_Image();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Grid5000#getResource_properties <em>Resource properties</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Resource properties</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Grid5000#getResource_properties()
+	 * @see #getMachine_Grid5000()
+	 * @generated
+	 */
+	EAttribute getMachine_Grid5000_Resource_properties();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Grid5000#getUse_job_reservation <em>Use job reservation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Use job reservation</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Grid5000#getUse_job_reservation()
+	 * @see #getMachine_Grid5000()
+	 * @generated
+	 */
+	EAttribute getMachine_Grid5000_Use_job_reservation();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Grid5000#getHost_to_provision <em>Host to provision</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Host to provision</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Grid5000#getHost_to_provision()
+	 * @see #getMachine_Grid5000()
+	 * @generated
+	 */
+	EAttribute getMachine_Grid5000_Host_to_provision();
+
+	/**
 	 * Returns the meta object for enum '{@link org.occiware.clouddesigner.occi.docker.Mode <em>Mode</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -14465,6 +15355,114 @@ public interface DockerPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute MACHINE_EXOSCALE__AFFINITY_GROUP = eINSTANCE.getMachine_Exoscale_Affinity_group();
+
+		/**
+		 * The meta object literal for the '{@link org.occiware.clouddesigner.occi.docker.impl.ClusterImpl <em>Cluster</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.occiware.clouddesigner.occi.docker.impl.ClusterImpl
+		 * @see org.occiware.clouddesigner.occi.docker.impl.DockerPackageImpl#getCluster()
+		 * @generated
+		 */
+		EClass CLUSTER = eINSTANCE.getCluster();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CLUSTER__NAME = eINSTANCE.getCluster_Name();
+
+		/**
+		 * The meta object literal for the '{@link org.occiware.clouddesigner.occi.docker.impl.Machine_Grid5000Impl <em>Machine Grid5000</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.occiware.clouddesigner.occi.docker.impl.Machine_Grid5000Impl
+		 * @see org.occiware.clouddesigner.occi.docker.impl.DockerPackageImpl#getMachine_Grid5000()
+		 * @generated
+		 */
+		EClass MACHINE_GRID5000 = eINSTANCE.getMachine_Grid5000();
+
+		/**
+		 * The meta object literal for the '<em><b>Username</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_GRID5000__USERNAME = eINSTANCE.getMachine_Grid5000_Username();
+
+		/**
+		 * The meta object literal for the '<em><b>Password</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_GRID5000__PASSWORD = eINSTANCE.getMachine_Grid5000_Password();
+
+		/**
+		 * The meta object literal for the '<em><b>Site</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_GRID5000__SITE = eINSTANCE.getMachine_Grid5000_Site();
+
+		/**
+		 * The meta object literal for the '<em><b>Walltime</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_GRID5000__WALLTIME = eINSTANCE.getMachine_Grid5000_Walltime();
+
+		/**
+		 * The meta object literal for the '<em><b>Ssh private key</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_GRID5000__SSH_PRIVATE_KEY = eINSTANCE.getMachine_Grid5000_Ssh_private_key();
+
+		/**
+		 * The meta object literal for the '<em><b>Ssh public key</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_GRID5000__SSH_PUBLIC_KEY = eINSTANCE.getMachine_Grid5000_Ssh_public_key();
+
+		/**
+		 * The meta object literal for the '<em><b>Image</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_GRID5000__IMAGE = eINSTANCE.getMachine_Grid5000_Image();
+
+		/**
+		 * The meta object literal for the '<em><b>Resource properties</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_GRID5000__RESOURCE_PROPERTIES = eINSTANCE.getMachine_Grid5000_Resource_properties();
+
+		/**
+		 * The meta object literal for the '<em><b>Use job reservation</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_GRID5000__USE_JOB_RESERVATION = eINSTANCE.getMachine_Grid5000_Use_job_reservation();
+
+		/**
+		 * The meta object literal for the '<em><b>Host to provision</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_GRID5000__HOST_TO_PROVISION = eINSTANCE.getMachine_Grid5000_Host_to_provision();
 
 		/**
 		 * The meta object literal for the '{@link org.occiware.clouddesigner.occi.docker.Mode <em>Mode</em>}' enum.

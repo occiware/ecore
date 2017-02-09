@@ -229,6 +229,24 @@ public interface DockerFactory extends EFactory {
 	Machine_Exoscale createMachine_Exoscale();
 
 	/**
+	 * Returns a new object of class '<em>Cluster</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Cluster</em>'.
+	 * @generated
+	 */
+	Cluster createCluster();
+
+	/**
+	 * Returns a new object of class '<em>Machine Grid5000</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Machine Grid5000</em>'.
+	 * @generated
+	 */
+	Machine_Grid5000 createMachine_Grid5000();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
