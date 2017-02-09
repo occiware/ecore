@@ -98,6 +98,8 @@ import static org.occiware.clouddesigner.occi.docker.connector.ExecutableContain
 import org.occiware.clouddesigner.occi.docker.Machine_Generic
 import org.occiware.clouddesigner.occi.docker.impl.Machine_ExoscaleImpl
 import org.occiware.clouddesigner.occi.docker.impl.Machine_Grid5000Impl
+import org.occiware.clouddesigner.occi.docker.impl.ClusterImpl
+import org.occiware.clouddesigner.occi.docker.Machine_Grid5000
 
 /**
  * This class overrides the generated EMF factory of the Docker package.
@@ -273,6 +275,13 @@ class ExecutableDockerFactory extends DockerFactoryImpl {
 		new ExecutableVolume
 	}
 
+	/**
+	 * Create an executable Cluster instance.
+	 */
+	override def createCluster() {
+		LOGGER.info(this.class.name + ":createCluster()")
+		new ExecutableCluster
+	}
 }
 
 /**
@@ -2987,6 +2996,15 @@ class ExecutableNetwork extends NetworkImpl {
 	}
 }
 
+/**
+ * This class implements executable Network.
+ */
+class ExecutableCluster extends ClusterImpl {
+
+	// Initialize logger for ExecutableDockerModel.
+	private static Logger LOGGER = LoggerFactory.getLogger(typeof(ExecutableCluster))
+
+}
 
 /**
  * This class implements executable Volume.
@@ -3032,6 +3050,7 @@ class ExecutableDockerModel {
 	var public Machine_VMware_vSphere machine_VMware_vSphere
 	var public Network network
 	var public Machine_Generic machine_Generic
+	var public Machine_Grid5000 machine_Grid5000
 
 	new() {
 	}
@@ -3064,6 +3083,8 @@ class ExecutableDockerModel {
 			machine_VMware_vSphere = machine
 		} else if (machine instanceof Machine_Generic) {
 			machine_Generic = machine
+		} else if (machine instanceof Machine_Grid5000) {
+			machine_Grid5000 = machine
 		}		
 	}
 
@@ -3141,6 +3162,10 @@ class ExecutableDockerModel {
 			machine_Generic.start
 			return;
 		}
+		if (machine_Grid5000 != null) {
+			machine_Grid5000.start
+			return;
+		}
 
 	}
 
@@ -3199,6 +3224,14 @@ class ExecutableDockerModel {
 		}
 		if (machine_VMware_vSphere != null) {
 			(machine_VMware_vSphere as ExecutableMachine_VMware_vSphere).startAll
+			return;
+		}
+		if (machine_Generic != null) {
+			(machine_Generic as ExecutableMachine_Generic).startAll
+			return;
+		}
+		if (machine_Grid5000 != null) {
+			(machine_Grid5000 as ExecutableMachine_Grid5000).startAll
 			return;
 		}
 
@@ -3262,6 +3295,14 @@ class ExecutableDockerModel {
 			(machine_VMware_vSphere as ExecutableMachine_VMware_vSphere).stop(StopMethod.GRACEFUL)
 			return;
 		}
+		if (machine_Generic != null) {
+			(machine_Generic as ExecutableMachine_Generic).stop(StopMethod.GRACEFUL)
+			return;
+		}
+		if (machine_Grid5000 != null) {
+			(machine_Grid5000 as ExecutableMachine_Grid5000).stop(StopMethod.GRACEFUL)
+			return;
+		}
 
 	}
 
@@ -3322,6 +3363,14 @@ class ExecutableDockerModel {
 			machine_VMware_vSphere.restart(RestartMethod.GRACEFUL)
 			return;
 		}
+		if (machine_Generic != null) {
+			machine_Generic.restart(RestartMethod.GRACEFUL)
+			return;
+		}
+		if (machine_Grid5000 != null) {
+			machine_Grid5000.restart(RestartMethod.GRACEFUL)
+			return;
+		}
 
 	}
 
@@ -3352,6 +3401,8 @@ class ExecutableDockerModel {
 			(machine_VMware_vSphere as ExecutableMachine_VMware_vSphere).synchronize
 		}else if (machine instanceof Machine_Generic) {
 			(machine_Generic as ExecutableMachine_Generic).synchronize
+		}else if (machine instanceof Machine_Grid5000) {
+			(machine_Grid5000 as ExecutableMachine_Grid5000).synchronize
 		}
 	}
 
