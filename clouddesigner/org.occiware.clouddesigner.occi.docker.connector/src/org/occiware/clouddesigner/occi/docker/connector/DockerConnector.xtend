@@ -97,6 +97,7 @@ import static com.google.common.base.Preconditions.checkNotNull
 import static org.occiware.clouddesigner.occi.docker.connector.ExecutableContainer.*
 import org.occiware.clouddesigner.occi.docker.Machine_Generic
 import org.occiware.clouddesigner.occi.docker.impl.Machine_ExoscaleImpl
+import org.occiware.clouddesigner.occi.docker.impl.Machine_Grid5000Impl
 
 /**
  * This class overrides the generated EMF factory of the Docker package.
@@ -248,6 +249,13 @@ class ExecutableDockerFactory extends DockerFactoryImpl {
 		new ExecutableMachine_Exoscale
 	}
 
+	/**
+	 * Create an executable Machine_Grid500 instance.
+	 */
+	override def createMachine_Grid5000() {
+		LOGGER.info(this.class.name + ":createMachine_Grid5000()")
+		new ExecutableMachine_Grid5000
+	}
 
 	/**
 	 * Create an executable Network instance.
@@ -2878,6 +2886,74 @@ class ExecutableMachine_VMware_vSphere extends Machine_VMware_vSphereImpl {
 	def startAll() { manager.startAll }
 
 	override def start() { manager.start() }
+
+	override def stop(StopMethod method) { manager.stop(method) }
+
+	override def restart(RestartMethod method) { manager.restart(method) }
+
+	override def suspend(SuspendMethod method) { manager.suspend(method) }
+
+	def synchronize() { manager.synchronize }
+}
+
+
+/**
+ * This class implements executable Docker Machine on Grid5000.
+ */
+class ExecutableMachine_Grid5000 extends Machine_Grid5000Impl {
+
+	/**
+	 * The machine manager.
+	 */
+	val manager = new MachineManager(this) {
+		override def getDriverName() {
+			"g5k"
+		}
+
+		override def appendDriverParameters(StringBuilder sb) {
+			if (!StringUtils.isEmpty(username)) {
+				sb.append(" --g5k-username ").append(username)
+			}
+			if (!StringUtils.isEmpty(password)) {
+				sb.append(" --g5k-password ").append(password)
+			}
+			if (!StringUtils.isEmpty(site)) {
+				sb.append(" --g5k-site ").append(site)
+			}
+			if (!StringUtils.isEmpty(walltime)) {
+				sb.append(" --g5k-walltime ").append(walltime)
+			}
+			if (!StringUtils.isEmpty(ssh_private_key)) {
+				sb.append(" --g5k-ssh-private-key ").append(ssh_private_key)
+			}
+			if (!StringUtils.isEmpty(ssh_public_key)) {
+				sb.append(" --g5k-ssh-public-key ").append(ssh_public_key)
+			}
+			if (!StringUtils.isEmpty(image)) {
+				sb.append(" --g5k-image ").append(image)
+			}
+			if (!StringUtils.isEmpty(resource_properties)) {
+				sb.append(" --g5k-resource-properties ").append(resource_properties)
+			}
+			if (!StringUtils.isEmpty(use_job_reservation)) {
+				sb.append(" --g5k-use-job-reservation ").append(use_job_reservation)
+			}
+			if (!StringUtils.isEmpty(host_to_provision)) {
+				sb.append(" --g5k-host-to-provision ").append(host_to_provision)
+			}
+		}
+	}
+
+	// Delegation to the manager.
+	override def start() {
+		manager.start()
+
+		// Add listener here
+		val observer = new DockerObserver
+		observer.listener(this)
+	}
+
+	def startAll() { manager.startAll }
 
 	override def stop(StopMethod method) { manager.stop(method) }
 
