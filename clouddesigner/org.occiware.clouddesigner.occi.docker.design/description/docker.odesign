@@ -15,10 +15,9 @@
           </style>
         </edgeMappings>
         <edgeMappings name="Volumesfrom" sourceMapping="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']" targetMapping="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container'] //@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Volume']" targetFinderExpression="feature:target" sourceFinderExpression="feature:source" domainClass="Volumesfrom" useDomainElement="true">
-          <style sizeComputationExpression="2">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          <style strokeColor="//@userColorsPalettes[name='custom_palette']/@entries[name='custom_light_yellow']" sizeComputationExpression="2">
             <centerLabelStyleDescription>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
@@ -160,6 +159,13 @@
             </style>
           </conditionnalStyles>
         </containerMappings>
+        <containerMappings name="Cluster" preconditionExpression="[self.eInverse()->filter(docker::Contains)->select(target=self) -> isEmpty()/]" semanticCandidatesExpression="feature:resources" domainClass="Cluster">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="50" arcHeight="50" borderSizeComputationExpression="1" borderLineStyle="dash" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/swarm.gif" roundedCorner="true" foregroundColor="//@userColorsPalettes[name='custom_palette']/@entries[name='custom_light_yellow']">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </containerMappings>
         <toolSections name="Tool">
           <ownedTools xsi:type="tool:DirectEditLabel" name="Edit">
             <mask mask="{0}"/>
@@ -235,6 +241,20 @@
                 <subModelOperations xsi:type="tool_1:RemoveElement"/>
               </firstModelOperations>
             </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolGroup" name="Cluster">
+            <tools xsi:type="tool_1:ToolDescription" name="Cluster" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Cluster.gif">
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <initialOperation/>
+            </tools>
+            <tools xsi:type="tool:ContainerCreationDescription" name="cluster" containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Cluster']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/swarm.gif">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Cluster" referenceName="resources"/>
+              </initialOperation>
+            </tools>
           </ownedTools>
           <ownedTools xsi:type="tool:ToolGroup" name="Docker Machine">
             <tools xsi:type="tool_1:ToolDescription" name="Docker Machine" forceRefresh="true" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/DockerMachine.gif">
@@ -338,6 +358,13 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machine_VMware_vCloud_Air" referenceName="resources"/>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool:ContainerCreationDescription" name="Grid5k" containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Grid5000.gif">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machine_Grid5000" referenceName="resources"/>
               </initialOperation>
             </tools>
           </ownedTools>
