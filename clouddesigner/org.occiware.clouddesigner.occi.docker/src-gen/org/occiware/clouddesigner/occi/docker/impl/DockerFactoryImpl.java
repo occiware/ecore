@@ -88,6 +88,8 @@ public class DockerFactoryImpl extends EFactoryImpl implements DockerFactory {
 			case DockerPackage.MACHINE_VMWARE_VCLOUD_AIR: return createMachine_VMware_vCloud_Air();
 			case DockerPackage.MACHINE_VMWARE_VSPHERE: return createMachine_VMware_vSphere();
 			case DockerPackage.MACHINE_EXOSCALE: return createMachine_Exoscale();
+			case DockerPackage.MACHINE_GRID5000: return createMachine_Grid5000();
+			case DockerPackage.CLUSTER: return createCluster();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -341,6 +343,26 @@ public class DockerFactoryImpl extends EFactoryImpl implements DockerFactory {
 	public Machine_Exoscale createMachine_Exoscale() {
 		Machine_ExoscaleImpl machine_Exoscale = new Machine_ExoscaleImpl();
 		return machine_Exoscale;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Cluster createCluster() {
+		ClusterImpl cluster = new ClusterImpl();
+		return cluster;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Machine_Grid5000 createMachine_Grid5000() {
+		Machine_Grid5000Impl machine_Grid5000 = new Machine_Grid5000Impl();
+		return machine_Grid5000;
 	}
 
 	/**

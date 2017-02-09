@@ -20,9 +20,11 @@ import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.occiware.clouddesigner.occi.OCCIPackage;
+import org.occiware.clouddesigner.occi.docker.Cluster;
 import org.occiware.clouddesigner.occi.docker.Contains;
 import org.occiware.clouddesigner.occi.docker.DockerFactory;
 import org.occiware.clouddesigner.occi.docker.DockerPackage;
+import org.occiware.clouddesigner.occi.docker.Grid5000;
 import org.occiware.clouddesigner.occi.docker.Link;
 import org.occiware.clouddesigner.occi.docker.Machine;
 import org.occiware.clouddesigner.occi.docker.Machine_Amazon_EC2;
@@ -30,6 +32,7 @@ import org.occiware.clouddesigner.occi.docker.Machine_Digital_Ocean;
 import org.occiware.clouddesigner.occi.docker.Machine_Exoscale;
 import org.occiware.clouddesigner.occi.docker.Machine_Generic;
 import org.occiware.clouddesigner.occi.docker.Machine_Google_Compute_Engine;
+import org.occiware.clouddesigner.occi.docker.Machine_Grid5000;
 import org.occiware.clouddesigner.occi.docker.Machine_IBM_SoftLayer;
 import org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Azure;
 import org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Hyper_V;
@@ -206,6 +209,20 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * @generated
 	 */
 	private EClass machine_ExoscaleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass clusterEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass machine_Grid5000EClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2695,6 +2712,123 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getCluster() {
+		return clusterEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCluster_Name() {
+		return (EAttribute)clusterEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getMachine_Grid5000() {
+		return machine_Grid5000EClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMachine_Grid5000_Username() {
+		return (EAttribute)machine_Grid5000EClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMachine_Grid5000_Password() {
+		return (EAttribute)machine_Grid5000EClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMachine_Grid5000_Site() {
+		return (EAttribute)machine_Grid5000EClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMachine_Grid5000_Walltime() {
+		return (EAttribute)machine_Grid5000EClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMachine_Grid5000_Ssh_private_key() {
+		return (EAttribute)machine_Grid5000EClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMachine_Grid5000_Ssh_public_key() {
+		return (EAttribute)machine_Grid5000EClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMachine_Grid5000_Image() {
+		return (EAttribute)machine_Grid5000EClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMachine_Grid5000_Resource_properties() {
+		return (EAttribute)machine_Grid5000EClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMachine_Grid5000_Use_job_reservation() {
+		return (EAttribute)machine_Grid5000EClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMachine_Grid5000_Host_to_provision() {
+		return (EAttribute)machine_Grid5000EClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getMode() {
 		return modeEEnum;
 	}
@@ -3017,6 +3151,21 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		createEAttribute(machine_ExoscaleEClass, MACHINE_EXOSCALE__USERDATA);
 		createEAttribute(machine_ExoscaleEClass, MACHINE_EXOSCALE__AFFINITY_GROUP);
 
+		machine_Grid5000EClass = createEClass(MACHINE_GRID5000);
+		createEAttribute(machine_Grid5000EClass, MACHINE_GRID5000__USERNAME);
+		createEAttribute(machine_Grid5000EClass, MACHINE_GRID5000__PASSWORD);
+		createEAttribute(machine_Grid5000EClass, MACHINE_GRID5000__SITE);
+		createEAttribute(machine_Grid5000EClass, MACHINE_GRID5000__WALLTIME);
+		createEAttribute(machine_Grid5000EClass, MACHINE_GRID5000__SSH_PRIVATE_KEY);
+		createEAttribute(machine_Grid5000EClass, MACHINE_GRID5000__SSH_PUBLIC_KEY);
+		createEAttribute(machine_Grid5000EClass, MACHINE_GRID5000__IMAGE);
+		createEAttribute(machine_Grid5000EClass, MACHINE_GRID5000__RESOURCE_PROPERTIES);
+		createEAttribute(machine_Grid5000EClass, MACHINE_GRID5000__USE_JOB_RESERVATION);
+		createEAttribute(machine_Grid5000EClass, MACHINE_GRID5000__HOST_TO_PROVISION);
+
+		clusterEClass = createEClass(CLUSTER);
+		createEAttribute(clusterEClass, CLUSTER__NAME);
+
 		// Create enums
 		modeEEnum = createEEnum(MODE);
 	}
@@ -3075,6 +3224,8 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		machine_VMware_vCloud_AirEClass.getESuperTypes().add(this.getMachine());
 		machine_VMware_vSphereEClass.getESuperTypes().add(this.getMachine());
 		machine_ExoscaleEClass.getESuperTypes().add(this.getMachine());
+		machine_Grid5000EClass.getESuperTypes().add(this.getMachine());
+		clusterEClass.getESuperTypes().add(theInfrastructurePackage.getCompute());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(containerEClass, org.occiware.clouddesigner.occi.docker.Container.class, "Container", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -3374,6 +3525,21 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		initEAttribute(getMachine_Exoscale_Ssh_user(), theOCCIPackage.getString(), "ssh_user", "ubuntu", 0, 1, Machine_Exoscale.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_Exoscale_Userdata(), theOCCIPackage.getString(), "userdata", null, 0, 1, Machine_Exoscale.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_Exoscale_Affinity_group(), theOCCIPackage.getString(), "affinity_group", "docker-machine", 0, 1, Machine_Exoscale.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(machine_Grid5000EClass, Machine_Grid5000.class, "Machine_Grid5000", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getMachine_Grid5000_Username(), theOCCIPackage.getString(), "username", null, 1, 1, Machine_Grid5000.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_Grid5000_Password(), theOCCIPackage.getString(), "password", null, 1, 1, Machine_Grid5000.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_Grid5000_Site(), theOCCIPackage.getString(), "site", null, 1, 1, Machine_Grid5000.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_Grid5000_Walltime(), theOCCIPackage.getString(), "walltime", null, 0, 1, Machine_Grid5000.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_Grid5000_Ssh_private_key(), theOCCIPackage.getString(), "ssh_private_key", null, 0, 1, Machine_Grid5000.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_Grid5000_Ssh_public_key(), theOCCIPackage.getString(), "ssh_public_key", null, 0, 1, Machine_Grid5000.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_Grid5000_Image(), theOCCIPackage.getString(), "image", null, 0, 1, Machine_Grid5000.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_Grid5000_Resource_properties(), theOCCIPackage.getString(), "resource_properties", null, 0, 1, Machine_Grid5000.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_Grid5000_Use_job_reservation(), theOCCIPackage.getString(), "use_job_reservation", null, 0, 1, Machine_Grid5000.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_Grid5000_Host_to_provision(), ecorePackage.getEString(), "host_to_provision", null, 0, 1, Machine_Grid5000.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(clusterEClass, Cluster.class, "Cluster", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getCluster_Name(), theOCCIPackage.getString(), "name", null, 0, 1, Cluster.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(modeEEnum, Mode.class, "Mode");
@@ -5009,6 +5175,84 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		   source, 
 		   new String[] {
 			 "description", "Affinity group the machine will be started in."
+		   });	
+		addAnnotation
+		  (machine_Grid5000EClass, 
+		   source, 
+		   new String[] {
+			 "title", "Grid5000 cluster"
+		   });	
+		addAnnotation
+		  (getMachine_Grid5000_Username(), 
+		   source, 
+		   new String[] {
+			 "description", "Grid5000 account username"
+		   });	
+		addAnnotation
+		  (getMachine_Grid5000_Password(), 
+		   source, 
+		   new String[] {
+			 "description", "Grid5000 account password"
+		   });	
+		addAnnotation
+		  (getMachine_Grid5000_Site(), 
+		   source, 
+		   new String[] {
+			 "description", "Site to reserve the resources on"
+		   });	
+		addAnnotation
+		  (getMachine_Grid5000_Walltime(), 
+		   source, 
+		   new String[] {
+			 "description", "Timelife of the machine"
+		   });	
+		addAnnotation
+		  (getMachine_Grid5000_Ssh_private_key(), 
+		   source, 
+		   new String[] {
+			 "description", "Path of your ssh private key"
+		   });	
+		addAnnotation
+		  (getMachine_Grid5000_Ssh_public_key(), 
+		   source, 
+		   new String[] {
+			 "description", "Path of your ssh public key"
+		   });	
+		addAnnotation
+		  (getMachine_Grid5000_Image(), 
+		   source, 
+		   new String[] {
+			 "description", "Name of the image to deploy"
+		   });	
+		addAnnotation
+		  (getMachine_Grid5000_Resource_properties(), 
+		   source, 
+		   new String[] {
+			 "description", "Resource selection with OAR properties (SQL format)"
+		   });	
+		addAnnotation
+		  (getMachine_Grid5000_Use_job_reservation(), 
+		   source, 
+		   new String[] {
+			 "description", "Job ID to use (need to be an already existing job ID)"
+		   });	
+		addAnnotation
+		  (getMachine_Grid5000_Host_to_provision(), 
+		   source, 
+		   new String[] {
+			 "description", "Host to provision (host need to be already deployed)"
+		   });	
+		addAnnotation
+		  (clusterEClass, 
+		   source, 
+		   new String[] {
+			 "title", "Docker cluster"
+		   });	
+		addAnnotation
+		  (getCluster_Name(), 
+		   source, 
+		   new String[] {
+			 "description", "The cluster name."
 		   });
 	}
 
