@@ -26,6 +26,7 @@ import org.occiware.clouddesigner.occi.docker.Machine_Amazon_EC2;
 import org.occiware.clouddesigner.occi.docker.Machine_Digital_Ocean;
 import org.occiware.clouddesigner.occi.docker.Machine_Generic;
 import org.occiware.clouddesigner.occi.docker.Machine_Google_Compute_Engine;
+import org.occiware.clouddesigner.occi.docker.Machine_Grid5000;
 import org.occiware.clouddesigner.occi.docker.Machine_IBM_SoftLayer;
 import org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Azure;
 import org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Hyper_V;
@@ -40,6 +41,7 @@ import org.occiware.clouddesigner.occi.docker.connector.ExecutableMachine_Amazon
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableMachine_Digital_Ocean;
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableMachine_Generic;
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableMachine_Google_Compute_Engine;
+import org.occiware.clouddesigner.occi.docker.connector.ExecutableMachine_Grid5000;
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableMachine_IBM_SoftLayer;
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableMachine_Microsoft_Azure;
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableMachine_Microsoft_Hyper_V;
@@ -94,6 +96,8 @@ public class ExecutableDockerModel {
   
   public Machine_Generic machine_Generic;
   
+  public Machine_Grid5000 machine_Grid5000;
+  
   public ExecutableDockerModel() {
   }
   
@@ -137,6 +141,10 @@ public class ExecutableDockerModel {
                           } else {
                             if ((machine instanceof Machine_Generic)) {
                               this.machine_Generic = ((Machine_Generic)machine);
+                            } else {
+                              if ((machine instanceof Machine_Grid5000)) {
+                                this.machine_Grid5000 = ((Machine_Grid5000)machine);
+                              }
                             }
                           }
                         }
@@ -234,6 +242,11 @@ public class ExecutableDockerModel {
       this.machine_Generic.start();
       return;
     }
+    boolean _notEquals_13 = (!Objects.equal(this.machine_Grid5000, null));
+    if (_notEquals_13) {
+      this.machine_Grid5000.start();
+      return;
+    }
   }
   
   public void startAll() {
@@ -300,6 +313,16 @@ public class ExecutableDockerModel {
     boolean _notEquals_12 = (!Objects.equal(this.machine_VMware_vSphere, null));
     if (_notEquals_12) {
       ((ExecutableMachine_VMware_vSphere) this.machine_VMware_vSphere).startAll();
+      return;
+    }
+    boolean _notEquals_13 = (!Objects.equal(this.machine_Generic, null));
+    if (_notEquals_13) {
+      ((ExecutableMachine_Generic) this.machine_Generic).startAll();
+      return;
+    }
+    boolean _notEquals_14 = (!Objects.equal(this.machine_Grid5000, null));
+    if (_notEquals_14) {
+      ((ExecutableMachine_Grid5000) this.machine_Grid5000).startAll();
       return;
     }
   }
@@ -370,6 +393,16 @@ public class ExecutableDockerModel {
       ((ExecutableMachine_VMware_vSphere) this.machine_VMware_vSphere).stop(StopMethod.GRACEFUL);
       return;
     }
+    boolean _notEquals_13 = (!Objects.equal(this.machine_Generic, null));
+    if (_notEquals_13) {
+      ((ExecutableMachine_Generic) this.machine_Generic).stop(StopMethod.GRACEFUL);
+      return;
+    }
+    boolean _notEquals_14 = (!Objects.equal(this.machine_Grid5000, null));
+    if (_notEquals_14) {
+      ((ExecutableMachine_Grid5000) this.machine_Grid5000).stop(StopMethod.GRACEFUL);
+      return;
+    }
   }
   
   public void restart() {
@@ -438,6 +471,16 @@ public class ExecutableDockerModel {
       this.machine_VMware_vSphere.restart(RestartMethod.GRACEFUL);
       return;
     }
+    boolean _notEquals_13 = (!Objects.equal(this.machine_Generic, null));
+    if (_notEquals_13) {
+      this.machine_Generic.restart(RestartMethod.GRACEFUL);
+      return;
+    }
+    boolean _notEquals_14 = (!Objects.equal(this.machine_Grid5000, null));
+    if (_notEquals_14) {
+      this.machine_Grid5000.restart(RestartMethod.GRACEFUL);
+      return;
+    }
   }
   
   public void synchronize() {
@@ -479,6 +522,10 @@ public class ExecutableDockerModel {
                           } else {
                             if ((this.machine instanceof Machine_Generic)) {
                               ((ExecutableMachine_Generic) this.machine_Generic).synchronize();
+                            } else {
+                              if ((this.machine instanceof Machine_Grid5000)) {
+                                ((ExecutableMachine_Grid5000) this.machine_Grid5000).synchronize();
+                              }
                             }
                           }
                         }

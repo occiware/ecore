@@ -11,6 +11,7 @@
  */
 package org.occiware.clouddesigner.occi.docker.connector;
 
+import org.occiware.clouddesigner.occi.docker.Cluster;
 import org.occiware.clouddesigner.occi.docker.DockerFactory;
 import org.occiware.clouddesigner.occi.docker.DockerPackage;
 import org.occiware.clouddesigner.occi.docker.Machine;
@@ -31,6 +32,7 @@ import org.occiware.clouddesigner.occi.docker.Machine_VMware_vSphere;
 import org.occiware.clouddesigner.occi.docker.Machine_VirtualBox;
 import org.occiware.clouddesigner.occi.docker.Network;
 import org.occiware.clouddesigner.occi.docker.Volume;
+import org.occiware.clouddesigner.occi.docker.connector.ExecutableCluster;
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableContainer;
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableMachine;
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableMachine_Amazon_EC2;
@@ -365,6 +367,22 @@ public class ExecutableDockerFactory extends DockerFactoryImpl {
       String _plus = (_name + ":createVolume()");
       ExecutableDockerFactory.LOGGER.info(_plus);
       _xblockexpression = new ExecutableVolume();
+    }
+    return _xblockexpression;
+  }
+  
+  /**
+   * Create an executable Cluster instance.
+   */
+  @Override
+  public Cluster createCluster() {
+    ExecutableCluster _xblockexpression = null;
+    {
+      Class<? extends ExecutableDockerFactory> _class = this.getClass();
+      String _name = _class.getName();
+      String _plus = (_name + ":createCluster()");
+      ExecutableDockerFactory.LOGGER.info(_plus);
+      _xblockexpression = new ExecutableCluster();
     }
     return _xblockexpression;
   }
