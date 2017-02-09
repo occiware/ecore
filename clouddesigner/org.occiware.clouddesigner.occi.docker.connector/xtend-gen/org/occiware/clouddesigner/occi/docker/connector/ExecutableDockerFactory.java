@@ -19,6 +19,7 @@ import org.occiware.clouddesigner.occi.docker.Machine_Digital_Ocean;
 import org.occiware.clouddesigner.occi.docker.Machine_Exoscale;
 import org.occiware.clouddesigner.occi.docker.Machine_Generic;
 import org.occiware.clouddesigner.occi.docker.Machine_Google_Compute_Engine;
+import org.occiware.clouddesigner.occi.docker.Machine_Grid5000;
 import org.occiware.clouddesigner.occi.docker.Machine_IBM_SoftLayer;
 import org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Azure;
 import org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Hyper_V;
@@ -37,6 +38,7 @@ import org.occiware.clouddesigner.occi.docker.connector.ExecutableMachine_Digita
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableMachine_Exoscale;
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableMachine_Generic;
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableMachine_Google_Compute_Engine;
+import org.occiware.clouddesigner.occi.docker.connector.ExecutableMachine_Grid5000;
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableMachine_IBM_SoftLayer;
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableMachine_Microsoft_Azure;
 import org.occiware.clouddesigner.occi.docker.connector.ExecutableMachine_Microsoft_Hyper_V;
@@ -315,6 +317,22 @@ public class ExecutableDockerFactory extends DockerFactoryImpl {
       String _plus = (_name + ":createMachine_Exoscale()");
       ExecutableDockerFactory.LOGGER.info(_plus);
       _xblockexpression = new ExecutableMachine_Exoscale();
+    }
+    return _xblockexpression;
+  }
+  
+  /**
+   * Create an executable Machine_Grid500 instance.
+   */
+  @Override
+  public Machine_Grid5000 createMachine_Grid5000() {
+    ExecutableMachine_Grid5000 _xblockexpression = null;
+    {
+      Class<? extends ExecutableDockerFactory> _class = this.getClass();
+      String _name = _class.getName();
+      String _plus = (_name + ":createMachine_Grid5000()");
+      ExecutableDockerFactory.LOGGER.info(_plus);
+      _xblockexpression = new ExecutableMachine_Grid5000();
     }
     return _xblockexpression;
   }
