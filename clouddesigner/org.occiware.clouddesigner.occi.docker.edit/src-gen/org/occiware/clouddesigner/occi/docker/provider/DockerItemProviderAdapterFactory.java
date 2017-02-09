@@ -587,6 +587,52 @@ public class DockerItemProviderAdapterFactory extends DockerAdapterFactory imple
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.occiware.clouddesigner.occi.docker.Machine_Grid5000} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected Machine_Grid5000ItemProvider machine_Grid5000ItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.occiware.clouddesigner.occi.docker.Machine_Grid5000}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createMachine_Grid5000Adapter() {
+		if (machine_Grid5000ItemProvider == null) {
+			machine_Grid5000ItemProvider = new Machine_Grid5000ItemProvider(this);
+		}
+
+		return machine_Grid5000ItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.occiware.clouddesigner.occi.docker.Cluster} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ClusterItemProvider clusterItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.occiware.clouddesigner.occi.docker.Cluster}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createClusterAdapter() {
+		if (clusterItemProvider == null) {
+			clusterItemProvider = new ClusterItemProvider(this);
+		}
+
+		return clusterItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -707,6 +753,8 @@ public class DockerItemProviderAdapterFactory extends DockerAdapterFactory imple
 		if (machine_VMware_vCloud_AirItemProvider != null) machine_VMware_vCloud_AirItemProvider.dispose();
 		if (machine_VMware_vSphereItemProvider != null) machine_VMware_vSphereItemProvider.dispose();
 		if (machine_ExoscaleItemProvider != null) machine_ExoscaleItemProvider.dispose();
+		if (machine_Grid5000ItemProvider != null) machine_Grid5000ItemProvider.dispose();
+		if (clusterItemProvider != null) clusterItemProvider.dispose();
 	}
 
 }
