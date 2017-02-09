@@ -171,6 +171,14 @@ public class DockerAdapterFactory extends AdapterFactoryImpl {
 				return createMachine_ExoscaleAdapter();
 			}
 			@Override
+			public Adapter caseMachine_Grid5000(Machine_Grid5000 object) {
+				return createMachine_Grid5000Adapter();
+			}
+			@Override
+			public Adapter caseCluster(Cluster object) {
+				return createClusterAdapter();
+			}
+			@Override
 			public Adapter caseEntity(Entity object) {
 				return createEntityAdapter();
 			}
@@ -519,6 +527,34 @@ public class DockerAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createMachine_ExoscaleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.occiware.clouddesigner.occi.docker.Cluster <em>Cluster</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.occiware.clouddesigner.occi.docker.Cluster
+	 * @generated
+	 */
+	public Adapter createClusterAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.occiware.clouddesigner.occi.docker.Machine_Grid5000 <em>Machine Grid5000</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Grid5000
+	 * @generated
+	 */
+	public Adapter createMachine_Grid5000Adapter() {
 		return null;
 	}
 

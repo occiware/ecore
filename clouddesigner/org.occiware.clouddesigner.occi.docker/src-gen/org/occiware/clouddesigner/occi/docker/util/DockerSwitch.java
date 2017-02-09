@@ -290,6 +290,25 @@ public class DockerSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case DockerPackage.MACHINE_GRID5000: {
+				Machine_Grid5000 machine_Grid5000 = (Machine_Grid5000)theEObject;
+				T result = caseMachine_Grid5000(machine_Grid5000);
+				if (result == null) result = caseMachine(machine_Grid5000);
+				if (result == null) result = caseCompute(machine_Grid5000);
+				if (result == null) result = caseResource(machine_Grid5000);
+				if (result == null) result = caseEntity(machine_Grid5000);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DockerPackage.CLUSTER: {
+				Cluster cluster = (Cluster)theEObject;
+				T result = caseCluster(cluster);
+				if (result == null) result = caseCompute(cluster);
+				if (result == null) result = caseResource(cluster);
+				if (result == null) result = caseEntity(cluster);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -621,6 +640,36 @@ public class DockerSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseMachine_Exoscale(Machine_Exoscale object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Cluster</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Cluster</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCluster(Cluster object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Machine Grid5000</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Machine Grid5000</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMachine_Grid5000(Machine_Grid5000 object) {
 		return null;
 	}
 
