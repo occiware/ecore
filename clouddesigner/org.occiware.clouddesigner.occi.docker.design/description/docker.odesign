@@ -15,7 +15,8 @@
           </style>
         </edgeMappings>
         <edgeMappings name="Volumesfrom" sourceMapping="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']" targetMapping="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container'] //@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Volume']" targetFinderExpression="feature:target" sourceFinderExpression="feature:source" domainClass="Volumesfrom" useDomainElement="true">
-          <style strokeColor="//@userColorsPalettes[name='custom_palette']/@entries[name='custom_light_yellow']" sizeComputationExpression="2">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_purple']"/>
             <centerLabelStyleDescription>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
             </centerLabelStyleDescription>
