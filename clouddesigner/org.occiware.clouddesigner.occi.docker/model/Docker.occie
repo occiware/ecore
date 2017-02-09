@@ -809,7 +809,10 @@
     <attributes name="host_to_provision" description="Host to provision (host need to be already deployed)"/>
   </kinds>
   <kinds term="cluster" scheme="http://occiware.org/occi/docker#" title="Docker cluster">
-    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+    <attributes name="name" description="The cluster name.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <parent href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='compute']"/>
   </kinds>
   <types xsi:type="ecore:EEnum" name="Mode">
     <eLiterals name="read_write" literal="read_write"/>

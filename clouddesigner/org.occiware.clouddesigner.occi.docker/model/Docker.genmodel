@@ -854,6 +854,9 @@
     </genClasses>
     <genClasses>
       <ecoreClass href="Docker.ecore#//Cluster"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="Docker.ecore#//Cluster/name"/>
+      </genFeatures>
     </genClasses>
   </genPackages>
   <usedGenPackages href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.genmodel#//infrastructure"/>
