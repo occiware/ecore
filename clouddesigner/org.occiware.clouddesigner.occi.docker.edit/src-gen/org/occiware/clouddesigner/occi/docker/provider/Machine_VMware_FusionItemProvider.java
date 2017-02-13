@@ -57,6 +57,7 @@ public class Machine_VMware_FusionItemProvider extends MachineItemProvider {
 			addBoot2docker_urlPropertyDescriptor(object);
 			addDisk_sizePropertyDescriptor(object);
 			addMemory_sizePropertyDescriptor(object);
+			addNo_sharePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -128,6 +129,28 @@ public class Machine_VMware_FusionItemProvider extends MachineItemProvider {
 	}
 
 	/**
+	 * This adds a property descriptor for the No share feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNo_sharePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_VMware_Fusion_no_share_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_VMware_Fusion_no_share_feature", "_UI_Machine_VMware_Fusion_type"),
+				 DockerPackage.Literals.MACHINE_VMWARE_FUSION__NO_SHARE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns Machine_VMware_Fusion.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -168,6 +191,7 @@ public class Machine_VMware_FusionItemProvider extends MachineItemProvider {
 			case DockerPackage.MACHINE_VMWARE_FUSION__BOOT2DOCKER_URL:
 			case DockerPackage.MACHINE_VMWARE_FUSION__DISK_SIZE:
 			case DockerPackage.MACHINE_VMWARE_FUSION__MEMORY_SIZE:
+			case DockerPackage.MACHINE_VMWARE_FUSION__NO_SHARE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

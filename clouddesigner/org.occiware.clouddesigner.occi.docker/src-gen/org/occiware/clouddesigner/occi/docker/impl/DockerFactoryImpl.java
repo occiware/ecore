@@ -72,7 +72,9 @@ public class DockerFactoryImpl extends EFactoryImpl implements DockerFactory {
 			case DockerPackage.VOLUMESFROM: return createVolumesfrom();
 			case DockerPackage.CONTAINS: return createContains();
 			case DockerPackage.MACHINE: return createMachine();
+			case DockerPackage.VOLUME: return createVolume();
 			case DockerPackage.NETWORK: return createNetwork();
+			case DockerPackage.MACHINE_GENERIC: return createMachine_Generic();
 			case DockerPackage.MACHINE_AMAZON_EC2: return createMachine_Amazon_EC2();
 			case DockerPackage.MACHINE_DIGITAL_OCEAN: return createMachine_Digital_Ocean();
 			case DockerPackage.MACHINE_GOOGLE_COMPUTE_ENGINE: return createMachine_Google_Compute_Engine();
@@ -85,6 +87,9 @@ public class DockerFactoryImpl extends EFactoryImpl implements DockerFactory {
 			case DockerPackage.MACHINE_VMWARE_FUSION: return createMachine_VMware_Fusion();
 			case DockerPackage.MACHINE_VMWARE_VCLOUD_AIR: return createMachine_VMware_vCloud_Air();
 			case DockerPackage.MACHINE_VMWARE_VSPHERE: return createMachine_VMware_vSphere();
+			case DockerPackage.MACHINE_EXOSCALE: return createMachine_Exoscale();
+			case DockerPackage.MACHINE_GRID5000: return createMachine_Grid5000();
+			case DockerPackage.CLUSTER: return createCluster();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -185,9 +190,29 @@ public class DockerFactoryImpl extends EFactoryImpl implements DockerFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Volume createVolume() {
+		VolumeImpl volume = new VolumeImpl();
+		return volume;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Network createNetwork() {
 		NetworkImpl network = new NetworkImpl();
 		return network;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Machine_Generic createMachine_Generic() {
+		Machine_GenericImpl machine_Generic = new Machine_GenericImpl();
+		return machine_Generic;
 	}
 
 	/**
@@ -308,6 +333,36 @@ public class DockerFactoryImpl extends EFactoryImpl implements DockerFactory {
 	public Machine_VMware_vSphere createMachine_VMware_vSphere() {
 		Machine_VMware_vSphereImpl machine_VMware_vSphere = new Machine_VMware_vSphereImpl();
 		return machine_VMware_vSphere;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Machine_Exoscale createMachine_Exoscale() {
+		Machine_ExoscaleImpl machine_Exoscale = new Machine_ExoscaleImpl();
+		return machine_Exoscale;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Cluster createCluster() {
+		ClusterImpl cluster = new ClusterImpl();
+		return cluster;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Machine_Grid5000 createMachine_Grid5000() {
+		Machine_Grid5000Impl machine_Grid5000 = new Machine_Grid5000Impl();
+		return machine_Grid5000;
 	}
 
 	/**

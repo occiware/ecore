@@ -24,6 +24,7 @@ package org.occiware.clouddesigner.occi.docker;
  *   <li>{@link org.occiware.clouddesigner.occi.docker.Machine_VMware_Fusion#getBoot2docker_url <em>Boot2docker url</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.docker.Machine_VMware_Fusion#getDisk_size <em>Disk size</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.docker.Machine_VMware_Fusion#getMemory_size <em>Memory size</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.Machine_VMware_Fusion#isNo_share <em>No share</em>}</li>
  * </ul>
  *
  * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_Fusion()
@@ -113,5 +114,33 @@ public interface Machine_VMware_Fusion extends Machine {
 	 * @generated
 	 */
 	void setMemory_size(int value);
+
+	/**
+	 * Returns the value of the '<em><b>No share</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>No share</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>No share</em>' attribute.
+	 * @see #setNo_share(boolean)
+	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_Fusion_No_share()
+	 * @model default="false" dataType="org.occiware.clouddesigner.occi.Boolean"
+	 *        annotation="OCCIE2Ecore description='Disable the mount of your home directory.'"
+	 * @generated
+	 */
+	boolean isNo_share();
+
+	/**
+	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.docker.Machine_VMware_Fusion#isNo_share <em>No share</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>No share</em>' attribute.
+	 * @see #isNo_share()
+	 * @generated
+	 */
+	void setNo_share(boolean value);
 
 } // Machine_VMware_Fusion

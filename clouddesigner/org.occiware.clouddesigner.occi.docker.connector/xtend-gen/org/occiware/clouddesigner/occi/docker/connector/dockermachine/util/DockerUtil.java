@@ -42,6 +42,9 @@ public class DockerUtil {
   
   private static String DOCKER_MACHINE = "/usr/local/bin/docker-machine";
   
+  /**
+   * Run the good docker-machine according to the OS.
+   */
   public static String getDockerMachineCmd() {
     String command = "docker-machine";
     String _oS = DockerUtil.getOS();
@@ -54,6 +57,9 @@ public class DockerUtil {
     return command;
   }
   
+  /**
+   * Parse String to Json data.
+   */
   public static JsonNode jsonify(final String jsonString) {
     try {
       if (((!Objects.equal(jsonString, null)) || Objects.equal(jsonString, ""))) {
@@ -69,6 +75,9 @@ public class DockerUtil {
     }
   }
   
+  /**
+   * Parse `docker-machine ls` host from the running environment.
+   */
   public static Map<String, String> getHosts() {
     Runtime _runtime = Runtime.getRuntime();
     final String data = DockerMachineManager.listHostCmd(_runtime);
@@ -110,6 +119,9 @@ public class DockerUtil {
     return hosts;
   }
   
+  /**
+   * Get all existing hosts.
+   */
   public static String getActiveHost() {
     final Map<String, String> hosts = DockerUtil.getHosts();
     Set<Map.Entry<String, String>> _entrySet = hosts.entrySet();
@@ -131,6 +143,9 @@ public class DockerUtil {
     return null;
   }
   
+  /**
+   * Get all active hosts.
+   */
   public static Map<String, String> getActiveHosts() {
     Map<String, String> hosts = new HashMap<String, String>();
     Map<String, String> _hosts = DockerUtil.getHosts();
@@ -147,6 +162,9 @@ public class DockerUtil {
     return hosts;
   }
   
+  /**
+   * Parse `docker-machine ls` command as table.
+   */
   public static String getEnv(final String machineName) {
     Runtime _runtime = Runtime.getRuntime();
     final String data = DockerMachineManager.getEnvCmd(_runtime, machineName);
@@ -171,6 +189,9 @@ public class DockerUtil {
     return null;
   }
   
+  /**
+   * Delete a model.
+   */
   public boolean deleteAllOldModels() {
     boolean _xblockexpression = false;
     {
@@ -185,6 +206,9 @@ public class DockerUtil {
     return _xblockexpression;
   }
   
+  /**
+   * Transform InputStream into String.
+   */
   public static String asString(final InputStream response) {
     final StringWriter logwriter = new StringWriter();
     try {
@@ -214,6 +238,9 @@ public class DockerUtil {
     }
   }
   
+  /**
+   * Parse String in order to detect if it is Integer.
+   */
   public static boolean isInteger(final String value) {
     try {
       Integer.parseInt(value);
@@ -228,6 +255,9 @@ public class DockerUtil {
     return true;
   }
   
+  /**
+   * Get the OS.
+   */
   public static boolean isWindows() {
     int _indexOf = DockerUtil.OS.indexOf("win");
     return (_indexOf >= 0);

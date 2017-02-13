@@ -54,34 +54,13 @@ public class Machine_Microsoft_Hyper_VItemProvider extends MachineItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addBoot2docker_locationPropertyDescriptor(object);
+			addVirtual_switchPropertyDescriptor(object);
 			addBoot2docker_urlPropertyDescriptor(object);
 			addDisk_sizePropertyDescriptor(object);
-			addVirtual_switchPropertyDescriptor(object);
+			addStatic_macaddressPropertyDescriptor(object);
+			addVlan_idPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Boot2docker location feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addBoot2docker_locationPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Machine_Microsoft_Hyper_V_boot2docker_location_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_Microsoft_Hyper_V_boot2docker_location_feature", "_UI_Machine_Microsoft_Hyper_V_type"),
-				 DockerPackage.Literals.MACHINE_MICROSOFT_HYPER_V__BOOT2DOCKER_LOCATION,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
 	}
 
 	/**
@@ -124,6 +103,50 @@ public class Machine_Microsoft_Hyper_VItemProvider extends MachineItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Static macaddress feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addStatic_macaddressPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_Microsoft_Hyper_V_static_macaddress_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_Microsoft_Hyper_V_static_macaddress_feature", "_UI_Machine_Microsoft_Hyper_V_type"),
+				 DockerPackage.Literals.MACHINE_MICROSOFT_HYPER_V__STATIC_MACADDRESS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Vlan id feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addVlan_idPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_Microsoft_Hyper_V_vlan_id_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_Microsoft_Hyper_V_vlan_id_feature", "_UI_Machine_Microsoft_Hyper_V_type"),
+				 DockerPackage.Literals.MACHINE_MICROSOFT_HYPER_V__VLAN_ID,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -188,10 +211,11 @@ public class Machine_Microsoft_Hyper_VItemProvider extends MachineItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Machine_Microsoft_Hyper_V.class)) {
-			case DockerPackage.MACHINE_MICROSOFT_HYPER_V__BOOT2DOCKER_LOCATION:
+			case DockerPackage.MACHINE_MICROSOFT_HYPER_V__VIRTUAL_SWITCH:
 			case DockerPackage.MACHINE_MICROSOFT_HYPER_V__BOOT2DOCKER_URL:
 			case DockerPackage.MACHINE_MICROSOFT_HYPER_V__DISK_SIZE:
-			case DockerPackage.MACHINE_MICROSOFT_HYPER_V__VIRTUAL_SWITCH:
+			case DockerPackage.MACHINE_MICROSOFT_HYPER_V__STATIC_MACADDRESS:
+			case DockerPackage.MACHINE_MICROSOFT_HYPER_V__VLAN_ID:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

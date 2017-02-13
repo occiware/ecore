@@ -22,6 +22,7 @@ import org.occiware.clouddesigner.occi.Resource;
 import org.occiware.clouddesigner.occi.docker.*;
 
 import org.occiware.clouddesigner.occi.infrastructure.Compute;
+import org.occiware.clouddesigner.occi.infrastructure.Storage;
 
 /**
  * <!-- begin-user-doc -->
@@ -131,12 +132,31 @@ public class DockerSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case DockerPackage.VOLUME: {
+				Volume volume = (Volume)theEObject;
+				T result = caseVolume(volume);
+				if (result == null) result = caseStorage(volume);
+				if (result == null) result = caseResource(volume);
+				if (result == null) result = caseEntity(volume);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case DockerPackage.NETWORK: {
 				Network network = (Network)theEObject;
 				T result = caseNetwork(network);
 				if (result == null) result = caseInfrastructure_Network(network);
 				if (result == null) result = caseResource(network);
 				if (result == null) result = caseEntity(network);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DockerPackage.MACHINE_GENERIC: {
+				Machine_Generic machine_Generic = (Machine_Generic)theEObject;
+				T result = caseMachine_Generic(machine_Generic);
+				if (result == null) result = caseMachine(machine_Generic);
+				if (result == null) result = caseCompute(machine_Generic);
+				if (result == null) result = caseResource(machine_Generic);
+				if (result == null) result = caseEntity(machine_Generic);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -260,6 +280,35 @@ public class DockerSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case DockerPackage.MACHINE_EXOSCALE: {
+				Machine_Exoscale machine_Exoscale = (Machine_Exoscale)theEObject;
+				T result = caseMachine_Exoscale(machine_Exoscale);
+				if (result == null) result = caseMachine(machine_Exoscale);
+				if (result == null) result = caseCompute(machine_Exoscale);
+				if (result == null) result = caseResource(machine_Exoscale);
+				if (result == null) result = caseEntity(machine_Exoscale);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DockerPackage.MACHINE_GRID5000: {
+				Machine_Grid5000 machine_Grid5000 = (Machine_Grid5000)theEObject;
+				T result = caseMachine_Grid5000(machine_Grid5000);
+				if (result == null) result = caseMachine(machine_Grid5000);
+				if (result == null) result = caseCompute(machine_Grid5000);
+				if (result == null) result = caseResource(machine_Grid5000);
+				if (result == null) result = caseEntity(machine_Grid5000);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DockerPackage.CLUSTER: {
+				Cluster cluster = (Cluster)theEObject;
+				T result = caseCluster(cluster);
+				if (result == null) result = caseCompute(cluster);
+				if (result == null) result = caseResource(cluster);
+				if (result == null) result = caseEntity(cluster);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -355,6 +404,21 @@ public class DockerSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Volume</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Volume</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseVolume(Volume object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Network</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -366,6 +430,21 @@ public class DockerSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseNetwork(Network object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Machine Generic</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Machine Generic</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMachine_Generic(Machine_Generic object) {
 		return null;
 	}
 
@@ -550,6 +629,51 @@ public class DockerSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Machine Exoscale</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Machine Exoscale</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMachine_Exoscale(Machine_Exoscale object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Cluster</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Cluster</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCluster(Cluster object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Machine Grid5000</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Machine Grid5000</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMachine_Grid5000(Machine_Grid5000 object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Entity</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -606,6 +730,21 @@ public class DockerSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseOCCI_Link(org.occiware.clouddesigner.occi.Link object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Storage</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Storage</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseStorage(Storage object) {
 		return null;
 	}
 

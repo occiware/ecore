@@ -36,6 +36,7 @@ import org.occiware.clouddesigner.occi.docker.Machine_Rackspace;
  *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.Machine_RackspaceImpl#getFlavor_id <em>Flavor id</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.Machine_RackspaceImpl#getSsh_user <em>Ssh user</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.Machine_RackspaceImpl#getSsh_port <em>Ssh port</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.impl.Machine_RackspaceImpl#isDocker_install <em>Docker install</em>}</li>
  * </ul>
  *
  * @generated
@@ -129,7 +130,7 @@ public class Machine_RackspaceImpl extends MachineImpl implements Machine_Racksp
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String IMAGE_ID_EDEFAULT = "Ubuntu 14.10 (Utopic Unicorn) (PVHVM)";
+	protected static final String IMAGE_ID_EDEFAULT = "59a3fadd-93e7-4674-886a-64883e17115f";
 
 	/**
 	 * The cached value of the '{@link #getImage_id() <em>Image id</em>}' attribute.
@@ -149,7 +150,7 @@ public class Machine_RackspaceImpl extends MachineImpl implements Machine_Racksp
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String FLAVOR_ID_EDEFAULT = "General Purpose 1GB";
+	protected static final String FLAVOR_ID_EDEFAULT = "general1-1";
 
 	/**
 	 * The cached value of the '{@link #getFlavor_id() <em>Flavor id</em>}' attribute.
@@ -200,6 +201,26 @@ public class Machine_RackspaceImpl extends MachineImpl implements Machine_Racksp
 	 * @ordered
 	 */
 	protected int ssh_port = SSH_PORT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isDocker_install() <em>Docker install</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isDocker_install()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean DOCKER_INSTALL_EDEFAULT = true;
+
+	/**
+	 * The cached value of the '{@link #isDocker_install() <em>Docker install</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isDocker_install()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean docker_install = DOCKER_INSTALL_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -393,6 +414,27 @@ public class Machine_RackspaceImpl extends MachineImpl implements Machine_Racksp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isDocker_install() {
+		return docker_install;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDocker_install(boolean newDocker_install) {
+		boolean oldDocker_install = docker_install;
+		docker_install = newDocker_install;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.MACHINE_RACKSPACE__DOCKER_INSTALL, oldDocker_install, docker_install));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -412,6 +454,8 @@ public class Machine_RackspaceImpl extends MachineImpl implements Machine_Racksp
 				return getSsh_user();
 			case DockerPackage.MACHINE_RACKSPACE__SSH_PORT:
 				return getSsh_port();
+			case DockerPackage.MACHINE_RACKSPACE__DOCKER_INSTALL:
+				return isDocker_install();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -447,6 +491,9 @@ public class Machine_RackspaceImpl extends MachineImpl implements Machine_Racksp
 				return;
 			case DockerPackage.MACHINE_RACKSPACE__SSH_PORT:
 				setSsh_port((Integer)newValue);
+				return;
+			case DockerPackage.MACHINE_RACKSPACE__DOCKER_INSTALL:
+				setDocker_install((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -484,6 +531,9 @@ public class Machine_RackspaceImpl extends MachineImpl implements Machine_Racksp
 			case DockerPackage.MACHINE_RACKSPACE__SSH_PORT:
 				setSsh_port(SSH_PORT_EDEFAULT);
 				return;
+			case DockerPackage.MACHINE_RACKSPACE__DOCKER_INSTALL:
+				setDocker_install(DOCKER_INSTALL_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -512,6 +562,8 @@ public class Machine_RackspaceImpl extends MachineImpl implements Machine_Racksp
 				return SSH_USER_EDEFAULT == null ? ssh_user != null : !SSH_USER_EDEFAULT.equals(ssh_user);
 			case DockerPackage.MACHINE_RACKSPACE__SSH_PORT:
 				return ssh_port != SSH_PORT_EDEFAULT;
+			case DockerPackage.MACHINE_RACKSPACE__DOCKER_INSTALL:
+				return docker_install != DOCKER_INSTALL_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -542,6 +594,8 @@ public class Machine_RackspaceImpl extends MachineImpl implements Machine_Racksp
 		result.append(ssh_user);
 		result.append(", ssh_port: ");
 		result.append(ssh_port);
+		result.append(", docker_install: ");
+		result.append(docker_install);
 		result.append(')');
 		return result.toString();
 	}

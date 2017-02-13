@@ -21,10 +21,11 @@ package org.occiware.clouddesigner.occi.docker;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Hyper_V#getBoot2docker_location <em>Boot2docker location</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Hyper_V#getVirtual_switch <em>Virtual switch</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Hyper_V#getBoot2docker_url <em>Boot2docker url</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Hyper_V#getDisk_size <em>Disk size</em>}</li>
- *   <li>{@link org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Hyper_V#getVirtual_switch <em>Virtual switch</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Hyper_V#getStatic_macaddress <em>Static macaddress</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Hyper_V#getVlan_id <em>Vlan id</em>}</li>
  * </ul>
  *
  * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Microsoft_Hyper_V()
@@ -32,33 +33,6 @@ package org.occiware.clouddesigner.occi.docker;
  * @generated
  */
 public interface Machine_Microsoft_Hyper_V extends Machine {
-	/**
-	 * Returns the value of the '<em><b>Boot2docker location</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Boot2docker location</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Boot2docker location</em>' attribute.
-	 * @see #setBoot2docker_location(String)
-	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Microsoft_Hyper_V_Boot2docker_location()
-	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Location of a local boot2docker iso to use. Overrides the URL option below'"
-	 * @generated
-	 */
-	String getBoot2docker_location();
-
-	/**
-	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Hyper_V#getBoot2docker_location <em>Boot2docker location</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Boot2docker location</em>' attribute.
-	 * @see #getBoot2docker_location()
-	 * @generated
-	 */
-	void setBoot2docker_location(String value);
-
 	/**
 	 * Returns the value of the '<em><b>Boot2docker url</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -115,6 +89,60 @@ public interface Machine_Microsoft_Hyper_V extends Machine {
 	void setDisk_size(int value);
 
 	/**
+	 * Returns the value of the '<em><b>Static macaddress</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Static macaddress</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Static macaddress</em>' attribute.
+	 * @see #setStatic_macaddress(String)
+	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Microsoft_Hyper_V_Static_macaddress()
+	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='Hyper-V network adapter\u2019s static MAC address.'"
+	 * @generated
+	 */
+	String getStatic_macaddress();
+
+	/**
+	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Hyper_V#getStatic_macaddress <em>Static macaddress</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Static macaddress</em>' attribute.
+	 * @see #getStatic_macaddress()
+	 * @generated
+	 */
+	void setStatic_macaddress(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Vlan id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Vlan id</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Vlan id</em>' attribute.
+	 * @see #setVlan_id(String)
+	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Microsoft_Hyper_V_Vlan_id()
+	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='Hyper-V network adapter\u2019s VLAN ID if any.'"
+	 * @generated
+	 */
+	String getVlan_id();
+
+	/**
+	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Hyper_V#getVlan_id <em>Vlan id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Vlan id</em>' attribute.
+	 * @see #getVlan_id()
+	 * @generated
+	 */
+	void setVlan_id(String value);
+
+	/**
 	 * Returns the value of the '<em><b>Virtual switch</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -126,7 +154,7 @@ public interface Machine_Microsoft_Hyper_V extends Machine {
 	 * @see #setVirtual_switch(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Microsoft_Hyper_V_Virtual_switch()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Name of the virtual switch to use. Defaults to first found'"
+	 *        annotation="OCCIE2Ecore description='Name of the virtual switch to use.'"
 	 * @generated
 	 */
 	String getVirtual_switch();

@@ -24,6 +24,7 @@ import org.occiware.clouddesigner.occi.Resource;
 import org.occiware.clouddesigner.occi.docker.*;
 
 import org.occiware.clouddesigner.occi.infrastructure.Compute;
+import org.occiware.clouddesigner.occi.infrastructure.Storage;
 
 /**
  * <!-- begin-user-doc -->
@@ -106,8 +107,16 @@ public class DockerAdapterFactory extends AdapterFactoryImpl {
 				return createMachineAdapter();
 			}
 			@Override
+			public Adapter caseVolume(Volume object) {
+				return createVolumeAdapter();
+			}
+			@Override
 			public Adapter caseNetwork(Network object) {
 				return createNetworkAdapter();
+			}
+			@Override
+			public Adapter caseMachine_Generic(Machine_Generic object) {
+				return createMachine_GenericAdapter();
 			}
 			@Override
 			public Adapter caseMachine_Amazon_EC2(Machine_Amazon_EC2 object) {
@@ -158,6 +167,18 @@ public class DockerAdapterFactory extends AdapterFactoryImpl {
 				return createMachine_VMware_vSphereAdapter();
 			}
 			@Override
+			public Adapter caseMachine_Exoscale(Machine_Exoscale object) {
+				return createMachine_ExoscaleAdapter();
+			}
+			@Override
+			public Adapter caseMachine_Grid5000(Machine_Grid5000 object) {
+				return createMachine_Grid5000Adapter();
+			}
+			@Override
+			public Adapter caseCluster(Cluster object) {
+				return createClusterAdapter();
+			}
+			@Override
 			public Adapter caseEntity(Entity object) {
 				return createEntityAdapter();
 			}
@@ -172,6 +193,10 @@ public class DockerAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseOCCI_Link(org.occiware.clouddesigner.occi.Link object) {
 				return createOCCI_LinkAdapter();
+			}
+			@Override
+			public Adapter caseStorage(Storage object) {
+				return createStorageAdapter();
 			}
 			@Override
 			public Adapter caseInfrastructure_Network(org.occiware.clouddesigner.occi.infrastructure.Network object) {
@@ -282,6 +307,20 @@ public class DockerAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.occiware.clouddesigner.occi.docker.Volume <em>Volume</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.occiware.clouddesigner.occi.docker.Volume
+	 * @generated
+	 */
+	public Adapter createVolumeAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.occiware.clouddesigner.occi.docker.Network <em>Network</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -292,6 +331,20 @@ public class DockerAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createNetworkAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.occiware.clouddesigner.occi.docker.Machine_Generic <em>Machine Generic</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Generic
+	 * @generated
+	 */
+	public Adapter createMachine_GenericAdapter() {
 		return null;
 	}
 
@@ -464,6 +517,48 @@ public class DockerAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.occiware.clouddesigner.occi.docker.Machine_Exoscale <em>Machine Exoscale</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Exoscale
+	 * @generated
+	 */
+	public Adapter createMachine_ExoscaleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.occiware.clouddesigner.occi.docker.Cluster <em>Cluster</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.occiware.clouddesigner.occi.docker.Cluster
+	 * @generated
+	 */
+	public Adapter createClusterAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.occiware.clouddesigner.occi.docker.Machine_Grid5000 <em>Machine Grid5000</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Grid5000
+	 * @generated
+	 */
+	public Adapter createMachine_Grid5000Adapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.occiware.clouddesigner.occi.Entity <em>Entity</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -516,6 +611,20 @@ public class DockerAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createOCCI_LinkAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.occiware.clouddesigner.occi.infrastructure.Storage <em>Storage</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.occiware.clouddesigner.occi.infrastructure.Storage
+	 * @generated
+	 */
+	public Adapter createStorageAdapter() {
 		return null;
 	}
 

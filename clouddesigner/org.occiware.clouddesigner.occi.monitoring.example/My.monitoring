@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ASCII"?>
+<occi:Configuration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:monitoring="http://schemas.ogf.org/occi/monitoring/ecore" xmlns:occi="http://schemas.ogf.org/occi/core/ecore">
+  <use href="http://schemas.ogf.org/occi/core#/"/>
+  <use href="http://schemas.ogf.org/occi/monitoring#/"/>
+  <resources xsi:type="monitoring:Sensor" id="8c57cee8-d048-4117-8ef0-2a10020d6d55" title="sensor1">
+    <kind href="http://schemas.ogf.org/occi/monitoring#//@kinds[term='sensor']"/>
+    <attributes name="occi.core.id" value="8c57cee8-d048-4117-8ef0-2a10020d6d55"/>
+    <attributes name="occi.core.title" value="sensor1"/>
+  </resources>
+  <resources xsi:type="monitoring:Sensor" id="8737de6f-1b33-4fb3-9367-86ebacd0e24e" title="sensor2">
+    <kind href="http://schemas.ogf.org/occi/monitoring#//@kinds[term='sensor']"/>
+    <attributes name="occi.core.id" value="8737de6f-1b33-4fb3-9367-86ebacd0e24e"/>
+    <attributes name="occi.core.title" value="sensor2"/>
+  </resources>
+  <resources xsi:type="monitoring:Sensor" id="8c7a8c91-7cb1-4920-a8d4-2f6b87d43d02" title="sensor3">
+    <kind href="http://schemas.ogf.org/occi/monitoring#//@kinds[term='sensor']"/>
+    <attributes name="occi.core.id" value="8c7a8c91-7cb1-4920-a8d4-2f6b87d43d02"/>
+    <attributes name="occi.core.title" value="sensor3"/>
+  </resources>
+</occi:Configuration>

@@ -72,6 +72,10 @@ public class ExecutableMachine_Rackspace extends Machine_RackspaceImpl {
         StringBuilder _append_6 = sb.append(" --rackspace-flavor-id ");
         _append_6.append(ExecutableMachine_Rackspace.this.flavor_id);
       }
+      if ((!ExecutableMachine_Rackspace.this.docker_install)) {
+        StringBuilder _append_7 = sb.append(" --rackspace-docker-install ");
+        _append_7.append(ExecutableMachine_Rackspace.this.docker_install);
+      }
     }
   };
   

@@ -65,6 +65,8 @@ public class Machine_IBM_SoftLayerItemProvider extends MachineItemProvider {
 			addLocal_diskPropertyDescriptor(object);
 			addPrivate_net_onlyPropertyDescriptor(object);
 			addRegionPropertyDescriptor(object);
+			addPublic_vlan_idPropertyDescriptor(object);
+			addPrivate_vlan_idPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -312,6 +314,50 @@ public class Machine_IBM_SoftLayerItemProvider extends MachineItemProvider {
 	}
 
 	/**
+	 * This adds a property descriptor for the Public vlan id feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addPublic_vlan_idPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_IBM_SoftLayer_public_vlan_id_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_IBM_SoftLayer_public_vlan_id_feature", "_UI_Machine_IBM_SoftLayer_type"),
+				 DockerPackage.Literals.MACHINE_IBM_SOFT_LAYER__PUBLIC_VLAN_ID,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Private vlan id feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addPrivate_vlan_idPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_IBM_SoftLayer_private_vlan_id_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_IBM_SoftLayer_private_vlan_id_feature", "_UI_Machine_IBM_SoftLayer_type"),
+				 DockerPackage.Literals.MACHINE_IBM_SOFT_LAYER__PRIVATE_VLAN_ID,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns Machine_IBM_SoftLayer.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -360,6 +406,8 @@ public class Machine_IBM_SoftLayerItemProvider extends MachineItemProvider {
 			case DockerPackage.MACHINE_IBM_SOFT_LAYER__LOCAL_DISK:
 			case DockerPackage.MACHINE_IBM_SOFT_LAYER__PRIVATE_NET_ONLY:
 			case DockerPackage.MACHINE_IBM_SOFT_LAYER__REGION:
+			case DockerPackage.MACHINE_IBM_SOFT_LAYER__PUBLIC_VLAN_ID:
+			case DockerPackage.MACHINE_IBM_SOFT_LAYER__PRIVATE_VLAN_ID:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

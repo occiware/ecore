@@ -11,6 +11,7 @@
  */
 package org.occiware.clouddesigner.occi.docker.connector;
 
+import org.apache.commons.lang.StringUtils;
 import org.occiware.clouddesigner.occi.docker.connector.MachineManager;
 import org.occiware.clouddesigner.occi.docker.impl.Machine_Microsoft_Hyper_VImpl;
 import org.occiware.clouddesigner.occi.infrastructure.RestartMethod;
@@ -33,7 +34,39 @@ public class ExecutableMachine_Microsoft_Hyper_V extends Machine_Microsoft_Hyper
     
     @Override
     public void appendDriverParameters(final StringBuilder sb) {
-      throw new UnsupportedOperationException();
+      boolean _isNotBlank = StringUtils.isNotBlank(ExecutableMachine_Microsoft_Hyper_V.this.virtual_switch);
+      if (_isNotBlank) {
+        StringBuilder _append = sb.append(" --hyperv-virtual-switch ");
+        _append.append(ExecutableMachine_Microsoft_Hyper_V.this.virtual_switch);
+      }
+      String _string = Integer.valueOf(ExecutableMachine_Microsoft_Hyper_V.this.disk_size).toString();
+      boolean _isNotBlank_1 = StringUtils.isNotBlank(_string);
+      if (_isNotBlank_1) {
+        StringBuilder _append_1 = sb.append(" --hyperv-disk-size ");
+        _append_1.append(ExecutableMachine_Microsoft_Hyper_V.this.disk_size);
+      }
+      String _string_1 = Float.valueOf(ExecutableMachine_Microsoft_Hyper_V.this.memory).toString();
+      boolean _isNotBlank_2 = StringUtils.isNotBlank(_string_1);
+      if (_isNotBlank_2) {
+        StringBuilder _append_2 = sb.append(" --hyperv-memory ");
+        _append_2.append(ExecutableMachine_Microsoft_Hyper_V.this.memory);
+      }
+      String _string_2 = Integer.valueOf(ExecutableMachine_Microsoft_Hyper_V.this.cores).toString();
+      boolean _isNotBlank_3 = StringUtils.isNotBlank(_string_2);
+      if (_isNotBlank_3) {
+        StringBuilder _append_3 = sb.append(" --hyperv-cpu-count ");
+        _append_3.append(ExecutableMachine_Microsoft_Hyper_V.this.cores);
+      }
+      boolean _isNotBlank_4 = StringUtils.isNotBlank(ExecutableMachine_Microsoft_Hyper_V.this.static_macaddress);
+      if (_isNotBlank_4) {
+        StringBuilder _append_4 = sb.append(" --hyperv-static-macaddress ");
+        _append_4.append(ExecutableMachine_Microsoft_Hyper_V.this.static_macaddress);
+      }
+      boolean _isNotBlank_5 = StringUtils.isNotBlank(ExecutableMachine_Microsoft_Hyper_V.this.vlan_id);
+      if (_isNotBlank_5) {
+        StringBuilder _append_5 = sb.append(" --hyperv-vlan-id ");
+        _append_5.append(ExecutableMachine_Microsoft_Hyper_V.this.vlan_id);
+      }
     }
   };
   

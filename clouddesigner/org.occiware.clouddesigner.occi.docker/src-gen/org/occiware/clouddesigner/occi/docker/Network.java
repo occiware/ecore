@@ -38,7 +38,7 @@ import org.occiware.clouddesigner.occi.Link;
  * </ul>
  *
  * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getNetwork()
- * @model annotation="OCCIE2Ecore title='null'"
+ * @model annotation="OCCIE2Ecore title='Network resource'"
  * @generated
  */
 public interface Network extends org.occiware.clouddesigner.occi.infrastructure.Network {
@@ -296,7 +296,8 @@ public interface Network extends org.occiware.clouddesigner.occi.infrastructure.
 	 * @return the value of the '<em>Opt</em>' attribute.
 	 * @see #setOpt(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getNetwork_Opt()
-	 * @model annotation="OCCIE2Ecore description='Set driver specific options (default map[])'"
+	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='Set driver specific options (default map[])'"
 	 * @generated
 	 */
 	String getOpt();
@@ -350,7 +351,7 @@ public interface Network extends org.occiware.clouddesigner.occi.infrastructure.
 	 * @see #setName(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getNetwork_Name()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='null'"
+	 *        annotation="OCCIE2Ecore description='The network name'"
 	 * @generated
 	 */
 	String getName();

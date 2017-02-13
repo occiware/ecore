@@ -85,6 +85,15 @@ public interface DockerFactory extends EFactory {
 	Machine createMachine();
 
 	/**
+	 * Returns a new object of class '<em>Volume</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Volume</em>'.
+	 * @generated
+	 */
+	Volume createVolume();
+
+	/**
 	 * Returns a new object of class '<em>Network</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -92,6 +101,15 @@ public interface DockerFactory extends EFactory {
 	 * @generated
 	 */
 	Network createNetwork();
+
+	/**
+	 * Returns a new object of class '<em>Machine Generic</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Machine Generic</em>'.
+	 * @generated
+	 */
+	Machine_Generic createMachine_Generic();
 
 	/**
 	 * Returns a new object of class '<em>Machine Amazon EC2</em>'.
@@ -200,6 +218,33 @@ public interface DockerFactory extends EFactory {
 	 * @generated
 	 */
 	Machine_VMware_vSphere createMachine_VMware_vSphere();
+
+	/**
+	 * Returns a new object of class '<em>Machine Exoscale</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Machine Exoscale</em>'.
+	 * @generated
+	 */
+	Machine_Exoscale createMachine_Exoscale();
+
+	/**
+	 * Returns a new object of class '<em>Cluster</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Cluster</em>'.
+	 * @generated
+	 */
+	Cluster createCluster();
+
+	/**
+	 * Returns a new object of class '<em>Machine Grid5000</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Machine Grid5000</em>'.
+	 * @generated
+	 */
+	Machine_Grid5000 createMachine_Grid5000();
 
 	/**
 	 * Returns the package supported by this factory.

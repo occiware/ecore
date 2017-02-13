@@ -239,7 +239,7 @@ litigation.
          version="0.0.0"
          unpack="false"/>
 
-    <plugin
+   <plugin
          id="org.occiware.clouddesigner.occi.gen.connector"
          download-size="0"
          install-size="0"
@@ -252,7 +252,7 @@ litigation.
          install-size="0"
          version="0.0.0"
          unpack="false"/>
- 
+
    <plugin
          id="org.occiware.clouddesigner.occi.gen.curl"
          download-size="0"
@@ -366,6 +366,13 @@ litigation.
          unpack="false"/>
 
    <plugin
+         id="org.occiware.clouddesigner.occi.sla"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
          id="org.occiware.clouddesigner.occi.monitoring"
          download-size="0"
          install-size="0"
@@ -462,5 +469,23 @@ litigation.
          install-size="0"
          version="0.0.0"
          unpack="false"/>
+
+   <plugin
+         id="org.occiware.clouddesigner.occi.examples"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.occiware.clouddesigner.occi.infrastructure.example"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.occiware.clouddesigner.occi.monitoring.example"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
 
 </feature>

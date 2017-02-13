@@ -219,6 +219,29 @@ public class DockerItemProviderAdapterFactory extends DockerAdapterFactory imple
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.occiware.clouddesigner.occi.docker.Volume} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected VolumeItemProvider volumeItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.occiware.clouddesigner.occi.docker.Volume}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createVolumeAdapter() {
+		if (volumeItemProvider == null) {
+			volumeItemProvider = new VolumeItemProvider(this);
+		}
+
+		return volumeItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.occiware.clouddesigner.occi.docker.Network} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -239,6 +262,29 @@ public class DockerItemProviderAdapterFactory extends DockerAdapterFactory imple
 		}
 
 		return networkItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.occiware.clouddesigner.occi.docker.Machine_Generic} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected Machine_GenericItemProvider machine_GenericItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.occiware.clouddesigner.occi.docker.Machine_Generic}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createMachine_GenericAdapter() {
+		if (machine_GenericItemProvider == null) {
+			machine_GenericItemProvider = new Machine_GenericItemProvider(this);
+		}
+
+		return machine_GenericItemProvider;
 	}
 
 	/**
@@ -518,6 +564,75 @@ public class DockerItemProviderAdapterFactory extends DockerAdapterFactory imple
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.occiware.clouddesigner.occi.docker.Machine_Exoscale} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected Machine_ExoscaleItemProvider machine_ExoscaleItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.occiware.clouddesigner.occi.docker.Machine_Exoscale}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createMachine_ExoscaleAdapter() {
+		if (machine_ExoscaleItemProvider == null) {
+			machine_ExoscaleItemProvider = new Machine_ExoscaleItemProvider(this);
+		}
+
+		return machine_ExoscaleItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.occiware.clouddesigner.occi.docker.Machine_Grid5000} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected Machine_Grid5000ItemProvider machine_Grid5000ItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.occiware.clouddesigner.occi.docker.Machine_Grid5000}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createMachine_Grid5000Adapter() {
+		if (machine_Grid5000ItemProvider == null) {
+			machine_Grid5000ItemProvider = new Machine_Grid5000ItemProvider(this);
+		}
+
+		return machine_Grid5000ItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.occiware.clouddesigner.occi.docker.Cluster} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ClusterItemProvider clusterItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.occiware.clouddesigner.occi.docker.Cluster}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createClusterAdapter() {
+		if (clusterItemProvider == null) {
+			clusterItemProvider = new ClusterItemProvider(this);
+		}
+
+		return clusterItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -622,7 +737,9 @@ public class DockerItemProviderAdapterFactory extends DockerAdapterFactory imple
 		if (volumesfromItemProvider != null) volumesfromItemProvider.dispose();
 		if (containsItemProvider != null) containsItemProvider.dispose();
 		if (machineItemProvider != null) machineItemProvider.dispose();
+		if (volumeItemProvider != null) volumeItemProvider.dispose();
 		if (networkItemProvider != null) networkItemProvider.dispose();
+		if (machine_GenericItemProvider != null) machine_GenericItemProvider.dispose();
 		if (machine_Amazon_EC2ItemProvider != null) machine_Amazon_EC2ItemProvider.dispose();
 		if (machine_Digital_OceanItemProvider != null) machine_Digital_OceanItemProvider.dispose();
 		if (machine_Google_Compute_EngineItemProvider != null) machine_Google_Compute_EngineItemProvider.dispose();
@@ -635,6 +752,9 @@ public class DockerItemProviderAdapterFactory extends DockerAdapterFactory imple
 		if (machine_VMware_FusionItemProvider != null) machine_VMware_FusionItemProvider.dispose();
 		if (machine_VMware_vCloud_AirItemProvider != null) machine_VMware_vCloud_AirItemProvider.dispose();
 		if (machine_VMware_vSphereItemProvider != null) machine_VMware_vSphereItemProvider.dispose();
+		if (machine_ExoscaleItemProvider != null) machine_ExoscaleItemProvider.dispose();
+		if (machine_Grid5000ItemProvider != null) machine_Grid5000ItemProvider.dispose();
+		if (clusterItemProvider != null) clusterItemProvider.dispose();
 	}
 
 }

@@ -76,13 +76,32 @@ public class ExecutableMachine_IBM_SoftLayer extends Machine_IBM_SoftLayerImpl {
         StringBuilder _append_8 = sb.append(" --softlayer-image ");
         _append_8.append(ExecutableMachine_IBM_SoftLayer.this.image);
       }
+      boolean _isNotBlank_6 = StringUtils.isNotBlank(ExecutableMachine_IBM_SoftLayer.this.public_vlan_id);
+      if (_isNotBlank_6) {
+        StringBuilder _append_9 = sb.append(" --softlayer-public-vlan-id ");
+        _append_9.append(ExecutableMachine_IBM_SoftLayer.this.public_vlan_id);
+      }
+      boolean _isNotBlank_7 = StringUtils.isNotBlank(ExecutableMachine_IBM_SoftLayer.this.private_vlan_id);
+      if (_isNotBlank_7) {
+        StringBuilder _append_10 = sb.append(" --softlayer-private-vlan-id ");
+        _append_10.append(ExecutableMachine_IBM_SoftLayer.this.private_vlan_id);
+      }
+      boolean _isNotBlank_8 = StringUtils.isNotBlank(ExecutableMachine_IBM_SoftLayer.this.region);
+      if (_isNotBlank_8) {
+        StringBuilder _append_11 = sb.append(" --softlayer-region ");
+        _append_11.append(ExecutableMachine_IBM_SoftLayer.this.region);
+      }
       if (ExecutableMachine_IBM_SoftLayer.this.private_net_only) {
-        StringBuilder _append_9 = sb.append(" --softlayer-private-net-only ");
-        _append_9.append(ExecutableMachine_IBM_SoftLayer.this.private_net_only);
+        StringBuilder _append_12 = sb.append(" --softlayer-private-net-only ");
+        _append_12.append(ExecutableMachine_IBM_SoftLayer.this.private_net_only);
       }
       if (ExecutableMachine_IBM_SoftLayer.this.local_disk) {
-        StringBuilder _append_10 = sb.append(" --softlayer-local-disk ");
-        _append_10.append(ExecutableMachine_IBM_SoftLayer.this.local_disk);
+        StringBuilder _append_13 = sb.append(" --softlayer-local-disk ");
+        _append_13.append(ExecutableMachine_IBM_SoftLayer.this.local_disk);
+      }
+      if (ExecutableMachine_IBM_SoftLayer.this.private_net_only) {
+        StringBuilder _append_14 = sb.append(" --softlayer-private-net-only ");
+        _append_14.append(ExecutableMachine_IBM_SoftLayer.this.private_net_only);
       }
     }
   };

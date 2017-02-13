@@ -29,6 +29,7 @@ package org.occiware.clouddesigner.occi.docker;
  *   <li>{@link org.occiware.clouddesigner.occi.docker.Machine_Rackspace#getFlavor_id <em>Flavor id</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.docker.Machine_Rackspace#getSsh_user <em>Ssh user</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.docker.Machine_Rackspace#getSsh_port <em>Ssh port</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.Machine_Rackspace#isDocker_install <em>Docker install</em>}</li>
  * </ul>
  *
  * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Rackspace()
@@ -147,7 +148,7 @@ public interface Machine_Rackspace extends Machine {
 
 	/**
 	 * Returns the value of the '<em><b>Image id</b></em>' attribute.
-	 * The default value is <code>"Ubuntu 14.10 (Utopic Unicorn) (PVHVM)"</code>.
+	 * The default value is <code>"59a3fadd-93e7-4674-886a-64883e17115f"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Image id</em>' attribute isn't clear,
@@ -157,7 +158,7 @@ public interface Machine_Rackspace extends Machine {
 	 * @return the value of the '<em>Image id</em>' attribute.
 	 * @see #setImage_id(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Rackspace_Image_id()
-	 * @model default="Ubuntu 14.10 (Utopic Unicorn) (PVHVM)" dataType="org.occiware.clouddesigner.occi.String"
+	 * @model default="59a3fadd-93e7-4674-886a-64883e17115f" dataType="org.occiware.clouddesigner.occi.String"
 	 *        annotation="OCCIE2Ecore description='Rackspace image ID '"
 	 * @generated
 	 */
@@ -175,7 +176,7 @@ public interface Machine_Rackspace extends Machine {
 
 	/**
 	 * Returns the value of the '<em><b>Flavor id</b></em>' attribute.
-	 * The default value is <code>"General Purpose 1GB"</code>.
+	 * The default value is <code>"general1-1"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Flavor id</em>' attribute isn't clear,
@@ -185,7 +186,7 @@ public interface Machine_Rackspace extends Machine {
 	 * @return the value of the '<em>Flavor id</em>' attribute.
 	 * @see #setFlavor_id(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Rackspace_Flavor_id()
-	 * @model default="General Purpose 1GB" dataType="org.occiware.clouddesigner.occi.String"
+	 * @model default="general1-1" dataType="org.occiware.clouddesigner.occi.String"
 	 *        annotation="OCCIE2Ecore description='Rackspace flavor ID'"
 	 * @generated
 	 */
@@ -256,5 +257,33 @@ public interface Machine_Rackspace extends Machine {
 	 * @generated
 	 */
 	void setSsh_port(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Docker install</b></em>' attribute.
+	 * The default value is <code>"true"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Docker install</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Docker install</em>' attribute.
+	 * @see #setDocker_install(boolean)
+	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Rackspace_Docker_install()
+	 * @model default="true" dataType="org.occiware.clouddesigner.occi.Boolean"
+	 *        annotation="OCCIE2Ecore description='Set if Docker has to be installed on the machine.'"
+	 * @generated
+	 */
+	boolean isDocker_install();
+
+	/**
+	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.docker.Machine_Rackspace#isDocker_install <em>Docker install</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Docker install</em>' attribute.
+	 * @see #isDocker_install()
+	 * @generated
+	 */
+	void setDocker_install(boolean value);
 
 } // Machine_Rackspace

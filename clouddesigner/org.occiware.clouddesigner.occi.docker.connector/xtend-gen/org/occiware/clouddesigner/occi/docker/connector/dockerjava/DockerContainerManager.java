@@ -29,12 +29,14 @@ import com.github.dockerjava.api.command.StatsCmd;
 import com.github.dockerjava.api.command.StopContainerCmd;
 import com.github.dockerjava.api.command.WaitContainerCmd;
 import com.github.dockerjava.api.exception.InternalServerErrorException;
+import com.github.dockerjava.api.model.Bind;
 import com.github.dockerjava.api.model.ExposedPort;
 import com.github.dockerjava.api.model.Link;
 import com.github.dockerjava.api.model.LxcConf;
 import com.github.dockerjava.api.model.Ports;
 import com.github.dockerjava.api.model.RestartPolicy;
 import com.github.dockerjava.api.model.Volume;
+import com.github.dockerjava.api.model.VolumesFrom;
 import com.github.dockerjava.core.DefaultDockerClientConfig;
 import com.github.dockerjava.core.DockerClientBuilder;
 import com.github.dockerjava.core.DockerClientConfig;
@@ -64,15 +66,18 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 import org.apache.commons.lang.StringUtils;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.InputOutput;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.occiware.clouddesigner.occi.Resource;
 import org.occiware.clouddesigner.occi.docker.Container;
 import org.occiware.clouddesigner.occi.docker.Machine;
 import org.occiware.clouddesigner.occi.docker.Network;
 import org.occiware.clouddesigner.occi.docker.NetworkLink;
+import org.occiware.clouddesigner.occi.docker.Volumesfrom;
 import org.occiware.clouddesigner.occi.docker.connector.EventCallBack;
 import org.occiware.clouddesigner.occi.docker.connector.StatsCallback;
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerMachineManager;
@@ -480,8 +485,16 @@ public class DockerContainerManager {
     boolean _isNotBlank_12 = StringUtils.isNotBlank(_volumes);
     if (_isNotBlank_12) {
       String _volumes_1 = container.getVolumes();
-      Volume _volume = new Volume(_volumes_1);
-      create.withVolumes(_volume);
+      String _deleteWhitespace_7 = StringUtils.deleteWhitespace(_volumes_1);
+      String[] volumes = _deleteWhitespace_7.split(",");
+      List<Volume> vs = new ArrayList<Volume>();
+      for (final String v : volumes) {
+        {
+          Volume newVolume = new Volume(v);
+          vs.add(newVolume);
+        }
+      }
+      create.withVolumes(vs);
     }
     int _mem_limit = container.getMem_limit();
     boolean _greaterThan_1 = (_mem_limit > 0);
@@ -527,15 +540,15 @@ public class DockerContainerManager {
     boolean _isNotBlank_17 = StringUtils.isNotBlank(_net_2);
     if (_isNotBlank_17) {
       String _net_3 = container.getNet();
-      String _deleteWhitespace_7 = StringUtils.deleteWhitespace(_net_3);
-      create.withNetworkMode(_deleteWhitespace_7);
+      String _deleteWhitespace_8 = StringUtils.deleteWhitespace(_net_3);
+      create.withNetworkMode(_deleteWhitespace_8);
     }
     String _pid = container.getPid();
     boolean _isNotBlank_18 = StringUtils.isNotBlank(_pid);
     if (_isNotBlank_18) {
       String _pid_1 = container.getPid();
-      String _deleteWhitespace_8 = StringUtils.deleteWhitespace(_pid_1);
-      create.withPidMode(_deleteWhitespace_8);
+      String _deleteWhitespace_9 = StringUtils.deleteWhitespace(_pid_1);
+      create.withPidMode(_deleteWhitespace_9);
     }
     boolean _isPrivileged_2 = container.isPrivileged();
     if (_isPrivileged_2) {
@@ -561,17 +574,75 @@ public class DockerContainerManager {
     boolean _isNotBlank_19 = StringUtils.isNotBlank(_restart);
     if (_isNotBlank_19) {
       String _restart_1 = container.getRestart();
-      String _deleteWhitespace_9 = StringUtils.deleteWhitespace(_restart_1);
-      RestartPolicy _parse = RestartPolicy.parse(_deleteWhitespace_9);
+      String _deleteWhitespace_10 = StringUtils.deleteWhitespace(_restart_1);
+      RestartPolicy _parse = RestartPolicy.parse(_deleteWhitespace_10);
       create.withRestartPolicy(_parse);
     }
     String _working_dir = container.getWorking_dir();
     boolean _isNotBlank_20 = StringUtils.isNotBlank(_working_dir);
     if (_isNotBlank_20) {
       String _working_dir_1 = container.getWorking_dir();
-      String _deleteWhitespace_10 = StringUtils.deleteWhitespace(_working_dir_1);
-      create.withWorkingDir(_deleteWhitespace_10);
+      String _deleteWhitespace_11 = StringUtils.deleteWhitespace(_working_dir_1);
+      create.withWorkingDir(_deleteWhitespace_11);
       create.getCpusetCpus();
+    }
+    List<Container> containersWithVolumes = new ArrayList<Container>();
+    List<org.occiware.clouddesigner.occi.docker.Volume> volumesInsideHost = new ArrayList<org.occiware.clouddesigner.occi.docker.Volume>();
+    List<Resource> _containersWithVolumes = this.containersWithVolumes(container);
+    for (final Resource r : _containersWithVolumes) {
+      {
+        if ((r instanceof Container)) {
+          containersWithVolumes.add(((Container) r));
+        }
+        if ((r instanceof org.occiware.clouddesigner.occi.docker.Volume)) {
+          volumesInsideHost.add(((org.occiware.clouddesigner.occi.docker.Volume) r));
+        }
+      }
+    }
+    boolean _isNullOrEmpty = IterableExtensions.isNullOrEmpty(containersWithVolumes);
+    boolean _not = (!_isNullOrEmpty);
+    if (_not) {
+      List<VolumesFrom> volumesFrom = new ArrayList<VolumesFrom>();
+      for (final Container c : containersWithVolumes) {
+        {
+          String _name_2 = c.getName();
+          VolumesFrom _volumesFrom = new VolumesFrom(_name_2);
+          volumesFrom.add(_volumesFrom);
+          String _name_3 = c.getName();
+          DockerContainerManager.LOGGER.info(_name_3);
+        }
+      }
+      create.withVolumesFrom(volumesFrom);
+    }
+    boolean _isNullOrEmpty_1 = IterableExtensions.isNullOrEmpty(volumesInsideHost);
+    boolean _not_1 = (!_isNullOrEmpty_1);
+    if (_not_1) {
+      List<Bind> volumesBind = new ArrayList<Bind>();
+      List<Volume> vs_1 = new ArrayList<Volume>();
+      for (final org.occiware.clouddesigner.occi.docker.Volume v_1 : volumesInsideHost) {
+        {
+          Volume newVolume = null;
+          String _destination = v_1.getDestination();
+          boolean _isBlank = StringUtils.isBlank(_destination);
+          boolean _not_2 = (!_isBlank);
+          if (_not_2) {
+            String _destination_1 = v_1.getDestination();
+            Volume _volume = new Volume(_destination_1);
+            newVolume = _volume;
+            vs_1.add(newVolume);
+          }
+          String _source = v_1.getSource();
+          boolean _isBlank_1 = StringUtils.isBlank(_source);
+          boolean _not_3 = (!_isBlank_1);
+          if (_not_3) {
+            String _source_1 = v_1.getSource();
+            Bind newBind = new Bind(_source_1, newVolume);
+            volumesBind.add(newBind);
+          }
+        }
+      }
+      create.withVolumes(vs_1);
+      create.withBinds(volumesBind);
     }
     return create;
   }
@@ -726,8 +797,15 @@ public class DockerContainerManager {
     if (_not_7) {
       String _volumes_1 = container.getVolumes();
       String _deleteWhitespace_9 = StringUtils.deleteWhitespace(_volumes_1);
-      Volume _volume = new Volume(_deleteWhitespace_9);
-      create.withVolumes(_volume);
+      String[] volumes = _deleteWhitespace_9.split(",");
+      List<Volume> vs = new ArrayList<Volume>();
+      for (final String v : volumes) {
+        {
+          Volume newVolume = new Volume(v);
+          vs.add(newVolume);
+        }
+      }
+      create.withVolumes(vs);
     }
     int _mem_limit = container.getMem_limit();
     boolean _greaterThan_1 = (_mem_limit > 0);
@@ -781,7 +859,77 @@ public class DockerContainerManager {
         }
       }
     }
+    List<Container> containersWithVolumes = new ArrayList<Container>();
+    List<org.occiware.clouddesigner.occi.docker.Volume> volumesInsideHost = new ArrayList<org.occiware.clouddesigner.occi.docker.Volume>();
+    List<Resource> _containersWithVolumes = this.containersWithVolumes(container);
+    for (final Resource r : _containersWithVolumes) {
+      {
+        if ((r instanceof Container)) {
+          containersWithVolumes.add(((Container) r));
+        }
+        if ((r instanceof org.occiware.clouddesigner.occi.docker.Volume)) {
+          volumesInsideHost.add(((org.occiware.clouddesigner.occi.docker.Volume) r));
+        }
+      }
+    }
+    boolean _isNullOrEmpty = IterableExtensions.isNullOrEmpty(containersWithVolumes);
+    boolean _not_9 = (!_isNullOrEmpty);
+    if (_not_9) {
+      List<VolumesFrom> volumesFrom = new ArrayList<VolumesFrom>();
+      for (final Container c : containersWithVolumes) {
+        {
+          String _name_4 = c.getName();
+          VolumesFrom _volumesFrom = new VolumesFrom(_name_4);
+          volumesFrom.add(_volumesFrom);
+          String _name_5 = c.getName();
+          DockerContainerManager.LOGGER.info(_name_5);
+        }
+      }
+      create.withVolumesFrom(volumesFrom);
+    }
+    boolean _isNullOrEmpty_1 = IterableExtensions.isNullOrEmpty(volumesInsideHost);
+    boolean _not_10 = (!_isNullOrEmpty_1);
+    if (_not_10) {
+      List<Bind> volumesBind = new ArrayList<Bind>();
+      List<Volume> vs_1 = new ArrayList<Volume>();
+      for (final org.occiware.clouddesigner.occi.docker.Volume v_1 : volumesInsideHost) {
+        {
+          Volume newVolume = null;
+          String _destination = v_1.getDestination();
+          boolean _isBlank_9 = StringUtils.isBlank(_destination);
+          boolean _not_11 = (!_isBlank_9);
+          if (_not_11) {
+            String _destination_1 = v_1.getDestination();
+            Volume _volume = new Volume(_destination_1);
+            newVolume = _volume;
+            vs_1.add(newVolume);
+          }
+          String _source = v_1.getSource();
+          boolean _isBlank_10 = StringUtils.isBlank(_source);
+          boolean _not_12 = (!_isBlank_10);
+          if (_not_12) {
+            String _source_1 = v_1.getSource();
+            Bind newBind = new Bind(_source_1, newVolume);
+            volumesBind.add(newBind);
+          }
+        }
+      }
+      create.withVolumes(vs_1);
+      create.withBinds(volumesBind);
+    }
     return create;
+  }
+  
+  public List<Resource> containersWithVolumes(final Container c) {
+    ArrayList<Resource> containersFrom = new ArrayList<Resource>();
+    EList<org.occiware.clouddesigner.occi.Link> _links = c.getLinks();
+    for (final org.occiware.clouddesigner.occi.Link l : _links) {
+      if ((l instanceof Volumesfrom)) {
+        Resource _target = ((Volumesfrom)l).getTarget();
+        containersFrom.add(_target);
+      }
+    }
+    return containersFrom;
   }
   
   public InspectContainerResponse inspectContainer(final Map<DockerClient, CreateContainerResponse> map) {

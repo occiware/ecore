@@ -56,6 +56,15 @@ public class Machine_VirtualBoxItemProvider extends MachineItemProvider {
 
 			addBoot2docker_urlPropertyDescriptor(object);
 			addDisk_sizePropertyDescriptor(object);
+			addHost_dns_resolverPropertyDescriptor(object);
+			addImport_boot2docker_vmPropertyDescriptor(object);
+			addHostonly_cidrPropertyDescriptor(object);
+			addHostonly_nictypePropertyDescriptor(object);
+			addHostonly_nicpromiscPropertyDescriptor(object);
+			addNo_sharePropertyDescriptor(object);
+			addNo_dns_proxyPropertyDescriptor(object);
+			addNo_vtx_checkPropertyDescriptor(object);
+			addShare_folderPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -105,6 +114,204 @@ public class Machine_VirtualBoxItemProvider extends MachineItemProvider {
 	}
 
 	/**
+	 * This adds a property descriptor for the Host dns resolver feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addHost_dns_resolverPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_VirtualBox_host_dns_resolver_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_VirtualBox_host_dns_resolver_feature", "_UI_Machine_VirtualBox_type"),
+				 DockerPackage.Literals.MACHINE_VIRTUAL_BOX__HOST_DNS_RESOLVER,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Import boot2docker vm feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addImport_boot2docker_vmPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_VirtualBox_import_boot2docker_vm_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_VirtualBox_import_boot2docker_vm_feature", "_UI_Machine_VirtualBox_type"),
+				 DockerPackage.Literals.MACHINE_VIRTUAL_BOX__IMPORT_BOOT2DOCKER_VM,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Hostonly cidr feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addHostonly_cidrPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_VirtualBox_hostonly_cidr_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_VirtualBox_hostonly_cidr_feature", "_UI_Machine_VirtualBox_type"),
+				 DockerPackage.Literals.MACHINE_VIRTUAL_BOX__HOSTONLY_CIDR,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Hostonly nictype feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addHostonly_nictypePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_VirtualBox_hostonly_nictype_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_VirtualBox_hostonly_nictype_feature", "_UI_Machine_VirtualBox_type"),
+				 DockerPackage.Literals.MACHINE_VIRTUAL_BOX__HOSTONLY_NICTYPE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Hostonly nicpromisc feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addHostonly_nicpromiscPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_VirtualBox_hostonly_nicpromisc_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_VirtualBox_hostonly_nicpromisc_feature", "_UI_Machine_VirtualBox_type"),
+				 DockerPackage.Literals.MACHINE_VIRTUAL_BOX__HOSTONLY_NICPROMISC,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the No share feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNo_sharePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_VirtualBox_no_share_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_VirtualBox_no_share_feature", "_UI_Machine_VirtualBox_type"),
+				 DockerPackage.Literals.MACHINE_VIRTUAL_BOX__NO_SHARE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the No dns proxy feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNo_dns_proxyPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_VirtualBox_no_dns_proxy_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_VirtualBox_no_dns_proxy_feature", "_UI_Machine_VirtualBox_type"),
+				 DockerPackage.Literals.MACHINE_VIRTUAL_BOX__NO_DNS_PROXY,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the No vtx check feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNo_vtx_checkPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_VirtualBox_no_vtx_check_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_VirtualBox_no_vtx_check_feature", "_UI_Machine_VirtualBox_type"),
+				 DockerPackage.Literals.MACHINE_VIRTUAL_BOX__NO_VTX_CHECK,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Share folder feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addShare_folderPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_VirtualBox_share_folder_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_VirtualBox_share_folder_feature", "_UI_Machine_VirtualBox_type"),
+				 DockerPackage.Literals.MACHINE_VIRTUAL_BOX__SHARE_FOLDER,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns Machine_VirtualBox.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -144,6 +351,15 @@ public class Machine_VirtualBoxItemProvider extends MachineItemProvider {
 		switch (notification.getFeatureID(Machine_VirtualBox.class)) {
 			case DockerPackage.MACHINE_VIRTUAL_BOX__BOOT2DOCKER_URL:
 			case DockerPackage.MACHINE_VIRTUAL_BOX__DISK_SIZE:
+			case DockerPackage.MACHINE_VIRTUAL_BOX__HOST_DNS_RESOLVER:
+			case DockerPackage.MACHINE_VIRTUAL_BOX__IMPORT_BOOT2DOCKER_VM:
+			case DockerPackage.MACHINE_VIRTUAL_BOX__HOSTONLY_CIDR:
+			case DockerPackage.MACHINE_VIRTUAL_BOX__HOSTONLY_NICTYPE:
+			case DockerPackage.MACHINE_VIRTUAL_BOX__HOSTONLY_NICPROMISC:
+			case DockerPackage.MACHINE_VIRTUAL_BOX__NO_SHARE:
+			case DockerPackage.MACHINE_VIRTUAL_BOX__NO_DNS_PROXY:
+			case DockerPackage.MACHINE_VIRTUAL_BOX__NO_VTX_CHECK:
+			case DockerPackage.MACHINE_VIRTUAL_BOX__SHARE_FOLDER:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

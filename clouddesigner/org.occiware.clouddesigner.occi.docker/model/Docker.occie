@@ -240,11 +240,41 @@
     </attributes>
     <parent href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='compute']"/>
   </kinds>
-  <kinds term="network" scheme="http://occiware.org/occi/docker#">
+  <kinds term="volume" scheme="http://occiware.org/occi/docker#" title="Volume disk">
+    <attributes name="driver" default="local" description=" Specify volume driver name (default &quot;local&quot;)">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="labels" default="" description="Set metadata for a volume (default [])">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="options" default="" description="Set driver specific options (default map[])">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="source" description="The volume Mountpoint ex. the /host/directory">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="destination" description="The volume name inside the container ex. /container/path">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="mode" default="" description="Specify volume driver name">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="rw" description="The volume Read/Write access">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="propagation" description="The volume propagation">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="name" description="The volume name.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <parent href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='storage']"/>
+  </kinds>
+  <kinds term="network" scheme="http://occiware.org/occi/docker#" title="Network resource">
     <attributes name="networkId" description="The network ID retreived when the creation is done">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="name">
+    <attributes name="name" description="The network name">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
     <attributes name="aux_address" description="Auxiliary IPv4 or IPv6 addresses used by Network driver (default map[])">
@@ -271,11 +301,30 @@
     <attributes name="ipv6" default="" description="Enable IPv6 networking">
       <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
     </attributes>
-    <attributes name="opt" description="Set driver specific options (default map[])"/>
+    <attributes name="opt" description="Set driver specific options (default map[])">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <attributes name="subnet" description="Subnet in CIDR format that represents a network segment (default [])">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
     <parent href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='network']"/>
+  </kinds>
+  <kinds term="machine_Generic" scheme="http://occiware.org/occi/docker#" title="Create machines using an existing VM/Host with SSH" parent="//@kinds[term='machine']">
+    <attributes name="engine_port" default="" description="Port to use for Docker Daemon (Note: This flag will not work with boot2docker).">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="ip_address" required="true" description=" required IP Address of host.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="ssh_key" description="Path to the SSH user private key.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="ssh_user" default="" description="SSH username used to connect.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="ssh_port" default="" description="Port to use for SSH.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
   </kinds>
   <kinds term="machine_Amazon_EC2" scheme="http://occiware.org/occi/docker#" title="Machine on Amazon EC2" parent="//@kinds[term='machine']">
     <attributes name="access_key" required="true" description="Your access key id for the Amazon Web Services API">
@@ -344,7 +393,7 @@
     </attributes>
   </kinds>
   <kinds term="machine_IBM_SoftLayer" scheme="http://occiware.org/occi/docker#" title="Machine on IBM SoftLayer" parent="//@kinds[term='machine']">
-    <attributes name="api_endpoint" description="Change softlayer API endpoint">
+    <attributes name="api_endpoint" default="api.softlayer.com/rest/v3" description="Change softlayer API endpoint">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
     <attributes name="user" required="true" description="username for your softlayer account, api key needs to match this user">
@@ -362,19 +411,25 @@
     <attributes name="domain" required="true" description="domain name for the machine">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="hourly_billing" default="true" description="Sets the hourly billing flag (default), otherwise uses monthly billing">
+    <attributes name="hourly_billing" default="false" description="Sets the hourly billing flag (default), otherwise uses monthly billing">
       <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
     </attributes>
-    <attributes name="image" description="OS Image to use">
+    <attributes name="image" default="UBUNTU_LATEST" description="OS Image to use">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="local_disk" description="Use local machine disk instead of softlayer SAN">
+    <attributes name="local_disk" default="false" description="Use local machine disk instead of softlayer SAN">
       <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
     </attributes>
     <attributes name="private_net_only" description="Disable public networking">
       <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
     </attributes>
     <attributes name="region" description="softlayer region">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="public_vlan_id" default="0" description="Your public VLAN ID.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="private_vlan_id" default="0" description="Your private VLAN ID.">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
   </kinds>
@@ -385,9 +440,57 @@
     <attributes name="subscription_cert" required="true" description="Your Azure subscription cert">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
+    <attributes name="environment" default="AzurePublicCloud" description="Azure environment (e.g. AzurePublicCloud, AzureChinaCloud).">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="location" description="Azure region to create the virtual machine.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="resource_group" default="docker-machine" description="Azure Resource Group name to create the resources in.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="size" description="Size for Azure Virtual Machine.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="ssh_user" default="" description="Username for SSH login.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="vnet" default="docker-machine" description="Azure Virtual Network name to connect the virtual machine. To specify a Virtual Network from another resource group, use resourcegroup:vnet-name format.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="subnet" default="" description="Azure Subnet Name to be used within the Virtual Network.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="subnet_prefix" default="192.168.0.0/16" description="Private CIDR block. Used to create subnet if it does not exist. Must match in the case that the subnet does exist.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="availability_set" default="docker-machine" description="Azure Availability Set to place the virtual machine into.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="open_port" description=" Make additional port number(s) accessible from the Internet">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="private_ip_address" description="Specify a static private IP address for the machine.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="no_public_ip" description="Do not create a public IP address for the machine (implies --azure-use-private-ip). ">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="static_public_ip" description="Assign a static public IP address to the machine.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="docker_port" default="2376" description="Port number for Docker engine.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="use_private_ip" description=" Use private IP address of the machine to connect. It&#x2019;s useful for managing Docker machines from another machine on the same network e.g. while deploying Swarm.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="image" description="Azure virtual machine image in the format of Publisher:Offer:Sku:Version">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
   </kinds>
   <kinds term="machine_Microsoft_Hyper_V" scheme="http://occiware.org/occi/docker#" title="Machine on Microsoft Hyper-V" parent="//@kinds[term='machine']">
-    <attributes name="boot2docker_location" description="Location of a local boot2docker iso to use. Overrides the URL option below">
+    <attributes name="virtual_switch" description="Name of the virtual switch to use.">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
     <attributes name="boot2docker_url" description="The URL of the boot2docker iso. Defaults to the latest available version">
@@ -396,7 +499,10 @@
     <attributes name="disk_size" default="20000" description="Size of disk for the host in MB">
       <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
     </attributes>
-    <attributes name="virtual_switch" description="Name of the virtual switch to use. Defaults to first found">
+    <attributes name="static_macaddress" description="Hyper-V network adapter&#x2019;s static MAC address.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="vlan_id" description="Hyper-V network adapter&#x2019;s VLAN ID if any.">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
   </kinds>
@@ -404,10 +510,16 @@
     <attributes name="flavor_id" required="true" description="The flavor ID to use when creating the machine">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
+    <attributes name="flavor_name" description="The OS FLAVOR NAME">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <attributes name="image_id" required="true" description="The image ID to use when creating the machine">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="auth_url" description="Keystone service base URL">
+    <attributes name="image_name" description="The OS IMAGE NAME">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="auth_url" required="true" description="Keystone service base URL">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
     <attributes name="username" description="User identifer to authenticate with">
@@ -425,16 +537,49 @@
     <attributes name="region" description="The region to work on. Can be omitted if there is only one region on the OpenStack">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="endpoint_type" description="Endpoint type can be internalURL, adminURL on publicURL. If is a helper for the driver to choose the right URL in the OpenStack service catalog. If not provided the default id publicURL">
+    <attributes name="endpoint_type" default="publicURL" description="Endpoint type can be internalURL, adminURL on publicURL. If is a helper for the driver to choose the right URL in the OpenStack service catalog. If not provided the default id publicURL">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
     <attributes name="net_id" description="The private network id the machine will be connected on. If your OpenStack project project contains only one private network it will be use automatically">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="net_name" description="The OS NETWORK NAME">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
     <attributes name="sec_groups" description="If security groups are available on your OpenStack you can specify a comma separated list to use for the machine (e.g. secgrp001,secgrp002)">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
     <attributes name="floatingip_pool" description="The IP pool that will be used to get a public IP an assign it to the machine. If there is an IP address already allocated but not assigned to any machine, this IP will be chosen and assigned to the machine. If there is no IP address already allocated a new IP will be allocated and assigned to the machine">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="active_timeout" default="200" description="The OS ACTIVE TIMEOUT">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="availability_zone" description="The OS AVAILABILITY ZONE">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="domain_id" description="The OS DOMAIN ID">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="domain_name" description="The OS DOMAIN NAME">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="insecure" default="false" description="The OS INSECURE">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="ip_version" default="4" description="The OS IP VERSION">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="keypair_name" description="The OS KEYPAIR NAME">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="private_key_file" description="The OS PRIVATE KEY FILE">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="ssh_port" default="22" description="The OS SSH PORT">
+      <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="ssh_user" default="root" description="The OS SSH USER">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
   </kinds>
@@ -451,10 +596,10 @@
     <attributes name="endpoint_type" default="publicURL" description="Rackspace endpoint type (adminURL, internalURL or the default publicURL)">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="image_id" default="Ubuntu 14.10 (Utopic Unicorn) (PVHVM)" description="Rackspace image ID ">
+    <attributes name="image_id" default="59a3fadd-93e7-4674-886a-64883e17115f" description="Rackspace image ID ">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="flavor_id" default="General Purpose 1GB" description="Rackspace flavor ID">
+    <attributes name="flavor_id" default="general1-1" description="Rackspace flavor ID">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
     <attributes name="ssh_user" default="root" description="SSH user for the newly booted machine">
@@ -463,6 +608,9 @@
     <attributes name="ssh_port" default="22" description="SSH port for the newly booted machine">
       <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
     </attributes>
+    <attributes name="docker_install" default="true" description="Set if Docker has to be installed on the machine.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
   </kinds>
   <kinds term="machine_VirtualBox" scheme="http://occiware.org/occi/docker#" title="Machine on VirtualBox" parent="//@kinds[term='machine']">
     <attributes name="boot2docker_url" description="The URL of the boot2docker image. Default to the latest available version">
@@ -470,6 +618,33 @@
     </attributes>
     <attributes name="disk_size" default="20000" description="Size of disk for the host in MB">
       <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="host_dns_resolver" default="false" description="The VIRTUALBOX HOST DNS RESOLVER&#x9;">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="import_boot2docker_vm" default="" description="The VIRTUALBOX BOOT2DOCKER IMPORT VM">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="hostonly_cidr" default="192.168.99.1/24" description="The VIRTUALBOX HOSTONLY CIDR">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="hostonly_nictype" default="82540EM" description="The &#x9;VIRTUALBOX HOSTONLY NIC TYPE">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="hostonly_nicpromisc" default="deny" description="The VIRTUALBOX HOSTONLY NIC PROMISC">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="no_share" default="false" description="The VIRTUALBOX NO SHARE">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="no_dns_proxy" default="false" description="The VIRTUALBOX NO DNS PROXY">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="no_vtx_check" default="false" description="The VIRTUALBOX NO VTX CHECK">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="share_folder" default="" description="The VIRTUALBOX SHARE FOLDER">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
   </kinds>
   <kinds term="machine_VMware_Fusion" scheme="http://occiware.org/occi/docker#" title="Machine on VMware Fusion" parent="//@kinds[term='machine']">
@@ -481,6 +656,9 @@
     </attributes>
     <attributes name="memory_size" default="1024" description="Size of memory for host VM (in MB)">
       <type href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="no_share" default="false" description="Disable the mount of your home directory.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
     </attributes>
   </kinds>
   <kinds term="machine_VMware_vCloud_Air" scheme="http://occiware.org/occi/docker#" title="Machine on VMware vCloud Air" parent="//@kinds[term='machine']">
@@ -567,6 +745,74 @@
     <attributes name="vcenter" description=" IP/hostname for vCenter (or ESXi if connecting directly to a single host)">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
+  </kinds>
+  <kinds term="machine_Exoscale" scheme="http://occiware.org/occi/docker#" title="Machine Exoscale" parent="//@kinds[term='machine']">
+    <attributes name="url" default="https://api.exoscale.ch/compute" description="Your API endpoint.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="api_key" required="true" description="required Your API key.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="api_secret_key" required="true" description="required Your API secret key.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="instance_profile" default="small" description="Instance profile.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="image" default="ubuntu-16.04" description="Image template (e.g. ubuntu-16.04, ubuntu-15.10).">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="security_group" description="Security group. It will be created if it doesn&#x2019;t exist.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="availability_zone" description="Exoscale availability zone.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="ssh_user" default="ubuntu" description="SSH username, which must match the default SSH user for the used image.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="userdata" description="Path to file containing user data for cloud-init.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="affinity_group" default="docker-machine" description="Affinity group the machine will be started in.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+  </kinds>
+  <kinds term="machine_Grid5000" scheme="http://occiware.org/occi/docker#" title="Grid5000 cluster" parent="//@kinds[term='machine']">
+    <attributes name="username" required="true" description="Grid5000 account username">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="password" required="true" description="Grid5000 account password">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="site" required="true" description="Site to reserve the resources on">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="walltime" description="Timelife of the machine">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="ssh_private_key" description="Path of your ssh private key">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="ssh_public_key" description="Path of your ssh public key">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="image" description="Name of the image to deploy">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="resource_properties" description="Resource selection with OAR properties (SQL format)">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="use_job_reservation" description="Job ID to use (need to be an already existing job ID)">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="host_to_provision" description="Host to provision (host need to be already deployed)"/>
+  </kinds>
+  <kinds term="cluster" scheme="http://occiware.org/occi/docker#" title="Docker cluster">
+    <attributes name="name" description="The cluster name.">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <parent href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='compute']"/>
   </kinds>
   <types xsi:type="ecore:EEnum" name="Mode">
     <eLiterals name="read_write" literal="read_write"/>

@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.EObject;
 // import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.swt.widgets.Display;
@@ -212,5 +213,9 @@ public class DesignServices {
 				attributeStates.add(attributeState);
 			}
 		}
+	}
+	
+	public void deleteElement(EObject eo) {
+		EcoreUtil.delete(eo);
 	}
 }

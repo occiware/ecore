@@ -23,6 +23,7 @@ import java.util.Set;
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.occiware.clouddesigner.occi.Link;
@@ -720,8 +721,7 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
       if (_notEquals) {
         EList<Link> _links = c.getLinks();
         int _size = _links.size();
-        boolean _greaterThan = (_size > 
-          0);
+        boolean _greaterThan = (_size > 0);
         if (_greaterThan) {
           link = true;
           return link;
@@ -760,11 +760,24 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
         }
       }
     }
-    List<GraphNode<Container>> _deploymentOrder = graph.deploymentOrder();
-    for (final GraphNode<Container> c : _deploymentOrder) {
-      {
-        containers.add(c.value);
-        MachineManager.LOGGER.info(("--->" + c.value));
+    MachineManager.LOGGER.info(("------------------- GRAPH : " + graph));
+    try {
+      List<GraphNode<Container>> _deploymentOrder = graph.deploymentOrder();
+      boolean _notEquals = (!Objects.equal(_deploymentOrder, null));
+      if (_notEquals) {
+        List<GraphNode<Container>> _deploymentOrder_1 = graph.deploymentOrder();
+        for (final GraphNode<Container> c : _deploymentOrder_1) {
+          {
+            containers.add(c.value);
+            MachineManager.LOGGER.info(("--->" + c.value));
+          }
+        }
+      }
+    } catch (final Throwable _t) {
+      if (_t instanceof NullPointerException) {
+        final NullPointerException exception = (NullPointerException)_t;
+      } else {
+        throw Exceptions.sneakyThrow(_t);
       }
     }
     List<Container> _leafContainers = this.leafContainers();
@@ -792,21 +805,20 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
   public List<Container> getContainers() {
     final List<Container> containers = CollectionLiterals.<Container>newArrayList();
     EList<Link> _links = this.compute.getLinks();
-    final Procedure1<Link> _function = new Procedure1<Link>() {
-      @Override
-      public void apply(final Link elt) {
-        Resource _target = elt.getTarget();
-        containers.add(((Container) _target));
+    for (final Link link : _links) {
+      Resource _target = link.getTarget();
+      if ((_target instanceof Container)) {
+        Resource _target_1 = link.getTarget();
+        containers.add(((Container) _target_1));
       }
-    };
-    IterableExtensions.<Link>forEach(_links, _function);
+    }
     Set<Object> _singleton = Collections.<Object>singleton(null);
     containers.removeAll(_singleton);
     return containers;
   }
   
   /**
-   * Get all containers witch has not a link to another container.
+   * Get all containers which has not a link to another container.
    */
   public List<Container> leafContainers() {
     final List<Container> containers = this.getContainers();
@@ -817,6 +829,18 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
       boolean _equals = (_size == 0);
       if (_equals) {
         leafContainers.add(c);
+      } else {
+        Boolean tagertContainerFound = Boolean.valueOf(false);
+        EList<Link> _links_1 = c.getLinks();
+        for (final Link l : _links_1) {
+          Resource _target = l.getTarget();
+          if ((_target instanceof Container)) {
+            tagertContainerFound = Boolean.valueOf(true);
+          }
+        }
+        if ((!(tagertContainerFound).booleanValue())) {
+          leafContainers.add(c);
+        }
       }
     }
     return leafContainers;

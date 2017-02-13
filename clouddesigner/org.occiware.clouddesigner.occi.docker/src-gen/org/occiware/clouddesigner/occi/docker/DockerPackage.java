@@ -1768,6 +1768,259 @@ public interface DockerPackage extends EPackage {
 	int MACHINE_OPERATION_COUNT = InfrastructurePackage.COMPUTE_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.docker.impl.VolumeImpl <em>Volume</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.occiware.clouddesigner.occi.docker.impl.VolumeImpl
+	 * @see org.occiware.clouddesigner.occi.docker.impl.DockerPackageImpl#getVolume()
+	 * @generated
+	 */
+	int VOLUME = 6;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VOLUME__ID = InfrastructurePackage.STORAGE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Title</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VOLUME__TITLE = InfrastructurePackage.STORAGE__TITLE;
+
+	/**
+	 * The feature id for the '<em><b>Kind</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VOLUME__KIND = InfrastructurePackage.STORAGE__KIND;
+
+	/**
+	 * The feature id for the '<em><b>Mixins</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VOLUME__MIXINS = InfrastructurePackage.STORAGE__MIXINS;
+
+	/**
+	 * The feature id for the '<em><b>Attributes</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VOLUME__ATTRIBUTES = InfrastructurePackage.STORAGE__ATTRIBUTES;
+
+	/**
+	 * The feature id for the '<em><b>Summary</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VOLUME__SUMMARY = InfrastructurePackage.STORAGE__SUMMARY;
+
+	/**
+	 * The feature id for the '<em><b>Links</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VOLUME__LINKS = InfrastructurePackage.STORAGE__LINKS;
+
+	/**
+	 * The feature id for the '<em><b>Size</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VOLUME__SIZE = InfrastructurePackage.STORAGE__SIZE;
+
+	/**
+	 * The feature id for the '<em><b>State</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VOLUME__STATE = InfrastructurePackage.STORAGE__STATE;
+
+	/**
+	 * The feature id for the '<em><b>Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VOLUME__MESSAGE = InfrastructurePackage.STORAGE__MESSAGE;
+
+	/**
+	 * The feature id for the '<em><b>Driver</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VOLUME__DRIVER = InfrastructurePackage.STORAGE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Labels</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VOLUME__LABELS = InfrastructurePackage.STORAGE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Options</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VOLUME__OPTIONS = InfrastructurePackage.STORAGE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Source</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VOLUME__SOURCE = InfrastructurePackage.STORAGE_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Destination</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VOLUME__DESTINATION = InfrastructurePackage.STORAGE_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Mode</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VOLUME__MODE = InfrastructurePackage.STORAGE_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Rw</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VOLUME__RW = InfrastructurePackage.STORAGE_FEATURE_COUNT + 6;
+
+	/**
+	 * The feature id for the '<em><b>Propagation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VOLUME__PROPAGATION = InfrastructurePackage.STORAGE_FEATURE_COUNT + 7;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VOLUME__NAME = InfrastructurePackage.STORAGE_FEATURE_COUNT + 8;
+
+	/**
+	 * The number of structural features of the '<em>Volume</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VOLUME_FEATURE_COUNT = InfrastructurePackage.STORAGE_FEATURE_COUNT + 9;
+
+	/**
+	 * The operation id for the '<em>Occi Create</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VOLUME___OCCI_CREATE = InfrastructurePackage.STORAGE___OCCI_CREATE;
+
+	/**
+	 * The operation id for the '<em>Occi Retrieve</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VOLUME___OCCI_RETRIEVE = InfrastructurePackage.STORAGE___OCCI_RETRIEVE;
+
+	/**
+	 * The operation id for the '<em>Occi Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VOLUME___OCCI_UPDATE = InfrastructurePackage.STORAGE___OCCI_UPDATE;
+
+	/**
+	 * The operation id for the '<em>Occi Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VOLUME___OCCI_DELETE = InfrastructurePackage.STORAGE___OCCI_DELETE;
+
+	/**
+	 * The operation id for the '<em>Online</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VOLUME___ONLINE = InfrastructurePackage.STORAGE___ONLINE;
+
+	/**
+	 * The operation id for the '<em>Offline</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VOLUME___OFFLINE = InfrastructurePackage.STORAGE___OFFLINE;
+
+	/**
+	 * The number of operations of the '<em>Volume</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VOLUME_OPERATION_COUNT = InfrastructurePackage.STORAGE_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.docker.impl.NetworkImpl <em>Network</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1775,7 +2028,7 @@ public interface DockerPackage extends EPackage {
 	 * @see org.occiware.clouddesigner.occi.docker.impl.DockerPackageImpl#getNetwork()
 	 * @generated
 	 */
-	int NETWORK = 6;
+	int NETWORK = 7;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2057,6 +2310,457 @@ public interface DockerPackage extends EPackage {
 	int NETWORK_OPERATION_COUNT = InfrastructurePackage.NETWORK_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.docker.impl.Machine_GenericImpl <em>Machine Generic</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.occiware.clouddesigner.occi.docker.impl.Machine_GenericImpl
+	 * @see org.occiware.clouddesigner.occi.docker.impl.DockerPackageImpl#getMachine_Generic()
+	 * @generated
+	 */
+	int MACHINE_GENERIC = 8;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GENERIC__ID = MACHINE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Title</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GENERIC__TITLE = MACHINE__TITLE;
+
+	/**
+	 * The feature id for the '<em><b>Kind</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GENERIC__KIND = MACHINE__KIND;
+
+	/**
+	 * The feature id for the '<em><b>Mixins</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GENERIC__MIXINS = MACHINE__MIXINS;
+
+	/**
+	 * The feature id for the '<em><b>Attributes</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GENERIC__ATTRIBUTES = MACHINE__ATTRIBUTES;
+
+	/**
+	 * The feature id for the '<em><b>Summary</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GENERIC__SUMMARY = MACHINE__SUMMARY;
+
+	/**
+	 * The feature id for the '<em><b>Links</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GENERIC__LINKS = MACHINE__LINKS;
+
+	/**
+	 * The feature id for the '<em><b>Architecture</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GENERIC__ARCHITECTURE = MACHINE__ARCHITECTURE;
+
+	/**
+	 * The feature id for the '<em><b>Cores</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GENERIC__CORES = MACHINE__CORES;
+
+	/**
+	 * The feature id for the '<em><b>Hostname</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GENERIC__HOSTNAME = MACHINE__HOSTNAME;
+
+	/**
+	 * The feature id for the '<em><b>Share</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GENERIC__SHARE = MACHINE__SHARE;
+
+	/**
+	 * The feature id for the '<em><b>Speed</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GENERIC__SPEED = MACHINE__SPEED;
+
+	/**
+	 * The feature id for the '<em><b>Memory</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GENERIC__MEMORY = MACHINE__MEMORY;
+
+	/**
+	 * The feature id for the '<em><b>State</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GENERIC__STATE = MACHINE__STATE;
+
+	/**
+	 * The feature id for the '<em><b>Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GENERIC__MESSAGE = MACHINE__MESSAGE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GENERIC__NAME = MACHINE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Engine install url</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GENERIC__ENGINE_INSTALL_URL = MACHINE__ENGINE_INSTALL_URL;
+
+	/**
+	 * The feature id for the '<em><b>Engine opt</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GENERIC__ENGINE_OPT = MACHINE__ENGINE_OPT;
+
+	/**
+	 * The feature id for the '<em><b>Engine insecure registry</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GENERIC__ENGINE_INSECURE_REGISTRY = MACHINE__ENGINE_INSECURE_REGISTRY;
+
+	/**
+	 * The feature id for the '<em><b>Engine registry mirror</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GENERIC__ENGINE_REGISTRY_MIRROR = MACHINE__ENGINE_REGISTRY_MIRROR;
+
+	/**
+	 * The feature id for the '<em><b>Engine label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GENERIC__ENGINE_LABEL = MACHINE__ENGINE_LABEL;
+
+	/**
+	 * The feature id for the '<em><b>Engine storage driver</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GENERIC__ENGINE_STORAGE_DRIVER = MACHINE__ENGINE_STORAGE_DRIVER;
+
+	/**
+	 * The feature id for the '<em><b>Engine env</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GENERIC__ENGINE_ENV = MACHINE__ENGINE_ENV;
+
+	/**
+	 * The feature id for the '<em><b>Swarm</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GENERIC__SWARM = MACHINE__SWARM;
+
+	/**
+	 * The feature id for the '<em><b>Swarm image</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GENERIC__SWARM_IMAGE = MACHINE__SWARM_IMAGE;
+
+	/**
+	 * The feature id for the '<em><b>Swarm master</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GENERIC__SWARM_MASTER = MACHINE__SWARM_MASTER;
+
+	/**
+	 * The feature id for the '<em><b>Swarm discovery</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GENERIC__SWARM_DISCOVERY = MACHINE__SWARM_DISCOVERY;
+
+	/**
+	 * The feature id for the '<em><b>Swarm strategy</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GENERIC__SWARM_STRATEGY = MACHINE__SWARM_STRATEGY;
+
+	/**
+	 * The feature id for the '<em><b>Swarm opt</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GENERIC__SWARM_OPT = MACHINE__SWARM_OPT;
+
+	/**
+	 * The feature id for the '<em><b>Swarm host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GENERIC__SWARM_HOST = MACHINE__SWARM_HOST;
+
+	/**
+	 * The feature id for the '<em><b>Swarm addr</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GENERIC__SWARM_ADDR = MACHINE__SWARM_ADDR;
+
+	/**
+	 * The feature id for the '<em><b>Swarm experimental</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GENERIC__SWARM_EXPERIMENTAL = MACHINE__SWARM_EXPERIMENTAL;
+
+	/**
+	 * The feature id for the '<em><b>Tls san</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GENERIC__TLS_SAN = MACHINE__TLS_SAN;
+
+	/**
+	 * The feature id for the '<em><b>Engine port</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GENERIC__ENGINE_PORT = MACHINE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Ip address</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GENERIC__IP_ADDRESS = MACHINE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Ssh key</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GENERIC__SSH_KEY = MACHINE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Ssh user</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GENERIC__SSH_USER = MACHINE_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Ssh port</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GENERIC__SSH_PORT = MACHINE_FEATURE_COUNT + 4;
+
+	/**
+	 * The number of structural features of the '<em>Machine Generic</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GENERIC_FEATURE_COUNT = MACHINE_FEATURE_COUNT + 5;
+
+	/**
+	 * The operation id for the '<em>Occi Create</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GENERIC___OCCI_CREATE = MACHINE___OCCI_CREATE;
+
+	/**
+	 * The operation id for the '<em>Occi Retrieve</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GENERIC___OCCI_RETRIEVE = MACHINE___OCCI_RETRIEVE;
+
+	/**
+	 * The operation id for the '<em>Occi Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GENERIC___OCCI_UPDATE = MACHINE___OCCI_UPDATE;
+
+	/**
+	 * The operation id for the '<em>Occi Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GENERIC___OCCI_DELETE = MACHINE___OCCI_DELETE;
+
+	/**
+	 * The operation id for the '<em>Start</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GENERIC___START = MACHINE___START;
+
+	/**
+	 * The operation id for the '<em>Stop</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GENERIC___STOP__STOPMETHOD = MACHINE___STOP__STOPMETHOD;
+
+	/**
+	 * The operation id for the '<em>Restart</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GENERIC___RESTART__RESTARTMETHOD = MACHINE___RESTART__RESTARTMETHOD;
+
+	/**
+	 * The operation id for the '<em>Suspend</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GENERIC___SUSPEND__SUSPENDMETHOD = MACHINE___SUSPEND__SUSPENDMETHOD;
+
+	/**
+	 * The operation id for the '<em>Save</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GENERIC___SAVE__SAVEMETHOD_STRING = MACHINE___SAVE__SAVEMETHOD_STRING;
+
+	/**
+	 * The number of operations of the '<em>Machine Generic</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GENERIC_OPERATION_COUNT = MACHINE_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.docker.impl.Machine_Amazon_EC2Impl <em>Machine Amazon EC2</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2064,7 +2768,7 @@ public interface DockerPackage extends EPackage {
 	 * @see org.occiware.clouddesigner.occi.docker.impl.DockerPackageImpl#getMachine_Amazon_EC2()
 	 * @generated
 	 */
-	int MACHINE_AMAZON_EC2 = 7;
+	int MACHINE_AMAZON_EC2 = 9;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2569,7 +3273,7 @@ public interface DockerPackage extends EPackage {
 	 * @see org.occiware.clouddesigner.occi.docker.impl.DockerPackageImpl#getMachine_Digital_Ocean()
 	 * @generated
 	 */
-	int MACHINE_DIGITAL_OCEAN = 8;
+	int MACHINE_DIGITAL_OCEAN = 10;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -3011,7 +3715,7 @@ public interface DockerPackage extends EPackage {
 	 * @see org.occiware.clouddesigner.occi.docker.impl.DockerPackageImpl#getMachine_Google_Compute_Engine()
 	 * @generated
 	 */
-	int MACHINE_GOOGLE_COMPUTE_ENGINE = 9;
+	int MACHINE_GOOGLE_COMPUTE_ENGINE = 11;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -3462,7 +4166,7 @@ public interface DockerPackage extends EPackage {
 	 * @see org.occiware.clouddesigner.occi.docker.impl.DockerPackageImpl#getMachine_IBM_SoftLayer()
 	 * @generated
 	 */
-	int MACHINE_IBM_SOFT_LAYER = 10;
+	int MACHINE_IBM_SOFT_LAYER = 12;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -3861,13 +4565,31 @@ public interface DockerPackage extends EPackage {
 	int MACHINE_IBM_SOFT_LAYER__REGION = MACHINE_FEATURE_COUNT + 10;
 
 	/**
+	 * The feature id for the '<em><b>Public vlan id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_IBM_SOFT_LAYER__PUBLIC_VLAN_ID = MACHINE_FEATURE_COUNT + 11;
+
+	/**
+	 * The feature id for the '<em><b>Private vlan id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_IBM_SOFT_LAYER__PRIVATE_VLAN_ID = MACHINE_FEATURE_COUNT + 12;
+
+	/**
 	 * The number of structural features of the '<em>Machine IBM Soft Layer</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MACHINE_IBM_SOFT_LAYER_FEATURE_COUNT = MACHINE_FEATURE_COUNT + 11;
+	int MACHINE_IBM_SOFT_LAYER_FEATURE_COUNT = MACHINE_FEATURE_COUNT + 13;
 
 	/**
 	 * The operation id for the '<em>Occi Create</em>' operation.
@@ -3967,7 +4689,7 @@ public interface DockerPackage extends EPackage {
 	 * @see org.occiware.clouddesigner.occi.docker.impl.DockerPackageImpl#getMachine_Microsoft_Azure()
 	 * @generated
 	 */
-	int MACHINE_MICROSOFT_AZURE = 11;
+	int MACHINE_MICROSOFT_AZURE = 13;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -4285,13 +5007,157 @@ public interface DockerPackage extends EPackage {
 	int MACHINE_MICROSOFT_AZURE__SUBSCRIPTION_CERT = MACHINE_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Environment</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_MICROSOFT_AZURE__ENVIRONMENT = MACHINE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Location</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_MICROSOFT_AZURE__LOCATION = MACHINE_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Resource group</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_MICROSOFT_AZURE__RESOURCE_GROUP = MACHINE_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Size</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_MICROSOFT_AZURE__SIZE = MACHINE_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Ssh user</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_MICROSOFT_AZURE__SSH_USER = MACHINE_FEATURE_COUNT + 6;
+
+	/**
+	 * The feature id for the '<em><b>Vnet</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_MICROSOFT_AZURE__VNET = MACHINE_FEATURE_COUNT + 7;
+
+	/**
+	 * The feature id for the '<em><b>Subnet</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_MICROSOFT_AZURE__SUBNET = MACHINE_FEATURE_COUNT + 8;
+
+	/**
+	 * The feature id for the '<em><b>Subnet prefix</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_MICROSOFT_AZURE__SUBNET_PREFIX = MACHINE_FEATURE_COUNT + 9;
+
+	/**
+	 * The feature id for the '<em><b>Availability set</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_MICROSOFT_AZURE__AVAILABILITY_SET = MACHINE_FEATURE_COUNT + 10;
+
+	/**
+	 * The feature id for the '<em><b>Open port</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_MICROSOFT_AZURE__OPEN_PORT = MACHINE_FEATURE_COUNT + 11;
+
+	/**
+	 * The feature id for the '<em><b>Private ip address</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_MICROSOFT_AZURE__PRIVATE_IP_ADDRESS = MACHINE_FEATURE_COUNT + 12;
+
+	/**
+	 * The feature id for the '<em><b>No public ip</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_MICROSOFT_AZURE__NO_PUBLIC_IP = MACHINE_FEATURE_COUNT + 13;
+
+	/**
+	 * The feature id for the '<em><b>Static public ip</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_MICROSOFT_AZURE__STATIC_PUBLIC_IP = MACHINE_FEATURE_COUNT + 14;
+
+	/**
+	 * The feature id for the '<em><b>Docker port</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_MICROSOFT_AZURE__DOCKER_PORT = MACHINE_FEATURE_COUNT + 15;
+
+	/**
+	 * The feature id for the '<em><b>Use private ip</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_MICROSOFT_AZURE__USE_PRIVATE_IP = MACHINE_FEATURE_COUNT + 16;
+
+	/**
+	 * The feature id for the '<em><b>Image</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_MICROSOFT_AZURE__IMAGE = MACHINE_FEATURE_COUNT + 17;
+
+	/**
 	 * The number of structural features of the '<em>Machine Microsoft Azure</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MACHINE_MICROSOFT_AZURE_FEATURE_COUNT = MACHINE_FEATURE_COUNT + 2;
+	int MACHINE_MICROSOFT_AZURE_FEATURE_COUNT = MACHINE_FEATURE_COUNT + 18;
 
 	/**
 	 * The operation id for the '<em>Occi Create</em>' operation.
@@ -4391,7 +5257,7 @@ public interface DockerPackage extends EPackage {
 	 * @see org.occiware.clouddesigner.occi.docker.impl.DockerPackageImpl#getMachine_Microsoft_Hyper_V()
 	 * @generated
 	 */
-	int MACHINE_MICROSOFT_HYPER_V = 12;
+	int MACHINE_MICROSOFT_HYPER_V = 14;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -4691,13 +5557,13 @@ public interface DockerPackage extends EPackage {
 	int MACHINE_MICROSOFT_HYPER_V__TLS_SAN = MACHINE__TLS_SAN;
 
 	/**
-	 * The feature id for the '<em><b>Boot2docker location</b></em>' attribute.
+	 * The feature id for the '<em><b>Virtual switch</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MACHINE_MICROSOFT_HYPER_V__BOOT2DOCKER_LOCATION = MACHINE_FEATURE_COUNT + 0;
+	int MACHINE_MICROSOFT_HYPER_V__VIRTUAL_SWITCH = MACHINE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Boot2docker url</b></em>' attribute.
@@ -4718,13 +5584,22 @@ public interface DockerPackage extends EPackage {
 	int MACHINE_MICROSOFT_HYPER_V__DISK_SIZE = MACHINE_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Virtual switch</b></em>' attribute.
+	 * The feature id for the '<em><b>Static macaddress</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MACHINE_MICROSOFT_HYPER_V__VIRTUAL_SWITCH = MACHINE_FEATURE_COUNT + 3;
+	int MACHINE_MICROSOFT_HYPER_V__STATIC_MACADDRESS = MACHINE_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Vlan id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_MICROSOFT_HYPER_V__VLAN_ID = MACHINE_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>Machine Microsoft Hyper V</em>' class.
@@ -4733,7 +5608,7 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MACHINE_MICROSOFT_HYPER_V_FEATURE_COUNT = MACHINE_FEATURE_COUNT + 4;
+	int MACHINE_MICROSOFT_HYPER_V_FEATURE_COUNT = MACHINE_FEATURE_COUNT + 5;
 
 	/**
 	 * The operation id for the '<em>Occi Create</em>' operation.
@@ -4833,7 +5708,7 @@ public interface DockerPackage extends EPackage {
 	 * @see org.occiware.clouddesigner.occi.docker.impl.DockerPackageImpl#getMachine_OpenStack()
 	 * @generated
 	 */
-	int MACHINE_OPEN_STACK = 13;
+	int MACHINE_OPEN_STACK = 15;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -5142,13 +6017,31 @@ public interface DockerPackage extends EPackage {
 	int MACHINE_OPEN_STACK__FLAVOR_ID = MACHINE_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Flavor name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_OPEN_STACK__FLAVOR_NAME = MACHINE_FEATURE_COUNT + 1;
+
+	/**
 	 * The feature id for the '<em><b>Image id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MACHINE_OPEN_STACK__IMAGE_ID = MACHINE_FEATURE_COUNT + 1;
+	int MACHINE_OPEN_STACK__IMAGE_ID = MACHINE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Image name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_OPEN_STACK__IMAGE_NAME = MACHINE_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Auth url</b></em>' attribute.
@@ -5157,7 +6050,7 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MACHINE_OPEN_STACK__AUTH_URL = MACHINE_FEATURE_COUNT + 2;
+	int MACHINE_OPEN_STACK__AUTH_URL = MACHINE_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Username</b></em>' attribute.
@@ -5166,7 +6059,7 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MACHINE_OPEN_STACK__USERNAME = MACHINE_FEATURE_COUNT + 3;
+	int MACHINE_OPEN_STACK__USERNAME = MACHINE_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Password</b></em>' attribute.
@@ -5175,7 +6068,7 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MACHINE_OPEN_STACK__PASSWORD = MACHINE_FEATURE_COUNT + 4;
+	int MACHINE_OPEN_STACK__PASSWORD = MACHINE_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Tenant name</b></em>' attribute.
@@ -5184,7 +6077,7 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MACHINE_OPEN_STACK__TENANT_NAME = MACHINE_FEATURE_COUNT + 5;
+	int MACHINE_OPEN_STACK__TENANT_NAME = MACHINE_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Tenant id</b></em>' attribute.
@@ -5193,7 +6086,7 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MACHINE_OPEN_STACK__TENANT_ID = MACHINE_FEATURE_COUNT + 6;
+	int MACHINE_OPEN_STACK__TENANT_ID = MACHINE_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Region</b></em>' attribute.
@@ -5202,7 +6095,7 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MACHINE_OPEN_STACK__REGION = MACHINE_FEATURE_COUNT + 7;
+	int MACHINE_OPEN_STACK__REGION = MACHINE_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>Endpoint type</b></em>' attribute.
@@ -5211,7 +6104,7 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MACHINE_OPEN_STACK__ENDPOINT_TYPE = MACHINE_FEATURE_COUNT + 8;
+	int MACHINE_OPEN_STACK__ENDPOINT_TYPE = MACHINE_FEATURE_COUNT + 10;
 
 	/**
 	 * The feature id for the '<em><b>Net id</b></em>' attribute.
@@ -5220,7 +6113,16 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MACHINE_OPEN_STACK__NET_ID = MACHINE_FEATURE_COUNT + 9;
+	int MACHINE_OPEN_STACK__NET_ID = MACHINE_FEATURE_COUNT + 11;
+
+	/**
+	 * The feature id for the '<em><b>Net name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_OPEN_STACK__NET_NAME = MACHINE_FEATURE_COUNT + 12;
 
 	/**
 	 * The feature id for the '<em><b>Sec groups</b></em>' attribute.
@@ -5229,7 +6131,7 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MACHINE_OPEN_STACK__SEC_GROUPS = MACHINE_FEATURE_COUNT + 10;
+	int MACHINE_OPEN_STACK__SEC_GROUPS = MACHINE_FEATURE_COUNT + 13;
 
 	/**
 	 * The feature id for the '<em><b>Floatingip pool</b></em>' attribute.
@@ -5238,7 +6140,97 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MACHINE_OPEN_STACK__FLOATINGIP_POOL = MACHINE_FEATURE_COUNT + 11;
+	int MACHINE_OPEN_STACK__FLOATINGIP_POOL = MACHINE_FEATURE_COUNT + 14;
+
+	/**
+	 * The feature id for the '<em><b>Active timeout</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_OPEN_STACK__ACTIVE_TIMEOUT = MACHINE_FEATURE_COUNT + 15;
+
+	/**
+	 * The feature id for the '<em><b>Availability zone</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_OPEN_STACK__AVAILABILITY_ZONE = MACHINE_FEATURE_COUNT + 16;
+
+	/**
+	 * The feature id for the '<em><b>Domain id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_OPEN_STACK__DOMAIN_ID = MACHINE_FEATURE_COUNT + 17;
+
+	/**
+	 * The feature id for the '<em><b>Domain name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_OPEN_STACK__DOMAIN_NAME = MACHINE_FEATURE_COUNT + 18;
+
+	/**
+	 * The feature id for the '<em><b>Insecure</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_OPEN_STACK__INSECURE = MACHINE_FEATURE_COUNT + 19;
+
+	/**
+	 * The feature id for the '<em><b>Ip version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_OPEN_STACK__IP_VERSION = MACHINE_FEATURE_COUNT + 20;
+
+	/**
+	 * The feature id for the '<em><b>Keypair name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_OPEN_STACK__KEYPAIR_NAME = MACHINE_FEATURE_COUNT + 21;
+
+	/**
+	 * The feature id for the '<em><b>Private key file</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_OPEN_STACK__PRIVATE_KEY_FILE = MACHINE_FEATURE_COUNT + 22;
+
+	/**
+	 * The feature id for the '<em><b>Ssh port</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_OPEN_STACK__SSH_PORT = MACHINE_FEATURE_COUNT + 23;
+
+	/**
+	 * The feature id for the '<em><b>Ssh user</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_OPEN_STACK__SSH_USER = MACHINE_FEATURE_COUNT + 24;
 
 	/**
 	 * The number of structural features of the '<em>Machine Open Stack</em>' class.
@@ -5247,7 +6239,7 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MACHINE_OPEN_STACK_FEATURE_COUNT = MACHINE_FEATURE_COUNT + 12;
+	int MACHINE_OPEN_STACK_FEATURE_COUNT = MACHINE_FEATURE_COUNT + 25;
 
 	/**
 	 * The operation id for the '<em>Occi Create</em>' operation.
@@ -5347,7 +6339,7 @@ public interface DockerPackage extends EPackage {
 	 * @see org.occiware.clouddesigner.occi.docker.impl.DockerPackageImpl#getMachine_Rackspace()
 	 * @generated
 	 */
-	int MACHINE_RACKSPACE = 14;
+	int MACHINE_RACKSPACE = 16;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -5719,13 +6711,22 @@ public interface DockerPackage extends EPackage {
 	int MACHINE_RACKSPACE__SSH_PORT = MACHINE_FEATURE_COUNT + 7;
 
 	/**
+	 * The feature id for the '<em><b>Docker install</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_RACKSPACE__DOCKER_INSTALL = MACHINE_FEATURE_COUNT + 8;
+
+	/**
 	 * The number of structural features of the '<em>Machine Rackspace</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MACHINE_RACKSPACE_FEATURE_COUNT = MACHINE_FEATURE_COUNT + 8;
+	int MACHINE_RACKSPACE_FEATURE_COUNT = MACHINE_FEATURE_COUNT + 9;
 
 	/**
 	 * The operation id for the '<em>Occi Create</em>' operation.
@@ -5825,7 +6826,7 @@ public interface DockerPackage extends EPackage {
 	 * @see org.occiware.clouddesigner.occi.docker.impl.DockerPackageImpl#getMachine_VirtualBox()
 	 * @generated
 	 */
-	int MACHINE_VIRTUAL_BOX = 15;
+	int MACHINE_VIRTUAL_BOX = 17;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -6143,13 +7144,94 @@ public interface DockerPackage extends EPackage {
 	int MACHINE_VIRTUAL_BOX__DISK_SIZE = MACHINE_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Host dns resolver</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VIRTUAL_BOX__HOST_DNS_RESOLVER = MACHINE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Import boot2docker vm</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VIRTUAL_BOX__IMPORT_BOOT2DOCKER_VM = MACHINE_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Hostonly cidr</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VIRTUAL_BOX__HOSTONLY_CIDR = MACHINE_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Hostonly nictype</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VIRTUAL_BOX__HOSTONLY_NICTYPE = MACHINE_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Hostonly nicpromisc</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VIRTUAL_BOX__HOSTONLY_NICPROMISC = MACHINE_FEATURE_COUNT + 6;
+
+	/**
+	 * The feature id for the '<em><b>No share</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VIRTUAL_BOX__NO_SHARE = MACHINE_FEATURE_COUNT + 7;
+
+	/**
+	 * The feature id for the '<em><b>No dns proxy</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VIRTUAL_BOX__NO_DNS_PROXY = MACHINE_FEATURE_COUNT + 8;
+
+	/**
+	 * The feature id for the '<em><b>No vtx check</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VIRTUAL_BOX__NO_VTX_CHECK = MACHINE_FEATURE_COUNT + 9;
+
+	/**
+	 * The feature id for the '<em><b>Share folder</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VIRTUAL_BOX__SHARE_FOLDER = MACHINE_FEATURE_COUNT + 10;
+
+	/**
 	 * The number of structural features of the '<em>Machine Virtual Box</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MACHINE_VIRTUAL_BOX_FEATURE_COUNT = MACHINE_FEATURE_COUNT + 2;
+	int MACHINE_VIRTUAL_BOX_FEATURE_COUNT = MACHINE_FEATURE_COUNT + 11;
 
 	/**
 	 * The operation id for the '<em>Occi Create</em>' operation.
@@ -6249,7 +7331,7 @@ public interface DockerPackage extends EPackage {
 	 * @see org.occiware.clouddesigner.occi.docker.impl.DockerPackageImpl#getMachine_VMware_Fusion()
 	 * @generated
 	 */
-	int MACHINE_VMWARE_FUSION = 16;
+	int MACHINE_VMWARE_FUSION = 18;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -6576,13 +7658,22 @@ public interface DockerPackage extends EPackage {
 	int MACHINE_VMWARE_FUSION__MEMORY_SIZE = MACHINE_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>No share</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_VMWARE_FUSION__NO_SHARE = MACHINE_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Machine VMware Fusion</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MACHINE_VMWARE_FUSION_FEATURE_COUNT = MACHINE_FEATURE_COUNT + 3;
+	int MACHINE_VMWARE_FUSION_FEATURE_COUNT = MACHINE_FEATURE_COUNT + 4;
 
 	/**
 	 * The operation id for the '<em>Occi Create</em>' operation.
@@ -6682,7 +7773,7 @@ public interface DockerPackage extends EPackage {
 	 * @see org.occiware.clouddesigner.occi.docker.impl.DockerPackageImpl#getMachine_VMware_vCloud_Air()
 	 * @generated
 	 */
-	int MACHINE_VMWARE_VCLOUD_AIR = 17;
+	int MACHINE_VMWARE_VCLOUD_AIR = 19;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -7223,7 +8314,7 @@ public interface DockerPackage extends EPackage {
 	 * @see org.occiware.clouddesigner.occi.docker.impl.DockerPackageImpl#getMachine_VMware_vSphere()
 	 * @generated
 	 */
-	int MACHINE_VMWARE_VSPHERE = 18;
+	int MACHINE_VMWARE_VSPHERE = 20;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -7730,6 +8821,1251 @@ public interface DockerPackage extends EPackage {
 	int MACHINE_VMWARE_VSPHERE_OPERATION_COUNT = MACHINE_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.docker.impl.Machine_ExoscaleImpl <em>Machine Exoscale</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.occiware.clouddesigner.occi.docker.impl.Machine_ExoscaleImpl
+	 * @see org.occiware.clouddesigner.occi.docker.impl.DockerPackageImpl#getMachine_Exoscale()
+	 * @generated
+	 */
+	int MACHINE_EXOSCALE = 21;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXOSCALE__ID = MACHINE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Title</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXOSCALE__TITLE = MACHINE__TITLE;
+
+	/**
+	 * The feature id for the '<em><b>Kind</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXOSCALE__KIND = MACHINE__KIND;
+
+	/**
+	 * The feature id for the '<em><b>Mixins</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXOSCALE__MIXINS = MACHINE__MIXINS;
+
+	/**
+	 * The feature id for the '<em><b>Attributes</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXOSCALE__ATTRIBUTES = MACHINE__ATTRIBUTES;
+
+	/**
+	 * The feature id for the '<em><b>Summary</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXOSCALE__SUMMARY = MACHINE__SUMMARY;
+
+	/**
+	 * The feature id for the '<em><b>Links</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXOSCALE__LINKS = MACHINE__LINKS;
+
+	/**
+	 * The feature id for the '<em><b>Architecture</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXOSCALE__ARCHITECTURE = MACHINE__ARCHITECTURE;
+
+	/**
+	 * The feature id for the '<em><b>Cores</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXOSCALE__CORES = MACHINE__CORES;
+
+	/**
+	 * The feature id for the '<em><b>Hostname</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXOSCALE__HOSTNAME = MACHINE__HOSTNAME;
+
+	/**
+	 * The feature id for the '<em><b>Share</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXOSCALE__SHARE = MACHINE__SHARE;
+
+	/**
+	 * The feature id for the '<em><b>Speed</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXOSCALE__SPEED = MACHINE__SPEED;
+
+	/**
+	 * The feature id for the '<em><b>Memory</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXOSCALE__MEMORY = MACHINE__MEMORY;
+
+	/**
+	 * The feature id for the '<em><b>State</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXOSCALE__STATE = MACHINE__STATE;
+
+	/**
+	 * The feature id for the '<em><b>Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXOSCALE__MESSAGE = MACHINE__MESSAGE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXOSCALE__NAME = MACHINE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Engine install url</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXOSCALE__ENGINE_INSTALL_URL = MACHINE__ENGINE_INSTALL_URL;
+
+	/**
+	 * The feature id for the '<em><b>Engine opt</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXOSCALE__ENGINE_OPT = MACHINE__ENGINE_OPT;
+
+	/**
+	 * The feature id for the '<em><b>Engine insecure registry</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXOSCALE__ENGINE_INSECURE_REGISTRY = MACHINE__ENGINE_INSECURE_REGISTRY;
+
+	/**
+	 * The feature id for the '<em><b>Engine registry mirror</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXOSCALE__ENGINE_REGISTRY_MIRROR = MACHINE__ENGINE_REGISTRY_MIRROR;
+
+	/**
+	 * The feature id for the '<em><b>Engine label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXOSCALE__ENGINE_LABEL = MACHINE__ENGINE_LABEL;
+
+	/**
+	 * The feature id for the '<em><b>Engine storage driver</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXOSCALE__ENGINE_STORAGE_DRIVER = MACHINE__ENGINE_STORAGE_DRIVER;
+
+	/**
+	 * The feature id for the '<em><b>Engine env</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXOSCALE__ENGINE_ENV = MACHINE__ENGINE_ENV;
+
+	/**
+	 * The feature id for the '<em><b>Swarm</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXOSCALE__SWARM = MACHINE__SWARM;
+
+	/**
+	 * The feature id for the '<em><b>Swarm image</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXOSCALE__SWARM_IMAGE = MACHINE__SWARM_IMAGE;
+
+	/**
+	 * The feature id for the '<em><b>Swarm master</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXOSCALE__SWARM_MASTER = MACHINE__SWARM_MASTER;
+
+	/**
+	 * The feature id for the '<em><b>Swarm discovery</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXOSCALE__SWARM_DISCOVERY = MACHINE__SWARM_DISCOVERY;
+
+	/**
+	 * The feature id for the '<em><b>Swarm strategy</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXOSCALE__SWARM_STRATEGY = MACHINE__SWARM_STRATEGY;
+
+	/**
+	 * The feature id for the '<em><b>Swarm opt</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXOSCALE__SWARM_OPT = MACHINE__SWARM_OPT;
+
+	/**
+	 * The feature id for the '<em><b>Swarm host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXOSCALE__SWARM_HOST = MACHINE__SWARM_HOST;
+
+	/**
+	 * The feature id for the '<em><b>Swarm addr</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXOSCALE__SWARM_ADDR = MACHINE__SWARM_ADDR;
+
+	/**
+	 * The feature id for the '<em><b>Swarm experimental</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXOSCALE__SWARM_EXPERIMENTAL = MACHINE__SWARM_EXPERIMENTAL;
+
+	/**
+	 * The feature id for the '<em><b>Tls san</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXOSCALE__TLS_SAN = MACHINE__TLS_SAN;
+
+	/**
+	 * The feature id for the '<em><b>Url</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXOSCALE__URL = MACHINE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Api key</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXOSCALE__API_KEY = MACHINE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Api secret key</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXOSCALE__API_SECRET_KEY = MACHINE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Instance profile</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXOSCALE__INSTANCE_PROFILE = MACHINE_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Image</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXOSCALE__IMAGE = MACHINE_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Security group</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXOSCALE__SECURITY_GROUP = MACHINE_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Availability zone</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXOSCALE__AVAILABILITY_ZONE = MACHINE_FEATURE_COUNT + 6;
+
+	/**
+	 * The feature id for the '<em><b>Ssh user</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXOSCALE__SSH_USER = MACHINE_FEATURE_COUNT + 7;
+
+	/**
+	 * The feature id for the '<em><b>Userdata</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXOSCALE__USERDATA = MACHINE_FEATURE_COUNT + 8;
+
+	/**
+	 * The feature id for the '<em><b>Affinity group</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXOSCALE__AFFINITY_GROUP = MACHINE_FEATURE_COUNT + 9;
+
+	/**
+	 * The number of structural features of the '<em>Machine Exoscale</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXOSCALE_FEATURE_COUNT = MACHINE_FEATURE_COUNT + 10;
+
+	/**
+	 * The operation id for the '<em>Occi Create</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXOSCALE___OCCI_CREATE = MACHINE___OCCI_CREATE;
+
+	/**
+	 * The operation id for the '<em>Occi Retrieve</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXOSCALE___OCCI_RETRIEVE = MACHINE___OCCI_RETRIEVE;
+
+	/**
+	 * The operation id for the '<em>Occi Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXOSCALE___OCCI_UPDATE = MACHINE___OCCI_UPDATE;
+
+	/**
+	 * The operation id for the '<em>Occi Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXOSCALE___OCCI_DELETE = MACHINE___OCCI_DELETE;
+
+	/**
+	 * The operation id for the '<em>Start</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXOSCALE___START = MACHINE___START;
+
+	/**
+	 * The operation id for the '<em>Stop</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXOSCALE___STOP__STOPMETHOD = MACHINE___STOP__STOPMETHOD;
+
+	/**
+	 * The operation id for the '<em>Restart</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXOSCALE___RESTART__RESTARTMETHOD = MACHINE___RESTART__RESTARTMETHOD;
+
+	/**
+	 * The operation id for the '<em>Suspend</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXOSCALE___SUSPEND__SUSPENDMETHOD = MACHINE___SUSPEND__SUSPENDMETHOD;
+
+	/**
+	 * The operation id for the '<em>Save</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXOSCALE___SAVE__SAVEMETHOD_STRING = MACHINE___SAVE__SAVEMETHOD_STRING;
+
+	/**
+	 * The number of operations of the '<em>Machine Exoscale</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXOSCALE_OPERATION_COUNT = MACHINE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.docker.impl.ClusterImpl <em>Cluster</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.occiware.clouddesigner.occi.docker.impl.ClusterImpl
+	 * @see org.occiware.clouddesigner.occi.docker.impl.DockerPackageImpl#getCluster()
+	 * @generated
+	 */
+	int CLUSTER = 23;
+
+	/**
+	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.docker.impl.Machine_Grid5000Impl <em>Machine Grid5000</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.occiware.clouddesigner.occi.docker.impl.Machine_Grid5000Impl
+	 * @see org.occiware.clouddesigner.occi.docker.impl.DockerPackageImpl#getMachine_Grid5000()
+	 * @generated
+	 */
+	int MACHINE_GRID5000 = 22;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__ID = MACHINE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Title</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__TITLE = MACHINE__TITLE;
+
+	/**
+	 * The feature id for the '<em><b>Kind</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__KIND = MACHINE__KIND;
+
+	/**
+	 * The feature id for the '<em><b>Mixins</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__MIXINS = MACHINE__MIXINS;
+
+	/**
+	 * The feature id for the '<em><b>Attributes</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__ATTRIBUTES = MACHINE__ATTRIBUTES;
+
+	/**
+	 * The feature id for the '<em><b>Summary</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__SUMMARY = MACHINE__SUMMARY;
+
+	/**
+	 * The feature id for the '<em><b>Links</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__LINKS = MACHINE__LINKS;
+
+	/**
+	 * The feature id for the '<em><b>Architecture</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__ARCHITECTURE = MACHINE__ARCHITECTURE;
+
+	/**
+	 * The feature id for the '<em><b>Cores</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__CORES = MACHINE__CORES;
+
+	/**
+	 * The feature id for the '<em><b>Hostname</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__HOSTNAME = MACHINE__HOSTNAME;
+
+	/**
+	 * The feature id for the '<em><b>Share</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__SHARE = MACHINE__SHARE;
+
+	/**
+	 * The feature id for the '<em><b>Speed</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__SPEED = MACHINE__SPEED;
+
+	/**
+	 * The feature id for the '<em><b>Memory</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__MEMORY = MACHINE__MEMORY;
+
+	/**
+	 * The feature id for the '<em><b>State</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__STATE = MACHINE__STATE;
+
+	/**
+	 * The feature id for the '<em><b>Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__MESSAGE = MACHINE__MESSAGE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__NAME = MACHINE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Engine install url</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__ENGINE_INSTALL_URL = MACHINE__ENGINE_INSTALL_URL;
+
+	/**
+	 * The feature id for the '<em><b>Engine opt</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__ENGINE_OPT = MACHINE__ENGINE_OPT;
+
+	/**
+	 * The feature id for the '<em><b>Engine insecure registry</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__ENGINE_INSECURE_REGISTRY = MACHINE__ENGINE_INSECURE_REGISTRY;
+
+	/**
+	 * The feature id for the '<em><b>Engine registry mirror</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__ENGINE_REGISTRY_MIRROR = MACHINE__ENGINE_REGISTRY_MIRROR;
+
+	/**
+	 * The feature id for the '<em><b>Engine label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__ENGINE_LABEL = MACHINE__ENGINE_LABEL;
+
+	/**
+	 * The feature id for the '<em><b>Engine storage driver</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__ENGINE_STORAGE_DRIVER = MACHINE__ENGINE_STORAGE_DRIVER;
+
+	/**
+	 * The feature id for the '<em><b>Engine env</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__ENGINE_ENV = MACHINE__ENGINE_ENV;
+
+	/**
+	 * The feature id for the '<em><b>Swarm</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__SWARM = MACHINE__SWARM;
+
+	/**
+	 * The feature id for the '<em><b>Swarm image</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__SWARM_IMAGE = MACHINE__SWARM_IMAGE;
+
+	/**
+	 * The feature id for the '<em><b>Swarm master</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__SWARM_MASTER = MACHINE__SWARM_MASTER;
+
+	/**
+	 * The feature id for the '<em><b>Swarm discovery</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__SWARM_DISCOVERY = MACHINE__SWARM_DISCOVERY;
+
+	/**
+	 * The feature id for the '<em><b>Swarm strategy</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__SWARM_STRATEGY = MACHINE__SWARM_STRATEGY;
+
+	/**
+	 * The feature id for the '<em><b>Swarm opt</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__SWARM_OPT = MACHINE__SWARM_OPT;
+
+	/**
+	 * The feature id for the '<em><b>Swarm host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__SWARM_HOST = MACHINE__SWARM_HOST;
+
+	/**
+	 * The feature id for the '<em><b>Swarm addr</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__SWARM_ADDR = MACHINE__SWARM_ADDR;
+
+	/**
+	 * The feature id for the '<em><b>Swarm experimental</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__SWARM_EXPERIMENTAL = MACHINE__SWARM_EXPERIMENTAL;
+
+	/**
+	 * The feature id for the '<em><b>Tls san</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__TLS_SAN = MACHINE__TLS_SAN;
+
+	/**
+	 * The feature id for the '<em><b>Username</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__USERNAME = MACHINE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Password</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__PASSWORD = MACHINE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Site</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__SITE = MACHINE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Walltime</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__WALLTIME = MACHINE_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Ssh private key</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__SSH_PRIVATE_KEY = MACHINE_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Ssh public key</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__SSH_PUBLIC_KEY = MACHINE_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Image</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__IMAGE = MACHINE_FEATURE_COUNT + 6;
+
+	/**
+	 * The feature id for the '<em><b>Resource properties</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__RESOURCE_PROPERTIES = MACHINE_FEATURE_COUNT + 7;
+
+	/**
+	 * The feature id for the '<em><b>Use job reservation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__USE_JOB_RESERVATION = MACHINE_FEATURE_COUNT + 8;
+
+	/**
+	 * The feature id for the '<em><b>Host to provision</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000__HOST_TO_PROVISION = MACHINE_FEATURE_COUNT + 9;
+
+	/**
+	 * The number of structural features of the '<em>Machine Grid5000</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000_FEATURE_COUNT = MACHINE_FEATURE_COUNT + 10;
+
+	/**
+	 * The operation id for the '<em>Occi Create</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000___OCCI_CREATE = MACHINE___OCCI_CREATE;
+
+	/**
+	 * The operation id for the '<em>Occi Retrieve</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000___OCCI_RETRIEVE = MACHINE___OCCI_RETRIEVE;
+
+	/**
+	 * The operation id for the '<em>Occi Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000___OCCI_UPDATE = MACHINE___OCCI_UPDATE;
+
+	/**
+	 * The operation id for the '<em>Occi Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000___OCCI_DELETE = MACHINE___OCCI_DELETE;
+
+	/**
+	 * The operation id for the '<em>Start</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000___START = MACHINE___START;
+
+	/**
+	 * The operation id for the '<em>Stop</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000___STOP__STOPMETHOD = MACHINE___STOP__STOPMETHOD;
+
+	/**
+	 * The operation id for the '<em>Restart</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000___RESTART__RESTARTMETHOD = MACHINE___RESTART__RESTARTMETHOD;
+
+	/**
+	 * The operation id for the '<em>Suspend</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000___SUSPEND__SUSPENDMETHOD = MACHINE___SUSPEND__SUSPENDMETHOD;
+
+	/**
+	 * The operation id for the '<em>Save</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000___SAVE__SAVEMETHOD_STRING = MACHINE___SAVE__SAVEMETHOD_STRING;
+
+	/**
+	 * The number of operations of the '<em>Machine Grid5000</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_GRID5000_OPERATION_COUNT = MACHINE_OPERATION_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER__ID = InfrastructurePackage.COMPUTE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Title</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER__TITLE = InfrastructurePackage.COMPUTE__TITLE;
+
+	/**
+	 * The feature id for the '<em><b>Kind</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER__KIND = InfrastructurePackage.COMPUTE__KIND;
+
+	/**
+	 * The feature id for the '<em><b>Mixins</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER__MIXINS = InfrastructurePackage.COMPUTE__MIXINS;
+
+	/**
+	 * The feature id for the '<em><b>Attributes</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER__ATTRIBUTES = InfrastructurePackage.COMPUTE__ATTRIBUTES;
+
+	/**
+	 * The feature id for the '<em><b>Summary</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER__SUMMARY = InfrastructurePackage.COMPUTE__SUMMARY;
+
+	/**
+	 * The feature id for the '<em><b>Links</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER__LINKS = InfrastructurePackage.COMPUTE__LINKS;
+
+	/**
+	 * The feature id for the '<em><b>Architecture</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER__ARCHITECTURE = InfrastructurePackage.COMPUTE__ARCHITECTURE;
+
+	/**
+	 * The feature id for the '<em><b>Cores</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER__CORES = InfrastructurePackage.COMPUTE__CORES;
+
+	/**
+	 * The feature id for the '<em><b>Hostname</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER__HOSTNAME = InfrastructurePackage.COMPUTE__HOSTNAME;
+
+	/**
+	 * The feature id for the '<em><b>Share</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER__SHARE = InfrastructurePackage.COMPUTE__SHARE;
+
+	/**
+	 * The feature id for the '<em><b>Speed</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER__SPEED = InfrastructurePackage.COMPUTE__SPEED;
+
+	/**
+	 * The feature id for the '<em><b>Memory</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER__MEMORY = InfrastructurePackage.COMPUTE__MEMORY;
+
+	/**
+	 * The feature id for the '<em><b>State</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER__STATE = InfrastructurePackage.COMPUTE__STATE;
+
+	/**
+	 * The feature id for the '<em><b>Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER__MESSAGE = InfrastructurePackage.COMPUTE__MESSAGE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER__NAME = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Cluster</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER_FEATURE_COUNT = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Occi Create</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER___OCCI_CREATE = InfrastructurePackage.COMPUTE___OCCI_CREATE;
+
+	/**
+	 * The operation id for the '<em>Occi Retrieve</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER___OCCI_RETRIEVE = InfrastructurePackage.COMPUTE___OCCI_RETRIEVE;
+
+	/**
+	 * The operation id for the '<em>Occi Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER___OCCI_UPDATE = InfrastructurePackage.COMPUTE___OCCI_UPDATE;
+
+	/**
+	 * The operation id for the '<em>Occi Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER___OCCI_DELETE = InfrastructurePackage.COMPUTE___OCCI_DELETE;
+
+	/**
+	 * The operation id for the '<em>Start</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER___START = InfrastructurePackage.COMPUTE___START;
+
+	/**
+	 * The operation id for the '<em>Stop</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER___STOP__STOPMETHOD = InfrastructurePackage.COMPUTE___STOP__STOPMETHOD;
+
+	/**
+	 * The operation id for the '<em>Restart</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER___RESTART__RESTARTMETHOD = InfrastructurePackage.COMPUTE___RESTART__RESTARTMETHOD;
+
+	/**
+	 * The operation id for the '<em>Suspend</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER___SUSPEND__SUSPENDMETHOD = InfrastructurePackage.COMPUTE___SUSPEND__SUSPENDMETHOD;
+
+	/**
+	 * The operation id for the '<em>Save</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER___SAVE__SAVEMETHOD_STRING = InfrastructurePackage.COMPUTE___SAVE__SAVEMETHOD_STRING;
+
+	/**
+	 * The number of operations of the '<em>Cluster</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER_OPERATION_COUNT = InfrastructurePackage.COMPUTE_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.docker.Mode <em>Mode</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7737,7 +10073,7 @@ public interface DockerPackage extends EPackage {
 	 * @see org.occiware.clouddesigner.occi.docker.impl.DockerPackageImpl#getMode()
 	 * @generated
 	 */
-	int MODE = 19;
+	int MODE = 24;
 
 
 	/**
@@ -8652,6 +10988,115 @@ public interface DockerPackage extends EPackage {
 	EAttribute getMachine_Tls_san();
 
 	/**
+	 * Returns the meta object for class '{@link org.occiware.clouddesigner.occi.docker.Volume <em>Volume</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Volume</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Volume
+	 * @generated
+	 */
+	EClass getVolume();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Volume#getDriver <em>Driver</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Driver</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Volume#getDriver()
+	 * @see #getVolume()
+	 * @generated
+	 */
+	EAttribute getVolume_Driver();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Volume#getLabels <em>Labels</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Labels</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Volume#getLabels()
+	 * @see #getVolume()
+	 * @generated
+	 */
+	EAttribute getVolume_Labels();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Volume#getOptions <em>Options</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Options</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Volume#getOptions()
+	 * @see #getVolume()
+	 * @generated
+	 */
+	EAttribute getVolume_Options();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Volume#getSource <em>Source</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Source</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Volume#getSource()
+	 * @see #getVolume()
+	 * @generated
+	 */
+	EAttribute getVolume_Source();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Volume#getDestination <em>Destination</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Destination</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Volume#getDestination()
+	 * @see #getVolume()
+	 * @generated
+	 */
+	EAttribute getVolume_Destination();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Volume#getMode <em>Mode</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Mode</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Volume#getMode()
+	 * @see #getVolume()
+	 * @generated
+	 */
+	EAttribute getVolume_Mode();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Volume#getRw <em>Rw</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Rw</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Volume#getRw()
+	 * @see #getVolume()
+	 * @generated
+	 */
+	EAttribute getVolume_Rw();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Volume#getPropagation <em>Propagation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Propagation</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Volume#getPropagation()
+	 * @see #getVolume()
+	 * @generated
+	 */
+	EAttribute getVolume_Propagation();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Volume#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Volume#getName()
+	 * @see #getVolume()
+	 * @generated
+	 */
+	EAttribute getVolume_Name();
+
+	/**
 	 * Returns the meta object for class '{@link org.occiware.clouddesigner.occi.docker.Network <em>Network</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8792,6 +11237,71 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getNetwork_Subnet();
+
+	/**
+	 * Returns the meta object for class '{@link org.occiware.clouddesigner.occi.docker.Machine_Generic <em>Machine Generic</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Machine Generic</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Generic
+	 * @generated
+	 */
+	EClass getMachine_Generic();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Generic#getEngine_port <em>Engine port</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Engine port</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Generic#getEngine_port()
+	 * @see #getMachine_Generic()
+	 * @generated
+	 */
+	EAttribute getMachine_Generic_Engine_port();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Generic#getIp_address <em>Ip address</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Ip address</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Generic#getIp_address()
+	 * @see #getMachine_Generic()
+	 * @generated
+	 */
+	EAttribute getMachine_Generic_Ip_address();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Generic#getSsh_key <em>Ssh key</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Ssh key</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Generic#getSsh_key()
+	 * @see #getMachine_Generic()
+	 * @generated
+	 */
+	EAttribute getMachine_Generic_Ssh_key();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Generic#getSsh_user <em>Ssh user</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Ssh user</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Generic#getSsh_user()
+	 * @see #getMachine_Generic()
+	 * @generated
+	 */
+	EAttribute getMachine_Generic_Ssh_user();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Generic#getSsh_port <em>Ssh port</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Ssh port</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Generic#getSsh_port()
+	 * @see #getMachine_Generic()
+	 * @generated
+	 */
+	EAttribute getMachine_Generic_Ssh_port();
 
 	/**
 	 * Returns the meta object for class '{@link org.occiware.clouddesigner.occi.docker.Machine_Amazon_EC2 <em>Machine Amazon EC2</em>}'.
@@ -9175,6 +11685,28 @@ public interface DockerPackage extends EPackage {
 	EAttribute getMachine_IBM_SoftLayer_Region();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_IBM_SoftLayer#getPublic_vlan_id <em>Public vlan id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Public vlan id</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_IBM_SoftLayer#getPublic_vlan_id()
+	 * @see #getMachine_IBM_SoftLayer()
+	 * @generated
+	 */
+	EAttribute getMachine_IBM_SoftLayer_Public_vlan_id();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_IBM_SoftLayer#getPrivate_vlan_id <em>Private vlan id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Private vlan id</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_IBM_SoftLayer#getPrivate_vlan_id()
+	 * @see #getMachine_IBM_SoftLayer()
+	 * @generated
+	 */
+	EAttribute getMachine_IBM_SoftLayer_Private_vlan_id();
+
+	/**
 	 * Returns the meta object for class '{@link org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Azure <em>Machine Microsoft Azure</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9207,6 +11739,182 @@ public interface DockerPackage extends EPackage {
 	EAttribute getMachine_Microsoft_Azure_Subscription_cert();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Azure#getEnvironment <em>Environment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Environment</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Azure#getEnvironment()
+	 * @see #getMachine_Microsoft_Azure()
+	 * @generated
+	 */
+	EAttribute getMachine_Microsoft_Azure_Environment();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Azure#getLocation <em>Location</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Location</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Azure#getLocation()
+	 * @see #getMachine_Microsoft_Azure()
+	 * @generated
+	 */
+	EAttribute getMachine_Microsoft_Azure_Location();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Azure#getResource_group <em>Resource group</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Resource group</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Azure#getResource_group()
+	 * @see #getMachine_Microsoft_Azure()
+	 * @generated
+	 */
+	EAttribute getMachine_Microsoft_Azure_Resource_group();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Azure#getSize <em>Size</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Size</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Azure#getSize()
+	 * @see #getMachine_Microsoft_Azure()
+	 * @generated
+	 */
+	EAttribute getMachine_Microsoft_Azure_Size();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Azure#getSsh_user <em>Ssh user</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Ssh user</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Azure#getSsh_user()
+	 * @see #getMachine_Microsoft_Azure()
+	 * @generated
+	 */
+	EAttribute getMachine_Microsoft_Azure_Ssh_user();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Azure#getVnet <em>Vnet</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Vnet</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Azure#getVnet()
+	 * @see #getMachine_Microsoft_Azure()
+	 * @generated
+	 */
+	EAttribute getMachine_Microsoft_Azure_Vnet();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Azure#getSubnet <em>Subnet</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Subnet</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Azure#getSubnet()
+	 * @see #getMachine_Microsoft_Azure()
+	 * @generated
+	 */
+	EAttribute getMachine_Microsoft_Azure_Subnet();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Azure#getSubnet_prefix <em>Subnet prefix</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Subnet prefix</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Azure#getSubnet_prefix()
+	 * @see #getMachine_Microsoft_Azure()
+	 * @generated
+	 */
+	EAttribute getMachine_Microsoft_Azure_Subnet_prefix();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Azure#getAvailability_set <em>Availability set</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Availability set</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Azure#getAvailability_set()
+	 * @see #getMachine_Microsoft_Azure()
+	 * @generated
+	 */
+	EAttribute getMachine_Microsoft_Azure_Availability_set();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Azure#getOpen_port <em>Open port</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Open port</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Azure#getOpen_port()
+	 * @see #getMachine_Microsoft_Azure()
+	 * @generated
+	 */
+	EAttribute getMachine_Microsoft_Azure_Open_port();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Azure#getPrivate_ip_address <em>Private ip address</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Private ip address</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Azure#getPrivate_ip_address()
+	 * @see #getMachine_Microsoft_Azure()
+	 * @generated
+	 */
+	EAttribute getMachine_Microsoft_Azure_Private_ip_address();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Azure#getNo_public_ip <em>No public ip</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>No public ip</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Azure#getNo_public_ip()
+	 * @see #getMachine_Microsoft_Azure()
+	 * @generated
+	 */
+	EAttribute getMachine_Microsoft_Azure_No_public_ip();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Azure#getStatic_public_ip <em>Static public ip</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Static public ip</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Azure#getStatic_public_ip()
+	 * @see #getMachine_Microsoft_Azure()
+	 * @generated
+	 */
+	EAttribute getMachine_Microsoft_Azure_Static_public_ip();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Azure#getDocker_port <em>Docker port</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Docker port</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Azure#getDocker_port()
+	 * @see #getMachine_Microsoft_Azure()
+	 * @generated
+	 */
+	EAttribute getMachine_Microsoft_Azure_Docker_port();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Azure#getUse_private_ip <em>Use private ip</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Use private ip</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Azure#getUse_private_ip()
+	 * @see #getMachine_Microsoft_Azure()
+	 * @generated
+	 */
+	EAttribute getMachine_Microsoft_Azure_Use_private_ip();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Azure#getImage <em>Image</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Image</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Azure#getImage()
+	 * @see #getMachine_Microsoft_Azure()
+	 * @generated
+	 */
+	EAttribute getMachine_Microsoft_Azure_Image();
+
+	/**
 	 * Returns the meta object for class '{@link org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Hyper_V <em>Machine Microsoft Hyper V</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9215,17 +11923,6 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getMachine_Microsoft_Hyper_V();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Hyper_V#getBoot2docker_location <em>Boot2docker location</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Boot2docker location</em>'.
-	 * @see org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Hyper_V#getBoot2docker_location()
-	 * @see #getMachine_Microsoft_Hyper_V()
-	 * @generated
-	 */
-	EAttribute getMachine_Microsoft_Hyper_V_Boot2docker_location();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Hyper_V#getBoot2docker_url <em>Boot2docker url</em>}'.
@@ -9248,6 +11945,28 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getMachine_Microsoft_Hyper_V_Disk_size();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Hyper_V#getStatic_macaddress <em>Static macaddress</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Static macaddress</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Hyper_V#getStatic_macaddress()
+	 * @see #getMachine_Microsoft_Hyper_V()
+	 * @generated
+	 */
+	EAttribute getMachine_Microsoft_Hyper_V_Static_macaddress();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Hyper_V#getVlan_id <em>Vlan id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Vlan id</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Hyper_V#getVlan_id()
+	 * @see #getMachine_Microsoft_Hyper_V()
+	 * @generated
+	 */
+	EAttribute getMachine_Microsoft_Hyper_V_Vlan_id();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Hyper_V#getVirtual_switch <em>Virtual switch</em>}'.
@@ -9282,6 +12001,17 @@ public interface DockerPackage extends EPackage {
 	EAttribute getMachine_OpenStack_Flavor_id();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_OpenStack#getFlavor_name <em>Flavor name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Flavor name</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_OpenStack#getFlavor_name()
+	 * @see #getMachine_OpenStack()
+	 * @generated
+	 */
+	EAttribute getMachine_OpenStack_Flavor_name();
+
+	/**
 	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_OpenStack#getImage_id <em>Image id</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9291,6 +12021,17 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getMachine_OpenStack_Image_id();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_OpenStack#getImage_name <em>Image name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Image name</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_OpenStack#getImage_name()
+	 * @see #getMachine_OpenStack()
+	 * @generated
+	 */
+	EAttribute getMachine_OpenStack_Image_name();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_OpenStack#getAuth_url <em>Auth url</em>}'.
@@ -9381,6 +12122,17 @@ public interface DockerPackage extends EPackage {
 	EAttribute getMachine_OpenStack_Net_id();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_OpenStack#getNet_name <em>Net name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Net name</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_OpenStack#getNet_name()
+	 * @see #getMachine_OpenStack()
+	 * @generated
+	 */
+	EAttribute getMachine_OpenStack_Net_name();
+
+	/**
 	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_OpenStack#getSec_groups <em>Sec groups</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9401,6 +12153,116 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getMachine_OpenStack_Floatingip_pool();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_OpenStack#getActive_timeout <em>Active timeout</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Active timeout</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_OpenStack#getActive_timeout()
+	 * @see #getMachine_OpenStack()
+	 * @generated
+	 */
+	EAttribute getMachine_OpenStack_Active_timeout();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_OpenStack#getAvailability_zone <em>Availability zone</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Availability zone</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_OpenStack#getAvailability_zone()
+	 * @see #getMachine_OpenStack()
+	 * @generated
+	 */
+	EAttribute getMachine_OpenStack_Availability_zone();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_OpenStack#getDomain_id <em>Domain id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Domain id</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_OpenStack#getDomain_id()
+	 * @see #getMachine_OpenStack()
+	 * @generated
+	 */
+	EAttribute getMachine_OpenStack_Domain_id();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_OpenStack#getDomain_name <em>Domain name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Domain name</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_OpenStack#getDomain_name()
+	 * @see #getMachine_OpenStack()
+	 * @generated
+	 */
+	EAttribute getMachine_OpenStack_Domain_name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_OpenStack#isInsecure <em>Insecure</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Insecure</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_OpenStack#isInsecure()
+	 * @see #getMachine_OpenStack()
+	 * @generated
+	 */
+	EAttribute getMachine_OpenStack_Insecure();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_OpenStack#getIp_version <em>Ip version</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Ip version</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_OpenStack#getIp_version()
+	 * @see #getMachine_OpenStack()
+	 * @generated
+	 */
+	EAttribute getMachine_OpenStack_Ip_version();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_OpenStack#getKeypair_name <em>Keypair name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Keypair name</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_OpenStack#getKeypair_name()
+	 * @see #getMachine_OpenStack()
+	 * @generated
+	 */
+	EAttribute getMachine_OpenStack_Keypair_name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_OpenStack#getPrivate_key_file <em>Private key file</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Private key file</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_OpenStack#getPrivate_key_file()
+	 * @see #getMachine_OpenStack()
+	 * @generated
+	 */
+	EAttribute getMachine_OpenStack_Private_key_file();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_OpenStack#getSsh_port <em>Ssh port</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Ssh port</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_OpenStack#getSsh_port()
+	 * @see #getMachine_OpenStack()
+	 * @generated
+	 */
+	EAttribute getMachine_OpenStack_Ssh_port();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_OpenStack#getSsh_user <em>Ssh user</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Ssh user</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_OpenStack#getSsh_user()
+	 * @see #getMachine_OpenStack()
+	 * @generated
+	 */
+	EAttribute getMachine_OpenStack_Ssh_user();
 
 	/**
 	 * Returns the meta object for class '{@link org.occiware.clouddesigner.occi.docker.Machine_Rackspace <em>Machine Rackspace</em>}'.
@@ -9501,6 +12363,17 @@ public interface DockerPackage extends EPackage {
 	EAttribute getMachine_Rackspace_Ssh_port();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Rackspace#isDocker_install <em>Docker install</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Docker install</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Rackspace#isDocker_install()
+	 * @see #getMachine_Rackspace()
+	 * @generated
+	 */
+	EAttribute getMachine_Rackspace_Docker_install();
+
+	/**
 	 * Returns the meta object for class '{@link org.occiware.clouddesigner.occi.docker.Machine_VirtualBox <em>Machine Virtual Box</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9531,6 +12404,105 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getMachine_VirtualBox_Disk_size();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_VirtualBox#isHost_dns_resolver <em>Host dns resolver</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Host dns resolver</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_VirtualBox#isHost_dns_resolver()
+	 * @see #getMachine_VirtualBox()
+	 * @generated
+	 */
+	EAttribute getMachine_VirtualBox_Host_dns_resolver();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_VirtualBox#getImport_boot2docker_vm <em>Import boot2docker vm</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Import boot2docker vm</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_VirtualBox#getImport_boot2docker_vm()
+	 * @see #getMachine_VirtualBox()
+	 * @generated
+	 */
+	EAttribute getMachine_VirtualBox_Import_boot2docker_vm();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_VirtualBox#getHostonly_cidr <em>Hostonly cidr</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Hostonly cidr</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_VirtualBox#getHostonly_cidr()
+	 * @see #getMachine_VirtualBox()
+	 * @generated
+	 */
+	EAttribute getMachine_VirtualBox_Hostonly_cidr();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_VirtualBox#getHostonly_nictype <em>Hostonly nictype</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Hostonly nictype</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_VirtualBox#getHostonly_nictype()
+	 * @see #getMachine_VirtualBox()
+	 * @generated
+	 */
+	EAttribute getMachine_VirtualBox_Hostonly_nictype();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_VirtualBox#getHostonly_nicpromisc <em>Hostonly nicpromisc</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Hostonly nicpromisc</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_VirtualBox#getHostonly_nicpromisc()
+	 * @see #getMachine_VirtualBox()
+	 * @generated
+	 */
+	EAttribute getMachine_VirtualBox_Hostonly_nicpromisc();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_VirtualBox#isNo_share <em>No share</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>No share</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_VirtualBox#isNo_share()
+	 * @see #getMachine_VirtualBox()
+	 * @generated
+	 */
+	EAttribute getMachine_VirtualBox_No_share();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_VirtualBox#isNo_dns_proxy <em>No dns proxy</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>No dns proxy</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_VirtualBox#isNo_dns_proxy()
+	 * @see #getMachine_VirtualBox()
+	 * @generated
+	 */
+	EAttribute getMachine_VirtualBox_No_dns_proxy();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_VirtualBox#isNo_vtx_check <em>No vtx check</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>No vtx check</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_VirtualBox#isNo_vtx_check()
+	 * @see #getMachine_VirtualBox()
+	 * @generated
+	 */
+	EAttribute getMachine_VirtualBox_No_vtx_check();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_VirtualBox#getShare_folder <em>Share folder</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Share folder</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_VirtualBox#getShare_folder()
+	 * @see #getMachine_VirtualBox()
+	 * @generated
+	 */
+	EAttribute getMachine_VirtualBox_Share_folder();
 
 	/**
 	 * Returns the meta object for class '{@link org.occiware.clouddesigner.occi.docker.Machine_VMware_Fusion <em>Machine VMware Fusion</em>}'.
@@ -9574,6 +12546,17 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getMachine_VMware_Fusion_Memory_size();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_VMware_Fusion#isNo_share <em>No share</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>No share</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_VMware_Fusion#isNo_share()
+	 * @see #getMachine_VMware_Fusion()
+	 * @generated
+	 */
+	EAttribute getMachine_VMware_Fusion_No_share();
 
 	/**
 	 * Returns the meta object for class '{@link org.occiware.clouddesigner.occi.docker.Machine_VMware_vCloud_Air <em>Machine VMware vCloud Air</em>}'.
@@ -9891,6 +12874,267 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getMachine_VMware_vSphere_Vcenter();
+
+	/**
+	 * Returns the meta object for class '{@link org.occiware.clouddesigner.occi.docker.Machine_Exoscale <em>Machine Exoscale</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Machine Exoscale</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Exoscale
+	 * @generated
+	 */
+	EClass getMachine_Exoscale();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Exoscale#getUrl <em>Url</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Url</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Exoscale#getUrl()
+	 * @see #getMachine_Exoscale()
+	 * @generated
+	 */
+	EAttribute getMachine_Exoscale_Url();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Exoscale#getApi_key <em>Api key</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Api key</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Exoscale#getApi_key()
+	 * @see #getMachine_Exoscale()
+	 * @generated
+	 */
+	EAttribute getMachine_Exoscale_Api_key();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Exoscale#getApi_secret_key <em>Api secret key</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Api secret key</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Exoscale#getApi_secret_key()
+	 * @see #getMachine_Exoscale()
+	 * @generated
+	 */
+	EAttribute getMachine_Exoscale_Api_secret_key();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Exoscale#getInstance_profile <em>Instance profile</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Instance profile</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Exoscale#getInstance_profile()
+	 * @see #getMachine_Exoscale()
+	 * @generated
+	 */
+	EAttribute getMachine_Exoscale_Instance_profile();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Exoscale#getImage <em>Image</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Image</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Exoscale#getImage()
+	 * @see #getMachine_Exoscale()
+	 * @generated
+	 */
+	EAttribute getMachine_Exoscale_Image();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Exoscale#getSecurity_group <em>Security group</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Security group</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Exoscale#getSecurity_group()
+	 * @see #getMachine_Exoscale()
+	 * @generated
+	 */
+	EAttribute getMachine_Exoscale_Security_group();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Exoscale#getAvailability_zone <em>Availability zone</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Availability zone</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Exoscale#getAvailability_zone()
+	 * @see #getMachine_Exoscale()
+	 * @generated
+	 */
+	EAttribute getMachine_Exoscale_Availability_zone();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Exoscale#getSsh_user <em>Ssh user</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Ssh user</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Exoscale#getSsh_user()
+	 * @see #getMachine_Exoscale()
+	 * @generated
+	 */
+	EAttribute getMachine_Exoscale_Ssh_user();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Exoscale#getUserdata <em>Userdata</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Userdata</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Exoscale#getUserdata()
+	 * @see #getMachine_Exoscale()
+	 * @generated
+	 */
+	EAttribute getMachine_Exoscale_Userdata();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Exoscale#getAffinity_group <em>Affinity group</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Affinity group</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Exoscale#getAffinity_group()
+	 * @see #getMachine_Exoscale()
+	 * @generated
+	 */
+	EAttribute getMachine_Exoscale_Affinity_group();
+
+	/**
+	 * Returns the meta object for class '{@link org.occiware.clouddesigner.occi.docker.Cluster <em>Cluster</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Cluster</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Cluster
+	 * @generated
+	 */
+	EClass getCluster();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Cluster#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Cluster#getName()
+	 * @see #getCluster()
+	 * @generated
+	 */
+	EAttribute getCluster_Name();
+
+	/**
+	 * Returns the meta object for class '{@link org.occiware.clouddesigner.occi.docker.Machine_Grid5000 <em>Machine Grid5000</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Machine Grid5000</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Grid5000
+	 * @generated
+	 */
+	EClass getMachine_Grid5000();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Grid5000#getUsername <em>Username</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Username</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Grid5000#getUsername()
+	 * @see #getMachine_Grid5000()
+	 * @generated
+	 */
+	EAttribute getMachine_Grid5000_Username();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Grid5000#getPassword <em>Password</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Password</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Grid5000#getPassword()
+	 * @see #getMachine_Grid5000()
+	 * @generated
+	 */
+	EAttribute getMachine_Grid5000_Password();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Grid5000#getSite <em>Site</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Site</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Grid5000#getSite()
+	 * @see #getMachine_Grid5000()
+	 * @generated
+	 */
+	EAttribute getMachine_Grid5000_Site();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Grid5000#getWalltime <em>Walltime</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Walltime</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Grid5000#getWalltime()
+	 * @see #getMachine_Grid5000()
+	 * @generated
+	 */
+	EAttribute getMachine_Grid5000_Walltime();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Grid5000#getSsh_private_key <em>Ssh private key</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Ssh private key</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Grid5000#getSsh_private_key()
+	 * @see #getMachine_Grid5000()
+	 * @generated
+	 */
+	EAttribute getMachine_Grid5000_Ssh_private_key();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Grid5000#getSsh_public_key <em>Ssh public key</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Ssh public key</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Grid5000#getSsh_public_key()
+	 * @see #getMachine_Grid5000()
+	 * @generated
+	 */
+	EAttribute getMachine_Grid5000_Ssh_public_key();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Grid5000#getImage <em>Image</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Image</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Grid5000#getImage()
+	 * @see #getMachine_Grid5000()
+	 * @generated
+	 */
+	EAttribute getMachine_Grid5000_Image();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Grid5000#getResource_properties <em>Resource properties</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Resource properties</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Grid5000#getResource_properties()
+	 * @see #getMachine_Grid5000()
+	 * @generated
+	 */
+	EAttribute getMachine_Grid5000_Resource_properties();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Grid5000#getUse_job_reservation <em>Use job reservation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Use job reservation</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Grid5000#getUse_job_reservation()
+	 * @see #getMachine_Grid5000()
+	 * @generated
+	 */
+	EAttribute getMachine_Grid5000_Use_job_reservation();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Grid5000#getHost_to_provision <em>Host to provision</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Host to provision</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Grid5000#getHost_to_provision()
+	 * @see #getMachine_Grid5000()
+	 * @generated
+	 */
+	EAttribute getMachine_Grid5000_Host_to_provision();
 
 	/**
 	 * Returns the meta object for enum '{@link org.occiware.clouddesigner.occi.docker.Mode <em>Mode</em>}'.
@@ -10609,6 +13853,88 @@ public interface DockerPackage extends EPackage {
 		EAttribute MACHINE__TLS_SAN = eINSTANCE.getMachine_Tls_san();
 
 		/**
+		 * The meta object literal for the '{@link org.occiware.clouddesigner.occi.docker.impl.VolumeImpl <em>Volume</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.occiware.clouddesigner.occi.docker.impl.VolumeImpl
+		 * @see org.occiware.clouddesigner.occi.docker.impl.DockerPackageImpl#getVolume()
+		 * @generated
+		 */
+		EClass VOLUME = eINSTANCE.getVolume();
+
+		/**
+		 * The meta object literal for the '<em><b>Driver</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute VOLUME__DRIVER = eINSTANCE.getVolume_Driver();
+
+		/**
+		 * The meta object literal for the '<em><b>Labels</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute VOLUME__LABELS = eINSTANCE.getVolume_Labels();
+
+		/**
+		 * The meta object literal for the '<em><b>Options</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute VOLUME__OPTIONS = eINSTANCE.getVolume_Options();
+
+		/**
+		 * The meta object literal for the '<em><b>Source</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute VOLUME__SOURCE = eINSTANCE.getVolume_Source();
+
+		/**
+		 * The meta object literal for the '<em><b>Destination</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute VOLUME__DESTINATION = eINSTANCE.getVolume_Destination();
+
+		/**
+		 * The meta object literal for the '<em><b>Mode</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute VOLUME__MODE = eINSTANCE.getVolume_Mode();
+
+		/**
+		 * The meta object literal for the '<em><b>Rw</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute VOLUME__RW = eINSTANCE.getVolume_Rw();
+
+		/**
+		 * The meta object literal for the '<em><b>Propagation</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute VOLUME__PROPAGATION = eINSTANCE.getVolume_Propagation();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute VOLUME__NAME = eINSTANCE.getVolume_Name();
+
+		/**
 		 * The meta object literal for the '{@link org.occiware.clouddesigner.occi.docker.impl.NetworkImpl <em>Network</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -10713,6 +14039,56 @@ public interface DockerPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute NETWORK__SUBNET = eINSTANCE.getNetwork_Subnet();
+
+		/**
+		 * The meta object literal for the '{@link org.occiware.clouddesigner.occi.docker.impl.Machine_GenericImpl <em>Machine Generic</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.occiware.clouddesigner.occi.docker.impl.Machine_GenericImpl
+		 * @see org.occiware.clouddesigner.occi.docker.impl.DockerPackageImpl#getMachine_Generic()
+		 * @generated
+		 */
+		EClass MACHINE_GENERIC = eINSTANCE.getMachine_Generic();
+
+		/**
+		 * The meta object literal for the '<em><b>Engine port</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_GENERIC__ENGINE_PORT = eINSTANCE.getMachine_Generic_Engine_port();
+
+		/**
+		 * The meta object literal for the '<em><b>Ip address</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_GENERIC__IP_ADDRESS = eINSTANCE.getMachine_Generic_Ip_address();
+
+		/**
+		 * The meta object literal for the '<em><b>Ssh key</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_GENERIC__SSH_KEY = eINSTANCE.getMachine_Generic_Ssh_key();
+
+		/**
+		 * The meta object literal for the '<em><b>Ssh user</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_GENERIC__SSH_USER = eINSTANCE.getMachine_Generic_Ssh_user();
+
+		/**
+		 * The meta object literal for the '<em><b>Ssh port</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_GENERIC__SSH_PORT = eINSTANCE.getMachine_Generic_Ssh_port();
 
 		/**
 		 * The meta object literal for the '{@link org.occiware.clouddesigner.occi.docker.impl.Machine_Amazon_EC2Impl <em>Machine Amazon EC2</em>}' class.
@@ -11003,6 +14379,22 @@ public interface DockerPackage extends EPackage {
 		EAttribute MACHINE_IBM_SOFT_LAYER__REGION = eINSTANCE.getMachine_IBM_SoftLayer_Region();
 
 		/**
+		 * The meta object literal for the '<em><b>Public vlan id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_IBM_SOFT_LAYER__PUBLIC_VLAN_ID = eINSTANCE.getMachine_IBM_SoftLayer_Public_vlan_id();
+
+		/**
+		 * The meta object literal for the '<em><b>Private vlan id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_IBM_SOFT_LAYER__PRIVATE_VLAN_ID = eINSTANCE.getMachine_IBM_SoftLayer_Private_vlan_id();
+
+		/**
 		 * The meta object literal for the '{@link org.occiware.clouddesigner.occi.docker.impl.Machine_Microsoft_AzureImpl <em>Machine Microsoft Azure</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -11029,6 +14421,134 @@ public interface DockerPackage extends EPackage {
 		EAttribute MACHINE_MICROSOFT_AZURE__SUBSCRIPTION_CERT = eINSTANCE.getMachine_Microsoft_Azure_Subscription_cert();
 
 		/**
+		 * The meta object literal for the '<em><b>Environment</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_MICROSOFT_AZURE__ENVIRONMENT = eINSTANCE.getMachine_Microsoft_Azure_Environment();
+
+		/**
+		 * The meta object literal for the '<em><b>Location</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_MICROSOFT_AZURE__LOCATION = eINSTANCE.getMachine_Microsoft_Azure_Location();
+
+		/**
+		 * The meta object literal for the '<em><b>Resource group</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_MICROSOFT_AZURE__RESOURCE_GROUP = eINSTANCE.getMachine_Microsoft_Azure_Resource_group();
+
+		/**
+		 * The meta object literal for the '<em><b>Size</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_MICROSOFT_AZURE__SIZE = eINSTANCE.getMachine_Microsoft_Azure_Size();
+
+		/**
+		 * The meta object literal for the '<em><b>Ssh user</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_MICROSOFT_AZURE__SSH_USER = eINSTANCE.getMachine_Microsoft_Azure_Ssh_user();
+
+		/**
+		 * The meta object literal for the '<em><b>Vnet</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_MICROSOFT_AZURE__VNET = eINSTANCE.getMachine_Microsoft_Azure_Vnet();
+
+		/**
+		 * The meta object literal for the '<em><b>Subnet</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_MICROSOFT_AZURE__SUBNET = eINSTANCE.getMachine_Microsoft_Azure_Subnet();
+
+		/**
+		 * The meta object literal for the '<em><b>Subnet prefix</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_MICROSOFT_AZURE__SUBNET_PREFIX = eINSTANCE.getMachine_Microsoft_Azure_Subnet_prefix();
+
+		/**
+		 * The meta object literal for the '<em><b>Availability set</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_MICROSOFT_AZURE__AVAILABILITY_SET = eINSTANCE.getMachine_Microsoft_Azure_Availability_set();
+
+		/**
+		 * The meta object literal for the '<em><b>Open port</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_MICROSOFT_AZURE__OPEN_PORT = eINSTANCE.getMachine_Microsoft_Azure_Open_port();
+
+		/**
+		 * The meta object literal for the '<em><b>Private ip address</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_MICROSOFT_AZURE__PRIVATE_IP_ADDRESS = eINSTANCE.getMachine_Microsoft_Azure_Private_ip_address();
+
+		/**
+		 * The meta object literal for the '<em><b>No public ip</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_MICROSOFT_AZURE__NO_PUBLIC_IP = eINSTANCE.getMachine_Microsoft_Azure_No_public_ip();
+
+		/**
+		 * The meta object literal for the '<em><b>Static public ip</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_MICROSOFT_AZURE__STATIC_PUBLIC_IP = eINSTANCE.getMachine_Microsoft_Azure_Static_public_ip();
+
+		/**
+		 * The meta object literal for the '<em><b>Docker port</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_MICROSOFT_AZURE__DOCKER_PORT = eINSTANCE.getMachine_Microsoft_Azure_Docker_port();
+
+		/**
+		 * The meta object literal for the '<em><b>Use private ip</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_MICROSOFT_AZURE__USE_PRIVATE_IP = eINSTANCE.getMachine_Microsoft_Azure_Use_private_ip();
+
+		/**
+		 * The meta object literal for the '<em><b>Image</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_MICROSOFT_AZURE__IMAGE = eINSTANCE.getMachine_Microsoft_Azure_Image();
+
+		/**
 		 * The meta object literal for the '{@link org.occiware.clouddesigner.occi.docker.impl.Machine_Microsoft_Hyper_VImpl <em>Machine Microsoft Hyper V</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -11037,14 +14557,6 @@ public interface DockerPackage extends EPackage {
 		 * @generated
 		 */
 		EClass MACHINE_MICROSOFT_HYPER_V = eINSTANCE.getMachine_Microsoft_Hyper_V();
-
-		/**
-		 * The meta object literal for the '<em><b>Boot2docker location</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute MACHINE_MICROSOFT_HYPER_V__BOOT2DOCKER_LOCATION = eINSTANCE.getMachine_Microsoft_Hyper_V_Boot2docker_location();
 
 		/**
 		 * The meta object literal for the '<em><b>Boot2docker url</b></em>' attribute feature.
@@ -11061,6 +14573,22 @@ public interface DockerPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute MACHINE_MICROSOFT_HYPER_V__DISK_SIZE = eINSTANCE.getMachine_Microsoft_Hyper_V_Disk_size();
+
+		/**
+		 * The meta object literal for the '<em><b>Static macaddress</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_MICROSOFT_HYPER_V__STATIC_MACADDRESS = eINSTANCE.getMachine_Microsoft_Hyper_V_Static_macaddress();
+
+		/**
+		 * The meta object literal for the '<em><b>Vlan id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_MICROSOFT_HYPER_V__VLAN_ID = eINSTANCE.getMachine_Microsoft_Hyper_V_Vlan_id();
 
 		/**
 		 * The meta object literal for the '<em><b>Virtual switch</b></em>' attribute feature.
@@ -11089,12 +14617,28 @@ public interface DockerPackage extends EPackage {
 		EAttribute MACHINE_OPEN_STACK__FLAVOR_ID = eINSTANCE.getMachine_OpenStack_Flavor_id();
 
 		/**
+		 * The meta object literal for the '<em><b>Flavor name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_OPEN_STACK__FLAVOR_NAME = eINSTANCE.getMachine_OpenStack_Flavor_name();
+
+		/**
 		 * The meta object literal for the '<em><b>Image id</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EAttribute MACHINE_OPEN_STACK__IMAGE_ID = eINSTANCE.getMachine_OpenStack_Image_id();
+
+		/**
+		 * The meta object literal for the '<em><b>Image name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_OPEN_STACK__IMAGE_NAME = eINSTANCE.getMachine_OpenStack_Image_name();
 
 		/**
 		 * The meta object literal for the '<em><b>Auth url</b></em>' attribute feature.
@@ -11161,6 +14705,14 @@ public interface DockerPackage extends EPackage {
 		EAttribute MACHINE_OPEN_STACK__NET_ID = eINSTANCE.getMachine_OpenStack_Net_id();
 
 		/**
+		 * The meta object literal for the '<em><b>Net name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_OPEN_STACK__NET_NAME = eINSTANCE.getMachine_OpenStack_Net_name();
+
+		/**
 		 * The meta object literal for the '<em><b>Sec groups</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -11175,6 +14727,86 @@ public interface DockerPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute MACHINE_OPEN_STACK__FLOATINGIP_POOL = eINSTANCE.getMachine_OpenStack_Floatingip_pool();
+
+		/**
+		 * The meta object literal for the '<em><b>Active timeout</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_OPEN_STACK__ACTIVE_TIMEOUT = eINSTANCE.getMachine_OpenStack_Active_timeout();
+
+		/**
+		 * The meta object literal for the '<em><b>Availability zone</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_OPEN_STACK__AVAILABILITY_ZONE = eINSTANCE.getMachine_OpenStack_Availability_zone();
+
+		/**
+		 * The meta object literal for the '<em><b>Domain id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_OPEN_STACK__DOMAIN_ID = eINSTANCE.getMachine_OpenStack_Domain_id();
+
+		/**
+		 * The meta object literal for the '<em><b>Domain name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_OPEN_STACK__DOMAIN_NAME = eINSTANCE.getMachine_OpenStack_Domain_name();
+
+		/**
+		 * The meta object literal for the '<em><b>Insecure</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_OPEN_STACK__INSECURE = eINSTANCE.getMachine_OpenStack_Insecure();
+
+		/**
+		 * The meta object literal for the '<em><b>Ip version</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_OPEN_STACK__IP_VERSION = eINSTANCE.getMachine_OpenStack_Ip_version();
+
+		/**
+		 * The meta object literal for the '<em><b>Keypair name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_OPEN_STACK__KEYPAIR_NAME = eINSTANCE.getMachine_OpenStack_Keypair_name();
+
+		/**
+		 * The meta object literal for the '<em><b>Private key file</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_OPEN_STACK__PRIVATE_KEY_FILE = eINSTANCE.getMachine_OpenStack_Private_key_file();
+
+		/**
+		 * The meta object literal for the '<em><b>Ssh port</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_OPEN_STACK__SSH_PORT = eINSTANCE.getMachine_OpenStack_Ssh_port();
+
+		/**
+		 * The meta object literal for the '<em><b>Ssh user</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_OPEN_STACK__SSH_USER = eINSTANCE.getMachine_OpenStack_Ssh_user();
 
 		/**
 		 * The meta object literal for the '{@link org.occiware.clouddesigner.occi.docker.impl.Machine_RackspaceImpl <em>Machine Rackspace</em>}' class.
@@ -11251,6 +14883,14 @@ public interface DockerPackage extends EPackage {
 		EAttribute MACHINE_RACKSPACE__SSH_PORT = eINSTANCE.getMachine_Rackspace_Ssh_port();
 
 		/**
+		 * The meta object literal for the '<em><b>Docker install</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_RACKSPACE__DOCKER_INSTALL = eINSTANCE.getMachine_Rackspace_Docker_install();
+
+		/**
 		 * The meta object literal for the '{@link org.occiware.clouddesigner.occi.docker.impl.Machine_VirtualBoxImpl <em>Machine Virtual Box</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -11275,6 +14915,78 @@ public interface DockerPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute MACHINE_VIRTUAL_BOX__DISK_SIZE = eINSTANCE.getMachine_VirtualBox_Disk_size();
+
+		/**
+		 * The meta object literal for the '<em><b>Host dns resolver</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_VIRTUAL_BOX__HOST_DNS_RESOLVER = eINSTANCE.getMachine_VirtualBox_Host_dns_resolver();
+
+		/**
+		 * The meta object literal for the '<em><b>Import boot2docker vm</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_VIRTUAL_BOX__IMPORT_BOOT2DOCKER_VM = eINSTANCE.getMachine_VirtualBox_Import_boot2docker_vm();
+
+		/**
+		 * The meta object literal for the '<em><b>Hostonly cidr</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_VIRTUAL_BOX__HOSTONLY_CIDR = eINSTANCE.getMachine_VirtualBox_Hostonly_cidr();
+
+		/**
+		 * The meta object literal for the '<em><b>Hostonly nictype</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_VIRTUAL_BOX__HOSTONLY_NICTYPE = eINSTANCE.getMachine_VirtualBox_Hostonly_nictype();
+
+		/**
+		 * The meta object literal for the '<em><b>Hostonly nicpromisc</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_VIRTUAL_BOX__HOSTONLY_NICPROMISC = eINSTANCE.getMachine_VirtualBox_Hostonly_nicpromisc();
+
+		/**
+		 * The meta object literal for the '<em><b>No share</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_VIRTUAL_BOX__NO_SHARE = eINSTANCE.getMachine_VirtualBox_No_share();
+
+		/**
+		 * The meta object literal for the '<em><b>No dns proxy</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_VIRTUAL_BOX__NO_DNS_PROXY = eINSTANCE.getMachine_VirtualBox_No_dns_proxy();
+
+		/**
+		 * The meta object literal for the '<em><b>No vtx check</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_VIRTUAL_BOX__NO_VTX_CHECK = eINSTANCE.getMachine_VirtualBox_No_vtx_check();
+
+		/**
+		 * The meta object literal for the '<em><b>Share folder</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_VIRTUAL_BOX__SHARE_FOLDER = eINSTANCE.getMachine_VirtualBox_Share_folder();
 
 		/**
 		 * The meta object literal for the '{@link org.occiware.clouddesigner.occi.docker.impl.Machine_VMware_FusionImpl <em>Machine VMware Fusion</em>}' class.
@@ -11309,6 +15021,14 @@ public interface DockerPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute MACHINE_VMWARE_FUSION__MEMORY_SIZE = eINSTANCE.getMachine_VMware_Fusion_Memory_size();
+
+		/**
+		 * The meta object literal for the '<em><b>No share</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_VMWARE_FUSION__NO_SHARE = eINSTANCE.getMachine_VMware_Fusion_No_share();
 
 		/**
 		 * The meta object literal for the '{@link org.occiware.clouddesigner.occi.docker.impl.Machine_VMware_vCloud_AirImpl <em>Machine VMware vCloud Air</em>}' class.
@@ -11545,6 +15265,204 @@ public interface DockerPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute MACHINE_VMWARE_VSPHERE__VCENTER = eINSTANCE.getMachine_VMware_vSphere_Vcenter();
+
+		/**
+		 * The meta object literal for the '{@link org.occiware.clouddesigner.occi.docker.impl.Machine_ExoscaleImpl <em>Machine Exoscale</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.occiware.clouddesigner.occi.docker.impl.Machine_ExoscaleImpl
+		 * @see org.occiware.clouddesigner.occi.docker.impl.DockerPackageImpl#getMachine_Exoscale()
+		 * @generated
+		 */
+		EClass MACHINE_EXOSCALE = eINSTANCE.getMachine_Exoscale();
+
+		/**
+		 * The meta object literal for the '<em><b>Url</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_EXOSCALE__URL = eINSTANCE.getMachine_Exoscale_Url();
+
+		/**
+		 * The meta object literal for the '<em><b>Api key</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_EXOSCALE__API_KEY = eINSTANCE.getMachine_Exoscale_Api_key();
+
+		/**
+		 * The meta object literal for the '<em><b>Api secret key</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_EXOSCALE__API_SECRET_KEY = eINSTANCE.getMachine_Exoscale_Api_secret_key();
+
+		/**
+		 * The meta object literal for the '<em><b>Instance profile</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_EXOSCALE__INSTANCE_PROFILE = eINSTANCE.getMachine_Exoscale_Instance_profile();
+
+		/**
+		 * The meta object literal for the '<em><b>Image</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_EXOSCALE__IMAGE = eINSTANCE.getMachine_Exoscale_Image();
+
+		/**
+		 * The meta object literal for the '<em><b>Security group</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_EXOSCALE__SECURITY_GROUP = eINSTANCE.getMachine_Exoscale_Security_group();
+
+		/**
+		 * The meta object literal for the '<em><b>Availability zone</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_EXOSCALE__AVAILABILITY_ZONE = eINSTANCE.getMachine_Exoscale_Availability_zone();
+
+		/**
+		 * The meta object literal for the '<em><b>Ssh user</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_EXOSCALE__SSH_USER = eINSTANCE.getMachine_Exoscale_Ssh_user();
+
+		/**
+		 * The meta object literal for the '<em><b>Userdata</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_EXOSCALE__USERDATA = eINSTANCE.getMachine_Exoscale_Userdata();
+
+		/**
+		 * The meta object literal for the '<em><b>Affinity group</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_EXOSCALE__AFFINITY_GROUP = eINSTANCE.getMachine_Exoscale_Affinity_group();
+
+		/**
+		 * The meta object literal for the '{@link org.occiware.clouddesigner.occi.docker.impl.ClusterImpl <em>Cluster</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.occiware.clouddesigner.occi.docker.impl.ClusterImpl
+		 * @see org.occiware.clouddesigner.occi.docker.impl.DockerPackageImpl#getCluster()
+		 * @generated
+		 */
+		EClass CLUSTER = eINSTANCE.getCluster();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CLUSTER__NAME = eINSTANCE.getCluster_Name();
+
+		/**
+		 * The meta object literal for the '{@link org.occiware.clouddesigner.occi.docker.impl.Machine_Grid5000Impl <em>Machine Grid5000</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.occiware.clouddesigner.occi.docker.impl.Machine_Grid5000Impl
+		 * @see org.occiware.clouddesigner.occi.docker.impl.DockerPackageImpl#getMachine_Grid5000()
+		 * @generated
+		 */
+		EClass MACHINE_GRID5000 = eINSTANCE.getMachine_Grid5000();
+
+		/**
+		 * The meta object literal for the '<em><b>Username</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_GRID5000__USERNAME = eINSTANCE.getMachine_Grid5000_Username();
+
+		/**
+		 * The meta object literal for the '<em><b>Password</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_GRID5000__PASSWORD = eINSTANCE.getMachine_Grid5000_Password();
+
+		/**
+		 * The meta object literal for the '<em><b>Site</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_GRID5000__SITE = eINSTANCE.getMachine_Grid5000_Site();
+
+		/**
+		 * The meta object literal for the '<em><b>Walltime</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_GRID5000__WALLTIME = eINSTANCE.getMachine_Grid5000_Walltime();
+
+		/**
+		 * The meta object literal for the '<em><b>Ssh private key</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_GRID5000__SSH_PRIVATE_KEY = eINSTANCE.getMachine_Grid5000_Ssh_private_key();
+
+		/**
+		 * The meta object literal for the '<em><b>Ssh public key</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_GRID5000__SSH_PUBLIC_KEY = eINSTANCE.getMachine_Grid5000_Ssh_public_key();
+
+		/**
+		 * The meta object literal for the '<em><b>Image</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_GRID5000__IMAGE = eINSTANCE.getMachine_Grid5000_Image();
+
+		/**
+		 * The meta object literal for the '<em><b>Resource properties</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_GRID5000__RESOURCE_PROPERTIES = eINSTANCE.getMachine_Grid5000_Resource_properties();
+
+		/**
+		 * The meta object literal for the '<em><b>Use job reservation</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_GRID5000__USE_JOB_RESERVATION = eINSTANCE.getMachine_Grid5000_Use_job_reservation();
+
+		/**
+		 * The meta object literal for the '<em><b>Host to provision</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_GRID5000__HOST_TO_PROVISION = eINSTANCE.getMachine_Grid5000_Host_to_provision();
 
 		/**
 		 * The meta object literal for the '{@link org.occiware.clouddesigner.occi.docker.Mode <em>Mode</em>}' enum.

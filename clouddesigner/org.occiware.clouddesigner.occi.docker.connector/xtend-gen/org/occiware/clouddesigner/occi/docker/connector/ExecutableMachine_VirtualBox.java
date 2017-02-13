@@ -20,7 +20,7 @@ import org.occiware.clouddesigner.occi.infrastructure.StopMethod;
 import org.occiware.clouddesigner.occi.infrastructure.SuspendMethod;
 
 /**
- * This class implements executable Docker Machine on VirtualBox.
+ * This class implements executable Docker Machine on Virtualbox.
  */
 @SuppressWarnings("all")
 public class ExecutableMachine_VirtualBox extends Machine_VirtualBoxImpl {
@@ -63,6 +63,47 @@ public class ExecutableMachine_VirtualBox extends Machine_VirtualBoxImpl {
       if (_not) {
         StringBuilder _append_5 = sb.append(" --virtualbox-boot2docker-url ");
         _append_5.append(ExecutableMachine_VirtualBox.this.boot2docker_url);
+      } else {
+        StringBuilder _append_6 = sb.append(" --virtualbox-boot2docker-url ");
+        _append_6.append("https://github.com/boot2docker/boot2docker/releases/download/v1.11.2/boot2docker.iso");
+      }
+      if (ExecutableMachine_VirtualBox.this.host_dns_resolver) {
+        StringBuilder _append_7 = sb.append(" --virtualbox-host-dns-resolver ");
+        _append_7.append(ExecutableMachine_VirtualBox.this.host_dns_resolver);
+      }
+      boolean _isEmpty_1 = StringUtils.isEmpty(ExecutableMachine_VirtualBox.this.import_boot2docker_vm);
+      boolean _not_1 = (!_isEmpty_1);
+      if (_not_1) {
+        StringBuilder _append_8 = sb.append(" --virtualbox-import-boot2docker-vm ");
+        _append_8.append(ExecutableMachine_VirtualBox.this.import_boot2docker_vm);
+      }
+      if (ExecutableMachine_VirtualBox.this.host_dns_resolver) {
+        StringBuilder _append_9 = sb.append(" --virtualbox-host-dns-resolver ");
+        _append_9.append(ExecutableMachine_VirtualBox.this.host_dns_resolver);
+      }
+      boolean _isEmpty_2 = StringUtils.isEmpty(ExecutableMachine_VirtualBox.this.hostonly_nictype);
+      boolean _not_2 = (!_isEmpty_2);
+      if (_not_2) {
+        StringBuilder _append_10 = sb.append(" --virtualbox-hostonly-nictype ");
+        _append_10.append(ExecutableMachine_VirtualBox.this.hostonly_nictype);
+      }
+      if (ExecutableMachine_VirtualBox.this.no_share) {
+        StringBuilder _append_11 = sb.append(" --virtualbox-no-share ");
+        _append_11.append(ExecutableMachine_VirtualBox.this.no_share);
+      }
+      if (ExecutableMachine_VirtualBox.this.no_dns_proxy) {
+        StringBuilder _append_12 = sb.append(" --virtualbox-no-dns-proxy ");
+        _append_12.append(ExecutableMachine_VirtualBox.this.no_dns_proxy);
+      }
+      if (ExecutableMachine_VirtualBox.this.no_vtx_check) {
+        StringBuilder _append_13 = sb.append(" --virtualbox-no-vtx-check ");
+        _append_13.append(ExecutableMachine_VirtualBox.this.no_vtx_check);
+      }
+      boolean _isEmpty_3 = StringUtils.isEmpty(ExecutableMachine_VirtualBox.this.share_folder);
+      boolean _not_3 = (!_isEmpty_3);
+      if (_not_3) {
+        StringBuilder _append_14 = sb.append(" --virtualbox-share-folder ");
+        _append_14.append(ExecutableMachine_VirtualBox.this.share_folder);
       }
     }
   };

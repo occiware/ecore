@@ -445,9 +445,60 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Volume" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.ecore#//Storage">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title" value="Volume disk"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="driver" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"
+        defaultValueLiteral="local">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value=" Specify volume driver name (default &quot;local&quot;)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="labels" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Set metadata for a volume (default [])"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="options" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Set driver specific options (default map[])"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="source" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The volume Mountpoint ex. the /host/directory"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="destination" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The volume name inside the container ex. /container/path"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mode" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Specify volume driver name"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rw" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The volume Read/Write access"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="propagation" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The volume propagation"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The volume name."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Network" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.ecore#//Network">
     <eAnnotations source="OCCIE2Ecore">
-      <details key="title"/>
+      <details key="title" value="Network resource"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="networkId" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
       <eAnnotations source="OCCIE2Ecore">
@@ -456,7 +507,7 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
       <eAnnotations source="OCCIE2Ecore">
-        <details key="description"/>
+        <details key="description" value="The network name"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="aux_address" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
@@ -499,7 +550,7 @@
         <details key="description" value="Enable IPv6 networking"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="opt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="opt" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
       <eAnnotations source="OCCIE2Ecore">
         <details key="description" value="Set driver specific options (default map[])"/>
       </eAnnotations>
@@ -507,6 +558,37 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="subnet" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
       <eAnnotations source="OCCIE2Ecore">
         <details key="description" value="Subnet in CIDR format that represents a network segment (default [])"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Machine_Generic" eSuperTypes="#//Machine">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title" value="Create machines using an existing VM/Host with SSH"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="engine_port" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Port to use for Docker Daemon (Note: This flag will not work with boot2docker)."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ip_address" lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value=" required IP Address of host."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ssh_key" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Path to the SSH user private key."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ssh_user" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="SSH username used to connect."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ssh_port" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Port to use for SSH."/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
@@ -647,7 +729,8 @@
     <eAnnotations source="OCCIE2Ecore">
       <details key="title" value="Machine on IBM SoftLayer"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="api_endpoint" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="api_endpoint" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"
+        defaultValueLiteral="api.softlayer.com/rest/v3">
       <eAnnotations source="OCCIE2Ecore">
         <details key="description" value="Change softlayer API endpoint"/>
       </eAnnotations>
@@ -680,17 +763,19 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="hourly_billing" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean"
-        defaultValueLiteral="true">
+        defaultValueLiteral="false">
       <eAnnotations source="OCCIE2Ecore">
         <details key="description" value="Sets the hourly billing flag (default), otherwise uses monthly billing"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="image" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="image" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"
+        defaultValueLiteral="UBUNTU_LATEST">
       <eAnnotations source="OCCIE2Ecore">
         <details key="description" value="OS Image to use"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="local_disk" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="local_disk" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean"
+        defaultValueLiteral="false">
       <eAnnotations source="OCCIE2Ecore">
         <details key="description" value="Use local machine disk instead of softlayer SAN"/>
       </eAnnotations>
@@ -703,6 +788,18 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="region" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
       <eAnnotations source="OCCIE2Ecore">
         <details key="description" value="softlayer region"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="public_vlan_id" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"
+        defaultValueLiteral="0">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Your public VLAN ID."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="private_vlan_id" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"
+        defaultValueLiteral="0">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Your private VLAN ID."/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
@@ -722,14 +819,100 @@
         <details key="description" value="Your Azure subscription cert"/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="environment" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"
+        defaultValueLiteral="AzurePublicCloud">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Azure environment (e.g. AzurePublicCloud, AzureChinaCloud)."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="location" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Azure region to create the virtual machine."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="resource_group" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"
+        defaultValueLiteral="docker-machine">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Azure Resource Group name to create the resources in."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="size" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Size for Azure Virtual Machine."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ssh_user" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Username for SSH login."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="vnet" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"
+        defaultValueLiteral="docker-machine">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Azure Virtual Network name to connect the virtual machine. To specify a Virtual Network from another resource group, use resourcegroup:vnet-name format."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="subnet" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Azure Subnet Name to be used within the Virtual Network."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="subnet_prefix" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"
+        defaultValueLiteral="192.168.0.0/16">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Private CIDR block. Used to create subnet if it does not exist. Must match in the case that the subnet does exist."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="availability_set" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"
+        defaultValueLiteral="docker-machine">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Azure Availability Set to place the virtual machine into."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="open_port" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value=" Make additional port number(s) accessible from the Internet"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="private_ip_address" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Specify a static private IP address for the machine."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="no_public_ip" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Do not create a public IP address for the machine (implies --azure-use-private-ip). "/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="static_public_ip" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Assign a static public IP address to the machine."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="docker_port" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"
+        defaultValueLiteral="2376">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Port number for Docker engine."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="use_private_ip" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value=" Use private IP address of the machine to connect. It’s useful for managing Docker machines from another machine on the same network e.g. while deploying Swarm."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="image" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Azure virtual machine image in the format of Publisher:Offer:Sku:Version"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Machine_Microsoft_Hyper_V" eSuperTypes="#//Machine">
     <eAnnotations source="OCCIE2Ecore">
       <details key="title" value="Machine on Microsoft Hyper-V"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="boot2docker_location" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="virtual_switch" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
       <eAnnotations source="OCCIE2Ecore">
-        <details key="description" value="Location of a local boot2docker iso to use. Overrides the URL option below"/>
+        <details key="description" value="Name of the virtual switch to use."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="boot2docker_url" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
@@ -743,9 +926,14 @@
         <details key="description" value="Size of disk for the host in MB"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="virtual_switch" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="static_macaddress" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
       <eAnnotations source="OCCIE2Ecore">
-        <details key="description" value="Name of the virtual switch to use. Defaults to first found"/>
+        <details key="description" value="Hyper-V network adapter’s static MAC address."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="vlan_id" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Hyper-V network adapter’s VLAN ID if any."/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
@@ -759,13 +947,24 @@
         <details key="description" value="The flavor ID to use when creating the machine"/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="flavor_name" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The OS FLAVOR NAME"/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="image_id" lowerBound="1"
         eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
       <eAnnotations source="OCCIE2Ecore">
         <details key="description" value="The image ID to use when creating the machine"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="auth_url" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="image_name" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The OS IMAGE NAME"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="auth_url" lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
       <eAnnotations source="OCCIE2Ecore">
         <details key="description" value="Keystone service base URL"/>
       </eAnnotations>
@@ -795,7 +994,8 @@
         <details key="description" value="The region to work on. Can be omitted if there is only one region on the OpenStack"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="endpoint_type" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="endpoint_type" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"
+        defaultValueLiteral="publicURL">
       <eAnnotations source="OCCIE2Ecore">
         <details key="description" value="Endpoint type can be internalURL, adminURL on publicURL. If is a helper for the driver to choose the right URL in the OpenStack service catalog. If not provided the default id publicURL"/>
       </eAnnotations>
@@ -803,6 +1003,11 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="net_id" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
       <eAnnotations source="OCCIE2Ecore">
         <details key="description" value="The private network id the machine will be connected on. If your OpenStack project project contains only one private network it will be use automatically"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="net_name" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The OS NETWORK NAME"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="sec_groups" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
@@ -813,6 +1018,61 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="floatingip_pool" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
       <eAnnotations source="OCCIE2Ecore">
         <details key="description" value="The IP pool that will be used to get a public IP an assign it to the machine. If there is an IP address already allocated but not assigned to any machine, this IP will be chosen and assigned to the machine. If there is no IP address already allocated a new IP will be allocated and assigned to the machine"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="active_timeout" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number"
+        defaultValueLiteral="200">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The OS ACTIVE TIMEOUT"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="availability_zone" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The OS AVAILABILITY ZONE"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="domain_id" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The OS DOMAIN ID"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="domain_name" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The OS DOMAIN NAME"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="insecure" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean"
+        defaultValueLiteral="false">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The OS INSECURE"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ip_version" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number"
+        defaultValueLiteral="4">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The OS IP VERSION"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="keypair_name" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The OS KEYPAIR NAME"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="private_key_file" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The OS PRIVATE KEY FILE"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ssh_port" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number"
+        defaultValueLiteral="22">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The OS SSH PORT"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ssh_user" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"
+        defaultValueLiteral="root">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The OS SSH USER"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
@@ -845,13 +1105,13 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="image_id" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"
-        defaultValueLiteral="Ubuntu 14.10 (Utopic Unicorn) (PVHVM)">
+        defaultValueLiteral="59a3fadd-93e7-4674-886a-64883e17115f">
       <eAnnotations source="OCCIE2Ecore">
         <details key="description" value="Rackspace image ID "/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="flavor_id" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"
-        defaultValueLiteral="General Purpose 1GB">
+        defaultValueLiteral="general1-1">
       <eAnnotations source="OCCIE2Ecore">
         <details key="description" value="Rackspace flavor ID"/>
       </eAnnotations>
@@ -868,6 +1128,12 @@
         <details key="description" value="SSH port for the newly booted machine"/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="docker_install" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean"
+        defaultValueLiteral="true">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Set if Docker has to be installed on the machine."/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Machine_VirtualBox" eSuperTypes="#//Machine">
     <eAnnotations source="OCCIE2Ecore">
@@ -882,6 +1148,59 @@
         defaultValueLiteral="20000">
       <eAnnotations source="OCCIE2Ecore">
         <details key="description" value="Size of disk for the host in MB"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="host_dns_resolver" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean"
+        defaultValueLiteral="false">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The VIRTUALBOX HOST DNS RESOLVER&#x9;"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="import_boot2docker_vm"
+        eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The VIRTUALBOX BOOT2DOCKER IMPORT VM"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hostonly_cidr" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"
+        defaultValueLiteral="192.168.99.1/24">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The VIRTUALBOX HOSTONLY CIDR"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hostonly_nictype" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"
+        defaultValueLiteral="82540EM">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The &#x9;VIRTUALBOX HOSTONLY NIC TYPE"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hostonly_nicpromisc" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"
+        defaultValueLiteral="deny">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The VIRTUALBOX HOSTONLY NIC PROMISC"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="no_share" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean"
+        defaultValueLiteral="false">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The VIRTUALBOX NO SHARE"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="no_dns_proxy" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean"
+        defaultValueLiteral="false">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The VIRTUALBOX NO DNS PROXY"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="no_vtx_check" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean"
+        defaultValueLiteral="false">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The VIRTUALBOX NO VTX CHECK"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="share_folder" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The VIRTUALBOX SHARE FOLDER"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
@@ -904,6 +1223,12 @@
         defaultValueLiteral="1024">
       <eAnnotations source="OCCIE2Ecore">
         <details key="description" value="Size of memory for host VM (in MB)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="no_share" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean"
+        defaultValueLiteral="false">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Disable the mount of your home directory."/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
@@ -1067,6 +1392,135 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="vcenter" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
       <eAnnotations source="OCCIE2Ecore">
         <details key="description" value=" IP/hostname for vCenter (or ESXi if connecting directly to a single host)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Machine_Exoscale" eSuperTypes="#//Machine">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title" value="Machine Exoscale"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="url" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"
+        defaultValueLiteral="https://api.exoscale.ch/compute">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Your API endpoint."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="api_key" lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="required Your API key."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="api_secret_key" lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="required Your API secret key."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instance_profile" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"
+        defaultValueLiteral="small">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Instance profile."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="image" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"
+        defaultValueLiteral="ubuntu-16.04">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Image template (e.g. ubuntu-16.04, ubuntu-15.10)."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="security_group" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Security group. It will be created if it doesn’t exist."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="availability_zone" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Exoscale availability zone."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ssh_user" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"
+        defaultValueLiteral="ubuntu">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="SSH username, which must match the default SSH user for the used image."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="userdata" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Path to file containing user data for cloud-init."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="affinity_group" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String"
+        defaultValueLiteral="docker-machine">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Affinity group the machine will be started in."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Machine_Grid5000" eSuperTypes="#//Machine">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title" value="Grid5000 cluster"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="username" lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Grid5000 account username"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="password" lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Grid5000 account password"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="site" lowerBound="1" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Site to reserve the resources on"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="walltime" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Timelife of the machine"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ssh_private_key" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Path of your ssh private key"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ssh_public_key" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Path of your ssh public key"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="image" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Name of the image to deploy"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="resource_properties" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Resource selection with OAR properties (SQL format)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="use_job_reservation" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Job ID to use (need to be an already existing job ID)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="host_to_provision" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="Host to provision (host need to be already deployed)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Cluster" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.ecore#//Compute">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title" value="Docker cluster"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description" value="The cluster name."/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>

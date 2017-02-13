@@ -72,11 +72,11 @@ public class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statist
       this.statisticsList.add(stats);
       Map<String, Object> cpu = stats.getCpuStats();
       Object _get = cpu.get("cpu_usage");
-      LinkedHashMap tmpcpu = ((LinkedHashMap) _get);
+      LinkedHashMap<String, Object> tmpcpu = ((LinkedHashMap<String, Object>) _get);
       Object cpu_used = tmpcpu.get("total_usage");
       Object percpu_usage = tmpcpu.get("percpu_usage");
       Object system_cpu_usage = cpu.get("system_cpu_usage");
-      List percpu_usage_size = ((List) percpu_usage);
+      List<Object> percpu_usage_size = ((List<Object>) percpu_usage);
       Map<String, Object> _memoryStats = stats.getMemoryStats();
       Object _get_1 = _memoryStats.get("usage");
       Integer mem_used = ((Integer) _get_1);
@@ -92,7 +92,7 @@ public class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statist
         boolean _notEquals = (!Objects.equal(networks, null));
         if (_notEquals) {
           Object _get_3 = networks.get("eth0");
-          LinkedHashMap tmpnetworks = ((LinkedHashMap) _get_3);
+          LinkedHashMap<String, Object> tmpnetworks = ((LinkedHashMap<String, Object>) _get_3);
           Object _get_4 = tmpnetworks.get("rx_bytes");
           network_r = ((Integer) _get_4);
           Object _get_5 = tmpnetworks.get("tx_bytes");

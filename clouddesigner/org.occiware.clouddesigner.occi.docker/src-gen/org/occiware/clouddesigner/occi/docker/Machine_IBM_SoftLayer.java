@@ -32,6 +32,8 @@ package org.occiware.clouddesigner.occi.docker;
  *   <li>{@link org.occiware.clouddesigner.occi.docker.Machine_IBM_SoftLayer#isLocal_disk <em>Local disk</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.docker.Machine_IBM_SoftLayer#isPrivate_net_only <em>Private net only</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.docker.Machine_IBM_SoftLayer#getRegion <em>Region</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.Machine_IBM_SoftLayer#getPublic_vlan_id <em>Public vlan id</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.Machine_IBM_SoftLayer#getPrivate_vlan_id <em>Private vlan id</em>}</li>
  * </ul>
  *
  * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_IBM_SoftLayer()
@@ -41,6 +43,7 @@ package org.occiware.clouddesigner.occi.docker;
 public interface Machine_IBM_SoftLayer extends Machine {
 	/**
 	 * Returns the value of the '<em><b>Api endpoint</b></em>' attribute.
+	 * The default value is <code>"api.softlayer.com/rest/v3"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Api endpoint</em>' attribute isn't clear,
@@ -50,7 +53,7 @@ public interface Machine_IBM_SoftLayer extends Machine {
 	 * @return the value of the '<em>Api endpoint</em>' attribute.
 	 * @see #setApi_endpoint(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_IBM_SoftLayer_Api_endpoint()
-	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 * @model default="api.softlayer.com/rest/v3" dataType="org.occiware.clouddesigner.occi.String"
 	 *        annotation="OCCIE2Ecore description='Change softlayer API endpoint'"
 	 * @generated
 	 */
@@ -203,7 +206,7 @@ public interface Machine_IBM_SoftLayer extends Machine {
 
 	/**
 	 * Returns the value of the '<em><b>Hourly billing</b></em>' attribute.
-	 * The default value is <code>"true"</code>.
+	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Hourly billing</em>' attribute isn't clear,
@@ -213,7 +216,7 @@ public interface Machine_IBM_SoftLayer extends Machine {
 	 * @return the value of the '<em>Hourly billing</em>' attribute.
 	 * @see #setHourly_billing(boolean)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_IBM_SoftLayer_Hourly_billing()
-	 * @model default="true" dataType="org.occiware.clouddesigner.occi.Boolean"
+	 * @model default="false" dataType="org.occiware.clouddesigner.occi.Boolean"
 	 *        annotation="OCCIE2Ecore description='Sets the hourly billing flag (default), otherwise uses monthly billing'"
 	 * @generated
 	 */
@@ -231,6 +234,7 @@ public interface Machine_IBM_SoftLayer extends Machine {
 
 	/**
 	 * Returns the value of the '<em><b>Image</b></em>' attribute.
+	 * The default value is <code>"UBUNTU_LATEST"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Image</em>' attribute isn't clear,
@@ -240,7 +244,7 @@ public interface Machine_IBM_SoftLayer extends Machine {
 	 * @return the value of the '<em>Image</em>' attribute.
 	 * @see #setImage(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_IBM_SoftLayer_Image()
-	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 * @model default="UBUNTU_LATEST" dataType="org.occiware.clouddesigner.occi.String"
 	 *        annotation="OCCIE2Ecore description='OS Image to use'"
 	 * @generated
 	 */
@@ -258,6 +262,7 @@ public interface Machine_IBM_SoftLayer extends Machine {
 
 	/**
 	 * Returns the value of the '<em><b>Local disk</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Local disk</em>' attribute isn't clear,
@@ -267,7 +272,7 @@ public interface Machine_IBM_SoftLayer extends Machine {
 	 * @return the value of the '<em>Local disk</em>' attribute.
 	 * @see #setLocal_disk(boolean)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_IBM_SoftLayer_Local_disk()
-	 * @model dataType="org.occiware.clouddesigner.occi.Boolean"
+	 * @model default="false" dataType="org.occiware.clouddesigner.occi.Boolean"
 	 *        annotation="OCCIE2Ecore description='Use local machine disk instead of softlayer SAN'"
 	 * @generated
 	 */
@@ -336,5 +341,61 @@ public interface Machine_IBM_SoftLayer extends Machine {
 	 * @generated
 	 */
 	void setRegion(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Public vlan id</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Public vlan id</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Public vlan id</em>' attribute.
+	 * @see #setPublic_vlan_id(String)
+	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_IBM_SoftLayer_Public_vlan_id()
+	 * @model default="0" dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='Your public VLAN ID.'"
+	 * @generated
+	 */
+	String getPublic_vlan_id();
+
+	/**
+	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.docker.Machine_IBM_SoftLayer#getPublic_vlan_id <em>Public vlan id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Public vlan id</em>' attribute.
+	 * @see #getPublic_vlan_id()
+	 * @generated
+	 */
+	void setPublic_vlan_id(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Private vlan id</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Private vlan id</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Private vlan id</em>' attribute.
+	 * @see #setPrivate_vlan_id(String)
+	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_IBM_SoftLayer_Private_vlan_id()
+	 * @model default="0" dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='Your private VLAN ID.'"
+	 * @generated
+	 */
+	String getPrivate_vlan_id();
+
+	/**
+	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.docker.Machine_IBM_SoftLayer#getPrivate_vlan_id <em>Private vlan id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Private vlan id</em>' attribute.
+	 * @see #getPrivate_vlan_id()
+	 * @generated
+	 */
+	void setPrivate_vlan_id(String value);
 
 } // Machine_IBM_SoftLayer

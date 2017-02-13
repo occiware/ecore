@@ -23,6 +23,15 @@ package org.occiware.clouddesigner.occi.docker;
  * <ul>
  *   <li>{@link org.occiware.clouddesigner.occi.docker.Machine_VirtualBox#getBoot2docker_url <em>Boot2docker url</em>}</li>
  *   <li>{@link org.occiware.clouddesigner.occi.docker.Machine_VirtualBox#getDisk_size <em>Disk size</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.Machine_VirtualBox#isHost_dns_resolver <em>Host dns resolver</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.Machine_VirtualBox#getImport_boot2docker_vm <em>Import boot2docker vm</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.Machine_VirtualBox#getHostonly_cidr <em>Hostonly cidr</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.Machine_VirtualBox#getHostonly_nictype <em>Hostonly nictype</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.Machine_VirtualBox#getHostonly_nicpromisc <em>Hostonly nicpromisc</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.Machine_VirtualBox#isNo_share <em>No share</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.Machine_VirtualBox#isNo_dns_proxy <em>No dns proxy</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.Machine_VirtualBox#isNo_vtx_check <em>No vtx check</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.docker.Machine_VirtualBox#getShare_folder <em>Share folder</em>}</li>
  * </ul>
  *
  * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VirtualBox()
@@ -84,5 +93,255 @@ public interface Machine_VirtualBox extends Machine {
 	 * @generated
 	 */
 	void setDisk_size(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Host dns resolver</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Host dns resolver</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Host dns resolver</em>' attribute.
+	 * @see #setHost_dns_resolver(boolean)
+	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VirtualBox_Host_dns_resolver()
+	 * @model default="false" dataType="org.occiware.clouddesigner.occi.Boolean"
+	 *        annotation="OCCIE2Ecore description='The VIRTUALBOX HOST DNS RESOLVER\t'"
+	 * @generated
+	 */
+	boolean isHost_dns_resolver();
+
+	/**
+	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.docker.Machine_VirtualBox#isHost_dns_resolver <em>Host dns resolver</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Host dns resolver</em>' attribute.
+	 * @see #isHost_dns_resolver()
+	 * @generated
+	 */
+	void setHost_dns_resolver(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Import boot2docker vm</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Import boot2docker vm</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Import boot2docker vm</em>' attribute.
+	 * @see #setImport_boot2docker_vm(String)
+	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VirtualBox_Import_boot2docker_vm()
+	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='The VIRTUALBOX BOOT2DOCKER IMPORT VM'"
+	 * @generated
+	 */
+	String getImport_boot2docker_vm();
+
+	/**
+	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.docker.Machine_VirtualBox#getImport_boot2docker_vm <em>Import boot2docker vm</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Import boot2docker vm</em>' attribute.
+	 * @see #getImport_boot2docker_vm()
+	 * @generated
+	 */
+	void setImport_boot2docker_vm(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Hostonly cidr</b></em>' attribute.
+	 * The default value is <code>"192.168.99.1/24"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Hostonly cidr</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Hostonly cidr</em>' attribute.
+	 * @see #setHostonly_cidr(String)
+	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VirtualBox_Hostonly_cidr()
+	 * @model default="192.168.99.1/24" dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='The VIRTUALBOX HOSTONLY CIDR'"
+	 * @generated
+	 */
+	String getHostonly_cidr();
+
+	/**
+	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.docker.Machine_VirtualBox#getHostonly_cidr <em>Hostonly cidr</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Hostonly cidr</em>' attribute.
+	 * @see #getHostonly_cidr()
+	 * @generated
+	 */
+	void setHostonly_cidr(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Hostonly nictype</b></em>' attribute.
+	 * The default value is <code>"82540EM"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Hostonly nictype</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Hostonly nictype</em>' attribute.
+	 * @see #setHostonly_nictype(String)
+	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VirtualBox_Hostonly_nictype()
+	 * @model default="82540EM" dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='The \tVIRTUALBOX HOSTONLY NIC TYPE'"
+	 * @generated
+	 */
+	String getHostonly_nictype();
+
+	/**
+	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.docker.Machine_VirtualBox#getHostonly_nictype <em>Hostonly nictype</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Hostonly nictype</em>' attribute.
+	 * @see #getHostonly_nictype()
+	 * @generated
+	 */
+	void setHostonly_nictype(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Hostonly nicpromisc</b></em>' attribute.
+	 * The default value is <code>"deny"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Hostonly nicpromisc</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Hostonly nicpromisc</em>' attribute.
+	 * @see #setHostonly_nicpromisc(String)
+	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VirtualBox_Hostonly_nicpromisc()
+	 * @model default="deny" dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='The VIRTUALBOX HOSTONLY NIC PROMISC'"
+	 * @generated
+	 */
+	String getHostonly_nicpromisc();
+
+	/**
+	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.docker.Machine_VirtualBox#getHostonly_nicpromisc <em>Hostonly nicpromisc</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Hostonly nicpromisc</em>' attribute.
+	 * @see #getHostonly_nicpromisc()
+	 * @generated
+	 */
+	void setHostonly_nicpromisc(String value);
+
+	/**
+	 * Returns the value of the '<em><b>No share</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>No share</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>No share</em>' attribute.
+	 * @see #setNo_share(boolean)
+	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VirtualBox_No_share()
+	 * @model default="false" dataType="org.occiware.clouddesigner.occi.Boolean"
+	 *        annotation="OCCIE2Ecore description='The VIRTUALBOX NO SHARE'"
+	 * @generated
+	 */
+	boolean isNo_share();
+
+	/**
+	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.docker.Machine_VirtualBox#isNo_share <em>No share</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>No share</em>' attribute.
+	 * @see #isNo_share()
+	 * @generated
+	 */
+	void setNo_share(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>No dns proxy</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>No dns proxy</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>No dns proxy</em>' attribute.
+	 * @see #setNo_dns_proxy(boolean)
+	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VirtualBox_No_dns_proxy()
+	 * @model default="false" dataType="org.occiware.clouddesigner.occi.Boolean"
+	 *        annotation="OCCIE2Ecore description='The VIRTUALBOX NO DNS PROXY'"
+	 * @generated
+	 */
+	boolean isNo_dns_proxy();
+
+	/**
+	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.docker.Machine_VirtualBox#isNo_dns_proxy <em>No dns proxy</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>No dns proxy</em>' attribute.
+	 * @see #isNo_dns_proxy()
+	 * @generated
+	 */
+	void setNo_dns_proxy(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>No vtx check</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>No vtx check</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>No vtx check</em>' attribute.
+	 * @see #setNo_vtx_check(boolean)
+	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VirtualBox_No_vtx_check()
+	 * @model default="false" dataType="org.occiware.clouddesigner.occi.Boolean"
+	 *        annotation="OCCIE2Ecore description='The VIRTUALBOX NO VTX CHECK'"
+	 * @generated
+	 */
+	boolean isNo_vtx_check();
+
+	/**
+	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.docker.Machine_VirtualBox#isNo_vtx_check <em>No vtx check</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>No vtx check</em>' attribute.
+	 * @see #isNo_vtx_check()
+	 * @generated
+	 */
+	void setNo_vtx_check(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Share folder</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Share folder</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Share folder</em>' attribute.
+	 * @see #setShare_folder(String)
+	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VirtualBox_Share_folder()
+	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='The VIRTUALBOX SHARE FOLDER'"
+	 * @generated
+	 */
+	String getShare_folder();
+
+	/**
+	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.docker.Machine_VirtualBox#getShare_folder <em>Share folder</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Share folder</em>' attribute.
+	 * @see #getShare_folder()
+	 * @generated
+	 */
+	void setShare_folder(String value);
 
 } // Machine_VirtualBox

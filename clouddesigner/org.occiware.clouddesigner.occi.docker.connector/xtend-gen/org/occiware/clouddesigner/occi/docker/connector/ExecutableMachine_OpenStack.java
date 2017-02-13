@@ -49,68 +49,118 @@ public class ExecutableMachine_OpenStack extends Machine_OpenStackImpl {
         StringBuilder _append = sb.append(" --openstack-auth-url ");
         _append.append(ExecutableMachine_OpenStack.this.auth_url);
       }
-      boolean _isEmpty_1 = ExecutableMachine_OpenStack.this.flavor_id.isEmpty();
-      boolean _not_1 = (!_isEmpty_1);
-      if (_not_1) {
+      boolean _isNotBlank = StringUtils.isNotBlank(ExecutableMachine_OpenStack.this.flavor_id);
+      if (_isNotBlank) {
         StringBuilder _append_1 = sb.append(" --openstack-flavor-id ");
         _append_1.append(ExecutableMachine_OpenStack.this.flavor_id);
       }
-      boolean _isEmpty_2 = ExecutableMachine_OpenStack.this.image_id.isEmpty();
-      boolean _not_2 = (!_isEmpty_2);
-      if (_not_2) {
-        StringBuilder _append_2 = sb.append(" --openstack-image-id ");
-        _append_2.append(ExecutableMachine_OpenStack.this.image_id);
-      }
-      boolean _isEmpty_3 = ExecutableMachine_OpenStack.this.tenant_id.isEmpty();
-      boolean _not_3 = (!_isEmpty_3);
-      if (_not_3) {
-        StringBuilder _append_3 = sb.append(" --openstack-tenant-id ");
-        _append_3.append(ExecutableMachine_OpenStack.this.tenant_id);
-      }
-      boolean _isEmpty_4 = ExecutableMachine_OpenStack.this.tenant_name.isEmpty();
-      boolean _not_4 = (!_isEmpty_4);
-      if (_not_4) {
-        StringBuilder _append_4 = sb.append(" --openstack-tenant-name ");
-        _append_4.append(ExecutableMachine_OpenStack.this.tenant_name);
-      }
-      boolean _isEmpty_5 = ExecutableMachine_OpenStack.this.username.isEmpty();
-      boolean _not_5 = (!_isEmpty_5);
-      if (_not_5) {
-        StringBuilder _append_5 = sb.append(" --openstack-username ");
-        _append_5.append(ExecutableMachine_OpenStack.this.username);
-      }
-      boolean _isEmpty_6 = ExecutableMachine_OpenStack.this.password.isEmpty();
-      boolean _not_6 = (!_isEmpty_6);
-      if (_not_6) {
-        StringBuilder _append_6 = sb.append(" --openstack-password ");
-        _append_6.append(ExecutableMachine_OpenStack.this.password);
-      }
-      boolean _isEmpty_7 = ExecutableMachine_OpenStack.this.floatingip_pool.isEmpty();
-      boolean _not_7 = (!_isEmpty_7);
-      if (_not_7) {
-        StringBuilder _append_7 = sb.append(" --openstack-floatingip-pool ");
-        _append_7.append(ExecutableMachine_OpenStack.this.floatingip_pool);
-      }
-      boolean _isNotBlank = StringUtils.isNotBlank(ExecutableMachine_OpenStack.this.region);
-      if (_isNotBlank) {
-        StringBuilder _append_8 = sb.append(" --openstack-region ");
-        _append_8.append(ExecutableMachine_OpenStack.this.region);
-      }
-      boolean _isNotBlank_1 = StringUtils.isNotBlank(ExecutableMachine_OpenStack.this.net_id);
+      boolean _isNotBlank_1 = StringUtils.isNotBlank(ExecutableMachine_OpenStack.this.flavor_name);
       if (_isNotBlank_1) {
-        StringBuilder _append_9 = sb.append(" --openstack-net-id ");
-        _append_9.append(ExecutableMachine_OpenStack.this.net_id);
+        StringBuilder _append_2 = sb.append(" --openstack-flavor-name ");
+        _append_2.append(ExecutableMachine_OpenStack.this.flavor_name);
       }
-      boolean _isNotBlank_2 = StringUtils.isNotBlank(ExecutableMachine_OpenStack.this.sec_groups);
+      boolean _isNotBlank_2 = StringUtils.isNotBlank(ExecutableMachine_OpenStack.this.image_id);
       if (_isNotBlank_2) {
-        StringBuilder _append_10 = sb.append(" --openstack-sec-groups ");
-        _append_10.append(ExecutableMachine_OpenStack.this.sec_groups);
-      } else {
-        StringBuilder _append_11 = sb.append(" --openstack-sec-groups ");
-        _append_11.append("default");
+        StringBuilder _append_3 = sb.append(" --openstack-image-id ");
+        _append_3.append(ExecutableMachine_OpenStack.this.image_id);
       }
-      StringBuilder _append_12 = sb.append(" --openstack-ssh-user ");
-      _append_12.append("occiware");
+      boolean _isNotBlank_3 = StringUtils.isNotBlank(ExecutableMachine_OpenStack.this.image_name);
+      if (_isNotBlank_3) {
+        StringBuilder _append_4 = sb.append(" --openstack-image-name ");
+        _append_4.append(ExecutableMachine_OpenStack.this.image_name);
+      }
+      boolean _isNotBlank_4 = StringUtils.isNotBlank(ExecutableMachine_OpenStack.this.tenant_id);
+      if (_isNotBlank_4) {
+        StringBuilder _append_5 = sb.append(" --openstack-tenant-id ");
+        _append_5.append(ExecutableMachine_OpenStack.this.tenant_id);
+      }
+      boolean _isNotBlank_5 = StringUtils.isNotBlank(ExecutableMachine_OpenStack.this.tenant_name);
+      if (_isNotBlank_5) {
+        StringBuilder _append_6 = sb.append(" --openstack-tenant-name ");
+        _append_6.append(ExecutableMachine_OpenStack.this.tenant_name);
+      }
+      boolean _isNotBlank_6 = StringUtils.isNotBlank(ExecutableMachine_OpenStack.this.username);
+      if (_isNotBlank_6) {
+        StringBuilder _append_7 = sb.append(" --openstack-username ");
+        _append_7.append(ExecutableMachine_OpenStack.this.username);
+      }
+      boolean _isNotBlank_7 = StringUtils.isNotBlank(ExecutableMachine_OpenStack.this.password);
+      if (_isNotBlank_7) {
+        StringBuilder _append_8 = sb.append(" --openstack-password ");
+        _append_8.append(ExecutableMachine_OpenStack.this.password);
+      }
+      boolean _isNotBlank_8 = StringUtils.isNotBlank(ExecutableMachine_OpenStack.this.floatingip_pool);
+      if (_isNotBlank_8) {
+        StringBuilder _append_9 = sb.append(" --openstack-floatingip-pool ");
+        _append_9.append(ExecutableMachine_OpenStack.this.floatingip_pool);
+      }
+      boolean _isNotBlank_9 = StringUtils.isNotBlank(ExecutableMachine_OpenStack.this.region);
+      if (_isNotBlank_9) {
+        StringBuilder _append_10 = sb.append(" --openstack-region ");
+        _append_10.append(ExecutableMachine_OpenStack.this.region);
+      }
+      boolean _isNotBlank_10 = StringUtils.isNotBlank(ExecutableMachine_OpenStack.this.net_id);
+      if (_isNotBlank_10) {
+        StringBuilder _append_11 = sb.append(" --openstack-net-id ");
+        _append_11.append(ExecutableMachine_OpenStack.this.net_id);
+      }
+      boolean _isNotBlank_11 = StringUtils.isNotBlank(ExecutableMachine_OpenStack.this.net_name);
+      if (_isNotBlank_11) {
+        StringBuilder _append_12 = sb.append(" --openstack-net-name ");
+        _append_12.append(ExecutableMachine_OpenStack.this.net_name);
+      }
+      boolean _isNotBlank_12 = StringUtils.isNotBlank(ExecutableMachine_OpenStack.this.domain_id);
+      if (_isNotBlank_12) {
+        StringBuilder _append_13 = sb.append(" --openstack-domain-id ");
+        _append_13.append(ExecutableMachine_OpenStack.this.domain_id);
+      }
+      boolean _isNotBlank_13 = StringUtils.isNotBlank(ExecutableMachine_OpenStack.this.domain_name);
+      if (_isNotBlank_13) {
+        StringBuilder _append_14 = sb.append(" --openstack-domain-name ");
+        _append_14.append(ExecutableMachine_OpenStack.this.domain_name);
+      }
+      boolean _isNotBlank_14 = StringUtils.isNotBlank(ExecutableMachine_OpenStack.this.availability_zone);
+      if (_isNotBlank_14) {
+        StringBuilder _append_15 = sb.append(" --openstack-availability-zone ");
+        _append_15.append(ExecutableMachine_OpenStack.this.availability_zone);
+      }
+      if ((ExecutableMachine_OpenStack.this.active_timeout != 200)) {
+        StringBuilder _append_16 = sb.append(" --openstack-availability-zone ");
+        _append_16.append(ExecutableMachine_OpenStack.this.active_timeout);
+      }
+      boolean _isNotBlank_15 = StringUtils.isNotBlank(ExecutableMachine_OpenStack.this.private_key_file);
+      if (_isNotBlank_15) {
+        StringBuilder _append_17 = sb.append(" --openstack-private-key-file ");
+        _append_17.append(ExecutableMachine_OpenStack.this.private_key_file);
+      }
+      String _string = Integer.valueOf(ExecutableMachine_OpenStack.this.ssh_port).toString();
+      boolean _isNotBlank_16 = StringUtils.isNotBlank(_string);
+      if (_isNotBlank_16) {
+        StringBuilder _append_18 = sb.append(" --openstack-ssh-port ");
+        _append_18.append(ExecutableMachine_OpenStack.this.ssh_port);
+      }
+      boolean _isNotBlank_17 = StringUtils.isNotBlank(ExecutableMachine_OpenStack.this.ssh_user);
+      if (_isNotBlank_17) {
+        StringBuilder _append_19 = sb.append(" --openstack-ssh-user ");
+        _append_19.append(ExecutableMachine_OpenStack.this.ssh_user);
+      }
+      if (ExecutableMachine_OpenStack.this.insecure) {
+        StringBuilder _append_20 = sb.append(" --openstack-insecure ");
+        _append_20.append(ExecutableMachine_OpenStack.this.insecure);
+      }
+      boolean _isNotBlank_18 = StringUtils.isNotBlank(ExecutableMachine_OpenStack.this.endpoint_type);
+      if (_isNotBlank_18) {
+        StringBuilder _append_21 = sb.append(" --openstack-endpoint-type ");
+        _append_21.append(ExecutableMachine_OpenStack.this.endpoint_type);
+      }
+      boolean _isNotBlank_19 = StringUtils.isNotBlank(ExecutableMachine_OpenStack.this.sec_groups);
+      if (_isNotBlank_19) {
+        StringBuilder _append_22 = sb.append(" --openstack-sec-groups ");
+        _append_22.append(ExecutableMachine_OpenStack.this.sec_groups);
+      } else {
+        StringBuilder _append_23 = sb.append(" --openstack-sec-groups ");
+        _append_23.append("default");
+      }
     }
   };
   
