@@ -12,7 +12,8 @@ Bundle-ClassPath: .,
  lib/slf4j-jdk14-1.5.6.jar,
  lib/slf4j-log4j12-1.7.7.jar,
  lib/slf4j-simple-1.7.5.jar,
- lib/commons-net-3.5.jar
+ lib/commons-net-3.5.jar,
+ lib/occissh-all-1.0-SNAPSHOT.jar
 Bundle-Vendor: OCCIWARE
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy

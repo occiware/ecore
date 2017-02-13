@@ -83,6 +83,9 @@
     <attributes name="password" required="true">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
+    <attributes name="occi.compute.userdata.file" required="false">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
   </mixins>
   <types xsi:type="ecore:EEnum" name="GuestOsIdentifiers">
     <eLiterals name="dosGuest"/>

@@ -95,6 +95,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 	private static final String ATTR_USER_DATA = "occi.compute.userdata";
 	private static final String ATTR_USERNAME = "user";
 	private static final String ATTR_PASSWORD = "password";
+	private static final String ATTR_USER_DATA_FILE = "occi.compute.userdata.file";
 	
 	
 	/**
@@ -109,6 +110,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 	private static final String VMWARE_MIXIN_VM_IMAGE = "vmimage";
 	private static final String VMWARE_MIXIN_CREDENTIAL = "credential";
 	private static final String MIXIN_USERDATA = "user_data";
+	
 	
 	
 	/**
@@ -148,6 +150,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 	private Float ephemeralDiskSizeGB = 15.0f;
 	
 	private String userData;
+	private String userDataFile;
 	private String username;
 	private String password;
 	
@@ -1045,7 +1048,6 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		boolean hasMixinVMImage = hasMixinVMImage();
 		boolean hasMixinUserData = hasMixinUserData();
 		boolean hasMixinCredential = hasMixinCredential();
-		
 		// ATTR_DATACENTER_NAME
 		if (datacenterName != null && hasMixinFoldersData) {
 			if (this.getAttributeStateObject(ATTR_DATACENTER_NAME) == null) {
@@ -1166,6 +1168,14 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 				attrsToUpdate.put(ATTR_PASSWORD, password);
 			}
 		}
+		if (hasMixinCredential && userDataFile != null) {
+			if (this.getAttributeStateObject(ATTR_USER_DATA_FILE) == null) {
+				attrsToCreate.put(ATTR_USER_DATA_FILE, userDataFile);
+			} else {
+				attrsToUpdate.put(ATTR_USER_DATA_FILE, userDataFile);
+			}
+		}
+		
 		// Update the attributes via a transaction (or not if standalone).
 		if (UIDialog.isStandAlone()) {
 			// Headless environment.
@@ -1536,6 +1546,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		username = getAttributeValueByOcciKey(ATTR_USERNAME);
 		password = getAttributeValueByOcciKey(ATTR_PASSWORD);
 		userData = getAttributeValueByOcciKey(ATTR_USER_DATA);
+		userDataFile = getAttributeValueByOcciKey(ATTR_USER_DATA_FILE);
 		
 		// Get the first adapter (eth0 or name Network adapter 1 or
 		// Adaptateur réseau 1).
@@ -2237,6 +2248,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		if (hasMixinCredential()) {
 			username = getAttributeValueByOcciKey(ATTR_USERNAME);
 			password = getAttributeValueByOcciKey(ATTR_PASSWORD);
+			userDataFile = getAttributeValueByOcciKey(ATTR_USER_DATA_FILE);
 		}
 		if (hasMixinUserData()) {
 			userData = getAttributeValueByOcciKey(ATTR_USER_DATA);
@@ -2445,6 +2457,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		if (hasMixinCredential()) {
 			username = getAttributeValueByOcciKey(ATTR_USERNAME);
 			password = getAttributeValueByOcciKey(ATTR_PASSWORD);
+			userDataFile = getAttributeValueByOcciKey(ATTR_USER_DATA_FILE);
 		}
 		if (hasMixinUserData()) {
 			userData = getAttributeValueByOcciKey(ATTR_USER_DATA);
@@ -3088,7 +3101,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		// There is an os so --< User data part is possible.
 		if (hasMixinUserData() && hasMixinCredential()) {
 			LOGGER.info("applying user datas...");
-			UserDataHelper userDataHelper = new UserDataHelper(morId, vmName, userData, username, password);
+			UserDataHelper userDataHelper = new UserDataHelper(morId, vmName, userData, username, password, userDataFile);
 			try {
 				if (monitor != null) {
 					// Run directly the operation within this eclipse thread.

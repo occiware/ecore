@@ -1,5 +1,6 @@
 package org.occiware.clouddesigner.occi.infrastructure.connector.vmware.utils;
 
+import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.rmi.RemoteException;
 import java.util.LinkedList;
@@ -20,6 +21,7 @@ import com.vmware.vim25.mo.GuestOperationsManager;
 import com.vmware.vim25.mo.GuestProcessManager;
 import com.vmware.vim25.mo.Task;
 import com.vmware.vim25.mo.VirtualMachine;
+import org.occiware.driver.ssh.*;
 
 /**
  * VMWare user data management. How user data works : This runnable will test if
@@ -53,6 +55,12 @@ public class UserDataHelper implements Runnable, IRunnableWithProgress {
 	private String name = null;
 
 	private Folder instanceFolder = null;
+	
+	private String userDataFile = null;
+	
+	private String ipAddress = null;
+	
+	private int port;
 
 	private VClientImpl vClient = new VClientImpl();
 
@@ -65,7 +73,7 @@ public class UserDataHelper implements Runnable, IRunnableWithProgress {
 	 * @param username
 	 * @param password
 	 */
-	public UserDataHelper(String instanceId, String instanceName, String userDatas, String username, String password) {
+	public UserDataHelper(String instanceId, String instanceName, String userDatas, String username, String password, String userDataFile) {
 		super();
 		this.userDatas = userDatas;
 		// this.ipAddress = ipAddress;
@@ -73,8 +81,23 @@ public class UserDataHelper implements Runnable, IRunnableWithProgress {
 		this.password = password;
 		this.morId = instanceId;
 		this.name = instanceName;
+		this.userDataFile = userDataFile;
 		// this.instanceFolder = instanceFolder;
 	}
+	
+	public UserDataHelper(String instanceId, String instanceName, String userDatas, String username, String password, String ipAddress, int port, String userDataFile) {
+		super();
+		this.userDatas = userDatas;
+		this.username = username;
+		this.password = password;
+		this.ipAddress = ipAddress;
+		this.port = port;
+		this.morId = instanceId;
+		this.name = instanceName;
+		this.userDataFile = userDataFile;
+	}
+	
+	
 
 	/**
 	 * Execute the create / update of the user data properties on the qualified
@@ -225,14 +248,17 @@ public class UserDataHelper implements Runnable, IRunnableWithProgress {
 				LOGGER.info("VM : " + vm.getName() + " is powered on.");
 
 				if (VMHelper.isToolsInstalled(vm)) {
-					LOGGER.info("Calling apply userdata via vmware guest tools.");
-					applyUserDataViaGuestTools(vm);
-				} else {
+				 	LOGGER.info("Calling apply userdata via vmware guest tools.");
+				 	applyUserDataViaGuestTools(vm);
+				 } else {
 					// VMware tools not installed and the vm is not found on
 					// this vcenter, try to apply user data via ssh directly
 					// (without vClient so).
-					LOGGER.info("Call apply userdata via ssh.");
-					applyUserDataViaSSH();
+			    	LOGGER.info("Call apply userdata via ssh.");
+			    	if (port == 0) {
+			    		port = 22;
+			    	}
+			    	applyUserDataViaSSH();
 				}
 
 			}
@@ -308,8 +334,15 @@ public class UserDataHelper implements Runnable, IRunnableWithProgress {
 			npa.password = password;
 			npa.interactiveSession = false;
 			GuestProgramSpec gps = new GuestProgramSpec();
-			gps.programPath = "/bin/bash";
-			gps.arguments = userDatas;
+			gps.programPath = "/bin/echo";
+			if (userDataFile == null) {
+				userDataFile = "/tmp/roboconf.properties";
+			}
+			gps.arguments = "$\'" + this.userDatas + "\' > " + userDataFile;
+			   // spec.arguments = "$\'" + this.userData + "\' > /tmp/roboconf.properties";
+			
+			// before: gps.programPath = "/bin/bash";
+			// gps.arguments = userDatas;
 			GuestProcessManager gpm = gom.getProcessManager(vm);
 			long result = gpm.startProgramInGuest(npa, gps);
 			LOGGER.info("Process: " + result);
@@ -321,7 +354,19 @@ public class UserDataHelper implements Runnable, IRunnableWithProgress {
 	}
 
 	private void applyUserDataViaSSH() {
-		LOGGER.warn("apply User data via ssh is not implemented, this feature will come soon.");
+		String knownHosts = System.getProperty("user.home") + File.separator + ".ssh" + File.separator + "known_hosts";
+		SshClient sshClient = new SshClient(username, password, null, knownHosts, ipAddress, port);
+        sshClient.setTimeout(5000);
+
+        try {
+            sshClient.connect();
+            sshClient.execute("echo " + userDatas);
+            // System.out.println("result : " + result);
+            sshClient.disconnect();
+        } catch (SshException ex) {
+            System.err.println("Exception thrown when executing one command : " + ex.getMessage());
+        }
+		
 	}
 
 	@Override
