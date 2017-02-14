@@ -21,7 +21,7 @@ import com.vmware.vim25.mo.GuestOperationsManager;
 import com.vmware.vim25.mo.GuestProcessManager;
 import com.vmware.vim25.mo.Task;
 import com.vmware.vim25.mo.VirtualMachine;
-import org.occiware.driver.ssh.*;
+// import org.occiware.driver.ssh.*;
 
 /**
  * VMWare user data management. How user data works : This runnable will test if
@@ -354,6 +354,7 @@ public class UserDataHelper implements Runnable, IRunnableWithProgress {
 	}
 
 	private void applyUserDataViaSSH() {
+		/* TODO : Add the dependencies on another project (like docker has done it..)
 		String knownHosts = System.getProperty("user.home") + File.separator + ".ssh" + File.separator + "known_hosts";
 		SshClient sshClient = new SshClient(username, password, null, knownHosts, ipAddress, port);
         sshClient.setTimeout(5000);
@@ -366,6 +367,7 @@ public class UserDataHelper implements Runnable, IRunnableWithProgress {
         } catch (SshException ex) {
             System.err.println("Exception thrown when executing one command : " + ex.getMessage());
         }
+        */
 		
 	}
 
