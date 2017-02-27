@@ -24,7 +24,6 @@ import org.occiware.clouddesigner.occi.docker.Cluster;
 import org.occiware.clouddesigner.occi.docker.Contains;
 import org.occiware.clouddesigner.occi.docker.DockerFactory;
 import org.occiware.clouddesigner.occi.docker.DockerPackage;
-import org.occiware.clouddesigner.occi.docker.Grid5000;
 import org.occiware.clouddesigner.occi.docker.Link;
 import org.occiware.clouddesigner.occi.docker.Machine;
 import org.occiware.clouddesigner.occi.docker.Machine_Amazon_EC2;

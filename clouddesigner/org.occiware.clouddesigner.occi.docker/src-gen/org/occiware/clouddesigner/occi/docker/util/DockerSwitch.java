@@ -13,14 +13,34 @@ package org.occiware.clouddesigner.occi.docker.util;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.util.Switch;
-
 import org.occiware.clouddesigner.occi.Entity;
 import org.occiware.clouddesigner.occi.Resource;
-
-import org.occiware.clouddesigner.occi.docker.*;
-
+import org.occiware.clouddesigner.occi.docker.Cluster;
+import org.occiware.clouddesigner.occi.docker.Container;
+import org.occiware.clouddesigner.occi.docker.Contains;
+import org.occiware.clouddesigner.occi.docker.DockerPackage;
+import org.occiware.clouddesigner.occi.docker.Link;
+import org.occiware.clouddesigner.occi.docker.Machine;
+import org.occiware.clouddesigner.occi.docker.Machine_Amazon_EC2;
+import org.occiware.clouddesigner.occi.docker.Machine_Digital_Ocean;
+import org.occiware.clouddesigner.occi.docker.Machine_Exoscale;
+import org.occiware.clouddesigner.occi.docker.Machine_Generic;
+import org.occiware.clouddesigner.occi.docker.Machine_Google_Compute_Engine;
+import org.occiware.clouddesigner.occi.docker.Machine_Grid5000;
+import org.occiware.clouddesigner.occi.docker.Machine_IBM_SoftLayer;
+import org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Azure;
+import org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Hyper_V;
+import org.occiware.clouddesigner.occi.docker.Machine_OpenStack;
+import org.occiware.clouddesigner.occi.docker.Machine_Rackspace;
+import org.occiware.clouddesigner.occi.docker.Machine_VMware_Fusion;
+import org.occiware.clouddesigner.occi.docker.Machine_VMware_vCloud_Air;
+import org.occiware.clouddesigner.occi.docker.Machine_VMware_vSphere;
+import org.occiware.clouddesigner.occi.docker.Machine_VirtualBox;
+import org.occiware.clouddesigner.occi.docker.Network;
+import org.occiware.clouddesigner.occi.docker.NetworkLink;
+import org.occiware.clouddesigner.occi.docker.Volume;
+import org.occiware.clouddesigner.occi.docker.Volumesfrom;
 import org.occiware.clouddesigner.occi.infrastructure.Compute;
 import org.occiware.clouddesigner.occi.infrastructure.Storage;
 

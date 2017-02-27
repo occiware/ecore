@@ -11,7 +11,6 @@
  */
 package org.occiware.clouddesigner.occi.docker;
 
-import org.occiware.clouddesigner.occi.Resource;
 import org.occiware.clouddesigner.occi.infrastructure.Compute;
 
 /**

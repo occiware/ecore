@@ -16,9 +16,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.occiware.clouddesigner.occi.OCCIPackage;
-
 import org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage;
 
 /**
