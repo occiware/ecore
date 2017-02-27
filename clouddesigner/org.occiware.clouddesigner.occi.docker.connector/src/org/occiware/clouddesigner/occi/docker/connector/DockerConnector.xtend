@@ -42,12 +42,16 @@ import org.eclipse.emf.transaction.util.TransactionUtil
 import org.occiware.clouddesigner.occi.Configuration
 import org.occiware.clouddesigner.occi.Link
 import org.occiware.clouddesigner.occi.Resource
+import org.occiware.clouddesigner.occi.docker.Cluster
 import org.occiware.clouddesigner.occi.docker.Contains
 import org.occiware.clouddesigner.occi.docker.DockerPackage
 import org.occiware.clouddesigner.occi.docker.Machine
 import org.occiware.clouddesigner.occi.docker.Machine_Amazon_EC2
 import org.occiware.clouddesigner.occi.docker.Machine_Digital_Ocean
+import org.occiware.clouddesigner.occi.docker.Machine_Exoscale
+import org.occiware.clouddesigner.occi.docker.Machine_Generic
 import org.occiware.clouddesigner.occi.docker.Machine_Google_Compute_Engine
+import org.occiware.clouddesigner.occi.docker.Machine_Grid5000
 import org.occiware.clouddesigner.occi.docker.Machine_IBM_SoftLayer
 import org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Azure
 import org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Hyper_V
@@ -66,13 +70,16 @@ import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.Do
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerObserver
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerUtil
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.ProcessManager
+import org.occiware.clouddesigner.occi.docker.impl.ClusterImpl
 import org.occiware.clouddesigner.occi.docker.impl.ContainerImpl
 import org.occiware.clouddesigner.occi.docker.impl.DockerFactoryImpl
 import org.occiware.clouddesigner.occi.docker.impl.MachineImpl
 import org.occiware.clouddesigner.occi.docker.impl.Machine_Amazon_EC2Impl
 import org.occiware.clouddesigner.occi.docker.impl.Machine_Digital_OceanImpl
+import org.occiware.clouddesigner.occi.docker.impl.Machine_ExoscaleImpl
 import org.occiware.clouddesigner.occi.docker.impl.Machine_GenericImpl
 import org.occiware.clouddesigner.occi.docker.impl.Machine_Google_Compute_EngineImpl
+import org.occiware.clouddesigner.occi.docker.impl.Machine_Grid5000Impl
 import org.occiware.clouddesigner.occi.docker.impl.Machine_IBM_SoftLayerImpl
 import org.occiware.clouddesigner.occi.docker.impl.Machine_Microsoft_AzureImpl
 import org.occiware.clouddesigner.occi.docker.impl.Machine_Microsoft_Hyper_VImpl
@@ -95,11 +102,6 @@ import org.slf4j.LoggerFactory
 
 import static com.google.common.base.Preconditions.checkNotNull
 import static org.occiware.clouddesigner.occi.docker.connector.ExecutableContainer.*
-import org.occiware.clouddesigner.occi.docker.Machine_Generic
-import org.occiware.clouddesigner.occi.docker.impl.Machine_ExoscaleImpl
-import org.occiware.clouddesigner.occi.docker.impl.Machine_Grid5000Impl
-import org.occiware.clouddesigner.occi.docker.impl.ClusterImpl
-import org.occiware.clouddesigner.occi.docker.Machine_Grid5000
 
 /**
  * This class overrides the generated EMF factory of the Docker package.
@@ -3003,7 +3005,7 @@ class ExecutableCluster extends ClusterImpl {
 
 	// Initialize logger for ExecutableDockerModel.
 	private static Logger LOGGER = LoggerFactory.getLogger(typeof(ExecutableCluster))
-
+	
 }
 
 /**
@@ -3033,6 +3035,7 @@ class ExecutableDockerModel {
 
 	// Initialize logger for ExecutableDockerModel.
 	private static Logger LOGGER = LoggerFactory.getLogger(typeof(ExecutableDockerModel))
+	var public Cluster cluster
 	var public Machine machine
 	var public org.occiware.clouddesigner.occi.docker.Container container
 	var public Configuration configuration
@@ -3051,6 +3054,7 @@ class ExecutableDockerModel {
 	var public Network network
 	var public Machine_Generic machine_Generic
 	var public Machine_Grid5000 machine_Grid5000
+	var public Machine_Exoscale machine_Exoscale
 
 	new() {
 	}
@@ -3085,11 +3089,17 @@ class ExecutableDockerModel {
 			machine_Generic = machine
 		} else if (machine instanceof Machine_Grid5000) {
 			machine_Grid5000 = machine
-		}		
+		}else if (machine instanceof Machine_Exoscale) {
+			machine_Exoscale = machine
+		}				
 	}
 
 	new(Configuration configuration) {
 		this.configuration = configuration
+	}
+
+	new(Cluster cluster) {
+		this.cluster = cluster
 	}
 
 	new(org.occiware.clouddesigner.occi.docker.Container container) {
@@ -3166,7 +3176,10 @@ class ExecutableDockerModel {
 			machine_Grid5000.start
 			return;
 		}
-
+		if (machine_Exoscale != null) {
+			machine_Exoscale.start
+			return;
+		}
 	}
 
 	def void startAll() {
@@ -3232,6 +3245,10 @@ class ExecutableDockerModel {
 		}
 		if (machine_Grid5000 != null) {
 			(machine_Grid5000 as ExecutableMachine_Grid5000).startAll
+			return;
+		}
+		if (machine_Exoscale != null) {
+			(machine_Exoscale as ExecutableMachine_Exoscale).startAll
 			return;
 		}
 
@@ -3303,6 +3320,10 @@ class ExecutableDockerModel {
 			(machine_Grid5000 as ExecutableMachine_Grid5000).stop(StopMethod.GRACEFUL)
 			return;
 		}
+		if (machine_Exoscale != null) {
+			(machine_Exoscale as ExecutableMachine_Exoscale).stop(StopMethod.GRACEFUL)
+			return;
+		}
 
 	}
 
@@ -3371,6 +3392,10 @@ class ExecutableDockerModel {
 			machine_Grid5000.restart(RestartMethod.GRACEFUL)
 			return;
 		}
+		if (machine_Exoscale != null) {
+			machine_Exoscale.restart(RestartMethod.GRACEFUL)
+			return;
+		}
 
 	}
 
@@ -3403,6 +3428,8 @@ class ExecutableDockerModel {
 			(machine_Generic as ExecutableMachine_Generic).synchronize
 		}else if (machine instanceof Machine_Grid5000) {
 			(machine_Grid5000 as ExecutableMachine_Grid5000).synchronize
+		}else if (machine instanceof Machine_Exoscale) {
+			(machine_Exoscale as ExecutableMachine_Exoscale).synchronize
 		}
 	}
 
