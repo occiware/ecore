@@ -1,15 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<project
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+  xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-   <artifactId>org.occiware.clouddesigner.parent</artifactId>
-   <groupId>Clouddesigner</groupId>
-   <version>0.1.0-SNAPSHOT</version>
-   <relativePath>../org.occiware.clouddesigner.parent/pom.xml</relativePath>
+    <artifactId>org.occiware.clouddesigner.parent</artifactId>
+    <groupId>Clouddesigner</groupId>
+    <version>0.1.0-SNAPSHOT</version>
+    <relativePath>../org.occiware.clouddesigner.parent/pom.xml</relativePath>
   </parent>
   <groupId>Clouddesigner</groupId>
   <artifactId>org.occiware.clouddesigner.occi.docker.connector</artifactId>
   <version>0.1.0-SNAPSHOT</version>
   <packaging>eclipse-plugin</packaging>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.eclipse.xtend</groupId>
+        <artifactId>xtend-maven-plugin</artifactId>
+        <version>2.10.0</version>
+        <executions>
+          <execution>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>compile</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>xtend-gen</outputDirectory>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 </project>
