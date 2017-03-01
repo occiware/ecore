@@ -15,7 +15,7 @@
 	<packaging>eclipse-plugin</packaging>
 
 	<properties>
-		<xtend.compiler.version>2.11.0</xtend.compiler.version>
+		<xtend.compiler.version>2.10.0</xtend.compiler.version>
 	</properties>
 
 	<dependencies>
