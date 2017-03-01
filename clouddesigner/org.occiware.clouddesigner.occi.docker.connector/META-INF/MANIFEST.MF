@@ -88,5 +88,5 @@ Require-Bundle: org.eclipse.xtend.lib,
  org.eclipse.emf.transaction;bundle-version="1.9.0",
  org.occiware.clouddesigner.occi.docker.preference;bundle-version="0.1.0",
  org.slf4j.api;bundle-version="1.7.2"
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 
