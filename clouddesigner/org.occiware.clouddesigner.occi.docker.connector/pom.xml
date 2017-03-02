@@ -36,8 +36,7 @@
 					<execution>
 						<phase>generate-sources</phase>
 						<goals>
-							<goal>compile</goal>
-							<goal>testCompile</goal>
+							<goal>xtend-install-debug-info</goal>
 						</goals>
 						<configuration>
 							<outputDirectory>xtend-gen</outputDirectory>
