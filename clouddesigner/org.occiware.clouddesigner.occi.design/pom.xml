@@ -4,11 +4,11 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
    <artifactId>org.occiware.clouddesigner.parent</artifactId>
-   <groupId>Clouddesigner</groupId>
+   <groupId>org.occiware</groupId>
    <version>0.1.0-SNAPSHOT</version>
    <relativePath>../org.occiware.clouddesigner.parent/pom.xml</relativePath>
   </parent>
-  <groupId>Clouddesigner</groupId>
+  <groupId>org.occiware</groupId>
   <artifactId>org.occiware.clouddesigner.occi.design</artifactId>
   <version>0.1.0-SNAPSHOT</version>
   <packaging>eclipse-plugin</packaging>
