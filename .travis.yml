@@ -1,5 +1,16 @@
-env:
-  language: java
+sudo: false
+
+language: java
+
+matrix:
+  fast_finish: true
+  include:
+    - os: linux
+      jdk: oraclejdk8
+      env: DISPLAY=:99.0
+
+install: true
+
 before_install: 
 - echo "MAVEN_OPTS='-Xmx2048m -XX:MaxPermSize=512m'" > ~/.mavenrc
 script:

@@ -22,4 +22,4 @@ Require-Bundle: org.eclipse.ui,
  org.occiware.clouddesigner.occi.emfgen.ui;bundle-version="0.1.0",
  org.slf4j.api;bundle-version="1.7.2"
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8

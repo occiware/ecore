@@ -20,12 +20,11 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Consumer;
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Exceptions;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.occiware.clouddesigner.occi.Link;
 import org.occiware.clouddesigner.occi.Resource;
 import org.occiware.clouddesigner.occi.docker.Container;
@@ -669,14 +668,11 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
       boolean _greaterThan_1 = (_size_1 > 0);
       if (_greaterThan_1) {
         EList<Link> _links_3 = this.compute.getLinks();
-        final Procedure1<Link> _function = new Procedure1<Link>() {
-          @Override
-          public void apply(final Link elt) {
-            Resource _target = elt.getTarget();
-            ((ExecutableContainer) _target).stop(StopMethod.GRACEFUL);
-          }
+        final Consumer<Link> _function = (Link elt) -> {
+          Resource _target = elt.getTarget();
+          ((ExecutableContainer) _target).stop(StopMethod.GRACEFUL);
         };
-        IterableExtensions.<Link>forEach(_links_3, _function);
+        _links_3.forEach(_function);
       }
     }
   }
@@ -788,14 +784,11 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
         containers.add(standaloneContainer);
       }
     }
-    final Procedure1<Container> _function = new Procedure1<Container>() {
-      @Override
-      public void apply(final Container c) {
-        String _name = c.getName();
-        MachineManager.LOGGER.info(_name);
-      }
+    final Consumer<Container> _function = (Container c_1) -> {
+      String _name = c_1.getName();
+      MachineManager.LOGGER.info(_name);
     };
-    IterableExtensions.<Container>forEach(containers, _function);
+    containers.forEach(_function);
     return containers;
   }
   

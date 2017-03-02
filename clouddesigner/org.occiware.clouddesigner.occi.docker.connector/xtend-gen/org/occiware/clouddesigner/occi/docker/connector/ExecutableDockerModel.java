@@ -14,9 +14,8 @@ package org.occiware.clouddesigner.occi.docker.connector;
 import com.google.common.base.Objects;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Consumer;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.occiware.clouddesigner.occi.Configuration;
 import org.occiware.clouddesigner.occi.Link;
 import org.occiware.clouddesigner.occi.Resource;
@@ -600,16 +599,13 @@ public class ExecutableDockerModel {
           boolean _notEquals = (!Objects.equal(_links, null));
           if (_notEquals) {
             EList<Link> _links_1 = machine.getLinks();
-            final Procedure1<Link> _function = new Procedure1<Link>() {
-              @Override
-              public void apply(final Link elt) {
-                EList<Resource> _resources = ExecutableDockerModel.this.configuration.getResources();
-                Resource _target = elt.getTarget();
-                _resources.add(
-                  ((Container) _target));
-              }
+            final Consumer<Link> _function = (Link elt) -> {
+              EList<Resource> _resources_1 = this.configuration.getResources();
+              Resource _target = elt.getTarget();
+              _resources_1.add(
+                ((Container) _target));
             };
-            IterableExtensions.<Link>forEach(_links_1, _function);
+            _links_1.forEach(_function);
           }
         }
       }

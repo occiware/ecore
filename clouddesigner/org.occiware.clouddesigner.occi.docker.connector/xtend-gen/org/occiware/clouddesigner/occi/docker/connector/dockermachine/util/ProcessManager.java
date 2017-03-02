@@ -63,31 +63,28 @@ public class ProcessManager {
     
     @Override
     public void handle() {
-      final Runnable _function = new Runnable() {
-        @Override
-        public void run() {
-          try {
-            LinkedList<Byte> _linkedList = new LinkedList<Byte>();
-            OutputHandler.this.bytes = _linkedList;
-            while (true) {
-              try {
-                byte _readByte = OutputHandler.this.din.readByte();
-                OutputHandler.this.bytes.add(Byte.valueOf(_readByte));
-              } catch (final Throwable _t) {
-                if (_t instanceof Exception) {
-                  final Exception e = (Exception)_t;
-                  return;
-                } else {
-                  throw Exceptions.sneakyThrow(_t);
-                }
+      final Runnable _function = () -> {
+        try {
+          LinkedList<Byte> _linkedList = new LinkedList<Byte>();
+          this.bytes = _linkedList;
+          while (true) {
+            try {
+              byte _readByte = this.din.readByte();
+              this.bytes.add(Byte.valueOf(_readByte));
+            } catch (final Throwable _t) {
+              if (_t instanceof Exception) {
+                final Exception e = (Exception)_t;
+                return;
+              } else {
+                throw Exceptions.sneakyThrow(_t);
               }
             }
-          } catch (final Throwable _t) {
-            if (_t instanceof Exception) {
-              final Exception e = (Exception)_t;
-            } else {
-              throw Exceptions.sneakyThrow(_t);
-            }
+          }
+        } catch (final Throwable _t) {
+          if (_t instanceof Exception) {
+            final Exception e = (Exception)_t;
+          } else {
+            throw Exceptions.sneakyThrow(_t);
           }
         }
       };
@@ -115,27 +112,24 @@ public class ProcessManager {
     }
     
     public void handle() {
-      final Runnable _function = new Runnable() {
-        @Override
-        public void run() {
-          try {
-            while (true) {
-              {
-                final String message = StreamHandler.this.reader.readLine();
-                boolean _equals = Objects.equal(message, null);
-                if (_equals) {
-                  return;
-                }
-                boolean _notEquals = (!Objects.equal(StreamHandler.this.writer, null));
-                if (_notEquals) {
-                  StreamHandler.this.writer.println(message);
-                  StreamHandler.this.writer.flush();
-                }
+      final Runnable _function = () -> {
+        try {
+          while (true) {
+            {
+              final String message = this.reader.readLine();
+              boolean _equals = Objects.equal(message, null);
+              if (_equals) {
+                return;
+              }
+              boolean _notEquals = (!Objects.equal(this.writer, null));
+              if (_notEquals) {
+                this.writer.println(message);
+                this.writer.flush();
               }
             }
-          } catch (Throwable _e) {
-            throw Exceptions.sneakyThrow(_e);
           }
+        } catch (Throwable _e) {
+          throw Exceptions.sneakyThrow(_e);
         }
       };
       final Runnable r = _function;
