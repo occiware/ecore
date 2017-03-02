@@ -76,7 +76,7 @@ Export-Package: com.fasterxml.jackson.annotation,
  com.github.dockerjava.netty.exec,
  com.github.dockerjava.netty.handler,
  org.occiware.clouddesigner.occi.docker.connector
-Require-Bundle: org.eclipse.xtend.lib,
+Require-Bundle: org.eclipse.xtend.lib;bundle-version="2.10.0",
  org.eclipse.emf.common,
  org.eclipse.emf.ecore.xmi,
  org.eclipse.emf.ecore;visibility:=reexport,
