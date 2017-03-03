@@ -1,6 +1,5 @@
 /bin/
 /org.occiware.clouddesigner.occi.infrastructure.connector.vmware/.settings/
-/.DS_Store
 /.settings/
 /org.occiware.clouddesigner.occi.infrastructure.connector.vmware/src/resources/credential.properties
 /src/resources/credential.properties
