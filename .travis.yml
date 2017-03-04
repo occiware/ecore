@@ -20,7 +20,7 @@ script:
 
 # Actions to perform after the build.
 after_success:
-- mvn clean deploy --settings ~/travis-settings.xml 
+- mvn clean deploy --settings /home/travis/build/occiware/ecore/travis-settings.xml 
 
 env:
   global:
