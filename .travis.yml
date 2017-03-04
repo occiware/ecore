@@ -1,18 +1,21 @@
 sudo: false
-
 language: java
-
 matrix:
   fast_finish: true
   include:
-    - os: linux
-      jdk: oraclejdk8
-      env: DISPLAY=:99.0
-
+  - os: linux
+    jdk: oraclejdk8
+    env: DISPLAY=:99.0
 install: true
-
-before_install: 
+before_install:
 - echo "MAVEN_OPTS='-Xmx2048m -XX:MaxPermSize=512m'" > ~/.mavenrc
 script:
 - cd clouddesigner/org.occiware.clouddesigner.parent
 - mvn clean verify
+# Actions to perform after the build.
+after_success:
+- mvn clean deploy --settings travis-settings.xml 
+env:
+  global:
+  - secure: Lp/h2cwzh5j6iT7OBmKmg8WUFnY7WWTj9X9/nvqiV8B92wW1I4LOc97RWpzidR7hBk/Z0NtHUuVd8Djd5WBEN5BKJ9Bchrpx9JBnb0hmdD45YhBIm4G8R3bctbg6Q2xDM8RbaTv/uwUl7/sE+9BFv+oIEOZ4s01yzIEutwGeKyA=
+  - secure: L/K7jwoNcRw+38eTYq6US8jCNZdCFWFgF4mOsy6/sMMt/14KdZBe7bXKwfm5j9ZuqlPaiKPNPIFfI2isG4wGenXbNgODsE6qZPglyAAxSOwivKDBQtC3Uqqwuh6ZtmBuATg9ZNLAb1Dw3Stz2ipMTRSbYzImx4QB7/6QteSaaZk=
