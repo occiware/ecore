@@ -146,15 +146,15 @@
 		<module>../org.occiware.clouddesigner.occi.cloud.feature</module>
 		<module>../org.occiware.clouddesigner.occi.hypervisor.feature</module>
 		<module>../org.occiware.clouddesigner.occi.infrastructure.crtp.backend.feature</module>
-		<module>../org.occiware.clouddesigner.repository</module>
+		<module>../org.occiware.clouddesigner.dependencies</module>
 	</modules>
 
 	<profiles>
 		<profile>
-			<!-- Type mvn -Pbuild.products to activate this profile. —>
+			<!-- Type mvn -Pbuild.products to activate this profile. -->
 			<id>build.products</id>
 			<modules>
-				<module>../org.occiware.clouddesigner.dependencies</module>
+				<module>../org.occiware.clouddesigner.repository</module>
 				<module>../org.occiware.clouddesigner.product</module>
 			</modules>
 		</profile>
