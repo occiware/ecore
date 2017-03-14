@@ -22,6 +22,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.vmware.vim25.Description;
+import com.vmware.vim25.GuestNicInfo;
 import com.vmware.vim25.HostIpConfig;
 import com.vmware.vim25.HostNetworkPolicy;
 import com.vmware.vim25.HostPortGroup;
@@ -570,5 +571,61 @@ public class NetworkHelper {
 
 		return result;
 	}
+	
+	/**
+	 * Get ipv4Address on a eth device.
+	 * @param vm
+	 * @return
+	 */
+	public static String getIpv4Address(VirtualMachine vm) {
+		String[] ipAddressesLocal;
+		String ipv4Address = "";
+		GuestNicInfo[] guestNicInf = vm.getGuest().getNet();
+		if (vm != null && guestNicInf != null) {
+			for (GuestNicInfo nicInfo : guestNicInf) {
+				ipAddressesLocal = nicInfo.getIpAddress();
+				if (ipAddressesLocal != null) {
+					for (String ipAddress : ipAddressesLocal) {
+						if (ipAddress != null && ipAddress.contains(".")) {
+							ipv4Address = ipAddress;
+							break;
+						}
+					}
+					if (ipv4Address != null) {
+						break;
+					}
+				}
+			}
+		}
+		return ipv4Address;
+	}
+	/**
+	 * Get an ipv6 address for a vm.
+	 * @param vm
+	 * @return
+	 */
+	public static String getIpv6Address(VirtualMachine vm) {
+		String[] ipAddressesLocal;
+		String ipv6Address = "";
+		GuestNicInfo[] guestNicInf = vm.getGuest().getNet();
+		if (vm != null && guestNicInf != null) {
+			for (GuestNicInfo nicInfo : guestNicInf) {
+				ipAddressesLocal = nicInfo.getIpAddress();
+				if (ipAddressesLocal != null) {
+					for (String ipAddress : ipAddressesLocal) {
+						if (ipAddress != null && ipAddress.contains(":")) {
+							ipv6Address = ipAddress;
+							break;
+						}
+					}
+					if (ipv6Address != null) {
+						break;
+					}
+				}
+			}
+		}
+		return ipv6Address;
+	}
+	
 
 }

@@ -67,7 +67,6 @@ import com.vmware.vim25.mo.ManagedEntity;
 import com.vmware.vim25.mo.Network;
 import com.vmware.vim25.mo.ResourcePool;
 import com.vmware.vim25.mo.ServiceInstance;
-import com.vmware.vim25.mo.Task;
 import com.vmware.vim25.mo.VirtualMachine;
 
 /**
@@ -81,35 +80,36 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 	 */
 	private static Logger LOGGER = LoggerFactory.getLogger(ComputeConnector.class);
 
-	private static final String ATTR_HOSTSYSTEM_NAME = "hostsystemname";
-	private static final String ATTR_DATACENTER_NAME = "datacentername";
-	private static final String ATTR_DATASTORE_NAME = "datastorename";
-	private static final String ATTR_CLUSTER_NAME = "clustername";
+	public static final String ATTR_HOSTSYSTEM_NAME = "hostsystemname";
+	public static final String ATTR_DATACENTER_NAME = "datacentername";
+	public static final String ATTR_DATASTORE_NAME = "datastorename";
+	public static final String ATTR_CLUSTER_NAME = "clustername";
 
-	private static final String ATTR_IMAGE_NAME = "imagename";
-	private static final String ATTR_VCPU_NUMBER = "vcpu";
-	private static final String ATTR_VM_GUEST_STATE = "gueststate";
-	private static final String ATTR_MARKED_AS_TEMPLATE = "markedastemplate";
-	private static final String ATTR_VM_GUEST_OS_ID = "guestosid";
-	private static final String ATTR_VM_EPHEMERAL_DISK_SIZE_GB = "occi.compute.ephemeral_storage.size";
-	private static final String ATTR_USER_DATA = "occi.compute.userdata";
-	private static final String ATTR_USERNAME = "user";
-	private static final String ATTR_PASSWORD = "password";
-	private static final String ATTR_USER_DATA_FILE = "occi.compute.userdata.file";
+	public static final String ATTR_IMAGE_NAME = "imagename";
+	public static final String ATTR_VCPU_NUMBER = "vcpu";
+	public static final String ATTR_VM_GUEST_STATE = "gueststate";
+	public static final String ATTR_MARKED_AS_TEMPLATE = "markedastemplate";
+	public static final String ATTR_VM_GUEST_OS_ID = "guestosid";
+	public static final String ATTR_VM_EPHEMERAL_DISK_SIZE_GB = "occi.compute.ephemeral_storage.size";
+	public static final String ATTR_USER_DATA = "occi.compute.userdata";
+	public static final String ATTR_USERNAME = "user";
+	public static final String ATTR_PASSWORD = "password";
+	public static final String ATTR_USER_DATA_FILE = "occi.compute.userdata.file";
+	
 	
 	
 	/**
 	 * Path on inventory object. Format: /inria/tests/ (with slash on last character or without).
 	 */
-	private static final String ATTR_VM_INVENTORY_PATH = "inventorypath";
+	public static final String ATTR_VM_INVENTORY_PATH = "inventorypath";
 	/**
 	 * Mixin terms addon from backend extension.
 	 */
-	private static final String VMWARE_MIXIN_FOLDERS_TERM = "vmwarefolders";
-	private static final String VMWARE_MIXIN_VM_ADDON_TERM = "vmaddon";
-	private static final String VMWARE_MIXIN_VM_IMAGE = "vmimage";
-	private static final String VMWARE_MIXIN_CREDENTIAL = "credential";
-	private static final String MIXIN_USERDATA = "user_data";
+	public static final String VMWARE_MIXIN_FOLDERS_TERM = "vmwarefolders";
+	public static final String VMWARE_MIXIN_VM_ADDON_TERM = "vmaddon";
+	public static final String VMWARE_MIXIN_VM_IMAGE = "vmimage";
+	public static final String VMWARE_MIXIN_CREDENTIAL = "credential";
+	public static final String MIXIN_USERDATA = "user_data";
 	
 	
 	
@@ -168,12 +168,21 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 	 */
 	private String inventoryPath = "";
 	
+	
+	/**
+	 * First ipv4 address.
+	 */
+	private String ipv4Address = "";
+	/**
+	 * First ipv6 address.
+	 */
+	private String ipv6Address = "";
+	
 	/**
 	 * Constructs a compute connector.
 	 */
 	ComputeConnector() {
 		LOGGER.debug("Constructor called on " + this);
-
 	}
 
 	//
@@ -212,7 +221,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 				occiRetrieve();
 			}
 		}
-
+		
 		globalMessage = "";
 		levelMessage = null;
 	}
@@ -232,8 +241,6 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 			
 			// Retrieve a compute without monitoring on the main thread.
 			retrieveCompute(null);
-
-			// UIDialog.executeActionThread(runnable, titleMessage);
 			
 		} else {
 			// Launching IRunnableWithProgress UI thread with business code.
@@ -253,10 +260,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 				vmState = VMHelper.POWER_OFF;
 			}
 			updateAttributesOnCompute();
-
 		}
-		
-		
 		
 		globalMessage = "";
 		levelMessage = null;
@@ -300,7 +304,6 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		}
 		globalMessage = "";
 		levelMessage = null;
-
 	}
 
 	/**
@@ -340,7 +343,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 
 		globalMessage = "";
 		levelMessage = null;
-
+		
 	}
 
 	//
@@ -381,7 +384,6 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 
 		globalMessage = "";
 		levelMessage = null;
-
 	}
 
 	/**
@@ -457,7 +459,6 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 
 		globalMessage = "";
 		levelMessage = null;
-
 	}
 
 	/**
@@ -497,7 +498,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 
 		globalMessage = "";
 		levelMessage = null;
-
+		
 	}
 
 	/**
@@ -538,7 +539,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 
 		globalMessage = "";
 		levelMessage = null;
-
+		
 	}
 
 	/**
@@ -870,7 +871,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 	 * @return an AttributeState object, if attribute doesnt exist, null value
 	 *         is returned.
 	 */
-	private AttributeState getAttributeStateObject(final String key) {
+	public AttributeState getAttributeStateObject(final String key) {
 		AttributeState attr = null;
 		if (key == null) {
 			return attr;
@@ -919,38 +920,17 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 	}
 
 	/**
-	 * Check if this compute has mixin vmware folder addon.
-	 * 
+	 * Check if a mixin name is in the scope of this compute.
+	 * @param mixinName the mixin term to check.
 	 * @return
 	 */
-	public boolean hasMixinVMwareFolders() {
+	public boolean hasMixin(final String mixinName) {
 		boolean result = false;
 		String mixinTerm = null;
 		List<Mixin> mixins = this.getMixins();
 		for (Mixin mixin : mixins) {
 			mixinTerm = mixin.getTerm();
-			// This mixin contains attributes for datacenter, datastore, cluster
-			// and others goodies on folders.
-			if (mixinTerm.equals(VMWARE_MIXIN_FOLDERS_TERM)) {
-				result = true;
-				break;
-			}
-		}
-		return result;
-	}
-
-	/**
-	 * Check if this compute has mixin vmware compute addon.
-	 * 
-	 * @return
-	 */
-	public boolean hasMixinVMwareComputeAddOn() {
-		boolean result = false;
-		String mixinTerm = null;
-		List<Mixin> mixins = this.getMixins();
-		for (Mixin mixin : mixins) {
-			mixinTerm = mixin.getTerm();
-			if (mixinTerm.equals(VMWARE_MIXIN_VM_ADDON_TERM)) {
+			if (mixinTerm.equals(mixinName)) {
 				result = true;
 				break;
 			}
@@ -958,26 +938,6 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		return result;
 	}
 	
-	/**
-	 * Check if vm image mixins is set.
-	 * @return
-	 */
-	public boolean hasMixinVMImage() {
-		boolean result = false;
-		String mixinTerm = null;
-		List<Mixin> mixins = this.getMixins();
-		for (Mixin mixin : mixins) {
-			mixinTerm = mixin.getTerm();
-			if (mixinTerm.equals(VMWARE_MIXIN_VM_IMAGE)) {
-				result = true;
-				break;
-			}
-		}
-		return result;
-	}
-	
-	
-
 	/**
 	 * Check if this compute has mixin vmware ephemral addon (crtp).
 	 * 
@@ -998,39 +958,6 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		}
 		return result;
 	}
-	
-	/**
-	 * Check if this compute has mixin user_data (from infrastructure extension).
-	 * @return true if the mixin is present on associated mixins.
-	 */
-	public boolean hasMixinUserData() {
-		boolean result = false;
-		String mixinTerm = null;
-		List<Mixin> mixins = this.getMixins();
-		for (Mixin mixin : mixins) {
-			mixinTerm = mixin.getTerm();
-			if (mixinTerm.equals(MIXIN_USERDATA)) {
-				result = true;
-				break;
-			}
-		}
-		return result;
-	}
-	
-	public boolean hasMixinCredential() {
-		boolean result = false;
-		String mixinTerm = null;
-		List<Mixin> mixins = this.getMixins();
-		for (Mixin mixin : mixins) {
-			mixinTerm = mixin.getTerm();
-			if (mixinTerm.equals(VMWARE_MIXIN_CREDENTIAL)) {
-				result = true;
-				break;
-			}
-		}
-		return result;
-	}
-	
 
 	/**
 	 * Update this object attributes.
@@ -1040,14 +967,14 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		Map<String, String> attrsToUpdate = new HashMap<>();
 		List<String> attrsToDelete = new ArrayList<>();
 
-		boolean hasMixinFoldersData = hasMixinVMwareFolders();
-		boolean hasMixinVMwareComputeAddOn = hasMixinVMwareComputeAddOn();
+		boolean hasMixinFoldersData = hasMixin(VMWARE_MIXIN_FOLDERS_TERM);
+		boolean hasMixinVMwareComputeAddOn = hasMixin(VMWARE_MIXIN_VM_ADDON_TERM);
 		// For disk ephemeral storage mandatory here to create a vm with a fixed
 		// system storage, elsewhere the ephemeral will be 15.0GB.
 		boolean hasMixinEphemeral = hasMixinEphemeral();
-		boolean hasMixinVMImage = hasMixinVMImage();
-		boolean hasMixinUserData = hasMixinUserData();
-		boolean hasMixinCredential = hasMixinCredential();
+		boolean hasMixinVMImage = hasMixin(VMWARE_MIXIN_VM_IMAGE);
+		boolean hasMixinUserData = hasMixin(MIXIN_USERDATA);
+		boolean hasMixinCredential = hasMixin(VMWARE_MIXIN_CREDENTIAL);
 		// ATTR_DATACENTER_NAME
 		if (datacenterName != null && hasMixinFoldersData) {
 			if (this.getAttributeStateObject(ATTR_DATACENTER_NAME) == null) {
@@ -1998,6 +1925,12 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 
 		} // endif vmTemplate exist.
 		
+		if (getState() != null && getState().equals(ComputeStatus.ACTIVE)) {
+			VirtualMachine vm = VMHelper.loadVirtualMachine(vmName);
+			ipv4Address = NetworkHelper.getIpv4Address(vm);
+			ipv6Address = NetworkHelper.getIpv6Address(vm);
+		}
+		
 		// In all case invoke a disconnect from vcenter.
 		VCenterClient.disconnect();
 		if (vmTemplate != null) {
@@ -2245,12 +2178,12 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 				subMonitor.worked(70);
 			}
 		}
-		if (hasMixinCredential()) {
+		if (hasMixin(VMWARE_MIXIN_CREDENTIAL)) {
 			username = getAttributeValueByOcciKey(ATTR_USERNAME);
 			password = getAttributeValueByOcciKey(ATTR_PASSWORD);
 			userDataFile = getAttributeValueByOcciKey(ATTR_USER_DATA_FILE);
 		}
-		if (hasMixinUserData()) {
+		if (hasMixin(MIXIN_USERDATA)) {
 			userData = getAttributeValueByOcciKey(ATTR_USER_DATA);
 		}
 		
@@ -2258,6 +2191,9 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 		if (toMonitor) {
 			subMonitor.worked(80);
 		}
+		
+		ipv4Address = NetworkHelper.getIpv4Address(vm);
+		ipv6Address = NetworkHelper.getIpv6Address(vm);
 		
 		globalMessage = "The virtual machine informations has been retrieved and are updated.";
 		levelMessage = Level.INFO;
@@ -2454,15 +2390,19 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 			}
 		}
 		
-		if (hasMixinCredential()) {
+		ipv4Address = NetworkHelper.getIpv4Address(vm);
+		ipv6Address = NetworkHelper.getIpv6Address(vm);
+		
+		if (hasMixin(VMWARE_MIXIN_CREDENTIAL)) {
 			username = getAttributeValueByOcciKey(ATTR_USERNAME);
 			password = getAttributeValueByOcciKey(ATTR_PASSWORD);
 			userDataFile = getAttributeValueByOcciKey(ATTR_USER_DATA_FILE);
 		}
-		if (hasMixinUserData()) {
+		if (hasMixin(MIXIN_USERDATA)) {
 			userData = getAttributeValueByOcciKey(ATTR_USER_DATA);
 			LOGGER.info("User data : " + userData);
 		}
+		
 		if (userData != null && !userData.isEmpty()) {
 			applyUserData(monitor, vmName);
 		}
@@ -2653,10 +2593,6 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 					levelMessage = Level.WARN;
 					LOGGER.warn(globalMessage);
 				}
-				// assign hot config enabled (default).
-				// VMHelper.hotReconfigEnable((Folder)
-				// vm.getParent(),
-				// getTitle(), true);
 			}
 
 		}
@@ -3099,7 +3035,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 	 */
 	private void applyUserData(IProgressMonitor monitor, String vmName) {
 		// There is an os so --< User data part is possible.
-		if (hasMixinUserData() && hasMixinCredential()) {
+		if (hasMixin(MIXIN_USERDATA) && hasMixin(VMWARE_MIXIN_CREDENTIAL)) {
 			LOGGER.info("applying user datas...");
 			UserDataHelper userDataHelper = new UserDataHelper(morId, vmName, userData, username, password, userDataFile);
 			try {
@@ -3119,7 +3055,22 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 			}
 		}
 	}
+
+	public String getIpv4Address() {
+		return ipv4Address;
+	}
 	
+	public String getIpv6Address() {
+		return ipv6Address;
+	}
+	
+	public void setIpv4Address(String ipv4Address) {
+		this.ipv4Address = ipv4Address;
+	}
+
+	public void setIpv6Address(String ipv6Address) {
+		this.ipv6Address = ipv6Address;
+	}
 	
 }
 

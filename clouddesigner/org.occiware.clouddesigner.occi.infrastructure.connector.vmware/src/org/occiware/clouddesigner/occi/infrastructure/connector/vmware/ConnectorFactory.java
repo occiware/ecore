@@ -18,8 +18,7 @@ package org.occiware.clouddesigner.occi.infrastructure.connector.vmware;
  * - name: infrastructure
  * - scheme: http://schemas.ogf.org/occi/infrastructure#
  */
-public class ConnectorFactory extends org.occiware.clouddesigner.occi.infrastructure.impl.InfrastructureFactoryImpl
-{
+public class ConnectorFactory extends org.occiware.clouddesigner.occi.infrastructure.impl.InfrastructureFactoryImpl {
 	/**
 	 * EFactory method for OCCI kind:
 	 * - scheme: http://schemas.ogf.org/occi/infrastructure#
@@ -74,5 +73,5 @@ public class ConnectorFactory extends org.occiware.clouddesigner.occi.infrastruc
 	public org.occiware.clouddesigner.occi.infrastructure.Networkinterface createNetworkinterface() {
 		return new NetworkinterfaceConnector();
 	}
-
+	
 }
