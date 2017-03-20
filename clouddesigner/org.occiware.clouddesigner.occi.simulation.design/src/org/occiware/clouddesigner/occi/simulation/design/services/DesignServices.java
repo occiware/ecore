@@ -78,6 +78,16 @@ public class DesignServices {
 	public void tagApplication(Resource resource) {
 		tagResource(resource, "cloudlet");
 	}
+	
+	public void tagStorage(Resource resource) {
+		//tagResource(resource, "storage");
+		System.out.println("Not yet implemented");
+	}
+	
+	public void tagNetwork(Resource resource) {
+		//tagResource(resource, "network");
+		System.out.println("Not yet implemented");
+	}
 
 	public void addPackage(Resource resource){
 		//add core to use package
@@ -178,8 +188,6 @@ public class DesignServices {
 			MessageDialog.openInformation(shell, "Info", "Thanks to verify your linked resources in configuration \n"
 					+ msg);
 		}
-
-
 	}
 
 	public boolean tagedBefore(Resource resource){

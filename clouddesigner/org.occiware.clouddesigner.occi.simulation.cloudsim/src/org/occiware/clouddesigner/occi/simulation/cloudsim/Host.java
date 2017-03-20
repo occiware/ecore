@@ -209,6 +209,7 @@ public class Host {
 		storageConsumed.put(vm.getId(), vm.getSize());
 
 		if (getStorage() < vm.getSize()) {
+			Log.printLine(this.id+"getStorage(): "+getStorage()+", vm.getSize(): "+vm.getSize());
 			Log.printLine("[VmScheduler.vmCreate] Allocation of VM #" + vm.getId() + " to Host #" + getId()
 					+ " failed by storage");
 			return false;
@@ -234,8 +235,9 @@ public class Host {
 			getBwProvisioner().deallocateBwForVm(vm);
 			return false;
 		}
-
+		//Log.printLine("Before: "+getStorage());
 		setStorage(getStorage() - vm.getSize());
+		//Log.printLine("After: "+getStorage());
 		getVmList().add(vm);
 		vm.setHost(this);
 		return true;
@@ -545,6 +547,14 @@ public class Host {
 	 */
 	protected void setStorage(long storage) {
 		this.storage = storage;
+	}
+
+	@Override
+	public String toString() {
+		return "Host [id=" + id + ", storage=" + storage + ", storageConsumed=" + storageConsumed + ", ramProvisioner="
+				+ ramProvisioner + ", bwProvisioner=" + bwProvisioner + ", vmScheduler=" + vmScheduler + ", vmList="
+				+ vmList + ", peList=" + peList + ", failed=" + failed + ", vmsMigratingIn=" + vmsMigratingIn
+				+ ", datacenter=" + datacenter + "]";
 	}
 
 	/**

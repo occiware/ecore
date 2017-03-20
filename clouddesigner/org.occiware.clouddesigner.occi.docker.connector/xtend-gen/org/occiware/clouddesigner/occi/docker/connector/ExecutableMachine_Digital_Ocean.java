@@ -11,8 +11,6 @@
  */
 package org.occiware.clouddesigner.occi.docker.connector;
 
-import com.google.common.base.Preconditions;
-import org.apache.commons.lang.StringUtils;
 import org.occiware.clouddesigner.occi.docker.connector.MachineManager;
 import org.occiware.clouddesigner.occi.docker.impl.Machine_Digital_OceanImpl;
 import org.occiware.clouddesigner.occi.infrastructure.RestartMethod;
@@ -27,38 +25,7 @@ public class ExecutableMachine_Digital_Ocean extends Machine_Digital_OceanImpl {
   /**
    * The machine manager.
    */
-  private final MachineManager manager = new MachineManager(this) {
-    @Override
-    public String getDriverName() {
-      return "digitalocean";
-    }
-    
-    @Override
-    public void appendDriverParameters(final StringBuilder sb) {
-      Preconditions.<String>checkNotNull(ExecutableMachine_Digital_Ocean.this.access_token, "access_token is null");
-      Preconditions.<String>checkNotNull(ExecutableMachine_Digital_Ocean.this.size, "size is null");
-      boolean _isNotBlank = StringUtils.isNotBlank(ExecutableMachine_Digital_Ocean.this.access_token);
-      if (_isNotBlank) {
-        StringBuilder _append = sb.append(" --digitalocean-access-token ");
-        _append.append(ExecutableMachine_Digital_Ocean.this.access_token);
-      }
-      boolean _isNotBlank_1 = StringUtils.isNotBlank(ExecutableMachine_Digital_Ocean.this.size);
-      if (_isNotBlank_1) {
-        StringBuilder _append_1 = sb.append(" --digitalocean-size ");
-        _append_1.append(ExecutableMachine_Digital_Ocean.this.size);
-      }
-      boolean _isNotBlank_2 = StringUtils.isNotBlank(ExecutableMachine_Digital_Ocean.this.region);
-      if (_isNotBlank_2) {
-        StringBuilder _append_2 = sb.append(" --digitalocean-region ");
-        _append_2.append(ExecutableMachine_Digital_Ocean.this.region);
-      }
-      boolean _isNotBlank_3 = StringUtils.isNotBlank(ExecutableMachine_Digital_Ocean.this.image);
-      if (_isNotBlank_3) {
-        StringBuilder _append_3 = sb.append(" --digitalocean-image ");
-        _append_3.append(ExecutableMachine_Digital_Ocean.this.image);
-      }
-    }
-  };
+  private final MachineManager manager /* Skipped initializer because of errors */;
   
   public void startAll() {
     this.manager.startAll();

@@ -11,14 +11,10 @@
  */
 package org.occiware.clouddesigner.occi.docker.connector;
 
-import com.github.dockerjava.api.model.Statistics;
-import com.github.dockerjava.core.async.ResultCallbackTemplate;
 import com.google.common.base.Objects;
 import java.text.DecimalFormat;
-import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandStack;
@@ -41,10 +37,10 @@ import org.slf4j.LoggerFactory;
  * This class notifies monitoring events from the connector.
  */
 @SuppressWarnings("all")
-public class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statistics> {
+public class StatsCallback /* implements ResultCallbackTemplate<StatsCallback, Statistics>  */{
   private static Logger LOGGER = LoggerFactory.getLogger(StatsCallback.class);
   
-  private List<Statistics> statisticsList = new LinkedList<Statistics>();
+  private /* List<Statistics> */Object statisticsList = new LinkedList<Statistics>();
   
   private String containerId;
   
@@ -65,84 +61,16 @@ public class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statist
   }
   
   @Override
-  public void onNext(final Statistics stats) {
-    try {
-      int _monitoring_interval = ((ExecutableContainer) this.container).getMonitoring_interval();
-      Thread.sleep(_monitoring_interval);
-      this.statisticsList.add(stats);
-      Map<String, Object> cpu = stats.getCpuStats();
-      Object _get = cpu.get("cpu_usage");
-      LinkedHashMap<String, Object> tmpcpu = ((LinkedHashMap<String, Object>) _get);
-      Object cpu_used = tmpcpu.get("total_usage");
-      Object percpu_usage = tmpcpu.get("percpu_usage");
-      Object system_cpu_usage = cpu.get("system_cpu_usage");
-      List<Object> percpu_usage_size = ((List<Object>) percpu_usage);
-      Map<String, Object> _memoryStats = stats.getMemoryStats();
-      Object _get_1 = _memoryStats.get("usage");
-      Integer mem_used = ((Integer) _get_1);
-      Map<String, Object> _memoryStats_1 = stats.getMemoryStats();
-      Object _get_2 = _memoryStats_1.get("limit");
-      Integer mem_limit = ((Integer) _get_2);
-      Map<String, Object> networks = stats.getNetworks();
-      Map<String, Object> network = stats.getNetwork();
-      Integer network_r = null;
-      Integer network_t = null;
-      Integer bandwitdh = null;
-      try {
-        boolean _notEquals = (!Objects.equal(networks, null));
-        if (_notEquals) {
-          Object _get_3 = networks.get("eth0");
-          LinkedHashMap<String, Object> tmpnetworks = ((LinkedHashMap<String, Object>) _get_3);
-          Object _get_4 = tmpnetworks.get("rx_bytes");
-          network_r = ((Integer) _get_4);
-          Object _get_5 = tmpnetworks.get("tx_bytes");
-          network_t = ((Integer) _get_5);
-          bandwitdh = Integer.valueOf(((network_r).intValue() + (network_t).intValue()));
-        } else {
-          Object _get_6 = network.get("rx_bytes");
-          network_r = ((Integer) _get_6);
-          Object _get_7 = network.get("tx_bytes");
-          network_t = ((Integer) _get_7);
-          bandwitdh = Integer.valueOf(((network_r).intValue() + (network_t).intValue()));
-        }
-      } catch (final Throwable _t) {
-        if (_t instanceof Exception) {
-          final Exception e = (Exception)_t;
-          network_r = Integer.valueOf(0);
-          network_t = Integer.valueOf(0);
-          bandwitdh = Integer.valueOf(0);
-          String _message = e.getMessage();
-          StatsCallback.LOGGER.error(_message);
-        } else {
-          throw Exceptions.sneakyThrow(_t);
-        }
-      }
-      String _string = cpu_used.toString();
-      Float _valueOf = Float.valueOf(_string);
-      this.cpuTotalUsageQueue.add(_valueOf);
-      String _string_1 = system_cpu_usage.toString();
-      Float _valueOf_1 = Float.valueOf(_string_1);
-      this.cpuSystemUsageQueue.add(_valueOf_1);
-      if (((this.cpuTotalUsageQueue.size() == 2) && (this.cpuSystemUsageQueue.size() == 2))) {
-        int _size = percpu_usage_size.size();
-        Float percent = this.calculateCPUPercent(this.cpuTotalUsageQueue, this.cpuSystemUsageQueue, _size);
-        try {
-          String _string_2 = cpu_used.toString();
-          int _size_1 = percpu_usage_size.size();
-          this.modifyResourceSet(this.container, _string_2, percent, mem_used, mem_limit, bandwitdh, Integer.valueOf(_size_1), this.updateMaxCpu);
-        } catch (final Throwable _t_1) {
-          if (_t_1 instanceof NullPointerException) {
-            final NullPointerException e_1 = (NullPointerException)_t_1;
-            String _message_1 = e_1.getMessage();
-            StatsCallback.LOGGER.error(_message_1);
-          } else {
-            throw Exceptions.sneakyThrow(_t_1);
-          }
-        }
-      }
-    } catch (Throwable _e) {
-      throw Exceptions.sneakyThrow(_e);
-    }
+  public void onNext(final /* Statistics */Object stats) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe field StatsCallback.statisticsList refers to the missing type Statistics"
+      + "\ncpuStats cannot be resolved"
+      + "\nmemoryStats cannot be resolved"
+      + "\nget cannot be resolved"
+      + "\nmemoryStats cannot be resolved"
+      + "\nget cannot be resolved"
+      + "\nnetworks cannot be resolved"
+      + "\nnetwork cannot be resolved");
   }
   
   public synchronized void modifyResourceSet(final Resource resource, final String cpu_used, final Float percent, final Integer mem_used, final Integer mem_limit, final Integer bandwitdh, final Integer cpuMax, final Boolean updateMaxCpu) {
@@ -282,14 +210,16 @@ public class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statist
     return this.containerId;
   }
   
-  public List<Statistics> getStatisticsList() {
-    return this.statisticsList;
+  public /* List<Statistics> */Object getStatisticsList() {
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe field StatsCallback.statisticsList refers to the missing type Statistics");
   }
   
-  public Boolean compateTo(final Statistics stats1, final Statistics stats2) {
-    String _string = stats1.toString();
-    String _string_1 = stats2.toString();
-    return Boolean.valueOf(_string.equals(_string_1));
+  public Boolean compateTo(final /* Statistics */Object stats1, final /* Statistics */Object stats2) {
+    throw new Error("Unresolved compilation problems:"
+      + "\ntoString cannot be resolved"
+      + "\nequals cannot be resolved"
+      + "\ntoString cannot be resolved");
   }
   
   public Float calculateCPUPercent(final LimitedQueue<Float> cpuTotalUsageQueue, final LimitedQueue<Float> cpuSystemUsageQueue, final int percpu_usage_size) {

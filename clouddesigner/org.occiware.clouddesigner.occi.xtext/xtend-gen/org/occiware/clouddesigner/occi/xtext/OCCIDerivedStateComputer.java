@@ -1,6 +1,7 @@
 package org.occiware.clouddesigner.occi.xtext;
 
 import com.google.common.base.Objects;
+import java.util.function.Consumer;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EAnnotation;
@@ -8,7 +9,6 @@ import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.resource.DerivedStateAwareResource;
 import org.eclipse.xtext.resource.IDerivedStateComputer;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.occiware.clouddesigner.occi.Action;
@@ -79,9 +79,9 @@ public class OCCIDerivedStateComputer implements IDerivedStateComputer {
         if ((r instanceof EDataType)) {
           final EDataType datatype = ((EDataType) r);
           EList<EAnnotation> _eAnnotations = datatype.getEAnnotations();
-          final Procedure1<EAnnotation> _function = new Procedure1<EAnnotation>() {
+          final Consumer<EAnnotation> _function = new Consumer<EAnnotation>() {
             @Override
-            public void apply(final EAnnotation annotation) {
+            public void accept(final EAnnotation annotation) {
               String _source = annotation.getSource();
               boolean _equals = Objects.equal(_source, null);
               if (_equals) {
@@ -89,7 +89,7 @@ public class OCCIDerivedStateComputer implements IDerivedStateComputer {
               }
             }
           };
-          IterableExtensions.<EAnnotation>forEach(_eAnnotations, _function);
+          _eAnnotations.forEach(_function);
         }
       }
     };

@@ -1,14 +1,5 @@
 package org.occiware.clouddesigner.occi.cloud.connector.cloudproviders;
 
-import com.google.common.collect.ImmutableSet;
-import com.google.inject.Module;
-import java.util.Set;
-import org.eclipse.xtext.xbase.lib.InputOutput;
-import org.jclouds.ContextBuilder;
-import org.jclouds.compute.ComputeService;
-import org.jclouds.compute.ComputeServiceContext;
-import org.jclouds.compute.domain.Hardware;
-import org.jclouds.compute.domain.Image;
 import org.occiware.clouddesigner.occi.cloud.CloudFactory;
 import org.occiware.clouddesigner.occi.cloud.CloudPackage;
 import org.occiware.clouddesigner.occi.cloud.Machine_OpenStack;
@@ -18,30 +9,20 @@ import org.occiware.clouddesigner.occi.infrastructure.StopMethod;
 @SuppressWarnings("all")
 public class OpenStackTest {
   public void initOnce() {
-    final Iterable<Module> modules = ImmutableSet.<Module>of();
-    final String provider = "openstack-nova";
-    final String identity = "OCCIWARE:fparaiso";
-    final String password = "qWqr76Xx";
-    ContextBuilder _newBuilder = ContextBuilder.newBuilder(provider);
-    ContextBuilder _credentials = _newBuilder.credentials(identity, password);
-    ContextBuilder _endpoint = _credentials.endpoint("http://ow2-04.xsalto.net:5000/v2.0");
-    ContextBuilder _modules = _endpoint.modules(modules);
-    ComputeServiceContext context = _modules.<ComputeServiceContext>buildView(ComputeServiceContext.class);
-    ComputeService _computeService = context.getComputeService();
-    Set<? extends Image> _listImages = _computeService.listImages();
-    for (final Image image : _listImages) {
-      {
-        InputOutput.<Image>println(image);
-        String _id = image.getId();
-        InputOutput.<String>println(_id);
-      }
-    }
-    InputOutput.<String>println("###########################");
-    ComputeService _computeService_1 = context.getComputeService();
-    Set<? extends Hardware> _listHardwareProfiles = _computeService_1.listHardwareProfiles();
-    for (final Hardware hardware : _listHardwareProfiles) {
-      InputOutput.<Hardware>println(hardware);
-    }
+    throw new Error("Unresolved compilation problems:"
+      + "\nComputeServiceContext cannot be resolved to a type."
+      + "\nComputeServiceContext cannot be resolved to a type."
+      + "\nThe method or field ContextBuilder is undefined"
+      + "\nnewBuilder cannot be resolved"
+      + "\ncredentials cannot be resolved"
+      + "\nendpoint cannot be resolved"
+      + "\nmodules cannot be resolved"
+      + "\nbuildView cannot be resolved"
+      + "\ncomputeService cannot be resolved"
+      + "\nlistImages cannot be resolved"
+      + "\nid cannot be resolved"
+      + "\ncomputeService cannot be resolved"
+      + "\nlistHardwareProfiles cannot be resolved");
   }
   
   public static void main(final String[] args) {

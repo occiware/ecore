@@ -11,15 +11,12 @@
  */
 package org.occiware.clouddesigner.occi.docker.connector;
 
-import com.github.dockerjava.api.DockerClient;
-import com.github.dockerjava.api.command.CreateContainerResponse;
 import com.google.common.base.Objects;
 import com.google.common.collect.Multimap;
 import java.util.HashMap;
 import java.util.Map;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.occiware.clouddesigner.occi.Resource;
 import org.occiware.clouddesigner.occi.docker.Contains;
 import org.occiware.clouddesigner.occi.docker.DockerFactory;
@@ -31,7 +28,6 @@ import org.occiware.clouddesigner.occi.docker.connector.EventCallBack;
 import org.occiware.clouddesigner.occi.docker.connector.dockerjava.DockerContainerManager;
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerObserver;
 import org.occiware.clouddesigner.occi.docker.impl.ContainerImpl;
-import org.occiware.clouddesigner.occi.infrastructure.ComputeStatus;
 import org.occiware.clouddesigner.occi.infrastructure.RestartMethod;
 import org.occiware.clouddesigner.occi.infrastructure.StopMethod;
 import org.occiware.clouddesigner.occi.infrastructure.SuspendMethod;
@@ -45,7 +41,7 @@ import org.slf4j.LoggerFactory;
 public class ExecutableContainer extends ContainerImpl {
   private static Logger LOGGER = LoggerFactory.getLogger(ExecutableContainer.class);
   
-  private Map<DockerClient, CreateContainerResponse> map = null;
+  private /* Map<DockerClient, CreateContainerResponse> */Object map = null;
   
   protected static DockerContainerManager dockerContainerManager = null;
   
@@ -56,90 +52,7 @@ public class ExecutableContainer extends ContainerImpl {
   /**
    * Docker containers have a state machine.
    */
-  private final ComputeStateMachine<org.occiware.clouddesigner.occi.docker.Container> stateMachine = new ComputeStateMachine<org.occiware.clouddesigner.occi.docker.Container>(this) {
-    /**
-     * Start the Docker container.
-     */
-    @Override
-    public void start_execute() {
-      ExecutableContainer.LOGGER.info("EXECUTE container start");
-      final Machine machine = ExecutableContainer.this.getCurrentMachine();
-      ComputeStatus _state = machine.getState();
-      String _string = _state.toString();
-      boolean _equalsIgnoreCase = _string.equalsIgnoreCase("active");
-      if (_equalsIgnoreCase) {
-        try {
-          boolean _equals = Objects.equal(ExecutableContainer.dockerContainerManager, null);
-          if (_equals) {
-            DockerContainerManager _dockerContainerManager = new DockerContainerManager(machine, ExecutableContainer.this.eventCallback);
-            ExecutableContainer.dockerContainerManager = _dockerContainerManager;
-          }
-          ExecutableContainer.dockerContainerManager.startContainer(machine, this.compute);
-        } catch (final Throwable _t) {
-          if (_t instanceof Exception) {
-            final Exception e = (Exception)_t;
-            ExecutableContainer.this.createContainer(machine);
-            ExecutableContainer.dockerContainerManager.startContainer(machine, this.compute);
-          } else {
-            throw Exceptions.sneakyThrow(_t);
-          }
-        }
-      }
-    }
-    
-    /**
-     * Stop the Docker container.
-     */
-    @Override
-    public void stop_execute(final StopMethod method) {
-      ExecutableContainer.LOGGER.info("EXECUTE container stop");
-      final Machine machine = ExecutableContainer.this.getCurrentMachine();
-      ComputeStatus _state = machine.getState();
-      String _string = _state.toString();
-      boolean _equalsIgnoreCase = _string.equalsIgnoreCase("active");
-      if (_equalsIgnoreCase) {
-        ComputeStatus _state_1 = this.compute.getState();
-        String _string_1 = _state_1.toString();
-        boolean _equalsIgnoreCase_1 = _string_1.equalsIgnoreCase("active");
-        if (_equalsIgnoreCase_1) {
-          try {
-            boolean _equals = Objects.equal(ExecutableContainer.dockerContainerManager, null);
-            if (_equals) {
-              DockerContainerManager _dockerContainerManager = new DockerContainerManager(machine, ExecutableContainer.this.eventCallback);
-              ExecutableContainer.dockerContainerManager = _dockerContainerManager;
-            }
-            String _name = this.compute.getName();
-            ExecutableContainer.dockerContainerManager.stopContainer(machine, _name);
-          } catch (final Throwable _t) {
-            if (_t instanceof Exception) {
-              final Exception e = (Exception)_t;
-              this.compute.setState(ComputeStatus.INACTIVE);
-            } else {
-              throw Exceptions.sneakyThrow(_t);
-            }
-          }
-        }
-      }
-    }
-    
-    /**
-     * Restart the Docker container.
-     */
-    @Override
-    public void restart_execute(final RestartMethod method) {
-      ExecutableContainer.LOGGER.info("EXECUTE container restart");
-      this.stop_execute(StopMethod.GRACEFUL);
-      this.start_execute();
-    }
-    
-    /**
-     * Suspend the Docker container.
-     */
-    @Override
-    public void suspend_execute(final SuspendMethod method) {
-      ExecutableContainer.LOGGER.info("EXECUTE container suspend");
-    }
-  };
+  private final ComputeStateMachine<org.occiware.clouddesigner.occi.docker.Container> stateMachine /* Skipped initializer because of errors */;
   
   @Override
   public void start() {
@@ -164,29 +77,23 @@ public class ExecutableContainer extends ContainerImpl {
     this.stateMachine.suspend(method);
   }
   
-  public Map<DockerClient, CreateContainerResponse> createContainer(final Machine machine, final Multimap<String, String> containerDependency) {
-    Map<DockerClient, CreateContainerResponse> result = new HashMap<DockerClient, CreateContainerResponse>();
-    boolean _equals = Objects.equal(ExecutableContainer.dockerContainerManager, null);
-    if (_equals) {
-      DockerContainerManager _dockerContainerManager = new DockerContainerManager(machine, this.eventCallback);
-      ExecutableContainer.dockerContainerManager = _dockerContainerManager;
-    }
-    ExecutableContainer.dockerContainerManager.pullImage(machine, this.image);
-    Map<DockerClient, CreateContainerResponse> _createContainer = ExecutableContainer.dockerContainerManager.createContainer(machine, this, containerDependency);
-    result = _createContainer;
-    HashMap<DockerClient, CreateContainerResponse> _hashMap = new HashMap<DockerClient, CreateContainerResponse>(result);
-    this.map = _hashMap;
-    return result;
+  public /* Map<DockerClient, CreateContainerResponse> */Object createContainer(final Machine machine, final Multimap<String, String> containerDependency) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nDockerClient cannot be resolved to a type."
+      + "\nCreateContainerResponse cannot be resolved to a type."
+      + "\nDockerClient cannot be resolved to a type."
+      + "\nCreateContainerResponse cannot be resolved to a type."
+      + "\nDockerClient cannot be resolved to a type."
+      + "\nCreateContainerResponse cannot be resolved to a type."
+      + "\nThe method pullImage(Machine, String) from the type DockerContainerManager refers to the missing type DockerClient"
+      + "\nThe method createContainer(Machine, Container, Multimap<String, String>) from the type DockerContainerManager refers to the missing type DockerClient"
+      + "\nThe field ExecutableContainer.map refers to the missing type DockerClient");
   }
   
   public void createContainer(final Machine machine) {
-    boolean _equals = Objects.equal(ExecutableContainer.dockerContainerManager, null);
-    if (_equals) {
-      DockerContainerManager _dockerContainerManager = new DockerContainerManager(machine, this.eventCallback);
-      ExecutableContainer.dockerContainerManager = _dockerContainerManager;
-    }
-    ExecutableContainer.dockerContainerManager.pullImage(machine, this.image);
-    ExecutableContainer.dockerContainerManager.createContainer(machine, this);
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method pullImage(Machine, String) from the type DockerContainerManager refers to the missing type DockerClient"
+      + "\nThe method createContainer(Machine, Container) from the type DockerContainerManager refers to the missing type DockerClient");
   }
   
   public void removeContainer(final Machine machine) {

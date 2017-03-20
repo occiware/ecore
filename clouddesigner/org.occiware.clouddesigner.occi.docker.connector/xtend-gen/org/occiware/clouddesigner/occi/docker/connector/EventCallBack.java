@@ -11,9 +11,6 @@
  */
 package org.occiware.clouddesigner.occi.docker.connector;
 
-import com.github.dockerjava.api.command.InspectContainerResponse;
-import com.github.dockerjava.api.model.Event;
-import com.github.dockerjava.core.command.EventsResultCallback;
 import com.google.common.base.Objects;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -46,7 +43,7 @@ import org.slf4j.LoggerFactory;
  * This class notifies a new events to the connector.
  */
 @SuppressWarnings("all")
-public class EventCallBack extends EventsResultCallback {
+public class EventCallBack /* implements EventsResultCallback  */{
   private static Logger LOGGER = LoggerFactory.getLogger(EventCallBack.class);
   
   private ExecutableContainer container;
@@ -122,77 +119,27 @@ public class EventCallBack extends EventsResultCallback {
   }
   
   @Override
-  public void onNext(final Event event) {
-    EventCallBack.LOGGER.info("Received event #{}", event);
-    Machine machine = this.container.getCurrentMachine();
-    ComputeStatus _state = machine.getState();
-    boolean _equals = Objects.equal(_state, ComputeStatus.ACTIVE);
-    if (_equals) {
-      EList<Link> links = machine.getLinks();
-      int _size = links.size();
-      EventCallBack.LOGGER.info("Link size #{}", Integer.valueOf(_size));
-      try {
-        for (final Link l : links) {
-          {
-            Contains contains = ((Contains) l);
-            boolean _notEquals = (!Objects.equal(contains, null));
-            if (_notEquals) {
-              Resource _target = contains.getTarget();
-              if ((_target instanceof Container)) {
-                Resource _target_1 = contains.getTarget();
-                String _containerid = ((ExecutableContainer) _target_1).getContainerid();
-                String _id = event.getId();
-                boolean _equals_1 = Objects.equal(_containerid, _id);
-                if (_equals_1) {
-                  String _status = event.getStatus();
-                  boolean _equalsIgnoreCase = _status.equalsIgnoreCase("stop");
-                  if (_equalsIgnoreCase) {
-                    Resource _target_2 = contains.getTarget();
-                    String _status_1 = event.getStatus();
-                    String _id_1 = event.getId();
-                    this.modifyResourceSet(_target_2, _status_1, _id_1);
-                    EventCallBack.LOGGER.info("Apply stop notification to model");
-                  }
-                  String _status_2 = event.getStatus();
-                  boolean _equalsIgnoreCase_1 = _status_2.equalsIgnoreCase("start");
-                  if (_equalsIgnoreCase_1) {
-                    Resource _target_3 = contains.getTarget();
-                    String _status_3 = event.getStatus();
-                    String _id_2 = event.getId();
-                    this.modifyResourceSet(_target_3, _status_3, _id_2);
-                    EventCallBack.LOGGER.info("Apply start notification to model");
-                  }
-                  String _status_4 = event.getStatus();
-                  boolean _equalsIgnoreCase_2 = _status_4.equalsIgnoreCase("destroy");
-                  if (_equalsIgnoreCase_2) {
-                    Resource _target_4 = contains.getTarget();
-                    String _status_5 = event.getStatus();
-                    String _id_3 = event.getId();
-                    this.modifyResourceSet(_target_4, _status_5, _id_3);
-                    EventCallBack.LOGGER.info("Apply destroy notification to model");
-                  }
-                } else {
-                  if ((event.getStatus().equalsIgnoreCase("create") && 
-                    (!this.containerIsInsideMachine(machine, event.getId())))) {
-                    Resource _target_5 = contains.getTarget();
-                    String _status_6 = event.getStatus();
-                    String _id_4 = event.getId();
-                    this.modifyResourceSet(_target_5, _status_6, _id_4);
-                    EventCallBack.LOGGER.info("Apply create notification to model");
-                  }
-                }
-              }
-            }
-          }
-        }
-      } catch (final Throwable _t) {
-        if (_t instanceof Exception) {
-          final Exception e = (Exception)_t;
-        } else {
-          throw Exceptions.sneakyThrow(_t);
-        }
-      }
-    }
+  public void onNext(final /* Event */Object event) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nid cannot be resolved"
+      + "\ngetStatus cannot be resolved"
+      + "\nequalsIgnoreCase cannot be resolved"
+      + "\ngetStatus cannot be resolved"
+      + "\nid cannot be resolved"
+      + "\ngetStatus cannot be resolved"
+      + "\nequalsIgnoreCase cannot be resolved"
+      + "\ngetStatus cannot be resolved"
+      + "\nid cannot be resolved"
+      + "\ngetStatus cannot be resolved"
+      + "\nequalsIgnoreCase cannot be resolved"
+      + "\ngetStatus cannot be resolved"
+      + "\nid cannot be resolved"
+      + "\ngetStatus cannot be resolved"
+      + "\nequalsIgnoreCase cannot be resolved"
+      + "\n&& cannot be resolved"
+      + "\nid cannot be resolved"
+      + "\ngetStatus cannot be resolved"
+      + "\nid cannot be resolved");
   }
   
   public ArrayList<ExecutableContainer> listContainers(final Machine machine) {
@@ -212,18 +159,10 @@ public class EventCallBack extends EventsResultCallback {
   }
   
   public boolean containerIsInsideMachine(final Machine machine, final String containerId) {
-    final InspectContainerResponse container = ExecutableContainer.dockerContainerManager.inspectContainer(machine, containerId);
-    String _name = container.getName();
-    final String name = _name.replaceAll("/", "");
-    ArrayList<ExecutableContainer> listContainer = this.listContainers(machine);
-    for (final ExecutableContainer ec : listContainer) {
-      String _name_1 = ec.getName();
-      boolean _equalsIgnoreCase = _name_1.equalsIgnoreCase(name);
-      if (_equalsIgnoreCase) {
-        return true;
-      }
-    }
-    return false;
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method inspectContainer(Machine, String) from the type DockerContainerManager refers to the missing type InspectContainerResponse"
+      + "\nname cannot be resolved"
+      + "\nreplaceAll cannot be resolved");
   }
   
   public Resource getResourceById(final Machine machine, final String containerId) {

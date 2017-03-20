@@ -51,6 +51,7 @@ public class VmSchedulerSpaceShared extends VmScheduler {
 	@Override
 	public boolean allocatePesForVm(Vm vm, List<Double> mipsShare) {
 		// if there is no enough free PEs, fails
+		System.out.println("getFreePes().size(): "+getFreePes().size()+"mipsShare.size(): "+mipsShare.size());
 		if (getFreePes().size() < mipsShare.size()) {
 			return false;
 		}

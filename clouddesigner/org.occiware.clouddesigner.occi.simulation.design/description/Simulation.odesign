@@ -3,7 +3,7 @@
   <ownedViewpoints name="Simulation Configuration" modelFileExtension="occic">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Simulation Configuration" domainClass="occi.Configuration" enablePopupBars="true">
       <defaultLayer name="Default">
-        <edgeMappings name="LinkEdge" sourceMapping="//@ownedViewpoints[name='Simulation%20Configuration']/@ownedRepresentations[name='Simulation%20Configuration']/@defaultLayer/@containerMappings[name='ResourceContainer']" targetMapping="//@ownedViewpoints[name='Simulation%20Configuration']/@ownedRepresentations[name='Simulation%20Configuration']/@defaultLayer/@containerMappings[name='LinkContainer']" targetFinderExpression="feature:links">
+        <edgeMappings name="LinkEdge" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Simulation%20Configuration']/@ownedRepresentations[name='Simulation%20Configuration']/@defaultLayer/@containerMappings[name='ResourceContainer']" targetMapping="//@ownedViewpoints[name='Simulation%20Configuration']/@ownedRepresentations[name='Simulation%20Configuration']/@defaultLayer/@containerMappings[name='LinkContainer']" targetFinderExpression="feature:links">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -11,7 +11,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="TargetEdge" sourceMapping="//@ownedViewpoints[name='Simulation%20Configuration']/@ownedRepresentations[name='Simulation%20Configuration']/@defaultLayer/@containerMappings[name='LinkContainer']" targetMapping="//@ownedViewpoints[name='Simulation%20Configuration']/@ownedRepresentations[name='Simulation%20Configuration']/@defaultLayer/@containerMappings[name='ResourceContainer']" targetFinderExpression="feature:target">
+        <edgeMappings name="TargetEdge" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Simulation%20Configuration']/@ownedRepresentations[name='Simulation%20Configuration']/@defaultLayer/@containerMappings[name='LinkContainer']" targetMapping="//@ownedViewpoints[name='Simulation%20Configuration']/@ownedRepresentations[name='Simulation%20Configuration']/@defaultLayer/@containerMappings[name='ResourceContainer']" targetFinderExpression="feature:target">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -27,7 +27,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="ResourceContainer" semanticCandidatesExpression="feature:resources" domainClass="occi.Resource" childrenPresentation="List">
+        <containerMappings name="ResourceContainer" labelDirectEdit="//@ownedViewpoints[name='Simulation%20Configuration']/@ownedRepresentations[name='Simulation%20Configuration']/@defaultLayer/@toolSections.1/@ownedTools[name='EditDefault']" semanticCandidatesExpression="feature:resources" domainClass="occi.Resource" childrenPresentation="List">
           <subNodeMappings name="Kind" semanticCandidatesExpression="feature:kind" domainClass="occi.Kind">
             <style xsi:type="style:SquareDescription" labelExpression="[scheme+term/]" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -134,7 +134,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:tagDatacenter"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolDescription" name="Host" iconPath="/org.occiware.clouddesigner.occi.simulation.design/images/host.jpg">
+          <ownedTools xsi:type="tool:ToolDescription" name="Server" iconPath="/org.occiware.clouddesigner.occi.simulation.design/images/host.jpg">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -148,11 +148,25 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:tagVM"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolDescription" name="Application" iconPath="/org.occiware.clouddesigner.occi.simulation.design/images/task.jpg">
+          <ownedTools xsi:type="tool:ToolDescription" name="Service" iconPath="/org.occiware.clouddesigner.occi.simulation.design/images/task.jpg">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:tagApplication"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolDescription" name="Storage" iconPath="/org.occiware.clouddesigner.occi.simulation.design/images/storage.png">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:tagStorage"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolDescription" name="Network" iconPath="/org.occiware.clouddesigner.occi.simulation.design/images/network.png">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:tagNetwork"/>
             </initialOperation>
           </ownedTools>
         </toolSections>
