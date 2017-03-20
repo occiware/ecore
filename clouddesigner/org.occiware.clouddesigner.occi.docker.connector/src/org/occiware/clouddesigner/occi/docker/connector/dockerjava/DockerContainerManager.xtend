@@ -245,7 +245,7 @@ class DockerContainerManager {
 		if (StringUtils.isNotBlank(container.command)) {
 			var String[] cmd = (StringUtils.deleteWhitespace(container.command)).split(",")
 			create.withCmd(cmd)
-		} else {
+		} else if (!StringUtils.isNotBlank(container.image)) { // else overrides image command if any (often)
 			create.withCmd("sleep", "9999")
 		}
 		if (container.cpu_shares > 0) {
