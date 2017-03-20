@@ -1,7 +1,17 @@
 package org.occiware.clouddesigner.occi.cloud.connector.cloudproviders;
 
+import com.google.common.collect.FluentIterable;
+import com.google.common.collect.Iterables;
+import com.google.common.io.Closeables;
 import java.io.Closeable;
 import java.io.IOException;
+import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.jclouds.ContextBuilder;
+import org.jclouds.openstack.trove.v1.TroveApi;
+import org.jclouds.openstack.trove.v1.domain.Flavor;
+import org.jclouds.openstack.trove.v1.domain.Instance;
+import org.jclouds.openstack.trove.v1.features.FlavorApi;
+import org.jclouds.openstack.trove.v1.utils.TroveUtils;
 import org.occiware.clouddesigner.occi.cloud.Machine_RackSpace;
 import org.occiware.clouddesigner.occi.cloud.connector.cloudproviders.IaaSHandler;
 import org.slf4j.Logger;
@@ -13,48 +23,58 @@ public class JcloudsRackSpace extends IaaSHandler implements Closeable {
   
   private Machine_RackSpace machine;
   
-  private /* TroveApi */Object context;
+  private TroveApi context;
   
   public JcloudsRackSpace() {
   }
   
   public JcloudsRackSpace(final Machine_RackSpace machine) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe field JcloudsRackSpace.context refers to the missing type TroveApi"
-      + "\nThe method createContext() from the type JcloudsRackSpace refers to the missing type TroveApi");
+    this.machine = machine;
+    TroveApi _createContext = this.createContext();
+    this.context = _createContext;
   }
   
   /**
    * Initialize the context
    */
   public TroveApi createContext() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nTroveApi cannot be resolved to a type."
-      + "\nThe method or field ContextBuilder is undefined"
-      + "\nThe field JcloudsRackSpace.context refers to the missing type TroveApi"
-      + "\nThe field JcloudsRackSpace.context refers to the missing type TroveApi"
-      + "\nnewBuilder cannot be resolved"
-      + "\ncredentials cannot be resolved"
-      + "\nbuildApi cannot be resolved");
+    String _provider = this.machine.getProvider();
+    ContextBuilder _newBuilder = ContextBuilder.newBuilder(_provider);
+    String _username = this.machine.getUsername();
+    String _api_key = this.machine.getApi_key();
+    ContextBuilder _credentials = _newBuilder.credentials(_username, _api_key);
+    TroveApi _buildApi = _credentials.<TroveApi>buildApi(TroveApi.class);
+    this.context = _buildApi;
+    JcloudsRackSpace.LOGGER.info("The context is created Successfully ..");
+    return this.context;
   }
   
   public String launchMachine() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nInstance cannot be resolved to a type."
-      + "\nTroveUtils cannot be resolved to a type."
-      + "\nTroveUtils cannot be resolved."
-      + "\nThe method or field id is undefined for the type Object"
-      + "\nThe field JcloudsRackSpace.context refers to the missing type TroveApi"
-      + "\nThe field JcloudsRackSpace.context refers to the missing type TroveApi"
-      + "\ngetFlavorApiForZone cannot be resolved"
-      + "\nlist cannot be resolved"
-      + "\ngetWorkingInstance cannot be resolved"
-      + "\nid cannot be resolved");
+    Instance instance = null;
+    try {
+      String _region = this.machine.getRegion();
+      FlavorApi flavorApi = this.context.getFlavorApiForZone(_region);
+      FluentIterable<Flavor> _list = flavorApi.list();
+      Flavor flavor = Iterables.<Flavor>getFirst(_list, null);
+      TroveUtils utils = new TroveUtils(this.context);
+      String _region_1 = this.machine.getRegion();
+      String _name = this.machine.getName();
+      int _id = flavor.getId();
+      String _plus = ("" + Integer.valueOf(_id));
+      Instance _workingInstance = utils.getWorkingInstance(_region_1, _name, _plus, 1);
+      instance = _workingInstance;
+    } catch (final Throwable _t) {
+      if (_t instanceof Exception) {
+        final Exception exception = (Exception)_t;
+      } else {
+        throw Exceptions.sneakyThrow(_t);
+      }
+    }
+    return instance.getId();
   }
   
   @Override
   public void close() throws IOException {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe field JcloudsRackSpace.context refers to the missing type TroveApi");
+    Closeables.close(this.context, true);
   }
 }

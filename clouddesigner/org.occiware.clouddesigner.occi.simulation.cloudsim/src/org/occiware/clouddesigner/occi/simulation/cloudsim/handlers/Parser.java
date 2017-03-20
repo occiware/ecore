@@ -32,12 +32,9 @@ public class Parser {
 	public Map<Entity, Set<Entity>> parsing(){
 		System.out.println("start parsing ...");
 		Map<Entity, Set<Entity>> entities = new HashMap<Entity, Set<Entity>>();
-		System.out.println("resource size: "+configuration.getResources().size());
-		
+
 		for(Resource resource : configuration.getResources()) {
 			for(Mixin mixin : resource.getMixins()) {
-				System.out.println("mixin.getTerm(): "+mixin.getTerm());
-
 				if(mixin.getScheme().contains("simulation")){
 					if(mixin.getTerm().contains("datacenter")){
 						Dc_Config dc = DcFromResource(resource);
@@ -129,7 +126,7 @@ public class Parser {
 		long bw=0, size=0;
 		String vmm="";
 		String cloudletScheduler="";
-		//System.out.println("VM attributes size: "+resource.getAttributes().size());
+
 		for(AttributeState as : resource.getAttributes()) {
 			//System.out.println(as.getName()+" >>>> "+as.getValue());
 			if(as.getName().equals("id_vm")) id_vm = Integer.parseInt(as.getValue());
@@ -142,10 +139,8 @@ public class Parser {
 			else if (as.getName().equals("vmm")) vmm = as.getValue();
 			else if (as.getName().equals("cloudletScheduler")) cloudletScheduler = as.getValue();
 		}
-		System.out.println("resource.getLinks(): "+resource.getLinks().size());
 		//resource linked to VM
 		for(Link link : resource.getLinks()) {
-			System.out.println("Link: "+link.getTarget().getKind().getTerm());
 			if(link.getTarget().getKind().getTerm().contains("cloudlet")){
 				idTarget.add(link.getTarget().getId());
 			}else{

@@ -60,7 +60,7 @@ public class Simulation {
 		carac = new ArrayList<String>();
 		vmToHost = new HashMap<Vm, Host>();
 		listDatacenter = new ArrayList<Datacenter>();
-		carac.add("Service_ID,STATUS,Datacenter_ID,VM,Time,Start_Time,Finish_Time");
+		carac.add("Cloudlet_ID,STATUS,Datacenter_ID,VM,Time,Start_Time,Finish_Time");
 	}
 
 	public void runExtension(){
@@ -106,19 +106,17 @@ public class Simulation {
 				while (itHost.hasNext()) {
 					Host_Config host_config = (Host_Config) itHost.next();
 					Host host = getHostFromList(listHost, host_config);
-					System.out.println("HOST >>> "+ host_config);
+
 					Set<Entity> vmLinkedToHost = entities.get(host_config);
 					Iterator<Entity> itVM = vmLinkedToHost.iterator();
 					while (itVM.hasNext()) {
 						Entity isVm = itVM.next();
-						System.out.println("VM >>> "+(VM_Config)isVm);
 						createVm((VM_Config)isVm, brokerId, host,vmid);
 						idVmToIdcloudLet.put(vmid, new HashSet<Integer>());
 						Set<Entity> cloudletLinkedToVm = entities.get(isVm);
 						Iterator<Entity> itCloudlet = cloudletLinkedToVm.iterator();
 						while (itCloudlet.hasNext()) {
 							Entity isCloudLet = itCloudlet.next();
-							System.out.println("Cloudlet >>> "+(Cloudlet_Config)isCloudLet);
 							createCloudLet((Cloudlet_Config)isCloudLet, brokerId, cloudLetId);
 							idVmToIdcloudLet.get(vmid).add(cloudLetId);
 							cloudLetId++;
@@ -232,10 +230,10 @@ public class Simulation {
 					double m = (Double.parseDouble(rsrc.get(vmId).get(2))/vm.getMips())*100;
 					result+="VM: "+vmId+", % AvgCpu: "+m+"\n";
 				}
-				result+="VM: "+vm.getId()+", RamPrice: "+rsrc.get(vmId).get(0)+"\n";
-				result+="VM: "+vm.getId()+", BwPrice: "+rsrc.get(vmId).get(1)+"\n";
-				result+="VM: "+vm.getId()+", MipsPrice: "+rsrc.get(vmId).get(2)+"\n";
-				result+="VM: "+vm.getId()+", StoragePrice: "+rsrc.get(vmId).get(3)+"\n";
+				result+="VM: "+vmId+", RamPrice: "+rsrc.get(vmId).get(0)+"\n";
+				result+="VM: "+vmId+", BwPrice: "+rsrc.get(vmId).get(1)+"\n";
+				result+="VM: "+vmId+", MipsPrice: "+rsrc.get(vmId).get(2)+"\n";
+				result+="VM: "+vmId+", StoragePrice: "+rsrc.get(vmId).get(3)+"\n";
 			}
 		}
 		return result;
@@ -286,6 +284,7 @@ public class Simulation {
 
 					Host h = new Host(hostId, (RamProvisioner) ramProvis, (BwProvisioner)bwProvis, 
 							storage, peList, (VmScheduler) vmSched);
+
 					hostList.add(h);
 				} catch (Exception e) {
 					System.err.println("Exception in createDatacenter");

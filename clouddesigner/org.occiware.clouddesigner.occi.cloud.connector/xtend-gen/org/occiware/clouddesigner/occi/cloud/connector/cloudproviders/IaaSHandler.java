@@ -11,6 +11,9 @@
 package org.occiware.clouddesigner.occi.cloud.connector.cloudproviders;
 
 import java.util.List;
+import org.jclouds.compute.domain.Hardware;
+import org.jclouds.domain.Location;
+import org.jclouds.openstack.nova.v2_0.domain.Volume;
 
 @SuppressWarnings("all")
 public abstract class IaaSHandler {
@@ -71,21 +74,21 @@ public abstract class IaaSHandler {
   /**
    * List all region available on the target provider
    */
-  public /* List<Location> */Object listLocations() {
+  public List<Location> listLocations() {
     return null;
   }
   
   /**
    * List all hardware available on target provider
    */
-  public /* List<Hardware> */Object listHardware() {
+  public List<Hardware> listHardware() {
     return null;
   }
   
   /**
    * Create a volume
    */
-  public /* Volume */Object createVolume(final String volumeName, final Integer size) {
+  public Volume createVolume(final String volumeName, final Integer size) {
     return null;
   }
   

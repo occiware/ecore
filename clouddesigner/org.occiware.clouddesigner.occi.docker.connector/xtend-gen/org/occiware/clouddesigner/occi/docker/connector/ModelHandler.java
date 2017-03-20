@@ -10,6 +10,12 @@
  */
 package org.occiware.clouddesigner.occi.docker.connector;
 
+import com.github.dockerjava.api.command.InspectContainerResponse;
+import com.github.dockerjava.api.model.Container;
+import com.github.dockerjava.api.model.ContainerConfig;
+import com.github.dockerjava.api.model.ExposedPort;
+import com.github.dockerjava.api.model.HostConfig;
+import com.github.dockerjava.api.model.Link;
 import com.google.common.base.Objects;
 import java.io.BufferedReader;
 import java.io.File;
@@ -23,12 +29,16 @@ import java.io.StringReader;
 import java.io.StringWriter;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.IdentityHashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import org.apache.commons.lang.StringUtils;
+import org.codehaus.jackson.JsonNode;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
@@ -63,9 +73,9 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.XMIResource;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
-import org.occiware.clouddesigner.occi.Link;
-import org.occiware.clouddesigner.occi.docker.Container;
 import org.occiware.clouddesigner.occi.docker.Contains;
 import org.occiware.clouddesigner.occi.docker.DockerFactory;
 import org.occiware.clouddesigner.occi.docker.DockerPackage;
@@ -82,7 +92,11 @@ import org.occiware.clouddesigner.occi.docker.Machine_VMware_Fusion;
 import org.occiware.clouddesigner.occi.docker.Machine_VMware_vCloud_Air;
 import org.occiware.clouddesigner.occi.docker.Machine_VMware_vSphere;
 import org.occiware.clouddesigner.occi.docker.Machine_VirtualBox;
+import org.occiware.clouddesigner.occi.docker.connector.dockerjava.DockerContainerManager;
+import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerMachineManager;
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.Provider;
+import org.occiware.clouddesigner.occi.docker.connector.dockermachine.util.DockerUtil;
+import org.occiware.clouddesigner.occi.infrastructure.ComputeStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -634,41 +648,130 @@ public class ModelHandler {
   }
   
   public Machine getModel(final String machine, final String state, final boolean machineExists) {
-    throw new Error("Unresolved compilation problems:"
-      + "\ncom.github.dockerjava.api.model.Container cannot be resolved to a type."
-      + "\nLink cannot be resolved to a type."
-      + "\nThe method jsonify(String) from the type DockerUtil refers to the missing type Object"
-      + "\nThe method machineFactory_VBOX(Machine_VirtualBox, JsonNode, String) from the type ModelHandler refers to the missing type JsonNode"
-      + "\nThe method machineFactory(Machine, JsonNode, String) from the type ModelHandler refers to the missing type JsonNode"
-      + "\nThe method machineFactory(Machine, JsonNode, String) from the type ModelHandler refers to the missing type JsonNode"
-      + "\nThe method machineFactory_Fusion(Machine_VMware_Fusion, JsonNode, String) from the type ModelHandler refers to the missing type JsonNode"
-      + "\nThe method machineFactory(Machine, JsonNode, String) from the type ModelHandler refers to the missing type JsonNode"
-      + "\nThe method machineFactory(Machine, JsonNode, String) from the type ModelHandler refers to the missing type JsonNode"
-      + "\nThe method machineFactory(Machine, JsonNode, String) from the type ModelHandler refers to the missing type JsonNode"
-      + "\nThe method machineFactory(Machine, JsonNode, String) from the type ModelHandler refers to the missing type JsonNode"
-      + "\nThe method machineFactory_OpenStack(Machine_OpenStack, JsonNode, String) from the type ModelHandler refers to the missing type JsonNode"
-      + "\nThe method machineFactory(Machine, JsonNode, String) from the type ModelHandler refers to the missing type JsonNode"
-      + "\nThe method machineFactory(Machine, JsonNode, String) from the type ModelHandler refers to the missing type JsonNode"
-      + "\nThe method listContainer(String) from the type DockerContainerManager refers to the missing type Container"
-      + "\nThe method buildContainer(Machine, List<Container>) from the type ModelHandler refers to the missing type Container"
-      + "\nThe method inspectContainer(Machine, String) from the type DockerContainerManager refers to the missing type InspectContainerResponse"
-      + "\n!= cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\ntoString cannot be resolved"
-      + "\nreplaceAll cannot be resolved"
-      + "\nhostConfig cannot be resolved"
-      + "\nlinks cannot be resolved"
-      + "\nisEmpty cannot be resolved"
-      + "\n! cannot be resolved"
-      + "\nhostConfig cannot be resolved"
-      + "\nlinks cannot be resolved"
-      + "\nname cannot be resolved"
-      + "\nname cannot be resolved"
-      + "\nname cannot be resolved");
+    final DockerContainerManager instance = new DockerContainerManager();
+    Runtime _runtime = Runtime.getRuntime();
+    String _inspectHostCmd = DockerMachineManager.inspectHostCmd(_runtime, machine);
+    final JsonNode node = DockerUtil.jsonify(_inspectHostCmd);
+    boolean _notEquals = (!Objects.equal(node, null));
+    if (_notEquals) {
+      Map<String, Machine> _modelEClass = this.getmodelEClass();
+      JsonNode _get = node.get("DriverName");
+      String _string = _get.toString();
+      String _replaceAll = _string.replaceAll("\"", "");
+      Machine vbox = _modelEClass.get(_replaceAll);
+      if ((vbox instanceof Machine_VirtualBox)) {
+        Machine_VirtualBox newvbox = ((Machine_VirtualBox) vbox);
+        this.machineFactory_VBOX(newvbox, node, state);
+        ModelHandler.LOGGER.info(("Model setting: " + newvbox));
+      } else {
+        if ((vbox instanceof Machine_Amazon_EC2)) {
+          Machine_Amazon_EC2 newvbox_1 = ((Machine_Amazon_EC2) vbox);
+          this.machineFactory(newvbox_1, node, state);
+          ModelHandler.LOGGER.info(("Model setting: " + newvbox_1));
+        } else {
+          if ((vbox instanceof Machine_Digital_Ocean)) {
+            Machine_Digital_Ocean newvbox_2 = ((Machine_Digital_Ocean) vbox);
+            this.machineFactory(newvbox_2, node, state);
+            ModelHandler.LOGGER.info(("Model setting: " + newvbox_2));
+          } else {
+            if ((vbox instanceof Machine_VMware_Fusion)) {
+              Machine_VMware_Fusion newvbox_3 = ((Machine_VMware_Fusion) vbox);
+              this.machineFactory_Fusion(newvbox_3, node, state);
+              ModelHandler.LOGGER.info(("Model setting: " + newvbox_3));
+            } else {
+              if ((vbox instanceof Machine_Google_Compute_Engine)) {
+                Machine_Google_Compute_Engine newvbox_4 = ((Machine_Google_Compute_Engine) vbox);
+                this.machineFactory(newvbox_4, node, state);
+                ModelHandler.LOGGER.info(("Model setting: " + newvbox_4));
+              } else {
+                if ((vbox instanceof Machine_IBM_SoftLayer)) {
+                  Machine_IBM_SoftLayer newvbox_5 = ((Machine_IBM_SoftLayer) vbox);
+                  this.machineFactory(newvbox_5, node, state);
+                  ModelHandler.LOGGER.info(("Model setting: " + newvbox_5));
+                } else {
+                  if ((vbox instanceof Machine_Microsoft_Azure)) {
+                    Machine_Microsoft_Azure newvbox_6 = ((Machine_Microsoft_Azure) vbox);
+                    this.machineFactory(newvbox_6, node, state);
+                    ModelHandler.LOGGER.info(("Model setting: " + newvbox_6));
+                  } else {
+                    if ((vbox instanceof Machine_Microsoft_Hyper_V)) {
+                      Machine_Microsoft_Hyper_V newvbox_7 = ((Machine_Microsoft_Hyper_V) vbox);
+                      this.machineFactory(newvbox_7, node, state);
+                      ModelHandler.LOGGER.info(("Model setting: " + newvbox_7));
+                    } else {
+                      if ((vbox instanceof Machine_OpenStack)) {
+                        Machine_OpenStack newvbox_8 = ((Machine_OpenStack) vbox);
+                        this.machineFactory_OpenStack(newvbox_8, node, state);
+                        ModelHandler.LOGGER.info(("Model setting: " + newvbox_8));
+                      } else {
+                        if ((vbox instanceof Machine_Rackspace)) {
+                          Machine_Rackspace newvbox_9 = ((Machine_Rackspace) vbox);
+                          this.machineFactory(newvbox_9, node, state);
+                          ModelHandler.LOGGER.info(("Model setting: " + newvbox_9));
+                        } else {
+                          if ((vbox instanceof Machine_VMware_vSphere)) {
+                            Machine_VMware_vSphere newvbox_10 = ((Machine_VMware_vSphere) vbox);
+                            this.machineFactory(newvbox_10, node, state);
+                            ModelHandler.LOGGER.info(("Model setting: " + newvbox_10));
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      if ((!machineExists)) {
+        ComputeStatus _state = vbox.getState();
+        String _string_1 = _state.toString();
+        boolean _equalsIgnoreCase = _string_1.equalsIgnoreCase("active");
+        if (_equalsIgnoreCase) {
+          String _name = vbox.getName();
+          final List<Container> containers = instance.listContainer(_name);
+          boolean _notEquals_1 = (!Objects.equal(containers, null));
+          if (_notEquals_1) {
+            List<org.occiware.clouddesigner.occi.docker.Container> modelContainers = this.buildContainer(vbox, containers);
+            for (final org.occiware.clouddesigner.occi.docker.Container container : modelContainers) {
+              {
+                HashSet<String> existingLinks = new HashSet<String>();
+                this.linkContainerToMachine(container, vbox);
+                String _id = container.getId();
+                final InspectContainerResponse inspectContainer = instance.inspectContainer(vbox, _id);
+                HostConfig _hostConfig = inspectContainer.getHostConfig();
+                Link[] _links = _hostConfig.getLinks();
+                boolean _isEmpty = ((List<Link>)Conversions.doWrapArray(_links)).isEmpty();
+                boolean _not = (!_isEmpty);
+                if (_not) {
+                  HostConfig _hostConfig_1 = inspectContainer.getHostConfig();
+                  Link[] _links_1 = _hostConfig_1.getLinks();
+                  for (final Link link : _links_1) {
+                    String _name_1 = link.getName();
+                    boolean _contains = existingLinks.contains(_name_1);
+                    boolean _not_1 = (!_contains);
+                    if (_not_1) {
+                      String _name_2 = link.getName();
+                      org.occiware.clouddesigner.occi.docker.Container _containerByName = this.getContainerByName(modelContainers, _name_2);
+                      this.linkContainerToContainer(container, _containerByName);
+                      String _name_3 = link.getName();
+                      existingLinks.add(_name_3);
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      return vbox;
+    }
+    return null;
   }
   
-  public Container getContainerByName(final List<Container> containers, final String containerName) {
-    for (final Container c : containers) {
+  public org.occiware.clouddesigner.occi.docker.Container getContainerByName(final List<org.occiware.clouddesigner.occi.docker.Container> containers, final String containerName) {
+    for (final org.occiware.clouddesigner.occi.docker.Container c : containers) {
       String _name = c.getName();
       boolean _equals = Objects.equal(_name, containerName);
       if (_equals) {
@@ -678,234 +781,416 @@ public class ModelHandler {
     return null;
   }
   
-  public void machineFactory(final Machine vbox, final /* JsonNode */Object node, final String state) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nget cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\ntoString cannot be resolved"
-      + "\nreplaceAll cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\ntoString cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\ntoString cannot be resolved");
+  public void machineFactory(final Machine vbox, final JsonNode node, final String state) {
+    JsonNode _get = node.get("Driver");
+    JsonNode _get_1 = _get.get("MachineName");
+    String _string = _get_1.toString();
+    String _replaceAll = _string.replaceAll("\"", "");
+    vbox.setName(_replaceAll);
+    JsonNode _get_2 = node.get("Driver");
+    JsonNode _get_3 = _get_2.get("Memory");
+    String _string_1 = _get_3.toString();
+    float _parseFloat = Float.parseFloat(_string_1);
+    vbox.setMemory(_parseFloat);
+    JsonNode _get_4 = node.get("Driver");
+    JsonNode _get_5 = _get_4.get("CPU");
+    String _string_2 = _get_5.toString();
+    int _parseInt = Integer.parseInt(_string_2);
+    vbox.setCores(_parseInt);
+    boolean _equals = Objects.equal(state, "Running");
+    if (_equals) {
+      ComputeStatus _get_6 = ComputeStatus.get(0);
+      vbox.setState(_get_6);
+    }
+    boolean _equals_1 = Objects.equal(state, "Stopped");
+    if (_equals_1) {
+      ComputeStatus _get_7 = ComputeStatus.get(1);
+      vbox.setState(_get_7);
+    }
   }
   
-  public void machineFactory_VBOX(final Machine_VirtualBox vbox, final /* JsonNode */Object node, final String state) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nget cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\ntoString cannot be resolved"
-      + "\nreplaceAll cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\ntoString cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\ntoString cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\ntoString cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\ntoString cannot be resolved"
-      + "\nreplaceAll cannot be resolved");
+  public void machineFactory_VBOX(final Machine_VirtualBox vbox, final JsonNode node, final String state) {
+    JsonNode _get = node.get("Driver");
+    JsonNode _get_1 = _get.get("MachineName");
+    String _string = _get_1.toString();
+    String _replaceAll = _string.replaceAll("\"", "");
+    vbox.setName(_replaceAll);
+    JsonNode _get_2 = node.get("Driver");
+    JsonNode _get_3 = _get_2.get("Memory");
+    String _string_1 = _get_3.toString();
+    float _parseFloat = Float.parseFloat(_string_1);
+    vbox.setMemory(_parseFloat);
+    JsonNode _get_4 = node.get("Driver");
+    JsonNode _get_5 = _get_4.get("DiskSize");
+    String _string_2 = _get_5.toString();
+    int _parseInt = Integer.parseInt(_string_2);
+    vbox.setDisk_size(_parseInt);
+    JsonNode _get_6 = node.get("Driver");
+    JsonNode _get_7 = _get_6.get("CPU");
+    String _string_3 = _get_7.toString();
+    int _parseInt_1 = Integer.parseInt(_string_3);
+    vbox.setCores(_parseInt_1);
+    JsonNode _get_8 = node.get("Driver");
+    JsonNode _get_9 = _get_8.get("Boot2DockerURL");
+    String _string_4 = _get_9.toString();
+    String _replaceAll_1 = _string_4.replaceAll("\"", "");
+    vbox.setBoot2docker_url(_replaceAll_1);
+    boolean _equals = Objects.equal(state, "Running");
+    if (_equals) {
+      ComputeStatus _get_10 = ComputeStatus.get(0);
+      vbox.setState(_get_10);
+    }
+    boolean _equals_1 = Objects.equal(state, "Stopped");
+    if (_equals_1) {
+      ComputeStatus _get_11 = ComputeStatus.get(1);
+      vbox.setState(_get_11);
+    }
   }
   
-  public void machineFactory_Fusion(final Machine_VMware_Fusion vbox, final /* JsonNode */Object node, final String state) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nget cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\ntoString cannot be resolved"
-      + "\nreplaceAll cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\ntoString cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\ntoString cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\ntoString cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\ntoString cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\ntoString cannot be resolved"
-      + "\nreplaceAll cannot be resolved");
+  public void machineFactory_Fusion(final Machine_VMware_Fusion vbox, final JsonNode node, final String state) {
+    JsonNode _get = node.get("Driver");
+    JsonNode _get_1 = _get.get("MachineName");
+    String _string = _get_1.toString();
+    String _replaceAll = _string.replaceAll("\"", "");
+    vbox.setName(_replaceAll);
+    JsonNode _get_2 = node.get("Driver");
+    JsonNode _get_3 = _get_2.get("Memory");
+    String _string_1 = _get_3.toString();
+    float _parseFloat = Float.parseFloat(_string_1);
+    vbox.setMemory(_parseFloat);
+    JsonNode _get_4 = node.get("Driver");
+    JsonNode _get_5 = _get_4.get("DiskSize");
+    String _string_2 = _get_5.toString();
+    int _parseInt = Integer.parseInt(_string_2);
+    vbox.setDisk_size(_parseInt);
+    try {
+      JsonNode _get_6 = node.get("Driver");
+      JsonNode _get_7 = _get_6.get("CPU");
+      String _string_3 = _get_7.toString();
+      int _parseInt_1 = Integer.parseInt(_string_3);
+      vbox.setCores(_parseInt_1);
+    } catch (final Throwable _t) {
+      if (_t instanceof NullPointerException) {
+        final NullPointerException e = (NullPointerException)_t;
+        JsonNode _get_8 = node.get("Driver");
+        JsonNode _get_9 = _get_8.get("CPUs");
+        String _string_4 = _get_9.toString();
+        int _parseInt_2 = Integer.parseInt(_string_4);
+        vbox.setCores(_parseInt_2);
+      } else {
+        throw Exceptions.sneakyThrow(_t);
+      }
+    }
+    JsonNode _get_10 = node.get("Driver");
+    JsonNode _get_11 = _get_10.get("Boot2DockerURL");
+    String _string_5 = _get_11.toString();
+    String _replaceAll_1 = _string_5.replaceAll("\"", "");
+    vbox.setBoot2docker_url(_replaceAll_1);
+    boolean _equals = Objects.equal(state, "Running");
+    if (_equals) {
+      ComputeStatus _get_12 = ComputeStatus.get(0);
+      vbox.setState(_get_12);
+    }
+    boolean _equals_1 = Objects.equal(state, "Stopped");
+    if (_equals_1) {
+      ComputeStatus _get_13 = ComputeStatus.get(1);
+      vbox.setState(_get_13);
+    }
   }
   
-  public void machineFactory_OpenStack(final Machine_OpenStack vbox, final /* JsonNode */Object node, final String state) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nget cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\ntoString cannot be resolved"
-      + "\nreplaceAll cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\ntoString cannot be resolved"
-      + "\nreplaceAll cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\ntoString cannot be resolved"
-      + "\nreplaceAll cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\ntoString cannot be resolved"
-      + "\nreplaceAll cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\ntoString cannot be resolved"
-      + "\nreplaceAll cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\ntoString cannot be resolved"
-      + "\nreplaceAll cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\ntoString cannot be resolved"
-      + "\nreplaceAll cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\ntoString cannot be resolved"
-      + "\nreplaceAll cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\ntoString cannot be resolved"
-      + "\nreplaceAll cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\ntoString cannot be resolved"
-      + "\nreplaceAll cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\ntoString cannot be resolved"
-      + "\nreplaceAll cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\ntoString cannot be resolved"
-      + "\nreplaceAll cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\ntoString cannot be resolved"
-      + "\nreplaceAll cannot be resolved"
-      + "\nreplaceAll cannot be resolved"
-      + "\nreplaceAll cannot be resolved");
+  public void machineFactory_OpenStack(final Machine_OpenStack vbox, final JsonNode node, final String state) {
+    JsonNode _get = node.get("Driver");
+    JsonNode _get_1 = _get.get("MachineName");
+    String _string = _get_1.toString();
+    String _replaceAll = _string.replaceAll("\"", "");
+    vbox.setName(_replaceAll);
+    JsonNode _get_2 = node.get("Driver");
+    JsonNode _get_3 = _get_2.get("AuthUrl");
+    String _string_1 = _get_3.toString();
+    String _replaceAll_1 = _string_1.replaceAll("\"", "");
+    vbox.setAuth_url(_replaceAll_1);
+    JsonNode _get_4 = node.get("Driver");
+    JsonNode _get_5 = _get_4.get("Username");
+    String _string_2 = _get_5.toString();
+    String _replaceAll_2 = _string_2.replaceAll("\"", "");
+    vbox.setUsername(_replaceAll_2);
+    JsonNode _get_6 = node.get("Driver");
+    JsonNode _get_7 = _get_6.get("Password");
+    String _string_3 = _get_7.toString();
+    String _replaceAll_3 = _string_3.replaceAll("\"", "");
+    vbox.setPassword(_replaceAll_3);
+    JsonNode _get_8 = node.get("Driver");
+    JsonNode _get_9 = _get_8.get("TenantName");
+    String _string_4 = _get_9.toString();
+    String _replaceAll_4 = _string_4.replaceAll("\"", "");
+    vbox.setTenant_name(_replaceAll_4);
+    JsonNode _get_10 = node.get("Driver");
+    JsonNode _get_11 = _get_10.get("TenantId");
+    String _string_5 = _get_11.toString();
+    String _replaceAll_5 = _string_5.replaceAll("\"", "");
+    vbox.setTenant_id(_replaceAll_5);
+    JsonNode _get_12 = node.get("Driver");
+    JsonNode _get_13 = _get_12.get("Region");
+    String _string_6 = _get_13.toString();
+    String _replaceAll_6 = _string_6.replaceAll("\"", "");
+    vbox.setRegion(_replaceAll_6);
+    JsonNode _get_14 = node.get("Driver");
+    JsonNode _get_15 = _get_14.get("EndpointType");
+    String _string_7 = _get_15.toString();
+    String _replaceAll_7 = _string_7.replaceAll("\"", "");
+    vbox.setEndpoint_type(_replaceAll_7);
+    JsonNode _get_16 = node.get("Driver");
+    JsonNode _get_17 = _get_16.get("FlavorId");
+    String _string_8 = _get_17.toString();
+    String _replaceAll_8 = _string_8.replaceAll("\"", "");
+    vbox.setFlavor_id(_replaceAll_8);
+    JsonNode _get_18 = node.get("Driver");
+    JsonNode _get_19 = _get_18.get("FloatingIpPool");
+    String _string_9 = _get_19.toString();
+    String _replaceAll_9 = _string_9.replaceAll("\"", "");
+    vbox.setFloatingip_pool(_replaceAll_9);
+    JsonNode _get_20 = node.get("Driver");
+    JsonNode _get_21 = _get_20.get("ImageId");
+    String _string_10 = _get_21.toString();
+    String _replaceAll_10 = _string_10.replaceAll("\"", "");
+    vbox.setImage_id(_replaceAll_10);
+    JsonNode _get_22 = node.get("Driver");
+    JsonNode _get_23 = _get_22.get("NetworkId");
+    String _string_11 = _get_23.toString();
+    String _replaceAll_11 = _string_11.replaceAll("\"", "");
+    vbox.setNet_id(_replaceAll_11);
+    JsonNode _get_24 = node.get("Driver");
+    JsonNode _get_25 = _get_24.get("SecurityGroups");
+    String _string_12 = _get_25.toString();
+    String _replaceAll_12 = _string_12.replaceAll("\\[\"", "");
+    String _replaceAll_13 = _replaceAll_12.replaceAll("\"\\]", 
+      "");
+    String _replaceAll_14 = _replaceAll_13.replaceAll("\"", "");
+    vbox.setSec_groups(_replaceAll_14);
+    boolean _equals = Objects.equal(state, "Running");
+    if (_equals) {
+      ComputeStatus _get_26 = ComputeStatus.get(0);
+      vbox.setState(_get_26);
+    }
+    boolean _equals_1 = Objects.equal(state, "Stopped");
+    if (_equals_1) {
+      ComputeStatus _get_27 = ComputeStatus.get(1);
+      vbox.setState(_get_27);
+    }
   }
   
-  public Container getModel(final /* com.github.dockerjava.api.model.Container */Object container) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nid cannot be resolved"
-      + "\nnames cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\nimage cannot be resolved"
-      + "\ncommand cannot be resolved"
-      + "\nid cannot be resolved");
+  public org.occiware.clouddesigner.occi.docker.Container getModel(final Container container) {
+    DockerFactory.eINSTANCE.eClass();
+    org.occiware.clouddesigner.occi.docker.Container modelContainer = DockerFactory.eINSTANCE.createContainer();
+    String _id = container.getId();
+    modelContainer.setId(_id);
+    String[] _names = container.getNames();
+    String _get = _names[0];
+    modelContainer.setName(_get);
+    String _image = container.getImage();
+    modelContainer.setImage(_image);
+    String _command = container.getCommand();
+    modelContainer.setCommand(_command);
+    String _id_1 = container.getId();
+    modelContainer.setContainerid(_id_1);
+    return modelContainer;
   }
   
-  public Container buildContainer(final /* com.github.dockerjava.api.model.Container */Object container) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nid cannot be resolved"
-      + "\nnames cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\n!= cannot be resolved"
-      + "\nnames cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\nreplace cannot be resolved"
-      + "\nimage cannot be resolved"
-      + "\ncommand cannot be resolved"
-      + "\nid cannot be resolved");
+  public org.occiware.clouddesigner.occi.docker.Container buildContainer(final Container container) {
+    org.occiware.clouddesigner.occi.docker.Container modelContainer = DockerFactory.eINSTANCE.createContainer();
+    String _id = container.getId();
+    modelContainer.setId(_id);
+    String[] _names = container.getNames();
+    String _get = _names[0];
+    boolean _notEquals = (!Objects.equal(_get, null));
+    if (_notEquals) {
+      String[] _names_1 = container.getNames();
+      String _get_1 = _names_1[0];
+      String _replace = _get_1.replace("/", "");
+      modelContainer.setName(_replace);
+    }
+    String _image = container.getImage();
+    modelContainer.setImage(_image);
+    String _command = container.getCommand();
+    modelContainer.setCommand(_command);
+    String _id_1 = container.getId();
+    modelContainer.setContainerid(_id_1);
+    return modelContainer;
   }
   
-  public List<Container> buildContainer(final /* List<com.github.dockerjava.api.model.Container> */Object containers) {
-    throw new Error("Unresolved compilation problems:"
-      + "\ncom.github.dockerjava.api.model.Container cannot be resolved to a type."
-      + "\nid cannot be resolved"
-      + "\nnames cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\n!= cannot be resolved"
-      + "\nnames cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\nreplace cannot be resolved"
-      + "\nimage cannot be resolved"
-      + "\ncommand cannot be resolved"
-      + "\nid cannot be resolved");
+  public List<org.occiware.clouddesigner.occi.docker.Container> buildContainer(final List<Container> containers) {
+    List<org.occiware.clouddesigner.occi.docker.Container> containerList = CollectionLiterals.<org.occiware.clouddesigner.occi.docker.Container>newArrayList();
+    for (final Container c : containers) {
+      {
+        org.occiware.clouddesigner.occi.docker.Container modelContainer = DockerFactory.eINSTANCE.createContainer();
+        String _id = c.getId();
+        modelContainer.setId(_id);
+        String[] _names = c.getNames();
+        String _get = _names[0];
+        boolean _notEquals = (!Objects.equal(_get, null));
+        if (_notEquals) {
+          String[] _names_1 = c.getNames();
+          String _get_1 = _names_1[0];
+          String _replace = _get_1.replace("/", "");
+          modelContainer.setName(_replace);
+        }
+        String _image = c.getImage();
+        modelContainer.setImage(_image);
+        String _command = c.getCommand();
+        modelContainer.setCommand(_command);
+        String _id_1 = c.getId();
+        modelContainer.setContainerid(_id_1);
+        containerList.add(modelContainer);
+      }
+    }
+    return containerList;
   }
   
-  public List<Container> buildContainer(final Machine machine, final /* List<com.github.dockerjava.api.model.Container> */Object containers) {
-    throw new Error("Unresolved compilation problems:"
-      + "\ncom.github.dockerjava.api.model.Container cannot be resolved to a type."
-      + "\nThe method inspectContainer(Machine, String) from the type DockerContainerManager refers to the missing type InspectContainerResponse"
-      + "\nid cannot be resolved"
-      + "\nid cannot be resolved"
-      + "\nid cannot be resolved"
-      + "\nname cannot be resolved"
-      + "\nreplace cannot be resolved"
-      + "\nimageId cannot be resolved"
-      + "\nconfig cannot be resolved"
-      + "\ncmd cannot be resolved"
-      + "\nid cannot be resolved"
-      + "\nconfig cannot be resolved"
-      + "\nexposedPorts cannot be resolved"
-      + "\nconfig cannot be resolved"
-      + "\nmacAddress cannot be resolved"
-      + "\nconfig cannot be resolved"
-      + "\ndomainName cannot be resolved"
-      + "\nconfig cannot be resolved"
-      + "\nhostName cannot be resolved"
-      + "\nconfig cannot be resolved"
-      + "\nworkingDir cannot be resolved"
-      + "\nconfig cannot be resolved"
-      + "\nentrypoint cannot be resolved"
-      + "\nconfig cannot be resolved"
-      + "\nenv cannot be resolved"
-      + "\nconfig cannot be resolved"
-      + "\ntty cannot be resolved"
-      + "\nconfig cannot be resolved"
-      + "\nstdinOpen cannot be resolved"
-      + "\nprocessLabel cannot be resolved"
-      + "\nstate cannot be resolved"
-      + "\nrunning cannot be resolved");
+  public List<org.occiware.clouddesigner.occi.docker.Container> buildContainer(final Machine machine, final List<Container> containers) {
+    final DockerContainerManager instance = new DockerContainerManager(machine);
+    List<org.occiware.clouddesigner.occi.docker.Container> containerList = CollectionLiterals.<org.occiware.clouddesigner.occi.docker.Container>newArrayList();
+    for (final Container c : containers) {
+      {
+        String _id = c.getId();
+        final InspectContainerResponse currentContainer = instance.inspectContainer(machine, _id);
+        currentContainer.getId();
+        org.occiware.clouddesigner.occi.docker.Container modelContainer = DockerFactory.eINSTANCE.createContainer();
+        String _id_1 = c.getId();
+        modelContainer.setId(_id_1);
+        String _name = currentContainer.getName();
+        String _replace = _name.replace("/", "");
+        modelContainer.setName(_replace);
+        String _imageId = currentContainer.getImageId();
+        modelContainer.setImage(_imageId);
+        ContainerConfig _config = currentContainer.getConfig();
+        String[] _cmd = _config.getCmd();
+        String _string = Arrays.toString(_cmd);
+        String _replace_1 = _string.replace("[", "");
+        String _replace_2 = _replace_1.replace("]", "");
+        modelContainer.setCommand(_replace_2);
+        String _id_2 = currentContainer.getId();
+        modelContainer.setContainerid(_id_2);
+        try {
+          ContainerConfig _config_1 = currentContainer.getConfig();
+          ExposedPort[] _exposedPorts = _config_1.getExposedPorts();
+          String _string_1 = Arrays.toString(_exposedPorts);
+          String _replace_3 = _string_1.replace("[", "");
+          String _replace_4 = _replace_3.replace("]", "");
+          modelContainer.setPorts(_replace_4);
+        } catch (final Throwable _t) {
+          if (_t instanceof NullPointerException) {
+            final NullPointerException exception = (NullPointerException)_t;
+          } else {
+            throw Exceptions.sneakyThrow(_t);
+          }
+        }
+        ContainerConfig _config_2 = currentContainer.getConfig();
+        String _macAddress = _config_2.getMacAddress();
+        modelContainer.setMac_address(_macAddress);
+        ContainerConfig _config_3 = currentContainer.getConfig();
+        String _domainName = _config_3.getDomainName();
+        modelContainer.setDomainname(_domainName);
+        ContainerConfig _config_4 = currentContainer.getConfig();
+        String _hostName = _config_4.getHostName();
+        modelContainer.setHostname(_hostName);
+        ContainerConfig _config_5 = currentContainer.getConfig();
+        String _workingDir = _config_5.getWorkingDir();
+        modelContainer.setWorking_dir(_workingDir);
+        ContainerConfig _config_6 = currentContainer.getConfig();
+        String[] _entrypoint = _config_6.getEntrypoint();
+        String _string_2 = Arrays.toString(_entrypoint);
+        modelContainer.setEntrypoint(_string_2);
+        ContainerConfig _config_7 = currentContainer.getConfig();
+        String[] _env = _config_7.getEnv();
+        String _string_3 = Arrays.toString(_env);
+        String _replace_5 = _string_3.replace("[", "");
+        String _replace_6 = _replace_5.replace("]", "");
+        modelContainer.setEnvironment(_replace_6);
+        ContainerConfig _config_8 = currentContainer.getConfig();
+        Boolean _tty = _config_8.getTty();
+        modelContainer.setTty((_tty).booleanValue());
+        ContainerConfig _config_9 = currentContainer.getConfig();
+        Boolean _stdinOpen = _config_9.getStdinOpen();
+        modelContainer.setStdin_open((_stdinOpen).booleanValue());
+        String _processLabel = currentContainer.getProcessLabel();
+        modelContainer.setPid(_processLabel);
+        InspectContainerResponse.ContainerState _state = currentContainer.getState();
+        Boolean _running = _state.getRunning();
+        if ((_running).booleanValue()) {
+          ComputeStatus _get = ComputeStatus.get(0);
+          modelContainer.setState(_get);
+        }
+        containerList.add(modelContainer);
+      }
+    }
+    return containerList;
   }
   
-  public Container buildContainer(final Machine machine, final String containerId) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field StringUtils is undefined"
-      + "\nThe method inspectContainer(Machine, String) from the type DockerContainerManager refers to the missing type InspectContainerResponse"
-      + "\nid cannot be resolved"
-      + "\nname cannot be resolved"
-      + "\nreplace cannot be resolved"
-      + "\nconfig cannot be resolved"
-      + "\nimage cannot be resolved"
-      + "\nconfig cannot be resolved"
-      + "\ncmd cannot be resolved"
-      + "\nisEmpty cannot be resolved"
-      + "\n! cannot be resolved"
-      + "\ndeleteWhitespace cannot be resolved"
-      + "\nconfig cannot be resolved"
-      + "\ncmd cannot be resolved"
-      + "\nid cannot be resolved"
-      + "\nconfig cannot be resolved"
-      + "\nmacAddress cannot be resolved"
-      + "\nconfig cannot be resolved"
-      + "\ndomainName cannot be resolved"
-      + "\nconfig cannot be resolved"
-      + "\nhostName cannot be resolved"
-      + "\nconfig cannot be resolved"
-      + "\nworkingDir cannot be resolved"
-      + "\nconfig cannot be resolved"
-      + "\nentrypoint cannot be resolved"
-      + "\nconfig cannot be resolved"
-      + "\nenv cannot be resolved"
-      + "\nconfig cannot be resolved"
-      + "\ntty cannot be resolved"
-      + "\nconfig cannot be resolved"
-      + "\nstdinOpen cannot be resolved"
-      + "\nprocessLabel cannot be resolved"
-      + "\nstate cannot be resolved"
-      + "\nrunning cannot be resolved");
+  public org.occiware.clouddesigner.occi.docker.Container buildContainer(final Machine machine, final String containerId) {
+    final DockerContainerManager instance = new DockerContainerManager(machine);
+    final InspectContainerResponse currentContainer = instance.inspectContainer(machine, containerId);
+    org.occiware.clouddesigner.occi.docker.Container modelContainer = DockerFactory.eINSTANCE.createContainer();
+    String _id = currentContainer.getId();
+    modelContainer.setId(_id);
+    String _name = currentContainer.getName();
+    String _replace = _name.replace("/", "");
+    modelContainer.setName(_replace);
+    ContainerConfig _config = currentContainer.getConfig();
+    String _image = _config.getImage();
+    modelContainer.setImage(_image);
+    ContainerConfig _config_1 = currentContainer.getConfig();
+    String[] _cmd = _config_1.getCmd();
+    boolean _isEmpty = ((List<String>)Conversions.doWrapArray(_cmd)).isEmpty();
+    boolean _not = (!_isEmpty);
+    if (_not) {
+      ContainerConfig _config_2 = currentContainer.getConfig();
+      String[] _cmd_1 = _config_2.getCmd();
+      String _string = Arrays.toString(_cmd_1);
+      String _replace_1 = _string.replace("[", "");
+      String _replace_2 = _replace_1.replace("]", "");
+      String _deleteWhitespace = StringUtils.deleteWhitespace(_replace_2);
+      modelContainer.setCommand(_deleteWhitespace);
+    }
+    String _id_1 = currentContainer.getId();
+    modelContainer.setContainerid(_id_1);
+    ContainerConfig _config_3 = currentContainer.getConfig();
+    String _macAddress = _config_3.getMacAddress();
+    modelContainer.setMac_address(_macAddress);
+    ContainerConfig _config_4 = currentContainer.getConfig();
+    String _domainName = _config_4.getDomainName();
+    modelContainer.setDomainname(_domainName);
+    ContainerConfig _config_5 = currentContainer.getConfig();
+    String _hostName = _config_5.getHostName();
+    modelContainer.setHostname(_hostName);
+    ContainerConfig _config_6 = currentContainer.getConfig();
+    String _workingDir = _config_6.getWorkingDir();
+    modelContainer.setWorking_dir(_workingDir);
+    ContainerConfig _config_7 = currentContainer.getConfig();
+    String[] _entrypoint = _config_7.getEntrypoint();
+    String _string_1 = Arrays.toString(_entrypoint);
+    modelContainer.setEntrypoint(_string_1);
+    ContainerConfig _config_8 = currentContainer.getConfig();
+    String[] _env = _config_8.getEnv();
+    String _string_2 = Arrays.toString(_env);
+    String _replace_3 = _string_2.replace("[", "");
+    String _replace_4 = _replace_3.replace("]", "");
+    modelContainer.setEnvironment(_replace_4);
+    ContainerConfig _config_9 = currentContainer.getConfig();
+    Boolean _tty = _config_9.getTty();
+    modelContainer.setTty((_tty).booleanValue());
+    ContainerConfig _config_10 = currentContainer.getConfig();
+    Boolean _stdinOpen = _config_10.getStdinOpen();
+    modelContainer.setStdin_open((_stdinOpen).booleanValue());
+    String _processLabel = currentContainer.getProcessLabel();
+    modelContainer.setPid(_processLabel);
+    InspectContainerResponse.ContainerState _state = currentContainer.getState();
+    Boolean _running = _state.getRunning();
+    if ((_running).booleanValue()) {
+      modelContainer.setState(ComputeStatus.ACTIVE);
+    } else {
+      modelContainer.setState(ComputeStatus.INACTIVE);
+    }
+    return modelContainer;
   }
   
   public String saveMachine(final Machine machine) {
@@ -946,7 +1231,7 @@ public class ModelHandler {
     }
   }
   
-  public void saveContainer(final Container container) {
+  public void saveContainer(final org.occiware.clouddesigner.occi.docker.Container container) {
     try {
       final ResourceSetImpl resourceSet = new ResourceSetImpl();
       Resource.Factory.Registry _resourceFactoryRegistry = resourceSet.getResourceFactoryRegistry();
@@ -983,36 +1268,36 @@ public class ModelHandler {
     }
   }
   
-  public void linkContainerToMachine(final Container container, final Machine machine) {
+  public void linkContainerToMachine(final org.occiware.clouddesigner.occi.docker.Container container, final Machine machine) {
     Contains contains = DockerFactory.eINSTANCE.createContains();
     contains.setTarget(container);
-    EList<Link> _links = machine.getLinks();
+    EList<org.occiware.clouddesigner.occi.Link> _links = machine.getLinks();
     _links.add(contains);
   }
   
-  public Machine linkContainerToMachine(final List<Container> containers, final Machine machine) {
+  public Machine linkContainerToMachine(final List<org.occiware.clouddesigner.occi.docker.Container> containers, final Machine machine) {
     Contains contains = DockerFactory.eINSTANCE.createContains();
-    for (final Container c : containers) {
+    for (final org.occiware.clouddesigner.occi.docker.Container c : containers) {
       {
         contains.setTarget(c);
-        EList<Link> _links = machine.getLinks();
+        EList<org.occiware.clouddesigner.occi.Link> _links = machine.getLinks();
         _links.add(contains);
       }
     }
     return machine;
   }
   
-  public void linkContainerToContainer(final Container left, final Container right) {
+  public void linkContainerToContainer(final org.occiware.clouddesigner.occi.docker.Container left, final org.occiware.clouddesigner.occi.docker.Container right) {
     org.occiware.clouddesigner.occi.docker.Link links = DockerFactory.eINSTANCE.createLink();
     links.setTarget(right);
-    EList<Link> _links = left.getLinks();
+    EList<org.occiware.clouddesigner.occi.Link> _links = left.getLinks();
     _links.add(links);
   }
   
-  public void removeContainerFromMachine(final Container container, final Machine machine) {
+  public void removeContainerFromMachine(final org.occiware.clouddesigner.occi.docker.Container container, final Machine machine) {
     Contains contains = DockerFactory.eINSTANCE.createContains();
     contains.setTarget(container);
-    EList<Link> _links = machine.getLinks();
+    EList<org.occiware.clouddesigner.occi.Link> _links = machine.getLinks();
     _links.remove(contains);
   }
   

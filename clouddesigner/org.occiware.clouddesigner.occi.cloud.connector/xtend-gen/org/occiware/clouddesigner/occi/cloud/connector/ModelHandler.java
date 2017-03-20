@@ -2,6 +2,9 @@ package org.occiware.clouddesigner.occi.cloud.connector;
 
 import java.util.HashMap;
 import java.util.Map;
+import org.jclouds.compute.domain.NodeMetadata;
+import org.jclouds.domain.Location;
+import org.jclouds.domain.LoginCredentials;
 import org.occiware.clouddesigner.occi.cloud.CloudFactory;
 import org.occiware.clouddesigner.occi.cloud.Machine;
 import org.occiware.clouddesigner.occi.cloud.Machine_Amazon_EC2;
@@ -53,64 +56,111 @@ public class ModelHandler {
     return m;
   }
   
-  public Machine getModel(final /* NodeMetadata */Object node, final String provider) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method machineFactory_OpenStack(Machine_OpenStack, NodeMetadata) from the type ModelHandler refers to the missing type NodeMetadata"
-      + "\nThe method machineFactory_Amazon_EC2(Machine, NodeMetadata) from the type ModelHandler refers to the missing type NodeMetadata"
-      + "\nThe method machineFactory_CloudSigma(Machine, NodeMetadata) from the type ModelHandler refers to the missing type NodeMetadata"
-      + "\nThe method machineFactory_GCE(Machine, NodeMetadata) from the type ModelHandler refers to the missing type NodeMetadata"
-      + "\nThe method machineFactory_Gogrid(Machine, NodeMetadata) from the type ModelHandler refers to the missing type NodeMetadata"
-      + "\nThe method machineFactory_Hp_Helion(Machine, NodeMetadata) from the type ModelHandler refers to the missing type NodeMetadata"
-      + "\nThe method machineFactory_RackSpace(Machine, NodeMetadata) from the type ModelHandler refers to the missing type NodeMetadata"
-      + "\nThe method machineFactory_SoftLayer(Machine, NodeMetadata) from the type ModelHandler refers to the missing type NodeMetadata");
+  public Machine getModel(final NodeMetadata node, final String provider) {
+    Map<String, Machine> _modelEClass = this.getmodelEClass();
+    Machine machineFactory = _modelEClass.get(provider);
+    if ((machineFactory instanceof Machine_OpenStack)) {
+      Machine_OpenStack machineOpenStack = ((Machine_OpenStack) machineFactory);
+      this.machineFactory_OpenStack(machineOpenStack, node);
+      ModelHandler.LOGGER.info(("Model setting: " + machineOpenStack));
+      return machineOpenStack;
+    }
+    if ((machineFactory instanceof Machine_Amazon_EC2)) {
+      Machine_Amazon_EC2 machineAmazonEC2 = ((Machine_Amazon_EC2) machineFactory);
+      this.machineFactory_Amazon_EC2(machineAmazonEC2, node);
+      ModelHandler.LOGGER.info(("Model setting: " + machineAmazonEC2));
+      return machineAmazonEC2;
+    }
+    if ((machineFactory instanceof Machine_CloudSigma)) {
+      Machine_CloudSigma machineCloudSigma = ((Machine_CloudSigma) machineFactory);
+      this.machineFactory_CloudSigma(machineCloudSigma, node);
+      ModelHandler.LOGGER.info(("Model setting: " + machineCloudSigma));
+      return machineCloudSigma;
+    }
+    if ((machineFactory instanceof Machine_GCE)) {
+      Machine_GCE machineGCE = ((Machine_GCE) machineFactory);
+      this.machineFactory_GCE(machineGCE, node);
+      ModelHandler.LOGGER.info(("Model setting: " + machineGCE));
+      return machineGCE;
+    }
+    if ((machineFactory instanceof Machine_Gogrid)) {
+      Machine_Gogrid machineGogrid = ((Machine_Gogrid) machineFactory);
+      this.machineFactory_Gogrid(machineGogrid, node);
+      ModelHandler.LOGGER.info(("Model setting: " + machineGogrid));
+      return machineGogrid;
+    }
+    if ((machineFactory instanceof Machine_Hp_Helion)) {
+      Machine_Hp_Helion machineHpHelion = ((Machine_Hp_Helion) machineFactory);
+      this.machineFactory_Hp_Helion(machineHpHelion, node);
+      ModelHandler.LOGGER.info(("Model setting: " + machineHpHelion));
+      return machineHpHelion;
+    }
+    if ((machineFactory instanceof Machine_RackSpace)) {
+      Machine_RackSpace machineRackSpace = ((Machine_RackSpace) machineFactory);
+      this.machineFactory_RackSpace(machineRackSpace, node);
+      ModelHandler.LOGGER.info(("Model setting: " + machineRackSpace));
+      return machineRackSpace;
+    }
+    if ((machineFactory instanceof Machine_SoftLayer)) {
+      Machine_SoftLayer machineSoftLayer = ((Machine_SoftLayer) machineFactory);
+      this.machineFactory_SoftLayer(machineSoftLayer, node);
+      ModelHandler.LOGGER.info(("Model setting: " + machineSoftLayer));
+      return machineSoftLayer;
+    }
+    return machineFactory;
   }
   
-  public void machineFactory_OpenStack(final Machine_OpenStack machine, final /* NodeMetadata */Object node) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nname cannot be resolved"
-      + "\nid cannot be resolved"
-      + "\nlocation cannot be resolved"
-      + "\nid cannot be resolved"
-      + "\nimageId cannot be resolved"
-      + "\ncredentials cannot be resolved"
-      + "\nuser cannot be resolved"
-      + "\ncredentials cannot be resolved"
-      + "\npassword cannot be resolved");
+  public void machineFactory_OpenStack(final Machine_OpenStack machine, final NodeMetadata node) {
+    String _name = node.getName();
+    machine.setName(_name);
+    String _id = node.getId();
+    machine.setId(_id);
+    Location _location = node.getLocation();
+    String _id_1 = _location.getId();
+    machine.setRegion(_id_1);
+    String _imageId = node.getImageId();
+    machine.setImage_id(_imageId);
+    LoginCredentials _credentials = node.getCredentials();
+    String _user = _credentials.getUser();
+    machine.setUsername(_user);
+    LoginCredentials _credentials_1 = node.getCredentials();
+    String _password = _credentials_1.getPassword();
+    machine.setPassword(_password);
   }
   
-  public Object machineFactory_Amazon_EC2(final Machine machine, final /* NodeMetadata */Object node) {
+  public Object machineFactory_Amazon_EC2(final Machine machine, final NodeMetadata node) {
     return null;
   }
   
-  public Object machineFactory_CloudSigma(final Machine machine, final /* NodeMetadata */Object node) {
+  public Object machineFactory_CloudSigma(final Machine machine, final NodeMetadata node) {
     return null;
   }
   
-  public Object machineFactory_GCE(final Machine machine, final /* NodeMetadata */Object node) {
+  public Object machineFactory_GCE(final Machine machine, final NodeMetadata node) {
     return null;
   }
   
-  public Object machineFactory_Gogrid(final Machine machine, final /* NodeMetadata */Object node) {
+  public Object machineFactory_Gogrid(final Machine machine, final NodeMetadata node) {
     return null;
   }
   
-  public Object machineFactory_Hp_Helion(final Machine machine, final /* NodeMetadata */Object node) {
+  public Object machineFactory_Hp_Helion(final Machine machine, final NodeMetadata node) {
     return null;
   }
   
-  public Object machineFactory_ProfitBricks(final Machine machine, final /* NodeMetadata */Object node) {
+  public Object machineFactory_ProfitBricks(final Machine machine, final NodeMetadata node) {
     return null;
   }
   
-  public Object machineFactory_RackSpace(final Machine machine, final /* NodeMetadata */Object node) {
+  public Object machineFactory_RackSpace(final Machine machine, final NodeMetadata node) {
     return null;
   }
   
-  public Object machineFactory_SoftLayer(final Machine machine, final /* NodeMetadata */Object node) {
+  public Object machineFactory_SoftLayer(final Machine machine, final NodeMetadata node) {
     return null;
   }
   
-  public Object machineFactory(final Machine machine, final /* NodeMetadata */Object node) {
+  public Object machineFactory(final Machine machine, final NodeMetadata node) {
     return null;
   }
 }

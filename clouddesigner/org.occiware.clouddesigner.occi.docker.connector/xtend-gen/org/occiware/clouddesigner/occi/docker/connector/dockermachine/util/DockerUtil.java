@@ -12,13 +12,21 @@ package org.occiware.clouddesigner.occi.docker.connector.dockermachine.util;
 
 import com.google.common.base.Objects;
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import org.apache.commons.io.IOUtils;
+import org.apache.commons.io.LineIterator;
+import org.codehaus.jackson.JsonFactory;
+import org.codehaus.jackson.JsonNode;
+import org.codehaus.jackson.JsonParser;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.InputOutput;
@@ -52,15 +60,19 @@ public class DockerUtil {
   /**
    * Parse String to Json data.
    */
-  public static Object jsonify(final String jsonString) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nObjectMapper cannot be resolved to a type."
-      + "\nJsonFactory cannot be resolved to a type."
-      + "\nJsonParser cannot be resolved to a type."
-      + "\nObjectMapper cannot be resolved."
-      + "\njsonFactory cannot be resolved"
-      + "\ncreateJsonParser cannot be resolved"
-      + "\nreadTree cannot be resolved");
+  public static JsonNode jsonify(final String jsonString) {
+    try {
+      if (((!Objects.equal(jsonString, null)) || Objects.equal(jsonString, ""))) {
+        final ObjectMapper mapper = new ObjectMapper();
+        final JsonFactory factory = mapper.getJsonFactory();
+        final JsonParser parser = factory.createJsonParser(jsonString);
+        final JsonNode node = mapper.readTree(parser);
+        return node;
+      }
+      return null;
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
   }
   
   /**
@@ -198,15 +210,32 @@ public class DockerUtil {
    * Transform InputStream into String.
    */
   public static String asString(final InputStream response) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nLineIterator cannot be resolved to a type."
-      + "\nThe method or field IOUtils is undefined"
-      + "\nThe method or field IOUtils is undefined"
-      + "\nlineIterator cannot be resolved"
-      + "\nhasNext cannot be resolved"
-      + "\nnext cannot be resolved"
-      + "\nhasNext cannot be resolved"
-      + "\ncloseQuietly cannot be resolved");
+    final StringWriter logwriter = new StringWriter();
+    try {
+      final LineIterator itr = IOUtils.lineIterator(response, "UTF-8");
+      while (itr.hasNext()) {
+        {
+          String line = itr.next();
+          boolean _hasNext = itr.hasNext();
+          if (_hasNext) {
+            logwriter.write((line + "\n"));
+          } else {
+            logwriter.write((line + ""));
+          }
+        }
+      }
+      response.close();
+      return logwriter.toString();
+    } catch (final Throwable _t) {
+      if (_t instanceof IOException) {
+        final IOException e = (IOException)_t;
+        throw new RuntimeException(e);
+      } else {
+        throw Exceptions.sneakyThrow(_t);
+      }
+    } finally {
+      IOUtils.closeQuietly(response);
+    }
   }
   
   /**

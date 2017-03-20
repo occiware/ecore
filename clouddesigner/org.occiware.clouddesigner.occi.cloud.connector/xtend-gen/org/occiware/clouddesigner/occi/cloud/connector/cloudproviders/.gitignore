@@ -11,12 +11,3 @@
 /OpenStackTest.java
 /.OpenStackActiveon.java._trace
 /.Test.java._trace
-/IaaSHandler.java
-/JcloudsAmazonEC2.java
-/JcloudsCloudSigma.java
-/JcloudsGCE.java
-/JcloudsGogrid.java
-/JcloudsHpHelion.java
-/JcloudsOpenStack.java
-/JcloudsRackSpace.java
-/JcloudsSoftLayer.java

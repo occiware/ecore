@@ -83,16 +83,13 @@ public class VmSchedulerTimeShared extends VmScheduler {
 	protected boolean allocatePesForVm(String vmUid, List<Double> mipsShareRequested) {
 		double totalRequestedMips = 0;
 		double peMips = getPeCapacity();
-
 		for (Double mips : mipsShareRequested) {
-			Log.printLine("mips: "+mips+", mipsShareRequested: "+mipsShareRequested);
 			// each virtual PE of a VM must require not more than the capacity of a physical PE
 			if (mips > peMips) {
 				return false;
 			}
 			totalRequestedMips += mips;
 		}
-		Log.printLine("getAvailableMips() : "+getAvailableMips() +", totalRequestedMips: "+totalRequestedMips);
 
 		// This scheduler does not allow over-subscription
 		if (getAvailableMips() < totalRequestedMips) {
