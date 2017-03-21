@@ -183,6 +183,7 @@ public class ComputeConnector extends org.occiware.clouddesigner.occi.infrastruc
 	 */
 	ComputeConnector() {
 		LOGGER.debug("Constructor called on " + this);
+		System.out.println("ComputeConnector constructor called==>" + this);
 	}
 
 	//

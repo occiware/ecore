@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated at Mon Mar 13 17:16:42 CET 2017 from http://schemas.ogf.org/occi/monitoring by org.occiware.clouddesigner.occi.gen.xml -->
+<occi:extension xmlns:occi="http://schemas.ogf.org/occi"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://schemas.ogf.org/occi occi.xsd"
+    name="monitoring"
+    scheme="http://schemas.ogf.org/occi/monitoring#"
+    version="1"
+    status="stable">
+
+  <!-- Kind: Sensor Resource -->
+  <occi:kind term="sensor" scheme="http://schemas.ogf.org/occi/monitoring#" title="Sensor Resource">
+    <occi:parent term="resource" scheme="http://schemas.ogf.org/occi/core#"/>
+    <occi:attribute name="occi.sensor.timebase" use="optional" type="xs:string" title="Base time reference (ISO8601)"/>
+    <occi:attribute name="occi.sensor.timestart" use="optional" type="xs:integer" title="Start time offset (seconds)"/>
+    <occi:attribute name="occi.sensor.timestop" use="optional" type="xs:integer" title="Stop time offset (seconds)"/>
+    <occi:attribute name="occi.sensor.period" use="required" type="xs:integer" title="Time between two following measurements (seconds)"/>
+    <occi:attribute name="occi.sensor.granularity" use="optional" type="xs:integer" title="Granularity of time measument (seconds)"/>
+    <occi:attribute name="occi.sensor.accuracy" use="optional" type="xs:integer" title="Accuracy of time measument (seconds)"/>
+  </occi:kind>
+
+  <!-- Kind: Collector Link -->
+  <occi:kind term="collector" scheme="http://schemas.ogf.org/occi/monitoring#" title="Collector Link">
+    <occi:parent term="link" scheme="http://schemas.ogf.org/occi/core#"/>
+    <occi:attribute name="occi.collector.period" use="required" type="xs:integer" title="Time between two following measurements (seconds)"/>
+    <occi:attribute name="occi.sensor.accuracy" use="optional" type="xs:integer" title="Accuracy of time measument (seconds)"/>
+    <occi:attribute name="occi.sensor.granularity" use="optional" type="xs:integer" title="Granularity of time measument (seconds)"/>
+  </occi:kind>
+
+  <!-- Mixin: Metric Mixin -->
+  <occi:mixin term="metric" scheme="http://schemas.ogf.org/occi/monitoring#" title="Metric Mixin">
+    <occi:applies term="collector" scheme="http://schemas.ogf.org/occi/monitoring#"/>
+  </occi:mixin>
+
+  <!-- Mixin: Aggregator Mixin -->
+  <occi:mixin term="aggregator" scheme="http://schemas.ogf.org/occi/monitoring#" title="Aggregator Mixin">
+    <occi:applies term="sensor" scheme="http://schemas.ogf.org/occi/monitoring#"/>
+  </occi:mixin>
+
+  <!-- Mixin: Published Mixin -->
+  <occi:mixin term="publisher" scheme="http://schemas.ogf.org/occi/monitoring#" title="Published Mixin">
+    <occi:applies term="sensor" scheme="http://schemas.ogf.org/occi/monitoring#"/>
+  </occi:mixin>
+
+</occi:extension>

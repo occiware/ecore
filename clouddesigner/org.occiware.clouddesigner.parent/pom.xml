@@ -75,7 +75,7 @@
 		<module>../org.occiware.clouddesigner.occi.monitoring.edit</module>
 		<module>../org.occiware.clouddesigner.occi.monitoring.editor</module>
 		<module>../org.occiware.clouddesigner.occi.monitoring.tests</module>
-
+        
 		<!-- OCCIware Cloud Connector Dependencies -->
 		<module>../org.occiware.clouddesigner.occi.cloud.connector.dependencies</module>
 
@@ -134,7 +134,15 @@
 		<module>../org.occiware.clouddesigner.occi.infrastructure.crtp.backend.editor</module>
  		<module>../org.occiware.clouddesigner.occi.infrastructure.crtp.backend.tests</module>
 		<module>../org.occiware.clouddesigner.occi.infrastructure.crtp.backend.design</module>
-
+        
+        <!-- Monitoring extended with backend design (multi extension on designer) needed by sirius for IaaS backend designer -->
+        <module>../org.occiware.clouddesigner.occi.monitoring.ext</module>
+        <module>../org.occiware.clouddesigner.occi.monitoring.ext.design</module>
+        <module>../org.occiware.clouddesigner.occi.monitoring.ext.edit</module>
+        <module>../org.occiware.clouddesigner.occi.monitoring.ext.editor</module>
+        <module>../org.occiware.clouddesigner.occi.monitoring.ext.tests</module>
+        <module>../org.occiware.clouddesigner.occi.monitoring.ext.connector.backend</module>
+        
 		<!-- Examples -->
 		<module>../org.occiware.clouddesigner.occi.examples</module>
 		<module>../org.occiware.clouddesigner.occi.infrastructure.example</module>
@@ -146,6 +154,7 @@
 		<module>../org.occiware.clouddesigner.occi.cloud.feature</module>
 		<module>../org.occiware.clouddesigner.occi.hypervisor.feature</module>
 		<module>../org.occiware.clouddesigner.occi.infrastructure.crtp.backend.feature</module>
+        <module>../org.occiware.clouddesigner.occi.monitoring.ext.feature</module>
 		<module>../org.occiware.clouddesigner.dependencies</module>
 	</modules>
 

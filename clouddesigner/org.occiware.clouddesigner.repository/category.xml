@@ -15,5 +15,8 @@
    <feature url="features/org.occiware.clouddesigner.occi.infrastructure.crtp.backend.feature_0.1.0.qualifier.jar" id="org.occiware.clouddesigner.occi.infrastructure.crtp.backend.feature" version="0.1.0.qualifier">
       <category name="Cloud Designer"/>
    </feature>
+   <feature url="features/org.occiware.clouddesigner.occi.monitoring.ext.feature_0.1.0.qualifier.jar" id="org.occiware.clouddesigner.occi.monitoring.ext.feature" version="0.1.0.qualifier">
+       <category name="Cloud Designer"/>
+   </feature>
    <category-def name="Cloud Designer" label="Cloud Designer"/>
 </site>

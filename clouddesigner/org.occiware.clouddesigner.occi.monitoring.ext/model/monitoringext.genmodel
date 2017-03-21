@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ASCII"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2015-2016 Obeo, Inria&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html&#xA;&#x9;&#xA;Contributors:&#xA;- William Piers &lt;william.piers@obeo.fr>&#xA;- Philippe Merle &lt;philippe.merle@inria.fr>" modelDirectory="/org.occiware.clouddesigner.occi.monitoring.ext/src-gen" editDirectory="/org.occiware.clouddesigner.occi.monitoring.ext.edit/src-gen" editorDirectory="/org.occiware.clouddesigner.occi.monitoring.ext.editor/src-gen" modelPluginID="org.occiware.clouddesigner.occi.monitoring.ext" modelName="Monitoringext" testsDirectory="/org.occiware.clouddesigner.occi.monitoring.ext.tests/src" complianceLevel="7.0" copyrightFields="false" editPluginID="org.occiware.clouddesigner.occi.monitoring.ext.edit" editorPluginID="org.occiware.clouddesigner.occi.monitoring.ext.editor" testsPluginID="org.occiware.clouddesigner.occi.monitoring.ext.tests" operationReflection="true">
+  <foreignModel>monitoringext.ecore</foreignModel>
+  <genPackages prefix="Monitoringext" disposableProviderFactory="true">
+    <ecorePackage href="monitoringext.ecore#/"/>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="monitoringext.ecore#//MonitorState"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="monitoringext.ecore#//MonitorState/on"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="monitoringext.ecore#//MonitorState/off"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genDataTypes>
+      <ecoreDataType href="monitoringext.ecore#//FloatType"/>
+    </genDataTypes>
+    <genClasses>
+      <ecoreClass href="monitoringext.ecore#//Sshcollector"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="monitoringext.ecore#//Centreoncollector"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="monitoringext.ecore#//Sensorext"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="monitoringext.ecore#//Sensorext/cpu"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="monitoringext.ecore#//Sensorext/ram"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="monitoringext.ecore#//Sensorext/loadavg"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="monitoringext.ecore#//Sensorext/monitorstate"/>
+      </genFeatures>
+      <genOperations>
+        <ecoreOperation href="monitoringext.ecore#//Sensorext/startMonitoring"/>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="monitoringext.ecore#//Sensorext/stopMonitoring"/>
+      </genOperations>
+    </genClasses>
+  </genPackages>
+  <usedGenPackages href="platform:/plugin/org.occiware.clouddesigner.occi.monitoring/model/monitoring.genmodel#//monitoring"/>
+  <usedGenPackages href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.genmodel#//occi"/>
+</genmodel:GenModel>

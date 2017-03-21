@@ -47,6 +47,7 @@
       <feature id="org.occiware.clouddesigner.occi.cloud.feature" version="0.1.0.qualifier"/>
       <feature id="org.occiware.clouddesigner.occi.docker.feature" version="0.1.0.qualifier"/>
       <feature id="org.occiware.clouddesigner.occi.infrastructure.crtp.backend.feature" version="0.1.0.qualifier"/>
+      <feature id="org.occiware.clouddesigner.occi.monitoring.ext.feature" version="0.1.0.qualifier"/>
    </features>
 
    <configurations>

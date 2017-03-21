@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated at Mon Mar 13 17:16:42 CET 2017 from platform:/resource/org.occiware.clouddesigner.occi.monitoring.ext/model/monitoringext.occie by org.occiware.clouddesigner.occi.gen.xml -->
+<occi:extension xmlns:occi="http://schemas.ogf.org/occi"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://schemas.ogf.org/occi occi.xsd"
+    name="monitoringext"
+    scheme="http://occiware.org/occi/monitoring/ext#"
+    version="1"
+    status="stable">
+
+  <!-- Kind: Collector data metrics with an ssh script -->
+  <occi:kind term="sshcollector" scheme="http://occiware.org/occi/monitoring/ext#" title="Collector data metrics with an ssh script">
+    <occi:parent term="collector" scheme="http://schemas.ogf.org/occi/monitoring#"/>
+    <occi:attribute name="cpu" use="optional" type="xs:float" title=""/>
+    <occi:attribute name="ram" use="optional" type="xs:float" title=""/>
+    <occi:attribute name="loadavg" use="optional" type="xs:float" title=""/>
+  </occi:kind>
+
+  <!-- Kind: Connect to a centreon server and use its api -->
+  <occi:kind term="centreoncollector" scheme="http://occiware.org/occi/monitoring/ext#" title="Connect to a centreon server and use its api">
+    <occi:parent term="collector" scheme="http://schemas.ogf.org/occi/monitoring#"/>
+    <occi:attribute name="cpuPercent" use="optional" type="xs:float" title=""/>
+    <occi:attribute name="loadavg" use="optional" type="xs:float" title=""/>
+    <occi:attribute name="ram" use="optional" type="xs:float" title=""/>
+  </occi:kind>
+
+  <!-- Kind: A sensor with a publisher to directly have bars and display its values in a nice way on designer -->
+  <occi:kind term="sensorext" scheme="http://occiware.org/occi/monitoring/ext#" title="A sensor with a publisher to directly have bars and display its values in a nice way on designer">
+    <occi:parent term="sensor" scheme="http://schemas.ogf.org/occi/monitoring#"/>
+    <occi:attribute name="cpu" use="optional" type="xs:float" title=""/>
+    <occi:attribute name="ram" use="optional" type="xs:float" title=""/>
+    <occi:attribute name="loadavg" use="optional" type="xs:float" title=""/>
+    <occi:action term="startMonitoring" scheme="http://occiware.org/occi/monitoring/ext/sensorext/action#" title="Start the monitoring system for this sensor">
+    </occi:action>
+    <occi:action term="stopMonitoring" scheme="http://occiware.org/occi/monitoring/ext/sensorext/action#" title="Stop monitoring for this sensor">
+    </occi:action>
+  </occi:kind>
+
+  <!-- Mixin: display attributes values on sensor and activate values to display on designer -->
+  <occi:mixin term="emf-publisher" scheme="http://occiware.org/occi/monitoring/ext#" title="display attributes values on sensor and activate values to display on designer">
+    <occi:depends term="publisher" scheme="http://schemas.ogf.org/occi/monitoring#"/>
+    <occi:attribute name="cpu" use="optional" type="xs:float" title=""/>
+    <occi:attribute name="ram" use="optional" type="xs:float" title=""/>
+    <occi:attribute name="loadavg" use="optional" type="xs:float" title=""/>
+  </occi:mixin>
+
+  <!-- Mixin: If this mixin is set the metrics are displayed in system.out. -->
+  <occi:mixin term="systemout-publisher" scheme="http://occiware.org/occi/monitoring/ext#" title="If this mixin is set the metrics are displayed in system.out.">
+    <occi:depends term="publisher" scheme="http://schemas.ogf.org/occi/monitoring#"/>
+  </occi:mixin>
+
+</occi:extension>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="monitoringext" nsURI="http://occiware.org/occi/monitoring/ext/ecore"
+    nsPrefix="monitoringext">
+  <eClassifiers xsi:type="ecore:EDataType" name="FloatType" instanceClassName="float">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="mininclusive" value="0"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="MonitorState">
+    <eLiterals name="on"/>
+    <eLiterals name="off" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Sshcollector" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi.monitoring/model/monitoring.ecore#//Collector">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title" value="Collector data metrics with an ssh script"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Centreoncollector" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi.monitoring/model/monitoring.ecore#//Collector">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title" value="Connect to a centreon server and use its api"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Sensorext" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi.monitoring/model/monitoring.ecore#//Sensor">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title" value="A sensor with a publisher to directly have bars and display its values in a nice way on designer"/>
+    </eAnnotations>
+    <eOperations name="startMonitoring">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="title" value="Start the monitoring system for this sensor"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="stopMonitoring">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="title" value="Stop monitoring for this sensor"/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cpu" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ram" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Number">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="loadavg" eType="#//FloatType">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="monitorstate" eType="#//MonitorState"
+        defaultValueLiteral="off">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+</ecore:EPackage>

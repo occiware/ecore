@@ -1,0 +1,633 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="monitoringext" version="10.0.0.201505222000">
+  <ownedViewpoints name="MonitoringextConfiguration" label="Monitoringext Configuration">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="MonitoringextConfiguration Diagram" domainClass="Configuration">
+      <metamodel href="http://schemas.ogf.org/occi/core/ecore#/"/>
+      <metamodel href="http://occiware.org/occi/monitoring/ext/ecore#/"/>
+      <defaultLayer name="Default">
+        <edgeMappings name="SensorextLinksEdge" sourceMapping="//@ownedViewpoints[name='MonitoringextConfiguration']/@ownedRepresentations[name='MonitoringextConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorextContainer']" targetMapping="//@ownedViewpoints[name='MonitoringextConfiguration']/@ownedRepresentations[name='MonitoringextConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SshcollectorContainer'] //@ownedViewpoints[name='MonitoringextConfiguration']/@ownedRepresentations[name='MonitoringextConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='CentreoncollectorContainer']" targetFinderExpression="feature:links">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="SshcollectorTargetEdge" sourceMapping="//@ownedViewpoints[name='MonitoringextConfiguration']/@ownedRepresentations[name='MonitoringextConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SshcollectorContainer']" targetMapping="//@ownedViewpoints[name='MonitoringextConfiguration']/@ownedRepresentations[name='MonitoringextConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorextContainer']" targetFinderExpression="feature:target">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="SshcollectorEdge" sourceMapping="//@ownedViewpoints[name='MonitoringextConfiguration']/@ownedRepresentations[name='MonitoringextConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorextContainer']" targetMapping="//@ownedViewpoints[name='MonitoringextConfiguration']/@ownedRepresentations[name='MonitoringextConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorextContainer']" domainClass="Sshcollector" useDomainElement="true">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="CentreoncollectorTargetEdge" sourceMapping="//@ownedViewpoints[name='MonitoringextConfiguration']/@ownedRepresentations[name='MonitoringextConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='CentreoncollectorContainer']" targetMapping="//@ownedViewpoints[name='MonitoringextConfiguration']/@ownedRepresentations[name='MonitoringextConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorextContainer']" targetFinderExpression="feature:target">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="CentreoncollectorEdge" sourceMapping="//@ownedViewpoints[name='MonitoringextConfiguration']/@ownedRepresentations[name='MonitoringextConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorextContainer']" targetMapping="//@ownedViewpoints[name='MonitoringextConfiguration']/@ownedRepresentations[name='MonitoringextConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorextContainer']" domainClass="Centreoncollector" useDomainElement="true">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="SensorextContainer"
+            labelDirectEdit="//@ownedViewpoints[name='MonitoringextConfiguration']/@ownedRepresentations[name='MonitoringextConfiguration%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='EditEntityTitle']"
+			semanticCandidatesExpression="feature:resources" 
+			domainClass="Sensorext"
+            childrenPresentation="List">
+          <subNodeMappings name="SensorextId"
+                labelDirectEdit="//@ownedViewpoints[name='MonitoringextConfiguration']/@ownedRepresentations[name='MonitoringextConfiguration%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='EditSensorextId']"
+                semanticCandidatesExpression="[self/]" domainClass="Sensorext">
+            <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="['id = ' + self.id.toString()/]" labelAlignment="LEFT" hideLabelByDefault="true" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="SensorextTitle"
+                labelDirectEdit="//@ownedViewpoints[name='MonitoringextConfiguration']/@ownedRepresentations[name='MonitoringextConfiguration%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='EditSensorextTitle']"
+                semanticCandidatesExpression="[self/]" domainClass="Sensorext">
+            <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="['title = ' + self.title.toString()/]" labelAlignment="LEFT" hideLabelByDefault="true" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="SensorextSummary"
+                labelDirectEdit="//@ownedViewpoints[name='MonitoringextConfiguration']/@ownedRepresentations[name='MonitoringextConfiguration%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='EditSensorextSummary']"
+                semanticCandidatesExpression="[self/]" domainClass="Sensorext">
+            <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="['summary = ' + self.summary.toString()/]" labelAlignment="LEFT" hideLabelByDefault="true" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="SensorextTimebase"
+                labelDirectEdit="//@ownedViewpoints[name='MonitoringextConfiguration']/@ownedRepresentations[name='MonitoringextConfiguration%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='EditSensorextTimebase']"
+                semanticCandidatesExpression="[self/]" domainClass="Sensorext">
+            <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="['timebase = ' + self.timebase.toString()/]" labelAlignment="LEFT" hideLabelByDefault="true" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="SensorextTimestart"
+                labelDirectEdit="//@ownedViewpoints[name='MonitoringextConfiguration']/@ownedRepresentations[name='MonitoringextConfiguration%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='EditSensorextTimestart']"
+                semanticCandidatesExpression="[self/]" domainClass="Sensorext">
+            <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="['timestart = ' + self.timestart.toString()/]" labelAlignment="LEFT" hideLabelByDefault="true" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="SensorextTimestop"
+                labelDirectEdit="//@ownedViewpoints[name='MonitoringextConfiguration']/@ownedRepresentations[name='MonitoringextConfiguration%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='EditSensorextTimestop']"
+                semanticCandidatesExpression="[self/]" domainClass="Sensorext">
+            <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="['timestop = ' + self.timestop.toString()/]" labelAlignment="LEFT" hideLabelByDefault="true" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="SensorextPeriod"
+                labelDirectEdit="//@ownedViewpoints[name='MonitoringextConfiguration']/@ownedRepresentations[name='MonitoringextConfiguration%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='EditSensorextPeriod']"
+                semanticCandidatesExpression="[self/]" domainClass="Sensorext">
+            <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="['period = ' + self.period.toString()/]" labelAlignment="LEFT" hideLabelByDefault="true" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="SensorextGranularity"
+                labelDirectEdit="//@ownedViewpoints[name='MonitoringextConfiguration']/@ownedRepresentations[name='MonitoringextConfiguration%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='EditSensorextGranularity']"
+                semanticCandidatesExpression="[self/]" domainClass="Sensorext">
+            <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="['granularity = ' + self.granularity.toString()/]" labelAlignment="LEFT" hideLabelByDefault="true" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="SensorextAccuracy"
+                labelDirectEdit="//@ownedViewpoints[name='MonitoringextConfiguration']/@ownedRepresentations[name='MonitoringextConfiguration%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='EditSensorextAccuracy']"
+                semanticCandidatesExpression="[self/]" domainClass="Sensorext">
+            <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="['accuracy = ' + self.accuracy.toString()/]" labelAlignment="LEFT" hideLabelByDefault="true" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="SensorextCpu"
+                labelDirectEdit="//@ownedViewpoints[name='MonitoringextConfiguration']/@ownedRepresentations[name='MonitoringextConfiguration%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='EditSensorextCpu']"
+                semanticCandidatesExpression="[self/]" domainClass="Sensorext">
+            <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="['cpu = ' + self.cpu.toString()/]" labelAlignment="LEFT" hideLabelByDefault="true" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="SensorextRam"
+                labelDirectEdit="//@ownedViewpoints[name='MonitoringextConfiguration']/@ownedRepresentations[name='MonitoringextConfiguration%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='EditSensorextRam']"
+                semanticCandidatesExpression="[self/]" domainClass="Sensorext">
+            <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="['ram = ' + self.ram.toString()/]" labelAlignment="LEFT" hideLabelByDefault="true" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="SensorextLoadavg"
+                labelDirectEdit="//@ownedViewpoints[name='MonitoringextConfiguration']/@ownedRepresentations[name='MonitoringextConfiguration%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='EditSensorextLoadavg']"
+                semanticCandidatesExpression="[self/]" domainClass="Sensorext">
+            <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="['loadavg = ' + self.loadavg.toString()/]" labelAlignment="LEFT" hideLabelByDefault="true" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="SensorextMonitorstate"
+                labelDirectEdit="//@ownedViewpoints[name='MonitoringextConfiguration']/@ownedRepresentations[name='MonitoringextConfiguration%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='EditSensorextMonitorstate']"
+                semanticCandidatesExpression="[self/]" domainClass="Sensorext">
+            <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="['monitorstate = ' + self.monitorstate.toString()/]" labelAlignment="LEFT" hideLabelByDefault="true" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" labelExpression="[self.title + ': Sensorext'/]" roundedCorner="true">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style> 
+          <conditionnalStyles predicateExpression="[monitorstate = MonitorState::on/]">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" labelExpression="[self.title + ': Sensorext'/]" roundedCorner="true">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="[monitorstate = MonitorState::off/]">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" labelExpression="[self.title + ': Sensorext'/]" roundedCorner="true">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+            </style>
+          </conditionnalStyles>
+
+        </containerMappings>
+        <containerMappings name="SshcollectorContainer"
+            labelDirectEdit="//@ownedViewpoints[name='MonitoringextConfiguration']/@ownedRepresentations[name='MonitoringextConfiguration%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='EditEntityTitle']"
+			semanticCandidatesExpression="[resources.links->filter(Sshcollector)/]" 
+			domainClass="Sshcollector"
+            childrenPresentation="List">
+          <subNodeMappings name="SshcollectorId"
+                labelDirectEdit="//@ownedViewpoints[name='MonitoringextConfiguration']/@ownedRepresentations[name='MonitoringextConfiguration%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='EditSshcollectorId']"
+                semanticCandidatesExpression="[self/]" domainClass="Sshcollector">
+            <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="['id = ' + self.id.toString()/]" labelAlignment="LEFT" hideLabelByDefault="true" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="SshcollectorTitle"
+                labelDirectEdit="//@ownedViewpoints[name='MonitoringextConfiguration']/@ownedRepresentations[name='MonitoringextConfiguration%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='EditSshcollectorTitle']"
+                semanticCandidatesExpression="[self/]" domainClass="Sshcollector">
+            <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="['title = ' + self.title.toString()/]" labelAlignment="LEFT" hideLabelByDefault="true" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="SshcollectorPeriod"
+                labelDirectEdit="//@ownedViewpoints[name='MonitoringextConfiguration']/@ownedRepresentations[name='MonitoringextConfiguration%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='EditSshcollectorPeriod']"
+                semanticCandidatesExpression="[self/]" domainClass="Sshcollector">
+            <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="['period = ' + self.period.toString()/]" labelAlignment="LEFT" hideLabelByDefault="true" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="SshcollectorAccuracy"
+                labelDirectEdit="//@ownedViewpoints[name='MonitoringextConfiguration']/@ownedRepresentations[name='MonitoringextConfiguration%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='EditSshcollectorAccuracy']"
+                semanticCandidatesExpression="[self/]" domainClass="Sshcollector">
+            <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="['accuracy = ' + self.accuracy.toString()/]" labelAlignment="LEFT" hideLabelByDefault="true" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="SshcollectorGranularity"
+                labelDirectEdit="//@ownedViewpoints[name='MonitoringextConfiguration']/@ownedRepresentations[name='MonitoringextConfiguration%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='EditSshcollectorGranularity']"
+                semanticCandidatesExpression="[self/]" domainClass="Sshcollector">
+            <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="['granularity = ' + self.granularity.toString()/]" labelAlignment="LEFT" hideLabelByDefault="true" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="SshcollectorCpu"
+                labelDirectEdit="//@ownedViewpoints[name='MonitoringextConfiguration']/@ownedRepresentations[name='MonitoringextConfiguration%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='EditSshcollectorCpu']"
+                semanticCandidatesExpression="[self/]" domainClass="Sshcollector">
+            <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="['cpu = ' + self.cpu.toString()/]" labelAlignment="LEFT" hideLabelByDefault="true" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="SshcollectorRam"
+                labelDirectEdit="//@ownedViewpoints[name='MonitoringextConfiguration']/@ownedRepresentations[name='MonitoringextConfiguration%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='EditSshcollectorRam']"
+                semanticCandidatesExpression="[self/]" domainClass="Sshcollector">
+            <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="['ram = ' + self.ram.toString()/]" labelAlignment="LEFT" hideLabelByDefault="true" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="SshcollectorLoadavg"
+                labelDirectEdit="//@ownedViewpoints[name='MonitoringextConfiguration']/@ownedRepresentations[name='MonitoringextConfiguration%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='EditSshcollectorLoadavg']"
+                semanticCandidatesExpression="[self/]" domainClass="Sshcollector">
+            <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="['loadavg = ' + self.loadavg.toString()/]" labelAlignment="LEFT" hideLabelByDefault="true" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" labelExpression="[self.title + ': Sshcollector'/]" roundedCorner="true">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style> 
+
+        </containerMappings>
+        <containerMappings name="CentreoncollectorContainer"
+            labelDirectEdit="//@ownedViewpoints[name='MonitoringextConfiguration']/@ownedRepresentations[name='MonitoringextConfiguration%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='EditEntityTitle']"
+			semanticCandidatesExpression="[resources.links->filter(Centreoncollector)/]" 
+			domainClass="Centreoncollector"
+            childrenPresentation="List">
+          <subNodeMappings name="CentreoncollectorId"
+                labelDirectEdit="//@ownedViewpoints[name='MonitoringextConfiguration']/@ownedRepresentations[name='MonitoringextConfiguration%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='EditCentreoncollectorId']"
+                semanticCandidatesExpression="[self/]" domainClass="Centreoncollector">
+            <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="['id = ' + self.id.toString()/]" labelAlignment="LEFT" hideLabelByDefault="true" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="CentreoncollectorTitle"
+                labelDirectEdit="//@ownedViewpoints[name='MonitoringextConfiguration']/@ownedRepresentations[name='MonitoringextConfiguration%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='EditCentreoncollectorTitle']"
+                semanticCandidatesExpression="[self/]" domainClass="Centreoncollector">
+            <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="['title = ' + self.title.toString()/]" labelAlignment="LEFT" hideLabelByDefault="true" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="CentreoncollectorPeriod"
+                labelDirectEdit="//@ownedViewpoints[name='MonitoringextConfiguration']/@ownedRepresentations[name='MonitoringextConfiguration%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='EditCentreoncollectorPeriod']"
+                semanticCandidatesExpression="[self/]" domainClass="Centreoncollector">
+            <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="['period = ' + self.period.toString()/]" labelAlignment="LEFT" hideLabelByDefault="true" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="CentreoncollectorAccuracy"
+                labelDirectEdit="//@ownedViewpoints[name='MonitoringextConfiguration']/@ownedRepresentations[name='MonitoringextConfiguration%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='EditCentreoncollectorAccuracy']"
+                semanticCandidatesExpression="[self/]" domainClass="Centreoncollector">
+            <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="['accuracy = ' + self.accuracy.toString()/]" labelAlignment="LEFT" hideLabelByDefault="true" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="CentreoncollectorGranularity"
+                labelDirectEdit="//@ownedViewpoints[name='MonitoringextConfiguration']/@ownedRepresentations[name='MonitoringextConfiguration%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='EditCentreoncollectorGranularity']"
+                semanticCandidatesExpression="[self/]" domainClass="Centreoncollector">
+            <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="['granularity = ' + self.granularity.toString()/]" labelAlignment="LEFT" hideLabelByDefault="true" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="CentreoncollectorCpuPercent"
+                labelDirectEdit="//@ownedViewpoints[name='MonitoringextConfiguration']/@ownedRepresentations[name='MonitoringextConfiguration%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='EditCentreoncollectorCpuPercent']"
+                semanticCandidatesExpression="[self/]" domainClass="Centreoncollector">
+            <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="['cpuPercent = ' + self.cpuPercent.toString()/]" labelAlignment="LEFT" hideLabelByDefault="true" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="CentreoncollectorLoadavg"
+                labelDirectEdit="//@ownedViewpoints[name='MonitoringextConfiguration']/@ownedRepresentations[name='MonitoringextConfiguration%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='EditCentreoncollectorLoadavg']"
+                semanticCandidatesExpression="[self/]" domainClass="Centreoncollector">
+            <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="['loadavg = ' + self.loadavg.toString()/]" labelAlignment="LEFT" hideLabelByDefault="true" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="CentreoncollectorRam"
+                labelDirectEdit="//@ownedViewpoints[name='MonitoringextConfiguration']/@ownedRepresentations[name='MonitoringextConfiguration%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='EditCentreoncollectorRam']"
+                semanticCandidatesExpression="[self/]" domainClass="Centreoncollector">
+            <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="['ram = ' + self.ram.toString()/]" labelAlignment="LEFT" hideLabelByDefault="true" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" labelExpression="[self.title + ': Centreoncollector'/]" roundedCorner="true">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style> 
+
+        </containerMappings>
+        <toolSections name="Monitoringext">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" 
+			name="Create Sensorext"
+			containerMappings="//@ownedViewpoints[name='MonitoringextConfiguration']/@ownedRepresentations[name='MonitoringextConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='SensorextContainer']"> 
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Sensorext" referenceName="resources">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="title" valueExpression="['sensorext' + container.oclAsType(Configuration).resources->size().toString()/]"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription"
+			name="Create Sshcollector"
+			edgeMappings="//@ownedViewpoints[name='MonitoringextConfiguration']/@ownedRepresentations[name='MonitoringextConfiguration%20Diagram']/@defaultLayer/@edgeMappings[name='SshcollectorEdge']"> 
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Sshcollector" referenceName="links" variableName="link">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="var:target"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription"
+			name="Create Centreoncollector"
+			edgeMappings="//@ownedViewpoints[name='MonitoringextConfiguration']/@ownedRepresentations[name='MonitoringextConfiguration%20Diagram']/@defaultLayer/@edgeMappings[name='CentreoncollectorEdge']"> 
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Centreoncollector" referenceName="links" variableName="link">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="var:target"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Tools">
+          <ownedTools xsi:type="tool:DirectEditLabel" name="EditEntityTitle" inputLabelExpression="feature:title">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="title" valueExpression="var:arg0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="EditSshcollectorId" inputLabelExpression="feature:id">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="id" valueExpression="var:arg0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="EditSshcollectorTitle" inputLabelExpression="feature:title">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="title" valueExpression="var:arg0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="EditSshcollectorPeriod" inputLabelExpression="feature:period">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="period" valueExpression="var:arg0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="EditSshcollectorAccuracy" inputLabelExpression="feature:accuracy">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="accuracy" valueExpression="var:arg0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="EditSshcollectorGranularity" inputLabelExpression="feature:granularity">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="granularity" valueExpression="var:arg0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="EditSshcollectorCpu" inputLabelExpression="feature:cpu">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="cpu" valueExpression="var:arg0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="EditSshcollectorRam" inputLabelExpression="feature:ram">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="ram" valueExpression="var:arg0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="EditSshcollectorLoadavg" inputLabelExpression="feature:loadavg">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="loadavg" valueExpression="var:arg0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="EditCentreoncollectorId" inputLabelExpression="feature:id">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="id" valueExpression="var:arg0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="EditCentreoncollectorTitle" inputLabelExpression="feature:title">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="title" valueExpression="var:arg0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="EditCentreoncollectorPeriod" inputLabelExpression="feature:period">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="period" valueExpression="var:arg0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="EditCentreoncollectorAccuracy" inputLabelExpression="feature:accuracy">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="accuracy" valueExpression="var:arg0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="EditCentreoncollectorGranularity" inputLabelExpression="feature:granularity">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="granularity" valueExpression="var:arg0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="EditCentreoncollectorCpuPercent" inputLabelExpression="feature:cpuPercent">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="cpuPercent" valueExpression="var:arg0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="EditCentreoncollectorLoadavg" inputLabelExpression="feature:loadavg">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="loadavg" valueExpression="var:arg0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="EditCentreoncollectorRam" inputLabelExpression="feature:ram">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="ram" valueExpression="var:arg0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="EditSensorextId" inputLabelExpression="feature:id">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="id" valueExpression="var:arg0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="EditSensorextTitle" inputLabelExpression="feature:title">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="title" valueExpression="var:arg0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="EditSensorextSummary" inputLabelExpression="feature:summary">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="summary" valueExpression="var:arg0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="EditSensorextTimebase" inputLabelExpression="feature:timebase">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="timebase" valueExpression="var:arg0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="EditSensorextTimestart" inputLabelExpression="feature:timestart">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="timestart" valueExpression="var:arg0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="EditSensorextTimestop" inputLabelExpression="feature:timestop">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="timestop" valueExpression="var:arg0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="EditSensorextPeriod" inputLabelExpression="feature:period">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="period" valueExpression="var:arg0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="EditSensorextGranularity" inputLabelExpression="feature:granularity">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="granularity" valueExpression="var:arg0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="EditSensorextAccuracy" inputLabelExpression="feature:accuracy">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="accuracy" valueExpression="var:arg0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="EditSensorextCpu" inputLabelExpression="feature:cpu">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="cpu" valueExpression="var:arg0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="EditSensorextRam" inputLabelExpression="feature:ram">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="ram" valueExpression="var:arg0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="EditSensorextLoadavg" inputLabelExpression="feature:loadavg">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="loadavg" valueExpression="var:arg0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="EditSensorextMonitorstate" inputLabelExpression="feature:monitorstate">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="monitorstate" valueExpression="var:arg0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:OperationAction" name="SensorextStartMonitoringAction" label="StartMonitoring" precondition="[self.oclIsKindOf(Sensorext)/]">
+            <view name="views"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.oclAsType(Sensorext).startMonitoring()/]"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:OperationAction" name="SensorextStopMonitoringAction" label="StopMonitoring" precondition="[self.oclIsKindOf(Sensorext)/]">
+            <view name="views"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.oclAsType(Sensorext).stopMonitoring()/]"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:PopupMenu" name="CRUD operations" precondition="[self.oclIsKindOf(Entity)/]">
+            <menuItemDescription xsi:type="tool_1:OperationAction" name="Create">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.oclAsType(Entity).occiCreate()/]"/>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool_1:OperationAction" name="Retrieve">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.oclAsType(Entity).occiRetrieve()/]"/>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool_1:OperationAction" name="Update">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.oclAsType(Entity).occiUpdate()/]"/>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool_1:OperationAction" name="Delete">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.oclAsType(Entity).occiDelete()/]"/>
+              </initialOperation>
+            </menuItemDescription>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+<!--
+    <ownedJavaExtensions qualifiedClassName="org.occiware.clouddesigner.occi.design.services.DesignServices"/>
+-->
+  </ownedViewpoints>
+</description:Group>

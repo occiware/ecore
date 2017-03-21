@@ -1,0 +1,101 @@
+h1. Extended monitoring prototype with ssh script collector resource and centreon collector.
+
+| *Name* | monitoringext |
+| *Scheme* | http://occiware.org/occi/monitoring/ext# |
+
+Imported OCCI Extensions:
+
+| *Name* | *Scheme* |
+| <a href="core.textile">core</a> | http://schemas.ogf.org/occi/core# |
+| <a href="monitoring.textile">monitoring</a> | http://schemas.ogf.org/occi/monitoring# |
+
+h1. Kinds
+
+h2. Kind sshcollector
+
+| *Term* | sshcollector |
+| *Scheme* | http://occiware.org/occi/monitoring/ext# |
+| *Title* | Collector data metrics with an ssh script |
+| *Parent* | <a href="monitoring.textile#kind-collector">http://schemas.ogf.org/occi/monitoring#collector</a> |
+
+Attributes of sshcollector are:
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| cpu | <a href="monitoringext.textile#datatype-floattype">FloatType</a> | false | true |  |  |
+| ram | <a href="monitoringext.textile#datatype-floattype">FloatType</a> | false | true |  |  |
+| loadavg | <a href="monitoringext.textile#datatype-floattype">FloatType</a> | false | true |  |  |
+
+
+h2. Kind centreoncollector
+
+| *Term* | centreoncollector |
+| *Scheme* | http://occiware.org/occi/monitoring/ext# |
+| *Title* | Connect to a centreon server and use its api |
+| *Parent* | <a href="monitoring.textile#kind-collector">http://schemas.ogf.org/occi/monitoring#collector</a> |
+
+Attributes of centreoncollector are:
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| cpuPercent | <a href="monitoringext.textile#datatype-floattype">FloatType</a> | false | true |  |  |
+| loadavg | <a href="monitoringext.textile#datatype-floattype">FloatType</a> | false | true |  |  |
+| ram | <a href="monitoringext.textile#datatype-floattype">FloatType</a> | false | true |  |  |
+
+
+h2. Kind sensorext
+
+| *Term* | sensorext |
+| *Scheme* | http://occiware.org/occi/monitoring/ext# |
+| *Title* | A sensor with a publisher to directly have bars and display its values in a nice way on designer |
+| *Parent* | <a href="monitoring.textile#kind-sensor">http://schemas.ogf.org/occi/monitoring#sensor</a> |
+
+Attributes of sensorext are:
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| cpu | <a href="monitoringext.textile#datatype-floattype">FloatType</a> | false | true |  |  |
+| ram | <a href="monitoringext.textile#datatype-floattype">FloatType</a> | false | true |  |  |
+| loadavg | <a href="monitoringext.textile#datatype-floattype">FloatType</a> | false | true |  |  |
+
+Actions of sensorext are:
+
+| *Term* | *Scheme* | *Attributes* | *Title* |
+| startMonitoring | http://occiware.org/occi/monitoring/ext/sensorext/action# |  | Start the monitoring system for this sensor |
+| stopMonitoring | http://occiware.org/occi/monitoring/ext/sensorext/action# |  | Stop monitoring for this sensor |
+
+
+
+h1. Mixins
+
+h2. Mixin emf-publisher
+
+| *Term* | emf-publisher |
+| *Scheme* | http://occiware.org/occi/monitoring/ext# |
+| *Title* | display attributes values on sensor and activate values to display on designer |
+Depends on:
+* <a href="monitoring.textile#mixin-publisher">http://schemas.ogf.org/occi/monitoring#publisher</a>
+
+Attributes of emf-publisher are:
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| cpu | <a href="monitoringext.textile#datatype-floattype">FloatType</a> | false | true |  |  |
+| ram | <a href="monitoringext.textile#datatype-floattype">FloatType</a> | false | true |  |  |
+| loadavg | <a href="monitoringext.textile#datatype-floattype">FloatType</a> | false | true |  |  |
+
+
+h2. Mixin systemout-publisher
+
+| *Term* | systemout-publisher |
+| *Scheme* | http://occiware.org/occi/monitoring/ext# |
+| *Title* | If this mixin is set the metrics are displayed in system.out. |
+Depends on:
+* <a href="monitoring.textile#mixin-publisher">http://schemas.ogf.org/occi/monitoring#publisher</a>
+
+
+h1. Types
+
+h2. Datatype FloatType
+
+.
+
+Base type: float
+
+Generated at Mon Mar 13 17:16:38 CET 2017 from platform:/resource/org.occiware.clouddesigner.occi.monitoring.ext/model/monitoringext.occie by org.occiware.clouddesigner.occi.gen.doc
