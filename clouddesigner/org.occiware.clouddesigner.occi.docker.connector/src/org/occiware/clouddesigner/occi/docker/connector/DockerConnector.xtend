@@ -1725,7 +1725,8 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 			if (compute.links.size > 0) {
 
 				// Stop the containers 
-				compute.links.forEach[elt|(elt.target as ExecutableContainer).stop(StopMethod.GRACEFUL)]
+				compute.links.filter[elt|elt.target != null] // else NPE
+						.forEach[elt|(elt.target as ExecutableContainer).stop(StopMethod.GRACEFUL)]
 
 			}
 		}
