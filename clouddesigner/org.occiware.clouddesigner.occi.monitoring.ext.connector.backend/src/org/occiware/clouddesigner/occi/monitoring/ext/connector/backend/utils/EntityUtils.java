@@ -55,7 +55,7 @@ public class EntityUtils {
 			final Map<String, String> attrsToUpdate, final List<String> attrsToDelete) {
 		
 		if (!UIDialog.isStandAlone()) {
-			LOGGER.info("Updating attributes : UI Mode.");
+			LOGGER.debug("Updating attributes : UI Mode.");
 			// Cloud designer usage.
 			TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(entity.eResource().getResourceSet());
 			Command cmd = new RecordingCommand(domain) {
@@ -86,7 +86,7 @@ public class EntityUtils {
 		for (Map.Entry<String, String> attr : attrsToCreate.entrySet()) {
 			attrName = attr.getKey();
 			attrValue = attr.getValue();
-			LOGGER.info("attr to create : " + attr.getKey() + " ==> " + attr.getValue());
+			LOGGER.debug("attr to create : " + attr.getKey() + " ==> " + attr.getValue());
 			
 			AttributeState attrState = createAttribute(attrName, attrValue);
 			executeOperation(entity, ADD_ATTR, attrState, null, null);
@@ -94,13 +94,13 @@ public class EntityUtils {
 		for (Map.Entry<String, String> attr : attrsToUpdate.entrySet()) {
 			attrName = attr.getKey();
 			attrValue = attr.getValue();
-			LOGGER.info("attr to update : " + attr.getKey() + " ==> " + attr.getValue());
+			LOGGER.debug("attr to update : " + attr.getKey() + " ==> " + attr.getValue());
 			AttributeState attrState = getAttributeStateObject(entity, attrName);
 			executeOperation(entity, UPDATE_ATTR, attrState, attrName, attrValue);
 		}
 		
 		for (String name : attrsToDelete) {
-			LOGGER.info("attr to delete : " + name);
+			LOGGER.debug("attr to delete : " + name);
 			AttributeState attrState = getAttributeStateObject(entity, name);
 			executeOperation(entity, DELETE_ATTR, attrState, name, null);
 		}

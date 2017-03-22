@@ -14,17 +14,16 @@ package org.occiware.clouddesigner.occi.monitoring.ext.connector.backend.utils;
 
 import java.lang.reflect.InvocationTargetException;
 
+import org.apache.log4j.Level;
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
-import org.osgi.framework.Bundle;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.apache.log4j.Level;
-import org.eclipse.core.runtime.IProgressMonitor;
 
 /**
  * This class manage the ui dialog when embedded in cloud designer and
@@ -59,27 +58,26 @@ public class UIDialog {
 	public static void executeActionThread(final IRunnableWithProgress runnable, final String actionName) {
 
 		try {
-				IRunnableWithProgress runnableWithProgress = new IRunnableWithProgress() {
+			IRunnableWithProgress runnableWithProgress = new IRunnableWithProgress() {
 
-					@Override
-					public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
-						if (!monitor.isCanceled()) {
-							monitor.beginTask("Operation in progress : " + actionName, 0);
-							runnable.run(monitor);
-							monitor.done();
-						} else {
-							return;
-						}
+				@Override
+				public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+					if (!monitor.isCanceled()) {
+						monitor.beginTask("Operation in progress : " + actionName, 0);
+						runnable.run(monitor);
+						monitor.done();
+					} else {
+						return;
 					}
-				};
-				Shell shell = getCurrentShell();
+				}
+			};
+			Shell shell = getCurrentShell();
 
-				ProgressMonitorDialog dialog = new ProgressMonitorDialog(shell);
-				
-				dialog.setOpenOnRun(true);
+			ProgressMonitorDialog dialog = new ProgressMonitorDialog(shell);
 
-				dialog.run(true, true, runnableWithProgress);
+			dialog.setOpenOnRun(true);
 
+			dialog.run(true, true, runnableWithProgress);
 
 		} catch (IllegalStateException | InvocationTargetException | InterruptedException ex) {
 			LOGGER.error("Error while executing an action task : " + ex.getMessage());
@@ -87,14 +85,15 @@ public class UIDialog {
 		}
 
 	}
-	
+
 	/**
 	 * Encapsulate the operation in a thread.
+	 * 
 	 * @param runnable
 	 * @param titleMessage
 	 */
 	public static void executeActionThread(final Runnable runnable, String titleMessage) {
-		
+
 		Thread actionThread = new Thread(runnable);
 		actionThread.start();
 	}
@@ -114,19 +113,21 @@ public class UIDialog {
 		}
 		return result;
 	}
-	
+
 	/**
 	 * Show a dialog dispatch by level message (information, error and warn).
+	 * 
 	 * @param title
 	 * @param message
-	 * @param level {@link Level}
+	 * @param level
+	 *            {@link Level}
 	 */
 	public static void showUserMessage(final String title, final String message, final Level level) {
 		switch (level.toInt()) {
 		case Level.INFO_INT:
 			showInformationDialog(title, message);
 			break;
-			
+
 		case Level.ERROR_INT:
 			showErrorDialog(title, message);
 			break;
@@ -138,10 +139,10 @@ public class UIDialog {
 			break;
 		}
 	}
-	
-	
+
 	/**
 	 * Show an information dialog.
+	 * 
 	 * @param title
 	 * @param message
 	 */
@@ -151,9 +152,10 @@ public class UIDialog {
 			MessageDialog.openInformation(shell, title, message);
 		}
 	}
-	
+
 	/**
 	 * Show a warning dialog.
+	 * 
 	 * @param message
 	 */
 	public static void showWarningDialog(final String title, final String message) {
@@ -162,9 +164,10 @@ public class UIDialog {
 			MessageDialog.openWarning(shell, title, message);
 		}
 	}
-	
+
 	/**
 	 * Show a basic error dialog.
+	 * 
 	 * @param title
 	 * @param message
 	 */
@@ -175,9 +178,11 @@ public class UIDialog {
 			MessageDialog.openError(shell, title, message);
 		}
 	}
-	
+
 	/**
-	 * Is this connector is used as a standalone library (true) or used in Cloud designer (false).
+	 * Is this connector is used as a standalone library (true) or used in Cloud
+	 * designer (false).
+	 * 
 	 * @return
 	 */
 	public static boolean isStandAlone() {
@@ -192,7 +197,5 @@ public class UIDialog {
 	private static Shell getCurrentShell() {
 		return Display.getCurrent().getActiveShell();
 	}
-
-	
 
 }

@@ -7,7 +7,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
- * - Philippe Merle <philippe.merle@inria.fr>
+ * - Christophe Gourdin <christophe.gourdin@inria.fr>
  *
  * Generated at Mon Mar 13 17:10:17 CET 2017 from platform:/resource/org.occiware.clouddesigner.occi.monitoring.ext/model/monitoringext.occie by org.occiware.clouddesigner.occi.gen.connector
  */
@@ -73,7 +73,6 @@ public class SensorextConnector extends monitoringext.impl.SensorextImpl {
 	 */
 	SensorextConnector() {
 		LOGGER.debug("Constructor called on " + this);
-		System.out.println("Sensorext constructor called==>" + this);
 	}
 
 	//
@@ -140,6 +139,10 @@ public class SensorextConnector extends monitoringext.impl.SensorextImpl {
 			LOGGER.debug("Starting monitoring...");
 			if (tinomSensor == null) {
 				buildTinomObjects();
+				if (tinomSensor == null) {
+					LOGGER.error("An unexpected error has been thrown, please see logs.");
+					return;
+				}
 			}		
 			tinomSensor.start();	
 			sensorStarted = true;
@@ -172,26 +175,26 @@ public class SensorextConnector extends monitoringext.impl.SensorextImpl {
 					
 					
 				}
-				String[] outputNames = collector.getOutputNames();
+				/*String[] outputNames = collector.getOutputNames();
 				if (outputNames != null && outputNames.length > 0) {
 					for (String name : outputNames) {
-						System.out.println(name);
+						LOGGER.debug(name);
 					}
 					
 				}
 				String[] collectorInputChannels = tinomSensor.getInputNames();
 				if (collectorInputChannels != null && collectorInputChannels.length > 0) {
 					for (String name : collectorInputChannels) {
-						System.out.println(name);
+						LOGGER.debug(name);
 					}
 					
-				}
+				}*/
 				
 			}
 			try {
-				System.out.println("Collector name : " + collectorName);
+				LOGGER.debug("Collector name : " + collectorName);
 				String result = tinomSensor.get(collectorName);
-				System.out.println("value available on a channel : " + collectorName + " ===> " + result);
+				LOGGER.debug("value available on a channel : " + collectorName + " ===> " + result);
 			} catch (NoSuchFieldException e) {
 				
 			}
@@ -255,7 +258,7 @@ public class SensorextConnector extends monitoringext.impl.SensorextImpl {
 	 * Build tinom objects from scratch...
 	 */
 	private void buildTinomObjects() {
-		System.out.println("Build TINOM objects");
+		LOGGER.debug("Build TINOM objects");
 		if (tinomSensor != null) {
 			stopMonitoring();
 		}
@@ -310,7 +313,6 @@ public class SensorextConnector extends monitoringext.impl.SensorextImpl {
 		if (!hasEmfPublisher && !hasSysOutPublisher) {
 			// No publisher is set.
 			LOGGER.warn("No publisher is set. Please add at least one publisher. Default to sensor mixin system out console publisher.");
-			System.out.println("No publisher is set. Please add at least one publisher. Default to sensor mixin sysout publisher.");
 			hasSysOutPublisher = true;
 		}
 
@@ -347,10 +349,13 @@ public class SensorextConnector extends monitoringext.impl.SensorextImpl {
 		for (Publisher publisher : tinomPublishers) {
 			tinomSensor.withPublisher(publisher);
 		}
-		System.out.println("TINOM objects are built !!!");
+		LOGGER.debug("TINOM objects are built !!!");
 
 	}
 	
+	/**
+	 * Add a listener to manage events on this sensor object.
+	 */
 	private void addMonitoringListener() {
 		if (!monitoringListener) {
 			// Add the listener...

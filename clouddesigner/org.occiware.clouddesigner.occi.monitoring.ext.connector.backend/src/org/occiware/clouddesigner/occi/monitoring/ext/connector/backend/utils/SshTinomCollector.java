@@ -1,3 +1,15 @@
+/**
+ * Copyright (c) 2017 Inria
+ *  
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ * - Christophe Gourdin <christophe.gourdin@inria.fr>
+ *
+ */
 package org.occiware.clouddesigner.occi.monitoring.ext.connector.backend.utils;
 
 import java.io.BufferedReader;
@@ -9,11 +21,7 @@ import java.io.InputStreamReader;
 import java.util.List;
 
 import org.occiware.clouddesigner.occi.monitoring.ext.connector.backend.exception.MonitorException;
-import org.occiware.clouddesigner.occi.monitoring.ext.connector.backend.utils.metric.CPUPercentMetric;
-import org.occiware.clouddesigner.occi.monitoring.ext.connector.backend.utils.metric.LoadAverageMetric;
-import org.occiware.clouddesigner.occi.monitoring.ext.connector.backend.utils.metric.RAMPercentMetric;
 import org.occiware.clouddesigner.occi.monitoring.ext.connector.backend.utils.metric.SSHMetric;
-import org.occiware.clouddesigner.occi.monitoring.ext.connector.backend.utils.metric.SystemDiskUsedMetric;
 import org.occiware.driver.ssh.SSHShellThread;
 import org.occiware.driver.ssh.SshClient;
 import org.occiware.tinom.model.Collector;
@@ -40,18 +48,18 @@ public class SshTinomCollector extends Collector {
 
 	public SshTinomCollector(String name) {
 		super(name);
-		System.out.println("Constructor with name called.");
+		LOGGER.debug("Constructor with name called.");
 	}
 
 	public SshTinomCollector(String name, int period) {
 		super(name, period);
-		System.out.println("Constructor with name AND period called. : " + name + " --> " + period);
+		LOGGER.debug("Constructor with name AND period called. : " + name + " --> " + period);
 	}
 
 	@Override
 	public void run() {
 		// Note: Default implementation (Collector) does nothing.
-		System.out.println("SshTinomCollector run() method called.");
+		LOGGER.debug("SshTinomCollector run() method called.");
 		if (sshMonitor == null || !sshMonitor.isStarted()) {
 			// Launch ssh thread.
 			if (ipAddress != null && ((username != null && password != null) || privateKeyFileName != null)) {
@@ -68,7 +76,7 @@ public class SshTinomCollector extends Collector {
 					ByteArrayInputStream in = new ByteArrayInputStream(scriptB.toString().getBytes());
 					sshMonitor = new SSHShellThread(sshClient);
 					sshMonitor.setScriptInputStream(in);
-					
+
 					// Assign sshMonitor to metrics to retrieve values after.
 					List<Metric> metricVals = this.getMetrics();
 					for (Metric metric : metricVals) {
@@ -110,8 +118,6 @@ public class SshTinomCollector extends Collector {
 			}
 
 		} catch (IOException ex) {
-			// For debug purpose...
-			System.err.println("Can't load monitoring script file, exiting... Message: " + ex.getMessage());
 			LOGGER.error("Can't load monitoring script file, exiting... Message: " + ex.getMessage());
 			throw new MonitorException("Can't load monitoring script file.", ex);
 		} finally {

@@ -46,7 +46,7 @@ public class EntityUtilsHeadless {
 			
 		} else {
 			// Standalone connector usage.
-			LOGGER.info("Updating attributes : Headless mode");
+			LOGGER.debug("Updating attributes : Headless mode");
 			executeOperations(entity, attrsToCreate, attrsToUpdate, attrsToDelete);
 		}
 	}
@@ -59,7 +59,7 @@ public class EntityUtilsHeadless {
 		for (Map.Entry<String, String> attr : attrsToCreate.entrySet()) {
 			attrName = attr.getKey();
 			attrValue = attr.getValue();
-			LOGGER.info("attr to create : " + attr.getKey() + " ==> " + attr.getValue());
+			LOGGER.debug("attr to create : " + attr.getKey() + " ==> " + attr.getValue());
 			
 			AttributeState attrState = createAttribute(attrName, attrValue);
 			executeOperation(entity, ADD_ATTR, attrState, null, null);
@@ -67,13 +67,13 @@ public class EntityUtilsHeadless {
 		for (Map.Entry<String, String> attr : attrsToUpdate.entrySet()) {
 			attrName = attr.getKey();
 			attrValue = attr.getValue();
-			LOGGER.info("attr to update : " + attr.getKey() + " ==> " + attr.getValue());
+			LOGGER.debug("attr to update : " + attr.getKey() + " ==> " + attr.getValue());
 			AttributeState attrState = getAttributeStateObject(entity, attrName);
 			executeOperation(entity, UPDATE_ATTR, attrState, attrName, attrValue);
 		}
 		
 		for (String name : attrsToDelete) {
-			LOGGER.info("attr to delete : " + name);
+			LOGGER.debug("attr to delete : " + name);
 			AttributeState attrState = getAttributeStateObject(entity, name);
 			executeOperation(entity, DELETE_ATTR, attrState, name, null);
 		}
