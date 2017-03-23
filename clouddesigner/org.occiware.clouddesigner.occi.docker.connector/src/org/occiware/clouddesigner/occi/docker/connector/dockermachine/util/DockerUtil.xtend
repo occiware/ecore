@@ -157,6 +157,10 @@ class DockerUtil {
 				}
 			}
 		}
+		val defaultMachineCertPath = #[ System.getProperty("user.home"), ".docker", "machine", "machines", machineName ].join(File.separator);
+		if (new File(defaultMachineCertPath).canRead()) {
+			return defaultMachineCertPath; // else DockerException because null certPath
+		}
 		return null
 	}
 

@@ -772,7 +772,7 @@ class DockerContainerManager {
 		port = ":2376"
 
 		LOGGER.info("ENDPOINT : " + ENDPOINT)
-		val dockerHost = ENDPOINT.trim
+		val dockerHost = if (ENDPOINT == null || ENDPOINT.trim.length == 0) "tcp://127.0.0.1" + port else ENDPOINT.trim
 		LOGGER.info("Connection inside machine: " + machine + " with uri: " + dockerHost.toString)
 		var dockerHome = System.getProperty("user.home") + File.separator + ".docker"
 		try {
