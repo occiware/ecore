@@ -30,6 +30,8 @@ import org.slf4j.LoggerFactory
 import org.slf4j.Logger
 
 class DockerUtil {
+	
+	public static final String HOST_RUNNING = "Running"
 
 	protected static String OS = System.getProperty("os.name").toLowerCase()
 
@@ -100,7 +102,7 @@ class DockerUtil {
 	def static getActiveHost() {
 		val hosts = getHosts
 		for (Map.Entry<String, String> entry : hosts.entrySet) {
-			if (entry.value == "Running") {
+			if (entry.value.equalsIgnoreCase(HOST_RUNNING)) {
 				return entry.key
 			}
 		}
@@ -119,11 +121,18 @@ class DockerUtil {
 	def static getActiveHosts() {
 		var Map<String, String> hosts = new HashMap
 		for (Map.Entry<String, String> entry : getHosts.entrySet) {
-			if (entry.value.equalsIgnoreCase("Running")) {
+			if (entry.value.equalsIgnoreCase(HOST_RUNNING)) {
 				hosts.put(entry.key, entry.value)
 			}
 		}
 		return hosts
+	}
+
+	/**
+	 * Get all active ones from hosts, without calling Docker again 
+	 */
+	def static getActiveHosts(Map<String, String> hosts) {
+		return hosts.filter[host, status|DockerUtil.HOST_RUNNING.equalsIgnoreCase(status)]
 	}
 
 	

@@ -1322,12 +1322,12 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 		command.append(' ').append(compute.name)
 
 		LOGGER.info("CMD : #{}", command.toString)
-
-		// Get the active machine
-		val activeHosts = DockerUtil.getActiveHosts
-
+		
 		// Get the existing machines
 		val hosts = DockerUtil.getHosts
+		// Get the active machine
+		val activeHosts = hosts.filter[host, status|DockerUtil.HOST_RUNNING.equalsIgnoreCase(status)]
+		
 		if (!hosts.containsKey(compute.name)) { // Check if machine exists in the real environment
 		// Create the machine and start it
 			ProcessManager.runCommand(command.toString, runtime, true)
@@ -1416,11 +1416,11 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 		// Add Parameters to command
 		command.append(' ').append(parameter)
 		command.append(' ').append(compute.name)
-		// Get the active machine
-		val activeHosts = DockerUtil.getActiveHosts
 
 		// Get the existing machines
 		val hosts = DockerUtil.getHosts
+		// Get the active machine
+		val activeHosts = DockerUtil.getActiveHosts(hosts)
 		if (!hosts.containsKey(compute.name)) { // Check if machine exists in the real environment
 		// Create the machine and start it
 			ProcessManager.runCommand(command.toString, runtime, true)
@@ -1636,12 +1636,24 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 
 		// Get all hosts in the real environment
 		val hosts = DockerUtil.getHosts
-		val instanceMH = new ModelHandler
-
-		val instance = new DockerContainerManager(this.compute)
-		val machine = instanceMH.getModel(this.compute.name, hosts.get(this.compute.name), false)
-		this.compute.state = machine.state
+		
+		// refreshing compute state :
+		// (else synchronize useless, because fails if machine stopped without the model knowing it)
+		if (hosts.containsKey(compute.name)
+				&& !DockerUtil.HOST_RUNNING.equalsIgnoreCase(hosts.get(compute.name))) { // else #193 several DockerException :
+				// certifateDockerUtil. path (DOCKER_CERT_PATH) is not defined, Unsupported protocol scheme...
+			// machine is actually down, though it is believed to be up
+			// (inspired by start_execute(), to be refactored centrally
+			this.compute.state = ComputeStatus.INACTIVE
+			// TODO Q or start it right away instead ??
+			// start(All)_execute
+		}
+		// NB. another way could be by testing model built from Docker introspection :
+		// instanceMH.getModel(this.compute.name, hosts.get(this.compute.name), false).state
+		
 		if (this.compute.state.toString.equalsIgnoreCase("active")) {
+			val instanceMH = new ModelHandler
+			val instance = new DockerContainerManager(this.compute)
 
 			if (this.compute.links.size > 0) {
 
