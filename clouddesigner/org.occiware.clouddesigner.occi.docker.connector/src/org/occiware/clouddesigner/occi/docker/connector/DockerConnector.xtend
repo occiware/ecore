@@ -1724,8 +1724,9 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 		} else {
 			if (compute.links.size > 0) {
 
-				// Stop the containers 
-				compute.links.filter[elt|elt.target != null] // else NPE
+				// Stop the containers
+				// TODO won't do anything since machine is stopped, rather merely container.state = INACTIVE
+				compute.links.filter[elt|elt.target != null] // else NPE on links to delete containers #194
 						.forEach[elt|(elt.target as ExecutableContainer).stop(StopMethod.GRACEFUL)]
 
 			}
