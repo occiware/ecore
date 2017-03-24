@@ -373,7 +373,12 @@ public class DockerContainerManager {
       String[] cmd = _deleteWhitespace.split(",");
       create.withCmd(cmd);
     } else {
-      create.withCmd("sleep", "9999");
+      String _image_2 = container.getImage();
+      boolean _isNotBlank_2 = StringUtils.isNotBlank(_image_2);
+      boolean _not = (!_isNotBlank_2);
+      if (_not) {
+        create.withCmd("sleep", "9999");
+      }
     }
     int _cpu_shares = container.getCpu_shares();
     boolean _greaterThan = (_cpu_shares > 0);
@@ -382,15 +387,15 @@ public class DockerContainerManager {
       create.withCpuShares(Integer.valueOf(_cpu_shares_1));
     }
     String _add_host = container.getAdd_host();
-    boolean _isNotBlank_2 = StringUtils.isNotBlank(_add_host);
-    if (_isNotBlank_2) {
+    boolean _isNotBlank_3 = StringUtils.isNotBlank(_add_host);
+    if (_isNotBlank_3) {
       String _hostname = container.getHostname();
       String _deleteWhitespace_1 = StringUtils.deleteWhitespace(_hostname);
       create.withHostName(_deleteWhitespace_1);
     }
     String _cpuset = container.getCpuset();
-    boolean _isNotBlank_3 = StringUtils.isNotBlank(_cpuset);
-    if (_isNotBlank_3) {
+    boolean _isNotBlank_4 = StringUtils.isNotBlank(_cpuset);
+    if (_isNotBlank_4) {
       String _cpuset_1 = container.getCpuset();
       String _deleteWhitespace_2 = StringUtils.deleteWhitespace(_cpuset_1);
       create.withCpusetCpus(_deleteWhitespace_2);
@@ -401,15 +406,15 @@ public class DockerContainerManager {
       create.withPrivileged(Boolean.valueOf(_isPrivileged_1));
     }
     String _dns = container.getDns();
-    boolean _isNotBlank_4 = StringUtils.isNotBlank(_dns);
-    if (_isNotBlank_4) {
+    boolean _isNotBlank_5 = StringUtils.isNotBlank(_dns);
+    if (_isNotBlank_5) {
       String _dns_1 = container.getDns();
       String _deleteWhitespace_3 = StringUtils.deleteWhitespace(_dns_1);
       create.withDns(_deleteWhitespace_3);
     }
     String _environment = container.getEnvironment();
-    boolean _isNotBlank_5 = StringUtils.isNotBlank(_environment);
-    if (_isNotBlank_5) {
+    boolean _isNotBlank_6 = StringUtils.isNotBlank(_environment);
+    if (_isNotBlank_6) {
       String _environment_1 = container.getEnvironment();
       String _deleteWhitespace_4 = StringUtils.deleteWhitespace(_environment_1);
       String[] env = _deleteWhitespace_4.split(",");
@@ -419,8 +424,8 @@ public class DockerContainerManager {
     String _plus = ("Container ports = " + _ports);
     DockerContainerManager.LOGGER.info(_plus);
     String _ports_1 = container.getPorts();
-    boolean _isNotBlank_6 = StringUtils.isNotBlank(_ports_1);
-    if (_isNotBlank_6) {
+    boolean _isNotBlank_7 = StringUtils.isNotBlank(_ports_1);
+    if (_isNotBlank_7) {
       String _ports_2 = container.getPorts();
       final String[] l_r_ports = _ports_2.split(":");
       String _get = l_r_ports[0];
@@ -431,8 +436,8 @@ public class DockerContainerManager {
       boolean _equals = (_size == 2);
       if (_equals) {
         String _get_1 = l_r_ports[1];
-        boolean _isNotBlank_7 = StringUtils.isNotBlank(_get_1);
-        if (_isNotBlank_7) {
+        boolean _isNotBlank_8 = StringUtils.isNotBlank(_get_1);
+        if (_isNotBlank_8) {
           String _get_2 = l_r_ports[1];
           int _parseInt_1 = Integer.parseInt(_get_2);
           Ports.Binding _bindPort = Ports.Binding.bindPort(_parseInt_1);
@@ -446,22 +451,22 @@ public class DockerContainerManager {
       _withExposedPorts.withPortBindings(portBindings);
     }
     String _name = container.getName();
-    boolean _isNotBlank_8 = StringUtils.isNotBlank(_name);
-    if (_isNotBlank_8) {
+    boolean _isNotBlank_9 = StringUtils.isNotBlank(_name);
+    if (_isNotBlank_9) {
       String _name_1 = container.getName();
       String _deleteWhitespace_5 = StringUtils.deleteWhitespace(_name_1);
       create.withName(_deleteWhitespace_5);
     }
     String _hostname_1 = container.getHostname();
-    boolean _isNotBlank_9 = StringUtils.isNotBlank(_hostname_1);
-    if (_isNotBlank_9) {
+    boolean _isNotBlank_10 = StringUtils.isNotBlank(_hostname_1);
+    if (_isNotBlank_10) {
       String _hostname_2 = container.getHostname();
       String _deleteWhitespace_6 = StringUtils.deleteWhitespace(_hostname_2);
       create.withHostName(_deleteWhitespace_6);
     }
     String _net = container.getNet();
-    boolean _isNotBlank_10 = StringUtils.isNotBlank(_net);
-    if (_isNotBlank_10) {
+    boolean _isNotBlank_11 = StringUtils.isNotBlank(_net);
+    if (_isNotBlank_11) {
       String _net_1 = container.getNet();
       create.withNetworkMode(_net_1);
     }
@@ -476,14 +481,14 @@ public class DockerContainerManager {
       create.withStdInOnce(Boolean.valueOf(_isStdin_open_1));
     }
     String _user = container.getUser();
-    boolean _isNotBlank_11 = StringUtils.isNotBlank(_user);
-    if (_isNotBlank_11) {
+    boolean _isNotBlank_12 = StringUtils.isNotBlank(_user);
+    if (_isNotBlank_12) {
       String _user_1 = container.getUser();
       create.withUser(_user_1);
     }
     String _volumes = container.getVolumes();
-    boolean _isNotBlank_12 = StringUtils.isNotBlank(_volumes);
-    if (_isNotBlank_12) {
+    boolean _isNotBlank_13 = StringUtils.isNotBlank(_volumes);
+    if (_isNotBlank_13) {
       String _volumes_1 = container.getVolumes();
       String _deleteWhitespace_7 = StringUtils.deleteWhitespace(_volumes_1);
       String[] volumes = _deleteWhitespace_7.split(",");
@@ -511,41 +516,41 @@ public class DockerContainerManager {
       create.withMemory(_valueOf_1);
     }
     String _lxc_conf = container.getLxc_conf();
-    boolean _isNotBlank_13 = StringUtils.isNotBlank(_lxc_conf);
-    if (_isNotBlank_13) {
+    boolean _isNotBlank_14 = StringUtils.isNotBlank(_lxc_conf);
+    if (_isNotBlank_14) {
       final LxcConf lxcCon = new LxcConf("key", "value");
       create.withLxcConf(lxcCon);
     }
     String _domainname = container.getDomainname();
-    boolean _isNotBlank_14 = StringUtils.isNotBlank(_domainname);
-    if (_isNotBlank_14) {
+    boolean _isNotBlank_15 = StringUtils.isNotBlank(_domainname);
+    if (_isNotBlank_15) {
       String _domainname_1 = container.getDomainname();
       create.withDomainName(_domainname_1);
     }
     String _dns_search = container.getDns_search();
-    boolean _isNotBlank_15 = StringUtils.isNotBlank(_dns_search);
-    if (_isNotBlank_15) {
+    boolean _isNotBlank_16 = StringUtils.isNotBlank(_dns_search);
+    if (_isNotBlank_16) {
       String _dns_search_1 = container.getDns_search();
       String[] dnsSearch = _dns_search_1.split(",");
       create.withDnsSearch(dnsSearch);
     }
     String _entrypoint = container.getEntrypoint();
-    boolean _isNotBlank_16 = StringUtils.isNotBlank(_entrypoint);
-    if (_isNotBlank_16) {
+    boolean _isNotBlank_17 = StringUtils.isNotBlank(_entrypoint);
+    if (_isNotBlank_17) {
       String _entrypoint_1 = container.getEntrypoint();
       String[] entrypoint = _entrypoint_1.split(",");
       create.withEntrypoint(entrypoint);
     }
     String _net_2 = container.getNet();
-    boolean _isNotBlank_17 = StringUtils.isNotBlank(_net_2);
-    if (_isNotBlank_17) {
+    boolean _isNotBlank_18 = StringUtils.isNotBlank(_net_2);
+    if (_isNotBlank_18) {
       String _net_3 = container.getNet();
       String _deleteWhitespace_8 = StringUtils.deleteWhitespace(_net_3);
       create.withNetworkMode(_deleteWhitespace_8);
     }
     String _pid = container.getPid();
-    boolean _isNotBlank_18 = StringUtils.isNotBlank(_pid);
-    if (_isNotBlank_18) {
+    boolean _isNotBlank_19 = StringUtils.isNotBlank(_pid);
+    if (_isNotBlank_19) {
       String _pid_1 = container.getPid();
       String _deleteWhitespace_9 = StringUtils.deleteWhitespace(_pid_1);
       create.withPidMode(_deleteWhitespace_9);
@@ -571,16 +576,16 @@ public class DockerContainerManager {
       create.withTty(Boolean.valueOf(_isTty_1));
     }
     String _restart = container.getRestart();
-    boolean _isNotBlank_19 = StringUtils.isNotBlank(_restart);
-    if (_isNotBlank_19) {
+    boolean _isNotBlank_20 = StringUtils.isNotBlank(_restart);
+    if (_isNotBlank_20) {
       String _restart_1 = container.getRestart();
       String _deleteWhitespace_10 = StringUtils.deleteWhitespace(_restart_1);
       RestartPolicy _parse = RestartPolicy.parse(_deleteWhitespace_10);
       create.withRestartPolicy(_parse);
     }
     String _working_dir = container.getWorking_dir();
-    boolean _isNotBlank_20 = StringUtils.isNotBlank(_working_dir);
-    if (_isNotBlank_20) {
+    boolean _isNotBlank_21 = StringUtils.isNotBlank(_working_dir);
+    if (_isNotBlank_21) {
       String _working_dir_1 = container.getWorking_dir();
       String _deleteWhitespace_11 = StringUtils.deleteWhitespace(_working_dir_1);
       create.withWorkingDir(_deleteWhitespace_11);
@@ -600,8 +605,8 @@ public class DockerContainerManager {
       }
     }
     boolean _isNullOrEmpty = IterableExtensions.isNullOrEmpty(containersWithVolumes);
-    boolean _not = (!_isNullOrEmpty);
-    if (_not) {
+    boolean _not_1 = (!_isNullOrEmpty);
+    if (_not_1) {
       List<VolumesFrom> volumesFrom = new ArrayList<VolumesFrom>();
       for (final Container c : containersWithVolumes) {
         {
@@ -615,8 +620,8 @@ public class DockerContainerManager {
       create.withVolumesFrom(volumesFrom);
     }
     boolean _isNullOrEmpty_1 = IterableExtensions.isNullOrEmpty(volumesInsideHost);
-    boolean _not_1 = (!_isNullOrEmpty_1);
-    if (_not_1) {
+    boolean _not_2 = (!_isNullOrEmpty_1);
+    if (_not_2) {
       List<Bind> volumesBind = new ArrayList<Bind>();
       List<Volume> vs_1 = new ArrayList<Volume>();
       for (final org.occiware.clouddesigner.occi.docker.Volume v_1 : volumesInsideHost) {
@@ -624,8 +629,8 @@ public class DockerContainerManager {
           Volume newVolume = null;
           String _destination = v_1.getDestination();
           boolean _isBlank = StringUtils.isBlank(_destination);
-          boolean _not_2 = (!_isBlank);
-          if (_not_2) {
+          boolean _not_3 = (!_isBlank);
+          if (_not_3) {
             String _destination_1 = v_1.getDestination();
             Volume _volume = new Volume(_destination_1);
             newVolume = _volume;
@@ -633,8 +638,8 @@ public class DockerContainerManager {
           }
           String _source = v_1.getSource();
           boolean _isBlank_1 = StringUtils.isBlank(_source);
-          boolean _not_3 = (!_isBlank_1);
-          if (_not_3) {
+          boolean _not_4 = (!_isBlank_1);
+          if (_not_4) {
             String _source_1 = v_1.getSource();
             Bind newBind = new Bind(_source_1, newVolume);
             volumesBind.add(newBind);
@@ -1245,7 +1250,13 @@ public class DockerContainerManager {
     Properties dockerProperties = lconfig.loadConfig();
     port = ":2376";
     DockerContainerManager.LOGGER.info(("ENDPOINT : " + ENDPOINT));
-    final String dockerHost = ENDPOINT.trim();
+    String _xifexpression = null;
+    if ((Objects.equal(ENDPOINT, null) || (ENDPOINT.trim().length() == 0))) {
+      _xifexpression = ("tcp://127.0.0.1" + port);
+    } else {
+      _xifexpression = ENDPOINT.trim();
+    }
+    final String dockerHost = _xifexpression;
     String _string = dockerHost.toString();
     String _plus = ((("Connection inside machine: " + machine) + " with uri: ") + _string);
     DockerContainerManager.LOGGER.info(_plus);

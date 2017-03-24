@@ -25,6 +25,10 @@ import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.Functions.Function2;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.MapExtensions;
 import org.occiware.clouddesigner.occi.Link;
 import org.occiware.clouddesigner.occi.Resource;
 import org.occiware.clouddesigner.occi.docker.Container;
@@ -205,8 +209,11 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
     _append_2.append(_name_1);
     String _string = command.toString();
     MachineManager.LOGGER.info("CMD : #{}", _string);
-    final Map<String, String> activeHosts = DockerUtil.getActiveHosts();
     final Map<String, String> hosts = DockerUtil.getHosts();
+    final Function2<String, String, Boolean> _function = (String host, String status) -> {
+      return Boolean.valueOf(DockerUtil.HOST_RUNNING.equalsIgnoreCase(status));
+    };
+    final Map<String, String> activeHosts = MapExtensions.<String, String>filter(hosts, _function);
     String _name_2 = this.compute.getName();
     boolean _containsKey = hosts.containsKey(_name_2);
     boolean _not = (!_containsKey);
@@ -346,8 +353,8 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
     StringBuilder _append_2 = command.append(" ");
     String _name_1 = this.compute.getName();
     _append_2.append(_name_1);
-    final Map<String, String> activeHosts = DockerUtil.getActiveHosts();
     final Map<String, String> hosts = DockerUtil.getHosts();
+    final Map<String, String> activeHosts = DockerUtil.getActiveHosts(hosts);
     String _name_2 = this.compute.getName();
     boolean _containsKey = hosts.containsKey(_name_2);
     boolean _not = (!_containsKey);
@@ -579,18 +586,15 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
   
   public void synchronize() {
     final Map<String, String> hosts = DockerUtil.getHosts();
-    final ModelHandler instanceMH = new ModelHandler();
-    final DockerContainerManager instance = new DockerContainerManager(this.compute);
-    String _name = this.compute.getName();
-    String _name_1 = this.compute.getName();
-    String _get = hosts.get(_name_1);
-    final Machine machine = instanceMH.getModel(_name, _get, false);
-    ComputeStatus _state = machine.getState();
-    this.compute.setState(_state);
-    ComputeStatus _state_1 = this.compute.getState();
-    String _string = _state_1.toString();
+    if ((hosts.containsKey(this.compute.getName()) && (!DockerUtil.HOST_RUNNING.equalsIgnoreCase(hosts.get(this.compute.getName()))))) {
+      this.compute.setState(ComputeStatus.INACTIVE);
+    }
+    ComputeStatus _state = this.compute.getState();
+    String _string = _state.toString();
     boolean _equalsIgnoreCase = _string.equalsIgnoreCase("active");
     if (_equalsIgnoreCase) {
+      final ModelHandler instanceMH = new ModelHandler();
+      final DockerContainerManager instance = new DockerContainerManager(this.compute);
       EList<Link> _links = this.compute.getLinks();
       int _size = _links.size();
       boolean _greaterThan = (_size > 0);
@@ -607,14 +611,14 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
               if ((_target instanceof Container)) {
                 Resource _target_1 = contains.getTarget();
                 final ExecutableContainer con = ((ExecutableContainer) _target_1);
-                String _name_2 = con.getName();
-                containersInModel.add(_name_2);
-                String _name_3 = con.getName();
-                boolean _containerIsDeployed = this.containerIsDeployed(_name_3, this.machine);
+                String _name = con.getName();
+                containersInModel.add(_name);
+                String _name_1 = con.getName();
+                boolean _containerIsDeployed = this.containerIsDeployed(_name_1, this.machine);
                 boolean _not_1 = (!_containerIsDeployed);
                 if (_not_1) {
-                  String _name_4 = con.getName();
-                  String _plus = ("Creating the container: " + _name_4);
+                  String _name_2 = con.getName();
+                  String _plus = ("Creating the container: " + _name_2);
                   MachineManager.LOGGER.info(_plus);
                   con.createContainer(this.machine);
                   MachineManager.LOGGER.info("The container is created");
@@ -622,15 +626,15 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
               }
             }
           }
-          String _name_2 = this.compute.getName();
-          List<String> containersToRemove = this.containerInReal(_name_2);
+          String _name = this.compute.getName();
+          List<String> containersToRemove = this.containerInReal(_name);
           boolean _isEmpty = containersToRemove.isEmpty();
           boolean _not_1 = (!_isEmpty);
           if (_not_1) {
             containersToRemove.removeAll(containersInModel);
             for (final String id : containersToRemove) {
-              String _name_3 = this.compute.getName();
-              instance.removeContainer(_name_3, id);
+              String _name_1 = this.compute.getName();
+              instance.removeContainer(_name_1, id);
             }
           }
         } else {
@@ -639,25 +643,25 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
           for (final Container c : _deploymentOrder) {
             {
               final ExecutableContainer con = ((ExecutableContainer) c);
-              String _name_4 = c.getName();
-              containersInModel_1.add(_name_4);
-              String _name_5 = con.getName();
-              boolean _containerIsDeployed = this.containerIsDeployed(_name_5, this.compute);
+              String _name_2 = c.getName();
+              containersInModel_1.add(_name_2);
+              String _name_3 = con.getName();
+              boolean _containerIsDeployed = this.containerIsDeployed(_name_3, this.compute);
               boolean _not_2 = (!_containerIsDeployed);
               if (_not_2) {
                 con.createContainer(this.machine, this.containerDependency);
               }
             }
           }
-          String _name_4 = this.compute.getName();
-          List<String> containersToRemove_1 = this.containerInReal(_name_4);
+          String _name_2 = this.compute.getName();
+          List<String> containersToRemove_1 = this.containerInReal(_name_2);
           boolean _isEmpty_1 = containersToRemove_1.isEmpty();
           boolean _not_2 = (!_isEmpty_1);
           if (_not_2) {
             containersToRemove_1.removeAll(containersInModel_1);
             for (final String id_1 : containersToRemove_1) {
-              String _name_5 = this.compute.getName();
-              instance.removeContainer(_name_5, id_1);
+              String _name_3 = this.compute.getName();
+              instance.removeContainer(_name_3, id_1);
             }
           }
         }
@@ -668,11 +672,16 @@ public abstract class MachineManager extends ComputeStateMachine<Machine> {
       boolean _greaterThan_1 = (_size_1 > 0);
       if (_greaterThan_1) {
         EList<Link> _links_3 = this.compute.getLinks();
-        final Consumer<Link> _function = (Link elt) -> {
+        final Function1<Link, Boolean> _function = (Link elt) -> {
+          Resource _target = elt.getTarget();
+          return Boolean.valueOf((!Objects.equal(_target, null)));
+        };
+        Iterable<Link> _filter = IterableExtensions.<Link>filter(_links_3, _function);
+        final Consumer<Link> _function_1 = (Link elt) -> {
           Resource _target = elt.getTarget();
           ((ExecutableContainer) _target).stop(StopMethod.GRACEFUL);
         };
-        _links_3.forEach(_function);
+        _filter.forEach(_function_1);
       }
     }
   }

@@ -17,6 +17,7 @@ import java.io.InputStream;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,15 +28,21 @@ import org.codehaus.jackson.JsonFactory;
 import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.JsonParser;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.Functions.Function2;
 import org.eclipse.xtext.xbase.lib.InputOutput;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.MapExtensions;
 import org.occiware.clouddesigner.occi.docker.connector.dockermachine.manager.DockerMachineManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @SuppressWarnings("all")
 public class DockerUtil {
+  public final static String HOST_RUNNING = "Running";
+  
   protected static String OS = System.getProperty("os.name").toLowerCase();
   
   private static Logger LOGGER = LoggerFactory.getLogger(DockerUtil.class);
@@ -127,8 +134,8 @@ public class DockerUtil {
     Set<Map.Entry<String, String>> _entrySet = hosts.entrySet();
     for (final Map.Entry<String, String> entry : _entrySet) {
       String _value = entry.getValue();
-      boolean _equals = Objects.equal(_value, "Running");
-      if (_equals) {
+      boolean _equalsIgnoreCase = _value.equalsIgnoreCase(DockerUtil.HOST_RUNNING);
+      if (_equalsIgnoreCase) {
         return entry.getKey();
       }
     }
@@ -152,7 +159,7 @@ public class DockerUtil {
     Set<Map.Entry<String, String>> _entrySet = _hosts.entrySet();
     for (final Map.Entry<String, String> entry : _entrySet) {
       String _value = entry.getValue();
-      boolean _equalsIgnoreCase = _value.equalsIgnoreCase("Running");
+      boolean _equalsIgnoreCase = _value.equalsIgnoreCase(DockerUtil.HOST_RUNNING);
       if (_equalsIgnoreCase) {
         String _key = entry.getKey();
         String _value_1 = entry.getValue();
@@ -160,6 +167,16 @@ public class DockerUtil {
       }
     }
     return hosts;
+  }
+  
+  /**
+   * Get all active ones from hosts, without calling Docker again
+   */
+  public static Map<String, String> getActiveHosts(final Map<String, String> hosts) {
+    final Function2<String, String, Boolean> _function = (String host, String status) -> {
+      return Boolean.valueOf(DockerUtil.HOST_RUNNING.equalsIgnoreCase(status));
+    };
+    return MapExtensions.<String, String>filter(hosts, _function);
   }
   
   /**
@@ -185,6 +202,13 @@ public class DockerUtil {
           return _get.replaceAll("\"", "");
         }
       }
+    }
+    String _property = System.getProperty("user.home");
+    final String defaultMachineCertPath = IterableExtensions.join(Collections.<String>unmodifiableList(CollectionLiterals.<String>newArrayList(_property, ".docker", "machine", "machines", machineName)), File.separator);
+    File _file = new File(defaultMachineCertPath);
+    boolean _canRead = _file.canRead();
+    if (_canRead) {
+      return defaultMachineCertPath;
     }
     return null;
   }
