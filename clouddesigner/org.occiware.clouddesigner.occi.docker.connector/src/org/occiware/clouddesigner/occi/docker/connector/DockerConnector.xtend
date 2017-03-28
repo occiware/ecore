@@ -1432,6 +1432,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 			this.createNetwork(networks)
 
 			// Create the Containers belong to this machine.
+			val listContainers = dockerContainerManager.listContainer(machine.name)
 			if (compute.links.size > 0) {
 
 				// Start the containers without create graph
@@ -1442,7 +1443,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 							val con = contains.target as ExecutableContainer
 
 							// The container does not exists in the machine
-							if (!containerIsDeployed(con.name, this.machine)) {
+							if (!containerIsDeployed(con.name, this.machine, listContainers)) {
 
 								// Create container
 								con.createContainer(this.machine)
@@ -1459,7 +1460,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 					val dependencies = this.containerDependency
 					for (org.occiware.clouddesigner.occi.docker.Container c : this.deploymentOrder) {
 						val con = c as ExecutableContainer
-						if (!containerIsDeployed(con.name, compute)) {
+						if (!containerIsDeployed(con.name, compute, listContainers)) {
 
 							// Create container
 							con.createContainer(this.machine, dependencies)
@@ -1490,6 +1491,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 				this.createNetwork(networks)
 
 				// Create the Containers belong to this machine.
+				val listContainers = dockerContainerManager.listContainer(machine.name)
 				if (compute.links.size > 0) {
 
 					// Start the containers without create graph
@@ -1500,7 +1502,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 								val con = contains.target as ExecutableContainer
 
 								// The container does not exists in the machine
-								if (!containerIsDeployed(con.name, this.machine)) {
+								if (!containerIsDeployed(con.name, this.machine, listContainers)) {
 
 									// Create container
 									LOGGER.info("Creating the container: " + con.name)
@@ -1522,7 +1524,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 							val con = c as ExecutableContainer
 
 							// The container does not exists in the machine
-							if (!containerIsDeployed(con.name, compute)) {
+							if (!containerIsDeployed(con.name, compute, listContainers)) {
 
 								// Create container
 								con.createContainer(this.machine, this.containerDependency)
@@ -1541,6 +1543,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 			} else {
 
 				// Create the Containers belong to this machine.
+				val listContainers = dockerContainerManager.listContainer(machine.name)
 				if (compute.links.size > 0) {
 
 					// Start the containers without create graph
@@ -1549,7 +1552,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 							val contains = link as Contains
 							if (contains.target instanceof org.occiware.clouddesigner.occi.docker.Container) {
 								val con = contains.target as ExecutableContainer
-								if (!containerIsDeployed(con.name, this.machine)) {
+								if (!containerIsDeployed(con.name, this.machine, listContainers)) {
 
 									// Create container
 									con.createContainer(this.machine)
@@ -1570,7 +1573,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 							val con = c as ExecutableContainer
 
 							// The container does not exists in the machine
-							if (!containerIsDeployed(con.name, compute)) {
+							if (!containerIsDeployed(con.name, compute, listContainers)) {
 
 								// Create container
 								con.createContainer(this.machine, this.containerDependency)
@@ -1647,6 +1650,8 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 			this.compute.state = ComputeStatus.INACTIVE
 			// TODO Q or start it right away instead ??
 			// start(All)_execute
+		} else if (DockerUtil.HOST_RUNNING.equalsIgnoreCase(hosts.get(compute.name))) {
+			this.compute.state = ComputeStatus.ACTIVE
 		}
 		// NB. another way could be by testing model built from Docker introspection :
 		// instanceMH.getModel(this.compute.name, hosts.get(this.compute.name), false).state
@@ -1654,6 +1659,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 		if (this.compute.state.toString.equalsIgnoreCase("active")) {
 			val instanceMH = new ModelHandler
 			val instance = new DockerContainerManager(this.compute)
+			val listContainers = dockerContainerManager.listContainer(machine.name)
 
 			if (this.compute.links.size > 0) {
 
@@ -1665,18 +1671,22 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 						if (contains.target instanceof org.occiware.clouddesigner.occi.docker.Container) {
 							val con = contains.target as ExecutableContainer
 							containersInModel.add(con.name)
-							if (!containerIsDeployed(con.name, this.machine)) {
+							val dc = getDeployedContainer(con.name, this.machine, listContainers)
+							if (dc == null) {
 
 								// Create container
 								LOGGER.info("Creating the container: " + con.name)
 								con.createContainer(this.machine)
 								LOGGER.info("The container is created")
+								
+							} else if (con.containerid != dc.id) {
+								con.containerid = dc.id // update id else start cmd ill fail
 							}
 						}
 					}
 
 					// Remove the containers
-					var containersToRemove = containerInReal(this.compute.name)
+					var containersToRemove = containerInReal(this.compute.name, listContainers)
 					if (!containersToRemove.empty) {
 						containersToRemove.removeAll(containersInModel)
 						for (String id : containersToRemove) {
@@ -1691,15 +1701,19 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 						containersInModel.add(c.name)
 
 						// The container does not exists in the machine
-						if (!containerIsDeployed(con.name, compute)) {
+						val dc = getDeployedContainer(con.name, this.machine, listContainers)
+						if (dc == null) {
 
 							// Create container
 							con.createContainer(this.machine, this.containerDependency)
+							
+						} else if (con.containerid != dc.id) {
+							con.containerid = dc.id // update id else start cmd ill fail
 						}
 					}
 
 					// Remove the containers
-					var containersToRemove = containerInReal(this.compute.name)
+					var containersToRemove = containerInReal(this.compute.name, listContainers)
 					if (!containersToRemove.empty) {
 						containersToRemove.removeAll(containersInModel)
 						for (String id : containersToRemove) {
@@ -1873,6 +1887,15 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 	 */
 	def boolean containerIsDeployed(String containerName, Machine machine) {
 		val listContainers = dockerContainerManager.listContainer(machine.name)
+		return containerIsDeployed(containerName, machine, listContainers)
+	}
+	def boolean containerIsDeployed(String containerName, Machine machine,
+		List<com.github.dockerjava.api.model.Container> listContainers) {
+		return getDeployedContainer(containerName, machine, listContainers) != null
+	}
+	def com.github.dockerjava.api.model.Container getDeployedContainer(
+		String containerName, Machine machine,
+		List<com.github.dockerjava.api.model.Container> listContainers) {
 		for (com.github.dockerjava.api.model.Container c : listContainers) {
 			var String contName = null
 			val name = c.names.get(0)
@@ -1886,18 +1909,22 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 				contName = name.substring(index + linkName.length)
 			}
 			if (contName.equalsIgnoreCase(containerName)) {
-				return true
+				return c
 			}
 		}
-		return false
+		return null
 	}
 
 	/**
 	 * Get all containers deployed inside a machine.
 	 */
 	def List<String> containerInReal(String machineName) {
-		var containers = new ArrayList<String>
 		val listContainers = dockerContainerManager.listContainer(machineName)
+		return containerInReal(machineName, listContainers)
+	}
+	def List<String> containerInReal(String machineName,
+			List<com.github.dockerjava.api.model.Container> listContainers) {
+		var containers = new ArrayList<String>
 		for (com.github.dockerjava.api.model.Container c : listContainers) {
 			var String contName = null
 			val name = c.names.get(0)
