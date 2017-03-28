@@ -12,19 +12,12 @@
  */
 package org.occiware.clouddesigner.occi.monitoring.ext.connector.backend.utils.metric;
 
+import org.occiware.clouddesigner.occi.monitoring.ext.connector.backend.CollectorType;
 import org.occiware.driver.ssh.SSHShellThread;
 import org.occiware.tinom.model.Metric;
 
 public class SSHMetric extends Metric {
-	public static final String METRIC_CPU_PERCENT = "cpuPercent";
-	public static final String METRIC_RAM_PERCENT = "ramPercent";
-	public static final String METRIC_LOAD_AVG = "loadAvg";
-	public static final String METRIC_STORAGE_SYSTEM_DISK_USED = "diskUsed";
-
-	// for future values.
-	public static final String METRIC_NETWORK_IN = "netin";
-	public static final String METRIC_NETWORK_OUT = "netout";
-
+	
 	// Ref to runnable monitor values.
 	private SSHShellThread sshMonitor = null;
 
@@ -45,19 +38,19 @@ public class SSHMetric extends Metric {
 		String value = "0.0";
 		if (sshMonitor != null && sshMonitor.isStarted()) {
 			switch (channelName) {
-			case METRIC_CPU_PERCENT: {
+			case CollectorType.MIXIN_METRIC_CPU_PERCENT: {
 				value = Double.toString(sshMonitor.getCurrentCpuUtilizationDbl());
 				break;
 			}
-			case METRIC_RAM_PERCENT: {
+			case CollectorType.MIXIN_METRIC_RAM_PERCENT: {
 				value = Double.toString(sshMonitor.getCurrentRamUtilizationDbl());
 				break;
 			}
-			case METRIC_LOAD_AVG: {
+			case CollectorType.MIXIN_METRIC_LOAD_AVG: {
 				value = Double.toString(sshMonitor.getLoadAverageDbl());
 				break;
 			}
-			case METRIC_STORAGE_SYSTEM_DISK_USED: {
+			case CollectorType.MIXIN_METRIC_DISK_USED: {
 				value = Double.toString(sshMonitor.getCurrentDiskUsedDbl());
 				break;
 			}

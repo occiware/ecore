@@ -14,6 +14,7 @@
 package org.occiware.clouddesigner.occi.monitoring.ext.connector.backend;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
@@ -21,6 +22,7 @@ import org.occiware.clouddesigner.occi.Link;
 import org.occiware.clouddesigner.occi.Mixin;
 import org.occiware.clouddesigner.occi.monitoring.ext.connector.backend.exception.MonitorException;
 import org.occiware.clouddesigner.occi.monitoring.ext.connector.backend.utils.EMFTinomPublisher;
+import org.occiware.clouddesigner.occi.monitoring.ext.connector.backend.utils.EntityUtils;
 import org.occiware.clouddesigner.occi.monitoring.ext.connector.backend.utils.SensorExtListener;
 import org.occiware.clouddesigner.occi.monitoring.ext.connector.backend.utils.SshTinomCollector;
 import org.occiware.clouddesigner.occi.monitoring.ext.connector.backend.utils.SystemOutTinomPublisher;
@@ -28,6 +30,7 @@ import org.occiware.clouddesigner.occi.monitoring.ext.connector.backend.utils.me
 import org.occiware.tinom.extensions.sample.jmx.CpuMetric;
 import org.occiware.tinom.model.Aggregator;
 import org.occiware.tinom.model.Collector;
+import org.occiware.tinom.model.Metric;
 import org.occiware.tinom.model.OutputInterface;
 import org.occiware.tinom.model.Publisher;
 import org.occiware.tinom.model.Sensor;
@@ -234,25 +237,7 @@ public class SensorextConnector extends monitoringext.impl.SensorextImpl {
 		this.updateAttributesSensor = false;
 	}
 
-	/**
-	 * Used for aggregator mixin and publishers mixin.
-	 * 
-	 * @param mixinName
-	 * @return
-	 */
-	private boolean hasMixin(final String mixinName) {
-		boolean result = false;
-		String mixinTerm = null;
-		List<Mixin> mixins = this.getMixins();
-		for (Mixin mixin : mixins) {
-			mixinTerm = mixin.getTerm();
-			if (mixinTerm.equals(mixinName)) {
-				result = true;
-				break;
-			}
-		}
-		return result;
-	}
+	
 
 	/**
 	 * Build tinom objects from scratch...
@@ -269,24 +254,20 @@ public class SensorextConnector extends monitoringext.impl.SensorextImpl {
 		// Get the collectors instances and get their corresponding TINOM
 		// collectors.
 		EList<Link> links = this.getLinks();
-		SshcollectorConnector sshCollectorLink;
-		CentreoncollectorConnector centreonCollectorLink;
+		CollectorType collectorLink;
+		
 		tinomCollectors = new ArrayList<>();
 		for (Link link : links) {
-			if (link instanceof SshcollectorConnector) {
-				sshCollectorLink = (SshcollectorConnector) link;
+			if (link instanceof CollectorType) {
+				collectorLink = (CollectorType) link;
 				try {
-					tinomCollectors.add(sshCollectorLink.getTinomCollector());
+					Collector tinomCollector = collectorLink.getTinomCollector();
+					if (tinomCollector != null) {
+						tinomCollectors.add(tinomCollector);
+						tinomSensor.withCollector(tinomCollector);
+					}
 				} catch (MonitorException ex) {
 					LOGGER.error("Error while creating ssh tinom collector : " + ex.getMessage());
-				}
-			}
-			if (link instanceof CentreoncollectorConnector) {
-				centreonCollectorLink = (CentreoncollectorConnector) link;
-				try {
-					tinomCollectors.add(centreonCollectorLink.getTinomCollector());
-				} catch (MonitorException ex) {
-					LOGGER.error("Error while creating centreon tinom collector : " + ex.getMessage());
 				}
 			}
 		}
@@ -296,19 +277,11 @@ public class SensorextConnector extends monitoringext.impl.SensorextImpl {
 			tinomSensor = null;
 			return;
 		}
-		List<String> collectorsCPUIds = new ArrayList<>();
-		List<String> collectorsRAMIds = new ArrayList<>();
-		List<String> collectorsLoadavgIds = new ArrayList<>();
-		for (Collector collector : tinomCollectors) {
-			tinomSensor.withCollector(collector);
-			collectorsCPUIds.add(collector.getName() + "." + SSHMetric.METRIC_CPU_PERCENT);
-			collectorsRAMIds.add(collector.getName() + "." + SSHMetric.METRIC_RAM_PERCENT);
-			collectorsLoadavgIds.add(collector.getName() + "." + SSHMetric.METRIC_LOAD_AVG);
-		}
+		
 		
 		tinomPublishers = new ArrayList<>();
-		boolean hasEmfPublisher = hasMixin(SENSOR_MIXIN_EMF_PUBLISHER);
-		boolean hasSysOutPublisher = hasMixin(SENSOR_MIXIN_SYSOUT_PUBLISHER);
+		boolean hasEmfPublisher = EntityUtils.hasMixin(this, SENSOR_MIXIN_EMF_PUBLISHER);
+		boolean hasSysOutPublisher = EntityUtils.hasMixin(this, SENSOR_MIXIN_SYSOUT_PUBLISHER);
 		
 		if (!hasEmfPublisher && !hasSysOutPublisher) {
 			// No publisher is set.
@@ -324,24 +297,9 @@ public class SensorextConnector extends monitoringext.impl.SensorextImpl {
 			tinomPublishers.add(emfTinom);
 		}
 		if (hasSysOutPublisher) {
+			
 			SystemOutTinomPublisher outPublisher = new SystemOutTinomPublisher("console" + this.getId());
-			// Manage publisher values to render for SystemOutPublisher.
-			  // cpu percent use.
-			String[] collectorsIds = new String[collectorsCPUIds.size() + collectorsRAMIds.size() + collectorsLoadavgIds.size()];
-			int index = 0;
-			for (String cpuId : collectorsCPUIds) {
-				collectorsIds[index] = cpuId;
-				index++;
-			}
-			for (String ramId : collectorsRAMIds) {
-				collectorsIds[index] = ramId;
-				index++;
-			}
-			for (String loadId : collectorsLoadavgIds) {
-				collectorsIds[index] = loadId;
-				index++;
-			}
-			outPublisher.withInputNames(collectorsIds);
+			
 			LOGGER.info("Building sensor with publisher : SystemOutTinomPublisher");
 			tinomPublishers.add(outPublisher);
 		}

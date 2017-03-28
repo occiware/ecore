@@ -21,7 +21,12 @@ import org.occiware.tinom.model.Collector;
  *
  */
 public interface CollectorType {
+	public static final String MIXIN_METRIC_CPU_PERCENT = "cpupercent";
+	public static final String MIXIN_METRIC_RAM_PERCENT = "rampercent";
+	public static final String MIXIN_METRIC_LOAD_AVG = "loadavg";
+	public static final String MIXIN_METRIC_DISK_USED = "diskused";
 	
 	public Collector getTinomCollector() throws MonitorException;
+	public String[] getMetricsChannelToPublish();
 	
 }

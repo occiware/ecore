@@ -13,6 +13,8 @@
  */
 package org.occiware.clouddesigner.occi.monitoring.ext.connector.backend;
 
+import java.util.List;
+
 import org.eclipse.emf.common.util.EList;
 import org.occiware.clouddesigner.occi.AttributeState;
 import org.occiware.clouddesigner.occi.Link;
@@ -22,6 +24,7 @@ import org.occiware.clouddesigner.occi.infrastructure.ComputeStatus;
 import org.occiware.clouddesigner.occi.infrastructure.NetworkInterfaceStatus;
 import org.occiware.clouddesigner.occi.infrastructure.Networkinterface;
 import org.occiware.clouddesigner.occi.monitoring.ext.connector.backend.exception.MonitorException;
+import org.occiware.clouddesigner.occi.monitoring.ext.connector.backend.utils.EntityUtils;
 import org.occiware.clouddesigner.occi.monitoring.ext.connector.backend.utils.SshTinomCollector;
 import org.occiware.clouddesigner.occi.monitoring.ext.connector.backend.utils.metric.CPUPercentMetric;
 import org.occiware.clouddesigner.occi.monitoring.ext.connector.backend.utils.metric.LoadAverageMetric;
@@ -29,6 +32,7 @@ import org.occiware.clouddesigner.occi.monitoring.ext.connector.backend.utils.me
 import org.occiware.clouddesigner.occi.monitoring.ext.connector.backend.utils.metric.SSHMetric;
 import org.occiware.clouddesigner.occi.monitoring.ext.connector.backend.utils.metric.SystemDiskUsedMetric;
 import org.occiware.tinom.model.Collector;
+import org.occiware.tinom.model.Metric;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -210,10 +214,27 @@ public class SshcollectorConnector extends monitoringext.impl.SshcollectorImpl i
 				collector.setIpAddress(ipAddress);
 				collector.setPassword(password);
 				collector.setUsername(username);
-				collector.withMetric(new CPUPercentMetric(SSHMetric.METRIC_CPU_PERCENT));
-				collector.withMetric(new RAMPercentMetric(SSHMetric.METRIC_RAM_PERCENT));
-				collector.withMetric(new LoadAverageMetric(SSHMetric.METRIC_LOAD_AVG));
-				collector.withMetric(new SystemDiskUsedMetric(SSHMetric.METRIC_STORAGE_SYSTEM_DISK_USED));
+				
+				if (EntityUtils.hasMixin(this, CollectorType.MIXIN_METRIC_CPU_PERCENT)) {
+					collector.withMetric(new CPUPercentMetric(CollectorType.MIXIN_METRIC_CPU_PERCENT));
+				}
+				if (EntityUtils.hasMixin(this, CollectorType.MIXIN_METRIC_RAM_PERCENT)) {
+					collector.withMetric(new RAMPercentMetric(CollectorType.MIXIN_METRIC_RAM_PERCENT));
+				}
+				if (EntityUtils.hasMixin(this, CollectorType.MIXIN_METRIC_LOAD_AVG)) {
+					collector.withMetric(new LoadAverageMetric(CollectorType.MIXIN_METRIC_LOAD_AVG));
+				}
+				if (EntityUtils.hasMixin(this, CollectorType.MIXIN_METRIC_DISK_USED)) {
+					collector.withMetric(new LoadAverageMetric(CollectorType.MIXIN_METRIC_DISK_USED));
+				}
+				if (collector.getMetrics() == null || collector.getMetrics().isEmpty()) {
+					LOGGER.warn("No metrics assigned to this collector : " + this.getId() + " --> Default to cpu, ram and loadavg metrics value.");
+					collector.withMetric(new CPUPercentMetric(CollectorType.MIXIN_METRIC_CPU_PERCENT));
+					collector.withMetric(new RAMPercentMetric(CollectorType.MIXIN_METRIC_RAM_PERCENT));
+					collector.withMetric(new LoadAverageMetric(CollectorType.MIXIN_METRIC_LOAD_AVG));
+					collector.withMetric(new LoadAverageMetric(CollectorType.MIXIN_METRIC_DISK_USED));
+				}
+				
 				
 				if (period == 0) {
 					// Minimal period is 0 but for Tinom the period -1 is one shot. 
@@ -225,9 +246,29 @@ public class SshcollectorConnector extends monitoringext.impl.SshcollectorImpl i
 			LOGGER.warn("Collector not implemented for storage and network link, this will be on next release..");
 			
 		}
-		// TODO : If link is on network or storage. Build collectors consequently.
+		// TODO : If link is on network or storage. Build collector consequently.
 		return collector;
 	}
 	
-	
+	/**
+	 * Get channelnames to set on publishers as input names.
+	 * @return
+	 */
+	@Override
+	public String[] getMetricsChannelToPublish() {
+		String metricName;
+		String collectorName;
+		String[] channelNames = null;
+		if (tinomCollector != null) {
+			collectorName = tinomCollector.getName();
+			List<Metric> metrics = tinomCollector.getMetrics();
+			channelNames = new String[metrics.size()];
+			int index = 0;
+			for (Metric metric : metrics) {
+				metricName = metric.getName();
+				channelNames[index] = collectorName + "." + metricName;	
+			}
+		}
+		return channelNames;
+	}
 }

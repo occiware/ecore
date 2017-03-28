@@ -13,10 +13,14 @@
  */
 package org.occiware.clouddesigner.occi.monitoring.ext.connector.backend;
 
+import java.util.List;
+
 import org.occiware.clouddesigner.occi.monitoring.ext.connector.backend.exception.MonitorException;
 import org.occiware.clouddesigner.occi.monitoring.ext.connector.backend.utils.CentreonTinomCollector;
 import org.occiware.clouddesigner.occi.monitoring.ext.connector.backend.utils.SshTinomCollector;
+import org.occiware.clouddesigner.occi.monitoring.ext.connector.backend.utils.metric.SSHMetric;
 import org.occiware.tinom.model.Collector;
+import org.occiware.tinom.model.Metric;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -101,6 +105,27 @@ public class CentreoncollectorConnector extends monitoringext.impl.Centreoncolle
 			// TODO : Add attributes to tinom collector object....
 		}
 		return collector;
+	}
+	
+	/**
+	 * Get channelnames to set on publishers as input names.
+	 * @return
+	 */
+	public String[] getMetricsChannelToPublish() {
+		String metricName;
+		String collectorName;
+		String[] channelNames = null;
+		if (collector != null) {
+			collectorName = collector.getName();
+			List<Metric> metrics = collector.getMetrics();
+			channelNames = new String[metrics.size()];
+			int index = 0;
+			for (Metric metric : metrics) {
+				metricName = metric.getName();
+				channelNames[index] = collectorName + "." + metricName;	
+			}
+		}
+		return channelNames;
 	}
 	
 

@@ -24,6 +24,7 @@ import org.eclipse.emf.transaction.TransactionalCommandStack;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.occiware.clouddesigner.occi.AttributeState;
+import org.occiware.clouddesigner.occi.monitoring.ext.connector.backend.CollectorType;
 import org.occiware.clouddesigner.occi.monitoring.ext.connector.backend.utils.metric.CPUPercentMetric;
 import org.occiware.clouddesigner.occi.monitoring.ext.connector.backend.utils.metric.SSHMetric;
 import org.occiware.tinom.model.Publisher;
@@ -70,8 +71,8 @@ public class EMFTinomPublisher extends Publisher {
 
 				// Update corresponding on emf objects.
 				if (value != null) {
-					if (inputName.endsWith(CPUPercentMetric.METRIC_CPU_PERCENT)) {
-						LOGGER.debug("Metric type : " + CPUPercentMetric.METRIC_CPU_PERCENT);
+					if (inputName.endsWith(CollectorType.MIXIN_METRIC_CPU_PERCENT)) {
+						LOGGER.debug("Metric type : " + CollectorType.MIXIN_METRIC_CPU_PERCENT);
 						try {
 							tmp = Float.parseFloat(value);
 							cpu = tmp.intValue();
@@ -80,8 +81,8 @@ public class EMFTinomPublisher extends Publisher {
 									+ " ==> " + ex.getMessage());
 						}
 					}
-					if (inputName.endsWith(SSHMetric.METRIC_LOAD_AVG)) {
-						LOGGER.debug("Metric type : " + CPUPercentMetric.METRIC_LOAD_AVG);
+					if (inputName.endsWith(CollectorType.MIXIN_METRIC_LOAD_AVG)) {
+						LOGGER.debug("Metric type : " + CollectorType.MIXIN_METRIC_LOAD_AVG);
 						try {
 							loadavg = Float.parseFloat(value);
 						} catch (NumberFormatException ex) {
@@ -89,8 +90,8 @@ public class EMFTinomPublisher extends Publisher {
 									+ ex.getMessage());
 						}
 					}
-					if (inputName.endsWith(SSHMetric.METRIC_RAM_PERCENT)) {
-						LOGGER.debug("Metric type : " + CPUPercentMetric.METRIC_RAM_PERCENT);
+					if (inputName.endsWith(CollectorType.MIXIN_METRIC_RAM_PERCENT)) {
+						LOGGER.debug("Metric type : " + CollectorType.MIXIN_METRIC_RAM_PERCENT);
 						try {
 							tmp = Float.parseFloat(value);
 							ram = tmp.intValue();

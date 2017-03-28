@@ -27,6 +27,18 @@
   <mixins term="systemout-publisher" scheme="http://occiware.org/occi/monitoring/ext#" title="If this mixin is set the metrics are displayed in system.out.">
     <depends href="http://schemas.ogf.org/occi/monitoring#//@mixins[term='publisher']"/>
   </mixins>
+  <mixins term="cpupercent" scheme="http://occiware.org/occi/monitoring/ext#">
+    <depends href="http://schemas.ogf.org/occi/monitoring#//@mixins[term='metric']"/>
+  </mixins>
+  <mixins term="rampercent" scheme="http://occiware.org/occi/monitoring/ext#">
+    <depends href="http://schemas.ogf.org/occi/monitoring#//@mixins[term='metric']"/>
+  </mixins>
+  <mixins term="loadavg" scheme="http://occiware.org/occi/monitoring/ext#">
+    <depends href="http://schemas.ogf.org/occi/monitoring#//@mixins[term='metric']"/>
+  </mixins>
+  <mixins term="diskused" scheme="http://occiware.org/occi/monitoring/ext#">
+    <depends href="http://schemas.ogf.org/occi/monitoring#//@mixins[term='metric']"/>
+  </mixins>
   <types name="FloatType" instanceClassName="float">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
       <details key="mininclusive" value="0"/>

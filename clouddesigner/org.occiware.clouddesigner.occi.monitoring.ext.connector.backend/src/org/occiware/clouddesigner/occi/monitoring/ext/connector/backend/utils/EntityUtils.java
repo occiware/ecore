@@ -24,6 +24,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.occiware.clouddesigner.occi.AttributeState;
 import org.occiware.clouddesigner.occi.Entity;
+import org.occiware.clouddesigner.occi.Mixin;
 import org.occiware.clouddesigner.occi.OCCIFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -75,6 +76,27 @@ public class EntityUtils {
 		} else {
 			LOGGER.warn("This method (EntityUtils.updateAttributes(....) must be called only on a cloud designer environment (GUI) !");
 		}
+	}
+	
+	/**
+	 * check if mixin instance is on entity.
+	 * 
+	 * @param entity The entity to check.
+	 * @param mixinName
+	 * @return
+	 */
+	public static boolean hasMixin(final Entity entity, final String mixinName) {
+		boolean result = false;
+		String mixinTerm = null;
+		List<Mixin> mixins = entity.getMixins();
+		for (Mixin mixin : mixins) {
+			mixinTerm = mixin.getTerm();
+			if (mixinTerm.equals(mixinName)) {
+				result = true;
+				break;
+			}
+		}
+		return result;
 	}
 	
 	
