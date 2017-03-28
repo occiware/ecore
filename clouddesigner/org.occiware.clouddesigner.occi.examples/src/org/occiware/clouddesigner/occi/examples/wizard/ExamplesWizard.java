@@ -83,9 +83,13 @@ public class ExamplesWizard extends Wizard implements INewWizard {
 						ModelingProjectManager.INSTANCE.convertToModelingProject(project, monitor);
 						PlatformUI.getWorkbench().showPerspective(MODELING_PERSPECTIVE_ID,
 								PlatformUI.getWorkbench().getActiveWorkbenchWindow());
-						final Session session = ModelingProject.asModelingProject(project).get().getSession();
+						final ModelingProject modelingProject = ModelingProject.asModelingProject(project).get();
+						final Session session = modelingProject.getSession();
 						for (DRepresentation representation : DialectManager.INSTANCE.getAllRepresentations(session)) {
-							DialectUIManager.INSTANCE.openEditor(session, representation, monitor);
+							if (modelingProject.getMainRepresentationsFileURI(monitor).get()
+									.equals(representation.eResource().getURI())) {
+								DialectUIManager.INSTANCE.openEditor(session, representation, monitor);
+							}
 						}
 						monitor.done();
 					} catch (CoreException | IOException e) {
