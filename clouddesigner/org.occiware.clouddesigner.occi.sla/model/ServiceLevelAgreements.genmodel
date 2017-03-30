@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="ASCII"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2015-2016 Obeo, Inria&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html&#xA;&#x9;&#xA;Contributors:&#xA;- William Piers &lt;william.piers@obeo.fr>&#xA;- Philippe Merle &lt;philippe.merle@inria.fr>" modelDirectory="/org.occiware.clouddesigner.occi.sla/src-gen" editDirectory="/org.occiware.clouddesigner.occi.sla.edit/src-gen" editorDirectory="/org.occiware.clouddesigner.occi.sla.editor/src-gen" modelPluginID="org.occiware.clouddesigner.occi.sla" modelName="Servicelevelagreements" testsDirectory="/org.occiware.clouddesigner.occi.sla.tests/src" complianceLevel="7.0" copyrightFields="false" editPluginID="org.occiware.clouddesigner.occi.sla.edit" editorPluginID="org.occiware.clouddesigner.occi.sla.editor" testsPluginID="org.occiware.clouddesigner.occi.sla.tests" operationReflection="true">
+  <foreignModel>ServiceLevelAgreements.ecore</foreignModel>
+  <genPackages prefix="Servicelevelagreements" disposableProviderFactory="true">
+    <ecorePackage href="ServiceLevelAgreements.ecore#/"/>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="ServiceLevelAgreements.ecore#//AgreementStatus"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="ServiceLevelAgreements.ecore#//AgreementStatus/Pending"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="ServiceLevelAgreements.ecore#//AgreementStatus/Accepted"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="ServiceLevelAgreements.ecore#//AgreementStatus/Rejected"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="ServiceLevelAgreements.ecore#//AgreementStatus/Suspended"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="ServiceLevelAgreements.ecore#//AgreementStatus/Terminated"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="ServiceLevelAgreements.ecore#//AgreementTermType"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="ServiceLevelAgreements.ecore#//AgreementTermType/SERVICE"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="ServiceLevelAgreements.ecore#//AgreementTermType/SLO"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="ServiceLevelAgreements.ecore#//AgreementTermStatus"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="ServiceLevelAgreements.ecore#//AgreementTermStatus/Undefined"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="ServiceLevelAgreements.ecore#//AgreementTermStatus/Fulfilled"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="ServiceLevelAgreements.ecore#//AgreementTermStatus/Violated"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genDataTypes>
+      <ecoreDataType href="ServiceLevelAgreements.ecore#//DateTime"/>
+    </genDataTypes>
+    <genClasses>
+      <ecoreClass href="ServiceLevelAgreements.ecore#//Agreement"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="ServiceLevelAgreements.ecore#//Agreement/state"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="ServiceLevelAgreements.ecore#//Agreement/agreedAt"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="ServiceLevelAgreements.ecore#//Agreement/effectiveFrom"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="ServiceLevelAgreements.ecore#//Agreement/effectiveUntil"/>
+      </genFeatures>
+      <genOperations>
+        <ecoreOperation href="ServiceLevelAgreements.ecore#//Agreement/accept"/>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="ServiceLevelAgreements.ecore#//Agreement/reject"/>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="ServiceLevelAgreements.ecore#//Agreement/suspend"/>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="ServiceLevelAgreements.ecore#//Agreement/resume"/>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="ServiceLevelAgreements.ecore#//Agreement/terminate"/>
+      </genOperations>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="ServiceLevelAgreements.ecore#//Agreement_link"/>
+    </genClasses>
+  </genPackages>
+  <usedGenPackages href="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.genmodel#//occi"/>
+</genmodel:GenModel>

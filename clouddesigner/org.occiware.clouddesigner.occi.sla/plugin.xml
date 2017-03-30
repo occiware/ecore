@@ -48,4 +48,11 @@
          </action>
       </objectContribution>
    </extension>
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated ServiceLevelAgreements -->
+      <package
+            uri="http://schemas.ogf.org/occi/sla/ecore"
+            class="servicelevelagreements.ServicelevelagreementsPackage"/>
+   </extension>
+
 </plugin>
