@@ -58,6 +58,7 @@ public class Host {
 
 	/** The datacenter where the host is placed. */
 	private Datacenter datacenter;
+	
 
 	/**
 	 * Instantiates a new host.
@@ -211,12 +212,14 @@ public class Host {
 		if (getStorage() < vm.getSize()) {
 			Log.printLine("[VmScheduler.vmCreate] Allocation of VM #" + vm.getId() + " to Host #" + getId()
 					+ " failed by storage");
+			CloudSim.error=true;
 			return false;
 		}
 
 		if (!getRamProvisioner().allocateRamForVm(vm, vm.getCurrentRequestedRam())) {
 			Log.printLine("[VmScheduler.vmCreate] Allocation of VM #" + vm.getId() + " to Host #" + getId()
 					+ " failed by RAM");
+			CloudSim.error=true;
 			return false;
 		}
 
@@ -224,6 +227,7 @@ public class Host {
 			Log.printLine("[VmScheduler.vmCreate] Allocation of VM #" + vm.getId() + " to Host #" + getId()
 					+ " failed by BW");
 			getRamProvisioner().deallocateRamForVm(vm);
+			CloudSim.error=true;
 			return false;
 		}
 
@@ -232,6 +236,7 @@ public class Host {
 					+ " failed by MIPS");
 			getRamProvisioner().deallocateRamForVm(vm);
 			getBwProvisioner().deallocateBwForVm(vm);
+			CloudSim.error=true;
 			return false;
 		}
 
@@ -543,7 +548,7 @@ public class Host {
 	 * 
 	 * @param storage the new storage
 	 */
-	protected void setStorage(long storage) {
+	public void setStorage(long storage) {
 		this.storage = storage;
 	}
 
@@ -628,6 +633,15 @@ public class Host {
 	
 	public Map<Integer, Long> getStorageConsumed(){
 		return storageConsumed;
+	}
+	
+	public Host clone(){
+		return new Host(this.id,
+				this.ramProvisioner,
+				this.bwProvisioner,
+				this.storage,
+				this.peList,
+				this.vmScheduler);
 	}
 
 }

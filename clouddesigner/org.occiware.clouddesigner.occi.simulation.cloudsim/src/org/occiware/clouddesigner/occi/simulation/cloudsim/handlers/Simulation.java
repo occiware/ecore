@@ -11,6 +11,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 import java.lang.reflect.Constructor;
 import java.text.DecimalFormat;
 import org.occiware.clouddesigner.occi.simulation.cloudsim.Cloudlet;
@@ -47,20 +49,24 @@ public class Simulation {
 	public static List<Cloudlet> cloudletList;
 	public static List<Vm> vmlist;
 	public static Map<Vm, Host> vmToHost;
-	Map<Entity, Set<Entity>> entities;
+	public ConcurrentHashMap<Entity, Set<Entity>> entities;
 	public StringBuilder result;
 	public List<String> att, carac;
 	Map<String, ArrayList<String>> rsrc;
 	public List<Datacenter> listDatacenter;
 
 	public Simulation(Map<Entity, Set<Entity>> entities){
-		this.entities = entities;
+		this.entities = new ConcurrentHashMap<> (entities);
 		att = new ArrayList<String>();
 		rsrc = new HashMap<String, ArrayList<String>>();
 		carac = new ArrayList<String>();
 		vmToHost = new HashMap<Vm, Host>();
 		listDatacenter = new ArrayList<Datacenter>();
 		carac.add("Cloudlet_ID,STATUS,Datacenter_ID,VM,Time,Start_Time,Finish_Time");
+	}
+	
+	public boolean getCloudSimError(){
+		return CloudSim.error;
 	}
 
 	public void runExtension(){
@@ -90,7 +96,7 @@ public class Simulation {
 
 				Datacenter dc = createDatacenter((Dc_Config)obj);
 				listDatacenter.add(dc);
-				List<Host> listHost = dc.getHostList();
+
 
 				//broker for each user 
 				if (num_user != 0) {
@@ -101,32 +107,45 @@ public class Simulation {
 					brokerId = broker.getId();
 					nameBroker++;
 				}
-				Set<Entity> hostlinkedToDatacenter = entities.get(obj);
-				Iterator<Entity> itHost = hostlinkedToDatacenter.iterator();
-				while (itHost.hasNext()) {
-					Host_Config host_config = (Host_Config) itHost.next();
+				Set<Entity> hostlinkedToDC = entities.get(obj);
+				List<Entity> itHost = new ArrayList<Entity>(hostlinkedToDC);
+				//Iterator<Entity> itHost = hostlinkedToDatacenter.iterator();
+				for(int i=0; i<itHost.size();i++) {
+					Host_Config host_config = (Host_Config) itHost.get(i);
+					System.out.println("BEFORE: "+host_config);
+					verifyElasticityHost(host_config,  itHost, dc);
+					System.out.println("AFTER: "+host_config);
+					List<Host> listHost = dc.getHostList();		
 					Host host = getHostFromList(listHost, host_config);
+					if(host_config.getLinkedResourceId().size() == 0){
+						entities.remove(host_config);
+						hostlinkedToDC.remove(host_config);
+						dc.getHostList().remove(host);
+						
+					}
+					else
+					{
+						Set<Entity> vmLinkedToHost = entities.get(host_config);
+						Iterator<Entity> itVM = vmLinkedToHost.iterator();
 
-					Set<Entity> vmLinkedToHost = entities.get(host_config);
-					Iterator<Entity> itVM = vmLinkedToHost.iterator();
-					while (itVM.hasNext()) {
-						Entity isVm = itVM.next();
-						createVm((VM_Config)isVm, brokerId, host,vmid);
-						idVmToIdcloudLet.put(vmid, new HashSet<Integer>());
-						Set<Entity> cloudletLinkedToVm = entities.get(isVm);
-						Iterator<Entity> itCloudlet = cloudletLinkedToVm.iterator();
-						while (itCloudlet.hasNext()) {
-							Entity isCloudLet = itCloudlet.next();
-							createCloudLet((Cloudlet_Config)isCloudLet, brokerId, cloudLetId);
-							idVmToIdcloudLet.get(vmid).add(cloudLetId);
-							cloudLetId++;
+						while (itVM.hasNext()) {
+							Entity isVm = itVM.next();
+							createVm((VM_Config)isVm, brokerId, host,vmid);
+							idVmToIdcloudLet.put(vmid, new HashSet<Integer>());
+							Set<Entity> cloudletLinkedToVm = entities.get(isVm);
+							Iterator<Entity> itCloudlet = cloudletLinkedToVm.iterator();
+							while (itCloudlet.hasNext()) {
+								Entity isCloudLet = itCloudlet.next();
+								createCloudLet((Cloudlet_Config)isCloudLet, brokerId, cloudLetId);
+								idVmToIdcloudLet.get(vmid).add(cloudLetId);
+								cloudLetId++;
+							}
+							vmid++;
 						}
-						vmid++;
 					}
 				}
 				nbrDatacenter--;
 				num_user--;
-
 				if ((num_user == 0 && nbrDatacenter == 0) || num_user != 0) {
 					broker.submitVmList(vmlist);
 					broker.submitCloudletList(cloudletList);
@@ -142,7 +161,6 @@ public class Simulation {
 
 			}
 		}
-
 		CloudSim.startSimulation();
 
 		Set<List<Cloudlet>> resultList = new HashSet<List<Cloudlet>>();
@@ -150,9 +168,12 @@ public class Simulation {
 			List<Cloudlet> newList = dcBr.getCloudletReceivedList();
 			resultList.add(newList);
 		}
-
+		
 		CloudSim.stopSimulation();
-
+		
+		if(CloudSim.error)
+			return;
+		
 		for (List<Cloudlet> newList : resultList) {
 			printCloudletList(newList);
 		}
@@ -172,7 +193,7 @@ public class Simulation {
 				for(Vm vm_: vmToHost.keySet()){
 					int vmId = vm_.getId();
 					ArrayList<String> l = new ArrayList<String>();
-					if(vmId == host.getId()){
+					if(vmToHost.get(vm_).getId() == host.getId()){
 						l.add(""+ramProv.getramConsumed().get(vmId)*datacenter.getCharacteristics().getCostPerMem());
 						Log.printLine("vmId: "+vmId+", RamPrice: "+ramProv.getramConsumed().get(vmId)*datacenter.getCharacteristics().getCostPerMem());
 						l.add(""+bwsimple.getBwConsumed().get(vmId)*datacenter.getCharacteristics().getCostPerBw());
@@ -431,5 +452,95 @@ public class Simulation {
 		return null;
 
 	}
+
+	private void verifyElasticityHost(Host_Config host_config, List<Entity> listHostConfig, Datacenter dc){
+		Set<Entity> vms = entities.get(host_config);
+		List<Host> listHostSim = dc.getHostList();
+
+		long totalsizeVm =0;
+		if(host_config.elastic_host.equals("V")){
+			listHostConfig.remove(host_config);
+			Iterator<Entity> itVM = vms.iterator();
+			while (itVM.hasNext()) {
+				Entity isVm = itVM.next();
+				VM_Config Vm = (VM_Config)isVm;
+				totalsizeVm += Vm.size;
+			}
+			host_config.storage = totalsizeVm;	
+			listHostConfig.add(host_config);
+			Host host = getHostFromList(listHostSim, host_config);
+			host.setStorage(totalsizeVm);
+		}else if(host_config.elastic_host.equals("H")){
+			Iterator<Entity> itVM = vms.iterator();
+			totalsizeVm = 0;
+			while (itVM.hasNext()) {
+				VM_Config Vm = (VM_Config)itVM.next();
+
+				if(Vm.size > host_config.storage-totalsizeVm){
+					List<String> idVms = new ArrayList<String>();
+					idVms.add(Vm.id);
+					Host_Config h = host_config.clone();
+					h.setStorage(Vm.size);
+
+					Set<Entity> set = new HashSet<Entity>();
+					set.add(Vm);
+					entities.put(h, set);
+					itVM.remove();
+					System.out.println("New Host- Host_Config: "+h);
+					listHostConfig.add(h);
+					host_config.idTarget.removeAll(idVms);//remove Vm from the previous Host
+					h.setTarget(idVms);// add Vm to the new Host
+					Host host= createHostFromHostConfig(h);
+					host.setDatacenter(dc);
+					dc.getCharacteristics().getHostList().add(host);
+				}
+				else{
+					totalsizeVm += Vm.size;
+				}
+
+			}
+
+		}
+	}
+
+	private Host createHostFromHostConfig(Host_Config host){
+
+		List<Pe> peList = new ArrayList<Pe>();
+		int hostId = host.id_host, ram = host.ram, numPe = host.core; 
+		long storage = host.storage, bw = host.bw ; 
+		double mips = host.mips ;
+		String peProvisioner = host.peProvisioner;
+		String ramProvisioner = host.ramProvisioner;
+		String bwProvisioner = host.bwProvisioner;
+		String vmScheduler = host.vmScheduler;
+		try {
+			Class<?> classPeProvi = Class.forName("org.occiware.clouddesigner.occi.simulation.cloudsim.provisioners."+peProvisioner);
+			Constructor<?> consPeProvi = classPeProvi.getConstructor(Double.class);
+			Object peProvis = consPeProvi.newInstance(mips);
+			for (int p = 0; p < numPe; p++)
+				peList.add(new Pe(0, (PeProvisioner) peProvis));
+
+			Class<?> classRamProvi = Class.forName("org.occiware.clouddesigner.occi.simulation.cloudsim.provisioners."+ramProvisioner);
+			Constructor<?> consRamProvi = classRamProvi.getConstructor(Integer.class);
+			Object ramProvis = consRamProvi.newInstance(ram);
+
+			Class<?> classBwProvi = Class.forName("org.occiware.clouddesigner.occi.simulation.cloudsim.provisioners."+bwProvisioner);
+			Constructor<?> consBwProvi = classBwProvi.getConstructor(Long.class);
+			Object bwProvis = consBwProvi.newInstance(bw);
+
+			Class<?> classVmSched = Class.forName("org.occiware.clouddesigner.occi.simulation.cloudsim."+vmScheduler);
+			Constructor<?> consVmSched = classVmSched.getConstructor(List.class);
+			Object vmSched = consVmSched.newInstance(peList);
+
+			return new Host(hostId, (RamProvisioner) ramProvis, (BwProvisioner)bwProvis, 
+					storage, peList, (VmScheduler) vmSched);
+		} catch (Exception e) {
+			System.err.println("Exception in createDatacenter");
+			e.printStackTrace();
+		}
+		return null;
+
+	}
+
 
 }

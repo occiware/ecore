@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
 
 import org.occiware.clouddesigner.occi.AttributeState;
 import org.occiware.clouddesigner.occi.Configuration;
@@ -125,6 +126,8 @@ public class Parser {
 		double mips=0;
 		long bw=0, size=0;
 		String vmm="";
+		String elastic_vm="";
+		int ram_max=0,ram_min=0;
 		String cloudletScheduler="";
 
 		for(AttributeState as : resource.getAttributes()) {
@@ -138,6 +141,9 @@ public class Parser {
 			else if (as.getName().equals("size")) size = Long.parseLong(as.getValue());
 			else if (as.getName().equals("vmm")) vmm = as.getValue();
 			else if (as.getName().equals("cloudletScheduler")) cloudletScheduler = as.getValue();
+			else if (as.getName().equals("ram_max_vm")) ram_max = Integer.parseInt(as.getValue());
+			else if (as.getName().equals("ram_min_vm")) ram_min = Integer.parseInt(as.getValue());
+			else if (as.getName().equals("elastic_vm")) elastic_vm = as.getValue();
 		}
 		//resource linked to VM
 		for(Link link : resource.getLinks()) {
@@ -153,29 +159,35 @@ public class Parser {
 		}
 
 		return new VM_Config(id, idTarget, id_vm, numberOfPes, ram, mips,
-				bw, size, vmm, cloudletScheduler) ;
+				bw, size, vmm, cloudletScheduler, elastic_vm, ram_min, ram_max) ;
 	}	
 
 	private Host_Config HostFromResource(Resource resource){
 		String id = resource.getId(); //ressourceId
 		List<String> idTarget = new ArrayList<String>();
 		int id_host=0, core=0, ram=0, bw=0;
-		String ramProvisioner="", bwProvisioner="", peProvisioner="",vmScheduler="";
+		String elastic_host="",ramProvisioner="", bwProvisioner="", peProvisioner="",vmScheduler="";
 		long storage=0;
 		double mips=0;
-
+		int ram_max_host=0, ram_min_host=0, mips_max_host=0;
+		
 		for(AttributeState as : resource.getAttributes()) {
 			if(as.getName().equals("id_host")) id_host = Integer.parseInt(as.getValue());
-			else if (as.getName().contains("speed")  || as.getName().contains("mips")) mips = 1000*Double.parseDouble(as.getValue());
+			else if (as.getName().contains("speed")  || as.getName().equals("mips")) mips = 1000*Double.parseDouble(as.getValue());
 			else if (as.getName().contains("cores")) core = Integer.parseInt(as.getValue());
-			else if (as.getName().contains("memory")) ram = 1000*Integer.parseInt(as.getValue());//GB
-			else if (as.getName().equals("ram")) ram = Integer.parseInt(as.getValue());
+			//else if (as.getName().contains("memory")) ram = 1000*Integer.parseInt(as.getValue());//GB
+			else if (as.getName().equals("ram")) ram = Integer.parseInt(as.getValue());//MB
 			else if (as.getName().equals("bw")) bw = Integer.parseInt(as.getValue());
-			else if (as.getName().equals("storage")) storage = Long.parseLong(as.getValue());
+			else if (as.getName().equals("storage")) storage = Long.parseLong(as.getValue());//MB
 			else if (as.getName().equals("ramProvisioner")) ramProvisioner = as.getValue();
 			else if (as.getName().equals("bwProvisioner")) bwProvisioner = as.getValue();
 			else if (as.getName().equals("vmScheduler")) vmScheduler = as.getValue();
 			else if (as.getName().equals("peProvisioner")) peProvisioner = as.getValue();
+			else if (as.getName().equals("elastic_host")) elastic_host = as.getValue();
+			else if (as.getName().equals("ram_max_host")) ram_max_host = Integer.parseInt(as.getValue());
+			else if (as.getName().equals("ram_min_host")) ram_min_host = Integer.parseInt(as.getValue());
+			else if (as.getName().equals("mips_max_host")) mips_max_host = Integer.parseInt(as.getValue());
+			
 		}
 		//VM linked to host
 		for(Link link : resource.getLinks()) {
@@ -189,9 +201,9 @@ public class Parser {
 				}
 			}
 		}
-
 		return new Host_Config(id, idTarget, id_host, mips, core, ramProvisioner,
-				bwProvisioner, vmScheduler, peProvisioner, storage, ram, bw);
+				bwProvisioner, vmScheduler, peProvisioner, storage, ram, bw,
+				elastic_host, ram_min_host, ram_max_host, mips_max_host);
 	}
 
 
@@ -300,14 +312,15 @@ public class Parser {
 	protected class VM_Config implements Entity{
 		String id; //ressourceId
 		List<String> idTarget;
-		int id_vm, numberOfPes, ram;
+		int id_vm, numberOfPes, ram, ram_min, ram_max;
 		double mips;
 		long bw, size;
-		String vmm;
+		String vmm, elastic;
 		String cloudletScheduler;
 
 		public VM_Config(String id, List<String> idTarget, int id_vm, int numberOfPes, int ram, double mips,
-				long bw, long size, String vmm, String cloudletScheduler) {
+				long bw, long size, String vmm, String cloudletScheduler,
+				String elastic, int ram_min, int ram_max) {
 			this.id = id;
 			this.idTarget = idTarget;
 			this.id_vm = id_vm;
@@ -318,13 +331,17 @@ public class Parser {
 			this.size = size;
 			this.vmm = vmm;
 			this.cloudletScheduler = cloudletScheduler;
+			this.ram_min=ram_min;
+			this.ram_max= ram_max;
+			this.elastic=elastic;
 		}
 
 		@Override
 		public String toString() {
 			return "VM [id=" + id + ", idTarget=" + idTarget + ", id_vm=" + id_vm + 
 					", numberOfPes=" + numberOfPes + ", ram=" + ram + ", mips=" + mips + ", bw=" + bw + ", size="
-					+ size + ", vmm=" + vmm + ", cloudletScheduler=" + cloudletScheduler + "]";
+					+ size + ", vmm=" + vmm + ", cloudletScheduler=" + cloudletScheduler + 
+					"elasticity="+elastic+" ram_min="+ram_min+" ram_max="+ram_max+"]";
 		}
 
 		@Override
@@ -338,15 +355,17 @@ public class Parser {
 	}
 
 
-	protected class Host_Config implements Entity{
+	protected static class Host_Config implements Entity{
 		String id; //ressourceId
 		List<String> idTarget;
-		int id_host, core, ram, bw;
+		public static int numberHost = 0;
+		int id_host, core, ram, bw, ram_min_host, ram_max_host, mips_max_host;
 		double mips;
-		String ramProvisioner, bwProvisioner,peProvisioner, vmScheduler;
+		String ramProvisioner, bwProvisioner,peProvisioner, vmScheduler, elastic_host;
 		long storage;
 		public Host_Config(String id, List<String> idTarget, int id_host, double mips, int core, String ramProvisioner,
-				String bwProvisioner, String vmScheduler, String peProvisioner, long storage, int ram, int bw) {
+				String bwProvisioner, String vmScheduler, String peProvisioner, long storage, int ram, int bw,
+				String elastic_host, int ram_min_host, int ram_max_host, int mips_max_host) {
 			this.id = id;
 			this.idTarget = idTarget;
 			this.id_host = id_host;
@@ -359,6 +378,19 @@ public class Parser {
 			this.storage = storage;
 			this.bw = bw;
 			this.ram = ram;
+			this.elastic_host=elastic_host;
+			this.ram_min_host=ram_min_host;
+			this.ram_max_host=ram_max_host;
+			this.mips_max_host=mips_max_host;
+			numberHost++;
+		}
+		
+		public Host_Config clone(){
+			numberHost++;
+			String newResourceId = UUID.randomUUID().toString();
+			return new Host_Config(newResourceId, this.idTarget, numberHost, this.mips, this.core, this.ramProvisioner,
+					this.bwProvisioner, this.vmScheduler, this.peProvisioner, this.storage, this.ram, this.bw,
+					this.elastic_host, this.ram_min_host, this.ram_max_host, this.mips_max_host);
 		}
 
 		@Override
@@ -366,7 +398,8 @@ public class Parser {
 			return "Host_Config [id=" + id + ", idTarget=" + idTarget + ", id_host=" + id_host + ", mips=" + mips
 					+ ", core=" + core + ", ram=" + ram + ", bw=" + bw + ", ramProvisioner=" + ramProvisioner
 					+ ", bwProvisioner=" + bwProvisioner + ", peProvisioner=" + peProvisioner + ", vmScheduler="
-					+ vmScheduler + ", storage=" + storage + "]";
+					+ vmScheduler + ", storage=" + storage + " elastic_host="+elastic_host+" ram_min_host="+ram_min_host+
+					"ram_max_host="+ram_max_host+" mips_max_host="+mips_max_host+"]";
 		}
 
 		@Override
@@ -377,6 +410,44 @@ public class Parser {
 		public List<String> getLinkedResourceId() {
 			return idTarget;
 		}
+		
+		public void setTarget(List<String> targ){
+			this.idTarget = targ;
+		}
+		
+		public void setStorage(long storage){
+			this.storage = storage;
+		}
+		
+		public void setId(int id){
+			this.id_host = id;
+		}
+
+		@Override
+		public int hashCode() {
+			final int prime = 31;
+			int result = 1;
+			result = prime * result + ((id == null) ? 0 : id.hashCode());
+			return result;
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			Host_Config other = (Host_Config) obj;
+			if (id == null) {
+				if (other.id != null)
+					return false;
+			} else if (!id.equals(other.id))
+				return false;
+			return true;
+		}
+		
 	}
 
 	protected class Dc_Config implements Entity{

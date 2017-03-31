@@ -17,6 +17,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -79,6 +80,16 @@ public class DesignServices {
 		tagResource(resource, "cloudlet");
 	}
 
+	public void tagStorage(Resource resource) {
+		//tagResource(resource, "storage");
+		System.out.println("Not yet implemented");
+	}
+
+	public void tagNetwork(Resource resource) {
+		//tagResource(resource, "network");
+		System.out.println("Not yet implemented");
+	}
+
 	public void addPackage(Resource resource){
 		//add core to use package
 		Configuration configuration = OcciHelper.getConfiguration(resource);
@@ -123,7 +134,7 @@ public class DesignServices {
 		}
 		return false;
 	}
-	
+
 	public void tagResource(Resource resource, String term) {
 		if(resource.getKind().getTerm().equals("resource") || isCompute(resource)){
 			//add core to use package
@@ -167,6 +178,14 @@ public class DesignServices {
 			System.out.println("Configuration contains correct informations");
 			Simulation simulation = new Simulation(entities);
 			simulation.runExtension();
+			if(simulation.getCloudSimError()){
+				JOptionPane.showMessageDialog(null, "Thanks to verify your configuration",
+						"Simulation Result",
+						JOptionPane.INFORMATION_MESSAGE);
+				return;
+			}
+			//verify the additionnal entities
+			verifyTheAdditionnalResource(simulation.entities, config);
 
 			JOptionPane.showMessageDialog(null, simulation.getResult(),
 					"Simulation Result",
@@ -178,8 +197,6 @@ public class DesignServices {
 			MessageDialog.openInformation(shell, "Info", "Thanks to verify your linked resources in configuration \n"
 					+ msg);
 		}
-
-
 	}
 
 	public boolean tagedBefore(Resource resource){
@@ -393,6 +410,34 @@ public class DesignServices {
 
 	private static String schemeWithoutSharp(String scheme) {
 		return scheme.substring(0, scheme.length()-2);
+	}
+
+	private void verifyTheAdditionnalResource(ConcurrentHashMap<Entity, Set<Entity>> entities,Configuration conf){
+		Map<String, org.occiware.clouddesigner.occi.Resource> targetResources = new HashMap<String,org.occiware.clouddesigner.occi.Resource>();
+
+		for(Entity entity: entities.keySet()){
+			boolean exist=false;
+			for(Resource resource : conf.getResources()) {
+				if(entity.getId().equals(resource.getId()))
+					exist=true;
+			}
+			if(!exist){
+				System.out.println("resource to ADD: "+entity);
+				System.out.println("Linked to : "+entities.get(entity));
+			}
+		}
+		
+		for(Resource resource : conf.getResources()){
+			boolean exist=false;
+			for(Entity entity: entities.keySet()) {
+				if(entity.getId().equals(resource.getId()))
+					exist=true;
+			}
+			if(!exist){
+				System.out.println("resource to Remove: "+resource);
+			}
+		}
+
 	}
 
 }

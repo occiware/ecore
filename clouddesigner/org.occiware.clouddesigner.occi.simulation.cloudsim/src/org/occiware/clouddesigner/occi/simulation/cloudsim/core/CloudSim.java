@@ -64,7 +64,7 @@ public class CloudSim {
 
 	/** The minimal time between events. Events within shorter periods after the last event are discarded. */
 	private static double minTimeBetweenEvents = 0.1;
-	
+	static public boolean error;
 	/**
 	 * Initialises all the common attributes.
 	 * 
@@ -118,6 +118,7 @@ public class CloudSim {
 	 */
 	public static void init(int numUser, Calendar cal, boolean traceFlag) {
 		try {
+			error = false;
 			initCommonVariable(cal, traceFlag, numUser);
 
 			// create a GIS object
