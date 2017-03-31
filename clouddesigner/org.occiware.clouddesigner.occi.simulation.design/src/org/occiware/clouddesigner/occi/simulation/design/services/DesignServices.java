@@ -173,7 +173,7 @@ public class DesignServices {
 		Map<Entity, Set<Entity>> entities= bridge.ExtaractEntities();
 		Shell shell = this.getShell();
 		String msg = bridge.checkEntities();
-		System.out.println("msg: "+msg);
+		//System.out.println("msg: "+msg);
 		if(msg==null){
 			System.out.println("Configuration contains correct informations");
 			Simulation simulation = new Simulation(entities);
