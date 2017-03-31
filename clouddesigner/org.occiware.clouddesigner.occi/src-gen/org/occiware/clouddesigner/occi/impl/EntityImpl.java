@@ -192,7 +192,7 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @generated
+	 * @generated NOT
 	 */
 	protected EntityImpl() {
 		super();
@@ -315,7 +315,7 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @generated
+	 * @generated NOT
 	 */
 	public EList<AttributeState> getAttributes() {
 		if (attributes == null) {
@@ -411,7 +411,7 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @generated
+	 * @generated NOT
 	 */
 	public void occiCreate() {
 		LOGGER.debug("occiCreate() called on " + this);
@@ -420,7 +420,7 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @generated
+	 * @generated NOT
 	 */
 	public void occiRetrieve() {
 		LOGGER.debug("occiRetrieve() called on " + this);
@@ -429,7 +429,7 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @generated
+	 * @generated NOT
 	 */
 	public void occiUpdate() {
 		LOGGER.debug("occiUpdate() called on " + this);
@@ -438,7 +438,7 @@ public abstract class EntityImpl extends MinimalEObjectImpl.Container implements
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @generated
+	 * @generated NOT
 	 */
 	public void occiDelete() {
 		LOGGER.debug("occiDelete() called on " + this);
