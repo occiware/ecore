@@ -28,7 +28,7 @@ after_success:
 deploy:
   provider: releases
   api_key:
-    secure: "XxNCi/YuIHXQX/BNMrByWuDLk+eV9EpA9j8o26qvIOJUNCiT0vfXeadSfsyPYaUO//i+2/5DasfjJgeuRId0YwxSxGT//q9IbCTAb5TU0kCaOCT9MwMuo3jlIhapQlB1VfiuQUnXZo7AIWc/QvW9LHKKwXtIGMZWEpAYSW9Hqnw="
+    secure: "DIEthrRs94TsIpm1Scsqfu9wYYS9hiH6RV/u9vhSerzutSJGSlxTjyOS/Hv/GWPVh+0t7lwCOQm0Q0rvdsDkO38BLWIx+qgs/RxXbUcXjVnxb/KuJ+UypHgnO94D9IO5sI0GY7VUVP5TfphLxxY3WYzX5kGADX3KltT0yDzAesI="
   file:
     - "clouddesigner/org.occiware.clouddesigner.product/target/products/org.occiware.clouddesigner.product-linux.gtk.x86_64.zip"
     - "clouddesigner/org.occiware.clouddesigner.product/target/products/org.occiware.clouddesigner.product-macosx.cocoa.x86_64.zip"
@@ -46,5 +46,5 @@ env:
   global:
   - secure: Lp/h2cwzh5j6iT7OBmKmg8WUFnY7WWTj9X9/nvqiV8B92wW1I4LOc97RWpzidR7hBk/Z0NtHUuVd8Djd5WBEN5BKJ9Bchrpx9JBnb0hmdD45YhBIm4G8R3bctbg6Q2xDM8RbaTv/uwUl7/sE+9BFv+oIEOZ4s01yzIEutwGeKyA=
   - secure: L/K7jwoNcRw+38eTYq6US8jCNZdCFWFgF4mOsy6/sMMt/14KdZBe7bXKwfm5j9ZuqlPaiKPNPIFfI2isG4wGenXbNgODsE6qZPglyAAxSOwivKDBQtC3Uqqwuh6ZtmBuATg9ZNLAb1Dw3Stz2ipMTRSbYzImx4QB7/6QteSaaZk=
-  - secure: "EabA68O+ZluZ76J1B1tygI+Ortk08usZxyU7jovSZKIBhU6S9Z8R/uDnq0ScUj5SyD8QscM3v4KUlTuqNWaPHLMc/u5b0IA3rJG4mbAO+EQuPiJWIW++cuc0rCgfmaJC7cct25lXr7p0CxNrt9RV8IYfO7CFITZLnzj6A9dMt8k="
+  - secure: "VM5LkuhsygV0bsZVLj782JBlPnCG57aDIHtsgLr73BMXo4TKfe1cu80Syq+z4YU0pPqGq3Gu/e2UZia6K8tz0/L1kM+IMtHr8XckQi/mYSg1l55UEV0v9X0bJRV5f0yNjmT7e/x3LDJ54Nn8NwdOj773zqH5sKovSQc5nbEsXwc="
 
