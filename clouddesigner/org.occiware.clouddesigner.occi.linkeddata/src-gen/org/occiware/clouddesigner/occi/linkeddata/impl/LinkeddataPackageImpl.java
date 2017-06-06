@@ -13,6 +13,7 @@ package org.occiware.clouddesigner.occi.linkeddata.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
@@ -21,8 +22,10 @@ import org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage;
 import org.occiware.clouddesigner.occi.linkeddata.Lddatabaselink;
 import org.occiware.clouddesigner.occi.linkeddata.Ldproject;
 import org.occiware.clouddesigner.occi.linkeddata.Ldprojectlink;
+import org.occiware.clouddesigner.occi.linkeddata.Lifecycle;
 import org.occiware.clouddesigner.occi.linkeddata.LinkeddataFactory;
 import org.occiware.clouddesigner.occi.linkeddata.LinkeddataPackage;
+import org.occiware.clouddesigner.occi.linkeddata.Robustness;
 import org.occiware.clouddesigner.occi.platform.PlatformPackage;
 
 /**
@@ -52,6 +55,20 @@ public class LinkeddataPackageImpl extends EPackageImpl implements LinkeddataPac
 	 * @generated
 	 */
 	private EClass ldprojectlinkEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum lifecycleEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum robustnessEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -141,7 +158,7 @@ public class LinkeddataPackageImpl extends EPackageImpl implements LinkeddataPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLdproject_Published() {
+	public EAttribute getLdproject_Lifecycle() {
 		return (EAttribute)ldprojectEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -150,7 +167,7 @@ public class LinkeddataPackageImpl extends EPackageImpl implements LinkeddataPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLdproject_Robust() {
+	public EAttribute getLdproject_Robustness() {
 		return (EAttribute)ldprojectEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -222,6 +239,24 @@ public class LinkeddataPackageImpl extends EPackageImpl implements LinkeddataPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getLifecycle() {
+		return lifecycleEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getRobustness() {
+		return robustnessEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public LinkeddataFactory getLinkeddataFactory() {
 		return (LinkeddataFactory)getEFactoryInstance();
 	}
@@ -247,8 +282,8 @@ public class LinkeddataPackageImpl extends EPackageImpl implements LinkeddataPac
 		// Create classes and their features
 		ldprojectEClass = createEClass(LDPROJECT);
 		createEAttribute(ldprojectEClass, LDPROJECT__NAME);
-		createEAttribute(ldprojectEClass, LDPROJECT__PUBLISHED);
-		createEAttribute(ldprojectEClass, LDPROJECT__ROBUST);
+		createEAttribute(ldprojectEClass, LDPROJECT__LIFECYCLE);
+		createEAttribute(ldprojectEClass, LDPROJECT__ROBUSTNESS);
 		createEOperation(ldprojectEClass, LDPROJECT___PUBLISH);
 		createEOperation(ldprojectEClass, LDPROJECT___UNPUBLISH);
 		createEOperation(ldprojectEClass, LDPROJECT___UPDATE);
@@ -258,6 +293,10 @@ public class LinkeddataPackageImpl extends EPackageImpl implements LinkeddataPac
 		createEAttribute(lddatabaselinkEClass, LDDATABASELINK__PORT);
 
 		ldprojectlinkEClass = createEClass(LDPROJECTLINK);
+
+		// Create enums
+		lifecycleEEnum = createEEnum(LIFECYCLE);
+		robustnessEEnum = createEEnum(ROBUSTNESS);
 	}
 
 	/**
@@ -298,8 +337,8 @@ public class LinkeddataPackageImpl extends EPackageImpl implements LinkeddataPac
 		// Initialize classes, features, and operations; add parameters
 		initEClass(ldprojectEClass, Ldproject.class, "Ldproject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getLdproject_Name(), theOCCIPackage.getString(), "name", null, 1, 1, Ldproject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getLdproject_Published(), theOCCIPackage.getBoolean(), "published", "false", 0, 1, Ldproject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getLdproject_Robust(), theOCCIPackage.getBoolean(), "robust", "true", 0, 1, Ldproject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLdproject_Lifecycle(), this.getLifecycle(), "lifecycle", null, 0, 1, Ldproject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLdproject_Robustness(), this.getRobustness(), "robustness", null, 0, 1, Ldproject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getLdproject__Publish(), null, "publish", 0, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -312,6 +351,16 @@ public class LinkeddataPackageImpl extends EPackageImpl implements LinkeddataPac
 		initEAttribute(getLddatabaselink_Port(), theOCCIPackage.getNumber(), "port", "27017", 0, 1, Lddatabaselink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(ldprojectlinkEClass, Ldprojectlink.class, "Ldprojectlink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		// Initialize enums and add enum literals
+		initEEnum(lifecycleEEnum, Lifecycle.class, "Lifecycle");
+		addEEnumLiteral(lifecycleEEnum, Lifecycle.DRAFT);
+		addEEnumLiteral(lifecycleEEnum, Lifecycle.PUBLISHED);
+
+		initEEnum(robustnessEEnum, Robustness.class, "Robustness");
+		addEEnumLiteral(robustnessEEnum, Robustness.CLUSTER);
+		addEEnumLiteral(robustnessEEnum, Robustness.NODE);
+		addEEnumLiteral(robustnessEEnum, Robustness.NONE);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -360,13 +409,13 @@ public class LinkeddataPackageImpl extends EPackageImpl implements LinkeddataPac
 			 "description", null
 		   });	
 		addAnnotation
-		  (getLdproject_Published(), 
+		  (getLdproject_Lifecycle(), 
 		   source, 
 		   new String[] {
 			 "description", null
 		   });	
 		addAnnotation
-		  (getLdproject_Robust(), 
+		  (getLdproject_Robustness(), 
 		   source, 
 		   new String[] {
 			 "description", null

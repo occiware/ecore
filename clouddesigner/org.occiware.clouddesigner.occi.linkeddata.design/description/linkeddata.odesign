@@ -94,14 +94,14 @@
             </style>
           </subNodeMappings>
           <subNodeMappings name="LdprojectPublished" labelDirectEdit="//@ownedViewpoints[name='LinkeddataConfiguration']/@ownedRepresentations[name='LinkeddataConfiguration%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='EditLdprojectPublished']" semanticCandidatesExpression="[self/]" domainClass="Ldproject">
-            <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="['published = ' + self.published.toString()/]" labelAlignment="LEFT" hideLabelByDefault="true" resizeKind="NSEW">
+            <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="['lifecycle = ' + self.lifecycle.toString()/]" labelAlignment="LEFT" hideLabelByDefault="true" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </style>
           </subNodeMappings>
           <subNodeMappings name="LdprojectRobust" labelDirectEdit="//@ownedViewpoints[name='LinkeddataConfiguration']/@ownedRepresentations[name='LinkeddataConfiguration%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='EditLdprojectRobust']" semanticCandidatesExpression="[self/]" domainClass="Ldproject">
-            <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="['robust = ' + self.robust.toString()/]" labelAlignment="LEFT" hideLabelByDefault="true" resizeKind="NSEW">
+            <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="['robustness = ' + self.robustness.toString()/]" labelAlignment="LEFT" hideLabelByDefault="true" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -145,7 +145,7 @@
           </style>
         </containerMappings>
         <containerMappings name="Compute" semanticCandidatesExpression="feature:resources" createElements="false" domainClass="Compute" childrenPresentation="List">
-          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="[self.title + ': Compute'/]">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="[self.hostname + ': Compute'/]">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -153,7 +153,7 @@
           </style>
         </containerMappings>
         <containerMappings name="Container" semanticCandidatesExpression="feature:resources" createElements="false" domainClass="Container" childrenPresentation="List">
-          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="[self.title + ': Compute'/]">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="[self.hostname/]">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -398,16 +398,16 @@
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:arg0"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DirectEditLabel" name="EditLdprojectPublished" inputLabelExpression="feature:published">
+          <ownedTools xsi:type="tool:DirectEditLabel" name="EditLdprojectPublished" inputLabelExpression="feature:lifecycle">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:SetValue" featureName="published" valueExpression="var:arg0"/>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="lifecycle" valueExpression="var:arg0"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DirectEditLabel" name="EditLdprojectRobust" inputLabelExpression="feature:robust">
+          <ownedTools xsi:type="tool:DirectEditLabel" name="EditLdprojectRobust" inputLabelExpression="feature:robustness">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:SetValue" featureName="robust" valueExpression="var:arg0"/>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="robustness" valueExpression="var:arg0"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:OperationAction" name="LdprojectPublishAction" label="Publish" precondition="[self.oclIsKindOf(Ldproject)/]">

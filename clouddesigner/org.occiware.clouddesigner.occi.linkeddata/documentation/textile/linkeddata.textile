@@ -23,8 +23,8 @@ Attributes of ldproject are:
 
 | *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
 | occi.ld.project.name | <a href="core.textile#datatype-string">String</a> | true | true |  |  |
-| occi.ld.project.published | <a href="core.textile#datatype-boolean">Boolean</a> | false | true | false |  |
-| occi.ld.project.robust | <a href="core.textile#datatype-boolean">Boolean</a> | false | true | true |  |
+| occi.ld.project.lifecycle | <a href="linkeddata.textile#enum-lifecycle">Lifecycle</a> | false | true |  |  |
+| occi.ld.project.robustness | <a href="linkeddata.textile#enum-robustness">Robustness</a> | false | true |  |  |
 
 Actions of ldproject are:
 
@@ -55,4 +55,20 @@ h2. Kind ldprojectlink
 | *Title* |  |
 | *Parent* | <a href="core.textile#kind-link">http://schemas.ogf.org/occi/core#link</a> |
 
-Generated at Thu Jun 09 10:28:00 CEST 2016 from platform:/resource/org.occiware.clouddesigner.occi.linkeddata/model/linkeddata.occie by org.occiware.clouddesigner.occi.gen.doc
+
+h1. Types
+
+h2. Enum Lifecycle
+
+:
+* draft  
+* published  
+
+h2. Enum Robustness
+
+:
+* cluster  
+* node  
+* none  
+
+Generated at Sat Sep 24 13:40:57 CEST 2016 from platform:/resource/org.occiware.clouddesigner.occi.linkeddata/model/linkeddata.occie by org.occiware.clouddesigner.occi.gen.doc

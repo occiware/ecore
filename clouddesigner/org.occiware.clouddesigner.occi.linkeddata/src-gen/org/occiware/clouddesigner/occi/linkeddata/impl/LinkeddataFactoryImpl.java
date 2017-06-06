@@ -12,6 +12,7 @@
 package org.occiware.clouddesigner.occi.linkeddata.impl;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -78,6 +79,40 @@ public class LinkeddataFactoryImpl extends EFactoryImpl implements LinkeddataFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public Object createFromString(EDataType eDataType, String initialValue) {
+		switch (eDataType.getClassifierID()) {
+			case LinkeddataPackage.LIFECYCLE:
+				return createLifecycleFromString(eDataType, initialValue);
+			case LinkeddataPackage.ROBUSTNESS:
+				return createRobustnessFromString(eDataType, initialValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String convertToString(EDataType eDataType, Object instanceValue) {
+		switch (eDataType.getClassifierID()) {
+			case LinkeddataPackage.LIFECYCLE:
+				return convertLifecycleToString(eDataType, instanceValue);
+			case LinkeddataPackage.ROBUSTNESS:
+				return convertRobustnessToString(eDataType, instanceValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Ldproject createLdproject() {
 		LdprojectImpl ldproject = new LdprojectImpl();
 		return ldproject;
@@ -101,6 +136,46 @@ public class LinkeddataFactoryImpl extends EFactoryImpl implements LinkeddataFac
 	public Ldprojectlink createLdprojectlink() {
 		LdprojectlinkImpl ldprojectlink = new LdprojectlinkImpl();
 		return ldprojectlink;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Lifecycle createLifecycleFromString(EDataType eDataType, String initialValue) {
+		Lifecycle result = Lifecycle.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertLifecycleToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Robustness createRobustnessFromString(EDataType eDataType, String initialValue) {
+		Robustness result = Robustness.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertRobustnessToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**
