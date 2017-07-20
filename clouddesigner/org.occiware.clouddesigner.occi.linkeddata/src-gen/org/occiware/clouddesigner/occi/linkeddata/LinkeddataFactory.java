@@ -58,6 +58,24 @@ public interface LinkeddataFactory extends EFactory {
 	Ldprojectlink createLdprojectlink();
 
 	/**
+	 * Returns a new object of class '<em>Ldnode</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Ldnode</em>'.
+	 * @generated
+	 */
+	Ldnode createLdnode();
+
+	/**
+	 * Returns a new object of class '<em>Ldcontains</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Ldcontains</em>'.
+	 * @generated
+	 */
+	Ldcontains createLdcontains();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

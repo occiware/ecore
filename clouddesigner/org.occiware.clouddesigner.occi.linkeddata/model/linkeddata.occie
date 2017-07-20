@@ -26,6 +26,24 @@
   <kinds term="ldprojectlink" scheme="http://occiware.org/linkeddata#">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
+  <kinds term="ldnode" scheme="http://occiware.org/linkeddata#" title="LDNode">
+    <attributes name="occi.ld.node.name" required="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="occi.ld.node.mongoHosts" required="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="occi.ld.node.mainProject" required="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="occi.ld.node.analyticsReadPreference" required="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds term="ldcontains" scheme="http://occiware.org/linkeddata#">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
   <types xsi:type="ecore:EEnum" name="Lifecycle">
     <eLiterals name="draft"/>
     <eLiterals name="published" value="1" literal="published"/>

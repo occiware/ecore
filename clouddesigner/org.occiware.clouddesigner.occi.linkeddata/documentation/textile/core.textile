@@ -39,6 +39,13 @@ h2. Kind link
 | *Title* | Link |
 | *Parent* | <a href="core.textile#kind-entity">http://schemas.ogf.org/occi/core#entity</a> |
 
+h2. Kind 
+
+| *Term* |  |
+| *Scheme* |  |
+| *Title* |  |
+| *Parent* |  |
+
 
 h1. Types
 
@@ -60,4 +67,4 @@ Data type for numbers.
 
 Base type: int
 
-Generated at Sat Sep 24 13:40:57 CEST 2016 from http://schemas.ogf.org/occi/core by org.occiware.clouddesigner.occi.gen.doc
+Generated at Wed Jul 19 13:56:12 CEST 2017 from http://schemas.ogf.org/occi/core by org.occiware.clouddesigner.occi.gen.doc

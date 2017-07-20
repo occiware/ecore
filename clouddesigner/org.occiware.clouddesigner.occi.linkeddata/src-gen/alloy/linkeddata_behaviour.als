@@ -1,4 +1,4 @@
-// Generated at Sat Sep 24 13:41:01 CEST 2016 from platform:/resource/org.occiware.clouddesigner.occi.linkeddata/model/linkeddata.occie by org.occiware.clouddesigner.occi.gen.alloy
+// Generated at Wed Jul 19 13:56:20 CEST 2017 from platform:/resource/org.occiware.clouddesigner.occi.linkeddata/model/linkeddata.occie by org.occiware.clouddesigner.occi.gen.alloy
 
 // ======================================================================
 //
@@ -84,6 +84,40 @@ pred isoLdprojectlink[l1, l2: Ldprojectlink]
 {
     // Comment following lines when this is not the expected behaviour.
     isoLdprojectlink[l1, l2] // same link
+}
+
+
+
+// ======================================================================
+//
+// OCCI kind 'http://occiware.org/linkeddata#ldnode'
+//
+// ======================================================================
+
+//
+// Equivalence predicate between two Ldnode atoms.
+//
+pred isoLdnode[l1, l2: Ldnode]
+{
+    // Comment following lines when this is not the expected behaviour.
+    isoLdnode[l1, l2] // same resource
+}
+
+
+
+// ======================================================================
+//
+// OCCI kind 'http://occiware.org/linkeddata#ldcontains'
+//
+// ======================================================================
+
+//
+// Equivalence predicate between two Ldcontains atoms.
+//
+pred isoLdcontains[l1, l2: Ldcontains]
+{
+    // Comment following lines when this is not the expected behaviour.
+    isoLdcontains[l1, l2] // same link
 }
 
 

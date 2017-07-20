@@ -16,7 +16,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="LdprojectlinkTargetEdge" sourceMapping="//@ownedViewpoints[name='LinkeddataConfiguration']/@ownedRepresentations[name='LinkeddataConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='LdprojectlinkContainer']" targetMapping="//@ownedViewpoints[name='LinkeddataConfiguration']/@ownedRepresentations[name='LinkeddataConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='LdprojectContainer']" targetFinderExpression="feature:target">
+        <edgeMappings name="LdnodeLinksEdge" sourceMapping="//@ownedViewpoints[name='LinkeddataConfiguration']/@ownedRepresentations[name='LinkeddataConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='LdnodeContainer']" targetMapping="//@ownedViewpoints[name='LinkeddataConfiguration']/@ownedRepresentations[name='LinkeddataConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='LddatabaselinkContainer'] //@ownedViewpoints[name='LinkeddataConfiguration']/@ownedRepresentations[name='LinkeddataConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='LdprojectlinkContainer'] //@ownedViewpoints[name='LinkeddataConfiguration']/@ownedRepresentations[name='LinkeddataConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='LdcontainsContainer']" targetFinderExpression="feature:links">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -24,7 +24,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="LdprojectlinkEdge" sourceMapping="//@ownedViewpoints[name='LinkeddataConfiguration']/@ownedRepresentations[name='LinkeddataConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='LdprojectContainer']" targetMapping="//@ownedViewpoints[name='LinkeddataConfiguration']/@ownedRepresentations[name='LinkeddataConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='LdprojectContainer']" sourceFinderExpression="feature:source" domainClass="Ldprojectlink" useDomainElement="true">
+        <edgeMappings name="LdprojectlinkTargetEdge" sourceMapping="//@ownedViewpoints[name='LinkeddataConfiguration']/@ownedRepresentations[name='LinkeddataConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='LdprojectlinkContainer']" targetMapping="//@ownedViewpoints[name='LinkeddataConfiguration']/@ownedRepresentations[name='LinkeddataConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='LdprojectContainer'] //@ownedViewpoints[name='LinkeddataConfiguration']/@ownedRepresentations[name='LinkeddataConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='LdnodeContainer']" targetFinderExpression="feature:target">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -32,7 +32,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="LddatabaselinkTargetEdge" sourceMapping="//@ownedViewpoints[name='LinkeddataConfiguration']/@ownedRepresentations[name='LinkeddataConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='LddatabaselinkContainer']" targetMapping="//@ownedViewpoints[name='LinkeddataConfiguration']/@ownedRepresentations[name='LinkeddataConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Container'] //@ownedViewpoints[name='LinkeddataConfiguration']/@ownedRepresentations[name='LinkeddataConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Compute'] //@ownedViewpoints[name='LinkeddataConfiguration']/@ownedRepresentations[name='LinkeddataConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine'] //@ownedViewpoints[name='LinkeddataConfiguration']/@ownedRepresentations[name='LinkeddataConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']" targetFinderExpression="feature:target">
+        <edgeMappings name="LdprojectlinkEdge" sourceMapping="//@ownedViewpoints[name='LinkeddataConfiguration']/@ownedRepresentations[name='LinkeddataConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='LdprojectContainer'] //@ownedViewpoints[name='LinkeddataConfiguration']/@ownedRepresentations[name='LinkeddataConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='LdnodeContainer']" targetMapping="//@ownedViewpoints[name='LinkeddataConfiguration']/@ownedRepresentations[name='LinkeddataConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='LdprojectContainer'] //@ownedViewpoints[name='LinkeddataConfiguration']/@ownedRepresentations[name='LinkeddataConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='LdnodeContainer']" sourceFinderExpression="feature:source" domainClass="Ldprojectlink" useDomainElement="true">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -40,7 +40,15 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="LddatabaselinkEdge" sourceMapping="//@ownedViewpoints[name='LinkeddataConfiguration']/@ownedRepresentations[name='LinkeddataConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='LdprojectContainer']" targetMapping="//@ownedViewpoints[name='LinkeddataConfiguration']/@ownedRepresentations[name='LinkeddataConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Container'] //@ownedViewpoints[name='LinkeddataConfiguration']/@ownedRepresentations[name='LinkeddataConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Compute'] //@ownedViewpoints[name='LinkeddataConfiguration']/@ownedRepresentations[name='LinkeddataConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container'] //@ownedViewpoints[name='LinkeddataConfiguration']/@ownedRepresentations[name='LinkeddataConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine']" sourceFinderExpression="feature:source" domainClass="Lddatabaselink" useDomainElement="true">
+        <edgeMappings name="LddatabaselinkTargetEdge" sourceMapping="//@ownedViewpoints[name='LinkeddataConfiguration']/@ownedRepresentations[name='LinkeddataConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='LddatabaselinkContainer']" targetMapping="//@ownedViewpoints[name='LinkeddataConfiguration']/@ownedRepresentations[name='LinkeddataConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Container'] //@ownedViewpoints[name='LinkeddataConfiguration']/@ownedRepresentations[name='LinkeddataConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Compute'] //@ownedViewpoints[name='LinkeddataConfiguration']/@ownedRepresentations[name='LinkeddataConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine'] //@ownedViewpoints[name='LinkeddataConfiguration']/@ownedRepresentations[name='LinkeddataConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container'] //@ownedViewpoints[name='LinkeddataConfiguration']/@ownedRepresentations[name='LinkeddataConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='LdnodeContainer']" targetFinderExpression="feature:target">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="LddatabaselinkEdge" sourceMapping="//@ownedViewpoints[name='LinkeddataConfiguration']/@ownedRepresentations[name='LinkeddataConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='LdprojectContainer'] //@ownedViewpoints[name='LinkeddataConfiguration']/@ownedRepresentations[name='LinkeddataConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='LdnodeContainer']" targetMapping="//@ownedViewpoints[name='LinkeddataConfiguration']/@ownedRepresentations[name='LinkeddataConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Container'] //@ownedViewpoints[name='LinkeddataConfiguration']/@ownedRepresentations[name='LinkeddataConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Compute'] //@ownedViewpoints[name='LinkeddataConfiguration']/@ownedRepresentations[name='LinkeddataConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container'] //@ownedViewpoints[name='LinkeddataConfiguration']/@ownedRepresentations[name='LinkeddataConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine'] //@ownedViewpoints[name='LinkeddataConfiguration']/@ownedRepresentations[name='LinkeddataConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='LdnodeContainer']" sourceFinderExpression="feature:source" domainClass="Lddatabaselink" useDomainElement="true">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -113,6 +121,82 @@
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
+        </containerMappings>
+        <containerMappings name="LdnodeContainer"
+            labelDirectEdit="//@ownedViewpoints[name='LinkeddataConfiguration']/@ownedRepresentations[name='LinkeddataConfiguration%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='EditEntityTitle']"
+			semanticCandidatesExpression="feature:resources"
+			domainClass="Ldnode"
+            childrenPresentation="List">
+          <subNodeMappings name="LdnodeId"
+                labelDirectEdit="//@ownedViewpoints[name='LinkeddataConfiguration']/@ownedRepresentations[name='LinkeddataConfiguration%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='EditLdnodeId']"
+                semanticCandidatesExpression="[self/]" domainClass="Ldnode">
+            <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="['id = ' + self.id.toString()/]" labelAlignment="LEFT" hideLabelByDefault="true" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="LdnodeTitle"
+                labelDirectEdit="//@ownedViewpoints[name='LinkeddataConfiguration']/@ownedRepresentations[name='LinkeddataConfiguration%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='EditLdnodeTitle']"
+                semanticCandidatesExpression="[self/]" domainClass="Ldnode">
+            <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="['title = ' + self.title.toString()/]" labelAlignment="LEFT" hideLabelByDefault="true" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="LdnodeSummary"
+                labelDirectEdit="//@ownedViewpoints[name='LinkeddataConfiguration']/@ownedRepresentations[name='LinkeddataConfiguration%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='EditLdnodeSummary']"
+                semanticCandidatesExpression="[self/]" domainClass="Ldnode">
+            <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="['summary = ' + self.summary.toString()/]" labelAlignment="LEFT" hideLabelByDefault="true" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="LdnodeName"
+                labelDirectEdit="//@ownedViewpoints[name='LinkeddataConfiguration']/@ownedRepresentations[name='LinkeddataConfiguration%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='EditLdnodeName']"
+                semanticCandidatesExpression="[self/]" domainClass="Ldnode">
+            <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="['name = ' + self.name.toString()/]" labelAlignment="LEFT" hideLabelByDefault="true" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="LdnodeMongoHosts"
+                labelDirectEdit="//@ownedViewpoints[name='LinkeddataConfiguration']/@ownedRepresentations[name='LinkeddataConfiguration%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='EditLdnodeMongoHosts']"
+                semanticCandidatesExpression="[self/]" domainClass="Ldnode">
+            <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="['mongoHosts = ' + self.mongoHosts.toString()/]" labelAlignment="LEFT" hideLabelByDefault="true" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="LdnodeMainProject"
+                labelDirectEdit="//@ownedViewpoints[name='LinkeddataConfiguration']/@ownedRepresentations[name='LinkeddataConfiguration%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='EditLdnodeMainProject']"
+                semanticCandidatesExpression="[self/]" domainClass="Ldnode">
+            <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="['mainProject = ' + self.mainProject.toString()/]" labelAlignment="LEFT" hideLabelByDefault="true" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="LdnodeAnalyticsReadPreference"
+                labelDirectEdit="//@ownedViewpoints[name='LinkeddataConfiguration']/@ownedRepresentations[name='LinkeddataConfiguration%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='EditLdnodeAnalyticsReadPreference']"
+                semanticCandidatesExpression="[self/]" domainClass="Ldnode">
+            <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="['analyticsReadPreference = ' + self.analyticsReadPreference.toString()/]" labelAlignment="LEFT" hideLabelByDefault="true" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" labelExpression="[self.title + ': Ldnode'/]" roundedCorner="true">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+
         </containerMappings>
         <containerMappings name="LdprojectlinkContainer" labelDirectEdit="//@ownedViewpoints[name='LinkeddataConfiguration']/@ownedRepresentations[name='LinkeddataConfiguration%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='EditEntityTitle']" semanticCandidatesExpression="[resources.links->filter(Ldprojectlink)/]" domainClass="Ldprojectlink" childrenPresentation="List">
           <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" labelExpression="[self.title + ': Ldprojectlink'/]" roundedCorner="true">
@@ -223,6 +307,17 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Ldproject" referenceName="resources">
                 <subModelOperations xsi:type="tool_1:SetValue" featureName="title" valueExpression="['ldproject' + container.oclAsType(Configuration).resources->size().toString()/]"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription"
+          name="Create Ldnode"
+          containerMappings="//@ownedViewpoints[name='LinkeddataConfiguration']/@ownedRepresentations[name='LinkeddataConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='LdnodeContainer']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Ldnode" referenceName="resources">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="title" valueExpression="['ldnode' + container.oclAsType(Configuration).resources->size().toString()/]"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -547,6 +642,48 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:newSemanticContainer">
                 <subModelOperations xsi:type="tool_1:SetValue" featureName="resources" valueExpression="var:element"/>
               </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="EditLdnodeId" inputLabelExpression="feature:id">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="id" valueExpression="var:arg0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="EditLdnodeTitle" inputLabelExpression="feature:title">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="title" valueExpression="var:arg0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="EditLdnodeSummary" inputLabelExpression="feature:summary">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="summary" valueExpression="var:arg0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="EditLdnodeName" inputLabelExpression="feature:name">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:arg0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="EditLdnodeMongoHosts" inputLabelExpression="feature:mongoHosts">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="mongoHosts" valueExpression="var:arg0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="EditLdnodeMainProject" inputLabelExpression="feature:mainProject">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="mainProject" valueExpression="var:arg0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="EditLdnodeAnalyticsReadPreference" inputLabelExpression="feature:analyticsReadPreference">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="analyticsReadPreference" valueExpression="var:arg0"/>
             </initialOperation>
           </ownedTools>
         </toolSections>

@@ -55,6 +55,29 @@ h2. Kind ldprojectlink
 | *Title* |  |
 | *Parent* | <a href="core.textile#kind-link">http://schemas.ogf.org/occi/core#link</a> |
 
+h2. Kind ldnode
+
+| *Term* | ldnode |
+| *Scheme* | http://occiware.org/linkeddata# |
+| *Title* | LDNode |
+| *Parent* | <a href="core.textile#kind-resource">http://schemas.ogf.org/occi/core#resource</a> |
+
+Attributes of ldnode are:
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.ld.node.name | <a href="core.textile#datatype-string">String</a> | true | true |  |  |
+| occi.ld.node.mongoHosts | <a href="core.textile#datatype-string">String</a> | true | true |  |  |
+| occi.ld.node.mainProject | <a href="core.textile#datatype-string">String</a> | true | true |  |  |
+| occi.ld.node.analyticsReadPreference | <a href="core.textile#datatype-string">String</a> | true | true |  |  |
+
+
+h2. Kind ldcontains
+
+| *Term* | ldcontains |
+| *Scheme* | http://occiware.org/linkeddata# |
+| *Title* |  |
+| *Parent* | <a href="core.textile#kind-link">http://schemas.ogf.org/occi/core#link</a> |
+
 
 h1. Types
 
@@ -71,4 +94,4 @@ h2. Enum Robustness
 * node  
 * none  
 
-Generated at Sat Sep 24 13:40:57 CEST 2016 from platform:/resource/org.occiware.clouddesigner.occi.linkeddata/model/linkeddata.occie by org.occiware.clouddesigner.occi.gen.doc
+Generated at Wed Jul 19 13:56:12 CEST 2017 from platform:/resource/org.occiware.clouddesigner.occi.linkeddata/model/linkeddata.occie by org.occiware.clouddesigner.occi.gen.doc
