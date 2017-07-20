@@ -699,8 +699,14 @@ class DockerContainerManager {
 		LOGGER.info("Downloading image: ->" + containerImage)
 		// Download a pre-built image
 		try {
-			dockerClient.pullImageCmd(containerImage).withTag("latest").exec(new PullImageResultCallback()).
-				awaitSuccess()
+			//If the given image tag doesn't contain a version number, add "latest" as tag
+			if (containerImage.indexOf(':') < 0) {
+				dockerClient.pullImageCmd(containerImage).withTag("latest").exec(new PullImageResultCallback()).
+					awaitSuccess()
+			} else {
+				dockerClient.pullImageCmd(containerImage).exec(new PullImageResultCallback()).
+					awaitSuccess()
+			}
 		// output = DockerUtil.asString(resp)
 		} catch (Exception e) {
 			LOGGER.error(e.message)
