@@ -72,7 +72,9 @@ public class LdprojectConnector extends org.occiware.clouddesigner.occi.linkedda
 	 */
 	LdprojectConnector()
 	{
+		// getOrBuildDatacoreClient() { if ctx == null or ldContainerUrlString != LDNode.url...
 		LOGGER.debug("Constructor called on " + this);
+		//System.setProperty("datacoreApiClient.containerUrl", "blabla"); // then LDNode.url
 		
 		synchronized (LdprojectConnector.class) {
 			if (ctx == null) {
