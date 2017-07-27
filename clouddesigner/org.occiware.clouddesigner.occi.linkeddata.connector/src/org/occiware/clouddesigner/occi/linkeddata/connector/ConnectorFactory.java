@@ -9,9 +9,11 @@
  * Contributors:
  * - Philippe Merle <philippe.merle@inria.fr>
  *
- * Generated at Fri Jun 03 17:38:12 CEST 2016 from platform:/resource/org.occiware.clouddesigner.occi.linkeddata/model/linkeddata.occie by org.occiware.clouddesigner.occi.gen.connector
+ * Generated at Tue Jul 25 13:34:46 CEST 2017 from platform:/plugin/org.occiware.clouddesigner.occi.linkeddata/model/linkeddata.occie by org.occiware.clouddesigner.occi.gen.connector
  */
+
 package org.occiware.clouddesigner.occi.linkeddata.connector;
+
 
 /**
  * Connector EFactory for the OCCI extension:
@@ -23,8 +25,8 @@ public class ConnectorFactory extends org.occiware.clouddesigner.occi.linkeddata
 	/**
 	 * EFactory method for OCCI kind:
 	 * - scheme: http://occiware.org/linkeddata#
-	 * - term: LDProject
-	 * - title: 
+	 * - term: ldproject
+	 * - title: LDProject
 	 */
 	@Override
 	public org.occiware.clouddesigner.occi.linkeddata.Ldproject createLdproject() {
@@ -34,12 +36,23 @@ public class ConnectorFactory extends org.occiware.clouddesigner.occi.linkeddata
 	/**
 	 * EFactory method for OCCI kind:
 	 * - scheme: http://occiware.org/linkeddata#
-	 * - term: LDDatabaseLink
-	 * - title: 
+	 * - term: lddatabaselink
+	 * - title: LDDatabaseLink
 	 */
 	@Override
 	public org.occiware.clouddesigner.occi.linkeddata.Lddatabaselink createLddatabaselink() {
 		return new LddatabaselinkConnector();
+	}
+
+	/**
+	 * EFactory method for OCCI kind:
+	 * - scheme: http://occiware.org/linkeddata#
+	 * - term: ldnode
+	 * - title: LDNode
+	 */
+	@Override
+	public org.occiware.clouddesigner.occi.linkeddata.Ldnode createLdnode() {
+		return new LdnodeConnector();
 	}
 
 }

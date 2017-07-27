@@ -13,6 +13,7 @@ package org.occiware.clouddesigner.occi.linkeddata;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -150,22 +151,22 @@ public interface LinkeddataPackage extends EPackage {
 	int LDPROJECT__NAME = OCCIPackage.RESOURCE_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Published</b></em>' attribute.
+	 * The feature id for the '<em><b>Lifecycle</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LDPROJECT__PUBLISHED = OCCIPackage.RESOURCE_FEATURE_COUNT + 1;
+	int LDPROJECT__LIFECYCLE = OCCIPackage.RESOURCE_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Robust</b></em>' attribute.
+	 * The feature id for the '<em><b>Robustness</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LDPROJECT__ROBUST = OCCIPackage.RESOURCE_FEATURE_COUNT + 2;
+	int LDPROJECT__ROBUSTNESS = OCCIPackage.RESOURCE_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Ldproject</em>' class.
@@ -523,6 +524,317 @@ public interface LinkeddataPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.linkeddata.impl.LdnodeImpl <em>Ldnode</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.occiware.clouddesigner.occi.linkeddata.impl.LdnodeImpl
+	 * @see org.occiware.clouddesigner.occi.linkeddata.impl.LinkeddataPackageImpl#getLdnode()
+	 * @generated
+	 */
+	int LDNODE = 3;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDNODE__ID = OCCIPackage.RESOURCE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Title</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDNODE__TITLE = OCCIPackage.RESOURCE__TITLE;
+
+	/**
+	 * The feature id for the '<em><b>Kind</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDNODE__KIND = OCCIPackage.RESOURCE__KIND;
+
+	/**
+	 * The feature id for the '<em><b>Mixins</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDNODE__MIXINS = OCCIPackage.RESOURCE__MIXINS;
+
+	/**
+	 * The feature id for the '<em><b>Attributes</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDNODE__ATTRIBUTES = OCCIPackage.RESOURCE__ATTRIBUTES;
+
+	/**
+	 * The feature id for the '<em><b>Summary</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDNODE__SUMMARY = OCCIPackage.RESOURCE__SUMMARY;
+
+	/**
+	 * The feature id for the '<em><b>Links</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDNODE__LINKS = OCCIPackage.RESOURCE__LINKS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDNODE__NAME = OCCIPackage.RESOURCE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Mongo Hosts</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDNODE__MONGO_HOSTS = OCCIPackage.RESOURCE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Main Project</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDNODE__MAIN_PROJECT = OCCIPackage.RESOURCE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Analytics Read Preference</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDNODE__ANALYTICS_READ_PREFERENCE = OCCIPackage.RESOURCE_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Ldnode</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDNODE_FEATURE_COUNT = OCCIPackage.RESOURCE_FEATURE_COUNT + 4;
+
+	/**
+	 * The operation id for the '<em>Occi Create</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDNODE___OCCI_CREATE = OCCIPackage.RESOURCE___OCCI_CREATE;
+
+	/**
+	 * The operation id for the '<em>Occi Retrieve</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDNODE___OCCI_RETRIEVE = OCCIPackage.RESOURCE___OCCI_RETRIEVE;
+
+	/**
+	 * The operation id for the '<em>Occi Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDNODE___OCCI_UPDATE = OCCIPackage.RESOURCE___OCCI_UPDATE;
+
+	/**
+	 * The operation id for the '<em>Occi Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDNODE___OCCI_DELETE = OCCIPackage.RESOURCE___OCCI_DELETE;
+
+	/**
+	 * The number of operations of the '<em>Ldnode</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDNODE_OPERATION_COUNT = OCCIPackage.RESOURCE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.linkeddata.impl.LdcontainsImpl <em>Ldcontains</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.occiware.clouddesigner.occi.linkeddata.impl.LdcontainsImpl
+	 * @see org.occiware.clouddesigner.occi.linkeddata.impl.LinkeddataPackageImpl#getLdcontains()
+	 * @generated
+	 */
+	int LDCONTAINS = 4;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDCONTAINS__ID = OCCIPackage.LINK__ID;
+
+	/**
+	 * The feature id for the '<em><b>Title</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDCONTAINS__TITLE = OCCIPackage.LINK__TITLE;
+
+	/**
+	 * The feature id for the '<em><b>Kind</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDCONTAINS__KIND = OCCIPackage.LINK__KIND;
+
+	/**
+	 * The feature id for the '<em><b>Mixins</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDCONTAINS__MIXINS = OCCIPackage.LINK__MIXINS;
+
+	/**
+	 * The feature id for the '<em><b>Attributes</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDCONTAINS__ATTRIBUTES = OCCIPackage.LINK__ATTRIBUTES;
+
+	/**
+	 * The feature id for the '<em><b>Source</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDCONTAINS__SOURCE = OCCIPackage.LINK__SOURCE;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDCONTAINS__TARGET = OCCIPackage.LINK__TARGET;
+
+	/**
+	 * The number of structural features of the '<em>Ldcontains</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDCONTAINS_FEATURE_COUNT = OCCIPackage.LINK_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Occi Create</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDCONTAINS___OCCI_CREATE = OCCIPackage.LINK___OCCI_CREATE;
+
+	/**
+	 * The operation id for the '<em>Occi Retrieve</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDCONTAINS___OCCI_RETRIEVE = OCCIPackage.LINK___OCCI_RETRIEVE;
+
+	/**
+	 * The operation id for the '<em>Occi Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDCONTAINS___OCCI_UPDATE = OCCIPackage.LINK___OCCI_UPDATE;
+
+	/**
+	 * The operation id for the '<em>Occi Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDCONTAINS___OCCI_DELETE = OCCIPackage.LINK___OCCI_DELETE;
+
+	/**
+	 * The number of operations of the '<em>Ldcontains</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDCONTAINS_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.linkeddata.Lifecycle <em>Lifecycle</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.occiware.clouddesigner.occi.linkeddata.Lifecycle
+	 * @see org.occiware.clouddesigner.occi.linkeddata.impl.LinkeddataPackageImpl#getLifecycle()
+	 * @generated
+	 */
+	int LIFECYCLE = 5;
+
+	/**
+	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.linkeddata.Robustness <em>Robustness</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.occiware.clouddesigner.occi.linkeddata.Robustness
+	 * @see org.occiware.clouddesigner.occi.linkeddata.impl.LinkeddataPackageImpl#getRobustness()
+	 * @generated
+	 */
+	int ROBUSTNESS = 6;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.occiware.clouddesigner.occi.linkeddata.Ldproject <em>Ldproject</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -544,26 +856,26 @@ public interface LinkeddataPackage extends EPackage {
 	EAttribute getLdproject_Name();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.linkeddata.Ldproject#isPublished <em>Published</em>}'.
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.linkeddata.Ldproject#getLifecycle <em>Lifecycle</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Published</em>'.
-	 * @see org.occiware.clouddesigner.occi.linkeddata.Ldproject#isPublished()
+	 * @return the meta object for the attribute '<em>Lifecycle</em>'.
+	 * @see org.occiware.clouddesigner.occi.linkeddata.Ldproject#getLifecycle()
 	 * @see #getLdproject()
 	 * @generated
 	 */
-	EAttribute getLdproject_Published();
+	EAttribute getLdproject_Lifecycle();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.linkeddata.Ldproject#isRobust <em>Robust</em>}'.
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.linkeddata.Ldproject#getRobustness <em>Robustness</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Robust</em>'.
-	 * @see org.occiware.clouddesigner.occi.linkeddata.Ldproject#isRobust()
+	 * @return the meta object for the attribute '<em>Robustness</em>'.
+	 * @see org.occiware.clouddesigner.occi.linkeddata.Ldproject#getRobustness()
 	 * @see #getLdproject()
 	 * @generated
 	 */
-	EAttribute getLdproject_Robust();
+	EAttribute getLdproject_Robustness();
 
 	/**
 	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.linkeddata.Ldproject#publish() <em>Publish</em>}' operation.
@@ -638,6 +950,90 @@ public interface LinkeddataPackage extends EPackage {
 	EClass getLdprojectlink();
 
 	/**
+	 * Returns the meta object for class '{@link org.occiware.clouddesigner.occi.linkeddata.Ldnode <em>Ldnode</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Ldnode</em>'.
+	 * @see org.occiware.clouddesigner.occi.linkeddata.Ldnode
+	 * @generated
+	 */
+	EClass getLdnode();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.linkeddata.Ldnode#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.occiware.clouddesigner.occi.linkeddata.Ldnode#getName()
+	 * @see #getLdnode()
+	 * @generated
+	 */
+	EAttribute getLdnode_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.linkeddata.Ldnode#getMongoHosts <em>Mongo Hosts</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Mongo Hosts</em>'.
+	 * @see org.occiware.clouddesigner.occi.linkeddata.Ldnode#getMongoHosts()
+	 * @see #getLdnode()
+	 * @generated
+	 */
+	EAttribute getLdnode_MongoHosts();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.linkeddata.Ldnode#getMainProject <em>Main Project</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Main Project</em>'.
+	 * @see org.occiware.clouddesigner.occi.linkeddata.Ldnode#getMainProject()
+	 * @see #getLdnode()
+	 * @generated
+	 */
+	EAttribute getLdnode_MainProject();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.linkeddata.Ldnode#getAnalyticsReadPreference <em>Analytics Read Preference</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Analytics Read Preference</em>'.
+	 * @see org.occiware.clouddesigner.occi.linkeddata.Ldnode#getAnalyticsReadPreference()
+	 * @see #getLdnode()
+	 * @generated
+	 */
+	EAttribute getLdnode_AnalyticsReadPreference();
+
+	/**
+	 * Returns the meta object for class '{@link org.occiware.clouddesigner.occi.linkeddata.Ldcontains <em>Ldcontains</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Ldcontains</em>'.
+	 * @see org.occiware.clouddesigner.occi.linkeddata.Ldcontains
+	 * @generated
+	 */
+	EClass getLdcontains();
+
+	/**
+	 * Returns the meta object for enum '{@link org.occiware.clouddesigner.occi.linkeddata.Lifecycle <em>Lifecycle</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Lifecycle</em>'.
+	 * @see org.occiware.clouddesigner.occi.linkeddata.Lifecycle
+	 * @generated
+	 */
+	EEnum getLifecycle();
+
+	/**
+	 * Returns the meta object for enum '{@link org.occiware.clouddesigner.occi.linkeddata.Robustness <em>Robustness</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Robustness</em>'.
+	 * @see org.occiware.clouddesigner.occi.linkeddata.Robustness
+	 * @generated
+	 */
+	EEnum getRobustness();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -679,20 +1075,20 @@ public interface LinkeddataPackage extends EPackage {
 		EAttribute LDPROJECT__NAME = eINSTANCE.getLdproject_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>Published</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Lifecycle</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute LDPROJECT__PUBLISHED = eINSTANCE.getLdproject_Published();
+		EAttribute LDPROJECT__LIFECYCLE = eINSTANCE.getLdproject_Lifecycle();
 
 		/**
-		 * The meta object literal for the '<em><b>Robust</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Robustness</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute LDPROJECT__ROBUST = eINSTANCE.getLdproject_Robust();
+		EAttribute LDPROJECT__ROBUSTNESS = eINSTANCE.getLdproject_Robustness();
 
 		/**
 		 * The meta object literal for the '<em><b>Publish</b></em>' operation.
@@ -753,6 +1149,78 @@ public interface LinkeddataPackage extends EPackage {
 		 * @generated
 		 */
 		EClass LDPROJECTLINK = eINSTANCE.getLdprojectlink();
+
+		/**
+		 * The meta object literal for the '{@link org.occiware.clouddesigner.occi.linkeddata.impl.LdnodeImpl <em>Ldnode</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.occiware.clouddesigner.occi.linkeddata.impl.LdnodeImpl
+		 * @see org.occiware.clouddesigner.occi.linkeddata.impl.LinkeddataPackageImpl#getLdnode()
+		 * @generated
+		 */
+		EClass LDNODE = eINSTANCE.getLdnode();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LDNODE__NAME = eINSTANCE.getLdnode_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Mongo Hosts</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LDNODE__MONGO_HOSTS = eINSTANCE.getLdnode_MongoHosts();
+
+		/**
+		 * The meta object literal for the '<em><b>Main Project</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LDNODE__MAIN_PROJECT = eINSTANCE.getLdnode_MainProject();
+
+		/**
+		 * The meta object literal for the '<em><b>Analytics Read Preference</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LDNODE__ANALYTICS_READ_PREFERENCE = eINSTANCE.getLdnode_AnalyticsReadPreference();
+
+		/**
+		 * The meta object literal for the '{@link org.occiware.clouddesigner.occi.linkeddata.impl.LdcontainsImpl <em>Ldcontains</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.occiware.clouddesigner.occi.linkeddata.impl.LdcontainsImpl
+		 * @see org.occiware.clouddesigner.occi.linkeddata.impl.LinkeddataPackageImpl#getLdcontains()
+		 * @generated
+		 */
+		EClass LDCONTAINS = eINSTANCE.getLdcontains();
+
+		/**
+		 * The meta object literal for the '{@link org.occiware.clouddesigner.occi.linkeddata.Lifecycle <em>Lifecycle</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.occiware.clouddesigner.occi.linkeddata.Lifecycle
+		 * @see org.occiware.clouddesigner.occi.linkeddata.impl.LinkeddataPackageImpl#getLifecycle()
+		 * @generated
+		 */
+		EEnum LIFECYCLE = eINSTANCE.getLifecycle();
+
+		/**
+		 * The meta object literal for the '{@link org.occiware.clouddesigner.occi.linkeddata.Robustness <em>Robustness</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.occiware.clouddesigner.occi.linkeddata.Robustness
+		 * @see org.occiware.clouddesigner.occi.linkeddata.impl.LinkeddataPackageImpl#getRobustness()
+		 * @generated
+		 */
+		EEnum ROBUSTNESS = eINSTANCE.getRobustness();
 
 	}
 

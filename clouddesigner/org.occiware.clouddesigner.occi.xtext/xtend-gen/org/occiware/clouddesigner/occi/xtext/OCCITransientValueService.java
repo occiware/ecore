@@ -14,70 +14,22 @@ import org.occiware.clouddesigner.occi.OCCIPackage;
 public class OCCITransientValueService extends DefaultTransientValueService {
   @Override
   public boolean isTransient(final EObject owner, final EStructuralFeature feature, final int index) {
-    boolean _and = false;
-    if (!(owner instanceof Category)) {
-      _and = false;
-    } else {
-      int _featureID = feature.getFeatureID();
-      boolean _equals = (OCCIPackage.CATEGORY__SCHEME == _featureID);
-      _and = _equals;
-    }
-    if (_and) {
+    if (((owner instanceof Category) && (OCCIPackage.CATEGORY__SCHEME == feature.getFeatureID()))) {
       return true;
     }
-    boolean _and_1 = false;
-    if (!(owner instanceof Attribute)) {
-      _and_1 = false;
-    } else {
-      int _featureID_1 = feature.getFeatureID();
-      boolean _equals_1 = (OCCIPackage.ATTRIBUTE__REQUIRED == _featureID_1);
-      _and_1 = _equals_1;
-    }
-    if (_and_1) {
+    if (((owner instanceof Attribute) && (OCCIPackage.ATTRIBUTE__REQUIRED == feature.getFeatureID()))) {
       return true;
     }
-    boolean _and_2 = false;
-    if (!(owner instanceof Attribute)) {
-      _and_2 = false;
-    } else {
-      int _featureID_2 = feature.getFeatureID();
-      boolean _equals_2 = (OCCIPackage.ATTRIBUTE__DESCRIPTION == _featureID_2);
-      _and_2 = _equals_2;
-    }
-    if (_and_2) {
+    if (((owner instanceof Attribute) && (OCCIPackage.ATTRIBUTE__DESCRIPTION == feature.getFeatureID()))) {
       return true;
     }
-    boolean _and_3 = false;
-    if (!(owner instanceof EEnumLiteral)) {
-      _and_3 = false;
-    } else {
-      int _featureID_3 = feature.getFeatureID();
-      boolean _equals_3 = (EcorePackage.EENUM_LITERAL__VALUE == _featureID_3);
-      _and_3 = _equals_3;
-    }
-    if (_and_3) {
+    if (((owner instanceof EEnumLiteral) && (EcorePackage.EENUM_LITERAL__VALUE == feature.getFeatureID()))) {
       return true;
     }
-    boolean _and_4 = false;
-    if (!(owner instanceof EEnumLiteral)) {
-      _and_4 = false;
-    } else {
-      int _featureID_4 = feature.getFeatureID();
-      boolean _equals_4 = (EcorePackage.EENUM_LITERAL__LITERAL == _featureID_4);
-      _and_4 = _equals_4;
-    }
-    if (_and_4) {
+    if (((owner instanceof EEnumLiteral) && (EcorePackage.EENUM_LITERAL__LITERAL == feature.getFeatureID()))) {
       return true;
     }
-    boolean _and_5 = false;
-    if (!(owner instanceof EAnnotation)) {
-      _and_5 = false;
-    } else {
-      int _featureID_5 = feature.getFeatureID();
-      boolean _equals_5 = (EcorePackage.EANNOTATION__SOURCE == _featureID_5);
-      _and_5 = _equals_5;
-    }
-    if (_and_5) {
+    if (((owner instanceof EAnnotation) && (EcorePackage.EANNOTATION__SOURCE == feature.getFeatureID()))) {
       return true;
     }
     return super.isTransient(owner, feature, index);

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="linkeddata" scheme="http://occiware.org/linkeddata#">
+<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="linkeddata" scheme="http://occiware.org/linkeddata#">
   <import href="http://schemas.ogf.org/occi/core#/"/>
   <import href="http://schemas.ogf.org/occi/infrastructure#/"/>
   <import href="http://schemas.ogf.org/occi/platform#/"/>
@@ -7,12 +7,8 @@
     <attributes name="occi.ld.project.name" required="true">
       <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="occi.ld.project.published" default="false">
-      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
-    </attributes>
-    <attributes name="occi.ld.project.robust" default="true">
-      <type href="http://schemas.ogf.org/occi/core#//@types.1"/>
-    </attributes>
+    <attributes name="occi.ld.project.lifecycle" type="//@types.0"/>
+    <attributes name="occi.ld.project.robustness" type="//@types.1"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
     <actions term="publish" scheme="http://occiware.org/linkeddata/ldproject/action#"/>
     <actions term="unpublish" scheme="http://occiware.org/linkeddata/ldproject/action#"/>
@@ -30,4 +26,31 @@
   <kinds term="ldprojectlink" scheme="http://occiware.org/linkeddata#">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
+  <kinds term="ldnode" scheme="http://occiware.org/linkeddata#" title="LDNode">
+    <attributes name="occi.ld.node.name" required="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="occi.ld.node.mongoHosts" required="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="occi.ld.node.mainProject" required="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="occi.ld.node.analyticsReadPreference" required="true">
+      <type href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds term="ldcontains" scheme="http://occiware.org/linkeddata#">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <types xsi:type="ecore:EEnum" name="Lifecycle">
+    <eLiterals name="draft"/>
+    <eLiterals name="published" value="1" literal="published"/>
+  </types>
+  <types xsi:type="ecore:EEnum" name="Robustness">
+    <eLiterals name="cluster" literal="cluster"/>
+    <eLiterals name="node" value="1"/>
+    <eLiterals name="none" value="2"/>
+  </types>
 </occi:Extension>

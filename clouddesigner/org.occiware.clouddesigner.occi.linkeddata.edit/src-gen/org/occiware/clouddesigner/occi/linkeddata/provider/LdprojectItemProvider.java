@@ -66,8 +66,8 @@ public class LdprojectItemProvider extends ResourceItemProvider {
 			super.getPropertyDescriptors(object);
 
 			addNamePropertyDescriptor(object);
-			addPublishedPropertyDescriptor(object);
-			addRobustPropertyDescriptor(object);
+			addLifecyclePropertyDescriptor(object);
+			addRobustnessPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -95,45 +95,45 @@ public class LdprojectItemProvider extends ResourceItemProvider {
 	}
 
 	/**
-	 * This adds a property descriptor for the Published feature.
+	 * This adds a property descriptor for the Lifecycle feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addPublishedPropertyDescriptor(Object object) {
+	protected void addLifecyclePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Ldproject_published_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Ldproject_published_feature", "_UI_Ldproject_type"),
-				 LinkeddataPackage.Literals.LDPROJECT__PUBLISHED,
+				 getString("_UI_Ldproject_lifecycle_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Ldproject_lifecycle_feature", "_UI_Ldproject_type"),
+				 LinkeddataPackage.Literals.LDPROJECT__LIFECYCLE,
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
 
 	/**
-	 * This adds a property descriptor for the Robust feature.
+	 * This adds a property descriptor for the Robustness feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addRobustPropertyDescriptor(Object object) {
+	protected void addRobustnessPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Ldproject_robust_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Ldproject_robust_feature", "_UI_Ldproject_type"),
-				 LinkeddataPackage.Literals.LDPROJECT__ROBUST,
+				 getString("_UI_Ldproject_robustness_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Ldproject_robustness_feature", "_UI_Ldproject_type"),
+				 LinkeddataPackage.Literals.LDPROJECT__ROBUSTNESS,
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -177,8 +177,8 @@ public class LdprojectItemProvider extends ResourceItemProvider {
 
 		switch (notification.getFeatureID(Ldproject.class)) {
 			case LinkeddataPackage.LDPROJECT__NAME:
-			case LinkeddataPackage.LDPROJECT__PUBLISHED:
-			case LinkeddataPackage.LDPROJECT__ROBUST:
+			case LinkeddataPackage.LDPROJECT__LIFECYCLE:
+			case LinkeddataPackage.LDPROJECT__ROBUSTNESS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
@@ -205,6 +205,11 @@ public class LdprojectItemProvider extends ResourceItemProvider {
 			(createChildParameter
 				(OCCIPackage.Literals.RESOURCE__LINKS,
 				 LinkeddataFactory.eINSTANCE.createLdprojectlink()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(OCCIPackage.Literals.RESOURCE__LINKS,
+				 LinkeddataFactory.eINSTANCE.createLdcontains()));
 
 		newChildDescriptors.add
 			(createChildParameter

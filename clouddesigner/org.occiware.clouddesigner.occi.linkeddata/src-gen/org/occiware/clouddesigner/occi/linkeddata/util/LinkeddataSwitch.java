@@ -103,6 +103,22 @@ public class LinkeddataSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case LinkeddataPackage.LDNODE: {
+				Ldnode ldnode = (Ldnode)theEObject;
+				T result = caseLdnode(ldnode);
+				if (result == null) result = caseResource(ldnode);
+				if (result == null) result = caseEntity(ldnode);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case LinkeddataPackage.LDCONTAINS: {
+				Ldcontains ldcontains = (Ldcontains)theEObject;
+				T result = caseLdcontains(ldcontains);
+				if (result == null) result = caseLink(ldcontains);
+				if (result == null) result = caseEntity(ldcontains);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -149,6 +165,36 @@ public class LinkeddataSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseLdprojectlink(Ldprojectlink object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Ldnode</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Ldnode</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLdnode(Ldnode object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Ldcontains</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Ldcontains</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLdcontains(Ldcontains object) {
 		return null;
 	}
 

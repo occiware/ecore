@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="linkeddata" nsURI="http://occiware.org/linkeddata/ecore" nsPrefix="linkeddata">
+  <eClassifiers xsi:type="ecore:EEnum" name="Lifecycle">
+    <eLiterals name="draft"/>
+    <eLiterals name="published" value="1" literal="published"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Robustness">
+    <eLiterals name="cluster" literal="cluster"/>
+    <eLiterals name="node" value="1"/>
+    <eLiterals name="none" value="2"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Ldproject" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Resource">
     <eAnnotations source="OCCIE2Ecore">
       <details key="title" value="LDProject"/>
@@ -25,14 +34,12 @@
         <details key="description"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="published" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean"
-        defaultValueLiteral="false">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lifecycle" eType="#//Lifecycle">
       <eAnnotations source="OCCIE2Ecore">
         <details key="description"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="robust" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Boolean"
-        defaultValueLiteral="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="robustness" eType="#//Robustness">
       <eAnnotations source="OCCIE2Ecore">
         <details key="description"/>
       </eAnnotations>
@@ -57,6 +64,39 @@
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Ldprojectlink" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Link">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Ldnode" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Resource">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title" value="LDNode"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mongoHosts" lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mainProject" lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="analyticsReadPreference"
+        lowerBound="1" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Ldcontains" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Link">
     <eAnnotations source="OCCIE2Ecore">
       <details key="title"/>
     </eAnnotations>

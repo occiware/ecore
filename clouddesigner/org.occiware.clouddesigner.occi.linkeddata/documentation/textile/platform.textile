@@ -132,4 +132,4 @@ h2. Enum Status
 * inactive  
 * error  
 
-Generated at Thu Jun 09 10:28:00 CEST 2016 from http://schemas.ogf.org/occi/platform by org.occiware.clouddesigner.occi.gen.doc
+Generated at Wed Jul 19 13:56:12 CEST 2017 from http://schemas.ogf.org/occi/platform by org.occiware.clouddesigner.occi.gen.doc

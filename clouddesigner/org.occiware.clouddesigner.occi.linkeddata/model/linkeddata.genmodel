@@ -3,16 +3,37 @@
   <foreignModel>linkeddata.ecore</foreignModel>
   <genPackages prefix="Linkeddata" basePackage="org.occiware.clouddesigner.occi" disposableProviderFactory="true">
     <ecorePackage href="linkeddata.ecore#/"/>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="linkeddata.ecore#//Lifecycle"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="linkeddata.ecore#//Lifecycle/draft"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="linkeddata.ecore#//Lifecycle/published"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="linkeddata.ecore#//Robustness"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="linkeddata.ecore#//Robustness/cluster"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="linkeddata.ecore#//Robustness/node"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="linkeddata.ecore#//Robustness/none"/>
+      </genEnumLiterals>
+    </genEnums>
     <genClasses>
       <ecoreClass href="linkeddata.ecore#//Ldproject"/>
       <genFeatures createChild="false">
         <ecoreFeature xsi:type="ecore:EAttribute" href="linkeddata.ecore#//Ldproject/name"/>
       </genFeatures>
       <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="linkeddata.ecore#//Ldproject/published"/>
+        <ecoreFeature xsi:type="ecore:EAttribute" href="linkeddata.ecore#//Ldproject/lifecycle"/>
       </genFeatures>
       <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="linkeddata.ecore#//Ldproject/robust"/>
+        <ecoreFeature xsi:type="ecore:EAttribute" href="linkeddata.ecore#//Ldproject/robustness"/>
       </genFeatures>
       <genOperations>
         <ecoreOperation href="linkeddata.ecore#//Ldproject/publish"/>
@@ -35,6 +56,24 @@
     </genClasses>
     <genClasses>
       <ecoreClass href="linkeddata.ecore#//Ldprojectlink"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="linkeddata.ecore#//Ldnode"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="linkeddata.ecore#//Ldnode/name"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="linkeddata.ecore#//Ldnode/mongoHosts"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="linkeddata.ecore#//Ldnode/mainProject"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="linkeddata.ecore#//Ldnode/analyticsReadPreference"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="linkeddata.ecore#//Ldcontains"/>
     </genClasses>
   </genPackages>
   <usedGenPackages href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.genmodel#//infrastructure"/>
