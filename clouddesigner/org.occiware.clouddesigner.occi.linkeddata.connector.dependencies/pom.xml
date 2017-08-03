@@ -18,7 +18,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<datacore.version>1.0-SNAPSHOT</datacore.version>
+		<datacore.version>1.10.1</datacore.version>
 	</properties>
 
 	<dependencies>
