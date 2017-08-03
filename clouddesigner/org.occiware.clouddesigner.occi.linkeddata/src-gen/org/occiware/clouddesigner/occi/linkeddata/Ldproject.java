@@ -23,8 +23,8 @@ import org.occiware.clouddesigner.occi.Resource;
  * </p>
  * <ul>
  *   <li>{@link org.occiware.clouddesigner.occi.linkeddata.Ldproject#getName <em>Name</em>}</li>
- *   <li>{@link org.occiware.clouddesigner.occi.linkeddata.Ldproject#isPublished <em>Published</em>}</li>
- *   <li>{@link org.occiware.clouddesigner.occi.linkeddata.Ldproject#isRobust <em>Robust</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.linkeddata.Ldproject#getLifecycle <em>Lifecycle</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.linkeddata.Ldproject#getRobustness <em>Robustness</em>}</li>
  * </ul>
  *
  * @see org.occiware.clouddesigner.occi.linkeddata.LinkeddataPackage#getLdproject()
@@ -60,60 +60,62 @@ public interface Ldproject extends Resource {
 	void setName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Published</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
+	 * Returns the value of the '<em><b>Lifecycle</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.occiware.clouddesigner.occi.linkeddata.Lifecycle}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Published</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Lifecycle</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Published</em>' attribute.
-	 * @see #setPublished(boolean)
-	 * @see org.occiware.clouddesigner.occi.linkeddata.LinkeddataPackage#getLdproject_Published()
-	 * @model default="false" dataType="org.occiware.clouddesigner.occi.Boolean"
-	 *        annotation="OCCIE2Ecore description='null'"
+	 * @return the value of the '<em>Lifecycle</em>' attribute.
+	 * @see org.occiware.clouddesigner.occi.linkeddata.Lifecycle
+	 * @see #setLifecycle(Lifecycle)
+	 * @see org.occiware.clouddesigner.occi.linkeddata.LinkeddataPackage#getLdproject_Lifecycle()
+	 * @model annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
-	boolean isPublished();
+	Lifecycle getLifecycle();
 
 	/**
-	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.linkeddata.Ldproject#isPublished <em>Published</em>}' attribute.
+	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.linkeddata.Ldproject#getLifecycle <em>Lifecycle</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Published</em>' attribute.
-	 * @see #isPublished()
+	 * @param value the new value of the '<em>Lifecycle</em>' attribute.
+	 * @see org.occiware.clouddesigner.occi.linkeddata.Lifecycle
+	 * @see #getLifecycle()
 	 * @generated
 	 */
-	void setPublished(boolean value);
+	void setLifecycle(Lifecycle value);
 
 	/**
-	 * Returns the value of the '<em><b>Robust</b></em>' attribute.
-	 * The default value is <code>"true"</code>.
+	 * Returns the value of the '<em><b>Robustness</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.occiware.clouddesigner.occi.linkeddata.Robustness}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Robust</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Robustness</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Robust</em>' attribute.
-	 * @see #setRobust(boolean)
-	 * @see org.occiware.clouddesigner.occi.linkeddata.LinkeddataPackage#getLdproject_Robust()
-	 * @model default="true" dataType="org.occiware.clouddesigner.occi.Boolean"
-	 *        annotation="OCCIE2Ecore description='null'"
+	 * @return the value of the '<em>Robustness</em>' attribute.
+	 * @see org.occiware.clouddesigner.occi.linkeddata.Robustness
+	 * @see #setRobustness(Robustness)
+	 * @see org.occiware.clouddesigner.occi.linkeddata.LinkeddataPackage#getLdproject_Robustness()
+	 * @model annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
-	boolean isRobust();
+	Robustness getRobustness();
 
 	/**
-	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.linkeddata.Ldproject#isRobust <em>Robust</em>}' attribute.
+	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.linkeddata.Ldproject#getRobustness <em>Robustness</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Robust</em>' attribute.
-	 * @see #isRobust()
+	 * @param value the new value of the '<em>Robustness</em>' attribute.
+	 * @see org.occiware.clouddesigner.occi.linkeddata.Robustness
+	 * @see #getRobustness()
 	 * @generated
 	 */
-	void setRobust(boolean value);
+	void setRobustness(Robustness value);
 
 	/**
 	 * <!-- begin-user-doc -->

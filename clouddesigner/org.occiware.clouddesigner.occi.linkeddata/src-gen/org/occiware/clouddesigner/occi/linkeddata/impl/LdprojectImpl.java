@@ -24,7 +24,9 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.occiware.clouddesigner.occi.impl.ResourceImpl;
 
 import org.occiware.clouddesigner.occi.linkeddata.Ldproject;
+import org.occiware.clouddesigner.occi.linkeddata.Lifecycle;
 import org.occiware.clouddesigner.occi.linkeddata.LinkeddataPackage;
+import org.occiware.clouddesigner.occi.linkeddata.Robustness;
 
 /**
  * <!-- begin-user-doc -->
@@ -35,8 +37,8 @@ import org.occiware.clouddesigner.occi.linkeddata.LinkeddataPackage;
  * </p>
  * <ul>
  *   <li>{@link org.occiware.clouddesigner.occi.linkeddata.impl.LdprojectImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.occiware.clouddesigner.occi.linkeddata.impl.LdprojectImpl#isPublished <em>Published</em>}</li>
- *   <li>{@link org.occiware.clouddesigner.occi.linkeddata.impl.LdprojectImpl#isRobust <em>Robust</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.linkeddata.impl.LdprojectImpl#getLifecycle <em>Lifecycle</em>}</li>
+ *   <li>{@link org.occiware.clouddesigner.occi.linkeddata.impl.LdprojectImpl#getRobustness <em>Robustness</em>}</li>
  * </ul>
  *
  * @generated
@@ -63,44 +65,44 @@ public class LdprojectImpl extends ResourceImpl implements Ldproject {
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isPublished() <em>Published</em>}' attribute.
+	 * The default value of the '{@link #getLifecycle() <em>Lifecycle</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isPublished()
+	 * @see #getLifecycle()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean PUBLISHED_EDEFAULT = false;
+	protected static final Lifecycle LIFECYCLE_EDEFAULT = Lifecycle.DRAFT;
 
 	/**
-	 * The cached value of the '{@link #isPublished() <em>Published</em>}' attribute.
+	 * The cached value of the '{@link #getLifecycle() <em>Lifecycle</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isPublished()
+	 * @see #getLifecycle()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean published = PUBLISHED_EDEFAULT;
+	protected Lifecycle lifecycle = LIFECYCLE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isRobust() <em>Robust</em>}' attribute.
+	 * The default value of the '{@link #getRobustness() <em>Robustness</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isRobust()
+	 * @see #getRobustness()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean ROBUST_EDEFAULT = true;
+	protected static final Robustness ROBUSTNESS_EDEFAULT = Robustness.CLUSTER;
 
 	/**
-	 * The cached value of the '{@link #isRobust() <em>Robust</em>}' attribute.
+	 * The cached value of the '{@link #getRobustness() <em>Robustness</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isRobust()
+	 * @see #getRobustness()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean robust = ROBUST_EDEFAULT;
+	protected Robustness robustness = ROBUSTNESS_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -147,8 +149,8 @@ public class LdprojectImpl extends ResourceImpl implements Ldproject {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isPublished() {
-		return published;
+	public Lifecycle getLifecycle() {
+		return lifecycle;
 	}
 
 	/**
@@ -156,11 +158,11 @@ public class LdprojectImpl extends ResourceImpl implements Ldproject {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setPublished(boolean newPublished) {
-		boolean oldPublished = published;
-		published = newPublished;
+	public void setLifecycle(Lifecycle newLifecycle) {
+		Lifecycle oldLifecycle = lifecycle;
+		lifecycle = newLifecycle == null ? LIFECYCLE_EDEFAULT : newLifecycle;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, LinkeddataPackage.LDPROJECT__PUBLISHED, oldPublished, published));
+			eNotify(new ENotificationImpl(this, Notification.SET, LinkeddataPackage.LDPROJECT__LIFECYCLE, oldLifecycle, lifecycle));
 	}
 
 	/**
@@ -168,8 +170,8 @@ public class LdprojectImpl extends ResourceImpl implements Ldproject {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isRobust() {
-		return robust;
+	public Robustness getRobustness() {
+		return robustness;
 	}
 
 	/**
@@ -177,11 +179,11 @@ public class LdprojectImpl extends ResourceImpl implements Ldproject {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setRobust(boolean newRobust) {
-		boolean oldRobust = robust;
-		robust = newRobust;
+	public void setRobustness(Robustness newRobustness) {
+		Robustness oldRobustness = robustness;
+		robustness = newRobustness == null ? ROBUSTNESS_EDEFAULT : newRobustness;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, LinkeddataPackage.LDPROJECT__ROBUST, oldRobust, robust));
+			eNotify(new ENotificationImpl(this, Notification.SET, LinkeddataPackage.LDPROJECT__ROBUSTNESS, oldRobustness, robustness));
 	}
 
 	/**
@@ -227,10 +229,10 @@ public class LdprojectImpl extends ResourceImpl implements Ldproject {
 		switch (featureID) {
 			case LinkeddataPackage.LDPROJECT__NAME:
 				return getName();
-			case LinkeddataPackage.LDPROJECT__PUBLISHED:
-				return isPublished();
-			case LinkeddataPackage.LDPROJECT__ROBUST:
-				return isRobust();
+			case LinkeddataPackage.LDPROJECT__LIFECYCLE:
+				return getLifecycle();
+			case LinkeddataPackage.LDPROJECT__ROBUSTNESS:
+				return getRobustness();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -246,11 +248,11 @@ public class LdprojectImpl extends ResourceImpl implements Ldproject {
 			case LinkeddataPackage.LDPROJECT__NAME:
 				setName((String)newValue);
 				return;
-			case LinkeddataPackage.LDPROJECT__PUBLISHED:
-				setPublished((Boolean)newValue);
+			case LinkeddataPackage.LDPROJECT__LIFECYCLE:
+				setLifecycle((Lifecycle)newValue);
 				return;
-			case LinkeddataPackage.LDPROJECT__ROBUST:
-				setRobust((Boolean)newValue);
+			case LinkeddataPackage.LDPROJECT__ROBUSTNESS:
+				setRobustness((Robustness)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -267,11 +269,11 @@ public class LdprojectImpl extends ResourceImpl implements Ldproject {
 			case LinkeddataPackage.LDPROJECT__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case LinkeddataPackage.LDPROJECT__PUBLISHED:
-				setPublished(PUBLISHED_EDEFAULT);
+			case LinkeddataPackage.LDPROJECT__LIFECYCLE:
+				setLifecycle(LIFECYCLE_EDEFAULT);
 				return;
-			case LinkeddataPackage.LDPROJECT__ROBUST:
-				setRobust(ROBUST_EDEFAULT);
+			case LinkeddataPackage.LDPROJECT__ROBUSTNESS:
+				setRobustness(ROBUSTNESS_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -287,10 +289,10 @@ public class LdprojectImpl extends ResourceImpl implements Ldproject {
 		switch (featureID) {
 			case LinkeddataPackage.LDPROJECT__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case LinkeddataPackage.LDPROJECT__PUBLISHED:
-				return published != PUBLISHED_EDEFAULT;
-			case LinkeddataPackage.LDPROJECT__ROBUST:
-				return robust != ROBUST_EDEFAULT;
+			case LinkeddataPackage.LDPROJECT__LIFECYCLE:
+				return lifecycle != LIFECYCLE_EDEFAULT;
+			case LinkeddataPackage.LDPROJECT__ROBUSTNESS:
+				return robustness != ROBUSTNESS_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -328,10 +330,10 @@ public class LdprojectImpl extends ResourceImpl implements Ldproject {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");
 		result.append(name);
-		result.append(", published: ");
-		result.append(published);
-		result.append(", robust: ");
-		result.append(robust);
+		result.append(", lifecycle: ");
+		result.append(lifecycle);
+		result.append(", robustness: ");
+		result.append(robustness);
 		result.append(')');
 		return result.toString();
 	}

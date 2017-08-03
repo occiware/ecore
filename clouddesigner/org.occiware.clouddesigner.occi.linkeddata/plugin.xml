@@ -53,8 +53,7 @@
       <!-- @generated linkeddata -->
       <package
             uri="http://occiware.org/linkeddata/ecore"
-            class="org.occiware.clouddesigner.occi.linkeddata.LinkeddataPackage"
-            genModel="model/linkeddata.genmodel"/>
+            class="org.occiware.clouddesigner.occi.linkeddata.LinkeddataPackage"/>
    </extension>
 
 </plugin>

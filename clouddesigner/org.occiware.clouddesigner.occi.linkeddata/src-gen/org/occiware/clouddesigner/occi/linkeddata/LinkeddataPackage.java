@@ -13,6 +13,7 @@ package org.occiware.clouddesigner.occi.linkeddata;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -150,22 +151,22 @@ public interface LinkeddataPackage extends EPackage {
 	int LDPROJECT__NAME = OCCIPackage.RESOURCE_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Published</b></em>' attribute.
+	 * The feature id for the '<em><b>Lifecycle</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LDPROJECT__PUBLISHED = OCCIPackage.RESOURCE_FEATURE_COUNT + 1;
+	int LDPROJECT__LIFECYCLE = OCCIPackage.RESOURCE_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Robust</b></em>' attribute.
+	 * The feature id for the '<em><b>Robustness</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LDPROJECT__ROBUST = OCCIPackage.RESOURCE_FEATURE_COUNT + 2;
+	int LDPROJECT__ROBUSTNESS = OCCIPackage.RESOURCE_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Ldproject</em>' class.
@@ -523,6 +524,27 @@ public interface LinkeddataPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.linkeddata.Lifecycle <em>Lifecycle</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.occiware.clouddesigner.occi.linkeddata.Lifecycle
+	 * @see org.occiware.clouddesigner.occi.linkeddata.impl.LinkeddataPackageImpl#getLifecycle()
+	 * @generated
+	 */
+	int LIFECYCLE = 3;
+
+	/**
+	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.linkeddata.Robustness <em>Robustness</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.occiware.clouddesigner.occi.linkeddata.Robustness
+	 * @see org.occiware.clouddesigner.occi.linkeddata.impl.LinkeddataPackageImpl#getRobustness()
+	 * @generated
+	 */
+	int ROBUSTNESS = 4;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.occiware.clouddesigner.occi.linkeddata.Ldproject <em>Ldproject</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -544,26 +566,26 @@ public interface LinkeddataPackage extends EPackage {
 	EAttribute getLdproject_Name();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.linkeddata.Ldproject#isPublished <em>Published</em>}'.
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.linkeddata.Ldproject#getLifecycle <em>Lifecycle</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Published</em>'.
-	 * @see org.occiware.clouddesigner.occi.linkeddata.Ldproject#isPublished()
+	 * @return the meta object for the attribute '<em>Lifecycle</em>'.
+	 * @see org.occiware.clouddesigner.occi.linkeddata.Ldproject#getLifecycle()
 	 * @see #getLdproject()
 	 * @generated
 	 */
-	EAttribute getLdproject_Published();
+	EAttribute getLdproject_Lifecycle();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.linkeddata.Ldproject#isRobust <em>Robust</em>}'.
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.linkeddata.Ldproject#getRobustness <em>Robustness</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Robust</em>'.
-	 * @see org.occiware.clouddesigner.occi.linkeddata.Ldproject#isRobust()
+	 * @return the meta object for the attribute '<em>Robustness</em>'.
+	 * @see org.occiware.clouddesigner.occi.linkeddata.Ldproject#getRobustness()
 	 * @see #getLdproject()
 	 * @generated
 	 */
-	EAttribute getLdproject_Robust();
+	EAttribute getLdproject_Robustness();
 
 	/**
 	 * Returns the meta object for the '{@link org.occiware.clouddesigner.occi.linkeddata.Ldproject#publish() <em>Publish</em>}' operation.
@@ -638,6 +660,26 @@ public interface LinkeddataPackage extends EPackage {
 	EClass getLdprojectlink();
 
 	/**
+	 * Returns the meta object for enum '{@link org.occiware.clouddesigner.occi.linkeddata.Lifecycle <em>Lifecycle</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Lifecycle</em>'.
+	 * @see org.occiware.clouddesigner.occi.linkeddata.Lifecycle
+	 * @generated
+	 */
+	EEnum getLifecycle();
+
+	/**
+	 * Returns the meta object for enum '{@link org.occiware.clouddesigner.occi.linkeddata.Robustness <em>Robustness</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Robustness</em>'.
+	 * @see org.occiware.clouddesigner.occi.linkeddata.Robustness
+	 * @generated
+	 */
+	EEnum getRobustness();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -679,20 +721,20 @@ public interface LinkeddataPackage extends EPackage {
 		EAttribute LDPROJECT__NAME = eINSTANCE.getLdproject_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>Published</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Lifecycle</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute LDPROJECT__PUBLISHED = eINSTANCE.getLdproject_Published();
+		EAttribute LDPROJECT__LIFECYCLE = eINSTANCE.getLdproject_Lifecycle();
 
 		/**
-		 * The meta object literal for the '<em><b>Robust</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Robustness</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute LDPROJECT__ROBUST = eINSTANCE.getLdproject_Robust();
+		EAttribute LDPROJECT__ROBUSTNESS = eINSTANCE.getLdproject_Robustness();
 
 		/**
 		 * The meta object literal for the '<em><b>Publish</b></em>' operation.
@@ -753,6 +795,26 @@ public interface LinkeddataPackage extends EPackage {
 		 * @generated
 		 */
 		EClass LDPROJECTLINK = eINSTANCE.getLdprojectlink();
+
+		/**
+		 * The meta object literal for the '{@link org.occiware.clouddesigner.occi.linkeddata.Lifecycle <em>Lifecycle</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.occiware.clouddesigner.occi.linkeddata.Lifecycle
+		 * @see org.occiware.clouddesigner.occi.linkeddata.impl.LinkeddataPackageImpl#getLifecycle()
+		 * @generated
+		 */
+		EEnum LIFECYCLE = eINSTANCE.getLifecycle();
+
+		/**
+		 * The meta object literal for the '{@link org.occiware.clouddesigner.occi.linkeddata.Robustness <em>Robustness</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.occiware.clouddesigner.occi.linkeddata.Robustness
+		 * @see org.occiware.clouddesigner.occi.linkeddata.impl.LinkeddataPackageImpl#getRobustness()
+		 * @generated
+		 */
+		EEnum ROBUSTNESS = eINSTANCE.getRobustness();
 
 	}
 
